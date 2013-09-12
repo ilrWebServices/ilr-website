@@ -1,0 +1,18 @@
+name = Drupal Streamline Development
+description = Container for development utilities
+core = 7.x
+hidden = TRUE
+package =
+php = 5.2.4
+version = 7.x-1.0
+
+dependencies[] = devel
+dependencies[] = diff
+dependencies[] = field_ui
+
+
+; Information added by drush on 2013-09-12
+version = "unknown"
+project = "drupal_streamline_dev"
+datestamp = "1379008169"
+

@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Implements hook_enable()
+ */
+function drupal_streamline_dev_enable() {
+  // Redirect all outgoing mail to the local filesystem
+  variable_set('mail_system', array('default-system' => 'DevelMailLog'));
+}
+
+/**
+ * Implements hook_disable()
+ */
+function drupal_streamline_dev_disable() {
+  // Stop redirecting all outgoing mail
+  variable_set('mail_system', array('default-system' => 'DefaultMailSystem'));
+}

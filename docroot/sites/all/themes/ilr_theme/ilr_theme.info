@@ -1,0 +1,11 @@
+name = Cornell University | ILR School
+description = "A theme for Cornell University | ILR School"
+core = 7.x
+
+stylesheets[all][] = css/style.css
+
+; Information added by drush on 2013-09-12
+version = "unknown"
+project = "ilr_theme"
+datestamp = "1379008169"
+
