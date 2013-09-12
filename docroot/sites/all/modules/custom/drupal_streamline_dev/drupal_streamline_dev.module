@@ -1,0 +1,45 @@
+<?php
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_init()
+ *
+ * Adds the livereload javascript so we don't need the browser extension.
+ */
+function drupal_streamline_dev_init() {
+  // The guard-livereload gem includes a copy of the livereload.js script at the same
+  // port configured in the livereload guard in the Guardfile
+  // Other livereload options available: &mindelay=1000&maxdelay=60000
+  $guard_livereload_js_uri = 'http://localhost:35777/livereload.js?host=localhost&port=35777&snipver=1';
+
+  // Try to request the guard copy of livereload
+  $guard_livereload_js = drupal_http_request($guard_livereload_js_uri);
+
+  // If there is a copy, guard is running and we should add the livereload.js script
+  if ($guard_livereload_js->code == 200) {
+    drupal_add_js($guard_livereload_js_uri, array('type' => 'external', 'scope' => 'footer'));
+  }
+}
+
+/**
+ * Implements hook_custom_theme()
+ */
+function drupal_streamline_dev_custom_theme() {
+  // Allow the user to request a particular theme via a query parameter.
+  if (isset($_GET['theme'])) {
+    return $_GET['theme'];
+  }
+}
+
+/**
+ * Implements hook_css_alter().
+ *
+ * Force CSS to be added with link tags, rather than @import. Makes livereload work better.
+ */
+function drupal_streamline_dev_css_alter(&$css) {
+  foreach ($css as $key => $value) {
+    $css[$key]['preprocess'] = FALSE;
+  }
+}

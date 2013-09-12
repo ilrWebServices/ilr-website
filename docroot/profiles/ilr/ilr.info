@@ -1,0 +1,33 @@
+name = Cornell University | ILR School Profile
+description = A Drupal install profile for Cornell University | ILR School
+version = 0.1
+core = 7.x
+
+dependencies[] = field
+dependencies[] = taxonomy
+dependencies[] = menu
+dependencies[] = block
+dependencies[] = contextual
+dependencies[] = dblog
+dependencies[] = toolbar
+dependencies[] = path
+dependencies[] = file
+dependencies[] = image
+
+; Required contrib modules
+dependencies[] = ctools
+dependencies[] = context
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = token
+dependencies[] = pathauto
+dependencies[] = entity
+
+; Custom modules
+
+
+; Information added by drush on 2013-09-12
+version = "unknown"
+project = "ilr"
+datestamp = "1379008169"
+
