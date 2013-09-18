@@ -9,8 +9,10 @@ These instructions assume that you're using the [Vagrant Development VM](https:/
   1. `git clone git@github.com:ilrWebServices/ilr-website.git`
   2. `git clone git@github.com:ilrWebServices/vagrant-development-vm.git`
   3. Follow the configuration instructions for the [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm).
-  4. Before installing Drupal, use [PHPMyAdmin](http://33.33.33.40/phpmyadmin) to create a new empty database and grant user 'root' full rights to it.  
-  5. Run the [Drupal site installer](http://33.33.33.40/install.php), making sure that the database host is set to "33.33.33.40". The username is 'root' and the password is blank.
+  4. Before installing Drupal, use [PHPMyAdmin](http://33.33.33.40/phpmyadmin) (username 'root' and blank password) to create a new empty database and grant user 'root' full rights to it.  
+  5. Run the [Drupal site installer](http://33.33.33.40/install.php)
+  6. Choose the Cornell University | ILR School installation profile
+  7. At the database configuration step, make sure that the host is set to "33.33.33.40" under advanced settings. The username is 'root' and the password is blank.
 
 ## Configuring Drush
 
