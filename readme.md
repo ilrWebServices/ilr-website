@@ -25,6 +25,7 @@ This project is configured with guard to watch for changes to the scss files and
 
   - [Bundler](http://bundler.io/)
   - run `$ bundle install` once from the project root to download guard, sass, and livereload
+  - Enable the drupal_streamline_dev module from the docroot folder with `drush en drupal_streamline_dev -y`
 
 To start theming, run `$ bundle exec guard -i` from the project root. Edited Sass files will automagically compile to CSS and reload in the browser (although you may need to reload the browser once to connect to the livereload server). To stop the guard and livereload processes, hit `^c` (control + c).
 
