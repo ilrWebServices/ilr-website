@@ -2,17 +2,17 @@
 
 This repository houses the ILR School's Drupal migration. The project was initialized using Singlebrook's [Drupal Streamline](https://github.com/singlebrook/drupal_streamline).
 
-## Installation
+## Installation (Assumes that you're using the [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm) to host this Drupal site.)
 
   1. `git clone git@github.com:ilrWebServices/ilr-website.git`
   2. `git clone git@github.com:ilrWebServices/vagrant-development-vm.git`
   3. Follow the configuration instructions for the [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm).
-  4. Create your database at http://33.33.33.40/phpmyadmin
-  5. Run the [site installer](http://33.33.33.40/install.php), making sure that the database host is set to "33.33.33.40". The username is 'root' and the password is blank.
+  4. Before installing Drupal, use [PHPMyAdmin](http://33.33.33.40/phpmyadmin) to create a new empty database and grant user 'root' full rights to it.  
+  5. Run the [Drupal site installer](http://33.33.33.40/install.php), making sure that the database host is set to "33.33.33.40". The username is 'root' and the password is blank.
 
 ## Configuring Drush
 
-If you are using Vagrant to serve this site, there are some additional instruction for configuring Drush in the [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm).
+Follow the additional instruction for configuring Drush in the [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm).
 
 ## Theming with Sass and LiveReload
 This project is configured with guard to watch for changes to the scss files and compile them, as well as automatic style and js updates using an open source version of [LiveReload](http://livereload.com/).
