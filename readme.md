@@ -2,7 +2,9 @@
 
 This repository houses the ILR School's Drupal migration. The project was initialized using Singlebrook's [Drupal Streamline](https://github.com/singlebrook/drupal_streamline).
 
-## Installation (Assumes that you're using the [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm) to host this Drupal site.)
+## Installation
+
+These instructions assume that you're using the [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm) to host this Drupal site.
 
   1. `git clone git@github.com:ilrWebServices/ilr-website.git`
   2. `git clone git@github.com:ilrWebServices/vagrant-development-vm.git`
