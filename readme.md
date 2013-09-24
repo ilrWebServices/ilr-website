@@ -4,6 +4,7 @@ This repository houses the ILR School's Drupal migration. The project was initia
 
 ## Installation
 
+<<<<<<< HEAD
   1. `git clone git@github.com:ilrWebServices/ilr-website.git`
   2. `git clone git@github.com:ilrWebServices/vagrant-development-vm.git`
   3. Follow the configuration instructions for the [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm).
@@ -13,6 +14,21 @@ This repository houses the ILR School's Drupal migration. The project was initia
 ## Configuring Drush
 
 If you are using Vagrant to serve this site, there are some additional instruction for configuring Drush in the [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm).
+=======
+These instructions assume that you're using the [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm) to host this Drupal site.
+
+  1. `git clone git@github.com:ilrWebServices/ilr-website.git`
+  2. `git clone git@github.com:ilrWebServices/vagrant-development-vm.git`
+  3. Follow the configuration instructions for the [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm).
+  4. Before installing Drupal, use [PHPMyAdmin](http://33.33.33.40/phpmyadmin) (username 'root' and blank password) to create a new empty database and grant user 'root' full rights to it.  
+  5. Run the [Drupal site installer](http://33.33.33.40/install.php)
+  6. Choose the Cornell University | ILR School installation profile
+  7. At the database configuration step, make sure that the host is set to "33.33.33.40" under advanced settings. The username is 'root' and the password is blank.
+
+## Configuring Drush
+
+Follow the additional instruction for configuring Drush in the [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm).
+>>>>>>> bf0e7de71838fd2c8afe8eb3d5558f499015eecc
 
 ## Theming with Sass and LiveReload
 This project is configured with guard to watch for changes to the scss files and compile them, as well as automatic style and js updates using an open source version of [LiveReload](http://livereload.com/).
@@ -21,6 +37,10 @@ This project is configured with guard to watch for changes to the scss files and
 
   - [Bundler](http://bundler.io/)
   - run `$ bundle install` once from the project root to download guard, sass, and livereload
+<<<<<<< HEAD
+=======
+  - Enable the drupal_streamline_dev module from the docroot folder with `drush en drupal_streamline_dev -y`
+>>>>>>> bf0e7de71838fd2c8afe8eb3d5558f499015eecc
 
 To start theming, run `$ bundle exec guard -i` from the project root. Edited Sass files will automagically compile to CSS and reload in the browser (although you may need to reload the browser once to connect to the livereload server). To stop the guard and livereload processes, hit `^c` (control + c).
 
