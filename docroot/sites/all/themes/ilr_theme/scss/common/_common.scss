@@ -1,13 +1,29 @@
 .container {
-  background: $content-area;
-  @include box-shadow(0px 0px 20px 0px rgba(0,0,0,0.3));
+  @include grid-row(12);
 }
 
 #main {
   clear: both;
   padding-top: .5em;
+  background: white;
+  @include grid-row(12);
+
+  @include tablet-landscape-and-up {
+    #content {
+      @include grid-column(8);
+    }
+    #sidebar-first, #sidebar-second {
+      @include grid-column(3,false,false,1);
+    }
+  }
 }
 
+#banner img {
+  width: 100%;
+}
+#sidebar-second {
+  background: $brand;
+}
 #breadcrumb {
   font-size: .8rem;
 }
