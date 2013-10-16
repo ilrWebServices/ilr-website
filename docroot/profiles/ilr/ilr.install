@@ -45,4 +45,9 @@ function ilr_install() {
   variable_set('preprocess_js', 1);
 
   // Add Migrations here as necessary
+  ilr_update_7001();
+}
+
+function ilr_update_7001() {
+  module_enable(array('basic_page'));
 }
