@@ -1,6 +1,11 @@
 #!/bin/bash
 
-# run from docroot
+# check running from docroot
+CURRENT_DIR=${PWD##*/}
+if [ ! "$CURRENT_DIR" = "docroot" ]; then
+  echo 'Please be sure that you are running this command from the docroot.'
+  exit 2
+fi
 
 # make a backup of current db
 drush --gzip sql-dump > ../db/backups/$(date +%Y%m%d\-%H%M).sql.gzip
