@@ -2,3 +2,4 @@
 bin/init
 bin/initializer.rb
 drupal-streamline.make
+docroot/.drupal_streamline_guard_running
