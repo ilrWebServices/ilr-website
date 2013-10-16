@@ -14,6 +14,10 @@ This repository houses the ILR School's Drupal migration. The project was initia
   8. At the database configuration step, make sure that the host is set to "33.33.33.40" under advanced settings. The username is 'root' and the password is blank.
   9. [Configure](/docs/rewrites.md) the RewriteBase
 
+## Reinstalling the site
+
+There is a bash script called "reinstall" in the bin folder that backups up the current default database before wiping it and rebuilding a fresh version of the site. This is useful if you're trying to confirm that a feature is correctly configured and will install correctly on demand.
+
 ## Theming with Sass and LiveReload
 This project is configured with guard to watch for changes to the scss files and compile them, as well as automatic style and js updates using an open source version of [LiveReload](http://livereload.com/).
 

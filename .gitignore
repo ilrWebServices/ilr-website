@@ -1,5 +1,6 @@
 *.sass-cache
 bin/init
 bin/initializer.rb
+db/backups
 drupal-streamline.make
 docroot/.drupal_streamline_guard_running
