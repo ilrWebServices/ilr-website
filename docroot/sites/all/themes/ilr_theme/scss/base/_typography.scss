@@ -1,10 +1,11 @@
+
 // ==================================================
 // headings
 // ==================================================
 h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
-	line-height: 1.2;
 	margin-top: 0;
+	font-family: $font-headers;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -15,6 +16,7 @@ h1 {
 	font-size: $h1-size;
 	color: $h1-text;
 	margin-bottom: 14px;
+	border-bottom: 1px solid #C7B29A;
 
 	a {
 		color: $h1-link;
@@ -117,7 +119,6 @@ h6 {
 // ==================================================
 p {
 	font-size: $p-size;
-	line-height: 1.6;
 	color: $p-text;
 	margin-bottom: 20px;
 
@@ -203,7 +204,6 @@ li {
 
 dl dt {
 	font-weight: bold;
-	line-height: 1.2em;
 }
 
 dl dd {
