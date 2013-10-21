@@ -24,3 +24,16 @@ function ilr_theme_preprocess_page(&$variables) {
 function ilr_theme_js_alter(&$js) {
   unset($js['misc/tableheader.js']);
 }
+
+/**
+ * Implements theme_breadcrumb()
+ */
+function ilr_theme_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+  // add current page title, if it exists, or the active title from the menu
+  $breadcrumb[] = (drupal_get_title()) ? drupal_get_title() : menu_get_active_title();
+
+  if (!empty($breadcrumb)) {
+    return '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
+  }
+}
