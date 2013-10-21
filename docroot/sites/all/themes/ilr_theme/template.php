@@ -7,6 +7,9 @@
  * Adds modernizr.js
  */
 function ilr_theme_preprocess_page(&$variables) {
+  // Google fonts
+  drupal_add_css('http://fonts.googleapis.com/css?family=Open+Sans', array('type' => 'external'));
+
   // Footer content
   $variables['page']['footer'][] = array('#markup' => '<div class="copyright">&copy; ' . date('Y') . ' Cornell University | ILR School </div>');
 
