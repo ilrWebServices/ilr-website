@@ -16,3 +16,26 @@ function ilr_form_install_configure_form_alter(&$form, $form_state) {
   $form['server_settings']['date_default_timezone']['#default_value'] = 'America/New_York';
   $form['update_notifications']['update_status_module']['#default_value'] = array(1);
 }
+
+/**
+ * Implements hook_menu_block_blocks()
+ *
+ * @see menu_tree_build() for a description of the config array.
+ */
+function ilr_menu_block_blocks() {
+  return array(
+    // The array key is the block id used by menu block.
+    'ilr-subnav' => array(
+      // Use the array keys/values described in menu_tree_build().
+      'menu_name'   => 'main-menu',
+      'parent_mlid' => 0,
+      'title_link'  => TRUE,
+      'admin_title' => 'Main Menu Children',
+      'level'       => 2,
+      'follow'      => 0,
+      'depth'       => 0,
+      'expanded'    => TRUE,
+      'sort'        => FALSE,
+    ),
+  );
+}

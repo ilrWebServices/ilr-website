@@ -22,6 +22,7 @@ dependencies[] = strongarm
 dependencies[] = token
 dependencies[] = pathauto
 dependencies[] = entity
+dependencies[] = menu_block
 
 ; Custom modules
 
