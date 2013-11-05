@@ -18,6 +18,24 @@ function ilr_form_install_configure_form_alter(&$form, $form_state) {
 }
 
 /**
+ * Implements hook_menu()
+ */
+function ilr_menu(){
+  $items['home'] = array(
+    'title' => '',
+    'page callback' => 'ilr_home_view',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+function ilr_home_view() {
+  return '';
+}
+
+/**
  * Implements hook_menu_block_blocks()
  *
  * @see menu_tree_build() for a description of the config array.
