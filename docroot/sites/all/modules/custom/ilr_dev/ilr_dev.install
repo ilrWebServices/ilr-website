@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * Implements hook_install()
+ */
+
+function ilr_dev_install() {
+  // Create test accounts here as needed
+  require_once DRUPAL_ROOT . '/' . variable_get('password_inc', 'includes/password.inc');
+  $administrator_rid = user_role_load_by_name('administrator')->rid;
+
+  $users = array(
+    array(
+      'name' => 'test admin',
+      'pass' => user_hash_password('testing'),
+      'mail' => 'test_admin@cornell.edu',
+      'status' => 1,
+      'roles' => array($administrator_rid => true),
+    )
+  );
+
+  foreach ($users as $user) {
+    $new_user = user_save((object) $user);
+  }
+}

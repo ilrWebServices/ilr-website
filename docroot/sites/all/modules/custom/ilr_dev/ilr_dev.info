@@ -1,0 +1,6 @@
+name = ILR Development Env Helpers
+description = Container for development utilities
+core = 7.x
+hidden = TRUE
+php = 5.2.4
+version = 7.x-1.0
