@@ -10,6 +10,9 @@ fi
 # make a backup of current db
 drush -l default --gzip sql-dump > ../db/backups/$(date +%Y%m%d\-%H%M).sql.gzip
 
+# delete the tmp files
+rm ../tmp/devel-mails/* 2>/dev/null
+
 chmod -R a+rwx sites/default/settings.php
 
 drush -y -l default site-install ilr --site-name="ILR Dev Site | Cornell University" --clean-url=1 --account-pass=testing --account-mail=aaronf@cornell.edu
