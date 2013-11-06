@@ -12,7 +12,7 @@ drush -l default --gzip sql-dump > ../db/backups/$(date +%Y%m%d\-%H%M).sql.gzip
 
 chmod -R a+rwx sites/default/settings.php
 
-drush -y -l default site-install ilr --site-name="Foo" --clean-url=1 --account-pass=testing
+drush -y -l default site-install ilr --site-name="ILR Dev Site | Cornell University" --clean-url=1 --account-pass=testing
 
 # enable some useful development modules
 drush -y -l default en drupal_streamline_dev ilr_dev
