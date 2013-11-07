@@ -1,7 +1,7 @@
 <?php
-/* 
+/*
  * The configuration of simpleSAMLphp
- * 
+ *
  * $Id: config.php 3171 2012-09-25 08:54:06Z jaimepc@gmail.com $
  */
 
@@ -33,7 +33,7 @@ $config = array (
 	 * SimpleSAMLphp will attempt to create this directory if it doesn't exist.
 	 */
 	'tempdir'               => '/tmp/simplesaml',
-	
+
 
 	/*
 	 * If you enable this option, simpleSAMLphp will log all sent and received messages
@@ -102,18 +102,18 @@ $config = array (
 
 	/*
 	 * Logging.
-	 * 
+	 *
 	 * define the minimum log level to log
 	 *		SimpleSAML_Logger::ERR		No statistics, only errors
 	 *		SimpleSAML_Logger::WARNING	No statistics, only warnings/errors
 	 *		SimpleSAML_Logger::NOTICE	Statistics and errors
 	 *		SimpleSAML_Logger::INFO		Verbose logs
 	 *		SimpleSAML_Logger::DEBUG	Full debug logs - not reccomended for production
-	 * 
+	 *
 	 * Choose logging handler.
-	 * 
+	 *
 	 * Options: [syslog,file,errorlog]
-	 * 
+	 *
 	 */
 	'logging.level'         => SimpleSAML_Logger::NOTICE,
 	'logging.handler'       => 'syslog',
@@ -166,8 +166,8 @@ $config = array (
 
 	/*
 	 * Enable
-	 * 
-	 * Which functionality in simpleSAMLphp do you want to enable. Normally you would enable only 
+	 *
+	 * Which functionality in simpleSAMLphp do you want to enable. Normally you would enable only
 	 * one of the functionalities below, but in some cases you could run multiple functionalities.
 	 * In example when you are setting up a federation bridge.
 	 */
@@ -177,7 +177,7 @@ $config = array (
 	'enable.wsfed-sp'		=> false,
 	'enable.authmemcookie' => false,
 
-	/* 
+	/*
 	 * This value is the duration of the session in seconds. Make sure that the time duration of
 	 * cookies both at the SP and the IdP exceeds this duration.
 	 */
@@ -190,7 +190,7 @@ $config = array (
 	 * The default is 4 hours (4*60*60) seconds, which should be more than enough for these operations.
 	 */
 	'session.datastore.timeout' => (4*60*60), // 4 hours
-	
+
 	/*
 	 * Sets the duration, in seconds, auth state should be stored.
 	 */
@@ -321,7 +321,7 @@ $config = array (
 	 */
 	'theme.use' 		=> 'default',
 
-	
+
 	/*
 	 * Default IdP for WS-Fed.
 	 */
@@ -332,22 +332,22 @@ $config = array (
 	 */
 	'idpdisco.enableremember' => TRUE,
 	'idpdisco.rememberchecked' => TRUE,
-	
+
 	// Disco service only accepts entities it knows.
 	'idpdisco.validate' => TRUE,
-	
-	'idpdisco.extDiscoveryStorage' => NULL, 
+
+	'idpdisco.extDiscoveryStorage' => NULL,
 
 	/*
-	 * IdP Discovery service look configuration. 
-	 * Wether to display a list of idp or to display a dropdown box. For many IdP' a dropdown box  
+	 * IdP Discovery service look configuration.
+	 * Wether to display a list of idp or to display a dropdown box. For many IdP' a dropdown box
 	 * gives the best use experience.
-	 * 
-	 * When using dropdown box a cookie is used to highlight the previously chosen IdP in the dropdown.  
+	 *
+	 * When using dropdown box a cookie is used to highlight the previously chosen IdP in the dropdown.
 	 * This makes it easier for the user to choose the IdP
-	 * 
+	 *
 	 * Options: [links,dropdown]
-	 * 
+	 *
 	 */
 	'idpdisco.layout' => 'dropdown',
 
@@ -360,9 +360,9 @@ $config = array (
 	 * same name to the metadata of the SP.
 	 */
 	'shib13.signresponse' => TRUE,
-	
-	
-	
+
+
+
 	/*
 	 * Authentication processing filters that will be executed for all IdPs
 	 * Both Shibboleth and SAML 2.0
@@ -372,13 +372,13 @@ $config = array (
  		10 => array(
  			'class' => 'core:AttributeMap', 'addurnprefix'
  		), */
- 		/* Enable the authproc filter below to automatically generated eduPersonTargetedID. 
+ 		/* Enable the authproc filter below to automatically generated eduPersonTargetedID.
  		20 => 'core:TargetedID',
  		*/
 
 		// Adopts language from attribute to use in UI
  		30 => 'core:LanguageAdaptor',
- 		
+
 		/* Add a realm attribute from edupersonprincipalname
 		40 => 'core:AttributeRealm',
 		 */
@@ -391,9 +391,9 @@ $config = array (
 		/* When called without parameters, it will fallback to filter attributes ‹the old way›
 		 * by checking the 'attributes' parameter in metadata on IdP hosted and SP remote.
 		 */
-		50 => 'core:AttributeLimit', 
+		50 => 'core:AttributeLimit',
 
-		/* 
+		/*
 		 * Search attribute "distinguishedName" for pattern and replaces if found
 
 		60 => array(
@@ -401,7 +401,7 @@ $config = array (
 			'pattern'	=> '/OU=studerende/',
 			'replacement'	=> 'Student',
 			'subject'	=> 'distinguishedName',
-			'%replace',	
+			'%replace',
 		),
 		 */
 
@@ -409,9 +409,9 @@ $config = array (
 		 * Consent module is enabled (with no permanent storage, using cookies).
 
 		90 => array(
-			'class' 	=> 'consent:Consent', 
-			'store' 	=> 'consent:Cookie', 
-			'focus' 	=> 'yes', 
+			'class' 	=> 'consent:Consent',
+			'store' 	=> 'consent:Cookie',
+			'focus' 	=> 'yes',
 			'checked' 	=> TRUE
 		),
 		 */
@@ -433,14 +433,14 @@ $config = array (
 		 * Generate the 'group' attribute populated from other variables, including eduPersonAffiliation.
 		 */
  		60 => array('class' => 'core:GenerateGroups', 'eduPersonAffiliation'),
- 		// All users will be members of 'users' and 'members' 	
+ 		// All users will be members of 'users' and 'members'
  		61 => array('class' => 'core:AttributeAdd', 'groups' => array('users', 'members')),
- 		
+
 		// Adopts language from attribute to use in UI
  		90 => 'core:LanguageAdaptor',
 
 	),
-	
+
 
 	/*
 	 * This option configures the metadata sources. The metadata sources is given as an array with
