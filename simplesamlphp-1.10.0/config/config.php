@@ -505,7 +505,7 @@ $config = array (
 	 *
 	 * (This option replaces the old 'session.handler'-option.)
 	 */
-	'store.type' => 'phpsession',
+	'store.type' => 'sql',
 
 
 	/*
@@ -514,7 +514,7 @@ $config = array (
 	 * See http://www.php.net/manual/en/pdo.drivers.php for the various
 	 * syntaxes.
 	 */
-	'store.sql.dsn' => 'sqlite:/path/to/sqlitedatabase.sq3',
+	'store.sql.dsn' => 'sqlite:/tmp/simplesamlsessions.sqlite',
 
 	/*
 	 * The username and password to use when connecting to the database.
