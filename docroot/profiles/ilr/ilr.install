@@ -40,6 +40,40 @@ function ilr_install() {
   variable_set('cache', 1);
   variable_set('page_cache_maximum_age', 1800); // Allows reverse proxies (like Varnish) to store content for up to half an hour
 
+  // Set some default values for the simplesamlphp_auth module
+  variable_set('simplesamlphp_auth_activate', 1);
+  variable_set('simplesamlphp_auth_authsource', 'cornell');
+  variable_set('simplesamlphp_auth_forcehttps', 0);
+  variable_set('simplesamlphp_auth_mailattr', 'mail');
+  variable_set('simplesamlphp_auth_registerusers', 1);
+  variable_set('simplesamlphp_auth_unique_id', 'uid');
+  variable_set('simplesamlphp_auth_user_name', 'cn');
+
+  // This setting will allow the automatic assignment of roles for some users
+  // See http://drupal.org/node/1931394 for an explanation of this syntax.
+  // The administrator role id is hardcoded here, which is pretty safe,
+  // but if we needed to, we could set all of the 3's here to $admin_role->rid
+  variable_set('simplesamlphp_auth_rolepopulation', '3:uid,=,atf46|3:uid,=,nr52|3:uid,=,cgh2|3:uid,=,fjp2|3:uid,=,ddd1');
+
+  // Install dir is more complicated. It needs to be a full path. We assume
+  // that it is in a directory at the same level as the docroot. We also
+  // determine the $simplesamlphp_installdir based on whether we're
+  // on Acquia or Vagrant
+  $drupal_path = (isset($_SERVER["AH_SITE_GROUP"])) ? DRUPAL_ROOT : '/var/www/ilr-website/docroot';
+  $simplesamlphp_installdir = str_replace(array(
+    '/docroot',
+  ), array(
+    '/simplesamlphp-1.10.0',
+  ), $drupal_path);
+
+  variable_set('simplesamlphp_auth_installdir', $simplesamlphp_installdir);
+
+  // Disable default email notification on user activation
+  // The main reason to do this with CALS is that a user created via
+  // netID login will see this message if their account is blocked
+  // and then re-activated.
+  variable_set('user_mail_status_activated_notify', 0);
+
   // Enable css and javascript aggregation by default
   variable_set('preprocess_css', 1);
   variable_set('preprocess_js', 1);
