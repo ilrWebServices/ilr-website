@@ -29,8 +29,13 @@ Example:
   * Fixes "The version of CKEditor could not be detected." when installing ckeditor for wywsiwyg.
   * from: https://drupal.org/node/1853550#comment-6919236
   * https://drupal.org/files/wysiwyg-support_v4_ckeditor-1853550-46.patch
-  
+
 * wysiwyg
   * Fixes "Warning: file_get_contents(...) [function.file-get-contents]: failed to open stream: no suitable wrapper could be found in drupal_build_js_cache()"
   * from: https://drupal.org/node/1802394#comment-6556656
-  * https://drupal.org/files/wysiwyg-1802394-4.patch   
+  * https://drupal.org/files/wysiwyg-1802394-4.patch
+
+* simplesamlphp_auth
+  * Fixes error when creating new users via simplesamlphp_auth
+  * from: https://drupal.org/node/1824194#comment-7619281
+  * https://drupal.org/files/simplesamlphp_auth-fixnewdrupalusers-1824194-6.patch
