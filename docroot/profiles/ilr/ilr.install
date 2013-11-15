@@ -83,16 +83,11 @@ function ilr_install() {
 
   // Add Migrations here as necessary
   ilr_update_7001();
-  ilr_update_7002();
-}
-
-function ilr_update_7001() {
-  module_enable(array('basic_page'));
 }
 
 /**
  * Enable views support.
  */
-function ilr_update_7002() {
+function ilr_update_7001() {
   module_enable(array('views', 'views_ui'));
 }

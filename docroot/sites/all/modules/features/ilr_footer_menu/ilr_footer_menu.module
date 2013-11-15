@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Footer Menu feature.
+ */
+
+include_once 'ilr_footer_menu.features.inc';

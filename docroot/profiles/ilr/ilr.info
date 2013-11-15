@@ -13,6 +13,7 @@ dependencies[] = toolbar
 dependencies[] = path
 dependencies[] = file
 dependencies[] = image
+dependencies[] = list
 
 ; Required contrib modules
 dependencies[] = ctools
@@ -24,6 +25,10 @@ dependencies[] = pathauto
 dependencies[] = entity
 dependencies[] = menu_block
 dependencies[] = simplesamlphp_auth
+
+; Features
+dependencies[] = basic_page
+dependencies[] = ilr_footer_menu
 
 ; Custom modules
 

@@ -57,3 +57,14 @@ function ilr_menu_block_blocks() {
     ),
   );
 }
+
+/**
+ * Implements hook_menu_alter()
+ */
+function ilr_menu_alter(&$items) {
+  // Makes the saml_login link disappear when users are logged in.
+  $items['saml_login']['access callback'] = 'user_is_anonymous';
+
+  // Remove all access to the password reset form
+  $items['user/password']['access callback'] = FALSE;
+}

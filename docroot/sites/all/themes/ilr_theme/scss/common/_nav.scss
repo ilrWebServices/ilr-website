@@ -23,6 +23,14 @@ nav {
       color: $nav-color;
       font-size: em-calc(12);
       font-weight: 600;
+
+      footer & {
+        color: $footer-nav-color;
+
+        &:hover {
+          color: lighten($footer-nav-color, 10%);
+        }
+      }
     }
   }
 }
