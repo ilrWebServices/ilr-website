@@ -6,7 +6,6 @@ php = 5.2.4
 version = 7.x-1.0
 project = localist_block
 dependencies[] = bean
-dependencies[] = bean_admin_ui
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = link
