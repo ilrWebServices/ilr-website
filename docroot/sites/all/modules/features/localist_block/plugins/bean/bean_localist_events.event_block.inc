@@ -107,15 +107,11 @@ class EventBlockBean extends BeanPlugin {
   }
 
   public function get_cache_key($keywords) {
-    return str_replace(',', '-', EventBlockBean::strip_spaces(strtolower($keywords)));
-  }
-
-  private function strip_spaces($str) {
-    return str_replace(' ', '', $str);
+    return str_replace(',', '-', rawurlencode(strtolower($keywords)));
   }
 
   private function generate_keyword_params($keywords){
-    $keywords = EventBlockBean::strip_spaces($keywords);
+    $keywords = rawurlencode($keywords);
     $keyword_array = explode(",", $keywords);
     $param_string = '';
     foreach($keyword_array as $keyword) {
