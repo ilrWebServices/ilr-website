@@ -52,7 +52,6 @@ class EventBlockBean extends BeanPlugin {
       $event_json = $cache->data;
     } else {
       $url = "http://cornell.localist.com/api/2/events?days=364&pp=999{$keyword_params}";
-      dpm($url);
       $data = file_get_contents($url);
       $json = json_decode($data, true);
       $event_json = $json['events'];
