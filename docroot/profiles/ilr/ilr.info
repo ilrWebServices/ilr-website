@@ -29,6 +29,7 @@ dependencies[] = simplesamlphp_auth
 ; Features
 dependencies[] = basic_page
 dependencies[] = ilr_footer_menu
+dependencies[] = localist_block
 
 ; Custom modules
 
