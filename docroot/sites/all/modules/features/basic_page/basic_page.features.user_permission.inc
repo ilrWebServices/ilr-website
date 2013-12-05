@@ -24,6 +24,7 @@ function basic_page_user_default_permissions() {
     'name' => 'use text format full_html',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'filter',
   );

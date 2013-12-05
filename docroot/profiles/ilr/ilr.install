@@ -31,6 +31,30 @@ function ilr_install() {
     ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
     ->execute();
 
+  // Create Contributor Role
+  $contributor_role = new stdClass();
+  $contributor_role->name = 'contributor';
+  $contributor_role->weight = 2;
+  user_role_save($contributor_role);
+  user_role_grant_permissions($contributor_role->rid, array(
+    'administer blocks',
+    'administer menu',
+    'access content overview',
+    'access content',
+    'view revisions',
+    'revert revisions',
+    'delete revisions',
+    'change own username',
+    'access toolbar',
+    'use text format full_html',
+    'view revisions',
+    'access contextual links',
+    'administer nodes',
+    'view own unpublished content',
+    'create basic_page content',
+    'edit any basic_page content',
+  ));
+
   // Enable custom theme
   system_rebuild_theme_data();
   theme_enable(array('ilr_theme'));

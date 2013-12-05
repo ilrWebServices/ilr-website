@@ -8,6 +8,7 @@ function ilr_dev_install() {
   // Create test accounts here as needed
   require_once DRUPAL_ROOT . '/' . variable_get('password_inc', 'includes/password.inc');
   $administrator_rid = user_role_load_by_name('administrator')->rid;
+  $contributor_rid = user_role_load_by_name('contributor')->rid;
 
   $users = array(
     array(
@@ -16,6 +17,13 @@ function ilr_dev_install() {
       'mail' => 'test_admin@cornell.edu',
       'status' => 1,
       'roles' => array($administrator_rid => true),
+    ),
+    array(
+      'name' => 'contributor',
+      'pass' => user_hash_password('testing'),
+      'mail' => 'contrib_email@cornell.edu',
+      'status' => 1,
+      'roles' => array($contributor_rid => true),
     )
   );
 
