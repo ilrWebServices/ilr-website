@@ -39,6 +39,9 @@ function basic_page_wysiwyg_default_profiles() {
         'imce' => array(
           'imce' => 1,
         ),
+        'templates' => array(
+          'Templates' => 1,
+        ),
       ),
       'toolbar_loc' => 'top',
       'toolbar_align' => 'left',

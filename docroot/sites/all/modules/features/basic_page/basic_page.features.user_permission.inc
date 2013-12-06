@@ -19,6 +19,24 @@ function basic_page_user_default_permissions() {
     'module' => 'imce',
   );
 
+  // Exported permission: 'administer wysiwyg templates'.
+  $permissions['administer wysiwyg templates'] = array(
+    'name' => 'administer wysiwyg templates',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'wysiwyg_template',
+  );
+
+  // Exported permission: 'import wysiwyg templates'.
+  $permissions['import wysiwyg templates'] = array(
+    'name' => 'import wysiwyg templates',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'wysiwyg_template',
+  );
+
   // Exported permission: 'use text format full_html'.
   $permissions['use text format full_html'] = array(
     'name' => 'use text format full_html',
