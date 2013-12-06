@@ -5,3 +5,10 @@
  */
 
 include_once 'basic_page.features.inc';
+
+/**
+ * Implements hook_init().
+ */
+function basic_page_init() {
+  drupal_add_js(drupal_get_path('module','basic_page') . '/basic_page.js');
+}
