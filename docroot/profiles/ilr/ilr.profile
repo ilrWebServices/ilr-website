@@ -68,3 +68,15 @@ function ilr_menu_alter(&$items) {
   // Remove all access to the password reset form
   $items['user/password']['access callback'] = FALSE;
 }
+
+/**
+ * Implements hook_wysiwyg_editor_settings_alter().
+ *
+ * See https://drupal.org/node/1956778
+ * See https://drupal.org/node/1979042#comment-7633733
+ */
+function ilr_wysiwyg_editor_settings_alter(&$settings, $context) {
+  if ($context['profile']->editor == 'ckeditor') {
+    $settings['allowedContent'] = TRUE;
+  }
+}
