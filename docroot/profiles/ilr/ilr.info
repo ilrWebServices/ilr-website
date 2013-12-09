@@ -32,7 +32,7 @@ dependencies[] = ilr_footer_menu
 dependencies[] = localist_block
 
 ; Custom modules
-
+dependencies[] = google_analytics_universal
 
 ; Information added by drush on 2013-09-12
 version = "unknown"

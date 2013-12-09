@@ -55,6 +55,10 @@ function ilr_install() {
     'edit any basic_page content',
   ));
 
+  // Allow new users to register but require verification
+  variable_set('user_register', 1);
+  variable_set('user_email_verification', 1);
+
   // Enable custom theme
   system_rebuild_theme_data();
   theme_enable(array('ilr_theme'));
