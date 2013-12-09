@@ -97,7 +97,7 @@ function ilr_install() {
   variable_set('simplesamlphp_auth_installdir', $simplesamlphp_installdir);
 
   // Disable default email notification on user activation
-  // The main reason to do this with CALS is that a user created via
+  // The main reason to do this is that a user created via
   // netID login will see this message if their account is blocked
   // and then re-activated.
   variable_set('user_mail_status_activated_notify', 0);
