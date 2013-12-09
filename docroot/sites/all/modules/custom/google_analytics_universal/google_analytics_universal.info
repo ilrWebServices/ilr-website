@@ -1,0 +1,6 @@
+name = Google Analytics Universal
+description = A small, temporary custom module since the universal Google Analytics are not well supported in the official Google Analytics Module
+core = 7.x
+package = Cornell
+php = 5.2.4
+version = 7.x-1.0

@@ -1,0 +1,74 @@
+<?php
+/**
+ * @file
+ * Code for the Universal Google Analytics Implementation
+ */
+
+/**
+ * Define default path exclusion list to remove tracking from admin pages,
+ * see http://drupal.org/node/34970 for more information.
+ * NOTE* This list is currently irrelevant, since we are not tracking
+ * logged in users
+ */
+define('GOOGLEANALYTICS_PAGES', "admin\nadmin/*\nbatch\nnode/add*\nnode/*/*\nuser/*/*");
+
+/**
+ * Implements hook_page_alter()
+ * Modified from the official Google Analytics module
+ * to suport the Universal GA code
+ *
+ */
+function google_analytics_universal_page_alter(&$page) {
+  global $user;
+
+  $status = drupal_get_http_header('Status');
+  // 1. Track page views if user not logged in
+  // 2. If we want to check the current path as well (e.g. we want to start
+  //    tracking logged in users), add the following conditional below
+  //    && _googleanalytics_visibility_pages() - ATF
+  if (($user->uid < 1)) {
+    // Track access denied (403) and file not found (404) pages.
+    if ($status == '403 Forbidden') {
+      // See http://www.google.com/support/analytics/bin/answer.py?answer=86927
+      $url_custom = '"/403.html?page=" + document.location.pathname + document.location.search + "&from=" + document.referrer';
+    }
+    elseif ($status == '404 Not Found') {
+      $url_custom = '"/404.html?page=" + document.location.pathname + document.location.search + "&from=" + document.referrer';
+    }
+
+    // Build tracker code.
+    $script = "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){";
+    $script .= "(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),";
+    $script .= "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)";
+    $script .= "})(window,document,'script','//www.google-analytics.com/analytics.js','ga');";
+    $script .= "ga('create', 'UA-4758650-8', 'cornell.edu');";
+    $script .= "ga('send', 'pageview');";
+
+    drupal_add_js($script, array('scope' => 'header', 'type' => 'inline'));
+  }
+}
+
+/**
+ * Based on visibility setting this function returns TRUE if GA code should
+ * be added to the current page and otherwise FALSE.
+ * Note as of 12/13 this is disabled because we are not tracking logged-in
+ * users and the escaped paths in GOOGLEANALYTICS_PAGES are all related to
+ * logged in users
+ */
+function _googleanalytics_visibility_pages() {
+  static $page_match;
+  // Cache visibility result if function is called more than once.
+  if (!isset($page_match)) {
+    $setting_pages = GOOGLEANALYTICS_PAGES;
+    $pages = drupal_strtolower($setting_pages);
+    // Convert the Drupal path to lowercase
+    $path = drupal_strtolower(drupal_get_path_alias($_GET['q']));
+    // Compare the lowercase internal and lowercase path alias (if any).
+    $page_match = drupal_match_path($path, $pages);
+    if ($path != $_GET['q']) {
+      $page_match = $page_match || drupal_match_path($_GET['q'], $pages);
+    }
+    $page_match = !$page_match;
+  }
+  return $page_match;
+}
