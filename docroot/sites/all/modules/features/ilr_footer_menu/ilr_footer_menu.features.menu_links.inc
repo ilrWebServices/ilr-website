@@ -10,8 +10,8 @@
 function ilr_footer_menu_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-secondary-menu_log-in:saml_login
-  $menu_links['menu-secondary-menu_log-in:saml_login'] = array(
+  // Exported menu link: menu-secondary-menu_log-in:user/login
+  $menu_links['menu-secondary-menu_log-in:user/login'] = array(
     'menu_name' => 'menu-secondary-menu',
     'link_path' => 'user/login',
     'router_path' => 'user/login',
