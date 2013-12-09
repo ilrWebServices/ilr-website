@@ -13,14 +13,14 @@ function ilr_footer_menu_menu_default_menu_links() {
   // Exported menu link: menu-secondary-menu_log-in:saml_login
   $menu_links['menu-secondary-menu_log-in:saml_login'] = array(
     'menu_name' => 'menu-secondary-menu',
-    'link_path' => 'saml_login',
-    'router_path' => 'saml_login',
+    'link_path' => 'user/login',
+    'router_path' => 'user/login',
     'link_title' => 'Log In',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-secondary-menu_log-in:saml_login',
+      'identifier' => 'menu-secondary-menu_log-in:user/login',
     ),
     'module' => 'menu',
     'hidden' => 0,

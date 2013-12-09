@@ -53,6 +53,18 @@ function ilr_user_register_validate($form, &$form_state) {
     form_set_error('mail', t('Cornell users can create an account using the "Log in" link in the footer.'));
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ *
+ */
+function ilr_form_user_login_alter(&$form, $form_state, $form_id) {
+  $form['netid'] = array(
+    '#markup' => '<h2>Cornell Users</h2><p><a class="button" href="/saml_login">NetID Login</a></p><h2>No Cornell NetID?</h2>',
+    '#weight' => -10,
+  );
+}
+
 /**
  * Implements hook_menu_block_blocks()
  *
