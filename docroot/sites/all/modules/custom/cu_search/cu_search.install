@@ -1,7 +1,7 @@
-<?php 
+<?php
 /**
  * Implements hook_uninstall().
  */
-function cals_search_uninstall() {
+function cu_search_uninstall() {
   variable_del('cu_search_google_key');
 }
