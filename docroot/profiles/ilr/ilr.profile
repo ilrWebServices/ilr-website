@@ -36,6 +36,24 @@ function ilr_home_view() {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter()
+ *
+ */
+function ilr_form_user_register_form_alter(&$form, &$form_state) {
+  // Add our own validation function to the array of validation callbacks
+  $form['#validate'][] = 'ilr_user_register_validate';
+}
+
+// Check to make sure they're not using a Cornell Email
+function ilr_user_register_validate($form, &$form_state) {
+  $email = $form_state['values']['mail'];
+  $cornell_email = substr($email, -11) == 'cornell.edu';
+
+  if ($cornell_email) {
+    form_set_error('mail', t('Cornell users can create an account using the "Log in" link in the footer.'));
+  }
+}
+/**
  * Implements hook_menu_block_blocks()
  *
  * @see menu_tree_build() for a description of the config array.
