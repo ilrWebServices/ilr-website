@@ -30,6 +30,7 @@ dependencies[] = simplesamlphp_auth
 dependencies[] = basic_page
 dependencies[] = ilr_footer_menu
 dependencies[] = localist_block
+dependencies[] = scheinman_neutral
 
 ; Custom modules
 dependencies[] = google_analytics_universal
