@@ -12,8 +12,16 @@ branch_name="$(git symbolic-ref HEAD 2>/dev/null)" ||
 branch_name="detached"     # detached HEAD
 branch_name=${branch_name##refs/heads/}
 
+# Set the message if one was passed
+while getopts "m:" var; do
+    case $var in
+        m) message="${OPTARG// /_}-";;
+        *) message='';;
+    esac
+done
+
 # make a backup of current db
-drush -l default --gzip sql-dump > ../db/backups/$branch_name-$(date +%Y%m%d\-%H%M).sql.gzip
+drush -l default --gzip sql-dump > ../db/backups/$branch_name-$message$(date +%m.%d.%y-%H-%M).sql.gzip
 
 # delete the tmp files
 rm ../tmp/devel-mails/* 2>/dev/null
