@@ -5,3 +5,222 @@
  */
 
 include_once 'scheinman_neutral.features.inc';
+
+/**
+ * Implements hook_user_insert()
+ * Assigns all new user accounts the "registered user" role
+ * unless they already have other roles
+ * or if there is already
+ * So that they can apply to become a Scheinman Neutral
+ */
+function scheinman_neutral_user_insert(&$edit, $account, $category) {
+  // New users without other roles only have 1, the "authenticated user" role
+  if($account->is_new && count($account->roles) == 1) {
+    // Check to see if there is a neutral page connected to this email addy
+    if ($roster_page = _scheinman_neutral_find_roster_page_by_email($account->mail)){
+      $roster_page->uid = $account->uid;
+      node_save($roster_page);
+      user_multiple_role_edit(array($account->uid), 'add_role', _scheinman_neutral_get_neutral_rid());
+    } //Add the registered user role
+    else {
+      user_multiple_role_edit(array($account->uid), 'add_role', _scheinman_neutral_get_registered_user_rid());
+    }
+
+  }
+}
+
+/**
+ * Implements hook_node_insert()
+ * Looks for Scheinman Neutral node creation
+ *   - Fires off an email to all Neutral admins
+ */
+function scheinman_neutral_node_insert($node) {
+  if($node->type == "scheinman_neutral") {
+    _scheinman_neutral_admin_notification($node);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ * Adds a validation callback
+ *
+ */
+function scheinman_neutral_form_scheinman_neutral_node_form_alter(&$form, &$form_state) {
+  $form['#validate'][] = '_scheinman_neutral_dedupe_validate';
+}
+
+/**
+ * Custom function to prevent dupes
+ */
+function _scheinman_neutral_dedupe_validate($form, &$form_state) {
+  $email = $form_state['values']['field_email']['und'][0]['email'];
+  if (_scheinman_neutral_find_roster_page_by_email($email)) {
+    form_set_error('email', t('Sorry, but there is already a roster page with this email address.'));
+  }
+}
+
+/**
+ * Implements hook_node_update()
+ * Checks to see if a neutral is being published
+ *   - Confirms the neutral as the node owner
+ *   - Removes the registered user role
+ *   - adds the neutral role
+ *   - Notifies the Neutral
+ */
+function scheinman_neutral_node_update($node) {
+  if($node->type == "scheinman_neutral") {
+    if ($node->original->status == 0 && $node->status == 1) {
+      if ($neutral = user_load($node->uid)){
+        user_multiple_role_edit(array($neutral->uid), 'remove_role', _scheinman_neutral_get_registered_user_rid());
+        user_multiple_role_edit(array($neutral->uid), 'add_role', _scheinman_neutral_get_neutral_rid());
+        // Send email confirmation
+        _scheinman_neutral_publication_notification($neutral,$node);
+        drupal_set_message(t("A notification email has been sent to $neutral->mail"), 'status');
+      } else {
+        drupal_set_message(t('Please confirm that the email address for the Neutral\'s account matches email on the form.'), 'error');
+      }
+    }
+  }
+}
+
+/**
+ * Custom function to send the notification
+ */
+function _scheinman_neutral_publication_notification($neutral, $node) {
+  $url = url('node/' . $node->nid, array('absolute' => TRUE));
+  $params = array(
+    'content' => "Your roster of neutrals page has been published at <a href='$url'>$url</a>."
+  );
+
+  drupal_mail(
+    'scheinman_neutral_publication_notification',
+    'node_update',
+    $neutral->mail,
+    LANGUAGE_NONE,
+    $params,
+    'no-reply@ilr.cornell.edu'
+  );
+}
+
+/**
+ * Implements hook_mail().
+ * This is the email sent to the neutral
+ */
+function scheinman_neutral_publication_notification_mail($key, &$message, $params) {
+  $sitename = variable_get('site_name', 'Drupal');
+
+  $message['headers']['MIME-Version'] = '1.0';
+  $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
+  $message['subject'] = t("Welcome to the Roster of Neutrals!");
+  $message['body'][] = t('Congratulations,') . "\r";
+  $message['body'][] = $params['content'];
+  $message['body'][] = "\n--\r";
+  $message['body'][] = t("This is an automatic e-mail from $sitename.");
+}
+
+/**
+ * Custom function to send the notification
+ */
+function _scheinman_neutral_admin_notification($node) {
+  $url = url('node/' . $node->nid, array('absolute' => TRUE));
+  $params = array(
+    'content' => "A new roster of neutrals page has been submitted at <a href='$url'>$url</a> for your review. If you choose to publish it, the user will become the owner of the page and be able to edit it in the future. Also note that the user's email address and the email address on the roster page need to match in order "
+  );
+
+  $recipients = join(', ', _scheinman_neutral_admin_emails());
+
+  drupal_mail(
+    'scheinman_neutral_admin_notification',
+    'node_update',
+    $recipients,
+    LANGUAGE_NONE,
+    $params,
+    'no-reply@ilr.cornell.edu'
+  );
+}
+
+/**
+ * Implements hook_mail().
+ * This is the email sent to the admin
+ */
+function scheinman_neutral_admin_notification_mail($key, &$message, $params) {
+  $sitename = variable_get('site_name', 'Drupal');
+
+  $message['headers']['MIME-Version'] = '1.0';
+  $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
+  $message['subject'] = t("A new Neutral has been submitted");
+  $message['body'][] = $params['content'];
+  $message['body'][] = "\n--\r";
+  $message['body'][] = t("This is an automatic e-mail from $sitename.");
+}
+
+/**
+ * Custom function to get the registered user role id
+ */
+function _scheinman_neutral_get_registered_user_rid() {
+  return user_role_load_by_name('registered user')->rid;
+}
+
+/**
+ * Custom function to get the neutral role id
+ */
+function _scheinman_neutral_get_neutral_rid() {
+  return user_role_load_by_name('neutral')->rid;
+}
+
+/**
+ * Custom function to get the neutral admins
+ */
+function _scheinman_neutral_admin_emails() {
+  $admins = _scheinman_neutral_get_users_by_rolename('neutral admin');
+  $admin_emails = array();
+  foreach ($admins as $admin) {
+    $admin_emails[] = "{$admin->name} <{$admin->mail}>";
+  }
+  return $admin_emails;
+}
+
+/**
+ * Custom function to load the node by email
+ */
+function _scheinman_neutral_find_roster_page_by_email($email) {
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'scheinman_neutral')
+    ->fieldCondition('field_email','email',$email)
+    ->execute();
+  if (count($entities) == 1) {
+    return node_load(key($entities['node']));
+  }
+  return FALSE;
+}
+
+/**
+ * Custom EntityFieldQuery on users
+ * rolename requires the hook_query_TAG_alter() below
+ */
+function _scheinman_neutral_get_users_by_rolename($rolename){
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'user');
+  $query->addTag('rolequery');
+  $query->addMetaData('rolename', $rolename);
+
+  $user_results = $query->execute();
+
+  $users = user_load_multiple(array_keys($user_results['user']));
+  return $users;
+}
+
+/**
+ * Implements hook_query_TAG_alter()
+ * Limits EFQ in get_users_by_rolename
+ */
+function scheinman_neutral_query_rolequery_alter(QueryAlterableInterface $query) {
+  $rolename = $query->getMetaData('rolename');
+  $role_subquery = db_select("role", "role");
+  $role_subquery->condition('role.name', $rolename, '=');
+  $role_subquery->join('users_roles', "users_to_include", "role.rid = users_to_include.rid");
+  $role_subquery->fields('users_to_include', array('uid' => 'uid'));
+  $role_subquery->where('users_to_include.uid = users.uid');
+  $query->exists($role_subquery);
+}
