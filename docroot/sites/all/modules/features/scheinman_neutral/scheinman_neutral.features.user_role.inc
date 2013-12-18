@@ -10,16 +10,22 @@
 function scheinman_neutral_user_default_roles() {
   $roles = array();
 
-  // Exported role: Neutral.
-  $roles['Neutral'] = array(
-    'name' => 'Neutral',
+  // Exported role: neutral.
+  $roles['neutral'] = array(
+    'name' => 'neutral',
     'weight' => 4,
   );
 
-  // Exported role: Scheinman Neutral Admin.
-  $roles['Scheinman Neutral Admin'] = array(
-    'name' => 'Scheinman Neutral Admin',
+  // Exported role: neutral admin.
+  $roles['neutral admin'] = array(
+    'name' => 'neutral admin',
     'weight' => 3,
+  );
+
+  // Exported role: registered user.
+  $roles['registered user'] = array(
+    'name' => 'registered user',
+    'weight' => 5,
   );
 
   return $roles;

@@ -14,7 +14,8 @@ function scheinman_neutral_user_default_permissions() {
   $permissions['create scheinman_neutral content'] = array(
     'name' => 'create scheinman_neutral content',
     'roles' => array(
-      'Scheinman Neutral Admin' => 'Scheinman Neutral Admin',
+      'neutral admin' => 'neutral admin',
+      'registered user' => 'registered user',
     ),
     'module' => 'node',
   );
@@ -23,7 +24,7 @@ function scheinman_neutral_user_default_permissions() {
   $permissions['delete any scheinman_neutral content'] = array(
     'name' => 'delete any scheinman_neutral content',
     'roles' => array(
-      'Scheinman Neutral Admin' => 'Scheinman Neutral Admin',
+      'neutral admin' => 'neutral admin',
     ),
     'module' => 'node',
   );
@@ -32,8 +33,8 @@ function scheinman_neutral_user_default_permissions() {
   $permissions['delete own scheinman_neutral content'] = array(
     'name' => 'delete own scheinman_neutral content',
     'roles' => array(
-      'Neutral' => 'Neutral',
-      'Scheinman Neutral Admin' => 'Scheinman Neutral Admin',
+      'neutral' => 'neutral',
+      'neutral admin' => 'neutral admin',
     ),
     'module' => 'node',
   );
@@ -42,7 +43,7 @@ function scheinman_neutral_user_default_permissions() {
   $permissions['edit any scheinman_neutral content'] = array(
     'name' => 'edit any scheinman_neutral content',
     'roles' => array(
-      'Scheinman Neutral Admin' => 'Scheinman Neutral Admin',
+      'neutral admin' => 'neutral admin',
     ),
     'module' => 'node',
   );
@@ -51,8 +52,9 @@ function scheinman_neutral_user_default_permissions() {
   $permissions['edit own scheinman_neutral content'] = array(
     'name' => 'edit own scheinman_neutral content',
     'roles' => array(
-      'Neutral' => 'Neutral',
-      'Scheinman Neutral Admin' => 'Scheinman Neutral Admin',
+      'neutral' => 'neutral',
+      'neutral admin' => 'neutral admin',
+      'registered user' => 'registered user',
     ),
     'module' => 'node',
   );
