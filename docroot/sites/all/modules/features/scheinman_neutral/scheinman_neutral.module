@@ -54,7 +54,8 @@ function scheinman_neutral_form_scheinman_neutral_node_form_alter(&$form, &$form
  */
 function _scheinman_neutral_dedupe_validate($form, &$form_state) {
   $email = $form_state['values']['field_email']['und'][0]['email'];
-  if (_scheinman_neutral_find_roster_page_by_email($email)) {
+  // Figure out if it's a new form, then if there is a roster with that email already
+  if (!$form['nid']['#value'] && _scheinman_neutral_find_roster_page_by_email($email)) {
     form_set_error('email', t('Sorry, but there is already a roster page with this email address.'));
   }
 }
