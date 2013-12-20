@@ -1,0 +1,9 @@
+name = "Migrations for ILR Content"
+description = "Module to migrate content from old site to new"
+package = "Development"
+core = 7.x
+
+dependencies[] = migrate
+
+files[] = ilr_migrations.migrate.inc
+files[] = neutrals.inc

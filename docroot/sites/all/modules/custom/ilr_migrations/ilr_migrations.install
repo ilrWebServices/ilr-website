@@ -1,0 +1,10 @@
+<?php
+
+/*
+ * Implements hook_install
+ */
+function ilr_migrations_install() {
+  // Prevents a fatal error when running the migrations
+  // See http://drupal.org/node/1778952
+  //variable_set('migrate_disable_autoregistration', 1);
+}
