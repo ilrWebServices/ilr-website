@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the WIT feature.
+ */
+
+include_once 'wit.features.inc';
