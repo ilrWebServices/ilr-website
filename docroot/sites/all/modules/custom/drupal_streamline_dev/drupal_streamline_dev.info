@@ -7,6 +7,7 @@ php = 5.2.4
 version = 7.x-1.0
 
 dependencies[] = devel
+dependencies[] = devel_generate
 dependencies[] = diff
 dependencies[] = field_ui
 dependencies[] = context_ui
