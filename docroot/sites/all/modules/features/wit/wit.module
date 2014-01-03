@@ -7,6 +7,21 @@
 include_once 'wit.features.inc';
 
 /**
+ * Implements hook_node_update()
+ * Checks to see if a WIT article is being published
+ *   - publishes all unpublished articles
+ *   - todo: send the WIT email
+ */
+function wit_node_update($node) {
+  if($node->type == "wit_article") {
+    if ($node->original->status == 0 && $node->status == 1) {
+      $article_date = $node->field_published_date['und'][0]['value'];
+      _wit_publish_daily_articles($article_date);
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_hook()
  *
  *  Formats the WIT articles
@@ -24,6 +39,33 @@ function wit_preprocess_node(&$variables) {
     unset($variables['content']['field_term_publication']);
     unset($variables['content']['field_term_wire_service']);
     unset($variables['content']['field_published_date']);
+  }
+}
+
+/**
+ * Custom function to publish all articles for a given day
+ *
+ */
+function _wit_publish_daily_articles($article_date) {
+  $query = new EntityFieldQuery();
+
+  $query
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'wit_article')
+    ->propertyCondition('status', 0)
+    ->fieldCondition('field_published_date', 'value', $article_date);
+
+  $result = $query->execute();
+
+  if (empty($result)) {
+    drupal_set_message(t("Today's WIT articles have been published."), 'status');
+  }
+  else {
+    foreach ($result['node'] as $node) {
+      $node = node_load($node->nid, $node->vid);
+      $node->status = 1;
+      node_save($node);
+    }
   }
 }
 
