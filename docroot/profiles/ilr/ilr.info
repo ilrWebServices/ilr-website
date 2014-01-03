@@ -31,6 +31,7 @@ dependencies[] = basic_page
 dependencies[] = ilr_footer_menu
 dependencies[] = localist_block
 dependencies[] = scheinman_neutral
+; The news feature is enabled in the ilr.install file
 
 ; Custom modules
 dependencies[] = google_analytics_universal
