@@ -9,13 +9,14 @@ dependencies[] = menu
 dependencies[] = block
 dependencies[] = contextual
 dependencies[] = dblog
-dependencies[] = toolbar
 dependencies[] = path
 dependencies[] = file
 dependencies[] = image
 dependencies[] = list
 
 ; Required contrib modules
+dependencies[] = admin_menu
+dependencies[] = admin_menu_toolbar
 dependencies[] = ctools
 dependencies[] = context
 dependencies[] = features

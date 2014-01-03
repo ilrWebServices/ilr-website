@@ -45,7 +45,7 @@ function ilr_install() {
     'revert revisions',
     'delete revisions',
     'change own username',
-    'access toolbar',
+    'access administration menu',
     'use text format full_html',
     'view revisions',
     'access contextual links',
