@@ -30,8 +30,14 @@ function ilr_theme_js_alter(&$js) {
  */
 function ilr_theme_breadcrumb($variables) {
   $breadcrumb = $variables['breadcrumb'];
-  // add current page title, if it exists, or the active title from the menu
-  $breadcrumb[] = (drupal_get_title()) ? drupal_get_title() : menu_get_active_title();
+
+  // Check to see if there is a short title
+  if ($node = menu_get_object()) {
+    $breadcrumb[] = (isset($node->field_short_title) && count($node->field_short_title) > 0) ? $node->field_short_title['und'][0]['value'] : drupal_get_title();
+  } // add current page title, if it exists, or the active title from the menu
+  else {
+    $breadcrumb[] = (drupal_get_title()) ? drupal_get_title() : menu_get_active_title();
+  }
 
   if (!empty($breadcrumb)) {
     return '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';

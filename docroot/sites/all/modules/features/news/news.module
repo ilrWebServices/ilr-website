@@ -49,5 +49,10 @@ function news_preprocess_node(&$variables) {
     }
     // Remove the read more links
     unset($variables['content']['links']['node']['#links']['node-readmore']);
+
+    // Use the short title if showing a teaseer and there is one
+    if ($variables['view_mode'] == 'teaser' && count($variables['field_short_title']) > 0) {
+      $variables['title'] = $variables['field_short_title']['und'][0]['value'];
+    }
   }
 }
