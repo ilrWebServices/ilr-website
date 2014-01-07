@@ -32,7 +32,9 @@ function news_user_default_permissions() {
   // Exported permission: 'create any tagged_news bean'.
   $permissions['create any tagged_news bean'] = array(
     'name' => 'create any tagged_news bean',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'bean',
   );
 
@@ -68,7 +70,9 @@ function news_user_default_permissions() {
   // Exported permission: 'delete any tagged_news bean'.
   $permissions['delete any tagged_news bean'] = array(
     'name' => 'delete any tagged_news bean',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'bean',
   );
 
@@ -114,7 +118,9 @@ function news_user_default_permissions() {
   // Exported permission: 'edit any tagged_news bean'.
   $permissions['edit any tagged_news bean'] = array(
     'name' => 'edit any tagged_news bean',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'bean',
   );
 
@@ -154,8 +160,7 @@ function news_user_default_permissions() {
   $permissions['view any tagged_news bean'] = array(
     'name' => 'view any tagged_news bean',
     'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
+      'administrator' => 'administrator',
     ),
     'module' => 'bean',
   );
