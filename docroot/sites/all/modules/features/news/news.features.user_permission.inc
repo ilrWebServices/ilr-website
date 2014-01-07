@@ -143,6 +143,8 @@ function news_user_default_permissions() {
     'name' => 'view any news_listing_manual bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'bean',
@@ -151,7 +153,10 @@ function news_user_default_permissions() {
   // Exported permission: 'view any tagged_news bean'.
   $permissions['view any tagged_news bean'] = array(
     'name' => 'view any tagged_news bean',
-    'roles' => array(),
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'bean',
   );
 
