@@ -36,7 +36,7 @@ class TaggedNewsBean extends BeanPlugin {
     $form['tags'] = array(
       '#type' => 'textfield',
       '#title' => t('Tags'),
-      '#autocomplete_path' => 'taxonomy/autocomplete/field_news_categories',
+      '#autocomplete_path' => 'taxonomy/autocomplete/field_tags',
       '#description' => t("Enter tag(s), separated by commas"),
       '#size' => 60,
       '#maxlength' => 60,
@@ -85,11 +85,11 @@ class TaggedNewsBean extends BeanPlugin {
 
     if ($exclusive){
       foreach ($tids as $tid) {
-        $query->fieldCondition('field_news_categories', 'tid', $tid, '=');
+        $query->fieldCondition('field_tags', 'tid', $tid, '=');
       }
     }
     else {
-      $query->fieldCondition('field_news_categories', 'tid', $tids, 'IN');
+      $query->fieldCondition('field_tags', 'tid', $tids, 'IN');
     }
 
     $result = $query->execute();
@@ -115,7 +115,7 @@ class TaggedNewsBean extends BeanPlugin {
 
   private function get_taxonomy_tids_from_names($tag_string) {
     $tag_array = array_map('trim', explode(',', $tag_string));
-    $vocabulary = taxonomy_vocabulary_machine_name_load('news_category');
+    $vocabulary = taxonomy_vocabulary_machine_name_load('tags');
     $query = new EntityFieldQuery;
 
     $result = $query

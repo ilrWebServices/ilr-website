@@ -9,10 +9,10 @@
  */
 function news_taxonomy_default_vocabularies() {
   return array(
-    'news_category' => array(
-      'name' => 'News Category',
-      'machine_name' => 'news_category',
-      'description' => 'Provides news category tags',
+    'tags' => array(
+      'name' => 'Tags',
+      'machine_name' => 'tags',
+      'description' => 'Tags are used internally for content placement and organization',
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,

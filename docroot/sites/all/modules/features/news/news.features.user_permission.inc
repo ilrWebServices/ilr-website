@@ -82,9 +82,9 @@ function news_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete terms in news_category'.
-  $permissions['delete terms in news_category'] = array(
-    'name' => 'delete terms in news_category',
+  // Exported permission: 'delete terms in tags'.
+  $permissions['delete terms in tags'] = array(
+    'name' => 'delete terms in tags',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -128,9 +128,9 @@ function news_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'edit terms in news_category'.
-  $permissions['edit terms in news_category'] = array(
-    'name' => 'edit terms in news_category',
+  // Exported permission: 'edit terms in tags'.
+  $permissions['edit terms in tags'] = array(
+    'name' => 'edit terms in tags',
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
