@@ -190,7 +190,7 @@ function news_field_default_field_instances() {
     'bundle' => 'news_item',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The short title, if present, is used in news blocks and breadcrumbs.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -217,7 +217,7 @@ function news_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'size' => 40,
       ),
       'type' => 'text_textfield',
       'weight' => 1,
@@ -340,6 +340,7 @@ function news_field_default_field_instances() {
   t('Publication Date');
   t('Short title');
   t('Tags');
+  t('The short title, if present, is used in news blocks and breadcrumbs.');
   t('Thumbnail');
 
   return $field_instances;
