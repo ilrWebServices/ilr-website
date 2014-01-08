@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BIN_DIR=`dirname $0`
+
 # check running from docroot
 CURRENT_DIR=${PWD##*/}
 if [ ! "$CURRENT_DIR" = "docroot" ]; then
@@ -8,20 +10,10 @@ if [ ! "$CURRENT_DIR" = "docroot" ]; then
 fi
 
 # Get the branch name
-branch_name="$(git symbolic-ref HEAD 2>/dev/null)" ||
-branch_name="detached"     # detached HEAD
-branch_name=${branch_name##refs/heads/}
-
-# Set the message if one was passed
-while getopts "m:" var; do
-    case $var in
-        m) message="${OPTARG// /_}-";;
-        *) message='';;
-    esac
-done
+source $BIN_DIR/set-backup-name
 
 # make a backup of current db
-drush -l default --gzip sql-dump > ../db/backups/$branch_name-$message$(date +%m.%d.%y-%H-%M).sql.gzip
+drush sql-dump -l default --gzip --result-file=../db/backups/$BACKUP_NAME
 
 # delete the tmp files
 rm ../tmp/devel-mails/* 2>/dev/null
