@@ -17,9 +17,9 @@ function wit_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
-    'wire_service' => array(
-      'name' => 'Wire Service',
-      'machine_name' => 'wire_service',
+    'wire_services' => array(
+      'name' => 'Wire Services',
+      'machine_name' => 'wire_services',
       'description' => 'Used for linking to WIT articles',
       'hierarchy' => 0,
       'module' => 'taxonomy',
