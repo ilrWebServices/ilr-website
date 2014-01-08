@@ -1,5 +1,5 @@
 name = WIT
-description = Provides the content type, taxonomy, settings and custom code for Catherwook WIT articles.
+description = Provides the content type, taxonomy, settings and custom code for Catherwood WIT articles.
 core = 7.x
 package = Features
 version = 7.x-1.0
@@ -31,7 +31,6 @@ features[field_instance][] = node-wit_article-field_term_wire_service
 features[field_instance][] = node-wit_article-field_website_url
 features[node][] = wit_article
 features[taxonomy][] = publications
-features[taxonomy][] = wire_service
 features[taxonomy][] = wire_services
 features[user_permission][] = access administration menu
 features[user_permission][] = create wit_article content
