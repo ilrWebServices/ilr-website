@@ -73,7 +73,6 @@ function ilr_install() {
 
   // Enable custom modules
   module_enable(array(
-    'ilr_dev', # Remove this before launch of site!!!
     'basic_page',
     'ilr_footer_menu',
     'localist_block',
