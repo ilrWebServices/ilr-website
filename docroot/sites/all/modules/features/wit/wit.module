@@ -77,13 +77,13 @@ function _wit_build_reference($variables) {
   $title = $variables['field_article_title'][0]['value'];
   $url = $variables['field_website_url'][0]['url'];
   $link = "<a href='{$url}' target='_blank'>{$title}</a>,";
-  $author = $variables['field_author'][0]['value'];
-  $publication = $variables['field_term_publication'][0]['taxonomy_term']->name;
-  $service = (count($variables['field_term_wire_service']) > 0) ? $variables['field_term_wire_service'][0]['taxonomy_term']->name : '';
+  $author = (count($variables['field_author']) > 0) ? 'by ' . $variables['field_author'][0]['value'] . ',' : '';
+  $publication = $variables['field_term_publication'][0]['taxonomy_term']->name . ',';
+  $service = (count($variables['field_term_wire_service']) > 0) ? $variables['field_term_wire_service'][0]['taxonomy_term']->name . ',' : '';
   // Convert the Date string to a date object
   $date_object = date_create($variables['field_published_date'][0]['value'], timezone_open('America/New_York'));
   // Format the date object
   $published = date_format($date_object, 'M d Y');
-  $reference = "<div class='reference'><p>See \"{$link}\" by {$author}, {$publication}, {$service}, {$published}</p></div>";
+  $reference = "<div class='reference'><p>See \"{$link}\" {$author} {$publication} {$service} {$published}</p></div>";
   return $reference;
 }
