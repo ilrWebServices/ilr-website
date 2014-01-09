@@ -15,6 +15,7 @@ function localist_block_user_default_permissions() {
     'name' => 'create any event_block bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -24,6 +25,7 @@ function localist_block_user_default_permissions() {
     'name' => 'delete any event_block bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -33,6 +35,7 @@ function localist_block_user_default_permissions() {
     'name' => 'edit any event_block bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -44,6 +47,7 @@ function localist_block_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );

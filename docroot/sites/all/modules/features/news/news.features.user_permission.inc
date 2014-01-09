@@ -34,6 +34,7 @@ function news_user_default_permissions() {
     'name' => 'create any tagged_news bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -53,6 +54,7 @@ function news_user_default_permissions() {
     'name' => 'delete any news_item content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -72,6 +74,7 @@ function news_user_default_permissions() {
     'name' => 'delete any tagged_news bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -120,6 +123,7 @@ function news_user_default_permissions() {
     'name' => 'edit any tagged_news bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -139,7 +143,6 @@ function news_user_default_permissions() {
     'name' => 'edit terms in tags',
     'roles' => array(
       'administrator' => 'administrator',
-      'contributor' => 'contributor',
     ),
     'module' => 'taxonomy',
   );
@@ -161,6 +164,7 @@ function news_user_default_permissions() {
     'name' => 'view any tagged_news bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );

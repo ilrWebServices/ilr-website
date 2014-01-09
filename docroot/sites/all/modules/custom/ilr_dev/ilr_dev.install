@@ -2,30 +2,25 @@
 
 /**
  * Implements hook_install()
+ * Loops through the roles in the system and creates a test user for that role
  */
 
 function ilr_dev_install() {
-  // Create test accounts here as needed
   require_once DRUPAL_ROOT . '/' . variable_get('password_inc', 'includes/password.inc');
-  $administrator_rid = user_role_load_by_name('administrator')->rid;
-  $contributor_rid = user_role_load_by_name('contributor')->rid;
 
-  $users = array(
-    array(
-      'name' => 'test admin',
+  $users = array();
+  $roles = user_roles(true);
+
+  foreach ($roles as $name) {
+    $rid = user_role_load_by_name($name)->rid;
+    $users[] = array(
+      'name' => $name,
       'pass' => user_hash_password('testing'),
-      'mail' => 'test_admin@cornell.edu',
+      'mail' => "test_{$name}@cornell.edu",
       'status' => 1,
-      'roles' => array($administrator_rid => true),
-    ),
-    array(
-      'name' => 'contributor',
-      'pass' => user_hash_password('testing'),
-      'mail' => 'contrib_email@cornell.edu',
-      'status' => 1,
-      'roles' => array($contributor_rid => true),
-    )
-  );
+      'roles' => array($rid => true),
+    );
+  }
 
   foreach ($users as $user) {
     $new_user = user_save((object) $user);

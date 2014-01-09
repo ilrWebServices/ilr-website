@@ -26,17 +26,7 @@ dependencies[] = pathauto
 dependencies[] = entity
 dependencies[] = menu_block
 dependencies[] = simplesamlphp_auth
-
-; Features
-dependencies[] = basic_page
-dependencies[] = ilr_footer_menu
-dependencies[] = localist_block
-dependencies[] = scheinman_neutral
-dependencies[] = wit
-; The news feature is enabled in the ilr.install file
-
-; Custom modules
-dependencies[] = google_analytics_universal
+dependencies[] = views
 
 ; Information added by drush on 2013-09-12
 version = "unknown"

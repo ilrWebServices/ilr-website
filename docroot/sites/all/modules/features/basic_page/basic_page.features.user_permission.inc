@@ -28,6 +28,53 @@ function basic_page_user_default_permissions() {
     'module' => 'wysiwyg_template',
   );
 
+  // Exported permission: 'create basic_page content'.
+  $permissions['create basic_page content'] = array(
+    'name' => 'create basic_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any basic_page content'.
+  $permissions['delete any basic_page content'] = array(
+    'name' => 'delete any basic_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own basic_page content'.
+  $permissions['delete own basic_page content'] = array(
+    'name' => 'delete own basic_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any basic_page content'.
+  $permissions['edit any basic_page content'] = array(
+    'name' => 'edit any basic_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own basic_page content'.
+  $permissions['edit own basic_page content'] = array(
+    'name' => 'edit own basic_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'import wysiwyg templates'.
   $permissions['import wysiwyg templates'] = array(
     'name' => 'import wysiwyg templates',

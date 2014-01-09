@@ -10,23 +10,11 @@
 function wit_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: 'access administration menu'.
-  $permissions['access administration menu'] = array(
-    'name' => 'access administration menu',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'neutral' => 'neutral',
-      'neutral admin' => 'neutral admin',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'admin_menu',
-  );
-
   // Exported permission: 'create wit_article content'.
   $permissions['create wit_article content'] = array(
     'name' => 'create wit_article content',
     'roles' => array(
+      'administrator' => 'administrator',
       'wit editor' => 'wit editor',
     ),
     'module' => 'node',
@@ -35,7 +23,9 @@ function wit_user_default_permissions() {
   // Exported permission: 'delete any wit_article content'.
   $permissions['delete any wit_article content'] = array(
     'name' => 'delete any wit_article content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -43,6 +33,7 @@ function wit_user_default_permissions() {
   $permissions['delete own wit_article content'] = array(
     'name' => 'delete own wit_article content',
     'roles' => array(
+      'administrator' => 'administrator',
       'wit editor' => 'wit editor',
     ),
     'module' => 'node',
@@ -51,7 +42,10 @@ function wit_user_default_permissions() {
   // Exported permission: 'edit any wit_article content'.
   $permissions['edit any wit_article content'] = array(
     'name' => 'edit any wit_article content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'wit editor' => 'wit editor',
+    ),
     'module' => 'node',
   );
 
@@ -59,6 +53,7 @@ function wit_user_default_permissions() {
   $permissions['edit own wit_article content'] = array(
     'name' => 'edit own wit_article content',
     'roles' => array(
+      'administrator' => 'administrator',
       'wit editor' => 'wit editor',
     ),
     'module' => 'node',

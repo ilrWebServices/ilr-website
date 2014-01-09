@@ -16,44 +16,8 @@ function ilr_install() {
   user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content'));
   user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content'));
 
-  // Create a default role for site administrators, with all available permissions assigned.
-  $admin_role = new stdClass();
-  $admin_role->name = 'administrator';
-  $admin_role->weight = 2;
-  user_role_save($admin_role);
-  user_role_grant_permissions($admin_role->rid, array_keys(module_invoke_all('permission')));
-
-  // Set this as the administrator role.
-  variable_set('user_admin_role', $admin_role->rid);
-
-  // Assign user 1 the "administrator" role.
-  db_insert('users_roles')
-    ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
-    ->execute();
-
-  // Create Contributor Role
-  $contributor_role = new stdClass();
-  $contributor_role->name = 'contributor';
-  $contributor_role->weight = 2;
-  user_role_save($contributor_role);
-  user_role_grant_permissions($contributor_role->rid, array(
-    'administer blocks',
-    'administer menu',
-    'access content overview',
-    'access content',
-    'view revisions',
-    'revert revisions',
-    'delete revisions',
-    'change own username',
-    'access administration menu',
-    'use text format full_html',
-    'view revisions',
-    'access contextual links',
-    'administer nodes',
-    'view own unpublished content',
-    'create basic_page content',
-    'edit any basic_page content',
-  ));
+  // Create all the roles we'll need
+  _ilr_create_roles();
 
   // Allow new users to register but require verification
   variable_set('user_register', 1);
@@ -107,21 +71,53 @@ function ilr_install() {
   // Set the homepage, relying on hook_menu in the profile
   variable_set('site_frontpage', 'home');
 
+  // Enable custom modules
+  module_enable(array(
+    'ilr_dev', # Remove this before launch of site!!!
+    'basic_page',
+    'ilr_footer_menu',
+    'localist_block',
+    'scheinman_neutral',
+    'news',
+    'wit',
+    'google_analytics_universal',
+    'settings_and_permissions',
+  ));
+
+  _ilr_add_permissions();
+
   // Add Migrations here as necessary
-  ilr_update_7001();
-  ilr_update_7002();
+  //ilr_update_7001();
 }
 
 /**
- * Enable views support.
+ * Custom function for role creation
  */
-function ilr_update_7001() {
-  module_enable(array('views', 'views_ui'));
+function _ilr_create_roles() {
+  $roles = array('administrator','contributor','neutral admin', 'neutral', 'registered user', 'wit editor');
+
+  foreach ($roles as $name) {
+    $role = new stdClass();
+    $role->name = $name;
+    $role->weight = 2;
+    user_role_save($role);
+  }
 }
 
 /**
- * Enable news feature
+ * Custom function for role creation
  */
-function ilr_update_7002() {
-  module_enable(array('news'));
+function _ilr_add_permissions() {
+  // Assign all available permissions to admin
+  $admin_role = user_role_load_by_name('administrator');
+  user_role_grant_permissions($admin_role->rid, array_keys(module_invoke_all('permission')));
+
+  // Set this as the administrator role.
+  variable_set('user_admin_role', $admin_role->rid);
+
+  // Assign user 1 the "administrator" role.
+  db_insert('users_roles')
+    ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
+    ->execute();
+
 }
