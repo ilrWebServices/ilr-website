@@ -164,6 +164,8 @@ function news_user_default_permissions() {
     'name' => 'view any tagged_news bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'bean',
