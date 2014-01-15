@@ -24,7 +24,8 @@ nav {
     a, a:visited, a:active {
       text-decoration: none;
       color: $nav-color;
-      font-size: em-calc(12);
+      //font-size: em-calc(12);
+	  font-size: ms(0);
       font-weight: 400;
     }
   }
@@ -53,7 +54,8 @@ nav {
         display: block;
         padding: 1em 0;
         &:hover {
-          text-decoration: none;
+		  color: $brand;
+          //text-decoration: none;
         }
       }
     }
@@ -100,7 +102,8 @@ nav {
 	  font-family: $font;
 	  font-size: $base-font-size;
 	  @include text-shadow(#000 0px 2px 3px);
-	  width: 100%;
+	  //width: 100%;
+	  @include grid-column($columns:12, $collapse:true);
 	  height: 50px;
 	  padding: 10px 20px 0 20px;
 	  float: left;

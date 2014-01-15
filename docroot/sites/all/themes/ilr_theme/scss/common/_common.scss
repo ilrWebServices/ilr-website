@@ -28,12 +28,12 @@
   //@include single-box-shadow(rgba(0,0,0,1) -2 0 5 5 inset);
   
   #campaign {
+    @include grid-row;
 	height: 140px;
-	margin: 0 auto;
-	padding: 0;
-	@include grid-row;
+	
   }
   
+  // delete
   .ilrBrand {
 	display: none;
 	@include tablet-landscape-and-up {
@@ -48,6 +48,7 @@
 	}
   }
   
+  // delete
   .deptName {
 	background-color: $content-area;
 	height: 100px;
@@ -61,6 +62,7 @@
     }
   }
   
+  // delete
   .bannerPhoto {
 	background-color: $content-area;
 	height: 140px;
@@ -99,16 +101,18 @@
 	.field-name-field-short-title {
 	  font-size: $h2-size;
 	  font-family: $font-headers;
-	  margin: 10px 0 20px;
+	  margin-top: ms(-1);
+	  margin-bottom: ms(1);
 	}
 	span.date-display-single {
-	  color: $gray-light;
+	  color: $gray-medium;
 	}
     @include tablet-landscape-and-up {
-      @include grid-column(9,false,false,false,3);
-	  border-left: 1px solid #cfcdc4;
+      @include grid-column($columns:9, $push:3, $collapse:true);
+	  border-left: 1px solid $gray-light;
 	  min-height: 480px;
-      padding: 0 36.651px 0 33.069px;
+	  padding-right: ms(3); //33.069px
+	  padding-left: ms(3);
     }
   }
   
@@ -120,37 +124,34 @@
     }
     a, p {
       //color: white;
-      line-height: em-calc(20);
-      font-size: em-calc(14);
+      line-height: ms(1);
+      font-size: ms(0, 1em 68.5em);
     }
 
     @include tablet-landscape-and-up {
-      @include grid-column(3,false,false,false,false,9);
-      padding: 0;
+      @include grid-column($columns:3, $pull:9, $collapse:true);
     }
 
     img {
       float: left;
-      margin-right: em-calc(20);
-      margin-bottom: 1em;
+      margin-right: ms(1);
+      margin-bottom: ms(0);
     }
   }
 }
 
 #breadcrumb {
-  //@include grid-row;
   display: none;
   @include tablet-landscape-and-up {
 	display: inline;
 	font-size: .8rem;
   }
-  //font-size: .8rem;
   .breadcrumb {
 	padding-left: 15px;
 	@include tablet-landscape-and-up {
-      border-left: 1px solid #cfcdc4;
-	  padding-left: 33.069px !important;
-	  @include grid-column(9,false,false,false,3);
+      border-left: 1px solid $gray-light;
+	  padding-left: ms(3) !important;
+	  @include grid-column($columns:9, $push:3, $collapse:true);
     }
   }
 }
