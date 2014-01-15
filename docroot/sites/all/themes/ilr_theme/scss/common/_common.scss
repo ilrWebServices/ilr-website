@@ -126,26 +126,6 @@
   }
 }
 
-#banner {
-  border-top: 1px solid #000;
-  background: $brand;
-  //background-image: url(..images/fallback-gradient.png); 
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($brand), to(#72170e));
-  background-image: -webkit-linear-gradient(top, $brand 95%, #72170e); 
-  background-image:    -moz-linear-gradient(top, $brand 95%, #72170e);
-  background-image:     -ms-linear-gradient(top, $brand 95%, #72170e);
-  background-image:      -o-linear-gradient(top, $brand 95%, #72170e);
-  //@include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.2));
-  //@include single-box-shadow(rgba(0,0,0,1) -2 0 5 5 inset);
-  
-  #campaign {
-	height: 140px;
-	margin: 0 auto;
-	padding: 0;
-	@include grid-row;
-  }
-}
-
 #main {
   .front & {
     border: none;
