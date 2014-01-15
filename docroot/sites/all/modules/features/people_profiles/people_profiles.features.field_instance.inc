@@ -46,7 +46,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 38,
+      'weight' => 7,
     ),
   );
 
@@ -86,7 +86,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 40,
+      'weight' => 8,
     ),
   );
 
@@ -126,7 +126,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 52,
+      'weight' => 15,
     ),
   );
 
@@ -166,7 +166,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 42,
+      'weight' => 9,
     ),
   );
 
@@ -206,7 +206,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 36,
+      'weight' => 6,
     ),
   );
 
@@ -245,7 +245,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 51,
+      'weight' => 14,
     ),
   );
 
@@ -285,7 +285,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 49,
+      'weight' => 13,
     ),
   );
 
@@ -324,7 +324,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
+      'weight' => 3,
     ),
   );
 
@@ -363,7 +363,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 4,
     ),
   );
 
@@ -403,7 +403,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 47,
+      'weight' => 12,
     ),
   );
 
@@ -453,7 +453,7 @@ function people_profiles_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 54,
+      'weight' => 15,
     ),
   );
 
@@ -490,7 +490,7 @@ function people_profiles_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 43,
+      'weight' => 10,
     ),
   );
 
@@ -530,7 +530,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 4,
       ),
       'type' => 'text_textarea',
-      'weight' => 35,
+      'weight' => 5,
     ),
   );
 
@@ -570,7 +570,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 45,
+      'weight' => 11,
     ),
   );
 
