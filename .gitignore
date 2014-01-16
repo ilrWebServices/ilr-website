@@ -5,3 +5,6 @@ db/backups/*.gz
 drupal-streamline.make
 docroot/.drupal_streamline_guard_running
 tmp/
+
+# Ignore the stylesheet
+docroot/sites/all/themes/ilr_theme/css/style.css
