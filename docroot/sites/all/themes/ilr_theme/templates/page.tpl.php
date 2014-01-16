@@ -32,18 +32,6 @@
 
       <?php print $messages; ?>
       
-      <div id="siteNavigation" class="clearfix">
-        <div class="siteNav">
-          <ul>
-            <li>Events</li>
-            <li class="active">About</li>
-            <li>Alumni</li>
-            <li>Employers</li>
-            <li>Students</li>
-          </ul>
-        </div><!-- end siteNav -->
-      </div><!-- end siteNavigation -->
-      
       <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
 
       <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
