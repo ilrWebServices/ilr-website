@@ -17,6 +17,33 @@ function ilr_theme_preprocess_page(&$variables) {
 }
 
 /**
+ * Implements hook_page_alter()
+ *
+ * Moves content from field_blocks
+ * into the appropriate theme regions
+ */
+function ilr_theme_page_alter(&$page) {
+  if (isset($page['content']['system_main']['nodes'])) {
+    $node = current($page['content']['system_main']['nodes']);
+    // Look for blocks on the current node
+    if (isset($node['field_blocks']) && count($node['field_blocks']['#items']) > 0) {
+      $fields = current($node['field_blocks'][0]['entity']['field_collection_item']);
+      if (isset($fields['field_sidebar_region'])) {
+        $page['sidebar_first'][] = $fields['field_sidebar_region'];
+      }
+      if (isset($fields['field_content_region'])) {
+        $page['content'][] = $fields['field_content_region'];
+      }
+      if (isset($fields['field_highlighted_region'])) {
+        $page['highlighted'][] = $fields['field_highlighted_region'];
+      }
+      // Remove the blocks from the page render
+      unset($page['content']['system_main']['nodes'][$node['#node']->nid]['field_blocks']);
+    }
+  }
+}
+
+/**
  * Implements hook_js_alter().
  *
  * Disables sticky table headers FTW!
