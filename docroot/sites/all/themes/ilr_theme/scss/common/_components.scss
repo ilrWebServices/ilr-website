@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // DEVELOPER NOTES
 // Due to limitations on how Sass compiles media queries and mixins,
 // we cannot use @extend within this file. All refactors should be
@@ -18,8 +17,9 @@
       @include hidden;
     }
   }
-  img {
-	display: none;
+  
+  .field-name-field-thumbnail {
+    display: none;
   }
 }
 
