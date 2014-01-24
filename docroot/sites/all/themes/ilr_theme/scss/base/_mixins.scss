@@ -1,3 +1,15 @@
 // ==================================================
 // Mixins
 // ==================================================
+
+// Hide from both screenreaders and browsers: h5bp.com/u
+// also in helpers
+@mixin hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+@mixin visible {
+  display: block !important;
+  visibility: visible;
+}

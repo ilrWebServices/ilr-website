@@ -1,0 +1,71 @@
+// DEVELOPER NOTES
+// Due to limitations on how Sass compiles media queries and mixins,
+// we cannot use @extend within this file. All refactors should be
+// based on mixins
+// More info at https://github.com/nex3/sass/issues/456
+
+
+// ==================================================
+// Slug Styles
+// ==================================================
+@mixin slug {
+  article {
+    h2 { // Set full width and align left
+      @include grid-column($columns:12, $push:0, $collapse:true);
+    }
+    .field-name-field-thumbnail, .field-type-text-with-summary {
+      @include hidden;
+    }
+  }
+}
+
+// ==================================================
+// Thumb Styles
+// ==================================================
+@mixin thumb {
+  article {
+    h2 {
+      @include grid-column($columns:8, $push:4);
+    }
+
+    .field-name-field-thumbnail {
+      @include grid-column($columns:4, $pull:8, $collapse:true);
+      position: absolute;
+
+      @include tablet-portrait-and-up {
+        left: 1em;
+      }
+    }
+
+    .field-type-text-with-summary {
+      @include hidden;
+    }
+
+    // Clear odd articles
+    // assumes that are there are two or fewer columns
+    &:nth-child(odd) {
+      clear: left;
+    }
+  }
+}
+
+// ==================================================
+// Rolodex Styles
+// ==================================================
+@mixin rolodex {
+  @include thumb;
+
+  article {
+    .field-type-text-with-summary {
+      @include visible;
+      @include grid-column($columns:8, $push:4);
+    }
+  }
+}
+
+// ==================================================
+// Card Styles
+// ==================================================
+@mixin card {
+
+}

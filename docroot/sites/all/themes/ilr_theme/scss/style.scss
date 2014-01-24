@@ -24,6 +24,7 @@
 @import "common/nav";
 @import "common/footer";
 @import "common/common";
+@import "common/components";
 
 // Pages
 @import "pages/404";
@@ -31,6 +32,8 @@
 
 // Content types
 @import "pages/basic";
+@import "content_types/base";
+@import "content_types/news";
 
 // Vendor
 // Add vendor files

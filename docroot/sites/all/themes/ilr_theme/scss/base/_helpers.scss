@@ -19,9 +19,15 @@
 }
 
 // Hide from both screenreaders and browsers: h5bp.com/u
+// also in mixins
 .hidden {
   display: none !important;
   visibility: hidden;
+}
+
+.visible {
+  display: block !important;
+  visibility: visible;
 }
 
 // When you dont want links clickable
