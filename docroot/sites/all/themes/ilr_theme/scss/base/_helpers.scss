@@ -71,15 +71,17 @@
   width: 0;
   height: 0;
 }
-
 // Use clearfix class on parent to clear nested columns, or wrap each row of columns in a <div class="row">
 .clearfix:before, .clearfix:after, .row:before, .row:after {
   content: '\0020';
   display: block;
   overflow: hidden;
   visibility: hidden;
+  clear: both;
   width: 0;
   height: 0;
+  font-size: 0;
+  content: " ";
 }
 
 
@@ -109,7 +111,7 @@
 .float-left    { float: left }
 .float-right   { float: right }
 
-.alignleft     { float: left; margin: 20px 20px 20px 0;}
+.alignleft     { float: left; margin: 0 1em 1em 0;}
 .aligncenter   { text-align: center; clear: both; margin: 20px auto; display: block;}
 .alignright    { float: right; margin: 20px 0px 20px 20px;}
 .alignnone     { margin: 20px 0px 20px 0px;}

@@ -20,13 +20,19 @@
         </nav> <!-- / nav -->
       <?php endif; ?>
 
+      <div id="banner" class="clearfix">
       <?php if ($is_front): ?>
-        <div id="banner" class="clearfix">
           <div class="img"><img src="<?php print base_path() . drupal_get_path('theme', 'ilr_theme') . '/images/banner-about.jpg'; ?>"/></div>
-        </div> <!-- / banner -->
+      <?php else: ?>
+          <div id="campaign">
+            <img src="<?php print base_path() . drupal_get_path('theme', 'ilr_theme') . '/images/banner-default.jpg'; ?>"/>
+          </div><!-- end campaign -->
+        </div> <!-- /.banner -->
       <?php endif; ?>
 
       <?php print $messages; ?>
+
+      <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
 
       <div id="main" class="clearfix" role="main">
 
@@ -35,7 +41,7 @@
         <?php endif; ?>
 
         <div id="content" class="column"><div class="section">
-          <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
+
           <a id="main-content"></a>
           <?php print render($title_prefix); ?>
           <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>

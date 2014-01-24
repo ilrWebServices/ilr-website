@@ -5,7 +5,10 @@ $row-width: rem-calc(960);
 $brand: #941e12;
 $brand-dark: #363636;
 $brand-light: #ACACAC;
+$cornell-red: #b31b1b;
 $gold: #DED7BA;
+$gray-dark: #5c5350;
+$gray-light: #8b8b85;
 $selection: #212121;
 $highlight: #ffc;
 $bg-body: $brand;
@@ -17,9 +20,9 @@ $content-area: #fff;
 $font: 'Open Sans', sans-serif;
 $font-headers: "chaparral-pro","Palatino Linotype","Book Antiqua",Palatino,serif;
 
-$h1-size: em-calc(25);
-$h2-size: em-calc(20);
-$h3-size: em-calc(18);
+$h1-size: 36.651px;//em-calc(25);
+$h2-size: 33.069px;//em-calc(20);
+$h3-size: 22.562px;//em-calc(18);
 $h4-size: em-calc(16);
 $h5-size: em-calc(14);
 $h6-size: em-calc(14);
@@ -51,7 +54,6 @@ $p-size: em-calc(16);
 $link: darken($brand, 5%);
 $link-hover: $brand;
 $nav-color: #2D4063;
-$footer-nav-color: #ccc;
 
 $rule: #212121;
 

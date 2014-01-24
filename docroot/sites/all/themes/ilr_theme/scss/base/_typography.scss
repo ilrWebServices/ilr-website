@@ -15,8 +15,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 h1 {
 	font-size: $h1-size;
 	color: $h1-text;
-	margin-bottom: 14px;
-	border-bottom: 1px solid #C7B29A;
+	margin-left: 10px;
+	@include tablet-landscape-and-up {
+      margin-left: 20px;
+    }
 
 	a {
 		color: $h1-link;
@@ -25,6 +27,10 @@ h1 {
 			color: $h1-link-hover;
 		}
 	}
+}
+
+h1.title {
+	margin: 22.652px 0;
 }
 
 h2 {

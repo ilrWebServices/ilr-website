@@ -8,33 +8,112 @@
       $float:true*/
 
 .container {
-  @include grid-row(12);
+  @include grid-row;
+}
+
+.wrapper {
+  background: url(../images/bg-body-content.gif) repeat-x;
+}
+
+#banner {
+  border-top: 1px solid #000;
+  background: $brand;
+  //background-image: url(..images/fallback-gradient.png); 
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($brand), to(#72170e));
+  background-image: -webkit-linear-gradient(top, $brand 95%, #72170e); 
+  background-image:    -moz-linear-gradient(top, $brand 95%, #72170e);
+  background-image:     -ms-linear-gradient(top, $brand 95%, #72170e);
+  background-image:      -o-linear-gradient(top, $brand 95%, #72170e);
+  //@include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.2));
+  //@include single-box-shadow(rgba(0,0,0,1) -2 0 5 5 inset);
+  
+  #campaign {
+	height: 140px;
+	margin: 0 auto;
+	padding: 0;
+	@include grid-row;
+  }
+  
+  .ilrBrand {
+	display: none;
+	@include tablet-landscape-and-up {
+	  display: block;
+      float: left;
+	  @include grid-column(3);
+    }
+	
+	img {
+	width: 200px;
+	height: 140px;
+	}
+  }
+  
+  .deptName {
+	background-color: $content-area;
+	height: 100px;
+	padding-top: 30px;
+	//padding: 55px 0 0 30px;
+	@include tablet-landscape-and-up {
+	  height: 140px;
+	  padding: 55px 0 0 30px;
+      float: left;
+	  @include grid-column(5);
+    }
+  }
+  
+  .bannerPhoto {
+	background-color: $content-area;
+	height: 140px;
+	//padding: 30px 0 0 0;
+	@include tablet-landscape-and-up {
+	  padding: 30px 0 0 0;
+      float: left;
+	  @include grid-column(4);
+    }
+	
+	img {
+	padding-right: 15px;
+	float: left;
+	@include tablet-landscape-and-up {
+      float: right;
+    }
+	}
+  }
 }
 
 #main {
-  border-top: 37px solid $brand;
   .front & {
     border: none;
   }
-  clear: both;
-  padding-top: .5em;
-  position: relative;
   background: white;
-  @include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.2));
+  clear: both;
+  position: relative;
   .not-front & {
-    background: white url(../images/bg-body-content.gif) repeat-x;
+    //background: white url(../images/bg-body-content.gif) repeat-x;
+	//background: url(../images/bg-body-content.gif) repeat-x;
+	@include grid-row;
   }
 
   #content {
-    @include grid-column(12);
+    //@include grid-column(12);
+	.field-name-field-short-title {
+	  font-size: $h2-size;
+	  font-family: $font-headers;
+	  margin: 10px 0 20px;
+	}
+	span.date-display-single {
+	  color: $gray-light;
+	}
     @include tablet-landscape-and-up {
       @include grid-column(9,false,false,false,3);
-      padding: 0 40px;
+	  border-left: 1px solid #cfcdc4;
+	  min-height: 480px;
+      padding: 0 36.651px 0 33.069px;
     }
   }
+  
   .sidebar {
-    @include grid-column(12);
-    background: white;
+    //@include grid-row;
 
     h3 {
       color: $gold;
@@ -47,11 +126,6 @@
 
     @include tablet-landscape-and-up {
       @include grid-column(3,false,false,false,false,9);
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      height: 100%;
       padding: 0;
     }
 
@@ -63,14 +137,20 @@
   }
 }
 
-#banner img {
-  width: 100%;
-}
-
 #breadcrumb {
-  font-size: .8rem;
-  @include grid-row(12);
+  //@include grid-row;
+  display: none;
+  @include tablet-landscape-and-up {
+	display: inline;
+	font-size: .8rem;
+  }
+  //font-size: .8rem;
   .breadcrumb {
-    @include grid-column(9,false,false,false,3);
+	padding-left: 15px;
+	@include tablet-landscape-and-up {
+      border-left: 1px solid #cfcdc4;
+	  padding-left: 33.069px !important;
+	  @include grid-column(9,false,false,false,3);
+    }
   }
 }
