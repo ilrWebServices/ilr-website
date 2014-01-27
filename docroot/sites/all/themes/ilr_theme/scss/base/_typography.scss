@@ -30,13 +30,13 @@ h1 {
 }
 
 h1.title {
-	margin: 22.652px 0;
+	margin: ms(2) 0;
 }
 
 h2 {
 	font-size: $h2-size;
 	color: $h2-text;
-	margin-bottom: 10px;
+	margin-bottom: ms(-1);
 
 	a {
 		color: $h2-link;
@@ -61,7 +61,7 @@ h2 + img + p {
 h3 {
 	font-size: $h3-size;
 	color: $h3-text;
-	margin-bottom: 8px;
+	margin-bottom: ms(-1);
 
 	a {
 		color: $h3-link;
@@ -76,13 +76,13 @@ h3 + img.alignright,
 h3 + img.alignleft,
 h3 + img.alignnone,
 h3 + img.aligncenter {
-	margin-top: 10px;
+	margin-top: ms(-1);
 }
 
 h4 {
 	font-size: $h4-size;
 	color: $h4-text;
-	margin-bottom: 4px;
+	margin-bottom: ms(-2);
 
 	a {
 		color: $h4-link;
@@ -126,7 +126,7 @@ h6 {
 p {
 	font-size: $p-size;
 	color: $p-text;
-	margin-bottom: 20px;
+	margin-bottom: ms(1);
 
 	img {
 		margin: 0;
@@ -146,7 +146,7 @@ hr {
 	border: 0;
 	border: 1px solid $rule;
 	border-top: 1px solid $rule;
-	margin: 10px 0 10px;
+	margin: ms(-1) 0 ms(-1);
 }
 
 code, pre {
