@@ -8,3 +8,6 @@ tmp/
 
 # Ignore the stylesheet
 docroot/sites/all/themes/ilr_theme/css/style.css
+
+# Ignore Mac-only files
+.DS_Store
