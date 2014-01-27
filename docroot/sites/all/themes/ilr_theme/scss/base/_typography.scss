@@ -96,6 +96,7 @@ h4 {
 h5 {
 	font-size: $h5-size;
 	color: $h5-text;
+	margin-bottom: ms(-2);
 
 	a {
 		color: $h5-link;
@@ -107,8 +108,11 @@ h5 {
 }
 
 h6 {
+	font-family: $font;
 	font-size: $h6-size;
+	font-weight: 600;
 	color: $h6-text;
+	margin-bottom: ms(-2);
 
 	a {
 		color: $h6-link;
@@ -126,12 +130,20 @@ h6 {
 p {
 	font-size: $p-size;
 	color: $p-text;
-	margin-bottom: ms(1);
+	margin-bottom: ms(2);
 
 	img {
 		margin: 0;
 	}
 }
+
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+	  margin-top: ms(3);
+	}
 
 p + img.alignright,
 p + img.alignleft,
@@ -146,7 +158,7 @@ hr {
 	border: 0;
 	border: 1px solid $rule;
 	border-top: 1px solid $rule;
-	margin: ms(-1) 0 ms(-1);
+	margin: ms(-1) 0 ms(1);
 }
 
 code, pre {
@@ -175,45 +187,53 @@ figcaption {
 //  we use a lot of ULs that aren't bulleted.
 // don't forget to restore the bullets within content.
 nav ul {
-	list-style: none;
-	list-style-image: none;
-	margin: 0;
-	padding: 0;
+  list-style: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
 }
 
 ol {
-	list-style: decimal;
+  list-style: decimal;
+  padding-left: 20px;
+}
+
+ul {
+  padding: 0;
 }
 
 ul.none {
-	list-style: none;
+  list-style: none;
 }
 
 ul.square {
-	list-style: square outside;
+  list-style: square outside;
 }
 
 ul.circle {
-	list-style: circle outside;
+  list-style: circle outside;
 }
 
 ul.disc {
-	list-style: disc outside;
+  list-style: disc outside;
 }
 
 li {
+  font-size: ms(0);
 
-	p {
+  p {
 
-	}
+  }
 }
 
 dl dt {
-	font-weight: bold;
+  font-size: ms(0);
+  font-weight: bold;
 }
 
 dl dd {
-	margin: 0 0 10px 0;
+  font-size: ms(0);
+  margin: 0;
 }
 
 
@@ -304,13 +324,14 @@ table {
 
 	th {
 	    color: $th-text;
-	    font-weight: bold;
+	    font-weight: 400;
 	    padding: 2px 8px;
-	    text-transform: uppercase;
+	    //text-transform: uppercase;
 	}
 
 	td {
-	    border-top: 1px dotted $rule;
+	    //border-top: 1px dotted $rule;
+		border-top: 1px solid $rule;
 	    color: $td-text;
 	    padding: 2px 8px;
 	}
