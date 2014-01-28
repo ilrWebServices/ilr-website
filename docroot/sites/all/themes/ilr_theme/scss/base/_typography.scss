@@ -310,6 +310,8 @@ img, iframe, object, video {
 // ==================================================
 table {
     border-collapse: collapse;
+	border-left: 1px dotted $rule;
+	border-bottom: 1px dotted $rule;
     text-align: left;
     width: 100%;
     font-size: $p-size;
@@ -323,17 +325,31 @@ table {
   }
 
 	th {
+	    background-color: $table-bg-th;
+	    border-right: 1px solid $rule;
+		border-bottom: 1px solid $rule;
 	    color: $th-text;
 	    font-weight: 400;
+		line-height: 1.46;
 	    padding: 2px 8px;
 	    //text-transform: uppercase;
 	}
 
 	td {
-	    //border-top: 1px dotted $rule;
-		border-top: 1px solid $rule;
+	    background-color: $table-bg;
+		border-top: 1px dotted $rule;
+		border-right: 1px dotted $rule;
 	    color: $td-text;
 	    padding: 2px 8px;
+	}
+	
+	td.highlight {
+	    background-color: $table-bg-alt;
+		color: #000;
+	}
+	
+	th.center, td.center {
+		text-align: center;
 	}
 }
 
