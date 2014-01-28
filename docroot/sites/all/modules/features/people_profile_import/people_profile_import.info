@@ -1,0 +1,14 @@
+name = People Profile Import
+description = Provides the feed importer and mappings for People Profiles
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = people_profile_import
+dependencies[] = ctools
+dependencies[] = feeds
+dependencies[] = feeds_ui
+features[ctools][] = feeds:feeds_importer_default:1
+features[features_api][] = api:2
+features[feeds_importer][] = people_profile_xml_import
+files[] = plugins/feeds/ilr_profiles_feed_xml_parser.inc
+project path = sites/all/modules/features
