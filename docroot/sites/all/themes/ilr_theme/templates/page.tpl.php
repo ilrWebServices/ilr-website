@@ -34,8 +34,6 @@
       
       <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
 
-      <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
-
       <div id="main" class="clearfix" role="main">
 
         <?php if ($breadcrumb): ?>

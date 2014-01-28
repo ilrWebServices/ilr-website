@@ -1,4 +1,3 @@
-
 // Compass
 @import "compass/css3";
 
@@ -6,8 +5,7 @@
 @import "modular-scale";
 
 // Zurb Foundation
-@import
-  "foundation/grid";
+@import "foundation/grid";
 
 // Base
 //@import "base/reset"; // Choose reset or normalize for the theme; DO NOT use both
@@ -29,7 +27,6 @@
 @import "common/footer";
 @import "common/common";
 @import "common/components";
-@import "common/news";
 
 // Pages
 @import "pages/404";
