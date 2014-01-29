@@ -145,6 +145,7 @@
   @include tablet-landscape-and-up {
 	display: inline;
 	font-size: .8rem;
+	line-height: em-calc(24);
   }
   .breadcrumb {
 	padding-left: 15px;
