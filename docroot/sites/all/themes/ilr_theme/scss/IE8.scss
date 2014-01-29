@@ -1,0 +1,10 @@
+// Zurb Foundation
+@import "foundation/grid";
+
+.container {
+  max-width: 960px;
+}
+
+#content {
+  @include grid-column($columns:9, $push:3, $collapse:true);
+}
