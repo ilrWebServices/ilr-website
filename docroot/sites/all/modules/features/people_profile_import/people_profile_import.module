@@ -24,3 +24,21 @@ function people_profile_import_feeds_plugins() {
   );
   return $info;
 }
+
+/**
+ * Invoked before a feed item is saved.
+ *
+ * @param $source
+ *  FeedsSource object that describes the source that is being imported.
+ * @param $entity
+ *   The entity object.
+ * @param $item
+ *   The parser result for this entity.
+ */
+function people_profile_import_feeds_presave(FeedsSource $source, $entity, $item) {
+  // die(print_r($entity));
+  // if ($entity->type == 'people_profile' && isset($entity->field_ai_research_statement_short)) {
+  //   $entity->field_ai_research_statement['und'][0]['summary'] = $entity->field_ai_research_statement_short['und'][0]['value'];
+  //   unset($entity->field_ai_research_statement_short);
+  // }
+}

@@ -23,7 +23,13 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       $field_values = array();
 
       foreach ($mapped_fields as $xml_key => $field_name) {
-        $field_values[$field_name] = (string) $person->{$xml_key};
+        if ($field_name == 'field_areas_of_expertise') {
+          $field_values[$field_name] = $person->xpath('areas_of_expertise/area_of_expertise');//$person->{$xml_key}->asXML();
+        }
+        else {
+          $field_values[$field_name] = (string) $person->{$xml_key};
+        }
+
       }
 
       $result->items[$result_counter] = $field_values;
@@ -38,7 +44,6 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
   /**
    * Return mapping sources.
    */
-
   public function getMappingSources() {
     $fields = $this->getXmlFieldPairs();
 
@@ -58,36 +63,53 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
   public function getXmlFieldPairs() {
     return array(
       'ldap_display_name' => 'title',
-      'ldap_last_name' => 'field_last_name',
-      'ldap_first_name' => 'field_first_name',
-      'ldap_working_title1' => 'field_working_title',
       'ldap_campus_address' => 'field_address_line_1',
       'ldap_campus_phone' => 'field_phone',
-      'ldap_department' => 'field_department',
       'ldap_email' => 'field_email',
-      'netID' => 'field_netid',
-      'ilrweb_biography' => 'field_bio', // David to concatenate
-      // 'ilrweb_publications_doc' => '', // pdf or word doc, David ot add flag
-      // 'ilrweb_publications' => '',
-      // 'ilrweb_experience' => '', //
+      'ldap_working_title1' => 'field_working_title',
+      //'ldap_working_title2' => '',
+      //'ldap_employee_type' => '', // add a field for this
+      'ldap_department' => 'field_department',
+      //'ldap_department_name' => '', // Use this rather than dept.
+      //'ldap_uid' => '',
+      'ldap_last_name' => 'field_last_name',
+      'ldap_first_name' => 'field_first_name',
+      //'ldap_mail_nickname' => '', // we can get this from ldap_email
+      //'ldap_nickname' => '',
+      'ldap_profile_type' => 'field_profile_type',
+      // 'ilrweb_publications_type' => '',
+      // 'ilrweb_publications_doc' => '',
+      'ilrweb_publications' => 'field_ilrweb_publications',
+      'ilrweb_overview' => 'field_ilrweb_overview',
       // 'ilrweb_research' => '',
       // 'ilrweb_expertise' => '',
-      // 'ilrweb_other_expertise' => '',
-      // 'ilrweb_vita_file' => '', // David to add flag
+      // 'ilrweb_vita_type' => '', // use this to figure out which to populate below
+      // 'ilrweb_vita_file' => '',
       // 'ilrweb_vita_html' => '',
-      // 'ilrweb_photo_url' => '', // David to resolve missing photos
-      // 'departments' => '', // What are these, and rel. to ldap-department
+      // 'ilrweb_photo_url' => '',
+      'netID' => 'field_netid',
+      //'userid' => '',
+      //'departments' => '',// What are these, and rel. to ldap-department
+      // 'rank' => '', //??
+      // 'srank' => '', //??
       // 'graduate_fields' => '',
       // 'acadvise_graduate' => '',
-      // 'education' => '',
-      // 'research_statement' => '',
-      // 'keywords' => '',
-      // 'overview' => '', // Give faculty option of choosing AI vs. Drupal field
-      // 'trefocus' => '',
-      // 'professional_activities' => '', // see John Abowd
-      // 'honors_awards' => '',
-      // 'publications' => '',
-      // 'links' => '',
+      // 'education' => '', // includes nodes for degree>level,year,institution
+      'teaching_statement' => 'field_ai_teaching_statement',
+      'research_statement' => 'field_ai_research_statement',
+      // 'research_statement_short' => 'field_ai_research_statement_short',
+      // 'research_areas' => '', // area, area, ...
+      'areas_of_expertise' => 'field_areas_of_expertise',// area_of_expertise, area_of_expertise, ...
+      // 'other_expertise' => '',
+      // 'teaching_keywords' => '',
+      // 'research_keywords' => '',
+      // 'outreach_keywords' => '',
+      'overview' => 'field_ai_overview',
+      //'outreach_activities' => '',
+      'professional_activities' => 'field_ai_professional_activities',
+      'honors_awards' => 'field_ai_honors_awards',
+      'publications' => 'field_ai_publications',
+      //'links' => '',
     );
   }
 
