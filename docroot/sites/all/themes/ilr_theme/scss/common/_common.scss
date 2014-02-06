@@ -31,6 +31,10 @@
     @include grid-row;
 	height: 140px;
 	
+	img {
+	  //max-width: 960px;
+	  height: 140px;
+	}
   }
   
   // delete

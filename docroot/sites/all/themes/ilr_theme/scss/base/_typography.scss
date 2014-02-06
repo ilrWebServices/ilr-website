@@ -131,7 +131,7 @@ p {
 	font-size: $p-size;
 	color: $p-text;
 	margin-bottom: ms(2);
-	line-height: 1.5;
+	line-height: 1.618;
 
 	img {
 		margin: 0;
@@ -197,10 +197,12 @@ nav ul {
 ol {
   list-style: decimal;
   padding-left: 20px;
+  line-height: 1.618;
 }
 
 ul {
   padding: 0;
+  line-height: 1.618;
 }
 
 ul.none {
@@ -225,6 +227,10 @@ li {
   p {
 
   }
+}
+
+dl {
+  line-height: 1.618;
 }
 
 dl dt {
@@ -332,7 +338,7 @@ table {
 	    color: $th-text;
 	    font-weight: 400;
 		line-height: 1.46;
-	    padding: 2px 8px;
+	    padding: 4px 8px;
 	    //text-transform: uppercase;
 	}
 
@@ -341,12 +347,13 @@ table {
 		border-top: 1px dotted $rule;
 		border-right: 1px dotted $rule;
 	    color: $td-text;
-	    padding: 2px 8px;
+		line-height: 1.46;
+	    padding: 8px;
 	}
 	
 	td.highlight {
 	    background-color: $table-bg-alt;
-		color: #000;
+		color: $black;
 	}
 	
 	th.center, td.center {

@@ -10,8 +10,15 @@
 // ==================================================
 @mixin slug {
   article {
+    min-height: 10px;
+	
     h2 { // Set full width and align left
+	  border-top: 1px dotted $gray-light;
       @include grid-column($columns:12, $push:0, $collapse:true);
+	  font-size: ms(0);
+	  padding-top: ms(0);
+	  padding-bottom: ms(0);
+	  margin-bottom: 0;
     }
     .field-name-field-thumbnail, .field-type-text-with-summary {
       @include hidden;
@@ -30,8 +37,10 @@
 // ==================================================
 @mixin thumb {
   article {
+   background: yellow;
     h2 {
       @include grid-column($columns:8, $push:4);
+	  font-size: $h2-sm-size;
     }
 
     .field-name-field-thumbnail {
@@ -62,9 +71,15 @@
   @include thumb;
 
   article {
+    min-height: 120px;
     .field-type-text-with-summary {
       @include visible;
       @include grid-column($columns:8, $push:4);
+	  p {
+	    font-size: $p-sm-size;
+	    margin-top: 0;
+	    margin-bottom: 0;
+	  }
     }
   }
 }

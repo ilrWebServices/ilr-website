@@ -1,10 +1,60 @@
+//Modular Scale
+@import "modular-scale";
+
 // Zurb Foundation
 @import "foundation/grid";
+
+// Base
+@import "base/variables";
+
+body {
+  &.not-front {
+    background: white url(../images/bg-body-subpage-short-IE.gif) repeat-x;
+  }
+}
 
 .container {
   max-width: 960px;
 }
 
 #content {
-  @include grid-column($columns:9, $push:3, $collapse:true);
+  border-left: 1px solid $gray-light;
+  @include grid-column($columns:9, $push:3, $collapse:false);
+  padding-left: ms(3);
+  padding-right: ms(3);
+}
+
+.sidebar {
+  @include grid-column($columns:3, $pull:9, $collapse:true);
+}
+
+#highlighted .content {
+  .menu-block-ilr-subnav {
+	ul {
+	  border-top: none;
+	  li {
+        width: auto;
+        display: inline;
+        float: left;
+	  }
+	}
+  }
+}
+
+#breadcrumb {
+  display: inline;
+  font-size: .8em;
+  line-height: 1.8;
+  
+  .breadcrumb {
+    border-left: 1px solid $gray-light;
+    @include grid-column($columns:9, $push:3, $collapse:false);
+	padding-left: ms(3);
+  }
+}
+
+.menu-block-wrapper {
+  & > ul.menu { //first children only
+    border-top: none;
+  }
 }

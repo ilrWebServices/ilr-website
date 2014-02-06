@@ -33,6 +33,9 @@ body {
     background: white url(../images/bg-body.gif) repeat-x;
   }
   &.not-front {
-    background: white url(../images/bg-body-subpage-short.gif) repeat-x;
+    background: none;
+    @include tablet-landscape-and-up {
+      background: white url(../images/bg-body-subpage-short.gif) repeat-x;
+	}
   }
 }

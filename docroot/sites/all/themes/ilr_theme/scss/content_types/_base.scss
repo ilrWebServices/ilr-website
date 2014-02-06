@@ -8,7 +8,7 @@
   // Handles row margins
   .field-type-blockreference & {
     @include tablet-portrait-and-up {
-      @include grid-row(nest);
+      @include grid-row;
     }
 
     #sidebar-first & {
