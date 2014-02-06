@@ -144,6 +144,14 @@
   }
 }
 
+.region-sidebar-first {
+  #block-bean-tagged-news {
+    h2 {
+	  font-size: ms(1);
+	}
+  }
+}
+
 #breadcrumb {
   display: none;
   @include tablet-landscape-and-up {

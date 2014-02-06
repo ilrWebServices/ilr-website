@@ -4,7 +4,7 @@
 // based on mixins
 // More info at https://github.com/nex3/sass/issues/456
 
-
+//
 // ==================================================
 // Slug Styles
 // ==================================================
@@ -13,11 +13,10 @@
     min-height: 10px;
 	
     h2 { // Set full width and align left
-	  border-top: 1px dotted $gray-light;
       @include grid-column($columns:12, $push:0, $collapse:true);
 	  font-size: ms(0);
-	  padding-top: ms(0);
-	  padding-bottom: ms(0);
+	  padding-top: ms(-2);
+	  padding-bottom: ms(-2);
 	  margin-bottom: 0;
     }
     .field-name-field-thumbnail, .field-type-text-with-summary {
@@ -37,7 +36,6 @@
 // ==================================================
 @mixin thumb {
   article {
-   background: yellow;
     h2 {
       @include grid-column($columns:8, $push:4);
 	  font-size: $h2-sm-size;
