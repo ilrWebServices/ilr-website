@@ -12,9 +12,38 @@ include_once 'people_profiles.features.inc';
  *   Removes appropriate columns based on the flag
  */
 function people_profiles_preprocess_node(&$variables) {
-  if($variables['type'] == 'people_profile' && $variables['field_profile_type'][0]['value'] == 'faculty') {
-    _people_profiles_process_faculty_view($variables);
+  if($variables['type'] == 'people_profile') {
+    if ($variables['field_profile_type'][0]['value'] == 'faculty') {
+      _people_profiles_process_faculty_view($variables);
+    }
+    _people_profiles_process_address($variables);
   }
+}
+
+/**
+ * Implements hook_form_alter
+ * Removes the editable AI fields and replaces them with rendered content
+ * Adds the js file that displays a message to the user
+ */
+function people_profiles_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'people_profile_node_form') {
+    foreach ($form as $field_name => $value) {
+      if (strpos($field_name, 'field_ai') === 0) {
+        $content = $form[$field_name]['und'][0]['value']['#default_value'];
+        $form[$field_name]['und'][0] = array(
+          '#title' => $field_name,
+          '#markup' => '<div class="field-ai"><h3>'.$form[$field_name]['und'][0]['#title'].'</h3>' . $content . '</div>',
+        );
+      }
+    }
+    $form['#after_build'][] = 'people_profile_add_admin_js';
+  }
+}
+
+function people_profile_add_admin_js($form, &$form_state) {
+  $path = drupal_get_path('module', 'people_profiles');
+  drupal_add_js ("$path/people_profiles_admin.js");
+  return $form;
 }
 
 /**
@@ -34,6 +63,17 @@ function _people_profiles_process_faculty_view(&$variables) {
     _people_profiles_process_optional_ai_elements($variables);
   }
   _people_profiles_hide_fields_with_prefix($variables, $field_name_prefix);
+}
+
+/**
+ * Custom function to remove the local address if there is a campus address
+ * Many people erringly put a local address when they shouldn't
+ * But all people without a campus address use the local address
+ */
+function _people_profiles_process_address(&$variables) {
+  if(count($variables['field_address_line_1']) > 0) {
+    unset($variables['content']['field_local_address']);
+  }
 }
 
 function _people_profiles_hide_fields_with_prefix(&$variables, $prefix) {
@@ -57,6 +97,8 @@ function _people_profiles_activity_insight_options_list() {
     'field_ai_professional_activities' => 'Professional Activities',
     'field_ai_honors_awards' => 'Honors and Awards',
     'field_ai_publications' => 'Publications',
+    'field_ai_teaching_statement' => 'Teaching Statement',
+    'field_ai_research_statement' => 'Research Statement',
   );
 }
 

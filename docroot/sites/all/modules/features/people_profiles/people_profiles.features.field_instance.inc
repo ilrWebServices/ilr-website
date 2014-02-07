@@ -22,7 +22,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -62,7 +62,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -102,7 +102,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 16,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -116,7 +116,7 @@ function people_profiles_field_default_field_instances() {
     'label' => 'Honors and Awards',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -126,7 +126,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 41,
+      'weight' => 44,
     ),
   );
 
@@ -142,7 +142,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -156,7 +156,7 @@ function people_profiles_field_default_field_instances() {
     'label' => 'Overview',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -166,7 +166,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 39,
+      'weight' => 41,
     ),
   );
 
@@ -182,7 +182,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -196,7 +196,7 @@ function people_profiles_field_default_field_instances() {
     'label' => 'Professional Activities',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -206,7 +206,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 40,
+      'weight' => 43,
     ),
   );
 
@@ -222,7 +222,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 17,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -236,7 +236,7 @@ function people_profiles_field_default_field_instances() {
     'label' => 'Publications',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -246,7 +246,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 42,
+      'weight' => 45,
     ),
   );
 
@@ -262,7 +262,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 21,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -277,7 +277,7 @@ function people_profiles_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'display_summary' => 1,
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -288,7 +288,47 @@ function people_profiles_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 44,
+      'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance: 'node-people_profile-field_ai_teaching_statement'
+  $field_instances['node-people_profile-field_ai_teaching_statement'] = array(
+    'bundle' => 'people_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 19,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ai_teaching_statement',
+    'label' => 'Teaching Statement',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 46,
     ),
   );
 
@@ -304,7 +344,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 24,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -328,7 +368,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 43,
+      'weight' => 40,
     ),
   );
 
@@ -344,7 +384,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -384,7 +424,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'email',
         'settings' => array(),
         'type' => 'email_default',
-        'weight' => 12,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -407,7 +447,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 15,
+      'weight' => 13,
     ),
   );
 
@@ -423,7 +463,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -447,7 +487,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 12,
     ),
   );
 
@@ -462,7 +502,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -502,7 +542,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 20,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -541,7 +581,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -569,6 +609,46 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-people_profile-field_local_address'
+  $field_instances['node-people_profile-field_local_address'] = array(
+    'bundle' => 'people_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_local_address',
+    'label' => 'Local Address',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-people_profile-field_netid'
   $field_instances['node-people_profile-field_netid'] = array(
     'bundle' => 'people_profile',
@@ -581,7 +661,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 14,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -605,7 +685,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 14,
     ),
   );
 
@@ -621,7 +701,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -645,7 +725,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 11,
     ),
   );
 
@@ -695,7 +775,7 @@ function people_profiles_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 17,
+      'weight' => 15,
     ),
   );
 
@@ -711,7 +791,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 22,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -748,11 +828,11 @@ function people_profiles_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 19,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -787,11 +867,10 @@ function people_profiles_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'list',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 23,
+        'type' => 'hidden',
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -812,7 +891,7 @@ function people_profiles_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 37,
+      'weight' => 39,
     ),
   );
 
@@ -828,7 +907,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -869,6 +948,7 @@ function people_profiles_field_default_field_instances() {
   t('Generally, a profile has a single working title. Faculty, however, can have multiple working titles.');
   t('Honors and Awards');
   t('Last Name');
+  t('Local Address');
   t('NetID');
   t('Overview');
   t('Phone');
@@ -877,6 +957,7 @@ function people_profiles_field_default_field_instances() {
   t('Profile Type');
   t('Publications');
   t('Research Statement');
+  t('Teaching Statement');
   t('Use AI Data');
   t('Working Title');
 

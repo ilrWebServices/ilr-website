@@ -23,13 +23,13 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       $field_values = array();
 
       foreach ($mapped_fields as $xml_key => $field_name) {
-        if ($field_name == 'field_areas_of_expertise') {
-          $field_values[$field_name] = $person->xpath('areas_of_expertise/area_of_expertise');//$person->{$xml_key}->asXML();
+        switch($field_name) {
+          case 'title':
+            $field_values['title'] = (string) $person->ldap_first_name . '-' . $person->ldap_last_name;
+            break;
+          default:
+            $field_values[$field_name] = (string) $person->{$xml_key};
         }
-        else {
-          $field_values[$field_name] = (string) $person->{$xml_key};
-        }
-
       }
 
       $result->items[$result_counter] = $field_values;
@@ -76,6 +76,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'ldap_first_name' => 'field_first_name',
       //'ldap_mail_nickname' => '', // we can get this from ldap_email
       //'ldap_nickname' => '',
+      'ldap_local_address' => 'field_local_address',
       'ldap_profile_type' => 'field_profile_type',
       // 'ilrweb_publications_type' => '',
       // 'ilrweb_publications_doc' => '',
@@ -86,7 +87,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       // 'ilrweb_vita_type' => '', // use this to figure out which to populate below
       // 'ilrweb_vita_file' => '',
       // 'ilrweb_vita_html' => '',
-      // 'ilrweb_photo_url' => '',
+      'ilrweb_photo_url' => 'field_profile_image',
       'netID' => 'field_netid',
       //'userid' => '',
       //'departments' => '',// What are these, and rel. to ldap-department
