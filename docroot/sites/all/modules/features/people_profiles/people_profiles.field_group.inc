@@ -61,6 +61,8 @@ function people_profiles_field_group_info() {
     'weight' => '20',
     'children' => array(
       0 => 'field_ilrweb_overview',
+      1 => 'field_ilrweb_vita_file',
+      2 => 'field_ilrweb_vita_html',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

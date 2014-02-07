@@ -85,8 +85,8 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       // 'ilrweb_research' => '',
       // 'ilrweb_expertise' => '',
       // 'ilrweb_vita_type' => '', // use this to figure out which to populate below
-      // 'ilrweb_vita_file' => '',
-      // 'ilrweb_vita_html' => '',
+      'ilrweb_vita_file' => 'field_ilrweb_vita_file',
+      'ilrweb_vita_html' => 'field_ilrweb_vita_html',
       'ilrweb_photo_url' => 'field_profile_image',
       'netID' => 'field_netid',
       //'userid' => '',

@@ -570,6 +570,88 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-people_profile-field_ilrweb_vita_file'
+  $field_instances['node-people_profile-field_ilrweb_vita_file'] = array(
+    'bundle' => 'people_profile',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 23,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ilrweb_vita_file',
+    'label' => 'Vita File',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 1,
+      'file_directory' => 'faculty/vitas',
+      'file_extensions' => 'pdf doc',
+      'max_filesize' => '5 MB',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 30,
+    ),
+  );
+
+  // Exported field_instance: 'node-people_profile-field_ilrweb_vita_html'
+  $field_instances['node-people_profile-field_ilrweb_vita_html'] = array(
+    'bundle' => 'people_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 24,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ilrweb_vita_html',
+    'label' => 'Vita HTML',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance: 'node-people_profile-field_last_name'
   $field_instances['node-people_profile-field_last_name'] = array(
     'bundle' => 'people_profile',
@@ -959,6 +1041,8 @@ function people_profiles_field_default_field_instances() {
   t('Research Statement');
   t('Teaching Statement');
   t('Use AI Data');
+  t('Vita File');
+  t('Vita HTML');
   t('Working Title');
 
   return $field_instances;
