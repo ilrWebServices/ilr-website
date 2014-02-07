@@ -36,14 +36,7 @@ function people_profiles_form_alter(&$form, &$form_state, $form_id) {
         );
       }
     }
-    $form['#after_build'][] = 'people_profile_add_admin_js';
   }
-}
-
-function people_profile_add_admin_js($form, &$form_state) {
-  $path = drupal_get_path('module', 'people_profiles');
-  drupal_add_js ("$path/people_profiles_admin.js");
-  return $form;
 }
 
 /**
