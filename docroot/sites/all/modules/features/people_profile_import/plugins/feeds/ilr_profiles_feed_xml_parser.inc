@@ -69,8 +69,8 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'ldap_working_title1' => 'field_working_title',
       //'ldap_working_title2' => '',
       //'ldap_employee_type' => '', // add a field for this
-      'ldap_department' => 'field_department',
-      //'ldap_department_name' => '', // Use this rather than dept.
+      //'ldap_department' => 'field_department',
+      'ldap_department_name' => 'field_department', // Use this rather than dept.
       //'ldap_uid' => '',
       'ldap_last_name' => 'field_last_name',
       'ldap_first_name' => 'field_first_name',
