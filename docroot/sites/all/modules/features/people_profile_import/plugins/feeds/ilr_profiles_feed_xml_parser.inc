@@ -79,7 +79,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'ldap_local_address' => 'field_local_address',
       'ldap_profile_type' => 'field_profile_type',
       // 'ilrweb_publications_type' => '',
-      // 'ilrweb_publications_doc' => '',
+      'ilrweb_publications_doc' => 'field_ilrweb_publications_file',
       'ilrweb_publications' => 'field_ilrweb_publications',
       'ilrweb_overview' => 'field_ilrweb_overview',
       // 'ilrweb_research' => '',

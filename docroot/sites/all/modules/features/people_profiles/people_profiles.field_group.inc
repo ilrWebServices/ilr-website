@@ -63,6 +63,8 @@ function people_profiles_field_group_info() {
       0 => 'field_ilrweb_overview',
       1 => 'field_ilrweb_vita_file',
       2 => 'field_ilrweb_vita_html',
+      3 => 'field_ilrweb_publications',
+      4 => 'field_ilrweb_publications_file',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

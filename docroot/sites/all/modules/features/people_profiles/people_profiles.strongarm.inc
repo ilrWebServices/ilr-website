@@ -35,10 +35,10 @@ function people_profiles_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '1',
+          'weight' => '48',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '49',
         ),
       ),
       'display' => array(),
