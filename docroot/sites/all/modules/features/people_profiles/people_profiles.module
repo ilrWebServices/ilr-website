@@ -12,7 +12,7 @@ include_once 'people_profiles.features.inc';
  *   Removes appropriate columns based on the flag
  */
 function people_profiles_preprocess_node(&$variables) {
-  if($variables['type'] == 'people_profile') {
+  if($variables['type'] == 'people_profile' && $variables['view_mode'] == 'full') {
     if ($variables['field_profile_type'][0]['value'] == 'faculty') {
       _people_profiles_process_faculty_view($variables);
     }
