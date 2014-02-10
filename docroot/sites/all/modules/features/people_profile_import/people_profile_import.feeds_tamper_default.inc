@@ -18,9 +18,9 @@ function people_profile_import_feeds_tamper_default() {
   $feeds_tamper->source = 'field_areas_of_expertise';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ';',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ';',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';

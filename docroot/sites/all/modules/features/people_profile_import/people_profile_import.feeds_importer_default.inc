@@ -69,11 +69,22 @@ function _people_profile_import_generate_mappings() {
   $fields_to_map = array_values(IlrProfilesFeedXmlParser::getXmlFieldPairs());
   $mappings = array();
   foreach ($fields_to_map as $field) {
-    $mappings[] = array(
-      'source' => $field,
-      'target' => $field,
-      'unique' => FALSE,
-    );
+    // Configure areas of expertise to autocreate new terms
+    if($field == 'field_areas_of_expertise') {
+      $mappings[] = array(
+        'source' => $field,
+        'target' => $field,
+        'unique' => FALSE,
+        'autocreate' => 1,
+      );
+    }
+    else {
+      $mappings[] = array(
+        'source' => $field,
+        'target' => $field,
+        'unique' => FALSE,
+      );
+    }
   }
   return $mappings;
 }
