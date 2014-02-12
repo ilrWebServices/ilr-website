@@ -72,8 +72,13 @@ function _people_profile_import_generate_mappings() {
     $mappings[] = array(
       'source' => $field,
       'target' => $field,
-      'unique' => FALSE,
+      'unique' => ($field == 'field_netid') ? TRUE : FALSE,
     );
   }
+  $mappings[] = array(
+    'source' => 'field_netid',
+    'target' => 'guid',
+    'unique' => 1,
+  );
   return $mappings;
 }
