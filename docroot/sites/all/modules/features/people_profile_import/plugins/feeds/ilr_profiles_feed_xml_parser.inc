@@ -25,7 +25,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       foreach ($mapped_fields as $xml_key => $field_name) {
         switch($field_name) {
           case 'title':
-            $field_values['title'] = (string) $person->ldap_first_name . '-' . $person->ldap_last_name;
+            $field_values['title'] = (string) $person->ldap_first_name . ' ' . $person->ldap_last_name;
             break;
           default:
             $field_values[$field_name] = (string) $person->{$xml_key};
