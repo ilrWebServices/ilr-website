@@ -7,6 +7,21 @@
 include_once 'people_profiles.features.inc';
 
 /**
+ * Implements hook_user_insert()
+ * Looks for a profile with matching netID
+ * If found, assigns new user as the owner
+ */
+function people_profiles_user_insert(&$edit, $account, $category) {
+  if($account->is_new) {
+    // Check to see if there is a profile page connected to this netID
+    if ($profile_page = _people_profiles_find_profile_by_netid($account->name)) {
+      $profile_page->uid = $account->uid;
+      node_save($profile_page);
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_node
  *   Checks to see whether the Use AI flag has been set
  *   Removes appropriate columns based on the flag
@@ -176,4 +191,21 @@ function _people_profiles_get_visible_ai_fields($field_visibility_settings) {
     $enabled_fields[] = $value['value'];
   }
   return $enabled_fields;
+}
+
+/**
+ * Searches for a profile with a corresponding NetID
+ * @param  String $netId The NetID supplied by the saml login
+ * @return Node        The node with the supplied NetID
+ */
+function _people_profiles_find_profile_by_netid($netId) {
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'people_profile')
+    ->fieldCondition('field_netid','value',$netId)
+    ->execute();
+  if (count($entities) == 1) {
+    return node_load(key($entities['node']));
+  }
+  return FALSE;
 }
