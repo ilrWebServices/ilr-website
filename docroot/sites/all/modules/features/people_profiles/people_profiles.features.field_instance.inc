@@ -34,7 +34,7 @@ function people_profiles_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_address_line_1',
     'label' => 'Address Line 1',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -116,7 +116,7 @@ function people_profiles_field_default_field_instances() {
     'label' => 'Honors and Awards',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -156,7 +156,7 @@ function people_profiles_field_default_field_instances() {
     'label' => 'Overview',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -196,7 +196,7 @@ function people_profiles_field_default_field_instances() {
     'label' => 'Professional Activities',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -236,7 +236,7 @@ function people_profiles_field_default_field_instances() {
     'label' => 'Publications',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -277,7 +277,7 @@ function people_profiles_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'display_summary' => 1,
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -318,7 +318,7 @@ function people_profiles_field_default_field_instances() {
     'label' => 'Teaching Statement',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
