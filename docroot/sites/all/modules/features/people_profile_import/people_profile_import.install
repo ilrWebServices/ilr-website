@@ -1,10 +1,6 @@
 <?php
 
-/**
- * Implements hook_enable().
- * Adds the default AoE terms
- */
-function people_profiles_enable() {
+function people_profile_import_enable() {
   $terms = array(
     'Absenteeism',
     'Accessibility',
@@ -153,12 +149,12 @@ function people_profiles_enable() {
     'Workplace democracy',
   );
 
-  $vocab = taxonomy_vocabulary_machine_name_load('areas_of_expertise');
-
-  foreach ($terms as $term_name) {
-    $term = new stdClass();
-    $term->name = $term_name;
-    $term->vid = $vocab->vid;
-    taxonomy_term_save($term);
+  if ($vocab = taxonomy_vocabulary_machine_name_load('areas_of_expertise')) {
+    foreach ($terms as $term_name) {
+      $term = new stdClass();
+      $term->name = $term_name;
+      $term->vid = $vocab->vid;
+      taxonomy_term_save($term);
+    }
   }
 }
