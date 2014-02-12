@@ -21,14 +21,28 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
 
     foreach ($feed->person as $person) {
       $field_values = array();
+      $existing_profile = _people_profiles_find_profile_by_netid((string) $person->netID);
 
-      foreach ($mapped_fields as $xml_key => $field_name) {
-        switch($field_name) {
-          case 'title':
-            $field_values['title'] = (string) $person->ldap_first_name . ' ' . $person->ldap_last_name;
-            break;
-          default:
+      if ($existing_profile) {
+        // Set the title and NetID
+        $field_values['title'] = $this->setProfileTitle($person);
+        $field_values['field_netid'] = (string) $person->netID;
+        // Then loop through AI values
+        foreach ($mapped_fields as $xml_key => $field_name) {
+          if (strpos($field_name, 'field_ai') === 0) {
             $field_values[$field_name] = (string) $person->{$xml_key};
+          }
+        }
+      } // Loop through all the values
+      else {
+        foreach ($mapped_fields as $xml_key => $field_name) {
+          switch($field_name) {
+            case 'title':
+              $field_values['title'] = $this->setProfileTitle($person);
+              break;
+            default:
+              $field_values[$field_name] = (string) $person->{$xml_key};
+          }
         }
       }
 
@@ -121,5 +135,21 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
     $replaced = str_replace('field_', '', $field_name);
     $replaced = str_replace('_', ' ', $replaced);
     return $replaced;
+  }
+
+  private function setProfileTitle($person) {
+    return (string) $person->ldap_first_name . ' ' . $person->ldap_last_name;
+  }
+
+  private function getPersonByNetID() {
+    $query = db_select('node', 'n');
+    $query->join('feeds_item', 'fi', "fi.entity_type = 'node' AND n.nid = fi.entity_id");
+    $query
+      ->fields('n', array('status'))
+      ->condition('fi.guid', $person->netID, '=');
+    $queryResult = $query->execute()->fetchObject();
+
+    // Does person exist. If so, preserve some fields, like status
+    $person_exists = (boolean)$queryResult;
   }
 }
