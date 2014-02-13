@@ -6,7 +6,7 @@
       $pull:false,
       $collapse:false,
       $float:true*/
-	  
+
 .container {
   @include grid-row;
 }
@@ -29,12 +29,12 @@
   
   #campaign {
     @include grid-row;
-	height: 140px;
-	
-	img {
-	  //max-width: 960px;
-	  height: 140px;
-	}
+  height: 140px;
+
+  img {
+    //max-width: 960px;
+    height: 140px;
+  }
   }
 }
 
@@ -47,26 +47,26 @@
   position: relative;
   .not-front & {
     //background: white url(../images/bg-body-content.gif) repeat-x;
-	//background: url(../images/bg-body-content.gif) repeat-x;
-	@include grid-row;
+  //background: url(../images/bg-body-content.gif) repeat-x;
+  @include grid-row;
   }
   #content {
     //@include grid-column(12);
-	.field-name-field-short-title {
-	  font-size: $h2-size;
-	  font-family: $font-headers;
-	  margin-top: ms(-1);
-	  margin-bottom: ms(1);
-	}
-	span.date-display-single {
-	  color: $gray-medium;
-	}
+  .field-name-field-short-title {
+    font-size: $h2-size;
+    font-family: $font-headers;
+    margin-top: ms(-1);
+    margin-bottom: ms(1);
+  }
+  span.date-display-single {
+    color: $gray-medium;
+  }
     @include tablet-landscape-and-up {
       @include grid-column($columns:9, $push:3, $collapse:true);
-	  border-left: 1px solid $gray-light;
-	  min-height: 480px;
-	  padding-right: ms(3); //33.069px
-	  padding-left: ms(3);
+    border-left: 1px solid $gray-light;
+    min-height: 480px;
+    padding-right: ms(3); //33.069px
+    padding-left: ms(3);
     }
   }
   
@@ -94,32 +94,33 @@
 .region-sidebar-first {
   #block-bean-tagged-news {
     h2 {
-	  font-size: ms(1);
-	}
+    font-size: ms(1);
+    }
   }
 }
 
-/*.region-content {
-  #block-bean-tagged-news {
-    h2 {
-	  margin-bottom: ms(1);
-	}
+.field-name-field-published-date {
+  margin-bottom: ms(5);
+  
+  span.date-display-single {
+    font-size: ms(0);
   }
-}*/
+}
 
 #breadcrumb {
   display: none;
   @include tablet-landscape-and-up {
-	display: inline;
-	font-size: .8rem;
-	line-height: em-calc(24);
+    display: inline;
+    font-size: .8rem;
+    line-height: em-calc(24);
   }
+
   .breadcrumb {
-	padding-left: 15px;
-	@include tablet-landscape-and-up {
+    padding-left: 15px;
+    @include tablet-landscape-and-up {
       border-left: 1px solid $gray-light;
-	  padding-left: ms(3) !important;
-	  @include grid-column($columns:9, $push:3, $collapse:true);
+      padding-left: ms(3) !important;
+      @include grid-column($columns:9, $push:3, $collapse:true);
     }
   }
 }

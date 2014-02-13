@@ -3,124 +3,124 @@
 // headings
 // ==================================================
 h1, h2, h3, h4, h5, h6 {
-	font-weight: 400;
-	margin-top: 0;
-	font-family: $font-headers;
+  font-weight: 400;
+  margin-top: 0;
+  font-family: $font-headers;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-	font-weight: inherit;
+  font-weight: inherit;
 }
 
 h1 {
-	font-size: $h1-size;
-	color: $h1-text;
-	margin-left: 10px;
-	@include tablet-landscape-and-up {
-      margin-left: 20px;
+  font-size: $h1-size;
+  color: $h1-text;
+  margin-left: 10px;
+  @include tablet-landscape-and-up {
+    margin-left: 20px;
+  }
+
+  a {
+    color: $h1-link;
+
+    &:hover {
+      color: $h1-link-hover;
     }
-
-	a {
-		color: $h1-link;
-
-		&:hover {
-			color: $h1-link-hover;
-		}
-	}
+  }
 }
 
 h1.title {
-	margin: ms(2) 0;
+  margin: ms(2) 0;
 }
 
 h2 {
-	font-size: $h2-size;
-	color: $h2-text;
-	margin-bottom: ms(-1);
+  font-size: $h2-size;
+  color: $h2-text;
+  margin-bottom: ms(-1);
 
-	a {
-		color: $h2-link;
+  a {
+    color: $h2-link;
 
-		&:hover {
-			color: $h2-link-hover;
-		}
-	}
+      &:hover {
+        color: $h2-link-hover;
+      }
+   }
 }
 
 h2 + img.alignright,
 h2 + img.alignleft,
 h2 + img.alignnone,
 h2 + img.aligncenter {
-	margin-top: 0px;
+  margin-top: 0px;
 }
 
 h2 + img + p {
-	margin-top: 0px;
+  margin-top: 0px;
 }
 
 h3 {
-	font-size: $h3-size;
-	color: $h3-text;
-	margin-bottom: ms(-1);
+  font-size: $h3-size;
+  color: $h3-text;
+  margin-bottom: ms(-1);
 
-	a {
-		color: $h3-link;
+  a {
+    color: $h3-link;
 
-		&:hover {
-			color: $h3-link-hover;
-		}
-	}
+    &:hover {
+      color: $h3-link-hover;
+    }
+  }
 }
 
 h3 + img.alignright,
 h3 + img.alignleft,
 h3 + img.alignnone,
 h3 + img.aligncenter {
-	margin-top: ms(-1);
+  margin-top: ms(-1);
 }
 
 h4 {
-	font-size: $h4-size;
-	color: $h4-text;
-	margin-bottom: ms(-2);
+  font-size: $h4-size;
+  color: $h4-text;
+  margin-bottom: ms(-2);
 
-	a {
-		color: $h4-link;
+  a {
+    color: $h4-link;
 
-		&:hover {
-			color: $h4-link-hover;
-		}
-	}
+    &:hover {
+      color: $h4-link-hover;
+    }
+  }
 }
 
 h5 {
-	font-size: $h5-size;
-	color: $h5-text;
-	margin-bottom: ms(-2);
+  font-size: $h5-size;
+  color: $h5-text;
+  margin-bottom: ms(-2);
 
-	a {
-		color: $h5-link;
+  a {
+    color: $h5-link;
 
-		&:hover {
-			color: $h5-link-hover;
-		}
-	}
+    &:hover {
+      color: $h5-link-hover;
+    }
+  }
 }
 
 h6 {
-	font-family: $font;
-	font-size: $h6-size;
-	font-weight: 600;
-	color: $h6-text;
-	margin-bottom: ms(-2);
+  font-family: $font;
+  font-size: $h6-size;
+  font-weight: 600;
+  color: $h6-text;
+  margin-bottom: ms(-2);
 
-	a {
-		color: $h6-link;
+  a {
+    color: $h6-link;
 
-		&:hover {
-			color: $h6-link-hover;
-		}
-	}
+    &:hover {
+      color: $h6-link-hover;
+    }
+  }
 }
 
 
@@ -128,14 +128,14 @@ h6 {
 // content
 // ==================================================
 p {
-	font-size: $p-size;
-	color: $p-text;
-	margin-bottom: ms(2);
-	line-height: 1.618;
+  font-size: $p-size;
+  color: $p-text;
+  margin-bottom: ms(2);
+  line-height: 1.618;
 
-	img {
-		margin: 0;
-	}
+  img {
+    margin: 0;
+  }
 }
 
 p + h2,
@@ -143,34 +143,34 @@ p + h3,
 p + h4,
 p + h5,
 p + h6 {
-	  margin-top: ms(3);
-	}
+    margin-top: ms(3);
+  }
 
 p + img.alignright,
 p + img.alignleft,
 p + img.alignnone,
 p + img.aligncenter {
-	margin-top: 0px;
+  margin-top: 0px;
 }
 
 hr {
-	clear: both;
-	height: 0;
-	border: 0;
-	border: 1px solid $rule;
-	border-top: 1px solid $rule;
-	margin: ms(-1) 0 ms(1);
+  clear: both;
+  height: 0;
+  border: 0;
+  border: 1px solid $rule;
+  border-top: 1px solid $rule;
+  margin: ms(-1) 0 ms(1);
 }
 
 code, pre {
-	font-size: 15px;
+  font-size: 15px;
 }
 
 blockquote {
-	border-left: 10px solid $blockquote;
-	padding-left: 15px;
-	font-style: italic;
-	color: $blockquote;
+  border-left: 10px solid $blockquote;
+  padding-left: 15px;
+  font-style: italic;
+  color: $blockquote;
 }
 
 figure {
@@ -195,9 +195,13 @@ nav ul {
 }
 
 ol {
-  list-style: decimal;
   padding-left: 20px;
   line-height: 1.618;
+  li {
+    list-style: decimal;
+    background: none;
+  padding: 0;
+  }
 }
 
 ul {
@@ -222,10 +226,22 @@ ul.disc {
 }
 
 li {
+  list-style: none;
+  background: url(../images/squareBullet.gif) no-repeat 0 8px;
   font-size: ms(0);
+  margin: 0 0 ms(-2) ms(-1);
+  padding: 0 0 0 ms(0);
 
   p {
 
+  }
+}
+
+ul.tabs {
+  li {
+    background: none;
+  margin: 0;
+  padding-left: 0;
   }
 }
 
@@ -248,17 +264,17 @@ dl dd {
 // links
 // ==================================================
 a, a:visited {
-	color: $link;
-	text-decoration: none;
-	outline: 0;
+  color: $link;
+  text-decoration: none;
+  outline: 0;
 }
 a:hover, a:focus {
-	color: $link-hover;
-	text-decoration: underline;
+  color: $link-hover;
+  text-decoration: underline;
 }
 
 p a, p a:visited {
-	line-height: inherit;
+  line-height: inherit;
 }
 
 
@@ -266,15 +282,15 @@ p a, p a:visited {
 // text level semantics
 // ==================================================
 em, i {
-	font-style: italic;
+  font-style: italic;
 }
 
 b, strong {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 small {
-	font-size: 1.1em;
+  font-size: 1.1em;
 }
 
 cite {
@@ -286,18 +302,18 @@ q {
 }
 
 sub, sup {
-	font-size: .9em;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
+  font-size: .9em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 
 sup {
-	top: -0.5em;
+  top: -0.5em;
 }
 
 sub {
-	bottom: -0.25em;
+  bottom: -0.25em;
 }
 
 
@@ -305,10 +321,10 @@ sub {
 // embedded content
 // ==================================================
 img, iframe, object, video {
-	max-width: 100%;
-	height: auto;
-	-ms-interpolation-mode: bicubic;
-	border: 0;
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  border: 0;
 }
 
 
@@ -316,12 +332,12 @@ img, iframe, object, video {
 // tables
 // ==================================================
 table {
-    border-collapse: collapse;
-	border-left: 1px dotted $rule;
-	border-bottom: 1px dotted $rule;
-    text-align: left;
-    width: 100%;
-    font-size: $p-size;
+  border-collapse: collapse;
+  border-left: 1px dotted $rule;
+  border-bottom: 1px dotted $rule;
+  text-align: left;
+  width: 100%;
+  font-size: $p-size;
 
   thead {
 
@@ -331,34 +347,34 @@ table {
 
   }
 
-	th {
-	    background-color: $table-bg-th;
-	    border-right: 1px solid $rule;
-		border-bottom: 1px solid $rule;
-	    color: $th-text;
-	    font-weight: 400;
-		line-height: 1.46;
-	    padding: 4px 8px;
-	    //text-transform: uppercase;
-	}
+  th {
+    background-color: $table-bg-th;
+    border-right: 1px solid $rule;
+    border-bottom: 1px solid $rule;
+    color: $th-text;
+    font-weight: 400;
+    line-height: 1.46;
+    padding: 4px 8px;
+    //text-transform: uppercase;
+  }
 
-	td {
-	    background-color: $table-bg;
-		border-top: 1px dotted $rule;
-		border-right: 1px dotted $rule;
-	    color: $td-text;
-		line-height: 1.46;
-	    padding: 8px;
-	}
-	
-	td.highlight {
-	    background-color: $table-bg-alt;
-		color: $black;
-	}
-	
-	th.center, td.center {
-		text-align: center;
-	}
+  td {
+    background-color: $table-bg;
+    border-top: 1px dotted $rule;
+    border-right: 1px dotted $rule;
+    color: $td-text;
+    line-height: 1.46;
+    padding: 8px;
+  }
+
+  td.highlight {
+    background-color: $table-bg-alt;
+    color: $black;
+  }
+
+  th.center, td.center {
+    text-align: center;
+  }
 }
 
 

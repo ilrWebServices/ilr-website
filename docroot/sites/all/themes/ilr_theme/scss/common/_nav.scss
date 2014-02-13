@@ -15,6 +15,9 @@ nav {
   }
 
   li {
+    background: none;
+    margin: 0;
+    padding: 0;
     display: inline-block;
 
     &.first {
@@ -25,7 +28,7 @@ nav {
       text-decoration: none;
       color: $nav-color;
       //font-size: em-calc(12);
-	  font-size: ms(0);
+      font-size: ms(0);
       font-weight: 400;
     }
   }
@@ -33,7 +36,7 @@ nav {
 
 .region-sidebar-second {
   h2 {
-	display: none;
+  display: none;
   }
 }
   
@@ -45,27 +48,30 @@ nav {
     padding: 0 1em;
 
     li {
-	  .active {
-		color: $cornell-red;
-		font-weight: 600;
-	  }
-	  
+      background: none;
+      .active {
+      color: $cornell-red;
+      font-weight: 600;
+    }
+    
       a {
-	  color: $gray-dark;
+        color: $gray-dark;
         display: block;
         padding: 1em 0;
         &:hover {
-		  color: $brand;
+          color: $brand;
           //text-decoration: none;
         }
       }
     }
   }
+
   & > ul.menu { //first children only
     border-top: 1px solid #e7e5db;
-	@include tablet-landscape-and-up {
-	  border-top: none;
+    @include tablet-landscape-and-up {
+      border-top: none;
     }
+
     li {
       list-style: none;
       margin: 0;
@@ -84,42 +90,42 @@ nav {
   @include background-image(linear-gradient(#7b6e6b, $gray-dark));
   //sitenav
   .menu-block-ilr-subnav {
-	height: 50px;
-	margin: 0;
-	padding: 0;
-	@include grid-row;
-	
-	ul {
-	  margin: 0;
-	  padding: 0;
-	
-	  li {
-	    border-bottom: none;
-	    color: #fff;
-	    font-family: $font;
-	    font-size: $base-font-size;
-	    @include text-shadow(#000 0px 2px 3px);
-	    filter: progid:DXImageTransform.Microsoft.Shadow(color=#363636,direction=180,strength=5);
-	    //width: 100%;
-	    @include grid-column($columns:12, $collapse:true);
-	    height: 50px;
-	    padding: 10px 20px 0 20px;
-	    float: left;
-	    @include tablet-landscape-and-up {
-		  width: auto;
-		  display: inline;
-		  float: left;
-	  }
-	  
-		a {
-		color: #fff;
-		padding: 0;
-		}
-	  }
-	}
-	
-	ul li.active {
-	  background-color: #80736f;
-	}
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    @include grid-row;
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        border-bottom: none;
+        color: #fff;
+        font-family: $font;
+        font-size: $base-font-size;
+        @include text-shadow(#000 0px 2px 3px);
+        filter: progid:DXImageTransform.Microsoft.Shadow(color=#363636,direction=180,strength=5);
+        //width: 100%;
+        @include grid-column($columns:12, $collapse:true);
+        height: 50px;
+        padding: 10px 20px 0 20px;
+        float: left;
+        @include tablet-landscape-and-up {
+          width: auto;
+          display: inline;
+          float: left;
+        }
+
+        a {
+          color: #fff;
+          padding: 0;
+        }
+      }
+    }
+
+    ul li.active {
+      background-color: #80736f;
+    }
   }
 }
