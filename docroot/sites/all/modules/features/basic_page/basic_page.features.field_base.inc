@@ -93,7 +93,7 @@ function basic_page_field_default_field_bases() {
         'simplesamlphp_auth' => 0,
         'system' => 0,
         'user' => 0,
-        'views' => 0,
+        'views' => 'views',
       ),
       'referenceable_operator' => 'AND',
       'referenceable_regions' => array(
@@ -150,7 +150,7 @@ function basic_page_field_default_field_bases() {
         'simplesamlphp_auth' => 0,
         'system' => 0,
         'user' => 0,
-        'views' => 0,
+        'views' => 'views',
       ),
       'referenceable_operator' => 'AND',
       'referenceable_regions' => array(
@@ -207,7 +207,7 @@ function basic_page_field_default_field_bases() {
         'simplesamlphp_auth' => 0,
         'system' => 0,
         'user' => 0,
-        'views' => 0,
+        'views' => 'views',
       ),
       'referenceable_operator' => 'AND',
       'referenceable_regions' => array(
