@@ -23,7 +23,7 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
 function _process_contact_form_website_feedback(&$form) {
   // Get form fields and set some strings based on them
   $full_name = $form['field_full_name']['und'][0]['value']['#value'];
-  if (strlen($field_full_name)) {
+  if (strlen($full_name)) {
     $email_salutation = "Dear " . $full_name . ",\n\n";
   }
   else {
@@ -43,7 +43,9 @@ function _process_contact_form_website_feedback(&$form) {
     'subject' => "ILR Web Site Feedback confirmation",
     'content' =>
       $email_salutation .
-      "Thank you for your comments.  You submitted the following information on " . _form_confirmation_date() . "\n\n" .
+      "Thank you for your comments about the ILR Website. " .
+      "You submitted the following information on " .
+      _form_confirmation_date() . "\n\n" .
       "Name: " . $full_name . "\n" .
       "Email: " . $email . "\n" .
       "Comments: " . $comments . "\n\n" .
@@ -63,6 +65,34 @@ function _process_contact_form_website_feedback(&$form) {
         $sender
       );
   }
+
+  // Set up params array for admin email
+  $adminparams = array(
+    'subject' => "ILR Web Site Feedback submitted",
+    'content' =>
+      "ILR Web Site Feedback form was submitted on " . _form_confirmation_date() . "\n\n" .
+      "Name: " . $full_name . "\n" .
+      "Email: " . $email . "\n" .
+      "Comments: " . $comments . "\n\n" .
+      "Respond promptly if user provided an email address, even if just to say Thank You.\n"
+    );
+
+  // Email to admin
+  if (strlen($email)) {
+    $senderToAdmin = $email;
+  }
+  else {
+    $senderToAdmin = "ilrweb@cornell.edu";
+  }
+  drupal_mail(
+    'forms_std_user_confirmation',
+    'admin_notification',
+    "ilrweb@cornell.edu",
+    LANGUAGE_NONE,
+    $adminparams,
+    $senderToAdmin
+  );
+
 }
 
 
