@@ -66,6 +66,7 @@ function people_profiles_field_group_info() {
       2 => 'field_ilrweb_publications_file',
       3 => 'field_ilrweb_vita_file',
       4 => 'field_ilrweb_vita_html',
+      5 => 'field_academic_department',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

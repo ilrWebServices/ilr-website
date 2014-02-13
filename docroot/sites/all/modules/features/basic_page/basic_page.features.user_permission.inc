@@ -90,6 +90,7 @@ function basic_page_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'faculty admin' => 'faculty admin',
     ),
     'module' => 'filter',
   );

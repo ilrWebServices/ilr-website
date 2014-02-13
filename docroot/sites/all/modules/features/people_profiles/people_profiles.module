@@ -58,6 +58,86 @@ function people_profiles_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
+* Implements hook_block_info().
+*/
+function people_profiles_block_info($delta = '') {
+  $departments = _people_profiles_get_faculty_departments();
+
+  foreach ($departments as $key => $value) {
+    $blocks[$key] = array(
+      'info' => "Faculty for {$value}",
+    );
+  }
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function people_profiles_block_view($delta = '') {
+  $block = array(
+    'subject' => 'Faculty',
+    'content' => _people_profiles_department_faculty_view($delta),
+  );
+
+  return $block;
+}
+
+/**
+* Custom function to query for the feature news item
+*/
+function _people_profiles_department_faculty_view($delta) {
+  dpm($delta);
+  $profile_nid_array = _people_profiles_get_faculty_by_department($delta);
+  if (count($profile_nid_array) > 0) {
+    $markup = "<ul class='department-faculty'>\n";
+    foreach ($profile_nid_array as $node_info) {
+      $profile = node_load($node_info['nid'], $node_info['vid']);
+      $link = drupal_get_path_alias("node/{$node_info['nid']}");
+      $markup .= "<li><a href='{$link}'>{$profile->title}</a></li>\n";
+    }
+    $markup .= "</ul>\n";
+
+    $block['content'] = array(
+      '#markup' => $markup,
+    );
+  }
+  else {
+    // There are no featured items, so don't render the block
+    $block = array();
+  }
+
+  return $block;
+}
+
+function _people_profiles_get_faculty_by_department($department_key){
+  $nodes_info = array();
+  $query = new EntityFieldQuery();
+
+  $query
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'people_profile')
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_academic_department', 'value', $department_key)
+    ->fieldOrderBy('field_last_name', 'value', 'ASC');
+
+  $result = $query->execute();
+
+  if (empty($result)) {
+    return $nodes_info;
+  }
+  else {
+    foreach ($result['node'] as $node_info) {
+      $nodes_info[] = array(
+        'nid' => $node_info->nid,
+        'vid' => $node_info->vid,
+      );
+    }
+    return $nodes_info;
+  }
+}
+
+/**
  * Handles rendering the output of Activity insight fields
  * and the preview button
  */
@@ -114,6 +194,7 @@ function _people_profiles_process_staff_form(&$form) {
     'field_ilrweb_publications_file',
     'field_ilrweb_vita_file',
     'field_ilrweb_vita_html',
+    'field_academic_department',
   );
   foreach ($form as $field_name => $value) {
     if (in_array($field_name, $additional_faculty_fields)) {
@@ -209,4 +290,26 @@ function _people_profiles_find_profile_by_netid($netId) {
     return node_load(key($entities['node']));
   }
   return FALSE;
+}
+
+function _people_profiles_get_faculty_departments() {
+  $department_names = array(
+    "Human Resource Studies",
+    "International and Comparative Labor",
+    "Labor Relations, Law, and History",
+    "Organizational Behavior",
+    "Social Statistics",
+  );
+
+  $departments = array();
+
+  foreach ($department_names as $name) {
+    // Strip spaces, commas and "and" to get below 32 chars
+    $key = str_replace(array(',',' and'), '', $name);
+    $key = str_replace(',', '', $key);
+    $key = strtolower(str_replace(' ', '_', $key));
+    $departments[$key] = $name;
+  }
+
+  return $departments;
 }
