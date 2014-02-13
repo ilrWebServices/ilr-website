@@ -30,14 +30,14 @@ body {
 
 #highlighted .content {
   .menu-block-ilr-subnav {
-	ul {
-	  border-top: none;
-	  li {
+    ul {
+      border-top: none;
+      li {
         width: auto;
         display: inline;
         float: left;
-	  }
-	}
+      }
+    }
   }
 }
 
@@ -49,7 +49,7 @@ body {
   .breadcrumb {
     border-left: 1px solid $gray-light;
     @include grid-column($columns:9, $push:3, $collapse:false);
-	padding-left: ms(3);
+    padding-left: ms(3);
   }
 }
 
