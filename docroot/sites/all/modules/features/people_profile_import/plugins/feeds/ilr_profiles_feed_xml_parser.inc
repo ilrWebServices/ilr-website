@@ -114,7 +114,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'research_statement' => 'field_ai_research_statement',
       // 'research_statement_short' => 'field_ai_research_statement_short',
       // 'research_areas' => '', // area, area, ...
-      'areas_of_expertise' => 'field_areas_of_expertise',// area_of_expertise, area_of_expertise, ...
+      'areas_of_expertise' => 'field_areas_of_expertise',
       // 'other_expertise' => '',
       // 'teaching_keywords' => '',
       // 'research_keywords' => '',
@@ -124,7 +124,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'professional_activities' => 'field_ai_professional_activities',
       'honors_awards' => 'field_ai_honors_awards',
       'publications' => 'field_ai_publications',
-      //'links' => '',
+      'links' => 'field_ai_links',
     );
   }
 

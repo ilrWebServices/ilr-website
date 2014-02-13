@@ -34,14 +34,18 @@ function people_profiles_user_default_permissions() {
   // Exported permission: 'edit any people_profile content'.
   $permissions['edit any people_profile content'] = array(
     'name' => 'edit any people_profile content',
-    'roles' => array(),
+    'roles' => array(
+      'faculty admin' => 'faculty admin',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'edit own people_profile content'.
   $permissions['edit own people_profile content'] = array(
     'name' => 'edit own people_profile content',
-    'roles' => array(),
+    'roles' => array(
+      'faculty admin' => 'faculty admin',
+    ),
     'module' => 'node',
   );
 

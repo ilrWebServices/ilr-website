@@ -113,7 +113,7 @@ function _people_profiles_process_staff_form(&$form) {
     'field_ilrweb_publications',
     'field_ilrweb_publications_file',
     'field_ilrweb_vita_file',
-    'field_ilrweb_vita_html'
+    'field_ilrweb_vita_html',
   );
   foreach ($form as $field_name => $value) {
     if (in_array($field_name, $additional_faculty_fields)) {
@@ -158,6 +158,7 @@ function _people_profiles_activity_insight_options_list() {
     'field_ai_publications' => 'Publications',
     'field_ai_teaching_statement' => 'Teaching Statement',
     'field_ai_research_statement' => 'Research Statement',
+    'field_ai_links' => 'Links',
   );
 }
 
