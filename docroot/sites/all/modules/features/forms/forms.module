@@ -113,6 +113,7 @@ function forms_std_user_confirmation_mail($key, &$message, $params) {
 
   $message['headers']['MIME-Version'] = '1.0';
   $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
+  $message['headers']['Bcc'] = 'ilrwebemailcc@cornell.edu';
   $message['subject'] = $params['subject'];
   $message['body'][] = $params['content'];
   $message['body'][] = "\n--\r";
