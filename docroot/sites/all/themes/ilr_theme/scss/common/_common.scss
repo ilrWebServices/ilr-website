@@ -29,12 +29,12 @@
   
   #campaign {
     @include grid-row;
-  height: 140px;
-
-  img {
-    //max-width: 960px;
     height: 140px;
-  }
+
+    img {
+      //max-width: 960px;
+      height: 140px;
+    }
   }
 }
 
@@ -42,31 +42,35 @@
   .front & {
     border: none;
   }
+
   background: white;
   clear: both;
   position: relative;
   .not-front & {
     //background: white url(../images/bg-body-content.gif) repeat-x;
-  //background: url(../images/bg-body-content.gif) repeat-x;
-  @include grid-row;
+    //background: url(../images/bg-body-content.gif) repeat-x;
+    @include grid-row;
   }
+
   #content {
     //@include grid-column(12);
-  .field-name-field-short-title {
-    font-size: $h2-size;
-    font-family: $font-headers;
-    margin-top: ms(-1);
-    margin-bottom: ms(1);
-  }
-  span.date-display-single {
-    color: $gray-medium;
-  }
+    .field-name-field-short-title {
+      font-size: $h2-size;
+      font-family: $font-headers;
+      margin-top: ms(-1);
+      margin-bottom: ms(1);
+    }
+
+    span.date-display-single {
+      color: $gray-medium;
+    }
+
     @include tablet-landscape-and-up {
       @include grid-column($columns:9, $push:3, $collapse:true);
-    border-left: 1px solid $gray-light;
-    min-height: 480px;
-    padding-right: ms(3); //33.069px
-    padding-left: ms(3);
+      border-left: 1px solid $gray-light;
+      min-height: 480px;
+      padding-right: ms(3); //33.069px
+      padding-left: ms(3);
     }
   }
   
@@ -99,6 +103,35 @@
   }
 }
 
+#highlighted {
+  background-color: none;
+  border-bottom: 1px solid $gray-light;
+  margin-top: ms(1);
+  margin-bottom: ms(1);
+
+  @include tablet-portrait-and-up {
+    //background-color: $spotlight;
+    @include background(image-url("../images/spotlightGrad.gif"),
+      linear-gradient(bottom, $content-area 70%, $spotlight));
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#f0eee4", endColorStr="#ffffff"); //IE gradient
+    @include box-shadow(0px 2px 2px 0px rgba(0,0,0,0.2));
+    border-bottom: none;
+    margin-top: ms(-1);
+    padding-top: ms(0);
+  }
+
+  h2 {
+    font-size: ms(1);
+  }
+
+  article {
+    h2 {
+      font-size: ms(0);
+      line-height: 1.46;
+    }
+  }
+}
+
 .field-name-field-published-date {
   margin-bottom: ms(5);
   
@@ -109,7 +142,7 @@
 
 #breadcrumb {
   display: none;
-  @include tablet-landscape-and-up {
+  @include tablet-portrait-and-up {
     display: inline;
     font-size: .8rem;
     line-height: em-calc(24);

@@ -47,5 +47,17 @@
         @include grid-column($columns:12, $collapse: false);
       }
     }
+
+    // In the highlighted area above main content
+    #highlighted &  {
+      @include tablet-portrait-only {
+        @include grid-column($columns:6);
+      }
+
+      @include tablet-landscape-and-up {
+        @include grid-column($columns:6, $collapse: false);
+        //@include grid-row(nest-collapse);
+      }
+    }
   }
 }
