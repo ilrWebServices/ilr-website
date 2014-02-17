@@ -17,6 +17,10 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
     case("ilr_website_feedback_entityform_edit_form"):
       $form['actions']['submit']['#submit'][] = '_process_contact_form_website_feedback';
       break;
+    case("student_services_contact_form_entityform_edit_form"):
+      $form['actions']['submit']['#submit'][] = '_process_student_services_contact_form';
+      break;
+
   }
 }
 
@@ -90,7 +94,84 @@ function _process_contact_form_website_feedback(&$form) {
     $adminparams,
     $from_field_for_admin_email
   );
-}
+}   // Ends _process_contact_form_website_feedback
+
+
+/**
+ * Student Service contact form:  Custom function to process the form
+ */
+function _process_student_services_contact_form(&$form) {
+  // Get form fields and set some strings based on them
+  $full_name = $form['field_full_name']['und'][0]['value']['#value'];
+  if (strlen($full_name)) {
+    $email_salutation = "Dear {$full_name},\n\n";
+  }
+  else {
+    $email_salutation = "";
+    $full_name = "Not specified";
+  }
+
+  $email = $form['field_email']['und'][0]['email']['#value'];
+
+  $comments = $form['field_comments']['und'][0]['value']['#value'];
+
+  // Set To and From fields for emails
+  $admin_email = "ilr_oss@cornell.edu";
+  $from_field_for_user_email = $admin_email;
+  $to_field_for_admin_email = $admin_email;
+  $from_field_for_admin_email = (strlen($email)) ? $email : $admin_email;
+
+  // Set up params array for subject and content
+  $params = array(
+    'subject' => "ILR Student Services contact form confirmation",
+    'content' =>
+      $email_salutation .
+      "Thank you for your questions and comments to ILR Student Services. " .
+      "You submitted the following information on " .
+      _form_confirmation_date() . ".\n\n" .
+      "Name: {$full_name}\n" .
+      "Email: {$email}\n" .
+      "Comments: {$comments}\n\n" .
+      "You will receive a response within 3-5 business days.\n\n" .
+      "Sincerely,\n" .
+      "Office of Student Services, ILR School, Cornell University\n" .
+      $from_field_for_user_email
+    );
+
+  // Email to user
+  if (strlen($email) > 0) {
+    drupal_mail(
+        'forms_std_confirmation',
+        'user_confirmation',
+        $email,
+        LANGUAGE_NONE,
+        $params,
+        $from_field_for_user_email
+      );
+  }
+
+  // Set up params array for admin email
+  $adminparams = array(
+    'subject' => "ILR OSS contact form submitted",
+    'content' =>
+      "ILR Student Services contact form was submitted on " . _form_confirmation_date() . ".\n\n" .
+      "Name: {$full_name}\n" .
+      "Email: {$email}\n" .
+      "Comments: {$comments}\n\n" .
+      "Please respond promptly if the submitter provided an email address, even if just to say Thank You.\n"
+    );
+
+  // Email to admin
+  drupal_mail(
+    'forms_std_confirmation',
+    'admin_notification',
+    $to_field_for_admin_email,
+    LANGUAGE_NONE,
+    $adminparams,
+    $from_field_for_admin_email
+  );
+}   // Ends _process_student_services_contact_form
+
 
 /**
  * Custom function to format dates to appear in confirmation
