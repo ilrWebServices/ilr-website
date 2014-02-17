@@ -5,9 +5,13 @@
  */
 
 include_once 'forms.features.inc';
+
 define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
 
+/**
+ * Implements hook_form_alter
+ */
 function forms_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
     case("ilr_website_feedback_entityform_edit_form"):
@@ -18,9 +22,6 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
 
 /**
  * Web Site Feedback:  Custom function to process the form
- */
-/**
- *
  */
 function _process_contact_form_website_feedback(&$form) {
   // Get form fields and set some strings based on them
@@ -80,12 +81,7 @@ function _process_contact_form_website_feedback(&$form) {
     );
 
   // Email to admin
-  if (strlen($email)) {
-    $from_field_for_admin_email = $email;
-  }
-  else {
-    $from_field_for_admin_email = ILRWEB_EMAIL;
-  }
+  $from_field_for_admin_email = (strlen($email)) ? $email : ILRWEB_EMAIL;
   drupal_mail(
     'forms_std_confirmation',
     'admin_notification',
@@ -94,17 +90,14 @@ function _process_contact_form_website_feedback(&$form) {
     $adminparams,
     $from_field_for_admin_email
   );
-
 }
 
-
 /**
- * Custom function to format dates to appear in confirmation _scheinman_neutral_admin_emails
+ * Custom function to format dates to appear in confirmation
  */
 function _form_confirmation_date() {
   return date("F j, Y") . " at " . date("g:i a");
 }
-
 
 /**
  * Implements hook_mail().
