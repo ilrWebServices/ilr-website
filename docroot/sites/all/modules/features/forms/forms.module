@@ -29,7 +29,7 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
  */
 function _process_contact_form_website_feedback(&$form) {
   // Get form fields and set some strings based on them
-  $full_name = $form['field_full_name']['und'][0]['value']['#value'];
+  $full_name = trim($form['field_full_name']['und'][0]['value']['#value']);
   if (strlen($full_name)) {
     $email_salutation = "Dear {$full_name},\n\n";
   }
@@ -38,12 +38,16 @@ function _process_contact_form_website_feedback(&$form) {
     $full_name = "Not specified";
   }
 
-  $email = $form['field_email']['und'][0]['email']['#value'];
+  $email = trim($form['field_email']['und'][0]['email']['#value']);
+  $email_to_display = (strlen($email)) ? $email : "Not specified";
 
-  $comments = $form['field_comments']['und'][0]['value']['#value'];
+  $comments = trim($form['field_comments']['und'][0]['value']['#value']);
 
-  // Set from field for user email
-  $from_field_for_user_email = ILRWEB_EMAIL;
+  // Set To and From fields for emails
+  $admin_email = ILRWEB_EMAIL;
+  $from_field_for_user_email = $admin_email;
+  $to_field_for_admin_email = $admin_email;
+  $from_field_for_admin_email = (strlen($email)) ? $email : $admin_email;
 
   // Set up params array for subject and content
   $params = array(
@@ -54,7 +58,7 @@ function _process_contact_form_website_feedback(&$form) {
       "You submitted the following information on " .
       _form_confirmation_date() . "\n\n" .
       "Name: {$full_name}\n" .
-      "Email: {$email}\n" .
+      "Email: {$email_to_display}\n" .
       "Comments: {$comments}\n\n" .
       "Sincerely,\n" .
       "ILR Web Team\n" .
@@ -79,17 +83,16 @@ function _process_contact_form_website_feedback(&$form) {
     'content' =>
       "ILR Web Site Feedback form was submitted on " . _form_confirmation_date() . "\n\n" .
       "Name: {$full_name}\n" .
-      "Email: {$email}\n" .
+      "Email: {$email_to_display}\n" .
       "Comments: {$comments}\n\n" .
       "Respond promptly if user provided an email address, even if just to say Thank You.\n"
     );
 
   // Email to admin
-  $from_field_for_admin_email = (strlen($email)) ? $email : ILRWEB_EMAIL;
   drupal_mail(
     'forms_std_confirmation',
     'admin_notification',
-    ILRWEB_EMAIL,
+    $to_field_for_admin_email,
     LANGUAGE_NONE,
     $adminparams,
     $from_field_for_admin_email
