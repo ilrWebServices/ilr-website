@@ -87,7 +87,6 @@ function people_profiles_block_view($delta = '') {
 * Custom function to query for the feature news item
 */
 function _people_profiles_department_faculty_view($delta) {
-  dpm($delta);
   $profile_nid_array = _people_profiles_get_faculty_by_department($delta);
   if (count($profile_nid_array) > 0) {
     $markup = "<ul class='department-faculty'>\n";
