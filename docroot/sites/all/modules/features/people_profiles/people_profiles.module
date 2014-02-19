@@ -84,7 +84,7 @@ function people_profiles_block_view($delta = '') {
 }
 
 /**
-* Custom function to query for the feature news item
+* Custom function to query for the faculty members
 */
 function _people_profiles_department_faculty_view($delta) {
   $profile_nid_array = _people_profiles_get_faculty_by_department($delta);
@@ -102,7 +102,7 @@ function _people_profiles_department_faculty_view($delta) {
     );
   }
   else {
-    // There are no featured items, so don't render the block
+    // There are no faculty members, so don't render the block
     $block = array();
   }
 
