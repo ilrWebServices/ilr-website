@@ -177,6 +177,42 @@ function settings_and_permissions_user_default_permissions() {
     'module' => 'features',
   );
 
+  // Exported permission: 'administer feeds'.
+  $permissions['administer feeds'] = array(
+    'name' => 'administer feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: 'administer feeds_tamper'.
+  $permissions['administer feeds_tamper'] = array(
+    'name' => 'administer feeds_tamper',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'feeds_tamper',
+  );
+
+  // Exported permission: 'administer field collections'.
+  $permissions['administer field collections'] = array(
+    'name' => 'administer field collections',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_collection',
+  );
+
+  // Exported permission: 'administer fieldgroups'.
+  $permissions['administer fieldgroups'] = array(
+    'name' => 'administer fieldgroups',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_group',
+  );
+
   // Exported permission: 'administer filters'.
   $permissions['administer filters'] = array(
     'name' => 'administer filters',
@@ -334,6 +370,15 @@ function settings_and_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'clear people_profile_xml_import feeds'.
+  $permissions['clear people_profile_xml_import feeds'] = array(
+    'name' => 'clear people_profile_xml_import feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
   // Exported permission: 'create url aliases'.
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
@@ -351,6 +396,33 @@ function settings_and_permissions_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'delete terms in areas_of_expertise'.
+  $permissions['delete terms in areas_of_expertise'] = array(
+    'name' => 'delete terms in areas_of_expertise',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in publications'.
+  $permissions['delete terms in publications'] = array(
+    'name' => 'delete terms in publications',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in wire_services'.
+  $permissions['delete terms in wire_services'] = array(
+    'name' => 'delete terms in wire_services',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: 'display drupal links'.
@@ -371,6 +443,33 @@ function settings_and_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'edit terms in areas_of_expertise'.
+  $permissions['edit terms in areas_of_expertise'] = array(
+    'name' => 'edit terms in areas_of_expertise',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in publications'.
+  $permissions['edit terms in publications'] = array(
+    'name' => 'edit terms in publications',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in wire_services'.
+  $permissions['edit terms in wire_services'] = array(
+    'name' => 'edit terms in wire_services',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'flush caches'.
   $permissions['flush caches'] = array(
     'name' => 'flush caches',
@@ -387,6 +486,15 @@ function settings_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'features',
+  );
+
+  // Exported permission: 'import people_profile_xml_import feeds'.
+  $permissions['import people_profile_xml_import feeds'] = array(
+    'name' => 'import people_profile_xml_import feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'feeds',
   );
 
   // Exported permission: 'manage features'.
@@ -424,6 +532,24 @@ function settings_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: 'tamper people_profile_xml_import'.
+  $permissions['tamper people_profile_xml_import'] = array(
+    'name' => 'tamper people_profile_xml_import',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'feeds_tamper',
+  );
+
+  // Exported permission: 'unlock people_profile_xml_import feeds'.
+  $permissions['unlock people_profile_xml_import feeds'] = array(
+    'name' => 'unlock people_profile_xml_import feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'feeds',
   );
 
   // Exported permission: 'view bean page'.

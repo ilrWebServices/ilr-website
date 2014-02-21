@@ -13,21 +13,27 @@ function people_profiles_user_default_permissions() {
   // Exported permission: 'create people_profile content'.
   $permissions['create people_profile content'] = array(
     'name' => 'create people_profile content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete any people_profile content'.
   $permissions['delete any people_profile content'] = array(
     'name' => 'delete any people_profile content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete own people_profile content'.
   $permissions['delete own people_profile content'] = array(
     'name' => 'delete own people_profile content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -35,6 +41,7 @@ function people_profiles_user_default_permissions() {
   $permissions['edit any people_profile content'] = array(
     'name' => 'edit any people_profile content',
     'roles' => array(
+      'administrator' => 'administrator',
       'faculty admin' => 'faculty admin',
     ),
     'module' => 'node',
@@ -44,6 +51,8 @@ function people_profiles_user_default_permissions() {
   $permissions['edit own people_profile content'] = array(
     'name' => 'edit own people_profile content',
     'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
       'faculty admin' => 'faculty admin',
     ),
     'module' => 'node',
