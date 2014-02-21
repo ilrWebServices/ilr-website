@@ -93,7 +93,7 @@ function _people_profiles_department_faculty_view($delta) {
     foreach ($profile_nid_array as $node_info) {
       $profile = node_load($node_info['nid'], $node_info['vid']);
       $link = drupal_get_path_alias("node/{$node_info['nid']}");
-      $markup .= "<li><a href='{$link}'>{$profile->title}</a></li>\n";
+      $markup .= "<li><a href='/{$link}'>{$profile->title}</a></li>\n";
     }
     $markup .= "</ul>\n";
 
