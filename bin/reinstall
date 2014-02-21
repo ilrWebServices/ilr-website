@@ -9,7 +9,7 @@ if [ ! "$CURRENT_DIR" = "docroot" ]; then
   exit 2
 fi
 
-# Get the branch name
+# Set the backup name
 source $BIN_DIR/set-backup-name
 
 # make a backup of current db

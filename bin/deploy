@@ -1,0 +1,47 @@
+#!/bin/bash
+
+BIN_DIR=`dirname $0`
+
+source $BIN_DIR/get-current-branch
+
+# check running from docroot
+CURRENT_DIR=${PWD##*/}
+if [ ! "$CURRENT_DIR" = "ilr-website" ]; then
+  echo 'Please be sure that you are running this command from the root of the repo.'
+   2
+fi
+
+# Figure out which environment to deploy to
+while getopts "e:" var; do
+    case $var in
+        e) ENV="${OPTARG}";;
+    esac
+done
+
+# Set the ENV to dev if 'e' wasn't passed as an argument
+if [ "${#ENV}" -eq "0" ]; then
+  ENV='dev'
+fi
+
+if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
+  git push ac $branch_name
+
+  echo "Pushing $branch_name to acquia cloud $ENV"
+
+  echo "Compiling css"
+  compass compile
+
+  # Upload to server
+  echo "Uploading styles to server"
+  scp -r docroot/sites/all/themes/ilr_theme/css/style.css ilr@srv-2136.devcloud.hosting.acquia.com:~/$ENV/livedev/docroot/sites/all/themes/ilr_theme/css/style.css
+
+  # Pull the updates from the branch to livedev and clear cache
+  echo "Deploying $branch_name to livedev on Acquia"
+  ssh ilr@srv-2136.devcloud.hosting.acquia.com "cd ~/$ENV/livedev; git checkout $branch_name; git pull; cd docroot; drush @sites cc all -y; exit;"
+
+  echo "Deployment complete"
+  exit
+fi
+
+# If not dev or test, throw an error
+echo 'Error: please follow deployment instructions'

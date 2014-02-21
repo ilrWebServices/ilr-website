@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Get the branch name
+branch_name="$(git symbolic-ref HEAD 2>/dev/null)" ||
+branch_name="detached"     # detached HEAD
+branch_name=${branch_name##refs/heads/}
