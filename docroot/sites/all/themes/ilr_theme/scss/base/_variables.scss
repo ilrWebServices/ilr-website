@@ -17,8 +17,8 @@ $mod03: ms(3);
 $mod02: ms(2);
 $mod01: ms(1);
 $mod00: ms(0);
-$mod-01: 12.62939px; //Based on mod scale. Number is not applied properly by mixin.
-$mod-02: 8.65248px; //Based on mod scale.
+$mod-01: 12.62939px; //Based on mod scale. Number is not applied/calculated properly by mixin.
+$mod-02: ms(-2);
 
 
 // ==================================================
