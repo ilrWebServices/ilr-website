@@ -6,6 +6,13 @@ drupal-streamline.make
 docroot/.drupal_streamline_guard_running
 tmp/
 
+# Ignore profile data feed items
+config/ilr-faculty-data-conf.php
+config/aws-sdk-conf.php
+composer.lock
+vendor/
+scripts/ilr-profile-data-pull/xml/
+
 # Ignore the stylesheet
 docroot/sites/all/themes/ilr_theme/css/style.css
 
