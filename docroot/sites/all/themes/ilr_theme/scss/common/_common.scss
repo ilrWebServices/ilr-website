@@ -57,8 +57,8 @@
     .field-name-field-short-title {
       font-size: $h2-size;
       font-family: $font-headers;
-      margin-top: ms(-1);
-      margin-bottom: ms(1);
+      margin-top: $mod-01;
+      margin-bottom: $mod01;
     }
 
     span.date-display-single {
@@ -69,8 +69,8 @@
       @include grid-column($columns:9, $push:3, $collapse:true);
       border-left: 1px solid $gray-light;
       min-height: 480px;
-      padding-right: ms(3); //33.069px
-      padding-left: ms(3);
+      padding-right: $mod03; //33.069px
+      padding-left: $mod03;
     }
   }
   
@@ -81,7 +81,7 @@
     }
     a, p {
       //color: white;
-      line-height: ms(1);
+      line-height: $mod01;
       font-size: ms(0, 1em 68.5em);
     }
     @include tablet-landscape-and-up {
@@ -89,8 +89,8 @@
     }
     img {
       float: left;
-      margin-right: ms(1);
-      margin-bottom: ms(0);
+      margin-right: $mod01;
+      margin-bottom: $mod00;
     }
   }
 }
@@ -98,7 +98,7 @@
 .region-sidebar-first {
   #block-bean-tagged-news {
     h2 {
-    font-size: ms(1);
+    font-size: $mod01;
     }
   }
 }
@@ -106,8 +106,8 @@
 #highlighted {
   background-color: none;
   border-bottom: 1px solid $gray-light;
-  margin-top: ms(1);
-  margin-bottom: ms(1);
+  margin-top: $mod01;
+  margin-bottom: $mod01;
 
   @include tablet-portrait-and-up {
     //background-color: $spotlight;
@@ -116,27 +116,27 @@
     filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#f0eee4", endColorStr="#ffffff"); //IE gradient
     @include box-shadow(0px 2px 2px 0px rgba(0,0,0,0.2));
     border-bottom: none;
-    margin-top: ms(-1);
-    padding-top: ms(0);
+    margin-top: $mod-01;
+    padding-top: $mod00;
   }
 
   h2 {
-    font-size: ms(1);
+    font-size: $mod01;
   }
 
   article {
     h2 {
-      font-size: ms(0);
+      font-size: $mod00;
       line-height: 1.46;
     }
   }
 }
 
 .field-name-field-published-date {
-  margin-bottom: ms(5);
+  margin-bottom: $mod05;
   
   span.date-display-single {
-    font-size: ms(0);
+    font-size: $mod00;
   }
 }
 
@@ -152,7 +152,7 @@
     padding-left: 15px;
     @include tablet-landscape-and-up {
       border-left: 1px solid $gray-light;
-      padding-left: ms(3) !important;
+      padding-left: $mod03 !important;
       @include grid-column($columns:9, $push:3, $collapse:true);
     }
   }
