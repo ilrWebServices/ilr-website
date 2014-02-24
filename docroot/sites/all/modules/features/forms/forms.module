@@ -13,29 +13,73 @@ define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
  * Implements hook_form_alter
  */
 function forms_form_alter(&$form, &$form_state, $form_id) {
+  $processingFunction = '_process_' . str_replace('_entityform_edit_form', '', $form_id);
+  if (function_exists($processingFunction)) {
+      $form['actions']['submit']['#submit'][] = $processingFunction;
+  }
+  /*
   switch ($form_id) {
+    case("career_services_contact_form_entityform_edit_form"):
+      $form['actions']['submit']['#submit'][] = '_process_career_services_contact_form';
+      break;
     case("ilr_website_feedback_entityform_edit_form"):
-      $form['actions']['submit']['#submit'][] = '_process_contact_form_website_feedback';
+      $form['actions']['submit']['#submit'][] = '_process_ilr_website_feedback';
       break;
     case("student_services_contact_form_entityform_edit_form"):
       $form['actions']['submit']['#submit'][] = '_process_student_services_contact_form';
       break;
-
   }
+  */
 }
 
 /**
+ * Career Services contact form:  Custom function to process the form
+ */
+function _process_career_services_contact_form(&$form) {
+  dpm ($form);
+  // Get form fields and set some strings based on them
+  $formfields = array('full_name' => trim($form['field_full_name']['und'][0]['value']['#value']));
+  if (strlen($formfields['full_name'])) {
+    $formfields['full_name_to_display'] = $formfields['full_name'];
+    $formfields['$email_salutation'] = "Dear {$formfields['full_name_to_display']},\n\n";
+  }
+  else {
+    $formfields['full_name_to_display'] = "Not specified";
+    $formfields['$email_salutation'] = "";
+  }
+
+  $email = trim($form['field_email']['und'][0]['email']['#value']);
+  $email_to_display = (strlen($email)) ? $email : "Not specified";
+
+  $subject_line = trim($form['field_subject_line']['und'][0]['value']['#value']);
+  $comments = trim($form['field_comments']['und'][0]['value']['#value']);
+
+  $how_to_direct = explode(":", trim($form['field_career_svc_how_to_direct']['und']['#value']));
+  $how_to_direct_org = $how_to_direct[0];
+
+  // Set To and From fields for emails
+  $admin_email = $how_to_direct[1];
+  $from_field_for_user_email = $admin_email;
+  $to_field_for_admin_email = $admin_email;
+  $from_field_for_admin_email = (strlen($email)) ? $email : $admin_email;
+
+  dpm ($formfields);
+}   // Ends _process_career_services_contact_form
+
+
+ /**
  * Web Site Feedback:  Custom function to process the form
  */
-function _process_contact_form_website_feedback(&$form) {
+function _process_ilr_website_feedback(&$form) {
   // Get form fields and set some strings based on them
   $full_name = trim($form['field_full_name']['und'][0]['value']['#value']);
   if (strlen($full_name)) {
-    $email_salutation = "Dear {$full_name},\n\n";
+    $full_name_to_display = $full_name;
+    $email_salutation = "Dear {$full_name_to_display},\n\n";
   }
   else {
+    $full_name_to_display = "Not specified";
     $email_salutation = "";
-    $full_name = "Not specified";
   }
 
   $email = trim($form['field_email']['und'][0]['email']['#value']);
@@ -49,7 +93,7 @@ function _process_contact_form_website_feedback(&$form) {
   $to_field_for_admin_email = $admin_email;
   $from_field_for_admin_email = (strlen($email)) ? $email : $admin_email;
 
-  // Set up params array for subject and content
+  // User email: set up params array for subject and content
   $params = array(
     'subject' => "ILR Web Site Feedback confirmation",
     'content' =>
@@ -57,7 +101,7 @@ function _process_contact_form_website_feedback(&$form) {
       "Thank you for your comments about the ILR Website. " .
       "You submitted the following information on " .
       _form_confirmation_date() . "\n\n" .
-      "Name: {$full_name}\n" .
+      "Name: {$full_name_to_display}\n" .
       "Email: {$email_to_display}\n" .
       "Comments: {$comments}\n\n" .
       "Sincerely,\n" .
@@ -77,12 +121,12 @@ function _process_contact_form_website_feedback(&$form) {
       );
   }
 
-  // Set up params array for admin email
+  // Admin email: set up params array
   $adminparams = array(
     'subject' => "ILR Web Site Feedback submitted",
     'content' =>
       "ILR Web Site Feedback form was submitted on " . _form_confirmation_date() . "\n\n" .
-      "Name: {$full_name}\n" .
+      "Name: {$full_name_to_display}\n" .
       "Email: {$email_to_display}\n" .
       "Comments: {$comments}\n\n" .
       "Respond promptly if user provided an email address, even if just to say Thank You.\n"
@@ -97,7 +141,7 @@ function _process_contact_form_website_feedback(&$form) {
     $adminparams,
     $from_field_for_admin_email
   );
-}   // Ends _process_contact_form_website_feedback
+}   // Ends _process_ilr_website_feedback
 
 
 /**
@@ -105,18 +149,20 @@ function _process_contact_form_website_feedback(&$form) {
  */
 function _process_student_services_contact_form(&$form) {
   // Get form fields and set some strings based on them
-  $full_name = $form['field_full_name']['und'][0]['value']['#value'];
+  $full_name = trim($form['field_full_name']['und'][0]['value']['#value']);
   if (strlen($full_name)) {
-    $email_salutation = "Dear {$full_name},\n\n";
+    $full_name_to_display = $full_name;
+    $email_salutation = "Dear {$full_name_to_display},\n\n";
   }
   else {
+    $full_name_to_display = "Not specified";
     $email_salutation = "";
-    $full_name = "Not specified";
   }
 
-  $email = $form['field_email']['und'][0]['email']['#value'];
+  $email = trim($form['field_email']['und'][0]['email']['#value']);
+  $email_to_display = (strlen($email)) ? $email : "Not specified";
 
-  $comments = $form['field_comments']['und'][0]['value']['#value'];
+  $comments = trim($form['field_comments']['und'][0]['value']['#value']);
 
   // Set To and From fields for emails
   $admin_email = "ilr_oss@cornell.edu";
@@ -124,7 +170,7 @@ function _process_student_services_contact_form(&$form) {
   $to_field_for_admin_email = $admin_email;
   $from_field_for_admin_email = (strlen($email)) ? $email : $admin_email;
 
-  // Set up params array for subject and content
+  // User email: set up params array for subject and content
   $params = array(
     'subject' => "ILR Student Services contact form confirmation",
     'content' =>
@@ -132,8 +178,8 @@ function _process_student_services_contact_form(&$form) {
       "Thank you for your questions and comments to ILR Student Services. " .
       "You submitted the following information on " .
       _form_confirmation_date() . ".\n\n" .
-      "Name: {$full_name}\n" .
-      "Email: {$email}\n" .
+      "Name: {$full_name_to_display}\n" .
+      "Email: {$email_to_display}\n" .
       "Comments: {$comments}\n\n" .
       "You will receive a response within 3-5 business days.\n\n" .
       "Sincerely,\n" .
@@ -153,13 +199,13 @@ function _process_student_services_contact_form(&$form) {
       );
   }
 
-  // Set up params array for admin email
+  // Admin email: set up params array
   $adminparams = array(
     'subject' => "ILR OSS contact form submitted",
     'content' =>
       "ILR Student Services contact form was submitted on " . _form_confirmation_date() . ".\n\n" .
-      "Name: {$full_name}\n" .
-      "Email: {$email}\n" .
+      "Name: {$full_name_to_display}\n" .
+      "Email: {$email_to_display}\n" .
       "Comments: {$comments}\n\n" .
       "Please respond promptly if the submitter provided an email address, even if just to say Thank You.\n"
     );
