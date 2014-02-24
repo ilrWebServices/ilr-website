@@ -17,8 +17,8 @@ $mod03: ms(3);
 $mod02: ms(2);
 $mod01: ms(1);
 $mod00: ms(0);
-$mod-01: 0.902em; //Based on mod scale. Number is not applied properly by mixin.
-$mod-02: 0.618em; //Based on mod scale.
+$mod-01: 12.62939px; //Based on mod scale. Number is not applied properly by mixin.
+$mod-02: 8.65248px; //Based on mod scale.
 
 
 // ==================================================
@@ -35,7 +35,7 @@ $gray-medium: #8b8b85;
 $gray-light: #cfcdc4;
 $selection: #212121;
 $highlight: #ffc;
-$spotlight: #f0eee4;
+$cornell-tan: #f0eee4;
 $bg-body: $brand;
 $content-area: #fff;
 
@@ -89,7 +89,7 @@ $rule: #cfcdc4;
 $blockquote: #444;
 
 $table-bg: #f8f8f6;
-$table-bg-th: #f0eee4;
+$table-bg-th: $cornell-tan;
 $table-bg-alt: #e7e6e6;
 $table-bg-hover: darken($table-bg, 10%);
 $td-text: #444;

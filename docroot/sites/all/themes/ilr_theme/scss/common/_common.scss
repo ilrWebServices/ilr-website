@@ -110,9 +110,9 @@
   margin-bottom: $mod01;
 
   @include tablet-portrait-and-up {
-    //background-color: $spotlight;
+    //background-color: $cornell-tan;
     @include background(image-url("../images/spotlightGrad.gif"),
-      linear-gradient(bottom, $content-area 70%, $spotlight));
+      linear-gradient(bottom, $content-area 70%, $cornell-tan));
     filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#f0eee4", endColorStr="#ffffff"); //IE gradient
     @include box-shadow(0px 2px 2px 0px rgba(0,0,0,0.2));
     border-bottom: none;
