@@ -8,63 +8,18 @@ include_once 'forms.features.inc';
 
 define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
+define('STRING_TO_DISPLAY_FOR_OMITTED_FIELDS', 'Not specified');
 
 /**
  * Implements hook_form_alter
  */
 function forms_form_alter(&$form, &$form_state, $form_id) {
+  dpm($form_id);
   $processingFunction = '_process_' . str_replace('_entityform_edit_form', '', $form_id);
   if (function_exists($processingFunction)) {
       $form['actions']['submit']['#submit'][] = $processingFunction;
   }
-  /*
-  switch ($form_id) {
-    case("career_services_contact_form_entityform_edit_form"):
-      $form['actions']['submit']['#submit'][] = '_process_career_services_contact_form';
-      break;
-    case("ilr_website_feedback_entityform_edit_form"):
-      $form['actions']['submit']['#submit'][] = '_process_ilr_website_feedback';
-      break;
-    case("student_services_contact_form_entityform_edit_form"):
-      $form['actions']['submit']['#submit'][] = '_process_student_services_contact_form';
-      break;
-  }
-  */
 }
-
-/**
- * Career Services contact form:  Custom function to process the form
- */
-function _process_career_services_contact_form(&$form) {
-  dpm ($form);
-  // Get form fields and set some strings based on them
-  $formfields = array('full_name' => trim($form['field_full_name']['und'][0]['value']['#value']));
-  if (strlen($formfields['full_name'])) {
-    $formfields['full_name_to_display'] = $formfields['full_name'];
-    $formfields['$email_salutation'] = "Dear {$formfields['full_name_to_display']},\n\n";
-  }
-  else {
-    $formfields['full_name_to_display'] = "Not specified";
-    $formfields['$email_salutation'] = "";
-  }
-
-  $email = trim($form['field_email']['und'][0]['email']['#value']);
-  $email_to_display = (strlen($email)) ? $email : "Not specified";
-
-  $subject_line = trim($form['field_subject_line']['und'][0]['value']['#value']);
-  $comments = trim($form['field_comments']['und'][0]['value']['#value']);
-
-  $how_to_direct = explode(":", trim($form['field_career_svc_how_to_direct']['und']['#value']));
-  $how_to_direct_org = $how_to_direct[0];
-
-  // Set To and From fields for emails
-  $admin_email = $how_to_direct[1];
-  $from_field_for_user_email = $admin_email;
-  $to_field_for_admin_email = $admin_email;
-  $from_field_for_admin_email = (strlen($email)) ? $email : $admin_email;
-
-  dpm ($formfields);
-}   // Ends _process_career_services_contact_form
 
 
  /**
@@ -148,19 +103,14 @@ function _process_ilr_website_feedback(&$form) {
  * Student Service contact form:  Custom function to process the form
  */
 function _process_student_services_contact_form(&$form) {
+  _get_form_data($form);
   // Get form fields and set some strings based on them
   $full_name = trim($form['field_full_name']['und'][0]['value']['#value']);
-  if (strlen($full_name)) {
-    $full_name_to_display = $full_name;
-    $email_salutation = "Dear {$full_name_to_display},\n\n";
-  }
-  else {
-    $full_name_to_display = "Not specified";
-    $email_salutation = "";
-  }
+  $full_name_to_display = _string_or_other($full_name, STRING_TO_DISPLAY_FOR_OMITTED_FIELDS);
+  $salutation = _form_salutation($full_name_to_display);
 
   $email = trim($form['field_email']['und'][0]['email']['#value']);
-  $email_to_display = (strlen($email)) ? $email : "Not specified";
+  $email_to_display = _string_or_other($email, STRING_TO_DISPLAY_FOR_OMITTED_FIELDS);
 
   $comments = trim($form['field_comments']['und'][0]['value']['#value']);
 
@@ -174,7 +124,7 @@ function _process_student_services_contact_form(&$form) {
   $params = array(
     'subject' => "ILR Student Services contact form confirmation",
     'content' =>
-      $email_salutation .
+      $salutation .
       "Thank you for your questions and comments to ILR Student Services. " .
       "You submitted the following information on " .
       _form_confirmation_date() . ".\n\n" .
@@ -223,11 +173,101 @@ function _process_student_services_contact_form(&$form) {
 
 
 /**
+ * Career Services contact form:  Custom function to process the form
+ */
+function _process_career_services_contact_form(&$form) {
+  _get_form_data($form);
+  // Get form fields and set some strings based on them
+  $formfields = array('full_name' => trim($form['field_full_name']['und'][0]['value']['#value']));
+  if (strlen($formfields['full_name'])) {
+    $formfields['full_name_to_display'] = $formfields['full_name'];
+    $formfields['$email_salutation'] = "Dear {$formfields['full_name_to_display']},\n\n";
+  }
+  else {
+    $formfields['full_name_to_display'] = "Not specified";
+    $formfields['$email_salutation'] = "";
+  }
+
+  $email = trim($form['field_email']['und'][0]['email']['#value']);
+  $email_to_display = (strlen($email)) ? $email : "Not specified";
+
+  $subject_line = trim($form['field_subject_line']['und'][0]['value']['#value']);
+  $comments = trim($form['field_comments']['und'][0]['value']['#value']);
+
+  $how_to_direct = explode(":", trim($form['field_career_svc_how_to_direct']['und']['#value']));
+  $how_to_direct_org = $how_to_direct[0];
+
+  // Set To and From fields for emails
+  $admin_email = $how_to_direct[1];
+  $from_field_for_user_email = $admin_email;
+  $to_field_for_admin_email = $admin_email;
+  $from_field_for_admin_email = (strlen($email)) ? $email : $admin_email;
+
+  dpm ($formfields);
+}   // Ends _process_career_services_contact_form
+
+
+
+
+
+/**
+ * Custom function to extract field values from the form
+ *  $full_name = trim($form['field_full_name']['und'][0]['value']['#value']);
+ *  $email = trim($form['field_email']['und'][0]['email']['#value']);
+ *  $form['field_career_svc_how_to_direct']['und']['#value']
+ */
+function _get_form_data($form) {
+  dpm ("In _get_form_data");
+  dpm ($form);
+  $formfields = array();
+  foreach ($form as $field=>$val) {
+    if (substr($field, 0, 6) == "field_") {
+      $just_field = str_replace('field_', '', $field);
+      switch ($form[$field]['#attributes']['class'][0]) {
+        case "field-type-text":
+        case "field-type-text-long":
+          $formfields[$just_field] = trim($form[$field]['und'][0]['value']['#value']);
+          dpm ("field: " . $just_field . ", value: " . $formfields[$just_field] . " (text or long text field)");
+          break;
+
+        case "field-type-email":
+          $formfields[$just_field] = trim($form[$field]['und'][0]['email']['#value']);
+          dpm ("field: " . $just_field . ", value: " . $formfields[$just_field] . " (email)");
+          break;
+
+        case "field-type-list-text":
+          $formfields[$just_field] = trim($form[$field]['und']['#value']);
+          dpm ("field: " . $just_field . ", value: " . $formfields[$just_field] . " (radio)");
+          break;
+      }
+    }
+  }
+}
+
+/**
  * Custom function to format dates to appear in confirmation
  */
 function _form_confirmation_date() {
   return date("F j, Y") . " at " . date("g:i a");
 }
+
+/**
+ * Custom function to generate a string that will be displayed in emails, based
+ * on whether the string is empty
+ */
+function _string_or_other($initial_string, $string_to_use_if_blank){
+  $display_string = (strlen(trim($initial_string))) ? $initial_string : $string_to_use_if_blank;
+  return $display_string;
+}  // Ends _string_or_other
+
+/**
+ * Custom function to generate salutation that will be displayed in emails
+ * (e.g. Dear John Doe)
+ */
+function _form_salutation($name_from_form){
+  $sal = (strlen(trim($name_from_form))) ? "Dear " . $name_from_form : "";
+  return $sal;
+}  // Ends _form_salutation
 
 /**
  * Implements hook_mail().
