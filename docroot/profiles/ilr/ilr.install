@@ -27,6 +27,8 @@ function ilr_install() {
   system_rebuild_theme_data();
   theme_enable(array('ilr_theme'));
   variable_set('theme_default', 'ilr_theme');
+  variable_set('admin_theme', 'seven');
+  variable_set('node_admin_theme', '1');
 
   // Enable caching
   variable_set('cache', 1);
