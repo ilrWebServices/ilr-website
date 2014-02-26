@@ -8,7 +8,7 @@ source $BIN_DIR/get-current-branch
 CURRENT_DIR=${PWD##*/}
 if [ ! "$CURRENT_DIR" = "ilr-website" ]; then
   echo 'Please be sure that you are running this command from the root of the repo.'
-   2
+  exit 2
 fi
 
 # Figure out which environment to deploy to
