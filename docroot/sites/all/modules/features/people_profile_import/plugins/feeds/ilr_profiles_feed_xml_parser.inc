@@ -15,7 +15,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
     $result = new FeedsParserResult();
     $result->title = 'Profile Import';
     $result->items = array();
-    $mapped_fields = $this->getXmlFieldPairs();
+    $mapped_fields = IlrProfilesFeedXmlParser::getXmlFieldPairs();
 
     $result_counter = 0;
 
@@ -59,7 +59,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
    * Return mapping sources.
    */
   public function getMappingSources() {
-    $fields = $this->getXmlFieldPairs();
+    $fields = IlrProfilesFeedXmlParser::getXmlFieldPairs();
 
     $mapping_sources = array();
 
@@ -74,7 +74,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
     return $mapping_sources + parent::getMappingSources();
   }
 
-  public function getXmlFieldPairs() {
+  public static function getXmlFieldPairs() {
     return array(
       'ldap_display_name' => 'title',
       'ldap_campus_address' => 'field_address_line_1',
