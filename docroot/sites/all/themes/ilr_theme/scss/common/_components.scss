@@ -14,9 +14,9 @@
 
     h2 { // Set full width and align left
       @include grid-column($columns:12, $push:0, $collapse:true);
-      font-size: $mod00;
-      padding-top: $mod-02;
-      padding-bottom: $mod-02;
+      font-size: ms(0);
+      padding-top: ms(-2);
+      padding-bottom: ms(-2);
       margin-bottom: 0;
     }
     .field-name-field-thumbnail, .field-type-text-with-summary {
@@ -71,7 +71,7 @@
   article {
     min-height: 120px;
     h2 {
-      margin-bottom: $mod-02;
+      margin-bottom: ms(-2);
     }
     .field-type-text-with-summary {
       @include visible;
