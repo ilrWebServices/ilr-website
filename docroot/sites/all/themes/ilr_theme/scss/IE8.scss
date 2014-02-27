@@ -20,8 +20,8 @@ body {
 #content {
   border-left: 1px solid $gray-light;
   @include grid-column($columns:9, $push:3, $collapse:false);
-  padding-left: $mod03;
-  padding-right: $mod03;
+  padding-left: ms(3);
+  padding-right: ms(3);
 }
 
 .sidebar {
@@ -43,13 +43,13 @@ body {
 
 #breadcrumb {
   display: inline;
-  font-size: .8em;
+  font-size: .8rem;
   line-height: 1.8;
   
   .breadcrumb {
     border-left: 1px solid $gray-light;
     @include grid-column($columns:9, $push:3, $collapse:false);
-    padding-left: $mod03;
+    padding-left: ms(3);
   }
 }
 
