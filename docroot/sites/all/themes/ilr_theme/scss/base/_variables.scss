@@ -14,7 +14,6 @@ $mod-01: 12.62939px; //Based on mod scale. Number is not applied/calculated prop
 // ==================================================
 // Brand
 // ==================================================
-$black: #000000;
 $brand: #941e12;
 $brand-dark: #363636;
 $brand-light: #ACACAC;
@@ -33,17 +32,16 @@ $content-area: #fff;
 // Typography
 // ==================================================
 $font: 'Open Sans', sans-serif;
-//$font-headers: "chaparral-pro","Palatino Linotype","Book Antiqua",Palatino,serif;
 $font-headers: 'Marcellus', serif;
 
-$h1-size: $mod03;
-$h2-size: $mod02;
-$h3-size: $mod01;
-$h4-size: $mod01;
-$h5-size: em-calc(16);
-$h6-size: $mod00;
+$h1-size: ms(3);
+$h2-size: ms(2);
+$h3-size: ms(1);
+$h4-size: ms(1);
+$h5-size: rem-calc(16);
+$h6-size: ms(0);
 
-$h2-sm-size: em-calc(16);
+$h2-sm-size: rem-calc(16);
 
 $h1-text: #212121;
 $h2-text: #212121;
@@ -67,7 +65,7 @@ $h5-link-hover: #212121;
 $h6-link-hover: #212121;
 
 $p-text: #212121;
-$p-size: $mod00;
+$p-size: ms(0);
 $p-sm-size: $mod-01;
 
 $link: darken($brand, 5%);
