@@ -1,19 +1,19 @@
 // Compass
 @import "compass/css3";
 
+//Modular Scale
+@import "modular-scale";
+
 // Zurb Foundation
-@import
-  "foundation/variables",
-  "foundation/global",
-  "foundation/grid";
+@import "foundation/grid";
 
 // Base
 //@import "base/reset"; // Choose reset or normalize for the theme; DO NOT use both
 @import "base/normalize";
 @import "base/variables";
+@import "base/responsive-mixins";
 @import "base/base";
 @import "base/mixins";
-@import "base/responsive-mixins";
 @import "base/forms";
 @import "base/typography";
 @import "base/helpers";
@@ -26,13 +26,16 @@
 @import "common/nav";
 @import "common/footer";
 @import "common/common";
+@import "common/components";
 
 // Pages
 @import "pages/404";
 @import "pages/home";
 
 // Content types
-@import "pages/basic";
+@import "content_types/base";
+@import "content_types/basic_page";
+@import "content_types/news";
 
 // Vendor
 // Add vendor files

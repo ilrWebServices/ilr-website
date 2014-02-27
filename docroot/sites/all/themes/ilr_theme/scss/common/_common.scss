@@ -8,69 +8,144 @@
       $float:true*/
 
 .container {
-  @include grid-row(12);
+  @include grid-row;
+}
+
+.wrapper {
+  background: url(../images/bg-body-content.gif) repeat-x;
+}
+
+#banner {
+  border-top: 1px solid #000;
+  background: $brand;
+  //background-image: url(..images/fallback-gradient.png); 
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($brand), to(#72170e));
+  background-image: -webkit-linear-gradient(top, $brand 95%, #72170e); 
+  background-image:    -moz-linear-gradient(top, $brand 95%, #72170e);
+  background-image:     -ms-linear-gradient(top, $brand 95%, #72170e);
+  background-image:      -o-linear-gradient(top, $brand 95%, #72170e);
+  
+  #campaign {
+    @include grid-row;
+    height: 140px;
+
+    img {
+      //max-width: 960px;
+      height: 140px;
+    }
+  }
 }
 
 #main {
-  border-top: 37px solid $brand;
   .front & {
     border: none;
   }
-  clear: both;
-  padding-top: .5em;
-  position: relative;
+
   background: white;
-  @include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.2));
+  clear: both;
+  position: relative;
   .not-front & {
-    background: white url(../images/bg-body-content.gif) repeat-x;
+    @include grid-row;
   }
 
   #content {
-    @include grid-column(12);
+    .field-name-field-short-title {
+      font-size: $h2-size;
+      font-family: $font-headers;
+      margin-top: $mod-01;
+      margin-bottom: ms(1);
+    }
+
+    span.date-display-single {
+      color: $gray-medium;
+    }
+
     @include tablet-landscape-and-up {
-      @include grid-column(9,false,false,false,3);
-      padding: 0 40px;
+      @include grid-column($columns:9, $push:3, $collapse:true);
+      border-left: 1px solid $gray-light;
+      min-height: 480px;
+      padding-right: ms(3);
+      padding-left: ms(3);
     }
   }
+  
   .sidebar {
-    @include grid-column(12);
-    background: white;
-
     h3 {
       color: $gold;
     }
     a, p {
-      //color: white;
-      line-height: em-calc(20);
-      font-size: em-calc(14);
+      line-height: ms(1);
+      font-size: ms(0, 1em 68.5em);
     }
-
     @include tablet-landscape-and-up {
-      @include grid-column(3,false,false,false,false,9);
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      height: 100%;
-      padding: 0;
+      @include grid-column($columns:3, $pull:9, $collapse:true);
     }
-
     img {
       float: left;
-      margin-right: em-calc(20);
-      margin-bottom: 1em;
+      margin-right: ms(1);
+      margin-bottom: ms(0);
     }
   }
 }
 
-#banner img {
-  width: 100%;
+.region-sidebar-first {
+  #block-bean-tagged-news {
+    h2 {
+    font-size: ms(1);
+    }
+  }
+}
+
+#highlighted {
+  background-color: none;
+  border-bottom: 1px solid $gray-light;
+  margin-top: ms(1);
+  margin-bottom: ms(1);
+
+  @include tablet-portrait-and-up {
+    @include background(image-url("../images/spotlightGrad.gif"),
+      linear-gradient(bottom, $content-area 70%, $cornell-tan));
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#f0eee4", endColorStr="#ffffff"); //IE gradient
+    @include box-shadow(0px 2px 2px 0px rgba(0,0,0,0.2));
+    border-bottom: none;
+    margin-top: $mod-01;
+    padding-top: ms(0);
+  }
+
+  h2 {
+    font-size: ms(1);
+  }
+
+  article {
+    h2 {
+      font-size: ms(0);
+      line-height: ms(1);
+    }
+  }
+}
+
+.field-name-field-published-date {
+  margin-bottom: ms(5);
+  
+  span.date-display-single {
+    font-size: ms(0);
+  }
 }
 
 #breadcrumb {
-  font-size: .8rem;
-  @include grid-row(12);
+  display: none;
+  @include tablet-portrait-and-up {
+    display: inline;
+    font-size: .8rem;
+    line-height: rem-calc(24);
+  }
+
   .breadcrumb {
-    @include grid-column(9,false,false,false,3);
+    padding-left: 15px;
+    @include tablet-landscape-and-up {
+      border-left: 1px solid $gray-light;
+      padding-left: ms(3) !important;
+      @include grid-column($columns:9, $push:3, $collapse:true);
+    }
   }
 }

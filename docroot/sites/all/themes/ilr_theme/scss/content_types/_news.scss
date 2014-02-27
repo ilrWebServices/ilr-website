@@ -1,0 +1,7 @@
+.block-bean.tagged-news {
+  @extend %bean-base;
+
+  #sidebar-first &  {
+    @include slug;
+  }
+}

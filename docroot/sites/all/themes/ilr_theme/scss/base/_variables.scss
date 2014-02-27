@@ -1,12 +1,30 @@
+$row-width: rem-calc(960);
+// ==================================================
+// Modular Scale
+// ==================================================
+$ms-base: 14px, 960px;
+$ms-ratio: $golden;
+
+// Lists modular scale for debugging
+//@debug ms-list($Start: -2, $End: 4, $Bases: $ms-base, $Ratios: $ms-ratio);
+//Current scale: -2, -1, 0, 1, 2, 3, 4, 5 (8.65248px, 12.62939px, 14px, 20.43479px, 22.65248px, 33.06418px, 36.65248px, 53.49896px)
+
+$mod-01: 12.62939px; //Based on mod scale. Number is not applied/calculated properly by mixin.
+
 // ==================================================
 // Brand
 // ==================================================
 $brand: #941e12;
 $brand-dark: #363636;
 $brand-light: #ACACAC;
+$cornell-red: #b31b1b;
 $gold: #DED7BA;
+$gray-dark: #5c5350;
+$gray-medium: #8b8b85;
+$gray-light: #cfcdc4;
 $selection: #212121;
 $highlight: #ffc;
+$cornell-tan: #f0eee4;
 $bg-body: $brand;
 $content-area: #fff;
 
@@ -14,14 +32,16 @@ $content-area: #fff;
 // Typography
 // ==================================================
 $font: 'Open Sans', sans-serif;
-$font-headers: "chaparral-pro","Palatino Linotype","Book Antiqua",Palatino,serif;
+$font-headers: 'Marcellus', serif;
 
-$h1-size: em-calc(25);
-$h2-size: em-calc(20);
-$h3-size: em-calc(18);
-$h4-size: em-calc(16);
-$h5-size: em-calc(14);
-$h6-size: em-calc(14);
+$h1-size: ms(3);
+$h2-size: ms(2);
+$h3-size: ms(1);
+$h4-size: ms(1);
+$h5-size: rem-calc(16);
+$h6-size: ms(0);
+
+$h2-sm-size: rem-calc(16);
 
 $h1-text: #212121;
 $h2-text: #212121;
@@ -45,18 +65,20 @@ $h5-link-hover: #212121;
 $h6-link-hover: #212121;
 
 $p-text: #212121;
-$p-size: em-calc(16);
+$p-size: ms(0);
+$p-sm-size: $mod-01;
 
 $link: darken($brand, 5%);
 $link-hover: $brand;
 $nav-color: #2D4063;
-$footer-nav-color: #ccc;
 
-$rule: #212121;
+$rule: #cfcdc4;
 
 $blockquote: #444;
 
-$table-bg: #fff;
+$table-bg: #f8f8f6;
+$table-bg-th: $cornell-tan;
+$table-bg-alt: #e7e6e6;
 $table-bg-hover: darken($table-bg, 10%);
 $td-text: #444;
 $th-text: #212121;
@@ -80,4 +102,4 @@ $input-border: #ccc;
 $input-color: #a4a4a4;
 $label-color: #444;
 
-$input-size: 1.2em;
+$input-size: $mod-01;
