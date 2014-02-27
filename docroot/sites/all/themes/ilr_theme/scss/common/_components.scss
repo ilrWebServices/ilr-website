@@ -1,0 +1,92 @@
+// DEVELOPER NOTES
+// Due to limitations on how Sass compiles media queries and mixins,
+// we cannot use @extend within this file. All refactors should be
+// based on mixins
+// More info at https://github.com/nex3/sass/issues/456
+
+//
+// ==================================================
+// Slug Styles
+// ==================================================
+@mixin slug {
+  article {
+    min-height: 10px;
+
+    h2 { // Set full width and align left
+      @include grid-column($columns:12, $push:0, $collapse:true);
+      font-size: ms(0);
+      padding-top: ms(-2);
+      padding-bottom: ms(-2);
+      margin-bottom: 0;
+    }
+    .field-name-field-thumbnail, .field-type-text-with-summary {
+      @include hidden;
+    }
+  }
+  
+  .field-name-field-thumbnail {
+    display: none;
+  }
+}
+
+
+
+// ==================================================
+// Thumb Styles
+// ==================================================
+@mixin thumb {
+  article {
+    h2 {
+      @include grid-column($columns:8, $push:4);
+      font-size: $h2-sm-size;
+    }
+
+    .field-name-field-thumbnail {
+      @include grid-column($columns:4, $pull:8, $collapse:true);
+      position: absolute;
+
+      @include tablet-portrait-and-up {
+        left: 1em;
+      }
+    }
+
+    .field-type-text-with-summary {
+      @include hidden;
+    }
+
+    // Clear odd articles
+    // assumes that are there are two or fewer columns
+    &:nth-child(odd) {
+      clear: left;
+    }
+  }
+}
+
+// ==================================================
+// Rolodex Styles
+// ==================================================
+@mixin rolodex {
+  @include thumb;
+
+  article {
+    min-height: 120px;
+    h2 {
+      margin-bottom: ms(-2);
+    }
+    .field-type-text-with-summary {
+      @include visible;
+      @include grid-column($columns:8, $push:4);
+      p {
+        font-size: $p-sm-size;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// ==================================================
+// Card Styles
+// ==================================================
+@mixin card {
+}

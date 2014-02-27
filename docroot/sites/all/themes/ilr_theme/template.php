@@ -9,6 +9,7 @@
 function ilr_theme_preprocess_page(&$variables) {
   // Google fonts
   drupal_add_css('http://fonts.googleapis.com/css?family=Open+Sans', array('type' => 'external'));
+  drupal_add_css('http://fonts.googleapis.com/css?family=Marcellus', array('type' => 'external'));
 
   // Footer content
   $variables['page']['footer'][] = array('#markup' => '<div class="copyright">&copy; ' . date('Y') . ' Cornell University | ILR School </div>');
@@ -39,6 +40,24 @@ function ilr_theme_page_alter(&$page) {
       }
       // Remove the blocks from the page render
       unset($page['content']['system_main']['nodes'][$node['#node']->nid]['field_blocks']);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_hook()
+ *
+ *  Adds the type to the classes of the bean
+ */
+function ilr_theme_preprocess_block(&$variables) {
+  if ($variables['block']->module == 'bean') {
+    // Get the bean elements.
+    $beans = $variables['elements']['bean'];
+    // There is only 1 bean per block.
+    $bean = $beans[reset(element_children($beans))];
+    // Get the type if there is one
+    if (isset($bean['#bundle'])) {
+      $variables['classes_array'][] = str_replace('_', '-',$bean['#bundle']);
     }
   }
 }

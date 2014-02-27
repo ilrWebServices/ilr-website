@@ -11,7 +11,8 @@
   <?php print $styles; ?>
   <?php print $scripts; ?>
 
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <style type="text/css" media="all">@import url("http://www.ilr-website.dev/sites/all/themes/ilr_theme/css/IE8.css");</style><![endif]-->
 
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
