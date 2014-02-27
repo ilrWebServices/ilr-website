@@ -130,7 +130,7 @@ p {
   font-size: $p-size;
   color: $p-text;
   margin-bottom: $mod02;
-  line-height: 1.618;
+  line-height: ms(2);
 
   img {
     margin: 0;
@@ -195,7 +195,7 @@ nav ul {
 
 ol {
   padding-left: 20px;
-  line-height: 1.618;
+  line-height: ms(2);
   li {
     list-style: decimal;
     background: none;
@@ -245,7 +245,7 @@ ul.tabs {
 }
 
 dl {
-  line-height: 1.618;
+  line-height: ms(2);
 }
 
 dl dt {
@@ -352,7 +352,7 @@ table {
     border-bottom: 1px solid $rule;
     color: $th-text;
     font-weight: 400;
-    line-height: 1.46;
+    line-height: ms(1);
     padding: 4px 8px;
     //text-transform: uppercase;
   }
@@ -362,7 +362,7 @@ table {
     border-top: 1px dotted $rule;
     border-right: 1px dotted $rule;
     color: $td-text;
-    line-height: 1.46;
+    line-height: ms(1);
     padding: 8px;
   }
 
