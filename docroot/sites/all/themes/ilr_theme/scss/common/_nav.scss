@@ -27,7 +27,7 @@ nav {
     a, a:visited, a:active {
       text-decoration: none;
       color: $nav-color;
-      font-size: $mod00;
+      font-size: ms(0);
       font-weight: 400;
     }
   }
@@ -40,7 +40,7 @@ nav {
 }
   
 .menu-block-wrapper {
-  margin-bottom: $mod05;
+  margin-bottom: ms(5);
   
   ul {
     margin: 0;
