@@ -24,8 +24,6 @@
   background-image:    -moz-linear-gradient(top, $brand 95%, #72170e);
   background-image:     -ms-linear-gradient(top, $brand 95%, #72170e);
   background-image:      -o-linear-gradient(top, $brand 95%, #72170e);
-  //@include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.2));
-  //@include single-box-shadow(rgba(0,0,0,1) -2 0 5 5 inset);
   
   #campaign {
     @include grid-row;
@@ -47,18 +45,15 @@
   clear: both;
   position: relative;
   .not-front & {
-    //background: white url(../images/bg-body-content.gif) repeat-x;
-    //background: url(../images/bg-body-content.gif) repeat-x;
     @include grid-row;
   }
 
   #content {
-    //@include grid-column(12);
     .field-name-field-short-title {
       font-size: $h2-size;
       font-family: $font-headers;
       margin-top: $mod-01;
-      margin-bottom: $mod01;
+      margin-bottom: ms(1);
     }
 
     span.date-display-single {
@@ -69,19 +64,17 @@
       @include grid-column($columns:9, $push:3, $collapse:true);
       border-left: 1px solid $gray-light;
       min-height: 480px;
-      padding-right: $mod03; //33.069px
-      padding-left: $mod03;
+      padding-right: ms(3);
+      padding-left: ms(3);
     }
   }
   
   .sidebar {
-    //@include grid-row;
     h3 {
       color: $gold;
     }
     a, p {
-      //color: white;
-      line-height: $mod01;
+      line-height: ms(1);
       font-size: ms(0, 1em 68.5em);
     }
     @include tablet-landscape-and-up {
@@ -89,8 +82,8 @@
     }
     img {
       float: left;
-      margin-right: $mod01;
-      margin-bottom: $mod00;
+      margin-right: ms(1);
+      margin-bottom: ms(0);
     }
   }
 }
@@ -98,7 +91,7 @@
 .region-sidebar-first {
   #block-bean-tagged-news {
     h2 {
-    font-size: $mod01;
+    font-size: ms(1);
     }
   }
 }
@@ -106,37 +99,36 @@
 #highlighted {
   background-color: none;
   border-bottom: 1px solid $gray-light;
-  margin-top: $mod01;
-  margin-bottom: $mod01;
+  margin-top: ms(1);
+  margin-bottom: ms(1);
 
   @include tablet-portrait-and-up {
-    //background-color: $cornell-tan;
     @include background(image-url("../images/spotlightGrad.gif"),
       linear-gradient(bottom, $content-area 70%, $cornell-tan));
     filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#f0eee4", endColorStr="#ffffff"); //IE gradient
     @include box-shadow(0px 2px 2px 0px rgba(0,0,0,0.2));
     border-bottom: none;
     margin-top: $mod-01;
-    padding-top: $mod00;
+    padding-top: ms(0);
   }
 
   h2 {
-    font-size: $mod01;
+    font-size: ms(1);
   }
 
   article {
     h2 {
-      font-size: $mod00;
-      line-height: 1.46;
+      font-size: ms(0);
+      line-height: ms(1);
     }
   }
 }
 
 .field-name-field-published-date {
-  margin-bottom: $mod05;
+  margin-bottom: ms(5);
   
   span.date-display-single {
-    font-size: $mod00;
+    font-size: ms(0);
   }
 }
 
@@ -145,14 +137,14 @@
   @include tablet-portrait-and-up {
     display: inline;
     font-size: .8rem;
-    line-height: em-calc(24);
+    line-height: rem-calc(24);
   }
 
   .breadcrumb {
     padding-left: 15px;
     @include tablet-landscape-and-up {
       border-left: 1px solid $gray-light;
-      padding-left: $mod03 !important;
+      padding-left: ms(3) !important;
       @include grid-column($columns:9, $push:3, $collapse:true);
     }
   }
