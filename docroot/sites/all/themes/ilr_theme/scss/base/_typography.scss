@@ -29,7 +29,7 @@ h1 {
 }
 
 h1.title {
-  margin: $mod02 0;
+  margin: ms(2) 0;
 }
 
 h2 {
@@ -81,7 +81,7 @@ h3 + img.aligncenter {
 h4 {
   font-size: $h4-size;
   color: $h4-text;
-  margin-bottom: $mod-02;
+  margin-bottom: ms(-2);
 
   a {
     color: $h4-link;
@@ -95,7 +95,7 @@ h4 {
 h5 {
   font-size: $h5-size;
   color: $h5-text;
-  margin-bottom: $mod-02;
+  margin-bottom: ms(-2);
 
   a {
     color: $h5-link;
@@ -111,7 +111,7 @@ h6 {
   font-size: $h6-size;
   font-weight: 600;
   color: $h6-text;
-  margin-bottom: $mod-02;
+  margin-bottom: ms(-2);
 
   a {
     color: $h6-link;
@@ -129,7 +129,7 @@ h6 {
 p {
   font-size: $p-size;
   color: $p-text;
-  margin-bottom: $mod02;
+  margin-bottom: ms(2);
   line-height: ms(2);
 
   img {
@@ -142,7 +142,7 @@ p + h3,
 p + h4,
 p + h5,
 p + h6 {
-    margin-top: $mod03;
+    margin-top: ms(3);
   }
 
 p + img.alignright,
@@ -158,7 +158,7 @@ hr {
   border: 0;
   border: 1px solid $rule;
   border-top: 1px solid $rule;
-  margin: $mod-01 0 $mod01;
+  margin: $mod-01 0 ms(1);
 }
 
 code, pre {
@@ -205,7 +205,7 @@ ol {
 
 ul {
   padding: 0;
-  line-height: $mod02;
+  line-height: ms(2);
 }
 
 ul.none {
@@ -227,9 +227,9 @@ ul.disc {
 li {
   list-style: none;
   background: url(../images/squareBullet.gif) no-repeat 0 8px;
-  font-size: $mod00;
-  margin: 0 0 $mod-02 $mod-01;
-  padding: 0 0 0 $mod00;
+  font-size: ms(0);
+  margin: 0 0 ms(-2) $mod-01;
+  padding: 0 0 0 ms(0);
 
   p {
 
@@ -249,12 +249,12 @@ dl {
 }
 
 dl dt {
-  font-size: $mod00;
+  font-size: ms(0);
   font-weight: bold;
 }
 
 dl dd {
-  font-size: $mod00;
+  font-size: ms(0);
   margin: 0;
 }
 
@@ -301,7 +301,7 @@ q {
 }
 
 sub, sup {
-  font-size: $mod-02;
+  font-size: ms(-2);
   line-height: 0;
   position: relative;
   vertical-align: baseline;
