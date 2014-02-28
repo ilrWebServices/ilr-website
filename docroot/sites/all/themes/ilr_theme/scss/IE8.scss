@@ -45,7 +45,7 @@ body {
   display: inline;
   font-size: .8rem;
   line-height: 1.8;
-  
+
   .breadcrumb {
     border-left: 1px solid $gray-light;
     @include grid-column($columns:9, $push:3, $collapse:false);

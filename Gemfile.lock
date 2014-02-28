@@ -34,6 +34,8 @@ GEM
       rb-kqueue (>= 0.2)
     lumberjack (1.0.4)
     method_source (0.8.2)
+    modular-scale (2.0.4)
+      compass (>= 0.12.0)
     multi_json (1.7.9)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -55,3 +57,4 @@ DEPENDENCIES
   compass
   guard-livereload
   guard-sass
+  modular-scale (>= 2.0.0.alpha5)
