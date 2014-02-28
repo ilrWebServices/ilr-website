@@ -13,8 +13,8 @@ composer.lock
 vendor/
 scripts/ilr-profile-data-pull/xml/
 
-# Ignore the stylesheet
-docroot/sites/all/themes/ilr_theme/css/style.css
+# Ignore the stylesheets
+docroot/sites/all/themes/ilr_theme/css/
 
 # Ignore Mac-only files
 .DS_Store
