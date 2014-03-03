@@ -10,6 +10,40 @@
 function basic_page_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'bean-html-field_bean_content'
+  $field_instances['bean-html-field_bean_content'] = array(
+    'bundle' => 'html',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'bean',
+    'field_name' => 'field_bean_content',
+    'label' => 'Content',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_blocks-field_content_region'
   $field_instances['field_collection_item-field_blocks-field_content_region'] = array(
     'bundle' => 'field_blocks',
@@ -203,6 +237,7 @@ function basic_page_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Blocks');
   t('Body');
+  t('Content');
   t('Content Region');
   t('Highlighted Region');
   t('Sidebar Region');
