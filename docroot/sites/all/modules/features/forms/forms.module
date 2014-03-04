@@ -18,7 +18,7 @@ define('LINE_BREAK_IN_EMAIL', "\n");
 function forms_form_alter(&$form, &$form_state, $form_id) {
   $processingFunction = '_process_' . str_replace('_entityform_edit_form', '', $form_id);
   if (function_exists($processingFunction)) {
-      $form['actions']['submit']['#submit'][] = $processingFunction;
+    $form['actions']['submit']['#submit'][] = $processingFunction;
   }
 }
 
@@ -128,6 +128,7 @@ function _process_student_services_contact_form(&$form) {
  */
 function _process_career_services_contact_form(&$form) {
   // Get form fields
+  $formfields = array();
   $formfields = _get_form_data($form);
 
   // Admin email is the radio button "how to direct" field
@@ -149,17 +150,6 @@ function _process_career_services_contact_form(&$form) {
     $body .= SKIP_LINE_IN_EMAIL;
 
     $body .= _default_display_form_data($formfields);
-
-    // This code will give us a possibly nicer display of all form data,
-    // but it has some drawbacks.  I'm keeping it here, because it took
-    // Aaron and me a couple of hours to hone in on these four lines of code:
-    //   $entityform_id = $form['#entity']->entityform_id;
-    //   $entityform = entityform_load($entityform_id);
-    //     dpm ($entityform);
-    //   $controller = entity_get_controller('entityform');
-    //   $content = $controller->view(array($entityform->entityform_id => $entityform), 'confirmation', NULL, TRUE);
-    //     dpm(entity2text_renderarray_to_text($content));
-    // End of "possibly nicer display" code
 
     $body .= LINE_BREAK_IN_EMAIL;
     $body .= "You will receive a response within two business days.";
@@ -191,6 +181,50 @@ function _process_career_services_contact_form(&$form) {
 
 }   // Ends _process_career_services_contact_form
 
+
+/**
+ * Process Faculty Request for TA or RA
+ */
+function _process_faculty_request_for_ta_or_ra(&$form) {
+  // Get form fields
+  $formfields = array();
+  $formfields = _get_form_data($form);
+  $formfields_displayed = _entity_display_form_data($form);
+
+  $admin_email = "ilrgradforms-mailbox@cornell.edu";
+  $salutation = _form_salutation($formfields['full_name']['val']);
+
+  // User email
+  $subject = "Faculty Assistant Request Confirmation";
+  $body = $salutation;
+  $body .= "Your request for one or more TA or RA student assistants, ";
+  $body .= "submitted on ";
+  $body .= _form_confirmation_date();
+  $body .= ", has been received." . SKIP_LINE_IN_EMAIL;
+  $body .= "Your request contains the following information:";
+  $body .= SKIP_LINE_IN_EMAIL;
+  $body .= $formfields_displayed;
+  $body .= LINE_BREAK_IN_EMAIL;
+  $body .= "Thank you for your interest.";
+  $body .= SKIP_LINE_IN_EMAIL;
+  $body .= "ILR Graduate Degree Programs, Cornell University";
+  $body .= LINE_BREAK_IN_EMAIL;
+  $body .= $admin_email;
+
+  _send_email_for_entity_form($formfields['email']['val'], $admin_email, $subject, $body);
+
+  // Admin email
+  $body = "Dear Graduate Degree Programs," . SKIP_LINE_IN_EMAIL;
+  $body .= "A Faculty Assistant Request form was submitted on ";
+  $body .= _form_confirmation_date() . ".";
+  $body .= SKIP_LINE_IN_EMAIL;
+  $body .= "The submission contains the following information:";
+  $body .= SKIP_LINE_IN_EMAIL;
+  $body .= $formfields_displayed;
+
+  $from = $formfields['email']['val'];
+  _send_email_for_entity_form($admin_email, $from, $subject, $body);
+}   // Ends _process_faculty_request_for_ta_or_ra
 
 /**
  * Custom function to extract field values and labels (title) from the form
@@ -237,6 +271,18 @@ function _default_display_form_data($ff) {
     $retval .= $info['title'] . ': ' . $info['val'] . LINE_BREAK_IN_EMAIL;
   }
   return $retval;
+}
+
+/**
+ * Display form data using entityform and entity2text code from Ted Bowman
+ */
+function _entity_display_form_data($form) {
+  // Set display of form fields for email and anything else
+  $entityform_id = $form['#entity']->entityform_id;
+  $entityform = entityform_load($entityform_id);
+  $controller = entity_get_controller('entityform');
+  $content = $controller->view(array($entityform->entityform_id => $entityform), 'confirmation', NULL, TRUE);
+  return entity2text_renderarray_to_text($content);
 }
 
 
