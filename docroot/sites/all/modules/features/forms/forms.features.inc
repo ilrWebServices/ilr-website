@@ -49,6 +49,49 @@ function forms_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['faculty_request_for_ta_or_ra'] = entity_import('entityform_type', '{
+    "type" : "faculty_request_for_ta_or_ra",
+    "label" : "Faculty request for TA or RA",
+    "data" : {
+      "draftable" : 0,
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EYou have succesfully submitted a request for one or more graduate student assistants.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe information you submitted has been sent to the program coordinator.\\u0026nbsp; You will receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "3" : 0,
+        "4" : 0,
+        "6" : 0,
+        "5" : 0,
+        "7" : 0,
+        "8" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : {
+        "value" : "\\u003Cp\\u003ETo be completed by the faculty member requesting a graduate assistant.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EPlease complete a separate form for each class or project for which you are requesting TAs or RAs.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      }
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['ilr_website_feedback'] = entity_import('entityform_type', '{
     "type" : "ilr_website_feedback",
     "label" : "ILR Website Feedback",
