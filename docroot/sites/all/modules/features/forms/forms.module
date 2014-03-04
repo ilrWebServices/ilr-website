@@ -16,7 +16,6 @@ define('LINE_BREAK_IN_EMAIL', "\n");
  * Implements hook_form_alter
  */
 function forms_form_alter(&$form, &$form_state, $form_id) {
-  //dpm($form_id);
   $processingFunction = '_process_' . str_replace('_entityform_edit_form', '', $form_id);
   if (function_exists($processingFunction)) {
       $form['actions']['submit']['#submit'][] = $processingFunction;
