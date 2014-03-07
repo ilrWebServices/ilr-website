@@ -381,6 +381,503 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_classes'
+  $field_instances['entityform-graduate_student_request_for_tea-field_classes'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_classes',
+    'label' => 'Classes you are interesting in TAing or faculty members to whom you wish to be assigned',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 18,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_computer_skills'
+  $field_instances['entityform-graduate_student_request_for_tea-field_computer_skills'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_computer_skills',
+    'label' => 'Indicate level, if any, of computer skills or knowledge',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_concentration'
+  $field_instances['entityform-graduate_student_request_for_tea-field_concentration'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_concentration',
+    'label' => 'Concentration',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_degree_program'
+  $field_instances['entityform-graduate_student_request_for_tea-field_degree_program'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_degree_program',
+    'label' => 'Degree program',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_email'
+  $field_instances['entityform-graduate_student_request_for_tea-field_email'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_first_name'
+  $field_instances['entityform-graduate_student_request_for_tea-field_first_name'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_first_name',
+    'label' => 'First name',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_ilr_department'
+  $field_instances['entityform-graduate_student_request_for_tea-field_ilr_department'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_ilr_department',
+    'label' => ' Departments in which you prefer assignment (Indicate at least top two choices.)',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_last_name'
+  $field_instances['entityform-graduate_student_request_for_tea-field_last_name'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_minor_subject_s_'
+  $field_instances['entityform-graduate_student_request_for_tea-field_minor_subject_s_'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_minor_subject_s_',
+    'label' => 'Minor subject(s)',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_number_of_completed_semest'
+  $field_instances['entityform-graduate_student_request_for_tea-field_number_of_completed_semest'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_number_of_completed_semest',
+    'label' => 'Number of completed semesters in residence',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_prior_appointments'
+  $field_instances['entityform-graduate_student_request_for_tea-field_prior_appointments'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_prior_appointments',
+    'label' => 'List your prior TA or RA appointments',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 21,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_semester'
+  $field_instances['entityform-graduate_student_request_for_tea-field_semester'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_semester',
+    'label' => 'Semester for which you are requesting assistantship',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_type_of_grad_assistant'
+  $field_instances['entityform-graduate_student_request_for_tea-field_type_of_grad_assistant'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_type_of_grad_assistant',
+    'label' => 'Indicate preference for teaching or research assistantship',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_work_experience'
+  $field_instances['entityform-graduate_student_request_for_tea-field_work_experience'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_work_experience',
+    'label' => 'List relevant work experience and/or your qualifications',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 20,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_year_as_text'
+  $field_instances['entityform-graduate_student_request_for_tea-field_year_as_text'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_year_as_text',
+    'label' => 'Year',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 14,
+    ),
+  );
+
   // Exported field_instance: 'entityform-ilr_website_feedback-field_comments'
   $field_instances['entityform-ilr_website_feedback-field_comments'] = array(
     'bundle' => 'ilr_website_feedback',
@@ -620,19 +1117,32 @@ function forms_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t(' Departments in which you prefer assignment (Indicate at least top two choices.)');
   t(' Semester requesting assistantship');
   t('Account Number (for externally funded projects)');
   t('Additional comments');
+  t('Classes you are interesting in TAing or faculty members to whom you wish to be assigned');
   t('Comments');
+  t('Concentration');
   t('Course name');
   t('Course number (e.g. ILRLR 2100)');
+  t('Degree program');
   t('Department');
   t('Email');
+  t('First name');
+  t('Indicate level, if any, of computer skills or knowledge');
+  t('Indicate preference for teaching or research assistantship');
+  t('Last name');
+  t('List relevant work experience and/or your qualifications');
+  t('List your prior TA or RA appointments');
+  t('Minor subject(s)');
   t('Name');
   t('Number of assistants requested');
+  t('Number of completed semesters in residence');
   t('Preferred students (in order of preference), or desired qualifications');
   t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
   t('RA Additonal Information');
+  t('Semester for which you are requesting assistantship');
   t('TA Course Information');
   t('Type of grad assistant');
   t('Year');
