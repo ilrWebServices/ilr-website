@@ -22,6 +22,19 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
+/**
+ * Implement hook_theme().
+ */
+function forms_theme() {
+  $template_path = drupal_get_path('module', 'forms') . '/templates';
+  return array(
+    'forms_website_feedback' => array(
+      'template' => 'default-mail',
+      'arguments' => array('message' => ''),
+      'path' => $template_path,
+    ),
+  );
+}
 
  /**
  * Process Web Site Feedback form
@@ -37,19 +50,27 @@ function _process_ilr_website_feedback(&$form) {
   // User email is only sent if email was specified on form
   if (!empty($formfields['email']['val'])) {
     $subject = "ILR Web Site Feedback confirmation";
-    $body = $salutation;
-    $body .= "Thank you for your comments about the ILR Website. ";
-    $body .= "You submitted the following information on ";
-    $body .= _form_confirmation_date() . "." . SKIP_LINE_IN_EMAIL;
+    theme('forms_website_feedback', array( // you can pass any key => value pairs to the tpl in this array
+      'salutation'      => $salutation,
+      'submission_date' => _form_confirmation_date(),
+      'form_data'       => _default_display_form_data($formfields),
+      'admin_email'     => $admin_email,
+    ));
 
-    $body .= _default_display_form_data($formfields);
 
-    $body .= LINE_BREAK_IN_EMAIL;
-    $body .= "Sincerely,";
-    $body .= LINE_BREAK_IN_EMAIL;
-    $body .= "ILR Web Team";
-    $body .= LINE_BREAK_IN_EMAIL;
-    $body .= $admin_email;
+    // $body = $salutation;
+    // $body .= "Thank you for your comments about the ILR Website. ";
+    // $body .= "You submitted the following information on ";
+    // $body .= _form_confirmation_date() . "." . SKIP_LINE_IN_EMAIL;
+
+    // $body .= _default_display_form_data($formfields);
+
+    // $body .= LINE_BREAK_IN_EMAIL;
+    // $body .= "Sincerely,";
+    // $body .= LINE_BREAK_IN_EMAIL;
+    // $body .= "ILR Web Team";
+    // $body .= LINE_BREAK_IN_EMAIL;
+    // $body .= $admin_email;
 
     _send_email_for_entity_form($formfields['email']['val'], $admin_email, $subject, $body);
   }
