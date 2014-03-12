@@ -45,7 +45,7 @@ class TaggedNewsBean extends BeanPlugin {
 
     $form['query_type'] = array(
       '#type' => 'radios',
-      '#title' => t('Results'),
+      '#title' => t('Tag filtering'),
       '#default_value' => $bean->query_type,
       '#options' => array('inclusive' => 'Any', 'exclusive' => 'All'),
       '#description' => t('Select news with all the chosen tags or any of them?'),
