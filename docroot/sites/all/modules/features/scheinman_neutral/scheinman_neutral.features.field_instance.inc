@@ -36,7 +36,7 @@ function scheinman_neutral_field_default_field_instances() {
     'label' => 'Other Dispute Resolution Training',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -164,7 +164,7 @@ function scheinman_neutral_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 36,
     ),
   );
@@ -277,7 +277,7 @@ function scheinman_neutral_field_default_field_instances() {
     'label' => 'Dispute Resolution Experience',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -317,7 +317,7 @@ function scheinman_neutral_field_default_field_instances() {
     'label' => ' Cornell University Dispute Resolution Training (Course titles and dates taken)',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -357,7 +357,7 @@ function scheinman_neutral_field_default_field_instances() {
     'label' => 'Education',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -478,7 +478,7 @@ function scheinman_neutral_field_default_field_instances() {
     'label' => 'Fee Policy',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -764,7 +764,7 @@ function scheinman_neutral_field_default_field_instances() {
     'label' => 'Professional Associations',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -804,7 +804,7 @@ function scheinman_neutral_field_default_field_instances() {
     'label' => 'Professional Work History:',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -894,7 +894,7 @@ function scheinman_neutral_field_default_field_instances() {
     'label' => 'References',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(

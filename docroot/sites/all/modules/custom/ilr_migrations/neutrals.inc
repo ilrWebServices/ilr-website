@@ -102,6 +102,24 @@ class ScheinmanNeutralsMigration extends Migration {
          ->description('See prepare().');
     $this->addFieldMapping('field_profile_image:source_dir')
         ->defaultValue('http://www.ilr.cornell.edu/conflictRes/customcf/embeddedApps/roster/photos/');
+
+    // Map text format for appropriate fields
+    $wysiwyg_fields = array(
+      'field_professional_work_history_',
+      'field_dispute_resolution_experie',
+      'field_dispute_resolution_trainin',
+      'field_additional_dispute_resolut',
+      'field_professional_associations',
+      'field_education',
+      'field_references',
+      'field_fee_policy',
+    );
+
+    foreach ($wysiwyg_fields as $field_name) {
+      $this->addFieldMapping("{$field_name}:format")
+        ->defaultValue('full_html');
+    }
+
   }
 
   private function _getFullName($row) {
@@ -144,6 +162,7 @@ class ScheinmanNeutralsMigration extends Migration {
       $row->filename = '';
     }
 
+
     return TRUE;
   }
 
@@ -153,6 +172,9 @@ class ScheinmanNeutralsMigration extends Migration {
 
     // Set the path
     $node->path['alias'] = 'neutrals/' . $row->id;
+
+    // Make published if row comes in as approved
+    $node->status = $row->approved;
 
     return TRUE;
   }
