@@ -82,6 +82,7 @@ function ilr_install() {
     'scheinman_neutral',
     'news',
     'people_profiles',
+    'people_profile_import',
     'wit',
     'google_analytics_universal',
     'settings_and_permissions',
