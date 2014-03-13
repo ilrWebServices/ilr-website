@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# check running from docroot
+CURRENT_DIR=${PWD##*/}
+if [ ! "$CURRENT_DIR" = "docroot" ]; then
+  echo 'Please be sure that you are running this command from the docroot.'
+  exit 2
+fi
+
+drush sql-sync @ilr.ilr.dev @ilr.ilr.local --no-cache -y
+
+drush rsync @ilr.ilr.dev:%files/ @ilr.ilr.local:%files
+
+drush -l www.ilr-website.dev en drupal_streamline_dev ilr_dev -y
