@@ -412,6 +412,7 @@ function settings_and_permissions_user_default_permissions() {
     'name' => 'delete terms in publications',
     'roles' => array(
       'administrator' => 'administrator',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'taxonomy',
   );
@@ -421,6 +422,7 @@ function settings_and_permissions_user_default_permissions() {
     'name' => 'delete terms in wire_services',
     'roles' => array(
       'administrator' => 'administrator',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'taxonomy',
   );
@@ -457,6 +459,7 @@ function settings_and_permissions_user_default_permissions() {
     'name' => 'edit terms in publications',
     'roles' => array(
       'administrator' => 'administrator',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'taxonomy',
   );
@@ -466,6 +469,7 @@ function settings_and_permissions_user_default_permissions() {
     'name' => 'edit terms in wire_services',
     'roles' => array(
       'administrator' => 'administrator',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'taxonomy',
   );

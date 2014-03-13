@@ -111,7 +111,6 @@ features[variable][] = site_frontpage
 features[variable][] = site_mail
 features[variable][] = site_name
 features[variable][] = theme_default
-features[variable][] = update_last_check
 features[variable][] = update_notify_emails
 features[variable][] = user_admin_role
 features[variable][] = user_email_verification
