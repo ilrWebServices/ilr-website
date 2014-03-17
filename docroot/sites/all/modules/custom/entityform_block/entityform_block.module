@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file entityform_block.module
+ * Provides blocks for entity form types.
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function entityform_block_block_info() {
+  $blocks = array();
+  foreach (entityform_get_types() as $entityform_type) {
+    if (!empty($entityform_type->data['block_enable'])) {
+      $blocks[$entityform_type->type] = array(
+        'info' => t('Entityform: ' . $entityform_type->label()),
+        // DRUPAL_CACHE_PER_ROLE will be assumed.
+      );
+    }
+  }
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function entityform_block_block_view($delta = '') {
+  module_load_include('inc', 'entityform', 'entityform.admin');
+
+  $block = array();
+  $entityform_type = entityform_get_types($delta);
+  if (!empty($entityform_type)) {
+    $block['subject'] = $entityform_type->label();
+    $block['content'] = entityform_form_wrapper(entityform_empty_load($entityform_type->type), 'submit', 'embedded');
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter(): entityform_type_form.
+ */
+function entityform_block_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
+  $entityform_type = $form['#entityform_type'];
+
+  $form['data']['block_set'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Block settings'),
+    '#collapsible' => TRUE,
+    '#group' => 'additional_settings',
+    '#weight' => 150,
+  );
+  $form['data']['block_set']['block_enable'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Provide block'),
+    '#default_value' => !empty($entityform_type->data['block_enable']),
+    '#description' => t('Provide a block showing this entity form.'),
+    '#parents' => array('data', 'block_enable'),
+  );
+}

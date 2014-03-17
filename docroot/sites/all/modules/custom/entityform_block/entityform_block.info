@@ -1,0 +1,7 @@
+name = Entityform block
+description = Provides blocks for entity forms.
+dependencies[] = entityform
+core = 7.x
+
+; Downloaded from https://drupal.org/sandbox/joachim/2045865
+; Referenced from https://drupal.org/node/1599352
