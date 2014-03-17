@@ -164,10 +164,12 @@ class EventBlockBean extends BeanPlugin {
   }
 
   /**
-   * Truncates the description to a chosen length
+   * Strips tags from description and truncates it
+   * to 200 characters (roughly 35 words)
    */
   private function format_event_description($event_description) {
-    return truncate_utf8($event_description, 200, TRUE, TRUE);
+    //truncate_utf8($string, $max_length, $wordsafe = FALSE, $add_ellipsis = FALSE, $min_wordsafe_length = 1)
+    return truncate_utf8(strip_tags($event_description), 200, TRUE, TRUE);
   }
 
   /**
