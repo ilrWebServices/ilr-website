@@ -27,7 +27,6 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
  */
 function forms_theme() {
   $template_path = drupal_get_path('module', 'forms') . '/templates';
-  dpm ($template_path);
 
   return array(
     'forms_website_feedback' => array(
@@ -87,7 +86,7 @@ function _process_ilr_website_feedback(&$form) {
   // User email is only sent if email was specified on form
   if (!empty($formfields['email']['val'])) {
     $subject = "ILR Web Site Feedback confirmation";
-    $body = theme('forms_website_feedback', array( // you can pass any key => value pairs to the tpl in this array
+    $body = theme('forms_website_feedback', array(
       'salutation'      => $salutation,
       'submission_date' => _form_confirmation_date(),
       'form_data'       => _entity_display_form_data($form),
@@ -130,39 +129,11 @@ function _process_student_services_contact_form(&$form) {
     _send_email_for_entity_form($formfields['email']['val'], $admin_email, $subject, $body);
   }
 
-    // $body = $salutation;
-    // $body .= "Thank you for your questions and comments to ";
-    // $body .= "ILR Student Services. You submitted the following information on ";
-    // $body .= _form_confirmation_date() . "." . SKIP_LINE_IN_EMAIL;
-
-    // $body .= _default_display_form_data($formfields);
-
-    // $body .= LINE_BREAK_IN_EMAIL;
-    // $body .= "You will receive a response within 3-5 business days.";
-    // $body .= SKIP_LINE_IN_EMAIL;
-    // $body .= "Sincerely,";
-    // $body .= LINE_BREAK_IN_EMAIL;
-    // $body .= "Office of Student Services, ILR School, Cornell University";
-    // $body .= LINE_BREAK_IN_EMAIL;
-    // $body .= $admin_email;
-
-
   // Admin email
   $body = theme('student_services_contact_form_admin', array(
     'submission_date' => _form_confirmation_date(),
     'form_data'       => _entity_display_form_data($form),
   ));
-
-  // $subject = "ILR OSS contact form submitted";
-  // $body = "ILR Student Services contact form was submitted on ";
-  // $body .= _form_confirmation_date() . ".";
-  // $body .= SKIP_LINE_IN_EMAIL;
-
-  // $body .= _default_display_form_data($formfields);
-
-  // $body .= LINE_BREAK_IN_EMAIL;
-  // $body .= "Please respond promptly if the submitter provided an email address,";
-  // $body .= " even if just to say Thank You.";
 
   $from = _get_string_or_default($formfields['email']['val'], $admin_email);
   _send_email_for_entity_form($admin_email, $from, $subject, $body);
@@ -177,10 +148,10 @@ function _process_career_services_contact_form(&$form) {
   $formfields = array();
   $formfields = _get_form_data($form);
 
-  // Admin email is the radio button "how to direct" field
-  $admin_email = $formfields['career_svc_how_to_direct']['val'] . "@cornell.edu";
+  // Admin email is the radio button "career_services_how_to_dir to dir" field
+  $admin_email = $formfields['career_services_how_to_dir']['val'] . "@cornell.edu";
 
-  $org = $formfields['career_svc_how_to_direct']['title'];
+  $org = $formfields['career_services_how_to_dir']['itemlabel'];
   $salutation = _form_salutation($formfields['full_name']['val']);
   $subject = _get_string_or_default(
       $formfields['subject_line']['val'],
@@ -196,24 +167,6 @@ function _process_career_services_contact_form(&$form) {
       'admin_email'     => $admin_email,
     ));
 
-    // $body = $salutation;
-    // $body .= "Thank you for your contacting ILR Career Services. ";
-    // $body .= " Your questions/comments were submitted on ";
-    // $body .= _form_confirmation_date() . "." . SKIP_LINE_IN_EMAIL;
-    // $body .= "Your submission contains the following information:";
-    // $body .= SKIP_LINE_IN_EMAIL;
-
-    // $body .= _default_display_form_data($formfields);
-
-    // $body .= LINE_BREAK_IN_EMAIL;
-    // $body .= "You will receive a response within two business days.";
-    // $body .= SKIP_LINE_IN_EMAIL;
-    // $body .= "Sincerely,";
-    // $body .= LINE_BREAK_IN_EMAIL;
-    // $body .= "{$org} / {$admin_email}";
-    // $body .= LINE_BREAK_IN_EMAIL;
-    // $body .= "Office of Career Services, ILR School, Cornell University";
-
     _send_email_for_entity_form($formfields['email']['val'], $admin_email, $subject, $body);
   }
 
@@ -222,19 +175,6 @@ function _process_career_services_contact_form(&$form) {
     'submission_date' => _form_confirmation_date(),
     'form_data'       => _entity_display_form_data($form),
   ));
-
-
-  // $body = "An ILR Career Services contact form was submitted on ";
-  // $body .= _form_confirmation_date() . ".";
-  // $body .= SKIP_LINE_IN_EMAIL;
-  // $body .= "The submission contains the following information:";
-  // $body .= SKIP_LINE_IN_EMAIL;
-
-  // $body .= _default_display_form_data($formfields);
-
-  // $body .= LINE_BREAK_IN_EMAIL;
-  // $body .= "Please respond promptly if the submitter provided an email address,";
-  // $body .= " even if just to say Thank You.";
 
   $from = _get_string_or_default($formfields['email']['val'], $admin_email);
   _send_email_for_entity_form($admin_email, $from, $subject, $body);
@@ -263,22 +203,6 @@ function _process_faculty_request_for_ta_or_ra(&$form) {
     'admin_email'     => $admin_email,
   ));
 
-
-  // $body = $salutation;
-  // $body .= "Your request for one or more TA or RA student assistants, ";
-  // $body .= "submitted on ";
-  // $body .= _form_confirmation_date();
-  // $body .= ", has been received." . SKIP_LINE_IN_EMAIL;
-  // $body .= "Your request contains the following information:";
-  // $body .= SKIP_LINE_IN_EMAIL;
-  // $body .= $formfields_displayed;
-  // $body .= LINE_BREAK_IN_EMAIL;
-  // $body .= "Thank you for your interest.";
-  // $body .= SKIP_LINE_IN_EMAIL;
-  // $body .= "ILR Graduate Degree Programs, Cornell University";
-  // $body .= LINE_BREAK_IN_EMAIL;
-  // $body .= $admin_email;
-
   _send_email_for_entity_form($formfields['email']['val'], $admin_email, $subject, $body);
 
   // Admin email
@@ -286,14 +210,6 @@ function _process_faculty_request_for_ta_or_ra(&$form) {
     'submission_date' => _form_confirmation_date(),
     'form_data'       => _entity_display_form_data($form),
   ));
-
-  // $body = "Dear Graduate Degree Programs," . SKIP_LINE_IN_EMAIL;
-  // $body .= "A Faculty Assistant Request form was submitted on ";
-  // $body .= _form_confirmation_date() . ".";
-  // $body .= SKIP_LINE_IN_EMAIL;
-  // $body .= "The submission contains the following information:";
-  // $body .= SKIP_LINE_IN_EMAIL;
-  // $body .= $formfields_displayed;
 
   $from = $formfields['email']['val'];
   _send_email_for_entity_form($admin_email, $from, $subject, $body);
@@ -322,21 +238,6 @@ function _process_graduate_student_request_for_tea(&$form) {
     'admin_email'     => $admin_email,
   ));
 
-  // $body = $salutation;
-  // $body .= "Your request for a student assistantship, ";
-  // $body .= "submitted on ";
-  // $body .= _form_confirmation_date();
-  // $body .= ", has been received." . SKIP_LINE_IN_EMAIL;
-  // $body .= "It contains the following information:";
-  // $body .= SKIP_LINE_IN_EMAIL;
-  // $body .= $formfields_displayed;
-  // $body .= LINE_BREAK_IN_EMAIL;
-  // $body .= "Thank you for your interest.";
-  // $body .= SKIP_LINE_IN_EMAIL;
-  // $body .= "ILR Graduate Degree Programs, Cornell University";
-  // $body .= LINE_BREAK_IN_EMAIL;
-  // $body .= $admin_email;
-
   _send_email_for_entity_form($formfields['email']['val'], $admin_email, $subject, $body);
 
   // Admin email
@@ -346,14 +247,6 @@ function _process_graduate_student_request_for_tea(&$form) {
     'submission_date' => _form_confirmation_date(),
     'form_data'       => _entity_display_form_data($form),
   ));
-
-  // $body = "Dear Graduate Degree Programs," . SKIP_LINE_IN_EMAIL;
-  // $body .= "A Student Assistantship Request form was submitted on ";
-  // $body .= _form_confirmation_date() . ".";
-  // $body .= SKIP_LINE_IN_EMAIL;
-  // $body .= "The submission contains the following information:";
-  // $body .= SKIP_LINE_IN_EMAIL;
-  // $body .= $formfields_displayed;
 
   $from = $formfields['email']['val'];
   _send_email_for_entity_form($admin_email, $from, $subject, $body);

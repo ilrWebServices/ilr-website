@@ -9,5 +9,8 @@ Your questions/comments were submitted on <? print $submission_date; ?>.
 You will receive a response within two business days.
 
 Sincerely,
-<? print $org; ?> / <? print $admin_email; ?>
+<? print $org; ?>
+
+<? print $admin_email; ?>
+
 Office of Career Services, ILR School, Cornell University

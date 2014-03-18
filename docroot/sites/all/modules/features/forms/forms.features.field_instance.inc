@@ -10,6 +10,172 @@
 function forms_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'entityform-career_services_contact_form-field_career_services_how_to_dir'
+  $field_instances['entityform-career_services_contact_form-field_career_services_how_to_dir'] = array(
+    'bundle' => 'career_services_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_career_services_how_to_dir',
+    'label' => 'Career Services how to direct questions',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-career_services_contact_form-field_comments'
+  $field_instances['entityform-career_services_contact_form-field_comments'] = array(
+    'bundle' => 'career_services_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_comments',
+    'label' => 'Your questions or comments',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-career_services_contact_form-field_email'
+  $field_instances['entityform-career_services_contact_form-field_email'] = array(
+    'bundle' => 'career_services_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-career_services_contact_form-field_full_name'
+  $field_instances['entityform-career_services_contact_form-field_full_name'] = array(
+    'bundle' => 'career_services_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_full_name',
+    'label' => 'Name',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-career_services_contact_form-field_subject_line'
+  $field_instances['entityform-career_services_contact_form-field_subject_line'] = array(
+    'bundle' => 'career_services_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_subject_line',
+    'label' => 'Subject line for this message',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
   // Exported field_instance: 'entityform-faculty_request_for_ta_or_ra-field_comments'
   $field_instances['entityform-faculty_request_for_ta_or_ra-field_comments'] = array(
     'bundle' => 'faculty_request_for_ta_or_ra',
@@ -979,6 +1145,107 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-student_services_contact_form-field_comments'
+  $field_instances['entityform-student_services_contact_form-field_comments'] = array(
+    'bundle' => 'student_services_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_comments',
+    'label' => 'Questions and comments',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-student_services_contact_form-field_email'
+  $field_instances['entityform-student_services_contact_form-field_email'] = array(
+    'bundle' => 'student_services_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-student_services_contact_form-field_full_name'
+  $field_instances['entityform-student_services_contact_form-field_full_name'] = array(
+    'bundle' => 'student_services_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_full_name',
+    'label' => 'Name',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_ra_additonal_information-field_account_number'
   $field_instances['field_collection_item-field_ra_additonal_information-field_account_number'] = array(
     'bundle' => 'field_ra_additonal_information',
@@ -1121,6 +1388,7 @@ function forms_field_default_field_instances() {
   t(' Semester requesting assistantship');
   t('Account Number (for externally funded projects)');
   t('Additional comments');
+  t('Career Services how to direct questions');
   t('Classes you are interesting in TAing or faculty members to whom you wish to be assigned');
   t('Comments');
   t('Concentration');
@@ -1141,11 +1409,14 @@ function forms_field_default_field_instances() {
   t('Number of completed semesters in residence');
   t('Preferred students (in order of preference), or desired qualifications');
   t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
+  t('Questions and comments');
   t('RA Additonal Information');
   t('Semester for which you are requesting assistantship');
+  t('Subject line for this message');
   t('TA Course Information');
   t('Type of grad assistant');
   t('Year');
+  t('Your questions or comments');
 
   return $field_instances;
 }
