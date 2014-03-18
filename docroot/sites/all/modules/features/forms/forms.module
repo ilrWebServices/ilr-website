@@ -26,48 +26,44 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
  * Implement hook_theme().
  */
 function forms_theme() {
-  $template_path = drupal_get_path('module', 'forms') . '/templates';
+  // This code is patterned after code in views.module; search in that
+  // file for "quasi clever", which appears in a comment in that code.
+  $base = array(
+    'path' => drupal_get_path('module', 'forms') . '/templates',
+  );
+
+  dpm ($path);
 
   return array(
-    'forms_website_feedback' => array(
+    'forms_website_feedback' => $base + array(
       'template' => 'ilr-website-feedback',
-      'path' => $template_path,
     ),
-    'forms_website_feedback_admin' => array(
+    'forms_website_feedback_admin' => $base + array(
       'template' => 'ilr-website-feedback-admin',
-      'path' => $template_path,
     ),
-    'student_services_contact_form' => array(
+    'student_services_contact_form' => $base + array(
       'template' => 'student-services-contact-form',
-      'path' => $template_path,
     ),
-    'student_services_contact_form_admin' => array(
+    'student_services_contact_form_admin' => $base + array(
       'template' => 'student-services-contact-form-admin',
-      'path' => $template_path,
     ),
-    'career_services_contact_form' => array(
+    'career_services_contact_form' => $base + array(
       'template' => 'career-services-contact-form',
-      'path' => $template_path,
     ),
-    'career_services_contact_form_admin' => array(
+    'career_services_contact_form_admin' => $base + array(
       'template' => 'career-services-contact-form-admin',
-      'path' => $template_path,
     ),
-    'faculty_request_for_ta_or_ra' => array(
+    'faculty_request_for_ta_or_ra' => $base + array(
       'template' => 'faculty-request-for-ta-or-ra',
-      'path' => $template_path,
     ),
-    'faculty_request_for_ta_or_ra_admin' => array(
+    'faculty_request_for_ta_or_ra_admin' => $base + array(
       'template' => 'faculty-request-for-ta-or-ra-admin',
-      'path' => $template_path,
     ),
-    'graduate_student_request_for_tea' => array(
+    'graduate_student_request_for_tea' => $base + array(
       'template' => 'graduate-student-request-for-tea',
-      'path' => $template_path,
     ),
-    'graduate_student_request_for_tea_admin' => array(
+    'graduate_student_request_for_tea_admin' => $base + array(
       'template' => 'graduate-student-request-for-tea-admin',
-      'path' => $template_path,
     ),
   );
 }
@@ -116,10 +112,10 @@ function _process_student_services_contact_form(&$form) {
 
   $admin_email = "ilr_oss@cornell.edu";
   $salutation = _form_salutation($formfields['full_name']['val']);
+  $subject = "ILR Student Services contact form confirmation";
 
   // User email is only sent if email was specified on form
   if (!empty($formfields['email']['val'])) {
-    $subject = "ILR Student Services contact form confirmation";
     $body = theme('student_services_contact_form', array(
       'salutation'      => $salutation,
       'submission_date' => _form_confirmation_date(),
@@ -206,7 +202,7 @@ function _process_faculty_request_for_ta_or_ra(&$form) {
   _send_email_for_entity_form($formfields['email']['val'], $admin_email, $subject, $body);
 
   // Admin email
-  $body = theme('career_services_contact_form_admin', array(
+  $body = theme('faculty_request_for_ta_or_ra_admin', array(
     'submission_date' => _form_confirmation_date(),
     'form_data'       => _entity_display_form_data($form),
   ));
