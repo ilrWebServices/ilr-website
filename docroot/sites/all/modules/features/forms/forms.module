@@ -32,8 +32,6 @@ function forms_theme() {
     'path' => drupal_get_path('module', 'forms') . '/templates',
   );
 
-  dpm ($path);
-
   return array(
     'forms_website_feedback' => $base + array(
       'template' => 'ilr-website-feedback',
