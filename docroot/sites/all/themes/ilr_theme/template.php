@@ -89,3 +89,7 @@ function ilr_theme_breadcrumb($variables) {
     return '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
   }
 }
+
+function ilr_theme_format_city_state_zip($city, $state, $zip) {
+  return $city . ', ' . $state . ' ' . $zip;
+}

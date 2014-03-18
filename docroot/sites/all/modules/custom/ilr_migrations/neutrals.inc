@@ -143,9 +143,14 @@ class ScheinmanNeutralsMigration extends Migration {
     if ($row->photostatus == 1) {
       $row->filename = 'photo' . $row->id . '.jpg';
     } else {
-      $row->filename = '';
+      unset($row->filename);
     }
-
+    // Remove empty values from data
+    foreach ($row as $key => $value) {
+      if (empty($value)) {
+        $row->$key = array();
+      }
+    }
 
     return TRUE;
   }

@@ -7,6 +7,31 @@
 include_once 'scheinman_neutral.features.inc';
 
 /**
+ * Implements hook_node_alter
+ */
+function scheinman_neutral_preprocess_node(&$variables) {
+  if ($variables['type'] == 'scheinman_neutral') {
+    // The Views preview doesn't load our theme functions
+    // so first confirm that it exists
+    if (function_exists('ilr_theme_format_city_state_zip')) {
+      $variables['content']['field_city'][0]['#markup'] = ilr_theme_format_city_state_zip(
+        $variables['field_city'][0]['value'],
+        $variables['field_state_inc_outside_us'][0]['value'],
+        $variables['field_zip_code'][0]['value']
+      );
+
+      $variables['content']['field_state_inc_outside_us'] = array();
+      $variables['content']['field_zip_code'] = array();
+    }
+
+    if ($variables['view_mode'] == 'teaser') {
+      // Remove the read more link
+      unset($variables['content']['links']['node']['#links']['node-readmore']);
+    }
+  }
+}
+
+/**
  * Implements hook_user_insert()
  * Assigns all new user accounts the "registered user" role
  * unless they already have other roles
