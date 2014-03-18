@@ -54,7 +54,7 @@ class ScheinmanNeutralsMigration extends Migration {
       array('factfinder','factfinder'),
       array('statecode','stateCode'),
       array('cornelladrtraining','CornellADRTraining'),
-      array('category','category'),
+      array('category','category'),// Leaving in, though we won't use this data
       array('photostatus','photoStatus'),
     );
 
@@ -77,8 +77,6 @@ class ScheinmanNeutralsMigration extends Migration {
     $this->addFieldMapping('field_middle_name','midname');
     $this->addFieldMapping('field_last_name','lastname');
     $this->addFieldMapping('field_suffix','suffix');
-    $this->addFieldMapping('field_category_of_neutral','categories')
-         ->description('See _getNeutralTypes().');
     $this->addFieldMapping('field_job_title','jobtitle');
     $this->addFieldMapping('field_company','company');
     $this->addFieldMapping('field_address_line_1','address1');
@@ -132,17 +130,6 @@ class ScheinmanNeutralsMigration extends Migration {
     return $fullname;
   }
 
-  private function _getNeutralTypes($row) {
-    $possible_types = array('Arbitrator','Mediator','Factfinder');
-    $neutral_keys = array();
-    foreach($possible_types as $key => $type) {
-      if (strpos($row->category, $type) !== FALSE) {
-        $neutral_keys[] = $key;
-      }
-    }
-    return $neutral_keys;
-  }
-
   public function prepareRow($row) {
     // Always include this fragment at the beginning of every prepareRow()
     // implementation, so parent classes can ignore rows.
@@ -151,9 +138,6 @@ class ScheinmanNeutralsMigration extends Migration {
     }
     // Create the full name for them
     $row->title = $this->_getFullName($row);
-
-    // Set the Category
-    $row->categories = $this->_getNeutralTypes($row);
 
     // check for an image
     if ($row->photostatus == 1) {

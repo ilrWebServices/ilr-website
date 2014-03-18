@@ -95,33 +95,6 @@ function scheinman_neutral_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_category_of_neutral'
-  $field_bases['field_category_of_neutral'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_category_of_neutral',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => 'Arbitrator',
-        1 => 'Mediator',
-        2 => 'FactFinder',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_integer',
-  );
-
   // Exported field_base: 'field_city'
   $field_bases['field_city'] = array(
     'active' => 1,

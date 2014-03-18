@@ -132,43 +132,6 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_category_of_neutral'
-  $field_instances['node-scheinman_neutral-field_category_of_neutral'] = array(
-    'bundle' => 'scheinman_neutral',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'If you are unsure about which category or categories you qualify for, please contact Traci Morse, <a href="mailto:tlm6@cornell.edu">tlm6@cornell.edu</a>, (607) 255-9298. This must be done before you can submit your information.',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 25,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_category_of_neutral',
-    'label' => 'Category of Neutral',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 36,
-    ),
-  );
-
   // Exported field_instance: 'node-scheinman_neutral-field_city'
   $field_instances['node-scheinman_neutral-field_city'] = array(
     'bundle' => 'scheinman_neutral',
@@ -1088,7 +1051,6 @@ function scheinman_neutral_field_default_field_instances() {
   t(' Cornell University Dispute Resolution Training (Course titles and dates taken)');
   t('Address Line 1');
   t('Address Line 2');
-  t('Category of Neutral');
   t('City');
   t('Company');
   t('Dispute Resolution Experience');
@@ -1097,7 +1059,6 @@ function scheinman_neutral_field_default_field_instances() {
   t('Fax');
   t('Fee Policy');
   t('First Name');
-  t('If you are unsure about which category or categories you qualify for, please contact Traci Morse, <a href="mailto:tlm6@cornell.edu">tlm6@cornell.edu</a>, (607) 255-9298. This must be done before you can submit your information.');
   t('Job Title');
   t('Last Name');
   t('Middle Name');
