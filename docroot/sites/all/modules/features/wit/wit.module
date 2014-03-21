@@ -43,6 +43,52 @@ function wit_preprocess_node(&$variables) {
 }
 
 /**
+ * Implements hook_menu
+ * Defines the WIT RSS Feed Path
+ */
+function wit_menu() {
+  $items = array();
+  $items['rss/library/libraryWit.xml'] = array(
+    'title' => 'WIT RSS Feed',
+    'page callback' => '_wit_rss_feed',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Provides a simple RSS feed
+ */
+function _wit_rss_feed() {
+  $nids = _wit_get_nids();
+  $link = url(current_path(), array('absolute' => true));
+  $channel = array(
+    'title' => t('Workplace Issues Today'),
+    'description' => 'WIT is a free alert service, providing abstracts and links to workplace-related news stories covered in the major media.',
+    'link' => $link,
+  );
+  node_feed($nids, $channel);
+}
+
+/**
+ * Retrieves the specified number of nids
+ * for the RSS feed
+ */
+function _wit_get_nids($count = 15) {
+  $query = new EntityFieldQuery();
+    $query
+      ->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'wit_article')
+      ->propertyCondition('status', 1)
+      ->fieldOrderBy('field_published_date', 'value', 'DESC')
+      ->range(0, $count);
+
+    $result = $query->execute();
+    return array_keys($result['node']);
+}
+
+/**
  * Custom function to publish all articles for a given day
  *
  */
