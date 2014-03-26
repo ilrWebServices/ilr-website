@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# check running from docroot
+CURRENT_DIR=${PWD##*/}
+if [ ! "$CURRENT_DIR" = "docroot" ]; then
+  echo 'Please be sure that you are running this command from the docroot.'
+  exit 2
+fi
+
+BIN_DIR=`dirname $0`
+
+# Set the backup name
+source $BIN_DIR/set-backup-name
+
+# make a backup of current db
+drush sql-dump -l default --gzip --result-file=../db/backups/$BACKUP_NAME
+
+# download the acquia dev db
+drush sql-sync @ilr.ilr.test @ilr.ilr.local --no-cache -y
+
+drush rsync @ilr.ilr.test:%files/ @ilr.ilr.local:%files
+
+drush -l www.ilr-website.dev en drupal_streamline_dev ilr_dev -y
