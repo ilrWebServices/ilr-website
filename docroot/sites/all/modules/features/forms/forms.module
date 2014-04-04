@@ -8,89 +8,309 @@ include_once 'forms.features.inc';
 
 define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
+define('STRING_TO_DISPLAY_FOR_OMITTED_FIELDS', 'Not specified');
+define('SKIP_LINE_IN_EMAIL', "\n\n");
+define('LINE_BREAK_IN_EMAIL', "\n");
 
 /**
  * Implements hook_form_alter
  */
 function forms_form_alter(&$form, &$form_state, $form_id) {
-  switch ($form_id) {
-    case("ilr_website_feedback_entityform_edit_form"):
-      $form['actions']['submit']['#submit'][] = '_process_contact_form_website_feedback';
-      break;
+  $processingFunction = '_process_' . str_replace('_entityform_edit_form', '', $form_id);
+  if (function_exists($processingFunction)) {
+    $form['actions']['submit']['#submit'][] = $processingFunction;
   }
 }
 
 /**
- * Web Site Feedback:  Custom function to process the form
+ * Implement hook_theme().
  */
-function _process_contact_form_website_feedback(&$form) {
-  // Get form fields and set some strings based on them
-  $full_name = $form['field_full_name']['und'][0]['value']['#value'];
-  if (strlen($full_name)) {
-    $email_salutation = "Dear {$full_name},\n\n";
-  }
-  else {
-    $email_salutation = "";
-    $full_name = "Not specified";
-  }
+function forms_theme() {
+  // This code is patterned after code in views.module; search in that
+  // file for "quasi clever", which appears in a comment in that code.
+  $base = array(
+    'path' => drupal_get_path('module', 'forms') . '/templates',
+  );
 
-  $email = $form['field_email']['und'][0]['email']['#value'];
-
-  $comments = $form['field_comments']['und'][0]['value']['#value'];
-
-  // Set from field for user email
-  $from_field_for_user_email = ILRWEB_EMAIL;
-
-  // Set up params array for subject and content
-  $params = array(
-    'subject' => "ILR Web Site Feedback confirmation",
-    'content' =>
-      $email_salutation .
-      "Thank you for your comments about the ILR Website. " .
-      "You submitted the following information on " .
-      _form_confirmation_date() . "\n\n" .
-      "Name: {$full_name}\n" .
-      "Email: {$email}\n" .
-      "Comments: {$comments}\n\n" .
-      "Sincerely,\n" .
-      "ILR Web Team\n" .
-      $from_field_for_user_email
-    );
-
-  // Email to user
-  if (strlen($email) > 0) {
-    drupal_mail(
-        'forms_std_confirmation',
-        'user_confirmation',
-        $email,
-        LANGUAGE_NONE,
-        $params,
-        $from_field_for_user_email
-      );
-  }
-
-  // Set up params array for admin email
-  $adminparams = array(
-    'subject' => "ILR Web Site Feedback submitted",
-    'content' =>
-      "ILR Web Site Feedback form was submitted on " . _form_confirmation_date() . "\n\n" .
-      "Name: {$full_name}\n" .
-      "Email: {$email}\n" .
-      "Comments: {$comments}\n\n" .
-      "Respond promptly if user provided an email address, even if just to say Thank You.\n"
-    );
-
-  // Email to admin
-  $from_field_for_admin_email = (strlen($email)) ? $email : ILRWEB_EMAIL;
-  drupal_mail(
-    'forms_std_confirmation',
-    'admin_notification',
-    ILRWEB_EMAIL,
-    LANGUAGE_NONE,
-    $adminparams,
-    $from_field_for_admin_email
+  return array(
+    'forms_website_feedback' => $base + array(
+      'template' => 'ilr-website-feedback',
+    ),
+    'forms_website_feedback_admin' => $base + array(
+      'template' => 'ilr-website-feedback-admin',
+    ),
+    'student_services_contact_form' => $base + array(
+      'template' => 'student-services-contact-form',
+    ),
+    'student_services_contact_form_admin' => $base + array(
+      'template' => 'student-services-contact-form-admin',
+    ),
+    'career_services_contact_form' => $base + array(
+      'template' => 'career-services-contact-form',
+    ),
+    'career_services_contact_form_admin' => $base + array(
+      'template' => 'career-services-contact-form-admin',
+    ),
+    'faculty_request_for_ta_or_ra' => $base + array(
+      'template' => 'faculty-request-for-ta-or-ra',
+    ),
+    'faculty_request_for_ta_or_ra_admin' => $base + array(
+      'template' => 'faculty-request-for-ta-or-ra-admin',
+    ),
+    'graduate_student_request_for_tea' => $base + array(
+      'template' => 'graduate-student-request-for-tea',
+    ),
+    'graduate_student_request_for_tea_admin' => $base + array(
+      'template' => 'graduate-student-request-for-tea-admin',
+    ),
   );
 }
+
+ /**
+ * Process Web Site Feedback form
+ */
+function _process_ilr_website_feedback(&$form) {
+  // Get form fields
+  $formfields = array();
+  $formfields = _get_form_data($form);
+
+  $admin_email = ILRWEB_EMAIL;
+  $salutation = _form_salutation($formfields['full_name']['val']);
+
+  // User email is only sent if email was specified on form
+  if (!empty($formfields['email']['val'])) {
+    $subject = "ILR Web Site Feedback confirmation";
+    $body = theme('forms_website_feedback', array(
+      'salutation'      => $salutation,
+      'submission_date' => _form_confirmation_date(),
+      'form_data'       => _entity_display_form_data($form),
+      'admin_email'     => $admin_email,
+    ));
+    _send_email_for_entity_form($formfields['email']['val'], $admin_email, $subject, $body);
+  }
+
+  // Admin email
+  $subject = "ILR Web Site Feedback submitted";
+  $from = _get_string_or_default($formfields['email']['val'], $admin_email);
+  $body = theme('forms_website_feedback_admin', array(
+    'submission_date' => _form_confirmation_date(),
+    'form_data'       => _entity_display_form_data($form),
+  ));
+  _send_email_for_entity_form($admin_email, $from, $subject, $body);
+}   // Ends _process_ilr_website_feedback
+
+
+/**
+ * Process Student Services contact form
+ */
+function _process_student_services_contact_form(&$form) {
+  // Get form fields
+  $formfields = array();
+  $formfields = _get_form_data($form);
+
+  $admin_email = "ilr_oss@cornell.edu";
+  $salutation = _form_salutation($formfields['full_name']['val']);
+  $subject = "ILR Student Services contact form confirmation";
+
+  // User email is only sent if email was specified on form
+  if (!empty($formfields['email']['val'])) {
+    $body = theme('student_services_contact_form', array(
+      'salutation'      => $salutation,
+      'submission_date' => _form_confirmation_date(),
+      'form_data'       => _entity_display_form_data($form),
+      'admin_email'     => $admin_email,
+    ));
+    _send_email_for_entity_form($formfields['email']['val'], $admin_email, $subject, $body);
+  }
+
+  // Admin email
+  $body = theme('student_services_contact_form_admin', array(
+    'submission_date' => _form_confirmation_date(),
+    'form_data'       => _entity_display_form_data($form),
+  ));
+
+  $from = _get_string_or_default($formfields['email']['val'], $admin_email);
+  _send_email_for_entity_form($admin_email, $from, $subject, $body);
+}   // Ends _process_student_services_contact_form
+
+
+/**
+ * Process Career Services contact form
+ */
+function _process_career_services_contact_form(&$form) {
+  // Get form fields
+  $formfields = array();
+  $formfields = _get_form_data($form);
+
+  // Admin email is the radio button "career_services_how_to_dir to dir" field
+  $admin_email = $formfields['career_services_how_to_dir']['val'] . "@cornell.edu";
+
+  $org = $formfields['career_services_how_to_dir']['itemlabel'];
+  $salutation = _form_salutation($formfields['full_name']['val']);
+  $subject = _get_string_or_default(
+      $formfields['subject_line']['val'],
+      "ILR Career Services contact form confirmation ({$org})");
+
+  // User email is only sent if email was specified on form
+  if (!empty($formfields['email']['val'])) {
+    $body = theme('career_services_contact_form', array(
+      'salutation'      => $salutation,
+      'submission_date' => _form_confirmation_date(),
+      'form_data'       => _entity_display_form_data($form),
+      'org'             => $org,
+      'admin_email'     => $admin_email,
+    ));
+
+    _send_email_for_entity_form($formfields['email']['val'], $admin_email, $subject, $body);
+  }
+
+  // Admin email
+  $body = theme('career_services_contact_form_admin', array(
+    'submission_date' => _form_confirmation_date(),
+    'form_data'       => _entity_display_form_data($form),
+  ));
+
+  $from = _get_string_or_default($formfields['email']['val'], $admin_email);
+  _send_email_for_entity_form($admin_email, $from, $subject, $body);
+
+}   // Ends _process_career_services_contact_form
+
+
+/**
+ * Process Faculty Request for TA or RA
+ */
+function _process_faculty_request_for_ta_or_ra(&$form) {
+  // Get form fields
+  $formfields = array();
+  $formfields = _get_form_data($form);
+  $formfields_displayed = _entity_display_form_data($form);
+
+  $admin_email = "ilrgradforms-mailbox@cornell.edu";
+  $salutation = _form_salutation($formfields['full_name']['val']);
+
+  // User email
+  $subject = "Faculty Assistant Request Confirmation";
+  $body = theme('faculty_request_for_ta_or_ra', array(
+    'salutation'      => $salutation,
+    'submission_date' => _form_confirmation_date(),
+    'form_data'       => _entity_display_form_data($form),
+    'admin_email'     => $admin_email,
+  ));
+
+  _send_email_for_entity_form($formfields['email']['val'], $admin_email, $subject, $body);
+
+  // Admin email
+  $body = theme('faculty_request_for_ta_or_ra_admin', array(
+    'submission_date' => _form_confirmation_date(),
+    'form_data'       => _entity_display_form_data($form),
+  ));
+
+  $from = $formfields['email']['val'];
+  _send_email_for_entity_form($admin_email, $from, $subject, $body);
+}   // Ends _process_faculty_request_for_ta_or_ra
+
+
+
+/**
+ * Process grad student request for TA or RA position
+ */
+function _process_graduate_student_request_for_tea(&$form) {
+  // Get form fields
+  $formfields = array();
+  $formfields = _get_form_data($form);
+  $formfields_displayed = _entity_display_form_data($form);
+
+  $admin_email = "ilrgradforms-mailbox@cornell.edu";
+  $salutation = _form_salutation($formfields['first_name']['val'] . " " . $formfields['last_name']['val']);
+
+  // User email
+  $subject = "Student Assistantship Request Confirmation";
+  $body = theme('graduate_student_request_for_tea', array(
+    'salutation'      => $salutation,
+    'submission_date' => _form_confirmation_date(),
+    'form_data'       => _entity_display_form_data($form),
+    'admin_email'     => $admin_email,
+  ));
+
+  _send_email_for_entity_form($formfields['email']['val'], $admin_email, $subject, $body);
+
+  // Admin email
+  $subject = "Student Assistantship Request Submission - " .
+    $formfields['first_name']['val'] . " " . $formfields['last_name']['val'];
+  $body = theme('graduate_student_request_for_tea_admin', array(
+    'submission_date' => _form_confirmation_date(),
+    'form_data'       => _entity_display_form_data($form),
+  ));
+
+  $from = $formfields['email']['val'];
+  _send_email_for_entity_form($admin_email, $from, $subject, $body);
+}   // Ends _process_graduate_student_request_for_tea
+
+
+/**
+ * Custom function to extract field values and labels (title) from the form
+ */
+function _get_form_data($form) {
+  $formfields = array();
+  foreach ($form as $field=>$val) {
+    if (substr($field, 0, 6) == "field_") {
+      $just_field = str_replace('field_', '', $field);
+      $formfields[$just_field] = array();
+
+      // title is the label of the field on the form, what the user sees
+      $formfields[$just_field]['title'] = trim($form[$field]['und']['#title']);
+
+      // val is in different places in $form depending on the type of the field
+      switch ($form[$field]['#attributes']['class'][0]) {
+        case "field-type-text":
+        case "field-type-text-long":
+          $formfields[$just_field]['val'] = trim($form[$field]['und'][0]['value']['#value']);
+          break;
+
+        case "field-type-email":
+          $formfields[$just_field]['val'] = trim($form[$field]['und'][0]['email']['#value']);
+          break;
+
+        case "field-type-list-text":
+          if ($form[$field]['und']['#type'] == "radios") {
+            // For a radio button, we also need the item's label (title)
+            $radioValue = trim($form[$field]['und']['#value']);
+            $formfields[$just_field]['val'] = $radioValue;
+            $formfields[$just_field]['itemlabel'] = trim($form[$field]['und'][$radioValue]['#title']);
+          }
+          elseif ($form[$field]['und']['#type'] == "checkboxes") {
+            // Don't do anything with checkboxes right now
+          }
+          break;
+      }
+    }
+  }
+  return $formfields;
+}   // Ends _get_form_data
+
+/**
+ * Default display of form data
+ */
+function _default_display_form_data($ff) {
+  $retval = "";
+  foreach ($ff as $key => $info) {
+    $retval .= $info['title'] . ': ' . $info['val'] . LINE_BREAK_IN_EMAIL;
+  }
+  return $retval;
+}
+
+/**
+ * Display form data using entityform and entity2text code from Ted Bowman
+ */
+function _entity_display_form_data($form) {
+  // Set display of form fields for email and anything else
+  $entityform_id = $form['#entity']->entityform_id;
+  $entityform = entityform_load($entityform_id);
+  $controller = entity_get_controller('entityform');
+  $content = $controller->view(array($entityform->entityform_id => $entityform), 'confirmation', NULL, TRUE);
+  return entity2text_renderarray_to_text($content);
+}
+
 
 /**
  * Custom function to format dates to appear in confirmation
@@ -98,6 +318,39 @@ function _process_contact_form_website_feedback(&$form) {
 function _form_confirmation_date() {
   return date("F j, Y") . " at " . date("g:i a");
 }
+
+/**
+ * Returns the value of a passed string or a default explicit value if the string is empty
+ */
+function _get_string_or_default($string, $default=STRING_TO_DISPLAY_FOR_OMITTED_FIELDS){
+  return !empty($string) ? $string : $default;
+}
+
+/**
+ * Formats a non-empty value for a person's name as a salutation
+ */
+function _form_salutation($name){
+  return !empty($name) ? "Dear " . $name . ",\n\n" : "";
+}  // Ends _form_salutation
+
+/**
+ * Set up and send email
+ */
+function _send_email_for_entity_form($recip, $from, $subject, $body) {
+    $params = array(
+      'subject' => $subject,
+      'content' => $body,
+      );
+
+    drupal_mail(
+        'forms_std_confirmation',
+        'email_confirmation',
+        $recip,
+        LANGUAGE_NONE,
+        $params,
+        $from
+      );
+}  // Ends _send_email_for_entity_form
 
 /**
  * Implements hook_mail().
