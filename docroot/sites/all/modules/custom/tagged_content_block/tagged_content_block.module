@@ -26,6 +26,18 @@ function tagged_content_block_bean_types() {
 }
 
 /**
+ * Implements hook_permission()
+ */
+function tagged_content_block_permission() {
+  return array(
+    'administer tagged content block configuration' => array(
+      'title' => t('Administer Tagged Content Blocks'),
+      'description' => t('Configure content types available to tagged content blocks.'),
+    ),
+  );
+}
+
+/**
 * Implements hook_menu().
 */
 function tagged_content_block_menu() {
