@@ -58,7 +58,7 @@ function spotlight_field_default_field_instances() {
   $field_instances['node-spotlight-field_banner_image'] = array(
     'bundle' => 'spotlight',
     'deleted' => 0,
-    'description' => 'The banner image is a required asset for all spotlights, even if they are not a part of the "ILR is..." campaign.',
+    'description' => 'The banner image is a required asset for all spotlights, even if they are not a part of the current campaign.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -177,7 +177,7 @@ function spotlight_field_default_field_instances() {
     'bundle' => 'spotlight',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The Campaign Intro is an optional, 1-2 sentence lead-in for the "ILR is..." campaign. ',
+    'description' => 'The Campaign Intro is an optional, 1-2 sentence lead-in for the current campaign. ',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -217,7 +217,7 @@ function spotlight_field_default_field_instances() {
     'bundle' => 'spotlight',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Current campaign titles connect to "ILR is..."',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -298,10 +298,9 @@ function spotlight_field_default_field_instances() {
   t('Body');
   t('Campaign Intro');
   t('Campaign Title');
-  t('Current campaign titles connect to "ILR is..."');
   t('Tags');
-  t('The Campaign Intro is an optional, 1-2 sentence lead-in for the "ILR is..." campaign. ');
-  t('The banner image is a required asset for all spotlights, even if they are not a part of the "ILR is..." campaign.');
+  t('The Campaign Intro is an optional, 1-2 sentence lead-in for the current campaign. ');
+  t('The banner image is a required asset for all spotlights, even if they are not a part of the current campaign.');
 
   return $field_instances;
 }
