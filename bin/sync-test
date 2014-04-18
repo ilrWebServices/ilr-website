@@ -12,6 +12,9 @@ BIN_DIR=`dirname $0`
 # Set the backup name
 source $BIN_DIR/set-backup-name
 
+# clear cache to prevent sequel import errors
+drush cc all
+
 # make a backup of current db
 drush sql-dump -l default --gzip --result-file=../db/backups/$BACKUP_NAME
 
