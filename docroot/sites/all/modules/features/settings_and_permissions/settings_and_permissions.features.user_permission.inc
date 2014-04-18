@@ -379,6 +379,22 @@ function settings_and_permissions_user_default_permissions() {
     'module' => 'feeds',
   );
 
+  // Exported permission: 'create any html bean'.
+  $permissions['create any html bean'] = array(
+    'name' => 'create any html bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'create spotlight content'.
+  $permissions['create spotlight content'] = array(
+    'name' => 'create spotlight content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create url aliases'.
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
@@ -386,6 +402,29 @@ function settings_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'path',
+  );
+
+  // Exported permission: 'delete any html bean'.
+  $permissions['delete any html bean'] = array(
+    'name' => 'delete any html bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'delete any spotlight content'.
+  $permissions['delete any spotlight content'] = array(
+    'name' => 'delete any spotlight content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own spotlight content'.
+  $permissions['delete own spotlight content'] = array(
+    'name' => 'delete own spotlight content',
+    'roles' => array(),
+    'module' => 'node',
   );
 
   // Exported permission: 'delete revisions'.
@@ -436,6 +475,22 @@ function settings_and_permissions_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
+  // Exported permission: 'edit any html bean'.
+  $permissions['edit any html bean'] = array(
+    'name' => 'edit any html bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'edit any spotlight content'.
+  $permissions['edit any spotlight content'] = array(
+    'name' => 'edit any spotlight content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit bean view mode'.
   $permissions['edit bean view mode'] = array(
     'name' => 'edit bean view mode',
@@ -443,6 +498,13 @@ function settings_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'bean',
+  );
+
+  // Exported permission: 'edit own spotlight content'.
+  $permissions['edit own spotlight content'] = array(
+    'name' => 'edit own spotlight content',
+    'roles' => array(),
+    'module' => 'node',
   );
 
   // Exported permission: 'edit terms in areas_of_expertise'.
@@ -554,6 +616,15 @@ function settings_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'feeds',
+  );
+
+  // Exported permission: 'view any html bean'.
+  $permissions['view any html bean'] = array(
+    'name' => 'view any html bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
   );
 
   // Exported permission: 'view bean page'.
