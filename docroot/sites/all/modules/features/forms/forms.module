@@ -108,39 +108,6 @@ function _forms_send_emails($form, $admin_email, $subject='', $email_template='d
 
 
 /**
- * Send confirmation email to the user
- */
-// function _forms_user_email($form, $admin_email, $default_template='default_mail') {
-//   $salutation = _form_salutation(_forms_construct_name_for_salutation($form));
-//   $body = theme($default_template, array(
-//     'salutation'      => $salutation,
-//     'form_data'       => _entity_display_form_data($form),
-//     'admin_email'     => $admin_email,
-//     'form_title'      => _forms_get_form_title($form),
-//   ));
-//   _send_email_for_entity_form(
-//     _get_string_or_default($form['field_email']['und'][0]['email']['#value'], $admin_email),
-//     $admin_email,
-//     _forms_create_subjectline($form, 'confirmation'),
-//     $body);
-// }   // Ends _forms_user_email
-
-
-/**
- * Send admin email
- */
-// function _forms_admin_email($form, $admin_email) {
-//   _send_email_for_entity_form(
-//       $admin_email,
-//       _get_string_or_default(
-//         $form['field_email']['und'][0]['email']['#value'],
-//         $admin_email),
-//       _forms_create_subjectline($form),
-//       _entity_display_form_data($form));
-// }
-
-
-/**
  * Get the title of the form
  */
 function _forms_get_form_title($form) {
