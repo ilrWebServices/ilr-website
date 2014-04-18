@@ -54,3 +54,11 @@ function tagged_content_block_menu() {
 
   return $items;
 }
+
+/**
+ * Implementation of hook_query_TAG_alter
+ */
+function tagged_content_block_query_random_alter($query) {
+  $query->orderRandom();
+}
+

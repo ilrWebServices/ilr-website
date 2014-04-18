@@ -15,6 +15,7 @@ class TaggedContentBean extends BeanPlugin {
       'tags' => FALSE,
       'query_type' => 'exclusive',
       'content_types' => array(),
+      'order_by' => 'date',
     );
 
     return array_merge(parent::values(), $values);
@@ -49,6 +50,13 @@ class TaggedContentBean extends BeanPlugin {
       '#size' => 60,
       '#maxlength' => 60,
       '#default_value' => $bean->tags,
+    );
+
+    $form['order_by'] = array(
+      '#type' => 'select',
+      '#options' => array('date' => 'by date', 'random' => 'randomly'),
+      '#default_value' => $bean->order_by,
+      '#title' => t('How do you want to order the items?'),
     );
 
     $form['query_type'] = array(
@@ -98,6 +106,11 @@ class TaggedContentBean extends BeanPlugin {
     }
     else {
       $query->fieldCondition('field_tags', 'tid', $tids, 'IN');
+    }
+
+    // Figure out if we need to reorder the query
+    if($bean->order_by == 'random') {
+      $query->addTag('random');
     }
 
     $result = $query->execute();
