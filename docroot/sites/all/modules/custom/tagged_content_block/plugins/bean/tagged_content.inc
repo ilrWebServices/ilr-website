@@ -16,6 +16,7 @@ class TaggedContentBean extends BeanPlugin {
       'query_type' => 'exclusive',
       'content_types' => array(),
       'order_by' => 'date',
+      'sticky' => 0,
     );
 
     return array_merge(parent::values(), $values);
@@ -57,6 +58,12 @@ class TaggedContentBean extends BeanPlugin {
       '#options' => array('date' => 'by date', 'random' => 'randomly'),
       '#default_value' => $bean->order_by,
       '#title' => t('How do you want to order the items?'),
+    );
+
+    $form['sticky'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Respect "sticky" status of content?'),
+      '#default_value' => $bean->sticky,
     );
 
     $form['query_type'] = array(
@@ -111,6 +118,10 @@ class TaggedContentBean extends BeanPlugin {
     // Figure out if we need to reorder the query
     if($bean->order_by == 'random') {
       $query->addTag('random');
+    }
+
+    if($bean->sticky) {
+      $query->propertyOrderBy('sticky', 'DESC');
     }
 
     $result = $query->execute();
