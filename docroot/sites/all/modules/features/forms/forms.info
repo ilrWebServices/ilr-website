@@ -6,6 +6,7 @@ version = 7.x-1.0
 project = forms
 dependencies[] = email
 dependencies[] = entity
+dependencies[] = entity2text
 dependencies[] = entityform
 dependencies[] = features
 dependencies[] = field_collection
