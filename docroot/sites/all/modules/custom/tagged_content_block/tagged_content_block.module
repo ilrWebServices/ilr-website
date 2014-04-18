@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * Implements hook_bean_types_api_info().
+ */
+function tagged_content_block_bean_types_api_info() {
+  return array('api' => 4);
+}
+
+/**
+ * Implements hook_bean_types().
+ */
+function tagged_content_block_bean_types() {
+  $plugins = array();
+  $plugins['tagged_content'] = array(
+    'label' => t('Tagged content'),
+    'description' => t('Provides a listing of teasers for chosen content types that are tagged.'),
+    'handler' => array(
+      'class' => 'TaggedContentBean',
+      'parent' => 'bean',
+      'path' => drupal_get_path('module', 'tagged_content_block') . '/plugins/bean',
+      'file' => 'tagged_content.inc',
+    ),
+  );
+  return $plugins;
+}
+
+/**
+* Implements hook_menu().
+*/
+function tagged_content_block_menu() {
+  $items = array();
+  $items['admin/config/content/tagged_content'] = array(
+    'title' => t('Tagged Content Block Settings'),
+    'description' => t('Configure content types available to tagged content blocks'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tagged_content_block_admin'),
+    'file' => 'includes/tagged_content_block.admin.inc',
+    'access arguments' => array('administer tagged content block configuration'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
