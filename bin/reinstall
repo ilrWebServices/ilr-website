@@ -9,6 +9,8 @@ if [ ! "$CURRENT_DIR" = "docroot" ]; then
   exit 2
 fi
 
+drush cc all
+
 # Set the backup name
 source $BIN_DIR/set-backup-name
 
