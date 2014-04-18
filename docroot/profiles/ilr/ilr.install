@@ -85,6 +85,7 @@ function ilr_install() {
     'wit',
     'google_analytics_universal',
     'forms',
+    'spotlight',
   ));
 
   _ilr_add_permissions();
