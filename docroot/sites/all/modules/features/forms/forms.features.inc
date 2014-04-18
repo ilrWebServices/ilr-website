@@ -87,7 +87,8 @@ function forms_default_entityform_type() {
       "instruction_pre" : {
         "value" : "\\u003Cp\\u003ETo be completed by the faculty member requesting a graduate assistant.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EPlease complete a separate form for each class or project for which you are requesting TAs or RAs.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
-      }
+      },
+      "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu"
     },
     "weight" : "0",
     "paths" : []
@@ -127,7 +128,8 @@ function forms_default_entityform_type() {
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : { "value" : "", "format" : "full_html" }
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu"
     },
     "weight" : "0",
     "paths" : []
@@ -167,7 +169,8 @@ function forms_default_entityform_type() {
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : { "value" : "", "format" : "full_html" }
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "form_submission_ilr_recipient" : "ilrweb@cornell.edu"
     },
     "weight" : "0",
     "paths" : []
@@ -188,7 +191,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Ch3\\u003EThank you\\u003C\\/h3\\u003E\\r\\n\\r\\n\\u003Cp\\u003EYour questions and comments have been sent to ILR Student Services. If you provided your email address, you will receive a confirmation email shortly, and a personalized response within 3-5 business days.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for your interest.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EOffice of Student Services, ILR School, Cornell University\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Ch3\\u003EThank you\\u003C\\/h3\\u003E\\r\\n\\r\\n\\u003Cp\\u003EYour questions and comments have been sent to ILR Student Services.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EOffice of Student Services, ILR School, Cornell University\\u003Cbr \\/\\u003E\\r\\n\\t\\u003Ca href=\\u0022mailto:ilr_oss@cornell.edu\\u0022\\u003Eilr_oss@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -207,7 +210,8 @@ function forms_default_entityform_type() {
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : { "value" : "", "format" : "full_html" }
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "form_submission_ilr_recipient" : "ilr_oss@cornell.edu"
     },
     "weight" : "0",
     "paths" : []

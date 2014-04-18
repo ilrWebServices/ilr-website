@@ -382,6 +382,7 @@ function forms_field_default_field_instances() {
   // Exported field_instance: 'entityform-faculty_request_for_ta_or_ra-field_ra_additonal_information'
   $field_instances['entityform-faculty_request_for_ta_or_ra-field_ra_additonal_information'] = array(
     'bundle' => 'faculty_request_for_ta_or_ra',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -401,12 +402,13 @@ function forms_field_default_field_instances() {
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_ra_additonal_information',
-    'label' => 'RA Additonal Information',
-    'required' => FALSE,
+    'label' => 'RA Additional Information',
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 0,
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
@@ -1410,7 +1412,7 @@ function forms_field_default_field_instances() {
   t('Preferred students (in order of preference), or desired qualifications');
   t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
   t('Questions and comments');
-  t('RA Additonal Information');
+  t('RA Additional Information');
   t('Semester for which you are requesting assistantship');
   t('Subject line for this message');
   t('TA Course Information');
