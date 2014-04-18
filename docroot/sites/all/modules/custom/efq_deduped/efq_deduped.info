@@ -1,0 +1,6 @@
+name = Entity Field Query Deduplicate
+description = Provides a sublassed wrapper for EFQ to remove duplicates
+dependencies[] = entity
+core = 7.x
+
+files[] = efq_deduped.inc
