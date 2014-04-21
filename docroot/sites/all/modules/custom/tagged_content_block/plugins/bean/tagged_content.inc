@@ -5,6 +5,7 @@
  */
 
 class TaggedContentBean extends BeanPlugin {
+  protected $queries_executed = array();
   /**
    * Declares default block settings.
    * 'type' value determines whether tag query should be inclusive or exclusive
@@ -91,6 +92,12 @@ class TaggedContentBean extends BeanPlugin {
    * Displays the bean.
    */
   public function view($bean, $content, $view_mode = 'default', $langcode = NULL) {
+    // This is a hack to fix an issue where a query gets executed
+    // twice, which breaks the ordering; Consider debugging at some point - ATF
+    if (in_array($bean->bid, $this->queries_executed)) {
+       $content['nodes'] = array();
+       return $content;
+    }
     // Get the taxonomy term tids
     $tids = TaggedContentBean::get_taxonomy_tids_from_names($bean->tags);
 
@@ -140,7 +147,7 @@ class TaggedContentBean extends BeanPlugin {
     }
 
     $content['nodes']['#weight'] = '-1';
-
+    array_push($this->queries_executed, $bean->bid);
     return $content;
   }
 
