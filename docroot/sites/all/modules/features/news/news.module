@@ -14,24 +14,6 @@ function news_bean_types_api_info() {
 }
 
 /**
- * Implements hook_bean_types().
- */
-function news_bean_types() {
-  $plugins = array();
-  $plugins['tagged_news'] = array(
-    'label' => t('News Listing (tags)'),
-    'description' => t('Provides a listing of news callouts based on callout tags.'),
-    'handler' => array(
-      'class' => 'TaggedNewsBean',
-      'parent' => 'bean',
-      'path' => drupal_get_path('module', 'news') . '/plugins/bean',
-      'file' => 'tagged_news.inc',
-    ),
-  );
-  return $plugins;
-}
-
-/**
  * Implements hook_preprocess_hook()
  *
  * Sets the node_url to the value of field_website_url, if there is one
