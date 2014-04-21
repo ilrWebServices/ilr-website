@@ -54,6 +54,14 @@ class TaggedContentBean extends BeanPlugin {
       '#default_value' => $bean->tags,
     );
 
+    $form['query_type'] = array(
+      '#type' => 'radios',
+      '#title' => t('Tag filtering'),
+      '#default_value' => $bean->query_type,
+      '#options' => array('inclusive' => 'Any', 'exclusive' => 'All'),
+      '#description' => t('Select content with all the chosen tags or any of them?'),
+    );
+
     $form['order_by'] = array(
       '#type' => 'select',
       '#options' => array('date' => 'by date', 'random' => 'randomly'),
@@ -65,14 +73,6 @@ class TaggedContentBean extends BeanPlugin {
       '#type' => 'checkbox',
       '#title' => t('Respect "sticky" status of content?'),
       '#default_value' => $bean->sticky,
-    );
-
-    $form['query_type'] = array(
-      '#type' => 'radios',
-      '#title' => t('Tag filtering'),
-      '#default_value' => $bean->query_type,
-      '#options' => array('inclusive' => 'Any', 'exclusive' => 'All'),
-      '#description' => t('Select content with all the chosen tags or any of them?'),
     );
 
     return $form;
