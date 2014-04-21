@@ -51,10 +51,8 @@ function ilr_theme_page_alter(&$page) {
  */
 function ilr_theme_preprocess_block(&$variables) {
   if ($variables['block']->module == 'bean') {
-    // Get the bean elements.
-    $beans = $variables['elements']['bean'];
-    // There is only 1 bean per block.
-    $bean = $beans[reset(element_children($beans))];
+    // Get the first bean element
+    $bean = reset($variables['elements']['bean']);
     // Get the type if there is one
     if (isset($bean['#bundle'])) {
       $variables['classes_array'][] = str_replace('_', '-',$bean['#bundle']);
