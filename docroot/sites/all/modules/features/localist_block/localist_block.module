@@ -16,7 +16,7 @@ function localist_block_bean_types_api_info() {
  */
 function localist_block_bean_types() {
   $plugins = array();
-  $plugin_path = drupal_get_path('module', 'bean_localist_events') . '/plugins/bean';
+  $plugin_path = drupal_get_path('module', 'localist_block') . '/plugins/bean';
   $plugins['event_block'] = array(
   'label' => t('Event'),
   'description' => t('A listing of events, based on a json feed from localist.'),
