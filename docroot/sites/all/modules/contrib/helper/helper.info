@@ -1,0 +1,20 @@
+name = Helper
+description = Provides helper APIs for working with Drupal.
+core = 7.x
+php = 5.3
+files[] = lib/ArrayHelper.php
+files[] = lib/CacheHelper.php
+files[] = lib/EntityHelper.php
+files[] = lib/FeaturesHelper.php
+files[] = lib/FieldHelper.php
+files[] = lib/HttpHelper.php
+files[] = lib/RenderHelper.php
+files[] = includes/HelperDebugMailLog.php
+files[] = views/views_handler_field_helper_entity_operation_links.inc
+
+; Information added by Drupal.org packaging script on 2014-03-26
+version = "7.x-1.3"
+core = "7.x"
+project = "helper"
+datestamp = "1395854650"
+
