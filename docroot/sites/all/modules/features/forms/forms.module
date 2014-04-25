@@ -24,6 +24,17 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
     }
   }
   elseif ($form_id == 'entityform_type_form') {
+    $kerberized = (isset($form['#entityform_type']->data['kerberized']))
+        ? $form['#entityform_type']->data['kerberized']
+        : 0;
+
+    $form['data']['kerberized'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Is this form kerberized?'),
+      '#weight' => -1,
+      '#default_value' => $kerberized,
+    );
+
     // Add admin email field to the "edit" form for this entityform
     $previously_set_recip =
       (isset($form['#entityform_type']->data['form_submission_ilr_recipient']))
@@ -40,7 +51,6 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
-
 /**
  * Implement hook_theme().
  */
@@ -56,6 +66,26 @@ function forms_theme() {
       'template' => 'default-mail',
     ),
   );
+}
+
+/**
+ * Swaps kerberized forms with netID login button
+ */
+function forms_block_view_alter(&$data, $block) {
+  if (_forms_kerberized_form_present($data['content']) && !_forms_user_logged_in_with_netid()) {
+    $data['content'] = drupal_get_form('forms_login_form');
+  }
+}
+
+/**
+ * Returns a simple login button for NetID logins
+ */
+function forms_login_form($form, &$form_state) {
+  $form['netid'] = array(
+    '#markup' => '<p>You must log in with your NetID to view this form.<br /><br /> <a class="button" href="/saml_login">NetID Login</a></p>',
+    '#weight' => -10,
+  );
+  return $form;
 }
 
  /**
@@ -152,6 +182,31 @@ function _forms_get_admin_email($form) {
         ? ILRWEB_EMAIL : $entityform_type->data['form_submission_ilr_recipient'];
   return $admin_email;
 }   // Ends _forms_get_admin_email
+
+/**
+ * Checks the init value created by simplesamlphp_auth
+ * with the value of the user's email before the '@' symbol
+ */
+function _forms_user_logged_in_with_netid() {
+  global $user;
+  if ($user->uid) { // the user is logged in
+    return $user->init == strstr($user->mail, '@', true);
+  }
+  return FALSE;
+}
+
+/**
+ * Checks to see whether the entityform type is set to be kerberized
+ */
+function _forms_kerberized_form_present($form) {
+  if (isset($form['#entity']) && get_class($form['#entity']) == 'Entityform') {
+    $entityform_type = entityform_type_load($form['#entity']->type);
+    $kerberized = empty($entityform_type->data['kerberized'])
+        ? FALSE : $entityform_type->data['kerberized'];
+    return $kerberized;
+  }
+  return FALSE;
+}
 
 /**
  * Display form data using entityform and entity2text code from Ted Bowman
