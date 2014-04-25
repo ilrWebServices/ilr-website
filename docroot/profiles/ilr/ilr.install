@@ -52,7 +52,7 @@ function ilr_install() {
   // that it is in a directory at the same level as the docroot. We also
   // determine the $simplesamlphp_installdir based on whether we're
   // on Acquia or Vagrant
-  $drupal_path = (isset($_SERVER["AH_SITE_GROUP"])) ? DRUPAL_ROOT : '/var/www/ilr-website/docroot';
+  $drupal_path = (isset($_ENV["AH_SITE_GROUP"])) ? DRUPAL_ROOT : '/var/www/ilr-website/docroot';
   $simplesamlphp_installdir = str_replace(array(
     '/docroot',
   ), array(
@@ -95,6 +95,7 @@ function ilr_install() {
   ilr_update_7001();
   ilr_update_7002();
   ilr_update_7003();
+  ilr_update_7004();
 }
 
 /**
@@ -131,6 +132,17 @@ function ilr_update_7003() {
     'tagged_content_block_enabled_bundles',
     $enabled_content_types
   );
+}
+
+/**
+ * Enables the helper module on Acquia dev and test
+ */
+function ilr_update_7004() {
+  if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] != 'prod') {
+    module_enable(array(
+      'helper'
+    ));
+  }
 }
 
 /**
