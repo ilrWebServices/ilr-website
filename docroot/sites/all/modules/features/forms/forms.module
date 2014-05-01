@@ -51,6 +51,32 @@ function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
     '#description' => t('The email address - usually a special mailbox - to send the admin email to when a form is submitted.  Leave blank if no admin email is to be sent (rarely the case).'),
   );
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter
+ * Adds a kerberized checkbox for
+ * field instances on kerberized forms
+ */
+function forms_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['#instance']['entity_type'])
+    && $form['#instance']['entity_type']  == 'entityform') {
+    if (_forms_form_is_kerberized($form['#instance']['bundle'])
+      && _forms_field_is_kerberizable($form['#instance']['field_name'])) {
+      $kerberized = isset($form['#instance']['settings']['kerberized']) ? $form['#instance']['settings']['kerberized'] : 0;
+      $editable = isset($form['#instance']['settings']['editable']) ? $form['#instance']['settings']['editable'] : 0;
+      $form['instance']['settings']['kerberized'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Display user account info as default value for this field?'),
+        '#weight' => -1,
+        '#default_value' => $kerberized,
+      );
+      $form['instance']['settings']['editable'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Remove user\'s ability to edit the value?'),
+        '#weight' => -1,
+        '#default_value' => $editable,
+      );
+    }
   }
 }
 
@@ -212,14 +238,40 @@ function _forms_user_logged_in_with_netid() {
 }
 
 /**
- * Checks to see whether the entityform type is set to be kerberized
+ * Checks to see whether the block being rendered is a kerberized entityform
+ * See forms_block_view_alter()
  */
 function _forms_kerberized_form_present($form) {
   if (isset($form['#entity']) && get_class($form['#entity']) == 'Entityform') {
-    $entityform_type = entityform_type_load($form['#entity']->type);
-    $kerberized = empty($entityform_type->data['kerberized'])
-        ? FALSE : $entityform_type->data['kerberized'];
-    return $kerberized;
+    return _forms_form_is_kerberized($form['#entity']->type);
+  }
+  return FALSE;
+}
+
+/**
+ * Checks whether a specific entityform bundle requires NetID authentication
+ */
+function _forms_form_is_kerberized($bundle) {
+  $entityform_type = entityform_type_load($bundle);
+  $kerberized = empty($entityform_type->data['kerberized'])
+    ? FALSE
+    : $entityform_type->data['kerberized'];
+  return $kerberized;
+}
+
+/**
+ * Checks whether the field can be kerberized
+ * Based on information saved in the user account object
+ */
+function _forms_field_is_kerberizable($field_name) {
+  $kerberizable_fields = array(
+    'field_full_name',
+    'field_email',
+    'field_first_name',
+    'field_last_name',
+  );
+  return in_array($field_name, $kerberizable_fields);
+}
   }
   return FALSE;
 }
