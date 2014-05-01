@@ -5,11 +5,10 @@
  */
 
 include_once 'forms.features.inc';
+include_once 'includes/forms.kerberized.inc';
 
 define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
-
-$_forms_user_account = NULL;
 
 /**
  * Implements hook_form_alter
@@ -29,21 +28,10 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
 
 /**
  * Implements hook_form_FORM_ID_alter
- * Allows specifying the admin for the form
- * As well as whether it requires NetID login
+ *   Allows specifying the admin for the form
+ *   Adds checkbox to specify NetID login requirement
  */
 function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
-  $kerberized = (isset($form['#entityform_type']->data['kerberized']))
-    ? $form['#entityform_type']->data['kerberized']
-    : 0;
-
-  $form['data']['kerberized'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Does this form require NetID authentication?'),
-    '#weight' => -1,
-    '#default_value' => $kerberized,
-  );
-
   // Add admin email field to the "edit" form for this entityform
   $previously_set_recip = (isset($form['#entityform_type']->data['form_submission_ilr_recipient']))
     ? $form['#entityform_type']->data['form_submission_ilr_recipient']
@@ -56,34 +44,8 @@ function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
     '#default_value' => $previously_set_recip,
     '#description' => t('The email address - usually a special mailbox - to send the admin email to when a form is submitted.  Leave blank if no admin email is to be sent (rarely the case).'),
   );
-}
 
-/**
- * Implements hook_form_FORM_ID_alter
- * Adds a kerberized checkbox for
- * field instances on kerberized forms
- */
-function forms_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_id) {
-  if (isset($form['#instance']['entity_type'])
-    && $form['#instance']['entity_type']  == 'entityform') {
-    if (_forms_form_is_kerberized($form['#instance']['bundle'])
-      && _forms_field_is_kerberizable($form['#instance']['field_name'])) {
-      $kerberized = isset($form['#instance']['settings']['kerberized']) ? $form['#instance']['settings']['kerberized'] : 0;
-      $editable = isset($form['#instance']['settings']['editable']) ? $form['#instance']['settings']['editable'] : 0;
-      $form['instance']['settings']['kerberized'] = array(
-        '#type' => 'checkbox',
-        '#title' => t('Display user account info as default value for this field?'),
-        '#weight' => -1,
-        '#default_value' => $kerberized,
-      );
-      $form['instance']['settings']['editable'] = array(
-        '#type' => 'checkbox',
-        '#title' => t('Remove user\'s ability to edit the value?'),
-        '#weight' => -1,
-        '#default_value' => $editable,
-      );
-    }
-  }
+  _forms_add_kerberized_checkbox($form);
 }
 
 /**
@@ -104,27 +66,6 @@ function forms_theme() {
 }
 
 /**
- * Swaps kerberized forms with netID login button
- */
-function forms_block_view_alter(&$data, $block) {
-  if (_forms_kerberized_form_present($data['content'])
-    && !_forms_user_logged_in_with_netid()) {
-      $data['content'] = drupal_get_form('forms_login_form');
-  }
-}
-
-/**
- * Returns a simple login button for NetID logins
- */
-function forms_login_form($form, &$form_state) {
-  $form['netid'] = array(
-    '#markup' => '<p>You must log in with your NetID to view this form.<br /><br /> <a class="button" href="/saml_login">NetID Login</a></p>',
-    '#weight' => -10,
-  );
-  return $form;
-}
-
-/**
  * Generates the appropriate submit handler for entityforms
  */
 function _forms_get_submit_handler($form_id) {
@@ -133,64 +74,6 @@ function _forms_get_submit_handler($form_id) {
     return $processingFunction;
   }
   return '_forms_process_default';
-}
-
-/**
- * Gets all the kerberized fields and sets their default value
- * Disables kerberized fields which admin has specified are not user editable
- */
-function _forms_set_kerberized_values(&$form) {
-  $instances = field_info_instances('entityform', $form['#bundle']);
-  foreach ($instances as $field_name => $value) {
-    if (_forms_field_is_kerberized($instances[$field_name])) {
-      // Email #default_value is different
-      if (strpos($field_name, 'email') > 0) {
-        $form[$field_name][LANGUAGE_NONE][0]['email']['#default_value'] = _forms_map_user_attribute_to_field($field_name);
-      } // Default pattern
-      else {
-        $form[$field_name][LANGUAGE_NONE][0]['value']['#default_value'] = _forms_map_user_attribute_to_field($field_name);
-      }
-      // Figure out if user can edit the field
-      if (isset($instances[$field_name]['settings']['editable'])) {
-        $form[$field_name]['#disabled'] = $instances[$field_name]['settings']['editable'];
-      }
-    }
-  }
-}
-
-/**
- * Connects the kerberizable_fields to the correct user account attributes
- */
-function _forms_map_user_attribute_to_field($field_name) {
-  global $_forms_user_account;
-  if (!$_forms_user_account) {
-    $_forms_user_account = _forms_get_user_account_info();
-  }
-  switch ($field_name) {
-    case 'field_full_name':
-      return $_forms_user_account->name;
-      break;
-    case 'field_email':
-      return $_forms_user_account->mail;
-      break;
-    case 'field_first_name':
-      return $_forms_user_account->field_first_name[LANGUAGE_NONE][0]['safe_value'];
-      break;
-    case 'field_last_name':
-      return $_forms_user_account->field_last_name[LANGUAGE_NONE][0]['safe_value'];
-      break;
-  }
-  return '';
-}
-
-/**
- * Loads the user object and all its attributes
- * Since additional fields added to accounts are not available
- * in the global $user object
- */
-function _forms_get_user_account_info() {
-  global $user;
-  return user_load($user->uid);
 }
 
  /**
@@ -286,64 +169,6 @@ function _forms_get_admin_email($form) {
   $admin_email = empty($entityform_type->data['form_submission_ilr_recipient'])
         ? ILRWEB_EMAIL : $entityform_type->data['form_submission_ilr_recipient'];
   return $admin_email;
-}
-
-/**
- * Checks the init value created by simplesamlphp_auth
- * with the value of the user's email before the '@' symbol
- */
-function _forms_user_logged_in_with_netid() {
-  global $user;
-  if ($user->uid) { // the user is logged in
-    return $user->init == strstr($user->mail, '@', true);
-  }
-  return FALSE;
-}
-
-/**
- * Checks to see whether the block being rendered is a kerberized entityform
- * See forms_block_view_alter()
- */
-function _forms_kerberized_form_present($form) {
-  if (isset($form['#entity']) && get_class($form['#entity']) == 'Entityform') {
-    return _forms_form_is_kerberized($form['#entity']->type);
-  }
-  return FALSE;
-}
-
-/**
- * Checks whether a specific entityform bundle requires NetID authentication
- */
-function _forms_form_is_kerberized($bundle) {
-  $entityform_type = entityform_type_load($bundle);
-  $kerberized = empty($entityform_type->data['kerberized'])
-    ? FALSE
-    : $entityform_type->data['kerberized'];
-  return $kerberized;
-}
-
-/**
- * Checks whether the field can be kerberized
- * Based on information saved in the user account object
- */
-function _forms_field_is_kerberizable($field_name) {
-  $kerberizable_fields = array(
-    'field_full_name',
-    'field_email',
-    'field_first_name',
-    'field_last_name',
-  );
-  return in_array($field_name, $kerberizable_fields);
-}
-
-/**
- * Checks whether a specific field instance has been kerberized
- */
-function _forms_field_is_kerberized($field_instance) {
-  if (isset($field_instance['settings']['kerberized'])) {
-    return $field_instance['settings']['kerberized'];
-  }
-  return FALSE;
 }
 
 /**
