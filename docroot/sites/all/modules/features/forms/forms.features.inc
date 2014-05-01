@@ -37,6 +37,7 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
+        "9" : 0,
         "6" : 0,
         "5" : 0,
         "7" : 0,
@@ -44,7 +45,10 @@ function forms_default_entityform_type() {
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : { "value" : "", "format" : "full_html" }
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
+      "kerberized" : 0,
+      "form_submission_ilr_recipient" : ""
     },
     "weight" : "0",
     "paths" : []
@@ -77,6 +81,7 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
+        "9" : 0,
         "6" : 0,
         "5" : 0,
         "7" : 0,
@@ -88,6 +93,8 @@ function forms_default_entityform_type() {
         "value" : "\\u003Cp\\u003ETo be completed by the faculty member requesting a graduate assistant.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EPlease complete a separate form for each class or project for which you are requesting TAs or RAs.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
+      "block_enable" : true,
+      "kerberized" : 0,
       "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu"
     },
     "weight" : "0",
@@ -121,6 +128,7 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
+        "9" : 0,
         "6" : 0,
         "5" : 0,
         "7" : 0,
@@ -129,6 +137,8 @@ function forms_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
+      "kerberized" : 0,
       "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu"
     },
     "weight" : "0",
@@ -162,6 +172,7 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
+        "9" : 0,
         "6" : 0,
         "5" : 0,
         "7" : 0,
@@ -170,6 +181,8 @@ function forms_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
+      "kerberized" : 0,
       "form_submission_ilr_recipient" : "ilrweb@cornell.edu"
     },
     "weight" : "0",
@@ -203,6 +216,7 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
+        "9" : 0,
         "6" : 0,
         "5" : 0,
         "7" : 0,
@@ -211,6 +225,8 @@ function forms_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
+      "kerberized" : 0,
       "form_submission_ilr_recipient" : "ilr_oss@cornell.edu"
     },
     "weight" : "0",
