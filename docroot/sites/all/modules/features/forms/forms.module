@@ -75,8 +75,10 @@ function forms_theme() {
  * Swaps kerberized forms with netID login button
  */
 function forms_block_view_alter(&$data, $block) {
-  if (_forms_kerberized_form_present($data['content']) && !_forms_user_logged_in_with_netid()) {
-    $data['content'] = drupal_get_form('forms_login_form');
+  if (_forms_kerberized_form_present($data['content'])
+    && !_forms_user_logged_in_with_netid()) {
+      $data['content'] = drupal_get_form('forms_login_form');
+    }
   }
 }
 
