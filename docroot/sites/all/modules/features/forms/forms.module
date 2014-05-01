@@ -5,6 +5,7 @@
  */
 
 include_once 'forms.features.inc';
+include_once 'includes/forms.kerberized.inc';
 
 define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
@@ -13,33 +14,39 @@ define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
  * Implements hook_form_alter
  */
 function forms_form_alter(&$form, &$form_state, $form_id) {
+  // Check to see if an entityform is being rendered
   if (array_key_exists('entityform', $form_state)) {
-    // Process an ILR entityform with a custom function or a default
-    $processingFunction = '_process_' . str_replace('_entityform_edit_form', '', $form_id);
-    if (function_exists($processingFunction)) {
-      $form['actions']['submit']['#submit'][] = $processingFunction;
-    }
-    else {
-      $form['actions']['submit']['#submit'][] = '_forms_process_default';
-    }
-  }
-  elseif ($form_id == 'entityform_type_form') {
-    // Add admin email field to the "edit" form for this entityform
-    $previously_set_recip =
-      (isset($form['#entityform_type']->data['form_submission_ilr_recipient']))
-        ? $form['#entityform_type']->data['form_submission_ilr_recipient']
-        : '';
+    // Generate appropriate submit handler
+    $form['actions']['submit']['#submit'][] = _forms_get_submit_handler($form_id);
 
-    $form['data']['form_submission_ilr_recipient'] = array(
-      '#type' => 'textfield',
-      '#title' => t('ILR Admin email'),
-      '#weight' => -1,
-      '#default_value' => $previously_set_recip,
-      '#description' => t('The email address - usually a special mailbox - to send the admin email to when a form is submitted.  Leave blank if no admin email is to be sent (rarely the case).'),
-    );
+    // Fill in default values of kerberized forms
+    if (_forms_form_is_kerberized($form['#bundle'])) {
+      _forms_set_kerberized_values($form);
+    }
   }
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter
+ *   Allows specifying the admin for the form
+ *   Adds checkbox to specify NetID login requirement
+ */
+function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
+  // Add admin email field to the "edit" form for this entityform
+  $previously_set_recip = (isset($form['#entityform_type']->data['form_submission_ilr_recipient']))
+    ? $form['#entityform_type']->data['form_submission_ilr_recipient']
+    : '';
+
+  $form['data']['form_submission_ilr_recipient'] = array(
+    '#type' => 'textfield',
+    '#title' => t('ILR Admin email'),
+    '#weight' => -1,
+    '#default_value' => $previously_set_recip,
+    '#description' => t('The email address - usually a special mailbox - to send the admin email to when a form is submitted.  Leave blank if no admin email is to be sent (rarely the case).'),
+  );
+
+  _forms_add_kerberized_checkbox($form);
+}
 
 /**
  * Implement hook_theme().
@@ -56,6 +63,17 @@ function forms_theme() {
       'template' => 'default-mail',
     ),
   );
+}
+
+/**
+ * Generates the appropriate submit handler for entityforms
+ */
+function _forms_get_submit_handler($form_id) {
+  $processingFunction = '_process_' . str_replace('_entityform_edit_form', '', $form_id);
+  if (function_exists($processingFunction)) {
+    return $processingFunction;
+  }
+  return '_forms_process_default';
 }
 
  /**
@@ -138,7 +156,7 @@ function _forms_send_emails($form, $admin_email, $subject='', $email_template='d
  */
 function _forms_get_form_title($form) {
   return entity_label('entityform_type', entityform_type_load($form['#entity']->type));
-}   // Ends _forms_get_form_title
+}
 
 
 /**
@@ -151,7 +169,7 @@ function _forms_get_admin_email($form) {
   $admin_email = empty($entityform_type->data['form_submission_ilr_recipient'])
         ? ILRWEB_EMAIL : $entityform_type->data['form_submission_ilr_recipient'];
   return $admin_email;
-}   // Ends _forms_get_admin_email
+}
 
 /**
  * Display form data using entityform and entity2text code from Ted Bowman
@@ -214,7 +232,7 @@ function _send_email_for_entity_form($recip, $from, $subject, $body) {
         $params,
         $from
       );
-}  // Ends _send_email_for_entity_form
+}
 
 /**
  * Implements hook_mail().
