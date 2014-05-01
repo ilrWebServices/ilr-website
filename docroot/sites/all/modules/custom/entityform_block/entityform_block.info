@@ -5,3 +5,4 @@ core = 7.x
 
 ; Downloaded from https://drupal.org/sandbox/joachim/2045865
 ; Referenced from https://drupal.org/node/1599352
+; Unofficially patched by ILR team to always enable entityform blocks (not documented since not yet a contrib module)
