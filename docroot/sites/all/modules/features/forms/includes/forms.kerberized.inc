@@ -47,7 +47,7 @@ function _forms_add_kerberized_checkbox(&$form) {
 
   $form['data']['kerberized'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Does this form require NetID authentication?'),
+    '#title' => t('This form require NetID authentication'),
     '#weight' => 0,
     '#default_value' => $kerberized,
   );
@@ -69,18 +69,18 @@ function _forms_kerberize_field(&$form) {
 
   $form['instance']['settings']['kerberized'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Display user account info as default value for this field?'),
+    '#title' => t('Display user account info as default value for this field'),
     '#weight' => -1,
     '#default_value' => $kerberized,
   );
 
-  $editable = isset($form['#instance']['settings']['editable']) ? $form['#instance']['settings']['editable'] : 0;
+  $disabled = isset($form['#instance']['settings']['disabled']) ? $form['#instance']['settings']['disabled'] : 0;
 
-  $form['instance']['settings']['editable'] = array(
+  $form['instance']['settings']['disabled'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Remove user\'s ability to edit the value?'),
+    '#title' => t('User is not allowed to modify this field'),
     '#weight' => -1,
-    '#default_value' => $editable,
+    '#default_value' => $disabled,
   );
 }
 
@@ -132,7 +132,7 @@ function _forms_field_is_kerberized($field_instance) {
 
 /**
  * Gets all the kerberized fields and sets their default value
- * Disables kerberized fields which admin has specified are not user editable
+ * Disables kerberized fields which admin has specified are not user disabled
  */
 function _forms_set_kerberized_values(&$form) {
   $instances = field_info_instances('entityform', $form['#bundle']);
@@ -146,8 +146,8 @@ function _forms_set_kerberized_values(&$form) {
         $form[$field_name][LANGUAGE_NONE][0]['value']['#default_value'] = _forms_map_user_attribute_to_field($field_name);
       }
       // Figure out if user can edit the field
-      if (isset($instances[$field_name]['settings']['editable'])) {
-        $form[$field_name]['#disabled'] = $instances[$field_name]['settings']['editable'];
+      if (isset($instances[$field_name]['settings']['disabled'])) {
+        $form[$field_name]['#disabled'] = $instances[$field_name]['settings']['disabled'];
       }
     }
   }
