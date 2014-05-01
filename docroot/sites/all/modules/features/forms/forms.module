@@ -9,6 +9,8 @@ include_once 'forms.features.inc';
 define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
 
+$_forms_user_account = NULL;
+
 /**
  * Implements hook_form_alter
  */
@@ -17,6 +19,10 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
   if (array_key_exists('entityform', $form_state)) {
     // Generate appropriate submit handler
     $form['actions']['submit']['#submit'][] = _forms_get_submit_handler($form_id);
+
+    // Fill in default values of kerberized forms
+    if (_forms_form_is_kerberized($form['#bundle'])) {
+      _forms_set_kerberized_values($form);
     }
   }
 }
@@ -128,6 +134,64 @@ function _forms_get_submit_handler($form_id) {
     return $processingFunction;
   }
   return '_forms_process_default';
+}
+
+/**
+ * Gets all the kerberized fields and sets their default value
+ * Disables kerberized fields which admin has specified are not user editable
+ */
+function _forms_set_kerberized_values(&$form) {
+  $instances = field_info_instances('entityform', $form['#bundle']);
+  foreach ($instances as $field_name => $value) {
+    if (_forms_field_is_kerberized($instances[$field_name])) {
+      // Email #default_value is different
+      if (strpos($field_name, 'email') > 0) {
+        $form[$field_name][LANGUAGE_NONE][0]['email']['#default_value'] = _forms_map_user_attribute_to_field($field_name);
+      } // Default pattern
+      else {
+        $form[$field_name][LANGUAGE_NONE][0]['value']['#default_value'] = _forms_map_user_attribute_to_field($field_name);
+      }
+      // Figure out if user can edit the field
+      if (isset($instances[$field_name]['settings']['editable'])) {
+        $form[$field_name]['#disabled'] = $instances[$field_name]['settings']['editable'];
+      }
+    }
+  }
+}
+
+/**
+ * Connects the kerberizable_fields to the correct user account attributes
+ */
+function _forms_map_user_attribute_to_field($field_name) {
+  global $_forms_user_account;
+  if (!$_forms_user_account) {
+    $_forms_user_account = _forms_get_user_account_info();
+  }
+  switch ($field_name) {
+    case 'field_full_name':
+      return $_forms_user_account->name;
+      break;
+    case 'field_email':
+      return $_forms_user_account->mail;
+      break;
+    case 'field_first_name':
+      return $_forms_user_account->field_first_name[LANGUAGE_NONE][0]['safe_value'];
+      break;
+    case 'field_last_name':
+      return $_forms_user_account->field_last_name[LANGUAGE_NONE][0]['safe_value'];
+      break;
+  }
+  return '';
+}
+
+/**
+ * Loads the user object and all its attributes
+ * Since additional fields added to accounts are not available
+ * in the global $user object
+ */
+function _forms_get_user_account_info() {
+  global $user;
+  return user_load($user->uid);
 }
 
  /**
@@ -272,6 +336,13 @@ function _forms_field_is_kerberizable($field_name) {
   );
   return in_array($field_name, $kerberizable_fields);
 }
+
+/**
+ * Checks whether a specific field instance has been kerberized
+ */
+function _forms_field_is_kerberized($field_instance) {
+  if (isset($field_instance['settings']['kerberized'])) {
+    return $field_instance['settings']['kerberized'];
   }
   return FALSE;
 }
