@@ -23,31 +23,38 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
       $form['actions']['submit']['#submit'][] = '_forms_process_default';
     }
   }
-  elseif ($form_id == 'entityform_type_form') {
-    $kerberized = (isset($form['#entityform_type']->data['kerberized']))
-        ? $form['#entityform_type']->data['kerberized']
-        : 0;
+}
 
-    $form['data']['kerberized'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Is this form kerberized?'),
-      '#weight' => -1,
-      '#default_value' => $kerberized,
-    );
+/**
+ * Implements hook_form_FORM_ID_alter
+ * Allows specifying the admin for the form
+ * As well as whether it requires NetID login
+ */
+function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
+  $kerberized = (isset($form['#entityform_type']->data['kerberized']))
+    ? $form['#entityform_type']->data['kerberized']
+    : 0;
 
-    // Add admin email field to the "edit" form for this entityform
-    $previously_set_recip =
-      (isset($form['#entityform_type']->data['form_submission_ilr_recipient']))
-        ? $form['#entityform_type']->data['form_submission_ilr_recipient']
-        : '';
+  $form['data']['kerberized'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Does this form require NetID authentication?'),
+    '#weight' => -1,
+    '#default_value' => $kerberized,
+  );
 
-    $form['data']['form_submission_ilr_recipient'] = array(
-      '#type' => 'textfield',
-      '#title' => t('ILR Admin email'),
-      '#weight' => -1,
-      '#default_value' => $previously_set_recip,
-      '#description' => t('The email address - usually a special mailbox - to send the admin email to when a form is submitted.  Leave blank if no admin email is to be sent (rarely the case).'),
-    );
+  // Add admin email field to the "edit" form for this entityform
+  $previously_set_recip = (isset($form['#entityform_type']->data['form_submission_ilr_recipient']))
+    ? $form['#entityform_type']->data['form_submission_ilr_recipient']
+    : '';
+
+  $form['data']['form_submission_ilr_recipient'] = array(
+    '#type' => 'textfield',
+    '#title' => t('ILR Admin email'),
+    '#weight' => -1,
+    '#default_value' => $previously_set_recip,
+    '#description' => t('The email address - usually a special mailbox - to send the admin email to when a form is submitted.  Leave blank if no admin email is to be sent (rarely the case).'),
+  );
+}
   }
 }
 
