@@ -184,7 +184,7 @@ function _forms_send_emails($form, $admin_email, $subject='', $email_template='d
  */
 function _forms_get_form_title($form) {
   return entity_label('entityform_type', entityform_type_load($form['#entity']->type));
-}   // Ends _forms_get_form_title
+}
 
 
 /**
@@ -197,7 +197,7 @@ function _forms_get_admin_email($form) {
   $admin_email = empty($entityform_type->data['form_submission_ilr_recipient'])
         ? ILRWEB_EMAIL : $entityform_type->data['form_submission_ilr_recipient'];
   return $admin_email;
-}   // Ends _forms_get_admin_email
+}
 
 /**
  * Checks the init value created by simplesamlphp_auth
@@ -285,7 +285,7 @@ function _send_email_for_entity_form($recip, $from, $subject, $body) {
         $params,
         $from
       );
-}  // Ends _send_email_for_entity_form
+}
 
 /**
  * Implements hook_mail().
