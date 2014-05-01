@@ -13,14 +13,10 @@ define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
  * Implements hook_form_alter
  */
 function forms_form_alter(&$form, &$form_state, $form_id) {
+  // Check to see if an entityform is being rendered
   if (array_key_exists('entityform', $form_state)) {
-    // Process an ILR entityform with a custom function or a default
-    $processingFunction = '_process_' . str_replace('_entityform_edit_form', '', $form_id);
-    if (function_exists($processingFunction)) {
-      $form['actions']['submit']['#submit'][] = $processingFunction;
-    }
-    else {
-      $form['actions']['submit']['#submit'][] = '_forms_process_default';
+    // Generate appropriate submit handler
+    $form['actions']['submit']['#submit'][] = _forms_get_submit_handler($form_id);
     }
   }
 }
@@ -93,6 +89,17 @@ function forms_login_form($form, &$form_state) {
     '#weight' => -10,
   );
   return $form;
+}
+
+/**
+ * Generates the appropriate submit handler for entityforms
+ */
+function _forms_get_submit_handler($form_id) {
+  $processingFunction = '_process_' . str_replace('_entityform_edit_form', '', $form_id);
+  if (function_exists($processingFunction)) {
+    return $processingFunction;
+  }
+  return '_forms_process_default';
 }
 
  /**
