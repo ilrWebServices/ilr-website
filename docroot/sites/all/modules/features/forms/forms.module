@@ -32,7 +32,14 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
  *   Adds checkbox to specify NetID login requirement
  */
 function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
-  // Add admin email field to the "edit" form for this entityform
+  _forms_add_admin_email_field($form);
+  _forms_add_kerberized_checkbox($form);
+}
+
+/**
+ * Add admin email field to the "edit" form for this entityform
+ */
+function _forms_add_admin_email_field(&$form) {
   $previously_set_recip = (isset($form['#entityform_type']->data['form_submission_ilr_recipient']))
     ? $form['#entityform_type']->data['form_submission_ilr_recipient']
     : '';
@@ -44,8 +51,6 @@ function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
     '#default_value' => $previously_set_recip,
     '#description' => t('The email address - usually a special mailbox - to send the admin email to when a form is submitted.  Leave blank if no admin email is to be sent (rarely the case).'),
   );
-
-  _forms_add_kerberized_checkbox($form);
 }
 
 /**
