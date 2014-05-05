@@ -33,6 +33,7 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
  */
 function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
   _forms_add_admin_email_field($form);
+  _forms_add_include_name_in_admin_email_subject_line_checkbox($form);
   _forms_add_kerberized_checkbox($form);
 }
 
@@ -50,6 +51,23 @@ function _forms_add_admin_email_field(&$form) {
     '#weight' => -1,
     '#default_value' => $previously_set_recip,
     '#description' => t('The email address - usually a special mailbox - to send the admin email to when a form is submitted.  Leave blank if no admin email is to be sent (rarely the case).'),
+  );
+}
+
+/**
+ * Add checkbox to "indicate whether to append the user's name to the
+ * admin email subject line" to the "edit" form for this entityform
+ */
+function _forms_add_include_name_in_admin_email_subject_line_checkbox(&$form) {
+  $add_user_name_to_subject_line = (isset($form['#entityform_type']->data['add_user_name_to_subject_line']))
+    ? $form['#entityform_type']->data['add_user_name_to_subject_line']
+    : 0;
+
+  $form['data']['add_user_name_to_subject_line'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Append user\'s name to subject line of admin email; some ILR staff appreciate having this; some do not'),
+    '#weight' => 0,
+    '#default_value' => $add_user_name_to_subject_line,
   );
 }
 
@@ -129,9 +147,11 @@ function _forms_career_services_contact_options() {
  */
 function _forms_send_emails($form, $admin_email, $subject='', $email_template='default_mail') {
   $form_title = _forms_get_form_title($form);
+  $user_name = _forms_construct_user_name($form);
+
   // User email
   if (!empty($form['field_email']['und'][0]['email']['#value'])) {
-    $salutation = _form_salutation(_forms_construct_user_name($form));
+    $salutation = _form_salutation($user_name);
     $body = theme($email_template, array(
       'salutation'      => $salutation,
       'form_data'       => _entity_display_form_data($form),
@@ -150,6 +170,9 @@ function _forms_send_emails($form, $admin_email, $subject='', $email_template='d
   $from = _get_string_or_default($form['field_email']['und'][0]['email']['#value'], $admin_email);
   if (empty($subject)) {
     $subject = $form_title . ' submitted';
+  }
+  if (_forms_admin_subject_line_includes_user_name($form)) {
+    $subject .= " - $user_name";
   }
   $body =  _entity_display_form_data($form);
   _send_email_for_entity_form($to, $from, $subject, $body);
@@ -175,6 +198,19 @@ function _forms_get_admin_email($form) {
         ? ILRWEB_EMAIL : $entityform_type->data['form_submission_ilr_recipient'];
   return $admin_email;
 }
+
+
+/**
+ * Checks whether a the user name should be appended to the admin subject line
+ */
+function _forms_admin_subject_line_includes_user_name($form) {
+  $entityform_type = entityform_type_load($form['#entity']->type);
+  $admin_subject_line_includes_user_name = empty($entityform_type->data['add_user_name_to_subject_line'])
+    ? FALSE
+    : $entityform_type->data['add_user_name_to_subject_line'];
+  return $admin_subject_line_includes_user_name;
+}
+
 
 /**
  * Display form data using entityform and entity2text code from Ted Bowman
@@ -210,11 +246,11 @@ function _forms_construct_user_name($form){
   if (array_key_exists('field_full_name', $form)) {
     $name_for_salutation = trim($form['field_full_name']['und'][0]['value']['#value']);
   }
-  elseif (array_key_exists('field_firstname', $form)) {
-    $name_for_salutation = trim($form['field_firstname']['und'][0]['value']['#value']);
-    if (array_key_exists('field_lastname', $form)) {
+  elseif (array_key_exists('field_first_name', $form)) {
+    $name_for_salutation = trim($form['field_first_name']['und'][0]['value']['#value']);
+    if (array_key_exists('field_last_name', $form)) {
       $name_for_salutation .= ' ';
-      $name_for_salutation .= trim($form['field_lastname']['und'][0]['value']['#value']);
+      $name_for_salutation .= trim($form['field_last_name']['und'][0]['value']['#value']);
     }
   }
   return $name_for_salutation;
