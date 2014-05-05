@@ -1485,6 +1485,39 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'user-user-field_netid'
+  $field_instances['user-user-field_netid'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_netid',
+    'label' => 'NetID',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 7,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t(' Departments in which you prefer assignment (Indicate at least top two choices.)');
@@ -1508,6 +1541,7 @@ function forms_field_default_field_instances() {
   t('List your prior TA or RA appointments');
   t('Minor subject(s)');
   t('Name');
+  t('NetID');
   t('Number of assistants requested');
   t('Number of completed semesters in residence');
   t('Preferred students (in order of preference), or desired qualifications');

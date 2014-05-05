@@ -297,6 +297,15 @@ function settings_and_permissions_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: 'administer tagged content block configuration'.
+  $permissions['administer tagged content block configuration'] = array(
+    'name' => 'administer tagged content block configuration',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'tagged_content_block',
+  );
+
   // Exported permission: 'administer themes'.
   $permissions['administer themes'] = array(
     'name' => 'administer themes',
@@ -388,6 +397,15 @@ function settings_and_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'create any tagged_content bean'.
+  $permissions['create any tagged_content bean'] = array(
+    'name' => 'create any tagged_content bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
+  );
+
   // Exported permission: 'create spotlight content'.
   $permissions['create spotlight content'] = array(
     'name' => 'create spotlight content',
@@ -418,6 +436,15 @@ function settings_and_permissions_user_default_permissions() {
     'name' => 'delete any spotlight content',
     'roles' => array(),
     'module' => 'node',
+  );
+
+  // Exported permission: 'delete any tagged_content bean'.
+  $permissions['delete any tagged_content bean'] = array(
+    'name' => 'delete any tagged_content bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
   );
 
   // Exported permission: 'delete own spotlight content'.
@@ -489,6 +516,15 @@ function settings_and_permissions_user_default_permissions() {
     'name' => 'edit any spotlight content',
     'roles' => array(),
     'module' => 'node',
+  );
+
+  // Exported permission: 'edit any tagged_content bean'.
+  $permissions['edit any tagged_content bean'] = array(
+    'name' => 'edit any tagged_content bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
   );
 
   // Exported permission: 'edit bean view mode'.
@@ -623,6 +659,16 @@ function settings_and_permissions_user_default_permissions() {
     'name' => 'view any html bean',
     'roles' => array(
       'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'view any tagged_content bean'.
+  $permissions['view any tagged_content bean'] = array(
+    'name' => 'view any tagged_content bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
     ),
     'module' => 'bean',
   );

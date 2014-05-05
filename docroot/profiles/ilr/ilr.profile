@@ -36,55 +36,51 @@ function ilr_home_view() {
 }
 
 /**
+ * Implements hook_user_insert()
+ */
+function ilr_user_presave(&$edit, $account, $category) {
+  $saml_attributes = simplesamlphp_auth_get_attributes();
+  if($account->is_new && !empty($saml_attributes)) {
+    $edit['field_netid'][LANGUAGE_NONE][0]['value'] = $saml_attributes['uid'][0];
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter()
- *
+ * Sets up validation to keep Cornell users from registering
  */
 function ilr_form_user_register_form_alter(&$form, &$form_state) {
   // Add our own validation function to the array of validation callbacks
   $form['#validate'][] = 'ilr_user_register_validate';
 }
 
-// Check to make sure they're not using a Cornell Email
-function ilr_user_register_validate($form, &$form_state) {
-  $email = $form_state['values']['mail'];
-  $cornell_email = substr($email, -11) == 'cornell.edu';
-
-  if ($cornell_email) {
-    form_set_error('mail', t('Cornell users can create an account using the "Log in" link in the footer.'));
-  }
-}
-
 /**
- * Implements hook_user_insert()
+ * Implements hook_form_FORM_ID_alter()
+ * Disables editing the NetID field
  */
-function ilr_user_presave(&$edit, $account, $category) {
-  if($account->is_new && _ilr_user_saml_attributes_present()) {
-    $saml_attributes = simplesamlphp_auth_get_attributes();
-    $edit['field_first_name'][LANGUAGE_NONE][0]['value'] = $saml_attributes['givenName'][0];
-    $edit['field_last_name'][LANGUAGE_NONE][0]['value'] = $saml_attributes['sn'][0];
+function ilr_form_user_profile_form_alter(&$form, $form_state, $form_id) {
+  if (isset($form['field_netid'])) {
+    $form['field_netid']['#disabled'] = TRUE;
   }
-}
-
-/**
- * Check to see whether there are any
- * simplesamlphp_auth attributes
- */
-function _ilr_user_saml_attributes_present() {
-  if (count(simplesamlphp_auth_get_attributes()) > 0) {
-    return TRUE;
-  }
-  return FALSE;
 }
 
 /**
  * Implements hook_form_FORM_ID_alter()
- *
+ * Adds the login button
  */
 function ilr_form_user_login_alter(&$form, $form_state, $form_id) {
   $form['netid'] = array(
     '#markup' => '<h2>Cornell Users</h2><p><a class="button" href="/saml_login">NetID Login</a></p><h2>No Cornell NetID?</h2>',
     '#weight' => -10,
   );
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ * Prevents Cornell users from changing their password
+ */
+function ilr_form_user_pass_alter(&$form, $form_state, $form_id) {
+  $form['#validate'][] = 'ilr_user_pass_validate';
 }
 
 /**
@@ -112,13 +108,10 @@ function ilr_menu_block_blocks() {
 
 /**
  * Implements hook_menu_alter()
+ * Removes the saml_login link for logged in users
  */
 function ilr_menu_alter(&$items) {
-  // Makes the saml_login link disappear when users are logged in.
   $items['saml_login']['access callback'] = 'user_is_anonymous';
-
-  // Remove all access to the password reset form
-  $items['user/password']['access callback'] = FALSE;
 }
 
 /**
@@ -131,4 +124,31 @@ function ilr_wysiwyg_editor_settings_alter(&$settings, $context) {
   if ($context['profile']->editor == 'ckeditor') {
     $settings['allowedContent'] = TRUE;
   }
+}
+
+/**
+ * Validation callback
+ * See ilr_form_user_register_form_alter
+ */
+function ilr_user_register_validate($form, &$form_state) {
+  if (_ilr_user_has_cornell_email($form_state['values']['mail'])) {
+    form_set_error('mail', t('Cornell users must log in with NetID.'));
+  }
+}
+
+/**
+ * Validation callback
+ * See ilr_form_user_pass_alter
+ */
+function ilr_user_pass_validate($form, &$form_state) {
+  if (_ilr_user_has_cornell_email($form_state['values']['name'])) {
+    form_set_error('mail', t('Please log in with your NetID.'));
+  }
+}
+
+/**
+ * String manipulation to check for cornell.edu email addy
+ */
+function _ilr_user_has_cornell_email($email) {
+  return substr($email, -11) == 'cornell.edu';
 }

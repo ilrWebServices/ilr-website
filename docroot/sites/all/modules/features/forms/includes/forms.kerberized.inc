@@ -1,13 +1,11 @@
 <?php
 
-$_forms_user_account = NULL;
-
 /**
  * Swaps kerberized forms with netID login button
  */
 function forms_block_view_alter(&$data, $block) {
-  if (_forms_kerberized_form_present($data['content'])
-    && !_forms_user_logged_in_with_netid()) {
+  if (isset($data['content']) && _forms_kerberized_form_present($data['content'])
+    && !_forms_saml_attributes_present()) {
       $data['content'] = drupal_get_form('forms_login_form');
   }
 }
@@ -38,6 +36,26 @@ function forms_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_i
 }
 
 /**
+ * Implements hook_user_logout()
+ * Redirects users logged out via _forms_handle_kerberized_form
+ * This and forms_drupal_goto_alter are based on
+ * https://drupal.org/project/redirect_after_logout
+ */
+function forms_user_logout($account) {
+  $destination = &drupal_static(__FUNCTION__);
+  $destination = current_path();
+}
+
+/**
+ * Implements hook_drupal_goto_alter().
+ */
+function forms_drupal_goto_alter(&$path, &$options, &$http_response_code) {
+  $destination = &drupal_static('forms_user_logout');
+  if (!$path && $destination) {
+    drupal_goto($destination);
+  }
+}
+/**
  * Adds the requires authorization checkbox to entityform type creation/edit
  */
 function _forms_add_kerberized_checkbox(&$form) {
@@ -47,7 +65,7 @@ function _forms_add_kerberized_checkbox(&$form) {
 
   $form['data']['kerberized'] = array(
     '#type' => 'checkbox',
-    '#title' => t('This form require NetID authentication'),
+    '#title' => t('This form requires NetID authentication'),
     '#weight' => 0,
     '#default_value' => $kerberized,
   );
@@ -69,7 +87,7 @@ function _forms_kerberize_field(&$form) {
 
   $form['instance']['settings']['kerberized'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Display user account info as default value for this field'),
+    '#title' => t('Display NetID info as default value for this field'),
     '#weight' => -1,
     '#default_value' => $kerberized,
   );
@@ -157,45 +175,71 @@ function _forms_set_kerberized_values(&$form) {
  * Connects the kerberizable_fields to the correct user account attributes
  */
 function _forms_map_user_attribute_to_field($field_name) {
-  global $_forms_user_account;
-  if (!$_forms_user_account) {
-    $_forms_user_account = _forms_get_user_account_info();
+  $saml_attributes = simplesamlphp_auth_get_attributes();
+
+  if (!empty($saml_attributes)) {
+    switch ($field_name) {
+      case 'field_full_name':
+        return $saml_attributes['displayName'][0];
+        break;
+      case 'field_email':
+        return $saml_attributes['mail'][0];
+        break;
+      case 'field_first_name':
+        return $saml_attributes['givenName'][0];
+        break;
+      case 'field_last_name':
+        return $saml_attributes['sn'][0];
+        break;
+    }
+  } // Auth attributes missing, so log an error
+  else {
+    // Unexpected, based on _forms_handle_kerberized_form()
+    watchdog(
+      'forms.kerberized',
+      'SimpleSAML authentication attributes not present when expected',
+      array(),
+      WATCHDOG_ERROR
+    );
   }
-  switch ($field_name) {
-    case 'field_full_name':
-      return $_forms_user_account->name;
-      break;
-    case 'field_email':
-      return $_forms_user_account->mail;
-      break;
-    case 'field_first_name':
-      return $_forms_user_account->field_first_name[LANGUAGE_NONE][0]['safe_value'];
-      break;
-    case 'field_last_name':
-      return $_forms_user_account->field_last_name[LANGUAGE_NONE][0]['safe_value'];
-      break;
-  }
+
   return '';
 }
 
 /**
- * Loads the user object and all its attributes
- * Since additional fields added to accounts are not available
- * in the global $user object
+ * Adds kerberized values to forms when appropriate
+ * Logs user out if SAML Session missing (e.g. browser was closed)
  */
-function _forms_get_user_account_info() {
-  global $user;
-  return user_load($user->uid);
+function _forms_handle_kerberized_form(&$form) {
+  if (user_is_logged_in() && _forms_user_has_netid()) {
+    if (_forms_saml_attributes_present()) {
+      _forms_set_kerberized_values($form);
+    } // SimpleSAMLAuth info missing, so force the user to log in again
+    else {
+      require_once(drupal_get_path('module', 'user') . '/user.pages.inc');
+      user_logout(); // See forms_drupal_goto_alter for redirect
+    }
+  }
 }
 
 /**
- * Checks the init value created by simplesamlphp_auth
- * with the value of the user's email before the '@' symbol
+ * Figures out whether user account has a NetID
  */
-function _forms_user_logged_in_with_netid() {
+function _forms_user_has_netid() {
   global $user;
-  if ($user->uid) { // the user is logged in
-    return $user->init == strstr($user->mail, '@', true);
+  if ($user->uid) {
+    $account = user_load($user->uid);
+    return !empty($account->field_netid);
+  }
+  return FALSE;
+}
+
+/**
+ * Checks to confirm there are values in the SAML Auth Session
+ */
+function _forms_saml_attributes_present() {
+  if ($attributes = simplesamlphp_auth_get_attributes()) {
+    return !empty($attributes);
   }
   return FALSE;
 }
