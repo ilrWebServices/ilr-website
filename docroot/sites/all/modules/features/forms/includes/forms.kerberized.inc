@@ -169,7 +169,7 @@ function _forms_map_user_attribute_to_field($field_name) {
         return $_simplesamlphp_auth_saml_attributes['givenName'][0];
         break;
       case 'field_last_name':
-        return $_simplesamlphp_auth_saml_attributes['givenName'][0];
+        return $_simplesamlphp_auth_saml_attributes['sn'][0];
         break;
     }
   } // Auth attributes missing, so log an error
