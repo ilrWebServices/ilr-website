@@ -176,6 +176,410 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-credit_internship_contact_form-field_address_line_1'
+  $field_instances['entityform-credit_internship_contact_form-field_address_line_1'] = array(
+    'bundle' => 'credit_internship_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_line_1',
+    'label' => 'Street address',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-credit_internship_contact_form-field_city'
+  $field_instances['entityform-credit_internship_contact_form-field_city'] = array(
+    'bundle' => 'credit_internship_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_city',
+    'label' => 'City',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-credit_internship_contact_form-field_comments'
+  $field_instances['entityform-credit_internship_contact_form-field_comments'] = array(
+    'bundle' => 'credit_internship_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_comments',
+    'label' => 'Questions / comments / details',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 22,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-credit_internship_contact_form-field_country'
+  $field_instances['entityform-credit_internship_contact_form-field_country'] = array(
+    'bundle' => 'credit_internship_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_country',
+    'label' => 'Country',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-credit_internship_contact_form-field_email'
+  $field_instances['entityform-credit_internship_contact_form-field_email'] = array(
+    'bundle' => 'credit_internship_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-credit_internship_contact_form-field_first_name'
+  $field_instances['entityform-credit_internship_contact_form-field_first_name'] = array(
+    'bundle' => 'credit_internship_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_first_name',
+    'label' => 'First Name',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-credit_internship_contact_form-field_last_name'
+  $field_instances['entityform-credit_internship_contact_form-field_last_name'] = array(
+    'bundle' => 'credit_internship_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_last_name',
+    'label' => 'Last Name',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-credit_internship_contact_form-field_phone'
+  $field_instances['entityform-credit_internship_contact_form-field_phone'] = array(
+    'bundle' => 'credit_internship_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_phone',
+    'label' => 'Phone',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-credit_internship_contact_form-field_semester_off_campus'
+  $field_instances['entityform-credit_internship_contact_form-field_semester_off_campus'] = array(
+    'bundle' => 'credit_internship_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_semester_off_campus',
+    'label' => 'Semester off-campus',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 20,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-credit_internship_contact_form-field_state_inc_outside_us'
+  $field_instances['entityform-credit_internship_contact_form-field_state_inc_outside_us'] = array(
+    'bundle' => 'credit_internship_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_state_inc_outside_us',
+    'label' => 'State',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-credit_internship_contact_form-field_year_as_text'
+  $field_instances['entityform-credit_internship_contact_form-field_year_as_text'] = array(
+    'bundle' => 'credit_internship_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_year_as_text',
+    'label' => 'Class year',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-credit_internship_contact_form-field_zip_code'
+  $field_instances['entityform-credit_internship_contact_form-field_zip_code'] = array(
+    'bundle' => 'credit_internship_contact_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_zip_code',
+    'label' => 'Zip code',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 12,
+    ),
+  );
+
   // Exported field_instance: 'entityform-faculty_request_for_ta_or_ra-field_comments'
   $field_instances['entityform-faculty_request_for_ta_or_ra-field_comments'] = array(
     'bundle' => 'faculty_request_for_ta_or_ra',
@@ -264,6 +668,8 @@ function forms_field_default_field_instances() {
     'label' => 'Email',
     'required' => 1,
     'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -297,6 +703,8 @@ function forms_field_default_field_instances() {
     'label' => 'Name',
     'required' => 1,
     'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -702,6 +1110,8 @@ function forms_field_default_field_instances() {
     'label' => 'Email',
     'required' => 1,
     'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -735,6 +1145,8 @@ function forms_field_default_field_instances() {
     'label' => 'First name',
     'required' => 1,
     'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -800,6 +1212,8 @@ function forms_field_default_field_instances() {
     'label' => 'Last name',
     'required' => 1,
     'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1043,6 +1457,107 @@ function forms_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_organizational_behavior_lab_-field_comments'
+  $field_instances['entityform-ilr_organizational_behavior_lab_-field_comments'] = array(
+    'bundle' => 'ilr_organizational_behavior_lab_',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_comments',
+    'label' => 'Questions / comments / details',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_organizational_behavior_lab_-field_email'
+  $field_instances['entityform-ilr_organizational_behavior_lab_-field_email'] = array(
+    'bundle' => 'ilr_organizational_behavior_lab_',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_organizational_behavior_lab_-field_full_name'
+  $field_instances['entityform-ilr_organizational_behavior_lab_-field_full_name'] = array(
+    'bundle' => 'ilr_organizational_behavior_lab_',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_full_name',
+    'label' => 'Name',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
     ),
   );
 
@@ -1492,17 +2007,22 @@ function forms_field_default_field_instances() {
   t('Account Number (for externally funded projects)');
   t('Additional comments');
   t('Career Services how to direct questions');
+  t('City');
+  t('Class year');
   t('Classes you are interesting in TAing or faculty members to whom you wish to be assigned');
   t('Comments');
   t('Concentration');
+  t('Country');
   t('Course name');
   t('Course number (e.g. ILRLR 2100)');
   t('Degree program');
   t('Department');
   t('Email');
+  t('First Name');
   t('First name');
   t('Indicate level, if any, of computer skills or knowledge');
   t('Indicate preference for teaching or research assistantship');
+  t('Last Name');
   t('Last name');
   t('List relevant work experience and/or your qualifications');
   t('List your prior TA or RA appointments');
@@ -1510,16 +2030,22 @@ function forms_field_default_field_instances() {
   t('Name');
   t('Number of assistants requested');
   t('Number of completed semesters in residence');
+  t('Phone');
   t('Preferred students (in order of preference), or desired qualifications');
   t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
+  t('Questions / comments / details');
   t('Questions and comments');
   t('RA Additional Information');
   t('Semester for which you are requesting assistantship');
+  t('Semester off-campus');
+  t('State');
+  t('Street address');
   t('Subject line for this message');
   t('TA Course Information');
   t('Type of grad assistant');
   t('Year');
   t('Your questions or comments');
+  t('Zip code');
 
   return $field_instances;
 }
