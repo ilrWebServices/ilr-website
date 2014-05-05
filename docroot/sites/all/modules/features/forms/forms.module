@@ -21,7 +21,7 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
 
     // Fill in default values of kerberized forms
     if (_forms_form_is_kerberized($form['#bundle'])) {
-      _forms_set_kerberized_values($form);
+      _forms_handle_kerberized_form($form);
     }
   }
 }

@@ -5,7 +5,7 @@
  */
 function forms_block_view_alter(&$data, $block) {
   if (isset($data['content']) && _forms_kerberized_form_present($data['content'])
-    && !_forms_user_logged_in_with_netid()) {
+    && !_forms_saml_attributes_present()) {
       $data['content'] = drupal_get_form('forms_login_form');
   }
 }
@@ -35,6 +35,26 @@ function forms_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_i
   }
 }
 
+/**
+ * Implements hook_user_logout()
+ * Redirects users logged out via _forms_handle_kerberized_form
+ * This and forms_drupal_goto_alter are based on
+ * https://drupal.org/project/redirect_after_logout
+ */
+function forms_user_logout($account) {
+  $destination = &drupal_static(__FUNCTION__);
+  $destination = current_path();
+}
+
+/**
+ * Implements hook_drupal_goto_alter().
+ */
+function forms_drupal_goto_alter(&$path, &$options, &$http_response_code) {
+  $destination = &drupal_static('forms_user_logout');
+  if (!$path && $destination) {
+    drupal_goto($destination);
+  }
+}
 /**
  * Adds the requires authorization checkbox to entityform type creation/edit
  */
@@ -174,23 +194,48 @@ function _forms_map_user_attribute_to_field($field_name) {
     }
   } // Auth attributes missing, so log an error
   else {
+    // Unexpected, based on _forms_handle_kerberized_form()
     watchdog(
       'forms.kerberized',
       'SimpleSAML authentication attributes not present when expected',
       array(),
       WATCHDOG_ERROR
     );
-
-    // If this error is getting trapped frequently, then there is an issue with the SAML session data and the session.gc_maxlifetime and/or session.cookie_lifetime settings in settings.php. Consider force logging-out the Drupal user - ATF
   }
 
   return '';
 }
 
 /**
+ * Adds kerberized values to forms when appropriate
+ * Logs user out if SAML Session missing (e.g. browser was closed)
+ */
+function _forms_handle_kerberized_form(&$form) {
+  if (user_is_logged_in() && _forms_user_has_netid()) {
+    if (_forms_saml_attributes_present()) {
+      _forms_set_kerberized_values($form);
+    } // SimpleSAMLAuth info missing, so force the user to log in again
+    else {
+      require_once(drupal_get_path('module', 'user') . '/user.pages.inc');
+      user_logout(); // See forms_drupal_goto_alter for redirect
+    }
+  }
+}
+
+/**
+ * Figures out whether user account was created by NetID
+ */
+function _forms_user_has_netid() {
+  global $user;
+  if ($user->uid) {
+    return $user->init == strstr($user->mail, '@', true);
+  }
+  return FALSE;
+}
+/**
  * Checks to confirm there are values in the SAML Auth Session
  */
-function _forms_user_logged_in_with_netid() {
+function _forms_saml_attributes_present() {
   global $_simplesamlphp_auth_saml_attributes;
   return !empty($_simplesamlphp_auth_saml_attributes);
 }
