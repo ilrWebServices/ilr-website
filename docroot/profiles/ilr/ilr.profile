@@ -50,30 +50,8 @@ function ilr_user_register_validate($form, &$form_state) {
   $cornell_email = substr($email, -11) == 'cornell.edu';
 
   if ($cornell_email) {
-    form_set_error('mail', t('Cornell users can create an account using the "Log in" link in the footer.'));
+    form_set_error('mail', t('Cornell users must log in with NetID.'));
   }
-}
-
-/**
- * Implements hook_user_insert()
- */
-function ilr_user_presave(&$edit, $account, $category) {
-  if($account->is_new && _ilr_user_saml_attributes_present()) {
-    $saml_attributes = simplesamlphp_auth_get_attributes();
-    $edit['field_first_name'][LANGUAGE_NONE][0]['value'] = $saml_attributes['givenName'][0];
-    $edit['field_last_name'][LANGUAGE_NONE][0]['value'] = $saml_attributes['sn'][0];
-  }
-}
-
-/**
- * Check to see whether there are any
- * simplesamlphp_auth attributes
- */
-function _ilr_user_saml_attributes_present() {
-  if (count(simplesamlphp_auth_get_attributes()) > 0) {
-    return TRUE;
-  }
-  return FALSE;
 }
 
 /**
