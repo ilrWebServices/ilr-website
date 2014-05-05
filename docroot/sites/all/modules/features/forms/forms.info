@@ -92,4 +92,5 @@ features[field_instance][] = field_collection_item-field_ra_additonal_informatio
 features[field_instance][] = field_collection_item-field_ra_additonal_information-field_project_name
 features[field_instance][] = field_collection_item-field_ta_course_information-field_course_name
 features[field_instance][] = field_collection_item-field_ta_course_information-field_course_number
+features[field_instance][] = user-user-field_netid
 project path = sites/all/modules/features

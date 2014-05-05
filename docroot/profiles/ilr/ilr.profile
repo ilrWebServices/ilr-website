@@ -44,6 +44,16 @@ function ilr_form_user_register_form_alter(&$form, &$form_state) {
   $form['#validate'][] = 'ilr_user_register_validate';
 }
 
+/**
+ * Implements hook_user_insert()
+ */
+function ilr_user_presave(&$edit, $account, $category) {
+  $saml_attributes = simplesamlphp_auth_get_attributes();
+  if($account->is_new && !empty($saml_attributes)) {
+    $edit['field_netid'][LANGUAGE_NONE][0]['value'] = $saml_attributes['uid'][0];
+  }
+}
+
 // Check to make sure they're not using a Cornell Email
 function ilr_user_register_validate($form, &$form_state) {
   $email = $form_state['values']['mail'];
@@ -53,6 +63,7 @@ function ilr_user_register_validate($form, &$form_state) {
     form_set_error('mail', t('Cornell users must log in with NetID.'));
   }
 }
+
 
 /**
  * Implements hook_form_FORM_ID_alter()
