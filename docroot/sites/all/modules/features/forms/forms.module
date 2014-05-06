@@ -33,7 +33,7 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
  */
 function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
   _forms_add_admin_email_field($form);
-  _forms_add_include_name_in_admin_email_subject_line_checkbox($form);
+  _forms_add_checkbox_to_include_name_in_admin_subject_line($form);
   _forms_add_kerberized_checkbox($form);
 }
 
@@ -58,7 +58,7 @@ function _forms_add_admin_email_field(&$form) {
  * Add checkbox to "indicate whether to append the user's name to the
  * admin email subject line" to the "edit" form for this entityform
  */
-function _forms_add_include_name_in_admin_email_subject_line_checkbox(&$form) {
+function _forms_add_checkbox_to_include_name_in_admin_subject_line(&$form) {
   $add_user_name_to_subject_line = (isset($form['#entityform_type']->data['add_user_name_to_subject_line']))
     ? $form['#entityform_type']->data['add_user_name_to_subject_line']
     : 0;
