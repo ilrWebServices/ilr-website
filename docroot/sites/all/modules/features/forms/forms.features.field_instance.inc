@@ -27,7 +27,7 @@ function forms_field_default_field_instances() {
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_career_services_how_to_dir',
-    'label' => 'Career Services how to direct questions',
+    'label' => 'Direct my questions to',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -37,7 +37,7 @@ function forms_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -58,7 +58,7 @@ function forms_field_default_field_instances() {
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_comments',
-    'label' => 'Your questions or comments',
+    'label' => 'Questions and comments',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -104,7 +104,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 8,
+      'weight' => 1,
     ),
   );
 
@@ -138,7 +138,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 0,
     ),
   );
 
@@ -172,7 +172,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -261,7 +261,7 @@ function forms_field_default_field_instances() {
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_comments',
-    'label' => 'Questions / comments / details',
+    'label' => 'Questions and comments',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -1643,7 +1643,7 @@ function forms_field_default_field_instances() {
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_comments',
-    'label' => 'Questions / comments / details',
+    'label' => 'Questions and comments',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -2047,7 +2047,7 @@ function forms_field_default_field_instances() {
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_comments',
-    'label' => 'Your questions or comments',
+    'label' => 'Questions and comments',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -2093,7 +2093,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 6,
+      'weight' => 1,
     ),
   );
 
@@ -2127,7 +2127,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 0,
     ),
   );
 
@@ -2307,7 +2307,6 @@ function forms_field_default_field_instances() {
   t('Account Number (for externally funded projects)');
   t('Additional comments');
   t('Areas of interest');
-  t('Career Services how to direct questions');
   t('City');
   t('Class year');
   t('Classes you are interesting in TAing or faculty members to whom you wish to be assigned');
@@ -2318,6 +2317,7 @@ function forms_field_default_field_instances() {
   t('Course number (e.g. ILRLR 2100)');
   t('Degree program');
   t('Department');
+  t('Direct my questions to');
   t('Email');
   t('First Name');
   t('First name');
@@ -2335,7 +2335,6 @@ function forms_field_default_field_instances() {
   t('Phone');
   t('Preferred students (in order of preference), or desired qualifications');
   t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
-  t('Questions / comments / details');
   t('Questions and comments');
   t('RA Additional Information');
   t('Semester for which you are requesting assistantship');
@@ -2346,7 +2345,6 @@ function forms_field_default_field_instances() {
   t('TA Course Information');
   t('Type of grad assistant');
   t('Year');
-  t('Your questions or comments');
   t('Zip code');
 
   return $field_instances;
