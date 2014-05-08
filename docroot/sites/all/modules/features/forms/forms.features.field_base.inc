@@ -39,6 +39,44 @@ function forms_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_areas_of_interest_for_prof'
+  $field_bases['field_areas_of_interest_for_prof'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_areas_of_interest_for_prof',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Compensation' => 'Compensation',
+        'Conflict systems design' => 'Conflict systems design',
+        'Dispute resolution' => 'Dispute resolution',
+        'Diversity' => 'Diversity',
+        'Employment and disability' => 'Employment and disability',
+        'Executive education' => 'Executive education',
+        'Harassment and violence in the workplace' => 'Harassment and violence in the workplace',
+        'Human capital development' => 'Human capital development',
+        'Human resources' => 'Human resources',
+        'Labor relations' => 'Labor relations',
+        'Labor programs' => 'Labor programs',
+        'Mediation' => 'Mediation',
+        'Negotiation' => 'Negotiation',
+        'Workplace health and safety' => 'Workplace health and safety',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_career_services_how_to_dir'
   $field_bases['field_career_services_how_to_dir'] = array(
     'active' => 1,
