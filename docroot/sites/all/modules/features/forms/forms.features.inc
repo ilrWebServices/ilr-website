@@ -25,7 +25,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for submitting your questions\\/comments to ILR Career Services.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for contacting ILR Career Services.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -89,6 +89,52 @@ function forms_default_entityform_type() {
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "form_submission_ilr_recipient" : "bk30@cornell.edu",
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
+  $items['customized_professional_programs'] = entity_import('entityform_type', '{
+    "type" : "customized_professional_programs",
+    "label" : "Customized Professional Programs",
+    "data" : {
+      "draftable" : 0,
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for your interest in ILR customized professional programs. You will receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EWe will respond to your request within three business days. If you have questions, please contact us at \\u003Ca href=\\u0022mailto:ilrCustomerService@cornell.edu\\u0022\\u003EilrCustomerService@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "3" : 0,
+        "4" : 0,
+        "6" : 0,
+        "5" : 0,
+        "7" : 0,
+        "8" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : {
+        "value" : "\\u003Cp\\u003ETell us what kind of program you\\u0026#39;re looking for.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "form_submission_ilr_recipient" : "ilrCustomerService@cornell.edu",
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0
     },
@@ -287,7 +333,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for your comments and questions.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for contacting ILR International Programs.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -307,7 +353,9 @@ function forms_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
-      "form_submission_ilr_recipient" : "ilrip@cornell.edu"
+      "form_submission_ilr_recipient" : "ilrip@cornell.edu",
+      "add_user_name_to_subject_line" : 0,
+      "kerberized" : 0
     },
     "weight" : "0",
     "paths" : []
@@ -328,7 +376,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Ch3\\u003EThank you\\u003C\\/h3\\u003E\\r\\n\\r\\n\\u003Cp\\u003EYour questions and comments have been sent to ILR Student Services.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EOffice of Student Services, ILR School, Cornell University\\u003Cbr \\/\\u003E\\r\\n\\t\\u003Ca href=\\u0022mailto:ilr_oss@cornell.edu\\u0022\\u003Eilr_oss@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for contacting ILR Student Services.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EOffice of Student Services, ILR School, Cornell University\\u003Cbr \\/\\u003E\\r\\n\\t\\u003Ca href=\\u0022mailto:ilr_oss@cornell.edu\\u0022\\u003Eilr_oss@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -340,7 +388,6 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
-        "9" : 0,
         "6" : 0,
         "5" : 0,
         "7" : 0,
@@ -349,9 +396,9 @@ function forms_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
-      "block_enable" : true,
-      "kerberized" : 0,
-      "form_submission_ilr_recipient" : "ilr_oss@cornell.edu"
+      "form_submission_ilr_recipient" : "ilr_oss@cornell.edu",
+      "add_user_name_to_subject_line" : 0,
+      "kerberized" : 0
     },
     "weight" : "0",
     "paths" : []
@@ -372,7 +419,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for your feedback about the Worker Institute.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for contacting the Worker Institute at Cornell University.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
