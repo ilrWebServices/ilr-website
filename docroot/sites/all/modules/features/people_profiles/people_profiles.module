@@ -42,7 +42,7 @@ function people_profiles_preprocess_node(&$variables) {
 function people_profiles_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'people_profile_node_form') {
     // Check to see whether the profile is for faculty
-    if ($form['field_profile_type']['und']['#default_value'][0] == 'faculty') {
+    if (count($form['field_profile_type']['und']['#default_value']) && $form['field_profile_type']['und']['#default_value'][0] == 'faculty') {
       _people_profiles_render_ai_tab_contents($form);
     } // Remove the AI tab and other fields
     else {
