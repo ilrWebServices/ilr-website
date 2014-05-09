@@ -45,6 +45,7 @@ function forms_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
       "form_submission_ilr_recipient" : "",
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0
@@ -88,6 +89,7 @@ function forms_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
       "form_submission_ilr_recipient" : "bk30@cornell.edu",
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0
@@ -180,6 +182,7 @@ function forms_default_entityform_type() {
         "value" : "\\u003Cp\\u003ETo be completed by the faculty member requesting a graduate assistant.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EPlease complete a separate form for each class or project for which you are requesting TAs or RAs.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
+      "block_enable" : true,
       "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu",
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 1
@@ -223,6 +226,7 @@ function forms_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
       "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu",
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 1
@@ -266,6 +270,7 @@ function forms_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
       "form_submission_ilr_recipient" : "jag97@cornell.edu",
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0
@@ -353,6 +358,7 @@ function forms_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
       "form_submission_ilr_recipient" : "ilrip@cornell.edu",
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0
@@ -396,6 +402,7 @@ function forms_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
       "form_submission_ilr_recipient" : "ilr_oss@cornell.edu",
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0
@@ -442,6 +449,7 @@ function forms_default_entityform_type() {
         "value" : "\\u003Cp\\u003EWe welcome your feedback. All correspondence is held in strict confidentiality.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
+      "block_enable" : true,
       "form_submission_ilr_recipient" : "workerInstitute@cornell.edu",
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0
