@@ -42,7 +42,7 @@ function scheinman_neutral_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Last Name (field_last_name) */
+  /* Sort criterion: Field: Last Name (field_last_name) */
   $handler->display->display_options['sorts']['field_last_name_value']['id'] = 'field_last_name_value';
   $handler->display->display_options['sorts']['field_last_name_value']['table'] = 'field_data_field_last_name';
   $handler->display->display_options['sorts']['field_last_name_value']['field'] = 'field_last_name_value';
@@ -60,7 +60,7 @@ function scheinman_neutral_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'scheinman_neutral' => 'scheinman_neutral',
   );
-  /* Filter criterion: Content: State (or outside US) (field_state_inc_outside_us) */
+  /* Filter criterion: Field: State (field_state_inc_outside_us) */
   $handler->display->display_options['filters']['field_state_inc_outside_us_value']['id'] = 'field_state_inc_outside_us_value';
   $handler->display->display_options['filters']['field_state_inc_outside_us_value']['table'] = 'field_data_field_state_inc_outside_us';
   $handler->display->display_options['filters']['field_state_inc_outside_us_value']['field'] = 'field_state_inc_outside_us_value';
