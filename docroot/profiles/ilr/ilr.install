@@ -87,6 +87,7 @@ function ilr_install() {
     'forms',
     'spotlight',
     'tagged_content_block',
+    'promo'
   ));
 
   _ilr_add_permissions();
