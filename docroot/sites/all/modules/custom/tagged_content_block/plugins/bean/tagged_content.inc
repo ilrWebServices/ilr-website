@@ -115,13 +115,16 @@ class TaggedContentBean extends BeanPlugin {
       $query->fieldCondition('field_tags', 'tid', $tids, 'IN');
     }
 
+    // Determine if the query should respect "sticky" status
+    if($bean->sticky) {
+      $query->propertyOrderBy('sticky', 'DESC');
+    }
+
     // Figure out if we need to reorder the query
     if($bean->order_by == 'random') {
       $query->addTag('random');
-    }
-
-    if($bean->sticky) {
-      $query->propertyOrderBy('sticky', 'DESC');
+    } elseif ($bean->order_by == 'date') {
+      $query->propertyOrderBy('created', 'DESC');
     }
 
     $result = $query->execute();
