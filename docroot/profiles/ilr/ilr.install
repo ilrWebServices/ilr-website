@@ -121,18 +121,10 @@ function ilr_update_7002() {
 }
 
 /**
- * Assigns content types for tagged blocks
+ * Used to assign content types for tagged blocks
+ * Moved to tagged_content_block.install
  */
 function ilr_update_7003() {
-  $enabled_content_types = array(
-    'news_item' => 'news_item',
-    'spotlight' => 'spotlight',
-  );
-
-  variable_set(
-    'tagged_content_block_enabled_bundles',
-    $enabled_content_types
-  );
 }
 
 /**

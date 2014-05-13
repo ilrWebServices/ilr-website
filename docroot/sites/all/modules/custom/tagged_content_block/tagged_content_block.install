@@ -5,3 +5,20 @@
 function tagged_content_block_uninstall() {
   variable_del('tagged_content_block_enabled_bundles');
 }
+
+
+/**
+ * Assigns content types for tagged blocks
+ */
+function tagged_content_block_update_7001() {
+  $enabled_content_types = array(
+    'news_item' => 'news_item',
+    'spotlight' => 'spotlight',
+    'promo'     => 'promo',
+  );
+
+  variable_set(
+    'tagged_content_block_enabled_bundles',
+    $enabled_content_types
+  );
+}
