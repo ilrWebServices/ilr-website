@@ -4,7 +4,9 @@
  * Swaps kerberized forms with netID login button
  */
 function forms_block_view_alter(&$data, $block) {
-  if (isset($data['content']) && _forms_kerberized_form_present($data['content'])
+  if (isset($data['content'])
+    && is_array($data['content'])
+    && _forms_kerberized_form_present($data['content'])
     && !_forms_saml_attributes_present()) {
       $data['content'] = drupal_get_form('forms_login_form');
   }
