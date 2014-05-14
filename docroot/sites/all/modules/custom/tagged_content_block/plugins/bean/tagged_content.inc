@@ -5,7 +5,8 @@
  */
 
 class TaggedContentBean extends BeanPlugin {
-  protected $queries_executed = array();
+  private $bean;
+
   /**
    * Declares default block settings.
    * 'type' value determines whether tag query should be inclusive or exclusive
@@ -39,7 +40,7 @@ class TaggedContentBean extends BeanPlugin {
 
     $form['content_types'] = array(
       '#type' => 'checkboxes',
-      '#options' => TaggedContentBean::get_enabled_content_types(),
+      '#options' => $this->getEnabledContentTypes(),
       '#default_value' => $bean->content_types,
       '#title' => t('Which content types do you want to include?'),
     );
@@ -92,19 +93,89 @@ class TaggedContentBean extends BeanPlugin {
    * Displays the bean.
    */
   public function view($bean, $content, $view_mode = 'default', $langcode = NULL) {
-    // Get the taxonomy term tids
-    $tids = TaggedContentBean::get_taxonomy_tids_from_names($bean->tags);
+    $this->bean = $bean;
+    $this->removeReferencedContent();
 
     // Set up the query
     $query = new EntityFieldQueryDeduped();
+
+    $result = $this->formulateQuery($query, $bean->records_shown);
+
+    if (empty($result)) {
+      $content['nodes'] = array();
+    }
+    else {
+      foreach ($result['node'] as $node) {
+        $node = node_load($node->nid, $node->vid);
+        $content['nodes'][$node->nid] = node_view($node, 'teaser');
+      }
+    }
+
+    $content['nodes']['#weight'] = '-1';
+
+    return $content;
+  }
+
+  /**
+   * Returns the selected content types fom tagged_content_block_admin()
+   */
+  private function getEnabledContentTypes() {
+    $options = array();
+    $content_types = node_type_get_names();
+    $enabled_types = array_values(variable_get('tagged_content_block_enabled_bundles', ''));
+    foreach ($content_types as $machine_name => $name) {
+      if (in_array($machine_name, $enabled_types,true)) {
+        $options[$machine_name] = $name;
+      }
+    }
+
+    return $options;
+  }
+
+  /**
+   * Finds all entities referenced by promos in a bean
+   * and adds them to the EntityFieldQueryDeduped retrieved_nids
+   */
+  private function removeReferencedContent() {
+    // Check to see if we've already queried referenced content for this bean
+    if(!isset($this->bean->referenced_nids)) {
+      $query = new EntityFieldQuery();
+
+      $result = $this->formulateQuery($query, 50);
+
+      if (!empty($result)) {
+        $referenced_nids = array();
+        foreach ($result['node'] as $node) {
+          if ($node->type == "promo") {
+            $node = node_load($node->nid, $node->vid);
+            if (count($node->field_referenced_entity)) {
+              $nid = $node->field_referenced_entity[LANGUAGE_NONE][0]['target_id'];
+              $referenced_nids[$nid] = $nid;
+            }
+          }
+        }
+        $this->bean->referenced_nids = $referenced_nids;
+        EntityFieldQueryDeduped::addToRetrievedNids(array_keys($referenced_nids));
+      }
+    }
+  }
+
+  /**
+   * Sets the query parameters whether an EntityFieldQuery
+   * or an EntityFieldQueryDeduped
+   * Keeps logic DRY after addition of removeReferencedContent()
+   */
+  private function formulateQuery(&$query, $count) {
     $query
       ->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', $bean->content_types, 'IN')
+      ->entityCondition('bundle', $this->bean->content_types, 'IN')
       ->propertyCondition('status', 1)
-      ->range(0, $bean->records_shown);
+      ->range(0, $count);
 
     // Add a condition to the form for inclusive/exclusive
-    $exclusive = ($bean->query_type == 'exclusive') ? TRUE : FALSE;
+    $exclusive = ($this->bean->query_type == 'exclusive') ? TRUE : FALSE;
+
+    $tids = $this->getTaxonomyIds();
 
     if ($exclusive){
       foreach ($tids as $tid) {
@@ -116,39 +187,35 @@ class TaggedContentBean extends BeanPlugin {
     }
 
     // Determine if the query should respect "sticky" status
-    if($bean->sticky) {
+    if($this->bean->sticky) {
       $query->propertyOrderBy('sticky', 'DESC');
     }
 
     // Figure out if we need to reorder the query
-    if($bean->order_by == 'random') {
+    if($this->bean->order_by == 'random') {
       $query->addTag('random');
-    } elseif ($bean->order_by == 'date') {
+    } elseif ($this->bean->order_by == 'date') {
       $query->propertyOrderBy('created', 'DESC');
     }
 
-    $result = $query->execute();
-
-    if (empty($result)) {
-      $content['nodes'] = array();
-    }
-    else {
-      $counter = 0;
-
-      foreach ($result['node'] as $node) {
-        $node = node_load($node->nid, $node->vid);
-        $content['nodes'][$node->nid] = node_view($node, 'teaser');
-        $counter++;
-      }
-    }
-
-    $content['nodes']['#weight'] = '-1';
-    array_push($this->queries_executed, $bean->bid);
-    return $content;
+    return $query->execute();
   }
 
-  private function get_taxonomy_tids_from_names($tag_string) {
-    $tag_array = array_map('trim', explode(',', $tag_string));
+  /**
+   * Returns the $bean objects' taxonomy ids (if set) or sets them (if not)
+   */
+  private function getTaxonomyIds() {
+    if (!isset($this->bean->tids)) {
+      $this->bean->tids = $this->getTaxonomyIdsFromNames();
+    }
+    return $this->bean->tids;
+  }
+
+  /**
+   * Returns the taxonomy ids for the tags vocabulary based on the terms
+   */
+  private function getTaxonomyIdsFromNames() {
+    $tag_array = array_map('trim', explode(',', $this->bean->tags));
     $vocabulary = taxonomy_vocabulary_machine_name_load('tags');
     $query = new EntityFieldQuery;
 
@@ -162,18 +229,5 @@ class TaggedContentBean extends BeanPlugin {
       $tids = array_keys($result['taxonomy_term']);
       return $tids;
     }
-  }
-
-  private function get_enabled_content_types() {
-    $options = array();
-    $content_types = node_type_get_names();
-    $enabled_types = array_values(variable_get('tagged_content_block_enabled_bundles', ''));
-    foreach ($content_types as $machine_name => $name) {
-      if (in_array($machine_name, $enabled_types,true)) {
-        $options[$machine_name] = $name;
-      }
-    }
-
-    return $options;
   }
 }
