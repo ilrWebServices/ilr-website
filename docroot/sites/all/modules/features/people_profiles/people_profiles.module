@@ -236,8 +236,11 @@ function _people_profiles_process_address(&$variables) {
 }
 
 function _people_profiles_hide_fields_with_prefix(&$variables, $prefix) {
+  // Set up any exceptions, which are fields that should show for both ilrweb and ai versions
+  $exceptions = array('field_ai_other_expertise');
   foreach ($variables as $key => $value) { // $key is the field name
-    if (strpos($key, $prefix) === 0) {
+    if (strpos($key, $prefix) === 0
+      && !in_array($key,$exceptions)) {
       unset($variables['content'][$key]);
     }
   }
