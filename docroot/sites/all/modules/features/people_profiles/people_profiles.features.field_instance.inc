@@ -163,7 +163,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 44,
+      'weight' => 53,
     ),
   );
 
@@ -203,7 +203,47 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 47,
+      'weight' => 56,
+    ),
+  );
+
+  // Exported field_instance: 'node-people_profile-field_ai_other_expertise'
+  $field_instances['node-people_profile-field_ai_other_expertise'] = array(
+    'bundle' => 'people_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 29,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ai_other_expertise',
+    'label' => 'Other Areas of Expertise',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 49,
     ),
   );
 
@@ -243,7 +283,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 41,
+      'weight' => 50,
     ),
   );
 
@@ -283,7 +323,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 43,
+      'weight' => 52,
     ),
   );
 
@@ -323,7 +363,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 45,
+      'weight' => 54,
     ),
   );
 
@@ -365,7 +405,7 @@ function people_profiles_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 42,
+      'weight' => 51,
     ),
   );
 
@@ -405,7 +445,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 46,
+      'weight' => 55,
     ),
   );
 
@@ -445,7 +485,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 40,
+      'weight' => 48,
     ),
   );
 
@@ -1138,7 +1178,7 @@ function people_profiles_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 38,
+      'weight' => 46,
     ),
   );
 
@@ -1174,7 +1214,7 @@ function people_profiles_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 39,
+      'weight' => 47,
     ),
   );
 
@@ -1235,6 +1275,7 @@ function people_profiles_field_default_field_instances() {
   t('Last Name');
   t('Local Address');
   t('NetID');
+  t('Other Areas of Expertise');
   t('Overview');
   t('Phone');
   t('Professional Activities');

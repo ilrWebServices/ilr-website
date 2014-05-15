@@ -115,7 +115,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       // 'research_statement_short' => 'field_ai_research_statement_short',
       // 'research_areas' => '', // area, area, ...
       'areas_of_expertise' => 'field_areas_of_expertise',
-      // 'other_expertise' => '',
+      'other_expertise' => 'field_ai_other_expertise',
       // 'teaching_keywords' => '',
       // 'research_keywords' => '',
       // 'outreach_keywords' => '',

@@ -142,11 +142,11 @@ function _people_profiles_get_faculty_by_department($department_key){
  */
 function _people_profiles_render_ai_tab_contents(&$form) {
   foreach ($form as $field_name => $value) {
-    if (strpos($field_name, 'field_ai') === 0) {
-      $content = $form[$field_name]['und'][0]['#default_value'];
-      $form[$field_name]['und'][0] = array(
+    if (strpos($field_name, 'field_ai') === 0 || $field_name == 'field_areas_of_expertise') {
+      $content = _people_profiles_get_default_value($form[$field_name]);
+      $form[$field_name][LANGUAGE_NONE][0] = array(
         '#title' => $field_name,
-        '#markup' => '<div class="field-ai"><h3>'.$form[$field_name]['und'][0]['#title'].'</h3>' . $content . '</div>',
+        '#markup' => '<div class="field-ai"><h3>'.$form[$field_name][LANGUAGE_NONE]['#title'].'</h3>' . $content . '</div>',
       );
     }
   }
@@ -162,6 +162,26 @@ function _people_profiles_render_ai_tab_contents(&$form) {
     $form['#group_children']['preview_link'] = 'group_activity_insight';
   }
 }
+
+/**
+ * Handles dumb logic for finding the default value of a field
+ */
+function _people_profiles_get_default_value($field) {
+  $default_value = '';
+  // "Filtered text" text processing
+  if (isset($field[LANGUAGE_NONE][0]['#default_value'])) {
+    $default_value = $field[LANGUAGE_NONE][0]['#default_value'];
+  } // "Plain text" text processing
+  elseif (isset($field[LANGUAGE_NONE][0]['value']['#default_value'])) {
+    $default_value = $field[LANGUAGE_NONE][0]['value']['#default_value'];
+  } // Taxonomy terms
+  elseif (isset($field[LANGUAGE_NONE]['#default_value'])) {
+    $default_value = $field[LANGUAGE_NONE]['#default_value'];
+  }
+
+  return $default_value;
+}
+
 /**
  * Custom function to process faculty profiles
  * by hiding either the ilrweb or activity insight fields
