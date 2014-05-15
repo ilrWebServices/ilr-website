@@ -30,7 +30,8 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
         // Then loop through AI values
         foreach ($mapped_fields as $xml_key => $field_name) {
           if (strpos($field_name, 'field_ai') === 0) {
-            $field_values[$field_name] = (string) $person->{$xml_key};
+            $data = (string) $person->{$xml_key};
+            $field_values[$field_name] = trim($data);
           }
         }
       } // Loop through all the values
@@ -41,7 +42,8 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
               $field_values['title'] = $this->setProfileTitle($person);
               break;
             default:
-              $field_values[$field_name] = (string) $person->{$xml_key};
+              $data = (string) $person->{$xml_key};
+              $field_values[$field_name] = trim($data);
           }
         }
       }
