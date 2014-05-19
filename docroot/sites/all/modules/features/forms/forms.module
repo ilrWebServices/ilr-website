@@ -17,7 +17,7 @@ function forms_form_alter(&$form, &$form_state, $form_id) {
   // Check to see if an entityform is being rendered
   if (array_key_exists('entityform', $form_state)) {
     // Generate appropriate submit handler
-    $form['actions']['submit']['#submit'][] = _forms_get_submit_handler($form_id);
+    $form['actions']['submit']['#submit'][] = _forms_get_submit_handler($form['#bundle']);
 
     // Fill in default values of kerberized forms
     if (_forms_form_is_kerberized($form['#bundle'])) {
@@ -77,35 +77,61 @@ function _forms_add_checkbox_to_include_name_in_admin_subject_line(&$form) {
 function forms_theme() {
   // This code is patterned after code in views_theme() in views.module
   // line 60 as of 4/2014
+  // The array of templates is created on the fly, based on the tpl.php files in the /templates directory
+
   $base = array(
     'path' => drupal_get_path('module', 'forms') . '/templates',
   );
 
-  return array(
-    'default_mail' => $base + array(
-      'template' => 'default-mail',
-    ),
-  );
+  // Array of all files in the directory
+  $tplphpfiles = scandir($base['path']);
+
+  // Loop through all the files, add template array elements for the tpl.php files
+  foreach ($tplphpfiles as $filename) {
+    // Check if the filename ends with ".tpl.php" by reversing the string ($filename) and
+    // seeing if the reversed $filename now begins with "php.lpt." which is ".tpl.php" backwards.
+    if (stripos(strrev($filename), "php.lpt.") === 0) {
+      $template_name_len = strpos($filename, ".");
+      $template_name = substr($filename, 0, $template_name_len);
+      $template_as_key = str_replace('-', '_', $template_name);
+      $template_array[$template_as_key] = $base + array('template' => $template_name);
+    }
+  }
+  return $template_array;
 }
 
 /**
  * Generates the appropriate submit handler for entityforms
  */
-function _forms_get_submit_handler($form_id) {
-  $processingFunction = '_process_' . str_replace('_entityform_edit_form', '', $form_id);
+function _forms_get_submit_handler($bundle) {
+  $processingFunction = '_process_' . $bundle;
   if (function_exists($processingFunction)) {
     return $processingFunction;
   }
   return '_forms_process_default';
 }
 
- /**
+/**
+ * Generates the appropriate email template for entityforms
+ * Note that the email template contains underscores, but the actual filename contains hyphens.
+ */
+function _forms_get_tplphp_file($bundle) {
+  $tplphp_file = str_replace('_', '-', $bundle);
+  $tplphp_file_full_path = drupal_get_path('module', 'forms') . '/templates/' . $tplphp_file . '.tpl.php';
+  if (file_exists($tplphp_file_full_path)) {
+    return $bundle;
+  }
+  return 'default_mail';
+}
+
+/**
  * Default processing for forms
  */
 function _forms_process_default(&$form) {
   $admin_email = _forms_get_admin_email($form);
   _forms_send_emails($form, $admin_email);
 }
+
 
 /**
  * Process Career Services contact form
@@ -120,7 +146,6 @@ function _process_career_services_contact_form(&$form) {
   $subject = trim($form['field_subject_line']['und'][0]['value']['#value']);
   _forms_send_emails($form, $admin_email, $subject);
 }
-
 
 function _forms_career_services_contact_options() {
   // We need duplicate email addresses (keys in this array; values in the radio buttons)
@@ -145,9 +170,10 @@ function _forms_career_services_contact_options() {
 /**
  * Send user and admin emails
  */
-function _forms_send_emails($form, $admin_email, $subject='', $email_template='default_mail') {
+function _forms_send_emails($form, $admin_email, $subject='') {
   $form_title = _forms_get_form_title($form);
   $user_name = _forms_construct_user_name($form);
+  $email_template = _forms_get_tplphp_file($form['#bundle']);
 
   // User email
   if (!empty($form['field_email']['und'][0]['email']['#value'])) {
