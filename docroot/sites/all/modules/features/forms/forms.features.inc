@@ -53,6 +53,53 @@ function forms_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['classroom_reservation_request'] = entity_import('entityform_type', '{
+    "type" : "classroom_reservation_request",
+    "label" : "Classroom Reservation Request",
+    "data" : {
+      "draftable" : 0,
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "You will receive a confirmation email.  Be sure to read the additional requirements related to \\u0022technical needs.\\u0022",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for requesting an ILR classroom reservation. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe information you submitted appears below.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf there are technical needs, training is required prior to the use of a room. Please contact ILR Technology Services to make these arrangements via email at: ilrvtc@cornell.edu.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EAdditional information about the classrooms in the Ives Hall Classroom Building:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cul\\u003E\\r\\n\\t\\u003Cli\\u003E\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/techServices\\/services\\/distanceLearning\\/dlrooms.html\\u0022\\u003EDistance Learning Rooms\\u003C\\/a\\u003E\\u003C\\/li\\u003E\\r\\n\\t\\u003Cli\\u003E\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/techServices\\/services\\/classroomTechnologies\\/classroom.html\\u0022\\u003EClassrooms\\u003C\\/a\\u003E\\u003C\\/li\\u003E\\r\\n\\u003C\\/ul\\u003E\\r\\n\\r\\n\\u003Cp\\u003ENote: ILR Technology Services does not support Skype in the classrooms. If using Skype, please use your own laptop.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u003Cstrong\\u003EContact Information\\u003C\\/strong\\u003E\\u003Cbr \\/\\u003E\\r\\n\\tILR School\\u003Cbr \\/\\u003E\\r\\n\\tOffice of Student Services\\u003Cbr \\/\\u003E\\r\\n\\t101 Ives Hall\\u003Cbr \\/\\u003E\\r\\n\\t(607) 255-1515\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "3" : 0,
+        "4" : 0,
+        "6" : 0,
+        "5" : 0,
+        "7" : 0,
+        "8" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : {
+        "value" : "\\u003Ch3\\u003EFor event, meeting and review session use only; not regular classes\\u003C\\/h3\\u003E\\r\\n\\r\\n\\u003Cp\\u003EOnly ILR departments and ILR Student Organizations may reserve classroom space in ILR due to space limitations. Thank you for your understanding and cooperation.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EWe will do our best to accommodate your request, but we cannot guarantee a space will be available. You will be notified via email as soon as possible whether or not a space can or cannot be reserved.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EAdditional information about the classrooms in the Ives Hall Classroom Building:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cul\\u003E\\r\\n\\t\\u003Cli\\u003E\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/techServices\\/services\\/distanceLearning\\/dlrooms.html\\u0022\\u003EDistance Learning Rooms\\u003C\\/a\\u003E\\u003C\\/li\\u003E\\r\\n\\t\\u003Cli\\u003E\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/techServices\\/services\\/classroomTechnologies\\/classroom.html\\u0022\\u003EClassrooms\\u003C\\/a\\u003E\\u003C\\/li\\u003E\\r\\n\\u003C\\/ul\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "block_enable" : true,
+      "form_submission_ilr_recipient" : "ilrossreservations@cornell.edu",
+      "add_user_name_to_subject_line" : 0,
+      "kerberized" : 1
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['credit_internship_contact_form'] = entity_import('entityform_type', '{
     "type" : "credit_internship_contact_form",
     "label" : "Credit Internship Contact Form",

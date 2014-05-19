@@ -210,6 +210,35 @@ function forms_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_count_as_text'
+  $field_bases['field_count_as_text'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_count_as_text',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_country'
   $field_bases['field_country'] = array(
     'active' => 1,
@@ -297,6 +326,35 @@ function forms_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_dates_as_text'
+  $field_bases['field_dates_as_text'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_dates_as_text',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_degree_program'
   $field_bases['field_degree_program'] = array(
     'active' => 1,
@@ -323,6 +381,64 @@ function forms_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_end_time'
+  $field_bases['field_end_time'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_end_time',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_event_name'
+  $field_bases['field_event_name'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_event_name',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_full_name'
@@ -377,6 +493,43 @@ function forms_field_default_field_bases() {
         'Organizational Behavior' => 'Organizational Behavior',
         'Social Statistics' => 'Social Statistics',
         'International and Comparative Labor' => 'International and Comparative Labor',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_ilr_rooms'
+  $field_bases['field_ilr_rooms'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ilr_rooms',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Room 101B' => '101B (seats 12)',
+        'Room 103' => '103 (seats 23)',
+        'Room 105' => '105 (seats 140)',
+        'Room 107' => '107 (seats 23)',
+        'Room 108' => '108 (seats 36)',
+        'Room 109' => '109 (seats 36) Distance Learning',
+        'Room 112' => '112 (seats 36)',
+        'Room 115' => '115 (seats 62) Distance Learning',
+        'Room 116' => '116 (seats 37)',
+        'Room 215' => '215 (seats 44)',
+        'Room 217' => '217 (seats 72)',
+        'Room 219' => '219 (seats 62)',
+        'Room 305' => '305 (seats 330)',
       ),
       'allowed_values_function' => '',
     ),
@@ -626,6 +779,35 @@ function forms_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_start_time'
+  $field_bases['field_start_time'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_start_time',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_subject_line'
   $field_bases['field_subject_line'] = array(
     'active' => 1,
@@ -672,6 +854,33 @@ function forms_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'field_collection',
+  );
+
+  // Exported field_base: 'field_technical_needs'
+  $field_bases['field_technical_needs'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_technical_needs',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_type_of_grad_assistant'
