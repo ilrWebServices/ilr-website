@@ -23,7 +23,7 @@ function wit_node_info() {
       'base' => 'node_content',
       'description' => t('Articles for Catherwood\'s Workplace Issues Today '),
       'has_title' => '1',
-      'title_label' => t('Article Lead (headline)'),
+      'title_label' => t('Article Lead (truncated headline)'),
       'help' => '',
     ),
   );

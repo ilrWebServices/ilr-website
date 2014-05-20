@@ -66,7 +66,7 @@ function wit_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => '2',
         ),
       ),
       'display' => array(),

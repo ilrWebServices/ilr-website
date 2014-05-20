@@ -43,6 +43,19 @@ function wit_preprocess_node(&$variables) {
 }
 
 /**
+ * Implements hook_node_view()
+ *
+ *  Alters titles for wit articles since Drupal titles
+ *  are limited to 128 characters
+ */
+function wit_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'wit_article') {
+    drupal_set_title($node->field_article_lead_full[LANGUAGE_NONE][0]['safe_value']);
+    hide($node->content['field_article_lead_full']);
+  }
+}
+
+/**
  * Implements hook_menu
  * Defines the WIT RSS Feed Path
  */
@@ -121,7 +134,9 @@ function _wit_publish_daily_articles($article_date) {
  */
 function _wit_build_reference($variables) {
   $title = $variables['field_article_title'][0]['value'];
-  $url = $variables['field_website_url'][0]['url'];
+  $url = (count($variables['field_website_url']))
+    ? $variables['field_website_url'][0]['url']
+    : '';
   $link = "<a href='{$url}' target='_blank'>{$title}</a>,";
   $author = (count($variables['field_author']) > 0) ? 'by ' . $variables['field_author'][0]['value'] . ',' : '';
   $publication = $variables['field_term_publication'][0]['taxonomy_term']->name . ',';
