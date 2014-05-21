@@ -52,7 +52,7 @@ class WitWireServiceMigration extends Migration {
     );
 
     $this->source = new MigrateSourceJSON(
-      DRUPAL_ROOT . '/../migration_data/wit_wireservice.JSON',
+      DRUPAL_ROOT . '/../migration_data/wit_wireservice.json',
       'WIRE_ID'
     );
 
