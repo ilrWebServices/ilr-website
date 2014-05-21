@@ -7,3 +7,4 @@ dependencies[] = migrate
 
 files[] = ilr_migrations.migrate.inc
 files[] = neutrals.inc
+files[] = wit.inc
