@@ -72,29 +72,30 @@ function _forms_add_checkbox_to_include_name_in_admin_subject_line(&$form) {
 }
 
 /**
- * Implement hook_theme().
+ * Implements hook_theme()
  */
 function forms_theme() {
-  // This code is patterned after code in views_theme() in views.module
-  // line 60 as of 4/2014
-  // The array of templates is created on the fly, based on the tpl.php files in the /templates directory
+  // Add email templates, based on the tpl.php files in the /templates directory
+  $template_array = _forms_get_theme_array_from_template_files();
+  return $template_array;
+}
 
-  $base = array(
-    'path' => drupal_get_path('module', 'forms') . '/templates',
-  );
-
-  // Array of all files in the directory
-  $tplphpfiles = scandir($base['path']);
+/**
+ * Generates an array of email templates from files in /templates for forms_theme
+ */
+function _forms_get_theme_array_from_template_files() {
+  $email_template_files_path = drupal_get_path('module', 'forms') . '/templates';
+  $template_files = scandir($email_template_files_path);
 
   // Loop through all the files, add template array elements for the tpl.php files
-  foreach ($tplphpfiles as $filename) {
-    // Check if the filename ends with ".tpl.php" by reversing the string ($filename) and
-    // seeing if the reversed $filename now begins with "php.lpt." which is ".tpl.php" backwards.
-    if (stripos(strrev($filename), "php.lpt.") === 0) {
-      $template_name_len = strpos($filename, ".");
-      $template_name = substr($filename, 0, $template_name_len);
+  foreach ($template_files as $filename) {
+    // Check if the filename ends with ".tpl.php"
+    if ($template_name = strstr($filename, '.tpl.php', TRUE)) {
       $template_as_key = str_replace('-', '_', $template_name);
-      $template_array[$template_as_key] = $base + array('template' => $template_name);
+      $template_array[$template_as_key] = array(
+        'path' => $email_template_files_path,
+        'template' => $template_name,
+      );
     }
   }
   return $template_array;
