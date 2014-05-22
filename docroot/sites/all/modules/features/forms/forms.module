@@ -168,6 +168,43 @@ function _forms_career_services_contact_options() {
   );
 }
 
+
+/**
+ * Class year in the Labor Roundtable registration form starts with current year and goes six years out
+ */
+function _forms_labor_roundtable_reg_class_year_options() {
+  return _forms_year_relative_options(0,6);
+}
+
+/**
+ * Generate a list for a select or radio form element with a list of absolute years
+ */
+function _forms_year_absolute_options($first, $last) {
+  if ($first <= $last) {
+    for ($year=$first; $year<=$last; $year++) {
+      $yearList['$year'] = $year;
+    }
+  }
+  else {
+    for ($year=$first; $year>=$last; $year--) {
+      $yearList['$year'] = $year;
+    }
+  }
+  return $yearList;
+}
+
+/**
+ * Generate a list for a select or radio form element with a list of years relative to current year
+ * e.g. if $firstOffset = -8 and $lastOffset = 6, this will run from 8 years ago through 6 years from now.
+ * If $firstOffset > $lastOffset the years will show up in descending order.
+ */
+function _forms_year_relative_options($firstOffset, $lastOffset) {
+  $currYear = date('Y');
+  $first = $currYear + $firstOffset;
+  $last = $currYear + $lastOffset;
+  _forms_year_absolute_options($first, $last);
+}
+
 /**
  * Send user and admin emails
  */
