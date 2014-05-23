@@ -117,7 +117,7 @@ function forms_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(),
-      'allowed_values_function' => '',
+      'allowed_values_function' => '_forms_labor_roundtable_reg_class_year_options',
     ),
     'translatable' => 0,
     'type' => 'list_integer',

@@ -429,7 +429,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for registering for the Labor Roundtable.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\r\\nDate: Friday, November 15, 2013 [CHANGE FOR 2014]\\u003Cbr\\u003E\\r\\nTime: 1:15 pm - 5:00 pm\\u003Cbr\\u003E\\r\\nLocation: Statler Ballroom\\r\\n\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EYou will receive an email confirmation shortly.\\r\\nIf you have any questions, please contact the ILR Office of Career Services, \\u003Ca href=\\u0022mailto:laborRoundtable@cornell.edu\\u0022\\u003ElaborRoundtable@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E",
+        "value" : "\\u003Cp\\u003EThank you for registering for the Labor Roundtable.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EDate: Friday, November 15, 2013 [CHANGE FOR 2014]\\u003Cbr \\/\\u003E\\r\\n\\tTime: 1:15 pm - 5:00 pm\\u003Cbr \\/\\u003E\\r\\n\\tLocation: Statler Ballroom\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EYou will receive an email confirmation shortly. If you have any questions, please contact the ILR Office of Career Services, \\u003Ca href=\\u0022mailto:laborRoundtable@cornell.edu\\u0022\\u003ElaborRoundtable@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -448,7 +448,7 @@ function forms_default_entityform_type() {
         "8" : 0
       },
       "resubmit_action" : "new",
-      "redirect_path" : "The Labor Roundtable will take place on Friday, November 15, 2013 from 1:15 pm - 5:00 pm in the Statler Hotel Carrier Ballroom. ",
+      "redirect_path" : "",
       "instruction_pre" : {
         "value" : "\\u003Cp\\u003EThe Labor Roundtable will take place on Friday, November 15, 2013 from 1:15 pm - 5:00 pm in the Statler Hotel Carrier Ballroom. If you have questions, please contact the ILR Office of Career Services, \\u003Ca href=\\u0022mailto:laborRoundtable@cornell.edu\\u0022\\u003ElaborRoundtable@cornell.edu\\u003C\\/a\\u003E.\\u0026nbsp; [NEED TO CHANGE DATE FOR 2014]\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"

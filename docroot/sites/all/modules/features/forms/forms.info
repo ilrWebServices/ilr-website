@@ -16,6 +16,7 @@ dependencies[] = options
 dependencies[] = people_profiles
 dependencies[] = scheinman_neutral
 dependencies[] = text
+dependencies[] = views_data_export
 features[conditional_fields][] = entityform:faculty_request_for_ta_or_ra
 features[entityform_type][] = career_services_contact_form
 features[entityform_type][] = classroom_reservation_request
