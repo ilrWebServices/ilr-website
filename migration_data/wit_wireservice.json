@@ -1,0 +1,477 @@
+[
+  {
+    "WIRE_NAME": "NPR Online",
+    "WIRE_ID": 4,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "AP Economics Writer",
+    "WIRE_ID": 5,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 19,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 21,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 22,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 23,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 25,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 26,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 27,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 29,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 31,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 32,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 34,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 35,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 36,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 38,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 39,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 40,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 41,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 43,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 44,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 45,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 47,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 49,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Knight-Ridder News Service",
+    "WIRE_ID": 50,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 51,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 53,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 55,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 56,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 57,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 59,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 60,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 61,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 62,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 63,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 64,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 65,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 66,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 67,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 68,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 69,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 70,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 20,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 24,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Bloomberg News",
+    "WIRE_ID": 8,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Los Angeles Times",
+    "WIRE_ID": 9,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 28,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "The New York Times News Service",
+    "WIRE_ID": 11,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 30,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 33,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 37,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 42,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Reuters",
+    "WIRE_ID": 16,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "The Associated Press",
+    "WIRE_ID": 17,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Times Wire Services",
+    "WIRE_ID": 18,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 46,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 48,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 52,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 54,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 58,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 71,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 72,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 73,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 74,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 75,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 76,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 77,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 78,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 79,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Chicago Tribune",
+    "WIRE_ID": 82,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Agence Presse-France",
+    "WIRE_ID": 83,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Canadian Press",
+    "WIRE_ID": 84,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "McClatchy Newspapers",
+    "WIRE_ID": 85,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Thomson Financial",
+    "WIRE_ID": 86,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Detroit Free Press",
+    "WIRE_ID": 87,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Gannett State Bureau",
+    "WIRE_ID": 88,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "SignonSanDiego News Services",
+    "WIRE_ID": 89,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Workday Minnesota",
+    "WIRE_ID": 90,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 91,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "United Press International",
+    "WIRE_ID": 92,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Dow Jones newswires",
+    "WIRE_ID": 93,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 94,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "AFP",
+    "WIRE_ID": 95,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Press Association",
+    "WIRE_ID": 96,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "CNN Wire Staff",
+    "WIRE_ID": 97,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 98,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 99,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 100,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "",
+    "WIRE_ID": 101,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "The Inquirer",
+    "WIRE_ID": 102,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Yonhap News Agency",
+    "WIRE_ID": 103,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Tanzania Daily News",
+    "WIRE_ID": 104,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Kitco News",
+    "WIRE_ID": 105,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "Globe Newswire",
+    "WIRE_ID": 106,
+    "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "The Philadelphia Inquirer",
+    "WIRE_ID": 107,
+    "WIRE_DESCRIPTION": ""
+  }
+]
