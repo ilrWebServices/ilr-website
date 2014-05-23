@@ -147,15 +147,15 @@ function _wit_email_articles_to_list($articles, $date) {
   drupal_mail(
     'wit',
     'daily_wit',
-    'insideilrweb-l@cornell.edu',// switch to correct version after testing
+    'WIT-L@cornell.edu',
     LANGUAGE_NONE,
     $params,
-    'aaronf@cornell.edu' // switch to correct version after testing
+    'catherwoodWIT@cornell.edu'
   );
 }
 
 function _wit_generate_email_body($articles, $formatted_date) {
-  $body = "* WORKPLACE ISSUES TODAY *
+  $body = "***** WORKPLACE ISSUES TODAY *****
 M.P. Catherwood Library
 School of Industrial & Labor Relations
 Cornell University
@@ -167,10 +167,9 @@ ________________________________________________________
   foreach ($articles['node'] as $node) {
     $node = node_load($node->nid, $node->vid);
     $title = strtoupper($node->title);
-    $body .= "*** $title\n";
+    $body .= "*** $title ";
     $body .= $node->body[LANGUAGE_NONE][0]['safe_value'];
     $body .= _wit_build_reference($node, TRUE);
-    $body .= "<br><br>";
   }
 
   $body .= "________________________________________________________
