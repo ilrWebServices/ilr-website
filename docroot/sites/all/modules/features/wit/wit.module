@@ -37,7 +37,7 @@ function wit_node_update($node) {
 function wit_preprocess_node(&$variables) {
   if ($variables['type'] == 'wit_article') {
     $variables['content']['link'] = array(
-      '#markup' => _wit_build_reference($variables),
+      '#markup' => _wit_build_reference($variables['node']),
       '#weight' => 10,
     );
     // Remove the variables we needed for the reference
@@ -137,26 +137,7 @@ function _wit_publish_articles($articles) {
 function _wit_email_articles_to_list($articles, $date) {
   $date_object = new Datetime($date);
   $formatted_date = date_format($date_object, 'l, F d, Y');
-  $body = "* WORKPLACE ISSUES TODAY *
-M.P. Catherwood Library
-School of Industrial & Labor Relations
-Cornell University
-{$formatted_date}
-________________________________________________________
-<br><br>";
-
-  foreach ($articles['node'] as $node) {
-    $node = node_view(node_load($node->nid, $node->vid));
-    unset($node['#contextual_links']);
-    $body .= drupal_render($node). '<br><br>';
-  }
-
-  $body .= "________________________________________________________
-Questions about WIT selection criteria or finding the articles we write about? Check our web site at http://www.ilr.cornell.edu/library/research/worldOfWorkNews/wit
-
-________________________________________________________
-To UNSUBSCRIBE, send email to: lyris@cornell.edu containing this single line of text: leave wit-L
-<br><br>You must send this mail from the same email address you use to subscribe. If you need help, contact owner-WIT-L@cornell.edu.";
+  $body = _wit_generate_email_body($articles, $formatted_date);
 
   $params = array(
     'subject' => 'Workplace Issues Today',
@@ -173,6 +154,34 @@ To UNSUBSCRIBE, send email to: lyris@cornell.edu containing this single line of 
   );
 }
 
+function _wit_generate_email_body($articles, $formatted_date) {
+  $body = "* WORKPLACE ISSUES TODAY *
+M.P. Catherwood Library
+School of Industrial & Labor Relations
+Cornell University
+{$formatted_date}
+________________________________________________________
+
+";
+
+  foreach ($articles['node'] as $node) {
+    $node = node_load($node->nid, $node->vid);
+    $title = strtoupper($node->title);
+    $body .= "*** $title\n";
+    $body .= $node->body[LANGUAGE_NONE][0]['safe_value'];
+    $body .= _wit_build_reference($node, TRUE);
+    $body .= "<br><br>";
+  }
+
+  $body .= "________________________________________________________
+Questions about WIT selection criteria or finding the articles we write about? Check our web site at http://www.ilr.cornell.edu/library/research/worldOfWorkNews/wit
+
+________________________________________________________
+To UNSUBSCRIBE, send email to: lyris@cornell.edu containing this single line of text: leave wit-L
+<br><br>You must send this mail from the same email address you use to subscribe. If you need help, contact owner-WIT-L@cornell.edu.";
+
+  return $body;
+}
 /**
  * Implements hook_mail().
  * This is the email sent to the user
@@ -187,21 +196,28 @@ function wit_mail($key, &$message, $params) {
 
 /**
  * Custom function for outputting the article reference
- *
  */
-function _wit_build_reference($variables) {
-  $title = $variables['field_article_title'][0]['value'];
-  $url = (count($variables['field_website_url']))
-    ? $variables['field_website_url'][0]['url']
+function _wit_build_reference($node, $email_version = FALSE) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $title = $wrapper->field_article_title->value();
+  $url = $wrapper->field_website_url->value();
+  if ($email_version) {
+    $link = "\"$title\", at {$url['url']}";
+  }
+  else {
+    $link = "\"<a href='{$url}' target='_blank'>{$title}</a>\"";
+  }
+  $author = $wrapper->field_author->value();
+  $publication = $wrapper->field_term_publication->value()->name;
+  $wire_service_value = $wrapper->field_term_wire_service->value();
+  $service = !empty($wire_service_value)
+    ? ' ' . $wire_service_value->name . ','
     : '';
-  $link = "<a href='{$url}' target='_blank'>{$title}</a>,";
-  $author = (count($variables['field_author']) > 0) ? 'by ' . $variables['field_author'][0]['value'] . ',' : '';
-  $publication = $variables['field_term_publication'][0]['taxonomy_term']->name . ',';
-  $service = (count($variables['field_term_wire_service']) > 0) ? $variables['field_term_wire_service'][0]['taxonomy_term']->name . ',' : '';
   // Convert the Date string to a date object
-  $date_object = date_create($variables['field_published_date'][0]['value'], timezone_open('America/New_York'));
+  $ts = $wrapper->field_published_date->value();
+  $date_object = new DateTime("@$ts");
   // Format the date object
   $published = date_format($date_object, 'M d Y');
-  $reference = "<div class='reference'><p>See \"{$link}\" {$author} {$publication} {$service} {$published}</p></div>";
+  $reference = "<div class='reference'><p>See {$link}, by {$author}, {$publication},{$service} {$published}</p></div>";
   return $reference;
 }
