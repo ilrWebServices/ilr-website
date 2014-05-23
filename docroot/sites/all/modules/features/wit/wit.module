@@ -169,7 +169,7 @@ To UNSUBSCRIBE, send email to: lyris@cornell.edu containing this single line of 
     'insideilrweb-l@cornell.edu',// switch to correct version after testing
     LANGUAGE_NONE,
     $params,
-    'atf46@cornell.edu' // switch to correct version after testing
+    'aaronf@cornell.edu' // switch to correct version after testing
   );
 }
 
