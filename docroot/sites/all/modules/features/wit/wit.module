@@ -16,7 +16,15 @@ function wit_node_update($node) {
   if($node->type == "wit_article") {
     if ($node->original->status == 0 && $node->status == 1) {
       $article_date = $node->field_published_date['und'][0]['value'];
-      _wit_publish_daily_articles($article_date);
+      $articles = _wit_get_articles_by_date($article_date, TRUE);
+      if (!empty($articles)) {
+        _wit_publish_articles($articles);
+      } // The following gets called once all the articles have been published, not as an error
+      else {
+        drupal_set_message(t("Today's WIT articles have been published."), 'status');
+        $articles = _wit_get_articles_by_date($article_date);
+        _wit_email_articles_to_list($articles, $article_date);
+      }
     }
   }
 }
@@ -105,27 +113,76 @@ function _wit_get_nids($count = 15) {
  * Custom function to publish all articles for a given day
  *
  */
-function _wit_publish_daily_articles($article_date) {
+function _wit_get_articles_by_date($article_date, $unpublished_only = FALSE) {
   $query = new EntityFieldQuery();
-
   $query
     ->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'wit_article')
-    ->propertyCondition('status', 0)
     ->fieldCondition('field_published_date', 'value', $article_date);
 
-  $result = $query->execute();
+  if ($unpublished_only) {
+    $query->propertyCondition('status', 0);
+  }
+  return $query->execute();
+}
 
-  if (empty($result)) {
-    drupal_set_message(t("Today's WIT articles have been published."), 'status');
+function _wit_publish_articles($articles) {
+  foreach ($articles['node'] as $node) {
+    $node = node_load($node->nid, $node->vid);
+    $node->status = 1;
+    node_save($node);
   }
-  else {
-    foreach ($result['node'] as $node) {
-      $node = node_load($node->nid, $node->vid);
-      $node->status = 1;
-      node_save($node);
-    }
+}
+
+function _wit_email_articles_to_list($articles, $date) {
+  $date_object = new Datetime($date);
+  $formatted_date = date_format($date_object, 'l, F d, Y');
+  $body = "* WORKPLACE ISSUES TODAY *
+M.P. Catherwood Library
+School of Industrial & Labor Relations
+Cornell University
+{$formatted_date}
+________________________________________________________
+<br><br>";
+
+  foreach ($articles['node'] as $node) {
+    $node = node_view(node_load($node->nid, $node->vid));
+    unset($node['#contextual_links']);
+    $body .= drupal_render($node). '<br><br>';
   }
+
+  $body .= "________________________________________________________
+Questions about WIT selection criteria or finding the articles we write about? Check our web site at http://www.ilr.cornell.edu/library/research/worldOfWorkNews/wit
+
+________________________________________________________
+To UNSUBSCRIBE, send email to: lyris@cornell.edu containing this single line of text: leave wit-L
+<br><br>You must send this mail from the same email address you use to subscribe. If you need help, contact owner-WIT-L@cornell.edu.";
+
+  $params = array(
+    'subject' => 'Workplace Issues Today',
+    'content' => $body,
+  );
+
+  drupal_mail(
+    'wit',
+    'daily_wit',
+    'insideilrweb-l@cornell.edu',// switch to correct version after testing
+    LANGUAGE_NONE,
+    $params,
+    'atf46@cornell.edu' // switch to correct version after testing
+  );
+}
+
+/**
+ * Implements hook_mail().
+ * This is the email sent to the user
+ */
+function wit_mail($key, &$message, $params) {
+  $message['headers']['MIME-Version'] = '1.0';
+  $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
+  $message['headers']['Bcc'] = 'ilrwebemailcc-mailbox@cornell.edu';
+  $message['subject'] = $params['subject'];
+  $message['body'][] = $params['content'];
 }
 
 /**
