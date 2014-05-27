@@ -204,7 +204,7 @@ function _wit_build_reference($node, $email_version = FALSE) {
     $link = "\"$title\", at {$url['url']}";
   }
   else {
-    $link = "\"<a href='{$url}' target='_blank'>{$title}</a>\"";
+    $link = "\"<a href='{$url['url']}' target='_blank'>{$title}</a>\"";
   }
   $author = $wrapper->field_author->value();
   $publication = $wrapper->field_term_publication->value()->name;
