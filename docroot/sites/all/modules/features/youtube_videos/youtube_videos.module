@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Youtube Videos feature.
+ */
+
+include_once 'youtube_videos.features.inc';
