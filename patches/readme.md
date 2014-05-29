@@ -34,3 +34,8 @@ Example:
   * Fixes error when creating new users via simplesamlphp_auth
   * from: https://drupal.org/node/1824194#comment-7619281
   * https://drupal.org/files/simplesamlphp_auth-fixnewdrupalusers-1824194-6.patch
+
+* feeds_tamper
+  * Checks if import value is an array before every plugin callback instead of only once
+  * https://drupal.org/node/2119745
+  * https://drupal.org/files/feeds_tamper_is_array_error-2119745-1.patch
