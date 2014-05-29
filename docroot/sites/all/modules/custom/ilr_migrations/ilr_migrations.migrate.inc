@@ -11,6 +11,8 @@ function ilr_migrations_migrate_api() {
       'WitWireService' => array('class_name' => 'WitWireServiceMigration'),
       'WitPublisher' => array('class_name' => 'WitPublisherMigration'),
       'Wit' => array('class_name' => 'WitMigration'),
+      'Microfilm' => array('class_name' => 'MicrofilmMigration'),
+      'Microfiche' => array('class_name' => 'MicroficheMigration'),
     ),
   );
   return $api;
