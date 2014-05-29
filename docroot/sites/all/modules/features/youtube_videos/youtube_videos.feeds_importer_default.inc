@@ -47,11 +47,11 @@ function youtube_videos_feeds_importer_default() {
         'exp' => array(
           'errors' => 0,
           'debug' => array(
-            'xpathparser:0' => 'xpathparser:0',
-            'xpathparser:3' => 'xpathparser:3',
             'context' => 0,
+            'xpathparser:0' => 0,
             'xpathparser:1' => 0,
             'xpathparser:2' => 0,
+            'xpathparser:3' => 0,
             'xpathparser:4' => 0,
           ),
         ),

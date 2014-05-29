@@ -13,6 +13,18 @@ function youtube_videos_feeds_tamper_default() {
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'youtube_importer-xpathparser_3-array_filter';
+  $feeds_tamper->importer = 'youtube_importer';
+  $feeds_tamper->source = 'xpathparser:3';
+  $feeds_tamper->plugin_id = 'array_filter';
+  $feeds_tamper->settings = array();
+  $feeds_tamper->weight = 2;
+  $feeds_tamper->description = 'Filter empty items';
+  $export['youtube_importer-xpathparser_3-array_filter'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'youtube_importer-xpathparser_3-explode';
   $feeds_tamper->importer = 'youtube_importer';
   $feeds_tamper->source = 'xpathparser:3';

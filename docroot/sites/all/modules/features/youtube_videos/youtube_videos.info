@@ -17,6 +17,7 @@ features[ctools][] = feeds_tamper:feeds_tamper_default:2
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[feeds_importer][] = youtube_importer
+features[feeds_tamper][] = youtube_importer-xpathparser_3-array_filter
 features[feeds_tamper][] = youtube_importer-xpathparser_3-explode
 features[feeds_tamper][] = youtube_importer-xpathparser_3-trim
 features[field_base][] = field_youtube_video
