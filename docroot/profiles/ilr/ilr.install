@@ -91,6 +91,7 @@ function ilr_install() {
     'youtube_videos',
     'youtube_playlists',
     'ilr_manual_listing',
+    'microfilm_microfiche',
   ));
 
   _ilr_add_permissions();

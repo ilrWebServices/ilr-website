@@ -18,6 +18,14 @@ function microfilm_microfiche_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function microfilm_microfiche_node_info() {
   $items = array(
+    'microfiche' => array(
+      'name' => t('Microfiche'),
+      'base' => 'node_content',
+      'description' => t('Microfiche collection item for Catherwood Library'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'microfilm' => array(
       'name' => t('Microfilm'),
       'base' => 'node_content',
