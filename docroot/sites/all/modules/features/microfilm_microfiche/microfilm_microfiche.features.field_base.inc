@@ -62,7 +62,7 @@ function microfilm_microfiche_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
-      'max_length' => 20,
+      'max_length' => 255,
     ),
     'translatable' => 0,
     'type' => 'text',
