@@ -34,12 +34,14 @@ function youtube_playlists_feeds_importer_default() {
           'xpathparser:1' => 'id',
           'xpathparser:2' => 'summary',
           'xpathparser:3' => 'yt:playlistId',
+          'xpathparser:4' => 'media:group/media:thumbnail[@yt:name="hqdefault"]/@url',
         ),
         'rawXML' => array(
           'xpathparser:0' => 0,
           'xpathparser:1' => 0,
           'xpathparser:2' => 0,
           'xpathparser:3' => 0,
+          'xpathparser:4' => 0,
         ),
         'context' => '//feed/entry',
         'exp' => array(
@@ -50,6 +52,7 @@ function youtube_playlists_feeds_importer_default() {
             'xpathparser:1' => 0,
             'xpathparser:2' => 0,
             'xpathparser:3' => 0,
+            'xpathparser:4' => 0,
           ),
         ),
         'allow_override' => 0,
@@ -70,7 +73,7 @@ function youtube_playlists_feeds_importer_default() {
           1 => array(
             'source' => 'xpathparser:1',
             'target' => 'guid',
-            'unique' => FALSE,
+            'unique' => 1,
           ),
           2 => array(
             'source' => 'xpathparser:2',
@@ -80,6 +83,11 @@ function youtube_playlists_feeds_importer_default() {
           3 => array(
             'source' => 'xpathparser:3',
             'target' => 'field_youtube_playlist_id',
+            'unique' => FALSE,
+          ),
+          4 => array(
+            'source' => 'xpathparser:4',
+            'target' => 'field_thumbnail',
             'unique' => FALSE,
           ),
         ),
