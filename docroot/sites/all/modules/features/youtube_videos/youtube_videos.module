@@ -5,3 +5,31 @@
  */
 
 include_once 'youtube_videos.features.inc';
+/**
+ * Gets the nid for youtube Video Id
+ * @param $video_id
+ * @return int | NULL
+ */
+function youtube_videos_get_nid_from_video_id($video_id) {
+  $video_nids = & drupal_static(__FUNCTION__);
+  if (!isset($video_nids)) {
+    $video_nids = array();
+  }
+  else {
+    if (isset($video_nids[$video_id])) {
+      return $video_nids[$video_id];
+    }
+  }
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'youtube_video')
+    ->fieldCondition('field_youtube_video', 'video_id', $video_id);
+  $result = $query->execute();
+  if (isset($result['node'])) {
+    $video_nids[$video_id] =  array_shift(array_keys($result['node']));
+  }
+  else {
+    $video_nids[$video_id] = NULL;
+  }
+  return $video_nids[$video_id];
+}

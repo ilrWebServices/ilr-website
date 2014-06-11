@@ -1,0 +1,171 @@
+<?php
+/**
+ * @file
+ * Code for the Youtube Playlists feature.
+ */
+
+include_once 'youtube_playlists.features.inc';
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function youtube_playlists_field_formatter_info() {
+  $formatters = array(
+    // This formatter displays your youtube video.
+    'youtube_playlist_embed' => array(
+      'label' => t('YouTube Playlist Player'),
+      'field types' => array('text'),
+    )
+  );
+
+  return $formatters;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function youtube_playlists_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, &$items, $display) {
+  $settings = $display['settings'];
+
+  $element = array();
+  switch ($display['type']) {
+    case 'youtube_playlist_embed':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+
+          '#theme' => 'youtube_playlists_embed',
+          '#playlist_id' => $item['value'],
+        );
+      }
+      break;
+
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function youtube_playlists_theme() {
+  return array(
+    'youtube_playlists_embed' => array(
+      'variables' => array(
+        'playlist_id' => NULL,
+      ),
+      'file' => 'youtube_playlists.theme.inc',
+    ),
+  );
+}
+/**
+ * Assigns videos to playlist from XML file
+ *
+ * Only updates videos that have been changed.
+ * Removed current playlist assignments for video if it is no longer assigned.
+ *
+ * @todo Where should this be called? After playlist feed importer is run?
+ * - Currently calling via drush php-eval '_youtube_playlists_assign_videos();'
+ */
+function _youtube_playlists_assign_videos() {
+  // @todo Should this URL be in settings.php?
+  $assignments_url = 'http://www.ilr.cornell.edu/codelib/media/youtube/getvideosinplaylists.cfm';
+  // Dev url
+  //$assignments_url = 'http://www.ilr-website.dev/sites/default/files/video_playlists.xml';
+  $response = drupal_http_request($assignments_url);
+  if ($response->error) {
+    watchdog('youtube_playlists', 'Error retrieving feed: @msg', array('@msg' => $response->error), WATCHDOG_ERROR);
+    return;
+  }
+  $xml = simplexml_load_string($response->data);
+  //print_r($xml);
+  $new_video_assignments = array();
+  $unknown_videos = array();
+  $unknown_playlists = array();
+   foreach ($xml->entries->videoinplaylist as $video_assignment) {
+    $video_nid = youtube_videos_get_nid_from_video_id((string)$video_assignment->videoId);
+    $playlist_nid = youtube_playlists_get_nid_from_playlist_id((string)$video_assignment->playlistId);
+    // Keep of list of videos and playlists that aren't nodes.
+    if (!$video_nid) {
+      $unknown_videos[] = (string)$video_assignment->videoId;
+    }
+   if (!$playlist_nid) {
+     $unknown_playlists[] = (string)$video_assignment->playlistId;
+   }
+   if ($video_nid && $playlist_nid) {
+     // Both the video and playlist were found.
+     $new_video_assignments[$video_nid][] = $playlist_nid;
+   }
+   $current_video_assignments = _youtube_playlist_get_current_assignments();
+
+  }
+  if ($unknown_videos) {
+    watchdog('youtube_playlists', 'Unknown video were found during playlist assignment. @video_ids', array('@video_ids' => implode(',', $unknown_videos)), WATCHDOG_WARNING);
+  }
+  if ($unknown_playlists) {
+    watchdog('youtube_playlists', 'Unknown playlists were found during playlist assignment. @playlist_ids', array('@playlist_ids' => implode(',', $unknown_playlists)), WATCHDOG_WARNING);
+  }
+  // Loop through new assignments and update only need ones. Saves calls to node_save.
+  foreach ($new_video_assignments as $video_nid => $new_video_assignment) {
+    // If the video is not currently assigned to a playlists needs to be assigned
+    $needs_update = !isset($current_video_assignments[$video_nid]);
+    if (!$needs_update) {
+      $playlists_difference = array_diff($new_video_assignment,$current_video_assignments[$video_nid]);
+      $needs_update = !empty($playlists_difference);
+    }
+    if ($needs_update) {
+      // Update Video playlist assignment
+      $video_wrapper = entity_metadata_wrapper('node', $video_nid);
+      $video_wrapper->field_playlists->set($new_video_assignment);
+      $video_wrapper->save();
+    }
+  }
+  // Remove any video that aren't in assignments but were in current
+  $unassigned_video_nids = array_keys(array_diff_key($current_video_assignments, $new_video_assignments));
+  if ($unassigned_video_nids) {
+    foreach ($unassigned_video_nids as $video_nid) {
+      $video_wrapper = entity_metadata_wrapper('node', $video_nid);
+      $video_wrapper->field_playlists->set(NULL);
+      $video_wrapper->save();
+    }
+  }
+}
+
+/**
+ * Gets the nid for youtube Playlist id
+ * @param $playlist_id
+ * @return int | NULL
+ */
+function youtube_playlists_get_nid_from_playlist_id($playlist_id) {
+  $nids = & drupal_static(__FUNCTION__);
+  if (!isset($nids)) {
+    $nids = array();
+  }
+  else {
+    if (isset($nids[$playlist_id])) {
+      return $nids[$playlist_id];
+    }
+  }
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'youtube_playlist')
+    ->fieldCondition('field_youtube_playlist_id', 'value', $playlist_id);
+  $result = $query->execute();
+  if (isset($result['node'])) {
+    $nids[$playlist_id] =  array_shift(array_keys($result['node']));
+  }
+  else {
+    $nids[$playlist_id] = NULL;
+  }
+  return $nids[$playlist_id];
+}
+function _youtube_playlist_get_current_assignments() {
+  $video_assignments = array();
+  $sql = 'SELECT entity_id as video_nid, field_playlists_target_id as playlist_nid FROM {field_data_field_playlists}'
+    . ' WHERE deleted = 0 AND bundle = \'youtube_video\' AND entity_type = \'node\'';
+  $result = db_query($sql);
+
+  while($record = $result->fetchAssoc()) {
+    $video_assignments[$record['video_nid']][] = $record['playlist_nid'];
+  }
+  return $video_assignments;
+}
