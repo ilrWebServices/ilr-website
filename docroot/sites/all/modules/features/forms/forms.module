@@ -132,6 +132,24 @@ function _forms_process_default(&$form) {
 
 
 /**
+ * Process Library contact form
+ */
+function _process_library_contact_form(&$form) {
+  $admin_email = trim($form['field_library_how_to_direct']['und']['#value']) . '@cornell.edu';
+  _forms_send_emails($form, $admin_email);
+}
+
+function _forms_library_contact_options() {
+  return array(
+    'ilrlib' => 'General Information',
+    'ilrcirc' => 'Circulation',
+    'kheel_center' => 'Kheel Center',
+    'ilrref' => 'Research',
+  );
+}
+
+
+/**
  * Process Career Services contact form
  */
 function _process_career_services_contact_form(&$form) {
