@@ -11,18 +11,15 @@ define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
 
 /**
- * Implements hook_form_alter
+ * Implements hook_form_BASE_FORM_ID_alter
  */
-function forms_form_alter(&$form, &$form_state, $form_id) {
-  // Check to see if an entityform is being rendered
-  if (array_key_exists('entityform', $form_state)) {
-    // Generate appropriate submit handler
-    $form['actions']['submit']['#submit'][] = _forms_get_submit_handler($form['#bundle']);
+function forms_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
+  // Generate appropriate submit handler
+  $form['actions']['submit']['#submit'][] = _forms_get_submit_handler($form['#bundle']);
 
-    // Fill in default values of kerberized forms
-    if (_forms_form_is_kerberized($form['#bundle'])) {
-      _forms_handle_kerberized_form($form);
-    }
+  // Fill in default values of kerberized forms
+  if (_forms_form_is_kerberized($form['#bundle'])) {
+    _forms_handle_kerberized_form($form);
   }
 }
 
