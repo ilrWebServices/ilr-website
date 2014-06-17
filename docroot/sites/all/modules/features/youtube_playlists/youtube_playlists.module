@@ -169,3 +169,14 @@ function _youtube_playlist_get_current_assignments() {
   }
   return $video_assignments;
 }
+
+/**
+ * Implements hook_playlist_feeds_after_import().
+ *
+ * Assign Videos to Playlists after imported.
+ */
+function youtube_playlists_feeds_after_import(FeedsSource $source) {
+  if ($source->importer->id == 'youtube_playlist_importer') {
+    _youtube_playlists_assign_videos();
+  }
+}
