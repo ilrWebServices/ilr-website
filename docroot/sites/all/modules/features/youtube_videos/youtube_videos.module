@@ -26,7 +26,7 @@ function youtube_videos_get_nid_from_video_id($video_id) {
     ->fieldCondition('field_youtube_video', 'video_id', $video_id);
   $result = $query->execute();
   if (isset($result['node'])) {
-    $video_nids[$video_id] =  array_shift(array_keys($result['node']));
+    $video_nids[$video_id] = array_shift(array_keys($result['node']));
   }
   else {
     $video_nids[$video_id] = NULL;
