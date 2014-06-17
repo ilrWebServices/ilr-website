@@ -33,3 +33,27 @@ function youtube_videos_get_nid_from_video_id($video_id) {
   }
   return $video_nids[$video_id];
 }
+
+/**
+ * Implements hook_feeds_presave().
+ *
+ * Don't let tags be wiped out by Youtube update.
+ */
+function youtube_videos_feeds_presave($source, $entity, $item, $entity_id) {
+  if ($source->importer->id == 'youtube_importer') {
+    $node_wrapper = entity_metadata_wrapper('node', $entity);
+    $new_tids = $node_wrapper->field_tags->raw();
+
+    if (empty($entity->is_new)) {
+      // If the Node isn't new then we have to add pack any tags that were removed.
+      // This is the only way to ensure that tags added on Drupal aren't erased on Youtube update.
+      // Must load unchanged or entity_load will bring back working copy by reference.
+      $current_node = entity_load_unchanged('node', $entity->nid);
+      $current_node_wrapper = entity_metadata_wrapper('node', $current_node);
+      $current_tids = $current_node_wrapper->field_tags->raw();
+      // Add old tids to new tids.
+      $new_tids = array_unique(array_merge($new_tids, $current_tids));
+      $node_wrapper->field_tags->set($new_tids);
+    }
+  }
+}
