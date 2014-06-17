@@ -8,6 +8,9 @@ include_once 'youtube_playlists.features.inc';
 
 /**
  * Implements hook_field_formatter_info().
+ *
+ * Provide Playlist Embed formatter for textfields.
+ * @todo Should we create a Playlist Field Type.
  */
 function youtube_playlists_field_formatter_info() {
   $formatters = array(
@@ -23,24 +26,21 @@ function youtube_playlists_field_formatter_info() {
 
 /**
  * Implements hook_field_formatter_view().
+ *
+ * View for Playlist embed Formatter
  */
 function youtube_playlists_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, &$items, $display) {
-  $settings = $display['settings'];
-
   $element = array();
   switch ($display['type']) {
     case 'youtube_playlist_embed':
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
-
           '#theme' => 'youtube_playlists_embed',
           '#playlist_id' => $item['value'],
         );
       }
       break;
-
   }
-
   return $element;
 }
 
@@ -62,9 +62,6 @@ function youtube_playlists_theme() {
  *
  * Only updates videos that have been changed.
  * Removed current playlist assignments for video if it is no longer assigned.
- *
- * @todo Where should this be called? After playlist feed importer is run?
- * - Currently calling via drush php-eval '_youtube_playlists_assign_videos();'
  */
 function _youtube_playlists_assign_videos() {
   // @todo Should this URL be in settings.php?
