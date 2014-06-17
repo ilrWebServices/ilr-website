@@ -210,6 +210,36 @@ function forms_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_cornell_status'
+  $field_bases['field_cornell_status'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cornell_status',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'CU Undergraduate' => 'CU Undergraduate',
+        'CU Graduate Student' => 'CU Graduate Student',
+        'CU Faculty' => 'CU Faculty',
+        'CU Staff' => 'CU Staff',
+        'CU Alumni' => 'CU Alumni',
+        'Other' => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_count_as_text'
   $field_bases['field_count_as_text'] = array(
     'active' => 1,
@@ -532,6 +562,29 @@ function forms_field_default_field_bases() {
         'Room 305' => '305 (seats 330)',
       ),
       'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_library_how_to_direct'
+  $field_bases['field_library_how_to_direct'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_library_how_to_direct',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(),
+      'allowed_values_function' => '_forms_library_contact_options',
     ),
     'translatable' => 0,
     'type' => 'list_text',
