@@ -12,6 +12,7 @@ dependencies[] = news
 dependencies[] = strongarm
 dependencies[] = text
 dependencies[] = youtube_videos
+dependencies[] = feeds_xpathparser
 features[ctools][] = feeds:feeds_importer_default:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
