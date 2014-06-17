@@ -37,7 +37,7 @@ if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
 
   # Pull the updates from the branch to livedev and clear cache
   echo "Deploying $branch_name to livedev on Acquia"
-  ssh ilr@srv-2136.devcloud.hosting.acquia.com "cd ~/$ENV/livedev; git checkout .; git pull; git checkout $branch_name; cd docroot; drush @sites cc all -y; exit;"
+  ssh ilr@srv-2136.devcloud.hosting.acquia.com "cd ~/$ENV/livedev; git checkout .; git pull; git checkout $branch_name; git pull; cd docroot; drush @sites cc all -y; exit;"
 
   echo "Deployment complete"
   exit
