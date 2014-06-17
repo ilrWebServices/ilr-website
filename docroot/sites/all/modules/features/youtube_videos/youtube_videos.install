@@ -1,0 +1,20 @@
+<?php
+/**
+ * @file
+ * Install hooks for youtube_videos Feature
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Set Feed URL programmatically as this can't be export to Features.
+ */
+function youtube_videos_install() {
+  $source = feeds_source('youtube_playlist_importer');
+  $source->addConfig(array(
+    'FeedsHTTPFetcher' => array(
+      'source' => 'http://www.ilr.cornell.edu/codelib/media/youtube/getAllAsXml.cfm',
+    ),
+  ));
+  $source->save();
+}
