@@ -100,6 +100,29 @@ function forms_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_class_year'
+  $field_bases['field_class_year'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_class_year',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(),
+      'allowed_values_function' => '_forms_labor_roundtable_reg_class_year_options',
+    ),
+    'translatable' => 0,
+    'type' => 'list_integer',
+  );
+
   // Exported field_base: 'field_classes'
   $field_bases['field_classes'] = array(
     'active' => 1,
@@ -537,6 +560,35 @@ function forms_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_major'
+  $field_bases['field_major'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_major',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_minor_subject_s_'
   $field_bases['field_minor_subject_s_'] = array(
     'active' => 1,
@@ -722,6 +774,67 @@ function forms_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'field_collection',
+  );
+
+  // Exported field_base: 'field_referral_textarea'
+  $field_bases['field_referral_textarea'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_referral_textarea',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_school_or_college'
+  $field_bases['field_school_or_college'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_school_or_college',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'ILR' => 'Cornell ILR School',
+        'Arts and Sciences' => 'Cornell Arts & Sciences',
+        'AAP' => 'Cornell Art, Architecture & Planning',
+        'CALS' => 'Cornell CALS',
+        'Engineering' => 'Cornell Engineering',
+        'Hotel' => 'Cornell Hotel School',
+        'Human Ecology' => 'Cornell Human Ecology',
+        'IC' => 'Ithaca College',
+        'TC3' => 'TC3',
+        'other' => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_semester'

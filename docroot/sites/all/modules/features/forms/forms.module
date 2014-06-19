@@ -180,9 +180,10 @@ function _forms_labor_roundtable_reg_class_year_options() {
  * Generate a list for a select or radio form element with a list of absolute years
  */
 function _forms_year_absolute_options($first, $last) {
+  $yearlist = array();
   if ($first <= $last) {
     for ($year=$first; $year<=$last; $year++) {
-      $yearList['$year'] = $year;
+      $yearList["$year"] = $year;
     }
   }
   else {
@@ -202,7 +203,7 @@ function _forms_year_relative_options($firstOffset, $lastOffset) {
   $currYear = date('Y');
   $first = $currYear + $firstOffset;
   $last = $currYear + $lastOffset;
-  _forms_year_absolute_options($first, $last);
+  return _forms_year_absolute_options($first, $last);
 }
 
 /**
