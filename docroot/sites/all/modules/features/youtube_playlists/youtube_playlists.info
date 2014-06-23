@@ -1,7 +1,7 @@
 name = Youtube Playlists
 description = Playlist Content Type and Importer
 core = 7.x
-package = ILR
+package = Features
 version = 7.x-0.1
 project = youtube_playlists
 dependencies[] = basic_page
