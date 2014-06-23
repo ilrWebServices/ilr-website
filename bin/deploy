@@ -40,6 +40,13 @@ if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
   ssh ilr@srv-2136.devcloud.hosting.acquia.com "cd ~/$ENV/livedev; git checkout .; git pull; git checkout $branch_name; git pull; cd docroot; drush @sites cc all -y; exit;"
 
   echo "Deployment complete"
+
+  if [ "$ENV" = "dev" ]; then
+    read -r -p "Would you like to rebuild the site? [y/N] " response
+    if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+      drush @ilr.ilr.dev si ilr --site-name="ILR Dev Site | Cornell University" --clean-url=1 --account-pass=testing --account-mail=aaronf@cornell.edu --yes
+    fi
+  fi
   exit
 fi
 
