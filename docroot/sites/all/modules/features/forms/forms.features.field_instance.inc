@@ -2374,6 +2374,271 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_email'
+  $field_instances['entityform-labor_roundtable_student_registr-field_email'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_first_name'
+  $field_instances['entityform-labor_roundtable_student_registr-field_first_name'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_first_name',
+    'label' => 'First name',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_last_name'
+  $field_instances['entityform-labor_roundtable_student_registr-field_last_name'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_major'
+  $field_instances['entityform-labor_roundtable_student_registr-field_major'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_major',
+    'label' => 'Major',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_phone'
+  $field_instances['entityform-labor_roundtable_student_registr-field_phone'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_phone',
+    'label' => 'Phone',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_referral_textarea'
+  $field_instances['entityform-labor_roundtable_student_registr-field_referral_textarea'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_referral_textarea',
+    'label' => 'How did you hear about the Labor Roundtable?',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_school_or_college'
+  $field_instances['entityform-labor_roundtable_student_registr-field_school_or_college'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_school_or_college',
+    'label' => 'School or college',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_year_as_list_text'
+  $field_instances['entityform-labor_roundtable_student_registr-field_year_as_list_text'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_year_as_list_text',
+    'label' => 'Class year',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'entityform-library_contact_form-field_comments'
   $field_instances['entityform-library_contact_form-field_comments'] = array(
     'bundle' => 'library_contact_form',
@@ -2939,6 +3204,7 @@ function forms_field_default_field_instances() {
   t('Event name');
   t('First Name');
   t('First name');
+  t('How did you hear about the Labor Roundtable?');
   t('How many people');
   t('ILR student organization or department name');
   t('Indicate level, if any, of computer skills or knowledge');
@@ -2947,6 +3213,7 @@ function forms_field_default_field_instances() {
   t('Last name');
   t('List relevant work experience and/or your qualifications');
   t('List your prior TA or RA appointments');
+  t('Major');
   t('Meeting location preference');
   t('Minor subject(s)');
   t('Name');
@@ -2959,6 +3226,7 @@ function forms_field_default_field_instances() {
   t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
   t('Questions and comments');
   t('RA Additional Information');
+  t('School or college');
   t('Semester for which you are requesting assistantship');
   t('Semester off-campus');
   t('Start time');
