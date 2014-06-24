@@ -57,3 +57,31 @@ function youtube_videos_feeds_presave($source, $entity, $item, $entity_id) {
     }
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * For form youtube_video_node_form
+ * Remove access to most fields for Youtube nodes that were imported from a feed.
+ *
+ */
+function youtube_videos_form_youtube_video_node_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['nid']['#value'])) {
+    $node = $form['#node'];
+    // Determine if this node was imported via Feeds.
+    $from_feed = !(feeds_get_feed_nid($node->nid, 'node') === FALSE);
+    if ($from_feed) {
+      $no_access_fields = array(
+        'title',
+        'body',
+        'field_playlists',
+        'field_youtube_video'
+      );
+      foreach ($no_access_fields as $field_name) {
+        if (isset($form[$field_name])) {
+          $form[$field_name]['#access'] = FALSE;
+        }
+      }
+    }
+  }
+}
