@@ -35,6 +35,7 @@ function youtube_videos_feeds_importer_default() {
           'xpathparser:2' => 'media:group/media:description',
           'xpathparser:3' => 'media:group/media:keywords',
           'xpathparser:4' => 'concat(\'http://www.youtube.com/watch?v=\',media:group/yt:videoid)',
+          'xpathparser:5' => 'media:group/yt:duration/@seconds',
         ),
         'rawXML' => array(
           'xpathparser:0' => 0,
@@ -42,6 +43,7 @@ function youtube_videos_feeds_importer_default() {
           'xpathparser:2' => 0,
           'xpathparser:3' => 0,
           'xpathparser:4' => 0,
+          'xpathparser:5' => 0,
         ),
         'context' => '//feed/entry',
         'exp' => array(
@@ -53,6 +55,7 @@ function youtube_videos_feeds_importer_default() {
             'xpathparser:2' => 0,
             'xpathparser:3' => 0,
             'xpathparser:4' => 0,
+            'xpathparser:5' => 0,
           ),
         ),
         'allow_override' => 0,
@@ -89,6 +92,11 @@ function youtube_videos_feeds_importer_default() {
           4 => array(
             'source' => 'xpathparser:4',
             'target' => 'field_youtube_video',
+            'unique' => FALSE,
+          ),
+          5 => array(
+            'source' => 'xpathparser:5',
+            'target' => 'field_duration',
             'unique' => FALSE,
           ),
         ),

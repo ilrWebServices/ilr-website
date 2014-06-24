@@ -55,6 +55,15 @@ function youtube_videos_feeds_presave($source, $entity, $item, $entity_id) {
       $new_tids = array_unique(array_merge($new_tids, $current_tids));
       $node_wrapper->field_tags->set($new_tids);
     }
+    $seconds = $node_wrapper->field_duration->value();
+    if ($seconds > 60 * 60) {
+      $formatted_duration = gmdate("G:i:s", $seconds);
+    }
+    else {
+      $formatted_duration = gmdate("i:s", $seconds);
+    }
+    $node_wrapper->field_duration->set($formatted_duration);
+
   }
 }
 
