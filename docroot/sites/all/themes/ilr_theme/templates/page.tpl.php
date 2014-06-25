@@ -20,22 +20,12 @@
         </nav> <!-- / nav -->
       <?php endif; ?>
 
-      <div id="banner" class="clearfix">
-      <?php if ($is_front): ?>
-          <div class="img"><img src="<?php print base_path() . drupal_get_path('theme', 'ilr_theme') . '/images/banner-about.jpg'; ?>"/></div>
-      <?php else: ?>
-          <div id="campaign">
-            <img src="<?php print base_path() . drupal_get_path('theme', 'ilr_theme') . '/images/banner-default.jpg'; ?>"/>
-          </div><!-- end campaign -->
-        </div> <!-- /.banner -->
-      <?php endif; ?>
-
       <?php print $messages; ?>
-      
+
       <!-- highlighted location -->
       <!-- Add subsite nav region here -->
 
-      <div id="main" class="clearfix" role="main">
+      <div id="main" role="main"  data-eq-pts="100: 100, 700: 700, 960: 960">
 
         <?php if ($breadcrumb): ?>
           <div id="breadcrumb"><?php print $breadcrumb; ?></div>

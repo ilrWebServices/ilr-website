@@ -1,0 +1,8 @@
+#page-wrapper {
+  max-width: 960px;
+  @extend .center;
+  @extend %two-cols-with-sidebar;
+  //@extend %triptych;
+
+  #main { @extend .clearfix; }
+}

@@ -1,23 +1,20 @@
 // ==================================================
 // headings
 // ==================================================
+// consider reworking per https://medium.com/p/8e51498c3713
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   margin-top: 0;
   font-family: $font-headers;
-}
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  font-weight: inherit;
+  a {
+    font-weight: inherit;
+  }
 }
 
 h1 {
   font-size: $h1-size;
   color: $h1-text;
-  margin-left: 10px;
-  @include tablet-landscape-and-up {
-    margin-left: 20px;
-  }
 
   a {
     color: $h1-link;
@@ -26,10 +23,6 @@ h1 {
       color: $h1-link-hover;
     }
   }
-}
-
-h1.title {
-  margin: ms(2) 0;
 }
 
 h2 {
@@ -44,17 +37,6 @@ h2 {
         color: $h2-link-hover;
       }
    }
-}
-
-h2 + img.alignright,
-h2 + img.alignleft,
-h2 + img.alignnone,
-h2 + img.aligncenter {
-  margin-top: 0px;
-}
-
-h2 + img + p {
-  margin-top: 0px;
 }
 
 h3 {
@@ -145,13 +127,6 @@ p + h6 {
     margin-top: ms(3);
   }
 
-p + img.alignright,
-p + img.alignleft,
-p + img.alignnone,
-p + img.aligncenter {
-  margin-top: 0px;
-}
-
 hr {
   clear: both;
   height: 0;
@@ -194,12 +169,12 @@ nav ul {
 }
 
 ol {
-  padding-left: 20px;
+  padding-left: 2em;
   line-height: ms(2);
   li {
     list-style: decimal;
     background: none;
-  padding: 0;
+    padding: 0;
   }
 }
 
@@ -239,8 +214,8 @@ li {
 ul.tabs {
   li {
     background: none;
-  margin: 0;
-  padding-left: 0;
+    margin: 0;
+    padding-left: 0;
   }
 }
 
@@ -374,16 +349,4 @@ table {
   th.center, td.center {
     text-align: center;
   }
-}
-
-
-// ==================================================
-// interactive elements
-// ==================================================
-details {
-
-}
-
-summary {
-
 }

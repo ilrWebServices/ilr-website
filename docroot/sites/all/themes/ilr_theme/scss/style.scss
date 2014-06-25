@@ -1,42 +1,36 @@
 // Compass
 @import "compass/css3";
 
-//Modular Scale
+// //Modular Scale
 @import "modular-scale";
 
-// Zurb Foundation
-@import "foundation/grid";
+// Grid
+@import "singularitygs";
+@import "breakpoint";
 
 // Base
-//@import "base/reset"; // Choose reset or normalize for the theme; DO NOT use both
 @import "base/normalize";
 @import "base/variables";
-@import "base/responsive-mixins";
 @import "base/base";
 @import "base/mixins";
-@import "base/forms";
 @import "base/typography";
 @import "base/helpers";
 
-// Admin
-@import "pages/admin";
+// Components
+@import "components/header";
+@import "components/nav";
+@import "components/footer";
+@import "components/form_elements";
+@import "components/bean_base";
+@import "components/view_modes";
+@import "components/tagged_content";
+@import "components/neutral_page";
+@import "components/404";
 
-// Common
-@import "common/header";
-@import "common/nav";
-@import "common/footer";
-@import "common/common";
-@import "common/components";
-
-// Pages
-@import "pages/404";
-@import "pages/home";
-
-// Content types
-@import "content_types/base";
-@import "content_types/basic_page";
-@import "content_types/news";
-@import "content_types/neutral";
+// Layout
+@import "layout/base";
+@import "layout/two-cols-with-sidebar";
+@import "layout/triptych";
 
 // Vendor
-// Add vendor files
+// Create a vendor folder if/when needed

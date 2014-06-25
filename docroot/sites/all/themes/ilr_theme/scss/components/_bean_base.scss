@@ -1,0 +1,17 @@
+%bean-base {
+  // Specify which view mode to extend by default
+  @extend %rolodex;
+
+  article {
+    // Example of how to integrate with eq.js
+    // See templates/page.tpl.php for data-eq-pts
+    .sidebar & {
+      &[data-eq-state="small"] {
+        @extend %slug;
+      }
+    }
+    // In the highlighted area above main content
+    #highlighted & {
+    }
+  }
+}

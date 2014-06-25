@@ -18,6 +18,8 @@ function drupal_streamline_dev_init() {
   if (file_exists('.drupal_streamline_guard_running')) {
     drupal_add_js($guard_livereload_js_uri, array('type' => 'external', 'scope' => 'footer'));
   }
+
+  drupal_add_js(drupal_get_path('theme', 'ilr_theme') . '/js/vendor/grid.js');
 }
 
 /**
