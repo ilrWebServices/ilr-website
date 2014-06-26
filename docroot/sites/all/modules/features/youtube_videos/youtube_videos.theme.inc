@@ -1,7 +1,14 @@
 <?php
 /**
  * @file
- * Theme functions for Youtube Playlists module.
+ * Theme functions for Youtube Videos module.
+ */
+/**
+ * Theme function for Youtube Fancybox.
+ *
+ * Hardcoded now to user 'thumbnail' image_style.
+ * @param $variables
+ * @return string
  */
 function theme_youtube_videos_fancybox($variables) {
   $image_link = array(
