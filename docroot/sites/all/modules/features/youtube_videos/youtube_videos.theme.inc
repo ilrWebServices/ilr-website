@@ -5,7 +5,6 @@
  */
 function theme_youtube_videos_fancybox($variables) {
   $image_link = array(
-    //'path' => 'https://www.drupal.org/files/colorbox.png',
     'path' => "http://www.youtube.com/embed/{$variables['video_id']}?autoplay=1&rel=0",
     'options' => array(
       'attributes' => array(
@@ -25,6 +24,4 @@ function theme_youtube_videos_fancybox($variables) {
       'image_link' => $image_link,
     )
   );
-  $playlist_id = $variables['playlist_id'];
-  return "<iframe width=\"853\" height=\"480\" src=\"//www.youtube.com/embed/videoseries?list=$playlist_id\" frameborder=\"0\" allowfullscreen></iframe>";
 }
