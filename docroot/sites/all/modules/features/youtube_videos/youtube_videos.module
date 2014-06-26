@@ -94,3 +94,51 @@ function youtube_videos_form_youtube_video_node_form_alter(&$form, &$form_state,
     }
   }
 }
+/**
+ * Implements hook_field_formatter_info().
+ *
+ * Provide Youtube Fancybox formatter for textfields.
+ */
+function youtube_videos_field_formatter_info() {
+  $formatters = array(
+    // This formatter displays your youtube video.
+    'youtube_videos_fancybox' => array(
+      'label' => t('YouTube Fancybox'),
+      'field types' => array('youtube'),
+    )
+  );
+
+  return $formatters;
+}
+/**
+ * Implements hook_field_formatter_view().
+ *
+ * View for Youtube Fancybox Formatter
+ */
+function youtube_videos_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, &$items, $display) {
+  $element = array();
+  switch ($display['type']) {
+    case 'youtube_videos_fancybox':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#theme' => 'youtube_videos_fancybox',
+          '#video_id' => $item['video_id'],
+        );
+      }
+      break;
+  }
+  return $element;
+}
+/**
+ * Implements hook_theme().
+ */
+function youtube_videos_theme() {
+  return array(
+    'youtube_videos_fancybox' => array(
+      'variables' => array(
+        'video_id' => NULL,
+      ),
+      'file' => 'youtube_videos.theme.inc',
+    ),
+  );
+}
