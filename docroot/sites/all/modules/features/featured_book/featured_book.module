@@ -13,7 +13,7 @@ define('LIBRARY_ISBN_LINK', 'http://catalog.library.cornell.edu/cgi-bin/Pwebreco
  * Adds the publication info to the end of the body text
  */
 function featured_book_preprocess_node(&$variables) {
-  if ($variables['type'] == 'featured_book' && $variables['view_mode'] == 'full') {
+  if ($variables['type'] == 'featured_book') {
     $variables['content']['body'][0]['#markup'] .= _featured_book_create_publication_info($variables);
   }
 }
