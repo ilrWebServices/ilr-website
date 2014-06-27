@@ -5,3 +5,30 @@
  */
 
 include_once 'featured_book.features.inc';
+
+define('LIBRARY_ISBN_LINK', 'http://catalog.library.cornell.edu/cgi-bin/Pwebrecon.cgi?DB=local&BOOL1=as+a+phrase&FLD1=ISBN+%28ISBN%29&CNT=10&SAB1=');
+
+/**
+ * Implements hook_preprocess_hook()
+ * Adds the publication info to the end of the body text
+ */
+function featured_book_preprocess_node(&$variables) {
+  if ($variables['type'] == 'featured_book' && $variables['view_mode'] == 'full') {
+    $variables['content']['body'][0]['#markup'] .= _featured_book_create_publication_info($variables);
+  }
+}
+
+/**
+ * Creates the publication info markup
+ */
+function _featured_book_create_publication_info($variables) {
+  $markup = '<p>';
+  $markup .= $variables['field_city'][LANGUAGE_NONE][0]['value'] . ': ';
+  $markup .= $variables['field_publisher'][LANGUAGE_NONE][0]['value'] . '. ';
+  $markup .= $variables['field_featured_book_pages'][LANGUAGE_NONE][0]['value'] . ' pages<br />';
+  $call = $variables['field_call_number'][LANGUAGE_NONE][0]['value'];
+  $isbn = $variables['field_isbn'][LANGUAGE_NONE][0]['value'];
+  $markup .= "ISBN $isbn ";
+  $markup .= '<a href="'. LIBRARY_ISBN_LINK . $isbn . '">' . $call . '</a></p>';
+  return $markup;
+}
