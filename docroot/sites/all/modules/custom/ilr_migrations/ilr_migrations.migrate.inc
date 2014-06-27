@@ -13,6 +13,7 @@ function ilr_migrations_migrate_api() {
       'Wit' => array('class_name' => 'WitMigration'),
       'Microfilm' => array('class_name' => 'MicrofilmMigration'),
       'Microfiche' => array('class_name' => 'MicroficheMigration'),
+      'FeaturedBook' => array('class_name' => 'FeaturedBookMigration'),
     ),
   );
   return $api;
