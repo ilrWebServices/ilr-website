@@ -5,6 +5,25 @@
  */
 
 include_once 'youtube_videos.features.inc';
+
+/**
+ * Implements hook_preprocess_hook
+ * Makes title link open fancybox
+ * Removes readmore links
+ */
+function youtube_videos_preprocess_node(&$variables) {
+  if ($variables['type'] == 'youtube_video') {
+    $video_id = $variables['field_youtube_video'][0]['video_id'];
+    $variables['title_attributes_array'] = array(
+      'class' => 'fancybox',
+      'data-fancybox-type' => 'iframe',
+      'href' => _youtube_video_embed_link($video_id),
+    );
+    $variables['node_url'] = '#';
+    unset($variables['content']['links']['node']['#links']['node-readmore']);
+  }
+}
+
 /**
  * Gets the nid for youtube Video Id
  * @param $video_id
@@ -141,4 +160,8 @@ function youtube_videos_theme() {
       'file' => 'youtube_videos.theme.inc',
     ),
   );
+}
+
+function _youtube_video_embed_link($video_id) {
+  return "http://www.youtube.com/embed/{$video_id}?autoplay=1&rel=0";
 }

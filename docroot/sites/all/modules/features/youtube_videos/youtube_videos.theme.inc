@@ -12,7 +12,7 @@
  */
 function theme_youtube_videos_fancybox($variables) {
   $image_link = array(
-    'path' => "http://www.youtube.com/embed/{$variables['video_id']}?autoplay=1&rel=0",
+    'path' => _youtube_video_embed_link($variables['video_id']),
     'options' => array(
       'attributes' => array(
         'class' => 'fancybox',

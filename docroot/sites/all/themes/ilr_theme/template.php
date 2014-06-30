@@ -27,7 +27,7 @@ function ilr_theme_page_alter(&$page) {
   if (isset($page['content']['system_main']['nodes'])) {
     $node = current($page['content']['system_main']['nodes']);
     // Look for blocks on the current node
-    if (isset($node['field_blocks']) && count($node['field_blocks']['#items']) > 0) {
+    if (isset($node['field_blocks']) && $node != -1 && count($node['field_blocks']['#items']) > 0) {
       $fields = current($node['field_blocks'][0]['entity']['field_collection_item']);
       if (isset($fields['field_sidebar_region'])) {
         $page['sidebar_first'][] = $fields['field_sidebar_region'];
