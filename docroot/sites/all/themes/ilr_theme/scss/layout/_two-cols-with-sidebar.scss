@@ -1,0 +1,23 @@
+%two-cols-with-sidebar {
+  @include breakpoint(500px) {
+    $grids: 3 9;
+    $gutters: 1/3;
+    //@include background-grid($color: red);
+    #content {
+      @include grid-span(1, 2);
+      article.node-teaser {
+        @include layout(8) {
+          //@include background-grid($color: red);
+          @include float-span(4);
+          &:nth-child(2n) {
+            @include float-span(4, 'last');
+          }
+        }
+      }
+    }
+
+    #sidebar-first {
+      @include grid-span(1);
+    }
+  }
+}

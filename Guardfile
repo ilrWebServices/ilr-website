@@ -1,5 +1,7 @@
 # More info at https://github.com/guard/guard#readme
 require 'modular-scale'
+require 'singularitygs'
+require 'breakpoint'
 
 guard 'sass',
   :input => 'docroot/sites/all/themes/ilr_theme/scss',

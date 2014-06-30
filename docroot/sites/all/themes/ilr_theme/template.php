@@ -15,6 +15,7 @@ function ilr_theme_preprocess_page(&$variables) {
   $variables['page']['footer'][] = array('#markup' => '<div class="copyright">&copy; ' . date('Y') . ' Cornell University | ILR School </div>');
 
   drupal_add_js($variables['directory'] . '/js/vendor/modernizr-2.6.2.min.js');
+  drupal_add_js($variables['directory'] . '/js/vendor/eq.min.js');
 }
 
 /**
@@ -57,6 +58,12 @@ function ilr_theme_preprocess_block(&$variables) {
     if (isset($bean['#bundle'])) {
       $variables['classes_array'][] = str_replace('_', '-',$bean['#bundle']);
     }
+  }
+}
+
+function ilr_theme_preprocess_node(&$variables) {
+  if ($variables['view_mode'] == 'teaser') {
+    $variables['attributes_array']['data-eq-pts'] = 'small: 100, medium: 300, large: 600, full: 900';
   }
 }
 

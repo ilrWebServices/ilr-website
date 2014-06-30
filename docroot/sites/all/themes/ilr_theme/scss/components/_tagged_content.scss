@@ -1,0 +1,7 @@
+.block-bean.tagged-content {
+  @extend %bean-base;
+
+  //Override content-types here, eg:
+  &.news {
+  }
+}

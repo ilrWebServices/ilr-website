@@ -2,7 +2,7 @@ $row-width: rem-calc(960);
 // ==================================================
 // Modular Scale
 // ==================================================
-$ms-base: 14px, 960px;
+$ms-base: 16px, 960px;
 $ms-ratio: $golden;
 
 // Lists modular scale for debugging
@@ -31,6 +31,9 @@ $content-area: #fff;
 // ==================================================
 // Typography
 // ==================================================
+// Varialbes here and implementation in _typography.scss
+// should probably be updated to a map
+// See https://medium.com/p/8e51498c3713
 $font: 'Open Sans', sans-serif;
 $font-headers: 'Marcellus', serif;
 
@@ -43,19 +46,20 @@ $h6-size: ms(0);
 
 $h2-sm-size: rem-calc(16);
 
-$h1-text: #212121;
-$h2-text: #212121;
-$h3-text: #212121;
-$h4-text: #212121;
-$h5-text: #212121;
-$h6-text: #212121;
+$header-color: #787878;
+$h1-text: lighten($header-color, 10%);
+$h2-text: lighten($header-color, 10%);
+$h3-text: lighten($header-color, 10%);
+$h4-text: $header-color;
+$h5-text: $header-color;
+$h6-text: $header-color;
 
-$h1-link: #212121;
-$h2-link: #212121;
-$h3-link: #212121;
-$h4-link: #212121;
-$h5-link: #212121;
-$h6-link: #212121;
+$h1-link: $h1-text;
+$h2-link: $h2-text;
+$h3-link: $h3-text;
+$h4-link: $h4-text;
+$h5-link: $h5-text;
+$h6-link: $h6-text;
 
 $h1-link-hover: #212121;
 $h2-link-hover: #212121;
@@ -82,14 +86,6 @@ $table-bg-alt: #e7e6e6;
 $table-bg-hover: darken($table-bg, 10%);
 $td-text: #444;
 $th-text: #212121;
-
-
-// ==================================================
-// Buttons
-// ==================================================
-$button-bg: #eee;
-$button-bg-focus: #e5e5e5;
-
 
 // ==================================================
 // Forms

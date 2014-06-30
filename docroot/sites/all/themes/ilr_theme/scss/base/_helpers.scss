@@ -1,25 +1,7 @@
 // ==================================================
 // Non-semantic Helper Classes
 // ==================================================
-// For image replacement
-.ir {
-  display: block;
-  border: 0;
-  text-indent: -999em;
-  overflow: hidden;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  text-align: left;
-  direction: ltr;
-  *line-height: 0;
-}
-
-.ir br {
-  display: none;
-}
-
 // Hide from both screenreaders and browsers: h5bp.com/u
-// also in mixins
 .hidden {
   display: none !important;
   visibility: hidden;
@@ -56,23 +38,12 @@
   width: auto;
 }
 
-// Hide visually and from screenreaders, but maintain layout
-.invisible { visibility: hidden; }
-
 // ==================================================
 // clearing
 // ==================================================
-// You can also use a <br class="clear" /> to clear columns
-.clear {
-  clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-}
-// Use clearfix class on parent to clear nested columns, or wrap each row of columns in a <div class="row">
-.clearfix:before, .clearfix:after, .row:before, .row:after {
+// Use clearfix class on parent to clear nested columns
+
+.clearfix:before, .clearfix:after{
   content: '\0020';
   display: block;
   overflow: hidden;
@@ -84,27 +55,6 @@
   content: " ";
 }
 
-
-// ==================================================
-// placement
-// ==================================================
-.remove-top     { margin-top: 0 !important; }
-.half-top       { margin-top: 10px !important; }
-.push-top       { margin-top: 20px }
-.remove-bottom  { margin-bottom: 0 !important; }
-.half-bottom    { margin-bottom: 10px !important; }
-.push-bottom    { margin-bottom: 20px }
-
-.full-width     { width: 100%; }
-.half-width     { width: 50%; }
-.quarter-width  { width: 25%; }
-.third-width    { width: 33%; }
-
-.push-left      { margin-left: 20px }
-.push-right     { margin-right: 20px }
-
-
-
 // ==================================================
 // basic alignment
 // ==================================================
@@ -115,17 +65,4 @@
 .aligncenter   { text-align: center; clear: both; margin: 20px auto; display: block;}
 .alignright    { float: right; margin: 20px 0px 20px 20px;}
 .alignnone     { margin: 20px 0px 20px 0px;}
-
-.clear         { clear: both }
 .center        { margin: 0 auto }
-
-
-// ==================================================
-// text alignment
-// ==================================================
-.text-left    { text-align: left }
-.text-right   { text-align: right }
-.text-center  { text-align: center }
-.text-justify { text-align: justify }
-.underline    { text-decoration: underline }
-.highlight    { background-color: $highlight }

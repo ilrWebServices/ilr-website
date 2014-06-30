@@ -1,17 +1,9 @@
 //Modular Scale
 @import "modular-scale";
 
-// Zurb Foundation
-@import "foundation/grid";
-
 // Base
 @import "base/variables";
 
-body {
-  &.not-front {
-    background: white url(../images/bg-body-subpage-short-IE.gif) repeat-x;
-  }
-}
 
 .container {
   max-width: 960px;
@@ -19,13 +11,13 @@ body {
 
 #content {
   border-left: 1px solid $gray-light;
-  @include grid-column($columns:9, $push:3, $collapse:false);
+  //@include grid-column($columns:9, $push:3, $collapse:false);
   padding-left: ms(3);
   padding-right: ms(3);
 }
 
 .sidebar {
-  @include grid-column($columns:3, $pull:9, $collapse:true);
+  //@include grid-column($columns:3, $pull:9, $collapse:true);
 }
 
 #highlighted .content {
@@ -48,7 +40,7 @@ body {
 
   .breadcrumb {
     border-left: 1px solid $gray-light;
-    @include grid-column($columns:9, $push:3, $collapse:false);
+    //@include grid-column($columns:9, $push:3, $collapse:false);
     padding-left: ms(3);
   }
 }

@@ -1,15 +1,8 @@
-// ==================================================
-// Mixins
-// ==================================================
-
-// Hide from both screenreaders and browsers: h5bp.com/u
-// also in helpers
-@mixin hidden {
-  display: none !important;
-  visibility: hidden;
-}
-
-@mixin visible {
-  display: block !important;
-  visibility: visible;
+// WebKit-style focus, lifted from bootstrap
+@mixin tab-focus() {
+  // Default
+  outline: thin dotted;
+  // WebKit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }

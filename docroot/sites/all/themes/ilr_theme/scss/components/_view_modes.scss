@@ -1,0 +1,51 @@
+// ==================================================
+// Slug Styles
+// ==================================================
+%slug {
+  h2 {
+    font-size: ms(0);
+  }
+  // Hide everything but the title
+  div, ul.links {
+    @extend .hidden;
+  }
+}
+
+// ==================================================
+// Thumb Styles
+// ==================================================
+%thumb {
+  h2 {
+    font-size: $h2-sm-size;
+  }
+
+  .field-name-field-thumbnail {
+    @extend .alignleft;
+  }
+
+  .field-type-text-with-summary {
+    @extend .hidden;
+  }
+}
+
+// ==================================================
+// Rolodex Styles
+// ==================================================
+%rolodex {
+  @extend %thumb;
+
+  article {
+    .field-type-text-with-summary {
+      @extend .visible;
+      p {
+        font-size: $p-sm-size;
+      }
+    }
+  }
+}
+
+// ==================================================
+// Card Styles
+// ==================================================
+%card {
+}
