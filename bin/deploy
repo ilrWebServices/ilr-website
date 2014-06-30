@@ -44,7 +44,9 @@ if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
   if [ "$ENV" = "dev" ]; then
     read -r -p "Would you like to rebuild the site? [y/N] " response
     if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+      cd docroot
       drush @ilr.ilr.dev si ilr --site-name="ILR Dev Site | Cornell University" --clean-url=1 --account-pass=testing --account-mail=aaronf@cornell.edu --yes
+      cd ..
     fi
   fi
   exit
