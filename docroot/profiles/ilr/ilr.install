@@ -92,6 +92,7 @@ function ilr_install() {
     'youtube_playlists',
     'ilr_manual_listing',
     'microfilm_microfiche',
+    'featured_book',
   ));
 
   _ilr_add_permissions();

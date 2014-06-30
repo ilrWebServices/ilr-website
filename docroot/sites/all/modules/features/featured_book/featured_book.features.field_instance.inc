@@ -56,13 +56,9 @@ function featured_book_field_default_field_instances() {
   // Exported field_instance: 'node-featured_book-field_authors_editors'
   $field_instances['node-featured_book-field_authors_editors'] = array(
     'bundle' => 'featured_book',
-    'default_value' => array(
-      0 => array(
-        'value' => 'Enter authors\' and editors\' names in the box below. Please separate multiple names by commas and/or \'and\'.',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Enter authors\' and editors\' names in the box above. Please separate multiple names by commas and/or \'and\'.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -159,8 +155,8 @@ function featured_book_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_city',
-    'label' => 'City',
-    'required' => 0,
+    'label' => 'City and State',
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -433,9 +429,10 @@ function featured_book_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Authors/Editors');
   t('Call Number');
-  t('City');
+  t('City and State');
   t('Cover Image');
   t('Description');
+  t('Enter authors\' and editors\' names in the box above. Please separate multiple names by commas and/or \'and\'.');
   t('Featured Date');
   t('ISBN');
   t('Number of Pages');
