@@ -163,5 +163,6 @@ function youtube_videos_theme() {
 }
 
 function _youtube_video_embed_link($video_id) {
-  return "http://www.youtube.com/embed/{$video_id}?autoplay=1&rel=0";
+  // Leave protocol off to avoid mixed active content issues
+  return "//www.youtube.com/embed/{$video_id}?autoplay=1&rel=0";
 }
