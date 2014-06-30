@@ -87,7 +87,10 @@ function ilr_install() {
     'forms',
     'spotlight',
     'tagged_content_block',
-    'promo'
+    'promo',
+    'youtube_videos',
+    'youtube_playlists',
+    'ilr_manual_listing',
   ));
 
   _ilr_add_permissions();

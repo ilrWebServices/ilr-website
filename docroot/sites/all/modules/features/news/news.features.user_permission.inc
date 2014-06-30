@@ -19,16 +19,6 @@ function news_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'create any news_listing_manual bean'.
-  $permissions['create any news_listing_manual bean'] = array(
-    'name' => 'create any news_listing_manual bean',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'bean',
-  );
-
   // Exported permission: 'create news_item content'.
   $permissions['create news_item content'] = array(
     'name' => 'create news_item content',
@@ -47,16 +37,6 @@ function news_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: 'delete any news_listing_manual bean'.
-  $permissions['delete any news_listing_manual bean'] = array(
-    'name' => 'delete any news_listing_manual bean',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'bean',
   );
 
   // Exported permission: 'delete own news_item content'.
@@ -88,16 +68,6 @@ function news_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'edit any news_listing_manual bean'.
-  $permissions['edit any news_listing_manual bean'] = array(
-    'name' => 'edit any news_listing_manual bean',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'bean',
-  );
-
   // Exported permission: 'edit own news_item content'.
   $permissions['edit own news_item content'] = array(
     'name' => 'edit own news_item content',
@@ -115,18 +85,6 @@ function news_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'view any news_listing_manual bean'.
-  $permissions['view any news_listing_manual bean'] = array(
-    'name' => 'view any news_listing_manual bean',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'bean',
   );
 
   return $permissions;
