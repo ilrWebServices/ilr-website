@@ -13,7 +13,6 @@ function tagged_content_block_uninstall() {
   variable_del('tagged_content_block_enabled_bundles');
 }
 
-<<<<<<< HEAD
 /**
  * Implements hook_install().
  */
@@ -21,8 +20,6 @@ function tagged_content_block_install() {
   tagged_content_block_update_7001();
 }
 
-=======
->>>>>>> Adds youtube videos to tagged content blocks by default and fixes bug
 /**
  * Assigns content types for tagged blocks
  */
