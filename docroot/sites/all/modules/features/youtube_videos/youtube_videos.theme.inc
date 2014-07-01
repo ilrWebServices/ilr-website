@@ -20,6 +20,7 @@ function theme_youtube_videos_fancybox($variables) {
       ),
       'html' => TRUE,
       'query' => array('autoplay' => '1', 'rel' => 0),
+      'external' => TRUE,
     ),
   );
   drupal_add_js('sites/all/libraries/fancybox/source/jquery.fancybox.pack.js');
