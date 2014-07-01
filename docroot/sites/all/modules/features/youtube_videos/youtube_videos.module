@@ -28,18 +28,23 @@ function youtube_videos_preprocess_node(&$variables) {
  * Implements hook_node_view_alter().
  */
 function youtube_videos_node_view_alter(&$build) {
-  _youtube_videos_remove_first_line_link($build);
+  if ($build['#bundle'] == 'youtube_video') {
+    _youtube_videos_remove_first_line_link($build);
+  }
 }
 
 /**
+ * Remove url from beginning of Youtube
  * @param $build
  */
 function _youtube_videos_remove_first_line_link(&$build) {
 // Remove link from first line.
   $body_markup = $build['body'][0]['#markup'];
   $lines = preg_split('/$\R?^/m', $body_markup);
-  // Check for link in first line
-  if (stristr($lines[0], 'http://') !== FALSE) {
+  // Get first line without tags or surrounding spaces.
+  $first_line = trim(strip_tags($lines[0]));
+  // Check for link in first line starts with a url and doesn't have any other words.
+  if (stripos($first_line, 'http://') === 0 && stripos($first_line, ' ') === FALSE) {
     array_shift($lines);
     $build['body'][0]['#markup'] = implode('', $lines);
   }
