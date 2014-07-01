@@ -12,14 +12,14 @@
  */
 function theme_youtube_videos_fancybox($variables) {
   $image_link = array(
-    'path' => _youtube_video_embed_link($variables['video_id']),
+    'path' => _youtube_videos_embed_url($variables['video_id'], FALSE),
     'options' => array(
       'attributes' => array(
         'class' => 'fancybox',
         'data-fancybox-type' => 'iframe',
       ),
       'html' => TRUE,
-
+      'query' => array('autoplay' => '1', 'rel' => 0),
     ),
   );
   drupal_add_js('sites/all/libraries/fancybox/source/jquery.fancybox.pack.js');
