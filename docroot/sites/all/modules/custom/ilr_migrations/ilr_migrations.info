@@ -10,3 +10,4 @@ files[] = neutrals.inc
 files[] = wit.inc
 files[] = microfilmfiche.inc
 files[] = featured_books.inc
+files[] = news.inc
