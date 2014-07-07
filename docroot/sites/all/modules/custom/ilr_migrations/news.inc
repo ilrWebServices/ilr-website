@@ -61,9 +61,12 @@ class NewsMigration extends Migration {
     $row->title = $this->createTitle($row);
 
     if (count($row->STORY_IMAGES) > 0) {
+      $images = array();
       foreach($row->STORY_IMAGES as $image_info) {
-        $row->contentImageURL = $image_info->url;
+        $images[] = $image_info->url;
+        $this->addContentImage($image_info);
       }
+      $row->contentImageURL = $images;
     }
 
     if (!empty($row->STORY_CONTENT)) {
@@ -107,6 +110,16 @@ class NewsMigration extends Migration {
     return implode(',', $tag_array);
   }
 
+  /**
+   * Adds images from the content area
+   * @todo prevent duplicates, handle alt text
+   */
+  private function addContentImage($image_info) {
+    $filename = basename($image_info->url);
+    $image = file_get_contents($image_info->url);
+    $file = file_save_data($image, 'public://news/' . $filename, FILE_EXISTS_REPLACE);
+  }
+
   private function getVid() {
     if (!isset($this->vid)) {
       $vocab = taxonomy_vocabulary_machine_name_load('tags');
@@ -120,8 +133,7 @@ class NewsMigration extends Migration {
   }
 
   private function setImagePaths($body) {
-    //return str_replace('/news/images/', '/sites/default/files/', $body);
-    return preg_replace("/<img[^>]+\>/i", '', $body);
+    return str_replace('/news/images/', '/sites/default/files/news/', $body);
   }
 
   private function getMainImage($row) {
@@ -129,8 +141,8 @@ class NewsMigration extends Migration {
     if ($this->imageExists($row->NewsTopStoryImage_url)) {
       $filename = basename($row->NewsTopStoryImage_url);
     }
-    elseif ($this->imageExists($row->contentImageURL)) {
-      $filename = basename($row->contentImageURL);
+    elseif ($this->imageExists($row->contentImageURL[0])) {
+      $filename = basename($row->contentImageURL[0]);
     }
     else {
       $filename = basename($row->thumbnailImage_url);
