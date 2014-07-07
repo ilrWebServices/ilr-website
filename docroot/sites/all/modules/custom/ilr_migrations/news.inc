@@ -29,8 +29,8 @@ class NewsMigration extends Migration {
     $this->addFieldMapping('uid')
       ->defaultValue(1);
     $this->addFieldMapping('title','title');
-    $this->addFieldMapping('field_thumbnail','thumb');
-    $this->addFieldMapping('field_thumbnail:source_dir')
+    $this->addFieldMapping('field_image','main_image');
+    $this->addFieldMapping('field_image:source_dir')
       ->defaultValue($this->getImageFolder());
     $this->addFieldMapping("body:format")
       ->defaultValue('full_html');
@@ -73,8 +73,8 @@ class NewsMigration extends Migration {
       $row->STORY_CONTENT = "&nbsp;";
     }
 
-    // Handle thumbnail images
-    $row->thumb = $this->getThumbnail($row);
+    // Handle main images
+    $row->main_image = $this->getMainImage($row);
 
     // Add terms
     $row->FEATURED = $this->setTags($row->FEATURED);
@@ -124,7 +124,7 @@ class NewsMigration extends Migration {
     return preg_replace("/<img[^>]+\>/i", '', $body);
   }
 
-  private function getThumbnail($row) {
+  private function getMainImage($row) {
     $filename = '';
     if ($this->imageExists($row->NewsTopStoryImage_url)) {
       $filename = basename($row->NewsTopStoryImage_url);
