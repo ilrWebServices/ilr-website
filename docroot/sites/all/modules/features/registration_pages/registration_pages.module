@@ -1,0 +1,179 @@
+<?php
+/**
+ * @file
+ * Code for the registration-pages feature.
+ */
+
+include_once 'registration_pages.features.inc';
+
+/**
+ * Implements hook_preprocess_hook()
+ */
+function registration_pages_preprocess_node(&$variables) {
+  // Construct content at the top of the form page utilizing the fields that the user defined
+  // for the form page.  The form page content type hides these fields (manage display) so there won't
+  // be any duplication of info.
+
+  // dpm ('In registration_pages_preprocess_node, variables and then node:');
+  // dpm ($variables);
+  // dpm ($variables['node']);
+
+  if ($variables['type'] == 'registration_page'){
+    // event_info is the element I'm creating; assign it a weight that forces it to be at the top of the page
+    $variables['content']['event_info']['#weight'] = -1;
+
+    // Page body if one was set when page was created
+    if (! empty($variables['node']->body)) {
+      $variables['content']['event_info']['#markup'] = "<p>";
+      $variables['content']['event_info']['#markup'] .= $variables['node']->body['und'][0]['value'];
+      $variables['content']['event_info']['#markup'] .= "<br>";
+    }
+    else {
+      $variables['content']['event_info']['#markup'] = "<p>";
+    }
+
+    // Event date and time
+    if (! empty($variables['node']->field_event_date)) {
+      // I tried many other approaches to getting the time into the correct time zone, and this was the
+      // only one that worked.
+
+      $timezonedb = $variables['node']->field_event_date['und'][0]['timezone_db'];
+
+      $event_start_datetime_strtotime = strtotime(
+        $variables['node']->field_event_date['und'][0]['value'] .
+        ' ' . $timezonedb);
+      $event_start_date = format_date($event_start_datetime_strtotime, 'custom', 'l F d, Y');
+      $event_start_time = format_date($event_start_datetime_strtotime, 'custom', 'g:i a');
+
+      $variables['content']['event_info']['#markup'] .= "<strong>Date:</strong> ";
+      $variables['content']['event_info']['#markup'] .= $event_start_date;
+      $variables['content']['event_info']['#markup'] .= "<br>";
+
+      $variables['content']['event_info']['#markup'] .= "<strong>Time:</strong> ";
+      $variables['content']['event_info']['#markup'] .= $event_start_time;
+
+      // End time
+      if (isset($variables['node']->field_event_date['und'][0]['value2'])) {
+        $event_end_datetime_strtotime = strtotime($variables['node']->field_event_date['und'][0]['value2'] .
+          ' ' . $timezonedb);
+        $event_end_date = format_date($event_end_datetime_strtotime, 'custom', 'l F d, Y');
+        $event_end_time = format_date($event_end_datetime_strtotime, 'custom', 'g:i a');
+        if ($event_start_date == $event_end_date) {
+          $variables['content']['event_info']['#markup'] .=  ' - ' . $event_end_time;
+        }
+        else {
+          // Unlikely, but just in case the end date is different from the start date
+          $variables['content']['event_info']['#markup'] .= ' - ' . $event_end_date . ' ' . $event_end_time;
+        }
+      }
+      $variables['content']['event_info']['#markup'] .= "<br>";
+    }
+
+    // Location
+    if (!empty($variables['node']->field_location_as_long_text)) {
+      $variables['content']['event_info']['#markup'] .= "<strong>Location:</strong> ";
+      $variables['content']['event_info']['#markup'] .=
+        $variables['node']->field_location_as_long_text['und'][0]['value'];
+      $variables['content']['event_info']['#markup'] .= "<br>";
+    }
+
+    $variables['content']['event_info']['#markup'] .= "</p>";
+    // End of basic constructed content
+
+    // Check open dates for using the form, and only display the form if we're within those dates
+    if (! empty($variables['node']->field_event_registration_period)) {
+      $golive_timezonedb = $variables['node']->field_event_registration_period['und'][0]['timezone_db'];
+
+      $golive_timestamp = strtotime(
+        $variables['node']->field_event_registration_period['und'][0]['value'] .
+        ' ' . $timezonedb);
+
+      $golive_date = format_date($golive_timestamp, 'custom', 'l F d, Y');
+      $golive_time = format_date($golive_timestamp, 'custom', 'g:i a');
+      // dpm($golive_date, 'golive_date');
+      // dpm($golive_time, 'golive_time');
+
+      $today_timestamp = time();
+
+      // Just do this for debugging purposes, don't actually need it
+      $today_date = format_date($today_timestamp, 'custom', 'l F d, Y');
+      $today_time = format_date($today_timestamp, 'custom', 'g:i a');
+      // dpm($today_date, 'today_date');
+      // dpm($today_time, 'today_time');
+      // end debugging code
+
+      if ($today_timestamp < $golive_timestamp) {
+        // If today is before the go live date, display the "before" message
+
+        // Ditch the form
+        unset($variables['content']['field_registration_form']);
+
+        // Check whether there is a "before reg opens" message
+        if (!empty($variables['node']->field_event_text_before_reg_open)) {
+          // There is a "before reg opens" message
+          $variables['content']['field_registration_form']['#markup'] =
+            $variables['node']->field_event_text_before_reg_open['und'][0]['value'] .
+            ' This form will be available on ' . $golive_date . ' at ' . $golive_time . '.';
+        }
+        else {
+          // Show the default "before reg opens" message
+          $variables['content']['field_registration_form']['#markup'] =
+            'This form will be available on ' . $golive_date . ' at ' . $golive_time . '.';
+        }
+      }
+      elseif (isset($variables['node']->field_event_registration_period['und'][0]['value2'])) {
+        // There is a deadline; if we're past the deadline show appropriate message
+        $deadline_timestamp = strtotime(
+          $variables['node']->field_event_registration_period['und'][0]['value2'] .
+          ' ' . $timezonedb);
+
+          $deadline_date = format_date($deadline_timestamp, 'custom', 'l F d, Y');
+          $deadline_time = format_date($deadline_timestamp, 'custom', 'g:i a');
+          // dpm($deadline_date, 'deadline_date');
+          // dpm($deadline_time, 'deadline_time');
+
+          if ($today_timestamp > $deadline_timestamp) {
+            // We're past the deadline; ditch the form
+            unset($variables['content']['field_registration_form']);
+
+            // Show pre-set msg or a default msg if that's empty
+          if (!empty($variables['node']->field_event_text_after_reg_close)) {
+            // There is a "deadline" message
+            $variables['content']['field_registration_form']['#markup'] =
+              $variables['node']->field_event_text_after_reg_close['und'][0]['value'] .
+              ' The deadline for submitting this form was ' . $deadline_date .
+              ' at ' . $deadline_time . '.';
+          }
+          else {
+            // Show the default "deadline" message
+            $variables['content']['field_registration_form']['#markup'] =
+              ' The deadline for submitting this form was ' . $deadline_date .
+              ' at ' . $deadline_time . '.';
+          }
+        }
+      }
+    }
+  }
+
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter
+ */
+// function registration_pages_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
+//   dpm(menu_get_object());
+//   // dpm($form_id);
+//   // dpm($form);
+//   $node = menu_get_object();
+//   if ($node->type == 'registration_form_on_a_page') {
+//     $go_live   = $node->field_event_registration_period['und'][0]['value'];
+//     $deadline = $node->field_event_registration_period['und'][0]['value2'];
+//     dpm ("registration_period start date");
+//     dpm($go_live);
+//     dpm ("registration_period deadline");
+//     dpm($deadline);
+
+//     //unset($node->content['field_registration_form']);
+//     //hide($form);
+//   }
+// }
