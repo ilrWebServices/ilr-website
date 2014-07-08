@@ -17,10 +17,37 @@ function youtube_videos_preprocess_node(&$variables) {
     $variables['title_attributes_array'] = array(
       'class' => 'fancybox',
       'data-fancybox-type' => 'iframe',
-      'href' => _youtube_video_embed_link($video_id),
+      'href' => _youtube_videos_embed_url($video_id),
     );
     $variables['node_url'] = '#';
     unset($variables['content']['links']['node']['#links']['node-readmore']);
+  }
+}
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function youtube_videos_node_view_alter(&$build) {
+  if ($build['#bundle'] == 'youtube_video') {
+    _youtube_videos_remove_first_line_link($build);
+  }
+}
+
+/**
+ * Remove url from beginning of Youtube
+ * @param $build
+ */
+function _youtube_videos_remove_first_line_link(&$build) {
+  if (!empty($build['body'])) {
+    $body_markup = $build['body'][0]['#markup'];
+    $lines = preg_split('/$\R?^/m', $body_markup);
+    // Get first line without tags or surrounding spaces.
+    $first_line = trim(strip_tags($lines[0]));
+    // Check for link in first line starts with a url and doesn't have any other words.
+    if (stripos($first_line, 'http://') === 0 && stripos($first_line, ' ') === FALSE) {
+      array_shift($lines);
+      $build['body'][0]['#markup'] = implode('', $lines);
+    }
   }
 }
 
@@ -162,7 +189,15 @@ function youtube_videos_theme() {
   );
 }
 
-function _youtube_video_embed_link($video_id) {
+/**
+ * Utility Function to create Youtube embed url.
+ * @param $video_id
+ * @param bool $include_query
+ *  If this URL will be passed to the l() function then the query string must be left off.
+ *  It must include in the 'query' option.
+ * @return string
+ */
+function _youtube_videos_embed_url($video_id, $include_query = TRUE) {
   // Leave protocol off to avoid mixed active content issues
-  return "//www.youtube.com/embed/{$video_id}?autoplay=1&rel=0";
+  return "//www.youtube.com/embed/{$video_id}" . ($include_query ? "?autoplay=1&rel=0" : '');
 }
