@@ -1,10 +1,5 @@
 <?php
 /**
- * @file
- * CU Search admin page for setting up the Search block attributes
- */
-
-/**
  * Admin form.
  */
 function tagged_content_block_admin($form, &$form_state) {

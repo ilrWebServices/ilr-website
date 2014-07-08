@@ -12,24 +12,3 @@ function tagged_content_block_install() {
 function tagged_content_block_update_7001() {
   _tagged_content_block_enable_default_bundles();
 }
-
-/**
- * Enables default content types for tagged content blocks
- * @return array The default content types, needed by
- * _tagged_content_block_default_bundles() of admin.inc
- */
-function _tagged_content_block_enable_default_bundles() {
-  $enabled_content_types = array(
-    'news_item' => 'news_item',
-    'spotlight' => 'spotlight',
-    'promo'     => 'promo',
-    'youtube_video' => 'youtube_video',
-  );
-
-  variable_set(
-    'tagged_content_block_enabled_bundles',
-    $enabled_content_types
-  );
-
-  return $enabled_content_types;
-}
