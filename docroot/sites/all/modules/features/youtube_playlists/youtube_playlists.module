@@ -93,7 +93,7 @@ function _youtube_playlists_assign_videos() {
       // Both the video and playlist were found.
       $new_video_assignments[$video_nid][] = $playlist_nid;
     }
-    $current_video_assignments = _youtube_playlist_get_current_assignments();
+    $current_video_assignments = _youtube_playlists_get_current_assignments();
 
   }
   if ($unknown_videos) {
@@ -114,6 +114,10 @@ function _youtube_playlists_assign_videos() {
       // Update Video playlist assignment
       $video_wrapper = entity_metadata_wrapper('node', $video_nid);
       $video_wrapper->field_playlists->set($new_video_assignment);
+      $current_tids = $video_wrapper->field_tags->raw();
+      // Merge current tids    and playlist tids
+      $new_tids = array_unique(array_merge($current_tids,_youtube_playlists_get_playlist_tids($new_video_assignment)));
+      $video_wrapper->field_tags->set($new_tids);
       $video_wrapper->save();
     }
   }
@@ -128,6 +132,38 @@ function _youtube_playlists_assign_videos() {
   }
 }
 
+/**
+ * Get playlist tids for playlist tags.
+ *
+ * This will create new playlists tags if they don't exist.
+ * @todo This method requires playlists to be Drupal nodes. It will need to be re-done if
+ * playlists aren't nodes.
+ * @param $playlist_nids
+ *  nids
+ * @return array
+ *  tids of playlists
+ */
+function _youtube_playlists_get_playlist_tids($playlist_nids) {
+  $playlist_nodes = node_load_multiple($playlist_nids);
+  $vocab = taxonomy_vocabulary_machine_name_load('tags');
+  $playlist_tids = array();
+  foreach ($playlist_nodes as $playlist_node) {
+    $tag_name= 'YT-' . $playlist_node->title;
+    $tags = taxonomy_get_term_by_name($tag_name,'tags');
+    if (empty($tags)) {
+      $tag = new stdClass();
+      $tag->name = $tag_name;
+      $tag->vid = $vocab->vid;
+      taxonomy_term_save($tag);
+    }
+    else {
+      $tag = array_shift($tags);
+    }
+    $playlist_tids[] = $tag->tid;
+  }
+  return $playlist_tids;
+
+}
 /**
  * Gets the nid for youtube Playlist id
  * @param $playlist_id
@@ -157,7 +193,7 @@ function youtube_playlists_get_nid_from_playlist_id($playlist_id) {
   return $nids[$playlist_id];
 }
 
-function _youtube_playlist_get_current_assignments() {
+function _youtube_playlists_get_current_assignments() {
   $video_assignments = array();
   $sql = 'SELECT entity_id as video_nid, field_playlists_target_id as playlist_nid FROM {field_data_field_playlists}'
     . ' WHERE deleted = 0 AND bundle = \'youtube_video\' AND entity_type = \'node\'';
