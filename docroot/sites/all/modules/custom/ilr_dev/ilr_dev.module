@@ -1,4 +1,9 @@
 <?php
 /**
- * @file
+ * Implements hook_init()
+ *
+ * Adds the singularity grid js
  */
+function ilr_dev_init() {
+  drupal_add_js(drupal_get_path('module', 'ilr_dev') . '/js/grid.js');
+}
