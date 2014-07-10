@@ -152,3 +152,21 @@ function ilr_user_pass_validate($form, &$form_state) {
 function _ilr_user_has_cornell_email($email) {
   return substr($email, -11) == 'cornell.edu';
 }
+function _ilr_get_bean_usage($bid) {
+
+  $block_fields = array_keys(field_info_instances('field_collection_item', 'field_blocks'));
+  $sql = _ilr_get_bean_usage_sql($block_fields);
+}
+function _ilr_get_bean_usage_sql($block_fields){
+  $sql = 'SELECT fb.entity_id as nid FROM {field_data_field_blocks} fb';
+  $sql_where = "WHERE  fb.entity_type =  'node' AND fb.deleted =0";
+  foreach ($block_fields as $block_field) {
+    $sql .= " LEFT JOIN field_data_$block_field $block_field  ON fb.field_blocks_value = $block_field.entity_id"
+      . " AND fb.field_blocks_revision_id = $block_field.revision_id"
+      . " AND fs.entity_type =  'field_collection_item'"
+      . " AND fs.deleted =0"
+      . " AND fs.bundle =  'field_blocks'"
+      . " AND field_sidebar_region_bid = %b";
+  }
+
+}
