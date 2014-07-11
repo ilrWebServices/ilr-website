@@ -27,5 +27,7 @@ drush -y -l default site-install ilr --site-name="ILR Dev Site | Cornell Univers
 # enable some useful development modules
 drush -y -l default en drupal_streamline_dev ilr_dev
 
+drush features-revert-all -y
+
 # open the login page
 open -a /Applications/firefox.app "http://www.ilr-website.dev/user/login"
