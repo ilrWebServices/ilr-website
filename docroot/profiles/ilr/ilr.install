@@ -74,34 +74,38 @@ function ilr_install() {
   // Set the homepage, relying on hook_menu in the profile
   variable_set('site_frontpage', 'home');
 
-  // Enable custom modules
-  module_enable(array(
-    'basic_page',
-    'ilr_footer_menu',
-    'localist_block',
-    'scheinman_neutral',
-    'news',
-    'people_profiles',
-    'wit',
-    'google_analytics_universal',
-    'forms',
-    'spotlight',
-    'tagged_content_block',
-    'promo',
-    'youtube_videos',
-    'youtube_playlists',
-    'ilr_manual_listing',
-    'microfilm_microfiche',
-    'featured_book',
-  ));
+  // module_enable(array(
+  //   'ilr_field_bases',
+  // ));
+
+  // // Enable custom modules
+  // module_enable(array(
+  //   'basic_page',
+  //   'ilr_footer_menu',
+  //   'localist_block',
+  //   'scheinman_neutral',
+  //   'news',
+  //   'people_profiles',
+  //   'wit',
+  //   'google_analytics_universal',
+  //   'forms',
+  //   'spotlight',
+  //   'tagged_content_block',
+  //   'promo',
+  //   'youtube_videos',
+  //   'youtube_playlists',
+  //   'ilr_manual_listing',
+  //   'microfilm_microfiche',
+  //   'featured_book',
+  // ));
 
   _ilr_add_permissions();
 
   // Add Migrations here as necessary
-  ilr_update_7001();
-  ilr_update_7002();
-  ilr_update_7003();
-  ilr_update_7004();
+  // ilr_update_7001();
+  // ilr_update_7002();
+  // ilr_update_7003();
+  // ilr_update_7004();
 }
 
 /**

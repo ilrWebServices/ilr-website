@@ -28,8 +28,23 @@ dependencies[] = menu_block
 dependencies[] = simplesamlphp_auth
 dependencies[] = views
 
-; Information added by drush on 2013-09-12
-version = "unknown"
-project = "ilr"
-datestamp = "1379008169"
-
+; ILR Features
+dependencies[] = ilr_field_bases
+dependencies[] = basic_page
+dependencies[] = ilr_footer_menu
+dependencies[] = localist_block
+dependencies[] = scheinman_neutral
+dependencies[] = news
+dependencies[] = people_profiles
+dependencies[] = wit
+dependencies[] = google_analytics_universal
+dependencies[] = forms
+dependencies[] = spotlight
+dependencies[] = tagged_content_block
+dependencies[] = promo
+dependencies[] = youtube_videos
+dependencies[] = youtube_playlists
+dependencies[] = ilr_manual_listing
+dependencies[] = microfilm_microfiche
+dependencies[] = featured_book
+dependencies[] = people_profile_import
