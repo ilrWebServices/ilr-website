@@ -7,7 +7,6 @@ project = microfilm_microfiche
 dependencies[] = ilr_field_bases
 dependencies[] = ctools
 dependencies[] = features
-dependencies[] = forms
 dependencies[] = strongarm
 dependencies[] = text
 features[ctools][] = strongarm:strongarm:1

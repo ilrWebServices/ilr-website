@@ -48,11 +48,20 @@ function ilr_install() {
   $admin_role = user_role_load_by_name('administrator');
   variable_set('simplesamlphp_auth_rolepopulation', "{$admin_role->rid}:uid,=,atf46|{$admin_role->rid}:uid,=,nr52|{$admin_role->rid}:uid,=,cgh2|{$admin_role->rid}:uid,=,fjp2|{$admin_role->rid}:uid,=,ddd1|{$admin_role->rid}:uid,=,tls245");
 
-  // Install dir is more complicated. It needs to be a full path. We assume
-  // that it is in a directory at the same level as the docroot. We also
-  // determine the $simplesamlphp_installdir based on whether we're
-  // on Acquia or Vagrant
-  $drupal_path = (isset($_ENV["AH_SITE_GROUP"])) ? DRUPAL_ROOT : '/var/www/ilr-website/docroot';
+  // Deal with ENV specific settings
+  if (isset($_ENV["AH_SITE_ENVIRONMENT"])) {
+    $drupal_path = DRUPAL_ROOT;
+    // Enable the helper module for logging emails
+    if ($_ENV['AH_SITE_ENVIRONMENT'] != 'prod') {
+      module_enable(array(
+        'helper'
+      ));
+    }
+  }
+  else {
+    $drupal_path = '/var/www/ilr-website/docroot';
+  }
+
   $simplesamlphp_installdir = str_replace(array(
     '/docroot',
   ), array(
@@ -74,77 +83,15 @@ function ilr_install() {
   // Set the homepage, relying on hook_menu in the profile
   variable_set('site_frontpage', 'home');
 
-  // module_enable(array(
-  //   'ilr_field_bases',
-  // ));
-
-  // // Enable custom modules
-  // module_enable(array(
-  //   'basic_page',
-  //   'ilr_footer_menu',
-  //   'localist_block',
-  //   'scheinman_neutral',
-  //   'news',
-  //   'people_profiles',
-  //   'wit',
-  //   'google_analytics_universal',
-  //   'forms',
-  //   'spotlight',
-  //   'tagged_content_block',
-  //   'promo',
-  //   'youtube_videos',
-  //   'youtube_playlists',
-  //   'ilr_manual_listing',
-  //   'microfilm_microfiche',
-  //   'featured_book',
-  // ));
-
-  _ilr_add_permissions();
-
-  // Add Migrations here as necessary
-  // ilr_update_7001();
-  // ilr_update_7002();
-  // ilr_update_7003();
-  // ilr_update_7004();
-}
-
-/**
- * Enables the Features for people_profile_import
- * and settings_and_permissions as a hook
- * due to buggy AoE term and permission creation
- */
-function ilr_update_7001() {
-  module_enable(array(
-    'people_profile_import',
-    'settings_and_permissions',
-  ));
-}
-
-/**
- * Enables the entityform_block module
- */
-function ilr_update_7002() {
-  module_enable(array(
-    'entityform_block'
-  ));
-}
-
-/**
- * Used to assign content types for tagged blocks
- * Moved to tagged_content_block.install
- */
-function ilr_update_7003() {
-}
-
-/**
- * Enables the helper module on Acquia dev and test
- */
-function ilr_update_7004() {
   if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] != 'prod') {
     module_enable(array(
       'helper'
     ));
   }
+
+  _ilr_add_permissions();
+
+  // Add Migrations here as necessary
 }
 
 /**
@@ -165,6 +112,11 @@ function _ilr_create_roles() {
  * Custom function for role creation
  */
 function _ilr_add_permissions() {
+  // Enable the permissions module
+  module_enable(array(
+    'ilr_permissions',
+  ));
+
   // Assign all available permissions to admin
   $admin_role = user_role_load_by_name('administrator');
   user_role_grant_permissions($admin_role->rid, array_keys(module_invoke_all('permission')));
