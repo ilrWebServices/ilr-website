@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ilr_workspan feature.
+ */
+
+include_once 'ilr_workspan.features.inc';
