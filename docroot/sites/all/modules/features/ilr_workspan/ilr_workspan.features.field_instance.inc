@@ -10,50 +10,6 @@
 function ilr_workspan_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-workspan-body'
-  $field_instances['node-workspan-body'] = array(
-    'bundle' => 'workspan',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => FALSE,
-    'settings' => array(
-      'display_summary' => TRUE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 31,
-    ),
-  );
-
   // Exported field_instance: 'node-workspan-field_file'
   $field_instances['node-workspan-field_file'] = array(
     'bundle' => 'workspan',
@@ -113,7 +69,7 @@ function ilr_workspan_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 37,
+      'weight' => 4,
     ),
   );
 
@@ -141,7 +97,7 @@ function ilr_workspan_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_headline',
     'label' => 'Headline',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -153,7 +109,7 @@ function ilr_workspan_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
+      'weight' => 3,
     ),
   );
 
@@ -206,7 +162,7 @@ function ilr_workspan_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 39,
+      'weight' => 2,
     ),
   );
 
@@ -277,7 +233,7 @@ function ilr_workspan_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 36,
+      'weight' => 5,
     ),
   );
 
@@ -323,14 +279,13 @@ function ilr_workspan_field_default_field_instances() {
       'module' => 'youtube',
       'settings' => array(),
       'type' => 'youtube',
-      'weight' => 34,
+      'weight' => 7,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Article File');
-  t('Body');
   t('Headline');
   t('Publication Date');
   t('Thumbnail');

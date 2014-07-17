@@ -18,7 +18,6 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_base][] = field_file
 features[field_base][] = field_headline
-features[field_instance][] = node-workspan-body
 features[field_instance][] = node-workspan-field_file
 features[field_instance][] = node-workspan-field_headline
 features[field_instance][] = node-workspan-field_published_date
