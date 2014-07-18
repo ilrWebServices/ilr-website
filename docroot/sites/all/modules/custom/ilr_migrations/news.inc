@@ -171,12 +171,13 @@ class NewsMigration extends Migration {
 
   /**
    * Set the path based on whether on Acquia or local
-   * This assumes that the news_images folder has been
-   * uploaded to docroot/files on Acquia
+   * Assumes that the news_images folder has been uploaded
+   * to /mnt/files/[site].[env]/docroot/files on Acquia
+   * More info at https://docs.acquia.com/cloud/site/import/manual/files
    */
   private function getImageFolder() {
     $parent_folder = (isset($_ENV["AH_SITE_GROUP"]))
-      ? 'files/'
+      ? '/files/'
       : '/../migration_data/';
     return DRUPAL_ROOT . $parent_folder . 'news_images/';
   }
