@@ -10,7 +10,7 @@ class NewsMigration extends Migration {
     $this->description = t('News Items');
     $this->map = new MigrateSQLMap($this->machineName,
         array(
-          'ID' => array(
+          'id' => array(
             'type' => 'int',
             'unsigned' => TRUE,
             'not null' => TRUE,
@@ -21,7 +21,7 @@ class NewsMigration extends Migration {
 
     $this->source = new MigrateSourceJSON(
       DRUPAL_ROOT . '/../migration_data/news.json',
-      'ID'
+      'id'
     );
 
     $this->destination = new MigrateDestinationNode('news_item');
@@ -60,27 +60,27 @@ class NewsMigration extends Migration {
     // Deal with the fact that some headlines are empty
     $row->title = $this->createTitle($row);
 
-    if (count($row->STORY_IMAGES) > 0) {
+    if (count($row->story_images) > 0) {
       $images = array();
-      foreach($row->STORY_IMAGES as $image_info) {
+      foreach($row->story_images as $image_info) {
         $images[] = $image_info->url;
         $this->addContentImage($image_info);
       }
       $row->contentImageURL = $images;
     }
 
-    if (!empty($row->STORY_CONTENT)) {
-      $row->STORY_CONTENT = $this->setImagePaths($row->STORY_CONTENT);
+    if (!empty($row->story_content)) {
+      $row->story_content = $this->setImagePaths($row->story_content);
     } // full_html doesn't like empty body fields
     else {
-      $row->STORY_CONTENT = "&nbsp;";
+      $row->story_content = "&nbsp;";
     }
 
     // Handle main images
     $row->main_image = $this->getMainImage($row);
 
     // Add terms
-    $row->FEATURED = $this->setTags($row->FEATURED);
+    $row->featured = $this->setTags($row->featured);
 
     // Remove empty values from data
     foreach ($row as $key => $value) {
@@ -115,9 +115,12 @@ class NewsMigration extends Migration {
    * @todo prevent duplicates, handle alt text
    */
   private function addContentImage($image_info) {
-    $filename = basename($image_info->url);
-    $image = file_get_contents($image_info->url);
-    $file = file_save_data($image, 'public://news/' . $filename, FILE_EXISTS_REPLACE);
+    if ($this->imageExists($image_info->url)) {
+      $filename = basename($image_info->url);
+      $filePath = $this->getImageFolder() . $filename;
+      $image = file_get_contents($filePath);
+      $file = file_save_data($image, 'public://news/' . $filename, FILE_EXISTS_REPLACE);
+    }
   }
 
   private function getVid() {
@@ -129,7 +132,7 @@ class NewsMigration extends Migration {
   }
 
   private function createTitle($row) {
-    return (!empty($row->HEADLINE)) ? $row->HEADLINE : $row->SHORT_HEADLINE;
+    return (!empty($row->headline)) ? $row->headline : $row->short_headline;
   }
 
   private function setImagePaths($body) {
@@ -162,50 +165,50 @@ class NewsMigration extends Migration {
   }
 
   private function getImageFolder() {
-    return DRUPAL_ROOT . '/../migration_data/news_export_images/news/images/';
+    return DRUPAL_ROOT . '/../migration_data/news_images/';
   }
 
   private function _get_news_field_mappings() {
     $mappings = array(
-      "STORY_IMAGES" => 'DNM',
-      "thumbnailImage_width" => 'DNM',
-      "STORY_CONTENT" => 'body',
-      "thumbnailImage_url" => 'DNM',
-      "sidebar_image_url" => 'DNM',
-      "INCLUDE_CONTACT_INFO" => 'DNM',
-      "sidebar_image_id" => 'DNM',
-      "CONTACT_INFO" => 'DNM',
-      "NewsTopStoryImage_height" => 'DNM',
-      "DATE_ADDED" => 'created',
-      "CAPTION" => 'DNM',
-      "INTRODUCTION" => 'body:summary',
-      "sidebar_image_width" => 'DNM',
-      "ID" => 'DNM',
-      "FEATURED" => 'field_tags',
-      "NewsTopStoryImage_url" => 'DNM',
-      "HEADLINE" => 'DNM', // See createTitle();
-      "DATE_LAST_MODIFIED" => 'DNM',
-      "SHORT_HEADLINE" => 'field_short_title',
-      "thumbnailImage_height" => 'DNM',
-      "DATE_PUBLISHED" => 'field_published_date',
-      "NewsTopStoryImage_width" => 'DNM',
+      "id" => 'DNM',
+      "caption" => 'DNM',
+      "name" => 'DNM',
+      "description" => 'DNM',
+      "date_added" => 'created',
+      "date_published" => 'field_published_date',
+      "date_last_modified" => 'DNM',
+      "contributor_email" => 'DNM',
+      "subsite_url" => 'DNM',
+      "external_url" => 'field_website_url',
+      "headline" => 'DNM',
+      "subheadline" => 'DNM',
+      "contact_info" => 'DNM',
+      "include_contact_info" => 'DNM',
+      "story_content" => 'body',
+      "more_story_content" => 'DNM',
+      "sidebar_text" => 'DNM',
+      "sidebar_image" => 'DNM',
+      "short_headline" => 'field_short_title',
+      "curated_date" => 'DNM',
+      "introduction" => 'body:summary',
+      "teaser" => 'DNM',
+      "featured" => 'field_tags',
       "NewsTopStoryImage_id" => 'DNM',
-      "NAME" => 'DNM',
-      "MORE_STORY_CONTENT" => 'DNM',
-      "DESCRIPTION" => 'DNM',
-      "TEASER" => 'DNM',
+      "NewsTopStoryImage_url" => 'DNM',
+      "NewsTopStoryImage_alt" => 'DNM',
+      "NewsTopStoryImage_height" => 'DNM',
+      "NewsTopStoryImage_width" => 'DNM',
+      "thumbnailImage_id" => 'DNM',
+      "thumbnailImage_url" => 'DNM',
+      "thumbnailImage_alt" => 'DNM',
+      "thumbnailImage_height" => 'DNM',
+      "thumbnailImage_width" => 'DNM',
+      "sidebar_image_id" => 'DNM',
+      "sidebar_image_url" => 'DNM',
       "sidebar_image_alt" => 'DNM',
       "sidebar_image_height" => 'DNM',
-      "NewsTopStoryImage_alt" => 'DNM',
-      "EXTERNAL_URL" => 'field_website_url',
-      "SIDEBAR_IMAGE" => 'DNM',
-      "CURATED_DATE" => 'DNM',
-      "SUBSITE_URL" => 'DNM',
-      "SUBHEADLINE" => 'DNM',
-      "thumbnailImage_id" => 'DNM',
-      "CONTRIBUTOR_EMAIL" => 'DNM',
-      "SIDEBAR_TEXT" => 'DNM',
-      "thumbnailImage_alt" => 'DNM',
+      "sidebar_image_width" => 'DNM',
+      "story_images" => 'DNM',
     );
 
     return $mappings;
