@@ -32,6 +32,8 @@ class NewsMigration extends Migration {
     $this->addFieldMapping('field_image','main_image');
     $this->addFieldMapping('field_image:source_dir')
       ->defaultValue($this->getImageFolder());
+    $this->addFieldMapping('field_image:alt', 'image_alt');
+    $this->addFieldMapping('field_image:title', 'image_alt');
     $this->addFieldMapping("body:format")
       ->defaultValue('full_html');
 
@@ -78,6 +80,9 @@ class NewsMigration extends Migration {
 
     // Handle main images
     $row->main_image = $this->getMainImage($row);
+
+    // Add alt and title
+    $row->image_alt = $row->caption;
 
     // Add terms
     $row->featured = $this->setTags($row->featured);
