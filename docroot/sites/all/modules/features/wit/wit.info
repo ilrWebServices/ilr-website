@@ -1,7 +1,7 @@
 name = WIT
 description = Provides the content type, taxonomy, settings and custom code for Catherwood WIT articles.
 core = 7.x
-package = Features
+package = ILR
 version = 7.x-1.0
 project = wit
 dependencies[] = ctools

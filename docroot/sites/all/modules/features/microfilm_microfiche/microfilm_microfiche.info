@@ -1,7 +1,7 @@
 name = Microfilm/microfiche
 description = Provides the content types and settings for Catherwood's microfilm and microfiche collections
 core = 7.x
-package = Features
+package = ILR
 version = 7.x-1.0
 project = microfilm_microfiche
 dependencies[] = ilr_field_bases

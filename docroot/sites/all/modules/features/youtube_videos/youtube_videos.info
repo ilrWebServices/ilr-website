@@ -1,6 +1,6 @@
 name = Youtube Videos
 core = 7.x
-package = Features
+package = ILR
 dependencies[] = ilr_field_bases
 dependencies[] = ctools
 dependencies[] = entityreference

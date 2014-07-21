@@ -1,6 +1,6 @@
 name = ILR Permissions
 core = 7.x
-package = Features
+package = ILR
 dependencies[] = admin_menu
 dependencies[] = bean
 dependencies[] = block

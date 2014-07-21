@@ -1,7 +1,7 @@
 name = Promo
 description = Provides the content type and settings for promos
 core = 7.x
-package = Features
+package = ILR
 version = 7.x-1.0
 project = promo
 dependencies[] = ilr_field_bases

@@ -1,7 +1,7 @@
 name = Spotlight
 description = Provides the content type and settings for ILR Spotlights
 core = 7.x
-package = Features
+package = ILR
 version = 7.x-1.0
 project = spotlight
 dependencies[] = ilr_field_bases

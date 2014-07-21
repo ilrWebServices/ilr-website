@@ -1,7 +1,7 @@
 name = People Profile Import
 description = Provides the feed importer and mappings for People Profiles
 core = 7.x
-package = Features
+package = ILR
 version = 7.x-1.0
 project = people_profile_import
 dependencies[] = ctools

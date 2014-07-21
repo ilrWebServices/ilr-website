@@ -1,7 +1,7 @@
 name = People Profiles
 description = Provides the content type, permissions and functionality for people profiles
 core = 7.x
-package = Features
+package = ILR
 version = 7.x-1.0
 project = people_profiles
 dependencies[] = ilr_field_bases
