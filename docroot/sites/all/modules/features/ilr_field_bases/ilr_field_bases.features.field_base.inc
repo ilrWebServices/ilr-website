@@ -963,6 +963,63 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+    // Exported field_base: 'field_content_bottom_region'
+  $field_bases['field_content_bottom_region'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_content_bottom_region',
+    'foreign keys' => array(
+      'bid' => array(
+        'columns' => array(
+          'bid' => 'bid',
+        ),
+        'table' => 'block',
+      ),
+    ),
+    'indexes' => array(
+      'bid' => array(
+        0 => 'bid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'blockreference',
+    'settings' => array(
+      'referenceable_modules' => array(
+        'bean' => 'bean',
+        'block' => 'block',
+        'context_ui' => 0,
+        'devel' => 0,
+        'diff' => 0,
+        'entityform_block' => 0,
+        'menu' => 0,
+        'menu_block' => 0,
+        'node' => 0,
+        'people_profiles' => 0,
+        'simplesamlphp_auth' => 0,
+        'system' => 0,
+        'user' => 0,
+        'views' => 0,
+      ),
+      'referenceable_operator' => 'AND',
+      'referenceable_regions' => array(
+        '' => 0,
+        'content' => 0,
+        'content_bottom' => 0,
+        'footer' => 0,
+        'header' => 0,
+        'highlighted' => 0,
+        'sidebar_first' => 0,
+        'sidebar_second' => 0,
+      ),
+      'referenceable_theme' => 'default',
+      'respect_visibility' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'blockreference',
+  );
+
   // Exported field_base: 'field_content_region'
   $field_bases['field_content_region'] = array(
     'active' => 1,
@@ -2979,6 +3036,63 @@ function ilr_field_bases_field_default_field_bases() {
         'highlighted' => 0,
         'page_bottom' => 0,
         'page_top' => 0,
+        'sidebar_first' => 0,
+        'sidebar_second' => 0,
+      ),
+      'referenceable_theme' => 'default',
+      'respect_visibility' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'blockreference',
+  );
+
+    // Exported field_base: 'field_sidebar_second_region'
+  $field_bases['field_sidebar_second_region'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_sidebar_second_region',
+    'foreign keys' => array(
+      'bid' => array(
+        'columns' => array(
+          'bid' => 'bid',
+        ),
+        'table' => 'block',
+      ),
+    ),
+    'indexes' => array(
+      'bid' => array(
+        0 => 'bid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'blockreference',
+    'settings' => array(
+      'referenceable_modules' => array(
+        'bean' => 'bean',
+        'block' => 'block',
+        'context_ui' => 0,
+        'devel' => 0,
+        'diff' => 0,
+        'entityform_block' => 0,
+        'menu' => 0,
+        'menu_block' => 0,
+        'node' => 0,
+        'people_profiles' => 0,
+        'simplesamlphp_auth' => 0,
+        'system' => 0,
+        'user' => 0,
+        'views' => 0,
+      ),
+      'referenceable_operator' => 'AND',
+      'referenceable_regions' => array(
+        '' => 0,
+        'content' => 0,
+        'content_bottom' => 0,
+        'footer' => 0,
+        'header' => 0,
+        'highlighted' => 0,
         'sidebar_first' => 0,
         'sidebar_second' => 0,
       ),

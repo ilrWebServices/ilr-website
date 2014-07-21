@@ -44,6 +44,40 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_blocks-field_content_bottom_region'
+  $field_instances['field_collection_item-field_blocks-field_content_bottom_region'] = array(
+    'bundle' => 'field_blocks',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'blockreference',
+        'settings' => array(),
+        'type' => 'blockreference_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_content_bottom_region',
+    'label' => 'Content Bottom Region',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'blockreference',
+      'settings' => array(
+        'autocomplete_path' => 'blockreference/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'blockreference_autocomplete',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_blocks-field_content_region'
   $field_instances['field_collection_item-field_blocks-field_content_region'] = array(
     'bundle' => 'field_blocks',
@@ -146,6 +180,40 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_blocks-field_sidebar_second_region'
+  $field_instances['field_collection_item-field_blocks-field_sidebar_second_region'] = array(
+    'bundle' => 'field_blocks',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'blockreference',
+        'settings' => array(),
+        'type' => 'blockreference_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_sidebar_second_region',
+    'label' => 'Sidebar Second Region',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'blockreference',
+      'settings' => array(
+        'autocomplete_path' => 'blockreference/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'blockreference_autocomplete',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'node-basic_page-body'
   $field_instances['node-basic_page-body'] = array(
     'bundle' => 'basic_page',
@@ -238,9 +306,11 @@ function basic_page_field_default_field_instances() {
   t('Blocks');
   t('Body');
   t('Content');
+  t('Content Bottom Region');
   t('Content Region');
   t('Highlighted Region');
   t('Sidebar Region');
+  t('Sidebar Second Region');
 
   return $field_instances;
 }
