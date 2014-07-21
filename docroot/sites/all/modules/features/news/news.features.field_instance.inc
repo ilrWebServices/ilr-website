@@ -22,34 +22,73 @@ function news_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 60,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 1,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
-      'display_summary' => TRUE,
+      'display_summary' => 0,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
         'rows' => 20,
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-news_item-field_description'
+  $field_instances['node-news_item-field_description'] = array(
+    'bundle' => 'news_item',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_description',
+    'label' => 'Teaser',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
       'weight' => 2,
     ),
   );
@@ -61,14 +100,14 @@ function news_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'focussed_thumbnail',
         ),
         'type' => 'image',
-        'weight' => 7,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -125,7 +164,7 @@ function news_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -152,7 +191,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
@@ -178,7 +217,7 @@ function news_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -199,7 +238,7 @@ function news_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -238,7 +277,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -256,7 +295,7 @@ function news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -277,7 +316,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -323,6 +362,7 @@ function news_field_default_field_instances() {
   t('Short title');
   t('Tags');
   t('Tags are used internally for content placement and organization');
+  t('Teaser');
   t('The short title, if present, is used in news blocks and breadcrumbs.');
 
   return $field_instances;
