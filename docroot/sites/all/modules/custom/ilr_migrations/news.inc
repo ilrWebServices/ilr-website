@@ -142,7 +142,8 @@ class NewsMigration extends Migration {
   }
 
   private function setImagePaths($body) {
-    return str_replace('/news/images/', 'public://news/', $body);
+    $path = '/' . variable_get('file_public_path', conf_path() . '/files/news/');
+    return str_replace('/news/images/', $path, $body);
   }
 
   private function stripLeadingHeaders($body) {
