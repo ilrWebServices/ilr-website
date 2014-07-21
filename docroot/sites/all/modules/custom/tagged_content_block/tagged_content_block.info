@@ -2,6 +2,7 @@ name = Tagged Content Blocks
 description = Provides a generalized block for displaying tagged content of various content types
 core = 7.x
 version = 7.x-1.0
+package = ILR
 
 dependencies[] = bean
 dependencies[] = entity
