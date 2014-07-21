@@ -73,6 +73,7 @@ class NewsMigration extends Migration {
 
     if (!empty($row->story_content)) {
       $row->story_content = $this->setImagePaths($row->story_content);
+      $row->story_content = $this->stripLeadingHeaders($row->story_content);
     } // full_html doesn't like empty body fields
     else {
       $row->story_content = "&nbsp;";
@@ -144,6 +145,19 @@ class NewsMigration extends Migration {
     return str_replace('/news/images/', '/sites/default/files/news/', $body);
   }
 
+  private function stripLeadingHeaders($body) {
+    $lines = preg_split('/$\R?^/m', $body);
+    $first_line = trim($lines[0]);
+
+    $pattern = "/<h[0-6]>(.*?)<\/h[0-6]>/";
+
+    if (preg_match($pattern, $first_line)) {
+      array_shift($lines);
+      $body = implode('', $lines);
+    }
+    return $body;
+  }
+
   private function getMainImage($row) {
     $filename = '';
     if ($this->imageExists($row->NewsTopStoryImage_url)) {
@@ -205,7 +219,7 @@ class NewsMigration extends Migration {
       "short_headline" => 'field_short_title',
       "curated_date" => 'DNM',
       "introduction" => 'DNM',
-      "teaser" => 'body:summary',
+      "teaser" => 'field_description',
       "featured" => 'field_tags',
       "NewsTopStoryImage_id" => 'DNM',
       "NewsTopStoryImage_url" => 'DNM',
