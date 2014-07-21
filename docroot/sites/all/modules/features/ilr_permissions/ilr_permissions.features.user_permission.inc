@@ -15,6 +15,9 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'access administration menu',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'neutral admin' => 'neutral admin',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'admin_menu',
   );
@@ -24,6 +27,9 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'access administration pages',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'neutral admin' => 'neutral admin',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'system',
   );
@@ -42,6 +48,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'access bean overview',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -62,6 +69,9 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'access content overview',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'neutral admin' => 'neutral admin',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'node',
   );
@@ -71,6 +81,8 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'access contextual links',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'contextual',
   );
@@ -143,6 +155,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'administer beans',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -273,11 +286,21 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'image',
   );
 
+  // Exported permission: 'administer imce'.
+  $permissions['administer imce'] = array(
+    'name' => 'administer imce',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'imce',
+  );
+
   // Exported permission: 'administer menu'.
   $permissions['administer menu'] = array(
     'name' => 'administer menu',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'menu',
   );
@@ -296,6 +319,8 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'administer nodes',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'node',
   );
@@ -354,6 +379,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'tagged_content_block',
   );
 
+  // Exported permission: 'administer taxonomy'.
+  $permissions['administer taxonomy'] = array(
+    'name' => 'administer taxonomy',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'administer themes'.
   $permissions['administer themes'] = array(
     'name' => 'administer themes',
@@ -388,6 +422,15 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'views',
+  );
+
+  // Exported permission: 'administer wysiwyg templates'.
+  $permissions['administer wysiwyg templates'] = array(
+    'name' => 'administer wysiwyg templates',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'wysiwyg_template',
   );
 
   // Exported permission: 'administer youtube'.
@@ -431,29 +474,9 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'change own username',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'user',
-  );
-
-  // Exported permission: 'clear people_profile_xml_import feeds'.
-  $permissions['clear people_profile_xml_import feeds'] = array(
-    'name' => 'clear people_profile_xml_import feeds',
-    'roles' => array(),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: 'clear youtube_importer feeds'.
-  $permissions['clear youtube_importer feeds'] = array(
-    'name' => 'clear youtube_importer feeds',
-    'roles' => array(),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: 'clear youtube_playlist_importer feeds'.
-  $permissions['clear youtube_playlist_importer feeds'] = array(
-    'name' => 'clear youtube_playlist_importer feeds',
-    'roles' => array(),
-    'module' => 'feeds',
   );
 
   // Exported permission: 'context ajax block access'.
@@ -470,6 +493,17 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create any content_listing_manual bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'create any event_block bean'.
+  $permissions['create any event_block bean'] = array(
+    'name' => 'create any event_block bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -479,6 +513,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create any html bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -488,8 +523,19 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create any tagged_content bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
+  );
+
+  // Exported permission: 'create basic_page content'.
+  $permissions['create basic_page content'] = array(
+    'name' => 'create basic_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'create featured_book content'.
@@ -497,6 +543,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create featured_book content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -506,6 +553,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create microfiche content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -513,6 +561,26 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'create microfilm content'.
   $permissions['create microfilm content'] = array(
     'name' => 'create microfilm content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create news_item content'.
+  $permissions['create news_item content'] = array(
+    'name' => 'create news_item content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create people_profile content'.
+  $permissions['create people_profile content'] = array(
+    'name' => 'create people_profile content',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -524,6 +592,18 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create promo content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create scheinman_neutral content'.
+  $permissions['create scheinman_neutral content'] = array(
+    'name' => 'create scheinman_neutral content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'neutral admin' => 'neutral admin',
+      'registered user' => 'registered user',
     ),
     'module' => 'node',
   );
@@ -533,6 +613,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create spotlight content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -574,6 +655,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any basic_page content'.
+  $permissions['delete any basic_page content'] = array(
+    'name' => 'delete any basic_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any content_listing_manual bean'.
   $permissions['delete any content_listing_manual bean'] = array(
     'name' => 'delete any content_listing_manual bean',
@@ -590,6 +680,15 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'entityform',
+  );
+
+  // Exported permission: 'delete any event_block bean'.
+  $permissions['delete any event_block bean'] = array(
+    'name' => 'delete any event_block bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
   );
 
   // Exported permission: 'delete any featured_book content'.
@@ -628,11 +727,39 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any news_item content'.
+  $permissions['delete any news_item content'] = array(
+    'name' => 'delete any news_item content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any people_profile content'.
+  $permissions['delete any people_profile content'] = array(
+    'name' => 'delete any people_profile content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any promo content'.
   $permissions['delete any promo content'] = array(
     'name' => 'delete any promo content',
     'roles' => array(
       'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any scheinman_neutral content'.
+  $permissions['delete any scheinman_neutral content'] = array(
+    'name' => 'delete any scheinman_neutral content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'neutral admin' => 'neutral admin',
     ),
     'module' => 'node',
   );
@@ -682,6 +809,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete own basic_page content'.
+  $permissions['delete own basic_page content'] = array(
+    'name' => 'delete own basic_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete own entityform'.
   $permissions['delete own entityform'] = array(
     'name' => 'delete own entityform',
@@ -696,6 +833,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own featured_book content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -705,6 +843,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own microfiche content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -714,6 +853,27 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own microfilm content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own news_item content'.
+  $permissions['delete own news_item content'] = array(
+    'name' => 'delete own news_item content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own people_profile content'.
+  $permissions['delete own people_profile content'] = array(
+    'name' => 'delete own people_profile content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -723,6 +883,18 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own promo content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own scheinman_neutral content'.
+  $permissions['delete own scheinman_neutral content'] = array(
+    'name' => 'delete own scheinman_neutral content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'neutral' => 'neutral',
+      'neutral admin' => 'neutral admin',
     ),
     'module' => 'node',
   );
@@ -732,6 +904,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own spotlight content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -769,6 +942,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -787,6 +961,16 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete terms in publications',
     'roles' => array(
       'administrator' => 'administrator',
+      'wit editor' => 'wit editor',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in tags'.
+  $permissions['delete terms in tags'] = array(
+    'name' => 'delete terms in tags',
+    'roles' => array(
+      'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
   );
@@ -796,6 +980,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete terms in wire_services',
     'roles' => array(
       'administrator' => 'administrator',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'taxonomy',
   );
@@ -809,11 +994,22 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
+  // Exported permission: 'edit any basic_page content'.
+  $permissions['edit any basic_page content'] = array(
+    'name' => 'edit any basic_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any content_listing_manual bean'.
   $permissions['edit any content_listing_manual bean'] = array(
     'name' => 'edit any content_listing_manual bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -827,11 +1023,22 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'entityform',
   );
 
+  // Exported permission: 'edit any event_block bean'.
+  $permissions['edit any event_block bean'] = array(
+    'name' => 'edit any event_block bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'bean',
+  );
+
   // Exported permission: 'edit any featured_book content'.
   $permissions['edit any featured_book content'] = array(
     'name' => 'edit any featured_book content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -841,6 +1048,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any html bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -850,6 +1058,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any microfiche content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -859,6 +1068,28 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any microfilm content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any news_item content'.
+  $permissions['edit any news_item content'] = array(
+    'name' => 'edit any news_item content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any people_profile content'.
+  $permissions['edit any people_profile content'] = array(
+    'name' => 'edit any people_profile content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'faculty admin' => 'faculty admin',
     ),
     'module' => 'node',
   );
@@ -868,6 +1099,17 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any promo content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any scheinman_neutral content'.
+  $permissions['edit any scheinman_neutral content'] = array(
+    'name' => 'edit any scheinman_neutral content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'neutral admin' => 'neutral admin',
     ),
     'module' => 'node',
   );
@@ -877,6 +1119,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any spotlight content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -886,6 +1129,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any tagged_content bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -927,11 +1171,22 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'edit own basic_page content'.
+  $permissions['edit own basic_page content'] = array(
+    'name' => 'edit own basic_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit own entityform'.
   $permissions['edit own entityform'] = array(
     'name' => 'edit own entityform',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'entityform',
   );
@@ -941,6 +1196,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit own featured_book content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -950,6 +1206,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit own microfiche content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -959,6 +1216,27 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit own microfilm content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own news_item content'.
+  $permissions['edit own news_item content'] = array(
+    'name' => 'edit own news_item content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own people_profile content'.
+  $permissions['edit own people_profile content'] = array(
+    'name' => 'edit own people_profile content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -968,6 +1246,19 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit own promo content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own scheinman_neutral content'.
+  $permissions['edit own scheinman_neutral content'] = array(
+    'name' => 'edit own scheinman_neutral content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'neutral' => 'neutral',
+      'neutral admin' => 'neutral admin',
+      'registered user' => 'registered user',
     ),
     'module' => 'node',
   );
@@ -977,6 +1268,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit own spotlight content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -1023,6 +1315,16 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit terms in publications',
     'roles' => array(
       'administrator' => 'administrator',
+      'wit editor' => 'wit editor',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in tags'.
+  $permissions['edit terms in tags'] = array(
+    'name' => 'edit terms in tags',
+    'roles' => array(
+      'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
   );
@@ -1032,6 +1334,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit terms in wire_services',
     'roles' => array(
       'administrator' => 'administrator',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1063,25 +1366,13 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'features',
   );
 
-  // Exported permission: 'import people_profile_xml_import feeds'.
-  $permissions['import people_profile_xml_import feeds'] = array(
-    'name' => 'import people_profile_xml_import feeds',
-    'roles' => array(),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: 'import youtube_importer feeds'.
-  $permissions['import youtube_importer feeds'] = array(
-    'name' => 'import youtube_importer feeds',
-    'roles' => array(),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: 'import youtube_playlist_importer feeds'.
-  $permissions['import youtube_playlist_importer feeds'] = array(
-    'name' => 'import youtube_playlist_importer feeds',
-    'roles' => array(),
-    'module' => 'feeds',
+  // Exported permission: 'import wysiwyg templates'.
+  $permissions['import wysiwyg templates'] = array(
+    'name' => 'import wysiwyg templates',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'wysiwyg_template',
   );
 
   // Exported permission: 'manage features'.
@@ -1107,6 +1398,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -1129,46 +1421,14 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'devel',
   );
 
-  // Exported permission: 'tamper people_profile_xml_import'.
-  $permissions['tamper people_profile_xml_import'] = array(
-    'name' => 'tamper people_profile_xml_import',
-    'roles' => array(),
-    'module' => 'feeds_tamper',
-  );
-
-  // Exported permission: 'tamper youtube_importer'.
-  $permissions['tamper youtube_importer'] = array(
-    'name' => 'tamper youtube_importer',
-    'roles' => array(),
-    'module' => 'feeds_tamper',
-  );
-
-  // Exported permission: 'tamper youtube_playlist_importer'.
-  $permissions['tamper youtube_playlist_importer'] = array(
-    'name' => 'tamper youtube_playlist_importer',
-    'roles' => array(),
-    'module' => 'feeds_tamper',
-  );
-
-  // Exported permission: 'unlock people_profile_xml_import feeds'.
-  $permissions['unlock people_profile_xml_import feeds'] = array(
-    'name' => 'unlock people_profile_xml_import feeds',
-    'roles' => array(),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: 'unlock youtube_importer feeds'.
-  $permissions['unlock youtube_importer feeds'] = array(
-    'name' => 'unlock youtube_importer feeds',
-    'roles' => array(),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: 'unlock youtube_playlist_importer feeds'.
-  $permissions['unlock youtube_playlist_importer feeds'] = array(
-    'name' => 'unlock youtube_playlist_importer feeds',
-    'roles' => array(),
-    'module' => 'feeds',
+  // Exported permission: 'use text format full_html'.
+  $permissions['use text format full_html'] = array(
+    'name' => 'use text format full_html',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'filter',
   );
 
   // Exported permission: 'view any content_listing_manual bean'.
@@ -1176,6 +1436,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view any content_listing_manual bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -1189,11 +1450,22 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'entityform',
   );
 
+  // Exported permission: 'view any event_block bean'.
+  $permissions['view any event_block bean'] = array(
+    'name' => 'view any event_block bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'bean',
+  );
+
   // Exported permission: 'view any html bean'.
   $permissions['view any html bean'] = array(
     'name' => 'view any html bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -1203,6 +1475,8 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view any tagged_content bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -1212,6 +1486,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view bean page',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
@@ -1230,6 +1505,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view own entityform',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'entityform',
   );
@@ -1239,6 +1515,8 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view own unpublished content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'node',
   );
@@ -1248,6 +1526,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view revisions',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
