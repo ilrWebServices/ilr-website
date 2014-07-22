@@ -5,3 +5,27 @@
  */
 
 include_once 'ilr_workspan.features.inc';
+/**
+ * Implements hook_node_presave().
+ *
+ * Force all workspan nodes will have a 1 tag = workspan
+ */
+function ilr_workspan_node_presave($node){
+  if ($node->type == 'workspan') {
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $term = _ilr_get_or_create_term('workspan', 'tags');
+    $node_wrapper->field_tags->set(array($term->tid));
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * User can't access tags field for workspan articles.
+ * @see ilr_workspan_node_presave().
+ */
+function ilr_workspan_form_node_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['type']['#value'] == 'workspan') {
+    $form['field_tags']['#access'] = FALSE;
+  }
+}
