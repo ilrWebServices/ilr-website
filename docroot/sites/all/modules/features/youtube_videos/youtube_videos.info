@@ -23,7 +23,6 @@ features[feeds_tamper][] = youtube_importer-xpathparser_3-explode
 features[feeds_tamper][] = youtube_importer-xpathparser_3-trim
 features[field_instance][] = node-youtube_video-body
 features[field_instance][] = node-youtube_video-field_duration
-features[field_instance][] = node-youtube_video-field_playlists
 features[field_instance][] = node-youtube_video-field_tags
 features[field_instance][] = node-youtube_video-field_youtube_video
 features[node][] = youtube_video

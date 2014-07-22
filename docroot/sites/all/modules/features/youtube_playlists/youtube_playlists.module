@@ -7,58 +7,6 @@
 include_once 'youtube_playlists.features.inc';
 
 /**
- * Implements hook_field_formatter_info().
- *
- * Provide Playlist Embed formatter for textfields.
- * @todo Should we create a Playlist Field Type.
- */
-function youtube_playlists_field_formatter_info() {
-  $formatters = array(
-    // This formatter displays your youtube video.
-    'youtube_playlist_embed' => array(
-      'label' => t('YouTube Playlist Player'),
-      'field types' => array('text'),
-    )
-  );
-
-  return $formatters;
-}
-
-/**
- * Implements hook_field_formatter_view().
- *
- * View for Playlist embed Formatter
- */
-function youtube_playlists_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, &$items, $display) {
-  $element = array();
-  switch ($display['type']) {
-    case 'youtube_playlist_embed':
-      foreach ($items as $delta => $item) {
-        $element[$delta] = array(
-          '#theme' => 'youtube_playlists_embed',
-          '#playlist_id' => $item['value'],
-        );
-      }
-      break;
-  }
-  return $element;
-}
-
-/**
- * Implements hook_theme().
- */
-function youtube_playlists_theme() {
-  return array(
-    'youtube_playlists_embed' => array(
-      'variables' => array(
-        'playlist_id' => NULL,
-      ),
-      'file' => 'youtube_playlists.theme.inc',
-    ),
-  );
-}
-
-/**
  * Assigns videos to playlist from XML file
  *
  * Only updates videos that have been changed.
@@ -149,8 +97,8 @@ function _youtube_playlists_get_new_assignments($playlist_vids) {
   $unknown_videos = array();
   $unknown_playlists = array();
   foreach ($playlist_vids as $video_assignment) {
-    $video_nid = youtube_videos_get_nid_from_video_id((string) $video_assignment->videoId);
-    $playlist_tid = youtube_playlists_get_tid_from_playlist_id((string) $video_assignment->playlistId);
+    $video_nid = _youtube_videos_get_nid_from_video_id((string) $video_assignment->videoId);
+    $playlist_tid = _youtube_playlists_get_tid_from_playlist_id((string) $video_assignment->playlistId);
     // Keep of list of videos and playlists that aren't nodes.
     if (!$video_nid) {
       $unknown_videos[] = (string) $video_assignment->videoId;
@@ -181,7 +129,7 @@ function _youtube_playlists_get_new_assignments($playlist_vids) {
  * @param $playlist_id
  * @return int | NULL
  */
-function youtube_playlists_get_tid_from_playlist_id($playlist_id) {
+function _youtube_playlists_get_tid_from_playlist_id($playlist_id) {
   module_load_include('inc', 'feeds', 'mappers/taxonomy');
   $tids = & drupal_static(__FUNCTION__);
   if (!isset($tids)) {

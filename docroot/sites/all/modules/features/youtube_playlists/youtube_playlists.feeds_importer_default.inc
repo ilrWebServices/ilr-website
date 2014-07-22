@@ -13,10 +13,10 @@ function youtube_playlists_feeds_importer_default() {
   $feeds_importer = new stdClass();
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
   $feeds_importer->api_version = 1;
-  $feeds_importer->id = 'youtube_playlist_importer';
+  $feeds_importer->id = 'youtube_playlist_tag_importer';
   $feeds_importer->config = array(
-    'name' => 'Youtube Playlist Importer',
-    'description' => 'Import Youtube Playlist from XML Feed',
+    'name' => 'Youtube Playlist Tag Importer',
+    'description' => 'Import Youtube Playlist from XML Feed as term tags',
     'fetcher' => array(
       'plugin_key' => 'FeedsHTTPFetcher',
       'config' => array(
@@ -31,17 +31,11 @@ function youtube_playlists_feeds_importer_default() {
       'config' => array(
         'sources' => array(
           'xpathparser:0' => 'title',
-          'xpathparser:1' => 'id',
-          'xpathparser:2' => 'summary',
-          'xpathparser:3' => 'yt:playlistId',
-          'xpathparser:4' => 'media:group/media:thumbnail[@yt:name="hqdefault"]/@url',
+          'xpathparser:1' => 'yt:playlistId',
         ),
         'rawXML' => array(
           'xpathparser:0' => 0,
           'xpathparser:1' => 0,
-          'xpathparser:2' => 0,
-          'xpathparser:3' => 0,
-          'xpathparser:4' => 0,
         ),
         'context' => '//feed/entry',
         'exp' => array(
@@ -50,24 +44,19 @@ function youtube_playlists_feeds_importer_default() {
             'context' => 0,
             'xpathparser:0' => 0,
             'xpathparser:1' => 0,
-            'xpathparser:2' => 0,
-            'xpathparser:3' => 0,
-            'xpathparser:4' => 0,
           ),
         ),
         'allow_override' => 0,
       ),
     ),
     'processor' => array(
-      'plugin_key' => 'FeedsNodeProcessor',
+      'plugin_key' => 'FeedsTermProcessor',
       'config' => array(
-        'expire' => '-1',
-        'author' => '1',
-        'authorize' => 1,
+        'vocabulary' => 0,
         'mappings' => array(
           0 => array(
             'source' => 'xpathparser:0',
-            'target' => 'title',
+            'target' => 'name',
             'unique' => FALSE,
           ),
           1 => array(
@@ -75,36 +64,21 @@ function youtube_playlists_feeds_importer_default() {
             'target' => 'guid',
             'unique' => 1,
           ),
-          2 => array(
-            'source' => 'xpathparser:2',
-            'target' => 'body',
-            'unique' => FALSE,
-          ),
-          3 => array(
-            'source' => 'xpathparser:3',
-            'target' => 'field_youtube_playlist_id',
-            'unique' => FALSE,
-          ),
-          4 => array(
-            'source' => 'xpathparser:4',
-            'target' => 'field_thumbnail',
-            'unique' => FALSE,
-          ),
         ),
-        'update_existing' => '2',
-        'input_format' => 'full_html',
+        'update_existing' => '1',
+        'input_format' => 'plain_text',
         'skip_hash_check' => 0,
-        'bundle' => 'youtube_playlist',
+        'bundle' => 'tags',
       ),
     ),
     'content_type' => '',
     'update' => 0,
-    'import_period' => '1800',
+    'import_period' => 1800,
     'expire_period' => 3600,
-    'import_on_create' => 1,
-    'process_in_background' => 0,
+    'import_on_create' => TRUE,
+    'process_in_background' => FALSE,
   );
-  $export['youtube_playlist_importer'] = $feeds_importer;
+  $export['youtube_playlist_tag_importer'] = $feeds_importer;
 
   return $export;
 }
