@@ -38,28 +38,31 @@ function ilr_theme_page_alter(&$page) {
     $node = current($page['content']['system_main']['nodes']);
     // Look for blocks on the current node
     if (isset($node['field_blocks']) && $node != -1 && count($node['field_blocks']['#items']) > 0) {
-      $fields = current($node['field_blocks'][0]['entity']['field_collection_item']);
-      if (isset($fields['field_sidebar_region'])) {
-        $page['sidebar_first'][] = $fields['field_sidebar_region'];
-      }
-      if (isset($fields['field_content_region'])) {
-        $page['content'][] = $fields['field_content_region'];
-      }
-      if (isset($fields['field_highlighted_region'])) {
-        $page['highlighted'][] = $fields['field_highlighted_region'];
-      }
-      if (isset($fields['field_sidebar_second_region'])) {
-        $page['sidebar_second'][] = $fields['field_sidebar_second_region'];
-      }
-      if (isset($fields['field_content_bottom_region'])) {
-        $page['content_bottom'][] = $fields['field_content_bottom_region'];
-      }
-      // Remove the blocks from the page render
-      unset($page['content']['system_main']['nodes'][$node['#node']->nid]['field_blocks']);
+      _ilr_process_field_blocks($page, $node);
     }
   }
 }
 
+/**
+ * Moves content from field_blocks on node to appropriate regions
+ * Assumes a naming convention that is field_[region_name]_region
+ * for the field in the field collection
+ */
+function _ilr_process_field_blocks(&$page, $node) {
+  $fields = current($node['field_blocks'][0]['entity']['field_collection_item']);
+  // create a foreach loop to handle this
+  foreach ($fields as $field_name => $value) {
+    $pattern = "/(field_)([a-z_]*)(_region)/";
+    if (preg_match($pattern, $field_name, $matches)) {
+      $region_name = $matches[2];
+      if (isset($fields[$field_name])) {
+        $page[$region_name][] = $fields[$field_name];
+      }
+    }
+  }
+  // Remove the blocks from the page render
+  unset($page['content']['system_main']['nodes'][$node['#node']->nid]['field_blocks']);
+}
 /**
  * Implements hook_preprocess_hook()
  *

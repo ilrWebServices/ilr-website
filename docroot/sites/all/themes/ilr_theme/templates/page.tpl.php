@@ -25,11 +25,10 @@
       <!-- highlighted location -->
       <!-- Add subsite nav region here -->
 
-      <div id="main" role="main"  data-eq-pts="100: 100, 700: 700, 960: 960">
+      <div id="main" role="main"  data-eq-pts="mobile: 320, tablet: 769, desktop: 1025">
 
         <?php if ($page['highlighted']): ?>
         <div id="highlighted">
-          <h2>Highlighted</h2>
           <div class="section">
           <?php print render($page['highlighted']); ?>
           </div>
@@ -53,7 +52,6 @@
 
         <?php if ($page['sidebar_first']): ?>
           <div id="sidebar-first" class="column sidebar">
-            <h2>Sidebar First</h2>
             <div class="section">
             <?php print render($page['sidebar_first']); ?>
           </div></div> <!-- /.section, /#sidebar-first -->
@@ -61,9 +59,7 @@
 
         <?php if ($page['sidebar_second']): ?>
           <div id="sidebar-second" class="column sidebar">
-            <h2>Sidebar Second</h2>
             <div class="section">
-            <?php //include 'temp-sidebar.php'; ?>
             <?php print render($page['sidebar_second']); ?>
             </div>
           </div> <!-- /.section, /#sidebar-second -->
@@ -71,7 +67,6 @@
 
         <?php if ($page['content_bottom']): ?>
           <div id="content-bottom">
-            <h2>Content Bottom</h2>
             <div class="section">
             <?php print render($page['content_bottom']); ?>
             </div>

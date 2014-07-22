@@ -1,23 +1,18 @@
-#page-wrapper {
-  max-width: 1200px;
+#page {
+  max-width: $page-max-width;
   @extend .center;
-  @extend %two-cols-with-sidebar;
-  //@extend %triptych;
+  //@include sgs-change('debug', true);
+  //@include background-grid();
 
-  #main { @extend .clearfix; }
-  #highlighted {
-    background: green;
-  }
-  #content {
-    background: yellow;
-  }
-  #sidebar-first {
-    background: cyan;
-  }
-  #sidebar-second {
-    background: orange;
-  }
-  #content-bottom {
-    background: grey;
+  #main {
+    &[data-eq-state="tablet"] {
+      @extend %two-cols-with-sidebar;
+    }
+
+    &[data-eq-state="desktop"] {
+      @extend %triptych;
+    }
+
+    @extend .clearfix;
   }
 }

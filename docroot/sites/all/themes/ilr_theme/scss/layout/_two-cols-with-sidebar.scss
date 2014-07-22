@@ -1,60 +1,28 @@
 %two-cols-with-sidebar {
-  @include sgs-change('debug', true);
+  @include add-grid(3 9);
+  @include add-gutter(1/3);
 
-  @include breakpoint(500px) {
-    @include add-grid(3 9);
-    @include add-gutter(1/3);
-    @include background-grid($color: red);
-
-    #content {
-      @include grid-span(1, 2);
-      article.node-teaser {
-        @include layout(8) {
-          //@include background-grid($color: red);
-          @include float-span(4);
-          &:nth-child(2n) {
-            @include float-span(4, 'last');
-          }
+  #content {
+    @include grid-span(1, 2);
+    article.node-teaser {
+      @include layout(8) {
+        @include float-span(4);
+        &:nth-child(2n) {
+          @include float-span(4, 'last');
         }
       }
-    }
-
-    #sidebar-first {
-      @include grid-span(1);
-    }
-    #sidebar-second {
-      @include grid-span(1, 2);
-    }
-    #content-bottom {
-      @include grid-span(2);
     }
   }
 
-  @include breakpoint(1024px) {
-    @include add-grid(3 6 3);
+  #sidebar-first {
+    @include grid-span(1);
+  }
 
-    #content {
-      @include grid-span(1, 2);
-      article.node-teaser {
-        @include layout(8) {
-          //@include background-grid($color: red);
-          @include float-span(4);
-          &:nth-child(2n) {
-            @include float-span(4, 'last');
-          }
-        }
-      }
-    }
+  #sidebar-second {
+    @include grid-span(1, 2);
+  }
 
-    #sidebar-first {
-      @include grid-span(1);
-    }
-    #sidebar-second {
-      @include grid-span(1, 3);
-    }
-    #content-bottom {
-      @include grid-span(3);
-      clear: both;
-    }
+  #content-bottom {
+    @include grid-span(2);
   }
 }

@@ -1,4 +1,5 @@
-$row-width: rem-calc(960);
+$page-max-width: 1280px;
+$row-width: rem-calc($page-max-width);
 // ==================================================
 // Modular Scale
 // ==================================================
