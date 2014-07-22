@@ -44,7 +44,6 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-
   // Exported field_instance: 'field_collection_item-field_blocks-field_content_bottom_region'
   $field_instances['field_collection_item-field_blocks-field_content_bottom_region'] = array(
     'bundle' => 'field_blocks',
@@ -121,7 +120,7 @@ function basic_page_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'blockreference',
         'settings' => array(),
         'type' => 'blockreference_default',
