@@ -3,11 +3,17 @@
 /**
  * Implements hook_preprocess_html()
  *
- * Adds the `ILR Web Site` kit from TypeKit.
+ * Adds sitewide javascript files
  */
 function ilr_theme_preprocess_html(&$variables) {
-  drupal_add_js('//use.typekit.net/bva6ofm.js', 'external');
-  drupal_add_js('try{Typekit.load();}catch(e){}', 'inline', 'page_bottom');
+  // Header
+  drupal_add_js('//use.typekit.net/bva6ofm.js', array('type' => 'external'));
+  drupal_add_js($variables['directory'] . '/js/vendor/modernizr-2.6.2.min.js');
+
+  // Footer
+  drupal_add_js('try{Typekit.load();}catch(e){}', array('type' => 'inline', 'scope' => 'footer'));
+  drupal_add_js($variables['directory'] . '/js/vendor/eq.min.js', array('type' => 'file', 'scope' => 'footer'));
+  drupal_add_js('https://embanner.univcomm.cornell.edu/OWC-emergency-banner.js', array('type' => 'external', 'scope' => 'footer'));
 }
 
 /**
@@ -17,15 +23,8 @@ function ilr_theme_preprocess_html(&$variables) {
  * Adds modernizr.js
  */
 function ilr_theme_preprocess_page(&$variables) {
-  // Google fonts
-  drupal_add_css('http://fonts.googleapis.com/css?family=Open+Sans', array('type' => 'external'));
-  drupal_add_css('http://fonts.googleapis.com/css?family=Marcellus', array('type' => 'external'));
-
   // Footer content
   $variables['page']['footer'][] = array('#markup' => '<div class="copyright">&copy; ' . date('Y') . ' Cornell University | ILR School </div>');
-
-  drupal_add_js($variables['directory'] . '/js/vendor/modernizr-2.6.2.min.js');
-  drupal_add_js($variables['directory'] . '/js/vendor/eq.min.js');
 }
 
 /**
