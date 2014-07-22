@@ -10,7 +10,7 @@
  * Set Feed URL programmatically as this can't be export to Features.
  */
 function youtube_playlists_install() {
-  $source = feeds_source('youtube_playlist_importer');
+  $source = feeds_source('youtube_playlist_tag_importer');
   $source->addConfig(array(
     'FeedsHTTPFetcher' => array(
       'source' => 'http://www.ilr.cornell.edu/codelib/media/youtube/getplaylists.cfm',
