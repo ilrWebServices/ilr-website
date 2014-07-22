@@ -75,26 +75,97 @@ function _youtube_playlists_assign_videos() {
     return;
   }
   $xml = simplexml_load_string($response->data);
-  //print_r($xml);
+
+  $current_video_assignments = _youtube_playlist_get_current_assignments();
+  $new_video_assignments = _youtube_playlists_get_new_assignments($xml->entries->videoinplaylist);
+  _youtube_playlists_save_new_assignments($new_video_assignments, $current_video_assignments);
+  _youtube_playlists_save_videos_no_playlists($current_video_assignments, $new_video_assignments);
+
+
+}
+
+/**
+ * @param $current_video_assignments
+ * @param $new_video_assignments
+ */
+function _youtube_playlists_save_videos_no_playlists($current_video_assignments, $new_video_assignments) {
+// Remove any video that aren't in assignments but were in current
+  $unassigned_video_nids = array_keys(array_diff_key($current_video_assignments, $new_video_assignments));
+  if ($unassigned_video_nids) {
+    $playlist_tids = _youtube_playlists_get_playlist_tids();
+    foreach ($unassigned_video_nids as $video_nid) {
+      $video_wrapper = entity_metadata_wrapper('node', $video_nid);
+      $all_tids = $video_wrapper->field_tags->raw();
+      // Remove all playlist tids.
+      $tids_without_playlists = array_diff($all_tids, $playlist_tids);
+      $video_wrapper->field_tags->set($tids_without_playlists);
+      $video_wrapper->save();
+    }
+  }
+}
+
+/**
+ * @param $new_video_assignments
+ * @param $current_video_assignments
+ * @return array
+ */
+function _youtube_playlists_save_new_assignments($new_video_assignments, $current_video_assignments) {
+  $playlist_tids = _youtube_playlists_get_playlist_tids();
+  // Loop through new assignments and update only need ones. Saves calls to node_save.
+  foreach ($new_video_assignments as $video_nid => $new_video_assignment) {
+    // If the video is not currently assigned to a playlists needs to be assigned
+    $needs_update = !isset($current_video_assignments[$video_nid]);
+    if (!$needs_update) {
+      sort($new_video_assignment);
+      sort($current_video_assignments[$video_nid]);
+      $needs_update = $new_video_assignment != $current_video_assignments[$video_nid];
+    }
+    if ($needs_update) {
+      // Update Video playlist assignment
+      $video_wrapper = entity_metadata_wrapper('node', $video_nid);
+      $all_tids = $video_wrapper->field_tags->raw();
+      $non_playlist_tids = array_diff($all_tids, $playlist_tids);
+      $new_tids = array_merge($non_playlist_tids, $new_video_assignment);
+      $video_wrapper->field_tags->set($new_tids);
+      $video_wrapper->save();
+    }
+  }
+}
+function _youtube_playlists_get_playlist_tids(){
+  $tids = & drupal_static(__FUNCTION__);
+  if (!isset($tids)) {
+    $sql = 'SELECT tid FROM {taxonomy_term_data} WHERE  name LIKE  \'YT-%\'';
+    $tids = db_query($sql)->fetchCol();
+  }
+  return $tids;
+
+}
+/**
+ * @param $xml
+ * @return array
+ */
+function _youtube_playlists_get_new_assignments($playlist_vids) {
   $new_video_assignments = array();
   $unknown_videos = array();
   $unknown_playlists = array();
-  foreach ($xml->entries->videoinplaylist as $video_assignment) {
+  foreach ($playlist_vids as $video_assignment) {
     $video_nid = youtube_videos_get_nid_from_video_id((string) $video_assignment->videoId);
-    $playlist_nid = youtube_playlists_get_nid_from_playlist_id((string) $video_assignment->playlistId);
+    $playlist_tid = youtube_playlists_get_tid_from_playlist_id((string) $video_assignment->playlistId);
     // Keep of list of videos and playlists that aren't nodes.
     if (!$video_nid) {
       $unknown_videos[] = (string) $video_assignment->videoId;
     }
-    if (!$playlist_nid) {
+    if (!$playlist_tid) {
       $unknown_playlists[] = (string) $video_assignment->playlistId;
     }
-    if ($video_nid && $playlist_nid) {
+    if ($video_nid && $playlist_tid) {
       // Both the video and playlist were found.
-      $new_video_assignments[$video_nid][] = $playlist_nid;
-    }
-    $current_video_assignments = _youtube_playlist_get_current_assignments();
+      // Check that playlist is not already set(duplicate entries in assignment xml).
+      if (empty($new_video_assignments[$video_nid]) || !in_array($playlist_tid, $new_video_assignments[$video_nid])) {
+        $new_video_assignments[$video_nid][] = $playlist_tid;
+      }
 
+    }
   }
   if ($unknown_videos) {
     watchdog('youtube_playlists', 'Unknown video were found during playlist assignment. @video_ids', array('@video_ids' => implode(',', $unknown_videos)), WATCHDOG_WARNING);
@@ -102,30 +173,7 @@ function _youtube_playlists_assign_videos() {
   if ($unknown_playlists) {
     watchdog('youtube_playlists', 'Unknown playlists were found during playlist assignment. @playlist_ids', array('@playlist_ids' => implode(',', $unknown_playlists)), WATCHDOG_WARNING);
   }
-  // Loop through new assignments and update only need ones. Saves calls to node_save.
-  foreach ($new_video_assignments as $video_nid => $new_video_assignment) {
-    // If the video is not currently assigned to a playlists needs to be assigned
-    $needs_update = !isset($current_video_assignments[$video_nid]);
-    if (!$needs_update) {
-      $playlists_difference = array_diff($new_video_assignment, $current_video_assignments[$video_nid]);
-      $needs_update = !empty($playlists_difference);
-    }
-    if ($needs_update) {
-      // Update Video playlist assignment
-      $video_wrapper = entity_metadata_wrapper('node', $video_nid);
-      $video_wrapper->field_playlists->set($new_video_assignment);
-      $video_wrapper->save();
-    }
-  }
-  // Remove any video that aren't in assignments but were in current
-  $unassigned_video_nids = array_keys(array_diff_key($current_video_assignments, $new_video_assignments));
-  if ($unassigned_video_nids) {
-    foreach ($unassigned_video_nids as $video_nid) {
-      $video_wrapper = entity_metadata_wrapper('node', $video_nid);
-      $video_wrapper->field_playlists->set(NULL);
-      $video_wrapper->save();
-    }
-  }
+  return $new_video_assignments;
 }
 
 /**
@@ -133,38 +181,31 @@ function _youtube_playlists_assign_videos() {
  * @param $playlist_id
  * @return int | NULL
  */
-function youtube_playlists_get_nid_from_playlist_id($playlist_id) {
-  $nids = & drupal_static(__FUNCTION__);
-  if (!isset($nids)) {
-    $nids = array();
+function youtube_playlists_get_tid_from_playlist_id($playlist_id) {
+  module_load_include('inc', 'feeds', 'mappers/taxonomy');
+  $tids = & drupal_static(__FUNCTION__);
+  if (!isset($tids)) {
+    $tids = array();
   }
   else {
-    if (isset($nids[$playlist_id])) {
-      return $nids[$playlist_id];
+    if (isset($tids[$playlist_id])) {
+      return $tids[$playlist_id];
     }
   }
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'youtube_playlist')
-    ->fieldCondition('field_youtube_playlist_id', 'value', $playlist_id);
-  $result = $query->execute();
-  if (isset($result['node'])) {
-    $nids[$playlist_id] = array_shift(array_keys($result['node']));
-  }
-  else {
-    $nids[$playlist_id] = NULL;
-  }
-  return $nids[$playlist_id];
+  $tids[$playlist_id] = taxonomy_feeds_term_lookup_term_by_guid($playlist_id);
+
+  return $tids[$playlist_id];
 }
 
 function _youtube_playlist_get_current_assignments() {
   $video_assignments = array();
-  $sql = 'SELECT entity_id as video_nid, field_playlists_target_id as playlist_nid FROM {field_data_field_playlists}'
-    . ' WHERE deleted = 0 AND bundle = \'youtube_video\' AND entity_type = \'node\'';
+  $sql = 'SELECT ti.tid as tid, ti.nid as nid FROM {taxonomy_index} ti'
+    . ' inner join taxonomy_term_data td on ti.tid = td.tid'
+    . ' where name like \'YT-%\'';
   $result = db_query($sql);
 
   while ($record = $result->fetchAssoc()) {
-    $video_assignments[$record['video_nid']][] = $record['playlist_nid'];
+    $video_assignments[$record['nid']][] = $record['tid'];
   }
   return $video_assignments;
 }
