@@ -164,7 +164,7 @@ function _youtube_playlist_get_current_assignments() {
  * Assign Videos to Playlists after imported.
  */
 function youtube_playlists_feeds_after_import(FeedsSource $source) {
-  if ($source->importer->id == 'youtube_playlist_importer') {
+  if ($source->importer->id == 'youtube_playlist_tag_importer') {
     _youtube_playlists_assign_videos();
   }
 }
