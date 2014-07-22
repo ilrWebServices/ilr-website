@@ -1,6 +1,16 @@
 <?php
 
 /**
+ * Implements hook_preprocess_html()
+ *
+ * Adds the `ILR Web Site` kit from TypeKit.
+ */
+function ilr_theme_preprocess_html(&$variables) {
+  drupal_add_js('//use.typekit.net/bva6ofm.js', 'external');
+  drupal_add_js('try{Typekit.load();}catch(e){}', 'inline', 'page_bottom');
+}
+
+/**
  * Implements hook_preprocess_hook()
  *
  * Adds custom markup to footer.
