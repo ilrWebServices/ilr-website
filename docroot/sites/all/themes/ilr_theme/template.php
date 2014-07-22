@@ -48,6 +48,12 @@ function ilr_theme_page_alter(&$page) {
       if (isset($fields['field_highlighted_region'])) {
         $page['highlighted'][] = $fields['field_highlighted_region'];
       }
+      if (isset($fields['field_sidebar_second_region'])) {
+        $page['sidebar_second'][] = $fields['field_sidebar_second_region'];
+      }
+      if (isset($fields['field_content_bottom_region'])) {
+        $page['content_bottom'][] = $fields['field_content_bottom_region'];
+      }
       // Remove the blocks from the page render
       unset($page['content']['system_main']['nodes'][$node['#node']->nid]['field_blocks']);
     }

@@ -27,38 +27,56 @@
 
       <div id="main" role="main"  data-eq-pts="100: 100, 700: 700, 960: 960">
 
-        <?php if ($breadcrumb): ?>
+        <?php if ($page['highlighted']): ?>
+        <div id="highlighted">
+          <h2>Highlighted</h2>
+          <div class="section">
+          <?php print render($page['highlighted']); ?>
+          </div>
+        </div><?php endif; ?>
+        <div id="content" class="column">
+          <?php if ($breadcrumb): ?>
           <div id="breadcrumb"><?php print $breadcrumb; ?></div>
-        <?php endif; ?>
-
-        <div id="content" class="column"><div class="section">
-
-          <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
-
-          <a id="main-content"></a>
-          <?php print render($title_prefix); ?>
-          <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
-          <?php print render($title_suffix); ?>
-          <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
-          <?php print render($page['help']); ?>
-          <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
-          <?php print render($page['content']); ?>
-          <?php print $feed_icons; ?>
-        </div></div> <!-- /.section, /#content -->
+          <?php endif; ?>
+          <div class="section">
+            <a id="main-content"></a>
+            <?php print render($title_prefix); ?>
+            <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
+            <?php print render($title_suffix); ?>
+            <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
+            <?php print render($page['help']); ?>
+            <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
+            <?php print render($page['content']); ?>
+            <?php print $feed_icons; ?>
+          </div>
+        </div> <!-- /.section, /#content -->
 
         <?php if ($page['sidebar_first']): ?>
-          <div id="sidebar-first" class="column sidebar"><div class="section">
+          <div id="sidebar-first" class="column sidebar">
+            <h2>Sidebar First</h2>
+            <div class="section">
             <?php print render($page['sidebar_first']); ?>
           </div></div> <!-- /.section, /#sidebar-first -->
         <?php endif; ?>
 
         <?php if ($page['sidebar_second']): ?>
-          <div id="sidebar-second" class="column sidebar"><div class="section">
+          <div id="sidebar-second" class="column sidebar">
+            <h2>Sidebar Second</h2>
+            <div class="section">
             <?php //include 'temp-sidebar.php'; ?>
             <?php print render($page['sidebar_second']); ?>
-          </div></div> <!-- /.section, /#sidebar-second -->
+            </div>
+          </div> <!-- /.section, /#sidebar-second -->
         <?php endif; ?>
 
+        <?php if ($page['content_bottom']): ?>
+          <div id="content-bottom">
+            <h2>Content Bottom</h2>
+            <div class="section">
+            <?php print render($page['content_bottom']); ?>
+            </div>
+          </div> <!-- /.section, /#sidebar-second -->
+        <?php endif; ?>
       </div> <!-- /#main -->
     </div><!-- /.container -->
     <footer role="contentinfo">

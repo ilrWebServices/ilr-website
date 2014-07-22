@@ -1,8 +1,23 @@
 #page-wrapper {
-  max-width: 960px;
+  max-width: 1200px;
   @extend .center;
   @extend %two-cols-with-sidebar;
   //@extend %triptych;
 
   #main { @extend .clearfix; }
+  #highlighted {
+    background: green;
+  }
+  #content {
+    background: yellow;
+  }
+  #sidebar-first {
+    background: cyan;
+  }
+  #sidebar-second {
+    background: orange;
+  }
+  #content-bottom {
+    background: grey;
+  }
 }

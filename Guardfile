@@ -3,11 +3,7 @@ require 'modular-scale'
 require 'singularitygs'
 require 'breakpoint'
 
-guard 'sass',
-  :input => 'docroot/sites/all/themes/ilr_theme/scss',
-  :output => 'docroot/sites/all/themes/ilr_theme/css',
-  :compass => true,
-  :style => :compressed
+guard :compass, configuration_file: 'config.rb'
 
 guard 'livereload', :port => '35777' do
   watch(%r{.+\.(css|js)$})
