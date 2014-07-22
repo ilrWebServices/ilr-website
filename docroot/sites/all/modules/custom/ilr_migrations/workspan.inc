@@ -63,16 +63,17 @@ class WorkspanMigration extends Migration {
  public function prepare(stdClass $node, stdClass $row) {
    $node->field_youtube_video = $this->getYoutubeFieldValue($row->yt_video_id);
   }
-
-  protected function beginProcess($newStatus) {
-    parent::beginProcess($newStatus);
-    if (!$this->getFileDir()) {
-      throw new MigrateException('Workspan file directory is not set for import.');
-    }
-
-  }
   private function getFileDir(){
-    return variable_get('workspan_file_dir', NULL);
+    // Variable can be set via drush vset to override
+    $override = variable_get('workspan_file_dir', NULL);
+    if ($override) {
+      return $override;
+    }
+    $parent_folder = (isset($_ENV["AH_SITE_GROUP"]))
+      ? '/files/'
+      : '/../migration_data/';
+    return DRUPAL_ROOT . $parent_folder . 'workspan_export/';
+
   }
 
   /**
