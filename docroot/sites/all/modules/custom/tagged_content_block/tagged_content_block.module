@@ -73,6 +73,7 @@ function _tagged_content_block_enable_default_bundles() {
     'spotlight' => 'spotlight',
     'promo'     => 'promo',
     'youtube_video' => 'youtube_video',
+    'workspan' => 'workspan',
   );
 
   variable_set(
