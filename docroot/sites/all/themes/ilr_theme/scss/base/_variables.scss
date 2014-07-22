@@ -3,7 +3,7 @@ $row-width: rem-calc($page-max-width);
 // ==================================================
 // Modular Scale
 // ==================================================
-$ms-base: 16px, 960px;
+$ms-base: 16px, $page-max-width;
 $ms-ratio: $golden;
 
 // Lists modular scale for debugging
@@ -35,8 +35,8 @@ $content-area: #fff;
 // Varialbes here and implementation in _typography.scss
 // should probably be updated to a map
 // See https://medium.com/p/8e51498c3713
-$font: 'Open Sans', sans-serif;
-$font-headers: 'Marcellus', serif;
+$font: "freight-sans-pro-n4", "freight-sans-pro", sans-serif;
+$font-headers: "freight-text-pro-n4", "freight-text-pro", sans-serif;
 
 $h1-size: ms(3);
 $h2-size: ms(2);
