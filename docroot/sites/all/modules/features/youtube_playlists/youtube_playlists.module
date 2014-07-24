@@ -195,10 +195,20 @@ function _youtube_playlist_get_current_assignments() {
 /**
  * Implements hook_playlist_feeds_after_import().
  *
+ * Import Playlists after Videos.
+ * 
  * Assign Videos to Playlists after imported.
  */
 function youtube_playlists_feeds_after_import(FeedsSource $source) {
+  if ($source->importer->id == 'youtube_importer') {
+    // Run Youtube Playlist importer automatically as soon as Youtube Video importer runs.
+    $source = feeds_source('youtube_playlist_tag_importer');
+    if ($source) {
+      $source->startImport();
+    }
+  }
   if ($source->importer->id == 'youtube_playlist_tag_importer') {
+    // After Youtube Playlist import runs assign videos to playlists.
     _youtube_playlists_assign_videos();
   }
 }
