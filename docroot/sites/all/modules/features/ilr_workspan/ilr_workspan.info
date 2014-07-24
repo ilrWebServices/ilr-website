@@ -1,7 +1,7 @@
 name = ILR Workspan
 description = ILR Workspan Content Type
 core = 7.x
-package = Features
+package = ILR
 dependencies[] = basic_page
 dependencies[] = ctools
 dependencies[] = date
@@ -17,8 +17,6 @@ dependencies[] = youtube
 dependencies[] = youtube_videos
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-features[field_base][] = field_file
-features[field_base][] = field_headline
 features[field_instance][] = node-workspan-field_file
 features[field_instance][] = node-workspan-field_headline
 features[field_instance][] = node-workspan-field_published_date
