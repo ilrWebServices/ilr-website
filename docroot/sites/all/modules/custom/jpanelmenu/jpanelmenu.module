@@ -1,0 +1,113 @@
+<?php
+/**
+ * @file
+ * jpanelmenu.module
+ * Adds the library and runs the page_build, adds a permission options and the menu item callback
+ */
+
+// Constants
+define("JPANELMENU_DEFAULT_TARGET", '#main-menu');
+define("JPANELMENU_DEFAULT_TRIGGER", '.jpanel-trigger');
+define("JPANELMENU_DEFAULT_DIRECTION", 'left');
+define("JPANELMENU_DEFAULT_OPEN_POSITION", '250px');
+define("JPANELMENU_PLUGIN_URL", 'https://github.com/acolangelo/jPanelMenu/blob/master/jquery.jpanelmenu.js');
+define("JPANELMENU_PLUGIN_FILENAME", 'jquery.jpanelmenu.js');
+
+/**
+ * Implements hook_library().
+ */
+function jpanelmenu_library() {
+  // Define Library
+  $libraries['jpanelmenu'] = array(
+    'title' => 'jPanelMenu',
+    'website' => 'https://github.com/acolangelo/jPanelMenu',
+    'version' => '1.3',
+    'js' => array(
+      'jquery.jpanelmenu.js' => array(),
+    ),
+  );
+  return $libraries;
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function jpanelmenu_page_build(&$page) {
+  //Test for jpanel library
+  $library_path = libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js';
+  $installed = file_exists($library_path);
+  if (!$installed) {
+    return;
+  }
+
+  // Add the library
+  drupal_add_js($library_path, array(
+    'group' => JS_LIBRARY,
+    'every_page' => TRUE,
+  ));
+
+  //Build the Selector JS
+  $panelmenu_config =  array(
+    'target' => str_replace(PHP_EOL, ', ', variable_get('jpanelmenu_target', JPANELMENU_DEFAULT_TARGET)),
+    'trigger' => str_replace(PHP_EOL, ', ', variable_get('jpanelmenu_trigger', JPANELMENU_DEFAULT_TRIGGER)),
+    'direction' => variable_get('jpanelmenu_direction', JPANELMENU_DEFAULT_DIRECTION),
+    'openPosition' => variable_get('jpanelmenu_open_position', JPANELMENU_DEFAULT_OPEN_POSITION),
+    );
+  // TODO test that variables aren't null
+  //make the config variables available in JS
+  drupal_add_js(array('jpanelmenu' => array(
+    'target' => $panelmenu_config['target'],
+    'trigger' => $panelmenu_config['trigger'],
+    'direction' => $panelmenu_config['direction'],
+    'openPosition' => $panelmenu_config['openPosition'],
+    )), array('type' => 'setting'));
+
+  drupal_add_js(drupal_get_path('module', 'jpanelmenu') . '/js/jpanelmenu.js', array(
+    'target' => $panelmenu_config['target'],
+    'trigger' => $panelmenu_config['target'],
+    'direction' => $panelmenu_config['direction'],
+    'openPosition' => $panelmenu_config['openPosition'],
+    ));
+}
+
+/**
+ * Implements hook_menu().
+ */
+function jpanelmenu_menu() {
+  $items = array();
+
+  $items['admin/config/user-interface/jpanelmenu'] = array(
+    'title' => 'jPanelMenu',
+    'description' => 'Configuration for jPanelMenu module',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('jpanelmenu_form'),
+    'access arguments' => array('administer jpanelmenu'),
+    'file' => 'jpanelmenu.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function jpanelmenu_permission() {
+  return array(
+    'administer jpanelmenu' => array(
+      'title' => t('Administer the jpanelmenu module'),
+    )
+  );
+}
+
+/**
+ * Implements hook_help().
+ */
+function jpanelmenu_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#jpanelmenu':
+    $output = file_get_contents(drupal_get_path('module', 'jpanelmenu') . '/README.txt');
+    return module_exists('markdown') ? filter_xss_admin(module_invoke('markdown', 'filter', 'process', 0, -1, $output)) : '<pre>' . check_plain($output) . '</pre>';
+  }
+}
+

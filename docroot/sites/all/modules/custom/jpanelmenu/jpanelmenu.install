@@ -1,0 +1,101 @@
+<?php
+/**
+ * @file
+ * Runs Install & Uninstall functions
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function jpanelmenu_requirements($phase) {
+  $requirements = array();
+  // Ensure translations don't break during installation.
+  $t = get_t();
+
+  switch ($phase) {
+    case 'runtime':
+      $path = libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js';
+      $installed = file_exists($path);
+      if (!$installed) {
+        $requirements[] = array(
+          'title' => t('jPanelMenu jQuery plugin'),
+          'value' => t('Missing'),
+          'description' => t('The jPanelMenu jQuery plugin is missing. Download it from !jpanelmenu-site, copy it to the !jpanelmenu-library directory, and rename it to !jpanelmenu-filename.', array(
+            '!jpanelmenu-site' => l(t('here'), JPANELMENU_PLUGIN_URL),
+            '!jpanelmenu-library' => libraries_get_path('jpanelmenu'),
+            '!jpanelmenu-filename' => JPANELMENU_PLUGIN_FILENAME,
+          )),
+          'severity' => REQUIREMENT_ERROR,
+        );
+      }
+      else {
+        $requirements[] = array(
+          'title' => t('jPanelMenu jQuery plugin'),
+          'value' => t('Installed'),
+          'description' => t('jPanelMenu is available at !jpanelmenu-library/!jpanelmenu-filename.', array(
+            '!jpanelmenu-library' => libraries_get_path('jPanelMenu'),
+            '!jpanelmenu-filename' => JPANELMENU_PLUGIN_FILENAME,
+          )),
+          'severity' => REQUIREMENT_OK,
+        );
+      }
+      // Check if the site is running >= jQuery 1.7
+      if (($library = drupal_get_library('system', 'jquery')) && $library['version'] >= 1.7) {
+        $requirements[] = array(
+          'title' => t('jPanelMenu jQuery version'),
+          'value' => t('jQuery @version', array('@version' => $library['version'])),
+          'severity' => REQUIREMENT_OK,
+        );
+      }
+      else {
+        //$destination = drupal_get_destination();
+
+        $requirements[] = array(
+          'title' => t('jPanelMenu jQuery version'),
+          'value' => t('jQuery @version', array('@version' => $library['version'])),
+          'description' => t('jPanelMenu requires jQuery 1.7 or greater. Configure <a href="@jquery_update">jQuery Update</a>.', array('@jquery_update' => url('admin/config/development/jquery_update'))),
+          'severity' => REQUIREMENT_ERROR,
+        );
+      }//
+      break;
+  }
+
+  return $requirements;
+}
+/**
+ * Implements hook_uninstall().
+ */
+function jpanelmenu_uninstall() {
+  $variables = array(
+    "jpanelmenu_target",
+    "jpanelmenu_trigger",
+    "jpanelmenu_direction",
+    "jpanelmenu_open_position",
+    "jpanelmenu__active_tab");
+
+  foreach ($variables as $key => $value) {
+    variable_del($value);
+  }
+}
+
+/**
+ * Implements hook_enable().
+ */
+function jpanelmenu_enable() {
+  $library_path = libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js';
+  $installed = file_exists($library_path);
+  if (!$installed) {
+    $message = t('You need to download the jPanel jQuery plugin to use this module. Download it from !jpanelmenu-site, copy it to the !jpanelmenu-library directory, and rename it to !jpanelmenu-filename.', array(
+      '!jpanelmenu-site' => l(t('here'), JPANELMENU_PLUGIN_URL),
+      '!jpanelmenu-library' => libraries_get_path('jpanelmenu'),
+      '!jpanelmenu-filename' => JPANELMENU_PLUGIN_FILENAME,
+    ));
+    drupal_set_message(filter_xss_admin($message), $type = 'warning');
+  }
+  else {
+    $message = t('You already have the jpanelmenu.js jQuery plugin installed. Configure the module !jpanelmenu-configuration', array(
+      '!jpanelmenu-configuration' => l(t('here'), 'admin/config/user-interface/jpanelmenu'),
+    ));
+    drupal_set_message(filter_xss_admin($message));
+  }
+}
