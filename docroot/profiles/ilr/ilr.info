@@ -49,3 +49,4 @@ dependencies[] = tagged_content_block
 dependencies[] = wit
 dependencies[] = youtube_videos
 dependencies[] = youtube_playlists
+dependencies[] = jpanelmenu
