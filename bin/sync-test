@@ -19,7 +19,7 @@ drush cc all
 drush sql-dump -l default --gzip --result-file=../db/backups/$BACKUP_NAME
 
 # download the acquia dev db
-drush sql-sync @ilr.ilr.test @ilr.ilr.local --no-cache -y
+drush sql-sync @ilr.ilr.test @ilr.ilr.local -y
 
 drush rsync @ilr.ilr.test:%files/ @ilr.ilr.local:%files
 
