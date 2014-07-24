@@ -13,26 +13,45 @@ include_once 'youtube_playlists.features.inc';
  * Removed current playlist assignments for video if it is no longer assigned.
  */
 function _youtube_playlists_assign_videos() {
-  // @todo Should this URL be in settings.php?
-  $assignments_url = 'http://www.ilr.cornell.edu/codelib/media/youtube/getvideosinplaylists.cfm';
-  // Dev url
-  //$assignments_url = 'http://www.ilr-website.dev/sites/default/files/video_playlists.xml';
-  $response = drupal_http_request($assignments_url);
-  if ($response->error) {
-    watchdog('youtube_playlists', 'Error retrieving feed: @msg', array('@msg' => $response->error), WATCHDOG_ERROR);
-    return;
+  $new_video_assignments = _youtube_playlists_get_new_assignments();
+  if ($new_video_assignments) {
+    $current_video_assignments = _youtube_playlist_get_current_assignments();
+    _youtube_playlists_save_new_assignments($new_video_assignments, $current_video_assignments);
+    _youtube_playlists_save_videos_no_playlists($current_video_assignments, $new_video_assignments);
   }
-  $xml = simplexml_load_string($response->data);
-
-  $current_video_assignments = _youtube_playlist_get_current_assignments();
-  $new_video_assignments = _youtube_playlists_get_new_assignments($xml->entries->videoinplaylist);
-  _youtube_playlists_save_new_assignments($new_video_assignments, $current_video_assignments);
-  _youtube_playlists_save_videos_no_playlists($current_video_assignments, $new_video_assignments);
-
-
 }
 
 /**
+ * Retrieve video relationships.
+ * @return array();
+ *  Indexed array where values are arrays with values:
+ *  - video_id
+ *  - playlist_id
+ */
+function _youtube_playlists_retrieve_playlist_video_relationships() {
+  $assignments_url = variable_get('youtube_playlists_assignments_url', FALSE);
+  if (!$assignments_url) {
+    watchdog('youtube_playlists', 'Error youtube_playlists_assignments_url variable not set.', WATCHDOG_ERROR);
+    return array();
+  }
+  $response = drupal_http_request($assignments_url);
+  if ($response->error) {
+    watchdog('youtube_playlists', 'Error retrieving feed: @msg', array('@msg' => $response->error), WATCHDOG_ERROR);
+    return array();
+  }
+  $xml = simplexml_load_string($response->data);
+  $relationships = array();
+  foreach ($xml->entries->videoinplaylist as $video_assignment) {
+    $relationships[] = array(
+      'video_id' => (string) $video_assignment->videoId,
+      'playlist_id' => (string) $video_assignment->playlistId,
+    );
+  }
+  return $relationships;
+}
+
+/**
+ * Remove playlists from
  * @param $current_video_assignments
  * @param $new_video_assignments
  */
@@ -53,9 +72,11 @@ function _youtube_playlists_save_videos_no_playlists($current_video_assignments,
 }
 
 /**
+ * Save all video assignments that assignments that are different from current assignments.
  * @param $new_video_assignments
+ *  An associative array whose keys are the Video nids and values are array of playlist term tids.
  * @param $current_video_assignments
- * @return array
+ *  An associative array whose keys are the Video nids and values are array of playlist term tids.
  */
 function _youtube_playlists_save_new_assignments($new_video_assignments, $current_video_assignments) {
   $playlist_tids = _youtube_playlists_get_playlist_tids();
@@ -79,6 +100,12 @@ function _youtube_playlists_save_new_assignments($new_video_assignments, $curren
     }
   }
 }
+
+/**
+ * Get all playlist term tids
+ * @return array
+ *  Playlist term tids
+ */
 function _youtube_playlists_get_playlist_tids(){
   $tids = & drupal_static(__FUNCTION__);
   if (!isset($tids)) {
@@ -89,22 +116,24 @@ function _youtube_playlists_get_playlist_tids(){
 
 }
 /**
- * @param $xml
+ * Returns new video playlist assignments.
  * @return array
+ *  An associative array whose keys are the Video nids and values are array of playlist term tids.
  */
-function _youtube_playlists_get_new_assignments($playlist_vids) {
+function _youtube_playlists_get_new_assignments() {
+  $playlist_videos_relationships = _youtube_playlists_retrieve_playlist_video_relationships();
   $new_video_assignments = array();
   $unknown_videos = array();
   $unknown_playlists = array();
-  foreach ($playlist_vids as $video_assignment) {
-    $video_nid = youtube_videos_get_nid_from_video_id((string) $video_assignment->videoId);
-    $playlist_tid = _youtube_playlists_get_tid_from_playlist_id((string) $video_assignment->playlistId);
+  foreach ($playlist_videos_relationships as $playlist_videos_relationship) {
+    $video_nid = youtube_videos_get_nid_from_video_id($playlist_videos_relationship['video_id']);
+    $playlist_tid = _youtube_playlists_get_tid_from_playlist_id($playlist_videos_relationship['playlist_id']);
     // Keep of list of videos and playlists that aren't nodes.
     if (!$video_nid) {
-      $unknown_videos[] = (string) $video_assignment->videoId;
+      $unknown_videos[] = (string) $playlist_videos_relationship->videoId;
     }
     if (!$playlist_tid) {
-      $unknown_playlists[] = (string) $video_assignment->playlistId;
+      $unknown_playlists[] = (string) $playlist_videos_relationship->playlistId;
     }
     if ($video_nid && $playlist_tid) {
       // Both the video and playlist were found.
@@ -145,6 +174,11 @@ function _youtube_playlists_get_tid_from_playlist_id($playlist_id) {
   return $tids[$playlist_id];
 }
 
+/**
+ * Get current Video playlist assignments.
+ * @return array
+ *  An associative array whose keys are the Video nids and values are array of playlist term tids.
+ */
 function _youtube_playlist_get_current_assignments() {
   $video_assignments = array();
   $sql = 'SELECT ti.tid as tid, ti.nid as nid FROM {taxonomy_index} ti'
