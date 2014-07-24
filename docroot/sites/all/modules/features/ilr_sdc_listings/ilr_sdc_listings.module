@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Code for the ilr_sdc_listings feature.
+ */
+
+include_once 'ilr_sdc_listings.features.inc';
+
+/*
+ * @todo Extend FeedsNodeProcessor
+ *  for use with feeds importer sdc_faculty_class_importer
+ *  Override existingEntityId method to retrieve the existing class
+ *
+ *  then implement hook_feeds_presave? to load all other values from original node
+ *   merge new facaulty nid with existing for class.
+ *
+ * OR write custom code to like _youtube_playlists_assign_videos to make associations without feeds
+ */
