@@ -108,7 +108,6 @@ features[field_base][] = field_news_stories
 features[field_base][] = field_number_of_assistants_reque
 features[field_base][] = field_number_of_completed_semest
 features[field_base][] = field_phone
-features[field_base][] = field_playlists
 features[field_base][] = field_preferred_students
 features[field_base][] = field_prior_appointments
 features[field_base][] = field_professional_associations

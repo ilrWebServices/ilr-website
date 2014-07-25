@@ -129,12 +129,12 @@ function youtube_videos_form_youtube_video_node_form_alter(&$form, &$form_state,
       $no_access_fields = array(
         'title',
         'body',
-        'field_playlists',
         'field_youtube_video'
       );
       foreach ($no_access_fields as $field_name) {
         if (isset($form[$field_name])) {
-          $form[$field_name]['#access'] = FALSE;
+          $form[$field_name]['#disabled'] = TRUE;
+          $form[$field_name]['#description'] = t('This field is imported from Youtube and cannot be changed.');
         }
       }
     }
