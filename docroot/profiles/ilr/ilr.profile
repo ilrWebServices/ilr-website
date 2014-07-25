@@ -152,3 +152,21 @@ function ilr_user_pass_validate($form, &$form_state) {
 function _ilr_user_has_cornell_email($email) {
   return substr($email, -11) == 'cornell.edu';
 }
+
+/**
+ * Returns the term in the given vocabulary.
+ */
+function _ilr_get_or_create_term($term_name, $vocab_machine_name) {
+  $terms = taxonomy_get_term_by_name($term_name, $vocab_machine_name);
+  if (!$terms) {
+    $vocab = taxonomy_vocabulary_machine_name_load($vocab_machine_name);
+    $term = new stdClass();
+    $term->name = $term_name;
+    $term->vid = $vocab->vid;
+    taxonomy_term_save($term);
+  }
+  else {
+    $term = array_shift($terms);
+  }
+  return $term;
+}

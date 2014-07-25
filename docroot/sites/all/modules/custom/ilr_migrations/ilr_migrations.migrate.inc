@@ -15,6 +15,7 @@ function ilr_migrations_migrate_api() {
       'Microfiche' => array('class_name' => 'MicroficheMigration'),
       'FeaturedBook' => array('class_name' => 'FeaturedBookMigration'),
       'News' => array('class_name' => 'NewsMigration'),
+      'Workspan' => array('class_name' => 'WorkspanMigration'),
     ),
   );
   return $api;
