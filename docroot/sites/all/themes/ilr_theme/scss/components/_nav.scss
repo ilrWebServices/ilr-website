@@ -1,3 +1,22 @@
 nav {
   h2 { @extend .hidden; }
 }
+
+.jpanel-trigger-container {
+
+  [data-eq-state="small"] & {
+    @extend .hidden;
+  }
+}
+
+nav.main, #block-menu-block-ilr-subnav {
+  @extend .hidden;
+
+  [data-eq-state="small"] & {
+    @extend .visible;
+  }
+}
+
+#block-menu-block-ilr-subnav h2 {
+  @extend .hidden;
+}

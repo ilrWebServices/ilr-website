@@ -97,10 +97,10 @@ function ilr_menu_block_blocks() {
       'parent_mlid' => 0,
       'title_link'  => TRUE,
       'admin_title' => 'Main Menu Children',
-      'level'       => 2,
+      'level'       => 0,
       'follow'      => 0,
-      'depth'       => 0,
-      'expanded'    => TRUE,
+      'depth'       => 10,
+      'expanded'    => FALSE,
       'sort'        => FALSE,
     ),
   );
