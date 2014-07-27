@@ -5,14 +5,67 @@
  */
 
 include_once 'ilr_sdc_listings.features.inc';
-
-/*
- * @todo Extend FeedsNodeProcessor
- *  for use with feeds importer sdc_faculty_class_importer
- *  Override existingEntityId method to retrieve the existing class
- *
- *  then implement hook_feeds_presave? to load all other values from original node
- *   merge new facaulty nid with existing for class.
- *
- * OR write custom code to like _youtube_playlists_assign_videos to make associations without feeds
+function _ilr_sdc_listings_set_facaulty_for_classes(){
+  $new_assignments = _ilr_sdc_listings_new_assignments();
+}
+/**
+ * Returns new class faculty assignments.
+ * @return array
+ *  An associative array whose keys are the Class nids and values are array of faculty.
  */
+function _ilr_sdc_listings_new_assignments() {
+  $faculty_class_relationships = _ilr_sdc_listings_retrieve_faculty_class_relationships();
+  $new_class_assignments = array();
+  $unknown_classes = array();
+  $unknown_faculty = array();
+  foreach ($faculty_class_relationships as $faculty_class_relationship) {
+
+    $class_nid = _ilr_get_feeds_item_entity_id($faculty_class_relationship['CLASS_OID'], 'sdc_class_importer');
+    $faculty_nid = _ilr_get_feeds_item_entity_id($faculty_class_relationship['FACULTY_OID'], 'sdc_faculty_importer');
+    // Keep of list of classes and faculty that aren't nodes.
+    if (!$class_nid) {
+      $unknown_classes[] = $faculty_class_relationship['CLASS_OID'];
+    }
+    if (!$faculty_nid) {
+      $unknown_faculty[] = $faculty_class_relationship['FACULTY_OID'];
+    }
+    if ($class_nid && $faculty_nid) {
+      // Both the class and faculty were found.
+      // Check that faculty is not already set(duplicate entries in assignment json).
+      if (empty($new_class_assignments[$class_nid]) || !in_array($faculty_nid, $new_class_assignments[$class_nid])) {
+        $new_class_assignments[$class_nid][] = $faculty_nid;
+      }
+
+    }
+  }
+  if ($unknown_classes) {
+    watchdog('ilr_sdc_listings', 'Unknown classes were found during class assignment. @class_ids', array('@class_ids' => implode(',', $unknown_classes)), WATCHDOG_WARNING);
+  }
+  if ($unknown_faculty) {
+    watchdog('ilr_sdc_listings', 'Unknown faculty were found during class assignment. @faculty_ids', array('@faculty_ids' => implode(',', $unknown_faculty)), WATCHDOG_WARNING);
+  }
+  $new_class_assignments = array_slice($new_class_assignments,0, 5, TRUE);
+  print_r($new_class_assignments);
+  return $new_class_assignments;
+}
+/**
+ * Retrieve Class/Faculty relationships.
+ * @return array();
+ *  Indexed array where values are arrays with values:
+ *  - class_id
+ *  - faculty_id
+ */
+function _ilr_sdc_listings_retrieve_faculty_class_relationships() {
+  $assignments_url = variable_get('ilr_sdc_listings_faculty_class_assignments_url', FALSE);
+  if (!$assignments_url) {
+    watchdog('ilr_sdc_listings', 'Error ilr_sdc_listings_faculty_class_assignments_url variable not set.', WATCHDOG_ERROR);
+    return array();
+  }
+  $response = drupal_http_request($assignments_url);
+  if ($response->error) {
+    watchdog('ilr_sdc_listings', 'Error retrieving feed: @msg', array('@msg' => $response->error), WATCHDOG_ERROR);
+    return array();
+  }
+  $relationships = drupal_json_decode($response->data);
+  return $relationships;
+}
