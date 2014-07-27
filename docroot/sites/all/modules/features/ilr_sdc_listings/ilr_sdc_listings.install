@@ -1,0 +1,39 @@
+<?php
+/**
+ * @file
+ * ilr_sdc_listings install and update hooks.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function ilr_sdc_listings_install() {
+  _ilr_sdc_listings_set_importer_sources();
+
+}
+
+/**
+ * Set the source urls for all feeds importers in this module.
+ */
+function _ilr_sdc_listings_set_importer_sources() {
+  $base_url = (isset($_ENV["AH_SITE_GROUP"]))
+    ? ''
+    : 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/';
+
+  $importer_files = array(
+    'sdc_course' => 'extensionCatalog_ncourse.json',
+    'sdc_class_importer' => 'extensionCatalog_nclass.json',
+    'sdc_faculty_importer' => 'extensionCatalog_facultyFromSDC.json',
+  );
+  foreach ($importer_files as $importer_id => $importer_file) {
+    $source = feeds_source($importer_id);
+    $source->addConfig(array(
+      'FeedsHTTPFetcher' => array(
+        'source' => $base_url . $importer_file,
+      ),
+    ));
+    $source->save();
+  }
+  // Faculty/Class relationship file is not used in a feed.
+  variable_set('ilr_sdc_listings_faculty_class_assignments_url', $base_url . extensionCatalog_classFacultyFromSDC.json);
+}
