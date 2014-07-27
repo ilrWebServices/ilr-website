@@ -269,3 +269,19 @@ function _ilr_block_load($module, $delta, $theme) {
   }
   return $block;
 }
+/**
+ * Lookup entity id for feeds item by guid and importer id.
+ * @param $guid
+ * @param $importer_id
+ * @param int $feed_nid
+ * @return int|FALSE
+ */
+function _ilr_get_feeds_item_entity_id($guid, $importer_id, $feed_nid = 0){
+  return db_select('feeds_item')
+    ->fields('feeds_item', array('entity_id'))
+    ->condition('id', $importer_id)
+    ->condition('feed_nid', $feed_nid)
+    ->condition('guid', $guid)
+    ->execute()
+    ->fetchField();
+}
