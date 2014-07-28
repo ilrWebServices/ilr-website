@@ -2029,7 +2029,7 @@ function ilr_field_bases_field_default_field_bases() {
   // Exported field_base: 'field_duration'
   $field_bases['field_duration'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_duration',
