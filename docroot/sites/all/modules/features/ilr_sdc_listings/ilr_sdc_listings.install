@@ -21,7 +21,7 @@ function _ilr_sdc_listings_set_importer_sources() {
     : 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/';
 
   $importer_files = array(
-    'sdc_course' => 'extensionCatalog_ncourse.json',
+    'sdc_course_importer' => 'extensionCatalog_ncourse.json',
     'sdc_class_importer' => 'extensionCatalog_nclass.json',
     'sdc_faculty_importer' => 'extensionCatalog_facultyFromSDC.json',
   );
@@ -35,5 +35,5 @@ function _ilr_sdc_listings_set_importer_sources() {
     $source->save();
   }
   // Faculty/Class relationship file is not used in a feed.
-  variable_set('ilr_sdc_listings_faculty_class_assignments_url', $base_url . extensionCatalog_classFacultyFromSDC.json);
+  variable_set('ilr_sdc_listings_faculty_class_assignments_url', $base_url . 'extensionCatalog_classFacultyFromSDC.json');
 }

@@ -5,9 +5,15 @@
  */
 
 include_once 'ilr_sdc_listings.features.inc';
-function _ilr_sdc_listings_set_facaulty_for_classes(){
+function _ilr_sdc_listings_set_faculty_for_classes() {
   $new_assignments = _ilr_sdc_listings_new_assignments();
+  if ($new_assignments) {
+    $current_assignments = _ilr_sdc_listings_get_entityreference_relations('field_faculty', 'sdc_class');
+    _ilr_sdc_listings_save_new_assignments($new_assignments, $current_assignments);
+    _ilr_sdc_listings_save_videos_no_playlists($current_assignments, $new_assignments);
+  }
 }
+
 /**
  * Returns new class faculty assignments.
  * @return array
@@ -44,10 +50,9 @@ function _ilr_sdc_listings_new_assignments() {
   if ($unknown_faculty) {
     watchdog('ilr_sdc_listings', 'Unknown faculty were found during class assignment. @faculty_ids', array('@faculty_ids' => implode(',', $unknown_faculty)), WATCHDOG_WARNING);
   }
-  $new_class_assignments = array_slice($new_class_assignments,0, 5, TRUE);
-  print_r($new_class_assignments);
   return $new_class_assignments;
 }
+
 /**
  * Retrieve Class/Faculty relationships.
  * @return array();
@@ -68,4 +73,94 @@ function _ilr_sdc_listings_retrieve_faculty_class_relationships() {
   }
   $relationships = drupal_json_decode($response->data);
   return $relationships;
+}
+
+function _ilr_sdc_listings_get_entityreference_relations($field, $bundle = NULL, $entity_type = 'node') {
+  $children = array();
+
+  $sql = "SELECT entity_id as parent_nid, {$field}_target_id as child_nid FROM {field_data_{$field}}"
+    . " WHERE deleted = 0 "
+    . " and entity_type = :entity_type ";
+  $args[':entity_type'] = $entity_type;
+  if ($bundle) {
+    $sql .= " and bundle = :bundle";
+    $args[':bundle'] = $bundle;
+  }
+  $result = db_query($sql, $args);
+
+  while ($record = $result->fetchAssoc()) {
+    $children[$record['parent_nid']][] = $record['child_nid'];
+  }
+  return $children;
+}
+
+/**
+ * Save all class/faculty assignments where assignments that are different from current assignments.
+ * @param $new_assignments
+ *  An associative array whose keys are the Class nids and values are array of faculty nids.
+ * @param $current_assignments
+ *  An associative array whose keys are the Class nids and values are array of faculty nids.
+ */
+function _ilr_sdc_listings_save_new_assignments($new_assignments, $current_assignments) {
+  // Loop through new assignments and update only need ones. Saves calls to node_save.
+  foreach ($new_assignments as $referencer_nid => $referenced_nids) {
+    // If the video is not currently assigned to a playlists needs to be assigned
+    $needs_update = !isset($current_assignments[$referencer_nid]);
+    if (!$needs_update) {
+      sort($referenced_nids);
+      sort($current_assignments[$referencer_nid]);
+      // Check that array of nids are equal after sort.
+      $needs_update = $referenced_nids != $current_assignments[$referencer_nid];
+    }
+    if ($needs_update) {
+      // Update assignment
+      $node_wrapper = entity_metadata_wrapper('node', $referencer_nid);
+      //$referenced_nids = array_map('intval',$referenced_nids);
+      $node_wrapper->field_faculty->set($referenced_nids);
+      $node_wrapper->save();
+    }
+  }
+}
+
+/**
+ * Remove faculty from classes that have set values
+ * @param $current_assignments
+ * @param $new_assignments
+ */
+function _ilr_sdc_listings_save_videos_no_playlists($current_assignments, $new_assignments) {
+  // Remove any video that aren't in assignments but were in current
+  $unassigned_nids = array_keys(array_diff_key($current_assignments, $new_assignments));
+  if ($unassigned_nids) {
+    foreach ($unassigned_nids as $nid) {
+      $node_wrapper = entity_metadata_wrapper('node', $nid);
+      $node_wrapper->field_faculty->set();
+      $node_wrapper->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_playlist_feeds_after_import().
+ *
+ */
+function ilr_sdc_listings_feeds_after_import(FeedsSource $source) {
+  $chained_importers = array(
+    'sdc_course_importer',
+    'sdc_class_importer',
+    'sdc_faculty_importer',
+  );
+  $importer_index = array_search($source->importer->id, $chained_importers);
+  if ($importer_index !== FALSE) {
+    if ($importer_index < count($chained_importers) - 1) {
+      // Run the next importer automatically.
+      $source = feeds_source($chained_importers[$importer_index + 1]);
+      if ($source) {
+        $source->startImport();
+      }
+    }
+    else {
+      // Last importer assign faculty to classes
+      _ilr_sdc_listings_set_faculty_for_classes();
+    }
+  }
 }
