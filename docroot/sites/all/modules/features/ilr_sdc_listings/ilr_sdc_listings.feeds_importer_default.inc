@@ -149,7 +149,7 @@ function ilr_sdc_listings_feeds_importer_default() {
           ),
         ),
         'update_existing' => '0',
-        'input_format' => 'plain_text',
+        'input_format' => 'full_html',
         'skip_hash_check' => 0,
         'bundle' => 'sdc_course',
       ),
