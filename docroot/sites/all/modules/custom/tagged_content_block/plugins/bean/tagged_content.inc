@@ -19,6 +19,7 @@ class TaggedContentBean extends BeanPlugin {
       'content_types' => array(),
       'order_by' => 'date',
       'sticky' => 0,
+      'featured' => 0,
     );
 
     return array_merge(parent::values(), $values);
@@ -76,6 +77,12 @@ class TaggedContentBean extends BeanPlugin {
       '#default_value' => $bean->sticky,
     );
 
+    $form['featured'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Only include featured content? (Use this for the highlighted region.)'),
+      '#default_value' => $bean->featured,
+    );
+
     return $form;
   }
 
@@ -112,6 +119,7 @@ class TaggedContentBean extends BeanPlugin {
     }
 
     $content['nodes']['#weight'] = '-1';
+
 
     return $content;
   }
@@ -189,6 +197,11 @@ class TaggedContentBean extends BeanPlugin {
     // Determine if the query should respect "sticky" status
     if($this->bean->sticky) {
       $query->propertyOrderBy('sticky', 'DESC');
+    }
+
+    // Determine if the query is limited to featured content
+    if($this->bean->featured) {
+      $query->propertyCondition('featured', 1, '=');
     }
 
     // Figure out if we need to reorder the query
