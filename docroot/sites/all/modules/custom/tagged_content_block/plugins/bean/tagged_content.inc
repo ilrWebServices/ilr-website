@@ -118,6 +118,10 @@ class TaggedContentBean extends BeanPlugin {
       }
     }
 
+    // Add the item count to the bean for theming data-attributes
+    // See ilr_theme_preprocess_block
+    $bean->item_count = count($content['nodes']);
+
     $content['nodes']['#weight'] = '-1';
 
 
