@@ -5,6 +5,7 @@ gem 'compass'
 gem 'modular-scale', ">= 2.0.0.alpha5"
 gem 'guard-livereload'
 gem 'singularitygs', '~> 1.2.1'
+gem 'autoprefixer-rails'
 
 # For Windows machines, see https://github.com/guard/listen#on-windows
 require 'rbconfig'

@@ -7,6 +7,7 @@ theme_path = 'docroot/sites/all/themes/ilr_theme'
 require 'modular-scale'
 require 'singularitygs'
 require 'breakpoint'
+require 'autoprefixer-rails'
 
 # Set this to the root of your project when deployed:
 http_path = "/"
@@ -24,3 +25,10 @@ output_style = :compressed
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 line_comments = false
+
+on_stylesheet_saved do |file|
+  css = File.read(file)
+  File.open(file, 'w') do |io|
+    io << AutoprefixerRails.process(css)
+  end
+end
