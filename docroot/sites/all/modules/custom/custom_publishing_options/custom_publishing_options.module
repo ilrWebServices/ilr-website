@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * Implements hook_schema_alter().
+ */
+function custom_publishing_options_schema_alter(&$schema) {
+  $schema['node']['fields']['featured'] = array(
+    'description' => t('Featured', array('@name' => 'featured')),
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0,
+  );
+}
+
+/**
+ * Implements hook_form_alter()
+ * Adds the "featured" checkbox to the node publishing options tab
+ */
+function custom_publishing_options_form_alter(&$form, $form_state, $form_id) {
+  if (isset($form['#node_edit_form']) && $form['#node_edit_form'] === TRUE) {
+    $node = $form['#node'];
+
+    $form['options']['featured'] = array(
+     '#type' => 'checkbox',
+     '#title' => 'Featured',
+     '#default_value' => isset($node->featured) ? $node->featured : FALSE,
+     '#access' => user_access('administer nodes') ? TRUE : FALSE,
+    );
+
+    $form['#validate'][] = 'custom_publishing_options_featured_validate';
+  }
+}
+
+/**
+ * Custom form validation
+ *   - Confirms that there is a main image if featuring
+ */
+function custom_publishing_options_featured_validate($form, &$form_state) {
+  if ($form_state['values']['featured'] == 1) {
+    if (isset($form_state['values']['field_image']) && $form_state['values']['field_image'][LANGUAGE_NONE][0]['fid'] < 1) {
+      form_set_error('state', t("You must add a main image in order to feature content."));
+    }
+  }
+}

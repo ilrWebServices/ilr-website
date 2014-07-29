@@ -1,0 +1,8 @@
+name = Custom Publishing Options
+description = Adds ILR Custom Publishing Options
+dependencies[] = entity
+core = 7.x
+package = ILR
+
+; Note, this small custom module is based on the Custom Publishing Options
+; Contrib module, https://www.drupal.org/project/custom_pub

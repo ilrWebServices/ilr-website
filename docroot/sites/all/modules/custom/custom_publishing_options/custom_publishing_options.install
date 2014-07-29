@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function custom_publishing_options_install() {
+  $spec = array(
+    'description' => 'Featured publishing option.',
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0
+  );
+  db_add_field('node', 'featured', $spec);
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function custom_publishing_options_uninstall() {
+  // Remove the featured field
+  db_drop_field('node', 'featured');
+
+}
