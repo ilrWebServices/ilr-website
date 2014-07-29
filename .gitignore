@@ -5,6 +5,8 @@ db/backups/*.gz
 drupal-streamline.make
 docroot/.drupal_streamline_guard_running
 tmp/
+migration_data/*images/
+migration_data/*export/
 
 # Ignore the stylesheets
 docroot/sites/all/themes/ilr_theme/css/
