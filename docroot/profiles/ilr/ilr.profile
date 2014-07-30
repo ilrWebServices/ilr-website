@@ -269,3 +269,38 @@ function _ilr_block_load($module, $delta, $theme) {
   }
   return $block;
 }
+
+ /**
+  * Implements hook_date_format_types - added by Caroline for event reg form 7/9/2014
+ */
+// function ilr_date_format_types() {
+//   return array(
+//     'ilr_day_long_date_no_time' => t('ILR day and date but not time'),
+//     'ilr_time' => t('ILR time only'),
+//   );
+// }
+
+/**
+* Implements hook_date_formats - added by Caroline for event reg form 7/9/2014
+*/
+// function ilr_date_formats() {
+
+
+//   $formats = array(
+//     array(
+//       'type'    => 'ilr_day_long_date_no_time',
+//       'format'  => 'l F d, Y',    // Wednesday July 9, 2014
+//       'locales' => array(),
+//     ),
+//     array(
+//       'type'    => 'ilr_time',
+//       'format'  => 'g:i a',    // 7:15 pm
+//       'locales' => array(),
+//     ),
+//   );
+//   // save the new date formats into variables
+//   foreach ($formats as $format) {
+//     variable_set('date_format_' . $format['type'], $format['format']);
+//   }
+//   return $formats;
+// }
