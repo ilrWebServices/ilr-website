@@ -19,11 +19,12 @@ function news_bean_types_api_info() {
  * Sets the node_url to the value of field_website_url, if there is one
  *
  * Also removes the read more link
+ * @todo Refactor promos and other relevant tagged content functionality
  */
 function news_preprocess_node(&$variables) {
   $variables['title_link'] = '';
 
-  if ($variables['type'] == 'news_item') {
+  if ($variables['type'] == 'news_item' || $variables['type'] == 'promo') {
     $language = field_language('node', $variables['node'], 'field_website_url');
     if (!empty($variables['node']->field_website_url[$language][0]['url'])) {
       $url = $variables['node']->field_website_url[$language][0]['url'];

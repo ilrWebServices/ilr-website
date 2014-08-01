@@ -24,6 +24,12 @@ function news_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -66,6 +72,13 @@ function news_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'highlighted' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -97,7 +110,7 @@ function news_field_default_field_instances() {
   $field_instances['node-news_item-field_image'] = array(
     'bundle' => 'news_item',
     'deleted' => 0,
-    'description' => '',
+    'description' => '* Required if featuring this content',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -109,21 +122,32 @@ function news_field_default_field_instances() {
         'type' => 'image',
         'weight' => 2,
       ),
+      'highlighted' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'focussed_main_image',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => 'content',
-          'image_style' => 'focussed_thumbnail',
+          'image_style' => 'focussed_grid_image',
         ),
         'type' => 'image',
         'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_image',
     'label' => 'Main Image',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 1,
       'default_image' => 0,
@@ -131,7 +155,7 @@ function news_field_default_field_instances() {
       'file_extensions' => 'jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '200x200',
+      'min_resolution' => '1080x300',
       'title_field' => 1,
       'user_register_form' => FALSE,
     ),
@@ -144,8 +168,8 @@ function news_field_default_field_instances() {
             'attach' => 0,
             'clipboard' => 0,
             'imce' => 'imce',
-            'reference' => 0,
-            'remote' => 0,
+            'reference' => 'reference',
+            'remote' => 'remote',
             'upload' => 'upload',
           ),
           'source_attach' => array(
@@ -186,6 +210,12 @@ function news_field_default_field_instances() {
         ),
         'type' => 'date_default',
         'weight' => 0,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -234,6 +264,12 @@ function news_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 4,
       ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -273,6 +309,12 @@ function news_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 6,
       ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -311,6 +353,12 @@ function news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 5,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -354,6 +402,7 @@ function news_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('* Required if featuring this content');
   t('Adding an external URL for a news item sends visitors to the external site rather than displaying the article on the ILR site. ');
   t('Body');
   t('External URL');

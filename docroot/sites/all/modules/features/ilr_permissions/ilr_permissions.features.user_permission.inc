@@ -637,15 +637,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'create youtube_playlist content'.
-  $permissions['create youtube_playlist content'] = array(
-    'name' => 'create youtube_playlist content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'create youtube_video content'.
   $permissions['create youtube_video content'] = array(
     'name' => 'create youtube_video content',
@@ -791,15 +782,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete any youtube_playlist content'.
-  $permissions['delete any youtube_playlist content'] = array(
-    'name' => 'delete any youtube_playlist content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete any youtube_video content'.
   $permissions['delete any youtube_video content'] = array(
     'name' => 'delete any youtube_video content',
@@ -915,15 +897,6 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'wit editor' => 'wit editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own youtube_playlist content'.
-  $permissions['delete own youtube_playlist content'] = array(
-    'name' => 'delete own youtube_playlist content',
-    'roles' => array(
-      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1144,15 +1117,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'edit any youtube_playlist content'.
-  $permissions['edit any youtube_playlist content'] = array(
-    'name' => 'edit any youtube_playlist content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit any youtube_video content'.
   $permissions['edit any youtube_video content'] = array(
     'name' => 'edit any youtube_video content',
@@ -1279,15 +1243,6 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'wit editor' => 'wit editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own youtube_playlist content'.
-  $permissions['edit own youtube_playlist content'] = array(
-    'name' => 'edit own youtube_playlist content',
-    'roles' => array(
-      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );

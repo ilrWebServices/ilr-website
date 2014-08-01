@@ -20,6 +20,99 @@ function ilr_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_image_wrap';
+  $strongarm->value = 0;
+  $export['borealis_image_wrap'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_responsive_builds';
+  $strongarm->value = array(
+    'respondsmall' => 250,
+    'respondmedium' => 437.5,
+    'respondlarge' => 765.625,
+    'respondxl' => 1339.84375,
+    'respondxl2' => 2344.7265625,
+    'respondxl3' => 4103.271484375,
+    'respondxl4' => 7180.7250976562,
+  );
+  $export['borealis_responsive_builds'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_ri_aspect_ratio';
+  $strongarm->value = '9/16';
+  $export['borealis_ri_aspect_ratio'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_ri_children';
+  $strongarm->value = array(
+    0 => 'focussed_grid_image',
+  );
+  $export['borealis_ri_children'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_ri_hidpi';
+  $strongarm->value = '1.75';
+  $export['borealis_ri_hidpi'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_ri_lazyload';
+  $strongarm->value = '0';
+  $export['borealis_ri_lazyload'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_ri_min_size';
+  $strongarm->value = '250';
+  $export['borealis_ri_min_size'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_ri_parents';
+  $strongarm->value = array(
+    'focussed_grid_image' => array(
+      'isid' => '2',
+      'name' => 'focussed_grid_image',
+      'label' => 'Focussed Grid Image',
+      'module' => NULL,
+      'storage' => 1,
+      'effects' => array(
+        2 => array(
+          'label' => 'Focal Point Scale And Crop',
+          'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+          'effect callback' => 'focal_point_scale_and_crop_effect',
+          'dimensions callback' => 'image_resize_dimensions',
+          'form callback' => 'image_resize_form',
+          'summary theme' => 'image_resize_summary',
+          'module' => 'focal_point',
+          'name' => 'focal_point_scale_and_crop',
+          'data' => array(
+            'width' => '270',
+            'height' => '120',
+          ),
+          'ieid' => '2',
+          'isid' => '2',
+          'weight' => '1',
+        ),
+      ),
+    ),
+  );
+  $export['borealis_ri_parents'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'clean_url';
   $strongarm->value = '1';
   $export['clean_url'] = $strongarm;
