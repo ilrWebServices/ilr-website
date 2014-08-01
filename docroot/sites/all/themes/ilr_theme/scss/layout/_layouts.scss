@@ -1,0 +1,127 @@
+%one-column {
+  @include layout(4) {
+    @include float-span(4);
+    padding: 1em;
+  }
+}
+
+%one-column-grid {
+  //display: flex;
+  article {
+    @include layout(4) {
+      @extend %grid;
+      @include float-span(4);
+      &:nth-of-type(even) {
+        @extend %alternating-color;
+      }
+    }
+  }
+}
+
+%two-column {
+  @include layout(2) {
+    @include float-span(1);
+    &:nth-of-type(even) {
+      @include float-span(1, 'last');
+    }
+  }
+}
+
+%two-thirds-split-column {
+  @include layout(3) {
+    @include float-span(1,'last');
+    &:nth-of-type(1) {
+      @include float-span(2);
+    }
+  }
+}
+
+%two-column-grid {
+  display: flex;
+  article {
+    @extend %grid;
+    @include layout(4, $gutter: 0) {
+
+      @include float-span(2);
+      &:nth-of-type(4n + 2),
+      &:nth-of-type(4n + 3) {
+        @extend %alternating-color;
+      }
+    }
+  }
+}
+
+%four-column {
+  @include layout(8) {
+    @include float-span(2);
+    &:nth-of-type(4n) {
+      @include float-span(2, 'last');
+    }
+    &:nth-of-type(4n + 1) {
+      clear: left;
+    }
+  }
+}
+
+%four-column-grid {
+  display: flex;
+  article {
+    @extend %grid;
+    @include layout(4, $gutter: 0) {
+      @include float-span(1);
+      &:nth-of-type(8n + 2),
+      &:nth-of-type(8n + 4) {
+        @extend %alternating-color;
+      }
+    }
+  }
+}
+
+%grid {
+  // display: flex;
+  // flex-wrap: wrap;
+  color: white;
+  background: $darker-red;
+  padding: 0;
+  @extend %image-first;
+  .field-description, h2 {
+    padding: 0 ms(0);
+    a {
+      color: white;
+    }
+  }
+  .field-description {
+    @include trailer(2);
+  }
+  &:nth-of-type(even) {
+    @extend %heading-first;
+  }
+  @extend %full-bleed;
+}
+
+%alternating-color {
+  background-color: $gray-dark;
+}
+
+%image-first {
+  h2                  { order: 2; }
+  .field-image        { order: 1; align-self: flex-start; }
+  .field-description  { order: 3; }
+}
+
+%heading-first {
+  h2                  { order: 1; }
+  .field-image        { order: 3; align-self: flex-end; }
+  .field-description  { order: 2; align-self: flex-start; }
+  overflow: hidden;
+}
+
+%full-bleed {
+  .field-image {
+    width: 100%;
+    img {
+      width: 100%;
+      vertical-align: top;
+    }
+  }
+}
