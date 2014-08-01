@@ -94,6 +94,10 @@ class TaggedContentBean extends BeanPlugin {
     if ($form['records_shown'] <= 0) {
       form_set_error('records_shown', 'Records shown should be greater than zero.');
     }
+
+    if ($form['featured'] && $form['records_shown'] > 3) {
+      form_set_error('state', t("Currently you can feature up to 3 items at a time."));
+    }
   }
 
   /**
