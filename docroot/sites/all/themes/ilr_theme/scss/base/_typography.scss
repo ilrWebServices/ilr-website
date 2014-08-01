@@ -117,10 +117,10 @@ h6 {
 // ==================================================
 p, a, li {
   font-family: $font;
+  font-weight: 300;
 }
 p {
   font-size: $p-size;
-  font-weight: 300;
   color: $p-text;
   margin-bottom: ms(2);
   line-height: ms(2);

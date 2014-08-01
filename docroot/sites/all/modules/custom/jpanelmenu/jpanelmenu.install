@@ -98,5 +98,5 @@ function jpanelmenu_enable() {
     ));
     drupal_set_message(filter_xss_admin($message));
   }
-  variable_set('jpanelmenu_target', '#sidebar-first ul.menu');
+  variable_set('jpanelmenu_target', '#sidebar-first .menu-block-ilr-subnav > ul');
 }

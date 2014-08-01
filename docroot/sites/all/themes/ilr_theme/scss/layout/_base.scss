@@ -1,12 +1,25 @@
+#page-wrapper {
+  @include background-image(linear-gradient(lighten($cornell-red, 3%), $cornell-red));
+  background-size: 100% $header-height-small;
+  background-repeat: no-repeat;
+  &[data-eq-state="regular-nav"] {
+    background-size: 100% $header-height;
+  }
+}
+
 #page {
   max-width: $page-max-width;
   @extend .center;
-  //@include sgs-change('debug', true);
-  //@include background-grid();
 
   #main {
+    @include add-grid(1 10 1);
+    // @include sgs-change('debug', true);
+    // @include background-grid();
     padding-top: 1em;
-    &[data-eq-state="tablet"] {
+    #content {
+      @include grid-span(1,2);
+    }
+    [data-eq-state="regular-nav"] & {
       @extend %two-cols-with-sidebar;
     }
 

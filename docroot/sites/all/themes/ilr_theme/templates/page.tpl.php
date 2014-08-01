@@ -1,10 +1,10 @@
-<div id="page-wrapper" data-eq-pts="small: 420">
+<div id="page-wrapper"  <?php print render($page['nav_trigger_pts']); ?>>
   <div id="page">
     <div class="container">
       <header role="banner" <?php print render($page['page_width_eq_points']); ?>>
 
           <?php if ($logo): ?>
-            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"></a>
+            <div class="logo-wrapper"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"></a></div>
           <?php endif; ?>
 
           <?php if ($main_menu): ?>

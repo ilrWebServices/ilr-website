@@ -3,8 +3,7 @@ nav { // All nav menus
 }
 
 .jpanel-trigger-container {
-
-  [data-eq-state="small"] & {
+  [data-eq-state="regular-nav"] & {
     @extend .hidden;
   }
 }
@@ -12,7 +11,7 @@ nav { // All nav menus
 nav.main, #block-menu-block-ilr-subnav {
   @extend .hidden;
 
-  [data-eq-state="small"] & {
+  [data-eq-state="regular-nav"] & {
     @extend .visible;
   }
 }
@@ -30,18 +29,19 @@ nav.main { // Main nav
       background: none;
       line-height: 1;
       margin: 0;
-      padding: 0 30px 0 0;
+      padding: 0;
       float: left;
       a, a:visited, a:hover {
         color: white;
         font-family: $font-headers;
         text-decoration: none;
+        font-weight: 400;
       }
     }
   }
 }
 
-@include breakpoint(769px 1024px) {
+@include breakpoint(769px) {
   nav.main {
     display: inherit;
     padding-top: 60px;
@@ -53,21 +53,40 @@ nav.main { // Main nav
   }
 }
 
-@include breakpoint(1025px) {
-  nav.main {
-    display: inherit;
-    padding-top: 60px;
-    ul {
-      li {
-        //font-size: ms(1);
-        padding: 0 30px 0 0;
-        &:last-child {
-          padding: 0;
-        }
-        a {
-          font-size: 18px;
-        }
+@include breakpoint(1065px) {
+  nav.main ul li {
+    padding-right: 30px;
+    &:last-child {
+      padding: 0;
+    }
+    a {
+      font-size: 18px;
+    }
+  }
+}
+
+
+.sidebar ul.menu, #jPanelMenu-menu {
+  margin: 0;
+  padding: 0 ms(0);
+  li {
+    list-style: none;
+    background-image: none;
+    font-family: freight-sans-pro;
+    a {
+      color: $gray-dark;
+      display: block;
+      padding: 1em 0;
+      &:hover {
+        color: $brand;
       }
     }
+    a.active {
+      color: $cornell-red;
+      font-weight: 600;
+    }
+  }
+  & > li {
+    border-top: 1px solid #e7e5db;
   }
 }

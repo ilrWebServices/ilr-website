@@ -26,6 +26,7 @@ function ilr_theme_preprocess_page(&$variables) {
   // Footer content
   $variables['page']['footer'][] = array('#markup' => '<div class="copyright">&copy; ' . date('Y') . ' Cornell University | ILR School </div>');
   $variables['page']['page_width_eq_points'] =  array('#markup' => 'data-eq-pts="mobile-v: 320, mobile-h:450, tablet-v: 768, tablet-h: 900, desktop: 1025"');
+  $variables['page']['nav_trigger_pts'] =  array('#markup' => 'data-eq-pts="regular-nav: 940"');
 }
 
 /**
