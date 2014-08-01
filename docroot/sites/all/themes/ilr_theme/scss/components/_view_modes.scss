@@ -19,10 +19,6 @@
     font-size: $h2-sm-size;
   }
 
-  .field-name-field-thumbnail {
-    @extend .alignleft;
-  }
-
   .field-type-text-with-summary {
     @extend .hidden;
   }

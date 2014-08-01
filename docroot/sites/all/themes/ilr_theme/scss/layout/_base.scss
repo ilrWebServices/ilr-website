@@ -28,5 +28,41 @@
     }
 
     @extend .clearfix;
+    #content {
+      @extend .clearfix;
+    }
+
+    #highlighted .tagged-content {
+      &[data-items='2'],
+      &[data-items='3'] {
+        article {
+          @extend %two-thirds-split-column;
+          @extend %image-first;
+        }
+      }
+    }
+
+    .tagged-content {
+      article h2 {
+        // position: absolute;
+        // bottom: 20%;
+        // a {
+        //   color: $mustard;
+        //   @include single-text-shadow;
+        // }
+      }
+    }
+
+    #content-bottom {
+      clear: both;
+      .tagged-content {
+        article {
+          @extend %one-column;
+        }
+        &[data-items='4'] {
+          @extend %one-column-grid;
+        }
+      }
+    }
   }
 }

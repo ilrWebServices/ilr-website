@@ -2,19 +2,18 @@
   @include add-grid(3 6 3);
 
   #content {
+    @extend .clearfix;
     @include grid-span(1, 2);
     article.node-teaser {
-      @include layout(8) {
-        @include float-span(4);
-        &:nth-child(2n) {
-          @include float-span(4, 'last');
-        }
-      }
+      @extend %two-column;
     }
   }
 
   #sidebar-first {
     @include grid-span(1);
+    article {
+      //@extend %slug;
+    }
   }
 
   #sidebar-second {
@@ -23,5 +22,14 @@
 
   #content-bottom {
     @include grid-span(3);
+    clear: both;
+    .tagged-content {
+      article {
+        @extend %four-column;
+      }
+      &[data-items='4'] {
+        @extend %four-column-grid;
+      }
+    }
   }
 }

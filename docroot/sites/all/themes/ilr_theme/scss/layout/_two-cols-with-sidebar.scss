@@ -5,12 +5,7 @@
   #content {
     @include grid-span(1, 2);
     article.node-teaser {
-      @include layout(8) {
-        @include float-span(4);
-        &:nth-child(2n) {
-          @include float-span(4, 'last');
-        }
-      }
+      @extend %two-column;
     }
   }
 
@@ -20,9 +15,33 @@
 
   #sidebar-second {
     @include grid-span(1, 2);
+    article.node-teaser {
+      @extend %two-column;
+    }
   }
 
   #content-bottom {
     @include grid-span(2);
+    clear: both;
+    .tagged-content {
+      article {
+        @extend %four-column;
+      }
+      &[data-items='4'] {
+        @extend %one-column-grid;
+      }
+    }
+
+    // &[data-eq-state="mobile-h"],
+    // &[data-eq-state="tablet-v"] {
+    //   article.node-teaser {
+    //     @extend %two-column-grid;
+    //   }
+    // }
+    // &[data-eq-state="tablet-h"] {
+    //   article.node-teaser {
+    //     @extend %four-column;
+    //   }
+    // }
   }
 }
