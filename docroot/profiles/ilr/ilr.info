@@ -17,15 +17,16 @@ dependencies[] = list
 ; Required contrib modules
 dependencies[] = admin_menu
 dependencies[] = admin_menu_toolbar
+dependencies[] = borealis_ri
 dependencies[] = ctools
 dependencies[] = context
+dependencies[] = entity
 dependencies[] = features
+dependencies[] = menu_block
+dependencies[] = pathauto
+dependencies[] = simplesamlphp_auth
 dependencies[] = strongarm
 dependencies[] = token
-dependencies[] = pathauto
-dependencies[] = entity
-dependencies[] = menu_block
-dependencies[] = simplesamlphp_auth
 dependencies[] = views
 
 ; ILR Features and Custom modules

@@ -108,6 +108,15 @@ function ilr_update_7001() {
 }
 
 /**
+ * Enables field_formatter_settings and borealis
+ */
+function ilr_update_7002() {
+  module_enable(array(
+    'borealis_ri',
+  ));
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {
