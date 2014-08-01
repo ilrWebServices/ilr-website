@@ -84,40 +84,30 @@
   //////////////////////////////
   // On Load, rock it out!
   //////////////////////////////
-  window.onload = function() {
-    settings = Drupal.settings.borealis_ri.sizes;
-    settingsArray = sortObject(settings);
-    settingArrayLength = settingsArray.length;
+  Drupal.behaviors.borealis_ri = {
+    attach: function (context, settings) {
+      settings = Drupal.settings.borealis_ri.sizes;
+      settingsArray = sortObject(settings);
+      settingArrayLength = settingsArray.length;
 
-    lazyload = Drupal.settings.borealis_ri.lazyload;
+      lazyload = Drupal.settings.borealis_ri.lazyload;
 
-    aspectRatio = Drupal.settings.borealis_ri.aspect_ratio;
-
-
-    styleArray = Drupal.settings.borealis_ri.styleArray;
-
-    var sizeArraySort = new Array();
-    var styleArraySort = new Array();
-    for (i = 0; i < settingArrayLength; i++) {
-      sizeArraySort.push(settingsArray[i].value);
-      styleArraySort.push(settingsArray[i].key);
-    }
-
-    sizeArray = sizeArraySort;
-    styleArray = styleArraySort;
-
-    arraySize = sizeArray.length;
-
-    if (lazyload) {
-      borealisImagePlaceholder();
-    }
-    else {
-      borealisImageRespond();
-    }
+      aspectRatio = Drupal.settings.borealis_ri.aspect_ratio;
 
 
-    // When the screen is resized, check again!
-    window.onresize = debounce(function(){
+      styleArray = Drupal.settings.borealis_ri.styleArray;
+
+      var sizeArraySort = new Array();
+      var styleArraySort = new Array();
+      for (i = 0; i < settingArrayLength; i++) {
+        sizeArraySort.push(settingsArray[i].value);
+        styleArraySort.push(settingsArray[i].key);
+      }
+
+      sizeArray = sizeArraySort;
+      styleArray = styleArraySort;
+
+      arraySize = sizeArray.length;
 
       if (lazyload) {
         borealisImagePlaceholder();
@@ -125,10 +115,22 @@
       else {
         borealisImageRespond();
       }
-    }, 20);
 
-    // When the screen is scrolled, do it again!
-    window.onscroll = window.onresize;
+
+      // When the screen is resized, check again!
+      window.onresize = debounce(function(){
+
+        if (lazyload) {
+          borealisImagePlaceholder();
+        }
+        else {
+          borealisImageRespond();
+        }
+      }, 20);
+
+      // When the screen is scrolled, do it again!
+      window.onscroll = window.onresize;
+    }
   };
 
 
