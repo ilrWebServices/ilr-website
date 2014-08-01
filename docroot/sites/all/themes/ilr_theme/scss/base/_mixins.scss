@@ -6,3 +6,30 @@
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
+
+@function randomColor($format:NULL) {
+  $red: random(256);
+  $green: random(256);
+  $blue: random(256);
+  $opacity: random(100) / 100;
+  @if $format == "hex" {
+    @return rgba($red, $green, $blue, 1);
+  }
+  @else {
+    @return rgba($red, $green, $blue, $opacity);
+  }
+
+  // Example usage:
+  // article.node-teaser {
+  //   $s-min: 20;
+  //   $s-max: 70;
+  //   $l-min: 30;
+  //   $l-max: 90;
+
+  //   @for $i from 1 through 8 {
+  //     &:nth-child(#{$i}) {
+  //       background-color: hsl(random(360),$s-min+random($s-max+-$s-min),$l-min+random($l-max+-$l-min));
+  //     }
+  //   }
+  // }
+}
