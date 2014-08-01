@@ -15,25 +15,10 @@ function news_bean_types_api_info() {
 
 /**
  * Implements hook_preprocess_hook()
- *
- * Sets the node_url to the value of field_website_url, if there is one
- *
- * Also removes the read more link
- * @todo Refactor promos and other relevant tagged content functionality
+ * Makes the short title the title
  */
 function news_preprocess_node(&$variables) {
-  $variables['title_link'] = '';
-
-  if ($variables['type'] == 'news_item' || $variables['type'] == 'promo') {
-    $language = field_language('node', $variables['node'], 'field_website_url');
-    if (!empty($variables['node']->field_website_url[$language][0]['url'])) {
-      $url = $variables['node']->field_website_url[$language][0]['url'];
-      $variables['node_url'] = $url;
-    }
-    // Remove the read more links
-    unset($variables['content']['links']['node']['#links']['node-readmore']);
-
-    // Use the short title if showing a teaseer and there is one
+  if ($variables['type'] == 'news_item') {
     if ($variables['view_mode'] == 'teaser' && count($variables['field_short_title']) > 0) {
       $variables['title'] = $variables['field_short_title']['und'][0]['value'];
     }
