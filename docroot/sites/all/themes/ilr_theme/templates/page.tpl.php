@@ -1,4 +1,4 @@
-<div id="page-wrapper">
+<div id="page-wrapper" data-eq-pts="small: 420">
   <div id="page">
     <div class="container">
       <header role="banner">
@@ -19,7 +19,6 @@
           <?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('id' => 'main-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Main menu'))); ?>
         </nav> <!-- / nav -->
       <?php endif; ?>
-
       <?php print $messages; ?>
 
       <!-- highlighted location -->
@@ -34,6 +33,7 @@
           </div>
         </div><?php endif; ?>
         <div id="content" class="column">
+          <div class="jpanel-trigger-container"><a href="#" class="jpanel-trigger">MENU</a></div>
           <?php if ($breadcrumb): ?>
           <div id="breadcrumb"><?php print $breadcrumb; ?></div>
           <?php endif; ?>
