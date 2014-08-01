@@ -1,15 +1,21 @@
+@import "compass/typography/vertical_rhythm";
+
 $page-max-width: 1280px;
+$base-font-size: 16px;
+$base-line-height: 26px;
+$line-height-multiplier: $base-line-height / $base-font-size;
+@include establish-baseline;
 $row-width: rem-calc($page-max-width);
 $header-height: 140px;
 $header-height-small: 85px;
 // ==================================================
 // Modular Scale
 // ==================================================
-$ms-base: 16px, $page-max-width;
+$ms-base: $base-font-size, $page-max-width;
 $ms-ratio: $golden;
 
 // Lists modular scale for debugging
-//@debug ms-list($Start: -2, $End: 4, $Bases: $ms-base, $Ratios: $ms-ratio);
+// @debug ms-list($Start: -2, $End: 4, $Bases: $ms-base, $Ratios: $ms-ratio);
 //Current scale: -2, -1, 0, 1, 2, 3, 4, 5 (8.65248px, 12.62939px, 14px, 20.43479px, 22.65248px, 33.06418px, 36.65248px, 53.49896px)
 
 $mod-01: 12.62939px; //Based on mod scale. Number is not applied/calculated properly by mixin.
@@ -21,8 +27,10 @@ $brand: #941e12;
 $brand-dark: #363636;
 $brand-light: #ACACAC;
 $cornell-red: #b31b1b;
+$darker-red: #92210f;
 $gold: #DED7BA;
-$gray-dark: #5c5350;
+$mustard: #e0ae4c;
+$gray-dark: #686d72;
 $gray-medium: #8b8b85;
 $gray-light: #cfcdc4;
 $selection: #212121;
@@ -38,7 +46,7 @@ $content-area: #fff;
 // should probably be updated to a map
 // See https://medium.com/p/8e51498c3713
 $font: "freight-sans-pro-n4", "freight-sans-pro", sans-serif;
-$font-headers: "freight-text-pro-n4", "freight-text-pro", sans-serif;
+$font-headers: "freight-text-pro-n4", "freight-text-pro", serif;
 
 $h1-size: ms(3);
 $h2-size: ms(2);

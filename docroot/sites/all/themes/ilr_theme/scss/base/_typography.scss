@@ -1,7 +1,7 @@
 // ==================================================
 // body
 // ==================================================
-* {
+body {
   font-family: $font;
 }
 
@@ -11,16 +11,18 @@
 // consider reworking per https://medium.com/p/8e51498c3713
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
-  margin-top: 0;
   font-family: $font-headers;
 
   a {
     font-weight: inherit;
+    #content-bottom & {
+      //color: white;
+    }
   }
 }
 
 h1 {
-  font-size: $h1-size;
+  @include adjust-font-size-to($h1-size, $line-height-multiplier);
   color: $h1-text;
 
   a {
@@ -33,9 +35,8 @@ h1 {
 }
 
 h2 {
-  font-size: $h2-size;
+  @include adjust-font-size-to($h2-size, $line-height-multiplier);
   color: $h2-text;
-  margin-bottom: $mod-01;
 
   a {
     color: $h2-link;
@@ -49,7 +50,6 @@ h2 {
 h3 {
   font-size: $h3-size;
   color: $h3-text;
-  margin-bottom: $mod-01;
 
   a {
     color: $h3-link;
@@ -70,7 +70,6 @@ h3 + img.aligncenter {
 h4 {
   font-size: $h4-size;
   color: $h4-text;
-  margin-bottom: ms(-2);
 
   a {
     color: $h4-link;
@@ -84,7 +83,6 @@ h4 {
 h5 {
   font-size: $h5-size;
   color: $h5-text;
-  margin-bottom: ms(-2);
 
   a {
     color: $h5-link;
@@ -100,7 +98,6 @@ h6 {
   font-size: $h6-size;
   font-weight: 600;
   color: $h6-text;
-  margin-bottom: ms(-2);
 
   a {
     color: $h6-link;
@@ -119,11 +116,10 @@ p, a, li {
   font-family: $font;
   font-weight: 300;
 }
+
 p {
   font-size: $p-size;
   color: $p-text;
-  margin-bottom: ms(2);
-  line-height: ms(2);
 
   img {
     margin: 0;
@@ -190,7 +186,7 @@ ol {
 }
 
 ul {
-  padding: 0;
+  padding: 0 0 0 2em;
   line-height: ms(2);
 }
 
@@ -212,35 +208,25 @@ ul.disc {
 
 li {
   list-style: none;
-  background: url(../images/squareBullet.gif) no-repeat 0 8px;
-  font-size: ms(0);
-  margin: 0 0 ms(-2) $mod-01;
-  padding: 0 0 0 ms(0);
-
-  p {
-
-  }
+  padding-left: 1em;
+  background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
+  @include adjust-font-size-to(ms(0));
 }
 
 ul.tabs {
   li {
     background: none;
-    margin: 0;
     padding-left: 0;
   }
 }
 
-dl {
-  line-height: ms(2);
-}
-
 dl dt {
-  font-size: ms(0);
+  @include adjust-font-size-to(ms(0));
   font-weight: bold;
 }
 
 dl dd {
-  font-size: ms(0);
+  @include adjust-font-size-to(ms(0));
   margin: 0;
 }
 
@@ -287,8 +273,7 @@ q {
 }
 
 sub, sup {
-  font-size: ms(-2);
-  line-height: 0;
+  @include adjust-font-size-to(ms(-2));
   position: relative;
   vertical-align: baseline;
 }
@@ -338,9 +323,7 @@ table {
     border-bottom: 1px solid $rule;
     color: $th-text;
     font-weight: 400;
-    line-height: ms(1);
     padding: 4px 8px;
-    //text-transform: uppercase;
   }
 
   td {
@@ -348,7 +331,6 @@ table {
     border-top: 1px dotted $rule;
     border-right: 1px dotted $rule;
     color: $td-text;
-    line-height: ms(1);
     padding: 8px;
   }
 
