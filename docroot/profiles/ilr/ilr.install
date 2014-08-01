@@ -95,7 +95,6 @@ function ilr_install() {
   _ilr_add_permissions();
 
   // Add Migrations here as necessary
-  ilr_update_7001();
 }
 
 /**
