@@ -5,6 +5,7 @@
   //@include background-grid();
 
   #main {
+    padding-top: 1em;
     &[data-eq-state="tablet"] {
       @extend %two-cols-with-sidebar;
     }

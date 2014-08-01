@@ -1,4 +1,4 @@
-nav {
+nav { // All nav menus
   h2 { @extend .hidden; }
 }
 
@@ -19,4 +19,55 @@ nav.main, #block-menu-block-ilr-subnav {
 
 #block-menu-block-ilr-subnav h2 {
   @extend .hidden;
+}
+
+nav.main { // Main nav
+  float: left;
+  padding-top: 15px;
+  display: none; //for mobile
+  ul {
+    li {
+      background: none;
+      line-height: 1;
+      margin: 0;
+      padding: 0 30px 0 0;
+      float: left;
+      a, a:visited, a:hover {
+        color: white;
+        font-family: $font-headers;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@include breakpoint(769px 1024px) {
+  nav.main {
+    display: inherit;
+    padding-top: 60px;
+    ul {
+      li {
+        padding: 0 20px 0 0;
+      }
+    }
+  }
+}
+
+@include breakpoint(1025px) {
+  nav.main {
+    display: inherit;
+    padding-top: 60px;
+    ul {
+      li {
+        //font-size: ms(1);
+        padding: 0 30px 0 0;
+        &:last-child {
+          padding: 0;
+        }
+        a {
+          font-size: 18px;
+        }
+      }
+    }
+  }
 }

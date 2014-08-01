@@ -25,6 +25,7 @@ function ilr_theme_preprocess_html(&$variables) {
 function ilr_theme_preprocess_page(&$variables) {
   // Footer content
   $variables['page']['footer'][] = array('#markup' => '<div class="copyright">&copy; ' . date('Y') . ' Cornell University | ILR School </div>');
+  $variables['page']['page_width_eq_points'] =  array('#markup' => 'data-eq-pts="mobile-v: 320, mobile-h:450, tablet-v: 768, tablet-h: 900, desktop: 1025"');
 }
 
 /**
@@ -75,6 +76,12 @@ function ilr_theme_preprocess_block(&$variables) {
     // Get the type if there is one
     if (isset($bean['#bundle'])) {
       $variables['classes_array'][] = str_replace('_', '-',$bean['#bundle']);
+
+      // Check to see if the item_count has been added
+      // (via tagged_content.inc for theming purposes)
+      if (isset($bean['#entity']->item_count)) {
+        $variables['attributes_array']['data-items'] = $bean['#entity']->item_count;
+      }
     }
   }
 }

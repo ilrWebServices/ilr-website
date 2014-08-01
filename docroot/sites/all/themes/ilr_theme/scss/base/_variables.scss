@@ -49,8 +49,8 @@ $h2-sm-size: rem-calc(16);
 
 $header-color: #787878;
 $h1-text: lighten($header-color, 10%);
-$h2-text: lighten($header-color, 10%);
-$h3-text: lighten($header-color, 10%);
+$h2-text: lighten($header-color, 5%);
+$h3-text: lighten($header-color, 2.5%);
 $h4-text: $header-color;
 $h5-text: $header-color;
 $h6-text: $header-color;
@@ -76,6 +76,7 @@ $p-sm-size: $mod-01;
 $link: darken($brand, 5%);
 $link-hover: $brand;
 $nav-color: #2D4063;
+$nav-size: 1.2em;
 
 $rule: #cfcdc4;
 
