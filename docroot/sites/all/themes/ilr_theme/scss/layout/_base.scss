@@ -16,9 +16,6 @@
     // @include sgs-change('debug', true);
     // @include background-grid();
     padding-top: 1em;
-    #content {
-      @include grid-span(1,2);
-    }
     [data-eq-state="regular-nav"] & {
       @extend %two-cols-with-sidebar;
     }
@@ -28,7 +25,9 @@
     }
 
     @extend .clearfix;
+
     #content {
+      @include grid-span(1,2);
       @extend .clearfix;
     }
 
@@ -52,7 +51,9 @@
         // }
       }
     }
-
+    #sidebar-second {
+      clear: both;
+    }
     #content-bottom {
       clear: both;
       .tagged-content {
