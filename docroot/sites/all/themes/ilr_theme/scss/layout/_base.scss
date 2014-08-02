@@ -26,9 +26,10 @@
 
     @extend .clearfix;
 
-    #content {
+    #content, #sidebar-second {
       @include grid-span(1,2);
       @extend .clearfix;
+      clear: both;
     }
 
     #highlighted .tagged-content {
@@ -51,9 +52,7 @@
         // }
       }
     }
-    #sidebar-second {
-      clear: both;
-    }
+
     #content-bottom {
       clear: both;
       .tagged-content {
