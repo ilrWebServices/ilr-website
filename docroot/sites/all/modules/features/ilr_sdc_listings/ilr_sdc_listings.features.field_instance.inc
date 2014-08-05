@@ -98,6 +98,162 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-sdc_class-field_address'
+  $field_instances['node-sdc_class-field_address'] = array(
+    'bundle' => 'sdc_class',
+    'default_value' => array(
+      0 => array(
+        'element_key' => 'node|sdc_class|field_address|und|0',
+        'thoroughfare' => '',
+        'premise' => '',
+        'locality' => '',
+        'administrative_area' => '',
+        'postal_code' => '',
+        'country' => 'US',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'addressfield',
+        'settings' => array(
+          'format_handlers' => array(
+            0 => 'address',
+          ),
+          'use_widget_handlers' => 1,
+        ),
+        'type' => 'addressfield_default',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_address',
+    'label' => 'Address',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'addressfield',
+      'settings' => array(
+        'available_countries' => array(
+          'US' => 'US',
+        ),
+        'format_handlers' => array(
+          'address' => 'address',
+          'address-hide-country' => 'address-hide-country',
+          'organisation' => 0,
+          'name-full' => 0,
+          'name-oneline' => 0,
+        ),
+      ),
+      'type' => 'addressfield_standard',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_class-field_building'
+  $field_instances['node-sdc_class-field_building'] = array(
+    'bundle' => 'sdc_class',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_building',
+    'label' => 'Building',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_class-field_class_dates'
+  $field_instances['node-sdc_class-field_class_dates'] = array(
+    'bundle' => 'sdc_class',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_class_dates',
+    'label' => 'Class Dates',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 37,
+    ),
+  );
+
   // Exported field_instance: 'node-sdc_class-field_class_id'
   $field_instances['node-sdc_class-field_class_id'] = array(
     'bundle' => 'sdc_class',
@@ -221,6 +377,105 @@ function ilr_sdc_listings_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_class-field_price'
+  $field_instances['node-sdc_class-field_price'] = array(
+    'bundle' => 'sdc_class',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_price',
+    'label' => 'Price',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 40,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_class-field_registration_end_date'
+  $field_instances['node-sdc_class-field_registration_end_date'] = array(
+    'bundle' => 'sdc_class',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_registration_end_date',
+    'label' => 'Registration End date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 41,
     ),
   );
 
@@ -354,6 +609,46 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-sdc_course-field_keywords'
+  $field_instances['node-sdc_course-field_keywords'] = array(
+    'bundle' => 'sdc_course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_keywords',
+    'label' => 'Keywords',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 36,
+    ),
+  );
+
   // Exported field_instance: 'node-sdc_course-field_price'
   $field_instances['node-sdc_course-field_price'] = array(
     'bundle' => 'sdc_course',
@@ -442,14 +737,19 @@ function ilr_sdc_listings_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Address');
   t('Body');
+  t('Building');
   t('Catalog Number Prefix');
+  t('Class Dates');
   t('Class id');
   t('Course');
   t('Credit Hours');
   t('Faculty');
+  t('Keywords');
   t('Price');
   t('Price note');
+  t('Registration End date');
 
   return $field_instances;
 }
