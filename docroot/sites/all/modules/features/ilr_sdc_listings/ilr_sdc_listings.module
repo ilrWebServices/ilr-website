@@ -5,10 +5,16 @@
  */
 
 include_once 'ilr_sdc_listings.features.inc';
+/**
+ * Connect Faculty to classes from JSON file.
+ *
+ * This is triggered after all importers for this modules
+ * @see ilr_sdc_listings_feeds_after_import().
+ */
 function _ilr_sdc_listings_set_faculty_for_classes() {
   $new_assignments = _ilr_sdc_listings_new_assignments();
   if ($new_assignments) {
-    $current_assignments = _ilr_sdc_listings_get_entityreference_relations('field_faculty', 'sdc_class');
+    $current_assignments = _ilr_get_entityreference_relations('field_faculty', 'sdc_class');
     _ilr_sdc_listings_save_new_assignments($new_assignments, $current_assignments);
     _ilr_sdc_listings_save_videos_no_playlists($current_assignments, $new_assignments);
   }
@@ -41,7 +47,6 @@ function _ilr_sdc_listings_new_assignments() {
       if (empty($new_class_assignments[$class_nid]) || !in_array($faculty_nid, $new_class_assignments[$class_nid])) {
         $new_class_assignments[$class_nid][] = $faculty_nid;
       }
-
     }
   }
   if ($unknown_classes) {
@@ -73,25 +78,6 @@ function _ilr_sdc_listings_retrieve_faculty_class_relationships() {
   }
   $relationships = drupal_json_decode($response->data);
   return $relationships;
-}
-
-function _ilr_sdc_listings_get_entityreference_relations($field, $bundle = NULL, $entity_type = 'node') {
-  $children = array();
-
-  $sql = "SELECT entity_id as parent_nid, {$field}_target_id as child_nid FROM {field_data_{$field}}"
-    . " WHERE deleted = 0 "
-    . " and entity_type = :entity_type ";
-  $args[':entity_type'] = $entity_type;
-  if ($bundle) {
-    $sql .= " and bundle = :bundle";
-    $args[':bundle'] = $bundle;
-  }
-  $result = db_query($sql, $args);
-
-  while ($record = $result->fetchAssoc()) {
-    $children[$record['parent_nid']][] = $record['child_nid'];
-  }
-  return $children;
 }
 
 /**
@@ -142,6 +128,8 @@ function _ilr_sdc_listings_save_videos_no_playlists($current_assignments, $new_a
 /**
  * Implements hook_playlist_feeds_after_import().
  *
+ * Automatically run other imports after course import is run.
+ * Run faculty/class assigner.
  */
 function ilr_sdc_listings_feeds_after_import(FeedsSource $source) {
   $chained_importers = _ilr_sdc_listings_get_importer_ids();
@@ -163,6 +151,8 @@ function ilr_sdc_listings_feeds_after_import(FeedsSource $source) {
 
 /**
  * Implements hook_feeds_after_parse().
+ *
+ * Loop through all results from feed and prepare for import.
  */
 function ilr_sdc_listings_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
   $importer_ids = _ilr_sdc_listings_get_importer_ids();
@@ -173,7 +163,15 @@ function ilr_sdc_listings_feeds_after_parse(FeedsSource $source, FeedsParserResu
     }
   }
 }
-function _ilr_sdc_listings_prepare_source_item(array &$item, $source) {
+
+/**
+ * Prepare source item for import.
+ * @param array $item
+ *  Feeds source item
+ * @param $source
+ *  Importer source
+ */
+function _ilr_sdc_listings_prepare_source_item(array &$item, FeedsSource $source) {
   $importer_id = $source->importer->id;
   if ($importer_id == 'sdc_class_importer') {
     $country_source = _ilr_get_feed_source_for_target('field_address:country',$source->importer);
@@ -183,18 +181,27 @@ function _ilr_sdc_listings_prepare_source_item(array &$item, $source) {
     }
   }
   foreach ($item as  &$item_prop) {
-   _ilr_sdc_source_prepare_item_property($item_prop);
+   _ilr_sdc_source_cleanup_item_property($item_prop);
   }
 }
-function _ilr_sdc_source_prepare_item_property(&$item_prop) {
+
+/**
+ * Cleanup source property from JSON import because they are double escaped.
+ * @param $item_prop
+ */
+function _ilr_sdc_source_cleanup_item_property(&$item_prop) {
+  if (is_numeric($item_prop)) {
+    return;
+  }
   $item_prop = trim($item_prop, "\"");
   $replace_strings = array(
     "\\n" => "\n",
+    "\\t" => "\t",
+    "\\" => "",
   );
   foreach ($replace_strings as $orig => $new) {
     $item_prop = str_replace($orig, $new, $item_prop);
   }
-
 }
 function _ilr_sdc_listings_get_importer_ids() {
   return array_keys(_ilr_sdc_listings_get_importer_files());
