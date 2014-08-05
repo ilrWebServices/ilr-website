@@ -174,14 +174,14 @@ function ilr_sdc_listings_feeds_after_parse(FeedsSource $source, FeedsParserResu
 function _ilr_sdc_listings_prepare_source_item(array &$item, FeedsSource $source) {
   $importer_id = $source->importer->id;
   if ($importer_id == 'sdc_class_importer') {
-    $country_source = _ilr_get_feed_source_for_target('field_address:country',$source->importer);
+    $country_source = _ilr_get_feed_source_for_target('field_address:country', $source->importer);
     if ($country_source) {
       // Hardcode US as country because addressfield needs this.
-      $item[$country_source]  = 'US';
+      $item[$country_source] = 'US';
     }
   }
-  foreach ($item as  &$item_prop) {
-   _ilr_sdc_source_cleanup_item_property($item_prop);
+  foreach ($item as &$item_prop) {
+    _ilr_sdc_source_cleanup_item_property($item_prop);
   }
 }
 
@@ -203,9 +203,11 @@ function _ilr_sdc_source_cleanup_item_property(&$item_prop) {
     $item_prop = str_replace($orig, $new, $item_prop);
   }
 }
+
 function _ilr_sdc_listings_get_importer_ids() {
   return array_keys(_ilr_sdc_listings_get_importer_files());
 }
+
 /**
  * Get importer files.
  * @return array
