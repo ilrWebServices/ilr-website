@@ -170,16 +170,25 @@ function ilr_sdc_listings_feeds_after_parse(FeedsSource $source, FeedsParserResu
 
   if (in_array($source->importer->id, $importer_ids)) {
     foreach ($result->items as &$item) {
-      _ilr_sdc_listings_prepare_source_item($item);
+      _ilr_sdc_listings_prepare_source_item($item, $source);
     }
   }
 }
-function _ilr_sdc_listings_prepare_source_item(array &$item) {
-  foreach ($item as &$item_prop) {
+function _ilr_sdc_listings_prepare_source_item(array &$item, $source) {
+  $importer_id = $source->importer->id;
+  if ($importer_id == 'sdc_class_importer') {
+    $country_source = _ilr_get_feed_source_for_target('field_address:country',$source->importer);
+    if ($country_source) {
+      // Hardcode US as country because addressfield needs this.
+      $item[$country_source]  = 'US';
+    }
+  }
+  foreach ($item as  &$item_prop) {
    _ilr_sdc_source_prepare_item_property($item_prop);
   }
 }
 function _ilr_sdc_source_prepare_item_property(&$item_prop) {
+  $item_prop = trim($item_prop, "\"");
   $replace_strings = array(
     "\\n" => "\n",
   );

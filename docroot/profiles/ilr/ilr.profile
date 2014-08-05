@@ -285,3 +285,12 @@ function _ilr_get_feeds_item_entity_id($guid, $importer_id, $feed_nid = 0){
     ->execute()
     ->fetchField();
 }
+function _ilr_get_feed_source_for_target($target, $importer) {
+  $mappings = $importer->processor->config['mappings'];
+  foreach ($mappings as $mapping) {
+    if ($mapping['target'] == $target) {
+      return $mapping['source'];
+    }
+  }
+  return NULL;
+}
