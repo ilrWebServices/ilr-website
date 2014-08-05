@@ -1,6 +1,7 @@
-name = ilr_sdc_listings
+name = ILR SDC Listings
 core = 7.x
-package = Features
+package = ILR
+description = Provides Content Types and Feed importers for SDC Course listings.
 dependencies[] = ctools
 dependencies[] = entityreference
 dependencies[] = features
