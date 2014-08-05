@@ -285,6 +285,16 @@ function _ilr_get_feeds_item_entity_id($guid, $importer_id, $feed_nid = 0){
     ->execute()
     ->fetchField();
 }
+
+/**
+ * Return the feed source property for a target.
+ *
+ * Useful modules like FeedsJson and FeedsXpath where sources are not descriptive
+ *  for example "jsonpath_parser:3"
+ * @param $target
+ * @param $importer
+ * @return null|string
+ */
 function _ilr_get_feed_source_for_target($target, $importer) {
   $mappings = $importer->processor->config['mappings'];
   foreach ($mappings as $mapping) {
@@ -293,4 +303,32 @@ function _ilr_get_feed_source_for_target($target, $importer) {
     }
   }
   return NULL;
+}
+/**
+ * Get all parent/child relationships for an entity reference field.
+ * @param $fieldname
+ * @param null $bundle
+ *  Bundle name
+ * @param string $entity_type
+ * @return array
+ *  - keys - nid of parent
+ *  - values - array of child nids
+ */
+function _ilr_get_entityreference_relations($fieldname, $bundle = NULL, $entity_type = 'node') {
+  $children = array();
+
+  $sql = "SELECT entity_id as parent_nid, {$fieldname}_target_id as child_nid FROM {field_data_{$fieldname}}"
+    . " WHERE deleted = 0 "
+    . " and entity_type = :entity_type ";
+  $args[':entity_type'] = $entity_type;
+  if ($bundle) {
+    $sql .= " and bundle = :bundle";
+    $args[':bundle'] = $bundle;
+  }
+  $result = db_query($sql, $args);
+
+  while ($record = $result->fetchAssoc()) {
+    $children[$record['parent_nid']][] = $record['child_nid'];
+  }
+  return $children;
 }
