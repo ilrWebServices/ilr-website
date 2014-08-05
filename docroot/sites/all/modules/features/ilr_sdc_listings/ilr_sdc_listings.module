@@ -180,16 +180,30 @@ function _ilr_sdc_listings_prepare_source_item(array &$item, FeedsSource $source
       $item[$country_source] = 'US';
     }
   }
-  foreach ($item as &$item_prop) {
-    _ilr_sdc_source_cleanup_item_property($item_prop);
+  $body_source = _ilr_get_feed_source_for_target('body', $source->importer);
+  foreach ($item as $key => &$item_prop) {
+    _ilr_sdc_listings_source_cleanup_item_property($item_prop);
+    if ($key == $body_source) {
+      _ilr_sdc_listings_replace_course_links($item_prop);
+    }
   }
+}
+
+/**
+ * Replace direct links to courses with links to redirect to node page.
+ * @param $description
+ */
+function _ilr_sdc_listings_replace_course_links(&$description) {
+  $link_pattern = "/http:\/\/www.ilr.cornell.edu\/(.{1,10})\/catalog\/(.{1,10})\.html/i";
+  $replace = '/catalog-course/$2';
+  $description = preg_replace($link_pattern, $replace, $description);
 }
 
 /**
  * Cleanup source property from JSON import because they are double escaped.
  * @param $item_prop
  */
-function _ilr_sdc_source_cleanup_item_property(&$item_prop) {
+function _ilr_sdc_listings_source_cleanup_item_property(&$item_prop) {
   if (is_numeric($item_prop)) {
     return;
   }
@@ -220,4 +234,38 @@ function _ilr_sdc_listings_get_importer_files() {
     'sdc_faculty_importer' => 'extensionCatalog_facultyFromSDC.json',
   );
   return $importer_files;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function ilr_sdc_listings_menu() {
+  $items = array();
+
+  $items['catalog-course/%'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => '_ilr_sdc_listings_catalog_redirect',
+    'page arguments' => array(1),
+  );
+  return $items;
+}
+
+/**
+ * Redirect to the node page the matches the catalog number.
+ * @param $catalog_num
+ * @return int
+ */
+function _ilr_sdc_listings_catalog_redirect($catalog_num) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_course')
+    ->fieldCondition('field_catalog_prefix', 'value', $catalog_num);
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    $nid = array_pop(array_keys($results['node']));
+    drupal_goto("node/$nid");
+    return;
+  }
+  return MENU_NOT_FOUND;
 }
