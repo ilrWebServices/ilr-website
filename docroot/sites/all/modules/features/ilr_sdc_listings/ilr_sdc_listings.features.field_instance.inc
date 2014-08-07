@@ -10,9 +10,9 @@
 function ilr_sdc_listings_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-faculty-body'
-  $field_instances['node-faculty-body'] = array(
-    'bundle' => 'faculty',
+  // Exported field_instance: 'node-sdc_faculty-body'
+  $field_instances['node-sdc_faculty-body'] = array(
+    'bundle' => 'sdc_faculty',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',

@@ -4007,7 +4007,7 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'faculty' => 'Faculty',
+        'sdc_faculty' => 'Faculty',
         'staff' => 'Staff',
         'dean' => 'Dean',
         'librarian' => 'Librarian',

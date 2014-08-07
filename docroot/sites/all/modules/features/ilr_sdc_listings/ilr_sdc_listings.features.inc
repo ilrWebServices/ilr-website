@@ -24,7 +24,7 @@ function ilr_sdc_listings_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function ilr_sdc_listings_node_info() {
   $items = array(
-    'faculty' => array(
+    'sdc_faculty' => array(
       'name' => t('Faculty'),
       'base' => 'node_content',
       'description' => '',
