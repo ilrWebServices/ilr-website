@@ -173,13 +173,7 @@ function ilr_sdc_listings_feeds_after_parse(FeedsSource $source, FeedsParserResu
  */
 function _ilr_sdc_listings_prepare_source_item(array &$item, FeedsSource $source) {
   $importer_id = $source->importer->id;
-  if ($importer_id == 'sdc_class_importer') {
-    $country_source = _ilr_get_feed_source_for_target('field_address:country', $source->importer);
-    if ($country_source) {
-      // Hardcode US as country because addressfield needs this.
-      $item[$country_source] = 'US';
-    }
-  }
+
   $body_source = _ilr_get_feed_source_for_target('body', $source->importer);
   foreach ($item as $key => &$item_prop) {
     _ilr_sdc_listings_source_cleanup_item_property($item_prop);
@@ -187,8 +181,35 @@ function _ilr_sdc_listings_prepare_source_item(array &$item, FeedsSource $source
       _ilr_sdc_listings_replace_course_links($item_prop);
     }
   }
+  if ($importer_id == 'sdc_class_importer') {
+    _ilr_sdc_listings_prepare_class_source_item($item, $source);
+  }
 }
 
+/**
+ * @param array $item
+ * @param FeedsSource $source
+ */
+function _ilr_sdc_listings_prepare_class_source_item(array &$item, FeedsSource $source) {
+  $country_source = _ilr_get_feed_source_for_target('field_address:country', $source->importer);
+  if ($country_source) {
+    // Hardcode US as country because addressfield needs this.
+    $item[$country_source] = 'US';
+  }
+  _ilr_sdc_listings_feeds_set_date_string($item, $source->importer, 'field_class_dates:start', 'Temporary target 1', 'Temporary target 2');
+  _ilr_sdc_listings_feeds_set_date_string($item, $source->importer, 'field_class_dates:end', 'Temporary target 3', 'Temporary target 4');
+
+}
+
+function _ilr_sdc_listings_feeds_set_date_string(&$feed_item, FeedsImporter $importer, $date_time_target, $date_target, $time_target){
+  $date = $feed_item[_ilr_get_feed_source_for_target($date_target, $importer)];
+  $time =  $feed_item[_ilr_get_feed_source_for_target($time_target, $importer)];
+  $time = str_pad($time, 5, '0', STR_PAD_LEFT);
+  $time = substr($time,0,2) . ':' .  substr($time, -3, 2) . strtoupper(substr($time, -1, 1)) . 'M';
+  $start_date_source = _ilr_get_feed_source_for_target($date_time_target, $importer);
+  // Have to use Unix timestamp instead of date time string to handle timezone correctly. See - https://www.drupal.org/node/722740
+  $feed_item[$start_date_source] = strtotime("$date $time");
+}
 /**
  * Replace direct links to courses with links to redirect to node page.
  * @param $description
@@ -268,4 +289,109 @@ function _ilr_sdc_listings_catalog_redirect($catalog_num) {
     return;
   }
   return MENU_NOT_FOUND;
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
+
+  switch($node->type) {
+    case 'sdc_course':
+      _ilr_sdc_listings_add_classes($node, $view_mode);
+  }
+}
+function _ilr_sdc_listings_add_classes($course_node, $view_mode) {
+
+  if ($view_mode == 'full') {
+    $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
+    if ($class_nids) {
+      $class_nodes = node_load_multiple($class_nids);
+      $has_override_price = _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node);
+      $form = drupal_get_form('ilr_sdc_listings_class_reg_form', $class_nodes, $has_override_price);
+      $course_node->content['classes'] = $form;
+    }
+  }
+}
+function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has_override_price) {
+
+
+
+  $render_arrays = node_view_multiple($class_nodes, 'teaser');
+  foreach (element_children($render_arrays['nodes']) as $nid) {
+    // Remove title because it is the same as the course
+    $render_array = &$render_arrays['nodes'][$nid];
+    $render_array['#node']->title = '';
+    unset($render_array['links']);
+    if (!$has_override_price) {
+      unset($render_array['field_price']);
+    }
+    $options[$nid] = drupal_render($render_arrays['nodes'][$nid]);
+  }
+
+  $form['class'] = array(
+    '#title' => t('Choose a class'),
+    '#type' => 'radios',
+    '#options' => $options,
+  );
+  return $form;
+}
+function _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node) {
+  $course_wrapper = entity_metadata_wrapper('node', $course_node);
+  $course_price = $course_wrapper->field_price->value();
+  foreach ($class_nodes as $class_node) {
+    $class_wrapper = entity_metadata_wrapper('node', $class_node);
+    if ($course_price != $class_wrapper->field_price->value()) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+function _ilr_sdc_listings_get_classes_for_course($node) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_class')
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_course', 'target_id', $node->nid);
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    return array_keys($results['node']);
+  }
+  return array();
+}
+
+/**
+ * temp function to find class with price override
+ * @todo delete this function
+ */
+function _ilr_find_class_price() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_course');
+  $results = $query->execute();
+  foreach (array_keys($results['node']) as $course_nid) {
+    $course_wrapper = entity_metadata_wrapper('node', $course_nid);
+    $course_price = $course_wrapper->field_price->value();
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'sdc_class')
+      ->fieldCondition('field_course', 'target_id', $course_nid);
+    $class_results = $query->execute();
+    if (!empty($class_results['node'])) {
+      drupal_set_message("course $course_nid");
+      foreach (array_keys($class_results['node']) as $class_nid) {
+        $class_wrapper = entity_metadata_wrapper('node', $class_nid);
+        $class_price = $class_wrapper->field_price->value();
+        drupal_set_message("prices course $course_price - class $class_price");
+        if (!empty($class_price) && $class_price != $course_price) {
+          drupal_set_message("course $course_nid - class $class_nid");
+          return;
+        }
+      }
+    }
+
+
+  }
+
+
 }

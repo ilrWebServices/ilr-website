@@ -292,10 +292,10 @@ function _ilr_get_feeds_item_entity_id($guid, $importer_id, $feed_nid = 0){
  * Useful modules like FeedsJson and FeedsXpath where sources are not descriptive
  *  for example "jsonpath_parser:3"
  * @param $target
- * @param $importer
+ * @param FeedsImporter $importer
  * @return null|string
  */
-function _ilr_get_feed_source_for_target($target, $importer) {
+function _ilr_get_feed_source_for_target($target, FeedsImporter $importer) {
   $mappings = $importer->processor->config['mappings'];
   foreach ($mappings as $mapping) {
     if ($mapping['target'] == $target) {
