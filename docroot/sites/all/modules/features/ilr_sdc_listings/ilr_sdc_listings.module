@@ -201,7 +201,19 @@ function _ilr_sdc_listings_prepare_class_source_item(array &$item, FeedsSource $
 
 }
 
-function _ilr_sdc_listings_feeds_set_date_string(&$feed_item, FeedsImporter $importer, $date_time_target, $date_target, $time_target) {
+/**
+ * Sets the creates a timestamp from the incoming date and time strings
+ *
+ * @param array $feed_item
+ * @param FeedsImporter $importer
+ * @param $date_time_target
+ *  Feeds mapping target for date field
+ * @param $date_target
+ *  Feeds mapping target for date.
+ * @param $time_target
+ *  Feeds mapping target for time
+ */
+function _ilr_sdc_listings_feeds_set_date_string(array &$feed_item, FeedsImporter $importer, $date_time_target, $date_target, $time_target) {
   $date = $feed_item[_ilr_get_feed_source_for_target($date_target, $importer)];
   $time = $feed_item[_ilr_get_feed_source_for_target($time_target, $importer)];
   $time = str_pad($time, 5, '0', STR_PAD_LEFT);
@@ -240,6 +252,10 @@ function _ilr_sdc_listings_source_cleanup_item_property(&$item_prop) {
   }
 }
 
+/**
+ * Get feeds importer ids in the order they should be processed.
+ * @return array
+ */
 function _ilr_sdc_listings_get_importer_ids() {
   return array_keys(_ilr_sdc_listings_get_importer_files());
 }
@@ -299,11 +315,16 @@ function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
 
   switch ($node->type) {
     case 'sdc_course':
-      _ilr_sdc_listings_add_classes($node, $view_mode);
+      _ilr_sdc_listings_course_add_classes($node, $view_mode);
   }
 }
 
-function _ilr_sdc_listings_add_classes($course_node, $view_mode) {
+/**
+ * Add class listing form to node course view.
+ * @param $course_node
+ * @param $view_mode
+ */
+function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
 
   if ($view_mode == 'full') {
     $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
@@ -328,6 +349,14 @@ function _ilr_sdc_listings_add_classes($course_node, $view_mode) {
   }
 }
 
+/**
+ * Form function to create class registration form.
+ * @param $form
+ * @param $form_state
+ * @param $class_nodes
+ * @param $has_override_price
+ * @return array
+ */
 function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has_override_price) {
   $render_arrays = node_view_multiple($class_nodes, 'teaser');
   foreach (element_children($render_arrays['nodes']) as $nid) {
@@ -354,6 +383,12 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
   return $form;
 }
 
+/**
+ * Determines if any of the classes for course have different prices.
+ * @param $class_nodes
+ * @param $course_node
+ * @return bool
+ */
 function _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node) {
   $course_wrapper = entity_metadata_wrapper('node', $course_node);
   $course_price = $course_wrapper->field_price->value();
@@ -366,12 +401,18 @@ function _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node) 
   return FALSE;
 }
 
-function _ilr_sdc_listings_get_classes_for_course($node) {
+/**
+ * Get class nids for this course.
+ * @param $course_node
+ * @return array
+ *  nids for classes
+ */
+function _ilr_sdc_listings_get_classes_for_course($course_node) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'sdc_class')
     ->propertyCondition('status', 1)
-    ->fieldCondition('field_course', 'target_id', $node->nid);
+    ->fieldCondition('field_course', 'target_id', $course_node->nid);
   $results = $query->execute();
   if (!empty($results['node'])) {
     return array_keys($results['node']);
