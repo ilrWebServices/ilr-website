@@ -13,12 +13,16 @@ function ilr_sdc_listings_install() {
 }
 
 /**
- * Set the source urls for all feeds importers in this module.
+ * Set the source urls for all feeds importers in this module
  */
 function _ilr_sdc_listings_set_importer_sources() {
-  $base_url = (isset($_ENV["AH_SITE_GROUP"]))
-    ? 'http://www.ilr.cornell.edu/registration/feeds/'
-    : 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/';
+  /**
+   * In order to use local copies of import files in development:
+   * use: drush vset ilr_sdc_listings_base_feed_url 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/'
+   * or set in settings.php
+   *
+   */
+  $base_url = variable_get('ilr_sdc_listings_base_feed_url', 'http://www.ilr.cornell.edu/registration/feeds/');
 
   $importer_files = _ilr_sdc_listings_get_importer_files();
   foreach ($importer_files as $importer_id => $importer_file) {
