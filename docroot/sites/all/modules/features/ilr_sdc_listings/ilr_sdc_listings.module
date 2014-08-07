@@ -201,15 +201,16 @@ function _ilr_sdc_listings_prepare_class_source_item(array &$item, FeedsSource $
 
 }
 
-function _ilr_sdc_listings_feeds_set_date_string(&$feed_item, FeedsImporter $importer, $date_time_target, $date_target, $time_target){
+function _ilr_sdc_listings_feeds_set_date_string(&$feed_item, FeedsImporter $importer, $date_time_target, $date_target, $time_target) {
   $date = $feed_item[_ilr_get_feed_source_for_target($date_target, $importer)];
-  $time =  $feed_item[_ilr_get_feed_source_for_target($time_target, $importer)];
+  $time = $feed_item[_ilr_get_feed_source_for_target($time_target, $importer)];
   $time = str_pad($time, 5, '0', STR_PAD_LEFT);
-  $time = substr($time,0,2) . ':' .  substr($time, -3, 2) . strtoupper(substr($time, -1, 1)) . 'M';
+  $time = substr($time, 0, 2) . ':' . substr($time, -3, 2) . strtoupper(substr($time, -1, 1)) . 'M';
   $start_date_source = _ilr_get_feed_source_for_target($date_time_target, $importer);
   // Have to use Unix timestamp instead of date time string to handle timezone correctly. See - https://www.drupal.org/node/722740
   $feed_item[$start_date_source] = strtotime("$date $time");
 }
+
 /**
  * Replace direct links to courses with links to redirect to node page.
  * @param $description
@@ -296,11 +297,12 @@ function _ilr_sdc_listings_catalog_redirect($catalog_num) {
  */
 function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
 
-  switch($node->type) {
+  switch ($node->type) {
     case 'sdc_course':
       _ilr_sdc_listings_add_classes($node, $view_mode);
   }
 }
+
 function _ilr_sdc_listings_add_classes($course_node, $view_mode) {
 
   if ($view_mode == 'full') {
@@ -313,14 +315,14 @@ function _ilr_sdc_listings_add_classes($course_node, $view_mode) {
     }
   }
 }
-function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has_override_price) {
 
+function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has_override_price) {
 
 
   $render_arrays = node_view_multiple($class_nodes, 'teaser');
   foreach (element_children($render_arrays['nodes']) as $nid) {
     // Remove title because it is the same as the course
-    $render_array = &$render_arrays['nodes'][$nid];
+    $render_array = & $render_arrays['nodes'][$nid];
     $render_array['#node']->title = '';
     unset($render_array['links']);
     if (!$has_override_price) {
@@ -336,6 +338,7 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
   );
   return $form;
 }
+
 function _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node) {
   $course_wrapper = entity_metadata_wrapper('node', $course_node);
   $course_price = $course_wrapper->field_price->value();
@@ -347,6 +350,7 @@ function _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node) 
   }
   return FALSE;
 }
+
 function _ilr_sdc_listings_get_classes_for_course($node) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
