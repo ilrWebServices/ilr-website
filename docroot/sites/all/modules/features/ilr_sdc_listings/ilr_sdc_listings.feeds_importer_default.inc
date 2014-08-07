@@ -44,6 +44,10 @@ function ilr_sdc_listings_feeds_importer_default() {
           'jsonpath_parser:10' => 'STARTTIME',
           'jsonpath_parser:11' => '{Temporary target 1} {Temporary target 2}',
           'jsonpath_parser:12' => '"US"',
+          'jsonpath_parser:13' => 'PRICE',
+          'jsonpath_parser:14' => 'ENDDATE',
+          'jsonpath_parser:15' => 'ENDTIME',
+          'jsonpath_parser:16' => '{Temporary target 3} {Temporary target 4}',
         ),
         'debug' => array(
           'options' => array(
@@ -61,6 +65,10 @@ function ilr_sdc_listings_feeds_importer_default() {
             'jsonpath_parser:10' => 0,
             'jsonpath_parser:11' => 0,
             'jsonpath_parser:12' => 0,
+            'jsonpath_parser:13' => 0,
+            'jsonpath_parser:14' => 0,
+            'jsonpath_parser:15' => 0,
+            'jsonpath_parser:16' => 0,
           ),
         ),
       ),
@@ -135,6 +143,26 @@ function ilr_sdc_listings_feeds_importer_default() {
           12 => array(
             'source' => 'jsonpath_parser:12',
             'target' => 'field_address:country',
+            'unique' => FALSE,
+          ),
+          13 => array(
+            'source' => 'jsonpath_parser:13',
+            'target' => 'field_price',
+            'unique' => FALSE,
+          ),
+          14 => array(
+            'source' => 'jsonpath_parser:14',
+            'target' => 'Temporary target 3',
+            'unique' => FALSE,
+          ),
+          15 => array(
+            'source' => 'jsonpath_parser:15',
+            'target' => 'Temporary target 4',
+            'unique' => FALSE,
+          ),
+          16 => array(
+            'source' => 'jsonpath_parser:16',
+            'target' => 'field_class_dates:end',
             'unique' => FALSE,
           ),
         ),
