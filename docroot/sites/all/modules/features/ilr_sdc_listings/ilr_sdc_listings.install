@@ -14,12 +14,10 @@ function ilr_sdc_listings_install() {
 
 /**
  * Set the source urls for all feeds importers in this module.
- *
- * @todo Determine where JSON files will be stored for import.
  */
 function _ilr_sdc_listings_set_importer_sources() {
   $base_url = (isset($_ENV["AH_SITE_GROUP"]))
-    ? ''
+    ? 'http://www.ilr.cornell.edu/registration/feeds/'
     : 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/';
 
   $importer_files = _ilr_sdc_listings_get_importer_files();
