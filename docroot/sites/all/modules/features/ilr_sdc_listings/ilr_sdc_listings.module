@@ -2,6 +2,8 @@
 /**
  * @file
  * Code for the ilr_sdc_listings feature.
+ *
+ * @todo How should the placement for calendar nav view block should be handled.
  */
 
 include_once 'ilr_sdc_listings.features.inc';
