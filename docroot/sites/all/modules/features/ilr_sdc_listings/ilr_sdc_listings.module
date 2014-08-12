@@ -328,6 +328,10 @@ function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
 
   if ($view_mode == 'full') {
     $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
+    $class_selected = _ilr_sdc_listings_get_class_from_url();
+    if ($class_selected && !in_array($class_selected, $class_nids)) {
+      drupal_set_message(t('The class you selected is no longer availiable.'));
+    }
     if ($class_nids) {
       $class_nodes = node_load_multiple($class_nids);
       $has_override_price = _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node);
@@ -375,12 +379,28 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
     '#type' => 'radios',
     '#options' => $options,
     '#required' => TRUE,
+    '#default_value' => _ilr_sdc_listings_get_class_from_url(),
   );
+
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Register'),
   );
   return $form;
+}
+
+/**
+ * Retrieve the class nid from the url.
+ * @return int|null
+ */
+function _ilr_sdc_listings_get_class_from_url() {
+  if (!empty($_GET['class'])) {
+    $class_selected = $_GET['class'];
+    if (is_numeric($class_selected)) {
+      return $class_selected;
+    }
+  }
+  return NULL;
 }
 
 /**
@@ -408,11 +428,13 @@ function _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node) 
  *  nids for classes
  */
 function _ilr_sdc_listings_get_classes_for_course($course_node) {
+  $today = date('Y-m-d');
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'sdc_class')
     ->propertyCondition('status', 1)
-    ->fieldCondition('field_course', 'target_id', $course_node->nid);
+    ->fieldCondition('field_course', 'target_id', $course_node->nid)
+    ->fieldCondition('field_registration_end_date', 'value', $today, '>=');
   $results = $query->execute();
   if (!empty($results['node'])) {
     return array_keys($results['node']);
