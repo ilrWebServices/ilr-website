@@ -4,7 +4,15 @@
 
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
-    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <h2<?php print $title_attributes; ?>>
+      <?php if (empty($remove_title_link)): ?>
+        <a href="<?php print $node_url; ?>">
+      <?php endif; ?>
+      <?php print $title; ?>
+      <?php if (empty($remove_title_link)): ?>
+        </a>
+      <?php endif; ?>
+    </h2>
   <?php endif; ?>
   <?php print render($title_suffix); ?>
 

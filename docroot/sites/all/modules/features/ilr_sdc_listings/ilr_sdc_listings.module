@@ -419,3 +419,14 @@ function _ilr_sdc_listings_get_classes_for_course($course_node) {
   }
   return array();
 }
+
+/**
+ * Implements hook_preprocess_hook()
+ *
+ * Remove node URL from SDC Faculty nodes.
+ */
+function ilr_sdc_listings_preprocess_node(&$variables) {
+  if ($variables['type'] == 'sdc_faculty' && $variables['view_mode'] == 'teaser') {
+    $variables['remove_title_link'] = TRUE;
+  }
+}
