@@ -267,9 +267,9 @@ function _ilr_sdc_listings_get_importer_ids() {
  */
 function _ilr_sdc_listings_get_importer_files() {
   $importer_files = array(
-    'sdc_course_importer' => 'extensionCatalog_ncourse.json',
-    'sdc_class_importer' => 'extensionCatalog_nclass.json',
-    'sdc_faculty_importer' => 'extensionCatalog_facultyFromSDC.json',
+    'sdc_course_importer' => 'ncourse',
+    'sdc_class_importer' => 'nclass',
+    'sdc_faculty_importer' => 'facultyFromSDC',
   );
   return $importer_files;
 }

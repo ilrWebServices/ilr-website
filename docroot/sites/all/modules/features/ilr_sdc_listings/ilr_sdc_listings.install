@@ -20,9 +20,9 @@ function _ilr_sdc_listings_set_importer_sources() {
    * In order to use local copies of import files in development:
    * use: drush vset ilr_sdc_listings_base_feed_url 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/'
    * or set in settings.php
-   *
+   * $conf['ilr_sdc_listings_base_feed_url'] = 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/';
    */
-  $base_url = variable_get('ilr_sdc_listings_base_feed_url', 'http://www.ilr.cornell.edu/registration/feeds/');
+  $base_url = variable_get('ilr_sdc_listings_base_feed_url', 'http://www.ilr.cornell.edu/registration/feeds/get.cfm?q=');
 
   $importer_files = _ilr_sdc_listings_get_importer_files();
   foreach ($importer_files as $importer_id => $importer_file) {
@@ -35,5 +35,5 @@ function _ilr_sdc_listings_set_importer_sources() {
     $source->save();
   }
   // Faculty/Class relationship file is not used in a feed.
-  variable_set('ilr_sdc_listings_faculty_class_assignments_url', $base_url . 'extensionCatalog_classFacultyFromSDC.json');
+  variable_set('ilr_sdc_listings_faculty_class_assignments_url', $base_url . 'classFacultyFromSDC');
 }
