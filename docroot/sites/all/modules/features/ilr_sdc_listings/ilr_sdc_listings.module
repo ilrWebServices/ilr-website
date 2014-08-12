@@ -419,39 +419,3 @@ function _ilr_sdc_listings_get_classes_for_course($course_node) {
   }
   return array();
 }
-
-/**
- * temp function to find class with price override
- * @todo delete this function
- */
-function _ilr_find_class_price() {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'sdc_course');
-  $results = $query->execute();
-  foreach (array_keys($results['node']) as $course_nid) {
-    $course_wrapper = entity_metadata_wrapper('node', $course_nid);
-    $course_price = $course_wrapper->field_price->value();
-    $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', 'sdc_class')
-      ->fieldCondition('field_course', 'target_id', $course_nid);
-    $class_results = $query->execute();
-    if (!empty($class_results['node'])) {
-      drupal_set_message("course $course_nid");
-      foreach (array_keys($class_results['node']) as $class_nid) {
-        $class_wrapper = entity_metadata_wrapper('node', $class_nid);
-        $class_price = $class_wrapper->field_price->value();
-        drupal_set_message("prices course $course_price - class $class_price");
-        if (!empty($class_price) && $class_price != $course_price) {
-          drupal_set_message("course $course_nid - class $class_nid");
-          return;
-        }
-      }
-    }
-
-
-  }
-
-
-}
