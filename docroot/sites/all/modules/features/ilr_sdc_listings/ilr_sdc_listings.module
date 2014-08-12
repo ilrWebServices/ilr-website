@@ -452,3 +452,99 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
     $variables['remove_title_link'] = TRUE;
   }
 }
+
+/**
+ * Alter the default value for a date argument.
+ *
+ * @param object $argument
+ *   The argument object.
+ * @param string $value
+ *   The default value created by the argument handler.
+ */
+function ilr_sdc_listings_date_default_argument_alter(&$argument, &$value) {
+  $view = $argument->view;
+  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
+    if ($url_month = _ilr_sdc_listings_get_url_month_arg()) {
+      $value = $url_month;
+    }
+  }
+}
+
+/**
+ * @return string
+ */
+function _ilr_sdc_listings_get_url_month_arg() {
+  if ($url_date = arg(1)) {
+    $value = substr($url_date, 0, 7);
+    return $value;
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  $view = $form_state['view'];
+  if ($view->name == 'sdc_class_calendar' && isset($form['field_class_dates_value'])) {
+    array_unshift($form['#submit'], '_ilr_sdc_listings_handle_date_select');
+  }
+}
+function _ilr_sdc_listings_handle_date_select($form, &$form_state) {
+  dpm($form_state['values'],'fs');
+}
+/**
+ * This hook is called right before the render process. The query has been
+ * executed, and the pre_render() phase has already happened for handlers, so
+ * all data should be available.
+ *
+ * Adding output to the view can be accomplished by placing text on
+ * $view->attachment_before and $view->attachment_after. Altering the content
+ * can be achieved by editing the items of $view->result.
+ *
+ * This hook can be utilized by themes.
+ * @param $view
+ *   The view object about to be processed.
+ */
+function ilr_sdc_listings_views_pre_render(&$view) {
+  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
+    $view->attachment_before = drupal_render(drupal_get_form('_ilr_listings_sdc_select_month_form'));
+  }
+}
+function _ilr_listings_sdc_select_month_form($form, &$form_state) {
+  if ($url_month = _ilr_sdc_listings_get_url_month_arg()) {
+    $start_month = $url_month;
+  }
+  else {
+    $start_month = date('Y-m');
+  }
+  $base_path = '/' . arg(0) . '/';
+  $month_options = _ilr_sdc_listings_get_month_options($start_month, 7, $base_path);
+
+  $form['ilr_sdc_month_redirect'] = array(
+    '#type' => 'select',
+    '#options' => $month_options,
+    '#default_value' => $base_path .$start_month,
+  );
+  $form['#attached']['js'] = array(
+    drupal_get_path('module', 'ilr_sdc_listings') . '/js/ilr_sdc_listings.js',
+  );
+  return $form;
+}
+
+/**
+ * @param $start_month
+ * @param $month_options
+ * @return mixed
+ */
+function _ilr_sdc_listings_get_month_options($start_month, $month_count, $key_prefix = '') {
+  $month_options = array();
+  $half_count = round($month_count/2);
+  $month = date('Y-m', strtotime("-3 months", strtotime($start_month)));
+  $i = 0;
+  while ($i++ < $month_count) {
+    $month_options[$key_prefix . $month] = date('M Y', strtotime($month));
+    $month = date('Y-m', strtotime("+1 months", strtotime($month)));
+  }
+  return $month_options;
+}
