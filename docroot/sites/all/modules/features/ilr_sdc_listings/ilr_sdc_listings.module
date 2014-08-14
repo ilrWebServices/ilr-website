@@ -66,6 +66,8 @@ function _ilr_sdc_listings_get_importer_files() {
 
 /**
  * Implements hook_menu().
+ *
+ * Provide callback for redirecting from catalog number to node.
  */
 function ilr_sdc_listings_menu() {
   $items = array();
@@ -120,7 +122,7 @@ function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
     $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
     $class_selected = _ilr_sdc_listings_get_class_from_url();
     if ($class_selected && !in_array($class_selected, $class_nids)) {
-      drupal_set_message(t('The class you selected is no longer availiable.'));
+      drupal_set_message(t('The class you selected is no longer available.'));
     }
     if ($class_nids) {
       $class_nodes = node_load_multiple($class_nids);
@@ -244,7 +246,7 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
 }
 
 /**
- * Alter the default value for a date argument.
+ * Alter the default value for a Views date argument.
  *
  * @param object $argument
  *   The argument object.
@@ -261,7 +263,10 @@ function ilr_sdc_listings_date_default_argument_alter(&$argument, &$value) {
 }
 
 /**
+ * Get Views Month Arg from URL.
+ *
  * @return string
+ *  Month in format YYYY-MM
  */
 function _ilr_sdc_listings_get_url_month_arg() {
   if ($url_date = arg(1)) {
@@ -272,15 +277,9 @@ function _ilr_sdc_listings_get_url_month_arg() {
 }
 
 /**
- * This hook is called right before the render process. The query has been
- * executed, and the pre_render() phase has already happened for handlers, so
- * all data should be available.
+ * Implements hook_views_pre_render().
  *
- * Adding output to the view can be accomplished by placing text on
- * $view->attachment_before and $view->attachment_after. Altering the content
- * can be achieved by editing the items of $view->result.
- *
- * This hook can be utilized by themes.
+ * Attach month select form to Calender Nav Block.
  * @param $view
  *   The view object about to be processed.
  */
@@ -289,6 +288,12 @@ function ilr_sdc_listings_views_pre_render(&$view) {
     $view->attachment_before = drupal_render(drupal_get_form('_ilr_listings_sdc_select_month_form'));
   }
 }
+
+/**
+ * Form to select month in Calendar Nav.
+ *
+ * Form redirects via javascript.
+ */
 function _ilr_listings_sdc_select_month_form($form, &$form_state) {
   if ($url_month = _ilr_sdc_listings_get_url_month_arg()) {
     $start_month = $url_month;
@@ -311,9 +316,13 @@ function _ilr_listings_sdc_select_month_form($form, &$form_state) {
 }
 
 /**
+ * Get month options for dropdown.
  * @param $start_month
- * @param $month_options
- * @return mixed
+ * @param $month_count
+ * @param $key_prefix
+ * @return array
+ *  key - URL to redirect to will include month Views argument.
+ *  values - Label for month. "August 2014"
  */
 function _ilr_sdc_listings_get_month_options($start_month, $month_count, $key_prefix = '') {
   $month_options = array();
