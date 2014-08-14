@@ -167,7 +167,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_class_dates.field_class_dates_value' => 'field_data_field_class_dates.field_class_dates_value',
   );
-  $handler->display->display_options['path'] = 'sdc-course-catalog';
+  $handler->display->display_options['path'] = 'sdc-catalog-month';
   $handler->display->display_options['menu']['type'] = 'default tab';
   $handler->display->display_options['menu']['title'] = 'Month';
   $handler->display->display_options['menu']['weight'] = '0';

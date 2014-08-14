@@ -351,6 +351,5 @@ function ilr_sdc_listings_block_info_alter(&$blocks, $theme, $code_blocks) {
       'pages' => 'sdc-catalog-*',
     );
     $blocks['views']['sdc_class_calendar-block_nav'] += $block_settings;
-    dpm( $blocks['views']);
   }
 }
