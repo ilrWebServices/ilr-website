@@ -174,12 +174,10 @@ function _ilr_sdc_listings_prepare_source_item(array &$item, FeedsSource $source
   $importer_id = $source->importer->id;
 
   $body_source = _ilr_get_feed_source_for_target('body', $source->importer);
-  foreach ($item as $key => &$item_prop) {
-    _ilr_sdc_listings_source_cleanup_item_property($item_prop);
-    if ($key == $body_source) {
-      _ilr_sdc_listings_replace_course_links($item_prop);
-    }
+  if (isset($item[$body_source])) {
+    _ilr_sdc_listings_replace_course_links($item[$body_source]);
   }
+
   if ($importer_id == 'sdc_class_importer') {
     _ilr_sdc_listings_prepare_class_source_item($item, $source);
   }
@@ -193,23 +191,4 @@ function _ilr_sdc_listings_replace_course_links(&$description) {
   $link_pattern = "/http:\/\/www.ilr.cornell.edu\/(.{1,10})\/catalog\/(.{1,10})\.html/i";
   $replace = '/catalog-course/$2';
   $description = preg_replace($link_pattern, $replace, $description);
-}
-
-/**
- * Cleanup source property from JSON import because they are double escaped.
- * @param $item_prop
- */
-function _ilr_sdc_listings_source_cleanup_item_property(&$item_prop) {
-  if (is_numeric($item_prop)) {
-    return;
-  }
-  $item_prop = trim($item_prop, "\"");
-  $replace_strings = array(
-    "\\n" => "\n",
-    "\\t" => "\t",
-    "\\" => "",
-  );
-  foreach ($replace_strings as $orig => $new) {
-    $item_prop = str_replace($orig, $new, $item_prop);
-  }
 }
