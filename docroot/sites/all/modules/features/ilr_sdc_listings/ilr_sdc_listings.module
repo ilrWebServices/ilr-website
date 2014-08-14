@@ -307,7 +307,7 @@ function _ilr_listings_sdc_select_month_form($form, &$form_state) {
   $form['ilr_sdc_month_redirect'] = array(
     '#type' => 'select',
     '#options' => $month_options,
-    '#default_value' => $base_path .$start_month,
+    '#default_value' => $base_path . $start_month,
   );
   $form['#attached']['js'] = array(
     drupal_get_path('module', 'ilr_sdc_listings') . '/js/ilr_sdc_listings.js',
@@ -327,7 +327,7 @@ function _ilr_listings_sdc_select_month_form($form, &$form_state) {
 function _ilr_sdc_listings_get_month_options($start_month, $month_count, $key_prefix = '') {
   $month_options = array();
   $half_count = round($month_count/2);
-  $month = date('Y-m', strtotime("-3 months", strtotime($start_month)));
+  $month = date('Y-m', strtotime("-$half_count months", strtotime($start_month)));
   $i = 0;
   while ($i++ < $month_count) {
     $month_options[$key_prefix . $month] = date('M Y', strtotime($month));
