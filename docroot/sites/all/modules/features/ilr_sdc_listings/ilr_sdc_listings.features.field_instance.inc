@@ -471,7 +471,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -554,7 +554,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -594,7 +594,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -708,6 +708,42 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-sdc_course-field_sdc_department'
+  $field_instances['node-sdc_course-field_sdc_department'] = array(
+    'bundle' => 'sdc_course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_sdc_department',
+    'label' => 'Department',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 37,
+    ),
+  );
+
   // Exported field_instance: 'node-sdc_faculty-body'
   $field_instances['node-sdc_faculty-body'] = array(
     'bundle' => 'sdc_faculty',
@@ -760,6 +796,7 @@ function ilr_sdc_listings_field_default_field_instances() {
   t('Class id');
   t('Course');
   t('Credit Hours');
+  t('Department');
   t('Faculty');
   t('Keywords');
   t('Price');

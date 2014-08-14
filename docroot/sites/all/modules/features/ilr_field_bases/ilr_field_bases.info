@@ -175,6 +175,7 @@ features[field_base][] = field_references
 features[field_base][] = field_referral_textarea
 features[field_base][] = field_school_or_college
 features[field_base][] = field_registration_end_date
+features[field_base][] = field_sdc_department
 features[field_base][] = field_semester
 features[field_base][] = field_semester_off_campus
 features[field_base][] = field_short_title

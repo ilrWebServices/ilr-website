@@ -209,6 +209,7 @@ function ilr_sdc_listings_feeds_importer_default() {
           'jsonpath_parser:4' => 'PRICENOTE',
           'jsonpath_parser:5' => 'CATALOGNUMBERPREFIX',
           'jsonpath_parser:6' => 'CREDITHOURS',
+          'jsonpath_parser:7' => 'DEPARTMENT',
         ),
         'debug' => array(
           'options' => array(
@@ -220,6 +221,7 @@ function ilr_sdc_listings_feeds_importer_default() {
             'jsonpath_parser:4' => 0,
             'jsonpath_parser:5' => 0,
             'jsonpath_parser:6' => 0,
+            'jsonpath_parser:7' => 0,
           ),
         ),
       ),
@@ -265,6 +267,12 @@ function ilr_sdc_listings_feeds_importer_default() {
             'source' => 'jsonpath_parser:6',
             'target' => 'field_credit_hours',
             'unique' => FALSE,
+          ),
+          7 => array(
+            'source' => 'jsonpath_parser:7',
+            'target' => 'field_sdc_department',
+            'term_search' => '0',
+            'autocreate' => 1,
           ),
         ),
         'update_existing' => '2',
