@@ -154,6 +154,13 @@ function ilr_update_7006() {
 }
 
 /**
+ * Sets date format
+ */
+function ilr_update_7003() {
+  variable_set('date_format_ilr_short_day_only', 'M j');
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {

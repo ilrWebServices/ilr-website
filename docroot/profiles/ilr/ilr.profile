@@ -332,3 +332,26 @@ function _ilr_get_entityreference_relations($fieldname, $bundle = NULL, $entity_
   }
   return $children;
 }
+/**
+ * Implements hook_date_format_types()
+ */
+function ilr_date_format_types() {
+  return array(
+    'ilr_short_day_only' => t('Short Day only'),
+  );
+}
+
+/**
+ * Implements hook_date_formats().
+ */
+function ilr_date_formats() {
+  $formats = array();
+
+  $formats[] = array(
+    'type' => 'ilr_short_day_only',
+    'format' => 'M j',
+    'locales' => array(),
+  );
+
+  return $formats;
+}
