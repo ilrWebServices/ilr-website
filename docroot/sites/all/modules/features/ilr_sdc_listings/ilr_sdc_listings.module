@@ -301,7 +301,7 @@ function _ilr_listings_sdc_select_month_form($form, &$form_state) {
   else {
     $start_month = date('Y-m');
   }
-  $base_path = '/sdc-course-catalog/';
+  $base_path = '/sdc-catalog-month/';
   $month_options = _ilr_sdc_listings_get_month_options($start_month, 15, $base_path);
 
   $form['ilr_sdc_month_redirect'] = array(
