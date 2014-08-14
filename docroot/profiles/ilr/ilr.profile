@@ -355,3 +355,13 @@ function ilr_date_formats() {
 
   return $formats;
 }
+
+/**
+ * Implements hook_ilr_caches().
+ *
+ * Set date formats variable.
+ * This doesn't work in hook_update_n.
+ */
+function ilr_flush_caches() {
+  variable_set('date_format_ilr_short_day_only', 'M j');
+}
