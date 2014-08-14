@@ -335,3 +335,13 @@ function _ilr_sdc_listings_get_month_options($start_month, $month_count, $key_pr
   }
   return $month_options;
 }
+
+/**
+ * Implements hook_block_info_alter().
+ */
+function ilr_sdc_listings_block_info_alter(&$blocks, $theme, $code_blocks) {
+
+  if (isset($blocks['views']['sdc_class_calendar-block_nav'])) {
+    $blocks['views']['sdc_class_calendar-block_nav']['region'] = 'sidebar_first';
+  }
+}
