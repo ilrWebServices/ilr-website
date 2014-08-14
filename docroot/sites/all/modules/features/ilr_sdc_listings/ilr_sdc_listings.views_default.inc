@@ -52,6 +52,11 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['relationships']['field_course_target_id']['field'] = 'field_course_target_id';
   $handler->display->display_options['relationships']['field_course_target_id']['label'] = 'Course';
   $handler->display->display_options['relationships']['field_course_target_id']['required'] = TRUE;
+  /* Relationship: Content: Department (field_sdc_department) */
+  $handler->display->display_options['relationships']['field_sdc_department_tid']['id'] = 'field_sdc_department_tid';
+  $handler->display->display_options['relationships']['field_sdc_department_tid']['table'] = 'field_data_field_sdc_department';
+  $handler->display->display_options['relationships']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
+  $handler->display->display_options['relationships']['field_sdc_department_tid']['relationship'] = 'field_course_target_id';
   /* Field: class nid */
   $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['fields']['nid_1']['table'] = 'node';
@@ -125,6 +130,20 @@ function ilr_sdc_listings_views_default_views() {
     'scale' => '2',
     'prefix_suffix' => 1,
   );
+  /* Field: Content: Department */
+  $handler->display->display_options['fields']['field_sdc_department']['id'] = 'field_sdc_department';
+  $handler->display->display_options['fields']['field_sdc_department']['table'] = 'field_data_field_sdc_department';
+  $handler->display->display_options['fields']['field_sdc_department']['field'] = 'field_sdc_department';
+  $handler->display->display_options['fields']['field_sdc_department']['relationship'] = 'field_course_target_id';
+  $handler->display->display_options['fields']['field_sdc_department']['label'] = '';
+  $handler->display->display_options['fields']['field_sdc_department']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_sdc_department']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sdc_department']['type'] = 'taxonomy_term_reference_plain';
+  /* Sort criterion: Taxonomy term: Name */
+  $handler->display->display_options['sorts']['name']['id'] = 'name';
+  $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['name']['field'] = 'name';
+  $handler->display->display_options['sorts']['name']['relationship'] = 'field_sdc_department_tid';
   /* Sort criterion: Content: Class Dates -  start date (field_class_dates) */
   $handler->display->display_options['sorts']['field_class_dates_value']['id'] = 'field_class_dates_value';
   $handler->display->display_options['sorts']['field_class_dates_value']['table'] = 'field_data_field_class_dates';
@@ -151,6 +170,13 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['pager']['options']['link_format'] = 'clean';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_sdc_department',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -217,6 +243,13 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['pager']['options']['link_format'] = 'clean';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_sdc_department',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -288,7 +321,14 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['pager']['options']['date_id'] = 'day';
   $handler->display->display_options['pager']['options']['link_format'] = 'clean';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_sdc_department',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
