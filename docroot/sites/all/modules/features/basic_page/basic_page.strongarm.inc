@@ -174,11 +174,31 @@ function basic_page_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'imce_roles_profiles';
   $strongarm->value = array(
-    4 => array(
+    11 => array(
       'weight' => '0',
       'public_pid' => '3',
     ),
-    3 => array(
+    16 => array(
+      'weight' => '0',
+      'public_pid' => '3',
+    ),
+    21 => array(
+      'weight' => '0',
+      'public_pid' => '3',
+    ),
+    41 => array(
+      'weight' => '0',
+      'public_pid' => '3',
+    ),
+    26 => array(
+      'weight' => '0',
+      'public_pid' => 0,
+    ),
+    31 => array(
+      'weight' => '0',
+      'public_pid' => 0,
+    ),
+    36 => array(
       'weight' => '0',
       'public_pid' => '3',
     ),
