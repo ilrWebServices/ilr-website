@@ -1,5 +1,7 @@
 <?php
 
+define('MIN_IMAGE_WIDTH', 1280);
+
 /**
  * Implements hook_schema_alter().
  */
@@ -37,8 +39,32 @@ function custom_publishing_options_form_alter(&$form, $form_state, $form_id) {
  */
 function custom_publishing_options_featured_validate($form, &$form_state) {
   if ($form_state['values']['featured'] == 1) {
-    if (isset($form_state['values']['field_image']) && $form_state['values']['field_image'][LANGUAGE_NONE][0]['fid'] < 1) {
-      form_set_error('state', t("You must add a main image in order to feature content."));
+    $fid = _custom_publishing_options_get_fid_from_form_state($form_state);
+    if (_custom_publishing_options_featured_image_error($fid)) {
+      form_set_error('state', t("You must add a main image that is at least " . MIN_IMAGE_WIDTH . "px wide in order to feature content."));
     }
   }
+}
+
+/**
+ * Returns the fid from the form_state
+ */
+function _custom_publishing_options_get_fid_from_form_state($form_state) {
+  if (isset($form_state['values']['field_image'])) {
+    return $form_state['values']['field_image'][LANGUAGE_NONE][0]['fid'];
+  }
+}
+
+/**
+ * Confirms that there is a featured image with the required minimum width
+ */
+function _custom_publishing_options_featured_image_error($fid) {
+  if ($fid >= 1) {
+    $file = file_load($fid);
+    $image = image_load($file->uri);
+    if ($image->info['width'] > MIN_IMAGE_WIDTH) {
+      return FALSE;
+    }
+  }
+  return TRUE;
 }
