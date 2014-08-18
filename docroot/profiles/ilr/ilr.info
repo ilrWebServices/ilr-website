@@ -31,6 +31,7 @@ dependencies[] = views
 
 ; ILR Features and Custom modules
 dependencies[] = basic_page
+dependencies[] = custom_publishing_options
 dependencies[] = entityform_block
 dependencies[] = featured_book
 dependencies[] = forms
@@ -39,6 +40,7 @@ dependencies[] = ilr_footer_menu
 dependencies[] = ilr_manual_listing
 dependencies[] = ilr_settings
 dependencies[] = ilr_workspan
+dependencies[] = jpanelmenu
 dependencies[] = localist_block
 dependencies[] = microfilm_microfiche
 dependencies[] = news
@@ -51,4 +53,3 @@ dependencies[] = tagged_content_block
 dependencies[] = wit
 dependencies[] = youtube_videos
 dependencies[] = youtube_playlists
-dependencies[] = jpanelmenu

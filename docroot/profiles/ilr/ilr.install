@@ -107,11 +107,20 @@ function ilr_update_7001() {
 }
 
 /**
- * Enables field_formatter_settings and borealis
+ * Enables borealis responsive images
  */
 function ilr_update_7002() {
   module_enable(array(
     'borealis_ri',
+  ));
+}
+
+/**
+ * Enables custom_publishing_options
+ */
+function ilr_update_7003() {
+  module_enable(array(
+    'custom_publishing_options',
   ));
 }
 
