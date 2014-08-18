@@ -170,3 +170,101 @@ function _ilr_get_or_create_term($term_name, $vocab_machine_name) {
   }
   return $term;
 }
+
+/**
+ * Find the nids for the nodes that this block is used in.
+ *
+ * Assumes blocks will be set in field_blocks field collection.
+ * @param $bid
+ *  Block id.
+ * @return array
+ *  nids which use this block via the field_blocks field collection.
+ */
+function _ilr_get_block_usage($bid) {
+  $nids = array();
+  $block_fields = field_info_instances('field_collection_item', 'field_blocks');
+  $field_collection_ids = array();
+  foreach ($block_fields as $field_name => $block_field) {
+    $field_info = field_info_field($field_name);
+    if ($field_info['type'] == 'blockreference') {
+      $field_collection_ids = array_merge(_ilr_block_usage_block_reference($field_name, $bid), $field_collection_ids);
+    }
+  }
+  if ($field_collection_ids) {
+    $items = entity_load('field_collection_item', $field_collection_ids);
+    foreach ($items as $item) {
+      $nids[] = $item->hostEntityId();
+    }
+  }
+  return $nids;
+
+}
+
+/**
+ * Find the field collection ids that use the block with the given field.
+ * @param $block_field
+ *  Field name for Block Reference Field.
+ * @param $bid
+ *  Block id
+ * @return array
+ *  field collection id which use this block via the $block_field.
+ */
+function _ilr_block_usage_block_reference($block_field, $bid){
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'field_collection_item')
+    ->entityCondition('bundle', 'field_blocks')
+    ->propertyCondition('archived', 0)
+    ->fieldCondition($block_field, 'bid', $bid);
+  $result = $query->execute();
+  if (!empty($result['field_collection_item'])) {
+    return array_keys($result['field_collection_item']);
+  }
+  return array();
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Alter bean_form.
+ */
+function ilr_form_bean_form_alter(&$form, &$form_state, $form_id) {
+  _ilr_add_bean_usage_warning($form);
+}
+
+/**
+ * Add warning message about where the current bean is used.
+ * @param $form
+ */
+function _ilr_add_bean_usage_warning(&$form) {
+  $bean = $form['bean']['#value'];
+  if (empty($form_state['input']) && empty($bean->is_new)) {
+    $theme = variable_get('theme_default', 'none');
+    $block = _ilr_block_load('bean', $bean->delta, $theme);
+    $nids = _ilr_get_block_usage($block->bid);
+    // @todo Should this warning only show when there is more than 1?
+    if (!empty($nids)) {
+      $result = db_select('node', 'n')->fields('n', array(
+        'nid',
+        'title',
+        'created'
+      ))->condition('nid', $nids)->execute();
+      $title = 'This block is currently being used in the following pages. Any changes will affect these pages.';
+      drupal_set_message(drupal_render(node_title_list($result, $title)), 'warning', FALSE);
+    }
+  }
+}
+
+/**
+ * Loads a block object from the database for a specific theme.
+ *
+ * Core's block_load ignores theme.
+ * @return
+ *   A block object.
+ */
+function _ilr_block_load($module, $delta, $theme) {
+  $block = FALSE;
+  if (isset($delta)) {
+    $block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme', array(':module' => $module, ':delta' => $delta, ':theme' => $theme))->fetchObject();
+  }
+  return $block;
+}
