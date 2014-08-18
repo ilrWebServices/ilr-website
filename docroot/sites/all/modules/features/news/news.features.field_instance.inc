@@ -70,7 +70,7 @@ function news_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'highlighted' => array(
         'label' => 'hidden',
@@ -117,10 +117,10 @@ function news_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'focussed_thumbnail',
+          'image_style' => 'focussed_grid_image',
         ),
         'type' => 'image',
-        'weight' => 2,
+        'weight' => 0,
       ),
       'highlighted' => array(
         'label' => 'hidden',
@@ -209,7 +209,7 @@ function news_field_default_field_instances() {
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'highlighted' => array(
         'label' => 'above',
