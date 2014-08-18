@@ -24,6 +24,11 @@ if [ "${#ENV}" -eq "0" ]; then
 fi
 
 if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
+  # We are now locking Stage down to the master branch
+  if [ "$ENV" = "test" ]; then
+    branch_name='master'
+  fi
+
   git push -f ac $branch_name
 
   echo "Pushing $branch_name to acquia cloud $ENV"

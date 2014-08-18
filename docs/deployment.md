@@ -3,7 +3,7 @@ Acquia provides three environments for each bucket, which they generally call "D
 
 ## Conceptual Differences Between Environments
 * **Dev** - Dev is the environment where feature branches are tested, and is therefore inherently less stable than test or prod. Content added to dev should be considered placeholder, and may be deleted after a reinstall at any time. Devel generate is a good way of getting content populated on dev.
-* **Test** - Generally, we will try to use test with the master branch, with the goal of enabling changes without having to reinstall the site. Content on stage may get deleted, but generally, the test environment is a good place to enable modules and other updates via hook_update_N, rather than a fresh reinstall of the profile.
+* **Test** - As of Auguest 2014, we have committed to keeping the master branch deployed on test and avoiding reinstalling the site. This practice ensures that the content added on staging will remain, and also reinforces the practice of using update hooks to enable features and handling other configuration tasks that could otherwise be handled as a part of the install/reinstall process.
 * **Prod** - Before launch, we will be using prod to stage the new content. The plan is to make all necessary changes via update hooks to avoid having to reinstall and re-migrate content.
 
 ## Deploying to Dev and/or Staging
@@ -11,7 +11,12 @@ Acquia provides three environments for each bucket, which they generally call "D
 
 In short, there is a [deploy script](/bin/deploy) in the bin folder that handles deployment to dev and test. You run this script from the repository root, ie `$ bin/deploy`, which deploys the site to dev. For staging, pass the "-e" flag, as in `$ bin/deploy -e test`. We use "test" rather than "stage" because it mirrors the server structure and naming conventions.
 
-Generally, you are able to deploy any local branch to livedev on either dev or test without additional consequences. However, at times, it happens that a conflict between the branches arises, and the only way to fix it is to disable livedev on that environment, switch to the desired branch in the Workflow interface, then re-enable livedev. In some instances, you will also need to reinstall the site. The easiest way to do that is to log into the irldev db server with [sequel pro](http://www.sequelpro.com/) or another db administration program. You can find the login credentials in the Acquia Cloud interface, on the "Databases" menu item on the left. After deleting all of the current tables, go to [the installer page](drupal-dev.ilr.cornell.edu/install.php), and choose the ILR profile.
+Generally, you are able to deploy any local branch to livedev on Acquia dev without additional consequences. However, at times, it happens that a conflict between the branches arises, and the only way to fix it is to disable livedev on that environment, switch to the desired branch in the Workflow interface, then re-enable livedev. In some instances, you will also need to reinstall the site. The easiest way to do that is to run the following drush script from your docroot:
+
+    drush @ilr.ilr.dev si ilr --site-name="ILR Dev Site | Cornell University" --clean-url=1 --account-pass=testing --account-mail=aaronf@cornell.edu --yes
+
+You can also log into the irldev db server with [sequel pro](http://www.sequelpro.com/) or another db administration program. You can find the login credentials in the Acquia Cloud interface, on the "Databases" menu item on the left. After deleting all of the current tables, go to [the installer page](drupal-dev.ilr.cornell.edu/install.php), and choose the ILR profile.
+
 
 ## Deploying to Prod
 
