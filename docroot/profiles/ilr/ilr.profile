@@ -249,7 +249,8 @@ function _ilr_add_bean_usage_warning(&$form) {
         'created'
       ))->condition('nid', $nids)->execute();
       $title = 'This block is currently being used in the following pages. Any changes will affect these pages.';
-      drupal_set_message(drupal_render(node_title_list($result, $title)), 'warning', FALSE);
+      $title_list = node_title_list($result, $title);
+      drupal_set_message(drupal_render($title_list), 'warning', FALSE);
     }
   }
 }
