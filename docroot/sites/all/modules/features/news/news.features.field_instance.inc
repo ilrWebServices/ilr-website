@@ -155,7 +155,7 @@ function news_field_default_field_instances() {
       'file_extensions' => 'jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '1080x300',
+      'min_resolution' => '320x134',
       'title_field' => 1,
       'user_register_form' => FALSE,
     ),
