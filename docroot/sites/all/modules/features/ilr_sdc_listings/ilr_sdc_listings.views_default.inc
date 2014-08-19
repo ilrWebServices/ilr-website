@@ -218,7 +218,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_online_class_value']['field'] = 'field_online_class_value';
   $handler->display->display_options['filters']['field_online_class_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_online_class_value']['expose']['operator_id'] = 'field_online_class_value_op';
-  $handler->display->display_options['filters']['field_online_class_value']['expose']['label'] = 'Online Workshop?';
+  $handler->display->display_options['filters']['field_online_class_value']['expose']['label'] = 'Online or In-person';
   $handler->display->display_options['filters']['field_online_class_value']['expose']['operator'] = 'field_online_class_value_op';
   $handler->display->display_options['filters']['field_online_class_value']['expose']['identifier'] = 'field_online_class_value';
   $handler->display->display_options['filters']['field_online_class_value']['expose']['remember_roles'] = array(
@@ -258,7 +258,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_sdc_department_tid']['vocabulary'] = 'sdc_department';
 
   /* Display: Month LIst */
-  $handler = $view->new_display('page', 'Month LIst', 'page_4');
+  $handler = $view->new_display('page', 'Month LIst', 'page_month');
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
   $handler->display->display_options['pager']['options']['date_id'] = 'month';
@@ -435,7 +435,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['menu']['context'] = 0;
 
   /* Display: Day */
-  $handler = $view->new_display('page', 'Day', 'page_3');
+  $handler = $view->new_display('page', 'Day', 'page_day');
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
   $handler->display->display_options['pager']['options']['date_id'] = 'day';
