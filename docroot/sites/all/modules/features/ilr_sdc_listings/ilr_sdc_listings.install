@@ -10,6 +10,8 @@
 function ilr_sdc_listings_install() {
   _ilr_sdc_listings_set_importer_sources();
 
+  // Set feature specific variables
+  variable_set('ilr_sdc_listings_reg_url', 'http://www.ilr.cornell.edu/registration/process/processcard.cfm');
 }
 
 /**

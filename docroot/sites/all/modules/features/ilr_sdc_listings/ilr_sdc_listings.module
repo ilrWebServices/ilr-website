@@ -155,6 +155,8 @@ function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
  */
 function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has_override_price) {
   $render_arrays = node_view_multiple($class_nodes, 'teaser');
+  $default_class_id = NULL;
+  $class_nid_from_url = _ilr_sdc_listings_get_class_from_url();
   foreach (element_children($render_arrays['nodes']) as $nid) {
     // Remove title because it is the same as the course
     $render_array = & $render_arrays['nodes'][$nid];
@@ -163,21 +165,30 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
     if (!$has_override_price) {
       unset($render_array['field_price']);
     }
-    $options[$nid] = drupal_render($render_arrays['nodes'][$nid]);
+    $class_node_wrapper = entity_metadata_wrapper('node', $class_nodes[$nid]);
+    $class_id = $class_node_wrapper->field_class_id->value();
+    if ($nid == $class_nid_from_url) {
+      $default_class_id = $class_id;
+    }
+    $options[$class_id] = drupal_render($render_arrays['nodes'][$nid]);
   }
 
-  $form['class'] = array(
+  $form['addClass'] = array(
     '#title' => t('Select the session you\'d like to attend'),
     '#type' => 'radios',
     '#options' => $options,
     '#required' => TRUE,
-    '#default_value' => _ilr_sdc_listings_get_class_from_url(),
+    '#default_value' => $default_class_id,
   );
-
+  $form['courseurl'] = array(
+    '#type' => 'hidden',
+    '#value' => urlencode('http://www.ilr.cornell.edu'),
+  );
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Register'),
   );
+  $form['#action'] = variable_get('ilr_sdc_listings_reg_url', 'http://www.ilr.cornell.edu/registration/process/processcard.cfm');
   return $form;
 }
 
