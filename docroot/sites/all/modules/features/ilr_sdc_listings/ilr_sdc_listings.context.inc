@@ -15,7 +15,7 @@ function ilr_sdc_listings_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'sdc_course_calendar';
   $context->description = '';
-  $context->tag = '';
+  $context->tag = 'sdc';
   $context->conditions = array(
     'path' => array(
       'values' => array(
@@ -32,16 +32,14 @@ function ilr_sdc_listings_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
-        'views--exp-sdc_class_calendar-page_4' => array(
-          'module' => 'views',
-          'delta' => '-exp-sdc_class_calendar-page_4',
-          'region' => 'sidebar_first',
-          'weight' => '-9',
-        ),
       ),
     ),
   );
   $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('sdc');
   $export['sdc_course_calendar'] = $context;
 
   return $export;
