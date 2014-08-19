@@ -367,10 +367,9 @@ function ilr_sdc_listings_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 9,
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -394,6 +393,48 @@ function ilr_sdc_listings_field_default_field_instances() {
       ),
       'type' => 'options_onoff',
       'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_class-field_online_class'
+  $field_instances['node-sdc_class-field_online_class'] = array(
+    'bundle' => 'sdc_class',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_online_class',
+    'label' => 'Online Class',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 43,
     ),
   );
 
@@ -597,7 +638,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -637,7 +678,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -662,6 +703,48 @@ function ilr_sdc_listings_field_default_field_instances() {
       ),
       'type' => 'taxonomy_autocomplete',
       'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_course-field_on_demand'
+  $field_instances['node-sdc_course-field_on_demand'] = array(
+    'bundle' => 'sdc_course',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_on_demand',
+    'label' => 'On Demand',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 39,
     ),
   );
 
@@ -762,7 +845,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -843,6 +926,7 @@ function ilr_sdc_listings_field_default_field_instances() {
   t('Faculty');
   t('Keywords');
   t('On Demand');
+  t('Online Class');
   t('Price');
   t('Price note');
   t('Registration End date');
