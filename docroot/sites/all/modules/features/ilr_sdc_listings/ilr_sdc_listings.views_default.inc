@@ -161,6 +161,13 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['status_1']['field'] = 'status';
   $handler->display->display_options['filters']['status_1']['relationship'] = 'field_course_target_id';
   $handler->display->display_options['filters']['status_1']['value'] = '1';
+  /* Filter criterion: Content: On Demand (field_on_demand) */
+  $handler->display->display_options['filters']['field_on_demand_value']['id'] = 'field_on_demand_value';
+  $handler->display->display_options['filters']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
+  $handler->display->display_options['filters']['field_on_demand_value']['field'] = 'field_on_demand_value';
+  $handler->display->display_options['filters']['field_on_demand_value']['value'] = array(
+    0 => '0',
+  );
 
   /* Display: Month LIst */
   $handler = $view->new_display('page', 'Month LIst', 'page_4');

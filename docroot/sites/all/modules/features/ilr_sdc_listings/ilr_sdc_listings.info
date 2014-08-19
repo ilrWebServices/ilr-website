@@ -35,6 +35,7 @@ features[field_instance][] = node-sdc_class-field_class_dates
 features[field_instance][] = node-sdc_class-field_class_id
 features[field_instance][] = node-sdc_class-field_course
 features[field_instance][] = node-sdc_class-field_faculty
+features[field_instance][] = node-sdc_class-field_on_demand
 features[field_instance][] = node-sdc_class-field_price
 features[field_instance][] = node-sdc_class-field_registration_end_date
 features[field_instance][] = node-sdc_course-body

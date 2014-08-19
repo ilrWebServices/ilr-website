@@ -152,6 +152,7 @@ features[field_base][] = field_number_of_assistants_reque
 features[field_base][] = field_number_of_completed_credit
 features[field_base][] = field_number_of_completed_semest
 features[field_base][] = field_number_of_terms_at_cornell
+features[field_base][] = field_on_demand
 features[field_base][] = field_passport_expiration_date
 features[field_base][] = field_passport_number
 features[field_base][] = field_phone
