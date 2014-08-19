@@ -378,6 +378,9 @@ function _ilr_sdc_listings_calendar_month_url($month, $include_query_string = TR
 }
 
 /**
+ * Get query string values that relates to field exposed filters
+ *
+ * @see drupal_get_query_parameters
  * @return array
  */
 function _ilr_sdc_listings_get_field_query_values() {
@@ -388,16 +391,4 @@ function _ilr_sdc_listings_get_field_query_values() {
     }
   }
   return $query_parameters;
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- */
-function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
-  $view = $form_state['view'];
-  if ($view->name == 'sdc_class_calendar') {
-    if (isset($form['field_sdc_department_tid'])) {
-      //$form['field_sdc_department_tid']['#type'] = 'checkboxes';
-    }
-  }
 }
