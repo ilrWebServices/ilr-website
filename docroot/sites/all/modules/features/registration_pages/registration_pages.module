@@ -14,63 +14,21 @@ function registration_pages_preprocess_node(&$variables) {
   // for the form page.  The form page content type hides these fields (manage display) so there won't
   // be any duplication of info.
 
-  dpm ('In registration_pages_preprocess_node, variables and then node:');
-  dpm ($variables);
-  dpm ($variables['node']);
-
+  // Event info at the top of the form that the user sees
   if ($variables['type'] == 'registration_page'){
-    // event_info is the element I'm creating; assign it a weight that forces it to be at the top of the page
+    // Create event_info element and assign it a weight that forces it to be at the top of the page
     $variables['content']['event_info']['#weight'] = -1;
 
     // Page body if one was set when page was created
     if (! empty($variables['node']->body)) {
       $variables['content']['event_info']['#markup'] = "<p>";
       $variables['content']['event_info']['#markup'] .= $variables['node']->body['und'][0]['value'];
-      $variables['content']['event_info']['#markup'] .= "<br>";
-    }
-    else {
-      $variables['content']['event_info']['#markup'] = "<p>";
+      $variables['content']['event_info']['#markup'] .= "</p>";
     }
 
-    // Event date and time
-    if (! empty($variables['node']->field_event_date)) {
-      dpm('look here');
-      dpm($variables['node']->field_event_date, 'field_event_date');
-      $event_date_usable =
-        _registration_pages_get_usable_datetime_from_datetime_field(
-            $variables['node']->field_event_date['und'][0]);
-
-      $variables['content']['event_info']['#markup'] .= "<strong>Date:</strong> ";
-      $variables['content']['event_info']['#markup'] .= $event_date_usable['start_date'];
-      $variables['content']['event_info']['#markup'] .= "<br>";
-
-      $variables['content']['event_info']['#markup'] .= "<strong>Time:</strong> ";
-      $variables['content']['event_info']['#markup'] .= $event_date_usable['start_time'];
-
-      // End time
-      if (isset($event_date_usable['end_date'])) {
-        if ($event_date_usable['start_date'] == $event_date_usable['end_date']) {
-          // The expected case: start and end date are the same
-          $variables['content']['event_info']['#markup'] .=  ' - ' . $event_date_usable['end_time'];
-        }
-        else {
-          // Unlikely, but just in case the end date is different from the start date, include it
-          $variables['content']['event_info']['#markup'] .= ' - ' . $event_date_usable['end_date'] . ' ' . $event_date_usable['end_time'];
-        }
-      }
-      $variables['content']['event_info']['#markup'] .= "<br>";
-    }
-
-    // Location
-    if (!empty($variables['node']->field_location_as_long_text)) {
-      $variables['content']['event_info']['#markup'] .= "<strong>Location:</strong> ";
-      $variables['content']['event_info']['#markup'] .=
-        $variables['node']->field_location_as_long_text['und'][0]['value'];
-      $variables['content']['event_info']['#markup'] .= "<br>";
-    }
-
-    $variables['content']['event_info']['#markup'] .= "</p>";
-    // End of basic constructed content
+    // Append event info
+    $variables['content']['event_info']['#markup'] .=
+      _registration_pages_get_event_markup($variables['node']);
 
     // Check open dates for using the form, and only display the form if we're within those dates
     if (! empty($variables['node']->field_event_registration_period)) {
@@ -102,7 +60,7 @@ function registration_pages_preprocess_node(&$variables) {
         $variables['content']['field_registration_form']['#markup'] .=
           'This form will be available on ' . $golive_date . ' at ' . $golive_time . '.';
       }
-      // Next check deadline
+      // Next check deadline (closing date for form)
       elseif (isset($variables['node']->field_event_registration_period['und'][0]['value2'])) {
         // There is a deadline; if we're past the deadline show appropriate message
         $deadline_timestamp = strtotime(
@@ -134,16 +92,10 @@ function registration_pages_preprocess_node(&$variables) {
   }
 }
 
-// *****************************************************************
-//    Token stuff  -  begin
-// *****************************************************************
-
 /**
  * Implements hook_token_info().
  */
 function registration_pages_token_info() {
-  dpm ('In registration_pages_token_info');
-
   $tokens['event_info'] = array(
     'name' => t('Event Info'),
     'description' => t('Includes date, time, location'),
@@ -152,7 +104,6 @@ function registration_pages_token_info() {
   $return_array = array(
     'tokens' => array('entityform' => $tokens),
   );
-  dpm ($return_array, '$return_array');
   return $return_array;
 }
 
@@ -163,7 +114,6 @@ function registration_pages_token_info() {
  * @return array
  */
 function _registration_pages_get_provided_tokens() {
-  dpm ('In _registration_pages_get_provided_tokens');
   $tokens['event_info'] = array(
     'name' => t('Event Info'),
     'description' => t('Includes date, time, location'),
@@ -184,7 +134,11 @@ function registration_pages_tokens($type, $tokens, array $data = array(), array 
     // Check that event_info exists - if so we need to assign to it
     if (isset($tokens['event_info'])) {
       if (_registrations_pages_is_reg_form($entityform)) {
-        $return[$tokens['event_info']] = _registration_pages_get_event_markup($entityform);
+        $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
+
+        // Get all info about the node; this will be empty if field_event_content doesn't exist
+        $whole_node = $entityform_wrapper->field_event_content->value();
+        $return[$tokens['event_info']] = _registration_pages_get_event_markup($whole_node);
       }
     }
   }
@@ -200,10 +154,15 @@ function _registrations_pages_is_reg_form($entityform) {
   $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
 
   // Get all info about the node; this will be empty if field_event_content doesn't exist
-  $whole_node = $entityform_wrapper->field_event_content->value();
+  if (isset($entityform_wrapper->field_event_content)) {
+    $whole_node = $entityform_wrapper->field_event_content->value();
 
-  if (! empty($whole_node) && $whole_node->type == 'registration_page') {
-    return TRUE;
+    if (! empty($whole_node) && $whole_node->type == 'registration_page') {
+      return TRUE;
+    }
+    else {
+      return FALSE;
+    }
   }
   else {
     return FALSE;
@@ -215,13 +174,13 @@ function _registrations_pages_is_reg_form($entityform) {
  * Generate markup for the event info for an event on a registration page
  * This should only be called if we're on a registration page
  */
-function _registration_pages_get_event_markup($entityform) {
+function _registration_pages_get_event_markup($node) {
 
   // Wrap entityform in an entity metadata wrapper - makes it easier to access entity values
-  $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
+  $node_wrapper = entity_metadata_wrapper('node', $node);
 
-  $location_text = $entityform_wrapper->field_event_content->field_location_as_long_text->value();
-  $event_date_save = $entityform_wrapper->field_event_content->field_event_date->value();
+  $location_text = $node_wrapper->field_location_as_long_text->value();
+  $event_date_save = $node_wrapper->field_event_date->value();
 
   $event_info = '<p>';
 
@@ -295,9 +254,3 @@ function _registration_pages_get_usable_datetime_from_datetime_field($datetime_f
 function _registration_pages_get_token($entityform_id) {
   return md5(drupal_get_private_key() . $entityform_id);
 }
-
-// *****************************************************************
-//    Token stuff  -  end
-// *****************************************************************
-
-

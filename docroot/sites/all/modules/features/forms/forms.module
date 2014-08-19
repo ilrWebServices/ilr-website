@@ -24,6 +24,7 @@ function forms_entityform_presave($entityform) {
 
   // If this is a registration form, set a couple of hidden form fields, so they'll be
   // saved later on in the database.
+
   if (isset($entityform->field_event_content) &&
     module_exists('registration_pages') &&
     _registrations_pages_is_reg_form($entityform) &&
@@ -175,11 +176,15 @@ function _forms_get_submit_handler($bundle) {
  * Generates the appropriate email template for entityforms
  * Note that the email template contains underscores, but the actual filename contains hyphens.
  */
-function _forms_get_tplphp_file($bundle) {
-  $tplphp_file = str_replace('_', '-', $bundle);
+function _forms_get_tplphp_file($form) {
+  $tplphp_file = str_replace('_', '-', $form['#bundle']);
+
   $tplphp_file_full_path = drupal_get_path('module', 'forms') . '/templates/' . $tplphp_file . '.tpl.php';
   if (file_exists($tplphp_file_full_path)) {
-    return $bundle;
+    return $form['#bundle'];
+  }
+  elseif (module_exists('registration_pages') && _registrations_pages_is_reg_form($form['#entity'])) {
+    return 'default_registration_confirmation';
   }
   return 'default_mail';
 }
@@ -313,18 +318,19 @@ function _forms_year_relative_options($firstOffset, $lastOffset) {
  * Send user and admin emails
  */
 function _forms_send_emails($form, $admin_email, $subject='') {
-  dpm('in _forms_send_emails');
-  dpm($form, '$form');
-
-  if (module_exists('registration_pages') && _registrations_pages_is_reg_form($form['#entity'])) {
-    dpm('on a reg page');
-    $event_info_for_email = _registration_pages_get_event_markup($form['#entity']);
-    dpm($event_info_for_email, '$event_info_for_email');
-  }
-
   $form_title = _forms_get_form_title($form);
   $user_name = _forms_construct_user_name($form);
-  $email_template = _forms_get_tplphp_file($form['#bundle']);
+  $email_template = _forms_get_tplphp_file($form);
+  $event_info_for_email = '';
+
+  if (module_exists('registration_pages') && _registrations_pages_is_reg_form($form['#entity'])) {
+    $entityform_wrapper = entity_metadata_wrapper('entityform', $form['#entity']);
+
+    // Get all info about the node; this will be empty if field_event_content doesn't exist
+    $whole_node = $entityform_wrapper->field_event_content->value();
+
+    $event_info_for_email = _registration_pages_get_event_markup($whole_node);
+  }
 
   // User email
   if (!empty($form['field_email']['und'][0]['email']['#value'])) {
@@ -335,6 +341,7 @@ function _forms_send_emails($form, $admin_email, $subject='') {
       'form_data'       => _entity_display_form_data($form),
       'admin_email'     => $admin_email,
       'form_title'      => $form_title,
+      'event_info_for_email' => $event_info_for_email,
     ));
 
     $to = _get_string_or_default($form['field_email']['und'][0]['email']['#value'], $admin_email);
