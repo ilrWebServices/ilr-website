@@ -2388,6 +2388,20 @@ function forms_field_default_field_instances() {
         'type' => 'email_default',
         'weight' => 2,
       ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 2,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 2,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_email',
@@ -2407,6 +2421,70 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_event_content'
+  $field_instances['entityform-labor_roundtable_student_registr-field_event_content'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'default_value' => NULL,
+    'default_value_function' => 'entityreference_current_field_default_value',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 8,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'view_mode' => 'default',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_event_content',
+    'label' => 'event content',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'current' => array(
+          'action' => 'hide',
+          'action_on_edit' => 1,
+          'fallback' => 'form_error',
+          'skip_perm' => 0,
+          'status' => 1,
+          'use_uid' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 15,
+    ),
+  );
+
   // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_first_name'
   $field_instances['entityform-labor_roundtable_student_registr-field_first_name'] = array(
     'bundle' => 'labor_roundtable_student_registr',
@@ -2415,6 +2493,20 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'token' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -2441,6 +2533,72 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_h_event_date'
+  $field_instances['entityform-labor_roundtable_student_registr-field_h_event_date'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 9,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'ilr_day_long_date_no_time',
+          'fromto' => 'value',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_h_event_date',
+    'label' => 'h event date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 19,
+    ),
+  );
+
   // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_last_name'
   $field_instances['entityform-labor_roundtable_student_registr-field_last_name'] = array(
     'bundle' => 'labor_roundtable_student_registr',
@@ -2449,6 +2607,20 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'token' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -2489,6 +2661,20 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 6,
       ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_major',
@@ -2517,6 +2703,20 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'token' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -2557,6 +2757,20 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 7,
       ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_referral_textarea',
@@ -2591,6 +2805,20 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 5,
       ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_school_or_college',
@@ -2616,6 +2844,20 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'token' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(),
@@ -3239,6 +3481,8 @@ function forms_field_default_field_instances() {
   t('Year');
   t('Your status');
   t('Zip code');
+  t('event content');
+  t('h event date');
 
   return $field_instances;
 }
