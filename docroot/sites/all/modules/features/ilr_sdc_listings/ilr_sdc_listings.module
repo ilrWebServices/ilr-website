@@ -296,7 +296,15 @@ function _ilr_sdc_listings_get_url_month_arg() {
  */
 function ilr_sdc_listings_views_pre_render(&$view) {
   if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
-    $view->attachment_before = drupal_render(drupal_get_form('_ilr_listings_sdc_select_month_form'));
+    $nav = '';
+    if (arg(0) == 'sdc-catalog-day') {
+      $month = _ilr_sdc_listings_get_url_month_arg();
+      $month_label = t('Back to @month ', array('@month' => date('F Y', strtotime($month))));
+      $url = _ilr_sdc_listings_calendar_month_url($month, FALSE);
+      $nav = '<p>' . l($month_label, $url, array('query' => _ilr_sdc_listings_get_field_query_values())) . '</p>';
+    }
+    $nav .= drupal_render(drupal_get_form('_ilr_listings_sdc_select_month_form'));
+    $view->attachment_before = $nav;
   }
 }
 
@@ -318,7 +326,7 @@ function _ilr_listings_sdc_select_month_form($form, &$form_state) {
   $form['ilr_sdc_month_redirect'] = array(
     '#type' => 'select',
     '#options' => $month_options,
-    '#default_value' => _ilr_sdc_listings_calendar_month_url($start_month),
+    '#default_value' => '/' . _ilr_sdc_listings_calendar_month_url($start_month),
   );
   $form['#attached']['js'] = array(
     drupal_get_path('module', 'ilr_sdc_listings') . '/js/ilr_sdc_listings.js',
@@ -341,7 +349,7 @@ function _ilr_sdc_listings_get_month_options($start_month, $month_count) {
   $month = date('Y-m', strtotime("-$half_count months", strtotime($start_month)));
   $i = 0;
   while ($i++ < $month_count) {
-    $view_url = _ilr_sdc_listings_calendar_month_url($month);
+    $view_url = '/' . _ilr_sdc_listings_calendar_month_url($month);
     $month_options[$view_url] = date('M Y', strtotime($month));
     $month = date('Y-m', strtotime("+1 months", strtotime($month)));
   }
@@ -356,16 +364,30 @@ function _ilr_sdc_listings_get_month_options($start_month, $month_count) {
  *  Format YYYY-MM to work with Views contextual filter for date
  * @return string
  */
-function _ilr_sdc_listings_calendar_month_url($month) {
-  $url = "/sdc-catalog-month/$month?";
+function _ilr_sdc_listings_calendar_month_url($month, $include_query_string = TRUE) {
+  $url = "sdc-catalog-month/$month";
+  if ($include_query_string) {
+    $query_parameters = _ilr_sdc_listings_get_field_query_values();
+    $query_string = drupal_http_build_query($query_parameters);
+    if ($query_string) {
+      $url .= '?' . $query_string;
+    }
+  }
+  return $url;
+
+}
+
+/**
+ * @return array
+ */
+function _ilr_sdc_listings_get_field_query_values() {
   $query_parameters = drupal_get_query_parameters();
   foreach (array_keys($query_parameters) as $query_key) {
-    if (substr($query_key, 0,6) !== 'field_') {
+    if (substr($query_key, 0, 6) !== 'field_') {
       unset($query_parameters[$query_key]);
     }
   }
-  return $url . drupal_http_build_query($query_parameters);
-
+  return $query_parameters;
 }
 
 /**
