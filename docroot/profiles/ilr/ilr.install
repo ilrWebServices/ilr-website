@@ -96,6 +96,10 @@ function ilr_install() {
 
   _ilr_add_permissions();
 
+  // Explicitly call any hook_update_n implementations needed to run on install.
+  // These hooks will be skipped by initial install but will run on updatedb of current site.
+  ilr_update_7003();
+
   // Add Migrations here as necessary
 }
 
@@ -153,6 +157,13 @@ function ilr_update_7006() {
   ));
 }
 
+/**
+ * Enable Date format and JQuery update admin version variables.
+ */
+function ilr_update_7003() {
+  variable_set('date_format_ilr_short_day_only', 'M j');
+  variable_set('jquery_update_jquery_admin_version', '1.5');
+}
 /**
  * Custom function for role creation
  */
