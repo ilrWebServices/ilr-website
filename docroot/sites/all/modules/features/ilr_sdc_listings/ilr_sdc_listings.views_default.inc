@@ -29,7 +29,51 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+    ),
+    'field_online_class_value' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'bef_select_all_none' => 0,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+    'field_sdc_department_tid' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 0,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+  );
+  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
   $handler->display->display_options['pager']['options']['date_id'] = 'month';
   $handler->display->display_options['style_plugin'] = 'calendar_style';
@@ -168,6 +212,50 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_on_demand_value']['value'] = array(
     0 => '0',
   );
+  /* Filter criterion: Content: Online Class (field_online_class) */
+  $handler->display->display_options['filters']['field_online_class_value']['id'] = 'field_online_class_value';
+  $handler->display->display_options['filters']['field_online_class_value']['table'] = 'field_data_field_online_class';
+  $handler->display->display_options['filters']['field_online_class_value']['field'] = 'field_online_class_value';
+  $handler->display->display_options['filters']['field_online_class_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_online_class_value']['expose']['operator_id'] = 'field_online_class_value_op';
+  $handler->display->display_options['filters']['field_online_class_value']['expose']['label'] = 'Online Workshop?';
+  $handler->display->display_options['filters']['field_online_class_value']['expose']['operator'] = 'field_online_class_value_op';
+  $handler->display->display_options['filters']['field_online_class_value']['expose']['identifier'] = 'field_online_class_value';
+  $handler->display->display_options['filters']['field_online_class_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    9 => 0,
+    6 => 0,
+    5 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  /* Filter criterion: Content: Department (field_sdc_department) */
+  $handler->display->display_options['filters']['field_sdc_department_tid']['id'] = 'field_sdc_department_tid';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['table'] = 'field_data_field_sdc_department';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['relationship'] = 'field_course_target_id';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator_id'] = 'field_sdc_department_tid_op';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Department';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator'] = 'field_sdc_department_tid_op';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['identifier'] = 'field_sdc_department_tid';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    9 => 0,
+    6 => 0,
+    5 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['field_sdc_department_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['vocabulary'] = 'sdc_department';
 
   /* Display: Month LIst */
   $handler = $view->new_display('page', 'Month LIst', 'page_4');
@@ -188,6 +276,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
@@ -241,6 +330,30 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_class_dates.field_class_dates_value' => 'field_data_field_class_dates.field_class_dates_value',
   );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
+  $handler->display->display_options['filters']['status_1']['table'] = 'node';
+  $handler->display->display_options['filters']['status_1']['field'] = 'status';
+  $handler->display->display_options['filters']['status_1']['relationship'] = 'field_course_target_id';
+  $handler->display->display_options['filters']['status_1']['value'] = '1';
+  $handler->display->display_options['filters']['status_1']['group'] = 1;
+  /* Filter criterion: Content: On Demand (field_on_demand) */
+  $handler->display->display_options['filters']['field_on_demand_value']['id'] = 'field_on_demand_value';
+  $handler->display->display_options['filters']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
+  $handler->display->display_options['filters']['field_on_demand_value']['field'] = 'field_on_demand_value';
+  $handler->display->display_options['filters']['field_on_demand_value']['value'] = array(
+    0 => '0',
+  );
+  $handler->display->display_options['filters']['field_on_demand_value']['group'] = 1;
 
   /* Display: Month */
   $handler = $view->new_display('page', 'Month', 'page_1');
@@ -340,6 +453,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';

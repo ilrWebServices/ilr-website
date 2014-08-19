@@ -312,13 +312,13 @@ function _ilr_listings_sdc_select_month_form($form, &$form_state) {
   else {
     $start_month = date('Y-m');
   }
-  $base_path = '/sdc-catalog-month/';
-  $month_options = _ilr_sdc_listings_get_month_options($start_month, 15, $base_path);
+
+  $month_options = _ilr_sdc_listings_get_month_options($start_month, 15);
 
   $form['ilr_sdc_month_redirect'] = array(
     '#type' => 'select',
     '#options' => $month_options,
-    '#default_value' => $base_path . $start_month,
+    '#default_value' => _ilr_sdc_listings_calendar_month_url($start_month),
   );
   $form['#attached']['js'] = array(
     drupal_get_path('module', 'ilr_sdc_listings') . '/js/ilr_sdc_listings.js',
@@ -335,32 +335,47 @@ function _ilr_listings_sdc_select_month_form($form, &$form_state) {
  *  key - URL to redirect to will include month Views argument.
  *  values - Label for month. "August 2014"
  */
-function _ilr_sdc_listings_get_month_options($start_month, $month_count, $key_prefix = '') {
+function _ilr_sdc_listings_get_month_options($start_month, $month_count) {
   $month_options = array();
   $half_count = round($month_count/2);
   $month = date('Y-m', strtotime("-$half_count months", strtotime($start_month)));
   $i = 0;
   while ($i++ < $month_count) {
-    $month_options[$key_prefix . $month] = date('M Y', strtotime($month));
+    $view_url = _ilr_sdc_listings_calendar_month_url($month);
+    $month_options[$view_url] = date('M Y', strtotime($month));
     $month = date('Y-m', strtotime("+1 months", strtotime($month)));
   }
   return $month_options;
 }
 
 /**
- * Implements hook_block_info_alter().
+ * Construct the redirect URL for the SDC Monthly calendar View.
  *
- * Place Views block nav in Region.
+ * This handles any exposed filter field values that are in the URL.
+ * @param $month
+ *  Format YYYY-MM to work with Views contextual filter for date
+ * @return string
  */
-function ilr_sdc_listings_block_info_alter(&$blocks, $theme, $code_blocks) {
+function _ilr_sdc_listings_calendar_month_url($month) {
+  $url = "/sdc-catalog-month/$month?";
+  $query_parameters = drupal_get_query_parameters();
+  foreach (array_keys($query_parameters) as $query_key) {
+    if (substr($query_key, 0,6) !== 'field_') {
+      unset($query_parameters[$query_key]);
+    }
+  }
+  return $url . drupal_http_build_query($query_parameters);
 
-  if (isset($blocks['views']['sdc_class_calendar-block_nav'])) {
-    $block_settings = array(
-      'status' => 1,
-      'region' => 'sidebar_first',
-      'visibility' => BLOCK_VISIBILITY_LISTED,
-      'pages' => 'sdc-catalog-*',
-    );
-    $blocks['views']['sdc_class_calendar-block_nav'] += $block_settings;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  $view = $form_state['view'];
+  if ($view->name == 'sdc_class_calendar') {
+    if (isset($form['field_sdc_department_tid'])) {
+      //$form['field_sdc_department_tid']['#type'] = 'checkboxes';
+    }
   }
 }
