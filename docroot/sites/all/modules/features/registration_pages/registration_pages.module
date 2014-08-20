@@ -16,78 +16,17 @@ function registration_pages_preprocess_node(&$variables) {
 
   // Event info at the top of the form that the user sees
   if ($variables['type'] == 'registration_page'){
-    // Create event_info element and assign it a weight that forces it to be at the top of the page
-    $variables['content']['event_info']['#weight'] = -1;
-
-    // Page body if one was set when page was created
-    if (! empty($variables['node']->body)) {
-      $variables['content']['event_info']['#markup'] = "<p>";
-      $variables['content']['event_info']['#markup'] .= $variables['node']->body['und'][0]['value'];
-      $variables['content']['event_info']['#markup'] .= "</p>";
-    }
-
+    // Create the wrapper
+    $node_wrapper = entity_metadata_wrapper('node', $variables['node']);
     // Append event info
-    $variables['content']['event_info']['#markup'] .=
-      _registration_pages_get_event_markup($variables['node']);
+    $variables['content']['event_info']['#markup'] =
+      _registration_pages_get_event_markup_from_wrapper($node_wrapper);
+    $variables['content']['event_info']['#weight'] = 1;
+    $variables['content']['field_registration_form']['#weight'] = 2;
 
     // Check open dates for using the form, and only display the form if we're within those dates
-    if (! empty($variables['node']->field_event_registration_period)) {
-      $golive_timezonedb = $variables['node']->field_event_registration_period['und'][0]['timezone_db'];
-      $golive_timestamp = strtotime(
-        $variables['node']->field_event_registration_period['und'][0]['value'] .
-        ' ' . $golive_timezonedb);
-
-      $today_timestamp = time();
-
-      // If current datetime is before the go live date, display the "before" message instead of form
-      if ($today_timestamp < $golive_timestamp) {
-        // Ditch the form
-        unset($variables['content']['field_registration_form']);
-
-        // Format datetime for display
-        $golive_date = format_date($golive_timestamp, 'custom', 'l F d, Y');
-        $golive_time = format_date($golive_timestamp, 'custom', 'g:i a');
-
-        $variables['content']['field_registration_form']['#markup'] = '';
-
-        // Check whether there is a "before reg opens" message
-        if (!empty($variables['node']->field_event_text_before_reg_open)) {
-          // There is a "before reg opens" message
-          $variables['content']['field_registration_form']['#markup'] .=
-            $variables['node']->field_event_text_before_reg_open['und'][0]['value'] . ' ';
-        }
-        // Append the info about when registration opens
-        $variables['content']['field_registration_form']['#markup'] .=
-          'This form will be available on ' . $golive_date . ' at ' . $golive_time . '.';
-      }
-      // Next check deadline (closing date for form)
-      elseif (isset($variables['node']->field_event_registration_period['und'][0]['value2'])) {
-        // There is a deadline; if we're past the deadline show appropriate message
-        $deadline_timestamp = strtotime(
-          $variables['node']->field_event_registration_period['und'][0]['value2'] .
-          ' ' . $golive_timezonedb);   // Can use the same timezonedb var as above
-
-        if ($today_timestamp > $deadline_timestamp) {
-          // We're past the deadline; ditch the form and display a msg to the user
-          unset($variables['content']['field_registration_form']);
-
-          $deadline_date = format_date($deadline_timestamp, 'custom', 'l F d, Y');
-          $deadline_time = format_date($deadline_timestamp, 'custom', 'g:i a');
-
-          $variables['content']['field_registration_form']['#markup'] = '';
-
-          if (!empty($variables['node']->field_event_text_after_reg_close)) {
-            // There is a "deadline" message
-            $variables['content']['field_registration_form']['#markup'] .=
-              $variables['node']->field_event_text_after_reg_close['und'][0]['value'] . ' ';
-          }
-
-          // Append info about when the deadline was
-          $variables['content']['field_registration_form']['#markup'] .=
-            ' The deadline for submitting this form was ' . $deadline_date .
-            ' at ' . $deadline_time . '.';
-        }
-      }
+    if (!empty($variables['node']->field_event_registration_period)) {
+      _registration_pages_process_registration_period($variables);
     }
   }
 }
@@ -135,10 +74,10 @@ function registration_pages_tokens($type, $tokens, array $data = array(), array 
     if (isset($tokens['event_info'])) {
       if (_registrations_pages_is_reg_form($entityform)) {
         $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
+        $node = $entityform_wrapper->field_event_content->value();
+        $node_wrapper = entity_metadata_wrapper('node', $node);
 
-        // Get all info about the node; this will be empty if field_event_content doesn't exist
-        $whole_node = $entityform_wrapper->field_event_content->value();
-        $return[$tokens['event_info']] = _registration_pages_get_event_markup($whole_node);
+        $return[$tokens['event_info']] = _registration_pages_get_event_markup_from_wrapper($node_wrapper);
       }
     }
   }
@@ -174,15 +113,10 @@ function _registrations_pages_is_reg_form($entityform) {
  * Generate markup for the event info for an event on a registration page
  * This should only be called if we're on a registration page
  */
-function _registration_pages_get_event_markup($node) {
-
-  // Wrap entityform in an entity metadata wrapper - makes it easier to access entity values
-  $node_wrapper = entity_metadata_wrapper('node', $node);
-
-  $location_text = $node_wrapper->field_location_as_long_text->value();
+function _registration_pages_get_event_markup_from_wrapper($node_wrapper) {
   $event_date_save = $node_wrapper->field_event_date->value();
 
-  $event_info = '<p>';
+  $event_markup = '<p>';
 
   if (! empty($event_date_save)) {
     // I tried many other approaches to getting the time into the correct time zone,
@@ -190,33 +124,130 @@ function _registration_pages_get_event_markup($node) {
     $event_date_usable =
       _registration_pages_get_usable_datetime_from_datetime_field($event_date_save);
 
-    $event_info .= "<strong>Date:</strong> ";
-    $event_info .= $event_date_usable['start_date'];
-    $event_info .= "<br>";
+    $event_markup .= "<strong>Date:</strong> ";
+    $event_markup .= $event_date_usable['start_date'];
+    $event_markup .= "<br>";
 
-    $event_info .= "<strong>Time:</strong> ";
-    $event_info .= $event_date_usable['start_time'];
+    $event_markup .= "<strong>Time:</strong> ";
+    $event_markup .= $event_date_usable['start_time'];
 
     // End time
     if (isset($event_date_usable['end_date'])) {
       if ($event_date_usable['start_date'] == $event_date_usable['end_date']) {
         // The expected case: start and end date are the same
-        $event_info .=  ' - ' . $event_date_usable['end_time'];
+        $event_markup .=  ' - ' . $event_date_usable['end_time'];
       }
       else {
         // Unlikely, but just in case the end date is different from the start date, include it
-        $event_info .= ' - ' . $event_date_usable['end_date'] . ' ' . $event_date_usable['end_time'];
+        $event_markup .= ' - ' . $event_date_usable['end_date'] . ' ' . $event_date_usable['end_time'];
       }
     }
-    $event_info .= "<br>";
+    $event_markup .= "<br>";
   }
 
-  // Location
-  $event_info .= '<strong>Location:</strong> ';
-  $event_info .= $location_text;
-  $event_info .=  '</p>';
+  if ($location_text = $node_wrapper->field_location_as_long_text->value()) {
+    $event_markup .= '<strong>Location:</strong> ';
+    $event_markup .= $location_text;
+  }
 
-  return $event_info;
+  $event_markup .=  '</p>';
+
+  return $event_markup;
+}
+
+function _registration_pages_process_registration_period(&$variables) {
+  if (_registration_pages_form_is_not_yet_live($variables['node'])) {
+    unset($variables['content']['field_registration_form']);
+
+    $variables['content']['field_registration_form']['#markup'] = _registration_pages_get_markup_when_form_is_not_yet_live($variables['node']);
+  }
+  // Next check deadline (closing date for form)
+  elseif (_registration_pages_form_deadline_has_passed($variables['node'])) {
+    // We're past the deadline; ditch the form and display a msg to the user
+    unset($variables['content']['field_registration_form']);
+
+    $variables['content']['field_registration_form']['#markup'] = _registration_pages_get_markup_when_past_deadline($variables['node']);
+  }
+}
+
+function _registration_pages_form_is_not_yet_live($node) {
+  if (isset($node->field_event_registration_period['und'][0]['value'])) {
+    $today_timestamp = time();
+    $golive_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_event_registration_period['und'][0]['value'], $node->field_event_registration_period['und'][0]['timezone_db']);
+    if ($today_timestamp < $golive_timestamp) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+function _registration_pages_form_deadline_has_passed($node) {
+  if (isset($node->field_event_registration_period['und'][0]['value2'])) {
+    $today_timestamp = time();
+    $deadline_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_event_registration_period['und'][0]['value2'], $node->field_event_registration_period['und'][0]['timezone_db']);
+    if ($today_timestamp > $deadline_timestamp) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+function _registration_pages_get_timestamp_from_field_value($value, $timezone) {
+  return strtotime(
+    $value .
+    ' ' . $timezone);
+}
+
+function _registration_pages_get_markup_when_form_is_not_yet_live($node) {
+  $markup = '<p>';
+  // Check whether there is a "before reg opens" message
+  if (!empty($node->field_event_text_before_reg_open)) {
+    // There is a "before reg opens" message
+    $markup .=
+      $node->field_event_text_before_reg_open['und'][0]['value'] . ' ';
+  }
+  // Set the timestamp
+  $golive_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_event_registration_period['und'][0]['value'], $node->field_event_registration_period['und'][0]['timezone_db']);
+  // Format datetime for display
+  $golive_date = _registration_pages_format_date_from_timestamp($golive_timestamp);
+  $golive_time = _registration_pages_format_time_from_timestamp($golive_timestamp);
+
+  // Append the info about when registration opens
+  $markup .=
+    'This form will be available on ' . $golive_date . ' at ' . $golive_time . '.';
+
+  $markup .= '</p>';
+
+  return $markup;
+}
+
+function _registration_pages_get_markup_when_past_deadline($node) {
+  $markup = '<p>';
+  if (!empty($node->field_event_text_after_reg_close)) {
+    // There is a "deadline" message
+    $markup .=
+      $node->field_event_text_after_reg_close['und'][0]['value'] . ' ';
+  }
+  // Set the timestamp
+  $deadline_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_event_registration_period['und'][0]['value2'], $node->field_event_registration_period['und'][0]['timezone_db']);
+  //Format datetime for display
+  $deadline_date = _registration_pages_format_date_from_timestamp($deadline_timestamp);
+  $deadline_time = _registration_pages_format_time_from_timestamp($deadline_timestamp);
+
+  // Append info about when the deadline was
+  $markup .=
+    ' The deadline for submitting this form was ' . $deadline_date .
+    ' at ' . $deadline_time . '.';
+
+  return $markup;
+}
+
+function _registration_pages_format_date_from_timestamp($timestamp) {
+  return format_date($timestamp, 'custom', 'l F d, Y');
+}
+
+function _registration_pages_format_time_from_timestamp($timestamp) {
+  return format_date($timestamp, 'custom', 'g:i a');
 }
 
 /* Convert datetime field to useful pieces in correct timezone */
@@ -244,13 +275,4 @@ function _registration_pages_get_usable_datetime_from_datetime_field($datetime_f
   }
 
   return $retval;
-}
-
-/*
- * Return hashed secure token for an entityform_id
- * @param $entityform_id
- * @return string
- */
-function _registration_pages_get_token($entityform_id) {
-  return md5(drupal_get_private_key() . $entityform_id);
 }

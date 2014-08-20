@@ -325,11 +325,10 @@ function _forms_send_emails($form, $admin_email, $subject='') {
 
   if (module_exists('registration_pages') && _registrations_pages_is_reg_form($form['#entity'])) {
     $entityform_wrapper = entity_metadata_wrapper('entityform', $form['#entity']);
+    $node = $entityform_wrapper->field_event_content->value();
+    $node_wrapper = entity_metadata_wrapper('node', $node);
 
-    // Get all info about the node; this will be empty if field_event_content doesn't exist
-    $whole_node = $entityform_wrapper->field_event_content->value();
-
-    $event_info_for_email = _registration_pages_get_event_markup($whole_node);
+    $event_info_for_email = _registration_pages_get_event_markup_from_wrapper($node_wrapper);
   }
 
   // User email
