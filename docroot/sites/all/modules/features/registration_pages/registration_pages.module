@@ -149,6 +149,9 @@ function _registration_pages_get_event_markup($node) {
   return $event_markup;
 }
 
+/**
+ * Replaces the registration form markup with a message if form is inactive
+ */
 function _registration_pages_process_registration_period(&$variables) {
   if (_registration_pages_form_is_inactive($variables['node'])) {
     unset($variables['content']['field_registration_form']);
@@ -156,6 +159,9 @@ function _registration_pages_process_registration_period(&$variables) {
   }
 }
 
+/**
+ * Determines whether a form is active or inactive
+ */
 function _registration_pages_form_is_inactive($node) {
   if (_registration_pages_form_is_not_yet_live($node) ||_registration_pages_form_deadline_has_passed($node)) {
     return TRUE;
@@ -163,6 +169,9 @@ function _registration_pages_form_is_inactive($node) {
   return FALSE;
 }
 
+/**
+ * Checks whether the form registration start date is in the future
+ */
 function _registration_pages_form_is_not_yet_live($node) {
   if (isset($node->field_event_registration_period['und'][0]['value'])) {
     $today_timestamp = time();
@@ -174,6 +183,9 @@ function _registration_pages_form_is_not_yet_live($node) {
   return FALSE;
 }
 
+/**
+ * Checks whether the form registration end date was in the past
+ */
 function _registration_pages_form_deadline_has_passed($node) {
   if (isset($node->field_event_registration_period['und'][0]['value2'])) {
     $today_timestamp = time();
@@ -185,15 +197,19 @@ function _registration_pages_form_deadline_has_passed($node) {
   return FALSE;
 }
 
+/*
+  Helper function for creating timestamps from a field value
+ */
 function _registration_pages_get_timestamp_from_field_value($value, $timezone) {
   return strtotime(
     $value .
     ' ' . $timezone);
 }
 
-
+/**
+ * Generates the markup that replaces inactive registration forms
+ */
 function _registration_pages_get_markup_for_inactive_form($node) {
-  $timezone = $node->field_event_registration_period['und'][0]['timezone_db'];
   $markup = '<p>';
   if (_registration_pages_form_is_not_yet_live($node)) {
     $custom_message_field = $node->field_event_text_before_reg_open;
@@ -210,6 +226,7 @@ function _registration_pages_get_markup_for_inactive_form($node) {
     $markup .= $custom_message_field['und'][0]['value'] . ' ';
   }
 
+  $timezone = $node->field_event_registration_period['und'][0]['timezone_db'];
   $timestamp_value = _registration_pages_get_timestamp_from_field_value($active_date_field_value, $timezone);
 
   $form_date = format_date($timestamp_value, 'custom', 'l F d, Y');
@@ -221,12 +238,12 @@ function _registration_pages_get_markup_for_inactive_form($node) {
   return $markup;
 }
 
-/* Convert datetime field to useful pieces in correct timezone */
+/**
+ * Convert datetime field to useful pieces in correct timezone
+ */
 function _registration_pages_get_usable_datetime_from_datetime_field($datetime_field) {
   $retval = array();
 
-  // I tried many approaches to getting the time into the correct time zone,
-  // and this was the only one that worked.
   $timezonedb = $datetime_field['timezone_db'];
 
   // Start datetime
