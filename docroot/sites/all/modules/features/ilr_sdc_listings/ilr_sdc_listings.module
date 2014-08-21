@@ -5,7 +5,7 @@
  *
  * @todo How should the placement for calendar nav view block should be handled.
  */
-
+define('ILR_SDC_MAX_DAYS_PAST' , 90);
 include_once 'ilr_sdc_listings.features.inc';
 
 
@@ -157,6 +157,7 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
   $render_arrays = node_view_multiple($class_nodes, 'teaser');
   $default_class_id = NULL;
   $class_nid_from_url = _ilr_sdc_listings_get_class_from_url();
+  $has_open_class = FALSE;
   foreach (element_children($render_arrays['nodes']) as $nid) {
     // Remove title because it is the same as the course
     $render_array = & $render_arrays['nodes'][$nid];
@@ -170,24 +171,41 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
     if ($nid == $class_nid_from_url) {
       $default_class_id = $class_id;
     }
-    $options[$class_id] = drupal_render($render_arrays['nodes'][$nid]);
+    if ($class_node_wrapper->field_is_full->value()) {
+      $form['class_full_' . $nid] = array(
+        '#type' => 'markup',
+        '#markup' => '<h2>Full</h2>',
+      );
+    }
+    else {
+      $has_open_class = TRUE;
+      $form['addClass'. $class_id] = array(
+        '#type' => 'radio',
+        '#return_value' => $nid,
+        '#attributes' => array('name' => 'addClass'),
+      );
+      if ($nid == $class_nid_from_url) {
+        $form['addClass'. $class_id]['#attributes']['checked'] = 'checked';
+      }
+    }
+
+    $form['class_view_' . $nid] = array(
+      '#type' => 'markup',
+      '#markup' => drupal_render($render_arrays['nodes'][$nid]),
+    );
+  }
+  if ($has_open_class) {
+    $form['courseurl'] = array(
+      '#type' => 'hidden',
+      '#value' => urlencode('http://www.ilr.cornell.edu'),
+    );
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Register'),
+    );
   }
 
-  $form['addClass'] = array(
-    '#title' => t('Select the session you\'d like to attend'),
-    '#type' => 'radios',
-    '#options' => $options,
-    '#required' => TRUE,
-    '#default_value' => $default_class_id,
-  );
-  $form['courseurl'] = array(
-    '#type' => 'hidden',
-    '#value' => urlencode('http://www.ilr.cornell.edu'),
-  );
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Register'),
-  );
+
   $form['#action'] = variable_get('ilr_sdc_listings_reg_url', 'http://www.ilr.cornell.edu/registration/process/processcard.cfm');
   return $form;
 }
@@ -347,6 +365,11 @@ function _ilr_sdc_listings_get_month_options($start_month, $month_count) {
   $month_options = array();
   $half_count = round($month_count/2);
   $month = date('Y-m', strtotime("-$half_count months", strtotime($start_month)));
+  $earliest_month = date('Y-m', strtotime('-' . ILR_SDC_MAX_DAYS_PAST . ' days'));
+  // Make sure our starting isn't earlier than earliest month to show.
+  while($month < $earliest_month) {
+    $month = date('Y-m', strtotime("+1 months", strtotime($month)));
+  }
   $i = 0;
   while ($i++ < $month_count) {
     $view_url = '/' . _ilr_sdc_listings_calendar_month_url($month);
