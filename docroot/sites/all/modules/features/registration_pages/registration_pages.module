@@ -11,11 +11,8 @@ include_once 'registration_pages.features.inc';
  */
 function registration_pages_preprocess_node(&$variables) {
   if ($variables['type'] == 'registration_page'){
-    // Create the wrapper for easier processing
-    $node_wrapper = entity_metadata_wrapper('node', $variables['node']);
-    // Create the event markup
     $variables['content']['event_info']['#markup'] =
-      _registration_pages_get_event_markup_from_wrapper($node_wrapper);
+      _registration_pages_get_event_markup($variables['node']);
     $variables['content']['event_info']['#weight'] = 1;
 
     // Confirm that the form registration dates are valid
@@ -72,9 +69,7 @@ function registration_pages_tokens($type, $tokens, array $data = array(), array 
       if (_registrations_pages_is_reg_form($entityform)) {
         $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
         $node = $entityform_wrapper->field_event_content->value();
-        $node_wrapper = entity_metadata_wrapper('node', $node);
-
-        $return[$tokens['event_info']] = _registration_pages_get_event_markup_from_wrapper($node_wrapper);
+        $return[$tokens['event_info']] = _registration_pages_get_event_markup($node);
       }
     }
   }
@@ -110,7 +105,9 @@ function _registrations_pages_is_reg_form($entityform) {
  * Generate markup for the event info for an event on a registration page
  * This should only be called if we're on a registration page
  */
-function _registration_pages_get_event_markup_from_wrapper($node_wrapper) {
+function _registration_pages_get_event_markup($node) {
+  // Create an entity_metadata_wrapper to access values
+  $node_wrapper = entity_metadata_wrapper('node', $node);
   $event_date_save = $node_wrapper->field_event_date->value();
 
   $event_markup = '<p>';
