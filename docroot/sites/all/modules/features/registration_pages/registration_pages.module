@@ -84,20 +84,12 @@ function _registrations_pages_is_reg_form($entityform) {
   // Wrap entityform in an entity metadata wrapper - makes it easier to access entity values
   $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
 
-  // Get all info about the node; this will be empty if field_event_content doesn't exist
   if (isset($entityform_wrapper->field_event_content)) {
-    $whole_node = $entityform_wrapper->field_event_content->value();
-
-    if (! empty($whole_node) && $whole_node->type == 'registration_page') {
+    if ($entityform_wrapper->field_event_content->value()->type == 'registration_page') {
       return TRUE;
     }
-    else {
-      return FALSE;
-    }
   }
-  else {
-    return FALSE;
-  }
+  return FALSE;
 }
 
 
