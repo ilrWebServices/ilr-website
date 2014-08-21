@@ -108,34 +108,21 @@ function _registrations_pages_is_reg_form($entityform) {
 function _registration_pages_get_event_markup($node) {
   // Create an entity_metadata_wrapper to access values
   $node_wrapper = entity_metadata_wrapper('node', $node);
-  $event_date_save = $node_wrapper->field_event_date->value();
+  $event_date = $node_wrapper->field_event_date->value();
 
   $event_markup = '<p>';
 
-  if (! empty($event_date_save)) {
-    // I tried many other approaches to getting the time into the correct time zone,
-    // and this was the only one that worked.
-    $event_date_usable =
-      _registration_pages_get_usable_datetime_from_datetime_field($event_date_save);
-
+  if (!empty($event_date)) {
     $event_markup .= "<strong>Date:</strong> ";
-    $event_markup .= $event_date_usable['start_date'];
+    $event_markup .= _registration_pages_get_formatted_date_from_field($node->field_event_date, 'value');
     $event_markup .= "<br>";
 
     $event_markup .= "<strong>Time:</strong> ";
-    $event_markup .= $event_date_usable['start_time'];
+    $event_markup .= _registration_pages_get_formatted_time_from_field($node->field_event_date, 'value');
 
     // End time
-    if (isset($event_date_usable['end_date'])) {
-      if ($event_date_usable['start_date'] == $event_date_usable['end_date']) {
-        // The expected case: start and end date are the same
-        $event_markup .=  ' - ' . $event_date_usable['end_time'];
-      }
-      else {
-        // Unlikely, but just in case the end date is different from the start date, include it
-        $event_markup .= ' - ' . $event_date_usable['end_date'] . ' ' . $event_date_usable['end_time'];
-      }
-    }
+    $event_markup .= _registration_pages_format_end_time($node->field_event_date);
+
     $event_markup .= "<br>";
   }
 
@@ -149,6 +136,21 @@ function _registration_pages_get_event_markup($node) {
   return $event_markup;
 }
 
+function _registration_pages_format_end_time($field) {
+  $markup = '';
+  if (isset($field[LANGUAGE_NONE][0]['value2'])) {
+    $end_time = _registration_pages_get_formatted_time_from_field($field, 'value2');
+    if (_registration_pages_is_multiday_event($field)) {
+      $end_day = _registration_pages_get_formatted_date_from_field($field, 'value2');
+      $end_time = _registration_pages_get_formatted_time_from_field($field, 'value2');
+      $markup .= " - $end_day at $end_time";
+    }
+    else {
+      $markup .= ' - ' . $end_time;
+    }
+  }
+  return $markup;
+}
 /**
  * Replaces the registration form markup with a message if form is inactive
  */
@@ -157,6 +159,12 @@ function _registration_pages_process_registration_period(&$variables) {
     unset($variables['content']['field_registration_form']);
     $variables['content']['field_registration_form']['#markup'] = _registration_pages_get_markup_for_inactive_form($variables['node']);
   }
+}
+
+function _registration_pages_is_multiday_event($field) {
+  $start_date = date('m/d', strtotime($field[LANGUAGE_NONE][0]['value']));
+  $end_date = date('m/d', strtotime($field[LANGUAGE_NONE][0]['value2']));
+  return $start_date != $end_date;
 }
 
 /**
@@ -173,9 +181,9 @@ function _registration_pages_form_is_inactive($node) {
  * Checks whether the form registration start date is in the future
  */
 function _registration_pages_form_is_not_yet_live($node) {
-  if (isset($node->field_event_registration_period['und'][0]['value'])) {
+  if (isset($node->field_event_registration_period[LANGUAGE_NONE][0]['value'])) {
     $today_timestamp = time();
-    $golive_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_event_registration_period['und'][0]['value'], $node->field_event_registration_period['und'][0]['timezone_db']);
+    $golive_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_event_registration_period[LANGUAGE_NONE][0]['value'], $node->field_event_registration_period[LANGUAGE_NONE][0]['timezone_db']);
     if ($today_timestamp < $golive_timestamp) {
       return TRUE;
     }
@@ -187,9 +195,10 @@ function _registration_pages_form_is_not_yet_live($node) {
  * Checks whether the form registration end date was in the past
  */
 function _registration_pages_form_deadline_has_passed($node) {
-  if (isset($node->field_event_registration_period['und'][0]['value2'])) {
+  if (isset($node->field_event_registration_period[LANGUAGE_NONE][0]['value2'])
+      && $node->field_event_registration_period[LANGUAGE_NONE][0]['value'] != $node->field_event_registration_period[LANGUAGE_NONE][0]['value2']) { // Once a value has been set for the end date, removing it apparently sets it equal to the start date in the db
     $today_timestamp = time();
-    $deadline_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_event_registration_period['und'][0]['value2'], $node->field_event_registration_period['und'][0]['timezone_db']);
+    $deadline_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_event_registration_period[LANGUAGE_NONE][0]['value2'], $node->field_event_registration_period[LANGUAGE_NONE][0]['timezone_db']);
     if ($today_timestamp > $deadline_timestamp) {
       return TRUE;
     }
@@ -213,54 +222,38 @@ function _registration_pages_get_markup_for_inactive_form($node) {
   $markup = '<p>';
   if (_registration_pages_form_is_not_yet_live($node)) {
     $custom_message_field = $node->field_event_text_before_reg_open;
-    $active_date_field_value = $node->field_event_registration_period['und'][0]['value'];
     $message_intro = 'This form will be available on ';
+    $active_date_value_string = 'value';
   }
   elseif (_registration_pages_form_deadline_has_passed($node)) {
     $custom_message_field = $node->field_event_text_after_reg_close;
-    $active_date_field_value = $node->field_event_registration_period['und'][0]['value2'];
     $message_intro = 'The deadline for submitting this form was ';
+    $active_date_value_string = 'value2';
   }
   // Add the custom message to the markup if appropriate
   if (!empty($custom_message_field)) {
-    $markup .= $custom_message_field['und'][0]['value'] . ' ';
+    $markup .= $custom_message_field[LANGUAGE_NONE][0]['value'] . ' ';
   }
 
-  $timezone = $node->field_event_registration_period['und'][0]['timezone_db'];
-  $timestamp_value = _registration_pages_get_timestamp_from_field_value($active_date_field_value, $timezone);
+  $form_date = _registration_pages_get_formatted_date_from_field($node->field_event_registration_period, $active_date_value_string);
+  $form_time = _registration_pages_get_formatted_time_from_field($node->field_event_registration_period, $active_date_value_string);
 
-  $form_date = format_date($timestamp_value, 'custom', 'l F d, Y');
-  $form_time = format_date($timestamp_value, 'custom', 'g:i a');
-
-  $markup .= $message_intro . $form_date . ' at ' . $form_time . '.';
+  $markup .= "$message_intro $form_date at $form_time.";
   $markup .= '</p>';
 
   return $markup;
 }
 
-/**
- * Convert datetime field to useful pieces in correct timezone
- */
-function _registration_pages_get_usable_datetime_from_datetime_field($datetime_field) {
-  $retval = array();
+function _registration_pages_get_formatted_date_from_field($field, $value_string = 'value') {
+  $timezone = $field[LANGUAGE_NONE][0]['timezone_db'];
+  $value = $field[LANGUAGE_NONE][0][$value_string];
+  $timestamp_value = _registration_pages_get_timestamp_from_field_value($value, $timezone);
+  return format_date($timestamp_value, 'custom', 'l, F d, Y');
+}
 
-  $timezonedb = $datetime_field['timezone_db'];
-
-  // Start datetime
-  $start_datetime_strtotime = strtotime($datetime_field['value'] . ' ' . $timezonedb);
-  $retval['start_date'] = format_date($start_datetime_strtotime, 'custom', 'l F d, Y');
-  $retval['start_time'] = format_date($start_datetime_strtotime, 'custom', 'g:i a');
-
-  // End datetime
-  if (isset($datetime_field['value2'])) {
-    $end_datetime_strtotime = strtotime($datetime_field['value2'] . ' ' . $timezonedb);
-    $retval['end_date'] = format_date($end_datetime_strtotime, 'custom', 'l F d, Y');
-    $retval['end_time'] = format_date($end_datetime_strtotime, 'custom', 'g:i a');
-  }
-  else {
-    $retval['end_date'] = '';
-    $retval['end_time'] = '';
-  }
-
-  return $retval;
+function _registration_pages_get_formatted_time_from_field($field, $value_string = 'value') {
+  $timezone = $field[LANGUAGE_NONE][0]['timezone_db'];
+  $value = $field[LANGUAGE_NONE][0][$value_string];
+  $timestamp_value = _registration_pages_get_timestamp_from_field_value($value, $timezone);
+  return format_date($timestamp_value, 'custom', 'g:i a');
 }
