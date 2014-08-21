@@ -12,61 +12,17 @@ define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
 
 
 /**
- * Implements hook_entityform_presave
+ * Implements hook_entityform_presave.
+ * Saves the registration date for registration forms
  */
 function forms_entityform_presave($entityform) {
-
-  // This was the approach that Aaron had suggested
-  // $path = drupal_get_normal_path(ltrim($form['#action'], '/'));
-  // $node = menu_get_object('node', 1, $path);
-  // dpm($path,'path');
-  // dpm($node, 'node');
-
-  // If this is a registration form, set a couple of hidden form fields, so they'll be
-  // saved later on in the database.
-
-  if (isset($entityform->field_event_content) &&
-    module_exists('registration_pages') &&
-    _registrations_pages_is_reg_form($entityform) &&
-    ! empty($entityform->is_new)) {
-
-    // Good: it's the right type of form and it's an original submission, not an edited submission
-
-    // Wrap entityform in an entity metadata wrapper - makes it easier to access entity values
-    $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
-
-    // Get all info about the node; this will be empty if field_event_content doesn't exist
-    //$whole_node = $entityform_wrapper->field_event_content->value();
-
-    // DO I NEED TO DO THIS CHECK HERE AT ALL?  IT'S IN THE FN THAT CHECKS FOR A REG PAGE,
-    // BUT THERE'S NO "WATCHDOG" IF WHOLE NODE IS EMPTY THERE.
-
-    //if (! empty($whole_node)) {
-      $event_date_save = $entityform_wrapper->field_event_content->field_event_date->value();
-
-      if (! empty($event_date_save)) {
-        $entityform_wrapper->field_h_event_date->set($event_date_save);
-      }
-    // }
-    // else {
-    //   watchdog('forms', 'Module: forms, Function: forms_entityform_presave, Entityform type %type, Error: event_content field was empty', array('type'=>$entityform->type), WATCHDOG_ERROR);
-    // }
+  if (_forms_is_registration_form($entityform) && $entityform->is_new) {
+    _forms_save_registration_date($entityform);
   }
 }
 
 /**
- * Implements hook_entityform_confirm_page - PREVIOUS APPROACH
- */
-// function forms_entityform_confirm_page_alter(&$render_array, $entityform_type, $entityform_id) {
-//   dpm ('in forms_entityform_confirm_page');
-//   dpm($render_array, '$render_array');
-//   dpm($entityform_type, '$entityform_type');
-//   dpm($entityform_id, '$entityform_id');
-// }
-
-
-/**
- * Implements hook_form_BASE_FORM_ID_alter
+ * Implements hook_form_BASE_FORM_ID_alter.
  */
 function forms_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
   // Generate appropriate submit handler
@@ -80,13 +36,13 @@ function forms_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
   // Hide hidden fields, i.e. any field where the machine name starts with "field_h_"
   foreach ($form as $key=>$value) {
     if (substr($key,0,8) == 'field_h_') {
-      $form[$key]['#access']=FALSE;
+      $form[$key]['#access'] = FALSE;
     }
   }
 }
 
 /**
- * Implements hook_form_FORM_ID_alter
+ * Implements hook_form_FORM_ID_alter.
  *   Allows specifying the admin for the form
  *   Adds checkbox to specify NetID login requirement
  */
@@ -94,7 +50,6 @@ function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
   _forms_add_admin_email_field($form);
   _forms_add_checkbox_to_include_name_in_admin_subject_line($form);
   _forms_add_kerberized_checkbox($form);
-
 }
 
 /**
@@ -193,31 +148,9 @@ function _forms_get_tplphp_file($form) {
  * Default processing for forms
  */
 function _forms_process_default(&$form) {
-  // Check whether there is referencing entity on the form
-  if (1==1) {
-    //What's below will go into its own function to process
-    // check if module entityreference_current exists, if so
-    if (module_exists('entityreference_current')) {
-      // Load the entity
-      // Look for fields in the entity that match inaccessible fields in the form itself
-      // If the field in the entity is non-blank set the corresponding form field
-      // Note - somewhere I'll need to also set the content of the user email tpl.php file
-      // Also need to set the confirmation page message
-    }
-  }
-
-  // Some new stuff from Aaron
-  // $path = drupal_get_normal_path(ltrim($form['#action'], '/'));
-  // $node = menu_get_object('node', 1, $path);
-  // dpm('In _forms_process_default');
-  // dpm($path,'path');
-  // dpm($node, 'node');
-
-
   $admin_email = _forms_get_admin_email($form);
   _forms_send_emails($form, $admin_email);
 }
-
 
 /**
  * Process Library contact form
@@ -235,7 +168,6 @@ function _forms_library_contact_options() {
     'ilrref' => 'Research',
   );
 }
-
 
 /**
  * Process Career Services contact form
@@ -270,7 +202,6 @@ function _forms_career_services_contact_options() {
     'rmd5-01' => 'Regina M. Duffey Moravek, Director of ILR Career Services',
   );
 }
-
 
 /**
  * Class year in the Labor Roundtable registration form starts with current year and goes six years out
@@ -313,7 +244,6 @@ function _forms_year_relative_options($firstOffset, $lastOffset) {
   return _forms_number_absolute_options($first, $last);
 }
 
-
 /**
  * Send user and admin emails
  */
@@ -323,7 +253,7 @@ function _forms_send_emails($form, $admin_email, $subject='') {
   $email_template = _forms_get_tplphp_file($form);
   $event_info_for_email = '';
 
-  if (module_exists('registration_pages') && _registrations_pages_is_reg_form($form['#entity'])) {
+  if (_forms_is_registration_form($form['#entity'])) {
     $entityform_wrapper = entity_metadata_wrapper('entityform', $form['#entity']);
     $node = $entityform_wrapper->field_event_content->value();
     $event_info_for_email = _registration_pages_get_event_markup($node);
@@ -334,11 +264,11 @@ function _forms_send_emails($form, $admin_email, $subject='') {
     $salutation = _form_salutation($user_name);
 
     $body = theme($email_template, array(
-      'salutation'      => $salutation,
-      'form_data'       => _entity_display_form_data($form),
-      'admin_email'     => $admin_email,
-      'form_title'      => $form_title,
-      'event_info_for_email' => $event_info_for_email,
+      'salutation'            => $salutation,
+      'form_data'             => _entity_display_form_data($form),
+      'admin_email'           => $admin_email,
+      'form_title'            => $form_title,
+      'event_info_for_email'  => $event_info_for_email,
     ));
 
     $to = _get_string_or_default($form['field_email']['und'][0]['email']['#value'], $admin_email);
@@ -360,14 +290,12 @@ function _forms_send_emails($form, $admin_email, $subject='') {
   _send_email_for_entity_form($to, $from, $subject, $body);
 }
 
-
 /**
  * Get the title of the form
  */
 function _forms_get_form_title($form) {
   return entity_label('entityform_type', entityform_type_load($form['#entity']->type));
 }
-
 
 /**
  * Get the email address of the form admin, i.e. the person or special mailbox
@@ -381,7 +309,6 @@ function _forms_get_admin_email($form) {
   return $admin_email;
 }
 
-
 /**
  * Checks whether the user name should be appended to the admin subject line
  */
@@ -392,7 +319,6 @@ function _forms_admin_subject_line_includes_user_name($form) {
     : $entityform_type->data['add_user_name_to_subject_line'];
   return $admin_subject_line_includes_user_name;
 }
-
 
 /**
  * Display form data using entityform and entity2text code from Ted Bowman
@@ -471,4 +397,27 @@ function forms_std_confirmation_mail($key, &$message, $params) {
   $message['body'][] = $params['content'];
   $message['body'][] = "\n--\r";
   $message['body'][] = t("This is an automatic e-mail from $sitename.");
+}
+
+/**
+ * Determines whether the form being saved is a registration form
+ */
+function _forms_is_registration_form($entityform) {
+  if (isset($entityform->field_event_content)
+      && module_exists('registration_pages')
+      && _registrations_pages_is_reg_form($entityform)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Saves the date of the event to the hidden field on the entityform
+ */
+function _forms_save_registration_date($entityform) {
+  $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
+  $event_date_save = $entityform_wrapper->field_event_content->field_event_date->value();
+  if (!empty($event_date_save)) {
+    $entityform_wrapper->field_h_event_date->set($event_date_save);
+  }
 }
