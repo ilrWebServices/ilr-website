@@ -10,24 +10,21 @@ include_once 'registration_pages.features.inc';
  * Implements hook_preprocess_hook()
  */
 function registration_pages_preprocess_node(&$variables) {
-  // Construct content at the top of the form page utilizing the fields that the user defined
-  // for the form page.  The form page content type hides these fields (manage display) so there won't
-  // be any duplication of info.
-
-  // Event info at the top of the form that the user sees
   if ($variables['type'] == 'registration_page'){
-    // Create the wrapper
+    // Create the wrapper for easier processing
     $node_wrapper = entity_metadata_wrapper('node', $variables['node']);
-    // Append event info
+    // Create the event markup
     $variables['content']['event_info']['#markup'] =
       _registration_pages_get_event_markup_from_wrapper($node_wrapper);
     $variables['content']['event_info']['#weight'] = 1;
-    $variables['content']['field_registration_form']['#weight'] = 2;
 
-    // Check open dates for using the form, and only display the form if we're within those dates
+    // Confirm that the form registration dates are valid
     if (!empty($variables['node']->field_event_registration_period)) {
       _registration_pages_process_registration_period($variables);
     }
+
+    // Set the weight on the form
+    $variables['content']['field_registration_form']['#weight'] = 2;
   }
 }
 
@@ -156,18 +153,17 @@ function _registration_pages_get_event_markup_from_wrapper($node_wrapper) {
 }
 
 function _registration_pages_process_registration_period(&$variables) {
-  if (_registration_pages_form_is_not_yet_live($variables['node'])) {
+  if (_registration_pages_form_is_inactive($variables['node'])) {
     unset($variables['content']['field_registration_form']);
-
-    $variables['content']['field_registration_form']['#markup'] = _registration_pages_get_markup_when_form_is_not_yet_live($variables['node']);
+    $variables['content']['field_registration_form']['#markup'] = _registration_pages_get_markup_for_inactive_form($variables['node']);
   }
-  // Next check deadline (closing date for form)
-  elseif (_registration_pages_form_deadline_has_passed($variables['node'])) {
-    // We're past the deadline; ditch the form and display a msg to the user
-    unset($variables['content']['field_registration_form']);
+}
 
-    $variables['content']['field_registration_form']['#markup'] = _registration_pages_get_markup_when_past_deadline($variables['node']);
+function _registration_pages_form_is_inactive($node) {
+  if (_registration_pages_form_is_not_yet_live($node) ||_registration_pages_form_deadline_has_passed($node)) {
+    return TRUE;
   }
+  return FALSE;
 }
 
 function _registration_pages_form_is_not_yet_live($node) {
@@ -198,56 +194,34 @@ function _registration_pages_get_timestamp_from_field_value($value, $timezone) {
     ' ' . $timezone);
 }
 
-function _registration_pages_get_markup_when_form_is_not_yet_live($node) {
+
+function _registration_pages_get_markup_for_inactive_form($node) {
+  $timezone = $node->field_event_registration_period['und'][0]['timezone_db'];
   $markup = '<p>';
-  // Check whether there is a "before reg opens" message
-  if (!empty($node->field_event_text_before_reg_open)) {
-    // There is a "before reg opens" message
-    $markup .=
-      $node->field_event_text_before_reg_open['und'][0]['value'] . ' ';
+  if (_registration_pages_form_is_not_yet_live($node)) {
+    $custom_message_field = $node->field_event_text_before_reg_open;
+    $active_date_field_value = $node->field_event_registration_period['und'][0]['value'];
+    $message_intro = 'This form will be available on ';
   }
-  // Set the timestamp
-  $golive_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_event_registration_period['und'][0]['value'], $node->field_event_registration_period['und'][0]['timezone_db']);
-  // Format datetime for display
-  $golive_date = _registration_pages_format_date_from_timestamp($golive_timestamp);
-  $golive_time = _registration_pages_format_time_from_timestamp($golive_timestamp);
+  elseif (_registration_pages_form_deadline_has_passed($node)) {
+    $custom_message_field = $node->field_event_text_after_reg_close;
+    $active_date_field_value = $node->field_event_registration_period['und'][0]['value2'];
+    $message_intro = 'The deadline for submitting this form was ';
+  }
+  // Add the custom message to the markup if appropriate
+  if (!empty($custom_message_field)) {
+    $markup .= $custom_message_field['und'][0]['value'] . ' ';
+  }
 
-  // Append the info about when registration opens
-  $markup .=
-    'This form will be available on ' . $golive_date . ' at ' . $golive_time . '.';
+  $timestamp_value = _registration_pages_get_timestamp_from_field_value($active_date_field_value, $timezone);
 
+  $form_date = format_date($timestamp_value, 'custom', 'l F d, Y');
+  $form_time = format_date($timestamp_value, 'custom', 'g:i a');
+
+  $markup .= $message_intro . $form_date . ' at ' . $form_time . '.';
   $markup .= '</p>';
 
   return $markup;
-}
-
-function _registration_pages_get_markup_when_past_deadline($node) {
-  $markup = '<p>';
-  if (!empty($node->field_event_text_after_reg_close)) {
-    // There is a "deadline" message
-    $markup .=
-      $node->field_event_text_after_reg_close['und'][0]['value'] . ' ';
-  }
-  // Set the timestamp
-  $deadline_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_event_registration_period['und'][0]['value2'], $node->field_event_registration_period['und'][0]['timezone_db']);
-  //Format datetime for display
-  $deadline_date = _registration_pages_format_date_from_timestamp($deadline_timestamp);
-  $deadline_time = _registration_pages_format_time_from_timestamp($deadline_timestamp);
-
-  // Append info about when the deadline was
-  $markup .=
-    ' The deadline for submitting this form was ' . $deadline_date .
-    ' at ' . $deadline_time . '.';
-
-  return $markup;
-}
-
-function _registration_pages_format_date_from_timestamp($timestamp) {
-  return format_date($timestamp, 'custom', 'l F d, Y');
-}
-
-function _registration_pages_format_time_from_timestamp($timestamp) {
-  return format_date($timestamp, 'custom', 'g:i a');
 }
 
 /* Convert datetime field to useful pieces in correct timezone */
