@@ -176,6 +176,9 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
         '#type' => 'markup',
         '#markup' => '<h2>Full</h2>',
       );
+      if ($nid == $class_nid_from_url) {
+        drupal_set_message('The class you selected is full.');
+      }
     }
     else {
       $has_open_class = TRUE;
