@@ -50,6 +50,7 @@ function ilr_sdc_listings_feeds_importer_default() {
           'jsonpath_parser:16' => '{Temporary target 3} {Temporary target 4}',
           'jsonpath_parser:17' => 'IS_ON_DEMAND',
           'jsonpath_parser:18' => 'IS_ONLINE',
+          'jsonpath_parser:19' => 'IS_FULL',
         ),
         'debug' => array(
           'options' => array(
@@ -73,6 +74,7 @@ function ilr_sdc_listings_feeds_importer_default() {
             'jsonpath_parser:16' => 0,
             'jsonpath_parser:17' => 0,
             'jsonpath_parser:18' => 0,
+            'jsonpath_parser:19' => 0,
           ),
         ),
       ),
@@ -179,6 +181,11 @@ function ilr_sdc_listings_feeds_importer_default() {
             'target' => 'field_online_class',
             'unique' => FALSE,
           ),
+          19 => array(
+            'source' => 'jsonpath_parser:19',
+            'target' => 'field_is_full',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'full_html',
@@ -191,7 +198,7 @@ function ilr_sdc_listings_feeds_importer_default() {
     'import_period' => '-1',
     'expire_period' => 3600,
     'import_on_create' => 1,
-    'process_in_background' => 0,
+    'process_in_background' => 1,
   );
   $export['sdc_class_importer'] = $feeds_importer;
 
@@ -307,7 +314,7 @@ function ilr_sdc_listings_feeds_importer_default() {
     'import_period' => '21600',
     'expire_period' => 3600,
     'import_on_create' => 1,
-    'process_in_background' => 0,
+    'process_in_background' => 1,
   );
   $export['sdc_course_importer'] = $feeds_importer;
 
@@ -380,7 +387,7 @@ function ilr_sdc_listings_feeds_importer_default() {
     'import_period' => '-1',
     'expire_period' => 3600,
     'import_on_create' => 0,
-    'process_in_background' => 0,
+    'process_in_background' => 1,
   );
   $export['sdc_faculty_importer'] = $feeds_importer;
 

@@ -327,10 +327,9 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'links' => 0,
-          'view_mode' => 'teaser',
+          'link' => FALSE,
         ),
-        'type' => 'entityreference_entity_view',
+        'type' => 'entityreference_label',
         'weight' => 5,
       ),
     ),
@@ -351,6 +350,49 @@ function ilr_sdc_listings_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_class-field_is_full'
+  $field_instances['node-sdc_class-field_is_full'] = array(
+    'bundle' => 'sdc_class',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_is_full',
+    'label' => 'Is Full?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 44,
     ),
   );
 
@@ -924,6 +966,7 @@ function ilr_sdc_listings_field_default_field_instances() {
   t('Credit Hours');
   t('Department');
   t('Faculty');
+  t('Is Full?');
   t('Keywords');
   t('On Demand');
   t('Online Class');
