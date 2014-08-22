@@ -41,20 +41,6 @@ function registration_pages_token_info() {
 }
 
 /**
- * Utility function to get array of tokens provide by this module.
- *
- * @param $tokens
- * @return array
- */
-function _registration_pages_get_provided_tokens() {
-  $tokens['event_info'] = array(
-    'name' => t('Event Info'),
-    'description' => t('Includes date, time, location'),
-  );
-  return $tokens;
-}
-
-/**
  * Implements hook_tokens().
  */
 function registration_pages_tokens($type, $tokens, array $data = array(), array $options = array()) {
