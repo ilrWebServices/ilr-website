@@ -10,8 +10,19 @@ include_once 'includes/forms.kerberized.inc';
 define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
 
+
 /**
- * Implements hook_form_BASE_FORM_ID_alter
+ * Implements hook_entityform_presave.
+ * Saves the registration date for registration forms
+ */
+function forms_entityform_presave($entityform) {
+  if (_forms_is_registration_form($entityform) && $entityform->is_new) {
+    _forms_save_registration_date($entityform);
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter.
  */
 function forms_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
   // Generate appropriate submit handler
@@ -21,10 +32,17 @@ function forms_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
   if (_forms_form_is_kerberized($form['#bundle'])) {
     _forms_handle_kerberized_form($form);
   }
+
+  // Hide hidden fields, i.e. any field where the machine name starts with "field_h_"
+  foreach ($form as $key=>$value) {
+    if (substr($key,0,8) == 'field_h_') {
+      $form[$key]['#access'] = FALSE;
+    }
+  }
 }
 
 /**
- * Implements hook_form_FORM_ID_alter
+ * Implements hook_form_FORM_ID_alter.
  *   Allows specifying the admin for the form
  *   Adds checkbox to specify NetID login requirement
  */
@@ -113,11 +131,15 @@ function _forms_get_submit_handler($bundle) {
  * Generates the appropriate email template for entityforms
  * Note that the email template contains underscores, but the actual filename contains hyphens.
  */
-function _forms_get_tplphp_file($bundle) {
-  $tplphp_file = str_replace('_', '-', $bundle);
+function _forms_get_tplphp_file($form) {
+  $tplphp_file = str_replace('_', '-', $form['#bundle']);
+
   $tplphp_file_full_path = drupal_get_path('module', 'forms') . '/templates/' . $tplphp_file . '.tpl.php';
   if (file_exists($tplphp_file_full_path)) {
-    return $bundle;
+    return $form['#bundle'];
+  }
+  elseif (module_exists('registration_pages') && _registrations_pages_is_reg_form($form['#entity'])) {
+    return 'default_registration_confirmation';
   }
   return 'default_mail';
 }
@@ -129,7 +151,6 @@ function _forms_process_default(&$form) {
   $admin_email = _forms_get_admin_email($form);
   _forms_send_emails($form, $admin_email);
 }
-
 
 /**
  * Process Library contact form
@@ -147,7 +168,6 @@ function _forms_library_contact_options() {
     'ilrref' => 'Research',
   );
 }
-
 
 /**
  * Process Career Services contact form
@@ -184,21 +204,71 @@ function _forms_career_services_contact_options() {
 }
 
 /**
+ * Class year in the Labor Roundtable registration form starts with current year and goes six years out
+ */
+function _year_as_list_text_options($field, $instance = NULL, $entity_type = NULL, $entity = NULL) {
+  if ($entity->type == 'labor_roundtable_student_registr') {
+    // Class year in the Labor Roundtable registration form starts with current year and goes six years out
+    return _forms_year_relative_options(0,6);
+  }
+}
+
+/**
+ * Generate a list for a select or radio form element with a list of sequential numbers
+ * e.g. absolute years
+ */
+function _forms_number_absolute_options($first, $last) {
+  $num = array();
+  if ($first <= $last) {
+    for ($num=$first; $num<=$last; $num++) {
+      $numList["$num"] = $num;
+    }
+  }
+  else {
+    for ($num=$first; $num>=$last; $num--) {
+      $numList['$num'] = $num;
+    }
+  }
+  return $numList;
+}
+
+/**
+ * Generate a list for a select or radio form element with a list of years relative to current year
+ * e.g. if $firstOffset = -8 and $lastOffset = 6, this will run from 8 years ago through 6 years from now.
+ * If $firstOffset > $lastOffset the years will show up in descending order.
+ */
+function _forms_year_relative_options($firstOffset, $lastOffset) {
+  $currYear = date('Y');
+  $first = $currYear + $firstOffset;
+  $last = $currYear + $lastOffset;
+  return _forms_number_absolute_options($first, $last);
+}
+
+/**
  * Send user and admin emails
  */
 function _forms_send_emails($form, $admin_email, $subject='') {
   $form_title = _forms_get_form_title($form);
   $user_name = _forms_construct_user_name($form);
-  $email_template = _forms_get_tplphp_file($form['#bundle']);
+  $email_template = _forms_get_tplphp_file($form);
+  $event_info_for_email = '';
+
+  if (_forms_is_registration_form($form['#entity'])) {
+    $entityform_wrapper = entity_metadata_wrapper('entityform', $form['#entity']);
+    $node = $entityform_wrapper->field_referenced_node->value();
+    $event_info_for_email = _registration_pages_get_event_markup($node);
+  }
 
   // User email
   if (!empty($form['field_email']['und'][0]['email']['#value'])) {
     $salutation = _form_salutation($user_name);
+
     $body = theme($email_template, array(
-      'salutation'      => $salutation,
-      'form_data'       => _entity_display_form_data($form),
-      'admin_email'     => $admin_email,
-      'form_title'      => $form_title,
+      'salutation'            => $salutation,
+      'form_data'             => _entity_display_form_data($form),
+      'admin_email'           => $admin_email,
+      'form_title'            => $form_title,
+      'event_info_for_email'  => $event_info_for_email,
     ));
 
     $to = _get_string_or_default($form['field_email']['und'][0]['email']['#value'], $admin_email);
@@ -220,14 +290,12 @@ function _forms_send_emails($form, $admin_email, $subject='') {
   _send_email_for_entity_form($to, $from, $subject, $body);
 }
 
-
 /**
  * Get the title of the form
  */
 function _forms_get_form_title($form) {
   return entity_label('entityform_type', entityform_type_load($form['#entity']->type));
 }
-
 
 /**
  * Get the email address of the form admin, i.e. the person or special mailbox
@@ -241,9 +309,8 @@ function _forms_get_admin_email($form) {
   return $admin_email;
 }
 
-
 /**
- * Checks whether a the user name should be appended to the admin subject line
+ * Checks whether the user name should be appended to the admin subject line
  */
 function _forms_admin_subject_line_includes_user_name($form) {
   $entityform_type = entityform_type_load($form['#entity']->type);
@@ -252,7 +319,6 @@ function _forms_admin_subject_line_includes_user_name($form) {
     : $entityform_type->data['add_user_name_to_subject_line'];
   return $admin_subject_line_includes_user_name;
 }
-
 
 /**
  * Display form data using entityform and entity2text code from Ted Bowman
@@ -331,4 +397,29 @@ function forms_std_confirmation_mail($key, &$message, $params) {
   $message['body'][] = $params['content'];
   $message['body'][] = "\n--\r";
   $message['body'][] = t("This is an automatic e-mail from $sitename.");
+}
+
+/**
+ * Determines whether the form being saved is a registration form
+ * @todo Consider refactoring, since "field_referenced_node" shouldn't probably
+ * be the defining characteristic of a registration form
+ */
+function _forms_is_registration_form($entityform) {
+  if (isset($entityform->field_referenced_node)
+      && module_exists('registration_pages')
+      && _registrations_pages_is_reg_form($entityform)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Saves the date of the event to the hidden field on the entityform
+ */
+function _forms_save_registration_date($entityform) {
+  $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
+  $event_date_save = $entityform_wrapper->field_referenced_node->field_event_date->value();
+  if (!empty($event_date_save)) {
+    $entityform_wrapper->field_h_event_date->set($event_date_save);
+  }
 }

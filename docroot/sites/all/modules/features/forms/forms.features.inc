@@ -413,6 +413,52 @@ function forms_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['labor_roundtable_student_registr'] = entity_import('entityform_type', '{
+    "type" : "labor_roundtable_student_registr",
+    "label" : "Labor Roundtable Student Registration",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003E\\u003Cstrong\\u003ELabor Roundtable Registration Confirmation\\u003C\\/strong\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for registering for the Labor Roundtable. You will receive an email confirmation shortly. If you have any questions, please contact the ILR Office of Career Services, \\u003Ca href=\\u0022mailto:laborRoundtable@cornell.edu\\u0022\\u003ElaborRoundtable@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent Details:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "3" : 0,
+        "4" : 0,
+        "9" : 0,
+        "6" : 0,
+        "5" : 0,
+        "7" : 0,
+        "8" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
+      "form_submission_ilr_recipient" : "laborRoundtable@cornell.edu",
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['library_contact_form'] = entity_import('entityform_type', '{
     "type" : "library_contact_form",
     "label" : "Library Contact Form",

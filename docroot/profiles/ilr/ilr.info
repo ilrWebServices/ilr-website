@@ -47,6 +47,7 @@ dependencies[] = news
 dependencies[] = people_profile_import
 dependencies[] = people_profiles
 dependencies[] = promo
+dependencies[] = registration_pages
 dependencies[] = scheinman_neutral
 dependencies[] = spotlight
 dependencies[] = tagged_content_block
