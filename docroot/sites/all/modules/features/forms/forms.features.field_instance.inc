@@ -2421,8 +2421,8 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_event_content'
-  $field_instances['entityform-labor_roundtable_student_registr-field_event_content'] = array(
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_referenced_node'
+  $field_instances['entityform-labor_roundtable_student_registr-field_referenced_node'] = array(
     'bundle' => 'labor_roundtable_student_registr',
     'default_value' => NULL,
     'default_value_function' => 'entityreference_current_field_default_value',
@@ -2456,8 +2456,8 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
-    'field_name' => 'field_event_content',
-    'label' => 'event content',
+    'field_name' => 'field_referenced_node',
+    'label' => 'Page title',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -2574,7 +2574,7 @@ function forms_field_default_field_instances() {
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_h_event_date',
-    'label' => 'h event date',
+    'label' => 'Event date',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
@@ -3481,8 +3481,8 @@ function forms_field_default_field_instances() {
   t('Year');
   t('Your status');
   t('Zip code');
-  t('event content');
-  t('h event date');
+  t('Page title');
+  t('Event date');
 
   return $field_instances;
 }

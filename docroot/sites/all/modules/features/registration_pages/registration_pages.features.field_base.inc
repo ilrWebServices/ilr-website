@@ -158,14 +158,7 @@ function registration_pages_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_registration_form',
-    'foreign keys' => array(
-      'entityform_type' => array(
-        'columns' => array(
-          'target_id' => 'id',
-        ),
-        'table' => 'entityform_type',
-      ),
-    ),
+    'foreign keys' => array(),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',

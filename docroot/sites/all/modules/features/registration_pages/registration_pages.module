@@ -68,7 +68,7 @@ function registration_pages_tokens($type, $tokens, array $data = array(), array 
     if (isset($tokens['event_info'])) {
       if (_registrations_pages_is_reg_form($entityform)) {
         $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
-        $node = $entityform_wrapper->field_event_content->value();
+        $node = $entityform_wrapper->field_referenced_node->value();
         $return[$tokens['event_info']] = _registration_pages_get_event_markup($node);
       }
     }
@@ -84,8 +84,8 @@ function _registrations_pages_is_reg_form($entityform) {
   // Wrap entityform in an entity metadata wrapper - makes it easier to access entity values
   $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
 
-  if (isset($entityform_wrapper->field_event_content)) {
-    if ($entityform_wrapper->field_event_content->value()->type == 'registration_page') {
+  if (isset($entityform_wrapper->field_referenced_node)) {
+    if ($entityform_wrapper->field_referenced_node->value()->type == 'registration_page') {
       return TRUE;
     }
   }
@@ -171,6 +171,9 @@ function _registration_pages_form_is_inactive($node) {
 
 /**
  * Checks whether the form registration start date is in the future
+ * @todo Refactor field_event_registration_period into the form itself
+ * Since there are other forms with this requirement and its the more appropriate
+ * place for that logic to live
  */
 function _registration_pages_form_is_not_yet_live($node) {
   if (isset($node->field_event_registration_period[LANGUAGE_NONE][0]['value'])) {

@@ -255,7 +255,7 @@ function _forms_send_emails($form, $admin_email, $subject='') {
 
   if (_forms_is_registration_form($form['#entity'])) {
     $entityform_wrapper = entity_metadata_wrapper('entityform', $form['#entity']);
-    $node = $entityform_wrapper->field_event_content->value();
+    $node = $entityform_wrapper->field_referenced_node->value();
     $event_info_for_email = _registration_pages_get_event_markup($node);
   }
 
@@ -401,9 +401,11 @@ function forms_std_confirmation_mail($key, &$message, $params) {
 
 /**
  * Determines whether the form being saved is a registration form
+ * @todo Consider refactoring, since "field_referenced_node" shouldn't probably
+ * be the defining characteristic of a registration form
  */
 function _forms_is_registration_form($entityform) {
-  if (isset($entityform->field_event_content)
+  if (isset($entityform->field_referenced_node)
       && module_exists('registration_pages')
       && _registrations_pages_is_reg_form($entityform)) {
     return TRUE;
@@ -416,7 +418,7 @@ function _forms_is_registration_form($entityform) {
  */
 function _forms_save_registration_date($entityform) {
   $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
-  $event_date_save = $entityform_wrapper->field_event_content->field_event_date->value();
+  $event_date_save = $entityform_wrapper->field_referenced_node->field_event_date->value();
   if (!empty($event_date_save)) {
     $entityform_wrapper->field_h_event_date->set($event_date_save);
   }
