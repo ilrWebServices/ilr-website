@@ -14,6 +14,10 @@ function ilr_theme_preprocess_html(&$variables) {
   drupal_add_js('try{Typekit.load();}catch(e){}', array('type' => 'inline', 'scope' => 'footer'));
   drupal_add_js($variables['directory'] . '/js/vendor/eq.min.js', array('type' => 'file', 'scope' => 'footer'));
   drupal_add_js('https://embanner.univcomm.cornell.edu/OWC-emergency-banner.js', array('type' => 'external', 'scope' => 'footer'));
+
+  drupal_add_js($variables['directory'] . '/js/vendor/rNav.js', array('type' => 'file', 'scope' => 'footer'));
+  drupal_add_js("jQuery(document).ready(function(){ rNav({ label: 'Back', width: '768' }); });", array('type' => 'inline', 'scope' => 'footer'));
+
 }
 
 /**

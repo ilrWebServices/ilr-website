@@ -1,0 +1,438 @@
+/*[fmt]1A90-1A0A-3*/
+/*http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+
+html, body, div, span, applet, object, iframe, h1, h2, ga, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video*/
+#INVALID-RULE {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	/*[empty]color:;*/
+}
+strong {
+	font-weight: 800;
+}
+em {
+	font-style: italic;
+	font-size: 12px;
+}
+ul.features li {
+	list-style: url(bullet);
+	margin-bottom: 23px;
+	line-height: 1.5;
+	/*[empty]font-size:;*/
+}
+ul.features {
+	margin-left: 9px;
+	margin-top: 18px;
+}
+.banner p {
+	font-weight: 300;
+	font-size: 20px;
+	color: #E4E4E4;
+	margin: 10px 0 30px;
+}
+/*HTML5 display-role reset for older browsers*/
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+body {
+	font-family: "Open Sans", sans-serif;
+	background: #CCC url(http://subtlepatterns.com/patterns/redox_02.png) repeat;
+}
+.banner {
+	background: #1774A5;
+	padding: 20px 0px 23px;
+}
+.banner img {
+	width: 100%;
+	height: auto;
+}
+.content, .container {
+	max-width: 960px;
+	margin: 0px auto;
+}
+.content {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 20px 40px 40px;
+	background: #FFF;
+}
+h1 {
+	font-size: 45px;
+	font-weight: 300;
+	letter-spacing: -2px;
+	line-height: 1.2em;
+	color: #AFDEFF;
+	margin: 30px 0 0;
+}
+h2 {
+	font-size: 27px;
+	font-weight: 800;
+	letter-spacing: -1px;
+	line-height: 1.2em;
+	display: block;
+	padding: 10px 0 0;
+	color: #6B3162;
+	/*[empty]margin-bottom:;*/
+}
+h3 {
+	font-size: 18px;
+	font-weight: 900;
+	line-height: 1.2em;
+	display: block;
+	padding: 0;
+	color: #1774A5;
+	margin: 30px 0 0;
+}
+/*ga*/
+#INVALID-RULE {
+	font-size: 16px;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 1.4em;
+	margin: 30px 0 0;
+}
+a:link {
+	color: #197BA9;
+}
+a:hover {
+	background: #197BA9;
+	color: #FFF;
+}
+a:active {
+	position: relative;
+	top: 1px;
+}
+p {
+	font-size: 14px;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 1.4em;
+	color: #383838;
+	margin: 10px 0;
+}
+small {
+	font-size: 14px;
+	margin: 40px 0 20px;
+	display: block;
+}
+img {
+	margin: 30px 0 0;
+}
+.button {
+	padding: 10px;
+	background: #AB003F;
+	color: #FFF;
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: none;
+}
+a.button, a.button:visited {
+	color: #FFF;
+}
+.button:hover {
+	background: #6B243E;
+}
+body {
+	-webkit-text-size-adjust: 100%;
+	font-size: 16px;
+}
+div#rNav-wrap ul.menu, div#rNav-wrap ul.menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+div#rNav-wrap ul.menu {
+	background: #383838;
+	zoom: 1;
+	margin-top: 38px;
+}
+div#rNav-wrap ul.menu:before, div#rNav-wrap ul.menu:after {
+	content: "";
+	display: table;
+}
+div#rNav-wrap ul.menu:after {
+	clear: both;
+}
+div#rNav-wrap ul.menu li {
+	float: left;
+	position: relative;
+	line-height: normal;
+}
+div#rNav-wrap ul.menu a {
+	color: #FFF;
+	font-weight: 700;
+	text-decoration: none;
+	float: left;
+	padding: 0 20px;
+}
+div#rNav-wrap ul.menu a:hover {
+	color: #E0E0E0;
+	background: none;
+}
+div#rNav-wrap ul.menu a:active {
+	position: relative;
+	top: 1px;
+}
+div#rNav-wrap ul.menu > li > a {
+	height: 45px;
+	line-height: 45px;
+}
+div#rNav-wrap ul.menu li:hover > a {
+	color: #E0E0E0;
+}
+div#rNav-wrap ul.menu ul {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	top: 45px;
+	left: 0;
+	z-index: 9999;
+	border: thin solid #383838;
+}
+div#rNav-wrap ul.menu li:hover > ul {
+	opacity: 1;
+	visibility: visible;
+	margin: 0;
+}
+div#rNav-wrap ul.menu ul li {
+	background: #383838;
+	border-bottom: 1px solid #383838;
+}
+div#rNav-wrap ul.menu ul li:last-child {
+	border: none;
+}
+div#rNav-wrap ul.menu li:hover {
+	background: #000;
+}
+div#rNav-wrap ul.menu ul a {
+	font-size: 0.75em;
+	width: 130px;
+	display: block;
+	padding: 10px 25px;
+}
+div#rNav-wrap ul.menu ul ul {
+	top: -1px;
+	left: 180px;
+}
+#rNav-trigger {
+	display: none;
+}
+/**
+* Adaptive Columns
+**/
+.one_half, .one_third, .two_third, .three_fourth, .one_fourth, .one_fifth, .two_fifth, .three_fifth, .four_fifth, .one_sixth, .five_sixth {
+	position: relative;
+	margin-right: 4%;
+	float: left;
+	min-height: 1px;
+	height: auto !important;
+}
+.one_fourth {
+	width: 22%;
+}
+.three_fourth {
+	width: 74%;
+}
+.one_fifth {
+	width: 16.8%;
+}
+.two_fifth {
+	width: 37.6%;
+}
+.three_fifth {
+	width: 58.4%;
+}
+.four_fifth {
+	width: 79.2%;
+}
+.one_sixth {
+	width: 13.3333%;
+}
+.three_sixth {
+	width: 47.9998%;
+}
+.five_sixth {
+	width: 82.6665%;
+}
+.last {
+	margin-right: 0 !important;
+	clear: right;
+}
+.clearboth {
+	clear: both;
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	width: 100%;
+}
+.one_half .one_half {
+	margin-right: 8.3333%;
+	width: 45.8333%;
+}
+.one_half .one_third {
+	margin-right: 8.3333%;
+	width: 27.7778%;
+}
+.one_half .two_third {
+	margin-right: 8.3333%;
+	width: 63.8889%;
+}
+.two_third .one_third {
+	margin-right: 6.1224%;
+	width: 29.2517%;
+}
+.two_third .two_third {
+	margin-right: 6.1224%;
+	width: 64.6258%;
+}
+.two_third .one_fourth {
+	margin-right: 6.1224%;
+	width: 20.4082%;
+}
+.one_half, .two_fourth {
+	width: 48%;
+}
+.one_third, .two_sixth {
+	width: 30.6666%;
+}
+.two_third, .four_sixth {
+	width: 65.3332%;
+}
+hr {
+	margin: 20px 0;
+	border: none;
+	height: 1px;
+	background: #CCC;
+}
+/****************************************
+Mobile Menu Styles
+****************************************/
+@media screen and (max-width: 768px) {
+	.container, .content {
+		padding: 30px;
+		margin-top: 20px;
+	}
+	.content .one_third {
+		padding-top: 30px;
+	}
+}
+.content .one_third {
+	margin-top: -1px;
+	/*[empty]margin-left:;*/
+}
+@media screen and (max-width: 768px) {
+	.one_half, .one_third, .two_third, .three_fourth, .one_fourth, .one_fifth, .two_fifth, .three_fifth, .four_fifth, .one_sixth, .five_sixth {
+		float: none;
+		width: 100%;
+	}
+	#rNav-wrap {
+		position: relative;
+	}
+	#rNav-trigger {
+		display: block;
+		height: 70px;
+		line-height: 70px;
+		cursor: pointer;
+		font-size: 1.125em;
+		color: #FAFAFA;
+		font-weight: 700;
+		background: #383838 url(../images/rNav/icon-menu.png) no-repeat 95% center;
+		padding: 0 0 0 45px;
+	}
+	div#rNav-wrap ul.menu {
+		z-index: 9999;
+		position: absolute;
+		top: 70px;
+		width: 100%;
+		background-image: none;
+		display: none;
+		margin: 0;
+		padding: 0;
+	}
+	div#rNav-wrap ul.menu > li > a {
+		height: auto;
+		line-height: normal;
+		padding: 22px 45px;
+	}
+	div#rNav-wrap ul.menu li.rNav-back {
+		background: #4A4A4A url(../images/rNav/icon-arrow-back.png) no-repeat 45px center;
+	}
+	div#rNav-wrap ul.menu li.rNav-back:hover {
+		background: #666 url(../images/rNav/icon-arrow-back.png) no-repeat 45px center;
+	}
+	div#rNav-wrap ul.menu li.rNav-back a {
+		font-size: 0.75em;
+		font-weight: 700;
+		text-indent: 30px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: #CCC;
+		margin: 0;
+	}
+	div#rNav-wrap ul.menu ul {
+		position: static;
+		visibility: visible;
+		opacity: 1;
+		margin: 0;
+	}
+	div#rNav-wrap ul.menu li, div#rNav-wrap ul.menu li:hover {
+		position: static;
+		display: block;
+		float: none;
+		border-bottom: 1px solid #343434;
+		background: #000;
+	}
+	div#rNav-wrap ul.menu a {
+		display: block;
+		float: none;
+		font-weight: 700;
+		color: #FFF;
+		text-decoration: none;
+	}
+	div#rNav-wrap ul.menu a:hover {
+		color: #E0E0E0;
+	}
+	div#rNav-wrap ul.menu ul a {
+		width: auto;
+		padding: 0;
+	}
+	div#rNav-wrap ul.menu ul li:first-child a:after, div#rNav-wrap ul.menu ul ul li:first-child a:after {
+		border: 0;
+	}
+	a.rNav-parent {
+		background: url(../images/rNav/icon-arrow-forward.png) no-repeat 95% center !important;
+	}
+	div#rNav-wrap ul.menu-trans {
+		display: block;
+		position: absolute;
+		overflow: hidden;
+	}
+	div#rNav-wrap ul.menu-trans li, div#rNav-wrap ul.menu-trans li a {
+		overflow: hidden;
+		white-space: nowrap;
+	}
+}
