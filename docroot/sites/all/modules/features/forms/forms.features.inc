@@ -413,6 +413,52 @@ function forms_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['join_the_hcd_mailing_list'] = entity_import('entityform_type', '{
+    "type" : "join_the_hcd_mailing_list",
+    "label" : "Join the HCD Mailing List",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for requesting to be added to Cornell ILR\\u0026#39;s Human Capital Development mailing list. Our training programs help you to gain skills that make an impact in the workplace. We appreciate your interest in Cornell and hope to welcome you to one of our programs in the near future.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have questions, please send email to \\u003Ca href=\\u0022mailto:ilrcustomerservice@cornell.edu\\u0022\\u003EILR Customer Service\\u003C\\/a\\u003E or call us at 866-470-1922.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ECornell University\\u003Cbr \\/\\u003E\\r\\n\\tILR School\\u003Cbr \\/\\u003E\\r\\n\\tHuman Capital Development\\u003Cbr \\/\\u003E\\r\\n\\t16 East 34th Street\\u003Cbr \\/\\u003E\\r\\n\\tNew York, NY 10016-4328\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "3" : 0,
+        "4" : 0,
+        "9" : 0,
+        "6" : 0,
+        "5" : 0,
+        "7" : 0,
+        "8" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
+      "form_submission_ilr_recipient" : "ilrcustomerservice@cornell.edu",
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['labor_roundtable_student_registr'] = entity_import('entityform_type', '{
     "type" : "labor_roundtable_student_registr",
     "label" : "Labor Roundtable Student Registration",
@@ -499,6 +545,52 @@ function forms_default_entityform_type() {
       "block_enable" : true,
       "form_submission_ilr_recipient" : "ilrlib@cornell.edu",
       "add_user_name_to_subject_line" : 0,
+      "kerberized" : 0
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
+  $items['scheinman_mailing_list'] = entity_import('entityform_type', '{
+    "type" : "scheinman_mailing_list",
+    "label" : "Join the Scheinman Institute Mailing List",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for requesting to join the Scheinman Institute mailing list. If you have any questions, please contact us:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EScheinman Institute on Conflict Resolution\\u003Cbr \\/\\u003E\\r\\n\\tILR Extension Building\\u003Cbr \\/\\u003E\\r\\n\\tCornell University\\u003Cbr \\/\\u003E\\r\\n\\tIthaca, NY 14853-3901\\u003Cbr \\/\\u003E\\r\\n\\t607-255-9298\\u003Cbr \\/\\u003E\\r\\n\\tilrcr@cornell.edu\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "3" : 0,
+        "4" : 0,
+        "9" : 0,
+        "6" : 0,
+        "5" : 0,
+        "7" : 0,
+        "8" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "block_enable" : true,
+      "form_submission_ilr_recipient" : "ilrcr@cornell.edu",
+      "add_user_name_to_subject_line" : 1,
       "kerberized" : 0
     },
     "weight" : "0",

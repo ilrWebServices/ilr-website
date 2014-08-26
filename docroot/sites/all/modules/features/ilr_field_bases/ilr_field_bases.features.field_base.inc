@@ -1495,6 +1495,32 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'email',
   );
 
+  // Exported field_base: 'field_email_opt_in'
+  $field_bases['field_email_opt_in'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_email_opt_in',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'No',
+        1 => 'Yes',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_end_time'
   $field_bases['field_end_time'] = array(
     'active' => 1,
@@ -1522,42 +1548,6 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_referenced_node'
-  $field_bases['field_referenced_node'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_referenced_node',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'registration_page' => 'registration_page',
-        ),
-      ),
-      'target_type' => 'node',
-    ),
-    'translatable' => 0,
-    'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_event_name'
@@ -1808,6 +1798,39 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'datetime',
+  );
+
+  // Exported field_base: 'field_hcd_contact_form_topics'
+  $field_bases['field_hcd_contact_form_topics'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_hcd_contact_form_topics',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Management' => 'Management',
+        'Human Resources' => 'Human Resources',
+        'Labor Relations' => 'Labor Relations',
+        'Diversity' => 'Diversity',
+        'Change Management' => 'Change Management',
+        'Equal Employment' => 'Equal Employment',
+        'Online courses' => 'Online courses',
+        'On-site programs' => 'On-site programs',
+        'None' => 'None of the above',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_headline'
@@ -2995,6 +3018,42 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_referenced_node'
+  $field_bases['field_referenced_node'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_referenced_node',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'registration_page' => 'registration_page',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_references'
   $field_bases['field_references'] = array(
     'active' => 1,
@@ -3381,6 +3440,95 @@ function ilr_field_bases_field_default_field_bases() {
         'WV' => 'West Virginia',
         'WI' => 'Wisconsin',
         'WY' => 'Wyoming',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_state_province'
+  $field_bases['field_state_province'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_state_province',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Alabama' => 'Alabama',
+        'Alaska' => 'Alaska',
+        'Arizona' => 'Arizona',
+        'Arkansas' => 'Arkansas',
+        'California' => 'California',
+        'Colorado' => 'Colorado',
+        'Connecticut' => 'Connecticut',
+        'Delaware' => 'Delaware',
+        'District Of Columbia' => 'District Of Columbia',
+        'Florida' => 'Florida',
+        'Georgia' => 'Georgia',
+        'Hawaii' => 'Hawaii',
+        'Idaho' => 'Idaho',
+        'Illinois' => 'Illinois',
+        'Indiana' => 'Indiana',
+        'Iowa' => 'Iowa',
+        'Kansas' => 'Kansas',
+        'Kentucky' => 'Kentucky',
+        'Louisiana' => 'Louisiana',
+        'Maine' => 'Maine',
+        'Maryland' => 'Maryland',
+        'Massachusetts' => 'Massachusetts',
+        'Michigan' => 'Michigan',
+        'Minnesota' => 'Minnesota',
+        'Mississippi' => 'Mississippi',
+        'Missouri' => 'Missouri',
+        'Montana' => 'Montana',
+        'Nebraska' => 'Nebraska',
+        'Nevada' => 'Nevada',
+        'New Hampshire' => 'New Hampshire',
+        'New Jersey' => 'New Jersey',
+        'New Mexico' => 'New Mexico',
+        'New York' => 'New York',
+        'North Carolina' => 'North Carolina',
+        'North Dakota' => 'North Dakota',
+        'Ohio' => 'Ohio',
+        'Oklahoma' => 'Oklahoma',
+        'Oregon' => 'Oregon',
+        'Pennsylvania' => 'Pennsylvania',
+        'Rhode Island' => 'Rhode Island',
+        'South Carolina' => 'South Carolina',
+        'South Dakota' => 'South Dakota',
+        'Tennessee' => 'Tennessee',
+        'Texas' => 'Texas',
+        'Utah' => 'Utah',
+        'Vermont' => 'Vermont',
+        'Virginia' => 'Virginia',
+        'Washington' => 'Washington',
+        'West Virginia' => 'West Virginia',
+        'Wisconsin' => 'Wisconsin',
+        'Wyoming' => 'Wyoming',
+        'Alberta' => 'Alberta',
+        'British Columbia' => 'British Columbia',
+        'Manitoba' => 'Manitoba',
+        'New Brunswick' => 'New Brunswick',
+        'Newfoundland' => 'Newfoundland',
+        'Northwest Territories' => 'Northwest Territories',
+        'Nova Scotia' => 'Nova Scotia',
+        'Nunavut' => 'Nunavut',
+        'Ontario' => 'Ontario',
+        'Prince Edward Island' => 'Prince Edward Island',
+        'Quebec' => 'Quebec',
+        'Saskatchewan' => 'Saskatchewan',
+        'Yukon' => 'Yukon',
+        'other' => 'other',
       ),
       'allowed_values_function' => '',
     ),
