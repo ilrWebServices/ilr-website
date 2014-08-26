@@ -2374,6 +2374,478 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_address_line_1'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_address_line_1'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_line_1',
+    'label' => 'Address',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_city'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_city'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_city',
+    'label' => 'City',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_company'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_company'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_company',
+    'label' => 'Company',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_country'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_country'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_country',
+    'label' => 'Country',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 20,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_email'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_email'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_email_opt_in'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_email_opt_in'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email_opt_in',
+    'label' => ' May we contact you by email about information on our offerings?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 26,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_fax'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_fax'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_fax',
+    'label' => 'Fax',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 24,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_first_name'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_first_name'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_first_name',
+    'label' => 'First Name',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_hcd_contact_form_topics'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_hcd_contact_form_topics'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_hcd_contact_form_topics',
+    'label' => 'Which topics and types of programs are you interested in? (check all that apply)',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 25,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_job_title'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_job_title'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_job_title',
+    'label' => 'Job Title',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_last_name'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_last_name'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_last_name',
+    'label' => 'Last Name',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_phone'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_phone'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_phone',
+    'label' => 'Phone',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 22,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_state_province'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_state_province'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_state_province',
+    'label' => 'State / Province',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_the_hcd_mailing_list-field_zip_code'
+  $field_instances['entityform-join_the_hcd_mailing_list-field_zip_code'] = array(
+    'bundle' => 'join_the_hcd_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_zip_code',
+    'label' => 'Zip code',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 18,
+    ),
+  );
+
   // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_email'
   $field_instances['entityform-labor_roundtable_student_registr-field_email'] = array(
     'bundle' => 'labor_roundtable_student_registr',
@@ -2418,70 +2890,6 @@ function forms_field_default_field_instances() {
       ),
       'type' => 'email_textfield',
       'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_referenced_node'
-  $field_instances['entityform-labor_roundtable_student_registr-field_referenced_node'] = array(
-    'bundle' => 'labor_roundtable_student_registr',
-    'default_value' => NULL,
-    'default_value_function' => 'entityreference_current_field_default_value',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 8,
-      ),
-      'token' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'view_mode' => 'default',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 8,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_referenced_node',
-    'label' => 'Page title',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'current' => array(
-          'action' => 'hide',
-          'action_on_edit' => 1,
-          'fallback' => 'form_error',
-          'skip_perm' => 0,
-          'status' => 1,
-          'use_uid' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 15,
     ),
   );
 
@@ -2740,6 +3148,70 @@ function forms_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_referenced_node'
+  $field_instances['entityform-labor_roundtable_student_registr-field_referenced_node'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'default_value' => NULL,
+    'default_value_function' => 'entityreference_current_field_default_value',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 8,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'view_mode' => 'default',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_referenced_node',
+    'label' => 'Page title',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'current' => array(
+          'action' => 'hide',
+          'action_on_edit' => 1,
+          'fallback' => 'form_error',
+          'skip_perm' => 0,
+          'status' => 1,
+          'use_uid' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 15,
     ),
   );
 
@@ -3045,6 +3517,410 @@ function forms_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_address_line_1'
+  $field_instances['entityform-scheinman_mailing_list-field_address_line_1'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_line_1',
+    'label' => 'Address',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_city'
+  $field_instances['entityform-scheinman_mailing_list-field_city'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_city',
+    'label' => 'City',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_company'
+  $field_instances['entityform-scheinman_mailing_list-field_company'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_company',
+    'label' => 'Company',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_country'
+  $field_instances['entityform-scheinman_mailing_list-field_country'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_country',
+    'label' => 'Country',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_email'
+  $field_instances['entityform-scheinman_mailing_list-field_email'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_fax'
+  $field_instances['entityform-scheinman_mailing_list-field_fax'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_fax',
+    'label' => 'Fax',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_first_name'
+  $field_instances['entityform-scheinman_mailing_list-field_first_name'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_first_name',
+    'label' => 'First Name',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_job_title'
+  $field_instances['entityform-scheinman_mailing_list-field_job_title'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_job_title',
+    'label' => 'Job Title',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_last_name'
+  $field_instances['entityform-scheinman_mailing_list-field_last_name'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_last_name',
+    'label' => 'Last Name',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_phone'
+  $field_instances['entityform-scheinman_mailing_list-field_phone'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_phone',
+    'label' => 'Phone',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_state_province'
+  $field_instances['entityform-scheinman_mailing_list-field_state_province'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_state_province',
+    'label' => 'State / Province',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_zip_code'
+  $field_instances['entityform-scheinman_mailing_list-field_zip_code'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_zip_code',
+    'label' => 'Zip code',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
     ),
   );
 
@@ -3422,16 +4298,19 @@ function forms_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t(' Departments in which you prefer assignment (Indicate at least top two choices.)');
+  t(' May we contact you by email about information on our offerings?');
   t(' Semester requesting assistantship');
   t('<p>If there are technical needs, training is required prior to the use of a room. Please contact ILR Technology Services to make these arrangements via email at: <a href="mailto:ilrvtc@cornell.edu>ilrvtc@cornell.edu</a>.</p>
 <p>Note: ILR Technology Services does not support Skype in the classrooms. If using Skype, please use your own laptop.</p>');
   t('Account Number (for externally funded projects)');
   t('Additional comments');
+  t('Address');
   t('Areas of interest');
   t('City');
   t('Class year');
   t('Classes you are interesting in TAing or faculty members to whom you wish to be assigned');
   t('Comments');
+  t('Company');
   t('Concentration');
   t('Country');
   t('Course name');
@@ -3443,7 +4322,9 @@ function forms_field_default_field_instances() {
   t('Direct your question or message to');
   t('Email');
   t('End time');
+  t('Event date');
   t('Event name');
+  t('Fax');
   t('First Name');
   t('First name');
   t('How did you hear about the Labor Roundtable?');
@@ -3451,6 +4332,7 @@ function forms_field_default_field_instances() {
   t('ILR student organization or department name');
   t('Indicate level, if any, of computer skills or knowledge');
   t('Indicate preference for teaching or research assistantship');
+  t('Job Title');
   t('Last Name');
   t('Last name');
   t('List relevant work experience and/or your qualifications');
@@ -3462,6 +4344,7 @@ function forms_field_default_field_instances() {
   t('NetID');
   t('Number of assistants requested');
   t('Number of completed semesters in residence');
+  t('Page title');
   t('Phone');
   t('Phone (with area code)');
   t('Preferred students (in order of preference), or desired qualifications');
@@ -3473,16 +4356,16 @@ function forms_field_default_field_instances() {
   t('Semester off-campus');
   t('Start time');
   t('State');
+  t('State / Province');
   t('Street address');
   t('Subject line for this message');
   t('TA Course Information');
   t('Technical needs (Examples: Microphone, PowerPoint, laptop, DVD, videotaping. Enter "none" if you have NO technical needs.)');
   t('Type of grad assistant');
+  t('Which topics and types of programs are you interested in? (check all that apply)');
   t('Year');
   t('Your status');
   t('Zip code');
-  t('Page title');
-  t('Event date');
 
   return $field_instances;
 }
