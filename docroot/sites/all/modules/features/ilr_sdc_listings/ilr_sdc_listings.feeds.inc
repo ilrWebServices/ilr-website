@@ -163,6 +163,24 @@ function _ilr_sdc_listings_prepare_class_source_item(array &$item, FeedsSource $
   _ilr_sdc_listings_feeds_set_date_string($item, $source->importer, 'field_class_dates:end', 'Temporary target 3', 'Temporary target 4');
 
 }
+
+/**
+ * Prepare the faculty item for import
+ *
+ * If faculty description start with a comma then
+ *  Faculty name must be prefixed to the description.
+ * @param array $item
+ * @param FeedsSource $source
+ */
+function _ilr_sdc_listings_prepare_faculty_source_item(array &$item, FeedsSource $source) {
+  $body_source = _ilr_get_feed_source_for_target('body', $source->importer);
+  if ($body_source) {
+    if (substr(trim($item[$body_source]), 0, 1) == ',') {
+      $title_source = _ilr_get_feed_source_for_target('title', $source->importer);
+      $item[$body_source] = $item[$title_source] . $item[$body_source];
+    }
+  }
+}
 /**
  * Prepare source item for import.
  * @param array $item
@@ -180,6 +198,9 @@ function _ilr_sdc_listings_prepare_source_item(array &$item, FeedsSource $source
 
   if ($importer_id == 'sdc_class_importer') {
     _ilr_sdc_listings_prepare_class_source_item($item, $source);
+  }
+  if ($importer_id == 'sdc_faculty_importer') {
+    _ilr_sdc_listings_prepare_faculty_source_item($item, $source);
   }
 }
 
