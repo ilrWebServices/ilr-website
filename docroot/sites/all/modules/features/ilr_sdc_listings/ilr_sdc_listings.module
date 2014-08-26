@@ -108,9 +108,27 @@ function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
   switch ($node->type) {
     case 'sdc_course':
       _ilr_sdc_listings_course_add_classes($node, $view_mode);
+      break;
+    case 'sdc_class':
+      _ilr_sdc_listings_class_empty_msg($node, $view_mode);
+      break;
   }
 }
+/**
+ * Add empty message to node class view.
+ * @param $course_node
+ * @param $view_mode
+ */
+function _ilr_sdc_listings_class_empty_msg($class_node, $view_mode) {
+  $node_wrapper = entity_metadata_wrapper('node', $class_node);
+  if ($node_wrapper->field_is_full->value()) {
+    $class_node->content['full_message'] = array(
+      '#type' => 'markup',
+      '#markup' => '[Seats in this session are limited. Please call 866-470-1922 to register.]',
+    );
+  }
 
+}
 /**
  * Add class listing form to node course view.
  * @param $course_node
@@ -172,10 +190,6 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
       $default_class_id = $class_id;
     }
     if ($class_node_wrapper->field_is_full->value()) {
-      $form['class_full_' . $nid] = array(
-        '#type' => 'markup',
-        '#markup' => '<h2>Full</h2>',
-      );
       if ($nid == $class_nid_from_url) {
         drupal_set_message('The class you selected is full.');
       }

@@ -184,6 +184,17 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['fields']['field_sdc_department']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_sdc_department']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sdc_department']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Is Full? */
+  $handler->display->display_options['fields']['field_is_full']['id'] = 'field_is_full';
+  $handler->display->display_options['fields']['field_is_full']['table'] = 'field_data_field_is_full';
+  $handler->display->display_options['fields']['field_is_full']['field'] = 'field_is_full';
+  $handler->display->display_options['fields']['field_is_full']['label'] = '';
+  $handler->display->display_options['fields']['field_is_full']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_is_full']['alter']['text'] = '[Class is full, but other dates may be available]';
+  $handler->display->display_options['fields']['field_is_full']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_is_full']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_is_full']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_is_full']['type'] = 'list_key';
   /* Sort criterion: Taxonomy term: Name */
   $handler->display->display_options['sorts']['name']['id'] = 'name';
   $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
