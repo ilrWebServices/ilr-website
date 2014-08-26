@@ -11,6 +11,7 @@ dependencies[] = entity
 dependencies[] = entity2text
 dependencies[] = entityform
 dependencies[] = entityreference
+dependencies[] = entityreference_current
 dependencies[] = features
 dependencies[] = field_collection
 dependencies[] = ilr_field_bases
