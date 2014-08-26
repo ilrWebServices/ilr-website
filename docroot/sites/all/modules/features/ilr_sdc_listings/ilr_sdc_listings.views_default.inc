@@ -42,7 +42,7 @@ function ilr_sdc_listings_views_default_views() {
         'bef_select_all_none' => 0,
         'bef_collapsible' => 0,
         'is_secondary' => 0,
-        'any_label' => '',
+        'any_label' => 'Both',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
@@ -57,7 +57,7 @@ function ilr_sdc_listings_views_default_views() {
     'field_sdc_department_tid' => array(
       'bef_format' => 'bef',
       'more_options' => array(
-        'bef_select_all_none' => 0,
+        'bef_select_all_none' => 1,
         'bef_collapsible' => 0,
         'is_secondary' => 0,
         'any_label' => '',

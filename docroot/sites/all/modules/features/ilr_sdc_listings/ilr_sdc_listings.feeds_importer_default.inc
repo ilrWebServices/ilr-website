@@ -232,6 +232,7 @@ function ilr_sdc_listings_feeds_importer_default() {
           'jsonpath_parser:6' => 'CREDITHOURS',
           'jsonpath_parser:7' => 'DEPARTMENT',
           'jsonpath_parser:8' => 'IS_ON_DEMAND',
+          'jsonpath_parser:9' => 'KEYWORDS',
         ),
         'debug' => array(
           'options' => array(
@@ -245,6 +246,7 @@ function ilr_sdc_listings_feeds_importer_default() {
             'jsonpath_parser:6' => 0,
             'jsonpath_parser:7' => 0,
             'jsonpath_parser:8' => 0,
+            'jsonpath_parser:9' => 0,
           ),
         ),
       ),
@@ -301,6 +303,12 @@ function ilr_sdc_listings_feeds_importer_default() {
             'source' => 'jsonpath_parser:8',
             'target' => 'field_on_demand',
             'unique' => FALSE,
+          ),
+          9 => array(
+            'source' => 'jsonpath_parser:9',
+            'target' => 'field_keywords',
+            'term_search' => '0',
+            'autocreate' => 1,
           ),
         ),
         'update_existing' => '2',
