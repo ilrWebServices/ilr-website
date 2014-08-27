@@ -30,9 +30,6 @@ function ilr_install() {
   variable_set('admin_theme', 'seven');
   variable_set('node_admin_theme', '1');
 
-  // Set the file system path
-  variable_set('file_public_path', 'sites/default/files');
-
   // Enable caching
   variable_set('cache', 1);
   variable_set('page_cache_maximum_age', 1800); // Allows reverse proxies (like Varnish) to store content for up to half an hour
@@ -63,6 +60,8 @@ function ilr_install() {
   }
   else {
     $drupal_path = '/var/www/ilr-website/docroot';
+    // Set the temporary path
+    variable_set('file_temporary_path', '/tmp');
   }
 
   $simplesamlphp_installdir = str_replace(array(
@@ -72,6 +71,9 @@ function ilr_install() {
   ), $drupal_path);
 
   variable_set('simplesamlphp_auth_installdir', $simplesamlphp_installdir);
+
+  // Set the public file system path
+  variable_set('file_public_path', 'sites/default/files');
 
   // Disable default email notification on user activation
   // The main reason to do this is that a user created via
