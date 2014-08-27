@@ -133,12 +133,12 @@ function _forms_get_submit_handler($bundle) {
  */
 function _forms_get_tplphp_file($form) {
   $tplphp_file = str_replace('_', '-', $form['#bundle']);
-
   $tplphp_file_full_path = drupal_get_path('module', 'forms') . '/templates/' . $tplphp_file . '.tpl.php';
+
   if (file_exists($tplphp_file_full_path)) {
     return $form['#bundle'];
   }
-  elseif (module_exists('registration_pages') && _registrations_pages_is_reg_form($form['#entity'])) {
+  elseif (module_exists('registration_pages') && _registration_pages_is_reg_form($form['#entity'])) {
     return 'default_registration_confirmation';
   }
   return 'default_mail';
@@ -407,7 +407,7 @@ function forms_std_confirmation_mail($key, &$message, $params) {
 function _forms_is_registration_form($entityform) {
   if (isset($entityform->field_referenced_node)
       && module_exists('registration_pages')
-      && _registrations_pages_is_reg_form($entityform)) {
+      && _registration_pages_is_reg_form($entityform)) {
     return TRUE;
   }
   return FALSE;
@@ -418,6 +418,7 @@ function _forms_is_registration_form($entityform) {
  */
 function _forms_save_registration_date($entityform) {
   $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
+  //'default_value_function' => 'entityreference_current_field_default_value',
   $event_date_save = $entityform_wrapper->field_referenced_node->field_event_date->value();
   if (!empty($event_date_save)) {
     $entityform_wrapper->field_h_event_date->set($event_date_save);

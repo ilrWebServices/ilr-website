@@ -52,7 +52,7 @@ function registration_pages_tokens($type, $tokens, array $data = array(), array 
 
     // Check that event_info exists - if so we need to assign to it
     if (isset($tokens['event_info'])) {
-      if (_registrations_pages_is_reg_form($entityform)) {
+      if (_registration_pages_is_reg_form($entityform)) {
         $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
         $node = $entityform_wrapper->field_referenced_node->value();
         $return[$tokens['event_info']] = _registration_pages_get_event_markup($node);
@@ -66,7 +66,7 @@ function registration_pages_tokens($type, $tokens, array $data = array(), array 
 /**
  * Check if a form is a registration form, i.e. if page type is registration_page
  */
-function _registrations_pages_is_reg_form($entityform) {
+function _registration_pages_is_reg_form($entityform) {
   // Wrap entityform in an entity metadata wrapper - makes it easier to access entity values
   $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
 
