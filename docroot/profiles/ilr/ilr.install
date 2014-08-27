@@ -134,6 +134,15 @@ function ilr_update_7004() {
 }
 
 /**
+ * Enables ilr workspan feature
+ */
+function ilr_update_7005() {
+  module_enable(array(
+    'ilr_workspan',
+  ));
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {
