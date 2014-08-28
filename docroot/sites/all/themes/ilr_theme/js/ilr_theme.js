@@ -13,6 +13,7 @@ Drupal.behaviors.ilrThemeFiltersSelectAllNone = {
     var links = $('.bef-toggle');
 
     if (links.length) {
+      // Remove default event for the link.
       links.off('click');
       var selNone = Drupal.t('Clear Selection');
 
