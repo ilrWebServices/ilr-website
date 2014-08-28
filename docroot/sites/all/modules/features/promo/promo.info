@@ -12,6 +12,7 @@ dependencies[] = ilr_field_bases
 dependencies[] = image
 dependencies[] = link
 dependencies[] = list
+dependencies[] = media
 dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = taxonomy
