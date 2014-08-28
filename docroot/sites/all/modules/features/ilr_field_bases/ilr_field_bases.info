@@ -43,7 +43,6 @@ features[field_base][] = field_article_lead_full
 features[field_base][] = field_article_title
 features[field_base][] = field_author
 features[field_base][] = field_authors_editors
-features[field_base][] = field_banner_image
 features[field_base][] = field_bean_content
 features[field_base][] = field_blocks
 features[field_base][] = field_call_number

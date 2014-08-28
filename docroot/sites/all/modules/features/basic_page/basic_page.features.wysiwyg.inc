@@ -36,11 +36,11 @@ function basic_page_wysiwyg_default_profiles() {
           'Format' => 1,
           'Scayt' => 1,
         ),
-        'imce' => array(
-          'imce' => 1,
-        ),
         'templates' => array(
           'Templates' => 1,
+        ),
+        'drupal' => array(
+          'media' => 1,
         ),
       ),
       'toolbar_loc' => 'top',

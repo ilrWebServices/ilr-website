@@ -34,8 +34,8 @@ function ilr_settings_strongarm() {
     'respondlarge' => 765.625,
     'respondxl' => 1339.84375,
     'respondxl2' => 2344.7265625,
-    'respondxl3' => 4103.271484375,
-    'respondxl4' => 7180.7250976562,
+    'respondxl3' => 4103.27148438,
+    'respondxl4' => 7180.72509766,
   );
   $export['borealis_responsive_builds'] = $strongarm;
 

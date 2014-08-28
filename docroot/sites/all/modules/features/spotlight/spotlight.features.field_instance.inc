@@ -37,7 +37,7 @@ function spotlight_field_default_field_instances() {
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 1,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -56,88 +56,7 @@ function spotlight_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'node-spotlight-field_banner_image'
-  $field_instances['node-spotlight-field_banner_image'] = array(
-    'bundle' => 'spotlight',
-    'deleted' => 0,
-    'description' => 'The banner image is a required asset for all spotlights, even if they are not a part of the current campaign.',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 0,
-      ),
-      'highlighted' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => 'content',
-          'image_style' => 'focussed_thumbnail',
-        ),
-        'type' => 'image',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_banner_image',
-    'label' => 'Banner Image',
-    'required' => 1,
-    'settings' => array(
-      'alt_field' => 1,
-      'default_image' => 0,
-      'file_directory' => 'spotlights',
-      'file_extensions' => 'png jpg jpeg',
-      'max_filesize' => '2MB',
-      'max_resolution' => '2000x1000',
-      'min_resolution' => '960x540',
-      'title_field' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'image',
-      'settings' => array(
-        'filefield_sources' => array(
-          'filefield_sources' => array(
-            'attach' => 0,
-            'clipboard' => 0,
-            'imce' => 'imce',
-            'reference' => 0,
-            'remote' => 0,
-            'upload' => 'upload',
-          ),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 1,
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-          ),
-        ),
-        'preview_image_style' => 'thumbnail',
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'image_image',
-      'weight' => 3,
+      'weight' => 6,
     ),
   );
 
@@ -159,7 +78,7 @@ function spotlight_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -171,7 +90,7 @@ function spotlight_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -186,7 +105,7 @@ function spotlight_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 9,
+      'weight' => 7,
     ),
   );
 
@@ -211,10 +130,11 @@ function spotlight_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
+        'type' => 'text_default',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -232,7 +152,7 @@ function spotlight_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -257,10 +177,11 @@ function spotlight_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
+        'type' => 'text_default',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -278,7 +199,74 @@ function spotlight_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-spotlight-field_image'
+  $field_instances['node-spotlight-field_image'] = array(
+    'bundle' => 'spotlight',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'focussed_grid_image',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'focussed_grid_image',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_image',
+    'label' => 'Main Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '320x134',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'upload' => 0,
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'media_generic',
+      'weight' => 2,
     ),
   );
 
@@ -305,7 +293,7 @@ function spotlight_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -323,20 +311,19 @@ function spotlight_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Banner Image');
   t('Blocks');
   t('Body');
   t('Campaign Intro');
   t('Campaign Title');
+  t('Main Image');
   t('Tags');
   t('The Campaign Intro is an optional, 1-2 sentence lead-in for the current campaign. ');
-  t('The banner image is a required asset for all spotlights, even if they are not a part of the current campaign.');
 
   return $field_instances;
 }

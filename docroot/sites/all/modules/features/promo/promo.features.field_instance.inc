@@ -21,7 +21,7 @@ function promo_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'focussed_grid_image',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -36,7 +36,7 @@ function promo_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
-          'image_link' => '',
+          'image_link' => 'content',
           'image_style' => 'focussed_grid_image',
         ),
         'type' => 'image',

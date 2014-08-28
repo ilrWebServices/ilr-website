@@ -22,7 +22,7 @@ function registration_pages_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -31,7 +31,7 @@ function registration_pages_field_default_field_instances() {
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'token' => array(
         'label' => 'hidden',
@@ -58,7 +58,7 @@ function registration_pages_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -72,13 +72,13 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'token' => array(
         'label' => 'above',
@@ -117,7 +117,7 @@ function registration_pages_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -131,13 +131,13 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
       'token' => array(
         'label' => 'above',
@@ -176,7 +176,7 @@ function registration_pages_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -191,13 +191,13 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'token' => array(
         'label' => 'above',
@@ -222,7 +222,7 @@ function registration_pages_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -237,13 +237,13 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'token' => array(
         'label' => 'above',
@@ -268,7 +268,80 @@ function registration_pages_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-registration_page-field_image'
+  $field_instances['node-registration_page-field_image'] = array(
+    'bundle' => 'registration_page',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'focussed_grid_image',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'focussed_grid_image',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_image',
+    'label' => 'Main Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '320x134',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'upload' => 0,
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'media_generic',
+      'weight' => 2,
     ),
   );
 
@@ -283,13 +356,13 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'token' => array(
         'label' => 'above',
@@ -313,7 +386,7 @@ function registration_pages_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -332,13 +405,13 @@ function registration_pages_field_default_field_instances() {
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'token' => array(
         'label' => 'above',
@@ -359,7 +432,7 @@ function registration_pages_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -371,6 +444,7 @@ function registration_pages_field_default_field_instances() {
   t('Event text after reg closes');
   t('Event text before reg opens');
   t('Location');
+  t('Main Image');
   t('Registration form');
   t('Select the form that goes with this page.');
   t('Set Start date/time, End date/time.  The dates should be the same; this isn\'t designed for multi-date events, but this captures start and end time, along with the event date.');
