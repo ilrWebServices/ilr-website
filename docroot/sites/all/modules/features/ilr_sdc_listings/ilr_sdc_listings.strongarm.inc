@@ -31,6 +31,9 @@ function ilr_sdc_listings_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'reference_field' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -67,6 +70,9 @@ function ilr_sdc_listings_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'reference_field' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -83,6 +89,14 @@ function ilr_sdc_listings_strongarm() {
             'weight' => '0',
             'visible' => TRUE,
           ),
+          'body_only' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'reference_field' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
         ),
       ),
     ),
@@ -94,7 +108,11 @@ function ilr_sdc_listings_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__sdc_faculty';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'reference_field' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(),
       'display' => array(),
