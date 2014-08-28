@@ -286,15 +286,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'image',
   );
 
-  // Exported permission: 'administer imce'.
-  $permissions['administer imce'] = array(
-    'name' => 'administer imce',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'imce',
-  );
-
   // Exported permission: 'administer menu'.
   $permissions['administer menu'] = array(
     'name' => 'administer menu',
