@@ -355,3 +355,20 @@ function ilr_date_formats() {
 
   return $formats;
 }
+
+/**
+ * Implements hook_entity_info_alter().
+ *
+ * Add extra entity view modes.
+ * Entity View Modes modules doesn't support Features.
+ * @see https://www.drupal.org/node/1425620
+ */
+function ilr_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes'] += array(
+    'reference_field' => array(
+      'label' => t('Reference Field'),
+      'custom settings' => FALSE,
+    ),
+  );
+}
+
