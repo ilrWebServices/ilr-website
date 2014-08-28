@@ -5,7 +5,7 @@
  *
  * @todo How should the placement for calendar nav view block should be handled.
  */
-define('ILR_SDC_MAX_DAYS_PAST' , 90);
+define('ILR_SDC_MAX_DAYS_PAST', 90);
 include_once 'ilr_sdc_listings.features.inc';
 
 
@@ -111,9 +111,22 @@ function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
       break;
     case 'sdc_class':
       _ilr_sdc_listings_class_empty_msg($node, $view_mode);
+      _ilr_sdc_listings_class_add_reg_form($node, $view_mode);
+      if (isset($node->content['links']['node']['#links']['node-readmore'])) {
+        $read_more_link = & $node->content['links']['node']['#links']['node-readmore'];
+        $read_more_link['title'] = t('Learn more about this class and it\'s faculty');
+      }
       break;
   }
 }
+
+function _ilr_sdc_listings_class_add_reg_form($node, $view_mode) {
+  if ($view_mode == 'full') {
+    $form = drupal_get_form('ilr_sdc_listings_class_reg_form', array($node), TRUE, FALSE);
+    $node->content['classes'] = $form;
+  }
+}
+
 /**
  * Add empty message to node class view.
  * @param $course_node
@@ -127,8 +140,8 @@ function _ilr_sdc_listings_class_empty_msg($class_node, $view_mode) {
       '#markup' => '[Seats in this session are limited. Please call 866-470-1922 to register.]',
     );
   }
-
 }
+
 /**
  * Add class listing form to node course view.
  * @param $course_node
@@ -147,9 +160,17 @@ function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
       $has_override_price = _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node);
       $form = drupal_get_form('ilr_sdc_listings_class_reg_form', $class_nodes, $has_override_price);
       $course_node->content['classes'] = $form;
+      $course_node->content['classes']['#weight'] = 4;
+
       if ($has_override_price) {
         // If there is any class that has a different price we don't show price on course level
         unset($course_node->content['field_price']);
+      }
+      if (count($class_nids) == 1) {
+        // When only 1 class show faculty info directly on this page.
+        $class_node = array_pop($class_nodes);
+        $course_node->content['faculty_info'] = field_view_field('node', $class_node, 'field_faculty', 'full');
+        $course_node->content['faculty_info']['#weight'] = 5;
       }
     }
     else {
@@ -169,21 +190,34 @@ function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
  * @param $form_state
  * @param $class_nodes
  * @param $has_override_price
+ * @param boolean $render_class
+ *  Whether render class info in form. If displaying on class itself info is not needed.
+ *
  * @return array
  */
-function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has_override_price) {
-  $render_arrays = node_view_multiple($class_nodes, 'teaser');
+function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has_override_price,  $render_class = TRUE) {
+  if ($render_class) {
+    $render_arrays = node_view_multiple($class_nodes, 'teaser');
+  }
   $default_class_id = NULL;
   $class_nid_from_url = _ilr_sdc_listings_get_class_from_url();
   $has_open_class = FALSE;
-  foreach (element_children($render_arrays['nodes']) as $nid) {
-    // Remove title because it is the same as the course
-    $render_array = & $render_arrays['nodes'][$nid];
-    $render_array['#node']->title = '';
-    unset($render_array['links']);
-    if (!$has_override_price) {
-      unset($render_array['field_price']);
+  foreach ($class_nodes as $nid => $class_node) {
+    if ($render_class) {
+      // Remove title because it is the same as the course
+      $render_array = $render_arrays['nodes'][$nid];
+      $render_array['#node']->title = '';
+      //unset($render_array['links']);
+      if (!$has_override_price) {
+        unset($render_array['field_price']);
+      }
+      if (count($class_nodes) == 1) {
+        // If only 1 class shown. Faculty will be shown on the course page.
+        unset($render_array['field_faculty']);
+        unset($render_array['links']);
+      }
     }
+
     $class_node_wrapper = entity_metadata_wrapper('node', $class_nodes[$nid]);
     $class_id = $class_node_wrapper->field_class_id->value();
     if ($nid == $class_nid_from_url) {
@@ -196,20 +230,31 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
     }
     else {
       $has_open_class = TRUE;
-      $form['addClass'. $class_id] = array(
-        '#type' => 'radio',
-        '#return_value' => $nid,
-        '#attributes' => array('name' => 'addClass'),
-      );
-      if ($nid == $class_nid_from_url) {
-        $form['addClass'. $class_id]['#attributes']['checked'] = 'checked';
+      if ($render_class) {
+        $form['addClass' . $class_id] = array(
+          '#type' => 'radio',
+          '#return_value' => $class_id,
+          '#attributes' => array('name' => 'addClass'),
+        );
+        if ($nid == $class_nid_from_url) {
+          $form['addClass' . $class_id]['#attributes']['checked'] = 'checked';
+        }
       }
+      else {
+        $form['addClass'] = array(
+          '#type' => 'hidden',
+          '#value' => $class_id,
+        );
+      }
+
+    }
+    if ($render_class) {
+      $form['class_view_' . $nid] = array(
+        '#type' => 'markup',
+        '#markup' => drupal_render($render_array),
+      );
     }
 
-    $form['class_view_' . $nid] = array(
-      '#type' => 'markup',
-      '#markup' => drupal_render($render_arrays['nodes'][$nid]),
-    );
   }
   if ($has_open_class) {
     $form['courseurl'] = array(
@@ -286,7 +331,7 @@ function _ilr_sdc_listings_get_classes_for_course($course_node) {
  * Remove node URL from SDC Faculty nodes.
  */
 function ilr_sdc_listings_preprocess_node(&$variables) {
-  if ($variables['type'] == 'sdc_faculty' && $variables['view_mode'] == 'teaser') {
+  if ($variables['type'] == 'sdc_faculty') {
     $variables['remove_title_link'] = TRUE;
   }
 }
@@ -380,11 +425,11 @@ function _ilr_listings_sdc_select_month_form($form, &$form_state) {
  */
 function _ilr_sdc_listings_get_month_options($start_month, $month_count) {
   $month_options = array();
-  $half_count = round($month_count/2);
+  $half_count = round($month_count / 2);
   $month = date('Y-m', strtotime("-$half_count months", strtotime($start_month)));
   $earliest_month = date('Y-m', strtotime('-' . ILR_SDC_MAX_DAYS_PAST . ' days'));
   // Make sure our starting isn't earlier than earliest month to show.
-  while($month < $earliest_month) {
+  while ($month < $earliest_month) {
     $month = date('Y-m', strtotime("+1 months", strtotime($month)));
   }
   $i = 0;
