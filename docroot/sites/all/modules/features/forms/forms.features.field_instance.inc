@@ -1191,6 +1191,1342 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-dublin_application_form-field_address_line_1'
+  $field_instances['entityform-dublin_application_form-field_address_line_1'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 39,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_line_1',
+    'label' => 'Street address line 1 (home)',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 49,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_address_line_1_additional'
+  $field_instances['entityform-dublin_application_form-field_address_line_1_additional'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 47,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_line_1_additional',
+    'label' => 'Street address line 1 (college)',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 65,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_address_line_2'
+  $field_instances['entityform-dublin_application_form-field_address_line_2'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 40,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_line_2',
+    'label' => 'Street address line 2 (home)',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 50,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_address_line_2_additional'
+  $field_instances['entityform-dublin_application_form-field_address_line_2_additional'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 48,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_line_2_additional',
+    'label' => 'Street address line 2 (college)',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 66,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_citizenship'
+  $field_instances['entityform-dublin_application_form-field_citizenship'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => array(
+      0 => array(
+        'value' => 'United States',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 23,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_citizenship',
+    'label' => 'Citizenship',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 24,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_city'
+  $field_instances['entityform-dublin_application_form-field_city'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 41,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_city',
+    'label' => 'City (home)',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 51,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_city_additional'
+  $field_instances['entityform-dublin_application_form-field_city_additional'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 49,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_city_additional',
+    'label' => 'City (college)',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 67,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_country'
+  $field_instances['entityform-dublin_application_form-field_country'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 44,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_country',
+    'label' => 'Country (home)',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 54,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_country_additional'
+  $field_instances['entityform-dublin_application_form-field_country_additional'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 52,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_country_additional',
+    'label' => 'Country (college)',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 70,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_date_of_birth'
+  $field_instances['entityform-dublin_application_form-field_date_of_birth'] = array(
+    'bundle' => 'dublin_application_form',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_date_of_birth',
+    'label' => 'Date of birth (mm/dd/yyyy)',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_text',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_disciplinary_action'
+  $field_instances['entityform-dublin_application_form-field_disciplinary_action'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 33,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_disciplinary_action',
+    'label' => 'Are you currently, or have you ever been, subject to disciplinary action at Cornell?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 46,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_disciplinary_explanation'
+  $field_instances['entityform-dublin_application_form-field_disciplinary_explanation'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 34,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_disciplinary_explanation',
+    'label' => 'If so, please explan',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 47,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_dublin_acad_goals_essay'
+  $field_instances['entityform-dublin_application_form-field_dublin_acad_goals_essay'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => array(
+      0 => array(
+        'value' => 'Describe, in two or three paragraphs, the academic and personal goals you would like to meet through your participation in the ILR/UCD Semester in Dublin Program.',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 35,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_dublin_acad_goals_essay',
+    'label' => '1. Academic goals essay',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 10,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_dublin_courses_completed'
+  $field_instances['entityform-dublin_application_form-field_dublin_courses_completed'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 31,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_dublin_courses_completed',
+    'label' => 'Check all courses you will have completed by the end of the current semester',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 44,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_dublin_current_courses'
+  $field_instances['entityform-dublin_application_form-field_dublin_current_courses'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_dublin_current_courses',
+    'label' => 'Please list the courses in which you are currently enrolled',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_dublin_study_abroad_essay'
+  $field_instances['entityform-dublin_application_form-field_dublin_study_abroad_essay'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => array(
+      0 => array(
+        'value' => 'Describe any previous international travel or study abroad experiences you have had.',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 36,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_dublin_study_abroad_essay',
+    'label' => '2. Study abroad essay',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 10,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_email'
+  $field_instances['entityform-dublin_application_form-field_email'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_expected_graduation_date'
+  $field_instances['entityform-dublin_application_form-field_expected_graduation_date'] = array(
+    'bundle' => 'dublin_application_form',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 27,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_expected_graduation_date',
+    'label' => 'Expected graduation date (mm/yyyy)',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_text',
+      'weight' => 40,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_first_name'
+  $field_instances['entityform-dublin_application_form-field_first_name'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_first_name',
+    'label' => 'First Name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 29,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_gpa'
+  $field_instances['entityform-dublin_application_form-field_gpa'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 26,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_gpa',
+    'label' => 'GPA',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_last_name'
+  $field_instances['entityform-dublin_application_form-field_last_name'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 31,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_middle_name'
+  $field_instances['entityform-dublin_application_form-field_middle_name'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_middle_name',
+    'label' => 'Middle name',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 30,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_netid'
+  $field_instances['entityform-dublin_application_form-field_netid'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 37,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_netid',
+    'label' => 'NetID',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 28,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_number_of_completed_credit'
+  $field_instances['entityform-dublin_application_form-field_number_of_completed_credit'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 29,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_number_of_completed_credit',
+    'label' => 'Number of completed credits',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_number_of_terms_at_cornell'
+  $field_instances['entityform-dublin_application_form-field_number_of_terms_at_cornell'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 30,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_number_of_terms_at_cornell',
+    'label' => 'Number of terms at Cornell',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 43,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_passport_expiration_date'
+  $field_instances['entityform-dublin_application_form-field_passport_expiration_date'] = array(
+    'bundle' => 'dublin_application_form',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 22,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_passport_expiration_date',
+    'label' => 'Expiration date (mm/yyyy)',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_text',
+      'weight' => 23,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_passport_number'
+  $field_instances['entityform-dublin_application_form-field_passport_number'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 21,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_passport_number',
+    'label' => 'Passport number',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 22,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_phone'
+  $field_instances['entityform-dublin_application_form-field_phone'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 45,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_phone',
+    'label' => 'Cell phone number',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 56,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_phone_college'
+  $field_instances['entityform-dublin_application_form-field_phone_college'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 19,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_phone_college',
+    'label' => 'College phone number',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 57,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_phone_home'
+  $field_instances['entityform-dublin_application_form-field_phone_home'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 20,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_phone_home',
+    'label' => 'Home phone number',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 58,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_state_province'
+  $field_instances['entityform-dublin_application_form-field_state_province'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 42,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_state_province',
+    'label' => 'State / Province (home)',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 52,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_state_province_additional'
+  $field_instances['entityform-dublin_application_form-field_state_province_additional'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 50,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_state_province_additional',
+    'label' => 'State / Province (college)',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 68,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_student_id_number'
+  $field_instances['entityform-dublin_application_form-field_student_id_number'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_student_id_number',
+    'label' => 'Student ID Number',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 33,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_transfer_student'
+  $field_instances['entityform-dublin_application_form-field_transfer_student'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 28,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_transfer_student',
+    'label' => 'Are you a transfer student',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 41,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_visa_type'
+  $field_instances['entityform-dublin_application_form-field_visa_type'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 24,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_visa_type',
+    'label' => 'Visa type (if non-US citizen)',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 25,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_year_freshman_soph_jr_sr'
+  $field_instances['entityform-dublin_application_form-field_year_freshman_soph_jr_sr'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 38,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_year_freshman_soph_jr_sr',
+    'label' => 'Current class year',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_zip_code'
+  $field_instances['entityform-dublin_application_form-field_zip_code'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 43,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_zip_code',
+    'label' => 'Zip / Postal code (home)',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 53,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_zip_postal_code_additional'
+  $field_instances['entityform-dublin_application_form-field_zip_postal_code_additional'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 51,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_zip_postal_code_additional',
+    'label' => 'Zip / Postal code (college)',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 69,
+    ),
+  );
+
   // Exported field_instance: 'entityform-faculty_request_for_ta_or_ra-field_comments'
   $field_instances['entityform-faculty_request_for_ta_or_ra-field_comments'] = array(
     'bundle' => 'faculty_request_for_ta_or_ra',
@@ -4300,21 +5636,35 @@ function forms_field_default_field_instances() {
   t(' Departments in which you prefer assignment (Indicate at least top two choices.)');
   t(' May we contact you by email about information on our offerings?');
   t(' Semester requesting assistantship');
+  t('1. Academic goals essay');
+  t('2. Study abroad essay');
   t('<p>If there are technical needs, training is required prior to the use of a room. Please contact ILR Technology Services to make these arrangements via email at: <a href="mailto:ilrvtc@cornell.edu>ilrvtc@cornell.edu</a>.</p>
 <p>Note: ILR Technology Services does not support Skype in the classrooms. If using Skype, please use your own laptop.</p>');
   t('Account Number (for externally funded projects)');
   t('Additional comments');
   t('Address');
+  t('Are you a transfer student');
+  t('Are you currently, or have you ever been, subject to disciplinary action at Cornell?');
   t('Areas of interest');
+  t('Cell phone number');
+  t('Check all courses you will have completed by the end of the current semester');
+  t('Citizenship');
   t('City');
+  t('City (college)');
+  t('City (home)');
   t('Class year');
   t('Classes you are interesting in TAing or faculty members to whom you wish to be assigned');
+  t('College phone number');
   t('Comments');
   t('Company');
   t('Concentration');
   t('Country');
+  t('Country (college)');
+  t('Country (home)');
   t('Course name');
   t('Course number (e.g. ILRLR 2100)');
+  t('Current class year');
+  t('Date of birth (mm/dd/yyyy)');
   t('Dates needed (mm/dd/yyyy)');
   t('Degree program');
   t('Department');
@@ -4324,12 +5674,17 @@ function forms_field_default_field_instances() {
   t('End time');
   t('Event date');
   t('Event name');
+  t('Expected graduation date (mm/yyyy)');
+  t('Expiration date (mm/yyyy)');
   t('Fax');
   t('First Name');
   t('First name');
+  t('GPA');
+  t('Home phone number');
   t('How did you hear about the Labor Roundtable?');
   t('How many people');
   t('ILR student organization or department name');
+  t('If so, please explan');
   t('Indicate level, if any, of computer skills or knowledge');
   t('Indicate preference for teaching or research assistantship');
   t('Job Title');
@@ -4339,14 +5694,19 @@ function forms_field_default_field_instances() {
   t('List your prior TA or RA appointments');
   t('Major');
   t('Meeting location preference');
+  t('Middle name');
   t('Minor subject(s)');
   t('Name');
   t('NetID');
   t('Number of assistants requested');
+  t('Number of completed credits');
   t('Number of completed semesters in residence');
+  t('Number of terms at Cornell');
   t('Page title');
+  t('Passport number');
   t('Phone');
   t('Phone (with area code)');
+  t('Please list the courses in which you are currently enrolled');
   t('Preferred students (in order of preference), or desired qualifications');
   t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
   t('Questions and comments');
@@ -4357,14 +5717,24 @@ function forms_field_default_field_instances() {
   t('Start time');
   t('State');
   t('State / Province');
+  t('State / Province (college)');
+  t('State / Province (home)');
   t('Street address');
+  t('Street address line 1 (college)');
+  t('Street address line 1 (home)');
+  t('Street address line 2 (college)');
+  t('Street address line 2 (home)');
+  t('Student ID Number');
   t('Subject line for this message');
   t('TA Course Information');
   t('Technical needs (Examples: Microphone, PowerPoint, laptop, DVD, videotaping. Enter "none" if you have NO technical needs.)');
   t('Type of grad assistant');
+  t('Visa type (if non-US citizen)');
   t('Which topics and types of programs are you interested in? (check all that apply)');
   t('Year');
   t('Your status');
+  t('Zip / Postal code (college)');
+  t('Zip / Postal code (home)');
   t('Zip code');
 
   return $field_instances;
