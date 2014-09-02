@@ -233,7 +233,7 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
     }
     else {
       $has_open_class = TRUE;
-      if ($render_class) {
+      if ($render_class && count($class_nodes) > 1) {
         $form[$class_id] = array(
           '#type' => 'radio',
           '#return_value' => $class_id,
@@ -242,7 +242,7 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
           '#parents' => array('addClass'),
         );
         if ($nid == $class_nid_from_url) {
-          $form['addClass' . $class_id]['#attributes']['checked'] = 'checked';
+          $form[$class_id]['#attributes']['checked'] = 'checked';
         }
       }
       else {
