@@ -12,7 +12,14 @@
     		direction: Drupal.settings.jpanelmenu.direction,
     		openPosition: Drupal.settings.jpanelmenu.openPosition,
 		});
-		//Jurn on the jPanelMenu
-		jPM.on();
+
+    $(window).on("resize", function() {
+        if ($('#page-wrapper[data-eq-state]').attr('data-eq-state') == 'regular-nav') {
+            jPM.close();
+        }
+    });
+
+    //Jurn on the jPanelMenu
+    jPM.on();
 	});
 })(jQuery);
