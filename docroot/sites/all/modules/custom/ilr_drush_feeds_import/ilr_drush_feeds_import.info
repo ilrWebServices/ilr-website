@@ -1,5 +1,6 @@
-name = Drush commands for Feeds
+name = ILR Drush Feeds Import
 description = Import specific feeds.
 package = Feeds
 core = 7.x
 dependencies[] = feeds
+version = 7.x-1.0

@@ -47,11 +47,11 @@ function _ilr_drush_feeds_import_feed_import($id, $nid = NULL) {
   $query = db_select('feeds_source', 'fs')
     ->fields('fs', array('id', 'feed_nid'))
     ->condition('fs.id', $id);
-  if($nid) {
+  if ($nid) {
     $query->condition('fs.feed_nid', $nid);
   }
   $feeds = $query->execute();
-  foreach($feeds as $feed) {
+  foreach ($feeds as $feed) {
     $feed_obj = feeds_source($id, $feed->feed_nid);
     $feed_config = $feed_obj->importer->getConfig();
     if (1 || $feed_config['process_in_background']) {
@@ -61,8 +61,11 @@ function _ilr_drush_feeds_import_feed_import($id, $nid = NULL) {
       drush_log(dt('Feed @id is not enabled to Run in Background', array('@id' => $id)), 'error');
     }
   }
-  if(empty($feeds)) {
-    drush_log(dt('Invalid Feed ID: @id, Feed NID: @nid', array('@id' => $id, '@nid' => $nid)), 'error');
+  if (empty($feeds)) {
+    drush_log(dt('Invalid Feed ID: @id, Feed NID: @nid', array(
+      '@id' => $id,
+      '@nid' => $nid
+    )), 'error');
   }
 }
 
@@ -95,14 +98,15 @@ function drush_ilr_drush_feeds_import_feeds_import() {
  * A command callback.
  */
 function drush_ilr_drush_feeds_import_feeds_list() {
-  $rows[] = array(dt('ID'), dt('Feed NID'),dt('Process in Background'));
+  $rows[] = array(dt('ID'), dt('Feed NID'), dt('Process in Background'));
   $feeds = db_query("SELECT * FROM {feeds_source}");
 
   foreach ($feeds as $feed) {
     $feed_config = feeds_source($feed->id, $feed->feed_nid)->importer->getConfig();
-    $rows[] = array($feed->id,
+    $rows[] = array(
+      $feed->id,
       $feed->feed_nid,
-      ($feed_config['process_in_background'])?'TRUE' : 'FALSE',
+      ($feed_config['process_in_background']) ? 'TRUE' : 'FALSE',
     );
   }
 
