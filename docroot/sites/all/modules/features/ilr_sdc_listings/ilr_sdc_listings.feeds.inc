@@ -179,6 +179,7 @@ function _ilr_sdc_listings_prepare_faculty_source_item(array &$item, FeedsSource
       $title_source = _ilr_get_feed_source_for_target('title', $source->importer);
       $item[$body_source] = $item[$title_source] . $item[$body_source];
     }
+    $item[$body_source] = "<p>$item[$body_source]</p>";
   }
 }
 /**

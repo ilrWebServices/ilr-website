@@ -50,7 +50,9 @@ function ilr_sdc_listings_views_default_views() {
           ),
         ),
         'rewrite' => array(
-          'filter_rewrite_values' => '',
+          'filter_rewrite_values' => '- Any -|Both
+No|In-person
+Yes|Online',
         ),
       ),
     ),
