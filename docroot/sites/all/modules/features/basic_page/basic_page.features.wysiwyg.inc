@@ -30,7 +30,6 @@ function basic_page_wysiwyg_default_profiles() {
           'Indent' => 1,
           'Undo' => 1,
           'Link' => 1,
-          'Image' => 1,
           'Source' => 1,
           'HorizontalRule' => 1,
           'Format' => 1,
