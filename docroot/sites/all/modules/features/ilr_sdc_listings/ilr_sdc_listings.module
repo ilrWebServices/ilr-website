@@ -202,6 +202,9 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
   $default_class_id = NULL;
   $class_nid_from_url = _ilr_sdc_listings_get_class_from_url();
   $has_open_class = FALSE;
+  $form['addClass']= array(
+    '#tree' => TRUE,
+  );
   foreach ($class_nodes as $nid => $class_node) {
     if ($render_class) {
       // Remove title because it is the same as the course
@@ -231,10 +234,12 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
     else {
       $has_open_class = TRUE;
       if ($render_class) {
-        $form['addClass' . $class_id] = array(
+        $form[$class_id] = array(
           '#type' => 'radio',
           '#return_value' => $class_id,
           '#attributes' => array('name' => 'addClass'),
+          // Ensure single value in $form_state
+          '#parents' => array('addClass'),
         );
         if ($nid == $class_nid_from_url) {
           $form['addClass' . $class_id]['#attributes']['checked'] = 'checked';
@@ -266,10 +271,27 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
       '#value' => t('Register'),
     );
   }
-
-
-  $form['#action'] = variable_get('ilr_sdc_listings_reg_url', 'http://www.ilr.cornell.edu/registration/process/processcard.cfm');
   return $form;
+}
+
+/**
+ * Validation callback for ilr_sdc_listings_class_reg_form.
+ *
+ * Ensure class selected. Required not working for "radio" type.
+ */
+function ilr_sdc_listings_class_reg_form_validate($form, &$form_state) {
+  if (empty($form_state['values']['addClass'])) {
+    form_set_error('addClass', t('You must select a session.'));
+  }
+}
+
+/**
+ * Submit callback for ilr_sdc_listings_class_reg_form.
+ *
+ * Redirect to registration page.
+ */
+function ilr_sdc_listings_class_reg_form_submit($form, &$form_state) {
+  drupal_goto(variable_get('ilr_sdc_listings_reg_url','http://www.ilr.cornell.edu/registration/process/processcard.cfm'), array('query'=> array('addClass' => $form_state['values']['addClass'])));
 }
 
 /**
