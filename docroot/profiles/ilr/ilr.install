@@ -160,7 +160,7 @@ function ilr_update_7006() {
 /**
  * Enable Date format and JQuery update admin version variables.
  */
-function ilr_update_7004() {
+function ilr_update_7006() {
   variable_set('date_format_ilr_short_day_only', 'M j');
   variable_set('jquery_update_jquery_admin_version', '1.5');
 }
