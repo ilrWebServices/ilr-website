@@ -1,97 +1,101 @@
-function rNav(e) {
-    RNav.init(e)
-}(function(e, t) {
+function rNav(nav) {
+    RNav.init(nav)
+}(function(nav, $) {
     var n;
     var r;
-    e.buildMenu = function(i) {
-        if (!t("#rNav-trigger").length) {
-            t("#rNav-wrap").prepend('<div id="rNav-trigger">Menu</div>');
-            t("div#rNav-wrap ul.menu").find("ul").each(function() {
-                t(this).addClass("rNav-hide").prepend('<li class="rNav-back"><a href="#">' + i + "</a></li>")
+    nav.buildMenu = function(i) {
+        if (!$("#rNav-trigger").length) {
+            $("#rNav-wrap").append('<div id="rNav-trigger">Menu</div>');
+            $("#rNav").find("ul").each(function() {
+                $(this).addClass("rNav-hide").prepend('<li class="rNav-back"><a href="#">' + i + "</a></li>")
             });
-            t("div#rNav-wrap ul.menu").find("li:has(a+ul)").each(function() {
-                t(this).children("a").addClass("rNav-parent")
+            $("#rNav").find("li:has(a+ul)").each(function() {
+                $(this).children("a").addClass("rNav-parent") //.text('<span>' + $(this).text() + '</span>')
             });
-            r = t("div#rNav-wrap ul.menu");
+            r = $("#rNav");
             n = r.clone();
             n.find("ul").remove();
-            t("div#rNav-wrap ul.menu").parent().append(n);
-            t("#rNav-trigger").on("click", function() {
-                e.toggle()
+            $("#rNav").parent().append(n);
+            // $("#rNav-trigger").on("click", function() {
+            $(".jpanel-trigger").on("click", function() {
+                nav.toggle()
             });
-            t("div#rNav-wrap ul.menu").parent().on("click", "a", function() {
-                var i = n.children("li").index(t(this).parent("li"));
+            $("#rNav").parent().on("click", "a", function() {
+                var i = n.children("li").index($(this).parent("li"));
                 if (r.children("li").eq(i).children("ul").length) {
-                    e.nextNode(i)
-                } else if (t(this).parent("li").hasClass("rNav-back")) {
-                    e.prevNode()
+                    nav.nextNode(i)
+                } else if ($(this).parent("li").hasClass("rNav-back")) {
+                    nav.prevNode()
                 } else {
-                    window.location = t(this).attr("href");
-                    e.toggle()
+                    window.location = $(this).attr("href");
+                    nav.toggle()
                 }
                 return false
             })
+            $("#rNav").parent().on("click", "a span", function() {
+                return true;
+            })
         }
     };
-    e.nextNode = function(e) {
+    nav.nextNode = function(e) {
         thisNode = n.clone();
         r = r.children("li").eq(e).children("ul");
         nextNode = r.clone().removeClass("rNav-hide");
         thisNode.addClass("rNav rNav-trans").css("width", "100%");
         nextNode.addClass("rNav rNav-trans").css("width", "0%").css("marginLeft", "100%").find("ul").remove();
-        t("div#rNav-wrap ul.menu").parent().append(thisNode, nextNode);
-        t(n).hide();
+        $("#rNav").parent().append(thisNode, nextNode);
+        $(n).hide();
         nextNode.animate({
             width: "100%",
             marginLeft: "0%"
         }, function() {
-            t(n).html(r.children("li").clone()).show().find("ul").remove();
-            t(this).remove()
+            $(n).html(r.children("li").clone()).show().find("ul").remove();
+            $(this).remove()
         });
         thisNode.animate({
             width: "0%"
         }, function() {
-            t(this).remove()
+            $(this).remove()
         })
     };
-    e.prevNode = function() {
+    nav.prevNode = function() {
         thisNode = n.clone();
         r = r.end().end().end();
         prevNode = r.clone().removeClass("rNav-hide").show();
         prevNode.addClass("rNav rNav-trans").css("width", "0%").find("ul").remove();
         thisNode.addClass("rNav rNav-trans").css("width", "100%").find("ul").remove();
-        t("div#rNav-wrap ul.menu").parent().append(prevNode, thisNode);
-        t(n).hide();
+        $("#rNav").parent().append(prevNode, thisNode);
+        $(n).hide();
         prevNode.animate({
             width: "100%"
         }, function() {
-            t(n).html(r.children("li").clone()).show().find("ul").remove();
-            t(this).remove()
+            $(n).html(r.children("li").clone()).show().find("ul").remove();
+            $(this).remove()
         });
         thisNode.animate({
             width: "0%",
             marginLeft: "100%"
         }, function() {
-            t(this).remove()
+            $(this).remove()
         })
     };
-    e.removeMenu = function() {
-        if (t("#rNav-trigger").length) {
-            t("#rNav-trigger").remove();
-            t("div#rNav-wrap ul.menu").parent().off();
-            t("div#rNav-wrap ul.menu").find("li.rNav-back").each(function() {
-                t(this).remove()
+    nav.removeMenu = function() {
+        if ($("#rNav-trigger").length) {
+            $("#rNav-trigger").remove();
+            $("#rNav").parent().off();
+            $("#rNav").find("li.rNav-back").each(function() {
+                $(this).remove()
             });
             n.remove()
         }
-        t("div#rNav-wrap ul.menu").show()
+        $("#rNav").show()
     };
-    e.mediaQuery = function(e) {
+    nav.mediaQuery = function(e) {
         do {
             var n = "x" + Math.round(Math.random() * 100)
-        } while (t("#" + n).length);
-        var r = t("<style>@media " + e + " { #" + n + " { display:none !important; } }</style>").appendTo("body");
-        var i = t("<div/>", {
+        } while ($("#" + n).length);
+        var r = $("<style>@media " + e + " { #" + n + " { display:none !important; } }</style>").appendTo("body");
+        var i = $("<div/>", {
             id: n
         }).appendTo("body");
         var s = "none" == i.css("display");
@@ -99,31 +103,31 @@ function rNav(e) {
         i.remove();
         return s
     };
-    e.toggle = function() {
+    nav.toggle = function() {
         n.slideToggle()
     };
-    e.init = function(n) {
-        var r = 600;
-        var i = "Back";
-        if (typeof n != "undefined") {
-            if (typeof n == "object") {
-                if (n.width && !isNaN(parseFloat(n.width, 10))) {
-                    r = n.width
+    nav.init = function(config) {
+        var menuWidth = 1700;
+        var backLabel = "Back";
+        if (typeof config != "undefined") {
+            if (typeof config == "object") {
+                if (config.width && !isNaN(parseFloat(config.width, 10))) {
+                    menuWidth = config.width
                 }
-                if (n.label) {
-                    i = n.label
+                if (config.label) {
+                    backLabel = config.label
                 }
             } else {
-                if (!isNaN(parseFloat(n, 10))) {
-                    r = n
+                if (!isNaN(parseFloat(config, 10))) {
+                    menuWidth = config
                 }
             }
         }
-        t(window).on("resize load", function() {
-            if (e.mediaQuery("screen and (max-width: " + r + "px)")) {
-                e.buildMenu(i)
+        $(window).on("resize load", function() {
+            if (true || nav.mediaQuery("screen and (max-width: " + menuWidth + "px)")) {
+                nav.buildMenu(backLabel)
             } else {
-                e.removeMenu()
+                nav.removeMenu()
             }
         })
     }
