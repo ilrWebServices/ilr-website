@@ -50,7 +50,7 @@ function ilr_sdc_listings_feeds_importer_default() {
           'jsonpath_parser:16' => '{Temporary target 3} {Temporary target 4}',
           'jsonpath_parser:17' => 'IS_ON_DEMAND',
           'jsonpath_parser:18' => 'IS_ONLINE',
-          'jsonpath_parser:19' => 'IS_FULL',
+          'jsonpath_parser:19' => 'ISFULL',
         ),
         'debug' => array(
           'options' => array(
