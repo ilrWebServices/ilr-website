@@ -345,15 +345,21 @@ function ilr_date_format_types() {
  * Implements hook_date_formats().
  */
 function ilr_date_formats() {
-  $formats = array();
-
-  $formats[] = array(
-    'type' => 'ilr_short_day_only',
-    'format' => 'M j',
-    'locales' => array(),
+  $formats = array(
+    'date_format_ilr_short_day_only' => 'M j',
+    'date_format_long' =>'l, F j, Y - g:ia',
+    'date_format_medium' => 'D, m/d/Y - g:ia',
+    'date_format_short' => 'Y-m-d H:i',
   );
-
-  return $formats;
+  $return_formats = array();
+  foreach ($formats as $format_type => $date_format) {
+    $return_formats[] = array(
+      'type' => $format_type,
+      'format' => $date_format,
+      'locales' => array(),
+    );
+  }
+  return $return_formats;
 }
 
 /**
