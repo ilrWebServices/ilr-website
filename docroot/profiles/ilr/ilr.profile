@@ -100,7 +100,7 @@ function ilr_menu_block_blocks() {
       'level'       => 0,
       'follow'      => 0,
       'depth'       => 10,
-      'expanded'    => FALSE,
+      'expanded'    => TRUE,
       'sort'        => FALSE,
     ),
   );
