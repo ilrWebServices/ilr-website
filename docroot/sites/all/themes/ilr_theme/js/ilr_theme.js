@@ -68,6 +68,6 @@ Drupal.behaviors.ilrThemeFiltersSelectAllNone = {
       ;
 
 
-    }                   // attach: function() {
-  }
-};                    // Drupal.behaviors.better_exposed_filters = {
+    }
+  }                   // attach: function() {
+};                    // Drupal.behaviors.ilrThemeFiltersSelectAllNone {
