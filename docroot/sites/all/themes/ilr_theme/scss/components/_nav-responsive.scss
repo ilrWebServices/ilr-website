@@ -1,140 +1,29 @@
+#rNav-wrap {
+	position: relative;
+}
 
-
-
-
-#rNav, #rNav ul {
-	list-style: none;
+#rNav {
+	z-index: 9999;
+	position: absolute;
+	top: 70px;
+	width: 100%;
+	background-image: none;
+	display: none;
 	margin: 0;
 	padding: 0;
-}
-#rNav {
-	background: #383838;
-	zoom: 1;
-	margin-top: 38px;
-}
-#rNav:before, #rNav:after {
-	content: "";
-	display: table;
-}
-#rNav:after {
-	clear: both;
-}
-#rNav li {
-	float: left;
-	position: relative;
-	line-height: normal;
-}
-#rNav a {
-	color: #FFF;
-	font-weight: 700;
-	text-decoration: none;
-	float: left;
-	padding: 0 20px;
-}
-#rNav a:hover {
-	color: #E0E0E0;
-	background: none;
-}
-#rNav a:active {
-	position: relative;
-	top: 1px;
-}
-#rNav > li > a {
-	height: 45px;
-	line-height: 45px;
-}
-#rNav li:hover > a {
-	color: #E0E0E0;
-}
-#rNav ul {
-	opacity: 0;
-	visibility: hidden;
-	position: absolute;
-	top: 45px;
-	left: 0;
-	z-index: 9999;
-	border: thin solid #383838;
-}
-#rNav li:hover > ul {
-	opacity: 1;
-	visibility: visible;
-	margin: 0;
-}
-#rNav ul li {
-	background: #383838;
-	border-bottom: 1px solid #383838;
-}
-#rNav ul li:last-child {
-	border: none;
-}
-#rNav li:hover {
-	background: #000;
-}
-#rNav ul a {
-	font-size: 0.75em;
-	width: 130px;
-	display: block;
-	padding: 10px 25px;
-}
-#rNav ul ul {
-	top: -1px;
-	left: 180px;
-}
-#rNav-trigger {
-	display: none;
-}
 
-hr {
-	margin: 20px 0;
-	border: none;
-	height: 1px;
-	background: #CCC;
-}
-/****************************************
-Mobile Menu Styles
-****************************************/
-
-@media screen and (max-width: 1768px) {
-	.one_half, .one_third, .two_third, .three_fourth, .one_fourth, .one_fifth, .two_fifth, .three_fifth, .four_fifth, .one_sixth, .five_sixth {
-		float: none;
-		width: 100%;
-	}
-	#rNav-wrap {
-		position: relative;
-	}
-	#rNav-trigger {
-		display: block;
-		height: 70px;
-		line-height: 70px;
-		cursor: pointer;
-		font-size: 1.125em;
-		color: #FAFAFA;
-		font-weight: 700;
-		background: #383838 url(../images/rNav/icon-menu.png) no-repeat 95% center;
-		padding: 0 0 0 45px;
-	}
-	#rNav {
-		z-index: 9999;
-		position: absolute;
-		top: 70px;
-		width: 100%;
-		background-image: none;
-		display: none;
-		margin: 0;
-		padding: 0;
-	}
-	#rNav > li > a {
+	& > li > a {
 		height: auto;
 		line-height: normal;
 		padding: 22px 45px;
 	}
-	#rNav li.rNav-back {
+	& li.rNav-back {
 		background: #4A4A4A url(../images/rNav/icon-arrow-back.png) no-repeat 45px center;
 	}
-	#rNav li.rNav-back:hover {
+	& li.rNav-back:hover {
 		background: #666 url(../images/rNav/icon-arrow-back.png) no-repeat 45px center;
 	}
-	#rNav li.rNav-back a {
+	& li.rNav-back a {
 		font-size: 0.75em;
 		font-weight: 700;
 		text-indent: 30px;
@@ -143,56 +32,67 @@ Mobile Menu Styles
 		color: #CCC;
 		margin: 0;
 	}
-	#rNav ul {
+	& ul {
 		position: static;
 		visibility: visible;
 		opacity: 1;
 		margin: 0;
 	}
-	#rNav li, #rNav li:hover {
+	& li, & li:hover {
 		position: static;
 		display: block;
 		float: none;
 		border-bottom: 1px solid #343434;
 		background: #000;
 	}
-	#rNav a {
+	& a {
 		display: block;
 		float: none;
 		font-weight: 700;
 		color: #FFF;
 		text-decoration: none;
 	}
-	#rNav a:hover {
+	& a:hover {
 		color: #E0E0E0;
 	}
-	#rNav ul a {
+	& ul a {
 		width: auto;
 		padding: 0;
 	}
-	#rNav ul li:first-child a:after, #rNav ul ul li:first-child a:after {
+	& ul li:first-child a:after, & ul ul li:first-child a:after {
 		border: 0;
-	}
-	a.rNav-parent {
-		background: url(../images/rNav/icon-arrow-forward.png) no-repeat 95% center !important;
-		img {
-			float: right;
-			margin: auto 0;
-			vertical-align: center;
-		}
-	}
-	span.rNav-parent {
-		background: none;
-	}
-	#rNav-trans {
-		display: block;
-		position: absolute;
-		overflow: hidden;
-	}
-	#rNav-trans li, #rNav-trans li a {
-		overflow: hidden;
-		white-space: nowrap;
 	}
 }
 
-#rNav-trigger {display: none;}
+a.rNav-parent {
+	background: url(../images/rNav/icon-arrow-forward.png) no-repeat 95% center !important;
+	img {
+		float: right;
+		margin: auto 0;
+		vertical-align: center;
+	}
+}
+span.rNav-parent {
+	background: none;
+}
+#rNav-trans {
+	display: block;
+	position: absolute;
+	overflow: hidden;
+}
+#rNav-trans li, #rNav-trans li a {
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#rNav-trigger {
+	display: none;
+	height: 70px;
+	line-height: 70px;
+	cursor: pointer;
+	font-size: 1.125em;
+	color: #FAFAFA;
+	font-weight: 700;
+	background: #383838 url(../images/rNav/icon-menu.png) no-repeat 95% center;
+	padding: 0 0 0 45px;
+}
