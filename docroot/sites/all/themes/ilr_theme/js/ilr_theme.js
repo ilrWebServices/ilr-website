@@ -26,7 +26,7 @@ Drupal.behaviors.ilrThemeFiltersSelectAllNone = {
           if (selNone == $(this).text()) {
             // Unselect all the checkboxes
             $(this)
-              .html(selAll)
+              .html('')
               .siblings('.bef-checkboxes, .bef-tree')
               .find('.form-item input:checkbox').each(function () {
                 $(this).attr('checked', false);
