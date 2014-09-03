@@ -86,6 +86,11 @@ function ilr_theme_preprocess_block(&$variables) {
       }
     }
   }
+
+  // Wrap the menu block in the expected wrapper
+  if ($variables['block']->delta == 'ilr-subnav') {
+    $variables['content'] = '<div id="rNav-wrap">' . $variables['content'] . '</div><!-- /#rNav-wrap -->';
+  }
 }
 
 function ilr_theme_preprocess_node(&$variables) {
