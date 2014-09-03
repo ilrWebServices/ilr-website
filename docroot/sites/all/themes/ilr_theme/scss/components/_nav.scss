@@ -8,7 +8,7 @@ nav { // All nav menus
   }
 }
 
-nav.main, #block-menu-block-ilr-subnav {
+nav.main, .sidebar ul.menu {  //, #block-menu-block-ilr-subnav
   @extend .hidden;
 
   [data-eq-state="regular-nav"] & {
@@ -23,7 +23,7 @@ nav.main, #block-menu-block-ilr-subnav {
 nav.main { // Main nav
   float: left;
   padding-top: 15px;
-  display: none; //for mobile
+  // display: none; //for mobile
   ul {
     li {
       background: none;
@@ -65,8 +65,7 @@ nav.main { // Main nav
   }
 }
 
-
-.sidebar ul.menu, #jPanelMenu-menu {
+.sidebar ul.menu {
   margin: 0;
   padding: 0 ms(0);
   li {
@@ -86,7 +85,25 @@ nav.main { // Main nav
       font-weight: 600;
     }
   }
+
   & > li {
     border-top: 1px solid #e7e5db;
+    @extend .hidden;
+
+    &.active-trail {
+      @extend .visible;
+
+      li {
+        @extend .visible;
+
+        li {
+          @extend .hidden;
+        }
+
+        &.expanded.active-trail, &.expanded.active-trail > li, &.expanded.active-trail > ul > li {
+          @extend .visible;
+        }
+      }
+    }
   }
 }
