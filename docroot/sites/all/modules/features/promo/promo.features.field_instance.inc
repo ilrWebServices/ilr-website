@@ -18,18 +18,21 @@ function promo_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'image',
+        'module' => 'file_entity',
         'settings' => array(
-          'image_link' => '',
-          'image_style' => 'focussed_grid_image',
+          'file_view_mode' => 'default',
         ),
-        'type' => 'image',
+        'type' => 'file_rendered',
         'weight' => 0,
       ),
       'highlighted' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'focussed_main_image',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -51,7 +54,7 @@ function promo_field_default_field_instances() {
       'alt_field' => 1,
       'default_image' => 0,
       'file_directory' => 'promos',
-      'file_extensions' => 'png jpg jpeg',
+      'file_extensions' => 'jpg jpeg',
       'max_filesize' => '512 KB',
       'max_resolution' => '',
       'min_resolution' => '',

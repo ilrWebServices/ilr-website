@@ -280,10 +280,19 @@ function registration_pages_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'default',
+        ),
+        'type' => 'file_rendered',
+        'weight' => 0,
+      ),
+      'highlighted' => array(
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
-          'image_link' => '',
-          'image_style' => 'focussed_grid_image',
+          'image_link' => 'content',
+          'image_style' => 'focussed_main_image',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -298,12 +307,6 @@ function registration_pages_field_default_field_instances() {
         'type' => 'image',
         'weight' => 0,
       ),
-      'token' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_image',
@@ -313,7 +316,7 @@ function registration_pages_field_default_field_instances() {
       'alt_field' => 0,
       'default_image' => 0,
       'file_directory' => '',
-      'file_extensions' => 'png gif jpg jpeg',
+      'file_extensions' => 'jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
       'min_resolution' => '320x134',
