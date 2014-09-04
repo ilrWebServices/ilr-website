@@ -174,13 +174,9 @@ function ilr_update_7007() {
     'medium' => 'D, m/d/Y - g:ia',
     'short' => 'Y-m-d H:i',
   );
+
   foreach ($formats_defaults as $date_type => $formats_default) {
-    system_date_format_save(array(
-      'format' => $formats_default,
-      'type' => $date_type,
-      'locked' => TRUE,
-      'is_new' => FALSE,
-    ));
+    variable_set("date_format_$date_type", $formats_default);
   }
 }
 
