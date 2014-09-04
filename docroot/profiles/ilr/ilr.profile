@@ -346,10 +346,7 @@ function ilr_date_format_types() {
  */
 function ilr_date_formats() {
   $formats = array(
-    'date_format_ilr_short_day_only' => 'M j',
-    'date_format_long' =>'l, F j, Y - g:ia',
-    'date_format_medium' => 'D, m/d/Y - g:ia',
-    'date_format_short' => 'Y-m-d H:i',
+    'ilr_short_day_only' => 'M j',
   );
   $return_formats = array();
   foreach ($formats as $format_type => $date_format) {
@@ -377,4 +374,3 @@ function ilr_entity_info_alter(&$entity_info) {
     ),
   );
 }
-

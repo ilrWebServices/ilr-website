@@ -99,6 +99,7 @@ function ilr_install() {
   // Explicitly call any hook_update_n implementations needed to run on install.
   // These hooks will be skipped by initial install but will run on updatedb of current site.
   ilr_update_7006();
+  ilr_update_7007();
 
   // Add Migrations here as necessary
 }
@@ -164,6 +165,26 @@ function ilr_update_7006() {
   variable_set('date_format_ilr_short_day_only', 'M j');
   variable_set('jquery_update_jquery_admin_version', '1.5');
 }
+/**
+ * Set default date formats.
+ */
+function ilr_update_7007() {
+  $formats_defaults = array(
+    'long' =>'l, F j, Y - g:ia',
+    'medium' => 'D, m/d/Y - g:ia',
+    'short' => 'Y-m-d H:i',
+  );
+  foreach ($formats_defaults as $date_type => $formats_default) {
+    system_date_format_save(array(
+      'format' => $formats_default,
+      'type' => $date_type,
+      'locked' => TRUE,
+      'is_new' => FALSE,
+    ));
+  }
+}
+
+
 /**
  * Custom function for role creation
  */
