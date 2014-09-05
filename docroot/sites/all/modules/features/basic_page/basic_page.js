@@ -51,7 +51,7 @@
       var backBtn = '<li><a class="prev-menu">< Back</a></li>';
       var minHeight;
       var pixelShift = '0px';
-      var easing = (isMobileDevice()) ? '400' : 'fast';
+      var easing = (isMobileDevice()) ? 500 : 'fast';
       var animating = false;
 
       function positionCurrentMenu() {
@@ -71,20 +71,22 @@
           addBackButtonToMenu(currentMenu);
         }
 
-        yPosition = $(currentMenu).parent().position().top;
-        // console.log(yPosition);
-        $(currentMenu).css({
-          'left': 0,
-          'top':'-' + yPosition + 'px',
-          'min-height': minHeight,
-          'visibility': 'visible',
-        });
+        if ($(currentMenu).parent().position()) {
+          yPosition = $(currentMenu).parent().position().top;
+          // console.log(yPosition);
+          $(currentMenu).css({
+            'left': 0,
+            'top':'-' + yPosition + 'px',
+            'min-height': minHeight,
+            'visibility': 'visible',
+          });
+        }
 
         addForwardButtonToMenus();
       }
 
       function menuNeedsBackButton(el) {
-        if (el.parent().is('div')) { // the top level menu
+        if (!el.parent().is('li')) { // the top level menu
           return false;
         }
         if ($(el).find(':first-child').html().indexOf('prev-menu') < 0
