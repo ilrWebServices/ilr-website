@@ -102,17 +102,32 @@ nav.main { // Main nav
   }
 
   li.expanded {
-    background: rgba(black, .1);
     position: relative;
   }
 
   a.next-menu {
     position: absolute;
-    right: 0;
-    top: 0;
-    width: 20%;
-    background: rgba(black, .1);
-    text-align: center;
+    right: 5%;
+    top: 17px;
+    line-height: 17px;
+    font-size: 2em;
+    text-shadow: 0 1px 1px rgba(white, 1);
+    color: darken($gray-light, 10%);
+    padding: 0;
+    border-width: 1px;
+    @extend .button;
+    @extend .button-circle;
+
+    #sidebar-first & {
+      opacity: 0;
+    }
+  }
+
+  li.back {
+    background: rgba(black,.1);
+    a.prev-menu {
+      padding: .3em 0;
+    }
   }
 
   li ul.menu {
@@ -121,7 +136,6 @@ nav.main { // Main nav
     top: 0;
     z-index: 1;
     visibility: hidden;
-    //@extend .hidden;
   }
 
   & > li {

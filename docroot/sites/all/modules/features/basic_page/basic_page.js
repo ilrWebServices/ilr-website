@@ -8,13 +8,13 @@
 
       var nextClick = function(e) {
         e.preventDefault();
-        newMenu = $(this).prev();
+        currentMenu = $(this).prev();
         oldMenu = $(this).closest('ul.menu');
         yPosition = $(this).parent().position().top;
-        if (menuNeedsBackButton(newMenu)) {
-          addBackButtonToMenu(newMenu);
+        if (menuNeedsBackButton(currentMenu)) {
+          addBackButtonToMenu(currentMenu);
         }
-        $(newMenu).css({
+        $(currentMenu).css({
           'top':'-' + yPosition + 'px',
           'min-height': minHeight,
           'visibility': 'visible',
@@ -25,10 +25,11 @@
 
       var prevClick = function(e) {
         e.preventDefault();
-        if(animating) {
-          return false;
-        }
-        animating = true;
+        // if(animating) {
+        //   console.log('animating');
+        //   return false;
+        // }
+        // animating = true;
         currentMenu = $(this).closest('ul.menu');
         oldMenu = $(currentMenu).parent().closest('ul.menu');
         yPosition = $(currentMenu).position().top;
@@ -50,12 +51,11 @@
       var currentMenu;
       var minHeight;
       var pixelShift = '0px';
-      var easing;
+      var easing = { duration: 600, easing: 'Expo.easeOut' };
       var animating = false;
 
       function positionCurrentMenu() {
         selector = (mobileNavActive()) ? '#jPanelMenu-menu' : '#sidebar-first'; // targets the li
-        easing = (mobileNavActive()) ? 400 : 'fast';
         currentPage = $(selector + ' a.active').parent();
         currentMenu = $(currentPage).parent(); // targets the ul
         minHeight = $('.main-nav .section > ul.menu').height();
@@ -104,12 +104,12 @@
         if (linkText == '') {
           linkText = 'Main Menu';
         }
-        menu.prepend('<li><a class="prev-menu" href="#">< ' + linkText + '</a></li>');
+        menu.prepend('<li class="back"><a class="prev-menu" href="#">&lsaquo; ' + linkText + '</a></li>');
         $('.prev-menu').click(prevClick);
       }
 
       function addForwardButtonToMenus() {
-        $('li.expanded').append('<a class="next-menu" href="#">></a>');
+        $('li.expanded').append('<a class="next-menu" href="#">&rsaquo;</a>');
         $('.next-menu').click(nextClick);
       }
 
@@ -117,7 +117,17 @@
         return $('#page-wrapper').data('eqState') == 'mobile-nav';
       }
 
+      function addHoverEffects() {
+        $('#sidebar-first .section').mouseenter(function() {
+          $(this).find('a.next-menu').animate({'opacity':'1'});
+        })
+        .mouseleave(function() {
+          $(this).find('a.next-menu').animate({'opacity': 0});
+        });
+      }
+
       setTimeout(positionCurrentMenu,100);
+      addHoverEffects();
 
     }
   };

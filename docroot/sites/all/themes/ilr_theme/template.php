@@ -13,6 +13,12 @@ function ilr_theme_preprocess_html(&$variables) {
   // Footer
   drupal_add_js('try{Typekit.load();}catch(e){}', array('type' => 'inline', 'scope' => 'footer'));
   drupal_add_js($variables['directory'] . '/js/vendor/eq.min.js', array('type' => 'file', 'scope' => 'footer'));
+  drupal_add_js('//embanner.univcomm.cornell.edu/OWC-emergency-banner.js', array('type' => 'external', 'scope' => 'footer'));
+  drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js', array('type' => 'external', 'scope' => 'footer'));
+  drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js', array('type' => 'external', 'scope' => 'footer'));
+  drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js', array('type' => 'external', 'scope' => 'footer'));
+  drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/gsap/latest/jquery.gsap.min.js', array('type' => 'external', 'scope' => 'footer'));
+
 }
 
 /**
