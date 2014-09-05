@@ -7,7 +7,6 @@
       });
 
       var nextClick = function(e) {
-        console.log('next');
         e.preventDefault();
         newMenu = $(this).prev();
         oldMenu = $(this).closest('ul.menu');
@@ -19,7 +18,7 @@
           'top':'-' + yPosition + 'px',
           'min-height': minHeight,
           'visibility': 'visible',
-        }).animate({ "left": pixelShift },'fast');
+        }).animate({ "left": pixelShift }, easing);
 
         $(oldMenu).animate({ "left": "-=" + pixelShift });
       }
@@ -34,11 +33,11 @@
         oldMenu = $(currentMenu).parent().closest('ul.menu');
         yPosition = $(currentMenu).position().top;
         // console.log(yPosition);
-        $(currentMenu).animate({ "left": "100%"}, 'fast', function(){
+        $(currentMenu).animate({ "left": "100%"}, easing, function(){
           $(this).css('visibility','hidden');
         });
 
-        $(oldMenu).css('visibility','visible').animate({ "left": '+=' + pixelShift }, 'fast', function() {
+        $(oldMenu).css('visibility','visible').animate({ "left": '+=' + pixelShift }, easing, function() {
           animating = false;
         });
 
@@ -52,6 +51,7 @@
       var backBtn = '<li><a class="prev-menu">< Back</a></li>';
       var minHeight;
       var pixelShift = '0px';
+      var easing = (isMobileDevice()) ? '400' : 'fast';
       var animating = false;
 
       function positionCurrentMenu() {
@@ -108,6 +108,12 @@
         $('.next-menu').click(nextClick);
       }
 
+      function isMobileDevice() {
+        if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+          return true;
+        }
+        return false;
+      }
       setTimeout(positionCurrentMenu,100);
 
     }
