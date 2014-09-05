@@ -1754,6 +1754,52 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_dublin_essay1'
+  $field_bases['field_dublin_essay1'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_dublin_essay1',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">
+	<strong>1. Academic goals essay:</strong> Describe, in two or three paragraphs, the academic and personal goals you would like to meet through your participation in the ILR/UCD Semester in Dublin Program.
+</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
+  // Exported field_base: 'field_dublin_essay_2'
+  $field_bases['field_dublin_essay_2'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_dublin_essay_2',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item"><strong>2. Study abroad essay</strong>: Describe any previous international travel or study abroad experiences you have had.</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
   // Exported field_base: 'field_dublin_study_abroad_essay'
   $field_bases['field_dublin_study_abroad_essay'] = array(
     'active' => 1,
