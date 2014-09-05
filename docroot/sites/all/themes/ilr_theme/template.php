@@ -14,7 +14,6 @@ function ilr_theme_preprocess_html(&$variables) {
   drupal_add_js('try{Typekit.load();}catch(e){}', array('type' => 'inline', 'scope' => 'footer'));
   drupal_add_js($variables['directory'] . '/js/vendor/eq.min.js', array('type' => 'file', 'scope' => 'footer'));
   drupal_add_js('https://embanner.univcomm.cornell.edu/OWC-emergency-banner.js', array('type' => 'external', 'scope' => 'footer'));
-  drupal_add_js($variables['directory'] . '/js/vendor/rNav.js', array('type' => 'file', 'scope' => 'footer'));
 }
 
 /**
@@ -88,11 +87,6 @@ function ilr_theme_preprocess_block(&$variables) {
         $variables['attributes_array']['data-items'] = $bean['#entity']->item_count;
       }
     }
-  }
-
-  // Wrap the menu block in the expected wrapper
-  if ($variables['block']->delta == 'ilr-subnav') {
-    $variables['content'] = '<div id="rNav-wrap">' . $variables['content'] . '</div><!-- /#rNav-wrap -->';
   }
 }
 
