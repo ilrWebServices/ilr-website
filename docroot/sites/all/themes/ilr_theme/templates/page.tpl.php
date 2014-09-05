@@ -50,6 +50,7 @@
         <?php if ($page['sidebar_first']): ?>
           <div id="sidebar-first" class="column sidebar">
             <div class="section">
+                <?php print render($variables['main_menu_expanded']); ?>
                 <?php print render($page['sidebar_first']); ?>
           </div></div> <!-- /.section, /#sidebar-first -->
         <?php endif; ?>
