@@ -51,7 +51,7 @@
       var backBtn = '<li><a class="prev-menu">< Back</a></li>';
       var minHeight;
       var pixelShift = '0px';
-      var easing = (isMobileDevice()) ? 500 : 'fast';
+      var easing = (isMobileDevice()) ? 400 : 'fast';
       var animating = false;
 
       function positionCurrentMenu() {
@@ -116,6 +116,7 @@
         }
         return false;
       }
+
       setTimeout(positionCurrentMenu,100);
 
     }
