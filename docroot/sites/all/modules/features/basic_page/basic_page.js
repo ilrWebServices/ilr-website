@@ -7,6 +7,7 @@
       });
 
       var nextClick = function(e) {
+        console.log('next');
         e.preventDefault();
         newMenu = $(this).prev();
         oldMenu = $(this).closest('ul.menu');
@@ -18,7 +19,7 @@
           'top':'-' + yPosition + 'px',
           'min-height': minHeight,
           'visibility': 'visible',
-        }).animate({ "left": pixelShift });
+        }).animate({ "left": pixelShift },'fast');
 
         $(oldMenu).animate({ "left": "-=" + pixelShift });
       }
@@ -33,11 +34,11 @@
         oldMenu = $(currentMenu).parent().closest('ul.menu');
         yPosition = $(currentMenu).position().top;
         // console.log(yPosition);
-        $(currentMenu).animate({ "left": "100%"}, 400, function(){
+        $(currentMenu).animate({ "left": "100%"}, 'fast', function(){
           $(this).css('visibility','hidden');
         });
 
-        $(oldMenu).css('visibility','visible').animate({ "left": '+=' + pixelShift }, 400, function() {
+        $(oldMenu).css('visibility','visible').animate({ "left": '+=' + pixelShift }, 'fast', function() {
           animating = false;
         });
 
@@ -46,7 +47,7 @@
         }
       }
 
-      var currentPage = $('#sidebar-first a.active').parent(); // targets the li
+      var currentPage = $('.main-nav a.active').parent(); // targets the li
       var currentMenu = $(currentPage).parent(); // targets the ul
       var backBtn = '<li><a class="prev-menu">< Back</a></li>';
       var minHeight;
@@ -54,7 +55,7 @@
       var animating = false;
 
       function positionCurrentMenu() {
-        minHeight = $('#sidebar-first .section > ul.menu').height();
+        minHeight = $('.main-nav .section > ul.menu').height();
         $(currentMenu).parents('ul.menu').each(function() {
           parent = $(this).closest('li.expanded');
           yPosition = (parent.position()) ? parent.position().top : 0;
@@ -78,6 +79,8 @@
           'min-height': minHeight,
           'visibility': 'visible',
         });
+
+        addForwardButtonToMenus();
       }
 
       function menuNeedsBackButton(el) {
@@ -105,8 +108,7 @@
         $('.next-menu').click(nextClick);
       }
 
-      addForwardButtonToMenus();
-      setTimeout(positionCurrentMenu,10);
+      setTimeout(positionCurrentMenu,100);
 
     }
   };
