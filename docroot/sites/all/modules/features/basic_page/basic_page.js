@@ -46,20 +46,23 @@
         }
       }
 
-      var currentPage = $('.main-nav a.active').parent(); // targets the li
-      var currentMenu = $(currentPage).parent(); // targets the ul
-      var backBtn = '<li><a class="prev-menu">< Back</a></li>';
+      var currentPage;
+      var currentMenu;
       var minHeight;
       var pixelShift = '0px';
-      var easing = (isMobileDevice()) ? 400 : 'fast';
+      var easing;
       var animating = false;
 
       function positionCurrentMenu() {
+        selector = (mobileNavActive()) ? '#jPanelMenu-menu' : '#sidebar-first'; // targets the li
+        easing = (mobileNavActive()) ? 400 : 'fast';
+        currentPage = $(selector + ' a.active').parent();
+        currentMenu = $(currentPage).parent(); // targets the ul
         minHeight = $('.main-nav .section > ul.menu').height();
         $(currentMenu).parents('ul.menu').each(function() {
           parent = $(this).closest('li.expanded');
           yPosition = (parent.position()) ? parent.position().top : 0;
-          // console.log(yPosition);
+          //console.log(yPosition);
           $(this).css({
             'left': 0,
             'top':'-' + yPosition + 'px',
@@ -110,11 +113,8 @@
         $('.next-menu').click(nextClick);
       }
 
-      function isMobileDevice() {
-        if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-          return true;
-        }
-        return false;
+      function mobileNavActive() {
+        return $('#page-wrapper').data('eqState') == 'mobile-nav';
       }
 
       setTimeout(positionCurrentMenu,100);
