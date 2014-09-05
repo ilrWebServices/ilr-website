@@ -136,6 +136,7 @@ function _forms_field_is_kerberizable($field_name) {
     'field_email',
     'field_first_name',
     'field_last_name',
+    'field_netid',
   );
   return in_array($field_name, $kerberizable_fields);
 }
@@ -192,6 +193,9 @@ function _forms_map_user_attribute_to_field($field_name) {
         break;
       case 'field_last_name':
         return $saml_attributes['sn'][0];
+        break;
+      case 'field_netid':
+        return $saml_attributes['uid'][0];
         break;
     }
   } // Auth attributes missing, so log an error

@@ -6,6 +6,7 @@
 
 include_once 'forms.features.inc';
 include_once 'includes/forms.kerberized.inc';
+include_once 'includes/forms.statelists.inc';
 
 define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
@@ -201,6 +202,17 @@ function _forms_career_services_contact_options() {
     'bk30-01' => 'ILR Credit Internship Program',
     'rmd5-01' => 'Regina M. Duffey Moravek, Director of ILR Career Services',
   );
+}
+
+function _forms_full_names_states_and_provinces() {
+  $full_names=TRUE;
+  $include_other=TRUE;
+  $include_states=TRUE;
+  $include_provinces=TRUE;
+  $include_territories=FALSE;
+
+  return _forms_statelist_options(
+    $full_names, $include_other, $include_states, $include_provinces, $include_territories);
 }
 
 /**
