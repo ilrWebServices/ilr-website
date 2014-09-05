@@ -44,3 +44,8 @@ Example:
   * Switches from window.onload to the Drupal.behaviors system
   * From https://www.drupal.org/node/2110245
   * https://www.drupal.org/files/issues/borealis.drupal_behaviors_2110245.patch
+
+* field_formatter_label
+  * The module didn't work, but a tweak to the preprocess hook fixed it, per the patch page.
+  * https://www.drupal.org/node/2167309
+  * https://www.drupal.org/files/issues/field_formatter_label-not_working-2167309-4.patch
