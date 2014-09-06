@@ -107,6 +107,7 @@ nav.main { // Main nav
 
   li.expanded {
     position: relative;
+    padding: 0 60px 0 1em;
   }
 
   a.next-menu {
@@ -156,7 +157,10 @@ nav.main { // Main nav
     z-index: 2;
     visibility: hidden;
     border-left: 1px solid $gray-light;
-    @include box-shadow(rgba(black, .3) 1px 1px 5px);
+
+    #jPanelMenu-menu & {
+      @include box-shadow(rgba(black, .3) 1px 1px 5px);
+    }
   }
 
   & > li {
