@@ -60,6 +60,7 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -593,6 +594,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create scheinman_neutral content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
       'neutral admin' => 'neutral admin',
       'registered user' => 'registered user',
     ),
@@ -623,6 +625,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create wit_article content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
       'wit editor' => 'wit editor',
     ),
     'module' => 'node',
@@ -633,6 +636,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create youtube_video content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -797,6 +801,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own entityform',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'entityform',
   );
@@ -866,6 +871,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own scheinman_neutral content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
       'neutral' => 'neutral',
       'neutral admin' => 'neutral admin',
     ),
@@ -887,6 +893,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own wit_article content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
       'wit editor' => 'wit editor',
     ),
     'module' => 'node',
@@ -897,6 +904,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own youtube_video content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -1073,6 +1081,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any scheinman_neutral content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
       'neutral admin' => 'neutral admin',
     ),
     'module' => 'node',
@@ -1103,6 +1112,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any wit_article content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
       'wit editor' => 'wit editor',
     ),
     'module' => 'node',
@@ -1113,6 +1123,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any youtube_video content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -1142,6 +1153,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'contributor' => 'contributor',
     ),
     'module' => 'entityform',
   );
@@ -1211,6 +1223,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit own scheinman_neutral content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
       'neutral' => 'neutral',
       'neutral admin' => 'neutral admin',
       'registered user' => 'registered user',
@@ -1233,6 +1246,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit own wit_article content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
       'wit editor' => 'wit editor',
     ),
     'module' => 'node',
@@ -1243,6 +1257,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit own youtube_video content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -1392,6 +1407,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view any entityform',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'entityform',
   );
@@ -1452,6 +1468,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'contributor' => 'contributor',
     ),
     'module' => 'entityform',
   );
