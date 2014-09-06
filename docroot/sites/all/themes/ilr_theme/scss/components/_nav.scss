@@ -65,6 +65,10 @@ nav.main { // Main nav
   }
 }
 
+.jPanelMenu-panel {
+  @include box-shadow(black 2px 2px 10px);
+}
+
 .sidebar, #jPanelMenu-menu {
   overflow: hidden;
   position: relative;
@@ -152,6 +156,7 @@ nav.main { // Main nav
     z-index: 2;
     visibility: hidden;
     border-left: 1px solid $gray-light;
+    @include box-shadow(rgba(black, .3) 1px 1px 5px);
   }
 
   & > li {
