@@ -116,7 +116,7 @@ nav.main { // Main nav
     top: 0;
     padding: 1em;
     z-index: 1;
-    //background: rgba(black, .1);
+    //background: rgba(black, .1); // uncomment this to see the target area
 
     span {
       padding: 0;
@@ -129,9 +129,7 @@ nav.main { // Main nav
       @extend .button-circle;
 
       #jPanelMenu-menu & {
-        line-height: 25px;
-        font-size: 2.5em;
-        @extend .button-circle-mobile;
+
       }
     }
 
@@ -139,7 +137,7 @@ nav.main { // Main nav
       opacity: 0;
     }
     #jPanelMenu-menu & {
-      padding: .7em 1em;
+      padding: .8em 1em 1.1em 1em;
     }
   }
 
