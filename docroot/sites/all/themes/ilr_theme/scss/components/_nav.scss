@@ -107,26 +107,41 @@ nav.main { // Main nav
 
   a.next-menu {
     position: absolute;
-    right: 5%;
-    top: 17px;
-    line-height: 17px;
-    font-size: 2em;
-    text-shadow: 0 1px 1px rgba(white, 1);
-    color: darken($gray-light, 10%);
-    padding: 0;
-    border-width: 1px;
-    @extend .button;
-    @extend .button-circle;
+    right: 0;
+    top: 0;
+    padding: 1em;
+    z-index: 1;
+    //background: rgba(black, .1);
+
+    span {
+      padding: 0;
+      border-width: 1px;
+      line-height: 17px;
+      font-size: 2em;
+      text-shadow: 0 1px 1px rgba(white, 1);
+      color: darken($gray-light, 10%);
+      @extend .button;
+      @extend .button-circle;
+
+      #jPanelMenu-menu & {
+        line-height: 25px;
+        font-size: 2.5em;
+        @extend .button-circle-mobile;
+      }
+    }
 
     #sidebar-first & {
       opacity: 0;
+    }
+    #jPanelMenu-menu & {
+      padding: .7em 1em;
     }
   }
 
   li.back {
     background: rgba(black,.1);
     a.prev-menu {
-      padding: .3em 0;
+      padding: .5em 0;
     }
   }
 
@@ -134,8 +149,9 @@ nav.main { // Main nav
     position: absolute;
     right: -100%;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     visibility: hidden;
+    border-left: 1px solid $gray-light;
   }
 
   & > li {

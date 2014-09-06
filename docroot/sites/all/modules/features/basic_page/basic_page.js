@@ -109,7 +109,7 @@
       }
 
       function addForwardButtonToMenus() {
-        $('li.expanded').append('<a class="next-menu" href="#">&rsaquo;</a>');
+        $('li.expanded').append('<a class="next-menu" href="#"><span>&rsaquo;</span></a>');
         $('.next-menu').click(nextClick);
       }
 
