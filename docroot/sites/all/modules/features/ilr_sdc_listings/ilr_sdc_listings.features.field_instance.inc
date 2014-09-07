@@ -24,6 +24,15 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'reference_field' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -83,7 +92,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'addressfield_default',
         'weight' => 3,
       ),
-      'teaser' => array(
+      'reference_field' => array(
         'label' => 'hidden',
         'module' => 'addressfield',
         'settings' => array(
@@ -94,6 +103,18 @@ function ilr_sdc_listings_field_default_field_instances() {
         ),
         'type' => 'addressfield_default',
         'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'addressfield',
+        'settings' => array(
+          'format_handlers' => array(
+            0 => 'address',
+          ),
+          'use_widget_handlers' => 1,
+        ),
+        'type' => 'addressfield_default',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -137,12 +158,19 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 4,
       ),
-      'teaser' => array(
+      'reference_field' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -183,11 +211,24 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 1,
       ),
-      'teaser' => array(
+      'reference_field' => array(
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'ilr_short_day_only',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
@@ -237,11 +278,17 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 8,
       ),
-      'teaser' => array(
+      'reference_field' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'node',
@@ -280,11 +327,20 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 7,
       ),
-      'teaser' => array(
+      'reference_field' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -324,7 +380,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 6,
       ),
-      'teaser' => array(
+      'reference_field' => array(
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
@@ -332,6 +388,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         ),
         'type' => 'entityreference_label',
         'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'node',
@@ -371,11 +433,17 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 9,
       ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'node',
@@ -413,11 +481,17 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 11,
       ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'node',
@@ -455,11 +529,17 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 10,
       ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
@@ -499,6 +579,18 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'number_decimal',
         'weight' => 0,
       ),
+      'reference_field' => array(
+        'label' => 'hidden',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 4,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'number',
@@ -509,7 +601,7 @@ function ilr_sdc_listings_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_decimal',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -551,11 +643,17 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 2,
       ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'node',

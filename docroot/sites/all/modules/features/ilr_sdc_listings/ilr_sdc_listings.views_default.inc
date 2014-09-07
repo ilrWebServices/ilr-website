@@ -104,79 +104,6 @@ Yes|Online',
   $handler->display->display_options['relationships']['field_sdc_department_tid']['table'] = 'field_data_field_sdc_department';
   $handler->display->display_options['relationships']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
   $handler->display->display_options['relationships']['field_sdc_department_tid']['relationship'] = 'field_course_target_id';
-  /* Field: class nid */
-  $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
-  $handler->display->display_options['fields']['nid_1']['table'] = 'node';
-  $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid_1']['ui_name'] = 'class nid';
-  $handler->display->display_options['fields']['nid_1']['label'] = '';
-  $handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
-  /* Field: Course nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['relationship'] = 'field_course_target_id';
-  $handler->display->display_options['fields']['nid']['ui_name'] = 'Course nid';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Class Dates */
-  $handler->display->display_options['fields']['field_class_dates']['id'] = 'field_class_dates';
-  $handler->display->display_options['fields']['field_class_dates']['table'] = 'field_data_field_class_dates';
-  $handler->display->display_options['fields']['field_class_dates']['field'] = 'field_class_dates';
-  $handler->display->display_options['fields']['field_class_dates']['label'] = '';
-  $handler->display->display_options['fields']['field_class_dates']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_class_dates']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_class_dates']['settings'] = array(
-    'format_type' => 'ilr_short_day_only',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-  );
-  $handler->display->display_options['fields']['field_class_dates']['group_rows'] = FALSE;
-  $handler->display->display_options['fields']['field_class_dates']['delta_offset'] = '0';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['text'] = ' ';
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['path'] = 'node/[nid]?class=[nid_1]';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Address - Administrative area (i.e. State / Province) */
-  $handler->display->display_options['fields']['field_address_administrative_area']['id'] = 'field_address_administrative_area';
-  $handler->display->display_options['fields']['field_address_administrative_area']['table'] = 'field_data_field_address';
-  $handler->display->display_options['fields']['field_address_administrative_area']['field'] = 'field_address_administrative_area';
-  $handler->display->display_options['fields']['field_address_administrative_area']['label'] = '';
-  $handler->display->display_options['fields']['field_address_administrative_area']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_address_administrative_area']['element_label_colon'] = FALSE;
-  /* Field: Content: Address - Locality (i.e. City) */
-  $handler->display->display_options['fields']['field_address_locality']['id'] = 'field_address_locality';
-  $handler->display->display_options['fields']['field_address_locality']['table'] = 'field_data_field_address';
-  $handler->display->display_options['fields']['field_address_locality']['field'] = 'field_address_locality';
-  $handler->display->display_options['fields']['field_address_locality']['label'] = '';
-  $handler->display->display_options['fields']['field_address_locality']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_address_locality']['alter']['text'] = '[field_address_locality] , [field_address_administrative_area]';
-  $handler->display->display_options['fields']['field_address_locality']['element_label_colon'] = FALSE;
-  /* Field: Content: Price */
-  $handler->display->display_options['fields']['field_price']['id'] = 'field_price';
-  $handler->display->display_options['fields']['field_price']['table'] = 'field_data_field_price';
-  $handler->display->display_options['fields']['field_price']['field'] = 'field_price';
-  $handler->display->display_options['fields']['field_price']['label'] = '';
-  $handler->display->display_options['fields']['field_price']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_price']['settings'] = array(
-    'thousand_separator' => ' ',
-    'decimal_separator' => '.',
-    'scale' => '2',
-    'prefix_suffix' => 1,
-  );
   /* Field: Content: Department */
   $handler->display->display_options['fields']['field_sdc_department']['id'] = 'field_sdc_department';
   $handler->display->display_options['fields']['field_sdc_department']['table'] = 'field_data_field_sdc_department';
@@ -186,17 +113,16 @@ Yes|Online',
   $handler->display->display_options['fields']['field_sdc_department']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_sdc_department']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sdc_department']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Is Full? */
-  $handler->display->display_options['fields']['field_is_full']['id'] = 'field_is_full';
-  $handler->display->display_options['fields']['field_is_full']['table'] = 'field_data_field_is_full';
-  $handler->display->display_options['fields']['field_is_full']['field'] = 'field_is_full';
-  $handler->display->display_options['fields']['field_is_full']['label'] = '';
-  $handler->display->display_options['fields']['field_is_full']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_is_full']['alter']['text'] = '[Class is full, but other dates may be available]';
-  $handler->display->display_options['fields']['field_is_full']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_is_full']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_is_full']['empty_zero'] = TRUE;
-  $handler->display->display_options['fields']['field_is_full']['type'] = 'list_key';
+  /* Field: Content: Rendered Node */
+  $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
+  $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['rendered_entity']['field'] = 'rendered_entity';
+  $handler->display->display_options['fields']['rendered_entity']['label'] = '';
+  $handler->display->display_options['fields']['rendered_entity']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
+  $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'teaser';
+  $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
   /* Sort criterion: Taxonomy term: Name */
   $handler->display->display_options['sorts']['name']['id'] = 'name';
   $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';

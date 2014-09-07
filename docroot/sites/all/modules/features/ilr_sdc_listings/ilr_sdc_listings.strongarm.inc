@@ -32,7 +32,7 @@ function ilr_sdc_listings_strongarm() {
         'custom_settings' => FALSE,
       ),
       'reference_field' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(

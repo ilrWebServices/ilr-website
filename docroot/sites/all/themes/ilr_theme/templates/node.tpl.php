@@ -3,7 +3,7 @@
   <?php print $user_picture; ?>
 
   <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
+  <?php if (!$page && $title): ?>
     <h2<?php print $title_attributes; ?>>
       <?php if (empty($remove_title_link)): ?>
         <a href="<?php print $node_url; ?>">

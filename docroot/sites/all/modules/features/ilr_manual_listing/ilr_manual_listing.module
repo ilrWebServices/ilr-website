@@ -36,5 +36,5 @@ function ilr_manual_listing_permission() {
   );
 }
 function _ilr_manual_listing_default_bundles(){
-  return array('youtube_video','news_item', 'workspan');
+  return array('youtube_video','news_item', 'workspan', 'sdc_course','sdc_class');
 }
