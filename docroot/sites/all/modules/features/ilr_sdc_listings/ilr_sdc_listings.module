@@ -223,10 +223,12 @@ function _ilr_sdc_listings_class_format_online($node, $view_mode) {
  * @param $view_mode
  */
 function ilr_sdc_listings_class_format_ondemand($node, $view_mode) {
+
   $node_wrapper = entity_metadata_wrapper('node', $node);
   if ($node_wrapper->field_on_demand->value()) {
     $dates_weight = $node->content['field_class_dates']['#weight'];
     unset($node->content['field_class_dates']);
+
     $node->content['field_class_dates'] = array(
       '#type' => 'markup',
       '#markup' => t(ILR_SDC_ONDEMAND_TEXT),
