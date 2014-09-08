@@ -47,12 +47,12 @@
           </div>
         </div> <!-- /.section, /#content -->
 
-        <?php if ($page['sidebar_first']): ?>
-          <div id="sidebar-first" class="column sidebar">
-            <div class="section">
-                <?php print render($page['sidebar_first']); ?>
-          </div></div> <!-- /.section, /#sidebar-first -->
-        <?php endif; ?>
+        <div id="sidebar-first" class="column sidebar">
+          <div class="section">
+            <div class="main-nav">
+              <?php print render($variables['main_menu_expanded']); ?>
+            </div>
+        </div></div> <!-- /.section, /#sidebar-first -->
 
         <?php if ($page['sidebar_second']): ?>
           <div id="sidebar-second" class="column sidebar">

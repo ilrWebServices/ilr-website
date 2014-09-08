@@ -65,12 +65,30 @@ nav.main { // Main nav
   }
 }
 
-.sidebar ul.menu {
+.jPanelMenu-panel {
+  @include box-shadow(black 2px 2px 10px);
+}
+
+.sidebar, #jPanelMenu-menu {
+  overflow: hidden;
+  position: relative;
+}
+
+.main-nav ul.menu {
+  position: relative;
+  top: 0;
   margin: 0;
-  padding: 0 ms(0);
+  padding: 0;
+  width: 100%;
+  display: block;
+  background: white;
+  min-height: 500px;
+
   li {
     list-style: none;
     background-image: none;
+    margin: 0;
+    padding: 0 1em;
     font-family: freight-sans-pro;
     a {
       color: $gray-dark;
@@ -78,6 +96,7 @@ nav.main { // Main nav
       padding: 1em 0;
       &:hover {
         color: $brand;
+        text-decoration: none;
       }
     }
     a.active {
@@ -86,9 +105,65 @@ nav.main { // Main nav
     }
   }
 
+  li.expanded {
+    position: relative;
+    padding: 0 60px 0 1em;
+  }
+
+  a.next-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1em;
+    z-index: 1;
+    //background: rgba(black, .1); // uncomment this to see the target area
+
+    span {
+      padding: 0;
+      border-width: 1px;
+      line-height: 17px;
+      font-size: 2em;
+      text-shadow: 0 1px 1px rgba(white, 1);
+      color: darken($gray-light, 10%);
+      @extend .button;
+      @extend .button-circle;
+
+      #jPanelMenu-menu & {
+
+      }
+    }
+
+    #sidebar-first & {
+      opacity: 0;
+    }
+    #jPanelMenu-menu & {
+      padding: .8em 1em 1.1em 1em;
+    }
+  }
+
+  li.back {
+    background: rgba(black,.1);
+    a.prev-menu {
+      padding: .5em 0;
+    }
+  }
+
+  li ul.menu {
+    position: absolute;
+    right: -100%;
+    top: 0;
+    z-index: 2;
+    visibility: hidden;
+    border-left: 1px solid $gray-light;
+
+    #jPanelMenu-menu & {
+      @include box-shadow(rgba(black, .3) 1px 1px 5px);
+    }
+  }
+
   & > li {
     border-top: 1px solid #e7e5db;
-    @extend .hidden;
+    //@extend .hidden;
 
     &.active-trail {
       @extend .visible;
