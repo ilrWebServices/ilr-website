@@ -231,5 +231,26 @@ function ilr_sdc_listings_strongarm() {
   $strongarm->value = 0;
   $export['node_submitted_sdc_faculty'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_sdc_class_pattern';
+  $strongarm->value = '[node:field-course:field_catalog_prefix]/[node:field-class-dates:value:short]/[node:title]';
+  $export['pathauto_node_sdc_class_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_sdc_course_pattern';
+  $strongarm->value = '[node:field_catalog_prefix]/[node:title]';
+  $export['pathauto_node_sdc_course_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_sdc_faculty_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_sdc_faculty_pattern'] = $strongarm;
+
   return $export;
 }
