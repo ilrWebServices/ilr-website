@@ -1,19 +1,30 @@
 <div id="page-wrapper"  <?php print render($page['nav_trigger_pts']); ?>>
+  <div id="bg"></div>
   <div id="page">
     <div class="container">
       <header role="banner" <?php print render($page['page_width_eq_points']); ?>>
 
-          <?php if ($logo): ?>
-            <div class="logo-wrapper"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"></a></div>
-          <?php endif; ?>
-
+          <div class="logo-wrapper">
+            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+              <?php print '<img src="' . drupal_get_path('theme', 'ilr_theme') . '/images/logo.svg" alt="Cornell University | ILR School" title="Cornell University | ILR School">';?>
+            </a>
+          </div>
+          <div id="search-button">
+            <a href="#">
+              <?php print '<img src="' . drupal_get_path('theme', 'ilr_theme') . '/images/search.svg" alt="search" title="search">';?>
+            </a>
+          </div>
+          <div id="search-form">
+            <form action="/search" method="get" id="cu-search-form" accept-charset="UTF-8">
+              <input id="search-form-query" type="text" name="s" placeholder="Search ILR . . ." value="" size="20" maxlength="128" class="form-text" />
+            </form>
+          </div>
           <?php if ($main_menu): ?>
           <nav role="navigation" class="main">
             <?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('id' => 'main-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Main menu'))); ?>
           </nav> <!-- / nav -->
           <?php endif; ?>
           <?php print render($page['header']); ?>
-
       </header> <!-- / header -->
 
       <?php print $messages; ?>

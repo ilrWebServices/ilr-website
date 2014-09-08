@@ -1,34 +1,70 @@
-header {
-  @extend .clearfix;
+// The page background extends outside the header width, which is why this is here
+// Consider refactoring html to better handle a 100% width header
+.page-background {
+  @include background-image(linear-gradient(lighten($cornell-red, 3%), $cornell-red));
+  background-repeat: no-repeat;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+#bg {
+  background-size: 100% $header-height-small;
+  height: $header-height-small;
+  @extend .page-background;
+  @include transition-duration(.3s);
+  [data-eq-state="regular-nav"] & {
+    &:not(.sticky) {
+      background-size: 100% $header-height;
+      height: $header-height;
+    }
+    &.sticky {
+      height: $header-height-small * 1.4;
+      background-size: 100% $header-height * 1.4;
+      @include box-shadow(0 10px 10px -10px rgba(black, .5));
+    }
+  }
+}
+
+.header-small {
   height: $header-height-small;
 
   #logo {
-    width: 75px;
-    height: 75px;
-    margin-top: 5px;
-    margin-bottom: 0;
-    margin-left: 9%;
-    margin-right: 2em;
+    margin: 10px 0 20px 30px;
     float: left;
-    background-size: 100%;
-    //background: url(../images/CU-ILR-caps-120-white.png) no-repeat left top;
-    background-image: url(../images/CU-ILR-caps-120-white.svg), none;
 
-    a {
-      width: 100%;
-      height: 100%;
-      display: block;
+    img {
+      width: 187px;
+      height: 60px;
+      @include transition-duration(.3s);
     }
   }
+}
+
+header {
+  z-index: 10;
+  @include transition-duration(.3s);
+  max-width: $page-max-width;
+  @extend .page-background;
+  @extend .header-small;
+  @extend .clearfix;
 
   [data-eq-state="regular-nav"] & {
-    height: $header-height;
+    &:not(.sticky) {
+      height: $header-height;
 
-    #logo {
-      width: 120px;
-      height: 120px;
-      margin-top: 10px;
-      margin-left: 2%;
+      #logo img {
+        width: 375px;
+        height: 120px;
+      }
+    }
+    &.sticky {
+      height: $header-height-small * 1.4;
+      background-size: 100% $header-height-small * 1.4;
+      #logo {
+        margin-bottom: 10px;
+      }
     }
   }
 }

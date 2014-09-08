@@ -6,8 +6,9 @@ $base-line-height: 26px;
 $line-height-multiplier: $base-line-height / $base-font-size;
 @include establish-baseline;
 $row-width: rem-calc($page-max-width);
-$header-height: 140px;
+$header-height: 195px;
 $header-height-small: 85px;
+$search-height: 70px;
 // ==================================================
 // Modular Scale
 // ==================================================

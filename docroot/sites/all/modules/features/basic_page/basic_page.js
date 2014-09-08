@@ -6,6 +6,26 @@
         $(this).next('dd').toggle('linear');
       });
 
+      $('#search-button a').click(function(e){
+        e.preventDefault();
+        $('header').toggleClass('search-engaged');
+        $('#search-form-query').focus();
+        if($('#search-form-query').val() != '') {
+          $('#cu-search-form').submit();
+        }
+      });
+
+      $(window).scroll(function() {
+          var scroll_top = $(this).scrollTop();
+          if(scroll_top >= 2){
+            $('header').addClass('sticky');
+            $('#bg').addClass('sticky');
+          } else if(scroll_top <= 1) {
+            $('header').removeClass('sticky');
+            $('#bg').removeClass('sticky');
+          }
+      }).scroll();
+
       var nextClick = function(e) {
         e.preventDefault();
         currentMenu = $(this).prev();
