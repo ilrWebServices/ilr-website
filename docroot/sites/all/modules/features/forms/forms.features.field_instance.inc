@@ -1827,6 +1827,78 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-dublin_application_form-field_dates'
+  $field_instances['entityform-dublin_application_form-field_dates'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_dates',
+    'label' => 'Expiration date (mm/yyyy)',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 23,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_dates_as_text'
+  $field_instances['entityform-dublin_application_form-field_dates_as_text'] = array(
+    'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_dates_as_text',
+    'label' => 'Expected graduation date (mm/yyyy)',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 40,
+    ),
+  );
+
   // Exported field_instance: 'entityform-dublin_application_form-field_disciplinary_action'
   $field_instances['entityform-dublin_application_form-field_disciplinary_action'] = array(
     'bundle' => 'dublin_application_form',
@@ -2304,82 +2376,6 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-dublin_application_form-field_expected_graduation_date'
-  $field_instances['entityform-dublin_application_form-field_expected_graduation_date'] = array(
-    'bundle' => 'dublin_application_form',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 8,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 28,
-      ),
-      'email' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 21,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_expected_graduation_date',
-    'label' => 'Expected graduation date (mm/yyyy)',
-    'required' => 1,
-    'settings' => array(
-      'default_value' => 'blank',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_text',
-      'weight' => 40,
-    ),
-  );
-
   // Exported field_instance: 'entityform-dublin_application_form-field_first_name'
   $field_instances['entityform-dublin_application_form-field_first_name'] = array(
     'bundle' => 'dublin_application_form',
@@ -2761,82 +2757,6 @@ function forms_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 43,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-dublin_application_form-field_passport_expiration_date'
-  $field_instances['entityform-dublin_application_form-field_passport_expiration_date'] = array(
-    'bundle' => 'dublin_application_form',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 6,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 23,
-      ),
-      'email' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 28,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_passport_expiration_date',
-    'label' => 'Expiration date (mm/yyyy)',
-    'required' => 1,
-    'settings' => array(
-      'default_value' => 'blank',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_text',
-      'weight' => 23,
     ),
   );
 
