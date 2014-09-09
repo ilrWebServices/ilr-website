@@ -1,0 +1,106 @@
+<?php
+/**
+ * @file ilr_editable_settings.module
+ * Creates for user editable settings. Currently just messages.
+ *
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ilr_editable_settings_menu() {
+  $items['admin/config/system/ilr-sys-messages'] = array(
+    'title' => 'System Messages',
+    'description' => 'Site configuration messages',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ilr_editable_settings_form'),
+    // An array of arguments to pass to the page callback function. Integer values pass the corresponding URL component.
+    'access arguments' => array('config ilr_editable_settings'),
+    'weight' => 0,
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Form builder settings.
+ */
+function ilr_editable_settings_form($form, $form_state) {
+  $form['#after_build'][] = '_ilr_editable_settings_set_form_defaults';
+  return system_settings_form($form);
+}
+
+/**
+ * Set all messages for any modules that implement hook_form_FORM_ID_alter for this module's form.
+ * @param array $form
+ */
+function ilr_editable_settings_set_messages($form = array()) {
+  if (!$form) {
+    // No form element sent invoke Drupal alter to get all elements for this form.
+    $form = array();
+    drupal_alter('form_ilr_editable_settings_form', $form);
+  }
+  foreach (element_children($form) as $form_key) {
+    if (!empty($form[$form_key]['#default_value'])) {
+      // If this form element has a default value set the variable.
+      if (variable_get($form_key, FALSE) === FALSE) {
+        variable_set($form_key, $form[$form_key]['#default_value']);
+      }
+    }
+    else {
+      // If this is doesn't have default recursively call this function to set children.
+      ilr_editable_settings_set_messages($form[$form_key]);
+    }
+  }
+}
+
+/**
+ * Called #after_build to set the defaults on form.
+ */
+function _ilr_editable_settings_set_form_defaults($form) {
+  foreach (element_children($form) as $form_key) {
+    if ($form[$form_key]['#type'] == 'textarea' && isset($form[$form_key]['#default_value'])) {
+      $set_value = variable_get($form_key, FALSE);
+      if ($set_value !== FALSE) {
+        $form[$form_key]['#value'] = $set_value;
+      }
+    }
+    else {
+      $form[$form_key] = _ilr_editable_settings_set_form_defaults($form[$form_key]);
+    }
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_flush_caches().
+ *
+ * Set message variables on cache clear.
+ */
+function ilr_editable_settings_flush_caches() {
+  ilr_editable_settings_set_messages();
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function ilr_editable_settings_module_implements_alter(&$implementations, $hook) {
+  switch ($hook) {
+    case 'form_ilr_editable_settings_form_alter':
+      $group = $implementations['ilr_editable_settings'];
+      unset($implementations['ilr_editable_settings']);
+      $implementations['ilr_editable_settings'] = $group;
+  }
+}
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ilr_editable_settings_form_ilr_editable_settings_form_alter(&$form, &$form_state, $form_id) {
+  foreach (element_children($form) as $form_key) {
+    if ($form[$form_key]['#type'] == 'fieldset') {
+      $form[$form_key]['#collapsible'] = TRUE;
+      $form[$form_key]['#collapsed'] = TRUE;
+    }
+  }
+}

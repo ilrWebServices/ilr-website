@@ -179,7 +179,14 @@ function ilr_update_7007() {
     variable_set("date_format_$date_type", $formats_default);
   }
 }
-
+/**
+ * Enables ilr_editable_settings
+ */
+function ilr_update_7008() {
+  module_enable(array(
+    'ilr_editable_settings',
+  ));
+}
 
 /**
  * Custom function for role creation

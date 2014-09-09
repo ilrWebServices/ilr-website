@@ -1,0 +1,5 @@
+name = ILR Editable Settings
+description = Admin Editable Settings for sites.
+package = ILR
+core = 7.x
+files[] = ilr_editable_settings.module
