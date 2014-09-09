@@ -9,6 +9,7 @@
       $('#search-button a').click(function(e){
         e.preventDefault();
         $('header').toggleClass('search-engaged');
+        $('#bg').toggleClass('search-engaged');
         $('#search-form-query').focus();
         if($('#search-form-query').val() != '') {
           $('#cu-search-form').submit();

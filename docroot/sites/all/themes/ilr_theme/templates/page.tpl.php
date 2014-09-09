@@ -1,5 +1,5 @@
 <div id="page-wrapper"  <?php print render($page['nav_trigger_pts']); ?>>
-  <div id="bg"></div>
+  <div id="bg"><div class="search-bg"></div></div>
   <div id="page">
     <div class="container">
       <header role="banner" <?php print render($page['page_width_eq_points']); ?>>

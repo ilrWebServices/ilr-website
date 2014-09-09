@@ -21,7 +21,7 @@
     }
     &.sticky {
       height: $header-height-small * 1.4;
-      background-size: 100% $header-height * 1.4;
+      background-size: 100% $header-height-small * 1.4;
       @include box-shadow(0 10px 10px -10px rgba(black, .5));
     }
   }

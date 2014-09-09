@@ -1,5 +1,13 @@
-header.search-engaged {
+header.search-engaged, #bg.search-engaged {
   margin-top: $search-height;
+}
+#bg .search-bg {
+  background-color: $darker-red;
+  height: $search-height;
+  position: absolute;
+  top: $search-height * -1;
+  left: 0;
+  width: 100%;
 }
 
 #search-button {
@@ -11,7 +19,7 @@ header.search-engaged {
     @include transition-duration(.3s);
 
     [data-eq-state="regular-nav"] & {
-      margin: 10px 50px 0 0;
+      margin: 20px 20px 0 0;
     }
     .sticky & {
       margin: 0;
@@ -26,7 +34,7 @@ header.search-engaged {
   width: 100%;
 
   input {
-    background: #92210f;
+    background: $darker-red;
     border: none;
     width: 100%;
     padding: 5px;
