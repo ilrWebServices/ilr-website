@@ -575,7 +575,8 @@ function ilr_sdc_listings_views_pre_render(&$view) {
       $url = _ilr_sdc_listings_calendar_month_url($month, FALSE);
       $nav = '<p>' . l($month_label, $url, array('query' => _ilr_sdc_listings_get_field_query_values())) . '</p>';
     }
-    $nav .= drupal_render(drupal_get_form('_ilr_listings_sdc_select_month_form'));
+    $month_form = drupal_get_form('_ilr_listings_sdc_select_month_form');
+    $nav .= drupal_render($month_form);
     $view->attachment_before = $nav;
   }
 }
