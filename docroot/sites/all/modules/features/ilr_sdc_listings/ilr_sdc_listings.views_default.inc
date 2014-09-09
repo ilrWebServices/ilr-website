@@ -86,14 +86,6 @@ Yes|Online',
   $handler->display->display_options['style_options']['theme_style'] = '1';
   $handler->display->display_options['style_options']['max_items'] = '0';
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
-  /* Footer: Global: Link */
-  $handler->display->display_options['footer']['link']['id'] = 'link';
-  $handler->display->display_options['footer']['link']['table'] = 'views';
-  $handler->display->display_options['footer']['link']['field'] = 'link';
-  $handler->display->display_options['footer']['link']['label'] = 'On Demand Link';
-  $handler->display->display_options['footer']['link']['empty'] = TRUE;
-  $handler->display->display_options['footer']['link']['text'] = 'View On Demand Courses';
-  $handler->display->display_options['footer']['link']['path'] = 'sdc-ondemand';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -313,6 +305,15 @@ Yes|Online',
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Link */
+  $handler->display->display_options['footer']['link']['id'] = 'link';
+  $handler->display->display_options['footer']['link']['table'] = 'views';
+  $handler->display->display_options['footer']['link']['field'] = 'link';
+  $handler->display->display_options['footer']['link']['label'] = 'On Demand Link';
+  $handler->display->display_options['footer']['link']['empty'] = TRUE;
+  $handler->display->display_options['footer']['link']['text'] = 'View On Demand Courses';
+  $handler->display->display_options['footer']['link']['path'] = 'sdc-ondemand';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';

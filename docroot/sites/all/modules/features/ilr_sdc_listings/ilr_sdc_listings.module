@@ -243,10 +243,18 @@ function ilr_sdc_listings_class_format_ondemand($node, $view_mode) {
  * @param $node
  * @param $view_mode
  */
-function _ilr_sdc_listings_class_add_reg_form($node, $view_mode) {
+function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
   if ($view_mode == 'full') {
-    $form = drupal_get_form('ilr_sdc_listings_class_reg_form', array($node), TRUE, FALSE);
-    $node->content['classes'] = $form;
+    $class_node_wrapper = entity_metadata_wrapper('node', $class_node);
+    $course = $class_node_wrapper->field_course->value();
+    $class_available = _ilr_sdc_listings_get_classes_for_course($course, array($class_node->nid));
+    if ($class_available) {
+      $form = drupal_get_form('ilr_sdc_listings_class_reg_form', array($class_node), TRUE, FALSE);
+      $class_node->content['classes'] = $form;
+    }
+    else {
+      drupal_set_message(t(variable_get('sdc_class_not_available')));
+    }
   }
 }
 
@@ -260,11 +268,11 @@ function _ilr_sdc_listings_class_empty_msg($class_node, $view_mode) {
   if ($node_wrapper->field_is_full->value()) {
     switch ($view_mode) {
       case 'teaser':
-        $full_msg = '[Class is full, but other dates may be available]';
+        $full_msg = '[' . variable_get('sdc_class_full_teaser') . ']';
         $weight = 100;
         break;
       default:
-        $full_msg = '[Seats in this session are limited. Please call 866-470-1922 to register.]';
+        $full_msg = '[' . variable_get('sdc_class_full_full') .']';
         $weight = -100;
         break;
     }
@@ -287,7 +295,7 @@ function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
     $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
     $class_selected = _ilr_sdc_listings_get_class_from_url();
     if ($class_selected && !in_array($class_selected, $class_nids)) {
-      drupal_set_message(t('The class you selected is no longer available.'));
+      drupal_set_message(variable_get('sdc_class_selected_not_available'));
     }
     if ($class_nids) {
       $class_nodes = node_load_multiple($class_nids);
@@ -311,7 +319,7 @@ function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
       $course_node->content['classes'] = array(
         '#type' => 'markup',
         // @todo Decide on exact wording for no classes. Should this be configurable?
-        '#markup' => t('There are currently no sessions offered.'),
+        '#markup' => variable_get('sdc_class_no_sessions'),
       );
     }
     $course_node->content['classes']['#weight'] = 2;
@@ -368,7 +376,7 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
     }
     if ($class_node_wrapper->field_is_full->value()) {
       if ($nid == $class_nid_from_url) {
-        drupal_set_message('The class date you selected is full.');
+        drupal_set_message(variable_get('sdc_class_selected_full'));
       }
     }
     else {
@@ -478,7 +486,7 @@ function _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node) 
  * @return array
  *  nids for classes
  */
-function _ilr_sdc_listings_get_classes_for_course($course_node) {
+function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NULL) {
   $today = date('Y-m-d');
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
@@ -486,6 +494,9 @@ function _ilr_sdc_listings_get_classes_for_course($course_node) {
     ->propertyCondition('status', 1)
     ->fieldCondition('field_course', 'target_id', $course_node->nid)
     ->fieldCondition('field_registration_end_date', 'value', $today, '>=');
+  if ($class_nids) {
+    $query->propertyCondition('nid', $class_nids);
+  }
   $results = $query->execute();
   if (!empty($results['node'])) {
     return array_keys($results['node']);
@@ -657,4 +668,48 @@ function _ilr_sdc_listings_get_field_query_values() {
     }
   }
   return $query_parameters;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * form_id = ilr_editable_settings_form
+ * @see ilr_editable_settings module.
+ */
+function ilr_sdc_listings_form_ilr_editable_settings_form_alter(&$form, &$form_state, $form_id) {
+  $form['sdc_set'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('SDC Course Listings Messages'),
+
+  );
+  $form['sdc_set']['sdc_class_full_full'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Class is full message on class page'),
+    '#default_value' => 'Seats in this session are limited. Please call 866-470-1922 to register.',
+  );
+  $form['sdc_set']['sdc_class_full_teaser'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Class is full message on class list'),
+    '#default_value' => 'Class is full, but other dates may be available',
+  );
+  $form['sdc_set']['sdc_class_not_available'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Class is no longer available'),
+    '#default_value' => 'This class date is no longer available.',
+  );
+  $form['sdc_set']['sdc_class_selected_not_available'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Class SELECTED is no longer available'),
+    '#default_value' => 'The class you selected is no longer available.',
+  );
+  $form['sdc_set']['sdc_class_no_sessions'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Class has no sessions'),
+    '#default_value' => 'There are currently no sessions offered.',
+  );
+  $form['sdc_set']['sdc_class_selected_full'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Class selected is full'),
+    '#default_value' => 'The class date you selected is full.',
+  );
 }
