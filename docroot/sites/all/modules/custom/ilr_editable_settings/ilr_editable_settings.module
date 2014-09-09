@@ -87,10 +87,13 @@ function ilr_editable_settings_flush_caches() {
  */
 function ilr_editable_settings_module_implements_alter(&$implementations, $hook) {
   switch ($hook) {
-    case 'form_ilr_editable_settings_form_alter':
-      $group = $implementations['ilr_editable_settings'];
-      unset($implementations['ilr_editable_settings']);
-      $implementations['ilr_editable_settings'] = $group;
+    case 'form_alter':
+      if (isset($implementations['ilr_editable_settings'])) {
+        $group = $implementations['ilr_editable_settings'];
+        unset($implementations['ilr_editable_settings']);
+        $implementations['ilr_editable_settings'] = $group;
+      }
+
   }
 }
 /**
