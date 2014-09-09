@@ -98,5 +98,9 @@ function jpanelmenu_enable() {
     ));
     drupal_set_message(filter_xss_admin($message));
   }
+
+  // Set ILR specific variables here
   variable_set('jpanelmenu_target', '#sidebar-first .section');
+  variable_set('jpanelmenu_open_position', '80%');
+  variable_set('jpanelmenu_menu_direction', 'right');
 }

@@ -14,6 +14,7 @@
               <?php print '<img src="' . drupal_get_path('theme', 'ilr_theme') . '/images/search.svg" alt="search" title="search">';?>
             </a>
           </div>
+          <div class="jpanel-trigger-container"><a href="#" class="jpanel-trigger">MENU</a></div>
           <div id="search-form">
             <form action="/search" method="get" id="cu-search-form" accept-charset="UTF-8">
               <input id="search-form-query" type="text" name="s" placeholder="Search ILR . . ." value="" size="20" maxlength="128" class="form-text" />
@@ -41,7 +42,6 @@
           </div>
         </div><?php endif; ?>
         <div id="content" class="column">
-          <div class="jpanel-trigger-container"><a href="#" class="jpanel-trigger">MENU</a></div>
           <?php if ($breadcrumb): ?>
           <div id="breadcrumb"><?php print $breadcrumb; ?></div>
           <?php endif; ?>
