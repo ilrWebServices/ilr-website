@@ -2,6 +2,9 @@
 /**
  * @file
  * Code for the registration-pages feature.
+ * @todo
+ *   - Rename field_event_registration_period
+ *   - Discuss _registration_pages_is_reg_form
  */
 
 include_once 'registration_pages.features.inc';
@@ -16,7 +19,7 @@ function registration_pages_preprocess_node(&$variables) {
     $variables['content']['event_info']['#weight'] = 1;
 
     // Confirm that the form registration dates are valid
-    if (!empty($variables['node']->field_event_registration_period)) {
+    if (_registration_pages_form_is_time_sensitive($variables['node'])) {
       _registration_pages_process_registration_period($variables);
     }
 
@@ -78,6 +81,13 @@ function _registration_pages_is_reg_form($entityform) {
   return FALSE;
 }
 
+/**
+ * Determines whether the form has registration dates
+ */
+function _registration_pages_form_is_time_sensitive($node) {
+  return !empty($node->field_event_registration_period);
+}
+
 
 /**
  * Generate markup for the event info for an event on a registration page
@@ -129,14 +139,13 @@ function _registration_pages_format_end_time($field) {
   }
   return $markup;
 }
+
 /**
  * Replaces the registration form markup with a message if form is inactive
  */
 function _registration_pages_process_registration_period(&$variables) {
-  if (_registration_pages_form_is_inactive($variables['node'])) {
-    unset($variables['content']['field_registration_form']);
-    $variables['content']['field_registration_form']['#markup'] = _registration_pages_get_markup_for_inactive_form($variables['node']);
-  }
+  unset($variables['content']['field_registration_form']);
+  $variables['content']['field_registration_form']['#markup'] = _registration_pages_get_markup_for_inactive_form($variables['node']);
 }
 
 function _registration_pages_is_multiday_event($field) {
@@ -149,8 +158,10 @@ function _registration_pages_is_multiday_event($field) {
  * Determines whether a form is active or inactive
  */
 function _registration_pages_form_is_inactive($node) {
-  if (_registration_pages_form_is_not_yet_live($node) ||_registration_pages_form_deadline_has_passed($node)) {
-    return TRUE;
+  if (!empty($node->field_event_registration_period)) {
+    if (_registration_pages_form_is_not_yet_live($node) ||_registration_pages_form_deadline_has_passed($node)) {
+      return TRUE;
+    }
   }
   return FALSE;
 }
