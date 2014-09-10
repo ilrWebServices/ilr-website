@@ -29,11 +29,13 @@ function basic_page_wysiwyg_default_profiles() {
           'Outdent' => 1,
           'Indent' => 1,
           'Undo' => 1,
-          'Link' => 1,
           'Source' => 1,
           'HorizontalRule' => 1,
           'Format' => 1,
           'Scayt' => 1,
+        ),
+        'linkit' => array(
+          'linkit' => 1,
         ),
         'templates' => array(
           'Templates' => 1,

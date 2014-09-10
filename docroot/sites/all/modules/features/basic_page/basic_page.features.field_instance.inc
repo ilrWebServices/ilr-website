@@ -20,7 +20,9 @@ function basic_page_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -54,7 +56,9 @@ function basic_page_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'blockreference',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'blockreference_default',
         'weight' => 1,
       ),
@@ -88,7 +92,9 @@ function basic_page_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'blockreference',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'blockreference_default',
         'weight' => 0,
       ),
@@ -122,7 +128,9 @@ function basic_page_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'blockreference',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'blockreference_default',
         'weight' => 3,
       ),
@@ -207,7 +215,9 @@ function basic_page_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 2,
       ),
@@ -305,7 +315,9 @@ function basic_page_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 1,
       ),
@@ -319,6 +331,7 @@ function basic_page_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => '',
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
@@ -360,6 +373,7 @@ function basic_page_field_default_field_instances() {
           'delete' => 'Delete',
           'description' => TRUE,
           'edit' => 'Edit',
+          'field_formatter_label' => '',
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
@@ -404,6 +418,7 @@ function basic_page_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
+          'field_formatter_label' => '',
           'file_view_mode' => 'default',
         ),
         'type' => 'file_rendered',
@@ -413,6 +428,7 @@ function basic_page_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_label' => '',
           'image_link' => 'content',
           'image_style' => 'focussed_grid_image',
         ),
