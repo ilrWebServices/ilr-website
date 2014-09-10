@@ -69,7 +69,7 @@ function registration_pages_tokens($type, $tokens, array $data = array(), array 
 function _registration_pages_is_event_registration_form($entityform) {
   $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
 
-  if (isset($entityform_wrapper->field_referenced_node)) {
+  if ($node = isset($entityform_wrapper->field_referenced_node)) {
     $node = $entityform_wrapper->field_referenced_node->value();
     if ($node->type == 'registration_page' && !empty($node->field_event_date)) {
       return TRUE;
@@ -82,7 +82,7 @@ function _registration_pages_is_event_registration_form($entityform) {
  * Determines whether the form has registration dates
  */
 function _registration_pages_form_is_time_sensitive($node) {
-  return !empty($node->field_event_registration_period);
+  return !empty($node->field_form_active_date_range);
 }
 
 
@@ -155,7 +155,7 @@ function _registration_pages_is_multiday_event($field) {
  * Determines whether a form is active or inactive
  */
 function _registration_pages_form_is_inactive($node) {
-  if (!empty($node->field_event_registration_period)) {
+  if (!empty($node->field_form_active_date_range)) {
     if (_registration_pages_form_is_not_yet_live($node) ||_registration_pages_form_deadline_has_passed($node)) {
       return TRUE;
     }
@@ -164,15 +164,12 @@ function _registration_pages_form_is_inactive($node) {
 }
 
 /**
- * Checks whether the form registration start date is in the future
- * @todo Refactor field_event_registration_period into the form itself
- * Since there are other forms with this requirement and its the more appropriate
- * place for that logic to live
+ * Checks whether the form active start date is in the future
  */
 function _registration_pages_form_is_not_yet_live($node) {
-  if (isset($node->field_event_registration_period[LANGUAGE_NONE][0]['value'])) {
+  if (isset($node->field_form_active_date_range[LANGUAGE_NONE][0]['value'])) {
     $today_timestamp = time();
-    $golive_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_event_registration_period[LANGUAGE_NONE][0]['value'], $node->field_event_registration_period[LANGUAGE_NONE][0]['timezone_db']);
+    $golive_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_form_active_date_range[LANGUAGE_NONE][0]['value'], $node->field_form_active_date_range[LANGUAGE_NONE][0]['timezone_db']);
     if ($today_timestamp < $golive_timestamp) {
       return TRUE;
     }
@@ -181,13 +178,13 @@ function _registration_pages_form_is_not_yet_live($node) {
 }
 
 /**
- * Checks whether the form registration end date was in the past
+ * Checks whether the form active end date was in the past
  */
 function _registration_pages_form_deadline_has_passed($node) {
-  if (isset($node->field_event_registration_period[LANGUAGE_NONE][0]['value2'])
-      && $node->field_event_registration_period[LANGUAGE_NONE][0]['value'] != $node->field_event_registration_period[LANGUAGE_NONE][0]['value2']) { // Once a value has been set for the end date, removing it apparently sets it equal to the start date in the db
+  if (isset($node->field_form_active_date_range[LANGUAGE_NONE][0]['value2'])
+      && $node->field_form_active_date_range[LANGUAGE_NONE][0]['value'] != $node->field_form_active_date_range[LANGUAGE_NONE][0]['value2']) { // Once a value has been set for the end date, removing it apparently sets it equal to the start date in the db
     $today_timestamp = time();
-    $deadline_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_event_registration_period[LANGUAGE_NONE][0]['value2'], $node->field_event_registration_period[LANGUAGE_NONE][0]['timezone_db']);
+    $deadline_timestamp = _registration_pages_get_timestamp_from_field_value($node->field_form_active_date_range[LANGUAGE_NONE][0]['value2'], $node->field_form_active_date_range[LANGUAGE_NONE][0]['timezone_db']);
     if ($today_timestamp > $deadline_timestamp) {
       return TRUE;
     }
@@ -210,12 +207,12 @@ function _registration_pages_get_timestamp_from_field_value($value, $timezone) {
 function _registration_pages_get_markup_for_inactive_form($node) {
   $markup = '<p>';
   if (_registration_pages_form_is_not_yet_live($node)) {
-    $custom_message_field = $node->field_event_text_before_reg_open;
+    $custom_message_field = $node->field_message_before_form_open;
     $message_intro = 'This form will be available on ';
     $active_date_value_string = 'value';
   }
   elseif (_registration_pages_form_deadline_has_passed($node)) {
-    $custom_message_field = $node->field_event_text_after_reg_close;
+    $custom_message_field = $node->field_message_after_form_close;
     $message_intro = 'The deadline for submitting this form was ';
     $active_date_value_string = 'value2';
   }
@@ -224,8 +221,8 @@ function _registration_pages_get_markup_for_inactive_form($node) {
     $markup .= $custom_message_field[LANGUAGE_NONE][0]['value'] . ' ';
   }
 
-  $form_date = _registration_pages_get_formatted_date_from_field($node->field_event_registration_period, $active_date_value_string);
-  $form_time = _registration_pages_get_formatted_time_from_field($node->field_event_registration_period, $active_date_value_string);
+  $form_date = _registration_pages_get_formatted_date_from_field($node->field_form_active_date_range, $active_date_value_string);
+  $form_time = _registration_pages_get_formatted_time_from_field($node->field_form_active_date_range, $active_date_value_string);
 
   $markup .= "$message_intro $form_date at $form_time.";
   $markup .= '</p>';

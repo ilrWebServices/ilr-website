@@ -121,11 +121,11 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_event_registration_period'
-  $field_instances['node-registration_page-field_event_registration_period'] = array(
+  // Exported field_instance: 'node-registration_page-field_form_active_date_range'
+  $field_instances['node-registration_page-field_form_active_date_range'] = array(
     'bundle' => 'registration_page',
     'deleted' => 0,
-    'description' => 'Time period during which the registration form will be open.  If there isn\'t a start date, use the current date for start date to open registration immediately.  The end date is the registration deadline.',
+    'description' => 'Time period during which the form will be available to visitors.  Any start date earlier than today will make the form available immediately.  The end date is the deadline for the form.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -154,8 +154,8 @@ function registration_pages_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_event_registration_period',
-    'label' => 'Event registration start date and end date (deadline)',
+    'field_name' => 'field_form_active_date_range',
+    'label' => 'Form availability start date and end date (deadline)',
     'required' => 0,
     'settings' => array(
       'default_value' => 'blank',
@@ -180,12 +180,12 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_event_text_after_reg_close'
-  $field_instances['node-registration_page-field_event_text_after_reg_close'] = array(
+  // Exported field_instance: 'node-registration_page-field_message_after_form_close'
+  $field_instances['node-registration_page-field_message_after_form_close'] = array(
     'bundle' => 'registration_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Text to display on registration page after registration closes.  Registration Deadline will be displayed in addition to the text you specify here.',
+    'description' => 'Text to display on page after the form closes.  The deadline will be displayed in addition to the text you specify here.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -208,8 +208,8 @@ function registration_pages_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_event_text_after_reg_close',
-    'label' => 'Event text after reg closes',
+    'field_name' => 'field_message_after_form_close',
+    'label' => 'Message to visitors after form closes',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -226,12 +226,12 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_event_text_before_reg_open'
-  $field_instances['node-registration_page-field_event_text_before_reg_open'] = array(
+  // Exported field_instance: 'node-registration_page-field_message_before_form_open'
+  $field_instances['node-registration_page-field_message_before_form_open'] = array(
     'bundle' => 'registration_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Text to display on registration page before registration opens. Registration Start Date will be displayed in addition to the text you specify here.',
+    'description' => 'Text to display on page before the form is available. The start date will be displayed in addition to the text you specify here.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -254,8 +254,8 @@ function registration_pages_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_event_text_before_reg_open',
-    'label' => 'Event text before reg opens',
+    'field_name' => 'field_message_before_form_open',
+    'label' => 'Message to visitors before form opens',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -443,18 +443,18 @@ function registration_pages_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Body');
   t('Event date');
-  t('Event registration start date and end date (deadline)');
-  t('Event text after reg closes');
-  t('Event text before reg opens');
+  t('Form availability start date and end date (deadline)');
+  t('Message to visitors after form closes');
+  t('Message to visitors before form opens');
   t('Location');
   t('Main Image');
   t('Registration form');
   t('Select the form that goes with this page.');
   t('Set Start date/time, End date/time.  The dates should be the same; this isn\'t designed for multi-date events, but this captures start and end time, along with the event date.');
-  t('Text to display on registration page after registration closes.  Registration Deadline will be displayed in addition to the text you specify here.');
-  t('Text to display on registration page before registration opens. Registration Start Date will be displayed in addition to the text you specify here.');
+  t('Text to display on page after the form closes.  The deadline will be displayed in addition to the text you specify here.');
+  t('Text to display on page before the form is available. The start date will be displayed in addition to the text you specify here.');
   t('This text will ALWAYS appear, even when it\'s before  or after the deadline for the registration.  The other fields (event title, date, start and end time) will also appear, so don\'t add them here unless you\'re omitting them below.');
-  t('Time period during which the registration form will be open.  If there isn\'t a start date, use the current date for start date to open registration immediately.  The end date is the registration deadline.');
+  t('Time period during which the form will be available to visitors.  Any start date earlier than today will make the form available immediately.  The end date is the deadline for the form.');
 
   return $field_instances;
 }
