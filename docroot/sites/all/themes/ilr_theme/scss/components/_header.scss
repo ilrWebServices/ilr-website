@@ -48,7 +48,6 @@ header {
   max-width: $page-max-width;
   @extend .page-background;
   @extend .header-small;
-  @extend .clearfix;
 
   [data-eq-state="regular-nav"] & {
     &:not(.sticky) {
