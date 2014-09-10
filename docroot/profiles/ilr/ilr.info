@@ -22,6 +22,7 @@ dependencies[] = ctools
 dependencies[] = context
 dependencies[] = entity
 dependencies[] = features
+dependencies[] = globalredirect
 dependencies[] = menu_block
 dependencies[] = pathauto
 dependencies[] = simplesamlphp_auth

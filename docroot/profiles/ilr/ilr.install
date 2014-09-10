@@ -145,6 +145,15 @@ function ilr_update_7005() {
 }
 
 /**
+ * Enables globalredirect module
+ */
+function ilr_update_7006() {
+  module_enable(array(
+    'globalredirect',
+  ));
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {
