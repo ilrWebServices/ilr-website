@@ -2,9 +2,6 @@
 /**
  * @file
  * Code for the registration-pages feature.
- * @todo
- *   - Rename field_event_registration_period
- *   - Discuss _registration_pages_is_reg_form
  */
 
 include_once 'registration_pages.features.inc';
@@ -55,7 +52,7 @@ function registration_pages_tokens($type, $tokens, array $data = array(), array 
 
     // Check that event_info exists - if so we need to assign to it
     if (isset($tokens['event_info'])) {
-      if (_registration_pages_is_reg_form($entityform)) {
+      if (_registration_pages_is_event_registration_form($entityform)) {
         $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
         $node = $entityform_wrapper->field_referenced_node->value();
         $return[$tokens['event_info']] = _registration_pages_get_event_markup($node);
@@ -67,14 +64,14 @@ function registration_pages_tokens($type, $tokens, array $data = array(), array 
 }
 
 /**
- * Check if a form is a registration form, i.e. if page type is registration_page
+ * Check if a form is an event registration form
  */
-function _registration_pages_is_reg_form($entityform) {
-  // Wrap entityform in an entity metadata wrapper - makes it easier to access entity values
+function _registration_pages_is_event_registration_form($entityform) {
   $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
 
   if (isset($entityform_wrapper->field_referenced_node)) {
-    if ($entityform_wrapper->field_referenced_node->value()->type == 'registration_page') {
+    $node = $entityform_wrapper->field_referenced_node->value();
+    if ($node->type == 'registration_page' && !empty($node->field_event_date)) {
       return TRUE;
     }
   }

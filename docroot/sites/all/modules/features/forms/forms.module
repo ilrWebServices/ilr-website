@@ -17,7 +17,7 @@ define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
  * Saves the registration date for registration forms
  */
 function forms_entityform_presave($entityform) {
-  if (_forms_is_registration_form($entityform) && $entityform->is_new) {
+  if (_forms_is_event_registration_form($entityform) && $entityform->is_new) {
     _forms_save_registration_date($entityform);
   }
 }
@@ -139,7 +139,7 @@ function _forms_get_tplphp_file($form) {
   if (file_exists($tplphp_file_full_path)) {
     return $form['#bundle'];
   }
-  elseif (_forms_is_registration_form($form['#entity'])) {
+  elseif (_forms_is_event_registration_form($form['#entity'])) {
     return 'default_registration_confirmation';
   }
   return 'default_mail';
@@ -265,7 +265,7 @@ function _forms_send_emails($form, $admin_email, $subject='') {
   $email_template = _forms_get_tplphp_file($form);
   $event_info_for_email = '';
 
-  if (_forms_is_registration_form($form['#entity'])) {
+  if (_forms_is_event_registration_form($form['#entity'])) {
     $entityform_wrapper = entity_metadata_wrapper('entityform', $form['#entity']);
     $node = $entityform_wrapper->field_referenced_node->value();
     $event_info_for_email = _registration_pages_get_event_markup($node);
@@ -416,10 +416,10 @@ function forms_std_confirmation_mail($key, &$message, $params) {
  * @todo Consider refactoring, since "field_referenced_node" shouldn't probably
  * be the defining characteristic of a registration form
  */
-function _forms_is_registration_form($entityform) {
+function _forms_is_event_registration_form($entityform) {
   if (isset($entityform->field_referenced_node)
       && module_exists('registration_pages')
-      && _registration_pages_is_reg_form($entityform)) {
+      && _registration_pages_is_event_registration_form($entityform)) {
     return TRUE;
   }
   return FALSE;
