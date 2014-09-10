@@ -124,6 +124,72 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_applicant_information|entityform|grad_travel_grant_application|default';
+  $field_group->group_name = 'group_applicant_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'grad_travel_grant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Applicant Information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_email',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_degree_program',
+      4 => 'field_chairperson',
+      5 => 'field_dates_as_text',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Applicant Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-applicant-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_applicant_information|entityform|grad_travel_grant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_applicant_information|entityform|grad_travel_grant_application|form';
+  $field_group->group_name = 'group_applicant_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'grad_travel_grant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Applicant Information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_email',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_degree_program',
+      4 => 'field_chairperson',
+      5 => 'field_dates_as_text',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Applicant Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-applicant-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_applicant_information|entityform|grad_travel_grant_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_college_address|entityform|dublin_application_form|default';
   $field_group->group_name = 'group_college_address';
   $field_group->entity_type = 'entityform';
@@ -219,6 +285,68 @@ function forms_field_group_info() {
     ),
   );
   $export['group_college_address|entityform|dublin_application_form|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_conference_fieldset|entityform|grad_travel_grant_application|default';
+  $field_group->group_name = 'group_conference_fieldset';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'grad_travel_grant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Conference',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_conference_name',
+      1 => 'field_dates',
+      2 => 'field_location_string',
+      3 => 'field_title_of_paper_or_poster',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Conference',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-conference-fieldset field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_conference_fieldset|entityform|grad_travel_grant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_conference_fieldset|entityform|grad_travel_grant_application|form';
+  $field_group->group_name = 'group_conference_fieldset';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'grad_travel_grant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Conference',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_conference_name',
+      1 => 'field_dates',
+      2 => 'field_location_string',
+      3 => 'field_title_of_paper_or_poster',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Conference',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-conference-fieldset field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_conference_fieldset|entityform|grad_travel_grant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -601,6 +729,76 @@ function forms_field_group_info() {
     ),
   );
   $export['group_nominee|entityform|employee_recognition_nomination_|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_other_funding_fieldset|entityform|grad_travel_grant_application|default';
+  $field_group->group_name = 'group_other_funding_fieldset';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'grad_travel_grant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Other Funding',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_funding_received',
+      1 => 'field_travel_grant_already_recei',
+      2 => 'field_amount_1',
+      3 => 'field_source_1',
+      4 => 'field_amount_2',
+      5 => 'field_source_2',
+      6 => 'field_amount_3',
+      7 => 'field_source_3',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Other Funding',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-other-funding-fieldset field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_other_funding_fieldset|entityform|grad_travel_grant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_other_funding_fieldset|entityform|grad_travel_grant_application|form';
+  $field_group->group_name = 'group_other_funding_fieldset';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'grad_travel_grant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Other Funding',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_funding_received',
+      1 => 'field_travel_grant_already_recei',
+      2 => 'field_amount_1',
+      3 => 'field_source_1',
+      4 => 'field_amount_2',
+      5 => 'field_source_2',
+      6 => 'field_amount_3',
+      7 => 'field_source_3',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Other Funding',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-other-funding-fieldset field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_other_funding_fieldset|entityform|grad_travel_grant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
