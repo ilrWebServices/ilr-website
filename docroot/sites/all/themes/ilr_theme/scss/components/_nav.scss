@@ -87,10 +87,13 @@ nav.main { // Main nav
   @include box-shadow(0 10px 10px -5px rgba(black, .5));
 }
 
+#jPanelMenu-menu {
+  margin-top: $header-height-small;
+}
+
 .sidebar, #jPanelMenu-menu {
   overflow: hidden;
   position: relative;
-  margin-top: $header-height-small;
 }
 
 .main-nav ul.menu {
