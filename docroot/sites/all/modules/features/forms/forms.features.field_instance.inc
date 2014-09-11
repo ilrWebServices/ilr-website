@@ -5813,6 +5813,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'user-comment',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'yourcomment',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_comments',
@@ -5849,6 +5867,24 @@ function forms_field_default_field_instances() {
         'type' => 'email_default',
         'weight' => 1,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_email',
@@ -5876,6 +5912,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -7349,7 +7403,7 @@ function forms_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'disabled' => 0,
-      'kerberized' => 0,
+      'kerberized' => 1,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
