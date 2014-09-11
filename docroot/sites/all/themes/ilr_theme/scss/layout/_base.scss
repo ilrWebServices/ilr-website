@@ -1,62 +1,62 @@
-#page {
+.container {
   max-width: $page-max-width;
   @extend .center;
+}
 
-  #main {
-    clear: both;
-    @include add-grid(1 10 1);
-    // @include sgs-change('debug', true);
-    // @include background-grid();
-    @include transition-duration(.3s);
-    margin-top: $header-height-small; // top-margins are here due to the fixed header
-    padding-top: 1em;
-    [data-eq-state="regular-nav"] & {
-      @extend %two-cols-with-sidebar;
-      margin-top: $header-height; // top-margins are here due to the fixed header
-    }
+#main {
+  clear: both;
+  @include add-grid(1 10 1);
+  // @include sgs-change('debug', true);
+  // @include background-grid();
+  @include transition-duration(.3s);
+  margin-top: $header-height-small; // top-margins are here due to the fixed header
+  padding-top: 1em;
+  [data-eq-state="regular-nav"] & {
+    @extend %two-cols-with-sidebar;
+    margin-top: $header-height; // top-margins are here due to the fixed header
+  }
 
-    &[data-eq-state="desktop"] {
-      @extend %triptych;
-    }
+  &[data-eq-state="desktop"] {
+    @extend %triptych;
+  }
 
+  @extend .clearfix;
+
+  #content, #sidebar-second {
+    @include grid-span(1,2);
     @extend .clearfix;
+    clear: both;
+  }
 
-    #content, #sidebar-second {
-      @include grid-span(1,2);
-      @extend .clearfix;
-      clear: both;
-    }
-
-    #highlighted .tagged-content {
-      &[data-items='2'],
-      &[data-items='3'] {
-        article {
-          @extend %two-thirds-split-column;
-          @extend %image-first;
-        }
+  #highlighted .tagged-content {
+    &[data-items='2'],
+    &[data-items='3'] {
+      article {
+        @extend %two-thirds-split-column;
+        @extend %image-first;
       }
     }
+  }
 
+  .tagged-content {
+    article h2 {
+      // position: absolute;
+      // bottom: 20%;
+      // a {
+      //   color: $mustard;
+      //   @include single-text-shadow;
+      // }
+    }
+  }
+
+  #content-bottom {
+    clear: both;
     .tagged-content {
-      article h2 {
-        // position: absolute;
-        // bottom: 20%;
-        // a {
-        //   color: $mustard;
-        //   @include single-text-shadow;
-        // }
+      article {
+        @extend %one-column;
       }
-    }
-
-    #content-bottom {
-      clear: both;
-      .tagged-content {
-        article {
-          @extend %one-column;
-        }
-        &[data-items='4'] {
-          @extend %one-column-grid;
-        }
+      &[data-items='4'] {
+        @extend %one-column-grid;
       }
     }
   }
