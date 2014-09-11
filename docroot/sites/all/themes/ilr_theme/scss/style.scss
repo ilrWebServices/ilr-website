@@ -21,16 +21,16 @@
 @import "base/helpers";
 
 // Components
-@import "components/header";
-@import "components/nav";
-@import "components/nav-responsive";
+@import "components/404";
+@import "components/bean_base";
 @import "components/footer";
 @import "components/form_elements";
-@import "components/bean_base";
-@import "components/view_modes";
-@import "components/tagged_content";
+@import "components/header";
+@import "components/nav";
 @import "components/neutral_page";
-@import "components/404";
+@import "components/search";
+@import "components/tagged_content";
+@import "components/view_modes";
 
 // Layout
 @import "layout/layouts";
