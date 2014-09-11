@@ -25,12 +25,15 @@
 }
 
 header {
-  z-index: 10;
-  @include transition-duration(.3s);
   width: 100%;
   @extend .center;
   @extend .page-background;
   @extend .header-small;
+  @include transition-duration(.3s);
+
+  &.sticky {
+    @include box-shadow(0 10px 10px -10px rgba(black, .5));
+  }
 
   &[data-eq-state="regular-nav"] {
     &:not(.sticky) {
