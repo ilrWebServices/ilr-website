@@ -138,18 +138,7 @@
         return $('#page-wrapper').data('eqState') == 'mobile-nav';
       }
 
-      function addHoverEffects() {
-        $('#sidebar-first .section').mouseenter(function() {
-          $(this).find('a.next-menu').animate({'opacity':'1'});
-        })
-        .mouseleave(function() {
-          $(this).find('a.next-menu').animate({'opacity': 0});
-        });
-      }
-
       setTimeout(positionCurrentMenu,100);
-      addHoverEffects();
-
     }
   };
 }(jQuery));

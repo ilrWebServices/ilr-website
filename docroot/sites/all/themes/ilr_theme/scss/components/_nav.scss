@@ -147,17 +147,8 @@ nav.main { // Main nav
       font-size: 2em;
       text-shadow: 0 1px 1px rgba(white, 1);
       color: darken($gray-light, 10%);
-      @extend .button;
-      @extend .button-circle;
-
-      #jPanelMenu-menu & {
-
-      }
     }
 
-    #sidebar-first & {
-      opacity: 0;
-    }
     #jPanelMenu-menu & {
       padding: .8em 1em 1.1em 1em;
     }
