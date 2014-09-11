@@ -20,7 +20,9 @@ function registration_pages_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 1,
       ),
@@ -28,6 +30,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => '',
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
@@ -36,7 +39,9 @@ function registration_pages_field_default_field_instances() {
       'token' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -84,6 +89,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'field_formatter_label' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -143,6 +149,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'field_formatter_label' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -180,98 +187,6 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_message_after_form_close'
-  $field_instances['node-registration_page-field_message_after_form_close'] = array(
-    'bundle' => 'registration_page',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Text to display on page after the form closes.  The deadline will be displayed in addition to the text you specify here.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-      'token' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_message_after_form_close',
-    'label' => 'Message to visitors after form closes',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance: 'node-registration_page-field_message_before_form_open'
-  $field_instances['node-registration_page-field_message_before_form_open'] = array(
-    'bundle' => 'registration_page',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Text to display on page before the form is available. The start date will be displayed in addition to the text you specify here.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'token' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_message_before_form_open',
-    'label' => 'Message to visitors before form opens',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 8,
-    ),
-  );
-
   // Exported field_instance: 'node-registration_page-field_image'
   $field_instances['node-registration_page-field_image'] = array(
     'bundle' => 'registration_page',
@@ -282,6 +197,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
+          'field_formatter_label' => '',
           'file_view_mode' => 'default',
         ),
         'type' => 'file_rendered',
@@ -291,6 +207,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_label' => '',
           'image_link' => 'content',
           'image_style' => 'focussed_main_image',
         ),
@@ -301,10 +218,17 @@ function registration_pages_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_label' => '',
           'image_link' => 'content',
           'image_style' => 'focussed_grid_image',
         ),
         'type' => 'image',
+        'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -393,6 +317,102 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-registration_page-field_message_after_form_close'
+  $field_instances['node-registration_page-field_message_after_form_close'] = array(
+    'bundle' => 'registration_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Text to display on page after the form closes.  The deadline will be displayed in addition to the text you specify here.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_message_after_form_close',
+    'label' => 'Message to visitors after form closes',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-registration_page-field_message_before_form_open'
+  $field_instances['node-registration_page-field_message_before_form_open'] = array(
+    'bundle' => 'registration_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Text to display on page before the form is available. The start date will be displayed in addition to the text you specify here.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_message_before_form_open',
+    'label' => 'Message to visitors before form opens',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'node-registration_page-field_registration_form'
   $field_instances['node-registration_page-field_registration_form'] = array(
     'bundle' => 'registration_page',
@@ -404,6 +424,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'field_formatter_label' => '',
           'links' => 0,
           'view_mode' => 'default',
         ),
@@ -444,10 +465,10 @@ function registration_pages_field_default_field_instances() {
   t('Body');
   t('Event date');
   t('Form availability start date and end date (deadline)');
-  t('Message to visitors after form closes');
-  t('Message to visitors before form opens');
   t('Location');
   t('Main Image');
+  t('Message to visitors after form closes');
+  t('Message to visitors before form opens');
   t('Registration form');
   t('Select the form that goes with this page.');
   t('Set Start date/time, End date/time.  The dates should be the same; this isn\'t designed for multi-date events, but this captures start and end time, along with the event date.');
