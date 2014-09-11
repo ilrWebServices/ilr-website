@@ -16,7 +16,7 @@ function registration_pages_preprocess_node(&$variables) {
     $variables['content']['event_info']['#weight'] = 1;
 
     // Confirm that the form registration dates are valid
-    if (_registration_pages_form_is_time_sensitive($variables['node'])) {
+    if (_registration_pages_form_is_inactive($variables['node'])) {
       _registration_pages_process_registration_period($variables);
     }
 
