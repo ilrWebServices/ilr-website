@@ -1275,7 +1275,7 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'blockreference',
     'settings' => array(
       'referenceable_modules' => array(
-        'bean' => 'bean',
+        'bean' => 0,
         'block' => 0,
         'context_ui' => 0,
         'devel' => 0,
@@ -1284,11 +1284,11 @@ function ilr_field_bases_field_default_field_bases() {
         'menu' => 0,
         'menu_block' => 0,
         'node' => 0,
-        'people_profiles' => 'people_profiles',
+        'people_profiles' => 0,
         'simplesamlphp_auth' => 0,
         'system' => 0,
         'user' => 0,
-        'views' => 'views',
+        'views' => 0,
       ),
       'referenceable_operator' => 'AND',
       'referenceable_regions' => array(
