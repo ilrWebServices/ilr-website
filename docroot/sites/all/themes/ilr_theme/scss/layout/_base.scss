@@ -11,9 +11,23 @@
   @include transition-duration(.3s);
   margin-top: $header-height-small; // top-margins are here due to the fixed header
   padding-top: 1em;
+
+  body:not(.sticky) & {
+    [data-eq-state="regular-nav"] & {
+      margin-top: $header-height; // top-margins are here due to the fixed header
+    }
+  }
+
   [data-eq-state="regular-nav"] & {
     @extend %two-cols-with-sidebar;
-    margin-top: $header-height; // top-margins are here due to the fixed header
+
+    body:not(.sticky) & {
+      margin-top: $header-height;
+    }
+
+    .sticky & {
+      margin-top: $header-height-small * 1.5;
+    }
   }
 
   &[data-eq-state="desktop"] {

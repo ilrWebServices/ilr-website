@@ -31,12 +31,12 @@ header {
   @extend .header-small;
   @include transition-duration(.3s);
 
-  &.sticky {
+  .sticky & {
     @include box-shadow(0 10px 10px -10px rgba(black, .5));
   }
 
   &[data-eq-state="regular-nav"] {
-    &:not(.sticky) {
+    body:not(.sticky) & {
       height: $header-height;
 
       #logo img {
@@ -44,7 +44,9 @@ header {
         height: 120px;
       }
     }
-    &.sticky {
+
+    .sticky & {
+      @include transition-duration(.3s);
       height: $header-height-small * 1.4;
       background-size: 100% $header-height-small * 1.4;
       #logo {

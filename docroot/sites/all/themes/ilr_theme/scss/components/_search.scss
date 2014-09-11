@@ -1,13 +1,5 @@
-header.search-engaged, #bg.search-engaged {
+header.search-engaged {
   margin-top: $search-height;
-}
-#bg .search-bg {
-  background-color: $darker-red;
-  height: $search-height;
-  position: absolute;
-  top: $search-height * -1;
-  left: 0;
-  width: 100%;
 }
 
 #search-button {
