@@ -135,7 +135,7 @@
       }
 
       function mobileNavActive() {
-        return $('#page-wrapper').data('eqState') == 'mobile-nav';
+        return $('header').data('eqState') == 'mobile-nav';
       }
 
       setTimeout(positionCurrentMenu,100);
