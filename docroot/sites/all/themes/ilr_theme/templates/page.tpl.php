@@ -26,8 +26,8 @@
 </header>
 <div id="page">
   <div class="container" <?php print render($page['nav_trigger_pts']); ?>>
-    <?php print $messages; ?>
     <div id="main" role="main" <?php print render($page['page_width_eq_points']); ?>>
+      <?php print $messages; ?>
       <?php if ($page['highlighted']): ?>
       <div id="highlighted">
         <div class="section">
