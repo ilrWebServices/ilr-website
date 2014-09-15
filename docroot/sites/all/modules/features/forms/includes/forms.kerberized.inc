@@ -92,17 +92,6 @@ function _forms_kerberize_field(&$form) {
 }
 
 /**
- * Checks to see whether the block being rendered is a kerberized entityform
- * See forms_block_view_alter()
- */
-function _forms_kerberized_form_present($form) {
-  if (isset($form['#entity']) && get_class($form['#entity']) == 'Entityform') {
-    return _forms_form_is_kerberized($form['#entity']->type);
-  }
-  return FALSE;
-}
-
-/**
  * Checks whether a specific entityform bundle requires NetID authentication
  */
 function _forms_form_is_kerberized($bundle) {
