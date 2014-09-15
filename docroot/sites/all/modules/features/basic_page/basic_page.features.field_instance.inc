@@ -78,6 +78,42 @@ function basic_page_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'blockreference_autocomplete',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_blocks-field_content_region'
+  $field_instances['field_collection_item-field_blocks-field_content_region'] = array(
+    'bundle' => 'field_blocks',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The content region is currently only used for adding forms to pages. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'blockreference',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'blockreference_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_content_region',
+    'label' => 'Content Region',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'blockreference',
+      'settings' => array(
+        'autocomplete_path' => 'blockreference/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'blockreference_autocomplete',
       'weight' => 2,
     ),
   );
@@ -485,9 +521,11 @@ function basic_page_field_default_field_instances() {
   t('Caption');
   t('Content');
   t('Content Bottom Region');
+  t('Content Region');
   t('Highlighted Region');
   t('Main Image');
   t('Sidebar Region');
+  t('The content region is currently only used for adding forms to pages. ');
   t('Title Text');
   t('Title text is used in the tool tip when a user hovers their mouse over the image. Adding title text makes it easier to understand the context of an image and improves usability.');
 

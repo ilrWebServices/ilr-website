@@ -26,6 +26,7 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_instance][] = bean-html-field_bean_content
 features[field_instance][] = field_collection_item-field_blocks-field_content_bottom_region
+features[field_instance][] = field_collection_item-field_blocks-field_content_region
 features[field_instance][] = field_collection_item-field_blocks-field_highlighted_region
 features[field_instance][] = field_collection_item-field_blocks-field_sidebar_second_region
 features[field_instance][] = file-image-field_file_image_alt_text
