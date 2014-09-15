@@ -7309,7 +7309,11 @@ function forms_field_default_field_instances() {
   // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_ilr_department'
   $field_instances['entityform-request_faculty_advisor_or_depar-field_ilr_department'] = array(
     'bundle' => 'request_faculty_advisor_or_depar',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'Not applicable - professor specified above',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -7326,7 +7330,7 @@ function forms_field_default_field_instances() {
     'entity_type' => 'entityform',
     'field_name' => 'field_ilr_department',
     'label' => ' Department',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
