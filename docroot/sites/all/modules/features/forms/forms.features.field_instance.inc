@@ -5813,6 +5813,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'user-comment',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'yourcomment',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_comments',
@@ -5849,6 +5867,24 @@ function forms_field_default_field_instances() {
         'type' => 'email_default',
         'weight' => 1,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_email',
@@ -5876,6 +5912,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -7140,6 +7194,350 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_advisor_or_dept_sentence'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_advisor_or_dept_sentence'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'markup',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'markup_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_advisor_or_dept_sentence',
+    'label' => 'Advisor or dept sentence',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_email'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_email'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_first_name'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_first_name'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_first_name',
+    'label' => 'First name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_ilr_department'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_ilr_department'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_ilr_department',
+    'label' => ' Department',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_interests_and_goals'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_interests_and_goals'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_interests_and_goals',
+    'label' => 'Academic interests and goals',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_last_name'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_last_name'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_middle_name'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_middle_name'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_middle_name',
+    'label' => 'Middle name',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_professor'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_professor'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_professor',
+    'label' => 'Professor',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_year_freshman_soph_jr_sr'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_year_freshman_soph_jr_sr'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_year_freshman_soph_jr_sr',
+    'label' => 'Class year in 2014-2015',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'entityform-scheinman_mailing_list-field_address_line_1'
   $field_instances['entityform-scheinman_mailing_list-field_address_line_1'] = array(
     'bundle' => 'scheinman_mailing_list',
@@ -7961,15 +8359,18 @@ function forms_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t(' Department');
   t(' Departments in which you prefer assignment (Indicate at least top two choices.)');
   t(' May we contact you by email about information on our offerings?');
   t(' Semester requesting assistantship');
   t('<p>If there are technical needs, training is required prior to the use of a room. Please contact ILR Technology Services to make these arrangements via email at: <a href="mailto:ilrvtc@cornell.edu>ilrvtc@cornell.edu</a>.</p>
 <p>Note: ILR Technology Services does not support Skype in the classrooms. If using Skype, please use your own laptop.</p>');
   t('Academic goals essay');
+  t('Academic interests and goals');
   t('Account Number (for externally funded projects)');
   t('Additional comments');
   t('Address');
+  t('Advisor or dept sentence');
   t('Amount 1');
   t('Amount 2');
   t('Amount 3');
@@ -7982,6 +8383,7 @@ function forms_field_default_field_instances() {
   t('Citizenship');
   t('City');
   t('Class year');
+  t('Class year in 2014-2015');
   t('Classes you are interesting in TAing or faculty members to whom you wish to be assigned');
   t('College phone number');
   t('Comments');
@@ -8043,6 +8445,7 @@ function forms_field_default_field_instances() {
   t('Phone (with area code)');
   t('Please list the courses in which you are currently enrolled');
   t('Preferred students (in order of preference), or desired qualifications');
+  t('Professor');
   t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
   t('Questions and comments');
   t('RA Additional Information');

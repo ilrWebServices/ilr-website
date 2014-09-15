@@ -1,17 +1,4 @@
 <?php
-
-/**
- * Swaps kerberized forms with netID login button
- */
-function forms_block_view_alter(&$data, $block) {
-  if (isset($data['content'])
-    && is_array($data['content'])
-    && _forms_kerberized_form_present($data['content'])
-    && !_forms_saml_attributes_present()) {
-      $data['content'] = drupal_get_form('forms_login_form');
-  }
-}
-
 /**
  * Returns a simple login button for NetID logins
  */
@@ -217,15 +204,26 @@ function _forms_map_user_attribute_to_field($field_name) {
  * Logs user out if SAML Session missing (e.g. browser was closed)
  */
 function _forms_handle_kerberized_form(&$form) {
-  if (user_is_logged_in() && _forms_user_has_netid()) {
-    if (_forms_saml_attributes_present()) {
+  if (user_is_logged_in()) {
+    if (_forms_user_has_netid() && _forms_saml_attributes_present()) {
       _forms_set_kerberized_values($form);
     } // SimpleSAMLAuth info missing, so force the user to log in again
     else {
       require_once(drupal_get_path('module', 'user') . '/user.pages.inc');
       user_logout(); // See forms_drupal_goto_alter for redirect
+      _forms_replace_kerberized_form_with_login_button($form);
     }
+  } // Not logged in, so remove the form
+  else {
+    _forms_replace_kerberized_form_with_login_button($form);
   }
+}
+
+/**
+ * Replaces the form with the login button
+ */
+function _forms_replace_kerberized_form_with_login_button(&$form) {
+  $form = drupal_get_form('forms_login_form');
 }
 
 /**

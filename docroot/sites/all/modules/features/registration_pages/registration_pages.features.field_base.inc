@@ -40,13 +40,13 @@ function registration_pages_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_event_registration_period'
-  $field_bases['field_event_registration_period'] = array(
+  // Exported field_base: 'field_form_active_date_range'
+  $field_bases['field_form_active_date_range'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_event_registration_period',
+    'field_name' => 'field_form_active_date_range',
     'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
@@ -70,13 +70,13 @@ function registration_pages_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_event_text_after_reg_close'
-  $field_bases['field_event_text_after_reg_close'] = array(
+  // Exported field_base: 'field_message_after_form_close'
+  $field_bases['field_message_after_form_close'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_event_text_after_reg_close',
+    'field_name' => 'field_message_after_form_close',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -97,13 +97,13 @@ function registration_pages_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_event_text_before_reg_open'
-  $field_bases['field_event_text_before_reg_open'] = array(
+  // Exported field_base: 'field_message_before_form_open'
+  $field_bases['field_message_before_form_open'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_event_text_before_reg_open',
+    'field_name' => 'field_message_before_form_open',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
