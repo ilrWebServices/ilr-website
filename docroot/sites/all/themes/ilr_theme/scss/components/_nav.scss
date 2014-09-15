@@ -138,7 +138,11 @@ nav.main { // Main nav
     top: 0;
     padding: 1em;
     z-index: 1;
-    //background: rgba(black, .1); // uncomment this to see the target area
+
+    &:hover {
+      background: rgba(black, .05);
+    }
+
 
     span {
       padding: 0;
