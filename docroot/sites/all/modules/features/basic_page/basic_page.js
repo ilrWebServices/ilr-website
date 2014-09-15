@@ -73,9 +73,8 @@
       var animating = false;
 
       function positionCurrentMenu() {
-        selector = (mobileNavActive()) ? '#jPanelMenu-menu' : '#sidebar-first'; // targets the li
-        currentPage = $(selector + ' a.active').parent();
-        currentMenu = $(currentPage).parent(); // targets the ul
+        currentPage = getCurrentPage();
+        currentMenu = getCurrentMenu();
         minHeight = $('.main-nav .section > ul.menu').height();
         $(currentMenu).parents('ul.menu').each(function() {
           parent = $(this).closest('li.expanded');
@@ -104,6 +103,19 @@
         }
 
         addForwardButtonToMenus();
+      }
+
+      function getCurrentPage() {
+        selector = (mobileNavActive()) ? '#jPanelMenu-menu' : '#sidebar-first'; // targets the li
+        return $(selector + ' a.active').parent();
+      }
+
+      function getCurrentMenu() {
+        children = $(currentPage).children('ul.menu:first');
+        if (children.length) {
+          return $(currentPage).children('ul.menu:first');
+        }
+        return $(currentPage).parent(); // targets the ul
       }
 
       function menuNeedsBackButton(el) {
