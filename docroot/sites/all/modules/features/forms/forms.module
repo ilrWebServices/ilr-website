@@ -224,7 +224,7 @@ function _process_career_services_contact_form(&$form) {
     trim($form['field_career_services_how_to_dir']['und']['#value']), 0, -3);
   $admin_email = $email_value_stripped . '@cornell.edu';
   $subject = trim($form['field_subject_line']['und'][0]['value']['#value']);
-  _forms_send_emails($form, $admin_email, $subject);
+  _forms_send_emails($form, 'aaronf@cornell.edu', $subject);
 }
 
 function _forms_career_services_contact_options() {
@@ -417,11 +417,13 @@ function _forms_admin_receives_confirmation_email($form) {
  */
 function _entity_display_form_data($form) {
   // Set display of form fields for email and anything else
+  // $entityform_id is getting set when there is not a file attachment
   $entityform_id = $form['#entity']->entityform_id;
+  $entityform_id = 8;
   $entityform = entityform_load($entityform_id);
   $controller = entity_get_controller('entityform');
   $content = $controller->view(array($entityform->entityform_id => $entityform), 'confirmation', NULL, TRUE);
-  return entity2text_renderarray_to_text($content);
+  return drupal_render($content);
 }
 
 /**
