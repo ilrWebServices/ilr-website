@@ -118,6 +118,22 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_address'
+  $field_bases['field_address'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_address',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'addressfield',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'addressfield',
+  );
+
   // Exported field_base: 'field_address_line_1'
   $field_bases['field_address_line_1'] = array(
     'active' => 1,
@@ -4578,6 +4594,7 @@ function ilr_field_bases_field_default_field_bases() {
     'translatable' => 0,
     'type' => 'text_long',
   );
+
   // Exported field_base: 'field_registration_end_date'
   $field_bases['field_registration_end_date'] = array(
     'active' => 1,
