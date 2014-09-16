@@ -10,6 +10,7 @@ dependencies[] = email
 dependencies[] = entity
 dependencies[] = entity2text
 dependencies[] = entityform
+dependencies[] = entityform_views_label
 dependencies[] = entityreference
 dependencies[] = entityreference_current
 dependencies[] = features
