@@ -43,6 +43,7 @@ dependencies[] = ilr_footer_menu
 dependencies[] = ilr_manual_listing
 dependencies[] = ilr_sdc_listings
 dependencies[] = ilr_settings
+dependencies[] = ilr_sub_pages
 dependencies[] = ilr_workspan
 dependencies[] = jpanelmenu
 dependencies[] = localist_block

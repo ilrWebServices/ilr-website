@@ -191,6 +191,15 @@ function ilr_update_7009() {
 }
 
 /**
+ * Enables ilr_sub_pages module
+ */
+function ilr_update_7010() {
+  module_enable(array(
+    'ilr_sub_pages',
+  ));
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {
