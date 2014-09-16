@@ -133,11 +133,8 @@ features[field_base][] = field_ilrweb_publications_file
 features[field_base][] = field_ilrweb_vita_file
 features[field_base][] = field_ilrweb_vita_html
 features[field_base][] = field_image
-<<<<<<< HEAD
 features[field_base][] = field_interests_and_goals
-=======
 features[field_base][] = field_is_full
->>>>>>> sdc_coures
 features[field_base][] = field_isbn
 features[field_base][] = field_job_title
 features[field_base][] = field_keywords
