@@ -161,14 +161,14 @@ function ilr_update_7006() {
 /**
  * Enable Date format and JQuery update admin version variables.
  */
-function ilr_update_7006() {
+function ilr_update_7007() {
   variable_set('date_format_ilr_short_day_only', 'M j');
   variable_set('jquery_update_jquery_admin_version', '1.5');
 }
 /**
  * Set default date formats.
  */
-function ilr_update_7007() {
+function ilr_update_7008() {
   $formats_defaults = array(
     'long' =>'l, F j, Y - g:ia',
     'medium' => 'D, m/d/Y - g:ia',
@@ -182,7 +182,7 @@ function ilr_update_7007() {
 /**
  * Enables ilr_editable_settings
  */
-function ilr_update_7008() {
+function ilr_update_7009() {
   module_enable(array(
     'ilr_editable_settings',
   ));
