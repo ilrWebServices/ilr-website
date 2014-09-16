@@ -269,3 +269,108 @@ function _ilr_block_load($module, $delta, $theme) {
   }
   return $block;
 }
+/**
+ * Lookup entity id for feeds item by guid and importer id.
+ * @param $guid
+ * @param $importer_id
+ * @param int $feed_nid
+ * @return int|FALSE
+ */
+function _ilr_get_feeds_item_entity_id($guid, $importer_id, $feed_nid = 0){
+  return db_select('feeds_item')
+    ->fields('feeds_item', array('entity_id'))
+    ->condition('id', $importer_id)
+    ->condition('feed_nid', $feed_nid)
+    ->condition('guid', $guid)
+    ->execute()
+    ->fetchField();
+}
+
+/**
+ * Return the feed source property for a target.
+ *
+ * Useful modules like FeedsJson and FeedsXpath where sources are not descriptive
+ *  for example "jsonpath_parser:3"
+ * @param $target
+ * @param FeedsImporter $importer
+ * @return null|string
+ */
+function _ilr_get_feed_source_for_target($target, FeedsImporter $importer) {
+  $mappings = $importer->processor->config['mappings'];
+  foreach ($mappings as $mapping) {
+    if ($mapping['target'] == $target) {
+      return $mapping['source'];
+    }
+  }
+  return NULL;
+}
+/**
+ * Get all parent/child relationships for an entity reference field.
+ * @param $fieldname
+ * @param null $bundle
+ *  Bundle name
+ * @param string $entity_type
+ * @return array
+ *  - keys - nid of parent
+ *  - values - array of child nids
+ */
+function _ilr_get_entityreference_relations($fieldname, $bundle = NULL, $entity_type = 'node') {
+  $children = array();
+
+  $sql = "SELECT entity_id as parent_nid, {$fieldname}_target_id as child_nid FROM {field_data_{$fieldname}}"
+    . " WHERE deleted = 0 "
+    . " and entity_type = :entity_type ";
+  $args[':entity_type'] = $entity_type;
+  if ($bundle) {
+    $sql .= " and bundle = :bundle";
+    $args[':bundle'] = $bundle;
+  }
+  $result = db_query($sql, $args);
+
+  while ($record = $result->fetchAssoc()) {
+    $children[$record['parent_nid']][] = $record['child_nid'];
+  }
+  return $children;
+}
+/**
+ * Implements hook_date_format_types()
+ */
+function ilr_date_format_types() {
+  return array(
+    'ilr_short_day_only' => t('Short Day only'),
+  );
+}
+
+/**
+ * Implements hook_date_formats().
+ */
+function ilr_date_formats() {
+  $formats = array(
+    'ilr_short_day_only' => 'M j',
+  );
+  $return_formats = array();
+  foreach ($formats as $format_type => $date_format) {
+    $return_formats[] = array(
+      'type' => $format_type,
+      'format' => $date_format,
+      'locales' => array(),
+    );
+  }
+  return $return_formats;
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ *
+ * Add extra entity view modes.
+ * Entity View Modes modules doesn't support Features.
+ * @see https://www.drupal.org/node/1425620
+ */
+function ilr_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes'] += array(
+    'reference_field' => array(
+      'label' => t('Reference Field'),
+      'custom settings' => FALSE,
+    ),
+  );
+}

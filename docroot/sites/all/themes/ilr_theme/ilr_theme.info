@@ -4,6 +4,8 @@ core = 7.x
 
 stylesheets[all][] = css/style.css
 
+scripts[] = js/ilr_theme.js
+
 regions[header] = Header
 regions[highlighted] = Highlighted
 regions[content] = Content

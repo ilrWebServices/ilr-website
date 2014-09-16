@@ -1935,7 +1935,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<strong>1. Academic goals essay:</strong> Describe, in two or three paragraphs, the academic and personal goals you would like to meet through your participation in the ILR/UCD Semester in Dublin Program.
+  <strong>1. Academic goals essay:</strong> Describe, in two or three paragraphs, the academic and personal goals you would like to meet through your participation in the ILR/UCD Semester in Dublin Program.
 </div>
 ',
       ),
@@ -3038,6 +3038,32 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_is_full'
+  $field_bases['field_is_full'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_is_full',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'No',
+        1 => 'Yes',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_isbn'

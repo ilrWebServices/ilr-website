@@ -37,6 +37,12 @@ function ilr_manual_listing_views_default_views() {
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['element_type'] = 'strong';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  /* Field: Content: Catalog Number Prefix */
+  $handler->display->display_options['fields']['field_catalog_prefix']['id'] = 'field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['table'] = 'field_data_field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['field'] = 'field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['label'] = '';
+  $handler->display->display_options['fields']['field_catalog_prefix']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -46,6 +52,23 @@ function ilr_manual_listing_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Class Dates */
+  $handler->display->display_options['fields']['field_class_dates']['id'] = 'field_class_dates';
+  $handler->display->display_options['fields']['field_class_dates']['table'] = 'field_data_field_class_dates';
+  $handler->display->display_options['fields']['field_class_dates']['field'] = 'field_class_dates';
+  $handler->display->display_options['fields']['field_class_dates']['label'] = '';
+  $handler->display->display_options['fields']['field_class_dates']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_class_dates']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -77,16 +100,21 @@ function ilr_manual_listing_views_default_views() {
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'entityreference_style';
   $handler->display->display_options['style_options']['search_fields'] = array(
+    'field_catalog_prefix' => 'field_catalog_prefix',
     'title' => 'title',
     'type' => 0,
+    'field_class_dates' => 0,
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entityreference_fields';
   $handler->display->display_options['row_options']['inline'] = array(
     'type' => 'type',
+    'field_catalog_prefix' => 'field_catalog_prefix',
     'title' => 'title',
+    'field_class_dates' => 'field_class_dates',
   );
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $export['content_referencer'] = $view;
 

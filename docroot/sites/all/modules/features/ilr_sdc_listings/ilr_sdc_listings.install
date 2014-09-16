@@ -1,0 +1,41 @@
+<?php
+/**
+ * @file
+ * ilr_sdc_listings install and update hooks.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function ilr_sdc_listings_install() {
+  _ilr_sdc_listings_set_importer_sources();
+
+  // Set feature specific variables
+  variable_set('ilr_sdc_listings_reg_url', 'http://www.ilr.cornell.edu/registration/process/processcard.cfm');
+}
+
+/**
+ * Set the source urls for all feeds importers in this module
+ */
+function _ilr_sdc_listings_set_importer_sources() {
+  /**
+   * In order to use local copies of import files in development:
+   * use: drush vset ilr_sdc_listings_base_feed_url 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/'
+   * or set in settings.php
+   * $conf['ilr_sdc_listings_base_feed_url'] = 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/';
+   */
+  $base_url = variable_get('ilr_sdc_listings_base_feed_url', 'http://www.ilr.cornell.edu/registration/feeds/get.cfm?q=');
+
+  $importer_files = _ilr_sdc_listings_get_importer_files();
+  foreach ($importer_files as $importer_id => $importer_file) {
+    $source = feeds_source($importer_id);
+    $source->addConfig(array(
+      'FeedsHTTPFetcher' => array(
+        'source' => $base_url . $importer_file,
+      ),
+    ));
+    $source->save();
+  }
+  // Faculty/Class relationship file is not used in a feed.
+  variable_set('ilr_sdc_listings_faculty_class_assignments_url', $base_url . 'classFacultyFromSDC');
+}
