@@ -1206,6 +1206,16 @@ class EntityformController extends EntityAPIController {
   public function create(array $values = array()) {
     // We need a type for the bundle but it may not be valid.
     if (isset($values['type'])) {
+      // Rules supplies a EntityformType object instead of string.
+      if (is_object($values['type'])) {
+        if (get_class($values['type']) == 'EntityformType') {
+          $values['type'] = $values['type']->type;
+        }
+        else {
+          // This should never happen.
+          throw new EntityMalformedException("Object sent for EntityformType not of class EntityformType.");
+        }
+      }
       $type = entityform_get_types($values['type']);
     }
     if (empty($type)) {
@@ -1469,16 +1479,30 @@ function _entityform_view_add_all_fields(&$view, $display_id, $bundle_name) {
         'options' => array(
           'type' => $field_display['type'],
           'settings' => $field_display['settings'],
+          'entityform_settings' => array(
+            'autofield' => TRUE,
+            'view_mode' => $view_mode,
+          ),
         ),
         'weight' => $field_display['weight'],
       );
     }
   }
-  // reorder fields to match view mode
-  uasort($autofields, 'drupal_sort_weight');
-  foreach ($autofields as $field) {
-    $view->add_item($display_id, 'field', "field_data_{$field['field_name']}", $field['field_name'], $field['options']);
+  if ($autofields) {
+    // Add settings to indicate the View has autofields added from Entitform
+    $view->display[$display_id]->entityform_settings = array(
+      'autofields' => TRUE,
+      'view_mode' => $view_mode,
+      'entityform_type' => $bundle_name,
+    );
+    // reorder fields to match view mode
+    uasort($autofields, 'drupal_sort_weight');
+    drupal_alter('entityform_views_autofields', $autofields, $view, $display_id);
+    foreach ($autofields as $field) {
+      $view->add_item($display_id, 'field', "field_data_{$field['field_name']}", $field['field_name'], $field['options']);
+    }
   }
+
 }
 
 /**
