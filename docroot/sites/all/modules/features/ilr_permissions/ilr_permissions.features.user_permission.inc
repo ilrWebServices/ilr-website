@@ -124,6 +124,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'add top level menu items'.
+  $permissions['add top level menu items'] = array(
+    'name' => 'add top level menu items',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'ilr_sub_pages',
+  );
+
   // Exported permission: 'administer actions'.
   $permissions['administer actions'] = array(
     'name' => 'administer actions',
@@ -609,6 +618,16 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'create sub page'.
+  $permissions['create sub page'] = array(
+    'name' => 'create sub page',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'ilr_sub_pages',
   );
 
   // Exported permission: 'create url aliases'.
@@ -1345,6 +1364,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'features',
   );
 
+  // Exported permission: 'menu view unpublished'.
+  $permissions['menu view unpublished'] = array(
+    'name' => 'menu view unpublished',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'menu_view_unpublished',
+  );
+
   // Exported permission: 'notify of path changes'.
   $permissions['notify of path changes'] = array(
     'name' => 'notify of path changes',
@@ -1352,6 +1381,16 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'pathauto',
+  );
+
+  // Exported permission: 'reorder pages'.
+  $permissions['reorder pages'] = array(
+    'name' => 'reorder pages',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'submenu_reorder',
   );
 
   // Exported permission: 'revert revisions'.
@@ -1482,6 +1521,15 @@ function ilr_permissions_user_default_permissions() {
       'wit editor' => 'wit editor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'view page advanced menu settings'.
+  $permissions['view page advanced menu settings'] = array(
+    'name' => 'view page advanced menu settings',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'ilr_sub_pages',
   );
 
   // Exported permission: 'view revisions'.
