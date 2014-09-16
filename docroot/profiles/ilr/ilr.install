@@ -165,6 +165,7 @@ function ilr_update_7007() {
   variable_set('date_format_ilr_short_day_only', 'M j');
   variable_set('jquery_update_jquery_admin_version', '1.5');
 }
+
 /**
  * Set default date formats.
  */
@@ -179,12 +180,13 @@ function ilr_update_7008() {
     variable_set("date_format_$date_type", $formats_default);
   }
 }
+
 /**
- * Enables ilr_editable_settings
+ * Enables ilr_sdc_settings
  */
 function ilr_update_7009() {
   module_enable(array(
-    'ilr_editable_settings',
+    'ilr_sdc_listings',
   ));
 }
 
