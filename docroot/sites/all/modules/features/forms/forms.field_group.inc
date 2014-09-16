@@ -444,6 +444,68 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_experience|entityform|ilr_student_advisor_application_|default';
+  $field_group->group_name = 'group_experience';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'ilr_student_advisor_application_';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Your thoughts and experience',
+    'weight' => '25',
+    'children' => array(
+      0 => 'field_role',
+      1 => 'field_experience',
+      2 => 'field_comments',
+      3 => 'field_relationship',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Your thoughts and experience',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-experience field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_experience|entityform|ilr_student_advisor_application_|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_experience|entityform|ilr_student_advisor_application_|form';
+  $field_group->group_name = 'group_experience';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'ilr_student_advisor_application_';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Your thoughts and experience',
+    'weight' => '14',
+    'children' => array(
+      0 => 'field_role',
+      1 => 'field_experience',
+      2 => 'field_comments',
+      3 => 'field_relationship',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Your thoughts and experience',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-experience field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_experience|entityform|ilr_student_advisor_application_|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_home_address|entityform|dublin_application_form|default';
   $field_group->group_name = 'group_home_address';
   $field_group->entity_type = 'entityform';
@@ -896,6 +958,70 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_permanent_address|entityform|ilr_student_advisor_application_|default';
+  $field_group->group_name = 'group_permanent_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'ilr_student_advisor_application_';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Permanent address',
+    'weight' => '12',
+    'children' => array(
+      0 => 'field_address_line_1',
+      1 => 'field_address_line_2',
+      2 => 'field_city',
+      3 => 'field_state_province',
+      4 => 'field_zip_code',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Permanent address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-permanent-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_permanent_address|entityform|ilr_student_advisor_application_|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_permanent_address|entityform|ilr_student_advisor_application_|form';
+  $field_group->group_name = 'group_permanent_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'ilr_student_advisor_application_';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Permanent address',
+    'weight' => '12',
+    'children' => array(
+      0 => 'field_address_line_1',
+      1 => 'field_address_line_2',
+      2 => 'field_city',
+      3 => 'field_state_province',
+      4 => 'field_zip_code',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Permanent address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-permanent-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_permanent_address|entityform|ilr_student_advisor_application_|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_phone_numbers|entityform|dublin_application_form|default';
   $field_group->group_name = 'group_phone_numbers';
   $field_group->entity_type = 'entityform';
@@ -1084,6 +1210,72 @@ function forms_field_group_info() {
     ),
   );
   $export['group_student_data|entityform|dublin_application_form|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_summer_address|entityform|ilr_student_advisor_application_|default';
+  $field_group->group_name = 'group_summer_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'ilr_student_advisor_application_';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Summer address',
+    'weight' => '18',
+    'children' => array(
+      0 => 'field_summer_address_status',
+      1 => 'field_address_line_1_additional',
+      2 => 'field_address_line_2_additional',
+      3 => 'field_city_additional',
+      4 => 'field_state_province_additional',
+      5 => 'field_zip_postal_code_additional',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Summer address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-summer-address field-group-fieldset',
+        'description' => 'We may need to contact you over the summer. Please let us know how to reach you.',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_summer_address|entityform|ilr_student_advisor_application_|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_summer_address|entityform|ilr_student_advisor_application_|form';
+  $field_group->group_name = 'group_summer_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'ilr_student_advisor_application_';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Summer address',
+    'weight' => '13',
+    'children' => array(
+      0 => 'field_summer_address_status',
+      1 => 'field_address_line_1_additional',
+      2 => 'field_address_line_2_additional',
+      3 => 'field_city_additional',
+      4 => 'field_state_province_additional',
+      5 => 'field_zip_postal_code_additional',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Summer address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-summer-address field-group-fieldset',
+        'description' => 'We may need to contact you over the summer. Please let us know how to reach you.',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_summer_address|entityform|ilr_student_advisor_application_|form'] = $field_group;
 
   return $export;
 }
