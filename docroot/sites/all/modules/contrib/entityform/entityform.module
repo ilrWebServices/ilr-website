@@ -1474,7 +1474,7 @@ function _entityform_view_add_all_fields(&$view, $display_id, $bundle_name) {
     $field_display = isset($instance['display'][$view_mode]) ? $instance['display'][$view_mode] : $instance['display']['default'];
     // don't add to autofields if this field was hidden in the view mode
     if ($field_display['type'] != 'hidden') {
-      $autofields[] = array(
+      $autofield = array(
         'field_name' => $instance['field_name'],
         'options' => array(
           'type' => $field_display['type'],
@@ -1486,6 +1486,11 @@ function _entityform_view_add_all_fields(&$view, $display_id, $bundle_name) {
         ),
         'weight' => $field_display['weight'],
       );
+      // Use the field label for this instance of the field.
+      if (!empty($instance['label'])) {
+        $autofield['options']['label'] = t($instance['label']);
+      }
+      $autofields[] = $autofield;
     }
   }
   if ($autofields) {
