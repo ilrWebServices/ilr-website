@@ -61,12 +61,23 @@ function ilr_sub_pages_menu() {
 
 /**
  * Implements hook_menu_alter().
- *
- * Make order changes to the menu
+ * Adds access callback for menu pages
+ * Makes order changes to the menu
  */
 function ilr_sub_pages_menu_alter(&$items) {
   $items['node/%node/reorder']['title'] = 'Reorder sub pages';
   $items['node/%node/reorder']['weight'] = $items['node/%node/sub']['weight'] + 1;
+
+  $items['admin/structure/menu']['access callback'] = 'ilr_sub_pages_check_permissions';
+}
+
+/**
+ * Confirms that the user can access top level menu items b/c
+ * sub pages require administer menu permissions, but we don't
+ * want contributors to manage the menu at admin/structure/menu
+ */
+function ilr_sub_pages_check_permissions() {
+  return user_access('add top level menu items');
 }
 
 /**
