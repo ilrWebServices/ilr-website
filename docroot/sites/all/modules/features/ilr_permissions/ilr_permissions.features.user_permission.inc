@@ -1547,6 +1547,9 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view the administration theme',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'faculty admin' => 'faculty admin',
+      'neutral admin' => 'neutral admin',
     ),
     'module' => 'system',
   );
