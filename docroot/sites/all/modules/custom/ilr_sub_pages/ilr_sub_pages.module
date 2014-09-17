@@ -13,7 +13,7 @@ function ilr_sub_pages_admin_menu_output_alter(&$content) {
     else {
       unset($content['menu']['admin/structure']['admin/structure/menu']);
     }
-    unset($content['menu']['admin/content']['node/add']['node/add/basic_page']);
+    unset($content['menu']['admin/content']['node/add']['node/add/basic-page']);
   }
 }
 
@@ -159,7 +159,7 @@ function _ilr_sub_pages_create_sub_page_access($node, $access_arg) {
 function _ilr_sub_pages_get_number_of_links_in_toolbar($menu_links, $menu_path) {
   $count = 0;
   foreach ($menu_links[$menu_path] as $child_path => $value) {
-    if (strpos($child_path, $menu_path) === 0) {
+    if (strpos($child_path, $menu_path) === 0 && strpos($child_path,'entityforms') == FALSE) { // For some reason, admin/structure/entityforms/list is showing up, so we ignore it too
       $count++;
     }
   }
