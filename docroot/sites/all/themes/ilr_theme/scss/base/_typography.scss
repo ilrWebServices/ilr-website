@@ -239,7 +239,12 @@ a, a:visited {
   color: $link;
   text-decoration: none;
   outline: 0;
+
+  #content & {
+    text-decoration: underline;
+  }
 }
+
 a:hover, a:focus {
   color: $link-hover;
   text-decoration: underline;
