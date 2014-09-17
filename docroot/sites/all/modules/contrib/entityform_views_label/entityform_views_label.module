@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file entityform_views_label.module
+ * Override Views field label for fields added by Entityform.
+ * Depends on field_formatter_label module.
+ *
+ * Currently field_formatter_label is broken and needs this patch: https://www.drupal.org/node/2167309
+ */
+
+/**
+ * Implements hook_entityform_views_autofields_alter().
+ */
+function entityform_views_label_entityform_views_autofields_alter(&$autofields, $view, $display_id) {
+    $view_entityform_settings = $view->display[$display_id]->entityform_settings;
+    $instances = field_info_instances('entityform', $view_entityform_settings['entityform_type']);
+    $view_mode = $view_entityform_settings['view_mode'];
+    foreach ($autofields as &$autofield) {
+      //Check to see this field was added by entityform
+      if ($instances[$autofield['field_name']]) {
+        $field = $instances[$autofield['field_name']];
+        if ($label = _entityform_view_label_get_label($field, $view_mode)) {
+          $autofield['options']['label'] = $label;
+        }
+      }
+    }
+}
+/**
+ * Get the label for the Field.
+ * @param $field
+ * @param $view_mode
+ */
+function _entityform_view_label_get_label($field, $view_mode) {
+  $settings = isset($field['display'][$view_mode]['settings']) ? $field['display'][$view_mode]['settings'] : $field['display']['default']['settings'];
+  if (strlen(trim($settings['field_formatter_label'])) > 0) {
+    return t(check_plain($settings['field_formatter_label']));
+  }
+  return '';
+}

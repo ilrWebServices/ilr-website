@@ -490,7 +490,7 @@ function entityform_views_default_views() {
     $handler->display->display_options['pager']['options']['offset'] = '0';
     $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
     $handler->display->display_options['style_options']['provide_file'] = 1;
-    $handler->display->display_options['style_options']['filename'] = 'submission_%1-title.csv';
+    $handler->display->display_options['style_options']['filename'] = '%1-title_submissions_%timestamp-full.csv';
     $handler->display->display_options['style_options']['parent_sort'] = 1;
     $handler->display->display_options['style_options']['quote'] = 1;
     $handler->display->display_options['style_options']['trim'] = 0;
