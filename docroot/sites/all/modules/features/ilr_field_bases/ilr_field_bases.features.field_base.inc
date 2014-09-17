@@ -2022,6 +2022,47 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_editor_notes'
+  $field_bases['field_editor_notes'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_editor_notes',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'editor_note',
+    'settings' => array(
+      'display' => 1,
+      'limit' => 10,
+      'modal' => array(
+        'edit' => array(
+          'height' => 'auto',
+          'width' => 600,
+        ),
+        'overlay' => array(
+          'bgcolor' => 'FFFFFF',
+          'opacity' => 0.9,
+        ),
+        'remove' => array(
+          'height' => 'auto',
+          'width' => 320,
+        ),
+      ),
+      'notes_maxlength' => 0,
+      'notes_placeholder' => 'Create a note',
+      'notes_size' => 5,
+      'order' => 'DESC',
+      'pager' => array(
+        'enabled' => 1,
+        'pager_below' => 1,
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'editor_note',
+  );
+
   // Exported field_base: 'field_education'
   $field_bases['field_education'] = array(
     'active' => 1,
