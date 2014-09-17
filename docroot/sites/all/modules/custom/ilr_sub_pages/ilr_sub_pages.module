@@ -54,6 +54,8 @@ function ilr_sub_pages_menu() {
     'type' => MENU_LOCAL_TASK,
     'access callback' => '_ilr_sub_pages_create_sub_page_access',
     'access arguments' => array(1, 'create sub page'),
+    'theme callback' => 'variable_get',
+    'theme arguments' => array('admin_theme'),
   );
 
   return $items;
@@ -67,6 +69,8 @@ function ilr_sub_pages_menu() {
 function ilr_sub_pages_menu_alter(&$items) {
   $items['node/%node/reorder']['title'] = 'Reorder sub pages';
   $items['node/%node/reorder']['weight'] = $items['node/%node/sub']['weight'] + 1;
+  $items['node/%node/reorder']['theme callback'] = 'variable_get';
+  $items['node/%node/reorder']['theme arguments'] = array('admin_theme');
 
   $items['admin/structure/menu']['access callback'] = 'ilr_sub_pages_check_permissions';
 }
