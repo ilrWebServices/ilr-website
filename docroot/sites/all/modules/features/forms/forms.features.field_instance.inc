@@ -3906,6 +3906,47 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-faculty_request_for_ta_or_ra-field_account_number'
+  $field_instances['entityform-faculty_request_for_ta_or_ra-field_account_number'] = array(
+    'bundle' => 'faculty_request_for_ta_or_ra',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_account_number',
+    'label' => 'Account Number (for externally funded projects)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'entityform-faculty_request_for_ta_or_ra-field_comments'
   $field_instances['entityform-faculty_request_for_ta_or_ra-field_comments'] = array(
     'bundle' => 'faculty_request_for_ta_or_ra',
@@ -3920,7 +3961,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3938,7 +3979,89 @@ function forms_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-faculty_request_for_ta_or_ra-field_course_name'
+  $field_instances['entityform-faculty_request_for_ta_or_ra-field_course_name'] = array(
+    'bundle' => 'faculty_request_for_ta_or_ra',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_course_name',
+    'label' => 'Course name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
       'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-faculty_request_for_ta_or_ra-field_course_number'
+  $field_instances['entityform-faculty_request_for_ta_or_ra-field_course_number'] = array(
+    'bundle' => 'faculty_request_for_ta_or_ra',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_course_number',
+    'label' => 'Course number (e.g. ILRLR 2100)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
     ),
   );
 
@@ -4125,8 +4248,8 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-faculty_request_for_ta_or_ra-field_ra_additonal_information'
-  $field_instances['entityform-faculty_request_for_ta_or_ra-field_ra_additonal_information'] = array(
+  // Exported field_instance: 'entityform-faculty_request_for_ta_or_ra-field_project_name'
+  $field_instances['entityform-faculty_request_for_ta_or_ra-field_project_name'] = array(
     'bundle' => 'faculty_request_for_ta_or_ra',
     'default_value' => NULL,
     'deleted' => 0,
@@ -4134,31 +4257,34 @@ function forms_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'field_collection',
+        'module' => 'text',
         'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
-          'edit' => 'Edit',
           'field_formatter_label' => '',
-          'view_mode' => 'full',
         ),
-        'type' => 'field_collection_view',
+        'type' => 'text_default',
         'weight' => 9,
       ),
     ),
     'entity_type' => 'entityform',
-    'field_name' => 'field_ra_additonal_information',
-    'label' => 'RA Additional Information',
-    'required' => 0,
+    'field_name' => 'field_project_name',
+    'label' => 'Project name or description (e.g. Chaired RA, Assistant Professor RA)',
+    'required' => 1,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'field_collection',
-      'settings' => array(),
-      'type' => 'field_collection_embed',
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
       'weight' => 9,
     ),
   );
@@ -4193,44 +4319,6 @@ function forms_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-faculty_request_for_ta_or_ra-field_ta_course_information'
-  $field_instances['entityform-faculty_request_for_ta_or_ra-field_ta_course_information'] = array(
-    'bundle' => 'faculty_request_for_ta_or_ra',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
-          'edit' => 'Edit',
-          'field_formatter_label' => '',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
-        'weight' => 8,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_ta_course_information',
-    'label' => 'TA Course Information',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'field_collection',
-      'settings' => array(),
-      'type' => 'field_collection_embed',
-      'weight' => 8,
     ),
   );
 
@@ -9242,150 +9330,6 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_ra_additonal_information-field_account_number'
-  $field_instances['field_collection_item-field_ra_additonal_information-field_account_number'] = array(
-    'bundle' => 'field_ra_additonal_information',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_account_number',
-    'label' => 'Account Number (for externally funded projects)',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_ra_additonal_information-field_project_name'
-  $field_instances['field_collection_item-field_ra_additonal_information-field_project_name'] = array(
-    'bundle' => 'field_ra_additonal_information',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_project_name',
-    'label' => 'Project name or description (e.g. Chaired RA, Assistant Professor RA)',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_ta_course_information-field_course_name'
-  $field_instances['field_collection_item-field_ta_course_information-field_course_name'] = array(
-    'bundle' => 'field_ta_course_information',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_course_name',
-    'label' => 'Course name',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_ta_course_information-field_course_number'
-  $field_instances['field_collection_item-field_ta_course_information-field_course_number'] = array(
-    'bundle' => 'field_ta_course_information',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_course_number',
-    'label' => 'Course number (e.g. ILRLR 2100)',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 2,
-    ),
-  );
-
   // Exported field_instance: 'user-user-field_netid'
   $field_instances['user-user-field_netid'] = array(
     'bundle' => 'user',
@@ -9525,7 +9469,6 @@ function forms_field_default_field_instances() {
   t('Professor');
   t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
   t('Questions and comments');
-  t('RA Additional Information');
   t('School or college');
   t('Semester for which you are requesting assistantship');
   t('Semester off-campus');
@@ -9547,7 +9490,6 @@ function forms_field_default_field_instances() {
   t('Supervisor');
   t('Supporter 1');
   t('Supporter 2');
-  t('TA Course Information');
   t('Technical needs (Examples: Microphone, PowerPoint, laptop, DVD, videotaping. Enter "none" if you have NO technical needs.)');
   t('Title');
   t('Title of paper or poster');
