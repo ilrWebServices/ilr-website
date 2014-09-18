@@ -13,6 +13,34 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_7th_semester_check|entityform|undergrad_appl_for_graduation|form';
+  $field_group->group_name = 'group_7th_semester_check';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'undergrad_appl_for_graduation';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => '7th Semester Check',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_7th_semester_check_certif',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => '7th Semester Check',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-7th-semester-check field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_7th_semester_check|entityform|undergrad_appl_for_graduation|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_academics_dublin|entityform|dublin_application_form|default';
   $field_group->group_name = 'group_academics_dublin';
   $field_group->entity_type = 'entityform';
@@ -351,6 +379,34 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_degree_plan|entityform|grad_student_appl_for_graduation|form';
+  $field_group->group_name = 'group_degree_plan';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'grad_student_appl_for_graduation';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Degree Plan',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_degree_plan_submitted',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Degree Plan',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-degree-plan field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_degree_plan|entityform|grad_student_appl_for_graduation|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_dublin_essays|entityform|dublin_application_form|default';
   $field_group->group_name = 'group_dublin_essays';
   $field_group->entity_type = 'entityform';
@@ -502,6 +558,62 @@ function forms_field_group_info() {
     ),
   );
   $export['group_experience|entityform|ilr_student_advisor_application_|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_graduation_date|entityform|grad_student_appl_for_graduation|form';
+  $field_group->group_name = 'group_graduation_date';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'grad_student_appl_for_graduation';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Graduation Date',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_grad_date_appl_for_graduat',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Graduation Date',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-graduation-date field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_graduation_date|entityform|grad_student_appl_for_graduation|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_graduation_date|entityform|undergrad_appl_for_graduation|form';
+  $field_group->group_name = 'group_graduation_date';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'undergrad_appl_for_graduation';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Graduation Date',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_grad_date_appl_for_graduat',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Graduation Date',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-graduation-date field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_graduation_date|entityform|undergrad_appl_for_graduation|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -662,6 +774,69 @@ function forms_field_group_info() {
     ),
   );
   $export['group_letters_of_support|entityform|employee_recognition_nomination_|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_name_for_diploma|entityform|undergrad_appl_for_graduation|form';
+  $field_group->group_name = 'group_name_for_diploma';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'undergrad_appl_for_graduation';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Name for Diploma',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_full_name',
+      1 => 'field_name_correct_for_diploma',
+      2 => 'field_full_name_additional',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Name for Diploma',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-name-for-diploma field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_name_for_diploma|entityform|undergrad_appl_for_graduation|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_name_student_id|entityform|grad_student_appl_for_graduation|form';
+  $field_group->group_name = 'group_name_student_id';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'grad_student_appl_for_graduation';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Name and Student ID',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_full_name',
+      1 => 'field_name_correct_for_diploma',
+      2 => 'field_full_name_additional',
+      3 => 'field_student_id_number',
+      4 => 'field_pronunciation',
+      5 => 'field_pronunciation_markup',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Name and Student ID',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-name-student-id field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_name_student_id|entityform|grad_student_appl_for_graduation|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

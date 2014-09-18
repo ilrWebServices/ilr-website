@@ -4391,6 +4391,343 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-grad_student_appl_for_graduation-field_degree_plan_submitted'
+  $field_instances['entityform-grad_student_appl_for_graduation-field_degree_plan_submitted'] = array(
+    'bundle' => 'grad_student_appl_for_graduation',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_degree_plan_submitted',
+    'label' => '	I certify that I have read the above information and that I have submitted my Degree Plan.',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-grad_student_appl_for_graduation-field_email'
+  $field_instances['entityform-grad_student_appl_for_graduation-field_email'] = array(
+    'bundle' => 'grad_student_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-grad_student_appl_for_graduation-field_full_name'
+  $field_instances['entityform-grad_student_appl_for_graduation-field_full_name'] = array(
+    'bundle' => 'grad_student_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_full_name',
+    'label' => 'Name currently on record',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-grad_student_appl_for_graduation-field_full_name_additional'
+  $field_instances['entityform-grad_student_appl_for_graduation-field_full_name_additional'] = array(
+    'bundle' => 'grad_student_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '(If this is a different spelling than what appears on your student center, please visit the Office of the University Registrar in B7 Day hall to have it officially changed.)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_full_name_additional',
+    'label' => 'Name, if different from above',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-grad_student_appl_for_graduation-field_grad_date_appl_for_graduat'
+  $field_instances['entityform-grad_student_appl_for_graduation-field_grad_date_appl_for_graduat'] = array(
+    'bundle' => 'grad_student_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_grad_date_appl_for_graduat',
+    'label' => 'When will you graduate?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-grad_student_appl_for_graduation-field_name_correct_for_diploma'
+  $field_instances['entityform-grad_student_appl_for_graduation-field_name_correct_for_diploma'] = array(
+    'bundle' => 'grad_student_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_name_correct_for_diploma',
+    'label' => 'Name as it should be spelled on your diploma',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-grad_student_appl_for_graduation-field_pronunciation'
+  $field_instances['entityform-grad_student_appl_for_graduation-field_pronunciation'] = array(
+    'bundle' => 'grad_student_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Example: Barack Obama could submit "bah-RAHK o-BAH-mah"',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_pronunciation',
+    'label' => 'Correct pronunciation',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-grad_student_appl_for_graduation-field_pronunciation_markup'
+  $field_instances['entityform-grad_student_appl_for_graduation-field_pronunciation_markup'] = array(
+    'bundle' => 'grad_student_appl_for_graduation',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_pronunciation_markup',
+    'label' => 'pronunciation markup',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-grad_student_appl_for_graduation-field_student_id_number'
+  $field_instances['entityform-grad_student_appl_for_graduation-field_student_id_number'] = array(
+    'bundle' => 'grad_student_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_student_id_number',
+    'label' => 'Student ID Number',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'entityform-grad_travel_grant_application-field_amount_1'
   $field_instances['entityform-grad_travel_grant_application-field_amount_1'] = array(
     'bundle' => 'grad_travel_grant_application',
@@ -9223,6 +9560,232 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-undergrad_appl_for_graduation-field_7th_semester_check_certif'
+  $field_instances['entityform-undergrad_appl_for_graduation-field_7th_semester_check_certif'] = array(
+    'bundle' => 'undergrad_appl_for_graduation',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_7th_semester_check_certif',
+    'label' => ' I certify that I have read the above information and that I have completed my 7th semester check.',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-undergrad_appl_for_graduation-field_email'
+  $field_instances['entityform-undergrad_appl_for_graduation-field_email'] = array(
+    'bundle' => 'undergrad_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-undergrad_appl_for_graduation-field_full_name'
+  $field_instances['entityform-undergrad_appl_for_graduation-field_full_name'] = array(
+    'bundle' => 'undergrad_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_full_name',
+    'label' => 'Name currently on record',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-undergrad_appl_for_graduation-field_full_name_additional'
+  $field_instances['entityform-undergrad_appl_for_graduation-field_full_name_additional'] = array(
+    'bundle' => 'undergrad_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '(If this is a different spelling than what appears on your student center, please visit the Office of the University Registrar in B7 Day hall to have it officially changed.)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_full_name_additional',
+    'label' => 'Name, if different from above',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-undergrad_appl_for_graduation-field_grad_date_appl_for_graduat'
+  $field_instances['entityform-undergrad_appl_for_graduation-field_grad_date_appl_for_graduat'] = array(
+    'bundle' => 'undergrad_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_grad_date_appl_for_graduat',
+    'label' => 'When will you graduate?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-undergrad_appl_for_graduation-field_name_correct_for_diploma'
+  $field_instances['entityform-undergrad_appl_for_graduation-field_name_correct_for_diploma'] = array(
+    'bundle' => 'undergrad_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_name_correct_for_diploma',
+    'label' => 'Name as it should be spelled on your diploma',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'entityform-worker_institute_contact_form-field_comments'
   $field_instances['entityform-worker_institute_contact_form-field_comments'] = array(
     'bundle' => 'worker_institute_contact_form',
@@ -9365,9 +9928,12 @@ function forms_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('	I certify that I have read the above information and that I have submitted my Degree Plan.');
   t(' Departments in which you prefer assignment (Indicate at least top two choices.)');
+  t(' I certify that I have read the above information and that I have completed my 7th semester check.');
   t(' May we contact you by email about information on our offerings?');
   t(' Semester requesting assistantship');
+  t('(If this is a different spelling than what appears on your student center, please visit the Office of the University Registrar in B7 Day hall to have it officially changed.)');
   t('<p>If there are technical needs, training is required prior to the use of a room. Please contact ILR Technology Services to make these arrangements via email at: <a href="mailto:ilrvtc@cornell.edu>ilrvtc@cornell.edu</a>.</p>
 <p>Note: ILR Technology Services does not support Skype in the classrooms. If using Skype, please use your own laptop.</p>');
   t('Academic goals essay');
@@ -9403,6 +9969,7 @@ function forms_field_default_field_instances() {
   t('Company');
   t('Concentration');
   t('Conference name');
+  t('Correct pronunciation');
   t('Country');
   t('Course name');
   t('Course number (e.g. ILRLR 2100)');
@@ -9424,6 +9991,7 @@ function forms_field_default_field_instances() {
   t('Ethnicity (optional; check all that apply)');
   t('Event date');
   t('Event name');
+  t('Example: Barack Obama could submit "bah-RAHK o-BAH-mah"');
   t('Expected graduation date (mm/yyyy)');
   t('Expiration date (mm/yyyy)');
   t('Fax');
@@ -9451,6 +10019,9 @@ function forms_field_default_field_instances() {
   t('Middle name');
   t('Minor subject(s)');
   t('Name');
+  t('Name as it should be spelled on your diploma');
+  t('Name currently on record');
+  t('Name, if different from above');
   t('NetID');
   t('Nominee name');
   t('Number of assistants requested');
@@ -9497,6 +10068,7 @@ function forms_field_default_field_instances() {
   t('Visa type (if non-US citizen)');
   t('What do you see as the role of a Student Advisor?');
   t('What past experiences have you had which would help you in the role of a Student Advisor?');
+  t('When will you graduate?');
   t('Which topics and types of programs are you interested in? (check all that apply)');
   t('Year');
   t('Your letter of support');
@@ -9507,6 +10079,7 @@ function forms_field_default_field_instances() {
   t('Zip code (permanent)');
   t('Zip code (summer)');
   t('empl recog supp text');
+  t('pronunciation markup');
 
   return $field_instances;
 }
