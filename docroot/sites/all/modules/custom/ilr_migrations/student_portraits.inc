@@ -27,8 +27,12 @@ class StudentPortraitMigration extends Migration {
         ->defaultValue(1);
     $this->addFieldMapping("body:format")
         ->defaultValue('full_html');
+    $this->addFieldMapping('title','student_name')
+        ->description('See setTitle().');
+    $this->addFieldMapping('field_expected_graduation_date','class_year')
+        ->description('See setClassYear().');
     $this->addFieldMapping('field_portrait_experience','work_experience')
-        ->description('See setExperiences().');;
+        ->description('See setExperiences().');
     $this->addFieldMapping('field_image:source_dir')
         ->defaultValue('http://www.ilr.cornell.edu/admissions/Student_Experience/images/');
 
@@ -60,14 +64,24 @@ class StudentPortraitMigration extends Migration {
       }
     }
 
-    //Handle work experiences
+    //Handle title, work experiences and classYear
+    $row->student_name = $this->setTitle($row);
     $row->work_experience = $this->setExperiences($row);
+    $row->class_year = $this->setClassYear($row);
 
     return TRUE;
   }
 
   public function prepare($node, $row) {
     $node->status = 1;
+  }
+
+  private function setTitle($row) {
+    return $row->firstName . ' ' . $row->lastName;
+  }
+
+  private function setClassYear($row) {
+    return '01-01-20' . $row->classYear; // Date needs the month and day, even though it's not being output
   }
 
   private function setExperiences($row) {
@@ -82,20 +96,20 @@ class StudentPortraitMigration extends Migration {
   private function _get_field_mappings() {
     $mappings = array(
       "id" => 'DNM',
-      "blurb" => 'body:summary',
-      "classYear" => 'field_expected_graduation_date',
+      "blurb" => 'field_teaser',
+      "classYear" => 'DNM',
       "experience1" => 'DNM',
       "experience2" => 'DNM',
       "experience3" => 'DNM',
       "experience4" => 'DNM',
-      "firstName" => 'field_first_name',
+      "firstName" => 'DNM',
       "home_rotation" => 'DNM',
       "interests" => 'field_interests_and_goals',
-      "lastName" => 'field_last_name',
+      "lastName" => 'DNM',
       "mainPhoto" => 'field_image',
       "quote" => 'field_quote',
       "story" => 'body',
-      "title" => 'title',
+      "title" => 'body:summary',
       "mainPhoto-width" => 'DNM',
       "mainPhoto-height" => 'DNM',
       "mainPhoto-alt" => 'field_image:alt',

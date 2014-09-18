@@ -5,3 +5,14 @@
  */
 
 include_once 'student_portraits.features.inc';
+
+
+function student_portraits_node_view($variables) {
+  if ($variables->type == 'student_portrait') {
+    drupal_set_title($variables->title . ', \'' . _student_portraits_get_graduation_year($variables->field_expected_graduation_date));
+  }
+}
+
+function _student_portraits_get_graduation_year($field) {
+  return substr($field['und'][0]['value'], 2, 2);
+}
