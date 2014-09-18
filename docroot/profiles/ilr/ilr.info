@@ -55,6 +55,7 @@ dependencies[] = promo
 dependencies[] = registration_pages
 dependencies[] = scheinman_neutral
 dependencies[] = spotlight
+dependencies[] = student_portraits
 dependencies[] = tagged_content_block
 dependencies[] = wit
 dependencies[] = youtube_videos

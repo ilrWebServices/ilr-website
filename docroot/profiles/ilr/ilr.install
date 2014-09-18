@@ -200,6 +200,15 @@ function ilr_update_7010() {
 }
 
 /**
+ * Enables student_portaits feature
+ */
+function ilr_update_7011() {
+  module_enable(array(
+    'student_portraits',
+  ));
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {
