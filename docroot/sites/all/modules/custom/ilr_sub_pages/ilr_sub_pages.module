@@ -120,16 +120,17 @@ function ilr_sub_pages_form_basic_page_node_form_alter(&$form, &$form_state, $fo
     $form['menu']['link']['parent']['#default_value'] = $form['#node']->ilr_default_menu_parent;
   }
 
-  // Require the menu link title and parent fields.
-  $form['menu']['enabled']['#value'] = TRUE;
-  $form['menu']['enabled']['#disabled'] = TRUE;
-  $form['menu']['link']['link_title']['#required'] = TRUE;
-  $form['menu']['link']['parent']['#required'] = TRUE;
-
-  // Restricts access to certain menu form fields
-  $form['menu']['link']['description']['#access'] = $view_advanced_menu;
-  $form['menu']['link']['weight']['#access'] = $view_advanced_menu;
-  $form['menu']['link']['parent']['#access'] = $view_advanced_menu;
+  if (!$view_advanced_menu) {
+    // Require the menu link title and parent fields.
+    $form['menu']['enabled']['#value'] = TRUE;
+    $form['menu']['enabled']['#disabled'] = TRUE;
+    $form['menu']['link']['link_title']['#required'] = TRUE;
+    $form['menu']['link']['parent']['#required'] = TRUE;
+    // Restricts access to certain menu form fields
+    $form['menu']['link']['description']['#access'] = FALSE;
+    $form['menu']['link']['weight']['#access'] = FALSE;
+    $form['menu']['link']['parent']['#access'] = FALSE;
+  }
 
   // Add an additional validation callback to this form
   $form['#validate'][] = 'ilr_sub_pages_node_form_validate';
