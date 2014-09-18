@@ -455,6 +455,7 @@ function forms_default_entityform_type() {
     "label" : "Graduate Student Request for Teaching\\/Research Assistantship",
     "data" : {
       "draftable" : 0,
+      "draft_redirect_path" : "",
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "full_html" },
       "submit_button_text" : "",
@@ -478,6 +479,7 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
+        "9" : 0,
         "6" : 0,
         "5" : 0,
         "7" : 0,
@@ -488,6 +490,7 @@ function forms_default_entityform_type() {
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "block_enable" : true,
       "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 1
     },
@@ -499,6 +502,7 @@ function forms_default_entityform_type() {
     "label" : "ILR Organizational Behavior Lab - ExPO Contact Form",
     "data" : {
       "draftable" : 0,
+      "draft_redirect_path" : "",
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "full_html" },
       "submit_button_text" : "",
@@ -522,6 +526,7 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
+        "9" : 0,
         "6" : 0,
         "5" : 0,
         "7" : 0,
@@ -532,6 +537,7 @@ function forms_default_entityform_type() {
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "block_enable" : true,
       "form_submission_ilr_recipient" : "jag97@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0
     },
@@ -555,7 +561,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "ILR Student Advisor Application Confirmation",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for applying to be an ILR student advisor. Your application has been submitted, and you will receive a confirmation email shortly.\\u003C\\/p\\u003E",
+        "value" : "\\u003Cp\\u003EThank you for applying to be an ILR student advisor. Your application has been submitted, and you will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -578,6 +584,7 @@ function forms_default_entityform_type() {
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "block_enable" : true,
       "form_submission_ilr_recipient" : "ilr_oss@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 1
     },
@@ -589,6 +596,7 @@ function forms_default_entityform_type() {
     "label" : "ILR Website Feedback",
     "data" : {
       "draftable" : 0,
+      "draft_redirect_path" : "",
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "full_html" },
       "submit_button_text" : "Send Comments",
@@ -622,8 +630,10 @@ function forms_default_entityform_type() {
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "block_enable" : true,
-      "kerberized" : 0,
-      "form_submission_ilr_recipient" : "ilrweb@cornell.edu"
+      "form_submission_ilr_recipient" : "ilrweb@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 0,
+      "kerberized" : 0
     },
     "weight" : "0",
     "paths" : []
@@ -633,6 +643,7 @@ function forms_default_entityform_type() {
     "label" : "International Programs Contact Form",
     "data" : {
       "draftable" : 0,
+      "draft_redirect_path" : "",
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "full_html" },
       "submit_button_text" : "",
@@ -656,6 +667,7 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
+        "9" : 0,
         "6" : 0,
         "5" : 0,
         "7" : 0,
@@ -666,6 +678,7 @@ function forms_default_entityform_type() {
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "block_enable" : true,
       "form_submission_ilr_recipient" : "ilrip@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0
     },
@@ -712,6 +725,7 @@ function forms_default_entityform_type() {
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "block_enable" : true,
       "form_submission_ilr_recipient" : "ilrcustomerservice@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0
     },
@@ -758,6 +772,7 @@ function forms_default_entityform_type() {
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "block_enable" : true,
       "form_submission_ilr_recipient" : "laborRoundtable@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0
     },
@@ -769,6 +784,7 @@ function forms_default_entityform_type() {
     "label" : "Library Contact Form",
     "data" : {
       "draftable" : 0,
+      "draft_redirect_path" : "",
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "full_html" },
       "submit_button_text" : "",
@@ -803,6 +819,7 @@ function forms_default_entityform_type() {
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "block_enable" : true,
       "form_submission_ilr_recipient" : "ilrlib@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0
     },
@@ -826,7 +843,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for submitting your request for a faculty advisor or department. You will receive a confirmation email shortly.\\u003C\\/p\\u003E",
+        "value" : "\\u003Cp\\u003EThank you for submitting your request for a faculty advisor or department. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -849,6 +866,7 @@ function forms_default_entityform_type() {
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "block_enable" : true,
       "form_submission_ilr_recipient" : "ilr_oss@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 1
     },
@@ -895,6 +913,7 @@ function forms_default_entityform_type() {
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "block_enable" : true,
       "form_submission_ilr_recipient" : "ilrcr@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0
     },
@@ -906,6 +925,7 @@ function forms_default_entityform_type() {
     "label" : "Student Services Contact Form",
     "data" : {
       "draftable" : 0,
+      "draft_redirect_path" : "",
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "full_html" },
       "submit_button_text" : "Submit",
@@ -929,6 +949,7 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
+        "9" : 0,
         "6" : 0,
         "5" : 0,
         "7" : 0,
@@ -939,6 +960,7 @@ function forms_default_entityform_type() {
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "block_enable" : true,
       "form_submission_ilr_recipient" : "ilr_oss@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0
     },
@@ -997,6 +1019,7 @@ function forms_default_entityform_type() {
     "label" : "Worker Institute Contact Form",
     "data" : {
       "draftable" : 0,
+      "draft_redirect_path" : "",
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "full_html" },
       "submit_button_text" : "",
@@ -1020,6 +1043,7 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
+        "9" : 0,
         "6" : 0,
         "5" : 0,
         "7" : 0,
@@ -1033,6 +1057,7 @@ function forms_default_entityform_type() {
       },
       "block_enable" : true,
       "form_submission_ilr_recipient" : "workerInstitute@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0
     },
