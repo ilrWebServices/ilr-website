@@ -57,17 +57,17 @@ class StudentPortraitMigration extends Migration {
       return FALSE;
     }
 
+    //Handle title, work experiences and classYear
+    $row->student_name = $this->setTitle($row);
+    $row->work_experience = $this->setExperiences($row);
+    $row->class_year = $this->setClassYear($row);
+
     // Remove empty values from data
     foreach ($row as $key => $value) {
       if (empty($value) || $value == 'blank') {
         $row->$key = array();
       }
     }
-
-    //Handle title, work experiences and classYear
-    $row->student_name = $this->setTitle($row);
-    $row->work_experience = $this->setExperiences($row);
-    $row->class_year = $this->setClassYear($row);
 
     return TRUE;
   }
