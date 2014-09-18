@@ -49,6 +49,7 @@ function forms_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
  */
 function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
   _forms_add_admin_email_field($form);
+  _forms_add_checkbox_to_send_admin_email($form);
   _forms_add_checkbox_to_include_name_in_admin_subject_line($form);
   _forms_add_kerberized_checkbox($form);
 }
@@ -66,12 +67,29 @@ function _forms_add_admin_email_field(&$form) {
     '#title' => t('ILR Admin email'),
     '#weight' => -1,
     '#default_value' => $previously_set_recip,
-    '#description' => t('The email address - usually a special mailbox - to send the admin email to when a form is submitted.  Leave blank if no admin email is to be sent (rarely the case).'),
+    '#description' => t('The email address - usually a special mailbox - to send the admin email to when a form is submitted. Also used as From email for user confirmation, so don\'t leave it blank.'),
   );
 }
 
 /**
- * Add checkbox to "indicate whether to append the user's name to the
+ * Add checkbox to indicate whether to send the admin an email confirmation
+ * for this entityform
+ */
+function _forms_add_checkbox_to_send_admin_email(&$form) {
+  $send_confirmation_email_to_admin = (isset($form['#entityform_type']->data['send_confirmation_email_to_admin']))
+    ? $form['#entityform_type']->data['send_confirmation_email_to_admin']
+    : 0;
+
+  $form['data']['send_confirmation_email_to_admin'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Send confirmation email to admin'),
+    '#weight' => 0,
+    '#default_value' => $send_confirmation_email_to_admin,
+  );
+}
+
+/**
+ * Add checkbox to indicate whether to append the user's name to the
  * admin email subject line" to the "edit" form for this entityform
  */
 function _forms_add_checkbox_to_include_name_in_admin_subject_line(&$form) {
@@ -313,16 +331,18 @@ function _forms_send_emails($form, $admin_email, $subject='') {
   }
 
   // Admin email
-  $to = $admin_email;
-  $from = _get_string_or_default($form['field_email']['und'][0]['email']['#value'], $admin_email);
-  if (empty($subject)) {
-    $subject = $form_title . ' submitted';
+  if (_forms_admin_receives_confirmation_email($form)) {
+    $to = $admin_email;
+    $from = _get_string_or_default($form['field_email']['und'][0]['email']['#value'], $admin_email);
+    if (empty($subject)) {
+      $subject = $form_title . ' submitted';
+    }
+    if (_forms_admin_subject_line_includes_user_name($form)) {
+      $subject .= " - $user_name";
+    }
+    $body =  _entity_display_form_data($form);
+    _send_email_for_entity_form($to, $from, $subject, $body);
   }
-  if (_forms_admin_subject_line_includes_user_name($form)) {
-    $subject .= " - $user_name";
-  }
-  $body =  _entity_display_form_data($form);
-  _send_email_for_entity_form($to, $from, $subject, $body);
 }
 
 /**
@@ -334,8 +354,9 @@ function _forms_get_form_title($form) {
 
 /**
  * Get the email address of the form admin, i.e. the person or special mailbox
- * in ILR who needs to get an email when the form is subitted
- * If admin recipient isn't supplied in the form, use ILRWEB_EMAIL
+ * in ILR who needs to get an email when the form is subitted, also this is the
+ * "from" address in the confirmation email to the user.
+ * If admin recipient isn't supplied in the form, return ILRWEB address
  */
 function _forms_get_admin_email($form) {
   $entityform_type = entityform_type_load($form['#entity']->type);
@@ -353,6 +374,17 @@ function _forms_admin_subject_line_includes_user_name($form) {
     ? FALSE
     : $entityform_type->data['add_user_name_to_subject_line'];
   return $admin_subject_line_includes_user_name;
+}
+
+/**
+ * Checks whether the admin should receive a confirmation email
+ */
+function _forms_admin_receives_confirmation_email($form) {
+  $entityform_type = entityform_type_load($form['#entity']->type);
+  $admin_receives_confirmation_email = empty($entityform_type->data['send_confirmation_email_to_admin'])
+    ? FALSE
+    : $entityform_type->data['send_confirmation_email_to_admin'];
+  return $admin_receives_confirmation_email;
 }
 
 /**
