@@ -46,6 +46,8 @@ function ilr_sdc_listings_feeds_after_parse(FeedsSource $source, FeedsParserResu
   $importer_ids = _ilr_sdc_listings_get_importer_ids();
 
   if (in_array($source->importer->id, $importer_ids)) {
+    // These importer might take a longtime.
+    set_time_limit(600);
     foreach ($result->items as &$item) {
       _ilr_sdc_listings_prepare_source_item($item, $source);
     }
