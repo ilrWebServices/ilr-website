@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Student Portraits feature.
+ */
+
+include_once 'student_portraits.features.inc';
