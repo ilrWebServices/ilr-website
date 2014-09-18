@@ -28,13 +28,16 @@ class StudentPortraitMigration extends Migration {
     $this->addFieldMapping("body:format")
         ->defaultValue('full_html');
     $this->addFieldMapping('title','student_name')
-        ->description('See setTitle().');
+        ->description('See getFullName().');
     $this->addFieldMapping('field_expected_graduation_date','class_year')
         ->description('See setClassYear().');
     $this->addFieldMapping('field_portrait_experience','work_experience')
         ->description('See setExperiences().');
     $this->addFieldMapping('field_image:source_dir')
         ->defaultValue('http://www.ilr.cornell.edu/admissions/Student_Experience/images/');
+    // todo: fix broken alt text since the media module handles this differently
+    // $this->addFieldMapping('field_image:alt', 'student_name');
+    // $this->addFieldMapping('field_image:title', 'student_name');
 
     $mappings = $this->_get_field_mappings();
 
@@ -58,7 +61,7 @@ class StudentPortraitMigration extends Migration {
     }
 
     //Handle title, work experiences and classYear
-    $row->student_name = $this->setTitle($row);
+    $row->student_name = $this->getFullName($row);
     $row->work_experience = $this->setExperiences($row);
     $row->class_year = $this->setClassYear($row);
 
@@ -76,7 +79,7 @@ class StudentPortraitMigration extends Migration {
     $node->status = 1;
   }
 
-  private function setTitle($row) {
+  private function getFullName($row) {
     return $row->firstName . ' ' . $row->lastName;
   }
 
@@ -112,7 +115,7 @@ class StudentPortraitMigration extends Migration {
       "title" => 'body:summary',
       "mainPhoto-width" => 'DNM',
       "mainPhoto-height" => 'DNM',
-      "mainPhoto-alt" => 'field_image:alt',
+      "mainPhoto-alt" => 'DNM',
     );
 
     return $mappings;
