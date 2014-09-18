@@ -374,3 +374,21 @@ function ilr_entity_info_alter(&$entity_info) {
     ),
   );
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter() for feeds_import_form.
+ *
+ * If the user doesn't have "Administer Feeds" permission then remove options to change settings.
+ */
+function ilr_form_feeds_import_form_alter(&$form, &$form_state, $form_id) {
+ $importer = feeds_importer($form['#importer_id']);
+ $form['feeds_description'] = array(
+   '#type' => 'markup',
+   '#markup' => check_plain($importer->config['description']),
+   '#weight' => -100,
+ );
+
+ if (!user_access('administer feeds')) {
+   $form['feeds']['#access'] = FALSE;
+ }
+}

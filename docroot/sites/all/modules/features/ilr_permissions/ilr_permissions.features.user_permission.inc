@@ -16,6 +16,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'course admin' => 'course admin',
       'neutral admin' => 'neutral admin',
       'wit editor' => 'wit editor',
     ),
@@ -28,6 +29,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'course admin' => 'course admin',
       'neutral admin' => 'neutral admin',
       'wit editor' => 'wit editor',
     ),
@@ -1344,6 +1346,16 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'features',
+  );
+
+  // Exported permission: 'import sdc_course_importer feeds'.
+  $permissions['import sdc_course_importer feeds'] = array(
+    'name' => 'import sdc_course_importer feeds',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
+    ),
+    'module' => 'feeds',
   );
 
   // Exported permission: 'import wysiwyg templates'.

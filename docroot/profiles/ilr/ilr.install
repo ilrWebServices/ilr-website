@@ -203,12 +203,13 @@ function ilr_update_7010() {
  * Custom function for role creation
  */
 function _ilr_create_roles() {
-  $roles = array('administrator','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin');
+  $roles = array('administrator','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin', 'course admin');
 
+  $weight = 0;
   foreach ($roles as $name) {
     $role = new stdClass();
     $role->name = $name;
-    $role->weight = 2;
+    $role->weight = $weight++;
     user_role_save($role);
   }
 }

@@ -208,7 +208,7 @@ function ilr_sdc_listings_feeds_importer_default() {
   $feeds_importer->id = 'sdc_course_importer';
   $feeds_importer->config = array(
     'name' => 'SDC Course Importer',
-    'description' => 'SDC course json importer',
+    'description' => 'SDC Course importer. This will also trigger class and faculty importers.',
     'fetcher' => array(
       'plugin_key' => 'FeedsHTTPFetcher',
       'config' => array(
