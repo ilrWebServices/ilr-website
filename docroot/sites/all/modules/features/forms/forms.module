@@ -257,6 +257,29 @@ function _forms_year_relative_options($firstOffset, $lastOffset) {
 }
 
 /**
+ * Generate the options for graduation dates for the graduate student and undergrad
+ * Application to Graduate forms.
+ * If current date is before Sept. 1st, use current year, otherwise use next year.
+ */
+function _forms_application_to_graduate_graduation_dates() {
+  $grad_year_display = date('Y');
+  $today_timestamp = time();
+
+  $switch_date = $grad_year_display . '-09-01';
+  $switch_date_timestamp = strtotime($switch_date);
+
+  if ($today_timestamp > $switch_date_timestamp) {
+    $grad_year_display++;
+  }
+
+  return array(
+    'January$grad_year_display' => 'January ' . $grad_year_display,
+    'May$grad_year_display' => 'May ' . $grad_year_display,
+    'August$grad_year_display' => 'August ' . $grad_year_display,
+  );
+}
+
+/**
  * Send user and admin emails
  */
 function _forms_send_emails($form, $admin_email, $subject='') {

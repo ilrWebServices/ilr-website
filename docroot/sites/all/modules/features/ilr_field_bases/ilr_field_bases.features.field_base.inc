@@ -2789,12 +2789,8 @@ function ilr_field_bases_field_default_field_bases() {
     'locked' => 0,
     'module' => 'list',
     'settings' => array(
-      'allowed_values' => array(
-        'sample' => 'sample',
-        'apple' => 'apple',
-        'orange' => 'orange',
-      ),
-      'allowed_values_function' => '',
+      'allowed_values' => array(),
+      'allowed_values_function' => '_forms_application_to_graduate_graduation_dates',
     ),
     'translatable' => 0,
     'type' => 'list_text',
