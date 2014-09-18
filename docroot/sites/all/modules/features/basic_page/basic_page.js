@@ -51,7 +51,6 @@
         currentMenu = $(this).closest('ul.menu');
         oldMenu = $(currentMenu).parent().closest('ul.menu');
         yPosition = $(currentMenu).position().top;
-        // console.log(yPosition);
         $(currentMenu).animate({ "left": "100%"}, easing, function(){
           $(this).css('visibility','hidden');
         });
@@ -75,11 +74,10 @@
       function positionCurrentMenu() {
         currentPage = getCurrentPage();
         currentMenu = getCurrentMenu();
-        minHeight = $('.main-nav .section > ul.menu').height();
+        minHeight = getMinHeight();
         $(currentMenu).parents('ul.menu').each(function() {
           parent = $(this).closest('li.expanded');
           yPosition = (parent.position()) ? parent.position().top : 0;
-          //console.log(yPosition);
           $(this).css({
             'left': 0,
             'top':'-' + yPosition + 'px',
@@ -93,7 +91,6 @@
 
         if ($(currentMenu).parent().position()) {
           yPosition = $(currentMenu).parent().position().top;
-          // console.log(yPosition);
           $(currentMenu).css({
             'left': 0,
             'top':'-' + yPosition + 'px',
@@ -103,6 +100,17 @@
         }
 
         addForwardButtonToMenus();
+      }
+
+      function getMinHeight() {
+        height = 0;
+        $('#sidebar-first ul.menu').each(function() {
+          if ($(this).height() > height) {
+            height = $(this).height() + 50;
+          }
+        });
+        $('#sidebar-first').css('min-height', height);
+        return height;
       }
 
       function getCurrentPage() {
