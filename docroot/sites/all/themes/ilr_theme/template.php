@@ -132,3 +132,35 @@ function ilr_theme_breadcrumb($variables) {
 function ilr_theme_format_city_state_zip($city, $state, $zip) {
   return $city . ', ' . $state . ' ' . $zip;
 }
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ */
+function ilr_theme_preprocess_field(&$variables) {
+  _ilr_theme_add_line_breaks($variables);
+}
+
+/**
+ * Add HTML line breaks to plain text fields.
+ *
+ * Fixs Drupal core bug.
+ * @link https://www.drupal.org/node/1152216#comment-8575081
+ * @param $variables
+ */
+function _ilr_theme_add_line_breaks(&$variables) {
+  if (
+    isset($variables['element']['#items'][0]) &&
+    (
+      !isset($variables['element']['#items'][0]['format']) ||
+      $variables['element']['#items'][0]['format'] === 'text_plain'
+    )
+  ) {
+    foreach ($variables['items'] as $index => $value) {
+      $markup = isset($variables['items'][$index]['#markup']) ? $variables['items'][$index]['#markup'] : '';
+      if (!empty($markup)) {
+        $variables['items'][$index]['#markup'] = nl2br($markup);
+      }
+    }
+  }
+}
