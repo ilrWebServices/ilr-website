@@ -28,4 +28,5 @@ features[variable][] = menu_parent_student_portrait
 features[variable][] = node_options_student_portrait
 features[variable][] = node_preview_student_portrait
 features[variable][] = node_submitted_student_portrait
+features[variable][] = pathauto_node_student_portrait_pattern
 project path = sites/all/modules/features
