@@ -98,8 +98,8 @@ function ilr_install() {
 
   // Explicitly call any hook_update_n implementations needed to run on install.
   // These hooks will be skipped by initial install but will run on updatedb of current site.
-  ilr_update_7006();
   ilr_update_7007();
+  ilr_update_7008();
 
   // Add Migrations here as necessary
 }
