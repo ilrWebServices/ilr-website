@@ -3,6 +3,10 @@
 /**
  * @file entityform_block.module
  * Provides blocks for entity form types.
+ *
+ * Originally from sandbox project
+ * @see https://www.drupal.org/sandbox/joachim/2045865
+ * Changed so all Entityform types have blocks.
  */
 
 /**
@@ -11,12 +15,10 @@
 function entityform_block_block_info() {
   $blocks = array();
   foreach (entityform_get_types() as $entityform_type) {
-    if (!empty($entityform_type->data['block_enable'])) {
-      $blocks[$entityform_type->type] = array(
-        'info' => t('Entityform: ' . $entityform_type->label()),
-        // DRUPAL_CACHE_PER_ROLE will be assumed.
-      );
-    }
+    $blocks[$entityform_type->type] = array(
+      'info' => t('Entityform: ' . $entityform_type->label()),
+      // DRUPAL_CACHE_PER_ROLE will be assumed.
+    );
   }
 
   return $blocks;
@@ -38,44 +40,13 @@ function entityform_block_block_view($delta = '') {
   return $block;
 }
 
-/**
- * Implements hook_form_FORM_ID_alter(): entityform_type_form.
- */
-function entityform_block_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
-  $entityform_type = $form['#entityform_type'];
-
-  $form['data']['block_set'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Block settings'),
-    '#collapsible' => TRUE,
-    '#group' => 'additional_settings',
-    '#weight' => 150,
-  );
-  $form['data']['block_set']['block_enable'] = array(
-    '#type' => 'checkbox',
-    '#disabled' => TRUE,
-    '#title' => t('Provide block'),
-    '#default_value' => _entityform_block_block_enabled(),
-    '#description' => t('All entityforms are enabled as blocks'),
-    '#parents' => array('data', 'block_enable'),
-  );
-}
 
 /**
- * Automatically sets all _entityform_blocks to enabled at present
- */
-function _entityform_block_block_enabled() {
-  return TRUE;
-}
-
-/**
+ * Implements hook_entityform_type_update().
+ *
  * Fixes a bug with blockreference where the block doesn't show up
  * See similar issue at https://drupal.org/node/1891928#comment-7093512
  */
-function entityform_block_entity_update($entity, $type) {
-  if ($type == 'entityform_type') {
-    if (isset($entity->data['block_enable']) && $entity->data['block_enable'] == TRUE) {
-      block_flush_caches();
-    }
-  }
+function entityform_block_entityform_type_update($entity) {
+  block_flush_caches();
 }
