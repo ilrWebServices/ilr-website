@@ -23,6 +23,7 @@ dependencies[] = markup
 dependencies[] = options
 dependencies[] = text
 dependencies[] = views_data_export
+features[conditional_fields][] = entityform:faculty_request_for_ta_or_ra
 features[conditional_fields][] = entityform:grad_student_appl_for_graduation
 features[conditional_fields][] = entityform:grad_travel_grant_application
 features[conditional_fields][] = entityform:ilr_student_advisor_application_
