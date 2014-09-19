@@ -156,6 +156,10 @@
       }
 
       setTimeout(positionCurrentMenu,100);
+
+      $(window).load(function() {
+        $("body").removeClass("preloading");
+      });
     }
   };
 }(jQuery));

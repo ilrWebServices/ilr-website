@@ -6,6 +6,9 @@
  * Adds sitewide javascript files
  */
 function ilr_theme_preprocess_html(&$variables) {
+  // Add preload class to page
+  $variables['classes_array'][] = 'preloading';
+
   // Header
   drupal_add_js('//use.typekit.net/bva6ofm.js', array('type' => 'external'));
   drupal_add_js($variables['directory'] . '/js/vendor/modernizr-2.6.2.min.js');
