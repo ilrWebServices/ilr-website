@@ -209,6 +209,18 @@ function ilr_update_7011() {
 }
 
 /**
+ * Adds course admin role
+ */
+function ilr_update_7012() {
+  if (!user_role_load_by_name('course admin')) {
+    $role = new stdClass();
+    $role->name = 'course admin';
+    $role->weight = $weight++;
+    user_role_save($role);
+  }
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {
