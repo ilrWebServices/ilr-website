@@ -29,7 +29,7 @@ function ilr_sdc_listings_context_default_contexts() {
         'views-sdc_class_calendar-block_nav' => array(
           'module' => 'views',
           'delta' => 'sdc_class_calendar-block_nav',
-          'region' => 'sidebar_first',
+          'region' => 'sidebar_second',
           'weight' => '-10',
         ),
       ),
@@ -66,7 +66,7 @@ function ilr_sdc_listings_context_default_contexts() {
         'views-73db2c822e14579fd1e53fd86dc8c940' => array(
           'module' => 'views',
           'delta' => '73db2c822e14579fd1e53fd86dc8c940',
-          'region' => 'sidebar_first',
+          'region' => 'sidebar_second',
           'weight' => '-8',
         ),
       ),
@@ -103,7 +103,7 @@ function ilr_sdc_listings_context_default_contexts() {
         'views-363ea68b38af370847aacc9006f09d9e' => array(
           'module' => 'views',
           'delta' => '363ea68b38af370847aacc9006f09d9e',
-          'region' => 'sidebar_first',
+          'region' => 'sidebar_second',
           'weight' => '-8',
         ),
       ),
