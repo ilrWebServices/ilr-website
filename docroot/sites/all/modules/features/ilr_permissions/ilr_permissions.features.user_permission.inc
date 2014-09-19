@@ -600,6 +600,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'create registration_page content'.
+  $permissions['create registration_page content'] = array(
+    'name' => 'create registration_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create scheinman_neutral content'.
   $permissions['create scheinman_neutral content'] = array(
     'name' => 'create scheinman_neutral content',
@@ -615,6 +624,16 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'create spotlight content'.
   $permissions['create spotlight content'] = array(
     'name' => 'create spotlight content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create student_portrait content'.
+  $permissions['create student_portrait content'] = array(
+    'name' => 'create student_portrait content',
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
@@ -648,6 +667,16 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'wit editor' => 'wit editor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create workspan content'.
+  $permissions['create workspan content'] = array(
+    'name' => 'create workspan content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -761,6 +790,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any registration_page content'.
+  $permissions['delete any registration_page content'] = array(
+    'name' => 'delete any registration_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any scheinman_neutral content'.
   $permissions['delete any scheinman_neutral content'] = array(
     'name' => 'delete any scheinman_neutral content',
@@ -780,6 +818,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any student_portrait content'.
+  $permissions['delete any student_portrait content'] = array(
+    'name' => 'delete any student_portrait content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any tagged_content bean'.
   $permissions['delete any tagged_content bean'] = array(
     'name' => 'delete any tagged_content bean',
@@ -792,6 +839,15 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'delete any wit_article content'.
   $permissions['delete any wit_article content'] = array(
     'name' => 'delete any wit_article content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any workspan content'.
+  $permissions['delete any workspan content'] = array(
+    'name' => 'delete any workspan content',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -887,6 +943,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete own registration_page content'.
+  $permissions['delete own registration_page content'] = array(
+    'name' => 'delete own registration_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete own scheinman_neutral content'.
   $permissions['delete own scheinman_neutral content'] = array(
     'name' => 'delete own scheinman_neutral content',
@@ -909,6 +974,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete own student_portrait content'.
+  $permissions['delete own student_portrait content'] = array(
+    'name' => 'delete own student_portrait content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete own wit_article content'.
   $permissions['delete own wit_article content'] = array(
     'name' => 'delete own wit_article content',
@@ -916,6 +991,16 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'wit editor' => 'wit editor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own workspan content'.
+  $permissions['delete own workspan content'] = array(
+    'name' => 'delete own workspan content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -1097,6 +1182,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit any registration_page content'.
+  $permissions['edit any registration_page content'] = array(
+    'name' => 'edit any registration_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any scheinman_neutral content'.
   $permissions['edit any scheinman_neutral content'] = array(
     'name' => 'edit any scheinman_neutral content',
@@ -1111,6 +1205,16 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'edit any spotlight content'.
   $permissions['edit any spotlight content'] = array(
     'name' => 'edit any spotlight content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any student_portrait content'.
+  $permissions['edit any student_portrait content'] = array(
+    'name' => 'edit any student_portrait content',
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
@@ -1135,6 +1239,16 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'wit editor' => 'wit editor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any workspan content'.
+  $permissions['edit any workspan content'] = array(
+    'name' => 'edit any workspan content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -1239,6 +1353,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit own registration_page content'.
+  $permissions['edit own registration_page content'] = array(
+    'name' => 'edit own registration_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit own scheinman_neutral content'.
   $permissions['edit own scheinman_neutral content'] = array(
     'name' => 'edit own scheinman_neutral content',
@@ -1262,6 +1385,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit own student_portrait content'.
+  $permissions['edit own student_portrait content'] = array(
+    'name' => 'edit own student_portrait content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit own wit_article content'.
   $permissions['edit own wit_article content'] = array(
     'name' => 'edit own wit_article content',
@@ -1269,6 +1402,16 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'wit editor' => 'wit editor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own workspan content'.
+  $permissions['edit own workspan content'] = array(
+    'name' => 'edit own workspan content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
