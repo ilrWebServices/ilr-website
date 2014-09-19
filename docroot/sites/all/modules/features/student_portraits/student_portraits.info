@@ -20,6 +20,7 @@ features[field_instance][] = node-student_portrait-field_image
 features[field_instance][] = node-student_portrait-field_interests_and_goals
 features[field_instance][] = node-student_portrait-field_portrait_experience
 features[field_instance][] = node-student_portrait-field_quote
+features[field_instance][] = node-student_portrait-field_tags
 features[field_instance][] = node-student_portrait-field_teaser
 features[node][] = student_portrait
 features[variable][] = field_bundle_settings_node__student_portrait
