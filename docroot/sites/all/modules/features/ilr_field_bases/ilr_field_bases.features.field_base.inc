@@ -39,6 +39,62 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
+    // Exported field_base: 'field_7th_semester_check_certif'
+  $field_bases['field_7th_semester_check_certif'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_7th_semester_check_certif',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'seventhSemCheckNo',
+        1 => '7th Semester Check completed',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_acad_interest_check_many'
+  $field_bases['field_acad_interest_check_many'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_acad_interest_check_many',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Economics' => 'Economics',
+        'Human Resource Studies' => 'Human Resource Studies',
+        'International & Comparative Labor' => 'International & Comparative Labor',
+        'Labor Relations, Law & History' => 'Labor Relations, Law & History',
+        'Organizational Behavior' => 'Organizational Behavior',
+        'Social Statistics' => 'Social Statistics',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_academic_department'
   $field_bases['field_academic_department'] = array(
     'active' => 1,
@@ -60,6 +116,33 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_academic_interests_other'
+  $field_bases['field_academic_interests_other'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_academic_interests_other',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_account_number'
@@ -264,9 +347,7 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(
       'markup' => array(
         'format' => 'full_html',
-        'value' => '<h3>Advisor OR Department</h3>
-
-<p>Specify a professor <strong>OR</strong> a department from which a faculty advisor will be assigned (not both).</p>
+        'value' => '<p>Specify a professor <strong>OR</strong> a department from which a faculty advisor will be assigned (not both).</p>
 ',
       ),
     ),
@@ -1800,6 +1881,32 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_degree_plan_submitted'
+  $field_bases['field_degree_plan_submitted'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_degree_plan_submitted',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'No',
+        1 => 'Degree plan checked',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_degree_program'
   $field_bases['field_degree_program'] = array(
     'active' => 1,
@@ -2302,6 +2409,22 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'email',
   );
 
+  // Exported field_base: 'field_email_additional'
+  $field_bases['field_email_additional'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_email_additional',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'email',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'email',
+  );
+
   // Exported field_base: 'field_email_opt_in'
   $field_bases['field_email_opt_in'] = array(
     'active' => 1,
@@ -2377,6 +2500,39 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_ethnicity'
+  $field_bases['field_ethnicity'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ethnicity',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'African American / Black' => 'African American / Black',
+        'Asian' => 'Asian',
+        'Caucasian / White' => 'Caucasian / White',
+        'Latino' => 'Latino',
+        'Mexican / Chicano' => 'Mexican / Chicano',
+        'Puerto Rican' => 'Puerto Rican',
+        'Native American / Alaska Native' => 'Native American / Alaska Native',
+        'Native Hawaiian / Pacific Islander' => 'Native Hawaiian / Pacific Islander',
+        'Other' => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_event_date'
@@ -2509,6 +2665,33 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_experience'
+  $field_bases['field_experience'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_experience',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_fax'
@@ -2903,6 +3086,29 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_grad_date_appl_for_graduat'
+  $field_bases['field_grad_date_appl_for_graduat'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_grad_date_appl_for_graduat',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(),
+      'allowed_values_function' => '_forms_application_to_graduate_graduation_dates',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_h_event_date'
   $field_bases['field_h_event_date'] = array(
     'active' => 1,
@@ -3070,12 +3276,43 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'Labor Relations, Law, and History' => 'Labor Relations, Law, and History',
-        'Labor Economics' => 'Labor Economics',
         'Human Resource Studies' => 'Human Resource Studies',
+        'International and Comparative Labor' => 'International and Comparative Labor',
+        'Labor Economics' => 'Labor Economics',
+        'Labor Relations, Law, and History' => 'Labor Relations, Law, and History',
         'Organizational Behavior' => 'Organizational Behavior',
         'Social Statistics' => 'Social Statistics',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_ilr_dept_req_fac_adv_or_pr'
+  $field_bases['field_ilr_dept_req_fac_adv_or_pr'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ilr_dept_req_fac_adv_or_pr',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Not applicable - professor specified above' => 'Not applicable - professor specified above',
+        'Economics' => 'Economics',
+        'Human Resource Studies' => 'Human Resource Studies',
         'International and Comparative Labor' => 'International and Comparative Labor',
+        'Labor Relations, Law, and History' => 'Labor Relations, Law, and History',
+        'Organizational Behavior' => 'Organizational Behavior',
+        'Social Statistics' => 'Social Statistics',
       ),
       'allowed_values_function' => '',
     ),
@@ -3855,6 +4092,32 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_name_correct_for_diploma'
+  $field_bases['field_name_correct_for_diploma'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_name_correct_for_diploma',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'nameCorrect' => 'Use name as it appears above',
+        'nameIncorrect' => 'Name is incorrect',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_name_title'
   $field_bases['field_name_title'] = array(
     'active' => 1,
@@ -4570,6 +4833,57 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_pronunciation'
+  $field_bases['field_pronunciation'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pronunciation',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_pronunciation_markup'
+  $field_bases['field_pronunciation_markup'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pronunciation_markup',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<p>If you are planning to attend the ILR Diploma Ceremony in May, please provide the phonetic pronunciation of your name. This will help to ensure that your name is pronounced correctly as you walk across the stage to accept your diploma.</p>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
   // Exported field_base: 'field_published_date'
   $field_bases['field_published_date'] = array(
     'active' => 1,
@@ -4654,25 +4968,6 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_ra_additonal_information'
-  $field_bases['field_ra_additonal_information'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_ra_additonal_information',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'field_collection',
-    'settings' => array(
-      'hide_blank_items' => 1,
-      'path' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'field_collection',
   );
 
   // Exported field_base: 'field_referenced_entity'
@@ -4887,6 +5182,60 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_relationship'
+  $field_bases['field_relationship'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_relationship',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_role'
+  $field_bases['field_role'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_role',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_school_or_college'
@@ -5482,6 +5831,33 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_summer_address_status'
+  $field_bases['field_summer_address_status'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_summer_address_status',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'same-as-permanent' => 'Summer address is the same as permanent address',
+        'Entered' => 'I know my summer address, and it is different from my permanent address',
+        'Unknown' => 'I don\'t know my summer address yet',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_supervisor'
   $field_bases['field_supervisor'] = array(
     'active' => 1,
@@ -5567,25 +5943,6 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_ta_course_information'
-  $field_bases['field_ta_course_information'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_ta_course_information',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'field_collection',
-    'settings' => array(
-      'hide_blank_items' => 0,
-      'path' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'field_collection',
   );
 
   // Exported field_base: 'field_tags'
@@ -6133,6 +6490,34 @@ function ilr_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_year_freshman_soph_jr_sr',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Freshman' => 'Freshman',
+        'Sophomore' => 'Sophomore',
+        'Junior' => 'Junior',
+        'Senior' => 'Senior',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_year_soph_jr_sr'
+  $field_bases['field_year_soph_jr_sr'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_year_soph_jr_sr',
     'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
