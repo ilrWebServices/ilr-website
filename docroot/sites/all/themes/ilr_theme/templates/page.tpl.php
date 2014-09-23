@@ -16,11 +16,6 @@
         <input id="search-form-query" type="text" name="s" placeholder="Search ILR . . ." value="" size="20" maxlength="128" class="form-text" />
       </form>
     </div>
-    <?php if ($main_menu): ?>
-    <nav role="navigation" class="main">
-      <?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('id' => 'main-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Main menu'))); ?>
-    </nav> <!-- / nav -->
-    <?php endif; ?>
     <?php print render($page['header']); ?>
   </div>
 </header>
@@ -53,9 +48,7 @@
 
       <div id="sidebar-first" class="column sidebar">
         <div class="section">
-          <div class="main-nav">
-            <?php print render($variables['main_menu_expanded']); ?>
-          </div>
+          <?php print render($page['sidebar_first']); ?>
       </div></div> <!-- /.section, /#sidebar-first -->
 
       <?php if ($page['sidebar_second']): ?>

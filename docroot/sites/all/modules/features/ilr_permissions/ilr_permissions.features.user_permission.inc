@@ -346,6 +346,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'administer redirects'.
+  $permissions['administer redirects'] = array(
+    'name' => 'administer redirects',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redirect',
+  );
+
   // Exported permission: 'administer simpleSAMLphp authentication'.
   $permissions['administer simpleSAMLphp authentication'] = array(
     'name' => 'administer simpleSAMLphp authentication',

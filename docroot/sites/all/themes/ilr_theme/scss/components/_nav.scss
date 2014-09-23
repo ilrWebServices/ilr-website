@@ -1,6 +1,7 @@
 // Todo: Clean up this file
 
-nav { // All nav menus
+.block-menu-block { // All nav menus
+  clear: both;
   h2 { @extend .hidden; }
 }
 
@@ -35,7 +36,7 @@ nav { // All nav menus
   }
 }
 
-nav.main { // Main nav
+.menu-block-ilr-primary-menu { // Main nav
   clear: left;
   float: left;
   width: 100%;
@@ -45,13 +46,16 @@ nav.main { // Main nav
     @extend .visible;
   }
 
-  ul#main-menu {
+  ul.menu {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     list-style: none;
+    padding: 0;
+    margin: 0;
 
     li {
       background: none;
+      list-style: none;
       line-height: 1;
       margin: 0;
       padding: 0;
@@ -69,7 +73,7 @@ nav.main { // Main nav
 }
 
 @include breakpoint(1065px) {
-  nav.main ul {
+  .menu-block-ilr-primary-menu ul {
     padding-left: 50px; //move this
     li {
       padding-right: 30px;
@@ -96,7 +100,7 @@ nav.main { // Main nav
   position: relative;
 }
 
-.main-nav ul.menu {
+#block-menu-block-ilr-subnav ul.menu {
   position: relative;
   top: 0;
   margin: 0;

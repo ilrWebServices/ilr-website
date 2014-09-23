@@ -89,21 +89,47 @@ function ilr_form_user_pass_alter(&$form, $form_state, $form_id) {
  * @see menu_tree_build() for a description of the config array.
  */
 function ilr_menu_block_blocks() {
+  $menu = _ilr_get_current_menu_name();
+  $level = ($menu == 'main-menu') ? 1 : 2; // Note this doe snot seem to be zero indexed
   return array(
     // The array key is the block id used by menu block.
     'ilr-subnav' => array(
       // Use the array keys/values described in menu_tree_build().
-      'menu_name'   => 'main-menu',
-      'parent_mlid' => 0,
+      'menu_name'   => $menu,
       'title_link'  => TRUE,
-      'admin_title' => 'Main Menu Children',
-      'level'       => 0,
+      'admin_title' => 'ILR Sidebar Menu',
+      'level'       => $level,
       'follow'      => 0,
       'depth'       => 10,
       'expanded'    => TRUE,
       'sort'        => FALSE,
     ),
+    'ilr-primary-menu' => array(
+      // Use the array keys/values described in menu_tree_build().
+      'menu_name'   => $menu,
+      'title_link'  => TRUE,
+      'admin_title' => 'ILR Primary Menu',
+      'level'       => $level,
+      'follow'      => 0,
+      'depth'       => 1,
+      'expanded'    => TRUE,
+      'sort'        => FALSE,
+    ),
   );
+}
+
+function _ilr_get_current_menu_name() {
+  $contexts = context_get();
+  if(count($contexts)) {
+    foreach ($contexts['context'] as $name => $context) {
+      if (strpos($name, '-subsite') !== FALSE) {
+        $menu = 'menu-' . str_replace('-subsite', "", $name) . '-menu';
+      }
+    }
+  } else {
+    $menu = 'main-menu';
+  }
+  return $menu;
 }
 
 /**

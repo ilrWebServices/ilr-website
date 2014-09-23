@@ -118,6 +118,7 @@ function basic_page_strongarm() {
   $strongarm->name = 'menu_options_basic_page';
   $strongarm->value = array(
     0 => 'main-menu',
+    1 => 'menu-worker-institute-menu',
   );
   $export['menu_options_basic_page'] = $strongarm;
 

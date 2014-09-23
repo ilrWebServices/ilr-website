@@ -118,11 +118,11 @@ function ilr_sub_pages_form_basic_page_node_form_alter(&$form, &$form_state, $fo
   // set menu parent item default value if creating sub page
   if (isset($form['#node']->ilr_default_menu_parent)) {
     $form['menu']['link']['parent']['#default_value'] = $form['#node']->ilr_default_menu_parent;
+    $form['menu']['enabled']['#value'] = TRUE;
   }
 
   if (!$view_advanced_menu) {
     // Require the menu link title and parent fields.
-    $form['menu']['enabled']['#value'] = TRUE;
     $form['menu']['enabled']['#disabled'] = TRUE;
     $form['menu']['link']['link_title']['#required'] = TRUE;
     $form['menu']['link']['parent']['#required'] = TRUE;
