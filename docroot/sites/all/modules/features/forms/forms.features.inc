@@ -176,7 +176,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for your interest in ILR customized professional programs. You will receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EWe will respond to your request within three business days. If you have questions, please contact us at \\u003Ca href=\\u0022mailto:ilrCustomerService@cornell.edu\\u0022\\u003EilrCustomerService@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for contacting ILR Customized Professional Programs.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -188,19 +188,16 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
-        "9" : 0,
-        "6" : 0,
         "5" : 0,
+        "6" : 0,
         "7" : 0,
-        "8" : 0
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : {
-        "value" : "\\u003Cp\\u003ETell us what kind of program you\\u0026#39;re looking for.\\u003C\\/p\\u003E\\r\\n",
-        "format" : "full_html"
-      },
-      "block_enable" : true,
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
       "form_submission_ilr_recipient" : "ilrCustomerService@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
