@@ -34,3 +34,32 @@ function basic_page_form_alter(&$form, &$form_state, $form_id) {
 
   return $form;
 }
+
+/**
+* Implements hook_admin_menu_output_build().
+* Adds the editor notes items to the menu.
+*/
+function basic_page_admin_menu_output_build(&$content) {
+  if (isset($content['menu']) && module_exists('editor_note') && user_access('edit any basic_page content')) {
+    $content['menu']['admin/content']['admin/content/editor-notes'] = array(
+      '#title' => t('Editor Notes'),
+      '#href' => 'admin/content/editor-notes',
+      '#options' => array(
+        'access callback' => 'user_access',
+        'access arguments' => array(''),
+      ),
+      // #weight controls the order of links in the resulting item list.
+      '#weight' => 50,
+    );
+
+    if ($netid = ilr_get_netid_of_current_user()) {
+      $content['menu']['admin/content']['admin/content/editor-notes']['admin/content/editor-notes/notes-for-me'] = array(
+        '#title' => t('Notes for me'),
+        '#href' => 'admin/content/editor-notes',
+        '#options' => array(
+          'query' => array('note' => $netid),
+        ),
+      );
+    }
+  }
+}

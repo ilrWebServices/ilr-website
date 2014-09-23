@@ -392,3 +392,16 @@ function ilr_form_feeds_import_form_alter(&$form, &$form_state, $form_id) {
    $form['feeds']['#access'] = FALSE;
  }
 }
+
+/**
+ * Gets the netid of the current user
+ */
+function ilr_get_netid_of_current_user() {
+  global $user;
+  $wrapper = entity_metadata_wrapper('user', $user);
+  $netid = $wrapper->field_netid->value();
+  if (!empty($netid)) {
+    return $netid;
+  }
+  return NULL;
+}
