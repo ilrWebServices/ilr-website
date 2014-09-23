@@ -94,19 +94,16 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
-        "9" : 0,
-        "6" : 0,
         "5" : 0,
+        "6" : 0,
         "7" : 0,
-        "8" : 0
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : {
-        "value" : "\\u003Ch3\\u003EFor event, meeting and review session use only; not regular classes\\u003C\\/h3\\u003E\\r\\n\\r\\n\\u003Cp\\u003EOnly ILR departments and ILR Student Organizations may reserve classroom space in ILR due to space limitations. Thank you for your understanding and cooperation.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EWe will do our best to accommodate your request, but we cannot guarantee a space will be available. You will be notified via email as soon as possible whether or not a space can or cannot be reserved.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EAdditional information about the classrooms in the Ives Hall Classroom Building:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cul\\u003E\\r\\n\\t\\u003Cli\\u003E\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/techServices\\/services\\/distanceLearning\\/dlrooms.html\\u0022\\u003EDistance Learning Rooms\\u003C\\/a\\u003E\\u003C\\/li\\u003E\\r\\n\\t\\u003Cli\\u003E\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/techServices\\/services\\/classroomTechnologies\\/classroom.html\\u0022\\u003EClassrooms\\u003C\\/a\\u003E\\u003C\\/li\\u003E\\r\\n\\u003C\\/ul\\u003E\\r\\n",
-        "format" : "full_html"
-      },
-      "block_enable" : true,
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
       "form_submission_ilr_recipient" : "ilrossreservations@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,

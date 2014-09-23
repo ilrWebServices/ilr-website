@@ -152,7 +152,7 @@ function forms_conditional_fields_default_fields() {
   $items[] = array(
     'entity' => 'entityform',
     'bundle' => 'faculty_request_for_ta_or_ra',
-    'dependent' => 'field_project_name',
+    'dependent' => 'field_course_name',
     'dependee' => 'field_type_of_grad_assistant',
     'options' => array(
       'state' => 'visible',
@@ -278,10 +278,10 @@ function forms_conditional_fields_default_fields() {
       ),
       'selector' => '',
       'values_set' => 1,
-      'value_form' => 'RA',
+      'value_form' => 'TA',
       'value' => array(
         0 => array(
-          'value' => 'RA',
+          'value' => 'TA',
         ),
       ),
       'values' => array(),
@@ -430,7 +430,7 @@ function forms_conditional_fields_default_fields() {
   $items[] = array(
     'entity' => 'entityform',
     'bundle' => 'faculty_request_for_ta_or_ra',
-    'dependent' => 'field_course_name',
+    'dependent' => 'field_project_name',
     'dependee' => 'field_type_of_grad_assistant',
     'options' => array(
       'state' => 'visible',
@@ -556,10 +556,10 @@ function forms_conditional_fields_default_fields() {
       ),
       'selector' => '',
       'values_set' => 1,
-      'value_form' => 'TA',
+      'value_form' => 'RA',
       'value' => array(
         0 => array(
-          'value' => 'TA',
+          'value' => 'RA',
         ),
       ),
       'values' => array(),
