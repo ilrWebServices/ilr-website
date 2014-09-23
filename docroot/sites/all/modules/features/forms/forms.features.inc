@@ -329,19 +329,16 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
-        "9" : 0,
-        "6" : 0,
         "5" : 0,
+        "6" : 0,
         "7" : 0,
-        "8" : 0
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : {
-        "value" : "\\u003Cp\\u003ETo be completed by the faculty member requesting a graduate assistant.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EPlease complete a separate form for each class or project for which you are requesting TAs or RAs.\\u003C\\/p\\u003E\\r\\n",
-        "format" : "full_html"
-      },
-      "block_enable" : true,
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
       "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,

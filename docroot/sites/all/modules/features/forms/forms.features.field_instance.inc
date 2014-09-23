@@ -4407,6 +4407,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 8,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'RA account number',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'RA account number',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_account_number',
@@ -4448,6 +4466,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 12,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_comments',
@@ -4480,6 +4516,24 @@ function forms_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'TA course name',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'TA course name',
         ),
         'type' => 'text_default',
         'weight' => 11,
@@ -4525,6 +4579,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 10,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'TA course number',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'TA course number',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_course_number',
@@ -4558,6 +4630,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -4602,6 +4692,24 @@ function forms_field_default_field_instances() {
         'type' => 'email_default',
         'weight' => 0,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_email',
@@ -4631,6 +4739,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -4677,6 +4803,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 6,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_number_of_assistants_reque',
@@ -4713,6 +4857,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 7,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Preferred students or qualifications',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Preferred students or qualifications',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_preferred_students',
@@ -4745,6 +4907,24 @@ function forms_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'RA project',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'RA project',
         ),
         'type' => 'text_default',
         'weight' => 9,
@@ -4790,6 +4970,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 3,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_semester',
@@ -4823,6 +5021,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 5,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_type_of_grad_assistant',
@@ -4848,6 +5064,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
