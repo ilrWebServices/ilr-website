@@ -48,6 +48,14 @@ function basic_page_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'Editor note - No Results';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'Sorry, but there are no editor notes that match your query.';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Relationship: Editor Note: Node information. */
   $handler->display->display_options['relationships']['node_info']['id'] = 'node_info';
   $handler->display->display_options['relationships']['node_info']['table'] = 'editor_note';
