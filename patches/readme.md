@@ -54,3 +54,8 @@ Example:
   * Default file entities are not exportable by features
   * https://www.drupal.org/node/2192391
   * https://www.drupal.org/files/issues/file_entity_remove_file_display-2192391-16.patch
+
+* redirect
+  * Adds global redirect functionality to redirect module
+  * https://www.drupal.org/node/905914
+  * https://www.drupal.org/files/issues/globalredirect-905914-171.patch
