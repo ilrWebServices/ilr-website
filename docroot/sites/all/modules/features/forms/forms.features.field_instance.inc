@@ -3646,6 +3646,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 4,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator department',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator department',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_department',
@@ -3678,6 +3696,24 @@ function forms_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominee department',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominee department',
         ),
         'type' => 'text_default',
         'weight' => 2,
@@ -3718,6 +3754,24 @@ function forms_field_default_field_instances() {
         'type' => 'email_default',
         'weight' => 6,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator email',
+        ),
+        'type' => 'email_default',
+        'weight' => 8,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator email',
+        ),
+        'type' => 'email_default',
+        'weight' => 8,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_email',
@@ -3754,6 +3808,18 @@ function forms_field_default_field_instances() {
         'type' => 'markup_default',
         'weight' => 12,
       ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_empl_recog_supp_text',
@@ -3786,6 +3852,24 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator name',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator name',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3830,6 +3914,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_full_name_additional',
@@ -3866,13 +3968,36 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 9,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_letter_of_support',
     'label' => 'Your letter of support',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3901,6 +4026,24 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator title',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator title',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3937,6 +4080,24 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 7,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator netid',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator netid',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3976,6 +4137,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator phone',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator phone',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_phone',
@@ -4008,6 +4187,24 @@ function forms_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominee supervisor',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominee supervisor',
         ),
         'type' => 'text_default',
         'weight' => 3,
@@ -4048,6 +4245,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 10,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_supporter_1',
@@ -4084,6 +4299,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 11,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_supporter_2',
@@ -4116,6 +4349,24 @@ function forms_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominee title',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominee title',
         ),
         'type' => 'text_default',
         'weight' => 1,

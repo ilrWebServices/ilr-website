@@ -851,12 +851,12 @@ function forms_field_group_info() {
     'label' => 'Nominator',
     'weight' => '1',
     'children' => array(
-      0 => 'field_full_name',
-      1 => 'field_name_title',
-      2 => 'field_department',
-      3 => 'field_phone',
-      4 => 'field_email',
-      5 => 'field_netid',
+      0 => 'field_department',
+      1 => 'field_email',
+      2 => 'field_full_name',
+      3 => 'field_name_title',
+      4 => 'field_netid',
+      5 => 'field_phone',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -917,10 +917,10 @@ function forms_field_group_info() {
     'label' => 'Nominee',
     'weight' => '0',
     'children' => array(
-      0 => 'field_full_name_additional',
-      1 => 'field_title_additional',
-      2 => 'field_department_additional',
-      3 => 'field_supervisor',
+      0 => 'field_department_additional',
+      1 => 'field_full_name_additional',
+      2 => 'field_supervisor',
+      3 => 'field_title_additional',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
