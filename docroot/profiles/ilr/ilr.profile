@@ -124,11 +124,12 @@ function _ilr_get_current_menu_name() {
     foreach ($contexts['context'] as $name => $context) {
       if (strpos($name, '-subsite') !== FALSE) {
         $menu = 'menu-' . str_replace('-subsite', "", $name) . '-menu';
+        return $menu;
       }
     }
-  } else {
-    $menu = 'main-menu';
   }
+  $menu = 'main-menu'; //Subsite context not found
+
   return $menu;
 }
 
