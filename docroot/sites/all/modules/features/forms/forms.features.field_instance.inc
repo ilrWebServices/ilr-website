@@ -11199,6 +11199,51 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_school_year'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_school_year'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'default_value' => array(
+      0 => array(
+        'value' => '2014-2015',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_school_year',
+    'label' => 'School year',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 16,
+    ),
+  );
+
   // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_year_soph_jr_sr'
   $field_instances['entityform-request_faculty_advisor_or_depar-field_year_soph_jr_sr'] = array(
     'bundle' => 'request_faculty_advisor_or_depar',
@@ -11251,9 +11296,14 @@ function forms_field_default_field_instances() {
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_address_line_1',
-    'label' => 'Address',
+    'label' => 'Street address',
     'required' => 1,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -11605,7 +11655,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 12,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'entityform',
@@ -11620,7 +11670,7 @@ function forms_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -11656,7 +11706,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -12248,6 +12298,7 @@ function forms_field_default_field_instances() {
   t('Pronunciation');
   t('Questions and comments');
   t('School or college');
+  t('School year');
   t('Semester for which you are requesting assistantship');
   t('Semester off-campus');
   t('Source of funding 1');
