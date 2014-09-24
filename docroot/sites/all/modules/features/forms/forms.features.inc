@@ -1034,19 +1034,16 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
-        "9" : 0,
-        "6" : 0,
         "5" : 0,
+        "6" : 0,
         "7" : 0,
-        "8" : 0
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : {
-        "value" : "\\u003Cp\\u003EWe welcome your feedback. All correspondence is held in strict confidentiality.\\u003C\\/p\\u003E\\r\\n",
-        "format" : "full_html"
-      },
-      "block_enable" : true,
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
       "form_submission_ilr_recipient" : "workerInstitute@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
