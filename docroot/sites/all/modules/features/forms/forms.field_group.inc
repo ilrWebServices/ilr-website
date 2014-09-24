@@ -508,12 +508,12 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Your thoughts and experience',
-    'weight' => '25',
+    'weight' => '14',
     'children' => array(
-      0 => 'field_role',
+      0 => 'field_comments',
       1 => 'field_experience',
-      2 => 'field_comments',
-      3 => 'field_relationship',
+      2 => 'field_relationship',
+      3 => 'field_role',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -541,10 +541,10 @@ function forms_field_group_info() {
     'label' => 'Your thoughts and experience',
     'weight' => '14',
     'children' => array(
-      0 => 'field_role',
+      0 => 'field_comments',
       1 => 'field_experience',
-      2 => 'field_comments',
-      3 => 'field_relationship',
+      2 => 'field_relationship',
+      3 => 'field_role',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1397,13 +1397,13 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Summer address',
-    'weight' => '18',
+    'weight' => '13',
     'children' => array(
-      0 => 'field_summer_address_status',
-      1 => 'field_address_line_1_additional',
-      2 => 'field_address_line_2_additional',
-      3 => 'field_city_additional',
-      4 => 'field_state_province_additional',
+      0 => 'field_address_line_1_additional',
+      1 => 'field_address_line_2_additional',
+      2 => 'field_city_additional',
+      3 => 'field_state_province_additional',
+      4 => 'field_summer_address_status',
       5 => 'field_zip_postal_code_additional',
     ),
     'format_type' => 'fieldset',
@@ -1432,11 +1432,11 @@ function forms_field_group_info() {
     'label' => 'Summer address',
     'weight' => '13',
     'children' => array(
-      0 => 'field_summer_address_status',
-      1 => 'field_address_line_1_additional',
-      2 => 'field_address_line_2_additional',
-      3 => 'field_city_additional',
-      4 => 'field_state_province_additional',
+      0 => 'field_address_line_1_additional',
+      1 => 'field_address_line_2_additional',
+      2 => 'field_city_additional',
+      3 => 'field_state_province_additional',
+      4 => 'field_summer_address_status',
       5 => 'field_zip_postal_code_additional',
     ),
     'format_type' => 'fieldset',
