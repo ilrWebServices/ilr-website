@@ -905,7 +905,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'entityform',
@@ -923,7 +923,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 3,
     ),
   );
 
@@ -941,7 +941,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'entityform',
@@ -959,7 +959,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 4,
     ),
   );
 
@@ -995,7 +995,7 @@ function forms_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 22,
+      'weight' => 11,
     ),
   );
 
@@ -1013,7 +1013,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1031,7 +1031,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 7,
     ),
   );
 
@@ -1049,7 +1049,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 8,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1066,7 +1066,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 17,
+      'weight' => 2,
     ),
   );
 
@@ -1102,7 +1102,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 0,
     ),
   );
 
@@ -1138,7 +1138,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 1,
     ),
   );
 
@@ -1156,7 +1156,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1174,7 +1174,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 8,
     ),
   );
 
@@ -1183,7 +1183,7 @@ function forms_field_default_field_instances() {
     'bundle' => 'credit_internship_contact_form',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'e.g. Spring 2019',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1200,6 +1200,11 @@ function forms_field_default_field_instances() {
     'label' => 'Semester off-campus',
     'required' => 1,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1210,7 +1215,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 20,
+      'weight' => 10,
     ),
   );
 
@@ -1228,7 +1233,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1243,7 +1248,7 @@ function forms_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 5,
     ),
   );
 
@@ -1252,7 +1257,7 @@ function forms_field_default_field_instances() {
     'bundle' => 'credit_internship_contact_form',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'e.g. Sophomore / Junior / Senior / MILR',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1269,6 +1274,11 @@ function forms_field_default_field_instances() {
     'label' => 'Class year',
     'required' => 1,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1279,7 +1289,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 19,
+      'weight' => 9,
     ),
   );
 
@@ -1297,7 +1307,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1315,7 +1325,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 6,
     ),
   );
 
@@ -12444,6 +12454,8 @@ function forms_field_default_field_instances() {
   t('Zip code');
   t('Zip code (permanent)');
   t('Zip code (summer)');
+  t('e.g. Sophomore / Junior / Senior / MILR');
+  t('e.g. Spring 2019');
   t('empl recog supp text');
   t('pronunciation markup');
 
