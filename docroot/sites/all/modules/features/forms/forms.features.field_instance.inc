@@ -8931,7 +8931,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'user-comment',
+          'field_formatter_label' => '',
         ),
         'type' => 'text_default',
         'weight' => 2,
@@ -8940,7 +8940,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'yourcomment',
+          'field_formatter_label' => '',
         ),
         'type' => 'text_default',
         'weight' => 2,
