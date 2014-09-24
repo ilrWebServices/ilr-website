@@ -23,6 +23,31 @@ function forms_entityform_presave($entityform) {
 }
 
 /**
+* Implements hook_admin_menu_output_build().
+* Adds the entityform submissions page to the admin menu
+*/
+function forms_admin_menu_output_build(&$content) {
+  if (isset($content['menu']) && user_access('view any entityform')) {
+    $content['menu']['admin/content']['admin/content/entityform-submissions'] = array(
+      '#title' => t('Entityform Submissions'),
+      '#href' => 'admin/reports/entityforms',
+      '#weight' => 0,
+    );
+  }
+}
+
+/**
+ * Implements hook_admin_paths().
+ * Sets the entityform submissions pages to the admin theme
+ */
+function forms_admin_paths() {
+  $paths = array(
+    'entityform-submissions/submissions/*' => TRUE,
+  );
+  return $paths;
+}
+
+/**
  * Implements hook_form_BASE_FORM_ID_alter.
  */
 function forms_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
