@@ -24,3 +24,5 @@ drush sql-sync @ilr.ilr.test @ilr.ilr.local -y
 drush rsync @ilr.ilr.test:%files/ @ilr.ilr.local:%files
 
 drush -l www.ilr-website.dev en drupal_streamline_dev ilr_dev -y
+
+drush fr-all -y
