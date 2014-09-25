@@ -341,9 +341,8 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
     $node = $entityform_wrapper->field_referenced_node->value();
     $event_info_for_email = _registration_pages_get_event_markup($node);
   }
-
   // User email
-  if (!empty($entityform->field_email['und'][0]['email']['value'])) {
+  if (!empty($entityform->field_email['und'][0]['email'])) {
     $salutation = _form_salutation($user_name);
 
     $body = theme($email_template, array(
@@ -354,7 +353,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
       'event_info_for_email'  => $event_info_for_email,
     ));
 
-    $to = _get_string_or_default($entityform->field_email['und'][0]['email']['value'], $admin_email);
+    $to = $entityform->field_email['und'][0]['email'];
     $from = $admin_email;
     $subject_user = $form_title . ' confirmation';
     _send_email_for_entity_form($to, $from, $subject_user, $body);
