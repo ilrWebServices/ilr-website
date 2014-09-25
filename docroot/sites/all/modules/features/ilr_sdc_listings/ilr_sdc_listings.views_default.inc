@@ -178,7 +178,7 @@ Yes|Online',
     9 => 0,
     10 => 0,
   );
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['reference_display'] = 'sdc_current_departments:entityreference_2';
+  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['reference_display'] = 'sdc_current_departments:entityreference_1';
   /* Filter criterion: Content: Online Class (field_online_class) */
   $handler->display->display_options['filters']['field_online_class_value']['id'] = 'field_online_class_value';
   $handler->display->display_options['filters']['field_online_class_value']['table'] = 'field_data_field_online_class';
@@ -354,6 +354,7 @@ Yes|Online',
 
   /* Display: Month */
   $handler = $view->new_display('page', 'Month', 'page_1');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
   $handler->display->display_options['pager']['options']['date_id'] = 'month';
@@ -510,7 +511,7 @@ Yes|Online',
     9 => 0,
     10 => 0,
   );
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['reference_display'] = 'sdc_current_departments:entityreference_3';
+  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['reference_display'] = 'sdc_current_departments:entityreference_1';
   /* Filter criterion: Content: Online Class (field_online_class) */
   $handler->display->display_options['filters']['field_online_class_value']['id'] = 'field_online_class_value';
   $handler->display->display_options['filters']['field_online_class_value']['table'] = 'field_data_field_online_class';
@@ -714,6 +715,12 @@ Yes|Online',
   $handler->display->display_options['filters']['field_on_demand_value']['value'] = array(
     1 => '1',
   );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
+  $handler->display->display_options['filters']['status_1']['table'] = 'node';
+  $handler->display->display_options['filters']['status_1']['field'] = 'status';
+  $handler->display->display_options['filters']['status_1']['relationship'] = 'reverse_field_sdc_department_node';
+  $handler->display->display_options['filters']['status_1']['value'] = '1';
 
   /* Display: Reference Any */
   $handler = $view->new_display('entityreference', 'Reference Any', 'entityreference_1');
