@@ -229,7 +229,7 @@ function _process_career_services_contact_form(&$entityform) {
     trim($entityform->field_career_services_how_to_dir['und'][0]['value']), 0, -3);
   $admin_email = $email_value_stripped . '@cornell.edu';
   $subject = trim($entityform->field_subject_line['und'][0]['value']);
-  _forms_send_emails($entityform, 'aaronf@cornell.edu', $subject);
+  _forms_send_emails($entityform, $admin_email, $subject);
 }
 
 function _forms_career_services_contact_options() {
