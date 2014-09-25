@@ -14,7 +14,6 @@ dependencies[] = entityreference
 dependencies[] = features
 dependencies[] = field_collection
 dependencies[] = file
-dependencies[] = ilr_sdc_listings
 dependencies[] = image
 dependencies[] = link
 dependencies[] = list
