@@ -593,7 +593,14 @@ function _ilr_listings_sdc_select_month_form($form, &$form_state) {
     $start_month = $url_month;
   }
   else {
-    $start_month = date('Y-m');
+    if ('sdc-catalog' == current_path()) {
+      // Viewing all classes, not by date.
+      $start_month = NULL;
+    }
+    else {
+      $start_month = date('Y-m');
+    }
+
   }
 
   $month_options = _ilr_sdc_listings_get_month_options($start_month, 15);
@@ -619,10 +626,20 @@ function _ilr_listings_sdc_select_month_form($form, &$form_state) {
  *  values - Label for month. "August 2014"
  */
 function _ilr_sdc_listings_get_month_options($start_month, $month_count) {
+  $date_selected = TRUE;
+  if (!$start_month) {
+    $start_month = date('Y-m');
+    $date_selected = FALSE;
+  }
   $month_options = array();
-  $half_count = round($month_count / 2);
-  $month = date('Y-m', strtotime("-$half_count months", strtotime($start_month)));
-  $earliest_month = date('Y-m', strtotime('-' . ILR_SDC_MAX_DAYS_PAST . ' days'));
+  if ($date_selected) {
+    $half_count = round($month_count / 2);
+    $month = date('Y-m', strtotime("-$half_count months", strtotime($start_month)));
+    $earliest_month = date('Y-m', strtotime('-' . ILR_SDC_MAX_DAYS_PAST . ' days'));
+  }
+  else {
+    $month = $earliest_month = $start_month;
+  }
   // Make sure our starting isn't earlier than earliest month to show.
   while ($month < $earliest_month) {
     $month = date('Y-m', strtotime("+1 months", strtotime($month)));
@@ -632,6 +649,12 @@ function _ilr_sdc_listings_get_month_options($start_month, $month_count) {
     $view_url = '/' . _ilr_sdc_listings_calendar_month_url($month);
     $month_options[$view_url] = date('M Y', strtotime($month));
     $month = date('Y-m', strtotime("+1 months", strtotime($month)));
+  }
+  if (!$date_selected) {
+    $month_options = array('' => 'Choose a month') + $month_options;
+  }
+  else {
+    $month_options = array('/sdc-catalog' => 'Full Listing') + $month_options;
   }
   return $month_options;
 }
