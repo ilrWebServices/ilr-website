@@ -52,7 +52,6 @@ features[entityform_type][] = student_services_contact_form
 features[entityform_type][] = undergrad_appl_for_graduation
 features[entityform_type][] = worker_institute_contact_form
 features[features_api][] = api:2
-features[field_base][] = field_school_year
 features[field_group][] = group_7th_semester_check|entityform|undergrad_appl_for_graduation|form
 features[field_group][] = group_academics_dublin|entityform|dublin_application_form|default
 features[field_group][] = group_academics_dublin|entityform|dublin_application_form|email

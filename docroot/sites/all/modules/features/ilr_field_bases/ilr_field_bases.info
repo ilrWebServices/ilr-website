@@ -205,6 +205,7 @@ features[field_base][] = field_registration_form
 features[field_base][] = field_relationship
 features[field_base][] = field_role
 features[field_base][] = field_school_or_college
+features[field_base][] = field_school_year
 features[field_base][] = field_sdc_department
 features[field_base][] = field_semester
 features[field_base][] = field_semester_off_campus
