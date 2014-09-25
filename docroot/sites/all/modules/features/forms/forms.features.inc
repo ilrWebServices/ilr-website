@@ -94,19 +94,16 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
-        "9" : 0,
-        "6" : 0,
         "5" : 0,
+        "6" : 0,
         "7" : 0,
-        "8" : 0
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : {
-        "value" : "\\u003Ch3\\u003EFor event, meeting and review session use only; not regular classes\\u003C\\/h3\\u003E\\r\\n\\r\\n\\u003Cp\\u003EOnly ILR departments and ILR Student Organizations may reserve classroom space in ILR due to space limitations. Thank you for your understanding and cooperation.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EWe will do our best to accommodate your request, but we cannot guarantee a space will be available. You will be notified via email as soon as possible whether or not a space can or cannot be reserved.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EAdditional information about the classrooms in the Ives Hall Classroom Building:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cul\\u003E\\r\\n\\t\\u003Cli\\u003E\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/techServices\\/services\\/distanceLearning\\/dlrooms.html\\u0022\\u003EDistance Learning Rooms\\u003C\\/a\\u003E\\u003C\\/li\\u003E\\r\\n\\t\\u003Cli\\u003E\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/techServices\\/services\\/classroomTechnologies\\/classroom.html\\u0022\\u003EClassrooms\\u003C\\/a\\u003E\\u003C\\/li\\u003E\\r\\n\\u003C\\/ul\\u003E\\r\\n",
-        "format" : "full_html"
-      },
-      "block_enable" : true,
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
       "form_submission_ilr_recipient" : "ilrossreservations@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
@@ -179,7 +176,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for your interest in ILR customized professional programs. You will receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EWe will respond to your request within three business days. If you have questions, please contact us at \\u003Ca href=\\u0022mailto:ilrCustomerService@cornell.edu\\u0022\\u003EilrCustomerService@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for contacting ILR Customized Professional Programs.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -191,19 +188,16 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
-        "9" : 0,
-        "6" : 0,
         "5" : 0,
+        "6" : 0,
         "7" : 0,
-        "8" : 0
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : {
-        "value" : "\\u003Cp\\u003ETell us what kind of program you\\u0026#39;re looking for.\\u003C\\/p\\u003E\\r\\n",
-        "format" : "full_html"
-      },
-      "block_enable" : true,
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
       "form_submission_ilr_recipient" : "ilrCustomerService@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
@@ -335,19 +329,16 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
-        "9" : 0,
-        "6" : 0,
         "5" : 0,
+        "6" : 0,
         "7" : 0,
-        "8" : 0
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : {
-        "value" : "\\u003Cp\\u003ETo be completed by the faculty member requesting a graduate assistant.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EPlease complete a separate form for each class or project for which you are requesting TAs or RAs.\\u003C\\/p\\u003E\\r\\n",
-        "format" : "full_html"
-      },
-      "block_enable" : true,
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
       "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
@@ -467,7 +458,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EYou have successfully submitted an applicaton for a student teaching\\/research assistantship to the ILR Graduate Program. An email confirmation will be sent to the email address listed below.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions about your submission, please contact the Graduate Degree Programs office at 607-255-1522 or \\u003Ca href=\\u0022mailto:ilrgradforms@cornell.edu\\u0022\\u003Eilrgradforms@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for your interest.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR Graduate Degree Programs, Cornell University\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EYou have successfully submitted an applicaton for a student teaching\\/research assistantship to the ILR Graduate Program. You will receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions about your submission, please contact the Graduate Degree Programs office at 607-255-1522 or \\u003Ca href=\\u0022mailto:ilrgradforms@cornell.edu\\u0022\\u003Eilrgradforms@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for your interest.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR Graduate Degree Programs, Cornell University\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -479,16 +470,16 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
-        "9" : 0,
-        "6" : 0,
         "5" : 0,
+        "6" : 0,
         "7" : 0,
-        "8" : 0
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
-      "block_enable" : true,
       "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
@@ -1043,19 +1034,16 @@ function forms_default_entityform_type() {
         "2" : "2",
         "3" : 0,
         "4" : 0,
-        "9" : 0,
-        "6" : 0,
         "5" : 0,
+        "6" : 0,
         "7" : 0,
-        "8" : 0
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : {
-        "value" : "\\u003Cp\\u003EWe welcome your feedback. All correspondence is held in strict confidentiality.\\u003C\\/p\\u003E\\r\\n",
-        "format" : "full_html"
-      },
-      "block_enable" : true,
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
       "form_submission_ilr_recipient" : "workerInstitute@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,

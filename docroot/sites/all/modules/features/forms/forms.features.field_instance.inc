@@ -202,6 +202,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 12,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_comments',
@@ -230,6 +248,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -274,6 +310,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 7,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_dates_as_text',
@@ -310,6 +364,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Org or dept',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Org or department',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_department',
@@ -338,6 +410,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'email',
         'settings' => array(
@@ -383,6 +473,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 9,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_end_time',
@@ -419,6 +527,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_event_name',
@@ -447,6 +573,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -493,6 +637,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 10,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_ilr_rooms',
@@ -518,6 +680,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -564,6 +744,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 4,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_phone',
@@ -592,6 +790,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -637,6 +853,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 11,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Technical needs',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Technical needs',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_technical_needs',
@@ -671,7 +905,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'entityform',
@@ -689,7 +923,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 3,
     ),
   );
 
@@ -707,7 +941,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'entityform',
@@ -725,7 +959,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 4,
     ),
   );
 
@@ -761,7 +995,7 @@ function forms_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 22,
+      'weight' => 11,
     ),
   );
 
@@ -779,7 +1013,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'entityform',
@@ -797,7 +1031,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 7,
     ),
   );
 
@@ -815,7 +1049,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 8,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'entityform',
@@ -832,7 +1066,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 17,
+      'weight' => 2,
     ),
   );
 
@@ -868,7 +1102,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 0,
     ),
   );
 
@@ -904,7 +1138,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 1,
     ),
   );
 
@@ -922,7 +1156,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'entityform',
@@ -940,7 +1174,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 8,
     ),
   );
 
@@ -949,7 +1183,7 @@ function forms_field_default_field_instances() {
     'bundle' => 'credit_internship_contact_form',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'e.g. Spring 2019',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -966,6 +1200,11 @@ function forms_field_default_field_instances() {
     'label' => 'Semester off-campus',
     'required' => 1,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -976,7 +1215,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 20,
+      'weight' => 10,
     ),
   );
 
@@ -994,7 +1233,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1009,7 +1248,7 @@ function forms_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 5,
     ),
   );
 
@@ -1018,7 +1257,7 @@ function forms_field_default_field_instances() {
     'bundle' => 'credit_internship_contact_form',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'e.g. Sophomore / Junior / Senior / MILR',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1035,6 +1274,11 @@ function forms_field_default_field_instances() {
     'label' => 'Class year',
     'required' => 1,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1045,7 +1289,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 19,
+      'weight' => 9,
     ),
   );
 
@@ -1063,7 +1307,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1081,7 +1325,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 6,
     ),
   );
 
@@ -1281,7 +1525,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'line1 home',
+          'field_formatter_label' => 'Street address line 1 home',
         ),
         'type' => 'text_default',
         'weight' => 7,
@@ -1294,6 +1538,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Street address line 1 home',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1335,7 +1588,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Street address line 1 college',
         ),
         'type' => 'text_default',
         'weight' => 13,
@@ -1348,6 +1601,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 16,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Street address line 1 college',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1389,7 +1651,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'line2 home',
+          'field_formatter_label' => 'Street address line 2 home',
         ),
         'type' => 'text_default',
         'weight' => 8,
@@ -1402,6 +1664,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Street address line 2 home',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1443,7 +1714,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Street address line 2 college',
         ),
         'type' => 'text_default',
         'weight' => 14,
@@ -1456,6 +1727,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 17,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Street address line 2 college',
+        ),
+        'type' => 'text_default',
+        'weight' => 14,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1515,6 +1795,15 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 29,
       ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 24,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_citizenship',
@@ -1555,7 +1844,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'city home',
+          'field_formatter_label' => 'City home',
         ),
         'type' => 'text_default',
         'weight' => 9,
@@ -1568,6 +1857,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 6,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'City home',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1609,7 +1907,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'city college',
+          'field_formatter_label' => 'City college',
         ),
         'type' => 'text_default',
         'weight' => 15,
@@ -1622,6 +1920,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 18,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'City college',
+        ),
+        'type' => 'text_default',
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1663,7 +1970,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Country home',
         ),
         'type' => 'text_default',
         'weight' => 12,
@@ -1676,6 +1983,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Country home',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1717,7 +2033,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Country college',
         ),
         'type' => 'text_default',
         'weight' => 18,
@@ -1730,6 +2046,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 21,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Country college',
+        ),
+        'type' => 'text_default',
+        'weight' => 18,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1775,8 +2100,8 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'field_formatter_label' => '',
-          'format_type' => 'long',
+          'field_formatter_label' => 'Date of birth',
+          'format_type' => 'short',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
@@ -1798,6 +2123,20 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'date_default',
         'weight' => 7,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'field_formatter_label' => 'Date of birth',
+          'format_type' => 'short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1843,6 +2182,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 6,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Passport exp date',
+        ),
+        'type' => 'text_default',
+        'weight' => 23,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Passport exp date',
+        ),
+        'type' => 'text_default',
+        'weight' => 23,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_dates',
@@ -1878,6 +2235,24 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 8,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Expected grad date',
+        ),
+        'type' => 'text_default',
+        'weight' => 28,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Expected grad date',
+        ),
+        'type' => 'text_default',
+        'weight' => 28,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1923,7 +2298,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Disciplinary action',
         ),
         'type' => 'list_default',
         'weight' => 34,
@@ -1936,6 +2311,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'list_default',
         'weight' => 27,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Disciplinary action',
+        ),
+        'type' => 'list_default',
+        'weight' => 34,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1974,7 +2358,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Disciplinary action explanation',
         ),
         'type' => 'text_default',
         'weight' => 35,
@@ -1987,6 +2371,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 28,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Disciplinary action explanation',
+        ),
+        'type' => 'text_default',
+        'weight' => 35,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2031,7 +2424,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 37,
+        'weight' => 36,
       ),
       'email' => array(
         'label' => 'above',
@@ -2042,13 +2435,27 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 10,
       ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 36,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_dublin_acad_goals_essay',
     'label' => 'Academic goals essay',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2082,7 +2489,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Courses completed',
         ),
         'type' => 'list_default',
         'weight' => 32,
@@ -2095,6 +2502,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'list_default',
         'weight' => 25,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Courses completed',
+        ),
+        'type' => 'list_default',
+        'weight' => 32,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2133,7 +2549,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Current courses',
         ),
         'type' => 'text_default',
         'weight' => 33,
@@ -2146,6 +2562,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 26,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Current courses',
+        ),
+        'type' => 'text_default',
+        'weight' => 33,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2184,12 +2609,9 @@ function forms_field_default_field_instances() {
       ),
       'download' => array(
         'label' => 'above',
-        'module' => 'markup',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'markup_default',
-        'weight' => 36,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
       ),
       'email' => array(
         'label' => 'above',
@@ -2199,6 +2621,12 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'markup_default',
         'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2234,12 +2662,9 @@ function forms_field_default_field_instances() {
       ),
       'download' => array(
         'label' => 'above',
-        'module' => 'markup',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'markup_default',
-        'weight' => 38,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 40,
       ),
       'email' => array(
         'label' => 'above',
@@ -2249,6 +2674,12 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'markup_default',
         'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 39,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2290,7 +2721,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 39,
+        'weight' => 37,
       ),
       'email' => array(
         'label' => 'above',
@@ -2301,13 +2732,27 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 12,
       ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 37,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_dublin_study_abroad_essay',
     'label' => 'Study abroad essay',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2354,6 +2799,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'email_default',
         'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2410,6 +2864,15 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_first_name',
@@ -2455,7 +2918,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 26,
+        'weight' => 27,
       ),
       'email' => array(
         'label' => 'above',
@@ -2465,6 +2928,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 20,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 27,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2519,6 +2991,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2576,6 +3057,15 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_middle_name',
@@ -2629,6 +3119,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 1,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2686,6 +3185,15 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 23,
       ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 30,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_number_of_completed_credit',
@@ -2739,6 +3247,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 24,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 31,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2794,6 +3311,15 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 27,
       ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 22,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_passport_number',
@@ -2834,7 +3360,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Cell phone',
         ),
         'type' => 'text_default',
         'weight' => 19,
@@ -2847,6 +3373,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Cell phone',
+        ),
+        'type' => 'text_default',
+        'weight' => 19,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2888,7 +3423,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'College phone',
         ),
         'type' => 'text_default',
         'weight' => 20,
@@ -2901,6 +3436,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 12,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'College phone',
+        ),
+        'type' => 'text_default',
+        'weight' => 20,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2942,7 +3486,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Home phone',
         ),
         'type' => 'text_default',
         'weight' => 21,
@@ -2955,6 +3499,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 13,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Home phone',
+        ),
+        'type' => 'text_default',
+        'weight' => 21,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2996,7 +3549,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'State / Province home',
         ),
         'type' => 'list_default',
         'weight' => 10,
@@ -3009,6 +3562,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'list_default',
         'weight' => 7,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'State / Province home',
+        ),
+        'type' => 'list_default',
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3047,7 +3609,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'State / Province college',
         ),
         'type' => 'list_default',
         'weight' => 16,
@@ -3060,6 +3622,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'list_default',
         'weight' => 19,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'State / Province college',
+        ),
+        'type' => 'list_default',
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3098,7 +3669,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Student ID',
         ),
         'type' => 'text_default',
         'weight' => 5,
@@ -3111,6 +3682,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 6,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Student ID',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3166,6 +3746,15 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 22,
       ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 29,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_transfer_student',
@@ -3203,7 +3792,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Visa type',
         ),
         'type' => 'text_default',
         'weight' => 25,
@@ -3216,6 +3805,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 30,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Visa type',
+        ),
+        'type' => 'text_default',
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3260,7 +3858,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 27,
+        'weight' => 26,
       ),
       'email' => array(
         'label' => 'above',
@@ -3270,6 +3868,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'list_default',
         'weight' => 19,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 26,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3308,7 +3915,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Zip code home',
         ),
         'type' => 'text_default',
         'weight' => 11,
@@ -3321,6 +3928,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 8,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Zip code home',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3362,7 +3978,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Zip code college',
         ),
         'type' => 'text_default',
         'weight' => 17,
@@ -3375,6 +3991,15 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 20,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Zip code college',
+        ),
+        'type' => 'text_default',
+        'weight' => 17,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3412,6 +4037,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 4,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator department',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator department',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_department',
@@ -3444,6 +4087,24 @@ function forms_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominee department',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominee department',
         ),
         'type' => 'text_default',
         'weight' => 2,
@@ -3484,6 +4145,24 @@ function forms_field_default_field_instances() {
         'type' => 'email_default',
         'weight' => 6,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator email',
+        ),
+        'type' => 'email_default',
+        'weight' => 8,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator email',
+        ),
+        'type' => 'email_default',
+        'weight' => 8,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_email',
@@ -3520,6 +4199,18 @@ function forms_field_default_field_instances() {
         'type' => 'markup_default',
         'weight' => 12,
       ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_empl_recog_supp_text',
@@ -3552,6 +4243,24 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator name',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator name',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3596,6 +4305,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_full_name_additional',
@@ -3632,13 +4359,36 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 9,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_letter_of_support',
     'label' => 'Your letter of support',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3667,6 +4417,24 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator title',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator title',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3703,6 +4471,24 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 7,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator netid',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator netid',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3742,6 +4528,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator phone',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator phone',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_phone',
@@ -3774,6 +4578,24 @@ function forms_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominee supervisor',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominee supervisor',
         ),
         'type' => 'text_default',
         'weight' => 3,
@@ -3814,6 +4636,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 10,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_supporter_1',
@@ -3849,6 +4689,24 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 11,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3886,6 +4744,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominee title',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominee title',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_title_additional',
@@ -3918,6 +4794,24 @@ function forms_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'RA account number',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'RA account number',
         ),
         'type' => 'text_default',
         'weight' => 8,
@@ -3963,6 +4857,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 12,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_comments',
@@ -3995,6 +4907,24 @@ function forms_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'TA course name',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'TA course name',
         ),
         'type' => 'text_default',
         'weight' => 11,
@@ -4040,6 +4970,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 10,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'TA course number',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'TA course number',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_course_number',
@@ -4073,6 +5021,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -4117,6 +5083,24 @@ function forms_field_default_field_instances() {
         'type' => 'email_default',
         'weight' => 0,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_email',
@@ -4146,6 +5130,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -4192,6 +5194,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 6,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_number_of_assistants_reque',
@@ -4228,6 +5248,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 7,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Preferred students or qualifications',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Preferred students or qualifications',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_preferred_students',
@@ -4260,6 +5298,24 @@ function forms_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'RA project',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'RA project',
         ),
         'type' => 'text_default',
         'weight' => 9,
@@ -4305,6 +5361,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 3,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_semester',
@@ -4338,6 +5412,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 5,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_type_of_grad_assistant',
@@ -4363,6 +5455,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -4411,6 +5521,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 0,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Degree plan',
+        ),
+        'type' => 'list_default',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Degree plan',
+        ),
+        'type' => 'list_default',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_degree_plan_submitted',
@@ -4438,6 +5566,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 7,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 7,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'email',
         'settings' => array(
@@ -4475,6 +5621,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -4526,6 +5690,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 4,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_full_name_additional',
@@ -4567,6 +5749,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 6,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Graduation date',
+        ),
+        'type' => 'list_default',
+        'weight' => 6,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Graduation date',
+        ),
+        'type' => 'list_default',
+        'weight' => 6,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_grad_date_appl_for_graduat',
@@ -4596,6 +5796,24 @@ function forms_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Name correct or not',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Name correct or not',
         ),
         'type' => 'list_default',
         'weight' => 3,
@@ -4633,10 +5851,28 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_pronunciation',
-    'label' => 'Correct pronunciation',
+    'label' => 'Pronunciation',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -4670,6 +5906,18 @@ function forms_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 8,
       ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_pronunciation_markup',
@@ -4695,6 +5943,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -4735,6 +6001,15 @@ function forms_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'confirmation' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -4743,6 +6018,42 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 9,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4771,6 +6082,15 @@ function forms_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'confirmation' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -4779,6 +6099,42 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 11,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 14,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4807,6 +6163,15 @@ function forms_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'confirmation' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -4815,6 +6180,42 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 13,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 16,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4853,6 +6254,42 @@ function forms_field_default_field_instances() {
         'weight' => 4,
       ),
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -4906,6 +6343,42 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Conference',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Conference',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_conference_name',
@@ -4950,6 +6423,42 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Conference date',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Conference date',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4996,6 +6505,42 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Expected graduation date',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Expected graduation date',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_dates_as_text',
@@ -5033,6 +6578,42 @@ function forms_field_default_field_instances() {
         'weight' => 3,
       ),
       'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
@@ -5083,6 +6664,42 @@ function forms_field_default_field_instances() {
         'type' => 'email_default',
         'weight' => 0,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_email',
@@ -5121,6 +6738,42 @@ function forms_field_default_field_instances() {
         'weight' => 1,
       ),
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -5176,6 +6829,42 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 7,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Received other funding for this trip',
+        ),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Received other funding for this trip',
+        ),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_funding_received',
@@ -5210,6 +6899,42 @@ function forms_field_default_field_instances() {
         'weight' => 2,
       ),
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -5265,6 +6990,42 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 4,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Conference location',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Conference location',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_location_string',
@@ -5292,6 +7053,15 @@ function forms_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'confirmation' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -5300,6 +7070,42 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 8,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Source 1',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Source 1',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5328,6 +7134,15 @@ function forms_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'confirmation' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -5336,6 +7151,42 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 10,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Source 2',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Source 2',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5364,6 +7215,15 @@ function forms_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'confirmation' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -5372,6 +7232,42 @@ function forms_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 12,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Source 3',
+        ),
+        'type' => 'text_default',
+        'weight' => 15,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Source 3',
+        ),
+        'type' => 'text_default',
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5418,6 +7314,42 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_title_of_paper_or_poster',
@@ -5463,6 +7395,42 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 14,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Received travel grant in this fiscal year',
+        ),
+        'type' => 'list_default',
+        'weight' => 17,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 14,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 14,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Received travel grant in this fiscal year',
+        ),
+        'type' => 'list_default',
+        'weight' => 17,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_travel_grant_already_recei',
@@ -5492,6 +7460,24 @@ function forms_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Classes or faculty',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Classes or faculty',
         ),
         'type' => 'text_default',
         'weight' => 11,
@@ -5532,6 +7518,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 12,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Computer skills',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Computer skills',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_computer_skills',
@@ -5560,6 +7564,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -5604,6 +7626,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 3,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_degree_program',
@@ -5629,6 +7669,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'email',
         'settings' => array(
@@ -5666,6 +7724,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -5712,6 +7788,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 10,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Departments',
+        ),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Departments',
+        ),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_ilr_department',
@@ -5737,6 +7831,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -5783,6 +7895,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_minor_subject_s_',
@@ -5815,6 +7945,24 @@ function forms_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Semesters completed',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Semesters completed',
         ),
         'type' => 'text_default',
         'weight' => 6,
@@ -5855,6 +8003,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 14,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Prior TA or RA',
+        ),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Prior TA or RA',
+        ),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_prior_appointments',
@@ -5883,6 +8049,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
@@ -5924,6 +8108,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 9,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'TA or RA',
+        ),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'TA or RA',
+        ),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_type_of_grad_assistant',
@@ -5957,6 +8159,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 13,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Work experience',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Work experience',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_work_experience',
@@ -5985,6 +8205,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -6134,25 +8372,25 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 31,
+        'weight' => 7,
       ),
       'download' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'ILR academic interests',
         ),
         'type' => 'list_default',
-        'weight' => 31,
+        'weight' => 7,
       ),
       'table' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'ILR academic interests',
         ),
         'type' => 'list_default',
-        'weight' => 31,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6185,25 +8423,25 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 30,
+        'weight' => 9,
       ),
       'download' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Non-ILR acad interests',
         ),
         'type' => 'text_default',
-        'weight' => 30,
+        'weight' => 9,
       ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Non-ILR acad interests',
         ),
         'type' => 'text_default',
-        'weight' => 30,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6226,7 +8464,7 @@ function forms_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -6253,7 +8491,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 13,
+        'weight' => 12,
       ),
       'table' => array(
         'label' => 'above',
@@ -6262,7 +8500,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 13,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6312,7 +8550,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 20,
+        'weight' => 18,
       ),
       'table' => array(
         'label' => 'above',
@@ -6321,7 +8559,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 20,
+        'weight' => 18,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6371,7 +8609,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 14,
+        'weight' => 13,
       ),
       'table' => array(
         'label' => 'above',
@@ -6380,7 +8618,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 14,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6430,7 +8668,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 21,
+        'weight' => 19,
       ),
       'table' => array(
         'label' => 'above',
@@ -6439,7 +8677,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 21,
+        'weight' => 19,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6489,7 +8727,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 14,
       ),
       'table' => array(
         'label' => 'above',
@@ -6498,7 +8736,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 14,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6548,7 +8786,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 22,
+        'weight' => 20,
       ),
       'table' => array(
         'label' => 'above',
@@ -6557,7 +8795,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 22,
+        'weight' => 20,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6604,19 +8842,19 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'New student concerns',
         ),
         'type' => 'text_default',
-        'weight' => 28,
+        'weight' => 25,
       ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'New student concerns',
         ),
         'type' => 'text_default',
-        'weight' => 28,
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6663,7 +8901,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Expected grad date',
         ),
         'type' => 'text_default',
         'weight' => 6,
@@ -6672,7 +8910,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Expected grad date',
         ),
         'type' => 'text_default',
         'weight' => 6,
@@ -6777,7 +9015,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'email',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Summer email',
         ),
         'type' => 'email_default',
         'weight' => 5,
@@ -6786,7 +9024,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'email',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Summer email',
         ),
         'type' => 'email_default',
         'weight' => 5,
@@ -6830,7 +9068,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Ethnicity',
         ),
         'type' => 'list_default',
         'weight' => 10,
@@ -6839,7 +9077,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Ethnicity',
         ),
         'type' => 'list_default',
         'weight' => 10,
@@ -6881,19 +9119,19 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Past experiences',
         ),
         'type' => 'text_default',
-        'weight' => 27,
+        'weight' => 24,
       ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Past experiences',
         ),
         'type' => 'text_default',
-        'weight' => 27,
+        'weight' => 24,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7001,7 +9239,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'ILR acad interests elaborate',
         ),
         'type' => 'text_default',
         'weight' => 8,
@@ -7010,7 +9248,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'ILR acad interests elaborate',
         ),
         'type' => 'text_default',
         'weight' => 8,
@@ -7036,7 +9274,7 @@ function forms_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -7180,7 +9418,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'summerPhone',
+          'field_formatter_label' => 'Summer phone',
         ),
         'type' => 'text_default',
         'weight' => 4,
@@ -7189,7 +9427,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Summer phone',
         ),
         'type' => 'text_default',
         'weight' => 4,
@@ -7239,19 +9477,19 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Relationship with your SA',
         ),
         'type' => 'text_default',
-        'weight' => 29,
+        'weight' => 26,
       ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Relationship with your SA',
         ),
         'type' => 'text_default',
-        'weight' => 29,
+        'weight' => 26,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7298,19 +9536,19 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Role',
         ),
         'type' => 'text_default',
-        'weight' => 26,
+        'weight' => 23,
       ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Role',
         ),
         'type' => 'text_default',
-        'weight' => 26,
+        'weight' => 23,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7360,7 +9598,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 16,
+        'weight' => 15,
       ),
       'table' => array(
         'label' => 'above',
@@ -7369,7 +9607,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 16,
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7411,7 +9649,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 23,
+        'weight' => 21,
       ),
       'table' => array(
         'label' => 'above',
@@ -7420,7 +9658,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 23,
+        'weight' => 21,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7462,7 +9700,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 19,
+        'weight' => 17,
       ),
       'table' => array(
         'label' => 'above',
@@ -7471,7 +9709,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 19,
+        'weight' => 17,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7510,7 +9748,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Transfer',
         ),
         'type' => 'list_default',
         'weight' => 11,
@@ -7519,7 +9757,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Transfer',
         ),
         'type' => 'list_default',
         'weight' => 11,
@@ -7564,7 +9802,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 17,
+        'weight' => 16,
       ),
       'table' => array(
         'label' => 'above',
@@ -7573,7 +9811,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 17,
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7623,7 +9861,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 24,
+        'weight' => 22,
       ),
       'table' => array(
         'label' => 'above',
@@ -7632,7 +9870,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 24,
+        'weight' => 22,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7786,7 +10024,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'user-comment',
+          'field_formatter_label' => '',
         ),
         'type' => 'text_default',
         'weight' => 2,
@@ -7795,7 +10033,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'yourcomment',
+          'field_formatter_label' => '',
         ),
         'type' => 'text_default',
         'weight' => 2,
@@ -7943,6 +10181,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_address_line_1',
@@ -7971,6 +10227,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -8015,6 +10289,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_company',
@@ -8051,6 +10343,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 9,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_country',
@@ -8079,6 +10389,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 4,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 4,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'email',
         'settings' => array(
@@ -8126,6 +10454,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 13,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Can ILR email',
+        ),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Can ILR email',
+        ),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_email_opt_in',
@@ -8153,6 +10499,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -8197,6 +10561,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_first_name',
@@ -8233,6 +10615,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 12,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Subjects',
+        ),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Subjects',
+        ),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_hcd_contact_form_topics',
@@ -8258,6 +10658,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -8302,6 +10720,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_last_name',
@@ -8330,6 +10766,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -8374,6 +10828,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 7,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_state_province',
@@ -8399,6 +10871,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -8435,6 +10925,15 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 2,
+      ),
+      'download' => array(
         'label' => 'above',
         'module' => 'email',
         'settings' => array(
@@ -8496,6 +10995,15 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
@@ -8544,6 +11052,20 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 9,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
         'weight' => 9,
       ),
       'table' => array(
@@ -8618,6 +11140,15 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
@@ -8664,6 +11195,15 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'download' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -8726,6 +11266,15 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
@@ -8778,12 +11327,22 @@ function forms_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 8,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'field_formatter_label' => 'Event name',
+          'link' => 0,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 8,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'field_formatter_label' => '',
-          'link' => FALSE,
+          'field_formatter_label' => 'Event name',
+          'link' => 0,
         ),
         'type' => 'entityreference_label',
         'weight' => 8,
@@ -8846,6 +11405,15 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 7,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
@@ -8900,6 +11468,15 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 5,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'list',
@@ -8943,6 +11520,15 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'download' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
@@ -9478,6 +12064,51 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_school_year'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_school_year'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'default_value' => array(
+      0 => array(
+        'value' => '2014-2015',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_school_year',
+    'label' => 'School year',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 16,
+    ),
+  );
+
   // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_year_soph_jr_sr'
   $field_instances['entityform-request_faculty_advisor_or_depar-field_year_soph_jr_sr'] = array(
     'bundle' => 'request_faculty_advisor_or_depar',
@@ -9530,9 +12161,14 @@ function forms_field_default_field_instances() {
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_address_line_1',
-    'label' => 'Address',
+    'label' => 'Street address',
     'required' => 1,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -9884,7 +12520,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 12,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'entityform',
@@ -9899,7 +12535,7 @@ function forms_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -9935,7 +12571,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -10066,6 +12702,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 0,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '7th semester check',
+        ),
+        'type' => 'list_default',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '7th semester check',
+        ),
+        'type' => 'list_default',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_7th_semester_check_certif',
@@ -10093,6 +12747,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 5,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 5,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'email',
         'settings' => array(
@@ -10130,6 +12802,24 @@ function forms_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -10181,6 +12871,24 @@ function forms_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_full_name_additional',
@@ -10222,6 +12930,24 @@ function forms_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 4,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Graduation date',
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Graduation date',
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_grad_date_appl_for_graduat',
@@ -10251,6 +12977,24 @@ function forms_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(
           'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Name correct or not',
+        ),
+        'type' => 'list_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Name correct or not',
         ),
         'type' => 'list_default',
         'weight' => 2,
@@ -10286,7 +13030,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'entityform',
@@ -10322,7 +13066,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'entityform',
@@ -10357,7 +13101,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'entityform',
@@ -10455,7 +13199,6 @@ function forms_field_default_field_instances() {
   t('Company');
   t('Concentration');
   t('Conference name');
-  t('Correct pronunciation');
   t('Country');
   t('Course name');
   t('Course number (e.g. ILRLR 2100)');
@@ -10525,8 +13268,10 @@ function forms_field_default_field_instances() {
   t('Preferred students (in order of preference), or desired qualifications');
   t('Professor');
   t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
+  t('Pronunciation');
   t('Questions and comments');
   t('School or college');
+  t('School year');
   t('Semester for which you are requesting assistantship');
   t('Semester off-campus');
   t('Source of funding 1');
@@ -10564,6 +13309,8 @@ function forms_field_default_field_instances() {
   t('Zip code');
   t('Zip code (permanent)');
   t('Zip code (summer)');
+  t('e.g. Sophomore / Junior / Senior / MILR');
+  t('e.g. Spring 2019');
   t('empl recog supp text');
   t('pronunciation markup');
 
