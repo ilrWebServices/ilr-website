@@ -92,12 +92,11 @@ function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Add admin email field to the "edit" form for this entityform
  */
-function _forms_add_admin_email_field(&$entityform) {
-  $previously_set_recip = (isset($entityform->type->data['form_submission_ilr_recipient']))
-    ? $entityform->type->data['form_submission_ilr_recipient']
+function _forms_add_admin_email_field(&$form) {
+  $previously_set_recip = (isset($form['#entityform_type']->data['form_submission_ilr_recipient']))
+    ? $form['#entityform_type']->data['form_submission_ilr_recipient']
     : '';
-
-  $entityform->data['form_submission_ilr_recipient'] = array(
+  $form['data']['form_submission_ilr_recipient'] = array(
     '#type' => 'textfield',
     '#title' => t('ILR Admin email'),
     '#weight' => -1,
@@ -110,12 +109,12 @@ function _forms_add_admin_email_field(&$entityform) {
  * Add checkbox to indicate whether to send the admin an email confirmation
  * for this entityform
  */
-function _forms_add_checkbox_to_send_admin_email(&$entityform) {
-  $send_confirmation_email_to_admin = (isset($entityform->type->data['send_confirmation_email_to_admin']))
-    ? $entityform->type->data['send_confirmation_email_to_admin']
+function _forms_add_checkbox_to_send_admin_email(&$form) {
+  $send_confirmation_email_to_admin = (isset($form['#entityform_type']->data['send_confirmation_email_to_admin']))
+    ? $form['#entityform_type']->data['send_confirmation_email_to_admin']
     : 0;
 
-  $entityform->data['send_confirmation_email_to_admin'] = array(
+  $form['data']['send_confirmation_email_to_admin'] = array(
     '#type' => 'checkbox',
     '#title' => t('Send confirmation email to admin'),
     '#weight' => 0,
@@ -127,12 +126,12 @@ function _forms_add_checkbox_to_send_admin_email(&$entityform) {
  * Add checkbox to indicate whether to append the user's name to the
  * admin email subject line" to the "edit" form for this entityform
  */
-function _forms_add_checkbox_to_include_name_in_admin_subject_line(&$entityform) {
-  $add_user_name_to_subject_line = (isset($entityform->type->data['add_user_name_to_subject_line']))
-    ? $entityform->type->data['add_user_name_to_subject_line']
+function _forms_add_checkbox_to_include_name_in_admin_subject_line(&$form) {
+  $add_user_name_to_subject_line = (isset($form['#entityform_type']->data['add_user_name_to_subject_line']))
+    ? $form['#entityform_type']->data['add_user_name_to_subject_line']
     : 0;
 
-  $entityform->data['add_user_name_to_subject_line'] = array(
+  $form['data']['add_user_name_to_subject_line'] = array(
     '#type' => 'checkbox',
     '#title' => t('Append user\'s name to subject line of admin email; some ILR staff appreciate having this; some do not'),
     '#weight' => 0,
