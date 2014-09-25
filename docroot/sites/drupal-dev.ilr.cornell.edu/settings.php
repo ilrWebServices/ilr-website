@@ -559,8 +559,6 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  */
 $conf['https'] = TRUE;
 
-$conf['mail_system'] = array('default-system' => 'HelperDebugMailLog');
-
 if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/ilr/ilr-settings.inc');
 }
