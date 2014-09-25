@@ -423,9 +423,7 @@ function _forms_admin_receives_confirmation_email($entityform) {
  */
 function _entity_display_form_data($entityform) {
   // Set display of form fields for email and anything else
-  // $entityform_id is getting set when there is not a file attachment
   $entityform_id = $entityform->entityform_id;
-  $entityform_id = 1;
   $entityform = entityform_load($entityform_id);
   $controller = entity_get_controller('entityform');
   $content = $controller->view(array($entityform->entityform_id => $entityform), 'confirmation', NULL, TRUE);
