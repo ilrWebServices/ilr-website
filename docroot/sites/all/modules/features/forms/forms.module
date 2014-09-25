@@ -23,6 +23,19 @@ function forms_entityform_presave($entityform) {
 }
 
 /**
+ * Implements hook_entity_insert().
+ */
+function forms_entityform_insert($entityform) {
+  $processingFunction = '_process_' . $entityform->type;
+  if (function_exists($processingFunction)) {
+    $processingFunction($entityform);
+  }
+  else {
+    _forms_process_default($entityform);
+  }
+}
+
+/**
 * Implements hook_admin_menu_output_build().
 * Adds the entityform submissions page to the admin menu
 */
@@ -50,10 +63,7 @@ function forms_admin_paths() {
 /**
  * Implements hook_form_BASE_FORM_ID_alter.
  */
-function forms_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
-  // Generate appropriate submit handler
-  $form['actions']['submit']['#submit'][] = _forms_get_submit_handler($form['#bundle']);
-
+function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form_id) {
   // Fill in default values of kerberized forms
   if (_forms_form_is_kerberized($form['#bundle'])) {
     _forms_handle_kerberized_form($form);
@@ -82,12 +92,12 @@ function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Add admin email field to the "edit" form for this entityform
  */
-function _forms_add_admin_email_field(&$form) {
-  $previously_set_recip = (isset($form['#entityform_type']->data['form_submission_ilr_recipient']))
-    ? $form['#entityform_type']->data['form_submission_ilr_recipient']
+function _forms_add_admin_email_field(&$entityform) {
+  $previously_set_recip = (isset($entityform->type->data['form_submission_ilr_recipient']))
+    ? $entityform->type->data['form_submission_ilr_recipient']
     : '';
 
-  $form['data']['form_submission_ilr_recipient'] = array(
+  $entityform->data['form_submission_ilr_recipient'] = array(
     '#type' => 'textfield',
     '#title' => t('ILR Admin email'),
     '#weight' => -1,
@@ -100,12 +110,12 @@ function _forms_add_admin_email_field(&$form) {
  * Add checkbox to indicate whether to send the admin an email confirmation
  * for this entityform
  */
-function _forms_add_checkbox_to_send_admin_email(&$form) {
-  $send_confirmation_email_to_admin = (isset($form['#entityform_type']->data['send_confirmation_email_to_admin']))
-    ? $form['#entityform_type']->data['send_confirmation_email_to_admin']
+function _forms_add_checkbox_to_send_admin_email(&$entityform) {
+  $send_confirmation_email_to_admin = (isset($entityform->type->data['send_confirmation_email_to_admin']))
+    ? $entityform->type->data['send_confirmation_email_to_admin']
     : 0;
 
-  $form['data']['send_confirmation_email_to_admin'] = array(
+  $entityform->data['send_confirmation_email_to_admin'] = array(
     '#type' => 'checkbox',
     '#title' => t('Send confirmation email to admin'),
     '#weight' => 0,
@@ -117,12 +127,12 @@ function _forms_add_checkbox_to_send_admin_email(&$form) {
  * Add checkbox to indicate whether to append the user's name to the
  * admin email subject line" to the "edit" form for this entityform
  */
-function _forms_add_checkbox_to_include_name_in_admin_subject_line(&$form) {
-  $add_user_name_to_subject_line = (isset($form['#entityform_type']->data['add_user_name_to_subject_line']))
-    ? $form['#entityform_type']->data['add_user_name_to_subject_line']
+function _forms_add_checkbox_to_include_name_in_admin_subject_line(&$entityform) {
+  $add_user_name_to_subject_line = (isset($entityform->type->data['add_user_name_to_subject_line']))
+    ? $entityform->type->data['add_user_name_to_subject_line']
     : 0;
 
-  $form['data']['add_user_name_to_subject_line'] = array(
+  $entityform->data['add_user_name_to_subject_line'] = array(
     '#type' => 'checkbox',
     '#title' => t('Append user\'s name to subject line of admin email; some ILR staff appreciate having this; some do not'),
     '#weight' => 0,
@@ -164,25 +174,21 @@ function _forms_get_theme_array_from_template_files() {
  * Generates the appropriate submit handler for entityforms
  */
 function _forms_get_submit_handler($bundle) {
-  $processingFunction = '_process_' . $bundle;
-  if (function_exists($processingFunction)) {
-    return $processingFunction;
-  }
-  return '_forms_process_default';
+
 }
 
 /**
  * Generates the appropriate email template for entityforms
  * Note that the email template contains underscores, but the actual filename contains hyphens.
  */
-function _forms_get_tplphp_file($form) {
-  $tplphp_file = str_replace('_', '-', $form['#bundle']);
+function _forms_get_tplphp_file($entityform) {
+  $tplphp_file = str_replace('_', '-', $entityform->type);
   $tplphp_file_full_path = drupal_get_path('module', 'forms') . '/templates/' . $tplphp_file . '.tpl.php';
 
   if (file_exists($tplphp_file_full_path)) {
-    return $form['#bundle'];
+    return $entityform->type;
   }
-  elseif (_forms_is_event_registration_form($form['#entity'])) {
+  elseif (_forms_is_event_registration_form($entityform)) {
     return 'default_registration_confirmation';
   }
   return 'default_mail';
@@ -191,17 +197,17 @@ function _forms_get_tplphp_file($form) {
 /**
  * Default processing for forms
  */
-function _forms_process_default(&$form) {
-  $admin_email = _forms_get_admin_email($form);
-  _forms_send_emails($form, $admin_email);
+function _forms_process_default(&$entityform) {
+  $admin_email = _forms_get_admin_email($entityform);
+  _forms_send_emails($entityform, $admin_email);
 }
 
 /**
  * Process Library contact form
  */
-function _process_library_contact_form(&$form) {
-  $admin_email = trim($form['field_library_how_to_direct']['und']['#value']) . '@cornell.edu';
-  _forms_send_emails($form, $admin_email);
+function _process_library_contact_form(&$entityform) {
+  $admin_email = trim($entityform->field_library_how_to_direct['und']['value']) . '@cornell.edu';
+  _forms_send_emails($entityform, $admin_email);
 }
 
 function _forms_library_contact_options() {
@@ -216,15 +222,15 @@ function _forms_library_contact_options() {
 /**
  * Process Career Services contact form
  */
-function _process_career_services_contact_form(&$form) {
+function _process_career_services_contact_form(&$entityform) {
   // The email value has three chars appended to ensure uniqueness, so they
   // need to be stripped off.  See comments in
   // _forms_career_services_contact_options for more info.
   $email_value_stripped = substr(
-    trim($form['field_career_services_how_to_dir']['und']['#value']), 0, -3);
+    trim($entityform->field_career_services_how_to_dir['und'][0]['value']), 0, -3);
   $admin_email = $email_value_stripped . '@cornell.edu';
-  $subject = trim($form['field_subject_line']['und'][0]['value']['#value']);
-  _forms_send_emails($form, 'aaronf@cornell.edu', $subject);
+  $subject = trim($entityform->field_subject_line['und'][0]['value']['value']);
+  _forms_send_emails($entityform, 'aaronf@cornell.edu', $subject);
 }
 
 function _forms_career_services_contact_options() {
@@ -325,47 +331,47 @@ function _forms_application_to_graduate_graduation_dates() {
 /**
  * Send user and admin emails
  */
-function _forms_send_emails($form, $admin_email, $subject='') {
-  $form_title = _forms_get_form_title($form);
-  $user_name = _forms_construct_user_name($form);
-  $email_template = _forms_get_tplphp_file($form);
+function _forms_send_emails($entityform, $admin_email, $subject='') {
+  $form_title = _forms_get_form_title($entityform);
+  $user_name = _forms_construct_user_name($entityform);
+  $email_template = _forms_get_tplphp_file($entityform);
   $event_info_for_email = '';
 
-  if (_forms_is_event_registration_form($form['#entity'])) {
-    $entityform_wrapper = entity_metadata_wrapper('entityform', $form['#entity']);
+  if (_forms_is_event_registration_form($entityform)) {
+    $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
     $node = $entityform_wrapper->field_referenced_node->value();
     $event_info_for_email = _registration_pages_get_event_markup($node);
   }
 
   // User email
-  if (!empty($form['field_email']['und'][0]['email']['#value'])) {
+  if (!empty($entityform->field_email['und'][0]['email']['value'])) {
     $salutation = _form_salutation($user_name);
 
     $body = theme($email_template, array(
       'salutation'            => $salutation,
-      'form_data'             => _entity_display_form_data($form),
+      'form_data'             => _entity_display_form_data($entityform),
       'admin_email'           => $admin_email,
       'form_title'            => $form_title,
       'event_info_for_email'  => $event_info_for_email,
     ));
 
-    $to = _get_string_or_default($form['field_email']['und'][0]['email']['#value'], $admin_email);
+    $to = _get_string_or_default($entityform->field_email['und'][0]['email']['value'], $admin_email);
     $from = $admin_email;
     $subject_user = $form_title . ' confirmation';
     _send_email_for_entity_form($to, $from, $subject_user, $body);
   }
 
   // Admin email
-  if (_forms_admin_receives_confirmation_email($form)) {
+  if (_forms_admin_receives_confirmation_email($entityform)) {
     $to = $admin_email;
-    $from = _get_string_or_default($form['field_email']['und'][0]['email']['#value'], $admin_email);
+    $from = _get_string_or_default($entityform->field_email['und'][0]['email']['value'], $admin_email);
     if (empty($subject)) {
       $subject = $form_title . ' submitted';
     }
-    if (_forms_admin_subject_line_includes_user_name($form)) {
+    if (_forms_admin_subject_line_includes_user_name($entityform)) {
       $subject .= " - $user_name";
     }
-    $body =  _entity_display_form_data($form);
+    $body =  _entity_display_form_data($entityform);
     _send_email_for_entity_form($to, $from, $subject, $body);
   }
 }
@@ -373,8 +379,8 @@ function _forms_send_emails($form, $admin_email, $subject='') {
 /**
  * Get the title of the form
  */
-function _forms_get_form_title($form) {
-  return entity_label('entityform_type', entityform_type_load($form['#entity']->type));
+function _forms_get_form_title($entityform) {
+  return entity_label('entityform_type', entityform_type_load($entityform->type));
 }
 
 /**
@@ -383,8 +389,8 @@ function _forms_get_form_title($form) {
  * "from" address in the confirmation email to the user.
  * If admin recipient isn't supplied in the form, return ILRWEB address
  */
-function _forms_get_admin_email($form) {
-  $entityform_type = entityform_type_load($form['#entity']->type);
+function _forms_get_admin_email($entityform) {
+  $entityform_type = entityform_type_load($entityform->type);
   $admin_email = empty($entityform_type->data['form_submission_ilr_recipient'])
         ? ILRWEB_EMAIL : $entityform_type->data['form_submission_ilr_recipient'];
   return $admin_email;
@@ -393,8 +399,8 @@ function _forms_get_admin_email($form) {
 /**
  * Checks whether the user name should be appended to the admin subject line
  */
-function _forms_admin_subject_line_includes_user_name($form) {
-  $entityform_type = entityform_type_load($form['#entity']->type);
+function _forms_admin_subject_line_includes_user_name($entityform) {
+  $entityform_type = entityform_type_load($entityform->type);
   $admin_subject_line_includes_user_name = empty($entityform_type->data['add_user_name_to_subject_line'])
     ? FALSE
     : $entityform_type->data['add_user_name_to_subject_line'];
@@ -404,8 +410,8 @@ function _forms_admin_subject_line_includes_user_name($form) {
 /**
  * Checks whether the admin should receive a confirmation email
  */
-function _forms_admin_receives_confirmation_email($form) {
-  $entityform_type = entityform_type_load($form['#entity']->type);
+function _forms_admin_receives_confirmation_email($entityform) {
+  $entityform_type = entityform_type_load($entityform->type);
   $admin_receives_confirmation_email = empty($entityform_type->data['send_confirmation_email_to_admin'])
     ? FALSE
     : $entityform_type->data['send_confirmation_email_to_admin'];
@@ -415,10 +421,10 @@ function _forms_admin_receives_confirmation_email($form) {
 /**
  * Display form data using entityform and entity2text code from Ted Bowman
  */
-function _entity_display_form_data($form) {
+function _entity_display_form_data($entityform) {
   // Set display of form fields for email and anything else
   // $entityform_id is getting set when there is not a file attachment
-  $entityform_id = $form['#entity']->entityform_id;
+  $entityform_id = $entityform->entityform_id;
   $entityform_id = 1;
   $entityform = entityform_load($entityform_id);
   $controller = entity_get_controller('entityform');
@@ -443,16 +449,16 @@ function _form_salutation($name){
 /**
  * Construct name for salutation, based on form fields (a) full_name or (b) firstname and lastname
  */
-function _forms_construct_user_name($form){
+function _forms_construct_user_name($entityform){
   $name_for_salutation = '';
-  if (array_key_exists('field_full_name', $form)) {
-    $name_for_salutation = trim($form['field_full_name']['und'][0]['value']['#value']);
+  if (array_key_exists('field_full_name', $entityform)) {
+    $name_for_salutation = trim($entityform->field_full_name['und'][0]['value']['value']);
   }
-  elseif (array_key_exists('field_first_name', $form)) {
-    $name_for_salutation = trim($form['field_first_name']['und'][0]['value']['#value']);
-    if (array_key_exists('field_last_name', $form)) {
+  elseif (array_key_exists('field_first_name', $entityform)) {
+    $name_for_salutation = trim($entityform->field_first_name['und'][0]['value']['value']);
+    if (array_key_exists('field_last_name', $entityform)) {
       $name_for_salutation .= ' ';
-      $name_for_salutation .= trim($form['field_last_name']['und'][0]['value']['#value']);
+      $name_for_salutation .= trim($entityform->field_last_name['und'][0]['value']['value']);
     }
   }
   return $name_for_salutation;
