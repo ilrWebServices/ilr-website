@@ -150,7 +150,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Awards and Honors</em> under <em>General Information</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -196,7 +196,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Websites</em> under <em>Personal and Contact Information</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -242,7 +242,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Explanation of "Other" [concentration]</em> under <em>Narratives and Interests</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -288,7 +288,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Bio</em> under <em>Narratives and Interests</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -334,7 +334,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Presentations</em> under <em>Intellectual Contributions</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -380,7 +380,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Journal Articles</em> and <em>Books and Other Publications</em> under <em>Intellectual Contributions</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -426,7 +426,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Research Focus</em> under <em>Narratives and Interests</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -474,7 +474,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Teaching Focus</em> under <em>Narratives and Interests</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -520,7 +520,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Areas of Concentration</em> under <em>Narratives and Interests</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
