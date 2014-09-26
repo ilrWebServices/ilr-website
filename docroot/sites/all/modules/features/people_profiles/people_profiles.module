@@ -149,9 +149,11 @@ function _people_profiles_render_ai_tab_contents(&$form) {
   foreach ($form as $field_name => $value) {
     if (strpos($field_name, 'field_ai') === 0 || $field_name == 'field_areas_of_expertise') {
       $content = _people_profiles_get_default_value($form[$field_name]);
+      $field_hint = ( array_key_exists('#description', $form[$field_name]['und']) && ! empty($form[$field_name]['und']['#description'])) ?
+        ' <span class="field-note">('.$form[$field_name]['und']['#description'].')</span>' : '';
       $form[$field_name][LANGUAGE_NONE] = array(
         '#title' => $field_name,
-        '#markup' => '<div class="field-ai"><h3>'.$form[$field_name][LANGUAGE_NONE]['#title'].'</h3>' . $content . '</div>',
+        '#markup' => '<div class="field-ai"><h3>'.$form[$field_name][LANGUAGE_NONE]['#title'].$field_hint.'</h3>' . $content . '</div>',
       );
     }
   }
