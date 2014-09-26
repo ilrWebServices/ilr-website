@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * Implements hook_enable().
+ */
+function ilr_sub_sites_enable() {
+  $subsites = _ilr_sub_sites_get_sub_sites();
+
+  foreach ($subsites as $uri => $name) {
+    // Look the table first if the data does exist
+    $machine_name = _ilr_sub_sites_get_menu_name_from_uri($uri);
+
+    $exists = db_query("SELECT title FROM {menu_custom} WHERE menu_name=:menu_name", array(':menu_name' => $machine_name))->fetchField();
+    // Save the record if the data does not exist
+    if (!$exists) {
+      $menu = array(
+        'menu_name' => $machine_name,
+        'title' => $name . ' Menu',
+      );
+      menu_save($menu);
+    }
+  }
+}
+
+/**
+ * The initial group of subsites.
+ * Additional menus may be added later.
+ */
+function _ilr_sub_sites_get_sub_sites() {
+  return array(
+    'worker-institute' => 'Worker Institute',
+    'mpsnyc' => 'MPS NYC',
+    'cheri' => 'Cheri',
+    'ldi' => 'Leadership Disability Institute',
+    'iws' => 'IWS',
+    'smithers-institute' => 'Smithers Institute',
+    'ics' => 'Institute for Compensation Studies',
+    'scheinman-institute' => 'Scheinman Institute',
+    'healthcare' => 'Healthcare',
+    'national-labor-leadership-initiative' => 'NLLI',
+    'expo' => 'ExPO',
+    'bargaining-for-better-schools' => 'Bargaining for Better Schools',
+  );
+}

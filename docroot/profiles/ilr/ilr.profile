@@ -89,7 +89,10 @@ function ilr_form_user_pass_alter(&$form, $form_state, $form_id) {
  * @see menu_tree_build() for a description of the config array.
  */
 function ilr_menu_block_blocks() {
-  $menu = _ilr_get_current_menu_name();
+  $menu = 'main-menu';
+  if (module_exists('ilr_sub_sites')) {
+    $menu = _ilr_sub_sites_get_current_menu_name();
+  }
   $level = ($menu == 'main-menu') ? 1 : 2; // Note this doe snot seem to be zero indexed
   return array(
     // The array key is the block id used by menu block.
@@ -116,21 +119,6 @@ function ilr_menu_block_blocks() {
       'sort'        => FALSE,
     ),
   );
-}
-
-function _ilr_get_current_menu_name() {
-  $contexts = context_get();
-  if(count($contexts)) {
-    foreach ($contexts['context'] as $name => $context) {
-      if (strpos($name, '-subsite') !== FALSE) {
-        $menu = 'menu-' . str_replace('-subsite', "", $name) . '-menu';
-        return $menu;
-      }
-    }
-  }
-  $menu = 'main-menu'; //Subsite context not found
-
-  return $menu;
 }
 
 /**

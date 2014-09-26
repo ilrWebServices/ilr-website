@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * Gets the menu assignment of the current page.
+ * See ilr_menu_block_blocks() in the profile.
+ */
+function _ilr_sub_sites_get_current_menu_name() {
+  $node = menu_get_object();
+  $menu_name = db_select('menu_links' , 'ml')
+    ->condition('ml.link_path' , 'node/' . $node->nid)
+    ->fields('ml', array('menu_name'))
+    ->execute()
+    ->fetchField();
+
+  return strlen($menu_name) ? $menu_name : 'main-menu';
+}
+
+/**
+ * Concatenates menu names since they're limited to 32 characters.
+ * See ilr_sub_sites_enable().
+ */
+function _ilr_sub_sites_get_menu_name_from_uri($uri) {
+  $name = $uri;
+  if (strlen($uri) > 30) {
+    $name = substr($uri, 0, 30);
+  }
+  return $name;
+}
