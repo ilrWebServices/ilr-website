@@ -221,6 +221,15 @@ function ilr_update_7012() {
 }
 
 /**
+ * Enables student_portaits feature
+ */
+function ilr_update_7013() {
+  module_enable(array(
+    'ilr_sub_sites',
+  ));
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {
