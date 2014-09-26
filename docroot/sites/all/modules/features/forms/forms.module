@@ -170,13 +170,6 @@ function _forms_get_theme_array_from_template_files() {
 }
 
 /**
- * Generates the appropriate submit handler for entityforms
- */
-function _forms_get_submit_handler($bundle) {
-
-}
-
-/**
  * Generates the appropriate email template for entityforms
  * Note that the email template contains underscores, but the actual filename contains hyphens.
  */
