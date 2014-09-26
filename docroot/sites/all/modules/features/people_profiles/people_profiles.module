@@ -160,7 +160,7 @@ function _people_profiles_render_ai_tab_contents(&$form) {
       }
       $form[$field_name][LANGUAGE_NONE] = array(
         '#title' => $field_name,
-        '#markup' => '<div class="field-ai"><h3>'.$field_name.':'.$form[$field_name][LANGUAGE_NONE]['#title'].$field_hint.'</h3>' . $content . '</div>',
+        '#markup' => '<div class="field-ai"><h3>'.$form[$field_name][LANGUAGE_NONE]['#title'].$field_hint.'</h3>' . $content . '</div>',
       );
     }
   }
