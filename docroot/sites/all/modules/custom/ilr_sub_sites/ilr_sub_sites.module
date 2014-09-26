@@ -6,13 +6,16 @@
  */
 function _ilr_sub_sites_get_current_menu_name() {
   $node = menu_get_object();
-  $menu_name = db_select('menu_links' , 'ml')
-    ->condition('ml.link_path' , 'node/' . $node->nid)
-    ->fields('ml', array('menu_name'))
-    ->execute()
-    ->fetchField();
+  if ($node) {
+    $menu_name = db_select('menu_links' , 'ml')
+      ->condition('ml.link_path' , 'node/' . $node->nid)
+      ->fields('ml', array('menu_name'))
+      ->execute()
+      ->fetchField();
 
-  return strlen($menu_name) ? $menu_name : 'main-menu';
+    return strlen($menu_name) ? $menu_name : 'main-menu';
+  }
+  return 'main-menu';
 }
 
 /**
