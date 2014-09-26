@@ -20,7 +20,9 @@ function ilr_sdc_listings_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 5,
       ),
@@ -28,6 +30,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => '',
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
@@ -37,6 +40,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => '',
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
@@ -84,6 +88,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'module' => 'addressfield',
         'settings' => array(
+          'field_formatter_label' => '',
           'format_handlers' => array(
             0 => 'address',
           ),
@@ -96,6 +101,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'addressfield',
         'settings' => array(
+          'field_formatter_label' => '',
           'format_handlers' => array(
             0 => 'address',
           ),
@@ -108,6 +114,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'addressfield',
         'settings' => array(
+          'field_formatter_label' => '',
           'format_handlers' => array(
             0 => 'address',
           ),
@@ -154,21 +161,27 @@ function ilr_sdc_listings_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 4,
       ),
       'reference_field' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 3,
       ),
@@ -202,6 +215,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'field_formatter_label' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -215,6 +229,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
+          'field_formatter_label' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -228,6 +243,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
+          'field_formatter_label' => '',
           'format_type' => 'ilr_short_day_only',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -321,6 +337,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'field_formatter_label' => '',
           'links' => 0,
           'view_mode' => 'reference_field',
         ),
@@ -337,6 +354,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'field_formatter_label' => '',
           'link' => 1,
         ),
         'type' => 'entityreference_label',
@@ -374,6 +392,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'field_formatter_label' => '',
           'links' => 0,
           'view_mode' => 'full',
         ),
@@ -384,6 +403,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'field_formatter_label' => '',
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -572,6 +592,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
+          'field_formatter_label' => '',
           'prefix_suffix' => 1,
           'scale' => 2,
           'thousand_separator' => ',',
@@ -584,6 +605,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
+          'field_formatter_label' => '',
           'prefix_suffix' => TRUE,
           'scale' => 2,
           'thousand_separator' => ' ',
@@ -596,6 +618,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
+          'field_formatter_label' => '',
           'prefix_suffix' => 1,
           'scale' => 2,
           'thousand_separator' => '',
@@ -634,6 +657,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'field_formatter_label' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -693,14 +717,18 @@ function ilr_sdc_listings_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 2,
       ),
       'reference_field' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 1,
       ),
@@ -708,6 +736,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => '',
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
@@ -744,14 +773,18 @@ function ilr_sdc_listings_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
       'reference_field' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -932,6 +965,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
+          'field_formatter_label' => '',
           'prefix_suffix' => 1,
           'scale' => 2,
           'thousand_separator' => '',
@@ -1053,7 +1087,9 @@ function ilr_sdc_listings_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 37,
     ),
@@ -1069,14 +1105,18 @@ function ilr_sdc_listings_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
