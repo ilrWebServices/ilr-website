@@ -257,14 +257,34 @@ function _forms_full_names_states_and_provinces() {
 }
 
 /**
- * Class year in the Labor Roundtable registration form starts with current year and goes six years out
+ * Generate options list for years, based on which form it is
  */
 function _year_as_list_text_options($field, $instance = NULL, $entity_type = NULL, $entity = NULL) {
   if ($entity->type == 'labor_roundtable_student_registr') {
     // Class year in the Labor Roundtable registration form starts with current year and goes six years out
     return _forms_year_relative_options(0,6);
   }
+  elseif ($entity->type == 'contact_ilr_admissions') {
+    // High school grad year for Admissions Contact form starts with 5 years
+    // ago and goes to 5 years from now, plus "other".
+    $return_array = _forms_year_relative_options(-5,5);
+    $return_array[] = 'other';
+    return $return_array;
+  }
 }
+
+/**
+ * Second function to generate options list for years, based on which form it is
+ * I need this, because of forms that have more than one field for a set of years
+ */
+function _forms_year_as_list_text_options2($field, $instance = NULL, $entity_type = NULL, $entity = NULL) {
+  if ($entity->type == 'contact_ilr_admissions') {
+    // Anticipated entry year at Cornell for Admissions Contact form
+    // starts with current year and goes out 6 years
+    return _forms_year_relative_options(0,6);
+  }
+}
+
 
 /**
  * Generate a list for a select or radio form element with a list of sequential numbers
