@@ -751,7 +751,6 @@ function ilr_sdc_listings_form_ilr_editable_settings_form_alter(&$form, &$form_s
  * See ilr_sdc_listings_update_7001()
  */
 function _ilr_sdc_listings_get_mlid_of_path($path) {
-  echo ' ' . $path . '  ';
   $mlid = array();
   $menu_info = db_select('menu_links' , 'ml')
     ->condition('ml.link_path' , $path)

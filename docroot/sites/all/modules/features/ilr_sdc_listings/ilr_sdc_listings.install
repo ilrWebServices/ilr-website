@@ -58,7 +58,6 @@ function ilr_sdc_listings_update_7001() {
   $item = '';
   foreach ($links as $link) {
     $alias = _ilr_sdc_listings_get_parent_path_alias($link['link_path']);
-    echo ' ' . $alias . '  ';
     $mlid = ($mlid = _ilr_sdc_listings_get_mlid_of_path($alias)) ? $mlid : _ilr_sdc_listings_get_mlid_of_path(drupal_get_normal_path($alias));
     $item = array(
       'link_path' => $link['link_path'],
