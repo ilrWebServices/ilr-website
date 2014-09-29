@@ -745,3 +745,33 @@ function ilr_sdc_listings_form_ilr_editable_settings_form_alter(&$form, &$form_s
     '#default_value' => 'The class date you selected is full.',
   );
 }
+
+/**
+ * Gets the mlid of a menu link based on the alias
+ * See ilr_sdc_listings_update_7001()
+ */
+function _ilr_sdc_listings_get_mlid_of_path($path) {
+  echo ' ' . $path . '  ';
+  $mlid = array();
+  $menu_info = db_select('menu_links' , 'ml')
+    ->condition('ml.link_path' , $path)
+    ->fields('ml', array('mlid', 'plid'))
+    ->execute()
+    ->fetchAll();
+
+  if (count($menu_info)) {
+    return $menu_info[0]->mlid;
+  }
+  return NULL;
+}
+
+/**
+ * Returns the uri of the parent page
+ * based on the pathauto alias rules
+ * See ilr_sdc_listings_update_7001()
+ */
+function _ilr_sdc_listings_get_parent_path_alias($path) {
+  $parts = explode('/', rtrim($path, '/'));
+  $sliced = array_slice($parts, 0, -1);
+  return implode("/", $sliced);
+}
