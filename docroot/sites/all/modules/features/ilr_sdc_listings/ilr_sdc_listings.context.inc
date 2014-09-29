@@ -19,7 +19,7 @@ function ilr_sdc_listings_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'sdc-catalog*' => 'sdc-catalog*',
+        'professional-programs/public-offerings/calendar*' => 'professional-programs/public-offerings/calendar*',
       ),
     ),
   );

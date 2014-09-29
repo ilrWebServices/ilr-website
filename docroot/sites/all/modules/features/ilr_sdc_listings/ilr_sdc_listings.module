@@ -8,6 +8,7 @@
 define('ILR_SDC_MAX_DAYS_PAST', 90);
 define('ILR_SDC_ONLINE_TEXT', 'Online');
 define('ILR_SDC_ONDEMAND_TEXT', 'This is an on demand class.');
+define('ILR_SDC_PATH_ALIAS', 'professional-programs/public-offerings');
 include_once 'ilr_sdc_listings.features.inc';
 
 
@@ -554,11 +555,16 @@ function ilr_sdc_listings_date_default_argument_alter(&$argument, &$value) {
  *  Month in format YYYY-MM
  */
 function _ilr_sdc_listings_get_url_month_arg() {
-  if ($url_date = arg(1)) {
+  if ($url_date = arg(_ilr_sdc_listings_get_path_alias_index())) {
     $value = substr($url_date, 0, 7);
     return $value;
   }
   return NULL;
+}
+
+function _ilr_sdc_listings_get_path_alias_index() {
+  $parts = explode('/', rtrim(ILR_SDC_PATH_ALIAS, '/'));
+  return count($parts) + 1;
 }
 
 /**
@@ -571,7 +577,7 @@ function _ilr_sdc_listings_get_url_month_arg() {
 function ilr_sdc_listings_views_pre_render(&$view) {
   if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
     $nav = '';
-    if (arg(0) == 'sdc-catalog-day') {
+    if (arg(2) == 'calendar-day') {
       $month = _ilr_sdc_listings_get_url_month_arg();
       $month_label = t('Back to @month ', array('@month' => date('F Y', strtotime($month))));
       $url = _ilr_sdc_listings_calendar_month_url($month, FALSE);
@@ -593,7 +599,7 @@ function _ilr_listings_sdc_select_month_form($form, &$form_state) {
     $start_month = $url_month;
   }
   else {
-    if ('sdc-catalog' == current_path()) {
+    if (ILR_SDC_PATH_ALIAS == current_path()) {
       // Viewing all classes, not by date.
       $start_month = NULL;
     }
@@ -654,7 +660,7 @@ function _ilr_sdc_listings_get_month_options($start_month, $month_count) {
     $month_options = array('' => 'Choose a month') + $month_options;
   }
   else {
-    $month_options = array('/sdc-catalog' => 'Full Listing') + $month_options;
+    $month_options = array('/' . ILR_SDC_PATH_ALIAS => 'Full Listing') + $month_options;
   }
   return $month_options;
 }
@@ -668,7 +674,7 @@ function _ilr_sdc_listings_get_month_options($start_month, $month_count) {
  * @return string
  */
 function _ilr_sdc_listings_calendar_month_url($month, $include_query_string = TRUE) {
-  $url = "sdc-catalog-month/$month";
+  $url = ILR_SDC_PATH_ALIAS . "/calendar-month/$month";
   if ($include_query_string) {
     $query_parameters = _ilr_sdc_listings_get_field_query_values();
     $query_string = drupal_http_build_query($query_parameters);
