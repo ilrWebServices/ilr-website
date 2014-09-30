@@ -271,6 +271,11 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
     $return_array[] = 'other';
     return $return_array;
   }
+  elseif ($entity->type == 'ilr_information_session_sign_in') {
+    // Anticipated entry year at Cornell for Admissions Info Session sign-in form
+    // starts with current year and goes out 6 years
+    return _forms_year_relative_options(0,6);
+  }
 }
 
 /**
