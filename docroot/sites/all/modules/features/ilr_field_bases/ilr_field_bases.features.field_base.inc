@@ -3035,7 +3035,7 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'first year' => 'First-year student',
+        'freshman' => 'Freshman',
         'transfer' => 'Transfer student',
       ),
       'allowed_values_function' => '',

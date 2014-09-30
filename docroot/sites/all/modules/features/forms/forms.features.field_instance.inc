@@ -1448,11 +1448,7 @@ function forms_field_default_field_instances() {
   // Exported field_instance: 'entityform-contact_ilr_admissions-field_first_year_or_transfer'
   $field_instances['entityform-contact_ilr_admissions-field_first_year_or_transfer'] = array(
     'bundle' => 'contact_ilr_admissions',
-    'default_value' => array(
-      0 => array(
-        'value' => 'first year',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1469,7 +1465,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => 'First year or transfer',
+          'field_formatter_label' => 'Freshman or transfer',
         ),
         'type' => 'list_default',
         'weight' => 9,
@@ -1478,7 +1474,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => 'First year or transfer',
+          'field_formatter_label' => 'Freshman or transfer',
         ),
         'type' => 'list_default',
         'weight' => 9,
@@ -1486,7 +1482,7 @@ function forms_field_default_field_instances() {
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_first_year_or_transfer',
-    'label' => 'Are you applying as a first-year or transfer student?',
+    'label' => 'Are you applying as a freshman or transfer student?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -15448,7 +15444,7 @@ function forms_field_default_field_instances() {
   t('Anticipated Cornell entry date (semester and year)');
   t('Any other ways you learned about the ILR School');
   t('Are you a transfer student');
-  t('Are you applying as a first-year or transfer student?');
+  t('Are you applying as a freshman or transfer student?');
   t('Are you currently, or have you ever been, subject to disciplinary action at Cornell?');
   t('Areas of interest');
   t('Based on your experience, what are some of the most pressing questions and concerns of new Cornell students?');
