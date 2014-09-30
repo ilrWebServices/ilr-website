@@ -273,8 +273,9 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
   }
   elseif ($entity->type == 'ilr_information_session_sign_in') {
     // Anticipated entry year at Cornell for Admissions Info Session sign-in form
-    // starts with current year and goes out 6 years
-    return _forms_year_relative_options(0,6);
+    // If it's before April: start with current year and go out 6 years
+    // April or later: start with the following year and go out 6 years
+    return date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
   }
 }
 
@@ -285,8 +286,9 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
 function _forms_year_as_list_text_options2($field, $instance = NULL, $entity_type = NULL, $entity = NULL) {
   if ($entity->type == 'contact_ilr_admissions') {
     // Anticipated entry year at Cornell for Admissions Contact form
-    // starts with current year and goes out 6 years
-    return _forms_year_relative_options(0,6);
+    // If it's before April: start with current year and go out 6 years
+    // April or later: start with the following year and go out 6 years
+    return date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
   }
 }
 
