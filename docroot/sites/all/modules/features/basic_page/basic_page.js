@@ -28,12 +28,10 @@
         e.preventDefault();
         currentMenu = $(this).prev();
         oldMenu = $(this).closest('ul.menu');
-        yPosition = $(this).parent().position().top;
         if (menuNeedsBackButton(currentMenu)) {
           addBackButtonToMenu(currentMenu);
         }
         $(currentMenu).css({
-          'top':'-' + yPosition + 'px',
           'min-height': minHeight,
           'visibility': 'visible',
         });
@@ -45,7 +43,6 @@
         e.preventDefault();
         currentMenu = $(this).closest('ul.menu');
         oldMenu = $(currentMenu).parent().closest('ul.menu');
-        yPosition = $(currentMenu).position().top;
         TweenLite.to($(currentMenu), .6, {left:"100%",  ease: easing, onComplete:hideMenu, onCompleteParams:[$(currentMenu)]});
         $(oldMenu).css('visibility','visible');
         TweenLite.to($(oldMenu), .6, {left:pixelShift});
@@ -64,7 +61,6 @@
       var minHeight;
       var pixelShift = '0px';
       var easing = 'Expo.easeOut';
-      var animating = false;
 
       function positionCurrentMenu() {
         currentPage = getCurrentPage();
@@ -72,10 +68,8 @@
         minHeight = getMinHeight();
         $(currentMenu).parents('ul.menu').each(function() {
           parent = $(this).closest('li.expanded');
-          yPosition = (parent.position()) ? parent.position().top : 0;
           $(this).css({
             'left': 0,
-            'top':'-' + yPosition + 'px',
             'min-height': minHeight,
           });
         });
@@ -85,10 +79,8 @@
         }
 
         if ($(currentMenu).parent().position()) {
-          yPosition = $(currentMenu).parent().position().top;
           $(currentMenu).css({
             'left': 0,
-            'top':'-' + yPosition + 'px',
             'min-height': minHeight,
             'visibility': 'visible',
           });

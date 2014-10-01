@@ -168,7 +168,6 @@
       color: darken($gray-light, 10%);
       width: 100%;
       display: flex;
-      //align-items: center;
       justify-content: center;
       span {
         @extend %nav-arrow;
@@ -183,11 +182,8 @@
     top: 0;
     z-index: 2;
     visibility: hidden;
-    //border-left: 1px solid lighten($gray-light, 10%);
 
-    //#jPanelMenu-menu & {
     @include box-shadow(rgba(black, .3) 1px 1px 5px);
-    //}
   }
 
   & > li {
