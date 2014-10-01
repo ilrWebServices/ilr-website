@@ -109,63 +109,71 @@
   display: block;
   background: white;
   min-height: 500px;
+  opacity: 0;
 
   li {
     list-style: none;
     background-image: none;
     margin: 0;
-    padding: 0 1em;
+    padding: 0 !important;
     font-family: freight-sans-pro;
+    clear: both;
+    min-height: 100%;
+    display: flex;
+
     a {
       color: $gray-dark;
       display: block;
-      padding: 1em 0;
+      padding: 1em;
+      float: left;
+
       &:hover {
         color: $brand;
         text-decoration: none;
+        background: darken(white, 2%);
+      }
+      &.active, &.active-trail {
+        color: $brand;
+      }
+      &.active {
+        font-weight: 600;
       }
     }
-    a.active {
-      color: $cornell-red;
-      font-weight: 600;
-    }
-  }
+    &.expanded {
+      a {
+        width: 80%;
+      }
+      a.next-menu {
+        width: 20%;
+        padding: 1em;
+        z-index: 1;
+        border-left: 1px solid lighten($gray-light, 15%);
+        display: flex;
+        justify-content: center;
 
-  li.expanded {
-    position: relative;
-    padding: 0 60px 0 1em;
-  }
+        span {
+          @extend %nav-arrow;
+        }
 
-  a.next-menu {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 1em;
-    z-index: 1;
-
-    &:hover {
-      background: rgba(black, .05);
-    }
-
-
-    span {
-      padding: 0;
-      border-width: 1px;
-      line-height: 17px;
-      font-size: 2em;
-      text-shadow: 0 1px 1px rgba(white, 1);
-      color: darken($gray-light, 10%);
-    }
-
-    #jPanelMenu-menu & {
-      padding: .8em 1em 1.1em 1em;
+        #jPanelMenu-menu & {
+          padding: .8em 1em 1.1em 1em;
+        }
+      }
     }
   }
 
   li.back {
-    background: rgba(black,.1);
+    padding: 0;
     a.prev-menu {
-      padding: .5em 0;
+      color: darken($gray-light, 10%);
+      width: 100%;
+      display: flex;
+      //align-items: center;
+      justify-content: center;
+      span {
+        @extend %nav-arrow;
+        margin-right: .2em;
+      }
     }
   }
 
@@ -175,14 +183,23 @@
     top: 0;
     z-index: 2;
     visibility: hidden;
-    border-left: 1px solid $gray-light;
+    //border-left: 1px solid lighten($gray-light, 10%);
 
-    #jPanelMenu-menu & {
-      @include box-shadow(rgba(black, .3) 1px 1px 5px);
-    }
+    //#jPanelMenu-menu & {
+    @include box-shadow(rgba(black, .3) 1px 1px 5px);
+    //}
   }
 
   & > li {
-    border-top: 1px solid #e7e5db;
+    @extend .clearfix;
+    border-bottom: 1px solid #e7e5db;
   }
+}
+
+%nav-arrow {
+  font-size: 2em;
+  color: darken($gray-light, 10%);
+  display: flex;
+  align-items: center;
+  margin-top: -5px;
 }
