@@ -147,7 +147,6 @@
         width: 20%;
         padding: 1em;
         z-index: 1;
-        border-left: 1px solid lighten($gray-light, 15%);
         display: flex;
         justify-content: center;
 
@@ -157,6 +156,7 @@
 
         #jPanelMenu-menu & {
           padding: .8em 1em 1.1em 1em;
+          border-left: 1px solid lighten($gray-light, 15%);
         }
       }
     }
