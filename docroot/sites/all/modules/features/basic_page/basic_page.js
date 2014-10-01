@@ -36,39 +36,34 @@
           'top':'-' + yPosition + 'px',
           'min-height': minHeight,
           'visibility': 'visible',
-        }).animate({ "left": pixelShift }, easing);
-
-        $(oldMenu).animate({ "left": "-=" + pixelShift });
+        });
+        TweenLite.to($(currentMenu), .6, {left:pixelShift, ease: easing });
+        TweenLite.to($(oldMenu), .6, {left:"-=" + pixelShift, onComplete:hideMenu, onCompleteParams:[$(oldMenu)]});
       }
 
       var prevClick = function(e) {
         e.preventDefault();
-        // if(animating) {
-        //   console.log('animating');
-        //   return false;
-        // }
-        // animating = true;
         currentMenu = $(this).closest('ul.menu');
         oldMenu = $(currentMenu).parent().closest('ul.menu');
         yPosition = $(currentMenu).position().top;
-        $(currentMenu).animate({ "left": "100%"}, easing, function(){
-          $(this).css('visibility','hidden');
-        });
-
-        $(oldMenu).css('visibility','visible').animate({ "left": '+=' + pixelShift }, easing, function() {
-          animating = false;
-        });
+        TweenLite.to($(currentMenu), .6, {left:"100%",  ease: easing, onComplete:hideMenu, onCompleteParams:[$(currentMenu)]});
+        $(oldMenu).css('visibility','visible');
+        TweenLite.to($(oldMenu), .6, {left:pixelShift});
 
         if (menuNeedsBackButton(oldMenu)) {
           addBackButtonToMenu(oldMenu);
         }
       }
 
+      function hideMenu(menu) {
+        $(menu).css('visibility', 'hidden');
+      }
+
       var currentPage;
       var currentMenu;
       var minHeight;
       var pixelShift = '0px';
-      var easing = { duration: 600, easing: 'Expo.easeOut' };
+      var easing = 'Expo.easeOut';
       var animating = false;
 
       function positionCurrentMenu() {
@@ -100,6 +95,11 @@
         }
 
         addForwardButtonToMenus();
+        revealMenu();
+      }
+
+      function revealMenu() {
+        TweenLite.to($('#block-menu-block-ilr-subnav ul.menu'), .6, {opacity:1, ease: easing });
       }
 
       function getMinHeight() {
@@ -138,11 +138,11 @@
       }
 
       function addBackButtonToMenu(menu) {
-        var linkText = menu.parent().parent().parent().children('a:first-child').text();
+        var linkText = menu.parent().children('a:first-child').text();
         if (linkText == '') {
           linkText = 'Main Menu';
         }
-        menu.prepend('<li class="back"><a class="prev-menu" href="#">&lsaquo; ' + linkText + '</a></li>');
+        menu.prepend('<li class="back"><a class="prev-menu" href="#"><span>&lsaquo; </span> ' + linkText + '</a></li>');
         $('.prev-menu').click(prevClick);
       }
 
