@@ -108,6 +108,11 @@ function basic_page_views_default_views() {
   $handler->display->display_options['fields']['field_netid']['settings'] = array(
     'field_formatter_label' => '',
   );
+  /* Sort criterion: Editor Note: Created */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'editor_note';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   /* Filter criterion: Field: NetID (field_netid) */
   $handler->display->display_options['filters']['field_netid_value']['id'] = 'field_netid_value';
   $handler->display->display_options['filters']['field_netid_value']['table'] = 'field_data_field_netid';
