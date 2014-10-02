@@ -90,7 +90,7 @@ function ilr_sub_pages_check_permissions() {
  */
 function ilr_sub_pages_node_form_validate($form, &$form_state) {
   // Top level items are always in the format [menu-name]:0 or similar (i.e. main-menu:0)
-  $is_setting_top_menu_level = (substr($form_state['values']['menu']['parent'], -2) == ':0');
+  $is_setting_top_menu_level = _ilr_sub_pages_is_top_menu_level($form_state);
   $is_editing_node = isset($form_state['node']->nid);
   $was_already_at_top_level = $is_editing_node && ($form_state['node']->menu['plid'] == 0);
 
@@ -114,7 +114,6 @@ function ilr_sub_pages_node_form_validate($form, &$form_state) {
  */
 function ilr_sub_pages_form_basic_page_node_form_alter(&$form, &$form_state, $form_id) {
   $view_advanced_menu = user_access('view page advanced menu settings');
-
   // set menu parent item default value if creating sub page
   if (isset($form['#node']->ilr_default_menu_parent)) {
     $form['menu']['link']['parent']['#default_value'] = $form['#node']->ilr_default_menu_parent;
@@ -166,7 +165,37 @@ function ilr_sub_pages_node_load($nodes, $types) {
  * Ensure node is published and user has privileges for sub page form
  */
 function _ilr_sub_pages_create_sub_page_access($node, $access_arg) {
-  return $node->type === 'basic_page' && user_access($access_arg);
+  if ($node->type === 'basic_page' && user_access($access_arg)) {
+    $menu_record = db_select('menu_links', 'ml')
+      ->condition('ml.link_path', 'node/' . $node->nid)
+      ->fields('ml', array('mlid', 'plid'))
+      ->execute()
+      ->fetchObject();
+
+    if (is_object($menu_record)) {
+      if ($menu_record->plid == 0 && user_access('add top level menu items')) {
+        return TRUE;
+      }
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Determines whether the parent is at the root of the main-menu,
+ * or the grandparent is at the root of the sub site menu
+ */
+function _ilr_sub_pages_is_top_menu_level($form_state) {
+  // Menu items are always in the format [menu-name]:0 (i.e. main-menu:0)
+  $menu_info = explode(":", $form_state['values']['menu']['parent']);
+  $menu = $menu_info[0];
+  $plid = $menu_info[1];
+
+  if ($menu != 'main-menu') {
+    $parent = menu_link_load($plid);
+    $plid = $parent['plid'];
+  }
+  return $plid === '0';
 }
 
 /**
