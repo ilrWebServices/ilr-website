@@ -28,59 +28,46 @@
         e.preventDefault();
         currentMenu = $(this).prev();
         oldMenu = $(this).closest('ul.menu');
-        yPosition = $(this).parent().position().top;
         if (menuNeedsBackButton(currentMenu)) {
           addBackButtonToMenu(currentMenu);
         }
         $(currentMenu).css({
-          'top':'-' + yPosition + 'px',
           'min-height': minHeight,
           'visibility': 'visible',
-        }).animate({ "left": pixelShift }, easing);
-
-        $(oldMenu).animate({ "left": "-=" + pixelShift });
+        });
+        TweenLite.to($(currentMenu), .6, {left:pixelShift, ease: easing });
+        TweenLite.to($(oldMenu), .6, {left:"-=" + pixelShift, onComplete:hideMenu, onCompleteParams:[$(oldMenu)]});
       }
 
       var prevClick = function(e) {
         e.preventDefault();
-        // if(animating) {
-        //   console.log('animating');
-        //   return false;
-        // }
-        // animating = true;
         currentMenu = $(this).closest('ul.menu');
         oldMenu = $(currentMenu).parent().closest('ul.menu');
-        yPosition = $(currentMenu).position().top;
-        $(currentMenu).animate({ "left": "100%"}, easing, function(){
-          $(this).css('visibility','hidden');
-        });
-
-        $(oldMenu).css('visibility','visible').animate({ "left": '+=' + pixelShift }, easing, function() {
-          animating = false;
-        });
+        TweenLite.to($(currentMenu), .6, {left:"100%",  ease: easing, onComplete:hideMenu, onCompleteParams:[$(currentMenu)]});
+        $(oldMenu).css('visibility','visible');
+        TweenLite.to($(oldMenu), .6, {left:pixelShift});
 
         if (menuNeedsBackButton(oldMenu)) {
           addBackButtonToMenu(oldMenu);
         }
       }
 
-      var currentPage;
+      function hideMenu(menu) {
+        $(menu).css('visibility', 'hidden');
+      }
+
       var currentMenu;
       var minHeight;
       var pixelShift = '0px';
-      var easing = { duration: 600, easing: 'Expo.easeOut' };
-      var animating = false;
+      var easing = 'Expo.easeOut';
 
       function positionCurrentMenu() {
-        currentPage = getCurrentPage();
         currentMenu = getCurrentMenu();
         minHeight = getMinHeight();
         $(currentMenu).parents('ul.menu').each(function() {
           parent = $(this).closest('li.expanded');
-          yPosition = (parent.position()) ? parent.position().top : 0;
           $(this).css({
             'left': 0,
-            'top':'-' + yPosition + 'px',
             'min-height': minHeight,
           });
         });
@@ -90,16 +77,19 @@
         }
 
         if ($(currentMenu).parent().position()) {
-          yPosition = $(currentMenu).parent().position().top;
           $(currentMenu).css({
             'left': 0,
-            'top':'-' + yPosition + 'px',
             'min-height': minHeight,
             'visibility': 'visible',
           });
         }
 
         addForwardButtonToMenus();
+        revealMenu();
+      }
+
+      function revealMenu() {
+        TweenLite.to($('.menu-block-ilr-subnav'), .6, {opacity:1, ease: easing });
       }
 
       function getMinHeight() {
@@ -114,16 +104,16 @@
       }
 
       function getCurrentPage() {
-        selector = (mobileNavActive()) ? '#jPanelMenu-menu' : '#sidebar-first'; // targets the li
-        return $(selector + ' a.active').parent();
+        return $('.menu-block-ilr-subnav a.active').parent();
       }
 
       function getCurrentMenu() {
-        children = $(currentPage).children('ul.menu:first');
+        currentPage = getCurrentPage();
+        children = $(currentPage).children('ul.menu');
         if (children.length) {
-          return $(currentPage).children('ul.menu:first');
+          return children;
         }
-        return $(currentPage).parent(); // targets the ul
+        return $(currentPage).parent();
       }
 
       function menuNeedsBackButton(el) {
@@ -138,11 +128,11 @@
       }
 
       function addBackButtonToMenu(menu) {
-        var linkText = menu.parent().parent().parent().children('a:first-child').text();
+        var linkText = menu.parent().children('a:first-child').text();
         if (linkText == '') {
           linkText = 'Main Menu';
         }
-        menu.prepend('<li class="back"><a class="prev-menu" href="#">&lsaquo; ' + linkText + '</a></li>');
+        menu.prepend('<li class="back"><a class="prev-menu" href="#"><span>&lsaquo; </span> ' + linkText + '</a></li>');
         $('.prev-menu').click(prevClick);
       }
 

@@ -28,14 +28,6 @@
   }
 }
 
-.sidebar ul.menu {
-  @extend .hidden;
-
-  [data-eq-state="regular-nav"] & {
-    @extend .visible;
-  }
-}
-
 .menu-block-ilr-primary-menu { // Main nav
   clear: left;
   float: left;
@@ -67,6 +59,7 @@
         font-family: $font-headers;
         text-decoration: none;
         font-weight: 400;
+        outline: 0;
       }
     }
   }
@@ -88,7 +81,7 @@
 }
 
 .jPanelMenu-panel {
-  @include box-shadow(0 10px 10px -5px rgba(black, .5));
+  @include box-shadow(0 10px 10px 0px rgba(black, .5));
 }
 
 #jPanelMenu-menu {
@@ -100,7 +93,20 @@
   position: relative;
 }
 
-#block-menu-block-ilr-subnav ul.menu {
+.menu-block-ilr-subnav {
+  opacity: 0;
+}
+
+.sidebar #block-menu-block-ilr-subnav {
+  @extend .hidden;
+
+  [data-eq-state="regular-nav"] & {
+    @extend .visible;
+  }
+}
+
+.menu-block-ilr-subnav ul.menu {
+  visibility: hidden; // fix this when switching between desktop and mobile
   position: relative;
   top: 0;
   margin: 0;
@@ -114,58 +120,81 @@
     list-style: none;
     background-image: none;
     margin: 0;
-    padding: 0 1em;
+    padding: 0 !important;
     font-family: freight-sans-pro;
-    a {
-      color: $gray-dark;
-      display: block;
-      padding: 1em 0;
-      &:hover {
-        color: $brand;
-        text-decoration: none;
-      }
-    }
-    a.active {
-      color: $cornell-red;
-      font-weight: 600;
-    }
-  }
-
-  li.expanded {
-    position: relative;
-    padding: 0 60px 0 1em;
-  }
-
-  a.next-menu {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 1em;
-    z-index: 1;
-
-    &:hover {
-      background: rgba(black, .05);
-    }
-
-
-    span {
-      padding: 0;
-      border-width: 1px;
-      line-height: 17px;
-      font-size: 2em;
-      text-shadow: 0 1px 1px rgba(white, 1);
-      color: darken($gray-light, 10%);
-    }
+    clear: both;
+    min-height: 100%;
+    display: flex;
 
     #jPanelMenu-menu & {
-      padding: .8em 1em 1.1em 1em;
+      background: $nav-dark;
+    }
+
+    a {
+      color: $gray-dark;
+      #jPanelMenu-menu & {
+        color: darken($gray-light, 10%);
+      }
+      display: block;
+      padding: 1em;
+      float: left;
+      width: 100%;
+
+      &:hover {
+        color: $brand;
+        #jPanelMenu-menu & {
+          color: white;
+        }
+        text-decoration: none;
+        background: darken($nav-light, 5%);
+
+        #jPanelMenu-menu & {
+         background: lighten($nav-dark, 5%);
+        }
+
+      }
+      &.active, &.active-trail {
+        color: $brand;
+        #jPanelMenu-menu & {
+          color: white;
+        }
+      }
+      &.active {
+        font-weight: 600;
+      }
+    }
+    &.expanded > a {
+      width: 80%;
+      &.next-menu {
+        width: 20%;
+        padding: 1em;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+
+        span {
+          @extend %nav-arrow;
+        }
+
+        #jPanelMenu-menu & {
+          padding: .8em 1em 1.1em 1em;
+          border-left: 1px solid lighten($nav-dark, 15%);
+        }
+      }
     }
   }
 
   li.back {
-    background: rgba(black,.1);
+    padding: 0;
     a.prev-menu {
-      padding: .5em 0;
+      color: darken($gray-light, 10%);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      span {
+        @extend %nav-arrow;
+        margin-right: .2em;
+      }
     }
   }
 
@@ -174,15 +203,25 @@
     right: -100%;
     top: 0;
     z-index: 2;
-    visibility: hidden;
-    border-left: 1px solid $gray-light;
 
-    #jPanelMenu-menu & {
+    .sidebar & {
       @include box-shadow(rgba(black, .3) 1px 1px 5px);
     }
   }
 
   & > li {
-    border-top: 1px solid #e7e5db;
+    @extend .clearfix;
+    border-bottom: 1px solid darken($nav-light, 10%);
+    #jPanelMenu-menu & {
+      border-bottom: 1px solid lighten($nav-dark, 15%);
+    }
   }
+}
+
+%nav-arrow {
+  font-size: 2em;
+  color: darken($gray-light, 10%);
+  display: flex;
+  align-items: center;
+  margin-top: -5px;
 }
