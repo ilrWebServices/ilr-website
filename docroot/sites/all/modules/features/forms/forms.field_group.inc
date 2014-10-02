@@ -123,18 +123,18 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Academics',
-    'weight' => '28',
+    'weight' => '6',
     'children' => array(
-      0 => 'field_disciplinary_action',
-      1 => 'field_disciplinary_explanation',
-      2 => 'field_dublin_courses_completed',
-      3 => 'field_dublin_current_courses',
-      4 => 'field_gpa',
-      5 => 'field_number_of_completed_credit',
-      6 => 'field_number_of_terms_at_cornell',
-      7 => 'field_transfer_student',
-      8 => 'field_year_freshman_soph_jr_sr',
-      9 => 'field_dates_as_text',
+      0 => 'field_dates_as_text',
+      1 => 'field_disciplinary_action',
+      2 => 'field_disciplinary_explanation',
+      3 => 'field_dublin_courses_completed',
+      4 => 'field_dublin_current_courses',
+      5 => 'field_gpa',
+      6 => 'field_number_of_completed_credit',
+      7 => 'field_number_of_terms_at_cornell',
+      8 => 'field_transfer_student',
+      9 => 'field_year_freshman_soph_jr_sr',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -292,7 +292,7 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'College address',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_address_line_1_additional',
       1 => 'field_address_line_2_additional',
@@ -415,12 +415,12 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Essays',
-    'weight' => '16',
+    'weight' => '6',
     'children' => array(
-      0 => 'field_dublin_acad_goals_essay',
-      1 => 'field_dublin_essay1',
-      2 => 'field_dublin_essay_2',
-      3 => 'field_dublin_study_abroad_essay',
+      0 => 'field_dublin_essay1',
+      1 => 'field_dublin_essay_2',
+      2 => 'field_dublin_acad_goals_file_upl',
+      3 => 'field_dublin_abroad_file_upload',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -477,12 +477,12 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Essays',
-    'weight' => '38',
+    'weight' => '8',
     'children' => array(
-      0 => 'field_dublin_acad_goals_essay',
-      1 => 'field_dublin_essay1',
-      2 => 'field_dublin_essay_2',
-      3 => 'field_dublin_study_abroad_essay',
+      0 => 'field_dublin_essay1',
+      1 => 'field_dublin_essay_2',
+      2 => 'field_dublin_acad_goals_file_upl',
+      3 => 'field_dublin_abroad_file_upload',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -490,7 +490,7 @@ function forms_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => 'group-dublin-essays field-group-fieldset',
-        'description' => 'Write and save your essays first, then copy and paste them below.',
+        'description' => 'Save your essays in doc, docx, pdf, or txt format, and upload them below.',
       ),
       'formatter' => 'open',
     ),
@@ -692,7 +692,7 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Home address',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_address_line_1',
       1 => 'field_address_line_2',
@@ -1110,12 +1110,12 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Passport information',
-    'weight' => '24',
+    'weight' => '5',
     'children' => array(
       0 => 'field_citizenship',
-      1 => 'field_passport_number',
-      2 => 'field_visa_type',
-      3 => 'field_dates',
+      1 => 'field_dates',
+      2 => 'field_passport_number',
+      3 => 'field_visa_type',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1265,7 +1265,7 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Phone numbers',
-    'weight' => '21',
+    'weight' => '4',
     'children' => array(
       0 => 'field_phone',
       1 => 'field_phone_college',
@@ -1297,13 +1297,13 @@ function forms_field_group_info() {
     'label' => 'Student Information',
     'weight' => '0',
     'children' => array(
-      0 => 'field_date_of_birth',
-      1 => 'field_email',
-      2 => 'field_first_name',
-      3 => 'field_last_name',
-      4 => 'field_middle_name',
-      5 => 'field_netid',
-      6 => 'field_student_id_number',
+      0 => 'field_email',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_middle_name',
+      4 => 'field_netid',
+      5 => 'field_student_id_number',
+      6 => 'field_date_of_birth_as_text',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1365,13 +1365,13 @@ function forms_field_group_info() {
     'label' => 'Student Information',
     'weight' => '0',
     'children' => array(
-      0 => 'field_date_of_birth',
-      1 => 'field_email',
-      2 => 'field_first_name',
-      3 => 'field_last_name',
-      4 => 'field_middle_name',
-      5 => 'field_netid',
-      6 => 'field_student_id_number',
+      0 => 'field_email',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_middle_name',
+      4 => 'field_netid',
+      5 => 'field_student_id_number',
+      6 => 'field_date_of_birth_as_text',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

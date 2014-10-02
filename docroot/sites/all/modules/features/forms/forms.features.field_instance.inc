@@ -666,7 +666,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 16,
     ),
@@ -1762,7 +1764,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 9,
     ),
@@ -1927,7 +1931,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 20,
     ),
@@ -1978,7 +1984,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 7,
     ),
@@ -2029,7 +2037,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 10,
     ),
@@ -2449,7 +2459,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 5,
     ),
@@ -3279,92 +3291,61 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-dublin_application_form-field_date_of_birth'
-  $field_instances['entityform-dublin_application_form-field_date_of_birth'] = array(
+  // Exported field_instance: 'entityform-dublin_application_form-field_date_of_birth_as_text'
+  $field_instances['entityform-dublin_application_form-field_date_of_birth_as_text'] = array(
     'bundle' => 'dublin_application_form',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'date',
+        'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
         ),
-        'type' => 'date_default',
+        'type' => 'text_default',
         'weight' => 6,
       ),
       'download' => array(
         'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'field_formatter_label' => 'Date of birth',
-          'format_type' => 'short',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 6,
-      ),
-      'email' => array(
-        'label' => 'above',
-        'module' => 'date',
+        'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
         ),
-        'type' => 'date_default',
-        'weight' => 7,
+        'type' => 'text_default',
+        'weight' => 6,
       ),
       'table' => array(
         'label' => 'above',
-        'module' => 'date',
+        'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'Date of birth',
-          'format_type' => 'short',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
+          'field_formatter_label' => '',
         ),
-        'type' => 'date_default',
+        'type' => 'text_default',
         'weight' => 6,
       ),
     ),
     'entity_type' => 'entityform',
-    'field_name' => 'field_date_of_birth',
-    'label' => 'Date of birth (mm/dd/yyyy)',
+    'field_name' => 'field_date_of_birth_as_text',
+    'label' => 'Date of birth',
     'required' => 1,
     'settings' => array(
-      'default_value' => 'blank',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'date',
+      'module' => 'text',
       'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
+        'size' => 60,
       ),
-      'type' => 'date_text',
+      'type' => 'text_textfield',
       'weight' => 34,
     ),
   );
@@ -3604,70 +3585,154 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-dublin_application_form-field_dublin_acad_goals_essay'
-  $field_instances['entityform-dublin_application_form-field_dublin_acad_goals_essay'] = array(
+  // Exported field_instance: 'entityform-dublin_application_form-field_dublin_abroad_file_upload'
+  $field_instances['entityform-dublin_application_form-field_dublin_abroad_file_upload'] = array(
     'bundle' => 'dublin_application_form',
-    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'file',
         'settings' => array(
           'field_formatter_label' => '',
         ),
-        'type' => 'text_default',
-        'weight' => 10,
+        'type' => 'file_default',
+        'weight' => 12,
       ),
       'download' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'file',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Study abroad',
         ),
-        'type' => 'text_default',
-        'weight' => 36,
-      ),
-      'email' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 10,
+        'type' => 'file_default',
+        'weight' => 37,
       ),
       'table' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'file',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Study abroad',
         ),
-        'type' => 'text_default',
-        'weight' => 36,
+        'type' => 'file_default',
+        'weight' => 37,
       ),
     ),
     'entity_type' => 'entityform',
-    'field_name' => 'field_dublin_acad_goals_essay',
-    'label' => 'Academic goals essay',
+    'field_name' => 'field_dublin_abroad_file_upload',
+    'label' => 'Study abroad essay',
     'required' => 1,
     'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
+      'description_field' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'txt doc docx pdf',
+      'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'file',
       'settings' => array(
-        'rows' => 10,
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'text_textarea',
+      'type' => 'file_generic',
+      'weight' => 74,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-dublin_application_form-field_dublin_acad_goals_file_upl'
+  $field_instances['entityform-dublin_application_form-field_dublin_acad_goals_file_upl'] = array(
+    'bundle' => 'dublin_application_form',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'file_default',
+        'weight' => 10,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(
+          'field_formatter_label' => 'Academic goals',
+        ),
+        'type' => 'file_default',
+        'weight' => 36,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(
+          'field_formatter_label' => 'Academic goals',
+        ),
+        'type' => 'file_default',
+        'weight' => 36,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_dublin_acad_goals_file_upl',
+    'label' => 'Academic goals essay',
+    'required' => 1,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'txt doc docx pdf',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
       'weight' => 72,
     ),
   );
@@ -3867,7 +3932,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 39,
       ),
       'email' => array(
         'label' => 'above',
@@ -3898,74 +3963,6 @@ function forms_field_default_field_instances() {
       'settings' => array(),
       'type' => 'markup',
       'weight' => 73,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-dublin_application_form-field_dublin_study_abroad_essay'
-  $field_instances['entityform-dublin_application_form-field_dublin_study_abroad_essay'] = array(
-    'bundle' => 'dublin_application_form',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 12,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 37,
-      ),
-      'email' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 12,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 37,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_dublin_study_abroad_essay',
-    'label' => 'Study abroad essay',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 10,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 74,
     ),
   );
 
@@ -4786,7 +4783,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 52,
     ),
@@ -4846,7 +4845,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 68,
     ),
@@ -10343,7 +10344,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 56,
     ),
@@ -10394,7 +10397,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 42,
     ),
@@ -10445,7 +10450,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 58,
     ),
@@ -11879,7 +11886,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 26,
     ),
@@ -11930,7 +11939,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 32,
     ),
@@ -13116,7 +13127,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 16,
     ),
@@ -13765,7 +13778,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 10,
     ),
@@ -13825,7 +13840,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 9,
     ),
@@ -14792,7 +14809,9 @@ function forms_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 7,
     ),
@@ -15471,7 +15490,6 @@ function forms_field_default_field_instances() {
   t('Current school');
   t('Date (mm/yyyy)');
   t('Date of birth');
-  t('Date of birth (mm/dd/yyyy)');
   t('Dates needed (mm/dd/yyyy)');
   t('Degree program');
   t('Department');
