@@ -128,10 +128,7 @@
       }
 
       function addBackButtonToMenu(menu) {
-        var linkText = menu.parent().children('a:first-child').text();
-        if (linkText == '') {
-          linkText = 'Main Menu';
-        }
+        var linkText = menu.parent().children('a:first').text();
         menu.prepend('<li class="back"><a class="prev-menu" href="#"><span>&lsaquo; </span> ' + linkText + '</a></li>');
         $('.prev-menu').click(prevClick);
       }
