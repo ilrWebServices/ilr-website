@@ -56,14 +56,12 @@
         $(menu).css('visibility', 'hidden');
       }
 
-      var currentPage;
       var currentMenu;
       var minHeight;
       var pixelShift = '0px';
       var easing = 'Expo.easeOut';
 
       function positionCurrentMenu() {
-        currentPage = getCurrentPage();
         currentMenu = getCurrentMenu();
         minHeight = getMinHeight();
         $(currentMenu).parents('ul.menu').each(function() {
@@ -91,7 +89,7 @@
       }
 
       function revealMenu() {
-        TweenLite.to($('#block-menu-block-ilr-subnav ul.menu'), .6, {opacity:1, ease: easing });
+        TweenLite.to($('.menu-block-ilr-subnav'), .6, {opacity:1, ease: easing });
       }
 
       function getMinHeight() {
@@ -111,6 +109,7 @@
       }
 
       function getCurrentMenu() {
+        currentPage = getCurrentPage();
         children = $(currentPage).children('ul.menu:first');
         if (children.length) {
           return $(currentPage).children('ul.menu:first');

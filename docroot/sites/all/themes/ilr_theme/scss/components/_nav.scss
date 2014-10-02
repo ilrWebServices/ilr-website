@@ -28,14 +28,6 @@
   }
 }
 
-.sidebar ul.menu {
-  @extend .hidden;
-
-  [data-eq-state="regular-nav"] & {
-    @extend .visible;
-  }
-}
-
 .menu-block-ilr-primary-menu { // Main nav
   clear: left;
   float: left;
@@ -67,6 +59,7 @@
         font-family: $font-headers;
         text-decoration: none;
         font-weight: 400;
+        outline: 0;
       }
     }
   }
@@ -100,7 +93,20 @@
   position: relative;
 }
 
+.menu-block-ilr-subnav {
+  opacity: 0;
+}
+
+.sidebar #block-menu-block-ilr-subnav {
+  @extend .hidden;
+
+  [data-eq-state="regular-nav"] & {
+    @extend .visible;
+  }
+}
+
 .menu-block-ilr-subnav ul.menu {
+  visibility: hidden; // fix this when switching between desktop and mobile
   position: relative;
   top: 0;
   margin: 0;
@@ -109,7 +115,6 @@
   display: block;
   background: white;
   min-height: 500px;
-  opacity: 0;
 
   li {
     list-style: none;
@@ -133,6 +138,7 @@
       display: block;
       padding: 1em;
       float: left;
+      width: 100%;
 
       &:hover {
         color: $brand;
@@ -157,11 +163,9 @@
         font-weight: 600;
       }
     }
-    &.expanded {
-      a {
-        width: 80%;
-      }
-      a.next-menu {
+    &.expanded > a {
+      width: 80%;
+      &.next-menu {
         width: 20%;
         padding: 1em;
         z-index: 1;
@@ -199,9 +203,10 @@
     right: -100%;
     top: 0;
     z-index: 2;
-    visibility: hidden;
 
-    @include box-shadow(rgba(black, .3) 1px 1px 5px);
+    .sidebar & {
+      @include box-shadow(rgba(black, .3) 1px 1px 5px);
+    }
   }
 
   & > li {
