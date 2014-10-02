@@ -201,6 +201,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -259,6 +260,48 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_on_demand_value']['value'] = array(
     0 => '0',
   );
+  /* Filter criterion: Content: Online Class (field_online_class) */
+  $handler->display->display_options['filters']['field_online_class_value']['id'] = 'field_online_class_value';
+  $handler->display->display_options['filters']['field_online_class_value']['table'] = 'field_data_field_online_class';
+  $handler->display->display_options['filters']['field_online_class_value']['field'] = 'field_online_class_value';
+  $handler->display->display_options['filters']['field_online_class_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_online_class_value']['expose']['operator_id'] = 'field_online_class_value_op';
+  $handler->display->display_options['filters']['field_online_class_value']['expose']['operator'] = 'field_online_class_value_op';
+  $handler->display->display_options['filters']['field_online_class_value']['expose']['identifier'] = 'field_online_class_value';
+  $handler->display->display_options['filters']['field_online_class_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+  );
+  /* Filter criterion: Content: Department (field_sdc_department) ( reference filter) */
+  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['id'] = 'field_sdc_department_tid_entityreference_filter';
+  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['table'] = 'field_data_field_sdc_department';
+  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['field'] = 'field_sdc_department_tid_entityreference_filter';
+  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['relationship'] = 'field_course_target_id';
+  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['expose']['operator_id'] = 'field_sdc_department_tid_entityreference_filter_op';
+  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['expose']['operator'] = 'field_sdc_department_tid_entityreference_filter_op';
+  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['expose']['identifier'] = 'field_sdc_department_tid_entityreference_filter';
+  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['expose']['remember_roles'] = array(
+    2 => '2',
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+  );
+  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['reference_display'] = 'sdc_current_departments:entityreference_1';
 
   /* Display: Month */
   $handler = $view->new_display('page', 'Month', 'page_1');
