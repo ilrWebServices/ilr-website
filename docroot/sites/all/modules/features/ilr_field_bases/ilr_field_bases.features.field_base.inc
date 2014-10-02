@@ -1904,34 +1904,33 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_date_of_birth'
-  $field_bases['field_date_of_birth'] = array(
+  // Exported field_base: 'field_date_of_birth_as_text'
+  $field_bases['field_date_of_birth_as_text'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_date_of_birth',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 0,
-        'minute' => 0,
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
+    'field_name' => 'field_date_of_birth_as_text',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
       ),
-      'timezone_db' => '',
-      'todate' => '',
-      'tz_handling' => 'none',
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
     ),
     'translatable' => 0,
-    'type' => 'datetime',
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_dates'
@@ -2238,31 +2237,66 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_dublin_acad_goals_essay'
-  $field_bases['field_dublin_acad_goals_essay'] = array(
+  // Exported field_base: 'field_dublin_abroad_file_upload'
+  $field_bases['field_dublin_abroad_file_upload'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_dublin_acad_goals_essay',
+    'field_name' => 'field_dublin_abroad_file_upload',
     'foreign keys' => array(
-      'format' => array(
+      'fid' => array(
         'columns' => array(
-          'format' => 'format',
+          'fid' => 'fid',
         ),
-        'table' => 'filter_format',
+        'table' => 'file_managed',
       ),
     ),
     'indexes' => array(
-      'format' => array(
-        0 => 'format',
+      'fid' => array(
+        0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
+    'module' => 'file',
+    'settings' => array(
+      'display_default' => 0,
+      'display_field' => 0,
+      'uri_scheme' => 'public',
+    ),
     'translatable' => 0,
-    'type' => 'text_long',
+    'type' => 'file',
+  );
+
+  // Exported field_base: 'field_dublin_acad_goals_file_upl'
+  $field_bases['field_dublin_acad_goals_file_upl'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_dublin_acad_goals_file_upl',
+    'foreign keys' => array(
+      'fid' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'file',
+    'settings' => array(
+      'display_default' => 0,
+      'display_field' => 0,
+      'uri_scheme' => 'public',
+    ),
+    'translatable' => 0,
+    'type' => 'file',
   );
 
   // Exported field_base: 'field_dublin_courses_completed'
@@ -2378,33 +2412,6 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'markup',
-  );
-
-  // Exported field_base: 'field_dublin_study_abroad_essay'
-  $field_bases['field_dublin_study_abroad_essay'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_dublin_study_abroad_essay',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_duration'
