@@ -88,7 +88,7 @@
 }
 
 .jPanelMenu-panel {
-  @include box-shadow(0 10px 10px -5px rgba(black, .5));
+  @include box-shadow(0 10px 10px 0px rgba(black, .5));
 }
 
 #jPanelMenu-menu {
@@ -100,7 +100,7 @@
   position: relative;
 }
 
-#block-menu-block-ilr-subnav ul.menu {
+.menu-block-ilr-subnav ul.menu {
   position: relative;
   top: 0;
   margin: 0;
@@ -121,19 +121,37 @@
     min-height: 100%;
     display: flex;
 
+    #jPanelMenu-menu & {
+      background: $nav-dark;
+    }
+
     a {
       color: $gray-dark;
+      #jPanelMenu-menu & {
+        color: darken($gray-light, 10%);
+      }
       display: block;
       padding: 1em;
       float: left;
 
       &:hover {
         color: $brand;
+        #jPanelMenu-menu & {
+          color: white;
+        }
         text-decoration: none;
-        background: darken(white, 2%);
+        background: darken($nav-light, 5%);
+
+        #jPanelMenu-menu & {
+         background: lighten($nav-dark, 5%);
+        }
+
       }
       &.active, &.active-trail {
         color: $brand;
+        #jPanelMenu-menu & {
+          color: white;
+        }
       }
       &.active {
         font-weight: 600;
@@ -156,7 +174,7 @@
 
         #jPanelMenu-menu & {
           padding: .8em 1em 1.1em 1em;
-          border-left: 1px solid lighten($gray-light, 15%);
+          border-left: 1px solid lighten($nav-dark, 15%);
         }
       }
     }
@@ -188,7 +206,10 @@
 
   & > li {
     @extend .clearfix;
-    border-bottom: 1px solid #e7e5db;
+    border-bottom: 1px solid darken($nav-light, 10%);
+    #jPanelMenu-menu & {
+      border-bottom: 1px solid lighten($nav-dark, 15%);
+    }
   }
 }
 
