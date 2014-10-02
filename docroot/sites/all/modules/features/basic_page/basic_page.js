@@ -104,17 +104,16 @@
       }
 
       function getCurrentPage() {
-        selector = (mobileNavActive()) ? '#jPanelMenu-menu' : '#sidebar-first'; // targets the li
-        return $(selector + ' a.active').parent();
+        return $('.menu-block-ilr-subnav a.active').parent();
       }
 
       function getCurrentMenu() {
         currentPage = getCurrentPage();
-        children = $(currentPage).children('ul.menu:first');
+        children = $(currentPage).children('ul.menu');
         if (children.length) {
-          return $(currentPage).children('ul.menu:first');
+          return children;
         }
-        return $(currentPage).parent(); // targets the ul
+        return $(currentPage).parent();
       }
 
       function menuNeedsBackButton(el) {
