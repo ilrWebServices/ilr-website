@@ -117,8 +117,19 @@ function basic_page_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_basic_page';
   $strongarm->value = array(
-    0 => 'main-menu',
-    1 => 'menu-worker-institute-menu',
+    0 => 'bargaining-for-better-schools',
+    1 => 'cheri',
+    2 => 'expo',
+    3 => 'healthcare',
+    4 => 'iws',
+    5 => 'ics',
+    6 => 'ldi',
+    7 => 'mpsnyc',
+    8 => 'main-menu',
+    9 => 'national-labor-leadership-init',
+    10 => 'scheinman-institute',
+    11 => 'smithers-institute',
+    12 => 'worker-institute',
   );
   $export['menu_options_basic_page'] = $strongarm;
 
