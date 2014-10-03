@@ -90,6 +90,7 @@ function ilr_sub_pages_check_permissions() {
  */
 function ilr_sub_pages_node_form_validate($form, &$form_state) {
   // Top level items are always in the format [menu-name]:0 or similar (i.e. main-menu:0)
+
   $is_setting_top_menu_level = _ilr_sub_pages_is_top_menu_level($form_state);
   $is_editing_node = isset($form_state['node']->nid);
   $was_already_at_top_level = $is_editing_node && ($form_state['node']->menu['plid'] == 0);
@@ -168,14 +169,18 @@ function _ilr_sub_pages_create_sub_page_access($node, $access_arg) {
   if ($node->type === 'basic_page' && user_access($access_arg)) {
     $menu_record = db_select('menu_links', 'ml')
       ->condition('ml.link_path', 'node/' . $node->nid)
-      ->fields('ml', array('mlid', 'plid'))
+      ->fields('ml', array('menu_name', 'mlid', 'plid'))
       ->execute()
       ->fetchObject();
 
     if (is_object($menu_record)) {
-      if ($menu_record->plid == 0 && user_access('add top level menu items')) {
+      if ($menu_record->menu_name != 'main-menu') {
+        if ($menu_record->plid == 0) {
+          return user_access('add top level menu items');
+        }
         return TRUE;
-      }
+      } // Main menu
+      return TRUE;
     }
   }
   return FALSE;
