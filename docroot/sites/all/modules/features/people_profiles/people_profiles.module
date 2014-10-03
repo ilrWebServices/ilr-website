@@ -146,6 +146,13 @@ function _people_profiles_get_faculty_by_department($department_key){
  * and the preview button
  */
 function _people_profiles_render_ai_tab_contents(&$form) {
+  // Remove the option to use non-AI data except for admins
+  global $user;
+  if (!in_array('administrator', $user->roles)) {
+    $form['field_use_ai_data'][LANGUAGE_NONE]['#default_value'] = 1;
+    $form['field_use_ai_data']['#access'] = false;
+  }
+
   $form['field_visibility_settings'][LANGUAGE_NONE]['#title'] = 'The following information is drawn directly from Activity Insight. (Check those sections you would like to <em>exclude</em> from public display)';
 
   foreach ($form as $field_name => $value) {
