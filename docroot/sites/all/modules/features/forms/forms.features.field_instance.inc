@@ -14137,6 +14137,51 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_h_school_year'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_h_school_year'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'default_value' => array(
+      0 => array(
+        'value' => '2014-2015',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_h_school_year',
+    'label' => 'School year',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_ilr_dept_req_fac_adv_or_pr'
   $field_instances['entityform-request_faculty_advisor_or_depar-field_ilr_dept_req_fac_adv_or_pr'] = array(
     'bundle' => 'request_faculty_advisor_or_depar',
@@ -14337,51 +14382,6 @@ function forms_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 13,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_school_year'
-  $field_instances['entityform-request_faculty_advisor_or_depar-field_school_year'] = array(
-    'bundle' => 'request_faculty_advisor_or_depar',
-    'default_value' => array(
-      0 => array(
-        'value' => '2014-2015',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 10,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_school_year',
-    'label' => 'School year',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 16,
     ),
   );
 
