@@ -5840,6 +5840,7 @@ function ilr_field_bases_field_default_field_bases() {
       'referenceable_modules' => array(
         'bean' => 'bean',
         'block' => 'block',
+        'calendar' => 0,
         'context_ui' => 0,
         'devel' => 0,
         'diff' => 0,
@@ -5847,7 +5848,7 @@ function ilr_field_bases_field_default_field_bases() {
         'menu' => 0,
         'menu_block' => 0,
         'node' => 0,
-        'people_profiles' => 0,
+        'people_profiles' => 'people_profiles',
         'simplesamlphp_auth' => 0,
         'system' => 0,
         'user' => 0,
