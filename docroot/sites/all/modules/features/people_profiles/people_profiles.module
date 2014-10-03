@@ -291,15 +291,15 @@ function _people_profiles_activity_insight_options_list() {
 /**
  * Loops through people profile elements and checks visiblity settings
  * See _people_profiles_activity_insight_options_list for the values that are
- * output as checkboxes that can be enabled
+ * output as checkboxes that can be excluded
  */
 function _people_profiles_process_optional_ai_elements(&$variables) {
-  $enabled_fields = _people_profiles_get_visible_ai_fields($variables['field_visibility_settings']);
+  $excluded_fields = _people_profiles_get_excluded_ai_fields($variables['field_visibility_settings']);
 
   $optional_fields = array_keys(_people_profiles_activity_insight_options_list());
   foreach ($variables as $field_name => $value) {
     if (in_array($field_name, $optional_fields)) {
-      if (!in_array($field_name, $enabled_fields)) {
+      if (in_array($field_name, $excluded_fields)) {
         unset($variables['content'][$field_name]);
       }
     }
@@ -311,13 +311,13 @@ function _people_profiles_process_optional_ai_elements(&$variables) {
  * @param  Array $field_visibility_settings
  * @return Array A single dimensional array with the fieldnames as string values
  */
-function _people_profiles_get_visible_ai_fields($field_visibility_settings) {
-  $enabled_fields = array();
+function _people_profiles_get_excluded_ai_fields($field_visibility_settings) {
+  $excluded_fields = array();
   $settings_array = current($field_visibility_settings);
   foreach ($settings_array as $key => $value) {
-    $enabled_fields[] = $value['value'];
+    $excluded_fields[] = $value['value'];
   }
-  return $enabled_fields;
+  return $excluded_fields;
 }
 
 /**
