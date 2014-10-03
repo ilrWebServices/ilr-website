@@ -314,8 +314,10 @@ function _people_profiles_process_optional_ai_elements(&$variables) {
 function _people_profiles_get_excluded_ai_fields($field_visibility_settings) {
   $excluded_fields = array();
   $settings_array = current($field_visibility_settings);
-  foreach ($settings_array as $key => $value) {
-    $excluded_fields[] = $value['value'];
+  if (is_array($settings_array)) {
+    foreach ($settings_array as $key => $value) {
+      $excluded_fields[] = $value['value'];
+    }
   }
   return $excluded_fields;
 }
