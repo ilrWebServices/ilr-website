@@ -151,6 +151,13 @@ function _people_profiles_render_ai_tab_contents(&$form) {
   if (!in_array('administrator', $user->roles)) {
     $form['field_use_ai_data'][LANGUAGE_NONE]['#default_value'] = 1;
     $form['field_use_ai_data']['#access'] = false;
+    $form['field_ai_overview']['#access'] = false;
+    $form['field_ai_research_statement']['#access'] = false;
+    $form['field_ai_professional_activities']['#access'] = false;
+    $form['field_ai_honors_awards']['#access'] = false;
+    $form['field_ai_publications']['#access'] = false;
+    $form['field_ai_teaching_statement']['#access'] = false;
+    $form['field_ai_links']['#access'] = false;
   }
 
   $form['field_visibility_settings'][LANGUAGE_NONE]['#title'] = 'The following information is drawn directly from Activity Insight. (Check those sections you would like to <em>exclude</em> from public display)';
