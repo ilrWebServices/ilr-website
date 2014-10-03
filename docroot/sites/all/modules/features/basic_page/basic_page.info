@@ -14,6 +14,7 @@ dependencies[] = field_collection
 dependencies[] = file_entity
 dependencies[] = ilr_field_bases
 dependencies[] = image
+dependencies[] = insert_block
 dependencies[] = linkit
 dependencies[] = media
 dependencies[] = menu
