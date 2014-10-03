@@ -142,16 +142,4 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
   private function setProfileTitle($person) {
     return (string) $person->ldap_first_name . ' ' . $person->ldap_last_name;
   }
-
-  private function getPersonByNetID() {
-    $query = db_select('node', 'n');
-    $query->join('feeds_item', 'fi', "fi.entity_type = 'node' AND n.nid = fi.entity_id");
-    $query
-      ->fields('n', array('status'))
-      ->condition('fi.guid', $person->netID, '=');
-    $queryResult = $query->execute()->fetchObject();
-
-    // Does person exist. If so, preserve some fields, like status
-    $person_exists = (boolean)$queryResult;
-  }
 }
