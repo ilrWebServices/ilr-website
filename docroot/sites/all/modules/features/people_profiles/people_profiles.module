@@ -146,17 +146,25 @@ function _people_profiles_get_faculty_by_department($department_key){
  * and the preview button
  */
 function _people_profiles_render_ai_tab_contents(&$form) {
+  dpm($form['field_visibility_settings'][LANGUAGE_NONE]);
   foreach ($form as $field_name => $value) {
     if (strpos($field_name, 'field_ai') === 0 || $field_name == 'field_areas_of_expertise') {
       $content = _people_profiles_get_default_value($form[$field_name]);
-      $field_hint = ( array_key_exists('#description', $form[$field_name]['und']) && ! empty($form[$field_name]['und']['#description'])) ?
+      $field_hint = ( array_key_exists('#description', $form[$field_name][LANGUAGE_NONE]) && ! empty($form[$field_name][LANGUAGE_NONE]['#description'])) ?
         ' <span class="field-note">('.$form[$field_name]['und']['#description'].')</span>' : '';
       $form[$field_name][LANGUAGE_NONE] = array(
         '#title' => $field_name,
-        '#markup' => '<div class="field-ai"><h3>'.$form[$field_name][LANGUAGE_NONE]['#title'].$field_hint.'</h3>' . $content . '</div>',
+        '#markup' => '<div class="field-ai"><h3>'.$form[$field_name][LANGUAGE_NONE]['#title'].'</h3>' . $content . '</div>',  //.$field_hint
       );
+      if (array_key_exists($field_name, $form['field_visibility_settings'][LANGUAGE_NONE]['#options'])) {
+        $option_text = $form['field_visibility_settings'][LANGUAGE_NONE]['#options'][$field_name];
+        $form['field_visibility_settings'][LANGUAGE_NONE]['#options'][$field_name] = '<strong>' . $option_text .'</strong> '. $field_hint . ' <p>' . $content . '</p>';
+      }
     }
   }
+
+  $form['field_visibility_settings'][LANGUAGE_NONE]['#title'] = 'The following information is drawn directly form Activity Insight. (Check those sections you would like to <em>exclude</em> from public display)';
+  dpm($form);
   // Add the preview button if they're not using AI
   if (!$form['field_use_ai_data']['und']['#default_value']) {
     // Set the markup on the preview button
