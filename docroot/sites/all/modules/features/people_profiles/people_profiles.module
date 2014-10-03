@@ -148,18 +148,26 @@ function _people_profiles_get_faculty_by_department($department_key){
 function _people_profiles_render_ai_tab_contents(&$form) {
   dpm($form['field_visibility_settings'][LANGUAGE_NONE]);
   foreach ($form as $field_name => $value) {
-    if (strpos($field_name, 'field_ai') === 0 || $field_name == 'field_areas_of_expertise') {
+    if (strpos($field_name, 'field_ai') === 0 && $field_name != 'field_ai_other_expertise') {
+      $content = _people_profiles_get_default_value($form[$field_name]);
+      $field_hint = ( array_key_exists('#description', $form[$field_name][LANGUAGE_NONE]) && ! empty($form[$field_name][LANGUAGE_NONE]['#description'])) ?
+        ' <span class="field-note">('.$form[$field_name]['und']['#description'].')</span>' : '';
+      if (array_key_exists($field_name, $form['field_visibility_settings'][LANGUAGE_NONE]['#options'])) {
+        $option_text = $form['field_visibility_settings'][LANGUAGE_NONE]['#options'][$field_name];
+        $form['field_visibility_settings'][LANGUAGE_NONE]['#options'][$field_name] = '<strong>' . $option_text .'</strong> '. $field_hint . ' <blockquote>' . $content . '</blockquote>';
+      }
+    }
+  }
+
+  foreach ($form as $field_name => $value) {
+    if ($field_name == 'field_areas_of_expertise' || $field_name == 'field_ai_other_expertise') {
       $content = _people_profiles_get_default_value($form[$field_name]);
       $field_hint = ( array_key_exists('#description', $form[$field_name][LANGUAGE_NONE]) && ! empty($form[$field_name][LANGUAGE_NONE]['#description'])) ?
         ' <span class="field-note">('.$form[$field_name]['und']['#description'].')</span>' : '';
       $form[$field_name][LANGUAGE_NONE] = array(
         '#title' => $field_name,
-        '#markup' => '<div class="field-ai"><h3>'.$form[$field_name][LANGUAGE_NONE]['#title'].'</h3>' . $content . '</div>',  //.$field_hint
+        '#markup' => '<div class="field-ai"><h3>' . $form[$field_name][LANGUAGE_NONE]['#title'] . $field_hint . '</h3>' . $content . '</div>',
       );
-      if (array_key_exists($field_name, $form['field_visibility_settings'][LANGUAGE_NONE]['#options'])) {
-        $option_text = $form['field_visibility_settings'][LANGUAGE_NONE]['#options'][$field_name];
-        $form['field_visibility_settings'][LANGUAGE_NONE]['#options'][$field_name] = '<strong>' . $option_text .'</strong> '. $field_hint . ' <p>' . $content . '</p>';
-      }
     }
   }
 
