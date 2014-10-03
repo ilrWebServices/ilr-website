@@ -12,6 +12,7 @@ dependencies[] = diff
 dependencies[] = field_ui
 dependencies[] = context_ui
 dependencies[] = views_ui
+dependencies[] = feeds_tamper_ui
 
 
 ; Information added by drush on 2013-09-12
