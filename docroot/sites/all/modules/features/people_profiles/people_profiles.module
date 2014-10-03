@@ -153,14 +153,6 @@ function _people_profiles_render_ai_tab_contents(&$form) {
     $form['field_use_ai_data']['#access'] = false;
   }
 
-  $form['field_ai_overview']['#access'] = false;
-  $form['field_ai_research_statement']['#access'] = false;
-  $form['field_ai_professional_activities']['#access'] = false;
-  $form['field_ai_honors_awards']['#access'] = false;
-  $form['field_ai_publications']['#access'] = false;
-  $form['field_ai_teaching_statement']['#access'] = false;
-  $form['field_ai_links']['#access'] = false;
-
   $form['field_visibility_settings'][LANGUAGE_NONE]['#title'] = 'The following information is drawn directly from Activity Insight. (Check those sections you would like to <em>exclude</em> from public display)';
 
   foreach ($form as $field_name => $value) {
@@ -176,6 +168,7 @@ function _people_profiles_render_ai_tab_contents(&$form) {
       } elseif (array_key_exists($field_name, $form['field_visibility_settings'][LANGUAGE_NONE]['#options'])) {
         $option_text = $form['field_visibility_settings'][LANGUAGE_NONE]['#options'][$field_name];
         $form['field_visibility_settings'][LANGUAGE_NONE]['#options'][$field_name] = '<strong>' . $option_text .'</strong> '. $field_hint . ' <blockquote>' . $content . '</blockquote>';
+        $form[$field_name]['#access'] = false;
       }
     }
   }
