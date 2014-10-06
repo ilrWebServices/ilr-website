@@ -41,6 +41,9 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
             case 'title':
               $field_values['title'] = $this->setProfileTitle($person);
               break;
+            case 'field_academic_department':
+              $field_values['field_academic_department'] = $this->getAcademicDepartments($person);
+              break;
             default:
               $data = (string) $person->{$xml_key};
               $field_values[$field_name] = trim($data);
@@ -106,7 +109,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'ilrweb_photo_url' => 'field_profile_image',
       'netID' => 'field_netid',
       //'userid' => '',
-      //'departments' => '',// What are these, and rel. to ldap-department
+      'departments' => 'field_academic_department',
       // 'rank' => '', //??
       // 'srank' => '', //??
       // 'graduate_fields' => '',
@@ -143,15 +146,14 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
     return (string) $person->ldap_first_name . ' ' . $person->ldap_last_name;
   }
 
-  private function getPersonByNetID() {
-    $query = db_select('node', 'n');
-    $query->join('feeds_item', 'fi', "fi.entity_type = 'node' AND n.nid = fi.entity_id");
-    $query
-      ->fields('n', array('status'))
-      ->condition('fi.guid', $person->netID, '=');
-    $queryResult = $query->execute()->fetchObject();
-
-    // Does person exist. If so, preserve some fields, like status
-    $person_exists = (boolean)$queryResult;
+  private function getAcademicDepartments($person) {
+    $departments = array();
+    foreach ($person->departments->dept as $department) {
+      $sanitized = preg_replace('/\s+/', '_', (string)$department);
+      $sanitized = strtolower($sanitized);
+      $departments[] = $sanitized;
+    }
+    $departments_comma_delimited = implode(',', $departments);
+    return $departments_comma_delimited;
   }
 }
