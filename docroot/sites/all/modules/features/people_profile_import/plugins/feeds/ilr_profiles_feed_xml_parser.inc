@@ -41,6 +41,9 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
             case 'title':
               $field_values['title'] = $this->setProfileTitle($person);
               break;
+            case 'field_academic_department':
+              $field_values['field_academic_department'] = $this->getAcademicDepartments($person);
+              break;
             default:
               $data = (string) $person->{$xml_key};
               $field_values[$field_name] = trim($data);
@@ -106,7 +109,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'ilrweb_photo_url' => 'field_profile_image',
       'netID' => 'field_netid',
       //'userid' => '',
-      //'departments' => '',// What are these, and rel. to ldap-department
+      'departments' => 'field_academic_department',
       // 'rank' => '', //??
       // 'srank' => '', //??
       // 'graduate_fields' => '',
@@ -141,5 +144,16 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
 
   private function setProfileTitle($person) {
     return (string) $person->ldap_first_name . ' ' . $person->ldap_last_name;
+  }
+
+  private function getAcademicDepartments($person) {
+    $departments = array();
+    foreach ($person->departments->dept as $department) {
+      $sanitized = preg_replace('/\s+/', '_', (string)$department);
+      $sanitized = strtolower($sanitized);
+      $departments[] = $sanitized;
+    }
+    $departments_comma_delimited = implode(',', $departments);
+    return $departments_comma_delimited;
   }
 }
