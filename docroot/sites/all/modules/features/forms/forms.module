@@ -83,6 +83,7 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
  *   Adds checkbox to specify NetID login requirement
  */
 function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
+  _forms_add_checkbox_to_send_user_email($form);
   _forms_add_admin_email_field($form);
   _forms_add_checkbox_to_send_admin_email($form);
   _forms_add_checkbox_to_include_name_in_admin_subject_line($form);
@@ -99,11 +100,30 @@ function _forms_add_admin_email_field(&$form) {
   $form['data']['form_submission_ilr_recipient'] = array(
     '#type' => 'textfield',
     '#title' => t('ILR Admin email'),
-    '#weight' => -1,
+    '#weight' => 0,
     '#default_value' => $previously_set_recip,
     '#description' => t('The email address - usually a special mailbox - to send the admin email to when a form is submitted. Also used as From email for user confirmation, so don\'t leave it blank.'),
   );
 }
+
+
+/**
+ * Add checkbox to indicate whether to send the USER an email confirmation
+ * for this entityform
+ */
+function _forms_add_checkbox_to_send_user_email(&$form) {
+  $send_confirmation_email_to_user = (isset($form['#entityform_type']->data['send_confirmation_email_to_user']))
+    ? $form['#entityform_type']->data['send_confirmation_email_to_user']
+    : 0;
+
+  $form['data']['send_confirmation_email_to_user'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Send confirmation email to user'),
+    '#weight' => -3,
+    '#default_value' => $send_confirmation_email_to_user,
+  );
+}
+
 
 /**
  * Add checkbox to indicate whether to send the admin an email confirmation
@@ -117,7 +137,7 @@ function _forms_add_checkbox_to_send_admin_email(&$form) {
   $form['data']['send_confirmation_email_to_admin'] = array(
     '#type' => 'checkbox',
     '#title' => t('Send confirmation email to admin'),
-    '#weight' => 0,
+    '#weight' => -2,
     '#default_value' => $send_confirmation_email_to_admin,
   );
 }
@@ -134,7 +154,7 @@ function _forms_add_checkbox_to_include_name_in_admin_subject_line(&$form) {
   $form['data']['add_user_name_to_subject_line'] = array(
     '#type' => 'checkbox',
     '#title' => t('Append user\'s name to subject line of admin email; some ILR staff appreciate having this; some do not'),
-    '#weight' => 0,
+    '#weight' => -1,
     '#default_value' => $add_user_name_to_subject_line,
   );
 }
@@ -362,7 +382,8 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
     $event_info_for_email = _registration_pages_get_event_markup($node);
   }
   // User email
-  if (!empty($entityform->field_email['und'][0]['email'])) {
+  if (!empty($entityform->field_email['und'][0]['email']) &&
+      _forms_user_receives_confirmation_email($entityform)) {
     $salutation = _form_salutation($user_name);
 
     $body = theme($email_template, array(
@@ -423,6 +444,17 @@ function _forms_admin_subject_line_includes_user_name($entityform) {
     ? FALSE
     : $entityform_type->data['add_user_name_to_subject_line'];
   return $admin_subject_line_includes_user_name;
+}
+
+/**
+ * Checks whether the USER should receive a confirmation email
+ */
+function _forms_user_receives_confirmation_email($entityform) {
+  $entityform_type = entityform_type_load($entityform->type);
+  $user_receives_confirmation_email = empty($entityform_type->data['send_confirmation_email_to_user'])
+    ? FALSE
+    : $entityform_type->data['send_confirmation_email_to_user'];
+  return $user_receives_confirmation_email;
 }
 
 /**
