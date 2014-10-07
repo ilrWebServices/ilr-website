@@ -55,7 +55,7 @@ function _forms_add_kerberized_checkbox(&$form) {
   $form['data']['kerberized'] = array(
     '#type' => 'checkbox',
     '#title' => t('This form requires NetID authentication'),
-    '#weight' => 0,
+    '#weight' => -4,
     '#default_value' => $kerberized,
   );
 }
