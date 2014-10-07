@@ -79,7 +79,7 @@ class EventBlockBean extends BeanPlugin {
       $data = file_get_contents($url);
       $json = json_decode($data, true);
       $event_json = $json['events'];
-      cache_set('bean_localist_events-' . $cache_key, $event_json, 'cache', time() + 360);
+      cache_set('bean_localist_events-' . $cache_key, $event_json, 'cache', time() + 60 * 60); //60 * 60 = 1 hour
     }
     return $event_json;
   }
