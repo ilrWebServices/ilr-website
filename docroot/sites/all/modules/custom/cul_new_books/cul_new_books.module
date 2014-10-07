@@ -15,9 +15,13 @@ function cul_new_books_menu() {
 
 /**
  * The page callback function defined in hook_menu().
+ * The rss icon is lifted from theme_feed_icon() in theme.inc
  */
 function cul_new_books_view() {
-  $content = '<p>See our latest acquisitions (books, media and more), organized by subject.</p>';
+  $alt="Subscribe to the New Books RSS Feed";
+  $icon = theme('image', array('path' => 'misc/feed.png', 'width' => 16, 'height' => 16, 'alt' => $alt, 'title' => $alt));
+  $rss_link = '<a class="rss new-books" href="http://newbooks.mannlib.cornell.edu/rss?loc=ilr">' . $icon . '</a>';
+  $content = '<p>See our latest acquisitions (books, media and more), organized by subject. You may also subscribe to our rss feed of new books. '. $rss_link .'</p>';
   $content .= cul_new_books_generate_books_markup();
   return $content;
 }
