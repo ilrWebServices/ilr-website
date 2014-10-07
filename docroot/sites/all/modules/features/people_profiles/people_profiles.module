@@ -28,7 +28,7 @@ function people_profiles_user_insert(&$edit, $account, $category) {
  */
 function people_profiles_preprocess_node(&$variables) {
   if($variables['type'] == 'people_profile' && $variables['view_mode'] == 'full') {
-    if ($variables['field_profile_type'][0]['value'] == 'faculty') {
+    if ($variables['field_profile_type'][LANGUAGE_NONE][0]['value'] == 'faculty') {
       _people_profiles_process_faculty_view($variables);
     }
     _people_profiles_process_address($variables);
@@ -222,7 +222,7 @@ function _people_profiles_process_faculty_view(&$variables) {
   // This assumes a common naming convention for irlweb and ai fields,
   // which get set during the initial field creation process in the UI
   $preview = (isset($_GET['ai_preview'])) ? 1 : 0;
-  $use_activity_insight = ($preview) ? 1 : $variables['field_use_ai_data'][0]['value'];
+  $use_activity_insight = ($preview) ? 1 : $variables['field_use_ai_data'][LANGUAGE_NONE][0]['value'];
   $field_name_prefix =
     ($use_activity_insight)
       ? 'field_ilrweb'
