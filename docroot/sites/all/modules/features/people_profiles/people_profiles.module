@@ -287,11 +287,11 @@ function _people_profiles_activity_insight_options_list() {
   return array(
     'field_ai_overview' => 'Overview',
     //'field_ai_outreach_activities' => '',
-    'field_ai_professional_activities' => 'Professional Activities',
-    'field_ai_honors_awards' => 'Honors and Awards',
-    'field_ai_publications' => 'Publications',
     'field_ai_teaching_statement' => 'Teaching Statement',
     'field_ai_research_statement' => 'Research Statement',
+    'field_ai_publications' => 'Publications',
+    'field_ai_professional_activities' => 'Professional Activities',
+    'field_ai_honors_awards' => 'Honors and Awards',
     'field_ai_links' => 'Links',
   );
 }
