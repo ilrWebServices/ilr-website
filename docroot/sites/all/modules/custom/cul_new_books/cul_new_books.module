@@ -6,6 +6,7 @@
 function cul_new_books_menu() {
   $items = array();
   $items['library/collections/new-books'] = array(
+    'title' => 'New Books at Catherwood Libary',
     'page callback' => 'cul_new_books_view',
     'access arguments' => array('access content'),
   );
@@ -16,8 +17,7 @@ function cul_new_books_menu() {
  * The page callback function defined in hook_menu().
  */
 function cul_new_books_view() {
-  $content = '<h1>New Books at Catherwood Library</h1>';
-  $content .= '<p>See our latest acquisitions (books, media and more), organized by subject.</p>';
+  $content = '<p>See our latest acquisitions (books, media and more), organized by subject.</p>';
   $content .= cul_new_books_generate_books_markup();
   return $content;
 }
