@@ -221,11 +221,20 @@ function ilr_update_7012() {
 }
 
 /**
- * Enables student_portaits feature
+ * Enables sub_sites custom module
  */
 function ilr_update_7013() {
   module_enable(array(
     'ilr_sub_sites',
+  ));
+}
+
+/**
+ * Enables cul_new_books custom module
+ */
+function ilr_update_7014() {
+  module_enable(array(
+    'cul_new_books',
   ));
 }
 
