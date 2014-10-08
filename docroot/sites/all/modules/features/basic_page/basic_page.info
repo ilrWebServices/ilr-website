@@ -48,7 +48,6 @@ features[field_instance][] = node-basic_page-field_image
 features[file_display][] = image__default__file_field_image
 features[filter][] = full_html
 features[linkit_profiles][] = full_html_profile
-features[menu_custom][] = menu-worker-institute-menu
 features[node][] = basic_page
 features[variable][] = field_bundle_settings_field_collection_item__field_blocks
 features[variable][] = field_bundle_settings_file__image
