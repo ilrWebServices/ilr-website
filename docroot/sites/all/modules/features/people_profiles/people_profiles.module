@@ -161,12 +161,7 @@ function _people_profiles_render_ai_tab_contents(&$form) {
       $content = _people_profiles_get_default_value($form[$field_name]);
       $field_hint = _people_profiles_get_description_as_help_text($form[$field_name]);
 
-      if ($field_name == 'field_areas_of_expertise' || $field_name == 'field_ai_other_expertise') {
-        $form[$field_name][LANGUAGE_NONE] = array(
-          '#title' => $field_name,
-          '#markup' => '<div class="field-ai"><h3>' . $form[$field_name][LANGUAGE_NONE]['#title'] . $field_hint . '</h3>' . $content . '</div>',
-        );
-      } elseif (array_key_exists($field_name, $form['field_visibility_settings'][LANGUAGE_NONE]['#options'])) {
+      if (array_key_exists($field_name, $form['field_visibility_settings'][LANGUAGE_NONE]['#options'])) {
         $option_text = $form['field_visibility_settings'][LANGUAGE_NONE]['#options'][$field_name];
         $form['field_visibility_settings'][LANGUAGE_NONE]['#options'][$field_name] = '<strong>' . $option_text .'</strong> '. $field_hint . ' <blockquote>' . $content . '</blockquote>';
         $form[$field_name]['#access'] = false;
@@ -294,6 +289,8 @@ function _people_profiles_activity_insight_options_list() {
     'field_ai_publications' => 'Publications',
     'field_ai_professional_activities' => 'Professional Activities',
     'field_ai_honors_awards' => 'Honors and Awards',
+    'field_areas_of_expertise' => 'Areas of Expertise',
+    'field_ai_other_expertise' => 'Other Areas of Expertise',
     'field_ai_links' => 'Links',
   );
 }
