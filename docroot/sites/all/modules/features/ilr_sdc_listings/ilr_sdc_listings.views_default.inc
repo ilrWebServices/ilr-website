@@ -693,7 +693,7 @@ function ilr_sdc_listings_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'SDC Course Listing';
+  $handler->display->display_options['title'] = 'Public Offerings';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
@@ -835,7 +835,7 @@ function ilr_sdc_listings_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'professional-programs/public-offerings-courses';
+  $handler->display->display_options['path'] = 'professional-programs/public-offerings';
   $export['sdc_course_listing'] = $view;
 
   $view = new view();
@@ -1035,137 +1035,6 @@ function ilr_sdc_listings_views_default_views() {
     1 => '1',
   );
   $export['sdc_current_departments'] = $view;
-
-  $view = new view();
-  $view->name = 'sdc_full_list';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'node';
-  $view->human_name = 'SDC Full List';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Public Offerings';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Filter';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '30';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'node';
-  $handler->display->display_options['row_options']['links'] = FALSE;
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['label'] = 'No matches';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'There are no workshops that match your search.';
-  $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_course_target_id']['id'] = 'field_course_target_id';
-  $handler->display->display_options['relationships']['field_course_target_id']['table'] = 'field_data_field_course';
-  $handler->display->display_options['relationships']['field_course_target_id']['field'] = 'field_course_target_id';
-  $handler->display->display_options['relationships']['field_course_target_id']['label'] = 'Course node';
-  $handler->display->display_options['relationships']['field_course_target_id']['required'] = TRUE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Class Dates -  start date (field_class_dates) */
-  $handler->display->display_options['sorts']['field_class_dates_value']['id'] = 'field_class_dates_value';
-  $handler->display->display_options['sorts']['field_class_dates_value']['table'] = 'field_data_field_class_dates';
-  $handler->display->display_options['sorts']['field_class_dates_value']['field'] = 'field_class_dates_value';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'sdc_class' => 'sdc_class',
-  );
-  /* Filter criterion: Content: On Demand (field_on_demand) */
-  $handler->display->display_options['filters']['field_on_demand_value']['id'] = 'field_on_demand_value';
-  $handler->display->display_options['filters']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
-  $handler->display->display_options['filters']['field_on_demand_value']['field'] = 'field_on_demand_value';
-  $handler->display->display_options['filters']['field_on_demand_value']['value'] = array(
-    0 => '0',
-  );
-  /* Filter criterion: Content: Class Dates -  start date (field_class_dates) */
-  $handler->display->display_options['filters']['field_class_dates_value']['id'] = 'field_class_dates_value';
-  $handler->display->display_options['filters']['field_class_dates_value']['table'] = 'field_data_field_class_dates';
-  $handler->display->display_options['filters']['field_class_dates_value']['field'] = 'field_class_dates_value';
-  $handler->display->display_options['filters']['field_class_dates_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_class_dates_value']['default_date'] = 'now';
-  $handler->display->display_options['filters']['field_class_dates_value']['year_range'] = '-0:+3';
-  /* Filter criterion: Content: Department (field_sdc_department) ( reference filter) */
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['id'] = 'field_sdc_department_tid_entityreference_filter';
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['table'] = 'field_data_field_sdc_department';
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['field'] = 'field_sdc_department_tid_entityreference_filter';
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['relationship'] = 'field_course_target_id';
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['expose']['operator_id'] = 'field_sdc_department_tid_entityreference_filter_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['expose']['label'] = 'Department';
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['expose']['operator'] = 'field_sdc_department_tid_entityreference_filter_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['expose']['identifier'] = 'field_sdc_department_tid_entityreference_filter';
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['expose']['remember_roles'] = array(
-    2 => '2',
-    3 => 0,
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-  );
-  $handler->display->display_options['filters']['field_sdc_department_tid_entityreference_filter']['reference_display'] = 'sdc_current_departments:entityreference_1';
-  /* Filter criterion: Content: Online Class (field_online_class) */
-  $handler->display->display_options['filters']['field_online_class_value']['id'] = 'field_online_class_value';
-  $handler->display->display_options['filters']['field_online_class_value']['table'] = 'field_data_field_online_class';
-  $handler->display->display_options['filters']['field_online_class_value']['field'] = 'field_online_class_value';
-  $handler->display->display_options['filters']['field_online_class_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_online_class_value']['expose']['operator_id'] = 'field_online_class_value_op';
-  $handler->display->display_options['filters']['field_online_class_value']['expose']['label'] = 'Online or In-person';
-  $handler->display->display_options['filters']['field_online_class_value']['expose']['operator'] = 'field_online_class_value_op';
-  $handler->display->display_options['filters']['field_online_class_value']['expose']['identifier'] = 'field_online_class_value';
-  $handler->display->display_options['filters']['field_online_class_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    3 => 0,
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-  );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'professional-programs/public-offerings';
-  $export['sdc_full_list'] = $view;
 
   $view = new view();
   $view->name = 'sdc_ondemand';
