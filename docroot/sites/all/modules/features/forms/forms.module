@@ -8,6 +8,12 @@ include_once 'forms.features.inc';
 include_once 'includes/forms.kerberized.inc';
 include_once 'includes/forms.statelists.inc';
 
+require_once DRUPAL_ROOT . '/../config/env.php';
+
+if (file_exists(CONFIG_PATH)) {
+  require(CONFIG_PATH . 'secrets.php');
+}
+
 define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
 
