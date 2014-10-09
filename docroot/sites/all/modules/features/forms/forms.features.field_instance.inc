@@ -9455,6 +9455,609 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-groat_faculty_staff_registration-field_department'
+  $field_instances['entityform-groat_faculty_staff_registration-field_department'] = array(
+    'bundle' => 'groat_faculty_staff_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'ILR department',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_department',
+    'label' => 'ILR Department, e.g. Collective Bargaining, Statistics, Fiscal, Student Services, etc.',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_faculty_staff_registration-field_email'
+  $field_instances['entityform-groat_faculty_staff_registration-field_email'] = array(
+    'bundle' => 'groat_faculty_staff_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_faculty_staff_registration-field_first_name'
+  $field_instances['entityform-groat_faculty_staff_registration-field_first_name'] = array(
+    'bundle' => 'groat_faculty_staff_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_first_name',
+    'label' => 'First name for nametag',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_faculty_staff_registration-field_full_name'
+  $field_instances['entityform-groat_faculty_staff_registration-field_full_name'] = array(
+    'bundle' => 'groat_faculty_staff_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_full_name',
+    'label' => 'Name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_faculty_staff_registration-field_last_name'
+  $field_instances['entityform-groat_faculty_staff_registration-field_last_name'] = array(
+    'bundle' => 'groat_faculty_staff_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name for nametag',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_faculty_staff_registration-field_phone'
+  $field_instances['entityform-groat_faculty_staff_registration-field_phone'] = array(
+    'bundle' => 'groat_faculty_staff_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_phone',
+    'label' => 'Phone',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_student_registration-field_attendee_list'
+  $field_instances['entityform-groat_student_registration-field_attendee_list'] = array(
+    'bundle' => 'groat_student_registration',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_attendee_list',
+    'label' => 'Include my name in the online attendee list',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 46,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_student_registration-field_email'
+  $field_instances['entityform-groat_student_registration-field_email'] = array(
+    'bundle' => 'groat_student_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_student_registration-field_first_name'
+  $field_instances['entityform-groat_student_registration-field_first_name'] = array(
+    'bundle' => 'groat_student_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_first_name',
+    'label' => 'First name for nametag',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_student_registration-field_full_name'
+  $field_instances['entityform-groat_student_registration-field_full_name'] = array(
+    'bundle' => 'groat_student_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_full_name',
+    'label' => 'Name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_student_registration-field_ithaca_or_nyc'
+  $field_instances['entityform-groat_student_registration-field_ithaca_or_nyc'] = array(
+    'bundle' => 'groat_student_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_ithaca_or_nyc',
+    'label' => 'Where do you attend Cornell?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_student_registration-field_last_name'
+  $field_instances['entityform-groat_student_registration-field_last_name'] = array(
+    'bundle' => 'groat_student_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name for nametag',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_student_registration-field_phone'
+  $field_instances['entityform-groat_student_registration-field_phone'] = array(
+    'bundle' => 'groat_student_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_phone',
+    'label' => 'Phone',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 40,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_student_registration-field_student_id_number'
+  $field_instances['entityform-groat_student_registration-field_student_id_number'] = array(
+    'bundle' => 'groat_student_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_student_id_number',
+    'label' => 'Student ID',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_student_registration-field_year_as_list_text'
+  $field_instances['entityform-groat_student_registration-field_year_as_list_text'] = array(
+    'bundle' => 'groat_student_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_year_as_list_text',
+    'label' => 'Expected graduation year',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 44,
+    ),
+  );
+
   // Exported field_instance: 'entityform-ilr_information_session_sign_in-field_academic_interests_admissi'
   $field_instances['entityform-ilr_information_session_sign_in-field_academic_interests_admissi'] = array(
     'bundle' => 'ilr_information_session_sign_in',
@@ -15507,10 +16110,12 @@ function forms_field_default_field_instances() {
   t('Event name');
   t('Example: Barack Obama could submit "bah-RAHK o-BAH-mah"');
   t('Expected graduation date (mm/yyyy)');
+  t('Expected graduation year');
   t('Expiration date (mm/yyyy)');
   t('Fax');
   t('First Name');
   t('First name');
+  t('First name for nametag');
   t('GPA');
   t('Have you received an ILR travel grant within this fiscal year? (July 1 - June 30)');
   t('Have you received other funding for this trip?');
@@ -15522,13 +16127,16 @@ function forms_field_default_field_instances() {
   t('How did you learn about the ILR School? (check all that apply)');
   t('How many people');
   t('I am a prospective');
+  t('ILR Department, e.g. Collective Bargaining, Statistics, Fiscal, Student Services, etc.');
   t('ILR student organization or department name');
   t('If so, please explan');
+  t('Include my name in the online attendee list');
   t('Indicate level, if any, of computer skills or knowledge');
   t('Indicate preference for teaching or research assistantship');
   t('Job Title');
   t('Last Name');
   t('Last name');
+  t('Last name for nametag');
   t('List relevant work experience and/or your qualifications');
   t('List your prior TA or RA appointments');
   t('Local or cell phone');
@@ -15579,6 +16187,7 @@ function forms_field_default_field_instances() {
   t('Street address');
   t('Street address line 1');
   t('Street address line 2');
+  t('Student ID');
   t('Student ID Number');
   t('Study abroad essay');
   t('Subject line for this message');
@@ -15595,6 +16204,7 @@ function forms_field_default_field_instances() {
   t('What do you see as the role of a Student Advisor?');
   t('What past experiences have you had which would help you in the role of a Student Advisor?');
   t('When will you graduate?');
+  t('Where do you attend Cornell?');
   t('Which topics and types of programs are you interested in? (check all that apply)');
   t('Year');
   t('Your letter of support');

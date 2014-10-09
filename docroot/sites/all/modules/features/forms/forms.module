@@ -277,7 +277,7 @@ function _forms_full_names_states_and_provinces() {
 }
 
 /**
- * Generate options list for years, based on which form it is
+ * Generate options list for year_as_list_text field, based on which form it is
  */
 function _year_as_list_text_options($field, $instance = NULL, $entity_type = NULL, $entity = NULL) {
   if ($entity->type == 'labor_roundtable_student_registr') {
@@ -296,6 +296,11 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
     // If it's before April: start with current year and go out 6 years
     // April or later: start with the following year and go out 6 years
     return date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
+  }
+  elseif ($entity->type == 'groat_student_registration') {
+    // Expected graduation year in the Groat Student Registration form starts with
+    // current year and goes six years out
+    return _forms_year_relative_options(0,6);
   }
 }
 
