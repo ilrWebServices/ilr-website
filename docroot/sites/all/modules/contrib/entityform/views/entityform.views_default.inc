@@ -64,7 +64,7 @@ function entityform_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'Empty ';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
-  $handler->display->display_options['empty']['area']['content'] = 'No entityforms have been created yet';
+  $handler->display->display_options['empty']['area']['content'] = 'No form submissions available.';
   /* Relationship: Entityform: Uid */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'entityform';
@@ -1013,7 +1013,7 @@ function entityform_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'Empty ';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
-  $handler->display->display_options['empty']['area']['content'] = 'No entityforms have been created yet';
+  $handler->display->display_options['empty']['area']['content'] = 'No form submissions available.';
   /* Relationship: Entityform: Uid */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'entityform';
