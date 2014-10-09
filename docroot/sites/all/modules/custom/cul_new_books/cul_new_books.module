@@ -7,7 +7,7 @@ function cul_new_books_menu() {
   $items = array();
   $items['library/collections/new-books'] = array(
     'title' => 'New Books at Catherwood Libary',
-    'page callback' => 'cul_new_books_view',
+    'page callback' => '_cul_new_books_view',
     'access arguments' => array('access content'),
   );
   return $items;
@@ -17,41 +17,84 @@ function cul_new_books_menu() {
  * The page callback function defined in hook_menu().
  * The rss icon is lifted from theme_feed_icon() in theme.inc
  */
-function cul_new_books_view() {
+function _cul_new_books_view() {
+  // return the render a
+  drupal_add_js(drupal_get_path('module','cul_new_books') . '/cul_new_books.js', array('type' => 'file', 'scope' => 'footer'));
+  drupal_add_js(array('cul_new_books' => array('allCategories' => _cul_new_books_get_categories())), 'setting');
+
   $alt="Subscribe to the New Books RSS Feed";
   $icon = theme('image', array('path' => 'misc/feed.png', 'width' => 16, 'height' => 16, 'alt' => $alt, 'title' => $alt));
   $rss_link = '<a class="rss new-books" href="http://newbooks.mannlib.cornell.edu/rss?loc=ilr">' . $icon . '</a>';
   $content = '<p>See our latest acquisitions (books, media and more), organized by subject. You may also subscribe to our rss feed of new books. '. $rss_link .'</p>';
-  $content .= cul_new_books_generate_books_markup();
-  return $content;
+
+  $select_menu = drupal_get_form('cul_new_books_select_form_placeholder');
+  $content .= drupal_render($select_menu);
+  $content .= _cul_new_books_generate_books_markup();
+
+  $page_array = array(
+    '#markup' => $content,
+    '#attached' => array(
+      'js' => array(
+        array(
+          'type' => 'file',
+          'data' => drupal_get_path('module', 'cul_new_books') . '/cul_new_books.js',
+        ),
+      ),
+    ),
+  );
+  return $page_array;
+}
+
+/**
+ * Placeholder function that adds a select menu so that
+ * chosen will work on the select generated in cul_new_books.js
+ */
+function cul_new_books_select_form_placeholder($form, &$form_state) {
+  $form['categories'] = array(
+    '#title' => t('Filter by category:') ,
+    '#type' => 'select',
+    '#multiple' => TRUE,
+    '#default_value' => array(
+    ),
+    '#options' => array(
+    ),
+  );
+  return $form;
 }
 
 /**
  * Generates the markup for the book list
  */
-function cul_new_books_generate_books_markup() {
+function _cul_new_books_generate_books_markup() {
   $markup = '';
+  $first = TRUE;
   $book_json = cul_new_books_get_json();
   if (!empty($book_json)) {
     foreach($book_json as $book_data) {
-      $markup .= cul_new_books_generate_book_markup($book_data);
+      $markup .= cul_new_books_generate_book_markup($book_data, $first);
+      $first = FALSE;
     }
   }
+  $markup .= "</div>"; //Close the last div from cul_new_books_generate_book_markup
   return $markup;
 }
 
 /**
  * Generates the markup for a single book
  */
-function cul_new_books_generate_book_markup($book_data) {
+function cul_new_books_generate_book_markup($book_data, $first=FALSE) {
   $markup = '';
   $category = cul_new_books_get_category($book_data['class']);
   $current_category = &drupal_static(__FUNCTION__);
-  if ($category != $current_category) {
-    $current_category = $category;
-    $markup = "<h2>$current_category</h2>";
+  if ($category != $current_category['title']) {
+    $current_category['title'] = $category;
+    $current_category['class'] = drupal_html_class($category);
+    if(!$first) {
+      $markup .= "</div>\n";
+    }
+    $markup .= "<div class='new-book-category {$current_category['class']}'><h2>$category</h2>";
   }
-  $markup .= '<h3><a href="http://newcatalog.library.cornell.edu/catalog/' . $book_data['voyager'] .'">' . $book_data['title'] . '</a></h3>';
+  $markup .= '<h3 class="book '. $current_category['class'] .'"><a href="http://newcatalog.library.cornell.edu/catalog/' . $book_data['voyager'] .'">' . $book_data['title'] . '</a></h3>';
   $markup .= '<p>' . $book_data['title-full'] . ' ' . $book_data['publisher'] . ', ' .  $book_data['date'];
   $markup .= cul_new_books_generate_extent_markup($book_data);
   $markup .= cul_new_books_generate_location_markup($book_data['holdings']);
@@ -102,14 +145,8 @@ function cul_new_books_get_json() {
   return $book_json;
 }
 
-/**
- * Generates the category, based on a hardcoded
- * array emailed by Keith Jenkins (kgj2@cornell.edu)
- * He is not planning to add this functionality to the feed at this time.
- */
-function cul_new_books_get_category($class) {
-  $category = '';
-  $categories = array(
+function _cul_new_books_get_categories() {
+  return array(
     '~' => "[No Classification]",
     'A' => "General works",
     'B' => "Philosophy. Psychology. Religion",
@@ -346,6 +383,16 @@ function cul_new_books_get_category($class) {
     'VM' =>  "Naval architecture. Shipbuilding. Marine engineering",
     'ZA' =>  "Information resources (General)",
   );
+}
+
+/**
+ * Generates the category, based on a hardcoded
+ * array emailed by Keith Jenkins (kgj2@cornell.edu)
+ * He is not planning to add this functionality to the feed at this time.
+ */
+function cul_new_books_get_category($class) {
+  $category = '';
+  $categories = _cul_new_books_get_categories();
   $class_key = strtok($class, ' ');
 
   if (array_key_exists($class_key, $categories)) {
