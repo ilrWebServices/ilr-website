@@ -14,3 +14,8 @@ input[type="checkbox"]:focus {
 #content .entity-entityform-type > h2 {
   @extend .hidden;
 }
+
+// Hide the placeholder for new books select menu
+#cul-new-books-select-form-placeholder {
+  display: none;
+}
