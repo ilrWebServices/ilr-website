@@ -3,7 +3,11 @@
  * @file
  * Code for the ilr_sdc_listings feature.
  *
- * @todo How should the placement for calendar nav view block should be handled.
+ * Current Course listings
+ *  Courses By Month: /professional-programs/public-offerings/calendar-month
+ *  Courses By Date:  /professional-programs/public-offerings
+ *  All Courses: /professional-programs/public-offerings-courses
+ *
  */
 define('ILR_SDC_MAX_DAYS_PAST', 90);
 define('ILR_SDC_ONLINE_TEXT', 'Online');
