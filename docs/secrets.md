@@ -4,7 +4,9 @@ Some data (such as api keys, passwords) needs to be available to Drupal without 
 
 The current version of the secrets file is on the ILR Box account, where it can be versioned. If you are setting up secrets for the first time, then download secrets.php from Box.
 
-If you've added a new secret, you will need to manually upload the secrets.php file to the config folder on Acquia since it does not get deployed with the site. The path is `/mnt/gfs/home/ilr/config`. Also, be sure to update the secrets.php file in Box as well, so your changes don't get overridden.
+Each time you modify the secrets file, you will need to do two things:
+(1) Manually upload the secrets.php file to the config folder on Acquia since it does not get deployed with the site. See the secrets file itself for more info on this.
+(2) Update the secrets.php file in Box as well, so your changes don't get overridden.
 
 To make the secrets file available to a module, simply add the following line to the .module file:
 
