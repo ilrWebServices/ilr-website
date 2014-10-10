@@ -1600,6 +1600,8 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view any content_listing_manual bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'bean',
@@ -1630,6 +1632,8 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view any html bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'bean',
@@ -1641,6 +1645,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'bean',
