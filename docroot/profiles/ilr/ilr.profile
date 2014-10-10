@@ -1,4 +1,7 @@
 <?php
+
+define('NOTIFICATION_EMAIL', 'nr52@cornell.edu');
+
 /**
  * Implements hook_form_FORM_ID_alter() for install_configure_form().
  *
@@ -36,13 +39,23 @@ function ilr_home_view() {
 }
 
 /**
- * Implements hook_user_insert()
+ * Implements hook_user_presave()
  */
 function ilr_user_presave(&$edit, $account, $category) {
   $saml_attributes = simplesamlphp_auth_get_attributes();
   if($account->is_new && !empty($saml_attributes)) {
     $edit['field_netid'][LANGUAGE_NONE][0]['value'] = $saml_attributes['uid'][0];
   }
+}
+
+/**
+ * Implements hook_user_insert()
+ */
+function ilr_user_insert(&$edit, $account, $category) {
+  if($account->is_new) {
+    _ilr_account_notification($account);
+  }
+
 }
 
 /**
@@ -419,4 +432,40 @@ function ilr_get_netid_of_current_user() {
     return $netid;
   }
   return NULL;
+}
+
+/**
+ * Custom function to send the notification
+ */
+function _ilr_account_notification($account) {
+  global $base_url;
+  $email = (strpos($account->init, '@') > 0) ? $account->init : $account->init . '@cornell.edu';
+  $link = $base_url . "/user/$account->uid";
+  $params = array(
+    'content' => "A new account was created by <a href='$link'>$account->name</a> (<a href='mailto:$email'>$email</a>)."
+  );
+
+  drupal_mail(
+    'ilr_account_notification',
+    'user_insert',
+    NOTIFICATION_EMAIL,
+    LANGUAGE_NONE,
+    $params,
+    'no-reply@ilr.cornell.edu'
+  );
+}
+
+/**
+ * Implements hook_mail().
+ * hook for the notification email
+ */
+function ilr_account_notification_mail($key, &$message, $params) {
+  $sitename = variable_get('site_name', 'Drupal');
+
+  $message['headers']['MIME-Version'] = '1.0';
+  $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
+  $message['subject'] = t("ILR user account created");
+  $message['body'][] = $params['content'];
+  $message['body'][] = "\n--\r";
+  $message['body'][] = t("This is an automatic e-mail from $sitename.");
 }
