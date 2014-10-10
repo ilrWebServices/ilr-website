@@ -8,9 +8,10 @@ include_once 'forms.features.inc';
 include_once 'includes/forms.kerberized.inc';
 include_once 'includes/forms.statelists.inc';
 
+require_once DRUPAL_ROOT . '/../config/get_secrets.php';
+
 define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
-
 
 /**
  * Implements hook_entityform_presave.
