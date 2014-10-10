@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Mega Menu feature.
+ */
+
+include_once 'ilr_mega_menu.features.inc';
+
+function _ilr_mega_menu_get_top_level_items() {
+  $items = array();
+  $top_level_items = menu_tree_all_data('main-menu', NULL, 1);
+  foreach ($top_level_items as $key => $link) {
+    $item = preg_replace('/\s+/', '_', $link['link']['link_title']);
+    $item = strtolower($item);
+    $items[$item] = $link['link']['link_title'];
+  }
+  return $items;
+}
