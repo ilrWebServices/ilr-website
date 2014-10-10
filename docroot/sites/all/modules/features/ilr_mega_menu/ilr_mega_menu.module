@@ -3,9 +3,56 @@
  * @file
  * Code for the ILR Mega Menu feature.
  */
-
 include_once 'ilr_mega_menu.features.inc';
 
+/**
+* Implements hook_block_info().
+*/
+function ilr_mega_menu_block_info($delta = '') {
+  $blocks['ilr_mega_menu'] = array(
+    'info' => 'ILR Mega Menu'
+  );
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function ilr_mega_menu_block_view($delta = '') {
+  $block = array();
+  $block['content'] = '';
+  $mega_menu_items = _ilr_mega_menu_get_top_level_items();
+  foreach ($mega_menu_items as $key => $title) {
+    $block['content'] .= _ilr_mega_menu_get_menu_contents($key);
+  }
+  return $block;
+}
+
+/**
+ * Uses EFQ to load the bean based on the key
+ * returns the rendered view of the bean
+ */
+function _ilr_mega_menu_get_menu_contents($key) {
+  $query = new EntityFieldQuery();
+  $query
+      ->entityCondition('entity_type', 'bean')
+      ->entityCondition('bundle', 'mega_menu')
+      ->fieldCondition('field_mega_menu_item', 'value', $key, '=');
+  $result = $query->execute();
+  if (!empty($result)) {
+    $bean = bean_load(current($result['bean'])->bid); // Note this loads the first item. This could cause unexpected behavior if there is more than one bean assigned to a single menu item.
+    $view = bean_view($bean);
+    return render($view);
+  }
+
+}
+
+/**
+ * The custom allowed_values_function for the
+ * field_mega_menu_item field base
+ * Also used to determine which menus to load
+ * in ilr_mega_menu_block_view()
+ */
 function _ilr_mega_menu_get_top_level_items() {
   $items = array();
   $top_level_items = menu_tree_all_data('main-menu', NULL, 1);
