@@ -9,3 +9,8 @@ If you've added a new secret, you will need to manually upload the secrets.php f
 To make the secrets file available to a module, simply add the following line to the .module file:
 
     require_once DRUPAL_ROOT . '/../config/get_secrets.php';
+
+Then, within the hook or function you need the variable, you can access the global secret with:
+
+    global $ILR_SECRETS;
+    $ILR_SECRETS['key'];
