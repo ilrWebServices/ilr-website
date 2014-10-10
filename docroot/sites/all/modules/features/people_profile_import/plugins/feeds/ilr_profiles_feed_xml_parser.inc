@@ -31,7 +31,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
         foreach ($mapped_fields as $xml_key => $field_name) {
           if (strpos($field_name, 'field_ai') === 0) {
             $data = (string) $person->{$xml_key};
-            $field_values[$field_name] = trim($data);
+            $field_values[$field_name] = $this->prepData($field_name, $data);
           }
         }
       } // Loop through all the values
@@ -46,7 +46,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
               break;
             default:
               $data = (string) $person->{$xml_key};
-              $field_values[$field_name] = trim($data);
+              $field_values[$field_name] = $this->prepData($field_name, $data);
           }
         }
       }
@@ -59,7 +59,30 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
     return $result;
   }
 
+  /**
+   * Swaps p tags for line breaks on some fields coming
+   * from activity insight
+   */
+  private function prepData($field_name, $data) {
+    $prepared = trim($data);
+    if (in_array($field_name, $this->getFieldsWithLineBreaks())){
+      $prepared = preg_replace('/\n(\s*\n)+/', '</p><p>', $prepared);
+      $prepared = preg_replace('/\n/', '<br>', $prepared);
+      $prepared = '<p>'.$prepared.'</p>';
+    }
+    return $prepared;
+  }
 
+  /**
+   * Specifies which fields need to be converted
+   */
+  private function getFieldsWithLineBreaks() {
+    return array(
+      'field_ai_teaching_statement',
+      'field_ai_research_statement',
+      'field_ai_overview',
+    );
+  }
   /**
    * Return mapping sources.
    */
