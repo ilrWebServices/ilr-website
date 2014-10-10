@@ -4257,6 +4257,88 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_mega_menu_blocks'
+  $field_bases['field_mega_menu_blocks'] = array(
+    'active' => 1,
+    'cardinality' => 3,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_mega_menu_blocks',
+    'foreign keys' => array(
+      'bid' => array(
+        'columns' => array(
+          'bid' => 'bid',
+        ),
+        'table' => 'block',
+      ),
+    ),
+    'indexes' => array(
+      'bid' => array(
+        0 => 'bid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'blockreference',
+    'settings' => array(
+      'referenceable_modules' => array(
+        'bean' => 'bean',
+        'block' => 0,
+        'calendar' => 0,
+        'context_ui' => 0,
+        'devel' => 0,
+        'diff' => 0,
+        'entityform_block' => 0,
+        'ilr_mega_menu' => 0,
+        'menu' => 0,
+        'menu_block' => 0,
+        'node' => 0,
+        'people_profiles' => 0,
+        'simplesamlphp_auth' => 0,
+        'system' => 0,
+        'user' => 0,
+        'views' => 0,
+      ),
+      'referenceable_operator' => 'AND',
+      'referenceable_regions' => array(
+        '' => 0,
+        'content' => 0,
+        'content_bottom' => 0,
+        'footer' => 0,
+        'header' => 0,
+        'highlighted' => 0,
+        'sidebar_first' => 0,
+        'sidebar_second' => 0,
+      ),
+      'referenceable_theme' => 'default',
+      'respect_visibility' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'blockreference',
+  );
+
+  // Exported field_base: 'field_mega_menu_item'
+  $field_bases['field_mega_menu_item'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_mega_menu_item',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(),
+      'allowed_values_function' => '_ilr_mega_menu_get_top_level_items',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_message_after_form_close'
   $field_bases['field_message_after_form_close'] = array(
     'active' => 1,
