@@ -42,6 +42,7 @@ dependencies[] = ilr_drush_feeds_import
 dependencies[] = ilr_editable_settings
 dependencies[] = ilr_footer_menu
 dependencies[] = ilr_manual_listing
+dependencies[] = ilr_mega_menu
 dependencies[] = ilr_sdc_listings
 dependencies[] = ilr_settings
 dependencies[] = ilr_sub_pages
