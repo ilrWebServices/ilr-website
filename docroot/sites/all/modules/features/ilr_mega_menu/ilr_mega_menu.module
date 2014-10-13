@@ -6,6 +6,12 @@
 include_once 'ilr_mega_menu.features.inc';
 
 /**
+ * Implements hook_init().
+ */
+function ilr_mega_menu_init() {
+  drupal_add_js(drupal_get_path('module','ilr_mega_menu') . '/ilr_mega_menu.js', array('type' => 'file', 'scope' => 'footer'));
+}
+/**
 * Implements hook_block_info().
 */
 function ilr_mega_menu_block_info($delta = '') {
@@ -20,42 +26,116 @@ function ilr_mega_menu_block_info($delta = '') {
 */
 function ilr_mega_menu_block_view($delta = '') {
   $block = array();
-  $block['content'] = '';
-  $mega_menu_items = _ilr_mega_menu_get_top_level_items();
+  $block['content'] = '<div class="menu-block-ilr-primary-menu"><ul class="menu">';
+  $menu_name = (module_exists('ilr_sub_sites')) ? _ilr_sub_sites_get_current_menu_name() : 'main-menu';
+  $mega_menu_items = _ilr_mega_menu_get_top_level_items($menu_name);
   foreach ($mega_menu_items as $key => $title) {
-    $block['content'] .= _ilr_mega_menu_get_menu_contents($key);
+    $block['content'] .= "<li class='menu-item $key'><a href='#'>$title</a>"; // GET THE REAL LINK
+    $block['content'] .= _ilr_mega_menu_get_menu_contents($menu_name, $key);
+    $block['content'] .= "</li>";
   }
+  $block['content'] .= "</ul></div>";
   return $block;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ilr_mega_menu_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'bean_form' && $form['#bundle'] == 'mega_menu') {
+    $options = _ilr_mega_menu_get_menus();
+    $form['field_menu_name']['und']['#options'] = $options;
+    $selected = _ilr_mega_menu_get_default_value($form);
+    drupal_add_js(array(
+      'ilr_mega_menu' => array(
+        'topLevelItems' => _ilr_mega_menu_get_all_top_level_items(),
+        'currentItem' => $selected,
+      )), 'setting');
+  }
+}
+
+function _ilr_mega_menu_get_default_value($form) {
+  if ($values = $form['field_mega_menu_item'][LANGUAGE_NONE]['#default_value']) {
+    return $values[0];
+  }
+  return '';
 }
 
 /**
  * Uses EFQ to load the bean based on the key
  * returns the rendered view of the bean
  */
-function _ilr_mega_menu_get_menu_contents($key) {
+function _ilr_mega_menu_get_menu_contents($menu, $key) {
   $query = new EntityFieldQuery();
   $query
       ->entityCondition('entity_type', 'bean')
       ->entityCondition('bundle', 'mega_menu')
-      ->fieldCondition('field_mega_menu_item', 'value', $key, '=');
+      ->fieldCondition('field_mega_menu_item', 'value', $key, '=')
+      ->fieldCondition('field_menu_name', 'value', $menu, '=');
   $result = $query->execute();
   if (!empty($result)) {
     $bean = bean_load(current($result['bean'])->bid); // Note this loads the first item. This could cause unexpected behavior if there is more than one bean assigned to a single menu item.
     $view = bean_view($bean);
-    return render($view);
+    $markup = '<div class="submenu">';
+    $markup .= render($view);
+    $markup .= '</div>';
+    return $markup;
   }
+}
 
+/**
+ * Custom function called by hook_form_alter
+ * To output the list of available menus
+ */
+function _ilr_mega_menu_get_menus() {
+  $menus = array('main-menu' => 'Main Menu');
+  $menus += menu_get_menus(FALSE);
+  return $menus;
 }
 
 /**
  * The custom allowed_values_function for the
  * field_mega_menu_item field base
- * Also used to determine which menus to load
- * in ilr_mega_menu_block_view()
+ * Required b/c allowed_values_functions cannot recieve a parameter
  */
 function _ilr_mega_menu_get_top_level_items() {
+  return _ilr_mega_menu_get_top_level_items_by_menu_name('main-menu');
+}
+
+/**
+ * The custom allowed_values_function for the
+ * field_mega_menu_item field base
+ * Required b/c allowed_values_functions cannot recieve a parameter
+ */
+function _ilr_mega_menu_get_all_top_level_items() {
   $items = array();
-  $top_level_items = menu_tree_all_data('main-menu', NULL, 1);
+  $menus = _ilr_mega_menu_get_menus();
+  foreach ($menus as $key => $title) {
+    $items[$key] = _ilr_mega_menu_get_top_level_items_by_menu_name($key);
+  }
+  return $items;
+}
+
+/**
+ * Used to determine which menus to load
+ * in ilr_mega_menu_block_view()
+ */
+function _ilr_mega_menu_get_top_level_items_by_menu_name($menu_name='main-menu') {
+  $items = array();
+  if ($menu_name == 'main-menu') {
+    $top_level_items = menu_tree_page_data($menu_name, 1);
+  } else {
+    $top_level_items = array();
+    $parameters = array(
+      'min_depth' => 2,
+      'max_depth' => 2,
+      'conditions' => array('plid' => 4456),
+    );
+    $tree = menu_build_tree($menu_name, $parameters);
+    foreach ($tree as $link => $value) {
+      $top_level_items[] = $value;
+    }
+  }
   foreach ($top_level_items as $key => $link) {
     $item = preg_replace('/\s+/', '_', $link['link']['link_title']);
     $item = strtolower($item);
@@ -63,3 +143,4 @@ function _ilr_mega_menu_get_top_level_items() {
   }
   return $items;
 }
+
