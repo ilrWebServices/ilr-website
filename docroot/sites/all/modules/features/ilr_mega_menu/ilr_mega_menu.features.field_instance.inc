@@ -42,7 +42,7 @@ function ilr_mega_menu_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'blockreference_autocomplete',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -57,7 +57,7 @@ function ilr_mega_menu_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'bean',
@@ -74,6 +74,38 @@ function ilr_mega_menu_field_default_field_instances() {
         'apply_chosen' => 0,
       ),
       'type' => 'options_select',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'bean-mega_menu-field_menu_name'
+  $field_instances['bean-mega_menu-field_menu_name'] = array(
+    'bundle' => 'mega_menu',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'bean',
+    'field_name' => 'field_menu_name',
+    'label' => 'Menu',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
       'weight' => 5,
     ),
   );
@@ -82,6 +114,7 @@ function ilr_mega_menu_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Mega Menu Blocks');
   t('Mega Menu Item');
+  t('Menu');
 
   return $field_instances;
 }
