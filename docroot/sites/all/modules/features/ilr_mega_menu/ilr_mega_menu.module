@@ -1,0 +1,162 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Mega Menu feature.
+ */
+include_once 'ilr_mega_menu.features.inc';
+
+/**
+ * Implements hook_init().
+ */
+function ilr_mega_menu_init() {
+  drupal_add_js(drupal_get_path('module','ilr_mega_menu') . '/ilr_mega_menu.js', array('type' => 'file', 'scope' => 'footer'));
+}
+/**
+* Implements hook_block_info().
+*/
+function ilr_mega_menu_block_info($delta = '') {
+  $blocks['ilr_mega_menu'] = array(
+    'info' => 'ILR Mega Menu'
+  );
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function ilr_mega_menu_block_view($delta = '') {
+  $block = array();
+  $block['content'] = '<div class="menu-block-ilr-primary-menu"><ul class="menu">';
+  $menu_name = (module_exists('ilr_sub_sites')) ? _ilr_sub_sites_get_current_menu_name() : 'main-menu';
+  $mega_menu_items = _ilr_mega_menu_get_top_level_items($menu_name);
+  foreach ($mega_menu_items as $key => $info) {
+    $url = $info['path'];
+    $title = $info['title'];
+    $block['content'] .= "<li class='menu-item'><a href='$url'>$title</a>";
+    $block['content'] .= _ilr_mega_menu_get_menu_contents($menu_name, $key);
+    $block['content'] .= "</li>";
+  }
+  $block['content'] .= "</ul></div>";
+  return $block;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ilr_mega_menu_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'bean_form' && $form['#bundle'] == 'mega_menu') {
+    $options = _ilr_mega_menu_get_menus();
+    $form['field_menu_name']['und']['#options'] = $options;
+    $selected = _ilr_mega_menu_get_default_value($form);
+    drupal_add_js(array(
+      'ilr_mega_menu' => array(
+        'menusWithItems' => _ilr_mega_menu_get_menus_with_items(),
+        'currentItem' => $selected,
+      )), 'setting');
+  }
+}
+
+function _ilr_mega_menu_get_default_value($form) {
+  if ($values = $form['field_mega_menu_item'][LANGUAGE_NONE]['#default_value']) {
+    return $values[0];
+  }
+  return '';
+}
+
+/**
+ * Uses EFQ to load the bean based on the key
+ * returns the rendered view of the bean
+ */
+function _ilr_mega_menu_get_menu_contents($menu, $key) {
+  $query = new EntityFieldQuery();
+  $query
+      ->entityCondition('entity_type', 'bean')
+      ->entityCondition('bundle', 'mega_menu')
+      ->fieldCondition('field_mega_menu_item', 'value', $key, '=')
+      ->fieldCondition('field_menu_name', 'value', $menu, '=');
+  $result = $query->execute();
+  if (!empty($result)) {
+    $bean = bean_load(current($result['bean'])->bid); // Note this loads the first item. This could cause unexpected behavior if there is more than one bean assigned to a single menu item.
+    $view = bean_view($bean);
+    $markup = '<div class="submenu">';
+    $markup .= render($view);
+    $markup .= '</div>';
+    return $markup;
+  }
+}
+
+/**
+ * Custom function called by hook_form_alter
+ * To output the list of available menus
+ */
+function _ilr_mega_menu_get_menus() {
+  $menus = array('main-menu' => 'Main Menu');
+  $menus += menu_get_menus(FALSE);
+  return $menus;
+}
+
+/**
+ * Creates an array of menu link info for top level items for a given menu
+ */
+function _ilr_mega_menu_get_top_level_items($menu_name='main-menu', $multidimensional=TRUE) {
+  $top_level_items = &drupal_static(__FUNCTION__);
+  if (!isset($top_level_items[$menu_name])) {
+    $top_level_items[$menu_name] = $items = array();
+    if ($menu_name == 'main-menu') {
+      $items = menu_tree_page_data($menu_name, 1);
+    } else {
+      $parent = current(menu_tree_page_data($menu_name, 1));
+      $count = 1;
+      $parameters = array(
+        'min_depth' => 2,
+        'max_depth' => 2,
+        'conditions' => array('plid' => $parent['link']['mlid']),
+      );
+      $tree = menu_build_tree($menu_name, $parameters);
+      foreach ($tree as $link => $value) {
+        $items[] = $value;
+      }
+    }
+    if (count($items)) {
+      foreach ($items as $key => $link) {
+        $item = preg_replace('/\s+/', '_', $link['link']['link_title']);
+        $item = strtolower($item);
+        $item_info = ($multidimensional)
+          ? array(
+              'title' => $link['link']['link_title'],
+              'path' => drupal_get_path_alias($link['link']['link_path']),
+            )
+          : $link['link']['link_title'];
+        $top_level_items[$menu_name][$item] = $item_info;
+      }
+    }
+  }
+  return $top_level_items[$menu_name];
+}
+
+/**
+ * Creates a multi-dimensional array with menu names and menu link info
+ * This gets sent to ilr_mega_menu.js by ilr_mega_menu_form_alter()
+ */
+function _ilr_mega_menu_get_menus_with_items() {
+  $items = array();
+  $menus = _ilr_mega_menu_get_menus();
+  foreach ($menus as $key => $title) {
+    $items[$key] = _ilr_mega_menu_get_top_level_items($key);
+  }
+  return $items;
+}
+
+/**
+ * Combines all top level items for the allowed_values_function
+ * of field_mega_menu_item
+ */
+function _ilr_mega_menu_get_all_top_level_items() {
+  $items = array();
+  $menus = _ilr_mega_menu_get_menus();
+  foreach ($menus as $key => $title) {
+    $new_items = _ilr_mega_menu_get_top_level_items($key, FALSE);
+    $items = array_merge($items, $new_items);
+  }
+  return $items;
+}

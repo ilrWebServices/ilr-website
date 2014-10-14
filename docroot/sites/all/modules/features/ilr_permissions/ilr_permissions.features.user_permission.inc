@@ -144,6 +144,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: 'administer any editor note'.
+  $permissions['administer any editor note'] = array(
+    'name' => 'administer any editor note',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'editor_note',
+  );
+
   // Exported permission: 'administer bean settings'.
   $permissions['administer bean settings'] = array(
     'name' => 'administer bean settings',
@@ -530,6 +539,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'create any mega_menu bean'.
+  $permissions['create any mega_menu bean'] = array(
+    'name' => 'create any mega_menu bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
+  );
+
   // Exported permission: 'create any tagged_content bean'.
   $permissions['create any tagged_content bean'] = array(
     'name' => 'create any tagged_content bean',
@@ -748,6 +766,15 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'delete any html bean'.
   $permissions['delete any html bean'] = array(
     'name' => 'delete any html bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'delete any mega_menu bean'.
+  $permissions['delete any mega_menu bean'] = array(
+    'name' => 'delete any mega_menu bean',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -1136,6 +1163,15 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'edit any mega_menu bean'.
+  $permissions['edit any mega_menu bean'] = array(
+    'name' => 'edit any mega_menu bean',
+    'roles' => array(
+      'administrator' => 'administrator',
     ),
     'module' => 'bean',
   );
@@ -1635,6 +1671,17 @@ function ilr_permissions_user_default_permissions() {
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'view any mega_menu bean'.
+  $permissions['view any mega_menu bean'] = array(
+    'name' => 'view any mega_menu bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'bean',
   );
