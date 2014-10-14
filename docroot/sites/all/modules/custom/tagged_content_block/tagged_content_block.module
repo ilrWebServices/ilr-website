@@ -123,6 +123,7 @@ function _tagged_content_block_load_block($bid) {
  */
 function _tagged_content_block_enable_default_bundles() {
   $enabled_content_types = array(
+    'basic_page'          => 'basic_page',
     'news_item'           => 'news_item',
     'promo'               => 'promo',
     'spotlight'           => 'spotlight',
