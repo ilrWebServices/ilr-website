@@ -63,25 +63,27 @@
 
       function positionCurrentMenu() {
         currentMenu = getCurrentMenu();
-        minHeight = getMinHeight();
-        $(currentMenu).parents('ul.menu').each(function() {
-          parent = $(this).closest('li.expanded');
-          $(this).css({
-            'left': 0,
-            'min-height': minHeight,
+        if (currentMenu.length) {
+          minHeight = getMinHeight();
+          $(currentMenu).parents('ul.menu').each(function() {
+            parent = $(this).closest('li.expanded');
+            $(this).css({
+              'left': 0,
+              'min-height': minHeight,
+            });
           });
-        });
 
-        if(menuNeedsBackButton(currentMenu)) {
-          addBackButtonToMenu(currentMenu);
-        }
+          if(menuNeedsBackButton(currentMenu)) {
+            addBackButtonToMenu(currentMenu);
+          }
 
-        if ($(currentMenu).parent().position()) {
-          $(currentMenu).css({
-            'left': 0,
-            'min-height': minHeight,
-            'visibility': 'visible',
-          });
+          if ($(currentMenu).parent().position()) {
+            $(currentMenu).css({
+              'left': 0,
+              'min-height': minHeight,
+              'visibility': 'visible',
+            });
+          }
         }
 
         addForwardButtonToMenus();
