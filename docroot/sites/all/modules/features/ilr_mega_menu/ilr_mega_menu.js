@@ -29,11 +29,11 @@
       }
 
       function setTopLevelMenuOptions(menuName) {
-        options = Drupal.settings.ilr_mega_menu.topLevelItems[menuName];
+        options = Drupal.settings.ilr_mega_menu.menusWithItems[menuName];
         var $el = $("#edit-field-mega-menu-item-und");
         $el.empty(); // remove old options
-        $.each(options, function(key, value) {
-          $el.append($("<option>"+value+"</option>")
+        $.each(options, function(key, title) {
+          $el.append($("<option>"+title+"</option>")
              .attr("value", key));
         });
 

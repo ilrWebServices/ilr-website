@@ -29,8 +29,10 @@ function ilr_mega_menu_block_view($delta = '') {
   $block['content'] = '<div class="menu-block-ilr-primary-menu"><ul class="menu">';
   $menu_name = (module_exists('ilr_sub_sites')) ? _ilr_sub_sites_get_current_menu_name() : 'main-menu';
   $mega_menu_items = _ilr_mega_menu_get_top_level_items($menu_name);
-  foreach ($mega_menu_items as $key => $title) {
-    $block['content'] .= "<li class='menu-item $key'><a href='#'>$title</a>"; // GET THE REAL LINK
+  foreach ($mega_menu_items as $key => $info) {
+    $url = $info['path'];
+    $title = $info['title'];
+    $block['content'] .= "<li class='menu-item'><a href='$url'>$title</a>";
     $block['content'] .= _ilr_mega_menu_get_menu_contents($menu_name, $key);
     $block['content'] .= "</li>";
   }
@@ -48,7 +50,7 @@ function ilr_mega_menu_form_alter(&$form, &$form_state, $form_id) {
     $selected = _ilr_mega_menu_get_default_value($form);
     drupal_add_js(array(
       'ilr_mega_menu' => array(
-        'topLevelItems' => _ilr_mega_menu_get_all_top_level_items(),
+        'menusWithItems' => _ilr_mega_menu_get_menus_with_items(),
         'currentItem' => $selected,
       )), 'setting');
   }
@@ -94,53 +96,67 @@ function _ilr_mega_menu_get_menus() {
 }
 
 /**
- * The custom allowed_values_function for the
- * field_mega_menu_item field base
- * Required b/c allowed_values_functions cannot recieve a parameter
+ * Creates an array of menu link info for top level items for a given menu
  */
-function _ilr_mega_menu_get_top_level_items() {
-  return _ilr_mega_menu_get_top_level_items_by_menu_name('main-menu');
+function _ilr_mega_menu_get_top_level_items($menu_name='main-menu', $multidimensional=TRUE) {
+  $top_level_items = &drupal_static(__FUNCTION__);
+  if (!isset($top_level_items[$menu_name])) {
+    $top_level_items[$menu_name] = $items = array();
+    if ($menu_name == 'main-menu') {
+      $items = menu_tree_page_data($menu_name, 1);
+    } else {
+      $parent = current(menu_tree_page_data($menu_name, 1));
+      $count = 1;
+      $parameters = array(
+        'min_depth' => 2,
+        'max_depth' => 2,
+        'conditions' => array('plid' => $parent['link']['mlid']),
+      );
+      $tree = menu_build_tree($menu_name, $parameters);
+      foreach ($tree as $link => $value) {
+        $items[] = $value;
+      }
+    }
+    if (count($items)) {
+      foreach ($items as $key => $link) {
+        $item = preg_replace('/\s+/', '_', $link['link']['link_title']);
+        $item = strtolower($item);
+        $item_info = ($multidimensional)
+          ? array(
+              'title' => $link['link']['link_title'],
+              'path' => drupal_get_path_alias($link['link']['link_path']),
+            )
+          : $link['link']['link_title'];
+        $top_level_items[$menu_name][$item] = $item_info;
+      }
+    }
+  }
+  return $top_level_items[$menu_name];
 }
 
 /**
- * The custom allowed_values_function for the
- * field_mega_menu_item field base
- * Required b/c allowed_values_functions cannot recieve a parameter
+ * Creates a multi-dimensional array with menu names and menu link info
+ * This gets sent to ilr_mega_menu.js by ilr_mega_menu_form_alter()
+ */
+function _ilr_mega_menu_get_menus_with_items() {
+  $items = array();
+  $menus = _ilr_mega_menu_get_menus();
+  foreach ($menus as $key => $title) {
+    $items[$key] = _ilr_mega_menu_get_top_level_items($key);
+  }
+  return $items;
+}
+
+/**
+ * Combines all top level items for the allowed_values_function
+ * of field_mega_menu_item
  */
 function _ilr_mega_menu_get_all_top_level_items() {
   $items = array();
   $menus = _ilr_mega_menu_get_menus();
   foreach ($menus as $key => $title) {
-    $items[$key] = _ilr_mega_menu_get_top_level_items_by_menu_name($key);
+    $new_items = _ilr_mega_menu_get_top_level_items($key, FALSE);
+    $items = array_merge($items, $new_items);
   }
   return $items;
 }
-
-/**
- * Used to determine which menus to load
- * in ilr_mega_menu_block_view()
- */
-function _ilr_mega_menu_get_top_level_items_by_menu_name($menu_name='main-menu') {
-  $items = array();
-  if ($menu_name == 'main-menu') {
-    $top_level_items = menu_tree_page_data($menu_name, 1);
-  } else {
-    $top_level_items = array();
-    $parameters = array(
-      'min_depth' => 2,
-      'max_depth' => 2,
-      'conditions' => array('plid' => 4456),
-    );
-    $tree = menu_build_tree($menu_name, $parameters);
-    foreach ($tree as $link => $value) {
-      $top_level_items[] = $value;
-    }
-  }
-  foreach ($top_level_items as $key => $link) {
-    $item = preg_replace('/\s+/', '_', $link['link']['link_title']);
-    $item = strtolower($item);
-    $items[$item] = $link['link']['link_title'];
-  }
-  return $items;
-}
-

@@ -4333,7 +4333,7 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(),
-      'allowed_values_function' => '_ilr_mega_menu_get_top_level_items',
+      'allowed_values_function' => '_ilr_mega_menu_get_all_top_level_items',
     ),
     'translatable' => 0,
     'type' => 'list_text',
