@@ -141,7 +141,7 @@
       color: darken($gray-light, 10%);
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: left;
       span {
         @extend %nav-arrow;
         margin-right: .2em;
@@ -163,6 +163,9 @@
   & > li {
     @extend .clearfix;
     border-bottom: 1px solid darken($nav-light, 10%);
+    &.back {
+      border: none;
+    }
     #jPanelMenu-menu & {
       border-bottom: 1px solid lighten($nav-dark, 15%);
     }

@@ -28,8 +28,8 @@
         e.preventDefault();
         currentMenu = $(this).prev();
         oldMenu = $(this).closest('ul.menu');
-        if (menuNeedsBackButton(currentMenu)) {
-          addBackButtonToMenu(currentMenu);
+        if (menuNeedsAddtionalButtons(currentMenu)) {
+          addButtonsToMenu(currentMenu);
         }
         $(currentMenu).css({
           'min-height': minHeight,
@@ -47,8 +47,8 @@
         $(oldMenu).css('visibility','visible');
         TweenLite.to($(oldMenu), .6, {left:pixelShift});
 
-        if (menuNeedsBackButton(oldMenu)) {
-          addBackButtonToMenu(oldMenu);
+        if (menuNeedsAddtionalButtons(oldMenu)) {
+          addButtonsToMenu(oldMenu);
         }
       }
 
@@ -73,8 +73,8 @@
             });
           });
 
-          if(menuNeedsBackButton(currentMenu)) {
-            addBackButtonToMenu(currentMenu);
+          if(menuNeedsAddtionalButtons(currentMenu)) {
+            addButtonsToMenu(currentMenu);
           }
 
           if ($(currentMenu).parent().position()) {
@@ -118,7 +118,7 @@
         return $(currentPage).parent();
       }
 
-      function menuNeedsBackButton(el) {
+      function menuNeedsAddtionalButtons(el) {
         if (!el.parent().is('li')) { // the top level menu
           return false;
         }
@@ -129,8 +129,15 @@
         return false;
       }
 
-      function addBackButtonToMenu(menu) {
-        var linkText = menu.parent().children('a:first').text();
+      function addButtonsToMenu(menu) {
+        var linkText = menu.parent().parent().parent().children('a:first').text();
+        section = menu.parent().children('a:first');
+        sectionText = $(section).text();
+        sectionUrl = $(section).attr('href');
+        if (linkText == '') {
+          linkText = 'Main Menu';
+        }
+        menu.prepend('<li class="section"><a href="'+sectionUrl+'">'+sectionText+'</a></li>');
         menu.prepend('<li class="back"><a class="prev-menu" href="#"><span>&lsaquo; </span> ' + linkText + '</a></li>');
         $('.prev-menu').click(prevClick);
       }
