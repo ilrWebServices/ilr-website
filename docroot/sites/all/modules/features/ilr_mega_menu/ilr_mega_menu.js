@@ -2,21 +2,33 @@
   Drupal.behaviors.ilr_mega_menu = {
     attach: function (context, settings) {
       $('#block-ilr-mega-menu-ilr-mega-menu li.menu-item').mouseenter(function(){
-        $('#block-ilr-mega-menu-ilr-mega-menu').addClass('active');
         submenu = $(this).find('div.submenu');
-        if ($('.submenu.active').length) {
-          $('.submenu.active').removeClass('active').hide();
-          $(submenu).show();
+        if (submenuIsPopulated(submenu)) {
+          $('#block-ilr-mega-menu-ilr-mega-menu').addClass('active');
+          if ($('.submenu.active').length) {
+            $('.submenu.active').removeClass('active').hide();
+            $(submenu).show();
+          } else {
+            $(submenu).slideDown();
+          }
+          $(submenu).addClass('active');
+          $('#block-ilr-mega-menu-ilr-mega-menu').mouseleave(function() {
+            hideSubmenu(submenu);
+          });
         } else {
-          $(submenu).slideDown();
+          hideSubmenu($('.submenu.active'));
         }
-        $(submenu).addClass('active');
-        $('#block-ilr-mega-menu-ilr-mega-menu').mouseleave(function() {
-          $(submenu).slideUp();
-          $('#block-ilr-mega-menu-ilr-mega-menu').removeClass('active');
-          $(submenu).removeClass('active');
-        });
       });
+
+      function submenuIsPopulated(submenu) {
+        return $(submenu).find('.block-bean').length > 0;
+      }
+
+      function hideSubmenu(submenu) {
+        $(submenu).slideUp('fast');
+        $('#block-ilr-mega-menu-ilr-mega-menu').removeClass('active');
+        $(submenu).removeClass('active');
+      }
 
       // Edit page
       if (typeof Drupal.settings.ilr_mega_menu !== 'undefined') {
