@@ -45,6 +45,7 @@ features[field_instance][] = node-basic_page-body
 features[field_instance][] = node-basic_page-field_blocks
 features[field_instance][] = node-basic_page-field_editor_notes
 features[field_instance][] = node-basic_page-field_image
+features[field_instance][] = node-basic_page-field_tags
 features[file_display][] = image__default__file_field_image
 features[filter][] = full_html
 features[linkit_profiles][] = full_html_profile

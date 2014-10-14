@@ -97,6 +97,9 @@ function basic_page_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'reference_field' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -105,6 +108,9 @@ function basic_page_strongarm() {
         ),
         'path' => array(
           'weight' => '1',
+        ),
+        'redirect' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),
