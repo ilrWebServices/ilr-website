@@ -469,3 +469,11 @@ function ilr_account_notification_mail($key, &$message, $params) {
   $message['body'][] = "\n--\r";
   $message['body'][] = t("This is an automatic e-mail from $sitename.");
 }
+
+function ilr_is_production_site() {
+  $is_production = FALSE;
+  if (isset($_ENV["AH_SITE_ENVIRONMENT"]) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {
+    $is_production = TRUE;
+  }
+  return $is_production;
+}

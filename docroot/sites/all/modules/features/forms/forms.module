@@ -408,7 +408,8 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
 
   // Admin email
   if (_forms_admin_receives_confirmation_email($entityform)) {
-    $to = $admin_email;
+    // Intercept the admin emails when not on prod
+    $to = (ilr_is_production_site()) ? $admin_email : ILRWEB_BCC_EMAIL;
     $from = _get_string_or_default($entityform->field_email['und'][0]['email'], $admin_email);
     if (empty($subject)) {
       $subject = $form_title . ' submitted';
