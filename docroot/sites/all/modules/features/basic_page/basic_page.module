@@ -17,6 +17,14 @@ function basic_page_init() {
 
 }
 
+function basic_page_node_access($node, $op, $account) {
+  if ($op == 'view' && isset($node->kerberized) && $node->kerberized) {
+    if (!ilr_user_has_netid()) {
+      drupal_set_message('You must be logged in with your NetID to access this page. <a href="/saml_login">Login here.</a>', 'warning');
+      return NODE_ACCESS_DENY;
+    }
+  }
+}
 
 /**
  * Implements hook_form_alter().
