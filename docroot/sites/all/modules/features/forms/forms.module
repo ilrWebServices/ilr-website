@@ -234,12 +234,7 @@ function _forms_send_lyris_email(&$entityform, $from, $email_list) {
   $user_email = $entityform->field_email['und'][0]['email'];
 
   $action = $entityform->field_subscribe_or_unsubscribe['und'][0]['value'];
-  if ($action == 'add') {
-    $email_template = 'lyris_subscribe';
-  }
-  else {
-    $email_template = 'lyris_unsubscribe';
-  }
+  $email_template = ($action == 'add') ? 'lyris_subscribe' : 'lyris_unsubscribe';
 
   $body = theme($email_template, array(
       'list_password'         => $pw,
