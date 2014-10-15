@@ -85,16 +85,14 @@ function ilr_sub_pages_check_permissions() {
 }
 
 /**
- * Validation callback for page node form. Restricts the ability to add menu items to the top
- * level of the main menu. Editing existing top level menu pages should be allowed.
+ * Validation callback for page node form.
+ * Restricts the ability to add menu items to the top level.
+ * Editing existing top level menu pages should be allowed.
  */
 function ilr_sub_pages_node_form_validate($form, &$form_state) {
-  // Top level items are always in the format [menu-name]:0 or similar (i.e. main-menu:0)
-
   $is_setting_top_menu_level = _ilr_sub_pages_is_top_menu_level($form_state);
   $is_editing_node = isset($form_state['node']->nid);
-  $was_already_at_top_level = $is_editing_node && ($form_state['node']->menu['plid'] == 0);
-
+  $was_already_at_top_level = _ilr_sub_pages_was_top_menu_level($form_state);
   if (!user_access('add top level menu items')) {
     // Cannot add a new node to the top level of the menu
     // Cannot move an existing node from second or > level to the top level
@@ -120,7 +118,6 @@ function ilr_sub_pages_form_basic_page_node_form_alter(&$form, &$form_state, $fo
     $form['menu']['link']['parent']['#default_value'] = $form['#node']->ilr_default_menu_parent;
     $form['menu']['enabled']['#value'] = TRUE;
   }
-
   if (!$view_advanced_menu) {
     // Require the menu link title and parent fields.
     $form['menu']['enabled']['#disabled'] = TRUE;
@@ -195,6 +192,21 @@ function _ilr_sub_pages_is_top_menu_level($form_state) {
   $menu_info = explode(":", $form_state['values']['menu']['parent']);
   $menu = $menu_info[0];
   $plid = $menu_info[1];
+
+  if ($menu != 'main-menu') {
+    $parent = menu_link_load($plid);
+    $plid = $parent['plid'];
+  }
+  return $plid === '0';
+}
+
+/**
+ * Uses the $form_state['build_info']['args'] to determine if the page
+ * was already at the top level
+ */
+function _ilr_sub_pages_was_top_menu_level($form_state) {
+  $menu = $form_state['build_info']['args'][0]->menu['menu_name'];
+  $plid = $form_state['build_info']['args'][0]->menu['plid'];
 
   if ($menu != 'main-menu') {
     $parent = menu_link_load($plid);
