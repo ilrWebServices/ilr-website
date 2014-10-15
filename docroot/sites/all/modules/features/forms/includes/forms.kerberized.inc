@@ -194,7 +194,7 @@ function _forms_map_user_attribute_to_field($field_name) {
  */
 function _forms_handle_kerberized_form(&$form) {
   if (user_is_logged_in()) {
-    if (_forms_user_has_netid() && _forms_saml_attributes_present()) {
+    if (ilr_user_has_netid() && _forms_saml_attributes_present()) {
       _forms_set_kerberized_values($form);
     } // SimpleSAMLAuth info missing, so force the user to log in again
     else {
@@ -213,18 +213,6 @@ function _forms_handle_kerberized_form(&$form) {
  */
 function _forms_replace_kerberized_form_with_login_button(&$form) {
   $form = drupal_get_form('forms_login_form');
-}
-
-/**
- * Figures out whether user account has a NetID
- */
-function _forms_user_has_netid() {
-  global $user;
-  if ($user->uid) {
-    $account = user_load($user->uid);
-    return !empty($account->field_netid);
-  }
-  return FALSE;
 }
 
 /**

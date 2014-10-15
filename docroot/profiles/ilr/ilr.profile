@@ -477,3 +477,15 @@ function ilr_is_production_site() {
   }
   return $is_production;
 }
+
+/**
+ * Figures out whether user account has a NetID
+ */
+function ilr_user_has_netid() {
+  global $user;
+  if ($user->uid) {
+    $account = user_load($user->uid);
+    return !empty($account->field_netid);
+  }
+  return FALSE;
+}
