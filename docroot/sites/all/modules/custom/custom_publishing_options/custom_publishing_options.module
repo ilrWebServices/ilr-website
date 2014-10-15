@@ -12,11 +12,18 @@ function custom_publishing_options_schema_alter(&$schema) {
     'not null' => TRUE,
     'default' => 0,
   );
+  $schema['node']['fields']['kerberized'] = array(
+    'description' => t('Kerberized', array('@name' => 'kerberized')),
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0,
+  );
 }
 
 /**
  * Implements hook_form_alter()
- * Adds the "featured" checkbox to the node publishing options tab
+ * Adds the "featured" and "kerberized" checkboxs
+ * to the node publishing options tab
  */
 function custom_publishing_options_form_alter(&$form, $form_state, $form_id) {
   if (isset($form['#node_edit_form']) && $form['#node_edit_form'] === TRUE) {
@@ -26,6 +33,13 @@ function custom_publishing_options_form_alter(&$form, $form_state, $form_id) {
      '#type' => 'checkbox',
      '#title' => 'Featured',
      '#default_value' => isset($node->featured) ? $node->featured : FALSE,
+     '#access' => user_access('administer nodes') ? TRUE : FALSE,
+    );
+
+    $form['options']['kerberized'] = array(
+     '#type' => 'checkbox',
+     '#title' => 'Kerberized',
+     '#default_value' => isset($node->kerberized) ? $node->kerberized : FALSE,
      '#access' => user_access('administer nodes') ? TRUE : FALSE,
     );
 

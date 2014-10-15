@@ -11,7 +11,6 @@ function custom_publishing_options_install() {
     'default' => 0
   );
   db_add_field('node', 'featured', $spec);
-
 }
 
 /**
@@ -20,5 +19,18 @@ function custom_publishing_options_install() {
 function custom_publishing_options_uninstall() {
   // Remove the featured field
   db_drop_field('node', 'featured');
+  db_drop_field('node', 'kerberized');
+}
 
+/**
+ * Adds kerberized column to node table
+ */
+function custom_publishing_options_update_7001() {
+  $spec = array(
+    'description' => 'Kerberized publishing option.',
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0
+  );
+  db_add_field('node', 'kerberized', $spec);
 }
