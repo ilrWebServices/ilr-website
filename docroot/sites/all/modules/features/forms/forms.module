@@ -216,6 +216,39 @@ function _forms_process_default(&$entityform) {
 }
 
 /**
+ * Process WIT email list subscribe / unsubscribe: one email to lyris, one to the user
+ */
+function _process_wit_email_list_subscribe(&$entityform) {
+  $from = 'catherwoodWIT@cornell.edu';
+  $email_list = 'wit-l';
+  _forms_send_lyris_email($entityform, $from, $email_list);
+
+  $admin_email = _forms_get_admin_email($entityform);
+  _forms_send_emails($entityform, $admin_email);
+}
+
+function _forms_send_lyris_email(&$entityform, $from, $email_list) {
+  global $ILR_SECRETS;
+  $pw = $ILR_SECRETS[$email_list];
+  $user_name = _forms_construct_user_name($entityform);
+  $user_email = $entityform->field_email['und'][0]['email'];
+
+  $action = $entityform->field_subscribe_or_unsubscribe['und'][0]['value'];
+  $email_template = ($action == 'add') ? 'lyris_subscribe' : 'lyris_unsubscribe';
+
+  $body = theme($email_template, array(
+      'list_password'         => $pw,
+      'list_name'             => $email_list,
+      'user_email'            => $user_email,
+      'user_name'             => $user_name,
+    ));
+
+  $to = 'lyris@cornell.edu';
+  $subject_lyris = '';
+  _send_email_for_entity_form($to, $from, $subject_lyris, $body);
+}
+
+/**
  * Process Library contact form
  */
 function _process_library_contact_form(&$entityform) {
@@ -377,6 +410,7 @@ function _forms_application_to_graduate_graduation_dates() {
  * Send user and admin emails
  */
 function _forms_send_emails($entityform, $admin_email, $subject='') {
+  $sitename = variable_get('site_name', 'Drupal');
   $form_title = _forms_get_form_title($entityform);
   $user_name = _forms_construct_user_name($entityform);
   $email_template = _forms_get_tplphp_file($entityform);
@@ -398,6 +432,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
       'admin_email'           => $admin_email,
       'form_title'            => $form_title,
       'event_info_for_email'  => $event_info_for_email,
+      'sitename'              => $sitename,
     ));
 
     $to = $entityform->field_email['und'][0]['email'];
@@ -543,15 +578,11 @@ function _send_email_for_entity_form($recip, $from, $subject, $body) {
  * This is the email sent to the user
  */
 function forms_std_confirmation_mail($key, &$message, $params) {
-  $sitename = variable_get('site_name', 'Drupal');
-
   $message['headers']['MIME-Version'] = '1.0';
   $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
   $message['headers']['Bcc'] = ILRWEB_BCC_EMAIL;
   $message['subject'] = $params['subject'];
   $message['body'][] = $params['content'];
-  $message['body'][] = "\n--\r";
-  $message['body'][] = t("This is an automatic e-mail from $sitename.");
 }
 
 /**

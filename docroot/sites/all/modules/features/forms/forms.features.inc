@@ -1220,6 +1220,54 @@ function forms_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['wit_email_list_subscribe'] = entity_import('entityform_type', '{
+    "type" : "wit_email_list_subscribe",
+    "label" : "WIT Email List Subscribe",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EYour WIT subscription status has been updated. If you subscribed, your subscription will begin with the next published issue.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ECatherwood Library Reference Staff\\u003Cbr \\/\\u003E\\r\\nILR School\\u003Cbr \\/\\u003E\\r\\nCornell University\\u003Cbr\\u003E\\r\\ncatherwoodWIT@cornell.edu\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "3" : "3",
+        "1" : "1",
+        "2" : "2",
+        "4" : 0,
+        "5" : 0,
+        "6" : 0,
+        "7" : 0,
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "form_submission_ilr_recipient" : "catherwoodWIT@cornell.edu",
+      "send_confirmation_email_to_admin" : 0,
+      "add_user_name_to_subject_line" : 0,
+      "kerberized" : 0
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['worker_institute_contact_form'] = entity_import('entityform_type', '{
     "type" : "worker_institute_contact_form",
     "label" : "Worker Institute Contact Form",

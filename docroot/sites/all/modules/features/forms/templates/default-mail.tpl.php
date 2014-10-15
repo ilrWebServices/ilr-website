@@ -7,3 +7,6 @@ This is an automated confirmation from the ILR School at Cornell University of y
 <? print $form_data;?>
 
 You may contact us at <? print $admin_email; ?>.
+
+--
+This is an automated e-mail from <? print $sitename; ?>.
