@@ -248,6 +248,15 @@ function ilr_update_7015() {
 }
 
 /**
+ * Enables ilr_admin_lock feature
+ */
+function ilr_update_7016() {
+  module_enable(array(
+    'ilr_admin_lock',
+  ));
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {
