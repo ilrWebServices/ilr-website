@@ -20,9 +20,35 @@ function basic_page_init() {
 function basic_page_node_access($node, $op, $account) {
   if ($op == 'view' && isset($node->kerberized) && $node->kerberized) {
     if (!ilr_user_has_netid()) {
-      drupal_set_message('You must be logged in with your NetID to access this page. <a href="/saml_login">Login here.</a>', 'warning');
-      return NODE_ACCESS_DENY;
+      if (user_is_logged_in()) {
+        require_once(drupal_get_path('module', 'user') . '/user.pages.inc');
+        user_logout(); // See basic_page_goto_alter for redirect
+      } else {
+        drupal_set_message('You must be logged in with your NetID to access this page. <a class="button button-rounded button-highlight" href="/saml_login">Login</a>', 'warning');
+
+        return NODE_ACCESS_DENY;
+      }
     }
+  }
+}
+
+/**
+ * Implements hook_user_logout()
+ * This and basic_page_drupal_goto_alter are based on
+ * https://drupal.org/project/redirect_after_logout
+ */
+function basic_page_user_logout($account) {
+  $destination = &drupal_static(__FUNCTION__);
+  $destination = current_path();
+}
+
+/**
+ * Implements hook_drupal_goto_alter().
+ */
+function basic_page_drupal_goto_alter(&$path, &$options, &$http_response_code) {
+  $destination = &drupal_static('basic_page_user_logout');
+  if (!$path && $destination) {
+    drupal_goto($destination);
   }
 }
 
