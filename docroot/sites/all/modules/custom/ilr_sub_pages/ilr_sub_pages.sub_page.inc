@@ -18,6 +18,9 @@ function ilr_sub_pages_create_sub_page($parent_node) {
   menu_node_prepare($parent_node);
   $node->ilr_default_menu_parent = $parent_node->menu['menu_name'] . ':' . $parent_node->menu['mlid'];
 
+  // store parent node kerberized setting for later
+  $node->kerberized = $parent_node->kerberized;
+
   drupal_set_title(t('Create sub page of @title', array('@title' => $parent_node->title)), PASS_THROUGH);
 
   // prepare form state
