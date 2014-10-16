@@ -6,9 +6,8 @@
 
 include_once 'student_portraits.features.inc';
 
-
-function student_portraits_node_view($variables) {
-  if ($variables->type == 'student_portrait') {
+function student_portraits_node_view($variables, $view_mode) {
+  if ($variables->type == 'student_portrait' && $view_mode == 'full') {
     drupal_set_title($variables->title . ', \'' . _student_portraits_get_graduation_year($variables->field_expected_graduation_date));
   }
 }
