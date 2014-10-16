@@ -1,6 +1,8 @@
 <?php
 
-define('LOCK_MESSAGE', 'This block is locked and cannot be edited.');
+define('ILR_ADMIN_BEAN_LOCK_MESSAGE', 'This block is locked and cannot be edited.');
+define('ILR_ADMIN_BEAN_LOCK_AUTOLOCK_MESSAGE', 'Block was locked because all hidden blocks must also be locked.');
+
 
 /**
  * Implements hook_form_alter().
@@ -9,23 +11,35 @@ define('LOCK_MESSAGE', 'This block is locked and cannot be edited.');
  * Add validation callback to check lock status
  */
 function ilr_bean_admin_form_bean_form_alter(&$form, &$form_state) {
-  global $user;
 
-  $form['admin_lock'] = array(
+  $form['ilr_bean_admin_data'] = array(
+    '#tree' => TRUE,
+    '#access' => TRUE,
+  );
+
+  $form['ilr_bean_admin_data']['admin_lock'] = array(
     '#type' => 'checkbox',
     '#title' => t('Lock this block'),
-    '#weight' => 0,
+    '#weight' => -1,
     '#default_value' => _ilr_bean_admin_get_lock_value($form['bean']['#value']),
   );
 
+  $form['ilr_bean_admin_data']['admin_hide'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Hide this block'),
+    '#weight' => 0,
+    '#default_value' => _ilr_bean_admin_get_hide_value($form['bean']['#value']),
+  );
   $form['#validate'][] = '_ilr_bean_admin_validate_permissions';
 
-  if (!user_access('administer bean settings', $user)) {
+  if (!user_access('administer bean settings')) {
     if (_ilr_bean_admin_get_lock_value($form['bean']['#value']) == 1) {
-      drupal_set_message(LOCK_MESSAGE, 'warning');
+      drupal_set_message(ILR_ADMIN_BEAN_LOCK_MESSAGE, 'warning');
+      unset($form['actions']);
     }
-    $form['admin_lock']['#access'] = FALSE;
+    $form['ilr_bean_admin_data']['#access'] = FALSE;
   }
+
 }
 
 /**
@@ -33,9 +47,15 @@ function ilr_bean_admin_form_bean_form_alter(&$form, &$form_state) {
  * Prevents users without sufficient privileges from editing a locked bean
  */
 function _ilr_bean_admin_validate_permissions($form, &$form_state) {
-  global $user;
-  if (!user_access('administer bean settings', $user) && _ilr_bean_admin_bean_is_locked($form['bean']['#value'])) {
-    form_set_error('admin_lock', t(LOCK_MESSAGE));
+  if (!user_access('administer bean settings') && _ilr_bean_admin_bean_is_locked($form['bean']['#value'])) {
+    form_set_error('admin_lock', t(ILR_ADMIN_BEAN_LOCK_MESSAGE));
+  }
+  if ($form['ilr_bean_admin_data']['#access']) {
+    $bean_admin_values = & $form_state['values']['ilr_bean_admin_data'];
+    if ($bean_admin_values['admin_hide'] && !$bean_admin_values['admin_lock']) {
+      drupal_set_message(t(ILR_ADMIN_BEAN_LOCK_AUTOLOCK_MESSAGE));
+      $bean_admin_values['admin_lock'] = 1;
+    }
   }
 
 }
@@ -45,6 +65,13 @@ function _ilr_bean_admin_validate_permissions($form, &$form_state) {
  */
 function _ilr_bean_admin_bean_is_locked($bean) {
   return _ilr_bean_admin_get_lock_value($bean);
+}
+
+/**
+ * Wrapper function that improves code readability
+ */
+function _ilr_bean_admin_bean_is_hidden($bean) {
+  return _ilr_bean_admin_get_hide_value($bean);
 }
 
 /**
@@ -59,12 +86,24 @@ function _ilr_bean_admin_get_lock_value($bean) {
 }
 
 /**
+ * Checks the admin_hide status of the bean
+ */
+function _ilr_bean_admin_get_hide_value($bean) {
+  $value = 0;
+  if (isset($bean->data['admin_hide'])) {
+    $value = $bean->data['admin_hide'];
+  }
+  return $value;
+}
+
+
+/**
  * Implements hook_entity_presave().
  * Adds the admin_lock key to the data column of the bean
  */
-function ilr_bean_admin_entity_presave($entity, $type) {
-  if ($type == 'bean') {
-    $entity->data['admin_lock'] = $entity->admin_lock;
+function ilr_bean_admin_bean_presave($bean) {
+  if (isset($bean->ilr_bean_admin_data)) {
+    $bean->data += $bean->ilr_bean_admin_data;
   }
 }
 
@@ -78,7 +117,47 @@ function ilr_bean_admin_field_extra_fields() {
       'label' => t('Admin lock'),
       'description' => t('Admin lock module element'),
       'weight' => 10,
-     );
+    );
+    $extra['bean'][$type->type]['form']['admin_hide'] = array(
+      'label' => t('Admin hide'),
+      'description' => t('Admin hid module element'),
+      'weight' => 11,
+    );
   }
   return $extra;
+}
+
+/**
+ * Implements hook_blockreference_potential_references2_alter().
+ *
+ * Removes "admin_hidden" Bean Blocks.
+ */
+function ilr_bean_admin_blockreference_potential_references2_alter(&$blocks, $context) {
+  if (!user_access('administer bean settings')) {
+    foreach ($blocks as $bid => $block) {
+      // Bean's don't have numeric deltas
+      // @see bean::checkDelta().
+      if (!is_numeric($block->delta)) {
+        if ($bean = bean_load_delta($block->delta)) {
+          if (_ilr_bean_admin_bean_is_hidden($bean)) {
+            unset($blocks[$bid]);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_bean_access().
+ *
+ * Removes edit access from hidden Beans from non-admins.
+ */
+function ilr_bean_admin_bean_access($bean, $op, $account) {
+  if ($op == 'edit' && !user_access('administer bean settings', $account)) {
+    if (!empty($bean->data['admin_hide'])) {
+      return FALSE;
+    }
+  }
+  return NULL;
 }
