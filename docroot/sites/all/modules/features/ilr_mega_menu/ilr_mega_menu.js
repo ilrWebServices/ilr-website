@@ -1,33 +1,64 @@
 (function ($) {
   Drupal.behaviors.ilr_mega_menu = {
     attach: function (context, settings) {
+      var easing = 'Expo.easeOut';
+      var tween;
+      var currentSubmenu;
+      var scalePercent = .94;
+
+      $('#block-ilr-mega-menu-ilr-mega-menu').mouseleave(function() {
+        hideMegaMenu();
+      });
+
       $('#block-ilr-mega-menu-ilr-mega-menu li.menu-item').mouseenter(function(){
         submenu = $(this).find('div.submenu');
         if (submenuIsPopulated(submenu)) {
-          $('#block-ilr-mega-menu-ilr-mega-menu').addClass('active');
-          if ($('.submenu.active').length) {
-            $('.submenu.active').removeClass('active').hide();
-            $(submenu).show();
-          } else {
-            $(submenu).slideDown();
-          }
-          $(submenu).addClass('active');
-          $('#block-ilr-mega-menu-ilr-mega-menu').mouseleave(function() {
-            hideSubmenu(submenu);
-          });
+          currentSubmenu = $(submenu).attr('id');
+          revealSubmenu(submenu);
         } else {
-          hideSubmenu($('.submenu.active'));
+          hideMegaMenu();
         }
       });
+
+      function megaMenuIsActive() {
+        return $('#block-ilr-mega-menu-ilr-mega-menu').hasClass('active');
+      }
 
       function submenuIsPopulated(submenu) {
         return $(submenu).find('.block-bean').length > 0;
       }
 
-      function hideSubmenu(submenu) {
-        $(submenu).slideUp('fast');
+      function revealSubmenu(submenu) {
+        $(submenu).css('opacity', 1);
+        if (megaMenuIsActive()) {
+          hideSubmenu($('.submenu.active'));
+        } else {
+          if (tween) {
+            tween.kill();
+            tween = null;
+            $('.submenu.active').removeClass('active');
+            $(submenu).css({'opacity':1, 'top': '-1em'});
+          }
+          $('#block-ilr-mega-menu-ilr-mega-menu').addClass('active');
+          tween = TweenLite.from($(submenu), .6, { opacity: 0, top: 50, scaleX: scalePercent, scaleY: scalePercent, ease: easing });
+        }
+        $(submenu).addClass('active');
+      }
+
+      function hideMegaMenu() {
         $('#block-ilr-mega-menu-ilr-mega-menu').removeClass('active');
-        $(submenu).removeClass('active');
+        submenu = $('.submenu.active');
+        TweenLite.to(submenu, .2, {opacity: 0, onComplete: removeClassFromEl, onCompleteParams: [submenu, 'active'] });
+      }
+
+      function hideSubmenu(submenu) {
+        if ($(submenu).attr('id') != currentSubmenu) {
+          TweenLite.to($(submenu), .2, {opacity: 0, ease: easing, onComplete: removeClassFromEl, onCompleteParams: [submenu, 'active'] });
+        }
+      }
+
+      function removeClassFromEl(el, className) {
+        $(el).removeClass(className);
       }
 
       // Edit page
