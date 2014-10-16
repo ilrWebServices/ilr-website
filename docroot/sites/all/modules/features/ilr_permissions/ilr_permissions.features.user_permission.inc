@@ -176,7 +176,6 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'administer beans',
     'roles' => array(
       'administrator' => 'administrator',
-      'contributor' => 'contributor',
     ),
     'module' => 'bean',
   );
