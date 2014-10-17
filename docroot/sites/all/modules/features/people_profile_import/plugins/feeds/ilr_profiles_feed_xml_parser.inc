@@ -22,16 +22,20 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
     foreach ($feed->person as $person) {
       $field_values = array();
       $existing_profile = _people_profiles_find_profile_by_netid((string) $person->netID);
-
+      $type = (string) $person->ldap_profile_type;
       if ($existing_profile) {
+        if ($type != 'faculty') {
+          continue;
+        }
         // Set the title and NetID
         $field_values['title'] = $this->setProfileTitle($person);
         $field_values['field_netid'] = (string) $person->netID;
+        $field_values['field_email'] = (string) $person->ldap_email; // Without this, field is being deleted
         // Then loop through AI values
         foreach ($mapped_fields as $xml_key => $field_name) {
           if (strpos($field_name, 'field_ai') === 0) {
             $data = (string) $person->{$xml_key};
-            $field_values[$field_name] = $this->prepData($field_name, $data);
+            $field_values[$field_name] = $this->prepData($field_name, $data, $type);
           }
         }
       } // Loop through all the values
@@ -46,11 +50,10 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
               break;
             default:
               $data = (string) $person->{$xml_key};
-              $field_values[$field_name] = $this->prepData($field_name, $data);
+              $field_values[$field_name] = $this->prepData($field_name, $data, $type);
           }
         }
       }
-
       $result->items[$result_counter] = $field_values;
 
       $result_counter++;
@@ -63,9 +66,9 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
    * Swaps p tags for line breaks on some fields coming
    * from activity insight
    */
-  private function prepData($field_name, $data) {
+  private function prepData($field_name, $data, $type) {
     $prepared = trim($data);
-    if (in_array($field_name, $this->getFieldsWithLineBreaks())){
+    if ($type == 'faculty' && in_array($field_name, $this->getFieldsWithLineBreaks())) {
       $prepared = preg_replace('/\n(\s*\n)+/', '</p><p>', $prepared);
       $prepared = preg_replace('/\n/', '<br>', $prepared);
       $prepared = '<p>'.$prepared.'</p>';
