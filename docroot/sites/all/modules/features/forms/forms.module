@@ -235,6 +235,8 @@ function _forms_send_lyris_email(&$entityform, $from, $email_list) {
 
   $action = $entityform->field_subscribe_or_unsubscribe['und'][0]['value'];
   $email_template = ($action == 'add') ? 'lyris_subscribe' : 'lyris_unsubscribe';
+  $subject_lyris = ($action == 'add') ? 's u b s c r i b e  ' : 'u n s u b s c r i b e  ';
+  $subject_lyris .= 'via webpage: list ' . $email_list . ', user ' . $user_name;
 
   $body = theme($email_template, array(
       'list_password'         => $pw,
@@ -244,7 +246,6 @@ function _forms_send_lyris_email(&$entityform, $from, $email_list) {
     ));
 
   $to = 'lyris@cornell.edu';
-  $subject_lyris = '';
   _send_email_for_entity_form($to, $from, $subject_lyris, $body);
 }
 
