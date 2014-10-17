@@ -21,19 +21,19 @@ function ilr_bean_admin_form_bean_form_alter(&$form, &$form_state) {
     '#type' => 'checkbox',
     '#title' => t('Lock this block'),
     '#weight' => -1,
-    '#default_value' => _ilr_bean_admin_get_lock_value($form['bean']['#value']),
+    '#default_value' => _ilr_bean_admin_get_value($form['bean']['#value'], 'admin_lock'),
   );
 
   $form['ilr_bean_admin_data']['admin_hide'] = array(
     '#type' => 'checkbox',
     '#title' => t('Hide this block'),
     '#weight' => 0,
-    '#default_value' => _ilr_bean_admin_get_hide_value($form['bean']['#value']),
+    '#default_value' => _ilr_bean_admin_get_value($form['bean']['#value'], 'admin_hide'),
   );
   $form['#validate'][] = '_ilr_bean_admin_validate_permissions';
 
   if (!user_access('administer bean settings')) {
-    if (_ilr_bean_admin_get_lock_value($form['bean']['#value']) == 1) {
+    if (_ilr_bean_admin_get_value($form['bean']['#value'], 'admin_lock') == 1) {
       drupal_set_message(ILR_ADMIN_BEAN_LOCK_MESSAGE, 'warning');
       unset($form['actions']);
     }
@@ -64,38 +64,26 @@ function _ilr_bean_admin_validate_permissions($form, &$form_state) {
  * Wrapper function that improves code readability
  */
 function _ilr_bean_admin_bean_is_locked($bean) {
-  return _ilr_bean_admin_get_lock_value($bean);
+  return _ilr_bean_admin_get_value($bean, 'admin_lock');
 }
 
 /**
  * Wrapper function that improves code readability
  */
 function _ilr_bean_admin_bean_is_hidden($bean) {
-  return _ilr_bean_admin_get_hide_value($bean);
+  return _ilr_bean_admin_get_value($bean, 'admin_hide');
 }
 
 /**
- * Checks the admin_lock status of the bean
+ * Checks the value of an ilr_bean_admin_data element
  */
-function _ilr_bean_admin_get_lock_value($bean) {
+function _ilr_bean_admin_get_value($bean, $key) {
   $value = 0;
-  if (isset($bean->data['admin_lock'])) {
-    $value = $bean->data['admin_lock'];
+  if (isset($bean->data[$key])) {
+    $value = $bean->data[$key];
   }
   return $value;
 }
-
-/**
- * Checks the admin_hide status of the bean
- */
-function _ilr_bean_admin_get_hide_value($bean) {
-  $value = 0;
-  if (isset($bean->data['admin_hide'])) {
-    $value = $bean->data['admin_hide'];
-  }
-  return $value;
-}
-
 
 /**
  * Implements hook_entity_presave().
