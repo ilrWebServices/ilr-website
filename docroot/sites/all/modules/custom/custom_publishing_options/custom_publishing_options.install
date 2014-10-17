@@ -11,6 +11,7 @@ function custom_publishing_options_install() {
     'default' => 0
   );
   db_add_field('node', 'featured', $spec);
+  custom_publishing_options_update_7001();
 }
 
 /**
@@ -26,11 +27,14 @@ function custom_publishing_options_uninstall() {
  * Adds kerberized column to node table
  */
 function custom_publishing_options_update_7001() {
-  $spec = array(
-    'description' => 'Kerberized publishing option.',
-    'type' => 'int',
-    'not null' => TRUE,
-    'default' => 0
-  );
-  db_add_field('node', 'kerberized', $spec);
+  if (!db_field_exists('node', 'kerberized')) {
+    $spec = array(
+      'description' => 'Kerberized publishing option.',
+      'type' => 'int',
+      'not null' => TRUE,
+      'default' => 0
+    );
+    db_add_field('node', 'kerberized', $spec);
+  }
+
 }
