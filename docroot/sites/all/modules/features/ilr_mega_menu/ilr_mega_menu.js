@@ -33,16 +33,20 @@
         if (megaMenuIsActive()) {
           hideSubmenu($('.submenu.active'));
         } else {
-          if (tween) {
-            tween.kill();
-            tween = null;
-            $('.submenu.active').removeClass('active');
-            $(submenu).css({'opacity':1, 'top': '-1em'});
-          }
+          resetSubmenuTween(submenu);
           $('#block-ilr-mega-menu-ilr-mega-menu').addClass('active');
           tween = TweenLite.from($(submenu), .6, { opacity: 0, top: 50, scaleX: scalePercent, scaleY: scalePercent, ease: easing });
         }
         $(submenu).addClass('active');
+      }
+
+      function resetSubmenuTween(submenu) {
+        if (tween) {
+          tween.kill();
+          tween = null;
+        }
+        $('.submenu.active').removeClass('active');
+        TweenLite.to($(submenu), 0, { opacity: 1, top: '-1em', scaleX: 1, scaleY: 1});
       }
 
       function hideMegaMenu() {
