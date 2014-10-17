@@ -38,11 +38,3 @@ function localist_block_clear_cache(&$form){
   $cache_key = EventBlockBean::get_cache_key($form['keywords']['#value']);
   cache_clear_all('bean_localist_events-' . $cache_key, 'cache');
 }
-
-/**
- * Implements hook_form_FORM_ID_alter().
- * Removes the view modes select menu from Bean forms
- */
-function localist_block_form_bean_form_alter(&$form, &$form_state, $form_id) {
-  $form['view_mode']['#access'] = 0;
-}
