@@ -55,7 +55,8 @@
 
 .menu-block-ilr-subnav ul.menu {
   visibility: hidden;
-  .front[data-menu-position="open"] & {
+  .front[data-menu-position="open"] &,
+  .subsite-front[data-menu-position="open"] & {
     visibility: visible;
   }
   position: relative;

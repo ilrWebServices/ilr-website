@@ -1,6 +1,18 @@
 <?php
 
 /**
+ * Implements hook_preprocess_HOOK().
+ * Adds a class to sub site homepages
+ */
+function ilr_sub_sites_preprocess_html(&$variables) {
+  if ($node = menu_get_object()) {
+    if (_ilr_sub_sites_is_sub_site_homepage($node)) {
+      $variables['classes_array'][] = 'subsite-front';
+    }
+  }
+}
+
+/**
  * Gets the menu assignment of the current page.
  * See ilr_menu_block_blocks() in the profile.
  */
@@ -28,4 +40,17 @@ function _ilr_sub_sites_get_menu_name_from_uri($uri) {
     $name = substr($uri, 0, 30);
   }
   return $name;
+}
+
+/**
+ * Determines whether the current node is a sub site homepage
+ * This currently works because all sub sites are at ilr.cornell.edu/subsite.
+ */
+function _ilr_sub_sites_is_sub_site_homepage($node) {
+  $plid = db_select('menu_links' , 'ml')
+      ->condition('ml.link_path' , 'node/' . $node->nid)
+      ->fields('ml', array('plid'))
+      ->execute()
+      ->fetchField();
+  return $plid == 0;
 }
