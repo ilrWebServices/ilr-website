@@ -57,10 +57,13 @@
   visibility: hidden;
   .front[data-menu-position="open"] &,
   .subsite-front[data-menu-position="open"] & {
-    visibility: visible;
+    &:first-child {
+      visibility: visible;
+    }
   }
-  position: relative;
+  position: absolute;
   top: 0;
+  left: 0;
   margin: 0;
   padding: 0;
   width: 100%;

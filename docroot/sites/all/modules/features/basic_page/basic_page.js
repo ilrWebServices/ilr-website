@@ -34,31 +34,42 @@
         $(currentMenu).css({
           'min-height': minHeight,
           'visibility': 'visible',
+          'left'      : '100%',
         });
         TweenLite.to($(currentMenu), .6, {left:pixelShift, ease: easing });
-        TweenLite.to($(oldMenu), .6, {left:"-=" + pixelShift, onComplete:hideMenu, onCompleteParams:[$(oldMenu)]});
+        TweenLite.to($(oldMenu), .6, {left:"-" + pixelShift, onComplete:hideMenu, onCompleteParams:[$(oldMenu), currentMenu]});
       }
 
       var prevClick = function(e) {
         e.preventDefault();
         currentMenu = $(this).closest('ul.menu');
         oldMenu = $(currentMenu).parent().closest('ul.menu');
-        TweenLite.to($(currentMenu), .6, {left:"100%",  ease: easing, onComplete:hideMenu, onCompleteParams:[$(currentMenu)]});
-        $(oldMenu).css('visibility','visible');
-        TweenLite.to($(oldMenu), .6, {left:pixelShift});
+        TweenLite.to($(currentMenu), .6, {left:"100%",  ease: easing, onComplete:hideMenu, onCompleteParams:[$(currentMenu), oldMenu]});
+        $(oldMenu).css({
+          'visibility'  : 'visible',
+          'left': '-' + pixelShift,
+          'opacity': 0,
+        });
+        TweenLite.to($(oldMenu), .6, {left: 0, opacity: 1, ease: easing});
 
         if (menuNeedsAddtionalButtons(oldMenu)) {
           addButtonsToMenu(oldMenu);
         }
       }
 
-      function hideMenu(menu) {
-        $(menu).css('visibility', 'hidden');
+      function hideMenu(menu, other) {
+        $(menu).css({
+          'visibility':'hidden',
+          'left': 0,
+        });
+        $(other).css({
+          'left': 0,
+        });
       }
 
       var currentMenu;
       var minHeight;
-      var pixelShift = '0px';
+      var pixelShift = '75px';
       var easing = 'Expo.easeOut';
 
       function positionCurrentMenu() {
@@ -68,7 +79,6 @@
           $(currentMenu).parents('ul.menu').each(function() {
             parent = $(this).closest('li.expanded');
             $(this).css({
-              'left': 0,
               'min-height': minHeight,
             });
           });
@@ -79,7 +89,6 @@
 
           if ($(currentMenu).parent().position()) {
             $(currentMenu).css({
-              'left': 0,
               'min-height': minHeight,
               'visibility': 'visible',
             });
