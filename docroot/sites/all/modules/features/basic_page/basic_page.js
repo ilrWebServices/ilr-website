@@ -48,9 +48,8 @@
         $(oldMenu).css({
           'visibility'  : 'visible',
           'left': '-' + pixelShift,
-          'opacity': 0,
         });
-        TweenLite.to($(oldMenu), .6, {left: 0, opacity: 1, ease: easing});
+        TweenLite.to($(oldMenu), .6, {left: 0, ease: easing});
 
         if (menuNeedsAddtionalButtons(oldMenu)) {
           addButtonsToMenu(oldMenu);
