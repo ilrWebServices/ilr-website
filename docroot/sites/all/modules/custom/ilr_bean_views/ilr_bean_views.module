@@ -1,0 +1,29 @@
+<?php
+/**
+ * @file ilr_bean_views.module
+ * TODO: Enter file description here.
+ */
+/**
+ * Implements hook_bean_types_api_info().
+ */
+function ilr_bean_views_bean_types_api_info() {
+  return array('api' => 4);
+}
+
+/**
+ * Implements hook_bean_types().
+ */
+function ilr_bean_views_bean_types() {
+  $plugins = array();
+  $plugins['bean_view'] = array(
+    'label' => t('Filter Courses'),
+    'description' => t('Provides a listing of Course filtered by different criteria.'),
+    'handler' => array(
+      'class' => 'ILRFilteredCourseViewBean',
+      'parent' => 'bean',
+      'path' => drupal_get_path('module', 'ilr_bean_views') . '/plugins/bean',
+      'file' => 'ILRFilteredCourseViewBean.inc',
+    ),
+  );
+  return $plugins;
+}

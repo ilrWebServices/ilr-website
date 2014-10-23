@@ -1,0 +1,8 @@
+name = ILR Bean Views
+description = TODO: Description of module
+dependencies[] = bean
+dependencies[] = views
+package = ILR
+core = 7.x
+files[] = ilr_bean_views.module
+files[] = includes/bean_view.inc
