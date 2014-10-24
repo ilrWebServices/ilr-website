@@ -25,21 +25,10 @@ function forms_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_i
 }
 
 /**
- * Implements hook_user_logout()
- * Redirects users logged out via _forms_handle_kerberized_form
- * This and forms_drupal_goto_alter are based on
- * https://drupal.org/project/redirect_after_logout
- */
-function forms_user_logout($account) {
-  $destination = &drupal_static(__FUNCTION__);
-  $destination = current_path();
-}
-
-/**
  * Implements hook_drupal_goto_alter().
  */
 function forms_drupal_goto_alter(&$path, &$options, &$http_response_code) {
-  $destination = &drupal_static('forms_user_logout');
+  $destination = &drupal_static('_forms_handle_kerberized_form');
   if (!$path && $destination) {
     drupal_goto($destination);
   }
@@ -199,6 +188,8 @@ function _forms_handle_kerberized_form(&$form) {
     } // SimpleSAMLAuth info missing, so force the user to log in again
     else {
       require_once(drupal_get_path('module', 'user') . '/user.pages.inc');
+      $destination = &drupal_static(__FUNCTION__);
+      $destination = current_path();
       user_logout(); // See forms_drupal_goto_alter for redirect
       _forms_replace_kerberized_form_with_login_button($form);
     }
