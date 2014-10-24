@@ -1,8 +1,8 @@
 name = ILR Bean Views
-description = TODO: Description of module
+description = Exposes Views Content Panes as Beans
 dependencies[] = bean
-dependencies[] = views
+dependencies[] = views_content
 package = ILR
 core = 7.x
 files[] = ilr_bean_views.module
-files[] = includes/bean_view.inc
+files[] = plugins/bean/bean_view.inc

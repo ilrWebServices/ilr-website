@@ -1,7 +1,8 @@
 <?php
 /**
  * @file ilr_bean_views.module
- * TODO: Enter file description here.
+ * This module allows Views Content Panes to be used as Bean types.
+ * To add a new View add info to _ilr_bean_views_get_used_displays().
  */
 /**
  * Implements hook_bean_types_api_info().
@@ -14,16 +15,72 @@ function ilr_bean_views_bean_types_api_info() {
  * Implements hook_bean_types().
  */
 function ilr_bean_views_bean_types() {
+  $view_displays  = &drupal_static(__FUNCTION__);
+  if (!isset($view_displays)) {
+    // Getting Views information causes recursion
+    // So check if static variable is set.
+    $view_displays = array();
+    $view_displays = _ilr_bean_views_get_view_displays();
+  }
+  if (empty($view_displays)) {
+    return;
+  }
   $plugins = array();
-  $plugins['bean_view'] = array(
-    'label' => t('Filter Courses'),
-    'description' => t('Provides a listing of Course filtered by different criteria.'),
-    'handler' => array(
-      'class' => 'ILRFilteredCourseViewBean',
-      'parent' => 'bean',
-      'path' => drupal_get_path('module', 'ilr_bean_views') . '/plugins/bean',
-      'file' => 'ILRFilteredCourseViewBean.inc',
+
+  foreach ($view_displays as $view_name => $displays) {
+
+    foreach ($displays as $display_id => $display) {
+      // @todo will these keys too long >32 char?
+      $plugins["vb_{$view_name}__{$display_id}"] = array(
+        'label' => $display->display_title,
+        'description' => t($display->display_options['display_description']),
+        'view' => $view_name,
+        'display_id' => $display_id,
+        //'parent_thing' => 'partent value',
+        'handler' => array(
+          'class' => 'IlrViewBean',
+          'parent' => 'bean',
+          'path' => drupal_get_path('module', 'ilr_bean_views') . '/plugins/bean',
+          'file' => 'bean_view.inc',
+          //'parent_thing2' => 'partent value2',
+        ),
+      );
+    }
+  }
+
+
+  return $plugins;
+}
+
+/**
+ * @return array
+ */
+function _ilr_bean_views_get_view_displays() {
+  $used_views = _ilr_bean_views_get_used_displays();
+  $used_displays = array();
+  foreach ($used_views as $view_name => $display_ids) {
+    $view = views_get_view($view_name);
+    if ($view) {
+      // Ensure displays are actually on View
+      $displays = array_intersect_key($view->display, array_flip($display_ids));
+      $used_displays[$view_name] = $displays;
+    }
+
+  }
+  return $used_displays;
+}
+
+/**
+ * Separate out used displays
+ *
+ * More displays should be added here.
+ * @return array
+ */
+function _ilr_bean_views_get_used_displays() {
+  $used_views = array(
+    'ilr_filtered_courses' => array(
+      'bean_pane_filtered',
     ),
   );
-  return $plugins;
+  return $used_views;
 }

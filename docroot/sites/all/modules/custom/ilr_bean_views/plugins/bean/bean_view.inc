@@ -4,10 +4,9 @@
  * Bean: Filter
  */
 
-abstract class IlrViewBean extends BeanPlugin {
+class IlrViewBean extends BeanPlugin {
   private $bean;
-  protected $view_name;
-  protected $display_id;
+
 
   /**
    * Declares default block settings.
@@ -28,6 +27,7 @@ abstract class IlrViewBean extends BeanPlugin {
   public function form($bean, $form, &$form_state) {
 
     $form = array();
+
     $form_state['conf'] = isset($bean->data)? $bean->data: array();
     $form_state['subtype_name'] = $this->getCtoolsSubType();
     $form_state['exposed'] = $bean->data['exposed'];
@@ -39,7 +39,8 @@ abstract class IlrViewBean extends BeanPlugin {
     return $form;
   }
   protected function getCtoolsSubType() {
-    return $this->view_name . '-' . $this->display_id;
+    $bean_type = bean_type_load($this->type);
+    return $bean_type->getInfo('view') . '-' . $bean_type->getInfo('display_id');
   }
 
 
