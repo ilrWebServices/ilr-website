@@ -92,8 +92,7 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
  */
 function _forms_collective_bargaining_videos_redirect() {
   $cb_videos_redirect = variable_get('cb_videos_url', 'http://www.ilr.cornell.edu/workerinstitute');
-  header("Location: " . $cb_videos_redirect);
-  die();
+  drupal_goto($cb_videos_redirect);
 }
 
 /**
