@@ -15,37 +15,34 @@ function ilr_bean_views_bean_types_api_info() {
  * Implements hook_bean_types().
  */
 function ilr_bean_views_bean_types() {
-  $view_displays  = &drupal_static(__FUNCTION__);
-  if (!isset($view_displays)) {
+  $bean_types = &drupal_static(__FUNCTION__);
+  if (!isset($bean_types)) {
     // Getting Views information causes recursion
     // So check if static variable is set.
-    $view_displays = array();
-    $view_displays = _ilr_bean_views_get_view_displays();
+    $bean_types = array();
+    $bean_types = _ilr_bean_views_get_bean_types();
   }
-  if (empty($view_displays)) {
+  if (empty($bean_types)) {
     return;
   }
   $plugins = array();
-
-  foreach ($view_displays as $view_name => $displays) {
-
-    foreach ($displays as $display_id => $display) {
-      // @todo will these keys too long >32 char?
-      $plugins["vb_{$view_name}__{$display_id}"] = array(
-        'label' => $display->display_title,
-        'description' => t($display->display_options['display_description']),
-        'view' => $view_name,
-        'display_id' => $display_id,
-        //'parent_thing' => 'partent value',
-        'handler' => array(
-          'class' => 'IlrViewBean',
-          'parent' => 'bean',
-          'path' => drupal_get_path('module', 'ilr_bean_views') . '/plugins/bean',
-          'file' => 'bean_view.inc',
-          //'parent_thing2' => 'partent value2',
-        ),
-      );
-    }
+  $bean_type_num = 1;
+  foreach ($bean_types as $bean_type_name => $subtypes) {
+    $plugins['bean_view_type_' . $bean_type_num++] = array(
+      'label' => $bean_type_name,
+      //'description' => t($display->display_options['display_description']),\
+      'subtypes' => $subtypes,
+      // 'view' => $view_name,
+      //'display_id' => $display_id,
+      //'parent_thing' => 'partent value',
+      'handler' => array(
+        'class' => 'IlrViewBean',
+        'parent' => 'bean',
+        'path' => drupal_get_path('module', 'ilr_bean_views') . '/plugins/bean',
+        'file' => 'bean_view.inc',
+        //'parent_thing2' => 'partent value2',
+      ),
+    );
   }
 
 
@@ -53,21 +50,34 @@ function ilr_bean_views_bean_types() {
 }
 
 /**
+ * Utility Function to get bean types.
+ *
+ * A Bean Type is made for each View Pane Category.
  * @return array
  */
-function _ilr_bean_views_get_view_displays() {
+function _ilr_bean_views_get_bean_types() {
   $used_views = _ilr_bean_views_get_used_displays();
   $used_displays = array();
+  $bean_types = array();
   foreach ($used_views as $view_name => $display_ids) {
     $view = views_get_view($view_name);
     if ($view) {
       // Ensure displays are actually on View
       $displays = array_intersect_key($view->display, array_flip($display_ids));
-      $used_displays[$view_name] = $displays;
+      foreach ($displays as $display_id => $display) {
+        if (isset($display->display_options['pane_category'])) {
+          $bean_type_name = $display->display_options['pane_category']['name'];
+        }
+        else {
+          $bean_type_name = 'View Panes';
+        }
+        $bean_types[$bean_type_name]["$view_name-$display_id"] = $display->display_title;
+      }
+
     }
 
   }
-  return $used_displays;
+  return $bean_types;
 }
 
 /**
@@ -80,7 +90,19 @@ function _ilr_bean_views_get_used_displays() {
   $used_views = array(
     'ilr_filtered_courses' => array(
       'bean_pane_filtered',
+      'panel_pane_1',
     ),
   );
   return $used_views;
+}
+
+/**
+ * Ajax Callback for selecting View Display.
+ *
+ * Return fieldset for View Pane config form.
+ */
+function _ilr_bean_view_ajax_select_display($form, $form_state) {
+  $form['view_pane'] += views_content_views_panes_content_type_edit_form(array(), $form_state);
+  return $form['view_pane'];
+
 }
