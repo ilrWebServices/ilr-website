@@ -393,6 +393,7 @@ function ilr_date_formats() {
  * Add extra entity view modes.
  * Entity View Modes modules doesn't support Features.
  * @see https://www.drupal.org/node/1425620
+ * Adds a mega_menu_item view mode (see tagged_content.inc)
  */
 function ilr_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes'] += array(
@@ -400,6 +401,10 @@ function ilr_entity_info_alter(&$entity_info) {
       'label' => t('Reference Field'),
       'custom settings' => FALSE,
     ),
+  );
+  $entity_info['bean']['view modes']['mega_menu_item'] = array(
+    'label' => t('Mega Menu Item'),
+    'custom settings' => TRUE,
   );
 }
 

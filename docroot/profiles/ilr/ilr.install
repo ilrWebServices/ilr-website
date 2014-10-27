@@ -248,11 +248,20 @@ function ilr_update_7015() {
 }
 
 /**
- * Enables ilr_admin_lock feature
+ * Enables ilr_bean_admin feature
  */
 function ilr_update_7016() {
   module_enable(array(
-    'ilr_admin_lock',
+    'ilr_bean_admin',
+  ));
+}
+
+/**
+ * Enables cul_hours feature
+ */
+function ilr_update_7017() {
+  module_enable(array(
+    'cul_hours',
   ));
 }
 

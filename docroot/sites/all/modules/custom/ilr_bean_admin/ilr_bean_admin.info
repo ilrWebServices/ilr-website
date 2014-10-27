@@ -3,4 +3,4 @@ description = Allows administrators to lock blocks from editing.
 core = 7.x
 package = ILR
 version = 7.x-1.0
-project = ilr_admin_lock
+project = ilr_bean_admin

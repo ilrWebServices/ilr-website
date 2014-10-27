@@ -77,8 +77,9 @@ function _ilr_mega_menu_get_menu_contents($menu, $key) {
   $result = $query->execute();
   if (!empty($result)) {
     $bean = bean_load(current($result['bean'])->bid); // Note this loads the first item. This could cause unexpected behavior if there is more than one bean assigned to a single menu item.
+    $id = str_replace('_', '-', $key);
     $view = bean_view($bean);
-    $markup = '<div class="submenu">';
+    $markup = '<div id="'.$id.'" class="submenu">';
     $markup .= render($view);
     $markup .= '</div>';
     return $markup;

@@ -106,9 +106,10 @@ class TaggedContentBean extends BeanPlugin {
   public function view($bean, $content, $view_mode = 'default', $langcode = NULL) {
     $this->bean = $bean;
     $this->removeReferencedContent();
-
-    // Set up the query
-    $query = new EntityFieldQueryDeduped();
+    // Dedupe the query unless it's a mega menu item
+    $query = ($view_mode == 'mega_menu_item')
+      ? new EntityFieldQuery()
+      : new EntityFieldQueryDeduped();
 
     $result = $this->formulateQuery($query, $bean->records_shown);
 
