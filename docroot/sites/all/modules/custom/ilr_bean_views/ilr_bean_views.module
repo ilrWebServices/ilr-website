@@ -5,6 +5,24 @@
  * To add a new View add info to _ilr_bean_views_get_used_displays().
  */
 /**
+ * Implements hook_menu().
+ */
+function ilr_bean_views_menu() {
+  $items = array();
+
+  $items['admin/structure/block-types/views'] = array(
+    'title' => 'View Panes Bean Types',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -10,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ilr_bean_views_settings'),
+    'access arguments' => array('administer bean types'),
+    'file' => 'ilr_bean_views.admin.inc',
+  );
+
+  return $items;
+}
+/**
  * Implements hook_bean_types_api_info().
  */
 function ilr_bean_views_bean_types_api_info() {
@@ -87,13 +105,27 @@ function _ilr_bean_views_get_bean_types() {
  * @return array
  */
 function _ilr_bean_views_get_used_displays() {
+  module_load_include('inc', 'views_content', 'plugins/content_types/views_panes');
+  $displays = views_content_views_panes_content_type_content_types('views_panes');
+  $views_panes_bean_types = variable_get('views_panes_bean_types', array());
+  $views_panes_bean_types = array_filter($views_panes_bean_types);
+  foreach ($displays as $subtype => $content_type) {
+    $bean_type = $content_type['category'][0];
+    if (isset($views_panes_bean_types[$bean_type])) {
+      list($view_name, $display_id) = explode('-', $subtype);
+      $used_views[$view_name][] = $display_id;
+    }
+
+
+  }
+  return $used_views;
   $used_views = array(
     'ilr_filtered_courses' => array(
       'bean_pane_filtered',
       'panel_pane_1',
     ),
   );
-  return $used_views;
+
 }
 
 /**
