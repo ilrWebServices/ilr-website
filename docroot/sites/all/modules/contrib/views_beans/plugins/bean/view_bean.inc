@@ -4,7 +4,7 @@
  * @file
  * Bean Type: View Panes
  */
-class IlrViewBean extends BeanPlugin {
+class ViewBean extends BeanPlugin {
   private $bean;
 
 
@@ -14,13 +14,22 @@ class IlrViewBean extends BeanPlugin {
    */
   public function values() {
     $values = array(
-      // @todo Any View Pane settings to be used need to be added here.
-      'exposed' => array(),
-      'items_per_page' => 5,
       'subtype' => '',
-    );
+    ) + $this->view_form_values();
 
     return array_merge(parent::values(), $values);
+  }
+  private function view_form_values() {
+    return array(
+      // @todo Any View Pane settings to be used need to be added here.
+      'exposed' => array(),
+      'items_per_page' => NULL,
+      'more_link' => FALSE,
+      'link_to_view' => FALSE,
+      'use_pager' => FALSE,
+      'pager_id' => '',
+      'offset' => 0,
+    );
   }
 
   /**
@@ -44,7 +53,8 @@ class IlrViewBean extends BeanPlugin {
       $current_subtype = $bean->subtype;
     }
     else {
-      $current_subtype = array_shift(array_keys($subtypes));
+      $subtype_keys = array_keys($subtypes);
+      $current_subtype = array_shift($subtype_keys);
     }
     $form['subtype'] = array(
       '#options' => $subtypes,
@@ -62,16 +72,28 @@ class IlrViewBean extends BeanPlugin {
       '#prefix' => '<div id="view-pane-div">',
       '#suffix' => '</div>',
       '#type' => 'fieldset',
-      '#description' => t('Criteria For Filtering Courses'),
+      // @todo Display Display description here?
+      //'#description' => '',
     );
     $form_state['subtype_name'] = $current_subtype;
     $form['view_pane'] += views_content_views_panes_content_type_edit_form($form['view_pane'], $form_state);
-
+    $default_values = $this->view_form_values();
+    unset($default_values['subtype']);
+    foreach ($default_values as $key => $value) {
+      if (!isset($form['view_pane'][$key])) {
+        $form['view_pane'][$key] = array(
+          '#type' => 'value',
+          '#value' => $value,
+        );
+      }
+    }
+    if (isset($form['view_pane']['arguments']) && element_children($form['view_pane']['arguments'])) {
+      unset($form['view_pane']['arguments']);
+      drupal_set_message(t('View Pane arguments are not supported.'));
+    }
 
     return $form;
   }
-
-
   /**
    * Displays the bean.
    */
@@ -81,6 +103,8 @@ class IlrViewBean extends BeanPlugin {
 
     $conf = $bean->data;
     $ctools_content = views_content_views_panes_content_type_render($bean->subtype, $conf, array(), array());
+
+
     return $ctools_content->content;
   }
 }

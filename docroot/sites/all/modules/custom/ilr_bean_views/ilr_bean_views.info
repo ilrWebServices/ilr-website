@@ -1,8 +1,0 @@
-name = ILR Bean Views
-description = Exposes Views Content Panes as Beans
-dependencies[] = bean
-dependencies[] = views_content
-package = ILR
-core = 7.x
-files[] = ilr_bean_views.module
-files[] = plugins/bean/bean_view.inc

@@ -1,11 +1,15 @@
 <?php
 /**
- * Author: Ted Bowman
- * Date: 10/27/14
- * Time: 1:55 PM
+ * @file
+ * Administration pages callbacks.
  */
 
-function ilr_bean_views_settings($form, &$form_state) {
+/**
+ * Views Beans Admin form callback.
+ */
+function views_beans_settings($form, &$form_state) {
+  // @todo Clear caches manually?
+  drupal_set_message(t('Changing this form requires clearing all caches.'));
   module_load_include('inc', 'views_content', 'plugins/content_types/views_panes');
   $displays = views_content_views_panes_content_type_content_types('views_panes');
   foreach ($displays as $display) {
@@ -13,12 +17,12 @@ function ilr_bean_views_settings($form, &$form_state) {
       $options[$display['category'][0]] = $display['category'][0];
     }
   }
-  $form['views_panes_bean_types'] = array(
+  $form['views_beans_bean_types'] = array(
     '#title' => t('Views Panes Categories for Bean Types'),
     '#type' => 'checkboxes',
     '#options' => $options,
-    '#default_value' => variable_get('views_panes_bean_types', array()),
+    '#default_value' => variable_get('views_beans_bean_types', array()),
   );
-  
+
   return system_settings_form($form);
 }
