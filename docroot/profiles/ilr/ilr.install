@@ -257,6 +257,15 @@ function ilr_update_7016() {
 }
 
 /**
+ * Enables cul_hours feature
+ */
+function ilr_update_7017() {
+  module_enable(array(
+    'cul_hours',
+  ));
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {
