@@ -99,6 +99,9 @@ function hook_entityform_ENTITYFORM_TYPE_draft_page_alter(&$render_array, $entit
 /**
  * Alter the Entityform Submission that is consider to be the previous submission for a user when submitting a form.
  *
+ * For example:
+ * @see entityform_anonymous_entityform_previous_submission_alter().
+ *
  * @param object $entityform_submission
  *  The current previous submission if any.
  * @param string $entityform_type
@@ -107,7 +110,7 @@ function hook_entityform_ENTITYFORM_TYPE_draft_page_alter(&$render_array, $entit
  *  - draft: whether draft submissions should be included
  *  - uid: uid of the user to find previous submissions
  */
-function hook_entityform_previous_submission_alter($entityform_submission, $entityform_type, $context) {
+function hook_entityform_previous_submission_alter(&$entityform_submission, $entityform_type, $context) {
 
 }
 
