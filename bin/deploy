@@ -45,10 +45,10 @@ if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
   ssh ilr@srv-2136.devcloud.hosting.acquia.com "cd ~/$ENV/livedev; git checkout .; git pull; git checkout $branch_name; git pull; cd docroot; exit;"
 
   echo "Reverting all features on $ENV"
+  cd docroot
   drush @ilr.ilr.$ENV fr-all -y
 
   echo "Clearing cache on $ENV"
-  cd docroot
   drush @ilr.ilr.$ENV cc all -y
 
   echo "Deployment complete"
