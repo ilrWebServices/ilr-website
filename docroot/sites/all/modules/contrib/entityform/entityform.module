@@ -703,10 +703,11 @@ function template_preprocess_entityform_submittd_data(&$variables) {
 
   $variables['date'] = format_date($entityform->created);
   $variables['name'] = theme('username', array('account' => $entityform));
-
-  $uri = entity_uri('entityform', $entityform);
-  $uri['options']['absolute'] = TRUE;
-  $variables['url'] = url($uri['path'], $uri['options']);
+  if (!empty($entityform->entityform_id)) {
+    $uri = entity_uri('entityform', $entityform);
+    $uri['options']['absolute'] = TRUE;
+    $variables['url'] = url($uri['path'], $uri['options']);
+  }
 }
 
 /**
@@ -995,11 +996,12 @@ function entityform_embed_view($name, $display_id = 'default') {
   }
 
   $view = views_get_view($name);
-  // This needed so VBO will work correctly.
-  $view->override_path = _entityform_get_submissions_view_path($display_id);
   if (!$view || !$view->access($display_id)) {
     return;
   }
+
+  // This needed so VBO will work correctly.
+  $view->override_path = _entityform_get_submissions_view_path($display_id);
 
   return $view->preview($display_id, $args);
 }
@@ -1476,13 +1478,12 @@ function _entityform_view_add_all_fields(&$view, $display_id, $bundle_name) {
   }
   $autofields = array();
   foreach ($instances as $instance) {
-    if ($view_mode_settings[$view_mode]['custom_settings'] && isset($instance['display'][$view_mode])) {
+    if (!empty($view_mode_settings[$view_mode]['custom_settings']) && isset($instance['display'][$view_mode])) {
       $field_display = $instance['display'][$view_mode];
     }
     else {
       $field_display = $instance['display']['default'];
     }
-
     // don't add to autofields if this field was hidden in the view mode
     if ($field_display['type'] != 'hidden') {
       $autofield = array(
@@ -1668,7 +1669,7 @@ function _entityform_format_text($text_value, $token_types = array()) {
   }
   if ($token_types !== FALSE) {
     $token_types[] = 'global';
-    $text = token_replace($text, $token_types);
+    $text = token_replace($text, $token_types, array('clear' => TRUE));
   }
   if ($is_filtered) {
     $text = check_markup($text, $format);
