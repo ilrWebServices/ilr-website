@@ -114,8 +114,8 @@ function _ilr_xml_blocks_get_subject($delta) {
   $subjects = array(
     'ldi_recent' => 'Recent Documents from LDI',
     'ldi_recent_all' => '',
-    'vrdc' => 'VirtualRDC &#64; Cornell',
-    'statistics' => 'World of Statistics',
+    'ldi_vrdc' => 'VirtualRDC &#64; Cornell',
+    'ldi_statistics' => 'World of Statistics',
   );
   return (isset($subjects[$delta])) ? $subjects[$delta] : '';
 }
