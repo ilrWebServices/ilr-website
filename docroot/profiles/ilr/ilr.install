@@ -275,6 +275,15 @@ function ilr_update_7018() {
 }
 
 /**
+ * Enables ilr_google_translate feature
+ */
+function ilr_update_7018() {
+  module_enable(array(
+    'ilr_google_translate',
+  ));
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {
