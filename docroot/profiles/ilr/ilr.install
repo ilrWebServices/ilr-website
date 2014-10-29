@@ -266,6 +266,15 @@ function ilr_update_7017() {
 }
 
 /**
+ * Enables ilr_xml_blocks feature
+ */
+function ilr_update_7018() {
+  module_enable(array(
+    'ilr_xml_blocks',
+  ));
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {

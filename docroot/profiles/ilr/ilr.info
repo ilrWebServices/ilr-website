@@ -50,6 +50,7 @@ dependencies[] = ilr_settings
 dependencies[] = ilr_sub_pages
 dependencies[] = ilr_sub_sites
 dependencies[] = ilr_workspan
+dependencies[] = ilr_xml_blocks
 dependencies[] = jpanelmenu
 dependencies[] = localist_block
 dependencies[] = microfilm_microfiche
