@@ -2,19 +2,19 @@
 
 function ilr_xml_blocks_block_info() {
   $blocks['ldi_recent'] = array(
-    'info' => t('LDI Recent Docs Summary'),
+    'info' => t('LDI: Recent Docs Summary'),
   );
 
   $blocks['ldi_recent_all'] = array(
-    'info' => t('LDI Recent Docs All'),
+    'info' => t('LDI: Recent Docs All'),
   );
 
-  $blocks['vrdc'] = array(
-    'info' => t('VirtualRDC'),
+  $blocks['ldi_vrdc'] = array(
+    'info' => t('LDI: VirtualRDC'),
   );
 
-  $blocks['statistics'] = array(
-    'info' => t('World of Statistics'),
+  $blocks['ldi_statistics'] = array(
+    'info' => t('LDI: World of Statistics'),
   );
 
   return $blocks;
@@ -101,8 +101,8 @@ function _ilr_xml_blocks_get_xml_data($key) {
 function _ilr_xml_blocks_get_xml_url($delta) {
   $urls = array(
     'ldi_recent' => 'http://digitalcommons.ilr.cornell.edu/ldi/recent.rss',
-    'vrdc' => 'http://www2.vrdc.cornell.edu/news/feed/',
-    'statistics' => 'http://www.worldofstatistics.org/feed/',
+    'ldi_vrdc' => 'http://www2.vrdc.cornell.edu/news/feed/',
+    'ldi_statistics' => 'http://www.worldofstatistics.org/feed/',
   );
   return (isset($urls[$delta])) ? $urls[$delta] : NULL;
 }
