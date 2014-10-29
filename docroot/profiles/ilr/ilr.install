@@ -277,7 +277,7 @@ function ilr_update_7018() {
 /**
  * Enables ilr_google_translate feature
  */
-function ilr_update_7018() {
+function ilr_update_7019() {
   module_enable(array(
     'ilr_google_translate',
   ));
