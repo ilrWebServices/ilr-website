@@ -741,6 +741,54 @@ function forms_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['ilr_alumni_association_event_reg'] = entity_import('entityform_type', '{
+    "type" : "ilr_alumni_association_event_reg",
+    "label" : "ILR Alumni Association Event Registration",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EYour reservation for the following ILR Alumni Association event has been received:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent info should be inserted here, including event name, location, start and end dates.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003Eand also payment info, e.g. amount billed to credit card or Please make check out to ILR Alumni Association with the amount owed, etc.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ESee Caroline for details of what this needs to say.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "3" : "3",
+        "1" : "1",
+        "2" : "2",
+        "4" : 0,
+        "5" : 0,
+        "6" : 0,
+        "7" : 0,
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "form_submission_ilr_recipient" : "ilralumniassociation@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 0,
+      "kerberized" : 0
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['ilr_information_session_sign_in'] = entity_import('entityform_type', '{
     "type" : "ilr_information_session_sign_in",
     "label" : "ILR Information Session Sign-In",
