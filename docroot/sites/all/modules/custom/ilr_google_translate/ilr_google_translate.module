@@ -34,7 +34,7 @@ function ilr_google_translate_block_view($delta='') {
     ';
 
     foreach ($languages as $name => $values) {
-      $markup .= '    <input value="'. $values['pair'] .'" title="'.$values['title'].'" alt="'.$name.'" type="image" class="flag '.$name.'" src="'.$image_path.'" />';
+      $markup .= '    <input value="'. $values['pair'] .'" title="'.$values['title'].'" alt="'.$name.'" type="image" class="flag '.$name.'" src="/'.$image_path.'" />';
     }
 
     $markup .= '    <input name="hl" value="en" type="hidden" />
