@@ -1287,6 +1287,40 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_reservations|entityform|ilr_alumni_association_event_reg|form';
+  $field_group->group_name = 'group_reservations';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'ilr_alumni_association_event_reg';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Reservations',
+    'weight' => '16',
+    'children' => array(
+      0 => 'field_tickets_for_aa_members',
+      1 => 'field_tickets_for_non_members',
+      2 => 'field_guests',
+      3 => 'field_attendee_list',
+      4 => 'field_attendee_list_guests',
+      5 => 'field_attendee_list_markup',
+      6 => 'field_payment_method',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Reservations',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-reservations field-group-fieldset',
+        'description' => 'Please purchase one ticket for each person attending.',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_reservations|entityform|ilr_alumni_association_event_reg|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_student_data|entityform|dublin_application_form|default';
   $field_group->group_name = 'group_student_data';
   $field_group->entity_type = 'entityform';
