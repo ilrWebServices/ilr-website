@@ -283,6 +283,46 @@ function _forms_send_lyris_email(&$entityform, $from, $email_list) {
 }
 
 /**
+ * Process Tech Services Desktop Support form
+ */
+function _process_desktop_support_request(&$entityform) {
+  _forms_process_standard_tech_services_requests($entityform);
+}
+
+/**
+ * Standard processing for Tech Services forms to send to Remedy
+ */
+function _forms_process_standard_tech_services_requests(&$entityform) {
+  // This sends to Remedy ticket system, but not to admin at ILR or to user.
+  // Subject line is a required form field for this form.
+  $remedy_email = 'ilrtsrequests@cornell.edu';
+  $subject = trim($entityform->field_subject_line['und'][0]['value']);
+  _forms_send_remedy_email($entityform, $remedy_email, $subject);
+}
+
+
+/**
+ * Send email to Remedy
+ */
+function _forms_send_remedy_email(&$entityform, $remedy_email, $subject='Email to remedy') {
+  $form_title = _forms_get_form_title($entityform);
+  $user_name = _forms_construct_user_name($entityform);
+  $user_email = $entityform->field_email['und'][0]['email'];
+  $email_template = 'remedy_email';
+
+  $body = theme($email_template, array(
+    'form_title'  => $form_title,
+    'form_data'   => _entity_display_form_data($entityform),
+  ));
+
+  $to = $remedy_email;
+  $from = $user_email;
+  _send_email_for_entity_form($to, $from, $subject, $body);
+}
+
+
+
+/**
  * Process Library contact form
  */
 function _process_library_contact_form(&$entityform) {
@@ -331,17 +371,6 @@ function _forms_career_services_contact_options() {
     'bk30-01' => 'ILR Credit Internship Program',
     'rmd5-01' => 'Regina M. Duffey Moravek, Director of ILR Career Services',
   );
-}
-
-function _forms_full_names_states_and_provinces() {
-  $full_names=TRUE;
-  $include_other=TRUE;
-  $include_states=TRUE;
-  $include_provinces=TRUE;
-  $include_territories=FALSE;
-
-  return _forms_statelist_options(
-    $full_names, $include_other, $include_states, $include_provinces, $include_territories);
 }
 
 /**
@@ -417,6 +446,7 @@ function _forms_year_relative_options($firstOffset, $lastOffset) {
   return _forms_number_absolute_options($first, $last);
 }
 
+
 /**
  * Generate the options for graduation dates for the graduate student and undergrad
  * Application to Graduate forms.
@@ -439,6 +469,18 @@ function _forms_application_to_graduate_graduation_dates() {
     'August$grad_year_display' => 'August ' . $grad_year_display,
   );
 }
+
+function _forms_full_names_states_and_provinces() {
+  $full_names=TRUE;
+  $include_other=TRUE;
+  $include_states=TRUE;
+  $include_provinces=TRUE;
+  $include_territories=FALSE;
+
+  return _forms_statelist_options(
+    $full_names, $include_other, $include_states, $include_provinces, $include_territories);
+}
+
 
 /**
  * Send user and admin emails
