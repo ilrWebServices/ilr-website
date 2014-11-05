@@ -79,6 +79,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'access content region field'.
+  $permissions['access content region field'] = array(
+    'name' => 'access content region field',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'ilr_field_bases',
+  );
+
   // Exported permission: 'access contextual links'.
   $permissions['access contextual links'] = array(
     'name' => 'access contextual links',
