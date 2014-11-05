@@ -48,8 +48,8 @@ if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
   cd docroot
   drush @ilr.ilr.$ENV fr-all -y
 
-  echo "Clearing cache on $ENV"
-  drush @ilr.ilr.$ENV cc all -y
+  echo "Running database updates on $ENV"
+  drush @ilr.ilr.$ENV updb -y # also clears cache
 
   echo "Deployment complete"
 
