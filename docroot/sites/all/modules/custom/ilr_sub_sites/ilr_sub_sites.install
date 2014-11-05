@@ -17,6 +17,8 @@ function ilr_sub_sites_update_7001() {
 /**
  * The initial group of subsites.
  * Additional menus may be added later.
+ * Note: These will need to be added to the
+ * menu_options_basic_page in the basic page feature
  */
 function _ilr_sub_sites_get_sub_sites() {
   return array(
