@@ -21,6 +21,7 @@ function forms_entityform_presave($entityform) {
   if (_forms_is_event_registration_form($entityform) && $entityform->is_new) {
     _forms_save_registration_date($entityform);
   }
+  dpm($entityform, 'in forms_entityform_presave');
 }
 
 /**
@@ -286,17 +287,25 @@ function _forms_send_lyris_email(&$entityform, $from, $email_list) {
  * Process Tech Services Desktop Support form
  */
 function _process_desktop_support_request(&$entityform) {
-  _forms_process_standard_tech_services_requests($entityform);
+  $subject = trim($entityform->field_subject_line['und'][0]['value']);
+  _forms_process_standard_tech_services_requests($entityform, $subject);
+}
+
+/**
+ * Process Tech Services Classroom Technologies request form
+ */
+function _process_classroom_technologies_request(&$entityform) {
+  dpm ($entityform, 'in _process_classroom_technologies_request, entityform');
+  $subject = trim($entityform->field_course_number['und'][0]['value']) . ' - Classroom Tech Req';
+  _forms_process_standard_tech_services_requests($entityform, $subject);
 }
 
 /**
  * Standard processing for Tech Services forms to send to Remedy
  */
-function _forms_process_standard_tech_services_requests(&$entityform) {
+function _forms_process_standard_tech_services_requests(&$entityform, $subject) {
   // This sends to Remedy ticket system, but not to admin at ILR or to user.
-  // Subject line is a required form field for this form.
   $remedy_email = 'ilrtsrequests@cornell.edu';
-  $subject = trim($entityform->field_subject_line['und'][0]['value']);
   _forms_send_remedy_email($entityform, $remedy_email, $subject);
 }
 
