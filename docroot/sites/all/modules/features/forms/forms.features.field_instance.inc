@@ -1043,6 +1043,293 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-collective_bargaining_videos-field_company'
+  $field_instances['entityform-collective_bargaining_videos-field_company'] = array(
+    'bundle' => 'collective_bargaining_videos',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_company',
+    'label' => 'Organization',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-collective_bargaining_videos-field_email'
+  $field_instances['entityform-collective_bargaining_videos-field_email'] = array(
+    'bundle' => 'collective_bargaining_videos',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-collective_bargaining_videos-field_full_name'
+  $field_instances['entityform-collective_bargaining_videos-field_full_name'] = array(
+    'bundle' => 'collective_bargaining_videos',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_full_name',
+    'label' => 'Name',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-collective_bargaining_videos-field_job_title'
+  $field_instances['entityform-collective_bargaining_videos-field_job_title'] = array(
+    'bundle' => 'collective_bargaining_videos',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_job_title',
+    'label' => 'Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-collective_bargaining_videos-field_response_checkbox'
+  $field_instances['entityform-collective_bargaining_videos-field_response_checkbox'] = array(
+    'bundle' => 'collective_bargaining_videos',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'wantsResponse',
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'wantsResponse',
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_response_checkbox',
+    'label' => 'Check here if you would like a response',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 39,
+    ),
+  );
+
   // Exported field_instance: 'entityform-contact_ilr_admissions-field_additional_materials_marku'
   $field_instances['entityform-contact_ilr_admissions-field_additional_materials_marku'] = array(
     'bundle' => 'contact_ilr_admissions',
@@ -16377,6 +16664,7 @@ function forms_field_default_field_instances() {
   t('Cell phone number');
   t('Chairperson');
   t('Check all courses you will have completed by the end of the current semester');
+  t('Check here if you would like a response');
   t('Citizenship');
   t('City');
   t('City (permanent)');
@@ -16460,6 +16748,7 @@ function forms_field_default_field_instances() {
   t('Number of completed credits');
   t('Number of completed semesters in residence');
   t('Number of terms at Cornell');
+  t('Organization');
   t('Other academic interests (non-ILR)');
   t('Other academic interests not listed above');
   t('Page title');

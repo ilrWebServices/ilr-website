@@ -1,0 +1,6 @@
+name = ILR XML Blocks Module
+description = Provides a container for various blocks that take xml feeds and create markup.
+core = 7.x
+package = ILR
+php = 5.2.4
+version = 7.x-1.0

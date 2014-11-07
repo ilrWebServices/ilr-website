@@ -2,4 +2,18 @@ footer {
   padding: 1em 0 1em 15px;
   background: $brand-dark;
   color: $brand-light;
+
+
+  #translate {
+    background: url(../images/flag-sprite.gif) no-repeat;
+    @extend .clearfix;
+    input {
+      width: 18px;
+      height: 12px;
+      overflow: hidden;
+      display: inline-block;
+      margin-right: 1px;
+      float: left;
+    }
+  }
 }

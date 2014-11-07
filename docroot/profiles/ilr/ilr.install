@@ -257,6 +257,33 @@ function ilr_update_7016() {
 }
 
 /**
+ * Enables cul_hours feature
+ */
+function ilr_update_7017() {
+  module_enable(array(
+    'cul_hours',
+  ));
+}
+
+/**
+ * Enables ilr_xml_blocks feature
+ */
+function ilr_update_7018() {
+  module_enable(array(
+    'ilr_xml_blocks',
+  ));
+}
+
+/**
+ * Enables ilr_google_translate feature
+ */
+function ilr_update_7019() {
+  module_enable(array(
+    'ilr_google_translate',
+  ));
+}
+
+/**
  * Custom function for role creation
  */
 function _ilr_create_roles() {

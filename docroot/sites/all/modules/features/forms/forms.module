@@ -76,6 +76,23 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
       $form[$key]['#access'] = FALSE;
     }
   }
+
+  // For Collective Bargaining videos form, redirect if cookie "cbvideoinfo" is set.
+  if ($form_id == 'collective_bargaining_videos_entityform_edit_form') {
+    if (isset($_COOKIE['Drupal_visitor_cbvideoinfo'])) {
+      _forms_collective_bargaining_videos_redirect();
+    }
+  }
+}
+
+/**
+ * Collective Bargaining videos redirect
+ * The URL to redirect to will get set in the db via drush using the variable "cb_videos_url"
+ * What's in the code is a default.
+ */
+function _forms_collective_bargaining_videos_redirect() {
+  $cb_videos_redirect = variable_get('cb_videos_url', 'http://www.ilr.cornell.edu/workerinstitute');
+  drupal_goto($cb_videos_redirect);
 }
 
 /**
@@ -213,6 +230,16 @@ function _forms_get_tplphp_file($entityform) {
 function _forms_process_default(&$entityform) {
   $admin_email = _forms_get_admin_email($entityform);
   _forms_send_emails($entityform, $admin_email);
+}
+
+/**
+ * Process Collective Bargaining Videos tracking - set cookie, then do normal processing, then
+ * redirect to the list of videos.
+ */
+function _process_collective_bargaining_videos(&$entityform) {
+  user_cookie_save(array ('cbvideoinfo' => 'yes'));
+  _forms_process_default($entityform);
+  _forms_collective_bargaining_videos_redirect();
 }
 
 /**

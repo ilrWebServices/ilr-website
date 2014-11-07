@@ -452,7 +452,7 @@ function ilr_sdc_listings_class_reg_form_validate($form, &$form_state) {
  * Redirect to registration page.
  */
 function ilr_sdc_listings_class_reg_form_submit($form, &$form_state) {
-  drupal_goto(variable_get('ilr_sdc_listings_reg_url', 'http://www.ilr.cornell.edu/registration/process/processcard.cfm'), array('query' => array('addClass' => $form_state['values']['addClass'])));
+  drupal_goto(variable_get('ilr_sdc_listings_reg_url', 'http://register.ilr.cornell.edu/registration/process/processcard.cfm'), array('query' => array('addClass' => $form_state['values']['addClass'])));
 }
 
 /**

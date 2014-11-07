@@ -26,6 +26,12 @@ function basic_page_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'bean',
     'field_name' => 'field_bean_content',

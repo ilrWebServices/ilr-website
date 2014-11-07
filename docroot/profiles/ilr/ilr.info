@@ -32,6 +32,7 @@ dependencies[] = views
 
 ; ILR Features and Custom modules
 dependencies[] = basic_page
+dependencies[] = cul_hours
 dependencies[] = cul_new_books
 dependencies[] = custom_publishing_options
 dependencies[] = entityform_block
@@ -42,6 +43,7 @@ dependencies[] = ilr_bean_admin
 dependencies[] = ilr_drush_feeds_import
 dependencies[] = ilr_editable_settings
 dependencies[] = ilr_footer_menu
+dependencies[] = ilr_google_translate
 dependencies[] = ilr_manual_listing
 dependencies[] = ilr_mega_menu
 dependencies[] = ilr_sdc_listings
@@ -49,6 +51,7 @@ dependencies[] = ilr_settings
 dependencies[] = ilr_sub_pages
 dependencies[] = ilr_sub_sites
 dependencies[] = ilr_workspan
+dependencies[] = ilr_xml_blocks
 dependencies[] = jpanelmenu
 dependencies[] = localist_block
 dependencies[] = microfilm_microfiche
