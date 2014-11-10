@@ -9,11 +9,20 @@
  */
 function ilr_sdc_listings_install() {
   _ilr_sdc_listings_set_importer_sources();
+  _ilr_sdc_listings_set_bean_types();
 
   // Set feature specific variables
   variable_set('ilr_sdc_listings_reg_url', 'http://www.ilr.cornell.edu/registration/process/processcard.cfm');
 }
 
+/**
+ * Install function to enable View Bean Types for this module.
+ */
+function _ilr_sdc_listings_set_bean_types() {
+  $bean_types = variable_get('views_beans_bean_types', array());
+  $bean_types['filtered_courses'] = 'Filtered Courses';
+  variable_set('views_beans_bean_types', $bean_types);
+}
 /**
  * Set the source urls for all feeds importers in this module
  */
