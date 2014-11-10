@@ -379,6 +379,70 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact_information|entityform|classroom_technologies_request|default';
+  $field_group->group_name = 'group_contact_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'classroom_technologies_request';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact Information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_email',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_phone',
+      4 => 'field_course_number',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Contact Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-contact-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_contact_information|entityform|classroom_technologies_request|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact_information|entityform|classroom_technologies_request|form';
+  $field_group->group_name = 'group_contact_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'classroom_technologies_request';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_email',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_phone',
+      4 => 'field_course_number',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Contact Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-contact-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_contact_information|entityform|classroom_technologies_request|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_degree_plan|entityform|grad_student_appl_for_graduation|form';
   $field_group->group_name = 'group_degree_plan';
   $field_group->entity_type = 'entityform';
@@ -1451,6 +1515,149 @@ function forms_field_group_info() {
     ),
   );
   $export['group_summer_address|entityform|ilr_student_advisor_application_|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_type_of_support_needed|entityform|classroom_technologies_request|default';
+  $field_group->group_name = 'group_type_of_support_needed';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'classroom_technologies_request';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Type of Support Needed',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_support_needed',
+      1 => 'field_equipment_type',
+      2 => 'field_equipment_loan_additional_',
+      3 => 'field_laptop_loan_addl_info',
+      4 => 'field_wireless_networking_needed',
+      5 => 'field_laptop_size_preference',
+      6 => 'field_non_standard_applications',
+      7 => 'field_video_recording_addl_info',
+      8 => 'field_media_cl_tech_video_rec',
+      9 => 'field_number_of_copies',
+      10 => 'field_post_to_web_',
+      11 => 'field_training_technical_support',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Type of Support Needed',
+      'instance_settings' => array(
+        'classes' => 'group-type-of-support-needed field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_type_of_support_needed|entityform|classroom_technologies_request|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_type_of_support_needed|entityform|classroom_technologies_request|form';
+  $field_group->group_name = 'group_type_of_support_needed';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'classroom_technologies_request';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Type of Support Needed',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_support_needed',
+      1 => 'field_equipment_type',
+      2 => 'field_equipment_loan_additional_',
+      3 => 'field_laptop_loan_addl_info',
+      4 => 'field_wireless_networking_needed',
+      5 => 'field_laptop_size_preference',
+      6 => 'field_non_standard_applications',
+      7 => 'field_video_recording_addl_info',
+      8 => 'field_media_cl_tech_video_rec',
+      9 => 'field_number_of_copies',
+      10 => 'field_post_to_web_',
+      11 => 'field_training_technical_support',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Type of Support Needed',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-type-of-support-needed field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_type_of_support_needed|entityform|classroom_technologies_request|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_when_and_where|entityform|classroom_technologies_request|default';
+  $field_group->group_name = 'group_when_and_where';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'classroom_technologies_request';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'When and Where?',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_building_or_location',
+      1 => 'field_room',
+      2 => 'field_dates',
+      3 => 'field_start_time',
+      4 => 'field_end_time',
+      5 => 'field_recurrence',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'When and Where?',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-when-and-where field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_when_and_where|entityform|classroom_technologies_request|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_when_and_where|entityform|classroom_technologies_request|form';
+  $field_group->group_name = 'group_when_and_where';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'classroom_technologies_request';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'When and Where?',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_building_or_location',
+      1 => 'field_room',
+      2 => 'field_dates',
+      3 => 'field_start_time',
+      4 => 'field_end_time',
+      5 => 'field_recurrence',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'When and Where?',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-when-and-where field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_when_and_where|entityform|classroom_technologies_request|form'] = $field_group;
 
   return $export;
 }

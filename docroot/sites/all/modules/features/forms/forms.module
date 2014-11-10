@@ -21,7 +21,6 @@ function forms_entityform_presave($entityform) {
   if (_forms_is_event_registration_form($entityform) && $entityform->is_new) {
     _forms_save_registration_date($entityform);
   }
-  dpm($entityform, 'in forms_entityform_presave');
 }
 
 /**
@@ -295,7 +294,6 @@ function _process_desktop_support_request(&$entityform) {
  * Process Tech Services Classroom Technologies request form
  */
 function _process_classroom_technologies_request(&$entityform) {
-  dpm ($entityform, 'in _process_classroom_technologies_request, entityform');
   $subject = trim($entityform->field_course_number['und'][0]['value']) . ' - Classroom Tech Req';
   _forms_process_standard_tech_services_requests($entityform, $subject);
 }

@@ -1049,6 +1049,8 @@ function ilr_field_bases_field_default_field_bases() {
         'ILR Faculty Building' => 'ILR Faculty Building',
         'ILR Research' => 'ILR Research',
         'Ives East' => 'Ives East',
+        '118 Teaching Lab' => '118 Teaching Lab',
+        '118 Main Lab' => '118 Main Lab',
         'Albany' => 'Albany',
         'Buffalo' => 'Buffalo',
         'New York City' => 'New York City',
@@ -2681,6 +2683,64 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_equipment_loan_additional_'
+  $field_bases['field_equipment_loan_additional_'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_equipment_loan_additional_',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">Equipment Loan: Additional Information</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
+  // Exported field_base: 'field_equipment_type'
+  $field_bases['field_equipment_type'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_equipment_type',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Camcorder' => 'Camcorder',
+        'Computer and LCD Projector Cart' => 'Computer and LCD Projector Cart',
+        'Digital Camera' => 'Digital Camera',
+        'Digital Voice Recorder' => 'Digital Voice Recorder',
+        'Laptop' => 'Laptop (ILR Faculty/Staff Only)',
+        'Pen Tablet' => 'Pen Tablet',
+        'Portable Microphone System' => 'Portable Microphone System',
+        'Projection Screen' => 'Projection Screen',
+        'Slide Projector' => 'Slide Projector',
+        'Speakerphone' => 'Speakerphone',
+        'TV/DVD/VCR' => 'TV/DVD/VCR',
+        'TV/VCR' => 'TV/VCR',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_ethnicity'
   $field_bases['field_ethnicity'] = array(
     'active' => 1,
@@ -4022,6 +4082,53 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
+  // Exported field_base: 'field_laptop_loan_addl_info'
+  $field_bases['field_laptop_loan_addl_info'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_laptop_loan_addl_info',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">Laptop Loan: Additional Information</div>',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
+  // Exported field_base: 'field_laptop_size_preference'
+  $field_bases['field_laptop_size_preference'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_laptop_size_preference',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Standard size laptop' => 'Standard size laptop',
+        'Lightweight without CD/DVD Drive' => 'Lightweight without CD/DVD Drive',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_last_name'
   $field_bases['field_last_name'] = array(
     'active' => 1,
@@ -4290,6 +4397,32 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_media_cl_tech_video_rec'
+  $field_bases['field_media_cl_tech_video_rec'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_media_cl_tech_video_rec',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'DVD' => 'Save recorded video to DVD',
+        'VHS' => 'Save recorded video to VHS',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_mega_menu_blocks'
@@ -4695,6 +4828,33 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_non_standard_applications'
+  $field_bases['field_non_standard_applications'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_non_standard_applications',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_number_of_assistants_reque'
   $field_bases['field_number_of_assistants_reque'] = array(
     'active' => 1,
@@ -4760,6 +4920,35 @@ function ilr_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_number_of_completed_semest',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_number_of_copies'
+  $field_bases['field_number_of_copies'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_number_of_copies',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -5065,6 +5254,32 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_post_to_web_'
+  $field_bases['field_post_to_web_'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_post_to_web_',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_preferred_students'
@@ -5455,6 +5670,33 @@ function ilr_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_quote',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_recurrence'
+  $field_bases['field_recurrence'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_recurrence',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -6556,6 +6798,34 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_support_needed'
+  $field_bases['field_support_needed'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_support_needed',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Equipment loan' => 'Equipment loan',
+        'Video recording' => 'Video recording',
+        'Special software needs' => 'Special software needs',
+        'None of the above' => 'None of the above',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_supporter_1'
   $field_bases['field_supporter_1'] = array(
     'active' => 1,
@@ -6858,6 +7128,33 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_training_technical_support'
+  $field_bases['field_training_technical_support'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_training_technical_support',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_transfer_student'
   $field_bases['field_transfer_student'] = array(
     'active' => 1,
@@ -6962,6 +7259,28 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_video_recording_addl_info'
+  $field_bases['field_video_recording_addl_info'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_video_recording_addl_info',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">Video Recording: Additional Info</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
   // Exported field_base: 'field_visa_type'
   $field_bases['field_visa_type'] = array(
     'active' => 1,
@@ -7044,6 +7363,32 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'link_field',
+  );
+
+  // Exported field_base: 'field_wireless_networking_needed'
+  $field_bases['field_wireless_networking_needed'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_wireless_networking_needed',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_work_experience'
