@@ -22,6 +22,10 @@ function _ilr_sdc_listings_set_bean_types() {
   $bean_types = variable_get('views_beans_bean_types', array());
   $bean_types['filtered_courses'] = 'Filtered Courses';
   variable_set('views_beans_bean_types', $bean_types);
+  // Rebuild Bean Types and Menu
+  bean_bean_cache_clear();
+  cache_clear_all('plugins:bean:types', 'cache');
+  variable_set('menu_rebuild_needed', TRUE);
 }
 /**
  * Set the source urls for all feeds importers in this module
