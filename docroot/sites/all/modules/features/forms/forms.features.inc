@@ -453,6 +453,54 @@ function forms_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['distance_learning_reservation_re'] = entity_import('entityform_type', '{
+    "type" : "distance_learning_reservation_re",
+    "label" : "Distance Learning Reservation Request",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "Distance Learning Reservation Request Confirmation",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for submitting your Distance Learning Reservation to the ILR Video Conferencing team. You will receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "3" : "3",
+        "1" : "1",
+        "2" : "2",
+        "4" : 0,
+        "5" : 0,
+        "6" : 0,
+        "7" : 0,
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "form_submission_ilr_recipient" : "ilrvtc@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 1
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['dublin_application_form'] = entity_import('entityform_type', '{
     "type" : "dublin_application_form",
     "label" : "Dublin Application Form",

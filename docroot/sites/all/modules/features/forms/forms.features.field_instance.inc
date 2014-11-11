@@ -4759,6 +4759,894 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_account_number'
+  $field_instances['entityform-distance_learning_reservation_re-field_account_number'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'CU account number',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'CU account number',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_account_number',
+    'label' => 'Cornell account number (needed for billing)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_comments'
+  $field_instances['entityform-distance_learning_reservation_re-field_comments'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_comments',
+    'label' => 'Additional needs',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_conference_name'
+  $field_instances['entityform-distance_learning_reservation_re-field_conference_name'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_conference_name',
+    'label' => 'Conference title',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_dates'
+  $field_instances['entityform-distance_learning_reservation_re-field_dates'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_dates',
+    'label' => 'Conference date',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 40,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_department'
+  $field_instances['entityform-distance_learning_reservation_re-field_department'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_department',
+    'label' => 'ILR department',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_email'
+  $field_instances['entityform-distance_learning_reservation_re-field_email'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_end_time'
+  $field_instances['entityform-distance_learning_reservation_re-field_end_time'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_end_time',
+    'label' => 'End time',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_first_name'
+  $field_instances['entityform-distance_learning_reservation_re-field_first_name'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_first_name',
+    'label' => 'First name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 33,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_last_name'
+  $field_instances['entityform-distance_learning_reservation_re-field_last_name'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_num_cornell_participants'
+  $field_instances['entityform-distance_learning_reservation_re-field_num_cornell_participants'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Number CU participants',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Number CU participants',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_num_cornell_participants',
+    'label' => 'Number of Cornell participants',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_phone'
+  $field_instances['entityform-distance_learning_reservation_re-field_phone'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Phone',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Phone',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_phone',
+    'label' => 'Phone (with area code)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 35,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_projector_needs'
+  $field_instances['entityform-distance_learning_reservation_re-field_projector_needs'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => array(
+      0 => array(
+        'value' => 'No',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Projection needs',
+        ),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Projection needs',
+        ),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_projector_needs',
+    'label' => 'Will you need to project transparencies, paper, or 3D objects?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_recurrence'
+  $field_instances['entityform-distance_learning_reservation_re-field_recurrence'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If this is a recurring event, please specify additional dates/times, e.g. specific dates or "every Tuesday", etc.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_recurrence',
+    'label' => 'Recurrence',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 43,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_remote_site_details'
+  $field_instances['entityform-distance_learning_reservation_re-field_remote_site_details'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'field_collection',
+        'settings' => array(
+          'add' => 'Add',
+          'delete' => 'Delete',
+          'description' => 1,
+          'edit' => 'Edit',
+          'field_formatter_label' => 'Remote Site Details',
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_view',
+        'weight' => 11,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'field_collection',
+        'settings' => array(
+          'add' => 'Add',
+          'delete' => 'Delete',
+          'description' => 1,
+          'edit' => 'Edit',
+          'field_formatter_label' => 'Remote sites',
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_view',
+        'weight' => 14,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'field_collection',
+        'settings' => array(
+          'add' => 'Add',
+          'delete' => 'Delete',
+          'description' => 1,
+          'edit' => 'Edit',
+          'field_formatter_label' => 'Remote sites',
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_view',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_remote_site_details',
+    'label' => 'Remote Site Details',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-distance_learning_reservation_re-field_start_time'
+  $field_instances['entityform-distance_learning_reservation_re-field_start_time'] = array(
+    'bundle' => 'distance_learning_reservation_re',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_start_time',
+    'label' => 'Start time',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 41,
+    ),
+  );
+
   // Exported field_instance: 'entityform-dublin_application_form-field_address_line_1'
   $field_instances['entityform-dublin_application_form-field_address_line_1'] = array(
     'bundle' => 'dublin_application_form',
@@ -18197,6 +19085,237 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_remote_site_details-field_email_additional'
+  $field_instances['field_collection_item-field_remote_site_details-field_email_additional'] = array(
+    'bundle' => 'field_remote_site_details',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_email_additional',
+    'label' => 'Email',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 40,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_remote_site_details-field_full_name'
+  $field_instances['field_collection_item-field_remote_site_details-field_full_name'] = array(
+    'bundle' => 'field_remote_site_details',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Technical contact',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_full_name',
+    'label' => 'Name',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_remote_site_details-field_phone_college'
+  $field_instances['field_collection_item-field_remote_site_details-field_phone_college'] = array(
+    'bundle' => 'field_remote_site_details',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_phone_college',
+    'label' => 'Phone',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_remote_site_details-field_remote_site_ip_or_isdn'
+  $field_instances['field_collection_item-field_remote_site_details-field_remote_site_ip_or_isdn'] = array(
+    'bundle' => 'field_remote_site_details',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'IP or ISDN',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_remote_site_ip_or_isdn',
+    'label' => 'Remote site\'s IP or ISDN number',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_remote_site_details-field_remote_site_name'
+  $field_instances['field_collection_item-field_remote_site_details-field_remote_site_name'] = array(
+    'bundle' => 'field_remote_site_details',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_remote_site_name',
+    'label' => 'Remote site name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_remote_site_details-field_technical_support_person'
+  $field_instances['field_collection_item-field_remote_site_details-field_technical_support_person'] = array(
+    'bundle' => 'field_remote_site_details',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'markup',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'markup_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_technical_support_person',
+    'label' => 'Technical support person for this site',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 36,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_netid'
   $field_instances['user-user-field_netid'] = array(
     'bundle' => 'user',
@@ -18248,6 +19367,7 @@ function forms_field_default_field_instances() {
   t('Additional comments');
   t('Additional information, comments, or questions');
   t('Additional materials markup');
+  t('Additional needs');
   t('Address');
   t('Address line 1 (permanent)');
   t('Address line 1 (summer)');
@@ -18280,7 +19400,10 @@ function forms_field_default_field_instances() {
   t('Comments');
   t('Company');
   t('Concentration');
+  t('Conference date');
   t('Conference name');
+  t('Conference title');
+  t('Cornell account number (needed for billing)');
   t('Country');
   t('Course name');
   t('Course number (e.g. ILRLR 2100)');
@@ -18330,6 +19453,7 @@ function forms_field_default_field_instances() {
   t('How many people');
   t('I am a prospective');
   t('ILR Department, e.g. Collective Bargaining, Statistics, Fiscal, Student Services, etc.');
+  t('ILR department');
   t('ILR student organization or department name');
   t('If so, please explan');
   t('If this is a recurring event, please specify additional dates/times, e.g. specific dates or "every Tuesday", etc.');
@@ -18360,6 +19484,7 @@ function forms_field_default_field_instances() {
   t('NetID');
   t('Nominee name');
   t('Non-standard laptop applications');
+  t('Number of Cornell participants');
   t('Number of assistants requested');
   t('Number of completed credits');
   t('Number of completed semesters in residence');
@@ -18381,6 +19506,9 @@ function forms_field_default_field_instances() {
   t('Pronunciation');
   t('Questions and comments');
   t('Recurrence');
+  t('Remote Site Details');
+  t('Remote site name');
+  t('Remote site\'s IP or ISDN number');
   t('Request / Problem description');
   t('Room');
   t('School or college');
@@ -18412,6 +19540,7 @@ function forms_field_default_field_instances() {
   t('Supporter 1');
   t('Supporter 2');
   t('Technical needs (Examples: Microphone, PowerPoint, laptop, DVD, videotaping. Enter "none" if you have NO technical needs.)');
+  t('Technical support person for this site');
   t('Title');
   t('Title of paper or poster');
   t('Type of grad assistant');
@@ -18423,6 +19552,7 @@ function forms_field_default_field_instances() {
   t('When will you graduate?');
   t('Where do you attend Cornell?');
   t('Which topics and types of programs are you interested in? (check all that apply)');
+  t('Will you need to project transparencies, paper, or 3D objects?');
   t('Wireless networking needed');
   t('Year');
   t('Your letter of support');

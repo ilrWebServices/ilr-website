@@ -4855,6 +4855,35 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_num_cornell_participants'
+  $field_bases['field_num_cornell_participants'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_num_cornell_participants',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_number_of_assistants_reque'
   $field_bases['field_number_of_assistants_reque'] = array(
     'active' => 1,
@@ -5553,6 +5582,32 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_projector_needs'
+  $field_bases['field_projector_needs'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_projector_needs',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_pronunciation'
   $field_bases['field_pronunciation'] = array(
     'active' => 1,
@@ -5956,6 +6011,83 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_remote_site_details'
+  $field_bases['field_remote_site_details'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_remote_site_details',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'field_collection',
+    'settings' => array(
+      'hide_blank_items' => 1,
+      'path' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'field_collection',
+  );
+
+  // Exported field_base: 'field_remote_site_ip_or_isdn'
+  $field_bases['field_remote_site_ip_or_isdn'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_remote_site_ip_or_isdn',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_remote_site_name'
+  $field_bases['field_remote_site_name'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_remote_site_name',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_request'
@@ -6970,6 +7102,28 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_technical_support_person'
+  $field_bases['field_technical_support_person'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_technical_support_person',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">Technical support person for this site</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
   );
 
   // Exported field_base: 'field_term_publication'
