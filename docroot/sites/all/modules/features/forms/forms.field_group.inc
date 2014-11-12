@@ -317,6 +317,70 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_conference_details|entityform|distance_learning_reservation_re|default';
+  $field_group->group_name = 'group_conference_details';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'distance_learning_reservation_re';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Conference Details',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_conference_name',
+      1 => 'field_dates',
+      2 => 'field_start_time',
+      3 => 'field_end_time',
+      4 => 'field_recurrence',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Conference Details',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-conference-details field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_conference_details|entityform|distance_learning_reservation_re|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_conference_details|entityform|distance_learning_reservation_re|form';
+  $field_group->group_name = 'group_conference_details';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'distance_learning_reservation_re';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Conference Details',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_conference_name',
+      1 => 'field_dates',
+      2 => 'field_start_time',
+      3 => 'field_end_time',
+      4 => 'field_recurrence',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Conference Details',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-conference-details field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_conference_details|entityform|distance_learning_reservation_re|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_conference_fieldset|entityform|grad_travel_grant_application|default';
   $field_group->group_name = 'group_conference_fieldset';
   $field_group->entity_type = 'entityform';
@@ -375,6 +439,196 @@ function forms_field_group_info() {
     ),
   );
   $export['group_conference_fieldset|entityform|grad_travel_grant_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact_information|entityform|classroom_technologies_request|default';
+  $field_group->group_name = 'group_contact_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'classroom_technologies_request';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact Information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_email',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_phone',
+      4 => 'field_course_number',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Contact Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-contact-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_contact_information|entityform|classroom_technologies_request|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact_information|entityform|classroom_technologies_request|form';
+  $field_group->group_name = 'group_contact_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'classroom_technologies_request';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_email',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_phone',
+      4 => 'field_course_number',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Contact Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-contact-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_contact_information|entityform|classroom_technologies_request|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact_information|entityform|distance_learning_reservation_re|default';
+  $field_group->group_name = 'group_contact_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'distance_learning_reservation_re';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact Information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_email',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_phone',
+      4 => 'field_department',
+      5 => 'field_account_number',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Contact Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-contact-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_contact_information|entityform|distance_learning_reservation_re|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact_information|entityform|distance_learning_reservation_re|form';
+  $field_group->group_name = 'group_contact_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'distance_learning_reservation_re';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_email',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_phone',
+      4 => 'field_department',
+      5 => 'field_account_number',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Contact Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-contact-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_contact_information|entityform|distance_learning_reservation_re|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_cornell_site_details|entityform|distance_learning_reservation_re|default';
+  $field_group->group_name = 'group_cornell_site_details';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'distance_learning_reservation_re';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Cornell Site Details',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_num_cornell_participants',
+      1 => 'field_projector_needs',
+      2 => 'field_comments',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Cornell Site Details',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-cornell-site-details field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_cornell_site_details|entityform|distance_learning_reservation_re|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_cornell_site_details|entityform|distance_learning_reservation_re|form';
+  $field_group->group_name = 'group_cornell_site_details';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'distance_learning_reservation_re';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Cornell Site Details',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_num_cornell_participants',
+      1 => 'field_projector_needs',
+      2 => 'field_comments',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Cornell Site Details',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-cornell-site-details field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_cornell_site_details|entityform|distance_learning_reservation_re|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1287,6 +1541,61 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_remote_sites|entityform|distance_learning_reservation_re|default';
+  $field_group->group_name = 'group_remote_sites';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'distance_learning_reservation_re';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Remote Sites',
+    'weight' => '48',
+    'children' => array(
+      0 => 'field_remote_site_details',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Remote Sites',
+      'instance_settings' => array(
+        'classes' => 'group-remote-sites field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_remote_sites|entityform|distance_learning_reservation_re|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_remote_sites|entityform|distance_learning_reservation_re|form';
+  $field_group->group_name = 'group_remote_sites';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'distance_learning_reservation_re';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Remote Sites',
+    'weight' => '48',
+    'children' => array(
+      0 => 'field_remote_site_details',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Remote Sites',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-remote-sites field-group-fieldset',
+        'description' => 'You must have at least one remote site, and for each site the site name is required. Click the "Add another item" button below to add additional sites. Note that you can\'t add another site until you\'ve specified the site name for the previous site.',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_remote_sites|entityform|distance_learning_reservation_re|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_student_data|entityform|dublin_application_form|default';
   $field_group->group_name = 'group_student_data';
   $field_group->entity_type = 'entityform';
@@ -1451,6 +1760,149 @@ function forms_field_group_info() {
     ),
   );
   $export['group_summer_address|entityform|ilr_student_advisor_application_|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_type_of_support_needed|entityform|classroom_technologies_request|default';
+  $field_group->group_name = 'group_type_of_support_needed';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'classroom_technologies_request';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Type of Support Needed',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_support_needed',
+      1 => 'field_equipment_type',
+      2 => 'field_equipment_loan_additional_',
+      3 => 'field_laptop_loan_addl_info',
+      4 => 'field_wireless_networking_needed',
+      5 => 'field_laptop_size_preference',
+      6 => 'field_non_standard_applications',
+      7 => 'field_video_recording_addl_info',
+      8 => 'field_media_cl_tech_video_rec',
+      9 => 'field_number_of_copies',
+      10 => 'field_post_to_web_',
+      11 => 'field_training_technical_support',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Type of Support Needed',
+      'instance_settings' => array(
+        'classes' => 'group-type-of-support-needed field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_type_of_support_needed|entityform|classroom_technologies_request|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_type_of_support_needed|entityform|classroom_technologies_request|form';
+  $field_group->group_name = 'group_type_of_support_needed';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'classroom_technologies_request';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Type of Support Needed',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_support_needed',
+      1 => 'field_equipment_type',
+      2 => 'field_equipment_loan_additional_',
+      3 => 'field_laptop_loan_addl_info',
+      4 => 'field_wireless_networking_needed',
+      5 => 'field_laptop_size_preference',
+      6 => 'field_non_standard_applications',
+      7 => 'field_video_recording_addl_info',
+      8 => 'field_media_cl_tech_video_rec',
+      9 => 'field_number_of_copies',
+      10 => 'field_post_to_web_',
+      11 => 'field_training_technical_support',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Type of Support Needed',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-type-of-support-needed field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_type_of_support_needed|entityform|classroom_technologies_request|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_when_and_where|entityform|classroom_technologies_request|default';
+  $field_group->group_name = 'group_when_and_where';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'classroom_technologies_request';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'When and Where?',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_building_or_location',
+      1 => 'field_room',
+      2 => 'field_dates',
+      3 => 'field_start_time',
+      4 => 'field_end_time',
+      5 => 'field_recurrence',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'When and Where?',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-when-and-where field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_when_and_where|entityform|classroom_technologies_request|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_when_and_where|entityform|classroom_technologies_request|form';
+  $field_group->group_name = 'group_when_and_where';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'classroom_technologies_request';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'When and Where?',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_building_or_location',
+      1 => 'field_room',
+      2 => 'field_dates',
+      3 => 'field_start_time',
+      4 => 'field_end_time',
+      5 => 'field_recurrence',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'When and Where?',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-when-and-where field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_when_and_where|entityform|classroom_technologies_request|form'] = $field_group;
 
   return $export;
 }
