@@ -1967,6 +1967,32 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_currently_working_in_hr_'
+  $field_bases['field_currently_working_in_hr_'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_currently_working_in_hr_',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_date_of_birth_as_text'
   $field_bases['field_date_of_birth_as_text'] = array(
     'active' => 1,
@@ -3604,6 +3630,39 @@ function ilr_field_bases_field_default_field_bases() {
         'CU general information session' => 'CU general information session',
         'Direct mail' => 'Direct mail',
         'Email from ILR School' => 'Email from ILR School',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_how_heard_emhrm'
+  $field_bases['field_how_heard_emhrm'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_how_heard_emhrm',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Google Ad' => 'Google Ad',
+        'LinkedIn ad' => 'LinkedIn ad',
+        'LinkedIn InMail' => 'LinkedIn InMail',
+        'LinkedIn post' => 'LinkedIn post',
+        'SHRM.org ad' => 'SHRM.org ad',
+        'Twitter' => 'Twitter',
+        'Email' => 'Email',
+        'Referral' => 'Referral',
+        'Other' => 'Other',
       ),
       'allowed_values_function' => '',
     ),
@@ -5336,6 +5395,35 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_prefix'
+  $field_bases['field_prefix'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_prefix',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_price'
@@ -7387,6 +7475,37 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_upload_your_resume_or_cv'
+  $field_bases['field_upload_your_resume_or_cv'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_upload_your_resume_or_cv',
+    'foreign keys' => array(
+      'fid' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'file',
+    'settings' => array(
+      'display_default' => 1,
+      'display_field' => 1,
+      'uri_scheme' => 'public',
+    ),
+    'translatable' => 0,
+    'type' => 'file',
+  );
+
   // Exported field_base: 'field_use_ai_data'
   $field_bases['field_use_ai_data'] = array(
     'active' => 1,
@@ -7722,6 +7841,65 @@ function ilr_field_bases_field_default_field_bases() {
         'Sophomore' => 'Sophomore',
         'Junior' => 'Junior',
         'Senior' => 'Senior',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_years_full_time_hr'
+  $field_bases['field_years_full_time_hr'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_years_full_time_hr',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'No experience' => 'No experience',
+        '1-5 years' => '1-5 years',
+        '6-10 years' => '6-10 years',
+        '11-15 years' => '11-15 years',
+        '16-20 years' => '16-20 years',
+        '20+ years' => '20+ years',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_years_full_time_work_exp'
+  $field_bases['field_years_full_time_work_exp'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_years_full_time_work_exp',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        '1-5 years' => '1-5 years',
+        '6-10 years' => '6-10 years',
+        '11-15 years' => '11-15 years',
+        '16-20 years' => '16-20 years',
+        '20+ years' => '20+ years',
       ),
       'allowed_values_function' => '',
     ),
