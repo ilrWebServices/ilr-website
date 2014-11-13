@@ -10536,6 +10536,47 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_address_line_2'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_address_line_2'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_line_2',
+    'label' => 'Address line 2',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_address_type'
   $field_instances['entityform-ilr_alumni_association_event_reg-field_address_type'] = array(
     'bundle' => 'ilr_alumni_association_event_reg',
@@ -10916,6 +10957,44 @@ function forms_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_h_credit_card_payments'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_h_credit_card_payments'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'field_collection',
+        'settings' => array(
+          'add' => 'Add',
+          'delete' => 'Delete',
+          'description' => TRUE,
+          'edit' => 'Edit',
+          'field_formatter_label' => '',
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_view',
+        'weight' => 22,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_h_credit_card_payments',
+    'label' => 'h credit card payments',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 23,
     ),
   );
 
@@ -17419,6 +17498,375 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_amount'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_amount'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_amount',
+    'label' => 'ssl_amount',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_approval_code'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_approval_code'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_approval_code',
+    'label' => 'ssl_approval_code',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 35,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_card_number'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_card_number'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'field_formatter_label' => '',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_card_number',
+    'label' => 'ssl_card_number',
+    'required' => 0,
+    'settings' => array(
+      'max' => 99,
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 40,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_response_data'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_response_data'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_response_data',
+    'label' => 'ssl_response_data',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 41,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_result_message'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_result_message'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_result_message',
+    'label' => 'ssl_result_message',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_txn_id'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_txn_id'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_txn_id',
+    'label' => 'ssl_txn_id',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_txn_time'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_txn_time'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_txn_time',
+    'label' => 'ssl_txn_time',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_transamount'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_transamount'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_transamount',
+    'label' => 'transAmount',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 31,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_transinvoicenum'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_transinvoicenum'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_transinvoicenum',
+    'label' => 'transInvoiceNum',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_netid'
   $field_instances['user-user-field_netid'] = array(
     'bundle' => 'user',
@@ -17473,6 +17921,7 @@ function forms_field_default_field_instances() {
   t('Address');
   t('Address line 1 (permanent)');
   t('Address line 1 (summer)');
+  t('Address line 2');
   t('Address line 2 (permanent)');
   t('Address line 2 (summer)');
   t('Address type');
@@ -17650,7 +18099,17 @@ function forms_field_default_field_instances() {
   t('e.g. Sophomore / Junior / Senior / MILR');
   t('e.g. Spring 2019');
   t('empl recog supp text');
+  t('h credit card payments');
   t('pronunciation markup');
+  t('ssl_amount');
+  t('ssl_approval_code');
+  t('ssl_card_number');
+  t('ssl_response_data');
+  t('ssl_result_message');
+  t('ssl_txn_id');
+  t('ssl_txn_time');
+  t('transAmount');
+  t('transInvoiceNum');
 
   return $field_instances;
 }

@@ -1295,7 +1295,7 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Reservations',
-    'weight' => '16',
+    'weight' => '17',
     'children' => array(
       0 => 'field_tickets_for_aa_members',
       1 => 'field_tickets_for_non_members',
@@ -1303,7 +1303,6 @@ function forms_field_group_info() {
       3 => 'field_attendee_list',
       4 => 'field_attendee_list_guests',
       5 => 'field_attendee_list_markup',
-      6 => 'field_payment_method',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
