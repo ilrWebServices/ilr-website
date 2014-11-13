@@ -534,6 +534,7 @@ features[variable][] = field_bundle_settings_entityform__scheinman_mailing_list
 features[variable][] = field_bundle_settings_entityform__undergrad_appl_for_graduation
 features[variable][] = field_bundle_settings_entityform__wit_email_list_subscribe
 features[variable][] = field_bundle_settings_entityform__worker_institute_contact_form
+features[variable][] = field_bundle_settings_field_collection_item__field_remote_site_details
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][strongarm] = strongarm
 project path = sites/all/modules/features
