@@ -119,7 +119,7 @@ function forms_default_entityform_type() {
   }');
   $items['check_your_eligibility'] = entity_import('entityform_type', '{
     "type" : "check_your_eligibility",
-    "label" : "Check Your Eligibility",
+    "label" : "EMHRM: Check Your Eligibility",
     "data" : {
       "draftable" : 0,
       "draft_redirect_path" : "",
@@ -132,7 +132,7 @@ function forms_default_entityform_type() {
       "delete_confirm_msg" : "",
       "page_title_view" : "",
       "preview_page" : 0,
-      "submission_page_title" : "Check Your Eligibility",
+      "submission_page_title" : "EMHRM: Check Your Eligibility",
       "submission_text" : {
         "value" : "\\u003Cp\\u003EThank you! We have received your completed pre-assessment for the new Executive Master of Human Resource Management, and look forward to evaluating your information. You will receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u003Cem\\u003ENote: Cornell University will not sell, rent, trade or otherwise distribute your email address or personal contact information. See the \\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/privacy.html\\u0022\\u003EILR School Privacy Policy\\u003C\\/a\\u003E for more information.\\u003C\\/em\\u003E\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
