@@ -20857,6 +20857,7 @@ function forms_field_default_field_instances() {
   t('Ethnicity (optional; check all that apply)');
   t('Event date');
   t('Event name');
+  t('Event title');
   t('Example: Barack Obama could submit "bah-RAHK o-BAH-mah"');
   t('Expected graduation date (mm/yyyy)');
   t('Expected graduation year');
