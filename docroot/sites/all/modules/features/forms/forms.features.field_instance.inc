@@ -13525,7 +13525,10 @@ function forms_field_default_field_instances() {
           'multiple_number' => '',
           'multiple_to' => '',
         ),
-        'token' => array(
+        'type' => 'date_default',
+        'weight' => 9,
+      ),
+      'token' => array(
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
