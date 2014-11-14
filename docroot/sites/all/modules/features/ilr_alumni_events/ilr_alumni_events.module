@@ -24,9 +24,21 @@ function ilr_alumni_events_node_view($node, $view_mode) {
 }
 
 /**
+ * Implements hook_entity_presave().
+ */
+function ilr_alumni_events_entityform_presave($entityform) {
+  if ($entityform->type == 'ilr_alumni_association_event_reg') {
+    $wrapper = _ilr_alumni_events_entityform_wrapper($entityform);
+    $flag = $wrapper->field_year_as_text->value();
+    if (empty($flag)) {
+      $entityform->draft = 1;
+    }
+  }
+}
+
+/**
  * Implements hook_entity_insert().
  */
-
 function ilr_alumni_events_entityform_insert($entityform) {
   if ($entityform->type == 'ilr_alumni_association_event_reg') {
     $_SESSION['ilr_alumni_events_entityform_id'] = $entityform->entityform_id;
@@ -200,8 +212,13 @@ function _ilr_alumni_events_payment_iframe() {
 function _ilr_alumni_events_registration_form() {
   module_load_include('inc', 'entityform', 'entityform.admin');
   $entityform_type = entityform_get_types('ilr_alumni_association_event_reg');
-  $form = entityform_form_wrapper(entityform_empty_load($entityform_type->type), 'submit', 'embedded');
-  return $form;
+  if ($eid = $_SESSION['ilr_alumni_events_entityform_id']) {
+    $wrapper = _ilr_alumni_events_entityform_wrapper();
+    if ($wrapper->draft->value() == 1) {
+      return entityform_form_wrapper(entityform_load($eid), 'submit', 'embedded');
+    }
+  }
+  return entityform_form_wrapper(entityform_empty_load($entityform_type->type), 'submit', 'embedded');
 }
 
 function _ilr_alumni_events_registration_callback($form, $form_state) {
