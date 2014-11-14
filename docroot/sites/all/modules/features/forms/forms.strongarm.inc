@@ -536,10 +536,10 @@ function forms_strongarm() {
         'custom_settings' => FALSE,
       ),
       'download' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'table' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'review' => array(
         'custom_settings' => FALSE,

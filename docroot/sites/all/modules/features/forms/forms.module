@@ -500,6 +500,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
   $event_info_for_email = '';
 
   if (_forms_is_event_registration_form($entityform)) {
+    module_load_include('module', 'registration_pages');
     $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
     $node = $entityform_wrapper->field_referenced_node->value();
     $event_info_for_email = _registration_pages_get_event_markup($node);
@@ -674,10 +675,14 @@ function forms_std_confirmation_mail($key, &$message, $params) {
  * be the defining characteristic of a registration form
  */
 function _forms_is_event_registration_form($entityform) {
-  if (isset($entityform->field_referenced_node)
-      && module_exists('registration_pages')
-      && _registration_pages_is_event_registration_form($entityform)) {
-    return TRUE;
+  if (isset($entityform->field_referenced_node)) {
+    if ((module_exists('registration_pages')
+        && _registration_pages_is_event_registration_form($entityform))
+      ||
+        (module_exists('ilr_alumni_events')
+        && _ilr_alumni_events_is_event_registration_form($entityform))) {
+      return TRUE;
+    }
   }
   return FALSE;
 }
