@@ -86,3 +86,10 @@ function ilr_sdc_listings_update_7001() {
     }
   }
 }
+
+/**
+ * Enables the View Bean Types
+ */
+function ilr_sdc_listings_update_7002() {
+  _ilr_sdc_listings_set_bean_types();
+}
