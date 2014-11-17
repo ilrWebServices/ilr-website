@@ -1,11 +1,6 @@
 
 <?php
-/**
- * @file
- * Code for the ILR Alumni Events feature.
- */
 
-include_once 'ilr_alumni_events.features.inc';
 require_once DRUPAL_ROOT . '/../config/get_secrets.php';
 
 define('PAYMENT_PAGE', 'alumni/events/registration');
@@ -179,7 +174,7 @@ function _ilr_alumni_events_get_elavon_form_inputs() {
     'ssl_cvv2cvc2_indicator' => '1',
     'ssl_show_form' => 'true',
     "ssl_transaction_type" => 'ccsale',
-    "ssl_amount" => '1', # How are we going to get this?
+    "ssl_amount" => 'see _ilr_alumni_events_calculate_amount()',
     'ssl_description' => 'Testing the payment form',
     'ssl_result_format' => 'HTML',
     "ssl_customer_code" => 'atf-testing', # need to figure out how to do this
@@ -207,7 +202,7 @@ function _ilr_alumni_events_get_entityform_mappings() {
       "ssl_avs_zip" => 'field_zip_code',
       "ssl_phone" => 'field_phone',
       'ssl_email' => 'field_email',
-      'ssl_amount' => 'field_ssl_amount', // already saved?
+      'ssl_amount' => 'field_ssl_amount',
       'ssl_approval_code' => 'field_ssl_approval_code',
       'ssl_card_number' => 'field_ssl_card_number', // Just first 2 digits
       'ssl_invoice_number' => 'field_transinvoicenum',
@@ -259,7 +254,13 @@ function _ilr_alumni_events_generate_elavon_form_markup() {
   $markup = '<form id="post_pf1" METHOD="POST" action="https://www.myvirtualmerchant.com/VirtualMerchant/process.do">';
   $inputs = _ilr_alumni_events_get_elavon_form_inputs();
   foreach ($inputs as $key => $value) {
-    if (strpos($value, 'field') === 0) {
+    if ($key == 'ssl_amount') {
+      $value = _ilr_alumni_events_calculate_amount();
+    }
+    else if ($key == 'ssl_invoice_number') {
+      $value = _ilr_alumni_events_generate_invoice_number();
+    }
+    else if (strpos($value, 'field') === 0) {
       $value = _ilr_alumni_events_get_entityform_value($value);
     }
     $markup .= '<input type="hidden" name="'.$key.'" value="'.$value.'">';
@@ -282,6 +283,32 @@ function _ilr_alumni_events_get_entityform_mapping($key_or_value) {
     return $key;
   }
   return NULL;
+}
+
+/**
+ * Calculates the amount to be processed based on the values
+ * set for the node upon which the form lives
+ */
+function _ilr_alumni_events_calculate_amount() {
+  $entityform_wrapper = _ilr_alumni_events_entityform_wrapper();
+  $node = $entityform_wrapper->field_referenced_node->value();
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $member_tickets = $entityform_wrapper->field_tickets_for_aa_members->value();
+  $member_cost = $node_wrapper->field_aa_member_price->value();
+  $non_member_tickets = $entityform_wrapper->field_tickets_for_non_members->value();
+  $non_member_cost = $node_wrapper->field_aa_non_member_price->value();
+
+  return ($member_tickets * $member_cost) + ($non_member_tickets * $non_member_cost);
+}
+
+/**
+ * Returns a unique invoice number for the registration
+ * @todo Figure out how to appropriately generate the invoice #
+ */
+function _ilr_alumni_events_generate_invoice_number() {
+  $wrapper = _ilr_alumni_events_entityform_wrapper();
+  $eid = $wrapper->entityform_id->value();
+  return "invoice$eid";
 }
 
 /**
