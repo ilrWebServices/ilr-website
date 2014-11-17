@@ -31,6 +31,9 @@ function registration_pages_strongarm() {
       'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
+      'reference_field' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -39,6 +42,9 @@ function registration_pages_strongarm() {
         ),
         'path' => array(
           'weight' => '1',
+        ),
+        'redirect' => array(
+          'weight' => '12',
         ),
       ),
       'display' => array(),
