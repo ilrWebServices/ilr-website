@@ -737,7 +737,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
-          'trim_length' => 600,
+          'trim_length' => 200,
         ),
         'type' => 'text_summary_or_trimmed',
         'weight' => 0,
