@@ -72,7 +72,7 @@ function ilr_alumni_events_menu() {
     'type' => MENU_CALLBACK,
   );
   $items[RESPONSE_PAGE] = array(
-    'title' => "Alumni Events Payment Details",
+    'title' => "Alumni Event Registration Complete",
     'page callback' => '_ilr_alumni_events_payment_response',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -88,14 +88,26 @@ function ilr_alumni_events_menu() {
  *   - Display message and field results
  */
 function _ilr_alumni_events_payment_response() {
-  $output = '';
+  $output = '<p>Thank you for your registration. One moment while we update your information.</p>';
   $response_variables = drupal_get_query_parameters();
   // Save the results
   _ilr_alumni_events_update_entityform_values($response_variables);
 
-  // Redirect to eform thank you page?
-
+  // Redirect to the entityform success page
+  _ilr_alumni_events_redirect_after_response();
   return $output;
+}
+
+/**
+ * Redirects the user after the entityform values are updated
+ * with their registration info from Elavon
+ * @see _ilr_alumni_events_payment_response()
+ */
+function _ilr_alumni_events_redirect_after_response() {
+  // Redirect the user to the thank you page
+  $wrapper = _ilr_alumni_events_entityform_wrapper();
+  $confirmation_url = _entityform_type_get_confirm_url($wrapper->type->value());
+  drupal_goto($confirmation_url);
 }
 
 /**
@@ -124,7 +136,6 @@ function _ilr_alumni_events_payment_iframe() {
   $output = '';
   if (!empty($_SESSION['ilr_alumni_events_entityform_id'])) {
     $output = _ilr_alumni_events_generate_elavon_form_markup();
-
     drupal_add_js(
       'jQuery(document).ready(function () { jQuery("#sendIt").click(); });',
       array('type' => 'inline', 'scope' => 'footer')
@@ -163,7 +174,7 @@ function _ilr_alumni_events_get_elavon_form_inputs() {
     "ssl_merchant_id" => $ILR_SECRETS['elavon']['alumni_registration_merchant_id'],
     "ssl_user_id" => $ILR_SECRETS['elavon']['alumni_registration_user_id'],
     "ssl_pin" => $ILR_SECRETS['elavon']['alumni_registration_pin'],
-    "ssl_invoice_number" => '1testing1', # How are we going to get this?
+    "ssl_invoice_number" => '1testing2', # How are we going to get this?
     "ssl_salestax" => '0',
     'ssl_cvv2cvc2_indicator' => '1',
     'ssl_show_form' => 'true',
@@ -174,8 +185,8 @@ function _ilr_alumni_events_get_elavon_form_inputs() {
     "ssl_customer_code" => 'atf-testing', # need to figure out how to do this
   );
   return array_merge(
-    $inputs,
-    _ilr_alumni_events_get_entityform_mappings()
+    _ilr_alumni_events_get_entityform_mappings(),
+    $inputs // order here matters, since some fields (ie ssl_amount) are in both arrays
   );
 }
 
@@ -196,19 +207,21 @@ function _ilr_alumni_events_get_entityform_mappings() {
       "ssl_avs_zip" => 'field_zip_code',
       "ssl_phone" => 'field_phone',
       'ssl_email' => 'field_email',
-      // 'ssl_amount' => 'field_', // already saved?
-      // 'ssl_approval_code' => 'field_',
-      // 'ssl_card_number' => 'field_', // Just first 2 digits
-      // 'ssl_invoice_number' => 'field_',
-      // 'ssl_result_message' => 'field_',
-      // 'ssl_status' => 'field_',
-      // 'ssl_txn_id' => 'field_',
-      // 'ssl_txn_time' => 'field_',
+      'ssl_amount' => 'field_ssl_amount', // already saved?
+      'ssl_approval_code' => 'field_ssl_approval_code',
+      'ssl_card_number' => 'field_ssl_card_number', // Just first 2 digits
+      'ssl_invoice_number' => 'field_transinvoicenum',
+      'ssl_result_message' => 'field_ssl_result_message',
+      'ssl_txn_id' => 'field_ssl_txn_id',
+      'ssl_txn_time' => 'field_ssl_txn_time',
     );
   }
   return $mappings;
 }
 
+/**
+ * Takes a field name key and returns its value
+ */
 function _ilr_alumni_events_get_entityform_value($key) {
   $wrapper = _ilr_alumni_events_entityform_wrapper();
   if (isset($wrapper->{$key})) {
@@ -225,15 +238,23 @@ function _ilr_alumni_events_update_entityform_values($variables) {
   $wrapper = _ilr_alumni_events_entityform_wrapper();
   foreach ($variables as $elavon_key => $value) {
     if ($field_name = _ilr_alumni_events_get_entityform_mapping($elavon_key)) {
+      if ($field_name == 'field_ssl_card_number') {
+        // Remove all but first two characters of CC #
+        $value = $variables[$elavon_key] = substr($value, 0, 2);
+      }
       $entityform_wrapper->{$field_name}->set($value);
     }
   }
+  $entityform_wrapper->field_ssl_response_data->set($variables);
   // Remove the session and draft
   unset($_SESSION['ilr_alumni_events_entityform_id']);
   $wrapper->draft = 0;
   $wrapper->save();
 }
 
+/**
+ * Generates the form markup that gets auto-posted to Elavon
+ */
 function _ilr_alumni_events_generate_elavon_form_markup() {
   $markup = '<form id="post_pf1" METHOD="POST" action="https://www.myvirtualmerchant.com/VirtualMerchant/process.do">';
   $inputs = _ilr_alumni_events_get_elavon_form_inputs();
