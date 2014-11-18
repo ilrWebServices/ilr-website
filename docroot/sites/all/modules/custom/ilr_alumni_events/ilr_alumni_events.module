@@ -198,7 +198,6 @@ function _ilr_alumni_events_get_entityform_mappings() {
       "ssl_address2" => 'field_address_line_2',
       "ssl_city" => 'field_city',
       "ssl_state" => 'field_state_province',
-      'ssl_country' => 'field_country',
       "ssl_avs_zip" => 'field_zip_code',
       "ssl_phone" => 'field_phone',
       'ssl_email' => 'field_email',

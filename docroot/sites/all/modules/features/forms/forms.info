@@ -372,7 +372,6 @@ features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_a
 features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_attendee_list_markup
 features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_city
 features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_company
-features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_country
 features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_email
 features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_first_name
 features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_guests

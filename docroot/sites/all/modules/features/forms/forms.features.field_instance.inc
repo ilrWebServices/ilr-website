@@ -13292,47 +13292,6 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_country'
-  $field_instances['entityform-ilr_alumni_association_event_reg-field_country'] = array(
-    'bundle' => 'ilr_alumni_association_event_reg',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 11,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_country',
-    'label' => 'Country',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 12,
-    ),
-  );
-
   // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_email'
   $field_instances['entityform-ilr_alumni_association_event_reg-field_email'] = array(
     'bundle' => 'ilr_alumni_association_event_reg',
