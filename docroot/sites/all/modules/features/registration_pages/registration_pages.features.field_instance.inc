@@ -95,7 +95,7 @@ function registration_pages_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_aa_member_price',
-    'label' => 'AA Member Price',
+    'label' => 'ILRAA Member Price',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -141,7 +141,7 @@ function registration_pages_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_aa_non_member_price',
-    'label' => 'AA Non-member Price',
+    'label' => 'ILRAA Non-member Price',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -556,8 +556,8 @@ function registration_pages_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('AA Member Price');
-  t('AA Non-member Price');
+  t('ILRAA Member Price');
+  t('ILRAA Non-member Price');
   t('Body');
   t('Event date');
   t('Form availability start date and end date (deadline)');

@@ -1,11 +1,13 @@
 
 <?php
+global $base_url;
 
 require_once DRUPAL_ROOT . '/../config/get_secrets.php';
 
 define('PAYMENT_PAGE', 'alumni/events/registration');
 define('PAYMENT_IFRAME', 'alumni/events/iframe');
 define('RESPONSE_PAGE', 'alumni/events/response');
+define('RETURN_URL', $base_url.'/'. RESPONSE_PAGE .'?elavon=1');
 
 
 /**
@@ -164,7 +166,7 @@ function _ilr_alumni_events_get_elavon_form_inputs() {
     "ssl_receipt_link_method" => 'REDG',
     "ssl_receipt_apprvl_method" => 'REDG',
     "ssl_receipt_decl_method" => 'REDG',
-    "ssl_receipt_link_url" => "alumni/events/response",
+    "ssl_receipt_link_url" => RETURN_URL,
     'ssl_test_mode' => 'true',
     "ssl_merchant_id" => $ILR_SECRETS['elavon']['alumni_registration_merchant_id'],
     "ssl_user_id" => $ILR_SECRETS['elavon']['alumni_registration_user_id'],
