@@ -169,15 +169,14 @@ function _ilr_alumni_events_get_elavon_form_inputs() {
     "ssl_merchant_id" => $ILR_SECRETS['elavon']['alumni_registration_merchant_id'],
     "ssl_user_id" => $ILR_SECRETS['elavon']['alumni_registration_user_id'],
     "ssl_pin" => $ILR_SECRETS['elavon']['alumni_registration_pin'],
-    "ssl_invoice_number" => '1testing2', # How are we going to get this?
+    "ssl_invoice_number" => 'see _ilr_alumni_events_generate_invoice_number()',
     "ssl_salestax" => '0',
     'ssl_cvv2cvc2_indicator' => '1',
     'ssl_show_form' => 'true',
     "ssl_transaction_type" => 'ccsale',
     "ssl_amount" => 'see _ilr_alumni_events_calculate_amount()',
-    'ssl_description' => 'Testing the payment form',
     'ssl_result_format' => 'HTML',
-    "ssl_customer_code" => 'atf-testing', # need to figure out how to do this
+    'ssl_description' => 'see _ilr_alumni_events_get_event_title',
   );
   return array_merge(
     _ilr_alumni_events_get_entityform_mappings(),
@@ -198,6 +197,7 @@ function _ilr_alumni_events_get_entityform_mappings() {
       "ssl_address2" => 'field_address_line_2',
       "ssl_city" => 'field_city',
       "ssl_state" => 'field_state_province',
+      'ssl_company' => 'field_company',
       "ssl_avs_zip" => 'field_zip_code',
       "ssl_phone" => 'field_phone',
       'ssl_email' => 'field_email',
@@ -253,14 +253,21 @@ function _ilr_alumni_events_generate_elavon_form_markup() {
   $markup = '<form id="post_pf1" METHOD="POST" action="https://www.myvirtualmerchant.com/VirtualMerchant/process.do">';
   $inputs = _ilr_alumni_events_get_elavon_form_inputs();
   foreach ($inputs as $key => $value) {
-    if ($key == 'ssl_amount') {
-      $value = _ilr_alumni_events_calculate_amount();
-    }
-    else if ($key == 'ssl_invoice_number') {
-      $value = _ilr_alumni_events_generate_invoice_number();
-    }
-    else if (strpos($value, 'field') === 0) {
-      $value = _ilr_alumni_events_get_entityform_value($value);
+    switch ($key) {
+      case 'ssl_amount':
+        $value = _ilr_alumni_events_calculate_amount();
+        break;
+      case 'ssl_invoice_number':
+        $value = _ilr_alumni_events_generate_invoice_number();
+        break;
+      case 'ssl_description':
+        $value = _ilr_alumni_events_get_event_title();
+        break;
+      default:
+        if (strpos($value, 'field') === 0) {
+          $value = _ilr_alumni_events_get_entityform_value($value);
+        }
+        break;
     }
     $markup .= '<input type="hidden" name="'.$key.'" value="'.$value.'">';
   }
@@ -308,6 +315,11 @@ function _ilr_alumni_events_generate_invoice_number() {
   $wrapper = _ilr_alumni_events_entityform_wrapper();
   $eid = $wrapper->entityform_id->value();
   return "invoice$eid";
+}
+
+function _ilr_alumni_events_get_event_title() {
+  $entityform_wrapper = _ilr_alumni_events_entityform_wrapper();
+  return $entityform_wrapper->field_referenced_node->value()->title;
 }
 
 /**
