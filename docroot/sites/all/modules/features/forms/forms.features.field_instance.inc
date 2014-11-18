@@ -336,6 +336,641 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-check_your_eligibility-field_address_line_1'
+  $field_instances['entityform-check_your_eligibility-field_address_line_1'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_line_1',
+    'label' => 'Address',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_city'
+  $field_instances['entityform-check_your_eligibility-field_city'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_city',
+    'label' => 'City',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 41,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_country'
+  $field_instances['entityform-check_your_eligibility-field_country'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_country',
+    'label' => 'Country',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 47,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_currently_working_in_hr_'
+  $field_instances['entityform-check_your_eligibility-field_currently_working_in_hr_'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_currently_working_in_hr_',
+    'label' => 'Are you currently working in HR for an organization?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_buttons',
+      'weight' => 50,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_email'
+  $field_instances['entityform-check_your_eligibility-field_email'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_first_name'
+  $field_instances['entityform-check_your_eligibility-field_first_name'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_first_name',
+    'label' => 'First name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 33,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_how_heard_emhrm'
+  $field_instances['entityform-check_your_eligibility-field_how_heard_emhrm'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'How did you hear about us?',
+        ),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_how_heard_emhrm',
+    'label' => 'How did you hear about us? (check all that apply)',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 53,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_how_heard_other'
+  $field_instances['entityform-check_your_eligibility-field_how_heard_other'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_how_heard_other',
+    'label' => 'Other ways you heard of us',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 55,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_job_title'
+  $field_instances['entityform-check_your_eligibility-field_job_title'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_job_title',
+    'label' => 'Job title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 52,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_last_name'
+  $field_instances['entityform-check_your_eligibility-field_last_name'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 35,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_prefix'
+  $field_instances['entityform-check_your_eligibility-field_prefix'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_prefix',
+    'label' => 'Prefix',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 31,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_state_province'
+  $field_instances['entityform-check_your_eligibility-field_state_province'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_state_province',
+    'label' => 'State / Province',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 43,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_upload_your_resume_or_cv'
+  $field_instances['entityform-check_your_eligibility-field_upload_your_resume_or_cv'] = array(
+    'bundle' => 'check_your_eligibility',
+    'deleted' => 0,
+    'description' => '<br>PDF format is preferred. If you have more than one file, create and upload a zip file.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(
+          'field_formatter_label' => 'Uploaded resume or CV',
+        ),
+        'type' => 'file_default',
+        'weight' => 15,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_upload_your_resume_or_cv',
+    'label' => 'Upload your resume or CV',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'pdf doc docx txt zip',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 56,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_years_full_time_hr'
+  $field_instances['entityform-check_your_eligibility-field_years_full_time_hr'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_years_full_time_hr',
+    'label' => 'Years as a full-time HR practitioner',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 49,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_years_full_time_work_exp'
+  $field_instances['entityform-check_your_eligibility-field_years_full_time_work_exp'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_years_full_time_work_exp',
+    'label' => 'Years of full-time work experience',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 48,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-check_your_eligibility-field_zip_code'
+  $field_instances['entityform-check_your_eligibility-field_zip_code'] = array(
+    'bundle' => 'check_your_eligibility',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_zip_code',
+    'label' => 'Zip code',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 45,
+    ),
+  );
+
   // Exported field_instance: 'entityform-classroom_reservation_request-field_comments'
   $field_instances['entityform-classroom_reservation_request-field_comments'] = array(
     'bundle' => 'classroom_reservation_request',
@@ -19358,6 +19993,7 @@ function forms_field_default_field_instances() {
   t(' Semester requesting assistantship');
   t(' Send an ILR Viewbook, which includes an overview of the undergraduate program');
   t('(If this is a different spelling than what appears on your student center, please visit the Office of the University Registrar in B7 Day hall to have it officially changed.)');
+  t('<br>PDF format is preferred. If you have more than one file, create and upload a zip file.');
   t('<p>If there are technical needs, training is required prior to the use of a room. Please contact ILR Technology Services to make these arrangements via email at: <a href="mailto:ilrvtc@cornell.edu>ilrvtc@cornell.edu</a>.</p>
 <p>Note: ILR Technology Services does not support Skype in the classrooms. If using Skype, please use your own laptop.</p>');
   t('Academic goals essay');
@@ -19381,6 +20017,7 @@ function forms_field_default_field_instances() {
   t('Any other ways you learned about the ILR School');
   t('Are you a transfer student');
   t('Are you applying as a freshman or transfer student?');
+  t('Are you currently working in HR for an organization?');
   t('Are you currently, or have you ever been, subject to disciplinary action at Cornell?');
   t('Areas of interest');
   t('Based on your experience, what are some of the most pressing questions and concerns of new Cornell students?');
@@ -19449,6 +20086,7 @@ function forms_field_default_field_instances() {
   t('Home phone number');
   t('Home state or country');
   t('How did you hear about the Labor Roundtable?');
+  t('How did you hear about us? (check all that apply)');
   t('How did you learn about the ILR School? (check all that apply)');
   t('How many people');
   t('I am a prospective');
@@ -19461,6 +20099,7 @@ function forms_field_default_field_instances() {
   t('Indicate level, if any, of computer skills or knowledge');
   t('Indicate preference for teaching or research assistantship');
   t('Job Title');
+  t('Job title');
   t('Laptop Loan: Additional Information');
   t('Laptop size preference');
   t('Last Name');
@@ -19493,6 +20132,7 @@ function forms_field_default_field_instances() {
   t('Organization');
   t('Other academic interests (non-ILR)');
   t('Other academic interests not listed above');
+  t('Other ways you heard of us');
   t('Page title');
   t('Passport number');
   t('Phone');
@@ -19501,6 +20141,7 @@ function forms_field_default_field_instances() {
   t('Please elaborate on your ILR academic interests');
   t('Please list the courses in which you are currently enrolled');
   t('Preferred students (in order of preference), or desired qualifications');
+  t('Prefix');
   t('Professor');
   t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
   t('Pronunciation');
@@ -19544,6 +20185,7 @@ function forms_field_default_field_instances() {
   t('Title');
   t('Title of paper or poster');
   t('Type of grad assistant');
+  t('Upload your resume or CV');
   t('Video Recording: Additional Info');
   t('Visa type (if non-US citizen)');
   t('What are your academic interests? (check all that apply)');
@@ -19555,6 +20197,8 @@ function forms_field_default_field_instances() {
   t('Will you need to project transparencies, paper, or 3D objects?');
   t('Wireless networking needed');
   t('Year');
+  t('Years as a full-time HR practitioner');
+  t('Years of full-time work experience');
   t('Your letter of support');
   t('Your name');
   t('Your questions');
