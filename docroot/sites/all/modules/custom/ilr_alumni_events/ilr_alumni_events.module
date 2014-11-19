@@ -260,7 +260,6 @@ function _ilr_alumni_events_update_entityform_values($variables) {
       } // Check the field collection
       else if (isset($wrapper->field_h_credit_card_payments->{$field_name})) {
         _ilr_alumni_events_set_field_collection_data(
-          $wrapper->field_h_credit_card_payments,
           $field_name,
           $value
         );
@@ -268,7 +267,6 @@ function _ilr_alumni_events_update_entityform_values($variables) {
     }
   }
   _ilr_alumni_events_set_field_collection_data(
-    $wrapper->field_h_credit_card_payments->field_ssl_response_data,
     'field_ssl_response_data',
     serialize($variables)
   );
@@ -276,8 +274,8 @@ function _ilr_alumni_events_update_entityform_values($variables) {
   $wrapper->save();
 }
 
-function _ilr_alumni_events_set_field_collection_data($field_collection_item, $field_name, $value) {
-  $wrapper = entity_metadata_wrapper('field_collection_item', $field_collection_item);
+function _ilr_alumni_events_set_field_collection_data($field_name, $value) {
+  $wrapper = _ilr_alumni_events_field_collection_wrapper();
   $wrapper->{$field_name}->set($value);
   $wrapper->save();
 }
@@ -370,4 +368,28 @@ function _ilr_alumni_events_entityform_wrapper($entityform=NULL) {
     $wrapper = entity_metadata_wrapper('entityform', $entityform);
   }
   return $wrapper;
+}
+
+/**
+ * Creates or retrieves a field_collection wrapper
+ */
+function _ilr_alumni_events_field_collection_wrapper() {
+  $wrapper = &drupal_static(__FUNCTION__);
+  if (!isset($wrapper)) {
+    $collection = entity_create('field_collection_item', array('field_name' => 'field_h_credit_card_payments'));
+    $collection->setHostEntity('entityform', _ilr_alumni_events_entityform());
+    $wrapper = entity_metadata_wrapper('field_collection_item', $collection);
+  }
+  return $wrapper;
+}
+
+/**
+ * Loads or retrieves the entityform object
+ */
+function _ilr_alumni_events_entityform() {
+  $entityform = &drupal_static(__FUNCTION__);
+  if (!isset($entityform)) {
+    $entityform = entityform_load($_SESSION['ilr_alumni_events_entityform_id']);
+  }
+  return $entityform;
 }
