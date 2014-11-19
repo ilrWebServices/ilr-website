@@ -85,13 +85,17 @@ function ilr_alumni_events_menu() {
  *   - Display message and field results
  */
 function _ilr_alumni_events_payment_response() {
-  $output = '<p>Thank you for your registration. One moment while we update your information.</p>';
+  $output = '';
   $response_variables = drupal_get_query_parameters();
-  // Save the results
-  _ilr_alumni_events_update_entityform_values($response_variables);
-
-  // Redirect to the entityform success page
-  _ilr_alumni_events_redirect_after_response();
+  if (count($response_variables)) { // Confirm that Elavon sent information
+    $output = '<p>Thank you for your registration. One moment while we update your information.</p>';
+    // Save the results
+    _ilr_alumni_events_update_entityform_values($response_variables);
+    // Redirect to the entityform success page
+    _ilr_alumni_events_redirect_after_response();
+  } else {
+    $output = '<p>Sorry, but there was an error processing your request.</p>';
+  }
   return $output;
 }
 
@@ -101,10 +105,22 @@ function _ilr_alumni_events_payment_response() {
  * @see _ilr_alumni_events_payment_response()
  */
 function _ilr_alumni_events_redirect_after_response() {
-  // Redirect the user to the thank you page
-  $wrapper = _ilr_alumni_events_entityform_wrapper();
-  $confirmation_url = _entityform_type_get_confirm_url($wrapper->type->value());
-  drupal_goto($confirmation_url);
+  if (isset($_SESSION['ilr_alumni_events_entityform_id'])) {
+    $eid = $_SESSION['ilr_alumni_events_entityform_id'];
+    $wrapper = _ilr_alumni_events_entityform_wrapper();
+    $confirmation_url = _entityform_type_get_confirm_url($wrapper->type->value()->type);
+    $params = array(
+      'query' => array(
+        'entityform_id' => $eid,
+        'elavon' => '1',
+      ),
+    );
+    // Keep entityform from denying access
+    $_SESSION['entityform_submission'] = $eid;
+    //unset($_SESSION['ilr_alumni_events_entityform_id']);
+    drupal_goto($confirmation_url, $params);
+  }
+
 }
 
 /**
@@ -229,6 +245,7 @@ function _ilr_alumni_events_get_entityform_value($key) {
 /**
  * Updates the entityform values based on what is returned
  * from the payment gateway
+ * @todo Improve the logic around the field collection
  */
 function _ilr_alumni_events_update_entityform_values($variables) {
   $wrapper = _ilr_alumni_events_entityform_wrapper();
@@ -238,13 +255,30 @@ function _ilr_alumni_events_update_entityform_values($variables) {
         // Remove all but first two characters of CC #
         $value = $variables[$elavon_key] = substr($value, 0, 2);
       }
-      $entityform_wrapper->{$field_name}->set($value);
+      if (isset($wrapper->{$field_name})) {
+        $wrapper->{$field_name}->set($value);
+      } // Check the field collection
+      else if (isset($wrapper->field_h_credit_card_payments->{$field_name})) {
+        _ilr_alumni_events_set_field_collection_data(
+          $wrapper->field_h_credit_card_payments,
+          $field_name,
+          $value
+        );
+      }
     }
   }
-  $entityform_wrapper->field_ssl_response_data->set($variables);
-  // Remove the session and draft
-  unset($_SESSION['ilr_alumni_events_entityform_id']);
+  _ilr_alumni_events_set_field_collection_data(
+    $wrapper->field_h_credit_card_payments->field_ssl_response_data,
+    'field_ssl_response_data',
+    serialize($variables)
+  );
   $wrapper->draft = 0;
+  $wrapper->save();
+}
+
+function _ilr_alumni_events_set_field_collection_data($field_collection_item, $field_name, $value) {
+  $wrapper = entity_metadata_wrapper('field_collection_item', $field_collection_item);
+  $wrapper->{$field_name}->set($value);
   $wrapper->save();
 }
 
@@ -287,7 +321,7 @@ function _ilr_alumni_events_get_entityform_mapping($key_or_value) {
   if (array_key_exists($key_or_value, $mappings)) {
     return $mappings[$key_or_value];
   } // Check to see if the value is in the array values
-  else if ($key = array_search($value, $mappings)) {
+  else if ($key = array_search($key_or_value, $mappings)) {
     return $key;
   }
   return NULL;
