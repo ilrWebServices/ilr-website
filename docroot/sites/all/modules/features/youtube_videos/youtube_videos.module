@@ -201,3 +201,17 @@ function _youtube_videos_embed_url($video_id, $include_query = TRUE) {
   // Leave protocol off to avoid mixed active content issues
   return "//www.youtube.com/embed/{$video_id}" . ($include_query ? "?autoplay=1&rel=0" : '');
 }
+
+/**
+ * Implements hook_file_default_displays_alter().
+ */
+function youtube_videos_file_default_displays_alter(&$file_displays) {
+  if (isset($file_displays['video__default__media_youtube_video'])) {
+    $file_displays['video__default__media_youtube_video']->settings['rel'] = 0;
+    $file_displays['video__default__media_youtube_video']->settings['width'] = '100%';
+    $file_displays['video__default__media_youtube_video']->settings['height'] = '100%';
+
+    // Move it up to the top
+    $file_displays['video__default__media_youtube_video']->weight = -100;
+  }
+}
