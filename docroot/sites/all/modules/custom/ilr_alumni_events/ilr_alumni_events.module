@@ -110,10 +110,9 @@ function _ilr_alumni_events_redirect_after_response() {
     );
     // Keep entityform from denying access
     $_SESSION['entityform_submission'] = $eid;
-    unset($_SESSION['ilr_alumni_events_entityform_id']);
+    //unset($_SESSION['ilr_alumni_events_entityform_id']);
     drupal_goto($confirmation_url, $params);
   }
-
 }
 
 /**
@@ -123,7 +122,11 @@ function _ilr_alumni_events_payment_page() {
   $output = '';
   if (!empty($_SESSION['ilr_alumni_events_entityform_id'])) {
     // Load the page that posts to virtualmerchant.do
-    $output = '<iframe src="/alumni/events/iframe?layout=0" width="100%" height="1000" />';
+    $url = '/alumni/events/iframe?layout=0';
+    if (_ilr_alumni_events_is_test()) {
+      $url .= '&test=1';
+    }
+    $output = '<iframe src="'.$url.'" width="100%" height="1000" />';
   } // Session missing
   else {
     $output = '<p>Sorry, but there was an error processing your request. Please make sure that cookies are enabled in your browser, hit your back button to reload the alumni event form, and submit your registration again.</p>';
@@ -169,7 +172,7 @@ function _ilr_alumni_events_get_elavon_form_inputs() {
     "ssl_receipt_apprvl_method" => 'REDG',
     "ssl_receipt_decl_method" => 'REDG',
     "ssl_receipt_link_url" => _ilr_alumni_events_get_response_url(),
-    'ssl_test_mode' => 'true',
+    'ssl_test_mode' => _ilr_alumni_events_test_value(),
     "ssl_merchant_id" => $ILR_SECRETS['elavon']['alumni_registration_merchant_id'],
     "ssl_user_id" => $ILR_SECRETS['elavon']['alumni_registration_user_id'],
     "ssl_pin" => $ILR_SECRETS['elavon']['alumni_registration_pin'],
@@ -383,4 +386,23 @@ function _ilr_alumni_events_entityform() {
 function _ilr_alumni_events_get_response_url() {
   global $base_url;
   return $base_url . '/' . 'alumni/events/response' . '?layout=0';
+}
+
+/**
+ * Returns a boolean based on whether it should be a test
+ * In order to test the form, you add ?test=1 to the url,
+ * ie: http://www.ilr-website.dev/alumni/events/registration?test=1
+ */
+function _ilr_alumni_events_is_test() {
+  if ( isset($_GET['test']) && $_GET['test'] == '1' ) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Elavon wants a string, which we return here
+ */
+function _ilr_alumni_events_test_value() {
+  return (_ilr_alumni_events_is_test()) ? 'true' : 'false';
 }
