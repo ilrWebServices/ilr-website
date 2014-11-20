@@ -26,6 +26,7 @@ function ilr_sub_pages_create_sub_page($parent_node) {
   // prepare form state
   $form_state = array();
   $form_state['build_info']['args'] = array($node);
+  $form_state['#ilr_sub_page'] = TRUE;
   form_load_include($form_state, 'inc', 'node', 'node.pages');
 
   return drupal_build_form($node->type . '_node_form', $form_state);

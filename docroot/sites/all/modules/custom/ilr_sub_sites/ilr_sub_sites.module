@@ -65,7 +65,13 @@ function _ilr_sub_sites_is_sub_site_homepage($node) {
  * Add form elements for create a submenu
  */
 function ilr_sub_sites_form_basic_page_node_form_alter(&$form, &$form_state, $form_id) {
-  if (user_access('administer content types') && isset($form['menu'])) {
+  /*
+   * Only alter form if
+   *  1. Not ILR Sub Page. @see ilr_sub_pages_create_sub_page.
+   *  2. User can administer content types(might want 'administer sub site' permission in future).
+   *  3. $form['menu'] has been set by menu module.
+   */
+  if (empty($form_state['#ilr_sub_page']) && user_access('administer content types') && isset($form['menu'])) {
     if (_ilr_sub_sites_is_sub_site_homepage($form['#node'])) {
       $form['menu']['#access'] = FALSE;
       // Inform administrators how to remove as sub site.
