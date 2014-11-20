@@ -105,7 +105,7 @@ function _ilr_alumni_events_redirect_after_response() {
     $params = array(
       'query' => array(
         'entityform_id' => $eid,
-        'elavon' => '1',
+        'layout' => '0',
       ),
     );
     // Keep entityform from denying access
@@ -117,23 +117,16 @@ function _ilr_alumni_events_redirect_after_response() {
 }
 
 /**
- * Sets up bare-bones template for the elavon form iframe
- * @see _ilr_alumni_events_payment_page()
- */
-function ilr_alumni_events_preprocess_page(&$variables) {
-  if ( isset($_GET['elavon']) && $_GET['elavon'] == 1 ) {
-    $variables['theme_hook_suggestions'][] = 'page__elavon';
-  }
-}
-
-/**
  * The page callback function defined in hook_menu().
  */
 function _ilr_alumni_events_payment_page() {
   $output = '';
   if (!empty($_SESSION['ilr_alumni_events_entityform_id'])) {
     // Load the page that posts to virtualmerchant.do
-    $output = '<iframe src="/alumni/events/iframe?elavon=1" width="100%" height="1000" />';
+    $output = '<iframe src="/alumni/events/iframe?layout=0" width="100%" height="1000" />';
+  } // Session missing
+  else {
+    $output = '<p>Sorry, but there was an error processing your request. Please make sure that cookies are enabled in your browser, hit your back button to reload the alumni event form, and submit your registration again.</p>';
   }
   return $output;
 }
@@ -389,5 +382,5 @@ function _ilr_alumni_events_entityform() {
 
 function _ilr_alumni_events_get_response_url() {
   global $base_url;
-  return $base_url . '/' . 'alumni/events/response' . '?elavon=1';
+  return $base_url . '/' . 'alumni/events/response' . '?layout=0';
 }
