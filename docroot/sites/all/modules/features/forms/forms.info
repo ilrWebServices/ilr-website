@@ -386,6 +386,7 @@ features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_r
 features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_state_province
 features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_tickets_for_aa_members
 features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_tickets_for_non_members
+features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_total_cost
 features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_year_as_text
 features[field_instance][] = entityform-ilr_alumni_association_event_reg-field_zip_code
 features[field_instance][] = entityform-ilr_information_session_sign_in-field_academic_interests_admissi

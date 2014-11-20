@@ -288,6 +288,7 @@ features[field_base][] = field_tickets_for_aa_members
 features[field_base][] = field_tickets_for_non_members
 features[field_base][] = field_title_additional
 features[field_base][] = field_title_of_paper_or_poster
+features[field_base][] = field_total_cost
 features[field_base][] = field_training_technical_support
 features[field_base][] = field_transamount
 features[field_base][] = field_transfer_student
