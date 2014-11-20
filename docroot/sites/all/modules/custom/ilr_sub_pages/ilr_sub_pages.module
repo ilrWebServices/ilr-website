@@ -113,9 +113,17 @@ function ilr_sub_pages_node_form_validate($form, &$form_state) {
  */
 function ilr_sub_pages_form_basic_page_node_form_alter(&$form, &$form_state, $form_id) {
   $view_advanced_menu = user_access('view page advanced menu settings');
+  $node = $form['#node'];
+  // This element is added by menu module a 'value' type. We override to let user choose.
+  $form['menu']['link']['hidden'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Hide from menu output.'),
+    '#description' => t('Check if you would like the page to appear under the sub site but not in the menu.'),
+    '#default_value' => isset($node->menu['hidden']) ? $node->menu['hidden'] : 0,
+  );
   // set menu parent item default value if creating sub page
   if (isset($form['#node']->ilr_default_menu_parent)) {
-    $form['menu']['link']['parent']['#default_value'] = $form['#node']->ilr_default_menu_parent;
+    $form['menu']['link']['parent']['#default_value'] = $node->ilr_default_menu_parent;
     $form['menu']['enabled']['#value'] = TRUE;
   }
   if (!$view_advanced_menu) {
@@ -184,7 +192,7 @@ function _ilr_sub_pages_create_sub_page_access($node, $access_arg) {
 }
 
 /**
- * Determines whether the parent is at the root of the main-menu,
+ * Determinot of the mes whether the parent is at the roain-menu,
  * or the grandparent is at the root of the sub site menu
  */
 function _ilr_sub_pages_is_top_menu_level($form_state) {
