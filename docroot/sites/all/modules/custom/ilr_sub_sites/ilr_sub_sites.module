@@ -75,14 +75,14 @@ function ilr_sub_sites_form_basic_page_node_form_alter(&$form, &$form_state, $fo
     if (_ilr_sub_sites_is_sub_site_homepage($form['#node'])) {
       $form['menu']['#access'] = FALSE;
       // Inform administrators how to remove as sub site.
-      drupal_set_message('This page is currently sub site homepage. To change this you must use the menu administration screens.');
+      drupal_set_message('This page is currently a sub site homepage. To change this you must use the menu administration screens.');
     }
     else {
       // This page is not currently a sub site.
       $form['menu']['create_subsite'] = array(
         '#type' => 'checkbox',
         '#title' => t('Create Subsite Menu.'),
-        '#description' => t('Create a new sub site menu and '),
+        '#description' => t('Create a new sub site menu and add a link to this node at the top level.'),
         '#states' => array(
           'invisible' => array(
             'input[name="menu[enabled]"]' => array(
@@ -94,7 +94,7 @@ function ilr_sub_sites_form_basic_page_node_form_alter(&$form, &$form_state, $fo
       $form['menu']['subsite_title'] = array(
         '#type' => 'textfield',
         '#title' => t('Menu Title'),
-        '#description' => t('If blank then the page title will be used'),
+        '#description' => t('If blank then the page title will be used.'),
         '#states' => array(
           'invisible' => array(
             'input[name="menu[create_subsite]"]' => array(
@@ -125,7 +125,7 @@ function _ilr_sub_sites_basic_page_validate($form, &$form_state) {
   if (!empty($menu_values['create_subsite'])) {
     // This shouldn't happen because of JS but just in case.
     if (!empty($menu_values['enabled'])) {
-      form_error($form['menu'], t('You can not both create a menu link and create a subsite menu'));
+      form_error($form['menu'], t('You cannot create both a menu link and a sub site menu.'));
       return;
     }
   }
