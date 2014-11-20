@@ -4,12 +4,24 @@
 require_once DRUPAL_ROOT . '/../config/get_secrets.php';
 
 /**
+ * Implements hook_init().
+ */
+function ilr_alumni_events_init() {
+  drupal_add_js(drupal_get_path('module','ilr_alumni_events') . '/ilr_alumni_events.js', array('type' => 'file', 'scope' => 'footer'));
+}
+
+/**
  * Attempts to load the entityform draft if there is a SESSION
  */
 function ilr_alumni_events_node_view($node, $view_mode) {
   if ($node->type == 'registration_page' && $view_mode == 'full') {
+    $wrapper = entity_metadata_wrapper('node', $node);
+    drupal_add_js(array(
+      'ilr_alumni_events' => array(
+        'memberPrice' => $wrapper->field_aa_member_price->value(),
+        'nonMemberPrice' => $wrapper->field_aa_non_member_price->value(),
+      )), 'setting');
     if (isset($_SESSION['ilr_alumni_events_entityform_id'])) {
-      $wrapper = entity_metadata_wrapper('node', $node);
       if ($wrapper->field_registration_form->type->value() == 'ilr_alumni_association_event_reg') {
         unset($node->content['field_registration_form']);
         $form = _ilr_alumni_events_registration_form();
@@ -23,12 +35,18 @@ function ilr_alumni_events_node_view($node, $view_mode) {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ilr_alumni_events_form_ilr_alumni_association_event_reg_entityform_edit_form_alter(&$form, &$form_state) {
+  $form['field_total_cost'][LANGUAGE_NONE][0]['#markup'] = '<label>Total Cost</label><p>$<span class="total-cost">0</span></p>';
+}
+/**
  * Implements hook_entity_presave().
  */
 function ilr_alumni_events_entityform_presave($entityform) {
   if ($entityform->type == 'ilr_alumni_association_event_reg') {
     $wrapper = _ilr_alumni_events_entityform_wrapper($entityform);
-    $flag = $wrapper->field_year_as_text->value();
+    $flag = $wrapper->field_total_cost->value();
     if (empty($flag)) {
       $entityform->draft = 1;
     }
@@ -255,10 +273,13 @@ function _ilr_alumni_events_update_entityform_values($variables) {
       }
     }
   }
+  // Set the total cost and the response_data
+  $wrapper->field_total_cost->set($variables['ssl_amount']);
   _ilr_alumni_events_set_field_collection_data(
     'field_ssl_response_data',
     serialize($variables)
   );
+  // Remove the "draft" setting on the entityform
   $wrapper->draft = 0;
   $wrapper->save();
 }
