@@ -110,7 +110,7 @@ function _ilr_alumni_events_redirect_after_response() {
     );
     // Keep entityform from denying access
     $_SESSION['entityform_submission'] = $eid;
-    //unset($_SESSION['ilr_alumni_events_entityform_id']);
+    unset($_SESSION['ilr_alumni_events_entityform_id']);
     drupal_goto($confirmation_url, $params);
   }
 
