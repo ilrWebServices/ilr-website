@@ -81,7 +81,7 @@ function ilr_sub_sites_form_basic_page_node_form_alter(&$form, &$form_state, $fo
       // This page is not currently a sub site.
       $form['menu']['create_subsite'] = array(
         '#type' => 'checkbox',
-        '#title' => t('Create Subsite Menu.'),
+        '#title' => t('Create Subsite Menu'),
         '#description' => t('Create a new sub site menu and add a link to this node at the top level.'),
         '#states' => array(
           'invisible' => array(
