@@ -70,8 +70,9 @@ function ilr_sub_sites_form_basic_page_node_form_alter(&$form, &$form_state, $fo
    *  1. Not ILR Sub Page. @see ilr_sub_pages_create_sub_page.
    *  2. User can administer content types(might want 'administer sub site' permission in future).
    *  3. $form['menu'] has been set by menu module.
+   *  4. The node is new
    */
-  if (empty($form_state['#ilr_sub_page']) && user_access('administer content types') && isset($form['menu'])) {
+  if (empty($form_state['#ilr_sub_page']) && user_access('administer content types') && isset($form['menu']) && !isset($form['nid']['#value'])) {
     if (_ilr_sub_sites_is_sub_site_homepage($form['#node'])) {
       $form['menu']['#access'] = FALSE;
       // Inform administrators how to remove as sub site.
