@@ -1,0 +1,429 @@
+
+<?php
+
+require_once DRUPAL_ROOT . '/../config/get_secrets.php';
+
+/**
+ * Implements hook_init().
+ */
+function ilr_alumni_events_init() {
+  drupal_add_js(drupal_get_path('module','ilr_alumni_events') . '/ilr_alumni_events.js', array('type' => 'file', 'scope' => 'footer'));
+}
+
+/**
+ * Attempts to load the entityform draft if there is a SESSION
+ */
+function ilr_alumni_events_node_view($node, $view_mode) {
+  if ($node->type == 'registration_page' && $view_mode == 'full') {
+    $wrapper = entity_metadata_wrapper('node', $node);
+    drupal_add_js(array(
+      'ilr_alumni_events' => array(
+        'memberPrice' => $wrapper->field_aa_member_price->value(),
+        'nonMemberPrice' => $wrapper->field_aa_non_member_price->value(),
+      )), 'setting');
+    if (isset($_SESSION['ilr_alumni_events_entityform_id'])) {
+      if ($wrapper->field_registration_form->type->value() == 'ilr_alumni_association_event_reg') {
+        unset($node->content['field_registration_form']);
+        $form = _ilr_alumni_events_registration_form();
+        $node->content['registration_form'] = array(
+          '#markup' => drupal_render($form),
+          '#weight' => 10,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ilr_alumni_events_form_ilr_alumni_association_event_reg_entityform_edit_form_alter(&$form, &$form_state) {
+  $form['field_total_cost'][LANGUAGE_NONE][0]['#markup'] = '<label>Total Cost</label><p>$<span class="total-cost">0</span></p>';
+}
+/**
+ * Implements hook_entity_presave().
+ */
+function ilr_alumni_events_entityform_presave($entityform) {
+  if ($entityform->type == 'ilr_alumni_association_event_reg') {
+    $wrapper = _ilr_alumni_events_entityform_wrapper($entityform);
+    $flag = $wrapper->field_total_cost->value();
+    if (empty($flag)) {
+      $entityform->draft = 1;
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function ilr_alumni_events_entityform_insert($entityform) {
+  if ($entityform->type == 'ilr_alumni_association_event_reg') {
+    $_SESSION['ilr_alumni_events_entityform_id'] = $entityform->entityform_id;
+  }
+}
+
+/**
+* Implements hook_menu().
+*/
+function ilr_alumni_events_menu() {
+  $items = array();
+  $items['alumni/events/registration'] = array(
+    'title' => 'Step 2 of 2: Event Payment',
+    'page callback' => '_ilr_alumni_events_payment_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['alumni/events/iframe'] = array(
+    'title' => "Alumni Events Payment iframe",
+    'page callback' => '_ilr_alumni_events_payment_iframe',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['alumni/events/response'] = array(
+    'title' => "Alumni Event Registration Complete",
+    'page callback' => '_ilr_alumni_events_payment_response',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Process the response from the gateway
+ * @todo
+ *   - update changed values to the entityform
+ *   - save additional result fields:  ssl_amount, ssl_approval_code, ssl_card_number (1st 2 digits), ssl_invoice_number (should already be saved), ssl_result_message, ssl_status, ssl_txn_id, ssl_txn_time
+ *   - Display message and field results
+ */
+function _ilr_alumni_events_payment_response() {
+  $output = '';
+  $response_variables = drupal_get_query_parameters();
+  if (count($response_variables)) { // Confirm that Elavon sent information
+    $output = '<p>Thank you for your registration. One moment while we update your information.</p>';
+    // Save the results
+    _ilr_alumni_events_update_entityform_values($response_variables);
+    // Redirect to the entityform success page
+    _ilr_alumni_events_redirect_after_response();
+  } else {
+    $output = '<p>Sorry, but there was an error processing your request.</p>';
+  }
+  return $output;
+}
+
+/**
+ * Redirects the user after the entityform values are updated
+ * with their registration info from Elavon
+ * @see _ilr_alumni_events_payment_response()
+ */
+function _ilr_alumni_events_redirect_after_response() {
+  if (isset($_SESSION['ilr_alumni_events_entityform_id'])) {
+    $eid = $_SESSION['ilr_alumni_events_entityform_id'];
+    $wrapper = _ilr_alumni_events_entityform_wrapper();
+    $confirmation_url = _entityform_type_get_confirm_url($wrapper->type->value()->type);
+    $params = array(
+      'query' => array(
+        'entityform_id' => $eid,
+        'layout' => '0',
+      ),
+    );
+    // Keep entityform from denying access
+    $_SESSION['entityform_submission'] = $eid;
+    //unset($_SESSION['ilr_alumni_events_entityform_id']);
+    drupal_goto($confirmation_url, $params);
+  }
+}
+
+/**
+ * The page callback function defined in hook_menu().
+ */
+function _ilr_alumni_events_payment_page() {
+  $output = '';
+  if (!empty($_SESSION['ilr_alumni_events_entityform_id'])) {
+    // Load the page that posts to virtualmerchant.do
+    $url = '/alumni/events/iframe?layout=0';
+    if (_ilr_alumni_events_is_test()) {
+      $url .= '&test=1';
+    }
+    $output = '<iframe src="'.$url.'" width="100%" height="1000" />';
+  } // Session missing
+  else {
+    $output = '<p>Sorry, but there was an error processing your request. Please make sure that cookies are enabled in your browser, hit your back button to reload the alumni event form, and submit your registration again.</p>';
+  }
+  return $output;
+}
+
+function _ilr_alumni_events_payment_iframe() {
+  $output = '';
+  if (!empty($_SESSION['ilr_alumni_events_entityform_id'])) {
+    $output = _ilr_alumni_events_generate_elavon_form_markup();
+    drupal_add_js(
+      'jQuery(document).ready(function () { jQuery("#sendIt").click(); });',
+      array('type' => 'inline', 'scope' => 'footer')
+    );
+  }
+  return $output;
+}
+
+/**
+ * Loads the entityform draft if it can find one
+ */
+function _ilr_alumni_events_registration_form() {
+  module_load_include('inc', 'entityform', 'entityform.admin');
+  $entityform_type = entityform_get_types('ilr_alumni_association_event_reg');
+  if (isset($_SESSION['ilr_alumni_events_entityform_id'])) {
+    $wrapper = _ilr_alumni_events_entityform_wrapper();
+    if ($wrapper->draft->value() == 1) {
+      return entityform_form_wrapper(entityform_load($_SESSION['ilr_alumni_events_entityform_id']), 'submit', 'embedded');
+    }
+  }
+  return entityform_form_wrapper(entityform_empty_load($entityform_type->type), 'submit', 'embedded');
+}
+
+/**
+ * Form input keys expected by elavon
+ */
+function _ilr_alumni_events_get_elavon_form_inputs() {
+  global $ILR_SECRETS;
+
+  $inputs = array (
+    "ssl_receipt_link_method" => 'REDG',
+    "ssl_receipt_apprvl_method" => 'REDG',
+    "ssl_receipt_decl_method" => 'REDG',
+    "ssl_receipt_link_url" => _ilr_alumni_events_get_response_url(),
+    'ssl_test_mode' => _ilr_alumni_events_test_value(),
+    "ssl_merchant_id" => $ILR_SECRETS['elavon']['alumni_registration_merchant_id'],
+    "ssl_user_id" => $ILR_SECRETS['elavon']['alumni_registration_user_id'],
+    "ssl_pin" => $ILR_SECRETS['elavon']['alumni_registration_pin'],
+    "ssl_invoice_number" => 'see _ilr_alumni_events_generate_invoice_number()',
+    "ssl_salestax" => '0',
+    'ssl_cvv2cvc2_indicator' => '1',
+    'ssl_show_form' => 'true',
+    "ssl_transaction_type" => 'ccsale',
+    "ssl_amount" => 'see _ilr_alumni_events_calculate_amount()',
+    'ssl_result_format' => 'HTML',
+    'ssl_description' => 'see _ilr_alumni_events_get_event_title',
+  );
+  return array_merge(
+    _ilr_alumni_events_get_entityform_mappings(),
+    $inputs // order here matters, since some fields (ie ssl_amount) are in both arrays
+  );
+}
+
+/**
+ * Maps the elavon keys to the entityform field names
+ */
+function _ilr_alumni_events_get_entityform_mappings() {
+  $mappings = &drupal_static(__FUNCTION__);
+  if (!isset($mappings)) {
+    $mappings = array(
+      "ssl_first_name" => 'field_first_name',
+      "ssl_last_name" => 'field_last_name',
+      "ssl_avs_address" => 'field_address_line_1',
+      "ssl_address2" => 'field_address_line_2',
+      "ssl_city" => 'field_city',
+      "ssl_state" => 'field_state_province',
+      'ssl_company' => 'field_company',
+      "ssl_avs_zip" => 'field_zip_code',
+      "ssl_phone" => 'field_phone',
+      'ssl_email' => 'field_email',
+      'ssl_amount' => 'field_ssl_amount',
+      'ssl_approval_code' => 'field_ssl_approval_code',
+      'ssl_card_number' => 'field_ssl_card_number', // Just first 2 digits
+      'ssl_invoice_number' => 'field_transinvoicenum',
+      'ssl_result_message' => 'field_ssl_result_message',
+      'ssl_txn_id' => 'field_ssl_txn_id',
+      'ssl_txn_time' => 'field_ssl_txn_time',
+    );
+  }
+  return $mappings;
+}
+
+/**
+ * Takes a field name key and returns its value
+ */
+function _ilr_alumni_events_get_entityform_value($key) {
+  $wrapper = _ilr_alumni_events_entityform_wrapper();
+  if (isset($wrapper->{$key})) {
+    return $wrapper->{$key}->value();
+  }
+  return '';
+}
+
+/**
+ * Updates the entityform values based on what is returned
+ * from the payment gateway
+ * @todo Improve the logic around the field collection
+ */
+function _ilr_alumni_events_update_entityform_values($variables) {
+  $wrapper = _ilr_alumni_events_entityform_wrapper();
+  foreach ($variables as $elavon_key => $value) {
+    if ($field_name = _ilr_alumni_events_get_entityform_mapping($elavon_key)) {
+      if ($field_name == 'field_ssl_card_number') {
+        // Remove all but first two characters of CC #
+        $value = $variables[$elavon_key] = substr($value, 0, 2);
+      }
+      if (isset($wrapper->{$field_name})) {
+        $wrapper->{$field_name}->set($value);
+      } // Check the field collection
+      else if (isset($wrapper->field_h_credit_card_payments->{$field_name})) {
+        _ilr_alumni_events_set_field_collection_data(
+          $field_name,
+          $value
+        );
+      }
+    }
+  }
+  // Set the total cost and the response_data
+  $wrapper->field_total_cost->set($variables['ssl_amount']);
+  _ilr_alumni_events_set_field_collection_data(
+    'field_ssl_response_data',
+    serialize($variables)
+  );
+  // Remove the "draft" setting on the entityform
+  $wrapper->draft = 0;
+  $wrapper->save();
+}
+
+function _ilr_alumni_events_set_field_collection_data($field_name, $value) {
+  $wrapper = _ilr_alumni_events_field_collection_wrapper();
+  $wrapper->{$field_name}->set($value);
+  $wrapper->save();
+}
+
+/**
+ * Generates the form markup that gets auto-posted to Elavon
+ */
+function _ilr_alumni_events_generate_elavon_form_markup() {
+  $markup = '<form id="post_pf1" METHOD="POST" action="https://www.myvirtualmerchant.com/VirtualMerchant/process.do">';
+  $inputs = _ilr_alumni_events_get_elavon_form_inputs();
+  foreach ($inputs as $key => $value) {
+    switch ($key) {
+      case 'ssl_amount':
+        $value = _ilr_alumni_events_calculate_amount();
+        break;
+      case 'ssl_invoice_number':
+        $value = _ilr_alumni_events_generate_invoice_number();
+        break;
+      case 'ssl_description':
+        $value = _ilr_alumni_events_get_event_title();
+        break;
+      default:
+        if (strpos($value, 'field') === 0) {
+          $value = _ilr_alumni_events_get_entityform_value($value);
+        }
+        break;
+    }
+    $markup .= '<input type="hidden" name="'.$key.'" value="'.$value.'">';
+  }
+  $markup .= '<input id="sendIt" type="submit" name="submit" value="One moment..." />';
+  $markup .= "</form>";
+  return $markup;
+}
+
+/**
+ * Maps keys to values depending on the key_or_value passsed in
+ */
+function _ilr_alumni_events_get_entityform_mapping($key_or_value) {
+  $mappings = _ilr_alumni_events_get_entityform_mappings();
+  // Check to see if the key is in the mapping array keys
+  if (array_key_exists($key_or_value, $mappings)) {
+    return $mappings[$key_or_value];
+  } // Check to see if the value is in the array values
+  else if ($key = array_search($key_or_value, $mappings)) {
+    return $key;
+  }
+  return NULL;
+}
+
+/**
+ * Calculates the amount to be processed based on the values
+ * set for the node upon which the form lives
+ */
+function _ilr_alumni_events_calculate_amount() {
+  $entityform_wrapper = _ilr_alumni_events_entityform_wrapper();
+  $node = $entityform_wrapper->field_referenced_node->value();
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $member_tickets = $entityform_wrapper->field_tickets_for_aa_members->value();
+  $member_cost = $node_wrapper->field_aa_member_price->value();
+  $non_member_tickets = $entityform_wrapper->field_tickets_for_non_members->value();
+  $non_member_cost = $node_wrapper->field_aa_non_member_price->value();
+
+  return ($member_tickets * $member_cost) + ($non_member_tickets * $non_member_cost);
+}
+
+/**
+ * Returns a unique invoice number for the registration
+ * @todo Figure out how to appropriately generate the invoice #
+ */
+function _ilr_alumni_events_generate_invoice_number() {
+  $wrapper = _ilr_alumni_events_entityform_wrapper();
+  $eid = $wrapper->entityform_id->value();
+  return "invoice$eid";
+}
+
+function _ilr_alumni_events_get_event_title() {
+  $entityform_wrapper = _ilr_alumni_events_entityform_wrapper();
+  return $entityform_wrapper->field_referenced_node->value()->title;
+}
+
+/**
+ * Creates or retrieves an entitymetadata wrapper
+ */
+function _ilr_alumni_events_entityform_wrapper($entityform=NULL) {
+  $wrapper = &drupal_static(__FUNCTION__);
+  if (!isset($wrapper)) {
+    if (!$entityform) {
+      $entityform = entityform_load($_SESSION['ilr_alumni_events_entityform_id']);
+    }
+    $wrapper = entity_metadata_wrapper('entityform', $entityform);
+  }
+  return $wrapper;
+}
+
+/**
+ * Creates or retrieves a field_collection wrapper
+ */
+function _ilr_alumni_events_field_collection_wrapper() {
+  $wrapper = &drupal_static(__FUNCTION__);
+  if (!isset($wrapper)) {
+    $collection = entity_create('field_collection_item', array('field_name' => 'field_h_credit_card_payments'));
+    $collection->setHostEntity('entityform', _ilr_alumni_events_entityform());
+    $wrapper = entity_metadata_wrapper('field_collection_item', $collection);
+  }
+  return $wrapper;
+}
+
+/**
+ * Loads or retrieves the entityform object
+ */
+function _ilr_alumni_events_entityform() {
+  $entityform = &drupal_static(__FUNCTION__);
+  if (!isset($entityform)) {
+    $entityform = entityform_load($_SESSION['ilr_alumni_events_entityform_id']);
+  }
+  return $entityform;
+}
+
+function _ilr_alumni_events_get_response_url() {
+  global $base_url;
+  return $base_url . '/' . 'alumni/events/response' . '?layout=0';
+}
+
+/**
+ * Returns a boolean based on whether it should be a test
+ * In order to test the form, you add ?test=1 to the url,
+ * ie: http://www.ilr-website.dev/alumni/events/registration?test=1
+ */
+function _ilr_alumni_events_is_test() {
+  if ( isset($_GET['test']) && $_GET['test'] == '1' ) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Elavon wants a string, which we return here
+ */
+function _ilr_alumni_events_test_value() {
+  return (_ilr_alumni_events_is_test()) ? 'true' : 'false';
+}

@@ -13620,6 +13620,1068 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_address_line_1'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_address_line_1'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_line_1',
+    'label' => 'Street address',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_address_line_2'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_address_line_2'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_line_2',
+    'label' => 'Address line 2',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_address_type'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_address_type'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_type',
+    'label' => 'Address type',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_attendee_list'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_attendee_list'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_attendee_list',
+    'label' => 'Include my name',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 21,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_attendee_list_guests'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_attendee_list_guests'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 19,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_attendee_list_guests',
+    'label' => 'Include guest names',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 22,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_attendee_list_markup'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_attendee_list_markup'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'markup',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'markup_default',
+        'weight' => 20,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_attendee_list_markup',
+    'label' => 'Attendee list markup',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 20,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_city'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_city'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_city',
+    'label' => 'City',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_company'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_company'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_company',
+    'label' => 'Company or organization',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_email'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_email'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_first_name'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_first_name'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_first_name',
+    'label' => 'First name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_guests'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_guests'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If you are making reservations for guests, please enter their names and Cornell class years if applicable. This will assist us with creating accurate name tags.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 17,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_guests',
+    'label' => 'Your guests',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_h_credit_card_payments'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_h_credit_card_payments'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'field_collection',
+        'settings' => array(
+          'add' => 'Add',
+          'delete' => 'Delete',
+          'description' => TRUE,
+          'edit' => 'Edit',
+          'field_formatter_label' => '',
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_view',
+        'weight' => 22,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_h_credit_card_payments',
+    'label' => 'h credit card payments',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 23,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_h_event_date'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_h_event_date'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 22,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 9,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'format_type' => 'ilr_day_long_date_no_time',
+          'fromto' => 'value',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 22,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_h_event_date',
+    'label' => 'Event date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'Y-m-d H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 24,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_job_title'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_job_title'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_job_title',
+    'label' => 'Job title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_last_name'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_last_name'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_middle_name'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_middle_name'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_middle_name',
+    'label' => 'Middle / maiden name',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_name_for_name_tag'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_name_for_name_tag'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Include class year if desired',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_name_for_name_tag',
+    'label' => 'Name for name tag',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_phone'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_phone'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_phone',
+    'label' => 'Phone',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_referenced_node'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_referenced_node'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'default_value_function' => 'entityreference_current_field_default_value',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 21,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 21,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_referenced_node',
+    'label' => 'Event title',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'current' => array(
+          'action' => 'hide',
+          'action_on_edit' => 1,
+          'fallback' => 'none',
+          'skip_perm' => 0,
+          'status' => 1,
+          'use_uid' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 26,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_state_province'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_state_province'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_state_province',
+    'label' => 'State / Province',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_tickets_for_aa_members'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_tickets_for_aa_members'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 15,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_tickets_for_aa_members',
+    'label' => 'Tickets for ILR Alumni Association members',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_tickets_for_non_members'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_tickets_for_non_members'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 16,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_tickets_for_non_members',
+    'label' => 'Tickets for non-members',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 18,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_total_cost'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_total_cost'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 17,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_total_cost',
+    'label' => 'Total Cost',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_year_as_text'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_year_as_text'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '(for Cornell graduates)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_year_as_text',
+    'label' => 'Class year',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-ilr_alumni_association_event_reg-field_zip_code'
+  $field_instances['entityform-ilr_alumni_association_event_reg-field_zip_code'] = array(
+    'bundle' => 'ilr_alumni_association_event_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_zip_code',
+    'label' => 'Zip / Postal code',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 13,
+    ),
+  );
+
   // Exported field_instance: 'entityform-ilr_information_session_sign_in-field_academic_interests_admissi'
   $field_instances['entityform-ilr_information_session_sign_in-field_academic_interests_admissi'] = array(
     'bundle' => 'ilr_information_session_sign_in',
@@ -19720,6 +20782,375 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_amount'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_amount'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_amount',
+    'label' => 'ssl_amount',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_approval_code'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_approval_code'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_approval_code',
+    'label' => 'ssl_approval_code',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 35,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_card_number'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_card_number'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'field_formatter_label' => '',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_card_number',
+    'label' => 'ssl_card_number',
+    'required' => 0,
+    'settings' => array(
+      'max' => 99,
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 40,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_response_data'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_response_data'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_response_data',
+    'label' => 'ssl_response_data',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 41,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_result_message'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_result_message'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_result_message',
+    'label' => 'ssl_result_message',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_txn_id'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_txn_id'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_txn_id',
+    'label' => 'ssl_txn_id',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_ssl_txn_time'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_ssl_txn_time'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_ssl_txn_time',
+    'label' => 'ssl_txn_time',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_transamount'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_transamount'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_transamount',
+    'label' => 'transAmount',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 31,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_h_credit_card_payments-field_transinvoicenum'
+  $field_instances['field_collection_item-field_h_credit_card_payments-field_transinvoicenum'] = array(
+    'bundle' => 'field_h_credit_card_payments',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_transinvoicenum',
+    'label' => 'transInvoiceNum',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_remote_site_details-field_email_additional'
   $field_instances['field_collection_item-field_remote_site_details-field_email_additional'] = array(
     'bundle' => 'field_remote_site_details',
@@ -19994,6 +21425,7 @@ function forms_field_default_field_instances() {
   t(' Send an ILR Viewbook, which includes an overview of the undergraduate program');
   t('(If this is a different spelling than what appears on your student center, please visit the Office of the University Registrar in B7 Day hall to have it officially changed.)');
   t('<br>PDF format is preferred. If you have more than one file, create and upload a zip file.');
+  t('(for Cornell graduates)');
   t('<p>If there are technical needs, training is required prior to the use of a room. Please contact ILR Technology Services to make these arrangements via email at: <a href="mailto:ilrvtc@cornell.edu>ilrvtc@cornell.edu</a>.</p>
 <p>Note: ILR Technology Services does not support Skype in the classrooms. If using Skype, please use your own laptop.</p>');
   t('Academic goals essay');
@@ -20007,8 +21439,10 @@ function forms_field_default_field_instances() {
   t('Address');
   t('Address line 1 (permanent)');
   t('Address line 1 (summer)');
+  t('Address line 2');
   t('Address line 2 (permanent)');
   t('Address line 2 (summer)');
+  t('Address type');
   t('Advisor or dept sentence');
   t('Amount 1');
   t('Amount 2');
@@ -20020,6 +21454,7 @@ function forms_field_default_field_instances() {
   t('Are you currently working in HR for an organization?');
   t('Are you currently, or have you ever been, subject to disciplinary action at Cornell?');
   t('Areas of interest');
+  t('Attendee list markup');
   t('Based on your experience, what are some of the most pressing questions and concerns of new Cornell students?');
   t('Building or location');
   t('Cell phone number');
@@ -20036,6 +21471,7 @@ function forms_field_default_field_instances() {
   t('College phone number');
   t('Comments');
   t('Company');
+  t('Company or organization');
   t('Concentration');
   t('Conference date');
   t('Conference name');
@@ -20070,6 +21506,7 @@ function forms_field_default_field_instances() {
   t('Ethnicity (optional; check all that apply)');
   t('Event date');
   t('Event name');
+  t('Event title');
   t('Example: Barack Obama could submit "bah-RAHK o-BAH-mah"');
   t('Expected graduation date (mm/yyyy)');
   t('Expected graduation year');
@@ -20095,6 +21532,10 @@ function forms_field_default_field_instances() {
   t('ILR student organization or department name');
   t('If so, please explan');
   t('If this is a recurring event, please specify additional dates/times, e.g. specific dates or "every Tuesday", etc.');
+  t('If you are making reservations for guests, please enter their names and Cornell class years if applicable. This will assist us with creating accurate name tags.');
+  t('Include class year if desired');
+  t('Include guest names');
+  t('Include my name');
   t('Include my name in the online attendee list');
   t('Indicate level, if any, of computer skills or knowledge');
   t('Indicate preference for teaching or research assistantship');
@@ -20102,6 +21543,7 @@ function forms_field_default_field_instances() {
   t('Job title');
   t('Laptop Loan: Additional Information');
   t('Laptop size preference');
+  t('Job title');
   t('Last Name');
   t('Last name');
   t('Last name for nametag');
@@ -20114,11 +21556,13 @@ function forms_field_default_field_instances() {
   t('Major');
   t('Media');
   t('Meeting location preference');
+  t('Middle / maiden name');
   t('Middle name');
   t('Minor subject(s)');
   t('Name');
   t('Name as it should be spelled on your diploma');
   t('Name currently on record');
+  t('Name for name tag');
   t('Name, if different from above');
   t('NetID');
   t('Nominee name');
@@ -20182,6 +21626,8 @@ function forms_field_default_field_instances() {
   t('Supporter 2');
   t('Technical needs (Examples: Microphone, PowerPoint, laptop, DVD, videotaping. Enter "none" if you have NO technical needs.)');
   t('Technical support person for this site');
+  t('Tickets for ILR Alumni Association members');
+  t('Tickets for non-members');
   t('Title');
   t('Title of paper or poster');
   t('Type of grad assistant');
@@ -20199,6 +21645,7 @@ function forms_field_default_field_instances() {
   t('Year');
   t('Years as a full-time HR practitioner');
   t('Years of full-time work experience');
+  t('Your guests');
   t('Your letter of support');
   t('Your name');
   t('Your questions');
@@ -20210,7 +21657,17 @@ function forms_field_default_field_instances() {
   t('e.g. Sophomore / Junior / Senior / MILR');
   t('e.g. Spring 2019');
   t('empl recog supp text');
+  t('h credit card payments');
   t('pronunciation markup');
+  t('ssl_amount');
+  t('ssl_approval_code');
+  t('ssl_card_number');
+  t('ssl_response_data');
+  t('ssl_result_message');
+  t('ssl_txn_id');
+  t('ssl_txn_time');
+  t('transAmount');
+  t('transInvoiceNum');
 
   return $field_instances;
 }

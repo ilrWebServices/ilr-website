@@ -104,7 +104,7 @@ function _ilr_mega_menu_get_top_level_items($menu_name='main-menu', $multidimens
   if (!isset($top_level_items[$menu_name])) {
     $top_level_items[$menu_name] = $items = array();
     if ($menu_name == 'main-menu') {
-      $items = menu_tree_page_data($menu_name, 1);
+      $items = menu_tree_all_data($menu_name, 1);
     } else {
       $parent = current(menu_tree_page_data($menu_name, 1));
       $count = 1;
