@@ -106,7 +106,7 @@ function ilr_menu_block_blocks() {
   if (module_exists('ilr_sub_sites')) {
     $menu = _ilr_sub_sites_get_current_menu_name();
   }
-  $level = ($menu == 'main-menu') ? 1 : 2; // Note this doe snot seem to be zero indexed
+  $level = ($menu == 'main-menu') ? 1 : 2; // Note this does not seem to be zero indexed
   return array(
     // The array key is the block id used by menu block.
     'ilr-subnav' => array(
