@@ -157,13 +157,6 @@ function ilr_sub_sites_node_insert($node) {
 }
 
 /**
- * Implements hook_node_update().
- */
-function ilr_sub_sites_node_update($node) {
-  _ilr_sub_sites_create_sub_menu_for_node($node);
-}
-
-/**
  * Create subsite menu for a node.
  *
  * Creates menu and adds link to node to menu
