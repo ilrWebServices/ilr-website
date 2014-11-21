@@ -47,17 +47,7 @@ function _ilr_sub_sites_update_sub_site_menus() {
   $subsites = _ilr_sub_sites_get_sub_sites();
 
   foreach ($subsites as $uri => $name) {
-    // Look the table first if the data does exist
-    $machine_name = _ilr_sub_sites_get_menu_name_from_uri($uri);
+    _ilr_sub_sites_create_menu($name, $uri);
 
-    $exists = db_query("SELECT title FROM {menu_custom} WHERE menu_name=:menu_name", array(':menu_name' => $machine_name))->fetchField();
-    // Save the record if the data does not exist
-    if (!$exists) {
-      $menu = array(
-        'menu_name' => $machine_name,
-        'title' => $name . ' Menu',
-      );
-      menu_save($menu);
-    }
   }
 }
