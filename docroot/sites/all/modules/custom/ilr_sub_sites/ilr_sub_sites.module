@@ -173,8 +173,24 @@ function _ilr_sub_sites_create_sub_menu_for_node($node) {
       'menu_name' => $menu_name,
     );
     menu_link_save($link);
+    _ilr_sub_sites_create_pathauto_alias($node);
     return;
   }
+}
+
+/**
+ * Workaround b/c pathauto_create_alias() not setting the alias
+ * @todo Debug so this function is not required
+ */
+function _ilr_sub_sites_create_pathauto_alias($node) {
+  module_load_include('inc', 'pathauto');
+    $alias = preg_replace('@[^a-z0-9-]+@','-', strtolower($node->title));
+    $path = array(
+      'source' => 'node/' . $node->nid,
+      'alias' => $alias,
+      'language' => LANGUAGE_NONE,
+    );
+    _pathauto_set_alias($path, NULL, 'insert');
 }
 
 /**
