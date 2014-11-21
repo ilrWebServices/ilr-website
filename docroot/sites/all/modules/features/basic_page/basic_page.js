@@ -151,8 +151,26 @@
       }
 
       function addForwardButtonToMenus() {
-        $('li.expanded').append('<a class="next-menu" href="#"><span>&rsaquo;</span></a>');
+        $('li.expanded').each(function(){
+          if(menuNeedsArrow($(this))) {
+            $('li.expanded').append('<a class="next-menu" href="#"><span>&rsaquo;</span></a>');
+          }
+        });
         $('.next-menu').click(nextClick);
+      }
+
+      function menuNeedsArrow($menu) {
+        return $menu.find('a.next-menu').length == 0 && menuHasSubmenu($menu);
+      }
+
+      function menuHasSubmenu($menu) {
+        if ($menu.find('ul.menu').length > 0) {
+          return true;
+        }
+        // In the case of hidden menu items, the menu system adds expanded
+        // even though menu item output is suppressed; so we remove it
+        $menu.removeClass('expanded');
+        return false;
       }
 
       function mobileNavActive() {
