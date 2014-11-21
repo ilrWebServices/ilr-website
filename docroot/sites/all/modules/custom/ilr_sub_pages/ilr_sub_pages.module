@@ -117,8 +117,8 @@ function ilr_sub_pages_form_basic_page_node_form_alter(&$form, &$form_state, $fo
   // This element is added by menu module a 'value' type. We override to let user choose.
   $form['menu']['link']['hidden'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Hide from menu output.'),
-    '#description' => t('Check if you would like the page to appear under the sub site but not in the menu.'),
+    '#title' => t('Hide from menu output'),
+    '#description' => t('Check if you would like the page to include the correct breadcrumbs and parent navigation, but not appear in the menu.'),
     '#default_value' => isset($node->menu['hidden']) ? $node->menu['hidden'] : 0,
   );
   // set menu parent item default value if creating sub page
