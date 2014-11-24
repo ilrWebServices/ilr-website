@@ -20,7 +20,6 @@ function basic_page_default_linkit_profiles() {
   $linkit_profile->data = array(
     'text_formats' => array(
       'full_html' => 'full_html',
-      'filtered_html' => 0,
       'plain_text' => 0,
     ),
     'search_plugins' => array(
@@ -50,26 +49,33 @@ function basic_page_default_linkit_profiles() {
       'bundles' => array(
         'html' => 0,
         'content_listing_manual' => 0,
+        'mega_menu' => 0,
         'event_block' => 0,
         'tagged_content' => 0,
+        'filtered_courses' => 0,
       ),
       'group_by_bundle' => 0,
     ),
     'entity:node' => array(
-      'result_description' => '',
+      'result_description' => '[node:url]',
       'bundles' => array(
         'basic_page' => 'basic_page',
         'news_item' => 'news_item',
         'people_profile' => 'people_profile',
         'registration_page' => 'registration_page',
         'spotlight' => 'spotlight',
+        'sdc_faculty' => 0,
         'featured_book' => 0,
         'microfiche' => 0,
         'microfilm' => 0,
         'promo' => 0,
+        'sdc_class' => 0,
+        'sdc_course' => 0,
         'scheinman_neutral' => 0,
+        'student_portrait' => 'student_portrait',
         'wit_article' => 0,
         'workspan' => 0,
+        'youtube_playlist' => 0,
         'youtube_video' => 0,
       ),
       'group_by_bundle' => 0,
@@ -98,6 +104,8 @@ function basic_page_default_linkit_profiles() {
         'areas_of_expertise' => 0,
         'publications' => 0,
         'wire_services' => 0,
+        'course_keywords' => 0,
+        'sdc_department' => 0,
       ),
       'group_by_bundle' => 0,
     ),
@@ -105,7 +113,7 @@ function basic_page_default_linkit_profiles() {
       'result_description' => '',
     ),
     'insert_plugin' => array(
-      'url_method' => '2',
+      'url_method' => '3',
     ),
     'attribute_plugins' => array(
       'accesskey' => array(
@@ -133,6 +141,7 @@ function basic_page_default_linkit_profiles() {
         'weight' => '-10',
       ),
     ),
+    'imce' => 0,
     'autocomplete' => array(
       'charLimit' => '3',
       'wait' => '350',

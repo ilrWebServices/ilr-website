@@ -62,4 +62,5 @@ features[variable][] = pathauto_node_basic_page_pattern
 features[views_view][] = editor_notes
 features[wysiwyg][] = full_html
 features[wysiwyg_template][] = faq
+mtime = 1415208730
 project path = sites/all/modules/features
