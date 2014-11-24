@@ -138,20 +138,26 @@ function _ilr_alumni_events_redirect_after_response($with_layout=0) {
  */
 function _ilr_alumni_events_payment_page() {
   $output = '';
-  if (!empty($_SESSION['ilr_alumni_events_entityform_id']) && !_ilr_alumni_events_is_free_event()) {
-    // Load the page that posts to virtualmerchant.do
-    $url = '/alumni/events/iframe?layout=0';
-    if (_ilr_alumni_events_is_test()) {
-      $url .= '&test=1';
+  if (!empty($_SESSION['ilr_alumni_events_entityform_id'])
+    && !_ilr_alumni_events_is_free_event()) {
+    if (_ilr_alumni_events_ordered_tickets()) {
+      // Load the page that posts to virtualmerchant.do
+      $url = '/alumni/events/iframe?layout=0';
+      if (_ilr_alumni_events_is_test()) {
+        $url .= '&test=1';
+      }
+      $output = '<iframe src="'.$url.'" width="100%" height="1000" ></iframe>';
+    } // They forgot to order tickets
+    else {
+      $output = '<p>Sorry, but there was an error processing your request. Are you sure you chose the number of tickets you wanted? Please hit your back button, choose how many tickets you want to purchase, and submit your registration again.</p>';
     }
-    $output = '<iframe src="'.$url.'" width="100%" height="1000" />';
-  } // Session missing
+  } // Free event
   else if (_ilr_alumni_events_is_free_event()) {
     $wrapper = _ilr_alumni_events_entityform_wrapper();
     $wrapper->draft = 0;
     $wrapper->save();
     _ilr_alumni_events_redirect_after_response(1); // 1 tells it to load the layout
-  }
+  } // Session missing
   else {
     $output = '<p>Sorry, but there was an error processing your request. Please make sure that cookies are enabled in your browser, hit your back button to reload the alumni event form, and submit your registration again.</p>';
   }
@@ -346,13 +352,22 @@ function _ilr_alumni_events_get_entityform_mapping($key_or_value) {
  * set for the node upon which the form lives
  */
 function _ilr_alumni_events_calculate_amount() {
-  $entityform_wrapper = _ilr_alumni_events_entityform_wrapper();
-  $member_tickets = $entityform_wrapper->field_tickets_for_aa_members->value();
+  $member_tickets = _ilr_alumni_events_member_ticket_count();
   $member_cost = _ilr_alumni_events_get_member_cost();
-  $non_member_tickets = $entityform_wrapper->field_tickets_for_non_members->value();
+  $non_member_tickets = _ilr_alumni_events_non_member_ticket_count();
   $non_member_cost = _ilr_alumni_events_get_non_member_cost();
 
   return ($member_tickets * $member_cost) + ($non_member_tickets * $non_member_cost);
+}
+
+function _ilr_alumni_events_member_ticket_count() {
+  $entityform_wrapper = _ilr_alumni_events_entityform_wrapper();
+  return $entityform_wrapper->field_tickets_for_aa_members->value();
+}
+
+function _ilr_alumni_events_non_member_ticket_count() {
+  $entityform_wrapper = _ilr_alumni_events_entityform_wrapper();
+  return $entityform_wrapper->field_tickets_for_non_members->value();
 }
 
 function _ilr_alumni_events_get_member_cost() {
@@ -365,8 +380,22 @@ function _ilr_alumni_events_get_non_member_cost() {
   return $node_wrapper->field_aa_non_member_price->value();
 }
 
+/**
+ * Either a completely free event, or free for members
+ * @return [type] [description]
+ */
 function _ilr_alumni_events_is_free_event() {
-  return _ilr_alumni_events_get_member_cost() == 0 && _ilr_alumni_events_get_non_member_cost() == 0;
+  if (_ilr_alumni_events_ordered_tickets()) {
+    return _ilr_alumni_events_calculate_amount() == 0;
+  }
+  return FALSE;
+}
+
+/**
+ * Confirm that they ordered at least one ticket
+ */
+function _ilr_alumni_events_ordered_tickets() {
+  return _ilr_alumni_events_member_ticket_count() > 0 || _ilr_alumni_events_non_member_ticket_count() > 0;
 }
 
 /**
