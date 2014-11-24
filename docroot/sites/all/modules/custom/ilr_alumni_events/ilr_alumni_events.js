@@ -7,22 +7,48 @@
 
         function updatePrices() {
           $('.alumni-event-pricing').html('');
-          $('#edit-field-tickets-for-aa-members-und').after('<span class="alumni-event-pricing member-price"> x $'+memberPrice+' = $'+getMemberCost()+'</span>');
-          $('#edit-field-tickets-for-non-members-und').after('<span class="alumni-event-pricing non-member-price"> x $'+nonMemberPrice+' = $'+getNonMemberCost()+'</span>');
-          $('span.total-cost').html(getTotalCost());
+          updateMemberPrice();
+          updateNonMemberPrice();
+          updateTotalPrice();
         }
 
         function getMemberCost() {
-          return $('#edit-field-tickets-for-aa-members-und').val() * memberPrice;
+          return $('select[name="field_tickets_for_aa_members[und]"]').val() * memberPrice;
         }
 
         function getNonMemberCost() {
-          return $('#edit-field-tickets-for-non-members-und').val() * nonMemberPrice;
+          return $('select[name="field_tickets_for_non_members[und]"]').val() * nonMemberPrice;
         }
 
         function getTotalCost() {
           return getMemberCost() + getNonMemberCost();
         }
+
+        function updateMemberPrice() {
+          if (memberPrice == 0) {
+            content = 'Free';
+          } else {
+            content = 'x $'+memberPrice+' = $'+getMemberCost();
+          }
+          $('select[name="field_tickets_for_aa_members[und]"]').after(' <span class="alumni-event-pricing member-price">'+content+'</span>');
+        }
+
+        function updateNonMemberPrice() {
+          if (nonMemberPrice == 0) {
+            content = 'Free';
+          } else {
+            content = 'x $'+nonMemberPrice+' = $'+getNonMemberCost();
+          }
+          $('select[name="field_tickets_for_non_members[und]"]').after(' <span class="alumni-event-pricing non-member-price">'+content+'</span>');
+        }
+
+        function updateTotalPrice() {
+          cost = getTotalCost();
+          content = (cost == 0) ? 'Free' : '$' + cost;
+          $('span.total-cost').html(content);
+        }
+
+        updatePrices();
 
         $('#edit-field-tickets-for-aa-members-und').change(function(){
           updatePrices();
@@ -31,8 +57,6 @@
         $('#edit-field-tickets-for-non-members-und').change(function(){
           updatePrices();
         });
-
-        updatePrices();
       }
     }
   };

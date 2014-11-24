@@ -38,7 +38,7 @@ function ilr_alumni_events_node_view($node, $view_mode) {
  * Implements hook_form_FORM_ID_alter().
  */
 function ilr_alumni_events_form_ilr_alumni_association_event_reg_entityform_edit_form_alter(&$form, &$form_state) {
-  $form['field_total_cost'][LANGUAGE_NONE][0]['#markup'] = '<label>Total Cost</label><p>$<span class="total-cost">0</span></p>';
+  $form['field_total_cost'][LANGUAGE_NONE][0]['#markup'] = '<label>Total Cost</label><p><span class="total-cost">0</span></p>';
 }
 /**
  * Implements hook_entity_presave().
@@ -115,7 +115,7 @@ function _ilr_alumni_events_payment_response() {
  * with their registration info from Elavon
  * @see _ilr_alumni_events_payment_response()
  */
-function _ilr_alumni_events_redirect_after_response() {
+function _ilr_alumni_events_redirect_after_response($with_layout=0) {
   if (isset($_SESSION['ilr_alumni_events_entityform_id'])) {
     $eid = $_SESSION['ilr_alumni_events_entityform_id'];
     $wrapper = _ilr_alumni_events_entityform_wrapper();
@@ -123,7 +123,7 @@ function _ilr_alumni_events_redirect_after_response() {
     $params = array(
       'query' => array(
         'entityform_id' => $eid,
-        'layout' => '0',
+        'layout' => $with_layout,
       ),
     );
     // Keep entityform from denying access
@@ -138,7 +138,7 @@ function _ilr_alumni_events_redirect_after_response() {
  */
 function _ilr_alumni_events_payment_page() {
   $output = '';
-  if (!empty($_SESSION['ilr_alumni_events_entityform_id'])) {
+  if (!empty($_SESSION['ilr_alumni_events_entityform_id']) && !_ilr_alumni_events_is_free_event()) {
     // Load the page that posts to virtualmerchant.do
     $url = '/alumni/events/iframe?layout=0';
     if (_ilr_alumni_events_is_test()) {
@@ -146,6 +146,12 @@ function _ilr_alumni_events_payment_page() {
     }
     $output = '<iframe src="'.$url.'" width="100%" height="1000" />';
   } // Session missing
+  else if (_ilr_alumni_events_is_free_event()) {
+    $wrapper = _ilr_alumni_events_entityform_wrapper();
+    $wrapper->draft = 0;
+    $wrapper->save();
+    _ilr_alumni_events_redirect_after_response(1); // 1 tells it to load the layout
+  }
   else {
     $output = '<p>Sorry, but there was an error processing your request. Please make sure that cookies are enabled in your browser, hit your back button to reload the alumni event form, and submit your registration again.</p>';
   }
@@ -341,14 +347,26 @@ function _ilr_alumni_events_get_entityform_mapping($key_or_value) {
  */
 function _ilr_alumni_events_calculate_amount() {
   $entityform_wrapper = _ilr_alumni_events_entityform_wrapper();
-  $node = $entityform_wrapper->field_referenced_node->value();
-  $node_wrapper = entity_metadata_wrapper('node', $node);
   $member_tickets = $entityform_wrapper->field_tickets_for_aa_members->value();
-  $member_cost = $node_wrapper->field_aa_member_price->value();
+  $member_cost = _ilr_alumni_events_get_member_cost();
   $non_member_tickets = $entityform_wrapper->field_tickets_for_non_members->value();
-  $non_member_cost = $node_wrapper->field_aa_non_member_price->value();
+  $non_member_cost = _ilr_alumni_events_get_non_member_cost();
 
   return ($member_tickets * $member_cost) + ($non_member_tickets * $non_member_cost);
+}
+
+function _ilr_alumni_events_get_member_cost() {
+  $node_wrapper = _ilr_alumni_events_node_wrapper();
+  return $node_wrapper->field_aa_member_price->value();
+}
+
+function _ilr_alumni_events_get_non_member_cost() {
+  $node_wrapper = _ilr_alumni_events_node_wrapper();
+  return $node_wrapper->field_aa_non_member_price->value();
+}
+
+function _ilr_alumni_events_is_free_event() {
+  return _ilr_alumni_events_get_member_cost() == 0 && _ilr_alumni_events_get_non_member_cost() == 0;
 }
 
 /**
@@ -367,7 +385,7 @@ function _ilr_alumni_events_get_event_title() {
 }
 
 /**
- * Creates or retrieves an entitymetadata wrapper
+ * Creates or retrieves an entitymetadata wrapper for the form
  */
 function _ilr_alumni_events_entityform_wrapper($entityform=NULL) {
   $wrapper = &drupal_static(__FUNCTION__);
@@ -376,6 +394,20 @@ function _ilr_alumni_events_entityform_wrapper($entityform=NULL) {
       $entityform = entityform_load($_SESSION['ilr_alumni_events_entityform_id']);
     }
     $wrapper = entity_metadata_wrapper('entityform', $entityform);
+  }
+  return $wrapper;
+}
+
+/**
+ * Creates or retrieves an entitymetadata wrapper for the node
+ * on which the entityform has been placed
+ */
+function _ilr_alumni_events_node_wrapper() {
+  $wrapper = &drupal_static(__FUNCTION__);
+  if (!isset($wrapper)) {
+    $entityform_wrapper = _ilr_alumni_events_entityform_wrapper();
+    $node = $entityform_wrapper->field_referenced_node->value();
+    $wrapper = entity_metadata_wrapper('node', $node);
   }
   return $wrapper;
 }
