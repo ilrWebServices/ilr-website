@@ -125,9 +125,21 @@
       function getCurrentPage() {
         $page = $('.menu-block-ilr-subnav a.active').closest('li');
         if(!$page.length) {
-          $page = $('.menu-block-ilr-subnav li.active-trail:last-child');
+          $page = getDeepestActivePage();
         }
         return $page;
+      }
+
+      function getDeepestActivePage() {
+        depth = 0;
+        $('.menu-block-ilr-subnav li.active-trail').each(function() {
+          parents = $(this).parents();
+          if (parents.length > depth) {
+            depth = parents.length;
+            deepest = $(this);
+          }
+        });
+        return deepest;
       }
 
       function menuNeedsAdditionalButtons(el) {
