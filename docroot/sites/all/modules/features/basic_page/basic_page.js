@@ -28,7 +28,7 @@
         e.preventDefault();
         currentMenu = $(this).prev();
         oldMenu = $(this).closest('ul.menu');
-        if (menuNeedsAddtionalButtons(currentMenu)) {
+        if (menuNeedsAdditionalButtons(currentMenu)) {
           addButtonsToMenu(currentMenu);
         }
         $(currentMenu).css({
@@ -51,7 +51,7 @@
         });
         TweenLite.to($(oldMenu), .6, {left: 0, ease: easing});
 
-        if (menuNeedsAddtionalButtons(oldMenu)) {
+        if (menuNeedsAdditionalButtons(oldMenu)) {
           addButtonsToMenu(oldMenu);
         }
       }
@@ -82,7 +82,7 @@
             });
           });
 
-          if(menuNeedsAddtionalButtons(currentMenu)) {
+          if(menuNeedsAdditionalButtons(currentMenu)) {
             addButtonsToMenu(currentMenu);
           }
 
@@ -113,10 +113,6 @@
         return height;
       }
 
-      function getCurrentPage() {
-        return $('.menu-block-ilr-subnav a.active').parent();
-      }
-
       function getCurrentMenu() {
         currentPage = getCurrentPage();
         children = $(currentPage).children('ul.menu');
@@ -126,7 +122,27 @@
         return $(currentPage).parent();
       }
 
-      function menuNeedsAddtionalButtons(el) {
+      function getCurrentPage() {
+        $page = $('.menu-block-ilr-subnav a.active').closest('li');
+        if(!$page.length) {
+          $page = getDeepestActivePage();
+        }
+        return $page;
+      }
+
+      function getDeepestActivePage() {
+        depth = 0;
+        $('.menu-block-ilr-subnav li.active-trail').each(function() {
+          parents = $(this).parents();
+          if (parents.length > depth) {
+            depth = parents.length;
+            deepest = $(this);
+          }
+        });
+        return deepest;
+      }
+
+      function menuNeedsAdditionalButtons(el) {
         if (!el.parent().is('li')) { // the top level menu
           return false;
         }
@@ -151,8 +167,26 @@
       }
 
       function addForwardButtonToMenus() {
-        $('li.expanded').append('<a class="next-menu" href="#"><span>&rsaquo;</span></a>');
+        $('li.expanded').each(function(){
+          if(menuItemNeedsArrow($(this))) {
+            $(this).append('<a class="next-menu" href="#"><span>&rsaquo;</span></a>');
+          }
+        });
         $('.next-menu').click(nextClick);
+      }
+
+      function menuItemNeedsArrow(item) {
+        return $(item).find('a.next-menu').length == 0 && menuItemHasSubmenu(item);
+      }
+
+      function menuItemHasSubmenu(item) {
+        if ($(item).find('ul.menu').length > 0) {
+          return true;
+        }
+        // In the case of hidden menu items, the menu system adds expanded
+        // even though menu item output is suppressed; so we remove it
+        $(item).removeClass('expanded');
+        return false;
       }
 
       function mobileNavActive() {

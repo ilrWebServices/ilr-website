@@ -1,5 +1,10 @@
 // Todo: Clean up this file
 
+%current-menu-item {
+  font-weight: 600;
+  color: $brand;
+}
+
 .block-menu-block { // All nav menus
   clear: both;
   h2 { @extend .hidden; }
@@ -115,7 +120,7 @@
         }
       }
       &.active {
-        font-weight: 600;
+        @extend %current-menu-item;
       }
     }
     &.expanded > a {
@@ -137,6 +142,12 @@
         }
       }
     }
+    // @todo: Come back to this for active page added as section
+    // &.active ul.menu li.section:nth-of-type(1) {
+    //   a {
+    //     @extend %current-menu-item;
+    //   }
+    // }
   }
 
   li.back {
