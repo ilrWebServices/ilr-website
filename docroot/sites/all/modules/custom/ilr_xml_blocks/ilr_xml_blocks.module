@@ -100,7 +100,7 @@ function _ilr_xml_blocks_get_xml_data($key) {
  */
 function _ilr_xml_blocks_get_xml_url($delta) {
   $urls = array(
-    'ldi_recent' => 'http://digitalcommons.ilr.cornell.edu/ldi/recent.rss',
+    'ldi_recent' => 'http://digitalcommons.ilr.cornell.edu/ldi/ldi_recent.rss',
     'ldi_vrdc' => 'http://www2.vrdc.cornell.edu/news/feed/',
     'ldi_statistics' => 'http://www.worldofstatistics.org/feed/',
   );
