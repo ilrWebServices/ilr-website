@@ -98,6 +98,10 @@ function _registration_pages_get_event_markup($node) {
   $event_markup = '<p>';
 
   if (!empty($event_date)) {
+    $event_markup .= "<strong>Event:</strong> ";
+    $event_markup .= $node_wrapper->title->value();
+    $event_markup .= "<br>";
+
     $event_markup .= "<strong>Date:</strong> ";
     $event_markup .= _registration_pages_get_formatted_date_from_field($node->field_event_date, 'value');
     $event_markup .= "<br>";
