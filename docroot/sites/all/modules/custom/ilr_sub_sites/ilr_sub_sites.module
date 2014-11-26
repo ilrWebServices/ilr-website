@@ -225,9 +225,6 @@ function _ilr_sub_sites_create_menu($title, $uri = NULL) {
     $menu_options = variable_get('menu_options_basic_page', array());
     $menu_options[] = $machine_name;
     variable_set('menu_options_basic_page', $menu_options);
-    return $machine_name;
   }
-  else {
-    return $menu_name;
-  }
+  return $machine_name;
 }
