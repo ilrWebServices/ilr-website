@@ -43,6 +43,9 @@ function people_profiles_strongarm() {
         'path' => array(
           'weight' => '49',
         ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

@@ -25,15 +25,15 @@ function people_profiles_field_group_info() {
     'children' => array(
       0 => 'field_ai_honors_awards',
       1 => 'field_ai_links',
-      2 => 'field_ai_overview',
-      3 => 'field_ai_professional_activities',
-      4 => 'field_ai_publications',
-      5 => 'field_ai_research_statement',
-      6 => 'field_ai_teaching_statement',
-      7 => 'field_areas_of_expertise',
-      8 => 'field_use_ai_data',
-      9 => 'field_visibility_settings',
-      10 => 'field_ai_other_expertise',
+      2 => 'field_ai_other_expertise',
+      3 => 'field_ai_overview',
+      4 => 'field_ai_professional_activities',
+      5 => 'field_ai_publications',
+      6 => 'field_ai_research_statement',
+      7 => 'field_ai_teaching_statement',
+      8 => 'field_areas_of_expertise',
+      9 => 'field_use_ai_data',
+      10 => 'field_visibility_settings',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -68,6 +68,7 @@ function people_profiles_field_group_info() {
       3 => 'field_ilrweb_publications_file',
       4 => 'field_ilrweb_vita_file',
       5 => 'field_ilrweb_vita_html',
+      6 => 'field_faculty_on_leave',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -91,7 +92,7 @@ function people_profiles_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'people_profile';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_people_profile_tabs';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Areas of Expertise',
     'weight' => '22',
@@ -160,13 +161,11 @@ function people_profiles_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'people_profile';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_people_profile_tabs';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Bio',
     'weight' => '20',
-    'children' => array(
-      0 => 'field_bio',
-    ),
+    'children' => array(),
     'format_type' => 'htab',
     'format_settings' => array(
       'label' => 'Bio',

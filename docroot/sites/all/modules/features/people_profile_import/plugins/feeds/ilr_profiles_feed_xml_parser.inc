@@ -31,9 +31,10 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
         $field_values['title'] = $this->setProfileTitle($person);
         $field_values['field_netid'] = (string) $person->netID;
         $field_values['field_email'] = (string) $person->ldap_email; // Without this, field is being deleted
-        // Then loop through AI values
+        // Then loop through AI values and faculty_on_leave
         foreach ($mapped_fields as $xml_key => $field_name) {
-          if (strpos($field_name, 'field_ai') === 0) {
+          if (strpos($field_name, 'field_ai') === 0
+            || strpos($field_name, 'field_faculty_on_leave') === 0) {
             $data = (string) $person->{$xml_key};
             $field_values[$field_name] = $this->prepData($field_name, $data, $type);
           }
@@ -116,6 +117,8 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       //'ldap_employee_type' => '', // Not sure needed, as we have ldap_profile_type below
       //'ldap_department' => 'field_department', // This is dept. code. Use name instead
       'ldap_department_name' => 'field_department',
+      'ldap_leave_start' => 'field_faculty_on_leave:start',
+      'ldap_leave_end' => 'field_faculty_on_leave:end',
       //'ldap_uid' => '', // same as NetID
       'ldap_last_name' => 'field_last_name',
       'ldap_first_name' => 'field_first_name',
