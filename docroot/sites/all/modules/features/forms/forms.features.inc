@@ -38,7 +38,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EYour ILR Alumni and Friends Newsletter subscription status has been updated.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR Alumni\\u003Cbr \\/\\u003E\\r\\n\\tCornell University\\u003Cbr \\/\\u003E\\r\\n\\tss446@cornell.edu@cornell.edu\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EYour ILR Alumni and Friends Newsletter subscription status has been updated.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR Alumni\\u003Cbr \\/\\u003E\\r\\n\\tCornell University\\u003Cbr \\/\\u003E\\r\\n\\tss446@cornell.edu\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
