@@ -537,6 +537,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'create any filtered_courses bean'.
+  $permissions['create any filtered_courses bean'] = array(
+    'name' => 'create any filtered_courses bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
+  );
+
   // Exported permission: 'create any html bean'.
   $permissions['create any html bean'] = array(
     'name' => 'create any html bean',
@@ -769,6 +778,15 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'delete any filtered_courses bean'.
+  $permissions['delete any filtered_courses bean'] = array(
+    'name' => 'delete any filtered_courses bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
   );
 
   // Exported permission: 'delete any html bean'.
@@ -1163,6 +1181,15 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'edit any filtered_courses bean'.
+  $permissions['edit any filtered_courses bean'] = array(
+    'name' => 'edit any filtered_courses bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
   );
 
   // Exported permission: 'edit any html bean'.
@@ -1666,7 +1693,20 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view any event_block bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'view any filtered_courses bean'.
+  $permissions['view any filtered_courses bean'] = array(
+    'name' => 'view any filtered_courses bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'bean',
   );
