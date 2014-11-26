@@ -84,7 +84,7 @@ function _ilr_process_field_blocks(&$page, $node) {
  *  Adds the type to the classes of the bean
  */
 function ilr_theme_preprocess_block(&$variables) {
-  if ($variables['block']->module == 'bean') {
+  if ($variables['block']->module == 'bean' && isset($variables['elements']['bean'])) {
     // Get the first bean element
     $bean = reset($variables['elements']['bean']);
     // Get the type if there is one

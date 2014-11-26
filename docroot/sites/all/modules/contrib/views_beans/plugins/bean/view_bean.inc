@@ -111,10 +111,12 @@ class ViewBean extends BeanPlugin {
     else {
       $markup = $ctools_content->content;
     }
-    return array(
+    $content['view'] = array(
       '#markup' => $markup,
       '#type' => 'markup',
     );
+
+    return $content;
   }
   /**
    * Utility Function to get bean types.
