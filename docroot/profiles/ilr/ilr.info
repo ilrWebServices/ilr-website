@@ -39,6 +39,7 @@ dependencies[] = entityform_block
 dependencies[] = featured_book
 dependencies[] = forms
 dependencies[] = google_analytics_universal
+dependencies[] = ilr_alumni_events
 dependencies[] = ilr_bean_admin
 dependencies[] = ilr_drush_feeds_import
 dependencies[] = ilr_editable_settings

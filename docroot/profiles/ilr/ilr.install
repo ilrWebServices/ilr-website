@@ -100,10 +100,45 @@ function ilr_install() {
   // These hooks will be skipped by initial install but will run on updatedb of current site.
   ilr_update_7007();
   ilr_update_7008();
-
-  // Add Migrations here as necessary
 }
 
+/**
+ * Custom function for role creation
+ */
+function _ilr_create_roles() {
+  $roles = array('administrator','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin', 'course admin');
+
+  $weight = 0;
+  foreach ($roles as $name) {
+    $role = new stdClass();
+    $role->name = $name;
+    $role->weight = $weight++;
+    user_role_save($role);
+  }
+}
+
+/**
+ * Custom function for role creation
+ */
+function _ilr_add_permissions() {
+  // Enable the permissions module
+  module_enable(array(
+    'ilr_permissions',
+  ));
+
+  // Assign all available permissions to admin
+  $admin_role = user_role_load_by_name('administrator');
+  user_role_grant_permissions($admin_role->rid, array_keys(module_invoke_all('permission')));
+
+  // Set this as the administrator role.
+  variable_set('user_admin_role', $admin_role->rid);
+
+  // Assign user 1 the "administrator" role.
+  db_insert('users_roles')
+    ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
+    ->execute();
+
+}
 /**
  * Enables jpanelmenu
  */
@@ -284,39 +319,10 @@ function ilr_update_7019() {
 }
 
 /**
- * Custom function for role creation
+ * Enables ilr_alumni_events custom module
  */
-function _ilr_create_roles() {
-  $roles = array('administrator','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin', 'course admin');
-
-  $weight = 0;
-  foreach ($roles as $name) {
-    $role = new stdClass();
-    $role->name = $name;
-    $role->weight = $weight++;
-    user_role_save($role);
-  }
-}
-
-/**
- * Custom function for role creation
- */
-function _ilr_add_permissions() {
-  // Enable the permissions module
+function ilr_update_7020() {
   module_enable(array(
-    'ilr_permissions',
+    'ilr_alumni_events',
   ));
-
-  // Assign all available permissions to admin
-  $admin_role = user_role_load_by_name('administrator');
-  user_role_grant_permissions($admin_role->rid, array_keys(module_invoke_all('permission')));
-
-  // Set this as the administrator role.
-  variable_set('user_admin_role', $admin_role->rid);
-
-  // Assign user 1 the "administrator" role.
-  db_insert('users_roles')
-    ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
-    ->execute();
-
 }
