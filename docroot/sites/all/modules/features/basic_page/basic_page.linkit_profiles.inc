@@ -113,7 +113,7 @@ function basic_page_default_linkit_profiles() {
       'result_description' => '',
     ),
     'insert_plugin' => array(
-      'url_method' => '3',
+      'url_method' => '2',
     ),
     'attribute_plugins' => array(
       'accesskey' => array(
