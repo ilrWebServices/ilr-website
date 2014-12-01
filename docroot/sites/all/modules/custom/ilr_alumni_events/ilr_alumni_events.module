@@ -168,6 +168,7 @@ function _ilr_alumni_events_payment_iframe() {
   $output = '';
   if (!empty($_SESSION['ilr_alumni_events_entityform_id'])) {
     $output = _ilr_alumni_events_generate_elavon_form_markup();
+
     drupal_add_js(
       'jQuery(document).ready(function () { jQuery("#sendIt").click(); });',
       array('type' => 'inline', 'scope' => 'footer')
@@ -400,17 +401,36 @@ function _ilr_alumni_events_ordered_tickets() {
 
 /**
  * Returns a unique invoice number for the registration
- * @todo Figure out how to appropriately generate the invoice #
+ * Based on the number of completed, paid registrations
  */
 function _ilr_alumni_events_generate_invoice_number() {
-  $wrapper = _ilr_alumni_events_entityform_wrapper();
-  $eid = $wrapper->entityform_id->value();
-  return "invoice$eid";
+  $prefix = 'alev';
+  $invoice_count = _ilr_alumni_events_get_current_invoice_count();
+  $offset = 700; // Incremented from the old system
+  // Pad the string to 6 places
+  $invoice_number = str_pad($invoice_count + $offset, 6, '0', STR_PAD_LEFT);
+  return "alev$invoice_number";
 }
 
 function _ilr_alumni_events_get_event_title() {
   $entityform_wrapper = _ilr_alumni_events_entityform_wrapper();
   return $entityform_wrapper->field_referenced_node->value()->title;
+}
+
+/**
+ * Runs a query for all entityforms with data in field_ssl_amount
+ * and a transaction id that is not the test value
+ */
+function _ilr_alumni_events_get_current_invoice_count() {
+  $query = db_select('entityform', 'ef');
+  $query->fields('ef', array('entityform_id'));
+  $query->leftJoin('field_data_field_h_credit_card_payments', 'ftc', 'ftc.entity_id = ef.entityform_id');
+  $query->leftJoin('field_data_field_ssl_amount', 'fdsa', 'fdsa.entity_id = ftc.field_h_credit_card_payments_value');
+  $query->leftJoin('field_data_field_ssl_txn_id', 'fdtxid', 'fdtxid.entity_id = ftc.field_h_credit_card_payments_value');
+  $query->isNotNull('field_ssl_amount_value');
+  $query->condition('field_ssl_txn_id_value', '00000000-0000-0000-0000-00000000000','!=');
+  $results = $query->execute()->fetchAll();
+  return count($results);
 }
 
 /**
