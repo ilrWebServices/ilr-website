@@ -498,13 +498,25 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
   $user_name = _forms_construct_user_name($entityform);
   $email_template = _forms_get_tplphp_file($entityform);
   $event_info_for_email = '';
+  $event_total_cost_for_email = '';
 
   if (_forms_is_event_registration_form($entityform)) {
     module_load_include('module', 'registration_pages');
     $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
     $node = $entityform_wrapper->field_referenced_node->value();
     $event_info_for_email = _registration_pages_get_event_markup($node);
+
+    if (isset($entityform->field_total_cost['und'][0]['value'])) {
+      if ($entityform->field_total_cost['und'][0]['value'] == 0) {
+        $event_total_cost_for_email = 'No payment is required.';
+      }
+      else {
+        $event_total_cost_for_email = 'Your credit card has been charged $' .
+          $entityform->field_total_cost['und'][0]['value'] . '.';
+      }
+    }
   }
+
   // User email
   if (!empty($entityform->field_email['und'][0]['email']) &&
       _forms_user_receives_confirmation_email($entityform)) {
@@ -516,6 +528,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
       'admin_email'           => $admin_email,
       'form_title'            => $form_title,
       'event_info_for_email'  => $event_info_for_email,
+      'event_total_cost_for_email' => $event_total_cost_for_email,
       'sitename'              => $sitename,
     ));
 
