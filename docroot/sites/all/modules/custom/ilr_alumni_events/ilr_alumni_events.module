@@ -532,20 +532,22 @@ function _ilr_alumni_events_process_entityform() {
 
 /**
  * Determines if the entityform should be in draft mode
+ *   - Free events are not drafts
+ *   - APPROVED transactions are not drafts
  */
 function _ilr_alumni_events_get_draft_status() {
-  $status = 1;
+  $is_draft = 1;
   if (isset($_SESSION['ilr_alumni_events_entityform_id'])) {
     $wrapper = _ilr_alumni_events_entityform_wrapper();
     if (_ilr_alumni_events_ordered_tickets()) {
       if (_ilr_alumni_events_is_free_event()) {
-        $status = 0;
+        $is_draft = 0;
       }
       else {
         $result = _ilr_alumni_events_get_field_collection_data('field_ssl_result_message');
-        $status = ($result == 'APPROVED') ? 1 : 0;
+        $is_draft = ($result == 'APPROVED') ? 0 : 1;
       }
     }
   }
-  return $status;
+  return $is_draft;
 }
