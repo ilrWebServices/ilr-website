@@ -93,9 +93,10 @@ function _ilr_alumni_events_payment_response() {
   $output = '';
   $response_variables = drupal_get_query_parameters();
   if (count($response_variables)) { // Confirm that Elavon sent information
+    $fixed_vars = _ilr_alumni_events_fix_response_vars($response_variables);
     $output = '<p>Thank you for your registration. One moment while we update your information.</p>';
     // Save the results
-    _ilr_alumni_events_update_entityform_values($response_variables);
+    _ilr_alumni_events_update_entityform_values($fixed_vars);
     // Process the entityform
     _ilr_alumni_events_process_entityform();
     // Redirect to the entityform success page
@@ -260,6 +261,16 @@ function _ilr_alumni_events_get_entityform_value($key) {
   return '';
 }
 
+/**
+ * Fixes the ssl_approval_code query param from Elavon,
+ * which breaks due to our "layout" param
+ */
+function _ilr_alumni_events_fix_response_vars($variables) {
+  $approval_code = substr($variables['layout'], strpos($variables['layout'], "=") + 1);
+  $variables['ssl_approval_code'] = $approval_code;
+  unset($variables['layout']);
+  return $variables;
+}
 /**
  * Updates the entityform values based on what is returned
  * from the payment gateway
