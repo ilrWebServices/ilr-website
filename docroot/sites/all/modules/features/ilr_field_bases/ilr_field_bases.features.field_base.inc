@@ -6851,6 +6851,8 @@ function ilr_field_bases_field_default_field_bases() {
         'devel' => 0,
         'diff' => 0,
         'entityform_block' => 0,
+        'ilr_alumni_events' => 'ilr_alumni_events',
+        'ilr_google_translate' => 0,
         'ilr_mega_menu' => 0,
         'ilr_xml_blocks' => 'ilr_xml_blocks',
         'menu' => 0,

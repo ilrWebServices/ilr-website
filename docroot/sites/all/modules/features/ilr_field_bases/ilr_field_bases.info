@@ -328,5 +328,5 @@ features_exclude[dependencies][news] = news
 features_exclude[dependencies][people_profiles] = people_profiles
 features_exclude[dependencies][wit] = wit
 features_exclude[dependencies][ilr_sdc_listings] = ilr_sdc_listings
-mtime = 1416945796
+mtime = 1417546370
 project path = sites/all/modules/features
