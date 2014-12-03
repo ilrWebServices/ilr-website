@@ -85,9 +85,6 @@ function ilr_alumni_events_menu() {
 
 /**
  * Process the response from the gateway
- * @todo
- *   - save additional result fields: ssl_approval_code
- *   - Display correct message and field results
  */
 function _ilr_alumni_events_payment_response() {
   $output = '';
@@ -274,7 +271,6 @@ function _ilr_alumni_events_fix_response_vars($variables) {
 /**
  * Updates the entityform values based on what is returned
  * from the payment gateway
- * @todo Improve the logic around the field collection
  */
 function _ilr_alumni_events_update_entityform_values($variables) {
   $wrapper = _ilr_alumni_events_entityform_wrapper();
@@ -530,7 +526,7 @@ function _ilr_alumni_events_get_payment_details_for_email($entityform) {
     $total = _ilr_alumni_events_get_field_collection_data('field_ssl_amount');
     $invoice_number = _ilr_alumni_events_get_field_collection_data('field_transinvoicenum');
     $details = ($total > 0)
-      ? "Your credit card has been charged \$$total, and the invoice number is $invoice_number. Please retain this for your records."
+      ? "Your credit card has been charged \$$total, and the invoice number is $invoice_number. Please retain this for your records.\n"
       : '';
   }
   return $details;
