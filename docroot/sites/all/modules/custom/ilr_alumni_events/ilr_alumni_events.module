@@ -1,4 +1,3 @@
-
 <?php
 
 require_once DRUPAL_ROOT . '/../config/get_secrets.php';
@@ -45,11 +44,7 @@ function ilr_alumni_events_form_ilr_alumni_association_event_reg_entityform_edit
  */
 function ilr_alumni_events_entityform_presave($entityform) {
   if ($entityform->type == 'ilr_alumni_association_event_reg') {
-    $wrapper = _ilr_alumni_events_entityform_wrapper($entityform);
-    $flag = $wrapper->field_total_cost->value();
-    if (empty($flag)) {
-      $entityform->draft = 1;
-    }
+    $entityform->draft = _ilr_alumni_events_get_draft_status();
   }
 }
 
@@ -91,9 +86,8 @@ function ilr_alumni_events_menu() {
 /**
  * Process the response from the gateway
  * @todo
- *   - update changed values to the entityform
- *   - save additional result fields:  ssl_amount, ssl_approval_code, ssl_card_number (1st 2 digits), ssl_invoice_number (should already be saved), ssl_result_message, ssl_status, ssl_txn_id, ssl_txn_time
- *   - Display message and field results
+ *   - save additional result fields: ssl_approval_code
+ *   - Display correct message and field results
  */
 function _ilr_alumni_events_payment_response() {
   $output = '';
@@ -102,6 +96,8 @@ function _ilr_alumni_events_payment_response() {
     $output = '<p>Thank you for your registration. One moment while we update your information.</p>';
     // Save the results
     _ilr_alumni_events_update_entityform_values($response_variables);
+    // Process the entityform
+    _ilr_alumni_events_process_entityform();
     // Redirect to the entityform success page
     _ilr_alumni_events_redirect_after_response();
   } else {
@@ -138,25 +134,27 @@ function _ilr_alumni_events_redirect_after_response($with_layout=0) {
  */
 function _ilr_alumni_events_payment_page() {
   $output = '';
-  if (!empty($_SESSION['ilr_alumni_events_entityform_id'])
-    && !_ilr_alumni_events_is_free_event()) {
+  if (!empty($_SESSION['ilr_alumni_events_entityform_id'])) {
     if (_ilr_alumni_events_ordered_tickets()) {
-      // Load the page that posts to virtualmerchant.do
-      $url = '/alumni/events/iframe?layout=0';
-      if (_ilr_alumni_events_is_test()) {
-        $url .= '&test=1';
+      if (_ilr_alumni_events_is_free_event()) {
+        $wrapper = _ilr_alumni_events_entityform_wrapper();
+        $wrapper->draft = 0;
+        $wrapper->field_total_cost->set('No payment required');
+        $wrapper->save();
+        _ilr_alumni_events_process_entityform();
+        _ilr_alumni_events_redirect_after_response(1); // 1 tells it to load the layout
+      } // Load the page that posts to virtualmerchant.do
+      else {
+        $url = '/alumni/events/iframe?layout=0';
+        if (_ilr_alumni_events_is_test()) {
+          $url .= '&test=1';
+        }
+        $output = '<iframe src="'.$url.'" width="100%" height="1000" ></iframe>';
       }
-      $output = '<iframe src="'.$url.'" width="100%" height="1000" ></iframe>';
     } // They forgot to order tickets
     else {
       $output = '<p>Sorry, but there was an error processing your request. Are you sure you chose the number of tickets you wanted? Please hit your back button, choose how many tickets you want to purchase, and submit your registration again.</p>';
     }
-  } // Free event
-  else if (_ilr_alumni_events_is_free_event()) {
-    $wrapper = _ilr_alumni_events_entityform_wrapper();
-    $wrapper->draft = 0;
-    $wrapper->save();
-    _ilr_alumni_events_redirect_after_response(1); // 1 tells it to load the layout
   } // Session missing
   else {
     $output = '<p>Sorry, but there was an error processing your request. Please make sure that cookies are enabled in your browser, hit your back button to reload the alumni event form, and submit your registration again.</p>';
@@ -303,6 +301,11 @@ function _ilr_alumni_events_set_field_collection_data($field_name, $value) {
   $wrapper->save();
 }
 
+function _ilr_alumni_events_get_field_collection_data($field_name) {
+  $wrapper = _ilr_alumni_events_field_collection_wrapper();
+  return $wrapper->{$field_name}->value();
+}
+
 /**
  * Generates the form markup that gets auto-posted to Elavon
  */
@@ -353,12 +356,15 @@ function _ilr_alumni_events_get_entityform_mapping($key_or_value) {
  * set for the node upon which the form lives
  */
 function _ilr_alumni_events_calculate_amount() {
-  $member_tickets = _ilr_alumni_events_member_ticket_count();
-  $member_cost = _ilr_alumni_events_get_member_cost();
-  $non_member_tickets = _ilr_alumni_events_non_member_ticket_count();
-  $non_member_cost = _ilr_alumni_events_get_non_member_cost();
+  if (_ilr_alumni_events_ordered_tickets()) {
+    $member_tickets = _ilr_alumni_events_member_ticket_count();
+    $member_cost = _ilr_alumni_events_get_member_cost();
+    $non_member_tickets = _ilr_alumni_events_non_member_ticket_count();
+    $non_member_cost = _ilr_alumni_events_get_non_member_cost();
 
-  return ($member_tickets * $member_cost) + ($non_member_tickets * $non_member_cost);
+    return ($member_tickets * $member_cost) + ($non_member_tickets * $non_member_cost);
+  }
+  return NULL;
 }
 
 function _ilr_alumni_events_member_ticket_count() {
@@ -386,10 +392,7 @@ function _ilr_alumni_events_get_non_member_cost() {
  * @return [type] [description]
  */
 function _ilr_alumni_events_is_free_event() {
-  if (_ilr_alumni_events_ordered_tickets()) {
-    return _ilr_alumni_events_calculate_amount() == 0;
-  }
-  return FALSE;
+  return _ilr_alumni_events_calculate_amount() === 0;
 }
 
 /**
@@ -507,4 +510,42 @@ function _ilr_alumni_events_is_test() {
  */
 function _ilr_alumni_events_test_value() {
   return (_ilr_alumni_events_is_test()) ? 'true' : 'false';
+}
+
+function _ilr_alumni_events_get_payment_details_for_email($entityform) {
+  $details = '';
+  $wrapper = _ilr_alumni_events_entityform_wrapper($entityform);
+  if (isset($wrapper->field_total_cost)) {
+    $total = _ilr_alumni_events_get_field_collection_data('field_ssl_amount');
+    $invoice_number = _ilr_alumni_events_get_field_collection_data('field_transinvoicenum');
+    $details = ($total > 0)
+      ? "Your credit card has been charged \$$total, and the invoice number is $invoice_number. Please retain this for your records."
+      : '';
+  }
+  return $details;
+}
+
+function _ilr_alumni_events_process_entityform() {
+  $entityform = _ilr_alumni_events_entityform();
+  _forms_process_entityform($entityform);
+}
+
+/**
+ * Determines if the entityform should be in draft mode
+ */
+function _ilr_alumni_events_get_draft_status() {
+  $status = 1;
+  if (isset($_SESSION['ilr_alumni_events_entityform_id'])) {
+    $wrapper = _ilr_alumni_events_entityform_wrapper();
+    if (_ilr_alumni_events_ordered_tickets()) {
+      if (_ilr_alumni_events_is_free_event()) {
+        $status = 0;
+      }
+      else {
+        $result = _ilr_alumni_events_get_field_collection_data('field_ssl_result_message');
+        $status = ($result == 'APPROVED') ? 1 : 0;
+      }
+    }
+  }
+  return $status;
 }

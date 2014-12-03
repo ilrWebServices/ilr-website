@@ -27,6 +27,17 @@ function forms_entityform_presave($entityform) {
  * Implements hook_entity_insert().
  */
 function forms_entityform_insert($entityform) {
+  if (!$entityform->draft) {
+    _forms_process_entityform($entityform);
+  }
+}
+
+/**
+ * Processing function that can be called independently
+ * from forms_entityform_insert()
+ * @see _ilr_alumni_events_process_entityform()
+ */
+function _forms_process_entityform($entityform) {
   $processingFunction = '_process_' . $entityform->type;
   if (function_exists($processingFunction)) {
     $processingFunction($entityform);
@@ -530,6 +541,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
     $node = $entityform_wrapper->field_referenced_node->value();
     $event_info_for_email = _registration_pages_get_event_markup($node);
   }
+
   // User email
   if (isset($user_email) &&
       _forms_user_receives_confirmation_email($entityform)) {
@@ -541,6 +553,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
       'admin_email'           => $admin_email,
       'form_title'            => $form_title,
       'event_info_for_email'  => $event_info_for_email,
+      'event_payment_details' => _forms_get_payment_details_for_email($entityform),
       'sitename'              => $sitename,
     ));
 
@@ -703,15 +716,22 @@ function forms_std_confirmation_mail($key, &$message, $params) {
  */
 function _forms_is_event_registration_form($entityform) {
   if (isset($entityform->field_referenced_node)) {
-    if ((module_exists('registration_pages')
-        && _registration_pages_is_event_registration_form($entityform))
-      ||
-        (module_exists('ilr_alumni_events')
-        && _ilr_alumni_events_is_event_registration_form($entityform))) {
+    if (module_exists('registration_pages')
+        && _registration_pages_is_event_registration_form($entityform)) {
       return TRUE;
     }
   }
   return FALSE;
+}
+
+/**
+ * Wrapper function for _ilr_alumni_events_get_payment_details_for_email()
+ */
+function _forms_get_payment_details_for_email($entityform) {
+  if (module_exists('ilr_alumni_events')) {
+    return _ilr_alumni_events_get_payment_details_for_email($entityform);
+  }
+  return '';
 }
 
 /**
