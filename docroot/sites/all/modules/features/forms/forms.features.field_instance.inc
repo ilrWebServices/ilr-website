@@ -10308,7 +10308,7 @@ function forms_field_default_field_instances() {
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_degree_plan_submitted',
-    'label' => '	I certify that I have read the above information and that I have submitted my Degree Plan.',
+    'label' => '  I certify that I have read the above information and that I have submitted my Degree Plan.',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -14003,7 +14003,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'download' => array(
         'label' => 'above',
@@ -14257,17 +14257,9 @@ function forms_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
-          'edit' => 'Edit',
-          'field_formatter_label' => '',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
-        'weight' => 22,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
       ),
       'download' => array(
         'label' => 'above',
@@ -14724,7 +14716,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'download' => array(
         'label' => 'above',
@@ -22297,7 +22289,7 @@ function forms_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('	I certify that I have read the above information and that I have submitted my Degree Plan.');
+  t(' I certify that I have read the above information and that I have submitted my Degree Plan.');
   t(' Departments in which you prefer assignment (Indicate at least top two choices.)');
   t(' I certify that I have read the above information and that I have completed my 7th semester check.');
   t(' May we contact you by email about information on our offerings?');

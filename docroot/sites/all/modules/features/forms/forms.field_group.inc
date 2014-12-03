@@ -1596,6 +1596,41 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_reservations|entityform|ilr_alumni_association_event_reg|default';
+  $field_group->group_name = 'group_reservations';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'ilr_alumni_association_event_reg';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Reservations',
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_attendee_list',
+      1 => 'field_attendee_list_guests',
+      2 => 'field_attendee_list_markup',
+      3 => 'field_guests',
+      4 => 'field_h_event_date',
+      5 => 'field_referenced_node',
+      6 => 'field_tickets_for_aa_members',
+      7 => 'field_tickets_for_non_members',
+      8 => 'field_total_cost',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Reservations',
+      'instance_settings' => array(
+        'classes' => 'group-reservations field-group-fieldset',
+        'description' => 'One ticket is required for each person attending.',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_reservations|entityform|ilr_alumni_association_event_reg|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_reservations|entityform|ilr_alumni_association_event_reg|form';
   $field_group->group_name = 'group_reservations';
   $field_group->entity_type = 'entityform';
