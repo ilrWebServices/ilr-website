@@ -10,11 +10,33 @@ function ilr_alumni_events_init() {
 }
 
 /**
+* Implements hook_block_info().
+*/
+function ilr_alumni_events_block_info($delta = '') {
+  $blocks['alumni_event_attendees'] = array(
+    'info' => "Alumni Event Attendees",
+  );
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function ilr_alumni_events_block_view($delta = '') {
+  $block = array(
+    'subject' => "See Who's Coming",
+    'content' => _ilr_alumni_events_attendee_view(),
+  );
+
+  return $block;
+}
+
+/**
  * Attempts to load the entityform draft if there is a SESSION
  */
 function ilr_alumni_events_node_view($node, $view_mode) {
   if ($node->type == 'registration_page' && $view_mode == 'full') {
-    $wrapper = entity_metadata_wrapper('node', $node);
+    $wrapper = _ilr_alumni_events_node_wrapper($node);
     drupal_add_js(array(
       'ilr_alumni_events' => array(
         'memberPrice' => $wrapper->field_aa_member_price->value(),
@@ -461,11 +483,13 @@ function _ilr_alumni_events_entityform_wrapper($entityform=NULL) {
  * Creates or retrieves an entitymetadata wrapper for the node
  * on which the entityform has been placed
  */
-function _ilr_alumni_events_node_wrapper() {
+function _ilr_alumni_events_node_wrapper($node=NULL) {
   $wrapper = &drupal_static(__FUNCTION__);
   if (!isset($wrapper)) {
-    $entityform_wrapper = _ilr_alumni_events_entityform_wrapper();
-    $node = $entityform_wrapper->field_referenced_node->value();
+    if (!$node) {
+      $entityform_wrapper = _ilr_alumni_events_entityform_wrapper();
+      $node = $entityform_wrapper->field_referenced_node->value();
+    }
     $wrapper = entity_metadata_wrapper('node', $node);
   }
   return $wrapper;
@@ -519,19 +543,24 @@ function _ilr_alumni_events_test_value() {
   return (_ilr_alumni_events_is_test()) ? 'true' : 'false';
 }
 
+/**
+ * Creates a string for payment details if applicable
+ */
 function _ilr_alumni_events_get_payment_details_for_email($entityform) {
   $details = '';
+  // Create the wrapper so that it gets added to the cache
   $wrapper = _ilr_alumni_events_entityform_wrapper($entityform);
-  if (isset($wrapper->field_total_cost)) {
-    $total = _ilr_alumni_events_get_field_collection_data('field_ssl_amount');
-    $invoice_number = _ilr_alumni_events_get_field_collection_data('field_transinvoicenum');
-    $details = ($total > 0)
-      ? "Your credit card has been charged \$$total, and the invoice number is $invoice_number. Please retain this for your records.\n"
-      : '';
-  }
+  $total = _ilr_alumni_events_get_field_collection_data('field_ssl_amount');
+  $invoice_number = _ilr_alumni_events_get_field_collection_data('field_transinvoicenum');
+  $details = ($total > 0)
+    ? "Your credit card has been charged \$$total, and the invoice number is $invoice_number. Please retain this for your records.\n"
+    : '';
   return $details;
 }
 
+/**
+ * Wrapper function to trigger processing the entityform
+ */
 function _ilr_alumni_events_process_entityform() {
   $entityform = _ilr_alumni_events_entityform();
   _forms_process_entityform($entityform);
@@ -557,4 +586,93 @@ function _ilr_alumni_events_get_draft_status() {
     }
   }
   return $is_draft;
+}
+
+/**
+ * Creates an EntityFieldQuery to get completed registrations
+ * who have agreed to be added to the form
+ * **NOTE** We ignore users added guest info but not their own
+ */
+function _ilr_alumni_events_get_event_attendees($node) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'entityform')
+    ->entityCondition('bundle', 'ilr_alumni_association_event_reg')
+    ->propertyCondition('draft', 0)
+    ->fieldCondition('field_attendee_list', 'value', '1', '=')
+    ->fieldCondition('field_referenced_node', 'target_id', $node->nid);
+  $result = $query->execute();
+
+  if (isset($result['entityform'])) {
+    $entityform_ids = array_keys($result['entityform']);
+    $attendees = entity_load('entityform', $entityform_ids);
+    return $attendees;
+  }
+  return NULL;
+}
+
+/**
+* View callback for attendee block
+* @see ilr_alumni_events_block_view()
+*/
+function _ilr_alumni_events_attendee_view() {
+  $node = menu_get_object();
+  if ($attendees = _ilr_alumni_events_get_event_attendees($node)) {
+    $markup = "<ul class=\"attendees\">\n";
+    foreach ($attendees as $key => $fields) {
+      $entityform = entityform_load($key);
+      $wrapper = entity_metadata_wrapper('entityform', $entityform);
+      $markup .= _ilr_alumni_events_get_attendee_markup($wrapper);
+      if ($wrapper->field_attendee_list_guests->value() == 1) {
+        if ($guests = $wrapper->field_guests->value()) {
+          $markup .= _ilr_alumni_events_get_guest_markup($wrapper);
+        }
+      }
+    }
+    $markup .= "</ul>";
+    $block['content'] = array(
+      '#markup' => $markup,
+    );
+  }
+  else {
+    // No one has agreed to show their info for this event, so don't render the block
+    $block = array();
+  }
+  return $block;
+}
+
+/**
+ * Converts form first and last name to list items
+ */
+function _ilr_alumni_events_get_attendee_markup($wrapper) {
+  $name = $wrapper->field_first_name->value(array('sanitize' => TRUE));
+  $name .= ' ' . $wrapper->field_last_name->value(array('sanitize' => TRUE));
+  $class_year = _ilr_alumni_events_format_attendee_class_year($wrapper);
+  return "  <li>$name$class_year</li>\n";
+}
+
+/**
+ * Converts guest info from the entityform to list items
+ */
+function _ilr_alumni_events_get_guest_markup($wrapper) {
+  $output = '';
+  $guest_data = $wrapper->field_guests->value(array('sanitize' => TRUE));
+  $guest_array = explode("\n", $guest_data);
+  foreach ($guest_array as $key => $line) {
+    $info = preg_replace("/\r|\n/", "", $line);
+    $output .= "  <li>$info</li>\n";
+  }
+  return $output;
+}
+
+/**
+ * Adds the class year to the markup
+ * @todo Consider formatting the year,
+ * since it's being input as text
+ */
+function _ilr_alumni_events_format_attendee_class_year($wrapper) {
+  $class_year = $wrapper->field_year_as_text->value(array('sanitize' => TRUE));
+  if (!empty($class_year)) {
+    $year = $class_year;
+  }
+  return (!empty($class_year)) ? ', ' . $class_year : '';
 }
