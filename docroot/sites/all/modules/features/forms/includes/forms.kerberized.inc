@@ -33,21 +33,6 @@ function forms_drupal_goto_alter(&$path, &$options, &$http_response_code) {
     drupal_goto($destination);
   }
 }
-/**
- * Adds the requires authorization checkbox to entityform type creation/edit
- */
-function _forms_add_kerberized_checkbox(&$form) {
-  $kerberized = (isset($form['#entityform_type']->data['kerberized']))
-    ? $form['#entityform_type']->data['kerberized']
-    : 0;
-
-  $form['data']['kerberized'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('This form requires NetID authentication'),
-    '#weight' => -4,
-    '#default_value' => $kerberized,
-  );
-}
 
 /**
  * Determines whether kerberization should be offered for a field
