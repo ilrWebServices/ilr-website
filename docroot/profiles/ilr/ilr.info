@@ -35,6 +35,7 @@ dependencies[] = basic_page
 dependencies[] = cul_hours
 dependencies[] = cul_new_books
 dependencies[] = custom_publishing_options
+dependencies[] = elavon
 dependencies[] = entityform_block
 dependencies[] = featured_book
 dependencies[] = forms

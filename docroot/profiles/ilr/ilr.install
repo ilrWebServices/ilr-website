@@ -326,3 +326,12 @@ function ilr_update_7020() {
     'ilr_alumni_events',
   ));
 }
+
+/**
+ * Enables elavon custom module
+ */
+function ilr_update_7021() {
+  module_enable(array(
+    'elavon',
+  ));
+}
