@@ -1,0 +1,114 @@
+<?php
+
+//////////////////
+// Drupal hooks //
+//////////////////
+
+/**
+ * Implements hook_entity_insert().
+ */
+function elavon_entityform_insert($entityform) {
+  $entityform_type = entityform_type_load($entityform->type);
+  if ($entityform_type->data['add_payment_processing']) {
+    $_SESSION['elavon_entityform_id'] = $entityform->entityform_id;
+  }
+}
+
+//////////////////////
+// Custom functions //
+//////////////////////
+
+/**
+ * Loads or retrieves the entityform object
+ */
+function _elavon_get_entityform() {
+  $entityform = &drupal_static('elavon_entityform');
+  if (!isset($entityform)) {
+    if (isset($_SESSION['elavon_entityform_id'])) {
+      $entityform = entityform_load($_SESSION['elavon_entityform_id']);
+    } // Attempt to load it from the entityform module SESSION
+    else if (isset($_SESSION['entityform_submission'])) {
+      $entityform = entityform_load($_SESSION['entityform_submission']);
+    }
+  }
+  return $entityform;
+}
+
+/**
+ * Creates or retrieves an entitymetadata wrapper for the form
+ */
+function _elavon_get_entityform_wrapper($entityform=NULL) {
+  $wrapper = &drupal_static(__FUNCTION__);
+  if (!isset($wrapper)) {
+    if ($entityform) {
+      $wrapper = entity_metadata_wrapper('entityform', $entityform);
+    }
+    else if ($entityform = _elavon_get_entityform()) {
+      $wrapper = entity_metadata_wrapper('entityform', $entityform);
+    }
+  }
+  return $wrapper;
+}
+
+/**
+ * Getter for field collection data
+ */
+function _elavon_get_field_collection_data($field_name) {
+  $wrapper = _elavon_get_entityform_wrapper();
+  return $wrapper->field_h_credit_card_payments->{$field_name}->value();
+}
+
+/**
+ * Creates or retrieves a field_collection wrapper
+ * Required by _elavon_set_field_collection_data
+ */
+function _elavon_get_field_collection_wrapper() {
+  $wrapper = &drupal_static(__FUNCTION__);
+  if (!isset($wrapper)) {
+    $collection = entity_create('field_collection_item', array('field_name' => 'field_h_credit_card_payments'));
+    $collection->setHostEntity('entityform', _elavon_get_entityform());
+    $wrapper = entity_metadata_wrapper('field_collection_item', $collection);
+  }
+  return $wrapper;
+}
+/**
+ * Creates a string for payment details if applicable
+ */
+function _elavon_get_payment_details_for_email($entityform) {
+  $details = '';
+  // Add the entityform to the static cache
+  //_elavon_set_entityform($entityform);
+  $total = _elavon_get_field_collection_data('field_ssl_amount');
+  $invoice_number = _elavon_get_field_collection_data('field_transinvoicenum');
+  $details = ($total > 0)
+    ? "Your credit card has been charged \$$total, and the invoice number is $invoice_number. Please retain this for your records.\n"
+    : '';
+  return $details;
+}
+
+/**
+ * Wrapper function to trigger processing the entityform
+ */
+function _elavon_process_entityform() {
+  $entityform = _elavon_get_entityform();
+  _forms_process_entityform($entityform);
+}
+
+/**
+ * Adds the entityform to the cache
+ */
+function _elavon_set_entityform($entityform) {
+  drupal_static_reset('elavon_entityform');
+  $cached_entityform = &drupal_static('elavon_entityform');
+  $cached_entityform = $entityform;
+  return $cached_entityform;
+}
+
+/**
+ * Setter for the field collection data
+ */
+function _elavon_set_field_collection_data($field_name, $value) {
+  $wrapper = _elavon_get_field_collection_wrapper();
+  $wrapper->{$field_name}->set($value);
+  $wrapper->save();
+}
