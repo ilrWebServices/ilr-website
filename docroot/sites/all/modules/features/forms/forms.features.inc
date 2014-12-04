@@ -973,7 +973,7 @@ function forms_default_entityform_type() {
       "redirect_path" : "alumni\\/events\\/registration",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 1,
-      "form_submission_ilr_recipient" : "ilralumniassociation@cornell.edu",
+      "form_submission_ilr_recipient" : "ss446@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0
