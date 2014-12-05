@@ -104,7 +104,7 @@ function basic_page_admin_menu_output_build(&$content) {
  * If only the file link is being displayed remove outside wrapper
  */
 function basic_page_media_wysiwyg_token_to_markup_alter(&$element, $tag_info, $settings) {
-  if (isset($element['content']) && !empty($element['content']['file']['#remove_wrapper'])) {
+  if (isset($element['content']) && 1 || !empty($element['content']['file']['#remove_wrapper'])) {
     // Replace base content with just file link.
     $element['content'] = $element['content']['file'];
   }
