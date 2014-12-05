@@ -13,156 +13,6 @@ function forms_conditional_fields_default_fields() {
   $items[] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
-    'dependent' => 'field_equipment_type',
-    'dependee' => 'field_support_needed',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'Equipment loan',
-      'value' => array(
-        0 => array(
-          'value' => 'Equipment loan',
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items[] = array(
-    'entity' => 'entityform',
-    'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_equipment_loan_additional_',
     'dependee' => 'field_support_needed',
     'options' => array(
@@ -313,6 +163,156 @@ function forms_conditional_fields_default_fields() {
   $items[] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
+    'dependent' => 'field_equipment_type',
+    'dependee' => 'field_support_needed',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 'Equipment loan',
+      'value' => array(
+        0 => array(
+          'value' => 'Equipment loan',
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items[] = array(
+    'entity' => 'entityform',
+    'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_laptop_loan_addl_info',
     'dependee' => 'field_equipment_type',
     'options' => array(
@@ -613,306 +613,6 @@ function forms_conditional_fields_default_fields() {
   $items[] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
-    'dependent' => 'field_wireless_networking_needed',
-    'dependee' => 'field_support_needed',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'Equipment loan',
-      'value' => array(
-        0 => array(
-          'value' => 'Equipment loan',
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items[] = array(
-    'entity' => 'entityform',
-    'bundle' => 'classroom_technologies_request',
-    'dependent' => 'field_wireless_networking_needed',
-    'dependee' => 'field_equipment_type',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'Laptop',
-      'value' => array(
-        0 => array(
-          'value' => 'Laptop',
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items[] = array(
-    'entity' => 'entityform',
-    'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_laptop_size_preference',
     'dependee' => 'field_equipment_type',
     'options' => array(
@@ -1204,456 +904,6 @@ function forms_conditional_fields_default_fields() {
       'value' => array(
         0 => array(
           'value' => 'Equipment loan',
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items[] = array(
-    'entity' => 'entityform',
-    'bundle' => 'classroom_technologies_request',
-    'dependent' => 'field_non_standard_applications',
-    'dependee' => 'field_equipment_type',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'Laptop',
-      'value' => array(
-        0 => array(
-          'value' => 'Laptop',
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items[] = array(
-    'entity' => 'entityform',
-    'bundle' => 'classroom_technologies_request',
-    'dependent' => 'field_non_standard_applications',
-    'dependee' => 'field_support_needed',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'Equipment loan',
-      'value' => array(
-        0 => array(
-          'value' => 'Equipment loan',
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items[] = array(
-    'entity' => 'entityform',
-    'bundle' => 'classroom_technologies_request',
-    'dependent' => 'field_video_recording_addl_info',
-    'dependee' => 'field_support_needed',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'Video recording',
-      'value' => array(
-        0 => array(
-          'value' => 'Video recording',
         ),
       ),
       'values' => array(),
@@ -1804,6 +1054,306 @@ function forms_conditional_fields_default_fields() {
       'value' => array(
         0 => array(
           'value' => 'Video recording',
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items[] = array(
+    'entity' => 'entityform',
+    'bundle' => 'classroom_technologies_request',
+    'dependent' => 'field_non_standard_applications',
+    'dependee' => 'field_equipment_type',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 'Laptop',
+      'value' => array(
+        0 => array(
+          'value' => 'Laptop',
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items[] = array(
+    'entity' => 'entityform',
+    'bundle' => 'classroom_technologies_request',
+    'dependent' => 'field_non_standard_applications',
+    'dependee' => 'field_support_needed',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 'Equipment loan',
+      'value' => array(
+        0 => array(
+          'value' => 'Equipment loan',
         ),
       ),
       'values' => array(),
@@ -2104,6 +1654,456 @@ function forms_conditional_fields_default_fields() {
       'value' => array(
         0 => array(
           'value' => 'Video recording',
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items[] = array(
+    'entity' => 'entityform',
+    'bundle' => 'classroom_technologies_request',
+    'dependent' => 'field_video_recording_addl_info',
+    'dependee' => 'field_support_needed',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 'Video recording',
+      'value' => array(
+        0 => array(
+          'value' => 'Video recording',
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items[] = array(
+    'entity' => 'entityform',
+    'bundle' => 'classroom_technologies_request',
+    'dependent' => 'field_wireless_networking_needed',
+    'dependee' => 'field_support_needed',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 'Equipment loan',
+      'value' => array(
+        0 => array(
+          'value' => 'Equipment loan',
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items[] = array(
+    'entity' => 'entityform',
+    'bundle' => 'classroom_technologies_request',
+    'dependent' => 'field_wireless_networking_needed',
+    'dependee' => 'field_equipment_type',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 'Laptop',
+      'value' => array(
+        0 => array(
+          'value' => 'Laptop',
         ),
       ),
       'values' => array(),
@@ -6459,12 +6459,12 @@ function forms_conditional_fields_default_fields() {
   $items[] = array(
     'entity' => 'entityform',
     'bundle' => 'web_services_request_form',
-    'dependent' => 'field_subject_line',
+    'dependent' => 'field_comments',
     'dependee' => 'field_web_request_options',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',
-      'grouping' => 'OR',
+      'grouping' => 'AND',
       'effect' => 'show',
       'effect_options' => array(),
       'element_view' => array(
@@ -6766,459 +6766,6 @@ function forms_conditional_fields_default_fields() {
   $items[] = array(
     'entity' => 'entityform',
     'bundle' => 'web_services_request_form',
-    'dependent' => 'field_url_suggestion',
-    'dependee' => 'field_web_request_options',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 3,
-      'value_form' => '_none',
-      'values' => array(
-        0 => 'Creating new web content or web form',
-        1 => 'Media, photos and videos for the website',
-        2 => 'Errors on the ILR website',
-      ),
-      'value' => array(),
-    ),
-  );
-
-  $items[] = array(
-    'entity' => 'entityform',
-    'bundle' => 'web_services_request_form',
-    'dependent' => 'field_url',
-    'dependee' => 'field_web_request_options',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 3,
-      'value_form' => '_none',
-      'values' => array(
-        0 => 'Updating existing web content or web form',
-        1 => 'Removing web content',
-      ),
-      'value' => array(),
-    ),
-  );
-
-  $items[] = array(
-    'entity' => 'entityform',
-    'bundle' => 'web_services_request_form',
-    'dependent' => 'field_comments',
-    'dependee' => 'field_web_request_options',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 3,
-      'value_form' => '_none',
-      'values' => array(
-        0 => 'Creating new web content or web form',
-        1 => 'Updating existing web content or web form',
-        2 => 'Removing web content',
-        3 => 'Media, photos and videos for the website',
-        4 => 'Training',
-        5 => 'Errors on the ILR website',
-        6 => 'Other',
-      ),
-      'value' => array(),
-    ),
-  );
-
-  $items[] = array(
-    'entity' => 'entityform',
-    'bundle' => 'web_services_request_form',
     'dependent' => 'field_error_message',
     'dependee' => 'field_web_request_options',
     'options' => array(
@@ -7512,6 +7059,459 @@ function forms_conditional_fields_default_fields() {
         1 => 'Updating existing web content or web form',
         2 => 'Media, photos and videos for the website',
         3 => 'Errors on the ILR website',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items[] = array(
+    'entity' => 'entityform',
+    'bundle' => 'web_services_request_form',
+    'dependent' => 'field_subject_line',
+    'dependee' => 'field_web_request_options',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'OR',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => '_none',
+      'values' => array(
+        0 => 'Creating new web content or web form',
+        1 => 'Updating existing web content or web form',
+        2 => 'Removing web content',
+        3 => 'Media, photos and videos for the website',
+        4 => 'Training',
+        5 => 'Errors on the ILR website',
+        6 => 'Other',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items[] = array(
+    'entity' => 'entityform',
+    'bundle' => 'web_services_request_form',
+    'dependent' => 'field_url',
+    'dependee' => 'field_web_request_options',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => '_none',
+      'values' => array(
+        0 => 'Updating existing web content or web form',
+        1 => 'Removing web content',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items[] = array(
+    'entity' => 'entityform',
+    'bundle' => 'web_services_request_form',
+    'dependent' => 'field_url_suggestion',
+    'dependee' => 'field_web_request_options',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => '_none',
+      'values' => array(
+        0 => 'Creating new web content or web form',
+        1 => 'Media, photos and videos for the website',
+        2 => 'Errors on the ILR website',
       ),
       'value' => array(),
     ),
