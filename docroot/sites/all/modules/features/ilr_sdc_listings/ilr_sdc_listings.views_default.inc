@@ -76,7 +76,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_catalog_prefix_value']['operator'] = 'word';
   $handler->display->display_options['filters']['field_catalog_prefix_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_catalog_prefix_value']['expose']['operator_id'] = 'field_catalog_prefix_value_op';
-  $handler->display->display_options['filters']['field_catalog_prefix_value']['expose']['label'] = 'Catalog Number';
+  $handler->display->display_options['filters']['field_catalog_prefix_value']['expose']['label'] = 'Catalog Numbers (separated by spaces)';
   $handler->display->display_options['filters']['field_catalog_prefix_value']['expose']['description'] = 'List all catalog numbers separated by spaces';
   $handler->display->display_options['filters']['field_catalog_prefix_value']['expose']['operator'] = 'field_catalog_prefix_value_op';
   $handler->display->display_options['filters']['field_catalog_prefix_value']['expose']['identifier'] = 'field_catalog_prefix_value';
