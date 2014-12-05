@@ -193,9 +193,11 @@ function _ilr_sdc_listings_class_view_alter(&$build) {
  */
 function _ilr_sdc_listings_class_course_link($class_node) {
   $node_wrapper = entity_metadata_wrapper('node', $class_node);
+  $course_title = $node_wrapper->field_course->field_catalog_prefix->value();
+  $course_title .= ' - ' . $node_wrapper->title->value();
   return array(
     '#theme' => 'link',
-    '#text' => $node_wrapper->title->value(),
+    '#text' => $course_title,
     '#path' => 'node/' . $node_wrapper->field_course->nid->value(),
     '#options' => array(
       'html' => FALSE,
@@ -533,6 +535,16 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
     }
 
   }
+  if ($variables['type'] == 'sdc_course') {
+    if ($variables['view_mode'] == 'teaser') {
+      // When viewing Course teasers the catalog prefix should be in the title.
+      $wrapper = entity_metadata_wrapper('node', $variables['node']);
+      $variables['title'] = $wrapper->field_catalog_prefix->value() . ' - ' . $variables['title'];
+    }
+
+
+  }
+
 }
 
 /**

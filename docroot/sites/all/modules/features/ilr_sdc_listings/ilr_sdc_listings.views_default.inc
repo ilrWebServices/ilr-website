@@ -11,6 +11,215 @@ function ilr_sdc_listings_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'course_manual_listings';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Course Manual Listings';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: Catalog Number Prefix */
+  $handler->display->display_options['fields']['field_catalog_prefix']['id'] = 'field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['table'] = 'field_data_field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['field'] = 'field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['label'] = '';
+  $handler->display->display_options['fields']['field_catalog_prefix']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_catalog_prefix']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_catalog_prefix']['settings'] = array(
+    'field_formatter_label' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[field_catalog_prefix] - [title]';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'sdc_course' => 'sdc_course',
+  );
+  /* Filter criterion: Content: Catalog Number Prefix (field_catalog_prefix) */
+  $handler->display->display_options['filters']['field_catalog_prefix_value']['id'] = 'field_catalog_prefix_value';
+  $handler->display->display_options['filters']['field_catalog_prefix_value']['table'] = 'field_data_field_catalog_prefix';
+  $handler->display->display_options['filters']['field_catalog_prefix_value']['field'] = 'field_catalog_prefix_value';
+  $handler->display->display_options['filters']['field_catalog_prefix_value']['operator'] = 'word';
+  $handler->display->display_options['filters']['field_catalog_prefix_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_catalog_prefix_value']['expose']['operator_id'] = 'field_catalog_prefix_value_op';
+  $handler->display->display_options['filters']['field_catalog_prefix_value']['expose']['label'] = 'Catalog Number';
+  $handler->display->display_options['filters']['field_catalog_prefix_value']['expose']['description'] = 'List all catalog numbers separated by spaces';
+  $handler->display->display_options['filters']['field_catalog_prefix_value']['expose']['operator'] = 'field_catalog_prefix_value_op';
+  $handler->display->display_options['filters']['field_catalog_prefix_value']['expose']['identifier'] = 'field_catalog_prefix_value';
+  $handler->display->display_options['filters']['field_catalog_prefix_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+  );
+
+  /* Display: Catalog Number and Title */
+  $handler = $view->new_display('panel_pane', 'Catalog Number and Title', 'panel_pane_1');
+  $handler->display->display_options['pane_category']['name'] = 'Course Manual Listing';
+  $handler->display->display_options['pane_category']['weight'] = '0';
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
+  $handler->display->display_options['allow']['fields_override'] = 0;
+
+  /* Display: Table with next class date */
+  $handler = $view->new_display('panel_pane', 'Table with next class date', 'panel_pane_2');
+  $handler->display->display_options['display_description'] = 'word';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'nid' => 'nid',
+    'field_catalog_prefix' => 'field_catalog_prefix',
+    'title' => 'title',
+    'view' => 'view',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_catalog_prefix' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'view' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Catalog Number Prefix */
+  $handler->display->display_options['fields']['field_catalog_prefix']['id'] = 'field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['table'] = 'field_data_field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['field'] = 'field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['label'] = '';
+  $handler->display->display_options['fields']['field_catalog_prefix']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_catalog_prefix']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_catalog_prefix']['settings'] = array(
+    'field_formatter_label' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[field_catalog_prefix] - [title]';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Global: View */
+  $handler->display->display_options['fields']['view']['id'] = 'view';
+  $handler->display->display_options['fields']['view']['table'] = 'views';
+  $handler->display->display_options['fields']['view']['field'] = 'view';
+  $handler->display->display_options['fields']['view']['label'] = 'Next Class Date';
+  $handler->display->display_options['fields']['view']['empty'] = 'No classes offered';
+  $handler->display->display_options['fields']['view']['view'] = 'next_class_course';
+  $handler->display->display_options['fields']['view']['arguments'] = '[!nid]';
+  $handler->display->display_options['pane_category']['name'] = 'Course Manual Listing';
+  $handler->display->display_options['pane_category']['weight'] = '0';
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
+  $handler->display->display_options['allow']['fields_override'] = 0;
+
+  /* Display: Course Description */
+  $handler = $view->new_display('panel_pane', 'Course Description', 'panel_pane_3');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['pane_category']['name'] = 'Course Manual Listing';
+  $handler->display->display_options['pane_category']['weight'] = '0';
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $export['course_manual_listings'] = $view;
+
+  $view = new view();
   $view->name = 'ilr_filtered_courses';
   $view->description = '';
   $view->tag = 'default';
@@ -1036,13 +1245,26 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['relationships']['field_sdc_department_tid']['table'] = 'field_data_field_sdc_department';
   $handler->display->display_options['relationships']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
   $handler->display->display_options['relationships']['field_sdc_department_tid']['required'] = TRUE;
+  /* Field: Content: Catalog Number Prefix */
+  $handler->display->display_options['fields']['field_catalog_prefix']['id'] = 'field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['table'] = 'field_data_field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['field'] = 'field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['label'] = '';
+  $handler->display->display_options['fields']['field_catalog_prefix']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_catalog_prefix']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_catalog_prefix']['settings'] = array(
+    'field_formatter_label' => '',
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[field_catalog_prefix] - [title]';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Department */
   $handler->display->display_options['fields']['field_sdc_department']['id'] = 'field_sdc_department';
   $handler->display->display_options['fields']['field_sdc_department']['table'] = 'field_data_field_sdc_department';
