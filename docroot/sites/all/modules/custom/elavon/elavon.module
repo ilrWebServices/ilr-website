@@ -1,5 +1,17 @@
 <?php
 
+///////////////////
+// Documentation //
+///////////////////
+
+/* The Elavon module makes a few assumptions about setting up a form for payments, such as:
+  1. The form includes a field_total_cost and the field_h_credit_card_payments field collection.
+  2. There is a supporting module for the form which includes at least a few required functions, such as _MODULE_get_entityform_mappings() (see full list in _elavon_get_modular_function() docs).
+  3. New forms will need to modify _elavon_get_ilr_secrets_key_from_type(), as well as add their credentials to the ILR secrets file.
+*/
+
+require_once DRUPAL_ROOT . '/../config/get_secrets.php';
+
 //////////////////
 // Drupal hooks //
 //////////////////
@@ -8,15 +20,195 @@
  * Implements hook_entity_insert().
  */
 function elavon_entityform_insert($entityform) {
-  $entityform_type = entityform_type_load($entityform->type);
-  if ($entityform_type->data['add_payment_processing']) {
-    $_SESSION['elavon_entityform_id'] = $entityform->entityform_id;
+  if (_elavon_entityform_is_payment_form($entityform)) {
+    _elavon_set_entityform_session($entityform->entityform_id);
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ * Providing modules are expected to implement their own
+ * _MODULE_get_draft_status().
+ * @see _ilr_alumni_events_get_draft_status().
+ */
+function elavon_entityform_presave($entityform) {
+  if (_elavon_entityform_is_payment_form($entityform)) {
+    $draft_status_function = _elavon_get_modular_function('get_draft_status');
+    $entityform->draft = $draft_status_function();
+  }
+}
+
+/**
+ * Implements hook_entityform_previous_submission_alter().
+ * Loads the entityform draft if there is one for anonymous users
+ */
+function elavon_entityform_previous_submission_alter(&$entityform_submission, $entityform_type, $context) {
+  if ($previous_submission = _elavon_get_entityform()) {
+    if ($entityform_submission && $entityform_submission->type != $previous_submission->type) {
+      $entityform_submission = $previous_submission;
+    }
+  } // Edge case for logged in users who have lost their session
+  else if ($entityform_submission) {
+    _elavon_set_entityform_session($entityform_submission->entityform_id);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ * Adds submit action for adding special flags to payment forms
+ */
+function elavon_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['#entity_type']) && $form['#entity_type'] == 'entityform' && _elavon_entityform_is_payment_form($form['#entity'], $form)) {
+    $form['actions']['submit']['#submit'][] = '_elavon_add_payment_flag';
+  }
+}
+
+/**
+* Implements hook_menu().
+*/
+function elavon_menu() {
+  $items = array();
+  $items['elavon/payment/iframe'] = array(
+    'title' => "Pay with a Credit Card",
+    'page callback' => '_elavon_payment_iframe',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_node_view().
+ * Adds the iframe when there is a 'payment' flag
+ * Handles payment processing when a response comes back from Elavon
+ */
+function elavon_node_view($node, $view_mode, $langcode) {
+  if ($view_mode == 'full') {
+    $response_variables = drupal_get_query_parameters();
+    if (isset($response_variables['payment']) && _elavon_get_entityform()) {
+      _elavon_replace_payment_form_with_iframe($node);
+    } // Check for response from Elavon
+    else if (isset($response_variables['ssl_txn_id'])) {
+      $fixed_vars = _elavon_fix_response_vars($response_variables);
+      $output = '<p>Thank you for your registration. One moment while we update your information.</p>';
+      // Save the results
+      _elavon_update_entityform_values($fixed_vars);
+      // Complete the process
+      _elavon_complete_payment_process();
+    }
   }
 }
 
 //////////////////////
 // Custom functions //
 //////////////////////
+
+/**
+ * Adds a url parameter for triggering the iframe
+ * @see elavon_node_view().
+ */
+function _elavon_add_payment_flag(&$form, &$form_state) {
+  $form_state['redirect'][1]['query'] = array(
+    'payment' => '1',
+  );
+}
+
+/**
+ * Triggers the form processing from forms.module
+ * Initiates the redirect
+ */
+function _elavon_complete_payment_process($with_layout=0) {
+  _forms_process_entityform(_elavon_get_entityform());
+  _elavon_redirect_after_response($with_layout);
+}
+
+/**
+ * Checks whether the form is a payment form
+ * @todo Consider only checking for h_credit_card payments
+ *       - or add validator for that field collection if creating entityform type with the payment flag
+ */
+function _elavon_entityform_is_payment_form($entityform, $form_array=NULL) {
+  $entityform_type = entityform_type_load($entityform->type);
+  if ($form_array) {
+    $has_cc_field = isset($form_array['field_h_credit_card_payments']);
+  }
+  else {
+    $has_cc_field = !empty($entityform->field_h_credit_card_payments);
+  }
+  return $entityform_type->data['add_payment_processing'] && $has_cc_field;
+}
+
+/**
+ * Fixes the ssl_approval_code query param from Elavon,
+ * which breaks due to our "layout" param
+ */
+function _elavon_fix_response_vars($variables) {
+  $approval_code = substr($variables['layout'], strpos($variables['layout'], "=") + 1);
+  $variables['ssl_approval_code'] = $approval_code;
+  unset($variables['layout']);
+  return $variables;
+}
+
+/**
+ * Generates the form markup that gets auto-posted to Elavon
+ */
+function _elavon_generate_elavon_form_markup() {
+  $markup = '<form id="post_pf1" METHOD="POST" action="https://www.myvirtualmerchant.com/VirtualMerchant/process.do">';
+  $inputs = _elavon_get_form_inputs();
+  foreach ($inputs as $key => $value) {
+    switch ($key) {
+      case 'ssl_amount':
+      case 'ssl_invoice_number':
+      case 'ssl_description':
+        $function = _elavon_get_modular_function($key);
+        $value = $function();
+        break;
+      default:
+        if (strpos($value, 'field') === 0) {
+          $value = _elavon_get_entityform_value($value);
+        }
+        break;
+    }
+    $markup .= '<input type="hidden" name="'.$key.'" value="'.$value.'">';
+  }
+  $markup .= '<input id="sendIt" type="submit" name="submit" value="One moment..." />';
+  $markup .= "</form>";
+  return $markup;
+}
+
+/**
+ * Determines if the entityform should be in draft mode
+ * APPROVED transactions are not drafts
+ */
+function _elavon_get_draft_status() {
+  $is_draft = 1; // Set to draft by default
+  if ($entityform = _elavon_get_entityform()) {
+    $result = _elavon_get_field_collection_data('field_ssl_result_message');
+    $is_draft = ($result == 'APPROVED') ? 0 : 1;
+  }
+  return $is_draft;
+}
+
+/**
+ * Maps the entityform name to the credentials key in ILR_SECRETS
+ */
+function _elavon_get_ilr_secrets_key_from_type($type) {
+  $mappings = array(
+    'ilr_alumni_association_event_reg' => 'alumni_registration_',
+  );
+  return $mappings[$type];
+}
+
+function _elavon_get_elavon_credentials() {
+  global $ILR_SECRETS;
+  $type = _elavon_get_entityform_type_name();
+  $secret_key = _elavon_get_ilr_secrets_key_from_type($type);
+  return array(
+    "ssl_merchant_id" => $ILR_SECRETS['elavon'][$secret_key.'merchant_id'],
+    "ssl_user_id" => $ILR_SECRETS['elavon'][$secret_key.'user_id'],
+    "ssl_pin" => $ILR_SECRETS['elavon'][$secret_key.'pin'],
+  );
+}
 
 /**
  * Loads or retrieves the entityform object
@@ -26,12 +218,47 @@ function _elavon_get_entityform() {
   if (!isset($entityform)) {
     if (isset($_SESSION['elavon_entityform_id'])) {
       $entityform = entityform_load($_SESSION['elavon_entityform_id']);
-    } // Attempt to load it from the entityform module SESSION
-    else if (isset($_SESSION['entityform_submission'])) {
-      $entityform = entityform_load($_SESSION['entityform_submission']);
     }
   }
   return $entityform;
+}
+
+/**
+ * Maps elavon keys to field values
+ */
+function _elavon_get_entityform_mapping($elavon_key) {
+  $mapping_function = _elavon_get_modular_function('get_entityform_mappings');
+  $mappings = $mapping_function();
+  // Check to see if the key is in the mapping array keys
+  if (array_key_exists($elavon_key, $mappings)) {
+    return $mappings[$elavon_key];
+  }
+  return NULL;
+}
+
+/**
+ * Loads or retrieves the entityform type as a string
+ */
+function _elavon_get_entityform_type_name() {
+  $entityform_type = &drupal_static(__FUNCTION__);
+  if (!isset($entityform_type)) {
+    if (isset($_SESSION['elavon_entityform_id'])) {
+      $entityform = entityform_load($_SESSION['elavon_entityform_id']);
+      $entityform_type = $entityform->type;
+    }
+  }
+  return $entityform_type;
+}
+
+/**
+ * Takes a field name key and returns its value
+ */
+function _elavon_get_entityform_value($key) {
+  $wrapper = _elavon_get_entityform_wrapper();
+  if (isset($wrapper->{$key})) {
+    return $wrapper->{$key}->value();
+  }
+  return '';
 }
 
 /**
@@ -55,7 +282,10 @@ function _elavon_get_entityform_wrapper($entityform=NULL) {
  */
 function _elavon_get_field_collection_data($field_name) {
   $wrapper = _elavon_get_entityform_wrapper();
-  return $wrapper->field_h_credit_card_payments->{$field_name}->value();
+  if ($wrapper->field_h_credit_card_payments->value()) {
+    return $wrapper->field_h_credit_card_payments->{$field_name}->value();
+  }
+  return NULL;
 }
 
 /**
@@ -71,13 +301,78 @@ function _elavon_get_field_collection_wrapper() {
   }
   return $wrapper;
 }
+
+/**
+ * Form input keys expected by elavon
+ */
+function _elavon_get_form_inputs() {
+  $mapping_function = _elavon_get_modular_function('get_entityform_mappings');
+  $credentials_function = _elavon_get_modular_function('get_elavon_credentials');
+
+  return array_merge(
+    $mapping_function(),
+    $credentials_function(),
+    _elavon_get_global_inputs()
+  );
+}
+
+/**
+ * Create an array of inputs that all elavon forms need
+ * That are not also included in the entityform
+ */
+function _elavon_get_global_inputs() {
+  return array(
+    "ssl_receipt_link_method" => 'REDG',
+    "ssl_receipt_apprvl_method" => 'REDG',
+    "ssl_receipt_decl_method" => 'REDG',
+    "ssl_receipt_link_url" => _elavon_get_response_url(),
+    'ssl_test_mode' => _elavon_test_value(),
+    "ssl_salestax" => '0',
+    'ssl_cvv2cvc2_indicator' => '1',
+    'ssl_show_form' => 'true',
+    "ssl_transaction_type" => 'ccsale',
+    'ssl_result_format' => 'HTML',
+    'ssl_description' => 'see _elavon_ssl_description',
+  );
+}
+
+/**
+ * Checks for the existence of a parent_path query param
+ */
+function _elavon_get_iframe_parent_path() {
+  $url = '';
+  $params = drupal_get_query_parameters();
+  if (isset($params['parent_path'])) {
+    $url = $params['parent_path'];
+  }
+  return $url;
+}
+
+/**
+ * Retrieves a function from a providing module, if it exists
+ * Otherwise, returns this module's version
+ * Required modular functions:
+ * _MODULE_get_entityform_mappings()
+ * _MODULE_ssl_invoice_number()
+ * Optional functions:
+ * _MODULE_ssl_amount()
+ * _MODULE_ssl_description()
+ */
+function _elavon_get_modular_function($partial_name) {
+  $entityform_type = _elavon_get_entityform_type_name();
+  $provider = _elavon_get_providing_module_by_entityform_type($entityform_type);
+  $function = '_' . $provider . '_' . $partial_name;
+  if (function_exists($function)) {
+    return $function;
+  }
+  return "_elavon_$partial_name";
+}
+
 /**
  * Creates a string for payment details if applicable
  */
 function _elavon_get_payment_details_for_email($entityform) {
-  $details = '';
-  // Add the entityform to the static cache
-  //_elavon_set_entityform($entityform);
+  _elavon_set_entityform($entityform);
   $total = _elavon_get_field_collection_data('field_ssl_amount');
   $invoice_number = _elavon_get_field_collection_data('field_transinvoicenum');
   $details = ($total > 0)
@@ -87,11 +382,130 @@ function _elavon_get_payment_details_for_email($entityform) {
 }
 
 /**
- * Wrapper function to trigger processing the entityform
+ * Returns the module that provides additional functionality
+ * @see _elavon_get_modular_function() for required and optional functions
  */
-function _elavon_process_entityform() {
-  $entityform = _elavon_get_entityform();
-  _forms_process_entityform($entityform);
+function _elavon_get_providing_module_by_entityform_type($type) {
+  switch ($type) {
+    case 'ilr_alumni_association_event_reg':
+      $module = 'ilr_alumni_events';
+      break;
+    default:
+      $module = 'elavon';
+  }
+  return $module;
+}
+
+/**
+ * Creates the response url based on the iframe parent url
+ */
+function _elavon_get_response_url() {
+  global $base_url;
+  $path = _elavon_get_iframe_parent_path();
+  return $GLOBALS['base_url'] . '/' . $path .'?layout=0';
+}
+
+/**
+ * Returns a boolean based on whether it should be a test
+ * In order to test the form, you add ?test=1 to the url,
+ * ie: http://www.ilr-website.dev/alumni/events/registration?test=1
+ */
+function _elavon_is_test() {
+  if ( isset($_GET['test']) && $_GET['test'] == '1' ) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Default that payment forms are incomplete until
+ * a successful payment has been made
+ */
+function _elavon_payment_form_complete() {
+  return FALSE;
+}
+
+/**
+ * Add any logic needed for all Elavon payment forms here.
+ * Otherwise, form-specific errors are handled in the providing module
+ * @see _ilr_alumni_events_payment_form_errors().
+ */
+function _elavon_payment_form_errors() {
+  return FALSE;
+}
+
+/**
+ * Page callback from hook_menu().
+ */
+function _elavon_payment_iframe() {
+  $output = _elavon_generate_elavon_form_markup();
+  drupal_add_js(
+    'jQuery(document).ready(function () { jQuery("#sendIt").click(); });',
+    array('type' => 'inline', 'scope' => 'footer')
+  );
+  return $output;
+}
+
+/**
+ * Creates the iframe if there are no errors
+ * and the payment form is needed.
+ */
+function _elavon_payment_page() {
+  $output = '';
+  $payment_form_errors = _elavon_get_modular_function('payment_form_errors');
+  $payment_form_complete = _elavon_get_modular_function('payment_form_complete');
+  if ($errors = $payment_form_errors()) {
+    $output = $errors;
+  } // Check whether they need the payment form (e.g. only ordering free tickets)
+  else if ($payment_form_complete()) {
+    _elavon_complete_payment_process(1);
+  } // Load the payment page
+  else {
+    $parent_path = current_path();
+    // Load the page that posts to virtualmerchant.do
+    $url = '/elavon/payment/iframe?parent_path='.$parent_path.'&layout=0';
+    if (_elavon_is_test()) {
+      $url .= '&test=1';
+    }
+    $output = '<iframe src="'.$url.'" width="100%" height="1000" ></iframe>';
+  }
+  return $output;
+}
+
+/**
+ * Redirects the user after the entityform values are updated
+ * with their registration info from Elavon
+ */
+function _elavon_redirect_after_response($with_layout=0) {
+  if (isset($_SESSION['elavon_entityform_id'])) {
+    $eid = $_SESSION['elavon_entityform_id'];
+    $wrapper = _elavon_get_entityform_wrapper();
+    $confirmation_url = _entityform_type_get_confirm_url($wrapper->type->value()->type);
+    $params = array(
+      'query' => array(
+        'entityform_id' => $eid,
+        'layout' => $with_layout,
+      ),
+    );
+    // Keep entityform from denying access
+    $_SESSION['entityform_submission'] = $eid;
+    unset($_SESSION['elavon_entityform_id']);
+    drupal_goto($confirmation_url, $params);
+  }
+}
+
+/**
+ * Remove the body and the field_registration_form (if it exists)
+ */
+function _elavon_replace_payment_form_with_iframe(&$node) {
+  unset($node->content['body']);
+  if (isset($node->content['field_registration_form'])) {
+    unset($node->content['field_registration_form']);
+  }
+  $node->content['iframe'] = array(
+    '#markup' => _elavon_payment_page(),
+    '#weight' => 10,
+  );
 }
 
 /**
@@ -105,10 +519,79 @@ function _elavon_set_entityform($entityform) {
 }
 
 /**
+ * Sets the Sesssion id
+ */
+function _elavon_set_entityform_session($entityform_id) {
+  $_SESSION['elavon_entityform_id'] = $entityform_id;
+}
+
+/**
  * Setter for the field collection data
  */
 function _elavon_set_field_collection_data($field_name, $value) {
   $wrapper = _elavon_get_field_collection_wrapper();
   $wrapper->{$field_name}->set($value);
   $wrapper->save();
+}
+
+/**
+ * Elavon wants a string, which we return here
+ */
+function _elavon_test_value() {
+  return (_elavon_is_test()) ? 'true' : 'false';
+}
+
+/**
+ * Updates the entityform values based on what is returned
+ * from the payment gateway
+ */
+function _elavon_update_entityform_values($variables) {
+  $wrapper = _elavon_get_entityform_wrapper();
+  foreach ($variables as $elavon_key => $value) {
+    if ($field_name = _elavon_get_entityform_mapping($elavon_key)) {
+      if ($field_name == 'field_ssl_card_number') {
+        // Remove all but first two characters of CC #
+        $value = $variables[$elavon_key] = substr($value, 0, 2);
+      }
+      if (isset($wrapper->{$field_name})) {
+        $wrapper->{$field_name}->set($value);
+      } // Check the field collection
+      else if (isset($wrapper->field_h_credit_card_payments->{$field_name})) {
+        _elavon_set_field_collection_data(
+          $field_name,
+          $value
+        );
+      }
+    }
+  }
+  // Set the total cost and the response_data
+  $wrapper->field_total_cost->set($variables['ssl_amount']);
+  _elavon_set_field_collection_data(
+    'field_ssl_response_data',
+    serialize($variables)
+  );
+  // Remove the "draft" setting on the entityform
+  $wrapper->draft = 0;
+  $wrapper->save();
+}
+
+/**
+ * Returns the value of field_total_cost
+ */
+function _elavon_ssl_amount() {
+  return $wrapper->field_total_cost->value();
+}
+
+/**
+ * Returns the node title based on the iframe parent path
+ */
+function _elavon_ssl_description() {
+  $parent_path = _elavon_get_iframe_parent_path();
+  $uri_as_array = explode('/', $parent_path);
+  if (count($uri_as_array)) {
+    $nid = end($uri_as_array);
+    $node = node_load($nid);
+    return $node->title;
+  }
+  return '';
 }
