@@ -121,29 +121,6 @@ function basic_page_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_basic_page';
-  $strongarm->value = array(
-    0 => 'bargaining-for-better-schools',
-    1 => 'cheri',
-    2 => 'conference-center',
-    3 => 'expo',
-    4 => 'healthcare',
-    5 => 'iws',
-    6 => 'ics',
-    7 => 'ldi',
-    8 => 'mpsnyc',
-    9 => 'main-menu',
-    10 => 'national-labor-leadership-init',
-    11 => 'nyc-conference-center',
-    12 => 'scheinman-institute',
-    13 => 'smithers-institute',
-    14 => 'worker-institute',
-  );
-  $export['menu_options_basic_page'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_basic_page';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_basic_page'] = $strongarm;
