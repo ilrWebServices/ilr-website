@@ -6,8 +6,9 @@
 
 /* The Elavon module makes a few assumptions about setting up a form for payments, such as:
   1. The form includes a field_total_cost and the field_h_credit_card_payments field collection.
-  2. There is a supporting module for the form which includes at least a few required functions, such as _MODULE_get_entityform_mappings() (see full list in _elavon_get_modular_function() docs).
-  3. New forms will need to modify _elavon_get_ilr_secrets_key_from_type(), as well as add their credentials to the ILR secrets file.
+  2. There is a supporting module for the form which includes at least a few required functions, such as _MODULE_get_entityform_mappings() (see full list in _elavon_get_required_functions_for_payment_processing).
+  3. If adding additional required functions, be sure to add them to _elavon_get_required_functions_for_payment_processing().
+  4. New forms will need to modify _elavon_get_ilr_secrets_key_from_type(), as well as add their credentials to the ILR secrets file.
 */
 
 require_once DRUPAL_ROOT . '/../config/get_secrets.php';
@@ -48,7 +49,7 @@ function elavon_entityform_previous_submission_alter(&$entityform_submission, $e
       $entityform_submission = $previous_submission;
     }
   } // Edge case for logged in users who have lost their session
-  else if ($entityform_submission) {
+  else if ($entityform_submission && _elavon_entityform_is_payment_form($entityform_submission)) {
     _elavon_set_entityform_session($entityform_submission->entityform_id);
   }
 }
@@ -59,7 +60,7 @@ function elavon_entityform_previous_submission_alter(&$entityform_submission, $e
  * Removes the Save Draft button
  */
 function elavon_form_alter(&$form, &$form_state, $form_id) {
-  if (isset($form['#entity_type']) && $form['#entity_type'] == 'entityform' && _elavon_entityform_is_payment_form($form['#entity'], $form)) {
+  if (isset($form['#entity_type']) && $form['#entity_type'] == 'entityform' && _elavon_entityform_type_is_payment_form($form['#bundle'], $form)) {
     $form['actions']['submit']['#submit'][] = '_elavon_add_payment_flag';
     // Remove the save draft button
     if (isset($form['actions']['save'])) {
@@ -146,13 +147,22 @@ function _elavon_create_entityform_by_type($type) {
 
 /**
  * Checks whether the form is a payment form
+ * @see _elavon_entityform_type_validate().
+ */
+function _elavon_entityform_is_payment_form($entityform) {
+  return _elavon_entityform_type_is_payment_form($entityform->type);
+}
+
+/**
+ * Checks whether the form is a payment form
  * Entityform types with payment processing have already been validated
  * @see _elavon_entityform_type_validate().
  */
-function _elavon_entityform_is_payment_form($entityform, $form_array=NULL) {
-  $entityform_type = entityform_type_load($entityform->type);
+function _elavon_entityform_type_is_payment_form($entityform_type) {
+  $entityform_type = entityform_type_load($entityform_type);
   return $entityform_type->data['add_payment_processing'];
 }
+
 
 /**
  * Validation callback
@@ -160,11 +170,22 @@ function _elavon_entityform_is_payment_form($entityform, $form_array=NULL) {
  */
 function _elavon_entityform_type_validate(&$form, &$form_state) {
   if ($form_state['values']['data']['add_payment_processing']) {
+    // Check that all required functions have been implemented
+    $required_functions = _elavon_get_required_functions_for_payment_processing();
+    foreach ($required_functions as $key => $function_partial) {
+      if (!_elavon_get_modular_function($function_partial)) {
+        return form_set_error('add_payment_processing', 'Payment forms require several functions to be implemented. Learn more in the elavon.module code documentation.');
+      }
+    }
+
     $entityform = _elavon_create_entityform_by_type($form['#entityform_type']->type);
     $wrapper = _elavon_get_entityform_wrapper($entityform);
+
+    // Check for the required fields
     if (!isset($wrapper->field_h_credit_card_payments) || !isset($wrapper->field_total_cost)) {
       form_set_error('add_payment_processing', 'Payment forms require both the field_total_cost and the field_h_credit_card_payments field collection. You can read more documentation in the elavon.module');
-    } else {
+    } // Looks like a valid form
+    else {
       $form_state['values']['data']['draftable'] = 1;
       $form_state['values']['data']['draft_redirect_path'] = '[current-page:url]';
       $form_state['values']['data']['redirect_path'] = '[current-page:url]';
@@ -222,16 +243,6 @@ function _elavon_get_draft_status() {
     $is_draft = ($result == 'APPROVED') ? 0 : 1;
   }
   return $is_draft;
-}
-
-/**
- * Maps the entityform name to the credentials key in ILR_SECRETS
- */
-function _elavon_get_ilr_secrets_key_from_type($type) {
-  $mappings = array(
-    'ilr_alumni_association_event_reg' => 'alumni_registration_',
-  );
-  return $mappings[$type];
 }
 
 function _elavon_get_elavon_credentials() {
@@ -384,9 +395,19 @@ function _elavon_get_iframe_parent_path() {
 }
 
 /**
+ * Maps the entityform name to the credentials key in ILR_SECRETS
+ */
+function _elavon_get_ilr_secrets_key_from_type($type) {
+  $mappings = array(
+    'ilr_alumni_association_event_reg' => 'alumni_registration_',
+  );
+  return $mappings[$type];
+}
+
+/**
  * Retrieves a function from a providing module, if it exists
  * Otherwise, returns this module's version
- * Required modular functions:
+ * Required modular functions @see _elavon_get_required_functions_for_payment_processing():
  * _MODULE_get_entityform_mappings()
  * _MODULE_ssl_invoice_number()
  * Optional functions:
@@ -399,8 +420,20 @@ function _elavon_get_modular_function($partial_name) {
   $function = '_' . $provider . '_' . $partial_name;
   if (function_exists($function)) {
     return $function;
+  } // See if it exists within this module
+  else if (function_exists("_elavon_$partial_name")) {
+    return "_elavon_$partial_name";
+  } // Throw an error
+  else {
+    watchdog('elavon', "Function @function_name has not been implemented yet for this forms of type @entityform_type",
+      array(
+        '@function_name' => $partial_name,
+        '@entityform_type' => $entityform_type,
+      ),
+      WATCHDOG_ERROR
+    );
   }
-  return "_elavon_$partial_name";
+  return NULL;
 }
 
 /**
@@ -438,6 +471,17 @@ function _elavon_get_response_url() {
   global $base_url;
   $path = _elavon_get_iframe_parent_path();
   return $GLOBALS['base_url'] . '/' . $path .'?layout=0';
+}
+
+/**
+ * A list of required functions that need to be implemented for a form to process payments
+ * @see [description]
+ */
+function _elavon_get_required_functions_for_payment_processing() {
+  return array(
+    'get_entityform_mappings',
+    'ssl_invoice_number',
+  );
 }
 
 /**

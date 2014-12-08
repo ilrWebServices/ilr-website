@@ -232,7 +232,17 @@ function _ilr_alumni_events_node_wrapper($node=NULL) {
   $wrapper = &drupal_static(__FUNCTION__);
   if (!isset($wrapper)) {
     if (!$node && $entityform_wrapper = _elavon_get_entityform_wrapper()) {
-      $node = $entityform_wrapper->field_referenced_node->value();
+      if(isset($entityform_wrapper->field_referenced_node)) {
+        $node = $entityform_wrapper->field_referenced_node->value();
+      }
+      else {
+        watchdog('ilr_alumni_events', "There was an error trying to load the referenced node for @entityform_type",
+            array(
+              '@entityform_type' => $entityform_wrapper->type->value()->type,
+            ),
+            WATCHDOG_ERROR
+          );
+      }
     }
     else {
       $node = menu_get_object();
