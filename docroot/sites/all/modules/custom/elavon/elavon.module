@@ -69,6 +69,13 @@ function elavon_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
+ * Adds form validation callback for payment forms
+ */
+function elavon_form_entityform_type_form_alter(&$form, &$form_state) {
+  $form['#validate'][] = '_elavon_entityform_type_validate';
+}
+
+/**
 * Implements hook_menu().
 */
 function elavon_menu() {
@@ -128,19 +135,42 @@ function _elavon_complete_payment_process($with_layout=0) {
 }
 
 /**
+ * Creates an empty entityform object for field checking
+ */
+function _elavon_create_entityform_by_type($type) {
+  $entityform = entity_create('entityform', array(
+    'type' => $type,
+  ));
+  return $entityform;
+}
+
+/**
  * Checks whether the form is a payment form
- * @todo Consider only checking for h_credit_card payments
- *       - or add validator for that field collection if creating entityform type with the payment flag
+ * Entityform types with payment processing have already been validated
+ * @see _elavon_entityform_type_validate().
  */
 function _elavon_entityform_is_payment_form($entityform, $form_array=NULL) {
   $entityform_type = entityform_type_load($entityform->type);
-  if ($form_array) {
-    $has_cc_field = isset($form_array['field_h_credit_card_payments']);
+  return $entityform_type->data['add_payment_processing'];
+}
+
+/**
+ * Validation callback
+ * Confirms that payment forms have field_h_credit_card_payments
+ */
+function _elavon_entityform_type_validate(&$form, &$form_state) {
+  if ($form_state['values']['data']['add_payment_processing']) {
+    $entityform = _elavon_create_entityform_by_type($form['#entityform_type']->type);
+    $wrapper = _elavon_get_entityform_wrapper($entityform);
+    if (!isset($wrapper->field_h_credit_card_payments) || !isset($wrapper->field_total_cost)) {
+      form_set_error('add_payment_processing', 'Payment forms require both the field_total_cost and the field_h_credit_card_payments field collection. You can read more documentation in the elavon.module');
+    } else {
+      $form_state['values']['data']['draftable'] = 1;
+      $form_state['values']['data']['draft_redirect_path'] = '[current-page:url]';
+      $form_state['values']['data']['redirect_path'] = '[current-page:url]';
+      drupal_set_message('Your payment form settings for drafts and redirect paths were automatically set to the appropriate values.');
+    }
   }
-  else {
-    $has_cc_field = !empty($entityform->field_h_credit_card_payments);
-  }
-  return $entityform_type->data['add_payment_processing'] && $has_cc_field;
 }
 
 /**
