@@ -218,6 +218,198 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_applicant_information|entityform|nlli_participant_application|default';
+  $field_group->group_name = 'group_applicant_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_participant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Applicant Information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_first_name',
+      1 => 'field_middle_name',
+      2 => 'field_last_name',
+      3 => 'field_company',
+      4 => 'field_position',
+      5 => 'field_year_as_text',
+      6 => 'field_email',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Applicant Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-applicant-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_applicant_information|entityform|nlli_participant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_applicant_information|entityform|nlli_participant_application|form';
+  $field_group->group_name = 'group_applicant_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_participant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Applicant Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_first_name',
+      1 => 'field_middle_name',
+      2 => 'field_last_name',
+      3 => 'field_company',
+      4 => 'field_position',
+      5 => 'field_year_as_text',
+      6 => 'field_email',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Applicant Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-applicant-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_applicant_information|entityform|nlli_participant_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_applicant_information|entityform|uli_participant_application|default';
+  $field_group->group_name = 'group_applicant_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_participant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Applicant Information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_first_name',
+      1 => 'field_last_name',
+      2 => 'field_company',
+      3 => 'field_position',
+      4 => 'field_year_as_text',
+      5 => 'field_email',
+      6 => 'field_local',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Applicant Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-applicant-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_applicant_information|entityform|uli_participant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_applicant_information|entityform|uli_participant_application|form';
+  $field_group->group_name = 'group_applicant_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_participant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Applicant Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_first_name',
+      1 => 'field_last_name',
+      2 => 'field_company',
+      3 => 'field_position',
+      4 => 'field_year_as_text',
+      5 => 'field_email',
+      6 => 'field_local',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Applicant Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-applicant-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_applicant_information|entityform|uli_participant_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_approval_statement|entityform|nlli_sponsoring_union_nomination|default';
+  $field_group->group_name = 'group_approval_statement';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_sponsoring_union_nomination';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Approval Statement',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_agreement',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Approval Statement',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-approval-statement field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_approval_statement|entityform|nlli_sponsoring_union_nomination|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_approval_statement|entityform|nlli_sponsoring_union_nomination|form';
+  $field_group->group_name = 'group_approval_statement';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_sponsoring_union_nomination';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Approval Statement',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_agreement',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Approval Statement',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-approval-statement field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_approval_statement|entityform|nlli_sponsoring_union_nomination|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_college_address|entityform|dublin_application_form|default';
   $field_group->group_name = 'group_college_address';
   $field_group->entity_type = 'entityform';
@@ -754,6 +946,174 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_educational_background|entityform|uli_participant_application|default';
+  $field_group->group_name = 'group_educational_background';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_participant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Educational Background',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_education_level',
+      1 => 'field_training_professional_voca',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Educational Background',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-educational-background field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_educational_background|entityform|uli_participant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_educational_background|entityform|uli_participant_application|form';
+  $field_group->group_name = 'group_educational_background';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_participant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Educational Background',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_education_level',
+      1 => 'field_training_professional_voca',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Educational Background',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-educational-background field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_educational_background|entityform|uli_participant_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_employment_history_group|entityform|nlli_participant_application|default';
+  $field_group->group_name = 'group_employment_history_group';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_participant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Employment History',
+    'weight' => '13',
+    'children' => array(
+      0 => 'field_employment_history',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Employment History',
+      'instance_settings' => array(
+        'classes' => 'group-employment-history-group field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_employment_history_group|entityform|nlli_participant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_employment_history_group|entityform|nlli_participant_application|form';
+  $field_group->group_name = 'group_employment_history_group';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_participant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Employment History',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_employment_history',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Employment History',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-employment-history-group field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_employment_history_group|entityform|nlli_participant_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_employment_history_group|entityform|uli_participant_application|default';
+  $field_group->group_name = 'group_employment_history_group';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_participant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Employment History',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_employment_history_uli',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Employment History',
+      'instance_settings' => array(
+        'classes' => 'group-employment-history-group field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_employment_history_group|entityform|uli_participant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_employment_history_group|entityform|uli_participant_application|form';
+  $field_group->group_name = 'group_employment_history_group';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_participant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Employment History',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_employment_history_uli',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Employment History',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-employment-history-group field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_employment_history_group|entityform|uli_participant_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_experience|entityform|ilr_student_advisor_application_|default';
   $field_group->group_name = 'group_experience';
   $field_group->entity_type = 'entityform';
@@ -812,6 +1172,182 @@ function forms_field_group_info() {
     ),
   );
   $export['group_experience|entityform|ilr_student_advisor_application_|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_financial_approval|entityform|uli_sponsoring_union_nomination_|form';
+  $field_group->group_name = 'group_financial_approval';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_sponsoring_union_nomination_';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Financial Approval',
+    'weight' => '43',
+    'children' => array(
+      0 => 'field_uli_financial_approval',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Financial Approval',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-financial-approval field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_financial_approval|entityform|uli_sponsoring_union_nomination_|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_financial_officer_info|entityform|nlli_sponsoring_union_nomination|default';
+  $field_group->group_name = 'group_financial_officer_info';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_sponsoring_union_nomination';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Financial Officer Information',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_first_name_additional_2',
+      1 => 'field_last_name_additional_2',
+      2 => 'field_job_title_additional',
+      3 => 'field_street_address_addl_2',
+      4 => 'field_city_additional_2',
+      5 => 'field_zip_postal_code_addl_2',
+      6 => 'field_state_province_addl_2',
+      7 => 'field_phone_additional_3',
+      8 => 'field_phone_additional_4',
+      9 => 'field_email_additional_2',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Financial Officer Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-financial-officer-info field-group-fieldset',
+        'description' => '(person to be sent tuition invoices)',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_financial_officer_info|entityform|nlli_sponsoring_union_nomination|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_financial_officer_info|entityform|nlli_sponsoring_union_nomination|form';
+  $field_group->group_name = 'group_financial_officer_info';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_sponsoring_union_nomination';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Financial Officer Information',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_first_name_additional_2',
+      1 => 'field_last_name_additional_2',
+      2 => 'field_job_title_additional',
+      3 => 'field_street_address_addl_2',
+      4 => 'field_city_additional_2',
+      5 => 'field_zip_postal_code_addl_2',
+      6 => 'field_state_province_addl_2',
+      7 => 'field_phone_additional_3',
+      8 => 'field_phone_additional_4',
+      9 => 'field_email_additional_2',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Financial Officer Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-financial-officer-info field-group-fieldset',
+        'description' => '(person to be sent tuition invoices)',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_financial_officer_info|entityform|nlli_sponsoring_union_nomination|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_financial_officer_info|entityform|uli_sponsoring_union_nomination_|default';
+  $field_group->group_name = 'group_financial_officer_info';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_sponsoring_union_nomination_';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Financial Officer Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_first_name_additional_2',
+      1 => 'field_last_name_additional_2',
+      2 => 'field_job_title_additional',
+      3 => 'field_street_address_addl_2',
+      4 => 'field_city_additional_2',
+      5 => 'field_state_province_addl_2',
+      6 => 'field_zip_postal_code_addl_2',
+      7 => 'field_phone_additional_3',
+      8 => 'field_fax_additional',
+      9 => 'field_email_additional_2',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Financial Officer Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-financial-officer-info field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_financial_officer_info|entityform|uli_sponsoring_union_nomination_|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_financial_officer_info|entityform|uli_sponsoring_union_nomination_|form';
+  $field_group->group_name = 'group_financial_officer_info';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_sponsoring_union_nomination_';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Financial Officer Information',
+    'weight' => '16',
+    'children' => array(
+      0 => 'field_first_name_additional_2',
+      1 => 'field_last_name_additional_2',
+      2 => 'field_job_title_additional',
+      3 => 'field_street_address_addl_2',
+      4 => 'field_city_additional_2',
+      5 => 'field_state_province_addl_2',
+      6 => 'field_zip_postal_code_addl_2',
+      7 => 'field_phone_additional_3',
+      8 => 'field_fax_additional',
+      9 => 'field_email_additional_2',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Financial Officer Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-financial-officer-info field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_financial_officer_info|entityform|uli_sponsoring_union_nomination_|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -967,6 +1503,198 @@ function forms_field_group_info() {
     ),
   );
   $export['group_home_address|entityform|dublin_application_form|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_home_address|entityform|nlli_participant_application|default';
+  $field_group->group_name = 'group_home_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_participant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Home Address',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_address_line_1_additional',
+      1 => 'field_city_additional',
+      2 => 'field_state_province_additional',
+      3 => 'field_zip_postal_code_additional',
+      4 => 'field_phone_home',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Home Address',
+      'instance_settings' => array(
+        'classes' => 'group-home-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_home_address|entityform|nlli_participant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_home_address|entityform|nlli_participant_application|form';
+  $field_group->group_name = 'group_home_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_participant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Home Address',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_address_line_1_additional',
+      1 => 'field_city_additional',
+      2 => 'field_state_province_additional',
+      3 => 'field_zip_postal_code_additional',
+      4 => 'field_phone_home',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Home Address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-home-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_home_address|entityform|nlli_participant_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_home_address|entityform|uli_participant_application|default';
+  $field_group->group_name = 'group_home_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_participant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Home Address',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_city_additional',
+      1 => 'field_state_province_additional',
+      2 => 'field_zip_postal_code_additional',
+      3 => 'field_phone_home',
+      4 => 'field_address_line_1_additional',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Home Address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-home-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_home_address|entityform|uli_participant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_home_address|entityform|uli_participant_application|form';
+  $field_group->group_name = 'group_home_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_participant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Home Address',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_city_additional',
+      1 => 'field_state_province_additional',
+      2 => 'field_zip_postal_code_additional',
+      3 => 'field_phone_home',
+      4 => 'field_address_line_1_additional',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Home Address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-home-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_home_address|entityform|uli_participant_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_leadership_questions|entityform|nlli_participant_application|default';
+  $field_group->group_name = 'group_leadership_questions';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_participant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Leadership Questions',
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_leadership_role',
+      1 => 'field_leadership_positions',
+      2 => 'field_other_organizations',
+      3 => 'field_supervision',
+      4 => 'field_training',
+      5 => 'field_new_area',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Leadership Questions',
+      'instance_settings' => array(
+        'classes' => 'group-leadership-questions field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_leadership_questions|entityform|nlli_participant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_leadership_questions|entityform|nlli_participant_application|form';
+  $field_group->group_name = 'group_leadership_questions';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_participant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Leadership Questions',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_leadership_role',
+      1 => 'field_leadership_positions',
+      2 => 'field_other_organizations',
+      3 => 'field_supervision',
+      4 => 'field_training',
+      5 => 'field_new_area',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Leadership Questions',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-leadership-questions field-group-fieldset',
+        'description' => 'Please answer the following questions as completely as possible.',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_leadership_questions|entityform|nlli_participant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1157,6 +1885,230 @@ function forms_field_group_info() {
     ),
   );
   $export['group_nominator|entityform|employee_recognition_nomination_|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_nominee_information|entityform|nlli_sponsoring_union_nomination|default';
+  $field_group->group_name = 'group_nominee_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_sponsoring_union_nomination';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Nominee Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_first_name_additional',
+      1 => 'field_last_name_additional',
+      2 => 'field_position',
+      3 => 'field_address_line_1_additional',
+      4 => 'field_city_additional',
+      5 => 'field_state_province_additional',
+      6 => 'field_zip_postal_code_additional',
+      7 => 'field_phone_additional',
+      8 => 'field_phone_additional_2',
+      9 => 'field_email_additional',
+      10 => 'field_duration',
+      11 => 'field_responsibility',
+      12 => 'field_benefits',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Nominee Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-nominee-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_nominee_information|entityform|nlli_sponsoring_union_nomination|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_nominee_information|entityform|nlli_sponsoring_union_nomination|form';
+  $field_group->group_name = 'group_nominee_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_sponsoring_union_nomination';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Nominee Information',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_first_name_additional',
+      1 => 'field_last_name_additional',
+      2 => 'field_position',
+      3 => 'field_address_line_1_additional',
+      4 => 'field_city_additional',
+      5 => 'field_state_province_additional',
+      6 => 'field_zip_postal_code_additional',
+      7 => 'field_phone_additional',
+      8 => 'field_phone_additional_2',
+      9 => 'field_email_additional',
+      10 => 'field_duration',
+      11 => 'field_responsibility',
+      12 => 'field_benefits',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Nominee Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-nominee-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_nominee_information|entityform|nlli_sponsoring_union_nomination|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_nominee_information|entityform|uli_financial_aid_appl|default';
+  $field_group->group_name = 'group_nominee_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_financial_aid_appl';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Nominee Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_first_name_additional',
+      1 => 'field_last_name_additional',
+      2 => 'field_leadership_role',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Nominee Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-nominee-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_nominee_information|entityform|uli_financial_aid_appl|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_nominee_information|entityform|uli_financial_aid_appl|form';
+  $field_group->group_name = 'group_nominee_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_financial_aid_appl';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Nominee Information',
+    'weight' => '14',
+    'children' => array(
+      0 => 'field_first_name_additional',
+      1 => 'field_last_name_additional',
+      2 => 'field_leadership_role',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Nominee Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-nominee-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_nominee_information|entityform|uli_financial_aid_appl|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_nominee_information|entityform|uli_sponsoring_union_nomination_|default';
+  $field_group->group_name = 'group_nominee_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_sponsoring_union_nomination_';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Participant Information (Union Nominee)',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_first_name_additional',
+      1 => 'field_last_name_additional',
+      2 => 'field_position',
+      3 => 'field_city_additional',
+      4 => 'field_address_line_1_additional',
+      5 => 'field_state_province_additional',
+      6 => 'field_zip_postal_code_additional',
+      7 => 'field_phone_additional_4',
+      8 => 'field_phone_additional_2',
+      9 => 'field_fax_additional_2',
+      10 => 'field_email_additional',
+      11 => 'field_elected',
+      12 => 'field_staff',
+      13 => 'field_duration',
+      14 => 'field_responsibility',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Participant Information (Union Nominee)',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-nominee-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_nominee_information|entityform|uli_sponsoring_union_nomination_|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_nominee_information|entityform|uli_sponsoring_union_nomination_|form';
+  $field_group->group_name = 'group_nominee_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_sponsoring_union_nomination_';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Participant Information (Union Nominee)',
+    'weight' => '27',
+    'children' => array(
+      0 => 'field_first_name_additional',
+      1 => 'field_last_name_additional',
+      2 => 'field_position',
+      3 => 'field_city_additional',
+      4 => 'field_address_line_1_additional',
+      5 => 'field_state_province_additional',
+      6 => 'field_zip_postal_code_additional',
+      7 => 'field_phone_additional_4',
+      8 => 'field_phone_additional_2',
+      9 => 'field_fax_additional_2',
+      10 => 'field_email_additional',
+      11 => 'field_elected',
+      12 => 'field_staff',
+      13 => 'field_duration',
+      14 => 'field_responsibility',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Participant Information (Union Nominee)',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-nominee-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_nominee_information|entityform|uli_sponsoring_union_nomination_|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1541,6 +2493,77 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_questions|entityform|uli_participant_application|default';
+  $field_group->group_name = 'group_questions';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_participant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Questions',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_leadership_role',
+      1 => 'field_leadership_positions',
+      2 => 'field_supervision',
+      3 => 'field_training',
+      4 => 'field_training_additional',
+      5 => 'field_goals',
+      6 => 'field_benefits',
+      7 => 'field_challenge',
+      8 => 'field_schedule',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Questions',
+      'instance_settings' => array(
+        'classes' => 'group-questions field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_questions|entityform|uli_participant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_questions|entityform|uli_participant_application|form';
+  $field_group->group_name = 'group_questions';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_participant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Questions',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_leadership_role',
+      1 => 'field_leadership_positions',
+      2 => 'field_supervision',
+      3 => 'field_training',
+      4 => 'field_training_additional',
+      5 => 'field_goals',
+      6 => 'field_benefits',
+      7 => 'field_challenge',
+      8 => 'field_schedule',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Questions',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-questions field-group-fieldset',
+        'description' => 'Please answer the following questions as completely as possible.',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_questions|entityform|uli_participant_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_remote_sites|entityform|distance_learning_reservation_re|default';
   $field_group->group_name = 'group_remote_sites';
   $field_group->entity_type = 'entityform';
@@ -1606,14 +2629,14 @@ function forms_field_group_info() {
     'label' => 'Reservations',
     'weight' => '15',
     'children' => array(
-      0 => 'field_attendee_list',
-      1 => 'field_attendee_list_guests',
-      2 => 'field_attendee_list_markup',
-      3 => 'field_guests',
-      4 => 'field_h_event_date',
-      5 => 'field_referenced_node',
-      6 => 'field_tickets_for_aa_members',
-      7 => 'field_tickets_for_non_members',
+      0 => 'field_tickets_for_aa_members',
+      1 => 'field_tickets_for_non_members',
+      2 => 'field_guests',
+      3 => 'field_attendee_list',
+      4 => 'field_attendee_list_guests',
+      5 => 'field_attendee_list_markup',
+      6 => 'field_h_event_date',
+      7 => 'field_referenced_node',
       8 => 'field_total_cost',
     ),
     'format_type' => 'fieldset',
@@ -1661,6 +2684,158 @@ function forms_field_group_info() {
     ),
   );
   $export['group_reservations|entityform|ilr_alumni_association_event_reg|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_sponsor_information|entityform|nlli_sponsoring_union_nomination|default';
+  $field_group->group_name = 'group_sponsor_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_sponsoring_union_nomination';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sponsor information (for contact purposes)',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_company',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_job_title',
+      4 => 'field_address_line_1',
+      5 => 'field_city',
+      6 => 'field_state_province',
+      7 => 'field_zip_code',
+      8 => 'field_phone',
+      9 => 'field_phone_college',
+      10 => 'field_fax',
+      11 => 'field_email',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Sponsor information (for contact purposes)',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-sponsor-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_sponsor_information|entityform|nlli_sponsoring_union_nomination|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_sponsor_information|entityform|nlli_sponsoring_union_nomination|form';
+  $field_group->group_name = 'group_sponsor_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_sponsoring_union_nomination';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sponsor information (for contact purposes)',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_company',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_job_title',
+      4 => 'field_address_line_1',
+      5 => 'field_city',
+      6 => 'field_state_province',
+      7 => 'field_zip_code',
+      8 => 'field_phone',
+      9 => 'field_phone_college',
+      10 => 'field_fax',
+      11 => 'field_email',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Sponsor information (for contact purposes)',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-sponsor-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_sponsor_information|entityform|nlli_sponsoring_union_nomination|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_sponsor_information|entityform|uli_financial_aid_appl|default';
+  $field_group->group_name = 'group_sponsor_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_financial_aid_appl';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sponsor information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_company',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_address_line_1',
+      4 => 'field_city',
+      5 => 'field_state_province',
+      6 => 'field_zip_code',
+      7 => 'field_phone',
+      8 => 'field_email',
+      9 => 'field_need',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Sponsor information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-sponsor-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_sponsor_information|entityform|uli_financial_aid_appl|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_sponsor_information|entityform|uli_financial_aid_appl|form';
+  $field_group->group_name = 'group_sponsor_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_financial_aid_appl';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sponsor information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_company',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_address_line_1',
+      4 => 'field_city',
+      5 => 'field_state_province',
+      6 => 'field_zip_code',
+      7 => 'field_phone',
+      8 => 'field_email',
+      9 => 'field_need',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Sponsor information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-sponsor-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_sponsor_information|entityform|uli_financial_aid_appl|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1910,6 +3085,148 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_union_address|entityform|uli_participant_application|default';
+  $field_group->group_name = 'group_union_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_participant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Union Address',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_address_line_1',
+      1 => 'field_city',
+      2 => 'field_state_province',
+      3 => 'field_zip_code',
+      4 => 'field_phone',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Union Address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-union-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_union_address|entityform|uli_participant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_union_address|entityform|uli_participant_application|form';
+  $field_group->group_name = 'group_union_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_participant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Union Address',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_address_line_1',
+      1 => 'field_city',
+      2 => 'field_state_province',
+      3 => 'field_zip_code',
+      4 => 'field_phone',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Union Address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-union-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_union_address|entityform|uli_participant_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_union_sponsor_information|entityform|uli_sponsoring_union_nomination_|default';
+  $field_group->group_name = 'group_union_sponsor_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_sponsoring_union_nomination_';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Union Sponsor Information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_company',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_job_title',
+      4 => 'field_address_line_1',
+      5 => 'field_city',
+      6 => 'field_state_province',
+      7 => 'field_zip_code',
+      8 => 'field_phone',
+      9 => 'field_phone_additional',
+      10 => 'field_fax',
+      11 => 'field_email',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Union Sponsor Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-union-sponsor-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_union_sponsor_information|entityform|uli_sponsoring_union_nomination_|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_union_sponsor_information|entityform|uli_sponsoring_union_nomination_|form';
+  $field_group->group_name = 'group_union_sponsor_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'uli_sponsoring_union_nomination_';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Union Sponsor Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_company',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'field_job_title',
+      4 => 'field_address_line_1',
+      5 => 'field_city',
+      6 => 'field_state_province',
+      7 => 'field_zip_code',
+      8 => 'field_phone',
+      9 => 'field_phone_additional',
+      10 => 'field_fax',
+      11 => 'field_email',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Union Sponsor Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-union-sponsor-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_union_sponsor_information|entityform|uli_sponsoring_union_nomination_|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_when_and_where|entityform|classroom_technologies_request|default';
   $field_group->group_name = 'group_when_and_where';
   $field_group->entity_type = 'entityform';
@@ -1972,6 +3289,69 @@ function forms_field_group_info() {
     ),
   );
   $export['group_when_and_where|entityform|classroom_technologies_request|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_work_address|entityform|nlli_participant_application|default';
+  $field_group->group_name = 'group_work_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_participant_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Work Address',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_address_line_1',
+      1 => 'field_city',
+      2 => 'field_state_province',
+      3 => 'field_zip_code',
+      4 => 'field_phone',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Work Address',
+      'instance_settings' => array(
+        'classes' => 'group-work-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_work_address|entityform|nlli_participant_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_work_address|entityform|nlli_participant_application|form';
+  $field_group->group_name = 'group_work_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'nlli_participant_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Work Address',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_address_line_1',
+      1 => 'field_city',
+      2 => 'field_state_province',
+      3 => 'field_zip_code',
+      4 => 'field_phone',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Work Address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-work-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_work_address|entityform|nlli_participant_application|form'] = $field_group;
 
   return $export;
 }

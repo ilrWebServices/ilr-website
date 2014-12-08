@@ -1364,6 +1364,102 @@ function forms_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['nlli_participant_application'] = entity_import('entityform_type', '{
+    "type" : "nlli_participant_application",
+    "label" : "NLLI Participant Application",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "NLLI Confirmation: Application has been received",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for submitting your application to the National Labor Leadership Initiative. You will receive an email confirmation shortly. If you have any questions, please contact Sherrie Morales, \\u003Ca href=\\u0022mailto:ilr-labor@cornell.edu\\u0022\\u003Eilr-labor@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "3" : "3",
+        "1" : "1",
+        "2" : "2",
+        "4" : 0,
+        "5" : 0,
+        "6" : 0,
+        "7" : 0,
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "form_submission_ilr_recipient" : "ilr-labor@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
+  $items['nlli_sponsoring_union_nomination'] = entity_import('entityform_type', '{
+    "type" : "nlli_sponsoring_union_nomination",
+    "label" : "NLLI Sponsoring Union Nomination Form",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for sponsoring a nominee for the National Labor Leadership Initiative. You will receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ETo add another nominee, click on your browser\\u0026#39;s \\u0026quot;back\\u0026quot; button to return to the form.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEach nominee must complete the online Participant Application form at:\\u003Cbr \\/\\u003E\\r\\n\\t\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/workerinstitute\\/national-labor-leadership-initiative\\/NLLIparticipantApplication.html\\u0022\\u003Ehttp:\\/\\/www.ilr.cornell.edu\\/workerinstitute\\/national-labor-leadership-initiative\\/NLLIparticipantApplication.html\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact Sherrie Morales, ilr-labor@cornell.edu.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "3" : "3",
+        "1" : "1",
+        "2" : "2",
+        "4" : 0,
+        "5" : 0,
+        "6" : 0,
+        "7" : 0,
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "form_submission_ilr_recipient" : "ilr-labor@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['request_faculty_advisor_or_depar'] = entity_import('entityform_type', '{
     "type" : "request_faculty_advisor_or_depar",
     "label" : "Request Faculty Advisor or Department",
@@ -1503,6 +1599,150 @@ function forms_default_entityform_type() {
       "form_submission_ilr_recipient" : "ilr_oss@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
+      "kerberized" : 0
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
+  $items['uli_financial_aid_appl'] = entity_import('entityform_type', '{
+    "type" : "uli_financial_aid_appl",
+    "label" : "ULI  Financial Aid\\/Scholarship Application",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "ULI Confirmation: Financial Aid\\/Scholarship Application has been received",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003E\\u003Cstrong\\u003EScholarships for various amounts are available through the NYS AFL-CIO Leadership Fund.\\u003C\\/strong\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for submitting the ULI Financial Aid\\/Scholarship Application. You will receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ETo request financial aid for another nominee, click on your browser\\u0026#39;s \\u0026quot;back\\u0026quot; button to return to the form.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEach nominee must complete the online Participant Application form at:\\u003Cbr \\/\\u003E\\r\\n\\t\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/workerinstitute\\/uli\\/ULIparticipantApplication.html\\u0022\\u003Ehttp:\\/\\/www.ilr.cornell.edu\\/workerinstitute\\/uli\\/ULIparticipantApplication.html\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact Sherrie Morales, ilr-labor@cornell.edu.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "3" : "3",
+        "1" : "1",
+        "2" : "2",
+        "4" : 0,
+        "5" : 0,
+        "6" : 0,
+        "7" : 0,
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "form_submission_ilr_recipient" : "ilr-labor@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
+  $items['uli_participant_application'] = entity_import('entityform_type', '{
+    "type" : "uli_participant_application",
+    "label" : "ULI Participant Application",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "ULI Confirmation: Application has been received",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for submitting your application to the Union Leadership Institute. You will receive an email confirmation shortly. If you have any questions, please contact the Institute Coordinator at 607-255-4462 or \\u003Ca href=\\u0022mailto:ilr-labor@cornell.edu\\u0022\\u003Eilr-labor@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for your interest in the NY State AFL-CIO\\/Cornell Union Leadership Institute.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "3" : "3",
+        "1" : "1",
+        "2" : "2",
+        "4" : 0,
+        "5" : 0,
+        "6" : 0,
+        "7" : 0,
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "form_submission_ilr_recipient" : "ilr-labor@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
+  $items['uli_sponsoring_union_nomination_'] = entity_import('entityform_type', '{
+    "type" : "uli_sponsoring_union_nomination_",
+    "label" : "ULI Sponsoring Union Nomination Form",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "ULI Confirmation: Sponsoring Union Nomination form has been received",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for sponsoring a nominee for the Union Leadership Institute. You will receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ETo add another nominee, click on your browser\\u0026#39;s \\u0026quot;back\\u0026quot; button to return to the form.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEach nominee must complete the online Participant Application form at:\\u003Cbr \\/\\u003E\\r\\n\\t\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/workerinstitute\\/uli\\/ULIparticipantApplication.html\\u0022\\u003Ehttp:\\/\\/www.ilr.cornell.edu\\/workerinstitute\\/uli\\/ULIparticipantApplication.html\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you wish to apply for financial aid for your nominee(s), please complete the Financial Aid Application form at \\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/workerinstitute\\/uli\\/ULIfinancialAid.html\\u0022\\u003Ehttp:\\/\\/www.ilr.cornell.edu\\/workerinstitute\\/uli\\/ULIfinancialAid.html\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact Sherrie Morales, ilr-labor@cornell.edu.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "3" : "3",
+        "1" : "1",
+        "2" : "2",
+        "4" : 0,
+        "5" : 0,
+        "6" : 0,
+        "7" : 0,
+        "8" : 0,
+        "9" : 0,
+        "10" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "form_submission_ilr_recipient" : "ilr-labor@cornell.edu",
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
       "kerberized" : 0
     },
     "weight" : "0",
