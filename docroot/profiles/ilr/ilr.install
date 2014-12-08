@@ -335,3 +335,20 @@ function ilr_update_7021() {
     'elavon',
   ));
 }
+
+/**
+ * Deletes unused fields
+ */
+function ilr_update_7022() {
+  $fields_for_deletion = array(
+    'field_date_of_birth',
+    'field_dublin_acad_goals_essay',
+    'field_dublin_study_abroad_essay',
+    'field_school_year',
+    'field_banner_image',
+  );
+
+  foreach ($fields_for_deletion as $key => $name) {
+    field_delete_field($name);
+  }
+}
