@@ -937,8 +937,8 @@ function forms_default_entityform_type() {
     "type" : "ilr_alumni_association_event_reg",
     "label" : "ILR Alumni Association Event Registration",
     "data" : {
-      "draftable" : 0,
-      "draft_redirect_path" : "alumni\\/events\\/registration",
+      "draftable" : 1,
+      "draft_redirect_path" : "[current-page:url]",
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "full_html" },
       "submit_button_text" : "",
@@ -970,13 +970,14 @@ function forms_default_entityform_type() {
         "46" : 0
       },
       "resubmit_action" : "new",
-      "redirect_path" : "alumni\\/events\\/registration",
+      "redirect_path" : "[current-page:url]",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 1,
-      "form_submission_ilr_recipient" : "ss446@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
-      "kerberized" : 0
+      "kerberized" : 0,
+      "add_payment_processing" : 1,
+      "form_submission_ilr_recipient" : "ss446@cornell.edu"
     },
     "weight" : "0",
     "paths" : []
