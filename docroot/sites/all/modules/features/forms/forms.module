@@ -626,14 +626,15 @@ function _form_salutation($name){
  */
 function _forms_construct_user_name($entityform){
   $name_for_salutation = '';
-  if (array_key_exists('field_full_name', $entityform)) {
-    $name_for_salutation = trim($entityform->field_full_name['und'][0]['value']);
+  $wrapper = _forms_entityform_wrapper($entityform);
+  if ($wrapper->field_full_name) {
+    $name_for_salutation = trim($wrapper->field_full_name->value());
   }
-  elseif (array_key_exists('field_first_name', $entityform)) {
-    $name_for_salutation = trim($entityform->field_first_name['und'][0]['value']);
-    if (array_key_exists('field_last_name', $entityform)) {
+  elseif ($wrapper->field_first_name) {
+    $name_for_salutation = trim($wrapper->field_first_name->value());
+    if ($wrapper->field_last_name) {
       $name_for_salutation .= ' ';
-      $name_for_salutation .= trim($entityform->field_last_name['und'][0]['value']);
+      $name_for_salutation .= trim($wrapper->field_last_name->value());
     }
   }
   return $name_for_salutation;
