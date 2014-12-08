@@ -20,7 +20,9 @@ function youtube_videos_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -67,7 +69,9 @@ function youtube_videos_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 4,
       ),
@@ -114,6 +118,7 @@ function youtube_videos_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'field_formatter_label' => '',
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -162,7 +167,9 @@ function youtube_videos_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 1,
       ),
@@ -209,6 +216,7 @@ function youtube_videos_field_default_field_instances() {
         'label' => 'above',
         'module' => 'youtube',
         'settings' => array(
+          'field_formatter_label' => '',
           'youtube_autohide' => FALSE,
           'youtube_autoplay' => FALSE,
           'youtube_controls' => FALSE,
@@ -230,7 +238,9 @@ function youtube_videos_field_default_field_instances() {
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'youtube_videos',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'youtube_videos_fancybox',
         'weight' => 0,
       ),

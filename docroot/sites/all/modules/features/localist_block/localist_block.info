@@ -12,4 +12,5 @@ dependencies[] = link
 features[features_api][] = api:2
 features[field_instance][] = bean-event_block-field_more_link
 files[] = plugins/bean/bean_localist_events.event_block.inc
+mtime = 1413389791
 project path = sites/all/modules/features
