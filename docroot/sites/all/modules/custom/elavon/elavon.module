@@ -9,6 +9,10 @@
   2. There is a supporting module for the form which includes at least a few required functions, such as _MODULE_get_entityform_mappings() (see full list in _elavon_get_required_functions_for_payment_processing).
   3. If adding additional required functions, be sure to add them to _elavon_get_required_functions_for_payment_processing().
   4. New forms will need to modify _elavon_get_ilr_secrets_key_from_type(), as well as add their credentials to the ILR secrets file.
+
+  @todo:
+    - Consider whether we need to set entityform_type specific SESSIONS. This would prevent loading the wrong entityform draft under certain edge-cases.
+    - Confirm that a payment form (such as Forensics) works both in the body and in the content region of a basic page
 */
 
 require_once DRUPAL_ROOT . '/../config/get_secrets.php';
