@@ -164,7 +164,10 @@ function _elavon_entityform_is_payment_form($entityform) {
  */
 function _elavon_entityform_type_is_payment_form($entityform_type) {
   $entityform_type = entityform_type_load($entityform_type);
-  return $entityform_type->data['add_payment_processing'];
+  if (isset($entityform_type->data['add_payment_processing'])) {
+    return $entityform_type->data['add_payment_processing'];
+  }
+  return FALSE;
 }
 
 
