@@ -15,13 +15,17 @@
   position: fixed;
   top: 0;
   z-index: 10;
+
+  .admin-menu & {
+    top: 29px;
+  }
 }
 
 .header-small {
   height: $header-height-small;
 
   #logo {
-    margin: 10px 0 20px 30px;
+    margin: 10px 0;
     float: left;
 
     img {

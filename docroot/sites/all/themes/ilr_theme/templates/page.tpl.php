@@ -16,8 +16,8 @@
         <input id="search-form-query" type="text" name="s" placeholder="Search ILR . . ." value="" size="20" maxlength="128" class="form-text" />
       </form>
     </div>
-    <?php print render($page['header']); ?>
   </div>
+  <?php print render($page['header']); ?>
 </header>
 <div id="page">
   <div class="container" <?php print render($page['nav_trigger_pts']); ?>>
