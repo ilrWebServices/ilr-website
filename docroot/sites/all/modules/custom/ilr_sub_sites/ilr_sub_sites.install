@@ -29,7 +29,6 @@ function _ilr_sub_sites_get_sub_sites() {
     'iws' => 'IWS',
     'smithers-institute' => 'Smithers Institute',
     'ics' => 'Institute for Compensation Studies',
-    'scheinman-institute' => 'Scheinman Institute',
     'healthcare' => 'Healthcare',
     'national-labor-leadership-initiative' => 'NLLI',
     'expo' => 'ExPO',
