@@ -131,7 +131,7 @@
       }
 
       function getDeepestActivePage() {
-        depth = 0;
+        depth = 0, deepest = null;
         $('.menu-block-ilr-subnav li.active-trail').each(function() {
           parents = $(this).parents();
           if (parents.length > depth) {
