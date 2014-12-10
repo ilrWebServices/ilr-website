@@ -1,4 +1,8 @@
-.menu-block-ilr-primary-menu { // Main nav
+///////////////
+// Main Menu //
+///////////////
+
+.menu-block-ilr-primary-menu {
   position: relative;
   @extend .container;
   @extend .hidden;
@@ -9,11 +13,10 @@
 
   ul.menu {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     list-style: none;
     padding: 0;
     margin: 0;
-    max-width: 1100px;
 
     > li {
       background: none;
@@ -28,6 +31,7 @@
         color: #929292;
         font-family: $font;
         text-decoration: none;
+        text-align: left;
         font-weight: 600;
         font-size: 14px;
         outline: 0;
@@ -37,7 +41,8 @@
         width: 100%;
 
         .sticky & {
-          padding: .75em;
+          padding-top: .75em;
+          padding-bottom: .75em;
         }
 
         &:hover {
@@ -48,7 +53,18 @@
   }
 }
 
-#block-ilr-mega-menu-ilr-mega-menu {
+@include breakpoint(1065px) {
+  .menu-block-ilr-primary-menu ul.menu > li > a {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
+///////////////
+// Mega Menu //
+///////////////
+
+.block-ilr-mega-menu {
   @extend .hidden; // What will IE do with this?
   [data-eq-state="regular-nav"] & {
     @extend .visible;
@@ -63,7 +79,8 @@
   li div.submenu {
     position: absolute;
     left: 0;
-    padding: 0 1em;
+    padding: 15px;
+
     @include padding-leader(1);
     z-index: -1;
     opacity: 0;
@@ -72,6 +89,10 @@
     width: 100%;
     border: 1px solid $gray-light;
     @include box-shadow(0 5px 5px 0px rgba(black, .1));
+
+    @include breakpoint(1065px) {
+      padding: 25px;
+    }
 
     &.active {
       display: block;
@@ -85,6 +106,7 @@
     h2 {
       font-family: $font;
       font-size: ms(0);
+      font-weight: 600;
     }
 
     .field-name-field-mega-menu-blocks > .field-items > .field-item {
@@ -92,9 +114,11 @@
 
       ul {
         padding: 0;
+        margin: 0;
 
         li {
           list-style-type: none;
+          background: none;
           margin: 0;
           padding: 0;
           @include adjust-font-size-to(16px, 1);
@@ -112,4 +136,3 @@
     }
   }
 }
-

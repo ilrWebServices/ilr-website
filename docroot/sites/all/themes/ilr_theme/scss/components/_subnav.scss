@@ -96,10 +96,15 @@
         color: darken($gray-light, 10%);
       }
       display: block;
-      padding: 1em;
+      padding: 1em 1em 1em 15px;
       float: left;
       width: 100%;
-      font-size: 16px;
+      @include adjust-font-size-to(16px);
+
+      @include breakpoint(1065px) {
+        padding-left: 25px;
+        padding-right: 25px;
+      }
 
       &:hover {
         color: $brand;
