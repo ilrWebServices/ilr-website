@@ -6,11 +6,11 @@
       var currentSubmenu;
       var scalePercent = .94;
       var ready = true;
-      $('#block-ilr-mega-menu-ilr-mega-menu').mouseleave(function() {
+      $('.menu-block-ilr-primary-menu').mouseleave(function() {
         hideMegaMenu();
       });
 
-      $('#block-ilr-mega-menu-ilr-mega-menu li.menu-item').mouseenter(function(){
+      $('.menu-block-ilr-primary-menu li.menu-item').mouseenter(function(){
         if(ready) {
           submenu = $(this).find('div.submenu');
           if (submenuIsPopulated(submenu)) {
@@ -23,7 +23,7 @@
       });
 
       function megaMenuIsActive() {
-        return $('#block-ilr-mega-menu-ilr-mega-menu').hasClass('active');
+        return $('.menu-block-ilr-primary-menu').hasClass('active');
       }
 
       function submenuIsPopulated(submenu) {
@@ -32,12 +32,12 @@
 
       function revealSubmenu(submenu) {
         $(submenu).css('opacity', 1);
+        resetSubmenuTween(submenu);
         if (megaMenuIsActive()) {
           hideSubmenu($('.submenu.active'));
         } else {
-          resetSubmenuTween(submenu);
-          $('#block-ilr-mega-menu-ilr-mega-menu').addClass('active');
-          tween = TweenLite.from($(submenu), .6, { opacity: 0, top: 50, scaleX: scalePercent, scaleY: scalePercent, ease: easing });
+          $('.menu-block-ilr-primary-menu').addClass('active');
+          tween = TweenLite.from($(submenu), .6, { opacity: 0, top: 70, scaleX: scalePercent, scaleY: scalePercent, ease: easing });
         }
         $(submenu).addClass('active');
       }
@@ -48,12 +48,13 @@
           tween = null;
         }
         $('.submenu.active').removeClass('active');
-        TweenLite.to($(submenu), 0, { opacity: 1, top: '-1em', scaleX: 1, scaleY: 1});
+        xPos = $('.menu-block-ilr-primary-menu').height();
+        TweenLite.to($(submenu), 0, { opacity: 1, top: xPos, scaleX: 1, scaleY: 1});
       }
 
       function hideMegaMenu() {
         ready = false;
-        $('#block-ilr-mega-menu-ilr-mega-menu').removeClass('active');
+        $('.menu-block-ilr-primary-menu').removeClass('active');
         submenu = $('.submenu.active');
         TweenLite.to(submenu, .1, {opacity: 0, onComplete: removeClassFromEl, onCompleteParams: [submenu, 'active'] });
       }
