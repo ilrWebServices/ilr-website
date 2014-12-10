@@ -34,7 +34,7 @@ function ilr_theme_preprocess_html(&$variables) {
 function ilr_theme_preprocess_page(&$variables) {
   // Footer content
   $variables['page']['footer'][] = array('#markup' => '<div class="copyright">&copy; ' . date('Y') . ' Cornell University | ILR School </div>');
-  $variables['page']['page_width_eq_points'] =  array('#markup' => 'data-eq-pts="mobile-v: 320, mobile-h:450, tablet-v: 768, tablet-h: 900, desktop: 1025"');
+  $variables['page']['page_width_eq_points'] =  array('#markup' => 'data-eq-pts="mobile-v: 320, mobile-h:450, tablet-v: 768, tablet-h: 900, widescreen: 1400"');
   $variables['page']['nav_trigger_pts'] =  array('#markup' => 'data-eq-pts="mobile-nav: 300, regular-nav: 940"');
 
   if ( isset($_GET['layout']) && $_GET['layout'] == '0' ) {
@@ -134,7 +134,7 @@ function ilr_theme_breadcrumb($variables) {
     if (module_exists('ilr_sub_sites') && _ilr_sub_sites_get_current_menu_name() != 'main-menu') {
       $home_link = array_shift($breadcrumb); // Remove the home link
     }
-    return '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
+    return '<div class="breadcrumb">' . implode('<span> / </span>', $breadcrumb) . '</div>';
   }
 }
 

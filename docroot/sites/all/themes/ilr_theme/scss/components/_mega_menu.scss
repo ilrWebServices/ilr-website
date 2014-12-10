@@ -1,45 +1,10 @@
-#block-ilr-mega-menu-ilr-mega-menu {
-  &.active a {
-    color: $brand;
-  }
+///////////////
+// Main Menu //
+///////////////
 
-  li div.submenu {
-    position: absolute;
-    left: 0;
-    padding: 4em 0 3em 0;
-    top: -1em;
-    z-index: -1;
-    opacity: 0;
-    display: none;
-    background: white;
-    width: 100%;
-    border: 1px solid $gray-light;
-    @include box-shadow(0 5px 5px 0px rgba(black, .1));
-
-    &.active {
-      display: block;
-    }
-
-    h2 {
-      display: none;
-    }
-
-    a {
-      color: $brand;
-    }
-
-    .field-name-field-mega-menu-blocks > .field-items > .field-item {
-      @extend %three-column;
-    }
-  }
-}
-
-.menu-block-ilr-primary-menu { // Main nav
-  clear: left;
-  float: left;
-  width: 100%;
+.menu-block-ilr-primary-menu {
   position: relative;
-
+  @extend .container;
   @extend .hidden;
 
   [data-eq-state="regular-nav"] & {
@@ -48,41 +13,125 @@
 
   ul.menu {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     list-style: none;
     padding: 0;
     margin: 0;
 
-    li {
+    > li {
       background: none;
       list-style: none;
       line-height: 1;
       margin: 0;
       padding: 0;
 
-      a, a:visited, a:hover {
+      > a, > a:visited {
         flex-grow: 1;
         display: flex;
-        color: white;
-        font-family: $font-headers;
+        color: #929292;
+        font-family: $font;
         text-decoration: none;
-        font-weight: 400;
+        text-align: left;
+        font-weight: 600;
+        font-size: 14px;
         outline: 0;
+        text-transform: uppercase;
+        padding: 1.2em;
+        display: block;
+        width: 100%;
+
+        .sticky & {
+          padding-top: .75em;
+          padding-bottom: .75em;
+        }
+
+        &:hover {
+          color: $brand;
+        }
       }
     }
   }
 }
 
 @include breakpoint(1065px) {
-  .menu-block-ilr-primary-menu ul {
-    padding-left: 50px; //move this
-    li {
-      padding-right: 30px;
-      &:last-child {
+  .menu-block-ilr-primary-menu ul.menu > li > a {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
+///////////////
+// Mega Menu //
+///////////////
+
+.block-ilr-mega-menu {
+  @extend .hidden; // What will IE do with this?
+  [data-eq-state="regular-nav"] & {
+    @extend .visible;
+  }
+  background: #f7f7f7;
+  border-bottom: 1px solid #e3e3e3;
+  width: 100%;
+  @extend .clearfix;
+  position: absolute;
+  bottom: 0;
+
+  li div.submenu {
+    position: absolute;
+    left: 0;
+    padding: 15px;
+
+    @include padding-leader(1);
+    z-index: -1;
+    opacity: 0;
+    display: none;
+    background: white;
+    width: 100%;
+    border: 1px solid $gray-light;
+    @include box-shadow(0 5px 5px 0px rgba(black, .1));
+
+    @include breakpoint(1065px) {
+      padding: 25px;
+    }
+
+    &.active {
+      display: block;
+    }
+
+    &:first-child {
+      opacity: 1;
+      display: block;
+    }
+
+    h2 {
+      font-family: $font;
+      font-size: ms(0);
+      font-weight: 600;
+    }
+
+    .field-name-field-mega-menu-blocks > .field-items > .field-item {
+      @extend %three-column;
+
+      ul {
         padding: 0;
-      }
-      a {
-        font-size: 18px;
+        margin: 0;
+
+        li {
+          list-style-type: none;
+          background: none;
+          margin: 0;
+          padding: 0;
+          @include adjust-font-size-to(16px, 1);
+
+          a {
+            color: $p-text;
+          }
+
+          p {
+            font-size: 16px;
+          }
+        }
+
       }
     }
   }

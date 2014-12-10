@@ -15,13 +15,17 @@
   position: fixed;
   top: 0;
   z-index: 10;
+
+  .admin-menu & {
+    top: 29px;
+  }
 }
 
 .header-small {
   height: $header-height-small;
 
   #logo {
-    margin: 10px 0 20px 30px;
+    margin: 10px 0;
     float: left;
 
     img {
@@ -39,6 +43,9 @@ header {
   @extend .header-small;
   @include transition-duration(.3s);
 
+  #logo {
+    margin-left: 10px;
+  }
   .sticky & {
     @include box-shadow(0 10px 10px -10px rgba(black, .5));
   }
@@ -47,9 +54,11 @@ header {
     body:not(.sticky) & {
       height: $header-height;
 
-      #logo img {
-        width: 375px;
-        height: 120px;
+      #logo {
+        img {
+          width: 375px;
+          height: 120px;
+        }
       }
     }
 
