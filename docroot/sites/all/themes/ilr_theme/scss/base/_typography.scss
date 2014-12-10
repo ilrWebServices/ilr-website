@@ -13,6 +13,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   font-family: $font-headers;
   clear: left;
+  margin-top: 0;
 
   a {
     font-weight: inherit;
@@ -25,6 +26,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   @include adjust-font-size-to($h1-size, $line-height-multiplier);
   color: $h1-text;
+  @include adjust-leading-to(2, $h1-size);
 
   a {
     color: $h1-link;
@@ -121,6 +123,7 @@ p, a, li {
 p {
   font-size: $p-size;
   color: $p-text;
+  margin-top: 0;
 
   img {
     margin: 0;
@@ -187,7 +190,7 @@ ol {
 }
 
 ul {
-  padding: 0 0 0 2em;
+  padding: 0 0 0 .5em;
   line-height: ms(2);
 }
 
