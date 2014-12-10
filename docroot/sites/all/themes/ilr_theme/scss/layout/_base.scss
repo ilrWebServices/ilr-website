@@ -33,7 +33,7 @@
     }
   }
 
-  &[data-eq-state="desktop"] {
+  &[data-eq-state="widescreen"] {
     @extend %triptych;
   }
 
@@ -43,6 +43,10 @@
     @include grid-span(1,2);
     @extend .clearfix;
     clear: both;
+
+    .section {
+      @include leader(1);
+    }
   }
 
   #highlighted .tagged-content {
