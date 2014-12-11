@@ -15,13 +15,59 @@ define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
 
 /**
  * Implements hook_entityform_presave.
- * Saves the registration date for registration forms
+ * Sets the registration date for registration forms
+ * Sets the job postdate for alumni job postings
  */
 function forms_entityform_presave($entityform) {
   if (_forms_is_event_registration_form($entityform) && $entityform->is_new) {
-    _forms_save_registration_date($entityform);
+    _forms_set_registration_date($entityform);
+  }
+  if ($entityform->type == 'job_postings_for_ilr_alumni') {
+    _forms_set_alumni_job_postdate($entityform);
   }
 }
+
+/**
+ * Set Alumni Bulletin job posting date based on datetime of submission
+ * Note that setting this in presave has the side effect of saving them to the db
+ * and then being able to use it in the email.
+ */
+function _forms_set_alumni_job_postdate($entityform) {
+  $unix_seconds = $entityform->created;
+  $submission_datetime_array = getdate($unix_seconds);
+  $submission_dayofweek = $submission_datetime_array['wday'];
+  $submission_datetime = date_create();
+  date_timestamp_set($submission_datetime, $unix_seconds);
+
+  // Post date is the coming Friday if submission day is Saturday, Sunday, or Monday before 3:00pm
+  // Otherwise it's the Friday after that
+  switch ($submission_dayofweek) {
+    case '0':   // Sunday
+      $postdateobj = $submission_datetime->add(new DateInterval('P5D'));
+      break;
+    case '1':   // Monday
+      if ($submission_datetime_array['hours'] < 15) {
+        $postdateobj = $submission_datetime->add(new DateInterval('P4D'));
+      }
+      else {
+        $postdateobj = $submission_datetime->add(new DateInterval('P11D'));
+      }
+      break;
+    default:   // Tuesday - Saturday
+      $addon = 12 - $submission_dayofweek;
+      $date_interval_string = 'P' . $addon . 'D';
+      $postdateobj = $submission_datetime->add(new DateInterval($date_interval_string));
+      break;
+  }
+
+  // Strip off the time, only want the date, and put it in the format Dottie needs m/d/yyyy
+  $postdate = date_format($postdateobj, 'm/d/Y');
+
+  // Save the postdate to the hidden field h_postdate on the entityform
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  $entityform_wrapper->field_h_postdate->set($postdate);
+}
+
 
 /**
  * Implements hook_entity_insert().
@@ -515,6 +561,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
       'form_title'            => $form_title,
       'event_info_for_email'  => _forms_get_event_info_for_email($entityform),
       'event_payment_details' => _forms_get_payment_details_for_email($entityform),
+      'postdate'              => _forms_get_postdate_for_email($entityform),
       'sitename'              => $sitename,
     ));
 
@@ -687,6 +734,19 @@ function _forms_is_event_registration_form($entityform) {
 }
 
 /**
+ * Get the postdate for forms email
+ */
+function _forms_get_postdate_for_email($entityform) {
+  if ($entityform->type == 'job_postings_for_ilr_alumni') {
+    $entityform_wrapper = _forms_entityform_wrapper($entityform);
+    return $entityform_wrapper->field_h_postdate->value();
+  }
+  else {
+    return '';
+  }
+}
+
+/**
  * Wrapper function for _registration_pages_get_event_markup()
  */
 function _forms_get_event_info_for_email($entityform) {
@@ -714,7 +774,7 @@ function _forms_get_payment_details_for_email($entityform) {
 /**
  * Saves the date of the event to the hidden field on the entityform
  */
-function _forms_save_registration_date($entityform) {
+function _forms_set_registration_date($entityform) {
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
   //'default_value_function' => 'entityreference_current_field_default_value',
   $event_date_save = $entityform_wrapper->field_referenced_node->field_event_date->value();
