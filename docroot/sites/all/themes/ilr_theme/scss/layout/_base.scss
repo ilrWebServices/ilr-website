@@ -22,8 +22,6 @@
   }
 
   [data-eq-state="regular-nav"] & {
-    @extend %two-cols-with-sidebar;
-
     body:not(.sticky) & {
       margin-top: $header-height;
     }
@@ -31,6 +29,7 @@
     .sticky & {
       margin-top: $header-height-small * 1.5;
     }
+    @extend %two-cols-with-sidebar;
   }
 
   &[data-eq-state="widescreen"] {

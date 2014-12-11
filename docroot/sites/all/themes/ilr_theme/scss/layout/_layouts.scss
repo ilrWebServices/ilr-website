@@ -1,7 +1,9 @@
 %one-column {
   @include layout(4) {
     @include float-span(4);
-    padding: 1em;
+    &:nth-of-type(even) {
+      @include float-span(4);
+    }
   }
 }
 

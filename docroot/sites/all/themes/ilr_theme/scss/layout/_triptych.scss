@@ -10,16 +10,12 @@
     }
   }
 
-  #sidebar-first {
-    @include grid-span(1);
-    article {
-      //@extend %slug;
-    }
-  }
-
-  #sidebar-second {
-    @include leader(2);
+  #sidebar-second .section {
+    @include leader(3);
     @include grid-span(1, 3);
+    article.node-teaser {
+      @extend %one-column;
+    }
   }
 
   #content-bottom {
