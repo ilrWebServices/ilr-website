@@ -410,6 +410,86 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_billing_information|entityform|job_postings_for_ilr_alumni|default';
+  $field_group->group_name = 'group_billing_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'job_postings_for_ilr_alumni';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Billing Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_search_firm',
+      1 => 'field_blind_ad',
+      2 => 'field_organization_additional',
+      3 => 'field_full_name_additional',
+      4 => 'field_address_line_1_additional',
+      5 => 'field_address_line_2_additional',
+      6 => 'field_city_additional',
+      7 => 'field_state_province_additional',
+      8 => 'field_zip_postal_code_additional',
+      9 => 'field_phone_additional',
+      10 => 'field_fax_additional',
+      11 => 'field_email_additional',
+      12 => 'field_title_additional',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Billing Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-billing-information field-group-fieldset',
+        'description' => 'Billing contact information will be requested if your organization is a search firm or if this is a blind ad.',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_billing_information|entityform|job_postings_for_ilr_alumni|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_billing_information|entityform|job_postings_for_ilr_alumni|form';
+  $field_group->group_name = 'group_billing_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'job_postings_for_ilr_alumni';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Billing Information',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_search_firm',
+      1 => 'field_blind_ad',
+      2 => 'field_organization_additional',
+      3 => 'field_full_name_additional',
+      4 => 'field_address_line_1_additional',
+      5 => 'field_address_line_2_additional',
+      6 => 'field_city_additional',
+      7 => 'field_state_province_additional',
+      8 => 'field_zip_postal_code_additional',
+      9 => 'field_phone_additional',
+      10 => 'field_fax_additional',
+      11 => 'field_email_additional',
+      12 => 'field_title_additional',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Billing Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-billing-information field-group-fieldset',
+        'description' => 'Billing contact information will be requested if your organization is a search firm or if this is a blind ad.',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_billing_information|entityform|job_postings_for_ilr_alumni|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_college_address|entityform|dublin_application_form|default';
   $field_group->group_name = 'group_college_address';
   $field_group->entity_type = 'entityform';
@@ -761,6 +841,82 @@ function forms_field_group_info() {
     ),
   );
   $export['group_contact_information|entityform|distance_learning_reservation_re|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact_information|entityform|job_postings_for_ilr_alumni|default';
+  $field_group->group_name = 'group_contact_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'job_postings_for_ilr_alumni';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact Information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_organization',
+      1 => 'field_full_name',
+      2 => 'field_name_title',
+      3 => 'field_address_line_1',
+      4 => 'field_address_line_2',
+      5 => 'field_city',
+      6 => 'field_state_province',
+      7 => 'field_zip_code',
+      8 => 'field_phone',
+      9 => 'field_email',
+      10 => 'field_fax',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Contact Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-contact-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_contact_information|entityform|job_postings_for_ilr_alumni|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact_information|entityform|job_postings_for_ilr_alumni|form';
+  $field_group->group_name = 'group_contact_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'job_postings_for_ilr_alumni';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_organization',
+      1 => 'field_full_name',
+      2 => 'field_name_title',
+      3 => 'field_address_line_1',
+      4 => 'field_address_line_2',
+      5 => 'field_city',
+      6 => 'field_state_province',
+      7 => 'field_zip_code',
+      8 => 'field_phone',
+      9 => 'field_email',
+      10 => 'field_fax',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Contact Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-contact-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_contact_information|entityform|job_postings_for_ilr_alumni|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2489,6 +2645,79 @@ function forms_field_group_info() {
     ),
   );
   $export['group_phone_numbers|entityform|dublin_application_form|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_posting_details|entityform|job_postings_for_ilr_alumni|default';
+  $field_group->group_name = 'group_posting_details';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'job_postings_for_ilr_alumni';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Posting Details',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_section',
+      1 => 'field_employer',
+      2 => 'field_position',
+      3 => 'field_location_string',
+      4 => 'field_degree',
+      5 => 'field_salary',
+      6 => 'field_duties',
+      7 => 'field_qualifications',
+      8 => 'field_instructions',
+      9 => 'field_h_postdate',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Posting Details',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-posting-details field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_posting_details|entityform|job_postings_for_ilr_alumni|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_posting_details|entityform|job_postings_for_ilr_alumni|form';
+  $field_group->group_name = 'group_posting_details';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'job_postings_for_ilr_alumni';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Posting Details',
+    'weight' => '28',
+    'children' => array(
+      0 => 'field_section',
+      1 => 'field_employer',
+      2 => 'field_position',
+      3 => 'field_location_string',
+      4 => 'field_degree',
+      5 => 'field_salary',
+      6 => 'field_duties',
+      7 => 'field_qualifications',
+      8 => 'field_instructions',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Posting Details',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-posting-details field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_posting_details|entityform|job_postings_for_ilr_alumni|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

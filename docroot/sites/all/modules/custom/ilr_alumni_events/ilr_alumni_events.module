@@ -121,10 +121,11 @@ function _ilr_alumni_events_get_current_invoice_count() {
  * Determines if the entityform should be in draft mode
  *   - Free events are not drafts
  *   - APPROVED transactions are not drafts
+ * Note: Called from elavon module, so no need to load it here
  */
 function _ilr_alumni_events_get_draft_status() {
   $is_draft = 1;
-  if ($wrapper = _elavon_get_entityform_wrapper() && _ilr_alumni_events_ordered_tickets()) {
+  if ($wrapper = _ilr_alumni_events_get_entityform_wrapper() && _ilr_alumni_events_ordered_tickets()) {
     if (_ilr_alumni_events_is_free_event()) {
       $is_draft = 0;
     }
@@ -163,6 +164,16 @@ function _ilr_alumni_events_get_entityform_mappings() {
     );
   }
   return $mappings;
+}
+
+/**
+ * Wrapper function for _elavon_get_entityform_wrapper().
+ */
+function _ilr_alumni_events_get_entityform_wrapper() {
+  if (module_exists('elavon')) {
+    _elavon_get_entityform_wrapper();
+  }
+  return FALSE;
 }
 
 /**
@@ -220,7 +231,7 @@ function _ilr_alumni_events_is_free_event() {
 }
 
 function _ilr_alumni_events_member_ticket_count() {
-  $entityform_wrapper = _elavon_get_entityform_wrapper();
+  $entityform_wrapper = _ilr_alumni_events_get_entityform_wrapper();
   return $entityform_wrapper->field_tickets_for_aa_members->value();
 }
 
@@ -231,7 +242,7 @@ function _ilr_alumni_events_member_ticket_count() {
 function _ilr_alumni_events_node_wrapper($node=NULL) {
   $wrapper = &drupal_static(__FUNCTION__);
   if (!isset($wrapper)) {
-    if (!$node && $entityform_wrapper = _elavon_get_entityform_wrapper()) {
+    if (!$node && $entityform_wrapper = _ilr_alumni_events_get_entityform_wrapper()) {
       if(isset($entityform_wrapper->field_referenced_node)) {
         $node = $entityform_wrapper->field_referenced_node->value();
       }
@@ -253,7 +264,7 @@ function _ilr_alumni_events_node_wrapper($node=NULL) {
 }
 
 function _ilr_alumni_events_non_member_ticket_count() {
-  $entityform_wrapper = _elavon_get_entityform_wrapper();
+  $entityform_wrapper = _ilr_alumni_events_get_entityform_wrapper();
   return $entityform_wrapper->field_tickets_for_non_members->value();
 }
 
@@ -290,7 +301,7 @@ function _ilr_alumni_events_payment_form_errors() {
 }
 
 function _ilr_alumni_events_process_free_event() {
-  $wrapper = _elavon_get_entityform_wrapper();
+  $wrapper = _ilr_alumni_events_get_entityform_wrapper();
   $wrapper->draft = 0;
   $wrapper->field_total_cost->set('No payment required');
   $wrapper->save();
