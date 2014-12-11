@@ -763,9 +763,7 @@ function _forms_get_event_info_for_email($entityform) {
  * Wrapper function for _elavon_get_payment_details_for_email()
  */
 function _forms_get_payment_details_for_email($entityform) {
-  $entityform_type = entityform_type_load($entityform->type);
-  $has_payment = $entityform_type->data['add_payment_processing'];
-  if ($has_payment && module_exists('elavon')) {
+  if (module_exists('elavon') && _elavon_entityform_is_payment_form($entityform)) {
     return _elavon_get_payment_details_for_email($entityform);
   }
   return '';
@@ -776,7 +774,6 @@ function _forms_get_payment_details_for_email($entityform) {
  */
 function _forms_set_registration_date($entityform) {
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
-  //'default_value_function' => 'entityreference_current_field_default_value',
   $event_date_save = $entityform_wrapper->field_referenced_node->field_event_date->value();
   if (!empty($event_date_save)) {
     $entityform_wrapper->field_h_event_date->set($event_date_save);
