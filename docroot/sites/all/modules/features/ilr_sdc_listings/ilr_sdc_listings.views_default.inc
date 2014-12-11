@@ -109,7 +109,7 @@ function ilr_sdc_listings_views_default_views() {
 
   /* Display: Table with next class date */
   $handler = $view->new_display('panel_pane', 'Table with next class date', 'panel_pane_2');
-  $handler->display->display_options['display_description'] = 'word';
+  $handler->display->display_options['display_description'] = '';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
