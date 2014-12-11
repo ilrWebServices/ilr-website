@@ -171,9 +171,9 @@ function _ilr_alumni_events_get_entityform_mappings() {
  */
 function _ilr_alumni_events_get_entityform_wrapper() {
   if (module_exists('elavon')) {
-    _elavon_get_entityform_wrapper();
+    return _elavon_get_entityform_wrapper();
   }
-  return FALSE;
+  return NULL;
 }
 
 /**
@@ -231,8 +231,10 @@ function _ilr_alumni_events_is_free_event() {
 }
 
 function _ilr_alumni_events_member_ticket_count() {
-  $entityform_wrapper = _ilr_alumni_events_get_entityform_wrapper();
-  return $entityform_wrapper->field_tickets_for_aa_members->value();
+  if ($entityform_wrapper = _ilr_alumni_events_get_entityform_wrapper()) {
+    return $entityform_wrapper->field_tickets_for_aa_members->value();
+  }
+  return 0;
 }
 
 /**
@@ -264,8 +266,10 @@ function _ilr_alumni_events_node_wrapper($node=NULL) {
 }
 
 function _ilr_alumni_events_non_member_ticket_count() {
-  $entityform_wrapper = _ilr_alumni_events_get_entityform_wrapper();
-  return $entityform_wrapper->field_tickets_for_non_members->value();
+  if ($entityform_wrapper = _ilr_alumni_events_get_entityform_wrapper()) {
+    return $entityform_wrapper->field_tickets_for_non_members->value();
+  }
+  return 0;
 }
 
 /**
