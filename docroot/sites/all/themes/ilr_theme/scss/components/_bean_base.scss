@@ -8,10 +8,7 @@
     }
   }
 
-  // Specify which view mode to extend by default
-  //@extend %thumb;
-
-  .sidebar & {
+  #sidebar-second & {
     article[data-eq-state="medium"] {
       @extend %thumb;
     }
