@@ -31,9 +31,6 @@
       article {
         @extend %four-column;
       }
-      &[data-items='4'] {
-        @extend %one-column-grid;
-      }
     }
 
     // &[data-eq-state="mobile-h"],

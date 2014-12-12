@@ -1,17 +1,21 @@
 %bean-base {
-  // Specify which view mode to extend by default
-  @extend %rolodex;
+  h2, h2 a {
+    font-family: $font-headers;
+    color: $h2-text;
+    @include adjust-font-size-to(22px);
+    @include adjust-leading-to(1);
+  }
 
-  article {
-    // Example of how to integrate with eq.js
-    // See templates/page.tpl.php for data-eq-pts
-    .sidebar & {
-      &[data-eq-state="small"] {
-        @extend %slug;
-      }
+  // Specify which view mode to extend by default
+  //@extend %thumb;
+
+  .sidebar & {
+    article[data-eq-state="medium"] {
+      @extend %thumb;
     }
-    // In the highlighted area above main content
-    #highlighted & {
+    article[data-eq-state="small"] {
+      @extend %slug;
     }
+
   }
 }

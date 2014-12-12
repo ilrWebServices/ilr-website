@@ -53,7 +53,6 @@
     &[data-items='3'] {
       article {
         @extend %two-thirds-split-column;
-        @extend %image-first;
       }
     }
   }
@@ -74,9 +73,6 @@
     .tagged-content {
       article {
         @extend %one-column;
-      }
-      &[data-items='4'] {
-        @extend %one-column-grid;
       }
     }
   }
