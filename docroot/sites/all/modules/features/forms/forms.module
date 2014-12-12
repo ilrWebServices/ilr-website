@@ -674,12 +674,12 @@ function _form_salutation($name){
 function _forms_construct_user_name($entityform){
   $name_for_salutation = '';
   $wrapper = _forms_entityform_wrapper($entityform);
-  if ($wrapper->field_full_name) {
+  if (!empty($wrapper->field_full_name)) {
     $name_for_salutation = trim($wrapper->field_full_name->value());
   }
-  elseif ($wrapper->field_first_name) {
+  elseif (!empty($wrapper->field_first_name)) {
     $name_for_salutation = trim($wrapper->field_first_name->value());
-    if ($wrapper->field_last_name) {
+    if (!empty($wrapper->field_last_name)) {
       $name_for_salutation .= ' ';
       $name_for_salutation .= trim($wrapper->field_last_name->value());
     }
