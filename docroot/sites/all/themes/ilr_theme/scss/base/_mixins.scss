@@ -33,3 +33,29 @@
   //   }
   // }
 }
+
+@mixin circularImage($width:100px) {
+  width: $width;
+  height: $width;
+  border-radius: $width / 4;
+
+  span  {
+    display: block;
+    width: $width;
+    height: $width;
+  }
+
+  img, span {
+    border-radius:50%;
+  }
+}
+
+@mixin addHighlightColors($selector, $css-property) {
+  $content-types: basic-page, promo, event, spotlight, student-portrait, news-item, youtube-video;
+  $content-type-colors: $basic-page-color, $promo-color, $event-color, $spotlight-color, $student-portrait-color, $news-color, $video-color;
+  @for $i from 1 through length($content-types) {
+    .#{nth($content-types, $i)}#{$selector} {
+      #{$css-property}: nth($content-type-colors, $i);
+    }
+  }
+}

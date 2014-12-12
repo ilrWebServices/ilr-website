@@ -362,7 +362,7 @@ function registration_pages_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => 'content',
-          'image_style' => 'focussed_grid_image',
+          'image_style' => 'focussed_thumbnail',
         ),
         'type' => 'image',
         'weight' => 0,

@@ -36,6 +36,14 @@
     @extend %triptych;
   }
 
+  &[data-eq-state="450"],
+  &[data-eq-state="768"],
+  &[data-eq-state="900"] {
+    #sidebar-second article {
+      @extend %two-column;
+    }
+  }
+
   @extend .clearfix;
 
   #content, #sidebar-second {
@@ -53,7 +61,6 @@
     &[data-items='3'] {
       article {
         @extend %two-thirds-split-column;
-        @extend %image-first;
       }
     }
   }
@@ -74,9 +81,6 @@
     .tagged-content {
       article {
         @extend %one-column;
-      }
-      &[data-items='4'] {
-        @extend %one-column-grid;
       }
     }
   }

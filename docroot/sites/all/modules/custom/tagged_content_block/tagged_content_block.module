@@ -1,11 +1,8 @@
 <?php
 
-/**
- * Implements hook_bean_types_api_info().
- */
-function tagged_content_block_bean_types_api_info() {
-  return array('api' => 4);
-}
+//////////////////
+// Drupal Hooks //
+//////////////////
 
 /**
  * Implements hook_bean_types().
@@ -26,15 +23,20 @@ function tagged_content_block_bean_types() {
 }
 
 /**
- * Implements hook_permission()
+ * Implements hook_bean_types_api_info().
  */
-function tagged_content_block_permission() {
-  return array(
-    'administer tagged content block configuration' => array(
-      'title' => t('Administer Tagged Content Blocks'),
-      'description' => t('Configure content types available to tagged content blocks.'),
-    ),
-  );
+function tagged_content_block_bean_types_api_info() {
+  return array('api' => 4);
+}
+
+/**
+ * Implements hook_form_alter
+ * Adds a validator for tagged content blocks
+ */
+function tagged_content_block_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == "basic_page_node_form") {
+    $form['#validate'][] = '_tagged_content_block_reference_validator';
+  }
 }
 
 /**
@@ -56,6 +58,18 @@ function tagged_content_block_menu() {
 }
 
 /**
+ * Implements hook_permission()
+ */
+function tagged_content_block_permission() {
+  return array(
+    'administer tagged content block configuration' => array(
+      'title' => t('Administer Tagged Content Blocks'),
+      'description' => t('Configure content types available to tagged content blocks.'),
+    ),
+  );
+}
+
+/**
  * Implements hook_preprocess_hook()
  *
  * Sets the node_url to the value of field_website_url, if there is one
@@ -65,12 +79,16 @@ function tagged_content_block_menu() {
  */
 function tagged_content_block_preprocess_node(&$variables) {
   $variables['title_link'] = '';
-
-  if (($variables['type'] == 'news_item' || $variables['type'] == 'promo') && $variables['view_mode'] == 'teaser') {
-    $language = field_language('node', $variables['node'], 'field_website_url');
-    if (!empty($variables['node']->field_website_url[$language][0]['url'])) {
-      $url = $variables['node']->field_website_url[$language][0]['url'];
-      $variables['node_url'] = $url;
+  $tagged_content_types = variable_get('tagged_content_block_enabled_bundles');
+  if ($variables['view_mode'] == 'teaser' && in_array($variables['type'], $tagged_content_types)) {
+    _tagged_content_block_add_category_heading($variables);
+    if (isset($variables['field_image']) && !count($variables['field_image'])) {
+      _tagged_content_block_add_thumbnail($variables);
+    }
+    $wrapper = entity_metadata_wrapper('node', $variables['node']);
+    if (!empty($wrapper->field_website_url) && $wrapper->field_website_url->value()) {
+      $wrapped_url = $wrapper->field_website_url->value();
+      $variables['node_url'] = $wrapped_url['url'];
     }
     // Remove the read more links
     unset($variables['content']['links']['node']['#links']['node-readmore']);
@@ -84,36 +102,23 @@ function tagged_content_block_query_random_alter($query) {
   $query->orderRandom();
 }
 
-/**
- * Implements hook_form_alter
- * Adds a validator for tagged content blocks
- */
-function tagged_content_block_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == "basic_page_node_form") {
-    $form['#validate'][] = '_tagged_content_block_reference_validator';
-  }
+//////////////////////
+// Custom functions //
+//////////////////////
+
+function _tagged_content_block_add_category_heading(&$variables) {
+  $type = $variables['type'];
+  $category = _tagged_content_block_get_category_by_type($type);
+  $content_type = _tagged_content_block_get_hyphened_type($type);
+  $primary_tag = _tagged_content_block_get_primary_term_for_node($variables['node']);
+  $variables['content']['category']['#markup'] = "<h2 class='category $content_type'>$category / $primary_tag</h2>";
 }
 
-/**
- * Validator for referencing blocks
- *   - Confirms that highlighted blocks have the featured flag
- */
-function _tagged_content_block_reference_validator($form, &$form_state) {
-  if(count($form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'])
-    && $bid = $form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'][LANGUAGE_NONE][0]['bid']) {
-    $block = _tagged_content_block_load_block($bid);
-    $bean = bean_load_delta($block['delta']);
-    if (empty($bean->data['featured'])) {
-      form_set_error('state', t("Only featured blocks can be added to the highlighted region."));
-    }
-  }
-}
-
-/**
- * Loads a block by block id
- */
-function _tagged_content_block_load_block($bid) {
-  return db_query("SELECT * FROM block WHERE bid = :bid", array(':bid' => $bid))->fetchAssoc();
+function _tagged_content_block_add_thumbnail(&$variables) {
+  $drop_cap = $variables['title'][0];
+  $content_type = _tagged_content_block_get_hyphened_type($variables['type']);
+  $url = url('node/' . $variables['nid']);
+  $variables['content']['field_image']['#markup'] = "<div class='drop-cap $content_type'><a href='$url'><span>$drop_cap</span></a></div>";
 }
 
 /**
@@ -138,4 +143,48 @@ function _tagged_content_block_enable_default_bundles() {
   );
 
   return $enabled_content_types;
+}
+
+function _tagged_content_block_get_category_by_type($type) {
+  $categories = array(
+    'basic_page'          => 'content',
+    'news_item'           => 'news',
+    'promo'               => 'highlights',
+    'spotlight'           => 'spotlight',
+    'student_portrait'    => 'student portrait',
+    'youtube_video'       => 'video',
+  );
+  return $categories[$type];
+}
+
+function _tagged_content_block_get_hyphened_type($type) {
+  return str_replace('_', '-', $type);
+}
+
+function _tagged_content_block_get_primary_term_for_node($node) {
+  $wrapper = entity_metadata_wrapper('node',$node);
+  $tag_array = $wrapper->field_tags->value();
+  return $tag_array[0]->name;
+}
+
+/**
+ * Loads a block by block id
+ */
+function _tagged_content_block_load_block($bid) {
+  return db_query("SELECT * FROM block WHERE bid = :bid", array(':bid' => $bid))->fetchAssoc();
+}
+
+/**
+ * Validator for referencing blocks
+ *   - Confirms that highlighted blocks have the featured flag
+ */
+function _tagged_content_block_reference_validator($form, &$form_state) {
+  if(count($form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'])
+    && $bid = $form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'][LANGUAGE_NONE][0]['bid']) {
+    $block = _tagged_content_block_load_block($bid);
+    $bean = bean_load_delta($block['delta']);
+    if (empty($bean->data['featured'])) {
+      form_set_error('state', t("Only featured blocks can be added to the highlighted region."));
+    }
+  }
 }

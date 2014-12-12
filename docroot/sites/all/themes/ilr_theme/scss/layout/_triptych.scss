@@ -25,9 +25,6 @@
       article {
         @extend %four-column;
       }
-      &[data-items='4'] {
-        @extend %four-column-grid;
-      }
     }
   }
 }

@@ -3,11 +3,13 @@
 // ==================================================
 %slug {
   h2 {
-    font-size: ms(0);
     @include adjust-leading-to(1);
-    @include adjust-font-size-to(18px);
+    @include adjust-font-size-to(16px);
     margin-bottom: 0;
     font-weight: 400;
+    &.category {
+      @extend .hidden;
+    }
   }
   // Hide everything but the title
   div, ul.links {
@@ -50,11 +52,56 @@
 // Thumb Styles
 // ==================================================
 %thumb {
+  position: relative;
+  //@extend %image-first;
+  min-height: 100px;
+  @include trailer(2);
+
   h2 {
-    font-size: $h2-sm-size;
+    margin-left: 115px;
+    &:first-child {
+      @include padding-leader(1);
+    }
   }
 
-  .field-type-text-with-summary {
+  .field-type-image,
+  .field-name-field-youtube-video,
+  .drop-cap {
+    @include circularImage;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  @include addHighlightColors('.category', 'color');
+  h2.category {
+    position: absolute;
+    top: 0;
+    text-transform: uppercase;
+    font-family: $font;
+    font-weight: bold;
+    @include adjust-font-size-to(14px);
+  }
+
+  @include addHighlightColors('.drop-cap span', 'background-color');
+  .drop-cap a {
+    &:hover {
+      text-decoration: none;
+    }
+    span {
+      text-align: center;
+      color: white;
+      @include single-text-shadow;
+      @include adjust-font-size-to(80px);
+      font-family: $font-headers;
+      font-style: italic;
+    }
+  }
+
+  .field-type-text-with-summary,
+  .field-name-field-description,
+  .field-name-field-campaign-intro,
+  .field-name-field-campaign-title {
     @extend .hidden;
   }
 }

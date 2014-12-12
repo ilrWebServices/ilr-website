@@ -40,7 +40,7 @@ function promo_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => 'content',
-          'image_style' => 'focussed_grid_image',
+          'image_style' => 'focussed_thubnail',
         ),
         'type' => 'image',
         'weight' => 0,
