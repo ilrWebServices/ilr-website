@@ -1,9 +1,11 @@
 %bean-base {
-  h2, h2 a {
-    font-family: $font-headers;
-    color: $h2-text;
-    @include adjust-font-size-to(22px);
-    @include adjust-leading-to(1);
+  article {
+    h2, h2 a {
+      font-family: $font-headers;
+      color: $h2-text;
+      @include adjust-font-size-to(22px);
+      @include adjust-leading-to(1);
+    }
   }
 
   // Specify which view mode to extend by default
