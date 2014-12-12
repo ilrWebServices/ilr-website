@@ -93,7 +93,7 @@
     a {
       color: $gray-dark;
       #jPanelMenu-menu & {
-        color: darken($gray-light, 10%);
+        color: lighten($gray-light, 5%);
       }
       display: block;
       padding: 1em 1em 1em 15px;
