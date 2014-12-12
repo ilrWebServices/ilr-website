@@ -1,13 +1,6 @@
 <?php
 
 /**
- * Implements hook_bean_types_api_info().
- */
-function tagged_content_block_bean_types_api_info() {
-  return array('api' => 4);
-}
-
-/**
  * Implements hook_bean_types().
  */
 function tagged_content_block_bean_types() {
@@ -26,15 +19,20 @@ function tagged_content_block_bean_types() {
 }
 
 /**
- * Implements hook_permission()
+ * Implements hook_bean_types_api_info().
  */
-function tagged_content_block_permission() {
-  return array(
-    'administer tagged content block configuration' => array(
-      'title' => t('Administer Tagged Content Blocks'),
-      'description' => t('Configure content types available to tagged content blocks.'),
-    ),
-  );
+function tagged_content_block_bean_types_api_info() {
+  return array('api' => 4);
+}
+
+/**
+ * Implements hook_form_alter
+ * Adds a validator for tagged content blocks
+ */
+function tagged_content_block_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == "basic_page_node_form") {
+    $form['#validate'][] = '_tagged_content_block_reference_validator';
+  }
 }
 
 /**
@@ -53,6 +51,18 @@ function tagged_content_block_menu() {
   );
 
   return $items;
+}
+
+/**
+ * Implements hook_permission()
+ */
+function tagged_content_block_permission() {
+  return array(
+    'administer tagged content block configuration' => array(
+      'title' => t('Administer Tagged Content Blocks'),
+      'description' => t('Configure content types available to tagged content blocks.'),
+    ),
+  );
 }
 
 /**
@@ -85,38 +95,6 @@ function tagged_content_block_query_random_alter($query) {
 }
 
 /**
- * Implements hook_form_alter
- * Adds a validator for tagged content blocks
- */
-function tagged_content_block_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == "basic_page_node_form") {
-    $form['#validate'][] = '_tagged_content_block_reference_validator';
-  }
-}
-
-/**
- * Validator for referencing blocks
- *   - Confirms that highlighted blocks have the featured flag
- */
-function _tagged_content_block_reference_validator($form, &$form_state) {
-  if(count($form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'])
-    && $bid = $form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'][LANGUAGE_NONE][0]['bid']) {
-    $block = _tagged_content_block_load_block($bid);
-    $bean = bean_load_delta($block['delta']);
-    if (empty($bean->data['featured'])) {
-      form_set_error('state', t("Only featured blocks can be added to the highlighted region."));
-    }
-  }
-}
-
-/**
- * Loads a block by block id
- */
-function _tagged_content_block_load_block($bid) {
-  return db_query("SELECT * FROM block WHERE bid = :bid", array(':bid' => $bid))->fetchAssoc();
-}
-
-/**
  * Enables default content types for tagged content blocks
  * @return array The default content types, needed by
  * _tagged_content_block_default_bundles() of admin.inc
@@ -138,4 +116,26 @@ function _tagged_content_block_enable_default_bundles() {
   );
 
   return $enabled_content_types;
+}
+
+/**
+ * Loads a block by block id
+ */
+function _tagged_content_block_load_block($bid) {
+  return db_query("SELECT * FROM block WHERE bid = :bid", array(':bid' => $bid))->fetchAssoc();
+}
+
+/**
+ * Validator for referencing blocks
+ *   - Confirms that highlighted blocks have the featured flag
+ */
+function _tagged_content_block_reference_validator($form, &$form_state) {
+  if(count($form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'])
+    && $bid = $form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'][LANGUAGE_NONE][0]['bid']) {
+    $block = _tagged_content_block_load_block($bid);
+    $bean = bean_load_delta($block['delta']);
+    if (empty($bean->data['featured'])) {
+      form_set_error('state', t("Only featured blocks can be added to the highlighted region."));
+    }
+  }
 }
