@@ -18297,6 +18297,50 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-job_postings_for_ilr_alumni-field_alumni_job_postings_stmt'
+  $field_instances['entityform-job_postings_for_ilr_alumni-field_alumni_job_postings_stmt'] = array(
+    'bundle' => 'job_postings_for_ilr_alumni',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'markup',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'markup_default',
+        'weight' => 38,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_alumni_job_postings_stmt',
+    'label' => 'Alumni Job Postings stmt',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 36,
+    ),
+  );
+
   // Exported field_instance: 'entityform-job_postings_for_ilr_alumni-field_blind_ad'
   $field_instances['entityform-job_postings_for_ilr_alumni-field_blind_ad'] = array(
     'bundle' => 'job_postings_for_ilr_alumni',
@@ -19044,7 +19088,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 35,
+      'weight' => 5,
     ),
   );
 
@@ -32635,6 +32679,7 @@ function forms_field_default_field_instances() {
   t('Address type');
   t('Advisor or dept sentence');
   t('Agreement');
+  t('Alumni Job Postings stmt');
   t('Amount 1');
   t('Amount 2');
   t('Amount 3');

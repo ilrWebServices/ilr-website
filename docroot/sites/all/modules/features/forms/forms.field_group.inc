@@ -152,6 +152,34 @@ function forms_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_acknowledgment|entityform|job_postings_for_ilr_alumni|form';
+  $field_group->group_name = 'group_acknowledgment';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'job_postings_for_ilr_alumni';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Acknowledgment',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_alumni_job_postings_stmt',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Acknowledgment',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-acknowledgment field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_acknowledgment|entityform|job_postings_for_ilr_alumni|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_applicant_information|entityform|grad_travel_grant_application|default';
   $field_group->group_name = 'group_applicant_information';
   $field_group->entity_type = 'entityform';
@@ -2694,7 +2722,7 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Posting Details',
-    'weight' => '28',
+    'weight' => '3',
     'children' => array(
       0 => 'field_section',
       1 => 'field_employer',
