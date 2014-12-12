@@ -352,3 +352,11 @@ function ilr_update_7022() {
     field_delete_field($name);
   }
 }
+
+/**
+ * Deletes unused labor roundtable fields
+ */
+function ilr_update_7023() {
+  field_delete_field('field_major');
+  field_delete_field('field_referral_textarea');
+}
