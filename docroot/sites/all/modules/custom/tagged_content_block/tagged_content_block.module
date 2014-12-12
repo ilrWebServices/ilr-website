@@ -86,7 +86,7 @@ function tagged_content_block_preprocess_node(&$variables) {
       _tagged_content_block_add_thumbnail($variables);
     }
     $wrapper = entity_metadata_wrapper('node', $variables['node']);
-    if (!empty($wrapper->field_website_url)) {
+    if (!empty($wrapper->field_website_url) && $wrapper->field_website_url->value()) {
       $wrapped_url = $wrapper->field_website_url->value();
       $variables['node_url'] = $wrapped_url['url'];
     }
