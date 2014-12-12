@@ -709,6 +709,28 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_alumni_job_postings_stmt'
+  $field_bases['field_alumni_job_postings_stmt'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_alumni_job_postings_stmt',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">By submitting this form, you are acknowledging the following statement: We are committed to the principles of equal opportunity employment. To the best of our knowledge, positions listed are open to anyone, regardless of race, color, religion, sex, national origin or age, and are offered on an equal-opportunity basis to people who are disabled and are Vietnam-era veterans. We cannot be certain, however, that every position is offered by an EEO employer. We suggest that all prospective candidates thoroughly research a company prior to accepting an offer of employment.</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
   // Exported field_base: 'field_amount_1'
   $field_bases['field_amount_1'] = array(
     'active' => 1,
@@ -5363,35 +5385,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'markup',
   );
 
-  // Exported field_base: 'field_major'
-  $field_bases['field_major'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_major',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_media_cl_tech_video_rec'
   $field_bases['field_media_cl_tech_video_rec'] = array(
     'active' => 1,
@@ -7230,33 +7223,6 @@ function ilr_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_references',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_referral_textarea'
-  $field_bases['field_referral_textarea'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_referral_textarea',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
