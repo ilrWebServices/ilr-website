@@ -84,13 +84,18 @@
   }
 
   @include addHighlightColors('.drop-cap span', 'background-color');
-  .drop-cap span {
-    text-align: center;
-    color: white;
-    @include single-text-shadow;
-    @include adjust-font-size-to(80px);
-    font-family: $font-headers;
-    font-style: italic;
+  .drop-cap a {
+    &:hover {
+      text-decoration: none;
+    }
+    span {
+      text-align: center;
+      color: white;
+      @include single-text-shadow;
+      @include adjust-font-size-to(80px);
+      font-family: $font-headers;
+      font-style: italic;
+    }
   }
 
   .field-type-text-with-summary,
