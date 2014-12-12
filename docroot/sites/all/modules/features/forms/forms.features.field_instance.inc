@@ -21053,69 +21053,6 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_major'
-  $field_instances['entityform-labor_roundtable_student_registr-field_major'] = array(
-    'bundle' => 'labor_roundtable_student_registr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-      'token' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_major',
-    'label' => 'Major',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 11,
-    ),
-  );
-
   // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_phone'
   $field_instances['entityform-labor_roundtable_student_registr-field_phone'] = array(
     'bundle' => 'labor_roundtable_student_registr',
@@ -21252,69 +21189,6 @@ function forms_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 15,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_referral_textarea'
-  $field_instances['entityform-labor_roundtable_student_registr-field_referral_textarea'] = array(
-    'bundle' => 'labor_roundtable_student_registr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-      'token' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_referral_textarea',
-    'label' => 'How did you hear about the Labor Roundtable?',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 12,
     ),
   );
 
@@ -32866,7 +32740,6 @@ function forms_field_default_field_instances() {
   t('High school graduation year');
   t('Home phone number');
   t('Home state or country');
-  t('How did you hear about the Labor Roundtable?');
   t('How did you hear about us? (check all that apply)');
   t('How did you learn about the ILR School? (check all that apply)');
   t('How long has the nominee been in his/her current leadership role?');
@@ -32912,7 +32785,6 @@ function forms_field_default_field_instances() {
   t('Local or cell phone');
   t('Location');
   t('Mailing address markup');
-  t('Major');
   t('Media');
   t('Meeting location preference');
   t('Middle / maiden name');
