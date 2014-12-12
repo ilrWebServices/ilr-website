@@ -28,7 +28,7 @@ function theme_youtube_videos_fancybox($variables) {
   return theme('youtube_thumbnail',
     array(
       'video_id' => $variables['video_id'],
-      'image_style' => 'thumbnail',
+      'image_style' => 'focussed_thumbnail',
       'image_link' => $image_link,
     )
   );

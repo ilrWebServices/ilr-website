@@ -116,7 +116,6 @@ function _tagged_content_block_add_category_heading(&$variables) {
 
 function _tagged_content_block_add_thumbnail(&$variables) {
   $drop_cap = $variables['title'][0];
-  $variables['title'][0] = '';
   $content_type = _tagged_content_block_get_hyphened_type($variables['type']);
   $variables['content']['field_image']['#markup'] = "<div class='drop-cap $content_type'><span>$drop_cap</span></div>";
 }
