@@ -114,21 +114,19 @@ class TaggedContentBean extends BeanPlugin {
     $result = $this->formulateQuery($query, $bean->records_shown);
 
     if (empty($result)) {
-      $content['nodes'] = array();
+      $content = array();
     }
     else {
       foreach ($result['node'] as $node) {
         $node = node_load($node->nid, $node->vid);
         $content['nodes'][$node->nid] = node_view($node, 'teaser');
       }
+      $content['nodes']['#weight'] = '-1';
+
+      // Add the item count to the bean for theming data-attributes
+      // See ilr_theme_preprocess_block
+      $bean->item_count = count($content['nodes']);
     }
-
-    // Add the item count to the bean for theming data-attributes
-    // See ilr_theme_preprocess_block
-    $bean->item_count = count($content['nodes']);
-
-    $content['nodes']['#weight'] = '-1';
-
 
     return $content;
   }
@@ -251,5 +249,6 @@ class TaggedContentBean extends BeanPlugin {
       $tids = array_keys($result['taxonomy_term']);
       return $tids;
     }
+    return array();
   }
 }
