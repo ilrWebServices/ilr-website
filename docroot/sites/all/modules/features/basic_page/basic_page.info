@@ -64,5 +64,5 @@ features[views_view][] = editor_notes
 features[wysiwyg][] = full_html
 features[wysiwyg_template][] = faq
 features_exclude[variable][menu_options_basic_page] = menu_options_basic_page
-mtime = 1418073222
+mtime = 1418567974
 project path = sites/all/modules/features
