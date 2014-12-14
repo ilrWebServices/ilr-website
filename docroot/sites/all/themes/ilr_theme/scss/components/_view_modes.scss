@@ -7,12 +7,9 @@
     @include adjust-font-size-to(16px);
     margin-bottom: 0;
     font-weight: 400;
-    &.category {
-      @extend .hidden;
-    }
   }
   // Hide everything but the title
-  div, ul.links {
+  div, ul.links, h3 {
     @extend .hidden;
   }
 
@@ -58,10 +55,12 @@
   @include trailer(2);
 
   h2 {
+    @include padding-leader(1);
     margin-left: 115px;
-    &:first-child {
-      @include padding-leader(1);
-    }
+  }
+
+  h3 {
+    margin-left: 115px;
   }
 
   .field-type-image,
@@ -73,14 +72,9 @@
     left: 0;
   }
 
-  @include addHighlightColors('.category', 'color');
-  h2.category {
+  h3.category {
     position: absolute;
     top: 0;
-    text-transform: uppercase;
-    font-family: $font;
-    font-weight: bold;
-    @include adjust-font-size-to(14px);
   }
 
   @include addHighlightColors('.drop-cap span', 'background-color');
@@ -126,4 +120,47 @@
 // Card Styles
 // ==================================================
 %card {
+  article {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-bottom-width: 6px;
+    @include trailer(1);
+    @include padding-trailer(1);
+    @include padding-leader(1);
+
+    @extend %image-first;
+
+    h3 {
+      text-align: center;
+      @include trailer(1);
+    }
+
+    h2 {
+      @include leader(1);
+      padding: 0 1em;
+      text-align: center;
+    }
+
+    .field-type-image,
+    .field-type-youtube {
+      position: relative;
+      overflow: hidden;
+      .field-item {
+        padding-top: 75%; // Creates a 3x4 container for image
+        // See http://alistapart.com/article/creating-intrinsic-ratios-for-video
+        img {
+          position: absolute;
+          top: -12.5%; // Square images need a negative margin for vertical positioning
+          left: 0;
+        }
+      }
+    }
+
+    .field-type-text-with-summary,
+    .field-name-field-description,
+    .field-name-field-campaign-intro,
+    .field-name-field-campaign-title {
+      @extend .hidden;
+    }
+  }
 }

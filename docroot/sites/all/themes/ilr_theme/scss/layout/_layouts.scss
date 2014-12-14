@@ -48,3 +48,13 @@
     }
   }
 }
+
+%image-first {
+  flex-direction: column;
+  display: flex;
+
+  h3                  { order: 1; }
+  .field-type-image,
+  .field-type-youtube { order: 2; }
+  h2                  { order: 3; }
+}

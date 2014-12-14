@@ -111,7 +111,7 @@ function _tagged_content_block_add_category_heading(&$variables) {
   $category = _tagged_content_block_get_category_by_type($type);
   $content_type = _tagged_content_block_get_hyphened_type($type);
   $primary_tag = _tagged_content_block_get_primary_term_for_node($variables['node']);
-  $variables['content']['category']['#markup'] = "<h2 class='category $content_type'>$category / $primary_tag</h2>";
+  $variables['content']['category']['#markup'] = "<h3 class='category $content_type'>$category / $primary_tag</h3>";
 }
 
 function _tagged_content_block_add_thumbnail(&$variables) {

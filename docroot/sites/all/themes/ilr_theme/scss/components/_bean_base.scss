@@ -6,6 +6,13 @@
       @include adjust-font-size-to(22px);
       @include adjust-leading-to(1);
     }
+    @include addHighlightColors('.category', 'color');
+    h3.category {
+      text-transform: uppercase;
+      font-family: $font;
+      font-weight: bold;
+      @include adjust-font-size-to(14px);
+    }
   }
 
   #sidebar-second & {
@@ -15,6 +22,10 @@
     article[data-eq-state="small"] {
       @extend %slug;
     }
+  }
 
+  #content &,
+  #content-bottom & {
+    @extend %card;
   }
 }

@@ -29,7 +29,7 @@
     clear: both;
     .tagged-content {
       article {
-        @extend %four-column;
+        @extend %three-column;
       }
     }
 
