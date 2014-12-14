@@ -140,6 +140,9 @@
       padding: 0 1em;
       text-align: center;
     }
+    &[data-eq-state="small"] h2 {
+      @include adjust-font-size-to(16px);
+    }
 
     .field-type-image,
     .field-type-youtube {
