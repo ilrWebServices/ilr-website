@@ -3,6 +3,7 @@
     h2, h2 a {
       font-family: $font-headers;
       color: $h2-text;
+      text-decoration: none !important; // #content a has underlines, at least for now
       @include adjust-font-size-to(22px);
       @include adjust-leading-to(1);
     }
