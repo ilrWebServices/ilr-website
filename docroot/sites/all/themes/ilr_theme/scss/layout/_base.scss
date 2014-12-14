@@ -29,9 +29,11 @@
     .sticky & {
       margin-top: $header-height-small * 1.5;
     }
-    @extend %two-cols-with-sidebar;
   }
 
+  &[data-eq-state="900"] {
+    @extend %two-cols-with-sidebar;
+  }
   &[data-eq-state="widescreen"] {
     @extend %triptych;
   }
