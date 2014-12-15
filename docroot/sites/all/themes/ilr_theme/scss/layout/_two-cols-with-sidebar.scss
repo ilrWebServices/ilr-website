@@ -5,7 +5,7 @@
   // @include background-grid();
   #content {
     @include grid-span(1, 2);
-    article.node-teaser {
+    .block-bean article {
       @extend %two-column;
     }
     .section { // For readability, don't let sections get too wide
@@ -19,7 +19,7 @@
 
   #sidebar-second {
     @include grid-span(1, 2);
-    article.node-teaser {
+    .block-bean article {
       @extend %two-column;
     }
   }
@@ -27,22 +27,8 @@
   #content-bottom {
     @include grid-span(2);
     clear: both;
-    .tagged-content {
-      article {
-        @extend %three-column;
-      }
+    .block-bean article {
+      @extend %three-column;
     }
-
-    // &[data-eq-state="mobile-h"],
-    // &[data-eq-state="tablet-v"] {
-    //   article.node-teaser {
-    //     @extend %two-column-grid;
-    //   }
-    // }
-    // &[data-eq-state="tablet-h"] {
-    //   article.node-teaser {
-    //     @extend %four-column;
-    //   }
-    // }
   }
 }

@@ -144,8 +144,11 @@
     @include adjust-font-size-to(14px);
   }
 
+  @include addHighlightColors('.thumbnail.custom a', 'background-color');
   .thumbnail.custom {
     @extend %custom-thumbnail;
+    @include circularImage(150px);
+    margin: 0 auto;
   }
 
   &.node-basic-page,
@@ -156,18 +159,12 @@
     .field-type-youtube {
       @extend %square-to-3x4;
     }
-
-    @include addHighlightColors('.thumbnail.custom a', 'background-color');
-    .thumbnail.custom {
-      @include circularImage(150px);
-      margin: 0 auto;
-    }
   }
 
   &.node-student-portrait,
-  &.node-spotlight {
-    .field-type-image,
-    .thumbnail.custom {
+  &.node-spotlight,
+  &.localist-event {
+    .field-type-image {
       margin: 0 auto;
       @include circularImage(150px);
     }
