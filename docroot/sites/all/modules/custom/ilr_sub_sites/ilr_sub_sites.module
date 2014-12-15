@@ -55,7 +55,7 @@ function _ilr_sub_sites_is_sub_site_homepage($node) {
     ->fields('ml', array('plid'))
     ->execute()
     ->fetchField();
-  return $plid === 0;
+  return $plid === '0' || $plid === 0;
 }
 
 /**
