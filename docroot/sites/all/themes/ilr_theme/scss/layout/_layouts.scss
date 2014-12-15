@@ -48,3 +48,58 @@
     }
   }
 }
+
+%square-to-3x4 {
+  position: relative;
+  overflow: hidden;
+  .field-item {
+    padding-top: 75%; // Creates a 3x4 container for image
+    // See http://alistapart.com/article/creating-intrinsic-ratios-for-video
+    img {
+      position: absolute;
+      top: -12.5%; // Square images need a negative margin for vertical positioning
+      left: 0;
+    }
+  }
+}
+
+%custom-thumbnail {
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+    span {
+      display: block;
+      text-align: center;
+      color: white;
+      @include single-text-shadow;
+      @include adjust-font-size-to(80px);
+      font-family: $font-headers;
+      font-style: italic;
+    }
+  }
+  &.event a{
+    span {
+      @include adjust-font-size-to(35px, 1);
+      font-style: normal;
+      text-transform: uppercase;
+      font-family: $font;
+      padding-top: 50px;
+      #sidebar-second & {
+        padding-top: 30px;
+      }
+    }
+  }
+}
+
+%image-first {
+  flex-direction: column;
+  display: flex;
+
+  h3                     { order: 1; }
+  .field-type-image,
+  .field-type-youtube,
+  .thumbnail.custom      { order: 2; }
+  h2                     { order: 3; }
+  .student-name          { order: 4; }
+}

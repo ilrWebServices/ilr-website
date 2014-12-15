@@ -3,8 +3,16 @@
     h2, h2 a {
       font-family: $font-headers;
       color: $h2-text;
+      text-decoration: none !important; // #content a has underlines, at least for now
       @include adjust-font-size-to(22px);
       @include adjust-leading-to(1);
+    }
+    @include addHighlightColors('.category', 'color');
+    h3.category {
+      text-transform: uppercase;
+      font-family: $font;
+      font-weight: bold;
+      @include adjust-font-size-to(14px);
     }
   }
 
@@ -15,6 +23,12 @@
     article[data-eq-state="small"] {
       @extend %slug;
     }
+  }
 
+  #content &,
+  #content-bottom & {
+    article {
+      @extend %card;
+    }
   }
 }

@@ -35,7 +35,7 @@ function ilr_settings_strongarm() {
     'respondxl' => 1339.84375,
     'respondxl2' => 2344.7265625,
     'respondxl3' => 4103.271484375,
-    'respondxl4' => 7180.72509765625,
+    'respondxl4' => 7180.7250976562,
   );
   $export['borealis_responsive_builds'] = $strongarm;
 
@@ -51,7 +51,7 @@ function ilr_settings_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'borealis_ri_children';
   $strongarm->value = array(
-    0 => 'focussed_grid_image',
+    0 => 'focussed_thumbnail',
   );
   $export['borealis_ri_children'] = $strongarm;
 
@@ -81,14 +81,11 @@ function ilr_settings_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'borealis_ri_parents';
   $strongarm->value = array(
-    'focussed_grid_image' => array(
-      'isid' => '2',
-      'name' => 'focussed_grid_image',
-      'label' => 'Focussed Grid Image',
-      'module' => NULL,
-      'storage' => 1,
+    'focussed_thumbnail' => array(
+      'name' => 'focussed_thumbnail',
+      'label' => 'Focussed thumbnail',
       'effects' => array(
-        2 => array(
+        1 => array(
           'label' => 'Focal Point Scale And Crop',
           'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
           'effect callback' => 'focal_point_scale_and_crop_effect',
@@ -98,14 +95,14 @@ function ilr_settings_strongarm() {
           'module' => 'focal_point',
           'name' => 'focal_point_scale_and_crop',
           'data' => array(
-            'width' => '270',
-            'height' => '120',
+            'width' => 100,
+            'height' => 100,
           ),
-          'ieid' => '2',
-          'isid' => '2',
-          'weight' => '1',
+          'weight' => 1,
         ),
       ),
+      'module' => 'basic_page',
+      'storage' => 4,
     ),
   );
   $export['borealis_ri_parents'] = $strongarm;

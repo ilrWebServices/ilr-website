@@ -9,7 +9,8 @@
 
 #main {
   clear: both;
-  @include add-grid(1 10 1);
+  @include add-grid(12);
+  padding: 0 1em;
   // @include sgs-change('debug', true);
   // @include background-grid();
   @include transition-duration(.3s);
@@ -29,9 +30,11 @@
     .sticky & {
       margin-top: $header-height-small * 1.5;
     }
-    @extend %two-cols-with-sidebar;
   }
 
+  &[data-eq-state="900"] {
+    @extend %two-cols-with-sidebar;
+  }
   &[data-eq-state="widescreen"] {
     @extend %triptych;
   }
@@ -42,12 +45,25 @@
     #sidebar-second article {
       @extend %two-column;
     }
+    #content .tagged-content article,
+    #content-bottom article {
+      @extend %two-column;
+    }
   }
 
   @extend .clearfix;
 
+  #sidebar-first {
+    display: none;
+  }
+
+  [data-eq-state="regular-nav"] & {
+    #sidebar-first {
+      display: block;
+    }
+  }
+
   #content, #sidebar-second {
-    @include grid-span(1,2);
     @extend .clearfix;
     clear: both;
 
@@ -78,6 +94,7 @@
 
   #content-bottom {
     clear: both;
+    padding: 0 1em;
     .tagged-content {
       article {
         @extend %one-column;

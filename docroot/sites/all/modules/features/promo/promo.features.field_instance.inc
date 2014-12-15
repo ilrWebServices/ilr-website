@@ -20,6 +20,7 @@ function promo_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
+          'field_formatter_label' => '',
           'file_view_mode' => 'default',
         ),
         'type' => 'file_rendered',
@@ -29,6 +30,7 @@ function promo_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_label' => '',
           'image_link' => 'content',
           'image_style' => 'focussed_main_image',
         ),
@@ -39,8 +41,9 @@ function promo_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_label' => '',
           'image_link' => 'content',
-          'image_style' => 'focussed_thubnail',
+          'image_style' => 'focussed_thumbnail',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -116,7 +119,9 @@ function promo_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'list',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'list_key',
         'weight' => 2,
       ),
@@ -159,7 +164,9 @@ function promo_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'entityreference_entity_id',
         'weight' => 4,
       ),
@@ -206,7 +213,9 @@ function promo_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 5,
       ),
@@ -252,7 +261,9 @@ function promo_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 1,
       ),
@@ -265,7 +276,9 @@ function promo_field_default_field_instances() {
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 1,
       ),
@@ -299,7 +312,9 @@ function promo_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'link',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'link_plain',
         'weight' => 3,
       ),

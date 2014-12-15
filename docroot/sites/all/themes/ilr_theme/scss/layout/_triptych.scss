@@ -1,20 +1,29 @@
 %triptych {
   @include add-grid(3 6 3);
+  @include add-gutter(1/2);
   // @include sgs-change('debug', true);
   // @include background-grid();
   #content {
     @extend .clearfix;
     @include grid-span(1, 2);
-    article.node-teaser {
+    .tagged-content article {
       @extend %two-column;
     }
   }
 
-  #sidebar-second .section {
-    @include leader(3);
+  #sidebar-first {
+    @include grid-span(1);
+  }
+
+  #sidebar-second {
     @include grid-span(1, 3);
-    article.node-teaser {
-      @extend %one-column;
+    @include leader(3);
+    padding-left: 2em;
+
+    .section {
+      .tagged-content article {
+        @extend %one-column;
+      }
     }
   }
 

@@ -131,11 +131,11 @@ function ilr_settings_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__default__media_youtube_video';
-  $file_display->weight = -50;
+  $file_display->weight = -100;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'width' => '640',
-    'height' => '',
+    'width' => '100%',
+    'height' => '100%',
     'theme' => 'dark',
     'color' => 'red',
     'autohide' => '2',
@@ -144,7 +144,7 @@ function ilr_settings_file_default_displays() {
     'loop' => 0,
     'showinfo' => 1,
     'modestbranding' => 0,
-    'rel' => 1,
+    'rel' => 0,
     'nocookie' => 0,
     'protocol_specify' => 0,
     'protocol' => 'https:',

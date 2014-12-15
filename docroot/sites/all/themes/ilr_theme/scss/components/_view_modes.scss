@@ -7,12 +7,9 @@
     @include adjust-font-size-to(16px);
     margin-bottom: 0;
     font-weight: 400;
-    &.category {
-      @extend .hidden;
-    }
   }
   // Hide everything but the title
-  div, ul.links {
+  div, ul.links, h3, h4 {
     @extend .hidden;
   }
 
@@ -58,50 +55,39 @@
   @include trailer(2);
 
   h2 {
+    @include padding-leader(1);
     margin-left: 115px;
-    &:first-child {
-      @include padding-leader(1);
-    }
+  }
+
+  h3 {
+    margin-left: 115px;
   }
 
   .field-type-image,
   .field-name-field-youtube-video,
-  .drop-cap {
+  .thumbnail.custom {
     @include circularImage;
     position: absolute;
     top: 0;
     left: 0;
   }
 
-  @include addHighlightColors('.category', 'color');
-  h2.category {
+  h3.category {
     position: absolute;
     top: 0;
-    text-transform: uppercase;
-    font-family: $font;
-    font-weight: bold;
-    @include adjust-font-size-to(14px);
   }
 
-  @include addHighlightColors('.drop-cap span', 'background-color');
-  .drop-cap a {
-    &:hover {
-      text-decoration: none;
-    }
-    span {
-      text-align: center;
-      color: white;
-      @include single-text-shadow;
-      @include adjust-font-size-to(80px);
-      font-family: $font-headers;
-      font-style: italic;
-    }
+  @include addHighlightColors('.thumbnail.custom a', 'background-color');
+  .thumbnail.custom {
+    @extend %custom-thumbnail;
   }
 
   .field-type-text-with-summary,
   .field-name-field-description,
   .field-name-field-campaign-intro,
-  .field-name-field-campaign-title {
+  .field-name-field-campaign-title,
+  .field-name-field-teaser,
+  .student-name {
     @extend .hidden;
   }
 }
@@ -126,4 +112,72 @@
 // Card Styles
 // ==================================================
 %card {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-bottom-width: 6px;
+  @include trailer(1);
+  @include padding-trailer(1);
+  @include padding-leader(1);
+
+  @extend %image-first;
+
+  h2, h3, h4 {
+    text-align: center;
+  }
+
+  h2 {
+    @include leader(1);
+    padding: 0 1em;
+  }
+  &[data-eq-state="small"] h2 {
+    @include adjust-font-size-to(16px);
+  }
+
+  h3 {
+    @include trailer(1);
+  }
+
+  h4 {
+    text-transform: uppercase;
+    font-family: $font;
+    font-weight: bold;
+    @include adjust-font-size-to(14px);
+  }
+
+  .thumbnail.custom {
+    @extend %custom-thumbnail;
+  }
+
+  &.node-basic-page,
+  &.node-news-item,
+  &.node-promo,
+  &.node-youtube-video {
+    .field-type-image,
+    .field-type-youtube {
+      @extend %square-to-3x4;
+    }
+
+    @include addHighlightColors('.thumbnail.custom a', 'background-color');
+    .thumbnail.custom {
+      @include circularImage(150px);
+      margin: 0 auto;
+    }
+  }
+
+  &.node-student-portrait,
+  &.node-spotlight {
+    .field-type-image,
+    .thumbnail.custom {
+      margin: 0 auto;
+      @include circularImage(150px);
+    }
+  }
+
+  .field-type-text-with-summary,
+  .field-name-field-description,
+  .field-name-field-campaign-intro,
+  .field-name-field-campaign-title,
+  .field-name-field-teaser {
+    @extend .hidden;
+  }
 }
