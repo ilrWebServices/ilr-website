@@ -123,6 +123,7 @@ class EventBlockBean extends BeanPlugin {
     $event_date = $this->format_event_date($event['event_instances'][0]['event_instance']['start']);
     $event_type_info = $this->format_event_type_info($event['filters']);
     $event_localist_url = $this->format_localist_event_url($event['localist_url']);
+    $event_title = truncate_utf8(strip_tags($event['title']), 55, FALSE, TRUE);
 
     // Create the markup
     $markup = "<article class='localist-event' data-eq-pts='small: 100, medium: 300, large: 600, full: 900' role='article'>\n";
@@ -130,7 +131,7 @@ class EventBlockBean extends BeanPlugin {
     if (module_exists('tagged_content_block')) {
       $markup .= _tagged_content_block_generate_thumbnail_markup($event_date, $event_localist_url, 'event');
     }
-    $markup .= "<h2 class='event-title'><a href='{$event_localist_url}'>{$event['title']}</a></h2>";
+    $markup .= "<h2 class='event-title'><a href='{$event_localist_url}'>{$event_title}</a></h2>";
     $markup .= "</article><!-- end article -->\n\n";
 
     return $markup;
