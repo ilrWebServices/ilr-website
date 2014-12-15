@@ -39,6 +39,10 @@
 
 #jPanelMenu-menu {
   margin-top: $header-height-small;
+
+  .admin-menu & {
+    margin-top: $header-height-small + 29px;
+  }
 }
 
 .sidebar, #jPanelMenu-menu {
