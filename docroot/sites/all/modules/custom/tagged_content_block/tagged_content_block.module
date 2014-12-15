@@ -71,24 +71,21 @@ function tagged_content_block_permission() {
 
 /**
  * Implements hook_preprocess_hook()
- *
- * Sets the node_url to the value of field_website_url, if there is one
- *
- * Also removes the read more link
- * @todo Refactor promos and other relevant tagged content functionality
+ * Adds category headings on appropriate teasers
+ * Updates links from promos
+ * Adds default thumbnails when appropriate
+ * Removes the read more link
  */
 function tagged_content_block_preprocess_node(&$variables) {
   $variables['title_link'] = '';
   $tagged_content_types = variable_get('tagged_content_block_enabled_bundles');
   if ($variables['view_mode'] == 'teaser' && in_array($variables['type'], $tagged_content_types)) {
     _tagged_content_block_add_category_heading($variables);
+    if ($variables['type'] == 'promo') {
+      _tagged_content_block_update_promo_links($variables);
+    }
     if (isset($variables['field_image']) && !count($variables['field_image'])) {
       _tagged_content_block_add_thumbnail($variables);
-    }
-    $wrapper = entity_metadata_wrapper('node', $variables['node']);
-    if (!empty($wrapper->field_website_url) && $wrapper->field_website_url->value()) {
-      $wrapped_url = $wrapper->field_website_url->value();
-      $variables['node_url'] = $wrapped_url['url'];
     }
     // Remove the read more links
     unset($variables['content']['links']['node']['#links']['node-readmore']);
@@ -117,7 +114,7 @@ function _tagged_content_block_add_category_heading(&$variables) {
 function _tagged_content_block_add_thumbnail(&$variables) {
   $drop_cap = $variables['title'][0];
   $content_type = _tagged_content_block_get_hyphened_type($variables['type']);
-  $url = url('node/' . $variables['nid']);
+  $url = $variables['node_url'];
   $variables['content']['field_image']['#markup'] = "<div class='drop-cap $content_type'><a href='$url'><span>$drop_cap</span></a></div>";
 }
 
@@ -177,6 +174,20 @@ function _tagged_content_block_get_primary_term_for_node($node) {
   return '';
 }
 
+function _tagged_content_block_get_promo_link_from_node($node) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+  // Internal links
+  if (!empty($wrapper->field_referenced_entity) && $wrapper->field_referenced_entity->value()) {
+    $nid = $wrapper->field_referenced_entity->value()->nid;
+    $url = drupal_get_path_alias("node/$nid");
+  } // External links
+  else {
+    $wrapped_url = $wrapper->field_website_url->value();
+    $url = $wrapped_url['url'];
+  }
+  return $url;
+}
+
 /**
  * Loads a block by block id
  */
@@ -196,5 +207,15 @@ function _tagged_content_block_reference_validator($form, &$form_state) {
     if (empty($bean->data['featured'])) {
       form_set_error('state', t("Only featured blocks can be added to the highlighted region."));
     }
+  }
+}
+
+
+function _tagged_content_block_update_promo_links(&$variables) {
+  $url = _tagged_content_block_get_promo_link_from_node($variables['node']);
+  $variables['node_url'] = $url;
+
+  if (count($variables['content']['field_image'])) {
+    $variables['content']['field_image'][0]['#path']['path'] = $url;
   }
 }
