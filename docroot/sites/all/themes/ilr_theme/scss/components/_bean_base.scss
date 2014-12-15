@@ -27,6 +27,8 @@
 
   #content &,
   #content-bottom & {
-    @extend %card;
+    article {
+      @extend %card;
+    }
   }
 }

@@ -49,12 +49,26 @@
   }
 }
 
+%square-to-3x4 {
+  position: relative;
+  overflow: hidden;
+  .field-item {
+    padding-top: 75%; // Creates a 3x4 container for image
+    // See http://alistapart.com/article/creating-intrinsic-ratios-for-video
+    img {
+      position: absolute;
+      top: -12.5%; // Square images need a negative margin for vertical positioning
+      left: 0;
+    }
+  }
+}
 %image-first {
   flex-direction: column;
   display: flex;
 
-  h3                  { order: 1; }
+  h3                     { order: 1; }
   .field-type-image,
-  .field-type-youtube { order: 2; }
-  h2                  { order: 3; }
+  .field-type-youtube    { order: 2; }
+  h2                     { order: 3; }
+  .student-name          { order: 4; }
 }

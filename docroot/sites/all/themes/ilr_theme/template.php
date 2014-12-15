@@ -100,8 +100,20 @@ function ilr_theme_preprocess_block(&$variables) {
   }
 }
 
+/**
+ * Modifies the output of portraits and spotlights
+ * Adds data-eq-pts
+ */
 function ilr_theme_preprocess_node(&$variables) {
   if ($variables['view_mode'] == 'teaser') {
+    if (in_array($variables['type'], array('student_portrait','spotlight'))) {
+      $title = $variables['title'];
+      $variables['title'] = $variables['body'][0]['summary'];
+      $grad_year = _ilr_theme_get_class_year_from_date($variables['node'], 'field_expected_graduation_date');
+      $variables['content']['student_name'] = array(
+        '#markup' => '<h4 class="student-name">' . $title . $grad_year .'</h4>',
+      );
+    }
     $variables['attributes_array']['data-eq-pts'] = 'small: 100, medium: 300, large: 600, full: 900';
   }
 }
@@ -172,4 +184,13 @@ function _ilr_theme_add_line_breaks(&$variables) {
       }
     }
   }
+}
+
+function _ilr_theme_get_class_year_from_date($node, $field) {
+  $formatted_year = '';
+  if (isset($node->{$field})) {
+    $year = $node->{$field}[LANGUAGE_NONE][0]['value'];
+    $formatted_year = " '" . substr($year, 2, 2);
+  }
+  return $formatted_year;
 }
