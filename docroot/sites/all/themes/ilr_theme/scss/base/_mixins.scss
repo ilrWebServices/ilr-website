@@ -39,13 +39,13 @@
   height: $width;
   border-radius: $width / 4;
 
-  span  {
+  a {
     display: block;
     width: $width;
     height: $width;
   }
 
-  img, span {
+  img, a {
     border-radius:50%;
   }
 }

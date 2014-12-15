@@ -1,4 +1,5 @@
-.block-bean.tagged-content {
+.block-bean.tagged-content,
+.block-bean.event-block {
   > h2 {
     @include leader(1);
     @include trailer(1);

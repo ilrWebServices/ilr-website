@@ -103,6 +103,7 @@ function ilr_theme_preprocess_block(&$variables) {
 /**
  * Modifies the output of portraits and spotlights
  * Adds data-eq-pts
+ * @see generate_event_item_markup() for hard-coded data-eq-pts
  */
 function ilr_theme_preprocess_node(&$variables) {
   if ($variables['view_mode'] == 'teaser') {
@@ -114,6 +115,7 @@ function ilr_theme_preprocess_node(&$variables) {
         '#markup' => '<h4 class="student-name">' . $title . $grad_year .'</h4>',
       );
     }
+    // See note above about localist events
     $variables['attributes_array']['data-eq-pts'] = 'small: 100, medium: 300, large: 600, full: 900';
   }
 }

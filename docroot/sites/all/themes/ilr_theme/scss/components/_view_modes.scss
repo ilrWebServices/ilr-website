@@ -9,7 +9,7 @@
     font-weight: 400;
   }
   // Hide everything but the title
-  div, ul.links, h3 {
+  div, ul.links, h3, h4 {
     @extend .hidden;
   }
 
@@ -65,7 +65,7 @@
 
   .field-type-image,
   .field-name-field-youtube-video,
-  .drop-cap {
+  .thumbnail.custom {
     @include circularImage;
     position: absolute;
     top: 0;
@@ -77,26 +77,17 @@
     top: 0;
   }
 
-  @include addHighlightColors('.drop-cap span', 'background-color');
-  .drop-cap a {
-    &:hover {
-      text-decoration: none;
-    }
-    span {
-      text-align: center;
-      color: white;
-      @include single-text-shadow;
-      @include adjust-font-size-to(80px);
-      font-family: $font-headers;
-      font-style: italic;
-    }
+  @include addHighlightColors('.thumbnail.custom a', 'background-color');
+  .thumbnail.custom {
+    @extend %custom-thumbnail;
   }
 
   .field-type-text-with-summary,
   .field-name-field-description,
   .field-name-field-campaign-intro,
   .field-name-field-campaign-title,
-  .field-name-field-teaser {
+  .field-name-field-teaser,
+  .student-name {
     @extend .hidden;
   }
 }
@@ -153,6 +144,10 @@
     @include adjust-font-size-to(14px);
   }
 
+  .thumbnail.custom {
+    @extend %custom-thumbnail;
+  }
+
   &.node-basic-page,
   &.node-news-item,
   &.node-promo,
@@ -161,13 +156,20 @@
     .field-type-youtube {
       @extend %square-to-3x4;
     }
+
+    @include addHighlightColors('.thumbnail.custom a', 'background-color');
+    .thumbnail.custom {
+      @include circularImage(150px);
+      margin: 0 auto;
+    }
   }
 
   &.node-student-portrait,
   &.node-spotlight {
-    .field-type-image {
+    .field-type-image,
+    .thumbnail.custom {
       margin: 0 auto;
-      @include circularImage;
+      @include circularImage(150px);
     }
   }
 
