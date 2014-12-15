@@ -109,7 +109,7 @@ function ilr_theme_preprocess_node(&$variables) {
   if ($variables['view_mode'] == 'teaser') {
     if (in_array($variables['type'], array('student_portrait','spotlight'))) {
       $title = $variables['title'];
-      $variables['title'] = $variables['body'][0]['summary'];
+      $variables['title'] = truncate_utf8(strip_tags($variables['body'][0]['summary']), 55, FALSE, TRUE);
       $grad_year = _ilr_theme_get_class_year_from_date($variables['node'], 'field_expected_graduation_date');
       $variables['content']['student_name'] = array(
         '#markup' => '<h4 class="student-name">' . $title . $grad_year .'</h4>',
