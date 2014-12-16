@@ -10,7 +10,9 @@
 #main {
   clear: both;
   @include add-grid(12);
-  padding: 0 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  @include padding-leader(1);
   // @include sgs-change('debug', true);
   // @include background-grid();
   @include transition-duration(.3s);
