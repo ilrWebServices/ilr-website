@@ -197,6 +197,11 @@
 
       $(window).load(function() {
         $("body").removeClass("preloading");
+        var $contentBottom = $('#content-bottom .tagged-content');
+        $contentBottom.isotope({
+          itemSelector: 'article',
+          layoutMode: 'masonry',
+        });
       });
     }
   };
