@@ -1678,6 +1678,17 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'view any course_manual_listing bean'.
+  $permissions['view any course_manual_listing bean'] = array(
+    'name' => 'view any course_manual_listing bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'bean',
+  );
+
   // Exported permission: 'view any entityform'.
   $permissions['view any entityform'] = array(
     'name' => 'view any entityform',
