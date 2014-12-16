@@ -27,25 +27,15 @@
 
 %three-column {
   @include layout(6) {
+    @include add-gutter-style('split');
     @include float-span(2);
-    &:nth-of-type(3n) {
-      @include float-span(2, 'last');
-    }
-    &:nth-of-type(3n + 1) {
-      clear: left;
-    }
   }
 }
 
 %four-column {
   @include layout(8) {
+    @include add-gutter-style('split');
     @include float-span(2);
-    &:nth-of-type(4n) {
-      @include float-span(2, 'last');
-    }
-    &:nth-of-type(4n + 1) {
-      clear: left;
-    }
   }
 }
 

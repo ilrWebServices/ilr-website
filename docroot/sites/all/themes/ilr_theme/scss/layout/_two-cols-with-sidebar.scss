@@ -1,7 +1,10 @@
 %two-cols-with-sidebar {
-  @include add-grid(3 9);
-  @include add-gutter(1/3);
-  // @include sgs-change('debug', true);
+  @include add-gutter(2em);
+  @include sgs-change('output', 'calc');
+  @include add-grid($sidebar-nav-width 9);
+
+  //@include add-gutter(1/3);
+  //@include sgs-change('debug', true);
   // @include background-grid();
   #content {
     @include grid-span(1, 2);

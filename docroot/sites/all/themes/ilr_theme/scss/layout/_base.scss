@@ -10,8 +10,6 @@
 #main {
   clear: both;
   @include add-grid(12);
-  padding-left: 1em;
-  padding-right: 1em;
   @include padding-leader(1);
   // @include sgs-change('debug', true);
   // @include background-grid();
@@ -34,9 +32,6 @@
     }
   }
 
-  &[data-eq-state="900"] {
-    @extend %two-cols-with-sidebar;
-  }
   &[data-eq-state="widescreen"] {
     @extend %triptych;
   }
@@ -63,14 +58,14 @@
     #sidebar-first {
       display: block;
     }
+    @extend %two-cols-with-sidebar;
   }
 
   #content, #sidebar-second {
     @extend .clearfix;
-    clear: both;
 
     .section {
-      @include leader(1);
+      @include leader(.5);
     }
   }
 
@@ -83,21 +78,9 @@
     }
   }
 
-  .tagged-content {
-    article h2 {
-      // position: absolute;
-      // bottom: 20%;
-      // a {
-      //   color: $mustard;
-      //   @include single-text-shadow;
-      // }
-    }
-  }
-
   #content-bottom {
     clear: both;
-    padding: 0 1em;
-    .tagged-content {
+    .block-bean {
       article {
         @extend %one-column;
       }

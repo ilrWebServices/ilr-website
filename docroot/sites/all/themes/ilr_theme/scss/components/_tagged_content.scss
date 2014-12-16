@@ -7,6 +7,10 @@
     text-transform: uppercase;
     color: #4a4a4a;
     font-weight: bold;
+
+    #content-bottom & {
+      @extend .hidden;
+    }
   }
 
   @extend %bean-base;

@@ -105,11 +105,6 @@
       width: 100%;
       @include adjust-font-size-to(16px);
 
-      @include breakpoint(1065px) {
-        padding-left: 25px;
-        padding-right: 25px;
-      }
-
       &:hover {
         color: $brand;
         #jPanelMenu-menu & {
