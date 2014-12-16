@@ -78,7 +78,7 @@ function tagged_content_block_permission() {
  */
 function tagged_content_block_preprocess_node(&$variables) {
   $variables['title_link'] = '';
-  $tagged_content_types = variable_get('tagged_content_block_enabled_bundles');
+  $tagged_content_types = array_filter(variable_get('tagged_content_block_enabled_bundles'));
   if ($variables['view_mode'] == 'teaser' && in_array($variables['type'], $tagged_content_types)) {
     _tagged_content_block_add_category_heading($variables);
     if ($variables['type'] == 'promo') {
