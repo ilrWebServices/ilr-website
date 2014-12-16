@@ -10,6 +10,7 @@
 #main {
   clear: both;
   @include add-grid(12);
+  padding: 0 1em;
   @include padding-leader(1);
   // @include sgs-change('debug', true);
   // @include background-grid();
@@ -42,8 +43,7 @@
     #sidebar-second article {
       @extend %two-column;
     }
-    #content .tagged-content article,
-    #content-bottom article {
+    #content .tagged-content article {
       @extend %two-column;
     }
   }
@@ -80,10 +80,16 @@
 
   #content-bottom {
     clear: both;
-    .block-bean {
-      article {
-        @extend %one-column;
-      }
+    @include leader(3);
+    article {
+      @extend %one-column;
+    }
+  }
+
+  &[data-eq-state="450"],
+  &[data-eq-state="768"] {
+    #content-bottom article {
+      @extend %two-column-masonry;
     }
   }
 }

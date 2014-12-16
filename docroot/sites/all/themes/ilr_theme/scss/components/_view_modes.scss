@@ -115,7 +115,7 @@
   background: white;
   border: 2px solid #e0e0e0;
   border-bottom-width: 6px;
-  @include trailer(1);
+  @include trailer(1.5);
   @include padding-trailer(1);
   @include padding-leader(1);
 

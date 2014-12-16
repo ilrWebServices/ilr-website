@@ -16,6 +16,13 @@
   }
 }
 
+%two-column-masonry {
+  @include layout(4) {
+    @include add-gutter-style('split');
+    @include float-span(2);
+  }
+}
+
 %two-thirds-split-column {
   @include layout(3) {
     @include float-span(1,'last');
