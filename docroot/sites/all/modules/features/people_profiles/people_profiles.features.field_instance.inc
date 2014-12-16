@@ -1318,7 +1318,7 @@ function people_profiles_field_default_field_instances() {
       'default_image' => 0,
       'file_directory' => 'people',
       'file_extensions' => 'jpg jpeg',
-      'max_filesize' => '1 MB',
+      'max_filesize' => '2MB',
       'max_resolution' => '1000x1200',
       'min_resolution' => '250x300',
       'title_field' => 1,

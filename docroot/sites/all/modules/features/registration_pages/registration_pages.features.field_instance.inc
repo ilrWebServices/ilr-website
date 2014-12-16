@@ -383,7 +383,7 @@ function registration_pages_field_default_field_instances() {
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'jpg jpeg',
-      'max_filesize' => '',
+      'max_filesize' => '2MB',
       'max_resolution' => '',
       'min_resolution' => '320x134',
       'title_field' => 0,

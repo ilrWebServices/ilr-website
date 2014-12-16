@@ -58,7 +58,7 @@ function promo_field_default_field_instances() {
       'default_image' => 0,
       'file_directory' => 'promos',
       'file_extensions' => 'jpg jpeg',
-      'max_filesize' => '512 KB',
+      'max_filesize' => '2MB',
       'max_resolution' => '',
       'min_resolution' => '',
       'title_field' => 1,
