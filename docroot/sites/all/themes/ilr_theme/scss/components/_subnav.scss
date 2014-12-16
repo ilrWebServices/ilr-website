@@ -163,10 +163,13 @@
   li.back {
     padding: 0;
     a.prev-menu {
-      color: darken($gray-light, 10%);
+      color: $gray-light;
+      text-transform: uppercase;
       width: 100%;
       display: flex;
       justify-content: left;
+      font-weight: bold;
+      @include adjust-font-size-to(14px);
       span {
         @extend %nav-arrow;
         margin-right: .2em;
@@ -189,7 +192,7 @@
     @extend .clearfix;
     border-bottom: 1px solid darken($nav-light, 10%);
     &.back {
-      border: none;
+      //border: none;
     }
     #jPanelMenu-menu & {
       border-bottom: 1px solid lighten($nav-dark, 15%);
@@ -199,8 +202,9 @@
 
 %nav-arrow {
   font-size: 2em;
-  color: darken($gray-light, 10%);
+  color: $gray-light;
   display: flex;
   align-items: center;
   margin-top: -5px;
+  font-weight: normal;
 }

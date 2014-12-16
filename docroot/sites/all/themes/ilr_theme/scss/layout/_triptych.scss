@@ -6,7 +6,7 @@
   #content {
     @extend .clearfix;
     @include grid-span(1, 2);
-    .tagged-content article {
+    .block-bean article {
       @extend %two-column;
     }
   }
@@ -21,7 +21,7 @@
     padding-left: 2em;
 
     .section {
-      .tagged-content article {
+      .block-bean article {
         @extend %one-column;
       }
     }
@@ -30,10 +30,8 @@
   #content-bottom {
     @include grid-span(3);
     clear: both;
-    .tagged-content {
-      article {
-        @extend %four-column;
-      }
+    .block-bean article {
+      @extend %four-column;
     }
   }
 }
