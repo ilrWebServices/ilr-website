@@ -6,6 +6,7 @@ theme_path = 'docroot/sites/all/themes/ilr_theme'
 # Require any additional compass plugins here.
 require 'modular-scale'
 require 'singularitygs'
+require 'singularity-extras'
 require 'breakpoint'
 require 'autoprefixer-rails'
 
