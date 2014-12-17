@@ -202,7 +202,7 @@ function _ilr_sub_sites_create_menu($title, $uri = NULL) {
   if (!$menu_name) {
     $menu = array(
       'menu_name' => $machine_name,
-      'title' => $title . ' Menu',
+      'title' => $title,
       'description' => t('SubSite menu'),
     );
     menu_save($menu);
