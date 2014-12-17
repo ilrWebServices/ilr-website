@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 /**
  * Implements hook_preprocess_HOOK().
  * Adds a class to sub site homepages
@@ -57,6 +58,11 @@ function _ilr_sub_sites_is_sub_site_homepage($node) {
     ->fetchField();
   return $plid === '0' || $plid === 0;
 }
+=======
+//////////////////
+// Drupal hooks //
+//////////////////
+>>>>>>> Alphabetizes sub sites module
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -117,23 +123,6 @@ function ilr_sub_sites_form_basic_page_node_form_alter(&$form, &$form_state, $fo
 }
 
 /**
- * Validate callback for basic page form.
- *
- * Don't allow adding a menu item and setting a subsite.
- */
-function _ilr_sub_sites_basic_page_validate($form, &$form_state) {
-  $menu_values = $form_state['values']['menu'];
-  if (!empty($menu_values['create_subsite'])) {
-    // This shouldn't happen because of JS but just in case.
-    if (!empty($menu_values['enabled'])) {
-      form_error($form['menu'], t('You cannot create both a menu link and a sub site menu.'));
-      return;
-    }
-  }
-
-}
-
-/**
  * Implements hook_module_implements_alter().
  *
  * Form alter has to run after menu module's implementation.
@@ -158,40 +147,37 @@ function ilr_sub_sites_node_insert($node) {
 }
 
 /**
- * Create subsite menu for a node.
- *
- * Creates menu and adds link to node to menu
- * @param $node
+ * Implements hook_preprocess_HOOK().
+ * Adds a class to sub site homepages
  */
-function _ilr_sub_sites_create_sub_menu_for_node($node) {
-  if ($node->type == 'basic_page' && !empty($node->menu['create_subsite'])) {
-    $menu_title = empty($node->menu['subsite_title']) ? $node->title : $node->menu['subsite_title'];
-    $menu_name = _ilr_sub_sites_create_menu($menu_title);
-    // Create node link on new menu
-    $link = array(
-      'link_path' => 'node/' . $node->nid,
-      'link_title' => $node->title,
-      'menu_name' => $menu_name,
-    );
-    menu_link_save($link);
-    _ilr_sub_sites_create_pathauto_alias($node);
-    return;
+function ilr_sub_sites_preprocess_html(&$variables) {
+  if ($node = menu_get_object()) {
+    if (_ilr_sub_sites_is_sub_site_homepage($node)) {
+      $variables['classes_array'][] = 'subsite-front';
+    }
   }
 }
 
+
+//////////////////////
+// Custom functions //
+//////////////////////
+
 /**
- * Workaround b/c pathauto_create_alias() not setting the alias
- * @todo Debug so this function is not required
+ * Validate callback for basic page form.
+ *
+ * Don't allow adding a menu item and setting a subsite.
  */
-function _ilr_sub_sites_create_pathauto_alias($node) {
-  module_load_include('inc', 'pathauto');
-    $alias = preg_replace('@[^a-z0-9-]+@','-', strtolower($node->title));
-    $path = array(
-      'source' => 'node/' . $node->nid,
-      'alias' => $alias,
-      'language' => LANGUAGE_NONE,
-    );
-    _pathauto_set_alias($path, NULL, 'insert');
+function _ilr_sub_sites_basic_page_validate($form, &$form_state) {
+  $menu_values = $form_state['values']['menu'];
+  if (!empty($menu_values['create_subsite'])) {
+    // This shouldn't happen because of JS but just in case.
+    if (!empty($menu_values['enabled'])) {
+      form_error($form['menu'], t('You cannot create both a menu link and a sub site menu.'));
+      return;
+    }
+  }
+
 }
 
 /**
@@ -227,4 +213,87 @@ function _ilr_sub_sites_create_menu($title, $uri = NULL) {
     variable_set('menu_options_basic_page', $menu_options);
   }
   return $machine_name;
+}
+
+/**
+ * Workaround b/c pathauto_create_alias() not setting the alias
+ * @todo Debug so this function is not required
+ */
+function _ilr_sub_sites_create_pathauto_alias($node) {
+  module_load_include('inc', 'pathauto');
+    $alias = preg_replace('@[^a-z0-9-]+@','-', strtolower($node->title));
+    $path = array(
+      'source' => 'node/' . $node->nid,
+      'alias' => $alias,
+      'language' => LANGUAGE_NONE,
+    );
+    _pathauto_set_alias($path, NULL, 'insert');
+}
+
+/**
+ * Create subsite menu for a node.
+ *
+ * Creates menu and adds link to node to menu
+ * @param $node
+ */
+function _ilr_sub_sites_create_sub_menu_for_node($node) {
+  if ($node->type == 'basic_page' && !empty($node->menu['create_subsite'])) {
+    $menu_title = empty($node->menu['subsite_title']) ? $node->title : $node->menu['subsite_title'];
+    $menu_name = _ilr_sub_sites_create_menu($menu_title);
+    // Create node link on new menu
+    $link = array(
+      'link_path' => 'node/' . $node->nid,
+      'link_title' => $node->title,
+      'menu_name' => $menu_name,
+    );
+    menu_link_save($link);
+    _ilr_sub_sites_create_pathauto_alias($node);
+    return;
+  }
+}
+
+/**
+ * Gets the menu assignment of the current page.
+ * See ilr_menu_block_blocks() in the profile.
+ */
+function _ilr_sub_sites_get_current_menu_name() {
+  $node = menu_get_object();
+  if ($node) {
+    $menu_name = db_select('menu_links', 'ml')
+      ->condition('ml.link_path', 'node/' . $node->nid)
+      ->fields('ml', array('menu_name'))
+      ->execute()
+      ->fetchField();
+
+    return strlen($menu_name) ? $menu_name : 'main-menu';
+  }
+  return 'main-menu';
+}
+
+/**
+ * Concatenates menu names since they're limited to 32 characters.
+ * See ilr_sub_sites_enable().
+ */
+function _ilr_sub_sites_get_menu_name_from_uri($uri) {
+  $name = strtolower($uri);
+  if (strlen($uri) > 30) {
+    $name = substr($uri, 0, 30);
+  }
+  return $name;
+}
+
+/**
+ * Determines whether the current node is a sub site homepage
+ * This currently works because all sub sites are at ilr.cornell.edu/subsite.
+ */
+function _ilr_sub_sites_is_sub_site_homepage($node) {
+  if (empty($node->nid)) {
+    return FALSE;
+  }
+  $plid = db_select('menu_links', 'ml')
+    ->condition('ml.link_path', 'node/' . $node->nid)
+    ->fields('ml', array('plid'))
+    ->execute()
+    ->fetchField();
+  return $plid === '0' || $plid === 0;
 }
