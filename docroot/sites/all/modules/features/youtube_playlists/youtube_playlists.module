@@ -29,9 +29,9 @@ function _youtube_playlists_assign_videos() {
  *  - playlist_id
  */
 function _youtube_playlists_retrieve_playlist_video_relationships() {
-  $assignments_url = variable_get('youtube_playlists_assignments_url', FALSE);
+  $assignments_url = variable_get('youtube_playlists_assignments_url', 'http://www.ilr.cornell.edu/codelib/media/youtube/getvideosinplaylists.cfm');
   if (!$assignments_url) {
-    watchdog('youtube_playlists', 'Error youtube_playlists_assignments_url variable not set.', WATCHDOG_ERROR);
+    watchdog('youtube_playlists', 'Error youtube_playlists_assignments_url variable not set.', array(), WATCHDOG_ERROR);
     return array();
   }
   $response = drupal_http_request($assignments_url);
@@ -196,7 +196,7 @@ function _youtube_playlist_get_current_assignments() {
  * Implements hook_playlist_feeds_after_import().
  *
  * Import Playlists after Videos.
- * 
+ *
  * Assign Videos to Playlists after imported.
  */
 function youtube_playlists_feeds_after_import(FeedsSource $source) {
