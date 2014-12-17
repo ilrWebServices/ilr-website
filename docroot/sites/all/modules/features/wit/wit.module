@@ -243,13 +243,20 @@ function _wit_build_reference($node, $email_version = FALSE) {
  * View argument will not work for this because 1 display needs to filter on less than.
  */
 function wit_views_pre_view(&$view, &$display_id, &$args) {
-  if ($view->name == 'wit_listing') {
+  // An array of filter ids.  Keys are View names.
+  $view_filters = array(
+    'wit_listing' => 'field_published_date_value',
+    'wit_search' => 'field_published_date_value_1',
+
+  );
+  if (array_key_exists($view->name, $view_filters)) {
+    $filter_name = $view_filters[$view->name];
     if ($view->current_display == 'attachment_current_pub') {
-      $pub_filter = &$view->display['attachment_current_pub']->handler->options['filters']['field_published_date_value'];
+      $pub_filter = &$view->display['attachment_current_pub']->handler->options['filters'][$filter_name];
     }
     else {
       // Regular page doesn't override filters
-      $pub_filter = &$view->display['default']->handler->options['filters']['field_published_date_value'];
+      $pub_filter = &$view->display['default']->handler->options['filters'][$filter_name];
     }
 
     $pub_filter['value']['value'] = _wit_get_latest_pub_date();

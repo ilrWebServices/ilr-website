@@ -35,7 +35,7 @@ function ilr_settings_strongarm() {
     'respondxl' => 1339.84375,
     'respondxl2' => 2344.7265625,
     'respondxl3' => 4103.271484375,
-    'respondxl4' => 7180.7250976562,
+    'respondxl4' => 7180.72509765625,
   );
   $export['borealis_responsive_builds'] = $strongarm;
 
@@ -125,7 +125,7 @@ function ilr_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'chosen_jquery_selector';
-  $strongarm->value = 'select#edit-field-sdc-department-tid-entityreference-filter,select#edit-field-sdc-department-tid,.form-item-exposed-field-sdc-department-tid select,.form-item-exposed-field-keywords-tid select';
+  $strongarm->value = 'select#edit-field-sdc-department-tid-entityreference-filter,select#edit-field-sdc-department-tid,.form-item-exposed-field-sdc-department-tid select,.form-item-exposed-field-keywords-tid select,.chosen-filter select';
   $export['chosen_jquery_selector'] = $strongarm;
 
   $strongarm = new stdClass();
