@@ -402,10 +402,6 @@ function ilr_entity_info_alter(&$entity_info) {
       'custom settings' => FALSE,
     ),
   );
-  $entity_info['bean']['view modes']['mega_menu_item'] = array(
-    'label' => t('Mega Menu Item'),
-    'custom settings' => TRUE,
-  );
 }
 
 /**

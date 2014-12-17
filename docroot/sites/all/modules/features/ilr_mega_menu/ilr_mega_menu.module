@@ -6,6 +6,16 @@
 include_once 'ilr_mega_menu.features.inc';
 
 /**
+ * Implements hook_entity_info_alter().
+ */
+function ilr_mega_menu_entity_info_alter(&$entity_info) {
+  $entity_info['bean']['view modes']['mega_menu_item'] = array(
+    'label' => t('Mega Menu Item'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
  * Implements hook_init().
  */
 function ilr_mega_menu_init() {
