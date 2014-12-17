@@ -41,7 +41,7 @@ class WorkspanMigration extends Migration {
     $this->addFieldMapping('field_file', 'article_pdf');
     $this->addFieldMapping('field_file:source_dir')
       ->defaultValue($this->getFileDir() . 'pdfs');
-    $this->addFieldMapping("field_tags")->defaultValue('workspan');
+    $this->addFieldMapping("field_tags")->defaultValue(array());
   }
 
   public function prepareRow($row) {
