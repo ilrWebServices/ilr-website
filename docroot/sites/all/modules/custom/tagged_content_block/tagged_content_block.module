@@ -207,7 +207,6 @@ function _tagged_content_block_get_primary_term_for_node($node) {
   watchdog('tagged_content_block', "Primary term for node '@node' was not found.",
     array(
       '@node' => $wrapper->label(),
-      '@entityform_type' => $entityform_type,
     ),
     WATCHDOG_ERROR
   );
