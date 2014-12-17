@@ -35,7 +35,7 @@ function _youtube_playlists_retrieve_playlist_video_relationships() {
     return array();
   }
   $response = drupal_http_request($assignments_url);
-  if ($response->error) {
+  if (!empty($response->error)) {
     watchdog('youtube_playlists', 'Error retrieving feed: @msg', array('@msg' => $response->error), WATCHDOG_ERROR);
     return array();
   }
@@ -130,10 +130,10 @@ function _youtube_playlists_get_new_assignments() {
     $playlist_tid = _youtube_playlists_get_tid_from_playlist_id($playlist_videos_relationship['playlist_id']);
     // Keep of list of videos and playlists that aren't nodes.
     if (!$video_nid) {
-      $unknown_videos[] = (string) $playlist_videos_relationship->videoId;
+      $unknown_videos[] = (string) $playlist_videos_relationship['video_id'];
     }
     if (!$playlist_tid) {
-      $unknown_playlists[] = (string) $playlist_videos_relationship->playlistId;
+      $unknown_playlists[] = (string) $playlist_videos_relationship['playlist_id'];
     }
     if ($video_nid && $playlist_tid) {
       // Both the video and playlist were found.
