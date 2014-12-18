@@ -13,14 +13,24 @@ include_once 'youtube_videos.features.inc';
  */
 function youtube_videos_preprocess_node(&$variables) {
   if ($variables['type'] == 'youtube_video') {
-    $video_id = $variables['field_youtube_video'][0]['video_id'];
-    $variables['title_attributes_array'] = array(
-      'class' => 'fancybox',
-      'data-fancybox-type' => 'iframe',
-      'href' => _youtube_videos_embed_url($video_id),
-    );
-    $variables['node_url'] = '#';
+    if ($variables['view_mode'] = 'reference_field') {
+      // In reference_field view mode remove title(to avoid H2)
+      // Field will show
+      $variables['title'] = NULL;
+    }
+    else {
+      // In other Video modes make title a link the Video itself
+      $video_id = $variables['field_youtube_video'][0]['video_id'];
+      $variables['title_attributes_array'] = array(
+        'class' => 'fancybox',
+        'data-fancybox-type' => 'iframe',
+        'href' => _youtube_videos_embed_url($video_id),
+      );
+      $variables['node_url'] = '#';
+
+    }
     unset($variables['content']['links']['node']['#links']['node-readmore']);
+
   }
 }
 
@@ -149,7 +159,11 @@ function youtube_videos_field_formatter_info() {
   $formatters = array(
     // This formatter displays your youtube video.
     'youtube_videos_fancybox' => array(
-      'label' => t('YouTube Fancybox'),
+      'label' => t('YouTube Fancybox Thumbnail'),
+      'field types' => array('youtube'),
+    ),
+    'youtube_videos_fancybox_link' => array(
+      'label' => t('YouTube Fancybox Link'),
       'field types' => array('youtube'),
     )
   );
@@ -165,10 +179,13 @@ function youtube_videos_field_formatter_view($entity_type, $entity, $field, $ins
   $element = array();
   switch ($display['type']) {
     case 'youtube_videos_fancybox':
+    case 'youtube_videos_fancybox_link':
       foreach ($items as $delta => $item) {
+        dpm($item);
         $element[$delta] = array(
-          '#theme' => 'youtube_videos_fancybox',
+          '#theme' => $display['type'],
           '#video_id' => $item['video_id'],
+          '#link_text' => entity_label($entity_type, $entity),
         );
       }
       break;
@@ -183,6 +200,13 @@ function youtube_videos_theme() {
     'youtube_videos_fancybox' => array(
       'variables' => array(
         'video_id' => NULL,
+      ),
+      'file' => 'youtube_videos.theme.inc',
+    ),
+    'youtube_videos_fancybox_link' => array(
+      'variables' => array(
+        'video_id' => NULL,
+        'link_text' => ''
       ),
       'file' => 'youtube_videos.theme.inc',
     ),
