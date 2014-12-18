@@ -23,6 +23,8 @@ function ilr_theme_preprocess_html(&$variables) {
   drupal_add_js($gsap_path . '/plugins/CSSPlugin.min.js', array('type' => 'file', 'scope' => 'footer'));
   $isotope_js = libraries_get_path('isotope') . '/isotope.pkgd.min.js';
   drupal_add_js($isotope_js, array('type' => 'file', 'scope' => 'footer'));
+  $hoverintent_js = libraries_get_path('hoverintent') . '/jquery.hoverIntent.minified.js';
+  drupal_add_js($hoverintent_js, array('type' => 'file', 'scope' => 'footer'));
 }
 
 /**

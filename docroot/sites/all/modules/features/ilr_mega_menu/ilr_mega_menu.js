@@ -6,11 +6,14 @@
       var currentSubmenu;
       var scalePercent = .94;
       var ready = true;
-      $('.menu-block-ilr-primary-menu').mouseleave(function() {
-        hideMegaMenu();
+
+      $('.menu-block-ilr-primary-menu li.menu-item').hoverIntent({
+        over: revealMegaMenu,
+        out: hideMegaMenu,
+        timeout: 100
       });
 
-      $('.menu-block-ilr-primary-menu li.menu-item').mouseenter(function(){
+      function revealMegaMenu() {
         if(ready) {
           submenu = $(this).find('div.submenu');
           if (submenuIsPopulated(submenu)) {
@@ -20,7 +23,7 @@
             hideMegaMenu();
           }
         }
-      });
+      }
 
       function megaMenuIsActive() {
         return $('.menu-block-ilr-primary-menu').hasClass('active');

@@ -19,7 +19,10 @@ function ilr_mega_menu_entity_info_alter(&$entity_info) {
  * Implements hook_init().
  */
 function ilr_mega_menu_init() {
-  drupal_add_js(drupal_get_path('module','ilr_mega_menu') . '/ilr_mega_menu.js', array('type' => 'file', 'scope' => 'footer'));
+  global $theme_key;
+  if ($theme_key == 'ilr_theme') {
+    drupal_add_js(drupal_get_path('module','ilr_mega_menu') . '/ilr_mega_menu.js', array('type' => 'file', 'scope' => 'footer'));
+  }
 }
 /**
 * Implements hook_block_info().
