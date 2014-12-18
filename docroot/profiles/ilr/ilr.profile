@@ -397,6 +397,10 @@ function ilr_date_formats() {
  */
 function ilr_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes'] += array(
+    'basic_teaser' => array(
+      'label' => t('Basic Teaser'),
+      'custom settings' => FALSE,
+    ),
     'reference_field' => array(
       'label' => t('Reference Field'),
       'custom settings' => FALSE,
