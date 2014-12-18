@@ -37,10 +37,11 @@ class WorkspanMigration extends Migration {
     $this->addFieldMapping('field_thumbnail:alt', 'thumbnail_alt');
     $this->addFieldMapping('field_thumbnail:title', 'thumbnail_alt');
     $this->addFieldMapping('field_thumbnail:source_dir')
-      ->defaultValue($this->getFileDir() . '/images');
+      ->defaultValue($this->getFileDir() . 'images');
     $this->addFieldMapping('field_file', 'article_pdf');
     $this->addFieldMapping('field_file:source_dir')
-      ->defaultValue($this->getFileDir() . '/pdfs');
+      ->defaultValue($this->getFileDir() . 'pdfs');
+    $this->addFieldMapping("field_tags")->defaultValue(array());
   }
 
   public function prepareRow($row) {
@@ -108,4 +109,4 @@ class WorkspanMigration extends Migration {
     return $field_value;
   }
 
-} 
+}
