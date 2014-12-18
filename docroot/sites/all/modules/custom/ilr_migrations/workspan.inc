@@ -32,7 +32,6 @@ class WorkspanMigration extends Migration {
     $this->addFieldMapping('field_published_date', 'pub_date');
     $this->addFieldMapping('title', 'article_title');
     $this->addFieldMapping('field_headline', 'headline');
-    $this->addFieldMapping('field_youtube_video', 'yt_video_id');
     $this->addFieldMapping('field_thumbnail', 'thumbnail_src');
     $this->addFieldMapping('field_thumbnail:alt', 'thumbnail_alt');
     $this->addFieldMapping('field_thumbnail:title', 'thumbnail_alt');
@@ -41,6 +40,7 @@ class WorkspanMigration extends Migration {
     $this->addFieldMapping('field_file', 'article_pdf');
     $this->addFieldMapping('field_file:source_dir')
       ->defaultValue($this->getFileDir() . '/pdfs');
+    $this->addFieldMapping('field_content', 'video_nid');
   }
 
   public function prepareRow($row) {
@@ -57,11 +57,24 @@ class WorkspanMigration extends Migration {
       // These two fields aren't both represent in Drupal because they are always the same.
       throw new MigrateException("Headline and Subhead field don't match for {$row->pub_date}");
     }
-    return TRUE;
-  }
+    if ($row->yt_video_id) {
+      // Get Youtube Nid
+      $video_ids = explode(',', $row->yt_video_id);
+      $video_nids = array();
+      foreach ($video_ids as $video_id) {
+        $video_nid = youtube_videos_get_nid_from_video_id($video_id);
+        if ($video_nid) {
+          $video_nids[] = $video_nid;
+        }
+        else {
+          watchdog('workspan_migrate', 'No node found for video: %video_id', array('%video_id' => $video_id));
+        }
+      }
+    }
 
- public function prepare(stdClass $node, stdClass $row) {
-   $node->field_youtube_video = $this->getYoutubeFieldValue($row->yt_video_id);
+
+    $row->video_nid = $video_nids;
+    return TRUE;
   }
   private function getFileDir(){
     // Variable can be set via drush vset to override
@@ -85,27 +98,4 @@ class WorkspanMigration extends Migration {
     return array_pop($parts);
   }
 
-  /**
-   * Get Youtube field value for an id.
-   * @param string $video_ids
-   *  video ids concatenated with ','
-   * @return array
-   *  Field Value in format Youtube field module understands.
-   */
-  private function getYoutubeFieldValue($video_ids) {
-    $field_value = array();
-    $video_ids = explode(',', $video_ids);
-    foreach ($video_ids as $delta => $video_id) {
-      if ($video_id) {
-        $url = 'http://www.youtube.com/watch?v=' . $video_id;
-        $field_value = array(
-          'input' => $url,
-          'video_id' => $video_id,
-        );
-        $field_value[LANGUAGE_NONE][$delta] = $field_value;
-      }
-    }
-    return $field_value;
-  }
-
-} 
+}
