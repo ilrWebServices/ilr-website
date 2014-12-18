@@ -33,6 +33,10 @@ function jpanelmenu_library() {
  * Implements hook_page_build().
  */
 function jpanelmenu_page_build(&$page) {
+  global $theme_key;
+  if ($theme_key != 'ilr_theme') {
+    return;
+  }
   //Test for jpanel library
   $library_path = libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js';
   $installed = file_exists($library_path);
