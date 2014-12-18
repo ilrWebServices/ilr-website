@@ -30,7 +30,7 @@
       }
 
       function submenuIsPopulated(submenu) {
-        return $(submenu).find('.block-bean').length > 0;
+        return $(submenu).find('.entity-bean').length > 0;
       }
 
       function revealSubmenu(submenu) {

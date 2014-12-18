@@ -7,12 +7,28 @@ include_once 'ilr_mega_menu.features.inc';
 
 /**
  * Implements hook_entity_info_alter().
+ * Note that, by default, the display for a
+ * mega menu item on nodes will be blank by default,
+ * which is what we want for titles only.
  */
 function ilr_mega_menu_entity_info_alter(&$entity_info) {
   $entity_info['bean']['view modes']['mega_menu_item'] = array(
     'label' => t('Mega Menu Item'),
     'custom settings' => TRUE,
   );
+  $entity_info['node']['view modes']['mega_menu_item'] = array(
+    'label' => t('Mega Menu Item'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function ilr_mega_menu_entity_presave($entity, $type) {
+  if ($entity->type == 'mega_menu') {
+    drupal_set_message("Please be sure that any blocks added to <em>$entity->label</em> have been locked.", 'warning');
+  }
 }
 
 /**
