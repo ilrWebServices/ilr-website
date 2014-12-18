@@ -51,7 +51,7 @@ function _ilr_bean_admin_validate_permissions($form, &$form_state) {
     form_set_error('admin_lock', t(ILR_ADMIN_BEAN_LOCK_MESSAGE));
   }
   if ($form['ilr_bean_admin_data']['#access']) {
-    $bean_admin_values = & $form_state['values']['ilr_bean_admin_data'];
+    $bean_admin_values = &$form_state['values']['ilr_bean_admin_data'];
     if ($bean_admin_values['admin_hide'] && !$bean_admin_values['admin_lock']) {
       drupal_set_message(t(ILR_ADMIN_BEAN_LOCK_AUTOLOCK_MESSAGE));
       $bean_admin_values['admin_lock'] = 1;
