@@ -38,6 +38,9 @@ function ilr_mega_menu_init() {
   global $theme_key;
   if ($theme_key == 'ilr_theme') {
     drupal_add_js(drupal_get_path('module','ilr_mega_menu') . '/ilr_mega_menu.js', array('type' => 'file', 'scope' => 'footer'));
+  } // Check for admin theme
+  else if ($theme_key == variable_get('admin_theme')) {
+    drupal_add_js(drupal_get_path('module','ilr_mega_menu') . '/ilr_mega_menu_admin.js', array('type' => 'file', 'scope' => 'footer'));
   }
 }
 /**
@@ -78,7 +81,7 @@ function ilr_mega_menu_form_alter(&$form, &$form_state, $form_id) {
     $form['field_menu_name']['und']['#options'] = $options;
     $selected = _ilr_mega_menu_get_default_value($form);
     drupal_add_js(array(
-      'ilr_mega_menu' => array(
+      'ilr_mega_menu_admin' => array(
         'menusWithItems' => _ilr_mega_menu_get_menus_with_items(),
         'currentItem' => $selected,
       )), 'setting');
