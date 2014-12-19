@@ -30,14 +30,15 @@ function ilr_workspan_field_default_field_instances() {
         'weight' => 1,
       ),
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'field_formatter_label' => '',
-          'link' => FALSE,
+          'links' => 0,
+          'view_mode' => 'reference_field',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 7,
+        'type' => 'entityreference_entity_view',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -85,12 +86,9 @@ function ilr_workspan_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'file_default',
-        'weight' => 4,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'plain_teaser' => array(
         'label' => 'above',
@@ -168,7 +166,7 @@ function ilr_workspan_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
@@ -225,17 +223,9 @@ function ilr_workspan_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 5,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'plain_teaser' => array(
         'label' => 'above',
@@ -307,12 +297,9 @@ function ilr_workspan_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 6,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'plain_teaser' => array(
         'label' => 'above',
@@ -362,7 +349,7 @@ function ilr_workspan_field_default_field_instances() {
         'weight' => 2,
       ),
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'field_formatter_label' => '',
@@ -370,7 +357,7 @@ function ilr_workspan_field_default_field_instances() {
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 3,
+        'weight' => 0,
       ),
       'plain_teaser' => array(
         'label' => 'above',
