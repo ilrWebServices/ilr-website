@@ -367,3 +367,11 @@ function ilr_update_7023() {
 function ilr_update_7024() {
   field_delete_field('field_mega_menu_blocks');
 }
+
+/**
+ * Deletes additional form fields
+ */
+function ilr_update_7025() {
+  field_delete_field('field_passport_expiration_date');
+  field_delete_field('field_year_soph_jr_sr');
+}
