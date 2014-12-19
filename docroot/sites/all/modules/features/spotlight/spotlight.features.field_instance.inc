@@ -32,6 +32,12 @@ function spotlight_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -90,6 +96,12 @@ function spotlight_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -130,6 +142,12 @@ function spotlight_field_default_field_instances() {
         'weight' => 2,
       ),
       'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -181,6 +199,12 @@ function spotlight_field_default_field_instances() {
         'weight' => 1,
       ),
       'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -240,6 +264,12 @@ function spotlight_field_default_field_instances() {
           'image_style' => 'focussed_main_image',
         ),
         'type' => 'image',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -308,6 +338,12 @@ function spotlight_field_default_field_instances() {
         'weight' => 5,
       ),
       'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

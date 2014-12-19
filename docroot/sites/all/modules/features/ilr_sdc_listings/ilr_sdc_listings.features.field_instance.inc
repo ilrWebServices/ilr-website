@@ -26,6 +26,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'reference_field' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -97,6 +103,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'addressfield_default',
         'weight' => 3,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'reference_field' => array(
         'label' => 'hidden',
         'module' => 'addressfield',
@@ -167,6 +179,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 4,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'reference_field' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -224,6 +242,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         ),
         'type' => 'date_default',
         'weight' => 1,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'reference_field' => array(
         'label' => 'hidden',
@@ -294,6 +318,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 8,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'reference_field' => array(
         'label' => 'above',
         'settings' => array(),
@@ -343,6 +373,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 7,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'reference_field' => array(
         'label' => 'above',
@@ -399,6 +435,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 6,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'reference_field' => array(
         'label' => 'above',
         'module' => 'entityreference',
@@ -453,6 +495,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 9,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'reference_field' => array(
         'label' => 'above',
         'settings' => array(),
@@ -501,6 +549,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 11,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'reference_field' => array(
         'label' => 'above',
         'settings' => array(),
@@ -548,6 +602,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 10,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'reference_field' => array(
         'label' => 'above',
@@ -598,6 +658,12 @@ function ilr_sdc_listings_field_default_field_instances() {
           'thousand_separator' => ',',
         ),
         'type' => 'number_decimal',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'reference_field' => array(
@@ -667,6 +733,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 2,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'reference_field' => array(
         'label' => 'above',
         'settings' => array(),
@@ -722,6 +794,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 2,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'reference_field' => array(
         'label' => 'hidden',
@@ -779,6 +857,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'reference_field' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -827,6 +911,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 6,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'reference_field' => array(
         'label' => 'above',
         'settings' => array(),
@@ -872,6 +962,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 7,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'reference_field' => array(
         'label' => 'above',
@@ -921,6 +1017,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 4,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'reference_field' => array(
         'label' => 'above',
@@ -973,6 +1075,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'number_decimal',
         'weight' => 1,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'reference_field' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -1019,6 +1127,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 3,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'reference_field' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -1063,6 +1177,12 @@ function ilr_sdc_listings_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 5,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'reference_field' => array(
         'label' => 'above',
@@ -1109,6 +1229,12 @@ function ilr_sdc_listings_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(

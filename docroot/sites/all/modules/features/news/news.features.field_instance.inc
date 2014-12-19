@@ -20,7 +20,9 @@ function news_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 3,
       ),
@@ -29,6 +31,12 @@ function news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 6,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -68,21 +76,33 @@ function news_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 2,
       ),
       'highlighted' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 1,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 1,
       ),
@@ -116,6 +136,7 @@ function news_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
+          'field_formatter_label' => '',
           'file_view_mode' => 'default',
         ),
         'type' => 'file_rendered',
@@ -125,16 +146,24 @@ function news_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_label' => '',
           'image_link' => 'content',
           'image_style' => 'focussed_main_image',
         ),
         'type' => 'image',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_label' => '',
           'image_link' => 'content',
           'image_style' => 'focussed_thumbnail',
         ),
@@ -209,6 +238,7 @@ function news_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
+          'field_formatter_label' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -223,6 +253,12 @@ function news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 5,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -277,6 +313,12 @@ function news_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 4,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -322,6 +364,12 @@ function news_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 2,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -366,6 +414,12 @@ function news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 3,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',

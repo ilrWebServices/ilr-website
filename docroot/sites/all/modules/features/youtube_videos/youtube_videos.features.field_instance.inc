@@ -32,6 +32,12 @@ function youtube_videos_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -76,6 +82,12 @@ function youtube_videos_field_default_field_instances() {
         'weight' => 4,
       ),
       'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -130,6 +142,12 @@ function youtube_videos_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -174,6 +192,12 @@ function youtube_videos_field_default_field_instances() {
         'weight' => 1,
       ),
       'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -230,6 +254,12 @@ function youtube_videos_field_default_field_instances() {
         'weight' => 2,
       ),
       'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

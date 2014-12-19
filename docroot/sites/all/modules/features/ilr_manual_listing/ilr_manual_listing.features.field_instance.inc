@@ -21,8 +21,20 @@ function ilr_manual_listing_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'field_formatter_label' => '',
           'links' => 0,
           'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'links' => 1,
+          'view_mode' => 'mega_menu_item',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 0,

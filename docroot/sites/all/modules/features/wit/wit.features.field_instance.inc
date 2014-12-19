@@ -32,6 +32,12 @@ function wit_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -85,6 +91,12 @@ function wit_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -128,6 +140,12 @@ function wit_field_default_field_instances() {
         'weight' => 4,
       ),
       'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -184,6 +202,12 @@ function wit_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -234,6 +258,12 @@ function wit_field_default_field_instances() {
         'weight' => 3,
       ),
       'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -303,6 +333,12 @@ function wit_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'taxonomy',
@@ -354,6 +390,12 @@ function wit_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'taxonomy',
@@ -400,6 +442,12 @@ function wit_field_default_field_instances() {
         'weight' => 5,
       ),
       'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

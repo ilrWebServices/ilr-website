@@ -360,3 +360,10 @@ function ilr_update_7023() {
   field_delete_field('field_major');
   field_delete_field('field_referral_textarea');
 }
+
+/**
+ * Deletes field_mega_menu_blocks
+ */
+function ilr_update_7024() {
+  field_delete_field('field_mega_menu_blocks');
+}

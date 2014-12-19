@@ -109,29 +109,17 @@
       font-weight: 600;
     }
 
-    .field-name-field-mega-menu-blocks > .field-items > .field-item {
+    .field-name-field-referenced-entity > .field-items > .field-item {
       @extend %three-column;
 
-      ul {
-        padding: 0;
+      h2 {
+        font-weight: normal;
         margin: 0;
-
-        li {
-          list-style-type: none;
-          background: none;
-          margin: 0;
-          padding: 0;
+        @include adjust-leading-to(1);
+        a {
+          color: $p-text;
           @include adjust-font-size-to(16px, 1);
-
-          a {
-            color: $p-text;
-          }
-
-          p {
-            font-size: 16px;
-          }
         }
-
       }
     }
   }

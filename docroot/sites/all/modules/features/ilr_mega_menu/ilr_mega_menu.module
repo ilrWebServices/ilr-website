@@ -6,10 +6,42 @@
 include_once 'ilr_mega_menu.features.inc';
 
 /**
+ * Implements hook_entity_info_alter().
+ * Note that, by default, the display for a
+ * mega menu item on nodes will be blank by default,
+ * which is what we want for titles only.
+ */
+function ilr_mega_menu_entity_info_alter(&$entity_info) {
+  $entity_info['bean']['view modes']['mega_menu_item'] = array(
+    'label' => t('Mega Menu Item'),
+    'custom settings' => TRUE,
+  );
+  $entity_info['node']['view modes']['mega_menu_item'] = array(
+    'label' => t('Mega Menu Item'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function ilr_mega_menu_entity_presave($entity, $type) {
+  if ($entity->type == 'mega_menu') {
+    drupal_set_message("Please be sure that any blocks added to <em>$entity->label</em> have been locked.", 'warning');
+  }
+}
+
+/**
  * Implements hook_init().
  */
 function ilr_mega_menu_init() {
-  drupal_add_js(drupal_get_path('module','ilr_mega_menu') . '/ilr_mega_menu.js', array('type' => 'file', 'scope' => 'footer'));
+  global $theme_key;
+  if ($theme_key == 'ilr_theme') {
+    drupal_add_js(drupal_get_path('module','ilr_mega_menu') . '/ilr_mega_menu.js', array('type' => 'file', 'scope' => 'footer'));
+  } // Check for admin theme
+  else if ($theme_key == variable_get('admin_theme')) {
+    drupal_add_js(drupal_get_path('module','ilr_mega_menu') . '/ilr_mega_menu_admin.js', array('type' => 'file', 'scope' => 'footer'));
+  }
 }
 /**
 * Implements hook_block_info().
@@ -49,7 +81,7 @@ function ilr_mega_menu_form_alter(&$form, &$form_state, $form_id) {
     $form['field_menu_name']['und']['#options'] = $options;
     $selected = _ilr_mega_menu_get_default_value($form);
     drupal_add_js(array(
-      'ilr_mega_menu' => array(
+      'ilr_mega_menu_admin' => array(
         'menusWithItems' => _ilr_mega_menu_get_menus_with_items(),
         'currentItem' => $selected,
       )), 'setting');
@@ -78,7 +110,7 @@ function _ilr_mega_menu_get_menu_contents($menu, $key) {
   if (!empty($result)) {
     $bean = bean_load(current($result['bean'])->bid); // Note this loads the first item. This could cause unexpected behavior if there is more than one bean assigned to a single menu item.
     $id = str_replace('_', '-', $key);
-    $view = bean_view($bean);
+    $view = bean_view($bean, 'mega_menu_item');
     $markup = '<div id="'.$id.'" class="submenu">';
     $markup .= render($view);
     $markup .= '</div>';

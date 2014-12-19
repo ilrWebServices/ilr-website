@@ -20,7 +20,9 @@ function featured_book_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 3,
       ),
@@ -30,10 +32,18 @@ function featured_book_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 3,
       ),
@@ -69,7 +79,9 @@ function featured_book_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 2,
       ),
@@ -79,10 +91,18 @@ function featured_book_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
         'weight' => 2,
       ),
@@ -120,6 +140,12 @@ function featured_book_field_default_field_instances() {
         'weight' => 7,
       ),
       'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -170,6 +196,12 @@ function featured_book_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -215,6 +247,12 @@ function featured_book_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -252,6 +290,7 @@ function featured_book_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
+          'field_formatter_label' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -267,10 +306,17 @@ function featured_book_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
+          'field_formatter_label' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -327,6 +373,12 @@ function featured_book_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -372,6 +424,12 @@ function featured_book_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -408,6 +466,7 @@ function featured_book_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_label' => '',
           'image_link' => '',
           'image_style' => 'large',
         ),
@@ -420,10 +479,17 @@ function featured_book_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_label' => '',
           'image_link' => 'content',
           'image_style' => 'thumbnail',
         ),

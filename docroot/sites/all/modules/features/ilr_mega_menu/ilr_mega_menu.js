@@ -6,11 +6,14 @@
       var currentSubmenu;
       var scalePercent = .94;
       var ready = true;
-      $('.menu-block-ilr-primary-menu').mouseleave(function() {
-        hideMegaMenu();
+
+      $('.menu-block-ilr-primary-menu li.menu-item').hoverIntent({
+        over: revealMegaMenu,
+        out: hideMegaMenu,
+        timeout: 100
       });
 
-      $('.menu-block-ilr-primary-menu li.menu-item').mouseenter(function(){
+      function revealMegaMenu() {
         if(ready) {
           submenu = $(this).find('div.submenu');
           if (submenuIsPopulated(submenu)) {
@@ -20,14 +23,14 @@
             hideMegaMenu();
           }
         }
-      });
+      }
 
       function megaMenuIsActive() {
         return $('.menu-block-ilr-primary-menu').hasClass('active');
       }
 
       function submenuIsPopulated(submenu) {
-        return $(submenu).find('.block-bean').length > 0;
+        return $(submenu).find('.entity-bean').length > 0;
       }
 
       function revealSubmenu(submenu) {
@@ -68,30 +71,6 @@
       function removeClassFromEl(el, className) {
         $(el).removeClass(className);
         ready = true;
-      }
-
-      // Edit page
-      if (typeof Drupal.settings.ilr_mega_menu !== 'undefined') {
-        current = $('#edit-field-menu-name-und').val();
-        setTopLevelMenuOptions(current);
-        $('#edit-field-menu-name-und').change(function() {
-          selected = $(this).val();
-          setTopLevelMenuOptions(selected);
-        });
-      }
-
-      function setTopLevelMenuOptions(menuName) {
-        options = Drupal.settings.ilr_mega_menu.menusWithItems[menuName];
-        var $el = $("#edit-field-mega-menu-item-und");
-        $el.empty(); // remove old options
-        $.each(options, function(key, title) {
-          $el.append($("<option>"+title+"</option>")
-             .attr("value", key));
-        });
-
-        if (Drupal.settings.ilr_mega_menu.currentItem.length) {
-          $("#edit-field-mega-menu-item-und").val(Drupal.settings.ilr_mega_menu.currentItem);
-        }
       }
     }
   };
