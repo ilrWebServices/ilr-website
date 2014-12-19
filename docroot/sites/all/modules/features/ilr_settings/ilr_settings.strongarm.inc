@@ -352,6 +352,19 @@ function ilr_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'media_wysiwyg_wysiwyg_browser_plugins';
+  $strongarm->value = array(
+    0 => 'upload',
+    1 => 'ilr_media_browser--media_browser_1',
+    2 => 'ilr_media_browser--media_browser_my_files',
+    3 => 'media_internet',
+    4 => 'youtube',
+  );
+  $export['media_wysiwyg_wysiwyg_browser_plugins'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'mimemail_alter';
   $strongarm->value = FALSE;
   $export['mimemail_alter'] = $strongarm;
