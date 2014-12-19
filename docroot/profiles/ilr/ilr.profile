@@ -366,6 +366,7 @@ function _ilr_get_entityreference_relations($fieldname, $bundle = NULL, $entity_
 function ilr_date_format_types() {
   return array(
     'ilr_short_day_only' => t('Short Day only'),
+    'ilr_year_only' => t('Year only'),
   );
 }
 
@@ -375,6 +376,7 @@ function ilr_date_format_types() {
 function ilr_date_formats() {
   $formats = array(
     'ilr_short_day_only' => 'M j',
+    'ilr_year_only' => 'Y',
   );
   $return_formats = array();
   foreach ($formats as $format_type => $date_format) {

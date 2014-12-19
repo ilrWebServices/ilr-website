@@ -360,3 +360,9 @@ function ilr_update_7023() {
   field_delete_field('field_major');
   field_delete_field('field_referral_textarea');
 }
+/**
+ * Enable Date format
+ */
+function ilr_update_7024() {
+  variable_set('date_format_ilr_year_only', 'Y');
+}
