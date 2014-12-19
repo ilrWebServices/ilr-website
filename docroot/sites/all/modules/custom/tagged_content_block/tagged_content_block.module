@@ -168,7 +168,7 @@ function _tagged_content_block_get_category_by_type($type) {
     'student_portrait'    => 'student portrait',
     'youtube_video'       => 'video',
   );
-  return $categories[$type];
+  return isset($categories[$type])? $categories[$type] : str_replace('_', ' ', $type);
 }
 
 function _tagged_content_block_get_event_details($url) {
