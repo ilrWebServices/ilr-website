@@ -50,11 +50,10 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Catalog Number Prefix (field_catalog_prefix) */
+  $handler->display->display_options['sorts']['field_catalog_prefix_value']['id'] = 'field_catalog_prefix_value';
+  $handler->display->display_options['sorts']['field_catalog_prefix_value']['table'] = 'field_data_field_catalog_prefix';
+  $handler->display->display_options['sorts']['field_catalog_prefix_value']['field'] = 'field_catalog_prefix_value';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -109,7 +108,6 @@ function ilr_sdc_listings_views_default_views() {
 
   /* Display: Table with next class date */
   $handler = $view->new_display('panel_pane', 'Table with next class date', 'panel_pane_2');
-  $handler->display->display_options['display_description'] = '';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
