@@ -181,7 +181,6 @@ function youtube_videos_field_formatter_view($entity_type, $entity, $field, $ins
     case 'youtube_videos_fancybox':
     case 'youtube_videos_fancybox_link':
       foreach ($items as $delta => $item) {
-        dpm($item);
         $element[$delta] = array(
           '#theme' => $display['type'],
           '#video_id' => $item['video_id'],

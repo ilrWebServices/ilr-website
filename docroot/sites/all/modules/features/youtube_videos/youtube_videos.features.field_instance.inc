@@ -38,6 +38,12 @@ function youtube_videos_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'reference_field' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -93,6 +99,12 @@ function youtube_videos_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -116,62 +128,6 @@ function youtube_videos_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 36,
-    ),
-  );
-
-  // Exported field_instance: 'node-youtube_video-field_playlists'
-  $field_instances['node-youtube_video-field_playlists'] = array(
-    'bundle' => 'youtube_video',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 3,
-      ),
-      'highlighted' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_playlists',
-    'label' => 'Playlists',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 35,
     ),
   );
 
@@ -202,6 +158,12 @@ function youtube_videos_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -263,6 +225,14 @@ function youtube_videos_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+      ),
+      'reference_field' => array(
+        'label' => 'hidden',
+        'module' => 'youtube_videos',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'youtube_videos_fancybox_link',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -295,7 +265,6 @@ function youtube_videos_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Body');
   t('Duration');
-  t('Playlists');
   t('Tags');
   t('Youtube Video');
 
