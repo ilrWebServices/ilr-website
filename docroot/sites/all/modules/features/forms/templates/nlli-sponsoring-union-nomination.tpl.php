@@ -5,7 +5,7 @@ This is an automated confirmation from the ILR School at Cornell University of y
 <? print $form_title; ?>
 
 Thank you for sponsoring a nominee for the National Labor Leadership Initiative. Each nominee must complete the online Participant Application form at:
-http://www.ilr.cornell.edu/workerinstitute/national-labor-leadership-initiative/NLLIparticipantApplication.html
+http://www.ilr.cornell.edu/national-labor-leadership-initiative/apply/participant-application-form
 
 <? print $form_data;?>
 
