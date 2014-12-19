@@ -7,7 +7,7 @@ This is an automated confirmation from the ILR School at Cornell University of y
 Thank you for submitting the ULI Financial Aid/Scholarship Application. Scholarships for various amounts are available through the NYS AFL-CIO Leadership Fund.
 
 Each nominee must complete the online Participant Application form at:
-http://www.ilr.cornell.edu/workerinstitute/national-labor-leadership-initiative/NLLIparticipantApplication.html
+http://www.ilr.cornell.edu/union-leadership-institute/apply/application-forms/participant-application-form
 
 <? print $form_data;?>
 

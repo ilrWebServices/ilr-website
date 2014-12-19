@@ -25375,8 +25375,8 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_year_soph_jr_sr'
-  $field_instances['entityform-request_faculty_advisor_or_depar-field_year_soph_jr_sr'] = array(
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_year_freshman_soph_jr_sr'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_year_freshman_soph_jr_sr'] = array(
     'bundle' => 'request_faculty_advisor_or_depar',
     'default_value' => NULL,
     'deleted' => 0,
@@ -25389,11 +25389,11 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 9,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'entityform',
-    'field_name' => 'field_year_soph_jr_sr',
+    'field_name' => 'field_year_freshman_soph_jr_sr',
     'label' => 'Class year in 2014-2015',
     'required' => 1,
     'settings' => array(
@@ -25404,7 +25404,7 @@ function forms_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 15,
+      'weight' => 10,
     ),
   );
 
