@@ -94,3 +94,35 @@ function ilr_sdc_listings_update_7001() {
 function ilr_sdc_listings_update_7002() {
   _ilr_sdc_listings_set_bean_types();
 }
+
+/**
+ * Update SDC Course aliases.
+ * Implements hook_update_N().
+ */
+function ilr_sdc_listings_update_7003(&$sandbox) {
+  _ilr_sdc_listings_update_aliases();
+}
+
+/**
+ * Update aliases for sdc content types.
+ */
+function _ilr_sdc_listings_update_aliases() {
+  module_load_include('inc', 'pathauto');
+  module_load_include('inc', 'pathauto.pathauto');
+
+  // Get all nodes that need to be updated
+  $query = db_select('node', 'n');
+  $query->addField('n', 'nid');
+  $query->condition('n.type', array('sdc_course', 'sdc_class', 'sdc_faculty'), 'IN');
+
+  $nids = $query->execute()->fetchCol();
+
+  // Save current action for new aliases and change it to delete old one.
+  $alias_action = variable_get('pathauto_update_action', 0);
+  variable_set('pathauto_update_action', PATHAUTO_UPDATE_ACTION_DELETE);
+
+  pathauto_node_update_alias_multiple($nids, 'bulkupdate');
+
+  // Restore original action for new aliases.
+  variable_set('pathauto_update_action', $alias_action);
+}

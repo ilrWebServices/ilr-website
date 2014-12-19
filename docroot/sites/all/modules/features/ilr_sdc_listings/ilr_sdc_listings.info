@@ -99,4 +99,4 @@ features[views_view][] = sdc_class_calendar
 features[views_view][] = sdc_course_listing
 features[views_view][] = sdc_current_departments
 features[views_view][] = sdc_ondemand
-mtime = 1418310821
+mtime = 1419016214
