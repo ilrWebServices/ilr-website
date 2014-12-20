@@ -23,6 +23,6 @@ drush sql-sync @ilr.ilr.dev @ilr.ilr.local -y
 
 drush rsync @ilr.ilr.dev:%files/ @ilr.ilr.local:%files
 
-drush @ilr.ilr.local en drupal_streamline_dev ilr_dev -y
+drush -y -l default en ilr_dev
 
 drush fr-all -y

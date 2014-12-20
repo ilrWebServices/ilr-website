@@ -25,7 +25,7 @@ chmod -R a+rwx sites/default/settings.php
 drush -y -l default site-install ilr --site-name="ILR Dev Site | Cornell University" --clean-url=1 --account-pass=testing --account-mail=aaronf@cornell.edu
 
 # enable some useful development modules
-drush -y -l default en drupal_streamline_dev ilr_dev
+drush -y -l default en ilr_dev
 
 # open the login page
 open -a /Applications/firefox.app "http://www.ilr-website.dev/user/login"
