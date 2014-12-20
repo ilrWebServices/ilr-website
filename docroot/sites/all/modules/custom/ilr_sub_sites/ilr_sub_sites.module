@@ -1,68 +1,8 @@
 <?php
 
-<<<<<<< HEAD
-/**
- * Implements hook_preprocess_HOOK().
- * Adds a class to sub site homepages
- */
-function ilr_sub_sites_preprocess_html(&$variables) {
-  if ($node = menu_get_object()) {
-    if (_ilr_sub_sites_is_sub_site_homepage($node)) {
-      $variables['classes_array'][] = 'subsite-front';
-    }
-  }
-}
-
-/**
- * Gets the menu assignment of the current page.
- * See ilr_menu_block_blocks() in the profile.
- */
-function _ilr_sub_sites_get_current_menu_name() {
-  $node = menu_get_object();
-  if ($node) {
-    $menu_name = db_select('menu_links', 'ml')
-      ->condition('ml.link_path', 'node/' . $node->nid)
-      ->fields('ml', array('menu_name'))
-      ->execute()
-      ->fetchField();
-
-    return strlen($menu_name) ? $menu_name : 'main-menu';
-  }
-  return 'main-menu';
-}
-
-/**
- * Concatenates menu names since they're limited to 32 characters.
- * See ilr_sub_sites_enable().
- */
-function _ilr_sub_sites_get_menu_name_from_uri($uri) {
-  $name = strtolower($uri);
-  if (strlen($name) > 30) {
-    $name = substr($name, 0, 30);
-  }
-  return $name;
-}
-
-/**
- * Determines whether the current node is a sub site homepage
- * This currently works because all sub sites are at ilr.cornell.edu/subsite.
- */
-function _ilr_sub_sites_is_sub_site_homepage($node) {
-  if (empty($node->nid)) {
-    return FALSE;
-  }
-  $plid = db_select('menu_links', 'ml')
-    ->condition('ml.link_path', 'node/' . $node->nid)
-    ->fields('ml', array('plid'))
-    ->execute()
-    ->fetchField();
-  return $plid === '0' || $plid === 0;
-}
-=======
 //////////////////
 // Drupal hooks //
 //////////////////
->>>>>>> Alphabetizes sub sites module
 
 /**
 * Implements hook_block_info().
@@ -339,8 +279,8 @@ function _ilr_sub_sites_get_header_for_subsite() {
  */
 function _ilr_sub_sites_get_menu_name_from_uri($uri) {
   $name = strtolower($uri);
-  if (strlen($uri) > 30) {
-    $name = substr($uri, 0, 30);
+  if (strlen($name) > 30) {
+    $name = substr($name, 0, 30);
   }
   return $name;
 }
