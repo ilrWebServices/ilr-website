@@ -6,24 +6,7 @@
   -o-transition: none !important;
 }
 
-// The page background extends outside the header width, which is why this is here
-// Consider refactoring html to better handle a 100% width header
-.page-background {
-  @include background-image(linear-gradient(lighten($cornell-red, 3%), $cornell-red));
-  background-repeat: no-repeat;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 10;
-
-  .admin-menu & {
-    top: 29px;
-  }
-}
-
 .header-small {
-  height: $header-height-small;
-
   #logo {
     margin: 10px 0;
     float: left;
@@ -37,37 +20,58 @@
 }
 
 header {
-  width: 100%;
   @extend .center;
-  @extend .page-background;
   @extend .header-small;
   @include transition-duration(.3s);
+  @include background-image(linear-gradient(lighten($cornell-red, 3%), $cornell-red));
+  background-repeat: no-repeat;
+  width: 100%;
+  top: 0;
+
+  body:not(.subsite) & {
+    position: fixed;
+  }
+  z-index: 10;
+
+  .admin-menu & {
+    top: 29px;
+  }
 
   #logo {
     margin-left: 10px;
   }
-  .sticky & {
-    @include box-shadow(0 10px 10px -10px rgba(black, .5));
+
+  #header-region {
+    background: #f7f7f7;
+    width: 100%;
+    clear: both;
+    position: relative;
+    border-bottom: 1px solid $gray-light;
+    .sticky &,
+    &.sticky {
+      @include box-shadow(0 10px 10px -10px rgba(black, .5));
+    }
   }
 
   &[data-eq-state="regular-nav"] {
-    body:not(.sticky) & {
-      height: $header-height;
-
-      #logo {
-        img {
-          width: 375px;
-          height: 120px;
-        }
-      }
+    &:not(.sticky) {
+      @extend %big-logo;
     }
-
-    .sticky & {
+    &.sticky {
       @include transition-duration(.3s);
-      height: $header-height-small * 1.4;
-      background-size: 100% $header-height-small * 1.4;
       #logo {
         margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+%big-logo {
+  body:not(.subsite) & {
+    #logo {
+      img {
+        width: 375px;
+        height: 120px;
       }
     }
   }

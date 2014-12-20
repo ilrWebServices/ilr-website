@@ -1,0 +1,88 @@
+.subsite {
+  header {
+    position: relative;
+    top: 0;
+  }
+  #header-region {
+    @extend .clearfix;
+    background: white;
+    padding-top: 3em;
+    padding-bottom: 2em;
+    position: relative;
+
+    @include transition-duration(.3s);
+
+    &.wrapped { // Not enough space for menu, so hide wrap
+      padding-bottom:.5em;
+    }
+
+    &.sticky {
+      padding: .5em 0 10px 0;
+      position: fixed;
+      top: 0;
+
+      h2 {
+        display: none;
+      }
+
+      .menu-block-ilr-primary-menu {
+        width: 90%;
+        float: left;
+        ul.menu {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          margin-top: 0;
+          margin-left: 15px;
+
+          li {
+            display: flex;
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    .region-header {
+      @extend .container;
+      padding: 0 1em;
+    }
+
+    .subsite-header {
+      float: left;
+      width: 35%;
+      h2 {
+        margin-bottom: 0;
+        font-family: $font;
+        font-weight: 300;
+        color: $subsite-heading;
+        @include adjust-font-size-to(40px);
+        @include adjust-leading-to(.75);
+      }
+    }
+  }
+
+  &.admin-menu #header-region.sticky {
+    top: 29px;
+  }
+}
+
+%sub-site-menu {
+  float: right;
+  ul.menu {
+    margin: .8em 0 0 0;
+    padding: 0;
+
+    li {
+      @include transition-duration(.5s);
+      background: none;
+      float: left;
+
+      a {
+        color: $gray-dark;
+        font-weight: 400;
+      }
+    }
+  }
+}

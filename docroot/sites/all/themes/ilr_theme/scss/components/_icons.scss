@@ -1,0 +1,44 @@
+$icons: (
+  arrow-down: "\f100",
+  arrow-left: "\f101",
+  arrow-right-bold: "\f102",
+  arrow-right-thin: "\f103",
+  checkmark: "\f104",
+  clear-night: "\f106",
+  tower: "\f107",
+  close: "\f108",
+  mail: "\f109",
+  partly-cloudy-night: "\f110",
+  plus: "\f111",
+  rain: "\f112",
+  close2: "\f113",
+  search: "\f114",
+  search-thin: "\f115",
+  rain2: "\f116",
+  snow: "\f117",
+  arrow-down2: "\f118",
+  thunderstorm: "\f119",
+  unknown: "\f120",
+  tower2: "\f121",
+  // arrow: "\f122",
+  arrow-up2: "\f123",
+  facebook: "\f10a",
+  cloudy2: "\f10b",
+  instagram: "\f10c",
+  hamburger: "\f10d",
+  cloudy: "\f10e",
+  partly-cloudy: "\f10f",
+  twitter: "\f11a",
+  windy: "\f11b",
+  youtube: "\f11c",
+  warning: "\f11d",
+  heart: "\f11e",
+  twoer-dark: "\f11f"
+);
+
+@each $name, $icon in $icons {
+  %icon-#{$name}:before {
+    content: $icon;
+    font-family: 'icons';
+  }
+}

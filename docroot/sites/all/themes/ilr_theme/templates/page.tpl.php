@@ -5,9 +5,9 @@
         <?php print '<img src="/' . drupal_get_path('theme', 'ilr_theme') . '/images/logo.svg" alt="Cornell University | ILR School" title="Cornell University | ILR School">';?>
       </a>
     </div>
-    <div id="search-button">
+    <div class="search-button">
       <a href="#">
-        <?php print '<img src="/' . drupal_get_path('theme', 'ilr_theme') . '/images/search.svg" alt="search" title="search">';?>
+        <span></span>
       </a>
     </div>
     <div class="jpanel-trigger-container"><a href="#" class="jpanel-trigger">MENU</a></div>

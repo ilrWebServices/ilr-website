@@ -1,20 +1,27 @@
-header.search-engaged {
+header.search-engaged,
+header.search-engaged #header-region {
   margin-top: $search-height;
 }
 
-#search-button {
+.search-button {
   float: right;
-  padding: 15px 2% 0 0;
+  a, a:hover {
+    text-decoration: none;
+  }
+  span {
+    display: block;
+    padding: 15px 15px 0 0;
+    @extend %icon-search-thin;
+    @include adjust-font-size-to(30px);
+    color: white;
 
-  img {
-    width: 60%;
-    @include transition-duration(.3s);
-
-    [data-eq-state="regular-nav"] & {
-      margin: 20px 20px 0 0;
-    }
-    .sticky & {
-      margin: 0;
+    // Subsites move the search-button element to the
+    // #header-region
+    #header-region & {
+      padding-top: 0;
+      @extend %icon-search;
+      color: $brand;
+      @include adjust-font-size-to(20px);
     }
   }
 }
