@@ -17,7 +17,9 @@
       </form>
     </div>
   </div>
-  <?php print render($page['header']); ?>
+  <div id="header-region">
+    <?php print render($page['header']); ?>
+  </div>
 </header>
 <div id="page">
   <div class="container" <?php print render($page['nav_trigger_pts']); ?>>

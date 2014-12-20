@@ -65,6 +65,28 @@ function _ilr_sub_sites_is_sub_site_homepage($node) {
 >>>>>>> Alphabetizes sub sites module
 
 /**
+* Implements hook_block_info().
+*/
+function ilr_sub_sites_block_info($delta = '') {
+  $blocks['ilr_sub_site_header'] = array(
+    'info' => 'ILR SubSite Header'
+  );
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function ilr_sub_sites_block_view($delta = '') {
+  $block = array();
+  $subsite_name = _ilr_sub_sites_get_current_subsite_name();
+  $block['content'] = '<div class="subsite-header">';
+  $block['content'] .= "<h2>$subsite_name</h2>";
+  $block['content'] .= '</div>';
+  return $block;
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  *
  * Form id = basic_page_node_form
@@ -147,17 +169,33 @@ function ilr_sub_sites_node_insert($node) {
 }
 
 /**
+ * Implements hook_page_build().
+ */
+function ilr_sub_sites_page_build(&$page) {
+  if (_ilr_sub_sites_current_page_is_sub_site()) {
+    $block_view = module_invoke("ilr_sub_sites", "block_view", 'ilr_sub_site_header');
+    $subsite_block = array();
+    $subsite_block['subsite'] = array(
+      '#markup' => $block_view['content'],
+      '#weight' => -1,
+    );
+    $page['header'] = $subsite_block + $page['header'];
+  }
+}
+
+/**
  * Implements hook_preprocess_HOOK().
  * Adds a class to sub site homepages
  */
 function ilr_sub_sites_preprocess_html(&$variables) {
-  if ($node = menu_get_object()) {
-    if (_ilr_sub_sites_is_sub_site_homepage($node)) {
+  if (_ilr_sub_sites_current_page_is_sub_site()) {
+    // Add subsite classes
+    $variables['classes_array'][] = 'subsite';
+    if (_ilr_sub_sites_is_sub_site_homepage()) {
       $variables['classes_array'][] = 'subsite-front';
     }
   }
 }
-
 
 //////////////////////
 // Custom functions //
@@ -252,12 +290,19 @@ function _ilr_sub_sites_create_sub_menu_for_node($node) {
   }
 }
 
+function _ilr_sub_sites_current_page_is_sub_site() {
+  if ($node = _ilr_sub_sites_get_current_node()) {
+    return _ilr_sub_sites_get_current_menu_name() != 'main-menu';
+  }
+  return FALSE;
+}
+
 /**
  * Gets the menu assignment of the current page.
  * See ilr_menu_block_blocks() in the profile.
  */
 function _ilr_sub_sites_get_current_menu_name() {
-  $node = menu_get_object();
+  $node = _ilr_sub_sites_get_current_node();
   if ($node) {
     $menu_name = db_select('menu_links', 'ml')
       ->condition('ml.link_path', 'node/' . $node->nid)
@@ -270,6 +315,24 @@ function _ilr_sub_sites_get_current_menu_name() {
   return 'main-menu';
 }
 
+function _ilr_sub_sites_get_current_node() {
+  $node = &drupal_static(__FUNCTION__);
+  if (!isset($node)) {
+    $node = menu_get_object();
+  }
+  return $node;
+}
+
+function _ilr_sub_sites_get_current_subsite_name() {
+  $machine_name = _ilr_sub_sites_get_current_menu_name();
+  $subsite_name = db_query("SELECT title FROM {menu_custom} WHERE menu_name=:menu_name", array(':menu_name' => $machine_name))->fetchField();
+  return $subsite_name;
+}
+
+function _ilr_sub_sites_get_header_for_subsite() {
+  $block = block_load('ilr_sub_sites', 'ilr_sub_site_header');
+  return $block;
+}
 /**
  * Concatenates menu names since they're limited to 32 characters.
  * See ilr_sub_sites_enable().
@@ -286,7 +349,8 @@ function _ilr_sub_sites_get_menu_name_from_uri($uri) {
  * Determines whether the current node is a sub site homepage
  * This currently works because all sub sites are at ilr.cornell.edu/subsite.
  */
-function _ilr_sub_sites_is_sub_site_homepage($node) {
+function _ilr_sub_sites_is_sub_site_homepage($node=NULL) {
+  $node = ($node) ? $node : _ilr_sub_sites_get_current_node();
   if (empty($node->nid)) {
     return FALSE;
   }
