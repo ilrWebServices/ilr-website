@@ -36,8 +36,8 @@ function _ilr_sub_sites_get_current_menu_name() {
  */
 function _ilr_sub_sites_get_menu_name_from_uri($uri) {
   $name = strtolower($uri);
-  if (strlen($uri) > 30) {
-    $name = substr($uri, 0, 30);
+  if (strlen($name) > 30) {
+    $name = substr($name, 0, 30);
   }
   return $name;
 }
