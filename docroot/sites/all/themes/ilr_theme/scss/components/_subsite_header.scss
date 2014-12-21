@@ -6,15 +6,9 @@
   #header-region {
     @extend .clearfix;
     background: white;
-    padding-top: 3em;
-    padding-bottom: 2em;
     position: relative;
 
     @include transition-duration(.3s);
-
-    &.wrapped { // Not enough space for menu, so hide wrap
-      padding-bottom:.5em;
-    }
 
     &.sticky {
       padding: .5em 0 10px 0;
@@ -48,17 +42,43 @@
       @extend .container;
       padding: 0 1em;
     }
-
+  }
+  .subsite-header {
+    float: left;
+    width: 35%;
+    h2 {
+      margin-bottom: 0;
+      font-family: $font;
+      font-weight: 300;
+      color: $subsite-heading;
+      @include adjust-font-size-to(40px);
+      @include rhythm(2,0,2,0,40px);
+      @include adjust-leading-to(.75);
+    }
+  }
+  &.wrapped {
+    #header-region { padding-bottom: .5em; }
     .subsite-header {
-      float: left;
-      width: 35%;
+      width: 75%;
       h2 {
         margin-bottom: 0;
-        font-family: $font;
-        font-weight: 300;
-        color: $subsite-heading;
-        @include adjust-font-size-to(40px);
-        @include adjust-leading-to(.75);
+        padding-bottom: 0;
+      }
+    }
+  }
+  header[data-eq-state="mobile-nav"] {
+    #header-region {
+      .subsite-header {
+        width: 75%;
+        h2 {
+          @include adjust-font-size-to(36px);
+          @include rhythm(.5,0,.5,0,36px);
+          @include adjust-leading-to(.75);
+        }
+      }
+      &.sticky h2 {
+        display: block;
+        margin: 0;
       }
     }
   }
