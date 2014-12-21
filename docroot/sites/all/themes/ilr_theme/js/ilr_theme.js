@@ -28,10 +28,16 @@
       var $submenuContainer;
       var $submenuContentDiff;
       var $submenuOffset;
+      var $isMobileNav;
       var subsite;
+      var $body = $('body');
 
       var configureSubsiteNav = function() {
         $(window).load(function() {
+          $isMobileNav = $('header').attr('data-eq-state') == 'mobile-nav';
+          $('.jpanel-trigger').click(function(){
+            subsiteNavPositioner();
+          });
           subsiteNavPositioner();
           // Set the max-width of the menu dynamically based on the number of items
           var maxWidth = $('.menu-block-ilr-primary-menu li').text().length * 15;
@@ -41,6 +47,7 @@
           $(window).resize(function(){
             if($(this).width() != width){
               width = $(this).width();
+              $isMobileNav = $('header').attr('data-eq-state') == 'mobile-nav';
               subsiteNavPositioner();
             }
           });
@@ -80,15 +87,23 @@
       };
 
       var subsiteNavPositioner = function() {
-        var navOffset = $('.menu-block-ilr-primary-menu').offset().top;
-        if (navOffset > 150) {
-          $stickyContainers.forEach(function(container) {
-            container.addClass('wrapped');
-          });
+        var navOffset;
+        if ($isMobileNav) {
+          navOffset = ($($body).hasClass('sticky'))
+            ? $('#header-region').outerHeight()
+            : $('#page').offset().top;
+          $('#jPanelMenu-menu').css('margin-top',navOffset);
         } else {
-          $stickyContainers.forEach(function(container) {
-            container.removeClass('wrapped');
-          });
+          navOffset = $('.menu-block-ilr-primary-menu').offset().top;
+          if (navOffset > 150) {
+            $stickyContainers.forEach(function(container) {
+              container.addClass('wrapped');
+            });
+          } else {
+            $stickyContainers.forEach(function(container) {
+              container.removeClass('wrapped');
+            });
+          }
         }
       }
 
@@ -103,12 +118,12 @@
       } else {
         $offset = 0;
         $stickyContainers = [
-          $('body'),
           $('header'),
         ];
       }
       $submenuContainer = $('#sidebar-first .menu-block-ilr-subnav');
       $stickyContainers.push($('#block-menu-block-ilr-subnav'));
+      $stickyContainers.push($body);
       $searchForm = $('#search-form');
       $headerButtons = $('header .buttons');
 
