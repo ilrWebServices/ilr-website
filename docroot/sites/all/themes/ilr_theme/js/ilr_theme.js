@@ -23,7 +23,7 @@
     attach: function (context, settings) {
       var $stickyContainers;
       var $searchForm;
-      var $searchButton;
+      var $headerButtons;
       var $offset;
       var $submenuContainer;
       var $submenuContentDiff;
@@ -65,14 +65,14 @@
           });
           if (subsite) {
             $searchForm.appendTo('#header-region');
-            $searchButton.appendTo('#header-region');
+            $headerButtons.appendTo('#header-region');
           }
         } else {
           $stickyContainers.forEach(function(container) {
             container.removeClass('sticky');
           });
           if (subsite){
-            $searchButton.appendTo('header .container');
+            $headerButtons.appendTo('header .container');
             $searchForm.appendTo('header .container');
           }
           $('#sidebar-first').css('margin-top', 0);
@@ -110,7 +110,7 @@
       $submenuContainer = $('#sidebar-first .menu-block-ilr-subnav');
       $stickyContainers.push($('#block-menu-block-ilr-subnav'));
       $searchForm = $('#search-form');
-      $searchButton = $('.search-button');
+      $headerButtons = $('header .buttons');
 
       $(window).scroll(function() {
          handleStickyElements();

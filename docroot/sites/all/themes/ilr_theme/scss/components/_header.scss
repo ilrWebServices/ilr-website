@@ -53,15 +53,22 @@ header {
     }
   }
 
-  &[data-eq-state="regular-nav"] {
-    &:not(.sticky) {
-      @extend %big-logo;
+  &[data-eq-state="regular-nav"]:not(.sticky) {
+    @extend %big-logo;
+    .jpanel-trigger-container { display: none; }
+  }
+  &[data-eq-state="regular-nav"].sticky {
+    #logo {
+      margin-bottom: 2px;
     }
-    &.sticky {
-      @include transition-duration(.3s);
-      #logo {
-        margin-bottom: 10px;
-      }
+    .jpanel-trigger-container {
+      @extend .hidden;
+    }
+  }
+  .jpanel-trigger-container {
+    @extend %header-btn;
+    a {
+      @extend %icon-hamburger;
     }
   }
 }
@@ -74,5 +81,34 @@ header {
         height: 120px;
       }
     }
+  }
+}
+
+%header-btn {
+  @include transition-duration(.3s);
+  float: right;
+  margin-top: 1em;
+  [data-eq-state="regular-nav"]:not(.sticky) & {
+    margin-right: 1em;
+  }
+
+  a {
+    display: block;
+    padding: 10px 13px 5px 13px;
+    color: white;
+
+    &:hover, &:visited, &:active, &:focus {
+      text-decoration: none;
+    }
+
+    // Subsites move the search-button element
+    // to the #header-region
+    #header-region & {
+      color: $brand;
+      @include adjust-font-size-to(20px);
+    }
+  }
+  #header-region & {
+    margin: 0;
   }
 }

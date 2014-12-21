@@ -5,12 +5,14 @@
         <?php print '<img src="/' . drupal_get_path('theme', 'ilr_theme') . '/images/logo.svg" alt="Cornell University | ILR School" title="Cornell University | ILR School">';?>
       </a>
     </div>
-    <div class="search-button">
-      <a href="#">
-        <span></span>
-      </a>
+    <div class='buttons'>
+      <div class="jpanel-trigger-container">
+        <a href="#" class="jpanel-trigger"></a>
+      </div>
+      <div class="search-button">
+        <a href="#"></a>
+      </div>
     </div>
-    <div class="jpanel-trigger-container"><a href="#" class="jpanel-trigger">MENU</a></div>
     <div id="search-form">
       <form action="/search" method="get" id="cu-search-form" accept-charset="UTF-8">
         <input id="search-form-query" type="text" name="s" placeholder="Search ILR . . ." value="" size="20" maxlength="128" class="form-text" />

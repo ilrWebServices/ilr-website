@@ -10,29 +10,6 @@
   h2 { @extend .hidden; }
 }
 
-.jpanel-trigger-container {
-  [data-eq-state="regular-nav"] & {
-    @extend .hidden;
-  }
-  float: right;
-  clear: right;
-  margin-right: 1em;
-
-  a {
-    // @extend .button;
-    // @extend .button-rounded;
-    padding: 0 .7em;
-    font-size: .8em;
-    height: 25px;
-    line-height: 25px;
-    color: $brand;
-
-    &:hover, &:visited, &:active, &:focus {
-      text-decoration: none;
-    }
-  }
-}
-
 .jPanelMenu-panel {
   @include box-shadow(0 10px 10px 0px rgba(black, .5));
 }

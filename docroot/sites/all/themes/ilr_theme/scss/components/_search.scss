@@ -4,24 +4,13 @@ header.search-engaged #header-region {
 }
 
 .search-button {
-  float: right;
-  a, a:hover {
-    text-decoration: none;
-  }
-  span {
-    display: block;
-    padding: 15px 15px 0 0;
+  @extend %header-btn;
+  a {
+    @include transition-duration(.3s);
     @extend %icon-search-thin;
-    @include adjust-font-size-to(30px);
-    color: white;
-
-    // Subsites move the search-button element to the
-    // #header-region
-    #header-region & {
-      padding-top: 0;
-      @extend %icon-search;
-      color: $brand;
-      @include adjust-font-size-to(20px);
+    margin-top: -2px;
+    [data-eq-state="regular-nav"]:not(.sticky) & {
+      @include adjust-font-size-to(30px);
     }
   }
 }
