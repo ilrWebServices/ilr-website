@@ -89,7 +89,9 @@ header {
   float: right;
   margin-top: 1em;
   [data-eq-state="regular-nav"]:not(.sticky) & {
-    margin-right: 1em;
+    body:not(.subsite) & {
+      margin-right: 1em;
+    }
   }
 
   a {
@@ -105,7 +107,6 @@ header {
     // to the #header-region
     #header-region & {
       color: $brand;
-      @include adjust-font-size-to(20px);
     }
   }
   #header-region & {

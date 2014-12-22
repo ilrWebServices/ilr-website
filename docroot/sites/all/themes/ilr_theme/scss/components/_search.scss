@@ -10,7 +10,9 @@ header.search-engaged #header-region {
     @extend %icon-search-thin;
     margin-top: -2px;
     [data-eq-state="regular-nav"]:not(.sticky) & {
-      @include adjust-font-size-to(30px);
+      body:not(.subsite) & {
+        @include adjust-font-size-to(30px);
+      }
     }
   }
 }

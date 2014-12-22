@@ -13,4 +13,8 @@
       text-decoration: none;
     }
   }
+  // Hide breadcrumbs on mobile version
+  [data-eq-state="mobile-nav"] & {
+    display: none;
+  }
 }

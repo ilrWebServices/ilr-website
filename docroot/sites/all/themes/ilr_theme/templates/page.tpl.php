@@ -15,7 +15,7 @@
     </div>
     <div id="search-form">
       <form action="/search" method="get" id="cu-search-form" accept-charset="UTF-8">
-        <input id="search-form-query" type="text" name="s" placeholder="Search ILR . . ." value="" size="20" maxlength="128" class="form-text" />
+        <input id="search-form-query" type="text" name="s" placeholder="Search" value="" size="20" maxlength="128" class="form-text" />
       </form>
     </div>
   </div>

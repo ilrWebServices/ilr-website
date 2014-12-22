@@ -60,7 +60,6 @@
   &.wrapped {
     #header-region { padding-bottom: .5em; }
     .subsite-header {
-      width: 75%;
       h2 {
         margin-bottom: 0;
         padding-bottom: 0;
@@ -73,8 +72,8 @@
       .subsite-header {
         width: 75%;
         h2 {
-          @include adjust-font-size-to(36px);
-          @include rhythm(.5,0,.5,0,36px);
+          @include adjust-font-size-to(22px);
+          @include rhythm(.5,0,0,0,22px);
           @include adjust-leading-to(.75);
         }
       }
@@ -90,13 +89,24 @@
   }
 }
 
+// Called from _mega_menu.scss
+// .subsite .menu-block-ilr-primary-menu:
 %sub-site-menu {
   float: right;
   ul.menu {
     margin: .8em 0 0 0;
     padding: 0;
-    .sticky & {
+    //@include adjust-font-size-to(14px);
+    @include rhythm(2,0,2,0,14px);
+
+    .wrapped & {
       margin: 0;
+      padding: .5em 0;
+    }
+
+    .sticky &  {
+      margin: 0;
+      padding: 0;
     }
 
     li {
