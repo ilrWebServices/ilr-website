@@ -112,7 +112,7 @@ function ilr_sub_sites_node_insert($node) {
  * Implements hook_page_build().
  */
 function ilr_sub_sites_page_build(&$page) {
-  if (_ilr_sub_sites_current_page_is_sub_site()) {
+  if (isset($page['header']) &&_ilr_sub_sites_current_page_is_sub_site()) {
     $block_view = module_invoke("ilr_sub_sites", "block_view", 'ilr_sub_site_header');
     $subsite_block = array();
     $subsite_block['subsite'] = array(
