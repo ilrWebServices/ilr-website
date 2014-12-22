@@ -26,7 +26,7 @@ function ilr_mega_menu_entity_info_alter(&$entity_info) {
  * Implements hook_entity_presave().
  */
 function ilr_mega_menu_entity_presave($entity, $type) {
-  if ($entity->type == 'mega_menu') {
+  if ($type == 'bean' && $entity->type == 'mega_menu') {
     drupal_set_message("Please be sure that any blocks added to <em>$entity->label</em> have been locked.", 'warning');
   }
 }
