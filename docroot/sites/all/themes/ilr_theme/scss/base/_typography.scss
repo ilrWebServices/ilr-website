@@ -35,6 +35,12 @@ h1 {
       color: $h1-link-hover;
     }
   }
+  &#page-title {
+    body.front &,
+    body.subsite-front & {
+      display: none;
+    }
+  }
 }
 
 h2 {
