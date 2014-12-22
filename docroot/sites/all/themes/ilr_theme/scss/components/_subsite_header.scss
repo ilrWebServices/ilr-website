@@ -1,4 +1,5 @@
 .subsite {
+  &.admin-menu header[data-eq-state="mobile-nav"] { top: 29px; }
   header {
     position: relative;
     top: 0;
@@ -67,6 +68,7 @@
     }
   }
   header[data-eq-state="mobile-nav"] {
+    position: fixed;
     #header-region {
       .subsite-header {
         width: 75%;
@@ -93,6 +95,9 @@
   ul.menu {
     margin: .8em 0 0 0;
     padding: 0;
+    .sticky & {
+      margin: 0;
+    }
 
     li {
       @include transition-duration(.5s);
@@ -104,5 +109,17 @@
         font-weight: 400;
       }
     }
+  }
+}
+
+#main {
+  body.subsite & {
+    @extend %page-with-sticky-subsite-header;
+  }
+}
+
+%page-with-sticky-subsite-header {
+  [data-eq-state="mobile-nav"] & {
+    margin-top: 105px;
   }
 }

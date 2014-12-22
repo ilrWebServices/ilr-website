@@ -21,81 +21,140 @@
   };
   Drupal.behaviors.ilr_theme_sticky_scroll = {
     attach: function (context, settings) {
-      var $stickyContainers;
       var $searchForm;
       var $headerButtons;
       var $offset;
+      var $currentWidth;
       var $submenuContainer;
+      var $stickyHeaderContainer;
+      var $stickyButtonContainer;
       var $submenuContentDiff;
       var $submenuOffset;
-      var $isMobileNav;
       var subsite;
+      var initialized;
+      var $isAdmin;
+      var $triggerClicked;
+      var widthChanged = true;
+      var stickyEngaged = false;
+      var $stickyContainers = [];
       var $body = $('body');
+      var timeout;
 
-      var configureSubsiteNav = function() {
+      /**
+       * Initializes containers, submenuContenDiff, submentOffset
+       * Create scroll listener
+       */
+      var initialize = function() {
         $(window).load(function() {
-          $isMobileNav = $('header').attr('data-eq-state') == 'mobile-nav';
-          $('.jpanel-trigger').click(function(){
-            subsiteNavPositioner();
-          });
-          subsiteNavPositioner();
-          // Set the max-width of the menu dynamically based on the number of items
-          var maxWidth = $('.menu-block-ilr-primary-menu li').text().length * 15;
-          $('.menu-block-ilr-primary-menu ul').css('max-width', maxWidth);
+          configureContainers();
+          positionSubsiteNav();
+          setMenuMaxWidth();
+          $isAdmin = $('body').hasClass('admin-menu');
 
-          var width = $(window).width();
-          $(window).resize(function(){
-            if($(this).width() != width){
-              width = $(this).width();
-              $isMobileNav = $('header').attr('data-eq-state') == 'mobile-nav';
-              subsiteNavPositioner();
-            }
-          });
-        });
-      }
-
-      var handleStickyElements = function(){
-        var scrollTop = $(window).scrollTop();
-        if (!$submenuContentDiff) {
           menuHeight = $('.menu-block-ilr-subnav > ul.menu').height();
           contentHeight = $('#content').height();
           $submenuContentDiff = contentHeight - menuHeight;
           $submenuOffset = (subsite) ? 50 : 85;
-        }
-        if ($($submenuContainer).is(":visible") && scrollTop < $submenuContentDiff) {
-          $('#sidebar-first').css('margin-top', scrollTop - $submenuOffset);
-        }
 
-        if (scrollTop > $offset) {
+          // Event Listeners
+          $('.jpanel-trigger').click(function(){
+            $triggerClicked = true;
+            positionSubsiteNav();
+          });
+
+          $(window).scroll(function() {
+            handleStickyElements();
+          });
+
+          $currentWidth = $(window).width();
+          $(window).resize(function(){
+            if($(this).width() != $currentWidth){
+              widthChanged = true;
+              $currentWidth = $(this).width();
+              positionSubsiteNav();
+              clearStickyContainers();
+              clearTimeout(timeout);
+              timeout = setTimeout(setStickyHeaderContainers, 200);
+            }
+          });
+          // Force a re-evaluation of the current sticky state
+          stickyEngaged = false;
+          handleStickyElements();
+          initialized = true;
+        });
+      }
+
+      var setMenuMaxWidth = function() {
+        if (isSubsite()) {
+          // Set the max-width of the menu dynamically based on the number of items
+          var maxWidth = $('.menu-block-ilr-primary-menu li').text().length * 15;
+          $('.menu-block-ilr-primary-menu ul').css('max-width', maxWidth);
+        }
+      }
+
+      /**
+       * Scroll function
+       * Compare scrolltop to offset (offset changes on subsite desktop version)
+       *
+       */
+      var handleStickyElements = function(){
+        var scrollTop = $(window).scrollTop();
+        $offset = getCurrentOffset();
+        if ($($submenuContainer).is(":visible") && scrollTop < $submenuContentDiff) {
+          updateSidebarPosition(scrollTop);
+        }
+        if (scrollTop > $offset && !stickyEngaged) {
           $stickyContainers.forEach(function(container) {
             container.addClass('sticky');
           });
-          if (subsite) {
-            $searchForm.appendTo('#header-region');
-            $headerButtons.appendTo('#header-region');
+          if (isSubsite() && !mobileNavActive()) {
+            if ($headerButtons) {
+              positionSearchBox();
+              $headerButtons.appendTo('#header-region');
+            }
           }
-        } else {
-          $stickyContainers.forEach(function(container) {
-            container.removeClass('sticky');
-          });
-          if (subsite){
-            $headerButtons.appendTo('header .container');
-            $searchForm.appendTo('header .container');
-          }
+          stickyEngaged = true;
+        } else if (scrollTop <= $offset && stickyEngaged) {
+          clearStickyContainers();
           $('#sidebar-first').css('margin-top', 0);
+          stickyEngaged = false;
         }
       };
 
-      var subsiteNavPositioner = function() {
-        var navOffset;
-        if ($isMobileNav) {
-          navOffset = ($($body).hasClass('sticky'))
-            ? $('#header-region').outerHeight()
-            : $('#page').offset().top;
-          $('#jPanelMenu-menu').css('margin-top',navOffset);
-        } else {
-          navOffset = $('.menu-block-ilr-primary-menu').offset().top;
-          if (navOffset > 150) {
+      var positionSearchBox = function() {
+        if (isSubsite() && !mobileNavActive()) {
+          $searchForm.appendTo('#header-region');
+        }
+      }
+
+      var updateSidebarPosition = function(scrollTop) {
+        var difference, position;
+        difference = scrollTop - $submenuOffset;
+        var position = (difference > 0) ? difference : 0;
+        $('#sidebar-first').css('margin-top', position);
+      }
+
+      /**
+       * Positions the mobile nav
+       * or the subsite main menu (based on width of title and menu)
+       * Called onpageload, when trigger clicked, when width changes
+       */
+      var positionSubsiteNav = function() {
+        if (mobileNavActive()) {
+          if (!$triggerClicked) {
+            return;
+          }
+          if ($body.hasClass('sticky')) {
+            $navOffset = $('header').outerHeight()
+            $navOffset += ($isAdmin) ? 29 : 0; // the admin menu is 29px tall
+          } else {
+            $navOffset = $('#page').offset().top;
+          }
+          $('#jPanelMenu-menu').css('margin-top',$navOffset);
+          $triggerClicked = false;
+        } else if (widthChanged) {
+          $navOffset = $('.menu-block-ilr-primary-menu').offset().top;
+          if ($navOffset > 150) {
             $stickyContainers.forEach(function(container) {
               container.addClass('wrapped');
             });
@@ -107,31 +166,71 @@
         }
       }
 
-
-      if ($('body').hasClass('subsite')) {
-        subsite = true;
-        $offset = $('#header-region').offset().top;
-        $stickyContainers = [
-          $('#header-region')
-        ];
-        configureSubsiteNav();
-      } else {
-        $offset = 0;
-        $stickyContainers = [
-          $('header'),
-        ];
+      var mobileNavActive = function() {
+        return $('header').attr('data-eq-state') == 'mobile-nav';
       }
-      $submenuContainer = $('#sidebar-first .menu-block-ilr-subnav');
-      $stickyContainers.push($('#block-menu-block-ilr-subnav'));
-      $stickyContainers.push($body);
-      $searchForm = $('#search-form');
-      $headerButtons = $('header .buttons');
 
-      $(window).scroll(function() {
-         handleStickyElements();
-      });
+      var getCurrentOffset = function() {
+        if (widthChanged) {
+          if (subsite && !mobileNavActive()) {
+            $offset = $('#header-region').offset().top;
+          } else {
+            $offset = 0;
+          }
+          widthChanged = false;
+        }
+        return $offset;
+      }
+
+      var isSubsite = function() {
+        if (!initialized) {
+          subsite = $body.hasClass('subsite');
+        }
+        return subsite;
+      }
+
+      var setStickyHeaderContainers = function() {
+        if (isSubsite()) {
+          $stickyHeaderContainer = (mobileNavActive())
+            ? $('header')
+            : $('#header-region')
+        } else {
+          $stickyHeaderContainer = $('header');
+        }
+        $stickyContainers = [
+          $('#block-menu-block-ilr-subnav'),
+          $body,
+          $stickyHeaderContainer,
+        ];
+        // Force a re-evaluation of the current sticky state
+        stickyEngaged = false;
+        handleStickyElements();
+      }
+
+      var clearStickyContainers = function() {
+        if($stickyContainers.length) {
+          $stickyContainers.forEach(function(container) {
+            container.removeClass('sticky');
+          });
+        }
+        if (isSubsite() && $headerButtons) {
+          $headerButtons.appendTo('header .container');
+          $searchForm.appendTo('header .container');
+        }
+      }
+
+      var configureContainers = function() {
+        setStickyHeaderContainers();
+        $submenuContainer = $('#sidebar-first .menu-block-ilr-subnav');
+        $searchForm = $('#search-form');
+        $headerButtons = $('header .buttons');
+      };
+
+
+      initialize();
     }
   };
+
   Drupal.behaviors.ilr_theme_search = {
     attach: function (context, settings) {
       $('.search-button a').click(function(e){

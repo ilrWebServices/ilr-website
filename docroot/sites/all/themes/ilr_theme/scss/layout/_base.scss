@@ -17,7 +17,7 @@
   @include transition-duration(.3s);
 
   body:not(.subsite) & {
-    @extend %sticky-header;
+    @extend %page-with-sticky-header;
   }
 
   &[data-eq-state="widescreen"] {
@@ -81,7 +81,7 @@
   }
 }
 
-%sticky-header {
+%page-with-sticky-header {
   margin-top: $header-height-small; // top-margins are here due to the fixed header
 
   [data-eq-state="regular-nav"] & {
