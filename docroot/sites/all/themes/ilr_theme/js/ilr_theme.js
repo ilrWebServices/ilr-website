@@ -31,6 +31,8 @@
       var $submenuContentDiff;
       var $submenuOffset;
       var subsite;
+      var $subsiteNavDefaultWidth;
+      var $subsiteTitlePercentageWidth;
       var initialized;
       var $isAdmin;
       var widthChanged = true;
@@ -46,7 +48,7 @@
       var initialize = function() {
         $(window).load(function() {
           configureContainers();
-          setMenuMaxWidth();
+          makeMenuWidthCalculations();
           $isAdmin = $('body').hasClass('admin-menu');
 
           menuHeight = $('.menu-block-ilr-subnav > ul.menu').height();
@@ -69,24 +71,36 @@
               widthChanged = true;
               $currentWidth = $(this).width();
               positionSubsiteNav();
-              clearStickyContainers();
               clearTimeout(timeout);
               timeout = setTimeout(setStickyHeaderContainers, 200);
             }
           });
           // Force a re-evaluation of the current sticky state
           stickyEngaged = false;
-          handleStickyElements();
           positionSubsiteNav();
+          widthChanged = true;
+          handleStickyElements();
           initialized = true;
         });
       }
 
-      var setMenuMaxWidth = function() {
+      /**
+       * Sets the max width for subsite menus (used when sticky)
+       * Sets the best % width for the title
+       */
+      var makeMenuWidthCalculations = function() {
         if (isSubsite()) {
-          // Set the max-width of the menu dynamically based on the number of items
-          var maxWidth = $('.menu-block-ilr-primary-menu li').text().length * 15;
+          var menuText = $('.menu-block-ilr-primary-menu li').text();
+          var title = $('.subsite-header').text();
+          $subsiteTitlePercentageWidth = Math.round(title.length / menuText.length * 100);
+          var maxWidth = menuText.length * 15;
           $('.menu-block-ilr-primary-menu ul').css('max-width', maxWidth);
+          if ($subsiteTitlePercentageWidth < 20) {
+            $subsiteTitlePercentageWidth = 35;
+          } else {
+            $('.subsite-header').css('width',$subsiteTitlePercentageWidth + '%');
+          }
+
         }
       }
 
@@ -116,7 +130,7 @@
           clearStickyContainers();
           $('#sidebar-first').css('margin-top', 0);
           stickyEngaged = false;
-          positionSubsiteNav();
+          setTimeout(positionSubsiteNav, 500);
         }
       };
 
@@ -140,17 +154,35 @@
        */
       var positionSubsiteNav = function() {
         if (isSubsite()) {
+          if (mobileNavActive()) {
+            $('.subsite-header').removeAttr('style');
+          }
           $navOffset = $('.menu-block-ilr-primary-menu').offset().top;
           if ($navOffset > 150) {
-            $stickyContainers.forEach(function(container) {
-              container.addClass('wrapped');
-            });
-          } else {
-            $stickyContainers.forEach(function(container) {
-              container.removeClass('wrapped');
-            });
+            if (!$subsiteNavDefaultWidth) {
+              $subsiteNavDefaultWidth = $('.menu-block-ilr-primary-menu').width();
+            }
+            if(!$('.wrapped').length) {
+              $stickyContainers.forEach(function(container) {
+                container.addClass('wrapped');
+              });
+            }
+            if (menuHasEnoughSpace()) {
+              $('.wrapped').removeClass('wrapped');
+              $('.subsite-header').removeAttr('style');
+            }
+          } else if ($navOffset != 0) {
+            $('.wrapped').removeClass('wrapped');
           }
         }
+      }
+
+      /**
+       * Dynamic calculation of how much space the menu needs in order
+       * to stop the clear provided by positionSubsiteNav (.wrapped) class
+       */
+      var menuHasEnoughSpace = function() {
+        return (Math.floor($currentWidth - $subsiteNavDefaultWidth) / $currentWidth * 100) > $subsiteTitlePercentageWidth;
       }
 
       var positionMobileNav = function() {
@@ -166,7 +198,8 @@
       var getCurrentOffset = function() {
         if (widthChanged) {
           if (subsite && !mobileNavActive()) {
-            $offset = $('#header-region').offset().top;
+            $offset = $('.menu-block-ilr-primary-menu ul.menu').offset().top;
+            $offset -= ($isAdmin) ? 29 : 0; // the admin menu is 29px tall
           } else {
             $offset = 0;
           }
@@ -183,6 +216,7 @@
       }
 
       var setStickyHeaderContainers = function() {
+        clearStickyContainers();
         if (isSubsite()) {
           $stickyHeaderContainer = (mobileNavActive())
             ? $('header')
@@ -215,11 +249,11 @@
       var configureContainers = function() {
         setStickyHeaderContainers();
         $submenuContainer = $('#sidebar-first .menu-block-ilr-subnav');
-        $searchForm = $('#search-form');
-        $headerButtons = $('header .buttons');
+        if (isSubsite()) {
+          $searchForm = $('#search-form');
+          $headerButtons = $('header .buttons');
+        }
       };
-
-
       initialize();
     }
   };

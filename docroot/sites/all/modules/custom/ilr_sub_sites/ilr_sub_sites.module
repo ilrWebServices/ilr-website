@@ -22,7 +22,14 @@ function ilr_sub_sites_block_view($delta = '') {
   $subsite_name = _ilr_sub_sites_get_current_subsite_name();
   $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
   $block['content'] = '<div class="subsite-header">';
-  $block['content'] .= "<h2><a href='$href'>$subsite_name</a></h2>";
+  $menu_name = _ilr_sub_sites_get_current_menu_name();
+  if ($logo = _ilr_sub_sites_get_site_logo($menu_name, $subsite_name)) {
+    $block['content'] .= "<h2 class='$subsite_name image'><a href='$href'>$logo</a></h2>";
+  }
+  else {
+    $block['content'] .= "<h2><a href='$href'>$subsite_name</a></h2>";
+  }
+
   $block['content'] .= '</div>';
   return $block;
 }
@@ -131,7 +138,9 @@ function ilr_sub_sites_page_build(&$page) {
 function ilr_sub_sites_preprocess_html(&$variables) {
   if (_ilr_sub_sites_current_page_is_sub_site()) {
     // Add subsite classes
-    $variables['classes_array'][] = 'subsite';
+    $site = _ilr_sub_sites_get_current_menu_name();
+    $variables['classes_array'][] = "subsite $site";
+
     if (_ilr_sub_sites_is_sub_site_homepage()) {
       $variables['classes_array'][] = 'subsite-front';
     }
@@ -285,6 +294,21 @@ function _ilr_sub_sites_get_menu_name_from_uri($uri) {
   }
   return $name;
 }
+
+function _ilr_sub_sites_get_site_logo($menu_name, $subsite_name) {
+  $logos = array(
+    'worker-institute' => 'logo-worker-institute',
+  );
+  if (array_key_exists($menu_name, $logos)) {
+    $image = '<img src="/' . drupal_get_path('theme', 'ilr_theme') . '/images/'.$logos[$menu_name].'.svg"';
+    $alt = "Cornell University | ILR School | $subsite_name";
+    $image .= " alt='$alt' title='$alt'>";
+    return $image;
+  }
+  return NULL;
+}
+
+
 
 function _ilr_sub_sites_get_subsite_homepage_alias() {
   $menu_name = _ilr_sub_sites_get_current_menu_name();
