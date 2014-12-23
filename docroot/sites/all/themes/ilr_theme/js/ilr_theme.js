@@ -31,6 +31,8 @@
       var $submenuContentDiff;
       var $submenuOffset;
       var subsite;
+      var $subsiteNavDefaultWidth;
+      var $subsiteTitlePercentageWidth;
       var initialized;
       var $isAdmin;
       var widthChanged = true;
@@ -46,7 +48,7 @@
       var initialize = function() {
         $(window).load(function() {
           configureContainers();
-          setMenuMaxWidth();
+          makeMenuWidthCalculations();
           $isAdmin = $('body').hasClass('admin-menu');
 
           menuHeight = $('.menu-block-ilr-subnav > ul.menu').height();
@@ -82,11 +84,21 @@
         });
       }
 
-      var setMenuMaxWidth = function() {
+      /**
+       * Sets the max width for subsite menus (used when sticky)
+       * Sets the best % width for the title
+       */
+      var makeMenuWidthCalculations = function() {
         if (isSubsite()) {
-          // Set the max-width of the menu dynamically based on the number of items
-          var maxWidth = $('.menu-block-ilr-primary-menu li').text().length * 15;
+          var menuText = $('.menu-block-ilr-primary-menu li').text();
+          var title = $('.subsite-header').text();
+          $subsiteTitlePercentageWidth = Math.round(title.length / menuText.length * 100);
+          var maxWidth = menuText.length * 15;
           $('.menu-block-ilr-primary-menu ul').css('max-width', maxWidth);
+          if ($subsiteTitlePercentageWidth < 20) {
+            $subsiteTitlePercentageWidth = 35;
+          }
+          $('.subsite-header').css('width',$subsiteTitlePercentageWidth + '%');
         }
       }
 
@@ -116,7 +128,7 @@
           clearStickyContainers();
           $('#sidebar-first').css('margin-top', 0);
           stickyEngaged = false;
-          positionSubsiteNav();
+          setTimeout(positionSubsiteNav, 500);
         }
       };
 
@@ -139,16 +151,36 @@
        * Called onpageload, when trigger clicked, when width changes
        */
       var positionSubsiteNav = function() {
-        if (isSubsite() && !mobileNavActive()) {
+        if (isSubsite()) {
+          if (mobileNavActive()) {
+            $('.subsite-header').removeAttr('style');
+          }
           $navOffset = $('.menu-block-ilr-primary-menu').offset().top;
           if ($navOffset > 150) {
-            $stickyContainers.forEach(function(container) {
-              container.addClass('wrapped');
-            });
+            if (!$subsiteNavDefaultWidth) {
+              $subsiteNavDefaultWidth = $('.menu-block-ilr-primary-menu').width();
+            }
+            if(!$('.wrapped').length) {
+              $stickyContainers.forEach(function(container) {
+                container.addClass('wrapped');
+              });
+            }
+            if (menuHasEnoughSpace()) {
+              $('.wrapped').removeClass('wrapped');
+              $('.subsite-header').removeAttr('style');
+            }
           } else {
             $('.wrapped').removeClass('wrapped');
           }
         }
+      }
+
+      /**
+       * Dynamic calculation of how much space the menu needs in order
+       * to stop the clear provided by positionSubsiteNav (.wrapped) class
+       */
+      var menuHasEnoughSpace = function() {
+        return ($currentWidth - $subsiteNavDefaultWidth) / $currentWidth * 100 > $subsiteTitlePercentageWidth;
       }
 
       var positionMobileNav = function() {
@@ -215,11 +247,11 @@
       var configureContainers = function() {
         setStickyHeaderContainers();
         $submenuContainer = $('#sidebar-first .menu-block-ilr-subnav');
-        $searchForm = $('#search-form');
-        $headerButtons = $('header .buttons');
+        if (isSubsite()) {
+          $searchForm = $('#search-form');
+          $headerButtons = $('header .buttons');
+        }
       };
-
-
       initialize();
     }
   };
