@@ -47,7 +47,6 @@
       var initialize = function() {
         $(window).load(function() {
           configureContainers();
-          positionSubsiteNav();
           setMenuMaxWidth();
           $isAdmin = $('body').hasClass('admin-menu');
 
@@ -80,6 +79,8 @@
           // Force a re-evaluation of the current sticky state
           stickyEngaged = false;
           handleStickyElements();
+          widthChanged = true; // Set this to true to force the positioner to run on load
+          positionSubsiteNav();
           initialized = true;
         });
       }
