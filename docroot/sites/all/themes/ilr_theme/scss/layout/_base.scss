@@ -25,8 +25,7 @@
   }
 
   &[data-eq-state="450"],
-  &[data-eq-state="768"],
-  &[data-eq-state="900"] {
+  &[data-eq-state="768"] {
     #sidebar-second article {
       @extend %two-column;
     }

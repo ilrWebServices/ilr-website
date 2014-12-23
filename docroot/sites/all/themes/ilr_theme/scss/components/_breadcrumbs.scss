@@ -14,9 +14,11 @@
     }
   }
   // Hide breadcrumbs on mobile version
-  [data-eq-state="mobile-nav"] &,
-  body.front &,
-  body.subsite-front & {
-    display: none;
+  #main:not([data-eq-state="768"]) & {
+    [data-eq-state="mobile-nav"] &,
+    body.front &,
+    body.subsite-front & {
+      display: none;
+    }
   }
 }
