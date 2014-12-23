@@ -51,10 +51,14 @@
       margin-bottom: 0;
       font-family: $font;
       font-weight: 300;
-      color: $subsite-heading;
       @include adjust-font-size-to(40px);
       @include rhythm(2,0,2,0,40px);
       @include adjust-leading-to(.75);
+
+      a, a:hover, a:visited, a:active {
+        color: $subsite-heading;
+        text-decoration: none;
+      }
     }
   }
   &.wrapped {

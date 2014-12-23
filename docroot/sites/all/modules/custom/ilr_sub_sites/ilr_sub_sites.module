@@ -20,8 +20,9 @@ function ilr_sub_sites_block_info($delta = '') {
 function ilr_sub_sites_block_view($delta = '') {
   $block = array();
   $subsite_name = _ilr_sub_sites_get_current_subsite_name();
+  $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
   $block['content'] = '<div class="subsite-header">';
-  $block['content'] .= "<h2>$subsite_name</h2>";
+  $block['content'] .= "<h2><a href='$href'>$subsite_name</a></h2>";
   $block['content'] .= '</div>';
   return $block;
 }
@@ -283,6 +284,17 @@ function _ilr_sub_sites_get_menu_name_from_uri($uri) {
     $name = substr($name, 0, 30);
   }
   return $name;
+}
+
+function _ilr_sub_sites_get_subsite_homepage_alias() {
+  $menu_name = _ilr_sub_sites_get_current_menu_name();
+  $path = db_select('menu_links', 'ml')
+    ->condition('ml.plid', '0')
+    ->condition('ml.menu_name',$menu_name)
+    ->fields('ml', array('link_path'))
+    ->execute()
+    ->fetchField();
+  return drupal_get_path_alias($path);
 }
 
 /**
