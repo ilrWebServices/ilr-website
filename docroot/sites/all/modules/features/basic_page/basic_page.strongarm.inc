@@ -63,6 +63,9 @@ function basic_page_strongarm() {
         'preview' => array(
           'weight' => '1',
         ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(
         'file' => array(
