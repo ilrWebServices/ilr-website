@@ -8,6 +8,7 @@
     @extend .clearfix;
     background: white;
     position: relative;
+    padding-bottom: .5em;
 
     @include transition-duration(.3s);
 
@@ -62,7 +63,6 @@
     }
   }
   &.wrapped {
-    #header-region { padding-bottom: .5em; }
     .subsite-header {
       h2 {
         margin-bottom: 0;

@@ -33,7 +33,6 @@
       var subsite;
       var initialized;
       var $isAdmin;
-      var $triggerClicked;
       var widthChanged = true;
       var stickyEngaged = false;
       var $stickyContainers = [];
@@ -57,8 +56,7 @@
 
           // Event Listeners
           $('.jpanel-trigger').click(function(){
-            $triggerClicked = true;
-            positionSubsiteNav();
+            positionMobileNav();
           });
 
           $(window).scroll(function() {
@@ -79,7 +77,6 @@
           // Force a re-evaluation of the current sticky state
           stickyEngaged = false;
           handleStickyElements();
-          widthChanged = true; // Set this to true to force the positioner to run on load
           positionSubsiteNav();
           initialized = true;
         });
@@ -111,7 +108,7 @@
           if (isSubsite() && !mobileNavActive()) {
             if ($headerButtons) {
               positionSearchBox();
-              $headerButtons.appendTo('#header-region');
+              $headerButtons.appendTo('.region-header');
             }
           }
           stickyEngaged = true;
@@ -119,6 +116,7 @@
           clearStickyContainers();
           $('#sidebar-first').css('margin-top', 0);
           stickyEngaged = false;
+          positionSubsiteNav();
         }
       };
 
@@ -141,19 +139,7 @@
        * Called onpageload, when trigger clicked, when width changes
        */
       var positionSubsiteNav = function() {
-        if (mobileNavActive()) {
-          if (!$triggerClicked) {
-            return;
-          }
-          if ($body.hasClass('sticky')) {
-            $navOffset = $('header').outerHeight()
-            $navOffset += ($isAdmin) ? 29 : 0; // the admin menu is 29px tall
-          } else {
-            $navOffset = $('#page').offset().top;
-          }
-          $('#jPanelMenu-menu').css('margin-top',$navOffset);
-          $triggerClicked = false;
-        } else if (widthChanged) {
+        if (isSubsite()) {
           $navOffset = $('.menu-block-ilr-primary-menu').offset().top;
           if ($navOffset > 150) {
             $stickyContainers.forEach(function(container) {
@@ -165,6 +151,12 @@
             });
           }
         }
+      }
+
+      var positionMobileNav = function() {
+        $navOffset = $('header').outerHeight();
+        $navOffset += ($isAdmin) ? 29 : 0; // the admin menu is 29px tall
+        $('#jPanelMenu-menu').css('margin-top',$navOffset);
       }
 
       var mobileNavActive = function() {
