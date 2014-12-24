@@ -35,7 +35,7 @@ function ilr_settings_strongarm() {
     'respondxl' => 1339.84375,
     'respondxl2' => 2344.7265625,
     'respondxl3' => 4103.271484375,
-    'respondxl4' => 7180.72509765625,
+    'respondxl4' => 7180.7250976562,
   );
   $export['borealis_responsive_builds'] = $strongarm;
 
@@ -204,6 +204,30 @@ function ilr_settings_strongarm() {
   $strongarm->name = 'date_default_timezone';
   $strongarm->value = 'America/New_York';
   $export['date_default_timezone'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'focal_point_enabled_for';
+  $strongarm->value = array(
+    'image' => 'image',
+    'media' => 'media',
+  );
+  $export['focal_point_enabled_for'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'focal_point_test_drive_focal_point';
+  $strongarm->value = '42,28';
+  $export['focal_point_test_drive_focal_point'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'focal_point_test_drive_image';
+  $strongarm->value = '1';
+  $export['focal_point_test_drive_image'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
