@@ -17,6 +17,7 @@ features[field_instance][] = node-spotlight-body
 features[field_instance][] = node-spotlight-field_blocks
 features[field_instance][] = node-spotlight-field_campaign_intro
 features[field_instance][] = node-spotlight-field_campaign_title
+features[field_instance][] = node-spotlight-field_category_type
 features[field_instance][] = node-spotlight-field_image
 features[field_instance][] = node-spotlight-field_tags
 features[node][] = spotlight

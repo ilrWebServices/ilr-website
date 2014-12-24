@@ -65,7 +65,7 @@ function spotlight_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -121,7 +121,7 @@ function spotlight_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -236,6 +236,54 @@ function spotlight_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-spotlight-field_category_type'
+  $field_instances['node-spotlight-field_category_type'] = array(
+    'bundle' => 'spotlight',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Category types are used in the theme as [category_type] / [primary_tag]',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 6,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_category_type',
+    'label' => 'Category Type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 5,
     ),
   );
 
@@ -371,7 +419,7 @@ function spotlight_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -381,6 +429,8 @@ function spotlight_field_default_field_instances() {
   t('Body');
   t('Campaign Intro');
   t('Campaign Title');
+  t('Category Type');
+  t('Category types are used in the theme as [category_type] / [primary_tag]');
   t('Main Image');
   t('Tags');
   t('The Campaign Intro is an optional, 1-2 sentence lead-in for the current campaign. ');

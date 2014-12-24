@@ -63,6 +63,54 @@ function student_portraits_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-student_portrait-field_category_type'
+  $field_instances['node-student_portrait-field_category_type'] = array(
+    'bundle' => 'student_portrait',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Category types are used in the theme as [category_type] / [primary_tag]',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 8,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_category_type',
+    'label' => 'Category Type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-student_portrait-field_expected_graduation_date'
   $field_instances['node-student_portrait-field_expected_graduation_date'] = array(
     'bundle' => 'student_portrait',
@@ -452,6 +500,8 @@ function student_portraits_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Blurb');
   t('Body');
+  t('Category Type');
+  t('Category types are used in the theme as [category_type] / [primary_tag]');
   t('Class Year');
   t('ILR Experience');
   t('Image');

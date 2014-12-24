@@ -40,6 +40,9 @@ function news_strongarm() {
         'path' => array(
           'weight' => '6',
         ),
+        'redirect' => array(
+          'weight' => '10',
+        ),
       ),
       'display' => array(),
     ),

@@ -10,6 +10,54 @@
 function promo_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-promo-field_category_type'
+  $field_instances['node-promo-field_category_type'] = array(
+    'bundle' => 'promo',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Category types are used in the theme as [category_type] / [primary_tag]',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 6,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_category_type',
+    'label' => 'Category Type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-promo-field_image'
   $field_instances['node-promo-field_image'] = array(
     'bundle' => 'promo',
@@ -271,7 +319,7 @@ function promo_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -402,6 +450,8 @@ function promo_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Category Type');
+  t('Category types are used in the theme as [category_type] / [primary_tag]');
   t('Image');
   t('Internal Link');
   t('Link Type');

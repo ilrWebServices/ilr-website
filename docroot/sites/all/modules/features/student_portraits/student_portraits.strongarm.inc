@@ -43,6 +43,9 @@ function student_portraits_strongarm() {
         'path' => array(
           'weight' => '1',
         ),
+        'redirect' => array(
+          'weight' => '11',
+        ),
       ),
       'display' => array(),
     ),

@@ -643,6 +643,54 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-basic_page-field_category_type'
+  $field_instances['node-basic_page-field_category_type'] = array(
+    'bundle' => 'basic_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Category types are used in the theme as [category_type] / [primary_tag] ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 5,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_category_type',
+    'label' => 'Category Type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-basic_page-field_editor_notes'
   $field_instances['node-basic_page-field_editor_notes'] = array(
     'bundle' => 'basic_page',
@@ -802,7 +850,7 @@ function basic_page_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 32,
+      'weight' => 8,
     ),
   );
 
@@ -813,6 +861,8 @@ function basic_page_field_default_field_instances() {
   t('Blocks');
   t('Body');
   t('Caption');
+  t('Category Type');
+  t('Category types are used in the theme as [category_type] / [primary_tag] ');
   t('Content');
   t('Content Bottom Region');
   t('Content Region');

@@ -67,7 +67,61 @@ function youtube_videos_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 31,
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-youtube_video-field_category_type'
+  $field_instances['node-youtube_video-field_category_type'] = array(
+    'bundle' => 'youtube_video',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Category types are used in the theme as [category_type] / [primary_tag]',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 5,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_category_type',
+    'label' => 'Category Type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 4,
     ),
   );
 
@@ -127,7 +181,69 @@ function youtube_videos_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 36,
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-youtube_video-field_playlists'
+  $field_instances['node-youtube_video-field_playlists'] = array(
+    'bundle' => 'youtube_video',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 3,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_playlists',
+    'label' => 'Playlists',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 7,
     ),
   );
 
@@ -187,7 +303,7 @@ function youtube_videos_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 33,
+      'weight' => 5,
     ),
   );
 
@@ -225,6 +341,7 @@ function youtube_videos_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 3,
       ),
       'reference_field' => array(
         'label' => 'hidden',
@@ -257,14 +374,17 @@ function youtube_videos_field_default_field_instances() {
       'module' => 'youtube',
       'settings' => array(),
       'type' => 'youtube',
-      'weight' => 34,
+      'weight' => 6,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
+  t('Category Type');
+  t('Category types are used in the theme as [category_type] / [primary_tag]');
   t('Duration');
+  t('Playlists');
   t('Tags');
   t('Youtube Video');
 
