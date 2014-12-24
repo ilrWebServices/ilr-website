@@ -105,7 +105,7 @@ function tagged_content_block_query_random_alter($query) {
 
 function _tagged_content_block_add_category_heading(&$variables) {
   $type = $variables['type'];
-  $category = _tagged_content_block_get_category_by_type($type);
+  $category = _tagged_content_block_get_category_type($variables['node']);
   $content_type = _tagged_content_block_get_hyphened_type($type);
   $primary_tag = _tagged_content_block_get_primary_term_for_node($variables['node']);
   $variables['content']['category']['#markup'] = "<h3 class='category $content_type'>$category / $primary_tag</h3>";
@@ -159,16 +159,26 @@ function _tagged_content_block_generate_thumbnail_markup($text, $url, $content_t
   return $markup;
 }
 
-function _tagged_content_block_get_category_by_type($type) {
+function _tagged_content_block_get_category_type($node) {
+  $wrapper = entity_metadata_wrapper('node',$node);
+  if($term = $wrapper->field_category_type->value()) {
+    return $term->name;
+  }
+  return _tagged_content_block_get_default_category_type($wrapper->type->value());
+}
+
+function _tagged_content_block_get_default_category_type($content_type) {
   $categories = array(
-    'basic_page'          => 'content',
+    'basic_page'          => 'focus',
     'news_item'           => 'news',
     'promo'               => 'highlights',
     'spotlight'           => 'spotlight',
     'student_portrait'    => 'student portrait',
     'youtube_video'       => 'video',
   );
-  return isset($categories[$type])? $categories[$type] : str_replace('_', ' ', $type);
+  return isset($categories[$content_type])
+    ? $categories[$content_type]
+    : str_replace('_', ' ', $content_type);
 }
 
 function _tagged_content_block_get_event_details($url) {
