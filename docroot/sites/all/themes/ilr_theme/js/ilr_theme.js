@@ -38,6 +38,7 @@
       var widthChanged = true;
       var stickyEngaged = false;
       var $stickyContainers = [];
+      var thrashRiskFlag = false;
       var $body = $('body');
       var timeout;
 
@@ -49,6 +50,7 @@
         $(window).load(function() {
           configureContainers();
           makeMenuWidthCalculations();
+          checkForLayoutThrashing();
           $isAdmin = $('body').hasClass('admin-menu');
 
           menuHeight = $('.menu-block-ilr-subnav > ul.menu').height();
@@ -61,9 +63,11 @@
             positionMobileNav();
           });
 
-          $(window).scroll(function() {
-            handleStickyElements();
-          });
+          if (!thrashRiskFlag) {
+            $(window).scroll(function() {
+              handleStickyElements();
+            });
+          }
 
           $currentWidth = $(window).width();
           $(window).resize(function(){
@@ -82,7 +86,16 @@
           handleStickyElements();
           initialized = true;
         });
-      }
+      };
+
+      var checkForLayoutThrashing = function(){
+        var requiredDifference;
+        var heightDifference = $('#page').height() - $(window).height();
+        requiredDifference = (isSubsite()) ? 0 : -200; //these values are based on testing; further edits may be required
+        if (heightDifference < requiredDifference) {
+          thrashRiskFlag = true;
+        }
+      };
 
       /**
        * Sets the max width for subsite menus (used when sticky)
@@ -102,8 +115,19 @@
           }
 
         }
-      }
+      };
 
+      // // Read
+      // var h1 = element1.clientHeight;
+
+      // // Write
+      // requestAnimationFrame(function() {
+      //   element1.style.height = (h1 * 2) + 'px';
+
+      //   // We may want to read the new
+      //   // height after it has been set
+      //   var height = element1.clientHeight;
+      // });
       /**
        * Scroll function
        * Compare scrolltop to offset (offset changes on subsite desktop version)
@@ -114,6 +138,9 @@
         $offset = getCurrentOffset();
         if ($($submenuContainer).is(":visible") && scrollTop < $submenuContentDiff) {
           updateSidebarPosition(scrollTop);
+        }
+        if (thrashRiskFlag) {
+          return;
         }
         if (scrollTop > $offset && !stickyEngaged) {
           $stickyContainers.forEach(function(container) {
