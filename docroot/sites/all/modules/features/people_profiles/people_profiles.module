@@ -33,6 +33,18 @@ function people_profiles_preprocess_node(&$variables) {
       _people_profiles_process_faculty_view($variables);
     }
     _people_profiles_process_address($variables);
+
+    // Process departments
+    if (isset($variables['content']['field_academic_department']) && isset($variables['content']['field_department'])) {
+      $academic_departments = _people_profiles_get_faculty_departments();
+      $assigned_department = $wrapper->field_academic_department->value();
+      if (array_key_exists($assigned_department, $academic_departments)) {
+        unset($variables['content']['field_department']);
+      } else {
+        unset($variables['content']['field_academic_department']);
+      }
+
+    }
   }
 }
 
@@ -286,6 +298,8 @@ function _people_profiles_activity_insight_options_list() {
     //'field_ai_outreach_activities' => '',
     'field_ai_teaching_statement' => 'Teaching Statement',
     'field_ai_research_statement' => 'Research Statement',
+    'field_ai_service_statement' => 'Service Statement',
+    'field_ai_outreach_statement' => 'Outreach Statement',
     'field_ai_publications' => 'Publications',
     'field_ai_professional_activities' => 'Professional Activities',
     'field_ai_honors_awards' => 'Honors and Awards',
@@ -348,6 +362,7 @@ function _people_profiles_find_profile_by_netid($netId) {
 
 function _people_profiles_get_faculty_departments() {
   $department_names = array(
+    "Economics",
     "Human Resource Studies",
     "International and Comparative Labor",
     "Labor Relations, Law, and History",

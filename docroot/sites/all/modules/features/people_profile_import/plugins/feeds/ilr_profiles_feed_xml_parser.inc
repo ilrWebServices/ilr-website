@@ -31,6 +31,9 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
         $field_values['title'] = $this->setProfileTitle($person);
         $field_values['field_netid'] = (string) $person->netID;
         $field_values['field_email'] = (string) $person->ldap_email; // Without this, field is being deleted
+        $field_values['field_academic_department'] = $this->getAcademicDepartments($person);
+        $field_values['field_use_ai_data'] = 1;
+
         // Then loop through AI values and faculty_on_leave
         foreach ($mapped_fields as $xml_key => $field_name) {
           if (strpos($field_name, 'field_ai') === 0
@@ -72,7 +75,9 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
     if ($type == 'faculty' && in_array($field_name, $this->getFieldsWithLineBreaks())) {
       $prepared = preg_replace('/\n(\s*\n)+/', '</p><p>', $prepared);
       $prepared = preg_replace('/\n/', '<br>', $prepared);
-      $prepared = '<p>'.$prepared.'</p>';
+      if (strlen($prepared)) {
+        $prepared = '<p>'.$prepared.'</p>';
+      }
     }
     return $prepared;
   }
@@ -178,7 +183,12 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
   private function getAcademicDepartments($person) {
     $departments = array();
     foreach ($person->departments->dept as $department) {
+      // For now, skip all extension departments
+      if (strpos($department, 'Ext-') !== FALSE) {
+        continue;
+      }
       $sanitized = preg_replace('/\s+/', '_', (string)$department);
+      $sanitized = str_replace('-ILR', '', $sanitized);
       $sanitized = strtolower($sanitized);
       $departments[] = $sanitized;
     }
