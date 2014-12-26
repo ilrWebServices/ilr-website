@@ -1,0 +1,64 @@
+body.node-type-people-profile {
+  #main {
+    @extend %people-profile;
+  }
+}
+
+%people-profile {
+
+  #breadcrumb { display: none; }
+  @include add-grid(12);
+
+  #page-title {
+    display: none;
+  }
+  //@include add-gutter(1/3);
+  // @include sgs-change('debug', true);
+  // @include background-grid();
+  #content {
+    @include add-grid(3 9);
+    @include add-gutter(1);
+    //@include grid-span(1);
+    .profile-highlighted {
+      @extend .clearfix;
+      @include grid-span(2);
+      background: white;
+      @include trailer(2);
+
+      .field-name-field-profile-image {
+        @extend %two-column;
+      }
+      .group-title-and-focus {
+        @extend %two-column;
+        @include leader(2);
+        .crumb {
+          text-transform: uppercase;
+          color: $spotlight-color;
+          @include adjust-font-size-to(14px);
+        }
+        .field-name-field-working-title {
+          font-weight: bold;
+        }
+      }
+    }
+    .group-main-content {
+      @include grid-span(1,2);
+    }
+    .profile-sidebar {
+      @include grid-span(1);
+      clear: left;
+    }
+  }
+
+  #sidebar-first {
+    display: none;
+  }
+
+  #content-bottom {
+    @include grid-span(2);
+    clear: both;
+    .block-bean article {
+      @extend %three-column;
+    }
+  }
+}

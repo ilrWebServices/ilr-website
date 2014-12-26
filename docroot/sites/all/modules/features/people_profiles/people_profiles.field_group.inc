@@ -211,6 +211,45 @@ function people_profiles_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_main_content|node|people_profile|default';
+  $field_group->group_name = 'group_main_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'people_profile';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Main Content',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_ai_honors_awards',
+      1 => 'field_ai_overview',
+      2 => 'field_ai_professional_activities',
+      3 => 'field_ai_publications',
+      4 => 'field_ai_research_statement',
+      5 => 'field_ai_teaching_statement',
+      6 => 'field_ilrweb_overview',
+      7 => 'field_ilrweb_publications',
+      8 => 'field_ilrweb_publications_file',
+      9 => 'field_ilrweb_vita_html',
+      10 => 'field_ai_service_statement',
+      11 => 'field_ai_outreach_statement',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'element' => 'div',
+        'classes' => 'group-main-content field-group-html-element',
+        'attributes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_main_content|node|people_profile|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_people_profile_tabs|node|people_profile|form';
   $field_group->group_name = 'group_people_profile_tabs';
   $field_group->entity_type = 'node';
@@ -235,6 +274,102 @@ function people_profiles_field_group_info() {
     ),
   );
   $export['group_people_profile_tabs|node|people_profile|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_profile_highlighted|node|people_profile|default';
+  $field_group->group_name = 'group_profile_highlighted';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'people_profile';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Highlighted',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_profile_image',
+      1 => 'group_title_and_focus',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Highlighted',
+      'instance_settings' => array(
+        'classes' => 'profile-highlighted field-group-html-element',
+        'element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_profile_highlighted|node|people_profile|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_profile_sidebar|node|people_profile|default';
+  $field_group->group_name = 'group_profile_sidebar';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'people_profile';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sidebar',
+    'weight' => '18',
+    'children' => array(
+      0 => 'field_address_line_1',
+      1 => 'field_address_line_2',
+      2 => 'field_ai_links',
+      3 => 'field_ai_other_expertise',
+      4 => 'field_areas_of_expertise',
+      5 => 'field_email',
+      6 => 'field_fax',
+      7 => 'field_ilrweb_vita_file',
+      8 => 'field_local_address',
+      9 => 'field_phone',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Sidebar',
+      'instance_settings' => array(
+        'classes' => 'profile-sidebar',
+        'element' => 'div',
+        'attributes' => '',
+        'required_fields' => 1,
+      ),
+      'formatter' => '',
+    ),
+  );
+  $export['group_profile_sidebar|node|people_profile|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_title_and_focus|node|people_profile|default';
+  $field_group->group_name = 'group_title_and_focus';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'people_profile';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_profile_highlighted';
+  $field_group->data = array(
+    'label' => 'Title and Focus',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_academic_department',
+      1 => 'field_department',
+      2 => 'field_working_title',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'element' => 'div',
+        'classes' => 'group-title-and-focus field-group-html-element',
+        'attributes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_title_and_focus|node|people_profile|default'] = $field_group;
 
   return $export;
 }
