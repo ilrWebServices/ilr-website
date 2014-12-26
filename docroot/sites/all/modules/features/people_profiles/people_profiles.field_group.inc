@@ -34,6 +34,8 @@ function people_profiles_field_group_info() {
       8 => 'field_areas_of_expertise',
       9 => 'field_use_ai_data',
       10 => 'field_visibility_settings',
+      11 => 'field_ai_service_statement',
+      12 => 'field_ai_outreach_statement',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

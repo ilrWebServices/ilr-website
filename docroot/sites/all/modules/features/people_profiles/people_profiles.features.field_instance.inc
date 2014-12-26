@@ -47,7 +47,7 @@ function people_profiles_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_academic_department',
-    'label' => 'Academic Department(s)',
+    'label' => 'Academic Department',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -221,7 +221,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 53,
+      'weight' => 55,
     ),
   );
 
@@ -275,7 +275,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 56,
+      'weight' => 58,
     ),
   );
 
@@ -330,6 +330,59 @@ function people_profiles_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 49,
+    ),
+  );
+
+  // Exported field_instance: 'node-people_profile-field_ai_outreach_statement'
+  $field_instances['node-people_profile-field_ai_outreach_statement'] = array(
+    'bundle' => 'people_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ai_outreach_statement',
+    'label' => 'Outreach Statement',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 53,
     ),
   );
 
@@ -437,7 +490,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 52,
+      'weight' => 54,
     ),
   );
 
@@ -491,7 +544,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 54,
+      'weight' => 56,
     ),
   );
 
@@ -551,6 +604,59 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-people_profile-field_ai_service_statement'
+  $field_instances['node-people_profile-field_ai_service_statement'] = array(
+    'bundle' => 'people_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ai_service_statement',
+    'label' => 'Service Statement',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 52,
+    ),
+  );
+
   // Exported field_instance: 'node-people_profile-field_ai_teaching_statement'
   $field_instances['node-people_profile-field_ai_teaching_statement'] = array(
     'bundle' => 'people_profile',
@@ -601,7 +707,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 55,
+      'weight' => 57,
     ),
   );
 
@@ -1575,7 +1681,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,
@@ -1730,7 +1836,7 @@ function people_profiles_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('AI Field Visibility');
   t('AI Links');
-  t('Academic Department(s)');
+  t('Academic Department');
   t('Address Line 1');
   t('Address Line 2');
   t('Areas of Expertise');
@@ -1754,6 +1860,7 @@ function people_profiles_field_default_field_instances() {
   t('Local Address');
   t('NetID');
   t('Other Areas of Expertise');
+  t('Outreach Statement');
   t('Overview');
   t('Phone');
   t('Professional Activities');
@@ -1762,6 +1869,7 @@ function people_profiles_field_default_field_instances() {
   t('Publications');
   t('Publications File');
   t('Research Statement');
+  t('Service Statement');
   t('Teaching Statement');
   t('Use AI Data');
   t('Vita File');
