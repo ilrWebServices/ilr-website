@@ -254,6 +254,7 @@ function _people_profiles_process_staff_form(&$form) {
     'field_ilrweb_vita_file',
     'field_ilrweb_vita_html',
     'field_academic_department',
+    'field_faculty_on_leave',
   );
   foreach ($form as $field_name => $value) {
     if (in_array($field_name, $additional_faculty_fields)) {
