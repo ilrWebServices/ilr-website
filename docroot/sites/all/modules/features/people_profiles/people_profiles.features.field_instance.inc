@@ -10,59 +10,6 @@
 function people_profiles_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-people_profile-field_academic_department'
-  $field_instances['node-people_profile-field_academic_department'] = array(
-    'bundle' => 'people_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 4,
-      ),
-      'highlighted' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_academic_department',
-    'label' => 'Academic Department',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 30,
-    ),
-  );
-
   // Exported field_instance: 'node-people_profile-field_address_line_1'
   $field_instances['node-people_profile-field_address_line_1'] = array(
     'bundle' => 'people_profile',
@@ -1836,7 +1783,6 @@ function people_profiles_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('AI Field Visibility');
   t('AI Links');
-  t('Academic Department');
   t('Address Line 1');
   t('Address Line 2');
   t('Areas of Expertise');

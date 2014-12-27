@@ -28,7 +28,6 @@ features[field_base][] = field_7th_semester_check_certif
 features[field_base][] = field_aa_member_price
 features[field_base][] = field_aa_non_member_price
 features[field_base][] = field_acad_interest_check_many
-features[field_base][] = field_academic_department
 features[field_base][] = field_academic_interests_admissi
 features[field_base][] = field_academic_interests_other
 features[field_base][] = field_account_number

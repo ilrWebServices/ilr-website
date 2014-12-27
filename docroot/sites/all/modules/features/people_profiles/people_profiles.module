@@ -29,20 +29,20 @@ function people_profiles_user_insert(&$edit, $account, $category) {
 function people_profiles_preprocess_node(&$variables) {
   if($variables['type'] == 'people_profile' && $variables['view_mode'] == 'full') {
     $wrapper = _people_profiles_node_wrapper($variables['node']);
-    if ($wrapper->field_profile_type->value() == 'faculty') {
+    $type = $wrapper->field_profile_type->value();
+    $variables['classes_array'][] = "profile-type-$type";
+    if ($type == 'faculty') {
       _people_profiles_process_faculty_view($variables);
     }
     _people_profiles_process_address($variables);
 
-    // Process departments
-    if (isset($variables['content']['field_academic_department']) && isset($variables['content']['field_department'])) {
-      $academic_departments = _people_profiles_get_faculty_departments();
-      $assigned_department = $wrapper->field_academic_department->value();
-      if (array_key_exists($assigned_department, $academic_departments)) {
-        unset($variables['content']['field_department']);
-      } else {
-        unset($variables['content']['field_academic_department']);
-      }
+    // Move title to correct location
+    if (isset($variables['content']['field_working_title'])) {
+      $title = $wrapper->title->value();
+      $markup = "<div class='crumb'> profiles / $type</div>";
+      $markup .= "<h1 class='title'>$title</h1>";
+      $markup .= $wrapper->field_working_title->value();
+      $variables['content']['field_working_title'][0]['#markup'] = $markup;
 
     }
   }
@@ -66,6 +66,7 @@ function people_profiles_form_alter(&$form, &$form_state, $form_id) {
     global $user;
     if (!in_array('administrator', $user->roles)) {
       $form['field_profile_type']['#disabled'] = 1;
+      $form['field_department']['#disabled'] = 1;
     }
 
     // Remove ability to edit netid
@@ -73,6 +74,39 @@ function people_profiles_form_alter(&$form, &$form_state, $form_id) {
       $form['field_netid']['#disabled'] = TRUE;
     }
   }
+}
+
+function people_profiles_field_group_build_pre_render_alter(&$element) {
+  if (isset($element['#bundle'])
+    && $element['#bundle'] == 'people_profile'
+    && !isset($element['#form_id'])) { // If #form_id present, on edit form
+    $wrapper = _people_profiles_node_wrapper($element['#node']);
+    $type = $wrapper->field_profile_type->value();
+    if ($type != 'faculty') {
+      if (_prople_profiles_content_area_is_empty($element['group_main_content'])) {
+        $element['group_profile_highlighted']['group_title_and_focus'][] = $element['group_profile_sidebar'];
+        unset($element['group_profile_sidebar']);
+      }
+      // Add some padding if missing an image
+      if (!$element['group_profile_highlighted']['field_profile_image']) {
+        $prefix = $element['group_profile_highlighted']['#prefix'];
+        $new_prefix = implode(' no-image', str_split($prefix, strlen($prefix) - 2));
+        $element['group_profile_highlighted']['#prefix'] = $new_prefix;
+      }
+    }
+  }
+}
+
+function _prople_profiles_content_area_is_empty($main_content_array) {
+  foreach ($main_content_array as $key => $value) {
+    if (strpos($key, 'field') === 0) {
+      $content = $value;
+    }
+    if ($content) {
+      return FALSE;
+    }
+  }
+  return TRUE;
 }
 
 /**
@@ -135,7 +169,7 @@ function _people_profiles_get_faculty_by_department($department_key){
     ->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'people_profile')
     ->propertyCondition('status', 1)
-    ->fieldCondition('field_academic_department', 'value', $department_key)
+    ->fieldCondition('field_department', 'value', $department_key)
     ->fieldOrderBy('field_last_name', 'value', 'ASC');
 
   $result = $query->execute();
@@ -253,7 +287,6 @@ function _people_profiles_process_staff_form(&$form) {
     'field_ilrweb_publications_file',
     'field_ilrweb_vita_file',
     'field_ilrweb_vita_html',
-    'field_academic_department',
     'field_faculty_on_leave',
   );
   foreach ($form as $field_name => $value) {

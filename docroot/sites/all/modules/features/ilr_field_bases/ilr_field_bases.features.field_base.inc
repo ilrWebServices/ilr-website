@@ -127,29 +127,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_academic_department'
-  $field_bases['field_academic_department'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_academic_department',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(),
-      'allowed_values_function' => '_people_profiles_get_faculty_departments',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_academic_interests_admissi'
   $field_bases['field_academic_interests_admissi'] = array(
     'active' => 1,

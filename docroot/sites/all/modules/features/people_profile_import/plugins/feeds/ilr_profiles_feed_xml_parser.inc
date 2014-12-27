@@ -31,7 +31,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
         $field_values['title'] = $this->setProfileTitle($person);
         $field_values['field_netid'] = (string) $person->netID;
         $field_values['field_email'] = (string) $person->ldap_email; // Without this, field is being deleted
-        $field_values['field_academic_department'] = $this->getAcademicDepartments($person);
+        $field_values['field_department'] = $this->getDepartments($person);
         $field_values['field_use_ai_data'] = 1;
 
         // Then loop through AI values and faculty_on_leave
@@ -47,10 +47,10 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
         foreach ($mapped_fields as $xml_key => $field_name) {
           switch($field_name) {
             case 'title':
-              $field_values['title'] = $this->setProfileTitle($person);
+              $field_values[$field_name] = $this->setProfileTitle($person);
               break;
-            case 'field_academic_department':
-              $field_values['field_academic_department'] = $this->getAcademicDepartments($person);
+            case 'field_department':
+              $field_values[$field_name] = $this->getDepartments($person);
               break;
             default:
               $data = (string) $person->{$xml_key};
@@ -121,7 +121,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       //'ldap_working_title2' => '',
       //'ldap_employee_type' => '', // Not sure needed, as we have ldap_profile_type below
       //'ldap_department' => 'field_department', // This is dept. code. Use name instead
-      'ldap_department_name' => 'field_department',
+      //'ldap_department_name' => 'field_department',
       'ldap_leave_start' => 'field_faculty_on_leave:start',
       'ldap_leave_end' => 'field_faculty_on_leave:end',
       //'ldap_uid' => '', // same as NetID
@@ -143,7 +143,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'ilrweb_photo_url' => 'field_profile_image',
       'netID' => 'field_netid',
       //'userid' => '',
-      'departments' => 'field_academic_department',
+      'departments' => 'field_department',
       // 'rank' => '', //??
       // 'srank' => '', //??
       // 'graduate_fields' => '',
@@ -180,17 +180,17 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
     return (string) $person->ldap_first_name . ' ' . $person->ldap_last_name;
   }
 
-  private function getAcademicDepartments($person) {
+  private function getDepartments($person) {
     $departments = array();
     foreach ($person->departments->dept as $department) {
-      // For now, skip all extension departments
-      if (strpos($department, 'Ext-') !== FALSE) {
-        continue;
-      }
-      $sanitized = preg_replace('/\s+/', '_', (string)$department);
+      $sanitized = trim($department);
       $sanitized = str_replace('-ILR', '', $sanitized);
-      $sanitized = strtolower($sanitized);
+      $sanitized = str_replace('Ext-', '', $sanitized);
       $departments[] = $sanitized;
+    }
+    if (empty($departments)) {
+      $department = str_replace('ILR - ', '', $person->ldap_department_name);
+      $departments[] = $department;
     }
     $departments_comma_delimited = implode(',', $departments);
     return $departments_comma_delimited;
