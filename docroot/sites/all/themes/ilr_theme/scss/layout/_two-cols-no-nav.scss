@@ -4,26 +4,25 @@
   #content {
     @include add-grid(3 9);
     @include add-gutter(1);
-    .group-highlighted {
-      @extend .clearfix;
-      @include grid-span(2);
-      background: white;
-      @include trailer(2);
+  }
 
-      .field-type-image,
-      .field-group-html-element {
-        @extend %two-column;
-      }
+  .group-highlighted {
+    @extend .clearfix;
+    @include grid-span(2);
+
+    .field-type-image,
+    .field-group-html-element {
+      @extend %two-column;
     }
-    .group-main-content {
-      @include grid-span(1,2);
-    }
-    .group-sidebar {
-      @include grid-span(1);
-    }
+  }
+  .group-main-content {
+    @include grid-span(1,2);
+  }
+  .group-sidebar {
+    @include grid-span(1);
   }
 
   #sidebar-first {
-    display: none;
+    display: none !important; //Override
   }
 }

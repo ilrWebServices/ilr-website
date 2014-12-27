@@ -1,5 +1,6 @@
+// Establish the layout and overrides
 body.node-type-people-profile {
-  #main {
+  .container[data-eq-state="regular-nav"] {
     @extend %two-cols-no-nav;
   }
   #breadcrumb,
@@ -11,10 +12,25 @@ body.node-type-people-profile {
 article.node-people-profile {
   .group-highlighted {
     @include trailer(2);
+    background: white;
+    &.no-image { // See people_profiles_field_group_build_pre_render_alter()
+      @include padding-trailer(2);
+      padding-left: 2em;
+    }
+    .field-type-image {
+      text-align: center;
+    }
   }
 
   .group-title-and-focus {
-    @include leader(2);
+    @include leader(1);
+    #main[data-eq-state="widescreen"] & {
+      @include leader(2);
+    }
+    .container:not([data-eq-state="regular-nav"]) & {
+      @include padding-trailer(2);
+    }
+    padding-left: 2em;
 
     .crumb {
       text-transform: uppercase;
@@ -22,12 +38,42 @@ article.node-people-profile {
       @include adjust-font-size-to(14px);
     }
 
+    .title {
+      margin-bottom: 0;
+    }
+
     .field-name-field-working-title {
       font-weight: bold;
     }
   }
 
-  &.profile-type-staff .group-sidebar {
-    clear: both;
+  .group-sidebar {
+    .field-type-text,
+    .field-type-email,
+    .field-name-field-local-address {
+      text-align: center;
+    }
+    .field-name-field-areas-of-expertise {
+      @extend .clearfix;
+      @include leader(2);
+      .field-item { float: left; }
+      a {
+        display: inline-block;
+        padding: 0 1em;
+        background: $gray-light;
+        margin: .2em .5em .2em 0;
+        // color: $p-text;
+        color: lighten($brand, 5%);
+        font-weight: bold;
+        text-decoration: none !important;
+        @include border-radius(12px, 12px);
+        @include adjust-font-size-to(12px);
+
+        &:hover, &:visited, &:active {
+          text-decoration: none;
+        }
+      }
+    }
+
   }
 }

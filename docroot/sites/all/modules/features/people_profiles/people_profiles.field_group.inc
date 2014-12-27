@@ -236,13 +236,14 @@ function people_profiles_field_group_info() {
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
-      'formatter' => '',
+      'label' => 'Main Content',
       'instance_settings' => array(
+        'classes' => 'group-main-content',
         'element' => 'div',
-        'classes' => 'group-main-content field-group-html-element',
         'attributes' => '',
         'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $export['group_main_content|node|people_profile|default'] = $field_group;
@@ -295,7 +296,7 @@ function people_profiles_field_group_info() {
     'format_settings' => array(
       'label' => 'Highlighted',
       'instance_settings' => array(
-        'classes' => 'profile-highlighted field-group-html-element',
+        'classes' => 'group-highlighted field-group-html-element',
         'element' => 'div',
         'attributes' => '',
       ),
@@ -331,12 +332,10 @@ function people_profiles_field_group_info() {
     'format_settings' => array(
       'label' => 'Sidebar',
       'instance_settings' => array(
-        'classes' => 'profile-sidebar',
+        'classes' => 'group-sidebar',
         'element' => 'div',
         'attributes' => '',
-        'required_fields' => 1,
       ),
-      'formatter' => '',
     ),
   );
   $export['group_profile_sidebar|node|people_profile|default'] = $field_group;
