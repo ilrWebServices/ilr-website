@@ -117,8 +117,8 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'ldap_campus_address' => 'field_address_line_1',
       'ldap_campus_phone' => 'field_phone',
       'ldap_email' => 'field_email',
-      'ldap_working_title1' => 'field_working_title',
-      //'ldap_working_title2' => '',
+      //'ldap_working_title1' => 'field_working_title',
+      'ldap_working_title2' => 'field_working_title',
       //'ldap_employee_type' => '', // Not sure needed, as we have ldap_profile_type below
       //'ldap_department' => 'field_department', // This is dept. code. Use name instead
       //'ldap_department_name' => 'field_department',
