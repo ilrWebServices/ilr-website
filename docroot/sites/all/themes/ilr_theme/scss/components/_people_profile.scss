@@ -1,0 +1,33 @@
+body.node-type-people-profile {
+  #main {
+    @extend %two-cols-no-nav;
+  }
+  #breadcrumb,
+  #page-title {
+    display: none;
+  }
+}
+
+article.node-people-profile {
+  .group-highlighted {
+    @include trailer(2);
+  }
+
+  .group-title-and-focus {
+    @include leader(2);
+
+    .crumb {
+      text-transform: uppercase;
+      color: $spotlight-color;
+      @include adjust-font-size-to(14px);
+    }
+
+    .field-name-field-working-title {
+      font-weight: bold;
+    }
+  }
+
+  &.profile-type-staff .group-sidebar {
+    clear: both;
+  }
+}

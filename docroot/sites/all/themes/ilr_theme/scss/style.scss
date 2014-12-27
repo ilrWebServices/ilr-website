@@ -33,6 +33,7 @@
 @import "components/media";
 @import "components/mega_menu";
 @import "components/neutral_page";
+@import "components/people_profile";
 @import "components/search";
 @import "components/subnav";
 @import "components/subsite_header";
@@ -42,6 +43,6 @@
 // Layout
 @import "layout/layouts";
 @import "layout/base";
-@import "layout/people_profile";
+@import "layout/two-cols-no-nav";
 @import "layout/two-cols-with-sidebar";
 @import "layout/triptych";
