@@ -381,3 +381,9 @@ function ilr_update_7025() {
 function ilr_update_7026() {
   variable_set('date_format_ilr_year_only', 'Y');
 }
+/**
+ * Deletes field_academic_department
+ */
+function ilr_update_7027() {
+  field_delete_field('field_academic_department');
+}
