@@ -23,39 +23,24 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       $field_values = array();
       $existing_profile = _people_profiles_find_profile_by_netid((string) $person->netID);
       $type = (string) $person->ldap_profile_type;
-      if ($existing_profile) {
-        if ($type != 'faculty') {
-          continue;
-        }
-        // Set the title and NetID
-        $field_values['title'] = $this->setProfileTitle($person);
-        $field_values['field_netid'] = (string) $person->netID;
-        $field_values['field_email'] = (string) $person->ldap_email; // Without this, field is being deleted
-        $field_values['field_profile_department'] = $this->getDepartments($person);
-        $field_values['field_use_ai_data'] = 1;
-
-        // Then loop through AI values and faculty_on_leave
-        foreach ($mapped_fields as $xml_key => $field_name) {
-          if (strpos($field_name, 'field_ai') === 0
-            || strpos($field_name, 'field_faculty_on_leave') === 0) {
+      if ($existing_profile && $type != 'faculty') {
+        continue;
+      }
+      foreach ($mapped_fields as $xml_key => $field_name) {
+        switch($field_name) {
+          case 'title':
+            $field_values[$field_name] = $this->setProfileTitle($person);
+            break;
+          case 'field_profile_department':
+            $field_values[$field_name] = $this->getDepartments($person);
+            break;
+          // Will be needed in future
+          case 'field_profile_image':
+            $field_values[$field_name] = $this->getProfileImage($person);
+            break;
+          default:
             $data = (string) $person->{$xml_key};
             $field_values[$field_name] = $this->prepData($field_name, $data, $type);
-          }
-        }
-      } // Loop through all the values
-      else {
-        foreach ($mapped_fields as $xml_key => $field_name) {
-          switch($field_name) {
-            case 'title':
-              $field_values[$field_name] = $this->setProfileTitle($person);
-              break;
-            case 'field_profile_department':
-              $field_values[$field_name] = $this->getDepartments($person);
-              break;
-            default:
-              $data = (string) $person->{$xml_key};
-              $field_values[$field_name] = $this->prepData($field_name, $data, $type);
-          }
         }
       }
       $result->items[$result_counter] = $field_values;
@@ -75,9 +60,9 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
     if ($type == 'faculty' && in_array($field_name, $this->getFieldsWithLineBreaks())) {
       $prepared = preg_replace('/\n(\s*\n)+/', '</p><p>', $prepared);
       $prepared = preg_replace('/\n/', '<br>', $prepared);
-      if (strlen($prepared)) {
-        $prepared = '<p>'.$prepared.'</p>';
-      }
+      $prepared = (strlen($prepared) > 10)
+        ? '<p>'.$prepared.'</p>'
+        : '';
     }
     return $prepared;
   }
@@ -90,8 +75,11 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'field_ai_teaching_statement',
       'field_ai_research_statement',
       'field_ai_overview',
+      'field_ai_service_statement',
+      'field_ai_outreach_statement',
     );
   }
+
   /**
    * Return mapping sources.
    */
@@ -151,6 +139,8 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       // 'education' => '', // includes nodes for degree>level,year,institution
       'teaching_statement' => 'field_ai_teaching_statement',
       'research_statement' => 'field_ai_research_statement',
+      'service_statement' => 'field_ai_service_statement',
+      'outreach_statement' => 'field_ai_outreach_statement',
       // 'research_statement_short' => 'field_ai_research_statement_short',
       // 'research_areas' => '', // area, area, ...
       'areas_of_expertise' => 'field_areas_of_expertise',
@@ -185,14 +175,23 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
 
     $departments = array();
     foreach ($person->departments->dept as $department) {
-      $sanitized = _people_profiles_sanitize_department_name($department);
+      $sanitized = _people_profiles_sanitize_department_key($department);
       $departments[] = $sanitized;
     }
     if (empty($departments)) {
-      $departments[] = _people_profiles_sanitize_department_name($person->ldap_department_name);
+      $departments[] = _people_profiles_sanitize_department_key($person->ldap_department_name);
     }
     // Return an array for the select multiple options list
     $departments_comma_delimited = implode('|', $departments);
     return $departments_comma_delimited;
+  }
+
+  private function getProfileImage($person) {
+    $type = (string) $person->ldap_profile_type;
+    if ($type == "faculty") {
+      $imageName = (string) $person->ldap_last_name . '-' . $person->ldap_first_name . '.jpg';
+      return "http://ikondigitalstudio.com/faculty_images/$imageName";
+    }
+    return (string) $person->ilrweb_photo_url;
   }
 }

@@ -7,6 +7,21 @@
 include_once 'people_profiles.features.inc';
 
 require_once DRUPAL_ROOT . '/../config/get_departments.php';
+
+/**
+ * Implements hook_init().
+ */
+function people_profiles_init() {
+  global $theme;
+  if ($theme == 'ilr_theme') {
+    drupal_add_js(drupal_get_path('module', 'people_profiles') . '/people_profiles.js', array(
+        'type' => 'file',
+        'scope' => 'footer'
+      ));
+  }
+
+}
+
 /**
  * Implements hook_user_insert()
  * Looks for a profile with matching netID
@@ -32,9 +47,6 @@ function people_profiles_preprocess_node(&$variables) {
     $wrapper = _people_profiles_node_wrapper($variables['node']);
     $type = $wrapper->field_profile_type->value();
     $variables['classes_array'][] = "profile-type-$type";
-    if ($type == 'faculty') {
-      _people_profiles_process_faculty_view($variables);
-    }
 
     // Move title to correct location
     if (isset($variables['content']['field_working_title'])) {
@@ -86,8 +98,10 @@ function people_profiles_field_group_build_pre_render_alter(&$element) {
     // Handle issues with use of the local address field
     _people_profiles_process_address($element);
 
-    // Handle non-faculty oddities, such as missing image or content
-    if ($type != 'faculty') {
+    if ($type == 'faculty') {
+      _people_profiles_process_faculty_view($element);
+    } // Handle non-faculty oddities, such as missing image or content
+    else {
       if (_prople_profiles_content_area_is_empty($element['group_main_content'])) {
         _people_profiles_move_sidebar_content($element);
       }
@@ -274,11 +288,11 @@ function _people_profiles_get_description_as_help_text($field) {
  * by hiding either the ilrweb or activity insight fields
  * This only gets called if the profile is a faculty
  */
-function _people_profiles_process_faculty_view(&$variables) {
+function _people_profiles_process_faculty_view(&$element) {
   // This assumes a common naming convention for irlweb and ai fields,
   // which get set during the initial field creation process in the UI
   $preview = (isset($_GET['ai_preview'])) ? 1 : 0;
-  $wrapper = _people_profiles_node_wrapper($variables['node']);
+  $wrapper = _people_profiles_node_wrapper();
   $use_activity_insight = ($preview) ? 1 : $wrapper->field_use_ai_data->value();
   $field_name_prefix =
     ($use_activity_insight)
@@ -286,10 +300,10 @@ function _people_profiles_process_faculty_view(&$variables) {
       : 'field_ai';
   if ($use_activity_insight) { // Deal with optional fields
     if (!$preview) {
-      _people_profiles_process_optional_ai_elements($variables);
+      _people_profiles_process_optional_ai_elements($element);
     }
   }
-  _people_profiles_hide_fields_with_prefix($variables, $field_name_prefix);
+  _people_profiles_hide_fields_with_prefix($element, $field_name_prefix);
 }
 
 /**
@@ -323,13 +337,13 @@ function _people_profiles_process_address(&$element) {
   }
 }
 
-function _people_profiles_hide_fields_with_prefix(&$variables, $prefix) {
+function _people_profiles_hide_fields_with_prefix(&$element, $prefix) {
   // Set up any exceptions, which are fields that should show for both ilrweb and ai versions
   $exceptions = array('field_ai_other_expertise');
-  foreach ($variables as $key => $value) { // $key is the field name
+  foreach ($element as $key => $value) { // $key is the field name
     if (strpos($key, $prefix) === 0
       && !in_array($key,$exceptions)) {
-      unset($variables['content'][$key]);
+      $element['group_main_content'][$key] = NULL;
     }
   }
 }
@@ -362,33 +376,17 @@ function _people_profiles_activity_insight_options_list() {
  * See _people_profiles_activity_insight_options_list for the values that are
  * output as checkboxes that can be excluded
  */
-function _people_profiles_process_optional_ai_elements(&$variables) {
-  $excluded_fields = _people_profiles_get_excluded_ai_fields($variables['field_visibility_settings']);
-
-  $optional_fields = array_keys(_people_profiles_activity_insight_options_list());
-  foreach ($variables as $field_name => $value) {
-    if (in_array($field_name, $optional_fields)) {
-      if (in_array($field_name, $excluded_fields)) {
-        unset($variables['content'][$field_name]);
-      }
+function _people_profiles_process_optional_ai_elements(&$element) {
+  $wrapper = _people_profiles_node_wrapper();
+  $excluded_fields = $wrapper->field_visibility_settings->value();
+  foreach ($excluded_fields as $key => $field_name) {
+    if (isset($element['group_main_content'][$field_name])) {
+      unset($element['group_main_content'][$field_name]);
+    }
+    else if (isset($element['group_profile_sidebar'][$field_name])) {
+      unset($element['group_profile_sidebar'][$field_name]);
     }
   }
-}
-
-/**
- * Determines which checkboxes have been selected from the field_visibility_settings
- * @param  Array $field_visibility_settings
- * @return Array A single dimensional array with the fieldnames as string values
- */
-function _people_profiles_get_excluded_ai_fields($field_visibility_settings) {
-  $excluded_fields = array();
-  $settings_array = current($field_visibility_settings);
-  if (is_array($settings_array)) {
-    foreach ($settings_array as $key => $value) {
-      $excluded_fields[] = $value['value'];
-    }
-  }
-  return $excluded_fields;
 }
 
 /**
@@ -448,7 +446,7 @@ function _people_profiles_get_faculty_departments() {
   return $departments;
 }
 
-function _people_profiles_node_wrapper($node) {
+function _people_profiles_node_wrapper($node=NULL) {
   $wrapper = &drupal_static(__FUNCTION__);
   if (!isset($wrapper)) {
     $wrapper = entity_metadata_wrapper('node', $node);

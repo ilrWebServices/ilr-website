@@ -3,6 +3,10 @@ body.node-type-people-profile {
   .container[data-eq-state="regular-nav"] {
     @extend %two-cols-no-nav;
   }
+  .container[data-eq-state="mobile-nav"] {
+    #main { padding: 0; }
+  }
+
   #breadcrumb,
   #page-title {
     display: none;
@@ -23,14 +27,22 @@ article.node-people-profile {
   }
 
   .group-title-and-focus {
-    @include leader(1);
+    @include padding-leader(1);
     #main[data-eq-state="widescreen"] & {
-      @include leader(2);
+      @include padding-leader(2);
     }
-    .container:not([data-eq-state="regular-nav"]) & {
+    .container[data-eq-state="mobile-nav"] & {
       @include padding-trailer(2);
     }
     padding-left: 2em;
+
+    #main[data-eq-state="320"] &,
+    #main[data-eq-state="450"] & {
+      padding-left: 0;
+      .field {
+        text-align: center;
+      }
+    }
 
     .crumb {
       text-transform: uppercase;
@@ -47,33 +59,83 @@ article.node-people-profile {
     }
   }
 
+  .group-main-content {
+    h3.toggleable {
+      &:before {
+        content: '+ ';
+      }
+      &.toggled:before {
+        content: '- ';
+      }
+    }
+    .field {
+      overflow: hidden;
+      ul {
+        margin-top: 0;
+      }
+    }
+    a.readmore-js-toggle {
+      text-transform: uppercase;
+      text-decoration: none !important;
+      font-weight: bold;
+      display: inline-block;
+      margin-left: -3px;
+      color: lighten($brand, 5%);
+      @include adjust-font-size-to(14px);
+      @include trailer(2);
+      @include leader(.5);
+    }
+  }
+
+  .container[data-eq-state="mobile-nav"] & {
+    .group-main-content,
+    .group-sidebar {
+      padding: 0 2em;
+    }
+  }
+  #main[data-eq-state="320"] & {
+    .group-main-content,
+    .group-sidebar {
+      padding: 0 1em;
+    }
+  }
+
   .group-sidebar {
+    @include trailer(2);
+
     .field-type-text,
     .field-type-email,
     .field-name-field-local-address {
       text-align: center;
     }
+    .field-label {
+      @include padding-leader(1.5);
+      margin-bottom: 0;
+    }
     .field-name-field-areas-of-expertise {
-      @extend .clearfix;
-      @include leader(2);
-      .field-item { float: left; }
+      float: left;
+
       a {
         display: inline-block;
         padding: 0 1em;
         background: $gray-light;
-        margin: .2em .5em .2em 0;
+        margin: .5em .5em 0 0;
         // color: $p-text;
         color: lighten($brand, 5%);
         font-weight: bold;
         text-decoration: none !important;
         @include border-radius(12px, 12px);
         @include adjust-font-size-to(12px);
+        @include adjust-leading-to(1);
 
         &:hover, &:visited, &:active {
           text-decoration: none;
         }
       }
     }
-
+    .field-name-field-ai-other-expertise {
+      @include adjust-font-size-to(16px);
+      @include adjust-leading-to(1);
+    }
   }
 }
