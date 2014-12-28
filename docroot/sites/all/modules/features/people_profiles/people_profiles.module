@@ -6,6 +6,7 @@
 
 include_once 'people_profiles.features.inc';
 
+require_once DRUPAL_ROOT . '/../config/get_departments.php';
 /**
  * Implements hook_user_insert()
  * Looks for a profile with matching netID
@@ -66,7 +67,7 @@ function people_profiles_form_alter(&$form, &$form_state, $form_id) {
     global $user;
     if (!in_array('administrator', $user->roles)) {
       $form['field_profile_type']['#disabled'] = 1;
-      $form['field_department']['#disabled'] = 1;
+      $form['field_profile_department']['#disabled'] = 1;
     }
 
     // Remove ability to edit netid
@@ -169,7 +170,7 @@ function _people_profiles_get_faculty_by_department($department_key){
     ->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'people_profile')
     ->propertyCondition('status', 1)
-    ->fieldCondition('field_department', 'value', $department_key)
+    ->fieldCondition('field_profile_department', 'value', $department_key)
     ->fieldOrderBy('field_last_name', 'value', 'ASC');
 
   $result = $query->execute();
@@ -394,6 +395,26 @@ function _people_profiles_find_profile_by_netid($netId) {
   return FALSE;
 }
 
+function _people_profiles_get_department_select_options() {
+  $department_list = _people_profiles_get_department_list();
+  $departments = array();
+  foreach ($department_list as $name) {
+    $key = _people_profiles_sanitize_department_key($name);
+    $departments[$key] = $name;
+  }
+
+  return $departments;
+}
+
+function _people_profiles_get_department_list() {
+  global $ILR_DEPARTMENTS;
+  $departments = array();
+  foreach ($ILR_DEPARTMENTS as $key => $name) {
+    $departments[] = _people_profiles_sanitize_department_name($name);
+  }
+  return $departments;
+}
+
 function _people_profiles_get_faculty_departments() {
   $department_names = array(
     "Economics",
@@ -407,10 +428,7 @@ function _people_profiles_get_faculty_departments() {
   $departments = array();
 
   foreach ($department_names as $name) {
-    // Strip spaces, commas and "and" to get below 32 chars
-    $key = str_replace(array(',',' and'), '', $name);
-    $key = str_replace(',', '', $key);
-    $key = strtolower(str_replace(' ', '_', $key));
+    $key = _people_profiles_sanitize_department_key($name);
     $departments[$key] = $name;
   }
 
@@ -423,4 +441,20 @@ function _people_profiles_node_wrapper($node) {
     $wrapper = entity_metadata_wrapper('node', $node);
   }
   return $wrapper;
+}
+
+function _people_profiles_sanitize_department_name($name) {
+  $strings_to_remove = array('-ILR','Ext-','ILR -','LIBR -');
+  $name = str_replace($strings_to_remove, '', $name);
+  $name = trim($name);
+  return $name;
+}
+
+function _people_profiles_sanitize_department_key($name) {
+  $key = strtolower($name);
+  $key = preg_replace('@[^a-z0-9_]+@','_',$key);
+  if (strlen($key) > 30) {
+    $key = substr($key, 0, 30);
+  }
+  return $key;
 }

@@ -265,6 +265,7 @@ features[field_base][] = field_prior_appointments
 features[field_base][] = field_professional_associations
 features[field_base][] = field_professional_work_history_
 features[field_base][] = field_professor
+features[field_base][] = field_profile_department
 features[field_base][] = field_profile_image
 features[field_base][] = field_profile_type
 features[field_base][] = field_project_name
