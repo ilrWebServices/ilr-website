@@ -35,7 +35,6 @@ function people_profiles_preprocess_node(&$variables) {
     if ($type == 'faculty') {
       _people_profiles_process_faculty_view($variables);
     }
-    _people_profiles_process_address($variables);
 
     // Move title to correct location
     if (isset($variables['content']['field_working_title'])) {
@@ -83,16 +82,17 @@ function people_profiles_field_group_build_pre_render_alter(&$element) {
     && !isset($element['#form_id'])) { // If #form_id present, on edit form
     $wrapper = _people_profiles_node_wrapper($element['#node']);
     $type = $wrapper->field_profile_type->value();
+
+    // Handle issues with use of the local address field
+    _people_profiles_process_address($element);
+
+    // Handle non-faculty oddities, such as missing image or content
     if ($type != 'faculty') {
       if (_prople_profiles_content_area_is_empty($element['group_main_content'])) {
-        $element['group_profile_highlighted']['group_title_and_focus'][] = $element['group_profile_sidebar'];
-        unset($element['group_profile_sidebar']);
+        _people_profiles_move_sidebar_content($element);
       }
-      // Add some padding if missing an image
       if (!$element['group_profile_highlighted']['field_profile_image']) {
-        $prefix = $element['group_profile_highlighted']['#prefix'];
-        $new_prefix = implode(' no-image', str_split($prefix, strlen($prefix) - 2));
-        $element['group_profile_highlighted']['#prefix'] = $new_prefix;
+        _people_profiles_handle_missing_image($element);
       }
     }
   }
@@ -108,6 +108,19 @@ function _prople_profiles_content_area_is_empty($main_content_array) {
     }
   }
   return TRUE;
+}
+
+function _people_profiles_move_sidebar_content(&$element) {
+  $element['group_profile_highlighted']['group_title_and_focus']['moved_sidebar_content'] = $element['group_profile_sidebar'];
+  $element['group_profile_highlighted']['group_title_and_focus']['moved_sidebar_content']['#prefix'] = '<div class="moved-sidebar">';
+  unset($element['group_profile_sidebar']);
+}
+
+function _people_profiles_handle_missing_image(&$element) {
+  // Add some padding if missing an image
+  $prefix = $element['group_profile_highlighted']['#prefix'];
+  $new_prefix = implode(' no-image', str_split($prefix, strlen($prefix) - 2));
+  $element['group_profile_highlighted']['#prefix'] = $new_prefix;
 }
 
 /**
@@ -304,9 +317,9 @@ function _people_profiles_process_staff_form(&$form) {
  * Many people erringly put a local address when they shouldn't
  * But all people without a campus address use the local address
  */
-function _people_profiles_process_address(&$variables) {
-  if(count($variables['field_address_line_1']) > 0) {
-    unset($variables['content']['field_local_address']);
+function _people_profiles_process_address(&$element) {
+  if(count($element['group_profile_sidebar']['field_address_line_1']) > 0) {
+    unset($element['group_profile_sidebar']['field_local_address']);
   }
 }
 
