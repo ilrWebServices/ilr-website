@@ -68,6 +68,7 @@ features[field_instance][] = node-people_profile-field_profile_type
 features[field_instance][] = node-people_profile-field_use_ai_data
 features[field_instance][] = node-people_profile-field_visibility_settings
 features[field_instance][] = node-people_profile-field_working_title
+features[image][] = focussed_profile_image
 features[image][] = people_profile_image
 features[node][] = people_profile
 features[taxonomy][] = areas_of_expertise
