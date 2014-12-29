@@ -193,8 +193,6 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       $imageUrl = "http://ikondigitalstudio.com/faculty_images/$imageName";
       if (file_get_contents($imageUrl,0,null,0,1) !== FALSE) {
         return $imageUrl;
-      } else {
-        dpm($imageUrl);
       }
     }
     return (string) $person->ilrweb_photo_url;
