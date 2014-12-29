@@ -184,6 +184,70 @@ function people_profiles_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact_info|node|people_profile|default';
+  $field_group->group_name = 'group_contact_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'people_profile';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_profile_sidebar';
+  $field_group->data = array(
+    'label' => 'Contact',
+    'weight' => '28',
+    'children' => array(
+      0 => 'field_address_line_1',
+      1 => 'field_address_line_2',
+      2 => 'field_email',
+      3 => 'field_fax',
+      4 => 'field_local_address',
+      5 => 'field_phone',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Contact',
+      'instance_settings' => array(
+        'classes' => 'group group-contact-info',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_contact_info|node|people_profile|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_expertise|node|people_profile|default';
+  $field_group->group_name = 'group_expertise';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'people_profile';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_profile_sidebar';
+  $field_group->data = array(
+    'label' => 'Expertise',
+    'weight' => '30',
+    'children' => array(
+      0 => 'field_ai_other_expertise',
+      1 => 'field_areas_of_expertise',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Expertise',
+      'instance_settings' => array(
+        'classes' => 'group group-expertise',
+        'element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_expertise|node|people_profile|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_faculty_info_tab|node|people_profile|form';
   $field_group->group_name = 'group_faculty_info_tab';
   $field_group->entity_type = 'node';
@@ -313,30 +377,51 @@ function people_profiles_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sidebar',
-    'weight' => '18',
+    'weight' => '2',
     'children' => array(
-      0 => 'field_address_line_1',
-      1 => 'field_address_line_2',
-      2 => 'field_ai_links',
-      3 => 'field_ai_other_expertise',
-      4 => 'field_areas_of_expertise',
-      5 => 'field_email',
-      6 => 'field_fax',
-      7 => 'field_ilrweb_vita_file',
-      8 => 'field_local_address',
-      9 => 'field_phone',
+      0 => 'group_contact_info',
+      1 => 'group_related_resources',
+      2 => 'group_expertise',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Sidebar',
       'instance_settings' => array(
-        'classes' => 'group-sidebar',
+        'classes' => 'group group-sidebar',
         'element' => 'div',
         'attributes' => '',
       ),
     ),
   );
   $export['group_profile_sidebar|node|people_profile|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_related_resources|node|people_profile|default';
+  $field_group->group_name = 'group_related_resources';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'people_profile';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_profile_sidebar';
+  $field_group->data = array(
+    'label' => 'Related Resources',
+    'weight' => '29',
+    'children' => array(
+      0 => 'field_ai_links',
+      1 => 'field_ilrweb_vita_file',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Related Resources',
+      'instance_settings' => array(
+        'classes' => 'group group-related-resources',
+        'element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_related_resources|node|people_profile|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

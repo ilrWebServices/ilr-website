@@ -24,7 +24,7 @@ function people_profiles_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 29,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -78,7 +78,7 @@ function people_profiles_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 30,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -180,13 +180,13 @@ function people_profiles_field_default_field_instances() {
     'description' => 'Drawn from <em>Websites</em> under <em>Personal and Contact Information</em>',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 13,
+        'weight' => 30,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -209,9 +209,14 @@ function people_profiles_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ai_links',
-    'label' => 'AI Links',
+    'label' => 'Related Resources',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -240,7 +245,7 @@ function people_profiles_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 12,
+        'weight' => 31,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -672,7 +677,7 @@ function people_profiles_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 11,
+        'weight' => 30,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -726,7 +731,7 @@ function people_profiles_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 10,
+        'weight' => 34,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -775,7 +780,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -831,7 +836,7 @@ function people_profiles_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 33,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -882,7 +887,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 8,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1107,13 +1112,13 @@ function people_profiles_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'file',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'file_default',
-        'weight' => 14,
+        'weight' => 31,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1136,7 +1141,7 @@ function people_profiles_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ilrweb_vita_file',
-    'label' => 'Vita File',
+    'label' => 'CV',
     'required' => 0,
     'settings' => array(
       'description_field' => 1,
@@ -1147,10 +1152,23 @@ function people_profiles_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'file',
+      'module' => 'media',
       'settings' => array(
+        'allowed_schemes' => array(
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'image' => 'image',
+        ),
+        'browser_plugins' => array(),
         'filefield_sources' => array(
-          'filefield_sources' => array(),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
@@ -1165,7 +1183,7 @@ function people_profiles_field_default_field_instances() {
         ),
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'file_generic',
+      'type' => 'media_generic',
       'weight' => 32,
     ),
   );
@@ -1235,7 +1253,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 9,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1289,7 +1307,7 @@ function people_profiles_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 31,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1340,7 +1358,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 7,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1394,7 +1412,7 @@ function people_profiles_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 32,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1577,7 +1595,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 6,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1631,7 +1649,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 5,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1681,7 +1699,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 10,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1775,10 +1793,10 @@ function people_profiles_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('AI Field Visibility');
-  t('AI Links');
   t('Address Line 1');
   t('Address Line 2');
   t('Areas of Expertise');
+  t('CV');
   t('Department');
   t('Drawn from <em>Areas of Concentration</em> under <em>Narratives and Interests</em>');
   t('Drawn from <em>Awards and Honors</em> under <em>General Information</em>');
@@ -1806,12 +1824,12 @@ function people_profiles_field_default_field_instances() {
   t('Profile Type');
   t('Publications');
   t('Publications File');
+  t('Related Resources');
   t('Research Statement');
   t('Service Statement');
   t('Teaching Statement');
   t('Tel');
   t('Use AI Data');
-  t('Vita File');
   t('Vita HTML');
   t('Working Title');
 
