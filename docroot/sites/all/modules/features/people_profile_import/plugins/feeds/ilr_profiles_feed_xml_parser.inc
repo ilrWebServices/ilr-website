@@ -189,8 +189,13 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
   private function getProfileImage($person) {
     $type = (string) $person->ldap_profile_type;
     if ($type == "faculty") {
-      $imageName = (string) $person->ldap_last_name . '-' . $person->ldap_first_name . '.jpg';
-      return "http://ikondigitalstudio.com/faculty_images/$imageName";
+      $imageName = (string) $person->ldap_last_name . '-' .$person->ldap_first_name . '.jpg';
+      $imageUrl = "http://ikondigitalstudio.com/faculty_images/$imageName";
+      if (file_get_contents($imageUrl,0,null,0,1) !== FALSE) {
+        return $imageUrl;
+      } else {
+        dpm($imageUrl);
+      }
     }
     return (string) $person->ilrweb_photo_url;
   }
