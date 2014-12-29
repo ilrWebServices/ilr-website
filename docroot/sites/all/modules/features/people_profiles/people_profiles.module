@@ -291,6 +291,7 @@ function _people_profiles_get_description_as_help_text($field) {
 function _people_profiles_process_faculty_view(&$element) {
   // This assumes a common naming convention for irlweb and ai fields,
   // which get set during the initial field creation process in the UI
+  // Exceptions can be added in _people_profiles_hide_fields_with_prefix
   $preview = (isset($_GET['ai_preview'])) ? 1 : 0;
   $wrapper = _people_profiles_node_wrapper();
   $use_activity_insight = ($preview) ? 1 : $wrapper->field_use_ai_data->value();
@@ -304,6 +305,18 @@ function _people_profiles_process_faculty_view(&$element) {
     }
   }
   _people_profiles_hide_fields_with_prefix($element, $field_name_prefix);
+  _people_profiles_add_sidebar_thumb($element);
+}
+
+function _people_profiles_add_sidebar_thumb(&$element) {
+  if (isset($element['field_profile_image'])) {
+    $thumb = $element['field_profile_image'];
+    $thumb[0]['#image_style'] = 'focussed_thumbnail';
+    $element['field_generated_thumb'] = $thumb;
+    $element['group_profile_sidebar']['field_generated_thumb'] = $thumb;
+    $element['group_profile_sidebar']['field_generated_thumb'];
+    $element['#group_children']['field_generated_thumb'] = 'group_profile_sidebar';
+  }
 }
 
 /**
@@ -332,8 +345,8 @@ function _people_profiles_process_staff_form(&$form) {
  * But all people without a campus address use the local address
  */
 function _people_profiles_process_address(&$element) {
-  if(count($element['group_profile_sidebar']['field_address_line_1']) > 0) {
-    unset($element['group_profile_sidebar']['field_local_address']);
+  if(count($element['group_profile_sidebar']['group_contact_info']['field_address_line_1']) > 0) {
+    unset($element['group_profile_sidebar']['group_contact_info']['field_local_address']);
   }
 }
 
