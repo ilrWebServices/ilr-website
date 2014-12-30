@@ -38,7 +38,7 @@ article.node-people-profile {
 
     #main[data-eq-state="320"] &,
     #main[data-eq-state="450"] & {
-      padding-left: 0;
+      padding-right: 2em;
       .field {
         text-align: center;
       }
@@ -59,7 +59,7 @@ article.node-people-profile {
     }
   }
 
-  h3.toggleable {
+  h3.toggleable { // toggleable added by people_profiles.js
     cursor: pointer;
     &:before {
       content: '+ ';
@@ -78,15 +78,7 @@ article.node-people-profile {
       }
     }
     a.readmore-js-toggle {
-      text-transform: uppercase;
-      text-decoration: none !important;
-      font-weight: bold;
-      display: inline-block;
-      margin-left: -3px;
-      color: lighten($brand, 5%);
-      @include adjust-font-size-to(14px);
-      @include trailer(2);
-      @include leader(.5);
+      @extend %readmore-js-link; // see _helpers.scss
     }
   }
 
@@ -102,17 +94,18 @@ article.node-people-profile {
       padding: 0 1em;
     }
   }
+
   .group-sidebar {
     @include trailer(2);
 
-    .group {
-      @include trailer(2);
-
-      #main[data-eq-state="320"] &,
-      #main[data-eq-state="450"] & {
-        @include trailer(.5);
-      }
+    .field-label { // Sidebar headings
+      margin-bottom: .5em;
+      @include leader(1);
     }
+    &.toggleable .field-label:not(.post-toggle) {
+      @include leader(0); // post-toggle added by js
+    }
+
 
     .field-name-field-profile-image {
       img {
@@ -138,46 +131,14 @@ article.node-people-profile {
         }
       }
     }
-    .field-label {
-      // margin-bottom: 0;
-    }
-    .field-name-field-ai-links {
-      // #main[data-eq-state="768"] &,
-      // #main[data-eq-state="widescreen"] & {
-        @include trailer(2);
-      // }
-    }
-    .group-expertise {
-      .field-label:last-of-type { // For other areas of expertise
-        #main:not[data-eq-state="320"] &,
-        #main:not[data-eq-state="450"] & {
-          @include padding-leader(2);
-        }
-      }
-    }
+
     .field-name-field-areas-of-expertise {
       float: left;
-      @include trailer(0);
-      &:last-of-type {
-        margin-bottom: 2em;
+      &.last {
+        @include trailer(1);
       }
-
       a {
-        display: inline-block;
-        padding: 0 1em;
-        background: $gray-light;
-        margin: .5em .5em 0 0;
-        // color: $p-text;
-        color: lighten($brand, 5%);
-        font-weight: bold;
-        text-decoration: none !important;
-        @include border-radius(12px, 12px);
-        @include adjust-font-size-to(12px);
-        @include adjust-leading-to(1);
-
-        &:hover, &:visited, &:active {
-          text-decoration: none;
-        }
+        @extend %pill; // see _helpers.scss
       }
     }
     .field-name-field-ai-other-expertise {
