@@ -1,7 +1,8 @@
 <header role="banner" <?php print render($page['nav_trigger_pts']); ?>>
   <div class="container">
     <div class="logo-wrapper">
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+      <a class='cornell' href="http://cornell.edu"></a>
+      <a class="ilr" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
         <?php print '<img src="/' . drupal_get_path('theme', 'ilr_theme') . '/images/logo.svg" alt="Cornell University | ILR School" title="Cornell University | ILR School">';?>
       </a>
     </div>

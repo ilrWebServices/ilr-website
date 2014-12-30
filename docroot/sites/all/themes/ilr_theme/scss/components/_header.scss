@@ -6,10 +6,15 @@
   -o-transition: none !important;
 }
 
-.header-small {
-  #logo {
-    margin: 10px 0;
+%header-small {
+  .container .logo-wrapper {
+    margin: 10px;
     float: left;
+
+    a.cornell {
+      width: 70px;
+      height: 70px;
+    }
 
     img {
       width: 205px;
@@ -20,7 +25,7 @@
 
 header {
   @extend .center;
-  @extend .header-small;
+  @extend %header-small;
   @include transition-duration(.3s);
   @include background-image(linear-gradient(lighten($cornell-red, 3%), $cornell-red));
   background-repeat: no-repeat;
@@ -36,8 +41,15 @@ header {
     top: 29px;
   }
 
-  #logo {
+  .logo-wrapper {
+    position: relative;
     margin-left: 10px;
+    a.cornell {
+      display: block;
+      position: absolute;
+      width: 130px;
+      height: 130px;
+    }
   }
 
   #header-region {
