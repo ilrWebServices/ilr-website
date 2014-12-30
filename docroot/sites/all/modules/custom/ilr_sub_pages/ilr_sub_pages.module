@@ -108,37 +108,40 @@ function ilr_sub_pages_node_form_validate($form, &$form_state) {
 }
 
 /**
- * Implements hook_FORM_ID_form_alter().
+ * Implements hook_form_alter().
  * Sets the menu parent if present
+ * Adds the checkbox to hide from the menu
  */
-function ilr_sub_pages_form_basic_page_node_form_alter(&$form, &$form_state, $form_id) {
-  $view_advanced_menu = user_access('view page advanced menu settings');
-  $node = $form['#node'];
-  // This element is added by menu module a 'value' type. We override to let user choose.
-  $form['menu']['link']['hidden'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Hide from menu output'),
-    '#description' => t('Check if you would like the page to include the correct breadcrumbs and parent navigation, but not appear in the menu.'),
-    '#default_value' => isset($node->menu['hidden']) ? $node->menu['hidden'] : 0,
-  );
-  // set menu parent item default value if creating sub page
-  if (isset($form['#node']->ilr_default_menu_parent)) {
-    $form['menu']['link']['parent']['#default_value'] = $node->ilr_default_menu_parent;
-    $form['menu']['enabled']['#value'] = TRUE;
-  }
-  if (!$view_advanced_menu) {
-    // Require the menu link title and parent fields.
-    $form['menu']['enabled']['#disabled'] = TRUE;
-    $form['menu']['link']['link_title']['#required'] = TRUE;
-    $form['menu']['link']['parent']['#required'] = TRUE;
-    // Restricts access to certain menu form fields
-    $form['menu']['link']['description']['#access'] = FALSE;
-    $form['menu']['link']['weight']['#access'] = FALSE;
-    $form['menu']['link']['parent']['#access'] = FALSE;
-  }
+function ilr_sub_pages_form_node_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['#node_edit_form']) && $form['#node_edit_form']) {
+    $view_advanced_menu = user_access('view page advanced menu settings');
+    $node = $form['#node'];
+    // This element is added by menu module a 'value' type. We override to let user choose.
+    $form['menu']['link']['hidden'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Hide from menu output'),
+      '#description' => t('Check if you would like the page to include the correct breadcrumbs and parent navigation, but not appear in the menu.'),
+      '#default_value' => isset($node->menu['hidden']) ? $node->menu['hidden'] : 0,
+    );
+    // set menu parent item default value if creating sub page
+    if (isset($form['#node']->ilr_default_menu_parent)) {
+      $form['menu']['link']['parent']['#default_value'] = $node->ilr_default_menu_parent;
+      $form['menu']['enabled']['#value'] = TRUE;
+    }
+    if (!$view_advanced_menu) {
+      // Require the menu link title and parent fields.
+      $form['menu']['enabled']['#disabled'] = TRUE;
+      $form['menu']['link']['link_title']['#required'] = TRUE;
+      $form['menu']['link']['parent']['#required'] = TRUE;
+      // Restricts access to certain menu form fields
+      $form['menu']['link']['description']['#access'] = FALSE;
+      $form['menu']['link']['weight']['#access'] = FALSE;
+      $form['menu']['link']['parent']['#access'] = FALSE;
+    }
 
-  // Add an additional validation callback to this form
-  $form['#validate'][] = 'ilr_sub_pages_node_form_validate';
+    // Add an additional validation callback to this form
+    $form['#validate'][] = 'ilr_sub_pages_node_form_validate';
+  }
 }
 
 /**
