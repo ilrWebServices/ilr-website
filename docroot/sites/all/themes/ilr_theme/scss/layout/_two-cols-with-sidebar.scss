@@ -12,7 +12,7 @@
       @extend %two-column;
     }
     .section { // For readability, don't let sections get too wide
-      max-width: 760px;
+      max-width: $section-max-width;
     }
   }
 

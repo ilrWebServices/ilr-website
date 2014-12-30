@@ -21,9 +21,7 @@
   }
 
   &[data-eq-state="widescreen"] {
-    body:not(.node-type-people-profile) & {
-      @extend %triptych;
-    }
+    @extend %triptych;
   }
 
   &[data-eq-state="450"],
@@ -46,9 +44,7 @@
     #sidebar-first {
       display: block;
     }
-    body:not(.node-type-people-profile) & {
-      @extend %two-cols-with-sidebar;
-    }
+    @extend %two-cols-with-sidebar;
   }
 
   #content, #sidebar-second {
