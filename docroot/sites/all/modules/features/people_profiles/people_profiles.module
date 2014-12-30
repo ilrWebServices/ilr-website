@@ -475,6 +475,7 @@ function _people_profiles_sanitize_department_name($name) {
 }
 
 function _people_profiles_sanitize_department_key($name) {
+  $name = _people_profiles_sanitize_department_name($name);
   $key = strtolower($name);
   $key = preg_replace('@[^a-z0-9_]+@','_',$key);
   if (strlen($key) > 30) {
