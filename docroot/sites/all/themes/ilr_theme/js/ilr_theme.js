@@ -304,10 +304,17 @@
   };
   Drupal.behaviors.masonry = {
     attach: function (context, settings) {
-      var $contentBottom = $('#content-bottom .tagged-content');
-      $contentBottom.isotope({
-        itemSelector: 'article',
-        layoutMode: 'masonry',
+      $(window).load(function() {
+        var $contentBottom = $('#content-bottom .tagged-content');
+        $contentBottom.isotope({
+          itemSelector: 'article',
+          layoutMode: 'masonry',
+        });
+        var $content = $('#content .tagged-content');
+        $content.isotope({
+          itemSelector: 'article',
+          layoutMode: 'masonry',
+        });
       });
     }
   };
