@@ -120,6 +120,8 @@ class TaggedContentBean extends BeanPlugin {
       foreach ($result['node'] as $node) {
         $node = node_load($node->nid, $node->vid);
         $content['nodes'][$node->nid] = node_view($node, 'teaser');
+        $content['nodes'][$node->nid]['featured'] = $bean->featured;
+        // 'featured' status can be acted upon as the content gets rendered, as we do in tagged_content_block_preprocess_node().
       }
       $content['nodes']['#weight'] = '-1';
 

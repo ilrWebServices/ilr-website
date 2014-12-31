@@ -52,6 +52,8 @@ function ilr_settings_strongarm() {
   $strongarm->name = 'borealis_ri_children';
   $strongarm->value = array(
     0 => 'focussed_thumbnail',
+    1 => 'focussed_profile_image',
+    2 => 'focussed_hero',
   );
   $export['borealis_ri_children'] = $strongarm;
 
@@ -103,6 +105,58 @@ function ilr_settings_strongarm() {
       ),
       'module' => 'basic_page',
       'storage' => 4,
+    ),
+    'focussed_profile_image' => array(
+      'isid' => '1',
+      'name' => 'focussed_profile_image',
+      'label' => 'Focussed Profile Image',
+      'module' => NULL,
+      'storage' => 1,
+      'effects' => array(
+        1 => array(
+          'label' => 'Focal Point Scale And Crop',
+          'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+          'effect callback' => 'focal_point_scale_and_crop_effect',
+          'dimensions callback' => 'image_resize_dimensions',
+          'form callback' => 'image_resize_form',
+          'summary theme' => 'image_resize_summary',
+          'module' => 'focal_point',
+          'name' => 'focal_point_scale_and_crop',
+          'data' => array(
+            'width' => '800',
+            'height' => '548',
+          ),
+          'ieid' => '1',
+          'isid' => '1',
+          'weight' => '1',
+        ),
+      ),
+    ),
+    'focussed_hero' => array(
+      'isid' => '2',
+      'name' => 'focussed_hero',
+      'label' => 'Focussed Hero',
+      'module' => NULL,
+      'storage' => 1,
+      'effects' => array(
+        2 => array(
+          'label' => 'Focal Point Scale And Crop',
+          'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+          'effect callback' => 'focal_point_scale_and_crop_effect',
+          'dimensions callback' => 'image_resize_dimensions',
+          'form callback' => 'image_resize_form',
+          'summary theme' => 'image_resize_summary',
+          'module' => 'focal_point',
+          'name' => 'focal_point_scale_and_crop',
+          'data' => array(
+            'width' => '1600',
+            'height' => '612',
+          ),
+          'ieid' => '2',
+          'isid' => '2',
+          'weight' => '1',
+        ),
+      ),
     ),
   );
   $export['borealis_ri_parents'] = $strongarm;
@@ -572,7 +626,7 @@ function ilr_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_frontpage';
-  $strongarm->value = 'home';
+  $strongarm->value = 'node/247828';
   $export['site_frontpage'] = $strongarm;
 
   $strongarm = new stdClass();
