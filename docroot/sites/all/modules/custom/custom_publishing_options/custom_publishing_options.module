@@ -76,7 +76,7 @@ function _custom_publishing_options_featured_image_error($fid) {
   if ($fid >= 1) {
     $file = file_load($fid);
     $image = image_load($file->uri);
-    if ($image->info['width'] > MIN_IMAGE_WIDTH) {
+    if ($image->info['width'] >= MIN_IMAGE_WIDTH) {
       return FALSE;
     }
   }
