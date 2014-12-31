@@ -10,8 +10,7 @@
 #main {
   clear: both;
   @include add-grid(12);
-  padding: 0 1em;
-  @include padding-leader(1);
+  padding-top: $main-top-padding;
   // @include sgs-change('debug', true);
   // @include background-grid();
   @include transition-duration(.3s);
@@ -34,6 +33,10 @@
     }
   }
 
+  #highlighted {
+    margin-top: $main-top-padding * -1;
+  }
+
   @extend .clearfix;
 
   #sidebar-first {
@@ -47,6 +50,9 @@
     @extend %two-cols-with-sidebar;
   }
 
+  #content {
+    padding: 0 1em;
+  }
   #content, #sidebar-second {
     @extend .clearfix;
 
@@ -55,16 +61,8 @@
     }
   }
 
-  #highlighted .tagged-content {
-    &[data-items='2'],
-    &[data-items='3'] {
-      article {
-        @extend %two-thirds-split-column;
-      }
-    }
-  }
-
   #content-bottom {
+    padding: 0 1em;
     clear: both;
     @include leader(3);
     article {

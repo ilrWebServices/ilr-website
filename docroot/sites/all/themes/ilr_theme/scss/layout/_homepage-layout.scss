@@ -1,0 +1,23 @@
+%homepage {
+  #main {
+    #content {
+      @include grid-span(12);
+      @include add-gutter(1);
+      .section {
+        max-width: 100%;
+      }
+      .block-bean article {
+        @extend %three-column-masonry;
+      }
+    }
+    &[data-eq-state="widescreen"] {
+      #content .block-bean article {
+        @extend %four-column;
+      }
+    }
+    #sidebar-first {
+      display: none !important; //Override
+    }
+  }
+
+}

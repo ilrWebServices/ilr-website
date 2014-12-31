@@ -9,7 +9,7 @@
   #content {
     @include grid-span(1, 2);
     .block-bean article {
-      @extend %two-column;
+      @extend %two-column-masonry;
     }
     .section { // For readability, don't let sections get too wide
       max-width: $section-max-width;

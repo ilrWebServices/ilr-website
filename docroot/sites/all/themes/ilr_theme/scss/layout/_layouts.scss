@@ -44,6 +44,14 @@
   }
 }
 
+%three-column-masonry {
+  @include layout(3) {
+    @include add-gutter(.1);
+    @include add-gutter-style('split');
+    @include float-span(1);
+  }
+}
+
 %four-column {
   @include layout(8) {
     @include add-gutter-style('split');
@@ -52,14 +60,23 @@
 }
 
 %square-to-3x4 {
+  @extend %image-ratio-hack;
+  a {
+    padding-top: 75%;
+    img {
+      top: -12.5%; // Square images need a negative margin for vertical positioning
+    }
+  }
+}
+
+// See http://alistapart.com/article/creating-intrinsic-ratios-for-video
+%image-ratio-hack {
   position: relative;
   overflow: hidden;
-  .field-item {
-    padding-top: 75%; // Creates a 3x4 container for image
-    // See http://alistapart.com/article/creating-intrinsic-ratios-for-video
+  a {
+    display: block;
     img {
       position: absolute;
-      top: -12.5%; // Square images need a negative margin for vertical positioning
       left: 0;
     }
   }

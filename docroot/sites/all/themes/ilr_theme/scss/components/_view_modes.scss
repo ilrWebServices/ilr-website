@@ -178,3 +178,12 @@
     @extend .hidden;
   }
 }
+
+%carousel-slide {
+  h2, .category, .field-name-body {
+    display: none;
+  }
+  article {
+    @extend %one-column;
+  }
+}
