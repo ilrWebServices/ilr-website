@@ -92,11 +92,14 @@
 
       function getCurrentMenu() {
         currentPage = getCurrentPage();
-        children = $(currentPage).children('ul.menu');
-        if (children.length) {
-          return children;
-        }
-        return $(currentPage).parent();
+        if (currentPage) {
+          children = $(currentPage).children('ul.menu');
+          if (children.length) {
+            return children;
+          }
+          return $(currentPage).parent();
+        } // Default to main menu since no active trail was found
+        return $('.menu-block-ilr-subnav > ul.menu');
       }
 
       function getCurrentPage() {
