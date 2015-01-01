@@ -103,14 +103,17 @@
 
     h2 {
       font-family: $font;
-      font-size: ms(0);
-      font-weight: 600;
+      &.bean-title {
+        font-weight: 600;
+        text-transform: uppercase;
+        @include adjust-font-size-to(16px);
+      }
     }
 
     .field-name-field-referenced-entity {
       @extend %three-column;
 
-      h2 {
+      article h2 {
         font-weight: normal;
         margin: 0;
         @include adjust-leading-to(1);
