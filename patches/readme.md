@@ -64,3 +64,8 @@ Example:
   * Removes unhelpful mtime line from .info files
   * https://www.drupal.org/node/2381739
   * https://www.drupal.org/files/issues/2381739-features-mtime.patch
+
+* bean
+  * Rendered bean respects title display settings
+  * https://www.drupal.org/node/1858416
+  * https://www.drupal.org/files/issues/bean-1858416-28-title-display.patch

@@ -1,0 +1,39 @@
+diff --git a/bean.module b/bean.module
+index 506fedd..2dd207f 100644
+--- a/bean.module
++++ b/bean.module
+@@ -861,6 +861,10 @@ function bean_block_view($delta = '') {
+       );
+     }
+ 
++    if (is_array($content)) {
++      unset($content['bean'][$delta]['title']);
++    }
++
+     $return = array(
+       'content' => $content,
+       'subject' => isset($bean->title) ? filter_xss($bean->title, $allowed_tags = array('em', 'strong', 'i', 'b')) : '',
+diff --git a/includes/bean.core.inc b/includes/bean.core.inc
+index 05530fc..6d38b20 100644
+--- a/includes/bean.core.inc
++++ b/includes/bean.core.inc
+@@ -348,6 +348,19 @@ class Bean extends Entity {
+    */
+   public function view($view_mode = 'default', $langcode = NULL, $page = NULL) {
+     $content = parent::view($view_mode, $langcode);
++
++    // Add the title so that it may be controlled via other display mechanisms.
++    $content_key = key($content['bean']);
++
++    if (!empty($this->title)) {
++      $content['bean'][$content_key]['title'] = array(
++        '#theme' => 'html_tag',
++        '#tag' => 'h2',
++        '#value' => $this->title,
++        '#attributes' => array('class' => 'bean-title'),
++      );
++    }
++
+     if (empty($this->plugin)) {
+       return $content;
+     }
