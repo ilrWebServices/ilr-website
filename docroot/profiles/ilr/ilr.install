@@ -387,3 +387,9 @@ function ilr_update_7026() {
 function ilr_update_7027() {
   field_delete_field('field_academic_department');
 }
+/**
+ * Enables block_collection feature
+ */
+function ilr_update_7028() {
+  module_enable('block_collection');
+}

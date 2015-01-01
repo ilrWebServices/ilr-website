@@ -32,6 +32,7 @@ dependencies[] = views
 
 ; ILR Features and Custom modules
 dependencies[] = basic_page
+dependencies[] = block_collection
 dependencies[] = cul_hours
 dependencies[] = cul_new_books
 dependencies[] = custom_publishing_options
