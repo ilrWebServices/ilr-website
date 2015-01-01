@@ -1751,6 +1751,70 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_collected_blocks'
+  $field_bases['field_collected_blocks'] = array(
+    'active' => 1,
+    'cardinality' => 3,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_collected_blocks',
+    'foreign keys' => array(
+      'bid' => array(
+        'columns' => array(
+          'bid' => 'bid',
+        ),
+        'table' => 'block',
+      ),
+    ),
+    'indexes' => array(
+      'bid' => array(
+        0 => 'bid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'blockreference',
+    'settings' => array(
+      'referenceable_modules' => array(
+        'bean' => 'bean',
+        'block' => 'block',
+        'calendar' => 0,
+        'context_ui' => 0,
+        'cul_hours' => 'cul_hours',
+        'devel' => 0,
+        'diff' => 0,
+        'entityform_block' => 0,
+        'ilr_alumni_events' => 0,
+        'ilr_google_translate' => 0,
+        'ilr_mega_menu' => 0,
+        'ilr_sub_sites' => 0,
+        'ilr_xml_blocks' => 'ilr_xml_blocks',
+        'menu' => 0,
+        'menu_block' => 0,
+        'node' => 0,
+        'people_profiles' => 'people_profiles',
+        'simplesamlphp_auth' => 0,
+        'system' => 0,
+        'user' => 0,
+        'views' => 'views',
+      ),
+      'referenceable_operator' => 'AND',
+      'referenceable_regions' => array(
+        '' => 0,
+        'content' => 0,
+        'content_bottom' => 0,
+        'footer' => 0,
+        'header' => 0,
+        'highlighted' => 0,
+        'sidebar_first' => 0,
+        'sidebar_second' => 0,
+      ),
+      'referenceable_theme' => 'default',
+      'respect_visibility' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'blockreference',
+  );
+
   // Exported field_base: 'field_comments'
   $field_bases['field_comments'] = array(
     'active' => 1,
