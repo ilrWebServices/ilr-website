@@ -393,3 +393,9 @@ function ilr_update_7027() {
 function ilr_update_7028() {
   module_enable('block_collection');
 }
+/**
+ * Enables block_collection feature
+ */
+function ilr_update_7029() {
+  module_enable('menu_link_by_path');
+}

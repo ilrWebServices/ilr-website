@@ -23,6 +23,7 @@ dependencies[] = context
 dependencies[] = entity
 dependencies[] = features
 dependencies[] = menu_block
+dependencies[] = menu_link_by_path
 dependencies[] = pathauto
 dependencies[] = redirect
 dependencies[] = simplesamlphp_auth
