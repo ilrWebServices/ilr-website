@@ -81,5 +81,12 @@ function scheinman_neutral_strongarm() {
   $strongarm->value = 0;
   $export['node_submitted_scheinman_neutral'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_scheinman_neutral_pattern';
+  $strongarm->value = 'scheinman-institute/roster-neutrals/[node:title]';
+  $export['pathauto_node_scheinman_neutral_pattern'] = $strongarm;
+
   return $export;
 }
