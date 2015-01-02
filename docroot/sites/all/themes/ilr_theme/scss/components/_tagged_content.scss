@@ -1,5 +1,5 @@
-.block-bean.tagged-content,
-.block-bean.event-block {
+.tagged-content,
+.event-block {
   > h2 {
     @include leader(1);
     @include trailer(1);
@@ -7,10 +7,6 @@
     text-transform: uppercase;
     color: #4a4a4a;
     font-weight: bold;
-
-    #content-bottom & {
-      @extend .hidden;
-    }
   }
 
   @extend %bean-base;

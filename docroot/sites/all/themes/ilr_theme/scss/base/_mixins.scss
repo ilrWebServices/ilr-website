@@ -73,3 +73,9 @@
     font-weight: $weight;
   }
 }
+
+@mixin context($old-context, $new-context) {
+  @at-root #{selector-replace(&, $old-context, $new-context)} {
+    @content;
+  }
+}

@@ -6,15 +6,20 @@
       .section {
         max-width: 100%;
       }
-      .block-bean article {
-        @extend %three-column-masonry;
+      .ilr-video-wrapper {
+        @include grid-span(4,5);
+      }
+      .block-bean {
+        @include grid-span(4);
+        article {
+          @extend %one-column;
+        }
+        &.event-block {
+          @include grid-span(4,9);
+        }
       }
     }
-    &[data-eq-state="widescreen"] {
-      #content .block-bean article {
-        @extend %four-column;
-      }
-    }
+
     #sidebar-first {
       display: none !important; //Override
     }

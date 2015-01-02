@@ -310,11 +310,11 @@
           itemSelector: 'article',
           layoutMode: 'masonry',
         });
-        var $content = $('#content .tagged-content');
-        $content.isotope({
-          itemSelector: 'article',
-          layoutMode: 'masonry',
-        });
+        // var $content = $('#content .tagged-content');
+        // $content.isotope({
+        //   itemSelector: 'article',
+        //   layoutMode: 'masonry',
+        // });
       });
     }
   };

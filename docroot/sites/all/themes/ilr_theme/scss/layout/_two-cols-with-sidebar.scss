@@ -30,8 +30,8 @@
   #content-bottom {
     @include grid-span(2);
     clear: both;
-    .block-bean article {
-      @extend %three-column;
+    article {
+      @extend %three-column-masonry;
     }
   }
 }

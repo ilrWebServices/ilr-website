@@ -84,9 +84,7 @@
 
 %custom-thumbnail {
   a {
-    &:hover {
-      text-decoration: none;
-    }
+    text-decoration: none;
     span {
       display: block;
       text-align: center;
@@ -99,13 +97,13 @@
   }
   &.event a{
     span {
-      @include adjust-font-size-to(35px, 1);
+      @include adjust-font-size-to(25px, 1);
       font-style: normal;
       text-transform: uppercase;
       font-family: $font;
-      padding-top: 50px;
+      padding-top: 25px;
       #sidebar-second & {
-        padding-top: 30px;
+        padding-top: 25px;
       }
     }
   }

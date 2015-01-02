@@ -15,7 +15,7 @@ $icons: (
   search: "\f114",
   search-thin: "\f115",
   rain2: "\f116",
-  snow: "\f117",
+  "snow": "\f117", // Avoids sass compilation error
   arrow-down2: "\f118",
   thunderstorm: "\f119",
   unknown: "\f120",

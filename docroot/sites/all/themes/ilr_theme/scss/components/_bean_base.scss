@@ -8,7 +8,6 @@
       font-family: $font-headers;
       color: $h2-text;
       text-decoration: none !important; // #content a has underlines, at least for now
-      @include adjust-font-size-to(22px);
       @include adjust-leading-to(1);
     }
     @include addHighlightColors('.category', 'color');
@@ -20,7 +19,8 @@
     }
   }
 
-  #sidebar-second & {
+  #sidebar-second &,
+  #content & {
     article[data-eq-state="medium"] {
       @extend %thumb;
     }
@@ -29,11 +29,13 @@
     }
   }
 
-  #content &,
-  #content-bottom & {
-    .tagged-content h2 { @extend .hidden; }
+  // This confirms that the wrapper (i.e. tagged-content)
+  // is a direct descendant of the field. That way, we can
+  // avoid cards in block-collection beans
+  .field-name-field-content-bottom-region > & {
+    > h2 { @extend .hidden; }
     article {
-      @extend %card;
+     @extend %card;
     }
   }
 }

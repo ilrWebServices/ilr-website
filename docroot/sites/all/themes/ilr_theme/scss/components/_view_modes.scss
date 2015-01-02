@@ -10,7 +10,7 @@
   }
   // Hide everything but the title
   div, ul.links, h3, h4 {
-    @extend .hidden;
+    display: none;
   }
 
   a {
@@ -56,7 +56,9 @@
 
   h2 {
     @include padding-leader(1);
+    @include adjust-font-size-to(22px);
     margin-left: 115px;
+    text-align: left;
   }
 
   h3 {
@@ -88,7 +90,7 @@
   .field-name-field-campaign-title,
   .field-name-field-teaser,
   .student-name {
-    @extend .hidden;
+    display: none;
   }
 }
 
@@ -100,7 +102,7 @@
 
   article {
     .field-type-text-with-summary {
-      @extend .visible;
+      display: block;
       p {
         font-size: $p-sm-size;
       }
@@ -127,10 +129,11 @@
 
   h2 {
     @include leader(1);
+    @include adjust-font-size-to(25px);
     padding: 0 1em;
   }
   &[data-eq-state="small"] h2 {
-    @include adjust-font-size-to(16px);
+    @include adjust-font-size-to(22px);
   }
 
   h3 {
@@ -175,7 +178,7 @@
   .field-name-field-campaign-intro,
   .field-name-field-campaign-title,
   .field-name-field-teaser {
-    @extend .hidden;
+    display: none;
   }
 }
 

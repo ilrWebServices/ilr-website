@@ -365,8 +365,6 @@ table {
 // ================================================
 
 #sidebar-second {
-  @include adjust-font-size-to(16px);
-
   li p {
     @include adjust-font-size-to(ms(0));
   }

@@ -31,7 +31,7 @@
   #content-bottom {
     @include grid-span(3);
     clear: both;
-    .block-bean article {
+    article {
       @extend %four-column;
     }
   }
