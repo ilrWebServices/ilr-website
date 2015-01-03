@@ -377,7 +377,7 @@ function spotlight_field_default_field_instances() {
     'bundle' => 'spotlight',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -433,6 +433,7 @@ function spotlight_field_default_field_instances() {
   t('Category types are used in the theme as [category_type] / [primary_tag]');
   t('Main Image');
   t('Tags');
+  t('Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.');
   t('The Campaign Intro is an optional, 1-2 sentence lead-in for the current campaign. ');
 
   return $field_instances;

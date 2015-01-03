@@ -274,7 +274,7 @@ function promo_field_default_field_instances() {
     'bundle' => 'promo',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -456,6 +456,7 @@ function promo_field_default_field_instances() {
   t('Internal Link');
   t('Link Type');
   t('Tags');
+  t('Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.');
   t('Teaser');
   t('The url of the external link.');
   t('URL');

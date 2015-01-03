@@ -287,7 +287,7 @@ function ilr_workspan_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.',
     'display' => array(
       'basic_teaser' => array(
         'label' => 'above',
@@ -431,6 +431,7 @@ function ilr_workspan_field_default_field_instances() {
   t('Headline');
   t('Publication Date');
   t('Tags');
+  t('Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.');
   t('Thumbnail');
   t('Video');
 

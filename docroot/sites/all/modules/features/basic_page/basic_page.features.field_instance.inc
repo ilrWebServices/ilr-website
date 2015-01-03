@@ -814,7 +814,7 @@ function basic_page_field_default_field_instances() {
     'bundle' => 'basic_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -871,6 +871,7 @@ function basic_page_field_default_field_instances() {
   t('Main Image');
   t('Sidebar Region');
   t('Tags');
+  t('Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.');
   t('The content region is currently only used for adding forms to pages. ');
   t('Title Text');
   t('Title text is used in the tool tip when a user hovers their mouse over the image. Adding title text makes it easier to understand the context of an image and improves usability.');

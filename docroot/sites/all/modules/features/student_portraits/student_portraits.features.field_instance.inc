@@ -400,7 +400,7 @@ function student_portraits_field_default_field_instances() {
     'bundle' => 'student_portrait',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -508,6 +508,7 @@ function student_portraits_field_default_field_instances() {
   t('Interests');
   t('Quote');
   t('Tags');
+  t('Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.');
 
   return $field_instances;
 }

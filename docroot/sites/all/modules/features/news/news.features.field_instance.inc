@@ -398,7 +398,7 @@ function news_field_default_field_instances() {
     'bundle' => 'news_item',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Tags are used internally for content placement and organization',
+    'description' => 'Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -521,7 +521,7 @@ function news_field_default_field_instances() {
   t('Publication Date');
   t('Short title');
   t('Tags');
-  t('Tags are used internally for content placement and organization');
+  t('Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.');
   t('Teaser');
   t('The short title, if present, is used in news blocks and breadcrumbs.');
 

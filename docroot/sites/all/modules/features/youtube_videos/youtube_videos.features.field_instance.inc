@@ -252,7 +252,7 @@ function youtube_videos_field_default_field_instances() {
     'bundle' => 'youtube_video',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -386,6 +386,7 @@ function youtube_videos_field_default_field_instances() {
   t('Duration');
   t('Playlists');
   t('Tags');
+  t('Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.');
   t('Youtube Video');
 
   return $field_instances;
