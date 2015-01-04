@@ -14,6 +14,20 @@ define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
 
 /**
+ * Implements hook_menu().
+ */
+function forms_menu() {
+  $items['admin/structure/entityform_types/usage'] = array(
+    'title' => 'Forms in Use',
+    'page callback' => '_forms_usage_page',
+    'access arguments' => array('administer entityform types'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_entityform_presave.
  * Sets the registration date for registration forms
  * Sets the job postdate for alumni job postings
@@ -788,4 +802,29 @@ function _forms_entityform_wrapper($entityform) {
     $wrapper = entity_metadata_wrapper('entityform', $entityform);
   }
   return $wrapper;
+}
+
+function _forms_usage_page() {
+  $content = "<p>The following forms are in use on the respective pages:</p>";
+  $content .= "<ol>\n";
+
+  // Query for all bid's that have an entityform block
+  $result = db_select('block', 'b')->fields('b', array(
+        'bid',
+        'delta',
+      ))->condition('module', 'entityform_block')->execute();
+
+  // Query the usage for the results
+  foreach ($result as $key => $block) {
+    $usage_results = _ilr_get_block_usage($block->bid);
+    if (count($usage_results)) {
+      $nid = $usage_results[0];
+      $alias = drupal_get_path_alias("node/$nid");
+      $content .= "<li><a href='/admin/structure/entityform_types/manage/$block->delta'>$block->delta</a>: <a href='/$alias'><strong>$alias</strong></a></li>\n";
+    }
+  }
+
+  $content .= "</ol>\n";
+
+  return $content;
 }
