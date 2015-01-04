@@ -165,10 +165,13 @@ function _tagged_content_block_generate_thumbnail_markup($text, $url, $content_t
 
 function _tagged_content_block_get_category_type($node) {
   $wrapper = entity_metadata_wrapper('node',$node);
-  if($term = $wrapper->field_category_type->value()) {
-    return $term->name;
+  if (isset($wrapper->field_category_type)) {
+    if($term = $wrapper->field_category_type->value()) {
+      return $term->name;
+    }
+    return _tagged_content_block_get_default_category_type($wrapper->type->value());
   }
-  return _tagged_content_block_get_default_category_type($wrapper->type->value());
+  return '';
 }
 
 function _tagged_content_block_get_default_category_type($content_type) {
@@ -214,10 +217,13 @@ function _tagged_content_block_get_hyphened_type($type) {
 
 function _tagged_content_block_get_primary_term_for_node($node) {
   $wrapper = entity_metadata_wrapper('node',$node);
-  $tag_array = $wrapper->field_tags->value();
-  if (count($tag_array)) {
-    return $tag_array[0]->name;
+  if (isset($wrapper->field_tags)) {
+    $tag_array = $wrapper->field_tags->value();
+    if (count($tag_array)) {
+      return $tag_array[0]->name;
+    }
   }
+
   watchdog('tagged_content_block', "Primary term for node '@node' was not found.",
     array(
       '@node' => $wrapper->label(),
