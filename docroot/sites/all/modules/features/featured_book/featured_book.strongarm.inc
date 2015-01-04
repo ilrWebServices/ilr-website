@@ -81,5 +81,12 @@ function featured_book_strongarm() {
   $strongarm->value = 0;
   $export['node_submitted_featured_book'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_featured_book_pattern';
+  $strongarm->value = 'library/collections/book-of-the-month/[node:title]';
+  $export['pathauto_node_featured_book_pattern'] = $strongarm;
+
   return $export;
 }

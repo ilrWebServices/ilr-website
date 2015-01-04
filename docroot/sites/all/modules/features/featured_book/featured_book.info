@@ -31,6 +31,7 @@ features[variable][] = menu_parent_featured_book
 features[variable][] = node_options_featured_book
 features[variable][] = node_preview_featured_book
 features[variable][] = node_submitted_featured_book
+features[variable][] = pathauto_node_featured_book_pattern
 features[views_view][] = featured_book
 features_exclude[dependencies][date] = date
 project path = sites/all/modules/features
