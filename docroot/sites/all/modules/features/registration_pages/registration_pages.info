@@ -39,5 +39,4 @@ features[variable][] = menu_parent_registration_page
 features[variable][] = node_options_registration_page
 features[variable][] = node_preview_registration_page
 features[variable][] = node_submitted_registration_page
-mtime = 1418073222
 project path = sites/all/modules/features

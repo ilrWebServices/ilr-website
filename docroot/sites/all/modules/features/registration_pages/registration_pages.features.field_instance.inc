@@ -373,12 +373,13 @@ function registration_pages_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
+        'module' => 'image',
         'settings' => array(
           'field_formatter_label' => '',
-          'file_view_mode' => 'default',
+          'image_link' => '',
+          'image_style' => 'focussed_main_image',
         ),
-        'type' => 'file_rendered',
+        'type' => 'image',
         'weight' => 0,
       ),
       'highlighted' => array(
@@ -417,6 +418,7 @@ function registration_pages_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_image',
     'label' => 'Main Image',
     'required' => 0,
@@ -427,7 +429,7 @@ function registration_pages_field_default_field_instances() {
       'file_extensions' => 'jpg jpeg',
       'max_filesize' => '2MB',
       'max_resolution' => '',
-      'min_resolution' => '320x134',
+      'min_resolution' => '800x533',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -437,6 +439,7 @@ function registration_pages_field_default_field_instances() {
       'settings' => array(
         'allowed_schemes' => array(
           'public' => 'public',
+          'youtube' => 0,
         ),
         'allowed_types' => array(
           'audio' => 0,
@@ -445,11 +448,14 @@ function registration_pages_field_default_field_instances() {
           'video' => 0,
         ),
         'browser_plugins' => array(
+          'ilr_media_browser--media_browser_1' => 0,
+          'ilr_media_browser--media_browser_my_files' => 0,
           'media_default--media_browser_1' => 0,
           'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
           'upload' => 0,
+          'youtube' => 0,
         ),
-        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 2,

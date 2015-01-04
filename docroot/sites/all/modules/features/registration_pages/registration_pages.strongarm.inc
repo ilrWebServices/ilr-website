@@ -34,6 +34,12 @@ function registration_pages_strongarm() {
       'reference_field' => array(
         'custom_settings' => FALSE,
       ),
+      'mega_menu_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'basic_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
