@@ -80,7 +80,7 @@ function news_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 7,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -128,7 +128,7 @@ function news_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 0,
       ),
       'highlighted' => array(
         'label' => 'hidden',
@@ -182,13 +182,14 @@ function news_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
+        'module' => 'image',
         'settings' => array(
           'field_formatter_label' => '',
-          'file_view_mode' => 'default',
+          'image_link' => '',
+          'image_style' => 'focussed_main_image',
         ),
-        'type' => 'file_rendered',
-        'weight' => 0,
+        'type' => 'image',
+        'weight' => 1,
       ),
       'highlighted' => array(
         'label' => 'hidden',
@@ -231,7 +232,7 @@ function news_field_default_field_instances() {
       'file_extensions' => 'jpg jpeg',
       'max_filesize' => '2MB',
       'max_resolution' => '',
-      'min_resolution' => '320x134',
+      'min_resolution' => '800x533',
       'title_field' => 1,
       'user_register_form' => FALSE,
     ),
@@ -240,36 +241,24 @@ function news_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          0 => 'public',
-          1 => 'private',
+          'public' => 'public',
+          'youtube' => 0,
         ),
         'allowed_types' => array(
-          0 => 'image',
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
         ),
-        'browser_plugins' => array(),
-        'filefield_sources' => array(
-          'filefield_sources' => array(
-            'attach' => 0,
-            'clipboard' => 0,
-            'imce' => 'imce',
-            'reference' => 'reference',
-            'remote' => 'remote',
-            'upload' => 'upload',
-          ),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 1,
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-          ),
+        'browser_plugins' => array(
+          'ilr_media_browser--media_browser_1' => 0,
+          'ilr_media_browser--media_browser_my_files' => 0,
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+          'youtube' => 0,
         ),
-        'preview_image_style' => 'thumbnail',
-        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 2,
@@ -294,7 +283,7 @@ function news_field_default_field_instances() {
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -353,7 +342,7 @@ function news_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -404,7 +393,7 @@ function news_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -455,7 +444,7 @@ function news_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'highlighted' => array(
         'label' => 'above',

@@ -45,6 +45,29 @@ function ilr_settings_image_default_styles() {
     ),
   );
 
+  // Exported image style: focussed_main_image.
+  $styles['focussed_main_image'] = array(
+    'name' => 'focussed_main_image',
+    'label' => 'Focussed Main Image',
+    'effects' => array(
+      3 => array(
+        'label' => 'Focal Point Scale And Crop',
+        'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+        'effect callback' => 'focal_point_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'focal_point',
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 800,
+          'height' => 533,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: focussed_thumbnail.
   $styles['focussed_thumbnail'] = array(
     'name' => 'focussed_thumbnail',
