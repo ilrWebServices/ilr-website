@@ -18,13 +18,13 @@ function microfilm_microfiche_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 0,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -72,13 +72,13 @@ function microfilm_microfiche_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 5,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -126,13 +126,13 @@ function microfilm_microfiche_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -180,13 +180,13 @@ function microfilm_microfiche_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -234,13 +234,13 @@ function microfilm_microfiche_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -288,13 +288,13 @@ function microfilm_microfiche_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 3,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -342,7 +342,7 @@ function microfilm_microfiche_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
@@ -396,13 +396,13 @@ function microfilm_microfiche_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -450,13 +450,13 @@ function microfilm_microfiche_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 1,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -504,13 +504,13 @@ function microfilm_microfiche_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 0,
       ),
       'highlighted' => array(
         'label' => 'above',

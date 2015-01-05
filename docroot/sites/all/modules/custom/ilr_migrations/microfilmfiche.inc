@@ -102,6 +102,7 @@ class MicroficheMigration extends Migration {
 
     // Remove empty values from data
     foreach ($row as $key => $value) {
+      $value = trim($value);
       if (empty($value)) {
         $row->$key = array();
       }
