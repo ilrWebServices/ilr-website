@@ -21,24 +21,6 @@ function ilr_form_install_configure_form_alter(&$form, $form_state) {
 }
 
 /**
- * Implements hook_menu()
- */
-function ilr_menu(){
-  $items['home'] = array(
-    'title' => '',
-    'page callback' => 'ilr_home_view',
-    'access callback' => TRUE,
-    'type' => MENU_CALLBACK,
-  );
-
-  return $items;
-}
-
-function ilr_home_view() {
-  return '';
-}
-
-/**
  * Implements hook_user_presave()
  */
 function ilr_user_presave(&$edit, $account, $category) {
@@ -46,6 +28,21 @@ function ilr_user_presave(&$edit, $account, $category) {
   if($account->is_new && !empty($saml_attributes)) {
     $edit['field_netid'][LANGUAGE_NONE][0]['value'] = $saml_attributes['uid'][0];
   }
+}
+
+/**
+ * Implements hook_node_access()
+ * Removes ability for non-admins to edit the homepage
+ * Note that this hook does not get run for users who have
+ * 'bypass node access' permission
+ */
+function ilr_node_access($node, $op, $account) {
+  if ($op == 'update') {
+    if ($node->nid == 248901 && !user_access('bypass node access')) {
+      return NODE_ACCESS_DENY;
+    }
+  }
+  return NODE_ACCESS_IGNORE;
 }
 
 /**
