@@ -165,8 +165,8 @@ class TaggedContentBean extends BeanPlugin {
         foreach ($result['node'] as $node) {
           if ($node->type == "promo") {
             $node = node_load($node->nid, $node->vid);
-            if (count($node->field_referenced_entity)) {
-              $nid = $node->field_referenced_entity[LANGUAGE_NONE][0]['target_id'];
+            if (count($node->field_internal_link)) {
+              $nid = $node->field_internal_link[LANGUAGE_NONE][0]['target_id'];
               $referenced_nids[$nid] = $nid;
             }
           }

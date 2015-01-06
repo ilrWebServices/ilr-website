@@ -399,3 +399,11 @@ function ilr_update_7028() {
 function ilr_update_7029() {
   module_enable(array('menu_trail_by_path'));
 }
+/**
+ * Deletes field_referenced_entity instance from promos
+ */
+function ilr_update_7030() {
+  if ($instance = field_info_instance('node', 'field_referenced_entity', 'promo')) {
+    field_delete_instance($instance);
+  }
+}

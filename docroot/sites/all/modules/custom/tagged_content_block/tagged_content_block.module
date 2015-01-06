@@ -238,8 +238,8 @@ function _tagged_content_block_get_promo_link_from_node($node) {
   if (!isset($url)) {
     $wrapper = entity_metadata_wrapper('node', $node);
     // Internal links
-    if (!empty($wrapper->field_referenced_entity) && $wrapper->field_referenced_entity->value()) {
-      $nid = $wrapper->field_referenced_entity->value()->nid;
+    if (!empty($wrapper->field_internal_link) && $wrapper->field_internal_link->value()) {
+      $nid = $wrapper->field_internal_link->value()->nid;
       $url = drupal_get_path_alias("node/$nid");
     } // External links
     else {

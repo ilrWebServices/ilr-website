@@ -196,6 +196,7 @@ features[field_base][] = field_ilrweb_vita_html
 features[field_base][] = field_image
 features[field_base][] = field_instructions
 features[field_base][] = field_interests_and_goals
+features[field_base][] = field_internal_link
 features[field_base][] = field_is_full
 features[field_base][] = field_isbn
 features[field_base][] = field_ithaca_or_nyc

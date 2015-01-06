@@ -13,7 +13,7 @@ function promo_conditional_fields_default_fields() {
   $items[] = array(
     'entity' => 'node',
     'bundle' => 'promo',
-    'dependent' => 'field_referenced_entity',
+    'dependent' => 'field_internal_link',
     'dependee' => 'field_link_type',
     'options' => array(
       'state' => 'visible',
@@ -23,7 +23,7 @@ function promo_conditional_fields_default_fields() {
       'effect_options' => array(),
       'element_view' => array(
         1 => 1,
-        2 => 0,
+        2 => 2,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -44,49 +44,56 @@ function promo_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        3 => array(
+        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        4 => array(
+        16 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        9 => array(
+        41 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        6 => array(
+        26 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        5 => array(
+        21 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        7 => array(
+        31 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        8 => array(
+        36 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -96,7 +103,7 @@ function promo_conditional_fields_default_fields() {
       ),
       'element_edit' => array(
         1 => 1,
-        3 => 3,
+        3 => 0,
       ),
       'element_edit_per_role' => 0,
       'element_edit_roles' => array(
@@ -108,31 +115,35 @@ function promo_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        3 => array(
+        11 => array(
           1 => 1,
           3 => 0,
         ),
-        4 => array(
+        16 => array(
           1 => 1,
           3 => 0,
         ),
-        9 => array(
+        41 => array(
           1 => 1,
           3 => 0,
         ),
-        6 => array(
+        26 => array(
           1 => 1,
           3 => 0,
         ),
-        5 => array(
+        21 => array(
           1 => 1,
           3 => 0,
         ),
-        7 => array(
+        31 => array(
           1 => 1,
           3 => 0,
         ),
-        8 => array(
+        36 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
           1 => 1,
           3 => 0,
         ),
