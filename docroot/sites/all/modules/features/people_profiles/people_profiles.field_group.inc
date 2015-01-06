@@ -294,8 +294,8 @@ function people_profiles_field_group_info() {
       7 => 'field_ilrweb_publications',
       8 => 'field_ilrweb_publications_file',
       9 => 'field_ilrweb_vita_html',
-      10 => 'field_ai_service_statement',
-      11 => 'field_ai_outreach_statement',
+      10 => 'field_ai_outreach_statement',
+      11 => 'field_ai_service_statement',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -380,8 +380,8 @@ function people_profiles_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'group_contact_info',
-      1 => 'group_related_resources',
-      2 => 'group_expertise',
+      1 => 'group_expertise',
+      2 => 'group_related_resources',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

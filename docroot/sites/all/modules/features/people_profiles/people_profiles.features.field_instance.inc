@@ -1113,11 +1113,12 @@ function people_profiles_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
+        'module' => 'file_entity',
         'settings' => array(
           'field_formatter_label' => '',
+          'text' => 'Download',
         ),
-        'type' => 'file_default',
+        'type' => 'file_download_link',
         'weight' => 31,
       ),
       'highlighted' => array(
@@ -1152,7 +1153,7 @@ function people_profiles_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'file',
       'settings' => array(
         'allowed_schemes' => array(
           'public' => 'public',
@@ -1183,7 +1184,7 @@ function people_profiles_field_default_field_instances() {
         ),
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'file_generic',
       'weight' => 32,
     ),
   );
