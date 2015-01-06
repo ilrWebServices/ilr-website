@@ -74,7 +74,7 @@ function wit_field_default_field_instances() {
     'bundle' => 'wit_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drupal truncates titles to 128 characters, so you can use this field to add a longer title.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -504,6 +504,7 @@ function wit_field_default_field_instances() {
   t('Article title');
   t('Author');
   t('Date');
+  t('Drupal truncates titles to 128 characters, so you can use this field to add a longer title.');
   t('Links to the full story');
   t('Publication');
   t('Wire Service');
