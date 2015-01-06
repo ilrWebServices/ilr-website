@@ -12,7 +12,7 @@ $aliases['ilr.dev'] = array(
   'remote-user' => 'ilr',
   'path-aliases' => array (
     '%dump-dir' => '/mnt/files/ilrdev/import',
-    '%files' => '/var/www/html/ilr.dev/docroot/sites/drupal-dev.ilr.cornell.edu/files',
+    '%files' => '/vol/ebs1/gfs/home/ilr/dev/livedev/docroot/sites/default/files',
   ),
 );
 
@@ -28,7 +28,7 @@ $aliases['ilr.test'] = array(
   'remote-user' => 'ilr',
   'path-aliases' => array (
     '%dump-dir' => '/mnt/files/ilrtest/import',
-    '%files' => '/var/www/html/ilr.test/docroot/sites/stage.ilr.cornell.edu/files',
+    '%files' => '/vol/ebs1/gfs/home/ilr/test/livedev/docroot/sites/default/files',
   ),
 );
 
