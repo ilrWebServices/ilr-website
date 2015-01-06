@@ -113,7 +113,7 @@ function ilr_sub_pages_node_form_validate($form, &$form_state) {
  * Adds the checkbox to hide from the menu
  */
 function ilr_sub_pages_form_node_form_alter(&$form, &$form_state, $form_id) {
-  if (isset($form['#node_edit_form']) && $form['#node_edit_form']) {
+  if (_ilr_sub_pages_content_type_has_menu_options($form)) {
     $view_advanced_menu = user_access('view page advanced menu settings');
     $node = $form['#node'];
     // This element is added by menu module a 'value' type. We override to let user choose.
@@ -168,6 +168,13 @@ function ilr_sub_pages_node_load($nodes, $types) {
       $nodes[$id]->path['pathauto'] = FALSE;
     }
   }
+}
+
+function _ilr_sub_pages_content_type_has_menu_options($form) {
+  if (isset($form['#node_edit_form']) && $form['#node_edit_form']) {
+    return count(variable_get('menu_options_' . $form['#bundle'])) > 0;
+  }
+  return FALSE;
 }
 
 /**
