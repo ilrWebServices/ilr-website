@@ -377,6 +377,7 @@ function _forms_process_standard_tech_services_requests(&$entityform, $subject) 
 function _forms_send_remedy_email(&$entityform, $remedy_email, $subject='Email to remedy') {
   $form_title = _forms_get_form_title($entityform);
   $user_name = _forms_construct_user_name($entityform);
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
   $user_email = $entityform_wrapper->field_email->value();
   $email_template = 'remedy_email';
 
