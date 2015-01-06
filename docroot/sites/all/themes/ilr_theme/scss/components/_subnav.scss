@@ -31,6 +31,12 @@
   opacity: 0;
 }
 
+#sidebar-first {
+  position: fixed;
+  .sticky & {
+    top: 170px;
+  }
+}
 .sidebar #block-menu-block-ilr-subnav {
   @extend .hidden;
 

@@ -136,9 +136,7 @@
       var handleStickyElements = function(){
         var scrollTop = $(window).scrollTop();
         $offset = getCurrentOffset();
-        if ($($submenuContainer).is(":visible") && scrollTop < $submenuContentDiff) {
-          updateSidebarPosition(scrollTop);
-        }
+
         if (thrashRiskFlag) {
           return;
         }
@@ -165,13 +163,6 @@
         if (isSubsite() && !mobileNavActive()) {
           $searchForm.appendTo('#header-region');
         }
-      }
-
-      var updateSidebarPosition = function(scrollTop) {
-        var difference, position;
-        difference = scrollTop - $submenuOffset;
-        var position = (difference > 0) ? difference : 0;
-        $('#sidebar-first').css('margin-top', position);
       }
 
       /**
