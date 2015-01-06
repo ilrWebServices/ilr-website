@@ -7,7 +7,7 @@
 }
 
 %header-small {
-  .container .logo-wrapper {
+  .logo-wrapper {
     margin: 10px;
     float: left;
 
@@ -44,11 +44,10 @@ header {
   .logo-wrapper {
     position: relative;
     margin-left: 10px;
+
     a.cornell {
       display: block;
       position: absolute;
-      width: 130px;
-      height: 130px;
     }
   }
 
@@ -86,6 +85,10 @@ header {
 
 %big-logo {
   body:not(.subsite) & {
+    a.cornell {
+      width: 130px;
+      height: 130px;
+    }
     #logo {
       img {
         width: 375px;
