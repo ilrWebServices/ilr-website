@@ -109,17 +109,18 @@
       width: 80%;
       &.next-menu {
         width: 20%;
-        padding: 1em;
+        padding: 0;
         z-index: 1;
         display: flex;
         justify-content: center;
-
-        span {
-          @extend %nav-arrow;
+        align-items: center;
+        @extend %icon-after-arrow-right-thin;
+        color: $gray-medium;
+        &::after {
+          color: lighten($gray-medium, 5%);
+          font-size: 14px;
         }
-
         #jPanelMenu-menu & {
-          padding: .8em 1em 1.1em 1em;
           border-left: 1px solid lighten($nav-dark, 15%);
         }
       }
@@ -143,8 +144,10 @@
       font-weight: bold;
       @include adjust-font-size-to(14px);
       span {
-        @extend %nav-arrow;
-        margin-right: .2em;
+        font-size: 12px;
+        @extend %icon-arrow-left;
+        margin-right: .5em;
+        margin-top: 1px;
       }
     }
   }

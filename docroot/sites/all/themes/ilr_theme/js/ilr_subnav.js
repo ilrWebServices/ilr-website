@@ -142,14 +142,14 @@
           linkText = 'Main Menu';
         }
         menu.prepend('<li class="section"><a href="'+sectionUrl+'">'+sectionText+'</a></li>');
-        menu.prepend('<li class="back"><a class="prev-menu" href="#"><span>&lsaquo; </span> ' + linkText + '</a></li>');
+        menu.prepend('<li class="back"><a class="prev-menu" href="#"><span> </span> ' + linkText + '</a></li>');
         $('.prev-menu').click(prevClick);
       }
 
       function addForwardButtonToMenus() {
         $('li.expanded').each(function(){
           if(menuItemNeedsArrow($(this))) {
-            $(this).append('<a class="next-menu" href="#"><span>&rsaquo;</span></a>');
+            $(this).append('<a class="next-menu" href="#"><span></span></a>');
           }
         });
         $('.next-menu').click(nextClick);
