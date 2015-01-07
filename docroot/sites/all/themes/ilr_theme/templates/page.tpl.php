@@ -75,7 +75,7 @@
   </div><!-- /.container -->
 </div><!-- /#page -->
 <footer role="contentinfo">
-  <div class="container">
+  <div class="container" <?php print render($page['page_width_eq_points']); ?>>
     <?php print render($page['footer']); ?>
   </div>  <!-- /.container -->
 </footer> <!-- / footer -->

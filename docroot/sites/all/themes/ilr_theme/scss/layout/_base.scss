@@ -86,6 +86,16 @@
   }
 }
 
+footer {
+  @extend .clearfix;
+  .block-bean {
+    @extend %three-column;
+  }
+  .copyright {
+    clear: both;
+  }
+}
+
 %page-with-sticky-header {
   margin-top: $header-height-small; // top-margins are here due to the fixed header
 

@@ -1,9 +1,13 @@
 footer {
-  padding: 1em 0 1em 15px;
+  padding: 2em 0 1em 15px;
   background: $brand-dark;
   color: $brand-light;
   position: relative;
   z-index: 10;
+
+  a, a:visited, a:hover {
+    color: $brand-light;
+  }
 
   #translate {
     background: url(../images/flag-sprite.gif) no-repeat;
