@@ -38,6 +38,25 @@ function people_profiles_user_insert(&$edit, $account, $category) {
 }
 
 /**
+ * Implements hook_node_presave().
+ */
+function people_profiles_node_presave($node) {
+  if (!$node->is_new) {
+    $wrapper = _people_profiles_node_wrapper($node);
+    $name_array = _people_profiles_get_first_and_last_names($node);
+    $wrapper->field_first_name->set($name_array[0]);
+    $last_name = (count($name_array) == 2) // last names may be more than 1 word
+      ? $name_array[1]
+      : implode(' ', array_slice($name_array, 1));
+    $wrapper->field_last_name->set($last_name);
+  }
+}
+
+function _people_profiles_get_first_and_last_names($node) {
+  return explode(' ', $node->title);
+}
+
+/**
  * Implements hook_preprocess_node
  *   Checks to see whether the Use AI flag has been set
  *   Removes appropriate columns based on the flag
@@ -287,26 +306,11 @@ function _people_profiles_get_description_as_help_text($field) {
 
 /**
  * Custom function to process faculty profiles
- * by hiding either the ilrweb or activity insight fields
- * This only gets called if the profile is a faculty
+ * by handling the optional AI elements
+ * and adding the sidebar thumb
  */
 function _people_profiles_process_faculty_view(&$element) {
-  // This assumes a common naming convention for irlweb and ai fields,
-  // which get set during the initial field creation process in the UI
-  // Exceptions can be added in _people_profiles_hide_fields_with_prefix
-  $preview = (isset($_GET['ai_preview'])) ? 1 : 0;
-  $wrapper = _people_profiles_node_wrapper();
-  $use_activity_insight = ($preview) ? 1 : $wrapper->field_use_ai_data->value();
-  $field_name_prefix =
-    ($use_activity_insight)
-      ? 'field_ilrweb'
-      : 'field_ai';
-  if ($use_activity_insight) { // Deal with optional fields
-    if (!$preview) {
-      _people_profiles_process_optional_ai_elements($element);
-    }
-  }
-  _people_profiles_hide_fields_with_prefix($element, $field_name_prefix);
+  _people_profiles_process_optional_ai_elements($element);
   _people_profiles_add_sidebar_thumb($element);
 }
 
@@ -339,17 +343,6 @@ function _people_profiles_process_staff_form(&$form) {
 function _people_profiles_process_address(&$element) {
   if(count($element['group_profile_sidebar']['group_contact_info']['field_address_line_1']) > 0) {
     unset($element['group_profile_sidebar']['group_contact_info']['field_local_address']);
-  }
-}
-
-function _people_profiles_hide_fields_with_prefix(&$element, $prefix) {
-  // Set up any exceptions, which are fields that should show for both ilrweb and ai versions
-  $exceptions = array('field_ai_other_expertise');
-  foreach ($element as $key => $value) { // $key is the field name
-    if (strpos($key, $prefix) === 0
-      && !in_array($key,$exceptions)) {
-      $element['group_main_content'][$key] = NULL;
-    }
   }
 }
 

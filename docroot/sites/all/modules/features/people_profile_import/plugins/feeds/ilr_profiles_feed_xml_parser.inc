@@ -23,9 +23,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       $field_values = array();
       $existing_profile = _people_profiles_find_profile_by_netid((string) $person->netID);
       $type = (string) $person->ldap_profile_type;
-      if ($existing_profile && $type != 'faculty') {
-        continue;
-      }
+
       foreach ($mapped_fields as $xml_key => $field_name) {
         switch($field_name) {
           case 'title':
