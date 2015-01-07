@@ -7,7 +7,7 @@
         max-width: 100%;
       }
       .ilr-video-wrapper {
-        @include grid-span(4,5);
+        @include grid-span(4,9);
       }
       .block-bean {
         @include grid-span(4);
@@ -15,7 +15,7 @@
           @extend %one-column;
         }
         &.event-block {
-          @include grid-span(4,9);
+          @include grid-span(4,5);
         }
       }
     }
