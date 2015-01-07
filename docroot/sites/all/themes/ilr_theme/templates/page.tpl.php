@@ -76,11 +76,6 @@
 </div><!-- /#page -->
 <footer role="contentinfo">
   <div class="container">
-    <?php if ($secondary_menu): ?>
-      <nav role="navigation" class="secondary">
-        <?php print theme('links__system_secondary_menu', array('links' => $secondary_menu, 'attributes' => array('id' => 'secondary-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Secondary menu'))); ?>
-      </nav> <!-- / nav -->
-    <?php endif; ?>
     <?php print render($page['footer']); ?>
   </div>  <!-- /.container -->
 </footer> <!-- / footer -->
