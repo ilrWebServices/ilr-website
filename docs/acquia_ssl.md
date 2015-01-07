@@ -55,9 +55,9 @@ Once approved, your certificate will be sent to ilrweb@cornell.edu.
 
 # Uploading your SSL certificate on Acquia
 
-* To upload the new version of your SSL certificate, go to Cloud > SSL and select Actions > Upload new certificate on the .
+* To upload the new version of your SSL certificate, go to Cloud > SSL and select Actions > Upload new certificate.
 
-* Configuring your DNS settings
+# Configuring your DNS settings
 
 When you configure HTTPS support, Acquia Cloud creates a new DNS domain name for your site that ends with elb.amazonaws.com. You then need to configure your DNS settings to create a CNAME record pointing your site's domain name to the Acquia Cloud domain name. For example:
 
