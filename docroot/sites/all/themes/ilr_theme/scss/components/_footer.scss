@@ -2,7 +2,8 @@ footer {
   padding: 1em 0 1em 15px;
   background: $brand-dark;
   color: $brand-light;
-
+  position: relative;
+  z-index: 10;
 
   #translate {
     background: url(../images/flag-sprite.gif) no-repeat;
