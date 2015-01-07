@@ -9,6 +9,24 @@ function ilr_theme_preprocess_html(&$variables) {
   // Add preload class to page
   $variables['classes_array'][] = 'preloading';
 
+  drupal_add_css(
+    drupal_get_path('theme', 'ilr_theme') . '/css/IE8.css',
+    array(
+      'browsers' => array(
+        'IE' => 'IE 8',
+        '!IE' => FALSE
+      )
+    )
+  );
+  drupal_add_css(
+    drupal_get_path('theme', 'ilr_theme') . '/css/IE9.css',
+    array(
+      'browsers' => array(
+        'IE' => 'IE 9',
+        '!IE' => FALSE
+      )
+    )
+  );
   // Header
   drupal_add_js('//use.typekit.net/bva6ofm.js', array('type' => 'external'));
   drupal_add_js($variables['directory'] . '/js/vendor/modernizr-2.6.2.min.js');
