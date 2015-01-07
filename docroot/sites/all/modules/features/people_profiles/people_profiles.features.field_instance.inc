@@ -818,7 +818,7 @@ function people_profiles_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 35,
+      'weight' => 64,
     ),
   );
 
@@ -927,184 +927,6 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ilrweb_overview'
-  $field_instances['node-people_profile-field_ilrweb_overview'] = array(
-    'bundle' => 'people_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 2,
-      ),
-      'highlighted' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_ilrweb_overview',
-    'label' => 'Overview',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 29,
-    ),
-  );
-
-  // Exported field_instance: 'node-people_profile-field_ilrweb_publications'
-  $field_instances['node-people_profile-field_ilrweb_publications'] = array(
-    'bundle' => 'people_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 10,
-      ),
-      'highlighted' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_ilrweb_publications',
-    'label' => 'Publications',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 31,
-    ),
-  );
-
-  // Exported field_instance: 'node-people_profile-field_ilrweb_publications_file'
-  $field_instances['node-people_profile-field_ilrweb_publications_file'] = array(
-    'bundle' => 'people_profile',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'file',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'file_default',
-        'weight' => 11,
-      ),
-      'highlighted' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_ilrweb_publications_file',
-    'label' => 'Publications File',
-    'required' => 0,
-    'settings' => array(
-      'description_field' => 0,
-      'file_directory' => 'faculty/publications',
-      'file_extensions' => 'txt doc pdf',
-      'max_filesize' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'file',
-      'settings' => array(
-        'filefield_sources' => array(
-          'filefield_sources' => array(),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 0,
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-          ),
-        ),
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'file_generic',
-      'weight' => 30,
-    ),
-  );
-
   // Exported field_instance: 'node-people_profile-field_ilrweb_vita_file'
   $field_instances['node-people_profile-field_ilrweb_vita_file'] = array(
     'bundle' => 'people_profile',
@@ -1185,61 +1007,7 @@ function people_profiles_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 32,
-    ),
-  );
-
-  // Exported field_instance: 'node-people_profile-field_ilrweb_vita_html'
-  $field_instances['node-people_profile-field_ilrweb_vita_html'] = array(
-    'bundle' => 'people_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 14,
-      ),
-      'highlighted' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_ilrweb_vita_html',
-    'label' => 'Vita HTML',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 33,
+      'weight' => 63,
     ),
   );
 
@@ -1824,14 +1592,12 @@ function people_profiles_field_default_field_instances() {
   t('Profile Image');
   t('Profile Type');
   t('Publications');
-  t('Publications File');
   t('Related Resources');
   t('Research Statement');
   t('Service Statement');
   t('Teaching Statement');
   t('Tel');
   t('Use AI Data');
-  t('Vita HTML');
   t('Working Title');
 
   return $field_instances;

@@ -34,8 +34,8 @@ function people_profiles_field_group_info() {
       8 => 'field_areas_of_expertise',
       9 => 'field_use_ai_data',
       10 => 'field_visibility_settings',
-      11 => 'field_ai_service_statement',
-      12 => 'field_ai_outreach_statement',
+      11 => 'field_ai_outreach_statement',
+      12 => 'field_ai_service_statement',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -50,66 +50,6 @@ function people_profiles_field_group_info() {
     ),
   );
   $export['group_activity_insight|node|people_profile|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_advanced_tab|node|people_profile|form';
-  $field_group->group_name = 'group_advanced_tab';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'people_profile';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_people_profile_tabs';
-  $field_group->data = array(
-    'label' => 'Advanced',
-    'weight' => '20',
-    'children' => array(
-      0 => 'field_ilrweb_overview',
-      1 => 'field_ilrweb_publications',
-      2 => 'field_ilrweb_publications_file',
-      3 => 'field_ilrweb_vita_file',
-      4 => 'field_ilrweb_vita_html',
-      5 => 'field_faculty_on_leave',
-    ),
-    'format_type' => 'htab',
-    'format_settings' => array(
-      'label' => 'Advanced',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'id' => '',
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'closed',
-    ),
-  );
-  $export['group_advanced_tab|node|people_profile|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_areas_of_expertise_tab|node|people_profile|form';
-  $field_group->group_name = 'group_areas_of_expertise_tab';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'people_profile';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Areas of Expertise',
-    'weight' => '22',
-    'children' => array(),
-    'format_type' => 'htab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-areas-of-expertise-tab field-group-htab',
-        'required_fields' => 1,
-        'id' => '',
-      ),
-    ),
-  );
-  $export['group_areas_of_expertise_tab|node|people_profile|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -129,16 +69,18 @@ function people_profiles_field_group_info() {
       2 => 'field_email',
       3 => 'field_fax',
       4 => 'field_first_name',
-      5 => 'field_last_name',
-      6 => 'field_local_address',
-      7 => 'field_netid',
-      8 => 'field_phone',
-      9 => 'field_profile_image',
-      10 => 'field_profile_type',
-      11 => 'field_working_title',
-      12 => 'field_profile_department',
-      13 => 'title',
-      14 => 'path',
+      5 => 'field_ilrweb_vita_file',
+      6 => 'field_last_name',
+      7 => 'field_local_address',
+      8 => 'field_netid',
+      9 => 'field_phone',
+      10 => 'field_profile_image',
+      11 => 'field_profile_type',
+      12 => 'field_working_title',
+      13 => 'field_faculty_on_leave',
+      14 => 'field_profile_department',
+      15 => 'title',
+      16 => 'path',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -153,33 +95,6 @@ function people_profiles_field_group_info() {
     ),
   );
   $export['group_basic_tab|node|people_profile|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_bio_tab|node|people_profile|form';
-  $field_group->group_name = 'group_bio_tab';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'people_profile';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Bio',
-    'weight' => '20',
-    'children' => array(),
-    'format_type' => 'htab',
-    'format_settings' => array(
-      'label' => 'Bio',
-      'instance_settings' => array(
-        'required_fields' => 0,
-        'id' => '',
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'closed',
-    ),
-  );
-  $export['group_bio_tab|node|people_profile|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -244,32 +159,6 @@ function people_profiles_field_group_info() {
     ),
   );
   $export['group_expertise|node|people_profile|default'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_faculty_info_tab|node|people_profile|form';
-  $field_group->group_name = 'group_faculty_info_tab';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'people_profile';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_people_profile_tabs';
-  $field_group->data = array(
-    'label' => 'Faculty Info',
-    'weight' => '23',
-    'children' => array(),
-    'format_type' => 'htab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-faculty-info-tab field-group-htab',
-        'required_fields' => 1,
-        'id' => '',
-      ),
-    ),
-  );
-  $export['group_faculty_info_tab|node|people_profile|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
