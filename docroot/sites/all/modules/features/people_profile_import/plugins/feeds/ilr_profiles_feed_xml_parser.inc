@@ -23,9 +23,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       $field_values = array();
       $existing_profile = _people_profiles_find_profile_by_netid((string) $person->netID);
       $type = (string) $person->ldap_profile_type;
-      if ($existing_profile && $type != 'faculty') {
-        continue;
-      }
+
       foreach ($mapped_fields as $xml_key => $field_name) {
         switch($field_name) {
           case 'title':
@@ -105,51 +103,24 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'ldap_campus_address' => 'field_address_line_1',
       'ldap_campus_phone' => 'field_phone',
       'ldap_email' => 'field_email',
-      //'ldap_working_title1' => 'field_working_title',
       'ldap_working_title2' => 'field_working_title',
-      //'ldap_employee_type' => '', // Not sure needed, as we have ldap_profile_type below
-      //'ldap_department' => 'field_profile_department', // This is dept. code. Use name instead
-      //'ldap_department_name' => 'field_profile_department',
       'ldap_leave_start' => 'field_faculty_on_leave:start',
       'ldap_leave_end' => 'field_faculty_on_leave:end',
-      //'ldap_uid' => '', // same as NetID
       'ldap_last_name' => 'field_last_name',
       'ldap_first_name' => 'field_first_name',
-      //'ldap_mail_nickname' => '', // we can get this from ldap_email
-      //'ldap_nickname' => '', // Consider using this for naming
       'ldap_local_address' => 'field_local_address',
       'ldap_profile_type' => 'field_profile_type',
-      // 'ilrweb_publications_type' => '',
-      'ilrweb_publications_doc' => 'field_ilrweb_publications_file',
-      'ilrweb_publications' => 'field_ilrweb_publications',
-      'ilrweb_overview' => 'field_ilrweb_overview',
-      // 'ilrweb_research' => '',
-      // 'ilrweb_expertise' => '',
-      // 'ilrweb_vita_type' => '', // use this to figure out which to populate below
       'ilrweb_vita_file' => 'field_ilrweb_vita_file',
-      'ilrweb_vita_html' => 'field_ilrweb_vita_html',
       'ilrweb_photo_url' => 'field_profile_image',
       'netID' => 'field_netid',
-      //'userid' => '',
       'departments' => 'field_profile_department',
-      // 'rank' => '', //??
-      // 'srank' => '', //??
-      // 'graduate_fields' => '',
-      // 'acadvise_graduate' => '',
-      // 'education' => '', // includes nodes for degree>level,year,institution
       'teaching_statement' => 'field_ai_teaching_statement',
       'research_statement' => 'field_ai_research_statement',
       'service_statement' => 'field_ai_service_statement',
       'outreach_statement' => 'field_ai_outreach_statement',
-      // 'research_statement_short' => 'field_ai_research_statement_short',
-      // 'research_areas' => '', // area, area, ...
       'areas_of_expertise' => 'field_areas_of_expertise',
       'other_expertise' => 'field_ai_other_expertise',
-      // 'teaching_keywords' => '',
-      // 'research_keywords' => '',
-      // 'outreach_keywords' => '',
       'overview' => 'field_ai_overview',
-      //'outreach_activities' => '',
       'professional_activities' => 'field_ai_professional_activities',
       'honors_awards' => 'field_ai_honors_awards',
       'publications' => 'field_ai_publications',
@@ -189,8 +160,8 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
   private function getProfileImage($person) {
     $type = (string) $person->ldap_profile_type;
     if ($type == "faculty") {
-      $imageName = (string) $person->ldap_last_name . '-' .$person->ldap_first_name . '.jpg';
-      $imageUrl = "http://ikondigitalstudio.com/faculty_images/$imageName";
+      $imageName = (string) $person->netID . '.jpg';
+      $imageUrl = "http://www.ilr.cornell.edu/2015photos/$imageName";
       if (file_get_contents($imageUrl,0,null,0,1) !== FALSE) {
         return $imageUrl;
       }

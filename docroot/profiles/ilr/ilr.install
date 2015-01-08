@@ -407,3 +407,12 @@ function ilr_update_7030() {
     field_delete_instance($instance);
   }
 }
+/**
+ * Deletes unused profile fields
+ */
+function ilr_update_7031() {
+  field_delete_field('field_ilrweb_overview');
+  field_delete_field('field_ilrweb_publications');
+  field_delete_field('field_ilrweb_publications_file');
+  field_delete_field('field_ilrweb_vita_html');
+}
