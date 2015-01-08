@@ -853,6 +853,7 @@ function forms_flush_caches() {
     }
   }
   return array();
+}
 
 /**
  * Implements hook_views_api().
