@@ -96,16 +96,21 @@ function people_profiles_form_alter(&$form, &$form_state, $form_id) {
     // Remove editing the profile type except for admins
     global $user;
     if (!in_array('administrator', $user->roles)) {
-      $form['field_profile_type']['#disabled'] = 1;
       $form['field_profile_department']['#disabled'] = 1;
+      $form['field_phone']['#disabled'] = 1;
+      $form['field_local_address']['#disabled'] = 1;
+      $form['field_address_line_1']['#disabled'] = 1;
+      $form['field_faculty_on_leave']['#disabled'] = 1;
+      $form['field_profile_type']['#access'] = FALSE;
       $form['field_first_name']['#access'] = FALSE;
       $form['field_last_name']['#access'] = FALSE;
       $form['field_email']['#access'] = FALSE;
+      $form['field_last_name']['#access'] = FALSE;
     }
 
-    // Remove ability to edit netid
+    // Remove the netid field
     if (isset($form['field_netid'])) {
-      $form['field_netid']['#disabled'] = TRUE;
+      $form['field_netid']['#access'] = FALSE;
     }
   }
 }

@@ -15,7 +15,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Campus address can be edited in Cornell\'s WhoIAm service.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -46,10 +46,16 @@ function people_profiles_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_address_line_1',
-    'label' => 'Address Line 1',
+    'label' => 'Campus Address',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -61,60 +67,6 @@ function people_profiles_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 55,
-    ),
-  );
-
-  // Exported field_instance: 'node-people_profile-field_address_line_2'
-  $field_instances['node-people_profile-field_address_line_2'] = array(
-    'bundle' => 'people_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 30,
-      ),
-      'highlighted' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_address_line_2',
-    'label' => 'Address Line 2',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 56,
     ),
   );
 
@@ -774,7 +726,7 @@ function people_profiles_field_default_field_instances() {
   $field_instances['node-people_profile-field_faculty_on_leave'] = array(
     'bundle' => 'people_profile',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please contact Kristie Lamb (kt264@cornell.edu) to update this information.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -796,6 +748,7 @@ function people_profiles_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_faculty_on_leave',
     'label' => 'Faculty On Leave',
     'required' => 0,
@@ -938,9 +891,9 @@ function people_profiles_field_default_field_instances() {
         'module' => 'file_entity',
         'settings' => array(
           'field_formatter_label' => '',
-          'text' => 'Download',
+          'file_view_mode' => 'default',
         ),
-        'type' => 'file_download_link',
+        'type' => 'file_rendered',
         'weight' => 31,
       ),
       'highlighted' => array(
@@ -1067,7 +1020,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The Off-Campus Work Address can be edited in Cornell\'s WhoIAm service. It is only relevant to users without a campus address.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1098,10 +1051,16 @@ function people_profiles_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_local_address',
-    'label' => 'Local Address',
+    'label' => 'Off-Campus Work Address',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1172,7 +1131,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Campus phone numbers can be edited in Workday.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1203,8 +1162,9 @@ function people_profiles_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_phone',
-    'label' => 'Tel',
+    'label' => 'Campus Phone',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -1231,7 +1191,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This is your officially designated department and cannot be changed.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1256,6 +1216,7 @@ function people_profiles_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_profile_department',
     'label' => 'Department',
     'required' => 0,
@@ -1562,10 +1523,12 @@ function people_profiles_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('AI Field Visibility');
-  t('Address Line 1');
-  t('Address Line 2');
   t('Areas of Expertise');
   t('CV');
+  t('Campus Address');
+  t('Campus Phone');
+  t('Campus address can be edited in Cornell\'s WhoIAm service.');
+  t('Campus phone numbers can be edited in Workday.');
   t('Department');
   t('Drawn from <em>Areas of Concentration</em> under <em>Narratives and Interests</em>');
   t('Drawn from <em>Awards and Honors</em> under <em>General Information</em>');
@@ -1583,11 +1546,12 @@ function people_profiles_field_default_field_instances() {
   t('Generally, a profile has a single working title. Faculty, however, can have multiple working titles.');
   t('Honors and Awards');
   t('Last Name');
-  t('Local Address');
   t('NetID');
+  t('Off-Campus Work Address');
   t('Other Areas of Expertise');
   t('Outreach Statement');
   t('Overview');
+  t('Please contact Kristie Lamb (kt264@cornell.edu) to update this information.');
   t('Professional Activities');
   t('Profile Image');
   t('Profile Type');
@@ -1596,7 +1560,8 @@ function people_profiles_field_default_field_instances() {
   t('Research Statement');
   t('Service Statement');
   t('Teaching Statement');
-  t('Tel');
+  t('The Off-Campus Work Address can be edited in Cornell\'s WhoIAm service. It is only relevant to users without a campus address.');
+  t('This is your officially designated department and cannot be changed.');
   t('Use AI Data');
   t('Working Title');
 

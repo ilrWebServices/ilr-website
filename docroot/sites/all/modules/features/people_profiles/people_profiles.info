@@ -34,7 +34,6 @@ features[field_group][] = group_profile_sidebar|node|people_profile|default
 features[field_group][] = group_related_resources|node|people_profile|default
 features[field_group][] = group_title_and_focus|node|people_profile|default
 features[field_instance][] = node-people_profile-field_address_line_1
-features[field_instance][] = node-people_profile-field_address_line_2
 features[field_instance][] = node-people_profile-field_ai_honors_awards
 features[field_instance][] = node-people_profile-field_ai_links
 features[field_instance][] = node-people_profile-field_ai_other_expertise

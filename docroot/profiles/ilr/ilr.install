@@ -417,7 +417,7 @@ function ilr_update_7031() {
   field_delete_field('field_ilrweb_vita_html');
 }
 /**
- * Deletes field_referenced_entity instance from promos
+ * Deletes unused field_address_line_2 instance from profiles
  */
 function ilr_update_7032() {
   if ($instance = field_info_instance('node', 'field_address_line_2', 'people_profile')) {
