@@ -41,7 +41,7 @@ function people_profiles_user_insert(&$edit, $account, $category) {
  * Implements hook_node_presave().
  */
 function people_profiles_node_presave($node) {
-  if (!$node->is_new) {
+  if ($node->type == 'people_profile' && !$node->is_new) {
     $wrapper = _people_profiles_node_wrapper($node);
     $name_array = _people_profiles_get_first_and_last_names($node);
     $wrapper->field_first_name->set($name_array[0]);
