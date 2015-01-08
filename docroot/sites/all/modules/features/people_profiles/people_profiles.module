@@ -318,6 +318,7 @@ function _people_profiles_get_description_as_help_text($field) {
 function _people_profiles_process_faculty_view(&$element) {
   _people_profiles_process_optional_ai_elements($element);
   _people_profiles_add_sidebar_thumb($element);
+  _people_profiles_update_vita_link($element);
 }
 
 function _people_profiles_add_sidebar_thumb(&$element) {
@@ -328,6 +329,18 @@ function _people_profiles_add_sidebar_thumb(&$element) {
     $element['group_profile_sidebar']['field_generated_thumb'] = $thumb;
     $element['group_profile_sidebar']['field_generated_thumb'];
     $element['#group_children']['field_generated_thumb'] = 'group_profile_sidebar';
+  }
+}
+
+/**
+ * Check for a vita file
+ * If present, show the description text or default text
+ */
+function _people_profiles_update_vita_link(&$element) {
+  if (isset($element['field_ilrweb_vita_file'][0])) {
+    if (!isset($element['field_ilrweb_vita_file'][0]['#file']->description)) {
+      $element['field_ilrweb_vita_file'][0]['#file']->description = 'Download';
+    }
   }
 }
 
