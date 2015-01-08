@@ -98,8 +98,9 @@ function people_profiles_form_alter(&$form, &$form_state, $form_id) {
     if (!in_array('administrator', $user->roles)) {
       $form['field_profile_type']['#disabled'] = 1;
       $form['field_profile_department']['#disabled'] = 1;
-      $form['field_first_name']['#access'] = false;
-      $form['field_last_name']['#access'] = false;
+      $form['field_first_name']['#access'] = FALSE;
+      $form['field_last_name']['#access'] = FALSE;
+      $form['field_email']['#access'] = FALSE;
     }
 
     // Remove ability to edit netid

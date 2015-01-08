@@ -1,0 +1,7 @@
+$social-channels: facebook, twitter, youtube, instagram;
+
+@for $i from 1 through length($social-channels) {
+  .follow-#{nth($social-channels, $i)} {
+    @extend %icon-#{nth($social-channels, $i)};
+  }
+}
