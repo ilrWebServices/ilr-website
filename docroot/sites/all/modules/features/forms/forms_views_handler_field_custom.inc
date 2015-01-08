@@ -1,8 +1,8 @@
 <?php
 /**
- * Author: Ted Bowman
- * Date: 1/6/15
- * Time: 12:16 PM
+ * @file
+ * forms_views_handler_field_custom class definition
+ * Parent class for other custom field handlers in this module.
  */
 
 class forms_views_handler_field_custom extends views_handler_field{
