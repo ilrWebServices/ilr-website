@@ -774,7 +774,7 @@ function basic_page_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => '',
+      'file_directory' => 'field_uploads/node_basic_page/field_image',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '2MB',
       'max_resolution' => '',

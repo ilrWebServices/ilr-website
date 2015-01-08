@@ -425,7 +425,7 @@ function registration_pages_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => '',
+      'file_directory' => 'fielduploads/node_registration_page/image',
       'file_extensions' => 'jpg jpeg',
       'max_filesize' => '2MB',
       'max_resolution' => '',

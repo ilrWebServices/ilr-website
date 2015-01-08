@@ -504,7 +504,7 @@ function featured_book_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 1,
       'default_image' => 0,
-      'file_directory' => 'featured_books',
+      'file_directory' => 'fielduploads/featured_books',
       'file_extensions' => 'jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
