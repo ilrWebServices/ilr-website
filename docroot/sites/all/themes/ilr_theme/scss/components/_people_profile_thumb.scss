@@ -1,0 +1,28 @@
+#block-people-profiles-faculty-landing-page {
+  @extend %bean-base;
+  article {
+    @extend %thumb;
+
+    h2 {
+      padding-top: 0 !important;
+      margin-bottom: 0;
+      @include adjust-leading-to(1);
+    }
+
+    .field-type-image {
+      top: 8px !important; // note that this will be affected by line-height below
+    }
+
+    .field {
+      @include adjust-font-size-to(16px);
+      line-height: 1.2;
+    }
+    .field-name-field-working-title {
+      //text-transform: uppercase;
+    }
+  }
+}
+
+body.page-node-251706 {
+  @extend %one-column-page;
+}

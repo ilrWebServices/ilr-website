@@ -52,6 +52,19 @@ function people_profiles_node_presave($node) {
   }
 }
 
+/**
+ * Implements hook_node_view().
+ */
+function people_profiles_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'people_profile' && $view_mode == 'teaser') {
+    if(!count($node->field_profile_image)) {
+      $silhouette = '/' . drupal_get_path('theme', 'ilr_theme') . '/images/silhouette.gif';
+      $node->content['field_profile_image']['#markup'] = '<div class="field-type-image"><img src="'.$silhouette.'" /></div>';
+    }
+    unset($node->content['links']['node']['#links']['node-readmore']);
+  }
+}
+
 function _people_profiles_get_first_and_last_names($node) {
   return explode(' ', $node->title);
 }
@@ -168,8 +181,16 @@ function _people_profiles_handle_missing_image(&$element) {
 * Implements hook_block_info().
 */
 function people_profiles_block_info($delta = '') {
-  $departments = _people_profiles_get_faculty_departments();
+  $blocks = array(
+    'faculty_landing_page' => array(
+      'info' => "Faculty Landing Page",
+    ),
+    'people_landing_page' => array(
+      'info' => "People Landing Page",
+    ),
+  );
 
+  $departments = _people_profiles_get_faculty_departments();
   foreach ($departments as $key => $value) {
     $blocks[$key] = array(
       'info' => "Faculty for {$value}",
@@ -182,24 +203,60 @@ function people_profiles_block_info($delta = '') {
 * Implements hook_block_view().
 */
 function people_profiles_block_view($delta = '') {
-  $block = array(
-    'subject' => 'Faculty',
-    'content' => _people_profiles_department_faculty_view($delta),
+  if (strpos($delta, 'landing_page') !== FALSE) {
+    $block = array(
+      'subject' => '',
+      'content' => _people_profiles_people_landing_page($delta),
+    );
+  }
+  else {
+    $block = array(
+      'subject' => 'Faculty',
+      'content' => _people_profiles_department_faculty_view($delta),
+    );
+  }
+  return $block;
+}
+
+function _people_profiles_people_landing_page($delta) {
+  if ($delta == 'faculty_landing_page') {
+    $markup = _people_profiles_faculty_people_view();
+  } else {
+    $markup = _people_profiles_all_people_view();
+  }
+  $block['content'] = array(
+    '#markup' => $markup,
   );
 
   return $block;
+}
+
+function _people_profiles_faculty_people_view() {
+  $faculty_nids = _people_profiles_get_profile_nids('faculty');
+  return _people_profiles_load_people_view_by_nids($faculty_nids);
+}
+
+function _people_profiles_all_people_view() {
+  $people_nids = _people_profiles_get_profile_nids('all');
+  return _people_profiles_load_people_view_by_nids($people_nids);
+}
+
+function _people_profiles_load_people_view_by_nids($nids) {
+  $people_nodes = node_load_multiple($nids);
+  $node_view = node_view_multiple($people_nodes, $view_mode = 'teaser');
+  return drupal_render($node_view);
 }
 
 /**
 * Custom function to query for the faculty members
 */
 function _people_profiles_department_faculty_view($delta) {
-  $profile_nid_array = _people_profiles_get_faculty_by_department($delta);
+  $profile_nid_array = _people_profiles_get_profile_nids($delta);
   if (count($profile_nid_array) > 0) {
     $markup = "<ul class='department-faculty'>\n";
-    foreach ($profile_nid_array as $node_info) {
-      $profile = node_load($node_info['nid'], $node_info['vid']);
-      $link = drupal_get_path_alias("node/{$node_info['nid']}");
+    foreach ($profile_nid_array as $key => $nid) {
+      $profile = node_load($nid);
+      $link = drupal_get_path_alias("node/$nid");
       $markup .= "<li><a href='/{$link}'>{$profile->title}</a></li>\n";
     }
     $markup .= "</ul>\n";
@@ -216,7 +273,7 @@ function _people_profiles_department_faculty_view($delta) {
   return $block;
 }
 
-function _people_profiles_get_faculty_by_department($department_key){
+function _people_profiles_get_profile_nids($type='all'){
   $nodes_info = array();
   $query = new EntityFieldQuery();
 
@@ -224,25 +281,24 @@ function _people_profiles_get_faculty_by_department($department_key){
     ->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'people_profile')
     ->propertyCondition('status', 1)
-    ->fieldCondition('field_profile_department', 'value', $department_key)
     ->fieldOrderBy('field_last_name', 'value', 'ASC');
+
+  if ($type == 'faculty') {
+    $query->fieldCondition('field_profile_type', 'value', 'faculty');
+  }
+  else if ($type != 'all') {
+    $department_key = $type;
+    $query->fieldCondition('field_profile_department', 'value', $department_key);
+  }
 
   $result = $query->execute();
 
-  if (empty($result)) {
-    return $nodes_info;
+  if (!empty($result)) {
+    $nids = array_keys($result['node']);
+    return $nids;
   }
-  else {
-    foreach ($result['node'] as $node_info) {
-      $nodes_info[] = array(
-        'nid' => $node_info->nid,
-        'vid' => $node_info->vid,
-      );
-    }
-    return $nodes_info;
-  }
+  return NULL;
 }
-
 /**
  * Handles rendering the output of Activity insight fields
  * and the preview button
