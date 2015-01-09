@@ -829,3 +829,28 @@ function _forms_usage_page() {
 
   return $content;
 }
+
+/**
+ * Implements hook_flush_caches().
+ *
+ * Set forms to be honeypot enabled when caches are about to be cleared.
+ * Honeypot module will read variables next time it builds its cache.
+ * @see honeypot_get_protected_forms().
+ */
+function forms_flush_caches() {
+  if (module_exists('honeypot')) {
+    $entityform_types = entityform_get_types();
+    foreach ($entityform_types as $entityform_type) {
+      $var_name = "honeypot_form_{$entityform_type->type}_entityform_edit_form";
+      if (empty($entityform_type->data['kerberized'])) {
+        // Set variable. Honeypot will query this.
+        variable_set($var_name, 1);
+      }
+      else {
+        // Delete incase forms switch settings
+        variable_del($var_name);
+      }
+    }
+  }
+  return array();
+}
