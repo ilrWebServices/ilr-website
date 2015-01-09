@@ -24,20 +24,8 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       $type = (string) $person->ldap_profile_type;
 
       foreach ($mapped_fields as $xml_key => $field_name) {
-        switch($field_name) {
-          case 'title':
-            $field_values[$field_name] = $this->setProfileTitle($person);
-            break;
-          case 'field_profile_department':
-            $field_values[$field_name] = $this->getDepartments($person);
-            break;
-          case 'field_profile_image':
-            $field_values[$field_name] = $this->getProfileImage($person);
-            break;
-          default:
-            $data = (string) $person->{$xml_key};
-            $field_values[$field_name] = $this->prepData($field_name, $data, $type);
-        }
+        $data = (string) $person->{$xml_key};
+        $field_values[$field_name] = $this->prepData($person, $field_name, $data, $type);
       }
       $result->items[$result_counter] = $field_values;
 
@@ -52,7 +40,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
    * from activity insight
    * Make sure phone is properly formatted
    */
-  private function prepData($field_name, $data, $type) {
+  private function prepData($person, $field_name, $data, $type) {
     $prepared = trim($data);
     if ($type == 'faculty' && in_array($field_name, $this->getFieldsWithLineBreaks())) {
       $prepared = preg_replace('/\n(\s*\n)+/', '</p><p>', $prepared);
@@ -60,18 +48,31 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       $prepared = (strlen($prepared) > 10)
         ? '<p>'.$prepared.'</p>'
         : '';
-    } // Make sure phone is properly formatted xxx-xxx-xxxx
-    elseif ($field_name == 'field_phone') {
-      if (strlen($prepared) < 12) {
-        $prepared = '';
-      }
-    } // format the fax number
-    elseif ($field_name == 'field_fax' && strlen($prepared)) {
-      $prepared = '(f) ' . str_replace('.', '-', $prepared);
     }
-    elseif ($field_name == 'field_display_in_faculty_lists') {
-      $prepared = ($prepared == 'true') ? 1 : 0;
+    switch($field_name) {
+      case 'title':
+        $prepared = $this->setProfileTitle($person);
+        break;
+      case 'field_profile_department':
+        $prepared = $this->getDepartments($person);
+        break;
+      case 'field_profile_image':
+        $prepared = $this->getProfileImage($person);
+        break;
+      case 'field_phone': // Make sure phone is properly formatted xxx-xxx-xxxx
+        $prepared = (strlen($prepared) < 12) ? '' : $prepared;
+        break;
+      case 'field_fax': // Format fax numbers
+        $prepared = str_replace('.', '-', $prepared);
+        break;
+      case 'field_display_in_faculty_lists':
+        $prepared = ($prepared == 'true') ? 1 : 0;
+        break;
+      case 'field_working_title':
+        $prepared = preg_replace('/<br(\s+)?\/?>/i', "\n", $prepared);
+        break;
     }
+
     return $prepared;
   }
 

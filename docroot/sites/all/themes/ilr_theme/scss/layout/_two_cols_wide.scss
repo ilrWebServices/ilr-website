@@ -1,8 +1,9 @@
-%one-column-page {
+%two-cols-wide {
+  @include add-grid($sidebar-nav-width 9);
   #main {
     #content {
-      @include grid-span(12);
-      @include add-gutter(1);
+      @include grid-span(1, 2);
+
       .section {
         max-width: 100%;
         @include context('#main','#main[data-eq-state="768"]') {
@@ -13,14 +14,14 @@
         @include context('#main','#main[data-eq-state="widescreen"]') {
           article {
             @extend %three-column;
+            &:nth-child(3n + 2) { // bug fix for strange collision
+              clear: both;
+            }
           }
         }
       }
     }
-
-    #sidebar-first {
-      display: none !important; //Override
-    }
   }
 
 }
+

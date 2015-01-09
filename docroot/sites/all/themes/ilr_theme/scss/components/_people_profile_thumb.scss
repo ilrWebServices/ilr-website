@@ -18,12 +18,12 @@
       @include adjust-font-size-to(16px);
       line-height: 1.2;
     }
-    .field-name-field-working-title {
-      //text-transform: uppercase;
-    }
   }
 }
 
-body.page-node-251706 {
-  @extend %one-column-page;
+// Dumb hard-coding of nids (hopefully temporary)
+// For the pages that contain the blocks above
+body.page-node-249116,
+body.page-node-249071 {
+  @extend %two-cols-wide;
 }
