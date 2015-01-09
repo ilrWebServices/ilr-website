@@ -79,6 +79,7 @@
 
     a {
       color: $gray-dark;
+      border-bottom: none;
       #jPanelMenu-menu & {
         color: lighten($gray-medium, 5%);
       }

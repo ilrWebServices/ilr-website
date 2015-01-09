@@ -97,8 +97,8 @@ $p-text: #2f2f2f;
 $p-size: ms(0);
 $p-sm-size: $mod-01;
 
-$link: darken($brand, 5%);
-$link-hover: $brand;
+$link: $brand;
+$link-hover: lighten($brand, 5%);
 $nav-color: #2D4063;
 $nav-size: 1.2em;
 

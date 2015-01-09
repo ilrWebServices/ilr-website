@@ -80,6 +80,12 @@
 
   &[data-eq-state="550"],
   &[data-eq-state="768"] {
+    #content {
+      .block-bean article {
+        @extend %two-column;
+      }
+
+    }
     #content-bottom article {
       @extend %two-column-masonry;
     }

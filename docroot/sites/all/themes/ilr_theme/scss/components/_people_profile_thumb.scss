@@ -28,10 +28,4 @@ body.page-node-249071 {
   .container[data-eq-state="regular-nav"] {
     @extend %two-cols-wide;
   }
-  #main[data-eq-state="550"],
-  #main[data-eq-state="768"] {
-    article {
-      @extend %two-column;
-    }
-  }
 }
