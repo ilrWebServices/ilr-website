@@ -1,0 +1,29 @@
+#block-people-profiles-people-landing-page,
+#block-people-profiles-faculty-landing-page {
+  @extend %bean-base;
+  article {
+    @extend %thumb;
+
+    h2 {
+      padding-top: 0 !important;
+      margin-bottom: 0;
+      @include adjust-leading-to(1);
+    }
+
+    .field-type-image {
+      top: 7px !important; // note that this will be affected by line-height below
+    }
+
+    .field {
+      @include adjust-font-size-to(16px);
+      line-height: 1.2;
+    }
+  }
+}
+
+// Dumb hard-coding of nids (hopefully temporary)
+// For the pages that contain the blocks above
+body.page-node-249116,
+body.page-node-249071 {
+  @extend %two-cols-wide;
+}

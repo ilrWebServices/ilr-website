@@ -1,0 +1,26 @@
+%one-column-page {
+  #main {
+    #content {
+      @include grid-span(12);
+      @include add-gutter(1);
+      .section {
+        max-width: 100%;
+        @include context('#main','#main[data-eq-state="768"]') {
+          article {
+            @extend %two-column;
+          }
+        }
+        @include context('#main','#main[data-eq-state="widescreen"]') {
+          article {
+            @extend %three-column;
+          }
+        }
+      }
+    }
+
+    #sidebar-first {
+      display: none !important; //Override
+    }
+  }
+
+}

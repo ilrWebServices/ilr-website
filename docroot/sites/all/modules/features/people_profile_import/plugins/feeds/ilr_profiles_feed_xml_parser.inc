@@ -21,25 +21,11 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
 
     foreach ($feed->person as $person) {
       $field_values = array();
-      $existing_profile = _people_profiles_find_profile_by_netid((string) $person->netID);
       $type = (string) $person->ldap_profile_type;
 
       foreach ($mapped_fields as $xml_key => $field_name) {
-        switch($field_name) {
-          case 'title':
-            $field_values[$field_name] = $this->setProfileTitle($person);
-            break;
-          case 'field_profile_department':
-            $field_values[$field_name] = $this->getDepartments($person);
-            break;
-          // Will be needed in future
-          case 'field_profile_image':
-            $field_values[$field_name] = $this->getProfileImage($person);
-            break;
-          default:
-            $data = (string) $person->{$xml_key};
-            $field_values[$field_name] = $this->prepData($field_name, $data, $type);
-        }
+        $data = (string) $person->{$xml_key};
+        $field_values[$field_name] = $this->prepData($person, $field_name, $data, $type);
       }
       $result->items[$result_counter] = $field_values;
 
@@ -52,8 +38,9 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
   /**
    * Swaps p tags for line breaks on some fields coming
    * from activity insight
+   * Make sure phone is properly formatted
    */
-  private function prepData($field_name, $data, $type) {
+  private function prepData($person, $field_name, $data, $type) {
     $prepared = trim($data);
     if ($type == 'faculty' && in_array($field_name, $this->getFieldsWithLineBreaks())) {
       $prepared = preg_replace('/\n(\s*\n)+/', '</p><p>', $prepared);
@@ -62,6 +49,30 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
         ? '<p>'.$prepared.'</p>'
         : '';
     }
+    switch($field_name) {
+      case 'title':
+        $prepared = $this->setProfileTitle($person);
+        break;
+      case 'field_profile_department':
+        $prepared = $this->getDepartments($person);
+        break;
+      case 'field_profile_image':
+        $prepared = $this->getProfileImage($person);
+        break;
+      case 'field_phone': // Make sure phone is properly formatted xxx-xxx-xxxx
+        $prepared = (strlen($prepared) < 12) ? '' : $prepared;
+        break;
+      case 'field_fax': // Format fax numbers
+        $prepared = str_replace('.', '-', $prepared);
+        break;
+      case 'field_display_in_faculty_lists':
+        $prepared = ($prepared == 'true') ? 1 : 0;
+        break;
+      case 'field_working_title':
+        $prepared = preg_replace('/<br(\s+)?\/?>/i', "\n", $prepared);
+        break;
+    }
+
     return $prepared;
   }
 
@@ -110,10 +121,12 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'ldap_first_name' => 'field_first_name',
       'ldap_local_address' => 'field_local_address',
       'ldap_profile_type' => 'field_profile_type',
-      'ilrweb_vita_file' => 'field_ilrweb_vita_file',
-      'ilrweb_photo_url' => 'field_profile_image',
+      'ilrweb_vita_file' => 'field_ilrweb_vita_file', // remove after final import
+      'ilrweb_photo_url' => 'field_profile_image', // remove after final import
+      'ilrweb_fax' => 'field_fax', // remove after final import
       'netID' => 'field_netid',
       'departments' => 'field_profile_department',
+      'display_in_faculty_list' => 'field_display_in_faculty_lists',
       'teaching_statement' => 'field_ai_teaching_statement',
       'research_statement' => 'field_ai_research_statement',
       'service_statement' => 'field_ai_service_statement',

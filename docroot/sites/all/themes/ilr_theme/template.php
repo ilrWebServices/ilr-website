@@ -120,7 +120,7 @@ function ilr_theme_preprocess_node(&$variables) {
       );
     }
     // See note above about localist events
-    $variables['attributes_array']['data-eq-pts'] = 'small: 100, medium: 300, large: 600, full: 900';
+    $variables['attributes_array']['data-eq-pts'] = 'small: 100, medium: 280, large: 600, full: 900';
   }
 }
 

@@ -52,6 +52,19 @@ function people_profiles_node_presave($node) {
   }
 }
 
+/**
+ * Implements hook_node_view().
+ */
+function people_profiles_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'people_profile' && $view_mode == 'teaser') {
+    if(!count($node->field_profile_image)) {
+      $silhouette = '/' . drupal_get_path('theme', 'ilr_theme') . '/images/silhouette.gif';
+      $node->content['field_profile_image']['#markup'] = '<div class="field-type-image"><img src="'.$silhouette.'" /></div>';
+    }
+    unset($node->content['links']['node']['#links']['node-readmore']);
+  }
+}
+
 function _people_profiles_get_first_and_last_names($node) {
   return explode(' ', $node->title);
 }
@@ -60,21 +73,35 @@ function _people_profiles_get_first_and_last_names($node) {
  * Implements hook_preprocess_node
  *   Checks to see whether the Use AI flag has been set
  *   Removes appropriate columns based on the flag
+ *   @todo Fix bug related to new lines not rendering from textareas. @see _ilr_theme_add_line_breaks for further info.
  */
 function people_profiles_preprocess_node(&$variables) {
-  if($variables['type'] == 'people_profile' && $variables['view_mode'] == 'full') {
-    $wrapper = _people_profiles_node_wrapper($variables['node']);
-    $type = $wrapper->field_profile_type->value();
-    $variables['classes_array'][] = "profile-type-$type";
+  if($variables['type'] == 'people_profile') {
+    if ($variables['view_mode'] == 'full') {
+      $wrapper = _people_profiles_node_wrapper($variables['node']);
+      $type = $wrapper->field_profile_type->value();
+      $variables['classes_array'][] = "profile-type-$type";
 
-    // Move title to correct location
-    if (isset($variables['content']['field_working_title'])) {
-      $title = $wrapper->title->value();
-      $markup = "<div class='crumb'> profiles / $type</div>";
-      $markup .= "<h1 class='title'>$title</h1>";
-      $markup .= $wrapper->field_working_title->value();
-      $variables['content']['field_working_title'][0]['#markup'] = $markup;
-
+      // Move title to correct location
+      if (isset($variables['content']['field_working_title'])) {
+        $title = $wrapper->title->value();
+        $markup = "<div class='crumb'> profiles / $type</div>";
+        $markup .= "<h1 class='title'>$title</h1>";
+        $markup .= nl2br($wrapper->field_working_title->value());
+        $variables['content']['field_working_title'][0]['#markup'] = $markup;
+      }
+    }
+    elseif ($variables['view_mode'] == 'teaser') {
+      if ($variables['field_display_in_faculty_lists'][LANGUAGE_NONE][0]['value'] != 1) {
+        // Remove the links to the node
+        $variables['remove_title_link'] = TRUE;
+        if (count($variables['field_profile_image'])) {
+          unset($variables['content']['field_profile_image'][0]['#path']);
+        }
+      }
+      if (count($variables['field_working_title'])) {
+        $variables['content']['field_working_title'][0]['#markup'] = nl2br($variables['content']['field_working_title'][0]['#markup']);
+      }
     }
   }
 }
@@ -168,8 +195,16 @@ function _people_profiles_handle_missing_image(&$element) {
 * Implements hook_block_info().
 */
 function people_profiles_block_info($delta = '') {
-  $departments = _people_profiles_get_faculty_departments();
+  $blocks = array(
+    'faculty_landing_page' => array(
+      'info' => "Faculty Landing Page",
+    ),
+    'people_landing_page' => array(
+      'info' => "People Landing Page",
+    ),
+  );
 
+  $departments = _people_profiles_get_faculty_departments();
   foreach ($departments as $key => $value) {
     $blocks[$key] = array(
       'info' => "Faculty for {$value}",
@@ -182,24 +217,60 @@ function people_profiles_block_info($delta = '') {
 * Implements hook_block_view().
 */
 function people_profiles_block_view($delta = '') {
-  $block = array(
-    'subject' => 'Faculty',
-    'content' => _people_profiles_department_faculty_view($delta),
+  if (strpos($delta, 'landing_page') !== FALSE) {
+    $block = array(
+      'subject' => '',
+      'content' => _people_profiles_people_landing_page($delta),
+    );
+  }
+  else {
+    $block = array(
+      'subject' => 'Faculty',
+      'content' => _people_profiles_department_faculty_view($delta),
+    );
+  }
+  return $block;
+}
+
+function _people_profiles_people_landing_page($delta) {
+  if ($delta == 'faculty_landing_page') {
+    $markup = _people_profiles_faculty_people_view();
+  } else {
+    $markup = _people_profiles_all_people_view();
+  }
+  $block['content'] = array(
+    '#markup' => $markup,
   );
 
   return $block;
+}
+
+function _people_profiles_faculty_people_view() {
+  $faculty_nids = _people_profiles_get_profile_nids('faculty');
+  return _people_profiles_load_people_view_by_nids($faculty_nids);
+}
+
+function _people_profiles_all_people_view() {
+  $people_nids = _people_profiles_get_profile_nids('all');
+  return _people_profiles_load_people_view_by_nids($people_nids);
+}
+
+function _people_profiles_load_people_view_by_nids($nids) {
+  $people_nodes = node_load_multiple($nids);
+  $node_view = node_view_multiple($people_nodes, $view_mode = 'teaser');
+  return drupal_render($node_view);
 }
 
 /**
 * Custom function to query for the faculty members
 */
 function _people_profiles_department_faculty_view($delta) {
-  $profile_nid_array = _people_profiles_get_faculty_by_department($delta);
+  $profile_nid_array = _people_profiles_get_profile_nids($delta);
   if (count($profile_nid_array) > 0) {
     $markup = "<ul class='department-faculty'>\n";
-    foreach ($profile_nid_array as $node_info) {
-      $profile = node_load($node_info['nid'], $node_info['vid']);
-      $link = drupal_get_path_alias("node/{$node_info['nid']}");
+    foreach ($profile_nid_array as $key => $nid) {
+      $profile = node_load($nid);
+      $link = drupal_get_path_alias("node/$nid");
       $markup .= "<li><a href='/{$link}'>{$profile->title}</a></li>\n";
     }
     $markup .= "</ul>\n";
@@ -216,7 +287,7 @@ function _people_profiles_department_faculty_view($delta) {
   return $block;
 }
 
-function _people_profiles_get_faculty_by_department($department_key){
+function _people_profiles_get_profile_nids($type='all'){
   $nodes_info = array();
   $query = new EntityFieldQuery();
 
@@ -224,35 +295,34 @@ function _people_profiles_get_faculty_by_department($department_key){
     ->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'people_profile')
     ->propertyCondition('status', 1)
-    ->fieldCondition('field_profile_department', 'value', $department_key)
     ->fieldOrderBy('field_last_name', 'value', 'ASC');
+
+  if ($type != 'all') {
+    $query->fieldCondition('field_profile_type', 'value', 'faculty');
+    $query->fieldCondition('field_display_in_faculty_lists', 'value', 1);
+    if ($type != 'faculty') {
+      $department_key = $type;
+      $query->fieldCondition('field_profile_department', 'value', $department_key);
+    }
+  }
 
   $result = $query->execute();
 
-  if (empty($result)) {
-    return $nodes_info;
+  if (!empty($result)) {
+    $nids = array_keys($result['node']);
+    return $nids;
   }
-  else {
-    foreach ($result['node'] as $node_info) {
-      $nodes_info[] = array(
-        'nid' => $node_info->nid,
-        'vid' => $node_info->vid,
-      );
-    }
-    return $nodes_info;
-  }
+  return NULL;
 }
-
 /**
  * Handles rendering the output of Activity insight fields
- * and the preview button
+ * and whether to show the person in the faculty list
  */
 function _people_profiles_render_ai_tab_contents(&$form) {
   // Remove the option to use non-AI data except for admins
   global $user;
   if (!in_array('administrator', $user->roles)) {
-    $form['field_use_ai_data'][LANGUAGE_NONE]['#default_value'] = 1;
-    $form['field_use_ai_data']['#access'] = false;
+    $form['field_display_in_faculty_lists']['#access'] = false;
   }
 
   $form['field_visibility_settings'][LANGUAGE_NONE]['#title'] = 'The following information is drawn directly from Activity Insight. (Check those sections you would like to <em>exclude</em> from public display)';
@@ -268,18 +338,6 @@ function _people_profiles_render_ai_tab_contents(&$form) {
         $form[$field_name]['#access'] = false;
       }
     }
-  }
-
-  // Add the preview button if they're not using AI
-  if (!$form['field_use_ai_data']['und']['#default_value']) {
-    // Set the markup on the preview button
-    $preview_link = drupal_get_path_alias("node/{$form['nid']['#value']}");
-    $form['preview_link'] = array(
-      '#markup' => '<a class="button" href="/' . $preview_link . '?ai_preview=1" target="_blank">Preview AI Version</a>',
-      '#weight' => $form['field_visibility_settings']['#weight'],
-    );
-    // Move the button to the Activity Insight Tab
-    $form['#group_children']['preview_link'] = 'group_activity_insight';
   }
 }
 

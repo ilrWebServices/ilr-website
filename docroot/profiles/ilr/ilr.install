@@ -424,3 +424,9 @@ function ilr_update_7032() {
     field_delete_instance($instance);
   }
 }
+/**
+ * Deletes defunct field_use_ai_data from profiles
+ */
+function ilr_update_7033() {
+  field_delete_field('field_use_ai_data');
+}
