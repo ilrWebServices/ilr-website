@@ -1,3 +1,4 @@
+#block-people-profiles-people-landing-page,
 #block-people-profiles-faculty-landing-page {
   @extend %bean-base;
   article {
@@ -10,7 +11,7 @@
     }
 
     .field-type-image {
-      top: 8px !important; // note that this will be affected by line-height below
+      top: 7px !important; // note that this will be affected by line-height below
     }
 
     .field {

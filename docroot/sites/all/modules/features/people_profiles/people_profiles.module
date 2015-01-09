@@ -75,19 +75,29 @@ function _people_profiles_get_first_and_last_names($node) {
  *   Removes appropriate columns based on the flag
  */
 function people_profiles_preprocess_node(&$variables) {
-  if($variables['type'] == 'people_profile' && $variables['view_mode'] == 'full') {
-    $wrapper = _people_profiles_node_wrapper($variables['node']);
-    $type = $wrapper->field_profile_type->value();
-    $variables['classes_array'][] = "profile-type-$type";
+  if($variables['type'] == 'people_profile') {
+    if ($variables['view_mode'] == 'full') {
+      $wrapper = _people_profiles_node_wrapper($variables['node']);
+      $type = $wrapper->field_profile_type->value();
+      $variables['classes_array'][] = "profile-type-$type";
 
-    // Move title to correct location
-    if (isset($variables['content']['field_working_title'])) {
-      $title = $wrapper->title->value();
-      $markup = "<div class='crumb'> profiles / $type</div>";
-      $markup .= "<h1 class='title'>$title</h1>";
-      $markup .= $wrapper->field_working_title->value();
-      $variables['content']['field_working_title'][0]['#markup'] = $markup;
-
+      // Move title to correct location
+      if (isset($variables['content']['field_working_title'])) {
+        $title = $wrapper->title->value();
+        $markup = "<div class='crumb'> profiles / $type</div>";
+        $markup .= "<h1 class='title'>$title</h1>";
+        $markup .= $wrapper->field_working_title->value();
+        $variables['content']['field_working_title'][0]['#markup'] = $markup;
+      }
+    }
+    elseif ($variables['view_mode'] == 'teaser') {
+      if ($variables['field_display_in_faculty_lists'][LANGUAGE_NONE][0]['value'] != 1) {
+        // Remove the links to the node
+        $variables['remove_title_link'] = TRUE;
+        if (count($variables['field_profile_image'])) {
+          unset($variables['content']['field_profile_image'][0]['#path']);
+        }
+      }
     }
   }
 }
