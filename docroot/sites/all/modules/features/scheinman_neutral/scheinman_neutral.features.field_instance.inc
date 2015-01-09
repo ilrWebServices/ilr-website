@@ -1104,7 +1104,7 @@ function scheinman_neutral_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => 'neutrals',
+      'file_directory' => 'fielduploads/neutrals',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '1 MB',
       'max_resolution' => '2000x2000',

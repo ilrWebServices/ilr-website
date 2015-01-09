@@ -204,7 +204,7 @@ function student_portraits_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => 'portraits',
+      'file_directory' => 'fielduploads/portraits',
       'file_extensions' => 'jpg jpeg',
       'max_filesize' => '2MB',
       'max_resolution' => '',

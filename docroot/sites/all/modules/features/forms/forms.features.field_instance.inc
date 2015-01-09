@@ -824,7 +824,7 @@ function forms_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
-      'file_directory' => '',
+      'file_directory' => 'field_uploads/entityform_check_your_eligibility/upload_your_resume_or_cv',
       'file_extensions' => 'pdf doc docx txt zip',
       'max_filesize' => '',
       'user_register_form' => FALSE,
@@ -7187,7 +7187,7 @@ function forms_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
-      'file_directory' => '',
+      'file_directory' => 'field_uploads/entityform_dublin_application_form/dublin_abroad_file_upload',
       'file_extensions' => 'txt doc docx pdf',
       'max_filesize' => '',
       'user_register_form' => FALSE,
@@ -7263,7 +7263,7 @@ function forms_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
-      'file_directory' => '',
+      'file_directory' => 'fielduploads/entityform_dublin_application_form/dublin_acad_goals_file_upl',
       'file_extensions' => 'txt doc docx pdf',
       'max_filesize' => '',
       'user_register_form' => FALSE,
@@ -31088,7 +31088,7 @@ function forms_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
-      'file_directory' => '',
+      'file_directory' => 'fielduploads/entityform_web_services_request_form/file_upload_general',
       'file_extensions' => 'pdf doc docx txt xls xlsx csv ppt pptx jpg jpeg gif png zip jar',
       'max_filesize' => '',
       'user_register_form' => FALSE,

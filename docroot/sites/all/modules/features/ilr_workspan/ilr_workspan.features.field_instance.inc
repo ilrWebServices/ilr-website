@@ -112,7 +112,7 @@ function ilr_workspan_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
-      'file_directory' => 'workspan',
+      'file_directory' => 'fielduploads/node_workspan/file',
       'file_extensions' => 'pdf',
       'max_filesize' => '',
       'user_register_form' => FALSE,
@@ -384,7 +384,7 @@ function ilr_workspan_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 1,
       'default_image' => 0,
-      'file_directory' => 'thumbnails',
+      'file_directory' => 'fielduploads/node_workspan/thumbnail',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
