@@ -21,7 +21,6 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
 
     foreach ($feed->person as $person) {
       $field_values = array();
-      $existing_profile = _people_profiles_find_profile_by_netid((string) $person->netID);
       $type = (string) $person->ldap_profile_type;
 
       foreach ($mapped_fields as $xml_key => $field_name) {
@@ -32,7 +31,6 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
           case 'field_profile_department':
             $field_values[$field_name] = $this->getDepartments($person);
             break;
-          // Will be needed in future
           case 'field_profile_image':
             $field_values[$field_name] = $this->getProfileImage($person);
             break;
@@ -52,6 +50,7 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
   /**
    * Swaps p tags for line breaks on some fields coming
    * from activity insight
+   * Make sure phone is properly formatted
    */
   private function prepData($field_name, $data, $type) {
     $prepared = trim($data);
@@ -61,6 +60,17 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       $prepared = (strlen($prepared) > 10)
         ? '<p>'.$prepared.'</p>'
         : '';
+    } // Make sure phone is properly formatted xxx-xxx-xxxx
+    elseif ($field_name == 'field_phone') {
+      if (strlen($prepared) < 12) {
+        $prepared = '';
+      }
+    } // format the fax number
+    elseif ($field_name == 'field_fax' && strlen($prepared)) {
+      $prepared = '(f) ' . str_replace('.', '-', $prepared);
+    }
+    elseif ($field_name == 'field_display_in_faculty_lists') {
+      $prepared = ($prepared == 'true') ? 1 : 0;
     }
     return $prepared;
   }
@@ -110,10 +120,12 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'ldap_first_name' => 'field_first_name',
       'ldap_local_address' => 'field_local_address',
       'ldap_profile_type' => 'field_profile_type',
-      'ilrweb_vita_file' => 'field_ilrweb_vita_file',
-      'ilrweb_photo_url' => 'field_profile_image',
+      'ilrweb_vita_file' => 'field_ilrweb_vita_file', // remove after final import
+      'ilrweb_photo_url' => 'field_profile_image', // remove after final import
+      'ilrweb_fax' => 'field_fax', // remove after final import
       'netID' => 'field_netid',
       'departments' => 'field_profile_department',
+      'display_in_faculty_list' => 'field_display_in_faculty_lists',
       'teaching_statement' => 'field_ai_teaching_statement',
       'research_statement' => 'field_ai_research_statement',
       'service_statement' => 'field_ai_service_statement',

@@ -283,12 +283,13 @@ function _people_profiles_get_profile_nids($type='all'){
     ->propertyCondition('status', 1)
     ->fieldOrderBy('field_last_name', 'value', 'ASC');
 
-  if ($type == 'faculty') {
+  if ($type != 'all') {
     $query->fieldCondition('field_profile_type', 'value', 'faculty');
-  }
-  else if ($type != 'all') {
-    $department_key = $type;
-    $query->fieldCondition('field_profile_department', 'value', $department_key);
+    $query->fieldCondition('field_display_in_faculty_lists', 'value', 1);
+    if ($type != 'faculty') {
+      $department_key = $type;
+      $query->fieldCondition('field_profile_department', 'value', $department_key);
+    }
   }
 
   $result = $query->execute();
@@ -301,14 +302,13 @@ function _people_profiles_get_profile_nids($type='all'){
 }
 /**
  * Handles rendering the output of Activity insight fields
- * and the preview button
+ * and whether to show the person in the faculty list
  */
 function _people_profiles_render_ai_tab_contents(&$form) {
   // Remove the option to use non-AI data except for admins
   global $user;
   if (!in_array('administrator', $user->roles)) {
-    $form['field_use_ai_data'][LANGUAGE_NONE]['#default_value'] = 1;
-    $form['field_use_ai_data']['#access'] = false;
+    $form['field_display_in_faculty_lists']['#access'] = false;
   }
 
   $form['field_visibility_settings'][LANGUAGE_NONE]['#title'] = 'The following information is drawn directly from Activity Insight. (Check those sections you would like to <em>exclude</em> from public display)';
@@ -324,18 +324,6 @@ function _people_profiles_render_ai_tab_contents(&$form) {
         $form[$field_name]['#access'] = false;
       }
     }
-  }
-
-  // Add the preview button if they're not using AI
-  if (!$form['field_use_ai_data']['und']['#default_value']) {
-    // Set the markup on the preview button
-    $preview_link = drupal_get_path_alias("node/{$form['nid']['#value']}");
-    $form['preview_link'] = array(
-      '#markup' => '<a class="button" href="/' . $preview_link . '?ai_preview=1" target="_blank">Preview AI Version</a>',
-      '#weight' => $form['field_visibility_settings']['#weight'],
-    );
-    // Move the button to the Activity Insight Tab
-    $form['#group_children']['preview_link'] = 'group_activity_insight';
   }
 }
 
