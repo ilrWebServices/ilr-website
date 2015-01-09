@@ -77,6 +77,7 @@ function _people_profiles_get_first_and_last_names($node) {
  */
 function people_profiles_preprocess_node(&$variables) {
   if($variables['type'] == 'people_profile') {
+    $has_fax = count($variables['field_fax']);
     if ($variables['view_mode'] == 'full') {
       $wrapper = _people_profiles_node_wrapper($variables['node']);
       $type = $wrapper->field_profile_type->value();
@@ -87,8 +88,12 @@ function people_profiles_preprocess_node(&$variables) {
         $title = $wrapper->title->value();
         $markup = "<div class='crumb'> profiles / $type</div>";
         $markup .= "<h1 class='title'>$title</h1>";
-        $markup .= nl2br($wrapper->field_working_title->value());
+        $markup .= $wrapper->field_working_title->value();
         $variables['content']['field_working_title'][0]['#markup'] = $markup;
+      }
+
+      if ($has_fax) {
+        $variables['content']['field_fax'][0]['#markup'] = '(f) ' . $variables['content']['field_fax'][0]['#markup'];
       }
     }
     elseif ($variables['view_mode'] == 'teaser') {
@@ -100,12 +105,24 @@ function people_profiles_preprocess_node(&$variables) {
         }
       }
       if (count($variables['field_working_title'])) {
-        $variables['content']['field_working_title'][0]['#markup'] = nl2br($variables['content']['field_working_title'][0]['#markup']);
+        $variables['content']['field_working_title'][0]['#markup'] = _people_profiles_get_primary_title($variables['content']['field_working_title'][0]['#markup']);
+      }
+      // Remove fax from all pages except ful staff view
+      if (!_people_profiles_is_full_staff_view()) {
+        if ($has_fax) {
+          unset($variables['content']['field_fax']);
+        }
       }
     }
   }
 }
 
+function _people_profiles_get_primary_title($full_title) {
+  if ($pos = strpos($full_title,"\n")) {
+    return substr($full_title, 0, $pos);
+  }
+  return $full_title;
+}
 /**
  * Implements hook_form_alter
  * Calls the appropriate form alter depending on profile type
@@ -126,12 +143,12 @@ function people_profiles_form_alter(&$form, &$form_state, $form_id) {
       $form['field_profile_department']['#disabled'] = 1;
       $form['field_phone']['#disabled'] = 1;
       $form['field_local_address']['#disabled'] = 1;
+      $form['field_email']['#disabled'] = 1;
       $form['field_address_line_1']['#disabled'] = 1;
       $form['field_faculty_on_leave']['#disabled'] = 1;
       $form['field_profile_type']['#access'] = FALSE;
       $form['field_first_name']['#access'] = FALSE;
       $form['field_last_name']['#access'] = FALSE;
-      $form['field_email']['#access'] = FALSE;
       $form['field_last_name']['#access'] = FALSE;
     }
 
@@ -544,4 +561,14 @@ function _people_profiles_sanitize_department_key($name) {
     $key = substr($key, 0, 30);
   }
   return $key;
+}
+
+function _people_profiles_is_full_staff_view() {
+  $current_nid = &drupal_static(__FUNCTION__);
+  if (!isset($current_nid)) {
+    if ($node = menu_get_object()) {
+      $current_nid = $node->nid;
+    }
+  }
+  return $current_nid == 249071;
 }

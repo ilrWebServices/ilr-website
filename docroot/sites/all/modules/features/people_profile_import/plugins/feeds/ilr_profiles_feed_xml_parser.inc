@@ -121,9 +121,9 @@ class IlrProfilesFeedXmlParser extends FeedsParser {
       'ldap_first_name' => 'field_first_name',
       'ldap_local_address' => 'field_local_address',
       'ldap_profile_type' => 'field_profile_type',
-      'ilrweb_vita_file' => 'field_ilrweb_vita_file', // remove after final import
-      'ilrweb_photo_url' => 'field_profile_image', // remove after final import
-      'ilrweb_fax' => 'field_fax', // remove after final import
+      //'ilrweb_vita_file' => 'field_ilrweb_vita_file', // remove after final import
+      //'ilrweb_photo_url' => 'field_profile_image', // remove after final import
+      //'ilrweb_fax' => 'field_fax', // remove after final import
       'netID' => 'field_netid',
       'departments' => 'field_profile_department',
       'display_in_faculty_list' => 'field_display_in_faculty_lists',

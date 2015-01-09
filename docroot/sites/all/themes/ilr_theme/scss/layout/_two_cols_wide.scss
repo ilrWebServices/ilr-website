@@ -14,9 +14,6 @@
         @include context('#main','#main[data-eq-state="widescreen"]') {
           article {
             @extend %three-column;
-            &:nth-child(3n + 2) { // bug fix for strange collision
-              clear: both;
-            }
           }
         }
       }

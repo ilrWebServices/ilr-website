@@ -682,12 +682,9 @@ function people_profiles_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 35,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -726,7 +723,7 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Email address can be edited in Cornell\'s WhoIAm service.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -760,6 +757,7 @@ function people_profiles_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_email',
     'label' => 'Email',
     'required' => 1,
@@ -898,7 +896,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 7,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -994,15 +992,7 @@ function people_profiles_field_default_field_instances() {
         'allowed_types' => array(
           'image' => 'image',
         ),
-        'browser_plugins' => array(
-          'ilr_media_browser--media_browser_1' => 'ilr_media_browser--media_browser_1',
-          'ilr_media_browser--media_browser_my_files' => 'ilr_media_browser--media_browser_my_files',
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 'upload',
-          'youtube' => 0,
-        ),
+        'browser_plugins' => array(),
         'filefield_sources' => array(
           'filefield_sources' => array(
             'attach' => 0,
@@ -1041,7 +1031,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 8,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1152,7 +1142,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 6,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1337,7 +1327,7 @@ function people_profiles_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'field_formatter_label' => '',
-          'image_link' => '',
+          'image_link' => 'content',
           'image_style' => 'focussed_thumbnail',
         ),
         'type' => 'image',
@@ -1399,7 +1389,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1449,7 +1439,7 @@ function people_profiles_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 9,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -1499,7 +1489,7 @@ function people_profiles_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
         ),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 3,
       ),
       'highlighted' => array(
@@ -1564,6 +1554,7 @@ function people_profiles_field_default_field_instances() {
   t('Drawn from <em>Teaching Focus</em> under <em>Narratives and Interests</em>');
   t('Drawn from <em>Websites</em> under <em>Personal and Contact Information</em>');
   t('Email');
+  t('Email address can be edited in Cornell\'s WhoIAm service.');
   t('Faculty On Leave');
   t('Fax');
   t('First Name');

@@ -25,5 +25,13 @@
 // For the pages that contain the blocks above
 body.page-node-249116,
 body.page-node-249071 {
-  @extend %two-cols-wide;
+  .container[data-eq-state="regular-nav"] {
+    @extend %two-cols-wide;
+  }
+  #main[data-eq-state="550"],
+  #main[data-eq-state="768"] {
+    article {
+      @extend %two-column;
+    }
+  }
 }

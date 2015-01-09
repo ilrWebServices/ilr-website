@@ -8,7 +8,6 @@
             $('.group-sidebar').addClass('toggleable');
             // All except the first
             $('.group-main-content .field, .group-sidebar .field').slice(1).each(function(){
-              $(this).toggle();
               $(this).next('.readmore-js-toggle').hide();
             });
 
@@ -17,7 +16,6 @@
               $(this).addClass('toggleable');
               $(this).click(function(){
                 $(this).toggleClass('toggled');
-                $(this).nextUntil('.field-label').toggle('medium');
                 $(this).nextInDOM('.field-label').toggleClass('post-toggle');
               });
             });
