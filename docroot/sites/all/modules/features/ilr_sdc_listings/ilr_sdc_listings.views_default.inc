@@ -1418,13 +1418,6 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['relationship'] = 'reverse_field_course_node';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: Content: Class Dates -  start date (field_class_dates) */
-  $handler->display->display_options['filters']['field_class_dates_value']['id'] = 'field_class_dates_value';
-  $handler->display->display_options['filters']['field_class_dates_value']['table'] = 'field_data_field_class_dates';
-  $handler->display->display_options['filters']['field_class_dates_value']['field'] = 'field_class_dates_value';
-  $handler->display->display_options['filters']['field_class_dates_value']['relationship'] = 'reverse_field_course_node';
-  $handler->display->display_options['filters']['field_class_dates_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_class_dates_value']['default_date'] = 'now';
   /* Filter criterion: Content: On Demand (field_on_demand) */
   $handler->display->display_options['filters']['field_on_demand_value']['id'] = 'field_on_demand_value';
   $handler->display->display_options['filters']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
