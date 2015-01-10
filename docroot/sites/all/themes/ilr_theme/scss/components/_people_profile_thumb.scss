@@ -1,5 +1,6 @@
 #block-people-profiles-people-landing-page,
-#block-people-profiles-faculty-landing-page {
+#block-people-profiles-faculty-landing-page,
+body.page-taxonomy-term .region-content .block {
   @extend %bean-base;
   article {
     @extend %thumb;
@@ -24,7 +25,8 @@
 // Dumb hard-coding of nids (hopefully temporary)
 // For the pages that contain the blocks above
 body.page-node-249116,
-body.page-node-249071 {
+body.page-node-249071,
+body.page-taxonomy-term {
   .container[data-eq-state="regular-nav"] {
     @extend %two-cols-wide;
   }
