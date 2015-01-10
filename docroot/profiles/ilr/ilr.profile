@@ -21,6 +21,16 @@ function ilr_form_install_configure_form_alter(&$form, $form_state) {
 }
 
 /**
+ * Implements hook_admin_paths().
+ */
+function ilr_admin_paths() {
+  $paths = array(
+    'editor_note/*' => TRUE,
+  );
+  return $paths;
+}
+
+/**
  * Implements hook_user_presave()
  */
 function ilr_user_presave(&$edit, $account, $category) {
