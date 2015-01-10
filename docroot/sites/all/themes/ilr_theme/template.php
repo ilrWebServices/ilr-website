@@ -119,7 +119,7 @@ function ilr_theme_preprocess_node(&$variables) {
         '#markup' => '<h4 class="student-name">' . $title . $grad_year .'</h4>',
       );
     }
-    // See note above about localist events
+    // See note above about hard-coded eq-pts
     $variables['attributes_array']['data-eq-pts'] = 'small: 100, medium: 280, large: 600, full: 900';
   }
 }

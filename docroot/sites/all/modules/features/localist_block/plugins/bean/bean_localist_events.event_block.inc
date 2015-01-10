@@ -115,6 +115,7 @@ class EventBlockBean extends BeanPlugin {
    * @param  [json] $event_data The data from the event json object
    * @param  [current_count] The number of event items that have been processed
    * @return [string] $markup
+   * @todo Refactor out hard-coded data-eq-pts
    */
   private function generate_event_item_markup($event_data, $current_count) {
     // Deal with localist's funky json structure
@@ -126,7 +127,7 @@ class EventBlockBean extends BeanPlugin {
     $event_title = truncate_utf8(strip_tags($event['title']), 55, FALSE, TRUE);
 
     // Create the markup
-    $markup = "<article class='localist-event' data-eq-pts='small: 100, medium: 300, large: 600, full: 900' role='article'>\n";
+    $markup = "<article class='localist-event' data-eq-pts='small: 100, medium: 280, large: 600, full: 900' role='article'>\n";
     $markup .= "<h3 class='category event'>Event / $event_type_info</h3>";
     if (module_exists('tagged_content_block')) {
       $markup .= _tagged_content_block_generate_thumbnail_markup($event_date, $event_localist_url, 'event');
