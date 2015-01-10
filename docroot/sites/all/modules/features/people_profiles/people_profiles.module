@@ -316,7 +316,6 @@ function _people_profiles_get_profile_nids($type='all'){
 
   if ($type != 'all') {
     $query->fieldCondition('field_profile_type', 'value', 'faculty');
-    $query->fieldCondition('field_display_in_faculty_lists', 'value', 1);
     if ($type != 'faculty') {
       $department_key = $type;
       $query->fieldCondition('field_profile_department', 'value', $department_key);
@@ -333,7 +332,7 @@ function _people_profiles_get_profile_nids($type='all'){
 }
 /**
  * Handles rendering the output of Activity insight fields
- * and whether to show the person in the faculty list
+ * and whether to add a link to the person (poorly named 'field_display_in_faculty_lists')
  */
 function _people_profiles_render_ai_tab_contents(&$form) {
   // Remove the option to use non-AI data except for admins

@@ -702,7 +702,7 @@ function people_profiles_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_display_in_faculty_lists',
-    'label' => 'Display in Faculty Lists',
+    'label' => 'Enable full profile link',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1543,7 +1543,6 @@ function people_profiles_field_default_field_instances() {
   t('Campus address can be edited in Cornell\'s WhoIAm service.');
   t('Campus phone numbers can be edited in Workday.');
   t('Department');
-  t('Display in Faculty Lists');
   t('Drawn from <em>Areas of Concentration</em> under <em>Narratives and Interests</em>');
   t('Drawn from <em>Awards and Honors</em> under <em>General Information</em>');
   t('Drawn from <em>Bio</em> under <em>Narratives and Interests</em>');
@@ -1555,6 +1554,7 @@ function people_profiles_field_default_field_instances() {
   t('Drawn from <em>Websites</em> under <em>Personal and Contact Information</em>');
   t('Email');
   t('Email address can be edited in Cornell\'s WhoIAm service.');
+  t('Enable full profile link');
   t('Faculty On Leave');
   t('Fax');
   t('First Name');
