@@ -39,4 +39,5 @@ features[variable][] = menu_parent_registration_page
 features[variable][] = node_options_registration_page
 features[variable][] = node_preview_registration_page
 features[variable][] = node_submitted_registration_page
+features_exclude[variable][menu_options_registration_page] = menu_options_registration_page
 project path = sites/all/modules/features
