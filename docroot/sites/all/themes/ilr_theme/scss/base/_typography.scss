@@ -247,6 +247,9 @@ a, a:visited {
   color: $link;
   text-decoration: none;
   outline: 0;
+  #admin-menu & {
+    line-height: 1.2;
+  }
 }
 
 a:hover, a:focus {
