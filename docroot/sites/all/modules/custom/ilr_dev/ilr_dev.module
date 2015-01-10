@@ -7,3 +7,16 @@
 function ilr_dev_init() {
   drupal_add_js(drupal_get_path('module', 'ilr_dev') . '/js/grid.js');
 }
+
+/**
+ * Custom devel debug function that only outputs
+ * once to the page. This is useful for speeding up
+ * dpm calls when interating over many nodes
+ */
+function ilr_dpm($variable, $name=NULL) {
+  $ilr_dpm = &drupal_static(__FUNCTION__);
+  if (!isset($ilr_dpm)) {
+    dpm($variable, $name);
+    $ilr_dpm = TRUE;
+  }
+}

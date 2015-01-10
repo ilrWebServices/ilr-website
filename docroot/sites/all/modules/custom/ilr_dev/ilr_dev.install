@@ -25,4 +25,6 @@ function ilr_dev_install() {
   foreach ($users as $user) {
     $new_user = user_save((object) $user);
   }
+
+  variable_set('site_name','ILR Dev Site');
 }
