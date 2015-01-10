@@ -831,6 +831,28 @@ function _forms_usage_page() {
 }
 
 /**
+ * Implements hook_post_features_revert().
+ *
+ * Explicitly set Submission for View.
+ * This is not being set correctly on Features revert for some reason.
+ * @todo Test this more to see why it is happening. It should be be necessary.
+ */
+function forms_post_features_revert($component) {
+  watchdog('forms', $component);
+  if ($component == 'entityform_type') {
+    entityform_type_cache_reset();
+    $entityform_type = entityform_get_types('job_postings_for_ilr_alumni');
+    if ($entityform_type) {
+      $entityform_type->data['submissions_view'] = 'submissions_alumni_postings';
+      entityform_type_save($entityform_type);
+    }
+    else {
+      watchdog('forms', 'Entityform type job_postings_for_ilr_alumni could not be loaded. Views setting cannot be set.', array(), WATCHDOG_ERROR);
+    }
+
+  }
+}
+/**
  * Implements hook_flush_caches().
  *
  * Set forms to be honeypot enabled when caches are about to be cleared.
@@ -853,4 +875,14 @@ function forms_flush_caches() {
     }
   }
   return array();
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function forms_views_api() {
+  return array(
+    'api' => '3',
+    'path' => drupal_get_path('module', 'forms') . '/views',
+  );
 }
