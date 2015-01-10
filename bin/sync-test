@@ -26,3 +26,5 @@ drush rsync @ilr.ilr.test:%files/ @ilr.ilr.local:%files
 drush -y -l default en ilr_dev
 
 drush fr-all -y
+
+drush updb -y
