@@ -71,6 +71,7 @@ features[variable][] = node_options_people_profile
 features[variable][] = node_preview_people_profile
 features[variable][] = node_submitted_people_profile
 features[variable][] = pathauto_node_people_profile_pattern
+features[variable][] = pathauto_taxonomy_term_areas_of_expertise_pattern
 features[views_view][] = areas_of_expertise_overview
 features_exclude[dependencies][file] = file
 features_exclude[field_group][group_advanced_tab|node|people_profile|form] = group_advanced_tab|node|people_profile|form
