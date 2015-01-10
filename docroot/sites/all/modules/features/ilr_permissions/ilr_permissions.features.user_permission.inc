@@ -813,6 +813,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete any entityform',
     'roles' => array(
       'administrator' => 'administrator',
+      'form admin' => 'form admin',
     ),
     'module' => 'entityform',
   );
@@ -1362,6 +1363,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any entityform',
     'roles' => array(
       'administrator' => 'administrator',
+      'form admin' => 'form admin',
     ),
     'module' => 'entityform',
   );
@@ -1953,6 +1955,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'form admin' => 'form admin',
     ),
     'module' => 'entityform',
   );
@@ -2128,6 +2131,7 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'faculty admin' => 'faculty admin',
+      'form admin' => 'form admin',
       'neutral admin' => 'neutral admin',
     ),
     'module' => 'system',
