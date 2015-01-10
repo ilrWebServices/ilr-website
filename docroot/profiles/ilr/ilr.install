@@ -104,16 +104,21 @@ function ilr_install() {
 
 /**
  * Custom function for role creation
+ * Can be called in an update hook after adding
+ * a new role to the $roles array here.
+ * @see ilr_update_7034
  */
 function _ilr_create_roles() {
-  $roles = array('administrator','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin', 'course admin');
+  $roles = array('administrator','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin', 'course admin', 'form admin');
 
   $weight = 0;
   foreach ($roles as $name) {
-    $role = new stdClass();
-    $role->name = $name;
-    $role->weight = $weight++;
-    user_role_save($role);
+    if (!user_role_load_by_name($name)) {
+      $role = new stdClass();
+      $role->name = $name;
+      $role->weight = $weight++;
+      user_role_save($role);
+    }
   }
 }
 
@@ -429,4 +434,10 @@ function ilr_update_7032() {
  */
 function ilr_update_7033() {
   field_delete_field('field_use_ai_data');
+}
+/**
+ * Adds form admin role
+ */
+function ilr_update_7034() {
+  _ilr_create_roles();
 }
