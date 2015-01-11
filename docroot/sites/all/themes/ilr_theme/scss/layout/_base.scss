@@ -11,6 +11,7 @@
   clear: both;
   @include add-grid(12);
   padding-top: $main-top-padding;
+
   // @include sgs-change('debug', true);
   // @include background-grid();
   @include transition-duration(.3s);
@@ -54,8 +55,6 @@
   }
 
   #content {
-    padding: 0 1em;
-
     .ilr-video-wrapper {
       clear: both;
       @include trailer(2);
@@ -64,6 +63,7 @@
 
   #content, #sidebar-second {
     @extend .clearfix;
+    padding: 0 1em 1em 1em;
 
     .section {
       @include leader(.5);
@@ -72,6 +72,7 @@
 
   #content-bottom {
     clear: both;
+    padding: 0 1em;
     @include leader(3);
     article {
       @extend %one-column;

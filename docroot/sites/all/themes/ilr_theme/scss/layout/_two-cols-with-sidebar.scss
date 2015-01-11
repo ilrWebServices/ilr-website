@@ -9,9 +9,7 @@
   #content {
     padding: 0;
     @include grid-span(1, 2);
-    .block-bean article {
-      @extend %two-column-masonry;
-    }
+
     .section { // For readability, don't let sections get too wide
       max-width: $section-max-width;
     }
@@ -23,6 +21,7 @@
 
   #sidebar-second {
     @include grid-span(1, 2);
+    padding: 0;
     .block-bean article {
       @extend %two-column;
     }

@@ -56,12 +56,19 @@
 
   h2 {
     @include padding-leader(1);
-    @include adjust-font-size-to(22px);
+    @include adjust-font-size-to(18px);
+    @include adjust-leading-to(.8, 18px);
     margin-left: 115px;
     text-align: left;
   }
+  &[data-eq-state="large"] {
+    h2 {
+      @include adjust-font-size-to(22px);
+      @include adjust-leading-to(1, 22px);
+    }
+  }
 
-  h3, .field {
+  h3 {
     margin-left: 115px;
   }
 
@@ -72,7 +79,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    margin-left: 0;
   }
 
   h3.category {
@@ -119,7 +125,6 @@
   border: 2px solid #e0e0e0;
   border-bottom-width: 6px;
   @include trailer(1.5);
-  @include padding-trailer(1);
   @include padding-leader(1);
 
   @extend %image-first;
@@ -129,10 +134,9 @@
   }
 
   h2 {
-    @include leader(1);
     @include adjust-font-size-to(25px);
-    @include adjust-leading-to(1);
-    padding: 0 1em;
+    @include adjust-leading-to(1,25px);
+    padding: .8em 1em 0 1em;
   }
   &[data-eq-state="small"] h2 {
     @include adjust-font-size-to(22px);

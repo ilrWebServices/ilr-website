@@ -142,7 +142,8 @@ function ilr_sub_sites_preprocess_html(&$variables) {
     $variables['classes_array'][] = "subsite $site";
 
     if (_ilr_sub_sites_is_sub_site_homepage()) {
-      $variables['classes_array'][] = 'subsite-front';
+      // front or not-front is the 2nd element
+      $variables['classes_array'][1] = 'subsite-front';
     }
   }
 }

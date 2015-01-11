@@ -1,0 +1,9 @@
+// Dumb hard-coding of nids (hopefully temporary)
+// For the pages that contain the blocks above
+body.page-node-249116,
+body.page-node-249071,
+body.page-taxonomy-term {
+  .container[data-eq-state="regular-nav"] {
+    @extend %two-cols-wide;
+  }
+}

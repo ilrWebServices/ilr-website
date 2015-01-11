@@ -1,4 +1,16 @@
 %bean-base {
+  body.not-front #sidebar-second & {
+    article {
+      @extend %thumb;
+    }
+  }
+  body.front,
+  body.subsite-front #sidebar-second & {
+    article {
+      @extend %card;
+    }
+  }
+
   #highlighted & {
     @extend %carousel-slide;
   }
@@ -7,7 +19,6 @@
     h2, h2 a {
       font-family: $font-headers;
       color: $h2-text;
-      @include adjust-leading-to(1);
     }
     @include addHighlightColors('.category', 'color');
     h3.category {
@@ -15,12 +26,12 @@
       font-family: $font;
       font-weight: bold;
       @include adjust-font-size-to(14px);
+      line-height: 1;
     }
   }
 
-  #sidebar-second &,
   #content & {
-    article[data-eq-state="medium"] {
+    article {
       @extend %thumb;
     }
     article[data-eq-state="small"] {

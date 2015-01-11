@@ -19,7 +19,7 @@
   #sidebar-second {
     @include grid-span(1, 3);
     @include leader(3);
-    padding-left: 2%;
+    padding: 0;
 
     .section {
       .block-bean article {
