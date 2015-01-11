@@ -29,13 +29,16 @@ function ilr_theme_preprocess_html(&$variables) {
 
 /**
  * Implements hook_preprocess_hook()
- * Adds modernizr.js
+ * Adds relevant data-eq-pts
  * Sets up bare-bones template for pages without layout
  * @see _ilr_alumni_events_payment_page()
  */
 function ilr_theme_preprocess_page(&$variables) {
   $variables['page']['page_width_eq_points'] =  array('#markup' => 'data-eq-pts="320: 320, 550: 550, 768: 768, widescreen: 1280"');
   $variables['page']['nav_trigger_pts'] =  array('#markup' => 'data-eq-pts="mobile-nav: 300, regular-nav: 945"');
+
+  $translate_block = ilr_google_translate_block_view('google_translate');
+  $variables['page']['footer'][] = array('#markup' => $translate_block['content']);
 
   if ( isset($_GET['layout']) && $_GET['layout'] == '0' ) {
     $variables['theme_hook_suggestions'][] = 'page__content_only';
