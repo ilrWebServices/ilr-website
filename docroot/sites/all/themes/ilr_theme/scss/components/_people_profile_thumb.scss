@@ -16,7 +16,7 @@ body.page-taxonomy-term .region-content .block {
       line-height: 1.2;
       margin-left: 115px;
       &.field-type-image {
-        top: 4px !important; // note that this will be affected by the h2 line-height
+        top: 3px !important; // note that this will be affected by the h2 line-height
         margin-left: 0;
       }
     }

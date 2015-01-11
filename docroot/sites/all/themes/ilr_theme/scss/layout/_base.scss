@@ -82,7 +82,7 @@
   &[data-eq-state="550"],
   &[data-eq-state="768"] {
     #content {
-      .block-bean article {
+      .block article {
         @extend %two-column;
       }
 
