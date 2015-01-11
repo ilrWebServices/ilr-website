@@ -9,6 +9,10 @@ input[type="checkbox"]:focus {
   @include tab-focus();
 }
 
+.block-entityform-block {
+  clear: both;
+}
+
 // Hides the entityform titles when rendered to pages
 #content .block-entityform-block > h2,
 #content .entity-entityform-type > h2 {

@@ -1,4 +1,8 @@
 footer {
+  .region-footer {
+    @extend .clearfix;
+    padding-bottom: 3em;
+  }
   padding: 2em 0 1em 15px;
   background: $brand-dark;
   color: $brand-light;
@@ -14,8 +18,11 @@ footer {
     }
   }
 
-  #translate {
-    background: url(../images/flag-sprite.gif) no-repeat;
+  .block-ilr-google-translate {
+    position: absolute;
+    right: 1em;
+    bottom: 3em;
+    background: url(../images/flag-sprite.png) no-repeat;
     @extend .clearfix;
     input {
       width: 18px;

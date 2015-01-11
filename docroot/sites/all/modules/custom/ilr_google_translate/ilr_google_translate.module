@@ -29,8 +29,7 @@ function ilr_google_translate_block_view($delta='') {
       'Arabic' => array('pair' => 'en|ar', 'title' => 'Arabic'),
     );
     $image_path = drupal_get_path('theme', 'ilr_theme') . '/images/transparent.gif';
-    $markup = '<div id="translate">
-      <form action="http://www.google.com/translate" id="google-translation">
+    $markup = '<form action="http://www.google.com/translate" id="google-translation">
     ';
 
     foreach ($languages as $name => $values) {
