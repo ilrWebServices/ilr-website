@@ -397,7 +397,8 @@ function _forms_send_remedy_email(&$entityform, $remedy_email, $subject='Email t
  * Process Library contact form
  */
 function _process_library_contact_form(&$entityform) {
-  $admin_email = trim($entityform->field_library_how_to_direct['und']['value']) . '@cornell.edu';
+  $wrapper = _forms_entityform_wrapper($entityform);
+  $admin_email = $wrapper->field_library_how_to_direct->value() . '@cornell.edu';
   _forms_send_emails($entityform, $admin_email);
 }
 
