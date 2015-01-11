@@ -24,19 +24,6 @@
     @extend %triptych;
   }
 
-  &[data-eq-state="550"],
-  &[data-eq-state="768"] {
-    #sidebar-second article {
-      @extend %two-column;
-    }
-    #content .region-content > .block {
-      @include grid-span(12);
-      .block-bean article {
-        @extend %two-column;
-      }
-    }
-  }
-
   #highlighted {
     margin-top: $main-top-padding * -1;
   }
@@ -81,11 +68,16 @@
 
   &[data-eq-state="550"],
   &[data-eq-state="768"] {
-    #content {
-      .block article {
+    #content, #sidebar-second {
+      .block:not(.block-system) > article {
         @extend %two-column;
       }
-
+    }
+    #sidebar-second .block-bean .field-type-entityreference {
+      @extend %two-column;
+      article {
+        @extend %one-column;
+      }
     }
     #content-bottom article {
       @extend %two-column-masonry;

@@ -12,12 +12,12 @@
         }
         @include context('#main','#main[data-eq-state="768"]') {
           .block-bean article {
-            @extend %two-column;
+            @extend %three-column;
           }
         }
         @include context('#main','#main[data-eq-state="widescreen"]') {
           .block-bean article {
-            @extend %three-column;
+            @extend %four-column;
           }
         }
       }
@@ -31,21 +31,21 @@
       @include grid-span(12);
       padding: 0 1em;
 
-      //@include context('#main','#main[data-eq-state="768"]') {
+      @include context('#main','#main[data-eq-state="768"]') {
         .block-bean article {
           @extend %three-column;
-          // @extend %card;
-          // &[data-eq-state="medium"],
-          // &[data-eq-state="full"] {
-          //   @extend %card;
-          // }
+          @extend %card;
+          &[data-eq-state="medium"],
+          &[data-eq-state="full"] {
+            @extend %card;
+          }
         }
-      // }
-      // @include context('#main','#main[data-eq-state="widescreen"]') {
-      //   .block-bean article {
-      //     @extend %four-column;
-      //   }
-      // }
+      }
+      @include context('#main','#main[data-eq-state="widescreen"]') {
+        .block-bean article {
+          @extend %four-column;
+        }
+      }
     }
   }
 
