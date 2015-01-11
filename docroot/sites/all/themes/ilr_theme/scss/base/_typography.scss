@@ -247,9 +247,6 @@ a, a:visited {
   color: $link;
   text-decoration: none;
   outline: 0;
-  #admin-menu & {
-    line-height: 1.2;
-  }
 }
 
 a:hover, a:focus {
@@ -259,12 +256,16 @@ a:hover, a:focus {
 
 p a, p a:visited,
 li a,
-div.field > a {
-  line-height: .5;
-  border-bottom: 1px solid $gray-light;
-  &:hover {
-    border-bottom-color: $link-hover;
+div.field {
+  &:not(.field-type-image) {
+    > a {
+      border-bottom: 1px solid $gray-light;
+      &:hover {
+        border-bottom-color: $link-hover;
+      }
+    }
   }
+
 }
 
 

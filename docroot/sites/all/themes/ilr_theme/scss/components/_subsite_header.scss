@@ -55,9 +55,8 @@
       @include rhythm(2,0,2,0,40px);
       @include adjust-leading-to(.75);
     }
-    a, a:hover, a:visited, a:active {
+    a, a:visited, a:active {
       color: $subsite-heading;
-      text-decoration: none;
     }
   }
   &.wrapped {
@@ -105,8 +104,12 @@
     .subsite-header {
       width: 390px;
     }
-    a, a:hover, a:visited, a:active {
+    a, a:visited, a:active {
       color: $gray-light;
+      &:hover {
+        color: lighten($gray-light, 10%);
+        border-bottom-color: lighten(#4d4e53,8%);
+      }
     }
   }
 }
@@ -139,6 +142,10 @@
   a {
     color: $gray-dark;
     font-weight: 400;
+    border-bottom: none;
+    &:hover {
+      border-bottom: 1px solid $gray-light;
+    }
   }
 }
 
