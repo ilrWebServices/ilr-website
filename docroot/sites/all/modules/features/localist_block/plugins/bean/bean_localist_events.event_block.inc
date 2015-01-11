@@ -127,7 +127,7 @@ class EventBlockBean extends BeanPlugin {
     $event_title = truncate_utf8(strip_tags($event['title']), 55, FALSE, TRUE);
 
     // Create the markup
-    $markup = "<article class='localist-event' data-eq-pts='small: 100, medium: 280, large: 600, full: 900' role='article'>\n";
+    $markup = "<article class='localist-event' data-eq-pts='small: 100, medium: 275, large: 350' role='article'>\n";
     $markup .= "<h3 class='category event'>Event / $event_type_info</h3>";
     if (module_exists('tagged_content_block')) {
       $markup .= _tagged_content_block_generate_thumbnail_markup($event_date, $event_localist_url, 'event');
@@ -164,9 +164,14 @@ class EventBlockBean extends BeanPlugin {
    * Looks for event type info, and adds it to the markup if found
    */
   private function format_event_type_info($filters) {
-    return isset($filters['event_types']['0']['name'])
-      ? $filters['event_types']['0']['name']
-      : '';
+    $event_type = '';
+    if (isset($filters['event_types']['0']['name'])) {
+      $event_type = $filters['event_types']['0']['name'];
+      if ($slash_pos = strpos($event_type, '/')) {
+        $event_type = substr($event_type, 0, $slash_pos);
+      }
+    }
+    return $event_type;
   }
 
   /**
