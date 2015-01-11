@@ -13,22 +13,15 @@ include_once 'youtube_videos.features.inc';
  */
 function youtube_videos_preprocess_node(&$variables) {
   if ($variables['type'] == 'youtube_video') {
-    if ($variables['view_mode'] = 'reference_field') {
-      // In reference_field view mode remove title(to avoid H2)
-      // Field will show
-      $variables['title'] = NULL;
-    }
-    else {
-      // In other Video modes make title a link the Video itself
-      $video_id = $variables['field_youtube_video'][0]['video_id'];
-      $variables['title_attributes_array'] = array(
-        'class' => 'fancybox',
-        'data-fancybox-type' => 'iframe',
-        'href' => _youtube_videos_embed_url($video_id),
-      );
-      $variables['node_url'] = '#';
+    $video_id = $variables['field_youtube_video'][0]['video_id'];
+    $href = _youtube_videos_embed_url($video_id);
+    $variables['title_attributes_array'] = array(
+      'class' => 'fancybox',
+      'data-fancybox-type' => 'iframe',
+      'href' => $href,
+    );
+    $variables['node_url'] = $href;
 
-    }
     unset($variables['content']['links']['node']['#links']['node-readmore']);
 
   }
