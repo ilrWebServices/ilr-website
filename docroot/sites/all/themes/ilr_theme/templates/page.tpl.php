@@ -77,5 +77,6 @@
 <footer role="contentinfo">
   <div class="container" <?php print render($page['page_width_eq_points']); ?>>
     <?php print render($page['footer']); ?>
+    <div class="copyright"><p>&copy; <?php echo date('Y')?> Cornell University | ILR School</p></div>
   </div>  <!-- /.container -->
 </footer> <!-- / footer -->
