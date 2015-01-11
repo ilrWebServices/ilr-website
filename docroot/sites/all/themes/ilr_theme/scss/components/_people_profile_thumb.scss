@@ -11,13 +11,14 @@ body.page-taxonomy-term .region-content .block {
       @include adjust-leading-to(1);
     }
 
-    .field-type-image {
-      top: 7px !important; // note that this will be affected by line-height below
-    }
-
     .field {
       @include adjust-font-size-to(16px);
       line-height: 1.2;
+      margin-left: 115px;
+      &.field-type-image {
+        top: 4px !important; // note that this will be affected by the h2 line-height
+        margin-left: 0;
+      }
     }
   }
 }
