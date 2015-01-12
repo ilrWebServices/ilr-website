@@ -1921,7 +1921,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'use text format full_html',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'contributor' => 'contributor',
     ),
     'module' => 'filter',
   );
