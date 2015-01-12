@@ -5,7 +5,7 @@
 */
 function cul_new_books_menu() {
   $items = array();
-  $items['library/collections/new-books'] = array(
+  $items['library/research/collections/new-books'] = array(
     'title' => 'New Books at Catherwood Libary',
     'page callback' => '_cul_new_books_view',
     'access arguments' => array('access content'),
