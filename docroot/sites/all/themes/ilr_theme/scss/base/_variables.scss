@@ -102,7 +102,7 @@ $link-hover: lighten($brand, 5%);
 $nav-color: #2D4063;
 $nav-size: 1.2em;
 
-$rule: #cfcdc4;
+$rule: lighten($gray-light, 2%);
 
 $blockquote: #444;
 

@@ -149,9 +149,8 @@ hr {
   clear: both;
   height: 0;
   border: 0;
-  border: 1px solid $rule;
   border-top: 1px solid $rule;
-  margin: $mod-01 0 ms(1);
+  @include trailer(1);
 }
 
 code, pre {
