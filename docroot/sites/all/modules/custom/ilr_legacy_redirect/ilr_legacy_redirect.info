@@ -5,3 +5,5 @@ package = ILR
 core = 7.x
 files[] = ilr_legacy_redirect.module
 files[] = includes/ILRRedirectLoader.inc
+files[] = includes/ILRRedirectMigrationLoader.inc
+files[] = includes/ILRRedirectSDCLoader.inc

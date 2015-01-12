@@ -5,12 +5,8 @@
  */
 
 /**
- * Implements hook_update_N().
+ * Implements hook_install().
  */
-function ilr_legacy_redirect_update_7001(&$sandbox) {
-  $messages = array();
-  $redirect_news = new ILRRedirectLoader('news-redirects.csv');
-
-
-  return implode('<br />', $messages);
+function ilr_legacy_redirect_install() {
+  ilr_legacy_redirect_run_imports();
 }

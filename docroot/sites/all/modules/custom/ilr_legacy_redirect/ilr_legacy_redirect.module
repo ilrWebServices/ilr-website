@@ -1,5 +1,22 @@
 <?php
 /**
  * @file ilr_legacy_redirect.module
- * TODO: Enter file description here.
+ * Contains code to run imports.
+ *
+ * Module should be disabled after imports are run.
+ * Redirect files are in migration_data/redirects
+/**
+ * Runs all imports.
+ *
+ * Is called from ilr_legacy_redirect_install.
+ * Also can be called locally from drush via php-eval
  */
+function ilr_legacy_redirect_run_imports() {
+  $messages = array();
+  $redirect_news = new ILRRedirectMigrationLoader('news-redirects.csv', 'news');
+  $redirect_news->runImport();
+  $redirect_sdc = new ILRRedirectSDCLoader('sdc-course-redirects.csv');
+  $redirect_sdc->runImport();
+}
+
+
