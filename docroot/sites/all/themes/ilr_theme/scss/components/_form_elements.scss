@@ -8,6 +8,9 @@ input[type="radio"]:focus,
 input[type="checkbox"]:focus {
   @include tab-focus();
 }
+input[type='submit'] {
+  margin-right: 1em;
+}
 
 .block-entityform-block {
   clear: both;
@@ -38,11 +41,13 @@ input[type="checkbox"]:focus {
   background: none;
 }
 
-a.button:hover {
-  color: white;
-  text-decoration: none;
-}
-
 .entityform td.field-multiple-drag {
   display: none;
 }
+
+.filter-wrapper.form-wrapper {
+  .filter-help p {
+    display: none;
+  }
+}
+

@@ -61,7 +61,7 @@ function scheinman_neutral_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'scheinman_neutral' => 'scheinman_neutral',
   );
-  /* Filter criterion: Field: State (or outside US) (field_state_inc_outside_us) */
+  /* Filter criterion: Field: State (field_state_inc_outside_us) */
   $handler->display->display_options['filters']['field_state_inc_outside_us_value']['id'] = 'field_state_inc_outside_us_value';
   $handler->display->display_options['filters']['field_state_inc_outside_us_value']['table'] = 'field_data_field_state_inc_outside_us';
   $handler->display->display_options['filters']['field_state_inc_outside_us_value']['field'] = 'field_state_inc_outside_us_value';
