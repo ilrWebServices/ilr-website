@@ -32,7 +32,7 @@ function student_portraits_field_group_info() {
       'formatter' => '',
       'instance_settings' => array(
         'element' => 'div',
-        'classes' => '',
+        'classes' => 'group-portrait-highlighted field-group-html-element',
         'attributes' => '',
         'required_fields' => 1,
       ),
