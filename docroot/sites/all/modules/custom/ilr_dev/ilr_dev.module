@@ -14,9 +14,17 @@ function ilr_dev_init() {
  * dpm calls when interating over many nodes
  */
 function ilr_dpm($variable, $name=NULL) {
-  $ilr_dpm = &drupal_static(__FUNCTION__);
+  $ilr_dpm = &drupal_static(__FUNCTION__ . $variable);
   if (!isset($ilr_dpm)) {
     dpm($variable, $name);
     $ilr_dpm = TRUE;
   }
+}
+
+function ilr_wrapper_dpm($w) {
+  $values = array();
+  foreach ($w->getPropertyInfo() as $key => $val) {
+    $values[$key] = $w->$key->value();
+  }
+  ilr_dpm($values);
 }
