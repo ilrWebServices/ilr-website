@@ -83,9 +83,11 @@
         height = 0;
         $('#sidebar-first ul.menu').each(function() {
           if ($(this).height() > height) {
-            height = $(this).height() + 50;
+            height = $(this).height();
           }
         });
+        liHeight = $('#sidebar-first ul.menu > li').outerHeight();
+        height = height + 2 * liHeight; // There are two additional list items added
         $('#sidebar-first').css('min-height', height);
         return height;
       }
