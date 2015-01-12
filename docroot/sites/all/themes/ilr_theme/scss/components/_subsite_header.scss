@@ -4,7 +4,7 @@
     top: 0;
   }
   #header-region {
-    @extend .clearfix;
+    @include clearfix;
     background: white; // See site-specific bg colors below
     position: relative;
     padding-bottom: .5em;

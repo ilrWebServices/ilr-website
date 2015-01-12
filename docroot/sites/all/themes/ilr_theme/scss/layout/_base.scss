@@ -28,7 +28,7 @@
     margin-top: $main-top-padding * -1;
   }
 
-  @extend .clearfix;
+  @include clearfix;
 
   #sidebar-first {
     display: none;
@@ -49,7 +49,7 @@
   }
 
   #content, #sidebar-second {
-    @extend .clearfix;
+    @include clearfix;
     padding: 0 1em 1em 1em;
 
     .section {
@@ -86,7 +86,7 @@
 }
 
 footer {
-  @extend .clearfix;
+  @include clearfix;
   .block-bean {
     @extend %three-column;
   }

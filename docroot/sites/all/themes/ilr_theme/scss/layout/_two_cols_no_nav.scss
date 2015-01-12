@@ -9,7 +9,7 @@
     }
 
     .group-highlighted {
-      @extend .clearfix;
+      @include clearfix;
       @include layout(3 9) {
         @include grid-span(2);
       }

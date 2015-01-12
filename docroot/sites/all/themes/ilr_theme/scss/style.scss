@@ -1,6 +1,7 @@
 // Compass
 @import "compass/css3";
 @import "compass/typography/lists";
+@import "compass/utilities/general/clearfix";
 
 // //Modular Scale
 @import "modular-scale";
@@ -60,7 +61,7 @@
 @import "layout/one_column";
 @import "layout/people_landing_pages";
 @import "layout/subsite_homepages";
-@import "layout/two-cols-no-nav";
+@import "layout/two_cols_no_nav";
 @import "layout/two-cols-with-sidebar";
 @import "layout/two_cols_wide";
 @import "layout/triptych";

@@ -3,7 +3,7 @@
     .group-portrait-highlighted {
       @include background-image(linear-gradient(lighten($gray-dark, 5%), $gray-dark));
       padding: 1em;
-      @extend .clearfix;
+      @include clearfix;
       color: $gray-light;
       @include trailer(2);
 

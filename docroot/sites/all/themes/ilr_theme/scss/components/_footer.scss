@@ -7,7 +7,7 @@ footer {
   z-index: 10;
 
   .region-footer {
-    @extend .clearfix;
+    @include clearfix;
     padding-bottom: 3em;
   }
 
@@ -30,7 +30,7 @@ footer {
     right: 2%;
     top: 1em;
     background: url(../images/flag-sprite.png) no-repeat;
-    @extend .clearfix;
+    @include clearfix;
     input {
       width: 18px;
       height: 12px;

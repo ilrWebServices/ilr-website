@@ -5,7 +5,7 @@
   // @include sgs-change('debug', true);
   // @include background-grid();
   #content {
-    @extend .clearfix;
+    @include clearfix;
     @include grid-span(1, 2);
     .block-bean article {
       @extend %two-column;
