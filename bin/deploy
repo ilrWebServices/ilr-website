@@ -38,7 +38,7 @@ if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
 
   # Upload to server
   echo "Uploading styles to server"
-  scp -r docroot/sites/all/themes/ilr_theme/css/style.css ilr@srv-2136.devcloud.hosting.acquia.com:~/$ENV/livedev/docroot/sites/all/themes/ilr_theme/css/style.css
+  scp -r docroot/sites/all/themes/ilr_theme/css ilr@srv-2136.devcloud.hosting.acquia.com:~/$ENV/livedev/docroot/sites/all/themes/ilr_theme
 
   # Pull the updates from the branch to livedev and clear cache
   echo "Deploying $branch_name to livedev on Acquia"
