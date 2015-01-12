@@ -89,7 +89,7 @@ function people_profiles_preprocess_node(&$variables) {
       // Move title to correct location
       if (isset($variables['content']['field_working_title'])) {
         $title = $wrapper->title->value();
-        $markup = "<div class='crumb'> profiles / $type</div>";
+        $markup = "<div class='crumb'> people / $type</div>";
         $markup .= "<h1 class='title'>$title</h1>";
         $markup .= $wrapper->field_working_title->value();
         $variables['content']['field_working_title'][0]['#markup'] = $markup;
