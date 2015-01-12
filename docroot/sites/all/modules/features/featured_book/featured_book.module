@@ -34,7 +34,7 @@ function _featured_book_create_publication_info($variables, $href) {
   $call = $variables['field_call_number'][LANGUAGE_NONE][0]['value'];
   $isbn = $variables['field_isbn'][LANGUAGE_NONE][0]['value'];
   $markup .= "ISBN $isbn ";
-  $markup .= '<a href="$href">' . $call . '</a></p>';
+  $markup .= '<a href="'.$href.'">' . $call . '</a></p>';
   return $markup;
 }
 
