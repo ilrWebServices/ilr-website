@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file
+ * Install and update functions
+ */
+
+/**
+ * Implements hook_update_N().
+ */
+function ilr_legacy_redirect_update_7001(&$sandbox) {
+  $messages = array();
+  $redirect_news = new ILRRedirectLoader('news-redirects.csv');
+
+
+  return implode('<br />', $messages);
+}
