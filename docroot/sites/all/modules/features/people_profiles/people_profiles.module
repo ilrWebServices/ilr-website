@@ -78,6 +78,9 @@ function _people_profiles_get_first_and_last_names($node) {
 function people_profiles_preprocess_node(&$variables) {
   if($variables['type'] == 'people_profile') {
     $has_fax = count($variables['field_fax']);
+    if ($has_fax) {
+      $variables['content']['field_fax'][0]['#markup'] = '(f) ' . $variables['content']['field_fax'][0]['#markup'];
+    }
     if ($variables['view_mode'] == 'full') {
       $wrapper = _people_profiles_node_wrapper($variables['node']);
       $type = $wrapper->field_profile_type->value();
@@ -91,10 +94,6 @@ function people_profiles_preprocess_node(&$variables) {
         $markup .= $wrapper->field_working_title->value();
         $variables['content']['field_working_title'][0]['#markup'] = $markup;
       }
-
-      if ($has_fax) {
-        $variables['content']['field_fax'][0]['#markup'] = '(f) ' . $variables['content']['field_fax'][0]['#markup'];
-      }
     }
     elseif ($variables['view_mode'] == 'teaser') {
       if ($variables['field_display_in_faculty_lists'][LANGUAGE_NONE][0]['value'] != 1) {
@@ -107,7 +106,7 @@ function people_profiles_preprocess_node(&$variables) {
       if (count($variables['field_working_title'])) {
         $variables['content']['field_working_title'][0]['#markup'] = _people_profiles_get_primary_title($variables['content']['field_working_title'][0]['#markup']);
       }
-      // Remove fax from all pages except ful staff view
+      // Remove fax from all pages except full staff view
       if (!_people_profiles_is_full_staff_view()) {
         if ($has_fax) {
           unset($variables['content']['field_fax']);
