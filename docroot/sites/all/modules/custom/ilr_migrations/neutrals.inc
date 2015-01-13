@@ -115,7 +115,7 @@ class ScheinmanNeutralsMigration extends Migration {
 
     foreach ($wysiwyg_fields as $field_name) {
       $this->addFieldMapping("{$field_name}:format")
-        ->defaultValue('full_html');
+        ->defaultValue('filtered_html');
     }
 
   }
@@ -158,9 +158,6 @@ class ScheinmanNeutralsMigration extends Migration {
   public function prepare($node, $row) {
     // Disable automatic path generation
     $node->path['pathauto'] = 0;
-
-    // Set the path
-    $node->path['alias'] = 'neutrals/' . $row->id;
 
     // Make published if row comes in as approved
     $node->status = $row->approved;
