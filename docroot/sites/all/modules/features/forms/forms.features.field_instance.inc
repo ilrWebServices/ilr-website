@@ -9109,6 +9109,66 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-employee_recognition_nomination_-field_job_title'
+  $field_instances['entityform-employee_recognition_nomination_-field_job_title'] = array(
+    'bundle' => 'employee_recognition_nomination_',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator title',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Nominator title',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_job_title',
+    'label' => 'Title',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'entityform-employee_recognition_nomination_-field_letter_of_support'
   $field_instances['entityform-employee_recognition_nomination_-field_letter_of_support'] = array(
     'bundle' => 'employee_recognition_nomination_',
@@ -9165,60 +9225,6 @@ function forms_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-employee_recognition_nomination_-field_name_title'
-  $field_instances['entityform-employee_recognition_nomination_-field_name_title'] = array(
-    'bundle' => 'employee_recognition_nomination_',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'Nominator title',
-        ),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'Nominator title',
-        ),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_name_title',
-    'label' => 'Title',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 8,
     ),
   );
 
@@ -12376,8 +12382,8 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_degree_program'
-  $field_instances['entityform-graduate_student_request_for_tea-field_degree_program'] = array(
+  // Exported field_instance: 'entityform-graduate_student_request_for_tea-field_degree_prog_4_grad_degrees'
+  $field_instances['entityform-graduate_student_request_for_tea-field_degree_prog_4_grad_degrees'] = array(
     'bundle' => 'graduate_student_request_for_tea',
     'default_value' => NULL,
     'deleted' => 0,
@@ -12412,7 +12418,8 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
-    'field_name' => 'field_degree_program',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_degree_prog_4_grad_degrees',
     'label' => 'Degree program',
     'required' => 1,
     'settings' => array(
@@ -12574,8 +12581,9 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_ilr_department',
-    'label' => ' Departments in which you prefer assignment (Indicate at least top two choices.)',
+    'label' => ' Department(s) in which you prefer assignment',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -12681,10 +12689,16 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_minor_subject_s_',
     'label' => 'Minor subject(s)',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -19151,6 +19165,66 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-job_postings_for_ilr_alumni-field_job_title'
+  $field_instances['entityform-job_postings_for_ilr_alumni-field_job_title'] = array(
+    'bundle' => 'job_postings_for_ilr_alumni',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'ContactTitle',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_job_title',
+    'label' => 'Job title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'entityform-job_postings_for_ilr_alumni-field_location_string'
   $field_instances['entityform-job_postings_for_ilr_alumni-field_location_string'] = array(
     'bundle' => 'job_postings_for_ilr_alumni',
@@ -19207,65 +19281,6 @@ function forms_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 29,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-job_postings_for_ilr_alumni-field_name_title'
-  $field_instances['entityform-job_postings_for_ilr_alumni-field_name_title'] = array(
-    'bundle' => 'job_postings_for_ilr_alumni',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'ContactTitle',
-        ),
-        'type' => 'text_default',
-        'weight' => 2,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_name_title',
-    'label' => 'Title',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 4,
     ),
   );
 
@@ -33467,7 +33482,7 @@ function forms_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('  I certify that I have read the above information and that I have submitted my Degree Plan.');
-  t(' Departments in which you prefer assignment (Indicate at least top two choices.)');
+  t(' Department(s) in which you prefer assignment');
   t(' I certify that I have read the above information and that I have completed my 7th semester check.');
   t(' May we contact you by email about information on our offerings?');
   t(' Semester requesting assistantship');

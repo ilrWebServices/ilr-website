@@ -30,7 +30,7 @@ function forms_default_entityform_type() {
   $items = array();
   $items['alumni_enews_subscribe'] = entity_import('entityform_type', '{
     "type" : "alumni_enews_subscribe",
-    "label" : "ILR Alumni and Friends Newsletter Subscription",
+    "label" : "ILR Alumni, Parents and Friends News Subscription",
     "data" : {
       "draftable" : 0,
       "draft_redirect_path" : "",
@@ -45,7 +45,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EYour ILR Alumni and Friends Newsletter subscription status has been updated.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR Alumni\\u003Cbr \\/\\u003E\\r\\n\\tCornell University\\u003Cbr \\/\\u003E\\r\\n\\tss446@cornell.edu\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EYour ILR Alumni, Parents and Friends News subscription has been updated.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -53,25 +53,26 @@ function forms_default_entityform_type() {
       "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
       "roles" : {
-        "3" : "3",
         "1" : "1",
         "2" : "2",
-        "4" : 0,
-        "5" : 0,
-        "6" : 0,
-        "7" : 0,
-        "8" : 0,
-        "9" : 0,
-        "10" : 0
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "26" : 0,
+        "21" : 0,
+        "31" : 0,
+        "36" : 0,
+        "46" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 0,
-      "form_submission_ilr_recipient" : "ss446@cornell.edu",
       "send_confirmation_email_to_admin" : 0,
       "add_user_name_to_subject_line" : 0,
-      "kerberized" : 0
+      "kerberized" : 0,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "jlw85@cornell.edu"
     },
     "weight" : "0",
     "paths" : []
@@ -1249,7 +1250,7 @@ function forms_default_entityform_type() {
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
-      "submissions_view" : "submissions_alumni_postings",
+      "submissions_view" : "default",
       "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
       "roles" : {
