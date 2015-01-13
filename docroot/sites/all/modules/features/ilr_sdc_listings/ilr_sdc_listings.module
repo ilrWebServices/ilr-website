@@ -790,7 +790,7 @@ function _ilr_sdc_listings_hide_view_filters($form, &$form_state) {
   $view = $form_state['view'];
   if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
     //$form['submit']['#access'] = FALSE;
-    $hide_elements = array('field_online_class_value', 'field_sdc_department_tid_entityreference_filter');
+    $hide_elements = array('field_online_class_value', 'field_sdc_department_tid');
     foreach ($hide_elements as $hide_element) {
       $form[$hide_element]['#access'] = FALSE;
     }
