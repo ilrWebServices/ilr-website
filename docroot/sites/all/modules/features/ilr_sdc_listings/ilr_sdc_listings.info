@@ -10,7 +10,6 @@ dependencies[] = ctools
 dependencies[] = date
 dependencies[] = date_views
 dependencies[] = entityreference
-dependencies[] = entityreference_filter
 dependencies[] = features
 dependencies[] = feeds
 dependencies[] = feeds_jsonpath_parser

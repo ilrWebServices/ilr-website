@@ -104,6 +104,12 @@ function ilr_sdc_listings_update_7003(&$sandbox) {
 }
 
 /**
+ * Disable Entityreference Filter
+ */
+function ilr_sdc_listings_update_7004() {
+  module_disable(array('entityreference_filter'));
+}
+/**
  * Update aliases for sdc content types.
  */
 function _ilr_sdc_listings_update_aliases() {
