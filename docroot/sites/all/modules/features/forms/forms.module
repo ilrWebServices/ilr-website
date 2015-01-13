@@ -162,7 +162,7 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
  * What's in the code is a default.
  */
 function _forms_collective_bargaining_videos_redirect() {
-  $cb_videos_redirect = variable_get('cb_videos_url', 'http://www.ilr.cornell.edu/workerinstitute');
+  $cb_videos_redirect = variable_get('cb_videos_url', 'http://www.ilr.cornell.edu/worker-institute/education-and-training/collective-bargaining-training-videos/video');
   drupal_goto($cb_videos_redirect);
 }
 
