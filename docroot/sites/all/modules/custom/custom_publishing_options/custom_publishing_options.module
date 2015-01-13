@@ -1,0 +1,84 @@
+<?php
+
+define('MIN_IMAGE_WIDTH', 1280);
+
+/**
+ * Implements hook_schema_alter().
+ */
+function custom_publishing_options_schema_alter(&$schema) {
+  $schema['node']['fields']['featured'] = array(
+    'description' => t('Featured', array('@name' => 'featured')),
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0,
+  );
+  $schema['node']['fields']['kerberized'] = array(
+    'description' => t('Kerberized', array('@name' => 'kerberized')),
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0,
+  );
+}
+
+/**
+ * Implements hook_form_alter()
+ * Adds the "featured" and "kerberized" checkboxs
+ * to the node publishing options tab
+ */
+function custom_publishing_options_form_alter(&$form, $form_state, $form_id) {
+  if (isset($form['#node_edit_form']) && $form['#node_edit_form'] === TRUE) {
+    $node = $form['#node'];
+
+    $form['options']['featured'] = array(
+     '#type' => 'checkbox',
+     '#title' => 'Featured',
+     '#default_value' => isset($node->featured) ? $node->featured : FALSE,
+     '#access' => user_access('administer nodes') ? TRUE : FALSE,
+    );
+
+    $form['options']['kerberized'] = array(
+     '#type' => 'checkbox',
+     '#title' => 'Kerberized',
+     '#default_value' => isset($node->kerberized) ? $node->kerberized : FALSE,
+     '#access' => user_access('administer nodes') ? TRUE : FALSE,
+    );
+
+    $form['#validate'][] = 'custom_publishing_options_featured_validate';
+  }
+}
+
+/**
+ * Custom form validation
+ *   - Confirms that there is a main image if featuring
+ */
+function custom_publishing_options_featured_validate($form, &$form_state) {
+  if ($form_state['values']['featured'] == 1) {
+    $fid = _custom_publishing_options_get_fid_from_form_state($form_state);
+    if (_custom_publishing_options_featured_image_error($fid)) {
+      form_set_error('state', t("You must add a main image that is at least " . MIN_IMAGE_WIDTH . "px wide in order to feature content."));
+    }
+  }
+}
+
+/**
+ * Returns the fid from the form_state
+ */
+function _custom_publishing_options_get_fid_from_form_state($form_state) {
+  if (isset($form_state['values']['field_image'])) {
+    return $form_state['values']['field_image'][LANGUAGE_NONE][0]['fid'];
+  }
+}
+
+/**
+ * Confirms that there is a featured image with the required minimum width
+ */
+function _custom_publishing_options_featured_image_error($fid) {
+  if ($fid >= 1) {
+    $file = file_load($fid);
+    $image = image_load($file->uri);
+    if ($image->info['width'] >= MIN_IMAGE_WIDTH) {
+      return FALSE;
+    }
+  }
+  return TRUE;
+}

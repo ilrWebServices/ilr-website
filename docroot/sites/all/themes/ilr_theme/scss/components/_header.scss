@@ -1,0 +1,129 @@
+// Fix for page load animations
+.preloading * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
+%header-small {
+  .logo-wrapper {
+    margin: 10px;
+    float: left;
+
+    a.cornell {
+      width: 70px;
+      height: 70px;
+    }
+
+    img {
+      width: 205px;
+      @include transition-duration(.3s);
+    }
+  }
+}
+
+header {
+  @extend .center;
+  @extend %header-small;
+  @include transition-duration(.3s);
+  @include background-image(linear-gradient(lighten($cornell-red, 3%), $cornell-red));
+  background-repeat: no-repeat;
+  width: 100%;
+  top: 0;
+
+  body:not(.subsite) & {
+    position: fixed;
+  }
+  z-index: 10;
+
+  .admin-menu & {
+    top: 29px;
+  }
+
+  .logo-wrapper {
+    position: relative;
+    margin-left: 10px;
+
+    a.cornell {
+      display: block;
+      position: absolute;
+    }
+  }
+
+  #header-region {
+    background: #f7f7f7;
+    width: 100%;
+    clear: both;
+    position: relative;
+    border-bottom: 1px solid $gray-light;
+    .sticky &,
+    &.sticky {
+      @include box-shadow(0 10px 10px -10px rgba(black, .5));
+    }
+  }
+
+  &[data-eq-state="regular-nav"]:not(.sticky) {
+    @extend %big-logo;
+    .jpanel-trigger-container { display: none; }
+  }
+  &[data-eq-state="regular-nav"].sticky {
+    #logo {
+      margin-bottom: 2px;
+    }
+    .jpanel-trigger-container {
+      @extend .hidden;
+    }
+  }
+  .jpanel-trigger-container {
+    @extend %header-btn;
+    a {
+      @extend %icon-hamburger;
+    }
+  }
+}
+
+%big-logo {
+  body:not(.subsite) & {
+    a.cornell {
+      width: 130px;
+      height: 130px;
+    }
+    #logo {
+      img {
+        width: 375px;
+        height: 120px;
+      }
+    }
+  }
+}
+
+%header-btn {
+  @include transition-duration(.3s);
+  float: right;
+  margin-top: 1em;
+  [data-eq-state="regular-nav"]:not(.sticky) & {
+    body:not(.subsite) & {
+      margin-right: 1em;
+    }
+  }
+
+  a {
+    display: block;
+    padding: 10px 13px 5px 13px;
+    color: white;
+
+    &:hover, &:visited, &:active, &:focus {
+      text-decoration: none;
+    }
+
+    // Subsites move the search-button element
+    // to the #header-region
+    #header-region & {
+      color: $brand;
+    }
+  }
+  #header-region & {
+    margin: 0;
+  }
+}

@@ -13,12 +13,16 @@ class EntityFieldQueryDeduped extends EntityFieldQuery {
 
     if(!empty($result)) {
       // Add the result nids to the previously retrieved_nids
-      EntityFieldQueryDeduped::$retrieved_nids = array_merge(
-        EntityFieldQueryDeduped::$retrieved_nids,
-        array_keys($result['node'])
-      );
+      $this->addToRetrievedNids(array_keys($result['node']));
     }
 
     return $result;
+  }
+
+  public static function addToRetrievedNids($new_nids) {
+    EntityFieldQueryDeduped::$retrieved_nids = array_merge(
+      EntityFieldQueryDeduped::$retrieved_nids,
+      $new_nids
+    );
   }
 }

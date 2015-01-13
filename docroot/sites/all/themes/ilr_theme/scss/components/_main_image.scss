@@ -1,0 +1,9 @@
+.field-name-field-image {
+  @include leader(2);
+  @include trailer(2);
+}
+
+.block-bean .field-name-field-image {
+  @include leader(0);
+  @include trailer(0);
+}

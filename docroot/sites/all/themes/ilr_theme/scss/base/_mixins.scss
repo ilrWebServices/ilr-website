@@ -1,15 +1,81 @@
-// ==================================================
-// Mixins
-// ==================================================
-
-// Hide from both screenreaders and browsers: h5bp.com/u
-// also in helpers
-@mixin hidden {
-  display: none !important;
-  visibility: hidden;
+// WebKit-style focus, lifted from bootstrap
+@mixin tab-focus() {
+  // Default
+  outline: thin dotted;
+  // WebKit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 
-@mixin visible {
-  display: block !important;
-  visibility: visible;
+@function randomColor($format:NULL) {
+  $red: random(256);
+  $green: random(256);
+  $blue: random(256);
+  $opacity: random(100) / 100;
+  @if $format == "hex" {
+    @return rgba($red, $green, $blue, 1);
+  }
+  @else {
+    @return rgba($red, $green, $blue, $opacity);
+  }
+
+  // Example usage:
+  // article.node-teaser {
+  //   $s-min: 20;
+  //   $s-max: 70;
+  //   $l-min: 30;
+  //   $l-max: 90;
+
+  //   @for $i from 1 through 8 {
+  //     &:nth-child(#{$i}) {
+  //       background-color: hsl(random(360),$s-min+random($s-max+-$s-min),$l-min+random($l-max+-$l-min));
+  //     }
+  //   }
+  // }
+}
+
+@mixin circularImage($width:100px) {
+  width: $width;
+  height: $width;
+  border-radius: $width / 4;
+
+  a {
+    display: block;
+    width: $width;
+    height: $width;
+  }
+
+  img, a {
+    border-radius:50%;
+  }
+}
+
+@mixin addHighlightColors($selector, $css-property) {
+  $content-types: basic-page, promo, event, spotlight, student-portrait, news-item, youtube-video;
+  $content-type-colors: $basic-page-color, $promo-color, $event-color, $spotlight-color, $student-portrait-color, $news-color, $video-color;
+  @for $i from 1 through length($content-types) {
+    .#{nth($content-types, $i)}#{$selector} {
+      #{$css-property}: nth($content-type-colors, $i);
+    }
+  }
+}
+
+@mixin fontFace($family,$src,$weight: normal,$style: normal) {
+  @font-face {
+    font-family: $family;
+    src: url('#{$src}.eot'); // IE9 compat
+    src: url('#{$src}.eot?#iefix') format('embedded-opentype'), // IE8 and below
+      url('#{$src}.woff') format('woff'), // standards
+      url('#{$src}.ttf') format('truetype'), // Safari, Android, iOS
+      url('#{$src}.svg##{$family}') format('svg'); // legacy iOS
+
+    font-style: $style;
+    font-weight: $weight;
+  }
+}
+
+@mixin context($old-context, $new-context) {
+  @at-root #{selector-replace(&, $old-context, $new-context)} {
+    @content;
+  }
 }

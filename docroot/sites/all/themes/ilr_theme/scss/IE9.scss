@@ -1,0 +1,83 @@
+@import "compass/typography/lists/horizontal-list";
+@import "compass/css3";
+@import "modular-scale";
+@import "singularitygs";
+@import "breakpoint";
+@import "base/variables";
+@import 'base/mixins';
+@import "layout/two_cols_no_nav";
+@import "layout/layouts";
+
+body {
+  header {
+    position: static !important;
+
+    &[data-eq-state="regular-nav"] {
+      .menu-block-ilr-primary-menu {
+        ul.menu {
+          @include horizontal-list;
+          li {
+            background: none;
+
+            a {
+              padding-left: 8px;
+              padding-right: 8px;
+            }
+          }
+        }
+      }
+    }
+    #search-form {
+      top: 0;
+      display: none;
+    }
+    &.search-engaged {
+      #search-form {
+        display: block;
+      }
+    }
+  }
+
+  #page .container #main {
+    @include add-grid(3 9);
+    #content {
+      @include grid-span(1,2);
+    }
+    #sidebar-first {
+      @include grid-span(1,1);
+    }
+    #sidebar-second {
+      @include grid-span(1,2);
+    }
+    #content-bottom {
+      @include grid-span(2);
+    }
+  }
+}
+
+body.subsite {
+  header {
+    #header-region .region-header {
+      position: relative;
+      .menu-block-ilr-primary-menu {
+        position: absolute;
+        bottom: -8em;
+        right: 1em;
+      }
+    }
+  }
+}
+
+body.node-type-people-profile {
+  #page .container {
+    @extend %two-cols-no-nav;
+  }
+}
+
+#sidebar-first ul.menu li a.next-menu {
+  &::after {
+    padding: 1.1em;
+    top: 12px;
+    left: 20px;
+  }
+}

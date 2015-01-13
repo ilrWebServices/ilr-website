@@ -1,0 +1,6 @@
+name = Elavon
+description = Integrates with Elavon payment processing
+core = 7.x
+package = ILR
+version = 7.x-1.0
+project = elavon

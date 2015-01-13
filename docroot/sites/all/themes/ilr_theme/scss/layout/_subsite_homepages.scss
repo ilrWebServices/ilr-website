@@ -1,0 +1,11 @@
+body.subsite-front {
+  &.worker-institute { // consider using context to add body class
+    .container[data-eq-state="regular-nav"] {
+      @extend %one-column-page;
+
+      .field-name-body {
+        @extend %homepage-text;
+      }
+    }
+  }
+}

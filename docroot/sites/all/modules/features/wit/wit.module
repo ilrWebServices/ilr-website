@@ -16,7 +16,15 @@ function wit_node_update($node) {
   if($node->type == "wit_article") {
     if ($node->original->status == 0 && $node->status == 1) {
       $article_date = $node->field_published_date['und'][0]['value'];
-      _wit_publish_daily_articles($article_date);
+      $articles = _wit_get_articles_by_date($article_date, TRUE);
+      if (!empty($articles)) {
+        _wit_publish_articles($articles);
+      } // The following gets called once all the articles have been published, not as an error
+      else {
+        drupal_set_message(t("Today's WIT articles have been published."), 'status');
+        $articles = _wit_get_articles_by_date($article_date);
+        _wit_email_articles_to_list($articles, $article_date);
+      }
     }
   }
 }
@@ -29,7 +37,7 @@ function wit_node_update($node) {
 function wit_preprocess_node(&$variables) {
   if ($variables['type'] == 'wit_article') {
     $variables['content']['link'] = array(
-      '#markup' => _wit_build_reference($variables),
+      '#markup' => _wit_build_reference($variables['node']),
       '#weight' => 10,
     );
     // Remove the variables we needed for the reference
@@ -39,6 +47,32 @@ function wit_preprocess_node(&$variables) {
     unset($variables['content']['field_term_publication']);
     unset($variables['content']['field_term_wire_service']);
     unset($variables['content']['field_published_date']);
+
+    // WIT articles should never have link to node page.
+    unset($variables['content']['links']['node']['#links']['node-readmore']);
+    switch ($variables['view_mode']) {
+      case 'teaser':
+        // Teaser title will have a JS link to expand.
+        $variables['node_url'] = '#';
+        break;
+      case 'full':
+        $variables['remove_title_link'] = TRUE;
+        break;
+    }
+
+  }
+}
+
+/**
+ * Implements hook_node_view()
+ *
+ *  Alters titles for wit articles since Drupal titles
+ *  are limited to 128 characters
+ */
+function wit_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'wit_article') {
+    $node->title = $node->field_article_lead_full[LANGUAGE_NONE][0]['safe_value'];
+    hide($node->content['field_article_lead_full']);
   }
 }
 
@@ -92,44 +126,160 @@ function _wit_get_nids($count = 15) {
  * Custom function to publish all articles for a given day
  *
  */
-function _wit_publish_daily_articles($article_date) {
+function _wit_get_articles_by_date($article_date, $unpublished_only = FALSE) {
   $query = new EntityFieldQuery();
-
   $query
     ->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'wit_article')
-    ->propertyCondition('status', 0)
     ->fieldCondition('field_published_date', 'value', $article_date);
 
-  $result = $query->execute();
+  if ($unpublished_only) {
+    $query->propertyCondition('status', 0);
+  }
+  return $query->execute();
+}
 
-  if (empty($result)) {
-    drupal_set_message(t("Today's WIT articles have been published."), 'status');
+function _wit_publish_articles($articles) {
+  foreach ($articles['node'] as $node) {
+    $node = node_load($node->nid, $node->vid);
+    $node->status = 1;
+    node_save($node);
   }
-  else {
-    foreach ($result['node'] as $node) {
-      $node = node_load($node->nid, $node->vid);
-      $node->status = 1;
-      node_save($node);
-    }
+}
+
+function _wit_email_articles_to_list($articles, $date) {
+  $date_object = new Datetime($date);
+  $formatted_date = date_format($date_object, 'l, F d, Y');
+  $body = _wit_generate_email_body($articles, $formatted_date);
+
+  $params = array(
+    'subject' => 'Workplace Issues Today',
+    'content' => $body,
+  );
+
+  drupal_mail(
+    'wit',
+    'daily_wit',
+    'WIT-L@cornell.edu',
+    LANGUAGE_NONE,
+    $params,
+    'catherwoodWIT@cornell.edu'
+  );
+}
+
+function _wit_generate_email_body($articles, $formatted_date) {
+  $body = "***** WORKPLACE ISSUES TODAY *****
+M.P. Catherwood Library
+School of Industrial & Labor Relations
+Cornell University
+{$formatted_date}
+________________________________________________________
+
+";
+
+  foreach ($articles['node'] as $node) {
+    $node = node_load($node->nid, $node->vid);
+    $title = strtoupper($node->title);
+    $body .= "*** $title ";
+    $body .= $node->body[LANGUAGE_NONE][0]['safe_value'];
+    $body .= _wit_build_reference($node, TRUE);
   }
+
+  $body .= "________________________________________________________
+Questions about WIT selection criteria or finding the articles we write about? Check our web site at http://www.ilr.cornell.edu/library/research/worldOfWorkNews/wit
+
+________________________________________________________
+To UNSUBSCRIBE, send email to: lyris@cornell.edu containing this single line of text: leave wit-L
+<br><br>You must send this mail from the same email address you use to subscribe. If you need help, contact owner-WIT-L@cornell.edu.";
+
+  return $body;
+}
+/**
+ * Implements hook_mail().
+ * This is the email sent to the user
+ */
+function wit_mail($key, &$message, $params) {
+  $message['headers']['MIME-Version'] = '1.0';
+  $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
+  $message['headers']['Bcc'] = 'ilrwebemailcc-mailbox@cornell.edu';
+  $message['subject'] = $params['subject'];
+  $message['body'][] = $params['content'];
 }
 
 /**
  * Custom function for outputting the article reference
- *
  */
-function _wit_build_reference($variables) {
-  $title = $variables['field_article_title'][0]['value'];
-  $url = $variables['field_website_url'][0]['url'];
-  $link = "<a href='{$url}' target='_blank'>{$title}</a>,";
-  $author = (count($variables['field_author']) > 0) ? 'by ' . $variables['field_author'][0]['value'] . ',' : '';
-  $publication = $variables['field_term_publication'][0]['taxonomy_term']->name . ',';
-  $service = (count($variables['field_term_wire_service']) > 0) ? $variables['field_term_wire_service'][0]['taxonomy_term']->name . ',' : '';
+function _wit_build_reference($node, $email_version = FALSE) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $title = $wrapper->field_article_title->value();
+  $url = $wrapper->field_website_url->value();
+  if ($email_version) {
+    $link = "\"$title\", at {$url['url']}";
+  }
+  else {
+    $link = "\"<a href='{$url['url']}' target='_blank'>{$title}</a>\"";
+  }
+  $author = $wrapper->field_author->value();
+  $publication = $wrapper->field_term_publication->value()->name;
+  $wire_service_value = $wrapper->field_term_wire_service->value();
+  $service = !empty($wire_service_value)
+    ? ' ' . $wire_service_value->name . ','
+    : '';
   // Convert the Date string to a date object
-  $date_object = date_create($variables['field_published_date'][0]['value'], timezone_open('America/New_York'));
+  $ts = $wrapper->field_published_date->value();
+  $date_object = new DateTime("@$ts");
   // Format the date object
   $published = date_format($date_object, 'M d Y');
-  $reference = "<div class='reference'><p>See \"{$link}\" {$author} {$publication} {$service} {$published}</p></div>";
+  $reference = "<div class='reference'><p>See {$link}, by {$author}, {$publication},{$service} {$published}</p></div>";
   return $reference;
+}
+
+/**
+ * Implements hook_views_pre_view().
+ *
+ * Change View date argument to use date that last WIT articles were published.
+ * View argument will not work for this because 1 display needs to filter on less than.
+ */
+function wit_views_pre_view(&$view, &$display_id, &$args) {
+  // An array of filter ids.  Keys are View names.
+  $view_filters = array(
+    'wit_listing' => 'field_published_date_value',
+    'wit_search' => 'field_published_date_value_1',
+
+  );
+  if (array_key_exists($view->name, $view_filters)) {
+    $filter_name = $view_filters[$view->name];
+    if ($view->current_display == 'attachment_current_pub') {
+      $pub_filter = &$view->display['attachment_current_pub']->handler->options['filters'][$filter_name];
+    }
+    else {
+      // Regular page doesn't override filters
+      $pub_filter = &$view->display['default']->handler->options['filters'][$filter_name];
+    }
+
+    $pub_filter['value']['value'] = _wit_get_latest_pub_date();
+  }
+}
+
+/**
+ * Custom function to retrieve last date on which a WIT article was published.
+ *
+ * @return string
+ *  Date in format 1999-01-01
+ * @throws EntityFieldQueryException
+ */
+function _wit_get_latest_pub_date() {
+  $query = new EntityFieldQuery();
+  $query
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'wit_article')
+    ->fieldOrderBy('field_published_date', 'value', 'DESC')
+    ->range(0,1);
+  $results =  $query->execute();
+  if (!empty($results['node'])) {
+    $node_info = array_shift($results['node']);
+    $wrapper = entity_metadata_wrapper('node', $node_info->nid);
+    $timestamp = $wrapper->field_published_date->value();
+    return date('Y-m-d', $timestamp);
+  }
 }

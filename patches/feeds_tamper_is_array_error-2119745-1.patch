@@ -1,0 +1,20 @@
+diff --git a/feeds_tamper.module b/feeds_tamper.module
+index 4c0b874..b46deb0 100644
+--- a/feeds_tamper.module
++++ b/feeds_tamper.module
+@@ -46,7 +46,6 @@ function feeds_tamper_feeds_after_parse(FeedsSource $source, FeedsParserResult $
+ 
+       // Plugins assume that everything lives in the item array.
+       $result->items[$item_key][$element_key] = $parser->getSourceElement($source, $result, $element_key);
+-      $is_array = is_array($result->items[$item_key][$element_key]);
+ 
+       foreach ($instances as $instance) {
+         // If the item was unset by previous plugin, jump ahead.
+@@ -54,6 +53,7 @@ function feeds_tamper_feeds_after_parse(FeedsSource $source, FeedsParserResult $
+           break 2;
+         }
+ 
++        $is_array = is_array($result->items[$item_key][$element_key]);
+         $plugin = $plugins[$instance->plugin_id];
+ 
+         if ($is_array && $plugin['multi'] == 'loop') {

@@ -1,0 +1,31 @@
+body.front {
+  .container[data-eq-state="regular-nav"] {
+    #main {
+      #content {
+        @include grid-span(12);
+        @include add-gutter(1);
+        padding: 0 1em;
+
+        .section {
+          max-width: 100%;
+        }
+        .ilr-video-wrapper {
+          @include grid-span(4,9);
+        }
+        .block-bean {
+          @include grid-span(4);
+          article {
+            @extend %one-column;
+          }
+          &.event-block {
+            @include grid-span(4,5);
+          }
+        }
+      }
+
+      #sidebar-first {
+        display: none !important; //Override
+      }
+    }
+  }
+}

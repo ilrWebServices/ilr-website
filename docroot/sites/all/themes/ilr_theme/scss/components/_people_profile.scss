@@ -1,0 +1,149 @@
+// Establish the layout and overrides
+body.node-type-people-profile {
+  .container[data-eq-state="regular-nav"] {
+    @extend %two-cols-no-nav;
+  }
+  .container[data-eq-state="mobile-nav"] {
+    #main { padding: 0; }
+  }
+
+  #breadcrumb,
+  #page-title {
+    display: none;
+  }
+}
+
+article.node-people-profile {
+  .group-highlighted {
+    @include trailer(2);
+    background: white;
+    &.no-image { // See people_profiles_field_group_build_pre_render_alter()
+      @include padding-trailer(2);
+      padding-left: 2em;
+    }
+    .field-type-image {
+      text-align: center;
+    }
+  }
+
+  .group-title-and-focus {
+    @include padding-leader(1);
+    #main[data-eq-state="widescreen"] & {
+      @include padding-leader(2);
+    }
+    .container[data-eq-state="mobile-nav"] & {
+      @include padding-trailer(2);
+    }
+    padding-left: 2em;
+
+    #main[data-eq-state="320"] &,
+    #main[data-eq-state="550"] & {
+      padding-right: 2em;
+      .field {
+        text-align: center;
+      }
+    }
+
+    .crumb {
+      text-transform: uppercase;
+      color: $spotlight-color;
+      @include adjust-font-size-to(14px);
+    }
+
+    .title {
+      margin-bottom: 0;
+    }
+
+    .field-name-field-working-title {
+      font-weight: bold;
+    }
+  }
+
+  h3.toggleable { // toggleable added by people_profiles.js
+    cursor: pointer;
+    &:before {
+      content: '+ ';
+    }
+    &.toggled:before {
+      content: '- ';
+    }
+    @include trailer(.5);
+  }
+
+  .group-main-content {
+    .field {
+      overflow: hidden;
+      ul {
+        margin-top: 0;
+      }
+    }
+    a.readmore-js-toggle {
+      @extend %readmore-js-link; // see _helpers.scss
+    }
+  }
+
+  .container[data-eq-state="mobile-nav"] & {
+    .group-main-content,
+    .group-sidebar {
+      padding: 0 2em;
+    }
+  }
+  #main[data-eq-state="320"] & {
+    .group-main-content,
+    .group-sidebar {
+      padding: 0 1em;
+    }
+  }
+
+  .group-sidebar {
+    @include trailer(2);
+
+    .field-label { // Sidebar headings
+      margin-bottom: .5em;
+      @include leader(1);
+    }
+    &.toggleable .field-label:not(.post-toggle) {
+      @include leader(0); // post-toggle added by js
+    }
+
+
+    .field-name-field-profile-image {
+      img {
+        display: none;
+        .container[data-eq-state="regular-nav"] & {
+          display: block;
+        }
+      }
+      .container[data-eq-state="regular-nav"] & {
+        margin: 0 auto;
+        @include circularImage(150px);
+        @include trailer(2);
+      }
+
+    }
+
+    .group-contact-info {
+      .container[data-eq-state="regular-nav"] & {
+        text-align: center;
+        h3 span {
+          @include leading-border(6px);
+          border-color: $gray-medium;
+        }
+      }
+    }
+
+    .field-name-field-areas-of-expertise {
+      float: left;
+      &.last {
+        @include trailer(1);
+      }
+      a {
+        @extend %pill; // see _helpers.scss
+      }
+    }
+    .field-name-field-ai-other-expertise {
+      @include adjust-font-size-to(16px);
+      @include adjust-leading-to(1);
+    }
+  }
+}

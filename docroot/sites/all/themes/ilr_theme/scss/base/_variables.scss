@@ -1,8 +1,21 @@
-$row-width: rem-calc(960);
+@import "compass/typography/vertical_rhythm";
+
+$page-max-width: 1600px;
+$section-max-width: 800px;
+$base-font-size: 19px;
+$base-line-height: 27px;
+$line-height-multiplier: $base-line-height / $base-font-size;
+@include establish-baseline;
+$row-width: rem-calc($page-max-width);
+$header-height: 190px;
+$header-height-small: 85px;
+$sidebar-nav-width: 270px;
+$search-height: 70px;
+$main-top-padding: 20px;
 // ==================================================
 // Modular Scale
 // ==================================================
-$ms-base: 14px, 960px;
+$ms-base: $base-font-size, $page-max-width;
 $ms-ratio: $golden;
 
 // Lists modular scale for debugging
@@ -18,44 +31,60 @@ $brand: #941e12;
 $brand-dark: #363636;
 $brand-light: #ACACAC;
 $cornell-red: #b31b1b;
+$darker-red: #92210f;
 $gold: #DED7BA;
-$gray-dark: #5c5350;
-$gray-medium: #8b8b85;
-$gray-light: #cfcdc4;
+$mustard: #e0ae4c;
+$gray-dark: #858585;
+$gray-medium: #c5c5c5;
+$gray-light: #e3e3e3;
+$subsite-heading: #404040;
+$nav-dark: #4F4D57;
+$nav-light: white;
 $selection: #212121;
 $highlight: #ffc;
 $cornell-tan: #f0eee4;
-$bg-body: $brand;
-$content-area: #fff;
+$bg-body: darken(white, 2%);
+
+$basic-page-color: #bbc44a;
+$promo-color: #bbc44a; // Same as basic page for now
+$event-color: #d44056;
+$spotlight-color: #00a79d;
+$student-portrait-color: #2099b7;
+$news-color: #f8bb03;
+$video-color: #6c7877;
 
 // ==================================================
 // Typography
 // ==================================================
-$font: 'Open Sans', sans-serif;
-$font-headers: 'Marcellus', serif;
+// Varialbes here and implementation in _typography.scss
+// should probably be updated to a map
+// See https://medium.com/p/8e51498c3713
+$font: "freight-sans-pro-n4", "freight-sans-pro", sans-serif;
+$font-headers: "freight-text-pro-n4", "freight-text-pro", serif;
 
 $h1-size: ms(3);
-$h2-size: ms(2);
-$h3-size: ms(1);
+$h2-size: 24px;
+$h3-size: 22px;
 $h4-size: ms(1);
-$h5-size: rem-calc(16);
+$h5-size: 16px;
 $h6-size: ms(0);
 
 $h2-sm-size: rem-calc(16);
 
-$h1-text: #212121;
-$h2-text: #212121;
-$h3-text: #212121;
-$h4-text: #212121;
-$h5-text: #212121;
-$h6-text: #212121;
+$header-color: #1b1b1b;
+$h1-text: $header-color;
+$h2-text: lighten($header-color, 5%);
+$h3-text: lighten($header-color, 2.5%);
+$h4-text: $header-color;
+$h5-text: $header-color;
+$h6-text: $header-color;
 
-$h1-link: #212121;
-$h2-link: #212121;
-$h3-link: #212121;
-$h4-link: #212121;
-$h5-link: #212121;
-$h6-link: #212121;
+$h1-link: $h1-text;
+$h2-link: $h2-text;
+$h3-link: $h3-text;
+$h4-link: $h4-text;
+$h5-link: $h5-text;
+$h6-link: $h6-text;
 
 $h1-link-hover: #212121;
 $h2-link-hover: #212121;
@@ -64,15 +93,16 @@ $h4-link-hover: #212121;
 $h5-link-hover: #212121;
 $h6-link-hover: #212121;
 
-$p-text: #212121;
+$p-text: #2f2f2f;
 $p-size: ms(0);
 $p-sm-size: $mod-01;
 
-$link: darken($brand, 5%);
-$link-hover: $brand;
+$link: $brand;
+$link-hover: lighten($brand, 5%);
 $nav-color: #2D4063;
+$nav-size: 1.2em;
 
-$rule: #cfcdc4;
+$rule: lighten($gray-light, 2%);
 
 $blockquote: #444;
 
@@ -82,14 +112,6 @@ $table-bg-alt: #e7e6e6;
 $table-bg-hover: darken($table-bg, 10%);
 $td-text: #444;
 $th-text: #212121;
-
-
-// ==================================================
-// Buttons
-// ==================================================
-$button-bg: #eee;
-$button-bg-focus: #e5e5e5;
-
 
 // ==================================================
 // Forms

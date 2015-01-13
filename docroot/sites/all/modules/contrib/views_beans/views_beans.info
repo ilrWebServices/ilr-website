@@ -1,0 +1,8 @@
+name = Views Beans
+description = Exposes Views Content Panes as Beans
+dependencies[] = bean
+dependencies[] = views_content
+package = Views
+core = 7.x
+files[] = views_beans.module
+files[] = plugins/bean/bean_view.inc

@@ -1,0 +1,26 @@
+#breadcrumb {
+  .breadcrumb {
+    padding-top: 14px;
+    @include adjust-font-size-to(14px);
+    //font-size: ms(-1);
+    text-transform: uppercase;
+
+    span {
+      padding: 0 .5em;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+  // Hide breadcrumbs on mobile version
+  #main:not([data-eq-state="768"]) & {
+    [data-eq-state="mobile-nav"] & {
+      display: none;
+    }
+  }
+  body.front &,
+  body.subsite-front & {
+    display: none;
+  }
+}

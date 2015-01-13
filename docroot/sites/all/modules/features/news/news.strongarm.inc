@@ -31,6 +31,15 @@ function news_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'mega_menu_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'basic_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'reference_field' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -38,7 +47,10 @@ function news_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '4',
+          'weight' => '6',
+        ),
+        'redirect' => array(
+          'weight' => '10',
         ),
       ),
       'display' => array(),
@@ -94,7 +106,7 @@ function news_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_news_item_pattern';
-  $strongarm->value = 'news/[node:title]';
+  $strongarm->value = 'about-ilr/news/[node:title]';
   $export['pathauto_node_news_item_pattern'] = $strongarm;
 
   return $export;

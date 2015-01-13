@@ -1,50 +1,44 @@
-<div id="page-wrapper">
-  <div id="page">
-    <div class="container">
-      <header role="banner">
-
-          <?php if ($logo): ?>
-            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-              <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-            </a>
-          <?php endif; ?>
-
-          <?php print render($page['header']); ?>
-
-      </header> <!-- / header -->
-
-      <?php /* TODO: Consider replacing this with a fully expanded suckerfish menu */ ?>
-      <?php if ($main_menu): ?>
-        <nav role="navigation" class="main">
-          <?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('id' => 'main-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Main menu'))); ?>
-        </nav> <!-- / nav -->
-      <?php endif; ?>
-
-      <div id="banner" class="clearfix">
-      <?php if ($is_front): ?>
-          <div class="img"><img src="<?php print base_path() . drupal_get_path('theme', 'ilr_theme') . '/images/banner-about.jpg'; ?>"/></div>
-      <?php else: ?>
-          <div id="campaign">
-            <img src="<?php print base_path() . drupal_get_path('theme', 'ilr_theme') . '/images/banner-default.jpg'; ?>"/>
-          </div><!-- end campaign -->
-        </div> <!-- /.banner -->
-      <?php endif; ?>
-
+<header role="banner" <?php print render($page['nav_trigger_pts']); ?>>
+  <div class="container">
+    <div class="logo-wrapper">
+      <a class='cornell' href="http://cornell.edu"></a>
+      <a class="ilr" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+        <?php print '<img src="/' . drupal_get_path('theme', 'ilr_theme') . '/images/logo.svg" alt="Cornell University | ILR School" title="Cornell University | ILR School">';?>
+      </a>
+    </div>
+    <div class='buttons'>
+      <div class="jpanel-trigger-container">
+        <a href="#" class="jpanel-trigger"></a>
+      </div>
+      <div class="search-button">
+        <a href="#"></a>
+      </div>
+    </div>
+    <div id="search-form">
+      <form action="/search" method="get" id="cu-search-form" accept-charset="UTF-8">
+        <input id="search-form-query" type="text" name="s" placeholder="Search" value="" size="20" maxlength="128" class="form-text" />
+      </form>
+    </div>
+  </div>
+  <div id="header-region">
+    <?php print render($page['header']); ?>
+  </div>
+</header>
+<div id="page">
+  <div class="container" <?php print render($page['nav_trigger_pts']); ?>>
+    <div id="main" role="main" <?php print render($page['page_width_eq_points']); ?>>
       <?php print $messages; ?>
-      
-      <!-- highlighted location -->
-      <!-- Add subsite nav region here -->
-
-      <div id="main" class="clearfix" role="main">
-
+      <?php if ($page['highlighted']): ?>
+      <div id="highlighted">
+        <div class="section">
+        <?php print render($page['highlighted']); ?>
+        </div>
+      </div><?php endif; ?>
+      <div id="content" class="column">
         <?php if ($breadcrumb): ?>
-          <div id="breadcrumb"><?php print $breadcrumb; ?></div>
+        <div id="breadcrumb"><?php print $breadcrumb; ?></div>
         <?php endif; ?>
-
-        <div id="content" class="column"><div class="section">
-
-          <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
-
+        <div class="section">
           <a id="main-content"></a>
           <?php print render($title_prefix); ?>
           <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
@@ -54,32 +48,35 @@
           <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
           <?php print render($page['content']); ?>
           <?php print $feed_icons; ?>
-        </div></div> <!-- /.section, /#content -->
+        </div>
+      </div> <!-- /.section, /#content -->
 
-        <?php if ($page['sidebar_first']): ?>
-          <div id="sidebar-first" class="column sidebar"><div class="section">
-            <?php print render($page['sidebar_first']); ?>
-          </div></div> <!-- /.section, /#sidebar-first -->
-        <?php endif; ?>
+      <div id="sidebar-first" class="column sidebar">
+        <div class="section">
+          <?php print render($page['sidebar_first']); ?>
+      </div></div> <!-- /.section, /#sidebar-first -->
 
-        <?php if ($page['sidebar_second']): ?>
-          <div id="sidebar-second" class="column sidebar"><div class="section">
-            <?php //include 'temp-sidebar.php'; ?>
-            <?php print render($page['sidebar_second']); ?>
-          </div></div> <!-- /.section, /#sidebar-second -->
-        <?php endif; ?>
+      <?php if ($page['sidebar_second']): ?>
+        <div id="sidebar-second" class="column sidebar">
+          <div class="section">
+          <?php print render($page['sidebar_second']); ?>
+          </div>
+        </div> <!-- /.section, /#sidebar-second -->
+      <?php endif; ?>
 
-      </div> <!-- /#main -->
-    </div><!-- /.container -->
-    <footer role="contentinfo">
-      <div class="section">
-        <?php if ($secondary_menu): ?>
-          <nav role="navigation" class="secondary">
-            <?php print theme('links__system_secondary_menu', array('links' => $secondary_menu, 'attributes' => array('id' => 'secondary-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Secondary menu'))); ?>
-          </nav> <!-- / nav -->
-        <?php endif; ?>
-        <?php print render($page['footer']); ?>
-      </div>  <!-- /.section -->
-    </footer> <!-- / footer -->
-  </div><!-- /#page -->
-</div> <!-- /#page-wrapper -->
+      <?php if ($page['content_bottom']): ?>
+        <div id="content-bottom" <?php print render($page['page_width_eq_points']); ?>>
+          <div class="section">
+          <?php print render($page['content_bottom']); ?>
+          </div>
+        </div> <!-- /.section, /#content-bottom -->
+      <?php endif; ?>
+    </div> <!-- /#main -->
+  </div><!-- /.container -->
+</div><!-- /#page -->
+<footer role="contentinfo">
+  <div class="container" <?php print render($page['page_width_eq_points']); ?>>
+    <?php print render($page['footer']); ?>
+    <div class="copyright"><p>&copy; <?php echo date('Y')?> Cornell University | ILR School</p></div>
+  </div>  <!-- /.container -->
+</footer> <!-- / footer -->

@@ -1,0 +1,30 @@
+body.front {
+  #content .field-name-body {
+    @extend %homepage-text;
+    .block-bean {
+      > h2 { display: none; }
+    }
+  }
+}
+
+%homepage-text {
+  @include padding-leader(2);
+  @include trailer(2);
+
+  .tower {
+    clear: both;
+    @extend %icon-tower;
+    @include adjust-font-size-to(40px);
+    @include adjust-leading-to(1.5);
+    color: $gray-medium;
+  }
+
+  p {
+    margin: 0 auto;
+    text-align: center;
+    font-family: $font-headers;
+    @include adjust-font-size-to(30px);
+    @include adjust-leading-to(1);
+    max-width: $section-max-width;
+  }
+}

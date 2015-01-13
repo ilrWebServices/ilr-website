@@ -1,0 +1,36 @@
+<?php
+/**
+ * @file
+ * Install hooks for youtube_playlists Feature
+ */
+
+/**
+ * Implements hook_install().
+ */
+function youtube_playlists_install() {
+  _youtube_playlists_set_import_url();
+  // Set URL for XML of Video Playlist assignments
+  variable_set('youtube_playlists_assignments_url', 'http://www.ilr.cornell.edu/codelib/media/youtube/getvideosinplaylists.cfm');
+  // For testing purposes this can be changed to local file via drush
+  // drush vset youtube_playlists_assignments_url 'http://www.ilr-website.dev/sites/default/files/video_playlists.xml'
+}
+
+/**
+ * Update Playlist Feeds URL & Deletes Playlist type
+ * Implements hook_update_N().
+ */
+function youtube_playlists_update_7001(&$sandbox) {
+  _youtube_playlists_set_import_url();
+  // Playlists are stored as tag terms not as nodes.
+  node_type_delete('youtube_playlist');
+}
+function _youtube_playlists_set_import_url() {
+  // Set Feed URL programmatically as this can't be export to Features.
+  $source = feeds_source('youtube_playlist_tag_importer');
+  $source->addConfig(array(
+    'FeedsHTTPFetcher' => array(
+      'source' => 'http://www.ilr.cornell.edu/codelib/media/youtube/getplaylists.cfm',
+    ),
+  ));
+  $source->save();
+}

@@ -1,0 +1,38 @@
+%two-cols-no-nav {
+  #main {
+    #content {
+      @include grid-span(12);
+      @include add-gutter(1);
+      .section {
+        max-width: 100%;
+      }
+    }
+
+    .group-highlighted {
+      @include clearfix;
+      @include layout(3 9) {
+        @include grid-span(2);
+      }
+
+
+      .field-type-image,
+      .field-group-html-element {
+        @extend %two-column;
+      }
+    }
+    .group-main-content {
+      @include grid-span(9,4);
+      .field {
+        max-width: $section-max-width;
+      }
+    }
+    .group-sidebar {
+      @include grid-span(3);
+      padding: 0 1em;
+    }
+
+    #sidebar-first {
+      display: none !important; //Override
+    }
+  }
+}

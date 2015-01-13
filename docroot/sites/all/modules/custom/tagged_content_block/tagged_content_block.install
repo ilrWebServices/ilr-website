@@ -1,7 +1,14 @@
 <?php
 /**
- * Implements hook_uninstall().
+ * Implements hook_install().
  */
-function tagged_content_block_uninstall() {
-  variable_del('tagged_content_block_enabled_bundles');
+function tagged_content_block_install() {
+  tagged_content_block_update_7001();
+}
+
+/**
+ * Assigns content types for tagged blocks
+ */
+function tagged_content_block_update_7001() {
+  _tagged_content_block_enable_default_bundles();
 }

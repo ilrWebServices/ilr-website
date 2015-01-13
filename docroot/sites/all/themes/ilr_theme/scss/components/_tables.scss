@@ -1,0 +1,25 @@
+table.views-table {
+  border: none;
+
+  thead tr {
+    background: white;
+    border-top: 1px solid $gray-light;
+    border-bottom: 1px solid $gray-light;
+    th {
+      border: none;
+      background: none;
+    }
+  }
+  tr {
+    border: none;
+    background: darken($bg-body, 2%);
+
+    td {
+      border: none;
+      background: none;
+    }
+    &.odd td {
+      background: white;
+    }
+  }
+}

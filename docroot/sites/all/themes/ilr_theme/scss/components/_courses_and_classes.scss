@@ -1,0 +1,78 @@
+.node-type-sdc-course {
+  .field-name-field-catalog-prefix {
+    @include adjust-font-size-to($h2-size);
+    font-family: $font-headers;
+    color: $h2-text;
+  }
+  article {
+    .field-name-body {
+      @include leader(2);
+    }
+    form {
+      @include trailer(2);
+    }
+    article {
+      h2 {
+       margin-bottom: 0;
+      }
+      .field-name-body {
+        @include leader(0);
+      }
+    }
+  }
+
+}
+
+.node-type-sdc-class {
+  .field:not(.field-name-field-price) {
+    @include trailer(1);
+  }
+  .field-label {
+    margin-bottom: 0;
+  }
+  form {
+    @include trailer(1);
+  }
+  article article {
+    margin-left: 1em;
+    h2 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.view-sdc-course-listing {
+  h3 {
+    @include padding-leader(1);
+    margin: 0;
+    &:first-of-type {
+      padding: 0;
+    }
+  }
+  .views-field-field-on-demand {
+    float: right;
+    margin-right: 1em;
+  }
+}
+
+.view-sdc-class-calendar {
+  h3 {
+    margin-bottom: .5em;
+  }
+  li {
+    background: none;
+    .views-field-rendered-entity {
+      @include trailer(1);
+    }
+  }
+  div.calendar-calendar {
+    max-width: 400px;
+
+    td {
+      text-align: center;
+    }
+  }
+  .view-footer {
+    @include padding-leader(1);
+  }
+}

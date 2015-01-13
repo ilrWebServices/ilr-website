@@ -24,6 +24,11 @@ if [ "${#ENV}" -eq "0" ]; then
 fi
 
 if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
+  # We are now locking Stage down to the master branch
+  if [ "$ENV" = "test" ]; then
+    branch_name='master'
+  fi
+
   git push -f ac $branch_name
 
   echo "Pushing $branch_name to acquia cloud $ENV"
@@ -33,13 +38,21 @@ if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
 
   # Upload to server
   echo "Uploading styles to server"
-  scp -r docroot/sites/all/themes/ilr_theme/css/style.css ilr@srv-2136.devcloud.hosting.acquia.com:~/$ENV/livedev/docroot/sites/all/themes/ilr_theme/css/style.css
+  scp -r docroot/sites/all/themes/ilr_theme/css ilr@srv-2136.devcloud.hosting.acquia.com:~/$ENV/livedev/docroot/sites/all/themes/ilr_theme
 
   # Pull the updates from the branch to livedev and clear cache
   echo "Deploying $branch_name to livedev on Acquia"
-  ssh ilr@srv-2136.devcloud.hosting.acquia.com "cd ~/$ENV/livedev; git checkout .; git pull; git checkout $branch_name; cd docroot; drush @sites cc all -y; exit;"
+  ssh ilr@srv-2136.devcloud.hosting.acquia.com "cd ~/$ENV/livedev; git checkout .; git pull; git checkout $branch_name; git pull; cd docroot; exit;"
+
+  echo "Reverting all features on $ENV"
+  cd docroot
+  drush @ilr.ilr.$ENV fr-all -y
+
+  echo "Running database updates on $ENV"
+  drush @ilr.ilr.$ENV updb -y # also clears cache
 
   echo "Deployment complete"
+
   exit
 fi
 

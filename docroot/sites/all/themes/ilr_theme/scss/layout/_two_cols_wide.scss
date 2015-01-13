@@ -1,0 +1,24 @@
+%two-cols-wide {
+  @include add-grid($sidebar-nav-width 9);
+  #main {
+    #content {
+      @include grid-span(1, 2);
+
+      .section {
+        max-width: 100%;
+        @include context('#main','#main[data-eq-state="768"]') {
+          article {
+            @extend %two-column;
+          }
+        }
+        @include context('#main','#main[data-eq-state="widescreen"]') {
+          article {
+            @extend %three-column;
+          }
+        }
+      }
+    }
+  }
+
+}
+

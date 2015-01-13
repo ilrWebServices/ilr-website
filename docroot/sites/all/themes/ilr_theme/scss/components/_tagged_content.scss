@@ -1,0 +1,19 @@
+body {
+  .tagged-content,
+  .event-block {
+    > h2 {
+      @include leader(1);
+      @include trailer(1);
+      font-family: $font;
+      text-transform: uppercase;
+      color: #4a4a4a;
+      font-weight: bold;
+    }
+
+    @extend %bean-base;
+
+    //Override content-types here, eg:
+    &.news {
+    }
+  }
+}

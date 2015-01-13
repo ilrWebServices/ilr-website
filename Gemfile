@@ -1,9 +1,12 @@
 source "https://rubygems.org"
 
-gem 'guard-sass'
+gem 'guard-compass'
 gem 'compass'
 gem 'modular-scale', ">= 2.0.0.alpha5"
 gem 'guard-livereload'
+gem 'singularitygs', '~> 1.4'
+gem 'singularity-extras', '~> 1.0'
+gem 'autoprefixer-rails'
 
 # For Windows machines, see https://github.com/guard/listen#on-windows
 require 'rbconfig'

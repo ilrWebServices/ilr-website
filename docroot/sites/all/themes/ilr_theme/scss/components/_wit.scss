@@ -1,0 +1,9 @@
+.node-wit-article {
+  .reference {
+    @include leader(1);
+    @include trailing-border();
+    @include trailer(1);
+    border-color: $gray-light;
+    p { margin: 0; }
+  }
+}

@@ -1,0 +1,49 @@
+footer {
+  @include leader(2);
+  padding: 3em 0 1em 15px;
+  background: $brand-dark;
+  color: $brand-light;
+  position: relative;
+  z-index: 10;
+
+  .container {
+    position: relative;
+    max-width: $page-max-width * .66;
+  }
+
+  .region-footer {
+    @include clearfix;
+    padding-bottom: 3em;
+  }
+
+  a, a:visited {
+    color: $brand-light;
+    border-bottom: none;
+    &:hover {
+      color: lighten($brand-light, 10%);
+      border-bottom: 1px solid lighten($brand-dark, 10%);
+    }
+  }
+
+  .copyright p {
+    margin: 0;
+    padding-bottom: 5px; // helps align it with the social footer
+    color: $brand-light;
+  }
+
+  .google-translate {
+    position: absolute;
+    right: 1em;
+    top: -2em;
+    background: url(../images/flag-sprite.png) no-repeat;
+    @include clearfix;
+    input {
+      width: 18px;
+      height: 12px;
+      overflow: hidden;
+      display: inline-block;
+      margin-right: 1px;
+      float: left;
+    }
+  }
+}

@@ -12,6 +12,9 @@ function drupal_streamline_dev_enable() {
 
   // Set local error reporting
   variable_set('error_level', ERROR_REPORTING_DISPLAY_ALL);
+
+  // Set tmp directory for Vagrant
+  variable_set('file_temporary_path','/tmp');
 }
 
 /**

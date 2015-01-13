@@ -1,0 +1,15 @@
+name = Readmore.js
+description = Let's you reduce certain elements to a show/hide toggle if they're more than a particular height using the Readmore.js jQuery plugin.
+core = 7.x
+
+dependencies[] = libraries
+dependencies[] = jquery_update (>=7.x-2.3)
+
+package = Other
+
+configure = admin/config/user-interface/readmorejs
+
+; Modified from https://www.drupal.org/project/readmorejs
+; Moved to custom b/c not widely used or supported,
+; and needed to patch
+

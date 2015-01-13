@@ -1,0 +1,233 @@
+<?php
+/**
+ * @file
+ * Code for the Youtube Videos feature.
+ */
+
+include_once 'youtube_videos.features.inc';
+
+/**
+ * Implements hook_preprocess_hook
+ * Makes title link open fancybox
+ * Removes readmore links
+ */
+function youtube_videos_preprocess_node(&$variables) {
+  if ($variables['type'] == 'youtube_video') {
+    $video_id = $variables['field_youtube_video'][0]['video_id'];
+    $href = _youtube_videos_embed_url($video_id);
+    $variables['title_attributes_array'] = array(
+      'class' => 'fancybox',
+      'data-fancybox-type' => 'iframe',
+      'href' => $href,
+    );
+    $variables['node_url'] = $href;
+
+    unset($variables['content']['links']['node']['#links']['node-readmore']);
+
+  }
+}
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function youtube_videos_node_view_alter(&$build) {
+  if ($build['#bundle'] == 'youtube_video') {
+    _youtube_videos_remove_first_line_link($build);
+  }
+}
+
+/**
+ * Remove url from beginning of Youtube
+ * @param $build
+ */
+function _youtube_videos_remove_first_line_link(&$build) {
+  if (!empty($build['body'])) {
+    $body_markup = $build['body'][0]['#markup'];
+    $lines = preg_split('/$\R?^/m', $body_markup);
+    // Get first line without tags or surrounding spaces.
+    $first_line = trim(strip_tags($lines[0]));
+    // Check for link in first line starts with a url and doesn't have any other words.
+    if (stripos($first_line, 'http://') === 0 && stripos($first_line, ' ') === FALSE) {
+      array_shift($lines);
+      $build['body'][0]['#markup'] = implode('', $lines);
+    }
+  }
+}
+
+/**
+ * Gets the nid for youtube Video Id
+ * @param $video_id
+ * @return int | NULL
+ */
+function youtube_videos_get_nid_from_video_id($video_id) {
+  $video_nids = & drupal_static(__FUNCTION__);
+  if (!isset($video_nids)) {
+    $video_nids = array();
+  }
+  else {
+    if (isset($video_nids[$video_id])) {
+      return $video_nids[$video_id];
+    }
+  }
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'youtube_video')
+    ->fieldCondition('field_youtube_video', 'video_id', $video_id);
+  $result = $query->execute();
+  if (isset($result['node'])) {
+    $video_nids[$video_id] = array_shift(array_keys($result['node']));
+  }
+  else {
+    $video_nids[$video_id] = NULL;
+  }
+  return $video_nids[$video_id];
+}
+
+/**
+ * Implements hook_feeds_presave().
+ *
+ * Don't let tags be wiped out by Youtube update.
+ */
+function youtube_videos_feeds_presave($source, $entity, $item, $entity_id) {
+  if ($source->importer->id == 'youtube_importer') {
+    $node_wrapper = entity_metadata_wrapper('node', $entity);
+    $new_tids = $node_wrapper->field_tags->raw();
+
+    if (empty($entity->is_new)) {
+      // If the Node isn't new then we have to add pack any tags that were removed.
+      // This is the only way to ensure that tags added on Drupal aren't erased on Youtube update.
+      // Must load unchanged or entity_load will bring back working copy by reference.
+      $current_node = entity_load_unchanged('node', $entity->nid);
+      $current_node_wrapper = entity_metadata_wrapper('node', $current_node);
+      $current_tids = $current_node_wrapper->field_tags->raw();
+      // Add old tids to new tids.
+      $new_tids = array_unique(array_merge($new_tids, $current_tids));
+      $node_wrapper->field_tags->set($new_tids);
+    }
+    $seconds = $node_wrapper->field_duration->value();
+    if ($seconds > 60 * 60) {
+      $formatted_duration = gmdate("G:i:s", $seconds);
+    }
+    else {
+      $formatted_duration = gmdate("i:s", $seconds);
+    }
+    $node_wrapper->field_duration->set($formatted_duration);
+
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * For form youtube_video_node_form
+ * Remove access to most fields for Youtube nodes that were imported from a feed.
+ *
+ */
+function youtube_videos_form_youtube_video_node_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['nid']['#value'])) {
+    $node = $form['#node'];
+    // Determine if this node was imported via Feeds.
+    $from_feed = !(feeds_get_feed_nid($node->nid, 'node') === FALSE);
+    if ($from_feed) {
+      $no_access_fields = array(
+        'title',
+        'body',
+        'field_youtube_video'
+      );
+      foreach ($no_access_fields as $field_name) {
+        if (isset($form[$field_name])) {
+          $form[$field_name]['#disabled'] = TRUE;
+          $form[$field_name]['#description'] = t('This field is imported from Youtube and cannot be changed.');
+        }
+      }
+    }
+  }
+}
+/**
+ * Implements hook_field_formatter_info().
+ *
+ * Provide Youtube Fancybox formatter for textfields.
+ */
+function youtube_videos_field_formatter_info() {
+  $formatters = array(
+    // This formatter displays your youtube video.
+    'youtube_videos_fancybox' => array(
+      'label' => t('YouTube Fancybox Thumbnail'),
+      'field types' => array('youtube'),
+    ),
+    'youtube_videos_fancybox_link' => array(
+      'label' => t('YouTube Fancybox Link'),
+      'field types' => array('youtube'),
+    )
+  );
+
+  return $formatters;
+}
+/**
+ * Implements hook_field_formatter_view().
+ *
+ * View for Youtube Fancybox Formatter
+ */
+function youtube_videos_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, &$items, $display) {
+  $element = array();
+  switch ($display['type']) {
+    case 'youtube_videos_fancybox':
+    case 'youtube_videos_fancybox_link':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#theme' => $display['type'],
+          '#video_id' => $item['video_id'],
+          '#link_text' => entity_label($entity_type, $entity),
+        );
+      }
+      break;
+  }
+  return $element;
+}
+/**
+ * Implements hook_theme().
+ */
+function youtube_videos_theme() {
+  return array(
+    'youtube_videos_fancybox' => array(
+      'variables' => array(
+        'video_id' => NULL,
+      ),
+      'file' => 'youtube_videos.theme.inc',
+    ),
+    'youtube_videos_fancybox_link' => array(
+      'variables' => array(
+        'video_id' => NULL,
+        'link_text' => ''
+      ),
+      'file' => 'youtube_videos.theme.inc',
+    ),
+  );
+}
+
+/**
+ * Utility Function to create Youtube embed url.
+ * @param $video_id
+ * @param bool $include_query
+ *  If this URL will be passed to the l() function then the query string must be left off.
+ *  It must include in the 'query' option.
+ * @return string
+ */
+function _youtube_videos_embed_url($video_id, $include_query = TRUE) {
+  // Leave protocol off to avoid mixed active content issues
+  return "//www.youtube.com/embed/{$video_id}" . ($include_query ? "?autoplay=1&rel=0" : '');
+}
+
+/**
+ * Implements hook_file_default_displays_alter().
+ */
+function youtube_videos_file_default_displays_alter(&$file_displays) {
+  if (isset($file_displays['video__default__media_youtube_video'])) {
+    $file_displays['video__default__media_youtube_video']->settings['rel'] = 0;
+    $file_displays['video__default__media_youtube_video']->settings['width'] = '100%';
+    $file_displays['video__default__media_youtube_video']->settings['height'] = '100%';
+
+    // Move it up to the top
+    $file_displays['video__default__media_youtube_video']->weight = -100;
+  }
+}

@@ -1,42 +1,68 @@
 // Compass
 @import "compass/css3";
+@import "compass/typography/lists";
+@import "compass/utilities/general/clearfix";
 
-//Modular Scale
+// //Modular Scale
 @import "modular-scale";
 
-// Zurb Foundation
-@import "foundation/grid";
+// Grid
+@import "singularitygs";
+@import "singularity-extras";
+@import "breakpoint";
+@import "vendor/eq";
+
+//Buttons
+//@import "vendor/buttons/buttons";
 
 // Base
-//@import "base/reset"; // Choose reset or normalize for the theme; DO NOT use both
+@import "base/mixins";
 @import "base/normalize";
 @import "base/variables";
-@import "base/responsive-mixins";
 @import "base/base";
-@import "base/mixins";
-@import "base/forms";
+@import "base/fonts";
 @import "base/typography";
 @import "base/helpers";
 
-// Admin
-@import "pages/admin";
+// Components
+@import "components/404";
+@import "components/bean_base";
+@import "components/block_collection";
+@import "components/book_of_the_month";
+@import "components/breadcrumbs";
+@import "components/courses_and_classes";
+@import "components/footer";
+@import "components/form_elements";
+@import "components/header";
+@import "components/homepage";
+@import "components/icons";
+@import "components/main_image";
+@import "components/manual_content_listing";
+@import "components/media";
+@import "components/mega_menu";
+@import "components/microfilm_fiche";
+@import "components/neutral_page";
+@import "components/news_article";
+@import "components/people_profile";
+@import "components/people_profile_thumb";
+@import "components/search";
+@import "components/social";
+@import "components/student_portrait";
+@import "components/subnav";
+@import "components/subsite_header";
+@import "components/tables";
+@import "components/tagged_content";
+@import "components/view_modes";
+@import "components/wit";
 
-// Common
-@import "common/header";
-@import "common/nav";
-@import "common/footer";
-@import "common/common";
-@import "common/components";
-
-// Pages
-@import "pages/404";
-@import "pages/home";
-
-// Content types
-@import "content_types/base";
-@import "content_types/basic_page";
-@import "content_types/news";
-@import "content_types/neutral";
-
-// Vendor
-// Add vendor files
+// Layout
+@import "layout/layouts";
+@import "layout/base";
+@import "layout/homepage-layout";
+@import "layout/one_column";
+@import "layout/people_landing_pages";
+@import "layout/subsite_homepages";
+@import "layout/two_cols_no_nav";
+@import "layout/two-cols-with-sidebar";
+@import "layout/two_cols_wide";
+@import "layout/triptych";

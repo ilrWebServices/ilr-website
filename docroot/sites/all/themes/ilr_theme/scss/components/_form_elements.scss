@@ -1,0 +1,91 @@
+form {
+  fieldset {
+    margin-bottom: 1em;
+  }
+
+  // Focus for file, radio, and checkbox
+  input[type="file"]:focus,
+  input[type="radio"]:focus,
+  input[type="checkbox"]:focus {
+    @include tab-focus();
+  }
+  input[type='submit'] {
+    margin-right: 1em;
+  }
+
+  article:before,
+  article:after {
+    clear: none;
+  }
+
+}
+#ilr-sdc-listings-class-reg-form {
+  @include padding-leader(1);
+  div.form-type-radio {
+    float: left;
+    margin: 0 .5em 0 0;
+  }
+  article.clearfix {
+    margin-left: 1.5em;
+    @include trailer(2);
+
+    h3 {
+      margin: 0;
+      font-weight: 300;
+      @include leader(.5);
+    }
+
+    .field-name-field-faculty {
+      margin-left: 1em;
+    }
+
+    .links {
+      @include padding-leader(.5);
+    }
+
+    &:before,
+    &:after {
+      clear: none;
+    }
+  }
+}
+
+.block-entityform-block {
+  clear: both;
+}
+
+.entity-entityform {
+  .submitted {
+    display: none;
+  }
+  .field-label {
+    @include leader(1);
+    margin-bottom: 0;
+  }
+}
+
+// Hides the entityform titles when rendered to pages
+#content .block-entityform-block > h2,
+#content .entity-entityform-type > h2 {
+  @extend .hidden;
+}
+
+// Hide the placeholder for new books select menu
+#cul-new-books-select-form-placeholder {
+  display: none;
+}
+
+.chosen-container ul li{
+  background: none;
+}
+
+.entityform td.field-multiple-drag {
+  display: none;
+}
+
+.filter-wrapper.form-wrapper {
+  .filter-help p {
+    display: none;
+  }
+}
+

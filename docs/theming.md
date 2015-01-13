@@ -1,0 +1,41 @@
+# Theming
+
+This project is configured with guard to watch for changes to the scss files and compile them, as well as automatic style and js updates using an open source version of [LiveReload](http://livereload.com/).
+
+### Windows Sass/Livereload PreReqs
+
+  1. [Ruby installer](http://rubyinstaller.org/)
+  2. Find the appropriate [DEVELOPMENT KIT](http://rubyinstaller.org/downloads/), and follow the [installation instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit)
+
+### General Requirements
+
+  - Ruby 1.9.3+ (2.x recommended)
+  - [Bundler](http://bundler.io/)
+  - run `bundle install` once from the project root to download guard, sass, and livereload
+  - Enable the drupal_streamline_dev module with `cd docroot && drush en drupal_streamline_dev -y`
+
+### Starting/Stopping Guard for Theming
+
+  - Go to the project root of this repository
+  - run `bundle exec guard -i`
+  - Refresh your browser, and you should see `browser connected` in your CLI (exit Guard and start again if browser doesn't connect)
+  - Exit guard with `^c` (control + c)
+
+While running Guard, edited Sass files will automagically compile to CSS and reload in the browser (although you may need to reload the browser once to connect to the livereload server). To stop the guard and livereload processes, hit `^c` (control + c).
+
+### Simplifying CSS compilation with git hooks
+The css folder has been removed from the repository so that CSS files can be managed during deployment. However, this has the side-effect that switching branches (or initial site set-up) does not ensure the correct css file is loaded. To remedy this, you should:
+
+  1. Create a file called `post-checkout` in the .git/hooks folder
+  2. Add the following lines to that file
+
+        #! /bin/sh
+
+        # Start from the repository root.
+        cd ./$(git rev-parse --show-cdup)
+
+        compass compile
+
+  3. From the command line, type `chmod +x [path/to/post-checkout]`
+
+Assuming that you have compass installed on your system, this will recompile the stylesheet every time you switch branches.

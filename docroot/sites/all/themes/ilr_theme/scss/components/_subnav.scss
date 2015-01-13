@@ -1,0 +1,194 @@
+// Todo: Clean up this file
+
+%current-menu-item {
+  font-weight: 600;
+  color: $brand;
+}
+
+.block-menu-block { // All nav menus
+  clear: both;
+  h2 { @extend .hidden; }
+}
+
+.jPanelMenu-panel {
+  @include box-shadow(0 10px 10px 0px rgba(black, .5));
+}
+
+#jPanelMenu-menu {
+  margin-top: $header-height-small;
+
+  .admin-menu & {
+    margin-top: $header-height-small + 29px;
+  }
+}
+
+.sidebar, #jPanelMenu-menu {
+  overflow: hidden;
+  position: relative;
+}
+
+.menu-block-ilr-subnav {
+  opacity: 0;
+}
+
+#sidebar-first {
+  //position: fixed;
+  .sticky & {
+    //top: 170px;
+  }
+}
+.sidebar #block-menu-block-ilr-subnav {
+  @extend .hidden;
+
+  [data-eq-state="regular-nav"] & {
+    @extend .visible;
+  }
+}
+
+.menu-block-ilr-subnav ul.menu {
+  visibility: hidden;
+  .front[data-menu-position="open"] &,
+  .subsite-front[data-menu-position="open"] & {
+    &:first-child {
+      visibility: visible;
+    }
+  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: block;
+  background: $bg-body;
+  min-height: 500px;
+
+  li {
+    list-style: none;
+    background-image: none;
+    margin: 0;
+    padding: 0 !important;
+    font-family: freight-sans-pro;
+    clear: both;
+    min-height: 100%;
+    display: flex;
+
+    #jPanelMenu-menu & {
+      background: $nav-dark;
+    }
+
+    a {
+      color: $gray-dark;
+      border-bottom: none;
+      #jPanelMenu-menu & {
+        color: lighten($gray-medium, 5%);
+      }
+      display: block;
+      padding: 1em 1em 1em 15px;
+      float: left;
+      width: 100%;
+      @include adjust-font-size-to(16px);
+
+      &:hover {
+        color: $brand;
+        #jPanelMenu-menu & {
+          color: white;
+        }
+        text-decoration: none;
+        background: darken($nav-light, 5%);
+
+        #jPanelMenu-menu & {
+         background: lighten($nav-dark, 5%);
+        }
+
+      }
+      &.active, &.active-trail {
+        color: $brand;
+        #jPanelMenu-menu & {
+          color: white;
+        }
+      }
+      &.active {
+        @extend %current-menu-item;
+      }
+    }
+    &.expanded > a {
+      width: 80%;
+      &.next-menu {
+        width: 20%;
+        padding: 0;
+        z-index: 1;
+        position: relative;
+        text-align: center;
+        @extend %icon-after-arrow-right-thin;
+        color: $gray-medium;
+        &::after {
+          color: lighten($gray-medium, 5%);
+          font-size: 14px;
+          position: absolute;
+          top: 50%;
+          margin: -12px 0 0 -3px;
+        }
+        #jPanelMenu-menu & {
+          border-left: 1px solid lighten($nav-dark, 15%);
+        }
+      }
+    }
+    // @todo: Come back to this for active page added as section
+    // &.active ul.menu li.section:nth-of-type(1) {
+    //   a {
+    //     @extend %current-menu-item;
+    //   }
+    // }
+  }
+
+  li.back {
+    padding: 0;
+    a.prev-menu {
+      color: $gray-medium;
+      text-transform: uppercase;
+      width: 100%;
+      display: flex;
+      justify-content: left;
+      font-weight: bold;
+      @include adjust-font-size-to(14px);
+      span {
+        font-size: 12px;
+        @extend %icon-arrow-left;
+        margin-right: .5em;
+        margin-top: 1px;
+      }
+    }
+  }
+
+  li ul.menu {
+    position: absolute;
+    right: -100%;
+    top: 0;
+    z-index: 2;
+
+    .sidebar & {
+      @include box-shadow(rgba(black, .3) 1px 1px 5px);
+    }
+  }
+
+  & > li {
+    @include clearfix;
+    border-bottom: 1px solid darken($nav-light, 10%);
+    &.back {
+      //border: none;
+    }
+    #jPanelMenu-menu & {
+      border-bottom: 1px solid lighten($nav-dark, 15%);
+    }
+  }
+}
+
+%nav-arrow {
+  font-size: 2em;
+  color: $gray-medium;
+  display: flex;
+  align-items: center;
+  margin-top: -5px;
+  font-weight: normal;
+}

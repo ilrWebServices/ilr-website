@@ -348,6 +348,19 @@ class Bean extends Entity {
    */
   public function view($view_mode = 'default', $langcode = NULL, $page = NULL) {
     $content = parent::view($view_mode, $langcode);
+
+    // Add the title so that it may be controlled via other display mechanisms.
+    $content_key = key($content['bean']);
+
+    if (!empty($this->title)) {
+      $content['bean'][$content_key]['title'] = array(
+        '#theme' => 'html_tag',
+        '#tag' => 'h2',
+        '#value' => $this->title,
+        '#attributes' => array('class' => 'bean-title'),
+      );
+    }
+
     if (empty($this->plugin)) {
       return $content;
     }

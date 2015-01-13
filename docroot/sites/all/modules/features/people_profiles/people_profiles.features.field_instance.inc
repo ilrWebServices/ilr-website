@@ -10,69 +10,52 @@
 function people_profiles_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-people_profile-field_academic_department'
-  $field_instances['node-people_profile-field_academic_department'] = array(
-    'bundle' => 'people_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 28,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_academic_department',
-    'label' => 'Academic Department(s)',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 30,
-    ),
-  );
-
   // Exported field_instance: 'node-people_profile-field_address_line_1'
   $field_instances['node-people_profile-field_address_line_1'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Campus address can be edited in Cornell\'s WhoIAm service.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 29,
       ),
-      'teaser' => array(
+      'highlighted' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_address_line_1',
-    'label' => 'Address Line 1',
+    'label' => 'Campus Address',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -87,65 +70,39 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_address_line_2'
-  $field_instances['node-people_profile-field_address_line_2'] = array(
-    'bundle' => 'people_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_address_line_2',
-    'label' => 'Address Line 2',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 56,
-    ),
-  );
-
   // Exported field_instance: 'node-people_profile-field_ai_honors_awards'
   $field_instances['node-people_profile-field_ai_honors_awards'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Awards and Honors</em> under <em>General Information</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 13,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 20,
       ),
     ),
     'entity_type' => 'node',
@@ -163,7 +120,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 44,
+      'weight' => 74,
     ),
   );
 
@@ -172,27 +129,46 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Websites</em> under <em>Personal and Contact Information</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 27,
+        'weight' => 30,
       ),
-      'teaser' => array(
+      'highlighted' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ai_links',
-    'label' => 'AI Links',
+    'label' => 'Related Resources',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -203,12 +179,66 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 47,
+      'weight' => 77,
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ai_overview'
-  $field_instances['node-people_profile-field_ai_overview'] = array(
+  // Exported field_instance: 'node-people_profile-field_ai_other_expertise'
+  $field_instances['node-people_profile-field_ai_other_expertise'] = array(
+    'bundle' => 'people_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Drawn from <em>Explanation of "Other" [concentration]</em> under <em>Narratives and Interests</em>',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ai_other_expertise',
+    'label' => 'Other Areas of Expertise',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 68,
+    ),
+  );
+
+  // Exported field_instance: 'node-people_profile-field_ai_outreach_statement'
+  $field_instances['node-people_profile-field_ai_outreach_statement'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
@@ -217,15 +247,82 @@ function people_profiles_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 13,
+        'weight' => 8,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ai_outreach_statement',
+    'label' => 'Outreach Statement',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 72,
+    ),
+  );
+
+  // Exported field_instance: 'node-people_profile-field_ai_overview'
+  $field_instances['node-people_profile-field_ai_overview'] = array(
+    'bundle' => 'people_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Drawn from <em>Bio</em> under <em>Narratives and Interests</em>',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'node',
@@ -243,7 +340,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 41,
+      'weight' => 69,
     ),
   );
 
@@ -252,20 +349,34 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Presentations</em> under <em>Intellectual Contributions</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 12,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 17,
       ),
     ),
     'entity_type' => 'node',
@@ -283,7 +394,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 43,
+      'weight' => 73,
     ),
   );
 
@@ -292,20 +403,34 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Journal Articles</em> and <em>Books and Other Publications</em> under <em>Intellectual Contributions</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 12,
+        'weight' => 9,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 21,
       ),
     ),
     'entity_type' => 'node',
@@ -323,7 +448,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 45,
+      'weight' => 75,
     ),
   );
 
@@ -332,20 +457,34 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Research Focus</em> under <em>Narratives and Interests</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 16,
+        'weight' => 6,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 22,
       ),
     ),
     'entity_type' => 'node',
@@ -365,12 +504,12 @@ function people_profiles_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 42,
+      'weight' => 70,
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ai_teaching_statement'
-  $field_instances['node-people_profile-field_ai_teaching_statement'] = array(
+  // Exported field_instance: 'node-people_profile-field_ai_service_statement'
+  $field_instances['node-people_profile-field_ai_service_statement'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
@@ -379,15 +518,82 @@ function people_profiles_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 19,
+        'weight' => 7,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ai_service_statement',
+    'label' => 'Service Statement',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 71,
+    ),
+  );
+
+  // Exported field_instance: 'node-people_profile-field_ai_teaching_statement'
+  $field_instances['node-people_profile-field_ai_teaching_statement'] = array(
+    'bundle' => 'people_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Drawn from <em>Teaching Focus</em> under <em>Narratives and Interests</em>',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'node',
@@ -405,7 +611,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 46,
+      'weight' => 76,
     ),
   );
 
@@ -414,20 +620,34 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Drawn from <em>Areas of Concentration</em> under <em>Narratives and Interests</em>',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 18,
+        'weight' => 30,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 24,
       ),
     ),
     'entity_type' => 'node',
@@ -445,23 +665,32 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 40,
+      'weight' => 67,
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_department'
-  $field_instances['node-people_profile-field_department'] = array(
+  // Exported field_instance: 'node-people_profile-field_display_in_faculty_lists'
+  $field_instances['node-people_profile-field_display_in_faculty_lists'] = array(
     'bundle' => 'people_profile',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
+        'label' => 'above',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -471,21 +700,21 @@ function people_profiles_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_department',
-    'label' => 'Department',
-    'required' => 1,
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_display_in_faculty_lists',
+    'label' => 'Enable full profile link',
+    'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'options',
       'settings' => array(
-        'size' => 60,
+        'display_label' => 1,
       ),
-      'type' => 'text_textfield',
-      'weight' => 53,
+      'type' => 'options_onoff',
+      'weight' => 65,
     ),
   );
 
@@ -494,23 +723,41 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Email address can be edited in Cornell\'s WhoIAm service.',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'email',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'email_default',
-        'weight' => 8,
+        'weight' => 34,
       ),
-      'teaser' => array(
+      'highlighted' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 4,
+      ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_email',
     'label' => 'Email',
     'required' => 1,
@@ -528,6 +775,59 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-people_profile-field_faculty_on_leave'
+  $field_instances['node-people_profile-field_faculty_on_leave'] = array(
+    'bundle' => 'people_profile',
+    'deleted' => 0,
+    'description' => 'Please contact Kristie Lamb (kt264@cornell.edu) to update this information.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_faculty_on_leave',
+    'label' => 'Faculty On Leave',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'Y-m-d H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_text',
+      'weight' => 64,
+    ),
+  );
+
   // Exported field_instance: 'node-people_profile-field_fax'
   $field_instances['node-people_profile-field_fax'] = array(
     'bundle' => 'people_profile',
@@ -536,17 +836,34 @@ function people_profiles_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 33,
       ),
-      'teaser' => array(
+      'highlighted' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -579,13 +896,25 @@ function people_profiles_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 7,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 23,
       ),
     ),
     'entity_type' => 'node',
@@ -607,128 +936,6 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ilrweb_overview'
-  $field_instances['node-people_profile-field_ilrweb_overview'] = array(
-    'bundle' => 'people_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 15,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_ilrweb_overview',
-    'label' => 'Overview',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 29,
-    ),
-  );
-
-  // Exported field_instance: 'node-people_profile-field_ilrweb_publications'
-  $field_instances['node-people_profile-field_ilrweb_publications'] = array(
-    'bundle' => 'people_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 25,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_ilrweb_publications',
-    'label' => 'Publications',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 32,
-    ),
-  );
-
-  // Exported field_instance: 'node-people_profile-field_ilrweb_publications_file'
-  $field_instances['node-people_profile-field_ilrweb_publications_file'] = array(
-    'bundle' => 'people_profile',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 26,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_ilrweb_publications_file',
-    'label' => 'Publications File',
-    'required' => 0,
-    'settings' => array(
-      'description_field' => 0,
-      'file_directory' => 'faculty/publications',
-      'file_extensions' => 'txt doc pdf',
-      'max_filesize' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'file',
-      'settings' => array(
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'file_generic',
-      'weight' => 31,
-    ),
-  );
-
   // Exported field_instance: 'node-people_profile-field_ilrweb_vita_file'
   $field_instances['node-people_profile-field_ilrweb_vita_file'] = array(
     'bundle' => 'people_profile',
@@ -736,22 +943,37 @@ function people_profiles_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 23,
+        'label' => 'above',
+        'module' => 'file_entity',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'file_view_mode' => 'default',
+        ),
+        'type' => 'file_rendered',
+        'weight' => 31,
       ),
-      'teaser' => array(
+      'highlighted' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ilrweb_vita_file',
-    'label' => 'Vita File',
+    'label' => 'CV',
     'required' => 0,
     'settings' => array(
       'description_field' => 1,
@@ -764,50 +986,37 @@ function people_profiles_field_default_field_instances() {
       'active' => 1,
       'module' => 'file',
       'settings' => array(
+        'allowed_schemes' => array(
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'image' => 'image',
+        ),
+        'browser_plugins' => array(),
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 33,
-    ),
-  );
-
-  // Exported field_instance: 'node-people_profile-field_ilrweb_vita_html'
-  $field_instances['node-people_profile-field_ilrweb_vita_html'] = array(
-    'bundle' => 'people_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 24,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_ilrweb_vita_html',
-    'label' => 'Vita HTML',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 34,
+      'weight' => 63,
     ),
   );
 
@@ -822,13 +1031,25 @@ function people_profiles_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 8,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
     ),
     'entity_type' => 'node',
@@ -855,27 +1076,47 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The Off-Campus Work Address can be edited in Cornell\'s WhoIAm service. It is only relevant to users without a campus address.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 31,
       ),
-      'teaser' => array(
+      'highlighted' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_local_address',
-    'label' => 'Local Address',
+    'label' => 'Off-Campus Work Address',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -899,16 +1140,27 @@ function people_profiles_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 9,
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
@@ -935,27 +1187,50 @@ function people_profiles_field_default_field_instances() {
     'bundle' => 'people_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Campus phone numbers can be edited in Workday.',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 32,
       ),
-      'teaser' => array(
+      'highlighted' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_phone',
-    'label' => 'Phone',
+    'label' => 'Campus Phone',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -970,6 +1245,54 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-people_profile-field_profile_department'
+  $field_instances['node-people_profile-field_profile_department'] = array(
+    'bundle' => 'people_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This is your officially designated department and cannot be changed.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_profile_department',
+    'label' => 'Department',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 54,
+    ),
+  );
+
   // Exported field_instance: 'node-people_profile-field_profile_image'
   $field_instances['node-people_profile-field_profile_image'] = array(
     'bundle' => 'people_profile',
@@ -977,19 +1300,37 @@ function people_profiles_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => 'people_profile_image',
+          'image_style' => 'focussed_profile_image',
         ),
         'type' => 'image',
-        'weight' => 0,
+        'weight' => 1,
       ),
-      'teaser' => array(
+      'highlighted' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'image_link' => 'content',
+          'image_style' => 'focussed_thumbnail',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
     ),
@@ -1002,20 +1343,37 @@ function people_profiles_field_default_field_instances() {
       'default_image' => 0,
       'file_directory' => 'people',
       'file_extensions' => 'jpg jpeg',
-      'max_filesize' => '1 MB',
-      'max_resolution' => '1000x1200',
-      'min_resolution' => '250x300',
+      'max_filesize' => '2MB',
+      'max_resolution' => '1600x1200',
+      'min_resolution' => '600x411',
       'title_field' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'image',
+      'module' => 'media',
       'settings' => array(
-        'preview_image_style' => 'people_profile_image',
-        'progress_indicator' => 'throbber',
+        'allowed_schemes' => array(
+          'public' => 'public',
+          'youtube' => 0,
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'ilr_media_browser--media_browser_1' => 'ilr_media_browser--media_browser_1',
+          'ilr_media_browser--media_browser_my_files' => 'ilr_media_browser--media_browser_my_files',
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 'upload',
+          'youtube' => 0,
+        ),
       ),
-      'type' => 'image_image',
+      'type' => 'media_generic',
       'weight' => 62,
     ),
   );
@@ -1029,16 +1387,27 @@ function people_profiles_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 17,
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -1051,52 +1420,11 @@ function people_profiles_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 54,
-    ),
-  );
-
-  // Exported field_instance: 'node-people_profile-field_use_ai_data'
-  $field_instances['node-people_profile-field_use_ai_data'] = array(
-    'bundle' => 'people_profile',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 14,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_use_ai_data',
-    'label' => 'Use AI Data',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
       'settings' => array(
-        'display_label' => 1,
+        'apply_chosen' => '',
       ),
-      'type' => 'options_onoff',
-      'weight' => 38,
+      'type' => 'options_select',
+      'weight' => 53,
     ),
   );
 
@@ -1111,13 +1439,25 @@ function people_profiles_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 9,
+      ),
+      'highlighted' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'node',
@@ -1132,7 +1472,7 @@ function people_profiles_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 39,
+      'weight' => 66,
     ),
   );
 
@@ -1146,15 +1486,32 @@ function people_profiles_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_plain',
+        'weight' => 3,
       ),
-      'teaser' => array(
+      'highlighted' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -1179,32 +1536,47 @@ function people_profiles_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('AI Field Visibility');
-  t('AI Links');
-  t('Academic Department(s)');
-  t('Address Line 1');
-  t('Address Line 2');
   t('Areas of Expertise');
+  t('CV');
+  t('Campus Address');
+  t('Campus Phone');
+  t('Campus address can be edited in Cornell\'s WhoIAm service.');
+  t('Campus phone numbers can be edited in Workday.');
   t('Department');
+  t('Drawn from <em>Areas of Concentration</em> under <em>Narratives and Interests</em>');
+  t('Drawn from <em>Awards and Honors</em> under <em>General Information</em>');
+  t('Drawn from <em>Bio</em> under <em>Narratives and Interests</em>');
+  t('Drawn from <em>Explanation of "Other" [concentration]</em> under <em>Narratives and Interests</em>');
+  t('Drawn from <em>Journal Articles</em> and <em>Books and Other Publications</em> under <em>Intellectual Contributions</em>');
+  t('Drawn from <em>Presentations</em> under <em>Intellectual Contributions</em>');
+  t('Drawn from <em>Research Focus</em> under <em>Narratives and Interests</em>');
+  t('Drawn from <em>Teaching Focus</em> under <em>Narratives and Interests</em>');
+  t('Drawn from <em>Websites</em> under <em>Personal and Contact Information</em>');
   t('Email');
+  t('Email address can be edited in Cornell\'s WhoIAm service.');
+  t('Enable full profile link');
+  t('Faculty On Leave');
   t('Fax');
   t('First Name');
   t('Generally, a profile has a single working title. Faculty, however, can have multiple working titles.');
   t('Honors and Awards');
   t('Last Name');
-  t('Local Address');
   t('NetID');
+  t('Off-Campus Work Address');
+  t('Other Areas of Expertise');
+  t('Outreach Statement');
   t('Overview');
-  t('Phone');
+  t('Please contact Kristie Lamb (kt264@cornell.edu) to update this information.');
   t('Professional Activities');
   t('Profile Image');
   t('Profile Type');
   t('Publications');
-  t('Publications File');
+  t('Related Resources');
   t('Research Statement');
+  t('Service Statement');
   t('Teaching Statement');
-  t('Use AI Data');
-  t('Vita File');
-  t('Vita HTML');
+  t('The Off-Campus Work Address can be edited in Cornell\'s WhoIAm service. It is only relevant to users without a campus address.');
+  t('This is your officially designated department and cannot be changed.');
   t('Working Title');
 
   return $field_instances;

@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * Implements hook_enable().
+ */
+function ilr_sub_sites_enable() {
+  _ilr_sub_sites_update_sub_site_menus();
+}
+
+/**
+ * Updates sub site menus
+ */
+function ilr_sub_sites_update_7001() {
+  _ilr_sub_sites_update_sub_site_menus();
+}
+
+/**
+ * The initial group of subsites.
+ * Additional menus may be added later.
+ * Note: These will need to be added to the
+ * menu_options_basic_page in the basic page feature
+ */
+function _ilr_sub_sites_get_sub_sites() {
+  return array(
+    'worker-institute' => 'Worker Institute',
+    'mpsnyc' => 'MPS NYC',
+    'cheri' => 'Cheri',
+    'ldi' => 'Leadership Disability Institute',
+    'iws' => 'IWS',
+    'smithers-institute' => 'Smithers Institute',
+    'ics' => 'Institute for Compensation Studies',
+    'healthcare' => 'Healthcare',
+    'national-labor-leadership-initiative' => 'NLLI',
+    'expo' => 'ExPO',
+    'bargaining-for-better-schools' => 'Bargaining for Better Schools',
+    'conference-center' => 'Conference Center',
+    'nyc-conference-center' => 'NYC Conference Center',
+  );
+}
+
+/**
+ * Adds any missing subsite menus added to
+ * _ilr_sub_sites_get_sub_sites().
+ */
+function _ilr_sub_sites_update_sub_site_menus() {
+  $subsites = _ilr_sub_sites_get_sub_sites();
+
+  foreach ($subsites as $uri => $name) {
+    _ilr_sub_sites_create_menu($name, $uri);
+
+  }
+}

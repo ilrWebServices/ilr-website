@@ -5,16 +5,14 @@ db/backups/*.gz
 drupal-streamline.make
 docroot/.drupal_streamline_guard_running
 tmp/
-
-# Ignore profile data feed items
-config/ilr-faculty-data-conf.php
-config/aws-sdk-conf.php
-composer.lock
-vendor/
-scripts/ilr-profile-data-pull/xml/
+migration_data/*images/
+migration_data/*export/
 
 # Ignore the stylesheets
 docroot/sites/all/themes/ilr_theme/css/
+
+# Ignore the secrets
+config/secrets.php
 
 # Ignore Mac-only files
 .DS_Store

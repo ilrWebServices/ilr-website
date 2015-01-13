@@ -1,0 +1,123 @@
+%one-column {
+  @include layout(4) {
+    @include float-span(4);
+    &:nth-of-type(even), // these avoid any even/odd
+    &:nth-of-type(odd) { // nth-child conflicts
+      @include float-span(4);
+    }
+  }
+}
+
+%two-column {
+  @include layout(4) {
+    @include float-span(2);
+    &:nth-of-type(even) {
+      @include float-span(2, 'last');
+    }
+  }
+}
+
+%two-column-masonry {
+  @include layout(4) {
+    @include add-gutter-style('split');
+    @include float-span(2);
+  }
+}
+
+%two-thirds-split-column {
+  @include layout(3) {
+    @include float-span(1,'last');
+    &:nth-of-type(1) {
+      @include float-span(2);
+    }
+  }
+}
+
+%three-column {
+  @include layout(6) {
+    @include float-span(2);
+    &:nth-of-type(3n) {
+      @include float-span(2, 'last');
+    }
+    &:nth-of-type(3n + 1) {
+      clear: left;
+    }
+  }
+}
+
+%three-column-masonry {
+  @include layout(3) {
+    @include add-gutter(.1);
+    @include add-gutter-style('split');
+    @include float-span(1);
+  }
+}
+
+%four-column {
+  @include layout(8) {
+    @include add-gutter-style('split');
+    @include float-span(2);
+  }
+}
+
+%square-to-3x4 {
+  @extend %image-ratio-hack;
+  a {
+    padding-top: 75%;
+    img {
+      top: -12.5%; // Square images need a negative margin for vertical positioning
+    }
+  }
+}
+
+// See http://alistapart.com/article/creating-intrinsic-ratios-for-video
+%image-ratio-hack {
+  position: relative;
+  overflow: hidden;
+  a {
+    display: block;
+    img {
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+%custom-thumbnail {
+  a {
+    text-decoration: none;
+    span {
+      display: block;
+      text-align: center;
+      color: white;
+      @include single-text-shadow;
+      @include adjust-font-size-to(80px);
+      font-family: $font-headers;
+      font-style: italic;
+    }
+  }
+  &.event a{
+    span {
+      @include adjust-font-size-to(25px, 1);
+      font-style: normal;
+      text-transform: uppercase;
+      font-family: $font;
+      padding-top: 25px;
+      #sidebar-second & {
+        padding-top: 25px;
+      }
+    }
+  }
+}
+
+%image-first {
+  flex-direction: column;
+  display: flex;
+
+  h3                     { order: 1; }
+  .field-type-image,
+  .field-type-youtube,
+  .thumbnail.custom      { order: 2; }
+  h2                     { order: 3; }
+  .student-name          { order: 4; }
+}

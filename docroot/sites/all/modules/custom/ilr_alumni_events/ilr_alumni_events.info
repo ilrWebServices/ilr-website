@@ -1,0 +1,6 @@
+name = ILR Alumni Events
+description = Provides processing of Alumni event registration forms
+core = 7.x
+package = ILR
+version = 7.x-1.0
+project = ilr_alumni_events

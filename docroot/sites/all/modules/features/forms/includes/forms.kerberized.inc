@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Swaps kerberized forms with netID login button
- */
-function forms_block_view_alter(&$data, $block) {
-  if (isset($data['content']) && _forms_kerberized_form_present($data['content'])
-    && !_forms_saml_attributes_present()) {
-      $data['content'] = drupal_get_form('forms_login_form');
-  }
-}
-
 /**
  * Returns a simple login button for NetID logins
  */
@@ -36,39 +25,13 @@ function forms_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_i
 }
 
 /**
- * Implements hook_user_logout()
- * Redirects users logged out via _forms_handle_kerberized_form
- * This and forms_drupal_goto_alter are based on
- * https://drupal.org/project/redirect_after_logout
- */
-function forms_user_logout($account) {
-  $destination = &drupal_static(__FUNCTION__);
-  $destination = current_path();
-}
-
-/**
  * Implements hook_drupal_goto_alter().
  */
 function forms_drupal_goto_alter(&$path, &$options, &$http_response_code) {
-  $destination = &drupal_static('forms_user_logout');
+  $destination = &drupal_static('_forms_handle_kerberized_form');
   if (!$path && $destination) {
     drupal_goto($destination);
   }
-}
-/**
- * Adds the requires authorization checkbox to entityform type creation/edit
- */
-function _forms_add_kerberized_checkbox(&$form) {
-  $kerberized = (isset($form['#entityform_type']->data['kerberized']))
-    ? $form['#entityform_type']->data['kerberized']
-    : 0;
-
-  $form['data']['kerberized'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('This form requires NetID authentication'),
-    '#weight' => 0,
-    '#default_value' => $kerberized,
-  );
 }
 
 /**
@@ -103,17 +66,6 @@ function _forms_kerberize_field(&$form) {
 }
 
 /**
- * Checks to see whether the block being rendered is a kerberized entityform
- * See forms_block_view_alter()
- */
-function _forms_kerberized_form_present($form) {
-  if (isset($form['#entity']) && get_class($form['#entity']) == 'Entityform') {
-    return _forms_form_is_kerberized($form['#entity']->type);
-  }
-  return FALSE;
-}
-
-/**
  * Checks whether a specific entityform bundle requires NetID authentication
  */
 function _forms_form_is_kerberized($bundle) {
@@ -134,6 +86,7 @@ function _forms_field_is_kerberizable($field_name) {
     'field_email',
     'field_first_name',
     'field_last_name',
+    'field_netid',
   );
   return in_array($field_name, $kerberizable_fields);
 }
@@ -191,6 +144,9 @@ function _forms_map_user_attribute_to_field($field_name) {
       case 'field_last_name':
         return $saml_attributes['sn'][0];
         break;
+      case 'field_netid':
+        return $saml_attributes['uid'][0];
+        break;
     }
   } // Auth attributes missing, so log an error
   else {
@@ -211,27 +167,28 @@ function _forms_map_user_attribute_to_field($field_name) {
  * Logs user out if SAML Session missing (e.g. browser was closed)
  */
 function _forms_handle_kerberized_form(&$form) {
-  if (user_is_logged_in() && _forms_user_has_netid()) {
-    if (_forms_saml_attributes_present()) {
+  if (user_is_logged_in()) {
+    if (ilr_user_has_netid() && _forms_saml_attributes_present()) {
       _forms_set_kerberized_values($form);
     } // SimpleSAMLAuth info missing, so force the user to log in again
     else {
       require_once(drupal_get_path('module', 'user') . '/user.pages.inc');
+      $destination = &drupal_static(__FUNCTION__);
+      $destination = current_path();
       user_logout(); // See forms_drupal_goto_alter for redirect
+      _forms_replace_kerberized_form_with_login_button($form);
     }
+  } // Not logged in, so remove the form
+  else {
+    _forms_replace_kerberized_form_with_login_button($form);
   }
 }
 
 /**
- * Figures out whether user account has a NetID
+ * Replaces the form with the login button
  */
-function _forms_user_has_netid() {
-  global $user;
-  if ($user->uid) {
-    $account = user_load($user->uid);
-    return !empty($account->field_netid);
-  }
-  return FALSE;
+function _forms_replace_kerberized_form_with_login_button(&$form) {
+  $form = drupal_get_form('forms_login_form');
 }
 
 /**

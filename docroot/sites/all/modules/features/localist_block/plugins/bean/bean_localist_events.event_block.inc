@@ -79,7 +79,7 @@ class EventBlockBean extends BeanPlugin {
       $data = file_get_contents($url);
       $json = json_decode($data, true);
       $event_json = $json['events'];
-      cache_set('bean_localist_events-' . $cache_key, $event_json, 'cache', time() + 360);
+      cache_set('bean_localist_events-' . $cache_key, $event_json, 'cache', time() + 60 * 60); //60 * 60 = 1 hour
     }
     return $event_json;
   }
@@ -115,33 +115,25 @@ class EventBlockBean extends BeanPlugin {
    * @param  [json] $event_data The data from the event json object
    * @param  [current_count] The number of event items that have been processed
    * @return [string] $markup
+   * @todo Refactor out hard-coded data-eq-pts
    */
   private function generate_event_item_markup($event_data, $current_count) {
     // Deal with localist's funky json structure
     $event = $event_data['event'];
 
-    $event_start_datetime = strtotime($event['event_instances'][0]['event_instance']['start']);
-    $event_start_date = format_date($event_start_datetime, 'custom', 'M j');
-    $event_start_time = format_date($event_start_datetime, 'custom', 'g:i a');
-
-    // Create the short formatted date from the first event instance
-    $event_date = $event_start_date . ($event_start_time != '12:00 am' ? ' <span class="event-pipe">|</span> ' . $event_start_time : '');
-
-    // Format some field output
     $event_date = $this->format_event_date($event['event_instances'][0]['event_instance']['start']);
-    $event_description = $this->format_event_description($event['description']);
     $event_type_info = $this->format_event_type_info($event['filters']);
     $event_localist_url = $this->format_localist_event_url($event['localist_url']);
+    $event_title = truncate_utf8(strip_tags($event['title']), 55, FALSE, TRUE);
 
     // Create the markup
-    //Event fields include Title, Localist Link, Start Date, Start Time, Description, Location, and Event Type
-    $markup = "<div class='event-item " . ($current_count % 2 ? "odd" : "even") . "'>\n";
-    $markup .= "<h3 class='event-title'><a href='{$event_localist_url}'>{$event['title']}</a></h3>";
-    $markup .= "<h4 class='event-date'>{$event_date}</h4>";
-    $markup .= "<p class='event-description'>{$event_description}</p>";
-    $markup .= "<p class='event-detail'>Location: <strong>{$event['location_name']}</strong>";
-    $markup .= "{$event_type_info}</p>\n";
-    $markup .= "</div><!-- end event-item -->\n\n";
+    $markup = "<article class='localist-event' data-eq-pts='small: 100, medium: 275, large: 350' role='article'>\n";
+    $markup .= "<h3 class='category event'>Event / $event_type_info</h3>";
+    if (module_exists('tagged_content_block')) {
+      $markup .= _tagged_content_block_generate_thumbnail_markup($event_date, $event_localist_url, 'event');
+    }
+    $markup .= "<h2 class='event-title'><a href='{$event_localist_url}'>{$event_title}</a></h2>";
+    $markup .= "</article><!-- end article -->\n\n";
 
     return $markup;
   }
@@ -151,16 +143,12 @@ class EventBlockBean extends BeanPlugin {
    */
   private function format_event_date($start_date) {
     $event_start_datetime = strtotime($start_date);
-    $event_start_date = format_date($event_start_datetime, 'custom', 'M j');
-    $event_start_time = format_date($event_start_datetime, 'custom', 'g:i a');
-
-    // Create the short formatted date from the first event instance
-    $formatted_event_date = $event_start_date . ($event_start_time != '12:00 am'
-      ? ' <span class="event-pipe">|</span> ' . $event_start_time
-      : ''
+    $month = format_date($event_start_datetime, 'custom', 'M');
+    $day = format_date($event_start_datetime, 'custom', 'j');
+    return array(
+      'month' => $month,
+      'day' => $day,
     );
-
-    return $formatted_event_date;
   }
 
   /**
@@ -176,12 +164,14 @@ class EventBlockBean extends BeanPlugin {
    * Looks for event type info, and adds it to the markup if found
    */
   private function format_event_type_info($filters) {
-    $markup = '';
+    $event_type = '';
     if (isset($filters['event_types']['0']['name'])) {
-      $type = $filters['event_types']['0']['name'];
-      $markup = "<span class='event-pipe'>&nbsp;|&nbsp;</span>Event type: <strong>{$type}</strong>";
+      $event_type = $filters['event_types']['0']['name'];
+      if ($slash_pos = strpos($event_type, '/')) {
+        $event_type = substr($event_type, 0, $slash_pos);
+      }
     }
-    return $markup;
+    return $event_type;
   }
 
   /**

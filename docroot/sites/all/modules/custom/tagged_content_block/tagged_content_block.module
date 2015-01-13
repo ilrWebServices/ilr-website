@@ -1,11 +1,8 @@
 <?php
 
-/**
- * Implements hook_bean_types_api_info().
- */
-function tagged_content_block_bean_types_api_info() {
-  return array('api' => 4);
-}
+//////////////////
+// Drupal Hooks //
+//////////////////
 
 /**
  * Implements hook_bean_types().
@@ -26,15 +23,20 @@ function tagged_content_block_bean_types() {
 }
 
 /**
- * Implements hook_permission()
+ * Implements hook_bean_types_api_info().
  */
-function tagged_content_block_permission() {
-  return array(
-    'administer tagged content block configuration' => array(
-      'title' => t('Administer Tagged Content Blocks'),
-      'description' => t('Configure content types available to tagged content blocks.'),
-    ),
-  );
+function tagged_content_block_bean_types_api_info() {
+  return array('api' => 4);
+}
+
+/**
+ * Implements hook_form_alter
+ * Adds a validator for tagged content blocks
+ */
+function tagged_content_block_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == "basic_page_node_form") {
+    $form['#validate'][] = '_tagged_content_block_reference_validator';
+  }
 }
 
 /**
@@ -56,9 +58,236 @@ function tagged_content_block_menu() {
 }
 
 /**
+ * Implements hook_permission()
+ */
+function tagged_content_block_permission() {
+  return array(
+    'administer tagged content block configuration' => array(
+      'title' => t('Administer Tagged Content Blocks'),
+      'description' => t('Configure content types available to tagged content blocks.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_preprocess_hook()
+ * Adds category headings on appropriate teasers
+ * Updates links from promos
+ * Adds default thumbnails when appropriate
+ * Removes the read more link
+ */
+function tagged_content_block_preprocess_node(&$variables) {
+  $variables['title_link'] = '';
+  $tagged_content_types = array_filter(variable_get('tagged_content_block_enabled_bundles'));
+  if ($variables['view_mode'] == 'teaser' && in_array($variables['type'], $tagged_content_types)) {
+    // Check whether the content is coming from a featured bean. See view() in tagged_content.inc
+    if (isset($variables['content']['featured']) && $variables['content']['featured'] == 1) {
+      $variables['content']['field_image'][0]['#image_style'] = 'focussed_hero';
+    }
+    _tagged_content_block_add_category_heading($variables);
+    if ($variables['type'] == 'promo') {
+      _tagged_content_block_update_promo_links($variables);
+    }
+    if (isset($variables['field_image']) && empty($variables['field_image'])) {
+      _tagged_content_block_add_thumbnail($variables);
+    }
+    // Remove the read more links
+    unset($variables['content']['links']['node']['#links']['node-readmore']);
+  }
+}
+
+/**
  * Implementation of hook_query_TAG_alter
  */
 function tagged_content_block_query_random_alter($query) {
   $query->orderRandom();
 }
 
+//////////////////////
+// Custom functions //
+//////////////////////
+
+function _tagged_content_block_add_category_heading(&$variables) {
+  $type = $variables['type'];
+  if ($category = _tagged_content_block_get_category_type($variables['node'])) {
+    $content_type = _tagged_content_block_get_hyphened_type($type);
+    $primary_tag = _tagged_content_block_get_primary_term_for_node($variables['node']);
+    $variables['content']['category']['#markup'] = "<h3 class='category $content_type'>$category / $primary_tag</h3>";
+  }
+}
+
+function _tagged_content_block_add_thumbnail(&$variables) {
+  $drop_cap = $variables['title'][0];
+  $content_type = _tagged_content_block_get_hyphened_type($variables['type']);
+  $url = $variables['node_url'];
+  $variables['content']['field_image']['#markup'] = _tagged_content_block_generate_thumbnail_markup($drop_cap, $url, $content_type);
+}
+
+function _tagged_content_block_add_event_thumbnail(&$variables, $url) {
+  $details = _tagged_content_block_get_event_details($url);
+  $variables['field_image'][] = 'Placeholder';
+  $variables['content']['field_image']['#markup'] =_tagged_content_block_generate_thumbnail_markup($details,$url,'event');
+}
+
+/**
+ * Enables default content types for tagged content blocks
+ * @return array The default content types, needed by
+ * _tagged_content_block_default_bundles() of admin.inc
+ */
+function _tagged_content_block_enable_default_bundles() {
+  $enabled_content_types = array(
+    'basic_page'          => 'basic_page',
+    'news_item'           => 'news_item',
+    'promo'               => 'promo',
+    'spotlight'           => 'spotlight',
+    'student_portrait'    => 'student_portrait',
+    'workspan'            => 'workspan',
+    'youtube_video'       => 'youtube_video',
+  );
+
+  variable_set(
+    'tagged_content_block_enabled_bundles',
+    $enabled_content_types
+  );
+
+  return $enabled_content_types;
+}
+
+function _tagged_content_block_generate_thumbnail_markup($text, $url, $content_type) {
+  if ($content_type == 'event') {
+    $month = $text['month'];
+    $day = $text['day'];
+    $markup = "<div class='thumbnail custom event'><a href='$url'><span>$month<br>$day</span></a></div>";
+  } else {
+    $markup = "<div class='thumbnail custom $content_type'><a href='$url'><span>$text</span></a></div>";
+  }
+  return $markup;
+}
+
+function _tagged_content_block_get_category_type($node) {
+  $wrapper = entity_metadata_wrapper('node',$node);
+  if (isset($wrapper->field_category_type)) {
+    if($term = $wrapper->field_category_type->value()) {
+      return $term->name;
+    }
+    return _tagged_content_block_get_default_category_type($wrapper->type->value());
+  }
+  return NULL;
+}
+
+function _tagged_content_block_get_default_category_type($content_type) {
+  $categories = array(
+    'basic_page'          => 'focus',
+    'news_item'           => 'news',
+    'promo'               => 'highlights',
+    'spotlight'           => 'spotlight',
+    'student_portrait'    => 'student portrait',
+    'youtube_video'       => 'video',
+  );
+  return isset($categories[$content_type])
+    ? $categories[$content_type]
+    : str_replace('_', ' ', $content_type);
+}
+
+function _tagged_content_block_get_event_details($url) {
+  $test = $url . '.ics';
+  $request = drupal_http_request($test);
+  $ical_data = $request->data;
+  $start_pos = strpos($ical_data,'DTSTART');
+  $end_pos = strpos($ical_data,'DTEND');
+  $start_date_string = substr($ical_data, $start_pos + 8, 8);
+  $end_date_string = substr($ical_data, $end_pos + 6, 8);
+  $event_date = new DateTime($start_date_string);
+  $month = $event_date->format('M');
+  if ($start_date_string == $end_date_string) {
+    $day = $event_date->format('j');
+  } // multi-day
+  else {
+    $event_date_end = new DateTime($end_date_string);
+    $day = $event_date->format('j') . '-' . $event_date_end->format('j');
+  }
+  return array(
+    'month' => $month,
+    'day'   => $day,
+  );
+}
+
+function _tagged_content_block_get_hyphened_type($type) {
+  return str_replace('_', '-', $type);
+}
+
+function _tagged_content_block_get_primary_term_for_node($node) {
+  $wrapper = entity_metadata_wrapper('node',$node);
+  if (isset($wrapper->field_tags)) {
+    $tag_array = $wrapper->field_tags->value();
+    if (count($tag_array)) {
+      return $tag_array[0]->name;
+    }
+  }
+
+  watchdog('tagged_content_block', "Primary term for node '@node' was not found.",
+    array(
+      '@node' => $wrapper->label(),
+    ),
+    WATCHDOG_ERROR
+  );
+  return '';
+}
+
+function _tagged_content_block_get_promo_link_from_node($node) {
+  $url = &drupal_static(__FUNCTION__ . $node->nid); // nid added since there can be multiple per page, but not per node
+  if (!isset($url)) {
+    $wrapper = entity_metadata_wrapper('node', $node);
+    // Internal links
+    if (!empty($wrapper->field_internal_link) && $wrapper->field_internal_link->value()) {
+      $nid = $wrapper->field_internal_link->value()->nid;
+      $url = drupal_get_path_alias("node/$nid");
+    } // External links
+    else {
+      $wrapped_url = $wrapper->field_website_url->value();
+      $url = $wrapped_url['url'];
+    }
+  }
+  return $url;
+}
+
+/**
+ * Loads a block by block id
+ */
+function _tagged_content_block_load_block($bid) {
+  return db_query("SELECT * FROM block WHERE bid = :bid", array(':bid' => $bid))->fetchAssoc();
+}
+
+/**
+ * Validator for referencing blocks
+ *   - Confirms that highlighted blocks have the featured flag
+ */
+function _tagged_content_block_reference_validator($form, &$form_state) {
+  if(count($form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'])
+    && $bid = $form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'][LANGUAGE_NONE][0]['bid']) {
+    $block = _tagged_content_block_load_block($bid);
+    $bean = bean_load_delta($block['delta']);
+    if (empty($bean->data['featured'])) {
+      form_set_error('state', t("Only featured blocks can be added to the highlighted region."));
+    }
+  }
+}
+
+function _tagged_content_block_is_event($url) {
+  return strpos($url, 'events.cornell.edu') !== FALSE;
+}
+
+function _tagged_content_block_update_promo_links(&$variables) {
+  $url = _tagged_content_block_get_promo_link_from_node($variables['node']);
+  $variables['node_url'] = $url;
+
+  if (isset($variables['content']['field_image']) && count($variables['content']['field_image'])) {
+    $variables['content']['field_image'][0]['#path']['path'] = $url;
+  }
+
+  if (_tagged_content_block_is_event($url)) {
+    // // Make sure that the image does not show
+    $variables['content']['field_image'] = $variables['field_image'] = array();
+    _tagged_content_block_add_event_thumbnail($variables, $url);
+  }
+}

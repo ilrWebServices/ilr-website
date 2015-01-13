@@ -1,0 +1,7 @@
+name = jPanel Menu
+description = Intergrate the jQuery jPanelMenu library
+core = 7.x
+package = User interface
+configure = admin/config/user-interface/jpanelmenu
+
+dependenciesp[] = libraries

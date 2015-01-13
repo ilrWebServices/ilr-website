@@ -1,0 +1,44 @@
+#!/bin/bash
+
+BIN_DIR=`dirname $0`
+
+source $BIN_DIR/get-current-branch
+
+# check running from docroot
+CURRENT_DIR=${PWD##*/}
+if [ ! "$CURRENT_DIR" = "ilr-website" ]; then
+  echo 'Please be sure that you are running this command from the root of the repo.'
+  exit 2
+fi
+
+# Figure out which environment to deploy to
+while getopts "e:" var; do
+    case $var in
+        e) ENV="${OPTARG}";;
+    esac
+done
+
+# Set the ENV to dev if 'e' wasn't passed as an argument
+if [ "${#ENV}" -eq "0" ]; then
+  ENV='dev'
+fi
+
+if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
+  echo "Compiling css"
+  compass compile
+
+  # Upload to server
+  echo "Uploading styles to server"
+  scp -r docroot/sites/all/themes/ilr_theme/css ilr@srv-2136.devcloud.hosting.acquia.com:~/$ENV/livedev/docroot/sites/all/themes/ilr_theme
+
+  echo "Clearing css cache on $ENV"
+  cd docroot
+  drush @ilr.ilr.$ENV cc css-js
+
+  echo "Deployment complete"
+
+  exit
+fi
+
+# If not dev or test, throw an error
+echo 'Please confirm you are deploying to dev or test'

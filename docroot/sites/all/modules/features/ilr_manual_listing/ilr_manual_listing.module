@@ -1,0 +1,40 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Manual Listing feature.
+ */
+
+
+include_once 'ilr_manual_listing.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function ilr_manual_listing_menu() {
+  $items = array();
+  $items['admin/config/content/manual_listing'] = array(
+    'title' => t('Manual Listing Block Settings'),
+    'description' => t('Configure content types available to manual listing content blocks'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ilr_manual_listing_admin'),
+    'file' => 'includes/ilr_manual_listing.admin.inc',
+    'access arguments' => array('administer ilr manual listing configuration'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+/**
+ * Implements hook_permission()
+ */
+function ilr_manual_listing_permission() {
+  return array(
+    'administer ilr manual listing configuration' => array(
+      'title' => t('Administer Manual Listing Blocks'),
+      'description' => t('Configure content types available to manual listing blocks.'),
+    ),
+  );
+}
+function _ilr_manual_listing_default_bundles(){
+  return array('youtube_video','news_item', 'workspan');
+}

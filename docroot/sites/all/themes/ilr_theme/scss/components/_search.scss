@@ -1,0 +1,36 @@
+header.search-engaged,
+header.search-engaged #header-region {
+  margin-top: $search-height;
+}
+
+.search-button {
+  @extend %header-btn;
+  a {
+    @include transition-duration(.3s);
+    @extend %icon-search-thin;
+    margin-top: -2px;
+    [data-eq-state="regular-nav"]:not(.sticky) & {
+      body:not(.subsite) & {
+        @include adjust-font-size-to(30px);
+      }
+    }
+  }
+}
+
+#search-form {
+  position: absolute;
+  top: $search-height * -1;
+  left: 0;
+  width: 100%;
+
+  input {
+    background: $darker-red;
+    border: none;
+    width: 100%;
+    padding: 5px;
+    padding-left: 5%;
+    height: $search-height;
+    color: white;
+    font-size: ms(2); // refactor to typography or forms
+  }
+}

@@ -1,0 +1,51 @@
+$social-channels: linkedin, facebook, twitter, youtube, instagram;
+
+@for $i from 1 through length($social-channels) {
+  .follow-#{nth($social-channels, $i)} {
+    @extend %icon-#{nth($social-channels, $i)};
+  }
+}
+
+#block-bean-footer-social {
+  position: absolute;
+  bottom: 0;
+  right: 1em;
+  margin-right: 0 !important; // since bean-base is trying to take over
+
+  ul { float: right; }
+
+  .container[data-eq-state="320"] & {
+    bottom: 2em;
+    left: 0;
+
+    ul {
+      float: left;
+      li {
+        padding-right: .5em;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+ul.social {
+  @include inline-block-list;
+  li {
+    border:none;
+    padding-left: .5em;
+    background: none;
+    a {
+      display: block;
+      &.follow-twitter,
+      &.follow-youtube {
+        padding-top: 5px;
+      }
+      &:hover {
+        border:none;
+      }
+      span {
+        display: none;
+      }
+    }
+  }
+}

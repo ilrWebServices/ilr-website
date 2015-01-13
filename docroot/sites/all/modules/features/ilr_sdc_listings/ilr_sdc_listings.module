@@ -1,0 +1,829 @@
+<?php
+/**
+ * @file
+ * Code for the ilr_sdc_listings feature.
+ *
+ * Current Course listings
+ *  Courses By Month: /professional-programs/public-offerings/calendar-month
+ *  Courses By Date:  /professional-programs/public-offerings
+ *  All Courses: /professional-programs/public-offerings-courses
+ *
+ */
+define('ILR_SDC_MAX_DAYS_PAST', 90);
+define('ILR_SDC_ONLINE_TEXT', 'Online');
+define('ILR_SDC_ONDEMAND_TEXT', 'This is an on demand class.');
+define('ILR_SDC_PATH_ALIAS', 'professional-programs/public-offerings');
+include_once 'ilr_sdc_listings.features.inc';
+
+
+/**
+ * Implements hook_playlist_feeds_after_import().
+ *
+ * Automatically run other imports after course import is run.
+ * Run faculty/class assigner.
+ */
+function ilr_sdc_listings_feeds_after_import(FeedsSource $source) {
+  $chained_importers = _ilr_sdc_listings_get_importer_ids();
+  $importer_index = array_search($source->importer->id, $chained_importers);
+  if ($importer_index !== FALSE) {
+    if ($importer_index < count($chained_importers) - 1) {
+      // Run the next importer automatically.
+      $source = feeds_source($chained_importers[$importer_index + 1]);
+      if ($source) {
+        $source->startImport();
+      }
+    }
+    else {
+      module_load_include('inc', 'ilr_sdc_listings', 'ilr_sdc_listings.feeds');
+      // Last importer assign faculty to classes
+      _ilr_sdc_listings_set_faculty_for_classes();
+    }
+  }
+}
+
+/**
+ * Implements hook_feeds_after_parse().
+ *
+ * Loop through all results from feed and prepare for import.
+ */
+function ilr_sdc_listings_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
+  module_load_include('inc', 'ilr_sdc_listings', 'ilr_sdc_listings.feeds');
+  $importer_ids = _ilr_sdc_listings_get_importer_ids();
+
+  if (in_array($source->importer->id, $importer_ids)) {
+    // These importer might take a longtime.
+    set_time_limit(600);
+    foreach ($result->items as &$item) {
+      _ilr_sdc_listings_prepare_source_item($item, $source);
+    }
+  }
+}
+
+/**
+ * Get importer files.
+ * @return array
+ *  Key are importer ids. Values are names of import files.
+ */
+function _ilr_sdc_listings_get_importer_files() {
+  $importer_files = array(
+    'sdc_course_importer' => 'ncourse',
+    'sdc_class_importer' => 'nclass',
+    'sdc_faculty_importer' => 'facultyFromSDC',
+  );
+  return $importer_files;
+}
+
+/**
+ * Implements hook_menu().
+ *
+ * Provide callback for redirecting from catalog number to node.
+ */
+function ilr_sdc_listings_menu() {
+  $items = array();
+
+  $items['catalog-course/%'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => '_ilr_sdc_listings_catalog_redirect',
+    'page arguments' => array(1),
+  );
+  return $items;
+}
+
+/**
+ * Redirect to the node page the matches the catalog number.
+ * @param $catalog_num
+ * @return int
+ */
+function _ilr_sdc_listings_catalog_redirect($catalog_num) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_course')
+    ->fieldCondition('field_catalog_prefix', 'value', $catalog_num);
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    $nid = array_pop(array_keys($results['node']));
+    drupal_goto("node/$nid");
+    return;
+  }
+  return MENU_NOT_FOUND;
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
+
+  switch ($node->type) {
+    case 'sdc_course':
+      _ilr_sdc_listings_course_add_classes($node, $view_mode);
+      break;
+    case 'sdc_class':
+      _ilr_sdc_listings_class_empty_msg($node, $view_mode);
+      _ilr_sdc_listings_class_add_reg_form($node, $view_mode);
+      _ilr_sdc_listings_class_add_readmore($node, $view_mode);
+      _ilr_sdc_listings_class_format_online($node, $view_mode);
+      ilr_sdc_listings_class_format_ondemand($node, $view_mode);
+      break;
+  }
+}
+
+/**
+ * Add special link to class detail
+ * @param $node
+ * @param $read_more_link
+ */
+function _ilr_sdc_listings_class_add_readmore(&$node, $view_mode) {
+  if ($view_mode == 'reference_field') {
+    $node_title_stripped = strip_tags($node->title);
+    $links['node-readmore'] = array(
+      'title' => t('Learn more about this class and its faculty'),
+      'href' => 'node/' . $node->nid,
+      'html' => TRUE,
+      'attributes' => array('rel' => 'tag', 'title' => $node_title_stripped),
+    );
+    $node->content['links']['node'] = array(
+      '#theme' => 'links__node__node',
+      '#links' => $links,
+      '#attributes' => array('class' => array('links', 'inline')),
+    );
+  }
+}
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function ilr_sdc_listings_node_view_alter(&$build) {
+  if ($build['#bundle'] == 'sdc_class') {
+    _ilr_sdc_listings_class_view_alter($build);
+  }
+}
+
+/**
+ * Alters Class node view.
+ *
+ * Remove most elements from address.
+ *
+ * Add course link.
+ * @param $build
+ */
+function _ilr_sdc_listings_class_view_alter(&$build) {
+  if ($build['#view_mode'] == 'teaser') {
+    if (isset($build['field_address'][0]['#address'])) {
+      $address_elements = array('locality', 'administrative_area');
+      foreach (element_children($build['field_address'][0]['#address']) as $element) {
+        if (!in_array($element, $address_elements)) {
+          $build['field_address'][0]['#address'][$element] = NULL;
+        }
+      }
+    }
+    unset($build['links']);
+    $build['field_course'][0] = _ilr_sdc_listings_class_course_link($build['#node']);
+  }
+}
+
+/**
+ * Add link to course.
+ *
+ * Title will be class title.
+ * Pass class nid in query string.
+ * @param $class_node
+ * @return array
+ *  Render array for link.
+ */
+function _ilr_sdc_listings_class_course_link($class_node) {
+  $node_wrapper = entity_metadata_wrapper('node', $class_node);
+  $course_title = $node_wrapper->field_course->field_catalog_prefix->value();
+  $course_title .= ' - ' . $node_wrapper->title->value();
+  return array(
+    '#theme' => 'link',
+    '#text' => $course_title,
+    '#path' => 'node/' . $node_wrapper->field_course->nid->value(),
+    '#options' => array(
+      'html' => FALSE,
+      'attributes' => array(),
+      'query' => array('class' => $class_node->nid),
+    ),
+
+  );
+}
+
+/**
+ * Remove address if class is online.
+ * @param $node
+ * @param $view_mode
+ */
+function _ilr_sdc_listings_class_format_online($node, $view_mode) {
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  if ($node_wrapper->field_online_class->value()) {
+    $online_field_weight = $node->content['field_address']['#weight'];
+    unset($node->content['field_address']);
+    $node->content['field_address'] = array(
+      '#type' => 'markup',
+      '#markup' => t(ILR_SDC_ONLINE_TEXT),
+      '#weight' => $online_field_weight,
+    );
+  }
+}
+
+/**
+ * Remove class dates if class is OnDemand.
+ * @param $node
+ * @param $view_mode
+ */
+function ilr_sdc_listings_class_format_ondemand($node, $view_mode) {
+
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  if ($node_wrapper->field_on_demand->value()) {
+    $dates_weight = $node->content['field_class_dates']['#weight'];
+    unset($node->content['field_class_dates']);
+
+    $node->content['field_class_dates'] = array(
+      '#type' => 'markup',
+      '#markup' => t(ILR_SDC_ONDEMAND_TEXT),
+      '#weight' => $dates_weight,
+    );
+  }
+}
+
+/**
+ * Add Class registratrion for to full course node view.
+ *
+ * @param $node
+ * @param $view_mode
+ */
+function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
+  if ($view_mode == 'full') {
+    $class_node_wrapper = entity_metadata_wrapper('node', $class_node);
+    $course = $class_node_wrapper->field_course->value();
+    $class_available = _ilr_sdc_listings_get_classes_for_course($course, array($class_node->nid));
+    if ($class_available) {
+      $form = drupal_get_form('ilr_sdc_listings_class_reg_form', array($class_node), TRUE, FALSE);
+      $class_node->content['classes'] = $form;
+    }
+    else {
+      drupal_set_message(t(variable_get('sdc_class_not_available')));
+    }
+  }
+}
+
+/**
+ * Add empty message to node class view.
+ * @param $course_node
+ * @param $view_mode
+ */
+function _ilr_sdc_listings_class_empty_msg($class_node, $view_mode) {
+  $node_wrapper = entity_metadata_wrapper('node', $class_node);
+  if ($node_wrapper->field_is_full->value()) {
+    switch ($view_mode) {
+      case 'teaser':
+        $full_msg = '[' . variable_get('sdc_class_full_teaser') . ']';
+        $weight = 100;
+        break;
+      default:
+        $full_msg = '[' . variable_get('sdc_class_full_full') .']';
+        $weight = -100;
+        break;
+    }
+    $class_node->content['full_message'] = array(
+      '#type' => 'markup',
+      '#markup' => $full_msg,
+      '#weight' => $weight,
+    );
+  }
+}
+
+/**
+ * Add class listing form to node course view.
+ * @param $course_node
+ * @param $view_mode
+ */
+function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
+
+  if ($view_mode == 'full') {
+    $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
+    $class_selected = _ilr_sdc_listings_get_class_from_url();
+    if ($class_selected && !in_array($class_selected, $class_nids)) {
+      drupal_set_message(variable_get('sdc_class_selected_not_available'));
+    }
+    if ($class_nids) {
+      $class_nodes = node_load_multiple($class_nids);
+      $has_override_price = _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node);
+      $form = drupal_get_form('ilr_sdc_listings_class_reg_form', $class_nodes, $has_override_price);
+      $course_node->content['classes'] = $form;
+      $course_node->content['classes']['#weight'] = 4;
+
+      if ($has_override_price) {
+        // If there is any class that has a different price we don't show price on course level
+        unset($course_node->content['field_price']);
+      }
+      if (count($class_nids) == 1) {
+        // When only 1 class show faculty info directly on this page.
+        $class_node = array_pop($class_nodes);
+        $course_node->content['faculty_info'] = field_view_field('node', $class_node, 'field_faculty', 'full');
+        $course_node->content['faculty_info']['#weight'] = 5;
+      }
+    }
+    else {
+      $course_node->content['classes'] = array(
+        '#type' => 'markup',
+        // @todo Decide on exact wording for no classes. Should this be configurable?
+        '#markup' => variable_get('sdc_class_no_sessions'),
+      );
+    }
+    $course_node->content['classes']['#weight'] = 2;
+  }
+}
+
+/**
+ * Form function to create class registration form.
+ *
+ * @param $form
+ * @param $form_state
+ * @param $class_nodes
+ * @param $has_override_price
+ * @param boolean $render_class
+ *  Whether render class info in form. If displaying on class itself info is not needed.
+ *
+ * @return array
+ */
+function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has_override_price, $render_class = TRUE) {
+  if ($render_class) {
+    $render_arrays = node_view_multiple($class_nodes, 'reference_field');
+  }
+  $default_class_id = NULL;
+  $class_nid_from_url = _ilr_sdc_listings_get_class_from_url();
+  $has_open_class = FALSE;
+  $form['addClass'] = array(
+    '#tree' => TRUE,
+  );
+  $class_radios = array();
+  foreach ($class_nodes as $nid => $class_node) {
+    $class_node_wrapper = entity_metadata_wrapper('node', $class_node);
+    if ($render_class) {
+      // Remove title because it is the same as the course
+      $render_array = $render_arrays['nodes'][$nid];
+      if ($class_node->title == $class_node_wrapper->field_course->title->value()) {
+        $render_array['#node']->title = '';
+      }
+
+      //unset($render_array['links']);
+      if (!$has_override_price) {
+        unset($render_array['field_price']);
+      }
+      if (count($class_nodes) == 1) {
+        // If only 1 class shown. Faculty will be shown on the course page.
+        unset($render_array['field_faculty']);
+        unset($render_array['links']);
+      }
+    }
+
+
+    $class_id = $class_node_wrapper->field_class_id->value();
+    if ($nid == $class_nid_from_url) {
+      $default_class_id = $class_id;
+    }
+    if ($class_node_wrapper->field_is_full->value()) {
+      if ($nid == $class_nid_from_url) {
+        drupal_set_message(variable_get('sdc_class_selected_full'));
+      }
+    }
+    else {
+      $has_open_class = TRUE;
+      if ($render_class && count($class_nodes) > 1) {
+        $form[$class_id] = array(
+          '#type' => 'radio',
+          '#return_value' => $class_id,
+          '#attributes' => array('name' => 'addClass'),
+          // Ensure single value in $form_state
+          '#parents' => array('addClass'),
+        );
+        if ($nid == $class_nid_from_url) {
+          $form[$class_id]['#attributes']['checked'] = 'checked';
+        }
+        $class_radios[] = $class_id;
+      }
+      else {
+        $form['addClass'] = array(
+          '#type' => 'hidden',
+          '#value' => $class_id,
+        );
+      }
+
+    }
+    if ($render_class) {
+      $form['class_view_' . $nid] = array(
+        '#type' => 'markup',
+        '#markup' => drupal_render($render_array),
+      );
+    }
+
+  }
+  if ($has_open_class) {
+    $form['courseurl'] = array(
+      '#type' => 'hidden',
+      '#value' => urlencode('http://www.ilr.cornell.edu'),
+    );
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Register'),
+    );
+    if (empty($class_nid_from_url) && count($class_radios) == 1) {
+      $only_class_id = array_pop($class_radios);
+      $form[$only_class_id]['#attributes']['checked'] = 'checked';
+
+    }
+  }
+  return $form;
+}
+
+/**
+ * Validation callback for ilr_sdc_listings_class_reg_form.
+ *
+ * Ensure class selected. Required not working for "radio" type.
+ */
+function ilr_sdc_listings_class_reg_form_validate($form, &$form_state) {
+  if (empty($form_state['values']['addClass'])) {
+    form_set_error('addClass', t('You must select a session.'));
+  }
+}
+
+/**
+ * Submit callback for ilr_sdc_listings_class_reg_form.
+ *
+ * Redirect to registration page.
+ */
+function ilr_sdc_listings_class_reg_form_submit($form, &$form_state) {
+  drupal_goto(variable_get('ilr_sdc_listings_reg_url', 'http://register.ilr.cornell.edu/registration/process/processcard.cfm'), array('query' => array('addClass' => $form_state['values']['addClass'])));
+}
+
+/**
+ * Retrieve the class nid from the url.
+ * @return int|null
+ */
+function _ilr_sdc_listings_get_class_from_url() {
+  if (!empty($_GET['class'])) {
+    $class_selected = $_GET['class'];
+    if (is_numeric($class_selected)) {
+      return $class_selected;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Determines if any of the classes for course have different prices.
+ * @param $class_nodes
+ * @param $course_node
+ * @return bool
+ */
+function _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node) {
+  $course_wrapper = entity_metadata_wrapper('node', $course_node);
+  $course_price = $course_wrapper->field_price->value();
+  foreach ($class_nodes as $class_node) {
+    $class_wrapper = entity_metadata_wrapper('node', $class_node);
+    if ($course_price != $class_wrapper->field_price->value()) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Get class nids for this course.
+ * @param $course_node
+ * @return array
+ *  nids for classes
+ */
+function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NULL) {
+  $today = date('Y-m-d');
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_class')
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_course', 'target_id', $course_node->nid)
+    ->fieldCondition('field_registration_end_date', 'value', $today, '>=');
+  if ($class_nids) {
+    $query->propertyCondition('nid', $class_nids);
+  }
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    return array_keys($results['node']);
+  }
+  return array();
+}
+
+/**
+ * Implements hook_preprocess_hook()
+ *
+ * Remove node URL from SDC Class and Faculty nodes.
+ *
+ * Remove title from Class on teaser.
+ *
+ *
+ */
+function ilr_sdc_listings_preprocess_node(&$variables) {
+  if ($variables['type'] == 'sdc_faculty') {
+    $variables['remove_title_link'] = TRUE;
+  }
+  if ($variables['type'] == 'sdc_class') {
+    if ($variables['view_mode'] == 'teaser') {
+      $variables['title'] = '';
+    }
+    else {
+      $variables['remove_title_link'] = TRUE;
+    }
+
+  }
+  if ($variables['type'] == 'sdc_course') {
+    if ($variables['view_mode'] == 'teaser') {
+      // When viewing Course teasers the catalog prefix should be in the title.
+      $wrapper = entity_metadata_wrapper('node', $variables['node']);
+      $variables['title'] = $wrapper->field_catalog_prefix->value() . ' - ' . $variables['title'];
+    }
+
+
+  }
+
+}
+
+/**
+ * Alter the default value for a Views date argument.
+ *
+ * @param object $argument
+ *   The argument object.
+ * @param string $value
+ *   The default value created by the argument handler.
+ */
+function ilr_sdc_listings_date_default_argument_alter(&$argument, &$value) {
+  $view = $argument->view;
+  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
+    if ($url_month = _ilr_sdc_listings_get_url_month_arg()) {
+      $value = $url_month;
+    }
+  }
+}
+
+/**
+ * Get Views Month Arg from URL.
+ *
+ * @return string
+ *  Month in format YYYY-MM
+ */
+function _ilr_sdc_listings_get_url_month_arg() {
+  if ($url_date = arg(_ilr_sdc_listings_get_path_alias_index())) {
+    $value = substr($url_date, 0, 7);
+    return $value;
+  }
+  return NULL;
+}
+
+function _ilr_sdc_listings_get_path_alias_index() {
+  $parts = explode('/', rtrim(ILR_SDC_PATH_ALIAS, '/'));
+  return count($parts) + 1;
+}
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * Attach month select form to Calender Nav Block.
+ * @param $view
+ *   The view object about to be processed.
+ */
+function ilr_sdc_listings_views_pre_render(&$view) {
+  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
+    $nav = '';
+    if (arg(2) == 'calendar-day') {
+      $month = _ilr_sdc_listings_get_url_month_arg();
+      $month_label = t('Back to @month ', array('@month' => date('F Y', strtotime($month))));
+      $url = _ilr_sdc_listings_calendar_month_url($month, FALSE);
+      $nav = '<p>' . l($month_label, $url, array('query' => _ilr_sdc_listings_get_field_query_values())) . '</p>';
+    }
+    $month_form = drupal_get_form('_ilr_listings_sdc_select_month_form');
+    $nav .= drupal_render($month_form);
+    $view->attachment_before = $nav;
+  }
+}
+
+/**
+ * Form to select month in Calendar Nav.
+ *
+ * Form redirects via javascript.
+ */
+function _ilr_listings_sdc_select_month_form($form, &$form_state) {
+  if ($url_month = _ilr_sdc_listings_get_url_month_arg()) {
+    $start_month = $url_month;
+  }
+  else {
+    if (ILR_SDC_PATH_ALIAS == current_path()) {
+      // Viewing all classes, not by date.
+      $start_month = NULL;
+    }
+    else {
+      $start_month = date('Y-m');
+    }
+
+  }
+
+  $month_options = _ilr_sdc_listings_get_month_options($start_month, 15);
+
+  $form['ilr_sdc_month_redirect'] = array(
+    '#type' => 'select',
+    '#options' => $month_options,
+    '#default_value' => '/' . _ilr_sdc_listings_calendar_month_url($start_month),
+  );
+  $form['#attached']['js'] = array(
+    drupal_get_path('module', 'ilr_sdc_listings') . '/js/ilr_sdc_listings.js',
+  );
+  return $form;
+}
+
+/**
+ * Get month options for dropdown.
+ * @param $start_month
+ * @param $month_count
+ * @param $key_prefix
+ * @return array
+ *  key - URL to redirect to will include month Views argument.
+ *  values - Label for month. "August 2014"
+ */
+function _ilr_sdc_listings_get_month_options($start_month, $month_count) {
+  $date_selected = TRUE;
+  if (!$start_month) {
+    $start_month = date('Y-m');
+    $date_selected = FALSE;
+  }
+  $month_options = array();
+  if ($date_selected) {
+    $half_count = round($month_count / 2);
+    $month = date('Y-m', strtotime("-$half_count months", strtotime($start_month)));
+    $earliest_month = date('Y-m', strtotime('-' . ILR_SDC_MAX_DAYS_PAST . ' days'));
+  }
+  else {
+    $month = $earliest_month = $start_month;
+  }
+  // Make sure our starting isn't earlier than earliest month to show.
+  while ($month < $earliest_month) {
+    $month = date('Y-m', strtotime("+1 months", strtotime($month)));
+  }
+  $i = 0;
+  while ($i++ < $month_count) {
+    $view_url = '/' . _ilr_sdc_listings_calendar_month_url($month);
+    $month_options[$view_url] = date('M Y', strtotime($month));
+    $month = date('Y-m', strtotime("+1 months", strtotime($month)));
+  }
+  if (!$date_selected) {
+    $month_options = array('' => 'Choose a month') + $month_options;
+  }
+  else {
+    $month_options = array('/' . ILR_SDC_PATH_ALIAS => 'Full Listing') + $month_options;
+  }
+  return $month_options;
+}
+
+/**
+ * Construct the redirect URL for the SDC Monthly calendar View.
+ *
+ * This handles any exposed filter field values that are in the URL.
+ * @param $month
+ *  Format YYYY-MM to work with Views contextual filter for date
+ * @return string
+ */
+function _ilr_sdc_listings_calendar_month_url($month, $include_query_string = TRUE) {
+  $url = ILR_SDC_PATH_ALIAS . "/calendar-month/$month";
+  if ($include_query_string) {
+    $query_parameters = _ilr_sdc_listings_get_field_query_values();
+    $query_string = drupal_http_build_query($query_parameters);
+    if ($query_string) {
+      $url .= '?' . $query_string;
+    }
+  }
+  return $url;
+
+}
+
+/**
+ * Get query string values that relates to field exposed filters
+ *
+ * @see drupal_get_query_parameters
+ * @return array
+ */
+function _ilr_sdc_listings_get_field_query_values() {
+  $query_parameters = drupal_get_query_parameters();
+  foreach (array_keys($query_parameters) as $query_key) {
+    if (substr($query_key, 0, 6) !== 'field_') {
+      unset($query_parameters[$query_key]);
+    }
+  }
+  return $query_parameters;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * form_id = ilr_editable_settings_form
+ * @see ilr_editable_settings module.
+ */
+function ilr_sdc_listings_form_ilr_editable_settings_form_alter(&$form, &$form_state, $form_id) {
+  $form['sdc_set'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('SDC Course Listings Messages'),
+
+  );
+  $form['sdc_set']['sdc_class_full_full'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Class is full message on class page'),
+    '#default_value' => 'Seats in this session are limited. Please call 866-470-1922 to register.',
+  );
+  $form['sdc_set']['sdc_class_full_teaser'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Class is full message on class list'),
+    '#default_value' => 'Class is full, but other dates may be available',
+  );
+  $form['sdc_set']['sdc_class_not_available'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Class is no longer available'),
+    '#default_value' => 'This class date is no longer available.',
+  );
+  $form['sdc_set']['sdc_class_selected_not_available'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Class SELECTED is no longer available'),
+    '#default_value' => 'The class you selected is no longer available.',
+  );
+  $form['sdc_set']['sdc_class_no_sessions'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Class has no sessions'),
+    '#default_value' => 'There are currently no sessions offered.',
+  );
+  $form['sdc_set']['sdc_class_selected_full'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Class selected is full'),
+    '#default_value' => 'The class date you selected is full.',
+  );
+}
+
+function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
+  if (isset($form['field_online_class_value'])) {
+    $form['field_online_class_value']['#options'] =
+      array(
+        'All' => 'Both',
+        '0' => 'In-person',
+        '1' => 'Online',
+      );
+  }
+  $view = $form_state['view'];
+  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
+    // Set After Build function to hide filters.
+    $form['#after_build'][] = '_ilr_sdc_listings_hide_view_filters';
+  }
+}
+
+/**
+ * #after_build callback to hide exposed filters
+ *
+ * If they hidden outside of #after_build Views will not respect filters
+ * @param $form
+ * @param $form_state
+ * @return array
+ */
+function _ilr_sdc_listings_hide_view_filters($form, &$form_state) {
+  $view = $form_state['view'];
+  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
+    //$form['submit']['#access'] = FALSE;
+    $hide_elements = array('field_online_class_value', 'field_sdc_department_tid');
+    foreach ($hide_elements as $hide_element) {
+      $form[$hide_element]['#access'] = FALSE;
+    }
+    return $form;
+  }
+
+}
+
+/**
+ * Gets the mlid of a menu link based on the alias
+ * See ilr_sdc_listings_update_7001()
+ */
+function _ilr_sdc_listings_get_mlid_of_path($path) {
+  $mlid = array();
+  $menu_info = db_select('menu_links' , 'ml')
+    ->condition('ml.link_path' , $path)
+    ->fields('ml', array('mlid', 'plid'))
+    ->execute()
+    ->fetchAll();
+
+  if (count($menu_info)) {
+    return $menu_info[0]->mlid;
+  }
+  return NULL;
+}
+
+/**
+ * Returns the uri of the parent page
+ * based on the pathauto alias rules
+ * See ilr_sdc_listings_update_7001()
+ */
+function _ilr_sdc_listings_get_parent_path_alias($path) {
+  $parts = explode('/', rtrim($path, '/'));
+  $sliced = array_slice($parts, 0, -1);
+  return implode("/", $sliced);
+}

@@ -1,0 +1,405 @@
+<?php
+
+/**
+* Implements hook_menu().
+*/
+function cul_new_books_menu() {
+  $items = array();
+  $items['library/research/collections/new-books'] = array(
+    'title' => 'New Books at Catherwood Libary',
+    'page callback' => '_cul_new_books_view',
+    'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+/**
+ * The page callback function defined in hook_menu().
+ * The rss icon is lifted from theme_feed_icon() in theme.inc
+ */
+function _cul_new_books_view() {
+  // return the render a
+  drupal_add_js(drupal_get_path('module','cul_new_books') . '/cul_new_books.js', array('type' => 'file', 'scope' => 'footer'));
+  drupal_add_js(array('cul_new_books' => array('allCategories' => _cul_new_books_get_categories())), 'setting');
+
+  $alt="Subscribe to the New Books RSS Feed";
+  $icon = theme('image', array('path' => 'misc/feed.png', 'width' => 16, 'height' => 16, 'alt' => $alt, 'title' => $alt));
+  $rss_link = '<a class="rss new-books" href="http://newbooks.mannlib.cornell.edu/rss?loc=ilr">' . $icon . '</a>';
+  $content = '<p>See our latest acquisitions (books, media and more), organized by subject. You may also subscribe to our rss feed of new books. '. $rss_link .'</p>';
+
+  $select_menu = drupal_get_form('cul_new_books_select_form_placeholder');
+  $content .= drupal_render($select_menu);
+  $content .= _cul_new_books_generate_books_markup();
+
+  $page_array = array(
+    '#markup' => $content,
+    '#attached' => array(
+      'js' => array(
+        array(
+          'type' => 'file',
+          'data' => drupal_get_path('module', 'cul_new_books') . '/cul_new_books.js',
+        ),
+      ),
+    ),
+  );
+  return $page_array;
+}
+
+/**
+ * Placeholder function that adds a select menu so that
+ * chosen will work on the select generated in cul_new_books.js
+ */
+function cul_new_books_select_form_placeholder($form, &$form_state) {
+  $form['categories'] = array(
+    '#title' => t('Filter by category:') ,
+    '#type' => 'select',
+    '#multiple' => TRUE,
+    '#default_value' => array(
+    ),
+    '#options' => array(
+    ),
+  );
+  return $form;
+}
+
+/**
+ * Generates the markup for the book list
+ */
+function _cul_new_books_generate_books_markup() {
+  $markup = '';
+  $first = TRUE;
+  $book_json = cul_new_books_get_json();
+  if (!empty($book_json)) {
+    foreach($book_json as $book_data) {
+      $markup .= cul_new_books_generate_book_markup($book_data, $first);
+      $first = FALSE;
+    }
+  }
+  $markup .= "</div>"; //Close the last div from cul_new_books_generate_book_markup
+  return $markup;
+}
+
+/**
+ * Generates the markup for a single book
+ */
+function cul_new_books_generate_book_markup($book_data, $first=FALSE) {
+  $markup = '';
+  $category = cul_new_books_get_category($book_data['class']);
+  $current_category = &drupal_static(__FUNCTION__);
+  if ($category != $current_category['title']) {
+    $current_category['title'] = $category;
+    $current_category['class'] = drupal_html_class($category);
+    if(!$first) {
+      $markup .= "</div>\n";
+    }
+    $markup .= "<div class='new-book-category {$current_category['class']}'><h2>$category</h2>";
+  }
+  $markup .= '<h3 class="book '. $current_category['class'] .'"><a href="http://newcatalog.library.cornell.edu/catalog/' . $book_data['voyager'] .'">' . $book_data['title'] . '</a></h3>';
+  $markup .= '<p>' . $book_data['title-full'] . ' ' . $book_data['publisher'] . ', ' .  $book_data['date'];
+  $markup .= cul_new_books_generate_extent_markup($book_data);
+  $markup .= cul_new_books_generate_location_markup($book_data['holdings']);
+  return $markup;
+}
+
+/**
+ * Generates the markup for the location
+ * There may be multiple locations for a given book.
+ */
+function cul_new_books_generate_location_markup($location_data) {
+  $markup = '';
+  if (isset($location_data['call'])) {
+    $markup .= '<br />';
+    $markup .= $location_data['call'] . ' &mdash; ' . $location_data['location'];
+  }
+  else {
+    foreach ($location_data as $key => $location) {
+      $markup .= '<br />';
+      $markup .= $location_data[$key]['call'] . ' &mdash; ' . $location_data[$key]['location'];
+    }
+  }
+
+  return $markup;
+}
+
+/**
+ * Generates the markup for book length info
+ */
+function cul_new_books_generate_extent_markup($book_data) {
+   return (isset($book_data['extent'])) ? $book_data['extent'] : '';
+}
+
+/**
+ * Retrieves the json from newbooks site or the cache
+ * Note that the json is updated monthly, on the first of the month
+ */
+function cul_new_books_get_json() {
+  if ($cache = cache_get('cul_new_books')) {
+    $book_json = $cache->data;
+  } else {
+    $url = "http://newbooks.mannlib.cornell.edu/rss?location=ILR&format=json";
+    $data = file_get_contents($url);
+    $json = json_decode($data, true);
+    $book_json = $json['results'];
+    cache_set('cul_new_books', $book_json, 'cache', time() + 60 * 60 * 24 * 14);// 60 * 60 * 24 * 14 = 2 weeks
+  }
+  return $book_json;
+}
+
+function _cul_new_books_get_categories() {
+  return array(
+    '~' => "[No Classification]",
+    'A' => "General works",
+    'B' => "Philosophy. Psychology. Religion",
+    'C' => "Auxiliary sciences of history",
+    'D' => "History",
+    'E' => "American history",
+    'F' => "American history",
+    'G' => "Geography. Anthropology. Recreation",
+    'H' => "Social sciences",
+    'J' => "Political science",
+    'K' => "Law",
+    'L' => "Education",
+    'M' => "Music",
+    'N' => "Fine arts",
+    'P' => "Language and literature",
+    'Q' => "Science",
+    'R' => "Medicine",
+    'S' => "Agriculture",
+    'T' => "Technology",
+    'U' => "Military science",
+    'V' => "Naval science",
+    'Z' => "Bibliography. Library science",
+    'AC' =>  "Collections. Series. Collected works",
+    'AE' =>  "Encyclopedias",
+    'AG' =>  "Dictionaries and other general reference works",
+    'AI' =>  "Indexes",
+    'AM' =>  "Museums. Collectors and collecting",
+    'AN' =>  "Newspapers",
+    'AP' =>  "Periodicals",
+    'AS' =>  "Academies and learned societies",
+    'AY' =>  "Yearbooks. Almanacs. Directories",
+    'AZ' =>  "History of scholarship and learning. The humanities",
+    'BC' =>  "Logic",
+    'BD' =>  "Speculative philosophy",
+    'BF' =>  "Psychology",
+    'BH' =>  "Aesthetics",
+    'BJ' =>  "Ethics",
+    'BL' =>  "Religions. Mythology. Rationalism",
+    'BM' =>  "Judaism",
+    'BP' =>  "Islam. Bahaism. Theosophy, etc.",
+    'BQ' =>  "Buddhism",
+    'BR' =>  "Christianity",
+    'BS' =>  "The Bible",
+    'BT' =>  "Doctrinal Theology",
+    'BV' =>  "Practical Theology",
+    'BX' =>  "Christian Denominations",
+    'CB' =>  "History of Civilization",
+    'CC' =>  "Archaeology",
+    'CD' =>  "Diplomatics. Archives. Seals",
+    'CE' =>  "Technical Chronology. Calendar",
+    'CJ' =>  "Numismatics",
+    'CN' =>  "Inscriptions. Epigraphy",
+    'CR' =>  "Heraldry",
+    'CS' =>  "Genealogy",
+    'CT' =>  "Biography",
+    'DA' =>  "Great Britain",
+    'DAW' => "Central Europe",
+    'DB' =>  "Austria - Liechtenstein - Hungary - Czechoslovakia",
+    'DC' =>  "France - Andorra - Monaco",
+    'DD' =>  "Germany",
+    'DE' =>  "Greco-Roman World",
+    'DF' =>  "Greece",
+    'DG' =>  "Italy - Malta",
+    'DH' =>  "Low Countries - Benelux Countries",
+    'DJ' =>  "Netherlands (Holland)",
+    'DJK' => "Eastern Europe (General)",
+    'DK' =>  "Russia. Soviet Union. Former Soviet Republics - Poland",
+    'DL' =>  "Northern Europe. Scandinavia",
+    'DP' =>  "Spain - Portugal",
+    'DQ' =>  "Switzerland",
+    'DR' =>  "Balkan Peninsula",
+    'DS' =>  "Asia",
+    'DT' =>  "Africa",
+    'DU' =>  "Oceania (South Seas)",
+    'DX' =>  "Gypsies",
+    'GA' =>  "Mathematical geography. Cartography",
+    'GB' =>  "Physical geography",
+    'GC' =>  "Oceanography",
+    'GE' =>  "Environmental Sciences",
+    'GF' =>  "Human ecology. Anthropogeography",
+    'GN' =>  "Anthropology",
+    'GR' =>  "Folklore",
+    'GT' =>  "Manners and customs (General)",
+    'GV' =>  "Recreation. Leisure",
+    'HA' =>  "Statistics",
+    'HB' =>  "Economic theory. Demography",
+    'HC' =>  "Economic history and conditions",
+    'HD' =>  "Industries. Land use. Labor",
+    'HE' =>  "Transportation and communications",
+    'HF' =>  "Commerce",
+    'HG' =>  "Finance",
+    'HJ' =>  "Public finance",
+    'HM' =>  "Sociology (General)",
+    'HN' =>  "Social history and conditions. Social problems. Social reform",
+    'HQ' =>  "The family. Marriage. Women",
+    'HS' =>  "Societies: secret, benevolent, etc.",
+    'HT' =>  "Communities. Classes. Races",
+    'HV' =>  "Social pathology. Social and public welfare. Criminology",
+    'HX' =>  "Socialism. Communism. Anarchism",
+    'JA' =>  "Political science (General)",
+    'JC' =>  "Political theory",
+    'JF' =>  "Political institutions and public administration - General",
+    'JJ' =>  "Political institutions and public administration - North America",
+    'JK' =>  "Political institutions and public administration - United States",
+    'JL' =>  "Political institutions and public administration - Canada, West Indies, Mexico, Central and South America",
+    'JN' =>  "Political institutions and public administration - Europe",
+    'JQ' =>  "Political institutions and public administration - Asia, Arab countries, Islamic countries, Africa, Atlantic Ocean islands, Australia, New Zealand, Pacific Ocean islands",
+    'JS' =>  "Local government. Municipal government",
+    'JV' =>  "Colonies and colonization. Emigration and immigration. International migration",
+    'JX' =>  "International law",
+    'JZ' =>  "International relations",
+    'KB' =>  "Religious law. Jurisprudence",
+    'KD' =>  "United Kingdom and Ireland. America. North America",
+    'KE' =>  "Canada",
+    'KF' =>  "United States",
+    'KG' =>  "Latin America - Mexico and Central America -West Indies. Caribbean area",
+    'KH' =>  "South America",
+    'KJ' =>  "Europe",
+    'KJE' =>  "Europe",
+    'KK' =>  "Europe",
+    'KL' =>  "Asia and Eurasia, Africa",
+    'KM' =>  "Middle East. Southwest Asia",
+    'KN' =>  "South Asia. Southeast Asia. East Asia",
+    'KP' =>  "South Asia. Southeast Asia. East Asia",
+    'KQ' =>  "Africa",
+    'KR' =>  "Africa",
+    'KS' =>  "Africa",
+    'KT' =>  "Africa",
+    'KU' =>  "Australia. New Zealand",
+    'KV' =>  "Pacific Area. Antarctica",
+    'KW' =>  "Pacific Area. Antarctica",
+    'KZ' =>  "Law of nations",
+    'LA' =>  "History of education",
+    'LB' =>  "Theory and practice of education",
+    'LC' =>  "Special aspects of education",
+    'LD' =>  "Individual institutions - United States",
+    'LE' =>  "Individual institutions - America (except United States)",
+    'LF' =>  "Individual institutions - Europe",
+    'LG' =>  "Individual institutions - Asia, Africa, Indian Ocean islands, Australia, New Zealand, Pacific islands",
+    'LH' =>  "College and school magazines and papers",
+    'LJ' =>  "Student fraternities and societies, United States",
+    'LT' =>  "Textbooks",
+    'ML' =>  "Literature on music",
+    'MT' =>  "Musical instruction and study",
+    'NA' =>  "Architecture",
+    'NB' =>  "Sculpture",
+    'NC' =>  "Drawing. Design. Illustration",
+    'ND' =>  "Painting",
+    'NE' =>  "Print media",
+    'NK' =>  "Decorative arts",
+    'NX' =>  "Arts in general",
+    'PA' =>  "Greek language and literature. Latin language and literature",
+    'PB' =>  "Modern languages. Celtic languages",
+    'PC' =>  "Romanic languages",
+    'PD' =>  "Germanic languages. Scandinavian languages",
+    'PE' =>  "English language",
+    'PF' =>  "West Germanic languages",
+    'PG' =>  "Slavic languages. Baltic languages. Albanian language",
+    'PH' =>  "Uralic languages. Basque language",
+    'PJ' =>  "Oriental languages and literatures",
+    'PK' =>  "Indo-Iranian languages and literatures",
+    'PL' =>  "Languages and literatures of Eastern Asia, Africa, Oceania",
+    'PM' =>  "Hyperborean, Indian, and artificial languages",
+    'PN' =>  "Literature (General)",
+    'PQ' =>  "French literature - Italian literature - Spanish literature - Portuguese literature",
+    'PR' =>  "English literature",
+    'PS' =>  "American literature",
+    'PT' =>  "Germanic literature",
+    'PZ' =>  "Fiction and juvenile belles lettres",
+    'QA' =>  "Mathematics",
+    'QB' =>  "Astronomy",
+    'QC' =>  "Physics",
+    'QD' =>  "Chemistry",
+    'QE' =>  "Geology",
+    'QH' =>  "Natural history - Biology",
+    'QK' =>  "Botany",
+    'QL' =>  "Zoology",
+    'QM' =>  "Human anatomy",
+    'QP' =>  "Physiology",
+    'QR' =>  "Microbiology",
+    'RA' =>  "Public aspects of medicine",
+    'RB' =>  "Pathology",
+    'RC' =>  "Internal medicine",
+    'RD' =>  "Surgery",
+    'RE' =>  "Ophthalmology",
+    'RF' =>  "Otorhinolaryngology",
+    'RG' =>  "Gynecology and obstetrics",
+    'RJ' =>  "Pediatrics",
+    'RK' =>  "Dentistry",
+    'RL' =>  "Dermatology",
+    'RM' =>  "Therapeutics. Pharmacology",
+    'RS' =>  "Pharmacy and materia medica",
+    'RT' =>  "Nursing",
+    'RV' =>  "Botanic, Thomsonian, and eclectic medicine",
+    'RX' =>  "Homeopathy",
+    'RZ' =>  "Other systems of medicine",
+    'SB' =>  "Plant culture",
+    'SD' =>  "Forestry",
+    'SF' =>  "Animal culture",
+    'SH' =>  "Aquaculture. Fisheries. Angling",
+    'SK' =>  "Hunting sports",
+    'TA' =>  "Engineering (General). Civil engineering",
+    'TC' =>  "Hydraulic engineering. Ocean engineering",
+    'TD' =>  "Environmental technology. Sanitary engineering",
+    'TE' =>  "Highway engineering. Roads and pavements",
+    'TF' =>  "Railroad engineering and operation",
+    'TG' =>  "Bridge engineering",
+    'TH' =>  "Building construction",
+    'TJ' =>  "Mechanical engineering and machinery",
+    'TK' =>  "Electrical engineering. Electronics. Nuclear engineering",
+    'TL' =>  "Motor vehicles. Aeronautics. Astronautics",
+    'TN' =>  "Mining engineering. Metallurgy",
+    'TP' =>  "Chemical technology",
+    'TR' =>  "Photography",
+    'TS' =>  "Manufactures",
+    'TT' =>  "Handicrafts. Arts and crafts",
+    'TX' =>  "Home economics",
+    'UA' =>  "Armies: Organization, distribution, military situation",
+    'UB' =>  "Military administration",
+    'UC' =>  "Maintenance and transportation",
+    'UD' =>  "Infantry",
+    'UE' =>  "Cavalry. Armor",
+    'UF' =>  "Artillery",
+    'UG' =>  "Military engineering. Air forces",
+    'UH' =>  "Other services",
+    'VA' =>  "Navies: Organization, distribution, naval situation",
+    'VB' =>  "Naval administration",
+    'VC' =>  "Naval maintenance",
+    'VD' =>  "Naval seamen",
+    'VE' =>  "Marines",
+    'VF' =>  "Naval ordnance",
+    'VG' =>  "Minor services of navies",
+    'VK' =>  "Navigation. Merchant marine",
+    'VM' =>  "Naval architecture. Shipbuilding. Marine engineering",
+    'ZA' =>  "Information resources (General)",
+  );
+}
+
+/**
+ * Generates the category, based on a hardcoded
+ * array emailed by Keith Jenkins (kgj2@cornell.edu)
+ * He is not planning to add this functionality to the feed at this time.
+ */
+function cul_new_books_get_category($class) {
+  $category = '';
+  $categories = _cul_new_books_get_categories();
+  $class_key = strtok($class, ' ');
+
+  if (array_key_exists($class_key, $categories)) {
+    return "$class_key. $categories[$class_key]";
+  }
+  else {
+    watchdog('cul_new_books', "Category key missing for $class_key.", NULL, WATCHDOG_ERROR);
+    return $class_key . '.';
+  }
+}

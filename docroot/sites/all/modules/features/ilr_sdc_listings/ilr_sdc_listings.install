@@ -1,0 +1,134 @@
+<?php
+/**
+ * @file
+ * ilr_sdc_listings install and update hooks.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function ilr_sdc_listings_install() {
+  _ilr_sdc_listings_set_importer_sources();
+  _ilr_sdc_listings_set_bean_types();
+
+  // Set feature specific variables
+  variable_set('ilr_sdc_listings_reg_url', 'http://www.ilr.cornell.edu/registration/process/processcard.cfm');
+}
+
+/**
+ * Install function to enable View Bean Types for this module.
+ */
+function _ilr_sdc_listings_set_bean_types() {
+  $bean_types = variable_get('views_beans_bean_types', array());
+  $bean_types['filtered_courses'] = 'Filtered Courses';
+  $bean_types['course_manual_listing'] = 'Course Manual Listing';
+  variable_set('views_beans_bean_types', $bean_types);
+  // Rebuild Bean Types and Menu
+  bean_bean_cache_clear();
+  cache_clear_all('plugins:bean:types', 'cache');
+  variable_set('menu_rebuild_needed', TRUE);
+}
+/**
+ * Set the source urls for all feeds importers in this module
+ */
+function _ilr_sdc_listings_set_importer_sources() {
+  /**
+   * In order to use local copies of import files in development:
+   * use: drush vset ilr_sdc_listings_base_feed_url 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/'
+   * or set in settings.php
+   * $conf['ilr_sdc_listings_base_feed_url'] = 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/';
+   */
+  $base_url = variable_get('ilr_sdc_listings_base_feed_url', 'http://www.ilr.cornell.edu/registration/feeds/get.cfm?q=');
+
+  $importer_files = _ilr_sdc_listings_get_importer_files();
+  foreach ($importer_files as $importer_id => $importer_file) {
+    $source = feeds_source($importer_id);
+    $source->addConfig(array(
+      'FeedsHTTPFetcher' => array(
+        'source' => $base_url . $importer_file,
+      ),
+    ));
+    $source->save();
+  }
+  // Faculty/Class relationship file is not used in a feed.
+  variable_set('ilr_sdc_listings_faculty_class_assignments_url', $base_url . 'classFacultyFromSDC');
+}
+
+/**
+ * Adds the menu links for the public offerings and calendar
+ */
+function ilr_sdc_listings_update_7001() {
+  $links = array(
+    array(
+      'link_title' => 'Public Offerings',
+      'link_path' => ILR_SDC_PATH_ALIAS,
+    ),
+    array(
+      'link_title' => 'Calendar',
+      'link_path' => ILR_SDC_PATH_ALIAS . '/calendar-month',
+    ),
+  );
+
+  $item = '';
+  foreach ($links as $link) {
+    $alias = _ilr_sdc_listings_get_parent_path_alias($link['link_path']);
+    $mlid = ($mlid = _ilr_sdc_listings_get_mlid_of_path($alias)) ? $mlid : _ilr_sdc_listings_get_mlid_of_path(drupal_get_normal_path($alias));
+    $item = array(
+      'link_path' => $link['link_path'],
+      'link_title' => $link['link_title'],
+      'menu_name' => 'main-menu',
+      'plid' => $mlid,
+    );
+    // Look the table first if the data does exist
+    $exists = db_query("SELECT mlid from {menu_links} WHERE link_title=:link_title AND link_path=:link_path", array(':link_title' =>  $link['link_title'], ':link_path' => $link['link_path']))->fetchField();
+    // Save the record if the data does not exist
+    if (!$exists) {
+      menu_link_save($item);
+    }
+  }
+}
+
+/**
+ * Enables the View Bean Types
+ */
+function ilr_sdc_listings_update_7002() {
+  _ilr_sdc_listings_set_bean_types();
+}
+
+/**
+ * Update SDC Course aliases.
+ * Implements hook_update_N().
+ */
+function ilr_sdc_listings_update_7003(&$sandbox) {
+  _ilr_sdc_listings_update_aliases();
+}
+
+/**
+ * Disable Entityreference Filter
+ */
+function ilr_sdc_listings_update_7004() {
+  module_disable(array('entityreference_filter'));
+}
+/**
+ * Update aliases for sdc content types.
+ */
+function _ilr_sdc_listings_update_aliases() {
+  module_load_include('inc', 'pathauto');
+  module_load_include('inc', 'pathauto.pathauto');
+
+  // Get all nodes that need to be updated
+  $query = db_select('node', 'n');
+  $query->addField('n', 'nid');
+  $query->condition('n.type', array('sdc_course', 'sdc_class', 'sdc_faculty'), 'IN');
+
+  $nids = $query->execute()->fetchCol();
+
+  // Save current action for new aliases and change it to delete old one.
+  $alias_action = variable_get('pathauto_update_action', 0);
+  variable_set('pathauto_update_action', PATHAUTO_UPDATE_ACTION_DELETE);
+
+  pathauto_node_update_alias_multiple($nids, 'bulkupdate');
+
+  // Restore original action for new aliases.
+  variable_set('pathauto_update_action', $alias_action);
+}

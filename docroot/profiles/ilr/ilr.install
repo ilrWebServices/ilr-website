@@ -48,11 +48,22 @@ function ilr_install() {
   $admin_role = user_role_load_by_name('administrator');
   variable_set('simplesamlphp_auth_rolepopulation', "{$admin_role->rid}:uid,=,atf46|{$admin_role->rid}:uid,=,nr52|{$admin_role->rid}:uid,=,cgh2|{$admin_role->rid}:uid,=,fjp2|{$admin_role->rid}:uid,=,ddd1|{$admin_role->rid}:uid,=,tls245");
 
-  // Install dir is more complicated. It needs to be a full path. We assume
-  // that it is in a directory at the same level as the docroot. We also
-  // determine the $simplesamlphp_installdir based on whether we're
-  // on Acquia or Vagrant
-  $drupal_path = (isset($_ENV["AH_SITE_GROUP"])) ? DRUPAL_ROOT : '/var/www/ilr-website/docroot';
+  // Deal with ENV specific settings
+  if (isset($_ENV["AH_SITE_ENVIRONMENT"])) {
+    $drupal_path = DRUPAL_ROOT;
+    // Enable the helper module for logging emails
+    if ($_ENV['AH_SITE_ENVIRONMENT'] != 'prod') {
+      module_enable(array(
+        'helper'
+      ));
+    }
+  }
+  else {
+    $drupal_path = '/var/www/ilr-website/docroot';
+    // Set the temporary path
+    variable_set('file_temporary_path', '/tmp');
+  }
+
   $simplesamlphp_installdir = str_replace(array(
     '/docroot',
   ), array(
@@ -60,6 +71,9 @@ function ilr_install() {
   ), $drupal_path);
 
   variable_set('simplesamlphp_auth_installdir', $simplesamlphp_installdir);
+
+  // Set the public file system path
+  variable_set('file_public_path', 'sites/default/files');
 
   // Disable default email notification on user activation
   // The main reason to do this is that a user created via
@@ -74,88 +88,37 @@ function ilr_install() {
   // Set the homepage, relying on hook_menu in the profile
   variable_set('site_frontpage', 'home');
 
-  // Enable custom modules
-  module_enable(array(
-    'basic_page',
-    'ilr_footer_menu',
-    'localist_block',
-    'scheinman_neutral',
-    'news',
-    'people_profiles',
-    'wit',
-    'google_analytics_universal',
-    'forms',
-    'spotlight',
-    'tagged_content_block',
-  ));
-
-  _ilr_add_permissions();
-
-  // Add Migrations here as necessary
-  ilr_update_7001();
-  ilr_update_7002();
-  ilr_update_7003();
-  ilr_update_7004();
-}
-
-/**
- * Enables the Features for people_profile_import
- * and settings_and_permissions as a hook
- * due to buggy AoE term and permission creation
- */
-function ilr_update_7001() {
-  module_enable(array(
-    'people_profile_import',
-    'settings_and_permissions',
-  ));
-}
-
-/**
- * Enables the entityform_block module
- */
-function ilr_update_7002() {
-  module_enable(array(
-    'entityform_block'
-  ));
-}
-
-/**
- * Assigns content types for tagged blocks
- */
-function ilr_update_7003() {
-  $enabled_content_types = array(
-    'news_item' => 'news_item',
-    'spotlight' => 'spotlight',
-  );
-
-  variable_set(
-    'tagged_content_block_enabled_bundles',
-    $enabled_content_types
-  );
-}
-
-/**
- * Enables the helper module on Acquia dev and test
- */
-function ilr_update_7004() {
   if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] != 'prod') {
     module_enable(array(
       'helper'
     ));
   }
+
+  _ilr_add_permissions();
+
+  // Explicitly call any hook_update_n implementations needed to run on install.
+  // These hooks will be skipped by initial install but will run on updatedb of current site.
+  ilr_update_7007();
+  ilr_update_7008();
 }
 
 /**
  * Custom function for role creation
+ * Can be called in an update hook after adding
+ * a new role to the $roles array here.
+ * @see ilr_update_7034
  */
 function _ilr_create_roles() {
-  $roles = array('administrator','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin');
+  $roles = array('administrator','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin', 'course admin', 'form admin');
 
+  $weight = 0;
   foreach ($roles as $name) {
-    $role = new stdClass();
-    $role->name = $name;
-    $role->weight = 2;
-    user_role_save($role);
+    if (!user_role_load_by_name($name)) {
+      $role = new stdClass();
+      $role->name = $name;
+      $role->weight = $weight++;
+      user_role_save($role);
+    }
   }
 }
 
@@ -163,6 +126,11 @@ function _ilr_create_roles() {
  * Custom function for role creation
  */
 function _ilr_add_permissions() {
+  // Enable the permissions module
+  module_enable(array(
+    'ilr_permissions',
+  ));
+
   // Assign all available permissions to admin
   $admin_role = user_role_load_by_name('administrator');
   user_role_grant_permissions($admin_role->rid, array_keys(module_invoke_all('permission')));
@@ -175,4 +143,307 @@ function _ilr_add_permissions() {
     ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
     ->execute();
 
+}
+/**
+ * Enables jpanelmenu
+ */
+function ilr_update_7001() {
+  module_enable(array(
+    'jpanelmenu'
+  ));
+}
+
+/**
+ * Enables borealis responsive images
+ */
+function ilr_update_7002() {
+  module_enable(array(
+    'borealis_ri',
+  ));
+}
+
+/**
+ * Enables custom_publishing_options
+ */
+function ilr_update_7003() {
+  module_enable(array(
+    'custom_publishing_options',
+  ));
+}
+
+/**
+ * Enables registration_pages
+ */
+function ilr_update_7004() {
+  module_enable(array(
+    'registration_pages',
+  ));
+}
+
+/**
+ * Enables ilr workspan feature
+ */
+function ilr_update_7005() {
+  module_enable(array(
+    'ilr_workspan',
+  ));
+}
+
+/**
+ * Enables globalredirect module
+ */
+function ilr_update_7006() {
+  module_enable(array(
+    'globalredirect',
+  ));
+}
+
+/**
+ * Enable Date format and JQuery update admin version variables.
+ */
+function ilr_update_7007() {
+  variable_set('date_format_ilr_short_day_only', 'M j');
+  variable_set('jquery_update_jquery_admin_version', '1.5');
+}
+
+/**
+ * Set default date formats.
+ */
+function ilr_update_7008() {
+  $formats_defaults = array(
+    'long' =>'l, F j, Y - g:ia',
+    'medium' => 'D, m/d/Y - g:ia',
+    'short' => 'Y-m-d H:i',
+  );
+
+  foreach ($formats_defaults as $date_type => $formats_default) {
+    variable_set("date_format_$date_type", $formats_default);
+  }
+}
+
+/**
+ * Enables ilr_sdc_settings
+ */
+function ilr_update_7009() {
+  module_enable(array(
+    'ilr_sdc_listings',
+  ));
+}
+
+/**
+ * Enables ilr_sub_pages module
+ */
+function ilr_update_7010() {
+  module_enable(array(
+    'ilr_sub_pages',
+  ));
+}
+
+/**
+ * Enables student_portaits feature
+ */
+function ilr_update_7011() {
+  module_enable(array(
+    'student_portraits',
+  ));
+}
+
+/**
+ * Adds course admin role
+ */
+function ilr_update_7012() {
+  if (!user_role_load_by_name('course admin')) {
+    $role = new stdClass();
+    $role->name = 'course admin';
+    $role->weight = $weight++;
+    user_role_save($role);
+  }
+}
+
+/**
+ * Enables sub_sites custom module
+ */
+function ilr_update_7013() {
+  module_enable(array(
+    'ilr_sub_sites',
+  ));
+}
+
+/**
+ * Enables cul_new_books custom module
+ */
+function ilr_update_7014() {
+  module_enable(array(
+    'cul_new_books',
+  ));
+}
+
+/**
+ * Enables ilr_mega_menu feature
+ */
+function ilr_update_7015() {
+  module_enable(array(
+    'ilr_mega_menu',
+  ));
+}
+
+/**
+ * Enables ilr_bean_admin feature
+ */
+function ilr_update_7016() {
+  module_enable(array(
+    'ilr_bean_admin',
+  ));
+}
+
+/**
+ * Enables cul_hours feature
+ */
+function ilr_update_7017() {
+  module_enable(array(
+    'cul_hours',
+  ));
+}
+
+/**
+ * Enables ilr_xml_blocks feature
+ */
+function ilr_update_7018() {
+  module_enable(array(
+    'ilr_xml_blocks',
+  ));
+}
+
+/**
+ * Enables ilr_google_translate feature
+ */
+function ilr_update_7019() {
+  module_enable(array(
+    'ilr_google_translate',
+  ));
+}
+
+/**
+ * Enables ilr_alumni_events custom module
+ */
+function ilr_update_7020() {
+  module_enable(array(
+    'ilr_alumni_events',
+  ));
+}
+
+/**
+ * Enables elavon custom module
+ */
+function ilr_update_7021() {
+  module_enable(array(
+    'elavon',
+  ));
+}
+
+/**
+ * Deletes unused fields
+ */
+function ilr_update_7022() {
+  $fields_for_deletion = array(
+    'field_date_of_birth',
+    'field_dublin_acad_goals_essay',
+    'field_dublin_study_abroad_essay',
+    'field_school_year',
+    'field_banner_image',
+  );
+
+  foreach ($fields_for_deletion as $key => $name) {
+    field_delete_field($name);
+  }
+}
+
+/**
+ * Deletes unused labor roundtable fields
+ */
+function ilr_update_7023() {
+  field_delete_field('field_major');
+  field_delete_field('field_referral_textarea');
+}
+
+/**
+ * Deletes field_mega_menu_blocks
+ */
+function ilr_update_7024() {
+  field_delete_field('field_mega_menu_blocks');
+}
+
+/**
+ * Deletes additional form fields
+ */
+function ilr_update_7025() {
+  field_delete_field('field_passport_expiration_date');
+  field_delete_field('field_year_soph_jr_sr');
+}
+/**
+ * Enable Date format
+ */
+function ilr_update_7026() {
+  variable_set('date_format_ilr_year_only', 'Y');
+}
+/**
+ * Deletes field_academic_department
+ */
+function ilr_update_7027() {
+  field_delete_field('field_academic_department');
+}
+/**
+ * Enables block_collection feature
+ */
+function ilr_update_7028() {
+  module_enable(array('block_collection'));
+}
+/**
+ * Enables menu_trail_by_path feature
+ */
+function ilr_update_7029() {
+  module_enable(array('menu_trail_by_path'));
+}
+/**
+ * Deletes field_referenced_entity instance from promos
+ */
+function ilr_update_7030() {
+  if ($instance = field_info_instance('node', 'field_referenced_entity', 'promo')) {
+    field_delete_instance($instance);
+  }
+}
+/**
+ * Deletes unused profile fields
+ */
+function ilr_update_7031() {
+  field_delete_field('field_ilrweb_overview');
+  field_delete_field('field_ilrweb_publications');
+  field_delete_field('field_ilrweb_publications_file');
+  field_delete_field('field_ilrweb_vita_html');
+}
+/**
+ * Deletes unused field_address_line_2 instance from profiles
+ */
+function ilr_update_7032() {
+  if ($instance = field_info_instance('node', 'field_address_line_2', 'people_profile')) {
+    field_delete_instance($instance);
+  }
+}
+/**
+ * Deletes defunct field_use_ai_data from profiles
+ */
+function ilr_update_7033() {
+  field_delete_field('field_use_ai_data');
+}
+/**
+ * Adds form admin role
+ */
+function ilr_update_7034() {
+  _ilr_create_roles();
+}
+/**
+ * Enables ilr_admin feature
+ */
+function ilr_update_7035() {
+  module_enable(array('block_collection'));
 }

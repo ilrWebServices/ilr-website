@@ -10,6 +10,162 @@ include_once 'basic_page.features.inc';
  * Implements hook_init().
  */
 function basic_page_init() {
-  drupal_add_js(drupal_get_path('module','basic_page') . '/basic_page.js');
-  drupal_add_js('https://embanner.univcomm.cornell.edu/OWC-emergency-banner.js', 'external');
+  global $theme;
+  if ($theme == 'ilr_theme') {
+    drupal_add_js(drupal_get_path('module', 'basic_page') . '/basic_page.js', array(
+        'type' => 'file',
+        'scope' => 'footer'
+      ));
+  }
+
+}
+
+function basic_page_node_access($node, $op, $account) {
+  if ($op == 'view' && isset($node->kerberized) && $node->kerberized) {
+    if (!ilr_user_has_netid()) {
+      if (user_is_logged_in()) {
+        require_once(drupal_get_path('module', 'user') . '/user.pages.inc');
+        $destination = &drupal_static(__FUNCTION__);
+        $destination = current_path();
+        user_logout(); // See basic_page_goto_alter for redirect
+      }
+      else {
+        drupal_set_message('You must be logged in with your NetID to access this page. <a class="button button-rounded button-highlight" href="/saml_login">Login</a>', 'warning');
+
+        return NODE_ACCESS_DENY;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_drupal_goto_alter().
+ */
+function basic_page_drupal_goto_alter(&$path, &$options, &$http_response_code) {
+  $destination = &drupal_static('basic_page_node_access');
+  if (!$path && $destination) {
+    drupal_goto($destination);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ * Adds the editor notes tab to the basic page fieldsets.
+ */
+function basic_page_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'basic_page_node_form') {
+    $form['editor_notes'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Editor Notes'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+      '#weight' => 10,
+      '#group' => 'additional_settings',
+    );
+    $form['editor_notes']['field_editor_notes'] = $form['field_editor_notes'];
+    unset($form['field_editor_notes']);
+  }
+
+  return $form;
+}
+
+/**
+ * Implements hook_admin_menu_output_build().
+ * Adds the editor notes items to the menu.
+ */
+function basic_page_admin_menu_output_build(&$content) {
+  if (isset($content['menu']) && module_exists('editor_note') && user_access('edit any basic_page content')) {
+    $content['menu']['admin/content']['admin/content/editor-notes'] = array(
+      '#title' => t('Editor Notes'),
+      '#href' => 'admin/content/editor-notes',
+      '#options' => array(
+        'access callback' => 'user_access',
+        'access arguments' => array(''),
+      ),
+      // #weight controls the order of links in the resulting item list.
+      '#weight' => 50,
+    );
+
+    if ($netid = ilr_get_netid_of_current_user()) {
+      $content['menu']['admin/content']['admin/content/editor-notes']['admin/content/editor-notes/notes-for-me'] = array(
+        '#title' => t('Notes for me'),
+        '#href' => 'admin/content/editor-notes',
+        '#options' => array(
+          'query' => array('note' => $netid),
+        ),
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_media_wysiwyg_token_to_markup_alter().
+ *
+ * If only the file link is being displayed remove outside wrapper
+ */
+function basic_page_media_wysiwyg_token_to_markup_alter(&$element, $tag_info, $settings) {
+  if (isset($element['content']) && 1 || !empty($element['content']['file']['#remove_wrapper'])) {
+    // Replace base content with just file link.
+    $element['content'] = $element['content']['file'];
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function basic_page_field_formatter_info() {
+  $info['ilr_file_download_link'] = array(
+    'label' => t('ILR Download link'),
+    'description' => t('Custom formatter: Displays a link that will force the browser to download the file.'),
+    'field types' => array('file', 'image'),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function basic_page_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, &$items, $display) {
+  $element = array();
+  switch ($display['type']) {
+    case 'ilr_file_download_link':
+      foreach ($items as $item) {
+        foreach ($items as $delta => $item) {
+          $file = (object) $item;
+          if (file_entity_access('download', $file)) {
+            $element[$delta] = array(
+              '#theme' => 'basic_page_file_entity_download_link',
+              '#file' => $file,
+              '#text' => $file->filename,
+              '#remove_wrapper' => TRUE,
+              '#wysiwyg' => !empty($file->override['wysiwyg']),
+            );
+          }
+        }
+      }
+      break;
+
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function basic_page_theme() {
+
+  return array(
+    'basic_page_file_entity_download_link' => array(
+      'variables' => array(
+        'file' => NULL,
+        'icon_directory' => NULL,
+        'text' => NULL,
+        'wysiwyg' => FALSE,
+      ),
+      'file' => 'basic_page.theme.inc',
+    ),
+  );
+
 }

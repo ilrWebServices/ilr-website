@@ -1,0 +1,7 @@
+name = Entityform Views Label
+description = Overvides field labels for Entityform Views
+dependencies[] = entityform
+dependencies[]= field_formatter_label
+package = Entityform
+core = 7.x
+files[] = entityform_views_label.module

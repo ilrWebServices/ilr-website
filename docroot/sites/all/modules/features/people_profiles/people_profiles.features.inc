@@ -29,6 +29,29 @@ function people_profiles_views_api($module = NULL, $api = NULL) {
 function people_profiles_image_default_styles() {
   $styles = array();
 
+  // Exported image style: focussed_profile_image.
+  $styles['focussed_profile_image'] = array(
+    'name' => 'focussed_profile_image',
+    'label' => 'Focussed Profile Image',
+    'effects' => array(
+      1 => array(
+        'label' => 'Focal Point Scale And Crop',
+        'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+        'effect callback' => 'focal_point_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'focal_point',
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 800,
+          'height' => 548,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: people_profile_image.
   $styles['people_profile_image'] = array(
     'name' => 'people_profile_image',

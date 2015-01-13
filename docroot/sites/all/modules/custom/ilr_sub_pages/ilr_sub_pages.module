@@ -1,0 +1,250 @@
+<?php
+
+/**
+ * Implements hook_admin_menu_output_alter().
+ * Removes the link to manage menus for anyone without top level menu perms
+ * Also removes the node/add/page link, since pages need to be added via 'create sub page'
+ */
+function ilr_sub_pages_admin_menu_output_alter(&$content) {
+  if (!user_access('add top level menu items')) {
+    if (_ilr_sub_pages_get_number_of_links_in_toolbar($content['menu'], 'admin/structure') == 1) {
+      unset($content['menu']['admin/structure']);
+    } // Only remove the menu link and keep the other links
+    else {
+      unset($content['menu']['admin/structure']['admin/structure/menu']);
+    }
+    unset($content['menu']['admin/content']['node/add']['node/add/basic-page']);
+  }
+}
+
+/**
+ * Implements hook_permission().
+ *
+ */
+function ilr_sub_pages_permission() {
+  return array(
+    'add top level menu items' => array(
+      'title' => t('Add top level menu items'),
+    ),
+    'view page advanced menu settings' => array(
+      'title' => t('%type_name: View advanced menu settings', array('%type_name' => 'Page')),
+    ),
+    'create sub page' => array(
+      'title' => t('Create sub pages')
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ *
+ * Add the ability to create pages subordinate to the current one
+ *
+ * @link http://drupal.org/project/node_clone Contrib module that generically implements this
+ */
+function ilr_sub_pages_menu() {
+  $items = array();
+
+  $items['node/%node/sub'] = array(
+    'page callback' => 'ilr_sub_pages_create_sub_page',
+    'page arguments' => array(1),
+    'title' => 'Create sub page',
+    'weight' => 6,
+    'file' => 'ilr_sub_pages.sub_page.inc',
+    'type' => MENU_LOCAL_TASK,
+    'access callback' => '_ilr_sub_pages_create_sub_page_access',
+    'access arguments' => array(1, 'create sub page'),
+    'theme callback' => 'variable_get',
+    'theme arguments' => array('admin_theme'),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ * Adds access callback for menu pages
+ * Makes order changes to the menu
+ */
+function ilr_sub_pages_menu_alter(&$items) {
+  $items['node/%node/reorder']['title'] = 'Reorder sub pages';
+  $items['node/%node/reorder']['weight'] = $items['node/%node/sub']['weight'] + 1;
+  $items['node/%node/reorder']['theme callback'] = 'variable_get';
+  $items['node/%node/reorder']['theme arguments'] = array('admin_theme');
+
+  $items['admin/structure/menu']['access callback'] = 'ilr_sub_pages_check_permissions';
+}
+
+/**
+ * Confirms that the user can access top level menu items b/c
+ * sub pages require administer menu permissions, but we don't
+ * want contributors to manage the menu at admin/structure/menu
+ */
+function ilr_sub_pages_check_permissions() {
+  return user_access('add top level menu items');
+}
+
+/**
+ * Validation callback for page node form.
+ * Restricts the ability to add menu items to the top level.
+ * Editing existing top level menu pages should be allowed.
+ */
+function ilr_sub_pages_node_form_validate($form, &$form_state) {
+  $is_setting_top_menu_level = _ilr_sub_pages_is_top_menu_level($form_state);
+  $is_editing_node = isset($form_state['node']->nid);
+  $was_already_at_top_level = _ilr_sub_pages_was_top_menu_level($form_state);
+  if (!user_access('add top level menu items')) {
+    // Cannot add a new node to the top level of the menu
+    // Cannot move an existing node from second or > level to the top level
+    // Can edit nodes that were _already_ at the top menu level
+
+    if (!$is_editing_node && $is_setting_top_menu_level) {
+      form_set_error('menu[parent]', t('You may not add this item to the top level of the menu.'));
+    }
+    else if ($is_editing_node && $is_setting_top_menu_level && !$was_already_at_top_level) {
+      form_set_error('menu[parent]', t('You may not move this item to the top level of the menu.'));
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ * Sets the menu parent if present
+ * Adds the checkbox to hide from the menu
+ */
+function ilr_sub_pages_form_node_form_alter(&$form, &$form_state, $form_id) {
+  if (_ilr_sub_pages_content_type_has_menu_options($form)) {
+    $view_advanced_menu = user_access('view page advanced menu settings');
+    $node = $form['#node'];
+    // This element is added by menu module a 'value' type. We override to let user choose.
+    $form['menu']['link']['hidden'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Hide from menu output'),
+      '#description' => t('Check if you would like the page to include the correct breadcrumbs and parent navigation, but not appear in the menu.'),
+      '#default_value' => isset($node->menu['hidden']) ? $node->menu['hidden'] : 0,
+    );
+    // set menu parent item default value if creating sub page
+    if (isset($form['#node']->ilr_default_menu_parent)) {
+      $form['menu']['link']['parent']['#default_value'] = $node->ilr_default_menu_parent;
+      $form['menu']['enabled']['#value'] = TRUE;
+    }
+    if (!$view_advanced_menu) {
+      // Require the menu link title and parent fields.
+      $form['menu']['enabled']['#disabled'] = TRUE;
+      $form['menu']['link']['link_title']['#required'] = TRUE;
+      $form['menu']['link']['parent']['#required'] = TRUE;
+      // Restricts access to certain menu form fields
+      $form['menu']['link']['description']['#access'] = FALSE;
+      $form['menu']['link']['weight']['#access'] = FALSE;
+      $form['menu']['link']['parent']['#access'] = FALSE;
+    }
+
+    // Add an additional validation callback to this form
+    $form['#validate'][] = 'ilr_sub_pages_node_form_validate';
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ * This ensures that ilr_sub_pages_form_basic_page_node_form_alter runs after
+ * the menu module, which is required to alter the menu links
+ */
+function ilr_sub_pages_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'form_alter' && isset($implementations['ilr_sub_pages'])) {
+    $group = $implementations['ilr_sub_pages'];
+    unset($implementations['ilr_sub_pages']);
+    $implementations['ilr_sub_pages'] = $group;
+  }
+}
+
+/**
+ * Implements hook_node_load()
+ *
+ * Never allow pathauto to automatically run on existing nodes
+ */
+function ilr_sub_pages_node_load($nodes, $types) {
+  foreach ($nodes as $id => $node) {
+    if ($node->type === 'page') {
+      $nodes[$id]->path['pathauto'] = FALSE;
+    }
+  }
+}
+
+function _ilr_sub_pages_content_type_has_menu_options($form) {
+  if (isset($form['#node_edit_form']) && $form['#node_edit_form']) {
+    return count(variable_get('menu_options_' . $form['#bundle'])) > 0;
+  }
+  return FALSE;
+}
+
+/**
+ * Ensure node is published and user has privileges for sub page form
+ */
+function _ilr_sub_pages_create_sub_page_access($node, $access_arg) {
+  if ($node->type === 'basic_page' && user_access($access_arg)) {
+    $menu_record = db_select('menu_links', 'ml')
+      ->condition('ml.link_path', 'node/' . $node->nid)
+      ->fields('ml', array('menu_name', 'mlid', 'plid'))
+      ->execute()
+      ->fetchObject();
+
+    if (is_object($menu_record)) {
+      if ($menu_record->menu_name != 'main-menu') {
+        if ($menu_record->plid == 0) {
+          return user_access('add top level menu items');
+        }
+        return TRUE;
+      } // Main menu
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Determinot of the mes whether the parent is at the roain-menu,
+ * or the grandparent is at the root of the sub site menu
+ */
+function _ilr_sub_pages_is_top_menu_level($form_state) {
+  // Menu items are always in the format [menu-name]:0 (i.e. main-menu:0)
+  if (isset($form_state['values']['menu'])) {
+    $menu_info = explode(":", $form_state['values']['menu']['parent']);
+    $menu = $menu_info[0];
+    $plid = $menu_info[1];
+
+    if ($menu != 'main-menu') {
+      $parent = menu_link_load($plid);
+      $plid = $parent['plid'];
+    }
+    return $plid === '0';
+  }
+  return FALSE;
+}
+
+/**
+ * Uses the $form_state['build_info']['args'] to determine if the page
+ * was already at the top level
+ */
+function _ilr_sub_pages_was_top_menu_level($form_state) {
+  $menu = $form_state['build_info']['args'][0]->menu['menu_name'];
+  $plid = $form_state['build_info']['args'][0]->menu['plid'];
+
+  if ($menu != 'main-menu') {
+    $parent = menu_link_load($plid);
+    $plid = $parent['plid'];
+  }
+  return $plid === '0';
+}
+
+/**
+ * Checks how many links point to a given path in the toolbar
+ */
+function _ilr_sub_pages_get_number_of_links_in_toolbar($menu_links, $menu_path) {
+  $count = 0;
+  foreach ($menu_links[$menu_path] as $child_path => $value) {
+    if (strpos($child_path, $menu_path) === 0 && strpos($child_path,'entityforms') == FALSE) { // For some reason, admin/structure/entityforms/list is showing up, so we ignore it too
+      $count++;
+    }
+  }
+  return $count;
+}
