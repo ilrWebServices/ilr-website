@@ -31,6 +31,7 @@ $social-channels: linkedin, facebook, twitter, youtube, instagram;
 ul.social {
   @include inline-block-list;
   li {
+    border:none;
     padding-left: .5em;
     background: none;
     a {
