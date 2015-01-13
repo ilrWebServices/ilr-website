@@ -2,6 +2,13 @@
 /**
  * @file
  * Code for the People Profiles feature.
+ *
+ * @todo Currently the View areas_expertise_taxonomy_term is used display terms.
+ * because this takes over the path taxonomy/term/% it has to be used for all terms.
+ * Currently no term pages are shown but if they are in the future this should be changed.
+ * Possible fixes:
+ *  1. https://www.drupal.org/project/tvi
+ *  2. hook_menu_alter and take over taxonomy/term/%taxonomy_term to check term and embed_view
  */
 
 include_once 'people_profiles.features.inc';
