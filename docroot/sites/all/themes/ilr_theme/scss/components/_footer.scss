@@ -6,6 +6,11 @@ footer {
   position: relative;
   z-index: 10;
 
+  .container {
+    position: relative;
+    max-width: $page-max-width * .66;
+  }
+
   .region-footer {
     @include clearfix;
     padding-bottom: 3em;
@@ -22,13 +27,14 @@ footer {
 
   .copyright p {
     margin: 0;
+    padding-bottom: 5px; // helps align it with the social footer
     color: $brand-light;
   }
 
   .google-translate {
     position: absolute;
-    right: 2%;
-    top: 1em;
+    right: 1em;
+    top: -2em;
     background: url(../images/flag-sprite.png) no-repeat;
     @include clearfix;
     input {
