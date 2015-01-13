@@ -1,12 +1,26 @@
-.node-sdc-course {
+.node-type-sdc-course {
   .field-name-field-catalog-prefix {
     @include adjust-font-size-to($h2-size);
     font-family: $font-headers;
     color: $h2-text;
   }
-  .field-name-body {
-    @include leader(2);
+  article {
+    .field-name-body {
+      @include leader(2);
+    }
+    form {
+      @include trailer(2);
+    }
+    article {
+      h2 {
+       margin-bottom: 0;
+      }
+      .field-name-body {
+        @include leader(0);
+      }
+    }
   }
+
 }
 
 .node-type-sdc-class {
