@@ -1,7 +1,8 @@
 %one-column {
   @include layout(4) {
     @include float-span(4);
-    &:nth-of-type(even) { // this avoids any nth-child conflicts
+    &:nth-of-type(even), // these avoid any even/odd
+    &:nth-of-type(odd) { // nth-child conflicts
       @include float-span(4);
     }
   }

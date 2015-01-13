@@ -87,9 +87,17 @@
 
 footer {
   @include clearfix;
-  .block-bean {
-    @extend %three-column;
+  .container {
+    .block-bean {
+      @extend %three-column;
+    }
+    &[data-eq-state="320"] {
+      .block-bean {
+        @extend %one-column;
+      }
+    }
   }
+
   .copyright {
     clear: both;
   }
