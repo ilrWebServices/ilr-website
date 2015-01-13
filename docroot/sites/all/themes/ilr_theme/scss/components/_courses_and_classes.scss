@@ -1,0 +1,42 @@
+.node-sdc-course {
+  .field-name-field-catalog-prefix {
+    @include adjust-font-size-to($h2-size);
+    font-family: $font-headers;
+    color: $h2-text;
+  }
+  .field-name-body {
+    @include leader(2);
+  }
+}
+
+.node-type-sdc-class {
+  .field:not(.field-name-field-price) {
+    @include trailer(1);
+  }
+  .field-label {
+    margin-bottom: 0;
+  }
+  form {
+    @include trailer(1);
+  }
+  article article {
+    margin-left: 1em;
+    h2 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.view-sdc-course-listing {
+  h3 {
+    @include padding-leader(1);
+    margin: 0;
+    &:first-of-type {
+      padding: 0;
+    }
+  }
+  .views-field-field-on-demand {
+    float: right;
+    margin-right: 1em;
+  }
+}
