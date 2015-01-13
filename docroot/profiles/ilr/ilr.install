@@ -441,3 +441,9 @@ function ilr_update_7033() {
 function ilr_update_7034() {
   _ilr_create_roles();
 }
+/**
+ * Enables ilr_admin feature
+ */
+function ilr_update_7035() {
+  module_enable(array('block_collection'));
+}
