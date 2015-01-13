@@ -13,7 +13,7 @@ function ilr_settings_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'document__default__file_field_file_download_link';
-  $file_display->weight = 0;
+  $file_display->weight = -44;
   $file_display->status = FALSE;
   $file_display->settings = array(
     'text' => 'Download [file:name]',
@@ -23,7 +23,7 @@ function ilr_settings_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'document__default__file_field_file_table';
-  $file_display->weight = 0;
+  $file_display->weight = -45;
   $file_display->status = FALSE;
   $file_display->settings = '';
   $export['document__default__file_field_file_table'] = $file_display;
@@ -31,7 +31,7 @@ function ilr_settings_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'document__default__file_field_file_url_plain';
-  $file_display->weight = 0;
+  $file_display->weight = -46;
   $file_display->status = FALSE;
   $file_display->settings = '';
   $export['document__default__file_field_file_url_plain'] = $file_display;
@@ -39,7 +39,7 @@ function ilr_settings_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'document__default__file_field_ilr_file_download_link';
-  $file_display->weight = 0;
+  $file_display->weight = -49;
   $file_display->status = TRUE;
   $file_display->settings = '';
   $export['document__default__file_field_ilr_file_download_link'] = $file_display;
@@ -47,7 +47,7 @@ function ilr_settings_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'document__default__file_field_media_large_icon';
-  $file_display->weight = 0;
+  $file_display->weight = -43;
   $file_display->status = FALSE;
   $file_display->settings = '';
   $export['document__default__file_field_media_large_icon'] = $file_display;
