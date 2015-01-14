@@ -271,6 +271,17 @@ div.field:not(.field-type-image) > a {
   }
 }
 
+// Hack for named anchors
+// we could have put those in *[id] but
+// there are z-index issues, see people_profiles.js
+h2[id]:before {
+  display: block;
+  content: " ";
+  margin-top: $header-height * -1;
+  height: $header-height;
+  visibility: hidden;
+}
+
 
 // ==================================================
 // text level semantics

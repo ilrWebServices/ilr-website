@@ -3,6 +3,7 @@
 body.page-taxonomy-term .region-content .block {
   @extend %bean-base;
   article {
+    position: relative;
     @extend %thumb;
 
     h2 {
