@@ -473,5 +473,10 @@
     "WIRE_NAME": "The Philadelphia Inquirer",
     "WIRE_ID": 107,
     "WIRE_DESCRIPTION": ""
+  },
+  {
+    "WIRE_NAME": "World-Herald Bureau",
+    "WIRE_ID": 108,
+    "WIRE_DESCRIPTION": ""
   }
 ]

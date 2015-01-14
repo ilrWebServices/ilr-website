@@ -1722,6 +1722,102 @@
     "PUB_HOSTNAME": ""
   },
   {
+    "PUB_ID": 485,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "NZ Week",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 486,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "Apple Insider",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 487,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "GoErie.com",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 488,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "ArabianBusiness.com",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 490,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "The Columbian",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 491,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "NewsTimes.com",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 492,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "BusinessKorea",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 493,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "Insided Higher Ed",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 494,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "Playbill.com",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 495,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "Charleston City Paper",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 496,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "The Huffington Post British Columbia",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 497,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "The Guardian",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 498,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "CNBC",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 499,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "The Hill",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 501,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "The Diplomat",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 502,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "Boston Standard",
+    "PUB_HOSTNAME": ""
+  },
+  {
     "PUB_ID": 266,
     "PUB_DESCRIPTION": "",
     "PUB_NAME": "The Times-Herald",
@@ -1845,6 +1941,18 @@
     "PUB_ID": 483,
     "PUB_DESCRIPTION": "",
     "PUB_NAME": "Human Rights Watch",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 489,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "KHOU.com",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 500,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "Fortune",
     "PUB_HOSTNAME": ""
   },
   {
@@ -1989,6 +2097,12 @@
     "PUB_ID": 435,
     "PUB_DESCRIPTION": "",
     "PUB_NAME": "Consumerist",
+    "PUB_HOSTNAME": ""
+  },
+  {
+    "PUB_ID": 503,
+    "PUB_DESCRIPTION": "",
+    "PUB_NAME": "Omaha.com",
     "PUB_HOSTNAME": ""
   },
   {

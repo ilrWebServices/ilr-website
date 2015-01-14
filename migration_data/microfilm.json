@@ -131,7 +131,7 @@
     "FORMAT": "1 reel ",
     "COMMENTS": "STACKS: HD 6515 H82 N53, 1946-1959, 1969-1974 ",
     "DATES": "Apr. 1959 - Sept./Oct. 1968 ",
-    "PUBLISHER": "Hotel and Restaurant Employees and Bartenders International Union. \r\n Cafeteria Employees Union, Local 302, New York, NY \r\n",
+    "PUBLISHER": "Hotel and Restaurant Employees and Bartenders International Union. \n Cafeteria Employees Union, Local 302, New York, NY \n",
     "MF_ID": 17,
     "TITLE": "Cafeteria Call "
   },
@@ -187,7 +187,7 @@
     "FORMAT": "1 reel ",
     "COMMENTS": " ",
     "DATES": "Nov. 1946 - Spet. 1947 ",
-    "PUBLISHER": "International Union, United Automobile, Aircraft and Agricultural Implement Workers of America. \r\nCompetitive Shop Dept. \r\n",
+    "PUBLISHER": "International Union, United Automobile, Aircraft and Agricultural Implement Workers of America. \nCompetitive Shop Dept. \n",
     "MF_ID": 24,
     "TITLE": "Competitive Shop Organizer "
   },
@@ -211,7 +211,7 @@
     "FORMAT": "1 reel ",
     "COMMENTS": " ",
     "DATES": "Feb. 1953 - Jan. 1954 ",
-    "PUBLISHER": "International Brotherhood of Teamsters, Chauffers, Warehousemen and Helpers of America. \r\nTeamsters Bay Arear Warehouse Council \r\n",
+    "PUBLISHER": "International Brotherhood of Teamsters, Chauffers, Warehousemen and Helpers of America. \nTeamsters Bay Arear Warehouse Council \n",
     "MF_ID": 27,
     "TITLE": "Council News"
   },
@@ -339,7 +339,7 @@
     "FORMAT": "2 reels ",
     "COMMENTS": " ",
     "DATES": "July 1925-Dec. 1935, Dec. 1937-Apr. 1938 ",
-    "PUBLISHER": "International Association of Oil Field, Gaswell and Refinery Workers of America. \r\nLong Beach, CA and Washington, DC \r\n",
+    "PUBLISHER": "International Association of Oil Field, Gaswell and Refinery Workers of America. \nLong Beach, CA and Washington, DC \n",
     "MF_ID": 46,
     "TITLE": "International Oil Worker "
   },
@@ -395,7 +395,7 @@
     "FORMAT": "1 reel ",
     "COMMENTS": " ",
     "DATES": "Nov. 1939-Feb. 1940 ",
-    "PUBLISHER": "Hotel and Restaurant Employees and Bartenders International Union. \r\nHotel and Club Employees Union, Local 6, New York \r\n",
+    "PUBLISHER": "Hotel and Restaurant Employees and Bartenders International Union. \nHotel and Club Employees Union, Local 6, New York \n",
     "MF_ID": 53,
     "TITLE": "Local 6 News "
   },
@@ -585,7 +585,7 @@
   },
   {
     "FORMAT": "1 reel ",
-    "COMMENTS": "Labor Unity - 1934 \r\nFord Workers - 1926-1927 \r\nWorkers News - Aug. 1926-Aug. 1927 \r\nWorkers Bulletin - Aug. 1926 \r\nFisher Body Worker - Oct. 1926-Aug. 1927 \r\n ",
+    "COMMENTS": "Labor Unity - 1934 \nFord Workers - 1926-1927 \nWorkers News - Aug. 1926-Aug. 1927 \nWorkers Bulletin - Aug. 1926 \nFisher Body Worker - Oct. 1926-Aug. 1927 \n ",
     "DATES": "1922-1934 ",
     "PUBLISHER": "Auto Workers News",
     "MF_ID": 77,
@@ -593,7 +593,7 @@
   },
   {
     "FORMAT": "1 reel ",
-    "COMMENTS": "(People's Press) \r\n(Work) \r\n ",
+    "COMMENTS": "(People's Press) \n(Work) \n ",
     "DATES": "March 1938-Nov. 1940 ",
     "PUBLISHER": "Workers Alliance of America ",
     "MF_ID": 86,
