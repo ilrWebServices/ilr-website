@@ -66,7 +66,7 @@ function people_profiles_node_view($node, $view_mode, $langcode) {
   if ($node->type == 'people_profile' && $view_mode == 'teaser') {
     if(!count($node->field_profile_image)) {
       $silhouette = '/' . drupal_get_path('theme', 'ilr_theme') . '/images/silhouette.gif';
-      $node->content['field_profile_image']['#markup'] = '<div class="field field-type-image"><img src="'.$silhouette.'" /></div>';
+      $node->content['field_profile_image']['#markup'] = '<div class="field field-type-image"><img class="silhouette" src="'.$silhouette.'" /></div>';
     }
     unset($node->content['links']['node']['#links']['node-readmore']);
   }
