@@ -31,12 +31,7 @@ function news_preprocess_node(&$variables) {
  * @todo function to .install file. Here to run from drush in testing.
  */
 function _news_bulk_remove_images() {
-  $sql = 'select entity_id, revision_id, body_value as old_body'
-    . ' from field_data_body'
-    . " where bundle ='news_item' and entity_type = 'node' "
-    . " and body_value REGEXP '<img[^>]+>'"
-    . " and body_value REGEXP 'CPIMAGE'";
-  $field_values = db_query($sql)->fetchAllAssoc('entity_id');
+  $field_values = _news_get_field_images_to_remove();
   foreach($field_values as $nid => $field_row) {
     $new_body = preg_replace('/<img[^|]+\|\|CPIMAGE[^>]+>/i', '', $field_row->old_body);
     $result = db_update('field_data_body')
@@ -47,4 +42,23 @@ function _news_bulk_remove_images() {
       ->condition('entity_type', 'node')->execute();
 
   }
+  $field_values = _news_get_field_images_to_remove();
+  if ($field_values) {
+    // not empty so output
+    $nids_list = implode(',', array_keys($field_values));
+    watchdog('news', 'Nids with images not removed: ' . $nids_list, array(), WATCHDOG_ERROR);
+  }
+}
+
+/**
+ * @return array
+ */
+function _news_get_field_images_to_remove() {
+  $sql = 'select entity_id, revision_id, body_value as old_body'
+    . ' from field_data_body'
+    . " where bundle ='news_item' and entity_type = 'node' "
+    . " and body_value REGEXP '<img[^>]+>'"
+    . " and body_value REGEXP 'CPIMAGE'";
+  $field_values = db_query($sql)->fetchAllAssoc('entity_id');
+  return $field_values;
 }
