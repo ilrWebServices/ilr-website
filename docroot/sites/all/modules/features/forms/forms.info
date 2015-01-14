@@ -858,6 +858,7 @@ features[variable][] = field_bundle_settings_field_collection_item__field_employ
 features[variable][] = field_bundle_settings_field_collection_item__field_employment_history_uli
 features[variable][] = field_bundle_settings_field_collection_item__field_h_credit_card_payments
 features[variable][] = field_bundle_settings_field_collection_item__field_remote_site_details
+features[views_view][] = submissions_alumni_postings
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][strongarm] = strongarm
 files[] = forms.views.inc
