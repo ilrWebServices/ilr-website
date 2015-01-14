@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Pre-launch, 1/14/2015:
+ * Deletes unused field_name_title instance from Employee Recognition Nomination and Job Postings forms
+ * Deletes unused field_degree_program instance from Graduate Student Request for TA/RA Assistantship form
+ */
+function forms_update_7001() {
+  if ($instance = field_info_instance('entityform', 'field_name_title',
+    'employee_recognition_nomination_')) {
+    field_delete_instance($instance);
+  }
+  if ($instance = field_info_instance('entityform', 'field_name_title', 'job_postings_for_ilr_alumni')) {
+    field_delete_instance($instance);
+  }
+  if ($instance = field_info_instance('entityform', 'field_degree_program',
+    'graduate_student_request_for_tea')) {
+    field_delete_instance($instance);
+  }
+}
