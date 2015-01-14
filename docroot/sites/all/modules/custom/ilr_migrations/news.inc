@@ -82,6 +82,9 @@ class NewsMigration extends Migration {
     // Handle main images
     $row->main_image = $this->getMainImage($row);
 
+    // Handle pub date
+    $row->original_pub_date = $row->date_published;
+
     // Add alt and title
     $row->image_alt = $row->caption;
 
@@ -203,7 +206,7 @@ class NewsMigration extends Migration {
       "caption" => 'DNM',
       "name" => 'DNM',
       "description" => 'DNM',
-      "date_added" => 'created',
+      "original_pub_date" => 'created',
       "date_published" => 'field_published_date',
       "date_last_modified" => 'DNM',
       "contributor_email" => 'DNM',

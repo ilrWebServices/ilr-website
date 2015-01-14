@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Deletes entityform field instances needing to be changed
+ */
+function forms_update_7001() {
+  $fields_info = array(
+    'employee_recognition_nomination_' => 'field_name_title',
+    'job_postings_for_ilr_alumni' => 'field_name_title',
+    'graduate_student_request_for_tea' => 'field_degree_program',
+  );
+
+  foreach ($fields_info as $form_id => $field_name) {
+    if ($instance = field_info_instance('entityform_type', $field_name, $form_id)) {
+      field_delete_instance($instance);
+    }
+  }
+}
