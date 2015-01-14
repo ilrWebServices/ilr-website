@@ -86,7 +86,7 @@
     top: 0;
   }
 
-  @include addHighlightColors('.thumbnail.custom a', 'background-color');
+  @include addHighlightColors('.thumbnail.custom a', 'background-color',.2);
   .thumbnail.custom {
     @extend %custom-thumbnail;
   }
@@ -153,11 +153,14 @@
     @include adjust-font-size-to(14px);
   }
 
-  @include addHighlightColors('.thumbnail.custom a', 'background-color');
+  @include addHighlightColors('.thumbnail.custom a', 'background-color', .2);
   .thumbnail.custom {
     @extend %custom-thumbnail;
     @include circularImage(150px);
     margin: 0 auto;
+    &.event a {
+      background: $event-color;
+    }
   }
 
   &.node-basic-page,

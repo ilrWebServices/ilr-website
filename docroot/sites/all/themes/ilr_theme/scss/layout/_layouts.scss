@@ -84,20 +84,11 @@
 }
 
 %custom-thumbnail {
-  a {
-    text-decoration: none;
+  &.event a {
+    text-align: center;
+    background: $event-color;
     span {
       display: block;
-      text-align: center;
-      color: white;
-      @include single-text-shadow;
-      @include adjust-font-size-to(80px);
-      font-family: $font-headers;
-      font-style: italic;
-    }
-  }
-  &.event a{
-    span {
       @include adjust-font-size-to(25px, 1);
       font-style: normal;
       text-transform: uppercase;

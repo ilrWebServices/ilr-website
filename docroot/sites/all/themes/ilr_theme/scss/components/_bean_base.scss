@@ -20,7 +20,7 @@
       font-family: $font-headers;
       color: $h2-text;
     }
-    @include addHighlightColors('.category', 'color');
+    @include addHighlightColors('.category', 'color', 1);
     h3.category {
       text-transform: uppercase;
       font-family: $font;
