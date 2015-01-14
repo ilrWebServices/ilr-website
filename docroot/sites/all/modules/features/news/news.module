@@ -24,3 +24,27 @@ function news_preprocess_node(&$variables) {
     }
   }
 }
+
+/**
+ * Removes images from News stories body field
+ *
+ * @todo function to .install file. Here to run from drush in testing.
+ */
+function _news_bulk_remove_images() {
+  $sql = 'select entity_id, revision_id, body_value as old_body'
+    . ' from field_data_body'
+    . " where bundle ='news_item' and entity_type = 'node' "
+    . " and body_value REGEXP '<img[^>]+>'"
+    . " and body_value REGEXP 'CPIMAGE'";
+  $field_values = db_query($sql)->fetchAllAssoc('entity_id');
+  foreach($field_values as $nid => $field_row) {
+    $new_body = preg_replace('/<img[^|]+\|\|CPIMAGE[^>]+>/i', '', $field_row->old_body);
+    $result = db_update('field_data_body')
+      ->fields(array('body_value' => $new_body))
+      ->condition('entity_id', $field_row->entity_id)
+      ->condition('revision_id', $field_row->revision_id)
+      ->condition('bundle', 'news_item')
+      ->condition('entity_type', 'node')->execute();
+
+  }
+}

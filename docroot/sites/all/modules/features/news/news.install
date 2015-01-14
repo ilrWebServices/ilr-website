@@ -1,0 +1,13 @@
+<?php
+/**
+ * @file
+ * Install and update hooks
+ */
+/**
+ * Implements hook_update_N().
+ */
+function news_update_7000() {
+  _news_bulk_remove_images();
+
+}
+
