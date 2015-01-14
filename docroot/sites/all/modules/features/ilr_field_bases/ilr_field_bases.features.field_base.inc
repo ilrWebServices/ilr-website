@@ -2582,6 +2582,34 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_degree_prog_4_grad_degrees'
+  $field_bases['field_degree_prog_4_grad_degrees'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_degree_prog_4_grad_degrees',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Ph.D.' => 'Ph.D.',
+        'M.S.' => 'M.S.',
+        'MILR' => 'MILR',
+        'MPS' => 'MPS',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_degree_program'
   $field_bases['field_degree_program'] = array(
     'active' => 1,

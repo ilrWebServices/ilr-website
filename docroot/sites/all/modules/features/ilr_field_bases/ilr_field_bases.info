@@ -112,6 +112,7 @@ features[field_base][] = field_dates
 features[field_base][] = field_dates_as_text
 features[field_base][] = field_degree
 features[field_base][] = field_degree_plan_submitted
+features[field_base][] = field_degree_prog_4_grad_degrees
 features[field_base][] = field_degree_program
 features[field_base][] = field_department
 features[field_base][] = field_department_additional

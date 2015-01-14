@@ -16,22 +16,6 @@ $aliases['ilr.dev'] = array(
   ),
 );
 
-// ILR site, test env
-// Access with @ilr.ilr.test
-$aliases['ilr.test'] = array(
-  'parent' => '@parent',
-  'site' => 'ilr',
-  'env' => 'test',
-  'uri' => 'http://stage.ilr.cornell.edu',
-  'root' => '/vol/ebs1/gfs/home/ilr/test/livedev/docroot',
-  'remote-host' => 'srv-2136.devcloud.hosting.acquia.com',
-  'remote-user' => 'ilr',
-  'path-aliases' => array (
-    '%dump-dir' => '/mnt/files/ilrtest/import',
-    '%files' => '/vol/ebs1/gfs/home/ilr/test/livedev/docroot/sites/default/files',
-  ),
-);
-
 // Local
 $aliases['ilr.local'] = array(
   'parent' => '@parent',

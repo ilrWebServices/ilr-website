@@ -404,7 +404,11 @@ function forms_strongarm() {
       ),
     ),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'redirect' => array(
+          'weight' => '30',
+        ),
+      ),
       'display' => array(),
     ),
   );
@@ -480,7 +484,11 @@ function forms_strongarm() {
       ),
     ),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'redirect' => array(
+          'weight' => '30',
+        ),
+      ),
       'display' => array(),
     ),
   );
