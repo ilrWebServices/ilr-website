@@ -6,3 +6,10 @@
 function ilr_redirects_update_7001() {
   _ilr_redirects_create_redirects('directory-redirects');
 }
+
+/**
+ * Adds dublin and dublin redirects
+ */
+function ilr_redirects_update_7002() {
+  _ilr_redirects_create_redirects('dublin-and-hcd');
+}
