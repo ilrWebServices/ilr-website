@@ -1,0 +1,6 @@
+name = ILR Search
+description = Provides a block for integration with Google CSE
+core = 7.x
+package = ILR
+php = 5.2.4
+version = 7.x-1.0

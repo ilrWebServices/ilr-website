@@ -1,0 +1,59 @@
+<?php
+/**
+ * @file
+ * Code for the CU Search custom module
+ */
+
+/**
+ * Implements hook_init()
+ *
+ */
+function ilr_search_init() {
+  if (current_path() == "search") {
+    if (variable_get('ilr_search_google_key')) {
+      drupal_add_js(array('ilr_search' => array('ilr_search_google_key' => variable_get('ilr_search_google_key'))), 'setting');
+      drupal_add_js(drupal_get_path('module','ilr_search') . '/ilr_search.js');
+    }
+  }
+}
+
+/**
+ * Implements hook_permission()
+ */
+function ilr_search_permission() {
+  return array(
+    'administer cu search' => array(
+      'title' => t('Administer ILR Search'),
+      'description' => t('Set the Google Search Engine key for the search functionality your site.'),
+    ),
+  );
+}
+
+/**
+* Implements hook_menu().
+*/
+function ilr_search_menu() {
+  $items = array();
+  $items['admin/config/system/ilr_search'] = array(
+    'title' => t('ILR Search Settings'),
+    'description' => t('Configure Google CSE Integration'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ilr_search_admin'),
+    'file' => 'includes/ilr_search.admin.inc',
+    'access arguments' => array('administer ilr search'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['search'] = array(
+    'page callback' => 'ilr_search_results_view',
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+function ilr_search_results_view() {
+  $content = '<gcse:search resultsUrl="/search" queryParameterName="s">Please make sure javascript is enabled to see the search results.</gcse:searchresults-only>';
+
+  return $content;
+}
