@@ -49,7 +49,6 @@
     width: 35%;
     h2 {
       margin-bottom: 0;
-      font-family: $font;
       font-weight: 300;
       @include adjust-font-size-to(40px);
       @include rhythm(2,0,2,0,40px);
@@ -57,6 +56,7 @@
     }
     a, a:visited, a:active {
       color: $subsite-heading;
+      font-family: $font;
     }
   }
   &.wrapped {
