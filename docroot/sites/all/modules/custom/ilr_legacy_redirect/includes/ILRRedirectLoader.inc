@@ -16,6 +16,7 @@ abstract class ILRRedirectLoader {
     $this->file_name = $file_name;
   }
   public function runImport() {
+    ini_set('auto_detect_line_endings', TRUE);
     $handle = @fopen('../migration_data/redirects/' .$this->file_name, 'r');
     while ($row = fgetcsv($handle)) {
       $legacy_path = $this->clean_path($row[0]);
