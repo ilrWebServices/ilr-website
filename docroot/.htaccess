@@ -1,3 +1,11 @@
+# Global rewrites
+
+RewriteCond %{HTTP_HOST} ^www.ilr\.cornell\.edu$ [NC]
+RewriteRule ^/?trianglefire/(.*)$ http://trianglefire.ilr.cornell.edu/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www.ilr\.cornell\.edu$ [NC]
+RewriteRule ^/?ilgwu/(.*)$ http://ilgwu.ilr.cornell.edu/$1 [R=301,L]
+
+
 #
 # Apache/PHP/Drupal settings:
 #
@@ -89,9 +97,9 @@ DirectoryIndex index.php index.html index.htm
   # To redirect all users to access the site WITH the 'www.' prefix,
   # (http://example.com/... will be redirected to http://www.example.com/...)
   # uncomment the following:
-  # RewriteCond %{HTTP_HOST} .
-  # RewriteCond %{HTTP_HOST} !^www\. [NC]
-  # RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteCond %{HTTP_HOST} .
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   #
   # To redirect all users to access the site WITHOUT the 'www.' prefix,
   # (http://www.example.com/... will be redirected to http://example.com/...)
