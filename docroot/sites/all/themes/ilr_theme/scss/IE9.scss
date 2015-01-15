@@ -53,6 +53,10 @@ body {
       @include grid-span(2);
     }
   }
+  footer {
+    clear: both;
+    @include add-grid(12);
+  }
 }
 
 body.subsite {

@@ -117,16 +117,15 @@ function _tagged_content_block_add_category_heading(&$variables) {
 }
 
 function _tagged_content_block_add_thumbnail(&$variables) {
-  $drop_cap = $variables['title'][0];
   $content_type = _tagged_content_block_get_hyphened_type($variables['type']);
   $url = $variables['node_url'];
-  $variables['content']['field_image']['#markup'] = _tagged_content_block_generate_thumbnail_markup($drop_cap, $url, $content_type);
+  $variables['content']['field_image']['#markup'] = _tagged_content_block_generate_thumbnail_markup($url, $content_type);
 }
 
 function _tagged_content_block_add_event_thumbnail(&$variables, $url) {
   $details = _tagged_content_block_get_event_details($url);
   $variables['field_image'][] = 'Placeholder';
-  $variables['content']['field_image']['#markup'] =_tagged_content_block_generate_thumbnail_markup($details,$url,'event');
+  $variables['content']['field_image']['#markup'] =_tagged_content_block_generate_thumbnail_markup($url, 'event', $details);
 }
 
 /**
@@ -153,13 +152,13 @@ function _tagged_content_block_enable_default_bundles() {
   return $enabled_content_types;
 }
 
-function _tagged_content_block_generate_thumbnail_markup($text, $url, $content_type) {
+function _tagged_content_block_generate_thumbnail_markup($url, $content_type, $text=NULL) {
   if ($content_type == 'event') {
     $month = $text['month'];
     $day = $text['day'];
     $markup = "<div class='thumbnail custom event'><a href='$url'><span>$month<br>$day</span></a></div>";
   } else {
-    $markup = "<div class='thumbnail custom $content_type'><a href='$url'><span>$text</span></a></div>";
+    $markup = "<div class='thumbnail custom $content_type'><a href='$url'></a></div>";
   }
   return $markup;
 }

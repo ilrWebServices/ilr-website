@@ -86,9 +86,12 @@
     top: 0;
   }
 
-  @include addHighlightColors('.thumbnail.custom a', 'background-color');
+  @include addHighlightColors('.thumbnail.custom a', 'background-color',.2);
   .thumbnail.custom {
     @extend %custom-thumbnail;
+    &.event a {
+      background: $event-color;
+    }
   }
 
   .field-type-text-with-summary,
@@ -153,11 +156,14 @@
     @include adjust-font-size-to(14px);
   }
 
-  @include addHighlightColors('.thumbnail.custom a', 'background-color');
+  @include addHighlightColors('.thumbnail.custom a', 'background-color', .2);
   .thumbnail.custom {
     @extend %custom-thumbnail;
     @include circularImage(150px);
     margin: 0 auto;
+    &.event a {
+      background: $event-color;
+    }
   }
 
   &.node-basic-page,
@@ -201,35 +207,58 @@
     display: block;
   }
   h2 {
-    margin: 0;
+    @extend %title-overlay;
     a {
-      display: block;
-      position: absolute;
-      line-height: 0;
-      bottom: .5em;
-      left: 1em;
-      color: white;
-      @include  single-text-shadow(0, 0, 10px, 10px, black);
       @include adjust-font-size-to(36px);
-      font-family: $font;
-      [data-eq-state="320"] & {
-        @include adjust-font-size-to(24px);
-        bottom: .1em;
-      }
+      bottom: .5em;
     }
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background:
-      linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.5)
-      );
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   background:
+    //   linear-gradient(
+    //     to bottom,
+    //     rgba(0, 0, 0, 0),
+    //     rgba(0, 0, 0, 0.5)
+    //   );
+    // }
+  }
+}
+
+%lead-story {
+  h2 {
+    @extend %title-overlay;
+    a {
+      @include adjust-font-size-to(28px);
+      bottom: 1em;
     }
   }
+  h3.category {
+    display: none;
+  }
+  @include trailer(1);
+}
+
+%title-overlay {
+  margin: 0;
+  a {
+    display: block;
+    position: absolute;
+    line-height: 1;
+    left: 1em;
+    color: white;
+    @include single-text-shadow(0, 0, 10px, 10px, black);
+    font-family: $font;
+  }
+  // @include context('#main','#main[data-eq-state="320"]') {
+  //   a {
+  //     @include adjust-font-size-to(18px);
+  //     bottom: .3em;
+  //     left: .3em;
+  //   }
+  // }
 }

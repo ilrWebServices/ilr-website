@@ -20,7 +20,7 @@
       font-family: $font-headers;
       color: $h2-text;
     }
-    @include addHighlightColors('.category', 'color');
+    @include addHighlightColors('.category', 'color', 1);
     h3.category {
       text-transform: uppercase;
       font-family: $font;
@@ -31,11 +31,26 @@
   }
 
   #content & {
-    article {
-      @extend %thumb;
+    &:not([data-items='1']) {
+      &:not([data-items='3']) {
+        article {
+          @extend %thumb;
+        }
+        &[data-eq-state="small"] {
+          @extend %slug;
+        }
+      }
     }
-    article[data-eq-state="small"] {
-      @extend %slug;
+    &[data-items='3'] {
+      article {
+        @extend %card;
+      }
+    }
+    &[data-items='1'] {
+      article {
+        @extend %one-column;
+        @extend %lead-story;
+      }
     }
   }
 

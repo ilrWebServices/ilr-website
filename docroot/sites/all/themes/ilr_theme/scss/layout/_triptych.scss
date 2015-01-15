@@ -7,8 +7,20 @@
   #content {
     @include clearfix;
     @include grid-span(1, 2);
-    .block-bean article {
-      @extend %two-column;
+    .block-bean {
+      article {
+        @extend %two-column;
+      }
+      &[data-items='1'] {
+        article {
+          @extend %one-column;
+        }
+      }
+      &[data-items='3'] {
+        article {
+          @extend %three-column;
+        }
+      }
     }
   }
 

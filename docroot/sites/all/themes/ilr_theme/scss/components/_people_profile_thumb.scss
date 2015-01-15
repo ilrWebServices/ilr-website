@@ -1,8 +1,9 @@
 #block-people-profiles-people-landing-page,
 #block-people-profiles-faculty-landing-page,
-body.page-taxonomy-term .region-content .block {
+body.page-taxonomy-term .view-areas-expertise-taxonomy-term {
   @extend %bean-base;
   article {
+    position: relative;
     @extend %thumb;
 
     h2 {
@@ -18,6 +19,9 @@ body.page-taxonomy-term .region-content .block {
       &.field-type-image {
         top: 3px !important; // note that this will be affected by the h2 line-height
         margin-left: 0;
+        .silhouette {
+          opacity: .2;
+        }
       }
     }
   }

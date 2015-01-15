@@ -124,8 +124,6 @@ class TaggedContentBean extends BeanPlugin {
         $node->show_featured = $bean->featured;
         // 'show_featured' status can be acted upon as the content gets rendered, as we do in tagged_content_block_preprocess_node().
       }
-      $content['nodes']['#weight'] = '-1';
-
       // Add the item count to the bean for theming data-attributes
       // See ilr_theme_preprocess_block
       $bean->item_count = count($content['nodes']);
