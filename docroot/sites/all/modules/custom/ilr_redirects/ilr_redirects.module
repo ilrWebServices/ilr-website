@@ -8,8 +8,8 @@ function _ilr_redirects_load_redirects() {
   if ($file) {
     while (($redirect = fgetcsv($file)) !== FALSE) {
       $redirects[] = array(
-        'source' => ltrim($redirect[0], '/'),
-        'destination' => ltrim($redirect[1], '/'),
+        'source' => strtolower(trim($redirect[0], '/')),
+        'destination' => strtolower(trim($redirect[1], '/')),
       );
     }
     fclose($file);
