@@ -33,14 +33,10 @@ abstract class ILRRedirectLoader {
     if (!redirect_load_by_source($legacy_path)) {
       $entity_type = 'redirect';
       $redirect = new stdClass();
-
-        $redirect->is_new = TRUE;
+      redirect_object_prepare($redirect);
       $redirect->source = $legacy_path;
-        $redirect->redirect = "node/$nid";
-        $redirect->status_code = 301;
-       $redirect->type = 'redirect';
-       $redirect->redirect_options = array();
-      $redirect->source_options = array();
+      $redirect->redirect = "node/$nid";
+      $redirect->status_code = 301;
 
 
       redirect_save($redirect);
