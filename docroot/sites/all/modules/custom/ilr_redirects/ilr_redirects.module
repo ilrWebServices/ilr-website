@@ -1,8 +1,8 @@
 <?php
 
-function _ilr_redirects_load_redirects() {
+function _ilr_redirects_load_redirects($filename) {
   $redirects = array();
-  $file_path = drupal_get_path('module','ilr_redirects') . '/ilr-website-redirects.csv';
+  $file_path = drupal_get_path('module','ilr_redirects') . '/'.$filename.'.csv';
   ini_set('auto_detect_line_endings', TRUE);
   $file = fopen($file_path, 'r');
   if ($file) {
@@ -18,9 +18,9 @@ function _ilr_redirects_load_redirects() {
   return $redirects;
 }
 
-function _ilr_redirects_create_redirects() {
+function _ilr_redirects_create_redirects($filename='ilr-website-redirects') {
   if (module_exists('redirect')) {
-    $redirects = _ilr_redirects_load_redirects();
+    $redirects = _ilr_redirects_load_redirects($filename);
     foreach ($redirects as $redirect) {
       $new_redirect = new stdClass();
       redirect_object_prepare($new_redirect);
