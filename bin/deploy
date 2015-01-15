@@ -44,14 +44,8 @@ if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
   echo "Deploying $branch_name to livedev on Acquia"
   ssh ilr@srv-2136.devcloud.hosting.acquia.com "cd ~/$ENV/livedev; git checkout .; git pull; git checkout $branch_name; git pull; cd docroot; exit;"
 
-  echo "Reverting all features on $ENV"
-  cd docroot
-  drush @ilr.ilr.$ENV fr-all -y
-
-  echo "Running database updates on $ENV"
-  drush @ilr.ilr.$ENV updb -y # also clears cache
-
-  echo "Deployment complete"
+  echo "Deployment complete."
+  echo "If there are updates hooks or features needed reverting, you will need to run them manually."
 
   exit
 fi
