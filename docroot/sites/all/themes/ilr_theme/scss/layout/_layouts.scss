@@ -36,6 +36,9 @@
 %three-column {
   @include layout(6) {
     @include float-span(2);
+    &:nth-of-type(even) {
+      @include float-span(2);
+    }
     &:nth-of-type(3n) {
       @include float-span(2, 'last');
     }
@@ -87,6 +90,7 @@
   &.event a {
     text-align: center;
     background: $event-color;
+    color: white;
     span {
       display: block;
       @include adjust-font-size-to(25px, 1);

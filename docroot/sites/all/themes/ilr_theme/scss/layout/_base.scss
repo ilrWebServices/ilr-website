@@ -73,6 +73,12 @@
         @extend %two-column;
       }
     }
+    #content .block[data-items='3'] article {
+      @extend %three-column;
+    }
+    #content .block[data-items='1'] article {
+      @extend %one-column;
+    }
     #sidebar-second .block-bean .field-type-entityreference {
       @extend %two-column;
       article {
