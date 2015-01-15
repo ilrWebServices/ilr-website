@@ -454,3 +454,10 @@ function ilr_update_7036() {
   module_enable(array('ilr_redirects'));
   _ilr_redirects_create_redirects();
 }
+/**
+ * Enables ilr_legacy_redirect custom module
+ */
+function ilr_update_7037() {
+  module_enable(array('ilr_legacy_redirect'));
+}
+

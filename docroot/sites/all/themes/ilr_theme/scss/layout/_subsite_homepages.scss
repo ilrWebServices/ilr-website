@@ -1,4 +1,7 @@
 body.subsite-front {
+  #sidebar-first {
+    display: none !important; //override from nav settings
+  }
   &.worker-institute { // consider using context to add body class
     .container[data-eq-state="regular-nav"] {
       @extend %one-column-page;

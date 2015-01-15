@@ -1,0 +1,12 @@
+<?php
+/**
+ * @file
+ * Install and update functions
+ */
+
+/**
+ * Implements hook_install().
+ */
+function ilr_legacy_redirect_install() {
+  ilr_legacy_redirect_run_imports();
+}

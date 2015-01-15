@@ -1,4 +1,5 @@
 %bean-base {
+  @include clearfix;
   body.not-front #sidebar-second & {
     article {
       @extend %thumb;

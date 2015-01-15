@@ -102,7 +102,6 @@
     }
 
     h2 {
-      font-family: $font;
       &.bean-title {
         font-weight: 600;
         text-transform: uppercase;
@@ -116,11 +115,12 @@
       article h2 {
         font-weight: normal;
         margin: 0;
-        @include adjust-leading-to(1);
+        @include adjust-font-size-to(16px);
+        @include adjust-leading-to(1,16px);
         a {
           color: $p-text;
           border-bottom: none;
-          @include adjust-font-size-to(16px, 1);
+          font-family: $font;
           &:hover {
             color: $link-hover;
           }

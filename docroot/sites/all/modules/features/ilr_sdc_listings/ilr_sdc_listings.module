@@ -95,18 +95,25 @@ function ilr_sdc_listings_menu() {
  * @param $catalog_num
  * @return int
  */
-function _ilr_sdc_listings_catalog_redirect($catalog_num) {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'sdc_course')
-    ->fieldCondition('field_catalog_prefix', 'value', $catalog_num);
-  $results = $query->execute();
-  if (!empty($results['node'])) {
-    $nid = array_pop(array_keys($results['node']));
+function _ilr_sdc_listings_catalog_redirect($catalog_prefix) {
+  $nid = _ilr_sdc_listings_get_nid_from_catalog_prefix($catalog_prefix);
+  if ($nid) {
     drupal_goto("node/$nid");
     return;
   }
   return MENU_NOT_FOUND;
+}
+function _ilr_sdc_listings_get_nid_from_catalog_prefix($catalog_prefix) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_course')
+    ->fieldCondition('field_catalog_prefix', 'value', $catalog_prefix);
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    $nid = array_pop(array_keys($results['node']));
+    return $nid;
+  }
+  return FALSE;
 }
 
 /**
