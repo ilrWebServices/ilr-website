@@ -13,10 +13,18 @@
  */
 function ilr_legacy_redirect_run_imports() {
   $messages = array();
-  $redirect_news = new ILRRedirectMigrationLoader('news-redirects.csv', 'news');
-  $redirect_news->runImport();
+  _ilr_legacy_redirect_news();
+  _ilr_legacy_redirect_sdc();
+}
+
+function _ilr_legacy_redirect_sdc() {
   $redirect_sdc = new ILRRedirectSDCLoader('sdc-course-redirects.csv');
   $redirect_sdc->runImport();
+}
+
+function _ilr_legacy_redirect_news() {
+  $redirect_news = new ILRRedirectMigrationLoader('news-redirects.csv', 'news');
+  $redirect_news->runImport();
 }
 
 
