@@ -4,6 +4,7 @@ header.search-engaged #header-region {
 }
 
 .search-button {
+  display: none;
   @extend %header-btn;
   a {
     @include transition-duration(.3s);
