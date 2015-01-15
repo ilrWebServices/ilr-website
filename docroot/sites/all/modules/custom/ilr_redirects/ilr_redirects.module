@@ -1,0 +1,37 @@
+<?php
+
+function _ilr_redirects_load_redirects() {
+  $redirects = array();
+  $file_path = drupal_get_path('module','ilr_redirects') . '/ilr-website-redirects.csv';
+  ini_set('auto_detect_line_endings', TRUE);
+  $file = fopen($file_path, 'r');
+  if ($file) {
+    while (($redirect = fgetcsv($file)) !== FALSE) {
+      $redirects[] = array(
+        'source' => ltrim($redirect[0], '/'),
+        'destination' => ltrim($redirect[1], '/'),
+      );
+    }
+    fclose($file);
+  }
+
+  return $redirects;
+}
+
+function _ilr_redirects_create_redirects() {
+  if (module_exists('redirect')) {
+    $redirects = _ilr_redirects_load_redirects();
+    foreach ($redirects as $redirect) {
+      $new_redirect = new stdClass();
+      redirect_object_prepare($new_redirect);
+      $new_redirect->source = $redirect['source'];
+      $new_redirect->redirect = $redirect['destination'];
+      $new_redirect->language = LANGUAGE_NONE;
+      // Check if the redirect exists before saving.
+      $hash = redirect_hash($new_redirect);
+      if (!redirect_load_by_hash($hash)) {
+        redirect_save($new_redirect);
+      }
+    }
+  }
+}

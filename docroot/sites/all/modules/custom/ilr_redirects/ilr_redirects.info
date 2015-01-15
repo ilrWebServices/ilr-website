@@ -1,0 +1,7 @@
+name = ILR Redirects
+description = Handles creating and updating ILR Redirects
+core = 7.x
+php = 5.3
+version = 7.x-1.0
+
+dependencies[] = redirect

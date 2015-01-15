@@ -447,3 +447,10 @@ function ilr_update_7034() {
 function ilr_update_7035() {
   module_enable(array('block_collection'));
 }
+/**
+ * Enables ilr_redirects custom module
+ */
+function ilr_update_7036() {
+  module_enable(array('ilr_redirects'));
+  _ilr_redirects_create_redirects();
+}
