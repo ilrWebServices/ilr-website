@@ -1301,8 +1301,11 @@ class EntityformTypeController extends EntityAPIControllerExportable {
     }
     else {
       if ($values['is_new']) {
-        $values['data']['submissions_view'] = 'default';
-        $values['data']['user_submissions_view'] = 'default';
+        // Don't override values even if is_new. Features will send values in for checking status.
+        $values['data'] += array(
+          'submissions_view' => 'default',
+          'user_submissions_view' => 'default',
+        );
       }
     }
     $entityform_type = parent::create($values);
@@ -1395,6 +1398,15 @@ class EntityformTypeController extends EntityAPIControllerExportable {
           catch (Exception $e) {
           }
         }
+      }
+      // Delete all menu module links that point to this entityform type.
+      $submit_paths = array();
+      foreach ($entities as $id => $entity) {
+        $submit_paths[] = _entityform_type_get_submit_url($entity->type);
+      }
+      $result = db_query("SELECT mlid FROM {menu_links} WHERE link_path IN (:path) AND module = 'entityform'", array(':path' => $submit_paths), array('fetch' => PDO::FETCH_ASSOC));
+      foreach ($result as $m) {
+        menu_link_delete($m['mlid']);
       }
       parent::delete($ids, $transaction);
 
