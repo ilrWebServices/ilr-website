@@ -1,10 +1,10 @@
 # Global rewrites
 
   RewriteCond %{HTTP_HOST} ^www.ilr\.cornell\.edu$ [NC]
-  RewriteRule ^/?trianglefire/(.*)$ http://trianglefire.ilr.cornell.edu/$1 [R=301,L]
-  RewriteRule ^/?ilgwu/(.*)$ http://ilgwu.ilr.cornell.edu/$1 [R=301,L]
-  RewriteRule ^index\.html$ / [R=301,L]
-  RewriteRule ^(.*)/index\.html$ /$1/ [R=301,L]
+  RewriteRule ^/?trianglefire/(.*)$ http://trianglefire.ilr.cornell.edu/$1 [R=301,L,NC]
+  RewriteRule ^/?ilgwu/(.*)$ http://ilgwu.ilr.cornell.edu/$1 [R=301,L,NC]
+  RewriteRule ^index\.html$ / [R=301,L,NC]
+  RewriteRule ^(.*)/index\.html$ /$1/ [R=301,L,NC]
 
 #
 # Apache/PHP/Drupal settings:
