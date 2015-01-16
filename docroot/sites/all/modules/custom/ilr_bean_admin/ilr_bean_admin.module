@@ -5,6 +5,34 @@ define('ILR_ADMIN_BEAN_LOCK_AUTOLOCK_MESSAGE', 'Block was locked because all hid
 
 
 /**
+ * Implements hook_entity_info_alter().
+ * Adds custom view modes for beans
+ */
+function ilr_bean_admin_entity_info_alter(&$entity_info) {
+  $entity_info['bean']['view modes']['unordered_list'] = array(
+    'label' => t('Unordered List'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter().
+ * For bean entity type
+ *
+ * Adds bean_view_mode to nodes under field_content.
+ * @see ilr_bean_admin_preprocess_node().
+ */
+function ilr_bean_admin_bean_view_alter($bean) {
+  if (isset($bean['field_content'])) {
+    $bean_view_mode = $bean['#entity']->view_mode;
+    foreach (element_children($bean['field_content']) as $delta) {
+      $node =& $bean['field_content'][$delta]['node'][$bean['field_content']['#items'][$delta]['target_id']]['#node'];
+      $node->bean_view_mode = $bean_view_mode;
+    }
+  }
+}
+
+/**
  * Implements hook_form_alter().
  * Adds the admin_lock setting checkbox
  * Hides the lock setting from non-admins.
