@@ -1,3 +1,11 @@
+# Global rewrites
+
+  RewriteCond %{HTTP_HOST} ^www.ilr\.cornell\.edu$ [NC]
+  RewriteRule ^/?trianglefire/(.*)$ http://trianglefire.ilr.cornell.edu/$1 [R=301,L]
+  RewriteRule ^/?ilgwu/(.*)$ http://ilgwu.ilr.cornell.edu/$1 [R=301,L]
+  RewriteRule ^index\.html$ / [R=301,L]
+  RewriteRule ^(.*)/index\.html$ /$1/ [R=301,L]
+
 #
 # Apache/PHP/Drupal settings:
 #
@@ -140,12 +148,4 @@ DirectoryIndex index.php index.html index.htm
       Header append Vary Accept-Encoding
     </FilesMatch>
   </IfModule>
-
-  # Global rewrites
-
-  RewriteCond %{HTTP_HOST} ^www.ilr\.cornell\.edu$ [NC]
-  RewriteRule ^/?trianglefire/(.*)$ http://trianglefire.ilr.cornell.edu/$1 [R=301,L]
-  RewriteRule ^/?ilgwu/(.*)$ http://ilgwu.ilr.cornell.edu/$1 [R=301,L]
-  RewriteRule ^index\.html$ / [R=301,L]
-  RewriteRule ^(.*)/index\.html$ /$1/ [R=301,L]
 </IfModule>
