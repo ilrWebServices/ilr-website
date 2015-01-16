@@ -70,7 +70,6 @@ function people_profiles_node_view($node, $view_mode, $langcode) {
     }
     unset($node->content['links']['node']['#links']['node-readmore']);
     $node->content['#attributes']['style'] = 'display: none; width: 1313';
-    ilr_dpm($node->content);
   }
 }
 
