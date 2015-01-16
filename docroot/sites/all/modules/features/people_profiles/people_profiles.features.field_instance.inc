@@ -267,6 +267,7 @@ function people_profiles_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_ai_outreach_statement',
     'label' => 'Outreach Statement',
     'required' => 0,
@@ -276,7 +277,7 @@ function people_profiles_field_default_field_instances() {
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -538,6 +539,7 @@ function people_profiles_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_ai_service_statement',
     'label' => 'Service Statement',
     'required' => 0,
@@ -547,7 +549,7 @@ function people_profiles_field_default_field_instances() {
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
