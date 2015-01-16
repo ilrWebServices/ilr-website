@@ -16,5 +16,4 @@ features[views_view][] = content_referencer
 features_exclude[dependencies][ctools] = ctools
 files[] = ilr_manual_listing.views.inc
 files[] = views/handlers/ilr_manual_listing_plugin_argument_default_manual_listing_types.inc
-mtime = 1418916326
 project path = sites/all/modules/features

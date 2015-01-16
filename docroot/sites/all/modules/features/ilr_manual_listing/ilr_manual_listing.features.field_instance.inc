@@ -39,6 +39,16 @@ function ilr_manual_listing_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 0,
       ),
+      'unordered_list' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 1,
+      ),
     ),
     'entity_type' => 'bean',
     'field_name' => 'field_content',
