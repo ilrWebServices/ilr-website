@@ -21,14 +21,6 @@
             });
           }
         }
-        // Check for people landing page, handle z-index bug
-        if ($('#block-people-profiles-people-landing-page').length) {
-          profileCount = $('article.node-people-profile').length + 1;
-          $('article.node-people-profile').each(function(){
-            $(this).css('z-index',profileCount);
-            profileCount--;
-          });
-        }
       });
 
       // Borrowed from http://techfoobar.com/jquery-next-in-dom/
