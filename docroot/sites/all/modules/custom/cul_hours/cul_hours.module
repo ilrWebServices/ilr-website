@@ -47,9 +47,13 @@ function _cul_hours_generate_markup() {
 }
 
 function _cul_hours_format_timestamp($start, $end=NULL) {
-  $markup = date('g:i a', $start);
-  if ($end) {
-    $markup .= ' - ' . date('g:i a', $end);
+  if (!$start && !$end) {
+    $markup = 'Closed';
+  } else {
+    $markup = date('g:i a', $start);
+    if ($end) {
+      $markup .= ' - ' . date('g:i a', $end);
+    }
   }
   return $markup;
 }
