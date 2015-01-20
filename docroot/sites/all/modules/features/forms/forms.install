@@ -10,9 +10,35 @@ function forms_update_7001() {
     'graduate_student_request_for_tea' => 'field_degree_program',
   );
 
+  _forms_delete_entityform_field_instances($fields_info);
+}
+
+/**
+ * Delete field_h_postdate field instance
+ */
+function forms_update_7002(&$sandbox) {
+  $fields_info = array(
+    'job_postings_for_ilr_alumni' => 'field_h_postdate',
+  );
+  _forms_delete_entityform_field_instances($fields_info);
+}
+
+/**
+ * Delete array of field instances
+ * @param $fields_info
+ */
+function _forms_delete_entityform_field_instances($fields_info) {
+  $delete_count = 0;
   foreach ($fields_info as $form_id => $field_name) {
     if ($instance = field_info_instance('entityform_type', $field_name, $form_id)) {
       field_delete_instance($instance);
+      $delete_count++;
     }
   }
+  /**
+   * The fields aren't really deleted until the purge function runs, ordinarily
+   * during cron.  Count the number of fields we need to purge, and add five in
+   * case a few other miscellaneous fields are in there somehow.
+   */
+  field_purge_batch($delete_count + 5);
 }

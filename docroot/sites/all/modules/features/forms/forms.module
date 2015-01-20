@@ -75,11 +75,12 @@ function _forms_set_alumni_job_postdate($entityform) {
   }
 
   // Strip off the time, only want the date, and put it in the format Dottie needs m/d/yyyy
-  $postdate = date_format($postdateobj, 'm/d/Y');
+  $postdate_ts = $postdateobj->getTimestamp();
 
   // Save the postdate to the hidden field h_postdate on the entityform
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
-  $entityform_wrapper->field_h_postdate->set($postdate);
+  $entityform_wrapper->field_h_post_date->set($postdate_ts);
+
 }
 
 
@@ -156,6 +157,10 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
   }
 }
 
+function _forms_remove_element_access($element) {
+  $element['#access'] = FALSE;
+  return $element;
+}
 /**
  * Collective Bargaining videos redirect
  * The URL to redirect to will get set in the db via drush using the variable "cb_videos_url"
@@ -754,7 +759,7 @@ function _forms_is_event_registration_form($entityform) {
 function _forms_get_postdate_for_email($entityform) {
   if ($entityform->type == 'job_postings_for_ilr_alumni') {
     $entityform_wrapper = _forms_entityform_wrapper($entityform);
-    return $entityform_wrapper->field_h_postdate->value();
+    return $entityform_wrapper->field_h_post_date->value();
   }
   else {
     return '';
