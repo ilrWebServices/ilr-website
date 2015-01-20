@@ -1250,7 +1250,7 @@ function forms_default_entityform_type() {
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
-      "submissions_view" : "default",
+      "submissions_view" : "submissions_alumni_postings",
       "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
       "roles" : {
