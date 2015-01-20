@@ -1,0 +1,39 @@
+#content-bottom {
+  padding: 3em 1em;
+
+  body:not(.front) & {
+    background: lighten($brand-dark, 15%);
+  }
+
+  .section {
+    @extend .center;
+    max-width: $page-max-width;
+  }
+
+  .content-listing-manual {
+    max-width: $page-max-width * .66;
+    @extend .center;
+
+    h2 {
+      color: white;
+      text-transform: uppercase;
+      font-weight: bold;
+      @include adjust-font-size-to(16px);
+    }
+    .field-name-field-content {
+      @extend %three-column;
+
+      @include context('#content-bottom','#content-bottom[data-eq-state="320"]') {
+        @extend %one-column;
+      }
+
+      a {
+        color: white;
+        border: none;
+        &:hover {
+          border-bottom: 1px solid $gray-medium;
+        }
+      }
+    }
+  }
+}
