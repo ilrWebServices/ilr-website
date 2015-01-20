@@ -19071,8 +19071,8 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'field_formatter_label' => '',
-          'format_type' => 'date_short',
+          'field_formatter_label' => 'PostDate',
+          'format_type' => 'ilr_date_short',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
@@ -33866,7 +33866,6 @@ function forms_field_default_field_instances() {
   t('e.g. Spring 2019');
   t('empl recog supp text');
   t('h credit card payments');
-  t('h_postdate');
   t('pronunciation markup');
   t('ssl_amount');
   t('ssl_approval_code');

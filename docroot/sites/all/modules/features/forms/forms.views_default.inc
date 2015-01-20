@@ -94,21 +94,27 @@ function forms_views_default_views() {
   $handler->display->display_options['fields']['delete_entityform']['field'] = 'delete_entityform';
   $handler->display->display_options['fields']['delete_entityform']['label'] = 'Delete';
   $handler->display->display_options['fields']['delete_entityform']['hide_alter_empty'] = FALSE;
-  /* Field: Entityform Type: Label */
-  $handler->display->display_options['fields']['label_1']['id'] = 'label_1';
-  $handler->display->display_options['fields']['label_1']['table'] = 'entityform_type';
-  $handler->display->display_options['fields']['label_1']['field'] = 'label';
-  $handler->display->display_options['fields']['label_1']['label'] = 'Form Type';
   /* Field: Entityform Submission: Date submitted */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'entityform';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['date_format'] = 'medium';
-  /* Field: Entityform Submission: Date changed */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'entityform';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['hide_alter_empty'] = FALSE;
+  /* Field: Entityform Submission: Post Date */
+  $handler->display->display_options['fields']['field_h_post_date']['id'] = 'field_h_post_date';
+  $handler->display->display_options['fields']['field_h_post_date']['table'] = 'field_data_field_h_post_date';
+  $handler->display->display_options['fields']['field_h_post_date']['field'] = 'field_h_post_date';
+  $handler->display->display_options['fields']['field_h_post_date']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_h_post_date']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_h_post_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_h_post_date']['settings'] = array(
+    'format_type' => 'ilr_date_short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'field_formatter_label' => '',
+  );
+  $handler->display->display_options['fields']['field_h_post_date']['field_api_classes'] = TRUE;
   /* Sort criterion: Entityform Submission: Date submitted */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'entityform';
@@ -156,8 +162,6 @@ function forms_views_default_views() {
     31 => 0,
   );
   $handler->display->display_options['filters']['field_h_post_date_value']['form_type'] = 'date_popup';
-  $handler->display->display_options['filters']['field_h_post_date_value']['default_date'] = 'now';
-  $handler->display->display_options['filters']['field_h_post_date_value']['default_to_date'] = 'now';
   $handler->display->display_options['filters']['field_h_post_date_value']['year_range'] = '-1:+1';
 
   /* Display: Page */
