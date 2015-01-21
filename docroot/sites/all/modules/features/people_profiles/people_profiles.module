@@ -450,6 +450,7 @@ function _people_profiles_update_vita_link(&$element) {
 function _people_profiles_process_staff_form(&$form) {
   $form['field_ilrweb_vita_file']['#access'] = 0;
   $form['field_faculty_on_leave']['#access'] = 0;
+  $form['field_office_hours']['#access'] = 0;
   // Hide the AI fieldgroup
   field_group_hide_field_groups($form, array('group_activity_insight'));
 }

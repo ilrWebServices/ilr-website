@@ -773,7 +773,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 60,
+      'weight' => 59,
     ),
   );
 
@@ -883,7 +883,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 59,
+      'weight' => 58,
     ),
   );
 
@@ -1018,7 +1018,7 @@ function people_profiles_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 63,
+      'weight' => 62,
     ),
   );
 
@@ -1129,7 +1129,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 57,
+      'weight' => 56,
     ),
   );
 
@@ -1180,7 +1180,61 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 61,
+      'weight' => 60,
+    ),
+  );
+
+  // Exported field_instance: 'node-people_profile-field_office_hours'
+  $field_instances['node-people_profile-field_office_hours'] = array(
+    'bundle' => 'people_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'For example: "Spring 2015: Tuesdays & Thursdays 3:00 - 4:30 p.m. & by appointment." Line breaks will be respected when displayed.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_office_hours',
+    'label' => 'Office Hours',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 63,
     ),
   );
 
@@ -1243,7 +1297,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 58,
+      'weight' => 57,
     ),
   );
 
@@ -1376,7 +1430,7 @@ function people_profiles_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 62,
+      'weight' => 61,
     ),
   );
 
@@ -1562,9 +1616,11 @@ function people_profiles_field_default_field_instances() {
   t('First Name');
   t('Generally, a profile has a single working title. Faculty, however, can have multiple working titles.');
   t('Honors and Awards');
+  t('For example: "Spring 2015: Tuesdays & Thursdays 3:00 - 4:30 p.m. & by appointment." Line breaks will be respected when displayed.');
   t('Last Name');
   t('NetID');
   t('Off-Campus Work Address');
+  t('Office Hours');
   t('Other Areas of Expertise');
   t('Outreach Statement');
   t('Overview');

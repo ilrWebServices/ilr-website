@@ -78,8 +78,9 @@ function people_profiles_field_group_info() {
       11 => 'field_working_title',
       12 => 'field_faculty_on_leave',
       13 => 'field_profile_department',
-      14 => 'title',
-      15 => 'path',
+      14 => 'field_office_hours',
+      15 => 'title',
+      16 => 'path',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -292,6 +293,7 @@ function people_profiles_field_group_info() {
     'children' => array(
       0 => 'field_ai_links',
       1 => 'field_ilrweb_vita_file',
+      2 => 'field_office_hours',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
