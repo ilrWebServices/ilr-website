@@ -156,11 +156,6 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
     }
   }
 }
-
-function _forms_remove_element_access($element) {
-  $element['#access'] = FALSE;
-  return $element;
-}
 /**
  * Collective Bargaining videos redirect
  * The URL to redirect to will get set in the db via drush using the variable "cb_videos_url"
