@@ -584,7 +584,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
     $to = $user_email;
     $from = $admin_email;
     $subject_user = $form_title . ' confirmation';
-    _send_email_for_entity_form($to, $from, $subject_user, $body);
+    _send_email_for_entity_form($to, $from, $subject_user, nl2br($body));
   }
 
   // Admin email
@@ -600,7 +600,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
       $subject .= " - $user_name";
     }
     $body =  _entity_display_form_data($entityform);
-    _send_email_for_entity_form($to, $from, $subject, $body);
+    _send_email_for_entity_form($to, $from, $subject, nl2br($body));
   }
 }
 

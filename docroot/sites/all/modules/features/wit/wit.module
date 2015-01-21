@@ -154,7 +154,7 @@ function _wit_email_articles_to_list($articles, $date) {
 
   $params = array(
     'subject' => 'Workplace Issues Today',
-    'content' => $body,
+    'content' => nl2br($body),
   );
 
   drupal_mail(
