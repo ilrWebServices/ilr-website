@@ -39,12 +39,4 @@
       }
     }
   }
-
-  #content-bottom {
-    @include grid-span(3);
-    clear: both;
-    article {
-      @extend %four-column;
-    }
-  }
 }
