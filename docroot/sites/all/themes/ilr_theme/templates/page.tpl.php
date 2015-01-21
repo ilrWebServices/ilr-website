@@ -63,17 +63,16 @@
           </div>
         </div> <!-- /.section, /#sidebar-second -->
       <?php endif; ?>
-
-      <?php if ($page['content_bottom']): ?>
-        <div id="content-bottom" <?php print render($page['page_width_eq_points']); ?>>
-          <div class="section">
-          <?php print render($page['content_bottom']); ?>
-          </div>
-        </div> <!-- /.section, /#content-bottom -->
-      <?php endif; ?>
     </div> <!-- /#main -->
   </div><!-- /.container -->
 </div><!-- /#page -->
+<?php if ($page['content_bottom']): ?>
+  <div id="content-bottom" <?php print render($page['page_width_eq_points']); ?>>
+    <div class="section">
+    <?php print render($page['content_bottom']); ?>
+    </div>
+  </div> <!-- /.section, /#content-bottom -->
+<?php endif; ?>
 <footer role="contentinfo">
   <div class="container" <?php print render($page['page_width_eq_points']); ?>>
     <?php print render($page['footer']); ?>

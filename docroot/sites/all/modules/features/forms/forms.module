@@ -319,7 +319,7 @@ function _forms_send_lyris_email(&$entityform, $from, $email_list) {
     ));
 
   $to = 'lyris@cornell.edu';
-  _send_email_for_entity_form($to, $from, $subject_lyris, $body);
+  _send_email_for_entity_form($to, $from, $subject_lyris, nl2br($body));
 }
 
 /**

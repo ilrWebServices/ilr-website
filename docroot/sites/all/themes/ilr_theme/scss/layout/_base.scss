@@ -51,6 +51,7 @@
   #content, #sidebar-second {
     @include clearfix;
     padding: 0 1em 1em 1em;
+    @include trailer(2);
 
     .section {
       @include leader(.5);
@@ -59,8 +60,6 @@
 
   #content-bottom {
     clear: both;
-    padding: 0 1em;
-    @include leader(3);
     article {
       @extend %one-column;
     }
@@ -85,10 +84,30 @@
         @extend %one-column;
       }
     }
-    #content-bottom article {
+  }
+}
+
+#content-bottom {
+  clear: both;
+  article {
+    @extend %one-column;
+  }
+  &[data-eq-state="550"] {
+    article {
       @extend %two-column-masonry;
     }
   }
+  &[data-eq-state="768"] {
+    article {
+      @extend %three-column-masonry;
+    }
+  }
+  &[data-eq-state="widescreen"] {
+    article {
+      @extend %four-column;
+    }
+  }
+
 }
 
 footer {

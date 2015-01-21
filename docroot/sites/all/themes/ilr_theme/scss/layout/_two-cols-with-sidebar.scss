@@ -26,12 +26,4 @@
       @extend %two-column;
     }
   }
-
-  #content-bottom {
-    @include grid-span(2);
-    clear: both;
-    article {
-      @extend %three-column-masonry;
-    }
-  }
 }

@@ -50,12 +50,8 @@ function people_profiles_user_insert(&$edit, $account, $category) {
 function people_profiles_node_presave($node) {
   if ($node->type == 'people_profile' && !$node->is_new) {
     $wrapper = _people_profiles_node_wrapper($node);
-    $name_array = _people_profiles_get_first_and_last_names($node);
-    $wrapper->field_first_name->set($name_array[0]);
-    $last_name = (count($name_array) == 2) // last names may be more than 1 word
-      ? $name_array[1]
-      : implode(' ', array_slice($name_array, 1));
-    $wrapper->field_last_name->set($last_name);
+    $title = _people_profiles_set_title($wrapper);
+    $wrapper->title->set($title);
   }
 }
 
@@ -72,8 +68,8 @@ function people_profiles_node_view($node, $view_mode, $langcode) {
   }
 }
 
-function _people_profiles_get_first_and_last_names($node) {
-  return explode(' ', $node->title);
+function _people_profiles_set_title($wrapper) {
+  return $wrapper->field_first_name->value() . ' ' . $wrapper->field_last_name->value();
 }
 
 /**
@@ -167,10 +163,9 @@ function people_profiles_form_alter(&$form, &$form_state, $form_id) {
       $form['field_address_line_1']['#disabled'] = 1;
       $form['field_faculty_on_leave']['#disabled'] = 1;
       $form['field_profile_type']['#access'] = FALSE;
-      $form['field_first_name']['#access'] = FALSE;
-      $form['field_last_name']['#access'] = FALSE;
       $form['field_last_name']['#access'] = FALSE;
     }
+    $form['title']['#access'] = FALSE; // Use first and last name instead
 
     // Remove the netid field
     if (isset($form['field_netid'])) {
@@ -455,6 +450,7 @@ function _people_profiles_update_vita_link(&$element) {
 function _people_profiles_process_staff_form(&$form) {
   $form['field_ilrweb_vita_file']['#access'] = 0;
   $form['field_faculty_on_leave']['#access'] = 0;
+  $form['field_office_hours']['#access'] = 0;
   // Hide the AI fieldgroup
   field_group_hide_field_groups($form, array('group_activity_insight'));
 }

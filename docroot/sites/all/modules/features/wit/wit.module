@@ -152,15 +152,17 @@ function _wit_email_articles_to_list($articles, $date) {
   $formatted_date = date_format($date_object, 'l, F d, Y');
   $body = _wit_generate_email_body($articles, $formatted_date);
 
+  $to_address = variable_get('wit_list_address', 'ilrweb@cornell.edu');
+
   $params = array(
     'subject' => 'Workplace Issues Today',
-    'content' => $body,
+    'content' => nl2br($body),
   );
 
   drupal_mail(
     'wit',
     'daily_wit',
-    'WIT-L@cornell.edu',
+    $to_address,
     LANGUAGE_NONE,
     $params,
     'catherwoodWIT@cornell.edu'

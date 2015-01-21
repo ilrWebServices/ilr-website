@@ -240,6 +240,7 @@ features[field_base][] = field_number_of_completed_credit
 features[field_base][] = field_number_of_completed_semest
 features[field_base][] = field_number_of_copies
 features[field_base][] = field_number_of_terms_at_cornell
+features[field_base][] = field_office_hours
 features[field_base][] = field_on_demand
 features[field_base][] = field_online_class
 features[field_base][] = field_organization
