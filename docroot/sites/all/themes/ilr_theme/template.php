@@ -22,7 +22,7 @@ function ilr_theme_preprocess_html(&$variables) {
     drupal_get_path('theme', 'ilr_theme') . '/css/IE9.css',
     array(
       'browsers' => array(
-        'IE' => 'IE 9',
+        'IE' => 'lte IE 9',
         '!IE' => FALSE
       )
     )

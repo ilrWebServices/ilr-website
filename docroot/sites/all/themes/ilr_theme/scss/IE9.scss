@@ -49,8 +49,12 @@ body {
     #sidebar-second {
       @include grid-span(1,2);
     }
-    #content-bottom {
-      @include grid-span(2);
+  }
+  #content-bottom {
+    clear: both;
+    @include grid-span(2);
+    article {
+      @extend %four-column;
     }
   }
   footer {

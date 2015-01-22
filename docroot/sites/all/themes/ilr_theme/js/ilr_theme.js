@@ -290,7 +290,16 @@
   };
   Drupal.behaviors.ilr_css_animations = {
     attach: function (context, settings) {
-      $("body").removeClass("preloading");
+      $(window).load(function() {
+        $("body").removeClass("preloading");
+
+        // Check if browser can handle SVG
+        if(!Modernizr.svg){
+          src = $('#logo img').attr('src');
+          src = src.slice(0,-3) + 'png';
+          $('#logo img').attr('src', src);
+        }
+      });
     }
   };
   Drupal.behaviors.masonry = {
