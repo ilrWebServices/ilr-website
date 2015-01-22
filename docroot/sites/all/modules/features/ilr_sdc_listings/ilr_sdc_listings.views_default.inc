@@ -562,7 +562,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['fields']['field_class_dates']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_class_dates']['settings'] = array(
     'format_type' => 'ilr_short_day_only',
-    'fromto' => 'value',
+    'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',

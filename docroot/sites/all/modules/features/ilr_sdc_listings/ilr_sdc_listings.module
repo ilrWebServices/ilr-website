@@ -324,12 +324,6 @@ function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
         // If there is any class that has a different price we don't show price on course level
         unset($course_node->content['field_price']);
       }
-      if (count($class_nids) == 1) {
-        // When only 1 class show faculty info directly on this page.
-        $class_node = array_pop($class_nodes);
-        $course_node->content['faculty_info'] = field_view_field('node', $class_node, 'field_faculty', 'full');
-        $course_node->content['faculty_info']['#weight'] = 5;
-      }
     }
     else {
       $course_node->content['classes'] = array(
@@ -377,11 +371,6 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
       //unset($render_array['links']);
       if (!$has_override_price) {
         unset($render_array['field_price']);
-      }
-      if (count($class_nodes) == 1) {
-        // If only 1 class shown. Faculty will be shown on the course page.
-        unset($render_array['field_faculty']);
-        unset($render_array['links']);
       }
     }
 
