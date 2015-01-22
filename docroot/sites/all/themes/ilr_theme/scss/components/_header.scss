@@ -23,9 +23,12 @@
   }
 }
 
+body:not(.preloading) header {
+  @extend %header-small; // preloading gets removed via js once page has loaded
+}
+
 header {
   @extend .center;
-  @extend %header-small;
   @include transition-duration(.3s);
   @include background-image(linear-gradient(lighten($cornell-red, 3%), $cornell-red));
   background-repeat: no-repeat;
