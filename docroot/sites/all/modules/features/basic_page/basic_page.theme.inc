@@ -32,8 +32,9 @@ function theme_basic_page_file_entity_download_link($variables) {
     $link_text = $file->description;
     $options['attributes']['title'] = check_plain($file->filename);
   }
-  list($mime, $ext) = explode('/', file_get_mimetype($file->uri));
-  $ext = drupal_strtoupper($ext);
+  
+  $path_info = pathinfo($file->uri);
+  $ext = drupal_strtoupper($path_info['extension']);
   if (!$variables['wysiwyg']) {
     $link_text  .= ' '  . "<span class=\"file-info\">($ext, " . ilr_format_file_size($file->filesize) . ')</span>';
     $options['html'] = TRUE;
