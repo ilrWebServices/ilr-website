@@ -20,7 +20,9 @@ define('GOOGLEANALYTICS_PAGES', "admin\nadmin/*\nbatch\nnode/add*\nnode/*/*\nuse
  */
 function google_analytics_universal_page_alter(&$page) {
   global $user;
-
+  if (module_exists('ilr_sub_sites')) {
+    dpm(_ilr_sub_sites_get_current_subsite_name(),'exists');
+  }
   $status = drupal_get_http_header('Status');
   // 1. Track page views if user not logged in
   // 2. If we want to check the current path as well (e.g. we want to start
@@ -36,12 +38,20 @@ function google_analytics_universal_page_alter(&$page) {
       $url_custom = '"/404.html?page=" + document.location.pathname + document.location.search + "&from=" + document.referrer';
     }
 
+    // Check for mpsnyc subsite, which we're hacking with a different GA code
+    if (module_exists('ilr_sub_sites') && _ilr_sub_sites_get_current_subsite_name() == 'MPS NYC') {
+      $code = 'UA-4266040-1';
+    }
+    else {
+      $code = 'UA-4758650-8';
+    }
+
     // Build tracker code.
     $script = "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){";
     $script .= "(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),";
     $script .= "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)";
     $script .= "})(window,document,'script','//www.google-analytics.com/analytics.js','ga');";
-    $script .= "ga('create', 'UA-4758650-8', 'cornell.edu');";
+    $script .= "ga('create', {$code}, 'cornell.edu');";
     $script .= "ga('require', 'linkid', 'linkid.js');";
     $script .= "ga('send', 'pageview');";
 
