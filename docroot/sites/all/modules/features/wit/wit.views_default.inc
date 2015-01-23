@@ -12,7 +12,7 @@ function wit_views_default_views() {
 
   $view = new view();
   $view->name = 'wit_listing';
-  $view->description = '';
+  $view->description = 'See wit_views_pre_view for date filter code';
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->human_name = 'Wit Listing';
