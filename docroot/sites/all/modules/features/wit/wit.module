@@ -71,7 +71,7 @@ function wit_preprocess_node(&$variables) {
  */
 function wit_node_view($node, $view_mode, $langcode) {
   if ($node->type == 'wit_article') {
-    $node->title = $node->field_article_lead_full[LANGUAGE_NONE][0]['safe_value'];
+    $node->title = strip_tags($node->field_article_lead_full[LANGUAGE_NONE][0]['value']);
     hide($node->content['field_article_lead_full']);
   }
 }
