@@ -275,6 +275,7 @@ function _wit_get_latest_pub_date() {
   $query
     ->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'wit_article')
+    ->propertyCondition('status', 1)
     ->fieldOrderBy('field_published_date', 'value', 'DESC')
     ->range(0,1);
   $results =  $query->execute();
