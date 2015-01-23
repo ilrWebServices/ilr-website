@@ -5,6 +5,7 @@
   RewriteRule ^/?ilgwu/(.*)$ http://ilgwu.ilr.cornell.edu/$1 [R=301,L,NC]
   RewriteRule ^index\.html$ / [R=301,L,NC]
   RewriteRule ^(.*)/index\.html$ /$1/ [R=301,L,NC]
+  RewriteRule  ^robots\.txt$ /robots.php [NC,L]
 
 #
 # Apache/PHP/Drupal settings:

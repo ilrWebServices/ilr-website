@@ -1,20 +1,17 @@
-<?php print $salutation;?>
+<?php print $salutation;?><br><br>
 
-This is an automated confirmation from the ILR School at Cornell University of your form submission:
+This is an automated confirmation from the ILR School at Cornell University of your form submission:<br>
 
-<? print $form_title; ?>
+<? print $form_title; ?><br><br>
 
-Thank you for submitting the ULI Financial Aid/Scholarship Application. Scholarships for various amounts are available through the NYS AFL-CIO Leadership Fund.
+Thank you for submitting the ULI Financial Aid/Scholarship Application. Scholarships for various amounts are available through the NYS AFL-CIO Leadership Fund.<br><br>
 
-Each nominee must complete the online Participant Application form at:
-http://www.ilr.cornell.edu/union-leadership-institute/apply/application-forms/participant-application-form
+Each nominee must complete the online Participant Application form at:<br>
+http://www.ilr.cornell.edu/union-leadership-institute/apply/application-forms/participant-application-form<br><br>
 
-<? print $form_data;?>
+<? print $form_data;?><br><br>
 
-You may contact us at <? print $admin_email; ?>.
+You may contact us at <? print $admin_email; ?>.<br><br>
 
-Sincerely,
+Sincerely,<br>
 Union Leadership Institute
-
---
-This is an automated e-mail from <? print $sitename; ?>.
