@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# check running from docroot
+CURRENT_DIR=${PWD##*/}
+if [ ! "$CURRENT_DIR" = "docroot" ]; then
+  echo 'Please be sure that you are running this command from the docroot.'
+  exit 2
+fi
+
+BIN_DIR=`dirname $0`
+
+# download the acquia dev db
+drush sql-sync @ilr.live @ilr.ilr.local -y
+
+drush rsync @ilr.live:%files/ @ilr.ilr.local:%files
+
+echo "Sync complete. Remember to `drush en ilr_dev`."

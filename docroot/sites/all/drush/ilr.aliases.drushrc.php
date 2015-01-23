@@ -44,3 +44,24 @@ $aliases['ilr.local'] = array(
     '%files' => 'sites/default/files',
   ),
 );
+
+// Live
+$aliases['live'] = array(
+  'root' => '/var/www/html/ilr.prod/docroot',
+  'ac-site' => 'ilr',
+  'ac-env' => 'prod',
+  'ac-realm' => 'devcloud',
+  'uri' => 'ilr.devcloud.acquia-sites.com',
+  'remote-host' => 'srv-2136.devcloud.hosting.acquia.com',
+  'remote-user' => 'ilr.prod',
+  'path-aliases' => array(
+    '%drush-script' => 'drush' . $drush_major_version,
+  ),
+  'source-command-specific' => array(
+    'sql-sync' => array(
+      'create-db',
+      'no-cache',
+      'skip-tables-key' => array('*cache*'),
+    ),
+  ),
+);
