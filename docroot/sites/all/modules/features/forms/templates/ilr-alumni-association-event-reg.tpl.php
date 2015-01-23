@@ -1,17 +1,19 @@
-<?php print $salutation;?>
+<?php print $salutation;?><br><br>
 
-Your online reservation for the following ILR Alumni Association event has been received:
+Your online reservation for the following ILR Alumni Association event has been received.<br><br>
 
-Event details:
+Event details:<br><br>
 
-<? print $form_title; ?>
+<? print $form_title; ?><br>
 
-<? print $event_info_for_email; ?>
+<? print $event_info_for_email; ?><br>
 
-<? print $event_payment_details;?>
+<? print $event_payment_details;?><br><br>
 
-Your registration information is shown below.  Please review this information and contact Sue Sappington in the ILR Alumni Affairs Development Office, ss446@cornell.edu, if you have any questions about your registration.
+Your registration information is shown below.
+ Please review this information and contact Sue Sappington in the ILR Alumni Affairs
+  Development Office, ss446@cornell.edu, if you have any questions about your registration.<br><br>
 
 <? print $form_data;?>
-
+<br><br>
 Thank you!

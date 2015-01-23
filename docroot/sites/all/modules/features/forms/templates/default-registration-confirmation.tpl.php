@@ -1,14 +1,14 @@
-<?php print $salutation;?>
+<?php print $salutation;?><br><br>
 
-Thank you for registering for the following Cornell University ILR School event.
+Thank you for registering for the following Cornell University ILR School event.<br><br>
 
-Event details:
+Event details:<br>
 
-<? print $form_title; ?>
+<? print $form_title; ?><br>
 
-<? print $event_info_for_email; ?>
+<? print $event_info_for_email; ?><br><br>
 
-Your information:
-<? print $form_data;?>
+Your information:<br><br>
+<? print $form_data;?><br><br>
 
 If you have any questions, please contact us at <? print $admin_email; ?>.
