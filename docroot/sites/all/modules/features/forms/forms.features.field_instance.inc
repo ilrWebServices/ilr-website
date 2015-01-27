@@ -1442,6 +1442,7 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_ilr_rooms',
     'label' => 'Meeting location preference',
     'required' => 1,
