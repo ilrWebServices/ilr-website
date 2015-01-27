@@ -1476,24 +1476,30 @@ function entityform_views_pre_view(&$view, &$display_id, &$args) {
 /**
  * Get the Entity View Mode to use of adding field to a View.
  *
+ *
+ * Current the display_id must have the 1 of 2 patterns
+ *   1. autofields_[TYPE]_[optional_extra]
+ *   2. autofields_vm__[VIEW_MODE]
  * @param $view
  * @param string $display_id
  * @return string
  */
 function _entityform_get_view_mode_for_view($view, $display_id = '') {
-  // First see if this is set in the style options
-  if (isset($view->display_handler->options['style_options']['entityform_view_mode'])) {
-    return $view->display_handler->options['style_options']['entityform_view_mode'];
-  }
   // Old method hardcoded display ids to view modes.
-  if ($display_id && (strpos($display_id, 'autofields_') === 0)) {
-    switch ($display_id) {
-      case 'autofields_csv':
-      case 'autofields_xml':
+  $display_id_parts = explode('_', $display_id);
+  if ($display_id_parts[0]  == 'autofields') {
+    switch ($display_id_parts[1]) {
+      case 'csv':
+      case 'xml':
         return 'download';
         break;
-      case 'autofields_table':
+      case 'table':
         return 'table';
+        break;
+      case 'vm';
+        //autofield_vm__[VIEW_MODE]
+        $display_id_viewmode_parts = explode('__', $display_id);
+        return $display_id_viewmode_parts[1];
         break;
       default:
         return 'default';
@@ -1833,32 +1839,5 @@ function entityform_entityform_update($entityform) {
     if (module_exists('entity_rules')) {
       _entity_rules_invoke_rules($entityform, 'entityform', 'entityform_submission');
     }
-  }
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- *
- * For form_id views_ui_edit_display_form
- * Alter form to add Views
- *
- */
-function entityform_form_views_ui_edit_display_form_alter(&$form, $form_state) {
-  $view = $form_state['view'];
-  if ($view->base_table == 'entityform') {
-    $current_view_mode = _entityform_get_view_mode_for_view($view);
-    $entity_info = entity_get_info('entityform');
-    $options = array('' => '(' . t('none') . ')');
-    foreach ($entity_info['view modes'] as $view_mode_key => $view_mode) {
-      $options[$view_mode_key] = $view_mode['label'];
-    }
-
-    $form['options']['style_options']['entityform_view_mode'] = array(
-      '#type' => 'select',
-      '#options' => $options,
-      '#title' => t('Auto add fields from View Mode'),
-      '#description' => t('Select an Entityform View Mode to auto add fields from to this display'),
-      '#default_value' => $current_view_mode,
-    );
   }
 }
