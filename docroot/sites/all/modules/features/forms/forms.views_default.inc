@@ -38,7 +38,8 @@ function forms_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'name' => 'name',
-    'entityform_id' => 'entityform_id',
+    'link_entityform' => 'link_entityform',
+    'created' => 'created',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -47,12 +48,19 @@ function forms_views_default_views() {
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
+      'empty_column' => 0,
     ),
-    'entityform_id' => array(
+    'link_entityform' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'created' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
+      'empty_column' => 0,
     ),
   );
   /* Footer: Global: Link */
@@ -61,7 +69,7 @@ function forms_views_default_views() {
   $handler->display->display_options['footer']['link']['field'] = 'link';
   $handler->display->display_options['footer']['link']['label'] = 'CSV All Link';
   $handler->display->display_options['footer']['link']['text'] = 'CSV Complete Download';
-  $handler->display->display_options['footer']['link']['path'] = 'entityform-submissions-jobs/downloads/!1 /csv-all';
+  $handler->display->display_options['footer']['link']['path'] = 'entityform-submissions-jobs/downloads/!1/csv-all';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -190,6 +198,7 @@ function forms_views_default_views() {
   $handler->display->display_options['style_options']['trim'] = 0;
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
   $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
   $handler->display->display_options['style_options']['encoding'] = 'ASCII';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Entityform Submission: Entityform submission ID */
@@ -266,21 +275,11 @@ function forms_views_default_views() {
   $handler->display->display_options['fields']['link_entityform']['table'] = 'entityform';
   $handler->display->display_options['fields']['link_entityform']['field'] = 'link_entityform';
   $handler->display->display_options['fields']['link_entityform']['label'] = 'View';
-  /* Field: Entityform Type: Label */
-  $handler->display->display_options['fields']['label_1']['id'] = 'label_1';
-  $handler->display->display_options['fields']['label_1']['table'] = 'entityform_type';
-  $handler->display->display_options['fields']['label_1']['field'] = 'label';
-  $handler->display->display_options['fields']['label_1']['label'] = 'Form Type';
   /* Field: Entityform Submission: Date submitted */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'entityform';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['date_format'] = 'medium';
-  /* Field: Entityform Submission: Date changed */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'entityform';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['path'] = 'entityform-submissions/submissions/%/table';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Table';
@@ -291,7 +290,7 @@ function forms_views_default_views() {
   $handler->display->display_options['tab_options']['weight'] = '0';
 
   /* Display: CSV Data export all */
-  $handler = $view->new_display('views_data_export', 'CSV Data export all', 'views_data_export_1');
+  $handler = $view->new_display('views_data_export', 'CSV Data export all', 'autofields_csv_all');
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
