@@ -1460,34 +1460,54 @@ function _entityform_type_get_path_types($type) {
  *   2. All Fields will added if the if the show_display_id starts with "autofields_
  */
 function entityform_views_pre_view(&$view, &$display_id, &$args) {
-  if ($view->base_table == 'entityform' && strpos($display_id, 'autofields_') === 0) {
-    if (empty($view->display[$display_id]->entityform_settings['autofields'])) {
-      $type = $view->args[0];
-      _entityform_view_add_all_fields($view, $display_id, $type);
-    }
+  if ($view->base_table == 'entityform') {
+    $view_mode = _entityform_get_view_mode_for_view($view, $display_id);
+    if ($view_mode && empty($view->display[$display_id]->entityform_settings['autofields'])) {
+      // We have to have the Entityform Type as the first argument to this View to get this to work.
+      if ($type = $view->args[0]) {
+        _entityform_view_add_all_fields($view, $display_id, $type, $view_mode);
+      }
 
+    }
   }
   return;
 }
 
 /**
+ * Get the Entity View Mode to use of adding field to a View.
+ *
+ * @param $view
+ * @param string $display_id
+ * @return string
+ */
+function _entityform_get_view_mode_for_view($view, $display_id = '') {
+  // First see if this is set in the style options
+  if (isset($view->display_handler->options['style_options']['entityform_view_mode'])) {
+    return $view->display_handler->options['style_options']['entityform_view_mode'];
+  }
+  // Old method hardcoded display ids to view modes.
+  if ($display_id && (strpos($display_id, 'autofields_') === 0)) {
+    switch ($display_id) {
+      case 'autofields_csv':
+      case 'autofields_xml':
+        return 'download';
+        break;
+      case 'autofields_table':
+        return 'table';
+        break;
+      default:
+        return 'default';
+    }
+  }
+  return '';
+}
+/**
  * Add automatically add all the fields for a Bundle to a View
  */
-function _entityform_view_add_all_fields(&$view, $display_id, $bundle_name) {
+function _entityform_view_add_all_fields(&$view, $display_id, $bundle_name, $view_mode) {
   $instances = field_info_instances('entityform', $bundle_name);
   $view_mode_settings = field_view_mode_settings('entityform', $bundle_name);
   // when adding autofields to view let view modes determine which fields should be include and in what order
-  switch ($display_id) {
-    case 'autofields_csv':
-    case 'autofields_xml':
-      $view_mode = 'download';
-      break;
-    case 'autofields_table':
-      $view_mode = 'table';
-      break;
-    default:
-      $view_mode = 'default';
-  }
   $autofields = array();
   foreach ($instances as $instance) {
     if (!empty($view_mode_settings[$view_mode]['custom_settings']) && isset($instance['display'][$view_mode])) {
@@ -1813,5 +1833,32 @@ function entityform_entityform_update($entityform) {
     if (module_exists('entity_rules')) {
       _entity_rules_invoke_rules($entityform, 'entityform', 'entityform_submission');
     }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * For form_id views_ui_edit_display_form
+ * Alter form to add Views
+ *
+ */
+function entityform_form_views_ui_edit_display_form_alter(&$form, $form_state) {
+  $view = $form_state['view'];
+  if ($view->base_table == 'entityform') {
+    $current_view_mode = _entityform_get_view_mode_for_view($view);
+    $entity_info = entity_get_info('entityform');
+    $options = array('' => '(' . t('none') . ')');
+    foreach ($entity_info['view modes'] as $view_mode_key => $view_mode) {
+      $options[$view_mode_key] = $view_mode['label'];
+    }
+
+    $form['options']['style_options']['entityform_view_mode'] = array(
+      '#type' => 'select',
+      '#options' => $options,
+      '#title' => t('Auto add fields from View Mode'),
+      '#description' => t('Select an Entityform View Mode to auto add fields from to this display'),
+      '#default_value' => $current_view_mode,
+    );
   }
 }
