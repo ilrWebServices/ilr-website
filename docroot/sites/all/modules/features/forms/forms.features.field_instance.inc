@@ -18377,11 +18377,8 @@ function forms_field_default_field_instances() {
       ),
       'download' => array(
         'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'BlindAd',
-        ),
-        'type' => 'list_default',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 12,
       ),
       'table' => array(
@@ -19737,11 +19734,8 @@ function forms_field_default_field_instances() {
       ),
       'download' => array(
         'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'SearchFirm',
-        ),
-        'type' => 'list_default',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 11,
       ),
       'table' => array(
