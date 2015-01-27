@@ -1,7 +1,7 @@
 #content-bottom {
   padding: 3em 1em;
 
-  body:not(.front) & {
+  body:not(.front):not(.subsite-front) & {
     background: lighten($brand-dark, 15%);
   }
 
@@ -22,12 +22,14 @@
     }
     .field-name-field-content {
       @extend %three-column;
+      background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
 
       @include context('#content-bottom','#content-bottom[data-eq-state="320"]') {
         @extend %one-column;
       }
 
       a {
+        padding-left: 1em;
         color: white;
         border: none;
         &:hover {
