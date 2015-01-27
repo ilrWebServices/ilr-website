@@ -169,3 +169,15 @@ function basic_page_theme() {
   );
 
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Form id - media_wysiwyg_format_form
+ * Remove the ability to change tags(and other fields if add) of existing media when
+ * embedding them
+ */
+function basic_page_form_media_wysiwyg_format_form_alter(&$form, &$form_state, $form_id) {
+
+  $form['options']['fields']['#access'] = FALSE;
+}
