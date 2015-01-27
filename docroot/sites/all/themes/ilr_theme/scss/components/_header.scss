@@ -33,12 +33,17 @@ header {
   @include background-image(linear-gradient(lighten($cornell-red, 3%), $cornell-red));
   background-repeat: no-repeat;
   width: 100%;
+  position: relative;
   top: 0;
+  z-index: 950;
+  .sticky &,
+  &.sticky {
+    @include box-shadow(0 10px 10px -10px rgba(black, .5));
+  }
 
   body:not(.subsite) & {
     position: fixed;
   }
-  z-index: 10;
 
   .admin-menu & {
     top: 29px;
@@ -47,6 +52,7 @@ header {
   .logo-wrapper {
     position: relative;
     margin-left: 10px;
+    float: left;
 
     a.cornell {
       display: block;
@@ -60,10 +66,6 @@ header {
     clear: both;
     position: relative;
     border-bottom: 1px solid $gray-light;
-    .sticky &,
-    &.sticky {
-      @include box-shadow(0 10px 10px -10px rgba(black, .5));
-    }
   }
 
   &[data-eq-state="regular-nav"]:not(.sticky) {
