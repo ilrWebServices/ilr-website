@@ -1,0 +1,33 @@
+.view-workspan-list {
+  h3 {
+    @include leader(1);
+  }
+  .views-row {
+    @include trailer(1);
+
+    h2 {
+      margin-bottom: 0;
+      &.fancybox {
+        display: none;
+      }
+    }
+
+    .field-name-field-thumbnail {
+      @extend .alignleft;
+    }
+    .field-name-field-youtube-video {
+      position: relative;
+
+      a {
+        @extend %icon-youtube;
+        padding-left: 2em;
+        border: none;
+        &:before {
+          position: absolute;
+          top: 4px;
+          left: 10px;
+        }
+      }
+    }
+  }
+}

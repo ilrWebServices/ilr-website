@@ -163,6 +163,9 @@
     margin: 0 auto;
     &.event a {
       background: $event-color;
+      @include adjust-font-size-to(25px);
+      padding-top: .5em;
+      line-height: .8;
     }
   }
 

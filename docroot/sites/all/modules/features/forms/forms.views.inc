@@ -31,15 +31,12 @@ function forms_views_data_alter(&$data) {
   ),
   );
 }
-/*
- * The following to function can be used to move field to certain column positions.
- * Currently the assumption is the that FileMaker import doesn't need the exact same order.
- */
+
 /**
  * Implements hook_views_pre_view().
- *
+ */
 function forms_views_pre_view(&$view, &$display_id, &$args){
-  if ($view->name == 'submissions_alumni_postings' && $display_id == 'autofields_csv') {
+  if ($view->name == 'submissions_alumni_postings' && _entityform_get_view_mode_for_view($view, $display_id) == 'download') {
     $fields = &$view->display_handler->display->handler->options['fields'];
     $fields = &_form_move_array_end_offset($fields, 'NumberAds', 1);
     $fields = &_form_move_array_end_offset($fields, 'PostingBlindAd', 3);
@@ -48,7 +45,7 @@ function forms_views_pre_view(&$view, &$display_id, &$args){
 
 /**
  * @param $fields
- *
+ */
 function _form_move_array_end_offset($fields, $label, $offset) {
   $offset *= -1;
   foreach ($fields as $key => $value) {
@@ -66,4 +63,3 @@ function _form_move_array_end_offset($fields, $label, $offset) {
     }
   }
 }
-*/

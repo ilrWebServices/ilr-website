@@ -38,7 +38,8 @@ function forms_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'name' => 'name',
-    'entityform_id' => 'entityform_id',
+    'link_entityform' => 'link_entityform',
+    'created' => 'created',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -47,14 +48,28 @@ function forms_views_default_views() {
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
+      'empty_column' => 0,
     ),
-    'entityform_id' => array(
+    'link_entityform' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'created' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
+      'empty_column' => 0,
     ),
   );
+  /* Footer: Global: Link */
+  $handler->display->display_options['footer']['link']['id'] = 'link';
+  $handler->display->display_options['footer']['link']['table'] = 'views';
+  $handler->display->display_options['footer']['link']['field'] = 'link';
+  $handler->display->display_options['footer']['link']['label'] = 'CSV All Link';
+  $handler->display->display_options['footer']['link']['text'] = 'CSV Complete Download';
+  $handler->display->display_options['footer']['link']['path'] = 'entityform-submissions-jobs/downloads/!1/csv-all';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -87,21 +102,27 @@ function forms_views_default_views() {
   $handler->display->display_options['fields']['delete_entityform']['field'] = 'delete_entityform';
   $handler->display->display_options['fields']['delete_entityform']['label'] = 'Delete';
   $handler->display->display_options['fields']['delete_entityform']['hide_alter_empty'] = FALSE;
-  /* Field: Entityform Type: Label */
-  $handler->display->display_options['fields']['label_1']['id'] = 'label_1';
-  $handler->display->display_options['fields']['label_1']['table'] = 'entityform_type';
-  $handler->display->display_options['fields']['label_1']['field'] = 'label';
-  $handler->display->display_options['fields']['label_1']['label'] = 'Form Type';
   /* Field: Entityform Submission: Date submitted */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'entityform';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['date_format'] = 'medium';
-  /* Field: Entityform Submission: Date changed */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'entityform';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['hide_alter_empty'] = FALSE;
+  /* Field: Entityform Submission: Post Date */
+  $handler->display->display_options['fields']['field_h_post_date']['id'] = 'field_h_post_date';
+  $handler->display->display_options['fields']['field_h_post_date']['table'] = 'field_data_field_h_post_date';
+  $handler->display->display_options['fields']['field_h_post_date']['field'] = 'field_h_post_date';
+  $handler->display->display_options['fields']['field_h_post_date']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_h_post_date']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_h_post_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_h_post_date']['settings'] = array(
+    'format_type' => 'ilr_date_short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'field_formatter_label' => '',
+  );
+  $handler->display->display_options['fields']['field_h_post_date']['field_api_classes'] = TRUE;
   /* Sort criterion: Entityform Submission: Date submitted */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'entityform';
@@ -119,23 +140,37 @@ function forms_views_default_views() {
   $handler->display->display_options['arguments']['type']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['type']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['type']['limit'] = '0';
-  /* Filter criterion: Entityform Submission: Date submitted */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'entityform';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>';
-  $handler->display->display_options['filters']['created']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['created']['expose']['operator_id'] = 'created_op';
-  $handler->display->display_options['filters']['created']['expose']['label'] = 'Date submitted';
-  $handler->display->display_options['filters']['created']['expose']['use_operator'] = TRUE;
-  $handler->display->display_options['filters']['created']['expose']['operator'] = 'created_op';
-  $handler->display->display_options['filters']['created']['expose']['identifier'] = 'created';
   /* Filter criterion: Entityform Submission: Draft */
   $handler->display->display_options['filters']['draft']['id'] = 'draft';
   $handler->display->display_options['filters']['draft']['table'] = 'entityform';
   $handler->display->display_options['filters']['draft']['field'] = 'draft';
   $handler->display->display_options['filters']['draft']['operator'] = '!=';
   $handler->display->display_options['filters']['draft']['value']['value'] = '1';
+  /* Filter criterion: Entityform Submission: Post Date (field_h_post_date) */
+  $handler->display->display_options['filters']['field_h_post_date_value']['id'] = 'field_h_post_date_value';
+  $handler->display->display_options['filters']['field_h_post_date_value']['table'] = 'field_data_field_h_post_date';
+  $handler->display->display_options['filters']['field_h_post_date_value']['field'] = 'field_h_post_date_value';
+  $handler->display->display_options['filters']['field_h_post_date_value']['operator'] = 'between';
+  $handler->display->display_options['filters']['field_h_post_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_h_post_date_value']['expose']['operator_id'] = 'field_h_post_date_value_op';
+  $handler->display->display_options['filters']['field_h_post_date_value']['expose']['label'] = 'Post date';
+  $handler->display->display_options['filters']['field_h_post_date_value']['expose']['operator'] = 'field_h_post_date_value_op';
+  $handler->display->display_options['filters']['field_h_post_date_value']['expose']['identifier'] = 'field_h_post_date_value';
+  $handler->display->display_options['filters']['field_h_post_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+  );
+  $handler->display->display_options['filters']['field_h_post_date_value']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_h_post_date_value']['year_range'] = '-1:+1';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'entityforms_admin_page');
@@ -151,60 +186,6 @@ function forms_views_default_views() {
   $handler->display->display_options['tab_options']['weight'] = '0';
   $handler->display->display_options['tab_options']['name'] = 'management';
 
-  /* Display: XML Data export */
-  $handler = $view->new_display('views_data_export', 'XML Data export', 'autofields_xml');
-  $handler->display->display_options['enabled'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xml';
-  $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = '%1-title_submissions_%timestamp-full.xml';
-  $handler->display->display_options['style_options']['parent_sort'] = 1;
-  $handler->display->display_options['style_options']['transform'] = 1;
-  $handler->display->display_options['style_options']['root_node'] = 'entityforms';
-  $handler->display->display_options['style_options']['item_node'] = 'entityform';
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: User: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'users';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['name']['label'] = 'Submitter';
-  /* Field: Entityform Type: Label */
-  $handler->display->display_options['fields']['label_1']['id'] = 'label_1';
-  $handler->display->display_options['fields']['label_1']['table'] = 'entityform_type';
-  $handler->display->display_options['fields']['label_1']['field'] = 'label';
-  $handler->display->display_options['fields']['label_1']['label'] = 'Form Type';
-  /* Field: Entityform Submission: Date submitted */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'entityform';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['date_format'] = 'medium';
-  /* Field: Entityform Submission: Date changed */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'entityform';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Entityform Submission: Entityform Type */
-  $handler->display->display_options['arguments']['type']['id'] = 'type';
-  $handler->display->display_options['arguments']['type']['table'] = 'entityform';
-  $handler->display->display_options['arguments']['type']['field'] = 'type';
-  $handler->display->display_options['arguments']['type']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['type']['title'] = 'entityform_submissions_%1';
-  $handler->display->display_options['arguments']['type']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['type']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['type']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['type']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['type']['limit'] = '0';
-  $handler->display->display_options['path'] = 'entityform-submissions/downloads/%/xml';
-  $handler->display->display_options['displays'] = array(
-    'entityforms_admin_page' => 'entityforms_admin_page',
-    'autofields_table' => 'autofields_table',
-    'block_1' => 'block_1',
-    'default' => 0,
-  );
-
   /* Display: CSV Data export */
   $handler = $view->new_display('views_data_export', 'CSV Data export', 'autofields_csv');
   $handler->display->display_options['pager']['type'] = 'none';
@@ -217,6 +198,7 @@ function forms_views_default_views() {
   $handler->display->display_options['style_options']['trim'] = 0;
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
   $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
   $handler->display->display_options['style_options']['encoding'] = 'ASCII';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Entityform Submission: Entityform submission ID */
@@ -293,21 +275,11 @@ function forms_views_default_views() {
   $handler->display->display_options['fields']['link_entityform']['table'] = 'entityform';
   $handler->display->display_options['fields']['link_entityform']['field'] = 'link_entityform';
   $handler->display->display_options['fields']['link_entityform']['label'] = 'View';
-  /* Field: Entityform Type: Label */
-  $handler->display->display_options['fields']['label_1']['id'] = 'label_1';
-  $handler->display->display_options['fields']['label_1']['table'] = 'entityform_type';
-  $handler->display->display_options['fields']['label_1']['field'] = 'label';
-  $handler->display->display_options['fields']['label_1']['label'] = 'Form Type';
   /* Field: Entityform Submission: Date submitted */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'entityform';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['date_format'] = 'medium';
-  /* Field: Entityform Submission: Date changed */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'entityform';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['path'] = 'entityform-submissions/submissions/%/table';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Table';
@@ -316,6 +288,90 @@ function forms_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'management';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['tab_options']['weight'] = '0';
+
+  /* Display: CSV Data export all */
+  $handler = $view->new_display('views_data_export', 'CSV Data export all', 'autofields_csv_all');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['attach_text'] = 'CSV - All';
+  $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%1-title_submissions_%timestamp-full.csv';
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['style_options']['encoding'] = 'ASCII';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Entityform Submission: Entityform submission ID */
+  $handler->display->display_options['fields']['entityform_id']['id'] = 'entityform_id';
+  $handler->display->display_options['fields']['entityform_id']['table'] = 'entityform';
+  $handler->display->display_options['fields']['entityform_id']['field'] = 'entityform_id';
+  $handler->display->display_options['fields']['entityform_id']['label'] = 'UID';
+  $handler->display->display_options['fields']['entityform_id']['separator'] = '';
+  /* Field: Entityform Submission: Date submitted */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'entityform';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = 'DateTime';
+  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'm/d/Y';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Global: Current DateTime Jobs */
+  $handler->display->display_options['fields']['ilr_jobs_current_datetime']['id'] = 'ilr_jobs_current_datetime';
+  $handler->display->display_options['fields']['ilr_jobs_current_datetime']['table'] = 'views';
+  $handler->display->display_options['fields']['ilr_jobs_current_datetime']['field'] = 'ilr_jobs_current_datetime';
+  $handler->display->display_options['fields']['ilr_jobs_current_datetime']['label'] = 'downloaddate';
+  /* Field: Global: Current User */
+  $handler->display->display_options['fields']['ilr_userid']['id'] = 'ilr_userid';
+  $handler->display->display_options['fields']['ilr_userid']['table'] = 'views';
+  $handler->display->display_options['fields']['ilr_userid']['field'] = 'ilr_userid';
+  $handler->display->display_options['fields']['ilr_userid']['label'] = 'downloader';
+  /* Field: Global: Current NetId */
+  $handler->display->display_options['fields']['ilr_netid']['id'] = 'ilr_netid';
+  $handler->display->display_options['fields']['ilr_netid']['table'] = 'views';
+  $handler->display->display_options['fields']['ilr_netid']['field'] = 'ilr_netid';
+  $handler->display->display_options['fields']['ilr_netid']['label'] = 'netID';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = 'NumberAds';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '1';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = 'PostingBlindAd';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = 'No';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Entityform Submission: Entityform Type */
+  $handler->display->display_options['arguments']['type']['id'] = 'type';
+  $handler->display->display_options['arguments']['type']['table'] = 'entityform';
+  $handler->display->display_options['arguments']['type']['field'] = 'type';
+  $handler->display->display_options['arguments']['type']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['type']['title'] = 'entityform_submissions_%1';
+  $handler->display->display_options['arguments']['type']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['type']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['type']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['type']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['type']['limit'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Entityform Submission: Draft */
+  $handler->display->display_options['filters']['draft']['id'] = 'draft';
+  $handler->display->display_options['filters']['draft']['table'] = 'entityform';
+  $handler->display->display_options['filters']['draft']['field'] = 'draft';
+  $handler->display->display_options['filters']['draft']['operator'] = '!=';
+  $handler->display->display_options['filters']['draft']['value']['value'] = '1';
+  $handler->display->display_options['path'] = 'entityform-submissions-jobs/downloads/%/csv-all';
+  $handler->display->display_options['displays'] = array(
+    'default' => 0,
+    'entityforms_admin_page' => 0,
+    'autofields_table' => 0,
+  );
   $export['submissions_alumni_postings'] = $view;
 
   return $export;

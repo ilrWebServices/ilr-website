@@ -58,11 +58,12 @@ function forms_default_entityform_type() {
         "11" : 0,
         "16" : 0,
         "41" : 0,
-        "26" : 0,
-        "21" : 0,
-        "31" : 0,
+        "51" : 0,
+        "46" : 0,
         "36" : 0,
-        "46" : 0
+        "21" : 0,
+        "26" : 0,
+        "31" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
@@ -190,7 +191,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for requesting an ILR classroom reservation. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe information you submitted appears below.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf there are technical needs, training is required prior to the use of a room. Please contact ILR Technology Services to make these arrangements via email at: ilrvtc@cornell.edu.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EAdditional information about the classrooms in the Ives Hall Classroom Building:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cul\\u003E\\r\\n\\t\\u003Cli\\u003E\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/techServices\\/services\\/distanceLearning\\/dlrooms.html\\u0022\\u003EDistance Learning Rooms\\u003C\\/a\\u003E\\u003C\\/li\\u003E\\r\\n\\t\\u003Cli\\u003E\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/techServices\\/services\\/classroomTechnologies\\/classroom.html\\u0022\\u003EClassrooms\\u003C\\/a\\u003E\\u003C\\/li\\u003E\\r\\n\\u003C\\/ul\\u003E\\r\\n\\r\\n\\u003Cp\\u003ENote: ILR Technology Services does not support Skype in the classrooms. If using Skype, please use your own laptop.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u003Cstrong\\u003EContact Information\\u003C\\/strong\\u003E\\u003Cbr \\/\\u003E\\r\\n\\tILR School\\u003Cbr \\/\\u003E\\r\\n\\tOffice of Student Services\\u003Cbr \\/\\u003E\\r\\n\\t101 Ives Hall\\u003Cbr \\/\\u003E\\r\\n\\t(607) 255-1515\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for requesting an ILR classroom reservation. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe information you submitted appears below.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf there are technical needs, training is required prior to the use of a room. Please contact ILR Technology Services to make these arrangements via email at: ilrvtc@cornell.edu.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EAdditional information about the classrooms in the Ives Hall Classroom Building:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cul\\u003E\\r\\n\\t\\u003Cli\\u003E\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/about-ilr\\/faculty-and-staff-resources\\/technology-services\\/services\\/distance-learning\\u0022\\u003EDistance Learning Rooms\\u003C\\/a\\u003E\\u003C\\/li\\u003E\\r\\n\\t\\u003Cli\\u003E\\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/about-ilr\\/faculty-and-staff-resources\\/technology-services\\/services\\/classroom-technologies\\u0022\\u003EClassrooms\\u003C\\/a\\u003E\\u003C\\/li\\u003E\\r\\n\\u003C\\/ul\\u003E\\r\\n\\r\\n\\u003Cp\\u003ENote: ILR Technology Services does not support Skype in the classrooms. If using Skype, please use your own laptop.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u003Cstrong\\u003EContact Information\\u003C\\/strong\\u003E\\u003Cbr\\u003E\\r\\n\\tILR School\\u003Cbr\\u003E\\r\\n\\tOffice of Student Services\\u003Cbr\\u003E\\r\\n\\t101 Ives Hall\\u003Cbr\\u003E\\r\\n\\t(607) 255-1515\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -200,23 +201,25 @@ function forms_default_entityform_type() {
       "roles" : {
         "1" : "1",
         "2" : "2",
-        "3" : 0,
-        "4" : 0,
-        "5" : 0,
-        "6" : 0,
-        "7" : 0,
-        "8" : 0,
-        "9" : 0,
-        "10" : 0
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "36" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 1,
-      "form_submission_ilr_recipient" : "ilrossreservations@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
-      "kerberized" : 1
+      "kerberized" : 1,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "ilrossreservations@cornell.edu"
     },
     "weight" : "0",
     "paths" : []
@@ -1250,7 +1253,7 @@ function forms_default_entityform_type() {
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
-      "submissions_view" : "default",
+      "submissions_view" : "submissions_alumni_postings",
       "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
       "roles" : {

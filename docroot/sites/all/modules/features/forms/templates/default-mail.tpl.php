@@ -1,6 +1,6 @@
 <?php print $salutation;?><br><br>
 
-This is an automated confirmation from the ILR School at Cornell University of your form submission:<br>
+This is a confirmation from the ILR School at Cornell University of your form submission:<br>
 
 <? print $form_title; ?><br><br>
 

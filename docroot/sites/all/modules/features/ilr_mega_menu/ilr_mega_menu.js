@@ -40,7 +40,7 @@
           hideSubmenu($('.submenu.active'));
         } else {
           $('.menu-block-ilr-primary-menu').addClass('active');
-          tween = TweenLite.from($(submenu), .6, { opacity: 0, top: 70, scaleX: scalePercent, scaleY: scalePercent, ease: easing });
+          tween = TweenLite.from($(submenu), .3, { opacity: 0, top: 70, scaleX: scalePercent, scaleY: scalePercent, ease: easing });
         }
         $(submenu).addClass('active');
       }
