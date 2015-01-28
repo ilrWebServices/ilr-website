@@ -8,9 +8,9 @@ Please contact ILR Technology Services to make these arrangements via email at: 
 Additional information about the classrooms in the Ives Hall Classroom Building:<br><br>
 
     Distance Learning Rooms<br>
-    http://www.ilr.cornell.edu/techServices/services/distanceLearning/dlrooms.html<br><br>
+    http://www.ilr.cornell.edu/about-ilr/faculty-and-staff-resources/technology-services/services/distance-learning<br><br>
     Classrooms<br>
-    http://www.ilr.cornell.edu/techServices/services/classroomTechnologies/classroom.html<br><br>
+    http://www.ilr.cornell.edu/about-ilr/faculty-and-staff-resources/technology-services/services/classroom-technologies<br><br>
 
 Note: ILR Technology Services does not support Skype in the classrooms. If using Skype, please use your own laptop.<br><br>
 

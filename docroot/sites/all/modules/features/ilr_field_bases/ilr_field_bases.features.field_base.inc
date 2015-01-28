@@ -4784,6 +4784,7 @@ function ilr_field_bases_field_default_field_bases() {
         'Room 107' => '107 (seats 23)',
         'Room 108' => '108 (seats 36)',
         'Room 109' => '109 (seats 36) Distance Learning',
+        'Room 111' => '111 (seats 46) Amphitheater',
         'Room 112' => '112 (seats 36)',
         'Room 115' => '115 (seats 62) Distance Learning',
         'Room 116' => '116 (seats 37)',
