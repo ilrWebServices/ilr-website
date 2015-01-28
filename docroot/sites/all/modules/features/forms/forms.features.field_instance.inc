@@ -18337,7 +18337,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 34,
       ),
     ),
     'entity_type' => 'entityform',
@@ -18378,11 +18378,8 @@ function forms_field_default_field_instances() {
       ),
       'download' => array(
         'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'BlindAd',
-        ),
-        'type' => 'list_default',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 12,
       ),
       'table' => array(
@@ -19048,62 +19045,80 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-job_postings_for_ilr_alumni-field_h_postdate'
-  $field_instances['entityform-job_postings_for_ilr_alumni-field_h_postdate'] = array(
+  // Exported field_instance: 'entityform-job_postings_for_ilr_alumni-field_h_post_date'
+  $field_instances['entityform-job_postings_for_ilr_alumni-field_h_post_date'] = array(
     'bundle' => 'job_postings_for_ilr_alumni',
-    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'date',
         'settings' => array(
           'field_formatter_label' => 'First posting date',
+          'format_type' => 'date_short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
         ),
-        'type' => 'text_default',
+        'type' => 'date_default',
         'weight' => 14,
       ),
       'download' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'date',
         'settings' => array(
           'field_formatter_label' => 'PostDate',
+          'format_type' => 'ilr_date_short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
         ),
-        'type' => 'text_default',
-        'weight' => 33,
+        'type' => 'date_default',
+        'weight' => 35,
       ),
       'table' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'date',
         'settings' => array(
-          'field_formatter_label' => 'PostDate',
+          'field_formatter_label' => '',
+          'format_type' => 'ilr_date_short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
         ),
-        'type' => 'text_default',
+        'type' => 'date_default',
         'weight' => 33,
       ),
     ),
     'entity_type' => 'entityform',
-    'field_name' => 'field_h_postdate',
-    'label' => 'h_postdate',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_h_post_date',
+    'label' => 'Post Date',
     'required' => 0,
     'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'date',
       'settings' => array(
-        'size' => 60,
+        'increment' => 15,
+        'input_format' => 'Y-m-d H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
       ),
-      'type' => 'text_textfield',
-      'weight' => 5,
+      'type' => 'date_text',
+      'weight' => 37,
     ),
   );
 
@@ -19720,11 +19735,8 @@ function forms_field_default_field_instances() {
       ),
       'download' => array(
         'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'SearchFirm',
-        ),
-        'type' => 'list_default',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 11,
       ),
       'table' => array(
@@ -33729,6 +33741,7 @@ function forms_field_default_field_instances() {
   t('Please list the courses in which you are currently enrolled');
   t('Please provide information about your last three employers, starting with your current employer.');
   t('Position');
+  t('Post Date');
   t('Postal code / Zip code');
   t('Preferred students (in order of preference), or desired qualifications');
   t('Prefix');
@@ -33856,7 +33869,6 @@ function forms_field_default_field_instances() {
   t('e.g. Spring 2019');
   t('empl recog supp text');
   t('h credit card payments');
-  t('h_postdate');
   t('pronunciation markup');
   t('ssl_amount');
   t('ssl_approval_code');

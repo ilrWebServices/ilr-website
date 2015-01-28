@@ -460,4 +460,13 @@ function ilr_update_7036() {
 function ilr_update_7037() {
   module_enable(array('ilr_legacy_redirect'));
 }
+/**
+ * Enables add date short format.
+ *
+ * @todo Set all custom date values on cache clear from ilr_date_formats()?
+ *  Avoid having to add hook_update_N each time.
+ */
+function ilr_update_7038() {
+  variable_set('date_format_ilr_date_short', 'm/d/Y');
+}
 

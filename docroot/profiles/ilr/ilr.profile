@@ -374,6 +374,7 @@ function ilr_date_format_types() {
   return array(
     'ilr_short_day_only' => t('Short Day only'),
     'ilr_year_only' => t('Year only'),
+    'ilr_date_short' => t('Short Date only')
   );
 }
 
@@ -384,6 +385,7 @@ function ilr_date_formats() {
   $formats = array(
     'ilr_short_day_only' => 'M j',
     'ilr_year_only' => 'Y',
+    'ilr_date_short' => 'm/d/Y',
   );
   $return_formats = array();
   foreach ($formats as $format_type => $date_format) {
