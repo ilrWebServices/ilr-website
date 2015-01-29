@@ -449,6 +449,11 @@ function _forms_career_services_contact_options() {
  * Generate options list for year_as_list_text field, based on which form it is
  */
 function _year_as_list_text_options($field, $instance = NULL, $entity_type = NULL, $entity = NULL) {
+  if (!$entity) {
+    // Field edit form doesn't contain $entity; form on the site does.
+    // This means we can't set a default value, but that's not a problem.
+    return;
+  }
   if ($entity->type == 'labor_roundtable_student_registr') {
     // Class year in the Labor Roundtable registration form starts with current year and goes six years out
     return _forms_year_relative_options(0,6);
@@ -468,6 +473,11 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
   }
   elseif ($entity->type == 'groat_student_registration') {
     // Expected graduation year in the Groat Student Registration form starts with
+    // current year and goes six years out
+    return _forms_year_relative_options(0,6);
+  }
+  elseif ($entity->type == 'social_impact_career_forum_reg') {
+    // Expected graduation year in the Social Impact Career Forum Registration form starts with
     // current year and goes six years out
     return _forms_year_relative_options(0,6);
   }
