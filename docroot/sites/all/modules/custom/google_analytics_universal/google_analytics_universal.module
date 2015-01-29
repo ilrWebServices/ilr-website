@@ -42,13 +42,14 @@ function google_analytics_universal_page_alter(&$page) {
     $script .= "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)";
     $script .= "})(window,document,'script','//www.google-analytics.com/analytics.js','ga');";
     $script .= "ga('create', 'UA-4758650-8', 'cornell.edu');";
-    // Hack to include additional key for mps nyc sub site
-    if (module_exists('ilr_sub_sites') && _ilr_sub_sites_get_current_subsite_name() == 'MPS NYC') {
-      $script .= "ga('create', 'UA-4266040-1', 'auto', {'name': 'mpsNYC'});";
-    }
 
     $script .= "ga('require', 'linkid', 'linkid.js');";
     $script .= "ga('send', 'pageview');";
+
+    // Hack to include additional key for mps nyc sub site
+    if (module_exists('ilr_sub_sites') && _ilr_sub_sites_get_current_subsite_name() == 'MPS NYC') {
+      $script .= "ga('create', 'UA-4266040-1', 'auto', {'name': 'mpsNYC'});ga('mpsNYC.send', 'pageview');";
+    }
 
     drupal_add_js($script, array('scope' => 'header', 'type' => 'inline'));
   }
