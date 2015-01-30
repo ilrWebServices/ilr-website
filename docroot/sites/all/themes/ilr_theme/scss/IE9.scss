@@ -42,6 +42,9 @@ body {
     @include add-grid(3 9);
     #content {
       @include grid-span(1,2);
+      .block-bean article {
+        @extend %two-column;
+      }
     }
     #sidebar-first {
       @include grid-span(1,1);
@@ -60,6 +63,46 @@ body {
   footer {
     clear: both;
     @include add-grid(12);
+  }
+  &.front,
+  &.subsite-front {
+    #page .container #main {
+      @include add-grid(12);
+      #content {
+        @include grid-span(12);
+        .block-bean {
+          @include grid-span(12);
+        }
+      }
+    }
+    #sidebar-first {
+      display: none !important;
+    }
+  }
+  &.front {
+    #page .container #main {
+      #content {
+        .ilr-video-wrapper {
+          @include grid-span(4,9);
+        }
+        .block-bean {
+          @include grid-span(4);
+          article {
+            @extend %one-column;
+          }
+          &.event-block {
+            @include grid-span(4,5);
+          }
+        }
+      }
+    }
+  }
+  &.subsite-front {
+    #page .container #main #content {
+      .block-bean article {
+        @extend %three-column;
+      }
+    }
   }
 }
 
