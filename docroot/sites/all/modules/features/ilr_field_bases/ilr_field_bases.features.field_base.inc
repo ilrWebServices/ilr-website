@@ -1407,6 +1407,38 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_career_fields_sicf'
+  $field_bases['field_career_fields_sicf'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_career_fields_sicf',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Advocacy' => 'Advocacy',
+        'Government' => 'Government',
+        'International' => 'International',
+        'Labor' => 'Labor',
+        'NGOs' => 'NGOs',
+        'Non-profit' => 'Non-profit',
+        'Policy' => 'Policy',
+        'Think tanks' => 'Think tanks',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_career_services_how_to_dir'
   $field_bases['field_career_services_how_to_dir'] = array(
     'active' => 1,
@@ -2603,6 +2635,33 @@ function ilr_field_bases_field_default_field_bases() {
         'M.S.' => 'M.S.',
         'MILR' => 'MILR',
         'MPS' => 'MPS',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_degree_prog_sicf_reg'
+  $field_bases['field_degree_prog_sicf_reg'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_degree_prog_sicf_reg',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'BSILR' => 'BSILR',
+        'MILR' => 'MILR',
+        'MPA' => 'MPA',
       ),
       'allowed_values_function' => '',
     ),
@@ -4701,6 +4760,35 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_how_heard_sicf'
+  $field_bases['field_how_heard_sicf'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_how_heard_sicf',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'CSAs' => 'CSAs',
+        'Fellow Student' => 'Fellow Student',
+        'OCS email' => 'OCS email',
+        'Flyer/Poster/Table tent' => 'Flyer/Poster/Table tent',
+        'Tabling' => 'Tabling',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_ilr_department'
   $field_bases['field_ilr_department'] = array(
     'active' => 1,
@@ -6406,6 +6494,35 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_other_please_specify'
+  $field_bases['field_other_please_specify'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_other_please_specify',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 1000,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_passport_number'
   $field_bases['field_passport_number'] = array(
     'active' => 1,
@@ -6852,6 +6969,37 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_prof_field_scheinman'
+  $field_bases['field_prof_field_scheinman'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_prof_field_scheinman',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Academic' => 'Academic',
+        'Attorney' => 'Attorney',
+        'HR professional' => 'HR professional',
+        'LR professional' => 'LR professional',
+        'Neutral' => 'Neutral',
+        'Student' => 'Student',
+        'Other' => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_professional_associations'
