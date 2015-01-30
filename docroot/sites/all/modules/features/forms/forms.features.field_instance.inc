@@ -25450,7 +25450,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25473,7 +25473,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 7,
     ),
   );
 
@@ -25491,7 +25491,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25509,7 +25509,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 8,
     ),
   );
 
@@ -25527,14 +25527,20 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_company',
-    'label' => 'Company',
+    'label' => 'Company or School',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -25545,7 +25551,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 5,
     ),
   );
 
@@ -25563,7 +25569,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25581,7 +25587,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -25599,7 +25605,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 4,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25616,7 +25622,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -25634,7 +25640,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25652,7 +25658,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 
@@ -25764,6 +25770,48 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_other_please_specify'
+  $field_instances['entityform-scheinman_mailing_list-field_other_please_specify'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_other_please_specify',
+    'label' => 'Please specify other professional field',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'entityform-scheinman_mailing_list-field_phone'
   $field_instances['entityform-scheinman_mailing_list-field_phone'] = array(
     'bundle' => 'scheinman_mailing_list',
@@ -25778,7 +25826,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25796,7 +25844,43 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_mailing_list-field_prof_field_scheinman'
+  $field_instances['entityform-scheinman_mailing_list-field_prof_field_scheinman'] = array(
+    'bundle' => 'scheinman_mailing_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_prof_field_scheinman',
+    'label' => 'Professional field',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 3,
     ),
   );
 
@@ -25814,7 +25898,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25831,7 +25915,7 @@ function forms_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -25849,7 +25933,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25867,7 +25951,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -34225,6 +34309,7 @@ function forms_field_default_field_instances() {
   t('Comments');
   t('Company');
   t('Company / Organization');
+  t('Company or School');
   t('Company or organization');
   t('Concentration');
   t('Conference date');
@@ -34388,11 +34473,13 @@ function forms_field_default_field_instances() {
   t('Please elaborate on your ILR academic interests');
   t('Please list the courses in which you are currently enrolled');
   t('Please provide information about your last three employers, starting with your current employer.');
+  t('Please specify other professional field');
   t('Position');
   t('Post Date');
   t('Postal code / Zip code');
   t('Preferred students (in order of preference), or desired qualifications');
   t('Prefix');
+  t('Professional field');
   t('Professor');
   t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
   t('Pronunciation');

@@ -9619,6 +9619,167 @@ function forms_conditional_fields_default_fields() {
 
   $items[] = array(
     'entity' => 'entityform',
+    'bundle' => 'scheinman_mailing_list',
+    'dependent' => 'field_other_please_specify',
+    'dependee' => 'field_prof_field_scheinman',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        36 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        36 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 'Other',
+      'value' => array(
+        0 => array(
+          'value' => 'Other',
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items[] = array(
+    'entity' => 'entityform',
     'bundle' => 'undergrad_appl_for_graduation',
     'dependent' => 'field_full_name_additional',
     'dependee' => 'field_name_correct_for_diploma',
