@@ -99,15 +99,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'contextual',
   );
 
-  // Exported permission: 'access devel information'.
-  $permissions['access devel information'] = array(
-    'name' => 'access devel information',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'devel',
-  );
-
   // Exported permission: 'access media browser'.
   $permissions['access media browser'] = array(
     'name' => 'access media browser',
@@ -1815,15 +1806,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'execute php code'.
-  $permissions['execute php code'] = array(
-    'name' => 'execute php code',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'devel',
-  );
-
   // Exported permission: 'flush caches'.
   $permissions['flush caches'] = array(
     'name' => 'flush caches',
@@ -1916,15 +1898,6 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
-  );
-
-  // Exported permission: 'switch users'.
-  $permissions['switch users'] = array(
-    'name' => 'switch users',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'devel',
   );
 
   // Exported permission: 'use text format full_html'.
