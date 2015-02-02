@@ -2661,7 +2661,6 @@ function ilr_field_bases_field_default_field_bases() {
       'allowed_values' => array(
         'BSILR' => 'BSILR',
         'MILR' => 'MILR',
-        'MPA' => 'MPA',
       ),
       'allowed_values_function' => '',
     ),
