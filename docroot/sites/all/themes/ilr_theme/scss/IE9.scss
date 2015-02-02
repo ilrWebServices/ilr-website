@@ -11,7 +11,9 @@
 body {
   header {
     position: static !important;
-
+    a.cornell {
+      background: rgba(white, 0);
+    }
     &[data-eq-state="regular-nav"] {
       .menu-block-ilr-primary-menu {
         ul.menu {
@@ -108,6 +110,10 @@ body {
 
 body.subsite {
   header {
+    #logo img {
+      width: 206px;
+      height: 60px;
+    }
     #header-region .region-header {
       position: relative;
       .menu-block-ilr-primary-menu {
