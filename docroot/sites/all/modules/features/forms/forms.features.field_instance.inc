@@ -25955,58 +25955,6 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-social_impact_career_forum_reg-field_career_fields_sicf'
-  $field_instances['entityform-social_impact_career_forum_reg-field_career_fields_sicf'] = array(
-    'bundle' => 'social_impact_career_forum_reg',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 8,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 8,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 8,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_career_fields_sicf',
-    'label' => 'Career fields of interest (check all that apply)',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 45,
-    ),
-  );
-
   // Exported field_instance: 'entityform-social_impact_career_forum_reg-field_degree_prog_sicf_reg'
   $field_instances['entityform-social_impact_career_forum_reg-field_degree_prog_sicf_reg'] = array(
     'bundle' => 'social_impact_career_forum_reg',
@@ -26027,7 +25975,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Degree',
         ),
         'type' => 'list_default',
         'weight' => 5,
@@ -26036,7 +25984,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Degree',
         ),
         'type' => 'list_default',
         'weight' => 5,
@@ -26045,7 +25993,7 @@ function forms_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_degree_prog_sicf_reg',
-    'label' => 'Degree',
+    'label' => 'Degree (This event is limited to ILR undergraduate and MILR students.)',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -26243,118 +26191,6 @@ function forms_field_default_field_instances() {
       ),
       'type' => 'date_popup',
       'weight' => 49,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-social_impact_career_forum_reg-field_how_heard_other'
-  $field_instances['entityform-social_impact_career_forum_reg-field_how_heard_other'] = array(
-    'bundle' => 'social_impact_career_forum_reg',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_how_heard_other',
-    'label' => 'Any other ways you learned about this event?',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 44,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-social_impact_career_forum_reg-field_how_heard_sicf'
-  $field_instances['entityform-social_impact_career_forum_reg-field_how_heard_sicf'] = array(
-    'bundle' => 'social_impact_career_forum_reg',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 6,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 6,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 6,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_how_heard_sicf',
-    'label' => 'How did you hear about the Social Impact Career Forum? (check all that apply)',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 42,
     ),
   );
 
@@ -34275,7 +34111,6 @@ function forms_field_default_field_instances() {
   t('Amount 3');
   t('Anticipated Cornell entry date (semester and year)');
   t('Any other ways you learned about the ILR School');
-  t('Any other ways you learned about this event?');
   t('Are you a Cornell Alum?');
   t('Are you a transfer student');
   t('Are you applying as a freshman or transfer student?');
@@ -34286,7 +34121,6 @@ function forms_field_default_field_instances() {
   t('Based on your experience, what are some of the most pressing questions and concerns of new Cornell students?');
   t('Blind ad? ($35 / posting)');
   t('Building or location');
-  t('Career fields of interest (check all that apply)');
   t('Cell phone number');
   t('Chairperson');
   t('Check all courses you will have completed by the end of the current semester');
@@ -34331,6 +34165,7 @@ function forms_field_default_field_instances() {
   t('Dates needed (mm/dd/yyyy)');
   t('Dates of employment');
   t('Degree');
+  t('Degree (This event is limited to ILR undergraduate and MILR students.)');
   t('Degree program');
   t('Department');
   t('Describe training or technical support needed');
@@ -34381,7 +34216,6 @@ function forms_field_default_field_instances() {
   t('High school graduation year');
   t('Home phone number');
   t('Home state or country');
-  t('How did you hear about the Social Impact Career Forum? (check all that apply)');
   t('How did you hear about us? (check all that apply)');
   t('How did you learn about the ILR School? (check all that apply)');
   t('How long has the nominee been in his/her current leadership role?');
