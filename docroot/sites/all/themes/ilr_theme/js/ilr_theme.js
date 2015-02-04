@@ -288,6 +288,30 @@
       });
     }
   };
+  Drupal.behaviors.ilr_theme_subsite_wrapper = {
+    attach: function (context, settings) {
+      $(window).load(function() {
+        if(isSubsite()) {
+          $links = $(".tagged-content a, .bean-content-listing-manual a, .view-course-manual-listings a");
+          $links.each(function(){
+            $href = $(this).attr('href');
+            if ($href.substring(0,5) == '/news' || $href.substring(0,22) == '/professional-programs') {
+              $(this).attr('href', '/' + currentSubsitePath() + $href);
+            }
+          });
+        }
+      });
+
+      var isSubsite = function() {
+        return $('body').hasClass('subsite');
+      }
+
+      var currentSubsitePath = function() {
+        var pathArray = window.location.pathname.split( '/' );
+        return pathArray[1];
+      }
+    }
+  };
   Drupal.behaviors.ilr_css_animations = {
     attach: function (context, settings) {
       $(window).load(function() {

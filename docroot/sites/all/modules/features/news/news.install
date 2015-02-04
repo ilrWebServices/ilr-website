@@ -8,6 +8,19 @@
  */
 function news_update_7000() {
   _news_bulk_remove_images();
+}
 
+/**
+ * Updates all news_item aliases
+ */
+function news_update_7001() {
+  // Return all nids of nodes of type "page".
+  $news_articles = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->fields('n', array('type'))
+    ->condition('n.type', 'news_item')
+    ->execute()
+    ->fetchCol();
+  pathauto_node_update_alias_multiple($news_articles,'update');
 }
 
