@@ -93,6 +93,22 @@ function ilr_sub_sites_form_basic_page_node_form_alter(&$form, &$form_state, $fo
 }
 
 /**
+ * Implements hook_init().
+ */
+function ilr_sub_sites_init() {
+  if(!menu_get_item($_GET['q']) && _ilr_sub_sites_current_page_is_sub_site()) {
+    $path_array = arg();
+    $subsite_url = array_shift($path_array);
+    $path_to_check = implode('/', $path_array);
+    if ($path = drupal_lookup_path("source", $path_to_check)) {
+      $path_array = explode('/', $path);
+      $nid = $path_array[1];
+      $current_nid = _ilr_sub_sites_current_nid($nid);
+    }
+  }
+}
+
+/**
  * Implements hook_module_implements_alter().
  *
  * Form alter has to run after menu module's implementation.
@@ -105,7 +121,7 @@ function ilr_sub_sites_module_implements_alter(&$implementations, $hook) {
         unset($implementations['ilr_sub_sites']);
         $implementations['ilr_sub_sites'] = $group;
       }
-
+      break;
   }
 }
 
@@ -128,6 +144,19 @@ function ilr_sub_sites_page_build(&$page) {
       '#weight' => -1,
     );
     $page['header'] = $subsite_block + $page['header'];
+
+    if($nid = _ilr_sub_sites_current_nid()) {
+      $node = node_load($nid);
+      unset($page['content']['system_main']['main']);
+      $node_view = node_view($node);
+      $page['content']['system_main']['nodes'] = array(
+        $nid => $node_view,
+      );
+      drupal_set_title($node->title);
+      $headers = &drupal_static('drupal_http_headers', array());
+      unset($headers['status']);
+      drupal_add_http_header('Status','200 OK', TRUE);
+    }
   }
 }
 
@@ -145,6 +174,15 @@ function ilr_sub_sites_preprocess_html(&$variables) {
       // front or not-front is the 2nd element
       $variables['classes_array'][1] = 'subsite-front';
     }
+  }
+}
+
+/**
+ * Removes the title if it is a wrapped node
+ */
+function ilr_sub_sites_preprocess_node(&$variables) {
+  if (_ilr_sub_sites_is_wrapped_node()) {
+    $variables['title'] = '';
   }
 }
 
@@ -186,7 +224,7 @@ function _ilr_sub_sites_create_menu($title, $uri = NULL) {
   // Look the table first if the data does exist
   $machine_name = _ilr_sub_sites_get_menu_name_from_uri($uri);
 
-  $menu_name = db_query("SELECT menu_name FROM {menu_custom} WHERE menu_name=:menu_name", array(':menu_name' => $machine_name))->fetchField();
+  $menu_name = _ilr_sub_sites_check_for_menu_by_name($machine_name);
   // Save the record if the data does not exist
   if (!$menu_name) {
     $menu = array(
@@ -255,9 +293,24 @@ function _ilr_sub_sites_create_sub_menu_for_node($node) {
   }
 }
 
+function _ilr_sub_sites_current_nid($nid=NULL) {
+  $current_nid = &drupal_static('ilr_sub_site_current_nid');
+  if ($nid) { // Setter
+    $current_nid = $nid;
+  }
+  return $current_nid;
+}
+
 function _ilr_sub_sites_current_page_is_sub_site() {
+  if (_ilr_sub_sites_homepage_uri()) {
+    return TRUE;
+  }
   if ($node = _ilr_sub_sites_get_current_node()) {
     return _ilr_sub_sites_get_current_menu_name() != 'main-menu';
+  } // Check for a path-based subsite
+  elseif (_ilr_sub_sites_get_subsite_homepage_alias() == arg(0)) {
+    _ilr_sub_sites_homepage_uri(arg(0));
+    return TRUE;
   }
   return FALSE;
 }
@@ -277,6 +330,9 @@ function _ilr_sub_sites_get_current_menu_name() {
 
     return strlen($menu_name) ? $menu_name : 'main-menu';
   }
+  elseif ($menu_name = _ilr_sub_sites_check_for_menu_by_name(arg(0))) {
+    return $menu_name;
+  }
   return 'main-menu';
 }
 
@@ -286,6 +342,11 @@ function _ilr_sub_sites_get_current_node() {
     $node = menu_get_object();
   }
   return $node;
+}
+
+function _ilr_sub_sites_check_for_menu_by_name($path) {
+  $menu_name = db_query("SELECT menu_name FROM {menu_custom} WHERE menu_name=:menu_name", array(':menu_name' => $path))->fetchField();
+  return $menu_name;
 }
 
 function _ilr_sub_sites_get_current_subsite_name() {
@@ -336,6 +397,14 @@ function _ilr_sub_sites_get_subsite_homepage_alias() {
   return drupal_get_path_alias($path);
 }
 
+function _ilr_sub_sites_homepage_uri($uri=NULL) {
+  $subsite_uri = &drupal_static('ilr_sub_site_homepage_uri');
+  if ($uri) { // Setter
+    $subsite_uri = $uri;
+  }
+  return $subsite_uri;
+}
+
 /**
  * Determines whether the current node is a sub site homepage
  * This currently works because all sub sites are at ilr.cornell.edu/subsite.
@@ -351,4 +420,16 @@ function _ilr_sub_sites_is_sub_site_homepage($node=NULL) {
     ->execute()
     ->fetchField();
   return $plid === '0' || $plid === 0;
+}
+
+/**
+ * Only wrapped nodes will have ilr_sub_site_current_nid set
+ * Wrapped nodes are when an existing node is skinned
+ * with a subsite theme, @see ilr_sub_sites_init()
+ */
+function _ilr_sub_sites_is_wrapped_node() {
+  if (_ilr_sub_sites_current_nid()) {
+    return TRUE;
+  }
+  return FALSE;
 }
