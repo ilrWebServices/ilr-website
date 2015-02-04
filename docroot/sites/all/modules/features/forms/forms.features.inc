@@ -1620,7 +1620,7 @@ function forms_default_entityform_type() {
   }');
   $items['social_impact_career_forum_reg'] = entity_import('entityform_type', '{
     "type" : "social_impact_career_forum_reg",
-    "label" : "ILR School\\u0027s Inaugural Social Impact Career Forum",
+    "label" : "Social Impact Career Forum",
     "data" : {
       "draftable" : 0,
       "draft_redirect_path" : "",
@@ -1633,9 +1633,9 @@ function forms_default_entityform_type() {
       "delete_confirm_msg" : "",
       "page_title_view" : "",
       "preview_page" : 0,
-      "submission_page_title" : "",
+      "submission_page_title" : "Thank you",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EILR School\\u0027s Inaugural Social Impact Career Forum\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for registering for the ILR School\\u0027s Inaugural Social Impact Career Forum. You will receive an email confirmation shortly. If you have any questions, please write to \\u003Ca href=\\u0022sicareerforum@cornell.edu\\u0022\\u003Esicareerforum@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent Details:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EYou are now registered for the 1st Annual Social Impact Career Forum. You will receive an email confirmation shortly. If you have any questions, please contact the ILR Office of Career Services at \\u003Ca href=\\u0022sicareerforum@cornell.edu\\u0022\\u003Esicareerforum@cornell.edu\\u003C\\/a\\u003E or 607-255-7816.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent Details:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
