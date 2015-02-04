@@ -163,7 +163,6 @@ function people_profiles_form_alter(&$form, &$form_state, $form_id) {
       $form['field_address_line_1']['#disabled'] = 1;
       $form['field_faculty_on_leave']['#disabled'] = 1;
       $form['field_profile_type']['#access'] = FALSE;
-      $form['field_last_name']['#access'] = FALSE;
     }
     $form['title']['#access'] = FALSE; // Use first and last name instead
 
