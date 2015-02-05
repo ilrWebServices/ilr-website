@@ -371,33 +371,73 @@ function _ilr_get_entityreference_relations($fieldname, $bundle = NULL, $entity_
  * Implements hook_date_format_types()
  */
 function ilr_date_format_types() {
-  return array(
-    'ilr_short_day_only' => t('Short Day only'),
-    'ilr_year_only' => t('Year only'),
-    'ilr_date_short' => t('Short Date only')
-  );
+  $format_types = _ilr_get_date_format_types();
+  $return_formats = array();
+  foreach ($format_types as $key => $format_type) {
+    $return_formats[$key] = $format_type['label'];
+  }
+  return $return_formats;
 }
 
+/**
+ * Utility Function to Date format information.
+ *
+ * Provides central location for all date format information.
+ * @return array
+ */
+function _ilr_get_date_format_types() {
+  return array(
+    'ilr_short_day_only' => array(
+      'label' => t('Short Day only'),
+      'format' => 'M j',
+    ),
+
+    'ilr_year_only' => array(
+      'label' => t('Year only'),
+      'format' => 'Y',
+    ),
+    'ilr_date_short' => array(
+      'label' => t('Short Date only'),
+      'format' => 'm/d/Y',
+    ),
+    'ilr_month_only' => array(
+      'label' => t('Month only'),
+      'format' => 'F',
+    ),
+  );
+}
 /**
  * Implements hook_date_formats().
  */
 function ilr_date_formats() {
-  $formats = array(
-    'ilr_short_day_only' => 'M j',
-    'ilr_year_only' => 'Y',
-    'ilr_date_short' => 'm/d/Y',
-  );
+  $format_types = _ilr_get_date_format_types();
   $return_formats = array();
-  foreach ($formats as $format_type => $date_format) {
+  foreach ($format_types as $key => $format_type) {
     $return_formats[] = array(
-      'type' => $format_type,
-      'format' => $date_format,
+      'type' => $key,
+      'format' => $format_type['format'],
       'locales' => array(),
     );
   }
   return $return_formats;
 }
 
+/**
+ * Implements hook_flush_caches().
+ */
+function ilr_flush_caches(){
+  _ilr_set_date_format_vars();
+}
+
+/**
+ * Set all date variables that Drupal needs for our custom date formats.
+ */
+function _ilr_set_date_format_vars(){
+  $format_types = _ilr_get_date_format_types();
+  foreach ($format_types as $key => $format_type) {
+    variable_set("date_format_$key", $format_type['format']);
+  }
+}
 /**
  * Implements hook_entity_info_alter().
  *
