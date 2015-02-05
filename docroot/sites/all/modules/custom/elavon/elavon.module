@@ -59,11 +59,13 @@ function elavon_entityform_previous_submission_alter(&$entityform_submission, $e
 }
 
 /**
- * Implements hook_form_alter().
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * Base form id = entityform_edit_form
  * Adds submit action for adding special flags to payment forms
  * Removes the Save Draft button
  */
-function elavon_form_alter(&$form, &$form_state, $form_id) {
+function elavon_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
   if (isset($form['#entity_type']) && $form['#entity_type'] == 'entityform' && _elavon_entityform_type_is_payment_form($form['#bundle'], $form)) {
     $form['actions']['submit']['#submit'][] = '_elavon_add_payment_flag';
     // Remove the save draft button
