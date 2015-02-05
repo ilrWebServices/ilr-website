@@ -62,3 +62,16 @@ function _news_get_field_images_to_remove() {
   $field_values = db_query($sql)->fetchAllAssoc('entity_id');
   return $field_values;
 }
+
+/**
+ * Implements date_select_process_alter();
+ *
+ * Reverse Years in News article filter.
+ */
+function news_date_select_process_alter(&$element, $form_state, $context) {
+  $view = $form_state['view'];
+  if ($view->name == 'news_archive') {
+    $element['year']['#options'] = array_reverse($element['year']['#options'], TRUE);
+    unset($element['year']['#options']['']);
+  }
+}
