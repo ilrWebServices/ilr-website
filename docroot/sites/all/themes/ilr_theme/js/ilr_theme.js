@@ -291,7 +291,8 @@
   Drupal.behaviors.ilr_theme_subsite_wrapper = {
     attach: function (context, settings) {
       $(window).load(function() {
-        if(document.location.href.indexOf("/worker-institute") > -1 && isSubsite()) {
+        // @todo Alter links on server side via hook_url_outbound_alter?
+        if(isSubsite()) {
           $links = $(".tagged-content a, .bean-content-listing-manual a, .view-course-manual-listings a");
           $links.each(function(){
             $href = $(this).attr('href');
