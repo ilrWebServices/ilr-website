@@ -330,12 +330,28 @@ function _ilr_sub_sites_get_current_menu_name() {
 
     return strlen($menu_name) ? $menu_name : 'main-menu';
   }
-  elseif ($menu_name = _ilr_sub_sites_check_for_menu_by_name(arg(0))) {
+  elseif ($menu_name = _ilr_sub_sites_check_for_menu_by_top_path(arg(0))) {
     return $menu_name;
   }
   return 'main-menu';
 }
 
+/**
+ * Check if a path is the top link for a subsite menu.
+ *
+ * @todo Are there any other menus to ignore beside main-menu and user-menu
+ * @param $path
+ *
+ * @return bool
+ */
+function _ilr_sub_sites_check_for_menu_by_top_path($path) {
+  $normal_path = drupal_get_normal_path($path);
+  $menu_name = db_query('SELECT menu_name FROM {menu_links} WHERE link_path =:link_path and plid = 0', array(':link_path' => $normal_path))->fetchField();
+  if ($menu_name && $menu_name != 'user-menu' && $menu_name != 'main-menu') {
+    return $menu_name;
+  }
+  return FALSE;
+}
 function _ilr_sub_sites_get_current_node() {
   $node = &drupal_static(__FUNCTION__);
   if (!isset($node)) {

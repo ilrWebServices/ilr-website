@@ -2885,15 +2885,13 @@ function forms_field_group_info() {
     'label' => 'Reservations',
     'weight' => '15',
     'children' => array(
-      0 => 'field_tickets_for_aa_members',
-      1 => 'field_tickets_for_non_members',
-      2 => 'field_guests',
-      3 => 'field_attendee_list',
-      4 => 'field_attendee_list_guests',
-      5 => 'field_attendee_list_markup',
-      6 => 'field_h_event_date',
-      7 => 'field_referenced_node',
-      8 => 'field_total_cost',
+      0 => 'field_attendee_list',
+      1 => 'field_attendee_list_guests',
+      2 => 'field_attendee_list_markup',
+      3 => 'field_guests',
+      4 => 'field_tickets_for_aa_members',
+      5 => 'field_tickets_for_non_members',
+      6 => 'field_total_cost',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -2918,7 +2916,7 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Reservations',
-    'weight' => '17',
+    'weight' => '16',
     'children' => array(
       0 => 'field_attendee_list',
       1 => 'field_attendee_list_guests',
