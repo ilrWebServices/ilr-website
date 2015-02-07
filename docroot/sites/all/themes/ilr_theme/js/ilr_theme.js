@@ -292,13 +292,19 @@
     attach: function (context, settings) {
       $(window).load(function() {
         // @todo Alter links on server side via hook_url_outbound_alter?
+        // @todo Add client-side validation to avoid the stop at a form's "canonical" location when server validation finds errors
         if(isSubsite()) {
-          $links = $(".tagged-content a, .bean-content-listing-manual a");
+          $links = $(".tagged-content a, .bean-content-listing-manual a, .view-course-manual-listings a");
           $links.each(function(){
             $href = $(this).attr('href');
             if ($href.substring(0,5) == '/news' || $href.substring(0,22) == '/professional-programs') {
               $(this).attr('href', '/' + currentSubsitePath() + $href);
             }
+          });
+          $forms = $("#ilr-sdc-listings-class-reg-form");
+          $forms.each(function(){
+            $action = $(this).attr('action');
+            $(this).attr('action', $action.replace('/' + currentSubsitePath(), ''));
           });
         }
       });
