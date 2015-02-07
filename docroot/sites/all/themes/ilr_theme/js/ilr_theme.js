@@ -293,7 +293,7 @@
       $(window).load(function() {
         // @todo Alter links on server side via hook_url_outbound_alter?
         if(isSubsite()) {
-          $links = $(".tagged-content a, .bean-content-listing-manual a, .view-course-manual-listings a");
+          $links = $(".tagged-content a, .bean-content-listing-manual a");
           $links.each(function(){
             $href = $(this).attr('href');
             if ($href.substring(0,5) == '/news' || $href.substring(0,22) == '/professional-programs') {
