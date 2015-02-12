@@ -30,8 +30,11 @@ function news_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Select';
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
-  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '120';
   $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
@@ -41,6 +44,24 @@ function news_views_default_views() {
     ),
   );
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Pub Year */
+  $handler->display->display_options['fields']['field_published_date_2']['id'] = 'field_published_date_2';
+  $handler->display->display_options['fields']['field_published_date_2']['table'] = 'field_data_field_published_date';
+  $handler->display->display_options['fields']['field_published_date_2']['field'] = 'field_published_date';
+  $handler->display->display_options['fields']['field_published_date_2']['ui_name'] = 'Pub Year';
+  $handler->display->display_options['fields']['field_published_date_2']['label'] = '';
+  $handler->display->display_options['fields']['field_published_date_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_published_date_2']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_published_date_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_published_date_2']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_published_date_2']['settings'] = array(
+    'format_type' => 'ilr_year_only',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'field_formatter_label' => '',
+  );
   /* Field: Published Date Day */
   $handler->display->display_options['fields']['field_published_date_1']['id'] = 'field_published_date_1';
   $handler->display->display_options['fields']['field_published_date_1']['table'] = 'field_data_field_published_date';
@@ -57,12 +78,15 @@ function news_views_default_views() {
     'multiple_to' => '',
     'field_formatter_label' => '',
   );
-  /* Field: Content: Publication Date */
+  /* Field: Pub Month */
   $handler->display->display_options['fields']['field_published_date']['id'] = 'field_published_date';
   $handler->display->display_options['fields']['field_published_date']['table'] = 'field_data_field_published_date';
   $handler->display->display_options['fields']['field_published_date']['field'] = 'field_published_date';
+  $handler->display->display_options['fields']['field_published_date']['ui_name'] = 'Pub Month';
   $handler->display->display_options['fields']['field_published_date']['label'] = '';
   $handler->display->display_options['fields']['field_published_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_published_date']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_published_date']['alter']['text'] = '[field_published_date] [field_published_date_2]';
   $handler->display->display_options['fields']['field_published_date']['element_type'] = '0';
   $handler->display->display_options['fields']['field_published_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_published_date']['element_wrapper_type'] = '0';
@@ -75,7 +99,6 @@ function news_views_default_views() {
     'multiple_to' => '',
     'field_formatter_label' => '',
   );
-  $handler->display->display_options['fields']['field_published_date']['field_api_classes'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -90,6 +113,7 @@ function news_views_default_views() {
   $handler->display->display_options['sorts']['field_published_date_value']['id'] = 'field_published_date_value';
   $handler->display->display_options['sorts']['field_published_date_value']['table'] = 'field_data_field_published_date';
   $handler->display->display_options['sorts']['field_published_date_value']['field'] = 'field_published_date_value';
+  $handler->display->display_options['sorts']['field_published_date_value']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -108,11 +132,13 @@ function news_views_default_views() {
   $handler->display->display_options['filters']['field_published_date_value']['id'] = 'field_published_date_value';
   $handler->display->display_options['filters']['field_published_date_value']['table'] = 'field_data_field_published_date';
   $handler->display->display_options['filters']['field_published_date_value']['field'] = 'field_published_date_value';
+  $handler->display->display_options['filters']['field_published_date_value']['value']['min'] = '2015';
+  $handler->display->display_options['filters']['field_published_date_value']['value']['max'] = '2015';
   $handler->display->display_options['filters']['field_published_date_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_published_date_value']['expose']['operator_id'] = 'field_published_date_value_op';
+  $handler->display->display_options['filters']['field_published_date_value']['expose']['label'] = 'Year';
   $handler->display->display_options['filters']['field_published_date_value']['expose']['operator'] = 'field_published_date_value_op';
   $handler->display->display_options['filters']['field_published_date_value']['expose']['identifier'] = 'field_published_date_value';
-  $handler->display->display_options['filters']['field_published_date_value']['expose']['required'] = TRUE;
   $handler->display->display_options['filters']['field_published_date_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
