@@ -41,6 +41,17 @@ function forms_entityform_presave($entityform) {
   }
 }
 
+
+/**
+ * Implements hook_entityform_view_alter
+ */
+ function forms_entityform_view_alter(&$render_array) {
+  if ($render_array['#entity']->uid == 0) {
+    $render_array['info']['user']['#markup'] = 'Submitted on ' .
+      format_date($render_array['#entity']->created);
+  }
+ }
+
 /**
  * Set Alumni Bulletin job posting date based on datetime of submission
  * Note that setting this in presave has the side effect of saving them to the db
