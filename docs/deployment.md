@@ -64,3 +64,14 @@ The Acquia Cloud Workflow interface makes it really easy to deploy a specific ta
     12. Run any necessary update hooks, feature-reverts, cache-clearing, etc.
 
 ** TODO: Create an Acquia cloud hook to trigger a db backup when a tag is pushed. **
+
+## Pushing Content from Prod to Dev and/or Staging
+
+To push the most recent content from prod to dev or test, the Acquia Cloud tools are sufficeint for moving the database down stream. However, those same tools do not work when pushing down files.
+
+After moving the database down stream to Staging and/or Dev, to move the files, ssh into our server on Acquia and issue one or both of the following commands:
+
+`rsync -rltDvPh /mnt/files/ilr.prod/sites/ilr.cornell.edu/files/ ~/test/livedev/docroot/sites/ilr.cornell.edu/files`
+
+`rsync -rltDvPh /mnt/files/ilr.prod/sites/ilr.cornell.edu/files/ ~/dev/livedev/docroot/sites/ilr.cornell.edu/files`
+

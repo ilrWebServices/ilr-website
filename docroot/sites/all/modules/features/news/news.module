@@ -71,7 +71,8 @@ function _news_get_field_images_to_remove() {
 function news_date_select_process_alter(&$element, $form_state, $context) {
   $view = $form_state['view'];
   if ($view->name == 'news_archive') {
-    $element['year']['#options'] = array_reverse($element['year']['#options'], TRUE);
-    unset($element['year']['#options']['']);
+    $all_years_option = array('' => t('Complete Archive'));
+    $element['year']['#options'] = $all_years_option + array_reverse($element['year']['#options'], TRUE);
+
   }
 }
