@@ -364,7 +364,7 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
     if ($render_class) {
       // Remove title because it is the same as the course
       $render_array = $render_arrays['nodes'][$nid];
-      if ($class_node->title == $class_node_wrapper->field_course->title->value()) {
+      if (trim($class_node->title) == trim($class_node_wrapper->field_course->title->value())) {
         $render_array['#node']->title = '';
       }
 
