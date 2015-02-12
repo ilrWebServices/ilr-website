@@ -550,6 +550,12 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* No results behavior: Global: Unfiltered text */
+  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area_text_custom']['content'] = '&nbsp;';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -1228,7 +1234,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Filter';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
       'field' => 'field_sdc_department',
@@ -1236,13 +1242,56 @@ function ilr_sdc_listings_views_default_views() {
       'rendered_strip' => 0,
     ),
   );
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['inline'] = array(
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_catalog_prefix' => 'field_catalog_prefix',
     'title' => 'title',
     'field_sdc_department' => 'field_sdc_department',
     'nid' => 'nid',
     'view' => 'view',
     'field_on_demand' => 'field_on_demand',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_catalog_prefix' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_sdc_department' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'view' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_on_demand' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
   );
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
@@ -1281,6 +1330,9 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['fields']['field_sdc_department']['field'] = 'field_sdc_department';
   $handler->display->display_options['fields']['field_sdc_department']['label'] = '';
   $handler->display->display_options['fields']['field_sdc_department']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_sdc_department']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_sdc_department']['alter']['text'] = '<h3>[field_sdc_department]</h3>';
+  $handler->display->display_options['fields']['field_sdc_department']['element_type'] = 'h3';
   $handler->display->display_options['fields']['field_sdc_department']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sdc_department']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_sdc_department']['settings'] = array(
@@ -1297,14 +1349,16 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['fields']['view']['id'] = 'view';
   $handler->display->display_options['fields']['view']['table'] = 'views';
   $handler->display->display_options['fields']['view']['field'] = 'view';
+  $handler->display->display_options['fields']['view']['label'] = 'Next Class Date';
   $handler->display->display_options['fields']['view']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['view']['empty'] = ' ';
   $handler->display->display_options['fields']['view']['view'] = 'next_class_course';
   $handler->display->display_options['fields']['view']['arguments'] = '[!nid]';
   /* Field: Content: On Demand */
   $handler->display->display_options['fields']['field_on_demand']['id'] = 'field_on_demand';
   $handler->display->display_options['fields']['field_on_demand']['table'] = 'field_data_field_on_demand';
   $handler->display->display_options['fields']['field_on_demand']['field'] = 'field_on_demand';
-  $handler->display->display_options['fields']['field_on_demand']['label'] = '';
+  $handler->display->display_options['fields']['field_on_demand']['label'] = 'Next Class Date';
   $handler->display->display_options['fields']['field_on_demand']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_on_demand']['alter']['text'] = 'Available On Demand';
   $handler->display->display_options['fields']['field_on_demand']['element_label_colon'] = FALSE;
