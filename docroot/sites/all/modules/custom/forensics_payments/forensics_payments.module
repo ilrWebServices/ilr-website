@@ -1,0 +1,156 @@
+<?php
+
+//////////////////
+// Drupal Hooks //
+//////////////////
+
+// No drupal hooks right now
+
+
+///////////////////////////////
+// Module-Specific functions //
+///////////////////////////////
+
+/**
+ * Runs a query for all entityforms with data in field_ssl_amount - NEEDED, DONE I THINK
+ * and a transaction id that is not the test value
+ */
+function _forensics_payments_get_current_invoice_count() {
+  $query = db_select('entityform', 'ef');
+  $query->fields('ef', array('entityform_id'));
+  $query->leftJoin('field_data_field_h_credit_card_payments', 'ftc', 'ftc.entity_id = ef.entityform_id');
+  $query->leftJoin('field_data_field_ssl_amount', 'fdsa', 'fdsa.entity_id = ftc.field_h_credit_card_payments_value');
+  $query->leftJoin('field_data_field_ssl_txn_id', 'fdtxid', 'fdtxid.entity_id = ftc.field_h_credit_card_payments_value');
+  $query->isNotNull('field_ssl_amount_value');
+  $query->condition('field_ssl_txn_id_value', '00000000-0000-0000-0000-00000000000','!=');
+  $results = $query->execute()->fetchAll();
+  return count($results);
+}
+
+/**
+ * Determines if the entityform should be in draft mode
+ *   - APPROVED transactions are not drafts
+ * Note: Called from elavon module, so no need to load it here
+ */
+function _forensics_payments_get_draft_status() {
+  $is_draft = 1;
+  if ($wrapper = _forensics_payments_get_entityform_wrapper() && _forensics_payments_amount_is_valid()) {
+    $result = _elavon_get_field_collection_data('field_ssl_result_message');
+    $is_draft = ($result == 'APPROVED') ? 0 : 1;
+  }
+  return $is_draft;
+}
+
+/**
+ * Get total cost that user entered
+ */
+function _forensics_payments_get_total_cost_entered() {
+  if ($entityform_wrapper = _forensics_payments_get_entityform_wrapper()) {
+    return $entityform_wrapper->field_total_cost->value();
+  }
+  return 0;
+}
+
+
+/**
+ * Confirm that user entered a valid amount to pay: numeric and greater than 0
+ */
+function _forensics_payments_amount_is_valid() {
+  $amnt = _forensics_payments_get_total_cost_entered();
+  return is_numeric($amnt) && $amnt > 0;
+}
+
+/**
+ * Maps the elavon keys to the entityform field names - REQUIRED
+ */
+function _forensics_payments_get_entityform_mappings() {
+  $mappings = &drupal_static(__FUNCTION__);
+  if (!isset($mappings)) {
+    $mappings = array(
+      "ssl_first_name" => 'field_first_name',
+      "ssl_last_name" => 'field_last_name',
+      "ssl_avs_address" => 'field_address_line_1',
+      "ssl_address2" => 'field_address_line_2',
+      "ssl_city" => 'field_city',
+      "ssl_state" => 'field_state_as_text',
+      'ssl_country' => 'field_country_for_forensics',
+      "ssl_avs_zip" => 'field_zip_code',
+      "ssl_phone" => 'field_phone',
+      'ssl_email' => 'field_email',
+      'ssl_amount' => 'field_ssl_amount',
+      'ssl_approval_code' => 'field_ssl_approval_code',
+      'ssl_card_number' => 'field_ssl_card_number', // Just first 2 digits
+      'ssl_invoice_number' => 'field_transinvoicenum',
+      'ssl_result_message' => 'field_ssl_result_message',
+      'ssl_txn_id' => 'field_ssl_txn_id',
+      'ssl_txn_time' => 'field_ssl_txn_time',
+    );
+  }
+  return $mappings;
+}
+
+/**
+ * Wrapper function for _elavon_get_entityform_wrapper().   DONE
+ */
+function _forensics_payments_get_entityform_wrapper() {
+  if (module_exists('elavon')) {
+    return _elavon_get_entityform_wrapper();
+  }
+  return NULL;
+}
+
+
+
+/**
+ * Creates or retrieves an entitymetadata wrapper for the node
+ * on which the entityform has been placed
+ */
+function _forensics_payments_node_wrapper($node=NULL) {
+  $wrapper = &drupal_static(__FUNCTION__);
+  if (!isset($wrapper)) {
+    if (!$node && $entityform_wrapper = _forensics_payments_get_entityform_wrapper()) {
+      if(isset($entityform_wrapper->field_referenced_node)) {
+        $node = $entityform_wrapper->field_referenced_node->value();
+      }
+      else {
+        watchdog('forensics_payments', "There was an error trying to load the referenced node for @entityform_type",
+            array(
+              '@entityform_type' => $entityform_wrapper->type->value()->type,
+            ),
+            WATCHDOG_ERROR
+          );
+      }
+    }
+    else {
+      $node = menu_get_object();
+    }
+    $wrapper = entity_metadata_wrapper('node', $node);
+  }
+  return $wrapper;
+}
+
+
+/**
+ * Lets user know if he didn't enter a valid amount   - NEEDED, DONE
+ * @see _elavon_payment_page()
+ */
+function _forensics_payments_payment_form_errors() {
+  $errors = FALSE;
+  if (!_forensics_payments_amount_is_valid()) {
+    $errors = '<p>Sorry, but there was an error processing your request. Are you sure you entered an amount in US dollars? Please hit your back button, enter the amount you were instructed to pay, and submit your registration again.</p>';
+  }
+  return $errors;
+}
+
+/**
+ * Returns a unique invoice number for the registration
+ * Based on the number of completed, paid registrations - REQUIRED, DONE
+ */
+function _forensics_payments_ssl_invoice_number() {
+  $prefix = 'debate';
+  $invoice_count = _forensics_payments_get_current_invoice_count();
+  $offset = 200; // Incremented from the old system
+  // Pad the string to 6 places
+  $invoice_number = str_pad($invoice_count + $offset, 6, '0', STR_PAD_LEFT);
+  return "$prefix$invoice_number";
+}
