@@ -63,6 +63,7 @@ function ilr_permissions_user_default_permissions() {
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
+      'neutral admin' => 'neutral admin',
     ),
     'module' => 'node',
   );
@@ -105,7 +106,6 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
-      'faculty admin' => 'faculty admin',
     ),
     'module' => 'media',
   );
@@ -360,6 +360,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'neutral admin' => 'neutral admin',
       'wit editor' => 'wit editor',
     ),
     'module' => 'node',
@@ -571,6 +572,8 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create any filtered_courses bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'course admin' => 'course admin',
+      'form admin' => 'form admin',
     ),
     'module' => 'bean',
   );
@@ -961,6 +964,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete any tagged_content bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'course admin' => 'course admin',
     ),
     'module' => 'bean',
   );
@@ -1055,6 +1059,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own image files',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'file_entity',
   );
@@ -1309,6 +1314,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'download own image files',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'file_entity',
   );
@@ -1356,6 +1362,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any document files',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'file_entity',
   );
@@ -1395,6 +1402,8 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any filtered_courses bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'course admin' => 'course admin',
+      'form admin' => 'form admin',
     ),
     'module' => 'bean',
   );
@@ -1414,6 +1423,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any image files',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'file_entity',
   );
@@ -1632,6 +1642,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit own image files',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'file_entity',
   );
@@ -1858,6 +1869,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'neutral admin' => 'neutral admin',
     ),
     'module' => 'menu_view_unpublished',
   );
@@ -1929,6 +1941,7 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'form admin' => 'form admin',
     ),
     'module' => 'bean',
   );
@@ -1938,7 +1951,6 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view any entityform',
     'roles' => array(
       'administrator' => 'administrator',
-      'contributor' => 'contributor',
       'form admin' => 'form admin',
     ),
     'module' => 'entityform',
@@ -1963,6 +1975,8 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'course admin' => 'course admin',
+      'form admin' => 'form admin',
     ),
     'module' => 'bean',
   );

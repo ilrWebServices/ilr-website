@@ -1,0 +1,34 @@
+body.subsite-front.catherwood-library {
+  .container[data-eq-state="regular-nav"] {
+    #main {
+      #content {
+        @include grid-span(12);
+        @include add-gutter(1);
+        padding: 0 1em;
+
+        .section {
+          max-width: 100%;
+        }
+        #block-bean-library-hour-detail {
+          @include grid-span(4,9);
+        }
+        #block-bean-catherwood-home-list-one {
+          @include grid-span(4);
+          article {
+            @extend %one-column;
+          }
+        }
+        #block-bean-catherwood-home-manual-listing {
+          @include grid-span(4,5);
+          article {
+            @extend %one-column;
+          }
+        }
+      }
+
+      #sidebar-first {
+        display: none !important; //Override
+      }
+    }
+  }
+}

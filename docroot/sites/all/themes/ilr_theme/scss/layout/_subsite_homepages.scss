@@ -7,6 +7,7 @@ body.subsite-front {
       @extend %one-column-page;
 
       .field-name-body {
+        max-width: 100% !important;
         @extend %homepage-text;
       }
     }
