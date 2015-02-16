@@ -467,3 +467,12 @@ function ilr_update_7038() {
   variable_set('date_format_ilr_date_short', 'm/d/Y');
 }
 
+/**
+ * Enables cul_search feature
+ */
+function ilr_update_7039() {
+  module_enable(array(
+    'cul_search',
+  ));
+}
+
