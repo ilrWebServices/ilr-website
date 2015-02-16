@@ -28,6 +28,13 @@
   background-color: rgba(255, 255, 255, 0.26);
   padding-left: 15px;
   z-index: 9996; }
+  .search-home div.filter-search span.active {
+    font-size: 22px;
+  }
+  .search-home li {
+    font-size: 22px;
+    background: none;
+  }
   .search-home label {
     font-size: 27px;
     color: #fff;
