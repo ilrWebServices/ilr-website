@@ -3,7 +3,7 @@ jQuery(document).ready(function () {
 
 
   var element = jQuery('section.search-home').detach();
-  jQuery('body').prepend(element);
+  jQuery('div.region-content').prepend(element);
 
     /////////////////////////////
     // Home search filter

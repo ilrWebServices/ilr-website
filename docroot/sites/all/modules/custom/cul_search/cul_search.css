@@ -18,10 +18,25 @@
 .glyphicon-search:before {
   content: "\f114"; }
 
+.search-home {
+  top: 150px;
+}
+
+div#main[data-eq-state="550"] .search-home {
+  top: 50px;
+}
+
+div#main[data-eq-state="768"] .search-home {
+  top: 50px;
+}
+
+div#main[data-eq-state="widescreen"] .search-home {
+  top: 240px;
+}
 
 .search-home {
   position: absolute;
-  top: 170px;
+  /*top: 170px;*/
   left: 0;
   width: 100%;
   height: 190px;
@@ -128,7 +143,7 @@
 
 @media (min-width: 480px) {
   .search-home {
-    top: 220px; }
+    /*top: 220px;*/ }
     .search-home .filtered-search .search-homepage {
       width: 353px; }
     .search-home .filtered-search .filter-search {
@@ -149,7 +164,7 @@
 
 @media (min-width: 998px) {
   .search-home {
-    top: 450px; } }
+    /*top: 450px; */} }
 
 @media (min-width: 1200px) {
   .search-home {
