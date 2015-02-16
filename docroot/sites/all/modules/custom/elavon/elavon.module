@@ -7,8 +7,11 @@
 /* The Elavon module makes a few assumptions about setting up a form for payments, such as:
   1. The form includes a field_total_cost and the field_h_credit_card_payments field collection.
   2. There is a supporting module for the form which includes at least a few required functions, such as _MODULE_get_entityform_mappings() (see full list in _elavon_get_required_functions_for_payment_processing).
-  3. If adding additional required functions, be sure to add them to _elavon_get_required_functions_for_payment_processing().
-  4. New forms will need to modify _elavon_get_ilr_secrets_key_from_type(), as well as add their credentials to the ILR secrets file.
+  3. Add module key to _elavon_get_providing_module_by_entityform_type
+  4. Add secrets.php application name to _elavon_get_ilr_secrets_key_from_type.
+  5. If adding additional required functions, be sure to add them to _elavon_get_required_functions_for_payment_processing().
+  6. New forms will need to add their credentials to the ILR secrets file. (secrets.php)
+  7. If you've created a new module for a new payment form, enable the module.
 
   @todo:
     - Consider whether we need to set entityform_type specific SESSIONS. This would prevent loading the wrong entityform draft under certain edge-cases.
@@ -26,6 +29,7 @@ require_once DRUPAL_ROOT . '/../config/get_secrets.php';
  */
 function elavon_entityform_insert($entityform) {
   if (_elavon_entityform_is_payment_form($entityform)) {
+    //dpm ($entityform, 'In elavon_entityform_insert, $entityform');
     _elavon_set_entityform_session($entityform->entityform_id);
   }
 }
@@ -48,12 +52,16 @@ function elavon_entityform_presave($entityform) {
  * Loads the entityform draft if there is one for anonymous users
  */
 function elavon_entityform_previous_submission_alter(&$entityform_submission, $entityform_type, $context) {
+  // dpm ('in elavon_entityform_previous_submission_alter, point a');
   if ($previous_submission = _elavon_get_entityform()) {
+    // dpm ('in elavon_entityform_previous_submission_alter, point b');
     if ($entityform_submission && $entityform_submission->type != $previous_submission->type) {
+      // dpm ('in elavon_entityform_previous_submission_alter, point c');
       $entityform_submission = $previous_submission;
     }
   } // Edge case for logged in users who have lost their session
   else if ($entityform_submission && _elavon_entityform_is_payment_form($entityform_submission)) {
+     // dpm ('in elavon_entityform_previous_submission_alter, point d');
     _elavon_set_entityform_session($entityform_submission->entityform_id);
   }
 }
@@ -65,13 +73,17 @@ function elavon_entityform_previous_submission_alter(&$entityform_submission, $e
  * Adds submit action for adding special flags to payment forms
  * Removes the Save Draft button
  */
-function elavon_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
+// function elavon_form_alter(&$form, &$form_state, $form_id) {    // Aaron's
+function elavon_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {    // Ted's
+  // dpm ('in elavon_form_entityform_edit_form_alter or elavon_form_alter, point a');
   if (isset($form['#entity_type']) && $form['#entity_type'] == 'entityform' && _elavon_entityform_type_is_payment_form($form['#bundle'], $form)) {
+    // dpm ('in elavon_form_entityform_edit_form_alter or elavon_form_alter, point b');
     $form['actions']['submit']['#submit'][] = '_elavon_add_payment_flag';
     // Remove the save draft button
     if (isset($form['actions']['save'])) {
       unset($form['actions']['save']);
     }
+    // dpm ('in elavon_form_entityform_edit_form_alter or elavon_form_alter, point c');
   }
 }
 
@@ -102,7 +114,9 @@ function elavon_menu() {
  * Handles payment processing when a response comes back from Elavon
  */
 function elavon_node_view($node, $view_mode, $langcode) {
+  // dpm ($view_mode, 'In elavon_node_view, $view_mode');
   if ($view_mode == 'full') {
+    // dpm ('   view_mode is full');
     $response_variables = drupal_get_query_parameters();
     if (isset($response_variables['payment']) && _elavon_get_entityform()) {
       _elavon_replace_payment_form_with_iframe($node);
@@ -166,6 +180,7 @@ function _elavon_entityform_is_payment_form($entityform) {
  */
 function _elavon_entityform_type_is_payment_form($entityform_type) {
   $entityform_type = entityform_type_load($entityform_type);
+  // dpm ($entityform_type, 'in _elavon_entityform_type_is_payment_form, $entityform_type');
   if (isset($entityform_type->data['add_payment_processing'])) {
     return $entityform_type->data['add_payment_processing'];
   }
@@ -181,7 +196,9 @@ function _elavon_entityform_type_validate(&$form, &$form_state) {
   if ($form_state['values']['data']['add_payment_processing']) {
     // Check that all required functions have been implemented
     $required_functions = _elavon_get_required_functions_for_payment_processing();
+    //dpm ($required_functions, 'In _elavon_entityform_type_validate, $required_functions');
     foreach ($required_functions as $key => $function_partial) {
+      //dpm($function_partial, '$function_partial');
       if (!_elavon_get_modular_function($function_partial)) {
         return form_set_error('add_payment_processing', 'Payment forms require several functions to be implemented. Learn more in the elavon.module code documentation.');
       }
@@ -201,6 +218,7 @@ function _elavon_entityform_type_validate(&$form, &$form_state) {
       drupal_set_message('Your payment form settings for drafts and redirect paths were automatically set to the appropriate values.');
     }
   }
+  // dpm ('leaving _elavon_entityform_type_validate');
 }
 
 /**
@@ -270,11 +288,13 @@ function _elavon_get_elavon_credentials() {
  */
 function _elavon_get_entityform() {
   $entityform = &drupal_static('elavon_entityform');
+  // dpm ($entityform, 'In _elavon_get_entityform, initial value');
   if (!isset($entityform)) {
     if (isset($_SESSION['elavon_entityform_id'])) {
       $entityform = entityform_load($_SESSION['elavon_entityform_id']);
     }
   }
+  // dpm ($entityform, 'In _elavon_get_entityform, final value');
   return $entityform;
 }
 
@@ -295,13 +315,24 @@ function _elavon_get_entityform_mapping($elavon_key) {
  * Loads or retrieves the entityform type as a string
  */
 function _elavon_get_entityform_type_name() {
+  // dpm ('In _elavon_get_entityform_type_name, point a');
   $entityform_type = &drupal_static(__FUNCTION__);
+  // dpm ($entityform_type, 'In _elavon_get_entityform_type_name, $entityform_type');
   if (!isset($entityform_type)) {
+    // dpm ('In _elavon_get_entityform_type_name, point b');
     if (isset($_SESSION['elavon_entityform_id'])) {
+      // dpm ('In _elavon_get_entityform_type_name, point c');
       $entityform = entityform_load($_SESSION['elavon_entityform_id']);
       $entityform_type = $entityform->type;
     }
+    else {
+      // dpm ('In _elavon_get_entityform_type_name, point d');
+      $menu_item = menu_get_item();
+      // dpm ($menu_item, 'In _elavon_get_entityform_type_name, $menu_item');
+      $entityform_type = $menu_item['page_arguments'][0]->type;
+    }
   }
+  // dpm ($entityform_type, 'About to return from _elavon_get_entityform_type_name, $entityform_type');
   return $entityform_type;
 }
 
@@ -409,6 +440,7 @@ function _elavon_get_iframe_parent_path() {
 function _elavon_get_ilr_secrets_key_from_type($type) {
   $mappings = array(
     'ilr_alumni_association_event_reg' => 'alumni_registration_',
+    'forensics_debate_camp_payment' => 'forensics_registration_',
   );
   return $mappings[$type];
 }
@@ -425,15 +457,20 @@ function _elavon_get_ilr_secrets_key_from_type($type) {
  */
 function _elavon_get_modular_function($partial_name) {
   $entityform_type = _elavon_get_entityform_type_name();
+  //dpm ('In _elavon_get_modular_function');
   $provider = _elavon_get_providing_module_by_entityform_type($entityform_type);
+  //dpm ($provider, '$provider');
   $function = '_' . $provider . '_' . $partial_name;
+  //dpm ($function, '$function');
   if (function_exists($function)) {
+    //dpm ('okay, function exists');
     return $function;
   } // See if it exists within this module
   else if (function_exists("_elavon_$partial_name")) {
     return "_elavon_$partial_name";
   } // Throw an error
   else {
+    //dpm ('does not exist');
     watchdog('elavon', "Function @function_name has not been implemented yet for this forms of type @entityform_type",
       array(
         '@function_name' => $partial_name,
@@ -467,6 +504,9 @@ function _elavon_get_providing_module_by_entityform_type($type) {
     case 'ilr_alumni_association_event_reg':
       $module = 'ilr_alumni_events';
       break;
+    case 'forensics_debate_camp_payment':
+      $module = 'forensics_payments';
+      break;
     default:
       $module = 'elavon';
   }
@@ -487,6 +527,7 @@ function _elavon_get_response_url() {
  * @see [description]
  */
 function _elavon_get_required_functions_for_payment_processing() {
+  // dpm ('In _elavon_get_required_functions_for_payment_processing');
   return array(
     'get_entityform_mappings',
     'ssl_invoice_number',
@@ -526,6 +567,7 @@ function _elavon_payment_form_errors() {
  * Page callback from hook_menu().
  */
 function _elavon_payment_iframe() {
+  //dpm ('In _elavon_payment_iframe');
   $output = _elavon_generate_elavon_form_markup();
   drupal_add_js(
     'jQuery(document).ready(function () { jQuery("#sendIt").click(); });',
@@ -539,6 +581,7 @@ function _elavon_payment_iframe() {
  * and the payment form is needed.
  */
 function _elavon_payment_page() {
+  //dpm ('In _elavon_payment_page');
   $output = '';
   $payment_form_errors = _elavon_get_modular_function('payment_form_errors');
   $payment_form_complete = _elavon_get_modular_function('payment_form_complete');
@@ -667,6 +710,7 @@ function _elavon_update_entityform_values($variables) {
  * Returns the value of field_total_cost
  */
 function _elavon_ssl_amount() {
+  //$wrapper = _elavon_get_entityform_wrapper();
   return $wrapper->field_total_cost->value();
 }
 
