@@ -67,6 +67,7 @@ function _forensics_payments_get_entityform_mappings() {
   $mappings = &drupal_static(__FUNCTION__);
   if (!isset($mappings)) {
     $mappings = array(
+      "ssl_customer_code" => 'field_full_name',
       "ssl_first_name" => 'field_first_name',
       "ssl_last_name" => 'field_last_name',
       "ssl_avs_address" => 'field_address_line_1',
