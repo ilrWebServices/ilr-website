@@ -158,6 +158,61 @@ function news_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['path'] = 'about-ilr/news/archive';
+
+  /* Display: ILR News Feed */
+  $handler = $view->new_display('feed', 'ILR News Feed', 'feed_1');
+  $handler->display->display_options['display_description'] = 'ILR News stories';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['style_options']['description'] = 'News from Cornell University\'s School of Industrial and Labor Relations.';
+  $handler->display->display_options['row_plugin'] = 'node_rss';
+  $handler->display->display_options['row_options']['links'] = TRUE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'news_item' => 'news_item',
+  );
+  /* Filter criterion: Content: Publication Date (field_published_date) */
+  $handler->display->display_options['filters']['field_published_date_value']['id'] = 'field_published_date_value';
+  $handler->display->display_options['filters']['field_published_date_value']['table'] = 'field_data_field_published_date';
+  $handler->display->display_options['filters']['field_published_date_value']['field'] = 'field_published_date_value';
+  $handler->display->display_options['filters']['field_published_date_value']['value']['min'] = '2015';
+  $handler->display->display_options['filters']['field_published_date_value']['value']['max'] = '2015';
+  $handler->display->display_options['filters']['field_published_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_published_date_value']['expose']['operator_id'] = 'field_published_date_value_op';
+  $handler->display->display_options['filters']['field_published_date_value']['expose']['label'] = 'Year';
+  $handler->display->display_options['filters']['field_published_date_value']['expose']['operator'] = 'field_published_date_value_op';
+  $handler->display->display_options['filters']['field_published_date_value']['expose']['identifier'] = 'field_published_date_value';
+  $handler->display->display_options['filters']['field_published_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+  );
+  $handler->display->display_options['filters']['field_published_date_value']['granularity'] = 'year';
+  $handler->display->display_options['filters']['field_published_date_value']['default_date'] = 'now +7 day';
+  $handler->display->display_options['filters']['field_published_date_value']['year_range'] = '-8:+0';
+  $handler->display->display_options['path'] = 'rss/news/feed.xml';
   $export['news_archive'] = $view;
 
   return $export;
