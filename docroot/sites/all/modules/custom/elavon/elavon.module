@@ -7,8 +7,11 @@
 /* The Elavon module makes a few assumptions about setting up a form for payments, such as:
   1. The form includes a field_total_cost and the field_h_credit_card_payments field collection.
   2. There is a supporting module for the form which includes at least a few required functions, such as _MODULE_get_entityform_mappings() (see full list in _elavon_get_required_functions_for_payment_processing).
-  3. If adding additional required functions, be sure to add them to _elavon_get_required_functions_for_payment_processing().
-  4. New forms will need to modify _elavon_get_ilr_secrets_key_from_type(), as well as add their credentials to the ILR secrets file.
+  3. Add module key to _elavon_get_providing_module_by_entityform_type
+  4. Add secrets.php application name to _elavon_get_ilr_secrets_key_from_type.
+  5. If adding additional required functions, be sure to add them to _elavon_get_required_functions_for_payment_processing().
+  6. New forms will need to add their credentials to the ILR secrets file. (secrets.php)
+  7. If you've created a new module for a new payment form, enable the module.
 
   @todo:
     - Consider whether we need to set entityform_type specific SESSIONS. This would prevent loading the wrong entityform draft under certain edge-cases.
@@ -65,7 +68,8 @@ function elavon_entityform_previous_submission_alter(&$entityform_submission, $e
  * Adds submit action for adding special flags to payment forms
  * Removes the Save Draft button
  */
-function elavon_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
+// function elavon_form_alter(&$form, &$form_state, $form_id) {    // Aaron's
+function elavon_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {    // Ted's
   if (isset($form['#entity_type']) && $form['#entity_type'] == 'entityform' && _elavon_entityform_type_is_payment_form($form['#bundle'], $form)) {
     $form['actions']['submit']['#submit'][] = '_elavon_add_payment_flag';
     // Remove the save draft button
@@ -301,6 +305,10 @@ function _elavon_get_entityform_type_name() {
       $entityform = entityform_load($_SESSION['elavon_entityform_id']);
       $entityform_type = $entityform->type;
     }
+    else {
+      $menu_item = menu_get_item();
+      $entityform_type = $menu_item['page_arguments'][0]->type;
+    }
   }
   return $entityform_type;
 }
@@ -409,6 +417,7 @@ function _elavon_get_iframe_parent_path() {
 function _elavon_get_ilr_secrets_key_from_type($type) {
   $mappings = array(
     'ilr_alumni_association_event_reg' => 'alumni_registration_',
+    'forensics_debate_camp_payment' => 'forensics_registration_',
   );
   return $mappings[$type];
 }
@@ -466,6 +475,9 @@ function _elavon_get_providing_module_by_entityform_type($type) {
   switch ($type) {
     case 'ilr_alumni_association_event_reg':
       $module = 'ilr_alumni_events';
+      break;
+    case 'forensics_debate_camp_payment':
+      $module = 'forensics_payments';
       break;
     default:
       $module = 'elavon';
@@ -667,6 +679,7 @@ function _elavon_update_entityform_values($variables) {
  * Returns the value of field_total_cost
  */
 function _elavon_ssl_amount() {
+  $wrapper = _elavon_get_entityform_wrapper();
   return $wrapper->field_total_cost->value();
 }
 

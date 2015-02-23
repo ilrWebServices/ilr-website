@@ -476,3 +476,11 @@ function ilr_update_7039() {
   ));
 }
 
+/**
+ * Enables forms2 feature
+ */
+function ilr_update_7040() {
+  module_enable(array(
+    'forms2',
+  ));
+}
