@@ -2264,6 +2264,38 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_country_for_forensics'
+  $field_bases['field_country_for_forensics'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_country_for_forensics',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'CHN' => 'China',
+        'HKG' => 'Hong Kong',
+        'MYS' => 'Malaysia',
+        'MNG' => 'Mongolia',
+        'SGP' => 'Singapore',
+        'THA' => 'Thailand',
+        'USA' => 'United States',
+        'other' => 'Other (select country on the next page)',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_course'
   $field_bases['field_course'] = array(
     'active' => 1,
@@ -7827,6 +7859,34 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_scheinman_user_interests'
+  $field_bases['field_scheinman_user_interests'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_scheinman_user_interests',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Training' => 'Training',
+        'Webinars / Webcasts' => 'Webinars / Webcasts',
+        'Listing of professional organizations' => 'Listing of professional organizations',
+        'Networking' => 'Networking',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_school_or_college'
   $field_bases['field_school_or_college'] = array(
     'active' => 1,
@@ -8518,6 +8578,35 @@ function ilr_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_start_time',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_state_as_text'
+  $field_bases['field_state_as_text'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_state_as_text',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
