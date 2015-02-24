@@ -50,7 +50,7 @@
 
       function positionCurrentMenu() {
         currentMenu = getCurrentMenu();
-        if (isTopLevelMenu(currentMenu)) {
+        if (!mobileNavActive() && isTopLevelMenu(currentMenu)) {
           return false;
         }
         if (currentMenu.length) {
