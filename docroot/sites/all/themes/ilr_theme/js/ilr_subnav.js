@@ -50,6 +50,9 @@
 
       function positionCurrentMenu() {
         currentMenu = getCurrentMenu();
+        if (!mobileNavActive() && isTopLevelMenu(currentMenu)) {
+          return false;
+        }
         if (currentMenu.length) {
           minHeight = getMinHeight();
           $(currentMenu).parents('ul.menu').each(function() {
@@ -124,12 +127,19 @@
         return deepest;
       }
 
-      function menuNeedsAdditionalButtons(el) {
-        if (!el.parent().is('li')) { // the top level menu
+      function isTopLevelMenu(menu) {
+        if (!menu.parent().is('li')) { // the top level menu
+          return true;
+        }
+        return false;
+      }
+
+      function menuNeedsAdditionalButtons(menu) {
+        if (isTopLevelMenu(menu)) {
           return false;
         }
-        if ($(el).find(':first-child').html().indexOf('prev-menu') < 0
-          || $(el).find(':first-child').html().indexOf('prev-menu') > 20) {
+        if ($(menu).find(':first-child').html().indexOf('prev-menu') < 0
+          || $(menu).find(':first-child').html().indexOf('prev-menu') > 20) {
           return true;
         }
         return false;
