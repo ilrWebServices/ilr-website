@@ -47,7 +47,7 @@ function google_analytics_universal_page_alter(&$page) {
     $script .= "ga('send', 'pageview');";
 
     // Hack to include additional key for mps nyc sub site
-    if (module_exists('ilr_sub_sites') && _ilr_sub_sites_get_current_subsite_name() == 'MPS NYC') {
+    if (strpos(drupal_get_path_alias($path = NULL), 'mps-program-new-york-city') !== false) {
       $script .= "ga('create', 'UA-4266040-1', 'auto', {'name': 'mpsNYC'});ga('mpsNYC.send', 'pageview');";
     }
 
