@@ -85,7 +85,22 @@
           widthChanged = true;
           handleStickyElements();
           initialized = true;
+          // Check for named anchor
+          namedAnchorFix();
         });
+      };
+
+      var namedAnchorFix = function() {
+        //Executed on page load with URL containing an anchor tag.
+        if($(location.href.split("#")[1])) {
+          var target = $('#'+location.href.split("#")[1]);
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top - 115 //offset height of header here too.
+            }, 100);
+            return false;
+          }
+        }
       };
 
       var checkForLayoutThrashing = function(){
@@ -117,17 +132,6 @@
         }
       };
 
-      // // Read
-      // var h1 = element1.clientHeight;
-
-      // // Write
-      // requestAnimationFrame(function() {
-      //   element1.style.height = (h1 * 2) + 'px';
-
-      //   // We may want to read the new
-      //   // height after it has been set
-      //   var height = element1.clientHeight;
-      // });
       /**
        * Scroll function
        * Compare scrolltop to offset (offset changes on subsite desktop version)
