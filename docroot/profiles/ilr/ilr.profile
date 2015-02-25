@@ -9,7 +9,7 @@ define('NOTIFICATION_EMAIL', 'nr52@cornell.edu');
  */
 function ilr_form_install_configure_form_alter(&$form, $form_state) {
   // Pre-populate the site config form with some sane defaults for quicker install
-  $default_mail = 'aaronf@cornell.edu';
+  $default_mail = 'ilrweb@cornell.edu';
 
   $form['site_information']['site_name']['#default_value'] = 'Cornell University | ILR School';
   $form['site_information']['site_mail']['#default_value'] = $default_mail;
