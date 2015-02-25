@@ -103,13 +103,6 @@ function people_profiles_preprocess_node(&$variables) {
       }
     }
     elseif ($variables['view_mode'] == 'teaser') {
-      // The $count/z-index can be removed once we auto-hide the sticky header
-      $count = &drupal_static('people_profile_count');
-      if (!$count) {
-        $count = 500;
-      }
-      $variables['attributes_array']['style'] = "z-index:$count";
-      $count--;
       if ($variables['field_display_in_faculty_lists'][LANGUAGE_NONE][0]['value'] != 1) {
         // Remove the links to the node
         $variables['remove_title_link'] = TRUE;
