@@ -260,3 +260,20 @@
   //   }
   // }
 }
+
+%always-slug {
+  @extend %slug;
+  // Override styles to make slugs look good when spread out in a grid on wide breakpoints
+  min-height: 75px;
+  width: 98%;
+  margin-bottom: 0;
+  clear: both;
+  float: none;
+  h2 {
+    margin-left: 0;
+    padding-top: 0;
+    a {
+      margin-bottom: 0;
+    }
+  }
+}
