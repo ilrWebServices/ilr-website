@@ -19,11 +19,35 @@
   content: "\f114"; }
 
 .search-home {
-  top: 150px;
+  top: 50px;
+}
+
+div#main[data-eq-state="320"] .search-home {
+  top: 50px;
 }
 
 div#main[data-eq-state="550"] .search-home {
   top: 50px;
+}
+
+div#main[data-eq-state="550"] .search-home .filtered-search .filter-search,
+div#main[data-eq-state="768"] .search-home .filtered-search .filter-search,
+div#main[data-eq-state="widescreen"] .search-home .filtered-search .filter-search {
+  width: 190px;
+}
+
+div#main[data-eq-state="550"] .search-home .external-search li,
+div#main[data-eq-state="768"] .search-home .external-search li,
+div#main[data-eq-state="widescreen"] .search-home .external-search li {
+  font-size: 22px;
+}
+
+div#main[data-eq-state="550"] .search-home label,
+div#main[data-eq-state="768"] .search-home label,
+div#main[data-eq-state="widescreen"] .search-home label {
+  font-size: 27px;
+  padding-top: 15px;
+  line-height: 1.1em;
 }
 
 div#main[data-eq-state="768"] .search-home {
@@ -51,11 +75,11 @@ div#main[data-eq-state="widescreen"] .search-home {
     background: none;
   }
   .search-home label {
-    font-size: 27px;
+    font-size: 18px;
     color: #fff;
-    padding-top: 15px;
+    padding-top: 10px;
     font-weight: 400;
-    line-height: 1.1em;
+    line-height: 1em;
     padding-bottom: 5px; }
     .search-home label .search-filter-selected {
       opacity: .5; }
@@ -131,6 +155,7 @@ div#main[data-eq-state="widescreen"] .search-home {
     padding-top: 10px;
     width: auto; }
     .search-home .external-search li {
+      font-size: 14px;
       color: #fff;
       padding-right: 5px;
       float: left; }
@@ -139,15 +164,15 @@ div#main[data-eq-state="widescreen"] .search-home {
 
 @media (min-width: 323px) {
   .search-home label {
-    padding-top: 27px; } }
+    padding-top: 10px; } }
 
-@media (min-width: 480px) {
+@media (min-width: 550px) {
   .search-home {
     /*top: 220px;*/ }
     .search-home .filtered-search .search-homepage {
       width: 353px; }
     .search-home .filtered-search .filter-search {
-      width: 190px;
+      /*width: 190px;*/
       text-align: right; }
       .search-home .filtered-search .filter-search .active {
         display: inline;
@@ -161,6 +186,7 @@ div#main[data-eq-state="widescreen"] .search-home {
       display: none;
       width: 190px;
       text-align: left; }}
+
 
 @media (min-width: 998px) {
   .search-home {
@@ -266,6 +292,7 @@ div#main[data-eq-state="widescreen"] .search-home {
     padding-top: 10px;
     width: auto; }
     .search-home .external-search li {
+      font-size: 22px;
       color: #fff;
       padding-right: 5px;
       float: left; }
