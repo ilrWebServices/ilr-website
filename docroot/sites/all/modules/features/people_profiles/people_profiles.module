@@ -25,6 +25,9 @@ function people_profiles_init() {
         'type' => 'file',
         'scope' => 'footer'
       ));
+
+    $inview_js = libraries_get_path('inview') . '/jquery.inview.min.js';
+    drupal_add_js($inview_js, array('type' => 'file', 'scope' => 'footer'));
   }
 
 }
