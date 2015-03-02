@@ -61,7 +61,7 @@ div#main[data-eq-state="widescreen"] .search-home {
   /*top: 170px;*/
   left: 0;
   width: 100%;
-  height: 190px;
+  height: 95px;
   background-color: rgba(64, 64, 64, 0.65);
   padding-left: 15px;
   z-index: 9996; }
@@ -166,6 +166,9 @@ div#main[data-eq-state="widescreen"] .search-home {
     padding-top: 10px; } }
 
 @media (min-width: 550px) {
+  .search-home {
+    height: 120px;
+  }
   .search-home .external-search {
     padding-top: 10px;
   }}
@@ -188,6 +191,7 @@ div#main[data-eq-state="widescreen"] .search-home {
 
   .search-home {
     top: 50px;
+    height: 150px;
   }
 
   .search-home .filtered-search .filter-search {
