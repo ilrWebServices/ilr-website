@@ -52,7 +52,7 @@ jQuery(document).ready(function () {
        jQuery('#filter-search-nav li').each(function(index){
            jQuery(this).click(function(ev){
 
-              ev.preventDefault();
+              //ev.preventDefault();
 
               //console.log(jQuery(this).text());
               //Selected filter feedback
@@ -67,7 +67,8 @@ jQuery(document).ready(function () {
               //console.log(jQuery(this).parent());
 
                //Hide filter select list
-               //$searchFilterList.css('display','none');
+               $searchFilterList.css('display','none');
+
 
                //console.log($searchFilterList);
 
@@ -78,6 +79,7 @@ jQuery(document).ready(function () {
 
 
                $isFilterOpen = false;
+               return false;
 
 
            });
