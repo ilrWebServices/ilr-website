@@ -85,22 +85,7 @@
           widthChanged = true;
           handleStickyElements();
           initialized = true;
-          // Check for named anchor
-          namedAnchorFix();
         });
-      };
-
-      var namedAnchorFix = function() {
-        //Executed on page load with URL containing an anchor tag.
-        if($(location.href.split("#")[1])) {
-          var target = $('#'+location.href.split("#")[1]);
-          if (target.length) {
-            $('html,body').animate({
-              scrollTop: target.offset().top - 115 //offset height of header here too.
-            }, 100);
-            return false;
-          }
-        }
       };
 
       var checkForLayoutThrashing = function(){
