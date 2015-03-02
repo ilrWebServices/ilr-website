@@ -1,34 +1,104 @@
 body.subsite-front.catherwood-library {
-  .container[data-eq-state="regular-nav"] {
+  .container {
     #main {
-      #content {
-        @include grid-span(12);
-        @include add-gutter(1);
-        padding: 0 1em;
-
-        .section {
-          max-width: 100%;
-        }
-        #block-bean-library-hour-detail {
-          @include grid-span(4,9);
-        }
-        #block-bean-catherwood-home-list-one {
-          @include grid-span(4);
-          article {
-            @extend %one-column;
-          }
-        }
-        #block-bean-catherwood-home-manual-listing {
-          @include grid-span(4,5);
-          article {
-            @extend %one-column;
-          }
-        }
+      #block-bean-catherwood-main-header h2 {
+        display: none;
       }
-
-      #sidebar-first {
-        display: none !important; //Override
+      #content {
+        #block-bean-catherwood-home-list-one, #block-bean-catherwood-home-manual-listing {
+          @extend %one-column;
+          margin-left: 0;
+          article {
+            @extend %slug;
+            min-height: 75px;
+            width: 98%;
+            margin-bottom: 0;
+            clear: both;
+            float: none;
+            h2 {
+              margin-left: 0;
+              padding-top: 0;
+              a {
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
       }
     }
   }
 }
+
+body.subsite-front.catherwood-library {
+  .container {
+    #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+      #block-bean-catherwood-main-header h2 {
+        display: block;
+      }
+      #content {
+        @include grid-span(12);
+        @include add-gutter(1);
+        padding: 0 1em;
+        .section {
+          max-width: 100%;
+        }
+        #sidebar-first {
+          display: none !important; //Override
+        }
+      }
+    }
+  }
+}
+
+body.subsite-front.catherwood-library {
+  .container {
+    #main[data-eq-state="768"] {
+      #content {
+        #block-bean-library-hour-detail {
+          @include grid-span(12);
+          p {
+            @extend %two-column;
+          }
+        }
+        #block-bean-catherwood-home-list-one {
+          @include grid-span(6);
+        }
+        #block-bean-catherwood-home-manual-listing {
+          @include grid-span(6,7);
+        }
+        #block-bean-library-hour-detail {
+          float: none;
+          clear: both;
+        }
+      }
+    }
+  }
+}
+
+body.subsite-front.catherwood-library {
+  .container {
+    #main[data-eq-state="widescreen"] {
+      #content {
+        #block-bean-library-hour-detail {
+          @include grid-span(4,9);
+          p {
+            margin-bottom: 1em;
+          }
+        }
+        #block-bean-catherwood-home-list-one {
+          @include grid-span(4);
+        }
+        #block-bean-catherwood-home-manual-listing {
+          @include grid-span(4,5);
+        }
+        #block-bean-catherwood-home-list-one, #block-bean-catherwood-home-manual-listing {
+          @extend %one-column;
+          float: left !important;
+          width: 32% !important;
+        }
+      }
+    }
+  }
+}
+
+
