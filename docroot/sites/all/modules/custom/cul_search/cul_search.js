@@ -47,12 +47,12 @@ jQuery(document).ready(function () {
      // Collect users' selection
      //
      //
-        var $selectedFilter = "Library Catalog";
+        var $selectedFilter = "Library";
 
        jQuery('#filter-search-nav li').each(function(index){
            jQuery(this).click(function(ev){
 
-              ev.preventDefault();
+              //ev.preventDefault();
 
               //console.log(jQuery(this).text());
               //Selected filter feedback
@@ -60,13 +60,15 @@ jQuery(document).ready(function () {
               jQuery('input[name="classgroup"]').val('');
 
               jQuery('.filter-search .active').text(jQuery(this).text());
+              jQuery('#edit_keys').attr('placeholder', jQuery(this).find('a').attr('title'));
 
               $selectedFilter = jQuery(this).text();
 
               //console.log(jQuery(this).parent());
 
                //Hide filter select list
-               //$searchFilterList.css('display','none');
+               $searchFilterList.css('display','none');
+
 
                //console.log($searchFilterList);
 
@@ -77,6 +79,7 @@ jQuery(document).ready(function () {
 
 
                $isFilterOpen = false;
+               return false;
 
 
            });
@@ -125,8 +128,12 @@ jQuery(document).ready(function () {
 
           switch ($selectedFilter) {
 
-                case 'Library Catalog':
+                case 'Library':
                     jQuery(this).attr("action", 'https://search.library.cornell.edu');
+                    break;
+
+                case 'Library Catalog':
+                    jQuery(this).attr("action", 'https://newcatalog.library.cornell.edu/?utf8=%E2%9C%93&search_field=all_fields');
                     break;
 
                 case 'WorldCat':

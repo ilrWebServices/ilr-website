@@ -26,9 +26,9 @@ function _cul_search_generate_markup() {
 <section class="search-home">
   <!-- Pay attention to METHOD -->
   <form id="search" name="form1" method="get" action="https://search.library.cornell.edu">
-    <label for="name">Search <span class="search-filter-selected">Library Catalog</span></label>
+    <label for="name">Search <span class="search-filter-selected">Library</span></label>
     <div class="filtered-search">
-      <input type="text" class="search-homepage" name="q" value="" id="edit_keys">
+      <input type="text" class="search-homepage" name="q" value="" id="edit_keys" placeholder="Search all Cornell University Library resources">
 
       <!--<select name="search_type" id="search_type" size="1" onChange="chgAction()" class="form-control filter">
         <option value="catalog" selected="selected">Library Catalog</option>
@@ -36,10 +36,11 @@ function _cul_search_generate_markup() {
         <option value="site">Site Search</option>
       </select>-->
 
-      <div class="filter-search"><span class="active">Library Catalog</span> <span class="glyphicon glyphicon-chevron-down"></span>
+      <div class="filter-search"><span class="active">Library</span> <span class="glyphicon glyphicon-chevron-down"></span>
         <ul id="filter-search-nav">
-          <li role="listitem"><a href="#" title="">Library Catalog</a></li>
-          <li role="listitem"><a href="#" title="">WorldCat</a></li>
+          <li role="listitem"><a href="#" title="Search all Cornell University Library resources">Library</a></li>
+          <li role="listitem"><a href="#" title="Limit your search to cataloged holdings">Library Catalog</a></li>
+          <li role="listitem"><a href="#" title="Search libraries worldwide using WorldCat">WorldCat</a></li>
         </ul>
       </div>
 
