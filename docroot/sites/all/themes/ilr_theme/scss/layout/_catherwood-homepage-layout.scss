@@ -9,28 +9,12 @@ body.subsite-front.catherwood-library {
           @extend %one-column;
           margin-left: 0;
           article {
-            @extend %slug;
-            min-height: 75px;
-            width: 98%;
-            margin-bottom: 0;
-            clear: both;
-            float: none;
-            h2 {
-              margin-left: 0;
-              padding-top: 0;
-              a {
-                margin-bottom: 0;
-              }
-            }
+            @extend %always-slug;
           }
         }
       }
     }
-  }
-}
 
-body.subsite-front.catherwood-library {
-  .container {
     #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
       #block-bean-catherwood-main-header h2 {
         display: block;
@@ -47,11 +31,7 @@ body.subsite-front.catherwood-library {
         }
       }
     }
-  }
-}
 
-body.subsite-front.catherwood-library {
-  .container {
     #main[data-eq-state="768"] {
       #content {
         #block-bean-library-hour-detail {
@@ -59,6 +39,8 @@ body.subsite-front.catherwood-library {
           p {
             @extend %two-column;
           }
+          float: none;
+          clear: both;
         }
         #block-bean-catherwood-home-list-one {
           @include grid-span(6);
@@ -66,17 +48,9 @@ body.subsite-front.catherwood-library {
         #block-bean-catherwood-home-manual-listing {
           @include grid-span(6,7);
         }
-        #block-bean-library-hour-detail {
-          float: none;
-          clear: both;
-        }
       }
     }
-  }
-}
 
-body.subsite-front.catherwood-library {
-  .container {
     #main[data-eq-state="widescreen"] {
       #content {
         #block-bean-library-hour-detail {
@@ -91,14 +65,7 @@ body.subsite-front.catherwood-library {
         #block-bean-catherwood-home-manual-listing {
           @include grid-span(4,5);
         }
-        #block-bean-catherwood-home-list-one, #block-bean-catherwood-home-manual-listing {
-          @extend %one-column;
-          float: left !important;
-          width: 32% !important;
-        }
       }
     }
   }
 }
-
-
