@@ -29,7 +29,7 @@
           }
         }
         return null;
-      }
+      };
 
       var getNextLetter = function(previousLetter) {
         if (previousLetter != 'z') {
@@ -43,7 +43,7 @@
        */
       var removeDuplicatedFilter = function() {
         $('.ctools-auto-submit-full-form:last').remove();
-      }
+      };
 
       var loadProfileEventListener = function() {
         $('footer').bind('inview', function(event, isInView, visiblePartX, visiblePartY) {
@@ -80,16 +80,23 @@
             }
           },
         });
-      }
+      };
 
       var letterChangeComplete = function() {
         removeDuplicatedFilter();
         loadProfileEventListener(); // Begin listening again
-      }
+      };
 
       var mobileNavActive = function() {
         return $('header').attr('data-eq-state') == 'mobile-nav';
-      }
+      };
+
+      var isPeoplePage = function() {
+        if ($('#block-people-profiles-faculty-landing-page, #block-views-people-profile-teasers-block').length) {
+          return true;
+        }
+        return false;
+      };
 
       $(window).load(function() {
         // Profile detail page
@@ -114,24 +121,29 @@
         }
 
         // Teaser pages, such as /people
-        if ($('#edit-field-last-name-value-wrapper').length) {
-          // Update the page content if there is a named anchor
-          if (last_name_letter = getLastNameLetterFromAnchor(getNamedAnchor())) {
-            $("#edit-field-last-name-value").val(last_name_letter).trigger('change');
-          }
-          // If ajax is called for teasers, check for named anchor
-          // Attached to document since form id was not working
-          $(document).ajaxComplete(function( event, xhr, settings ) {
-            if (settings.data.indexOf('people_profile_teasers') > -1) {
-              setTimeout(goToNamedAnchor, 100, getNamedAnchor());
-            }
-          });
+        if (isPeoplePage()) {
+          $('body').addClass('people-page');
 
-          if (mobileNavActive()) { // Prepare for infinite scroll
-            loadProfileEventListener();
-          } // Load all people on desktop version
-          else {
-            loadProfileView('page_1');
+          // Check for people profile teasers view
+          if ($('#edit-field-last-name-value-wrapper').length) {
+            // Update the page content if there is a named anchor
+            if (last_name_letter = getLastNameLetterFromAnchor(getNamedAnchor())) {
+              $("#edit-field-last-name-value").val(last_name_letter).trigger('change');
+            }
+            // If ajax is called for teasers, check for named anchor
+            // Attached to document since form id was not working
+            $(document).ajaxComplete(function( event, xhr, settings ) {
+              if (settings.data.indexOf('people_profile_teasers') > -1) {
+                setTimeout(goToNamedAnchor, 100, getNamedAnchor());
+              }
+            });
+
+            if (mobileNavActive()) { // Prepare for infinite scroll
+              loadProfileEventListener();
+            } // Load all people on desktop version
+            else {
+              loadProfileView('page_1');
+            }
           }
         }
       });
