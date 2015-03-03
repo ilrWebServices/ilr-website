@@ -98,6 +98,34 @@
         return false;
       };
 
+      var goToAlphaListings = function(letter) {
+        $('.node-people-profile h2').each(function(){
+          if (getLastNameLetterFromAnchor('#' + $(this).attr('id')) == letter) {
+            goToNamedAnchor('#'+ $(this).attr('id'));
+            return false;
+          }
+        });
+      };
+
+      var addAlphaLinks = function() {
+        $('.field-name-field-content-region').prepend('<div id="letters-listing"><ul></ul></div>');
+        for(charCode=97; charCode < 123; charCode++){
+          var letter = String.fromCharCode(charCode),
+          anchor = '<a href="#">' + letter + '</a>';
+          $("#letters-listing ul").append("<li>" + anchor + "</li>");
+        }
+        $('#letters-listing a').click(function(e) {
+          e.preventDefault();
+          letter = $(this).text();
+          if (mobileNavActive()) {
+            $("#edit-field-last-name-value").val(letter).trigger('change');
+          }
+          else {
+            goToAlphaListings(letter);
+          }
+        });
+      };
+
       $(window).load(function() {
         // Profile detail page
         if ($('article.profile-type-faculty').length) {
@@ -144,6 +172,7 @@
             else {
               loadProfileView('page_1');
             }
+            addAlphaLinks();
           }
         }
       });
