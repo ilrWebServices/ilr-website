@@ -69,9 +69,9 @@ function forms_entityform_presave($entityform) {
  */
  function forms_mail_alter(&$message) {
     $message['body'][0] = str_replace(
-      "<h3 class=\"field-label\">", "&nbsp;<h6 class=\"field-label\">", $message['body'][0]);
+      "<h3 class=\"field-label\">", "&nbsp;<h5 class=\"field-label\">", $message['body'][0]);
     $message['body'][0] = str_replace(
-      "</h3>", ":</h6>", $message['body'][0]);
+      "</h3>", ":</h5>", $message['body'][0]);
     // Uncomment this to indent the value and add an extra blank line after the label.
     // $message['body'][0] = str_replace(
     //    "<div class=\"field", "&nbsp;<div class=\"field", $message['body'][0]);
