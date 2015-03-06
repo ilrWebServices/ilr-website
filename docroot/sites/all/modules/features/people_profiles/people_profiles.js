@@ -3,6 +3,7 @@
     attach: function (context, settings) {
       var infiniteScrollReady = false;
       var currentLetter = 'a';
+      var anchorTriggered = false;
 
       var goToNamedAnchor = function(anchor) {
         var target = $(anchor);
@@ -10,6 +11,8 @@
           $('html,body').animate({
             scrollTop: target.offset().top - 175 //offset height of header here
           }, 100);
+          anchorTriggered = true;
+          currentLetter = getLastNameLetterFromAnchor(anchor);
           return false;
         }
       };
@@ -40,7 +43,13 @@
         if (currentLetter != 'z') {
           nextLetter = String.fromCharCode(currentLetter.charCodeAt(0) + 1);
           currentLetter = nextLetter;
-          return nextLetter;
+          // Make sure there is an entry for the letter
+          if (getFirstEntryForLetter(nextLetter)) {
+            return nextLetter;
+          } // Try the next letter
+          else {
+            return getNextLetter();
+          }
         }
         return false;
       };
@@ -109,8 +118,10 @@
         return false;
       };
 
-      // Searches the lastNameMap for the first element with a given letter
-      // Proceeds to the next letter if none are found
+      /**
+       * Searches the lastNameMap for the first element with a given letter
+       * Proceeds to the next letter if none are found
+       */
       var goToFirstEntryForLetter = function(letter) {
         if (entry = getFirstEntryForLetter(letter)) {
           goToNamedAnchor(entry);
@@ -120,16 +131,20 @@
         }
       };
 
+      /**
+       * Searches the lastNameMap for the first entry for a given letter
+       */
       var getFirstEntryForLetter = function(letter) {
+        entry = false;
         map = JSON.parse(Drupal.settings.people_profiles.lastNameMap);
         jQuery.each(map, function(i, val) {
           if (val == letter) {
-            found = true;
             currentLetter = letter;
-            return i;
+            entry = i;
+            return false;
           }
         });
-        return false;
+        return entry;
       }
 
       var addAlphaLinks = function() {
@@ -146,7 +161,7 @@
             $("#edit-field-last-name-value").val(letter).trigger('change');
           } // All should be present on desktop
           else {
-            goToAlphaListings(letter);
+            goToFirstEntryForLetter(letter);
           }
         });
       };
@@ -190,17 +205,16 @@
 
           // Check for people profile teasers view
           if ($('#edit-field-last-name-value-wrapper').length) {
-            // Update the page content if there is a named anchor
-            if (last_name_letter = getLastNameLetterFromAnchor(getNamedAnchor())) {
-              $("#edit-field-last-name-value").val(last_name_letter).trigger('change');
-            }
             // If ajax is called for teasers, check for named anchor
             // Attached to document since form id was not working
             $(document).ajaxComplete(function( event, xhr, settings ) {
               if (settings.data.indexOf('people_profile_teasers') > -1) {
                 addSelectMenuChangeListener();
                 addInfiniteScrollTrigger();
-                setTimeout(goToNamedAnchor, 100, getNamedAnchor());
+                // This should only be triggered once
+                if (!anchorTriggered) {
+                  setTimeout(goToNamedAnchor, 100, getNamedAnchor());
+                }
               }
             });
 
@@ -215,6 +229,10 @@
             }
             // Both desktop and mobile get alpha links
             addAlphaLinks();
+            // Update the page content if there is a named anchor
+            if (last_name_letter = getLastNameLetterFromAnchor(getNamedAnchor())) {
+              $("#edit-field-last-name-value").val(last_name_letter).trigger('change');
+            }
           }
         }
       });
