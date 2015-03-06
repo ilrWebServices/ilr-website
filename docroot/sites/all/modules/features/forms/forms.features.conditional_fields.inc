@@ -10394,13 +10394,6 @@ function forms_conditional_fields_default_fields() {
       ),
       'element_view_per_role' => 0,
       'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         1 => array(
           1 => 1,
           2 => 2,
@@ -10415,49 +10408,63 @@ function forms_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        4 => array(
+        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        5 => array(
+        16 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        6 => array(
+        41 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        7 => array(
+        51 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        8 => array(
+        46 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        9 => array(
+        36 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        10 => array(
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -10471,10 +10478,6 @@ function forms_conditional_fields_default_fields() {
       ),
       'element_edit_per_role' => 0,
       'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
         1 => array(
           1 => 1,
           3 => 0,
@@ -10483,31 +10486,39 @@ function forms_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        4 => array(
+        11 => array(
           1 => 1,
           3 => 0,
         ),
-        5 => array(
+        16 => array(
           1 => 1,
           3 => 0,
         ),
-        6 => array(
+        41 => array(
           1 => 1,
           3 => 0,
         ),
-        7 => array(
+        51 => array(
           1 => 1,
           3 => 0,
         ),
-        8 => array(
+        46 => array(
           1 => 1,
           3 => 0,
         ),
-        9 => array(
+        36 => array(
           1 => 1,
           3 => 0,
         ),
-        10 => array(
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
           1 => 1,
           3 => 0,
         ),
@@ -10518,8 +10529,11 @@ function forms_conditional_fields_default_fields() {
       'values' => array(
         0 => 'Creating new web content or web form',
         1 => 'Updating existing web content or web form',
-        2 => 'Media, photos and videos for the website',
-        3 => 'Errors on the ILR website',
+        2 => 'Removing web content',
+        3 => 'Media, photos and videos for the website',
+        4 => 'Training',
+        5 => 'Errors on the ILR website',
+        6 => 'Other',
       ),
       'value' => array(),
     ),
