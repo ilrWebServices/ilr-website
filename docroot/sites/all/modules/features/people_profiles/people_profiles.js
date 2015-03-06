@@ -1,12 +1,14 @@
 (function ($) {
   Drupal.behaviors.people_profiles = {
     attach: function (context, settings) {
+      var infiniteScrollReady = false;
+      var currentLetter = 'a';
 
       var goToNamedAnchor = function(anchor) {
         var target = $(anchor);
         if (target.length) {
           $('html,body').animate({
-            scrollTop: target.offset().top - 150 //offset height of header here too.
+            scrollTop: target.offset().top - 175 //offset height of header here
           }, 100);
           return false;
         }
@@ -16,24 +18,29 @@
         if (hash = window.location.hash) {
           return hash;
         }
-        return null;
+        return false;
       };
 
+      /**
+       * The lastNameMap is created in _people_profiles_create_last_name_letter_map
+       * @return the first letter of the last name, as provided by the map
+       */
       var getLastNameLetterFromAnchor = function(anchor) {
-        if (anchor !== null) {
-          // make sure anchor conforms to #firstName-lastName pattern
-          if (index = anchor.lastIndexOf("-")) {
-            if (index > 0) {
-              return anchor.substring(index + 1, index + 2);
-            }
+        if (anchor) {
+          lastNameMap = JSON.parse(Drupal.settings.people_profiles.lastNameMap);
+          lastNameLetter = lastNameMap[anchor];
+          if (lastNameLetter !== 'undefined') {
+            return lastNameLetter;
           }
         }
-        return null;
+        return false;
       };
 
-      var getNextLetter = function(previousLetter) {
-        if (previousLetter != 'z') {
-          return String.fromCharCode(previousLetter.charCodeAt(0) + 1);
+      var getNextLetter = function() {
+        if (currentLetter != 'z') {
+          nextLetter = String.fromCharCode(currentLetter.charCodeAt(0) + 1);
+          currentLetter = nextLetter;
+          return nextLetter;
         }
         return false;
       };
@@ -45,18 +52,22 @@
         $('.ctools-auto-submit-full-form:last').remove();
       };
 
-      var loadProfileEventListener = function() {
-        $('footer').bind('inview', function(event, isInView, visiblePartX, visiblePartY) {
-          if (isInView) {
-            $('footer').unbind('inview');
-            anchor = $('.views-row article:last h2').attr('id');
-            previousLetter = getLastNameLetterFromAnchor('#' + anchor);
-            nextLetter = getNextLetter(previousLetter);
-            if (nextLetter) {
-              loadProfileView('block', 'field_last_name_value='+nextLetter, letterChangeComplete);
+      /**
+       * Binds loading the next letter to the footer being "inview"
+       */
+      var addInfiniteScrollTrigger = function() {
+        if (!infiniteScrollReady) {
+          $('footer').bind('inview', function(event, isInView, visiblePartX, visiblePartY) {
+            if (isInView) {
+              $('footer').unbind('inview');
+              infiniteScrollReady = false; // Disable infinite scrolling for now
+              if (nextLetter = getNextLetter()) {
+                loadProfileView('block', 'field_last_name_value='+nextLetter, letterChangeComplete);
+              }
             }
-          }
-        });
+          });
+          infiniteScrollReady = true;
+        }
       };
 
       var loadProfileView = function(displayId, params, callback) {
@@ -84,7 +95,7 @@
 
       var letterChangeComplete = function() {
         removeDuplicatedFilter();
-        loadProfileEventListener(); // Begin listening again
+        addInfiniteScrollTrigger(); // Begin listening again
       };
 
       var mobileNavActive = function() {
@@ -98,14 +109,28 @@
         return false;
       };
 
-      var goToAlphaListings = function(letter) {
-        $('.node-people-profile h2').each(function(){
-          if (getLastNameLetterFromAnchor('#' + $(this).attr('id')) == letter) {
-            goToNamedAnchor('#'+ $(this).attr('id'));
-            return false;
+      // Searches the lastNameMap for the first element with a given letter
+      // Proceeds to the next letter if none are found
+      var goToFirstEntryForLetter = function(letter) {
+        if (entry = getFirstEntryForLetter(letter)) {
+          goToNamedAnchor(entry);
+        } // Try the next letter
+        else {
+          goToFirstEntryForLetter(getNextLetter());
+        }
+      };
+
+      var getFirstEntryForLetter = function(letter) {
+        map = JSON.parse(Drupal.settings.people_profiles.lastNameMap);
+        jQuery.each(map, function(i, val) {
+          if (val == letter) {
+            found = true;
+            currentLetter = letter;
+            return i;
           }
         });
-      };
+        return false;
+      }
 
       var addAlphaLinks = function() {
         $('.field-name-field-content-region').prepend('<div id="letters-listing"><ul></ul></div>');
@@ -116,13 +141,24 @@
         }
         $('#letters-listing a').click(function(e) {
           e.preventDefault();
-          letter = $(this).text();
+          letter = currentLetter = $(this).text();
           if (mobileNavActive()) {
             $("#edit-field-last-name-value").val(letter).trigger('change');
-          }
+          } // All should be present on desktop
           else {
             goToAlphaListings(letter);
           }
+        });
+      };
+
+      /**
+       * Removes the additional views if present when
+       * the visitor uses the select menu
+       */
+      var addSelectMenuChangeListener = function() {
+        $("#edit-field-last-name-value").change(function() {
+          currentLetter = $("#edit-field-last-name-value").val();
+          $('.view-people-profile-teasers').not(':first').remove();
         });
       };
 
@@ -162,16 +198,22 @@
             // Attached to document since form id was not working
             $(document).ajaxComplete(function( event, xhr, settings ) {
               if (settings.data.indexOf('people_profile_teasers') > -1) {
+                addSelectMenuChangeListener();
+                addInfiniteScrollTrigger();
                 setTimeout(goToNamedAnchor, 100, getNamedAnchor());
               }
             });
 
-            if (mobileNavActive()) { // Prepare for infinite scroll
-              loadProfileEventListener();
+            if (mobileNavActive()) {
+              if (!getNamedAnchor()) {
+                addInfiniteScrollTrigger();
+              }
+              addSelectMenuChangeListener();
             } // Load all people on desktop version
             else {
               loadProfileView('page_1');
             }
+            // Both desktop and mobile get alpha links
             addAlphaLinks();
           }
         }

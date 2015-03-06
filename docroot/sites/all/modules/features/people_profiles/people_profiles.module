@@ -138,6 +138,30 @@ function people_profiles_preprocess_node(&$variables) {
   }
 }
 
+function people_profiles_views_post_render(&$view, &$output, &$cache) {
+  if ($view->exposed_data['field_last_name_value'] == 'a') {
+    $last_name_map = _people_profiles_create_last_name_letter_map();
+    drupal_add_js(array(
+      'people_profiles' => array(
+        'lastNameMap' => $last_name_map,
+      )), 'setting');
+  }
+}
+
+function _people_profiles_create_last_name_letter_map() {
+  $last_name_map = array();
+  $people_nids = _people_profiles_get_profile_nids('all');
+  $people_nodes = node_load_multiple($people_nids);
+  foreach ($people_nodes as $node) {
+    $last_name = $node->field_last_name[LANGUAGE_NONE][0]['safe_value'];
+    $first_letter = strtolower(substr($last_name, 0, 1));
+    $alias = drupal_get_path_alias('node/' . $node->nid);
+    $anchor = str_replace('people/', '#', $alias);
+    $last_name_map[$anchor] = $first_letter;
+  }
+  return json_encode($last_name_map);
+}
+
 function _people_profiles_get_primary_title($full_title) {
   if ($pos = strpos($full_title,"\n")) {
     return substr($full_title, 0, $pos);
