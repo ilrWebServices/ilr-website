@@ -7,18 +7,14 @@
       .section {
         max-width: 100%;
         @include context('#main','#main[data-eq-state="768"]') {
-          article {
-            @extend %two-column;
-          }
+          @include columnize('.block > article', 2);
+          @include columnize('.views-row', 2);
         }
         @include context('#main','#main[data-eq-state="widescreen"]') {
-          article {
-            @extend %three-column;
-          }
+          @include columnize('.block > article', 3);
+          @include columnize('.views-row', 3);
         }
       }
     }
   }
-
 }
-

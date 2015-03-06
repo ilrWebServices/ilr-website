@@ -1606,9 +1606,9 @@ function people_profiles_field_default_field_instances() {
   t('Faculty On Leave');
   t('Fax');
   t('First Name');
+  t('For example: "Spring 2015: Tuesdays & Thursdays 3:00 - 4:30 p.m. & by appointment." Line breaks will be respected when displayed.');
   t('Generally, a profile has a single working title. Faculty, however, can have multiple working titles.');
   t('Honors and Awards');
-  t('For example: "Spring 2015: Tuesdays & Thursdays 3:00 - 4:30 p.m. & by appointment." Line breaks will be respected when displayed.');
   t('Last Name');
   t('NetID');
   t('Off-Campus Work Address');
