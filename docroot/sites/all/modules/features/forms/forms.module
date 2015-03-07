@@ -52,6 +52,34 @@ function forms_entityform_presave($entityform) {
   }
  }
 
+
+ /**
+ * Implements hook_mail_alter
+ * These changes modify the html version of the email to be something that converts
+ * to a better text version (using the standard mail.inc code).  If I could find a
+ * way to change a few lines of mail.inc, this is what I'd change, in the
+ * function drupal_html_to_text:
+ *        case 'h3':
+ *         $indent[] = '
+ *';
+ *         break;
+ *       case '/h3':
+ *         array_pop($indent);
+ *         break;
+ */
+ function forms_mail_alter(&$message) {
+    $message['body'][0] = str_replace(
+      "<h3 class=\"field-label\">",
+      "&nbsp;<h5 style=\"font-size: 16px;\" class=\"field-label\">",
+      $message['body'][0]);
+    $message['body'][0] = str_replace(
+      "</h3>", ":</h5>", $message['body'][0]);
+    // Uncomment this to indent the value and add an extra blank line after the label.
+    // $message['body'][0] = str_replace(
+    //    "<div class=\"field", "&nbsp;<div class=\"field", $message['body'][0]);
+ }
+
+
 /**
  * Set Alumni Bulletin job posting date based on datetime of submission
  * Note that setting this in presave has the side effect of saving them to the db
@@ -686,7 +714,7 @@ function _entity_display_form_data($entityform) {
   $entityform_id = $entityform->entityform_id;
   $entityform = entityform_load($entityform_id);
   $controller = entity_get_controller('entityform');
-  $content = $controller->view(array($entityform->entityform_id => $entityform), 'confirmation', NULL, TRUE);
+  $content = $controller->view(array($entityform->entityform_id => $entityform), 'email', NULL, TRUE);
   return drupal_render($content);
 }
 

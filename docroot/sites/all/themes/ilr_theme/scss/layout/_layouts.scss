@@ -1,3 +1,25 @@
+@mixin columnize($element, $cols) {
+  $layout: $cols * 2;
+  $span: $layout / $cols;
+  #{$element} {
+    @include layout($layout) {
+      margin-right: 0;
+      // Reset all nth-child elements
+      &:nth-of-type(even),
+      &:nth-of-type(odd) {
+        @include float-span($span);
+        clear: none;
+      }
+      &:nth-of-type(#{$cols}n) {
+        @include float-span($span, 'last');
+      }
+      &:nth-of-type(#{$cols}n + 1) {
+        clear: left;
+      }
+    }
+  }
+}
+
 %one-column {
   @include layout(4) {
     @include float-span(4);
