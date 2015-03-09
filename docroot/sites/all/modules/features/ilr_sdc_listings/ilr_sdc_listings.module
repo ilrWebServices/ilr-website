@@ -418,7 +418,7 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes, $has
   if ($has_open_class) {
     $form['courseurl'] = array(
       '#type' => 'hidden',
-      '#value' => urlencode('http://www.ilr.cornell.edu'),
+      '#value' => '/' . drupal_get_path_alias(),
     );
     $form['submit'] = array(
       '#type' => 'submit',
@@ -450,7 +450,11 @@ function ilr_sdc_listings_class_reg_form_validate($form, &$form_state) {
  * Redirect to registration page.
  */
 function ilr_sdc_listings_class_reg_form_submit($form, &$form_state) {
-  drupal_goto(variable_get('ilr_sdc_listings_reg_url', 'http://register.ilr.cornell.edu/registration/process/processcard.cfm'), array('query' => array('addClass' => $form_state['values']['addClass'])));
+  drupal_goto(variable_get('ilr_sdc_listings_reg_url', 'http://register.ilr.cornell.edu/registration/process/processcard.cfm'),
+    array('query' => array(
+      'addClass' => $form_state['values']['addClass'],
+      'courseurl' => $form_state['values']['courseurl'],
+    )));
 }
 
 /**
