@@ -1090,7 +1090,7 @@ function forms_default_entityform_type() {
   }');
   $items['ilr_student_advisor_application_'] = entity_import('entityform_type', '{
     "type" : "ilr_student_advisor_application_",
-    "label" : "ILR Student Advisor Application Form",
+    "label" : "ILR Peer Mentor Application Form",
     "data" : {
       "draftable" : 0,
       "draft_redirect_path" : "",
@@ -1103,9 +1103,9 @@ function forms_default_entityform_type() {
       "delete_confirm_msg" : "",
       "page_title_view" : "",
       "preview_page" : 0,
-      "submission_page_title" : "ILR Student Advisor Application Confirmation",
+      "submission_page_title" : "ILR Peer Mentor Application Confirmation",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for applying to be an ILR student advisor. Your application has been submitted, and you will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for applying to be an ILR peer mentor. Your application has been submitted, and you will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -1115,23 +1115,25 @@ function forms_default_entityform_type() {
       "roles" : {
         "1" : "1",
         "2" : "2",
-        "3" : 0,
-        "4" : 0,
-        "5" : 0,
-        "6" : 0,
-        "7" : 0,
-        "8" : 0,
-        "9" : 0,
-        "10" : 0
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "36" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 1,
-      "form_submission_ilr_recipient" : "ilr_oss@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
-      "kerberized" : 1
+      "kerberized" : 1,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "ilr_oss@cornell.edu"
     },
     "weight" : "0",
     "paths" : []
