@@ -18,8 +18,8 @@ function ilr_forms_staff_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function ilr_forms_staff_default_entityform_type() {
   $items = array();
-  $items['office_professonals_day_registra'] = entity_import('entityform_type', '{
-    "type" : "office_professonals_day_registra",
+  $items['office_professionals_day_reg'] = entity_import('entityform_type', '{
+    "type" : "office_professionals_day_reg",
     "label" : "Office Professionals Day Registration",
     "data" : {
       "draftable" : 0,

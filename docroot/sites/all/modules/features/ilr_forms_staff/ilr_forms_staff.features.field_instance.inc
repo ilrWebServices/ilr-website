@@ -10,9 +10,9 @@
 function ilr_forms_staff_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'entityform-office_professonals_day_registra-field_current_college'
-  $field_instances['entityform-office_professonals_day_registra-field_current_college'] = array(
-    'bundle' => 'office_professonals_day_registra',
+  // Exported field_instance: 'entityform-office_professionals_day_reg-field_current_college'
+  $field_instances['entityform-office_professionals_day_reg-field_current_college'] = array(
+    'bundle' => 'office_professionals_day_reg',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -70,9 +70,9 @@ function ilr_forms_staff_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-office_professonals_day_registra-field_department'
-  $field_instances['entityform-office_professonals_day_registra-field_department'] = array(
-    'bundle' => 'office_professonals_day_registra',
+  // Exported field_instance: 'entityform-office_professionals_day_reg-field_department'
+  $field_instances['entityform-office_professionals_day_reg-field_department'] = array(
+    'bundle' => 'office_professionals_day_reg',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -130,9 +130,9 @@ function ilr_forms_staff_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-office_professonals_day_registra-field_email'
-  $field_instances['entityform-office_professonals_day_registra-field_email'] = array(
-    'bundle' => 'office_professonals_day_registra',
+  // Exported field_instance: 'entityform-office_professionals_day_reg-field_email'
+  $field_instances['entityform-office_professionals_day_reg-field_email'] = array(
+    'bundle' => 'office_professionals_day_reg',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -184,9 +184,9 @@ function ilr_forms_staff_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-office_professonals_day_registra-field_first_name'
-  $field_instances['entityform-office_professonals_day_registra-field_first_name'] = array(
-    'bundle' => 'office_professonals_day_registra',
+  // Exported field_instance: 'entityform-office_professionals_day_reg-field_first_name'
+  $field_instances['entityform-office_professionals_day_reg-field_first_name'] = array(
+    'bundle' => 'office_professionals_day_reg',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -244,9 +244,9 @@ function ilr_forms_staff_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-office_professonals_day_registra-field_h_event_date'
-  $field_instances['entityform-office_professonals_day_registra-field_h_event_date'] = array(
-    'bundle' => 'office_professonals_day_registra',
+  // Exported field_instance: 'entityform-office_professionals_day_reg-field_h_event_date'
+  $field_instances['entityform-office_professionals_day_reg-field_h_event_date'] = array(
+    'bundle' => 'office_professionals_day_reg',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -321,9 +321,9 @@ function ilr_forms_staff_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-office_professonals_day_registra-field_job_title'
-  $field_instances['entityform-office_professonals_day_registra-field_job_title'] = array(
-    'bundle' => 'office_professonals_day_registra',
+  // Exported field_instance: 'entityform-office_professionals_day_reg-field_job_title'
+  $field_instances['entityform-office_professionals_day_reg-field_job_title'] = array(
+    'bundle' => 'office_professionals_day_reg',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -381,9 +381,9 @@ function ilr_forms_staff_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-office_professonals_day_registra-field_last_name'
-  $field_instances['entityform-office_professonals_day_registra-field_last_name'] = array(
-    'bundle' => 'office_professonals_day_registra',
+  // Exported field_instance: 'entityform-office_professionals_day_reg-field_last_name'
+  $field_instances['entityform-office_professionals_day_reg-field_last_name'] = array(
+    'bundle' => 'office_professionals_day_reg',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -441,9 +441,9 @@ function ilr_forms_staff_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-office_professonals_day_registra-field_phone'
-  $field_instances['entityform-office_professonals_day_registra-field_phone'] = array(
-    'bundle' => 'office_professonals_day_registra',
+  // Exported field_instance: 'entityform-office_professionals_day_reg-field_phone'
+  $field_instances['entityform-office_professionals_day_reg-field_phone'] = array(
+    'bundle' => 'office_professionals_day_reg',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -501,9 +501,9 @@ function ilr_forms_staff_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-office_professonals_day_registra-field_referenced_node'
-  $field_instances['entityform-office_professonals_day_registra-field_referenced_node'] = array(
-    'bundle' => 'office_professonals_day_registra',
+  // Exported field_instance: 'entityform-office_professionals_day_reg-field_referenced_node'
+  $field_instances['entityform-office_professionals_day_reg-field_referenced_node'] = array(
+    'bundle' => 'office_professionals_day_reg',
     'default_value' => NULL,
     'default_value_function' => 'entityreference_current_field_default_value',
     'deleted' => 0,
