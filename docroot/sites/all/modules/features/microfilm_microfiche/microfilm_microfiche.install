@@ -1,0 +1,20 @@
+<?php
+/**
+ * @file
+ * Install and update hooks
+ */
+
+/**
+ * Updates all microfilm and microfiche aliases
+ */
+function microfilm_microfiche_update_7001() {
+  // Return all nids of nodes of type "page".
+  $nodes = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->fields('n', array('type'))
+    ->condition('n.type', array('microfilm','microfiche'),'IN')
+    ->execute()
+    ->fetchCol();
+  pathauto_node_update_alias_multiple($nodes,'update');
+}
+
