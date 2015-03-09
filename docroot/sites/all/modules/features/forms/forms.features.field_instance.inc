@@ -17124,8 +17124,9 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_experience',
-    'label' => 'What past experiences have you had which would help you in the role of a Student Advisor?',
+    'label' => 'What past experiences have you had which would help you in the role of a Peer Mentor?',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -17482,8 +17483,9 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_relationship',
-    'label' => 'Did your relationship with your SA address the concerns you listed above? If yes, how so? If not, what would you do differently?',
+    'label' => 'Did your relationship with your Peer Mentor address the concerns you listed? If yes, how? If not, what would you do differently?',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -17541,8 +17543,9 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_role',
-    'label' => 'What do you see as the role of a Student Advisor?',
+    'label' => 'What do you see as the role of a Peer Mentor?',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -25242,7 +25245,7 @@ function forms_field_default_field_instances() {
     'bundle' => 'request_faculty_advisor_or_depar',
     'default_value' => array(
       0 => array(
-        'value' => '2014-2015',
+        'value' => '2015-2016',
       ),
     ),
     'deleted' => 0,
@@ -25259,6 +25262,7 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_h_school_year',
     'label' => 'School year',
     'required' => 1,
@@ -25503,8 +25507,9 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_year_freshman_soph_jr_sr',
-    'label' => 'Class year in 2014-2015',
+    'label' => 'Class year in 2015-2016',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -34219,7 +34224,7 @@ function forms_field_default_field_instances() {
   t('City (union)');
   t('City (work)');
   t('Class year');
-  t('Class year in 2014-2015');
+  t('Class year in 2015-2016');
   t('Classes you are interesting in TAing or faculty members to whom you wish to be assigned');
   t('College phone number');
   t('Comments');
@@ -34253,7 +34258,7 @@ function forms_field_default_field_instances() {
   t('Describe training or technical support needed');
   t('Details');
   t('Did you transfer into ILR?');
-  t('Did your relationship with your SA address the concerns you listed above? If yes, how so? If not, what would you do differently?');
+  t('Did your relationship with your Peer Mentor address the concerns you listed? If yes, how? If not, what would you do differently?');
   t('Direct my questions to');
   t('Direct your question or message to');
   t('Do you have any interest in posting the video to the web?');
@@ -34482,8 +34487,8 @@ function forms_field_default_field_instances() {
   t('What are the nominee\'s areas of significant responsibility? Please describe briefly.');
   t('What are two most important outcomes you envision for your organization resulting from this leader\'s participation in the NLLI?');
   t('What are your academic interests? (check all that apply)');
-  t('What do you see as the role of a Student Advisor?');
-  t('What past experiences have you had which would help you in the role of a Student Advisor?');
+  t('What do you see as the role of a Peer Mentor?');
+  t('What past experiences have you had which would help you in the role of a Peer Mentor?');
   t('What unique or outstanding potential for union leadership does this nominee possess that the Committee should consider in awarding this scholarship? ');
   t('What year did you graduate?');
   t('When will you graduate?');
