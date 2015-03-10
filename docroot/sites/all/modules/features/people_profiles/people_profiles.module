@@ -139,7 +139,7 @@ function people_profiles_preprocess_node(&$variables) {
 }
 
 function people_profiles_views_post_render(&$view, &$output, &$cache) {
-  if ($view->exposed_data['field_last_name_value'] == 'a') {
+  if ($view->name == 'people_profile_teasers' && $view->exposed_data['field_last_name_value'] == 'a') {
     $last_name_map = _people_profiles_create_last_name_letter_map();
     drupal_add_js(array(
       'people_profiles' => array(
