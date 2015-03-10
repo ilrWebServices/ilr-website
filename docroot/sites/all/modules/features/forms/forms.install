@@ -36,6 +36,24 @@ function forms_update_7003() {
 }
 
 /**
+ * Re-send emails that were missed due to 3/9/15 mail setting bug
+ */
+function forms_update_7004() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', "entityform");
+  $query->propertyCondition('entityform_id', array(6336), "IN");
+  //6346, 6341, 6336, 6331, 6326, 6321, 6316, 6311, 6306, 6301, 6296, 6291, 6286, 6281, 6276, 6271, 6266, 6261, 6256, 6251, 6246, 6241, 6236, 6231, 6226
+  $result = $query->execute();
+  if (isset($result['entityform'])) {
+    $submissions = $result['entityform'];
+    foreach ($submissions as $submission) {
+      $entityform = entityform_load($submission->entityform_id);
+      _forms_process_entityform($entityform);
+    }
+  }
+}
+
+/**
  * Delete array of field instances
  * @param $fields_info
  */
