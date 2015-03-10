@@ -41,7 +41,7 @@ function forms_update_7003() {
 function forms_update_7004() {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', "entityform");
-  $query->propertyCondition('entityform_id', array(6346, 6341, 6336, 6331, 6326, 6321, 6316, 6311, 6306, 6301, 6296, 6291, 6286, 6281, 6271, 6266, 6261, 6256, 6251, 6246, 6241, 6236, 6226), "IN");
+  $query->propertyCondition('entityform_id', array(6346, 6336, 6331, 6326, 6316, 6311, 6306, 6301, 6296, 6291, 6286, 6281, 6271, 6266, 6261, 6256, 6251, 6246, 6236, 6226), "IN");
   $result = $query->execute();
   if (isset($result['entityform'])) {
     $submissions = $result['entityform'];
