@@ -848,7 +848,7 @@ function _forms_set_registration_date($entityform) {
  * Creates or retrieves an entitymetadata wrapper for the form
  */
 function _forms_entityform_wrapper($entityform) {
-  $wrapper = &drupal_static(__FUNCTION__);
+  $wrapper = &drupal_static(__FUNCTION__ . $entityform->entityform_id);
   if (!isset($wrapper)) {
     $wrapper = entity_metadata_wrapper('entityform', $entityform);
   }
