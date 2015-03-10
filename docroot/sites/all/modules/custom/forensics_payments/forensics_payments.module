@@ -12,19 +12,11 @@
 ///////////////////////////////
 
 /**
- * Runs a query for all entityforms with data in field_ssl_amount - NEEDED, DONE I THINK
- * and a transaction id that is not the test value
+ * Confirm that user entered a valid amount to pay: numeric and greater than 0
  */
-function _forensics_payments_get_current_invoice_count() {
-  $query = db_select('entityform', 'ef');
-  $query->fields('ef', array('entityform_id'));
-  $query->leftJoin('field_data_field_h_credit_card_payments', 'ftc', 'ftc.entity_id = ef.entityform_id');
-  $query->leftJoin('field_data_field_ssl_amount', 'fdsa', 'fdsa.entity_id = ftc.field_h_credit_card_payments_value');
-  $query->leftJoin('field_data_field_ssl_txn_id', 'fdtxid', 'fdtxid.entity_id = ftc.field_h_credit_card_payments_value');
-  $query->isNotNull('field_ssl_amount_value');
-  $query->condition('field_ssl_txn_id_value', '00000000-0000-0000-0000-00000000000','!=');
-  $results = $query->execute()->fetchAll();
-  return count($results);
+function _forensics_payments_amount_is_valid() {
+  $amnt = _forensics_payments_get_total_cost_entered();
+  return is_numeric($amnt) && $amnt > 0;
 }
 
 /**
@@ -39,25 +31,6 @@ function _forensics_payments_get_draft_status() {
     $is_draft = ($result == 'APPROVED') ? 0 : 1;
   }
   return $is_draft;
-}
-
-/**
- * Get total cost that user entered
- */
-function _forensics_payments_get_total_cost_entered() {
-  if ($entityform_wrapper = _forensics_payments_get_entityform_wrapper()) {
-    return $entityform_wrapper->field_total_cost->value();
-  }
-  return 0;
-}
-
-
-/**
- * Confirm that user entered a valid amount to pay: numeric and greater than 0
- */
-function _forensics_payments_amount_is_valid() {
-  $amnt = _forensics_payments_get_total_cost_entered();
-  return is_numeric($amnt) && $amnt > 0;
 }
 
 /**
@@ -100,39 +73,18 @@ function _forensics_payments_get_entityform_wrapper() {
   return NULL;
 }
 
-
-
 /**
- * Creates or retrieves an entitymetadata wrapper for the node
- * on which the entityform has been placed
+ * Get total cost that user entered
  */
-function _forensics_payments_node_wrapper($node=NULL) {
-  $wrapper = &drupal_static(__FUNCTION__);
-  if (!isset($wrapper)) {
-    if (!$node && $entityform_wrapper = _forensics_payments_get_entityform_wrapper()) {
-      if(isset($entityform_wrapper->field_referenced_node)) {
-        $node = $entityform_wrapper->field_referenced_node->value();
-      }
-      else {
-        watchdog('forensics_payments', "There was an error trying to load the referenced node for @entityform_type",
-            array(
-              '@entityform_type' => $entityform_wrapper->type->value()->type,
-            ),
-            WATCHDOG_ERROR
-          );
-      }
-    }
-    else {
-      $node = menu_get_object();
-    }
-    $wrapper = entity_metadata_wrapper('node', $node);
+function _forensics_payments_get_total_cost_entered() {
+  if ($entityform_wrapper = _forensics_payments_get_entityform_wrapper()) {
+    return $entityform_wrapper->field_total_cost->value();
   }
-  return $wrapper;
+  return 0;
 }
 
-
 /**
- * Lets user know if he didn't enter a valid amount   - NEEDED, DONE
+ * Lets user know if he didn't enter a valid amount
  * @see _elavon_payment_page()
  */
 function _forensics_payments_payment_form_errors() {
@@ -149,7 +101,7 @@ function _forensics_payments_payment_form_errors() {
  */
 function _forensics_payments_ssl_invoice_number() {
   $prefix = 'debate';
-  $invoice_count = _forensics_payments_get_current_invoice_count();
+  $invoice_count = _elavon_get_current_invoice_count_by_type('forensics_debate_camp_payment');
   $offset = 200; // Incremented from the old system
   // Pad the string to 6 places
   $invoice_number = str_pad($invoice_count + $offset, 6, '0', STR_PAD_LEFT);

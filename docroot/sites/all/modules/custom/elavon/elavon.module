@@ -15,7 +15,6 @@
 
   @todo:
     - Consider whether we need to set entityform_type specific SESSIONS. This would prevent loading the wrong entityform draft under certain edge-cases.
-    - Confirm that a payment form (such as Forensics) works both in the body and in the content region of a basic page
 */
 
 require_once DRUPAL_ROOT . '/../config/get_secrets.php';
@@ -246,8 +245,27 @@ function _elavon_generate_elavon_form_markup() {
 }
 
 /**
+ * Runs a query for all entityforms with data in field_ssl_amount
+ * and a transaction id that is not the test value
+ */
+function _elavon_get_current_invoice_count_by_type($type) {
+  $query = db_select('entityform', 'ef');
+  $query->fields('ef', array('entityform_id','type'));
+  $query->leftJoin('field_data_field_h_credit_card_payments', 'ftc', 'ftc.entity_id = ef.entityform_id');
+  $query->leftJoin('field_data_field_ssl_amount', 'fdsa', 'fdsa.entity_id = ftc.field_h_credit_card_payments_value');
+  $query->leftJoin('field_data_field_ssl_txn_id', 'fdtxid', 'fdtxid.entity_id = ftc.field_h_credit_card_payments_value');
+  $query->isNotNull('field_ssl_amount_value');
+  $query->condition('field_ssl_txn_id_value', '00000000-0000-0000-0000-00000000000','!=');
+  $query->condition('ef.type', $type, '=');
+  $results = $query->execute()->fetchAll();
+  return count($results);
+}
+
+/**
  * Determines if the entityform should be in draft mode
  * APPROVED transactions are not drafts
+ * Note that this function can be overridden by modules implementing elavon forms,
+ * such as ilr_alumni_events (@see _ilr_alumni_events_get_draft_status())
  */
 function _elavon_get_draft_status() {
   $is_draft = 1; // Set to draft by default
