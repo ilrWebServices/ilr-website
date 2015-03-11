@@ -49,6 +49,11 @@ function people_profile_import_feeds_presave($source, $entity, $item, $entity_id
           $updated_profile_wrapper->{$field_name}->set($existing_value);
         }
       }
+    } // Avoid issues with blank entries
+    else {
+      if (strlen($entity->title) <= 1) {
+        $entity->feeds_item->skip = TRUE;
+      }
     }
   }
 }
