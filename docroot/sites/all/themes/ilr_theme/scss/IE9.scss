@@ -25,6 +25,10 @@ body {
               padding-left: 8px;
               padding-right: 8px;
             }
+
+            div.submenu {
+              z-index: 10;
+            }
           }
         }
       }
@@ -42,6 +46,8 @@ body {
 
   #page .container #main {
     @include add-grid(3 9);
+    @include add-gutter(1/2);
+    margin-right: 2em;
     #content {
       @include grid-span(1,2);
       .block-bean article {
@@ -63,6 +69,7 @@ body {
     }
   }
   footer {
+    margin-top: 1em;
     clear: both;
     @include add-grid(12);
   }
@@ -131,7 +138,7 @@ body.node-type-people-profile {
   }
 }
 
-#sidebar-first ul.menu li a.next-menu {
+#block-menu-block-ilr-subnav ul.menu li a.next-menu {
   &::after {
     padding: 1.1em;
     top: 12px;
