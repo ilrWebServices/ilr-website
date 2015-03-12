@@ -145,3 +145,21 @@ body.node-type-people-profile {
     left: 20px;
   }
 }
+
+/**
+ * Element overrides
+ */
+
+// Event selectors not being triggered.
+// Most of these styles come from _view_modes.scss
+#block-bean-ilr-events .thumbnail.event span {
+  display: block;
+  font-family: "freight-sans-pro-n4","freight-sans-pro",sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 1.31579em;
+  font-style: normal;
+  line-height: 1.08em;
+  padding-top: 25px;
+  text-transform: uppercase;
+}
