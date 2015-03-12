@@ -285,13 +285,17 @@ function _forms_get_theme_array_from_template_files() {
   return $template_array;
 }
 
+function _forms_get_template_path_for_entityform($entityform) {
+  return str_replace('_', '-', $entityform->type);
+}
+
 /**
  * Generates the appropriate user email template for entityforms
  * Note that the email template contains underscores, but the actual filename contains hyphens.
  */
 function _forms_get_tplphp_file($entityform) {
-  $tplphp_file = str_replace('_', '-', $entityform->type);
-  $tplphp_file_full_path = drupal_get_path('module', 'forms') . '/templates/' . $tplphp_file . '.tpl.php';
+  $template_path = _forms_get_template_path_for_entityform($entityform);
+  $tplphp_file_full_path = $template_path . '.tpl.php';
 
   if (file_exists($tplphp_file_full_path)) {
     return $entityform->type;
@@ -308,9 +312,8 @@ function _forms_get_tplphp_file($entityform) {
  * Note that the email template contains underscores, but the actual filename contains hyphens.
  */
 function _forms_get_admin_tplphp_file($entityform) {
-  $admin_tplphp_file = str_replace('_', '-', $entityform->type);
-  $admin_tplphp_file_full_path = drupal_get_path('module', 'forms') . '/templates/' .
-    $admin_tplphp_file . '-admin.tpl.php';
+  $template_path = _forms_get_template_path_for_entityform($entityform);
+  $admin_tplphp_file_full_path = $template_path . '-admin.tpl.php';
 
   if (file_exists($admin_tplphp_file_full_path)) {
     return $entityform->type . '_admin';
@@ -624,7 +627,6 @@ function _forms_full_names_states_and_provinces() {
  * Send user and admin emails
  */
 function _forms_send_emails($entityform, $admin_email, $subject='') {
-  $sitename = variable_get('site_name', 'Drupal');
   $form_title = _forms_get_form_title($entityform);
   $user_name = _forms_construct_user_name($entityform);
   $email_template = _forms_get_tplphp_file($entityform);
@@ -633,20 +635,12 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
 
   // User email
   if (isset($user_email) &&
-      _forms_user_receives_confirmation_email($entityform)) {
-    $salutation = _form_salutation($user_name);
-
-    $body = theme($email_template, array(
-      'salutation'            => $salutation,
-      'form_data'             => _entity_display_form_data($entityform),
-      'admin_email'           => $admin_email,
-      'form_title'            => $form_title,
-      'event_info_for_email'  => _forms_get_event_info_for_email($entityform),
-      'event_payment_details' => _forms_get_payment_details_for_email($entityform),
-      'postdate'              => _forms_get_postdate_for_email($entityform),
-      'sitename'              => $sitename,
-    ));
-
+    _forms_user_receives_confirmation_email($entityform)) {
+    $params = array(
+      'salutation' => _form_salutation($user_name),
+      'admin_email' => $admin_email,
+    );
+    $body = theme($email_template, _forms_generate_template_parameters($entityform, $params));
     $to = $user_email;
     $from = $admin_email;
     $subject_user = $form_title . ' confirmation';
@@ -659,7 +653,6 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
     $from = (isset($user_email))
       ? $user_email
       : $admin_email;
-    $salutation = 'Dear Admin for the form ' . $form_title . ',';
     if (empty($subject)) {
       $subject = $form_title . ' submitted';
     }
@@ -668,16 +661,11 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
     }
 
     if ($admin_email_template = _forms_get_admin_tplphp_file($entityform)) {
-      $body = theme($admin_email_template, array(
-        'salutation'            => $salutation,
-        'form_data'             => _entity_display_form_data($entityform),
-        'admin_email'           => $admin_email,
-        'form_title'            => $form_title,
-        'event_info_for_email'  => _forms_get_event_info_for_email($entityform),
-        'event_payment_details' => _forms_get_payment_details_for_email($entityform),
-        'postdate'              => _forms_get_postdate_for_email($entityform),
-        'sitename'              => $sitename,
-      ));
+      $params = array(
+        'salutation' => 'Dear Admin for the form ' . $form_title . ',',
+        'admin_email' => $admin_email,
+      );
+      $body = theme($admin_email_template, _forms_generate_template_parameters($entityform, $admin_email));
     }
     else {
       // No default template for admin email, just construct the basic body
@@ -685,6 +673,18 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
     }
     _send_email_for_entity_form($to, $from, $subject, $body);
   }
+}
+
+function _forms_generate_template_parameters($entityform, $params=NULL) {
+  $defaults = array(
+    'form_data'             => _entity_display_form_data($entityform),
+    'form_title'            => _forms_get_form_title($entityform),
+    'event_info_for_email'  => _forms_get_event_info_for_email($entityform),
+    'event_payment_details' => _forms_get_payment_details_for_email($entityform),
+    'postdate'              => _forms_get_postdate_for_email($entityform),
+    'sitename'              => variable_get('site_name', 'Drupal'),
+  );
+  return array_merge($defaults,$params);
 }
 
 /**
