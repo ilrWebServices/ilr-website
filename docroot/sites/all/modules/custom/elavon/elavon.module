@@ -653,6 +653,28 @@ function _elavon_set_field_collection_data($field_name, $value) {
 }
 
 /**
+ * Returns the value of field_total_cost
+ */
+function _elavon_ssl_amount() {
+  $wrapper = _elavon_get_entityform_wrapper();
+  return $wrapper->field_total_cost->value();
+}
+
+/**
+ * Returns the node title based on the iframe parent path
+ */
+function _elavon_ssl_description() {
+  $parent_path = _elavon_get_iframe_parent_path();
+  $uri_as_array = explode('/', $parent_path);
+  if (count($uri_as_array)) {
+    $nid = end($uri_as_array);
+    $node = node_load($nid);
+    return $node->title;
+  }
+  return '';
+}
+
+/**
  * Elavon wants a string, which we return here
  */
 function _elavon_test_value() {
@@ -691,26 +713,4 @@ function _elavon_update_entityform_values($variables) {
   // Remove the "draft" setting on the entityform
   $wrapper->draft = 0;
   $wrapper->save();
-}
-
-/**
- * Returns the value of field_total_cost
- */
-function _elavon_ssl_amount() {
-  $wrapper = _elavon_get_entityform_wrapper();
-  return $wrapper->field_total_cost->value();
-}
-
-/**
- * Returns the node title based on the iframe parent path
- */
-function _elavon_ssl_description() {
-  $parent_path = _elavon_get_iframe_parent_path();
-  $uri_as_array = explode('/', $parent_path);
-  if (count($uri_as_array)) {
-    $nid = end($uri_as_array);
-    $node = node_load($nid);
-    return $node->title;
-  }
-  return '';
 }
