@@ -286,7 +286,7 @@ function _forms_get_theme_array_from_template_files() {
 }
 
 /**
- * Generates the appropriate email template for entityforms
+ * Generates the appropriate user email template for entityforms
  * Note that the email template contains underscores, but the actual filename contains hyphens.
  */
 function _forms_get_tplphp_file($entityform) {
@@ -301,6 +301,23 @@ function _forms_get_tplphp_file($entityform) {
   }
   return 'default_mail';
 }
+
+
+/**
+ * Generates the appropriate admin email template for entityforms
+ * Note that the email template contains underscores, but the actual filename contains hyphens.
+ */
+function _forms_get_admin_tplphp_file($entityform) {
+  $admin_tplphp_file = str_replace('_', '-', $entityform->type);
+  $admin_tplphp_file_full_path = drupal_get_path('module', 'forms') . '/templates/' .
+    $admin_tplphp_file . '-admin.tpl.php';
+
+  if (file_exists($admin_tplphp_file_full_path)) {
+    return $entityform->type . '_admin';
+  }
+  return '';
+}
+
 
 /**
  * Default processing for forms
@@ -642,13 +659,30 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
     $from = (isset($user_email))
       ? $user_email
       : $admin_email;
+    $salutation = 'Dear Admin for the form ' . $form_title . ',';
     if (empty($subject)) {
       $subject = $form_title . ' submitted';
     }
     if (_forms_admin_subject_line_includes_user_name($entityform)) {
       $subject .= " - $user_name";
     }
-    $body =  _entity_display_form_data($entityform);
+
+    if ($admin_email_template = _forms_get_admin_tplphp_file($entityform)) {
+      $body = theme($admin_email_template, array(
+        'salutation'            => $salutation,
+        'form_data'             => _entity_display_form_data($entityform),
+        'admin_email'           => $admin_email,
+        'form_title'            => $form_title,
+        'event_info_for_email'  => _forms_get_event_info_for_email($entityform),
+        'event_payment_details' => _forms_get_payment_details_for_email($entityform),
+        'postdate'              => _forms_get_postdate_for_email($entityform),
+        'sitename'              => $sitename,
+      ));
+    }
+    else {
+      // No default template for admin email, just construct the basic body
+      $body =  _entity_display_form_data($entityform);
+    }
     _send_email_for_entity_form($to, $from, $subject, $body);
   }
 }
