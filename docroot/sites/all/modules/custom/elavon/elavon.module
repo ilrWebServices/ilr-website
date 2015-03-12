@@ -51,7 +51,7 @@ function elavon_entityform_presave($entityform) {
  */
 function elavon_entityform_previous_submission_alter(&$entityform_submission, $entityform_type, $context) {
   if ($previous_submission = _elavon_get_entityform()) {
-    if ($entityform_submission && $entityform_submission->type == $previous_submission->type) {
+    if ($entityform_type == $previous_submission->type) {
       $entityform_submission = $previous_submission;
     }
   } // Edge case for logged in users who have lost their session
