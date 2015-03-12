@@ -232,7 +232,7 @@ function _elavon_generate_elavon_form_markup() {
         $value = $function();
         break;
       default:
-        if (strpos($value, 'field') === 0) {
+        if (strpos($value, 'field_') === 0) {
           $value = _elavon_get_entityform_value($value);
         }
         break;
