@@ -51,11 +51,11 @@ function elavon_entityform_presave($entityform) {
  */
 function elavon_entityform_previous_submission_alter(&$entityform_submission, $entityform_type, $context) {
   if ($previous_submission = _elavon_get_entityform()) {
-    if ($entityform_type == $previous_submission->type) {
+    if ($entityform_type == $previous_submission->type && $previous_submission->draft == 1) {
       $entityform_submission = $previous_submission;
     }
-  } // Edge case for logged in users who have lost their session
-  else if ($entityform_submission && _elavon_entityform_is_payment_form($entityform_submission)) {
+  } // Edge case for logged in users who have lost their session but have a draft
+  else if ($entityform_submission && _elavon_entityform_is_payment_form($entityform_submission) && _elavon_get_draft_status() == 1) {
     _elavon_set_entityform_session($entityform_submission->entityform_id);
   }
 }
@@ -268,7 +268,7 @@ function _elavon_get_current_invoice_count_by_type($type) {
  * such as ilr_alumni_events (@see _ilr_alumni_events_get_draft_status())
  */
 function _elavon_get_draft_status() {
-  $is_draft = 1; // Set to draft by default
+  $is_draft = 0;
   if ($entityform = _elavon_get_entityform()) {
     $result = _elavon_get_field_collection_data('field_ssl_result_message');
     $is_draft = ($result == 'APPROVED') ? 0 : 1;
