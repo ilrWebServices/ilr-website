@@ -664,7 +664,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
         'salutation' => 'Dear Admin for the form ' . $form_title . ',',
         'admin_email' => $admin_email,
       );
-      $body = theme($admin_email_template, _forms_generate_template_parameters($entityform, $admin_email));
+      $body = theme($admin_email_template, _forms_generate_template_parameters($entityform, $params));
     }
     else {
       // No default template for admin email, just construct the basic body
