@@ -182,6 +182,7 @@ function _elavon_entityform_type_is_payment_form($entityform_type) {
  */
 function _elavon_entityform_type_validate(&$form, &$form_state) {
   if ($form_state['values']['data']['add_payment_processing']) {
+    $name = _elavon_entityform_type_name($form['type']['#default_value']);
     // Check that all required functions have been implemented
     $required_functions = _elavon_get_required_functions_for_payment_processing();
     foreach ($required_functions as $key => $function_partial) {
@@ -278,7 +279,7 @@ function _elavon_get_draft_status() {
 
 function _elavon_get_elavon_credentials() {
   global $ILR_SECRETS;
-  $type = _elavon_get_entityform_type_name();
+  $type = _elavon_entityform_type_name();
   $secret_key = _elavon_get_ilr_secrets_key_from_type($type);
   return array(
     "ssl_merchant_id" => $ILR_SECRETS['elavon'][$secret_key.'merchant_id'],
@@ -316,7 +317,7 @@ function _elavon_get_entityform_mapping($elavon_key) {
 /**
  * Loads or retrieves the entityform type as a string
  */
-function _elavon_get_entityform_type_name() {
+function _elavon_entityform_type_name($name=NULL) {
   $entityform_type = &drupal_static(__FUNCTION__);
   if (!isset($entityform_type)) {
     if (isset($_SESSION['elavon_entityform_id'])) {
@@ -324,8 +325,9 @@ function _elavon_get_entityform_type_name() {
       $entityform_type = $entityform->type;
     }
     else {
-      $menu_item = menu_get_item();
-      $entityform_type = $menu_item['page_arguments'][0]->type;
+      if ($name) {
+        $entityform_type = $name;
+      }
     }
   }
   return $entityform_type;
@@ -451,7 +453,7 @@ function _elavon_get_ilr_secrets_key_from_type($type) {
  * _MODULE_ssl_description()
  */
 function _elavon_get_modular_function($partial_name) {
-  $entityform_type = _elavon_get_entityform_type_name();
+  $entityform_type = _elavon_entityform_type_name();
   $provider = _elavon_get_providing_module_by_entityform_type($entityform_type);
   $function = '_' . $provider . '_' . $partial_name;
   if (function_exists($function)) {
