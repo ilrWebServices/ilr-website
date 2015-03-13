@@ -240,7 +240,7 @@ function _tagged_content_block_get_promo_link_from_node($node) {
     // Internal links
     if (!empty($wrapper->field_internal_link) && $wrapper->field_internal_link->value()) {
       $nid = $wrapper->field_internal_link->value()->nid;
-      $url = drupal_get_path_alias("node/$nid");
+      $url = '/' . drupal_get_path_alias("node/$nid");
     } // External links
     else {
       $wrapped_url = $wrapper->field_website_url->value();
@@ -281,7 +281,7 @@ function _tagged_content_block_update_promo_links(&$variables) {
   $variables['node_url'] = $url;
 
   if (isset($variables['content']['field_image']) && count($variables['content']['field_image'])) {
-    $variables['content']['field_image'][0]['#path']['path'] = $url;
+    $variables['content']['field_image'][0]['#path']['path'] = ltrim($url, '/');
   }
 
   if (_tagged_content_block_is_event($url)) {
