@@ -24,7 +24,7 @@ function forms2_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 15,
       ),
       'download' => array(
         'label' => 'above',
@@ -34,6 +34,15 @@ function forms2_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 5,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 15,
       ),
       'table' => array(
         'label' => 'above',
@@ -84,7 +93,7 @@ function forms2_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 16,
       ),
       'download' => array(
         'label' => 'above',
@@ -94,6 +103,15 @@ function forms2_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 6,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 16,
       ),
       'table' => array(
         'label' => 'above',
@@ -144,7 +162,7 @@ function forms2_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 17,
       ),
       'download' => array(
         'label' => 'above',
@@ -154,6 +172,15 @@ function forms2_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 7,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 17,
       ),
       'table' => array(
         'label' => 'above',
@@ -204,7 +231,7 @@ function forms2_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 8,
+        'weight' => 19,
       ),
       'download' => array(
         'label' => 'above',
@@ -214,6 +241,15 @@ function forms2_field_default_field_instances() {
         ),
         'type' => 'list_default',
         'weight' => 9,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 19,
       ),
       'table' => array(
         'label' => 'above',
@@ -258,7 +294,7 @@ function forms2_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 11,
+        'weight' => 22,
       ),
       'download' => array(
         'label' => 'above',
@@ -268,6 +304,15 @@ function forms2_field_default_field_instances() {
         ),
         'type' => 'email_default',
         'weight' => 12,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 22,
       ),
       'table' => array(
         'label' => 'above',
@@ -312,7 +357,7 @@ function forms2_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 13,
       ),
       'download' => array(
         'label' => 'above',
@@ -322,6 +367,15 @@ function forms2_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 3,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
       ),
       'table' => array(
         'label' => 'above',
@@ -383,6 +437,15 @@ function forms2_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
@@ -429,7 +492,7 @@ function forms2_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 4,
       ),
       'download' => array(
         'label' => 'above',
@@ -440,9 +503,16 @@ function forms2_field_default_field_instances() {
           'description' => TRUE,
           'edit' => 'Edit',
           'field_formatter_label' => '',
+          'view_mode' => 'full',
         ),
-        'type' => 'field_collection_list',
+        'type' => 'field_collection_view',
         'weight' => 14,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'table' => array(
         'label' => 'above',
@@ -453,8 +523,9 @@ function forms2_field_default_field_instances() {
           'description' => TRUE,
           'edit' => 'Edit',
           'field_formatter_label' => '',
+          'view_mode' => 'full',
         ),
-        'type' => 'field_collection_list',
+        'type' => 'field_collection_view',
         'weight' => 14,
       ),
     ),
@@ -483,24 +554,16 @@ function forms2_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 14,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'download' => array(
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
           'field_formatter_label' => '',
-          'format_type' => 'long',
+          'format_type' => 'short',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
@@ -509,12 +572,18 @@ function forms2_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 1,
       ),
+      'email' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
           'field_formatter_label' => '',
-          'format_type' => 'long',
+          'format_type' => 'short',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
@@ -566,7 +635,7 @@ function forms2_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 14,
       ),
       'download' => array(
         'label' => 'above',
@@ -576,6 +645,15 @@ function forms2_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 4,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 14,
       ),
       'table' => array(
         'label' => 'above',
@@ -626,7 +704,7 @@ function forms2_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 21,
       ),
       'download' => array(
         'label' => 'above',
@@ -636,6 +714,15 @@ function forms2_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 11,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 21,
       ),
       'table' => array(
         'label' => 'above',
@@ -682,13 +769,9 @@ function forms2_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 13,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'download' => array(
         'label' => 'above',
@@ -699,6 +782,12 @@ function forms2_field_default_field_instances() {
         ),
         'type' => 'entityreference_label',
         'weight' => 0,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'table' => array(
         'label' => 'above',
@@ -756,7 +845,7 @@ function forms2_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 18,
       ),
       'download' => array(
         'label' => 'above',
@@ -766,6 +855,15 @@ function forms2_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 8,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 18,
       ),
       'table' => array(
         'label' => 'above',
@@ -827,6 +925,15 @@ function forms2_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 13,
       ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
@@ -876,7 +983,7 @@ function forms2_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 20,
       ),
       'download' => array(
         'label' => 'above',
@@ -886,6 +993,15 @@ function forms2_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 10,
+      ),
+      'email' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 20,
       ),
       'table' => array(
         'label' => 'above',
