@@ -286,7 +286,8 @@ function _forms_get_theme_array_from_template_files() {
 }
 
 function _forms_get_template_path_for_entityform($entityform) {
-  return str_replace('_', '-', $entityform->type);
+  $folder_path = drupal_get_path('module', 'forms') . '/templates/';
+  return $folder_path . str_replace('_', '-', $entityform->type);
 }
 
 /**
@@ -296,7 +297,6 @@ function _forms_get_template_path_for_entityform($entityform) {
 function _forms_get_tplphp_file($entityform) {
   $template_path = _forms_get_template_path_for_entityform($entityform);
   $tplphp_file_full_path = $template_path . '.tpl.php';
-
   if (file_exists($tplphp_file_full_path)) {
     return $entityform->type;
   }
@@ -314,7 +314,6 @@ function _forms_get_tplphp_file($entityform) {
 function _forms_get_admin_tplphp_file($entityform) {
   $template_path = _forms_get_template_path_for_entityform($entityform);
   $admin_tplphp_file_full_path = $template_path . '-admin.tpl.php';
-
   if (file_exists($admin_tplphp_file_full_path)) {
     return $entityform->type . '_admin';
   }
