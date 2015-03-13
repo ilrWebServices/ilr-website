@@ -683,7 +683,7 @@ function _forms_generate_template_parameters($entityform, $params=NULL) {
     'postdate'              => _forms_get_postdate_for_email($entityform),
     'sitename'              => variable_get('site_name', 'Drupal'),
   );
-  return array_merge($defaults,$params);
+  return ($params) ? array_merge($defaults,$params) : $defaults;
 }
 
 /**
