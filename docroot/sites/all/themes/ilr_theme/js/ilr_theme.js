@@ -314,7 +314,8 @@
         $("body").removeClass("preloading");
 
         // Check if browser can handle SVG
-        if(!Modernizr.svg){
+        // Checking for "no-flexbox" since IE9 doesn't handle svg scaling
+        if($('html').hasClass('no-flexbox')){
           src = $('#logo img').attr('src');
           src = src.slice(0,-3) + 'png';
           $('#logo img').attr('src', src);

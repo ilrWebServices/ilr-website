@@ -15,7 +15,6 @@
 
   @todo:
     - Consider whether we need to set entityform_type specific SESSIONS. This would prevent loading the wrong entityform draft under certain edge-cases.
-    - Confirm that a payment form (such as Forensics) works both in the body and in the content region of a basic page
 */
 
 require_once DRUPAL_ROOT . '/../config/get_secrets.php';
@@ -52,11 +51,11 @@ function elavon_entityform_presave($entityform) {
  */
 function elavon_entityform_previous_submission_alter(&$entityform_submission, $entityform_type, $context) {
   if ($previous_submission = _elavon_get_entityform()) {
-    if ($entityform_submission && $entityform_submission->type != $previous_submission->type) {
+    if ($entityform_type == $previous_submission->type && $previous_submission->draft == 1) {
       $entityform_submission = $previous_submission;
     }
-  } // Edge case for logged in users who have lost their session
-  else if ($entityform_submission && _elavon_entityform_is_payment_form($entityform_submission)) {
+  } // Edge case for logged in users who have lost their session but have a draft
+  else if ($entityform_submission && _elavon_entityform_is_payment_form($entityform_submission) && _elavon_get_draft_status() == 1) {
     _elavon_set_entityform_session($entityform_submission->entityform_id);
   }
 }
@@ -183,6 +182,7 @@ function _elavon_entityform_type_is_payment_form($entityform_type) {
  */
 function _elavon_entityform_type_validate(&$form, &$form_state) {
   if ($form_state['values']['data']['add_payment_processing']) {
+    $name = _elavon_entityform_type_name($form['type']['#default_value']);
     // Check that all required functions have been implemented
     $required_functions = _elavon_get_required_functions_for_payment_processing();
     foreach ($required_functions as $key => $function_partial) {
@@ -233,7 +233,7 @@ function _elavon_generate_elavon_form_markup() {
         $value = $function();
         break;
       default:
-        if (strpos($value, 'field') === 0) {
+        if (strpos($value, 'field_') === 0) {
           $value = _elavon_get_entityform_value($value);
         }
         break;
@@ -246,11 +246,30 @@ function _elavon_generate_elavon_form_markup() {
 }
 
 /**
+ * Runs a query for all entityforms with data in field_ssl_amount
+ * and a transaction id that is not the test value
+ */
+function _elavon_get_current_invoice_count_by_type($type) {
+  $query = db_select('entityform', 'ef');
+  $query->fields('ef', array('entityform_id','type'));
+  $query->leftJoin('field_data_field_h_credit_card_payments', 'ftc', 'ftc.entity_id = ef.entityform_id');
+  $query->leftJoin('field_data_field_ssl_amount', 'fdsa', 'fdsa.entity_id = ftc.field_h_credit_card_payments_value');
+  $query->leftJoin('field_data_field_ssl_txn_id', 'fdtxid', 'fdtxid.entity_id = ftc.field_h_credit_card_payments_value');
+  $query->isNotNull('field_ssl_amount_value');
+  $query->condition('field_ssl_txn_id_value', '00000000-0000-0000-0000-00000000000','!=');
+  $query->condition('ef.type', $type, '=');
+  $results = $query->execute()->fetchAll();
+  return count($results);
+}
+
+/**
  * Determines if the entityform should be in draft mode
  * APPROVED transactions are not drafts
+ * Note that this function can be overridden by modules implementing elavon forms,
+ * such as ilr_alumni_events (@see _ilr_alumni_events_get_draft_status())
  */
 function _elavon_get_draft_status() {
-  $is_draft = 1; // Set to draft by default
+  $is_draft = 0;
   if ($entityform = _elavon_get_entityform()) {
     $result = _elavon_get_field_collection_data('field_ssl_result_message');
     $is_draft = ($result == 'APPROVED') ? 0 : 1;
@@ -260,7 +279,7 @@ function _elavon_get_draft_status() {
 
 function _elavon_get_elavon_credentials() {
   global $ILR_SECRETS;
-  $type = _elavon_get_entityform_type_name();
+  $type = _elavon_entityform_type_name();
   $secret_key = _elavon_get_ilr_secrets_key_from_type($type);
   return array(
     "ssl_merchant_id" => $ILR_SECRETS['elavon'][$secret_key.'merchant_id'],
@@ -298,7 +317,7 @@ function _elavon_get_entityform_mapping($elavon_key) {
 /**
  * Loads or retrieves the entityform type as a string
  */
-function _elavon_get_entityform_type_name() {
+function _elavon_entityform_type_name($name=NULL) {
   $entityform_type = &drupal_static(__FUNCTION__);
   if (!isset($entityform_type)) {
     if (isset($_SESSION['elavon_entityform_id'])) {
@@ -306,8 +325,9 @@ function _elavon_get_entityform_type_name() {
       $entityform_type = $entityform->type;
     }
     else {
-      $menu_item = menu_get_item();
-      $entityform_type = $menu_item['page_arguments'][0]->type;
+      if ($name) {
+        $entityform_type = $name;
+      }
     }
   }
   return $entityform_type;
@@ -433,7 +453,7 @@ function _elavon_get_ilr_secrets_key_from_type($type) {
  * _MODULE_ssl_description()
  */
 function _elavon_get_modular_function($partial_name) {
-  $entityform_type = _elavon_get_entityform_type_name();
+  $entityform_type = _elavon_entityform_type_name();
   $provider = _elavon_get_providing_module_by_entityform_type($entityform_type);
   $function = '_' . $provider . '_' . $partial_name;
   if (function_exists($function)) {
@@ -635,6 +655,28 @@ function _elavon_set_field_collection_data($field_name, $value) {
 }
 
 /**
+ * Returns the value of field_total_cost
+ */
+function _elavon_ssl_amount() {
+  $wrapper = _elavon_get_entityform_wrapper();
+  return $wrapper->field_total_cost->value();
+}
+
+/**
+ * Returns the node title based on the iframe parent path
+ */
+function _elavon_ssl_description() {
+  $parent_path = _elavon_get_iframe_parent_path();
+  $uri_as_array = explode('/', $parent_path);
+  if (count($uri_as_array)) {
+    $nid = end($uri_as_array);
+    $node = node_load($nid);
+    return $node->title;
+  }
+  return '';
+}
+
+/**
  * Elavon wants a string, which we return here
  */
 function _elavon_test_value() {
@@ -673,26 +715,4 @@ function _elavon_update_entityform_values($variables) {
   // Remove the "draft" setting on the entityform
   $wrapper->draft = 0;
   $wrapper->save();
-}
-
-/**
- * Returns the value of field_total_cost
- */
-function _elavon_ssl_amount() {
-  $wrapper = _elavon_get_entityform_wrapper();
-  return $wrapper->field_total_cost->value();
-}
-
-/**
- * Returns the node title based on the iframe parent path
- */
-function _elavon_ssl_description() {
-  $parent_path = _elavon_get_iframe_parent_path();
-  $uri_as_array = explode('/', $parent_path);
-  if (count($uri_as_array)) {
-    $nid = end($uri_as_array);
-    $node = node_load($nid);
-    return $node->title;
-  }
-  return '';
 }

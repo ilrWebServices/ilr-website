@@ -102,22 +102,6 @@ function _ilr_alumni_events_get_attendee_markup($wrapper) {
 }
 
 /**
- * Runs a query for all entityforms with data in field_ssl_amount
- * and a transaction id that is not the test value
- */
-function _ilr_alumni_events_get_current_invoice_count() {
-  $query = db_select('entityform', 'ef');
-  $query->fields('ef', array('entityform_id'));
-  $query->leftJoin('field_data_field_h_credit_card_payments', 'ftc', 'ftc.entity_id = ef.entityform_id');
-  $query->leftJoin('field_data_field_ssl_amount', 'fdsa', 'fdsa.entity_id = ftc.field_h_credit_card_payments_value');
-  $query->leftJoin('field_data_field_ssl_txn_id', 'fdtxid', 'fdtxid.entity_id = ftc.field_h_credit_card_payments_value');
-  $query->isNotNull('field_ssl_amount_value');
-  $query->condition('field_ssl_txn_id_value', '00000000-0000-0000-0000-00000000000','!=');
-  $results = $query->execute()->fetchAll();
-  return count($results);
-}
-
-/**
  * Determines if the entityform should be in draft mode
  *   - Free events are not drafts
  *   - APPROVED transactions are not drafts
@@ -333,7 +317,7 @@ function _ilr_alumni_events_ssl_amount() {
  */
 function _ilr_alumni_events_ssl_invoice_number() {
   $prefix = 'alev';
-  $invoice_count = _ilr_alumni_events_get_current_invoice_count();
+  $invoice_count = _elavon_get_current_invoice_count_by_type('ilr_alumni_association_event_reg');
   $offset = 700; // Incremented from the old system
   // Pad the string to 6 places
   $invoice_number = str_pad($invoice_count + $offset, 6, '0', STR_PAD_LEFT);
