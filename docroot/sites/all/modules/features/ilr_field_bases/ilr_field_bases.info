@@ -227,6 +227,7 @@ features[field_base][] = field_message_before_form_open
 features[field_base][] = field_microfilm_format
 features[field_base][] = field_middle_name
 features[field_base][] = field_minor_subject_s_
+features[field_base][] = field_mlb_checkboxes
 features[field_base][] = field_more_link
 features[field_base][] = field_name_correct_for_diploma
 features[field_base][] = field_name_for_name_tag
