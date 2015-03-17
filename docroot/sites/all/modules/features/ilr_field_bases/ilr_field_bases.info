@@ -356,6 +356,7 @@ features[field_base][] = field_training_additional
 features[field_base][] = field_training_professional_voca
 features[field_base][] = field_training_technical_support
 features[field_base][] = field_transamount
+features[field_base][] = field_transfer_offer_reply
 features[field_base][] = field_transfer_student
 features[field_base][] = field_transinvoicenum
 features[field_base][] = field_travel_grant_already_recei

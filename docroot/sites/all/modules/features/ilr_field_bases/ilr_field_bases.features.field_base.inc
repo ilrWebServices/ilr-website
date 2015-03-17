@@ -9615,6 +9615,32 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_transfer_offer_reply'
+  $field_bases['field_transfer_offer_reply'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_transfer_offer_reply',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'accept' => 'I accept the TO to Cornell\'s ILR School and agree to the stated requirements.',
+        'decline' => 'I do not wish to accept the TO to Cornell\'s ILR School.',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_transfer_student'
   $field_bases['field_transfer_student'] = array(
     'active' => 1,
