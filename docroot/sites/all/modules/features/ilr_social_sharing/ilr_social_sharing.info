@@ -1,0 +1,11 @@
+name = ILR Social Sharing
+core = 7.x
+package = ILR
+version = 7.x-1.0
+project = ilr_social_sharing
+dependencies[] = focal_point
+dependencies[] = image
+features[features_api][] = api:2
+features[image][] = facebook_share
+features[image][] = twitter_share
+project path = sites/all/modules/features

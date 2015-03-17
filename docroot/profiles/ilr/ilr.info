@@ -60,6 +60,7 @@ dependencies[] = ilr_reflection
 dependencies[] = ilr_sdc_listings
 dependencies[] = ilr_search
 dependencies[] = ilr_settings
+dependencies[] = ilr_social_sharing
 dependencies[] = ilr_sub_pages
 dependencies[] = ilr_sub_sites
 dependencies[] = ilr_workspan

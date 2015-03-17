@@ -139,9 +139,6 @@ function ilr_theme_preprocess_node(&$variables) {
     // See note above about hard-coded eq-pts
     $variables['attributes_array']['data-eq-pts'] = 'small: 100, medium: 275, large: 350';
   }
-  else if ($variables['view_mode'] == 'full') {
-    _ilr_theme_add_og_tags($variables);
-  }
 }
 
 /**
@@ -212,22 +209,6 @@ function _ilr_theme_add_line_breaks(&$variables) {
   }
 }
 
-function _ilr_theme_add_og_tags($vars) {
-  $tag_data = _ilr_theme_get_meta_tag_properties_and_content($vars);
-
-  foreach ($tag_data as $property => $content) {
-    $tag = array(
-      '#tag' => 'meta',
-      '#attributes' => array(
-        'property' => $property,
-        'content' => $content,
-      ),
-    );
-    drupal_add_html_head($tag, str_replace(':', '_', $property));
-  }
-}
-
-
 function _ilr_theme_get_class_year_from_date($node, $field) {
   $formatted_year = '';
   if (isset($node->{$field})) {
@@ -235,37 +216,4 @@ function _ilr_theme_get_class_year_from_date($node, $field) {
     $formatted_year = " '" . substr($year, 2, 2);
   }
   return $formatted_year;
-}
-
-function _ilr_theme_get_description($node) {
-  $body_field = field_view_field('node', $node, 'body', array('type' => 'text_plain'));
-  return text_summary($body_field[0]['#markup'], NULL, 200);
-}
-
-function _ilr_theme_get_image($node,$image_style) {
-  if ($image = field_get_items('node', $node, 'field_image')) {
-    $image_path = image_style_url($image_style, $image[0]['uri']);
-    return $image_path;
-  }
-  return '';
-}
-
-function _ilr_theme_get_meta_tag_properties_and_content($vars) {
-  $description = _ilr_theme_get_description($vars['node']);
-  $site = variable_get('site_name');
-  return array(
-    "twitter:card"            => 'summary',
-    "twitter:site"            => $site,
-    "twitter:title"           => $vars['title'],
-    "twitter:description"     => $description,
-    "twitter:creator"         => 'The ILR School',
-    "twitter:image"           => _ilr_theme_get_image($vars['node'], 'twitter_share'),
-    "og:title"                => $vars['title'],
-    "og:type"                 => 'website',
-    "og:url"                  => drupal_get_path_alias(current_path()),
-    "og:image"                => _ilr_theme_get_image($vars['node'], 'facebook_share'),
-    "og:description"          => $description,
-    "og:site_name"            => $site,
-    "fb:admins"               => '122623604426831', //based on http://findmyfacebookid.com/ and https://graph.facebook.com/ILRSchool
-  );
 }
