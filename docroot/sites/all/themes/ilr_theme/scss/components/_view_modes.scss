@@ -220,7 +220,7 @@
   }
   .field-name-field-image {
     position: relative;
-    z-index: -1;
+    z-index: -1; // Push image and gradient back so h2 link is visible/active
     a {
       &::before {
         content: "";
@@ -252,7 +252,6 @@
 
 %title-overlay {
   margin: 0;
-  z-index: 100;
   a {
     display: block;
     position: absolute;
