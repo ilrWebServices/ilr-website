@@ -212,6 +212,9 @@
     display: block;
   }
   h2 {
+    body.front & { // Temporarily hides title on homepage
+      display: none;
+    }
     @extend %title-overlay;
     a {
       @include adjust-font-size-to(36px);
@@ -221,8 +224,8 @@
   .field-name-field-image {
     position: relative;
     z-index: -1; // Push image and gradient back so h2 link is visible/active
-    a {
-      &::before {
+    body:not(.front) & { // Temporarily turns off gradient overlay on homepage
+      a::before {
         content: "";
         position: absolute;
         top: 0;
