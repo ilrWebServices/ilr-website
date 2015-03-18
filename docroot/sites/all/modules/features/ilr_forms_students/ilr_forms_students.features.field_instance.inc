@@ -164,7 +164,7 @@ function ilr_forms_students_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'format_type' => 'short',
-          'fromto' => 'both',
+          'fromto' => 'value',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
