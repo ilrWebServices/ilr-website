@@ -1583,8 +1583,8 @@ function forms2_field_default_field_instances() {
         'module' => 'date',
         'settings' => array(
           'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
+          'format_type' => 'short',
+          'fromto' => 'value',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
@@ -1597,8 +1597,8 @@ function forms2_field_default_field_instances() {
         'module' => 'date',
         'settings' => array(
           'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
+          'format_type' => 'short',
+          'fromto' => 'value',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',

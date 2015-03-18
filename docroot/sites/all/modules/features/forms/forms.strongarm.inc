@@ -639,7 +639,7 @@ function forms_strongarm() {
         'custom_settings' => FALSE,
       ),
       'email' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'confirmation' => array(
         'custom_settings' => FALSE,
