@@ -207,6 +207,10 @@
     @extend %one-column;
     position: relative;
     z-index: 1;
+
+    &[data-eq-state="medium"] h2 a { // Adjust for mobile
+      @include adjust-font-size-to(16px);
+    }
   }
   img {
     display: block;
@@ -263,13 +267,6 @@
       border-bottom-color: #fff;
     }
   }
-  // @include context('#main','#main[data-eq-state="320"]') {
-  //   a {
-  //     @include adjust-font-size-to(18px);
-  //     bottom: .3em;
-  //     left: .3em;
-  //   }
-  // }
 }
 
 %always-slug {
