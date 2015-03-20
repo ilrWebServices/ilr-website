@@ -34,3 +34,15 @@ header.search-engaged #header-region {
     font-size: ms(2); // refactor to typography or forms
   }
 }
+
+.gsc-result .gsc-table-result {
+  a.gs-title {
+    color: $brand;
+    b {
+      color: $brand;
+    }
+  }
+  .gs-visibleUrl {
+    color: $gray-dark;
+  }
+}

@@ -58,6 +58,10 @@ body {
       .block-bean article {
         @extend %two-column;
       }
+      .block[data-items='1'] article {
+        @extend %one-column;
+      }
+
     }
     #sidebar-first {
       @include grid-span(1,1);
@@ -157,7 +161,7 @@ body.node-type-people-profile {
 
 // Event selectors not being triggered.
 // Most of these styles come from _view_modes.scss
-#block-bean-ilr-events .thumbnail.event span {
+.event-block .thumbnail.event span {
   display: block;
   font-family: "freight-sans-pro-n4","freight-sans-pro",sans-serif;
   color: white;

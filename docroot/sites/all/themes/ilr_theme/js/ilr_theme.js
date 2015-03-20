@@ -108,12 +108,10 @@
           $subsiteTitlePercentageWidth = Math.round(title.length / menuText.length * 100);
           var maxWidth = menuText.length * 15;
           $('.menu-block-ilr-primary-menu ul').css('max-width', maxWidth);
-          if ($subsiteTitlePercentageWidth < 20) {
+          if ($subsiteTitlePercentageWidth < 25) {
             $subsiteTitlePercentageWidth = 35;
-          } else {
-            $('.subsite-header').css('width',$subsiteTitlePercentageWidth + '%');
           }
-
+            $('.subsite-header').css('width',$subsiteTitlePercentageWidth + '%');
         }
       };
 
@@ -189,7 +187,7 @@
        * to stop the clear provided by positionSubsiteNav (.wrapped) class
        */
       var menuHasEnoughSpace = function() {
-        return (Math.floor($currentWidth - $subsiteNavDefaultWidth) / $currentWidth * 100) > $subsiteTitlePercentageWidth;
+        return (Math.floor($currentWidth - $subsiteNavDefaultWidth) / $currentWidth * 100) > $subsiteTitlePercentageWidth + 15;
       }
 
       var positionMobileNav = function() {
