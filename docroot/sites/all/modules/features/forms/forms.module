@@ -52,6 +52,20 @@ function forms_entityform_presave($entityform) {
   }
  }
 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Sets maxlengths on Alumni job postings form
+ */
+function forms_form_job_postings_for_ilr_alumni_entityform_edit_form_alter(&$form, &$form_state) {
+  $maxlengths = array(
+    'field_duties'            => 800,
+    'field_qualifications'    => 500,
+    'field_instructions'      => 200,
+  );
+  foreach ($maxlengths as $field => $length) {
+    $form[$field][LANGUAGE_NONE][0]['value']['#attributes']['maxlength'] = $length;
+  }
+}
 
  /**
  * Implements hook_mail_alter

@@ -18880,7 +18880,7 @@ function forms_field_default_field_instances() {
     'bundle' => 'job_postings_for_ilr_alumni',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Limit 800 characters',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -19417,7 +19417,7 @@ function forms_field_default_field_instances() {
     'bundle' => 'job_postings_for_ilr_alumni',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Limit 200 characters',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -19890,7 +19890,7 @@ function forms_field_default_field_instances() {
     'bundle' => 'job_postings_for_ilr_alumni',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Limit 500 characters',
     'display' => array(
       'default' => array(
         'label' => 'above',
