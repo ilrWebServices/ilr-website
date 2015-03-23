@@ -323,7 +323,8 @@ function _forms_get_tplphp_file($entityform) {
 
 /**
  * Generates the appropriate admin email template for entityforms
- * Note that the email template contains underscores, but the actual filename contains hyphens.
+ * Note that the email template contains underscores, but the actual filename
+ * contains hyphens.
  */
 function _forms_get_admin_tplphp_file($entityform) {
   $template_path = _forms_get_template_path_for_entityform($entityform);
@@ -331,6 +332,10 @@ function _forms_get_admin_tplphp_file($entityform) {
   if (file_exists($admin_tplphp_file_full_path)) {
     return $entityform->type . '_admin';
   }
+  elseif (_forms_is_event_registration_form($entityform)) {
+    return 'default_registration_confirmation_admin';
+  }
+
   return FALSE;
 }
 
