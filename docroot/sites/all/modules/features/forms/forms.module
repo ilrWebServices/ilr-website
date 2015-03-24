@@ -304,39 +304,25 @@ function _forms_get_template_path_for_entityform($entityform) {
   return $folder_path . str_replace('_', '-', $entityform->type);
 }
 
-/**
- * Generates the appropriate user email template for entityforms
- * Note that the email template contains underscores, but the actual filename contains hyphens.
- */
-function _forms_get_tplphp_file($entityform) {
-  $template_path = _forms_get_template_path_for_entityform($entityform);
-  $tplphp_file_full_path = $template_path . '.tpl.php';
-  if (file_exists($tplphp_file_full_path)) {
-    return $entityform->type;
-  }
-  elseif (_forms_is_event_registration_form($entityform)) {
-    return 'default_registration_confirmation';
-  }
-  return 'default_mail';
-}
-
 
 /**
- * Generates the appropriate admin email template for entityforms
+ * Generates the appropriate email template for entityforms
  * Note that the email template contains underscores, but the actual filename
  * contains hyphens.
  */
-function _forms_get_admin_tplphp_file($entityform) {
+function _forms_get_tplphp_file($entityform, $email_type = '') {
+  $append_string = ($email_type == 'admin') ? '-admin' : '';
   $template_path = _forms_get_template_path_for_entityform($entityform);
-  $admin_tplphp_file_full_path = $template_path . '-admin.tpl.php';
-  if (file_exists($admin_tplphp_file_full_path)) {
-    return $entityform->type . '_admin';
+
+  $tplphp_file_full_path = $template_path . $append_string . '.tpl.php';
+  if (file_exists($tplphp_file_full_path)) {
+    return $entityform->type . str_replace('-', '_', $append_string);
   }
   elseif (_forms_is_event_registration_form($entityform)) {
-    return 'default_registration_confirmation_admin';
+    return 'default_registration_confirmation' . str_replace('-', '_', $append_string);
   }
-
-  return FALSE;
+  $retval = ($append_string == '') ? 'default_mail' : FALSE;
+  return $retval;
 }
 
 
@@ -678,7 +664,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
       $subject .= " - $user_name";
     }
 
-    if ($admin_email_template = _forms_get_admin_tplphp_file($entityform)) {
+    if ($admin_email_template = _forms_get_tplphp_file($entityform, 'admin')) {
       $params = array(
         'salutation' => 'Dear Admin for the form ' . $form_title . ',',
         'admin_email' => $admin_email,
