@@ -269,7 +269,7 @@ function _elavon_get_current_invoice_count_by_type($type) {
  * such as ilr_alumni_events (@see _ilr_alumni_events_get_draft_status())
  */
 function _elavon_get_draft_status() {
-  $is_draft = 0;
+  $is_draft = 1;
   if ($entityform = _elavon_get_entityform()) {
     $result = _elavon_get_field_collection_data('field_ssl_result_message');
     $is_draft = ($result == 'APPROVED') ? 0 : 1;
