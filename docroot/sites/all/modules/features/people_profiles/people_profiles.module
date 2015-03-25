@@ -374,8 +374,13 @@ function _people_profiles_get_profile_nids($type='all'){
   return NULL;
 }
 
+/**
+ * Prepare the title to become a usable named anchor
+ * - remove encoded single quotes
+ * - call drupal_clean_css_identifier()
+ */
 function _people_profiles_create_anchor($title) {
-  return strtolower(drupal_clean_css_identifier($title));
+  return strtolower(drupal_clean_css_identifier(str_replace("&#039;","",$title)));
 }
 /**
  * Sets up the redirect to the people landing page
