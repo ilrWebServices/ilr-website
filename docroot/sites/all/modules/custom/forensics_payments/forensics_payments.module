@@ -24,20 +24,6 @@ function _forensics_payments_generate_customer_code() {
 }
 
 /**
- * Determines if the entityform should be in draft mode
- *   - APPROVED transactions are not drafts
- * Note: Called from elavon module, so no need to load it here
- */
-function _forensics_payments_get_draft_status() {
-  $is_draft = 1;
-  if ($wrapper = _forensics_payments_get_entityform_wrapper() && _forensics_payments_amount_is_valid()) {
-    $result = _elavon_get_field_collection_data('field_ssl_result_message');
-    $is_draft = ($result == 'APPROVED') ? 0 : 1;
-  }
-  return $is_draft;
-}
-
-/**
  * Maps the elavon keys to the entityform field names - REQUIRED
  */
 function _forensics_payments_get_entityform_mappings() {
