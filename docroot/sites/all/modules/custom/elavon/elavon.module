@@ -54,9 +54,6 @@ function elavon_entityform_previous_submission_alter(&$entityform_submission, $e
     if ($entityform_type == $previous_submission->type && $previous_submission->draft == 1) {
       $entityform_submission = $previous_submission;
     }
-  } // Edge case for logged in users who have lost their session but have a draft
-  else if ($entityform_submission && _elavon_entityform_is_payment_form($entityform_submission) && _elavon_get_draft_status() == 1) {
-    _elavon_set_entityform_session($entityform_submission->entityform_id);
   }
 }
 
