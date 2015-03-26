@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Reflection feature.
+ */
+
+include_once 'ilr_reflection.features.inc';
