@@ -83,9 +83,9 @@ function ilr_forms_students_default_entityform_type() {
       "delete_confirm_msg" : "",
       "page_title_view" : "",
       "preview_page" : 0,
-      "submission_page_title" : "ILR Admissions Transfer Option Confirmation",
+      "submission_page_title" : "ILR Transfer Option Confirmation",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EYour Transfer Option (TO) form has been received. You will receive an email confirmation shortly. If you have any questions, please contact the ILR Admissions Office at 607-255-2222 or \\u003Ca href=\\u0022mailto:ilradmissions@cornell.edu\\u0022\\u003Eilradmissions@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EYour Transfer Option (TO) response has been submitted. You will receive an email confirmation shortly. If you have any questions, please contact the ILR Admissions Office at 607-255-2222 or \\u003Ca href=\\u0022mailto:ilradmissions@cornell.edu\\u0022\\u003Eilradmissions@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
