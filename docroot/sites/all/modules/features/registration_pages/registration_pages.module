@@ -103,16 +103,15 @@ function _registration_pages_get_event_markup($node) {
     $event_markup .= "<br>";
 
     $event_markup .= "<strong>Date:</strong> ";
-    $event_markup .= _registration_pages_get_formatted_date_from_field($node->field_event_date, 'value');
+    $event_markup .= _registration_pages_display_event_date($node->field_event_date);
     $event_markup .= "<br>";
 
-    $event_markup .= "<strong>Time:</strong> ";
-    $event_markup .= _registration_pages_get_formatted_time_from_field($node->field_event_date, 'value');
-
-    // End time
-    $event_markup .= _registration_pages_format_end_time($node->field_event_date);
-
-    $event_markup .= "<br>";
+    // Display time for one-day events only
+    if (! _registration_pages_is_multiday_event($node->field_event_date)) {
+      $event_markup .= "<strong>Time:</strong> ";
+      $event_markup .= _registration_pages_display_event_time($node->field_event_date);
+      $event_markup .= "<br>";
+    }
   }
 
   if ($location_text = $node_wrapper->field_location_as_long_text->value()) {
@@ -125,20 +124,34 @@ function _registration_pages_get_event_markup($node) {
   return $event_markup;
 }
 
-function _registration_pages_format_end_time($field) {
-  $markup = '';
+
+/**
+ * Generate the time markup for the event info for an event on a registration page
+ */
+function _registration_pages_display_event_time($field) {
+  //Start time
+  $time_display = _registration_pages_get_formatted_time_from_field($field, 'value');
+
+  // End time
   if (isset($field[LANGUAGE_NONE][0]['value2'])) {
-    $end_time = _registration_pages_get_formatted_time_from_field($field, 'value2');
-    if (_registration_pages_is_multiday_event($field)) {
-      $end_day = _registration_pages_get_formatted_date_from_field($field, 'value2');
-      $end_time = _registration_pages_get_formatted_time_from_field($field, 'value2');
-      $markup .= " - $end_day at $end_time";
-    }
-    else {
-      $markup .= ' - ' . $end_time;
-    }
+    $time_display .= ' - ' .
+      _registration_pages_get_formatted_time_from_field($field, 'value2');
   }
-  return $markup;
+
+  return $time_display;
+}
+
+
+/**
+ * Generate the date markup for the event info for an event on a registration page
+ * Display is different for multi-day events
+ */
+function _registration_pages_display_event_date($field) {
+  $date_display = _registration_pages_get_formatted_date_from_field($field, 'value');
+  if (_registration_pages_is_multiday_event($field)) {
+    $date_display .= ' - ' . _registration_pages_get_formatted_date_from_field($field, 'value2');
+  }
+  return $date_display;
 }
 
 /**
@@ -238,7 +251,7 @@ function _registration_pages_get_formatted_date_from_field($field, $value_string
   $timezone = $field[LANGUAGE_NONE][0]['timezone_db'];
   $value = $field[LANGUAGE_NONE][0][$value_string];
   $timestamp_value = _registration_pages_get_timestamp_from_field_value($value, $timezone);
-  return format_date($timestamp_value, 'custom', 'l, F d, Y');
+  return format_date($timestamp_value, 'custom', 'l, F j, Y');
 }
 
 function _registration_pages_get_formatted_time_from_field($field, $value_string = 'value') {
