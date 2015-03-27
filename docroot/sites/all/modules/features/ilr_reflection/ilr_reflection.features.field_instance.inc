@@ -399,6 +399,60 @@ function ilr_reflection_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-reflection-field_youtube_video'
+  $field_instances['node-reflection-field_youtube_video'] = array(
+    'bundle' => 'reflection',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'youtube',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'youtube_autohide' => FALSE,
+          'youtube_autoplay' => FALSE,
+          'youtube_controls' => FALSE,
+          'youtube_height' => NULL,
+          'youtube_iv_load_policy' => FALSE,
+          'youtube_showinfo' => FALSE,
+          'youtube_size' => '420x315',
+          'youtube_width' => NULL,
+        ),
+        'type' => 'youtube_video',
+        'weight' => 8,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_youtube_video',
+    'label' => 'Youtube Video',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'youtube',
+      'settings' => array(),
+      'type' => 'youtube',
+      'weight' => 13,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Class year');
@@ -409,6 +463,7 @@ function ilr_reflection_field_default_field_instances() {
   t('Reflection');
   t('Tell us the time period on which you are reflecting.');
   t('Your name');
+  t('Youtube Video');
 
   return $field_instances;
 }

@@ -17,6 +17,7 @@ features[field_instance][] = node-reflection-field_email
 features[field_instance][] = node-reflection-field_file
 features[field_instance][] = node-reflection-field_full_name
 features[field_instance][] = node-reflection-field_year_as_list_text
+features[field_instance][] = node-reflection-field_youtube_video
 features[node][] = reflection
 features[variable][] = field_bundle_settings_node__reflection
 features[variable][] = menu_options_reflection
