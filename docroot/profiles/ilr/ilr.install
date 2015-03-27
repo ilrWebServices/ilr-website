@@ -502,3 +502,12 @@ function ilr_update_7042() {
     'ilr_forms_students',
   ));
 }
+
+/**
+ * Enables ilr_forms_students feature
+ */
+function ilr_update_7043() {
+  module_enable(array(
+    'ilr_reflection',
+  ));
+}
