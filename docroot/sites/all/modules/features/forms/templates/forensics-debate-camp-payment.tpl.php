@@ -8,7 +8,7 @@ http://goo.gl/forms/f1pLoAzBcd<br><br>
 Please review the information below, and contact Lindsay Bing, lb542@cornell.edu, if you have any questions.<br><br>
 
 Summer Camp Details:<br><br>
-<? print $event_info_for_email; ?><br><br>
+<? print $event_info_for_email; ?><br>
 
 Payment Information:<br><br>
 <? print $event_payment_details;?><br><br>
@@ -18,10 +18,9 @@ Registration Information:<br><br>
 
 Thank you, and don't forget to fill out the Travel Information Form!<br>
 http://goo.gl/forms/f1pLoAzBcd<br><br>
-<br><br>
 
 Lindsay Bing<br>
-Assistant Director of Forensics Speech & Debate Programs<br>
+Assistant Director of Forensics Speech &amp; Debate Programs<br>
 School of Industrial Labor Relations<br>
 Cornell University<br>
 Ives Hall 615b<br>
