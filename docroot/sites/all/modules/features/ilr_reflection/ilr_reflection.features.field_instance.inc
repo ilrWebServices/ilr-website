@@ -262,7 +262,7 @@ function ilr_reflection_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => 'reflections',
-      'file_extensions' => 'jpg jpeg',
+      'file_extensions' => 'jpg jpeg gif png',
       'max_filesize' => '100 MB',
       'user_register_form' => FALSE,
     ),
