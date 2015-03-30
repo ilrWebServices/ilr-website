@@ -1,0 +1,120 @@
+body.subsite-front {
+  &.ilr-at-70 {
+    #content {
+      .quote {
+        &:nth-of-type(3) {
+          @include padding-trailer(2);
+        }
+      }
+      .tagline {
+        text-align: center;
+        font-style: oblique;
+        @include adjust-font-size-to(22px);
+      }
+      h2.centered-title {
+        @extend %ilr-at-70-heading;
+        @include margin-trailer(.5);
+        // &::after {
+        //   content: " ";
+        //   border-bottom: 1px solid $cornell-red;
+        //   display: block;
+        //   margin: auto 0;
+        //   position: relative;
+        //   top: 0;
+        //   left: 25%;
+        //   width: 200px;
+        //   height: 10px;
+        // }
+      }
+      #block-bean-ilr-at-70-events {
+        @include padding-leader(2);
+        @include padding-trailer(2);
+        margin: 4em 0 3em;
+        h2 {
+          &:not(.event-title) {
+            display: none;
+          }
+        }
+        // article {
+        //   border: none;
+        // }
+      }
+      #block-bean-70th-timeline {
+        background: #fff;
+        h2 {
+          // display: none;
+          @extend %ilr-at-70-heading;
+          @include margin-trailer(1);
+        }
+      }
+      #block-bean-70th-reflections-featured {
+        @include margin-leader(2);
+        >h2 { // Hide title of block
+          display: none;
+        }
+      }
+    }
+    #content-bottom {
+      p {
+        margin: 0 auto;
+        color: #fff;
+        text-align: center;
+        font-family: $font-headers;
+        @include adjust-font-size-to(22px);
+        @include adjust-leading-to(1);
+      }
+      #block-bean-70th-reflections {
+        >h2 {
+          display: none;
+        }
+        article {
+          border: none;
+          overflow: auto;
+          h3.category.basic-page {
+            display: none;
+          }
+          .field-type-text-with-summary {
+            display: block;
+            ul, h4, h3 {
+              display: none;
+            }
+          }
+          // Add additional heading styles here for Reflections
+        }
+      }
+      #block-bean-70th-giving-link {
+        background: #5c5c5c;
+        @include padding-leader(2);
+        @include padding-trailer(2);
+        h2 {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+%ilr-at-70-heading {
+  // border-bottom: 1px solid $cornell-red;
+  max-width: $header-max-width; //Center border after title
+  font-family: $font;
+  font-weight: normal;
+  text-transform: none;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  @include adjust-font-size-to(34px);
+  @include adjust-leading-to(1.5);
+  @include padding-leader(1);
+  &::after {
+    content: " ";
+    border-bottom: 1px solid $cornell-red;
+    display: block;
+    margin: auto 0;
+    position: relative;
+    top: 0;
+    left: 25%;
+    width: 200px;
+    height: 10px;
+  }
+}
