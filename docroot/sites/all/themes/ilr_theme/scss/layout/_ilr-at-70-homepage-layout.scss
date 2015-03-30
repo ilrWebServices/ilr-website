@@ -14,17 +14,6 @@ body.subsite-front {
       h2.centered-title {
         @extend %ilr-at-70-heading;
         @include margin-trailer(.5);
-        // &::after {
-        //   content: " ";
-        //   border-bottom: 1px solid $cornell-red;
-        //   display: block;
-        //   margin: auto 0;
-        //   position: relative;
-        //   top: 0;
-        //   left: 25%;
-        //   width: 200px;
-        //   height: 10px;
-        // }
       }
       #block-bean-ilr-at-70-events {
         @include padding-leader(2);
@@ -36,13 +25,12 @@ body.subsite-front {
           }
         }
         // article {
-        //   border: none;
+        //   New styles for events
         // }
       }
       #block-bean-70th-timeline {
         background: #fff;
         h2 {
-          // display: none;
           @extend %ilr-at-70-heading;
           @include margin-trailer(1);
         }
@@ -95,7 +83,6 @@ body.subsite-front {
 }
 
 %ilr-at-70-heading {
-  // border-bottom: 1px solid $cornell-red;
   max-width: $header-max-width; //Center border after title
   font-family: $font;
   font-weight: normal;
