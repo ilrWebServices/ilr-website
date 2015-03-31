@@ -9632,7 +9632,7 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'accept' => 'I accept the TO to Cornell\'s ILR School and agree to the stated requirements.',
+        'accept' => 'I accept the TO to Cornell\'s ILR School.',
         'decline' => 'I do not wish to accept the TO to Cornell\'s ILR School.',
       ),
       'allowed_values_function' => '',
