@@ -612,12 +612,12 @@ function _elavon_redirect_after_response($with_layout=0) {
 }
 
 /**
- * Remove the body and the field_registration_form (if it exists)
+ * Remove the body and the field_registration_form_type (if it exists)
  */
 function _elavon_replace_payment_form_with_iframe(&$node) {
   unset($node->content['body']);
-  if (isset($node->content['field_registration_form'])) {
-    unset($node->content['field_registration_form']);
+  if (isset($node->content['field_registration_form_type'])) {
+    unset($node->content['field_registration_form_type']);
   }
   $node->content['iframe'] = array(
     '#markup' => _elavon_payment_page(),

@@ -7548,13 +7548,13 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_registration_form'
-  $field_bases['field_registration_form'] = array(
+  // Exported field_base: 'field_registration_form_type'
+  $field_bases['field_registration_form_type'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_registration_form',
+    'field_name' => 'field_registration_form_type',
     'foreign keys' => array(
       'entityform_type' => array(
         'columns' => array(
@@ -7574,6 +7574,9 @@ function ilr_field_bases_field_default_field_bases() {
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
+          'reference-machinename' => array(
+            'status' => 1,
+          ),
           'views-select-list' => array(
             'status' => 0,
           ),

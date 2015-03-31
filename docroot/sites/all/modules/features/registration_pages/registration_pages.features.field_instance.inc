@@ -84,7 +84,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -136,7 +136,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -196,7 +196,7 @@ function registration_pages_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 10,
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -229,7 +229,7 @@ function registration_pages_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 14,
+      'weight' => 13,
     ),
   );
 
@@ -243,7 +243,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 7,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -309,7 +309,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 9,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -473,7 +473,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 8,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -524,7 +524,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 11,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -578,7 +578,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 10,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -621,10 +621,11 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_registration_form'
-  $field_instances['node-registration_page-field_registration_form'] = array(
+  // Exported field_instance: 'node-registration_page-field_registration_form_type'
+  $field_instances['node-registration_page-field_registration_form_type'] = array(
     'bundle' => 'registration_page',
     'default_value' => NULL,
+    'default_value_function' => '',
     'deleted' => 0,
     'description' => 'Select the form that goes with this page.',
     'display' => array(
@@ -633,7 +634,7 @@ function registration_pages_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'field_formatter_label' => '',
-          'links' => 0,
+          'links' => TRUE,
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
@@ -649,7 +650,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 0,
       ),
       'token' => array(
         'label' => 'above',
@@ -659,10 +660,16 @@ function registration_pages_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_registration_form',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_registration_form_type',
     'label' => 'Registration form',
     'required' => 1,
     'settings' => array(
+      'behaviors' => array(
+        'current' => array(
+          'status' => 0,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
