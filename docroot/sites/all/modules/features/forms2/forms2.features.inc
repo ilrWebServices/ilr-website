@@ -23,7 +23,7 @@ function forms2_default_entityform_type() {
   $items = array();
   $items['forensics_debate_camp_payment'] = entity_import('entityform_type', '{
     "type" : "forensics_debate_camp_payment",
-    "label" : "Forensics International Summer Debate Camp Payment",
+    "label" : "Cornell International Summer Debate Camp Payment",
     "data" : {
       "draftable" : 1,
       "draft_redirect_path" : "[current-page:url]",
