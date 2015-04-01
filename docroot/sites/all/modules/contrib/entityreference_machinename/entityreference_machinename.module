@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Module that will add a behavior to the Entity reference field. This behavior
+ * will store the reference by UUID instead of the entity ID.
+ */
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function entityreference_machinename_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'entityreference' && $plugin == 'behavior') {
+    return 'plugins/' . $plugin;
+  }
+}

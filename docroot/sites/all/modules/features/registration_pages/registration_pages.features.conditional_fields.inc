@@ -14,7 +14,7 @@ function registration_pages_conditional_fields_default_fields() {
     'entity' => 'node',
     'bundle' => 'registration_page',
     'dependent' => 'field_aa_member_price',
-    'dependee' => 'field_registration_form',
+    'dependee' => 'field_registration_form_type',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',
@@ -164,7 +164,7 @@ function registration_pages_conditional_fields_default_fields() {
     'entity' => 'node',
     'bundle' => 'registration_page',
     'dependent' => 'field_aa_non_member_price',
-    'dependee' => 'field_registration_form',
+    'dependee' => 'field_registration_form_type',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',

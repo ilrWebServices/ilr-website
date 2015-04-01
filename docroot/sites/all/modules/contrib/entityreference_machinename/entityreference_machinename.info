@@ -1,0 +1,5 @@
+name = Entity Reference by Machine Name
+description = Adds a behavior that adds the possibility to store any reference by machine name instead of the entity ID.
+core = 7.x
+package = Fields
+dependencies[] = entityreference
