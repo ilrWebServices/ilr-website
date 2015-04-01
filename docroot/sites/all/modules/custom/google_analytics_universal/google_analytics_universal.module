@@ -41,8 +41,9 @@ function google_analytics_universal_page_alter(&$page) {
     $script .= "(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),";
     $script .= "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)";
     $script .= "})(window,document,'script','//www.google-analytics.com/analytics.js','ga');";
-    $script .= "ga('create', 'UA-4758650-8', 'cornell.edu');";
-
+    $script .= "ga('create', 'UA-4758650-8', 'auto', {'allowLinker': true});";
+    $script .= "ga('require', 'linker');";
+    $script .= "ga('linker:autoLink', ['register.ilr.cornell.edu'] );";
     $script .= "ga('require', 'linkid', 'linkid.js');";
     $script .= "ga('send', 'pageview');";
 
