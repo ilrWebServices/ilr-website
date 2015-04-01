@@ -75,7 +75,7 @@ function ilr_reflection_field_default_field_instances() {
     'bundle' => 'reflection',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Tell us the time period on which you are reflecting.',
+    'description' => 'Tell us the time period on which you are reflecting (e.g., 1970s, 1980s).',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -120,7 +120,7 @@ function ilr_reflection_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 8,
     ),
   );
 
@@ -449,7 +449,7 @@ function ilr_reflection_field_default_field_instances() {
       'module' => 'youtube',
       'settings' => array(),
       'type' => 'youtube',
-      'weight' => 13,
+      'weight' => 10,
     ),
   );
 
@@ -461,7 +461,7 @@ function ilr_reflection_field_default_field_instances() {
   t('Email');
   t('Image');
   t('Reflection');
-  t('Tell us the time period on which you are reflecting.');
+  t('Tell us the time period on which you are reflecting (e.g., 1970s, 1980s).');
   t('Your name');
   t('Youtube Video');
 
