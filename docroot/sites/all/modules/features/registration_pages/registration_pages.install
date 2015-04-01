@@ -15,3 +15,11 @@ function registration_pages_update_7001() {
 function registration_pages_update_7002() {
   field_delete_field('field_registration_form');
 }
+
+/**
+ * Deletes the field_registration_form_type
+ */
+function registration_pages_update_7003() {
+  field_delete_field('field_registration_form_type');
+  field_purge_batch(5);
+}
