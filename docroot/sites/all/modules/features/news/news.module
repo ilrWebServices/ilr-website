@@ -16,11 +16,21 @@ function news_bean_types_api_info() {
 /**
  * Implements hook_preprocess_hook()
  * Makes the short title the title
+ * Replaces the link when external url is present
  */
 function news_preprocess_node(&$variables) {
   if ($variables['type'] == 'news_item') {
-    if ($variables['view_mode'] == 'teaser' && count($variables['field_short_title']) > 0) {
-      $variables['title'] = $variables['field_short_title']['und'][0]['value'];
+    if ($variables['view_mode'] == 'teaser') {
+      if (count($variables['field_short_title']) > 0) {
+        $variables['title'] = $variables['field_short_title']['und'][0]['value'];
+      }
+      if (count($variables['field_website_url'])) {
+        $external_url = $variables['field_website_url'][LANGUAGE_NONE][0]['url'];
+        $variables['node_url'] = $external_url;
+        if (count($variables['field_image'])) {
+          $variables['content']['field_image'][0]['#path']['path'] = $external_url;
+        }
+      }
     }
   }
 }
