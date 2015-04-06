@@ -52,6 +52,7 @@ dependencies[] = ilr_editable_settings
 dependencies[] = ilr_footer_menu
 dependencies[] = ilr_forms_staff
 dependencies[] = ilr_forms_students
+dependencies[] = ilr_forms_public
 dependencies[] = ilr_google_translate
 dependencies[] = ilr_legacy_redirect
 dependencies[] = ilr_manual_listing
