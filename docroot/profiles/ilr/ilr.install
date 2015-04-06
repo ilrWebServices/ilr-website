@@ -502,3 +502,12 @@ function ilr_update_7042() {
     'ilr_forms_students',
   ));
 }
+
+/**
+ * Enables securepages on Acquia
+ */
+function ilr_update_7043() {
+  if (isset($_ENV["AH_SITE_ENVIRONMENT"])) {
+    module_enable(array('securepages'));
+  }
+}
