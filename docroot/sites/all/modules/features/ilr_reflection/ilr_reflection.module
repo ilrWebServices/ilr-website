@@ -6,6 +6,34 @@
 
 include_once 'ilr_reflection.features.inc';
 
+function ilr_reflection_block_info() {
+  $blocks['reflection_node_form'] = array(
+    'info' => t('Add a reflection'),
+  );
+  return $blocks;
+}
+
+function ilr_reflection_block_view($delta = ''){
+  $block = array();
+
+  switch ($delta) {
+    case 'reflection_node_form':
+      // Include page handler for node_add()
+      module_load_include('inc', 'node', 'node.pages');
+      // Note title before rendering of form.
+      $title = drupal_get_title();
+      dpm($title);
+      $form = node_add('reflection');
+      // Restore title, which will have been overridden.
+      drupal_set_title($title, PASS_THROUGH);
+      $node_type = node_type_load('reflection');
+      $block['subject'] = t('Share a Memory');
+      $block['content']['form'] = $form;
+  }
+
+  return $block;
+}
+
 /**
  * Implements hook_form_alter
  * Removes the youtube_video field for most roles
