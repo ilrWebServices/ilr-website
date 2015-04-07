@@ -61,12 +61,18 @@ function elavon_entityform_previous_submission_alter(&$entityform_submission, $e
  * Implements hook_form_BASE_FORM_ID_alter().
  *
  * Base form id = entityform_edit_form
+ * Makes sure that the page is being served over SSL
  * Adds submit action for adding special flags to payment forms
  * Removes the Save Draft button
  */
 // function elavon_form_alter(&$form, &$form_state, $form_id) {    // Aaron's
-function elavon_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {    // Ted's
+function elavon_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
+  global $is_https;
   if (isset($form['#entity_type']) && $form['#entity_type'] == 'entityform' && _elavon_entityform_type_is_payment_form($form['#bundle'], $form)) {
+    if (!$is_https && module_exists('securepages')) {
+      securepages_goto(TRUE);
+      return FALSE;
+    }
     $form['actions']['submit']['#submit'][] = '_elavon_add_payment_flag';
     // Remove the save draft button
     if (isset($form['actions']['save'])) {
