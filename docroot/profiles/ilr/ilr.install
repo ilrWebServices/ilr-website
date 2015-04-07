@@ -504,10 +504,10 @@ function ilr_update_7042() {
 }
 
 /**
- * Enables ilr_forms_students feature
+ * Enables ilr_at_70 module and dependency
  */
 function ilr_update_7043() {
   module_enable(array(
-    'ilr_reflection',
+    'ilr_at_70',
   ));
 }

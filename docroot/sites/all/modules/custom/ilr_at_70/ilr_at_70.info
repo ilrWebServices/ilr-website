@@ -1,0 +1,7 @@
+name = ILR 70th Anniversary
+description = Container for custom code related to the ILR at 70 page
+core = 7.x
+php = 5.2.4
+version = 7.x-1.0
+
+dependencies[] = ilr_reflection
