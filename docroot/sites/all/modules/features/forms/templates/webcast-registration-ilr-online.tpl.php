@@ -2,7 +2,7 @@
 
 Thank you for registering for the following ILR Online webcast.<br><br>
 
-Event details, all times are EST:<br><br>
+Event details, all times are Eastern time:<br><br>
 
 <? print $form_title; ?><br><br>
 
