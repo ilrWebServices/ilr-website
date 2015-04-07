@@ -43,42 +43,95 @@ body.subsite-front {
         >h2 { // Hide title of block
           display: none;
         }
+        .field-name-field-dates {
+          display: none;
+        }
+        article.node-reflection { // Need data points for mobile
+          h2 {
+            @include grid-span(9,4);
+          }
+          .field-name-body {
+            @include padding-leader(0);
+            @include grid-span(9,4);
+            p {
+              margin: 0;
+            }
+          }
+          .field-name-field-full-name {
+            @include grid-span(9,4);
+            @include padding-leader(.5);
+            @include adjust-font-size-to(22px);
+            @include adjust-leading-to(1);
+          }
+          .field-name-field-year-as-list-text {
+            @include grid-span(9,4);
+            &:before {
+              content: "Class of ";
+            }
+          }
+        }
       }
     }
     #content-bottom {
       padding: 3em 0 0;
-      p {
-        margin: 0 auto;
-        color: #fff;
-        text-align: center;
-        font-family: $font-headers;
-        @include adjust-font-size-to(22px);
-        @include adjust-leading-to(1);
-      }
       #block-bean-70th-reflections {
-        padding: 0 1em;
         >h2 {
           display: none;
         }
         article {
+          @include padding-leader(0);
+          @include padding-trailer(1);
+          @include clearfix;
           border: none;
           overflow: auto;
-          h3.category.basic-page {
-            display: none;
+          h2 {
+            a {
+              font-family: $font ;
+              color: $darker-red;
+            }
           }
           .field-type-text-with-summary {
             display: block;
-            ul, h4, h3 {
-              display: none;
+            padding: 0 1em;
+          }
+          .field-type-text, .field-type-list-text {
+            padding: 0 1em;
+          }
+          .field-name-field-dates {
+            text-align: center;
+            &::after {
+              content: " ";
+              border-bottom: 1px dotted $gold;
+              display: block;
+              margin: auto 0;
+              position: relative;
+              top: 0;
+              left: 20%;
+              width: 60%;
             }
           }
-          // Add additional heading styles here for Reflections
+          .field-name-body {
+            @include padding-leader(1);
+          }
+          .field-name-field-year-as-list-text {
+            &:before {
+              content: "Class of ";
+            }
+          }
         }
       }
       #block-bean-70th-giving-link {
         background: lighten($brand-dark, 15%);
         @include padding-leader(2);
         @include padding-trailer(2);
+        p {
+          margin: 0 auto;
+          color: #fff;
+          text-align: center;
+          font-family: $font-headers;
+          @include adjust-font-size-to(22px);
+          @include adjust-leading-to(1);
+        }
         h2 {
           display: none;
         }
