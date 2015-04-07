@@ -138,8 +138,10 @@ function _tagged_content_block_enable_default_bundles() {
     'basic_page'          => 'basic_page',
     'news_item'           => 'news_item',
     'promo'               => 'promo',
+    'reflection'          => 'reflection',
     'spotlight'           => 'spotlight',
     'student_portrait'    => 'student_portrait',
+    'wit_article'         => 'wit_article',
     'workspan'            => 'workspan',
     'youtube_video'       => 'youtube_video',
   );

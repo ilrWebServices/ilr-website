@@ -2,7 +2,7 @@ body.subsite-front {
   #sidebar-first {
     display: none !important; //override from nav settings
   }
-  &.worker-institute, &.catherwood-library { // consider using context to add body class
+  &.worker-institute, &.catherwood-library, &.ilr-at-70  { // consider using context to add body class
     .container[data-eq-state="regular-nav"] {
       @extend %one-column-page;
 

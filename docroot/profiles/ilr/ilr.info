@@ -56,6 +56,7 @@ dependencies[] = ilr_google_translate
 dependencies[] = ilr_legacy_redirect
 dependencies[] = ilr_manual_listing
 dependencies[] = ilr_mega_menu
+dependencies[] = ilr_reflection
 dependencies[] = ilr_sdc_listings
 dependencies[] = ilr_search
 dependencies[] = ilr_settings

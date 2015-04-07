@@ -1,0 +1,21 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Reflection feature.
+ */
+
+include_once 'ilr_reflection.features.inc';
+
+/**
+ * Implements hook_form_alter
+ * Removes the youtube_video field for most roles
+ */
+function ilr_reflection_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'reflection_node_form') {
+    // Remove editing the profile type except for admins
+    if (!_ilr_user_has_role(array('administrator','contributor'))) {
+      $form['field_youtube_video']['#access'] = FALSE;
+      $form['field_tags']['#access'] = FALSE;
+    }
+  }
+}

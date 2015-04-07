@@ -12,3 +12,10 @@ function tagged_content_block_install() {
 function tagged_content_block_update_7001() {
   _tagged_content_block_enable_default_bundles();
 }
+
+/**
+ * Adds wit and reflections to tagged content block config
+ */
+function tagged_content_block_update_7002() {
+  _tagged_content_block_enable_default_bundles();
+}

@@ -17,6 +17,7 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'course admin' => 'course admin',
+      'neutral' => 'neutral',
       'neutral admin' => 'neutral admin',
       'wit editor' => 'wit editor',
     ),
@@ -30,6 +31,7 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'course admin' => 'course admin',
+      'neutral' => 'neutral',
       'neutral admin' => 'neutral admin',
       'wit editor' => 'wit editor',
     ),
@@ -515,6 +517,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'bypass node access',
     'roles' => array(
       'administrator' => 'administrator',
+      'neutral admin' => 'neutral admin',
     ),
     'module' => 'node',
   );
@@ -682,6 +685,16 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create reflection content'.
+  $permissions['create reflection content'] = array(
+    'name' => 'create reflection content',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -922,6 +935,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any reflection content'.
+  $permissions['delete any reflection content'] = array(
+    'name' => 'delete any reflection content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any registration_page content'.
   $permissions['delete any registration_page content'] = array(
     'name' => 'delete any registration_page content',
@@ -1107,6 +1129,16 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'delete own promo content'.
   $permissions['delete own promo content'] = array(
     'name' => 'delete own promo content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own reflection content'.
+  $permissions['delete own reflection content'] = array(
+    'name' => 'delete own reflection content',
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
@@ -1488,11 +1520,22 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit any reflection content'.
+  $permissions['edit any reflection content'] = array(
+    'name' => 'edit any reflection content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any registration_page content'.
   $permissions['edit any registration_page content'] = array(
     'name' => 'edit any registration_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'form admin' => 'form admin',
     ),
     'module' => 'node',
   );
@@ -1697,11 +1740,22 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit own reflection content'.
+  $permissions['edit own reflection content'] = array(
+    'name' => 'edit own reflection content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit own registration_page content'.
   $permissions['edit own registration_page content'] = array(
     'name' => 'edit own registration_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'form admin' => 'form admin',
     ),
     'module' => 'node',
   );
@@ -2089,6 +2143,8 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'neutral admin' => 'neutral admin',
+      'registered user' => 'registered user',
       'wit editor' => 'wit editor',
     ),
     'module' => 'node',

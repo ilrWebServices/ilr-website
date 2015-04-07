@@ -585,3 +585,11 @@ function ilr_format_file_size($size, $langcode = NULL) {
     return str_replace('@size', round($size), $unit);
   }
 }
+
+/**
+ * Checks if user has a given role
+ * - Can check an array of roles or a single role
+ */
+function _ilr_user_has_role($roles) {
+  return !!count(array_intersect(is_array($roles)? $roles : array($roles), array_values($GLOBALS['user']->roles)));
+}
