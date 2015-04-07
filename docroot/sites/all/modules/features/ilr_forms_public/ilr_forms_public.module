@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILR forms public feature.
+ */
+
+include_once 'ilr_forms_public.features.inc';
