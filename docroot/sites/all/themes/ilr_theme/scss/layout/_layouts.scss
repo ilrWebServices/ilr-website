@@ -138,3 +138,16 @@
   h2                     { order: 3; }
   .student-name          { order: 4; }
 }
+
+%image-heading-text {
+  flex-direction: column;
+  display: flex;
+
+  .field-type-image                                         { order: 1; }
+  h2                                                        { order: 2; }
+  .field-type-text.field-name-field-dates                   { order: 3; }
+  .field-type-text-with-summary                             { order: 4; }
+  .field-type-text.field-name-field-full-name               { order: 5; }
+  .field-type-list-text.field-name-field-year-as-list-text  { order: 5; }
+}
+

@@ -1,84 +1,176 @@
 body.subsite-front {
   &.ilr-at-70 {
-    #content {
-      .quote {
-        &:nth-of-type(3) {
-          @include padding-trailer(2);
-        }
-      }
-      .tagline {
-        text-align: center;
-        font-style: oblique;
-        @include adjust-font-size-to(22px);
-      }
-      h2.centered-title {
-        @extend %ilr-at-70-heading;
-        @include margin-trailer(.5);
-      }
-      #block-bean-ilr-at-70-events {
-        @include padding-leader(2);
-        @include padding-trailer(2);
-        margin: 4em 0 3em;
-        h2 {
-          &:not(.event-title) {
-            display: none;
+    .tagline {
+      text-align: center;
+      font-style: oblique;
+      @include adjust-font-size-to(22px);
+    }
+    h2.centered-title {
+      @extend %ilr-at-70-heading;
+      @include margin-trailer(.5);
+    }
+    #main {
+      padding-top: 0;
+      #content {
+        .section {
+          @include leader(0);
+          .field-name-body {
+            @include padding-leader(1);
           }
-        }
-        h3.category.event {
-          display: none;
-        }
-        // article {
-        //   New styles for events
-        // }
-      }
-      #block-bean-70th-timeline {
-        background: #fff;
-        h2 {
-          @extend %ilr-at-70-heading;
-          @include margin-trailer(1);
-        }
-      }
-      #block-bean-70th-reflections-featured {
-        @include margin-leader(2);
-        >h2 { // Hide title of block
-          display: none;
+          .quote {
+            &:nth-of-type(3) {
+              @include padding-trailer(2);
+            }
+          }
+          #block-bean-70th-timeline {
+            background: #fff;
+            h2 {
+              @extend %ilr-at-70-heading;
+              @include margin-trailer(1);
+            }
+          }
+          #block-bean-70th-celebration {
+            @include padding-leader(1);
+            @include padding-trailer(1);
+            background-color: $gray-bg;
+          }
+          #block-bean-70th-reflections-featured {
+            border-bottom: 2px solid $gray-light;
+            @include margin-leader(2);
+            // background-color: $reflection-bg;
+            // color: white;
+            >h2 { // Hide title of block
+              display: none;
+            }
+            .field-name-field-dates {
+              display: none;
+            }
+            article.node-reflection { // Need data points for mobile
+              padding: 1em;
+              @include padding-leader(1.5);
+              @include padding-trailer(1.5);
+              .field-name-field-file {
+                @include grid-span(3,1);
+              }
+              h2 {
+                @include grid-span(9,4);
+                @include adjust-font-size-to(30px);
+                // a {
+                //   color: $reflection-heading;
+                // }
+              }
+              .field-name-body {
+                @include padding-leader(0);
+                @include grid-span(9,4);
+                p {
+                  // color: white;
+                  margin: 0;
+                }
+              }
+              .field-name-field-full-name {
+                @include grid-span(9,4);
+                @include padding-leader(.5);
+                @include adjust-font-size-to(22px);
+                @include adjust-leading-to(1);
+              }
+              .field-name-field-year-as-list-text {
+                @include grid-span(9,4);
+                &:before {
+                  content: "Class of ";
+                }
+              }
+            }
+          }
         }
       }
     }
     #content-bottom {
-      padding: 3em 0 0;
-      p {
-        margin: 0 auto;
-        color: #fff;
-        text-align: center;
-        font-family: $font-headers;
-        @include adjust-font-size-to(22px);
-        @include adjust-leading-to(1);
-      }
+      padding: 0;
       #block-bean-70th-reflections {
-        padding: 0 1em;
         >h2 {
           display: none;
         }
         article {
+          @include padding-leader(0);
+          @include padding-trailer(1);
+          @include clearfix;
+          position: relative;
           border: none;
           overflow: auto;
-          h3.category.basic-page {
-            display: none;
+          h2 {
+            margin-bottom: 0;
+            text-align: left;
+            padding: 1.5em 1em 0;
+            a {
+              // font-family: $font;
+              color: $reflection-heading;
+            }
+          }
+          .field-name-field-file {
+            position: relative; //How to position an iamge above the heading
+            top: 0;
+            left: 0;
           }
           .field-type-text-with-summary {
             display: block;
-            ul, h4, h3 {
-              display: none;
-            }
+            padding: 0 1em;
           }
-          // Add additional heading styles here for Reflections
+          .field-name-field-dates {
+            display: none;
+            // text-align: center;
+            // &::after {
+            //   content: " ";
+            //   border-bottom: 1px dotted $gold;
+            //   display: block;
+            //   margin: auto 0;
+            //   position: relative;
+            //   top: 0;
+            //   left: 20%;
+            //   width: 60%;
+            // }
+          }
+          .field-name-body {
+            @include padding-leader(1);
+          }
+          .field-name-field-full-name {
+            padding-left: 1em;
+            float: left;
+          }
+          .field-name-field-year-as-list-text {
+            padding-left: 5px;
+            float: left;
+          }
+        }
+      }
+      #block-bean-70th-events-header {
+        background-color: $gray-bg;
+      }
+      #block-bean-ilr-at-70-events {
+        @include padding-leader(1);
+        @include padding-trailer(2);
+        background-color: $gray-bg;
+        h2 {
+          // styles
+        }
+        h3.category.event {
+          display: none;
+        }
+        article {
+          border: none;
         }
       }
       #block-bean-70th-giving-link {
         background: lighten($brand-dark, 15%);
         @include padding-leader(2);
         @include padding-trailer(2);
+        p {
+          margin: 0 auto;
+          color: #fff;
+          text-align: center;
+          font-family: $font-headers;
+          @include adjust-font-size-to(22px);
+          @include adjust-leading-to(1);
+        }
         h2 {
           display: none;
         }
