@@ -39,7 +39,17 @@ function ilr_reflection_block_view($delta = ''){
 }
 
 /**
- * Implements hook_form_alter
+ * Implements hook_node_view().
+ * Calls required formatting function(s) for reflections
+ */
+function ilr_reflection_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'reflection' && $view_mode == 'teaser') {
+    _ilr_reflection_format_class_year($node);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
  * Removes the youtube_video field for most roles
  */
 function ilr_reflection_form_alter(&$form, &$form_state, $form_id) {
@@ -49,5 +59,16 @@ function ilr_reflection_form_alter(&$form, &$form_state, $form_id) {
       $form['field_youtube_video']['#access'] = FALSE;
       $form['field_tags']['#access'] = FALSE;
     }
+  }
+}
+
+/**
+ * Returns the last two digits of the class year
+ * prepended with an apostrophe
+ */
+function _ilr_reflection_format_class_year(&$node) {
+  if (count($node->field_year_as_list_text)) {
+    $year = $node->content['field_year_as_list_text'][0]['#markup'];
+    $node->content['field_year_as_list_text'][0]['#markup'] = "'" . substr($year, -2);
   }
 }
