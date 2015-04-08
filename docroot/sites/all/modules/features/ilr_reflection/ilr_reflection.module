@@ -18,17 +18,21 @@ function ilr_reflection_block_view($delta = ''){
 
   switch ($delta) {
     case 'reflection_node_form':
-      // Include page handler for node_add()
       module_load_include('inc', 'node', 'node.pages');
-      // Note title before rendering of form.
-      $title = drupal_get_title();
-      dpm($title);
+      $title = drupal_get_title(); // Store the original title
       $form = node_add('reflection');
-      // Restore title, which will have been overridden.
-      drupal_set_title($title, PASS_THROUGH);
-      $node_type = node_type_load('reflection');
+      drupal_set_title($title, PASS_THROUGH); // Restore the original title
       $block['subject'] = t('Share a Memory');
       $block['content']['form'] = $form;
+
+      // Hide the vertical tabs in the block version
+      $tabs = array('revision_information','author','options','menu','path');
+      foreach ($tabs as $key => $name) {
+        if (isset($form[$name])) {
+          $form[$name]['#access'] = false;
+        }
+      }
+
   }
 
   return $block;
