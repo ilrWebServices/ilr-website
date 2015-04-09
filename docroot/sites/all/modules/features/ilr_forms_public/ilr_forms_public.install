@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Deletes entityform field instances needing to be changed
+ */
+function ilr_forms_public_update_7001() {
+  if ($instance = field_info_instance('entityform', 'field_fax', 'join_the_ics_mailing_list')) {
+    field_delete_instance($instance);
+  }
+}
