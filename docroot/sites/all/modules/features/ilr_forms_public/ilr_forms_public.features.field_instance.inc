@@ -26,6 +26,24 @@ function ilr_forms_public_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
@@ -60,6 +78,24 @@ function ilr_forms_public_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -108,7 +144,25 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'entityform',
@@ -144,6 +198,24 @@ function ilr_forms_public_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -192,7 +264,25 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 3,
+        'weight' => 4,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'entityform',
@@ -232,13 +322,31 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 12,
+        'weight' => 11,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Can ICS share updates?',
+        ),
+        'type' => 'list_default',
+        'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Can ICS share updates?',
+        ),
+        'type' => 'list_default',
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_email_opt_in',
-    'label' => ' May we contact you by email about information on our offerings?',
+    'label' => 'Please share updates on future ICS activities and insights with me.',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -254,8 +362,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_fax'
-  $field_instances['entityform-join_the_ics_mailing_list-field_fax'] = array(
+  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_first_name'
+  $field_instances['entityform-join_the_ics_mailing_list-field_first_name'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => NULL,
     'deleted' => 0,
@@ -268,42 +376,18 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 0,
       ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_fax',
-    'label' => 'Fax',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
       ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 19,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_first_name'
-  $field_instances['entityform-join_the_ics_mailing_list-field_first_name'] = array(
-    'bundle' => 'join_the_ics_mailing_list',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -354,6 +438,24 @@ function ilr_forms_public_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
@@ -388,6 +490,24 @@ function ilr_forms_public_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -438,6 +558,24 @@ function ilr_forms_public_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 10,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
@@ -472,6 +610,24 @@ function ilr_forms_public_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
@@ -516,6 +672,24 @@ function ilr_forms_public_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 8,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
@@ -544,17 +718,16 @@ function ilr_forms_public_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t(' May we contact you by email about information on our offerings?');
   t('Address');
   t('City');
   t('Company');
   t('Country');
   t('Email');
-  t('Fax');
   t('First name');
   t('Job title');
   t('Last name');
   t('Phone');
+  t('Please share updates on future ICS activities and insights with me.');
   t('State / Province');
   t('Zip code');
 
