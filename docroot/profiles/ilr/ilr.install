@@ -511,3 +511,12 @@ function ilr_update_7043() {
     module_enable(array('securepages'));
   }
 }
+
+/**
+ * Enables ilr_forms_public feature
+ */
+function ilr_update_7044() {
+  module_enable(array(
+    'ilr_forms_public',
+  ));
+}
