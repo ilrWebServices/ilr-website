@@ -32,10 +32,28 @@
         return false;
       });
 
-      // @todo: Replace with modal trigger
-      $('.node-reflection a').click(function() {
+      $('.node-reflection a').click(function(){
         return false;
       });
+
+      var isNumeric = function(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+      }
+
+      $(window).load(function() {
+        if (hash = window.location.hash) {
+          var nid = hash.substring(1);
+          if (isNumeric(nid)) {
+            $.fancybox({
+              'type': 'iframe',
+              'autoDimensions' : true,
+              'autoScale' : true,
+              'href' : 'node/'+nid+'?layout=0',
+            });
+          }
+        }
+      });
+
     }
   };
 }(jQuery));
