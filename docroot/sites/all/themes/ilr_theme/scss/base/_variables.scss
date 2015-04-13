@@ -2,7 +2,6 @@
 
 $page-max-width: 1600px;
 $section-max-width: 800px;
-$header-max-width: 400px;
 $base-font-size: 19px;
 $base-line-height: 27px;
 $line-height-multiplier: $base-line-height / $base-font-size;
@@ -46,8 +45,7 @@ $selection: #212121;
 $highlight: #ffc;
 $cornell-tan: #f0eee4;
 $bg-body: darken(white, 2%);
-$reflection-bg: #78765f; //252b2c
-$reflection-heading: #c5ba61; //78765f
+$reflection-border: #c5ba61; //252b2c c5ba61 78765f
 
 $basic-page-color: #bbc44a;
 $promo-color: #bbc44a; // Same as basic page for now

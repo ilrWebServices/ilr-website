@@ -134,9 +134,9 @@
     @extend %image-first;
   }
 
-  // body.ilr-at-70 & { // Repositions elements in reflections
-  //   @extend %image-heading-text;
-  // }
+  body.ilr-at-70 & { // Repositions elements in reflections
+    @extend %image-heading-text;
+  }
 
   h2, h3, h4 {
     text-align: center;
