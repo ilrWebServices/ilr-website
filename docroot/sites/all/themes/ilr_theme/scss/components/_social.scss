@@ -1,4 +1,4 @@
-$social-channels: linkedin, facebook, twitter, youtube, instagram;
+$social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
 
 @for $i from 1 through length($social-channels) {
   .follow-#{nth($social-channels, $i)} {
@@ -37,7 +37,8 @@ ul.social {
       display: block;
       border:none;
       &.follow-twitter,
-      &.follow-youtube {
+      &.follow-youtube,
+      &.follow-mail {
         padding-top: 5px;
       }
       &:hover {
