@@ -101,7 +101,7 @@ function _ilr_reflection_add_social_sharing(&$node) {
   $channels = array('twitter','facebook','linkedin','email');
   $markup = '<ul class="social">';
   foreach ($channels as $key => $channel) {
-    $markup .= "  <li><a class='$channel' href='#'>$channel</a></li>\n";
+    $markup .= "  <li><a class='$channel' href='#'><span>$channel</span></a></li>\n";
   }
   $markup .= '</ul>';
   $node->content['social_links']['#markup'] = $markup;
