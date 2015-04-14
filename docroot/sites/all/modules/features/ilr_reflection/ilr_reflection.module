@@ -41,11 +41,16 @@ function ilr_reflection_block_view($delta = ''){
 /**
  * Implements hook_node_view().
  * Calls required formatting function(s) for reflections
+ * Calls redirect from reflection nodes to the 70th page
  */
 function ilr_reflection_node_view($node, $view_mode, $langcode) {
   if ($node->type == 'reflection') {
     _ilr_reflection_format_class_year($node);
     _ilr_reflection_add_social_sharing($node);
+
+    if ($view_mode == 'full' && !isset($_GET['layout'])) {
+      _ilr_reflection_redirect_to_70th_page($node->nid);
+    }
   }
 }
 
@@ -87,4 +92,11 @@ function _ilr_reflection_format_class_year(&$node) {
     unset($node->content['field_year_as_list_text']);
     $node->content['field_full_name'][0]['#markup'] .= ", '" . substr($year, -2);
   }
+}
+
+/**
+ * Redirects to the 70th page
+ */
+function _ilr_reflection_redirect_to_70th_page($nid) {
+  drupal_goto('ilr-at-70', array('fragment' => $nid));
 }
