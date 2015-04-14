@@ -68,7 +68,7 @@ function ilr_reflection_form_alter(&$form, &$form_state, $form_id) {
  * prepended with an apostrophe
  */
 function _ilr_reflection_add_social_sharing(&$node) {
-  $channels = array('twitter','facebook','linkedin','instagram','email');
+  $channels = array('twitter','facebook','linkedin','email');
   $markup = '<ul class="social">';
   foreach ($channels as $key => $channel) {
     $markup .= "  <li><a class='$channel' href='#'>$channel</a></li>\n";
