@@ -11,7 +11,7 @@
           'hashtags'      : 'ILR70',
           'url'           : getNodeURL($id),
         };
-        sharToURL(url, params);
+        shareToURL(url, params);
       };
 
       shareWith['facebook'] = function() {
@@ -27,7 +27,7 @@
         if ($image !== 'undefined') {
           params.source = $image;
         }
-        sharToURL(url, params);
+        shareToURL(url, params);
       };
 
       shareWith['linkedin'] = function() {
@@ -39,7 +39,7 @@
           'summary'       : $summary,
           'source'        : 'Cornell University ILR School'
         };
-        sharToURL(url, params);
+        shareToURL(url, params);
       };
 
       shareWith['email'] = function() {
@@ -55,7 +55,7 @@
         return false;
       };
 
-      var shareToULR = function(url, params) {
+      var shareToURL = function(url, params) {
         encodedParams = encodeParams(params);
         url = url + '?' + encodedParams;
         window.location.href = url;
