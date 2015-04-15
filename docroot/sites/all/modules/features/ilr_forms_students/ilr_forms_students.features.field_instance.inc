@@ -10,6 +10,441 @@
 function ilr_forms_students_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'entityform-keith_strudler_lecture-field_email'
+  $field_instances['entityform-keith_strudler_lecture-field_email'] = array(
+    'bundle' => 'keith_strudler_lecture',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 1,
+      'kerberized' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-keith_strudler_lecture-field_first_name'
+  $field_instances['entityform-keith_strudler_lecture-field_first_name'] = array(
+    'bundle' => 'keith_strudler_lecture',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_first_name',
+    'label' => 'First name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-keith_strudler_lecture-field_h_event_date'
+  $field_instances['entityform-keith_strudler_lecture-field_h_event_date'] = array(
+    'bundle' => 'keith_strudler_lecture',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'format_type' => 'short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'format_type' => 'short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_h_event_date',
+    'label' => 'Event date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'Y-m-d H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 44,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-keith_strudler_lecture-field_last_name'
+  $field_instances['entityform-keith_strudler_lecture-field_last_name'] = array(
+    'bundle' => 'keith_strudler_lecture',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-keith_strudler_lecture-field_referenced_node'
+  $field_instances['entityform-keith_strudler_lecture-field_referenced_node'] = array(
+    'bundle' => 'keith_strudler_lecture',
+    'default_value' => NULL,
+    'default_value_function' => 'entityreference_current_field_default_value',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_referenced_node',
+    'label' => 'Event title',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'current' => array(
+          'action' => 'hide',
+          'action_on_edit' => 1,
+          'fallback' => 'none',
+          'skip_perm' => 0,
+          'status' => 1,
+          'use_uid' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-keith_strudler_lecture-field_student_id_number'
+  $field_instances['entityform-keith_strudler_lecture-field_student_id_number'] = array(
+    'bundle' => 'keith_strudler_lecture',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_student_id_number',
+    'label' => 'Student ID',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-keith_strudler_lecture-field_year_as_text'
+  $field_instances['entityform-keith_strudler_lecture-field_year_as_text'] = array(
+    'bundle' => 'keith_strudler_lecture',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Year you will graduate, e.g. 2016',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_year_as_text',
+    'label' => 'Class year',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 40,
+    ),
+  );
+
   // Exported field_instance: 'entityform-mlb_today_with_rob_manfred-field_email'
   $field_instances['entityform-mlb_today_with_rob_manfred-field_email'] = array(
     'bundle' => 'mlb_today_with_rob_manfred',
@@ -902,6 +1337,7 @@ function ilr_forms_students_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Affiliation (check one or both)');
+  t('Class year');
   t('Date of birth');
   t('Do you wish to accept the Transfer Option (TO) to Cornell\'s ILR School?');
   t('Email');
@@ -916,6 +1352,8 @@ function ilr_forms_students_field_default_field_instances() {
   t('Please enter the phone number where you can be reached throughout the next academic year.');
   t('School you will attend for your first year');
   t('Since email will be our main form of communication with TO students, please indicate the email address you will use throughout the next year.');
+  t('Student ID');
+  t('Year you will graduate, e.g. 2016');
 
   return $field_instances;
 }

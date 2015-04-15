@@ -8675,7 +8675,8 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'International' => 'Outside the US',
+        'Outside the US' => 'Outside the US',
+        'US Territory' => 'US Territory',
         'AL' => 'Alabama',
         'AK' => 'Alaska',
         'AZ' => 'Arizona',
