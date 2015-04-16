@@ -24,10 +24,15 @@ body.subsite-front {
             }
           }
           #block-bean-70th-timeline {
-            background: #fff;
+            @include padding-leader(2);
+            background-color: #fff;
             h2 {
               @extend %ilr-at-70-heading;
               @include margin-trailer(1);
+            }
+            p {
+              margin: 0 3em;
+              max-width: 100%;
             }
           }
           #block-bean-70th-celebration {
@@ -37,9 +42,7 @@ body.subsite-front {
           }
           #block-bean-70th-reflections-featured {
             border-bottom: 2px solid $gray-light;
-            @include margin-leader(2);
-            // background-color: $reflection-bg;
-            // color: white;
+            @include margin-leader(1);
             >h2 { // Hide title of block
               display: none;
             }
@@ -51,32 +54,34 @@ body.subsite-front {
               @include padding-leader(1.5);
               @include padding-trailer(1.5);
               .field-name-field-file {
-                @include grid-span(3,1);
+                @include grid-span(5,1);
               }
               h2 {
-                @include grid-span(9,4);
+                @include grid-span(7,6);
                 @include adjust-font-size-to(30px);
-                font-family: $font;
+                @include margin-trailer(0);
                 a {
                   // color: $reflection-heading;
                 }
               }
               .field-name-body {
                 @include padding-leader(0);
-                @include grid-span(9,4);
+                @include grid-span(7,6);
                 p {
-                  // color: white;
-                  margin: 0;
+                  @include margin-leader(.8);
+                  @include margin-trailer(0);
+                  // margin: 0;
                 }
               }
               .field-name-field-full-name {
-                @include grid-span(9,4);
+                @include grid-span(7,6);
                 @include padding-leader(.5);
                 @include adjust-font-size-to(22px);
                 @include adjust-leading-to(1);
+                font-style: oblique;
               }
               .field-name-field-year-as-list-text {
-                @include grid-span(9,4);
+                @include grid-span(7,6);//
                 &:before {
                   content: "Class of ";
                 }
@@ -102,14 +107,15 @@ body.subsite-front {
           h2 {
             margin-bottom: 0;
             text-align: left;
-            padding: 1.5em 1em 0;
+            padding: 1em .8em 0;
             a {
-              font-family: $font;
+              // font-family: $font;
               color: $darker-red;
             }
           }
           ul.social {
-            padding: 1em 1em 0;
+            opacity: 0;
+            padding: .8em 1em 0;
             .twitter { @extend .follow-twitter; }
             .facebook { @extend .follow-facebook; }
             .linkedin { @extend .follow-linkedin; }
@@ -125,40 +131,44 @@ body.subsite-front {
               }
             }
           }
+          .field-name-field-youtube-video {
+            a {
+              border-bottom: 0;
+            }
+          }
           .field-type-text-with-summary {
             display: block;
             padding: 0 1em;
           }
           .field-name-field-dates {
             display: none;
-            // text-align: center;
-            // &::after {
-            //   content: " ";
-            //   border-bottom: 1px dotted $gold;
-            //   display: block;
-            //   margin: auto 0;
-            //   position: relative;
-            //   top: 0;
-            //   left: 20%;
-            //   width: 60%;
-            // }
           }
           .field-name-body {
-            // @include padding-leader(1);
             p {
-              // margin: 0;
-              @include margin-leader(1);
+              @include margin-leader(.8);
               @include margin-trailer(0);
             }
           }
           .field-name-field-full-name {
             @include margin-leader(.5);
             padding-left: 1em;
-            float: left;
+            font-style: oblique;
           }
           .field-name-field-year-as-list-text {
             padding-left: 5px;
-            float: left;
+          }
+          &.quote {
+            background-color: $gray-bg;
+            h2 {
+              display: none;
+            }
+            .field-name-body {
+              p {
+                @include adjust-font-size-to(25px);
+                @include adjust-leading-to(1);
+                color: #8f8746;
+              }
+            }
           }
         }
       }
@@ -178,6 +188,13 @@ body.subsite-front {
         article {
           border: none;
           background-color: transparent;
+          // .thumbnail.custom {
+          //   margin: 0;
+          //   a {
+          //     border-radius: 0;
+          //     width: 80px;
+          //   }
+          // }
         }
       }
       #block-bean-70th-giving-link {
@@ -254,6 +271,7 @@ body.subsite-front {
 
 body.node-type-reflection {
   article.node-reflection {
+    @include margin-trailer (2);
     img {
       @include margin-trailer (1);
     }
@@ -280,7 +298,7 @@ body.node-type-reflection {
 
 %ilr-at-70-heading {
   max-width: $section-max-width; //Center border after title
-  font-family: $font;
+  // font-family: $font;
   font-weight: normal;
   text-transform: none;
   text-align: center;
@@ -301,3 +319,8 @@ body.node-type-reflection {
     height: 10px;
   }
 }
+
+.jPanelMenu-panel { // Removes line at bottom of reflection modal
+  @include box-shadow(0 0px 0px 0px rgba(black, .5));
+}
+
