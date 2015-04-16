@@ -46,9 +46,6 @@ body.subsite-front {
             >h2 { // Hide title of block
               display: none;
             }
-            .field-name-field-dates {
-              display: none;
-            }
             article.node-reflection { // Need data points for mobile
               padding: 1em;
               @include padding-leader(1.5);
@@ -140,9 +137,6 @@ body.subsite-front {
             display: block;
             padding: 0 1em;
           }
-          .field-name-field-dates {
-            display: none;
-          }
           .field-name-body {
             p {
               @include margin-leader(.8);
@@ -227,6 +221,9 @@ body.subsite-front {
           @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
             padding: 1em 4em;
           }
+          fieldset#edit-body-und-0-format {
+            display: none;
+          }
           .form-item {
             @include margin-leader(1);
             margin-bottom: 0;
@@ -246,7 +243,7 @@ body.subsite-front {
             @include margin-leader(1.5);
           }
           @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
-            .form-item-title, .field-name-field-full-name, .field-name-field-email, .field-name-field-year-as-list-text, .field-name-field-degree {
+            .form-item-title, .field-name-field-full-name, .field-name-field-email, .field-name-field-year-as-list-text {
               @extend %two-column;
               float: left;
             }
@@ -255,7 +252,7 @@ body.subsite-front {
               @include padding-leader(.5);
               clear: both;
             }
-            .field-name-field-dates, .field-name-field-file, .field-name-field-youtube-video, .field-name-field-tags, .form-actions {
+            .field-name-field-file, .field-name-field-youtube-video, .field-name-field-tags, .form-actions {
               @extend %one-column;
               @include padding-leader(.5);
             }
@@ -283,15 +280,8 @@ body.node-type-reflection {
     }
     .field-type-text, .field-type-list-text {
       @include adjust-font-size-to(22px);
-      float: left;
-    }
-    .field-name-field-full-name {
-      &:after {
-        content: ",";
-      }
-    }
-    .field-name-field-degree, .field-name-field-year-as-list-text {
-      padding-left: 5px;
+      // float: left;
+      font-style: oblique;
     }
   }
 }
