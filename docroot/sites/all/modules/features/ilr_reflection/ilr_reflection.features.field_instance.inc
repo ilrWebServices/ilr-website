@@ -24,7 +24,7 @@ function ilr_reflection_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -40,7 +40,7 @@ function ilr_reflection_field_default_field_instances() {
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -70,114 +70,6 @@ function ilr_reflection_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-reflection-field_dates'
-  $field_instances['node-reflection-field_dates'] = array(
-    'bundle' => 'reflection',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Tell us the time period on which you are reflecting (e.g., 1970s, 1980s).',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_dates',
-    'label' => 'Date(s)',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 8,
-    ),
-  );
-
-  // Exported field_instance: 'node-reflection-field_degree'
-  $field_instances['node-reflection-field_degree'] = array(
-    'bundle' => 'reflection',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_degree',
-    'label' => 'Degree(s) with ILR',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 6,
-    ),
-  );
-
   // Exported field_instance: 'node-reflection-field_email'
   $field_instances['node-reflection-field_email'] = array(
     'bundle' => 'reflection',
@@ -186,13 +78,10 @@ function ilr_reflection_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'email',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'email_default',
-        'weight' => 4,
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -204,7 +93,7 @@ function ilr_reflection_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'node',
@@ -233,13 +122,14 @@ function ilr_reflection_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'file',
+        'label' => 'hidden',
+        'module' => 'file_entity',
         'settings' => array(
           'field_formatter_label' => '',
+          'file_view_mode' => 'default',
         ),
-        'type' => 'file_default',
-        'weight' => 5,
+        'type' => 'file_rendered',
+        'weight' => 0,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -248,9 +138,13 @@ function ilr_reflection_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'file_view_mode' => 'default',
+        ),
+        'type' => 'file_rendered',
         'weight' => 0,
       ),
     ),
@@ -305,13 +199,13 @@ function ilr_reflection_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -320,10 +214,13 @@ function ilr_reflection_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -362,7 +259,7 @@ function ilr_reflection_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 6,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -374,7 +271,7 @@ function ilr_reflection_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
@@ -405,13 +302,13 @@ function ilr_reflection_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 2,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -420,10 +317,13 @@ function ilr_reflection_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -453,10 +353,21 @@ function ilr_reflection_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
+        'label' => 'hidden',
+        'module' => 'youtube',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'youtube_autohide' => FALSE,
+          'youtube_autoplay' => FALSE,
+          'youtube_controls' => FALSE,
+          'youtube_height' => NULL,
+          'youtube_iv_load_policy' => FALSE,
+          'youtube_showinfo' => FALSE,
+          'youtube_size' => '420x315',
+          'youtube_width' => NULL,
+        ),
+        'type' => 'youtube_video',
+        'weight' => 1,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -465,10 +376,13 @@ function ilr_reflection_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'youtube_videos',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'youtube_videos_fancybox',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -491,13 +405,10 @@ function ilr_reflection_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Class year');
-  t('Date(s)');
-  t('Degree(s) with ILR');
   t('Email');
   t('Image');
   t('Reflection');
   t('Tags');
-  t('Tell us the time period on which you are reflecting (e.g., 1970s, 1980s).');
   t('Your name');
   t('Youtube Video');
 
