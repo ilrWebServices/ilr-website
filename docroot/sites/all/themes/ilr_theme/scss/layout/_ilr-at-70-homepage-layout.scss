@@ -274,8 +274,23 @@ body.subsite-front {
               font-weight: 300;
             }
           }
+          .file-widget {
+            input[type='submit'] {
+              background-color: $gray-light;
+              border: 1px solid $gray-medium;
+              border-radius: 6px;
+              padding: 0 .2em;
+            }
+          }
           .form-actions {
             @include margin-leader(1.5);
+            input[type='submit'] {
+              background-color: #c5c19c;
+              border: 1px solid #8f8746;
+              border-radius: 6px;
+              padding: .4em 1em;
+              color: #454437;
+            }
           }
           @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
             .form-item-title, .field-name-field-full-name, .field-name-field-email, .field-name-field-year-as-list-text {
