@@ -26,6 +26,7 @@ body.subsite-front {
           #block-bean-70th-timeline {
             @include padding-leader(2);
             background-color: #fff;
+            border-bottom: 1px solid $gray-light;
             h2 {
               @extend %ilr-at-70-heading;
               @include margin-trailer(1);
@@ -58,7 +59,7 @@ body.subsite-front {
                 @include adjust-font-size-to(30px);
                 @include margin-trailer(0);
                 a {
-                  // color: $reflection-heading;
+                  color: $darker-red;
                 }
               }
               .field-name-body {
@@ -67,7 +68,6 @@ body.subsite-front {
                 p {
                   @include margin-leader(.8);
                   @include margin-trailer(0);
-                  // margin: 0;
                 }
               }
               .field-name-field-full-name {
@@ -78,7 +78,7 @@ body.subsite-front {
                 font-style: oblique;
               }
               .field-name-field-year-as-list-text {
-                @include grid-span(7,6);//
+                @include grid-span(7,6);
                 &:before {
                   content: "Class of ";
                 }
@@ -167,28 +167,63 @@ body.subsite-front {
         }
       }
       #block-bean-70th-events-header {
-        background-color: $gray-bg;
+        background-color: white; //$gray-bg
+        border-top: 1px solid $gray-light;
       }
       #block-bean-ilr-at-70-events {
         @include padding-leader(1);
         @include padding-trailer(2);
-        background-color: $gray-bg;
-        h2 {
-          // styles
-        }
+        background-color: white; //$gray-bg
         h3.category.event {
           display: none;
         }
         article {
           border: none;
           background-color: transparent;
-          // .thumbnail.custom {
-          //   margin: 0;
-          //   a {
-          //     border-radius: 0;
-          //     width: 80px;
-          //   }
-          // }
+          flex-direction: row;
+          display: flex;
+          .thumbnail.custom       { order: 1; }
+          h2.event-title          { order: 2; }
+
+          .thumbnail.custom {
+            border-radius: 0;
+            margin: 0 1em 0 0;
+            width: auto;
+            height: auto;
+            a {
+              @include adjust-font-size-to(28px);
+              @include adjust-leading-to(1);
+              background: transparent;
+              border-radius: 0;
+              padding-top: .2em;
+              width: 80px;
+              height: 120px;
+              span {
+                border-right: 1px solid #c5c19c;
+                padding-top: 0;
+                font-family: $font-headers;
+                font-size: inherit;
+                color: #8f8746;
+              }
+            }
+          }
+          h2.event-title {
+            @include adjust-font-size-to(22px);
+            @include adjust-leading-to(1);
+            margin: .2em 0 0 0;
+            padding: 0;
+            width: 170px;
+            text-align: left;
+            a {
+              font-family: $font;
+              font-weight: 300;
+            }
+          }
+        }
+        .field-name-field-more-link {
+          @include padding-leader(1);
+          margin: 0 auto;
+          text-align: center;
         }
       }
       #block-bean-70th-giving-link {
@@ -210,7 +245,7 @@ body.subsite-front {
         }
       }
       #block-ilr-reflection-reflection-node-form {
-        background-color: white;
+        // background-color: white;
         @include padding-trailer(1);
         h2 {
           @extend %ilr-at-70-heading;
