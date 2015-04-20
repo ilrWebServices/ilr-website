@@ -199,11 +199,11 @@ body.subsite-front {
               width: 80px;
               height: 120px;
               span {
-                border-right: 1px solid #c5c19c;
+                border-right: 1px solid $ochre-tan;
                 padding-top: 0;
                 font-family: $font-headers;
                 font-size: inherit;
-                color: #8f8746;
+                color: $ochre-green;
               }
             }
           }
@@ -246,9 +246,12 @@ body.subsite-front {
       }
       #block-ilr-reflection-reflection-node-form {
         // background-color: white;
+        @include margin-leader(1);
         @include padding-trailer(1);
+        border-top: 1px solid $gray-light;
         h2 {
           @extend %ilr-at-70-heading;
+          display: none;
         }
         .node-reflection-form {
           @include clearfix;
@@ -274,6 +277,9 @@ body.subsite-front {
               font-weight: 300;
             }
           }
+          span.field-edit-link { // Hides edit summary link
+            display: none;
+          }
           .file-widget {
             input[type='submit'] {
               background-color: $gray-light;
@@ -285,11 +291,11 @@ body.subsite-front {
           .form-actions {
             @include margin-leader(1.5);
             input[type='submit'] {
-              background-color: #c5c19c;
-              border: 1px solid #8f8746;
+              background-color: $ochre-tan;
+              border: 1px solid $ochre-green;
               border-radius: 6px;
               padding: .4em 1em;
-              color: #454437;
+              color: $brown;
             }
           }
           @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
