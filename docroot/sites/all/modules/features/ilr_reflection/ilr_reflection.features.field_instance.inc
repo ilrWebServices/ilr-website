@@ -46,7 +46,7 @@ function ilr_reflection_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'body',
-    'label' => 'Reflection',
+    'label' => 'Add your story',
     'required' => 1,
     'settings' => array(
       'display_summary' => 1,
@@ -62,11 +62,11 @@ function ilr_reflection_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 10,
+        'rows' => 8,
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -78,10 +78,10 @@ function ilr_reflection_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -187,7 +187,7 @@ function ilr_reflection_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 9,
+      'weight' => 7,
     ),
   );
 
@@ -290,7 +290,7 @@ function ilr_reflection_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 12,
+      'weight' => 9,
     ),
   );
 
@@ -308,7 +308,7 @@ function ilr_reflection_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -353,7 +353,7 @@ function ilr_reflection_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'youtube',
         'settings' => array(
           'field_formatter_label' => '',
@@ -398,16 +398,16 @@ function ilr_reflection_field_default_field_instances() {
       'module' => 'youtube',
       'settings' => array(),
       'type' => 'youtube',
-      'weight' => 10,
+      'weight' => 8,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Add your story');
   t('Class year');
   t('Email');
   t('Image');
-  t('Reflection');
   t('Tags');
   t('Your name');
   t('Youtube Video');
