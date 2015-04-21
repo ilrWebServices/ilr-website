@@ -35,6 +35,17 @@ body.subsite-front {
               margin: 0 3em;
               max-width: 100%;
             }
+            // Styles are overridden by iframe styles
+            // .vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .media-shadow:before {
+            //   -webkit-box-shadow:0 15px 10px #fff !important;
+            //   -moz-box-shadow:0 15px 10px #fff !important;
+            //   box-shadow:0 15px 10px #fff !important;
+            // }
+            // .vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .media-shadow:after {
+            //   -webkit-box-shadow:0 15px 10px #fff !important;
+            //   -moz-box-shadow:0 15px 10px #fff !important;
+            //   box-shadow:0 15px 10px #fff !important;
+            // }
           }
           #block-bean-70th-celebration {
             @include padding-leader(1);
@@ -256,6 +267,9 @@ body.subsite-front {
         .node-reflection-form {
           @include clearfix;
           padding: 1em;
+          @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
+            padding: 1em 4em;
+          }
           @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
             padding: 1em 4em;
           }
@@ -296,6 +310,21 @@ body.subsite-front {
               border-radius: 6px;
               padding: .4em 1em;
               color: $brown;
+            }
+          }
+          @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
+            .form-item-title, .field-name-field-full-name, .field-name-field-email, .field-name-field-year-as-list-text {
+              @extend %two-column;
+              float: left;
+            }
+            .field-name-body {
+              @extend %one-column;
+              @include padding-leader(.5);
+              clear: both;
+            }
+            .field-name-field-file, .field-name-field-youtube-video, .field-name-field-tags, .form-actions {
+              @extend %one-column;
+              @include padding-leader(.5);
             }
           }
           @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
@@ -369,4 +398,3 @@ body.node-type-reflection {
 .jPanelMenu-panel { // Removes line at bottom of reflection modal
   @include box-shadow(0 0px 0px 0px rgba(black, .5));
 }
-
