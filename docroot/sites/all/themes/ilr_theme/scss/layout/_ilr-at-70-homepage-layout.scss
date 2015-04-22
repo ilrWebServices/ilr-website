@@ -35,17 +35,6 @@ body.subsite-front {
               margin: 0 3em;
               max-width: 100%;
             }
-            // Styles are overridden by iframe styles
-            // .vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .media-shadow:before {
-            //   -webkit-box-shadow:0 15px 10px #fff !important;
-            //   -moz-box-shadow:0 15px 10px #fff !important;
-            //   box-shadow:0 15px 10px #fff !important;
-            // }
-            // .vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .media-shadow:after {
-            //   -webkit-box-shadow:0 15px 10px #fff !important;
-            //   -moz-box-shadow:0 15px 10px #fff !important;
-            //   box-shadow:0 15px 10px #fff !important;
-            // }
           }
           #block-bean-70th-celebration {
             @include padding-leader(1);
@@ -117,7 +106,6 @@ body.subsite-front {
             text-align: left;
             padding: 1em .8em 0;
             a {
-              // font-family: $font;
               color: $darker-red;
             }
           }
@@ -178,13 +166,13 @@ body.subsite-front {
         }
       }
       #block-bean-70th-events-header {
-        background-color: white; //$gray-bg
+        background-color: white;
         border-top: 1px solid $gray-light;
       }
       #block-bean-ilr-at-70-events {
         @include padding-leader(1);
         @include padding-trailer(2);
-        background-color: white; //$gray-bg
+        background-color: white;
         h3.category.event {
           display: none;
         }
@@ -246,9 +234,14 @@ body.subsite-front {
           text-align: center;
           @include adjust-font-size-to(22px);
           @include adjust-leading-to(1);
-          a {
+          color: white;
+          a, a:visited {
             color: white;
-            border-bottom: none;
+            border-bottom: 1px solid lighten($brand-dark, 25%);
+            &:hover {
+              color: lighten($brand-light, 20%);
+              border-bottom: 1px solid lighten($brand-dark, 30%);
+            }
           }
         }
         h2 {
@@ -256,7 +249,6 @@ body.subsite-front {
         }
       }
       #block-ilr-reflection-reflection-node-form {
-        // background-color: white;
         @include margin-leader(1);
         @include padding-trailer(1);
         border-top: 1px solid $gray-light;
@@ -365,7 +357,6 @@ body.node-type-reflection {
     }
     .field-type-text, .field-type-list-text {
       @include adjust-font-size-to(22px);
-      // float: left;
       font-style: oblique;
     }
   }
@@ -373,7 +364,6 @@ body.node-type-reflection {
 
 %ilr-at-70-heading {
   max-width: $section-max-width; //Center border after title
-  // font-family: $font;
   font-weight: normal;
   text-transform: none;
   text-align: center;
