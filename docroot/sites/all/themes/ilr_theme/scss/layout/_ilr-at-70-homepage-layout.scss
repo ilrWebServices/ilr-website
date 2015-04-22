@@ -60,6 +60,9 @@ body.subsite-front {
                 @include margin-trailer(0);
                 a {
                   color: $darker-red;
+                  &:hover {
+                    cursor: default;
+                  }
                 }
               }
               .field-name-field-file {
@@ -144,6 +147,9 @@ body.subsite-front {
             padding: 1em .8em 0;
             a {
               color: $darker-red;
+              &:hover {
+                cursor: default;
+              }
             }
           }
           ul.social {
