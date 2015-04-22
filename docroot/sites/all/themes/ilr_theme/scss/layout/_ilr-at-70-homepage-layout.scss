@@ -55,32 +55,69 @@ body.subsite-front {
                 @include grid-span(5,1);
               }
               h2 {
-                @include grid-span(7,6);
+                @include grid-span(12);
                 @include adjust-font-size-to(30px);
                 @include margin-trailer(0);
                 a {
                   color: $darker-red;
                 }
               }
+              .field-name-field-file {
+                @include grid-span(12);
+              }
               .field-name-body {
+                @include grid-span(12);
                 @include padding-leader(0);
-                @include grid-span(7,6);
                 p {
                   @include margin-leader(.8);
                   @include margin-trailer(0);
+                  &:first-child {
+                    @include margin-leader(.5);
+                  }
                 }
               }
               .field-name-field-full-name {
-                @include grid-span(7,6);
+                @include grid-span(12);
                 @include padding-leader(.5);
                 @include adjust-font-size-to(22px);
                 @include adjust-leading-to(1);
                 font-style: oblique;
               }
               .field-name-field-year-as-list-text {
-                @include grid-span(7,6);
-                &:before {
-                  content: "Class of ";
+                @include grid-span(12);
+              }
+              @include context('#main','#main[data-eq-state="768"]') {
+                h2 {
+                  @include grid-span(7,6);
+                }
+                .field-name-field-file {
+                  @include grid-span(5,1);
+                }
+                .field-name-body {
+                  @include grid-span(7,6);
+                }
+                .field-name-field-full-name {
+                  @include grid-span(7,6);
+                }
+                .field-name-field-year-as-list-text {
+                  @include grid-span(7,6);
+                }
+              }
+              @include context('#main','#main[data-eq-state="widescreen"]') {
+                h2 {
+                  @include grid-span(7,6);
+                }
+                .field-name-field-file {
+                  @include grid-span(5,1);
+                }
+                .field-name-body {
+                  @include grid-span(7,6);
+                }
+                .field-name-field-full-name {
+                  @include grid-span(7,6);
+                }
+                .field-name-field-year-as-list-text {
+                  @include grid-span(7,6);
                 }
               }
             }
