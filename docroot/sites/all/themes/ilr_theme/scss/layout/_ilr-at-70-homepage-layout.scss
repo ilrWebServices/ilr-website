@@ -42,13 +42,15 @@ body.subsite-front {
             background-color: $gray-bg;
           }
           #block-bean-70th-reflections-featured {
-            border-bottom: 2px solid $gray-light;
+            border-bottom: 1px solid $gray-light;
             @include margin-leader(1);
             >h2 { // Hide title of block
               display: none;
             }
-            article.node-reflection { // Need data points for mobile
-              padding: 1em;
+            article.node-reflection {
+              position: relative;
+              padding-right: 1em;
+              padding-left: 1em;
               @include padding-leader(1.5);
               @include padding-trailer(1.5);
               .field-name-field-file {
@@ -57,6 +59,7 @@ body.subsite-front {
               h2 {
                 @include grid-span(12);
                 @include adjust-font-size-to(30px);
+                @include adjust-leading-to(1);
                 @include margin-trailer(0);
                 a {
                   color: $darker-red;
@@ -64,6 +67,12 @@ body.subsite-front {
                     cursor: default;
                   }
                 }
+              }
+              ul {
+                // @include grid-span(12);
+                position: absolute;
+                left: 0;
+                bottom: 0;
               }
               .field-name-field-file {
                 @include grid-span(12);
@@ -86,12 +95,14 @@ body.subsite-front {
                 @include adjust-leading-to(1);
                 font-style: oblique;
               }
-              .field-name-field-year-as-list-text {
-                @include grid-span(12);
-              }
               @include context('#main','#main[data-eq-state="768"]') {
                 h2 {
                   @include grid-span(7,6);
+                }
+                ul {
+                  // @include grid-span(7,6);
+                  left: 42%;
+                  bottom: .5em;
                 }
                 .field-name-field-file {
                   @include grid-span(5,1);
@@ -100,9 +111,6 @@ body.subsite-front {
                   @include grid-span(7,6);
                 }
                 .field-name-field-full-name {
-                  @include grid-span(7,6);
-                }
-                .field-name-field-year-as-list-text {
                   @include grid-span(7,6);
                 }
               }
@@ -110,6 +118,11 @@ body.subsite-front {
                 h2 {
                   @include grid-span(7,6);
                 }
+                ul {
+                  // @include grid-span(7,6);
+                  left: 42%;
+                  bottom: 1.5em;
+                }
                 .field-name-field-file {
                   @include grid-span(5,1);
                 }
@@ -117,9 +130,6 @@ body.subsite-front {
                   @include grid-span(7,6);
                 }
                 .field-name-field-full-name {
-                  @include grid-span(7,6);
-                }
-                .field-name-field-year-as-list-text {
                   @include grid-span(7,6);
                 }
               }
@@ -149,24 +159,6 @@ body.subsite-front {
               color: $darker-red;
               &:hover {
                 cursor: default;
-              }
-            }
-          }
-          ul.social {
-            opacity: 0;
-            padding: .8em 1em 0;
-            .twitter { @extend .follow-twitter; }
-            .facebook { @extend .follow-facebook; }
-            .linkedin { @extend .follow-linkedin; }
-            .email { @extend .follow-mail; }
-
-            li {
-              @include adjust-font-size-to(16px);
-              &:first-child {
-                padding-left: 0;
-              }
-              a {
-                color: $brand-light;
               }
             }
           }
@@ -382,6 +374,25 @@ body.subsite-front {
           }
         }
       }
+    }
+  }
+}
+
+ul.social {
+  opacity: 0;
+  padding: .8em 1em 0;
+  .twitter { @extend .follow-twitter; }
+  .facebook { @extend .follow-facebook; }
+  .linkedin { @extend .follow-linkedin; }
+  .email { @extend .follow-mail; }
+
+  li {
+    @include adjust-font-size-to(16px);
+    &:first-child {
+      padding-left: 0;
+    }
+    a {
+      color: $brand-light;
     }
   }
 }
