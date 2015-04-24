@@ -512,38 +512,29 @@ function _forms_career_services_contact_options() {
  * Generate options list for year_as_list_text field, based on which form it is
  */
 function _year_as_list_text_options($field, $instance = NULL, $entity_type = NULL, $entity = NULL) {
+  $options = FALSE;
   if (!$entity) {
     // Field edit form doesn't contain $entity; form on the site does.
     // This means we can't set a default value, but that's not a problem.
-    return;
+    return FALSE;
   }
-  if ($entity->type == 'labor_roundtable_student_registr') {
-    // Class year in the Labor Roundtable registration form starts with current year and goes six years out
-    return _forms_year_relative_options(0,6);
+
+  switch ($entity->type) {
+    case 'contact_ilr_admissions':
+      $options = _forms_year_relative_options(-5,5);
+      $options[] = 'other';
+      break;
+    case 'ilr_information_session_sign_in':
+      $options = date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
+      break;
+    case 'reflection':
+      $options = range(1948, date('Y') + 3);
+      break;
+    default:
+      $options = _forms_year_relative_options(0,6);
+      break;
   }
-  elseif ($entity->type == 'contact_ilr_admissions') {
-    // High school grad year for Admissions Contact form starts with 5 years
-    // ago and goes to 5 years from now, plus "other".
-    $return_array = _forms_year_relative_options(-5,5);
-    $return_array[] = 'other';
-    return $return_array;
-  }
-  elseif ($entity->type == 'ilr_information_session_sign_in') {
-    // Anticipated entry year at Cornell for Admissions Info Session sign-in form
-    // If it's before April: start with current year and go out 6 years
-    // April or later: start with the following year and go out 6 years
-    return date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
-  }
-  elseif ($entity->type == 'groat_student_registration') {
-    // Expected graduation year in the Groat Student Registration form starts with
-    // current year and goes six years out
-    return _forms_year_relative_options(0,6);
-  }
-  elseif ($entity->type == 'social_impact_career_forum_reg') {
-    // Expected graduation year in the Social Impact Career Forum Registration form starts with
-    // current year and goes six years out
-    return _forms_year_relative_options(0,6);
-  }
+  return $options;
 }
 
 /**

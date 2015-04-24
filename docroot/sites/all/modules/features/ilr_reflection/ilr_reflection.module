@@ -1,0 +1,127 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Reflection feature.
+ */
+
+include_once 'ilr_reflection.features.inc';
+
+function ilr_reflection_block_info() {
+  $blocks['reflection_node_form'] = array(
+    'info' => t('Add a reflection'),
+  );
+  return $blocks;
+}
+
+function ilr_reflection_block_view($delta = ''){
+  $block = array();
+
+  switch ($delta) {
+    case 'reflection_node_form':
+      module_load_include('inc', 'node', 'node.pages');
+      $title = drupal_get_title(); // Store the original title
+      $form = node_add('reflection');
+      drupal_set_title($title, PASS_THROUGH); // Restore the original title
+      $block['subject'] = t('Share a Memory');
+      $block['content']['form'] = $form;
+
+      // Hide the vertical tabs in the block version
+      $tabs = array('revision_information','author','options','menu','path');
+      foreach ($tabs as $key => $name) {
+        if (isset($form[$name])) {
+          $form[$name]['#access'] = false;
+        }
+      }
+
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_form_alter().
+ * Removes the youtube_video field for most roles
+ */
+function ilr_reflection_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'reflection_node_form') {
+    // Remove editing the profile type except for admins
+    if (!_ilr_user_has_role(array('administrator','contributor'))) {
+      $form['field_youtube_video']['#access'] = FALSE;
+      $form['field_tags']['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_node_presave().
+ * Makes sure that reflections are tagged "reflection"
+ */
+function ilr_reflection_node_presave($node) {
+  if ($node->type == 'reflection') {
+    $term_present = FALSE;
+    $term = taxonomy_get_term_by_name('reflection');
+    $reflection_tid = key($term);
+    if (isset($node->field_tags)) {
+      foreach ($node->field_tags[LANGUAGE_NONE] as $key => $term_info) {
+        if ($term_info['tid'] == $reflection_tid) {
+          $term_present = TRUE;
+        }
+      }
+    }
+    else {
+      $node->field_tags = array();
+    }
+    if (!$term_present) {
+      $node->field_tags[LANGUAGE_NONE][] = (array) array_shift($term);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ * Calls required formatting function(s) for reflections
+ * Calls redirect from reflection nodes to the 70th page
+ */
+function ilr_reflection_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'reflection') {
+    _ilr_reflection_format_class_year($node);
+    _ilr_reflection_add_social_sharing($node);
+
+    if ($view_mode == 'full' && !isset($_GET['layout'])) {
+      _ilr_reflection_redirect_to_70th_page($node->nid);
+    }
+  }
+}
+
+/**
+ * Returns the last two digits of the class year
+ * prepended with an apostrophe
+ */
+function _ilr_reflection_add_social_sharing(&$node) {
+  $channels = array('twitter','facebook','linkedin','email');
+  $markup = '<ul class="social">';
+  foreach ($channels as $key => $channel) {
+    $markup .= "  <li><a class='$channel' href='#'><span>$channel</span></a></li>\n";
+  }
+  $markup .= '</ul>';
+  $node->content['social_links']['#markup'] = $markup;
+}
+
+/**
+ * Returns the last two digits of the class year
+ * prepended with an apostrophe
+ */
+function _ilr_reflection_format_class_year(&$node) {
+  if (count($node->field_year_as_list_text) && count($node->field_full_name)) {
+    $year = $node->content['field_year_as_list_text'][0]['#markup'];
+    unset($node->content['field_year_as_list_text']);
+    $node->content['field_full_name'][0]['#markup'] .= ", '" . substr($year, -2);
+  }
+}
+
+/**
+ * Redirects to the 70th page
+ */
+function _ilr_reflection_redirect_to_70th_page($nid) {
+  drupal_goto('ilr-at-70', array('fragment' => $nid));
+}

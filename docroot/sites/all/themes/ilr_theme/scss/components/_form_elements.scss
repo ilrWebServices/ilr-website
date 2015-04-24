@@ -13,6 +13,10 @@ form {
     margin-right: 1em;
   }
 
+  select {
+    margin-left: 1px; //Fixes border cutoff in chrome
+  }
+
   article:before,
   article:after {
     clear: none;
