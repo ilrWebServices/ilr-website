@@ -1,0 +1,90 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Social Sharing feature.
+ */
+
+include_once 'ilr_social_sharing.features.inc';
+
+/**
+ * Implements hook_preprocess().
+ */
+function ilr_social_sharing_preprocess_node(&$variables) {
+  $enabled_bundles = _ilr_social_sharing_get_enabled_bundles();
+  if ($variables['view_mode'] == 'full' && in_array($variables['type'], $enabled_bundles)) {
+    _ilr_social_sharing_add_og_tags($variables);
+  }
+}
+
+function _ilr_social_sharing_add_og_tags($vars) {
+  $tag_data = _ilr_social_sharing_get_meta_tag_properties_and_content($vars);
+
+  foreach ($tag_data as $property => $content) {
+    $tag = array(
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'property' => $property,
+        'content' => $content,
+      ),
+    );
+    drupal_add_html_head($tag, str_replace(':', '_', $property));
+  }
+}
+
+
+function _ilr_social_sharing_get_class_year_from_date($node, $field) {
+  $formatted_year = '';
+  if (isset($node->{$field})) {
+    $year = $node->{$field}[LANGUAGE_NONE][0]['value'];
+    $formatted_year = " '" . substr($year, 2, 2);
+  }
+  return $formatted_year;
+}
+
+/**
+ * Returns a summary of the body field
+ * @todo
+ *  - Fix for class nodes, so that course summary gets returned
+ *  - Find workaround for body fields that begin with italicized messages, such as ** Nonprofit and public sector employees are eligible for a 15% discount on tuition for this course.
+ */
+function _ilr_social_sharing_get_description($node) {
+  $body_field = field_view_field('node', $node, 'body', array('type' => 'text_plain'));
+  return (count($body_field)) ? text_summary(trim($body_field[0]['#markup']), NULL, 200) : '';
+}
+
+function _ilr_social_sharing_get_enabled_bundles() {
+  return array(
+    'news_item',
+    'reflection',
+    'sdc_course',
+    'sdc_class',
+  );
+}
+
+function _ilr_social_sharing_get_image($node,$image_style) {
+  if ($image = field_get_items('node', $node, 'field_image')) {
+    $image_path = image_style_url($image_style, $image[0]['uri']);
+    return $image_path;
+  }
+  return '';
+}
+
+function _ilr_social_sharing_get_meta_tag_properties_and_content($vars) {
+  $description = _ilr_social_sharing_get_description($vars['node']);
+  $site = variable_get('site_name');
+  return array(
+    "twitter:card"            => 'summary',
+    "twitter:site"            => $site,
+    "twitter:title"           => $vars['title'],
+    "twitter:description"     => $description,
+    "twitter:creator"         => 'The ILR School',
+    "twitter:image"           => _ilr_social_sharing_get_image($vars['node'], 'twitter_share'),
+    "og:title"                => $vars['title'],
+    "og:type"                 => 'website',
+    "og:url"                  => drupal_get_path_alias(current_path()),
+    "og:image"                => _ilr_social_sharing_get_image($vars['node'], 'facebook_share'),
+    "og:description"          => $description,
+    "og:site_name"            => $site,
+    "fb:admins"               => '122623604426831', //based on http://findmyfacebookid.com/ and https://graph.facebook.com/ILRSchool
+  );
+}

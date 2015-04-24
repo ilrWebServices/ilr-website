@@ -2028,6 +2028,7 @@ function ilr_field_bases_field_default_field_bases() {
         'devel' => 0,
         'diff' => 0,
         'entityform_block' => 0,
+        'ilr_reflection' => 'ilr_reflection',
         'menu' => 0,
         'menu_block' => 0,
         'node' => 0,

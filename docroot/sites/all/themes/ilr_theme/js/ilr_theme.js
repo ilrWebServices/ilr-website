@@ -321,6 +321,18 @@
       });
     }
   };
+  Drupal.behaviors.microsite_nav = {
+    attach: function (context, settings) {
+      $('.microsite-nav a').click(function(){
+        var $target = $(this.hash);
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top - 175
+        }, 900, 'swing', function () {
+            window.location.hash = target;
+        });
+      });
+    }
+  };
   Drupal.behaviors.masonry = {
     attach: function (context, settings) {
       $(window).load(function() {

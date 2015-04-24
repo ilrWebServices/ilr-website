@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_page_build().
+ */
+function ilr_at_70_page_build(&$page) {
+  if (isset($page['header']) && $node = menu_get_object()) {
+    if ($node->title == 'ILR at 70') {
+      $nav = array(
+        'ilr_at_70_nav' => array(
+          '#markup' => _ilr_at_70_get_nav_markup(),
+        ),
+      );
+
+      if (isset($page['header']['ilr_mega_menu_ilr_mega_menu'])) {
+        unset($page['header']['ilr_mega_menu_ilr_mega_menu']);
+      }
+      $page['header'] = $nav + $page['header'];
+
+      // Add the js
+      drupal_add_js(drupal_get_path('module','ilr_at_70') . '/ilr_at_70.js', array('type' => 'file', 'scope' => 'footer'));
+    }
+  }
+}
+
+function _ilr_at_70_get_nav_markup() {
+  $markup = '';
+  if ($bean = bean_load_delta('ilr-at-70-nav')) {
+    $markup = $bean->field_bean_content[LANGUAGE_NONE][0]['value'];
+  }
+  return $markup;
+}

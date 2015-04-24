@@ -207,11 +207,10 @@ function _ilr_sub_pages_create_sub_page_access($node, $access_arg) {
  */
 function _ilr_sub_pages_is_top_menu_level($form_state) {
   // Menu items are always in the format [menu-name]:0 (i.e. main-menu:0)
-  if (isset($form_state['values']['menu'])) {
+  if (isset($form_state['values']['menu']) && $form_state['values']['menu']['enabled']) {
     $menu_info = explode(":", $form_state['values']['menu']['parent']);
     $menu = $menu_info[0];
     $plid = $menu_info[1];
-
     if ($menu != 'main-menu') {
       $parent = menu_link_load($plid);
       $plid = $parent['plid'];
