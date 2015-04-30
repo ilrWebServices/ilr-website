@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Author feature.
+ */
+
+include_once 'ilr_author.features.inc';

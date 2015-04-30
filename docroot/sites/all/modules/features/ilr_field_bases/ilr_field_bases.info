@@ -252,6 +252,7 @@ features[field_base][] = field_other_interests_text
 features[field_base][] = field_other_organizations
 features[field_base][] = field_other_please_specify
 features[field_base][] = field_passport_number
+features[field_base][] = field_people_profile_reference
 features[field_base][] = field_phone
 features[field_base][] = field_phone_additional
 features[field_base][] = field_phone_additional_2
