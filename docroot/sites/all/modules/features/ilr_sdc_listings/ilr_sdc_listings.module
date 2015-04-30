@@ -502,7 +502,8 @@ function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NU
     ->entityCondition('bundle', 'sdc_class')
     ->propertyCondition('status', 1)
     ->fieldCondition('field_course', 'target_id', $course_node->nid)
-    ->fieldCondition('field_registration_end_date', 'value', $today, '>=');
+    ->fieldCondition('field_registration_end_date', 'value', $today, '>=')
+    ->fieldOrderBy('field_class_dates', 'value');
   if ($class_nids) {
     $query->propertyCondition('nid', $class_nids);
   }
