@@ -56,7 +56,7 @@ function basic_page_wysiwyg_default_profiles() {
       'simple_source_formatting' => 1,
       'resize_enabled' => 1,
       'toolbarLocation' => 'top',
-      'forcePasteAsPlainText' => 1,
+      'forcePasteAsPlainText' => 0,
       'stylesSet' => '',
     ),
   );
