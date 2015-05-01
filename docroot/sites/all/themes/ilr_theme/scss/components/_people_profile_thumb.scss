@@ -5,7 +5,6 @@ body.page-taxonomy-term .view-areas-expertise-taxonomy-term {
 
   .view-content { @include leader(1); }
 
-  @extend %bean-base;
   article {
     position: relative;
     @extend %thumb;

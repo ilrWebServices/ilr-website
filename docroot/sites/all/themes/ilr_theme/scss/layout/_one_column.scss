@@ -34,11 +34,6 @@
       @include context('#main','#main[data-eq-state="768"]') {
         .block-bean article {
           @extend %three-column;
-          @extend %card;
-          &[data-eq-state="medium"],
-          &[data-eq-state="full"] {
-            @extend %card;
-          }
         }
       }
       @include context('#main','#main[data-eq-state="widescreen"]') {
