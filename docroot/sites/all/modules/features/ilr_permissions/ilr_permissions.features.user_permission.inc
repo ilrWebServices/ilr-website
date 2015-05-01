@@ -610,6 +610,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'create author content'.
+  $permissions['create author content'] = array(
+    'name' => 'create author content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create basic_page content'.
   $permissions['create basic_page content'] = array(
     'name' => 'create basic_page content',
@@ -675,6 +685,16 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create people_profile content',
     'roles' => array(
       'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create post content'.
+  $permissions['create post content'] = array(
+    'name' => 'create post content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -797,6 +817,15 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: 'delete any author content'.
+  $permissions['delete any author content'] = array(
+    'name' => 'delete any author content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'delete any basic_page content'.
@@ -926,6 +955,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any post content'.
+  $permissions['delete any post content'] = array(
+    'name' => 'delete any post content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any promo content'.
   $permissions['delete any promo content'] = array(
     'name' => 'delete any promo content',
@@ -1036,6 +1074,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: 'delete own author content'.
+  $permissions['delete own author content'] = array(
+    'name' => 'delete own author content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete own basic_page content'.
   $permissions['delete own basic_page content'] = array(
     'name' => 'delete own basic_page content',
@@ -1119,6 +1167,16 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'delete own people_profile content'.
   $permissions['delete own people_profile content'] = array(
     'name' => 'delete own people_profile content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own post content'.
+  $permissions['delete own post content'] = array(
+    'name' => 'delete own post content',
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
@@ -1369,6 +1427,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: 'edit any author content'.
+  $permissions['edit any author content'] = array(
+    'name' => 'edit any author content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any basic_page content'.
   $permissions['edit any basic_page content'] = array(
     'name' => 'edit any basic_page content',
@@ -1510,6 +1577,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit any post content'.
+  $permissions['edit any post content'] = array(
+    'name' => 'edit any post content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any promo content'.
   $permissions['edit any promo content'] = array(
     'name' => 'edit any promo content',
@@ -1639,6 +1715,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: 'edit own author content'.
+  $permissions['edit own author content'] = array(
+    'name' => 'edit own author content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit own basic_page content'.
   $permissions['edit own basic_page content'] = array(
     'name' => 'edit own basic_page content',
@@ -1723,6 +1809,16 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'edit own people_profile content'.
   $permissions['edit own people_profile content'] = array(
     'name' => 'edit own people_profile content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own post content'.
+  $permissions['edit own post content'] = array(
+    'name' => 'edit own post content',
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
