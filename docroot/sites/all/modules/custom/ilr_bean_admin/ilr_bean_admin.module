@@ -27,7 +27,9 @@ function ilr_bean_admin_bean_view_alter($bean) {
     $bean_view_mode = $bean['#entity']->view_mode;
     foreach (element_children($bean['field_content']) as $delta) {
       $node =& $bean['field_content'][$delta]['node'][$bean['field_content']['#items'][$delta]['target_id']]['#node'];
-      $node->bean_view_mode = $bean_view_mode;
+      if ($node) {
+        $node->bean_view_mode = $bean_view_mode;
+      }
     }
   }
 }
