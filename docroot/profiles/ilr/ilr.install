@@ -520,3 +520,12 @@ function ilr_update_7044() {
     'ilr_forms_public',
   ));
 }
+
+/**
+ * Enables ilr_post feature and dependencies
+ */
+function ilr_update_7045() {
+  module_enable(array(
+    'ilr_post',
+  ));
+}
