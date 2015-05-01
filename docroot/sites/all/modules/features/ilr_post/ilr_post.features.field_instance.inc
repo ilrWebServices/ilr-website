@@ -24,7 +24,7 @@ function ilr_post_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -76,11 +76,10 @@ function ilr_post_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'field_formatter_label' => '',
-          'links' => 1,
-          'view_mode' => 'teaser',
+          'link' => 0,
         ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 3,
+        'type' => 'entityreference_label',
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
