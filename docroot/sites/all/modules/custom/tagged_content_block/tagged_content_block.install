@@ -14,7 +14,7 @@ function tagged_content_block_update_7001() {
 }
 
 /**
- * Adds wit and reflections to tagged content block config
+ * Adds wit, reflections and posts to tagged content block config
  */
 function tagged_content_block_update_7002() {
   _tagged_content_block_enable_default_bundles();

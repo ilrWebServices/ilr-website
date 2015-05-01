@@ -284,7 +284,7 @@
           $links = $(".tagged-content a, .bean-content-listing-manual a, .view-course-manual-listings a");
           $links.each(function(){
             $href = $(this).attr('href');
-            if ($href.substring(0,5) == '/news' || $href.substring(0,22) == '/professional-programs') {
+            if (isWrappableHref($href)) {
               $(this).attr('href', '/' + currentSubsitePath() + $href);
             }
           });
@@ -303,6 +303,20 @@
       var currentSubsitePath = function() {
         var pathArray = window.location.pathname.split( '/' );
         return pathArray[1];
+      }
+
+      /**
+       * Checks to see if the href points to a path we want
+       * to wrap with the subsite URL
+       */
+      var isWrappableHref = function($href) {
+        var wrappablePaths = ['/news','/post','/professional-programs'];
+        for (path of wrappablePaths) {
+          if ($href.substring(0,path.length) == path) {
+            return true;
+          }
+        }
+        return false;
       }
     }
   };

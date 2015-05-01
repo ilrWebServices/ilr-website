@@ -1,0 +1,19 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Author feature.
+ */
+
+include_once 'ilr_author.features.inc';
+
+/**
+ * Implements hook_node_presave().
+ * Sets the author node title based on the first and last name values
+ */
+function ilr_author_node_presave($node) {
+  if ($node->type == 'author') {
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $title = $wrapper->field_first_name->value() . ' ' . $wrapper->field_last_name->value();
+    $wrapper->title->set($title);
+  }
+}
