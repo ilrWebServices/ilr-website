@@ -1,0 +1,13 @@
+#block-bean-70th-timeline {
+  @include padding-leader(2);
+  background-color: white;
+  border-bottom: 1px solid $gray-light;
+  h2 {
+    @extend %ilr-at-70-heading;
+    @include margin-trailer(1);
+  }
+  p {
+    margin: 0 3em;
+    max-width: 100%;
+  }
+}
