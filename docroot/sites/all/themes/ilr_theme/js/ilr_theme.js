@@ -311,8 +311,8 @@
        */
       var isWrappableHref = function($href) {
         var wrappablePaths = ['/news','/post','/professional-programs'];
-        for (path of wrappablePaths) {
-          if ($href.substring(0,path.length) == path) {
+        for (var i = 0; i < wrappablePaths.length; i++) {
+          if ($href.indexOf(wrappablePaths[i]) == 0) {
             return true;
           }
         }
