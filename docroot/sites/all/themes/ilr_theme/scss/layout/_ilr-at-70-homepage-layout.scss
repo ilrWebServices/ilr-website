@@ -332,11 +332,11 @@ body.subsite-front {
           .form-actions {
             @include margin-leader(1.5);
             input[type='submit'] {
-              background-color: $ochre-tan;
-              border: 1px solid $ochre-green;
+              background-color: white; //$ochre-tan
+              border: 2px solid $cornell-red; //$ochre-green
               border-radius: 6px;
               padding: .4em 1em;
-              color: $brown;
+              color: $cornell-red; //$brown
             }
           }
           @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
