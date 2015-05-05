@@ -162,24 +162,23 @@
           if (mobileNavActive()) {
             $('.subsite-header').removeAttr('style');
           }
-          // Temp fix: ilr-at-70 does not have a primary nav
-          // $navOffset = $('.menu-block-ilr-primary-menu').offset().top;
-          // if ($navOffset > 150) {
-          //   if (!$subsiteNavDefaultWidth) {
-          //     $subsiteNavDefaultWidth = $('.menu-block-ilr-primary-menu').width();
-          //   }
-          //   if(!$('.wrapped').length) {
-          //     $stickyContainers.forEach(function(container) {
-          //       container.addClass('wrapped');
-          //     });
-          //   }
-          //   if (menuHasEnoughSpace()) {
-          //     $('.wrapped').removeClass('wrapped');
-          //     $('.subsite-header').removeAttr('style');
-          //   }
-          // } else if ($navOffset != 0) {
-          //   $('.wrapped').removeClass('wrapped');
-          // }
+          $navOffset = $('.menu-block-ilr-primary-menu').offset().top;
+          if ($navOffset > 150) {
+            if (!$subsiteNavDefaultWidth) {
+              $subsiteNavDefaultWidth = $('.menu-block-ilr-primary-menu').width();
+            }
+            if(!$('.wrapped').length) {
+              $stickyContainers.forEach(function(container) {
+                container.addClass('wrapped');
+              });
+            }
+            if (menuHasEnoughSpace()) {
+              $('.wrapped').removeClass('wrapped');
+              $('.subsite-header').removeAttr('style');
+            }
+          } else if ($navOffset != 0) {
+            $('.wrapped').removeClass('wrapped');
+          }
         }
       }
 
@@ -204,8 +203,7 @@
       var getCurrentOffset = function() {
         if (widthChanged) {
           if (subsite && !mobileNavActive()) {
-            // $offset = $('.menu-block-ilr-primary-menu ul.menu').offset().top;
-            $offset = 0; //Temp fix: ilr-at-70 does not have a primary nav
+            $offset = $('.menu-block-ilr-primary-menu ul.menu').offset().top;
             $offset -= ($isAdmin) ? 29 : 0; // the admin menu is 29px tall
           } else {
             $offset = 0;
