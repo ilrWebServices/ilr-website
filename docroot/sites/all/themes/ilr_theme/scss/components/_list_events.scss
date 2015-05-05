@@ -1,0 +1,56 @@
+#block-bean-ilr-at-70-events {
+  @include padding-leader(1);
+  @include padding-trailer(2);
+  background-color: white;
+  h3.category.event {
+    display: none;
+  }
+  article {
+    border: none;
+    background-color: transparent;
+    flex-direction: row;
+    display: flex;
+    .thumbnail.custom       { order: 1; }
+    h2.event-title          { order: 2; }
+
+    .thumbnail.custom {
+      border-radius: 0;
+      margin: 0 1em 0 0;
+      width: auto;
+      height: auto;
+      a {
+        @include adjust-font-size-to(28px);
+        @include adjust-leading-to(1);
+        background: transparent;
+        border-radius: 0;
+        padding-top: .2em;
+        width: 80px;
+        height: 120px;
+        span {
+          border-right: 1px solid $ochre-tan;
+          padding-top: 0;
+          font-family: $font-headers;
+          font-size: inherit;
+          color: $ochre-green;
+        }
+      }
+    }
+    h2.event-title {
+      @include adjust-font-size-to(22px);
+      @include adjust-leading-to(1);
+      margin: .2em 0 0 0;
+      padding: 0;
+      width: 170px;
+      text-align: left;
+      a {
+        font-family: $font;
+        font-weight: 300;
+      }
+    }
+  }
+  .field-name-field-more-link {
+    @include padding-leader(1);
+    margin: 0 auto;
+    text-align: center;
+  }
+}

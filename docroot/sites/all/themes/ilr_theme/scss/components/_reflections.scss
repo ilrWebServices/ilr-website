@@ -1,0 +1,176 @@
+#block-bean-70th-reflections-featured {
+  border-bottom: 1px solid $gray-light;
+  @include margin-leader(1);
+  >h2 { // Hide title of block
+    display: none;
+  }
+  article.node-reflection {
+    position: relative;
+    padding-right: 1em;
+    padding-left: 1em;
+    @include padding-leader(1.5);
+    @include padding-trailer(1.5);
+    .field-name-field-file {
+      @include grid-span(5,1);
+    }
+    h2 {
+      @include grid-span(12);
+      @include adjust-font-size-to(30px);
+      @include adjust-leading-to(1);
+      @include margin-trailer(0);
+      a {
+        color: $darker-red;
+        &:hover {
+          cursor: default;
+        }
+      }
+    }
+    ul {
+      // @include grid-span(12);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+    .field-name-field-file {
+      @include grid-span(12);
+    }
+    .field-name-body {
+      @include grid-span(12);
+      @include padding-leader(0);
+      p {
+        @include margin-leader(.8);
+        @include margin-trailer(0);
+        &:first-child {
+          @include margin-leader(.5);
+        }
+      }
+    }
+    .field-name-field-full-name {
+      @include grid-span(12);
+      @include padding-leader(.5);
+      @include adjust-font-size-to(22px);
+      @include adjust-leading-to(1);
+      font-style: oblique;
+    }
+    @include context('#main','#main[data-eq-state="768"]') {
+      h2 {
+        @include grid-span(7,6);
+      }
+      ul {
+        // @include grid-span(7,6);
+        left: 42%;
+        bottom: .5em;
+      }
+      .field-name-field-file {
+        @include grid-span(5,1);
+      }
+      .field-name-body {
+        @include grid-span(7,6);
+      }
+      .field-name-field-full-name {
+        @include grid-span(7,6);
+      }
+    }
+    @include context('#main','#main[data-eq-state="widescreen"]') {
+      h2 {
+        @include grid-span(7,6);
+      }
+      ul {
+        // @include grid-span(7,6);
+        left: 42%;
+        bottom: 1.5em;
+      }
+      .field-name-field-file {
+        @include grid-span(5,1);
+      }
+      .field-name-body {
+        @include grid-span(7,6);
+      }
+      .field-name-field-full-name {
+        @include grid-span(7,6);
+      }
+    }
+  }
+}
+
+#block-bean-70th-reflections {
+  >h2 {
+    display: none;
+  }
+  // article {
+  .node-reflection {
+    @include padding-leader(0);
+    @include padding-trailer(.5);
+    @include clearfix;
+    border: 1px solid $gray-light;
+    border-radius:8px;
+    overflow: auto;
+    h2 {
+      margin-bottom: 0;
+      text-align: left;
+      padding: 1em .8em 0;
+      a {
+        color: $darker-red;
+        &:hover {
+          cursor: default;
+        }
+      }
+    }
+    .field-name-field-youtube-video {
+      a {
+        border-bottom: 0;
+      }
+    }
+    .field-type-text-with-summary {
+      display: block;
+      padding: 0 1em;
+    }
+    .field-name-body {
+      p {
+        @include margin-leader(.8);
+        @include margin-trailer(0);
+      }
+    }
+    .field-name-field-full-name {
+      @include margin-leader(.5);
+      padding-left: 1em;
+      font-style: oblique;
+    }
+    .field-name-field-year-as-list-text {
+      padding-left: 5px;
+    }
+    &.quote {
+      background-color: $gray-bg;
+      h2 {
+        display: none;
+      }
+      .field-name-body {
+        p {
+          @include adjust-font-size-to(25px);
+          @include adjust-leading-to(1);
+          color: #8f8746;
+        }
+      }
+    }
+  }
+}
+
+body.node-type-reflection {
+  .node-reflection {
+    @include margin-trailer (2);
+    img {
+      @include margin-trailer (1);
+    }
+    p {
+      &:first-child {
+        @include adjust-font-size-to(22px);
+        @include adjust-leading-to(1);
+      }
+    }
+    .field-type-text, .field-type-list-text {
+      @include adjust-font-size-to(22px);
+      font-style: oblique;
+    }
+  }
+}
+
