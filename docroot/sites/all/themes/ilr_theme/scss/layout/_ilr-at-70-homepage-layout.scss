@@ -295,7 +295,7 @@ body.subsite-front {
           @include clearfix;
           padding: 1em;
           @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
-            padding: 1em 4em;
+            padding: 1em 3em;
           }
           @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
             padding: 1em 4em;
@@ -309,6 +309,7 @@ body.subsite-front {
             input[type='text'], textarea {
               border: 1px solid $gray-medium;
               border-radius: 6px;
+              width: 100%; // So fields won't overlap in 2 columns
             }
             input#edit-field-file-und-0-upload {
               border: 1px solid $gray-medium;
