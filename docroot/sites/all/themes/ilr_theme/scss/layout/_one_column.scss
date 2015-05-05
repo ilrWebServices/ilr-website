@@ -14,10 +14,16 @@
           .block-bean article {
             @extend %three-column;
           }
+          .block-bean article.node-reflection { //Layout for featured reflection
+            @extend %one-column;
+          }
         }
         @include context('#main','#main[data-eq-state="widescreen"]') {
           .block-bean article {
             @extend %four-column;
+          }
+          .block-bean article.node-reflection { //Layout for featured reflection
+            @extend %one-column;
           }
         }
       }
