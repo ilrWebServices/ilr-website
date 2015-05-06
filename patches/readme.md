@@ -69,3 +69,8 @@ Example:
   * Rendered bean respects title display settings
   * https://www.drupal.org/node/1858416
   * https://www.drupal.org/files/issues/bean-1858416-28-title-display.patch
+
+* views_beans
+  * Rendered bean works after ctools security update 1.7
+  * https://www.drupal.org/node/2484063
+  * https://www.drupal.org/files/issues/php_undefined_function-2484063-1.patch
