@@ -83,6 +83,12 @@
             overflow: hidden;
             height: 20px;
           }
+          &.ILR {
+            height: 32px;
+            img {
+              max-width: 80px;
+            }
+          }
           img {
             max-width: 200px;
           }
