@@ -1,6 +1,5 @@
 #block-bean-70th-reflections-featured {
-  border-bottom: 1px solid $gray-light;
-  @include margin-leader(1);
+  background-color: $brown;
   >h2 { // Hide title of block
     display: none;
   }
@@ -19,11 +18,14 @@
       @include adjust-leading-to(1);
       @include margin-trailer(0);
       a {
-        color: $darker-red;
+        color: white;
         &:hover {
           cursor: default;
         }
       }
+    }
+    p {
+      color: $gray-light;
     }
     ul {
       // @include grid-span(12);
@@ -51,6 +53,7 @@
       @include adjust-font-size-to(22px);
       @include adjust-leading-to(1);
       font-style: oblique;
+      color: $gray-light;
     }
     @include context('#main','#main[data-eq-state="768"]') {
       h2 {
@@ -94,10 +97,10 @@
 }
 
 #block-bean-70th-reflections {
+  @include margin-leader(1);
   >h2 {
     display: none;
   }
-  // article {
   .node-reflection {
     @include padding-leader(0);
     @include padding-trailer(.5);
@@ -139,7 +142,7 @@
     .field-name-field-year-as-list-text {
       padding-left: 5px;
     }
-    &.quote {
+    &.quote { // Reflection of type quote
       background-color: $gray-bg;
       h2 {
         display: none;

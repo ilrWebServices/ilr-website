@@ -2,6 +2,7 @@
   @include padding-leader(1);
   @include padding-trailer(2);
   background-color: white;
+  border-bottom: 1px solid $gray-light;
   h3.category.event {
     display: none;
   }
