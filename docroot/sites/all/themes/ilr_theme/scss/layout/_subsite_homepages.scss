@@ -12,4 +12,9 @@ body.subsite-front {
       }
     }
   }
+  &.ilr-online {
+    .container[data-eq-state="regular-nav"] {
+      @extend %two-cols-right-sidebar;
+    }
+  }
 }

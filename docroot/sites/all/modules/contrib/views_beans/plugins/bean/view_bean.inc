@@ -102,6 +102,7 @@ class ViewBean extends BeanPlugin {
   public function view($bean, $content, $view_mode = 'default', $langcode = NULL) {
     module_load_include('inc', 'views_content', 'plugins/content_types/views_panes');
     module_load_include('inc', 'ctools', 'includes/content');
+    module_load_include('inc', 'ctools', 'includes/context');
 
     $conf = $bean->data;
     $ctools_content = views_content_views_panes_content_type_render($bean->subtype, $conf, array(), array());
@@ -109,7 +110,11 @@ class ViewBean extends BeanPlugin {
       $markup = '';
     }
     else {
-      $markup = $ctools_content->content;
+      // As of ctools 1.7, the content property became an array
+      // Was previously an html string
+      $markup = (is_array($ctools_content->content))
+        ? $ctools_content->content['#markup']
+        : $ctools_content->content;
     }
     $content['view'] = array(
       '#markup' => $markup,
