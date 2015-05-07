@@ -15,10 +15,6 @@ body.subsite-front {
   &.ilr-online {
     .container[data-eq-state="regular-nav"] {
       @extend %two-cols-right-sidebar;
-
-      .field-name-body {
-        max-width: 100% !important;
-      }
     }
   }
 }
