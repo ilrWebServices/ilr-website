@@ -48,11 +48,11 @@
     .form-actions {
       @include margin-leader(1.5);
       input[type='submit'] {
-        background-color: white; //$ochre-tan
-        border: 2px solid $cornell-red; //$ochre-green
+        background-color: white;
+        border: 2px solid $cornell-red;
         border-radius: 6px;
         padding: .4em 1em;
-        color: $cornell-red; //$brown
+        color: $cornell-red;
       }
     }
     @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {

@@ -1,5 +1,6 @@
 #block-bean-70th-timeline {
-  @include padding-leader(2);
+  @include padding-leader(1);
+  @include padding-trailer(1);
   background-color: white;
   border-bottom: 1px solid $gray-light;
   h2 {

@@ -19,9 +19,10 @@ body.subsite-front {
             @include padding-leader(0);
           }
           .quote {
-            &:nth-of-type(3) {
-              @include padding-trailer(2);
-            }
+            text-align: center;
+            font-family: $font-headers;
+            @include adjust-font-size-to(22px);
+            @include adjust-leading-to(1);
           }
         }
       }
@@ -31,6 +32,19 @@ body.subsite-front {
       #block-bean-70th-events-header {
         background-color: white;
         border-top: 1px solid $gray-light;
+      }
+      #block-bean-70th-celebration {
+        background-color: white;
+        border-top: 1px solid $gray-light;
+        padding: 0 1em;
+        @include padding-trailer(2);
+        .content {
+          margin: 0 auto;
+          max-width: $section-max-width;
+        }
+        h2 {
+          @extend %ilr-at-70-heading;
+        }
       }
       #block-bean-70th-giving-link {
         background: lighten($brand-dark, 15%);
