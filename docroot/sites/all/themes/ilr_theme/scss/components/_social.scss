@@ -1,4 +1,4 @@
-$social-channels: linkedin, facebook, twitter, youtube, instagram;
+$social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
 
 @for $i from 1 through length($social-channels) {
   .follow-#{nth($social-channels, $i)} {
@@ -28,23 +28,99 @@ $social-channels: linkedin, facebook, twitter, youtube, instagram;
   }
 }
 
+// #block-bean-footer-social {
+//   ul.social {
+//     @include inline-block-list;
+//     li {
+//       padding-left: .5em;
+//       background: none;
+//       a {
+//         display: block;
+//         border:none;
+//         &.follow-mail,
+//         &.follow-twitter,
+//         &.follow-youtube  {
+//           padding-top: 5px;
+//         }
+//         &:hover {
+//           border:none;
+//         }
+//         span {
+//           display: none;
+//         }
+//       }
+//     }
+//   }
+// }
+
 ul.social {
   @include inline-block-list;
   li {
-    padding-left: .5em;
+    border: 1px solid $gray-medium;
+    padding-left: 0;
+    margin-left: .5em;
     background: none;
+    border-radius: 50%;
+    &:nth-child(1) {
+      margin-left: 0;
+    }
     a {
+      background-color: $slate-blue;
+      border: 4px solid white;
       display: block;
-      border:none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      padding-top: 8px;
+      text-align: center;
+      color: $bg-body;
+      &.follow-mail,
       &.follow-twitter,
       &.follow-youtube {
-        padding-top: 5px;
+        padding-top: 12px;
+      }
+      &.follow-linkedin {
+        padding-left: .5em;
       }
       &:hover {
-        border:none;
+        background-color: $darker-red;
       }
       span {
         display: none;
+      }
+    }
+  }
+}
+
+#block-bean-footer-social {
+  ul.social {
+    @include inline-block-list;
+    li {
+      border: none;
+      padding-left: .5em;
+      margin-left: 0;
+      background: none;
+      border-radius: 0;
+      a {
+        background-color: transparent;
+        display: block;
+        width: auto;
+        height: auto;
+        border:none;
+        border-radius: 0;
+        padding-top: 0;
+        color: $brand-light;
+        &.follow-mail,
+        &.follow-twitter,
+        &.follow-youtube  {
+          padding-top: 5px;
+        }
+        &:hover {
+          border:none;
+        }
+        span {
+          display: none;
+        }
       }
     }
   }
