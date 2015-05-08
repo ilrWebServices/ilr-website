@@ -24,7 +24,7 @@ function ilr_sdc_listings_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -91,7 +91,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'addressfield',
         'settings' => array(
           'field_formatter_label' => '',
@@ -101,7 +101,7 @@ function ilr_sdc_listings_field_default_field_instances() {
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -230,7 +230,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
           'field_formatter_label' => '',
@@ -241,7 +241,7 @@ function ilr_sdc_listings_field_default_field_instances() {
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -316,7 +316,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -364,7 +364,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'field_formatter_label' => '',
@@ -372,7 +372,7 @@ function ilr_sdc_listings_field_default_field_instances() {
           'view_mode' => 'reference_field',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 7,
+        'weight' => 1,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -493,7 +493,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 6,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -547,7 +547,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 8,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -601,7 +601,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 7,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -648,7 +648,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
@@ -658,7 +658,7 @@ function ilr_sdc_listings_field_default_field_instances() {
           'thousand_separator' => ',',
         ),
         'type' => 'number_decimal',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -731,7 +731,7 @@ function ilr_sdc_listings_field_default_field_instances() {
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',

@@ -1,0 +1,19 @@
+%two-col-content-area {
+  &[data-eq-state="widescreen"] {
+    @include add-gutter(1em);
+    @include add-grid(3 9);
+    #content {
+      .section { max-width: 100%; }
+      @include grid-span(1,2);
+      font-weight: normal;
+      @include add-grid(9 3);
+      @include add-gutter(2em);
+      .group-main-content {
+        @include grid-span(1);
+      }
+      .group-sidebar {
+        @include grid-span(1,2);
+      }
+    }
+  }
+}

@@ -24,6 +24,9 @@
 }
 
 .node-type-sdc-class {
+  #main {
+    @extend %two-col-content-area;
+  }
   .field:not(.field-name-field-price) {
     @include trailer(1);
   }
@@ -33,8 +36,7 @@
   form {
     @include trailer(1);
   }
-  article article {
-    margin-left: 1em;
+  article {
     h2 {
       margin-bottom: 0;
     }

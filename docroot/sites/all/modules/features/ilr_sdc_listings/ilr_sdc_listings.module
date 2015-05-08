@@ -267,6 +267,7 @@ function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
     if ($class_available) {
       $form = drupal_get_form('ilr_sdc_listings_class_reg_form', array($class_node), TRUE, FALSE);
       $class_node->content['classes'] = $form;
+      $class_node->content['#group_children']['classes'] = 'group_sidebar';
     }
     else {
       drupal_set_message(t(variable_get('sdc_class_not_available')));
