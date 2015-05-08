@@ -28,31 +28,6 @@ $social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
   }
 }
 
-// #block-bean-footer-social {
-//   ul.social {
-//     @include inline-block-list;
-//     li {
-//       padding-left: .5em;
-//       background: none;
-//       a {
-//         display: block;
-//         border:none;
-//         &.follow-mail,
-//         &.follow-twitter,
-//         &.follow-youtube  {
-//           padding-top: 5px;
-//         }
-//         &:hover {
-//           border:none;
-//         }
-//         span {
-//           display: none;
-//         }
-//       }
-//     }
-//   }
-// }
-
 ul.social {
   @include inline-block-list;
   li {
@@ -65,8 +40,7 @@ ul.social {
       margin-left: 0;
     }
     a {
-      background-color: $slate-blue;
-      border: 4px solid white;
+      border: 3px solid white;
       display: block;
       width: 50px;
       height: 50px;
@@ -74,16 +48,26 @@ ul.social {
       padding-top: 8px;
       text-align: center;
       color: $bg-body;
-      &.follow-mail,
-      &.follow-twitter,
+      &.follow-mail {
+        background-color: #c87b3a;
+        padding-top: 12px;
+      }
+      &.follow-twitter{
+        background-color: #55acee; //official color
+        padding-top: 12px;
+      }
       &.follow-youtube {
         padding-top: 12px;
       }
       &.follow-linkedin {
+        background-color: #0077b5; //official color
         padding-left: .5em;
       }
+      &.follow-facebook {
+        background-color: #3a5795; //official color
+      }
       &:hover {
-        background-color: $darker-red;
+        background-color: $gray-dark;
       }
       span {
         display: none;
