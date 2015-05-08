@@ -1,5 +1,5 @@
 #block-bean-70th-reflections-featured {
-  background-color: $brown;
+  background: $brown url("http://www.ilr-website.dev/sites/all/themes/ilr_theme/images/early-years-bg.jpg") no-repeat left top;
   >h2 { // Hide title of block
     display: none;
   }
@@ -9,9 +9,6 @@
     padding-left: 1em;
     @include padding-leader(1.5);
     @include padding-trailer(1.5);
-    .field-name-field-file {
-      @include grid-span(5,1);
-    }
     h2 {
       @include grid-span(12);
       @include adjust-font-size-to(30px);
@@ -25,7 +22,7 @@
       }
     }
     p {
-      color: $gray-light;
+      color: white;
     }
     ul {
       // @include grid-span(12);
@@ -53,7 +50,7 @@
       @include adjust-font-size-to(22px);
       @include adjust-leading-to(1);
       font-style: oblique;
-      color: $gray-light;
+      color: white;
     }
     @include context('#main','#main[data-eq-state="768"]') {
       h2 {
