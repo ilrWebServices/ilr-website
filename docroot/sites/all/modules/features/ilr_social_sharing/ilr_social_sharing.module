@@ -57,6 +57,9 @@ function _ilr_social_sharing_get_class_year_from_date($node, $field) {
  *  - Find workaround for body fields that begin with italicized messages, such as ** Nonprofit and public sector employees are eligible for a 15% discount on tuition for this course.
  */
 function _ilr_social_sharing_get_description($node) {
+  if (!empty($node->field_description)) {
+    return $node->field_description[LANGUAGE_NONE][0]['safe_value'];
+  }
   $body_field = field_view_field('node', $node, 'body', array('type' => 'text_plain'));
   return (count($body_field)) ? text_summary(trim($body_field[0]['#markup']), NULL, 200) : '';
 }
