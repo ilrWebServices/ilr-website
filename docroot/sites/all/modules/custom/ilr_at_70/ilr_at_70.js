@@ -21,14 +21,11 @@
       var easing = 'Expo.easeOut';
 
       $('.node-reflection').mouseover(function() {
-        $article = $(this).closest('article');
-        $id = $article.attr('id');
-        var targetObj = '#' + $id + ' .social';
-        TweenLite.to($(targetObj), .6, {opacity:1, ease: easing });
+        TweenLite.to($(this).closest('article').find('.social-share'), .6, {opacity:1, ease: easing });
       });
 
       $('.node-reflection').mouseout(function() {
-        TweenLite.to($('.social'), .6, {opacity:0, ease: easing });
+        TweenLite.to($('.social-share'), .6, {opacity:0, ease: easing });
       });
 
       $(window).load(function() {
