@@ -14,6 +14,8 @@ function ilr_social_sharing_preprocess_node(&$variables) {
   if ($variables['view_mode'] == 'full' && in_array($variables['type'], $enabled_bundles)) {
     _ilr_social_sharing_add_og_tags($variables);
     _ilr_social_sharing_add_social_buttons($variables);
+    // Add the js
+    drupal_add_js(drupal_get_path('module','ilr_social_sharing') . '/ilr_social_sharing.js', array('type' => 'file', 'scope' => 'footer'));
   }
 }
 
