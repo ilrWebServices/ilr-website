@@ -13,6 +13,7 @@ function ilr_social_sharing_preprocess_node(&$variables) {
   $enabled_bundles = _ilr_social_sharing_get_enabled_bundles();
   if ($variables['view_mode'] == 'full' && in_array($variables['type'], $enabled_bundles)) {
     _ilr_social_sharing_add_og_tags($variables);
+    _ilr_social_sharing_add_social_buttons($variables);
   }
 }
 
@@ -31,6 +32,12 @@ function _ilr_social_sharing_add_og_tags($vars) {
   }
 }
 
+function _ilr_social_sharing_add_social_buttons(&$variables) {
+  $variables['content']['social_share'] = array(
+    '#markup' => _ilr_social_sharing_get_social_share_markup(),
+    '#weight' => -1,
+  );
+}
 
 function _ilr_social_sharing_get_class_year_from_date($node, $field) {
   $formatted_year = '';
@@ -88,4 +95,12 @@ function _ilr_social_sharing_get_meta_tag_properties_and_content($vars) {
     "og:site_name"            => $site,
     "fb:admins"               => '122623604426831', //based on http://findmyfacebookid.com/ and https://graph.facebook.com/ILRSchool
   );
+}
+
+function _ilr_social_sharing_get_social_share_markup() {
+  $markup = '';
+  if ($bean = bean_load_delta('social-sharing-block')) {
+    $markup = $bean->field_bean_content[LANGUAGE_NONE][0]['value'];
+  }
+  return $markup;
 }
