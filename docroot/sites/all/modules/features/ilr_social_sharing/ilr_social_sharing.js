@@ -82,35 +82,15 @@
         return location.origin + '/node/' + nid;
       }
 
-      $('.social a').click(function() {
+      $('.social-share a').click(function() {
         $channel = $(this).attr('class');
         $article = $(this).closest('article');
         $title = $('meta[itemprop="og:title"]').attr("content");
         $image = $('meta[itemprop="og:image"]').attr("content");
         $description = $('meta[itemprop="og:description"]').attr("content");
-        // $pubDate = $('meta[itemprop="og:pubDate"]').attr("content");
-        // $summary = $('meta[itemprop="og:summary"]').attr("content");
         $id = $article.attr('id').replace('node-','');
         shareWith[$channel]();
         return false;
-      });
-
-      var isNumeric = function(n) {
-        return !isNaN(parseFloat(n)) && isFinite(n);
-      }
-
-      $(window).load(function() {
-        if (hash = window.location.hash) {
-          var nid = hash.substring(1);
-          if (isNumeric(nid)) {
-            $.fancybox({
-              'type': 'iframe',
-              'autoDimensions' : true,
-              'autoScale' : true,
-              'href' : 'node/'+nid+'?layout=0',
-            });
-          }
-        }
       });
 
     }
