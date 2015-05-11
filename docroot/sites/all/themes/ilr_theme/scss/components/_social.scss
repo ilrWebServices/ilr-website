@@ -28,7 +28,7 @@ $social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
   }
 }
 
-ul.social {
+ul.social-share {
   @include inline-block-list;
   li {
     border: 1px solid $gray-medium;
