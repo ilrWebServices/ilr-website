@@ -35,7 +35,7 @@ function _ilr_social_sharing_add_og_tags($vars) {
 function _ilr_social_sharing_add_social_buttons(&$variables) {
   $variables['content']['social_share'] = array(
     '#markup' => _ilr_social_sharing_get_social_share_markup(),
-    '#weight' => -1,
+    '#weight' => $variables['content']['field_image']['#weight'] + 1,
   );
 }
 
