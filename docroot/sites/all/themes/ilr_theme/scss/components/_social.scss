@@ -76,35 +76,34 @@ ul.social-share {
   }
 }
 
-#block-bean-footer-social {
-  ul.social {
-    @include inline-block-list;
-    li {
-      border: none;
-      padding-left: .5em;
-      margin-left: 0;
-      background: none;
+
+ul.social {
+  @include inline-block-list;
+  li {
+    border: none;
+    padding-left: .5em;
+    margin-left: 0;
+    background: none;
+    border-radius: 0;
+    a {
+      background-color: transparent;
+      display: block;
+      width: auto;
+      height: auto;
+      border:none;
       border-radius: 0;
-      a {
-        background-color: transparent;
-        display: block;
-        width: auto;
-        height: auto;
+      padding-top: 0;
+      color: $brand-light;
+      &.follow-mail,
+      &.follow-twitter,
+      &.follow-youtube  {
+        padding-top: 5px;
+      }
+      &:hover {
         border:none;
-        border-radius: 0;
-        padding-top: 0;
-        color: $brand-light;
-        &.follow-mail,
-        &.follow-twitter,
-        &.follow-youtube  {
-          padding-top: 5px;
-        }
-        &:hover {
-          border:none;
-        }
-        span {
-          display: none;
-        }
+      }
+      span {
+        display: none;
       }
     }
   }
