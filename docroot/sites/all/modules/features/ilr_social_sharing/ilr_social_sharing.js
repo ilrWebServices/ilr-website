@@ -8,7 +8,7 @@
 (function ($) {
   Drupal.behaviors.ilr_social_sharing = {
     attach: function (context, settings) {
-      var $channel, $article, $title, $description, $summary, $id, link, domain;
+      var $channel, $article, $title, $description, $id, link, domain;
       var shareWith = [];
 
       shareWith['twitter'] = function() {
@@ -27,7 +27,7 @@
           'app_id'        : 122623604426831,
           'display'       : 'popup',
           'name'          : $title,
-          'description'   : $summary,
+          'description'   : $description,
           'redirect_uri'  : window.location.href,
           'link'          : getNodeURL($id),
         };
@@ -43,17 +43,17 @@
           'mini'          : true,
           'url'           : getNodeURL($id),
           'title'         : $title,
-          'summary'       : $summary,
+          'summary'       : $description,
           'source'        : 'Cornell University ILR School'
         };
         shareToURL(url, params);
       };
 
-      shareWith['email'] = function() {
+      shareWith['mail'] = function() {
         url = 'mailto:?';
         url += 'subject=ILR at 70: ' + $title.trim();
-        url += '&body='    + $summary.trim();
-        url += '%0D%0A%0D%0A' + 'View it online: ' + window.location.href + '#' + $id;
+        url += '&body='    + $description.trim();
+        url += '%0D%0A%0D%0A' + 'View it online: ' + window.location.href;
         url += '%0D%0A%0D%0ASee more: #ILR70';
 
         // Pass them straight to the url
@@ -85,9 +85,9 @@
       $('.social-share a').click(function() {
         $channel = $(this).attr('class');
         $article = $(this).closest('article');
-        $title = $('meta[itemprop="og:title"]').attr("content");
-        $image = $('meta[itemprop="og:image"]').attr("content");
-        $description = $('meta[itemprop="og:description"]').attr("content");
+        $title = $('meta[property="og:title"]').attr('content');
+        $image = $('meta[property="og:image"]').attr("content");
+        $description = $('meta[property="og:description"]').attr("content");
         $id = $article.attr('id').replace('node-','');
         shareWith[$channel]();
         return false;

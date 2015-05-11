@@ -1,7 +1,7 @@
 $social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
 
 @for $i from 1 through length($social-channels) {
-  .follow-#{nth($social-channels, $i)} {
+  .#{nth($social-channels, $i)} {
     @extend %icon-#{nth($social-channels, $i)};
   }
 }
@@ -48,22 +48,22 @@ ul.social-share {
       padding-top: 8px;
       text-align: center;
       color: $bg-body;
-      &.follow-mail {
+      &.mail {
         background-color: #c87b3a;
         padding-top: 12px;
       }
-      &.follow-twitter{
+      &.twitter{
         background-color: #55acee; //official color
         padding-top: 12px;
       }
-      &.follow-youtube {
+      &.youtube {
         padding-top: 12px;
       }
-      &.follow-linkedin {
+      &.linkedin {
         background-color: #0077b5; //official color
         padding-left: .5em;
       }
-      &.follow-facebook {
+      &.facebook {
         background-color: #3a5795; //official color
       }
       &:hover {
@@ -94,9 +94,9 @@ ul.social {
       border-radius: 0;
       padding-top: 0;
       color: $brand-light;
-      &.follow-mail,
-      &.follow-twitter,
-      &.follow-youtube  {
+      &.mail,
+      &.twitter,
+      &.youtube  {
         padding-top: 5px;
       }
       &:hover {
