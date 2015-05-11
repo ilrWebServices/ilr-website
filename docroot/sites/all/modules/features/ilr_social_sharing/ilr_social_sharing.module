@@ -37,7 +37,7 @@ function _ilr_social_sharing_add_og_tags($vars) {
 function _ilr_social_sharing_add_social_buttons(&$variables) {
   $variables['content']['social_share'] = array(
     '#markup' => _ilr_social_sharing_get_social_share_markup(),
-    '#weight' => $variables['content']['field_image']['#weight'] + 1,
+    '#weight' => _ilr_social_sharing_get_social_share_weight($variables['content']),
   );
 }
 
@@ -105,4 +105,11 @@ function _ilr_social_sharing_get_social_share_markup() {
     $markup = $bean->field_bean_content[LANGUAGE_NONE][0]['value'];
   }
   return $markup;
+}
+
+function _ilr_social_sharing_get_social_share_weight($content) {
+  if (isset($content['field_published_date'])) {
+    return $content['field_published_date']['#weight'] - 1;
+  }
+  return -1;
 }
