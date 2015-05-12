@@ -15,7 +15,7 @@
         url = 'https://twitter.com/intent/tweet';
         params = {
           'text'          : $title,
-          'hashtags'      : 'ILR70',
+          'hashtags'      : getHashtags(),
           'url'           : getNodeURL($id),
         };
         shareToURL(url, params);
@@ -51,7 +51,7 @@
 
       shareWith['mail'] = function() {
         url = 'mailto:?';
-        url += 'subject=ILR at 70: ' + $title.trim();
+        url += 'subject=' + getEmailSubject() + $title.trim();
         url += '&body='    + $description.trim();
         url += '%0D%0A%0D%0A' + 'View it online: ' + window.location.href;
         url += '%0D%0A%0D%0ASee more: #ILR70';
@@ -82,12 +82,39 @@
         return location.origin + '/node/' + nid;
       }
 
+      var getHashtags = function() {
+        var hashtags = Drupal.settings.ilr_social_sharing.hashtags;
+        if (typeof hashtags === 'undefined') {
+          hashtags = '';
+        }
+        return hashtags;
+      };
+
+      var getEmailSubject = function() {
+        // var subject = Drupal.settings.ilr_social_sharing.emailSubject;
+        if (typeof subject === 'undefined') {
+          subject = 'The ILR School: ';
+        }
+        return subject;
+      };
+
       $('.social-share a').click(function() {
         $channel = $(this).attr('class');
         $article = $(this).closest('article');
         $title = $('meta[property="og:title"]').attr('content');
         $image = $('meta[property="og:image"]').attr("content");
         $description = $('meta[property="og:description"]').attr("content");
+        $id = $article.attr('id').replace('node-','');
+        shareWith[$channel]();
+        return false;
+      });
+
+      $('.node-reflection .social a').click(function() {
+        $channel = $(this).attr('class');
+        $article = $(this).closest('article');
+        $title = $article.find('h2').first().text().trim();
+        $image = $article.find('img').attr('src');
+        $description = $article.find('.field-type-text-with-summary').text().trim();
         $id = $article.attr('id').replace('node-','');
         shareWith[$channel]();
         return false;

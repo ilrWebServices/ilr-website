@@ -1,10 +1,3 @@
-// @todo:
-//  - Move most of the social click functionality to ilr_social_sharing.js
-//  - Refactor .social a.click function to get values from og tags
-//  - Refactor shareWith['twitter'] with overridable hashtags
-//  - Refactor shareWith['email'] with overridable subject (and include hashtags?)
-
-
 (function ($) {
   Drupal.behaviors.ilr_at_70 = {
     attach: function (context, settings) {
