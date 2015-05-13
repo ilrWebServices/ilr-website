@@ -10,11 +10,11 @@
     @include clearfix;
     padding: 1em;
     @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
-      padding: 1em 3em;
+      padding: 1em 8em;
     }
-    @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
-      padding: 1em 4em;
-    }
+    // @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
+    //   padding: 1em 5em;
+    // }
     fieldset#edit-body-und-0-format {
       display: none;
     }

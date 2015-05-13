@@ -95,6 +95,10 @@
 
 #block-bean-70th-reflections {
   @include margin-leader(1);
+  @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
+    margin-left: 5em;
+    margin-right: 5em;
+  }
   >h2 {
     display: none;
   }
