@@ -78,6 +78,14 @@
   }
 }
 
+%three-column-masonry-narrow {
+  @include layout(3) {
+    @include add-gutter(.15);
+    @include add-gutter-style('split');
+    @include float-span(1);
+  }
+}
+
 %four-column {
   @include layout(8) {
     @include add-gutter-style('split');

@@ -1,6 +1,10 @@
 #block-bean-ilr-at-70-events {
   @include padding-leader(1);
   @include padding-trailer(2);
+  @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
+    padding-left: 5em;
+    padding-right: 5em;
+  }
   background-color: white;
   border-bottom: 1px solid $gray-light;
   h3.category.event {

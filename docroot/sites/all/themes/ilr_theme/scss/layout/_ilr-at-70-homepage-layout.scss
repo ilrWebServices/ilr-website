@@ -29,6 +29,14 @@ body.subsite-front {
     }
     #content-bottom {
       padding: 0;
+      clear: both;
+      // overrides base styles
+      &[data-eq-state="widescreen"] {
+        article {
+          @extend %three-column-masonry-narrow;
+        }
+      }
+
       #block-bean-70th-events-header {
         background-color: white;
         border-top: 1px solid $gray-light;
