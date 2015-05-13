@@ -8,6 +8,7 @@ dependencies[] = media_internet
 files[] = includes/MediaYouTubeStreamWrapper.inc
 files[] = includes/MediaInternetYouTubeHandler.inc
 files[] = includes/MediaYouTubeBrowser.inc
+configure = admin/config/services/media-youtube
 
 ; Information added by Drupal.org packaging script on 2015-03-23
 version = "7.x-2.0-rc5"
