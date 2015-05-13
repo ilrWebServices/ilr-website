@@ -27,6 +27,63 @@ body.subsite-front {
         }
       }
     }
+    #block-bean-70th-reflections-featured {
+      .node-reflection {
+        h2 {
+          @include grid-span(12);
+        }
+        ul {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+        }
+        .field-name-field-file {
+          @include grid-span(12);
+        }
+        .field-name-body {
+          @include grid-span(12);
+        }
+        .field-name-field-full-name {
+          @include grid-span(12);
+        }
+        @include context('#main','#main[data-eq-state="768"]') {
+          h2 {
+            @include grid-span(7,6);
+          }
+          ul {
+            left: 42%;
+            bottom: .5em;
+          }
+          .field-name-field-file {
+            @include grid-span(5,1);
+          }
+          .field-name-body {
+            @include grid-span(7,6);
+          }
+          .field-name-field-full-name {
+            @include grid-span(7,6);
+          }
+        }
+        @include context('#main','#main[data-eq-state="widescreen"]') {
+          h2 {
+            @include grid-span(7,6);
+          }
+          ul {
+            left: 42%;
+            bottom: 1.5em;
+          }
+          .field-name-field-file {
+            @include grid-span(5,1);
+          }
+          .field-name-body {
+            @include grid-span(7,6);
+          }
+          .field-name-field-full-name {
+            @include grid-span(7,6);
+          }
+        }
+      }
+    }
     #content-bottom {
       padding: 0;
       clear: both;
