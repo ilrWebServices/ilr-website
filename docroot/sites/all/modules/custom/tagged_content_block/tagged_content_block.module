@@ -122,12 +122,6 @@ function _tagged_content_block_add_thumbnail(&$variables) {
   $variables['content']['field_image']['#markup'] = _tagged_content_block_generate_thumbnail_markup($url, $content_type);
 }
 
-function _tagged_content_block_add_event_thumbnail(&$variables, $url) {
-  $details = _tagged_content_block_get_event_details($url);
-  $variables['field_image'][] = 'Placeholder';
-  $variables['content']['field_image']['#markup'] =_tagged_content_block_generate_thumbnail_markup($url, 'event', $details);
-}
-
 /**
  * Enables default content types for tagged content blocks
  * @return array The default content types, needed by
@@ -189,29 +183,6 @@ function _tagged_content_block_get_default_category_type($content_type) {
   return isset($categories[$content_type])
     ? $categories[$content_type]
     : str_replace('_', ' ', $content_type);
-}
-
-function _tagged_content_block_get_event_details($url) {
-  $test = $url . '.ics';
-  $request = drupal_http_request($test);
-  $ical_data = $request->data;
-  $start_pos = strpos($ical_data,'DTSTART');
-  $end_pos = strpos($ical_data,'DTEND');
-  $start_date_string = substr($ical_data, $start_pos + 8, 8);
-  $end_date_string = substr($ical_data, $end_pos + 6, 8);
-  $event_date = new DateTime($start_date_string);
-  $month = $event_date->format('M');
-  if ($start_date_string == $end_date_string) {
-    $day = $event_date->format('j');
-  } // multi-day
-  else {
-    $event_date_end = new DateTime($end_date_string);
-    $day = $event_date->format('j') . '-' . $event_date_end->format('j');
-  }
-  return array(
-    'month' => $month,
-    'day'   => $day,
-  );
 }
 
 function _tagged_content_block_get_hyphened_type($type) {
@@ -285,11 +256,5 @@ function _tagged_content_block_update_promo_links(&$variables) {
 
   if (isset($variables['content']['field_image']) && count($variables['content']['field_image'])) {
     $variables['content']['field_image'][0]['#path']['path'] = ltrim($url, '/');
-  }
-
-  if (_tagged_content_block_is_event($url)) {
-    // // Make sure that the image does not show
-    $variables['content']['field_image'] = $variables['field_image'] = array();
-    _tagged_content_block_add_event_thumbnail($variables, $url);
   }
 }
