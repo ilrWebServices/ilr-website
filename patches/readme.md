@@ -74,3 +74,8 @@ Example:
   * Rendered bean works after ctools security update 1.7
   * https://www.drupal.org/node/2484063
   * https://www.drupal.org/files/issues/php_undefined_function-2484063-1.patch
+
+* media_youtube
+  * Fixes issues with youtube api v3
+  * https://www.drupal.org/node/2410027
+  * https://www.drupal.org/files/issues/media_youtube_apiv3_v4.patch

@@ -529,3 +529,10 @@ function ilr_update_7045() {
     'ilr_post',
   ));
 }
+
+/**
+ * Adds youtube api for media_youtube
+ */
+function ilr_update_7046() {
+  variable_set('media_youtube_api_key', 'AIzaSyAmQHtLLBP8-AGYKxiy-Ml8w2J-W8NewBU');
+}
