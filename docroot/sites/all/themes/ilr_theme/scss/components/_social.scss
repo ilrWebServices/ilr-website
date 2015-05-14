@@ -50,3 +50,26 @@ ul.social {
     }
   }
 }
+
+body.subsite-front {
+  &.ilr-at-70 {
+    ul.social-share {
+      opacity: 0;
+      padding: .8em 1em 0;
+      .twitter { @extend .follow-twitter; }
+      .facebook { @extend .follow-facebook; }
+      .linkedin { @extend .follow-linkedin; }
+      .email { @extend .follow-mail; }
+
+      li {
+        @include adjust-font-size-to(16px);
+        &:first-child {
+          padding-left: 0;
+        }
+        a {
+          color: $brand-light;
+        }
+      }
+    }
+  }
+}

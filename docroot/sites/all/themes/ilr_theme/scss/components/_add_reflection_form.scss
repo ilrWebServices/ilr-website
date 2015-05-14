@@ -1,92 +1,83 @@
-#block-ilr-reflection-reflection-node-form {
-  @include margin-leader(1);
-  @include padding-trailer(1);
-  border-top: 1px solid $gray-light;
-  h2 {
-    @extend %ilr-at-70-heading;
+%add-reflection-form {
+  @include clearfix;
+  padding: 1em;
+  @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
+    padding: 1em 8em;
+  }
+  @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
+    padding: 1em 8em;
+  }
+  fieldset#edit-body-und-0-format {
     display: none;
   }
-  .node-reflection-form {
-    @include clearfix;
-    padding: 1em;
-    @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
-      padding: 1em 8em;
+  .form-item {
+    @include margin-leader(1);
+    margin-bottom: 0;
+    input[type='text'], textarea {
+      border: 1px solid $gray-medium;
+      border-radius: 6px;
+      width: 100%; // So fields won't overlap in 2 columns
     }
-    @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
-      padding: 1em 8em;
-    }
-    fieldset#edit-body-und-0-format {
-      display: none;
-    }
-    .form-item {
-      @include margin-leader(1);
-      margin-bottom: 0;
-      input[type='text'], textarea {
-        border: 1px solid $gray-medium;
-        border-radius: 6px;
-        width: 100%; // So fields won't overlap in 2 columns
-      }
-      input#edit-field-file-und-0-upload {
-        border: 1px solid $gray-medium;
-        border-radius: 6px;
-        margin-right: .5em;
-        padding: .2em;
-        font-weight: 300;
-      }
-    }
-    span.field-edit-link { // Hides edit summary link
-      display: none;
-    }
-    .file-widget {
-      input[type='submit'] {
-        background-color: $gray-light;
-        border: 1px solid $gray-medium;
-        border-radius: 6px;
-        padding: 0 .2em;
-      }
-    }
-    .form-actions {
-      @include margin-leader(1.5);
-      input[type='submit'] {
-        background-color: white;
-        border: 2px solid $cornell-red;
-        border-radius: 6px;
-        padding: .4em 1em;
-        color: $cornell-red;
-      }
-    }
-    @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
-      .form-item-title, .field-name-field-full-name, .field-name-field-email, .field-name-field-year-as-list-text {
-        @extend %two-column;
-        float: left;
-      }
-      .field-name-body {
-        @extend %one-column;
-        @include padding-leader(.5);
-        clear: both;
-      }
-      .field-name-field-file, .field-name-field-youtube-video, .field-name-field-tags, .form-actions {
-        @extend %one-column;
-        @include padding-leader(.5);
-      }
-    }
-    @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
-      .form-item-title, .field-name-field-full-name, .field-name-field-email, .field-name-field-year-as-list-text {
-        @extend %two-column;
-        float: left;
-      }
-      .field-name-body {
-        @extend %one-column;
-        @include padding-leader(.5);
-        clear: both;
-      }
-      .field-name-field-file, .field-name-field-youtube-video, .field-name-field-tags, .form-actions {
-        @extend %one-column;
-        @include padding-leader(.5);
-      }
-    }
-    label {
+    input#edit-field-file-und-0-upload {
+      border: 1px solid $gray-medium;
+      border-radius: 6px;
+      margin-right: .5em;
+      padding: .2em;
       font-weight: 300;
     }
+  }
+  span.field-edit-link { // Hides edit summary link
+    display: none;
+  }
+  .file-widget {
+    input[type='submit'] {
+      background-color: $gray-light;
+      border: 1px solid $gray-medium;
+      border-radius: 6px;
+      padding: 0 .2em;
+    }
+  }
+  .form-actions {
+    @include margin-leader(1.5);
+    input[type='submit'] {
+      background-color: white;
+      border: 2px solid $cornell-red;
+      border-radius: 6px;
+      padding: .4em 1em;
+      color: $cornell-red;
+    }
+  }
+  @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
+    .form-item-title, .field-name-field-full-name, .field-name-field-email, .field-name-field-year-as-list-text {
+      @extend %two-column;
+      float: left;
+    }
+    .field-name-body {
+      @extend %one-column;
+      @include padding-leader(.5);
+      clear: both;
+    }
+    .field-name-field-file, .field-name-field-youtube-video, .field-name-field-tags, .form-actions {
+      @extend %one-column;
+      @include padding-leader(.5);
+    }
+  }
+  @include context('#content-bottom','#content-bottom[data-eq-state="widescreen"]') {
+    .form-item-title, .field-name-field-full-name, .field-name-field-email, .field-name-field-year-as-list-text {
+      @extend %two-column;
+      float: left;
+    }
+    .field-name-body {
+      @extend %one-column;
+      @include padding-leader(.5);
+      clear: both;
+    }
+    .field-name-field-file, .field-name-field-youtube-video, .field-name-field-tags, .form-actions {
+      @extend %one-column;
+      @include padding-leader(.5);
+    }
+  }
+  label {
+    font-weight: 300;
   }
 }
