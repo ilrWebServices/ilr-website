@@ -1,14 +1,5 @@
 body.subsite-front {
   &.ilr-at-70 {
-    .tagline {
-      text-align: center;
-      font-style: oblique;
-      @include adjust-font-size-to(22px);
-    }
-    h2.centered-title {
-      @extend %ilr-at-70-heading;
-      @include margin-trailer(.5);
-    }
     #main {
       padding-top: 0;
       #content {
@@ -17,12 +8,6 @@ body.subsite-front {
           @include leader(0);
           .field-name-body {
             @include padding-leader(0);
-          }
-          .quote {
-            text-align: center;
-            font-family: $font-headers;
-            @include adjust-font-size-to(22px);
-            @include adjust-leading-to(1);
           }
         }
       }
@@ -87,99 +72,11 @@ body.subsite-front {
     #content-bottom {
       padding: 0;
       clear: both;
-      // overrides base styles
-      &[data-eq-state="widescreen"] {
+      &[data-eq-state="widescreen"] {// overrides base styles
         article {
           @extend %three-column-masonry-narrow;
         }
       }
-
-      #block-bean-70th-events-header {
-        background-color: white;
-        border-top: 1px solid $gray-light;
-      }
-      #block-bean-70th-celebration {
-        background-color: white;
-        border-top: 1px solid $gray-light;
-        padding: 0 1em;
-        @include padding-trailer(2);
-        .content {
-          margin: 0 auto;
-          max-width: $section-max-width;
-        }
-        h2 {
-          @extend %ilr-at-70-heading;
-        }
-      }
-      #block-bean-70th-giving-link {
-        background: lighten($brand-dark, 15%);
-        @include padding-leader(2);
-        @include padding-trailer(2);
-        p {
-          margin: 0 auto;
-          text-align: center;
-          @include adjust-font-size-to(22px);
-          @include adjust-leading-to(1);
-          color: white;
-          a, a:visited {
-            color: white;
-            border-bottom: 1px solid lighten($brand-dark, 25%);
-            &:hover {
-              color: lighten($brand-light, 20%);
-              border-bottom: 1px solid lighten($brand-dark, 30%);
-            }
-          }
-        }
-        h2 {
-          display: none;
-        }
-      }
     }
   }
-}
-
-ul.social-share {
-  opacity: 0;
-  padding: .8em 1em 0;
-  .twitter { @extend .follow-twitter; }
-  .facebook { @extend .follow-facebook; }
-  .linkedin { @extend .follow-linkedin; }
-  .email { @extend .follow-mail; }
-
-  li {
-    @include adjust-font-size-to(16px);
-    &:first-child {
-      padding-left: 0;
-    }
-    a {
-      color: $brand-light;
-    }
-  }
-}
-
-%ilr-at-70-heading {
-  max-width: $section-max-width; //Center border after title
-  font-weight: normal;
-  text-transform: none;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  @include adjust-font-size-to(34px);
-  @include adjust-leading-to(1.5);
-  @include padding-leader(1);
-  &::after {
-    content: " ";
-    border-bottom: 1px solid $cornell-red;
-    display: block;
-    margin: auto 0;
-    position: relative;
-    top: 0;
-    left: 30%;
-    width: 40%;
-    height: 10px;
-  }
-}
-
-.jPanelMenu-panel { // Removes line at bottom of reflection modal
-  @include box-shadow(0 0px 0px 0px rgba(black, .5));
 }

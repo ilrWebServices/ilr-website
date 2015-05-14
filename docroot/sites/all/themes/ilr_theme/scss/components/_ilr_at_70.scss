@@ -1,0 +1,88 @@
+body.subsite-front {
+  &.ilr-at-70 {
+    .introduction {
+      text-align: center;
+      font-family: $font-headers;
+      @include adjust-font-size-to(22px);
+      @include adjust-leading-to(1);
+    }
+
+    .tagline {
+      text-align: center;
+      font-style: oblique;
+      @include adjust-font-size-to(22px);
+    }
+
+    #block-bean-70th-events-header {
+      background-color: white;
+      border-top: 1px solid $gray-light;
+    }
+
+    #block-bean-70th-celebration {
+      background-color: white;
+      border-top: 1px solid $gray-light;
+      padding: 0 1em;
+      @include padding-trailer(2);
+      .content {
+        margin: 0 auto;
+        max-width: $section-max-width;
+      }
+      h2 {
+        @extend %ilr-at-70-heading;
+      }
+    }
+
+    #block-ilr-reflection-reflection-node-form {
+      @include margin-leader(1);
+      @include padding-trailer(1);
+      border-top: 1px solid $gray-light;
+      h2 {
+        @extend %ilr-at-70-heading;
+        display: none;
+      }
+      .node-reflection-form {
+        @extend %add-reflection-form;
+      }
+    }
+
+    #block-bean-ilr-at-70-events {
+      @extend %listed-events;
+      background-color: white;
+      border-bottom: 1px solid $gray-light;
+      @include padding-leader(1);
+      @include padding-trailer(2);
+      @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
+        padding-left: 5em;
+        padding-right: 5em;
+      }
+    }
+
+    #block-bean-70th-giving-link {
+      background: lighten($brand-dark, 15%);
+      @include padding-leader(2);
+      @include padding-trailer(2);
+      p {
+        margin: 0 auto;
+        text-align: center;
+        @include adjust-font-size-to(22px);
+        @include adjust-leading-to(1);
+        color: white;
+        a, a:visited {
+          color: white;
+          border-bottom: 1px solid lighten($brand-dark, 25%);
+          &:hover {
+            color: lighten($brand-light, 20%);
+            border-bottom: 1px solid lighten($brand-dark, 30%);
+          }
+        }
+      }
+      h2 {
+        display: none;
+      }
+    }
+
+    .jPanelMenu-panel { // Removes line at bottom of reflection modal
+      @include box-shadow(0 0px 0px 0px rgba(black, .5));
+    }
+  }
+}
