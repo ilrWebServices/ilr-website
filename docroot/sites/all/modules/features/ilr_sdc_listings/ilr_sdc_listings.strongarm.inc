@@ -34,6 +34,12 @@ function ilr_sdc_listings_strongarm() {
       'reference_field' => array(
         'custom_settings' => TRUE,
       ),
+      'mega_menu_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'basic_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -72,6 +78,12 @@ function ilr_sdc_listings_strongarm() {
       ),
       'reference_field' => array(
         'custom_settings' => TRUE,
+      ),
+      'mega_menu_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'basic_teaser' => array(
+        'custom_settings' => FALSE,
       ),
     ),
     'extra_fields' => array(

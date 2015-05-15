@@ -111,15 +111,8 @@ function ilr_sdc_listings_field_default_field_instances() {
       ),
       'reference_field' => array(
         'label' => 'hidden',
-        'module' => 'addressfield',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'format_handlers' => array(
-            0 => 'address',
-          ),
-          'use_widget_handlers' => 1,
-        ),
-        'type' => 'addressfield_default',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'teaser' => array(
@@ -187,12 +180,9 @@ function ilr_sdc_listings_field_default_field_instances() {
       ),
       'reference_field' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 2,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -231,17 +221,9 @@ function ilr_sdc_listings_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'date',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 2,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -254,8 +236,8 @@ function ilr_sdc_listings_field_default_field_instances() {
         'module' => 'date',
         'settings' => array(
           'field_formatter_label' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
+          'format_type' => 'ilr_short_day_only',
+          'fromto' => 'value',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
@@ -426,14 +408,9 @@ function ilr_sdc_listings_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'links' => 0,
-          'view_mode' => 'full',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 6,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -442,14 +419,14 @@ function ilr_sdc_listings_field_default_field_instances() {
         'weight' => 0,
       ),
       'reference_field' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 5,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -649,16 +626,9 @@ function ilr_sdc_listings_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'field_formatter_label' => '',
-          'prefix_suffix' => 1,
-          'scale' => 2,
-          'thousand_separator' => ',',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 1,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -668,28 +638,14 @@ function ilr_sdc_listings_field_default_field_instances() {
       ),
       'reference_field' => array(
         'label' => 'hidden',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'field_formatter_label' => '',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'field_formatter_label' => '',
-          'prefix_suffix' => 1,
-          'scale' => 2,
-          'thousand_separator' => '',
-        ),
-        'type' => 'number_decimal',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 5,
       ),
     ),
@@ -815,7 +771,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
-          'trim_length' => 200,
+          'trim_length' => 350,
         ),
         'type' => 'text_summary_or_trimmed',
         'weight' => 0,
@@ -855,7 +811,7 @@ function ilr_sdc_listings_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1064,16 +1020,9 @@ function ilr_sdc_listings_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'field_formatter_label' => '',
-          'prefix_suffix' => 1,
-          'scale' => 2,
-          'thousand_separator' => '',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 1,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
