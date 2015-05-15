@@ -1,4 +1,38 @@
+div.class-details {
+  @include leader(-2);
+}
+.class-details {
+  .button {
+    @include rhythm-margins(1);
+    @extend %cornell-button;
+    display: none;
+    &:first-of-type { // Hide additional buttons by default
+      display: inline-block;
+    }
+    .cost {
+      display: block;
+      text-align: center;
+      @include adjust-font-size-to(14px, .5);
+      padding-bottom: .3em;
+    }
+  }
+  .request-info {
+    @include adjust-font-size-to(14px, .7);
+    font-style: italic;
+    display: block;
+  }
+  .location, .date, .time {
+    clear: left;
+    display: block;
+    @include adjust-font-size-to(14px, .7);
+  }
+}
+
+.page-professional-programs-public-offerings {
+  @extend %two-col-content-area;
+}
 .node-type-sdc-course {
+  @extend %two-col-content-area;
   .field-name-field-catalog-prefix {
     @include adjust-font-size-to($h2-size);
     font-family: $font-headers;
@@ -24,17 +58,12 @@
 }
 
 .node-type-sdc-class {
-  #main {
-    @extend %two-col-content-area;
-  }
+  @extend %two-col-content-area;
   .field:not(.field-name-field-price) {
     @include trailer(1);
   }
   .field-label {
     margin-bottom: 0;
-  }
-  form {
-    @include trailer(1);
   }
   article {
     h2 {
@@ -51,10 +80,10 @@
       padding: 0;
     }
   }
-  .views-field-field-on-demand {
-    float: right;
-    margin-right: 1em;
-    width: 100%;
+  > .view-content > div {
+    @include rhythm-margins(1, 1);
+    @include trailing-border(1px);
+    border-color: $gray-light;
   }
 }
 

@@ -24,8 +24,8 @@ form {
 
 }
 #ilr-sdc-listings-class-reg-form {
-  @include padding-leader(1);
   div.form-type-radio {
+    clear: left;
     float: left;
     margin: 0 .5em 0 0;
   }
@@ -92,4 +92,17 @@ form {
     display: none;
   }
 }
-
+%cornell-button {
+  background-color: white;
+  border: 2px solid $cornell-red;
+  border-radius: 6px;
+  padding: .2em 1em;
+  color: $cornell-red;
+  text-transform: uppercase;
+  clear: left;
+  font-weight: bold;
+  @extend .clearfix;
+  &:hover {
+    cursor: pointer;
+  }
+}

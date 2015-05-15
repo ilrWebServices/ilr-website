@@ -1,18 +1,25 @@
 %two-col-content-area {
-  &[data-eq-state="widescreen"] {
-    @include add-gutter(1em);
-    @include add-grid(3 9);
+  #main {
     #content {
-      .section { max-width: 100%; }
-      @include grid-span(1,2);
       font-weight: normal;
       @include add-grid(9 3);
       @include add-gutter(2em);
+      article > h1, article > h2 {
+        @include grid-span(1);
+      }
       .group-main-content {
+        clear: left !important;
         @include grid-span(1);
       }
       .group-sidebar {
         @include grid-span(1,2);
+      }
+    }
+    &[data-eq-state="widescreen"] {
+      @include add-grid(9 3);
+      #content {
+        @include grid-span(1);
+        .section { max-width: 100%; }
       }
     }
   }
