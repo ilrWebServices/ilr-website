@@ -540,6 +540,7 @@ function _ilr_sdc_listings_generate_request_info_markup() {
 }
 
 function _ilr_sdc_listings_generate_class_time_location_markup($class_node) {
+  $markup = '';
   $wrapper = ilr_get_node_wrapper($class_node);
   $city = $wrapper->field_address->locality->value();
   $state = $wrapper->field_address->administrative_area->value();
