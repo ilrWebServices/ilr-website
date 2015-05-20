@@ -120,12 +120,16 @@ function _ilr_sdc_listings_get_nid_from_catalog_prefix($catalog_prefix) {
  * Implements hook_node_view().
  */
 function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
-
   switch ($node->type) {
     case 'sdc_course':
+      if ($view_mode == 'reference_field') {
+        _ilr_sdc_listings_update_reference_title($node);
+      }
+      _ilr_sdc_listings_add_prefix_to_title($node, $node->type);
       _ilr_sdc_listings_course_add_classes($node, $view_mode);
       break;
     case 'sdc_class':
+      _ilr_sdc_listings_add_prefix_to_title($node, $node->type);
       _ilr_sdc_listings_class_empty_msg($node, $view_mode);
       _ilr_sdc_listings_class_add_reg_form($node, $view_mode);
       _ilr_sdc_listings_class_add_readmore($node, $view_mode);
@@ -264,9 +268,17 @@ function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
     $course = $class_node_wrapper->field_course->value();
     $class_available = _ilr_sdc_listings_get_classes_for_course($course, array($class_node->nid));
     if ($class_available) {
+      $available_classes = _ilr_sdc_listings_get_classes_for_course($course);
       $form = drupal_get_form('ilr_sdc_listings_class_reg_form', array($class_node), TRUE, FALSE);
       $class_node->content['classes'] = $form;
       $class_node->content['#group_children']['classes'] = 'group_sidebar';
+      // Add a link to other classes if more than 1
+      if (count($available_classes) > 1) {
+        $class_node->content['other_classes_link'] = array(
+          '#markup' => '<p><a href="/node/'.$course->nid.'">Show all dates</a></p>',
+        );
+        $class_node->content['#group_children']['other_classes_link'] = 'group_sidebar';
+      }
     }
     else {
       drupal_set_message(t(variable_get('sdc_class_not_available')));
@@ -304,34 +316,28 @@ function _ilr_sdc_listings_class_empty_msg($class_node, $view_mode) {
  * Add class listing form to node course view.
  * @param $course_node
  * @param $view_mode
- * @todo
- *   - refactor teaser and full mode logic
- *   - update ilr_sdc_listings_class_reg_form per design
- *   - Consider impact of #weight below
  */
 function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
-
   if ($view_mode == 'teaser' || $view_mode == 'full') {
     $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
-    $class_selected = _ilr_sdc_listings_get_class_from_url();
-    if ($class_selected && !in_array($class_selected, $class_nids)) {
-      drupal_set_message(variable_get('sdc_class_selected_not_available'));
-    }
     if ($class_nids) {
       $class_nodes = node_load_multiple($class_nids);
-      $form = drupal_get_form('ilr_sdc_listings_class_reg_form', $class_nodes);
-      $content = ($view_mode == 'full')
-        ? drupal_render($form)
-        : _ilr_sdc_listings_generate_class_link_markup($class_nodes);
+      if ($view_mode == 'full') {
+        $form = drupal_get_form('ilr_sdc_listings_class_reg_form', $class_nodes);
+        $content = drupal_render($form);
+      } // teaser list view
+      else {
+        $content = _ilr_sdc_listings_generate_class_link_markup($class_nodes);
+      }
       $course_node->content['classes'] = array(
         '#markup' => $content,
       );
       $course_node->content['#group_children']['classes'] = 'group_sidebar';
-    }
+    } // No classes available
     else {
       $course_node->content['classes'] = array(
         '#type' => 'markup',
-        '#markup' => '<div class="group-sidebar class-details">' . _ilr_sdc_listings_generate_request_info_markup() . '</div>',// variable_get('sdc_class_no_sessions'),</div>
+        '#markup' => '<div class="group-sidebar class-details">' . _ilr_sdc_listings_generate_request_info_markup($course_node) . '</div>',
       );
     }
     $course_node->content['classes']['#weight'] = 2;
@@ -347,19 +353,18 @@ function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
  * @param $
  *
  * @return array
- * @todo
- *   - Handle full classes.
- *   - Set default to next course
- *   - Add ajax swapping of class info
  */
 function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes) {
   $has_open_class = FALSE;
   $form['#attributes']['class'][] = 'class-details';
+  $form['#attached']['js'] = array(
+    drupal_get_path('module', 'ilr_sdc_listings') . '/js/ilr_sdc_listings.js',
+  );
   $form['addClass'] = array(
     '#tree' => TRUE,
   );
   $class_radios = array();
-  $faculty_markup = $button_markup = '';
+  $faculty_markup = $button_markup = $date_time_markup = $location_markup = '';
   foreach ($class_nodes as $nid => $class_node) {
     $class_node_wrapper = ilr_get_node_wrapper($class_node);
     $class_id = $class_node_wrapper->field_class_id->value();
@@ -370,11 +375,7 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes) {
       );
       $form['class_full_' . $class_id] = array(
         '#type' => 'markup',
-        '#markup' => '<p>' . variable_get('sdc_class_full_teaser') . '</p>',
-      );
-      $form['class_request_info_' . $class_id] = array(
-        '#type' => 'markup',
-        '#markup' => _ilr_sdc_listings_generate_request_info_markup(),
+        '#markup' => '<p class="class class-full">' . variable_get('sdc_class_full_teaser') . '</p>',
       );
     }
     else {
@@ -390,9 +391,9 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes) {
         '#type' => 'markup',
         '#markup' => _ilr_sdc_listings_generate_class_time_location_markup($class_node),
       );
-
       $button_markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
-      $faculty_markup .= _ilr_sdc_listings_generate_faculty_markup($class_node);
+      $date_time_markup .= _ilr_sdc_listings_format_class_date_and_time( $class_node);
+      $faculty_markup .= _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id);
       $class_radios[] = $class_id;
     }
   }
@@ -409,9 +410,17 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes) {
       '#type' => 'markup',
       '#markup' => $faculty_markup,
     );
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Register'),
+      '#attributes' => array('class' => array('hidden')),
+    );
 
     $first_class_id = reset($class_radios);
     $form[$first_class_id]['#attributes']['checked'] = 'checked';
+    if (count($class_radios) == 1) {
+      $form[$first_class_id]['#attributes']['class'][] = 'hidden';
+    }
   }
   return $form;
 }
@@ -472,16 +481,31 @@ function _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node) 
   return FALSE;
 }
 
+/**
+ * Determines if any of the classes for course have different titles.
+ * @param $class_nodes
+ * @param $course_node
+ * @return bool
+ */
+function _ilr_sdc_listings_class_has_override_title($course_node) {
+  $course_wrapper = ilr_get_node_wrapper($course_node);
+  return drupal_get_title() != $course_wrapper->label();
+}
+
 function _ilr_sdc_listings_format_class_date_and_time($class) {
   $wrapper = ilr_get_node_wrapper($class);
-  $start_date = $wrapper->field_class_dates->value()['value'];
-  $end_date = $wrapper->field_class_dates->value()['value2'];
-  $start_datetime = new DateTime($start_date);
-  $end_datetime = new DateTime($end_date);
+  $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class);
+  $start_datetime = $datetimes['start'];
+  $end_datetime = $datetimes['end'];
   $markup = '<span class="date">';
   $year = $start_datetime->format('Y');
-  if (_ilr_sdc_listings_is_multiday_event($start_datetime, $end_datetime)) {
-    $end_day = $end_datetime->format('j');
+  if (_ilr_sdc_listings_is_multiday_event($class)) {
+    if ($start_datetime->format('M') != $end_datetime->format('M')) {
+      $end_day = $end_datetime->format('M j');
+    }
+    else {
+      $end_day = $end_datetime->format('j');
+    }
     $markup .=  $start_datetime->format('M j-') . $end_day . ", $year";
   }
   else {
@@ -493,10 +517,16 @@ function _ilr_sdc_listings_format_class_date_and_time($class) {
   return $markup;
 }
 
-function _ilr_sdc_listings_is_multiday_event($start_datetime, $end_datetime) {
-  $start_date = $start_datetime->format('Y-m-d');
-  $end_date = $end_datetime->format('Y-m-d');
-  return $start_date != $end_date;
+function _ilr_sdc_listings_is_multiday_event($class) {
+  $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class);
+  $interval = $datetimes['start']->diff($datetimes['end']);
+  return $interval->d > 0;
+}
+
+function _ilr_sdc_listings_is_multiyear_event($class) {
+  $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class);
+  $interval = $datetimes['start']->diff($datetimes['end']);
+  return $interval->y > 0;
 }
 
 function _ilr_sdc_listings_generate_class_button_markup($class_node) {
@@ -506,24 +536,28 @@ function _ilr_sdc_listings_generate_class_button_markup($class_node) {
   return $markup;
 }
 
+/**
+ * Generates the markup for landing pages
+ */
 function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
   $class_node = reset($class_nodes);
   $markup = '<div class="class-details">';
   $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
+  $markup .= _ilr_sdc_listings_generate_class_timespan_markup($class_node);
   $markup .= _ilr_sdc_listings_generate_class_time_location_markup($class_node);
   if (count($class_nodes) > 1) {
     $wrapper = ilr_get_node_wrapper($class_node);
     $course_nid = $wrapper->field_course->value()->nid;
-    $markup .= '<a href="/node/$nid">See more dates and locations</a>';
+    $markup .= '<a href="/node/' . $course_nid . '">See more dates and locations</a>';
   }
   $markup .= '</div>';
   return $markup;
 }
 
-function _ilr_sdc_listings_generate_faculty_markup($class_node) {
+function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id) {
   $wrapper = ilr_get_node_wrapper($class_node);
   $faculty = $wrapper->field_faculty->value();
-  $markup = '<div class="instructors class-' . $wrapper->getIdentifier() . '">';
+  $markup = '<div class="instructors class-' . $class_id . '">';
   $markup .= "<h3>Instructors</h3>";
   foreach ($faculty as $key => $instructor) {
     $markup .= '<h4>'. $instructor->title .'</h4>';
@@ -533,10 +567,51 @@ function _ilr_sdc_listings_generate_faculty_markup($class_node) {
   return $markup;
 }
 
-function _ilr_sdc_listings_generate_request_info_markup() {
-  $markup = '<a class="button button-request">Request</a>';
+
+function _ilr_sdc_listings_generate_request_info_markup($course) {
+  $wrapper = ilr_get_node_wrapper($course);
+  $markup = '<a class="button button-request-info course">Request';
+  $markup .= '<span class="course-info">'.$wrapper->label().'</span></a>';
   $markup .= '<span class="request-info">Schedule customized delivery to your organization</span>';
   return $markup;
+}
+
+function _ilr_sdc_listings_generate_class_timespan_markup($class_node) {
+  $type = ' workshop';
+  $wrapper = ilr_get_node_wrapper($class_node);
+  $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class_node);
+  $interval = $datetimes['start']->diff($datetimes['end']);
+  if (_ilr_sdc_listings_is_multiyear_event($class_node)) {
+    $type = ' class';
+    $months = $interval->m;
+    if ($months > 10) { // More than a year
+      $months = round($months / 12);
+      $timespan = $months . '-year';
+    } // less than a year
+    else {
+      $timespan = $months . '-month';
+    }
+  }
+  elseif (_ilr_sdc_listings_is_multiday_event($class_node)) {
+    $days = $interval->d;
+    if ( $days > 10) { // More than a week
+      $weeks = round($days / 7);
+      $timespan = $weeks . '-week';
+    } // less than a week
+    else {
+      $timespan = $days + 1 . '-day';
+    }
+  } // Single day event
+  else {
+    if ($interval->h < 1) { // Less than an hour
+      $timespan = $interval->m . '-minute';
+    } // more than an hour
+    else {
+      $hours = $interval->h;
+      $timespan = ($hours > 4) ? '1-day' : '-hour';
+    }
+  }
+  return '<span class="timespan">'. $timespan . $type .' </span>';
 }
 
 function _ilr_sdc_listings_generate_class_time_location_markup($class_node) {
@@ -600,13 +675,8 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
   }
   if ($variables['type'] == 'sdc_course') {
     if ($variables['view_mode'] == 'teaser') {
-      // When viewing Course teasers the catalog prefix should be in the title.
-      $wrapper = ilr_get_node_wrapper($variables['node']);
-      $variables['title'] = $variables['title'] . ' (' . $wrapper->field_catalog_prefix->value() . ')';
       unset($variables['content']['links']['node']['#links']['node-readmore']);
     }
-
-
   }
 
 }
@@ -628,6 +698,19 @@ function ilr_sdc_listings_date_default_argument_alter(&$argument, &$value) {
   }
 }
 
+function _ilr_sdc_listings_get_datetimes_for_class($class) {
+  $wrapper = ilr_get_node_wrapper($class);
+  $utc = new DateTimeZone('UTC');
+  $tz = new DateTimeZone('America/New_York');
+  $start = new DateTime($wrapper->field_class_dates->value()['value'], $utc);
+  $end = new DateTime($wrapper->field_class_dates->value()['value2'], $utc);
+  $start->setTimezone($tz);
+  $end->setTimezone($tz);
+  return array(
+    'start' => $start,
+    'end'   => $end,
+  );
+}
 /**
  * Get Views Month Arg from URL.
  *
@@ -890,4 +973,24 @@ function _ilr_sdc_listings_get_parent_path_alias($path) {
   $parts = explode('/', rtrim($path, '/'));
   $sliced = array_slice($parts, 0, -1);
   return implode("/", $sliced);
+}
+
+function _ilr_sdc_listings_add_prefix_to_title($node, $type) {
+  $wrapper = ilr_get_node_wrapper($node);
+  $prefix = ($type == 'sdc_class')
+    ? $wrapper->field_course->field_catalog_prefix->value()
+    : $wrapper->field_catalog_prefix->value();
+  $title = $node->title . ' (' . $prefix . ')';
+  drupal_set_title($title);
+}
+
+function _ilr_sdc_listings_update_reference_title(&$node) {
+  if (_ilr_sdc_listings_class_has_override_title($node)) {
+    $title = 'Part of the series: ';
+    $title .= $node->title;
+  }
+  else {
+    $title = '';
+  }
+  $node->title = $title;
 }
