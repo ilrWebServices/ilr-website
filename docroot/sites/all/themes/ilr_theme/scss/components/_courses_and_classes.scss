@@ -16,15 +16,22 @@ div.class-details {
       padding-bottom: .3em;
     }
   }
+  .button-request-info span {
+    display: none;
+  }
   .request-info {
     @include adjust-font-size-to(14px, .7);
     font-style: italic;
     display: block;
   }
-  .location, .date, .time {
+  span {
     clear: left;
     display: block;
     @include adjust-font-size-to(14px, .7);
+    &.timespan {
+      color: $gray-dark;
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -40,7 +47,7 @@ div.class-details {
   }
   article {
     .field-name-body {
-      @include leader(2);
+      clear: left;
     }
     form {
       @include trailer(2);
@@ -48,9 +55,6 @@ div.class-details {
     article {
       h2 {
        margin-bottom: 0;
-      }
-      .field-name-body {
-        @include leader(0);
       }
     }
   }
@@ -69,6 +73,9 @@ div.class-details {
     h2 {
       margin-bottom: 0;
     }
+    .field-name-body {
+      clear: left;
+    }
   }
 }
 
@@ -82,8 +89,8 @@ div.class-details {
   }
   > .view-content > div {
     @include rhythm-margins(1, 1);
-    @include trailing-border(1px);
-    border-color: $gray-light;
+    @include trailing-border();
+    border-style: 1px solid $gray-light;
   }
 }
 

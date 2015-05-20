@@ -1,0 +1,27 @@
+.view-course-manual-listings {
+  //@include columnize('article', 1);
+  .views-row, article {
+    width: 100% !important;
+  }
+  article {
+    @include add-grid(12);
+    @include rhythm-margins(1);
+    border-color: $gray-light;
+    @include trailing-border();
+
+    > h1, > h2 {
+      @include grid-span(9);
+    }
+
+
+
+    .group-main-content {
+      @include grid-span(9);
+      clear: left;
+    }
+    .group-sidebar {
+      @include grid-span(3, 10);
+      @include leader(-2);
+    }
+  }
+}
