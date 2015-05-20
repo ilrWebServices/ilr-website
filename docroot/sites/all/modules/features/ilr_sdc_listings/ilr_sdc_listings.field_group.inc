@@ -53,7 +53,6 @@ function ilr_sdc_listings_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'body',
-      1 => 'field_catalog_prefix',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
