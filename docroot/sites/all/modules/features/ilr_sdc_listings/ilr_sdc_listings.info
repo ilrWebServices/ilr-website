@@ -4,6 +4,7 @@ core = 7.x
 package = ILR
 version = 7.x-1.0
 project = ilr_sdc_listings
+scripts[] = js/ilr_sdc_listings.js
 dependencies[] = addressfield
 dependencies[] = calendar
 dependencies[] = chosen
