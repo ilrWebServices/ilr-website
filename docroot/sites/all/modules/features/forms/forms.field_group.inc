@@ -1572,7 +1572,7 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Graduation Date',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_grad_date_appl_for_graduat',
     ),
@@ -1955,8 +1955,10 @@ function forms_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_full_name',
-      1 => 'field_name_correct_for_diploma',
-      2 => 'field_full_name_additional',
+      1 => 'field_full_name_additional',
+      2 => 'field_name_correct_for_diploma',
+      3 => 'field_pronunciation_markup',
+      4 => 'field_pronunciation',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

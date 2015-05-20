@@ -721,7 +721,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Ch2\\u003EILR Graduate Student Application for Graduation\\u003C\\/h2\\u003E\\r\\n\\r\\n\\u003Ch3\\u003EYour application has been submitted.\\u003C\\/h3\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for submitting your application for graduation.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EPlease stop by the ILR Graduate Programs Office to pick up your commencement packet. These packets contain severe weather tickets and other important information. For additional information about commencement please visit \\u003Ca href=\\u0022http:\\/\\/commencement.cornell.edu\\/\\u0022\\u003Ehttp:\\/\\/commencement.cornell.edu\\/\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions or concerns about your application, please email the ILR Graduate Programs Office at: \\u003Ca href=\\u0022mailto:mjk53@cornell.edu\\u0022\\u003Emjk53@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Ch2\\u003EILR Graduate Student Application for Graduation\\u003C\\/h2\\u003E\\r\\n\\r\\n\\u003Ch3\\u003EYour application has been submitted.\\u003C\\/h3\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for submitting your application for graduation.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EPlease stop by the ILR Graduate Programs Office to pick up your commencement packet. These packets contain severe weather tickets and other important information. For additional information about commencement please visit \\u003Ca href=\\u0022http:\\/\\/commencement.cornell.edu\\/\\u0022\\u003Ehttp:\\/\\/commencement.cornell.edu\\/\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions or concerns about your application, please email the ILR Graduate Programs Office at: \\u003Ca href=\\u0022mailto:ilrgradprograms@cornell.edu\\u0022\\u003Eilrgradprograms@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -731,23 +731,25 @@ function forms_default_entityform_type() {
       "roles" : {
         "1" : "1",
         "2" : "2",
-        "3" : 0,
-        "4" : 0,
-        "5" : 0,
-        "6" : 0,
-        "7" : 0,
-        "8" : 0,
-        "9" : 0,
-        "10" : 0
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "36" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 1,
-      "form_submission_ilr_recipient" : "mjk53@cornell.edu",
       "send_confirmation_email_to_admin" : 0,
       "add_user_name_to_subject_line" : 0,
-      "kerberized" : 1
+      "kerberized" : 1,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "ilrgradprograms@cornell.edu"
     },
     "weight" : "0",
     "paths" : []
@@ -1881,7 +1883,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Ch2\\u003EILR Undergraduate Student Application for Graduation\\u003C\\/h2\\u003E\\r\\n\\r\\n\\u003Ch3\\u003EYour application has been submitted.\\u003C\\/h3\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for submitting your application for graduation. Your diploma will be mailed to your home address as listed in Student Center. Please make sure your address is listed correctly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf the name you requested for your diploma does not match your name in Student Center, please visit B7 Day Hall to have it officially changed.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions or concerns about your application, please email the ILR College Registrar at: \\u003Ca href=\\u0022mailto:mjk53@cornell.edu\\u0022\\u003Eilr_registrar@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Ch2\\u003EILR Undergraduate Student Application for Graduation\\u003C\\/h2\\u003E\\r\\n\\r\\n\\u003Ch3\\u003EYour application has been submitted.\\u003C\\/h3\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for submitting your application for graduation. Your diploma will be mailed to your home address as listed in Student Center. Please make sure your address is listed correctly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf the name you requested for your diploma does not match your name in Student Center, please visit B7 Day Hall to have it officially changed.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions or concerns about your application, please email the ILR College Registrar at: \\u003Ca href=\\u0022mailto:ilr_registrar@cornell.edu\\u0022\\u003Eilr_registrar@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -1891,23 +1893,25 @@ function forms_default_entityform_type() {
       "roles" : {
         "1" : "1",
         "2" : "2",
-        "3" : 0,
-        "4" : 0,
-        "5" : 0,
-        "6" : 0,
-        "7" : 0,
-        "8" : 0,
-        "9" : 0,
-        "10" : 0
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "36" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 1,
-      "form_submission_ilr_recipient" : "ilr_registrar@cornell.edu",
       "send_confirmation_email_to_admin" : 0,
       "add_user_name_to_subject_line" : 0,
-      "kerberized" : 1
+      "kerberized" : 1,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "ilr_registrar@cornell.edu"
     },
     "weight" : "0",
     "paths" : []
