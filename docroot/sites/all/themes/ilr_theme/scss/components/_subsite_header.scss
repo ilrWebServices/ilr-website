@@ -16,8 +16,9 @@
       top: 0;
       overflow: visible;
       @include box-shadow(0 10px 10px -10px rgba(black, .5));
+      border-bottom: none;
 
-      h2 {
+      h2, h3 {
         display: none;
       }
 
