@@ -1,7 +1,7 @@
-$social-channels: linkedin, facebook, twitter, youtube, instagram;
+$social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
 
 @for $i from 1 through length($social-channels) {
-  .follow-#{nth($social-channels, $i)} {
+  .#{nth($social-channels, $i)} {
     @extend %icon-#{nth($social-channels, $i)};
   }
 }
@@ -28,16 +28,75 @@ $social-channels: linkedin, facebook, twitter, youtube, instagram;
   }
 }
 
+ul.social-share {
+  @include inline-block-list;
+  li {
+    border: 1px solid $gray-medium;
+    padding-left: 0;
+    margin-left: .5em;
+    background: none;
+    border-radius: 50%;
+    &:nth-child(1) {
+      margin-left: 0;
+    }
+    a {
+      border: 3px solid white;
+      display: block;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      padding-top: 8px;
+      text-align: center;
+      color: $bg-body;
+      &.mail {
+        background-color: #c87b3a;
+        padding-top: 12px;
+      }
+      &.twitter{
+        background-color: #55acee; //official color
+        padding-top: 12px;
+      }
+      &.youtube {
+        padding-top: 12px;
+      }
+      &.linkedin {
+        background-color: #0077b5; //official color
+        padding-left: .5em;
+      }
+      &.facebook {
+        background-color: #3a5795; //official color
+      }
+      &:hover {
+        background-color: $gray-dark;
+      }
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+
 ul.social {
   @include inline-block-list;
   li {
+    border: none;
     padding-left: .5em;
+    margin-left: 0;
     background: none;
+    border-radius: 0;
     a {
+      background-color: transparent;
       display: block;
+      width: auto;
+      height: auto;
       border:none;
-      &.follow-twitter,
-      &.follow-youtube {
+      border-radius: 0;
+      padding-top: 0;
+      color: $brand-light;
+      &.mail,
+      &.twitter,
+      &.youtube  {
         padding-top: 5px;
       }
       &:hover {
