@@ -1,5 +1,8 @@
 body.subsite-front {
   &.ilr-at-70 {
+    .block > h2 {
+      @extend %centered-title;
+    }
     .introduction {
       text-align: center;
       font-family: $font-headers;
@@ -28,20 +31,20 @@ body.subsite-front {
         max-width: $section-max-width;
       }
       h2 {
-        @extend %ilr-at-70-heading;
+        @extend %centered-title;
       }
     }
-
-    #block-ilr-reflection-reflection-node-form {
+    // Add reflection Form
+    #content-bottom .block-ilr-reflection {
       @include margin-leader(1);
       @include padding-trailer(1);
       border-top: 1px solid $gray-light;
       h2 {
-        @extend %ilr-at-70-heading;
+        @extend %centered-title;
         display: none;
       }
       .node-reflection-form {
-        @extend %add-reflection-form;
+        @extend %public-node-add-form;
       }
     }
 
@@ -57,6 +60,7 @@ body.subsite-front {
       }
     }
 
+    //@todo: make re-usable
     #block-bean-70th-giving-link {
       background: lighten($brand-dark, 15%);
       @include padding-leader(2);
@@ -83,6 +87,62 @@ body.subsite-front {
 
     .jPanelMenu-panel { // Removes line at bottom of reflection modal
       @include box-shadow(0 0px 0px 0px rgba(black, .5));
+    }
+  }
+}
+// Featured reflection
+#block-bean-70th-reflections-featured {
+  background: $brown url("../images/early-years-bg.jpg") no-repeat left top;
+  >h2 { // Hide title of block
+    display: none;
+  }
+  .node-reflection {
+    @include padding-leader(1.5);
+    @include padding-trailer(1.5);
+    padding-right: 1em;
+    padding-left: 1em;
+    position: relative;
+    h2 {
+      @include adjust-font-size-to(30px);
+      @include adjust-leading-to(1);
+      a {
+        color: white;
+      }
+    }
+    p {
+      color: white;
+    }
+    .field-name-body {
+      p {
+        &:first-child {
+          @include margin-leader(.5);
+        }
+      }
+    }
+    .field-name-field-full-name {
+      @include adjust-font-size-to(22px);
+      @include adjust-leading-to(1);
+      color: white;
+    }
+  }
+}
+
+// Modal view of reflections
+body.node-type-reflection {
+  .node-reflection {
+    @include margin-trailer (2);
+    img {
+      @include margin-trailer (1);
+    }
+    p {
+      &:first-child {
+        @include adjust-font-size-to(22px);
+        @include adjust-leading-to(1);
+      }
+    }
+    .field-type-text, .field-type-list-text {
+      @include adjust-font-size-to(22px);
+      font-style: oblique;
     }
   }
 }

@@ -1,140 +1,23 @@
-#block-bean-70th-reflections-featured {
-  background: $brown url("http://www.ilr-website.dev/sites/all/themes/ilr_theme/images/early-years-bg.jpg") no-repeat left top;
-  >h2 { // Hide title of block
-    display: none;
-  }
-  .node-reflection {
-    @extend %node-reflection;
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
-    padding-right: 1em;
-    padding-left: 1em;
-    position: relative;
-    h2 {
-      @include adjust-font-size-to(30px);
-      @include adjust-leading-to(1);
-      a {
-        color: white;
-      }
-    }
-    p {
-      color: white;
-    }
-    .field-name-body {
-      @include padding-leader(0);
-      p {
-        &:first-child {
-          @include margin-leader(.5);
-        }
-      }
-    }
-    .field-name-field-full-name {
-      @include adjust-font-size-to(22px);
-      @include adjust-leading-to(1);
-      color: white;
-    }
-  }
-}
-
+// all reflections
+// @todo:
+//  - refactor id out in future (required by current specificity issues)
 #block-bean-70th-reflections {
-  @include margin-leader(1);
-  margin-left: 1em;
-  margin-right: 1em;
-  @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
-    margin-left: 5em;
-    margin-right: 5em;
-  }
   >h2 {
     display: none;
   }
-  .node-reflection {
-    @extend %node-reflection;
-    @include clearfix;
-    border: 1px solid $gray-light;
-    border-radius: 8px;
-    h2 {
-      padding: 1em .8em 0;
-      a {
-        color: $darker-red;
-      }
-    }
-    .field-name-body {
-      padding-right: 1em;
-      padding-left: 1em;
-    }
-    .field-name-field-full-name {
-      padding-left: 1em;
-    }
+  article.node-reflection {
+    @extend %card-rounded;
     &.quote {
-      .field-name-body {
-        p {
-          @include adjust-font-size-to(25px);
-          @include adjust-leading-to(1);
+      background-color: $gray-bg;
+      h2 {
+        @include adjust-font-size-to(25px);
+        @include adjust-leading-to(1);
+        a {
+          color: #8f8746;
         }
       }
-    }
-  }
-}
-
-body.node-type-reflection {
-  .node-reflection {
-    @include margin-trailer (2);
-    img {
-      @include margin-trailer (1);
-    }
-    p {
-      &:first-child {
-        @include adjust-font-size-to(22px);
-        @include adjust-leading-to(1);
-      }
-    }
-    .field-type-text, .field-type-list-text {
-      @include adjust-font-size-to(22px);
-      font-style: oblique;
-    }
-  }
-}
-
-%node-reflection {
-  @include padding-leader(0);
-  @include padding-trailer(.5);
-  overflow: auto;
-  h2 {
-    @include margin-trailer(0);
-    text-align: left;
-    a {
-      &:hover {
-        cursor: default;
-      }
-    }
-  }
-  .field-name-field-youtube-video {
-    a {
-      border-bottom: 0;
-    }
-  }
-  .field-type-text-with-summary {
-    display: block;
-  }
-  .field-name-body {
-    @include padding-leader(0);
-    p {
-      @include margin-leader(.8);
-      @include margin-trailer(0);
-    }
-  }
-  .field-name-field-full-name {
-    @include margin-leader(.5);
-    font-style: oblique;
-  }
-  &.quote {
-    background-color: $gray-bg;
-    h2 {
-      display: none;
-    }
-    .field-name-body {
-      p {
-        color: #8f8746;
+      .field-name-body {
+        display: none;
       }
     }
   }

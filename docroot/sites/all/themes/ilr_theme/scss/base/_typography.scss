@@ -60,7 +60,7 @@ h2 {
 }
 
 h2.centered-title {
-  @extend %ilr-at-70-heading;
+  @extend %centered-title;
   @include margin-trailer(.5);
 }
 
@@ -125,7 +125,7 @@ h6 {
   }
 }
 
-%ilr-at-70-heading {
+%centered-title {
   max-width: $section-max-width; //Center border after title
   font-weight: normal;
   text-transform: none;

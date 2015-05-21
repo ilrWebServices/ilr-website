@@ -1,19 +1,30 @@
+// Extends one-column-page in subsite_homepages.scss
 body.subsite-front {
   &.ilr-at-70 {
     #main {
       padding-top: 0;
       #content {
-        padding: 0 !important;
+        padding-top: 0 !important;
         .section {
           @include leader(0);
           .field-name-body {
             @include padding-leader(0);
+            // The following contexts override the _one-columnn declarations
+            @include context('#main','#main[data-eq-state="768"]') {
+              .block-bean article.node-reflection {
+                @extend %one-column;
+              }
+            }
+            @include context('#main','#main[data-eq-state="widescreen"]') {
+              .block-bean article.node-reflection {
+                @extend %one-column;
+              }
+            }
           }
         }
       }
-    }
-    #block-bean-70th-reflections-featured {
-      .node-reflection {
+      .node-reflection { // This is the featured reflection
+        @extend %image-heading-text; /* flex box for ordering heading, image, text, etc */
         h2 {
           @include grid-span(12);
         }
@@ -25,50 +36,38 @@ body.subsite-front {
         .field-name-field-file {
           @include grid-span(12);
         }
-        .field-name-body {
+        .field-type-text-with-summary {
           @include grid-span(12);
         }
         .field-name-field-full-name {
           @include grid-span(12);
         }
-        @include context('#main','#main[data-eq-state="768"]') {
-          h2 {
-            @include grid-span(7,6);
-          }
-          ul {
-            left: 42%;
-            bottom: .5em;
-          }
-          .field-name-field-file {
-            @include grid-span(5,1);
-          }
-          .field-name-body {
-            @include grid-span(7,6);
-          }
-          .field-name-field-full-name {
-            @include grid-span(7,6);
-          }
+      }
+    }
+
+    #main[data-eq-state="768"], #main[data-eq-state="widescreen"] { /* eliminates need for context mixin */
+      .node-reflection {
+        display: block; /* overrides flex box created by %image-heading-text */
+        h2 {
+          @include grid-span(7,6);
         }
-        @include context('#main','#main[data-eq-state="widescreen"]') {
-          h2 {
-            @include grid-span(7,6);
-          }
-          ul {
-            left: 42%;
-            bottom: 1.5em;
-          }
-          .field-name-field-file {
-            @include grid-span(5,1);
-          }
-          .field-name-body {
-            @include grid-span(7,6);
-          }
-          .field-name-field-full-name {
-            @include grid-span(7,6);
-          }
+        ul {
+          left: 42%;
+          bottom: .5em;
+        }
+        .field-name-field-file {
+          @include grid-span(5,1);
+        }
+        .field-name-body {
+          @include grid-span(7,6);
+        }
+        .field-name-field-full-name {
+          @include grid-span(7,6);
         }
       }
     }
+
+    // The reflection cards are here
     #content-bottom {
       padding: 0;
       clear: both;
