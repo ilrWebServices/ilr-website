@@ -56,6 +56,7 @@ function ilr_reflection_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Implements hook_node_presave().
  * Makes sure that reflections are tagged "reflection"
+ * Sets the visitor message
  */
 function ilr_reflection_node_presave($node) {
   if ($node->type == 'reflection') {
@@ -74,6 +75,9 @@ function ilr_reflection_node_presave($node) {
     }
     if (!$term_present) {
       $node->field_tags[LANGUAGE_NONE][] = (array) array_shift($term);
+    }
+    if ($node->is_new) {
+      drupal_set_message(t('Thank you for sharing a part of your ILR story. We hope you will join us for an upcoming <a href="http://events.cornell.edu/search/events/1?event_types%5B%5D=41672">event</a> and please stay connected with us on <a href="https://www.facebook.com/ILRSchool">Facebook</a>, <a href="https://instagram.com/cornellilr">Instagram</a> and <a href="https://www.linkedin.com/edu/cornell-university-ilr-school-50020">Linked In</a>.'));
     }
   }
 }
