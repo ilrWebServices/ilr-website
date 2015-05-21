@@ -1288,7 +1288,11 @@ function forms_strongarm() {
       ),
     ),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'redirect' => array(
+          'weight' => '5',
+        ),
+      ),
       'display' => array(),
     ),
   );

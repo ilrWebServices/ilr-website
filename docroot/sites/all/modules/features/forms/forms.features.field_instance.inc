@@ -31528,7 +31528,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'download' => array(
         'label' => 'above',
@@ -31537,7 +31537,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'table' => array(
         'label' => 'above',
@@ -31546,7 +31546,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'entityform',
@@ -31565,7 +31565,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -31703,7 +31703,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'download' => array(
         'label' => 'above',
@@ -31712,7 +31712,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => 'Graduation date',
         ),
         'type' => 'list_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'table' => array(
         'label' => 'above',
@@ -31721,7 +31721,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => 'Graduation date',
         ),
         'type' => 'list_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
@@ -31788,6 +31788,108 @@ function forms_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-undergrad_appl_for_graduation-field_pronunciation'
+  $field_instances['entityform-undergrad_appl_for_graduation-field_pronunciation'] = array(
+    'bundle' => 'undergrad_appl_for_graduation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Example: Barack Obama could submit "bah-RAHK o-BAH-mah"',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_pronunciation',
+    'label' => 'Pronunciation',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-undergrad_appl_for_graduation-field_pronunciation_markup'
+  $field_instances['entityform-undergrad_appl_for_graduation-field_pronunciation_markup'] = array(
+    'bundle' => 'undergrad_appl_for_graduation',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_pronunciation_markup',
+    'label' => 'pronunciation markup',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 6,
     ),
   );
 
@@ -34546,6 +34648,9 @@ function forms_field_default_field_instances() {
   t('Last name for nametag');
   t('Leadership potential');
   t('Level of education attained');
+  t('Limit 200 characters');
+  t('Limit 500 characters');
+  t('Limit 800 characters');
   t('List any non-standard applications that you will need.');
   t('List relevant work experience and/or your qualifications');
   t('List your prior TA or RA appointments');

@@ -7,7 +7,7 @@ Please stop by the ILR Graduate Programs Office to pick up your commencement pac
   For additional information about commencement please visit http://commencement.cornell.edu/.<br><br>
 
 If you have any questions or concerns about your application for graduation, please
-email the ILR Graduate Programs Office at mjk53@cornell.edu.<br><br>
+email the ILR Graduate Programs Office at ilrgradprograms@cornell.edu.<br><br>
 
 Sincerely,<br>
 ILR Graduate Programs Office<br><br>
