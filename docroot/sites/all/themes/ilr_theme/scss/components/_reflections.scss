@@ -1,0 +1,25 @@
+// all reflections
+// @todo:
+//  - refactor id out in future (required by current specificity issues)
+#block-bean-70th-reflections {
+  >h2 {
+    display: none;
+  }
+  article.node-reflection {
+    @extend %card-rounded;
+    padding-bottom: 1.5em !important; // Override for social share padding
+    &.quote {
+      background-color: $gray-bg;
+      h2 {
+        @include adjust-font-size-to(25px);
+        @include adjust-leading-to(1);
+        a {
+          color: #8f8746;
+        }
+      }
+      .field-name-body {
+        display: none;
+      }
+    }
+  }
+}

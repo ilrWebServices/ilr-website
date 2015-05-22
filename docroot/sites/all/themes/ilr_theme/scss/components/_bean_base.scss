@@ -50,7 +50,9 @@
     &[data-items='1'] {
       article {
         @extend %one-column;
-        @extend %lead-story;
+        &:not(.block-bean-70th-reflections-featured) & { //Removes text shadow from featured reflection
+          @extend %lead-story;
+        }
       }
     }
   }

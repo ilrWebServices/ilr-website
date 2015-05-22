@@ -78,6 +78,11 @@
   }
 }
 
+%three-column-masonry-narrow {
+  @extend %three-column-masonry;
+  @include add-gutter(.15);
+}
+
 %four-column {
   @include layout(8) {
     @include add-gutter-style('split');
@@ -138,3 +143,16 @@
   h2                     { order: 3; }
   .student-name          { order: 4; }
 }
+
+%image-heading-text {
+  flex-direction: column;
+  display: flex;
+
+  .field-type-image,
+  .field-type-youtube                     { order: 1; }
+  h2                                      { order: 2; }
+  .field-type-text-with-summary           { order: 3; }
+  .field-name-field-full-name             { order: 4; }
+  ul                                      { order: 5; }
+}
+

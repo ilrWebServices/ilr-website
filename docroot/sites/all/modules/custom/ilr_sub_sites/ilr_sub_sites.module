@@ -390,6 +390,7 @@ function _ilr_sub_sites_get_menu_name_from_uri($uri) {
 function _ilr_sub_sites_get_site_logo($menu_name, $subsite_name) {
   $logos = array(
     'worker-institute' => 'logo-worker-institute',
+    'ilr-at-70' => 'logo-ilr-at-70',
   );
   if (array_key_exists($menu_name, $logos)) {
     $image = '<img src="/' . drupal_get_path('theme', 'ilr_theme') . '/images/'.$logos[$menu_name].'.svg"';

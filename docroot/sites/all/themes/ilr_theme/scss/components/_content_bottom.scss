@@ -1,5 +1,5 @@
 #content-bottom {
-  padding: 3em 1em;
+  padding: 3em 0;
 
   body:not(.front):not(.subsite-front) & {
     background: lighten($brand-dark, 15%);
