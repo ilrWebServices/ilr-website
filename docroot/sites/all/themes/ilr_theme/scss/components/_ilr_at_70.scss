@@ -41,7 +41,6 @@ body.subsite-front {
       border-top: 1px solid $gray-light;
       h2 {
         @extend %centered-title;
-        display: none;
       }
       .node-reflection-form {
         @extend %public-node-add-form;
