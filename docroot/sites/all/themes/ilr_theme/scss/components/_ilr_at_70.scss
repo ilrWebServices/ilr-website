@@ -91,7 +91,9 @@ body.subsite-front {
     // Social overrides
     ul.social-share {
       opacity: 0;
-      margin-left: .5em;
+      position: absolute;
+      right: 1em;
+      bottom: 0;
 
       li {
         border: none;

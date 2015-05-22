@@ -1,9 +1,10 @@
 $social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
 
 @for $i from 1 through length($social-channels) {
-  .#{nth($social-channels, $i)} {
+  .#{nth($social-channels, $i)}, .follow-#{nth($social-channels, $i)} {
     @extend %icon-#{nth($social-channels, $i)};
   }
+
 }
 
 #block-bean-footer-social {
@@ -93,7 +94,10 @@ ul.social {
       color: $brand-light;
       &.mail,
       &.twitter,
-      &.youtube  {
+      &.youtube,
+      &.follow-mail,
+      &.follow-twitter,
+      &.follow-youtube {
         padding-top: 5px;
       }
       &:hover {

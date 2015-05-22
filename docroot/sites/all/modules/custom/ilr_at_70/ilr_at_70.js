@@ -11,16 +11,6 @@
         return !isNaN(parseFloat(n)) && isFinite(n);
       }
 
-      var easing = 'Expo.easeOut';
-
-      $('.node-reflection').mouseover(function() {
-        TweenLite.to($(this).closest('article').find('.social-share'), .6, {opacity:1, ease: easing });
-      });
-
-      $('.node-reflection').mouseout(function() {
-        TweenLite.to($('.social-share'), .6, {opacity:0, ease: easing });
-      });
-
       $(window).load(function() {
         if (hash = window.location.hash) {
           var nid = hash.substring(1);
@@ -33,8 +23,20 @@
             });
           }
         }
-      });
 
+        if ($('html').hasClass('touch')) { // Note this is not 100% accurate. See https://github.com/Modernizr/Modernizr/issues/548
+          $('.node-reflection ul.social-share').css('opacity',1);
+        } else {
+          var easing = 'Expo.easeOut';
+          $('.node-reflection').mouseover(function() {
+            TweenLite.to($(this).closest('article').find('.social-share'), .6, {opacity:1, ease: easing });
+          });
+
+          $('.node-reflection').mouseout(function() {
+            TweenLite.to($('.social-share'), .6, {opacity:0, ease: easing });
+          });
+        }
+      });
     }
   };
 }(jQuery));
