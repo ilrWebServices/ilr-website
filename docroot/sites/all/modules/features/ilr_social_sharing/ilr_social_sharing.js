@@ -21,7 +21,7 @@
       shareWith['facebook'] = function() {
         url = 'https://www.facebook.com/dialog/feed';
         params = {
-          'app_id'        : 122623604426831,
+          'app_id'        : 345274062349654,
           'display'       : 'popup',
           'name'          : $title,
           'description'   : $description,
