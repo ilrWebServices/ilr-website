@@ -2,9 +2,9 @@
 body.subsite-front {
   &.ilr-at-70 {
     #main {
-      padding-top: 0;
+      padding-top: 0; // Hides the edit tab. Refactor?
       #content {
-        padding-top: 0 !important;
+        padding: 0 !important;
         .section {
           @include leader(0);
           .field-name-body {
