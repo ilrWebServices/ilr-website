@@ -83,6 +83,12 @@
             overflow: hidden;
             height: 20px;
           }
+          &.ILR {
+            height: 32px;
+            img {
+              max-width: 80px;
+            }
+          }
           img {
             max-width: 200px;
           }
@@ -111,6 +117,14 @@
         color: lighten($gray-light, 10%);
         border-bottom-color: lighten(#4d4e53,8%);
       }
+    }
+  }
+  &.ilr-at-70 #header-region {
+    background: $brown url("../images/early-years-nav-bg.jpg") no-repeat center bottom;
+    border-bottom-color: $darker-red;
+    border-bottom: none;
+    a {
+      color: $gray-medium;
     }
   }
 }

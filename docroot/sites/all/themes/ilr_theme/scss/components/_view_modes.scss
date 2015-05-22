@@ -130,7 +130,13 @@
   @include trailer(1.5);
   @include padding-leader(1);
 
-  @extend %image-first;
+  body:not(.ilr-at-70) & {
+    @extend %image-first;
+  }
+
+  body.ilr-at-70 & { // Repositions elements in reflections
+    @extend %image-heading-text;
+  }
 
   h2, h3, h4 {
     text-align: center;
@@ -194,6 +200,47 @@
   .field-name-field-campaign-title,
   .field-name-field-teaser {
     display: none;
+  }
+}
+
+%card-rounded {
+  @include padding-leader(0);
+  @include padding-trailer(.5);
+  overflow: auto;
+  @include clearfix;
+  border: 1px solid $gray-light;
+  border-radius: 8px;
+
+  h2 {
+    padding: 1em .8em 0;
+    @include margin-trailer(0);
+    text-align: left;
+    a {
+      color: $darker-red;
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+  .field-type-text-with-summary {
+    display: block;
+  }
+  .field-name-body {
+    padding-right: 1em;
+    padding-left: 1em;
+    @include padding-leader(0);
+    p {
+      @include margin-leader(.8);
+      @include margin-trailer(0);
+    }
+  }
+  .field-name-field-full-name {
+    padding-left: 1em;
+    @include margin-leader(.5);
+    font-style: oblique;
+  }
+  div.field-name-field-youtube-video > a {
+    border-bottom: none;
   }
 }
 
