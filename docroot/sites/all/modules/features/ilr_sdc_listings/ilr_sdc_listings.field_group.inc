@@ -109,11 +109,7 @@ function ilr_sdc_listings_field_group_info() {
   $field_group->data = array(
     'label' => 'Sidebar',
     'weight' => '1',
-    'children' => array(
-      0 => 'field_address',
-      1 => 'field_registration_end_date',
-      2 => 'field_building',
-    ),
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Sidebar',
@@ -153,6 +149,35 @@ function ilr_sdc_listings_field_group_info() {
     ),
   );
   $export['group_sidebar|node|sdc_course|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_sidebar|node|sdc_course|teaser';
+  $field_group->group_name = 'group_sidebar';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'sdc_course';
+  $field_group->mode = 'teaser';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sidebar',
+    'weight' => '3',
+    'children' => array(),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'element' => 'div',
+        'show_label' => 0,
+        'label_element' => 'div',
+        'classes' => 'group-sidebar field-group-html-element',
+        'attributes' => '',
+        'required_fields' => 1,
+        'id' => 'node_sdc_course_teaser_group_sidebar',
+      ),
+    ),
+  );
+  $export['group_sidebar|node|sdc_course|teaser'] = $field_group;
 
   return $export;
 }

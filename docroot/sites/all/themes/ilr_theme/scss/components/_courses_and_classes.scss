@@ -1,14 +1,49 @@
-div.class-details {
-  @include leader(-2);
-}
 .class-details {
-  .button {
-    @include rhythm-margins(1);
-    @extend %cornell-button;
-    display: none;
-    &:first-of-type { // Hide additional buttons by default
-      display: inline-block;
+  // @include leader(-2);
+  div.form-type-radio {
+    @include leader(1);
+    clear: left;
+    float: left;
+    margin-right: .5em;
+  }
+
+  .radio-label {
+    float: left;
+    @include leader(1);
+    @include trailer(1);
+    span {
+      display: block;
     }
+  }
+
+  span, .street-block {
+    clear: left;
+    @include adjust-font-size-to(14px, .7);
+    &.timespan {
+      display: block;
+      color: $gray-dark;
+      text-transform: uppercase;
+    }
+  }
+
+  .details-rule {
+    clear: left;
+    @include leader(1);
+    @include adjust-font-size-to(14px, .7);
+    border-top: 1px solid $gray-light;
+    text-transform: uppercase;
+  }
+
+  .date-time span.date {
+    display: block;
+    font-weight: bold;
+    @include adjust-font-size-to(16px);
+  }
+
+  .button {
+    @include trailer(1);
+    @extend %cornell-button;
+    clear: left;
     .cost {
       display: block;
       text-align: center;
@@ -24,13 +59,19 @@ div.class-details {
     font-style: italic;
     display: block;
   }
-  span {
-    clear: left;
-    display: block;
-    @include adjust-font-size-to(14px, .7);
-    &.timespan {
-      color: $gray-dark;
-      text-transform: uppercase;
+
+  .class-detail-toggle {
+    display: none;
+    .action {
+      clear: both;
+    }
+
+    .country {
+      display: none;
+    }
+
+    .locality-block {
+      @include trailer(1);
     }
   }
 }
@@ -90,7 +131,8 @@ div.class-details {
   > .view-content > div {
     @include rhythm-margins(1, 1);
     @include trailing-border();
-    border-style: 1px solid $gray-light;
+    border-style: 1px solid;
+    border-color: $gray-light;
   }
 }
 

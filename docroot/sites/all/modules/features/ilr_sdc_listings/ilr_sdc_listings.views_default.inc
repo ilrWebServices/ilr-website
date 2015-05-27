@@ -587,7 +587,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['sorts']['field_class_dates_value']['id'] = 'field_class_dates_value';
   $handler->display->display_options['sorts']['field_class_dates_value']['table'] = 'field_data_field_class_dates';
   $handler->display->display_options['sorts']['field_class_dates_value']['field'] = 'field_class_dates_value';
-  /* Contextual filter: Content: Course (field_course) */
+  /* Contextual filter: Field: Course (field_course) */
   $handler->display->display_options['arguments']['field_course_target_id']['id'] = 'field_course_target_id';
   $handler->display->display_options['arguments']['field_course_target_id']['table'] = 'field_data_field_course';
   $handler->display->display_options['arguments']['field_course_target_id']['field'] = 'field_course_target_id';
@@ -1244,7 +1244,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'If no date is listed for a course the class may be available for private offerings. ';
+  $handler->display->display_options['header']['area']['content'] = 'Many programs are available for custom delivery to your organization. Please request more information for programs listed with no upcoming dates.';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Relationship: Content: Department (field_sdc_department) */
   $handler->display->display_options['relationships']['field_sdc_department_tid']['id'] = 'field_sdc_department_tid';

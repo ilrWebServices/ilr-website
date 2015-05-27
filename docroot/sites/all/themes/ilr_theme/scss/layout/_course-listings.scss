@@ -1,5 +1,5 @@
 .view-course-manual-listings {
-  //@include columnize('article', 1);
+  @include columnize('article', 1);
   .views-row, article {
     width: 100% !important;
   }
@@ -21,7 +21,6 @@
     }
     .group-sidebar {
       @include grid-span(3, 10);
-      @include leader(-2);
     }
   }
 }
