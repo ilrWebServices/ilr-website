@@ -8,6 +8,9 @@
 function ilr_theme_preprocess_html(&$variables) {
   // Add preload class to page
   $variables['classes_array'][] = 'preloading';
+  if (isset($_GET['layout']) && $_GET['layout'] == '0' ) {
+    $variables['classes_array'][] = 'no-layout';
+  }
 
   drupal_add_css(
     drupal_get_path('theme', 'ilr_theme') . '/css/IE8.css',

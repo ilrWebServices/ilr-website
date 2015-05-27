@@ -10,29 +10,32 @@
       $('[name="ilr_sdc_month_redirect"]').change(function() {
         window.location = $(this).val();
       });
-      // Form submit handler
-      $('#ilr-sdc-listings-class-reg-form .button-register').click(function(e){
-        e.preventDefault();
-        $('#ilr-sdc-listings-class-reg-form').submit();
-        return false;
-      });
+
+      // Radio button change handler for classes
       $("#ilr-sdc-listings-class-reg-form .form-radio").change(function(e){
         $classId = $(this).attr('value');// Note that this is not the nid
-        $('div.instructors').each(function(){
-          if($(this).hasClass('class-' + $classId)) {
-            $(this).show();
-          } else {
-            $(this).hide();
-          }
-        });
+        $('.class-detail-toggle').hide();
+        $('div.class-'+$classId).show();
       });
+
+      // What is this?
+      // $(".node-teaser").click(function(){
+      //   window.location=$(this).find("a").attr("href"); return false;
+      // });
+
+      // Show the first class detail toggle div
+      $(window).load(function(){
+        $('.class-detail-toggle').first().show();
+      });
+      // This should open the modal
       $('.button-request-info').click(function(){
-        var url, courseTitle;
-        courseTitle = $(this).find('.course-info').text();
-        url = 'mailto:aaronf@cornell.edu?';
-        url += 'subject=Course Request: ' + courseTitle;
-        url += '&body=Hi, I\'m interested in learning more about customized delivery of this course. Thank you.';
-        window.location.href = url;
+        var $nid = $(this).attr('data-nid');
+        $.fancybox({
+          'type': 'iframe',
+          'autoDimensions' : true,
+          'autoScale' : true,
+          'href' : '/course-interest/'+ $nid +'?layout=0',
+        });
         return false;
       });
     }
