@@ -498,7 +498,7 @@ function _ilr_sdc_listings_is_multiyear_event($class) {
 function _ilr_sdc_listings_generate_class_button_markup($class_node) {
   $wrapper = ilr_get_node_wrapper($class_node);
   $sdc_link = _ilr_sdc_listings_get_class_registration_url($class_node);
-  $markup = '<div class="action"><a class="button button-register" target="_blank" href="'.$sdc_link.'">Register';
+  $markup = '<div class="action"><a class="button button-register" href="'.$sdc_link.'">Register';
   $markup .= '<span class="cost">$' . $wrapper->field_price->value() . '</span></a></div>';
   return $markup;
 }
@@ -1033,39 +1033,36 @@ function _ilr_sdc_listings_add_class_detail_markup(&$form, $classes) {
  */
 function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
   $class_radios = array();
-  foreach ($classes as $nid => $class) {
-    $wrapper = ilr_get_node_wrapper($class);
-    $class_id = $wrapper->field_class_id->value();
-    if ($wrapper->field_is_full->value()) {
-      _ilr_sdc_listings_add_course_full_markup($form, $class);
-    } // Add the radio
-    else {
-      $class_radios[] = $class_id;
-      $form[$class_id] = array(
-        '#type' => 'radio',
-        '#return_value' => $class_id,
-        '#attributes' => array('name' => 'addClass'),
-        // Ensure single value in $form_state
-        '#parents' => array('addClass'),
-      );
-      $form['class_radio_label_' . $class_id] = array(
-        '#type' => 'markup',
-        '#markup' => _ilr_sdc_listings_generate_class_radio_label($class),
-      );
+  if (count($classes) > 1) {
+    foreach ($classes as $nid => $class) {
+      $wrapper = ilr_get_node_wrapper($class);
+      $class_id = $wrapper->field_class_id->value();
+      if ($wrapper->field_is_full->value()) {
+        _ilr_sdc_listings_add_course_full_markup($form, $class);
+      } // Add the radio
+      else {
+        $class_radios[] = $class_id;
+        $form[$class_id] = array(
+          '#type' => 'radio',
+          '#return_value' => $class_id,
+          '#attributes' => array('name' => 'addClass'),
+          // Ensure single value in $form_state
+          '#parents' => array('addClass'),
+        );
+        $form['class_radio_label_' . $class_id] = array(
+          '#type' => 'markup',
+          '#markup' => _ilr_sdc_listings_generate_class_radio_label($class),
+        );
+      }
     }
-  }
-  if (!empty($class_radios)) {
-    if (count($class_radios) > 1) {
+    if (!empty($class_radios)) {
+      // Set the first as checked
       $first_class_id = reset($class_radios);
       $form[$first_class_id]['#attributes']['checked'] = 'checked';
       $form['class_detail_rule'] = array(
         '#type' => 'markup',
         '#markup' => '<p class="details-rule">Details for your selected date</p>',
       );
-    }
-    else {
-      $first_class_id = reset($class_radios);
-      $form[$first_class_id]['#attributes']['class'][] = 'hidden';
     }
   }
 }

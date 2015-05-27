@@ -1,5 +1,4 @@
 .class-details {
-  // @include leader(-2);
   div.form-type-radio {
     @include leader(1);
     clear: left;
@@ -23,6 +22,9 @@
       display: block;
       color: $gray-dark;
       text-transform: uppercase;
+    }
+    &.location {
+      display: block;
     }
   }
 
