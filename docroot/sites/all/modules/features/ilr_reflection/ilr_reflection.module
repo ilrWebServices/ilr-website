@@ -78,6 +78,7 @@ function ilr_reflection_node_presave($node) {
     }
     if ($node->is_new) {
       drupal_set_message(t('Thank you for sharing a part of your ILR story. We hope you will join us for an upcoming <a href="http://events.cornell.edu/search/events/1?event_types%5B%5D=41672">event</a> and please stay connected with us on <a href="https://www.facebook.com/ILRSchool">Facebook</a>, <a href="https://instagram.com/cornellilr">Instagram</a> and <a href="https://www.linkedin.com/edu/cornell-university-ilr-school-50020">Linked In</a>.'));
+      drupal_goto('/ilr-at-70');
     }
   }
 }
