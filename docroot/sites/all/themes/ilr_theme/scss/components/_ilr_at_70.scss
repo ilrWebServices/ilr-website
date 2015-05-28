@@ -47,13 +47,27 @@ body.subsite-front {
       }
     }
 
-    #block-bean-ilr-at-70-events {
-      @extend %listed-events;
-      background-color: white;
-      border-bottom: 1px solid $gray-light;
-      @include padding-leader(1);
-      @include padding-trailer(2);
-      @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
+    #content-bottom {
+      #block-bean-ilr-at-70-events {
+        @extend %listed-events;
+        background-color: white;
+        border-bottom: 1px solid $gray-light;
+        @include padding-leader(1);
+        @include padding-trailer(2);
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+      }
+    }
+
+    #content-bottom[data-eq-state="768"] {
+      #block-bean-ilr-at-70-events {
+        padding-left: 3em;
+        padding-right: 3em;
+      }
+    }
+
+    #content-bottom[data-eq-state="widescreen"] {
+      #block-bean-ilr-at-70-events {
         padding-left: 5em;
         padding-right: 5em;
       }
@@ -151,8 +165,9 @@ body.subsite-front {
     .field-name-body {
       p {
         &:first-child {
-          @include margin-leader(.5);
+          @include margin-leader(0);
         }
+      @include margin-leader(.5);
       }
     }
     .field-name-field-full-name {

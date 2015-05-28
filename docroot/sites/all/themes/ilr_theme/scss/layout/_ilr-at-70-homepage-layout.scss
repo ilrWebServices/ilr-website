@@ -24,7 +24,6 @@ body.subsite-front {
         }
       }
       .node-reflection { // This is the featured reflection
-        @extend %image-heading-text; /* flex box for ordering heading, image, text, etc */
         h2 {
           @include grid-span(12);
         }
