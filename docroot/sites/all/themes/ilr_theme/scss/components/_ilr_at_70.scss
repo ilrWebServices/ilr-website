@@ -151,12 +151,13 @@ body.node-type-reflection {
       font-style: oblique;
     }
     ul.social-share {
-      @extend %social-share-70th;
-      opacity: 1;
+      // @extend %social-share-70th;
+      // opacity: 1;
+      display: none; // hiding until sharing issues from within modals can be fixed
     }
   }
   .jPanelMenu-panel { // Removes line at bottom of reflection modal
-    @include box-shadow(0 0px 0px 0px rgba(black, .5));
+    box-shadow: none;
   }
 }
 
