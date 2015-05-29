@@ -140,40 +140,58 @@ body.subsite-front {
     }
   }
 }
+
 // Featured reflection
-#block-bean-70th-reflections-featured {
-  background: $brown url("../images/early-years-bg.jpg") no-repeat left top;
-  >h2 { // Hide title of block
-    display: none;
-  }
-  .node-reflection {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
-    padding-right: 1em;
-    padding-left: 1em;
-    position: relative;
-    h2 {
-      @include adjust-font-size-to(30px);
-      @include adjust-leading-to(1);
-      a {
+#main {
+  #block-bean-70th-reflections-featured {
+    background: $brown;
+    >h2 { // Hide title of block
+      display: none;
+    }
+    .node-reflection {
+      @include padding-leader(1);
+      @include padding-trailer(1.5);
+      padding-right: 1em;
+      padding-left: 1em;
+      position: relative;
+      h2 {
+        @include adjust-font-size-to(30px);
+        @include adjust-leading-to(1);
+        @include margin-trailer(.5);
+        a {
+          color: white;
+        }
+      }
+      p {
+        color: white;
+      }
+      .field-name-body {
+        p {
+          &:first-child {
+            @include margin-leader(0);
+          }
+        @include margin-leader(.5);
+        }
+      }
+      .field-name-field-full-name {
+        @include adjust-font-size-to(22px);
+        @include adjust-leading-to(1);
         color: white;
       }
     }
-    p {
-      color: white;
-    }
-    .field-name-body {
-      p {
-        &:first-child {
-          @include margin-leader(0);
-        }
-      @include margin-leader(.5);
-      }
-    }
-    .field-name-field-full-name {
-      @include adjust-font-size-to(22px);
-      @include adjust-leading-to(1);
-      color: white;
+  }
+}
+
+#main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+  #block-bean-70th-reflections-featured {
+    background: $brown url("../images/early-years-bg.jpg") no-repeat left top;
+  }
+}
+
+#main[data-eq-state="widescreen"] {
+  #block-bean-70th-reflections-featured {
+    .node-reflection {
+      @include padding-leader(0);
     }
   }
 }
