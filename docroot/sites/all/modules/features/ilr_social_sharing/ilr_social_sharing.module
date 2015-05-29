@@ -66,11 +66,11 @@ function _ilr_social_sharing_get_description($node) {
 
 function _ilr_social_sharing_get_enabled_bundles() {
   return array(
-    // 'news_item',
-    // 'post',
+    'news_item',
+    'post',
     'reflection',
-    // 'sdc_course',
-    // 'sdc_class',
+    'sdc_course',
+    'sdc_class',
   );
 }
 
