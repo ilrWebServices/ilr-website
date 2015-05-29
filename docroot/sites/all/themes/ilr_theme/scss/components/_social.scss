@@ -31,6 +31,7 @@ $social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
 
 ul.social-share {
   @include inline-block-list;
+  @include trailer(1);
   li {
     border: 1px solid $gray-medium;
     padding-left: 0;

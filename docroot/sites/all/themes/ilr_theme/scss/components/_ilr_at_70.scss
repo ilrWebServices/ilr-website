@@ -88,7 +88,6 @@ body.subsite-front {
       @include box-shadow(0 0px 0px 0px rgba(black, .5));
     }
 
-    // Social overrides
     ul.social-share {
       @extend %social-share-70th;
       opacity: 0;
@@ -161,10 +160,12 @@ body.node-type-reflection {
   }
 }
 
+// Social overrides of _social.scss
 %social-share-70th {
   position: absolute;
   right: 1em;
   bottom: 0;
+  margin-bottom: 0;
 
   li {
     border: none;
