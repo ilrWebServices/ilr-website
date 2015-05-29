@@ -3,7 +3,7 @@
     attach: function (context, settings) {
 
       // Disable links in reflections for now
-      $('.node-reflection a').click(function(){
+      $('.node-reflection h2 a').click(function(){
         return false;
       });
 

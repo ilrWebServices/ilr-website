@@ -37,6 +37,19 @@ function ilr_at_70_page_build(&$page) {
 function ilr_at_70_preprocess_node(&$variables) {
   if ($variables['type'] == 'reflection' && $variables['view_mode'] == 'teaser') {
     _ilr_social_sharing_add_social_buttons($variables);
+    _ilr_at_70_check_for_quote($variables);
+  }
+}
+
+/**
+ * Checks for a "quote"
+ * Contributors will simply need to make the title and body the same
+ * for a given item to display as a quote
+ */
+function _ilr_at_70_check_for_quote(&$variables) {
+  $wrapper = ilr_get_node_wrapper($variables['node']);
+  if ($wrapper->label() == $wrapper->body->value()['value']) {
+    $variables['classes_array'][] = 'quote';
   }
 }
 
