@@ -28,7 +28,7 @@
           'redirect_uri'  : window.location.href,
           'link'          : getNodeURL($id),
         };
-        if(typeof $image === 'undefined'){
+        if(typeof $image !== 'undefined'){
           params.source = $image;
         }
         shareToURL(url, params);
@@ -47,12 +47,14 @@
       };
 
       shareWith['mail'] = function() {
+        var hashtags = getHashtags();
         url = 'mailto:?';
-        url += 'subject=' + getEmailSubject() + $title.trim();
-        url += '&body='    + $description.trim();
+        url += 'subject=' + getEmailSubject();
+        url += '&body='    + encodeURIComponent($description.trim());
         url += '%0D%0A%0D%0A' + 'View it online: ' + window.location.href;
-        url += '%0D%0A%0D%0ASee more: #ILR70';
-
+        if (hashtags.length > 0) {
+          url += '%0D%0A%0D%0ASee more: #' + hashtags;
+        }
         // Pass them straight to the url
         // so the values don't get encoded
         window.location.href = url;
@@ -80,30 +82,30 @@
       }
 
       var getHashtags = function() {
-        var hashtags = Drupal.settings.ilr_social_sharing.hashtags;
-        if (typeof hashtags === 'undefined') {
-          hashtags = '';
+        var hashtags = '';
+        if (typeof settings.ilr_social_sharing !== 'undefined') {
+          hashtags =  settings.ilr_social_sharing.hashtags;
         }
         return hashtags;
       };
 
       var getEmailSubject = function() {
-        // var subject = Drupal.settings.ilr_social_sharing.emailSubject;
-        if (typeof subject === 'undefined') {
-          subject = 'The ILR School: ';
+        var prefix = 'The ILR School';
+        if (typeof settings.ilr_social_sharing !== 'undefined' && settings.ilr_social_sharing.emailSubjectPrefix !== 'undefined') {
+          prefix = settings.ilr_social_sharing.emailSubjectPrefix;
         }
-        return subject;
+        return prefix + ': ' + $title.trim();
       };
 
       $('.social-share a').click(function() {
         $channel = $(this).attr('class');
         $article = $(this).closest('article');
         $id = $article.attr('id').replace('node-','');
-        if ($article.hasClass('node-teaser')) {
+        if ($article.hasClass('node-teaser')) { // Use the teaser-specific details
           $title = $article.find('h2').first().text().trim();
           $image = $article.find('img').attr('src');
           $description = $article.find('.field-type-text-with-summary').text().trim();
-        } else {
+        } else { // Default to the page's open graph tags
           $title = $('meta[property="og:title"]').attr('content');
           $image = $('meta[property="og:image"]').attr("content");
           $description = $('meta[property="og:description"]').attr("content");
