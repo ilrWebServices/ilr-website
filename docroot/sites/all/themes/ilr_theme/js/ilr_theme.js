@@ -284,7 +284,7 @@
           $links = $(".tagged-content a, .bean-content-listing-manual a, .view-course-manual-listings a");
           $links.each(function(){
             $href = $(this).attr('href');
-            if (isWrappableHref($href)) {
+            if (typeof $href !== 'undefined' && isWrappableHref($href)) {
               $(this).attr('href', '/' + currentSubsitePath() + $href);
             }
           });
