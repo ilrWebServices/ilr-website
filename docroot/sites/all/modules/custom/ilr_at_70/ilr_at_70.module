@@ -43,12 +43,13 @@ function ilr_at_70_preprocess_node(&$variables) {
 
 /**
  * Checks for a "quote"
- * Contributors will simply need to make the title and body the same
+ * Contributors will simply need to make the body text "quote"
  * for a given item to display as a quote
  */
 function _ilr_at_70_check_for_quote(&$variables) {
   $wrapper = ilr_get_node_wrapper($variables['node']);
-  if ($wrapper->label() == $wrapper->body->value()['value']) {
+  $body = strip_tags(strtolower($wrapper->body->value()['value']));
+  if (strpos('quote', $body) == 0 && strlen($body) < 10) {
     $variables['classes_array'][] = 'quote';
   }
 }
