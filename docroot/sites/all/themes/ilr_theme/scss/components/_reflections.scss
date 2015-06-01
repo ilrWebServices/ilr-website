@@ -1,17 +1,7 @@
 // all reflections
 article.node-reflection {
   &.quote {
-    background-color: $gray-bg;
-    h2 {
-      @include adjust-font-size-to(25px);
-      @include adjust-leading-to(1);
-      a {
-        color: #8f8746;
-      }
-    }
-    .field-name-body {
-      display: none;
-    }
+    @extend %quote;
   }
 }
 // @todo:
@@ -23,5 +13,23 @@ article.node-reflection {
   article.node-reflection {
     @extend %card-rounded;
     padding-bottom: 1.5em !important; // Override for social share padding
+
+    &.quote {
+      @extend %quote;
+    }
+  }
+}
+
+%quote {
+  background-color: $gray-bg;
+  h2 {
+    @include adjust-font-size-to(25px);
+    @include adjust-leading-to(1);
+    a {
+      color: #8f8746;
+    }
+  }
+  .field-name-body {
+    display: none;
   }
 }

@@ -50,9 +50,12 @@ function ilr_at_70_preprocess_node(&$variables) {
  */
 function _ilr_at_70_check_for_quote(&$variables) {
   $wrapper = ilr_get_node_wrapper($variables['node']);
-  $body = strip_tags(strtolower($wrapper->body->value()['value']));
-  if (strpos('quote', $body) == 0 && strlen($body) < 10) {
-    $variables['classes_array'][] = 'quote';
+  $body = $wrapper->body->value();
+  if (array_key_exists('value', $body)) {
+    $body = strip_tags(strtolower($body['value']));
+    if (strpos('quote', $body) == 0 && strlen($body) < 10) {
+      $variables['classes_array'][] = 'quote';
+    }
   }
 }
 
