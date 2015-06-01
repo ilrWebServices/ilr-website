@@ -127,11 +127,10 @@ function ilr_sub_pages_form_node_form_alter(&$form, &$form_state, $form_id) {
     if (isset($form['#node']->ilr_default_menu_parent)) {
       $form['menu']['link']['parent']['#default_value'] = $node->ilr_default_menu_parent;
       $form['menu']['enabled']['#value'] = TRUE;
+      $form['menu']['link']['link_title']['#required'] = TRUE;
     }
     if (!$view_advanced_menu) {
-      // Require the menu link title and parent fields.
       $form['menu']['enabled']['#disabled'] = TRUE;
-      $form['menu']['link']['link_title']['#required'] = TRUE;
       $form['menu']['link']['parent']['#required'] = TRUE;
       // Restricts access to certain menu form fields
       $form['menu']['link']['description']['#access'] = FALSE;
