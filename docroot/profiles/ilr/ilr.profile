@@ -535,6 +535,18 @@ function ilr_is_production_site() {
 }
 
 /**
+ * Creates or retrieves an entitymetadata wrapper for a given nid
+ */
+function ilr_get_node_wrapper($node_or_nid) {
+  $wrappers = &drupal_static(__FUNCTION__);
+  $node = (is_numeric($node_or_nid)) ? node_load($node_or_nid) : $node_or_nid;
+  if (!isset($wrappers[$node->nid])) {
+    $wrappers[$node->nid] = entity_metadata_wrapper('node', $node);
+  }
+  return $wrappers[$node->nid];
+}
+
+/**
  * Figures out whether user account has a NetID
  */
 function ilr_user_has_netid() {
