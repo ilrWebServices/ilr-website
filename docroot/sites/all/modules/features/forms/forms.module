@@ -188,6 +188,8 @@ function forms_admin_paths() {
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter.
+ * entityform_edit_form is the BASE_FORM_ID for the forms that
+ * the user will be filling out
  */
 function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form_id) {
   // Fill in default values of kerberized forms
@@ -201,14 +203,20 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
       $form[$key]['#access'] = FALSE;
     }
   }
-
-  // For Collective Bargaining videos form, redirect if cookie "cbvideoinfo" is set.
-  if ($form_id == 'collective_bargaining_videos_entityform_edit_form') {
-    if (isset($_COOKIE['Drupal_visitor_cbvideoinfo'])) {
-      _forms_collective_bargaining_videos_redirect();
-    }
+  // Special processing of specific forms
+  switch ($form_id) {
+    case 'check_your_eligibility_entityform_edit_form': // Requested by Erin Sutzko 5/2015
+      unset($form['field_years_full_time_work_exp'][LANGUAGE_NONE]['#options']['1-5 years']);
+      unset($form['field_years_full_time_hr'][LANGUAGE_NONE]['#options']['No experience']);
+      break;
+    case 'collective_bargaining_videos_entityform_edit_form':
+      if (isset($_COOKIE['Drupal_visitor_cbvideoinfo'])) {
+        _forms_collective_bargaining_videos_redirect();
+      }
+      break;
   }
 }
+
 /**
  * Collective Bargaining videos redirect
  * The URL to redirect to will get set in the db via drush using the variable "cb_videos_url"
