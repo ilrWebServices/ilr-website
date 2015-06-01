@@ -342,7 +342,7 @@
         $('html, body').stop().animate({
             'scrollTop': $target.offset().top - 175
         }, 900, 'swing', function () {
-            window.location.hash = target;
+            window.location.hash = $target;
         });
       });
     }
