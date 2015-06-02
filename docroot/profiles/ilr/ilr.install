@@ -537,3 +537,11 @@ function ilr_update_7045() {
 function ilr_update_7046() {
   variable_set('media_youtube_api_key', 'AIzaSyAmQHtLLBP8-AGYKxiy-Ml8w2J-W8NewBU');
 }
+
+/**
+ * Adds reflection admin role
+ */
+function ilr_update_7047() {
+  $roles = user_roles();
+  _ilr_create_role('reflection admin', count($roles));
+}
