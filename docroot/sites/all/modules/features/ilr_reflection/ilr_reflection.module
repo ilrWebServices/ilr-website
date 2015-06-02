@@ -90,10 +90,18 @@ function ilr_reflection_node_presave($node) {
 function ilr_reflection_node_view($node, $view_mode, $langcode) {
   if ($node->type == 'reflection') {
     _ilr_reflection_format_class_year($node);
-
     if ($view_mode == 'full' && !isset($_GET['layout'])) {
       _ilr_reflection_redirect_to_70th_page($node->nid);
     }
+  }
+}
+
+/**
+ * Moves the social share markup to the end of the content array
+ */
+function ilr_reflection_preprocess_node(&$variables) {
+  if ($variables['type'] == 'reflection' && isset($variables['content']['social_share'])) {
+    $variables['content']['social_share']['#weight'] = $variables['content']['field_full_name']['#weight'] + 1;
   }
 }
 
