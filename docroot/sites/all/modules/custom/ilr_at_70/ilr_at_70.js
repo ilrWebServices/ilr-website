@@ -36,6 +36,12 @@
             TweenLite.to($('.social-share'), .6, {opacity:0, ease: easing });
           });
         }
+
+        // Hard coding the width to align the logo with the featured image
+        // See makeMenuWidthCalculations() in ilr_theme.js
+        if ($('body').hasClass('ilr-at-70')) {
+          $('.subsite-header').css('width','39%');
+        }
       });
     }
   };

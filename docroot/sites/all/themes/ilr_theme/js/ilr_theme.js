@@ -105,19 +105,13 @@
         if (isSubsite()) {
           var menuText = $('.menu-block-ilr-primary-menu li').text();
           var title = $('.subsite-header').text();
-          var ilrAt70 = $('body').hasClass('ilr-at-70');
           $subsiteTitlePercentageWidth = Math.round(title.length / menuText.length * 100);
           var maxWidth = menuText.length * 15;
           $('.menu-block-ilr-primary-menu ul').css('max-width', maxWidth);
           if ($subsiteTitlePercentageWidth < 25) {
-            if (ilrAt70) {
-              $subsiteTitlePercentageWidth = 39;
-            } else {
-              $subsiteTitlePercentageWidth = 35;
-            }
-            // $subsiteTitlePercentageWidth = 35;
+            $subsiteTitlePercentageWidth = 35;
           }
-            $('.subsite-header').css('width',$subsiteTitlePercentageWidth + '%');
+          $('.subsite-header').css('width',$subsiteTitlePercentageWidth + '%');
         }
       };
 
