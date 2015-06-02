@@ -104,24 +104,25 @@ function ilr_install() {
 
 /**
  * Custom function for role creation
- * Can be called in an update hook after adding
- * a new role to the $roles array here.
- * @see ilr_update_7034
  */
 function _ilr_create_roles() {
-  $roles = array('administrator','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin', 'course admin', 'form admin');
+  $roles = array('administrator','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin', 'course admin', 'form admin', 'reflection admin');
 
   $weight = 0;
   foreach ($roles as $name) {
     if (!user_role_load_by_name($name)) {
-      $role = new stdClass();
-      $role->name = $name;
-      $role->weight = $weight++;
-      user_role_save($role);
+      _ilr_create_role($name, $weight);
     }
+    $weight++;
   }
 }
 
+function _ilr_create_role($name, $weight) {
+  $role = new stdClass();
+  $role->name = $name;
+  $role->weight = $weight;
+  user_role_save($role);
+}
 /**
  * Custom function for role creation
  */
