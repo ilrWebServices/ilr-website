@@ -132,7 +132,11 @@
   &.ilr-at-70 header[data-eq-state="regular-nav"] {
     #header-region {
       background: $brown url("../images/early-years-nav-bg.jpg") no-repeat center bottom;
-      text-align: center;
+      text-align: right;
+      .menu-block-ilr-primary-menu {
+        float: left;
+        margin-left: 1em;
+      }
     }
   }
 }
