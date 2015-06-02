@@ -605,3 +605,34 @@ function ilr_format_file_size($size, $langcode = NULL) {
 function _ilr_user_has_role($roles) {
   return !!count(array_intersect(is_array($roles)? $roles : array($roles), array_values($GLOBALS['user']->roles)));
 }
+
+/**
+ * Custom EntityFieldQuery on users
+ * rolename requires the hook_query_TAG_alter() below
+ */
+function ilr_get_users_by_rolename($rolename){
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'user');
+  $query->addTag('rolequery');
+  $query->addMetaData('rolename', $rolename);
+
+  if($user_results = $query->execute()) {
+    $users = user_load_multiple(array_keys($user_results['user']));
+    return $users;
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_query_TAG_alter()
+ * Limits EFQ in get_users_by_rolename
+ */
+function ilr_query_rolequery_alter(QueryAlterableInterface $query) {
+  $rolename = $query->getMetaData('rolename');
+  $role_subquery = db_select("role", "role");
+  $role_subquery->condition('role.name', $rolename, '=');
+  $role_subquery->join('users_roles', "users_to_include", "role.rid = users_to_include.rid");
+  $role_subquery->fields('users_to_include', array('uid' => 'uid'));
+  $role_subquery->where('users_to_include.uid = users.uid');
+  $query->exists($role_subquery);
+}
