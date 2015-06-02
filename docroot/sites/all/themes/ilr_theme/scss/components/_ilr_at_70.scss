@@ -1,5 +1,25 @@
 body.subsite-front {
   &.ilr-at-70 {
+    #header-region {
+      background: $brown;
+      border-bottom-color: $darker-red;
+      border-bottom: none;
+      a {
+        color: $gray-medium;
+      }
+    }
+
+    header[data-eq-state="regular-nav"] {
+      #header-region {
+        background: $brown url("../images/early-years-nav-bg.jpg") no-repeat center bottom;
+        text-align: right;
+        .menu-block-ilr-primary-menu {
+          float: left;
+          margin-left: 1em;
+        }
+      }
+    }
+
     .block > h2 {
       @extend %centered-title;
     }
