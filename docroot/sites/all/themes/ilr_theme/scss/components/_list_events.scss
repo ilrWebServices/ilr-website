@@ -3,6 +3,8 @@
     display: none;
   }
   article {
+    @include padding-leader(0);
+    @include margin-trailer(1);
     border: none;
     background-color: transparent;
     flex-direction: row;

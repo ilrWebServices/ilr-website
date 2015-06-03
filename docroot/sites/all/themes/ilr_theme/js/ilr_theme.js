@@ -111,7 +111,7 @@
           if ($subsiteTitlePercentageWidth < 25) {
             $subsiteTitlePercentageWidth = 35;
           }
-            $('.subsite-header').css('width',$subsiteTitlePercentageWidth + '%');
+          $('.subsite-header').css('width',$subsiteTitlePercentageWidth + '%');
         }
       };
 

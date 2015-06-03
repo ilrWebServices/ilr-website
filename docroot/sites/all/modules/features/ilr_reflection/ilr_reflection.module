@@ -6,6 +6,9 @@
 
 include_once 'ilr_reflection.features.inc';
 
+/**
+ * Implements hook_block_info().
+ */
 function ilr_reflection_block_info() {
   $blocks['reflection_node_form'] = array(
     'info' => t('Add a reflection'),
@@ -13,6 +16,10 @@ function ilr_reflection_block_info() {
   return $blocks;
 }
 
+/**
+ * Implements hook_block_view().
+ * Creates a block for the add reflection form
+ */
 function ilr_reflection_block_view($delta = ''){
   $block = array();
 
@@ -34,7 +41,6 @@ function ilr_reflection_block_view($delta = ''){
       }
 
   }
-
   return $block;
 }
 
@@ -57,33 +63,19 @@ function ilr_reflection_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_node_insert()
  * Looks for reflection node creation
  *   - Sends email to reflection admins
+ *   - Sets the message for the user
  */
 function ilr_reflection_node_insert($node) {
   if($node->type == "reflection") {
+    drupal_set_message(t('Thank you for sharing a part of your ILR story. We hope you will join us for an upcoming <a href="http://events.cornell.edu/search/events/1?event_types%5B%5D=41672">event</a> and please stay connected with us on <a href="https://www.facebook.com/ILRSchool">Facebook</a>, <a href="https://instagram.com/cornellilr">Instagram</a> and <a href="https://www.linkedin.com/edu/cornell-university-ilr-school-50020">Linked In</a>.'));
     _ilr_reflection_admin_notification($node);
     drupal_goto('/ilr-at-70');
   }
 }
 
 /**
- * Implements hook_mail().
- * This is the email sent to the admin
- */
-function ilr_reflection_admin_notification_mail($key, &$message, $params) {
-  $sitename = variable_get('site_name', 'Drupal');
-
-  $message['headers']['MIME-Version'] = '1.0';
-  $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
-  $message['subject'] = t("A new reflection has been submitted");
-  $message['body'][] = $params['content'];
-  $message['body'][] = "\n--\r";
-  $message['body'][] = t("This is an automatic e-mail from $sitename.");
-}
-
-/**
  * Implements hook_node_presave().
  * Makes sure that reflections are tagged "reflection"
- * Sets the visitor message
  */
 function ilr_reflection_node_presave($node) {
   if ($node->type == 'reflection') {
@@ -103,9 +95,6 @@ function ilr_reflection_node_presave($node) {
     if (!$term_present) {
       $node->field_tags[LANGUAGE_NONE][] = (array) array_shift($term);
     }
-    if ($node->is_new) {
-      drupal_set_message(t('Thank you for sharing a part of your ILR story. We hope you will join us for an upcoming <a href="http://events.cornell.edu/search/events/1?event_types%5B%5D=41672">event</a> and please stay connected with us on <a href="https://www.facebook.com/ILRSchool">Facebook</a>, <a href="https://instagram.com/cornellilr">Instagram</a> and <a href="https://www.linkedin.com/edu/cornell-university-ilr-school-50020">Linked In</a>.'));
-    }
   }
 }
 
@@ -117,11 +106,35 @@ function ilr_reflection_node_presave($node) {
 function ilr_reflection_node_view($node, $view_mode, $langcode) {
   if ($node->type == 'reflection') {
     _ilr_reflection_format_class_year($node);
-
     if ($view_mode == 'full' && !isset($_GET['layout'])) {
       _ilr_reflection_redirect_to_70th_page($node->nid);
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ * Moves the social share markup to the end of the content array
+ */
+function ilr_reflection_preprocess_node(&$variables) {
+  if ($variables['type'] == 'reflection' && isset($variables['content']['social_share'])) {
+    $variables['content']['social_share']['#weight'] = $variables['content']['field_full_name']['#weight'] + 1;
+  }
+}
+
+/**
+ * Implements hook_mail().
+ * This is the email sent to the admin
+ */
+function ilr_reflection_admin_notification_mail($key, &$message, $params) {
+  $sitename = variable_get('site_name', 'Drupal');
+
+  $message['headers']['MIME-Version'] = '1.0';
+  $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
+  $message['subject'] = t("A new reflection has been submitted");
+  $message['body'][] = $params['content'];
+  $message['body'][] = "\n--\r";
+  $message['body'][] = t("This is an automatic e-mail from $sitename.");
 }
 
 /**
