@@ -1,5 +1,25 @@
 body.subsite-front {
   &.ilr-at-70 {
+    #header-region {
+      background: $brown;
+      border-bottom-color: $darker-red;
+      border-bottom: none;
+      a {
+        color: $gray-medium;
+      }
+    }
+
+    header[data-eq-state="regular-nav"] {
+      #header-region {
+        background: $brown url("../images/early-years-nav-bg.jpg") no-repeat center bottom;
+        text-align: right;
+        .menu-block-ilr-primary-menu {
+          float: left;
+          margin-left: 1em;
+        }
+      }
+    }
+
     .block > h2 {
       @extend %centered-title;
     }
@@ -47,13 +67,27 @@ body.subsite-front {
       }
     }
 
-    #block-bean-ilr-at-70-events {
-      @extend %listed-events;
-      background-color: white;
-      border-bottom: 1px solid $gray-light;
-      @include padding-leader(1);
-      @include padding-trailer(2);
-      @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
+    #content-bottom {
+      #block-bean-ilr-at-70-events {
+        @extend %listed-events;
+        background-color: white;
+        border-bottom: 1px solid $gray-light;
+        @include padding-leader(1);
+        @include padding-trailer(2);
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+      }
+    }
+
+    #content-bottom[data-eq-state="768"] {
+      #block-bean-ilr-at-70-events {
+        padding-left: 3em;
+        padding-right: 3em;
+      }
+    }
+
+    #content-bottom[data-eq-state="widescreen"] {
+      #block-bean-ilr-at-70-events {
         padding-left: 5em;
         padding-right: 5em;
       }
@@ -96,38 +130,56 @@ body.subsite-front {
 }
 
 // Featured reflection
-#block-bean-70th-reflections-featured {
-  background: $brown url("../images/early-years-bg.jpg") no-repeat left top;
-  >h2 { // Hide title of block
-    display: none;
-  }
-  .node-reflection {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
-    padding-right: 1em;
-    padding-left: 1em;
-    position: relative;
-    h2 {
-      @include adjust-font-size-to(30px);
-      @include adjust-leading-to(1);
-      a {
+#main {
+  #block-bean-70th-reflections-featured {
+    background: $brown;
+    >h2 { // Hide title of block
+      display: none;
+    }
+    .node-reflection {
+      @include padding-leader(1);
+      @include padding-trailer(1.5);
+      padding-right: 1em;
+      padding-left: 1em;
+      position: relative;
+      h2 {
+        @include adjust-font-size-to(30px);
+        @include adjust-leading-to(1);
+        @include margin-trailer(.5);
+        a {
+          color: white;
+        }
+      }
+      p {
+        color: white;
+      }
+      .field-name-body {
+        p {
+          &:first-child {
+            @include margin-leader(0);
+          }
+        @include margin-leader(.5);
+        }
+      }
+      .field-name-field-full-name {
+        @include adjust-font-size-to(22px);
+        @include adjust-leading-to(1);
         color: white;
       }
     }
-    p {
-      color: white;
-    }
-    .field-name-body {
-      p {
-        &:first-child {
-          @include margin-leader(.5);
-        }
-      }
-    }
-    .field-name-field-full-name {
-      @include adjust-font-size-to(22px);
-      @include adjust-leading-to(1);
-      color: white;
+  }
+}
+
+#main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+  #block-bean-70th-reflections-featured {
+    background: $brown url("../images/early-years-bg.jpg") no-repeat left top;
+  }
+}
+
+#main[data-eq-state="widescreen"] {
+  #block-bean-70th-reflections-featured {
+    .node-reflection {
+      @include padding-leader(0);
     }
   }
 }

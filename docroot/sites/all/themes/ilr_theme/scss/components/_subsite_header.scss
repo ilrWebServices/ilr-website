@@ -119,14 +119,6 @@
       }
     }
   }
-  &.ilr-at-70 #header-region {
-    background: $brown url("../images/early-years-nav-bg.jpg") no-repeat center bottom;
-    border-bottom-color: $darker-red;
-    border-bottom: none;
-    a {
-      color: $gray-medium;
-    }
-  }
 }
 
 // Called from _mega_menu.scss

@@ -24,14 +24,12 @@ body.subsite-front {
         }
       }
       .node-reflection { // This is the featured reflection
-        @extend %image-heading-text; /* flex box for ordering heading, image, text, etc */
         h2 {
           @include grid-span(12);
         }
         ul {
-          position: absolute;
-          left: 0;
-          bottom: 0;
+          @include grid-span(12);
+          right: -.5em;
         }
         .field-name-field-file {
           @include grid-span(12);
@@ -52,8 +50,8 @@ body.subsite-front {
           @include grid-span(7,6);
         }
         ul {
-          left: 42%;
-          bottom: .5em;
+          @include grid-span(7,6);
+          right: 0;
         }
         .field-name-field-file {
           @include grid-span(5,1);
