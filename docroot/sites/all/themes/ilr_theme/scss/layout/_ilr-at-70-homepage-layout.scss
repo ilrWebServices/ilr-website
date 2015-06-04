@@ -29,6 +29,7 @@ body.subsite-front {
         }
         ul {
           @include grid-span(12);
+          position: relative;
           right: -.5em;
         }
         .field-name-field-file {
