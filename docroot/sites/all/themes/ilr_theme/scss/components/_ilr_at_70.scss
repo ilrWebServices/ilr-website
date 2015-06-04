@@ -166,6 +166,7 @@ body.subsite-front {
         @include adjust-font-size-to(22px);
         @include adjust-leading-to(1);
         color: white;
+        display: none;
       }
     }
   }
