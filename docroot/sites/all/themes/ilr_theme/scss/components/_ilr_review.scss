@@ -1,6 +1,6 @@
 body.ilr-review {
   #header-region {
-    background-color: #163a6e;
+    background-color: $blue-ilrreview;
     a {
       color: white;
     }
@@ -8,7 +8,7 @@ body.ilr-review {
 
   header[data-eq-state="regular-nav"] {
     #header-region {
-      background: #163a6e url("../images/bg-globe-blue.gif") no-repeat left top;
+      background: $blue-ilrreview url("../images/bg-globe-blue.gif") no-repeat left top;
     }
   }
 }
