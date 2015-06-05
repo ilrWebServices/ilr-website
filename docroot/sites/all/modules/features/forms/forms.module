@@ -532,6 +532,9 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
       $options = _forms_year_relative_options(-5,5);
       $options[] = 'other';
       break;
+    case 'fex_wisp_sponsor_registration':
+      $options = _forms_year_relative_options(0,-70);
+      break;
     case 'ilr_information_session_sign_in':
       $options = date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
       break;
@@ -550,12 +553,24 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
  * I need this, because of forms that have more than one field for a set of years
  */
 function _forms_year_as_list_text_options2($field, $instance = NULL, $entity_type = NULL, $entity = NULL) {
-  if ($entity->type == 'contact_ilr_admissions') {
-    // Anticipated entry year at Cornell for Admissions Contact form
-    // If it's before April: start with current year and go out 6 years
-    // April or later: start with the following year and go out 6 years
-    return date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
-  }
+
+    if ($entity->type == 'contact_ilr_admissions') {
+      // Anticipated entry year at Cornell for Admissions Contact form
+      // If it's before April: start with current year and go out 6 years
+      // April or later: start with the following year and go out 6 years
+      return date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
+    }
+    else {
+      switch ($entity->type) {
+        case 'fex_wisp_sponsor_registration':
+          $options = _forms_year_relative_options(0,-70);
+          break;
+        default:
+          $options = _forms_year_relative_options(0,6);
+          break;
+      }
+      return $options;
+    }
 }
 
 
@@ -572,7 +587,7 @@ function _forms_number_absolute_options($first, $last) {
   }
   else {
     for ($num=$first; $num>=$last; $num--) {
-      $numList['$num'] = $num;
+      $numList["$num"] = $num;
     }
   }
   return $numList;
