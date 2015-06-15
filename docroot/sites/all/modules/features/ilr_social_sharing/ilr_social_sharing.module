@@ -113,8 +113,8 @@ function _ilr_social_sharing_get_social_share_markup() {
 }
 
 function _ilr_social_sharing_get_social_share_weight($content) {
-  if (isset($content['field_published_date'])) {
-    return $content['field_published_date']['#weight'] - 1;
+  if (isset($content['field_image'])) {
+    return $content['field_image']['#weight'] + .5;
   }
   return -1;
 }
