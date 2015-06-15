@@ -1,0 +1,8 @@
+.node-type-post {
+  .field-name-field-published-date {
+    font-weight: 300;
+    @include adjust-font-size-to(16px);
+    @include trailer(1);
+    border-bottom: 1px solid $gray-medium;
+  }
+}
