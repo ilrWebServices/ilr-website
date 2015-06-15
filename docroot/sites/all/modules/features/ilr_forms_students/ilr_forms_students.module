@@ -5,3 +5,121 @@
  */
 
 include_once 'ilr_forms_students.features.inc';
+
+/**
+ * Implements hook_entityform_presave.
+ * Sets numerous fields for fex/wisp sponsor form
+ */
+function ilr_forms_students_entityform_presave($entityform) {
+  if ($entityform->type == 'fex_wisp_sponsor_registration') {
+    _ilr_forms_students_set_programYear($entityform);
+    _ilr_forms_students_set_supervisor_fields($entityform);
+    _ilr_forms_students_fix_alum_college_fields($entityform);
+  }
+}
+
+/**
+ * Set program year
+ */
+function _ilr_forms_students_set_programYear($entityform) {
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  $currYear = date('Y');
+  $nextYear = $currYear + 1;
+  $lastYear = $currYear - 1;
+  if (date('m') > 5) {
+    $programYear = $currYear . '-' . $nextYear;
+  }
+  else {
+    $programYear = $lastYear . '-' . $currYear;
+  }
+  $entityform_wrapper->field_h_school_year->set($programYear);
+}
+
+
+/**
+ * Set fex/wisp sponsor form fields about the supervisor, if the sponsor didn't
+ * need to fill them in, i.e. because s/he is the supervisor or the address was
+ * the same.  They need to end up in the downloaded csv file for import to
+ * Filemaker; setting them here ensures that they go into the Drupal database
+ * for the form submission.
+ */
+function _ilr_forms_students_set_supervisor_fields($entityform) {
+  dpm ('in _ilr_forms_students_set_supervisor_fields');
+  dpm ($entityform, '$entityform');
+
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+
+  // Create arrays of fields that need to be copied.
+  // Key is the "from field" and value is the "to field"
+  $supervisor_basic_fields = array(
+    'field_first_name'              => 'field_first_name_additional',
+    'field_last_name'               => 'field_last_name_additional',
+    'field_job_title'               => 'field_job_title_additional',
+    'field_email'                   => 'field_email_additional',
+    'field_phone'                   => 'field_phone_additional',
+    'field_alum'                    => 'field_alum_additional',
+    'field_cornell_college'         => 'field_cornell_college_additional',
+    'field_degree_ba_masters_other' => 'field_degree_ba_masters_oth_addl',
+    'field_year_as_list_text'       => 'field_year_as_list_text_2',
+  );
+
+  $supervisor_address_fields = array(
+    'field_address_line_1' => 'field_address_line_1_additional',
+    'field_address_line_2' => 'field_address_line_2_additional',
+    'field_city'           => 'field_city_additional',
+    'field_state_province' => 'field_state_province_additional',
+    'field_zip_code'       => 'field_zip_postal_code_additional',
+  );
+
+  if ($entityform_wrapper->field_yes_no->value() == 'Yes') {
+    // Person filling out the form IS the supervisor - need both arrays of fields
+    $supervisor_all_fields = array_merge(
+     $supervisor_basic_fields, $supervisor_address_fields);
+
+    foreach ($supervisor_all_fields as $user_field => $supv_field) {
+      _ilr_forms_students_copy_field_value($entityform_wrapper, $user_field, $supv_field);
+    }
+  }
+  elseif ($entityform_wrapper->field_is_address_the_same->value() == 'Yes') {
+    // Person filling out the form IS NOT the supervisor, but address is the same
+    foreach ($supervisor_address_fields as $user_field => $supv_field) {
+      _ilr_forms_students_copy_field_value($entityform_wrapper, $user_field, $supv_field);
+    }
+  }
+}
+
+
+/**
+ * Copy a single field in the entityform to another field, if the target is blank
+ */
+function _ilr_forms_students_copy_field_value(&$wrapper, $from_field, $to_field) {
+  // Can't check for empty($wrapper->$to_field->value()) for some field types,
+  // e.g. radio buttons, when they are empty
+  $to_value = $wrapper->$to_field->value();
+  if (empty($to_value)) {
+    // It's a problem if the from_field is a radio and it's not set, not sure
+    // about other types of fields, so I'm always checking.
+    $from_value = $wrapper->$from_field->value();
+    if (!empty($from_value)) {
+      $wrapper->$to_field->set($from_value);
+    }
+  }
+}
+
+
+/**
+ * Set college field to blanks if the person isn't an alum.  It comes in set to
+ * ILR, because that's the default for the field on the form.  Need to do this
+ * for the person filling out the form and for the supervisor.
+ */
+function _ilr_forms_students_fix_alum_college_fields($entityform) {
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  if ($entityform_wrapper->field_alum->value() == 'No') {
+    // Person filling out the form
+    $entityform_wrapper->field_cornell_college->set('');
+  }
+  if ($entityform_wrapper->field_alum_additional->value() == 'No') {
+    // Supervisor
+    $entityform_wrapper->field_cornell_college_additional->set('');
+  }
+}
