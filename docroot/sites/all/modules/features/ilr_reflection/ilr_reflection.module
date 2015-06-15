@@ -54,10 +54,12 @@ function ilr_reflection_form_alter(&$form, &$form_state, $form_id) {
     if (!_ilr_user_has_role(array('administrator','contributor'))) {
       $form['field_youtube_video']['#access'] = FALSE;
       $form['field_tags']['#access'] = FALSE;
+      $form['#validate'][] = '_ilr_reflection_spam_handler';
     }
     $form['actions']['submit']['#value'] = 'Add my reflection';
   }
 }
+
 
 /**
  * Implements hook_node_insert()
@@ -189,4 +191,15 @@ function _ilr_reflection_format_class_year(&$node) {
  */
 function _ilr_reflection_redirect_to_70th_page($nid) {
   drupal_goto('ilr-at-70', array('fragment' => $nid));
+}
+
+/**
+ * Custom function to remove spam
+ * Some bots are getting past the honeypot, and they all appear to use a
+ * pipe (|) in the title.  6/15/2015
+ */
+function _ilr_reflection_spam_handler($form, &$form_state) {
+  if (strpos($form_state['values']['title'], "|")) {
+    form_set_error('title', t('Sorry, the title contains an invalid character'));
+  }
 }
