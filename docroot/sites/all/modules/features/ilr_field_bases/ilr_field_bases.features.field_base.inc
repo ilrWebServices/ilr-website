@@ -4321,11 +4321,9 @@ function ilr_field_bases_field_default_field_bases() {
         'value' => '<div class="form-item">
 	<p><strong>Important information about dates and duration</strong></p>
 
-	<p>Shadowing opportunities for FEX are typically one to three days in length, and take place during Cornell\'s intersession, between the end of Fall semester finals and the start of Spring semester. The date range for this year is noted at the top of this page. Depending on final exam schedules, some students may be available to work sooner. Additionally, some students may be returning to campus a week early for sorority and fraternity rush and recruitment. Therefore, we ask for flexibility in determining the dates for your opportunities. (However, please be mindful that if you are very flexibile, and are available for several weeks, but want to host&nbsp;<span style="font-size: 13.0080003738403px; line-height: 20.0063037872314px;">multiple students</span>&nbsp;on the same day, the students themselves may choose your opportunity in part because of the flexibility, but it might then be difficult to find a date that works for all those students.)</p>
+	<p>Shadowing opportunities for FEX are typically one to three days in length, and take place during Cornell\'s intersession, between the end of Fall semester finals and the start of Spring semester. The date range for this year is noted at the top of this page. Depending on final exam schedules, some students may be available to work sooner. Additionally, some students may be returning to campus a week early for sorority and fraternity rush and recruitment. Therefore, we ask for flexibility in determining the dates for your opportunities. (However, please be mindful that if you are very flexible, and are available for several weeks, but want to host multiple students on the same day, the students themselves may choose your opportunity in part because of the flexibility, but it might then be difficult to find a date that works for all those students.)</p>
 
 	<p>All that said, please be as specific as possible about the length of the opportunity and your preferred dates or date range, including any dates that would be problematic due to holidays, vacations, or low staffing levels. The more detail you can provide about dates, the better.</p>
-
-	<p>&nbsp;</p>
 </div>
 ',
       ),
