@@ -24,7 +24,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 40,
+        'weight' => 37,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'fexActivities',
+        ),
+        'type' => 'text_default',
+        'weight' => 36,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 36,
       ),
     ),
     'entity_type' => 'entityform',
@@ -63,10 +81,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => 'Street address line 1 (self)',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'selfStreetAddress1',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'entityform',
@@ -90,7 +126,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -108,7 +144,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 29,
+        'weight' => 23,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'supStreetAddress1',
+        ),
+        'type' => 'text_default',
+        'weight' => 25,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'entityform',
@@ -147,10 +201,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => 'Street address line 2 (self)',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'selfStreetAddress2',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'entityform',
@@ -167,7 +239,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -185,7 +257,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 30,
+        'weight' => 24,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'supStreetAddress2',
+        ),
+        'type' => 'text_default',
+        'weight' => 26,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 26,
       ),
     ),
     'entity_type' => 'entityform',
@@ -224,10 +314,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
+          'field_formatter_label' => 'Alum (self)',
+        ),
+        'type' => 'list_default',
+        'weight' => 15,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'selfCornellGrad',
+        ),
+        'type' => 'list_default',
+        'weight' => 14,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 13,
+        'weight' => 14,
       ),
     ),
     'entity_type' => 'entityform',
@@ -261,7 +369,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 25,
+        'weight' => 28,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'supCornellGrad',
+        ),
+        'type' => 'list_default',
+        'weight' => 30,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 30,
       ),
     ),
     'entity_type' => 'entityform',
@@ -289,6 +415,24 @@ function ilr_forms_students_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 35,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'fexCareerField',
+        ),
+        'type' => 'list_default',
+        'weight' => 34,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
@@ -333,6 +477,24 @@ function ilr_forms_students_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 48,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'wispCareerField',
+        ),
+        'type' => 'list_default',
+        'weight' => 43,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 43,
+      ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
@@ -364,10 +526,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => 'City (self)',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'selfCity',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'entityform',
@@ -391,7 +571,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -409,7 +589,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 31,
+        'weight' => 25,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'supCity',
+        ),
+        'type' => 'text_default',
+        'weight' => 27,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 27,
       ),
     ),
     'entity_type' => 'entityform',
@@ -451,7 +649,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 41,
+        'weight' => 38,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'fexCity',
+        ),
+        'type' => 'text_default',
+        'weight' => 37,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 37,
       ),
     ),
     'entity_type' => 'entityform',
@@ -493,7 +709,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 52,
+        'weight' => 53,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'wispCity',
+        ),
+        'type' => 'text_default',
+        'weight' => 47,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 47,
       ),
     ),
     'entity_type' => 'entityform',
@@ -536,10 +770,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
+          'field_formatter_label' => 'College (self)',
+        ),
+        'type' => 'list_default',
+        'weight' => 16,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'selfCollege',
+        ),
+        'type' => 'list_default',
+        'weight' => 15,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 14,
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'entityform',
@@ -579,7 +831,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 24,
+        'weight' => 29,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'supCollege',
+        ),
+        'type' => 'list_default',
+        'weight' => 31,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 31,
       ),
     ),
     'entity_type' => 'entityform',
@@ -615,7 +885,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 26,
+        'weight' => 30,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'supDegree',
+        ),
+        'type' => 'list_default',
+        'weight' => 32,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 32,
       ),
     ),
     'entity_type' => 'entityform',
@@ -646,10 +934,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
+          'field_formatter_label' => 'Degree (self)',
+        ),
+        'type' => 'list_default',
+        'weight' => 17,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'selfDegree',
+        ),
+        'type' => 'list_default',
+        'weight' => 16,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 15,
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'entityform',
@@ -683,7 +989,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'orgDescription',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'entityform',
@@ -722,10 +1046,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'email',
         'settings' => array(
+          'field_formatter_label' => 'Email (self)',
+        ),
+        'type' => 'email_default',
+        'weight' => 8,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => 'selfEmailAddress',
+        ),
+        'type' => 'email_default',
+        'weight' => 7,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 6,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'entityform',
@@ -755,6 +1097,24 @@ function ilr_forms_students_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 20,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => 'supEmail',
+        ),
+        'type' => 'email_default',
+        'weight' => 22,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'email',
         'settings' => array(
@@ -797,7 +1157,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 43,
+        'weight' => 41,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'fexDates',
+        ),
+        'type' => 'text_default',
+        'weight' => 39,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 39,
       ),
     ),
     'entity_type' => 'entityform',
@@ -833,12 +1211,21 @@ function ilr_forms_students_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'markup',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'markup_default',
-        'weight' => 44,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 40,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 56,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 56,
       ),
     ),
     'entity_type' => 'entityform',
@@ -866,12 +1253,21 @@ function ilr_forms_students_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'markup',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'markup_default',
-        'weight' => 38,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 55,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 55,
       ),
     ),
     'entity_type' => 'entityform',
@@ -899,12 +1295,21 @@ function ilr_forms_students_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'markup',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'markup_default',
-        'weight' => 36,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 54,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 54,
       ),
     ),
     'entity_type' => 'entityform',
@@ -938,7 +1343,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 45,
+        'weight' => 42,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'fexNumOpps',
+        ),
+        'type' => 'list_default',
+        'weight' => 40,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 40,
       ),
     ),
     'entity_type' => 'entityform',
@@ -974,7 +1397,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 46,
+        'weight' => 43,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'fexSameDay',
+        ),
+        'type' => 'list_default',
+        'weight' => 41,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 41,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1008,7 +1449,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 47,
+        'weight' => 44,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'fexOfferToUpperclassmen',
+        ),
+        'type' => 'list_default',
+        'weight' => 42,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 42,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1039,10 +1498,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Type of opportunity',
         ),
         'type' => 'list_default',
-        'weight' => 0,
+        'weight' => 1,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'oppType',
+        ),
+        'type' => 'list_default',
+        'weight' => 1,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Type of opportunity',
+        ),
+        'type' => 'list_default',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1073,10 +1550,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => 'First name (self)',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'selfFirstName',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1120,6 +1615,24 @@ function ilr_forms_students_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 17,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'supFirstName',
+        ),
+        'type' => 'text_default',
+        'weight' => 19,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 19,
+      ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
@@ -1146,6 +1659,59 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_h_school_year'
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_h_school_year'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 62,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_h_school_year',
+    'label' => 'programYear',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 49,
+    ),
+  );
+
   // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_is_address_the_same'
   $field_instances['entityform-fex_wisp_sponsor_registration-field_is_address_the_same'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
@@ -1160,7 +1726,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 28,
+        'weight' => 22,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'supAddressSameAsSelf',
+        ),
+        'type' => 'list_default',
+        'weight' => 24,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 24,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1191,10 +1775,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => 'Job title (self)',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'selfTitle',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 20,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1230,6 +1832,24 @@ function ilr_forms_students_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 19,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'supTitle',
+        ),
+        'type' => 'text_default',
+        'weight' => 21,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -1275,10 +1895,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => 'Last name (self)',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'selfLastName',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1320,7 +1958,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 19,
+        'weight' => 18,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'supLastName',
+        ),
+        'type' => 'text_default',
+        'weight' => 20,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 20,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1362,7 +2018,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 2,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'orgName',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1398,6 +2072,24 @@ function ilr_forms_students_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 36,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'fexCareerFieldOther',
+        ),
+        'type' => 'text_default',
+        'weight' => 35,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -1448,6 +2140,24 @@ function ilr_forms_students_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 49,
       ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'wispCareerFieldOther',
+        ),
+        'type' => 'text_default',
+        'weight' => 44,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 44,
+      ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
@@ -1488,7 +2198,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 54,
+        'weight' => 55,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'wispPaid',
+        ),
+        'type' => 'list_default',
+        'weight' => 49,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 49,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1521,10 +2249,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => 'Phone (self)',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'selfPhone',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 12,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1548,7 +2294,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 7,
     ),
   );
 
@@ -1560,6 +2306,24 @@ function ilr_forms_students_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 21,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'supPhone',
+        ),
+        'type' => 'text_default',
+        'weight' => 23,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -1608,7 +2372,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 51,
+        'weight' => 52,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'wispQualifications',
+        ),
+        'type' => 'text_default',
+        'weight' => 46,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 46,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1644,12 +2426,21 @@ function ilr_forms_students_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'markup',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'markup_default',
-        'weight' => 61,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 51,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 59,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 59,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1684,6 +2475,24 @@ function ilr_forms_students_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 50,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'wispResponsibilities',
+        ),
+        'type' => 'text_default',
+        'weight' => 45,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 45,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1725,7 +2534,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 55,
+        'weight' => 56,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'wispCompensation',
+        ),
+        'type' => 'text_default',
+        'weight' => 50,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 50,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1764,10 +2591,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
+          'field_formatter_label' => 'State or province (self)',
+        ),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'selfState',
+        ),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 10,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1785,7 +2630,7 @@ function ilr_forms_students_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -1803,7 +2648,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 32,
+        'weight' => 26,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'supState',
+        ),
+        'type' => 'list_default',
+        'weight' => 28,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 28,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1839,7 +2702,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 42,
+        'weight' => 39,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'fexState',
+        ),
+        'type' => 'list_default',
+        'weight' => 38,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 38,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1875,7 +2756,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 53,
+        'weight' => 54,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'wispState',
+        ),
+        'type' => 'list_default',
+        'weight' => 48,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 48,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1905,12 +2804,21 @@ function ilr_forms_students_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'markup',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'markup_default',
-        'weight' => 59,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 60,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 61,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 61,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1944,7 +2852,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 56,
+        'weight' => 59,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'wispDates',
+        ),
+        'type' => 'text_default',
+        'weight' => 52,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 52,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1986,7 +2912,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 58,
+        'weight' => 61,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'wispDatesConstraints',
+        ),
+        'type' => 'text_default',
+        'weight' => 53,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 53,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2022,12 +2966,21 @@ function ilr_forms_students_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'markup',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'markup_default',
-        'weight' => 57,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 58,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 60,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 60,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2055,12 +3008,21 @@ function ilr_forms_students_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'markup',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'markup_default',
-        'weight' => 39,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 47,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 58,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 58,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2088,12 +3050,21 @@ function ilr_forms_students_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'markup',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'markup_default',
-        'weight' => 37,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 46,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 57,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 57,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2127,7 +3098,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 60,
+        'weight' => 57,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'wispNumOpps',
+        ),
+        'type' => 'list_default',
+        'weight' => 51,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 51,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2160,10 +3149,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
+          'field_formatter_label' => 'Graduation year (self)',
+        ),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'selfGradYear',
+        ),
+        'type' => 'list_default',
+        'weight' => 17,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 16,
+        'weight' => 17,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2199,7 +3206,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 27,
+        'weight' => 31,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'supGradYear',
+        ),
+        'type' => 'list_default',
+        'weight' => 33,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 33,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2229,6 +3254,24 @@ function ilr_forms_students_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 16,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'selfIsSupervisor',
+        ),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
+      'table' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
@@ -2266,10 +3309,28 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
+          'field_formatter_label' => 'Zip code (self)',
+        ),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'selfZipcode',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2293,7 +3354,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -2311,7 +3372,25 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 33,
+        'weight' => 27,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'supZipcode',
+        ),
+        'type' => 'text_default',
+        'weight' => 29,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 29,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3744,6 +4823,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Zip code (supervisor)');
   t('fex markup if chosen');
   t('fex markup if not chosen');
+  t('programYear');
   t('wisp markup if chosen');
   t('wisp markup if not chosen');
 
