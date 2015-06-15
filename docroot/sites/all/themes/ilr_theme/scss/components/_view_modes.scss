@@ -55,7 +55,7 @@
   @include trailer(2);
 
   h2 {
-    @include padding-leader(1);
+    @include padding-leader(1.2);
     @include adjust-font-size-to(18px);
     @include adjust-leading-to(.8, 18px);
     margin-left: 115px;
@@ -92,6 +92,13 @@
     &.event a {
       background: $event-color;
     }
+  }
+
+  .field-name-field-published-date {
+    margin-left: 115px;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .field-type-text-with-summary,
