@@ -44,9 +44,6 @@ function _ilr_forms_students_set_programYear($entityform) {
  * for the form submission.
  */
 function _ilr_forms_students_set_supervisor_fields($entityform) {
-  dpm ('in _ilr_forms_students_set_supervisor_fields');
-  dpm ($entityform, '$entityform');
-
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
 
   // Create arrays of fields that need to be copied.
