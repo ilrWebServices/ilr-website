@@ -160,17 +160,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'fex' => 'fex',
         'wisp' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'fex',
-        ),
+      'values' => array(
+        0 => 'fex',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -1129,17 +1127,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'fex' => 'fex',
         'wisp' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'fex',
-        ),
+      'values' => array(
+        0 => 'fex',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -1293,17 +1289,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -1779,17 +1773,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'fex' => 'fex',
         'wisp' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'fex',
-        ),
+      'values' => array(
+        0 => 'fex',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -1943,17 +1935,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -3234,17 +3224,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'fex' => 'fex',
         'wisp' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'fex',
-        ),
+      'values' => array(
+        0 => 'fex',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -3398,17 +3386,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'fex' => 'fex',
         'wisp' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'fex',
-        ),
+      'values' => array(
+        0 => 'fex',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -3886,17 +3872,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'fex' => 'fex',
         'wisp' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'fex',
-        ),
+      'values' => array(
+        0 => 'fex',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -4050,17 +4034,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'fex' => 'fex',
         'wisp' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'fex',
-        ),
+      'values' => array(
+        0 => 'fex',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -4214,17 +4196,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'fex' => 'fex',
         'wisp' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'fex',
-        ),
+      'values' => array(
+        0 => 'fex',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -4378,14 +4358,12 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => 'No',
-      'value' => array(
-        0 => array(
-          'value' => 'No',
-        ),
+      'values' => array(
+        0 => 'No',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -5022,17 +5000,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'fex' => 'fex',
         'wisp' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'fex',
-        ),
+      'values' => array(
+        0 => 'fex',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -5347,17 +5323,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -5672,17 +5646,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -5997,17 +5969,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -6161,17 +6131,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -6325,17 +6293,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -6489,17 +6455,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -7136,17 +7100,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'fex' => 'fex',
         'wisp' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'fex',
-        ),
+      'values' => array(
+        0 => 'fex',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -7300,17 +7262,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -7464,17 +7424,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -7628,17 +7586,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -7792,17 +7748,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -7956,17 +7910,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -8120,17 +8072,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
@@ -8446,17 +8396,15 @@ function ilr_forms_students_conditional_fields_default_fields() {
         ),
       ),
       'selector' => '',
-      'values_set' => 1,
+      'values_set' => 3,
       'value_form' => array(
         'wisp' => 'wisp',
         'fex' => NULL,
       ),
-      'value' => array(
-        0 => array(
-          'value' => 'wisp',
-        ),
+      'values' => array(
+        0 => 'wisp',
       ),
-      'values' => array(),
+      'value' => array(),
     ),
   );
 
