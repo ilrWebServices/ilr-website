@@ -5,4 +5,10 @@
     @include trailer(1);
     border-bottom: 1px solid $gray-medium;
   }
+  .field-name-field-author-reference {
+    @include trailer(1);
+    &:before {
+      content: 'Posted by ';
+    }
+  }
 }
