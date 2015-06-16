@@ -25,8 +25,8 @@ function ilr_social_sharing_image_default_styles() {
         'module' => 'focal_point',
         'name' => 'focal_point_scale_and_crop',
         'data' => array(
-          'width' => 600,
-          'height' => 315,
+          'width' => 1200,
+          'height' => 630,
         ),
         'weight' => 1,
       ),
