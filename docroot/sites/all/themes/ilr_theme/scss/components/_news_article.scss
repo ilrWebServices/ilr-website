@@ -12,3 +12,15 @@
     border-bottom: 1px solid $gray-medium;
   }
 }
+
+.view-news-archive {
+  .views-row-last + h3 {
+    margin-top: 1em;
+  }
+  .views-row {
+    float: none !important; //overrides columns
+  }
+  ul.pager {
+    text-align: left;
+  }
+}
