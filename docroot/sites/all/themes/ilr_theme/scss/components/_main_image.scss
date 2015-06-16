@@ -2,8 +2,8 @@
   @include leader(1);
   @include trailer(1);
   .node-type-news-item & {
-    @include leader(2);
-    @include trailer(2);
+    @include leader(1);
+    @include trailer(1);
   }
 }
 

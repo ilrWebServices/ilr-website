@@ -57,7 +57,7 @@
   #content, #sidebar-second {
     @include clearfix;
     padding: 0 1em 1em 1em;
-    @include trailer(2);
+    @include trailer(1);
 
     .section {
       @include leader(.5);
@@ -90,6 +90,12 @@
       article {
         @extend %one-column;
       }
+    }
+  }
+
+  &[data-eq-state="widescreen"] {
+    #content, #sidebar-second {
+      @include trailer(2);
     }
   }
 }

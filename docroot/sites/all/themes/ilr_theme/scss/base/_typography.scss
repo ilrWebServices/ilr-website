@@ -30,6 +30,7 @@ h1 {
   @include adjust-font-size-to($h1-size, $line-height-multiplier);
   color: $h1-text;
   @include adjust-leading-to(2, $h1-size);
+  @include margin-trailer(.15);
 
   a {
     color: $h1-link;
@@ -227,6 +228,7 @@ ol {
 }
 
 ul {
+  margin: 0 0 1em;
   padding: 0 0 0 .5em;
   #content & {
     ul { // this is a ul ul
@@ -256,6 +258,10 @@ li {
   padding-left: 1em;
   @include adjust-font-size-to(ms(0));
   background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
+}
+
+ul.pager {
+  @include padding-leader(1);
 }
 
 ul.tabs {
