@@ -62,8 +62,8 @@ function ilr_forms_students_default_entityform_type() {
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 1,
-      "send_confirmation_email_to_admin" : 0,
-      "add_user_name_to_subject_line" : 0,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
       "add_payment_processing" : 0,
       "form_submission_ilr_recipient" : "ilrfex@cornell.edu"
