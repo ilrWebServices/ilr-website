@@ -16,6 +16,9 @@ function ilr_forms_students_entityform_presave($entityform) {
     _ilr_forms_students_set_supervisor_fields($entityform);
     _ilr_forms_students_fix_alum_college_fields($entityform);
   }
+  elseif ($entityform->type == 'fex_wisp_student_application') {
+    _ilr_forms_students_set_programYear($entityform);
+  }
 }
 
 /**
