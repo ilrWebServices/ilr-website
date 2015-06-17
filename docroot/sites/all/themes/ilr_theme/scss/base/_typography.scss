@@ -177,6 +177,11 @@ p + h6 {
     margin-top: ms(3);
   }
 
+p + ul {
+  margin-top: -1em;
+  margin-bottom: 2em;
+}
+
 hr {
   clear: both;
   height: 0;
