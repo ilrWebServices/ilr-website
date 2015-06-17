@@ -1,0 +1,6 @@
+name = Featuretest settings
+description = Container for featuretest-specific settings
+core = 7.x
+hidden = TRUE
+php = 5.2.4
+version = 7.x-1.0
