@@ -36,10 +36,6 @@ In this example, you are creating a new content type feature.
     6. Add the new module or files to your branch using `git add [path(s)]`.
     7. Commit the new module using `git commit -m '[message here]'`.
 
-### Reinstalling the site
-
-There is a bash script called "reinstall" in the bin folder that backups up the current default database before wiping it and rebuilding a fresh version of the site. This is useful if you're trying to confirm that a feature is correctly configured and will install correctly on demand. To reinstall the site, you must be in the docroot folder, and then you run `../bin/reinstall`.
-
 ### Pull Requests
 
 When you think your work is ready to be reviewed (and possibly merged into the master branch), push your feature branch up to origin and create a pull request. Note that these steps assume you are not collaborating on the branch with anyone else. Rebasing should only be done in branches on which others are not also working.
@@ -52,7 +48,13 @@ When you think your work is ready to be reviewed (and possibly merged into the m
     6. Create a pull request using the github interface.
     7. Update your local code with the requested changes/updates, then push to origin again and add another comment to the pull request.
     8. Repeat until the pull request is ready to be merged. The project lead is generally responsible for merging and then deleting the branch.
-    9. Once the project lead has deployed the code to Acquia, the project lead will either deliver the story in Tracker, or will ask you to deliver it along with any relevant comments/instructions so that the Project Manager can test it.
+    9. Deploy the CSS to [featuretest](/docs/featuretest.md) if you are able to compile it, or request that a team member do it if not.
+    10. Run any required updates on the feeaturetest environment.
+    11. Once the feature is deployed to featuretest, the project lead will either deliver the story in Tracker, or will ask you to deliver it along with any relevant comments/instructions so that the Project Manager and/or stakeholders can test it.
+
+## Featuretest
+
+As noted above, as of June, 2015, pull requests get deployed to their own environment at branch-[branchname].ilr.featuretest.org. See [additional documentation](/docs/featuretest.md) if applicable.
 
 ## Choosing Contributed Modules
 
