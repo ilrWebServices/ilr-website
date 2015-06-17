@@ -649,8 +649,12 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
   $user_name = _forms_construct_user_name($entityform);
   $email_template = _forms_get_tplphp_file($entityform);
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
-  $user_email = $entityform_wrapper->field_email->value();
-
+  if (isset($entityform_wrapper->field_email)) {
+    $user_email = $entityform_wrapper->field_email->value();
+  }
+  elseif (isset($entityform_wrapper->field_netid)) {
+    $user_email = $entityform_wrapper->field_netid->value() . "@cornell.edu";
+  }
   // User email
   if (isset($user_email) &&
     _forms_user_receives_confirmation_email($entityform)) {
