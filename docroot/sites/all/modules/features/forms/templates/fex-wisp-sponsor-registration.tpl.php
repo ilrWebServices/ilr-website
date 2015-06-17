@@ -4,7 +4,7 @@ Thank you for your participation in the FEX/WISP Program at the Cornell ILR Scho
 
 <? print $form_data;?><br><br>
 
-If you have any questions, pleae contact ILR Career Services.<br><br>
+If you have any questions, please contact ILR Career Services.<br><br>
 Office of Career Services<br>
 ILR School<br>
 Cornell University<br>
