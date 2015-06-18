@@ -225,28 +225,24 @@ function ilr_sdc_listings_feeds_importer_default() {
         'sources' => array(
           'jsonpath_parser:0' => 'TITLE',
           'jsonpath_parser:1' => 'COURSEID',
-          'jsonpath_parser:2' => 'DESCRIPTION',
           'jsonpath_parser:3' => 'PRICE',
           'jsonpath_parser:4' => 'PRICENOTE',
           'jsonpath_parser:5' => 'CATALOGNUMBERPREFIX',
           'jsonpath_parser:6' => 'CREDITHOURS',
           'jsonpath_parser:7' => 'DEPARTMENT',
           'jsonpath_parser:8' => 'IS_ON_DEMAND',
-          'jsonpath_parser:9' => 'KEYWORDS',
         ),
         'debug' => array(
           'options' => array(
             'context' => 0,
             'jsonpath_parser:0' => 0,
             'jsonpath_parser:1' => 0,
-            'jsonpath_parser:2' => 0,
             'jsonpath_parser:3' => 0,
             'jsonpath_parser:4' => 0,
             'jsonpath_parser:5' => 0,
             'jsonpath_parser:6' => 0,
             'jsonpath_parser:7' => 0,
             'jsonpath_parser:8' => 0,
-            'jsonpath_parser:9' => 0,
           ),
         ),
       ),
@@ -269,52 +265,42 @@ function ilr_sdc_listings_feeds_importer_default() {
             'unique' => 1,
           ),
           2 => array(
-            'source' => 'jsonpath_parser:2',
-            'target' => 'body',
-            'unique' => FALSE,
-          ),
-          3 => array(
             'source' => 'jsonpath_parser:3',
             'target' => 'field_price',
             'unique' => FALSE,
           ),
-          4 => array(
+          3 => array(
             'source' => 'jsonpath_parser:4',
             'target' => 'field_price_note',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'jsonpath_parser:5',
             'target' => 'field_catalog_prefix',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'jsonpath_parser:6',
             'target' => 'field_credit_hours',
             'unique' => FALSE,
           ),
-          7 => array(
+          6 => array(
             'source' => 'jsonpath_parser:7',
             'target' => 'field_sdc_department',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          8 => array(
+          7 => array(
             'source' => 'jsonpath_parser:8',
             'target' => 'field_on_demand',
             'unique' => FALSE,
-          ),
-          9 => array(
-            'source' => 'jsonpath_parser:9',
-            'target' => 'field_keywords',
-            'term_search' => '0',
-            'autocreate' => 1,
           ),
         ),
         'update_existing' => '2',
         'input_format' => 'full_html',
         'skip_hash_check' => 0,
         'bundle' => 'sdc_course',
+        'update_non_existent' => 'unpublish',
       ),
     ),
     'content_type' => '',
