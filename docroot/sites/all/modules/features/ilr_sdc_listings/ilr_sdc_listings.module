@@ -60,6 +60,19 @@ function ilr_sdc_listings_feeds_after_parse(FeedsSource $source, FeedsParserResu
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter
+ * Removes protected fields from course node forms
+ */
+function ilr_sdc_listings_form_sdc_course_node_form_alter(&$form, &$form_state) {
+  $protected_fields = _ilr_sdc_listings_get_protected_fields();
+  foreach ($protected_fields['course'] as $key => $field_name) {
+    if (isset($form[$field_name])) {
+      $form[$field_name]['#disabled'] = 1;
+    }
+  }
+}
+
+/**
  * Get importer files.
  * @return array
  *  Key are importer ids. Values are names of import files.
@@ -1121,4 +1134,20 @@ function _ilr_sdc_listings_update_reference_title(&$node) {
     $title = '';
   }
   $node->title = $title;
+}
+
+function _ilr_sdc_listings_get_protected_fields() {
+  return array(
+    'class' => array(
+    ),
+    'course' => array(
+      'title',
+      'field_catalog_prefix',
+      'field_credit_hours',
+      'field_on_demand',
+      'field_sdc_department',
+      'field_price',
+      'field_price_note',
+    ),
+  );
 }
