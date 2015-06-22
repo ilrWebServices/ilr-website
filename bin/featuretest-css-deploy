@@ -29,7 +29,8 @@ compass compile
 
 # Upload to server
 echo "Uploading styles to server"
-scp -r docroot/sites/all/themes/ilr_theme/css featuretest.org:/var/aegir/projects/ilr/$ENV/docroot/sites/all/themes/ilr_theme
+FOLDER=${ENV//-/_}
+scp -r docroot/sites/all/themes/ilr_theme/css featuretest.org:/var/aegir/projects/ilr/$FOLDER/docroot/sites/all/themes/ilr_theme
 
 echo "Enabling featuretest module and clearing cache on $ENV"
 cd docroot
