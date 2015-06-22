@@ -273,7 +273,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
   $handler->display->display_options['filters']['field_sdc_department_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator_id'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Department';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator'] = 'field_sdc_department_tid_op';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['identifier'] = 'field_sdc_department_tid';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['multiple'] = TRUE;
@@ -447,7 +447,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
   $handler->display->display_options['filters']['field_sdc_department_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator_id'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Department';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator'] = 'field_sdc_department_tid_op';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['identifier'] = 'field_sdc_department_tid';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['multiple'] = TRUE;
@@ -745,7 +745,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_sdc_department_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_sdc_department_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator_id'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Department';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator'] = 'field_sdc_department_tid_op';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['identifier'] = 'field_sdc_department_tid';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['multiple'] = TRUE;
@@ -1067,7 +1067,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_sdc_department_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_sdc_department_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator_id'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Department';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator'] = 'field_sdc_department_tid_op';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['identifier'] = 'field_sdc_department_tid';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['multiple'] = TRUE;
@@ -1409,7 +1409,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
   $handler->display->display_options['filters']['field_sdc_department_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator_id'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Department';
+  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator'] = 'field_sdc_department_tid_op';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['identifier'] = 'field_sdc_department_tid';
   $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['multiple'] = TRUE;
