@@ -52,7 +52,6 @@ function ilr_reflection_block_view($delta = ''){
 function ilr_reflection_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'reflection_node_form') {
     if (!_ilr_user_has_role(array('administrator','contributor'))) {
-      $form['field_youtube_video']['#access'] = FALSE;
       $form['field_tags']['#access'] = FALSE;
       $form['#validate'][] = '_ilr_reflection_spam_handler';
     }
