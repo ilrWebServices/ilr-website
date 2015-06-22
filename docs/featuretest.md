@@ -9,12 +9,13 @@ In order to deploy the css files and run drush commands on the featuretest serve
 1. Open the Featuretest SSH creds boxnote in the ILR Web Team folder of [Box](http://cornell.box.com).
 2. Copy the string to your clipboard
 3. Create a new file with the private key data in your ssh folder (at ~/.ssh/Featuretest.pem).
-4. Edit your local ssh config file (~/.ssh/config), adding the following lines:
+4. Restrict permissions to the key with `chmod 400 ~/.ssh/Featuretest.pem`
+5. Edit your local ssh config file (~/.ssh/config), adding the following lines:
 
         Host featuretest.org
         IdentityFile ~/.ssh/Featuretest.pem
         User ubuntu
-5. From the docroot folder, type `drush @featuretest.prod status`. Drush should return configuration data related to the prod environment on featuretest.
+6. From the docroot folder, type `drush @featuretest.prod status`. After agreeing to add the server to the known_hosts file, drush should return configuration data related to the prod environment on featuretest.
 
 ## Workflow
 
