@@ -187,7 +187,9 @@ function ilr_sdc_listings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_sdc_course';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'status',
+  );
   $export['node_options_sdc_course'] = $strongarm;
 
   $strongarm = new stdClass();
