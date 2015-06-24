@@ -60,14 +60,39 @@ function ilr_sdc_listings_feeds_after_parse(FeedsSource $source, FeedsParserResu
 }
 
 /**
- * Implements hook_form_FORM_ID_alter
- * Removes protected fields from course node forms
+ * Implements hook_feeds_presave().
+ * Protects certain fields from being changed by the import
  */
-function ilr_sdc_listings_form_sdc_course_node_form_alter(&$form, &$form_state) {
-  $protected_fields = _ilr_sdc_listings_get_protected_fields();
-  foreach ($protected_fields['course'] as $key => $field_name) {
-    if (isset($form[$field_name])) {
-      $form[$field_name]['#disabled'] = 1;
+function ilr_sdc_listings_feeds_presave($source, $entity, $item, $entity_id) {
+  if (substr($source->importer->id, 0, 3) == 'sdc' && $entity_id) {
+    $fields_protected_from_import = _ilr_sdc_listings_get_feeds_protected_fields();
+    // Load the unchanged entity
+    $existing_node = entity_load_unchanged('node', $entity_id);
+    $existing_node_wrapper = entity_metadata_wrapper('node', $existing_node);
+    $updated_node_wrapper = entity_metadata_wrapper('node', $entity);
+    foreach ($fields_protected_from_import[$source->importer->id] as $key => $field_name) {
+      $existing_value = $existing_node_wrapper->{$field_name}->value();
+      $updated_node_wrapper->{$field_name}->set($existing_value);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ * Removes protected fields from sdc-related node forms
+ */
+function ilr_sdc_listings_form_alter(&$form, &$form_state, $form_id) {
+  $node_forms_to_alter = array(
+    'sdc_class_node_form',
+    'sdc_course_node_form',
+    'sdc_faculty_node_form',
+  );
+  if (in_array($form_id, $node_forms_to_alter)) {
+    $protected_fields = _ilr_sdc_listings_get_protected_fields();
+    foreach ($protected_fields[$form_id] as $key => $field_name) {
+      if (isset($form[$field_name])) {
+        $form[$field_name]['#disabled'] = 1;
+      }
     }
   }
 }
@@ -1136,11 +1161,46 @@ function _ilr_sdc_listings_update_reference_title(&$node) {
   $node->title = $title;
 }
 
+/**
+ * Specifies which of the course and class fields are protected from
+ * being updated by the feeds import
+ */
+function _ilr_sdc_listings_get_feeds_protected_fields() {
+  return array(
+    'sdc_course_importer' => array(
+      'field_keywords',
+      'body',
+    ),
+    'sdc_class_importer' => array(
+      'body',
+    ),
+    'sdc_faculty_importer' => array(
+      'body',
+    ),
+  );
+}
+
+/**
+ * Specifies which of the course and class fields are protected from
+ * being edited in Drupal
+ */
 function _ilr_sdc_listings_get_protected_fields() {
   return array(
-    'class' => array(
+    'sdc_class_node_form' => array(
+      'title',
+      'field_address',
+      'field_class_dates',
+      'field_class_id',
+      'field_course',
+      'field_faculty',
+      'field_is_full',
+      'field_on_demand',
+      'field_online_class',
+      'field_registration_end_date',
+      'field_building',
+      'field_price'
     ),
-    'course' => array(
+    'sdc_course_node_form' => array(
       'title',
       'field_catalog_prefix',
       'field_credit_hours',
@@ -1148,6 +1208,9 @@ function _ilr_sdc_listings_get_protected_fields() {
       'field_sdc_department',
       'field_price',
       'field_price_note',
+    ),
+    'sdc_faculty_node_form' => array(
+      'title',
     ),
   );
 }
