@@ -101,6 +101,7 @@ DirectoryIndex index.php index.html index.htm
   # uncomment the following:
   RewriteCond %{HTTP_HOST} !^www\. [NC]
   RewriteCond %{HTTP_HOST} !^(stage|drupal-dev)\. [NC]
+  RewriteCond %{HTTP_HOST} !^[^\.]+\.[^\.]+\.featuretest\.org
   RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   #
   # To redirect all users to access the site WITHOUT the 'www.' prefix,
