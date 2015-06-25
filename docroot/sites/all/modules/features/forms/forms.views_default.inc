@@ -199,7 +199,7 @@ function forms_views_default_views() {
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
-  $handler->display->display_options['style_options']['encoding'] = 'ASCII';
+  $handler->display->display_options['style_options']['encoding'] = 'UTF-8';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Entityform Submission: Entityform submission ID */
   $handler->display->display_options['fields']['entityform_id']['id'] = 'entityform_id';
@@ -303,7 +303,7 @@ function forms_views_default_views() {
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
-  $handler->display->display_options['style_options']['encoding'] = 'ASCII';
+  $handler->display->display_options['style_options']['encoding'] = 'UTF-8';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Entityform Submission: Entityform submission ID */
   $handler->display->display_options['fields']['entityform_id']['id'] = 'entityform_id';
