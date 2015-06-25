@@ -106,7 +106,7 @@ function ilr_install() {
  * Custom function for role creation
  */
 function _ilr_create_roles() {
-  $roles = array('administrator','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin', 'course admin', 'form admin', 'reflection admin');
+  $roles = array('administrator','power user','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin', 'course admin', 'form admin', 'reflection admin');
 
   $weight = 0;
   foreach ($roles as $name) {
@@ -145,6 +145,7 @@ function _ilr_add_permissions() {
     ->execute();
 
 }
+
 /**
  * Enables jpanelmenu
  */
@@ -544,4 +545,26 @@ function ilr_update_7046() {
 function ilr_update_7047() {
   $roles = user_roles();
   _ilr_create_role('reflection admin', count($roles));
+}
+
+/**
+ * Creates the power user role
+ */
+function ilr_update_7048() {
+  $roles = user_roles();
+  _ilr_create_role('power user', count($roles));
+
+  $permissions = array(
+    'administer redirects',
+    'create url aliases',
+    'delete any html bean',
+    'delete any image files',
+    'delete any news_item content',
+    'delete own image files',
+    'download any image files',
+    'download own image files',
+    'edit any image files',
+    'edit own image files',
+  );
+  _ilr_add_permissions_to_role($permissions, 'power user');
 }

@@ -290,6 +290,13 @@ function _ilr_add_bean_usage_warning(&$form) {
   }
 }
 
+function _ilr_add_permissions_to_role($permissions, $role_name) {
+  $role = user_role_load_by_name($role_name);
+  if ($role) {
+    user_role_grant_permissions($role->rid, $permissions);
+  }
+}
+
 /**
  * Loads a block object from the database for a specific theme.
  *

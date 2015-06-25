@@ -391,6 +391,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'administer redirects',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'redirect',
   );
@@ -775,6 +776,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create url aliases',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'path',
   );
@@ -897,6 +899,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete any html bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'bean',
   );
@@ -906,6 +909,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete any image files',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'file_entity',
   );
@@ -942,6 +946,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete any news_item content',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'node',
   );
@@ -1130,6 +1135,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'power user' => 'power user',
     ),
     'module' => 'file_entity',
   );
@@ -1367,6 +1373,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'download any image files',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'file_entity',
   );
@@ -1405,6 +1412,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'power user' => 'power user',
     ),
     'module' => 'file_entity',
   );
@@ -1523,6 +1531,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'power user' => 'power user',
     ),
     'module' => 'file_entity',
   );
@@ -1772,6 +1781,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'power user' => 'power user',
     ),
     'module' => 'file_entity',
   );
