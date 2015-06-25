@@ -616,6 +616,12 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_class_dates_value']['field'] = 'field_class_dates_value';
   $handler->display->display_options['filters']['field_class_dates_value']['operator'] = '>';
   $handler->display->display_options['filters']['field_class_dates_value']['default_date'] = 'now';
+  /* Filter criterion: Content: Registration End date (field_registration_end_date) */
+  $handler->display->display_options['filters']['field_registration_end_date_value']['id'] = 'field_registration_end_date_value';
+  $handler->display->display_options['filters']['field_registration_end_date_value']['table'] = 'field_data_field_registration_end_date';
+  $handler->display->display_options['filters']['field_registration_end_date_value']['field'] = 'field_registration_end_date_value';
+  $handler->display->display_options['filters']['field_registration_end_date_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_registration_end_date_value']['default_date'] = 'now';
   $export['next_class_course'] = $view;
 
   $view = new view();
@@ -698,6 +704,18 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['sorts']['field_class_dates_value']['id'] = 'field_class_dates_value';
   $handler->display->display_options['sorts']['field_class_dates_value']['table'] = 'field_data_field_class_dates';
   $handler->display->display_options['sorts']['field_class_dates_value']['field'] = 'field_class_dates_value';
+  /* Contextual filter: Date: Date (node) */
+  $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
+  $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
+  $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
+  $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['date_argument']['add_delta'] = 'yes';
+  $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
+    'field_data_field_class_dates.field_class_dates_value' => 'field_data_field_class_dates.field_class_dates_value',
+    'field_data_field_registration_end_date.field_registration_end_date_value' => 'field_data_field_registration_end_date.field_registration_end_date_value',
+  );
+  $handler->display->display_options['arguments']['date_argument']['date_method'] = 'AND';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -787,18 +805,6 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Date: Date (node) */
-  $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
-  $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
-  $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
-  $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
-  $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['date_argument']['add_delta'] = 'yes';
-  $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
-    'field_data_field_class_dates.field_class_dates_value' => 'field_data_field_class_dates.field_class_dates_value',
-  );
   $handler->display->display_options['path'] = 'professional-programs/public-offerings/calendar-month';
   $handler->display->display_options['menu']['title'] = 'Month';
   $handler->display->display_options['menu']['weight'] = '0';
