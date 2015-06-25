@@ -1,4 +1,88 @@
+.class-details {
+  div.form-type-radio {
+    @include leader(1);
+    clear: left;
+    float: left;
+    margin-right: .5em;
+  }
+
+  .radio-label {
+    float: left;
+    @include leader(1);
+    @include trailer(1);
+    span {
+      display: block;
+    }
+  }
+
+  span, .street-block {
+    clear: left;
+    @include adjust-font-size-to(14px, .7);
+    &.timespan {
+      display: block;
+      color: $gray-dark;
+      text-transform: uppercase;
+    }
+    &.location {
+      display: block;
+    }
+  }
+
+  .details-rule {
+    clear: left;
+    @include leader(1);
+    @include adjust-font-size-to(14px, .7);
+    border-top: 1px solid $gray-light;
+    text-transform: uppercase;
+  }
+
+  .date-time span.date {
+    display: block;
+    font-weight: bold;
+    @include adjust-font-size-to(16px);
+  }
+
+  .button {
+    @include trailer(1);
+    @extend %cornell-button;
+    clear: left;
+    .cost {
+      display: block;
+      text-align: center;
+      @include adjust-font-size-to(14px, .5);
+      padding-bottom: .3em;
+    }
+  }
+  .button-request-info span {
+    display: none;
+  }
+  .request-info {
+    @include adjust-font-size-to(14px, .7);
+    font-style: italic;
+    display: block;
+  }
+
+  .class-detail-toggle {
+    display: none;
+    .action {
+      clear: both;
+    }
+
+    .country {
+      display: none;
+    }
+
+    .locality-block {
+      @include trailer(1);
+    }
+  }
+}
+
+.page-professional-programs-public-offerings {
+  @extend %two-col-content-area;
+}
 .node-type-sdc-course {
+  @extend %two-col-content-area;
   .field-name-field-catalog-prefix {
     @include adjust-font-size-to($h2-size);
     font-family: $font-headers;
@@ -6,7 +90,7 @@
   }
   article {
     .field-name-body {
-      @include leader(2);
+      clear: left;
     }
     form {
       @include trailer(2);
@@ -15,28 +99,25 @@
       h2 {
        margin-bottom: 0;
       }
-      .field-name-body {
-        @include leader(0);
-      }
     }
   }
 
 }
 
 .node-type-sdc-class {
+  @extend %two-col-content-area;
   .field:not(.field-name-field-price) {
     @include trailer(1);
   }
   .field-label {
     margin-bottom: 0;
   }
-  form {
-    @include trailer(1);
-  }
-  article article {
-    margin-left: 1em;
+  article {
     h2 {
       margin-bottom: 0;
+    }
+    .field-name-body {
+      clear: left;
     }
   }
 }
@@ -49,10 +130,11 @@
       padding: 0;
     }
   }
-  .views-field-field-on-demand {
-    float: right;
-    margin-right: 1em;
-    width: 100%;
+  > .view-content > div {
+    @include rhythm-margins(1, 1);
+    @include trailing-border();
+    border-style: 1px solid;
+    border-color: $gray-light;
   }
 }
 

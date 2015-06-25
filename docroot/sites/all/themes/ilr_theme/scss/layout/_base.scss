@@ -1,3 +1,9 @@
+.no-layout{
+  .jPanelMenu-panel {
+    box-shadow: none;
+  }
+}
+
 #page {
   background: $bg-body;
 }

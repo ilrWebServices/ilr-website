@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Implements hook_install()
+ */
+
+function featuretest_install() {
+  variable_set('site_name','ILR FeatureTest Site');
+
+  // Hard-code all environments to the prod install directory
+  variable_set('simplesamlphp_auth_installdir', '/var/aegir/projects/ilr/prod/simplesamlphp-1.10.0');
+
+  // Disable any modules we don't want running
+  module_disable(array(
+    'securepages',
+    'acquia_agent'
+  ));
+}

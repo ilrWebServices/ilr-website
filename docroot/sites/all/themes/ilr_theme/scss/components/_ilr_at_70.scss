@@ -162,6 +162,7 @@ body.subsite-front {
         }
       }
       .field-name-field-full-name {
+        @include margin-leader(.5);
         @include adjust-font-size-to(22px);
         @include adjust-leading-to(1);
         color: white;

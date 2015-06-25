@@ -23,36 +23,6 @@ form {
   }
 
 }
-#ilr-sdc-listings-class-reg-form {
-  @include padding-leader(1);
-  div.form-type-radio {
-    float: left;
-    margin: 0 .5em 0 0;
-  }
-  article.clearfix {
-    margin-left: 1.5em;
-    @include trailer(2);
-
-    h3 {
-      margin: 0;
-      font-weight: 300;
-      @include leader(.5);
-    }
-
-    .field-name-field-faculty {
-      margin-left: 1em;
-    }
-
-    .links {
-      @include padding-leader(.5);
-    }
-
-    &:before,
-    &:after {
-      clear: none;
-    }
-  }
-}
 
 .block-entityform-block {
   clear: both;
@@ -92,4 +62,18 @@ form {
     display: none;
   }
 }
-
+%cornell-button {
+  background-color: white;
+  border: 2px solid $cornell-red;
+  border-radius: 6px;
+  padding: .2em 1em;
+  color: $cornell-red;
+  text-transform: uppercase;
+  display: inline-block;
+  clear: left;
+  font-weight: bold;
+  @extend .clearfix;
+  &:hover {
+    cursor: pointer;
+  }
+}
