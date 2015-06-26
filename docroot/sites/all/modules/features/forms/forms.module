@@ -353,6 +353,55 @@ function _process_collective_bargaining_videos(&$entityform) {
 }
 
 /**
+ * Process FEX/WISP student form - set subject line and admin email based on program
+ */
+function _process_fex_wisp_student_application(&$entityform) {
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  $program = $entityform_wrapper->field_h_program->value();
+  $program_year = $entityform_wrapper->field_h_school_year->value();
+  $user_subject = $program . " " . $program_year . " application";
+  $admin_subject = $program . " " . $program_year . " student application";
+  $admin_email = "ilr" . strtolower($program) . "@cornell.edu";
+  _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject);
+}
+
+/**
+ * Process FEX/WISP sponsor form - set subject line and admin email based on program
+ */
+function _process_fex_wisp_sponsor_registration(&$entityform) {
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  // The entityform_wrapper doesn't contain exactly what I need for the program
+  // (field_fex_wisp_opportunity_type), which is a checkbox field. I'm getting
+  // the word "Array" instead of any of the contents if I just use
+  // $program = $entityform_wrapper->field_fex_wisp_opportunity_type->value();
+  $program = $entityform_wrapper->field_fex_wisp_opportunity_type->value();
+  if (sizeof($program) == 2) {
+    $program = 'FEX/WISP';
+  }
+  else {
+    $program = strtoupper($program[0]);
+  }
+
+  $program_year = $entityform_wrapper->field_h_school_year->value();
+  $org = $entityform_wrapper->field_organization->value();
+
+  $user_subject = $program . " " . $program_year . " sponsor registration confirmation";
+  $admin_subject = "Online " . $program . " " . $program_year . " sponsor registration - " . $org;
+
+  if ($program == "FEX") {
+    $admin_email = "ilrfex@cornell.edu";
+  }
+  elseif ($program == "WISP") {
+    $admin_email = "ilrwisp@cornell.edu, ";
+  }
+  else {
+    $admin_email = "ilrfex@cornell.edu, ilrwisp@cornell.edu";
+  }
+
+  _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject);
+}
+
+/**
  * Process WIT email list subscribe / unsubscribe: one email to lyris, one to the user
  */
 function _process_wit_email_list_subscribe(&$entityform) {
@@ -532,6 +581,9 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
       $options = _forms_year_relative_options(-5,5);
       $options[] = 'other';
       break;
+    case 'fex_wisp_sponsor_registration':
+      $options = _forms_year_relative_options(0,-70);
+      break;
     case 'ilr_information_session_sign_in':
       $options = date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
       break;
@@ -550,12 +602,24 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
  * I need this, because of forms that have more than one field for a set of years
  */
 function _forms_year_as_list_text_options2($field, $instance = NULL, $entity_type = NULL, $entity = NULL) {
-  if ($entity->type == 'contact_ilr_admissions') {
-    // Anticipated entry year at Cornell for Admissions Contact form
-    // If it's before April: start with current year and go out 6 years
-    // April or later: start with the following year and go out 6 years
-    return date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
-  }
+
+    if ($entity->type == 'contact_ilr_admissions') {
+      // Anticipated entry year at Cornell for Admissions Contact form
+      // If it's before April: start with current year and go out 6 years
+      // April or later: start with the following year and go out 6 years
+      return date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
+    }
+    else {
+      switch ($entity->type) {
+        case 'fex_wisp_sponsor_registration':
+          $options = _forms_year_relative_options(0,-70);
+          break;
+        default:
+          $options = _forms_year_relative_options(0,6);
+          break;
+      }
+      return $options;
+    }
 }
 
 
@@ -572,7 +636,7 @@ function _forms_number_absolute_options($first, $last) {
   }
   else {
     for ($num=$first; $num>=$last; $num--) {
-      $numList['$num'] = $num;
+      $numList["$num"] = $num;
     }
   }
   return $numList;
@@ -629,13 +693,17 @@ function _forms_full_names_states_and_provinces() {
 /**
  * Send user and admin emails
  */
-function _forms_send_emails($entityform, $admin_email, $subject='') {
+function _forms_send_emails($entityform, $admin_email, $subject='', $subject_user='') {
   $form_title = _forms_get_form_title($entityform);
   $user_name = _forms_construct_user_name($entityform);
   $email_template = _forms_get_tplphp_file($entityform);
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
-  $user_email = $entityform_wrapper->field_email->value();
-
+  if (isset($entityform_wrapper->field_email)) {
+    $user_email = $entityform_wrapper->field_email->value();
+  }
+  elseif (isset($entityform_wrapper->field_netid)) {
+    $user_email = $entityform_wrapper->field_netid->value() . "@cornell.edu";
+  }
   // User email
   if (isset($user_email) &&
     _forms_user_receives_confirmation_email($entityform)) {
@@ -645,8 +713,19 @@ function _forms_send_emails($entityform, $admin_email, $subject='') {
     );
     $body = theme($email_template, _forms_generate_template_parameters($entityform, $params));
     $to = $user_email;
-    $from = $admin_email;
-    $subject_user = $form_title . ' confirmation';
+
+    // Sometimes the admin email goes to two addresses; in that case, set the
+    // "from" email for the user's confirmation to the first one.
+    $comma_position = strpos($admin_email, ",");
+    if ($comma_position > 0) {   // The comma wouldn't be the 1st char
+      $from = substr($admin_email, 0, $comma_position);
+    }
+    else{
+      $from = $admin_email;
+    }
+    if (empty($subject_user)) {
+      $subject_user = $form_title . ' confirmation';
+    }
     _send_email_for_entity_form($to, $from, $subject_user, $body);
   }
 
