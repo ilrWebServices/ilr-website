@@ -4277,6 +4277,30 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_fex_constraints_markup'
+  $field_bases['field_fex_constraints_markup'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_fex_constraints_markup',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">
+	<p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels.</p>
+</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
   // Exported field_base: 'field_fex_dates'
   $field_bases['field_fex_dates'] = array(
     'active' => 1,
@@ -4284,6 +4308,33 @@ function ilr_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_fex_dates',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_fex_dates_constraints'
+  $field_bases['field_fex_dates_constraints'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_fex_dates_constraints',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -4321,9 +4372,18 @@ function ilr_field_bases_field_default_field_bases() {
         'value' => '<div class="form-item">
 	<p><strong>Important information about dates and duration</strong></p>
 
-	<p>Shadowing opportunities for FEX are typically one to three days in length, and take place during Cornell\'s intersession, between the end of Fall semester finals and the start of Spring semester. The date range for this year is noted at the top of this page. Depending on final exam schedules, some students may be available to work sooner. Additionally, some students may be returning to campus a week early for sorority and fraternity rush and recruitment. Therefore, we ask for flexibility in determining the dates for your opportunities. (However, please be mindful that if you are very flexible, and are available for several weeks, but want to host multiple students on the same day, the students themselves may choose your opportunity in part because of the flexibility, but it might then be difficult to find a date that works for all those students.)</p>
-
-	<p>All that said, please be as specific as possible about the length of the opportunity and your preferred dates or date range, including any dates that would be problematic due to holidays, vacations, or low staffing levels. The more detail you can provide about dates, the better.</p>
+	<ul>
+		<li>Shadowing experiences for FEX are typically one day in length (longer is an option).</li>
+		<li>FEX opportunities occur during Cornell\'s intersession between the fall and spring semesters; see this year’s date range at the top of the page.</li>
+		<li>Depending on final exam schedules, some students may be available to work sooner.</li>
+		<li>Some students will need to return to campus early for sorority and fraternity recruitment.</li>
+		<li>Flexibility in determining the dates for your opportunities is appreciated. However, for those willing to host multiple students and preferring to do so the same day, we will need a list of <strong>no more than five specific dates</strong> (as opposed to a date range) in order to ensure there is a date that works for all.
+			<ul>
+				<li>Students are eager for these opportunities and fit them in around other obligations over break so many are not free for an entire one- or two-week period.</li>
+				<li>To facilitate the connection process, we will ask that students be available for at least three of the five date options provided.</li>
+			</ul>
+		</li>
+	</ul>
 </div>
 ',
       ),
@@ -5051,6 +5111,35 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'datetime',
+  );
+
+  // Exported field_base: 'field_h_program'
+  $field_bases['field_h_program'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_h_program',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_h_school_year'
@@ -10888,7 +10977,12 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels; whether the weeks must be consecutive or if the student could work for a week in December and then continue in January after the holidays; whether the dates are flexible; and so on.</p>
+	<p>Please let us know about any constraints on the above dates.</p>
+
+	<ul>
+		<li>Please be mindful of dates that would be problematic for you due to <strong>holidays, vacations, or low staffing levels</strong>.</li>
+		<li>Students are eager for these opportunities and seek those that mesh with their schedules over break. They need to know how long you want them to work and whether they must work consecutive days. For example, may they start in December and finish in January?</li>
+	</ul>
 </div>
 ',
       ),
@@ -10968,11 +11062,13 @@ function ilr_field_bases_field_default_field_bases() {
         'value' => '<div class="form-item">
 	<p><strong>Important information about dates and duration</strong></p>
 
-	<p>WISP opportunities are typically two to three weeks in length, and take place during Cornell\'s intersession, between the end of Fall semester finals and the start of Spring semester. The date range for this year is noted at the top of this page. Depending on final exam schedules, some students may be available to work sooner. Additionally, some students may be returning to campus a week early for sorority and fraternity rush and recruitment.</p>
-
-	<p>Note that students choose opportunities that mesh with their schedules during intersession, so the more detail you can provide about dates, the better.</p>
-
-	<p>Given students\' schedules, we ask for flexibility in determining the dates for your opportunities. Please be as specific as possible with your preferred dates.</p>
+	<ul>
+		<li>WISP opportunities are typically two to three weeks in length.</li>
+		<li>These short-term internships occur during Cornell\'s intersession between the fall and spring semesters; see this year’s date range at the top of the page.</li>
+		<li>Depending on final exam schedules, some students may be available to work sooner.</li>
+		<li>Some students will need to return to campus early for sorority and fraternity recruitment.</li>
+		<li>Flexibility with the length and duration of your opportunities is appreciated. However, please clearly state your minimum time commitment.</li>
+	</ul>
 </div>
 ',
       ),
