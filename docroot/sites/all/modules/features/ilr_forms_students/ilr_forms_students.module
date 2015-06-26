@@ -12,19 +12,34 @@ include_once 'ilr_forms_students.features.inc';
  */
 function ilr_forms_students_entityform_presave($entityform) {
   if ($entityform->type == 'fex_wisp_sponsor_registration') {
-    _ilr_forms_students_set_programYear($entityform);
-    _ilr_forms_students_set_supervisor_fields($entityform);
-    _ilr_forms_students_fix_alum_college_fields($entityform);
+    _ilr_forms_students_set_fexwisp_programYear($entityform);
+    _ilr_forms_students_set_fexwisp_supervisor_fields($entityform);
+    _ilr_forms_students_fix_fexwisp_alum_college_fields($entityform);
   }
   elseif ($entityform->type == 'fex_wisp_student_application') {
-    _ilr_forms_students_set_programYear($entityform);
+    _ilr_forms_students_set_fexwisp_program($entityform);
+    _ilr_forms_students_set_fexwisp_programYear($entityform);
   }
+}
+
+/**
+ * Set program (fex or wisp)
+ */
+function _ilr_forms_students_set_fexwisp_program($entityform) {
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  if ($entityform_wrapper->field_year_fr_soph_jr_sr_milr->value() == 'Freshman') {
+    $program = "FEX";
+  }
+  else {
+    $program = "WISP";
+  }
+  $entityform_wrapper->field_h_program->set($program);
 }
 
 /**
  * Set program year
  */
-function _ilr_forms_students_set_programYear($entityform) {
+function _ilr_forms_students_set_fexwisp_programYear($entityform) {
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
   $currYear = date('Y');
   $nextYear = $currYear + 1;
@@ -46,7 +61,7 @@ function _ilr_forms_students_set_programYear($entityform) {
  * Filemaker; setting them here ensures that they go into the Drupal database
  * for the form submission.
  */
-function _ilr_forms_students_set_supervisor_fields($entityform) {
+function _ilr_forms_students_set_fexwisp_supervisor_fields($entityform) {
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
 
   // Create arrays of fields that need to be copied.
@@ -112,7 +127,7 @@ function _ilr_forms_students_copy_field_value(&$wrapper, $from_field, $to_field)
  * ILR, because that's the default for the field on the form.  Need to do this
  * for the person filling out the form and for the supervisor.
  */
-function _ilr_forms_students_fix_alum_college_fields($entityform) {
+function _ilr_forms_students_fix_fexwisp_alum_college_fields($entityform) {
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
   if ($entityform_wrapper->field_alum->value() == 'No') {
     // Person filling out the form

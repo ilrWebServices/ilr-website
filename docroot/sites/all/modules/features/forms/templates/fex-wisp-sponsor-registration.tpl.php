@@ -8,6 +8,6 @@ If you have any questions, please contact ILR Career Services.<br><br>
 Office of Career Services<br>
 ILR School<br>
 Cornell University<br>
-(607) 255-7816<br>
+(607) 255-0836<br>
 FEX: ilrfex@cornell.edu<br>
 WISP: ilrwisp@cornell.edu
