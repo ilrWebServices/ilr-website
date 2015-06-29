@@ -388,15 +388,9 @@ function _process_fex_wisp_sponsor_registration(&$entityform) {
   $user_subject = $program . " " . $program_year . " sponsor registration confirmation";
   $admin_subject = "Online " . $program . " " . $program_year . " sponsor registration - " . $org;
 
-  if ($program == "FEX") {
-    $admin_email = "ilrfex@cornell.edu";
-  }
-  elseif ($program == "WISP") {
-    $admin_email = "ilrwisp@cornell.edu, ";
-  }
-  else {
-    $admin_email = "ilrfex@cornell.edu, ilrwisp@cornell.edu";
-  }
+  $admin_email = (strpos($program, '/') > 0) //FEX/WISP
+    ? "ilrfex@cornell.edu, ilrwisp@cornell.edu"
+    : 'ilr' . strtolower($program) . '@cornell.edu';
 
   _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject);
 }
@@ -602,24 +596,23 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
  * I need this, because of forms that have more than one field for a set of years
  */
 function _forms_year_as_list_text_options2($field, $instance = NULL, $entity_type = NULL, $entity = NULL) {
-
-    if ($entity->type == 'contact_ilr_admissions') {
+  switch ($entity->type) {
+    case 'fex_wisp_sponsor_registration':
+      $options = _forms_year_relative_options(0,-70);
+      break;
+    case 'contact_ilr_admissions':
       // Anticipated entry year at Cornell for Admissions Contact form
       // If it's before April: start with current year and go out 6 years
       // April or later: start with the following year and go out 6 years
-      return date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
-    }
-    else {
-      switch ($entity->type) {
-        case 'fex_wisp_sponsor_registration':
-          $options = _forms_year_relative_options(0,-70);
-          break;
-        default:
-          $options = _forms_year_relative_options(0,6);
-          break;
-      }
-      return $options;
-    }
+      $options = (date('n') < 4)
+        ? _forms_year_relative_options(0,6)
+        : _forms_year_relative_options(1,6);
+      break;
+    default:
+      $options = _forms_year_relative_options(0,6);
+      break;
+  }
+  return $options;
 }
 
 
