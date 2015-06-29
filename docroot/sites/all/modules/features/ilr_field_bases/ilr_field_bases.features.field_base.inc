@@ -219,6 +219,33 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_activities'
+  $field_bases['field_activities'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_activities',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_additional_dispute_resolut'
   $field_bases['field_additional_dispute_resolut'] = array(
     'active' => 1,
@@ -747,6 +774,32 @@ function ilr_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_alum',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_alum_additional'
+  $field_bases['field_alum_additional'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_alum_additional',
     'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
@@ -1453,6 +1506,80 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_career_field_fex'
+  $field_bases['field_career_field_fex'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_career_field_fex',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Entertainment / Sports management' => 'Entertainment / Sports management',
+        'Financial services' => 'Financial services',
+        'Government' => 'Government',
+        'Human resources' => 'Human resources',
+        'HR Consulting' => 'HR Consulting',
+        'Labor relations (corporate)' => 'Labor relations (corporate)',
+        'Law' => 'Law',
+        'Labor / Social justice' => 'Labor / Social justice',
+        'Management consulting' => 'Management consulting',
+        'Marketing' => 'Marketing',
+        'Nonprofit' => 'Nonprofit',
+        'Third-party / Arbitration' => 'Third-party / Arbitration',
+        'Other' => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_career_field_wisp'
+  $field_bases['field_career_field_wisp'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_career_field_wisp',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Entertainment / Sports management' => 'Entertainment / Sports management',
+        'Financial services' => 'Financial services',
+        'Government' => 'Government',
+        'Human resources' => 'Human resources',
+        'HR Consulting' => 'HR Consulting',
+        'Labor relations (corporate)' => 'Labor relations (corporate)',
+        'Law' => 'Law',
+        'Labor / Social justice' => 'Labor / Social justice',
+        'Management consulting' => 'Management consulting',
+        'Marketing' => 'Marketing',
+        'Nonprofit' => 'Nonprofit',
+        'Third-party / Arbitration' => 'Third-party / Arbitration',
+        'Other' => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_career_services_how_to_dir'
   $field_bases['field_career_services_how_to_dir'] = array(
     'active' => 1,
@@ -1689,6 +1816,35 @@ function ilr_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_city_additional_2',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_city_additional_3'
+  $field_bases['field_city_additional_3'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_city_additional_3',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -2166,6 +2322,70 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'blockreference',
   );
 
+  // Exported field_base: 'field_cornell_college'
+  $field_bases['field_cornell_college'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cornell_college',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'ILR' => 'ILR',
+        'CALS' => 'Agriculture and Life Sciences',
+        'AAP' => 'Architecture, Art, and Planning',
+        'AS' => 'Arts and Sciences',
+        'ENGR' => 'Engineering',
+        'Hotel' => 'Hotel',
+        'HumEc' => 'Human Ecology',
+        'Other' => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_cornell_college_additional'
+  $field_bases['field_cornell_college_additional'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cornell_college_additional',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'ILR' => 'ILR',
+        'CALS' => 'Agriculture and Life Sciences',
+        'AAP' => 'Architecture, Art, and Planning',
+        'AS' => 'Arts and Sciences',
+        'ENGR' => 'Engineering',
+        'Hotel' => 'Hotel',
+        'HumEc' => 'Human Ecology',
+        'Other' => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_cornell_degree'
   $field_bases['field_cornell_degree'] = array(
     'active' => 1,
@@ -2635,6 +2855,60 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_degree_ba_masters_oth_addl'
+  $field_bases['field_degree_ba_masters_oth_addl'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_degree_ba_masters_oth_addl',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Bachelor\'s' => 'Bachelor\'s',
+        'Master\'s' => 'Master\'s',
+        'Other' => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_degree_ba_masters_other'
+  $field_bases['field_degree_ba_masters_other'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_degree_ba_masters_other',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Bachelor\'s' => 'Bachelor\'s',
+        'Master\'s' => 'Master\'s',
+        'Other' => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_degree_plan_submitted'
   $field_bases['field_degree_plan_submitted'] = array(
     'active' => 1,
@@ -2826,6 +3100,33 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_description_long'
+  $field_bases['field_description_long'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_description_long',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_disciplinary_action'
@@ -3976,6 +4277,221 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_fex_dates'
+  $field_bases['field_fex_dates'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_fex_dates',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_fex_dates_markup'
+  $field_bases['field_fex_dates_markup'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_fex_dates_markup',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">
+	<p><strong>Important information about dates and duration</strong></p>
+
+	<p>Shadowing opportunities for FEX are typically one to three days in length, and take place during Cornell\'s intersession, between the end of Fall semester finals and the start of Spring semester. The date range for this year is noted at the top of this page. Depending on final exam schedules, some students may be available to work sooner. Additionally, some students may be returning to campus a week early for sorority and fraternity rush and recruitment. Therefore, we ask for flexibility in determining the dates for your opportunities. (However, please be mindful that if you are very flexible, and are available for several weeks, but want to host multiple students on the same day, the students themselves may choose your opportunity in part because of the flexibility, but it might then be difficult to find a date that works for all those students.)</p>
+
+	<p>All that said, please be as specific as possible about the length of the opportunity and your preferred dates or date range, including any dates that would be problematic due to holidays, vacations, or low staffing levels. The more detail you can provide about dates, the better.</p>
+</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
+  // Exported field_base: 'field_fex_markup_if_chosen'
+  $field_bases['field_fex_markup_if_chosen'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_fex_markup_if_chosen',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">
+<p>Please answer all questions in this section if you are offering a FEX opportunity.</p>
+</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
+  // Exported field_base: 'field_fex_markup_if_not_chosen'
+  $field_bases['field_fex_markup_if_not_chosen'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_fex_markup_if_not_chosen',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">To include FEX opportunities, scroll up to the top of the form, and check the "FEX" box under "Type of opportunity".</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
+  // Exported field_base: 'field_fex_number_of_students'
+  $field_bases['field_fex_number_of_students'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_fex_number_of_students',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        1 => 1,
+        2 => 2,
+        3 => 3,
+        4 => 4,
+        5 => 5,
+        6 => 6,
+        7 => 7,
+        8 => 8,
+        9 => 9,
+        10 => 10,
+        'multiple' => 'More than 10',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_fex_same_day'
+  $field_bases['field_fex_same_day'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_fex_same_day',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Same day' => 'Same day(s)',
+        'Individually' => 'Individually',
+        'no preference' => 'No preference',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_fex_upperclass_students'
+  $field_bases['field_fex_upperclass_students'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_fex_upperclass_students',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_fex_wisp_opportunity_type'
+  $field_bases['field_fex_wisp_opportunity_type'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_fex_wisp_opportunity_type',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'fex' => 'FEX',
+        'wisp' => 'WISP',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_file'
   $field_bases['field_file'] = array(
     'active' => 1,
@@ -5060,6 +5576,32 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_is_address_the_same'
+  $field_bases['field_is_address_the_same'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_is_address_the_same',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_is_full'
@@ -6507,6 +7049,64 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_other_career_field_fex_'
+  $field_bases['field_other_career_field_fex_'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_other_career_field_fex_',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 1000,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_other_career_field_wisp_'
+  $field_bases['field_other_career_field_wisp_'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_other_career_field_wisp_',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 1000,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_other_interests_text'
   $field_bases['field_other_interests_text'] = array(
     'active' => 1,
@@ -6590,6 +7190,32 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_paid'
+  $field_bases['field_paid'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_paid',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_passport_number'
@@ -7469,6 +8095,28 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_qualifications_markup'
+  $field_bases['field_qualifications_markup'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_qualifications_markup',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">For the next question, please list minimum job qualifications required, including necessary computer skills. Also, please include whether personal transportation is necessary or if the location is accessible by public transportation.</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
   );
 
   // Exported field_base: 'field_quote'
@@ -8953,6 +9601,29 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_state_province_addl_3'
+  $field_bases['field_state_province_addl_3'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_state_province_addl_3',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(),
+      'allowed_values_function' => '_forms_full_names_states_and_provinces',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_street_address_addl_2'
   $field_bases['field_street_address_addl_2'] = array(
     'active' => 1,
@@ -10202,6 +10873,195 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_wisp_constraints_markup'
+  $field_bases['field_wisp_constraints_markup'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_wisp_constraints_markup',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">
+	<p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels; whether the weeks must be consecutive or if the student could work for a week in December and then continue in January after the holidays; whether the dates are flexible; and so on.</p>
+</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
+  // Exported field_base: 'field_wisp_dates'
+  $field_bases['field_wisp_dates'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_wisp_dates',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_wisp_dates_constraints'
+  $field_bases['field_wisp_dates_constraints'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_wisp_dates_constraints',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_wisp_dates_markup'
+  $field_bases['field_wisp_dates_markup'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_wisp_dates_markup',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">
+	<p><strong>Important information about dates and duration</strong></p>
+
+	<p>WISP opportunities are typically two to three weeks in length, and take place during Cornell\'s intersession, between the end of Fall semester finals and the start of Spring semester. The date range for this year is noted at the top of this page. Depending on final exam schedules, some students may be available to work sooner. Additionally, some students may be returning to campus a week early for sorority and fraternity rush and recruitment.</p>
+
+	<p>Note that students choose opportunities that mesh with their schedules during intersession, so the more detail you can provide about dates, the better.</p>
+
+	<p>Given students\' schedules, we ask for flexibility in determining the dates for your opportunities. Please be as specific as possible with your preferred dates.</p>
+</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
+  // Exported field_base: 'field_wisp_markup_if_chosen'
+  $field_bases['field_wisp_markup_if_chosen'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_wisp_markup_if_chosen',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">
+<p>Please answer all questions in this section if you are offering a WISP opportunity.</p>
+</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
+  // Exported field_base: 'field_wisp_markup_if_not_chosen'
+  $field_bases['field_wisp_markup_if_not_chosen'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_wisp_markup_if_not_chosen',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">To include WISP opportunities, scroll up to the top of the form, and check the "WISP" box under "Type of opportunity".</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
+  // Exported field_base: 'field_wisp_number_of_students'
+  $field_bases['field_wisp_number_of_students'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_wisp_number_of_students',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        1 => 1,
+        2 => 2,
+        3 => 3,
+        4 => 4,
+        5 => 5,
+        6 => 6,
+        7 => 7,
+        8 => 8,
+        9 => 9,
+        10 => 10,
+        'multiple' => 'More than 10',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_work_experience'
   $field_bases['field_work_experience'] = array(
     'active' => 1,
@@ -10411,6 +11271,32 @@ function ilr_field_bases_field_default_field_bases() {
         '11-15 years' => '11-15 years',
         '16-20 years' => '16-20 years',
         '20+ years' => '20+ years',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_yes_no'
+  $field_bases['field_yes_no'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_yes_no',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
       ),
       'allowed_values_function' => '',
     ),
