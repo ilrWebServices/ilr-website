@@ -13,6 +13,7 @@ dependencies[] = filter
 dependencies[] = focal_point
 dependencies[] = image
 dependencies[] = media_wysiwyg_view_mode
+dependencies[] = media_youtube
 dependencies[] = mimemail
 dependencies[] = readmorejs
 dependencies[] = strongarm

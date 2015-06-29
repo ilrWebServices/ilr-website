@@ -1219,6 +1219,7 @@ function scheinman_neutral_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_state_inc_outside_us',
     'label' => 'State (or outside US)',
     'required' => 1,

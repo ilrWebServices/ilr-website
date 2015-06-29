@@ -35,6 +35,7 @@ function student_portraits_field_group_info() {
         'classes' => 'group-portrait-highlighted field-group-html-element',
         'attributes' => '',
         'required_fields' => 1,
+        'id' => 'node_student_portrait_full_group_portrait_highlighted',
       ),
     ),
   );

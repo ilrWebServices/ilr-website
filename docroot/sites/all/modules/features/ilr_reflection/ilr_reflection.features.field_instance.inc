@@ -362,6 +362,7 @@ function ilr_reflection_field_default_field_instances() {
           'youtube_controls' => FALSE,
           'youtube_height' => NULL,
           'youtube_iv_load_policy' => FALSE,
+          'youtube_loop' => FALSE,
           'youtube_showinfo' => FALSE,
           'youtube_size' => '420x315',
           'youtube_width' => NULL,

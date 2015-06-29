@@ -125,6 +125,7 @@ function people_profiles_field_group_info() {
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'none',
+        'id' => 'node_people_profile_full_group_contact_info',
       ),
       'formatter' => 'open',
     ),
@@ -154,6 +155,7 @@ function people_profiles_field_group_info() {
         'classes' => 'group group-expertise',
         'element' => 'div',
         'attributes' => '',
+        'id' => 'node_people_profile_full_group_expertise',
       ),
     ),
   );
@@ -189,6 +191,7 @@ function people_profiles_field_group_info() {
         'element' => 'div',
         'attributes' => '',
         'required_fields' => 1,
+        'id' => 'node_people_profile_full_group_main_content',
       ),
       'formatter' => '',
     ),
@@ -244,6 +247,7 @@ function people_profiles_field_group_info() {
         'classes' => 'group-highlighted field-group-html-element',
         'element' => 'div',
         'attributes' => '',
+        'id' => 'node_people_profile_full_group_profile_highlighted',
       ),
     ),
   );
@@ -273,6 +277,7 @@ function people_profiles_field_group_info() {
         'classes' => 'group group-sidebar',
         'element' => 'div',
         'attributes' => '',
+        'id' => 'node_people_profile_full_group_profile_sidebar',
       ),
     ),
   );
@@ -302,6 +307,7 @@ function people_profiles_field_group_info() {
         'classes' => 'group group-related-resources',
         'element' => 'div',
         'attributes' => '',
+        'id' => 'node_people_profile_full_group_related_resources',
       ),
     ),
   );
@@ -331,6 +337,7 @@ function people_profiles_field_group_info() {
         'classes' => 'group-title-and-focus field-group-html-element',
         'attributes' => '',
         'required_fields' => 1,
+        'id' => 'node_people_profile_full_group_title_and_focus',
       ),
     ),
   );

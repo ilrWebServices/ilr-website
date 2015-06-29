@@ -32,6 +32,12 @@ function localist_block_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'unordered_list' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'bean',
     'field_name' => 'field_more_link',

@@ -40,6 +40,12 @@ function ilr_workspan_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 2,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -89,6 +95,12 @@ function ilr_workspan_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 5,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'plain_teaser' => array(
         'label' => 'above',
@@ -174,6 +186,12 @@ function ilr_workspan_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'plain_teaser' => array(
         'label' => 'above',
         'module' => 'text',
@@ -226,6 +244,12 @@ function ilr_workspan_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 4,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'plain_teaser' => array(
         'label' => 'above',
@@ -301,6 +325,12 @@ function ilr_workspan_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 3,
       ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'plain_teaser' => array(
         'label' => 'above',
         'module' => 'taxonomy',
@@ -357,6 +387,12 @@ function ilr_workspan_field_default_field_instances() {
           'image_style' => '',
         ),
         'type' => 'image',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'plain_teaser' => array(

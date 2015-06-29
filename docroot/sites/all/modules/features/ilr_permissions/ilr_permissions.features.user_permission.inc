@@ -983,6 +983,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete any reflection content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -1175,7 +1176,6 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own people_profile content',
     'roles' => array(
       'administrator' => 'administrator',
-      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -1580,7 +1580,6 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any people_profile content',
     'roles' => array(
       'administrator' => 'administrator',
-      'contributor' => 'contributor',
       'faculty admin' => 'faculty admin',
     ),
     'module' => 'node',

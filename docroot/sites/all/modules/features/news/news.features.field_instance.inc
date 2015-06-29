@@ -74,12 +74,9 @@ function news_field_default_field_instances() {
     'description' => 'Category types are used in the theme as [category_type] / [primary_tag]',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'taxonomy_term_reference_link',
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'mega_menu_item' => array(
