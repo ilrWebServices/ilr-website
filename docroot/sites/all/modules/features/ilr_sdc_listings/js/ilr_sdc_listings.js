@@ -16,17 +16,23 @@
         $classId = $(this).attr('value');// Note that this is not the nid
         $('.class-detail-toggle').hide();
         $('div.class-'+$classId).show();
+        facultyBiosReadmore();
       });
 
       // Show the first class detail toggle div
       $(window).load(function(){
         $('.class-detail-toggle').first().show();
+        facultyBiosReadmore();
+      });
+
+
+      var facultyBiosReadmore = function() {
         $('.instructor .bio').readmore({
           maxHeight: 110,
           lessLink: '<a href="#">- Read less</a>',
           moreLink: '<a href="#">+ Read more</a>',
         });
-      });
+      };
 
       // This should open the modal
       $('.button-request-info').click(function(){
