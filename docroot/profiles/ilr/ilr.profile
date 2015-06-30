@@ -411,6 +411,10 @@ function _ilr_get_date_format_types() {
       'label' => t('Month only'),
       'format' => 'F',
     ),
+    'ilr_post_format' => array(
+      'label' => t('Post format'),
+      'format' => 'F d, Y',
+    ),
   );
 }
 /**
