@@ -531,12 +531,12 @@ function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
   $markup = '<div class="class-details">';
   $markup .= _ilr_sdc_listings_generate_class_timespan_markup($class_node);
   $markup .= _ilr_sdc_listings_generate_class_time_location_markup($class_node);
+  $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
   if (count($class_nodes) > 1) {
     $wrapper = ilr_get_node_wrapper($class_node);
     $course_nid = $wrapper->field_course->value()->nid;
     $markup .= '<a href="/node/' . $course_nid . '">See more dates and locations</a>';
   }
-  $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
   $markup .= '</div>';
   return $markup;
 }
