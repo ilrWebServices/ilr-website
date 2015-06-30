@@ -12,4 +12,5 @@ configure = admin/config/user-interface/readmorejs
 ; Modified from https://www.drupal.org/project/readmorejs
 ; Moved to custom b/c not widely used or supported,
 ; and needed to patch
+; @TODO: refactor this custom module out (currently only used for faculty profiles), and provide implementation similar to ilr_sdc_listings.js
 

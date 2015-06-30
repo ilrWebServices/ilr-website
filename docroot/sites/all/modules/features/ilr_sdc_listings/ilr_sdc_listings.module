@@ -495,11 +495,21 @@ function _ilr_sdc_listings_is_multiyear_event($class) {
   return $interval->y > 0;
 }
 
-function _ilr_sdc_listings_generate_class_button_markup($class_node) {
+function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_price=FALSE) {
   $wrapper = ilr_get_node_wrapper($class_node);
-  $sdc_link = _ilr_sdc_listings_get_class_registration_url($class_node);
-  $markup = '<div class="action"><a class="button button-register" href="'.$sdc_link.'">Register';
+  if ($include_price) {
+    $classes = 'button button-register';
+    $link_text = 'Register';
+    $link = _ilr_sdc_listings_get_class_registration_url($class_node);
+  }
+  else {
+    $classes = 'button button-info';
+    $link_text = 'Learn More';
+    $link = url('node/'. $class_node->nid);
+  }
+  $markup = '<div class="action"><a class="'.$classes.'" href="'.$link.'">' . $link_text;
   $markup .= '<span class="cost">$' . $wrapper->field_price->value() . '</span></a></div>';
+
   return $markup;
 }
 
@@ -519,9 +529,9 @@ function _ilr_sdc_listings_generate_class_radio_label($class) {
 function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
   $class_node = reset($class_nodes);
   $markup = '<div class="class-details">';
-  $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
   $markup .= _ilr_sdc_listings_generate_class_timespan_markup($class_node);
   $markup .= _ilr_sdc_listings_generate_class_time_location_markup($class_node);
+  $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
   if (count($class_nodes) > 1) {
     $wrapper = ilr_get_node_wrapper($class_node);
     $course_nid = $wrapper->field_course->value()->nid;
@@ -537,8 +547,8 @@ function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id) {
   $markup = '<div class="instructors class-' . $class_id . '">';
   $markup .= "<h3>Instructors</h3>";
   foreach ($faculty as $key => $instructor) {
-    $markup .= '<h4>'. $instructor->title .'</h4>';
-    $markup .= $instructor->body[LANGUAGE_NONE][0]['value'];
+    $markup .= '<div class="instructor"><h4>'. $instructor->title .'</h4>';
+    $markup .= '<div class="bio">'.$instructor->body[LANGUAGE_NONE][0]['value'] . '</div></div>';
   }
   $markup .= "</div>\n";
   return $markup;
@@ -1018,7 +1028,7 @@ function _ilr_sdc_listings_add_class_detail_markup(&$form, $classes) {
     $full = $class_node_wrapper->field_is_full->value();
     if (!$full) {
       $markup = '<div class="class-detail-toggle class-'.$class_id.'">';
-      $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
+      $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node, TRUE);
       $markup .= _ilr_sdc_listings_format_class_date_and_time($class_node);
       $markup .= _ilr_sdc_listings_generate_location_markup($class_node);
       $markup .= _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id);

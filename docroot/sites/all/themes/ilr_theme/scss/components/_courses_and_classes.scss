@@ -43,7 +43,7 @@
   }
 
   .button {
-    @include trailer(1);
+    @include rhythm(1);
     @extend %cornell-button;
     clear: left;
     .cost {
@@ -51,6 +51,9 @@
       text-align: center;
       @include adjust-font-size-to(14px, .5);
       padding-bottom: .3em;
+    }
+    &.button-info .cost {
+      display: none;
     }
   }
   .button-request-info span {
@@ -74,6 +77,11 @@
 
     .locality-block {
       @include trailer(1);
+    }
+  }
+  .instructors {
+    a.readmore-js-toggle {
+      @extend %readmore-js-link; // see _helpers.scss
     }
   }
 }
