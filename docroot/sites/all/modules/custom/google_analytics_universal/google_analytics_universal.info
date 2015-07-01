@@ -4,3 +4,5 @@ core = 7.x
 package = Cornell
 php = 5.2.4
 version = 7.x-1.0
+
+scripts[] = google_analytics_universal.js
