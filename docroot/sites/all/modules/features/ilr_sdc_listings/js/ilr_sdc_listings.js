@@ -22,7 +22,9 @@
       // Show the first class detail toggle div
       $(window).load(function(){
         $('.class-detail-toggle').first().show();
-        facultyBiosReadmore();
+        if ($('.bio').length) {
+          facultyBiosReadmore();
+        }
       });
 
 
