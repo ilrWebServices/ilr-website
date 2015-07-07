@@ -10,21 +10,13 @@ fi
 BIN_DIR=`dirname $0`
 
 # Set the backup name
-source $BIN_DIR/set-backup-name
+source $BIN_DIR/snapshot
 
-# clear cache to prevent sequel import errors
-drush cc all
-
-# make a backup of current db
-drush sql-dump -l default --gzip --result-file=../db/backups/$BACKUP_NAME
+drush sql-drop -y
 
 # download the acquia dev db
 drush sql-sync @ilr.ilr.dev @ilr.ilr.local -y
 
-drush rsync @ilr.ilr.dev:%files/ @ilr.ilr.local:%files
+drush en ilr_dev -y
 
-drush -y -l default en ilr_dev
-
-drush fr-all -y
-
-drush updb -y
+echo "Sync complete."
