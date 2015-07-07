@@ -79,3 +79,8 @@ Example:
   * Fixes issues with youtube api v3
   * https://www.drupal.org/node/2410027
   * https://www.drupal.org/files/issues/media_youtube_apiv3_v4.patch
+
+* views_data_export
+  * Fixes UTF-8 file settings when opening CSV downloads on Excel for Windows
+  * https://www.drupal.org/node/1701018
+  * https://www.drupal.org/files/issues/views_data_export-set_utf8_bom-1701018-13.patch
