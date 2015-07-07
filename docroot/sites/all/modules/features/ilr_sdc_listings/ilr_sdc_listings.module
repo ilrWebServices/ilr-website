@@ -230,7 +230,6 @@ function _ilr_sdc_listings_class_view_alter(&$build) {
 function _ilr_sdc_listings_class_course_link($class_node) {
   $node_wrapper = ilr_get_node_wrapper($class_node);
   $course_title = $node_wrapper->title->value();
-  $course_title .= '(' . $node_wrapper->field_course->field_catalog_prefix->value() . ')';
   return array(
     '#theme' => 'link',
     '#text' => $course_title,
@@ -304,9 +303,13 @@ function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
         );
         $class_node->content['#group_children']['other_classes_link'] = 'group_sidebar';
       }
-    }
+    } // Class in the past
     else {
-      drupal_set_message(t(variable_get('sdc_class_not_available')));
+      $class_details = '<div class="class-details">';
+      $class_details .= _ilr_sdc_listings_get_class_detail_markup(array($class_node->nid => $class_node));
+      $class_details .= '</div>';
+      $class_node->content['classes']['#markup'] = $class_details;
+      $class_node->content['#group_children']['classes'] = 'group_sidebar';
     }
   }
 }
@@ -385,7 +388,11 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes) {
     '#tree' => TRUE,
   );
   _ilr_sdc_listings_add_radio_markup($form, $class_nodes);
-  _ilr_sdc_listings_add_class_detail_markup($form, $class_nodes);
+  $markup = _ilr_sdc_listings_get_class_detail_markup($class_nodes, TRUE);
+  $form['class_detail_toggle'] = array(
+    '#type' => 'markup',
+    '#markup' => $markup,
+  );
   return $form;
 }
 
@@ -1020,25 +1027,25 @@ function _ilr_sdc_listings_get_parent_path_alias($path) {
   return implode("/", $sliced);
 }
 
-function _ilr_sdc_listings_add_class_detail_markup(&$form, $classes) {
+function _ilr_sdc_listings_get_class_detail_markup($classes, $add_button=FALSE) {
+  $markup = '';
   foreach ($classes as $nid => $class_node) {
     $class_node_wrapper = ilr_get_node_wrapper($class_node);
     $class_id = $class_node_wrapper->field_class_id->value();
     // Confirm class is not full
     $full = $class_node_wrapper->field_is_full->value();
     if (!$full) {
-      $markup = '<div class="class-detail-toggle class-'.$class_id.'">';
-      $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node, TRUE);
+      $markup .= '<div class="class-detail-toggle class-'.$class_id.'">';
+      if ($add_button) {
+        $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node, TRUE);
+      }
       $markup .= _ilr_sdc_listings_format_class_date_and_time($class_node);
       $markup .= _ilr_sdc_listings_generate_location_markup($class_node);
       $markup .= _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id);
       $markup .= '</div>';
-      $form['class_detail_toggle_'.$class_id] = array(
-        '#type' => 'markup',
-        '#markup' => $markup,
-      );
     }
   }
+  return $markup;
 }
 
 /**
