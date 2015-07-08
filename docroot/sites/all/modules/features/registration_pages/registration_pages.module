@@ -237,15 +237,22 @@ function _registration_pages_get_markup_for_inactive_form($node) {
     $message_intro = 'The deadline for submitting this form was ';
     $active_date_value_string = 'value2';
   }
-  // Add the custom message to the markup if appropriate
-  if (!empty($custom_message_field)) {
-    $markup .= $custom_message_field[LANGUAGE_NONE][0]['value'] . ' ';
+
+  // Set the message to the text that the admin specified,
+  // or to a default if blank; trim to deal with blanks being entered.
+  $custom_message = "";
+  if (!empty($custom_message_field)) {  // Form admin specified something
+    $custom_message = trim($custom_message_field['und'][0]['value']);
   }
 
-  $form_date = _registration_pages_get_formatted_date_from_field($node->field_form_active_date_range, $active_date_value_string);
-  $form_time = _registration_pages_get_formatted_time_from_field($node->field_form_active_date_range, $active_date_value_string);
-
-  $markup .= "$message_intro $form_date at $form_time.";
+  if (!empty($custom_message)) {
+    $markup .= $custom_message;
+  }
+  else {  //Form admin left it blank
+    $form_date = _registration_pages_get_formatted_date_from_field($node->field_form_active_date_range, $active_date_value_string);
+    $form_time = _registration_pages_get_formatted_time_from_field($node->field_form_active_date_range, $active_date_value_string);
+    $markup .= "$message_intro $form_date at $form_time.";
+  }
   $markup .= '</p>';
 
   return $markup;
