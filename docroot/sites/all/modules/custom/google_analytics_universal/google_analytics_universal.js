@@ -38,7 +38,7 @@
 
       // Checks all link clicks to see if it's a downloadable file
       if (!$('body').hasClass('page-admin')) {
-        $('a').on('click', function(event) {
+        $('a').click(function(event) {
           if (isDownload(this.href)) {
             ga("send", "event", "Downloads", getDownloadExtension(this.href).toUpperCase(), getPageUrl(this.href));
           }
