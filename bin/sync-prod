@@ -19,6 +19,4 @@ drush sql-sync @ilr.live @ilr.ilr.local -y
 
 drush en ilr_dev -y
 
-drush rsync @ilr.live:%files/ @ilr.ilr.local:%files
-
 echo "Sync complete."
