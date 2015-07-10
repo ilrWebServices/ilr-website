@@ -15,4 +15,7 @@ function featuretest_install() {
     'securepages',
     'acquia_agent'
   ));
+
+  variable_set('stage_file_proxy_origin','http://www.ilr.cornell.edu');
+  variable_set('stage_file_proxy_origin_dir','sites/ilr.cornell.edu/files');
 }
