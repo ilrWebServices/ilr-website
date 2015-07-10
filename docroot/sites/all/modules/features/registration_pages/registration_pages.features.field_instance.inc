@@ -518,7 +518,7 @@ function registration_pages_field_default_field_instances() {
     'bundle' => 'registration_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Text to display on page after the form closes.  The deadline will be displayed in addition to the text you specify here.',
+    'description' => 'Text to display on page after the form closes. If you leave this blank, the user will see a message indicating when the deadline was. Alternatively, enter exactly the text you want the user to see.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -572,7 +572,7 @@ function registration_pages_field_default_field_instances() {
     'bundle' => 'registration_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Text to display on page before the form is available. The start date will be displayed in addition to the text you specify here.',
+    'description' => 'Text to display on page before the form is available. If you leave this blank, the user will see a message indicating when the form will be available. Alternatively, enter exactly the text you want the user to see.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -698,8 +698,8 @@ function registration_pages_field_default_field_instances() {
   t('Registration form');
   t('Select the form that goes with this page.');
   t('Set Start date/time, End date/time.  The dates should be the same; this isn\'t designed for multi-date events, but this captures start and end time, along with the event date.');
-  t('Text to display on page after the form closes.  The deadline will be displayed in addition to the text you specify here.');
-  t('Text to display on page before the form is available. The start date will be displayed in addition to the text you specify here.');
+  t('Text to display on page after the form closes. If you leave this blank, the user will see a message indicating when the deadline was. Alternatively, enter exactly the text you want the user to see.');
+  t('Text to display on page before the form is available. If you leave this blank, the user will see a message indicating when the form will be available. Alternatively, enter exactly the text you want the user to see.');
   t('This text will ALWAYS appear, even when it\'s before  or after the deadline for the registration.  The other fields (event title, date, start and end time) will also appear, so don\'t add them here unless you\'re omitting them below.');
   t('Time period during which the form will be available to visitors.  Any start date earlier than today will make the form available immediately.  The end date is the deadline for the form.');
 
