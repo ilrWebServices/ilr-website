@@ -55,6 +55,8 @@ function ilr_reflection_form_alter(&$form, &$form_state, $form_id) {
       $form['field_tags']['#access'] = FALSE;
       $form['#validate'][] = '_ilr_reflection_spam_handler';
     }
+    $form['disclaimer']['#markup'] = '<p class="disclaimer">ILR reserves the right to edit submissions for grammar, punctuation and other editorial considerations, and to repost submissions on additional school channels.</p>';
+    $form['disclaimer']['#weight'] = 12;
     $form['actions']['submit']['#value'] = 'Add my reflection';
   }
 }

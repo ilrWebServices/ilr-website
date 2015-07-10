@@ -36,7 +36,6 @@
     }
   }
   .form-actions {
-    @include margin-leader(1.5);
     input[type='submit'] {
       background-color: white;
       border: 2px solid $cornell-red;
@@ -45,6 +44,15 @@
       color: $cornell-red;
     }
   }
+
+  .disclaimer {
+    font-style: italic;
+    clear: both;
+    @include padding-leader(1);
+    @include adjust-font-size-to(14px);
+    line-height: 1.2em;
+  }
+
   @include context('#content-bottom','#content-bottom[data-eq-state="768"]') {
     .form-item-title, .field-name-field-full-name, .field-name-field-email, .field-name-field-year-as-list-text {
       @extend %two-column;
