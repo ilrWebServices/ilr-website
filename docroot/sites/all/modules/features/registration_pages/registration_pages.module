@@ -238,17 +238,11 @@ function _registration_pages_get_markup_for_inactive_form($node) {
     $active_date_value_string = 'value2';
   }
 
-  // Set the message to the text that the admin specified,
-  // or to a default if blank; trim to deal with blanks being entered.
-  $custom_message = "";
-  if (!empty($custom_message_field)) {  // Form admin specified something
-    $custom_message = trim($custom_message_field['und'][0]['value']);
-  }
-
-  if (!empty($custom_message)) {
-    $markup .= $custom_message;
-  }
-  else {  //Form admin left it blank
+  // Check to see if form admin specified a custom message
+  if (!empty($custom_message_field) && strlen(trim($custom_message_field['und'][0]['value']))) {
+    $markup .= trim($custom_message_field['und'][0]['value']);
+  } // Form admin left it blank
+  else {
     $form_date = _registration_pages_get_formatted_date_from_field($node->field_form_active_date_range, $active_date_value_string);
     $form_time = _registration_pages_get_formatted_time_from_field($node->field_form_active_date_range, $active_date_value_string);
     $markup .= "$message_intro $form_date at $form_time.";
