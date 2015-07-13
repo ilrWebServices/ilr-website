@@ -23,13 +23,11 @@ article.node-reflection {
 %quote {
   background-color: $gray-bg;
   h2 {
+    display: none;
+  }
+  .field-name-body p {
     @include adjust-font-size-to(25px);
     @include adjust-leading-to(1);
-    a {
-      color: #8f8746;
-    }
-  }
-  .field-name-body {
-    display: none;
+    color: #8f8746;
   }
 }
