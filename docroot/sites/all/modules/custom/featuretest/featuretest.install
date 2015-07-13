@@ -18,4 +18,28 @@ function featuretest_install() {
 
   variable_set('stage_file_proxy_origin','http://www.ilr.cornell.edu');
   variable_set('stage_file_proxy_origin_dir','sites/ilr.cornell.edu/files');
+
+  _featuretest_add_test_users();
+}
+
+function _featuretest_add_test_users() {
+  require_once DRUPAL_ROOT . '/' . variable_get('password_inc', 'includes/password.inc');
+
+  $users = array();
+  $roles = user_roles(true);
+
+  foreach ($roles as $name) {
+    $rid = user_role_load_by_name($name)->rid;
+    $users[] = array(
+      'name' => $name,
+      'pass' => user_hash_password('testing'),
+      'mail' => "test_{$name}@cornell.edu",
+      'status' => 1,
+      'roles' => array($rid => true),
+    );
+  }
+
+  foreach ($users as $user) {
+    $new_user = user_save((object) $user);
+  }
 }
