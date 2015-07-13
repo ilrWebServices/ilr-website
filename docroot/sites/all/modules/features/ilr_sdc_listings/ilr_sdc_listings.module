@@ -199,7 +199,6 @@ function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
       _ilr_sdc_listings_class_add_reg_form($node, $view_mode);
       _ilr_sdc_listings_class_add_readmore($node, $view_mode);
       _ilr_sdc_listings_class_format_online($node, $view_mode);
-      ilr_sdc_listings_class_format_ondemand($node, $view_mode);
       break;
   }
 }
@@ -302,22 +301,16 @@ function _ilr_sdc_listings_class_format_online($node, $view_mode) {
 }
 
 /**
- * Remove class dates if class is OnDemand.
- * @param $node
- * @param $view_mode
+ * Checks the on_demand field value, as well as the catalog_prefix
+ * As of 2015, all on-demand classes start with OD prefix, though sometimes
+ * on-demand classes have come through the feed without being flagged as such
  */
-function ilr_sdc_listings_class_format_ondemand($node, $view_mode) {
-  $node_wrapper = ilr_get_node_wrapper($node);
-  if ($node_wrapper->field_on_demand->value()) {
-    $dates_weight = $node->content['field_class_dates']['#weight'];
-    unset($node->content['field_class_dates']);
-
-    $node->content['field_class_dates'] = array(
-      '#type' => 'markup',
-      '#markup' => t(ILR_SDC_ONDEMAND_TEXT),
-      '#weight' => $dates_weight,
-    );
+function _ilr_sdc_listings_is_ondemand($node) {
+  if ($node->type == 'sdc_class') {
+    $node_wrapper = ilr_get_node_wrapper($node);
+    return $node_wrapper->field_on_demand->value() || substr($node_wrapper->field_course->field_catalog_prefix->value(), 0, 2) == 'OD';
   }
+  return FALSE;
 }
 
 /**
@@ -576,8 +569,13 @@ function _ilr_sdc_listings_generate_class_radio_label($class) {
 function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
   $class_node = reset($class_nodes);
   $markup = '<div class="class-details">';
-  $markup .= _ilr_sdc_listings_generate_class_timespan_markup($class_node);
-  $markup .= _ilr_sdc_listings_generate_class_time_location_markup($class_node);
+  if (_ilr_sdc_listings_is_ondemand($class_node)) {
+    $markup .= '<span class="timespan">ON-DEMAND</span>';
+  }
+  else {
+    $markup .= _ilr_sdc_listings_generate_class_timespan_markup($class_node);
+    $markup .= _ilr_sdc_listings_generate_class_time_location_markup($class_node);
+  }
   $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
   if (count($class_nodes) > 1) {
     $wrapper = ilr_get_node_wrapper($class_node);
@@ -1079,8 +1077,10 @@ function _ilr_sdc_listings_get_class_detail_markup($classes, $add_button=FALSE) 
       if ($add_button) {
         $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node, TRUE);
       }
-      $markup .= _ilr_sdc_listings_format_class_date_and_time($class_node);
-      $markup .= _ilr_sdc_listings_generate_location_markup($class_node);
+      if (!_ilr_sdc_listings_is_ondemand($class_node)) {
+        $markup .= _ilr_sdc_listings_format_class_date_and_time($class_node);
+        $markup .= _ilr_sdc_listings_generate_location_markup($class_node);
+      }
       $markup .= _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id);
       $markup .= '</div>';
     }
