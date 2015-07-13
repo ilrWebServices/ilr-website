@@ -358,6 +358,7 @@ table {
   text-align: left;
   width: 100%;
   font-size: $p-size;
+  @include trailer(1);
 
   thead {
 
