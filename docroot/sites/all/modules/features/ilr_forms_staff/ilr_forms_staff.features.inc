@@ -88,7 +88,7 @@ function ilr_forms_staff_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "Thank you",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EYou\\u0027ll receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThanks for filling out the sample form.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -111,9 +111,9 @@ function ilr_forms_staff_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
-      "send_confirmation_email_to_user" : 1,
-      "send_confirmation_email_to_admin" : 1,
-      "add_user_name_to_subject_line" : 1,
+      "send_confirmation_email_to_user" : 0,
+      "send_confirmation_email_to_admin" : 0,
+      "add_user_name_to_subject_line" : 0,
       "kerberized" : 0,
       "add_payment_processing" : 0,
       "form_submission_ilr_recipient" : "cgh2@cornell.edu"
