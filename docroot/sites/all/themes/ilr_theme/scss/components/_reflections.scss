@@ -3,6 +3,17 @@ article.node-reflection {
   &.quote {
     @extend %quote;
   }
+  .field-name-body {
+    padding-bottom: .5em;
+  }
+  ul {
+    margin-bottom: 0;
+    li.node-readmoremore {
+      background: none;
+      padding-left: 1em;
+    }
+  }
+
 }
 // @todo:
 //  - refactor id out in future (required by current specificity issues)
