@@ -94,6 +94,9 @@ function ilr_sdc_listings_strongarm() {
         'path' => array(
           'weight' => '30',
         ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(
         'ilr_sdc_listings_course_classes_entity_view_1' => array(
