@@ -169,7 +169,10 @@ function ilr_sub_sites_preprocess_html(&$variables) {
     // Add subsite classes
     $site = _ilr_sub_sites_get_current_menu_name();
     $variables['classes_array'][] = "subsite $site";
-
+    if ($node = _ilr_sub_sites_get_current_node()) {
+      $type = str_replace('_', '-', $node->type);
+      $variables['classes_array'][] = "node-type-$type";
+    }
     if (_ilr_sub_sites_is_sub_site_homepage()) {
       // front or not-front is the 2nd element
       $variables['classes_array'][1] = 'subsite-front';
@@ -354,8 +357,8 @@ function _ilr_sub_sites_check_for_menu_by_top_path($path) {
 }
 function _ilr_sub_sites_get_current_node() {
   $node = &drupal_static(__FUNCTION__);
-  if (!isset($node)) {
-    $node = menu_get_object();
+  if (empty($node)) {
+    $node = node_load(_ilr_sub_sites_current_nid());
   }
   return $node;
 }
