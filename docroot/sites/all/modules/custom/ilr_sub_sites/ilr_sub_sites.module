@@ -324,13 +324,12 @@ function _ilr_sub_sites_current_page_is_sub_site() {
  */
 function _ilr_sub_sites_get_current_menu_name() {
   $node = _ilr_sub_sites_get_current_node();
-  if ($node) {
+  if ($node && !_ilr_sub_sites_is_wrapped_node()) {
     $menu_name = db_select('menu_links', 'ml')
       ->condition('ml.link_path', 'node/' . $node->nid)
       ->fields('ml', array('menu_name'))
       ->execute()
       ->fetchField();
-
     return strlen($menu_name) ? $menu_name : 'main-menu';
   }
   elseif ($menu_name = _ilr_sub_sites_check_for_menu_by_top_path(arg(0))) {
@@ -358,7 +357,9 @@ function _ilr_sub_sites_check_for_menu_by_top_path($path) {
 function _ilr_sub_sites_get_current_node() {
   $node = &drupal_static(__FUNCTION__);
   if (empty($node)) {
-    $node = node_load(_ilr_sub_sites_current_nid());
+    $node = ($nid = _ilr_sub_sites_current_nid())
+      ? node_load($nid)
+      : menu_get_object();
   }
   return $node;
 }
