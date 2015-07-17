@@ -36,6 +36,11 @@
     text-transform: uppercase;
   }
 
+  span.class-title {
+    font-weight: bold;
+    @include adjust-font-size-to(16px);
+  }
+
   .date-time span.date {
     display: block;
     font-weight: bold;
@@ -125,6 +130,9 @@
       margin-bottom: 0;
     }
     .field-name-body {
+      clear: left;
+    }
+    .back-link {
       clear: left;
     }
   }

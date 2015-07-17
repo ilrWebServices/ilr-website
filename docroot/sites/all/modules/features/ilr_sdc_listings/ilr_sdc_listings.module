@@ -62,17 +62,26 @@ function ilr_sdc_listings_feeds_after_parse(FeedsSource $source, FeedsParserResu
 /**
  * Implements hook_feeds_presave().
  * Protects certain fields from being changed by the import
+ * New classes that are part of a series are unpublished by default
  */
 function ilr_sdc_listings_feeds_presave($source, $entity, $item, $entity_id) {
-  if (substr($source->importer->id, 0, 3) == 'sdc' && $entity_id) {
-    $fields_protected_from_import = _ilr_sdc_listings_get_feeds_protected_fields();
-    // Load the unchanged entity
-    $existing_node = entity_load_unchanged('node', $entity_id);
-    $existing_node_wrapper = entity_metadata_wrapper('node', $existing_node);
-    $updated_node_wrapper = entity_metadata_wrapper('node', $entity);
-    foreach ($fields_protected_from_import[$source->importer->id] as $key => $field_name) {
-      $existing_value = $existing_node_wrapper->{$field_name}->value();
-      $updated_node_wrapper->{$field_name}->set($existing_value);
+  if (substr($source->importer->id, 0, 3) == 'sdc') {
+    if ($entity_id) { // Pre-existing items have an $entity_id
+      $fields_protected_from_import = _ilr_sdc_listings_get_feeds_protected_fields();
+      // Load the unchanged entity
+      $existing_node = entity_load_unchanged('node', $entity_id);
+      $existing_node_wrapper = entity_metadata_wrapper('node', $existing_node);
+      $updated_node_wrapper = entity_metadata_wrapper('node', $entity);
+      foreach ($fields_protected_from_import[$source->importer->id] as $key => $field_name) {
+        $existing_value = $existing_node_wrapper->{$field_name}->value();
+        $updated_node_wrapper->{$field_name} = $existing_value;
+      }
+    } // Check the new item to see if it's a class
+    elseif ($source->importer->id == 'sdc_class') {
+      if (_ilr_sdc_listings_is_series($entity)) {
+        $new_node_wrapper = entity_metadata_wrapper('node', $entity);
+        $new_node_wrapper->status = 0;
+      }
     }
   }
 }
@@ -182,7 +191,7 @@ function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
       _ilr_sdc_listings_course_add_classes($node, $view_mode);
 
       if ($view_mode == 'reference_field') {
-        _ilr_sdc_listings_update_reference_title($node);
+        _ilr_sdc_listings_update_reference($node);
       }
       elseif ($view_mode == 'teaser') {
         $original_markup = isset($node->content['body'])
@@ -314,6 +323,21 @@ function _ilr_sdc_listings_is_ondemand($node) {
 }
 
 /**
+ * Checks the course or class for the appropriate course's series flag
+ */
+function _ilr_sdc_listings_is_series($course_or_class) {
+  if ($course_or_class->type == 'sdc_course') {
+    $course = $course_or_class;
+  }
+  else {
+    $class_wrapper = ilr_get_node_wrapper($course_or_class);
+    $course = $class_wrapper->field_course->value();
+  }
+  $course_wrapper = ilr_get_node_wrapper($course);
+  return $course_wrapper->field_course_series->value();
+}
+
+/**
  * Add Class registratrion for to full course node view.
  *
  * @param $node
@@ -331,8 +355,11 @@ function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
       $class_node->content['#group_children']['classes'] = 'group_sidebar';
       // Add a link to other classes if more than 1
       if (count($available_classes) > 1) {
+        $link_text = (_ilr_sdc_listings_is_series($course))
+          ? 'See other classes in this series'
+          : 'Show all dates';
         $class_node->content['other_classes_link'] = array(
-          '#markup' => '<p><a href="/node/'.$course->nid.'">Show all dates</a></p>',
+          '#markup' => '<p><a href="/node/'.$course->nid.'">'.$link_text.'</a></p>',
         );
         $class_node->content['#group_children']['other_classes_link'] = 'group_sidebar';
       }
@@ -555,6 +582,9 @@ function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_pr
 
 function _ilr_sdc_listings_generate_class_radio_label($class) {
   $markup = '<div class="radio-label">';
+  if (_ilr_sdc_listings_is_series($class)) {
+    $markup .= '<span class="class-title">'.$class->title.'</span>';
+  }
   $markup .= _ilr_sdc_listings_generate_class_time_location_markup($class);
   if(_ilr_sdc_listings_has_registration_deadline($class)) {
     $markup .= _ilr_sdc_listings_generate_deadline_markup($class);
@@ -1150,10 +1180,19 @@ function _ilr_sdc_listings_add_prefix_to_title($node, $type) {
   drupal_set_title($title);
 }
 
-function _ilr_sdc_listings_update_reference_title(&$node) {
-  if (_ilr_sdc_listings_class_has_override_title($node)) {
+/**
+ * Updates the rendered course entity on classes
+ * when classes are part of a series
+ */
+function _ilr_sdc_listings_update_reference(&$node) {
+  $wrapper = ilr_get_node_wrapper($node);
+  if ($wrapper->field_course_series->value() == 1) {
     $title = 'Part of the series: ';
     $title .= $node->title;
+    unset($node->content['body']);
+    $node->content['series_link'] = array(
+      '#markup' => '<p class="link back-link"><a href="/node/'.$node->nid.'">&laquo; Back to the series description</a></p>',
+    );
   }
   else {
     $title = '';
@@ -1164,12 +1203,14 @@ function _ilr_sdc_listings_update_reference_title(&$node) {
 /**
  * Specifies which of the course and class fields are protected from
  * being updated by the feeds import
+ * Note that this should only be relevant on fields mapped to the feeds importer in ilr_sdc_listings.feeds_importer_default.inc. However, we can add them here as a failsafe
  */
 function _ilr_sdc_listings_get_feeds_protected_fields() {
   return array(
     'sdc_course_importer' => array(
       'field_keywords',
       'body',
+      'field_course_series',
     ),
     'sdc_class_importer' => array(
       'body',
