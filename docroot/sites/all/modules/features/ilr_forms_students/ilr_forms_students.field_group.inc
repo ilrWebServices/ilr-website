@@ -13,6 +13,72 @@ function ilr_forms_students_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_additional_information|entityform|admissions_visit_days_reg|default';
+  $field_group->group_name = 'group_additional_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'admissions_visit_days_reg';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Additional Information',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_high_school',
+      1 => 'field_year_as_list_text',
+      2 => 'field_number_of_visitors',
+      3 => 'field_academic_interests_admissi',
+      4 => 'field_visited',
+      5 => 'field_other_interests_text',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Additional Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-additional-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_additional_information|entityform|admissions_visit_days_reg|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_additional_information|entityform|admissions_visit_days_reg|form';
+  $field_group->group_name = 'group_additional_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'admissions_visit_days_reg';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Additional Information',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_high_school',
+      1 => 'field_year_as_list_text',
+      2 => 'field_number_of_visitors',
+      3 => 'field_academic_interests_admissi',
+      4 => 'field_visited',
+      5 => 'field_other_interests_text',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Additional Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-additional-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_additional_information|entityform|admissions_visit_days_reg|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_applicant_information|entityform|fex_wisp_student_application|default';
   $field_group->group_name = 'group_applicant_information';
   $field_group->entity_type = 'entityform';
@@ -77,6 +143,128 @@ function ilr_forms_students_field_group_info() {
     ),
   );
   $export['group_applicant_information|entityform|fex_wisp_student_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact_information|entityform|admissions_visit_days_reg|default';
+  $field_group->group_name = 'group_contact_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'admissions_visit_days_reg';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact Information',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_email',
+      1 => 'field_address_line_1',
+      2 => 'field_city',
+      3 => 'field_state_province',
+      4 => 'field_zip_code',
+      5 => 'field_phone',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Contact Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-contact-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_contact_information|entityform|admissions_visit_days_reg|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact_information|entityform|admissions_visit_days_reg|form';
+  $field_group->group_name = 'group_contact_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'admissions_visit_days_reg';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact Information',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_email',
+      1 => 'field_address_line_1',
+      2 => 'field_city',
+      3 => 'field_state_province',
+      4 => 'field_zip_code',
+      5 => 'field_phone',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Contact Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-contact-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_contact_information|entityform|admissions_visit_days_reg|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_date_selection|entityform|admissions_visit_days_reg|default';
+  $field_group->group_name = 'group_date_selection';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'admissions_visit_days_reg';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Visit Days Dates',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_date_list',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Visit Days Dates',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-date-selection field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_date_selection|entityform|admissions_visit_days_reg|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_date_selection|entityform|admissions_visit_days_reg|form';
+  $field_group->group_name = 'group_date_selection';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'admissions_visit_days_reg';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Visit Days Dates',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_date_list',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Visit Days Dates',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-date-selection field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_date_selection|entityform|admissions_visit_days_reg|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -417,6 +605,66 @@ Specify preferred location (city / state). You may also optionally specify an al
     ),
   );
   $export['group_permanent_address|entityform|fex_wisp_student_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_personal_information|entityform|admissions_visit_days_reg|default';
+  $field_group->group_name = 'group_personal_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'admissions_visit_days_reg';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Personal Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_first_name',
+      1 => 'field_last_name',
+      2 => 'field_date_of_birth_as_text',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Personal Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-personal-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_personal_information|entityform|admissions_visit_days_reg|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_personal_information|entityform|admissions_visit_days_reg|form';
+  $field_group->group_name = 'group_personal_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'admissions_visit_days_reg';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Personal Information',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_first_name',
+      1 => 'field_last_name',
+      2 => 'field_date_of_birth_as_text',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Personal Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-personal-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_personal_information|entityform|admissions_visit_days_reg|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
