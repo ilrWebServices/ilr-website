@@ -267,10 +267,7 @@ function _ilr_sdc_listings_class_view_alter(&$build) {
 }
 
 /**
- * Add link to course.
- *
- * Title will be class title.
- * Pass class nid in query string.
+ * Update class link to point to class node detail
  * @param $class_node
  * @return array
  *  Render array for link.
@@ -281,13 +278,11 @@ function _ilr_sdc_listings_class_course_link($class_node) {
   return array(
     '#theme' => 'link',
     '#text' => $course_title,
-    '#path' => 'node/' . $node_wrapper->field_course->nid->value(),
+    '#path' => 'node/' . $class_node->nid,
     '#options' => array(
       'html' => FALSE,
       'attributes' => array(),
-      'query' => array('class' => $class_node->nid),
     ),
-
   );
 }
 
@@ -405,7 +400,7 @@ function _ilr_sdc_listings_class_empty_msg($class_node, $view_mode) {
  * @param $course_node
  * @param $view_mode
  */
-function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
+function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
   if ($view_mode == 'teaser' || $view_mode == 'full') {
     $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
     if ($class_nids) {
@@ -417,10 +412,28 @@ function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
       else {
         $content = _ilr_sdc_listings_generate_class_link_markup($class_nodes);
       }
-      $course_node->content['classes'] = array(
-        '#markup' => $content,
-      );
-      $course_node->content['#group_children']['classes'] = 'group_sidebar';
+      if (_ilr_sdc_listings_is_series($course_node)) {
+        // Add the teaser for each class
+        foreach ($class_nodes as $key => $class) {
+          $class_teaser = node_view($class,'teaser');
+          // Hide the field data we don't want
+          unset($class_teaser['field_class_dates']);
+          unset($class_teaser['field_address']);
+          // Create and position the sidebar content
+          $group_sidebar = field_group_load_field_group('group_sidebar', 'node', 'sdc_class', 'default');
+          $class_teaser['classes'] = array(
+            '#markup' => _ilr_sdc_listings_generate_class_link_markup(array($class)),
+          );
+          $class_teaser['#groups']['group_sidebar'] = $class_teaser['#fieldgroups']['group_sidebar'] = $group_sidebar;
+          $class_teaser['#group_children']['classes'] = 'group_sidebar';
+          // Add the markup to the course body
+          $course_node->content['body'][0]['#markup'] .= drupal_render($class_teaser);
+        }
+      } // Not a series
+      else {
+        $course_node->content['classes'] = array('#markup' => $content);
+        $course_node->content['#group_children']['classes'] = 'group_sidebar';
+      }
     } // No classes available
     else {
       $course_node->content['classes'] = array(
