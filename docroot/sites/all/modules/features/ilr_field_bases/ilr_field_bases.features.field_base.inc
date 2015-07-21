@@ -149,13 +149,16 @@ function ilr_field_bases_field_default_field_bases() {
         'Government' => 'Government',
         'History' => 'History',
         'Human Resources' => 'Human Resources',
-        'International Affairs' => 'International Affairs',
-        'Labor Relations' => 'Labor Relations',
+        'International Relations' => 'International Relations',
+        'Labor / Labor Relations' => 'Labor / Labor Relations',
         'Law' => 'Law',
+        'Non-Profit Management' => 'Non-Profit Management',
         'Psychology' => 'Psychology',
-        'Public Policy' => 'Public Policy',
+        'Social Justice' => 'Social Justice',
         'Sociology' => 'Sociology',
         'Statistics' => 'Statistics',
+        'Other' => 'Other',
+        'Undecided' => 'Undecided',
       ),
       'allowed_values_function' => '',
     ),
@@ -2734,6 +2737,29 @@ function ilr_field_bases_field_default_field_bases() {
         'No' => 'No',
       ),
       'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_date_list'
+  $field_bases['field_date_list'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_date_list',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(),
+      'allowed_values_function' => '_ilr_forms_students_set_visit_days_datelist',
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -7001,6 +7027,36 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_number_of_visitors'
+  $field_bases['field_number_of_visitors'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_number_of_visitors',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        1 => 1,
+        2 => 2,
+        3 => 3,
+        4 => 4,
+        5 => 5,
+        6 => 6,
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_integer',
+  );
+
   // Exported field_base: 'field_office_hours'
   $field_bases['field_office_hours'] = array(
     'active' => 1,
@@ -10870,6 +10926,32 @@ function ilr_field_bases_field_default_field_bases() {
         'overview' => 'Overview',
       ),
       'allowed_values_function' => '_people_profiles_activity_insight_options_list',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_visited'
+  $field_bases['field_visited'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_visited',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
+      ),
+      'allowed_values_function' => '',
     ),
     'translatable' => 0,
     'type' => 'list_text',
