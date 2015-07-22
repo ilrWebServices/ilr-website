@@ -8,6 +8,9 @@
  * Implements hook_ctools_plugin_api().
  */
 function ilr_forms_staff_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -64,6 +67,56 @@ function ilr_forms_staff_default_entityform_type() {
       "kerberized" : 0,
       "add_payment_processing" : 0,
       "form_submission_ilr_recipient" : "tlm6@cornell.edu"
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
+  $items['sample_form'] = entity_import('entityform_type', '{
+    "type" : "sample_form",
+    "label" : "Sample form",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "Thank you",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThanks for filling out the sample form.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "36" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 0,
+      "send_confirmation_email_to_admin" : 0,
+      "add_user_name_to_subject_line" : 0,
+      "kerberized" : 0,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "cgh2@cornell.edu"
     },
     "weight" : "0",
     "paths" : []

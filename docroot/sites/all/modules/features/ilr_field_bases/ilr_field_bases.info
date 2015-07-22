@@ -352,6 +352,7 @@ features[field_base][] = field_ssl_result_message
 features[field_base][] = field_ssl_txn_id
 features[field_base][] = field_ssl_txn_time
 features[field_base][] = field_staff
+features[field_base][] = field_start_date
 features[field_base][] = field_start_time
 features[field_base][] = field_state_as_text
 features[field_base][] = field_state_inc_outside_us
