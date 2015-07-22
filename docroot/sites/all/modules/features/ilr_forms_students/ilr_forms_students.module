@@ -20,6 +20,43 @@ function ilr_forms_students_entityform_presave($entityform) {
     _ilr_forms_students_set_fexwisp_program($entityform);
     _ilr_forms_students_set_fexwisp_programYear($entityform);
   }
+  elseif ($entityform->type == 'admissions_visit_days_reg') {
+    _ilr_forms_students_set_visit_days_year($entityform);
+  }
+}
+
+/**
+ * Generate list of dates for Admissions Visit Days (aka Open House)
+ * Don't show dates in the past
+ */
+function _ilr_forms_students_set_visit_days_datelist() {
+  $today = date("Y-m-d");
+  $dates = array(
+    date_create("9/19/2015"),
+    date_create("9/26/2015"),
+    date_create("10/3/2015"),
+    date_create("10/10/2015"),
+    date_create("10/17/2015"),
+    date_create("10/24/2015"),
+    );
+
+  for ($i=0; $i<sizeof($dates); $i++) {
+    $key = date_format($dates[$i], 'Y-m-d');
+    if ($key > $today) {
+      $val = date_format($dates[$i], 'l, F j, Y');
+      $return_array[$key] = $val;
+    }
+  }
+  return $return_array;
+}
+
+/**
+ * Set program year for Visit Days
+ */
+function _ilr_forms_students_set_visit_days_year($entityform) {
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  $currYear = date('Y');
+  $entityform_wrapper->field_h_school_year->set($currYear);
 }
 
 /**
@@ -37,7 +74,7 @@ function _ilr_forms_students_set_fexwisp_program($entityform) {
 }
 
 /**
- * Set program year
+ * Set program year for fex/wisp
  */
 function _ilr_forms_students_set_fexwisp_programYear($entityform) {
   $entityform_wrapper = _forms_entityform_wrapper($entityform);

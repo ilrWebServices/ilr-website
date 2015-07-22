@@ -571,6 +571,9 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
   }
 
   switch ($entity->type) {
+    case 'admissions_visit_days_reg':
+      $options = _forms_year_relative_options(1,1);
+      break;
     case 'contact_ilr_admissions':
       $options = _forms_year_relative_options(-5,5);
       $options[] = 'other';
