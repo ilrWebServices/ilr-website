@@ -353,8 +353,9 @@ function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
         $link_text = (_ilr_sdc_listings_is_series($course))
           ? 'See other classes in this series'
           : 'Show all dates';
+        $alias = drupal_get_path_alias('node/'.$course->nid);
         $class_node->content['other_classes_link'] = array(
-          '#markup' => '<p><a href="/node/'.$course->nid.'">'.$link_text.'</a></p>',
+          '#markup' => '<p><a href="/'.$alias.'">'.$link_text.'</a></p>',
         );
         $class_node->content['#group_children']['other_classes_link'] = 'group_sidebar';
       }
