@@ -1,0 +1,14 @@
+body.ilr-review {
+  #header-region {
+    background-color: $blue-ilrreview;
+    a {
+      color: white;
+    }
+  }
+
+  header[data-eq-state="regular-nav"] {
+    #header-region {
+      background: $blue-ilrreview url("../images/bg-globe-blue.gif") no-repeat left top;
+    }
+  }
+}
