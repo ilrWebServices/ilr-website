@@ -3,6 +3,17 @@ article.node-reflection {
   &.quote {
     @extend %quote;
   }
+  .field-name-body {
+    padding-bottom: .5em;
+  }
+  ul {
+    margin-bottom: 0;
+    li.node-readmoremore {
+      background: none;
+      padding-left: 1em;
+    }
+  }
+
 }
 // @todo:
 //  - refactor id out in future (required by current specificity issues)
@@ -25,9 +36,24 @@ article.node-reflection {
   h2 {
     display: none;
   }
-  .field-name-body p {
-    @include adjust-font-size-to(25px);
-    @include adjust-leading-to(1);
-    color: #8f8746;
+  .field-name-body {
+    p {
+      @include adjust-font-size-to(25px);
+      @include adjust-leading-to(1);
+      color: $darker-red;
+      font-family: freight-text-pro;
+      font-weight: 400;
+
+      &:first-child {
+        &:before {
+          content: '" ';
+        }
+      }
+      &:last-child {
+        &:after {
+          content: ' "';
+        }
+      }
+    }
   }
 }
