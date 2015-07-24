@@ -792,7 +792,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -832,6 +832,61 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-sdc_course-field_course_series'
+  $field_instances['node-sdc_course-field_course_series'] = array(
+    'bundle' => 'sdc_course',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_course_series',
+    'label' => 'Course is a series',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 40,
+    ),
+  );
+
   // Exported field_instance: 'node-sdc_course-field_credit_hours'
   $field_instances['node-sdc_course-field_credit_hours'] = array(
     'bundle' => 'sdc_course',
@@ -843,7 +898,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -895,7 +950,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -950,7 +1005,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1000,7 +1055,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1052,7 +1107,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1103,7 +1158,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1203,6 +1258,7 @@ function ilr_sdc_listings_field_default_field_instances() {
   t('Class Dates');
   t('Class id');
   t('Course');
+  t('Course is a series');
   t('Credit Hours');
   t('Department');
   t('Faculty');

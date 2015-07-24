@@ -62,17 +62,26 @@ function ilr_sdc_listings_feeds_after_parse(FeedsSource $source, FeedsParserResu
 /**
  * Implements hook_feeds_presave().
  * Protects certain fields from being changed by the import
+ * New classes that are part of a series are unpublished by default
  */
 function ilr_sdc_listings_feeds_presave($source, $entity, $item, $entity_id) {
-  if (substr($source->importer->id, 0, 3) == 'sdc' && $entity_id) {
-    $fields_protected_from_import = _ilr_sdc_listings_get_feeds_protected_fields();
-    // Load the unchanged entity
-    $existing_node = entity_load_unchanged('node', $entity_id);
-    $existing_node_wrapper = entity_metadata_wrapper('node', $existing_node);
-    $updated_node_wrapper = entity_metadata_wrapper('node', $entity);
-    foreach ($fields_protected_from_import[$source->importer->id] as $key => $field_name) {
-      $existing_value = $existing_node_wrapper->{$field_name}->value();
-      $updated_node_wrapper->{$field_name}->set($existing_value);
+  if (substr($source->importer->id, 0, 3) == 'sdc') {
+    if ($entity_id) { // Pre-existing items have an $entity_id
+      $fields_protected_from_import = _ilr_sdc_listings_get_feeds_protected_fields();
+      // Load the unchanged entity
+      $existing_node = entity_load_unchanged('node', $entity_id);
+      $existing_node_wrapper = entity_metadata_wrapper('node', $existing_node);
+      $updated_node_wrapper = entity_metadata_wrapper('node', $entity);
+      foreach ($fields_protected_from_import[$source->importer->id] as $key => $field_name) {
+        $existing_value = $existing_node_wrapper->{$field_name}->value();
+        $updated_node_wrapper->{$field_name} = $existing_value;
+      }
+    } // Check the new item to see if it's a class
+    elseif ($source->importer->id == 'sdc_class') {
+      if (_ilr_sdc_listings_is_series($entity)) {
+        $new_node_wrapper = entity_metadata_wrapper('node', $entity);
+        $new_node_wrapper->status = 0;
+      }
     }
   }
 }
@@ -178,11 +187,11 @@ function _ilr_sdc_listings_request_info($course_nid) {
 function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
   switch ($node->type) {
     case 'sdc_course':
-      _ilr_sdc_listings_add_prefix_to_title($node, $node->type);
+      _ilr_sdc_listings_add_prefix_to_title($node, $node->type, $view_mode);
       _ilr_sdc_listings_course_add_classes($node, $view_mode);
 
       if ($view_mode == 'reference_field') {
-        _ilr_sdc_listings_update_reference_title($node);
+        _ilr_sdc_listings_update_reference($node);
       }
       elseif ($view_mode == 'teaser') {
         $original_markup = isset($node->content['body'])
@@ -194,7 +203,7 @@ function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
       }
       break;
     case 'sdc_class':
-      _ilr_sdc_listings_add_prefix_to_title($node, $node->type);
+      _ilr_sdc_listings_add_prefix_to_title($node, $node->type, $view_mode);
       _ilr_sdc_listings_class_empty_msg($node, $view_mode);
       _ilr_sdc_listings_class_add_reg_form($node, $view_mode);
       _ilr_sdc_listings_class_add_readmore($node, $view_mode);
@@ -258,10 +267,7 @@ function _ilr_sdc_listings_class_view_alter(&$build) {
 }
 
 /**
- * Add link to course.
- *
- * Title will be class title.
- * Pass class nid in query string.
+ * Update class link to point to class node detail
  * @param $class_node
  * @return array
  *  Render array for link.
@@ -272,13 +278,11 @@ function _ilr_sdc_listings_class_course_link($class_node) {
   return array(
     '#theme' => 'link',
     '#text' => $course_title,
-    '#path' => 'node/' . $node_wrapper->field_course->nid->value(),
+    '#path' => 'node/' . $class_node->nid,
     '#options' => array(
       'html' => FALSE,
       'attributes' => array(),
-      'query' => array('class' => $class_node->nid),
     ),
-
   );
 }
 
@@ -314,6 +318,21 @@ function _ilr_sdc_listings_is_ondemand($node) {
 }
 
 /**
+ * Checks the course or class for the appropriate course's series flag
+ */
+function _ilr_sdc_listings_is_series($course_or_class) {
+  if ($course_or_class->type == 'sdc_course') {
+    $course = $course_or_class;
+  }
+  else {
+    $class_wrapper = ilr_get_node_wrapper($course_or_class);
+    $course = $class_wrapper->field_course->value();
+  }
+  $course_wrapper = ilr_get_node_wrapper($course);
+  return $course_wrapper->field_course_series->value();
+}
+
+/**
  * Add Class registratrion for to full course node view.
  *
  * @param $node
@@ -328,11 +347,17 @@ function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
       $available_classes = _ilr_sdc_listings_get_classes_for_course($course);
       $form = drupal_get_form('ilr_sdc_listings_class_reg_form', array($class_node), TRUE, FALSE);
       $class_node->content['classes'] = $form;
+      $class_node->content['request_info'] = array('#markup' => _ilr_sdc_listings_generate_request_info_markup($course, $view_mode));
       $class_node->content['#group_children']['classes'] = 'group_sidebar';
+      $class_node->content['#group_children']['request_info'] = 'group_sidebar';
       // Add a link to other classes if more than 1
       if (count($available_classes) > 1) {
+        $link_text = (_ilr_sdc_listings_is_series($course))
+          ? 'See all offerings in ' . $course->title
+          : 'Show all dates';
+        $alias = drupal_get_path_alias('node/'.$course->nid);
         $class_node->content['other_classes_link'] = array(
-          '#markup' => '<p><a href="/node/'.$course->nid.'">Show all dates</a></p>',
+          '#markup' => '<p><a href="/'.$alias.'">'.$link_text.'</a></p>',
         );
         $class_node->content['#group_children']['other_classes_link'] = 'group_sidebar';
       }
@@ -378,7 +403,7 @@ function _ilr_sdc_listings_class_empty_msg($class_node, $view_mode) {
  * @param $course_node
  * @param $view_mode
  */
-function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
+function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
   if ($view_mode == 'teaser' || $view_mode == 'full') {
     $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
     if ($class_nids) {
@@ -386,22 +411,45 @@ function _ilr_sdc_listings_course_add_classes($course_node, $view_mode) {
       if ($view_mode == 'full') {
         $form = drupal_get_form('ilr_sdc_listings_class_reg_form', $class_nodes);
         $content = drupal_render($form);
+        $content .= _ilr_sdc_listings_generate_request_info_markup($course_node, $view_mode);
       } // teaser list view
       else {
         $content = _ilr_sdc_listings_generate_class_link_markup($class_nodes);
       }
-      $course_node->content['classes'] = array(
-        '#markup' => $content,
-      );
-      $course_node->content['#group_children']['classes'] = 'group_sidebar';
+      if (_ilr_sdc_listings_is_series($course_node)) {
+        _ilr_sdc_listings_add_class_teasers_for_series($course_node, $class_nodes);
+      } // Not a series
+      else {
+        $course_node->content['classes'] = array('#markup' => $content);
+        $course_node->content['#group_children']['classes'] = 'group_sidebar';
+      }
     } // No classes available
     else {
+      $markup = _ilr_sdc_listings_generate_request_info_markup($course_node, $view_mode);
       $course_node->content['classes'] = array(
         '#type' => 'markup',
-        '#markup' => '<div class="group-sidebar class-details">' . _ilr_sdc_listings_generate_request_info_markup($course_node) . '</div>',
+        '#markup' => $markup,
       );
     }
     $course_node->content['classes']['#weight'] = 2;
+  }
+}
+
+function _ilr_sdc_listings_add_class_teasers_for_series(&$course_node, $class_nodes) {
+  foreach ($class_nodes as $key => $class) {
+    $class_teaser = node_view($class,'teaser');
+    // Hide the field data we don't want
+    unset($class_teaser['field_class_dates']);
+    unset($class_teaser['field_address']);
+    // Create and position the sidebar content
+    $group_sidebar = field_group_load_field_group('group_sidebar', 'node', 'sdc_class', 'default');
+    $class_teaser['classes'] = array(
+      '#markup' => _ilr_sdc_listings_generate_class_link_markup(array($class)),
+    );
+    $class_teaser['#groups']['group_sidebar'] = $class_teaser['#fieldgroups']['group_sidebar'] = $group_sidebar;
+    $class_teaser['#group_children']['classes'] = 'group_sidebar';
+    // Add the markup to the course body
+    $course_node->content['body'][0]['#markup'] .= drupal_render($class_teaser);
   }
 }
 
@@ -555,6 +603,9 @@ function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_pr
 
 function _ilr_sdc_listings_generate_class_radio_label($class) {
   $markup = '<div class="radio-label">';
+  if (_ilr_sdc_listings_is_series($class)) {
+    $markup .= '<span class="class-title">'.$class->title.'</span>';
+  }
   $markup .= _ilr_sdc_listings_generate_class_time_location_markup($class);
   if(_ilr_sdc_listings_has_registration_deadline($class)) {
     $markup .= _ilr_sdc_listings_generate_deadline_markup($class);
@@ -568,6 +619,7 @@ function _ilr_sdc_listings_generate_class_radio_label($class) {
  */
 function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
   $class_node = reset($class_nodes);
+  $wrapper = ilr_get_node_wrapper($class_node);
   $markup = '<div class="class-details">';
   if (_ilr_sdc_listings_is_ondemand($class_node)) {
     $markup .= '<span class="timespan">ON-DEMAND</span>';
@@ -578,7 +630,6 @@ function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
   }
   $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
   if (count($class_nodes) > 1) {
-    $wrapper = ilr_get_node_wrapper($class_node);
     $course_nid = $wrapper->field_course->value()->nid;
     $markup .= '<a href="/node/' . $course_nid . '">See more dates and locations</a>';
   }
@@ -611,11 +662,36 @@ function _ilr_sdc_listings_generate_location_markup($class) {
   return $markup;
 }
 
-function _ilr_sdc_listings_generate_request_info_markup($course) {
+/**
+ * Request info markup changes, depending on whether its the course listing page,
+ * course/class node pages, and whether there are classes available
+ * All trigger the modal via ilr_sdc_listings.js
+ * Note that markup and js are coupled, so only modify it consciously
+ */
+function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
+  if (_ilr_sdc_listings_is_series($course)) {
+    return '';
+  }
+  $help_text = 'Schedule customized delivery to your organization';
   $wrapper = ilr_get_node_wrapper($course);
-  $markup = '<a class="button button-request-info course" data-nid="'.$course->nid.'">Request';
-  $markup .= '<span class="course-info">'.$wrapper->label().'</span></a>';
-  $markup .= '<span class="request-info">Schedule customized delivery to your organization</span>';
+  $classes_available = _ilr_sdc_listings_get_classes_for_course($course);
+  $css_classes = ($view_mode == 'full' && $classes_available) ? 'class-details' : 'group-sidebar class-details';
+  $markup = '<div class="'.$css_classes.'">';
+  if (!$classes_available) {
+    $markup .= '<p>No currently scheduled dates</p>';
+  }
+  if ($view_mode == 'teaser') {
+    $link = drupal_get_path_alias('node/'.$course->nid);
+    $markup .= '<a href="request-info" title="" class="request-info schedule" data-nid="'.$course->nid.'">'.$help_text.'<span class="course-title">'.$wrapper->label().'</span></a>
+      <div class="action"><a class="button button-info" href="/'.$link.'">Learn More</a></div>';
+  } // full node
+  else {
+    $markup .= '<p class="schedule">'.$help_text;
+    $markup .= '<a class="button request-info course" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Request';
+    $markup .= '<span class="course-title">'.$wrapper->label().'</span></a>';
+    $markup .= '</p>';
+  }
+  $markup .= '</div>';
   return $markup;
 }
 
@@ -651,7 +727,7 @@ function _ilr_sdc_listings_generate_class_timespan_markup($class_node) {
     } // more than an hour
     else {
       $hours = $interval->h;
-      $timespan = ($hours > 4) ? '1-day' : '-hour';
+      $timespan = ($hours > 4) ? '1-day' : $hours . '-hour';
     }
   }
   return '<span class="timespan">'. $timespan . $type .' </span>';
@@ -731,6 +807,7 @@ function _ilr_sdc_listings_has_registration_deadline($class) {
  * Implements hook_preprocess_hook()
  * Remove node URL from SDC Class and Faculty nodes.
  * Remove title from Class on teaser.
+ * Allow italics in course node titles
  */
 function ilr_sdc_listings_preprocess_node(&$variables) {
   if ($variables['type'] == 'sdc_faculty') {
@@ -746,7 +823,7 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
 
   }
   if ($variables['type'] == 'sdc_course') {
-    $variables['foo'] = array('#markup'=> "<h2>Hello Mark</h2>");
+    $variables['title'] = filter_xss($variables['elements']['#node']->title, array('em'));
     if ($variables['view_mode'] == 'teaser') {
       unset($variables['content']['links']['node']['#links']['node-readmore']);
     }
@@ -1140,36 +1217,45 @@ function _ilr_sdc_listings_add_course_full_markup(&$form, $class) {
   );
 }
 
-function _ilr_sdc_listings_add_prefix_to_title($node, $type) {
+function _ilr_sdc_listings_add_prefix_to_title($node, $type, $view_mode) {
   $wrapper = ilr_get_node_wrapper($node);
   $prefix = ($type == 'sdc_class')
     ? $wrapper->field_course->field_catalog_prefix->value()
     : $wrapper->field_catalog_prefix->value();
   $title = $node->title . ' (' . $prefix . ')';
   $node->title = $title;
-  drupal_set_title($title);
+  // Update the page title for course nodes
+  if ($view_mode == 'default') {
+    drupal_set_title($title);
+  }
 }
 
-function _ilr_sdc_listings_update_reference_title(&$node) {
-  if (_ilr_sdc_listings_class_has_override_title($node)) {
-    $title = 'Part of the series: ';
-    $title .= $node->title;
+/**
+ * Updates the rendered course entity on classes
+ * when classes are part of a series
+ */
+function _ilr_sdc_listings_update_reference(&$course) {
+  if (_ilr_sdc_listings_is_series($course)) {
+    $title = 'Part of: <em>'.$course->title.'</em>';
+    unset($course->content['body']);
   }
   else {
     $title = '';
   }
-  $node->title = $title;
+  $course->title = $title;
 }
 
 /**
  * Specifies which of the course and class fields are protected from
  * being updated by the feeds import
+ * Note that this should only be relevant on fields mapped to the feeds importer in ilr_sdc_listings.feeds_importer_default.inc. However, we can add them here as a failsafe
  */
 function _ilr_sdc_listings_get_feeds_protected_fields() {
   return array(
     'sdc_course_importer' => array(
       'field_keywords',
       'body',
+      'field_course_series',
     ),
     'sdc_class_importer' => array(
       'body',

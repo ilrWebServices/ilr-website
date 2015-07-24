@@ -113,6 +113,7 @@ features[field_base][] = field_country_for_forensics
 features[field_base][] = field_course
 features[field_base][] = field_course_name
 features[field_base][] = field_course_number
+features[field_base][] = field_course_series
 features[field_base][] = field_credit_hours
 features[field_base][] = field_current_college
 features[field_base][] = field_currently_working_in_hr_
