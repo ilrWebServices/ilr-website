@@ -723,7 +723,7 @@ function _ilr_sdc_listings_generate_class_timespan_markup($class_node) {
     } // more than an hour
     else {
       $hours = $interval->h;
-      $timespan = ($hours > 4) ? '1-day' : '-hour';
+      $timespan = ($hours > 4) ? '1-day' : $hours . '-hour';
     }
   }
   return '<span class="timespan">'. $timespan . $type .' </span>';
