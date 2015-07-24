@@ -409,6 +409,7 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
       if ($view_mode == 'full') {
         $form = drupal_get_form('ilr_sdc_listings_class_reg_form', $class_nodes);
         $content = drupal_render($form);
+        $content .= _ilr_sdc_listings_generate_request_info_markup($course_node, $view_mode);
       } // teaser list view
       else {
         $content = _ilr_sdc_listings_generate_class_link_markup($class_nodes);
@@ -437,9 +438,10 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
       }
     } // No classes available
     else {
+      $markup = _ilr_sdc_listings_generate_request_info_markup($course_node, $view_mode);
       $course_node->content['classes'] = array(
         '#type' => 'markup',
-        '#markup' => '<div class="group-sidebar class-details">' . _ilr_sdc_listings_generate_request_info_markup($course_node) . '</div>',
+        '#markup' => $markup,
       );
     }
     $course_node->content['classes']['#weight'] = 2;
@@ -612,6 +614,7 @@ function _ilr_sdc_listings_generate_class_radio_label($class) {
  */
 function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
   $class_node = reset($class_nodes);
+  $wrapper = ilr_get_node_wrapper($class_node);
   $markup = '<div class="class-details">';
   if (_ilr_sdc_listings_is_ondemand($class_node)) {
     $markup .= '<span class="timespan">ON-DEMAND</span>';
@@ -622,7 +625,6 @@ function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
   }
   $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
   if (count($class_nodes) > 1) {
-    $wrapper = ilr_get_node_wrapper($class_node);
     $course_nid = $wrapper->field_course->value()->nid;
     $markup .= '<a href="/node/' . $course_nid . '">See more dates and locations</a>';
   }
@@ -655,11 +657,28 @@ function _ilr_sdc_listings_generate_location_markup($class) {
   return $markup;
 }
 
-function _ilr_sdc_listings_generate_request_info_markup($course) {
+function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
+  if (_ilr_sdc_listings_is_series($course)) {
+    return '';
+  }
+  $help_text = 'Schedule customized delivery to your organization';
   $wrapper = ilr_get_node_wrapper($course);
-  $markup = '<a class="button button-request-info course" data-nid="'.$course->nid.'">Request';
-  $markup .= '<span class="course-info">'.$wrapper->label().'</span></a>';
-  $markup .= '<span class="request-info">Schedule customized delivery to your organization</span>';
+  $classes_available = _ilr_sdc_listings_get_classes_for_course($course);
+  $css_classes = ($view_mode == 'full' && $classes_available) ? 'class-details' : 'group-sidebar class-details';
+  $markup = '<div class="'.$css_classes.'">';
+  if (!$classes_available) {
+    $markup .= '<p>No currently scheduled dates</p>';
+  }
+  if ($view_mode == 'teaser') {
+    $link = drupal_get_path_alias('node/'.$course->nid);
+    $markup .= '<a href="request-info" title="" class="request-info schedule" data-nid="'.$course->nid.'">'.$help_text.'<span class="course-title">'.$wrapper->label().'</span></a>
+      <div class="action"><a class="button button-info" href="/'.$link.'">Learn More</a></div>';
+  } // full node
+  else {
+    $markup .= '<a class="button request-info course" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Request';
+    $markup .= '<span class="course-title">'.$wrapper->label().'</span></a>';
+  }
+  $markup .= '</div>';
   return $markup;
 }
 
