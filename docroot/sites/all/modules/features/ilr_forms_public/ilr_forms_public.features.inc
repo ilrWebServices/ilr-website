@@ -57,7 +57,7 @@ function ilr_forms_public_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : {
-        "value" : "\\u003Cp\\u003EThanks for your interest in customized delivery of [current-page:query:title]. Please let us know your email address and a representative will be in touch with you shortly.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThanks for your interest in customized delivery of [current-page:query:title]. Please provide the following information and a representative will be in touch with you shortly.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "send_confirmation_email_to_user" : 0,
