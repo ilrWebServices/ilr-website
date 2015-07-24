@@ -61,13 +61,23 @@
       display: none;
     }
   }
-  .button-request-info span {
-    display: none;
-  }
   .request-info {
-    @include adjust-font-size-to(14px, .7);
+    @include adjust-font-size-to(16px);
     font-style: italic;
     display: block;
+    @include leader(1);
+    color: $gray-dark;
+    text-decoration: underline;
+    span {
+      display: none;
+    }
+    &.button {
+      text-decoration: none;
+      font-style: normal;
+    }
+    &.schedule {
+      @include adjust-font-size-to(14px, .7);
+    }
   }
 
   .class-detail-toggle {

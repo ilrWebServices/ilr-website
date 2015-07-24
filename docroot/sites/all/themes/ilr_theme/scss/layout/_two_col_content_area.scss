@@ -17,7 +17,8 @@
       // Handle right column on nested articles
       // i.e. courses with series on /professional-programs/public-offerings
       article article .group-sidebar {
-        margin-right: -30%;
+        margin-right: -42%;
+        width: 35%;
       }
     }
     &[data-eq-state="widescreen"] {
