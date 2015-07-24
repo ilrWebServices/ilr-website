@@ -347,7 +347,9 @@ function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
       $available_classes = _ilr_sdc_listings_get_classes_for_course($course);
       $form = drupal_get_form('ilr_sdc_listings_class_reg_form', array($class_node), TRUE, FALSE);
       $class_node->content['classes'] = $form;
+      $class_node->content['request_info'] = array('#markup' => _ilr_sdc_listings_generate_request_info_markup($course, $view_mode));
       $class_node->content['#group_children']['classes'] = 'group_sidebar';
+      $class_node->content['#group_children']['request_info'] = 'group_sidebar';
       // Add a link to other classes if more than 1
       if (count($available_classes) > 1) {
         $link_text = (_ilr_sdc_listings_is_series($course))
@@ -684,8 +686,10 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
       <div class="action"><a class="button button-info" href="/'.$link.'">Learn More</a></div>';
   } // full node
   else {
+    $markup .= '<p class="schedule">'.$help_text;
     $markup .= '<a class="button request-info course" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Request';
     $markup .= '<span class="course-title">'.$wrapper->label().'</span></a>';
+    $markup .= '</p>';
   }
   $markup .= '</div>';
   return $markup;
