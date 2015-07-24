@@ -37,13 +37,14 @@
       };
 
       // This should open the modal
-      $('.button-request-info').click(function(){
+      $('.request-info').click(function(){
         var $nid = $(this).attr('data-nid');
+        var $title = $(this).find('.course-title').text();
         $.fancybox({
           'type': 'iframe',
           'autoDimensions' : true,
           'autoScale' : true,
-          'href' : '/course-interest/'+ $nid +'?layout=0',
+          'href' : '/course-interest/'+ $nid +'?layout=0&title=' + $title,
         });
         return false;
       });

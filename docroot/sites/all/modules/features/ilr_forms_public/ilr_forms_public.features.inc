@@ -50,12 +50,14 @@ function ilr_forms_public_default_entityform_type() {
         "36" : 0,
         "21" : 0,
         "26" : 0,
-        "31" : 0
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : {
-        "value" : "\\u003Cp\\u003EThanks for your interest! Please let us know your email address and a representative will be in touch with you shortly.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThanks for your interest in customized delivery of [current-page:query:title]. Please let us know your email address and a representative will be in touch with you shortly.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "send_confirmation_email_to_user" : 0,
