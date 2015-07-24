@@ -155,6 +155,10 @@
   }
 }
 
+.node-sdc-class .node-sdc-course h2 a:hover {
+  text-decoration: underline;
+}
+
 .view-sdc-course-listing {
   h3 {
     @include padding-leader(1);
