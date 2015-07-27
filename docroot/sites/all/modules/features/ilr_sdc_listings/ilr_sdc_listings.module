@@ -673,7 +673,6 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
     return '';
   }
   $help_text = 'Schedule customized delivery to your organization';
-  $wrapper = ilr_get_node_wrapper($course);
   $classes_available = _ilr_sdc_listings_get_classes_for_course($course);
   $css_classes = ($view_mode == 'full' && $classes_available) ? 'class-details' : 'group-sidebar class-details';
   $markup = '<div class="'.$css_classes.'">';
@@ -682,13 +681,13 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
   }
   if ($view_mode == 'teaser') {
     $link = drupal_get_path_alias('node/'.$course->nid);
-    $markup .= '<a href="request-info" title="" class="request-info schedule" data-nid="'.$course->nid.'">'.$help_text.'<span class="course-title">'.$wrapper->label().'</span></a>
+    $markup .= '<a href="request-info" title="" class="request-info schedule" data-nid="'.$course->nid.'">'.$help_text.'<span class="course-title">'.$course->title.'</span></a>
       <div class="action"><a class="button button-info" href="/'.$link.'">Learn More</a></div>';
   } // full node
   else {
     $markup .= '<p class="schedule">'.$help_text;
     $markup .= '<a class="button request-info course" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Request';
-    $markup .= '<span class="course-title">'.$wrapper->label().'</span></a>';
+    $markup .= '<span class="course-title">'.$course->title.'</span></a>';
     $markup .= '</p>';
   }
   $markup .= '</div>';
