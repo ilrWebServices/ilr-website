@@ -17,5 +17,29 @@ function ilr_field_bases_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'course_format' => array(
+      'name' => 'Course Format',
+      'machine_name' => 'course_format',
+      'description' => 'Workshop, webinar, lecture, etc.',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
+    'course_sponsor' => array(
+      'name' => 'Course Sponsor',
+      'machine_name' => 'course_sponsor',
+      'description' => 'The center, institute or program sponsoring a given course',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
+    'course_topic' => array(
+      'name' => 'Course Topic',
+      'machine_name' => 'course_topic',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
   );
 }
