@@ -686,7 +686,8 @@ function _forms_full_names_states_and_provinces() {
 /**
  * Send user and admin emails
  */
-function _forms_send_emails($entityform, $admin_email, $subject='', $subject_user='') {
+function _forms_send_emails($entityform, $admin_email, $subject='',
+    $subject_user='', $custom_params=array()) {
   $form_title = _forms_get_form_title($entityform);
   $user_name = _forms_construct_user_name($entityform);
   $email_template = _forms_get_tplphp_file($entityform);
@@ -704,7 +705,8 @@ function _forms_send_emails($entityform, $admin_email, $subject='', $subject_use
       'salutation' => _form_salutation($user_name),
       'admin_email' => $admin_email,
     );
-    $body = theme($email_template, _forms_generate_template_parameters($entityform, $params));
+    $body = theme($email_template, _forms_generate_template_parameters(
+      $entityform, $params, $custom_params));
     $to = $user_email;
 
     // Sometimes the admin email goes to two addresses; in that case, set the
@@ -740,7 +742,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='', $subject_use
         'salutation' => 'Dear Admin for the form ' . $form_title . ',',
         'admin_email' => $admin_email,
       );
-      $body = theme($admin_email_template, _forms_generate_template_parameters($entityform, $params));
+      $body = theme($admin_email_template, _forms_generate_template_parameters($entityform, $params, $custom_params));
     }
     else {
       // No default template for admin email, just construct the basic body
@@ -750,7 +752,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='', $subject_use
   }
 }
 
-function _forms_generate_template_parameters($entityform, $params=NULL) {
+function _forms_generate_template_parameters($entityform, $params=array(), $custom_params=array()) {
   $defaults = array(
     'form_data'             => _entity_display_form_data($entityform),
     'form_title'            => _forms_get_form_title($entityform),
@@ -759,7 +761,8 @@ function _forms_generate_template_parameters($entityform, $params=NULL) {
     'postdate'              => _forms_get_postdate_for_email($entityform),
     'sitename'              => variable_get('site_name', 'Drupal'),
   );
-  return ($params) ? array_merge($defaults,$params) : $defaults;
+
+  return array_merge($defaults, $params, $custom_params);
 }
 
 /**
