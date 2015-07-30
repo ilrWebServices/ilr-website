@@ -17,6 +17,14 @@ function ilr_field_bases_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'continuing_education_credits' => array(
+      'name' => 'Continuing Education Credits',
+      'machine_name' => 'continuing_education_credits',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'course_format' => array(
       'name' => 'Course Format',
       'machine_name' => 'course_format',

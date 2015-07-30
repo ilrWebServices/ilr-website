@@ -166,6 +166,25 @@ function ilr_sdc_listings_update_7006() {
 }
 
 /**
+ * Adds CEU credit terms
+ */
+function ilr_sdc_listings_update_7007() {
+  if ($vocab = taxonomy_vocabulary_machine_name_load('continuing_education_credits')) {
+    $terms = array(
+      'CEU',
+      'HRCI',
+      'CLE',
+    );
+    foreach ($terms as $key => $term_name) {
+      $term = new stdClass();
+      $term->name = $term_name;
+      $term->vid = $vocab->vid;
+      taxonomy_term_save($term);
+    }
+  }
+}
+
+/**
  * Update aliases for sdc content types.
  */
 function _ilr_sdc_listings_update_aliases() {

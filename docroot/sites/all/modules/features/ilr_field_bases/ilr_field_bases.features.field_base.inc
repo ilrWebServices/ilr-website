@@ -2322,6 +2322,40 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'blockreference',
   );
 
+  // Exported field_base: 'field_continuing_ed_reference'
+  $field_bases['field_continuing_ed_reference'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_continuing_ed_reference',
+    'foreign keys' => array(
+      'tid' => array(
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
+    ),
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'continuing_education_credits',
+          'parent' => 0,
+        ),
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
   // Exported field_base: 'field_cornell_college'
   $field_bases['field_cornell_college'] = array(
     'active' => 1,
@@ -7205,7 +7239,7 @@ function ilr_field_bases_field_default_field_bases() {
       'allowed_values_function' => '',
     ),
     'translatable' => 0,
-    'type' => 'list_boolean',
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_organization'
