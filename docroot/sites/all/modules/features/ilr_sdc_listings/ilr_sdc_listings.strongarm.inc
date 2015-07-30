@@ -44,13 +44,10 @@ function ilr_sdc_listings_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
+          'weight' => '-5',
         ),
         'path' => array(
-          'weight' => '1',
-        ),
-        'redirect' => array(
-          'weight' => '2',
+          'weight' => '30',
         ),
       ),
       'display' => array(),
@@ -92,13 +89,13 @@ function ilr_sdc_listings_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
+          'weight' => '-5',
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => '30',
         ),
         'redirect' => array(
-          'weight' => '2',
+          'weight' => '30',
         ),
       ),
       'display' => array(

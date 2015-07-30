@@ -602,9 +602,9 @@ function ilr_sdc_listings_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'display_label' => 1,
+        'apply_chosen' => '',
       ),
-      'type' => 'options_onoff',
+      'type' => 'options_select',
       'weight' => 14,
     ),
   );
@@ -724,7 +724,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     'bundle' => 'sdc_class',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Note that the setting for the class inherits from the its course. You should only modify the value here if it\'s different from the course setting. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1526,6 +1526,7 @@ function ilr_sdc_listings_field_default_field_instances() {
   t('Format');
   t('Is Full?');
   t('Keywords');
+  t('Note that the setting for the class inherits from the its course. You should only modify the value here if it\'s different from the course setting. ');
   t('On Demand');
   t('Online Class');
   t('Price');
