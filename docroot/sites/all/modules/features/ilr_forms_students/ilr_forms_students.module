@@ -32,12 +32,11 @@ function ilr_forms_students_entityform_presave($entityform) {
 function _ilr_forms_students_set_visit_days_datelist() {
   $today = date("Y-m-d");
   $dates = array(
-    date_create("9/19/2015"),
     date_create("9/26/2015"),
     date_create("10/3/2015"),
-    date_create("10/10/2015"),
     date_create("10/17/2015"),
     date_create("10/24/2015"),
+    date_create("10/31/2015"),
     );
 
   for ($i=0; $i<sizeof($dates); $i++) {
