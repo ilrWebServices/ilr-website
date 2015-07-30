@@ -135,6 +135,35 @@ function ilr_sdc_listings_update_7005() {
   }
 }
 
+/**
+ * Updates values for new course setting field
+ */
+function ilr_sdc_listings_update_7006() {
+  $nids = db_select('node', 'n')
+      ->fields('n', array('nid'))
+      ->fields('n', array('type'))
+      ->condition('n.type', 'sdc_course')
+      ->execute()
+      ->fetchCol();
+  $courses = node_load_multiple($nids);
+  foreach ($courses as $nid => $course) {
+    $course_wrapper = entity_metadata_wrapper('node', $course);
+    // Check to see if it has any classes, load 1 if so
+    $classes = _ilr_sdc_listings_get_classes_for_course($course);
+    if (count($classes)) {
+      $class_nid = $classes[0];
+      $class = node_load($class_nid);
+      $class_wrapper = entity_metadata_wrapper('node', $class);
+      $is_online = $class_wrapper->field_online_class->value();
+      $setting = ($is_online) ? 'online' : 'in_person';
+      $course_wrapper->field_setting->set($setting);
+    } // No classes, so default to 'in_person'
+    else {
+      $course_wrapper->field_setting->set('in_person');
+    }
+    $course_wrapper->save();
+  }
+}
 
 /**
  * Update aliases for sdc content types.
