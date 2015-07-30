@@ -342,6 +342,7 @@ features[field_base][] = field_semester
 features[field_base][] = field_semester_off_campus
 features[field_base][] = field_send_transfer_info
 features[field_base][] = field_send_viewbook
+features[field_base][] = field_setting
 features[field_base][] = field_short_title
 features[field_base][] = field_sidebar_region
 features[field_base][] = field_sidebar_second_region
