@@ -7239,7 +7239,7 @@ function ilr_field_bases_field_default_field_bases() {
       'allowed_values_function' => '',
     ),
     'translatable' => 0,
-    'type' => 'list_text',
+    'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_organization'
