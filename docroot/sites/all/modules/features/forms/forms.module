@@ -343,6 +343,23 @@ function _forms_process_default(&$entityform) {
 }
 
 /**
+ * Process Admissions Visit Days registration form - add custom params for email
+ *
+ */
+function _process_admissions_visit_days_reg(&$entityform) {
+  $admin_email = _forms_get_admin_email($entityform);
+  $num_people = $entityform -> field_number_of_visitors['und'][0]['value'];
+  $date_attending_from_form = $entityform -> field_date_list['und'][0]['value'];
+  $date_attending = date_format(date_create_from_format('Y-m-d', $date_attending_from_form), 'l, F j, Y');
+  $custom_params = array(
+    'date_attending' => $date_attending,
+    'num_people' => $num_people,
+  );
+  // Need to include blank parms for $subject and $subject_user
+  _forms_send_emails($entityform, $admin_email, '', '', $custom_params);
+}
+
+/**
  * Process Collective Bargaining Videos tracking - set cookie, then do normal processing, then
  * redirect to the list of videos.
  */
@@ -571,6 +588,9 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
   }
 
   switch ($entity->type) {
+    case 'admissions_visit_days_reg':
+      $options = _forms_year_relative_options(1,1);
+      break;
     case 'contact_ilr_admissions':
       $options = _forms_year_relative_options(-5,5);
       $options[] = 'other';

@@ -21,6 +21,56 @@ function ilr_forms_students_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function ilr_forms_students_default_entityform_type() {
   $items = array();
+  $items['admissions_visit_days_reg'] = entity_import('entityform_type', '{
+    "type" : "admissions_visit_days_reg",
+    "label" : "Admissions Visit Days Registration",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "Thank you ",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for your interest in the ILR School at Cornell University, and for registering for ILR\\u0027s Visit Day program. You will receive an email confirmation with information about the program, parking, and lodging. We look forward to meeting you. If you have any questions, please contact the ILR Undergraduate Admissions office at 607-255-2222 or \\u003Ca href=\\u0022mailto:ilr_admissions@cornell.edu\\u0022\\u003Eilr_admissions@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ENote: The information you entered is listed below. Please check that your email address is correct! If it\\u0027s incorrect, contact the Admissions Office, so that you will receive the appropriate follow-up information about your visit.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "36" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 0,
+      "add_user_name_to_subject_line" : 0,
+      "kerberized" : 0,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "ilr_admissions@cornell.edu"
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['fex_wisp_sponsor_registration'] = entity_import('entityform_type', '{
     "type" : "fex_wisp_sponsor_registration",
     "label" : "FEX\\/WISP Sponsor Registration",
