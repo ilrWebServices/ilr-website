@@ -349,8 +349,8 @@ function _forms_process_default(&$entityform) {
 function _process_admissions_visit_days_reg(&$entityform) {
   $admin_email = _forms_get_admin_email($entityform);
   $num_people = $entityform -> field_number_of_visitors['und'][0]['value'];
-  $date_attending = $entityform -> field_date_list['und'][0]['value'];
-  $date_attending = date_format($date_attending, 'l, F j, Y');
+  $date_attending_from_form = $entityform -> field_date_list['und'][0]['value'];
+  $date_attending = date_format(date_create_from_format('Y-m-d', $date_attending_from_form), 'l, F j, Y');
   $custom_params = array(
     'date_attending' => $date_attending,
     'num_people' => $num_people,
