@@ -21,6 +21,56 @@ function ilr_forms_students_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function ilr_forms_students_default_entityform_type() {
   $items = array();
+  $items['check_your_eligibility_milr'] = entity_import('entityform_type', '{
+    "type" : "check_your_eligibility_milr",
+    "label" : "MILR: Check Your Eligibility",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "MILR: Check Your Eligibility",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you! We have received your completed pre-assessment for the Cornell University ILR School Master of Industrial and Labor Relations (MILR) program, and look forward to evaluating your information. You will receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EYour email address is listed below. If it\\u0027s incorrect, please contact our office so that we will be able to respond.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EGraduate Programs Office\\u003Cbr\\u003E\\r\\n\\tILR School at Cornell University\\u003Cbr\\u003E\\r\\n\\t\\u003Ca href=\\u0022mailto:ilrgradapplicant@cornell.edu\\u0022\\u003Eilrgradapplicant@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u003Cem\\u003ENote: Cornell University will not sell, rent, trade or otherwise distribute your email address or personal contact information. See the \\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/privacy.html\\u0022\\u003EILR School Privacy Policy\\u003C\\/a\\u003E for more information.\\u003C\\/em\\u003E\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "36" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "ilrgradapplicant@cornell.edu"
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['fex_wisp_sponsor_registration'] = entity_import('entityform_type', '{
     "type" : "fex_wisp_sponsor_registration",
     "label" : "FEX\\/WISP Sponsor Registration",
@@ -117,6 +167,56 @@ function ilr_forms_students_default_entityform_type() {
       "kerberized" : 1,
       "add_payment_processing" : 0,
       "form_submission_ilr_recipient" : "ilrfex@cornell.edu"
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
+  $items['graduate_programs_inquiry'] = entity_import('entityform_type', '{
+    "type" : "graduate_programs_inquiry",
+    "label" : "ILR Graduate Programs Inquiry",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "Thank you",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for contacting the ILR Graduate Programs Office. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EYour email address is listed below. If it\\u0027s incorrect, please let us know, so that we will be able to respond to your inquiry.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EGraduate Programs Office\\u003Cbr\\u003E\\r\\n\\tILR School at Cornell University\\u003Cbr\\u003E\\r\\n\\t\\u003Ca href=\\u0022mailto:ilrgradapplicant@cornell.edu\\u0022\\u003Eilrgradapplicant@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "36" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "ilrgradapplicant@cornell.edu"
     },
     "weight" : "0",
     "paths" : []
