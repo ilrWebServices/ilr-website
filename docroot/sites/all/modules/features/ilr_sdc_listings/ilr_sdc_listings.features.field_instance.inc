@@ -69,7 +69,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 31,
+      'weight' => 3,
     ),
   );
 
@@ -94,7 +94,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -145,7 +145,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 38,
+      'weight' => 9,
     ),
   );
 
@@ -160,7 +160,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -199,7 +199,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 36,
+      'weight' => 7,
     ),
   );
 
@@ -213,7 +213,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -275,7 +275,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 37,
+      'weight' => 8,
     ),
   );
 
@@ -290,7 +290,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -326,7 +326,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 35,
+      'weight' => 6,
     ),
   );
 
@@ -387,7 +387,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 33,
+      'weight' => 4,
     ),
   );
 
@@ -402,7 +402,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -443,7 +443,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 34,
+      'weight' => 5,
     ),
   );
 
@@ -462,7 +462,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -497,7 +497,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 44,
+      'weight' => 15,
     ),
   );
 
@@ -516,7 +516,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -551,7 +551,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 42,
+      'weight' => 13,
     ),
   );
 
@@ -570,7 +570,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -602,10 +602,10 @@ function ilr_sdc_listings_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'display_label' => 1,
+        'apply_chosen' => '',
       ),
-      'type' => 'options_onoff',
-      'weight' => 43,
+      'type' => 'options_select',
+      'weight' => 14,
     ),
   );
 
@@ -620,7 +620,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -657,7 +657,7 @@ function ilr_sdc_listings_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 40,
+      'weight' => 10,
     ),
   );
 
@@ -671,7 +671,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -715,7 +715,58 @@ function ilr_sdc_listings_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 41,
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_class-field_setting'
+  $field_instances['node-sdc_class-field_setting'] = array(
+    'bundle' => 'sdc_class',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Note that the setting for the class inherits from the its course. You should only modify the value here if it\'s different from the course setting. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_setting',
+    'label' => 'Setting',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 12,
     ),
   );
 
@@ -777,7 +828,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 31,
+      'weight' => 1,
     ),
   );
 
@@ -792,7 +843,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 8,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -828,7 +879,109 @@ function ilr_sdc_listings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 33,
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_course-field_continuing_ed_reference'
+  $field_instances['node-sdc_course-field_continuing_ed_reference'] = array(
+    'bundle' => 'sdc_course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_continuing_ed_reference',
+    'label' => 'Continuing Education Credit',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 1,
+      ),
+      'type' => 'options_select',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_course-field_course_format_reference'
+  $field_instances['node-sdc_course-field_course_format_reference'] = array(
+    'bundle' => 'sdc_course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_course_format_reference',
+    'label' => 'Format',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 1,
+      ),
+      'type' => 'options_select',
+      'weight' => 10,
     ),
   );
 
@@ -847,7 +1000,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 7,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -883,7 +1036,109 @@ function ilr_sdc_listings_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 40,
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_course-field_course_sponsor_reference'
+  $field_instances['node-sdc_course-field_course_sponsor_reference'] = array(
+    'bundle' => 'sdc_course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_course_sponsor_reference',
+    'label' => 'Sponsor',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 1,
+      ),
+      'type' => 'options_select',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_course-field_course_topic_reference'
+  $field_instances['node-sdc_course-field_course_topic_reference'] = array(
+    'bundle' => 'sdc_course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_course_topic_reference',
+    'label' => 'Topic',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 1,
+      ),
+      'type' => 'options_select',
+      'weight' => 9,
     ),
   );
 
@@ -898,7 +1153,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 13,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -935,7 +1190,7 @@ function ilr_sdc_listings_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 32,
+      'weight' => 2,
     ),
   );
 
@@ -950,7 +1205,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 14,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -986,7 +1241,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 36,
+      'weight' => 6,
     ),
   );
 
@@ -1005,7 +1260,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 11,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1040,7 +1295,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'display_label' => 0,
       ),
       'type' => 'options_onoff',
-      'weight' => 39,
+      'weight' => 13,
     ),
   );
 
@@ -1055,7 +1310,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 9,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1092,7 +1347,7 @@ function ilr_sdc_listings_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 35,
+      'weight' => 5,
     ),
   );
 
@@ -1107,7 +1362,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 10,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1143,7 +1398,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 4,
     ),
   );
 
@@ -1158,7 +1413,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 12,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1193,7 +1448,58 @@ function ilr_sdc_listings_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 37,
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_course-field_setting'
+  $field_instances['node-sdc_course-field_setting'] = array(
+    'bundle' => 'sdc_course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_setting',
+    'label' => 'Setting',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
+      'type' => 'options_select',
+      'weight' => 12,
     ),
   );
 
@@ -1257,18 +1563,24 @@ function ilr_sdc_listings_field_default_field_instances() {
   t('Catalog Number Prefix');
   t('Class Dates');
   t('Class id');
+  t('Continuing Education Credit');
   t('Course');
   t('Course is a series');
   t('Credit Hours');
   t('Department');
   t('Faculty');
+  t('Format');
   t('Is Full?');
   t('Keywords');
+  t('Note that the setting for the class inherits from the its course. You should only modify the value here if it\'s different from the course setting. ');
   t('On Demand');
   t('Online Class');
   t('Price');
   t('Price note');
   t('Registration End date');
+  t('Setting');
+  t('Sponsor');
+  t('Topic');
 
   return $field_instances;
 }

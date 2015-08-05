@@ -2322,6 +2322,40 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'blockreference',
   );
 
+  // Exported field_base: 'field_continuing_ed_reference'
+  $field_bases['field_continuing_ed_reference'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_continuing_ed_reference',
+    'foreign keys' => array(
+      'tid' => array(
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
+    ),
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'continuing_education_credits',
+          'parent' => 0,
+        ),
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
   // Exported field_base: 'field_cornell_college'
   $field_bases['field_cornell_college'] = array(
     'active' => 1,
@@ -2606,6 +2640,40 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_course_format_reference'
+  $field_bases['field_course_format_reference'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_course_format_reference',
+    'foreign keys' => array(
+      'tid' => array(
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
+    ),
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'course_format',
+          'parent' => 0,
+        ),
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
   // Exported field_base: 'field_course_name'
   $field_bases['field_course_name'] = array(
     'active' => 1,
@@ -2688,6 +2756,74 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_course_sponsor_reference'
+  $field_bases['field_course_sponsor_reference'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_course_sponsor_reference',
+    'foreign keys' => array(
+      'tid' => array(
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
+    ),
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'course_sponsor',
+          'parent' => 0,
+        ),
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_course_topic_reference'
+  $field_bases['field_course_topic_reference'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_course_topic_reference',
+    'foreign keys' => array(
+      'tid' => array(
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
+    ),
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'course_topic',
+          'parent' => 0,
+        ),
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_credit_hours'
@@ -9057,6 +9193,33 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_setting'
+  $field_bases['field_setting'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_setting',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'in_person' => 'In-person',
+        'online' => 'Online',
+        'blended' => 'Blended',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_short_title'

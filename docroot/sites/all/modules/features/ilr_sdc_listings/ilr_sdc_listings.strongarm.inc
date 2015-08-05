@@ -89,13 +89,13 @@ function ilr_sdc_listings_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '-5',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '16',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '15',
         ),
       ),
       'display' => array(
