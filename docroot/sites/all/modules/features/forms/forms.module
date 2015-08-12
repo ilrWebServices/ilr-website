@@ -571,12 +571,19 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
   }
 
   switch ($entity->type) {
+    case 'check_your_eligibility_milr':
+      $options = _forms_year_relative_options(4,-70);
+      break;
     case 'contact_ilr_admissions':
       $options = _forms_year_relative_options(-5,5);
       $options[] = 'other';
       break;
     case 'fex_wisp_sponsor_registration':
       $options = _forms_year_relative_options(0,-70);
+      break;
+    case 'graduate_programs_inquiry':
+      // Switch year if it's May 1 or later
+      $options = date('n') < 5 ? _forms_year_relative_options(0,4) : _forms_year_relative_options(1,4);
       break;
     case 'ilr_information_session_sign_in':
       $options = date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);

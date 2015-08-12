@@ -3017,6 +3017,36 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_degree_all_grad_options'
+  $field_bases['field_degree_all_grad_options'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_degree_all_grad_options',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'MILR' => 'Master of Industrial and Labor Relations (MILR)',
+        'EMHRM' => 'Executive Master of Human Resource Management (EMHRM)',
+        'MPS NYC' => 'Master of Professional Studies/New York City (MPS/NYC)',
+        'MPS Ithaca' => 'Master of Professional Studies/Ithaca (MPS/Ithaca)',
+        'MILR/MBA' => 'MILR/MBA Dual Degree',
+        'MS/Ph.D.' => 'MS/Ph.D.',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_degree_ba_masters_oth_addl'
   $field_bases['field_degree_ba_masters_oth_addl'] = array(
     'active' => 1,
@@ -3970,6 +4000,29 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_entry_date_markup'
+  $field_bases['field_entry_date_markup'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_entry_date_markup',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item"><strong>Anticipated Entry Date</strong><br>
+	The EMHRM program always begins in the Summer, and the Ph.D. program always begins in the Fall, so for those programs you only need to indicate the year. For the other programs, you\'ll also need to specify the semester.</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
   );
 
   // Exported field_base: 'field_equipment_loan_additional_'
@@ -5532,6 +5585,38 @@ function ilr_field_bases_field_default_field_bases() {
         'LinkedIn ad' => 'LinkedIn ad',
         'LinkedIn InMail' => 'LinkedIn InMail',
         'LinkedIn post' => 'LinkedIn post',
+        'SHRM.org ad' => 'SHRM.org ad',
+        'Twitter' => 'Twitter',
+        'Email' => 'Email',
+        'Referral' => 'Referral',
+        'Other' => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_how_heard_milr_check_elig'
+  $field_bases['field_how_heard_milr_check_elig'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_how_heard_milr_check_elig',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Google ad' => 'Google ad',
+        'LinkedIn ad' => 'LinkedIn ad',
+        'LinkedIn InMail' => 'LinkedIn InMail',
         'SHRM.org ad' => 'SHRM.org ad',
         'Twitter' => 'Twitter',
         'Email' => 'Email',
@@ -10922,8 +11007,8 @@ function ilr_field_bases_field_default_field_bases() {
     'locked' => 0,
     'module' => 'file',
     'settings' => array(
-      'display_default' => 1,
-      'display_field' => 1,
+      'display_default' => 0,
+      'display_field' => 0,
       'uri_scheme' => 'public',
     ),
     'translatable' => 0,
@@ -11585,6 +11670,34 @@ function ilr_field_bases_field_default_field_bases() {
         '11-15 years' => '11-15 years',
         '16-20 years' => '16-20 years',
         '20+ years' => '20+ years',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_years_full_time_work_exp2'
+  $field_bases['field_years_full_time_work_exp2'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_years_full_time_work_exp2',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Less than 1 year' => 'Less than 1 year',
+        '1-4 years' => '1-4 years',
+        '5-8 years' => '5-8 years',
+        '9 or more years' => '9 or more years',
       ),
       'allowed_values_function' => '',
     ),
