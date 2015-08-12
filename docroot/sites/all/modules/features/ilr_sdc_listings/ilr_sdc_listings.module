@@ -1216,16 +1216,22 @@ function _ilr_sdc_listings_add_course_full_markup(&$form, $class) {
   );
 }
 
+/**
+ * Adds the prefix to the title if it hasn't been added yet
+ */
 function _ilr_sdc_listings_add_prefix_to_title($node, $type, $view_mode) {
   $wrapper = ilr_get_node_wrapper($node);
   $prefix = ($type == 'sdc_class')
     ? $wrapper->field_course->field_catalog_prefix->value()
     : $wrapper->field_catalog_prefix->value();
-  $title = $node->title . ' (' . $prefix . ')';
-  $node->title = $title;
-  // Update the page title for course nodes
-  if ($view_mode == 'default') {
-    drupal_set_title($title);
+
+  if (strpos($node->title,$prefix) === FALSE) {
+    $title = $node->title . ' (' . $prefix . ')';
+    $node->title = $title;
+    // Update the page title for course nodes
+    if ($view_mode == 'full') {
+      drupal_set_title($title);
+    }
   }
 }
 
