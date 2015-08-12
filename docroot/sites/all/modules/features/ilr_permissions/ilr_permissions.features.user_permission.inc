@@ -2077,6 +2077,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'course admin' => 'course admin',
     ),
     'module' => 'filter',
   );
@@ -2289,9 +2290,13 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'course admin' => 'course admin',
       'faculty admin' => 'faculty admin',
       'form admin' => 'form admin',
       'neutral admin' => 'neutral admin',
+      'power user' => 'power user',
+      'reflection admin' => 'reflection admin',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'system',
   );
