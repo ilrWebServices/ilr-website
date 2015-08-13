@@ -13,6 +13,7 @@ define('ILR_SDC_MAX_DAYS_PAST', 90);
 define('ILR_SDC_ONLINE_TEXT', 'Online');
 define('ILR_SDC_ONDEMAND_TEXT', 'This is an on demand class.');
 define('ILR_SDC_PATH_ALIAS', 'professional-programs/public-offerings');
+define('ILR_SDC_NO_RESULTS', '<p>Sorry, but your search did not return any results.</p>');
 include_once 'ilr_sdc_listings.features.inc';
 
 
@@ -146,6 +147,13 @@ function ilr_sdc_listings_menu() {
     'page callback' => '_ilr_sdc_listings_request_info',
     'page arguments' => array(1),
   );
+
+  $items['professional-programs/search'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => '_ilr_sdc_listings_custom_search',
+  );
+
   return $items;
 }
 
@@ -183,6 +191,106 @@ function _ilr_sdc_listings_request_info($course_nid) {
   $block = entityform_block_block_view('course_request');
   unset($block['content']['field_course']);
   $content = drupal_render($block['content']);
+  return $content;
+}
+
+/**
+ * Loops through search term(s)
+ * Creates De-duped EFQ's and returns resulting content
+ */
+function _ilr_sdc_listings_custom_search(){
+  $params = drupal_get_query_parameters();
+  $results = $nids = array();
+  if (isset($params['s'])) {
+    $search = $params['s'];
+    if (!empty($search)) {
+      $content = '<h2>You searched for '. $search .'.</h2>';
+      // Check node titles for search string first
+      $results = _ilr_sdc_listings_query_title_for_string($search);
+      $words = str_getcsv($search, ' ');
+      $nids = _ilr_sdc_listings_get_course_query_courses_for_strings($words);
+      $results = array_merge($results, $nids);
+      $content .= _ilr_sdc_listings_render_search_results($results);
+    }
+  }
+  if (empty($content)) {
+    $content = ILR_SDC_NO_RESULTS;
+  }
+  return $content;
+}
+
+function _ilr_sdc_listings_get_course_query_courses_for_strings($string_array) {
+  $results = $nids = array();
+  foreach ($string_array as $key => $word) {
+    // Key/value pairs are for term references
+    $fields = array(
+      'body',
+      'field_catalog_prefix',
+      'course_keywords' => 'field_keywords',
+      'course_topic' => 'field_course_topic_reference',
+    );
+
+    foreach ($fields as $key => $field_name) {
+      if (is_numeric($key)) {
+        $nids = _ilr_sdc_listings_query_field_for_string($field_name, $word);
+      }
+      else {
+        if ($existing_term = taxonomy_get_term_by_name($word, $key)) {
+          $key = key($existing_term);
+          $term = $existing_term[$key];
+          $nids = _ilr_sdc_listings_query_field_for_string($field_name, '', $term->tid);
+        }
+      }
+      $results = array_merge($results,$nids);
+    }
+  }
+  return $results;
+}
+
+function _ilr_sdc_listings_query_title_for_string($string) {
+  $query = new EntityFieldQueryDeduped();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_course')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->propertyCondition('title', '%'. trim($string, " ,!?") . '%', 'LIKE');
+  $result = $query->execute();
+  if (isset($result['node'])) {
+    return array_keys($result['node']);
+  }
+  return array();
+}
+
+function _ilr_sdc_listings_query_field_for_string($field, $string, $tid=NULL) {
+  $query = new EntityFieldQueryDeduped();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_course')
+    ->propertyCondition('status', NODE_PUBLISHED);
+  if ($tid) { // It's a term reference
+    $query->fieldCondition($field, 'tid', $tid);
+  } // It's a field with a value
+  else {
+    $query->fieldCondition($field, 'value', '%'. trim($string, " ,!?") . '%', 'LIKE');
+  }
+  $result = $query->execute();
+  if (isset($result['node'])) {
+    return array_keys($result['node']);
+  }
+  return array();
+}
+
+function _ilr_sdc_listings_render_search_results($results) {
+  if (count($results)) {
+    $content = count($results).' results returned.</p>';
+    $nids = array_values($results);
+    $nodes = node_load_multiple($nids);
+    foreach ($nodes as $nid => $node) {
+      $node_view = node_view($node,'teaser');
+      $content .= drupal_render($node_view);
+    }
+  }
+  else {
+    $content = ILR_SDC_NO_RESULTS;
+  }
   return $content;
 }
 
