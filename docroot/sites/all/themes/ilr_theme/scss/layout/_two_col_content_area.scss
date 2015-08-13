@@ -14,6 +14,10 @@
       .group-sidebar {
         @include grid-span(1,2);
       }
+      #block-ilr-sdc-listings-course-search {
+        @include grid-span(1,2);
+        @include trailer(2);
+      }
       // Handle right column on nested articles
       // i.e. courses with series on /professional-programs/public-offerings
       article article .group-sidebar {

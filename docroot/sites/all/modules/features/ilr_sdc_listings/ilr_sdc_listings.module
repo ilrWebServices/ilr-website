@@ -127,6 +127,18 @@ function _ilr_sdc_listings_get_importer_files() {
 }
 
 /**
+ * Implements hook_block_info().
+ */
+function ilr_sdc_listings_block_info() {
+  $blocks['course_search'] = array(
+    'info' => t('Course search'),
+    'cache' => DRUPAL_NO_CACHE
+  );
+
+  return $blocks;
+}
+
+/**
  * Implements hook_menu().
  *
  * Provide callback for redirecting from catalog number to node.
@@ -155,6 +167,21 @@ function ilr_sdc_listings_menu() {
   );
 
   return $items;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function ilr_sdc_listings_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'course_search':
+      $search_form = drupal_get_form('ilr_sdc_listings_search_form');
+      $block['subject'] = '';
+      $block['content'] = drupal_render($search_form);
+      break;
+  }
+  return $block;
 }
 
 /**
@@ -195,6 +222,48 @@ function _ilr_sdc_listings_request_info($course_nid) {
 }
 
 /**
+ *  Create the search form
+ */
+function ilr_sdc_listings_search_form($form, &$form_state) {
+  $form['search_input'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'id' => array('search-input'),
+    ),
+  );
+  $form['search_input']['s'] = array(
+    '#title' => t(''),
+    '#type' => 'textfield',
+    '#size' => 20,
+    '#attributes' => array(
+      'id' => 'search-form-query',
+      'placeholder' => 'Search ILR programs',
+    ),
+    '#default_value' => isset($_REQUEST['s']) ? $_REQUEST['s'] : '',
+  );
+
+  $form['search_input']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'search',
+    '#name' => '',
+    '#attributes' => array('id' => 'search-form-submit'),
+  );
+
+  $form['#action'] = url('professional-programs/search');
+  $form['#method'] = 'get';
+  $form['#pre_render'][] = 'ilr_sdc_listings_search_form_modify';
+
+  return $form;
+}
+
+function ilr_sdc_listings_search_form_modify($form){
+  unset($form['form_token']);
+  unset($form['form_build_id']);
+  unset($form['form_id']);
+  return $form;
+}
+
+/**
  * Loops through search term(s)
  * Creates De-duped EFQ's and returns resulting content
  */
@@ -209,7 +278,7 @@ function _ilr_sdc_listings_custom_search(){
       $results = _ilr_sdc_listings_query_title_for_string($search);
       $words = str_getcsv($search, ' ');
       $nids = _ilr_sdc_listings_get_course_query_courses_for_strings($words);
-      $results = array_merge($results, $nids);
+      $results = array_unique(array_merge($results, $nids));
       $content .= _ilr_sdc_listings_render_search_results($results);
     }
   }
@@ -280,7 +349,8 @@ function _ilr_sdc_listings_query_field_for_string($field, $string, $tid=NULL) {
 
 function _ilr_sdc_listings_render_search_results($results) {
   if (count($results)) {
-    $content = count($results).' results returned.</p>';
+    $result_count = format_plural(count($results), '1 result', '@count results');
+    $content = $result_count .' found.</p>';
     $nids = array_values($results);
     $nodes = node_load_multiple($nids);
     foreach ($nodes as $nid => $node) {
@@ -294,6 +364,15 @@ function _ilr_sdc_listings_render_search_results($results) {
   return $content;
 }
 
+/**
+ * Implements hook_page_alter().
+ * Places the course search at the content top if on the page
+ */
+function ilr_sdc_listings_page_alter(&$page) {
+  if (isset($page['content']['ilr_sdc_listings_course_search'])) {
+    $page['content']['ilr_sdc_listings_course_search']['#weight'] = $page['content']['system_main']['#weight'] - 10;
+  }
+}
 /**
  * Implements hook_node_view().
  */
