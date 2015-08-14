@@ -321,7 +321,7 @@ function _ilr_sdc_listings_query_title_for_string($string) {
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'sdc_course')
     ->propertyCondition('status', NODE_PUBLISHED)
-    ->propertyCondition('title', '%'. trim($string, " ,!?") . '%', 'LIKE');
+    ->propertyCondition('title', '([[:<:]]|^)'. trim($string, " ,!?") . '([[:>:]]|$)', 'REGEXP');
   $result = $query->execute();
   if (isset($result['node'])) {
     return array_keys($result['node']);
