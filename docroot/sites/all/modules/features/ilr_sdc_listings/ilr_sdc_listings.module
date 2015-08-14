@@ -338,7 +338,7 @@ function _ilr_sdc_listings_query_field_for_string($field, $string, $tid=NULL) {
     $query->fieldCondition($field, 'tid', $tid);
   } // It's a field with a value
   else {
-    $query->fieldCondition($field, 'value', '%'. trim($string, " ,!?") . '%', 'LIKE');
+    $query->fieldCondition($field, 'value', '([[:<:]]|^)'. trim($string, " ,!?") . '([[:>:]]|$)', 'REGEXP');
   }
   $result = $query->execute();
   if (isset($result['node'])) {
