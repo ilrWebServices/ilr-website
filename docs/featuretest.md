@@ -32,10 +32,6 @@ steps:
 3. Sync the files with `drush rsync @ilr.ilr.local:%files/ @featuretest.[branch-name]:%files` (requires rsync)
 4. Enable the featuretest custom module (which is responsible for some featuretest-specific settings with `drush @featuretest.[branch-name] en featuretest -y`
 
-drush sql-sync @ilr.live @ilr.ilr.local -y
-drush rsync @ilr.ilr.dev:%files/ @ilr.ilr.local:%files
-
-
 ## Temporary Manual Steps for Featuretest Environments
 
 There is currently an issue with the install profile that forces a few manual steps in addition to uploading the CSS. Once a new envrironment has been created, and seemingly after any database updates get run (unverfied), someone will need to perform the following steps:
