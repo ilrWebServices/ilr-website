@@ -5,8 +5,8 @@ $command = $_SERVER['argv'];
 foreach ($command as $arg){
   $test = explode('.',$arg);
   if($test[0]=="@featuretest"){
-    $env = $test[1];
-    $folder = str_replace("-", "_", $env);
+    $env = $test[1]; // This is what came after the dot, ie "branch-courses" for @featuretest.branch-courses
+    $folder = str_replace("-", "_", $env); // Hyphens get replaced with underscores for the folder path
   }
 }
 

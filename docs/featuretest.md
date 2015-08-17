@@ -22,6 +22,16 @@ In order to deploy the css files and run drush commands on the featuretest serve
 1. Attempt to create short branch names for any branches that will be going through the pull request process. The pattern that featuretest uses to build new environments is `branch-[branchname].ilr.featuretest.org`.
 2. After initiating a pull request, CSS will need to be deployed to the server. There is a bin script that automates that process. Run from the repository root with `bin/featuretest-css-deploy -e branch-[branchname]`. This script also confirms that the custom featuretest module has been enabled for that environment.
 
+## Data and file syncing
+
+As requested, there are times when it is helpful to sync files up to or down from featuretest environments. We use drush to accomplish that. Note that, generally speaking, pushing data and files upstream should be done with caution. We should never push data/files up to Acquia. However, there are times when it simplifies the workflow to be able to create content locally and sync it with a featuretest environment. In those cases, use the following
+steps:
+
+1. Confirm that you can connect to the appropriate featuretest database with `drush @featuretest.[branch-name] status`. The output will verify that drush was able to connect to the database.
+2. Sync your local database to the server with `drush sql-sync @ilr.ilr.local @featuretest.[branch-name]`
+3. Sync the files with `drush rsync @ilr.ilr.local:%files/ @featuretest.[branch-name]:%files` (requires rsync)
+4. Enable the featuretest custom module (which is responsible for some featuretest-specific settings with `drush @featuretest.[branch-name] en featuretest -y`
+
 ## Temporary Manual Steps for Featuretest Environments
 
 There is currently an issue with the install profile that forces a few manual steps in addition to uploading the CSS. Once a new envrironment has been created, and seemingly after any database updates get run (unverfied), someone will need to perform the following steps:
