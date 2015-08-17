@@ -5,10 +5,16 @@
       @extend %thumb;
     }
   }
-  body.front,
-  body.subsite-front #sidebar-second & {
+
+  body.front {
     article {
       @extend %card;
+    }
+  }
+
+  body.subsite-front #sidebar-second & {
+    article {
+      @extend %thumb;
     }
   }
 
