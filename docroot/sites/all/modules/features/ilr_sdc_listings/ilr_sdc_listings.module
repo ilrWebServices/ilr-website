@@ -10,7 +10,6 @@
  *
  */
 define('ILR_SDC_MAX_DAYS_PAST', 90);
-define('ILR_SDC_ONLINE_TEXT', 'Online');
 define('ILR_SDC_ONDEMAND_TEXT', 'This is an on demand class.');
 define('ILR_SDC_PATH_ALIAS', 'professional-programs/public-offerings');
 include_once 'ilr_sdc_listings.features.inc';
@@ -299,13 +298,9 @@ function _ilr_sdc_listings_class_course_link($class_node) {
 function _ilr_sdc_listings_class_format_online($node, $view_mode) {
   $node_wrapper = ilr_get_node_wrapper($node);
   if ($node_wrapper->field_online_class->value()) {
-    $online_field_weight = $node->content['field_address']['#weight'];
-    unset($node->content['field_address']);
-    $node->content['field_address'] = array(
-      '#type' => 'markup',
-      '#markup' => t(ILR_SDC_ONLINE_TEXT),
-      '#weight' => $online_field_weight,
-    );
+    if (isset($node->content['field_address'])) {
+      unset($node->content['field_address']);
+    }
   }
 }
 
