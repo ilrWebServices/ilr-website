@@ -1,0 +1,14 @@
+body.design-system {
+  // #sidebar-first {
+  //   display: none !important; //override from nav settings
+  // }
+  &.page-node-XXXXXX { // 263300
+    .container[data-eq-state="regular-nav"] {
+      @extend %one-column-page;
+
+      .field-name-body {
+        max-width: 100% !important;
+      }
+    }
+  }
+}
