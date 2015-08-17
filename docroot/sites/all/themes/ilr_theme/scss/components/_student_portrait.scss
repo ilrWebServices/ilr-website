@@ -1,5 +1,5 @@
-.node-type-student-portrait {
-  #main {
+.node-type-student-portrait { // target a parent div for the article instead of the body tag
+  // #main {
     .group-portrait-highlighted {
       @include background-image(linear-gradient(lighten($gray-dark, 5%), $gray-dark));
       padding: 1em;
@@ -10,6 +10,7 @@
       h3 {
         color: $gray-light;
         // font-weight: bold;
+        font-weight: 400;
         margin-bottom: .5em;
       }
     }
@@ -25,7 +26,7 @@
     }
 
     .field-name-field-image {
-      float: right;
+      float: right !important;
       margin: 0;
       margin-left: 1em;
       img {
@@ -41,5 +42,5 @@
       clear: both;
       @include trailer(1);
     }
-  }
+  // }
 }

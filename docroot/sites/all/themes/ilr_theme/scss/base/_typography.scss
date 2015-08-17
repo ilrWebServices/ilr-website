@@ -195,7 +195,7 @@ code, pre {
 }
 
 blockquote {
-  border-left: 10px solid $blockquote;
+  border-left: 10px solid $ochre-tan;
   padding-left: 15px;
   font-style: italic;
   color: $blockquote;
@@ -369,6 +369,7 @@ table {
   text-align: left;
   width: 100%;
   font-size: $p-size;
+  @include trailer(1);
 
   thead {
 
