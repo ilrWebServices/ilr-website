@@ -237,7 +237,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
@@ -267,36 +267,42 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'sdc_course' => 'sdc_course',
   );
-  /* Filter criterion: Content: Department (field_sdc_department) */
-  $handler->display->display_options['filters']['field_sdc_department_tid']['id'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['table'] = 'field_data_field_sdc_department';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator_id'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['identifier'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Sponsor (field_course_sponsor_reference) */
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['id'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['table'] = 'field_data_field_course_sponsor_reference';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['field'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator_id'] = 'field_course_sponsor_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Sponsor(s)';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator'] = 'field_course_sponsor_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['identifier'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['remember_roles'] = array(
     2 => '2',
-    3 => 0,
     1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
   );
-  $handler->display->display_options['filters']['field_sdc_department_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['vocabulary'] = 'sdc_department';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['vocabulary'] = 'course_sponsor';
   /* Filter criterion: Content: Class Dates -  start date (field_class_dates) */
   $handler->display->display_options['filters']['field_class_dates_value']['id'] = 'field_class_dates_value';
   $handler->display->display_options['filters']['field_class_dates_value']['table'] = 'field_data_field_class_dates';
   $handler->display->display_options['filters']['field_class_dates_value']['field'] = 'field_class_dates_value';
   $handler->display->display_options['filters']['field_class_dates_value']['relationship'] = 'reverse_field_course_node';
   $handler->display->display_options['filters']['field_class_dates_value']['operator'] = 'between';
+  $handler->display->display_options['filters']['field_class_dates_value']['group'] = 1;
   $handler->display->display_options['filters']['field_class_dates_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_class_dates_value']['expose']['operator_id'] = 'field_class_dates_value_op';
   $handler->display->display_options['filters']['field_class_dates_value']['expose']['label'] = 'Class Start Date';
@@ -315,28 +321,88 @@ function ilr_sdc_listings_views_default_views() {
     10 => 0,
   );
   $handler->display->display_options['filters']['field_class_dates_value']['form_type'] = 'date_popup';
+  /* Filter criterion: Content: Topic (field_course_topic_reference) */
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['id'] = 'field_course_topic_reference_tid';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['table'] = 'field_data_field_course_topic_reference';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['field'] = 'field_course_topic_reference_tid';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['operator_id'] = 'field_course_topic_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['label'] = 'Topic(s)';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['operator'] = 'field_course_topic_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['identifier'] = 'field_course_topic_reference_tid';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
+  );
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['vocabulary'] = 'course_topic';
+  /* Filter criterion: Content: Format (field_course_format_reference) */
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['id'] = 'field_course_format_reference_tid';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['table'] = 'field_data_field_course_format_reference';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['field'] = 'field_course_format_reference_tid';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['operator_id'] = 'field_course_format_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['label'] = 'Format(s)';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['operator'] = 'field_course_format_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['identifier'] = 'field_course_format_reference_tid';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
+  );
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['vocabulary'] = 'course_format';
   /* Filter criterion: Content: Keywords (field_keywords) */
   $handler->display->display_options['filters']['field_keywords_tid']['id'] = 'field_keywords_tid';
   $handler->display->display_options['filters']['field_keywords_tid']['table'] = 'field_data_field_keywords';
   $handler->display->display_options['filters']['field_keywords_tid']['field'] = 'field_keywords_tid';
-  $handler->display->display_options['filters']['field_keywords_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_keywords_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_keywords_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_keywords_tid']['expose']['operator_id'] = 'field_keywords_tid_op';
-  $handler->display->display_options['filters']['field_keywords_tid']['expose']['label'] = 'Topic';
+  $handler->display->display_options['filters']['field_keywords_tid']['expose']['label'] = 'Keyword(s)';
   $handler->display->display_options['filters']['field_keywords_tid']['expose']['operator'] = 'field_keywords_tid_op';
   $handler->display->display_options['filters']['field_keywords_tid']['expose']['identifier'] = 'field_keywords_tid';
   $handler->display->display_options['filters']['field_keywords_tid']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_keywords_tid']['expose']['remember_roles'] = array(
     2 => '2',
-    3 => 0,
     1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
   );
   $handler->display->display_options['filters']['field_keywords_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_keywords_tid']['vocabulary'] = 'course_keywords';
@@ -346,6 +412,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_address_locality']['field'] = 'field_address_locality';
   $handler->display->display_options['filters']['field_address_locality']['relationship'] = 'reverse_field_course_node';
   $handler->display->display_options['filters']['field_address_locality']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_address_locality']['group'] = 1;
   $handler->display->display_options['filters']['field_address_locality']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_address_locality']['expose']['operator_id'] = 'field_address_locality_op';
   $handler->display->display_options['filters']['field_address_locality']['expose']['label'] = 'City';
@@ -368,6 +435,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_online_class_value']['table'] = 'field_data_field_online_class';
   $handler->display->display_options['filters']['field_online_class_value']['field'] = 'field_online_class_value';
   $handler->display->display_options['filters']['field_online_class_value']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_online_class_value']['group'] = 1;
   $handler->display->display_options['filters']['field_online_class_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_online_class_value']['expose']['operator_id'] = 'field_online_class_value_op';
   $handler->display->display_options['filters']['field_online_class_value']['expose']['label'] = 'Online Classes Only';
@@ -391,6 +459,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_class_dates_value_1']['field'] = 'field_class_dates_value';
   $handler->display->display_options['filters']['field_class_dates_value_1']['relationship'] = 'reverse_field_course_node';
   $handler->display->display_options['filters']['field_class_dates_value_1']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_class_dates_value_1']['group'] = 1;
   $handler->display->display_options['filters']['field_class_dates_value_1']['default_date'] = 'now';
   $handler->display->display_options['filters']['field_class_dates_value_1']['year_range'] = '-0:+10';
   /* Filter criterion: Content: Published */
@@ -399,6 +468,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['status_1']['field'] = 'status';
   $handler->display->display_options['filters']['status_1']['relationship'] = 'reverse_field_course_node';
   $handler->display->display_options['filters']['status_1']['value'] = '1';
+  $handler->display->display_options['filters']['status_1']['group'] = 1;
 
   /* Display: Filtered Courses with Class Dates */
   $handler = $view->new_display('panel_pane', 'Filtered Courses with Class Dates', 'bean_pane_filtered');
@@ -441,52 +511,116 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'sdc_course' => 'sdc_course',
   );
-  /* Filter criterion: Content: Department (field_sdc_department) */
-  $handler->display->display_options['filters']['field_sdc_department_tid']['id'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['table'] = 'field_data_field_sdc_department';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator_id'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['identifier'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Sponsor (field_course_sponsor_reference) */
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['id'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['table'] = 'field_data_field_course_sponsor_reference';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['field'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator_id'] = 'field_course_sponsor_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Sponsor(s)';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator'] = 'field_course_sponsor_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['identifier'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['remember_roles'] = array(
     2 => '2',
-    3 => 0,
     1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
   );
-  $handler->display->display_options['filters']['field_sdc_department_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['vocabulary'] = 'sdc_department';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['vocabulary'] = 'course_sponsor';
+  /* Filter criterion: Content: Topic (field_course_topic_reference) */
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['id'] = 'field_course_topic_reference_tid';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['table'] = 'field_data_field_course_topic_reference';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['field'] = 'field_course_topic_reference_tid';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['operator_id'] = 'field_course_topic_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['label'] = 'Topic (field_course_topic_reference)';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['operator'] = 'field_course_topic_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['identifier'] = 'field_course_topic_reference_tid';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
+  );
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['vocabulary'] = 'course_topic';
+  /* Filter criterion: Content: Format (field_course_format_reference) */
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['id'] = 'field_course_format_reference_tid';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['table'] = 'field_data_field_course_format_reference';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['field'] = 'field_course_format_reference_tid';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['operator_id'] = 'field_course_format_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['label'] = 'Format(s)';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['operator'] = 'field_course_format_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['identifier'] = 'field_course_format_reference_tid';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
+  );
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['vocabulary'] = 'course_format';
   /* Filter criterion: Content: Keywords (field_keywords) */
   $handler->display->display_options['filters']['field_keywords_tid']['id'] = 'field_keywords_tid';
   $handler->display->display_options['filters']['field_keywords_tid']['table'] = 'field_data_field_keywords';
   $handler->display->display_options['filters']['field_keywords_tid']['field'] = 'field_keywords_tid';
-  $handler->display->display_options['filters']['field_keywords_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_keywords_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_keywords_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_keywords_tid']['expose']['operator_id'] = 'field_keywords_tid_op';
-  $handler->display->display_options['filters']['field_keywords_tid']['expose']['label'] = 'Topic';
+  $handler->display->display_options['filters']['field_keywords_tid']['expose']['label'] = 'Keyword(s)';
   $handler->display->display_options['filters']['field_keywords_tid']['expose']['operator'] = 'field_keywords_tid_op';
   $handler->display->display_options['filters']['field_keywords_tid']['expose']['identifier'] = 'field_keywords_tid';
   $handler->display->display_options['filters']['field_keywords_tid']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_keywords_tid']['expose']['remember_roles'] = array(
     2 => '2',
-    3 => 0,
     1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
   );
   $handler->display->display_options['filters']['field_keywords_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_keywords_tid']['vocabulary'] = 'course_keywords';
@@ -494,6 +628,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_on_demand_value']['id'] = 'field_on_demand_value';
   $handler->display->display_options['filters']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
   $handler->display->display_options['filters']['field_on_demand_value']['field'] = 'field_on_demand_value';
+  $handler->display->display_options['filters']['field_on_demand_value']['group'] = 1;
   $handler->display->display_options['filters']['field_on_demand_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_on_demand_value']['expose']['operator_id'] = 'field_on_demand_value_op';
   $handler->display->display_options['filters']['field_on_demand_value']['expose']['label'] = 'On Demand';
@@ -665,20 +800,28 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['relationships']['field_course_target_id']['field'] = 'field_course_target_id';
   $handler->display->display_options['relationships']['field_course_target_id']['label'] = 'Course';
   $handler->display->display_options['relationships']['field_course_target_id']['required'] = TRUE;
-  /* Relationship: Content: Department (field_sdc_department) */
-  $handler->display->display_options['relationships']['field_sdc_department_tid']['id'] = 'field_sdc_department_tid';
-  $handler->display->display_options['relationships']['field_sdc_department_tid']['table'] = 'field_data_field_sdc_department';
-  $handler->display->display_options['relationships']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
-  $handler->display->display_options['relationships']['field_sdc_department_tid']['relationship'] = 'field_course_target_id';
-  /* Field: Content: Department */
-  $handler->display->display_options['fields']['field_sdc_department']['id'] = 'field_sdc_department';
-  $handler->display->display_options['fields']['field_sdc_department']['table'] = 'field_data_field_sdc_department';
-  $handler->display->display_options['fields']['field_sdc_department']['field'] = 'field_sdc_department';
-  $handler->display->display_options['fields']['field_sdc_department']['relationship'] = 'field_course_target_id';
-  $handler->display->display_options['fields']['field_sdc_department']['label'] = '';
-  $handler->display->display_options['fields']['field_sdc_department']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_sdc_department']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sdc_department']['type'] = 'taxonomy_term_reference_plain';
+  /* Relationship: Content: Sponsor (field_course_sponsor_reference) */
+  $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['id'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['table'] = 'field_data_field_course_sponsor_reference';
+  $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['field'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['relationship'] = 'field_course_target_id';
+  /* Field: Content: Sponsor */
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['id'] = 'field_course_sponsor_reference';
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['table'] = 'field_data_field_course_sponsor_reference';
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['field'] = 'field_course_sponsor_reference';
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['relationship'] = 'field_course_target_id';
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['label'] = '';
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['settings'] = array(
+    'field_formatter_label' => '',
+  );
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_course_sponsor_reference']['field_api_classes'] = TRUE;
   /* Field: Content: Rendered Node */
   $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
   $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_node';
@@ -693,7 +836,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['sorts']['name']['id'] = 'name';
   $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['sorts']['name']['field'] = 'name';
-  $handler->display->display_options['sorts']['name']['relationship'] = 'field_sdc_department_tid';
+  $handler->display->display_options['sorts']['name']['relationship'] = 'field_course_sponsor_reference_tid';
   /* Sort criterion: Content: Class Dates -  start date (field_class_dates) */
   $handler->display->display_options['sorts']['field_class_dates_value']['id'] = 'field_class_dates_value';
   $handler->display->display_options['sorts']['field_class_dates_value']['table'] = 'field_data_field_class_dates';
@@ -720,32 +863,35 @@ function ilr_sdc_listings_views_default_views() {
     0 => '0',
   );
   $handler->display->display_options['filters']['field_on_demand_value']['group'] = 1;
-  /* Filter criterion: Content: Department (field_sdc_department) */
-  $handler->display->display_options['filters']['field_sdc_department_tid']['id'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['table'] = 'field_data_field_sdc_department';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['relationship'] = 'field_course_target_id';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator_id'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['identifier'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Sponsor (field_course_sponsor_reference) */
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['id'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['table'] = 'field_data_field_course_sponsor_reference';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['field'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['relationship'] = 'field_course_target_id';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator_id'] = 'field_course_sponsor_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Sponsor';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator'] = 'field_course_sponsor_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['identifier'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     11 => 0,
     16 => 0,
     41 => 0,
-    26 => 0,
-    21 => 0,
-    31 => 0,
-    36 => 0,
+    51 => 0,
     46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
   );
-  $handler->display->display_options['filters']['field_sdc_department_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['vocabulary'] = 'sdc_department';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['vocabulary'] = 'course_sponsor';
   /* Filter criterion: Content: Online Class (field_online_class) */
   $handler->display->display_options['filters']['field_online_class_value']['id'] = 'field_online_class_value';
   $handler->display->display_options['filters']['field_online_class_value']['table'] = 'field_data_field_online_class';
@@ -778,7 +924,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
-      'field' => 'field_sdc_department',
+      'field' => 'field_course_sponsor_reference',
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
@@ -859,7 +1005,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
@@ -867,6 +1013,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['status_1']['field'] = 'status';
   $handler->display->display_options['filters']['status_1']['relationship'] = 'field_course_target_id';
   $handler->display->display_options['filters']['status_1']['value'] = '1';
+  $handler->display->display_options['filters']['status_1']['group'] = 1;
   /* Filter criterion: Content: On Demand (field_on_demand) */
   $handler->display->display_options['filters']['field_on_demand_value']['id'] = 'field_on_demand_value';
   $handler->display->display_options['filters']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
@@ -874,10 +1021,12 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_on_demand_value']['value'] = array(
     0 => '0',
   );
+  $handler->display->display_options['filters']['field_on_demand_value']['group'] = 1;
   /* Filter criterion: Content: Online Class (field_online_class) */
   $handler->display->display_options['filters']['field_online_class_value']['id'] = 'field_online_class_value';
   $handler->display->display_options['filters']['field_online_class_value']['table'] = 'field_data_field_online_class';
   $handler->display->display_options['filters']['field_online_class_value']['field'] = 'field_online_class_value';
+  $handler->display->display_options['filters']['field_online_class_value']['group'] = 1;
   $handler->display->display_options['filters']['field_online_class_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_online_class_value']['expose']['operator_id'] = 'field_online_class_value_op';
   $handler->display->display_options['filters']['field_online_class_value']['expose']['operator'] = 'field_online_class_value_op';
@@ -894,16 +1043,18 @@ function ilr_sdc_listings_views_default_views() {
     9 => 0,
     10 => 0,
   );
-  /* Filter criterion: Content: Department (field_sdc_department) */
-  $handler->display->display_options['filters']['field_sdc_department_tid']['id'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['table'] = 'field_data_field_sdc_department';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['relationship'] = 'field_course_target_id';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator_id'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['identifier'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Sponsor (field_course_sponsor_reference) */
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['id'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['table'] = 'field_data_field_course_sponsor_reference';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['field'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['relationship'] = 'field_course_target_id';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator_id'] = 'field_course_sponsor_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Sponsor (field_course_sponsor_reference)';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator'] = 'field_course_sponsor_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['identifier'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     11 => 0,
@@ -915,9 +1066,11 @@ function ilr_sdc_listings_views_default_views() {
     21 => 0,
     26 => 0,
     31 => 0,
+    56 => 0,
+    61 => 0,
   );
-  $handler->display->display_options['filters']['field_sdc_department_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['vocabulary'] = 'sdc_department';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['vocabulary'] = 'course_sponsor';
 
   /* Display: Month */
   $handler = $view->new_display('page', 'Month', 'page_1');
@@ -1009,7 +1162,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
-      'field' => 'field_sdc_department',
+      'field' => 'field_course_sponsor_reference',
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
@@ -1054,32 +1207,35 @@ function ilr_sdc_listings_views_default_views() {
     0 => '0',
   );
   $handler->display->display_options['filters']['field_on_demand_value']['group'] = 1;
-  /* Filter criterion: Content: Department (field_sdc_department) */
-  $handler->display->display_options['filters']['field_sdc_department_tid']['id'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['table'] = 'field_data_field_sdc_department';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['relationship'] = 'field_course_target_id';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator_id'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['identifier'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Sponsor (field_course_sponsor_reference) */
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['id'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['table'] = 'field_data_field_course_sponsor_reference';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['field'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['relationship'] = 'field_course_target_id';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator_id'] = 'field_course_sponsor_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Sponsor';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator'] = 'field_course_sponsor_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['identifier'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     11 => 0,
     16 => 0,
     41 => 0,
-    26 => 0,
-    21 => 0,
-    31 => 0,
-    36 => 0,
+    51 => 0,
     46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
   );
-  $handler->display->display_options['filters']['field_sdc_department_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['vocabulary'] = 'sdc_department';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['vocabulary'] = 'course_sponsor';
   /* Filter criterion: Content: Online Class (field_online_class) */
   $handler->display->display_options['filters']['field_online_class_value']['id'] = 'field_online_class_value';
   $handler->display->display_options['filters']['field_online_class_value']['table'] = 'field_data_field_online_class';
@@ -1246,11 +1402,11 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = 'Many programs are available for custom delivery to your organization. Please request more information for programs listed with no upcoming dates.';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Relationship: Content: Department (field_sdc_department) */
-  $handler->display->display_options['relationships']['field_sdc_department_tid']['id'] = 'field_sdc_department_tid';
-  $handler->display->display_options['relationships']['field_sdc_department_tid']['table'] = 'field_data_field_sdc_department';
-  $handler->display->display_options['relationships']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
-  $handler->display->display_options['relationships']['field_sdc_department_tid']['required'] = TRUE;
+  /* Relationship: Content: Sponsor (field_course_sponsor_reference) */
+  $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['id'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['table'] = 'field_data_field_course_sponsor_reference';
+  $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['field'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['required'] = TRUE;
   /* Field: Content: Catalog Number Prefix */
   $handler->display->display_options['fields']['field_catalog_prefix']['id'] = 'field_catalog_prefix';
   $handler->display->display_options['fields']['field_catalog_prefix']['table'] = 'field_data_field_catalog_prefix';
@@ -1354,23 +1510,19 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'sdc_course' => 'sdc_course',
   );
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
-  $handler->display->display_options['filters']['status_1']['table'] = 'node';
-  $handler->display->display_options['filters']['status_1']['field'] = 'status';
-  $handler->display->display_options['filters']['status_1']['relationship'] = 'reverse_field_course_node';
-  $handler->display->display_options['filters']['status_1']['value'] = '1';
-  /* Filter criterion: Content: Department (field_sdc_department) */
-  $handler->display->display_options['filters']['field_sdc_department_tid']['id'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['table'] = 'field_data_field_sdc_department';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['field'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator_id'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['operator'] = 'field_sdc_department_tid_op';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['identifier'] = 'field_sdc_department_tid';
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_sdc_department_tid']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Sponsor (field_course_sponsor_reference) */
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['id'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['table'] = 'field_data_field_course_sponsor_reference';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['field'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator_id'] = 'field_course_sponsor_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Sponsor';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator'] = 'field_course_sponsor_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['identifier'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['remember_roles'] = array(
     2 => '2',
     3 => 0,
     1 => 0,
@@ -1415,16 +1567,16 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Taxonomy term: Content using Department */
-  $handler->display->display_options['relationships']['reverse_field_sdc_department_node']['id'] = 'reverse_field_sdc_department_node';
-  $handler->display->display_options['relationships']['reverse_field_sdc_department_node']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['relationships']['reverse_field_sdc_department_node']['field'] = 'reverse_field_sdc_department_node';
-  $handler->display->display_options['relationships']['reverse_field_sdc_department_node']['required'] = TRUE;
+  /* Relationship: Taxonomy term: Content using Sponsor */
+  $handler->display->display_options['relationships']['reverse_field_course_sponsor_reference_node']['id'] = 'reverse_field_course_sponsor_reference_node';
+  $handler->display->display_options['relationships']['reverse_field_course_sponsor_reference_node']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['relationships']['reverse_field_course_sponsor_reference_node']['field'] = 'reverse_field_course_sponsor_reference_node';
+  $handler->display->display_options['relationships']['reverse_field_course_sponsor_reference_node']['required'] = TRUE;
   /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_course_node']['id'] = 'reverse_field_course_node';
   $handler->display->display_options['relationships']['reverse_field_course_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_course_node']['field'] = 'reverse_field_course_node';
-  $handler->display->display_options['relationships']['reverse_field_course_node']['relationship'] = 'reverse_field_sdc_department_node';
+  $handler->display->display_options['relationships']['reverse_field_course_node']['relationship'] = 'reverse_field_course_sponsor_reference_node';
   $handler->display->display_options['relationships']['reverse_field_course_node']['required'] = TRUE;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
@@ -1439,19 +1591,21 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['value'] = array(
-    'sdc_department' => 'sdc_department',
+    'course_sponsor' => 'course_sponsor',
   );
+  $handler->display->display_options['filters']['machine_name']['group'] = 1;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['relationship'] = 'reverse_field_course_node';
   $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
   /* Filter criterion: Content: On Demand (field_on_demand) */
   $handler->display->display_options['filters']['field_on_demand_value']['id'] = 'field_on_demand_value';
   $handler->display->display_options['filters']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
   $handler->display->display_options['filters']['field_on_demand_value']['field'] = 'field_on_demand_value';
-  $handler->display->display_options['filters']['field_on_demand_value']['relationship'] = 'reverse_field_sdc_department_node';
+  $handler->display->display_options['filters']['field_on_demand_value']['relationship'] = 'reverse_field_course_sponsor_reference_node';
   $handler->display->display_options['filters']['field_on_demand_value']['operator'] = 'not';
   $handler->display->display_options['filters']['field_on_demand_value']['value'] = array(
     1 => '1',
@@ -1460,7 +1614,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
   $handler->display->display_options['filters']['status_1']['table'] = 'node';
   $handler->display->display_options['filters']['status_1']['field'] = 'status';
-  $handler->display->display_options['filters']['status_1']['relationship'] = 'reverse_field_sdc_department_node';
+  $handler->display->display_options['filters']['status_1']['relationship'] = 'reverse_field_course_sponsor_reference_node';
   $handler->display->display_options['filters']['status_1']['value'] = '1';
 
   /* Display: Reference Any */
@@ -1512,19 +1666,21 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['value'] = array(
-    'sdc_department' => 'sdc_department',
+    'course_sponsor' => 'course_sponsor',
   );
+  $handler->display->display_options['filters']['machine_name']['group'] = 1;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['relationship'] = 'reverse_field_course_node';
   $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
   /* Filter criterion: Content: On Demand (field_on_demand) */
   $handler->display->display_options['filters']['field_on_demand_value']['id'] = 'field_on_demand_value';
   $handler->display->display_options['filters']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
   $handler->display->display_options['filters']['field_on_demand_value']['field'] = 'field_on_demand_value';
-  $handler->display->display_options['filters']['field_on_demand_value']['relationship'] = 'reverse_field_sdc_department_node';
+  $handler->display->display_options['filters']['field_on_demand_value']['relationship'] = 'reverse_field_course_sponsor_reference_node';
   $handler->display->display_options['filters']['field_on_demand_value']['operator'] = 'not';
   $handler->display->display_options['filters']['field_on_demand_value']['value'] = array(
     1 => '1',
@@ -1562,7 +1718,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['value'] = array(
-    'sdc_department' => 'sdc_department',
+    'course_sponsor' => 'course_sponsor',
   );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
