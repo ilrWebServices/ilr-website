@@ -185,6 +185,16 @@ function ilr_sdc_listings_update_7007() {
 }
 
 /**
+ * Deletes field_sdc_department and vocab
+ */
+function ilr_sdc_listings_update_7008() {
+  field_delete_field('field_sdc_department');
+  if ($vocab = taxonomy_vocabulary_machine_name_load('sdc_department')) {
+    taxonomy_vocabulary_delete($vocab->vid);
+  }
+}
+
+/**
  * Update aliases for sdc content types.
  */
 function _ilr_sdc_listings_update_aliases() {
