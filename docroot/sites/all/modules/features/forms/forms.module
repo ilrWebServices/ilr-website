@@ -353,6 +353,32 @@ function _process_collective_bargaining_videos(&$entityform) {
 }
 
 /**
+ * Process Course request forms to notify the correct email address
+ * Check the course first, then the sponsor, with the form admin email as default
+ */
+function _process_course_request(&$entityform) {
+  $admin_emails = array();
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  $course = $entityform_wrapper->field_course->value();
+  $course_wrapper = ilr_get_node_wrapper($course);
+  if ($email = $course_wrapper->field_email->value()) {
+    $admin_emails[] = $email;
+  } else {
+    foreach ($course_wrapper->field_course_sponsor_reference->getIterator() as $delta => $term_wrapper) {
+      if ($email = $term_wrapper->field_email->value()) {
+        $admin_emails[] = $email;
+      }
+    }
+  }
+
+  $admin_email = (count($admin_emails))
+    ? implode(",", $admin_emails)
+    : _forms_get_admin_email($entityform);
+
+  _forms_send_emails($entityform, $admin_email);
+}
+
+/**
  * Process FEX/WISP student form - set subject line and admin email based on program
  */
 function _process_fex_wisp_student_application(&$entityform) {
