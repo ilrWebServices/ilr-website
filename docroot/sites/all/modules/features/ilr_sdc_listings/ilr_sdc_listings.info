@@ -66,6 +66,7 @@ features[field_instance][] = node-sdc_course-field_course_series
 features[field_instance][] = node-sdc_course-field_course_sponsor_reference
 features[field_instance][] = node-sdc_course-field_course_topic_reference
 features[field_instance][] = node-sdc_course-field_credit_hours
+features[field_instance][] = node-sdc_course-field_email
 features[field_instance][] = node-sdc_course-field_keywords
 features[field_instance][] = node-sdc_course-field_on_demand
 features[field_instance][] = node-sdc_course-field_price
