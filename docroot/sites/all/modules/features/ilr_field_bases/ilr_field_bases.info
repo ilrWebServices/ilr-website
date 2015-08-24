@@ -435,6 +435,7 @@ features[field_base][] = field_youtube_video
 features[field_base][] = field_zip_code
 features[field_base][] = field_zip_postal_code_additional
 features[field_base][] = field_zip_postal_code_addl_2
+features[field_instance][] = taxonomy_term-course_sponsor-field_email
 features[taxonomy][] = category_type
 features[taxonomy][] = continuing_education_credits
 features[taxonomy][] = course_format
