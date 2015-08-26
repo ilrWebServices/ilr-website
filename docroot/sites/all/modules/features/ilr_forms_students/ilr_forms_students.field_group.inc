@@ -126,7 +126,7 @@ function ilr_forms_students_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'FEX Opportunities',
-    'weight' => '4',
+    'weight' => '2',
     'children' => array(
       0 => 'field_career_field_fex',
       1 => 'field_other_career_field_fex_',
@@ -556,7 +556,7 @@ Specify preferred location (city / state). You may also optionally specify an al
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Supervisor Information',
-    'weight' => '3',
+    'weight' => '5',
     'children' => array(
       0 => 'field_first_name_additional',
       1 => 'field_yes_no',
@@ -612,6 +612,7 @@ Specify preferred location (city / state). You may also optionally specify an al
       8 => 'field_wisp_dates',
       9 => 'field_wisp_dates_constraints',
       10 => 'field_wisp_number_of_students',
+      11 => 'field_remote_wisp',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -637,7 +638,7 @@ Specify preferred location (city / state). You may also optionally specify an al
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'WISP Opportunities',
-    'weight' => '5',
+    'weight' => '3',
     'children' => array(
       0 => 'field_wisp_markup_if_not_chosen',
       1 => 'field_wisp_markup_if_chosen',
@@ -655,6 +656,7 @@ Specify preferred location (city / state). You may also optionally specify an al
       13 => 'field_wisp_constraints_markup',
       14 => 'field_wisp_number_of_students',
       15 => 'field_qualifications_markup',
+      16 => 'field_remote_wisp',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -721,7 +723,7 @@ Specify preferred location (city / state). You may also optionally specify an al
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Your Information',
-    'weight' => '2',
+    'weight' => '4',
     'children' => array(
       0 => 'field_first_name',
       1 => 'field_last_name',

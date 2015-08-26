@@ -116,6 +116,7 @@ features[field_instance][] = entityform-fex_wisp_sponsor_registration-field_phon
 features[field_instance][] = entityform-fex_wisp_sponsor_registration-field_phone_additional
 features[field_instance][] = entityform-fex_wisp_sponsor_registration-field_qualifications
 features[field_instance][] = entityform-fex_wisp_sponsor_registration-field_qualifications_markup
+features[field_instance][] = entityform-fex_wisp_sponsor_registration-field_remote_wisp
 features[field_instance][] = entityform-fex_wisp_sponsor_registration-field_responsibility
 features[field_instance][] = entityform-fex_wisp_sponsor_registration-field_salary
 features[field_instance][] = entityform-fex_wisp_sponsor_registration-field_state_province
