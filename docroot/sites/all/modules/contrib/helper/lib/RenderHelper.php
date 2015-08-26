@@ -12,7 +12,7 @@ class RenderHelper {
    * @param string $replace
    *   The string to replace all instances of $search with.
    */
-  function rewriteStatesSelector(array &$elements, $search, $replace) {
+  public static function rewriteStatesSelector(array &$elements, $search, $replace) {
     if (!empty($elements['#states'])) {
       foreach ($elements['#states'] as $state => $ids) {
         foreach ($ids as $id => $value) {
@@ -27,5 +27,13 @@ class RenderHelper {
     foreach (element_children($elements) as $key) {
       static::rewriteStatesSelector($elements[$key], $search, $replace);
     }
+  }
+
+  public static function filterElementChildren(array $elements) {
+    return array_intersect_key($elements, array_flip(element_children($elements)));
+  }
+
+  public static function filterVisibleElementChildren(array $elements) {
+    return array_intersect_key($elements, array_flip(element_get_visible_children($elements)));
   }
 }

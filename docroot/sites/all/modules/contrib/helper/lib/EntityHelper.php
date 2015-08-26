@@ -49,6 +49,71 @@ class EntityHelper {
     return reset($entities);
   }
 
+  /**
+   * Fetch entity IDs that have a certain label.
+   *
+   * @param string $entity_type
+   *   The entity type of $entity.
+   * @param string $label
+   *   The label of the entity to load.
+   * @param string $bundle
+   *   An optional bundle to restrict the results to.
+   * @param object $query
+   *   An optional EntityFieldQuery object to use to perform the query.
+   *
+   * @return array
+   *   An array of matching entity IDs.
+   *
+   * @throws Exception
+   */
+  public static function queryIdsByLabel($entity_type, $label, $bundle = NULL, $query = NULL) {
+    $info = entity_get_info($entity_type);
+    if (empty($info['entity keys']['label'])) {
+      throw new Exception("Unable to load entities of type $entity_type by label.");
+    }
+
+    if (!isset($query)) {
+      $query = new EntityFieldQuery();
+      $query->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT');
+    }
+
+    $query->entityCondition('entity_type', $entity_type);
+    if (isset($bundle)) {
+      $query->entityCondition('bundle', $bundle);
+    }
+    $query->propertyCondition($info['entity keys']['label'], $label);
+
+    $results = $query->execute();
+    if (!empty($results[$entity_type])) {
+      return array_keys($results[$entity_type]);
+    }
+    else {
+      return array();
+    }
+  }
+
+  /**
+   * Fetch an entity ID that have a certain label.
+   *
+   * @param string $entity_type
+   *   The entity type of $entity.
+   * @param string $label
+   *   The label of the entity to load.
+   * @param string $bundle
+   *   An optional bundle to restrict the results to.
+   * @param object $query
+   *   An optional EntityFieldQuery object to use to perform the query.
+   *
+   * @return int|bool
+   *   An entity ID if a match was found, or FALSE otherwise.
+   *
+   * @throws Exception
+   */
+  public static function queryIdByLabel($entity_type, $label, $bundle = NULL, $query = NULL) {
+    $ids = static::queryIdsByLabel($entity_type, $label, $bundle, $query);
+    return reset($ids);
+  }
+
   public static function entityTypeHasProperty($entity_type, array $parents) {
     if ($info = entity_get_info($entity_type)) {
       return drupal_array_get_nested_value($info, $parents);
@@ -178,37 +243,86 @@ class EntityHelper {
     entity_get_controller($entity_type)->resetCache(array($id));
   }
 
+  public static function updateBaseTableValues($entity_type, $entity, array $fields = array(), $save_revision = TRUE) {
+    $entity_info = entity_get_info($entity_type);
+    if (empty($entity_info['base table'])) {
+      throw new Exception("Unable to update base tables for entity type $entity_type.");
+    }
+
+    list($id, $revision_id) = entity_extract_ids($entity_type, $entity);
+    if (empty($id)) {
+      throw new Exception("Unable to update base tables for an unsaved entity.");
+    }
+
+    $base_values = array();
+    foreach ($entity_info['schema_fields_sql']['base table'] as $field_name) {
+      // Check if we care about saving this field or not.
+      if (!empty($fields) && !in_array($field_name, $fields)) {
+        continue;
+      }
+
+      if (property_exists($entity, $field_name)) {
+        $base_values[$field_name] = $entity->{$field_name};
+      }
+    }
+
+    if (!empty($base_values)) {
+      db_update($entity_info['base table'])
+        ->fields($base_values)
+        ->condition($entity_info['entity keys']['id'], $id)
+        ->execute();
+    }
+
+    if ($save_revision && !empty($revision_id) && !empty($entity_info['revision table']) && !empty($entity_info['entity keys']['revision'])) {
+      $revision_values = array();
+      foreach ($entity_info['schema_fields_sql']['revision table'] as $field_name) {
+        // Check if we care about saving this field or not.
+        if (!empty($fields) && !in_array($field_name, $fields)) {
+          continue;
+        }
+
+        if (property_exists($entity, $field_name)) {
+          $revision_values[$field_name] = $entity->{$field_name};
+        }
+      }
+
+      if (!empty($revision_values)) {
+        db_update($entity_info['revision table'])
+          ->fields($revision_values)
+          ->condition($entity_info['entity keys']['id'], $id)
+          ->condition($entity_info['entity keys']['revision'], $revision_id)
+          ->execute();
+      }
+    }
+
+    // Clear the cache for this entity now.
+    entity_get_controller($entity_type)->resetCache(array($id));
+  }
+
   /**
    * Return an array of all the revision IDs of a given entity.
    *
    * @param string $entity_type
    *   The entity type of $entity.
-   * @param object $entity
-   *   The entity object.
-   * @param boolean $exclude_current_revision_id
-   *   (optional) If TRUE will exclude the current revision of $entity from the
-   *   results.
+   * @param int $entity_id
+   *   The entity ID.
    *
    * @return array
-   *   An array of revision IDs associated with $entity.
+   *   An array of revision IDs associated with entity.
    */
-  public static function getAllRevisionIDs($entity_type, $entity, $exclude_current_revision_id = FALSE) {
+  public static function getAllRevisionIDs($entity_type, $entity_id) {
     $info = entity_get_info($entity_type);
 
     if (empty($info['entity keys']['id']) || empty($info['entity keys']['revision']) || empty($info['revision table'])) {
       return array();
     }
 
-    list($entity_id, $revision_id) = entity_extract_ids($entity_type, $entity);
     $id_key = $info['entity keys']['id'];
     $revision_key = $info['entity keys']['revision'];
 
     $query = db_select($info['revision table'], 'revision');
     $query->addField('revision', $revision_key);
     $query->condition('revision.' . $id_key, $entity_id);
-    if ($exclude_current_revision_id) {
-      $query->condition('revision.' . $revision_key, $revision_id, '<>');
-    }
     return $query->execute()->fetchCol();
   }
 
@@ -272,6 +386,11 @@ class EntityHelper {
     return !empty($info['bundles'][$bundle]['label']) ? $info['bundles'][$bundle]['label'] : FALSE;
   }
 
+  public static function getBundleOptions($entity_type) {
+    $info = entity_get_info($entity_type);
+    return !empty($info['bundles']) ? ArrayHelper::extractNestedValuesToArray($info['bundles'], array('label')) : array();
+  }
+
   public static function getViewModeOptions($entity_type, $bundle = NULL, $include_disabled = TRUE) {
     $view_modes = array();
     $info = entity_get_info($entity_type);
@@ -281,7 +400,7 @@ class EntityHelper {
     }
 
     if (!empty($info['view modes'])) {
-      $view_modes += ArrayHelper::extractNestedValuesToArray($info['view_modes'], array('label'));
+      $view_modes += ArrayHelper::extractNestedValuesToArray($info['view modes'], array('label'));
     }
 
     // Filter out disabled view modes if requested, and a bundle was provided.
@@ -295,5 +414,44 @@ class EntityHelper {
     }
 
     return $view_modes;
+  }
+
+  public static function view($entity_type, $entity, $view_mode = 'default', $langcode = NULL, $page = NULL) {
+    if ($output = static::viewMultiple($entity_type, array($entity), $view_mode, $langcode, $page)) {
+      return reset($output);
+    }
+    else {
+      return array();
+    }
+  }
+
+  public static function viewMultiple($entity_type, array $entities, $view_mode = 'default', $langcode = NULL, $page = NULL) {
+    if (empty($entities)) {
+      return array();
+    }
+
+    if (!function_exists('entity_view')) {
+      throw new Exception("Cannot use EntityHelper::viewMultiple() without the Entity API module enabled.");
+    }
+
+    $output = entity_view($entity_type, $entities, $view_mode, $langcode, $page);
+
+    // Workaround for file_entity module that does not have the patch in
+    // https://www.drupal.org/node/2365821 applied yet.
+    if ($entity_type === 'file' && isset($output['files'])) {
+      $output = array('file' => reset($output));
+    }
+
+    return !empty($output[$entity_type]) ? $output[$entity_type] : array();
+  }
+
+  public static function filterByAccess($entity_type, array $entities, $op = 'view') {
+    if (!function_exists('entity_access')) {
+      throw new Exception("Cannot use EntityHelper::viewMultiple() without the Entity API module enabled.");
+    }
+
+    return array_filter($entities, function($entity) use ($entity_type, $op) {
+      return entity_access($op, $entity_type, $entity);
+    });
   }
 }

@@ -781,7 +781,7 @@ function people_profiles_field_default_field_instances() {
   $field_instances['node-people_profile-field_faculty_on_leave'] = array(
     'bundle' => 'people_profile',
     'deleted' => 0,
-    'description' => 'Please contact Kristie Lamb (kt264@cornell.edu) to update this information.',
+    'description' => 'Please contact Tonya Eiklor (tle37@cornell.edu) to update this information.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1616,7 +1616,7 @@ function people_profiles_field_default_field_instances() {
   t('Other Areas of Expertise');
   t('Outreach Statement');
   t('Overview');
-  t('Please contact Kristie Lamb (kt264@cornell.edu) to update this information.');
+  t('Please contact Tonya Eiklor (tle37@cornell.edu) to update this information.');
   t('Professional Activities');
   t('Profile Image');
   t('Profile Type');

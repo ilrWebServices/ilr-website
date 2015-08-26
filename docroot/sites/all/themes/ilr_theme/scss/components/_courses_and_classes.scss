@@ -36,6 +36,11 @@
     text-transform: uppercase;
   }
 
+  span.class-title {
+    font-weight: bold;
+    @include adjust-font-size-to(16px);
+  }
+
   .date-time span.date {
     display: block;
     font-weight: bold;
@@ -56,13 +61,30 @@
       display: none;
     }
   }
-  .button-request-info span {
-    display: none;
-  }
   .request-info {
-    @include adjust-font-size-to(14px, .7);
+    @include adjust-font-size-to(16px);
     font-style: italic;
     display: block;
+    @include leader(1);
+    color: $gray-dark;
+    text-decoration: underline;
+    span {
+      display: none;
+    }
+    &.button {
+      text-decoration: none;
+      font-style: normal;
+    }
+    &.schedule {
+      @include adjust-font-size-to(14px, .7);
+    }
+  }
+  .schedule {
+    @include adjust-font-size-to(14px, .7);
+    font-style: italic;
+    .request-info {
+      @include adjust-font-size-to(22px, 1.3);
+    }
   }
 
   .class-detail-toggle {
@@ -127,7 +149,14 @@
     .field-name-body {
       clear: left;
     }
+    .back-link {
+      clear: left;
+    }
   }
+}
+
+.node-sdc-class .node-sdc-course h2 a:hover {
+  text-decoration: underline;
 }
 
 .view-sdc-course-listing {

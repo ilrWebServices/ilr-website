@@ -133,21 +133,23 @@ function helper_flush_caches() {
 function helper_preprocess_menu_local_action(&$variables) {
   if (helper_is_tweak_enabled('local_action_destination')) {
     $link = &$variables['element']['#link'];
+    if (isset($link['href'])) {
 
-    // Some local actions need to be whitelisted as having a redirect causes bugs.
-    switch ($link['path']) {
-      case 'admin/appearance/install':
-      case 'admin/modules/install':
-      case 'admin/reports/updates/install':
-      case 'admin/structure/views/add':
-      case 'admin/structure/flags/add':
-      case 'admin/structure/multifield/add':
-        return;
+      // Some local actions need to be whitelisted as having a redirect causes bugs.
+      switch ($link['href']) {
+        case 'admin/appearance/install':
+        case 'admin/modules/install':
+        case 'admin/reports/updates/install':
+        case 'admin/structure/views/add':
+        case 'admin/structure/flags/add':
+        case 'admin/structure/multifield/add':
+          return;
+      }
+
+      $link += array('localized_options' => array());
+      $link['localized_options'] += array('query' => array());
+      $link['localized_options']['query'] += drupal_get_destination();
     }
-
-    $link += array('localized_options' => array());
-    $link['localized_options'] += array('query' => array());
-    $link['localized_options']['query'] += drupal_get_destination();
   }
 }
 
@@ -260,4 +262,29 @@ function helper_honeypot_reject($form_id, $uid, $type) {
       system_block_ip_action();
     }
   }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function helper_cron() {
+  // Remove deleted *and inactive* fields since field_purge_batch() will not.
+  module_load_include('inc', 'helper', 'helper.field');
+  _helper_purge_inactive_deleted_fields();
+}
+
+/**
+ * Implements hook_modules_uninstalled().
+ */
+function helper_modules_uninstalled(array $modules) {
+  // Find fields owned by the uninstalled modules and force delete them.
+  module_load_include('inc', 'helper', 'helper.field');
+  $fields = field_read_fields(array('module' => array($modules)), array('include_inactive' => 1));
+  foreach ($fields as $field) {
+    _helper_field_delete_field($field);
+    watchdog('helper', 'Deleted inactive field @field_name since the @module module was uninstalled.', array('@field_name' => $field['field_name'], '@module' => $field['module']));
+  }
+
+  // Remove deleted *and inactive* fields since field_purge_batch() will not.
+  _helper_purge_inactive_deleted_fields();
 }

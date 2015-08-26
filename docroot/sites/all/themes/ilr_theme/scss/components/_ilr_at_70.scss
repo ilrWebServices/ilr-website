@@ -193,12 +193,6 @@ body.node-type-reflection {
     img {
       @include margin-trailer (1);
     }
-    p {
-      &:first-child {
-        @include adjust-font-size-to(22px);
-        @include adjust-leading-to(1);
-      }
-    }
     .field-type-text, .field-type-list-text {
       @include adjust-font-size-to(22px);
       font-style: oblique;

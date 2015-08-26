@@ -7,20 +7,30 @@
         return false;
       });
 
+      $('.node-readmoremore a').click(function(){
+        nid = $(this).attr('data-nid');
+        openReflectionModal(nid);
+        return false;
+      });
+
       var isNumeric = function(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
+      }
+
+      var openReflectionModal = function(nid) {
+        $.fancybox({
+          'type': 'iframe',
+          'autoDimensions' : true,
+          'autoScale' : true,
+          'href' : 'node/'+nid+'?layout=0',
+        });
       }
 
       $(window).load(function() {
         if (hash = window.location.hash) {
           var nid = hash.substring(1);
           if (isNumeric(nid)) {
-            $.fancybox({
-              'type': 'iframe',
-              'autoDimensions' : true,
-              'autoScale' : true,
-              'href' : 'node/'+nid+'?layout=0',
-            });
+            openReflectionModal(nid);
           }
         }
 

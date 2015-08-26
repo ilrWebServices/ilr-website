@@ -46,42 +46,26 @@ class CacheHelper {
   }
 
   /**
-   * Perform a cached HTTP request.
+   * A copy of cache_set() that allows multiple values to be set at once.
    *
-   * @param string $url
-   *   A string containing a fully qualified URI.
-   * @param array $options
-   *   (optional) An array of options in the same format as
-   *   drupal_http_request().
-   *
-   * @return mixed
-   *   A response object in the same format as drupal_http_request().
+   * @param array $data
+   *   An array of values to cache, keyed by the cache ID of the data to store
+   *   (cid).
+   * @param string $bin
+   *   The cache bin to store the data in.
+   * @param int $expire
+   *   The expiration value to pass to cache_set().
    */
-  public static function httpRequest($url, array $options = array()) {
-    $cid = static::cachedRequestGetCid($url, $options);
-    $bin = isset($options['cache']['bin']) ? $options['cache']['bin'] : 'cache';
-
-    if ($cid && $cache = static::get($cid, $bin)) {
-      return $cache->data;
-    }
-    else {
-      $response = drupal_http_request($url, $options);
-      if ($cid) {
-        $expire = isset($options['cache']['expire']) ? $options['cache']['expire'] : CACHE_TEMPORARY;
-        cache_set($cid, $response, $bin, $expire);
-      }
-      return $response;
+  public static function setMultiple(array $data, $bin = 'cache', $expire = CACHE_PERMANENT) {
+    foreach ($data as $cid => $value) {
+      cache_set($cid, $value, $bin, $expire);
     }
   }
 
-  public static function cachedRequestGetCid($url, array $options) {
-    if (isset($options['cache']) && $options['cache'] === FALSE) {
-      return FALSE;
-    }
-    if (isset($options['cache']['cid'])) {
-      return $options['cache']['cid'];
-    }
-    $cid_parts = array($url, serialize(array_diff_key($options, drupal_map_assoc(array('cache')))));
-    return 'http-request:' . drupal_hash_base64(serialize($cid_parts));
+  /**
+   * Deprecated.
+   */
+  public static function httpRequest($url, array $options = array()) {
+    return HttpHelper::cachedRequest($url, $options);
   }
 }
