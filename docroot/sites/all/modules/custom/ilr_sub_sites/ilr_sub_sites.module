@@ -189,6 +189,17 @@ function ilr_sub_sites_preprocess_node(&$variables) {
   }
 }
 
+/**
+ * Handles custom page template processing
+ */
+function ilr_sub_sites_preprocess_page(&$variables) {
+  if (_ilr_sub_sites_get_current_subsite_name() == "ILR Review") {
+    $variables['logo'] = file_create_url(drupal_get_path('theme', 'ilr_theme') . "/images/logo-on-white.svg");
+  }
+}
+
+
+
 //////////////////////
 // Custom functions //
 //////////////////////
