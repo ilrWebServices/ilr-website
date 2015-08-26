@@ -48,6 +48,28 @@
         });
         return false;
       });
+
+      positionCourseSearchBox = function() {
+        yPos = 0;
+        currentMenu = $('#sidebar-first ul.menu.current');
+        currentMenu.children('li').each(function(){
+          yPos = $(this).position().top + $(this).height() + 30;
+        });
+
+        $('#block-ilr-sdc-listings-course-search').animate({
+          'top' : yPos
+        }, 200);
+      };
+
+      prepareSearchBoxPosition = function() {
+        setTimeout(positionCourseSearchBox, 200);
+      };
+
+      // If the course search block is on the page, position it and add the listener
+      if ($('#block-ilr-sdc-listings-course-search').length) {
+        $('a.animate-menu').live("click", prepareSearchBoxPosition);
+        setTimeout(positionCourseSearchBox,300); // Set a timer to position it
+      }
     }
   };
 })(jQuery);

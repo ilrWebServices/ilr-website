@@ -29,7 +29,7 @@ function ilr_sdc_listings_context_default_contexts() {
         'ilr_sdc_listings-course_search' => array(
           'module' => 'ilr_sdc_listings',
           'delta' => 'course_search',
-          'region' => 'content',
+          'region' => 'sidebar_first',
           'weight' => '-10',
         ),
       ),

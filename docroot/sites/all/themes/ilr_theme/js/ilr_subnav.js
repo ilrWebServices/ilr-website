@@ -13,6 +13,8 @@
           'visibility': 'visible',
           'left'      : '100%',
         });
+        $(currentMenu).addClass('current');
+        $(oldMenu).removeClass('current');
         TweenLite.to($(currentMenu), .6, {left:pixelShift, ease: easing });
         TweenLite.to($(oldMenu), .6, {left:"-" + pixelShift, onComplete:hideMenu, onCompleteParams:[$(oldMenu), currentMenu]});
       }
@@ -27,7 +29,8 @@
           'left': '-' + pixelShift,
         });
         TweenLite.to($(oldMenu), .6, {left: 0, ease: easing});
-
+        $(currentMenu).removeClass('current');
+        $(oldMenu).addClass('current');
         if (menuNeedsAdditionalButtons(oldMenu)) {
           addButtonsToMenu(oldMenu);
         }
@@ -71,6 +74,7 @@
               'min-height': minHeight,
               'visibility': 'visible',
             });
+            $(currentMenu).toggleClass('current');
           }
         }
 
@@ -154,14 +158,14 @@
           linkText = 'Main Menu';
         }
         menu.prepend('<li class="section"><a href="'+sectionUrl+'">'+sectionText+'</a></li>');
-        menu.prepend('<li class="back"><a class="prev-menu" href="#"><span> </span> ' + linkText + '</a></li>');
+        menu.prepend('<li class="back"><a class="prev-menu animate-menu" href="#"><span> </span> ' + linkText + '</a></li>');
         $('.prev-menu').click(prevClick);
       }
 
       function addForwardButtonToMenus() {
         $('li.expanded').each(function(){
           if(menuItemNeedsArrow($(this))) {
-            $(this).append('<a class="next-menu" href="#"><span></span></a>');
+            $(this).append('<a class="next-menu animate-menu" href="#"><span></span></a>');
           }
         });
         $('.next-menu').click(nextClick);
