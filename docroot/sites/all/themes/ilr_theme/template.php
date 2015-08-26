@@ -60,7 +60,6 @@ function ilr_theme_preprocess_page(&$variables) {
 
   $translate_block = ilr_google_translate_block_view('google_translate');
   $variables['page']['footer'][] = array('#markup' => $translate_block['content']);
-  $variables['logo'] = file_create_url(drupal_get_path('theme', 'ilr_theme') . "/images/logo.svg");
 
   if ( isset($_GET['layout']) && $_GET['layout'] == '0' ) {
     $variables['theme_hook_suggestions'][] = 'page__content_only';
