@@ -1,8 +1,29 @@
 body.ilr-review {
-  #header-region {
-    background-color: $blue-ilrreview;
-    a {
-      color: white;
+  header {
+    background-image: none;
+    background-color: white;
+
+    .search-button {
+      a {
+        color: $blue-ilrreview;
+      }
+    }
+
+    #search-form {
+      input {
+        background: $gray-light;
+        color: $blue-ilrreview;
+      }
+      input:focus {
+        color: $blue-ilrreview;
+      }
+    }
+
+    #header-region {
+      background-color: $blue-ilrreview;
+      a {
+        color: white;
+      }
     }
   }
 
