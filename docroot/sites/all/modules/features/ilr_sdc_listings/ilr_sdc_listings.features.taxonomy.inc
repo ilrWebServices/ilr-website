@@ -17,13 +17,5 @@ function ilr_sdc_listings_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
-    'sdc_department' => array(
-      'name' => 'SDC Department',
-      'machine_name' => 'sdc_department',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-    ),
   );
 }

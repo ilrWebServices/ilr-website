@@ -871,7 +871,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator_id'] = 'field_course_sponsor_reference_tid_op';
-  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Sponsor';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator'] = 'field_course_sponsor_reference_tid_op';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['identifier'] = 'field_course_sponsor_reference_tid';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['multiple'] = TRUE;
@@ -1051,9 +1051,10 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator_id'] = 'field_course_sponsor_reference_tid_op';
-  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Sponsor (field_course_sponsor_reference)';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator'] = 'field_course_sponsor_reference_tid_op';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['identifier'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1215,7 +1216,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator_id'] = 'field_course_sponsor_reference_tid_op';
-  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Sponsor';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator'] = 'field_course_sponsor_reference_tid_op';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['identifier'] = 'field_course_sponsor_reference_tid';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['multiple'] = TRUE;
@@ -1427,7 +1428,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Department */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_sdc_department']['id'] = 'field_sdc_department';
   $handler->display->display_options['fields']['field_sdc_department']['table'] = 'field_data_field_sdc_department';
   $handler->display->display_options['fields']['field_sdc_department']['field'] = 'field_sdc_department';
@@ -1437,10 +1438,6 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['fields']['field_sdc_department']['alter']['text'] = '<h3>[field_sdc_department]</h3>';
   $handler->display->display_options['fields']['field_sdc_department']['element_type'] = 'h3';
   $handler->display->display_options['fields']['field_sdc_department']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sdc_department']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_sdc_department']['settings'] = array(
-    'field_formatter_label' => '',
-  );
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -1518,7 +1515,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator_id'] = 'field_course_sponsor_reference_tid_op';
-  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Sponsor';
+  $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['label'] = 'Centers, Institutes, and Programs';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['operator'] = 'field_course_sponsor_reference_tid_op';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['identifier'] = 'field_course_sponsor_reference_tid';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['expose']['multiple'] = TRUE;
