@@ -3,6 +3,12 @@ body.ilr-review {
     background-image: none;
     background-color: white;
 
+    .jpanel-trigger-container {
+      a.jpanel-trigger {
+        color: $blue-ilrreview;
+      }
+    }
+
     .search-button {
       a {
         color: $blue-ilrreview;
@@ -11,7 +17,7 @@ body.ilr-review {
 
     #search-form {
       input {
-        background: $gray-light;
+        background: $gray-bg;
         color: $blue-ilrreview;
       }
       input:focus {
@@ -23,6 +29,10 @@ body.ilr-review {
       background-color: $blue-ilrreview;
       a {
         color: white;
+      }
+
+      h2 {
+        font-style: italic;
       }
     }
   }
