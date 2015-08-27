@@ -1508,6 +1508,62 @@ function ilr_sdc_listings_views_default_views() {
     'sdc_course' => 'sdc_course',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Topic (field_course_topic_reference) */
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['id'] = 'field_course_topic_reference_tid';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['table'] = 'field_data_field_course_topic_reference';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['field'] = 'field_course_topic_reference_tid';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['operator_id'] = 'field_course_topic_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['label'] = 'Topic';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['operator'] = 'field_course_topic_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['identifier'] = 'field_course_topic_reference_tid';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
+  );
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_course_topic_reference_tid']['vocabulary'] = 'course_topic';
+  /* Filter criterion: Content: Format (field_course_format_reference) */
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['id'] = 'field_course_format_reference_tid';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['table'] = 'field_data_field_course_format_reference';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['field'] = 'field_course_format_reference_tid';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['operator_id'] = 'field_course_format_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['label'] = 'Format';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['operator'] = 'field_course_format_reference_tid_op';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['identifier'] = 'field_course_format_reference_tid';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
+  );
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_course_format_reference_tid']['vocabulary'] = 'course_format';
   /* Filter criterion: Content: Sponsor (field_course_sponsor_reference) */
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['id'] = 'field_course_sponsor_reference_tid';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['table'] = 'field_data_field_course_sponsor_reference';
