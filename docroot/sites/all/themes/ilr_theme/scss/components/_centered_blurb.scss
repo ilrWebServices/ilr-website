@@ -9,7 +9,7 @@
   @include trailer(0);
 }
 
-.mission, .centered-blurb {
+.centered-blurb {
   text-align: center;
   font-family: $font-headers;
   @include adjust-font-size-to(30px);
