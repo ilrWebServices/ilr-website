@@ -19,7 +19,7 @@ function ilr_sdc_listings_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'professional-programs*' => 'professional-programs*',
+        '*/professional-programs*' => '*/professional-programs*',
       ),
     ),
   );
