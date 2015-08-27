@@ -1,5 +1,5 @@
 #block-ilr-sdc-listings-course-search {
-  @include grid-span(1,2);
   @include trailer(2);
   z-index: 10;
+  position: relative;
 }
