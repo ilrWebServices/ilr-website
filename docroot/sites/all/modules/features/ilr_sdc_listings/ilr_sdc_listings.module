@@ -241,6 +241,10 @@ function ilr_sdc_listings_search_form($form, &$form_state) {
     '#default_value' => isset($_REQUEST['s']) ? $_REQUEST['s'] : '',
   );
 
+  $form['advanced_link'] = array(
+    '#markup' => '<p><a class="advanced search-toggle" href="#">Filter by topic, format, etc.</a></p>',
+  );
+
   $form['search_input']['submit'] = array(
     '#type' => 'submit',
     '#value' => 'search',
@@ -1276,7 +1280,7 @@ function _ilr_sdc_listings_hide_view_filters($form, &$form_state) {
   $view = $form_state['view'];
   if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
     //$form['submit']['#access'] = FALSE;
-    $hide_elements = array('field_online_class_value', 'field_sdc_department_tid');
+    $hide_elements = array('field_online_class_value', 'field_course_sponsor_reference_tid');
     foreach ($hide_elements as $hide_element) {
       $form[$hide_element]['#access'] = FALSE;
     }

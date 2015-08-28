@@ -69,6 +69,19 @@
       if ($('#block-ilr-sdc-listings-course-search').length) {
         $('a.animate-menu').live("click", prepareSearchBoxPosition);
         setTimeout(positionCourseSearchBox,300); // Set a timer to position it
+        if ($('#views-exposed-form-sdc-course-listing-page').length) {
+          $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
+          $basicSearch = $('#ilr-sdc-listings-search-form');
+          $advancedSearch.hide();
+          $advancedSearch.insertAfter($basicSearch);
+          $advancedSearch.append('<p><a class="keyword search-toggle" href="#">Return to keyword search</a></p>');
+          $('.search-toggle').click(function(){
+            $advancedSearch.toggle();
+            $basicSearch.toggle();
+            return false;
+          });
+        }
+
       }
     }
   };
