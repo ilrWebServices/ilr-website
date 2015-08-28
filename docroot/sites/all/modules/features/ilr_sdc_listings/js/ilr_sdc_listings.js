@@ -75,13 +75,15 @@
           $advancedSearch.hide();
           $advancedSearch.insertAfter($basicSearch);
           $advancedSearch.append('<p><a class="keyword search-toggle" href="#">Return to keyword search</a></p>');
+          $basicSearch.append('<p><a class="advanced search-toggle" href="#">Filter by topic, format, etc.</a></p>');
           $('.search-toggle').click(function(){
             $advancedSearch.toggle();
             $basicSearch.toggle();
             return false;
           });
-        }
+        } else {
 
+        }
       }
     }
   };

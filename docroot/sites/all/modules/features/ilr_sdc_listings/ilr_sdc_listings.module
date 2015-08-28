@@ -241,10 +241,6 @@ function ilr_sdc_listings_search_form($form, &$form_state) {
     '#default_value' => isset($_REQUEST['s']) ? $_REQUEST['s'] : '',
   );
 
-  $form['advanced_link'] = array(
-    '#markup' => '<p><a class="advanced search-toggle" href="#">Filter by topic, format, etc.</a></p>',
-  );
-
   $form['search_input']['submit'] = array(
     '#type' => 'submit',
     '#value' => 'search',
