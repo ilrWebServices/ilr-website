@@ -418,6 +418,7 @@ function _process_fex_wisp_sponsor_registration(&$entityform) {
     ? "ilrfex@cornell.edu, ilrwisp@cornell.edu"
     : 'ilr' . strtolower($program) . '@cornell.edu';
 
+  $admin_email .= ', mlh15@cornell.edu';
   _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject);
 }
 

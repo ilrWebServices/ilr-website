@@ -15,6 +15,7 @@ function ilr_forms_students_entityform_presave($entityform) {
     _ilr_forms_students_set_fexwisp_programYear($entityform);
     _ilr_forms_students_set_fexwisp_supervisor_fields($entityform);
     _ilr_forms_students_fix_fexwisp_alum_college_fields($entityform);
+    _ilr_forms_students_set_fexwisp_state_if_remote($entityform);
   }
   elseif ($entityform->type == 'fex_wisp_student_application') {
     _ilr_forms_students_set_fexwisp_program($entityform);
@@ -53,6 +54,15 @@ function _ilr_forms_students_set_fexwisp_programYear($entityform) {
   $entityform_wrapper->field_h_school_year->set($programYear);
 }
 
+/**
+ * Set state to "Remote" if student will be working remotely (wisp sponsor)
+ */
+function _ilr_forms_students_set_fexwisp_state_if_remote($entityform) {
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  if ($entityform_wrapper->field_remote_wisp->value() == 'remote') {
+    $entityform_wrapper->field_state_province_addl_3->set("Remote");
+  }
+}
 
 /**
  * Set fex/wisp sponsor form fields about the supervisor, if the sponsor didn't
