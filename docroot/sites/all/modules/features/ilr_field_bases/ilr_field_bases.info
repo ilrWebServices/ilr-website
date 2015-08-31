@@ -330,6 +330,7 @@ features[field_base][] = field_relationship
 features[field_base][] = field_remote_site_details
 features[field_base][] = field_remote_site_ip_or_isdn
 features[field_base][] = field_remote_site_name
+features[field_base][] = field_remote_wisp
 features[field_base][] = field_request
 features[field_base][] = field_response_checkbox
 features[field_base][] = field_responsibility
