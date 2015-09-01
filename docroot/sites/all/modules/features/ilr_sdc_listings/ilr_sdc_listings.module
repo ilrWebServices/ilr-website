@@ -685,10 +685,9 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
       <div class="action"><a class="button button-info" href="/'.$link.'">Learn More</a></div>';
   } // full node
   else {
-    $markup .= '<p class="schedule">'.$help_text;
+    $markup .= '<p class="schedule">'.$help_text.'</p>';
     $markup .= '<a class="button request-info course" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Request';
     $markup .= '<span class="course-title">'.$course->title.'</span></a>';
-    $markup .= '</p>';
   }
   $markup .= '</div>';
   return $markup;
