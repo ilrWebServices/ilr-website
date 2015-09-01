@@ -1011,6 +1011,9 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
   if ($variables['type'] == 'sdc_course') {
     $variables['title'] = filter_xss($variables['elements']['#node']->title, array('em'));
     if ($variables['view_mode'] == 'teaser') {
+      if (count(_ilr_sdc_listings_get_classes_for_course($variables['node']))) {
+        $variables['classes_array'][] = 'scheduled';
+      }
       unset($variables['content']['links']['node']['#links']['node-readmore']);
     }
   }

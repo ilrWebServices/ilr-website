@@ -1,4 +1,6 @@
 .class-details {
+  @include leader(.5);
+  @include trailer(1);
   div.form-type-radio {
     @include leader(1);
     clear: left;
