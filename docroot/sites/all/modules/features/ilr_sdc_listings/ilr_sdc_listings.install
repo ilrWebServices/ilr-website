@@ -195,6 +195,13 @@ function ilr_sdc_listings_update_7008() {
 }
 
 /**
+ * Sets the class full message
+ */
+function ilr_sdc_listings_update_7009() {
+  variable_set('sdc_class_full_teaser','Seats in this session are limited. Please <a href="mailto:ILRCustomerService@cornell.edu">contact ILR Customer Service</a> or call 866-470-1922.');
+}
+
+/**
  * Update aliases for sdc content types.
  */
 function _ilr_sdc_listings_update_aliases() {

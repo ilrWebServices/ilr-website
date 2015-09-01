@@ -1396,13 +1396,14 @@ function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
 function _ilr_sdc_listings_add_course_full_markup(&$form, $class) {
   $wrapper = ilr_get_node_wrapper($class);
 
-  $form['course_details'] = array(
+  $markup = '<div class="class-full">';
+  $markup .= _ilr_sdc_listings_generate_class_radio_label($class);
+  $markup .= '<p class="message">' . variable_get('sdc_class_full_teaser') . '</p>';
+  $markup .= '</div>';
+
+  $form['class_full_with_radio_label_' . $class_id] = array(
     '#type' => 'markup',
-    '#markup' => '<span class="cost">$' . $wrapper->field_price->value() . '</span>',
-  );
-  $form['class_full_' . $wrapper->field_class_id->value()] = array(
-    '#type' => 'markup',
-    '#markup' => '<p class="class class-full">' . variable_get('sdc_class_full_teaser') . '</p>',
+    '#markup' => $markup,
   );
 }
 

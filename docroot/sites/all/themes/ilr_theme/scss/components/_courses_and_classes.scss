@@ -17,6 +17,14 @@
     }
   }
 
+  .class-full {
+    margin-left: 1.2em;
+    .message {
+      clear: left;
+      @include adjust-font-size-to(14px, .7);
+    }
+  }
+
   span, .street-block {
     clear: left;
     @include adjust-font-size-to(14px, .7);
