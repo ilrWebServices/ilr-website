@@ -21,6 +21,58 @@ function ilr_forms_students_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function ilr_forms_students_default_entityform_type() {
   $items = array();
+  $items['career_and_networking_panels'] = entity_import('entityform_type', '{
+    "type" : "career_and_networking_panels",
+    "label" : "Student-Alumni Career Pathways:  Endless Possibilities",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "Student-Alumni Career Pathways:  Endless Possibilities",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for registering for the ILR Alumni Association\\u0027s Career and Networking Panels event. You will receive a confirmation email shortly, indicating which sessions you signed up to attend.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent Details:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EPlease refer to the original email you received for the full details about this event.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact Sue Sappington, \\u003Ca href=\\u0022mailto:ss446@cornell.edu\\u0022\\u003Ess446@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "36" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 1,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "ss446@cornell.edu"
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['check_your_eligibility_milr'] = entity_import('entityform_type', '{
     "type" : "check_your_eligibility_milr",
     "label" : "MILR: Check Your Eligibility",
