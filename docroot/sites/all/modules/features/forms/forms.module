@@ -598,6 +598,9 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
   }
 
   switch ($entity->type) {
+    case 'career_and_networking_panels':
+      $options = _forms_year_relative_options(0,7);
+      break;
     case 'check_your_eligibility_milr':
       $options = _forms_year_relative_options(4,-70);
       break;

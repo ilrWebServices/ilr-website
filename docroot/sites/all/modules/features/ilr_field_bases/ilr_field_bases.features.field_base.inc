@@ -1355,6 +1355,35 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
+  // Exported field_base: 'field_breakout_session'
+  $field_bases['field_breakout_session'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_breakout_session',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Finance, Business, and Entrepreneurship' => 'Finance, Business, and Entrepreneurship',
+        'Human Resources and HR Consultants' => 'Human Resources and HR Consultants',
+        'Labor Movement, Government and Social Justice' => 'Labor Movement, Government and Social Justice',
+        'Sports, Entertainment and Media' => 'Sports, Entertainment and Media',
+        'I won\'t be attending any of the breakout sessions.' => 'I won\'t be attending any of the breakout sessions.',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_building'
   $field_bases['field_building'] = array(
     'active' => 1,
@@ -11725,6 +11754,32 @@ function ilr_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_yes_no',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_yes_no_2'
+  $field_bases['field_yes_no_2'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_yes_no_2',
     'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
