@@ -1264,6 +1264,9 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
   if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
     // Set After Build function to hide filters.
     $form['#after_build'][] = '_ilr_sdc_listings_hide_view_filters';
+  } //Check to see if there are exposed filters
+  elseif ($view->name == 'sdc_course_listing' && !empty($view->exposed_input)) {
+    $form['#attributes']['class'][] = 'filter-engaged';
   }
 }
 

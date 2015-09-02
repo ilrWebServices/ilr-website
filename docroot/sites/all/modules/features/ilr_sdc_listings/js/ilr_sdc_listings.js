@@ -135,6 +135,10 @@ jQuery.fn.sortElements = (function(){
         setTimeout(positionCourseSearchBox, 200);
       };
 
+      filterIsEngaged = function() {
+        return $('form.filter-engaged').length;
+      };
+
       // If the course search block is on the page, position it and add the listener
       if ($('#block-ilr-sdc-listings-course-search').length) {
         $('a.animate-menu').live("click", prepareSearchBoxPosition);
@@ -142,7 +146,11 @@ jQuery.fn.sortElements = (function(){
         if ($('#views-exposed-form-sdc-course-listing-page').length) {
           $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
           $basicSearch = $('#ilr-sdc-listings-search-form');
-          $advancedSearch.hide();
+          if (filterIsEngaged()) {
+            $basicSearch.hide();
+          } else {
+            $advancedSearch.hide();
+          }
           $advancedSearch.insertAfter($basicSearch);
           $advancedSearch.append('<p><a class="keyword search-toggle" href="#">Return to keyword search</a></p>');
           $basicSearch.append('<p><a class="advanced search-toggle" href="#">Filter by topic, format, etc.</a></p>');
