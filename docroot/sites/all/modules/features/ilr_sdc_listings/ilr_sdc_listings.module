@@ -1265,7 +1265,7 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
     // Set After Build function to hide filters.
     $form['#after_build'][] = '_ilr_sdc_listings_hide_view_filters';
   } //Check to see if there are exposed filters
-  elseif ($view->name == 'sdc_course_listing' && !empty($view->exposed_input)) {
+  elseif ($view->name == 'sdc_course_listing' && !empty($view->exposed_input) && !isset($view->exposed_input['s'])) {
     $form['#attributes']['class'][] = 'filter-engaged';
   }
 }
