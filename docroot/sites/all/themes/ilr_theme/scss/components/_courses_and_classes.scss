@@ -215,6 +215,7 @@
 
 #search-form-submit {
   @extend %cornell-button;
+  @include trailer(1);
 }
 
 #views-exposed-form-sdc-course-listing-page {

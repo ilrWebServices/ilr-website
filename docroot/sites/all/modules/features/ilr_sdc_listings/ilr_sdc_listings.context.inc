@@ -32,6 +32,12 @@ function ilr_sdc_listings_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
+        'views--exp-sdc_course_listing-page' => array(
+          'module' => 'views',
+          'delta' => '-exp-sdc_course_listing-page',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
       ),
     ),
   );

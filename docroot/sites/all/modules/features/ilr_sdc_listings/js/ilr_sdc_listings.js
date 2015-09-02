@@ -123,7 +123,7 @@ jQuery.fn.sortElements = (function(){
         yPos = 0;
         currentMenu = $('#sidebar-first ul.menu.current');
         currentMenu.children('li').each(function(){
-          yPos = $(this).position().top + $(this).height() + 30;
+          yPos = $(this).position().top + $(this).height() + 50;
         });
 
         $('#block-ilr-sdc-listings-course-search').animate({
