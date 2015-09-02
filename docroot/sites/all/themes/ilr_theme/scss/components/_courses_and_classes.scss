@@ -207,6 +207,10 @@
   }
 }
 
+#search-form-submit {
+  @extend %cornell-button;
+}
+
 #views-exposed-form-sdc-course-listing-page {
   #edit-field-address-locality {
     width: 200px;
