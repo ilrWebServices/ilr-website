@@ -292,10 +292,10 @@ function _ilr_sdc_listings_get_course_query_courses_for_strings($string_array) {
   foreach ($string_array as $key => $word) {
     // Key/value pairs are for term references
     $fields = array(
-      'body',
       'field_catalog_prefix',
-      'course_keywords' => 'field_keywords',
       'course_topic' => 'field_course_topic_reference',
+      'course_keywords' => 'field_keywords',
+      'body',
     );
 
     foreach ($fields as $key => $field_name) {
