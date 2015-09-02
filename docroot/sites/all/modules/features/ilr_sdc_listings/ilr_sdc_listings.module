@@ -1404,7 +1404,7 @@ function _ilr_sdc_listings_add_course_full_markup(&$form, $class) {
   $markup .= '<p class="message">' . variable_get('sdc_class_full_teaser') . '</p>';
   $markup .= '</div>';
 
-  $form['class_full_with_radio_label_' . $class_id] = array(
+  $form['class_full_with_radio_label'] = array(
     '#type' => 'markup',
     '#markup' => $markup,
   );
