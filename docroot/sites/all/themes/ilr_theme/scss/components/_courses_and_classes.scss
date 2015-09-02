@@ -120,13 +120,14 @@
 
 .page-professional-programs-public-offerings, .page-professional-programs-search {
   @extend %two-col-content-area;
-  article {
-    @include rhythm-margins(1, 1);
-    @include trailing-border();
-    border-style: 1px solid;
-    border-color: $gray-light;
-  }
 }
+.page-professional-programs-search article {
+  @include rhythm-margins(1, 1);
+  @include trailing-border();
+  border-style: 1px solid;
+  border-color: $gray-light;
+}
+
 .node-type-sdc-course {
   @extend %two-col-content-area;
   .field-name-field-catalog-prefix {

@@ -276,6 +276,7 @@ function _ilr_sdc_listings_custom_search(){
       // Check node titles for search string first
       $results = _ilr_sdc_listings_query_title_for_string($search);
       $words = str_getcsv($search, ' ');
+      dpm(PATHAUTO_IGNORE_WORDS);
       $nids = _ilr_sdc_listings_get_course_query_courses_for_strings($words);
       $results = array_unique(array_merge($results, $nids));
       $content .= _ilr_sdc_listings_render_search_results($results);
