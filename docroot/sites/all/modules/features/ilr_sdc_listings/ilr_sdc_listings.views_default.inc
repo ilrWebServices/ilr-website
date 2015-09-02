@@ -1387,6 +1387,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['cache']['output_lifespan'] = 'custom';
   $handler->display->display_options['cache']['output_lifespan_custom'] = '7200';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Search';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
@@ -1410,6 +1411,10 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['table'] = 'field_data_field_course_sponsor_reference';
   $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['field'] = 'field_course_sponsor_reference_tid';
   $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_course_node']['id'] = 'reverse_field_course_node';
+  $handler->display->display_options['relationships']['reverse_field_course_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_course_node']['field'] = 'reverse_field_course_node';
   /* Field: Content: Catalog Number Prefix */
   $handler->display->display_options['fields']['field_catalog_prefix']['id'] = 'field_catalog_prefix';
   $handler->display->display_options['fields']['field_catalog_prefix']['table'] = 'field_data_field_catalog_prefix';
@@ -1584,6 +1589,88 @@ function ilr_sdc_listings_views_default_views() {
   );
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['vocabulary'] = 'course_sponsor';
+  /* Filter criterion: Content: Address - Locality (i.e. City) */
+  $handler->display->display_options['filters']['field_address_locality']['id'] = 'field_address_locality';
+  $handler->display->display_options['filters']['field_address_locality']['table'] = 'field_data_field_address';
+  $handler->display->display_options['filters']['field_address_locality']['field'] = 'field_address_locality';
+  $handler->display->display_options['filters']['field_address_locality']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_address_locality']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_address_locality']['expose']['operator_id'] = 'field_address_locality_op';
+  $handler->display->display_options['filters']['field_address_locality']['expose']['label'] = 'City';
+  $handler->display->display_options['filters']['field_address_locality']['expose']['operator'] = 'field_address_locality_op';
+  $handler->display->display_options['filters']['field_address_locality']['expose']['identifier'] = 'field_address_locality';
+  $handler->display->display_options['filters']['field_address_locality']['expose']['remember'] = TRUE;
+  $handler->display->display_options['filters']['field_address_locality']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => '1',
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
+  );
+  /* Filter criterion: Content: Class Dates -  start date (field_class_dates) */
+  $handler->display->display_options['filters']['field_class_dates_value']['id'] = 'field_class_dates_value';
+  $handler->display->display_options['filters']['field_class_dates_value']['table'] = 'field_data_field_class_dates';
+  $handler->display->display_options['filters']['field_class_dates_value']['field'] = 'field_class_dates_value';
+  $handler->display->display_options['filters']['field_class_dates_value']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_class_dates_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_class_dates_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_class_dates_value']['expose']['operator_id'] = 'field_class_dates_value_op';
+  $handler->display->display_options['filters']['field_class_dates_value']['expose']['label'] = 'Start date';
+  $handler->display->display_options['filters']['field_class_dates_value']['expose']['operator'] = 'field_class_dates_value_op';
+  $handler->display->display_options['filters']['field_class_dates_value']['expose']['identifier'] = 'field_class_dates_value';
+  $handler->display->display_options['filters']['field_class_dates_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => '1',
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
+  );
+  $handler->display->display_options['filters']['field_class_dates_value']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_class_dates_value']['year_range'] = '-0:+1';
+  /* Filter criterion: Content: Class Dates - end date (field_class_dates:value2) */
+  $handler->display->display_options['filters']['field_class_dates_value2']['id'] = 'field_class_dates_value2';
+  $handler->display->display_options['filters']['field_class_dates_value2']['table'] = 'field_data_field_class_dates';
+  $handler->display->display_options['filters']['field_class_dates_value2']['field'] = 'field_class_dates_value2';
+  $handler->display->display_options['filters']['field_class_dates_value2']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_class_dates_value2']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_class_dates_value2']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_class_dates_value2']['expose']['operator_id'] = 'field_class_dates_value2_op';
+  $handler->display->display_options['filters']['field_class_dates_value2']['expose']['label'] = 'End date';
+  $handler->display->display_options['filters']['field_class_dates_value2']['expose']['operator'] = 'field_class_dates_value2_op';
+  $handler->display->display_options['filters']['field_class_dates_value2']['expose']['identifier'] = 'field_class_dates_value2';
+  $handler->display->display_options['filters']['field_class_dates_value2']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => '1',
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
+  );
+  $handler->display->display_options['filters']['field_class_dates_value2']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_class_dates_value2']['year_range'] = '-0:+1';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

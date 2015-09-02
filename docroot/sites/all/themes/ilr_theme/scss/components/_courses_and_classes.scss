@@ -206,3 +206,33 @@
     @include padding-leader(1);
   }
 }
+
+#views-exposed-form-sdc-course-listing-page {
+  #edit-field-address-locality {
+    width: 200px;
+  }
+  .views-widget-filter-field_class_dates_value,
+  .views-widget-filter-field_class_dates_value2 {
+    width: 50%;
+    float: left;
+    padding-right: 1em;
+  }
+  .container-inline-date .form-item input {
+    width: 100%;
+  }
+  #edit-submit-sdc-course-listing {
+    @extend %cornell-button;
+  }
+  .views-reset-button #edit-reset {
+    color: $link;
+    padding: 0;
+    font-weight: 300;
+    border: 0;
+    border-bottom: 1px solid $gray-light;
+    background: none;
+    &:hover {
+      border-bottom-color: $link-hover;
+      color: $link-hover;
+    }
+  }
+}
