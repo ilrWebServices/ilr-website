@@ -306,6 +306,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'administer files',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'file_entity',
   );
@@ -1469,7 +1470,6 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any document files',
     'roles' => array(
       'administrator' => 'administrator',
-      'contributor' => 'contributor',
     ),
     'module' => 'file_entity',
   );
@@ -1530,7 +1530,6 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any image files',
     'roles' => array(
       'administrator' => 'administrator',
-      'contributor' => 'contributor',
       'power user' => 'power user',
     ),
     'module' => 'file_entity',
