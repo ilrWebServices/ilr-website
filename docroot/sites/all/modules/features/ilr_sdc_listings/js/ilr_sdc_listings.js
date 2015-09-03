@@ -119,8 +119,12 @@ jQuery.fn.sortElements = (function(){
         return false;
       });
 
+      /**
+       * Start with the css top position of the box for default
+       * check the current menu, and refine the position based on its height
+       */
       positionCourseSearchBox = function() {
-        yPos = 0;
+        yPos = $('#block-ilr-sdc-listings-course-search').css('top');
         currentMenu = $('#sidebar-first ul.menu.current');
         currentMenu.children('li').each(function(){
           yPos = $(this).position().top + $(this).height() + 50;
