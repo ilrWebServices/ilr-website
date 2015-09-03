@@ -8,7 +8,7 @@ include_once 'ilr_forms_students.features.inc';
 
 /**
  * Implements hook_entityform_presave.
- * Sets numerous fields for fex/wisp sponsor form
+ * Sets numerous fields for fex/wisp sponsor and students forms
  */
 function ilr_forms_students_entityform_presave($entityform) {
   if ($entityform->type == 'fex_wisp_sponsor_registration') {
@@ -17,24 +17,22 @@ function ilr_forms_students_entityform_presave($entityform) {
     _ilr_forms_students_fix_fexwisp_alum_college_fields($entityform);
     _ilr_forms_students_set_fexwisp_state_if_remote($entityform);
   }
-  elseif ($entityform->type == 'fex_wisp_student_application') {
+  elseif ($entityform->type == 'fex_student_application' ||
+          $entityform->type == 'wisp_student_application') {
     _ilr_forms_students_set_fexwisp_program($entityform);
     _ilr_forms_students_set_fexwisp_programYear($entityform);
   }
 }
 
 /**
- * Set program (fex or wisp)
+ * Set FEX/WISP program
  */
 function _ilr_forms_students_set_fexwisp_program($entityform) {
+  $fexwisp = ($entityform->type == 'fex_student_application')
+    ? 'FEX'
+    : 'WISP';
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
-  if ($entityform_wrapper->field_year_fr_soph_jr_sr_milr->value() == 'Freshman') {
-    $program = "FEX";
-  }
-  else {
-    $program = "WISP";
-  }
-  $entityform_wrapper->field_h_program->set($program);
+  $entityform_wrapper->field_h_program->set($fexwisp);
 }
 
 /**
