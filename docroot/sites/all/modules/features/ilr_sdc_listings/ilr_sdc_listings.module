@@ -1271,8 +1271,43 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
     // Set After Build function to hide filters.
     $form['#after_build'][] = '_ilr_sdc_listings_hide_view_filters';
   } //Check to see if there are exposed filters
-  elseif ($view->name == 'sdc_course_listing' && !empty($view->exposed_input) && !isset($view->exposed_input['s'])) {
-    $form['#attributes']['class'][] = 'filter-engaged';
+  elseif ($view->name == 'sdc_course_listing') {
+    if (!empty($view->exposed_input) && !isset($view->exposed_input['s'])) {
+      $form['#attributes']['class'][] = 'filter-engaged';
+    }
+    $options = _ilr_sdc_listings_get_active_locations();
+    $form['field_address_locality'] = array(
+      '#type' => 'select',
+      '#options' => $options,
+      '#size' => count($options),
+      '#validated' => TRUE,
+    );
+  }
+}
+
+function _ilr_sdc_listings_get_active_locations() {
+  $locations = array();
+  $class_nids = _ilr_sdc_listings_get_upcoming_classes();
+  foreach ($class_nids as $key => $nid) {
+    $wrapper = ilr_get_node_wrapper($nid);
+    $city = $wrapper->field_address->locality->value();
+    if (!in_array($city, $locations)) {
+      $locations[$city] = $city;
+    }
+  }
+  return $locations;
+}
+
+function _ilr_sdc_listings_get_upcoming_classes() {
+  $today = date('Y-m-d');
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_class')
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_registration_end_date', 'value', $today, '>=');
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    return array_keys($results['node']);
   }
 }
 

@@ -1599,7 +1599,6 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_address_locality']['expose']['label'] = 'City';
   $handler->display->display_options['filters']['field_address_locality']['expose']['operator'] = 'field_address_locality_op';
   $handler->display->display_options['filters']['field_address_locality']['expose']['identifier'] = 'field_address_locality';
-  $handler->display->display_options['filters']['field_address_locality']['expose']['remember'] = TRUE;
   $handler->display->display_options['filters']['field_address_locality']['expose']['remember_roles'] = array(
     2 => '2',
     1 => '1',
