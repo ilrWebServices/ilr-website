@@ -202,6 +202,37 @@ function ilr_sdc_listings_update_7009() {
 }
 
 /**
+ * Assigns the sponsor based on the course prefix
+ */
+function ilr_sdc_listings_update_7010() {
+  $courses = _ilr_sdc_listings_get_all_courses();
+  foreach ($courses as $key => $nid) {
+    $node = node_load($nid);
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $sponsors = $wrapper->field_course_sponsor_reference->value();
+    if (empty($sponsors)) {
+      if ($sponsor = _ilr_sdc_listings_get_sponsor_from_prefix($wrapper->field_catalog_prefix->value())) {
+        if ($term = taxonomy_get_term_by_name($sponsor)) {
+          $term = reset($term);
+          $wrapper->field_course_sponsor_reference->set(array($term->tid));
+          $wrapper->save();
+        }
+      }
+    }
+  }
+}
+
+function _ilr_sdc_listings_get_all_courses() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_course');
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    return array_keys($results['node']);
+  }
+}
+
+/**
  * Update aliases for sdc content types.
  */
 function _ilr_sdc_listings_update_aliases() {
@@ -527,4 +558,41 @@ function _ilr_sdc_listings_get_default_terms() {
       'writing',
     )
   );
+}
+
+
+function _ilr_sdc_listings_get_sponsor_from_prefix($prefix) {
+  $mappings = array(
+    'EE' => 'Executive Education',
+    'BR' => 'Human Capital Development (HCD)',
+    'CD' => 'Human Capital Development (HCD)',
+    'DV' => 'Human Capital Development (HCD)',
+    'EO' => 'Human Capital Development (HCD)',
+    'HR' => 'Human Capital Development (HCD)',
+    'MD' => 'Human Capital Development (HCD)',
+    'OC' => 'Human Capital Development (HCD)',
+    'SS' => 'Human Capital Development (HCD)',
+    'ICS' => 'Institute for Compensation Studies (ICS)',
+    'LEL' => 'Labor and Employment Law',
+    'ODLEL' => 'Labor and Employment Law',
+    'CO' => 'Scheinman Institute on Conflict Resolution',
+    'DR' => 'Scheinman Institute on Conflict Resolution',
+    'LR' => 'Scheinman Institute on Conflict Resolution',
+    'ODDR' => 'Scheinman Institute on Conflict Resolution',
+    'LB' => 'The Worker Institute at Cornell',
+    'LH' => 'The Worker Institute at Cornell',
+    'LS' => 'The Worker Institute at Cornell',
+    'SH' => 'The Worker Institute at Cornell',
+    'WI' => 'The Worker Institute at Cornell',
+    'OLLB' => 'The Worker Institute at Cornell',
+    'IP' => 'International Programs',
+    'WS' => 'Workplace Studies',
+  );
+
+  foreach ($mappings as $sub_prefix => $sponsor) {
+    if(strpos($prefix, $sub_prefix) !== FALSE) {
+      return $sponsor;
+    }
+  }
+  return FALSE;
 }
