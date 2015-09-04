@@ -190,6 +190,7 @@ features[field_base][] = field_fex_number_of_students
 features[field_base][] = field_fex_same_day
 features[field_base][] = field_fex_upperclass_students
 features[field_base][] = field_fex_wisp_opportunity_type
+features[field_base][] = field_fexwisp_cert
 features[field_base][] = field_file
 features[field_base][] = field_file_image_alt_text
 features[field_base][] = field_file_image_caption

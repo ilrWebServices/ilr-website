@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Removes entityform type fex_wisp_student_application from ilr_forms_students feature
+ */
+function ilr_forms_students_update_7001() {
+  $entityform_type = entityform_type_load('fex_wisp_student_application');
+  entityform_type_delete($entityform_type);
+}

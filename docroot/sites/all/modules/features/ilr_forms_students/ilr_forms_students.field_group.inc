@@ -13,23 +13,23 @@ function ilr_forms_students_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_applicant_information|entityform|fex_wisp_student_application|default';
+  $field_group->identifier = 'group_applicant_information|entityform|fex_student_application|default';
   $field_group->group_name = 'group_applicant_information';
   $field_group->entity_type = 'entityform';
-  $field_group->bundle = 'fex_wisp_student_application';
+  $field_group->bundle = 'fex_student_application';
   $field_group->mode = 'default';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Applicant Information',
-    'weight' => '3',
+    'weight' => '1',
     'children' => array(
-      0 => 'field_year_fr_soph_jr_sr_milr',
-      1 => 'field_cornell_college',
-      2 => 'field_netid',
-      3 => 'field_first_name',
-      4 => 'field_last_name',
-      5 => 'field_first_name_additional',
-      6 => 'field_student_id_number',
+      0 => 'field_first_name',
+      1 => 'field_first_name_additional',
+      2 => 'field_last_name',
+      3 => 'field_netid',
+      4 => 'field_student_id_number',
+      5 => 'field_fexwisp_cert',
+      6 => 'field_year_fr_soph_jr_sr_milr',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -42,28 +42,28 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_applicant_information|entityform|fex_wisp_student_application|default'] = $field_group;
+  $export['group_applicant_information|entityform|fex_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_applicant_information|entityform|fex_wisp_student_application|form';
+  $field_group->identifier = 'group_applicant_information|entityform|fex_student_application|form';
   $field_group->group_name = 'group_applicant_information';
   $field_group->entity_type = 'entityform';
-  $field_group->bundle = 'fex_wisp_student_application';
+  $field_group->bundle = 'fex_student_application';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Applicant Information',
     'weight' => '1',
     'children' => array(
-      0 => 'field_year_fr_soph_jr_sr_milr',
-      1 => 'field_cornell_college',
-      2 => 'field_netid',
-      3 => 'field_first_name',
-      4 => 'field_last_name',
-      5 => 'field_first_name_additional',
-      6 => 'field_student_id_number',
+      0 => 'field_first_name',
+      1 => 'field_first_name_additional',
+      2 => 'field_last_name',
+      3 => 'field_netid',
+      4 => 'field_student_id_number',
+      5 => 'field_fexwisp_cert',
+      6 => 'field_year_fr_soph_jr_sr_milr',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -76,7 +76,75 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_applicant_information|entityform|fex_wisp_student_application|form'] = $field_group;
+  $export['group_applicant_information|entityform|fex_student_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_applicant_information|entityform|wisp_student_application|default';
+  $field_group->group_name = 'group_applicant_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'wisp_student_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Applicant Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_first_name',
+      1 => 'field_first_name_additional',
+      2 => 'field_last_name',
+      3 => 'field_netid',
+      4 => 'field_student_id_number',
+      5 => 'field_fexwisp_cert',
+      6 => 'field_year_fr_soph_jr_sr_milr',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Applicant Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-applicant-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_applicant_information|entityform|wisp_student_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_applicant_information|entityform|wisp_student_application|form';
+  $field_group->group_name = 'group_applicant_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'wisp_student_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Applicant Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_first_name',
+      1 => 'field_first_name_additional',
+      2 => 'field_last_name',
+      3 => 'field_netid',
+      4 => 'field_student_id_number',
+      5 => 'field_fexwisp_cert',
+      6 => 'field_year_fr_soph_jr_sr_milr',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Applicant Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-applicant-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_applicant_information|entityform|wisp_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -159,73 +227,6 @@ function ilr_forms_students_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_fex_wisp_location|entityform|fex_wisp_student_application|default';
-  $field_group->group_name = 'group_fex_wisp_location';
-  $field_group->entity_type = 'entityform';
-  $field_group->bundle = 'fex_wisp_student_application';
-  $field_group->mode = 'default';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'FEX/WISP Location',
-    'weight' => '6',
-    'children' => array(
-      0 => 'field_city_additional_2',
-      1 => 'field_state_province_addl_2',
-      2 => 'field_state_province_addl_3',
-      3 => 'field_city_additional_3',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'FEX/WISP Location',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => 'group-fex-wisp-location field-group-fieldset',
-        'description' => 'Please note: You will be required to prove that you have arranged for accommodations and transportation if you are accepted into a FEX or WISP that is not in your hometown.
-<br><br>
-Indicate at least one choice for location (city and state).',
-      ),
-      'formatter' => 'open',
-    ),
-  );
-  $export['group_fex_wisp_location|entityform|fex_wisp_student_application|default'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_fex_wisp_location|entityform|fex_wisp_student_application|form';
-  $field_group->group_name = 'group_fex_wisp_location';
-  $field_group->entity_type = 'entityform';
-  $field_group->bundle = 'fex_wisp_student_application';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'FEX/WISP Location',
-    'weight' => '4',
-    'children' => array(
-      0 => 'field_city_additional_2',
-      1 => 'field_state_province_addl_2',
-      2 => 'field_state_province_addl_3',
-      3 => 'field_city_additional_3',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'FEX/WISP Location',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => 'group-fex-wisp-location field-group-fieldset',
-        'description' => 'Please note: You will be required to prove that you have arranged for accommodations and transportation if you are accepted into a FEX or WISP that is not in your hometown.
-<br><br>
-Specify preferred location (city / state). You may also optionally specify an alternate location.
-',
-      ),
-      'formatter' => 'open',
-    ),
-  );
-  $export['group_fex_wisp_location|entityform|fex_wisp_student_application|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_fex_wisp_sponsor_info|entityform|fex_wisp_sponsor_registration|default';
   $field_group->group_name = 'group_fex_wisp_sponsor_info';
   $field_group->entity_type = 'entityform';
@@ -287,22 +288,22 @@ Specify preferred location (city / state). You may also optionally specify an al
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_local_cornell_address|entityform|fex_wisp_student_application|default';
+  $field_group->identifier = 'group_local_cornell_address|entityform|fex_student_application|default';
   $field_group->group_name = 'group_local_cornell_address';
   $field_group->entity_type = 'entityform';
-  $field_group->bundle = 'fex_wisp_student_application';
+  $field_group->bundle = 'fex_student_application';
   $field_group->mode = 'default';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Local (Cornell) Address',
-    'weight' => '4',
+    'weight' => '2',
     'children' => array(
       0 => 'field_address_line_1',
       1 => 'field_address_line_2',
       2 => 'field_city',
-      3 => 'field_state_province',
-      4 => 'field_zip_code',
-      5 => 'field_phone',
+      3 => 'field_phone',
+      4 => 'field_state_province',
+      5 => 'field_zip_code',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -315,15 +316,15 @@ Specify preferred location (city / state). You may also optionally specify an al
       'formatter' => 'open',
     ),
   );
-  $export['group_local_cornell_address|entityform|fex_wisp_student_application|default'] = $field_group;
+  $export['group_local_cornell_address|entityform|fex_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_local_cornell_address|entityform|fex_wisp_student_application|form';
+  $field_group->identifier = 'group_local_cornell_address|entityform|fex_student_application|form';
   $field_group->group_name = 'group_local_cornell_address';
   $field_group->entity_type = 'entityform';
-  $field_group->bundle = 'fex_wisp_student_application';
+  $field_group->bundle = 'fex_student_application';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -333,9 +334,9 @@ Specify preferred location (city / state). You may also optionally specify an al
       0 => 'field_address_line_1',
       1 => 'field_address_line_2',
       2 => 'field_city',
-      3 => 'field_state_province',
-      4 => 'field_zip_code',
-      5 => 'field_phone',
+      3 => 'field_phone',
+      4 => 'field_state_province',
+      5 => 'field_zip_code',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -348,28 +349,94 @@ Specify preferred location (city / state). You may also optionally specify an al
       'formatter' => 'open',
     ),
   );
-  $export['group_local_cornell_address|entityform|fex_wisp_student_application|form'] = $field_group;
+  $export['group_local_cornell_address|entityform|fex_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_permanent_address|entityform|fex_wisp_student_application|default';
+  $field_group->identifier = 'group_local_cornell_address|entityform|wisp_student_application|default';
+  $field_group->group_name = 'group_local_cornell_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'wisp_student_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Local (Cornell) Address',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_address_line_1',
+      1 => 'field_address_line_2',
+      2 => 'field_city',
+      3 => 'field_phone',
+      4 => 'field_state_province',
+      5 => 'field_zip_code',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Local (Cornell) Address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-local-cornell-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_local_cornell_address|entityform|wisp_student_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_local_cornell_address|entityform|wisp_student_application|form';
+  $field_group->group_name = 'group_local_cornell_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'wisp_student_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Local (Cornell) Address',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_address_line_1',
+      1 => 'field_address_line_2',
+      2 => 'field_city',
+      3 => 'field_phone',
+      4 => 'field_state_province',
+      5 => 'field_zip_code',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Local (Cornell) Address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-local-cornell-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_local_cornell_address|entityform|wisp_student_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_permanent_address|entityform|fex_student_application|default';
   $field_group->group_name = 'group_permanent_address';
   $field_group->entity_type = 'entityform';
-  $field_group->bundle = 'fex_wisp_student_application';
+  $field_group->bundle = 'fex_student_application';
   $field_group->mode = 'default';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Permanent Address',
-    'weight' => '5',
+    'weight' => '3',
     'children' => array(
       0 => 'field_address_line_1_additional',
       1 => 'field_address_line_2_additional',
       2 => 'field_city_additional',
-      3 => 'field_state_province_additional',
-      4 => 'field_zip_postal_code_additional',
-      5 => 'field_country',
-      6 => 'field_phone_additional',
+      3 => 'field_country',
+      4 => 'field_phone_additional',
+      5 => 'field_state_province_additional',
+      6 => 'field_zip_postal_code_additional',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -382,15 +449,15 @@ Specify preferred location (city / state). You may also optionally specify an al
       'formatter' => 'open',
     ),
   );
-  $export['group_permanent_address|entityform|fex_wisp_student_application|default'] = $field_group;
+  $export['group_permanent_address|entityform|fex_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_permanent_address|entityform|fex_wisp_student_application|form';
+  $field_group->identifier = 'group_permanent_address|entityform|fex_student_application|form';
   $field_group->group_name = 'group_permanent_address';
   $field_group->entity_type = 'entityform';
-  $field_group->bundle = 'fex_wisp_student_application';
+  $field_group->bundle = 'fex_student_application';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -400,10 +467,10 @@ Specify preferred location (city / state). You may also optionally specify an al
       0 => 'field_address_line_1_additional',
       1 => 'field_address_line_2_additional',
       2 => 'field_city_additional',
-      3 => 'field_state_province_additional',
-      4 => 'field_zip_postal_code_additional',
-      5 => 'field_country',
-      6 => 'field_phone_additional',
+      3 => 'field_country',
+      4 => 'field_phone_additional',
+      5 => 'field_state_province_additional',
+      6 => 'field_zip_postal_code_additional',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -416,23 +483,219 @@ Specify preferred location (city / state). You may also optionally specify an al
       'formatter' => 'open',
     ),
   );
-  $export['group_permanent_address|entityform|fex_wisp_student_application|form'] = $field_group;
+  $export['group_permanent_address|entityform|fex_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_program_information|entityform|fex_wisp_student_application|default';
+  $field_group->identifier = 'group_permanent_address|entityform|wisp_student_application|default';
+  $field_group->group_name = 'group_permanent_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'wisp_student_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Permanent Address',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_address_line_1_additional',
+      1 => 'field_address_line_2_additional',
+      2 => 'field_city_additional',
+      3 => 'field_country',
+      4 => 'field_phone_additional',
+      5 => 'field_state_province_additional',
+      6 => 'field_zip_postal_code_additional',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Permanent Address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-permanent-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_permanent_address|entityform|wisp_student_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_permanent_address|entityform|wisp_student_application|form';
+  $field_group->group_name = 'group_permanent_address';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'wisp_student_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Permanent Address',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_address_line_1_additional',
+      1 => 'field_address_line_2_additional',
+      2 => 'field_city_additional',
+      3 => 'field_country',
+      4 => 'field_phone_additional',
+      5 => 'field_state_province_additional',
+      6 => 'field_zip_postal_code_additional',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Permanent Address',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-permanent-address field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_permanent_address|entityform|wisp_student_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_preferred_fex_location|entityform|fex_student_application|default';
+  $field_group->group_name = 'group_preferred_fex_location';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'fex_student_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Preferred FEX Location',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_city_additional_2',
+      1 => 'field_city_additional_3',
+      2 => 'field_state_province_addl_2',
+      3 => 'field_state_province_addl_3',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Preferred FEX Location',
+      'instance_settings' => array(
+        'classes' => 'group-preferred-fex-location field-group-fieldset',
+        'description' => 'Please note: You will be required to prove that you have arranged for accommodations and transportation if you are accepted into a FEX that is not in your hometown.
+',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_preferred_fex_location|entityform|fex_student_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_preferred_fex_location|entityform|fex_student_application|form';
+  $field_group->group_name = 'group_preferred_fex_location';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'fex_student_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Preferred FEX Location',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_city_additional_2',
+      1 => 'field_city_additional_3',
+      2 => 'field_state_province_addl_2',
+      3 => 'field_state_province_addl_3',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Preferred FEX Location',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-preferred-fex-location field-group-fieldset',
+        'description' => 'Please note: You will be required to prove that you have arranged for accommodations and transportation if you are accepted into a FEX that is not in your hometown.
+<br><br>
+Specify preferred location (city / state). You also have the option to list an alternate location.
+',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_preferred_fex_location|entityform|fex_student_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_preferred_wisp_location|entityform|wisp_student_application|default';
+  $field_group->group_name = 'group_preferred_wisp_location';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'wisp_student_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Preferred WISP Location',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_city_additional_2',
+      1 => 'field_city_additional_3',
+      2 => 'field_state_province_addl_2',
+      3 => 'field_state_province_addl_3',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Preferred WISP Location',
+      'instance_settings' => array(
+        'classes' => 'group-preferred-wisp-location field-group-fieldset',
+        'description' => 'Please note: You will be required to prove that you have arranged for accommodations and transportation if you are accepted into a WISP that is not in your hometown.',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_preferred_wisp_location|entityform|wisp_student_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_preferred_wisp_location|entityform|wisp_student_application|form';
+  $field_group->group_name = 'group_preferred_wisp_location';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'wisp_student_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Preferred WISP Location',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_city_additional_2',
+      1 => 'field_city_additional_3',
+      2 => 'field_state_province_addl_2',
+      3 => 'field_state_province_addl_3',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Preferred WISP Location',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-preferred-wisp-location field-group-fieldset',
+        'description' => 'Please note: You will be required to prove that you have arranged for accommodations and transportation if you are accepted into a WISP that is not in your hometown.
+<br><br>
+Specify preferred location (city / state). You also have the option to list an alternate location.',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_preferred_wisp_location|entityform|wisp_student_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_program_information|entityform|fex_student_application|default';
   $field_group->group_name = 'group_program_information';
   $field_group->entity_type = 'entityform';
-  $field_group->bundle = 'fex_wisp_student_application';
+  $field_group->bundle = 'fex_student_application';
   $field_group->mode = 'default';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Program Information',
     'weight' => '0',
     'children' => array(
-      0 => 'field_h_school_year',
-      1 => 'field_h_program',
+      0 => 'field_h_program',
+      1 => 'field_h_school_year',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -444,20 +707,48 @@ Specify preferred location (city / state). You may also optionally specify an al
       'formatter' => 'open',
     ),
   );
-  $export['group_program_information|entityform|fex_wisp_student_application|default'] = $field_group;
+  $export['group_program_information|entityform|fex_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_resume|entityform|fex_wisp_student_application|default';
+  $field_group->identifier = 'group_program_information|entityform|wisp_student_application|default';
+  $field_group->group_name = 'group_program_information';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'wisp_student_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Program Information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_h_program',
+      1 => 'field_h_school_year',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Program Information',
+      'instance_settings' => array(
+        'classes' => 'group-program-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_program_information|entityform|wisp_student_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_resume|entityform|fex_student_application|default';
   $field_group->group_name = 'group_resume';
   $field_group->entity_type = 'entityform';
-  $field_group->bundle = 'fex_wisp_student_application';
+  $field_group->bundle = 'fex_student_application';
   $field_group->mode = 'default';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Resume',
-    'weight' => '7',
+    'weight' => '9',
     'children' => array(
       0 => 'field_upload_your_resume_or_cv',
     ),
@@ -465,27 +756,26 @@ Specify preferred location (city / state). You may also optionally specify an al
     'format_settings' => array(
       'label' => 'Resume',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => 'group-resume field-group-fieldset',
-        'description' => 'Save your resume in .doc, .docx, .pdf, or .txt format before uploading it.',
+        'description' => '',
       ),
       'formatter' => 'open',
     ),
   );
-  $export['group_resume|entityform|fex_wisp_student_application|default'] = $field_group;
+  $export['group_resume|entityform|fex_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_resume|entityform|fex_wisp_student_application|form';
+  $field_group->identifier = 'group_resume|entityform|fex_student_application|form';
   $field_group->group_name = 'group_resume';
   $field_group->entity_type = 'entityform';
-  $field_group->bundle = 'fex_wisp_student_application';
+  $field_group->bundle = 'fex_student_application';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Resume',
-    'weight' => '28',
+    'weight' => '5',
     'children' => array(
       0 => 'field_upload_your_resume_or_cv',
     ),
@@ -500,7 +790,62 @@ Specify preferred location (city / state). You may also optionally specify an al
       'formatter' => 'open',
     ),
   );
-  $export['group_resume|entityform|fex_wisp_student_application|form'] = $field_group;
+  $export['group_resume|entityform|fex_student_application|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_resume|entityform|wisp_student_application|default';
+  $field_group->group_name = 'group_resume';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'wisp_student_application';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Resume',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_upload_your_resume_or_cv',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Resume',
+      'instance_settings' => array(
+        'classes' => 'group-resume field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_resume|entityform|wisp_student_application|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_resume|entityform|wisp_student_application|form';
+  $field_group->group_name = 'group_resume';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'wisp_student_application';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Resume',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_upload_your_resume_or_cv',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Resume',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-resume field-group-fieldset',
+        'description' => 'Save your resume in .doc, .docx, .pdf, or .txt format before uploading it.',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_resume|entityform|wisp_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
