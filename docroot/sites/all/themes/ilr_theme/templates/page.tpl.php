@@ -3,7 +3,7 @@
     <div class="logo-wrapper">
       <a class='cornell' href="http://cornell.edu"></a>
       <a class="ilr" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-        <?php print '<img src="/' . drupal_get_path('theme', 'ilr_theme') . '/images/logo.svg" alt="Cornell University | ILR School" title="Cornell University | ILR School">';?>
+        <img src="<?php print $logo;?>" alt="Cornell University | ILR School" title="Cornell University | ILR School">
       </a>
     </div>
     <div class='buttons'>
