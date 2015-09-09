@@ -375,6 +375,58 @@ function ilr_forms_students_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['mps_nyc_have_more_questions'] = entity_import('entityform_type', '{
+    "type" : "mps_nyc_have_more_questions",
+    "label" : "Have Questions about MPS NYC?",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "Thank you",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for contacting the MPS NYC program at the Cornell University ILR School. You will receive a confirmation email shortly. Please check below to ensure that your email address was entered correctly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EMPS NYC Program\\u003Cbr\\u003E\\r\\n\\tILR School\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003Cbr\\u003E\\r\\n\\t\\u003Ca href=\\u0022mailto:day4@cornell.edu\\u0022\\u003Empsnyc@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "36" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "mpsnyc@cornell.edu"
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['transfer_offer'] = entity_import('entityform_type', '{
     "type" : "transfer_offer",
     "label" : "ILR School Transfer Option",
