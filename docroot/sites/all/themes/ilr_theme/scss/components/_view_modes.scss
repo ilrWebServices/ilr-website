@@ -132,10 +132,15 @@
 // ==================================================
 %card {
   background: white;
-  border: 2px solid #e0e0e0;
-  border-bottom-width: 6px;
+  border: 1px solid #e0e0e0;
+  // border-bottom-width: 6px;
+  border-radius: 6px;
   @include trailer(1.5);
   @include padding-leader(1);
+
+  &:hover {
+    background: $gray-bg;
+  }
 
   body:not(.ilr-at-70) & {
     @extend %image-first;
