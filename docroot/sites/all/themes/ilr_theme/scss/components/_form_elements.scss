@@ -13,6 +13,23 @@ form {
     margin-right: 1em;
   }
 
+  .form-item {
+    @include margin-leader(1);
+    margin-bottom: 0;
+    input[type='text'], textarea {
+      border: 1px solid $gray-medium;
+      border-radius: 6px;
+      width: 100%;
+    }
+    & .form-type-checkbox label, & .form-type-radio label {
+      font-weight: 300;
+    }
+  }
+
+  label {
+    font-weight: 400;
+  }
+
   select {
     margin-left: 1px; //Fixes border cutoff in chrome
   }
