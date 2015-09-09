@@ -25,127 +25,133 @@ body.design-system {
       }
     }
   }
+}
 
-  table {
-    .cornell-red {
-      td {
-        background: $cornell-red;
-        color: white;
-      }
-    }
-    .darker-red {
-      td {
-        background: $darker-red;
-        color: white;
-      }
-    }
-    .bg-body {
-      td {
-        background: $bg-body;
-        color: black;
-      }
-    }
-    .gray-bg {
-      td {
-        background: $gray-bg;
-        color: black;
-      }
-    }
-    .nav-dark{
-      td {
-        background: $nav-dark;
-        color: white;
-      }
-    }
-    .ochre-tan {
-      td {
-        background: $ochre-tan;
-        color: white;
-      }
-    }
-    .ochre-green {
-      td {
-        background: $ochre-green;
-        color: white;
-      }
-    }
-    .pear {
-      td {
-        background: $pear;
-        color: white;
-      }
-    }
-    .rose {
-      td {
-        background: $rose;
-        color: white;
-      }
-    }
-    .sea-green {
-      td {
-        background: $sea-green;
-        color: white;
-      }
-    }
-    .cerulean {
-      td {
-        background: $cerulean;
-        color: white;
-      }
-    }
-    .golden-rod {
-      td {
-        background: $golden-rod;
-        color: white;
-      }
-    }
-    .slate-gray {
-      td {
-        background: $slate-gray;
-        color: white;
-      }
-    }
-    .slate-gray-76 {
-      td {
-        background: $slate-gray-76;
-        color: black;
-      }
-    }
-    .slate-gray-86 {
-      td {
-        background: $slate-gray-86;
-        color: black;
-      }
-    }
-    .slate-gray-96 {
-      td {
-        background: $slate-gray-96;
-        color: black;
-      }
-    }
-    .gray-dark {
-      td {
-        background: $gray-dark;
-        color: black;
-      }
-    }
-    .gray-medium {
-      td {
-        background: $gray-medium;
-        color: black;
-      }
-    }
-    .gray-light {
-      td {
-        background: $gray-light;
-        color: black;
-      }
-    }
+h2 {
+  font-family: $font;
+  font-size: 34px;
+  @include margin-trailer(.5);
+}
 
+table {
+  .cornell-red {
     td {
-      border-right: none;
-      padding-left: 2em;
-      height: 60px;
+      background: $cornell-red;
+      color: white;
     }
+  }
+  .darker-red {
+    td {
+      background: $darker-red;
+      color: white;
+    }
+  }
+  .bg-body {
+    td {
+      background: $bg-body;
+      color: black;
+    }
+  }
+  .gray-bg {
+    td {
+      background: $gray-bg;
+      color: black;
+    }
+  }
+  .nav-dark{
+    td {
+      background: $nav-dark;
+      color: white;
+    }
+  }
+  .ochre-tan {
+    td {
+      background: $ochre-tan;
+      color: white;
+    }
+  }
+  .ochre-green {
+    td {
+      background: $ochre-green;
+      color: white;
+    }
+  }
+  .pear {
+    td {
+      background: $pear;
+      color: white;
+    }
+  }
+  .rose {
+    td {
+      background: $rose;
+      color: white;
+    }
+  }
+  .sea-green {
+    td {
+      background: $sea-green;
+      color: white;
+    }
+  }
+  .cerulean {
+    td {
+      background: $cerulean;
+      color: white;
+    }
+  }
+  .golden-rod {
+    td {
+      background: $golden-rod;
+      color: white;
+    }
+  }
+  .slate-gray {
+    td {
+      background: $slate-gray;
+      color: white;
+    }
+  }
+  .slate-gray-76 {
+    td {
+      background: $slate-gray-76;
+      color: black;
+    }
+  }
+  .slate-gray-86 {
+    td {
+      background: $slate-gray-86;
+      color: black;
+    }
+  }
+  .slate-gray-96 {
+    td {
+      background: $slate-gray-96;
+      color: black;
+    }
+  }
+  .gray-dark {
+    td {
+      background: $gray-dark;
+      color: black;
+    }
+  }
+  .gray-medium {
+    td {
+      background: $gray-medium;
+      color: black;
+    }
+  }
+  .gray-light {
+    td {
+      background: $gray-light;
+      color: black;
+    }
+  }
+
+  td {
+    border-right: none;
+    padding-left: 2em;
+    height: 60px;
   }
 }

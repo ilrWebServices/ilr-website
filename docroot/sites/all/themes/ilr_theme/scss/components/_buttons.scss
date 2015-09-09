@@ -1,0 +1,129 @@
+.cta {
+  @include padding-leader(.5);
+  @include margin-trailer(.5);
+
+  a {
+    &.button-capsule {
+      // background-color: $pear;
+      // border: 1px solid $pear;
+      border-radius: 40px;
+      padding: .25em 1em;
+      color: white;
+      text-transform: uppercase;
+      display: inline-block;
+      clear: left;
+      font-weight: 300;
+      transition: background-color 0.2s;
+      @extend .clearfix;
+      &:hover {
+        cursor: pointer;
+        background-color: $gray-dark;
+      }
+    }
+
+    &.button-outline {
+      background-color: white;
+      border: 2px solid $cerulean;
+      border-radius: 40px;
+      padding: .25em 1em;
+      color: $cerulean;
+      text-transform: uppercase;
+      display: inline-block;
+      clear: left;
+      font-weight: 400;
+      transition: background-color 0.2s, color 0.2s;
+      // transition: background-color 0.2s, color 0.2s, transform 1s ease;
+      @extend .clearfix;
+      &:hover {
+        cursor: pointer;
+        background-color: $cerulean;
+        color: white;
+        // transform: rotate(360deg);
+      }
+    }
+
+    &.button-circle {
+      @include circularImage;
+      background-color: white;
+      border: 2px solid $rose;
+      // border: 2px solid lighten($rose, 25%);
+      border-radius: 50%;
+      padding: 1.1em 1em 1em;
+      color: $rose;
+      text-align: center;
+      display: inline-block;
+      font-weight: 400;
+      transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+      @extend .clearfix;
+      &:hover {
+        cursor: pointer;
+        background-color: $cornell-red;
+        border-color: $darker-red;
+        color: white;
+      }
+    }
+  }
+}
+
+#main {
+  .cta-responsive {
+    text-align: center;
+    @include padding-leader(.5);
+    @include margin-trailer(.5);
+    a {
+      &.button-responsive {
+        @include circularImage;
+        background-color: white;
+        border: 2px solid $sea-green;
+        border-radius: 50%;
+        padding: 1.1em 1em 1em;
+        color: $sea-green;
+        text-transform: none;
+        text-align: center;
+        display: inline-block;
+        font-weight: 400;
+        transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+        @extend .clearfix;
+        &:hover {
+          cursor: pointer;
+          background-color: $pear;
+          border-color: $pear;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+#main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+  .cta-responsive {
+    text-align: left;
+    float: left;
+    @include padding-trailer(2);
+    margin-right: 1em;
+    a {
+      &.button-responsive {
+        // override circularImage width and height setting
+        width: auto;
+        height: auto;
+        background-color: $pear;
+        border: 1px solid $pear;
+        border-radius: 40px;
+        padding: .25em 1em;
+        color: white;
+        text-transform: uppercase;
+        display: inline-block;
+        clear: left;
+        font-weight: 300;
+        transition: background-color 0.2s;
+        @extend .clearfix;
+        &:hover {
+          cursor: pointer;
+          background-color: $gray-dark;
+        }
+      }
+    }
+  }
+}
+
+
