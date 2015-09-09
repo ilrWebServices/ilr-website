@@ -11875,6 +11875,7 @@ function ilr_field_bases_field_default_field_bases() {
         'Yes' => 'Yes',
         'No' => 'No',
         'Not sure' => 'Not sure',
+        'Does not apply' => 'Does not apply',
       ),
       'allowed_values_function' => '',
     ),
