@@ -1247,7 +1247,7 @@ function forms_field_default_field_instances() {
     'bundle' => 'classroom_reservation_request',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Be sure to allow for clean up time',
+    'description' => 'Be sure to allow for clean up time.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -34539,7 +34539,7 @@ function forms_field_default_field_instances() {
   t('Areas of interest');
   t('Attendee list markup');
   t('Based on your experience, what are some of the most pressing questions and concerns of new Cornell students?');
-  t('Be sure to allow for clean up time');
+  t('Be sure to allow for clean up time.');
   t('Be sure to allow for set up time.');
   t('Blind ad? ($35 / posting)');
   t('Building or location');
