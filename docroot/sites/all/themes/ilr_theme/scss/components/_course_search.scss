@@ -4,4 +4,13 @@
   position: relative;
   margin-left: 12px;
   top: 226px;
+
+  #edit-s {
+    background: white;
+    padding: 3px;
+    border: 1px solid $gray-medium;
+  }
+  #edit-s-autocomplete-aria-live {
+    background: yellow;
+  }
 }

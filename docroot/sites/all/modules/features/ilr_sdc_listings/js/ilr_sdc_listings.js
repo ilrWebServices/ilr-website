@@ -147,6 +147,7 @@ jQuery.fn.sortElements = (function(){
       if ($('#block-ilr-sdc-listings-course-search').length) {
         $('a.animate-menu').live("click", prepareSearchBoxPosition);
         setTimeout(positionCourseSearchBox,300); // Set a timer to position it
+        // Check if advanced search is present
         if ($('#views-exposed-form-sdc-course-listing-page').length) {
           $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
           $basicSearch = $('#ilr-sdc-listings-search-form');
@@ -166,9 +167,19 @@ jQuery.fn.sortElements = (function(){
         }
       }
 
-      $('article.node-sdc-course').sortElements(function(a, b){
-        return $(a).hasClass('scheduled') ? -1 : 1;
-      });
+      // Check if search results page
+      if ($('body').hasClass('page-professional-programs-search')) {
+        // First, reverse the order of the unscheduled classes
+        // so that sortElements retains their original search results
+        $('article.node-sdc-course.unscheduled').each(function() {
+          $(this).parent().prepend(this);
+        });
+
+        // Then sort all elements so that scheduled courses come first
+        $('article.node-sdc-course').sortElements(function(a, b){
+          return $(a).hasClass('scheduled') ? -1 : 1;
+        });
+      }
     }
   };
 })(jQuery);

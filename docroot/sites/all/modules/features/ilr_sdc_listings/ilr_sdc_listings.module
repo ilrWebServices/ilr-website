@@ -159,6 +159,12 @@ function ilr_sdc_listings_menu() {
     'page arguments' => array(1),
   );
 
+  $items['professional-programs/courses/autocomplete'] = array(
+    'page callback' => '_ilr_sdc_listings_autocomplete',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK
+  );
+
   $items['professional-programs/search'] = array(
     'type' => MENU_CALLBACK,
     'access arguments' => array('access content'),
@@ -235,10 +241,10 @@ function ilr_sdc_listings_search_form($form, &$form_state) {
     '#type' => 'textfield',
     '#size' => 20,
     '#attributes' => array(
-      'id' => 'search-form-query',
       'placeholder' => 'Search ILR programs',
     ),
     '#default_value' => isset($_REQUEST['s']) ? $_REQUEST['s'] : '',
+    '#autocomplete_path' => 'professional-programs/courses/autocomplete',
   );
 
   $form['search_input']['submit'] = array(
@@ -260,6 +266,100 @@ function ilr_sdc_listings_search_form_modify($form){
   unset($form['form_build_id']);
   unset($form['form_id']);
   return $form;
+}
+
+/**
+ * Returns matches for the search form based on the course title
+ */
+function _ilr_sdc_listings_autocomplete($string='negoti') {
+  $title_matches = _ilr_sdc_listings_get_autocomplete_titles($string);
+  $topic_matches = _ilr_sdc_listings_taxonomy_autocomplete('field_course_topic_reference', $string);
+  $keyword_matches = _ilr_sdc_listings_taxonomy_autocomplete('field_keywords', $string);
+
+  $merged = array_merge(
+    $topic_matches,
+    $title_matches,
+    $keyword_matches
+  );
+  return drupal_json_output($merged);
+}
+
+function _ilr_sdc_listings_get_autocomplete_titles($string) {
+  $results = db_query("SELECT n.title FROM {node} n WHERE n.title LIKE :title AND n.type = :type", array(":title"=> '%'. trim($string, " ,!?") . '%', ":type"=> 'sdc_course'))->fetchAll();
+  if (!empty($results)) {
+    foreach($results as $node) {
+      $title_matches[$node->title] = check_plain($node->title);
+    }
+  }
+  return $title_matches;
+}
+
+
+/**
+ * @see taxonomy_autocomplete in taxonomy.pages.inc
+ * Modified here to return the matches, rather than echoing the json
+ * This allows us to merge the results with other queries
+ */
+function _ilr_sdc_listings_taxonomy_autocomplete($field_name = '', $tags_typed = '') {
+  // If the request has a '/' in the search text, then the menu system will have
+  // split it into multiple arguments, recover the intended $tags_typed.
+  $args = func_get_args();
+  // Shift off the $field_name argument.
+  array_shift($args);
+  $tags_typed = implode('/', $args);
+
+  // Make sure the field exists and is a taxonomy field.
+  if (!($field = field_info_field($field_name)) || $field['type'] !== 'taxonomy_term_reference') {
+    // Error string. The JavaScript handler will realize this is not JSON and
+    // will display it as debugging information.
+    print t('Taxonomy field @field_name not found.', array('@field_name' => $field_name));
+    exit;
+  }
+
+  // The user enters a comma-separated list of tags. We only autocomplete the last tag.
+  $tags_typed = drupal_explode_tags($tags_typed);
+  $tag_last = drupal_strtolower(array_pop($tags_typed));
+
+  $term_matches = array();
+  if ($tag_last != '') {
+
+    // Part of the criteria for the query come from the field's own settings.
+    $vids = array();
+    $vocabularies = taxonomy_vocabulary_get_names();
+    foreach ($field['settings']['allowed_values'] as $tree) {
+      $vids[] = $vocabularies[$tree['vocabulary']]->vid;
+    }
+
+    $query = db_select('taxonomy_term_data', 't');
+    $query->addTag('translatable');
+    $query->addTag('term_access');
+
+    // Do not select already entered terms.
+    if (!empty($tags_typed)) {
+      $query->condition('t.name', $tags_typed, 'NOT IN');
+    }
+    // Select rows that match by term name.
+    $tags_return = $query
+      ->fields('t', array('tid', 'name'))
+      ->condition('t.vid', $vids)
+      ->condition('t.name', '%' . db_like($tag_last) . '%', 'LIKE')
+      ->range(0, 10)
+      ->execute()
+      ->fetchAllKeyed();
+
+    $prefix = count($tags_typed) ? drupal_implode_tags($tags_typed) . ', ' : '';
+
+    foreach ($tags_return as $tid => $name) {
+      $n = $name;
+      // Term names containing commas or quotes must be wrapped in quotes.
+      if (strpos($name, ',') !== FALSE || strpos($name, '"') !== FALSE) {
+        $n = '"' . str_replace('"', '""', $name) . '"';
+      }
+      $term_matches[$prefix . $n] = check_plain($name);
+    }
+  }
+
+  return $term_matches;
 }
 
 /**
@@ -1016,9 +1116,9 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
   if ($variables['type'] == 'sdc_course') {
     $variables['title'] = filter_xss($variables['elements']['#node']->title, array('em'));
     if ($variables['view_mode'] == 'teaser') {
-      if (count(_ilr_sdc_listings_get_classes_for_course($variables['node']))) {
-        $variables['classes_array'][] = 'scheduled';
-      }
+      $variables['classes_array'][] = count(_ilr_sdc_listings_get_classes_for_course($variables['node']))
+       ? 'scheduled'
+       : 'unscheduled';
       unset($variables['content']['links']['node']['#links']['node-readmore']);
     }
   }
