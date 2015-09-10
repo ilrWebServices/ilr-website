@@ -269,11 +269,12 @@ function ilr_sdc_listings_search_form_modify($form){
 }
 
 /**
- * Returns matches for the search form based on the course title
+ * Returns matches for the search form based on the topics,
+ * course title and keywords, in that order
  */
-function _ilr_sdc_listings_autocomplete($string='negoti') {
-  $title_matches = _ilr_sdc_listings_get_autocomplete_titles($string);
+function _ilr_sdc_listings_autocomplete($string='afdjakls') {
   $topic_matches = _ilr_sdc_listings_taxonomy_autocomplete('field_course_topic_reference', $string);
+  $title_matches = _ilr_sdc_listings_get_autocomplete_titles($string);
   $keyword_matches = _ilr_sdc_listings_taxonomy_autocomplete('field_keywords', $string);
 
   $merged = array_merge(
@@ -281,6 +282,7 @@ function _ilr_sdc_listings_autocomplete($string='negoti') {
     $title_matches,
     $keyword_matches
   );
+  $merged = (!empty($merged)) ? $merged : array(); // Fixes js error for empty results
   return drupal_json_output($merged);
 }
 
