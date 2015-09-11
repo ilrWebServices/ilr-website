@@ -21,6 +21,12 @@
  * Credit: http://james.padolsey.com/javascript/sorting-elements-with-jquery/
  *
  */
+jQuery.extend(jQuery.expr[":"], {
+  "titleContains": function(elem, i, match, array) {
+    return (elem.textContent || elem.innerText || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+  }
+});
+
 jQuery.fn.sortElements = (function(){
 
     var sort = [].sort;
@@ -143,6 +149,20 @@ jQuery.fn.sortElements = (function(){
         return $('form.filter-engaged').length;
       };
 
+      exactTitleMatch = function() {
+        matches = [];
+        searchTerm = $('span.search-term').text();
+        possibleMatches = $('article h2 a:titleContains("'+searchTerm+'")');
+        $(possibleMatches).each(function() {
+          title = $(this).text();
+          if (title.indexOf('(') == searchTerm.length + 1) {
+            match = $(this).closest('article');
+            matches.push(match);
+          }
+        });
+        return (matches.length) ? matches : false;
+      }
+
       // If the course search block is on the page, position it and add the listener
       if ($('#block-ilr-sdc-listings-course-search').length) {
         $('a.animate-menu').live("click", prepareSearchBoxPosition);
@@ -174,11 +194,20 @@ jQuery.fn.sortElements = (function(){
         $('article.node-sdc-course.unscheduled').each(function() {
           $(this).parent().prepend(this);
         });
-
         // Then sort all elements so that scheduled courses come first
         $('article.node-sdc-course').sortElements(function(a, b){
           return $(a).hasClass('scheduled') ? -1 : 1;
         });
+
+        // Check for an exact title match,
+        if (match = exactTitleMatch()) {
+          $(match).each(function(){
+            $(this).insertBefore($('#content article').eq(0));
+          });
+        }
+        // Reposition the search result details at the top
+        $('.search-result-details').insertBefore($('#content article').eq(0));
+
       }
     }
   };

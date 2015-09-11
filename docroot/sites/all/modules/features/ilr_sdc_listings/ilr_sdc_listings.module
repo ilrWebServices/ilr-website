@@ -374,7 +374,7 @@ function _ilr_sdc_listings_custom_search(){
   if (isset($params['s'])) {
     $search = $params['s'];
     if (!empty($search)) {
-      $content = '<h2>You searched for '. $search .'.</h2>';
+      $content = '<div class="search-result-details"><h2>You searched for <span class="search-term">'. $search .'</span>.</h2>';
       // Check node titles for search string first
       $results = _ilr_sdc_listings_query_title_for_string($search);
       // Get rid of common words before querying
@@ -457,7 +457,7 @@ function _ilr_sdc_listings_query_field_for_string($field, $string, $tid=NULL) {
 function _ilr_sdc_listings_render_search_results($results) {
   if (count($results)) {
     $result_count = format_plural(count($results), '1 result', '@count results');
-    $content = $result_count .' found.</p>';
+    $content = $result_count .' found.</p></div>';
     $nids = array_values($results);
     $nodes = node_load_multiple($nids);
     foreach ($nodes as $nid => $node) {
