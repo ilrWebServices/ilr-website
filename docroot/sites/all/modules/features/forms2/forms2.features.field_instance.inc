@@ -568,6 +568,7 @@ function forms2_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 1,
@@ -588,6 +589,7 @@ function forms2_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 1,
@@ -1094,7 +1096,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 44,
+      'weight' => 7,
     ),
   );
 
@@ -1154,7 +1156,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 46,
+      'weight' => 8,
     ),
   );
 
@@ -1206,7 +1208,7 @@ function forms2_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 58,
+      'weight' => 14,
     ),
   );
 
@@ -1266,7 +1268,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 48,
+      'weight' => 9,
     ),
   );
 
@@ -1326,7 +1328,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 40,
+      'weight' => 5,
     ),
   );
 
@@ -1380,7 +1382,7 @@ function forms2_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 62,
+      'weight' => 16,
     ),
   );
 
@@ -1440,7 +1442,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 54,
+      'weight' => 12,
     ),
   );
 
@@ -1494,7 +1496,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 42,
+      'weight' => 6,
     ),
   );
 
@@ -1554,7 +1556,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
+      'weight' => 1,
     ),
   );
 
@@ -1574,6 +1576,7 @@ function forms2_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 1,
@@ -1588,6 +1591,7 @@ function forms2_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 1,
@@ -1602,6 +1606,7 @@ function forms2_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 1,
@@ -1631,7 +1636,7 @@ function forms2_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 64,
+      'weight' => 23,
     ),
   );
 
@@ -1691,7 +1696,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 2,
     ),
   );
 
@@ -1751,7 +1756,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 69,
+      'weight' => 18,
     ),
   );
 
@@ -1811,7 +1816,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 38,
+      'weight' => 4,
     ),
   );
 
@@ -1871,7 +1876,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 56,
+      'weight' => 13,
     ),
   );
 
@@ -1925,7 +1930,7 @@ function forms2_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 36,
+      'weight' => 3,
     ),
   );
 
@@ -1995,7 +2000,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 66,
+      'weight' => 24,
     ),
   );
 
@@ -2047,7 +2052,7 @@ function forms2_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 67,
+      'weight' => 17,
     ),
   );
 
@@ -2101,7 +2106,7 @@ function forms2_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 50,
+      'weight' => 10,
     ),
   );
 
@@ -2161,7 +2166,7 @@ function forms2_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 71,
+      'weight' => 19,
     ),
   );
 
@@ -2221,7 +2226,163 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 60,
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_yes_no'
+  $field_instances['entityform-scheinman_webcast_registration-field_yes_no'] = array(
+    'bundle' => 'scheinman_webcast_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Note: This could be in either a formal (i.e., as a manager/supervisor) or an informal (i.e., as a co-worker) capacity.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 21,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 21,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 21,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no',
+    'label' => 'Within the last two years, has a workplace domestic violence issue been brought to your attention?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 20,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_yes_no_not_sure'
+  $field_instances['entityform-scheinman_webcast_registration-field_yes_no_not_sure'] = array(
+    'bundle' => 'scheinman_webcast_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 22,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 22,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 22,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_not_sure',
+    'label' => 'Does your workplace have domestic violence policies and/or programs?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 21,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_yes_no_not_sure_2'
+  $field_instances['entityform-scheinman_webcast_registration-field_yes_no_not_sure_2'] = array(
+    'bundle' => 'scheinman_webcast_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 23,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 23,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 23,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_not_sure_2',
+    'label' => 'Does your union have domestic violence workplace CBA and/or convention resolutions?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 22,
     ),
   );
 
@@ -2281,7 +2442,7 @@ function forms2_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 52,
+      'weight' => 11,
     ),
   );
 
@@ -2296,12 +2457,15 @@ function forms2_field_default_field_instances() {
   t('Company / Organization');
   t('Cornell degree');
   t('Country');
+  t('Does your union have domestic violence workplace CBA and/or convention resolutions?');
+  t('Does your workplace have domestic violence policies and/or programs?');
   t('Email');
   t('Enter number only, do not enter the dollar sign');
   t('Event date');
   t('Event title');
   t('First name');
   t('Last name');
+  t('Note: This could be in either a formal (i.e., as a manager/supervisor) or an informal (i.e., as a co-worker) capacity.');
   t('Other Scheinman Institute information that you would be interested in');
   t('Payor\'s first name');
   t('Payor\'s last name');
@@ -2316,6 +2480,7 @@ function forms2_field_default_field_instances() {
   t('Webcast');
   t('What Scheinman Institute information are you most interested in?');
   t('What year did you graduate?');
+  t('Within the last two years, has a workplace domestic violence issue been brought to your attention?');
   t('Zip code / Postal code');
   t('h credit card payments');
 

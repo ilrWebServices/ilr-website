@@ -1247,7 +1247,7 @@ function forms_field_default_field_instances() {
     'bundle' => 'classroom_reservation_request',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Be sure to allow for clean up time.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1278,10 +1278,16 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_end_time',
     'label' => 'End time',
     'required' => 1,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1575,7 +1581,7 @@ function forms_field_default_field_instances() {
     'bundle' => 'classroom_reservation_request',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Be sure to allow for set up time.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1606,10 +1612,16 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_start_time',
     'label' => 'Start time',
     'required' => 1,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -14510,6 +14522,7 @@ function forms_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 0,
@@ -14530,6 +14543,7 @@ function forms_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 0,
@@ -14544,6 +14558,7 @@ function forms_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 22,
@@ -19353,6 +19368,7 @@ function forms_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 14,
@@ -19367,6 +19383,7 @@ function forms_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 35,
@@ -19381,6 +19398,7 @@ function forms_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 33,
@@ -21294,6 +21312,7 @@ function forms_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 9,
@@ -21308,6 +21327,7 @@ function forms_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 9,
@@ -21322,6 +21342,7 @@ function forms_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 9,
@@ -26441,6 +26462,7 @@ function forms_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 10,
@@ -26455,6 +26477,7 @@ function forms_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 10,
@@ -32891,6 +32914,7 @@ function forms_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 1,
@@ -34515,6 +34539,8 @@ function forms_field_default_field_instances() {
   t('Areas of interest');
   t('Attendee list markup');
   t('Based on your experience, what are some of the most pressing questions and concerns of new Cornell students?');
+  t('Be sure to allow for clean up time.');
+  t('Be sure to allow for set up time.');
   t('Blind ad? ($35 / posting)');
   t('Building or location');
   t('Cell phone number');
