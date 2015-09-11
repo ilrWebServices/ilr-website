@@ -1406,6 +1406,13 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = 'Many programs are available for custom delivery to your organization. Please request more information for programs listed with no upcoming dates.';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No courses were found that match everything that you filtered on. Try selecting fewer filter options.';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Relationship: Content: Sponsor (field_course_sponsor_reference) */
   $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['id'] = 'field_course_sponsor_reference_tid';
   $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['table'] = 'field_data_field_course_sponsor_reference';

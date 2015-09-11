@@ -12,7 +12,7 @@
 define('ILR_SDC_MAX_DAYS_PAST', 90);
 define('ILR_SDC_ONDEMAND_TEXT', 'This is an on demand class.');
 define('ILR_SDC_PATH_ALIAS', 'professional-programs/public-offerings');
-define('ILR_SDC_NO_RESULTS', '<p>Sorry, but your search did not return any results.</p>');
+define('ILR_SDC_NO_RESULTS', 'No courses were found that match your search. Please try again.');
 include_once 'ilr_sdc_listings.features.inc';
 
 
@@ -239,7 +239,7 @@ function ilr_sdc_listings_search_form($form, &$form_state) {
   $form['search_input']['s'] = array(
     '#title' => t(''),
     '#type' => 'textfield',
-    '#size' => 20,
+    //'#size' => 20,
     '#attributes' => array(
       'placeholder' => 'Search ILR programs',
     ),
@@ -371,6 +371,7 @@ function _ilr_sdc_listings_taxonomy_autocomplete($field_name = '', $tags_typed =
 function _ilr_sdc_listings_custom_search(){
   $params = drupal_get_query_parameters();
   $results = $nids = array();
+  $content = '';
   if (isset($params['s'])) {
     $search = $params['s'];
     if (!empty($search)) {
@@ -388,9 +389,9 @@ function _ilr_sdc_listings_custom_search(){
       $results = array_unique(array_merge($results, $nids));
       $content .= _ilr_sdc_listings_render_search_results($results);
     }
-  }
-  if (empty($content)) {
-    $content = ILR_SDC_NO_RESULTS;
+    else {
+      $content = '<p>Your search was blank. Please be sure to include a search term.</p>';
+    }
   }
   return $content;
 }
@@ -466,8 +467,9 @@ function _ilr_sdc_listings_render_search_results($results) {
     }
   }
   else {
-    $content = ILR_SDC_NO_RESULTS;
+    $content = '<p>'.ILR_SDC_NO_RESULTS.'</p>';
   }
+  $content .= '</div>';
   return $content;
 }
 
