@@ -73,10 +73,22 @@
   }
   .node-sdc-faculty {
     h2 {
-      @include adjust-font-size-to($h4-size);
+      @include adjust-font-size-to($h5-size);
       padding: 0 !important;
     }
+    .field-name-field-job-title {
+      font-family: $font-headers;
+      clear: both;
+      @include adjust-font-size-to($h5-size, .75);
+    }
+    .field-name-body p {
+      @include adjust-font-size-to(16px, .75);
+    }
   }
+  .instructors .field-type-image {
+    @include circularImage;
+  }
+
   .request-info {
     @include adjust-font-size-to(16px);
     font-style: italic;

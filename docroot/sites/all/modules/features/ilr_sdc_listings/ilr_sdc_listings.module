@@ -940,12 +940,46 @@ function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id) {
   $markup = '<div class="instructors class-' . $class_id . '">';
   $markup .= "<h3>Instructors</h3>";
   foreach ($faculty as $key => $instructor) {
+    $markup .= _ilr_sdd_listings_add_image_to_faculty($instructor);
+    // Update the title if there is a referenced profile
+    if ($nid = _ilr_sdc_listings_get_referenced_profile_nid($instructor)) {
+      $profile_wrapper = ilr_get_node_wrapper($nid);
+      $profile_title = $profile_wrapper->field_working_title->value();
+      unset($instructor->field_job_title);
+      $instructor->field_job_title[LANGUAGE_NONE][] = array(
+        'value' => $profile_title,
+        'format' => NULL,
+        'safe_value' => check_plain($profile_title),
+      );
+    }
     $render_arr = node_view($instructor,'teaser');
+    // Remove the read more link
     unset($render_arr['links']['node']['#links']['node-readmore']);
     $markup .= drupal_render($render_arr);
   }
   $markup .= "</div>\n";
   return $markup;
+}
+
+function _ilr_sdd_listings_add_image_to_faculty($faculty_node) {
+  $markup = '';
+  if ($nid = _ilr_sdc_listings_get_referenced_profile_nid($faculty_node)) {
+    $wrapper = ilr_get_node_wrapper($nid);
+    $image = $wrapper->field_profile_image->value();
+  }
+  elseif (isset($faculty_node->field_thumbnail)) {
+    $image = $faculty_node->field_thumbnail[LANGUAGE_NONE][0];
+  }
+  $markup = '<div class="field-type-image"><img src="'.image_style_url('focussed_thumbnail', $image['uri']).'" /></div>';
+  return $markup;
+}
+
+function _ilr_sdc_listings_get_referenced_profile_nid($faculty_node) {
+  if (!empty($faculty_node->field_people_profile_reference)) {
+    $nid = $faculty_node->field_people_profile_reference[LANGUAGE_NONE][0]['target_id'];
+    return $nid;
+  }
+  return FALSE;
 }
 
 function _ilr_sdc_listings_generate_location_markup($class) {

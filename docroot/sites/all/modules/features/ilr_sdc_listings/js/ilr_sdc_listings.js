@@ -106,7 +106,7 @@ jQuery.fn.sortElements = (function(){
 
       var facultyBiosReadmore = function() {
         $('.node-sdc-faculty .field-name-body').readmore({
-          maxHeight: 110,
+          maxHeight: 105,
           lessLink: '<a href="#">- Read less</a>',
           moreLink: '<a href="#">+ Read more</a>',
         });
