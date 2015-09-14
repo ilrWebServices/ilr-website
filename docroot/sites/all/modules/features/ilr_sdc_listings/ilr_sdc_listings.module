@@ -940,8 +940,9 @@ function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id) {
   $markup = '<div class="instructors class-' . $class_id . '">';
   $markup .= "<h3>Instructors</h3>";
   foreach ($faculty as $key => $instructor) {
-    $markup .= '<div class="instructor"><h4>'. $instructor->title .'</h4>';
-    $markup .= '<div class="bio">'.$instructor->body[LANGUAGE_NONE][0]['value'] . '</div></div>';
+    $render_arr = node_view($instructor,'teaser');
+    unset($render_arr['links']['node']['#links']['node-readmore']);
+    $markup .= drupal_render($render_arr);
   }
   $markup .= "</div>\n";
   return $markup;

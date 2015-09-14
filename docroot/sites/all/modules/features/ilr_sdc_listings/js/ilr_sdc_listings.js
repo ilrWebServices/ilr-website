@@ -98,14 +98,14 @@ jQuery.fn.sortElements = (function(){
       // Show the first class detail toggle div
       $(window).load(function(){
         $('.class-detail-toggle').first().show();
-        if ($('.bio').length) {
+        if ($('.node-sdc-faculty').length) {
           facultyBiosReadmore();
         }
       });
 
 
       var facultyBiosReadmore = function() {
-        $('.instructor .bio').readmore({
+        $('.node-sdc-faculty .field-name-body').readmore({
           maxHeight: 110,
           lessLink: '<a href="#">- Read less</a>',
           moreLink: '<a href="#">+ Read more</a>',

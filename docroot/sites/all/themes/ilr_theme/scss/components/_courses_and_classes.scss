@@ -71,6 +71,12 @@
       display: none;
     }
   }
+  .node-sdc-faculty {
+    h2 {
+      @include adjust-font-size-to($h4-size);
+      padding: 0 !important;
+    }
+  }
   .request-info {
     @include adjust-font-size-to(16px);
     font-style: italic;
