@@ -968,7 +968,7 @@ function _ilr_sdd_listings_add_image_to_faculty($faculty_node) {
     $wrapper = ilr_get_node_wrapper($nid);
     $image = $wrapper->field_profile_image->value();
   }
-  elseif (isset($faculty_node->field_thumbnail)) {
+  elseif (!empty($faculty_node->field_thumbnail)) {
     $image = $faculty_node->field_thumbnail[LANGUAGE_NONE][0];
   }
   if ($image) {
