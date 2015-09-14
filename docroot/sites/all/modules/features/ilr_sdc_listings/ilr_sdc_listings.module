@@ -1386,7 +1386,48 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
       '#size' => count($options),
       '#validated' => TRUE,
     );
+
+    _ilr_sdc_listings_remove_unused_filter_choices($form, $form_state);
   }
+}
+
+/**
+ * Removes topics, formats and sponsors if they are not currently active
+ * Also removes the filter element altogether if it only has 1 active choice
+ * Alphabetizes the options
+ */
+function _ilr_sdc_listings_remove_unused_filter_choices(&$form, $form_state) {
+  foreach($form_state['view']->filter as $filter) {
+    if (isset($filter->definition['vocabulary']) && $fid = $filter->options['expose']['identifier']) {
+      $active_terms = _ilr_sdc_listings_get_active_terms($filter->table, $filter->field);
+      if (count($active_terms) > 1) {
+        // Unset the existing list and add new one with available terms.
+        unset($form[$fid]['#options']);
+        foreach ($active_terms as $tid => $name) {
+          $form[$fid]['#options'][$tid] = $name;
+        }
+        asort($form[$fid]['#options']);
+      } // Remove all traces of the filter
+      else {
+        unset(
+          $form[$fid],
+          $form['#info']['filter-' . $fid],
+          $form_state['view']->display_handler->options['filters'][$fid],
+          $form_state['view']->display_handler->handlers['filter'][$fid],
+          $form_state['view']->filter[$fid]);
+      }
+    }
+  }
+}
+
+function _ilr_sdc_listings_get_active_terms($table, $field) {
+  $query = db_select('taxonomy_term_data', 'terms');
+  $query->join($table, 'term_ref', 'term_ref.'.$field.' = terms.tid');
+  $term_result = $query
+    ->fields('terms', array('tid','name'))
+    ->execute()
+    ->fetchAllKeyed();
+  return array_unique($term_result);
 }
 
 function _ilr_sdc_listings_get_active_locations() {
