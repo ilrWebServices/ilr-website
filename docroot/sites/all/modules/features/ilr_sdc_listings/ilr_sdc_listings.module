@@ -963,6 +963,7 @@ function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id) {
 
 function _ilr_sdd_listings_add_image_to_faculty($faculty_node) {
   $markup = '';
+  $image = NULL;
   if ($nid = _ilr_sdc_listings_get_referenced_profile_nid($faculty_node)) {
     $wrapper = ilr_get_node_wrapper($nid);
     $image = $wrapper->field_profile_image->value();
@@ -970,7 +971,9 @@ function _ilr_sdd_listings_add_image_to_faculty($faculty_node) {
   elseif (isset($faculty_node->field_thumbnail)) {
     $image = $faculty_node->field_thumbnail[LANGUAGE_NONE][0];
   }
-  $markup = '<div class="field-type-image"><img src="'.image_style_url('focussed_thumbnail', $image['uri']).'" /></div>';
+  if ($image) {
+    $markup = '<div class="field-type-image"><img src="'.image_style_url('focussed_thumbnail', $image['uri']).'" /></div>';
+  }
   return $markup;
 }
 
