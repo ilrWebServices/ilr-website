@@ -10,6 +10,9 @@
     select {
       width: 320px;
     }
+    input[type='text'] {
+      max-width: 320px;
+    }
   }
 }
 
