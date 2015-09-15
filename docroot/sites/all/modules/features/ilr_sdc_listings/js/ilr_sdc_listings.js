@@ -132,9 +132,14 @@ jQuery.fn.sortElements = (function(){
       positionCourseSearchBox = function() {
         yPos = $('#block-ilr-sdc-listings-course-search').css('top');
         currentMenu = $('#sidebar-first ul.menu.current');
-        currentMenu.children('li').each(function(){
-          yPos = $(this).position().top + $(this).height() + 50;
-        });
+        if (currentMenu.length) {
+          currentMenu.children('li').each(function(){
+            yPos = $(this).position().top + $(this).height() + 50;
+          });
+        } // Position it relative to the page title
+        else {
+          yPos = $('#page-title').position().top - 25;
+        }
 
         $('#block-ilr-sdc-listings-course-search').animate({
           'top' : yPos

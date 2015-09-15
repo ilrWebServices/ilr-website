@@ -23,12 +23,12 @@
 }
 
 .sidebar, #jPanelMenu-menu {
-  overflow: hidden;
   position: relative;
 }
 
 .menu-block-ilr-subnav {
   opacity: 0;
+  overflow: hidden;
 }
 
 #sidebar-first {

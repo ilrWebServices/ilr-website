@@ -17,6 +17,7 @@
   clear: both;
   @include add-grid(12);
   padding-top: $main-top-padding;
+  position: relative;
 
   // @include sgs-change('debug', true);
   // @include background-grid();
