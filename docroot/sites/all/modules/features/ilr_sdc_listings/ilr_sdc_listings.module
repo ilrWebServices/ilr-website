@@ -1422,6 +1422,9 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
       '#options' => $options,
       '#size' => count($options),
       '#validated' => TRUE,
+      '#required' => FALSE,
+      // '#empty_value' => '',
+      '#empty_option' => '- Any -',
     );
 
     _ilr_sdc_listings_remove_unused_filter_choices($form, $form_state);
@@ -1429,13 +1432,15 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Removes topics, formats and sponsors if they are not currently active
+ * Removes topics and formats if they are not currently active
  * Also removes the filter element altogether if it only has 1 active choice
  * Alphabetizes the options
  */
 function _ilr_sdc_listings_remove_unused_filter_choices(&$form, $form_state) {
+  $check_active = array('field_course_topic_reference_tid', 'field_course_format_reference_tid');
   foreach($form_state['view']->filter as $filter) {
-    if (isset($filter->definition['vocabulary']) && $fid = $filter->options['expose']['identifier']) {
+    if (in_array($filter->real_field, $check_active)) {
+      $fid = $filter->options['expose']['identifier'];
       $active_terms = _ilr_sdc_listings_get_active_terms($filter->table, $filter->field);
       if (count($active_terms) > 1) {
         // Unset the existing list and add new one with available terms.
