@@ -364,6 +364,16 @@ function _process_collective_bargaining_videos(&$entityform) {
 }
 
 /**
+ * Process MPS NYC contact form to specify subject line
+ */
+function _process_mps_nyc_have_more_questions(&$entityform) {
+  $user_subject = "Cornell MPS/ILR program in NYC";
+  $admin_subject = "Form subm (mps/nyc contact)";
+  $admin_email = _forms_get_admin_email($entityform);
+  _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject);
+}
+
+/**
  * Process Course request forms to notify the correct email address
  * Check the course first, then the sponsor, with the form admin email as default
  */
