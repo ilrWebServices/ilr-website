@@ -9159,40 +9159,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_sdc_department'
-  $field_bases['field_sdc_department'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_sdc_department',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'sdc_department',
-          'parent' => 0,
-        ),
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
-  );
-
   // Exported field_base: 'field_search_firm'
   $field_bases['field_search_firm'] = array(
     'active' => 1,
