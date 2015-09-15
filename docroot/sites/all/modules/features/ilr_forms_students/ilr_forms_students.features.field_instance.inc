@@ -7958,7 +7958,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_how_heard_other',
-    'label' => 'How did you hear about the MPS NYC program?',
+    'label' => 'How did you hear about the MPS/NYC program?',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -10309,7 +10309,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Graduation year');
   t('Graduation year (supervisor)');
   t('How did you hear about the ILR School MILR program? (Check as many as apply.)');
-  t('How did you hear about the MPS NYC program?');
+  t('How did you hear about the MPS/NYC program?');
   t('I certify that I am a freshman in the ILR School.');
   t('I certify that I am a sophomore, junior, senior, or first-year MILR student in the ILR School.');
   t('If freshmen don\'t select this opportunity, may we offer it to upperclass students?');

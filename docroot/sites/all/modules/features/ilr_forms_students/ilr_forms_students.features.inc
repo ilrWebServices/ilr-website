@@ -377,7 +377,7 @@ function ilr_forms_students_default_entityform_type() {
   }');
   $items['mps_nyc_have_more_questions'] = entity_import('entityform_type', '{
     "type" : "mps_nyc_have_more_questions",
-    "label" : "Have Questions about MPS NYC?",
+    "label" : "Have Questions about MPS\\/NYC?",
     "data" : {
       "draftable" : 0,
       "draft_redirect_path" : "",
@@ -392,7 +392,7 @@ function ilr_forms_students_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "Thank you",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for contacting the MPS NYC program at the Cornell University ILR School. You will receive a confirmation email shortly. Please check below to ensure that your email address was entered correctly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EMPS NYC Program\\u003Cbr\\u003E\\r\\n\\tILR School\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003Cbr\\u003E\\r\\n\\t\\u003Ca href=\\u0022mailto:day4@cornell.edu\\u0022\\u003Empsnyc@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for your interest in the MPS program in New York City.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EPlease check below that your email address was entered correctly. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EMPS\\/NYC Program\\u003Cbr\\u003E\\r\\n\\tILR School\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003Cbr\\u003E\\r\\n\\t\\u003Ca href=\\u0022mailto:mpsnyc@cornell.edu\\u0022\\u003Empsnyc@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
