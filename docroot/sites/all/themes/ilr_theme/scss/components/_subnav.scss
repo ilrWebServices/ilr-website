@@ -28,10 +28,10 @@
 
 .menu-block-ilr-subnav {
   opacity: 0;
-  overflow: hidden;
 }
 
 #sidebar-first {
+  overflow: hidden;
   //position: fixed;
   .sticky & {
     //top: 170px;
@@ -39,7 +39,6 @@
 }
 .sidebar #block-menu-block-ilr-subnav {
   @extend .hidden;
-
   [data-eq-state="regular-nav"] & {
     @extend .visible;
   }

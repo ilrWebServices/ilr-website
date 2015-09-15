@@ -1412,7 +1412,7 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
     $form['#after_build'][] = '_ilr_sdc_listings_hide_view_filters';
   } //Check to see if there are exposed filters
   elseif ($view->name == 'sdc_course_listing') {
-    if (!empty($view->exposed_input) && count($view->exposed_input) > 1) {
+    if (_ilr_sdc_listings_is_filtered_search($view)) {
       $form['#attributes']['class'][] = 'filter-engaged';
     }
     $options = _ilr_sdc_listings_get_active_locations();
@@ -1428,6 +1428,27 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
 
     _ilr_sdc_listings_remove_unused_filter_choices($form, $form_state);
   }
+}
+
+/** Implements hook_views_post_execute
+  * Adds a more helpful message if sponsor filter was used and no results found
+ */
+function ilr_sdc_listings_views_post_execute(&$view) {
+  if ($view->name == 'sdc_course_listing' && _ilr_sdc_listings_is_filtered_search($view)) {
+    if (isset($view->exposed_input['field_course_sponsor_reference_tid']) && empty($view->result)) {
+      $tid = $view->exposed_input['field_course_sponsor_reference_tid'][0];
+      $sponsor = taxonomy_term_load($tid);
+      $sponsor_wrapper = entity_metadata_wrapper('taxonomy_term', $sponsor);
+      $url = $sponsor_wrapper->field_url->value();
+      //$message = 'Thank you for you interest in courses offered by '.$sponsor->name.'. Nothing is currently scheduled on this website. To learn more about the courses they offer, please visit them at '. $url;
+      $message = '[Still waiting on final text for message inviting visitors to learn more at the ' .$sponsor->name. ' website.]';
+      $view->display['page']->handler->handlers['empty']['area']->options['content'] = $message;
+    }
+  }
+}
+
+function _ilr_sdc_listings_is_filtered_search($view) {
+  return !empty($view->exposed_input) && count($view->exposed_input) > 1;
 }
 
 /**
