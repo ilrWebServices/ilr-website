@@ -138,6 +138,7 @@ jQuery.fn.sortElements = (function(){
           });
         } // Position it relative to the page title
         else {
+          $('#sidebar-first').css('min-height',900);
           yPos = $('#page-title').position().top - 25;
         }
 
@@ -171,7 +172,7 @@ jQuery.fn.sortElements = (function(){
       // If the course search block is on the page, position it and add the listener
       if ($('#block-ilr-sdc-listings-course-search').length) {
         $('a.animate-menu').live("click", prepareSearchBoxPosition);
-        setTimeout(positionCourseSearchBox,300); // Set a timer to position it
+        setTimeout(positionCourseSearchBox,500); // Set a timer to position it
         // Check if advanced search is present
         if ($('#views-exposed-form-sdc-course-listing-page').length) {
           $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
