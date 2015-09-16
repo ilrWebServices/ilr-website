@@ -1427,6 +1427,28 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
     );
 
     _ilr_sdc_listings_remove_unused_filter_choices($form, $form_state);
+
+    $form['field_online'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Online only?'),
+      '#options' => drupal_map_assoc(array(1)),
+      '#validated' => TRUE,
+      '#default_value' => 0,
+    );
+  }
+}
+
+/**
+ * Removes the online field query group if online checkbox not selected
+ * This "or" condition is set up in the views admin interface,
+ * available at admin/structure/views/view/sdc_course_listing/edit/page
+ */
+function ilr_sdc_listings_views_query_alter(&$view, &$query) {
+  if($view->name == 'sdc_course_listing' && _ilr_sdc_listings_is_filtered_search($view)) {
+    $params = drupal_get_query_parameters();
+    if (empty($params['field_online'])) {
+      unset($query->where[2]['conditions']);
+    }
   }
 }
 
@@ -1498,8 +1520,9 @@ function _ilr_sdc_listings_get_active_locations() {
   foreach ($class_nids as $key => $nid) {
     $wrapper = ilr_get_node_wrapper($nid);
     $city = $wrapper->field_address->locality->value();
-    if (!in_array($city, $locations)) {
-      $locations[$city] = $city;
+    $state = $wrapper->field_address->administrative_area->value();
+    if (!in_array($city, $locations) && strpos($city, 'On-Line') !== 0) {
+      $locations[$city] = $city . ', ' . $state;
     }
   }
   return $locations;

@@ -1492,6 +1492,14 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Sort criterion: Content: On Demand (field_on_demand) */
+  $handler->display->display_options['sorts']['field_on_demand_value']['id'] = 'field_on_demand_value';
+  $handler->display->display_options['sorts']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
+  $handler->display->display_options['sorts']['field_on_demand_value']['field'] = 'field_on_demand_value';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -1596,9 +1604,10 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_address_locality']['table'] = 'field_data_field_address';
   $handler->display->display_options['filters']['field_address_locality']['field'] = 'field_address_locality';
   $handler->display->display_options['filters']['field_address_locality']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_address_locality']['group'] = 1;
   $handler->display->display_options['filters']['field_address_locality']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_address_locality']['expose']['operator_id'] = 'field_address_locality_op';
-  $handler->display->display_options['filters']['field_address_locality']['expose']['label'] = 'City';
+  $handler->display->display_options['filters']['field_address_locality']['expose']['label'] = 'Location';
   $handler->display->display_options['filters']['field_address_locality']['expose']['operator'] = 'field_address_locality_op';
   $handler->display->display_options['filters']['field_address_locality']['expose']['identifier'] = 'field_address_locality';
   $handler->display->display_options['filters']['field_address_locality']['expose']['remember_roles'] = array(
@@ -1622,6 +1631,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_class_dates_value']['field'] = 'field_class_dates_value';
   $handler->display->display_options['filters']['field_class_dates_value']['relationship'] = 'reverse_field_course_node';
   $handler->display->display_options['filters']['field_class_dates_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_class_dates_value']['group'] = 1;
   $handler->display->display_options['filters']['field_class_dates_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_class_dates_value']['expose']['operator_id'] = 'field_class_dates_value_op';
   $handler->display->display_options['filters']['field_class_dates_value']['expose']['label'] = 'Start date';
@@ -1650,6 +1660,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_class_dates_value2']['field'] = 'field_class_dates_value2';
   $handler->display->display_options['filters']['field_class_dates_value2']['relationship'] = 'reverse_field_course_node';
   $handler->display->display_options['filters']['field_class_dates_value2']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_class_dates_value2']['group'] = 1;
   $handler->display->display_options['filters']['field_class_dates_value2']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_class_dates_value2']['expose']['operator_id'] = 'field_class_dates_value2_op';
   $handler->display->display_options['filters']['field_class_dates_value2']['expose']['label'] = 'End date';
@@ -1672,6 +1683,46 @@ function ilr_sdc_listings_views_default_views() {
   );
   $handler->display->display_options['filters']['field_class_dates_value2']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_class_dates_value2']['year_range'] = '-0:+1';
+  /* Filter criterion: Content: Setting (field_setting) */
+  $handler->display->display_options['filters']['field_setting_value_1']['id'] = 'field_setting_value_1';
+  $handler->display->display_options['filters']['field_setting_value_1']['table'] = 'field_data_field_setting';
+  $handler->display->display_options['filters']['field_setting_value_1']['field'] = 'field_setting_value';
+  $handler->display->display_options['filters']['field_setting_value_1']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_setting_value_1']['value'] = array(
+    'online' => 'online',
+    'blended' => 'blended',
+  );
+  $handler->display->display_options['filters']['field_setting_value_1']['group'] = 2;
+  $handler->display->display_options['filters']['field_setting_value_1']['reduce_duplicates'] = TRUE;
+  /* Filter criterion: Content: On Demand (field_on_demand) */
+  $handler->display->display_options['filters']['field_on_demand_value']['id'] = 'field_on_demand_value';
+  $handler->display->display_options['filters']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
+  $handler->display->display_options['filters']['field_on_demand_value']['field'] = 'field_on_demand_value';
+  $handler->display->display_options['filters']['field_on_demand_value']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_on_demand_value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['field_on_demand_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_on_demand_value']['reduce_duplicates'] = TRUE;
+  /* Filter criterion: Content: Setting (field_setting) */
+  $handler->display->display_options['filters']['field_setting_value']['id'] = 'field_setting_value';
+  $handler->display->display_options['filters']['field_setting_value']['table'] = 'field_data_field_setting';
+  $handler->display->display_options['filters']['field_setting_value']['field'] = 'field_setting_value';
+  $handler->display->display_options['filters']['field_setting_value']['value'] = array(
+    'online' => 'online',
+    'blended' => 'blended',
+  );
+  $handler->display->display_options['filters']['field_setting_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_setting_value']['reduce_duplicates'] = TRUE;
+  /* Filter criterion: Content: On Demand (field_on_demand) */
+  $handler->display->display_options['filters']['field_on_demand_value_1']['id'] = 'field_on_demand_value_1';
+  $handler->display->display_options['filters']['field_on_demand_value_1']['table'] = 'field_data_field_on_demand';
+  $handler->display->display_options['filters']['field_on_demand_value_1']['field'] = 'field_on_demand_value';
+  $handler->display->display_options['filters']['field_on_demand_value_1']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['field_on_demand_value_1']['group'] = 2;
+  $handler->display->display_options['filters']['field_on_demand_value_1']['reduce_duplicates'] = TRUE;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
