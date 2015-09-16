@@ -1,3 +1,18 @@
+#main {
+  .form-item {
+    select {
+      width: 100%;
+    }
+  }
+}
+#main[data-eq-state="550"], #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+  .form-item {
+    select {
+      width: 320px;
+    }
+  }
+}
+
 form {
   fieldset {
     margin-bottom: 1em;
@@ -11,6 +26,24 @@ form {
   }
   input[type='submit'] {
     margin-right: 1em;
+  }
+
+  .form-item {
+    input[type='text'], textarea {
+      border: 1px solid $gray-medium;
+      border-radius: 6px;
+      width: 100%;
+    }
+    select {
+      width: 100%;
+    }
+    & .form-type-checkbox label, & .form-type-radio label {
+      font-weight: 300;
+    }
+  }
+
+  label {
+    font-weight: 400;
   }
 
   select {

@@ -206,7 +206,7 @@ function ilr_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'chosen_jquery_selector';
-  $strongarm->value = 'select#edit-field-sdc-department-tid-entityreference-filter,select#edit-field-sdc-department-tid,.form-item-exposed-field-sdc-department-tid select,.form-item-exposed-field-keywords-tid select,.chosen-filter select, #edit-menu-parent';
+  $strongarm->value = 'select#edit-field-sdc-department-tid-entityreference-filter,.chosen-filter select,#views-exposed-pane .form-type-select select,#views-exposed-pane select, .views-exposed-widget select, #edit-menu-parent';
   $export['chosen_jquery_selector'] = $strongarm;
 
   $strongarm = new stdClass();

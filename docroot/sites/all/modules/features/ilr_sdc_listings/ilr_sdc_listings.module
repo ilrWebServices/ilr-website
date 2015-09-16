@@ -12,7 +12,7 @@
 define('ILR_SDC_MAX_DAYS_PAST', 90);
 define('ILR_SDC_ONDEMAND_TEXT', 'This is an on demand class.');
 define('ILR_SDC_PATH_ALIAS', 'professional-programs/public-offerings');
-define('ILR_SDC_NO_RESULTS', '<p>Sorry, but your search did not return any results.</p>');
+define('ILR_SDC_NO_RESULTS', 'No courses were found that match your search. Please try again.');
 include_once 'ilr_sdc_listings.features.inc';
 
 
@@ -239,7 +239,7 @@ function ilr_sdc_listings_search_form($form, &$form_state) {
   $form['search_input']['s'] = array(
     '#title' => t(''),
     '#type' => 'textfield',
-    '#size' => 20,
+    //'#size' => 20,
     '#attributes' => array(
       'placeholder' => 'Search ILR programs',
     ),
@@ -371,10 +371,11 @@ function _ilr_sdc_listings_taxonomy_autocomplete($field_name = '', $tags_typed =
 function _ilr_sdc_listings_custom_search(){
   $params = drupal_get_query_parameters();
   $results = $nids = array();
+  $content = '';
   if (isset($params['s'])) {
     $search = $params['s'];
     if (!empty($search)) {
-      $content = '<h2>You searched for '. $search .'.</h2>';
+      $content = '<div class="search-result-details"><h2>You searched for <span class="search-term">'. $search .'</span>.</h2>';
       // Check node titles for search string first
       $results = _ilr_sdc_listings_query_title_for_string($search);
       // Get rid of common words before querying
@@ -388,9 +389,9 @@ function _ilr_sdc_listings_custom_search(){
       $results = array_unique(array_merge($results, $nids));
       $content .= _ilr_sdc_listings_render_search_results($results);
     }
-  }
-  if (empty($content)) {
-    $content = ILR_SDC_NO_RESULTS;
+    else {
+      $content = '<p>Your search was blank. Please be sure to include a search term.</p>';
+    }
   }
   return $content;
 }
@@ -457,7 +458,7 @@ function _ilr_sdc_listings_query_field_for_string($field, $string, $tid=NULL) {
 function _ilr_sdc_listings_render_search_results($results) {
   if (count($results)) {
     $result_count = format_plural(count($results), '1 result', '@count results');
-    $content = $result_count .' found.</p>';
+    $content = $result_count .' found.</p></div>';// closes .search-result-details
     $nids = array_values($results);
     $nodes = node_load_multiple($nids);
     foreach ($nodes as $nid => $node) {
@@ -466,7 +467,7 @@ function _ilr_sdc_listings_render_search_results($results) {
     }
   }
   else {
-    $content = ILR_SDC_NO_RESULTS;
+    $content = '<p>'.ILR_SDC_NO_RESULTS.'</p></div>';// closes .search-result-details
   }
   return $content;
 }
@@ -938,11 +939,49 @@ function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id) {
   $markup = '<div class="instructors class-' . $class_id . '">';
   $markup .= "<h3>Instructors</h3>";
   foreach ($faculty as $key => $instructor) {
-    $markup .= '<div class="instructor"><h4>'. $instructor->title .'</h4>';
-    $markup .= '<div class="bio">'.$instructor->body[LANGUAGE_NONE][0]['value'] . '</div></div>';
+    $markup .= _ilr_sdd_listings_add_image_to_faculty($instructor);
+    // Update the title if there is a referenced profile
+    if ($nid = _ilr_sdc_listings_get_referenced_profile_nid($instructor)) {
+      $profile_wrapper = ilr_get_node_wrapper($nid);
+      $profile_title = $profile_wrapper->field_working_title->value();
+      unset($instructor->field_job_title);
+      $instructor->field_job_title[LANGUAGE_NONE][] = array(
+        'value' => $profile_title,
+        'format' => NULL,
+        'safe_value' => check_plain($profile_title),
+      );
+    }
+    $render_arr = node_view($instructor,'teaser');
+    // Remove the read more link
+    unset($render_arr['links']['node']['#links']['node-readmore']);
+    $markup .= drupal_render($render_arr);
   }
   $markup .= "</div>\n";
   return $markup;
+}
+
+function _ilr_sdd_listings_add_image_to_faculty($faculty_node) {
+  $markup = '';
+  $image = NULL;
+  if ($nid = _ilr_sdc_listings_get_referenced_profile_nid($faculty_node)) {
+    $wrapper = ilr_get_node_wrapper($nid);
+    $image = $wrapper->field_profile_image->value();
+  }
+  elseif (!empty($faculty_node->field_thumbnail)) {
+    $image = $faculty_node->field_thumbnail[LANGUAGE_NONE][0];
+  }
+  if ($image) {
+    $markup = '<div class="field-type-image"><img src="'.image_style_url('focussed_thumbnail', $image['uri']).'" /></div>';
+  }
+  return $markup;
+}
+
+function _ilr_sdc_listings_get_referenced_profile_nid($faculty_node) {
+  if (!empty($faculty_node->field_people_profile_reference)) {
+    $nid = $faculty_node->field_people_profile_reference[LANGUAGE_NONE][0]['target_id'];
+    return $nid;
+  }
+  return FALSE;
 }
 
 function _ilr_sdc_listings_generate_location_markup($class) {
@@ -1373,7 +1412,7 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
     $form['#after_build'][] = '_ilr_sdc_listings_hide_view_filters';
   } //Check to see if there are exposed filters
   elseif ($view->name == 'sdc_course_listing') {
-    if (!empty($view->exposed_input) && !isset($view->exposed_input['s'])) {
+    if (_ilr_sdc_listings_is_filtered_search($view)) {
       $form['#attributes']['class'][] = 'filter-engaged';
     }
     $options = _ilr_sdc_listings_get_active_locations();
@@ -1382,8 +1421,75 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
       '#options' => $options,
       '#size' => count($options),
       '#validated' => TRUE,
+      '#required' => FALSE,
+      // '#empty_value' => '',
+      '#empty_option' => '- Any -',
     );
+
+    _ilr_sdc_listings_remove_unused_filter_choices($form, $form_state);
   }
+}
+
+/** Implements hook_views_post_execute
+  * Adds a more helpful message if sponsor filter was used and no results found
+ */
+function ilr_sdc_listings_views_post_execute(&$view) {
+  if ($view->name == 'sdc_course_listing' && _ilr_sdc_listings_is_filtered_search($view)) {
+    if (isset($view->exposed_input['field_course_sponsor_reference_tid']) && empty($view->result)) {
+      $tid = $view->exposed_input['field_course_sponsor_reference_tid'][0];
+      $sponsor = taxonomy_term_load($tid);
+      $sponsor_wrapper = entity_metadata_wrapper('taxonomy_term', $sponsor);
+      $url = $sponsor_wrapper->field_url->value();
+      //$message = 'Thank you for you interest in courses offered by '.$sponsor->name.'. Nothing is currently scheduled on this website. To learn more about the courses they offer, please visit them at '. $url;
+      $message = '[Still waiting on final text for message inviting visitors to learn more at the ' .$sponsor->name. ' website.]';
+      $view->display['page']->handler->handlers['empty']['area']->options['content'] = $message;
+    }
+  }
+}
+
+function _ilr_sdc_listings_is_filtered_search($view) {
+  return !empty($view->exposed_input) && count($view->exposed_input) > 1;
+}
+
+/**
+ * Removes topics and formats if they are not currently active
+ * Also removes the filter element altogether if it only has 1 active choice
+ * Alphabetizes the options
+ */
+function _ilr_sdc_listings_remove_unused_filter_choices(&$form, $form_state) {
+  $check_active = array('field_course_topic_reference_tid', 'field_course_format_reference_tid');
+  foreach($form_state['view']->filter as $filter) {
+    if (in_array($filter->real_field, $check_active)) {
+      $fid = $filter->options['expose']['identifier'];
+      $active_terms = _ilr_sdc_listings_get_active_terms($filter->table, $filter->field);
+      if (count($active_terms) > 1) {
+        // Unset the existing list and add new one with available terms.
+        unset($form[$fid]['#options']);
+        foreach ($active_terms as $tid => $name) {
+          $form[$fid]['#options'][$tid] = $name;
+        }
+        asort($form[$fid]['#options']);
+      } // Remove all traces of the filter
+      else {
+        unset(
+          $form[$fid],
+          $form['#info']['filter-' . $fid],
+          $form_state['view']->display_handler->options['filters'][$fid],
+          $form_state['view']->display_handler->handlers['filter'][$fid],
+          $form_state['view']->filter[$fid]);
+      }
+    }
+  }
+}
+
+function _ilr_sdc_listings_get_active_terms($table, $field) {
+  $query = db_select('taxonomy_term_data', 'terms');
+  $query->join($table, 'term_ref', 'term_ref.'.$field.' = terms.tid');
+  $term_result = $query
+    ->fields('terms', array('tid','name'))
+    ->execute()
+    ->fetchAllKeyed();
+  return array_unique($term_result);
 }
 
 function _ilr_sdc_listings_get_active_locations() {

@@ -54,7 +54,7 @@ function ilr_sdc_listings_node_info() {
       'help' => '',
     ),
     'sdc_faculty' => array(
-      'name' => t('Faculty'),
+      'name' => t('SDC Faculty'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

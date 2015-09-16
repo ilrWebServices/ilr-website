@@ -21,6 +21,12 @@
  * Credit: http://james.padolsey.com/javascript/sorting-elements-with-jquery/
  *
  */
+jQuery.extend(jQuery.expr[":"], {
+  "titleContains": function(elem, i, match, array) {
+    return (elem.textContent || elem.innerText || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+  }
+});
+
 jQuery.fn.sortElements = (function(){
 
     var sort = [].sort;
@@ -92,15 +98,15 @@ jQuery.fn.sortElements = (function(){
       // Show the first class detail toggle div
       $(window).load(function(){
         $('.class-detail-toggle').first().show();
-        if ($('.bio').length) {
+        if ($('.node-sdc-faculty').length) {
           facultyBiosReadmore();
         }
       });
 
 
       var facultyBiosReadmore = function() {
-        $('.instructor .bio').readmore({
-          maxHeight: 110,
+        $('.node-sdc-faculty .field-name-body').readmore({
+          maxHeight: 105,
           lessLink: '<a href="#">- Read less</a>',
           moreLink: '<a href="#">+ Read more</a>',
         });
@@ -126,9 +132,15 @@ jQuery.fn.sortElements = (function(){
       positionCourseSearchBox = function() {
         yPos = $('#block-ilr-sdc-listings-course-search').css('top');
         currentMenu = $('#sidebar-first ul.menu.current');
-        currentMenu.children('li').each(function(){
-          yPos = $(this).position().top + $(this).height() + 50;
-        });
+        if (currentMenu.length) {
+          currentMenu.children('li').each(function(){
+            yPos = $(this).position().top + $(this).height() + 50;
+          });
+        } // Position it relative to the page title
+        else {
+          $('#sidebar-first').css('min-height',900);
+          yPos = $('#page-title').position().top - 25;
+        }
 
         $('#block-ilr-sdc-listings-course-search').animate({
           'top' : yPos
@@ -143,10 +155,24 @@ jQuery.fn.sortElements = (function(){
         return $('form.filter-engaged').length;
       };
 
+      exactTitleMatch = function() {
+        matches = [];
+        searchTerm = $('span.search-term').text();
+        possibleMatches = $('article h2 a:titleContains("'+searchTerm+'")');
+        $(possibleMatches).each(function() {
+          title = $(this).text();
+          if (title.indexOf('(') == searchTerm.length + 1) {
+            match = $(this).closest('article');
+            matches.push(match);
+          }
+        });
+        return (matches.length) ? matches : false;
+      }
+
       // If the course search block is on the page, position it and add the listener
       if ($('#block-ilr-sdc-listings-course-search').length) {
         $('a.animate-menu').live("click", prepareSearchBoxPosition);
-        setTimeout(positionCourseSearchBox,300); // Set a timer to position it
+        setTimeout(positionCourseSearchBox,500); // Set a timer to position it
         // Check if advanced search is present
         if ($('#views-exposed-form-sdc-course-listing-page').length) {
           $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
@@ -174,11 +200,20 @@ jQuery.fn.sortElements = (function(){
         $('article.node-sdc-course.unscheduled').each(function() {
           $(this).parent().prepend(this);
         });
-
         // Then sort all elements so that scheduled courses come first
         $('article.node-sdc-course').sortElements(function(a, b){
           return $(a).hasClass('scheduled') ? -1 : 1;
         });
+
+        // Check for an exact title match,
+        if (match = exactTitleMatch()) {
+          $(match).each(function(){
+            $(this).insertBefore($('#content article').eq(0));
+          });
+        }
+        // Reposition the search result details at the top
+        $('.search-result-details').insertBefore($('#content article').eq(0));
+
       }
     }
   };

@@ -8117,7 +8117,9 @@ function ilr_field_bases_field_default_field_bases() {
         'HR professional' => 'HR professional',
         'LR professional' => 'LR professional',
         'Neutral' => 'Neutral',
+        'Security professional' => 'Security professional',
         'Student' => 'Student',
+        'Union (steward or officer)' => 'Union (steward or officer)',
         'Other' => 'Other',
       ),
       'allowed_values_function' => '',
@@ -9155,40 +9157,6 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
-  );
-
-  // Exported field_base: 'field_sdc_department'
-  $field_bases['field_sdc_department'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_sdc_department',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'sdc_department',
-          'parent' => 0,
-        ),
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_search_firm'
@@ -11819,6 +11787,61 @@ function ilr_field_bases_field_default_field_bases() {
       'allowed_values' => array(
         'Yes' => 'Yes',
         'No' => 'No',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_yes_no_not_sure'
+  $field_bases['field_yes_no_not_sure'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_yes_no_not_sure',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
+        'Not sure' => 'Not sure',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_yes_no_not_sure_2'
+  $field_bases['field_yes_no_not_sure_2'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_yes_no_not_sure_2',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Yes' => 'Yes',
+        'No' => 'No',
+        'Not sure' => 'Not sure',
+        'Does not apply' => 'Does not apply',
       ),
       'allowed_values_function' => '',
     ),
