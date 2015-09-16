@@ -104,7 +104,7 @@
       var makeMenuWidthCalculations = function() {
         if (isSubsite()) {
           var menuText = $('.menu-block-ilr-primary-menu li').text();
-          var title = $('.subsite-header').text();
+          var title = $('.subsite-header h2').text();
           $subsiteTitlePercentageWidth = Math.round(title.length / menuText.length * 100);
           var maxWidth = menuText.length * 15;
           $('.menu-block-ilr-primary-menu ul').css('max-width', maxWidth);
