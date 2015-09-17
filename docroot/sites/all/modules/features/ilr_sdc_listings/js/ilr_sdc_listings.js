@@ -266,16 +266,12 @@ jQuery.fn.sortElements = (function(){
             }
           });
           if (sortBy == 'program') {
-            if (!$('.program-sponsor').length) {
-              sponsors.forEach( function(sponsor) {
-                $('article[data-sponsor="'+sponsor+'"]').eq(0).prepend('<h2 class="program-sponsor">'+sponsor+'</h2>');
-              });
-            } else {
-              $('.program-sponsor').show();
-            }
+            sponsors.forEach( function(sponsor) {
+              $('article[data-sponsor="'+sponsor+'"]').eq(0).prepend('<h2 class="program-sponsor">'+sponsor+'</h2>');
+            });
           }
           else {
-            $('.program-sponsor').hide();
+            $('.program-sponsor').hide('').remove();
           }
           return false;
         });

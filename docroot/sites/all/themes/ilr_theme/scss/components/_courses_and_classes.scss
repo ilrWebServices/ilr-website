@@ -155,7 +155,11 @@
   }
   .program-sponsor {
     color: lighten($brand, 5%);
-    @include trailer(2);
+    @include rhythm(1);
+    @include leading-border(1px);
+    @include trailing-border(1px);
+    font-family: $font;
+    font-weight: 300;
   }
   article {
     @include rhythm-margins(1, 1);
