@@ -1501,10 +1501,8 @@ function ilr_sdc_listings_views_post_execute(&$view) {
       $tid = $view->exposed_input['field_course_sponsor_reference_tid'][0];
       $sponsor = taxonomy_term_load($tid);
       $sponsor_wrapper = entity_metadata_wrapper('taxonomy_term', $sponsor);
-      $url = $sponsor_wrapper->field_url->value();
-      //$message = 'Thank you for you interest in courses offered by '.$sponsor->name.'. Nothing is currently scheduled on this website. To learn more about the courses they offer, please visit them at '. $url;
-      $message = '[Still waiting on final text for message inviting visitors to learn more at the ' .$sponsor->name. ' website.]';
-      $view->display['page']->handler->handlers['empty']['area']->options['content'] = $message;
+      $message = $sponsor_wrapper->field_error_message->value();
+      $view->display['page']->handler->handlers['empty']['area']->options['content'] = $message['value'];
     }
   }
 }

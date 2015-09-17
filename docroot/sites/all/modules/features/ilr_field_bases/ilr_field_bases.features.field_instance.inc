@@ -43,24 +43,27 @@ function ilr_field_bases_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-course_sponsor-field_url'
-  $field_instances['taxonomy_term-course_sponsor-field_url'] = array(
+  // Exported field_instance: 'taxonomy_term-course_sponsor-field_error_message'
+  $field_instances['taxonomy_term-course_sponsor-field_error_message'] = array(
     'bundle' => 'course_sponsor',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'If a visitor filters the course by sponsor and no results are returned, this url is used to generate a helpful link.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'taxonomy_term',
     'fences_wrapper' => 'div',
-    'field_name' => 'field_url',
-    'label' => 'Course url',
+    'field_name' => 'field_error_message',
+    'label' => 'No results message',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -68,25 +71,24 @@ function ilr_field_bases_field_default_field_instances() {
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'rows' => 5,
       ),
-      'type' => 'text_textfield',
-      'weight' => 34,
+      'type' => 'text_textarea',
+      'weight' => 36,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Contact Email');
-  t('Course url');
-  t('If a visitor filters the course by sponsor and no results are returned, this url is used to generate a helpful link.');
+  t('No results message');
   t('The contact email is used when a user requests more info about and/or customized delivery of a course. This can be overidden at the course level. ');
 
   return $field_instances;
