@@ -937,6 +937,21 @@ function _ilr_sdc_listings_generate_class_radio_label($class) {
  * Generates the markup for landing pages
  */
 function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
+  if (count($class_nodes) > 1) {
+    // check for location search and make sure that the cities match if so
+    $params = _ilr_sdc_listings_get_field_query_values();
+    if (!empty($params['field_address_locality'])) {
+      foreach ($class_nodes as $nid => $class_node) {
+        $wrapper = ilr_get_node_wrapper($class_node);
+        if ($wrapper->field_address->locality->value() !== $params['field_address_locality']) {
+          // Move it to the end of the array
+          $placeholder = $class_nodes[$nid];
+          unset($class_nodes[$nid]);
+          $class_nodes[$nid] = $placeholder;
+        }
+      }
+    }
+  }
   $class_node = reset($class_nodes);
   $wrapper = ilr_get_node_wrapper($class_node);
   $markup = '<div class="class-details">';
@@ -950,7 +965,8 @@ function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
   $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
   if (count($class_nodes) > 1) {
     $course_nid = $wrapper->field_course->value()->nid;
-    $markup .= '<a href="/node/' . $course_nid . '">See more dates and locations</a>';
+    $link = drupal_get_path_alias('node/'.$course_nid);
+    $markup .= '<a href="'.$link. '">See more dates and locations</a>';
   }
   $markup .= '</div>';
   return $markup;
