@@ -586,7 +586,7 @@ function _ilr_sdc_listings_get_sponsor_from_prefix($prefix) {
     'WI' => 'The Worker Institute at Cornell',
     'OLLB' => 'The Worker Institute at Cornell',
     'IP' => 'International Programs',
-    'WS' => 'Workplace Studies',
+    'WS' => 'Institute for Workplace Studies',
   );
 
   foreach ($mappings as $sub_prefix => $sponsor) {
