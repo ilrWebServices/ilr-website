@@ -112,18 +112,3 @@ form {
     cursor: pointer;
   }
 }
-
-#block-ilr-sdc-listings-course-search {
-  #ilr-sdc-listings-search-form {
-    #autocomplete {
-      ul li {
-        @include adjust-font-size-to(13px, 15);
-        @include adjust-leading-to(1);
-        padding: 5px 6px;
-        &:hover {
-          color: white;
-        }
-      }
-    }
-  }
-}
