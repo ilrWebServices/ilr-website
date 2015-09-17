@@ -16,8 +16,9 @@
       top: 0;
       overflow: visible;
       @include box-shadow(0 10px 10px -10px rgba(black, .5));
+      border-bottom: none;
 
-      h2 {
+      h2, h3 {
         display: none;
       }
 
@@ -60,6 +61,20 @@
       font-family: $font;
     }
   }
+  &.mobilizing-against-inequality, &.uli {
+    .subsite-header {
+      h2 {
+        padding-bottom: 0;
+      }
+      h3 {
+        @include adjust-font-size-to(16px);
+        @include adjust-leading-to(1);
+        font-family: $font;
+        color: $gray-dark;
+        text-transform: uppercase;
+      }
+    }
+  }
   &.wrapped {
     .subsite-header {
       width: 75%;
@@ -93,6 +108,9 @@
             max-width: 200px;
           }
         }
+        h3 {
+          display: none; //hides tagline on WI sites
+        }
       }
       &.sticky h2 {
         display: block;
@@ -111,6 +129,16 @@
     .subsite-header {
       width: 390px;
     }
+    a, a:visited, a:active {
+      color: $gray-light;
+      &:hover {
+        color: lighten($gray-light, 10%);
+        border-bottom-color: lighten(#4d4e53,8%);
+      }
+    }
+  }
+  &.mobilizing-against-inequality #header-region, &.uli #header-region {
+    background-color: #4d4e53;
     a, a:visited, a:active {
       color: $gray-light;
       &:hover {
