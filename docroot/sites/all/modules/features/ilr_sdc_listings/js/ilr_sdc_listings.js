@@ -198,7 +198,10 @@ jQuery.fn.sortElements = (function(){
           } else {
             $advancedSearch.hide();
           }
+          // Reposition the online checkbox
           $advancedSearch.insertAfter($basicSearch);
+          $('.form-item-field-online').insertAfter($('#edit-field-class-dates-value2-wrapper'));
+
           $advancedSearch.append('<p><a class="keyword search-toggle" href="#">Return to keyword search</a></p>');
           $basicSearch.append('<p><a class="advanced search-toggle" href="#">Filter by topic, format, etc.</a></p>');
           $('.search-toggle').click(function(){
