@@ -1468,7 +1468,7 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
  * available at admin/structure/views/view/sdc_course_listing/edit/page
  */
 function ilr_sdc_listings_views_query_alter(&$view, &$query) {
-  if($view->name == 'sdc_course_listing' && _ilr_sdc_listings_is_filtered_search($view)) {
+  if($view->name == 'sdc_course_listing') {
     $params = drupal_get_query_parameters();
     if (empty($params['field_online'])) {
       unset($query->where[2]['conditions']);
