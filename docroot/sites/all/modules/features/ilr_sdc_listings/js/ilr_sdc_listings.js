@@ -261,11 +261,15 @@ jQuery.fn.sortElements = (function(){
                 return classTitle(a) < classTitle(b) ? -1 : 1;
               case 'relevance':
                 return $(a).data('relevance') < $(b).data('relevance') ? -1 : 1;
-              case 'program':
-                return classSponsor(a) < classSponsor(b) ? -1 : 1;
+              case 'program': // Start by reverse sorting by title
+                return classTitle(a) < classTitle(b) ? 1 : -1;
             }
           });
           if (sortBy == 'program') {
+            // Since we sorted previously by title, we now sort by program
+            $('article.node-sdc-course').sortElements(function(a, b){
+              return classSponsor(a) < classSponsor(b) ? -1 : 1;
+            });
             sponsors.forEach( function(sponsor) {
               $('article[data-sponsor="'+sponsor+'"]').eq(0).prepend('<h2 class="program-sponsor">'+sponsor+'</h2>');
             });

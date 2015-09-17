@@ -549,7 +549,12 @@ function _ilr_sdc_listings_class_add_readmore(&$node, $view_mode) {
 
 function _ilr_sdc_listings_add_sponsor_data_to_course(&$variables) {
   $wrapper = ilr_get_node_wrapper($variables['node']);
-  $variables['attributes_array']['data-sponsor'] = $wrapper->field_course_sponsor_reference->value()[0]->name;;
+  $sponsor = $wrapper->field_course_sponsor_reference->value();
+  if (!empty($sponsor)) {
+    $variables['attributes_array']['data-sponsor'] = $sponsor[0]->name;
+  } else {
+    unset($variables['content']);
+  }
 }
 
 /**
