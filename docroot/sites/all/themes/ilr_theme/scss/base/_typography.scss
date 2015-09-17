@@ -33,6 +33,7 @@ h1 {
   @include margin-trailer(.15);
 
   a {
+    outline: 0;
     color: $h1-link;
 
     &:hover {

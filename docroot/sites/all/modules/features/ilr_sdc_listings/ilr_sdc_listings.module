@@ -458,7 +458,9 @@ function _ilr_sdc_listings_query_field_for_string($field, $string, $tid=NULL) {
 function _ilr_sdc_listings_render_search_results($results) {
   if (count($results)) {
     $result_count = format_plural(count($results), '1 result', '@count results');
-    $content = $result_count .' found.</p></div>';// closes .search-result-details
+    $content = $result_count .' found.</p>';
+    $content .= _ilr_sdc_listings_add_sort_elements();
+    $content .= '</div>';// closes .search-result-details
     $nids = array_values($results);
     $nodes = node_load_multiple($nids);
     foreach ($nodes as $nid => $node) {
@@ -472,6 +474,17 @@ function _ilr_sdc_listings_render_search_results($results) {
   return $content;
 }
 
+function _ilr_sdc_listings_add_sort_elements() {
+  $sorters = array('relevance','date','title','program');
+  $content = '<div class="sort">';
+  $content .= '  <p>Sort by : ';
+  foreach ($sorters as $key => $value) {
+    $class = ($key == 0) ? 'current-sort' : '';
+    $content .= '<a href="#" data-sort="'.$value.'" class="'.$class.'">'.$value.'</a> ';
+  }
+  $content .= '</p></div>';
+  return $content;
+}
 /**
  * Implements hook_page_alter().
  * Places the course search at the content top if on the page
@@ -532,6 +545,11 @@ function _ilr_sdc_listings_class_add_readmore(&$node, $view_mode) {
       '#attributes' => array('class' => array('links', 'inline')),
     );
   }
+}
+
+function _ilr_sdc_listings_add_sponsor_data_to_course(&$variables) {
+  $wrapper = ilr_get_node_wrapper($variables['node']);
+  $variables['attributes_array']['data-sponsor'] = $wrapper->field_course_sponsor_reference->value()[0]->name;;
 }
 
 /**
@@ -1161,6 +1179,7 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
        ? 'scheduled'
        : 'unscheduled';
       unset($variables['content']['links']['node']['#links']['node-readmore']);
+      _ilr_sdc_listings_add_sponsor_data_to_course($variables);
     }
   }
 

@@ -169,6 +169,22 @@ jQuery.fn.sortElements = (function(){
         return (matches.length) ? matches : false;
       }
 
+      classDate = function(article) {
+        var dateString = $(article).find('span.date').text();
+        if (dateString.length) {
+          return new Date(dateString);
+        }
+        return new Date('April 28, 2076'); // Some date in the distant future
+      }
+
+      classTitle = function(article) {
+        return $(article).find('h2 a').text();
+      }
+
+      classSponsor = function(article) {
+        return $(article).attr('data-sponsor');
+      }
+
       // If the course search block is on the page, position it and add the listener
       if ($('#block-ilr-sdc-listings-course-search').length) {
         $('a.animate-menu').live("click", prepareSearchBoxPosition);
@@ -195,6 +211,7 @@ jQuery.fn.sortElements = (function(){
 
       // Check if search results page
       if ($('body').hasClass('page-professional-programs-search')) {
+        var sponsors = [];
         // First, reverse the order of the unscheduled classes
         // so that sortElements retains their original search results
         $('article.node-sdc-course.unscheduled').each(function() {
@@ -211,8 +228,54 @@ jQuery.fn.sortElements = (function(){
             $(this).insertBefore($('#content article').eq(0));
           });
         }
+
+        $('article.node-sdc-course').each(function(index){
+          $(this).attr('data-relevance', index);
+          sponsors.push($(this).data('sponsor'));
+        });
+        // Remove duplicates
+        sponsors = $.unique(sponsors);
+
         // Reposition the search result details at the top
         $('.search-result-details').insertBefore($('#content article').eq(0));
+
+        // Add the sorting functionality
+        $('.sort a').click(function() {
+          if ($(this).hasClass('current-sort')) {
+            return false;
+          }
+          else {
+            $('a.current-sort').removeClass('current-sort');
+            $(this).addClass('current-sort');
+          }
+          sortBy = $(this).data('sort');
+
+          $('article.node-sdc-course').sortElements(function(a, b){
+            switch(sortBy) {
+              case 'date':
+                return classDate(a) < classDate(b) ? -1 : 1;
+              case 'title':
+                return classTitle(a) < classTitle(b) ? -1 : 1;
+              case 'relevance':
+                return $(a).data('relevance') < $(b).data('relevance') ? -1 : 1;
+              case 'program':
+                return classSponsor(a) < classSponsor(b) ? -1 : 1;
+            }
+          });
+          if (sortBy == 'program') {
+            if (!$('.program-sponsor').length) {
+              sponsors.forEach( function(sponsor) {
+                $('article[data-sponsor="'+sponsor+'"]').eq(0).prepend('<h2 class="program-sponsor">'+sponsor+'</h2>');
+              });
+            } else {
+              $('.program-sponsor').show();
+            }
+          }
+          else {
+            $('.program-sponsor').hide();
+          }
+          return false;
+        });
 
       }
     }

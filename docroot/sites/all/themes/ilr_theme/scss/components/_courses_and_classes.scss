@@ -136,11 +136,33 @@
 .page-professional-programs-public-offerings, .page-professional-programs-search {
   @extend %two-col-content-area;
 }
-.page-professional-programs-search article {
-  @include rhythm-margins(1, 1);
-  @include trailing-border();
-  border-style: 1px solid;
-  border-color: $gray-light;
+.page-professional-programs-search {
+  .sort p {
+    @include adjust-font-size-to(13px, 1);
+    text-transform: uppercase;
+    a {
+      padding: 0 .5em;
+      border-right: 1px solid $gray-light;
+      border-bottom: none;
+      &.current-sort {
+        text-decoration: underline;
+        color: $gray-medium;
+      }
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+  .program-sponsor {
+    color: lighten($brand, 5%);
+    @include trailer(2);
+  }
+  article {
+    @include rhythm-margins(1, 1);
+    @include trailing-border();
+    border-style: 1px solid;
+    border-color: $gray-light;
+  }
 }
 
 .node-type-sdc-course {
