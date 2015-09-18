@@ -27,6 +27,16 @@ jQuery.extend(jQuery.expr[":"], {
   }
 });
 
+jQuery.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+}
+
 jQuery.fn.sortElements = (function(){
 
     var sort = [].sort;
@@ -152,7 +162,7 @@ jQuery.fn.sortElements = (function(){
       };
 
       filterIsEngaged = function() {
-        return $('form.filter-engaged').length;
+        return $('form.filter-engaged').length || $.urlParam('filter') == 1;
       };
 
       exactTitleMatch = function() {
@@ -202,13 +212,19 @@ jQuery.fn.sortElements = (function(){
           $advancedSearch.insertAfter($basicSearch);
           $('.form-item-field-online').insertAfter($('#edit-field-class-dates-value2-wrapper'));
 
-          $advancedSearch.append('<p><a class="keyword search-toggle" href="#">Return to keyword search</a></p>');
+          $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/public-offerings?filter=1">Reset filter</a></p>');
+          $advancedSearch.append('<p class="keyword-link"><a class="keyword search-toggle" href="#">Return to keyword search</a></p>');
           $basicSearch.append('<p><a class="advanced search-toggle" href="#">Filter by topic, format, etc.</a></p>');
           $('.search-toggle').click(function(){
             $advancedSearch.toggle();
             $basicSearch.toggle();
             return false;
           });
+          $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
+          // $('#views-exposed-form-sdc-course-listing-page #edit-reset').click(function(){
+
+          //   return false;
+          // });
         }
       }
 

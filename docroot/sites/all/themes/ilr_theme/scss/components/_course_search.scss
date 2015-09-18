@@ -18,6 +18,14 @@
     padding-top: .5em;
   }
 
+  .views-exposed-form {
+    @include trailer(1);
+  }
+
+  .filter-link {
+    @include trailer(.5);
+  }
+
   #autocomplete {
     overflow: visible;
     ul li {
