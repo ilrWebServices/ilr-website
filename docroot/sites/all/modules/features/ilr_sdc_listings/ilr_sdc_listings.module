@@ -1498,11 +1498,15 @@ function ilr_sdc_listings_views_query_alter(&$view, &$query) {
 function ilr_sdc_listings_views_post_execute(&$view) {
   if ($view->name == 'sdc_course_listing' && _ilr_sdc_listings_is_filtered_search($view)) {
     if (isset($view->exposed_input['field_course_sponsor_reference_tid']) && empty($view->result)) {
-      $tid = $view->exposed_input['field_course_sponsor_reference_tid'][0];
-      $sponsor = taxonomy_term_load($tid);
-      $sponsor_wrapper = entity_metadata_wrapper('taxonomy_term', $sponsor);
-      $message = $sponsor_wrapper->field_error_message->value();
-      $view->display['page']->handler->handlers['empty']['area']->options['content'] = $message['value'];
+      $content = '';
+      $reference_tids = $view->exposed_input['field_course_sponsor_reference_tid'];
+      foreach ($reference_tids as $key => $tid) {
+        $sponsor = taxonomy_term_load($tid);
+        $sponsor_wrapper = entity_metadata_wrapper('taxonomy_term', $sponsor);
+        $message = $sponsor_wrapper->field_error_message->value();
+        $content .= $message['value'] . " \n";
+      }
+      $view->display['page']->handler->handlers['empty']['area']->options['content'] = $content;
     }
   }
 }
