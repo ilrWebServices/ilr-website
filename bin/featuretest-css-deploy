@@ -32,9 +32,9 @@ echo "Uploading styles to server"
 FOLDER=${ENV//-/_}
 scp -r docroot/sites/all/themes/ilr_theme/css featuretest.org:/var/aegir/projects/ilr/$FOLDER/docroot/sites/all/themes/ilr_theme
 
-echo "Enabling featuretest module and clearing cache on $ENV"
+echo "Clearing css-js cache on $ENV"
 cd docroot
-drush @featuretest.$ENV en featuretest -y | drush @featuretest.$ENV cc all
+drush @featuretest.$ENV cc css-js
 
 echo "Deployment complete"
 
