@@ -1723,14 +1723,6 @@ function ilr_sdc_listings_views_default_views() {
   );
   $handler->display->display_options['filters']['field_on_demand_value_1']['group'] = 2;
   $handler->display->display_options['filters']['field_on_demand_value_1']['reduce_duplicates'] = TRUE;
-  /* Filter criterion: Content: Class Dates -  start date (field_class_dates) */
-  $handler->display->display_options['filters']['field_class_dates_value_1']['id'] = 'field_class_dates_value_1';
-  $handler->display->display_options['filters']['field_class_dates_value_1']['table'] = 'field_data_field_class_dates';
-  $handler->display->display_options['filters']['field_class_dates_value_1']['field'] = 'field_class_dates_value';
-  $handler->display->display_options['filters']['field_class_dates_value_1']['relationship'] = 'reverse_field_course_node';
-  $handler->display->display_options['filters']['field_class_dates_value_1']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_class_dates_value_1']['form_type'] = 'date_text';
-  $handler->display->display_options['filters']['field_class_dates_value_1']['default_date'] = 'now';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
