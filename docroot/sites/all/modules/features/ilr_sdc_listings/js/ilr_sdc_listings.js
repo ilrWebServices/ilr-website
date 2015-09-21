@@ -179,12 +179,21 @@ jQuery.fn.sortElements = (function(){
         return (matches.length) ? matches : false;
       }
 
+      /**
+       * Create a js date object from the date string
+       * Chrome needs some additional string manipulation to create the date correctly
+       */
       classDate = function(article) {
-        var dateString = $(article).find('span.date').text();
+         var dateString = $(article).find('span.date').text();
+         var hyphen = dateString.indexOf('-');
+         if ( hyphen > 0) {
+            commaPosition = dateString.indexOf(',');
+            dateString = dateString.substring(0, hyphen) + dateString.substring(commaPosition, dateString.length);
+         }
         if (dateString.length) {
           return new Date(dateString);
         }
-        return new Date('April 28, 2076'); // Some date in the distant future
+        return new Date('April 28, 2087'); // Some date in the distant future
       }
 
       classTitle = function(article) {
