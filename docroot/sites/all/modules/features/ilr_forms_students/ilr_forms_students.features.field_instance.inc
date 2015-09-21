@@ -912,7 +912,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => 'PRE_ASSESSMENT_SOURCE',
+          'field_formatter_label' => 'PRE-ASSESSMENT_SOURCE',
         ),
         'type' => 'list_default',
         'weight' => 12,
