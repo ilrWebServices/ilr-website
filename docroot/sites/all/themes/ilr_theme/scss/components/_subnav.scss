@@ -39,6 +39,7 @@
 .sidebar #block-menu-block-ilr-subnav {
   @extend .hidden;
   overflow: hidden;
+  position: relative;
   [data-eq-state="regular-nav"] & {
     @extend .visible;
   }

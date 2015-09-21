@@ -167,11 +167,11 @@ jQuery.fn.sortElements = (function(){
 
       exactTitleMatch = function() {
         matches = [];
-        searchTerm = $('span.search-term').text();
+        searchTerm = $('span.search-term').text().toLowerCase();
         possibleMatches = $('article h2 a:titleContains("'+searchTerm+'")');
         $(possibleMatches).each(function() {
-          title = $(this).text();
-          if (title.indexOf('(') == searchTerm.length + 1) {
+          title = $(this).text().toLowerCase();
+          if (title.indexOf(searchTerm) > -1) {
             match = $(this).closest('article');
             matches.push(match);
           }
@@ -221,10 +221,6 @@ jQuery.fn.sortElements = (function(){
             return false;
           });
           $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
-          // $('#views-exposed-form-sdc-course-listing-page #edit-reset').click(function(){
-
-          //   return false;
-          // });
         }
       }
 
@@ -241,10 +237,16 @@ jQuery.fn.sortElements = (function(){
           return $(a).hasClass('scheduled') ? -1 : 1;
         });
 
+        // Remove duplicates
+        sponsors = $.unique(sponsors);
+
+        // Reposition the search result details at the top
+        $('.search-result-details').insertBefore($('#content article').eq(0));
+
         // Check for an exact title match,
         if (match = exactTitleMatch()) {
-          $(match).each(function(){
-            $(this).insertBefore($('#content article').eq(0));
+          $(match).each(function(index){
+            $(this).insertAfter($('#content div.search-result-details'));
           });
         }
 
@@ -252,11 +254,6 @@ jQuery.fn.sortElements = (function(){
           $(this).attr('data-relevance', index);
           sponsors.push($(this).data('sponsor'));
         });
-        // Remove duplicates
-        sponsors = $.unique(sponsors);
-
-        // Reposition the search result details at the top
-        $('.search-result-details').insertBefore($('#content article').eq(0));
 
         // Add the sorting functionality
         $('.sort a').click(function() {

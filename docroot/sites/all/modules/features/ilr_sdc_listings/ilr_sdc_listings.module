@@ -1470,7 +1470,7 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
 
     $form['field_online'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Online only?'),
+      '#title' => t('Online only'),
       '#options' => drupal_map_assoc(array(1)),
       '#validated' => TRUE,
       '#default_value' => 0,
