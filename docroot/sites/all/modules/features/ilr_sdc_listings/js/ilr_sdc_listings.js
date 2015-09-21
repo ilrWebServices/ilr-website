@@ -221,6 +221,12 @@ jQuery.fn.sortElements = (function(){
             return false;
           });
           $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
+          // Check for enter key trigger since autocomplete is breaking common usage
+          $( "#search-input #edit-s" ).keypress(function(event) {
+            if (event.which == 13) {
+             $($basicSearch).submit();
+            }
+          });
         }
       }
 
