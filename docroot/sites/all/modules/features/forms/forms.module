@@ -229,6 +229,26 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
 }
 
 /**
+ * Adds the custom parameters needed by the marketing team for the grad programs form
+ */
+function _forms_grad_form_add_custom_params($entityform) {
+  $wrapper = _forms_entityform_wrapper($entityform);
+  $confirmation_url = _entityform_type_get_confirm_url($wrapper->type->value()->type);
+  $remove = array(' ','.','/');
+  $degree = strtolower(str_replace($remove, '', $wrapper->field_degree_all_grad_options->value()));
+  $params = array(
+    'query' => array(
+      'entityform_id' => $entityform->entityform_id,
+      'degree' => $degree,
+    ),
+  );
+  // Keep entityform from denying access
+  $_SESSION['entityform_submission'] = $entityform->entityform_id;
+  drupal_goto($confirmation_url, $params);
+}
+
+
+/**
  * Collective Bargaining videos redirect
  * The URL to redirect to will get set in the db via drush using the variable "cb_videos_url"
  * What's in the code is a default.
@@ -472,6 +492,12 @@ function _process_alumni_eNews_subscribe(&$entityform) {
   $from = 'jlw85@cornell.edu';
   $email_list = 'ilr_alumni-l';
   _forms_send_lyris_email($entityform, $from, $email_list);
+}
+
+function _process_graduate_programs_inquiry(&$entityform) {
+  $admin_email = _forms_get_admin_email($entityform);
+  _forms_send_emails($entityform, $admin_email);
+  _forms_grad_form_add_custom_params($entityform);
 }
 
 function _forms_send_lyris_email(&$entityform, $from, $email_list) {
