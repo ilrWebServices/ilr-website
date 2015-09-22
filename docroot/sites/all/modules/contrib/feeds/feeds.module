@@ -35,6 +35,7 @@ function feeds_hook_info() {
     'feeds_after_save',
     'feeds_after_import',
     'feeds_after_clear',
+    'feeds_processor_targets',
     'feeds_processor_targets_alter',
     'feeds_parser_sources_alter',
   );
@@ -761,6 +762,17 @@ function feeds_system_info_alter(array &$info, $file, $type) {
 
   // Check if any importers are using any plugins from the current module.
   foreach (feeds_importer_load_all(TRUE) as $importer) {
+
+    // Skip importers that are defined in code and are provided by the current
+    // module. This ensures that modules that define both an importer and a
+    // plugin can still be disabled.
+    if ($importer->export_type == EXPORT_IN_CODE) {
+      $configs = ctools_export_load_object('feeds_importer', 'names', array($importer->id));
+      if (isset($configs[$importer->id]) && $configs[$importer->id]->export_module === $file->name) {
+        continue;
+      }
+    }
+
     $configuration = $importer->getConfig();
 
     foreach (array('fetcher', 'parser', 'processor') as $plugin_type) {
@@ -777,11 +789,55 @@ function feeds_system_info_alter(array &$info, $file, $type) {
   }
 
   if (module_exists('feeds_ui') && user_access('administer feeds')) {
-    $info['explanation'] = t('Feeds is currently using this module for one or more <a href="@link">importers</a>.', array('@link' => url('admin/structure/feeds')));
+    $info['explanation'] = t('Feeds is currently using this module for one or more <a href="@link">importers</a>', array('@link' => url('admin/structure/feeds')));
   }
   else {
-    $info['explanation'] = t('Feeds is currently using this module for one or more importers.');
+    $info['explanation'] = t('Feeds is currently using this module for one or more importers');
   }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function feeds_module_implements_alter(array &$implementations, $hook) {
+  if ($hook === 'feeds_processor_targets_alter') {
+    // We need two implementations of this hook, so we add one that gets
+    // called first, and move the normal one to last.
+    $implementations = array('_feeds' => FALSE) + $implementations;
+
+    // Move normal implementation to last.
+    $group = $implementations['feeds'];
+    unset($implementations['feeds']);
+    $implementations['feeds'] = $group;
+  }
+}
+
+/**
+ * Implements hook_feeds_processor_targets_alter().
+ *
+ * @see feeds_feeds_processor_targets()
+ * @see feeds_feeds_processor_targets_alter()
+ */
+function _feeds_feeds_processor_targets_alter(array &$targets, $entity_type, $bundle) {
+  // If hook_feeds_processor_targets() hasn't been called, for instance, by
+  // older processors, invoke it ourself.
+  if (!drupal_static('feeds_feeds_processor_targets', FALSE)) {
+    $targets += module_invoke_all('feeds_processor_targets', $entity_type, $bundle);
+  }
+}
+
+/**
+ * Implements hook_flush_caches().
+ */
+function feeds_flush_caches() {
+  // The update to add the table needs to have run. Taken from
+  // https://www.drupal.org/node/2511858
+  include_once DRUPAL_ROOT . '/includes/install.inc';
+
+  if (drupal_get_installed_schema_version('feeds') >= 7212) {
+    return array('cache_feeds_http');
+  }
+  return array();
 }
 
 /**
@@ -1052,9 +1108,9 @@ function feeds_plugin($plugin, $id) {
 /**
  * Includes a library file.
  *
- * @param $file
+ * @param string $file
  *   The filename to load from.
- * @param $library
+ * @param string $library
  *   The name of the library. If libraries module is installed,
  *   feeds_include_library() will look for libraries with this name managed by
  *   libraries module.
@@ -1062,55 +1118,63 @@ function feeds_plugin($plugin, $id) {
 function feeds_include_library($file, $library) {
   static $included = array();
 
-  if (!isset($included[$file])) {
-    $included[$file] = FALSE;
+  $key = $library . '/' . $file;
+
+  if (!isset($included[$key])) {
+    $included[$key] = FALSE;
 
     $library_dir = variable_get('feeds_library_dir', FALSE);
     $feeds_library_path = DRUPAL_ROOT . '/' . drupal_get_path('module', 'feeds') . "/libraries/$file";
+    $libraries_path = module_exists('libraries') ? libraries_get_path($library) : FALSE;
 
     // Try first whether libraries module is present and load the file from
     // there. If this fails, require the library from the local path.
-    if (module_exists('libraries') && file_exists(libraries_get_path($library) . "/$file")) {
-      require libraries_get_path($library) . "/$file";
-      $included[$file] = TRUE;
+    if ($libraries_path && is_file("$libraries_path/$file")) {
+      require "$libraries_path/$file";
+      $included[$key] = TRUE;
     }
-    elseif ($library_dir && file_exists("$library_dir/$library/$file")) {
-      require "$library_dir/$library/$file";
-      $included[$file] = TRUE;
+    elseif (is_file(DRUPAL_ROOT . '/sites/all/libraries/' . $key)) {
+      require DRUPAL_ROOT . '/sites/all/libraries/' . $key;
+      $included[$key] = TRUE;
     }
-    elseif (file_exists($feeds_library_path)) {
+    elseif ($library_dir && is_file($library_dir . '/' . $key)) {
+      require $library_dir . '/' . $key;
+      $included[$key] = TRUE;
+    }
+    elseif (is_file($feeds_library_path)) {
       // @todo: Throws "Deprecated function: Assigning the return value of new
       // by reference is deprecated."
       require $feeds_library_path;
-      $included[$file] = TRUE;
+      $included[$key] = TRUE;
     }
   }
 
-  return $included[$file];
+  return $included[$key];
 }
 
 /**
  * Checks whether a library is present.
  *
- * @param $file
+ * @param string $file
  *   The filename to load from.
- * @param $library
+ * @param string $library
  *   The name of the library. If libraries module is installed,
  *   feeds_library_exists() will look for libraries with this name managed by
  *   libraries module.
  */
 function feeds_library_exists($file, $library) {
-
-  if (module_exists('libraries') && file_exists(libraries_get_path($library) . "/$file")) {
+  $path = module_exists('libraries') ? libraries_get_path($library) : FALSE;
+  if ($path && is_file($path . '/' . $file)) {
     return TRUE;
   }
-
-  elseif (file_exists(DRUPAL_ROOT . '/' . drupal_get_path('module', 'feeds') . "/libraries/$file")) {
+  elseif (is_file(DRUPAL_ROOT . "/sites/all/libraries/$library/$file")) {
     return TRUE;
   }
-
+  elseif (is_file(DRUPAL_ROOT . '/' . drupal_get_path('module', 'feeds') . "/libraries/$file")) {
+    return TRUE;
+  }
   elseif ($library_dir = variable_get('feeds_library_dir', FALSE)) {
-    if (file_exists("$library_dir/$library/$file")) {
+    if (is_file("$library_dir/$library/$file")) {
       return TRUE;
     }
   }

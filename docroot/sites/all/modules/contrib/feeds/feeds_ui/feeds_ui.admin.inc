@@ -513,6 +513,9 @@ function feeds_ui_mapping_form($form, &$form_state, $importer) {
   if ($sources = $importer->parser->getMappingSources()) {
     $source_options = _feeds_ui_format_options($sources);
     foreach ($sources as $k => $source) {
+      if (!empty($source['deprecated'])) {
+        continue;
+      }
       $legend['sources'][$k]['name']['#markup'] = empty($source['name']) ? $k : $source['name'];
       $legend['sources'][$k]['description']['#markup'] = empty($source['description']) ? '' : $source['description'];
     }
@@ -524,6 +527,9 @@ function feeds_ui_mapping_form($form, &$form_state, $importer) {
   $target_options = _feeds_ui_format_options($targets);
   $legend['targets'] = array();
   foreach ($targets as $k => $target) {
+    if (!empty($target['deprecated'])) {
+      continue;
+    }
     $legend['targets'][$k]['name']['#markup'] = empty($target['name']) ? $k : $target['name'];
     $legend['targets'][$k]['description']['#markup'] = empty($target['description']) ? '' : $target['description'];
   }
@@ -634,12 +640,10 @@ function feeds_ui_mapping_settings_form($form, $form_state, $i, $mapping, $targe
   }
 
   if ($form_state['mapping_settings_edit'] === $i) {
-    // Build the form.
-    if (isset($target['form_callback'])) {
-      $settings_form = call_user_func($target['form_callback'], $mapping, $target, $form, $form_state);
-    }
-    else {
-      $settings_form = array();
+    $settings_form = array();
+
+    foreach ($target['form_callbacks'] as $callback) {
+      $settings_form += call_user_func($callback, $mapping, $target, $form, $form_state);
     }
 
     // Merge in the optional unique form.
@@ -664,12 +668,14 @@ function feeds_ui_mapping_settings_form($form, $form_state, $i, $mapping, $targe
   }
   else {
     // Build the summary.
-    if (isset($target['summary_callback'])) {
-      $summary = call_user_func($target['summary_callback'], $mapping, $target, $form, $form_state);
+    $summary = array();
+
+    foreach ($target['summary_callbacks'] as $callback) {
+      $summary[] = call_user_func($callback, $mapping, $target, $form, $form_state);
     }
-    else {
-      $summary = '';
-    }
+
+    // Filter out empty summary values.
+    $summary = implode('<br />', array_filter($summary));
 
     // Append the optional unique summary.
     if ($optional_unique_summary = feeds_ui_mapping_settings_optional_unique_summary($mapping, $target, $form, $form_state)) {
@@ -830,11 +836,17 @@ function feeds_ui_mapping_form_submit($form, &$form_state) {
  * FeedsProcessor::getMappingTargets() and format them into
  * a Form API options array.
  */
-function _feeds_ui_format_options($options) {
+function _feeds_ui_format_options($options, $show_deprecated = FALSE) {
   $result = array();
   foreach ($options as $k => $v) {
+    if (!$show_deprecated && is_array($v) && !empty($v['deprecated'])) {
+      continue;
+    }
     if (is_array($v) && !empty($v['name'])) {
       $result[$k] = $v['name'] . ' (' . $k . ')';
+      if (!empty($v['deprecated'])) {
+        $result[$k] .= ' - ' . t('DEPRECATED');
+      }
     }
     elseif (is_array($v)) {
       $result[$k] = $k;
@@ -1017,6 +1029,13 @@ function theme_feeds_ui_container($variables) {
 function theme_feeds_ui_mapping_form($variables) {
   $form = $variables['form'];
 
+  $targets = feeds_importer($form['#importer'])->processor->getMappingTargets();
+  $targets = _feeds_ui_format_options($targets, TRUE);
+
+  $sources = feeds_importer($form['#importer'])->parser->getMappingSources();
+  // Some parsers do not define source options.
+  $sources = $sources ? _feeds_ui_format_options($sources, TRUE) : array();
+
   // Build the actual mapping table.
   $header = array(
     t('Source'),
@@ -1028,16 +1047,15 @@ function theme_feeds_ui_mapping_form($variables) {
   $rows = array();
   if (is_array($form['#mappings'])) {
     foreach ($form['#mappings'] as $i => $mapping) {
-      // Some parsers do not define source options.
-      $source = isset($form['source']['#options'][$mapping['source']]) ? $form['source']['#options'][$mapping['source']] : $mapping['source'];
-      $target = isset($form['target']['#options'][$mapping['target']]) ? check_plain($form['target']['#options'][$mapping['target']]) : '<em>' . t('Missing') . '</em>';
+      $source = isset($sources[$mapping['source']]) ? check_plain($sources[$mapping['source']]) : check_plain($mapping['source']);
+      $target = isset($targets[$mapping['target']]) ? check_plain($targets[$mapping['target']]) : '<em>' . t('Missing') . '</em>';
       // Add indicator to target if target configuration changed.
       if (isset($form['#mapping_settings'][$i])) {
         $target .= '<span class="warning">*</span>';
       }
       $rows[] = array(
         'data' => array(
-          check_plain($source),
+          $source,
           $target,
           drupal_render($form['config'][$i]),
           drupal_render($form['remove_flags'][$i]),
