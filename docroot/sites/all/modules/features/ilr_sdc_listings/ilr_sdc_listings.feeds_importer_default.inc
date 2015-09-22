@@ -294,6 +294,7 @@ function ilr_sdc_listings_feeds_importer_default() {
             'target' => 'field_sdc_department',
             'term_search' => '0',
             'autocreate' => 1,
+            'unique' => FALSE,
           ),
           7 => array(
             'source' => 'jsonpath_parser:8',
