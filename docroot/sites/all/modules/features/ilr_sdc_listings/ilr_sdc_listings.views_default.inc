@@ -1404,7 +1404,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Many programs are available for custom delivery to your organization. Please request more information for programs listed with no upcoming dates.';
+  $handler->display->display_options['header']['area']['content'] = '<p>Many programs are available for custom delivery to your organization. Please request more information for programs listed with no upcoming dates.</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -1498,6 +1498,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['sorts']['field_on_demand_value']['field'] = 'field_on_demand_value';
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
+    3 => 'AND',
     2 => 'OR',
   );
   /* Filter criterion: Content: Published */
@@ -1599,32 +1600,6 @@ function ilr_sdc_listings_views_default_views() {
   );
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_course_sponsor_reference_tid']['vocabulary'] = 'course_sponsor';
-  /* Filter criterion: Content: Address - Locality (i.e. City) */
-  $handler->display->display_options['filters']['field_address_locality']['id'] = 'field_address_locality';
-  $handler->display->display_options['filters']['field_address_locality']['table'] = 'field_data_field_address';
-  $handler->display->display_options['filters']['field_address_locality']['field'] = 'field_address_locality';
-  $handler->display->display_options['filters']['field_address_locality']['relationship'] = 'reverse_field_course_node';
-  $handler->display->display_options['filters']['field_address_locality']['group'] = 1;
-  $handler->display->display_options['filters']['field_address_locality']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_address_locality']['expose']['operator_id'] = 'field_address_locality_op';
-  $handler->display->display_options['filters']['field_address_locality']['expose']['label'] = 'Location';
-  $handler->display->display_options['filters']['field_address_locality']['expose']['operator'] = 'field_address_locality_op';
-  $handler->display->display_options['filters']['field_address_locality']['expose']['identifier'] = 'field_address_locality';
-  $handler->display->display_options['filters']['field_address_locality']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => '1',
-    11 => 0,
-    16 => 0,
-    41 => 0,
-    51 => 0,
-    46 => 0,
-    36 => 0,
-    21 => 0,
-    26 => 0,
-    31 => 0,
-    56 => 0,
-    61 => 0,
-  );
   /* Filter criterion: Content: Class Dates -  start date (field_class_dates) */
   $handler->display->display_options['filters']['field_class_dates_value']['id'] = 'field_class_dates_value';
   $handler->display->display_options['filters']['field_class_dates_value']['table'] = 'field_data_field_class_dates';
@@ -1723,6 +1698,40 @@ function ilr_sdc_listings_views_default_views() {
   );
   $handler->display->display_options['filters']['field_on_demand_value_1']['group'] = 2;
   $handler->display->display_options['filters']['field_on_demand_value_1']['reduce_duplicates'] = TRUE;
+  /* Filter criterion: Content: Address - Locality (i.e. City) */
+  $handler->display->display_options['filters']['field_address_locality']['id'] = 'field_address_locality';
+  $handler->display->display_options['filters']['field_address_locality']['table'] = 'field_data_field_address';
+  $handler->display->display_options['filters']['field_address_locality']['field'] = 'field_address_locality';
+  $handler->display->display_options['filters']['field_address_locality']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_address_locality']['group'] = 3;
+  $handler->display->display_options['filters']['field_address_locality']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_address_locality']['expose']['operator_id'] = 'field_address_locality_op';
+  $handler->display->display_options['filters']['field_address_locality']['expose']['label'] = 'Location';
+  $handler->display->display_options['filters']['field_address_locality']['expose']['operator'] = 'field_address_locality_op';
+  $handler->display->display_options['filters']['field_address_locality']['expose']['identifier'] = 'field_address_locality';
+  $handler->display->display_options['filters']['field_address_locality']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => '1',
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    36 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
+  );
+  /* Filter criterion: Content: Class Dates -  start date (field_class_dates) */
+  $handler->display->display_options['filters']['field_class_dates_value_1']['id'] = 'field_class_dates_value_1';
+  $handler->display->display_options['filters']['field_class_dates_value_1']['table'] = 'field_data_field_class_dates';
+  $handler->display->display_options['filters']['field_class_dates_value_1']['field'] = 'field_class_dates_value';
+  $handler->display->display_options['filters']['field_class_dates_value_1']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_class_dates_value_1']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_class_dates_value_1']['group'] = 3;
+  $handler->display->display_options['filters']['field_class_dates_value_1']['default_date'] = 'now';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

@@ -204,72 +204,39 @@ jQuery.fn.sortElements = (function(){
         return $(article).attr('data-sponsor');
       }
 
-      // If the course search block is on the page, position it and add the listener
-      if ($('#block-ilr-sdc-listings-course-search').length) {
-        $('a.animate-menu').live("click", prepareSearchBoxPosition);
-        setTimeout(positionCourseSearchBox,500); // Set a timer to position it
-        // Check if advanced search is present
-        if ($('#views-exposed-form-sdc-course-listing-page').length) {
-          $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
-          $basicSearch = $('#ilr-sdc-listings-search-form');
-          if (filterIsEngaged()) {
-            $basicSearch.hide();
-          } else {
-            $advancedSearch.hide();
-          }
-          // Reposition the online checkbox
-          $advancedSearch.insertAfter($basicSearch);
-          $('.form-item-field-online').insertAfter($('#edit-field-class-dates-value2-wrapper'));
-
-          $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/public-offerings?filter=1">Reset filter</a></p>');
-          $advancedSearch.append('<p class="keyword-link"><a class="keyword search-toggle" href="#">Return to keyword search</a></p>');
-          $basicSearch.append('<p><a class="advanced search-toggle" href="#">Filter by topic, format, etc.</a></p>');
-          $('.search-toggle').click(function(){
-            $advancedSearch.toggle();
-            $basicSearch.toggle();
-            return false;
-          });
-          $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
-          // Check for enter key trigger since autocomplete is breaking common usage
-          $( "#search-input #edit-s" ).keypress(function(event) {
-            if (event.which == 13) {
-             $($basicSearch).submit();
-            }
-          });
-        }
-      }
-
-      // Check if search results page
-      if ($('body').hasClass('page-professional-programs-search')) {
+      addSorting = function() {
         var sponsors = [];
-        // First, reverse the order of the unscheduled classes
-        // so that sortElements retains their original search results
-        $('article.node-sdc-course.unscheduled').each(function() {
-          $(this).parent().prepend(this);
-        });
-        // Then sort all elements so that scheduled courses come first
-        $('article.node-sdc-course').sortElements(function(a, b){
-          return $(a).hasClass('scheduled') ? -1 : 1;
-        });
 
-        // Remove duplicates
-        sponsors = $.unique(sponsors);
-
-        // Reposition the search result details at the top
-        $('.search-result-details').insertBefore($('#content article').eq(0));
-
-        // Check for an exact title match,
-        if (match = exactTitleMatch()) {
-          $(match).each(function(index){
-            $(this).insertAfter($('#content div.search-result-details'));
+        // Check if search results page
+        if ($('body').hasClass('page-professional-programs-search')) {
+          // First, reverse the order of the unscheduled classes
+          // so that sortElements retains their original search results
+          $('article.node-sdc-course.unscheduled').each(function() {
+            $(this).parent().prepend(this);
           });
-        }
+          // Then sort all elements so that scheduled courses come first
+          $('article.node-sdc-course').sortElements(function(a, b){
+            return $(a).hasClass('scheduled') ? -1 : 1;
+          });
 
+          // Reposition the search result details at the top
+          $('.search-result-details').insertBefore($('#content article').eq(0));
+
+          // Check for an exact title match,
+          if (match = exactTitleMatch()) {
+            $(match).each(function(index){
+              $(this).insertAfter($('#content div.search-result-details'));
+            });
+          }
+        }
+        // Loop through to set initial order 'relevance' and sponsors
         $('article.node-sdc-course').each(function(index){
           $(this).attr('data-relevance', index);
-          sponsors.push($(this).data('sponsor'));
+          sponsor = $(this).data('sponsor');
+          if ($.inArray(sponsor, sponsors) == -1) {
+            sponsors.push(sponsor);
+          }
         });
-
         // Add the sorting functionality
         $('.sort a').click(function() {
           if ($(this).hasClass('current-sort')) {
@@ -307,7 +274,43 @@ jQuery.fn.sortElements = (function(){
           }
           return false;
         });
+      }
 
+      // If the course search block is on the page, position it and add the listeners
+      if ($('#block-ilr-sdc-listings-course-search').length) {
+        $('a.animate-menu').live("click", prepareSearchBoxPosition);
+        setTimeout(positionCourseSearchBox,500); // Set a timer to position it
+        // Check if advanced search is present
+        if ($('#views-exposed-form-sdc-course-listing-page').length) {
+          $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
+          $basicSearch = $('#ilr-sdc-listings-search-form');
+          if (filterIsEngaged()) {
+            $basicSearch.hide();
+          } else {
+            $advancedSearch.hide();
+          }
+          // Reposition the online checkbox
+          $advancedSearch.insertAfter($basicSearch);
+          $('.form-item-field-online').insertAfter($('#edit-field-class-dates-value2-wrapper'));
+
+          $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/public-offerings?filter=1">Reset filter</a></p>');
+          $advancedSearch.append('<p class="keyword-link"><a class="keyword search-toggle" href="#">Return to keyword search</a></p>');
+          $basicSearch.append('<p><a class="advanced search-toggle" href="#">Filter by topic, format, etc.</a></p>');
+          $('.search-toggle').click(function(){
+            $advancedSearch.toggle();
+            $basicSearch.toggle();
+            return false;
+          });
+          $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
+          // Check for enter key trigger since autocomplete is breaking common usage
+          $( "#search-input #edit-s" ).keypress(function(event) {
+            if (event.which == 13) {
+             $($basicSearch).submit();
+            }
+          });
+
+          addSorting();
+        }
       }
     }
   };

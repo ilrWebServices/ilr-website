@@ -135,8 +135,6 @@
 
 .page-professional-programs-public-offerings, .page-professional-programs-search {
   @extend %two-col-content-area;
-}
-.page-professional-programs-search {
   .sort p {
     @include adjust-font-size-to(13px, 1);
     text-transform: uppercase;
@@ -161,6 +159,8 @@
     font-family: $font;
     font-weight: 300;
   }
+}
+.page-professional-programs-search {
   article {
     @include rhythm-margins(1, 1);
     @include trailing-border();

@@ -459,7 +459,7 @@ function _ilr_sdc_listings_render_search_results($results) {
   if (count($results)) {
     $result_count = format_plural(count($results), '1 result', '@count results');
     $content = $result_count .' found.</p>';
-    $content .= _ilr_sdc_listings_add_sort_elements();
+    $content .= _ilr_sdc_listings_add_sort_elements(array('relevance','date','title','program'));
     $content .= '</div>';// closes .search-result-details
     $nids = array_values($results);
     $nodes = node_load_multiple($nids);
@@ -474,11 +474,10 @@ function _ilr_sdc_listings_render_search_results($results) {
   return $content;
 }
 
-function _ilr_sdc_listings_add_sort_elements() {
-  $sorters = array('relevance','date','title','program');
+function _ilr_sdc_listings_add_sort_elements($sort_types) {
   $content = '<div class="sort">';
   $content .= '  <p>Sort by : ';
-  foreach ($sorters as $key => $value) {
+  foreach ($sort_types as $key => $value) {
     $class = ($key == 0) ? 'current-sort' : '';
     $content .= '<a href="#" data-sort="'.$value.'" class="'.$class.'">'.$value.'</a> ';
   }
@@ -1278,6 +1277,10 @@ function ilr_sdc_listings_views_pre_render(&$view) {
     $nav .= drupal_render($month_form);
     $view->attachment_before = $nav;
   }
+  if ($view->name == 'sdc_course_listing') {
+    $markup = _ilr_sdc_listings_add_sort_elements(array('title','date','program'));
+    $view->add_item('default', 'header', 'views', 'area', array('content' => $markup, 'format' => 'full_html'));
+  }
 }
 
 /**
@@ -1479,15 +1482,20 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Removes the online field query group if online checkbox not selected
- * This "or" condition is set up in the views admin interface,
+ * Removes special query groups depending on current filter settings
+ * These conditions are set up in the views admin interface,
  * available at admin/structure/views/view/sdc_course_listing/edit/page
+ *  - ensures that online queries only return online results
+ *  - ensures that city queries only return courses with classes in the future
  */
 function ilr_sdc_listings_views_query_alter(&$view, &$query) {
   if($view->name == 'sdc_course_listing') {
     $params = drupal_get_query_parameters();
     if (empty($params['field_online'])) {
       unset($query->where[2]['conditions']);
+    }
+    if (empty($params['field_address_locality'])) {
+      unset($query->where[3]['conditions']);
     }
   }
 }
