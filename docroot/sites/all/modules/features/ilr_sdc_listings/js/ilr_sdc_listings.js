@@ -291,6 +291,7 @@ jQuery.fn.sortElements = (function(){
           }
           // Reposition the online checkbox
           $advancedSearch.insertAfter($basicSearch);
+          $('#edit-field-address-locality-wrapper').insertAfter($('#edit-field-course-sponsor-reference-tid-wrapper'));
           $('.form-item-field-online').insertAfter($('#edit-field-class-dates-value2-wrapper'));
 
           $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/public-offerings?filter=1">Reset filter</a></p>');
