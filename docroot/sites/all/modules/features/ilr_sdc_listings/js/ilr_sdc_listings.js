@@ -141,7 +141,13 @@ jQuery.fn.sortElements = (function(){
        */
       positionCourseSearchBox = function() {
         if (mobileNavActive()) {
-          $('#block-ilr-sdc-listings-course-search').insertBefore($('div.sort'));
+          $searchBlock = $('#block-ilr-sdc-listings-course-search');
+          if ($('div.sort').length) { // Remove it from the jpanel menu
+            $($searchBlock).insertBefore($('div.sort'));
+            $('#jPanelMenu-menu #block-ilr-sdc-listings-course-search').remove();
+          } else { // Remove the advanced filter
+            $('a.search-toggle').remove();
+          }
         }
         else {
           yPos = $('#block-ilr-sdc-listings-course-search').css('top');
@@ -170,10 +176,44 @@ jQuery.fn.sortElements = (function(){
         return $('form.filter-engaged').length || $.urlParam('filter') == 1;
       };
 
+      prepSearchFilter = function() {
+        if (!mobileNavActive()) {
+          $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
+          $basicSearch = $('#ilr-sdc-listings-search-form');
+          if (filterIsEngaged()) {
+            $basicSearch.hide();
+          } else {
+            $advancedSearch.hide();
+          }
+          // Reposition the online checkbox
+          $advancedSearch.insertAfter($basicSearch);
+          $('#edit-field-address-locality-wrapper').insertAfter($('#edit-field-course-sponsor-reference-tid-wrapper'));
+          $('.form-item-field-online').insertAfter($('#edit-field-class-dates-value2-wrapper'));
+
+          $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/public-offerings?filter=1">Reset filter</a></p>');
+          $advancedSearch.append('<p class="keyword-link"><a class="keyword search-toggle" href="#">Return to keyword search</a></p>');
+
+          $basicSearch.append('<p><a class="advanced search-toggle" href="#">Filter by topic, format, etc.</a></p>');
+          $('.search-toggle').live("click", function(){
+            $advancedSearch.toggle();
+            $basicSearch.toggle();
+            return false;
+          });
+          $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
+          // Check for enter key trigger since autocomplete is breaking common usage
+          $( "#search-input #edit-s" ).keypress(function(event) {
+            if (event.which == 13) {
+             $($basicSearch).submit();
+            }
+          });
+        }
+        addSorting();
+      };
+
       exactTitleMatch = function() {
         matches = [];
         searchTerm = $('span.search-term').text().toLowerCase();
-        possibleMatches = $('article h2 a:titleContains("'+searchTerm+'")');
+        possibleMatches = $('#content article h2 a:titleContains("'+searchTerm+'")');
         $(possibleMatches).each(function() {
           title = $(this).text().toLowerCase();
           if (title.indexOf(searchTerm) > -1) {
@@ -182,7 +222,7 @@ jQuery.fn.sortElements = (function(){
           }
         });
         return (matches.length) ? matches : false;
-      }
+      };
 
       /**
        * Create a js date object from the date string
@@ -199,40 +239,22 @@ jQuery.fn.sortElements = (function(){
           return new Date(dateString);
         }
         return new Date('April 28, 2087'); // Some date in the distant future
-      }
+      };
 
       classTitle = function(article) {
         return $(article).find('h2 a').text();
-      }
+      };
 
       classSponsor = function(article) {
         return $(article).attr('data-sponsor');
-      }
+      };
 
       addSorting = function() {
         var sponsors = [];
 
         // Check if search results page
         if ($('body').hasClass('page-professional-programs-search')) {
-          // First, reverse the order of the unscheduled classes
-          // so that sortElements retains their original search results
-          $('article.node-sdc-course.unscheduled').each(function() {
-            $(this).parent().prepend(this);
-          });
-          // Then sort all elements so that scheduled courses come first
-          $('article.node-sdc-course').sortElements(function(a, b){
-            return $(a).hasClass('scheduled') ? -1 : 1;
-          });
-
-          // Reposition the search result details at the top
-          $('.search-result-details').insertBefore($('#content article').eq(0));
-
-          // Check for an exact title match,
-          if (match = exactTitleMatch()) {
-            $(match).each(function(index){
-              $(this).insertAfter($('#content div.search-result-details'));
-            });
-          }
+          sortSearchResults();
         }
         // Loop through to set initial order 'relevance' and sponsors
         $('article.node-sdc-course').each(function(index){
@@ -281,6 +303,28 @@ jQuery.fn.sortElements = (function(){
         });
       }
 
+      sortSearchResults = function() {
+        // First, reverse the order of the unscheduled classes
+        // so that sortElements retains their original search results
+        $('article.node-sdc-course.unscheduled').each(function() {
+          $(this).parent().prepend(this);
+        });
+        // Then sort all elements so that scheduled courses come first
+        $('article.node-sdc-course').sortElements(function(a, b){
+          return $(a).hasClass('scheduled') ? -1 : 1;
+        });
+
+        // Reposition the search result details at the top
+        $('.search-result-details').insertBefore($('#content article').eq(0));
+
+        // Check for an exact title match,
+        if (match = exactTitleMatch()) {
+          $(match).each(function(index){
+            $(this).insertAfter($('#content div.search-result-details'));
+          });
+        }
+      };
+
       mobileNavActive = function() {
         return $('header').attr('data-eq-state') == 'mobile-nav';
       };
@@ -291,35 +335,7 @@ jQuery.fn.sortElements = (function(){
         setTimeout(positionCourseSearchBox,500); // Set a timer to position it
         // Check if advanced search is present
         if ($('#views-exposed-form-sdc-course-listing-page').length) {
-          $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
-          $basicSearch = $('#ilr-sdc-listings-search-form');
-          if (filterIsEngaged()) {
-            $basicSearch.hide();
-          } else {
-            $advancedSearch.hide();
-          }
-          // Reposition the online checkbox
-          $advancedSearch.insertAfter($basicSearch);
-          $('#edit-field-address-locality-wrapper').insertAfter($('#edit-field-course-sponsor-reference-tid-wrapper'));
-          $('.form-item-field-online').insertAfter($('#edit-field-class-dates-value2-wrapper'));
-
-          $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/public-offerings?filter=1">Reset filter</a></p>');
-          $advancedSearch.append('<p class="keyword-link"><a class="keyword search-toggle" href="#">Return to keyword search</a></p>');
-          $basicSearch.append('<p><a class="advanced search-toggle" href="#">Filter by topic, format, etc.</a></p>');
-          $('.search-toggle').click(function(){
-            $advancedSearch.toggle();
-            $basicSearch.toggle();
-            return false;
-          });
-          $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
-          // Check for enter key trigger since autocomplete is breaking common usage
-          $( "#search-input #edit-s" ).keypress(function(event) {
-            if (event.which == 13) {
-             $($basicSearch).submit();
-            }
-          });
-
-          addSorting();
+          prepSearchFilter();
         }
       }
     }
