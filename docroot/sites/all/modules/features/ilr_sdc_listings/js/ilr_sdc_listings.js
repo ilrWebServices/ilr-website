@@ -140,21 +140,26 @@ jQuery.fn.sortElements = (function(){
        * check the current menu, and refine the position based on its height
        */
       positionCourseSearchBox = function() {
-        yPos = $('#block-ilr-sdc-listings-course-search').css('top');
-        currentMenu = $('#sidebar-first ul.menu.current');
-        if (currentMenu.length) {
-          currentMenu.children('li').each(function(){
-            yPos = $(this).position().top + $(this).height() + 50;
-          });
-        } // Position it relative to the page title
-        else {
-          $('#sidebar-first').css('min-height',900);
-          yPos = $('#page-title').position().top - 25;
+        if (mobileNavActive()) {
+          $('#block-ilr-sdc-listings-course-search').insertBefore($('div.sort'));
         }
+        else {
+          yPos = $('#block-ilr-sdc-listings-course-search').css('top');
+          currentMenu = $('#sidebar-first ul.menu.current');
+          if (currentMenu.length) {
+            currentMenu.children('li').each(function(){
+              yPos = $(this).position().top + $(this).height() + 50;
+            });
+          } // Position it relative to the page title
+          else {
+            $('#sidebar-first').css('min-height',900);
+            yPos = $('#page-title').position().top - 25;
+          }
 
-        $('#block-ilr-sdc-listings-course-search').animate({
-          'top' : yPos
-        }, 200);
+          $('#block-ilr-sdc-listings-course-search').animate({
+            'top' : yPos
+          }, 200);
+        }
       };
 
       prepareSearchBoxPosition = function() {
@@ -275,6 +280,10 @@ jQuery.fn.sortElements = (function(){
           return false;
         });
       }
+
+      mobileNavActive = function() {
+        return $('header').attr('data-eq-state') == 'mobile-nav';
+      };
 
       // If the course search block is on the page, position it and add the listeners
       if ($('#block-ilr-sdc-listings-course-search').length) {

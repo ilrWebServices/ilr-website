@@ -1,10 +1,13 @@
 #block-ilr-sdc-listings-course-search {
   @include trailer(2);
   z-index: 10;
-  position: absolute;
-  margin-left: 12px;
-  top: 226px;
-  overflow: visible;
+
+  .sidebar & {
+    position: absolute;
+    margin-left: 12px;
+    top: 226px;
+    overflow: visible;
+  }
 
   #edit-s {
     background: white;
