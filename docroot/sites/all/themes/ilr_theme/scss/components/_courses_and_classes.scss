@@ -161,7 +161,7 @@
   }
 }
 .page-professional-programs-search {
-  article {
+  #content article {
     @include rhythm-margins(1, 1);
     @include trailing-border();
     border-style: 1px solid;
