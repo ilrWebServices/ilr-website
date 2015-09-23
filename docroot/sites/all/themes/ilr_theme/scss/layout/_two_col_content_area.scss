@@ -1,5 +1,6 @@
 %two-col-content-area {
-  #main {
+  #main[data-eq-state="768"],
+  #main[data-eq-state="widescreen"] {
     #content {
       font-weight: normal;
       @include add-grid(9 3);

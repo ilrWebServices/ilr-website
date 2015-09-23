@@ -1514,7 +1514,7 @@ function ilr_sdc_listings_views_post_execute(&$view) {
         $message = $sponsor_wrapper->field_error_message->value();
         $content .= $message['value'] . " \n";
       }
-      $view->display['page']->handler->handlers['empty']['area']->options['content'] = $content;
+      $view->add_item('page', 'empty', 'views', 'area', array('content' => $content, 'format' => 'full_html'));
     }
   }
 }
