@@ -13,6 +13,40 @@ function ilr_sdc_listings_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'professional_programs';
+  $context->description = '';
+  $context->tag = '';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '*professional-programs*' => '*professional-programs*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'ilr_sdc_listings-course_search' => array(
+          'module' => 'ilr_sdc_listings',
+          'delta' => 'course_search',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+        'views--exp-sdc_course_listing-page' => array(
+          'module' => 'views',
+          'delta' => '-exp-sdc_course_listing-page',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+  $export['professional_programs'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'sdc_course_calendar';
   $context->description = '';
   $context->tag = 'sdc';

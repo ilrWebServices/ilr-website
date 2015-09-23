@@ -7,3 +7,4 @@ version = 7.x-1.0
 
 dependencies[] = drupal_streamline_dev
 dependencies[] = stage_file_proxy
+dependencies[] = search_krumo

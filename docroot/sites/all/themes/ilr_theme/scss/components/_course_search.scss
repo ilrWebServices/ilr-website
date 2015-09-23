@@ -1,0 +1,40 @@
+#block-ilr-sdc-listings-course-search {
+  @include trailer(2);
+  z-index: 10;
+  position: absolute;
+  margin-left: 12px;
+  top: 226px;
+  overflow: visible;
+
+  #edit-s {
+    background: white;
+    padding: 3px;
+    border: 1px solid $gray-medium;
+  }
+
+  .form-item-field-online {
+    clear: both;
+    padding-top: .5em;
+  }
+
+  .views-exposed-form {
+    @include trailer(1);
+  }
+
+  .filter-link {
+    @include trailer(.5);
+  }
+
+  #autocomplete {
+    overflow: visible;
+    ul li {
+      @include force-wrap;
+      @include adjust-font-size-to(13px, 15);
+      @include adjust-leading-to(1);
+      padding: 5px 6px;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}

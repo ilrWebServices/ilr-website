@@ -185,6 +185,76 @@ function ilr_sdc_listings_update_7007() {
 }
 
 /**
+ * Deletes field_sdc_department and vocab
+ */
+function ilr_sdc_listings_update_7008() {
+  field_delete_field('field_sdc_department');
+  if ($vocab = taxonomy_vocabulary_machine_name_load('sdc_department')) {
+    taxonomy_vocabulary_delete($vocab->vid);
+  }
+}
+
+/**
+ * Sets the class full message
+ */
+function ilr_sdc_listings_update_7009() {
+  variable_set('sdc_class_full_teaser','Seats in this session are limited. Please <a href="mailto:ILRCustomerService@cornell.edu">contact ILR Customer Service</a> or call 866-470-1922.');
+}
+
+/**
+ * Assigns the sponsor based on the course prefix
+ */
+function ilr_sdc_listings_update_7010() {
+  $courses = _ilr_sdc_listings_get_all_courses();
+  foreach ($courses as $key => $nid) {
+    $node = node_load($nid);
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $sponsors = $wrapper->field_course_sponsor_reference->value();
+    if (empty($sponsors)) {
+      if ($sponsor = _ilr_sdc_listings_get_sponsor_from_prefix($wrapper->field_catalog_prefix->value())) {
+        if ($term = taxonomy_get_term_by_name($sponsor)) {
+          $term = reset($term);
+          $wrapper->field_course_sponsor_reference->set(array($term->tid));
+          $wrapper->save();
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Assigns the no results message based on the sponsor
+ */
+function ilr_sdc_listings_update_7011() {
+  $messages = _ilr_sdc_listings_get_default_no_results_messages();
+  if ($vocab = taxonomy_vocabulary_machine_name_load('course_sponsor')) {
+    $terms = taxonomy_get_tree($vocab->vid, $parent = 0, $max_depth = NULL, TRUE);
+    foreach ($terms as $term) {
+      if (isset($messages[$term->name])) {
+        $message_field = array(array(
+          'value' => $messages[$term->name],
+          'format' => 'full_html',
+        ));
+        $term->field_error_message = array(
+          LANGUAGE_NONE => $message_field,
+        );
+        taxonomy_term_save($term);
+      }
+    }
+  }
+}
+
+function _ilr_sdc_listings_get_all_courses() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_course');
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    return array_keys($results['node']);
+  }
+}
+
+/**
  * Update aliases for sdc content types.
  */
 function _ilr_sdc_listings_update_aliases() {
@@ -509,5 +579,56 @@ function _ilr_sdc_listings_get_default_terms() {
       'workshops',
       'writing',
     )
+  );
+}
+
+
+function _ilr_sdc_listings_get_sponsor_from_prefix($prefix) {
+  $mappings = array(
+    'EE' => 'Executive Education',
+    'BR' => 'Human Capital Development (HCD)',
+    'CD' => 'Human Capital Development (HCD)',
+    'DV' => 'Human Capital Development (HCD)',
+    'EO' => 'Human Capital Development (HCD)',
+    'HR' => 'Human Capital Development (HCD)',
+    'MD' => 'Human Capital Development (HCD)',
+    'OC' => 'Human Capital Development (HCD)',
+    'SS' => 'Human Capital Development (HCD)',
+    'ICS' => 'Institute for Compensation Studies (ICS)',
+    'LEL' => 'Labor and Employment Law',
+    'ODLEL' => 'Labor and Employment Law',
+    'CO' => 'Scheinman Institute on Conflict Resolution',
+    'DR' => 'Scheinman Institute on Conflict Resolution',
+    'LR' => 'Scheinman Institute on Conflict Resolution',
+    'ODDR' => 'Scheinman Institute on Conflict Resolution',
+    'LB' => 'The Worker Institute at Cornell',
+    'LH' => 'The Worker Institute at Cornell',
+    'LS' => 'The Worker Institute at Cornell',
+    'SH' => 'The Worker Institute at Cornell',
+    'WI' => 'The Worker Institute at Cornell',
+    'OLLB' => 'The Worker Institute at Cornell',
+    'IP' => 'International Programs',
+    'WS' => 'Institute for Workplace Studies',
+  );
+
+  foreach ($mappings as $sub_prefix => $sponsor) {
+    if(strpos($prefix, $sub_prefix) !== FALSE) {
+      return $sponsor;
+    }
+  }
+  return FALSE;
+}
+
+function _ilr_sdc_listings_get_default_no_results_messages() {
+  return array(
+    'Center for Advanced Human Resource Studies (CAHRS)' => '<p><a href="http://cahrs.ilr.cornell.edu/">Explore a partnership with the Center for Advanced Human Resource Studies</a>, the Cornell Connection for HR Executives, Faculty and Students.</p>',
+    'Employment and Disability Institute (EDI)' => '<p><a href="http://www.edi.cornell.edu/m-events.cfm">See a full listing of public events covering disability policy, practice, and research</a> offered by the K. Lisa Yang and Hock E. Tan Yang-Tan Institute (formerly EDI).</p>',
+    'Executive Education' => '<p><a href="http://execed.ilr.cornell.edu/Programs/">Learn more about Cornell ILR Executive Education programs</a>, which translate the research of our world-class faculty into practical concepts and tools designed to enhance organizational competitive advantage.</p>',
+    'Human Capital Development (HCD)' => '<p><a href="http://www.ilr.cornell.edu/human-capital-development/workshops">Explore workshops and certificates offered by Cornell ILR\'s Human Capital Development (HCD) Program</a> that examine business challenges to deliver results-based learning that enable performance and productivity in the workplace.</p>',
+    'Institute for Compensation Studies (ICS)' => '<p><a href="http://www.ilr.cornell.edu/institute-for-compensation-studies/continuing-education">Explore workshops and certificates offered by Cornell\'s Institute for Compensation Studies</a> that examine how monetary and non-monetary rewards from work influence outcomes for individuals, companies, industries, and economies.</p>',
+    'Insitute for Workplace Studies' => '<p>The Institute for Workplace Studies at Cornell University is home to both ILR\'s <a href="https://www.ilr.cornell.edu/academics/degree-programs/graduate-degree-programs/mps-program-new-york-city">MPS-NYC professional degree progam</a> and to the <a href="https://www.ilr.cornell.edu/institute-workplace-studies/news-events/colloquium-series">IWS Colloquium Series</a>.</p>',
+    'Labor and Employment Law' => '<p><a href="https://www.ilr.cornell.edu/labor-and-employment-law-program">See upcoming events offered by the Labor and Employment Law Program</a> at Cornell University\'s ILR School. This program brings together social scientists and attorneys to inform each other\'s work with the goal of addressing contemporary labor and employment law and workplace issues to influence litigation and public policy decisions.</p>',
+    'Scheinman Institute on Conflict Resolution' => '<p><a href="https://www.ilr.cornell.edu/scheinman-institute/professional-programs">Explore workshops and certificate programs in Labor Relations and Conflict and Dispute Resolution</a> offered by the Scheinman Institute on Conflict Resolution at Cornell University.</p>',
+    'The Worker Institute at Cornell' => '<p><a href="https://www.ilr.cornell.edu/worker-institute/education-training">Explore workshops and certificate programs</a> offered by The Worker Institute at Cornell.</p>',
   );
 }

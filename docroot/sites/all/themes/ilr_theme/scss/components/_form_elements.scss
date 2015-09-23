@@ -59,7 +59,9 @@ form {
   article:after {
     clear: none;
   }
-
+  .form-type-date-popup div.description {
+    display: none;
+  }
 }
 
 .block-entityform-block {
