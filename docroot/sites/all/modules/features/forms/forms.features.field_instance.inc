@@ -21476,7 +21476,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'table' => array(
         'label' => 'above',
@@ -21485,7 +21485,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'token' => array(
         'label' => 'above',
@@ -21538,7 +21538,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'table' => array(
         'label' => 'above',
@@ -21547,7 +21547,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'token' => array(
         'label' => 'above',
@@ -21603,7 +21603,7 @@ function forms_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 9,
+        'weight' => 0,
       ),
       'table' => array(
         'label' => 'above',
@@ -21618,7 +21618,7 @@ function forms_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 9,
+        'weight' => 0,
       ),
       'token' => array(
         'label' => 'above',
@@ -21686,7 +21686,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'table' => array(
         'label' => 'above',
@@ -21695,7 +21695,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'token' => array(
         'label' => 'above',
@@ -21749,7 +21749,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'table' => array(
         'label' => 'above',
@@ -21758,7 +21758,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'token' => array(
         'label' => 'above',
@@ -21811,7 +21811,7 @@ function forms_field_default_field_instances() {
           'link' => 0,
         ),
         'type' => 'entityreference_label',
-        'weight' => 8,
+        'weight' => 1,
       ),
       'table' => array(
         'label' => 'above',
@@ -21821,7 +21821,7 @@ function forms_field_default_field_instances() {
           'link' => 0,
         ),
         'type' => 'entityreference_label',
-        'weight' => 8,
+        'weight' => 1,
       ),
       'token' => array(
         'label' => 'above',
@@ -21888,7 +21888,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 5,
+        'weight' => 7,
       ),
       'table' => array(
         'label' => 'above',
@@ -21897,7 +21897,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 5,
+        'weight' => 7,
       ),
       'token' => array(
         'label' => 'above',
@@ -21950,7 +21950,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'table' => array(
         'label' => 'above',
@@ -21959,7 +21959,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'token' => array(
         'label' => 'above',

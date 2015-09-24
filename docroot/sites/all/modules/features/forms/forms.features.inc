@@ -1347,9 +1347,9 @@ function forms_default_entityform_type() {
       "delete_confirm_msg" : "",
       "page_title_view" : "",
       "preview_page" : 0,
-      "submission_page_title" : "",
+      "submission_page_title" : "Labor Roundtable Registration Confirmation",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003E\\u003Cstrong\\u003ELabor Roundtable Registration Confirmation\\u003C\\/strong\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for registering for the Labor Roundtable. You will receive an email confirmation shortly. If you have any questions, please contact the Worker Institute at ILR, \\u003Ca href=\\u0022mailto:ga.ilrRoundtablecoo@cornell.edu\\u0022\\u003Ega.ilrRoundtablecoo@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent Details:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for registering for the ILR Labor Roundtable. You will receive an email confirmation shortly. If you have any questions, please contact the Labor Roundtable coordinators, \\u003Ca href=\\u0022mailto:ilrroundtablecoord@cornell.edu\\u0022\\u003Eilrroundtablecoord@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -1357,16 +1357,19 @@ function forms_default_entityform_type() {
       "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
       "roles" : {
-        "3" : "3",
         "1" : "1",
         "2" : "2",
-        "4" : 0,
-        "5" : 0,
-        "6" : 0,
-        "7" : 0,
-        "8" : 0,
-        "9" : 0,
-        "10" : 0
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "36" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
@@ -1376,7 +1379,7 @@ function forms_default_entityform_type() {
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
       "add_payment_processing" : 0,
-      "form_submission_ilr_recipient" : "ga.ilrRoundtablecoo@cornell.edu"
+      "form_submission_ilr_recipient" : "ilrroundtablecoord@cornell.edu"
     },
     "weight" : "0",
     "paths" : []
