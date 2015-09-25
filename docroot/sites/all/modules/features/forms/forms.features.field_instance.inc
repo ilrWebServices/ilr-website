@@ -21476,7 +21476,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'table' => array(
         'label' => 'above',
@@ -21485,7 +21485,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'token' => array(
         'label' => 'above',
@@ -21538,7 +21538,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'table' => array(
         'label' => 'above',
@@ -21547,7 +21547,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'token' => array(
         'label' => 'above',
@@ -21588,7 +21588,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 7,
       ),
       'download' => array(
         'label' => 'above',
@@ -21663,6 +21663,63 @@ function forms_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_h_school_year'
+  $field_instances['entityform-labor_roundtable_student_registr-field_h_school_year'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_h_school_year',
+    'label' => 'Year',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
   // Exported field_instance: 'entityform-labor_roundtable_student_registr-field_last_name'
   $field_instances['entityform-labor_roundtable_student_registr-field_last_name'] = array(
     'bundle' => 'labor_roundtable_student_registr',
@@ -21686,7 +21743,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'table' => array(
         'label' => 'above',
@@ -21695,7 +21752,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'token' => array(
         'label' => 'above',
@@ -21749,7 +21806,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'table' => array(
         'label' => 'above',
@@ -21758,7 +21815,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'token' => array(
         'label' => 'above',
@@ -21801,7 +21858,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 6,
       ),
       'download' => array(
         'label' => 'above',
@@ -21888,7 +21945,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'table' => array(
         'label' => 'above',
@@ -21897,7 +21954,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'token' => array(
         'label' => 'above',
@@ -21950,7 +22007,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'table' => array(
         'label' => 'above',
@@ -21959,7 +22016,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'token' => array(
         'label' => 'above',

@@ -578,6 +578,7 @@ features[field_instance][] = entityform-join_the_hcd_mailing_list-field_zip_code
 features[field_instance][] = entityform-labor_roundtable_student_registr-field_email
 features[field_instance][] = entityform-labor_roundtable_student_registr-field_first_name
 features[field_instance][] = entityform-labor_roundtable_student_registr-field_h_event_date
+features[field_instance][] = entityform-labor_roundtable_student_registr-field_h_school_year
 features[field_instance][] = entityform-labor_roundtable_student_registr-field_last_name
 features[field_instance][] = entityform-labor_roundtable_student_registr-field_phone
 features[field_instance][] = entityform-labor_roundtable_student_registr-field_referenced_node
