@@ -712,6 +712,15 @@ function _forms_year_as_list_text_options2($field, $instance = NULL, $entity_typ
   return $options;
 }
 
+/**
+ * Set the hidden field h_school_year to the current year.
+ * Note that it's a text field, not numeric, since it sometimes has other values.
+ */
+function _forms_set_hidden_school_year_to_current($entityform) {
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  $currYear = date('Y');
+  $entityform_wrapper->field_h_school_year->set($currYear);
+}
 
 /**
  * Generate a list for a select or radio form element with a list of sequential numbers
