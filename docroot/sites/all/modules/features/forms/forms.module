@@ -384,6 +384,50 @@ function _process_collective_bargaining_videos(&$entityform) {
 }
 
 /**
+ * Process eMediation Competition registration form (Scheinman)
+ * If there's a second participant, send her an email, too.
+ */
+function _process_emediation_competition_reg(&$entityform) {
+  // Regular email
+  $admin_email = _forms_get_admin_email($entityform);
+  _forms_send_emails($entityform, $admin_email);
+
+  // Email to second team member if it's a two-person team
+  if (sizeof($entityform->field_email_additional['und'])) {
+    _forms_send_emediation_teammate_email($entityform);
+  }
+}
+
+/**
+ * Send email to second eMediation Competetion teammate
+ */
+function _forms_send_emediation_teammate_email(&$entityform) {
+  $admin_email = _forms_get_admin_email($entityform);
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+
+  $subm_fullname = $entityform_wrapper->field_first_name->value()
+    . ' ' . $entityform_wrapper->field_last_name->value();
+  $teammate_fullname = $entityform_wrapper->field_first_name_additional->value()
+    . ' ' . $entityform_wrapper->field_last_name_additional->value();
+  $teammate_email = $entityform_wrapper->field_email_additional->value();
+  $email_template = 'emediation_teammate_confirmation';
+
+  $params = array(
+    'form_data'   => _entity_display_form_data($entityform),
+    'subm_fullname'   => $subm_fullname,
+    'teammate_fullname'   => $teammate_fullname,
+  );
+
+  $body = theme($email_template,
+    _forms_generate_template_parameters($entityform, $params));
+
+  $to = $teammate_email;
+  $from = $admin_email;
+  $subject = 'eMediation Competition - 2nd participant confirmation';
+  _send_email_for_entity_form($to, $from, $subject, $body);
+}
+
+/**
  * Process MPS NYC contact form to specify subject line
  */
 function _process_mps_nyc_have_more_questions(&$entityform) {
@@ -793,7 +837,7 @@ function _forms_full_names_states_and_provinces() {
  * Send user and admin emails
  */
 function _forms_send_emails($entityform, $admin_email, $subject='',
-    $subject_user='', $custom_params=array()) {
+  $subject_user='', $custom_params=array()) {
   $form_title = _forms_get_form_title($entityform);
   $user_name = _forms_construct_user_name($entityform);
   $email_template = _forms_get_tplphp_file($entityform);
