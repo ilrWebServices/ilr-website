@@ -1,0 +1,56 @@
+.animated-button {
+  // width: 170px;
+  width: 100%;
+  height: 170px;
+  background: $bg-body url("../images/MILR-MBA-still.gif") no-repeat center top;
+  -webkit-transition:background 0.3s ease-in-out;
+  -moz-transition:background 0.3s ease-in-out;
+  -o-transition:background 0.3s ease-in-out;
+  transition:background 0.3s ease-in-out;
+  &:hover {
+    background: $bg-body url("../images/MILR-MBA-animation.gif") no-repeat center top;
+  }
+}
+
+.circles-anim {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  // background: $bg-body;
+  background-image: url("../images/circles.gif") no-repeat;
+  position: relative;
+  -webkit-animation-name: circles;
+  -webkit-animation-duration: 5s;
+  animation-name: circles;
+  animation-duration: 5s;
+}
+
+@-webkit-keyframes circles {
+  0%   {background-color: white;}
+  50%   {background-color: red;}
+  100%   {background-color: green;}
+}
+
+@keyframes circles {
+  0%   {background-color: white;}
+  50%   {background-color: red;}
+  100%   {background-color: green;}
+}
+
+// @-webkit-keyframes circles {
+//   0%   {background-position: 0 0;}
+//   20%   {background-position: 0 -100; background-color: red;}
+//   40%   {background-position: 0 200; background-color: green;}
+//   60%   {background-position: 0 300;}
+//   80%   {background-position: 0 400;}
+//   100%   {background-position: 0 500;}
+// }
+
+// @keyframes circles {
+//   0%   {background-position: 0 0;}
+//   20%   {background-position: 0 -100; background-color: red;}
+//   40%   {background-position: 0 200; background-color: green;}
+//   60%   {background-position: 0 300;}
+//   80%   {background-position: 0 400;}
+//   100%   {background-position: 0 500;}
+// }
