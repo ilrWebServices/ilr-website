@@ -377,7 +377,9 @@ function _ilr_sdc_listings_custom_search(){
     if (!empty($search)) {
       $content = '<div class="search-result-details"><h2>You searched for <span class="search-term">'. $search .'</span>.</h2>';
       // Check node titles for search string first
-      $results = _ilr_sdc_listings_query_title_for_string($search);
+      $title_matches = _ilr_sdc_listings_query_title_for_string($search);
+      // Check for exact matches
+      $search_string_matches = _ilr_sdc_listings_get_course_query_courses_for_strings(array($search));
       // Get rid of common words before querying
       $ignore_words = explode(',',PATHAUTO_IGNORE_WORDS);
       foreach ($ignore_words as &$word) {
@@ -385,8 +387,10 @@ function _ilr_sdc_listings_custom_search(){
       }
       $search = preg_replace($ignore_words, '', $search);
       $words = str_getcsv($search, ' ');
-      $nids = _ilr_sdc_listings_get_course_query_courses_for_strings($words);
-      $results = array_unique(array_merge($results, $nids));
+      $partial_matches = (count($words) > 1) // Only query again if the search string has more than 1 word
+        ? _ilr_sdc_listings_get_course_query_courses_for_strings($words)
+        : array();
+      $results = array_unique(array_merge_recursive($title_matches, $search_string_matches, $partial_matches));
       $content .= _ilr_sdc_listings_render_search_results($results);
     }
     else {
