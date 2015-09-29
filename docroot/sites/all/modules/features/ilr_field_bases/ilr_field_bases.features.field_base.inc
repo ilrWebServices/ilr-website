@@ -6634,6 +6634,7 @@ function ilr_field_bases_field_default_field_bases() {
       'allowed_values' => array(
         'Mediator' => 'Mediator',
         'Disputant' => 'Disputant',
+        'Two-person disputant team' => 'Two-person disputant team',
       ),
       'allowed_values_function' => '',
     ),
