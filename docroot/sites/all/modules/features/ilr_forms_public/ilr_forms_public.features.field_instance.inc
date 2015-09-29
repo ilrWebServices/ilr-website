@@ -395,7 +395,7 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 40,
+      'weight' => 5,
     ),
   );
 
@@ -455,7 +455,7 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 38,
+      'weight' => 4,
     ),
   );
 
@@ -509,7 +509,61 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 36,
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-emediation_competition_reg-field_email_additional'
+  $field_instances['entityform-emediation_competition_reg-field_email_additional'] = array(
+    'bundle' => 'emediation_competition_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 10,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_email_additional',
+    'label' => 'Email (2nd participant)',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 11,
     ),
   );
 
@@ -527,7 +581,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 11,
       ),
       'download' => array(
         'label' => 'above',
@@ -536,7 +590,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 12,
       ),
       'table' => array(
         'label' => 'above',
@@ -545,7 +599,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'entityform',
@@ -569,7 +623,7 @@ function ilr_forms_public_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 44,
+      'weight' => 12,
     ),
   );
 
@@ -629,7 +683,67 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-emediation_competition_reg-field_first_name_additional'
+  $field_instances['entityform-emediation_competition_reg-field_first_name_additional'] = array(
+    'bundle' => 'emediation_competition_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_first_name_additional',
+    'label' => 'First name (2nd participant)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 9,
     ),
   );
 
@@ -643,7 +757,7 @@ function ilr_forms_public_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 13,
       ),
       'download' => array(
         'label' => 'above',
@@ -655,6 +769,7 @@ function ilr_forms_public_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 1,
@@ -669,6 +784,7 @@ function ilr_forms_public_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 1,
@@ -698,7 +814,7 @@ function ilr_forms_public_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 49,
+      'weight' => 15,
     ),
   );
 
@@ -758,7 +874,67 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-emediation_competition_reg-field_last_name_additional'
+  $field_instances['entityform-emediation_competition_reg-field_last_name_additional'] = array(
+    'bundle' => 'emediation_competition_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_last_name_additional',
+    'label' => 'Last name (2nd participant)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
     ),
   );
 
@@ -800,7 +976,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_mediator_or_disputant',
-    'label' => 'Registering as mediator or disputant',
+    'label' => 'Registering as mediator, disputant, or disputant team?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -810,7 +986,7 @@ function ilr_forms_public_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 42,
+      'weight' => 7,
     ),
   );
 
@@ -828,7 +1004,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 12,
       ),
       'download' => array(
         'label' => 'above',
@@ -837,7 +1013,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 13,
       ),
       'table' => array(
         'label' => 'above',
@@ -846,7 +1022,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'entityform',
@@ -870,7 +1046,7 @@ function ilr_forms_public_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 45,
+      'weight' => 13,
     ),
   );
 
@@ -886,7 +1062,7 @@ function ilr_forms_public_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 14,
       ),
       'download' => array(
         'label' => 'above',
@@ -936,7 +1112,52 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 47,
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-emediation_competition_reg-field_second_person_markup'
+  $field_instances['entityform-emediation_competition_reg-field_second_person_markup'] = array(
+    'bundle' => 'emediation_competition_reg',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'markup',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'markup_default',
+        'weight' => 7,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_second_person_markup',
+    'label' => 'Second person markup',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 8,
     ),
   );
 
@@ -988,7 +1209,7 @@ function ilr_forms_public_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 41,
+      'weight' => 6,
     ),
   );
 
@@ -1708,15 +1929,19 @@ function ilr_forms_public_field_default_field_instances() {
   t('Country');
   t('Course');
   t('Email');
+  t('Email (2nd participant)');
   t('Event date');
   t('Event title');
   t('First name');
+  t('First name (2nd participant)');
   t('Job title');
   t('Last name');
+  t('Last name (2nd participant)');
   t('Organization');
   t('Phone');
   t('Please share updates on future ICS activities and insights with me.');
-  t('Registering as mediator or disputant');
+  t('Registering as mediator, disputant, or disputant team?');
+  t('Second person markup');
   t('State / Province');
   t('Type of student');
   t('What is your experience with mediation?');
