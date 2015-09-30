@@ -87,7 +87,7 @@ function ilr_forms_public_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "Thank you",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for registering for this year\\u0027s eMediation Competition. You will receive a confirmation email shortly. If you have any questions, please contact Katrina Nobles, \\u003Ca href=\\u0022mailto:kn64@cornell.edu\\u0022\\u003Ekn64@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent Details:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for registering for this year\\u0027s eMediation Competition. You will receive a confirmation email shortly. If you have any questions, please contact Katrina Nobles, \\u003Ca href=\\u0022mailto:kn64@cornell.edu\\u0022\\u003Ekn64@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -105,7 +105,9 @@ function ilr_forms_public_default_entityform_type() {
         "36" : 0,
         "21" : 0,
         "26" : 0,
-        "31" : 0
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",

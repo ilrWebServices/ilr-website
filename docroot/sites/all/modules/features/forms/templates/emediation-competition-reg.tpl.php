@@ -1,8 +1,6 @@
 <?php print $salutation;?><br><br>
 
-Thank you for registering for this year's eMediation Competition. Additional information regarding the competition will by emailed to you by May 23, 2015.<br><br>
-
-Event details:<br>
+Thank you for registering for this year's eMediation Competition. Additional information regarding the competition will be emailed to you prior to the event. If you registered as a two-person disputant team, your teammate will also receive the additional information.<br><br>
 
 <? print $event_info_for_email; ?><br><br>
 

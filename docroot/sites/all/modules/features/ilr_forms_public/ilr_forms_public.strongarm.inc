@@ -44,7 +44,7 @@ function ilr_forms_public_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '0',
         ),
       ),
       'display' => array(),
