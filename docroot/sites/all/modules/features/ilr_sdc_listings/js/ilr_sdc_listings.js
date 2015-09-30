@@ -27,16 +27,6 @@ jQuery.extend(jQuery.expr[":"], {
   }
 });
 
-jQuery.urlParam = function(name){
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (results==null){
-       return null;
-    }
-    else{
-       return results[1] || 0;
-    }
-}
-
 jQuery.fn.sortElements = (function(){
 
     var sort = [].sort;
@@ -140,7 +130,7 @@ jQuery.fn.sortElements = (function(){
        * check the current menu, and refine the position based on its height
        */
       positionCourseSearchBox = function() {
-        if (mobileNavActive()) {
+        if (mobileNavActive() || isPublicOfferingsPage()) {
           $searchBlock = $('#block-ilr-sdc-listings-course-search');
           if ($('div.sort').length) { // Remove it from the jpanel menu
             $($searchBlock).insertBefore($('div.sort'));
@@ -168,44 +158,46 @@ jQuery.fn.sortElements = (function(){
         }
       };
 
+      /**
+       * Checks to see whether it's the public offerings page
+       * Returns false if the filter is engaged,
+       * in which case we leave the filter in the sidebar
+       */
+      isPublicOfferingsPage = function() {
+        return $('.view-sdc-course-listing').length && !filterIsEngaged();
+      };
+
       prepareSearchBoxPosition = function() {
         setTimeout(positionCourseSearchBox, 200);
       };
 
+      /**
+       * See ilr_sdc_listings_form_views_exposed_form_alter
+       */
       filterIsEngaged = function() {
-        return $('form.filter-engaged').length || $.urlParam('filter') == 1;
+        return $('form.filter-engaged').length;
       };
 
       prepSearchFilter = function() {
         if (!mobileNavActive()) {
           $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
           $basicSearch = $('#ilr-sdc-listings-search-form');
-          if (filterIsEngaged()) {
-            $basicSearch.hide();
-          } else {
-            $advancedSearch.hide();
-          }
-          // Reposition the online checkbox
+          // Reposition elements
           $advancedSearch.insertAfter($basicSearch);
           $('#edit-field-address-locality-wrapper').insertAfter($('#edit-field-course-sponsor-reference-tid-wrapper'));
           $('.form-item-field-online').insertAfter($('#edit-field-class-dates-value2-wrapper'));
-
-          $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/public-offerings?filter=1">Reset filter</a></p>');
-          $advancedSearch.append('<p class="keyword-link"><a class="keyword search-toggle" href="#">Return to keyword search</a></p>');
-
-          $basicSearch.append('<p><a class="advanced search-toggle" href="#">Filter by topic, format, etc.</a></p>');
-          $('.search-toggle').live("click", function(){
-            $advancedSearch.toggle();
-            $basicSearch.toggle();
-            return false;
-          });
+          $advancedSearch.prepend('<h3>Or filter by:</h3>');
           $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
+          if (filterIsEngaged()) {
+            $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/public-offerings">Reset filter</a></p>');
+          }
           // Check for enter key trigger since autocomplete is breaking common usage
           $( "#search-input #edit-s" ).keypress(function(event) {
             if (event.which == 13) {
              $($basicSearch).submit();
             }
           });
+          $('a.animate-menu').live("click", prepareSearchBoxPosition);
         }
       };
 
@@ -350,13 +342,13 @@ jQuery.fn.sortElements = (function(){
 
       // If the course search block is on the page, position it and add the listeners
       if ($('#block-ilr-sdc-listings-course-search').length) {
-        $('a.animate-menu').live("click", prepareSearchBoxPosition);
-        setTimeout(positionCourseSearchBox,500); // Set a timer to position it
-        // Check if advanced search is present
-        if ($('#views-exposed-form-sdc-course-listing-page').length) {
-          prepSearchFilter();
-          addSorting();
+        if (isPublicOfferingsPage()) {
+          positionCourseSearchBox(); // Set a timer to position it
+        } else {
+          setTimeout(positionCourseSearchBox,500); // Set a timer to position it
         }
+        prepSearchFilter();
+        addSorting();
       }
     }
   };
