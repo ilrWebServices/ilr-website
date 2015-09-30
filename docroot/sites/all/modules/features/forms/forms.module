@@ -393,7 +393,7 @@ function _process_emediation_competition_reg(&$entityform) {
   _forms_send_emails($entityform, $admin_email);
 
   // Email to second team member if it's a two-person team
-  if (sizeof($entityform->field_email_additional['und'])) {
+  if (!empty($entityform->field_email_additional['und'])) {
     _forms_send_emediation_teammate_email($entityform);
   }
 }

@@ -343,6 +343,7 @@ features[field_base][] = field_schedule
 features[field_base][] = field_scheinman_user_interests
 features[field_base][] = field_school_or_college
 features[field_base][] = field_search_firm
+features[field_base][] = field_second_person_markup
 features[field_base][] = field_section
 features[field_base][] = field_semester
 features[field_base][] = field_semester_off_campus
