@@ -101,6 +101,10 @@ jQuery.fn.sortElements = (function(){
         if ($('.node-sdc-faculty').length) {
           facultyBiosReadmore();
         }
+        // Check to see if we need a mobile link, on pages where the sidebar is pushed down
+        if (isCourseClassDetailPage() && $('.group-sidebar').width() > 280) {
+          addDatesRegistrationLink();
+        }
       });
 
 
@@ -124,6 +128,17 @@ jQuery.fn.sortElements = (function(){
         });
         return false;
       });
+
+      addDatesRegistrationLink = function() {
+        $('.group-main-content').prepend('<p><a href="#" class="dates-registration">Dates and Registration</a></p>');
+        $('.dates-registration').click(function(){
+          var yPos = $(".group-sidebar").offset().top - 100;
+          $('html, body').animate({
+            scrollTop: yPos
+          }, 500);
+          return false;
+        });
+      };
 
       /**
        * Start with the css top position of the box for default
@@ -167,6 +182,10 @@ jQuery.fn.sortElements = (function(){
         return $('.view-sdc-course-listing').length && !filterIsEngaged();
       };
 
+      isCourseClassDetailPage = function() {
+        return $('body').hasClass('node-type-sdc-class') || $('body').hasClass('node-type-sdc-course');
+      };
+
       prepareSearchBoxPosition = function() {
         setTimeout(positionCourseSearchBox, 200);
       };
@@ -179,18 +198,18 @@ jQuery.fn.sortElements = (function(){
       };
 
       prepSearchFilter = function() {
+        $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
+        $basicSearch = $('#ilr-sdc-listings-search-form');
+        // Reposition elements
+        $advancedSearch.insertAfter($basicSearch);
+        $('#edit-field-address-locality-wrapper').insertAfter($('#edit-field-course-sponsor-reference-tid-wrapper'));
+        $('.form-item-field-online').insertAfter($('#edit-field-class-dates-value2-wrapper'));
+        $advancedSearch.prepend('<h3>Or filter by:</h3>');
+        $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
+        if (filterIsEngaged()) {
+          $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/public-offerings">Reset filter</a></p>');
+        }
         if (!mobileNavActive()) {
-          $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
-          $basicSearch = $('#ilr-sdc-listings-search-form');
-          // Reposition elements
-          $advancedSearch.insertAfter($basicSearch);
-          $('#edit-field-address-locality-wrapper').insertAfter($('#edit-field-course-sponsor-reference-tid-wrapper'));
-          $('.form-item-field-online').insertAfter($('#edit-field-class-dates-value2-wrapper'));
-          $advancedSearch.prepend('<h3>Or filter by:</h3>');
-          $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
-          if (filterIsEngaged()) {
-            $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/public-offerings">Reset filter</a></p>');
-          }
           // Check for enter key trigger since autocomplete is breaking common usage
           $( "#search-input #edit-s" ).keypress(function(event) {
             if (event.which == 13) {
