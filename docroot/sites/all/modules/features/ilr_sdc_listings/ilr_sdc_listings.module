@@ -1282,7 +1282,7 @@ function ilr_sdc_listings_views_pre_render(&$view) {
     $view->attachment_before = $nav;
   }
   if ($view->name == 'sdc_course_listing') {
-    $markup = _ilr_sdc_listings_add_sort_elements(array('title','date','program'));
+    $markup = _ilr_sdc_listings_add_sort_elements(array('date','title','program'));
     $view->add_item('default', 'header', 'views', 'area', array('content' => $markup, 'format' => 'full_html'));
   }
 }

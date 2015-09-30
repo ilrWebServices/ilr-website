@@ -1492,6 +1492,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
   /* Sort criterion: Content: On Demand (field_on_demand) */
   $handler->display->display_options['sorts']['field_on_demand_value']['id'] = 'field_on_demand_value';
   $handler->display->display_options['sorts']['field_on_demand_value']['table'] = 'field_data_field_on_demand';

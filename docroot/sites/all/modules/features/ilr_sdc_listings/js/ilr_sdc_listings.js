@@ -207,10 +207,9 @@ jQuery.fn.sortElements = (function(){
             }
           });
         }
-        addSorting();
       };
 
-      exactTitleMatch = function() {
+      getMatchingTitles = function() {
         matches = [];
         searchTerm = $('span.search-term').text().toLowerCase();
         possibleMatches = $('#content article h2 a:titleContains("'+searchTerm+'")');
@@ -218,7 +217,15 @@ jQuery.fn.sortElements = (function(){
           title = $(this).text().toLowerCase();
           if (title.indexOf(searchTerm) > -1) {
             match = $(this).closest('article');
-            matches.push(match);
+            // Add exact matches to the beginning of the array
+            if (title.indexOf('(') == searchTerm.length + 1) {
+              matches.unshift(match);
+              $(match).addClass('exact-match');
+            } // Add partial matches to the end of the array
+            else {
+              matches.push(match);
+              $(match).addClass('partial-match');
+            }
           }
         });
         return (matches.length) ? matches : false;
@@ -227,16 +234,21 @@ jQuery.fn.sortElements = (function(){
       /**
        * Create a js date object from the date string
        * Chrome needs some additional string manipulation to create the date correctly
+       * Note that the default value sort ends up reversing the alphabetized order
+       * so we have the view return them in descending order to compensate
        */
       classDate = function(article) {
-         var dateString = $(article).find('span.date').text();
-         var hyphen = dateString.indexOf('-');
-         if ( hyphen > 0) {
-            commaPosition = dateString.indexOf(',');
-            dateString = dateString.substring(0, hyphen) + dateString.substring(commaPosition, dateString.length);
-         }
+        var dateString = $(article).find('span.date').text();
+        var hyphen = dateString.indexOf('-');
+        if ( hyphen > 0) {
+          commaPosition = dateString.indexOf(',');
+          dateString = dateString.substring(0, hyphen) + dateString.substring(commaPosition, dateString.length);
+        }
         if (dateString.length) {
           return new Date(dateString);
+        }
+        else if ($(article).find('span.timespan').text() == 'ON-DEMAND') {
+          return new Date('April 28, 2076'); // A future date earlier than the default
         }
         return new Date('April 28, 2087'); // Some date in the distant future
       };
@@ -255,6 +267,10 @@ jQuery.fn.sortElements = (function(){
         // Check if search results page
         if ($('body').hasClass('page-professional-programs-search')) {
           sortSearchResults();
+        } // Sort by whatever is current
+        else {
+          sortBy = $('a.current-sort').text();
+          sortSelectedElements($('article.node-sdc-course'), sortBy);
         }
         // Loop through to set initial order 'relevance' and sponsors
         $('article.node-sdc-course').each(function(index){
@@ -275,20 +291,9 @@ jQuery.fn.sortElements = (function(){
           }
           sortBy = $(this).data('sort');
 
-          $('article.node-sdc-course').sortElements(function(a, b){
-            switch(sortBy) {
-              case 'date':
-                return classDate(a) < classDate(b) ? -1 : 1;
-              case 'title':
-                return classTitle(a) < classTitle(b) ? -1 : 1;
-              case 'relevance':
-                return $(a).data('relevance') < $(b).data('relevance') ? -1 : 1;
-              case 'program': // Start by reverse sorting by title
-                return classTitle(a) < classTitle(b) ? 1 : -1;
-            }
-          });
+          sortSelectedElements($('article.node-sdc-course'), sortBy);
           if (sortBy == 'program') {
-            // Since we sorted previously by title, we now sort by program
+            // Since we sorted previously by date, we now sort by program
             $('article.node-sdc-course').sortElements(function(a, b){
               return classSponsor(a) < classSponsor(b) ? -1 : 1;
             });
@@ -301,28 +306,42 @@ jQuery.fn.sortElements = (function(){
           }
           return false;
         });
-      }
+      };
+
+      sortSelectedElements = function(elements, sortBy) {
+        $(elements).sortElements(function(a, b){
+          switch(sortBy) {
+            case 'date':
+              return classDate(a) < classDate(b) ? -1 : 1;
+            case 'title':
+              return classTitle(a) < classTitle(b) ? -1 : 1;
+            case 'relevance':
+              return $(a).data('relevance') < $(b).data('relevance') ? -1 : 1;
+            case 'program': // Sort first by date, b/c will be sorted again by program
+              return classDate(a) < classDate(b) ? 1 : -1;
+          }
+        });
+      };
 
       sortSearchResults = function() {
-        // First, reverse the order of the unscheduled classes
-        // so that sortElements retains their original search results
-        $('article.node-sdc-course.unscheduled').each(function() {
-          $(this).parent().prepend(this);
-        });
-        // Then sort all elements so that scheduled courses come first
-        $('article.node-sdc-course').sortElements(function(a, b){
+        // Sort all elements so that scheduled courses come first
+        $('#content article.node-sdc-course').sortElements(function(a, b){
           return $(a).hasClass('scheduled') ? -1 : 1;
         });
 
-        // Reposition the search result details at the top
-        $('.search-result-details').insertBefore($('#content article').eq(0));
+        sortSelectedElements($('#content article.node-sdc-course.unscheduled'), 'title');
 
-        // Check for an exact title match,
-        if (match = exactTitleMatch()) {
-          $(match).each(function(index){
+        // Reposition the search result details at the top
+        //$('.search-result-details').insertBefore($('#content article').eq(0));
+
+        // Check for exact and partial title matches
+        if (matches = getMatchingTitles().reverse()) { // reverse them for ordering
+          $(matches).each(function(){
             $(this).insertAfter($('#content div.search-result-details'));
           });
         }
+        sortSelectedElements($('article.exact-match'),'date');
+        sortSelectedElements($('article.partial-match'),'date');
       };
 
       mobileNavActive = function() {
@@ -336,6 +355,7 @@ jQuery.fn.sortElements = (function(){
         // Check if advanced search is present
         if ($('#views-exposed-form-sdc-course-listing-page').length) {
           prepSearchFilter();
+          addSorting();
         }
       }
     }
