@@ -145,18 +145,24 @@ jQuery.fn.sortElements = (function(){
        * check the current menu, and refine the position based on its height
        */
       positionCourseSearchBox = function() {
-        if (mobileNavActive() || isPublicOfferingsPage()) {
+        if (isPublicOfferingsPage()) {
           $searchBlock = $('#block-ilr-sdc-listings-course-search');
           if ($('div.sort').length) { // Remove it from the jpanel menu
             $($searchBlock).insertBefore($('div.sort'));
             $('#jPanelMenu-menu #block-ilr-sdc-listings-course-search').remove();
-          } else { // Remove the advanced filter
-            $('a.search-toggle').remove();
           }
         }
         else {
-          yPos = $('#block-ilr-sdc-listings-course-search').css('top');
-          currentMenu = $('#sidebar-first ul.menu.current');
+          if (mobileNavActive()) {
+            currentMenu = $('#jPanelMenu-menu ul.menu.current');
+            searchBlock = $('#jPanelMenu-menu #block-ilr-sdc-listings-course-search');
+            $('#jPanelMenu-menu #views-exposed-form-sdc-course-listing-page').remove();
+          }
+          else {
+            currentMenu = $('#sidebar-first ul.menu.current');
+            searchBlock = $('#sidebar-first #block-ilr-sdc-listings-course-search');
+          }
+          yPos = $(searchBlock).css('top');
           if (currentMenu.length) {
             currentMenu.children('li').each(function(){
               yPos = $(this).position().top + $(this).height() + 50;
@@ -166,8 +172,7 @@ jQuery.fn.sortElements = (function(){
             $('#sidebar-first').css('min-height',900);
             yPos = $('#page-title').position().top - 25;
           }
-
-          $('#block-ilr-sdc-listings-course-search').animate({
+          $(searchBlock).animate({
             'top' : yPos
           }, 200);
         }
