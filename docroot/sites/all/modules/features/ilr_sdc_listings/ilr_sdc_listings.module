@@ -100,10 +100,6 @@ function ilr_sdc_listings_form_alter(&$form, &$form_state, $form_id) {
   if (in_array($form_id, $node_forms_to_alter)) {
     $protected_fields = _ilr_sdc_listings_get_protected_fields();
     foreach ($protected_fields[$form_id] as $key => $field_name) {
-      // Temporarily allow admins to edit titles for bug #101139998
-      if ($field_name == 'title' && in_array('administrator', $user->roles)) {
-        continue;
-      }
       if (isset($form[$field_name])) {
         $form[$field_name]['#disabled'] = 1;
       }
