@@ -662,7 +662,9 @@ function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
     $course = $class_node_wrapper->field_course->value();
     $class_available = _ilr_sdc_listings_get_classes_for_course($course, array($class_node->nid));
     if ($class_available) {
-      $available_classes = _ilr_sdc_listings_get_classes_for_course($course);
+      $nids = _ilr_sdc_listings_get_classes_for_course($course);
+      $classes = node_load_multiple($nids);
+      $available_classes = array_keys(_ilr_sdc_listings_remove_overflow_sessions($classes));
       $form = drupal_get_form('ilr_sdc_listings_class_reg_form', array($class_node), TRUE, FALSE);
       $class_node->content['classes'] = $form;
       $class_node->content['request_info'] = array('#markup' => _ilr_sdc_listings_generate_request_info_markup($course, $view_mode));
@@ -725,7 +727,8 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
   if ($view_mode == 'teaser' || $view_mode == 'full') {
     $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
     if ($class_nids) {
-      $class_nodes = node_load_multiple($class_nids);
+      $classes = node_load_multiple($class_nids);
+      $class_nodes = _ilr_sdc_listings_remove_overflow_sessions($classes);
       if ($view_mode == 'full') {
         $form = drupal_get_form('ilr_sdc_listings_class_reg_form', $class_nodes);
         $content = drupal_render($form);
@@ -934,8 +937,10 @@ function _ilr_sdc_listings_generate_class_radio_label($class) {
 }
 /**
  * Generates the markup for landing pages
+ * First checks for overflow sessions and removes them if found
  */
 function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
+  $class_nodes = _ilr_sdc_listings_remove_overflow_sessions($class_nodes);
   if (count($class_nodes) > 1) {
     // check for location search and make sure that the cities match if so
     $params = _ilr_sdc_listings_get_field_query_values();
@@ -965,7 +970,7 @@ function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
   if (count($class_nodes) > 1) {
     $course_nid = $wrapper->field_course->value()->nid;
     $link = drupal_get_path_alias('node/'.$course_nid);
-    $markup .= '<a href="'.$link. '">See more dates and locations</a>';
+    $markup .= '<a href="/'.$link. '">See more dates and locations</a>';
   }
   $markup .= '</div>';
   return $markup;
@@ -1674,6 +1679,9 @@ function _ilr_sdc_listings_get_class_detail_markup($classes, $add_button=FALSE) 
       $markup .= _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id);
       $markup .= '</div>';
     }
+    else {
+      $markup = _ilr_sdc_listings_get_course_full_markup($class_node);
+    }
   }
   return $markup;
 }
@@ -1684,11 +1692,16 @@ function _ilr_sdc_listings_get_class_detail_markup($classes, $add_button=FALSE) 
 function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
   $class_radios = array();
   if (count($classes) > 1) {
+    $classes = _ilr_sdc_listings_remove_overflow_sessions($classes);
     foreach ($classes as $nid => $class) {
       $wrapper = ilr_get_node_wrapper($class);
       $class_id = $wrapper->field_class_id->value();
       if ($wrapper->field_is_full->value()) {
-        _ilr_sdc_listings_add_course_full_markup($form, $class);
+        $full_markup = _ilr_sdc_listings_get_course_full_markup($class);
+        $form['class_full_with_radio_label'] = array(
+          '#type' => 'markup',
+          '#markup' => $full_markup,
+        );
       } // Add the radio
       else {
         $class_radios[] = $class_id;
@@ -1717,18 +1730,50 @@ function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
   }
 }
 
-function _ilr_sdc_listings_add_course_full_markup(&$form, $class) {
-  $wrapper = ilr_get_node_wrapper($class);
+/**
+ * Some classes are added as overflow sessions,
+ * which means they're in the same title, location, and date/time.
+ * This function removes the overflow session(s) if found
+ */
+function _ilr_sdc_listings_remove_overflow_sessions($classes) {
+  if (count($classes) == 1) {
+    return $classes;
+  }
+  $wrappers = $possible_duplicates = $non_duplicates = array();
+  foreach ($classes as $nid => $class) {
+    $wrappers[$nid] = ilr_get_node_wrapper($class);
+    $unique_identifier =
+      $wrappers[$nid]->label() .
+      $wrappers[$nid]->field_class_dates->value()['value'] .
+      $wrappers[$nid]->field_address->locality->value();
 
+    // Since array_unique (below) returns the first instance, there are cases
+    // where the returned key would be the full course. We avoid that by checking
+    // the duplicate and removing it from the possibilities if it's full
+    if ($first_dupe = array_search($unique_identifier, $possible_duplicates)) {
+      if ($wrappers[$first_dupe]->field_is_full->value()) {
+        unset($possible_duplicates[$first_dupe]);
+      }
+      $possible_duplicates[$nid] = $unique_identifier;
+    }
+    else {
+      $possible_duplicates[$nid] = $unique_identifier;
+    }
+  }
+  $unique_nids = array_unique($possible_duplicates);
+  foreach ($unique_nids as $nid => $comparison_string) {
+    $non_duplicates[$nid] = $classes[$nid];
+  }
+  return $non_duplicates;
+}
+
+function _ilr_sdc_listings_get_course_full_markup($class) {
+  $wrapper = ilr_get_node_wrapper($class);
   $markup = '<div class="class-full">';
   $markup .= _ilr_sdc_listings_generate_class_radio_label($class);
   $markup .= '<p class="message">' . variable_get('sdc_class_full_teaser') . '</p>';
   $markup .= '</div>';
-
-  $form['class_full_with_radio_label'] = array(
-    '#type' => 'markup',
-    '#markup' => $markup,
-  );
+  return $markup;
 }
 
 /**
