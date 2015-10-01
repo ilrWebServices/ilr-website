@@ -346,7 +346,8 @@ jQuery.fn.sortElements = (function(){
         //$('.search-result-details').insertBefore($('#content article').eq(0));
 
         // Check for exact and partial title matches
-        if (matches = getMatchingTitles().reverse()) { // reverse them for ordering
+        if (matches = getMatchingTitles()) {
+          matches.reverse();// reverse them for ordering
           $(matches).each(function(){
             $(this).insertAfter($('#content div.search-result-details'));
           });
