@@ -105,6 +105,17 @@ jQuery.fn.sortElements = (function(){
         if (isCourseClassDetailPage() && $('.group-sidebar').width() > 280) {
           addDatesRegistrationLink();
         }
+
+        // If the course search block is on the page, position it and add the listeners
+        if ($('#block-ilr-sdc-listings-course-search').length) {
+          if (isPublicOfferingsPage()) {
+            positionCourseSearchBox(); // Set a timer to position it
+          } else {
+            setTimeout(positionCourseSearchBox,500); // Set a timer to position it
+          }
+          prepSearchFilter();
+          addSorting();
+        }
       });
 
 
@@ -145,6 +156,7 @@ jQuery.fn.sortElements = (function(){
        * check the current menu, and refine the position based on its height
        */
       positionCourseSearchBox = function() {
+        mobileNavIsPresent = mobileNavActive();
         if (isPublicOfferingsPage()) {
           $searchBlock = $('#block-ilr-sdc-listings-course-search');
           if ($('div.sort').length) { // Remove it from the jpanel menu
@@ -153,25 +165,30 @@ jQuery.fn.sortElements = (function(){
           }
         }
         else {
-          if (mobileNavActive()) {
+          if (mobileNavIsPresent) {
             currentMenu = $('#jPanelMenu-menu ul.menu.current');
             searchBlock = $('#jPanelMenu-menu #block-ilr-sdc-listings-course-search');
             $('#jPanelMenu-menu #views-exposed-form-sdc-course-listing-page').remove();
-          }
-          else {
+          } else {
             currentMenu = $('#sidebar-first ul.menu.current');
             searchBlock = $('#sidebar-first #block-ilr-sdc-listings-course-search');
           }
+
           yPos = $(searchBlock).css('top');
+
           if (currentMenu.length) {
-            currentMenu.children('li').each(function(){
-              yPos = $(this).position().top + $(this).height() + 50;
-            });
-          } // Position it relative to the page title
-          else {
+            if (mobileNavIsPresent) {
+              yPos = currentMenu.children('li').length * 65;
+            } else {
+              currentMenu.children('li').each(function(){
+                yPos = $(this).position().top + $(this).height() + 50;
+              });
+            }
+          } else { // Position it relative to the page title
             $('#sidebar-first').css('min-height',900);
             yPos = $('#page-title').position().top - 25;
           }
+
           $(searchBlock).animate({
             'top' : yPos
           }, 200);
@@ -211,6 +228,7 @@ jQuery.fn.sortElements = (function(){
         $('.form-item-field-online').insertAfter($('#edit-field-class-dates-value2-wrapper'));
         $advancedSearch.prepend('<h3>Or filter by:</h3>');
         $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
+        $('a.animate-menu').live("click", prepareSearchBoxPosition);
         if (filterIsEngaged()) {
           $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/public-offerings">Reset filter</a></p>');
         }
@@ -221,7 +239,10 @@ jQuery.fn.sortElements = (function(){
              $($basicSearch).submit();
             }
           });
-          $('a.animate-menu').live("click", prepareSearchBoxPosition);
+        } else {
+          $('.jpanel-trigger').click(function(){
+            positionCourseSearchBox();
+          });
         }
       };
 
@@ -364,17 +385,6 @@ jQuery.fn.sortElements = (function(){
       mobileNavActive = function() {
         return $('header').attr('data-eq-state') == 'mobile-nav';
       };
-
-      // If the course search block is on the page, position it and add the listeners
-      if ($('#block-ilr-sdc-listings-course-search').length) {
-        if (isPublicOfferingsPage()) {
-          positionCourseSearchBox(); // Set a timer to position it
-        } else {
-          setTimeout(positionCourseSearchBox,500); // Set a timer to position it
-        }
-        prepSearchFilter();
-        addSorting();
-      }
     }
   };
 })(jQuery);
