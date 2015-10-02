@@ -231,7 +231,7 @@ jQuery.fn.sortElements = (function(){
         // Reposition elements
         $advancedSearch.insertAfter($basicSearch);
         $('#edit-field-address-locality-wrapper').insertAfter($('#edit-field-course-sponsor-reference-tid-wrapper'));
-        $('.form-item-field-online').insertAfter($('#edit-field-class-dates-value2-wrapper'));
+        $('.form-item-field-online').eq(0).insertAfter($('#edit-field-class-dates-value2-wrapper'));
         $advancedSearch.prepend('<h3>Or filter by:</h3>');
         $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
         $('a.animate-menu').live("click", prepareSearchBoxPosition);
