@@ -1732,7 +1732,7 @@ function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
 
 /**
  * Some classes are added as overflow sessions,
- * which means they're in the same title, location, and date/time.
+ * which means they're in the same location and date/time.
  * This function removes the overflow session(s) if found
  */
 function _ilr_sdc_listings_remove_overflow_sessions($classes) {
@@ -1743,7 +1743,6 @@ function _ilr_sdc_listings_remove_overflow_sessions($classes) {
   foreach ($classes as $nid => $class) {
     $wrappers[$nid] = ilr_get_node_wrapper($class);
     $unique_identifier =
-      $wrappers[$nid]->label() .
       $wrappers[$nid]->field_class_dates->value()['value'] .
       $wrappers[$nid]->field_address->locality->value();
 
