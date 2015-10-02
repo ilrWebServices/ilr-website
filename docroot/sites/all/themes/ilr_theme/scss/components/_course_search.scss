@@ -2,7 +2,25 @@
   @include trailer(2);
   z-index: 10;
 
-  .sidebar & {
+  form {
+    label {
+      @include adjust-font-size-to(14px, .7);
+      padding-left: 3px;
+    }
+
+    select {
+      #content & {
+        // width: 500px !important;
+      }
+    }
+    @include trailer(1);
+  }
+
+  h3 {
+    font-family: $font;
+    margin: 0;
+  }
+  .region-sidebar-first & {
     position: absolute;
     margin-left: 12px;
     top: 226px;
@@ -30,6 +48,10 @@
     @include trailer(.5);
   }
 
+  .form-item-field-online label {
+    padding-left: 0;
+  }
+
   #autocomplete {
     overflow: visible;
     ul li {
@@ -40,6 +62,42 @@
       &:hover {
         color: white;
       }
+    }
+  }
+
+  #search-form-submit {
+    @extend %cornell-button;
+    @include trailer(1);
+  }
+  #edit-submit-sdc-course-listing {
+    marging-top: 0;
+  }
+
+  .views-widget-filter-field_address_locality {
+    clear: left;
+  }
+  .views-widget-filter-field_class_dates_value,
+  .views-widget-filter-field_class_dates_value2 {
+    max-width: 175px;
+    .sidebar & {
+      width: 50%;
+    }
+    float: left;
+    padding-right: 1em;
+  }
+  #edit-submit-sdc-course-listing {
+    @extend %cornell-button;
+  }
+  .views-reset-button #edit-reset {
+    color: $link;
+    padding: 0;
+    font-weight: 300;
+    border: 0;
+    border-bottom: 1px solid $gray-light;
+    background: none;
+    &:hover {
+      border-bottom-color: $link-hover;
+      color: $link-hover;
     }
   }
 }

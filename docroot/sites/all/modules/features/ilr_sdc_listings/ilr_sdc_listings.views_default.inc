@@ -1389,8 +1389,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Search';
-  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Filter';
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reset filter';
   $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
@@ -1404,7 +1403,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<p>Many programs are available for custom delivery to your organization. Please request more information for programs listed with no upcoming dates.</p>';
+  $handler->display->display_options['header']['area']['content'] = '<p>Many offerings are available for custom or on-site delivery &mdash; Please <a href="mailto:ILRCustomerService@cornell.edu">contact ILR Customer Service</a> or call 866-470-1922 for more information.</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -1492,6 +1491,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
   /* Sort criterion: Content: On Demand (field_on_demand) */
   $handler->display->display_options['sorts']['field_on_demand_value']['id'] = 'field_on_demand_value';
   $handler->display->display_options['sorts']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
