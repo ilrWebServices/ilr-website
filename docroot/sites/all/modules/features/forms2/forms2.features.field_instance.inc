@@ -1738,7 +1738,7 @@ function forms2_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_other_interests_text',
-    'label' => 'Other Scheinman Institute information that you would be interested in',
+    'label' => 'Other types of programs or resources that you would be interested in',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -2042,7 +2042,7 @@ function forms2_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_scheinman_user_interests',
-    'label' => 'What Scheinman Institute information are you most interested in?',
+    'label' => 'What types of programs or resources are you most interested in?',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2466,7 +2466,7 @@ function forms2_field_default_field_instances() {
   t('First name');
   t('Last name');
   t('Note: This could be in either a formal (i.e., as a manager/supervisor) or an informal (i.e., as a co-worker) capacity.');
-  t('Other Scheinman Institute information that you would be interested in');
+  t('Other types of programs or resources that you would be interested in');
   t('Payor\'s first name');
   t('Payor\'s last name');
   t('Phone');
@@ -2478,7 +2478,7 @@ function forms2_field_default_field_instances() {
   t('State or province');
   t('Student\'s name');
   t('Webcast');
-  t('What Scheinman Institute information are you most interested in?');
+  t('What types of programs or resources are you most interested in?');
   t('What year did you graduate?');
   t('Within the last two years, has a workplace domestic violence issue been brought to your attention?');
   t('Zip code / Postal code');
