@@ -1403,7 +1403,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<p>Many programs are available for custom delivery to your organization. Please request more information for programs listed with no upcoming dates.</p>';
+  $handler->display->display_options['header']['area']['content'] = '<p>Many offerings are available for custom or on-site delivery &mdash; Please <a href="mailto:ILRCustomerService@cornell.edu">contact ILR Customer Service</a> or call 866-470-1922 for more information.</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
