@@ -163,12 +163,18 @@ jQuery.fn.sortElements = (function(){
             $($searchBlock).insertBefore($('div.sort'));
             $('#jPanelMenu-menu #block-ilr-sdc-listings-course-search').remove();
           }
+          if (mobileNavIsPresent) {
+            $('#jPanelMenu-menu #block-ilr-sdc-listings-course-search').remove();
+          }
         }
         else {
           if (mobileNavIsPresent) {
             currentMenu = $('#jPanelMenu-menu ul.menu.current');
             searchBlock = $('#jPanelMenu-menu #block-ilr-sdc-listings-course-search');
             $('#jPanelMenu-menu #views-exposed-form-sdc-course-listing-page').remove();
+            if (!$('.advanced-search').length) {
+              $(searchBlock).append('<a class="advanced-search" href="/professional-programs/public-offerings">Advanced search</a>');
+            }
           } else {
             currentMenu = $('#sidebar-first ul.menu.current');
             searchBlock = $('#sidebar-first #block-ilr-sdc-listings-course-search');
