@@ -651,10 +651,7 @@ function _ilr_sdc_listings_is_series($course_or_class) {
 }
 
 /**
- * Add Class registratrion for to full course node view.
- *
- * @param $node
- * @param $view_mode
+ * Add Class registratrion form to full course node view.
  */
 function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
   if ($view_mode == 'full') {
@@ -904,6 +901,11 @@ function _ilr_sdc_listings_is_multiyear_event($class) {
   return $interval->y > 0;
 }
 
+/**
+ * Used to generate the button for courses with classes
+ * On teasers, it's the Learn more button, while on course detail pages
+ * it's the register button
+ */
 function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_price=FALSE) {
   $wrapper = ilr_get_node_wrapper($class_node);
   if ($include_price) {
@@ -914,11 +916,10 @@ function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_pr
   else {
     $classes = 'button button-info';
     $link_text = 'Learn More';
-    $link = url('node/'. $class_node->nid);
+    $link = url('node/'. $wrapper->field_course->value()->nid);
   }
   $markup = '<div class="action"><a class="'.$classes.'" href="'.$link.'">' . $link_text;
   $markup .= '<span class="cost">$' . $wrapper->field_price->value() . '</span></a></div>';
-
   return $markup;
 }
 
@@ -1660,7 +1661,10 @@ function _ilr_sdc_listings_get_parent_path_alias($path) {
   return implode("/", $sliced);
 }
 
-function _ilr_sdc_listings_get_class_detail_markup($classes, $add_button=FALSE) {
+/**
+ * Gets the class detail markup
+ */
+function _ilr_sdc_listings_get_class_detail_markup($classes, $add_register_button=FALSE) {
   $markup = '';
   foreach ($classes as $nid => $class_node) {
     $class_node_wrapper = ilr_get_node_wrapper($class_node);
@@ -1669,7 +1673,7 @@ function _ilr_sdc_listings_get_class_detail_markup($classes, $add_button=FALSE) 
     $full = $class_node_wrapper->field_is_full->value();
     if (!$full) {
       $markup .= '<div class="class-detail-toggle class-'.$class_id.'">';
-      if ($add_button) {
+      if ($add_register_button) {
         $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node, TRUE);
       }
       if (!_ilr_sdc_listings_is_ondemand($class_node)) {
@@ -1678,9 +1682,11 @@ function _ilr_sdc_listings_get_class_detail_markup($classes, $add_button=FALSE) 
       }
       $markup .= _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id);
       $markup .= '</div>';
-    }
+    } //If it's a single, full class, then add the full markup
     else {
-      $markup = _ilr_sdc_listings_get_course_full_markup($class_node);
+      if (count($classes) == 1) {
+        $markup = _ilr_sdc_listings_get_course_full_markup($class_node);
+      }
     }
   }
   return $markup;
