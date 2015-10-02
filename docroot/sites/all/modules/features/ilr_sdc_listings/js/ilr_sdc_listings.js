@@ -102,7 +102,7 @@ jQuery.fn.sortElements = (function(){
           facultyBiosReadmore();
         }
         // Check to see if we need a mobile link, on pages where the sidebar is pushed down
-        if (isCourseClassDetailPage() && $('.group-sidebar').width() > 280) {
+        if (isCourseClassDetailPage() && mobileNavActive() && $('.group-sidebar').width() > 280) {
           addDatesRegistrationLink();
         }
 
