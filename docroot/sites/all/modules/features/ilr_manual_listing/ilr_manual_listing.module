@@ -35,6 +35,24 @@ function ilr_manual_listing_permission() {
     ),
   );
 }
+
+/**
+ * Removes partial string matches from listing
+ * See views issue at https://www.drupal.org/node/2529372
+ */
+function ilr_manual_listing_views_pre_render(&$view) {
+  if ($view->name == 'course_manual_listings') {
+    $prefix_string = strtolower($view->exposed_data['field_catalog_prefix_value']);
+    $prefixes = explode(' ', $prefix_string);
+    foreach ($view->result as $key => $node) {
+      $prefix = strtolower($node->field_field_catalog_prefix[0]['raw']['value']);
+      if (!in_array($prefix, $prefixes)) {
+        unset($view->result[$key]);
+      }
+    }
+  }
+}
+
 function _ilr_manual_listing_default_bundles(){
   return array('youtube_video','news_item', 'workspan');
 }
