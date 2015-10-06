@@ -867,7 +867,8 @@ function _ilr_sdc_listings_format_class_date_and_time($class) {
   $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class);
   $start_datetime = $datetimes['start'];
   $end_datetime = $datetimes['end'];
-  $markup = '<div class="date-time">';
+  $markup = '<div class="date-time contextual-links-region">';
+  $markup .= _ilr_sdc_listings_get_contextual_link_markup($class);
   $markup .= '<span class="date">';
   $year = $start_datetime->format('Y');
   if (_ilr_sdc_listings_is_multiday_event($class)) {
@@ -924,7 +925,8 @@ function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_pr
 }
 
 function _ilr_sdc_listings_generate_class_radio_label($class) {
-  $markup = '<div class="radio-label">';
+  $markup = '<div class="radio-label contextual-links-region">';
+  $markup .= _ilr_sdc_listings_get_contextual_link_markup($class);
   if (_ilr_sdc_listings_is_series($class)) {
     $markup .= '<span class="class-title">'.$class->title.'</span>';
   }
@@ -974,6 +976,16 @@ function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
     $markup .= '<a href="/'.$link. '">See more dates and locations</a>';
   }
   $markup .= '</div>';
+  return $markup;
+}
+
+function _ilr_sdc_listings_get_contextual_link_markup($class) {
+  $markup = '';
+  if (user_access('access contextual links') && user_access('edit any sdc_class content')) {
+    $markup = '<div class="contextual-links-wrapper"><a href="#" class="contextual-links-trigger">Configure</a><ul class="contextual-links">';
+    $markup .= '<li class="node-edit first last"><a href="/node/'.$class->nid.'/edit?destination='.current_path().'">Edit</a></li>';
+    $markup .= '</ul></div>';
+  }
   return $markup;
 }
 

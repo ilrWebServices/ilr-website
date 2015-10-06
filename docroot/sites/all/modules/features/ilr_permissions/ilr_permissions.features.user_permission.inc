@@ -520,6 +520,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'neutral admin' => 'neutral admin',
+      'power user' => 'power user',
     ),
     'module' => 'node',
   );
@@ -738,6 +739,33 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
       'neutral admin' => 'neutral admin',
       'registered user' => 'registered user',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create sdc_class content'.
+  $permissions['create sdc_class content'] = array(
+    'name' => 'create sdc_class content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create sdc_course content'.
+  $permissions['create sdc_course content'] = array(
+    'name' => 'create sdc_course content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create sdc_faculty content'.
+  $permissions['create sdc_faculty content'] = array(
+    'name' => 'create sdc_faculty content',
+    'roles' => array(
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1008,6 +1036,33 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any sdc_class content'.
+  $permissions['delete any sdc_class content'] = array(
+    'name' => 'delete any sdc_class content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any sdc_course content'.
+  $permissions['delete any sdc_course content'] = array(
+    'name' => 'delete any sdc_course content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any sdc_faculty content'.
+  $permissions['delete any sdc_faculty content'] = array(
+    'name' => 'delete any sdc_faculty content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any spotlight content'.
   $permissions['delete any spotlight content'] = array(
     'name' => 'delete any spotlight content',
@@ -1228,6 +1283,33 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
       'neutral' => 'neutral',
       'neutral admin' => 'neutral admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own sdc_class content'.
+  $permissions['delete own sdc_class content'] = array(
+    'name' => 'delete own sdc_class content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own sdc_course content'.
+  $permissions['delete own sdc_course content'] = array(
+    'name' => 'delete own sdc_course content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own sdc_faculty content'.
+  $permissions['delete own sdc_faculty content'] = array(
+    'name' => 'delete own sdc_faculty content',
+    'roles' => array(
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1634,6 +1716,36 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit any sdc_class content'.
+  $permissions['edit any sdc_class content'] = array(
+    'name' => 'edit any sdc_class content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any sdc_course content'.
+  $permissions['edit any sdc_course content'] = array(
+    'name' => 'edit any sdc_course content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any sdc_faculty content'.
+  $permissions['edit any sdc_faculty content'] = array(
+    'name' => 'edit any sdc_faculty content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any spotlight content'.
   $permissions['edit any spotlight content'] = array(
     'name' => 'edit any spotlight content',
@@ -1873,6 +1985,36 @@ function ilr_permissions_user_default_permissions() {
       'neutral' => 'neutral',
       'neutral admin' => 'neutral admin',
       'registered user' => 'registered user',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own sdc_class content'.
+  $permissions['edit own sdc_class content'] = array(
+    'name' => 'edit own sdc_class content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own sdc_course content'.
+  $permissions['edit own sdc_course content'] = array(
+    'name' => 'edit own sdc_course content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own sdc_faculty content'.
+  $permissions['edit own sdc_faculty content'] = array(
+    'name' => 'edit own sdc_faculty content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
     ),
     'module' => 'node',
   );
