@@ -11,7 +11,7 @@
       trigger: Drupal.settings.jpanelmenu.trigger,
       direction: Drupal.settings.jpanelmenu.direction,
       openPosition: Drupal.settings.jpanelmenu.openPosition,
-      excludedPanelContent: 'header, #admin-menu',
+      excludedPanelContent: 'header, #admin-menu, noscript, script',
     });
 
     // If the jPanelMenu is showing in a narrow window on  desktop browser and the user
