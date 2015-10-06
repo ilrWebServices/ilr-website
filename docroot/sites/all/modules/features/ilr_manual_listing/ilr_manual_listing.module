@@ -39,17 +39,24 @@ function ilr_manual_listing_permission() {
 /**
  * Removes partial string matches from listing
  * See views issue at https://www.drupal.org/node/2529372
+ * Also orders the results based on the order in the block configuration
  */
 function ilr_manual_listing_views_pre_render(&$view) {
   if ($view->name == 'course_manual_listings') {
     $prefix_string = strtolower($view->exposed_data['field_catalog_prefix_value']);
     $prefixes = explode(' ', $prefix_string);
+    $ordered_array = array();
     foreach ($view->result as $key => $node) {
       $prefix = strtolower($node->field_field_catalog_prefix[0]['raw']['value']);
-      if (!in_array($prefix, $prefixes)) {
+      $prefixes_key = array_search($prefix, $prefixes);
+      if ($prefixes_key !== FALSE) { // array_search returns the zero-indexed key or FALSE
+        $ordered_array[$prefixes_key] = $view->result[$key];
+      } else { // It was a partial match, so we can discard it
         unset($view->result[$key]);
       }
     }
+    ksort($ordered_array); // Sort the array based on the numerical keys
+    $view->result = $ordered_array;
   }
 }
 
