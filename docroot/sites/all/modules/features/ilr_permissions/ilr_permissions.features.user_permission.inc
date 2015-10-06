@@ -65,6 +65,7 @@ function ilr_permissions_user_default_permissions() {
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
+      'course admin' => 'course admin',
       'neutral admin' => 'neutral admin',
     ),
     'module' => 'node',
@@ -76,6 +77,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'course admin' => 'course admin',
       'neutral admin' => 'neutral admin',
       'wit editor' => 'wit editor',
     ),
@@ -2183,6 +2185,36 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'pathauto',
   );
 
+  // Exported permission: 'override sdc_class published option'.
+  $permissions['override sdc_class published option'] = array(
+    'name' => 'override sdc_class published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override sdc_course published option'.
+  $permissions['override sdc_course published option'] = array(
+    'name' => 'override sdc_course published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override sdc_faculty published option'.
+  $permissions['override sdc_faculty published option'] = array(
+    'name' => 'override sdc_faculty published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
+    ),
+    'module' => 'override_node_options',
+  );
+
   // Exported permission: 'reorder pages'.
   $permissions['reorder pages'] = array(
     'name' => 'reorder pages',
@@ -2317,6 +2349,36 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'view any unpublished sdc_class content'.
+  $permissions['view any unpublished sdc_class content'] = array(
+    'name' => 'view any unpublished sdc_class content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished sdc_course content'.
+  $permissions['view any unpublished sdc_course content'] = array(
+    'name' => 'view any unpublished sdc_course content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished sdc_faculty content'.
+  $permissions['view any unpublished sdc_faculty content'] = array(
+    'name' => 'view any unpublished sdc_faculty content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'course admin' => 'course admin',
+    ),
+    'module' => 'view_unpublished',
+  );
+
   // Exported permission: 'view bean page'.
   $permissions['view bean page'] = array(
     'name' => 'view bean page',
@@ -2390,6 +2452,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'course admin' => 'course admin',
       'neutral admin' => 'neutral admin',
       'registered user' => 'registered user',
       'wit editor' => 'wit editor',
@@ -2421,6 +2484,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'course admin' => 'course admin',
     ),
     'module' => 'node',
   );
