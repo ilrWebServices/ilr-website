@@ -917,7 +917,10 @@ function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_pr
   else {
     $classes = 'button button-info';
     $link_text = 'Learn More';
-    $link = url('node/'. $wrapper->field_course->value()->nid);
+    $nid = (_ilr_sdc_listings_is_series($class_node))
+      ? $class_node->nid
+      : $wrapper->field_course->value()->nid;
+    $link = url('node/'. $nid);
   }
   $markup = '<div class="action"><a class="'.$classes.'" href="'.$link.'">' . $link_text;
   $markup .= '<span class="cost">$' . $wrapper->field_price->value() . '</span></a></div>';
