@@ -21,6 +21,51 @@ function custom_publishing_options_schema_alter(&$schema) {
 }
 
 /**
+ * @file
+ * Allow users to override the default publishing options for nodes they can
+ * edit without giving them the 'administer nodes' permission.
+ * @see override_node_options.module
+ */
+
+/**
+ * Implements hook_permisson().
+ */
+function custom_publishing_options_permission() {
+  $permissions = array();
+
+  // Generate override node permissions for all applicable node types.
+  foreach (node_permissions_get_configured_types() as $type) {
+    $permissions += custom_publishing_options_list_permissions($type);
+  }
+
+  return $permissions;
+}
+
+/**
+ * Helper function to generate override node permission list for a given type.
+ *
+ * @param $type
+ *   The machine-readable name of the node type.
+ * @return
+ *   An array of permission names and description.
+ */
+function custom_publishing_options_list_permissions($type) {
+  $name = node_type_get_name($type);
+  $type = check_plain($type);
+
+  $permissions = array(
+    "override $type featured option" => array(
+      'title' => t('Override %type_name featured option.', array('%type_name' => $name)),
+    ),
+    "override $type kerberized option" => array(
+      'title' => t('Override %type_name kerberized option.', array('%type_name' => $name)),
+    ),
+  );
+
+  return $permissions;
+}
+
+/**
  * Implements hook_form_alter()
  * Adds the "featured" and "kerberized" checkboxs
  * to the node publishing options tab
@@ -33,14 +78,14 @@ function custom_publishing_options_form_alter(&$form, $form_state, $form_id) {
      '#type' => 'checkbox',
      '#title' => 'Featured',
      '#default_value' => isset($node->featured) ? $node->featured : FALSE,
-     '#access' => user_access('administer nodes') ? TRUE : FALSE,
+     '#access' => user_access('override ' . $node->type . ' featured option'),
     );
 
     $form['options']['kerberized'] = array(
      '#type' => 'checkbox',
      '#title' => 'Kerberized',
      '#default_value' => isset($node->kerberized) ? $node->kerberized : FALSE,
-     '#access' => user_access('administer nodes') ? TRUE : FALSE,
+     '#access' => user_access('override ' . $node->type . ' kerberized option'),
     );
 
     $form['#validate'][] = 'custom_publishing_options_featured_validate';
