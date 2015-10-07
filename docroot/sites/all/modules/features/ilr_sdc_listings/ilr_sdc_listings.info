@@ -21,6 +21,7 @@ dependencies[] = strongarm
 dependencies[] = views
 dependencies[] = views_beans
 dependencies[] = views_block_filter_block
+dependencies[] = views_content
 dependencies[] = views_field_view
 dependencies[] = views_linkarea
 scripts[] = js/ilr_sdc_listings.js
