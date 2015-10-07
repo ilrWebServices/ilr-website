@@ -2191,6 +2191,24 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
+  // Exported permission: 'override basic_page featured option'.
+  $permissions['override basic_page featured option'] = array(
+    'name' => 'override basic_page featured option',
+    'roles' => array(
+      'power user' => 'power user',
+    ),
+    'module' => 'custom_publishing_options',
+  );
+
+  // Exported permission: 'override basic_page kerberized option'.
+  $permissions['override basic_page kerberized option'] = array(
+    'name' => 'override basic_page kerberized option',
+    'roles' => array(
+      'power user' => 'power user',
+    ),
+    'module' => 'custom_publishing_options',
+  );
+
   // Exported permission: 'override basic_page published option'.
   $permissions['override basic_page published option'] = array(
     'name' => 'override basic_page published option',
@@ -2201,12 +2219,39 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
+  // Exported permission: 'override basic_page sticky option'.
+  $permissions['override basic_page sticky option'] = array(
+    'name' => 'override basic_page sticky option',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override news_item featured option'.
+  $permissions['override news_item featured option'] = array(
+    'name' => 'override news_item featured option',
+    'roles' => array(
+      'power user' => 'power user',
+    ),
+    'module' => 'custom_publishing_options',
+  );
+
   // Exported permission: 'override news_item published option'.
   $permissions['override news_item published option'] = array(
     'name' => 'override news_item published option',
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override news_item sticky option'.
+  $permissions['override news_item sticky option'] = array(
+    'name' => 'override news_item sticky option',
+    'roles' => array(
+      'administrator' => 'administrator',
     ),
     'module' => 'override_node_options',
   );
@@ -2221,6 +2266,33 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
+  // Exported permission: 'override people_profile sticky option'.
+  $permissions['override people_profile sticky option'] = array(
+    'name' => 'override people_profile sticky option',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override post featured option'.
+  $permissions['override post featured option'] = array(
+    'name' => 'override post featured option',
+    'roles' => array(
+      'power user' => 'power user',
+    ),
+    'module' => 'custom_publishing_options',
+  );
+
+  // Exported permission: 'override post kerberized option'.
+  $permissions['override post kerberized option'] = array(
+    'name' => 'override post kerberized option',
+    'roles' => array(
+      'power user' => 'power user',
+    ),
+    'module' => 'custom_publishing_options',
+  );
+
   // Exported permission: 'override post published option'.
   $permissions['override post published option'] = array(
     'name' => 'override post published option',
@@ -2229,6 +2301,24 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override post sticky option'.
+  $permissions['override post sticky option'] = array(
+    'name' => 'override post sticky option',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override promo featured option'.
+  $permissions['override promo featured option'] = array(
+    'name' => 'override promo featured option',
+    'roles' => array(
+      'power user' => 'power user',
+    ),
+    'module' => 'custom_publishing_options',
   );
 
   // Exported permission: 'override promo published option'.
@@ -2241,6 +2331,22 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
+  // Exported permission: 'override promo sticky option'.
+  $permissions['override promo sticky option'] = array(
+    'name' => 'override promo sticky option',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override reflection featured option'.
+  $permissions['override reflection featured option'] = array(
+    'name' => 'override reflection featured option',
+    'roles' => array(),
+    'module' => 'custom_publishing_options',
+  );
+
   // Exported permission: 'override reflection published option'.
   $permissions['override reflection published option'] = array(
     'name' => 'override reflection published option',
@@ -2251,12 +2357,49 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
+  // Exported permission: 'override reflection sticky option'.
+  $permissions['override reflection sticky option'] = array(
+    'name' => 'override reflection sticky option',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override registration_page featured option'.
+  $permissions['override registration_page featured option'] = array(
+    'name' => 'override registration_page featured option',
+    'roles' => array(
+      'power user' => 'power user',
+    ),
+    'module' => 'custom_publishing_options',
+  );
+
+  // Exported permission: 'override registration_page kerberized option'.
+  $permissions['override registration_page kerberized option'] = array(
+    'name' => 'override registration_page kerberized option',
+    'roles' => array(
+      'form admin' => 'form admin',
+      'power user' => 'power user',
+    ),
+    'module' => 'custom_publishing_options',
+  );
+
   // Exported permission: 'override registration_page published option'.
   $permissions['override registration_page published option'] = array(
     'name' => 'override registration_page published option',
     'roles' => array(
       'administrator' => 'administrator',
       'form admin' => 'form admin',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override registration_page sticky option'.
+  $permissions['override registration_page sticky option'] = array(
+    'name' => 'override registration_page sticky option',
+    'roles' => array(
+      'administrator' => 'administrator',
     ),
     'module' => 'override_node_options',
   );
@@ -2301,12 +2444,48 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
+  // Exported permission: 'override spotlight published option'.
+  $permissions['override spotlight published option'] = array(
+    'name' => 'override spotlight published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override spotlight sticky option'.
+  $permissions['override spotlight sticky option'] = array(
+    'name' => 'override spotlight sticky option',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override student_portrait featured option'.
+  $permissions['override student_portrait featured option'] = array(
+    'name' => 'override student_portrait featured option',
+    'roles' => array(
+      'power user' => 'power user',
+    ),
+    'module' => 'custom_publishing_options',
+  );
+
   // Exported permission: 'override student_portrait published option'.
   $permissions['override student_portrait published option'] = array(
     'name' => 'override student_portrait published option',
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override student_portrait sticky option'.
+  $permissions['override student_portrait sticky option'] = array(
+    'name' => 'override student_portrait sticky option',
+    'roles' => array(
+      'administrator' => 'administrator',
     ),
     'module' => 'override_node_options',
   );
