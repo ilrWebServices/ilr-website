@@ -22,6 +22,12 @@ In order to deploy the css files and run drush commands on the featuretest serve
 1. Attempt to create short branch names for any branches that will be going through the pull request process. The pattern that featuretest uses to build new environments is `branch-[branchname].ilr.featuretest.org`.
 2. After initiating a pull request, CSS will need to be deployed to the server. There is a bin script that automates that process. Run from the repository root with `bin/featuretest-css-deploy -e branch-[branchname]`. This script also confirms that the custom featuretest module has been enabled for that environment.
 
+## Rebasing Issues
+
+Our typical workflow involves rebasing master as a part of the pull request. However, developers should avoid rebasing if the featuretest environment has already been created, as it affects the auto-updating functionality of the branch. For that reason, please merge master into the branch rather than rebasing, such as `git checkout [feature-branch] && git merge master`. This will avoid any conflicts.
+
+If, however, the branch has already been rebased, then the simplest workaround is to ssh into featuretest, cd to the directory of the branch environment, then `git checkout master && git branch -D [feature-branch] && git checkout -b [feature-branch] origin/[feature-branch]`
+
 ## Temporary Manual Steps for Featuretest Environments
 
 There is currently an issue with the install profile that forces a few manual steps in addition to uploading the CSS. Once a new envrironment has been created, and seemingly after any database updates get run (unverfied), someone will need to perform the following steps:
