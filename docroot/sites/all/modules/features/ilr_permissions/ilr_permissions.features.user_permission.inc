@@ -364,9 +364,6 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'administer nodes',
     'roles' => array(
       'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'neutral admin' => 'neutral admin',
-      'wit editor' => 'wit editor',
     ),
     'module' => 'node',
   );
@@ -521,7 +518,6 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'bypass node access',
     'roles' => array(
       'administrator' => 'administrator',
-      'neutral admin' => 'neutral admin',
       'power user' => 'power user',
     ),
     'module' => 'node',
@@ -2185,6 +2181,96 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'pathauto',
   );
 
+  // Exported permission: 'override author published option'.
+  $permissions['override author published option'] = array(
+    'name' => 'override author published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override basic_page published option'.
+  $permissions['override basic_page published option'] = array(
+    'name' => 'override basic_page published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override news_item published option'.
+  $permissions['override news_item published option'] = array(
+    'name' => 'override news_item published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override people_profile published option'.
+  $permissions['override people_profile published option'] = array(
+    'name' => 'override people_profile published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'faculty admin' => 'faculty admin',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override post published option'.
+  $permissions['override post published option'] = array(
+    'name' => 'override post published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override promo published option'.
+  $permissions['override promo published option'] = array(
+    'name' => 'override promo published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override reflection published option'.
+  $permissions['override reflection published option'] = array(
+    'name' => 'override reflection published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'reflection admin' => 'reflection admin',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override registration_page published option'.
+  $permissions['override registration_page published option'] = array(
+    'name' => 'override registration_page published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'form admin' => 'form admin',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override scheinman_neutral published option'.
+  $permissions['override scheinman_neutral published option'] = array(
+    'name' => 'override scheinman_neutral published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'neutral admin' => 'neutral admin',
+    ),
+    'module' => 'override_node_options',
+  );
+
   // Exported permission: 'override sdc_class published option'.
   $permissions['override sdc_class published option'] = array(
     'name' => 'override sdc_class published option',
@@ -2211,6 +2297,26 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'course admin' => 'course admin',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override student_portrait published option'.
+  $permissions['override student_portrait published option'] = array(
+    'name' => 'override student_portrait published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override wit_article published option'.
+  $permissions['override wit_article published option'] = array(
+    'name' => 'override wit_article published option',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'override_node_options',
   );
@@ -2349,6 +2455,104 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'view any unpublished author content'.
+  $permissions['view any unpublished author content'] = array(
+    'name' => 'view any unpublished author content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished basic_page content'.
+  $permissions['view any unpublished basic_page content'] = array(
+    'name' => 'view any unpublished basic_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished content'.
+  $permissions['view any unpublished content'] = array(
+    'name' => 'view any unpublished content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished news_item content'.
+  $permissions['view any unpublished news_item content'] = array(
+    'name' => 'view any unpublished news_item content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished people_profile content'.
+  $permissions['view any unpublished people_profile content'] = array(
+    'name' => 'view any unpublished people_profile content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished post content'.
+  $permissions['view any unpublished post content'] = array(
+    'name' => 'view any unpublished post content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished promo content'.
+  $permissions['view any unpublished promo content'] = array(
+    'name' => 'view any unpublished promo content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished reflection content'.
+  $permissions['view any unpublished reflection content'] = array(
+    'name' => 'view any unpublished reflection content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'reflection admin' => 'reflection admin',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished registration_page content'.
+  $permissions['view any unpublished registration_page content'] = array(
+    'name' => 'view any unpublished registration_page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'form admin' => 'form admin',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished scheinman_neutral content'.
+  $permissions['view any unpublished scheinman_neutral content'] = array(
+    'name' => 'view any unpublished scheinman_neutral content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'neutral admin' => 'neutral admin',
+    ),
+    'module' => 'view_unpublished',
+  );
+
   // Exported permission: 'view any unpublished sdc_class content'.
   $permissions['view any unpublished sdc_class content'] = array(
     'name' => 'view any unpublished sdc_class content',
@@ -2375,6 +2579,26 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'course admin' => 'course admin',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished student_portrait content'.
+  $permissions['view any unpublished student_portrait content'] = array(
+    'name' => 'view any unpublished student_portrait content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view any unpublished wit_article content'.
+  $permissions['view any unpublished wit_article content'] = array(
+    'name' => 'view any unpublished wit_article content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'view_unpublished',
   );
