@@ -568,3 +568,11 @@ function ilr_update_7048() {
   );
   _ilr_add_permissions_to_role($permissions, 'power user');
 }
+
+/**
+ * Improves cache clearing performance
+ */
+function ilr_update_7049() {
+  variable_set('features_rebuild_on_flush',FALSE);
+  variable_set('entity_rebuild_on_flush',FALSE);
+}
