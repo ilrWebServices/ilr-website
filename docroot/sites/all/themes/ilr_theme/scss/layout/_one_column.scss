@@ -6,18 +6,24 @@
       padding: 0 1em;
       .section {
         max-width: 100%;
-        .field-name-body {
-          max-width: $section-max-width;
-          margin: 0 auto;
+        .field-name-body p {
+          margin: 0;
+          max-width: 100%;
         }
         @include context('#main','#main[data-eq-state="768"]') {
           .block-bean article {
             @extend %three-column;
+            &.node-post {
+              @extend %one-column;
+            }
           }
         }
         @include context('#main','#main[data-eq-state="widescreen"]') {
           .block-bean article {
             @extend %four-column;
+            &.node-post {
+              @extend %two-column;
+            }
           }
         }
       }
