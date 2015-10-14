@@ -47,7 +47,9 @@ function ilr_manual_listing_views_pre_render(&$view) {
     $prefixes = explode(' ', $prefix_string);
     $ordered_array = array();
     foreach ($view->result as $key => $node) {
-      $prefix = strtolower($node->field_field_catalog_prefix[0]['raw']['value']);
+      $prefix = (count($node->field_field_catalog_prefix))
+       ? strtolower($node->field_field_catalog_prefix[0]['raw']['value'])
+       : strtolower($node->field_data_field_catalog_prefix_field_catalog_prefix_value);
       $prefixes_key = array_search($prefix, $prefixes);
       if ($prefixes_key !== FALSE) { // array_search returns the zero-indexed key or FALSE
         $ordered_array[$prefixes_key] = $view->result[$key];
