@@ -5,3 +5,76 @@
  */
 
 include_once 'ilr_post.features.inc';
+
+
+/**
+ * Removes the title if it is a wrapped node
+ */
+function ilr_post_preprocess_node(&$variables) {
+  if ($variables['view_mode'] == 'full' && _ilr_sub_sites_get_current_subsite_name() == "Mobilizing Against Inequality") {
+    if (isset($variables['content']['body'])) {
+      $current_markup = $variables['content']['body'][0]['#markup'];
+      $rss_markup = _mai_rss_icon_markup();
+      $variables['content']['body'][0]['#markup'] = $rss_markup . $current_markup;
+    }
+  }
+}
+
+/**
+ * Implements hook_menu
+ * Defines the MAI RSS Feed Path
+ */
+function ilr_post_menu() {
+  $items = array();
+  $items['rss/blog/mai.xml'] = array(
+    'title' => 'Mobilizing Against Inequality RSS Feed',
+    'page callback' => '_mai_rss_feed',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Retrieves the specified number of nids
+ * for the RSS feed
+ */
+function _mai_get_nids($count = 15) {
+  $mai_term = taxonomy_get_term_by_name('mobilizing against inequality', 'tags');
+  $key = key($mai_term);
+  $term_object = $mai_term[$key];
+  $query = new EntityFieldQuery();
+    $query
+      ->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'post')
+      ->propertyCondition('status', 1)
+      ->fieldCondition('field_tags', 'tid', $term_object->tid)
+      ->fieldOrderBy('field_published_date', 'value', 'DESC')
+      ->range(0, $count);
+
+    $result = $query->execute();
+    return array_keys($result['node']);
+}
+
+/**
+ * Provides a simple RSS feed
+ * We can make this more dynamic later, if other blogs are added
+ */
+function _mai_rss_feed() {
+  $nids = _mai_get_nids();
+  $link = url(current_path(), array('absolute' => true));
+  $channel = array(
+    'title' => t('Workplace Issues Today'),
+    'description' => 'WIT is a free alert service, providing abstracts and links to workplace-related news stories covered in the major media.',
+    'link' => $link,
+  );
+  node_feed($nids, $channel);
+}
+
+function _mai_rss_icon_markup() {
+  $alt="Subscribe to the Mobilizing Against Inequality RSS Feed";
+  $size = 20;
+  $icon = theme('image', array('path' => 'misc/feed.png', 'width' => $size, 'height' => $size, 'alt' => $alt, 'title' => $alt));
+  $markup = '<div class="rss-icon"><a class="rss" href="/rss/blog/mai.xml">' . $icon . '</a></div>';
+  return $markup;
+}
