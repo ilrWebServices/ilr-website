@@ -1,0 +1,9 @@
+body.mobilizing-against-inequality {
+  .container {
+    @extend %one-column-page;
+
+    .field-name-body {
+      max-width: $section-max-width + 400;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-.node-type-post {
+article.node-post { // Both post teaser and full nodes
   .field-name-field-published-date {
     font-weight: 300;
     @include adjust-font-size-to(16px);
@@ -9,6 +9,25 @@
     @include trailer(1);
     &:before {
       content: 'Posted by ';
+    }
+  }
+  .field-name-body.field-type-text-with-summary {
+    display: block !important; // Override tagged content block settings
+  }
+  &.node-teaser {
+    .field-type-image {
+      top: 10px !important;
+    }
+    .field-name-body {
+      padding-top: 0 !important;
+      h2, h3 {
+        margin-left: 0 !important;
+      }
+    }
+  }
+  &[data-eq-state="large"] {
+    &.node-teaser .field-name-body {
+      margin-left: 115px;
     }
   }
 }
