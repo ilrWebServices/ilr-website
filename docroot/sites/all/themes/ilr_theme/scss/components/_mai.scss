@@ -4,11 +4,18 @@ body.mobilizing-against-inequality {
 
     .field-name-body {
       max-width: $section-max-width + 400;
+
       position: relative;
       .rss-icon {
         position: absolute;
         right: 0;
-        top: 0px;
+        top: 0;
+      }
+    }
+    &[data-eq-state="mobile-nav"] .field-name-body {
+      padding-top: 2em; // space for the rss feed
+      .rss-icon {
+        top: 5px;
       }
     }
   }
