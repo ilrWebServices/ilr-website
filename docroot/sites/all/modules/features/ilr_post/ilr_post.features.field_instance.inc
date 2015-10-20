@@ -132,7 +132,7 @@ function ilr_post_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'focussed_main_image',
         ),
         'type' => 'image',
         'weight' => 0,
