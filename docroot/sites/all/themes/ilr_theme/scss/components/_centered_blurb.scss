@@ -14,4 +14,6 @@
   font-family: $font-headers;
   @include adjust-font-size-to(30px);
   @include adjust-leading-to(1);
+  max-width: $section-max-width !important;
+  margin: 0 auto !important;
 }
