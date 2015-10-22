@@ -58,9 +58,7 @@
   }
 
   .button {
-    @include rhythm(1);
     @extend %cornell-button;
-    clear: left;
     .cost {
       display: block;
       text-align: center;
@@ -102,14 +100,6 @@
       text-decoration: none;
       font-style: normal;
     }
-    &.schedule {
-      @include adjust-font-size-to(14px, .7);
-    }
-  }
-  .schedule {
-    @include adjust-font-size-to(14px, .7);
-    font-style: italic;
-    margin-bottom: 0;
   }
 
   .class-detail-toggle {
@@ -281,4 +271,19 @@ div.field-name-field-course.field-type-entityreference {
   .view-footer {
     @include padding-leader(1);
   }
+}
+
+.button {
+  @include rhythm(1);
+  @extend %cornell-button;
+  clear: left;
+  span {
+    display: none;
+  }
+}
+
+.button-info {
+  @include adjust-font-size-to(14px, .7);
+  font-style: italic;
+  margin-bottom: 0;
 }

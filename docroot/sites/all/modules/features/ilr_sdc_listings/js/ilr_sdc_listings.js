@@ -130,14 +130,18 @@ jQuery.fn.sortElements = (function(){
       };
 
       // This should open the modal
-      $('.request-info').click(function(){
+      $('.button.course').click(function(){
         var $nid = $(this).attr('data-nid');
         var $title = $(this).find('.course-title').text();
+        var $path = ($(this).hasClass('request-info'))
+          ? '/course-interest/'
+          : '/course-follow/';
+        $path += $nid +'?layout=0&title=' + $title;
         $.fancybox({
           'type': 'iframe',
           'autoDimensions' : true,
           'autoScale' : true,
-          'href' : '/course-interest/'+ $nid +'?layout=0&title=' + $title,
+          'href' : $path,
         });
         return false;
       });
