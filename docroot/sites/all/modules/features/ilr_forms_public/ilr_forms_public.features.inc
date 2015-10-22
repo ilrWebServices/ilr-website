@@ -18,6 +18,58 @@ function ilr_forms_public_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function ilr_forms_public_default_entityform_type() {
   $items = array();
+  $items['course_follow'] = entity_import('entityform_type', '{
+    "type" : "course_follow",
+    "label" : "Course Follow",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : { "value" : "", "format" : "full_html" },
+      "submission_show_submitted" : 0,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : 0,
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "36" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : {
+        "value" : "\\u003Cp\\u003ETell us your email and we\\u0027ll notify you when new classes are offered for this course.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "send_confirmation_email_to_user" : 0,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 0,
+      "kerberized" : 0,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "ilrweb@cornell.edu"
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['course_request'] = entity_import('entityform_type', '{
     "type" : "course_request",
     "label" : "Course Request",
