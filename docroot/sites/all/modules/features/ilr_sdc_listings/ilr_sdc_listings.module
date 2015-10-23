@@ -1168,7 +1168,7 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
 function _ilr_sdc_listings_generate_follow_markup($course) {
   $help_text = 'Follow this course';
   $markup = '<p class="button-info">Sign-up to be notified when this course is offered.</p>';
-  $markup .= '<a class="button course follow" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Follow ';
+  $markup .= '<a class="button course follow" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Notify Me ';
   $markup .= '<span class="course-title">'.$course->title.'</span></a>';
   return $markup;
 }
