@@ -62,6 +62,4 @@ features[field_instance][] = entityform-join_the_ics_mailing_list-field_zip_code
 features[variable][] = field_bundle_settings_entityform__emediation_competition_reg
 features[variable][] = field_bundle_settings_entityform__join_the_ics_mailing_list
 features_exclude[field_base][field_second_person_markup] = field_second_person_markup
-features_exclude[field_instance][entityform-course_follow-field_course] = entityform-course_follow-field_course
-features_exclude[field_instance][entityform-course_follow-field_email] = entityform-course_follow-field_email
 project path = sites/all/modules/features
