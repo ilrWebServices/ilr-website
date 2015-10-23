@@ -237,7 +237,7 @@ function ilr_sdc_listings_search_form($form, &$form_state) {
     '#type' => 'textfield',
     //'#size' => 20,
     '#attributes' => array(
-      'placeholder' => 'Search ILR programs',
+      'placeholder' => 'Search ILR offerings',
     ),
     '#default_value' => isset($_REQUEST['s']) ? $_REQUEST['s'] : '',
     '#autocomplete_path' => 'professional-programs/courses/autocomplete',
