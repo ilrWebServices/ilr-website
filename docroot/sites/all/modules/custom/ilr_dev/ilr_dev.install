@@ -37,5 +37,6 @@ function ilr_dev_install() {
   module_disable(array(
     'securepages',
     'memcache',
+    'google_analytics_universal',
   ));
 }
