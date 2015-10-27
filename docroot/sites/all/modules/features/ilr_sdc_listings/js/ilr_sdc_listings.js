@@ -114,6 +114,7 @@ jQuery.fn.sortElements = (function(){
             setTimeout(positionCourseSearchBox,500); // Set a timer to position it
           }
           prepSearchFilter();
+          fixSeriesClasses();
           addSorting();
         }
       });
@@ -225,6 +226,26 @@ jQuery.fn.sortElements = (function(){
         return $('form.filter-engaged').length;
       };
 
+      /**
+       * Classes should appear to be "first-class citizens" on listings pages
+       * meaning that users should not be able to visually distinguish them from courses
+       * To do that, we modify how the title is output, and add the css class and the sponsor
+       */
+      fixSeriesClasses = function() {
+        $('article.node-sdc-class').each(function(){
+          title = classTitle($(this));
+          sponsor = $(this).parents('article').attr('data-sponsor');
+          $(this).find('.field-type-entityreference').each(function(){
+            href = $(this).find('a').attr('href');
+            $(this).remove();
+          });
+          $(this).find('.field-name-body').prepend('<h2><a href="'+href+'">'+title+'</a></h2>');
+          $('.view-sdc-course-listing').append($(this));
+          $(this).addClass('node-sdc-course scheduled');
+          $(this).attr('data-sponsor',sponsor);
+        });
+      };
+
       prepSearchFilter = function() {
         $advancedSearch = $('#views-exposed-form-sdc-course-listing-page');
         $basicSearch = $('#ilr-sdc-listings-search-form');
@@ -297,7 +318,10 @@ jQuery.fn.sortElements = (function(){
       };
 
       classTitle = function(article) {
-        return $(article).find('h2 a').text();
+        if ($(article).find('h2 a').length) {
+          return $(article).find('h2 a').text();
+        }
+        return $(article).find('.field-type-entityreference a').text();
       };
 
       classSponsor = function(article) {
@@ -373,9 +397,6 @@ jQuery.fn.sortElements = (function(){
         });
 
         sortSelectedElements($('#content article.node-sdc-course.unscheduled'), 'title');
-
-        // Reposition the search result details at the top
-        //$('.search-result-details').insertBefore($('#content article').eq(0));
 
         // Check for exact and partial title matches
         if (matches = getMatchingTitles()) {

@@ -427,11 +427,16 @@ function _ilr_sdc_listings_get_course_query_courses_for_strings($string_array) {
 function _ilr_sdc_listings_query_title_for_string($string) {
   $query = new EntityFieldQueryDeduped();
   $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'sdc_course')
+    ->entityCondition('bundle', array('sdc_course','sdc_class'),'IN')
     ->propertyCondition('status', NODE_PUBLISHED)
     ->propertyCondition('title', '([[:<:]]|^)'. trim($string, " ,!?") . '([[:>:]]|$)', 'REGEXP');
   $result = $query->execute();
   if (isset($result['node'])) {
+    foreach ($result['node'] as $nid => $node_info) {
+      if ($node_info->type == 'sdc_class') {
+        _ilr_sdc_listings_handle_class_series_results($result, $nid);
+      }
+    }
     return array_keys($result['node']);
   }
   return array();
@@ -440,7 +445,7 @@ function _ilr_sdc_listings_query_title_for_string($string) {
 function _ilr_sdc_listings_query_field_for_string($field, $string, $tid=NULL) {
   $query = new EntityFieldQueryDeduped();
   $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'sdc_course')
+    ->entityCondition('bundle', array('sdc_course','sdc_class'),'IN')
     ->propertyCondition('status', NODE_PUBLISHED);
   if ($tid) { // It's a term reference
     $query->fieldCondition($field, 'tid', $tid);
@@ -450,9 +455,35 @@ function _ilr_sdc_listings_query_field_for_string($field, $string, $tid=NULL) {
   }
   $result = $query->execute();
   if (isset($result['node'])) {
+    foreach ($result['node'] as $nid => $node_info) {
+      if ($node_info->type == 'sdc_class') {
+        _ilr_sdc_listings_handle_class_series_results($result, $nid);
+      }
+    }
     return array_keys($result['node']);
   }
   return array();
+}
+
+/**
+ * The javascript is written to handle courses with classes, but not classes themselves
+ * Since we need the search to query classes, when results are found, we check to see
+ * if they are part of a series, and add the course if so
+ * Otherwise, we simply unset the result
+ */
+function _ilr_sdc_listings_handle_class_series_results(&$result, $nid) {
+  $class = node_load($nid);
+  if (_ilr_sdc_listings_is_series($class)) {
+    $wrapper = ilr_get_node_wrapper($class);
+    $course_nid = $wrapper->field_course->value()->nid;
+    $result['node'][$course_nid] = (object) array(
+      'nid' => $wrapper->field_course->value()->nid,
+      'vid' => $wrapper->field_course->value()->vid,
+      'type' => 'sdc_course',
+    );
+  }
+  // Now remove the class from the results, since classes are handled by their courses
+  unset($result['node'][$nid]);
 }
 
 function _ilr_sdc_listings_render_search_results($results) {
@@ -461,12 +492,14 @@ function _ilr_sdc_listings_render_search_results($results) {
     $content = $result_count .' found.</p>';
     $content .= _ilr_sdc_listings_add_sort_elements(array('relevance','date','title','program'));
     $content .= '</div>';// closes .search-result-details
+    $content .= '<div class="view-sdc-course-listing">'; // The JS needs this, see fixSeriesClasses
     $nids = array_values($results);
     $nodes = node_load_multiple($nids);
     foreach ($nodes as $nid => $node) {
       $node_view = node_view($node,'teaser');
       $content .= drupal_render($node_view);
     }
+    $content .= '</div>';
   }
   else {
     $content = '<p>'.ILR_SDC_NO_RESULTS.'</p></div>';// closes .search-result-details
@@ -505,7 +538,7 @@ function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
       if ($view_mode == 'reference_field') {
         _ilr_sdc_listings_update_reference($node);
       }
-      elseif ($view_mode == 'teaser') {
+      elseif ($view_mode == 'teaser') { // We need to reposition the title in order to style the columns
         $original_markup = isset($node->content['body'])
           ? $node->content['body'][0]['#markup']
           : '';
@@ -735,7 +768,7 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
         $content = _ilr_sdc_listings_generate_class_link_markup($class_nodes);
       }
       if (_ilr_sdc_listings_is_series($course_node)) {
-        _ilr_sdc_listings_add_class_teasers_for_series($course_node, $class_nodes);
+        _ilr_sdc_listings_add_class_teasers_for_series($course_node, $class_nodes, $view_mode);
       } // Not a series
       else {
         $course_node->content['classes'] = array('#markup' => $content);
@@ -753,7 +786,12 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
   }
 }
 
-function _ilr_sdc_listings_add_class_teasers_for_series(&$course_node, $class_nodes) {
+function _ilr_sdc_listings_add_class_teasers_for_series(&$course_node, $class_nodes, $view_mode) {
+  if ($view_mode == 'teaser') { // It's a listing page, so replace course with class info
+    _ilr_sdc_listings_replace_series_course_info_with_class_info($course_node,$class_nodes);
+  }
+  // Show the class info for each in the series. Note the first element was already removed
+  // if we're looking at a listing
   foreach ($class_nodes as $key => $class) {
     $class_teaser = node_view($class,'teaser');
     // Hide the field data we don't want
@@ -769,6 +807,25 @@ function _ilr_sdc_listings_add_class_teasers_for_series(&$course_node, $class_no
     // Add the markup to the course body
     $course_node->content['body'][0]['#markup'] .= drupal_render($class_teaser);
   }
+}
+
+/**
+ * If there are scheduled classes for a series, we remove the course info and
+ * replace it with the next class info for that series
+ */
+function _ilr_sdc_listings_replace_series_course_info_with_class_info(&$course_node, &$class_nodes) {
+  $first_class = array_shift($class_nodes);
+  node_build_content($first_class,'teaser');
+  $course_node->title = $first_class->title;
+  $course_node->content['body'][0]['#markup'] = isset($first_class->content['body'])
+    ? $first_class->content['body'][0]['#markup']
+    : '<p>Details coming soon.</p>';
+  $course_node->content['classes'] = array(
+    '#markup' => _ilr_sdc_listings_generate_class_link_markup(array($first_class)),
+  );
+  $group_sidebar = field_group_load_field_group('group_sidebar', 'node', 'sdc_class', 'default');
+  $course_node->content['#groups']['group_sidebar'] = $course_node->content['#fieldgroups']['group_sidebar'] = $group_sidebar;
+  $course_node->content['#group_children']['classes'] = 'group_sidebar';
 }
 
 /**
@@ -1062,7 +1119,7 @@ function _ilr_sdc_listings_generate_location_markup($class) {
  * Note that markup and js are coupled, so only modify it consciously
  */
 function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
-  if (_ilr_sdc_listings_is_series($course)) {
+  if (_ilr_sdc_listings_is_series($course) && count(_ilr_sdc_listings_get_classes_for_course($course))) {
     return '';
   }
   $help_text = 'Schedule customized delivery to your organization';
@@ -1856,6 +1913,14 @@ function _ilr_sdc_listings_get_feeds_protected_fields() {
  * being edited in Drupal
  */
 function _ilr_sdc_listings_get_protected_fields() {
+  global $user;
+  if ($user->uid == 1) {
+    return array(
+      'sdc_class_node_form'   => array(),
+      'sdc_course_node_form'  => array(),
+      'sdc_faculty_node_form' => array(),
+    );
+  }
   return array(
     'sdc_class_node_form' => array(
       'title',

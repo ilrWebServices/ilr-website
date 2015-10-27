@@ -169,7 +169,7 @@
   }
 }
 
-.node-type-sdc-course {
+.node-type-sdc-course { // Course detail page
   @extend %two-col-content-area;
   .field-name-field-catalog-prefix {
     @include adjust-font-size-to($h2-size);
@@ -177,8 +177,12 @@
     color: $h2-text;
   }
   article {
+    @include rhythm(2);
+    @include trailing-border;
+
     .field-name-body {
       clear: left;
+      float: left;
     }
     form {
       @include trailer(2);
@@ -192,7 +196,7 @@
 
 }
 
-.node-type-sdc-class {
+.node-type-sdc-class { // Class detail page
   @extend %two-col-content-area;
   .field:not(.field-name-field-price) {
     @include trailer(1);
@@ -202,7 +206,7 @@
   }
   article {
     h2 {
-      margin-bottom: 0;
+      // margin-bottom: 0;
     }
     .field-name-body {
       clear: left;
@@ -217,6 +221,22 @@
   text-decoration: underline;
 }
 
+div.field-name-field-course.field-type-entityreference {
+  a { // This is the title of the node
+    @include adjust-font-size-to($h2-size, 1);
+    font-family: $font-headers;
+    font-weight: 400;
+    color: $h2-text;
+    border-bottom: none;
+  }
+  @include trailer(1);
+}
+
+.node-sdc-class.node-teaser {
+  @include rhythm(1);
+}
+
+
 .view-sdc-course-listing {
   h3 {
     @include padding-leader(1);
@@ -230,6 +250,10 @@
     @include trailing-border();
     border-style: 1px solid;
     border-color: $gray-light;
+  }
+
+  .node-sdc-class .field-name-body { // Hack b/c series classes should appear like courses
+    @include grid-span(8);
   }
 }
 
