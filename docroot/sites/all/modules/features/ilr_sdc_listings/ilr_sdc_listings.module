@@ -972,7 +972,7 @@ function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_pr
     $link = _ilr_sdc_listings_get_class_registration_url($class_node);
   }
   else {
-    $classes = 'button button-info';
+    $classes = 'button button-info';// Note that the js looks for the .button-info class
     $link_text = 'Learn More';
     $nid = (_ilr_sdc_listings_is_series($class_node))
       ? $class_node->nid
@@ -1132,7 +1132,7 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
   if ($view_mode == 'teaser') {
     $link = drupal_get_path_alias('node/'.$course->nid);
     $markup .= '<a href="request-info" title="" class="request-info schedule" data-nid="'.$course->nid.'">'.$help_text.'<span class="course-title">'.$course->title.'</span></a>
-      <div class="action"><a class="button button-info" href="/'.$link.'">Learn More</a></div>';
+      <div class="action"><a class="button button-info" href="/'.$link.'">Learn More</a></div>';// Note that the js looks for the .button-info class
   } // full node
   else {
     $markup .= '<p class="schedule">'.$help_text.'</p>';
@@ -1268,7 +1268,6 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
     else {
       $variables['remove_title_link'] = TRUE;
     }
-
   }
   if ($variables['type'] == 'sdc_course') {
     $variables['title'] = filter_xss($variables['elements']['#node']->title, array('em'));
@@ -1278,6 +1277,9 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
        : 'unscheduled';
       unset($variables['content']['links']['node']['#links']['node-readmore']);
       _ilr_sdc_listings_add_sponsor_data_to_course($variables);
+      if (_ilr_sdc_listings_is_series($variables['node'])) {
+        $variables['classes_array'][] = 'series';
+      }
     }
   }
 

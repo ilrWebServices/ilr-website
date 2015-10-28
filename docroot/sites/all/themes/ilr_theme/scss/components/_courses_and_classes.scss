@@ -251,10 +251,6 @@ div.field-name-field-course.field-type-entityreference {
     border-style: 1px solid;
     border-color: $gray-light;
   }
-
-  .node-sdc-class .field-name-body { // Hack b/c series classes should appear like courses
-    @include grid-span(8);
-  }
 }
 
 .view-sdc-class-calendar {

@@ -115,6 +115,7 @@ jQuery.fn.sortElements = (function(){
           }
           prepSearchFilter();
           fixSeriesClasses();
+          fixSeriesCourses();
           addSorting();
         }
       });
@@ -224,6 +225,13 @@ jQuery.fn.sortElements = (function(){
        */
       filterIsEngaged = function() {
         return $('form.filter-engaged').length;
+      };
+
+      fixSeriesCourses = function() {
+        $('.node-sdc-course.series').each(function(){
+          classURL = $(this).find('a.button-info').attr('href');
+          $(this).find('h2 a').attr('href',classURL);
+        });
       };
 
       /**
