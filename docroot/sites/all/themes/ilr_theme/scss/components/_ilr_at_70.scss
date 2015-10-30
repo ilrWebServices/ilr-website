@@ -28,6 +28,7 @@ body.subsite-front {
       font-family: $font-headers;
       @include adjust-font-size-to(22px);
       @include adjust-leading-to(1);
+      margin: 0 auto !important;
     }
 
     .tagline {
