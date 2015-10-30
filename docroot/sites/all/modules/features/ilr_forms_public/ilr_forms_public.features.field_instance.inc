@@ -96,7 +96,7 @@ function ilr_forms_public_field_default_field_instances() {
     'bundle' => 'course_follow',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -115,7 +115,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_email_opt_in',
-    'label' => 'Email opt-in',
+    'label' => 'Please add me to your email list',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -124,7 +124,7 @@ function ilr_forms_public_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'display_label' => 0,
+        'display_label' => 1,
       ),
       'type' => 'options_onoff',
       'weight' => 7,
@@ -2177,7 +2177,6 @@ function ilr_forms_public_field_default_field_instances() {
   t('Course');
   t('Email');
   t('Email (2nd participant)');
-  t('Email opt-in');
   t('Event date');
   t('Event title');
   t('First name');
@@ -2187,6 +2186,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Last name (2nd participant)');
   t('Organization');
   t('Phone');
+  t('Please add me to your email list');
   t('Please share updates on future ICS activities and insights with me.');
   t('Registering as mediator, disputant, or disputant team?');
   t('Second person markup');
