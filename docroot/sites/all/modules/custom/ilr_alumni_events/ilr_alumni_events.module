@@ -30,6 +30,7 @@ function ilr_alumni_events_block_view($delta = '') {
  * Implements hook_form_FORM_ID_alter().
  */
 function ilr_alumni_events_form_ilr_alumni_association_event_reg_entityform_edit_form_alter(&$form, &$form_state) {
+
   $form['field_total_cost'][LANGUAGE_NONE][0]['#markup'] = '<label>Total Cost</label><p><span class="total-cost">0</span></p>';
 
   drupal_add_js(drupal_get_path('module','ilr_alumni_events') . '/ilr_alumni_events.js', array('type' => 'file', 'scope' => 'footer'));
@@ -38,11 +39,51 @@ function ilr_alumni_events_form_ilr_alumni_association_event_reg_entityform_edit
   drupal_add_js(array(
     'ilr_alumni_events' => array(
       'memberPrice' => $wrapper->field_aa_member_price->value(),
-      'nonMemberPrice' => $wrapper->field_aa_non_member_price->value(),
     )),
     'setting'
   );
+
+  // Figure out how many tickets remain; total_tickets = 0 means there is no limit
+  $total_tickets = $wrapper->field_total_tickets->value();
+  if ($total_tickets > 0) {
+    $tickets_remaining = _ilr_alumni_events_get_remaining_ticket_count($total_tickets);
+
+    // Add info to the reg page to let people know the number of remaining tickets
+    $form['#groups']['group_reservations']->format_settings['instance_settings']['description'].= "<br>$tickets_remaining tickets available";
+
+    // If number of tickets remaining is less than the max that normally shows up
+    // in the dropdown, change the max in the dropdown.
+    $normal_max = 10;
+    if ($normal_max > $tickets_remaining) {
+      for ($i=$normal_max; $i>$tickets_remaining; $i--) {
+        unset($form['field_tickets_for_aa_members']['und']['#options'][$i]);
+      }
+    }
+
+    // Hide the non-member tickets field in the form the user sees
+    $form['field_tickets_for_non_members']['#access'] = FALSE;
+  }
 }
+
+/**
+ * Implements hook_preprocess_hook()
+ */
+function ilr_alumni_events_preprocess_node(&$variables) {
+  if ($variables['type'] == 'registration_page') {
+    $wrapper = _ilr_alumni_events_node_wrapper();
+    // total_tickets = 0 means there is no limit
+    $total_tickets = $wrapper->field_total_tickets->value();
+    if ($total_tickets > 0) {
+      $tickets_remaining = _ilr_alumni_events_get_remaining_ticket_count($total_tickets);
+      if ($tickets_remaining < 1) {
+        unset($variables['content']['field_registration_form_type']);
+        $variables['content']['field_registration_form_type']['#markup'] =
+          '<p>This event is sold out.</p>';
+      }
+    }
+  }
+}
+
 
 ///////////////////////////////
 // Module-Specific functions //
@@ -201,9 +242,40 @@ function _ilr_alumni_events_get_member_cost() {
   return $node_wrapper->field_aa_member_price->value();
 }
 
-function _ilr_alumni_events_get_non_member_cost() {
-  $node_wrapper = _ilr_alumni_events_node_wrapper();
-  return $node_wrapper->field_aa_non_member_price->value();
+/**
+ * Get count of remaining tickets
+ */
+function _ilr_alumni_events_get_remaining_ticket_count($tot) {
+  $node = menu_get_object();
+  $tickets_sold_total = _ilr_alumni_events_get_total_tickets_sold($node);
+  $tickets_remaining = $tot - $tickets_sold_total;
+  return $tickets_remaining;
+}
+
+/**
+ * Creates an EntityFieldQuery to get total tickets sold
+ */
+function _ilr_alumni_events_get_total_tickets_sold($node) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'entityform')
+    ->entityCondition('bundle', 'ilr_alumni_association_event_reg')
+    ->propertyCondition('draft', 0)
+    ->fieldCondition('field_tickets_for_aa_members', 'value', '0', '>')
+    ->fieldCondition('field_referenced_node', 'target_id', $node->nid);
+  $result = $query->execute();
+
+  $tickets_sold_total = 0;
+
+  if (isset($result['entityform'])) {
+    $entityform_ids = array_keys($result['entityform']);
+    $tickets = entity_load('entityform', $entityform_ids);
+    foreach ($tickets as $key => $fields) {
+      $entityform = entityform_load($key);
+      $wrapper = entity_metadata_wrapper('entityform', $entityform);
+      $tickets_sold_total += $wrapper->field_tickets_for_aa_members->value();
+    }
+  }
+  return $tickets_sold_total;
 }
 
 /**
@@ -249,18 +321,11 @@ function _ilr_alumni_events_node_wrapper($node=NULL) {
   return $wrapper;
 }
 
-function _ilr_alumni_events_non_member_ticket_count() {
-  if ($entityform_wrapper = _ilr_alumni_events_get_entityform_wrapper()) {
-    return $entityform_wrapper->field_tickets_for_non_members->value();
-  }
-  return 0;
-}
-
 /**
  * Confirm that they ordered at least one ticket
  */
 function _ilr_alumni_events_ordered_tickets() {
-  return _ilr_alumni_events_member_ticket_count() > 0 || _ilr_alumni_events_non_member_ticket_count() > 0;
+  return _ilr_alumni_events_member_ticket_count() > 0;
 }
 
 /**
@@ -303,10 +368,7 @@ function _ilr_alumni_events_ssl_amount() {
   if (_ilr_alumni_events_ordered_tickets()) {
     $member_tickets = _ilr_alumni_events_member_ticket_count();
     $member_cost = _ilr_alumni_events_get_member_cost();
-    $non_member_tickets = _ilr_alumni_events_non_member_ticket_count();
-    $non_member_cost = _ilr_alumni_events_get_non_member_cost();
-
-    return ($member_tickets * $member_cost) + ($non_member_tickets * $non_member_cost);
+    return $member_tickets * $member_cost;
   }
   return NULL;
 }

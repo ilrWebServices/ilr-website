@@ -1,6 +1,6 @@
 <?php print $salutation;?><br><br>
 
-Your online reservation for the following ILR Alumni Association event has been received.<br><br>
+Your online reservation for the following ILR Alumni event has been received.<br><br>
 
 Event details:<br><br>
 
