@@ -1,4 +1,4 @@
-# Cornell University | ILR School
+# Cornell University | ILR School | Training Branch
 
 This repository houses the ILR School's Drupal migration. The project was initialized using Singlebrook's [Drupal Streamline](https://github.com/singlebrook/drupal_streamline).
 
