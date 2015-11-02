@@ -75,7 +75,14 @@
         return encoded.join("&");
       }
 
+      /**
+       * Get the path to the node/nid for teasers (ie: ilr-at-70)
+       * Or the current url if on a node
+       */
       var getNodeURL = function(nid) {
+        if (!$article.hasClass('node-teaser')) {
+          return window.location.href;
+        }
         if (typeof location.origin === 'undefined')
           location.origin = location.protocol + '//' + location.host;
         return location.origin + '/node/' + nid;
