@@ -637,6 +637,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'node',
   );
@@ -908,6 +909,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete any featured_book content',
     'roles' => array(
       'administrator' => 'administrator',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'node',
   );
@@ -1180,6 +1182,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'node',
   );
@@ -1580,6 +1583,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'node',
   );
@@ -1879,6 +1883,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'wit editor' => 'wit editor',
     ),
     'module' => 'node',
   );
@@ -2224,6 +2229,8 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'override basic_page sticky option',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'power user' => 'power user',
     ),
     'module' => 'override_node_options',
   );
@@ -2252,6 +2259,8 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'override news_item sticky option',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'power user' => 'power user',
     ),
     'module' => 'override_node_options',
   );
@@ -2336,6 +2345,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'override promo sticky option',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'override_node_options',
   );
@@ -2486,6 +2496,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'override student_portrait sticky option',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'override_node_options',
   );
@@ -2650,6 +2661,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'power user' => 'power user',
     ),
     'module' => 'view_unpublished',
   );
