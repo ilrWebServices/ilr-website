@@ -50,7 +50,7 @@ function registration_pages_strongarm() {
           'weight' => '1',
         ),
         'redirect' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
       ),
       'display' => array(),

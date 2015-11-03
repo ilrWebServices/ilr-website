@@ -84,7 +84,7 @@ function registration_pages_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -106,8 +106,9 @@ function registration_pages_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_aa_member_price',
-    'label' => 'ILRAA Member Price',
+    'label' => 'Price',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -130,13 +131,13 @@ function registration_pages_field_default_field_instances() {
     'bundle' => 'registration_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This field is no longer used, as of October 2015.',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -158,8 +159,9 @@ function registration_pages_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_aa_non_member_price',
-    'label' => 'ILRAA Non-member Price',
+    'label' => 'Unused - was ILRAA Non-member Price',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -229,7 +231,7 @@ function registration_pages_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -267,6 +269,7 @@ function registration_pages_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 1,
@@ -333,6 +336,7 @@ function registration_pages_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 2,
@@ -361,7 +365,7 @@ function registration_pages_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -563,7 +567,7 @@ function registration_pages_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -617,7 +621,7 @@ function registration_pages_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -683,25 +687,85 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-registration_page-field_total_tickets'
+  $field_instances['node-registration_page-field_total_tickets'] = array(
+    'bundle' => 'registration_page',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Used for events with a limited number of tickets available. Set it to 0 (zero) if there is NO limit.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_total_tickets',
+    'label' => 'Total tickets',
+    'required' => 1,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 9,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Blocks');
   t('Body');
   t('Event date');
   t('Form availability start date and end date (deadline)');
-  t('ILRAA Member Price');
-  t('ILRAA Non-member Price');
   t('Location');
   t('Main Image');
   t('Message to visitors after form closes');
   t('Message to visitors before form opens');
+  t('Price');
   t('Registration form');
   t('Select the form that goes with this page.');
   t('Set Start date/time, End date/time.  The dates should be the same; this isn\'t designed for multi-date events, but this captures start and end time, along with the event date.');
   t('Text to display on page after the form closes. If you leave this blank, the user will see a message indicating when the deadline was. Alternatively, enter exactly the text you want the user to see.');
   t('Text to display on page before the form is available. If you leave this blank, the user will see a message indicating when the form will be available. Alternatively, enter exactly the text you want the user to see.');
+  t('This field is no longer used, as of October 2015.');
   t('This text will ALWAYS appear, even when it\'s before  or after the deadline for the registration.  The other fields (event title, date, start and end time) will also appear, so don\'t add them here unless you\'re omitting them below.');
   t('Time period during which the form will be available to visitors.  Any start date earlier than today will make the form available immediately.  The end date is the deadline for the form.');
+  t('Total tickets');
+  t('Unused - was ILRAA Non-member Price');
+  t('Used for events with a limited number of tickets available. Set it to 0 (zero) if there is NO limit.');
 
   return $field_instances;
 }

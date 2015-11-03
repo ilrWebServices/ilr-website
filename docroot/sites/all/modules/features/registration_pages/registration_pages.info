@@ -34,6 +34,7 @@ features[field_instance][] = node-registration_page-field_location_as_long_text
 features[field_instance][] = node-registration_page-field_message_after_form_close
 features[field_instance][] = node-registration_page-field_message_before_form_open
 features[field_instance][] = node-registration_page-field_registration_form_type
+features[field_instance][] = node-registration_page-field_total_tickets
 features[node][] = registration_page
 features[variable][] = field_bundle_settings_node__registration_page
 features[variable][] = menu_parent_registration_page
