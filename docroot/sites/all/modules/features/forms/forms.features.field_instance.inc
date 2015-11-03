@@ -14241,7 +14241,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 19,
+        'weight' => 18,
       ),
       'table' => array(
         'label' => 'above',
@@ -14307,7 +14307,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 20,
+        'weight' => 19,
       ),
       'table' => array(
         'label' => 'above',
@@ -14365,7 +14365,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'markup_default',
-        'weight' => 21,
+        'weight' => 20,
       ),
       'table' => array(
         'label' => 'above',
@@ -14688,7 +14688,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 17,
       ),
       'table' => array(
         'label' => 'above',
@@ -14735,7 +14735,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 19,
       ),
       'download' => array(
         'label' => 'above',
@@ -14755,7 +14755,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 24,
       ),
       'table' => array(
         'label' => 'above',
@@ -14798,7 +14798,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'download' => array(
         'label' => 'above',
@@ -14819,7 +14819,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 22,
       ),
       'table' => array(
         'label' => 'above',
@@ -15231,7 +15231,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 18,
       ),
       'download' => array(
         'label' => 'above',
@@ -15247,7 +15247,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 23,
       ),
       'table' => array(
         'label' => 'above',
@@ -15401,9 +15401,10 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_tickets_for_aa_members',
-    'label' => 'Tickets for ILR Alumni Association members',
-    'required' => 0,
+    'label' => 'Tickets',
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -15431,11 +15432,8 @@ function forms_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 16,
       ),
       'download' => array(
@@ -15449,12 +15447,9 @@ function forms_field_default_field_instances() {
       ),
       'email' => array(
         'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 16,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
       ),
       'table' => array(
         'label' => 'above',
@@ -15516,7 +15511,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 17,
+        'weight' => 16,
       ),
       'table' => array(
         'label' => 'above',
@@ -35145,7 +35140,7 @@ function forms_field_default_field_instances() {
   t('Supporter 2');
   t('Technical needs (Examples: Microphone, PowerPoint, laptop, DVD, videotaping. Enter "none" if you have NO technical needs.)');
   t('Technical support person for this site');
-  t('Tickets for ILR Alumni Association members');
+  t('Tickets');
   t('Tickets for non-members');
   t('Title');
   t('Title (billing)');
