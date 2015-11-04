@@ -2892,8 +2892,7 @@ function forms_field_group_info() {
       2 => 'field_attendee_list_markup',
       3 => 'field_guests',
       4 => 'field_tickets_for_aa_members',
-      5 => 'field_tickets_for_non_members',
-      6 => 'field_total_cost',
+      5 => 'field_total_cost',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
