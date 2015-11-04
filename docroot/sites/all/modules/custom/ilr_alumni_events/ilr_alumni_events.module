@@ -35,7 +35,8 @@ function ilr_alumni_events_form_ilr_alumni_association_event_reg_entityform_edit
 
   drupal_add_js(drupal_get_path('module','ilr_alumni_events') . '/ilr_alumni_events.js', array('type' => 'file', 'scope' => 'footer'));
 
-  $wrapper = _ilr_alumni_events_node_wrapper(null,$form['#entity']);
+  $existing_entityform = (!empty($form['#entity']->entityform_id)) ? $form['#entity'] : null;
+  $wrapper = _ilr_alumni_events_node_wrapper(null, $existing_entityform);
   drupal_add_js(array(
     'ilr_alumni_events' => array(
       'memberPrice' => $wrapper->field_aa_member_price->value(),
@@ -156,7 +157,7 @@ function _ilr_alumni_events_get_draft_status() {
     }
     else {
       $result = _elavon_get_field_collection_data('field_ssl_result_message');
-      $is_draft = ($result == 'APPROVED') ? 0 : 1;
+      $is_draft = ($result == 'APPROVED' || $result == 'APPROVAL') ? 0 : 1;
     }
   }
   return $is_draft;
