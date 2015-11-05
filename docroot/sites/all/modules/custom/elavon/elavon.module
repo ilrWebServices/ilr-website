@@ -24,6 +24,18 @@ require_once DRUPAL_ROOT . '/../config/get_secrets.php';
 //////////////////
 
 /**
+ * Implements hook_permission().
+ */
+function elavon_permission() {
+  return array(
+    'edit payment forms' => array(
+      'title' => t('Edit payment forms'),
+      'description' => t('Allows the user to edit a previously submitted payment form.'),
+    ),
+  );
+}
+
+/**
  * Implements hook_entity_insert().
  */
 function elavon_entityform_insert($entityform) {
@@ -75,7 +87,7 @@ function elavon_form_entityform_edit_form_alter(&$form, &$form_state, $form_id) 
     }
     $form['actions']['submit']['#submit'][] = '_elavon_add_payment_flag';
     // Remove the save draft button
-    if (isset($form['actions']['save'])) {
+    if (isset($form['actions']['save']) && !user_access('edit payment forms')) {
       unset($form['actions']['save']);
     }
   }
