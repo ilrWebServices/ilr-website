@@ -558,6 +558,8 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  * https. See: https://drupal.org/https-information#drupal-config
  */
 $conf['https'] = TRUE;
+$conf['stage_file_proxy_origin'] = 'http://www.ilr.cornell.edu');
+$conf['stage_file_proxy_origin_dir'] = 'sites/ilr.cornell.edu/files');
 
 if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/ilr/ilr-settings.inc');
