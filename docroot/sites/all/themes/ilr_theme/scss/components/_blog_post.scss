@@ -8,7 +8,7 @@ article.node-post { // Both post teaser and full nodes
   .field-name-field-author-reference {
     @include trailer(1);
     &:before {
-      content: 'Posted by ';
+      content: 'By ';
     }
   }
   .field-name-body.field-type-text-with-summary {
