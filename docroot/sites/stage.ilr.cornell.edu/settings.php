@@ -561,7 +561,20 @@ $conf['https'] = TRUE;
 $conf['habitat_environment'] = 'test';
 $conf['stage_file_proxy_origin'] = 'http://www.ilr.cornell.edu';
 $conf['stage_file_proxy_origin_dir'] = 'sites/ilr.cornell.edu/files';
+$conf['securepages_basepath'] = 'http://stage.ilr.cornell.edu';
+$conf['securepages_basepath_ssl'] = 'https://stage.ilr.cornell.edu';
 
 if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/ilr/ilr-settings.inc');
+}
+
+if (isset($conf['memcache_servers'])) {
+  $conf['cache_backends'][] = './sites/all/modules/contrib/memcache/memcache.inc';
+  $conf['cache_default_class'] = 'MemCacheDrupal';
+  $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+
+  # Add in stampede protection
+  $conf['memcache_stampede_protection'] = TRUE;
+  # Move semaphore out of the database and into memory for performance purposes
+  $conf['lock_inc'] = './sites/all/modules/contrib/memcache/memcache-lock.inc';
 }
