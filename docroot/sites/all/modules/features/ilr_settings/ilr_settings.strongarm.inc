@@ -320,6 +320,97 @@ function ilr_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'habitat_disable_dev';
+  $strongarm->value = array(
+    0 => '',
+  );
+  $export['habitat_disable_dev'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'habitat_disable_local';
+  $strongarm->value = array(
+    0 => '',
+  );
+  $export['habitat_disable_local'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'habitat_disable_prod';
+  $strongarm->value = array(
+    0 => '',
+  );
+  $export['habitat_disable_prod'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'habitat_disable_test';
+  $strongarm->value = array(
+    0 => '',
+  );
+  $export['habitat_disable_test'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'habitat_enable_dev';
+  $strongarm->value = array(
+    0 => 'stage_file_proxy',
+  );
+  $export['habitat_enable_dev'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'habitat_enable_local';
+  $strongarm->value = array(
+    0 => '',
+  );
+  $export['habitat_enable_local'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'habitat_enable_prod';
+  $strongarm->value = array(
+    0 => '',
+  );
+  $export['habitat_enable_prod'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'habitat_enable_test';
+  $strongarm->value = array(
+    0 => 'stage_file_proxy',
+  );
+  $export['habitat_enable_test'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'habitat_habitats';
+  $strongarm->value = array(
+    0 => 'local',
+    1 => 'dev',
+    2 => 'test',
+    3 => 'prod',
+  );
+  $export['habitat_habitats'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'habitat_variable';
+  $strongarm->value = 'habitat_environment';
+  $export['habitat_variable'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'media_wysiwyg_view_mode_audio_file_wysiwyg_view_mode';
   $strongarm->value = 'wysiwyg';
   $export['media_wysiwyg_view_mode_audio_file_wysiwyg_view_mode'] = $strongarm;
