@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Implements hook_install()
+ * Implements hook_enable()
  */
 
-function featuretest_install() {
+function featuretest_enable() {
   variable_set('site_name','ILR FeatureTest Site');
 
   // Hard-code all environments to the prod install directory
@@ -20,26 +20,44 @@ function featuretest_install() {
   variable_set('stage_file_proxy_origin_dir','sites/ilr.cornell.edu/files');
 
   _featuretest_add_test_users();
+  _featuretest_reset_passwords();
 }
 
 function _featuretest_add_test_users() {
-  require_once DRUPAL_ROOT . '/' . variable_get('password_inc', 'includes/password.inc');
-
   $users = array();
   $roles = user_roles(true);
 
   foreach ($roles as $name) {
-    $rid = user_role_load_by_name($name)->rid;
-    $users[] = array(
-      'name' => $name,
-      'pass' => user_hash_password('testing'),
-      'mail' => "test_{$name}@cornell.edu",
-      'status' => 1,
-      'roles' => array($rid => true),
-    );
+    $existing_user = user_load_by_name($name);
+    if (!$existing_user) {
+      $rid = user_role_load_by_name($name)->rid;
+      $email = 'test_' . str_replace(' ', '_', $name) . '@cornell.edu';
+      $users[] = array(
+        'name' => $name,
+        'pass' => 'testing',
+        'mail' => $email,
+        'status' => 1,
+        'roles' => array($rid => true),
+      );
+    }
   }
 
+  if (!empty($users)) {
+    foreach ($users as $key => $user) {
+      $new_user = user_save((object) $user);
+    }
+  }
+}
+
+/**
+ * Since SSL is not enabled on featuretest, we manually update the passwords
+ */
+function _featuretest_reset_passwords() {
+  $users = entity_load('user');
   foreach ($users as $user) {
-    $new_user = user_save((object) $user);
+    if (!empty($user->name)) {
+      $edit['pass'] = 'testing';
+      user_save($user, $edit);
+    }
   }
 }
