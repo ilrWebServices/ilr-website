@@ -46,6 +46,8 @@ The following is an example of the post-merge hook currently used to compile and
         fi
       fi
 
+It is recommended that the CSS cache is cleared on production after deployment since the Acquia server does not clear the cache immediately.
+
 ### Production Tags
 
 The Acquia Cloud Workflow interface makes it really easy to deploy a specific tag to production. Note that we do not push the production branch to github, but work to keep the current production branch on Acquia up-to-date. The typical deployment workflow is as follows:
