@@ -240,18 +240,20 @@ jQuery.fn.sortElements = (function(){
        * To do that, we modify how the title is output, and add the css class and the sponsor
        */
       fixSeriesClasses = function() {
-        $('article.node-sdc-class').each(function(){
-          title = classTitle($(this));
-          sponsor = $(this).parents('article').attr('data-sponsor');
-          $(this).find('.field-type-entityreference').each(function(){
-            href = $(this).find('a').attr('href');
-            $(this).remove();
+        if ($('.view-sdc-course-listing').length) {
+          $('article.node-sdc-class').each(function(){
+            title = classTitle($(this));
+            sponsor = $(this).parents('article').attr('data-sponsor');
+            $(this).find('.field-type-entityreference').each(function(){
+              href = $(this).find('a').attr('href');
+              $(this).remove();
+            });
+            $(this).find('.field-name-body').prepend('<h2><a href="'+href+'">'+title+'</a></h2>');
+            $('.view-sdc-course-listing').append($(this));
+            $(this).addClass('node-sdc-course scheduled');
+            $(this).attr('data-sponsor',sponsor);
           });
-          $(this).find('.field-name-body').prepend('<h2><a href="'+href+'">'+title+'</a></h2>');
-          $('.view-sdc-course-listing').append($(this));
-          $(this).addClass('node-sdc-course scheduled');
-          $(this).attr('data-sponsor',sponsor);
-        });
+        }
       };
 
       prepSearchFilter = function() {

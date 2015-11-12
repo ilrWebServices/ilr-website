@@ -217,6 +217,10 @@
   }
 }
 
+.node-sdc-class.node-sdc-course > h2, // this is for classes masquerading as courses on listing pages
+.node-type-sdc-course .node-sdc-class > h2  { // this is for class teasers on series course detail pages
+  display: none;
+}
 .node-sdc-class .node-sdc-course h2 a:hover {
   text-decoration: underline;
 }
