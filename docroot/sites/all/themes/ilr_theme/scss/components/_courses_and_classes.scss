@@ -221,6 +221,10 @@
 .node-type-sdc-course .node-sdc-class > h2  { // this is for class teasers on series course detail pages
   display: none;
 }
+.node-sdc-class .node-sdc-course h2 {
+  @include adjust-font-size-to(16px,1);
+}
+
 .node-sdc-class .node-sdc-course h2 a:hover {
   text-decoration: underline;
 }

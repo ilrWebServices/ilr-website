@@ -1876,8 +1876,12 @@ function _ilr_sdc_listings_set_default_body(&$node) {
 
 /**
  * Adds the prefix to the title if it hasn't been added yet
+ * Skips course titles when they are referenced nodes (for series class pages)
  */
 function _ilr_sdc_listings_add_prefix_to_title($node, $type, $view_mode) {
+  if ($view_mode == 'reference_field') {
+    return FALSE;
+  }
   $wrapper = ilr_get_node_wrapper($node);
   $prefix = ($type == 'sdc_class')
     ? $wrapper->field_course->field_catalog_prefix->value()
