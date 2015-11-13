@@ -2200,6 +2200,7 @@ function ilr_permissions_user_default_permissions() {
   $permissions['override basic_page featured option'] = array(
     'name' => 'override basic_page featured option',
     'roles' => array(
+      'administrator' => 'administrator',
       'power user' => 'power user',
     ),
     'module' => 'custom_publishing_options',
@@ -2209,6 +2210,7 @@ function ilr_permissions_user_default_permissions() {
   $permissions['override basic_page kerberized option'] = array(
     'name' => 'override basic_page kerberized option',
     'roles' => array(
+      'administrator' => 'administrator',
       'power user' => 'power user',
     ),
     'module' => 'custom_publishing_options',
@@ -2239,6 +2241,7 @@ function ilr_permissions_user_default_permissions() {
   $permissions['override news_item featured option'] = array(
     'name' => 'override news_item featured option',
     'roles' => array(
+      'administrator' => 'administrator',
       'power user' => 'power user',
     ),
     'module' => 'custom_publishing_options',
@@ -2288,6 +2291,7 @@ function ilr_permissions_user_default_permissions() {
   $permissions['override post featured option'] = array(
     'name' => 'override post featured option',
     'roles' => array(
+      'administrator' => 'administrator',
       'power user' => 'power user',
     ),
     'module' => 'custom_publishing_options',
@@ -2297,6 +2301,7 @@ function ilr_permissions_user_default_permissions() {
   $permissions['override post kerberized option'] = array(
     'name' => 'override post kerberized option',
     'roles' => array(
+      'administrator' => 'administrator',
       'power user' => 'power user',
     ),
     'module' => 'custom_publishing_options',
@@ -2325,6 +2330,7 @@ function ilr_permissions_user_default_permissions() {
   $permissions['override promo featured option'] = array(
     'name' => 'override promo featured option',
     'roles' => array(
+      'administrator' => 'administrator',
       'power user' => 'power user',
     ),
     'module' => 'custom_publishing_options',
@@ -2353,7 +2359,9 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'override reflection featured option'.
   $permissions['override reflection featured option'] = array(
     'name' => 'override reflection featured option',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'custom_publishing_options',
   );
 
@@ -2380,6 +2388,7 @@ function ilr_permissions_user_default_permissions() {
   $permissions['override registration_page featured option'] = array(
     'name' => 'override registration_page featured option',
     'roles' => array(
+      'administrator' => 'administrator',
       'power user' => 'power user',
     ),
     'module' => 'custom_publishing_options',
@@ -2389,6 +2398,7 @@ function ilr_permissions_user_default_permissions() {
   $permissions['override registration_page kerberized option'] = array(
     'name' => 'override registration_page kerberized option',
     'roles' => array(
+      'administrator' => 'administrator',
       'form admin' => 'form admin',
       'power user' => 'power user',
     ),
@@ -2476,6 +2486,7 @@ function ilr_permissions_user_default_permissions() {
   $permissions['override student_portrait featured option'] = array(
     'name' => 'override student_portrait featured option',
     'roles' => array(
+      'administrator' => 'administrator',
       'power user' => 'power user',
     ),
     'module' => 'custom_publishing_options',
