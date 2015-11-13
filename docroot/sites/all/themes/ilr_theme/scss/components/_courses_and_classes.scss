@@ -169,7 +169,7 @@
   }
 }
 
-.node-type-sdc-course {
+.node-type-sdc-course { // Course detail page
   @extend %two-col-content-area;
   .field-name-field-catalog-prefix {
     @include adjust-font-size-to($h2-size);
@@ -177,8 +177,12 @@
     color: $h2-text;
   }
   article {
+    @include rhythm(2);
+    @include trailing-border;
+
     .field-name-body {
       clear: left;
+      float: left;
     }
     form {
       @include trailer(2);
@@ -192,7 +196,7 @@
 
 }
 
-.node-type-sdc-class {
+.node-type-sdc-class { // Class detail page
   @extend %two-col-content-area;
   .field:not(.field-name-field-price) {
     @include trailer(1);
@@ -202,7 +206,7 @@
   }
   article {
     h2 {
-      margin-bottom: 0;
+      // margin-bottom: 0;
     }
     .field-name-body {
       clear: left;
@@ -213,9 +217,33 @@
   }
 }
 
+.node-sdc-class.node-sdc-course > h2, // this is for classes masquerading as courses on listing pages
+.node-type-sdc-course .node-sdc-class > h2  { // this is for class teasers on series course detail pages
+  display: none;
+}
+.node-sdc-class .node-sdc-course h2 {
+  @include adjust-font-size-to(16px,1);
+}
+
 .node-sdc-class .node-sdc-course h2 a:hover {
   text-decoration: underline;
 }
+
+div.field-name-field-course.field-type-entityreference {
+  a { // This is the title of the node
+    @include adjust-font-size-to($h2-size, 1);
+    font-family: $font-headers;
+    font-weight: 400;
+    color: $h2-text;
+    border-bottom: none;
+  }
+  @include trailer(1);
+}
+
+.node-sdc-class.node-teaser {
+  @include rhythm(1);
+}
+
 
 .view-sdc-course-listing {
   h3 {
