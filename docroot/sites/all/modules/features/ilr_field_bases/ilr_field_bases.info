@@ -79,6 +79,7 @@ features[field_base][] = field_building_or_location
 features[field_base][] = field_call_number
 features[field_base][] = field_campaign_intro
 features[field_base][] = field_campaign_title
+features[field_base][] = field_cancelled
 features[field_base][] = field_career_field_fex
 features[field_base][] = field_career_field_wisp
 features[field_base][] = field_career_services_how_to_dir
