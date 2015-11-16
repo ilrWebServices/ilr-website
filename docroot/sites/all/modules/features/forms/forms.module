@@ -464,6 +464,15 @@ function _process_course_request(&$entityform) {
 }
 
 /**
+ * Sets email addresses and calls course action processor
+ * Sends email to ilrcustomerservice and the ilr web team email
+ */
+function _process_course_follow(&$entityform) {
+  $admin_email = 'ilrcustomerservice@cornell.edu,' . ILRWEB_EMAIL;
+  _forms_send_emails($entityform, $admin_email);
+}
+
+/**
  * Process FEX student form
  */
 function _process_fex_student_application(&$entityform) {
