@@ -155,6 +155,13 @@ function ilr_sdc_listings_menu() {
     'page arguments' => array(1),
   );
 
+  $items['course-follow/%'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => '_ilr_sdc_listings_follow_course',
+    'page arguments' => array(1),
+  );
+
   $items['professional-programs/courses/autocomplete'] = array(
     'page callback' => '_ilr_sdc_listings_autocomplete',
     'access arguments' => array('access content'),
@@ -212,11 +219,22 @@ function _ilr_sdc_listings_get_nid_from_catalog_prefix($catalog_prefix) {
 }
 
 /**
- * Hides the course field from the view
- * not working from manage display tab
+ * Sends the course request form to the page
+ * @see ilr_sdc_listings.js
  */
 function _ilr_sdc_listings_request_info($course_nid) {
   $block = entityform_block_block_view('course_request');
+  unset($block['content']['field_course']);
+  $content = drupal_render($block['content']);
+  return $content;
+}
+
+/**
+ * Sends the course request form to the page
+ * @see ilr_sdc_listings.js
+ */
+function _ilr_sdc_listings_follow_course($course_nid) {
+  $block = entityform_block_block_view('course_follow');
   unset($block['content']['field_course']);
   $content = drupal_render($block['content']);
   return $content;
@@ -761,6 +779,7 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
         $form = drupal_get_form('ilr_sdc_listings_class_reg_form', $class_nodes);
         $content = drupal_render($form);
         $content .= _ilr_sdc_listings_generate_request_info_markup($course_node, $view_mode);
+        $content .= _ilr_sdc_listings_generate_follow_markup($course_node);
       } // teaser list view
       else {
         $content = _ilr_sdc_listings_generate_class_link_markup($class_nodes);
@@ -1135,11 +1154,22 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
       <div class="action"><a class="button button-info" href="/'.$link.'">Learn More</a></div>';// Note that the js looks for the .button-info class
   } // full node
   else {
-    $markup .= '<p class="schedule">'.$help_text.'</p>';
-    $markup .= '<a class="button request-info course" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Request';
+    $markup .= '<p class="schedule button-info">'.$help_text.'</p>';
+    $markup .= '<a class="button course request-info" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Request';
     $markup .= '<span class="course-title">'.$course->title.'</span></a>';
   }
   $markup .= '</div>';
+  return $markup;
+}
+
+/**
+ *
+ */
+function _ilr_sdc_listings_generate_follow_markup($course) {
+  $help_text = 'Follow this course';
+  $markup = '<p class="button-info">Sign-up to be notified when this course is offered.</p>';
+  $markup .= '<a class="button course follow" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Notify Me ';
+  $markup .= '<span class="course-title">'.$course->title.'</span></a>';
   return $markup;
 }
 
@@ -1699,9 +1729,10 @@ function _ilr_sdc_listings_hide_view_filters($form, &$form_state) {
  * Implements hook_entityform_presave.
  * Sets the registration date for registration forms
  * Sets the job postdate for alumni job postings
+ * @see forms.module for form processing
  */
 function ilr_sdc_listings_entityform_presave($entityform) {
-  if ($entityform->type == 'course_request') {
+  if ($entityform->type == 'course_request' || $entityform->type == 'course_follow') {
     $wrapper = entity_metadata_wrapper('entityform', $entityform);
     $course_nid = arg(1);
     $wrapper->field_course->set($course_nid);

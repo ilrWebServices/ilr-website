@@ -58,9 +58,7 @@
   }
 
   .button {
-    @include rhythm(1);
     @extend %cornell-button;
-    clear: left;
     .cost {
       display: block;
       text-align: center;
@@ -102,14 +100,6 @@
       text-decoration: none;
       font-style: normal;
     }
-    &.schedule {
-      @include adjust-font-size-to(14px, .7);
-    }
-  }
-  .schedule {
-    @include adjust-font-size-to(14px, .7);
-    font-style: italic;
-    margin-bottom: 0;
   }
 
   .class-detail-toggle {
@@ -129,6 +119,11 @@
   .instructors {
     a.readmore-js-toggle {
       @extend %readmore-js-link; // see _helpers.scss
+    }
+    article {
+      border: none;
+      @include rhythm(0);
+      @include trailer(.5);
     }
   }
 }
@@ -182,7 +177,6 @@
 
     .field-name-body {
       clear: left;
-      float: left;
     }
     form {
       @include trailer(2);
@@ -281,4 +275,22 @@ div.field-name-field-course.field-type-entityreference {
   .view-footer {
     @include padding-leader(1);
   }
+}
+
+.button {
+  @include rhythm(1);
+  @extend %cornell-button;
+  clear: left;
+  span {
+    display: none;
+  }
+  &.follow {
+    @include adjust-font-size-to(16px,1);
+  }
+}
+
+p.button-info {
+  @include adjust-font-size-to(14px, .7);
+  font-style: italic;
+  margin-bottom: 0;
 }
