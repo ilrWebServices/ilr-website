@@ -161,6 +161,15 @@
     }
   }
 
+
+  li.last.leaf {
+    #jPanelMenu-menu & {
+      background: blue;
+      margin-bottom: 40px;
+    }
+  }
+
+
   li ul.menu {
     position: absolute;
     right: -100%;
