@@ -120,6 +120,11 @@
     a.readmore-js-toggle {
       @extend %readmore-js-link; // see _helpers.scss
     }
+    article {
+      border: none;
+      @include rhythm(0);
+      @include trailer(.5);
+    }
   }
 }
 
@@ -172,7 +177,6 @@
 
     .field-name-body {
       clear: left;
-      float: left;
     }
     form {
       @include trailer(2);
@@ -279,6 +283,9 @@ div.field-name-field-course.field-type-entityreference {
   clear: left;
   span {
     display: none;
+  }
+  &.follow {
+    @include adjust-font-size-to(16px,1);
   }
 }
 
