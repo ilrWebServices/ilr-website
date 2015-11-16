@@ -576,3 +576,10 @@ function ilr_update_7049() {
   variable_set('features_rebuild_on_flush',FALSE);
   variable_set('entity_rebuild_on_flush',FALSE);
 }
+
+/**
+ * Enables the admin_views module
+ */
+function ilr_update_7050() {
+  module_enable(array('admin_views'));
+}
