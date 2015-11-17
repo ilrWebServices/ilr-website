@@ -985,13 +985,21 @@ function _ilr_sdc_listings_is_multiyear_event($class) {
  */
 function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_price=FALSE) {
   $wrapper = ilr_get_node_wrapper($class_node);
+  $classes = 'button';
   if ($include_price) {
-    $classes = 'button button-register';
-    $link_text = 'Register';
-    $link = _ilr_sdc_listings_get_class_registration_url($class_node);
+    $classes = 'button';
+    if ($wrapper->field_cancelled->value()) {
+      $classes .= ' button-cancelled';
+      $link_text = 'Cancelled';
+      $link = '#';
+    } else {
+      $classes .= ' button-register';
+      $link_text = 'Register';
+      $link = _ilr_sdc_listings_get_class_registration_url($class_node);
+    }
   }
   else {
-    $classes = 'button button-info';// Note that the js looks for the .button-info class
+    $classes .= ' button-info';// Note that the js looks for the .button-info class
     $link_text = 'Learn More';
     $nid = (_ilr_sdc_listings_is_series($class_node))
       ? $class_node->nid

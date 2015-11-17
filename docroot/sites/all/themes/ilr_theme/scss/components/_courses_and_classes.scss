@@ -287,6 +287,9 @@ div.field-name-field-course.field-type-entityreference {
   &.follow {
     @include adjust-font-size-to(16px,1);
   }
+  &.button-cancelled .cost {
+    display: none;
+  }
 }
 
 p.button-info {
