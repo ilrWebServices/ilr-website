@@ -172,9 +172,10 @@
     color: $h2-text;
   }
   article {
-    @include rhythm(2);
-    @include trailing-border;
-
+    &.node-sdc-course {
+      @include rhythm(2);
+      @include trailing-border;
+    }
     .field-name-body {
       clear: left;
     }
