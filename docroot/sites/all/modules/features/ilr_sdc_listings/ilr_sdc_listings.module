@@ -1254,15 +1254,23 @@ function _ilr_sdc_listings_get_class_registration_url($class) {
  */
 function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NULL) {
   $today = date('Y-m-d');
+
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'sdc_class')
     ->propertyCondition('status', 1)
     ->fieldCondition('field_course', 'target_id', $course_node->nid)
-    ->fieldCondition('field_registration_end_date', 'value', $today, '>=')
     ->fieldOrderBy('field_class_dates', 'value');
   if ($class_nids) {
     $query->propertyCondition('nid', $class_nids);
+  }
+  if (_ilr_sdc_listings_date_query_present()) {
+    $range = _ilr_sdc_listings_get_date_range();
+    $query->fieldCondition('field_class_dates', 'value', $range['start_date'], '>=');
+    $query->fieldCondition('field_class_dates', 'value2', $range['end_date'], '<=');
+  }
+  else {
+    $query->fieldCondition('field_registration_end_date', 'value', $today, '>=');
   }
   $results = $query->execute();
   if (!empty($results['node'])) {
@@ -1271,6 +1279,49 @@ function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NU
   return array();
 }
 
+/**
+ * Checks the url parameters for the presence of dates values from the filter
+ * - caches the result for performance
+ * @return boolean
+ */
+function _ilr_sdc_listings_date_query_present() {
+  $present = &drupal_static(__FUNCTION__);
+  if (!isset($present)) {
+    $start_date_param = (isset($_GET['field_class_dates_value']))
+    ? $_GET['field_class_dates_value']['value']['date']
+    : '';
+  $end_date_param = (isset($_GET['field_class_dates_value2']))
+    ? $_GET['field_class_dates_value2']['value']['date']
+    : '';
+    $present = strlen($start_date_param) || strlen($end_date_param);
+  }
+  return $present;
+}
+
+/**
+ * Gets the query string from the url
+ * - Adds 1 day to end date to return expected results
+ * - caches the result since each class query needs access to the range
+ * @return array
+ *  key - start_date or end_date
+ *  values - the formatetted date objects
+ */
+function _ilr_sdc_listings_get_date_range() {
+  $dates = &drupal_static(__FUNCTION__);
+  if (!isset($dates)) {
+    $start_date = (strlen($_GET['field_class_dates_value']['value']['date']))
+      ? date($_GET['field_class_dates_value']['value']['date'])
+      : date('Y-m-d');
+    $end_date = (strlen($_GET['field_class_dates_value2']['value']['date']))
+      ? date($_GET['field_class_dates_value2']['value']['date']) + 1
+      : date('Y-m-d');
+    $dates = array(
+      'start_date' => $start_date,
+      'end_date' => $end_date,
+    );
+  }
+  return $dates;
+}
 /**
  * Checks whether the registration deadline is different from the start date
  */
