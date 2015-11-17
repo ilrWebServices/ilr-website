@@ -30,8 +30,9 @@ function ilr_alumni_events_block_view($delta = '') {
  * Implements hook_form_FORM_ID_alter().
  */
 function ilr_alumni_events_form_ilr_alumni_association_event_reg_entityform_edit_form_alter(&$form, &$form_state) {
-
   $form['field_total_cost'][LANGUAGE_NONE][0]['#markup'] = '<label>Total Cost</label><p><span class="total-cost">0</span></p>';
+  // Hide the non-member tickets field in the form the user sees
+  $form['field_tickets_for_non_members']['#access'] = FALSE;
 
   drupal_add_js(drupal_get_path('module','ilr_alumni_events') . '/ilr_alumni_events.js', array('type' => 'file', 'scope' => 'footer'));
 
@@ -60,9 +61,6 @@ function ilr_alumni_events_form_ilr_alumni_association_event_reg_entityform_edit
         unset($form['field_tickets_for_aa_members']['und']['#options'][$i]);
       }
     }
-
-    // Hide the non-member tickets field in the form the user sees
-    $form['field_tickets_for_non_members']['#access'] = FALSE;
   }
 }
 
