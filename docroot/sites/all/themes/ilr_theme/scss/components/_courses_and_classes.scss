@@ -55,6 +55,9 @@
     display: block;
     font-weight: bold;
     @include adjust-font-size-to(16px);
+    &.cancelled {
+      text-decoration: line-through;
+    }
   }
 
   .button {
