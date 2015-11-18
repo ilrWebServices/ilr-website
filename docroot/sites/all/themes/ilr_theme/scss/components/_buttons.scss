@@ -12,12 +12,29 @@
       text-transform: uppercase;
       display: inline-block;
       clear: left;
-      font-weight: 300;
+      font-weight: 400;
+      -webkit-transition: background-color 0.2s;
+      -moz-transition: background-color 0.2s;
+      -o-transition: background-color 0.2s;
       transition: background-color 0.2s;
       @extend .clearfix;
       &:hover {
         cursor: pointer;
         background-color: $gray-dark;
+      }
+      &.cerulean.with-border {
+        background-color: white;
+        color: $cerulean;
+        &:hover {
+          background-color: $gray-light;
+        }
+      }
+      &.cornell-red.with-border {
+        background-color: white;
+        color: $cornell-red;
+        &:hover {
+          background-color: $gray-light;
+        }
       }
     }
 
