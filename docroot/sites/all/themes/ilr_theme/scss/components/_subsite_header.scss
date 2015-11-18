@@ -61,9 +61,16 @@
       font-family: $font;
     }
   }
-  &.mobilizing-against-inequality, &.uli {
+  &.mobilizing-against-inequality,
+  &.uli,
+  &.uale-2013-ne,
+  &.national-labor-leadership-init {
     .subsite-header {
+      img {
+        margin-top: 1.8em;
+      }
       h2 {
+        margin-top: 0;
         padding-bottom: 0;
       }
       h3 {
@@ -72,6 +79,15 @@
         font-family: $font;
         color: $gray-dark;
         text-transform: uppercase;
+      }
+    }
+    header[data-eq-state="mobile-nav"] {
+      #header-region {
+        .subsite-header {
+          h2 {
+            margin-top: 0;
+          }
+        }
       }
     }
   }
@@ -112,6 +128,7 @@
           display: none; //hides tagline on WI sites
         }
       }
+
       &.sticky h2 {
         display: block;
         margin: 0;
@@ -138,7 +155,10 @@
     }
   }
 
-  &.mobilizing-against-inequality #header-region, &.uli #header-region {
+  &.mobilizing-against-inequality #header-region,
+  &.uli #header-region,
+  &.uale-2013-ne #header-region,
+  &.national-labor-leadership-init #header-region {
     background-color: #4d4e53;
     a, a:visited, a:active {
       color: $gray-light;
