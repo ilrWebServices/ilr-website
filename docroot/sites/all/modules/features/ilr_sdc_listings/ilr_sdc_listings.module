@@ -1847,7 +1847,7 @@ function _ilr_sdc_listings_get_class_detail_markup($classes, $add_register_butto
         $markup .= _ilr_sdc_listings_generate_location_markup($class_node);
       }
       if ($cancelled) {
-        $markup .= '<p class="message">' . variable_get('sdc_class_cancelled',"We're sorry, but this date has been cancelled.") . '</p>';
+        $markup .= '<p class="message class-cancelled">' . variable_get('sdc_class_cancelled',"We're sorry, but this date has been cancelled.") . '</p>';
       }
       else {
         $markup .= _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id);

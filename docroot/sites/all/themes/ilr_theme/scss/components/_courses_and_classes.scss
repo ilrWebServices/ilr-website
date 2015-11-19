@@ -20,9 +20,15 @@
   .class-full {
     margin-left: 1.2em;
   }
+
   .message {
     clear: left;
     @include adjust-font-size-to(14px, .7);
+    &.class-cancelled {
+      @include adjust-font-size-to(16px, .7);
+      font-weight: bold;
+      color: $brand;
+    }
   }
 
   span, .street-block {
