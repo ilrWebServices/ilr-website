@@ -69,21 +69,33 @@
       img {
         margin-top: 1.8em;
       }
+
+      p {
+        background: url(../images/logo-worker-institute-no-slogan.svg) no-repeat 0 0;
+        margin-top: 1.8em;
+        margin-bottom: 0;
+        a {
+          color: transparent !important;
+          border-bottom: none;
+          display: block;
+          height: 21px;
+          width: 205px;
+        }
+      }
+
       h2 {
         margin-top: 0;
         padding-bottom: 0;
-      }
-      h3 {
-        @include adjust-font-size-to(16px);
-        @include adjust-leading-to(1);
-        font-family: $font;
-        color: $gray-dark;
-        text-transform: uppercase;
       }
     }
     header[data-eq-state="mobile-nav"] {
       #header-region {
         .subsite-header {
+          p {
+            margin-top: .5em;
+            margin-bottom: .2em;
+          }
+
           h2 {
             margin-top: 0;
           }
@@ -124,9 +136,6 @@
             max-width: 200px;
           }
         }
-        h3 {
-          display: none; //hides tagline on WI sites
-        }
       }
 
       &.sticky h2 {
@@ -142,7 +151,7 @@
   &.admin-menu header[data-eq-state="mobile-nav"] { top: 29px; }
 
   &.worker-institute #header-region {
-    background-color: #4d4e53;
+    background-color: $gray-wi;
     .subsite-header {
       width: 390px;
     }
@@ -150,7 +159,7 @@
       color: $gray-light;
       &:hover {
         color: lighten($gray-light, 10%);
-        border-bottom-color: lighten(#4d4e53,8%);
+        border-bottom-color: lighten($gray-wi,8%);
       }
     }
   }
@@ -159,12 +168,12 @@
   &.uli #header-region,
   &.uale-2013-ne #header-region,
   &.national-labor-leadership-init #header-region {
-    background-color: #4d4e53;
+    background-color: $gray-wi;
     a, a:visited, a:active {
       color: $gray-light;
       &:hover {
         color: lighten($gray-light, 10%);
-        border-bottom-color: lighten(#4d4e53,8%);
+        border-bottom-color: lighten($gray-wi,8%);
       }
     }
   }

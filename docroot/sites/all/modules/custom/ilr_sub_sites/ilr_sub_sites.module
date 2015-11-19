@@ -33,7 +33,7 @@ function ilr_sub_sites_block_view($delta = '') {
   }
   else {
     if (array_search($subsite_name, $wi_sites)) {
-      $block['content'] .= "<img src='/sites/all/themes/ilr_theme/images/logo-worker-institute-no-slogan.svg' alt='The Worker Institute' title='The Worker Institute'>";
+      $block['content'] .= "<p class='WI-cohort-brand'><a href='/worker-institute'>The Worker Institute</a></p>" ;
       $block['content'] .= "<h2><a href='$href'>$subsite_name</a></h2>";
     }
     else {
