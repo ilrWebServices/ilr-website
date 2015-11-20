@@ -1,0 +1,63 @@
+.image-with-text {
+  @include grid-span(12,1);
+  @include add-gutter(1);
+  padding: 0 1em;
+  @include trailer(2);
+  article {
+    &:nth-of-type(odd) {
+      p {
+        margin-bottom: 0;
+      }
+    }
+    h2 {
+      margin-bottom: .5em;
+    }
+    form.class-details {
+      padding-right: 0 !important;
+      a.button {
+        margin-top: .4em;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+#main[data-eq-state="550"], #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+  .image-with-text {
+    article {
+      &:nth-of-type(odd) {
+        @include grid-span (4,1);
+        text-align: center;
+        border: 1px solid $gray-light;
+        border-radius: 8px;
+      }
+      &:nth-of-type(even) {
+        @include grid-span (8,5);
+      }
+    }
+  }
+}
+
+#main[data-eq-state="320"] {
+  .image-with-text {
+    border: 1px solid $gray-light;
+    border-radius: 8px;
+    article {
+      ul {
+        padding-left: 0;
+      }
+      li {
+        padding-left: 0;
+        background: none;
+      }
+      &:nth-of-type(odd) {
+        @include grid-span (12,1);
+        text-align: center;
+      }
+      &:nth-of-type(even) {
+        @include grid-span (12,1);
+        text-align: center;
+      }
+    }
+  }
+}
