@@ -53,6 +53,7 @@ function ilr_sdc_listings_feeds_importer_default() {
           'jsonpath_parser:17' => 'IS_ON_DEMAND',
           'jsonpath_parser:18' => 'IS_ONLINE',
           'jsonpath_parser:19' => 'ISFULL',
+          'jsonpath_parser:20' => 'ISCANCELLED',
         ),
         'debug' => array(
           'options' => array(
@@ -77,6 +78,7 @@ function ilr_sdc_listings_feeds_importer_default() {
             'jsonpath_parser:17' => 0,
             'jsonpath_parser:18' => 0,
             'jsonpath_parser:19' => 0,
+            'jsonpath_parser:20' => 0,
           ),
         ),
       ),
@@ -186,6 +188,11 @@ function ilr_sdc_listings_feeds_importer_default() {
           19 => array(
             'source' => 'jsonpath_parser:19',
             'target' => 'field_is_full',
+            'unique' => FALSE,
+          ),
+          20 => array(
+            'source' => 'jsonpath_parser:20',
+            'target' => 'field_cancelled',
             'unique' => FALSE,
           ),
         ),

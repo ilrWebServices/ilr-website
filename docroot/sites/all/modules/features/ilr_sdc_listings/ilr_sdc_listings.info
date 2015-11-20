@@ -53,6 +53,7 @@ features[field_group][] = group_sidebar|node|sdc_course|teaser
 features[field_instance][] = node-sdc_class-body
 features[field_instance][] = node-sdc_class-field_address
 features[field_instance][] = node-sdc_class-field_building
+features[field_instance][] = node-sdc_class-field_cancelled
 features[field_instance][] = node-sdc_class-field_class_dates
 features[field_instance][] = node-sdc_class-field_class_id
 features[field_instance][] = node-sdc_class-field_course

@@ -938,14 +938,15 @@ function _ilr_sdc_listings_class_has_override_title($course_node) {
   return drupal_get_title() != $course_wrapper->label();
 }
 
-function _ilr_sdc_listings_format_class_date_and_time($class) {
+function _ilr_sdc_listings_format_class_date_and_time($class,$cancelled=FALSE) {
   $wrapper = ilr_get_node_wrapper($class);
   $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class);
   $start_datetime = $datetimes['start'];
   $end_datetime = $datetimes['end'];
+  $datespan_class = ($cancelled) ? 'date cancelled' : 'date';
   $markup = '<div class="date-time contextual-links-region">';
   $markup .= _ilr_sdc_listings_get_contextual_link_markup($class);
-  $markup .= '<span class="date">';
+  $markup .= '<span class="'.$datespan_class.'">';
   $year = $start_datetime->format('Y');
   if (_ilr_sdc_listings_is_multiday_event($class)) {
     if ($start_datetime->format('M') != $end_datetime->format('M')) {
@@ -985,13 +986,14 @@ function _ilr_sdc_listings_is_multiyear_event($class) {
  */
 function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_price=FALSE) {
   $wrapper = ilr_get_node_wrapper($class_node);
+  $classes = 'button';
   if ($include_price) {
-    $classes = 'button button-register';
+    $classes .= ' button-register';
     $link_text = 'Register';
     $link = _ilr_sdc_listings_get_class_registration_url($class_node);
   }
   else {
-    $classes = 'button button-info';// Note that the js looks for the .button-info class
+    $classes .= ' button-info';// Note that the js looks for the .button-info class
     $link_text = 'Learn More';
     $nid = (_ilr_sdc_listings_is_series($class_node))
       ? $class_node->nid
@@ -1252,15 +1254,23 @@ function _ilr_sdc_listings_get_class_registration_url($class) {
  */
 function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NULL) {
   $today = date('Y-m-d');
+
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'sdc_class')
     ->propertyCondition('status', 1)
     ->fieldCondition('field_course', 'target_id', $course_node->nid)
-    ->fieldCondition('field_registration_end_date', 'value', $today, '>=')
     ->fieldOrderBy('field_class_dates', 'value');
   if ($class_nids) {
     $query->propertyCondition('nid', $class_nids);
+  }
+  if (_ilr_sdc_listings_date_query_present()) {
+    $range = _ilr_sdc_listings_get_date_range();
+    $query->fieldCondition('field_class_dates', 'value', $range['start_date'], '>=');
+    $query->fieldCondition('field_class_dates', 'value2', $range['end_date'], '<=');
+  }
+  else {
+    $query->fieldCondition('field_registration_end_date', 'value', $today, '>=');
   }
   $results = $query->execute();
   if (!empty($results['node'])) {
@@ -1269,6 +1279,49 @@ function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NU
   return array();
 }
 
+/**
+ * Checks the url parameters for the presence of dates values from the filter
+ * - caches the result for performance
+ * @return boolean
+ */
+function _ilr_sdc_listings_date_query_present() {
+  $present = &drupal_static(__FUNCTION__);
+  if (!isset($present)) {
+    $start_date_param = (isset($_GET['field_class_dates_value']))
+    ? $_GET['field_class_dates_value']['value']['date']
+    : '';
+  $end_date_param = (isset($_GET['field_class_dates_value2']))
+    ? $_GET['field_class_dates_value2']['value']['date']
+    : '';
+    $present = strlen($start_date_param) || strlen($end_date_param);
+  }
+  return $present;
+}
+
+/**
+ * Gets the query string from the url
+ * - Adds 1 day to end date to return expected results
+ * - caches the result since each class query needs access to the range
+ * @return array
+ *  key - start_date or end_date
+ *  values - the formatetted date objects
+ */
+function _ilr_sdc_listings_get_date_range() {
+  $dates = &drupal_static(__FUNCTION__);
+  if (!isset($dates)) {
+    $start_date = (strlen($_GET['field_class_dates_value']['value']['date']))
+      ? date($_GET['field_class_dates_value']['value']['date'])
+      : date('Y-m-d');
+    $end_date = (strlen($_GET['field_class_dates_value2']['value']['date']))
+      ? date($_GET['field_class_dates_value2']['value']['date']) + 1
+      : date('Y-m-d');
+    $dates = array(
+      'start_date' => $start_date,
+      'end_date' => $end_date,
+    );
+  }
+  return $dates;
+}
 /**
  * Checks whether the registration deadline is different from the start date
  */
@@ -1550,6 +1603,11 @@ function ilr_sdc_listings_form_ilr_editable_settings_form_alter(&$form, &$form_s
     '#title' => t('Class selected is full'),
     '#default_value' => 'The class date you selected is full.',
   );
+  $form['sdc_set']['sdc_class_cancelled'] = array(
+    '#type' => 'textarea',
+    '#title' => t("Class selected is cancelled"),
+    '#default_value' => "We're sorry, but this date has been cancelled.",
+  );
 }
 
 function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
@@ -1778,16 +1836,22 @@ function _ilr_sdc_listings_get_class_detail_markup($classes, $add_register_butto
     $class_id = $class_node_wrapper->field_class_id->value();
     // Confirm class is not full
     $full = $class_node_wrapper->field_is_full->value();
+    $cancelled = $class_node_wrapper->field_cancelled->value();
     if (!$full) {
       $markup .= '<div class="class-detail-toggle class-'.$class_id.'">';
-      if ($add_register_button) {
+      if ($add_register_button && !$cancelled) {
         $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node, TRUE);
       }
       if (!_ilr_sdc_listings_is_ondemand($class_node)) {
-        $markup .= _ilr_sdc_listings_format_class_date_and_time($class_node);
+        $markup .= _ilr_sdc_listings_format_class_date_and_time($class_node,$cancelled);
         $markup .= _ilr_sdc_listings_generate_location_markup($class_node);
       }
-      $markup .= _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id);
+      if ($cancelled) {
+        $markup .= '<p class="message class-cancelled">' . variable_get('sdc_class_cancelled',"We're sorry, but this date has been cancelled.") . '</p>';
+      }
+      else {
+        $markup .= _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id);
+      }
       $markup .= '</div>';
     } //If it's a single, full class, then add the full markup
     else {
