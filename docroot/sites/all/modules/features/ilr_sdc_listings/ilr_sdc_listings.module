@@ -1266,8 +1266,9 @@ function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NU
   }
   if (_ilr_sdc_listings_date_query_present()) {
     $range = _ilr_sdc_listings_get_date_range();
-    $query->fieldCondition('field_class_dates', 'value', $range['start_date'], '>=');
-    $query->fieldCondition('field_class_dates', 'value2', $range['end_date'], '<=');
+    $query->fieldCondition('field_class_dates', 'value', $range['start_date'], '>=')
+      ->fieldCondition('field_class_dates', 'value2', $range['end_date'], '<=')
+      ->fieldCondition('field_cancelled', 'value', 1, '!=');
   }
   else {
     $query->fieldCondition('field_registration_end_date', 'value', $today, '>=');
