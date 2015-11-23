@@ -12,6 +12,7 @@
       direction: Drupal.settings.jpanelmenu.direction,
       openPosition: Drupal.settings.jpanelmenu.openPosition,
       excludedPanelContent: 'header, #admin-menu, noscript, script',
+      keyboardShortcuts: false,
     });
 
     // If the jPanelMenu is showing in a narrow window on  desktop browser and the user
