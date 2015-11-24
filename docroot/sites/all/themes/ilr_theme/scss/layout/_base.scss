@@ -31,6 +31,10 @@
     @extend %triptych;
   }
 
+  .field-collection-container {
+    border-bottom: none;
+  }
+
   #highlighted {
     margin-top: $main-top-padding * -1;
   }
