@@ -28,8 +28,6 @@
       &:nth-of-type(odd) {
         @include grid-span (4,1);
         text-align: center;
-        border: 1px solid $gray-light;
-        border-radius: 8px;
       }
       &:nth-of-type(even) {
         @include grid-span (8,5);
@@ -40,8 +38,6 @@
 
 #main[data-eq-state="320"] {
   .image-with-text {
-    border: 1px solid $gray-light;
-    border-radius: 8px;
     article {
       ul {
         padding-left: 0;
