@@ -19,6 +19,11 @@ function ilr_sub_sites_block_info($delta = '') {
 */
 function ilr_sub_sites_block_view($delta = '') {
   $block = array();
+  $wi_sites = array(
+    'mobilizing-against-inequality' => 'Mobilizing Against Inequality',
+    'union-leadership-institute' => 'Union Leadership Institute',
+    'national-labor-leadership-initiative' => 'The National Labor Leadership Initiative',
+    'uale-2013-ne' => 'UALE 2013 NE');
   $subsite_name = _ilr_sub_sites_get_current_subsite_name();
   $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
   $block['content'] = '<div class="subsite-header">';
@@ -27,7 +32,13 @@ function ilr_sub_sites_block_view($delta = '') {
     $block['content'] .= "<h2 class='$subsite_name image'><a href='$href'>$logo</a></h2>";
   }
   else {
-    $block['content'] .= "<h2><a href='$href'>$subsite_name</a></h2>";
+    if (array_search($subsite_name, $wi_sites)) {
+      $block['content'] .= "<p class='WI-cohort-brand'><a href='/worker-institute'>The Worker Institute</a></p>" ;
+      $block['content'] .= "<h2><a href='$href'>$subsite_name</a></h2>";
+    }
+    else {
+      $block['content'] .= "<h2><a href='$href'>$subsite_name</a></h2>";
+    }
   }
 
   $block['content'] .= '</div>';
