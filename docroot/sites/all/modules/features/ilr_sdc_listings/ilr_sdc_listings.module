@@ -15,6 +15,17 @@ define('ILR_SDC_PATH_ALIAS', 'professional-programs/public-offerings');
 define('ILR_SDC_NO_RESULTS', 'No courses were found that match your search. Please try again.');
 include_once 'ilr_sdc_listings.features.inc';
 
+/**
+ * Implements hook_cron().
+ * Run the new class notifications once per day
+ */
+function ilr_sdc_listings_cron() {
+  $interval = 60 * 60 * 24; // Set to daily interval
+  if (time() >= variable_get('ilr_sdc_listings_cron_next_execution', 0)) {
+    variable_set('ilr_sdc_listings_cron_next_execution', time() + $interval);
+    _ilr_sdc_listings_send_notifications();
+  }
+}
 
 /**
  * Implements hook_playlist_feeds_after_import().
@@ -781,7 +792,6 @@ function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
     case 'sdc_course':
       _ilr_sdc_listings_add_prefix_to_title($node, $node->type, $view_mode);
       _ilr_sdc_listings_course_add_classes($node, $view_mode);
-
       if ($view_mode == 'reference_field') {
         _ilr_sdc_listings_update_reference($node);
       }
