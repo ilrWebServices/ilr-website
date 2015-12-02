@@ -162,6 +162,13 @@ function ilr_sdc_listings_menu() {
     'page arguments' => array(1),
   );
 
+  $items['course-unsubscribe/%'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => '_ilr_sdc_listings_unfollow_course',
+    'page arguments' => array(1),
+  );
+
   $items['professional-programs/courses/autocomplete'] = array(
     'page callback' => '_ilr_sdc_listings_autocomplete',
     'access arguments' => array('access content'),
@@ -238,6 +245,58 @@ function _ilr_sdc_listings_follow_course($course_nid) {
   unset($block['content']['field_course']);
   $content = drupal_render($block['content']);
   return $content;
+}
+
+/**
+ *
+ */
+function _ilr_sdc_listings_unfollow_course($course_nid) {
+  $content = $view = '';
+  $params = drupal_get_query_parameters();
+  if ($node = node_load($course_nid)) {
+    if ($node->type != 'sdc_course') {
+      drupal_set_message('Sorry, but there was an error processiong your request.','error');
+      return '';
+    }
+    $view = node_view($node);
+    if (isset($params['email'])) {
+      if ($entityform_id = _ilr_sdc_listings_get_entityform_id($params['email'],$course_nid)) {
+        _ilr_sdc_listings_remove_course_follower($entityform_id);
+        drupal_set_message('You will no longer receive notifications regarding this course.');
+      } // Email not found, show the unsubscribe form again
+      else {
+        $unsubscribe_form = drupal_get_form('ilr_sdc_listings_unsubscribe_form');
+        $content = drupal_render($unsubscribe_form);
+        drupal_set_message('Sorry, but we have no record of that email address.','warning');
+      }
+    } // Show the unsubscribe form
+    else {
+      $unsubscribe_form = drupal_get_form('ilr_sdc_listings_unsubscribe_form');
+      $content = drupal_render($unsubscribe_form);
+    }
+  }
+  $content .= drupal_render($view);
+  return $content;
+}
+
+/**
+ * Retrieves an entityform id based on an email and course nid
+ * @see _ilr_sdc_listings_unfollow_course()
+ */
+function _ilr_sdc_listings_get_entityform_id($email, $course_nid) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'entityform')
+    ->entityCondition('bundle', 'course_follow')
+    ->propertyCondition('draft',0)
+    ->fieldCondition('field_course', 'target_id', $course_nid)
+    ->fieldCondition('field_email','email',$email);
+  $result = $query->execute();
+
+  if (isset($result['entityform'])) {
+    $entityform_ids = array_keys($result['entityform']);
+    return $entityform_ids;
+  }
+  return NULL;
 }
 
 /**
@@ -371,6 +430,43 @@ function _ilr_sdc_listings_get_course_followers($class_nid) {
     return $followers;
   }
   return NULL;
+}
+
+/**
+ * Loads the appropriate entityform and sets the draft status to '1'
+ */
+function _ilr_sdc_listings_remove_course_follower($entityform_id) {
+  $entityform = current(entity_load('entityform', $entityform_id));
+  $wrapper = entity_metadata_wrapper('entityform', $entityform);
+  $wrapper->draft->set(1);
+  $wrapper->save();
+}
+
+/**
+ *  Create the unsubscribe form
+ *  @see _ilr_sdc_listings_unfollow_course()
+ */
+function ilr_sdc_listings_unsubscribe_form($form, &$form_state) {
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array(
+      'placeholder' => 'your email',
+    ),
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'unsubscribe',
+    '#name' => '',
+    '#attributes' => array(
+      'id' => 'unsubscribe-form-submit',
+      'class' => array('button'),
+    ),
+  );
+  $form['#action'] = url(current_path(), array('absolute' => TRUE));
+  $form['#method'] = 'get';
+  $form['#pre_render'][] = 'ilr_sdc_listings_search_form_modify'; // Re-use functionality from search form
+
+  return $form;
 }
 
 /**
