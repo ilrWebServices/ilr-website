@@ -241,6 +241,139 @@ function _ilr_sdc_listings_follow_course($course_nid) {
 }
 
 /**
+ * Checks for the existence of new classes
+ * Triggers email notifications for each new class found
+ */
+function _ilr_sdc_listings_send_notifications() {
+  $new_classes = _ilr_sdc_listings_get_new_class_nids();
+  if (!empty($new_classes)) {
+    foreach ($new_classes as $key => $nid) {
+      _ilr_sdc_listings_send_notification_for_class($nid);
+    }
+  }
+}
+
+/**
+ * Query for any class nodes added today
+ */
+function _ilr_sdc_listings_get_new_class_nids() {
+  $timestamp = time();
+  $today_start = strtotime(date('Y-m-d 00:00:00', $timestamp));
+  $today_end = strtotime(date('Y-m-d 23:59:59', $timestamp));
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_class')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->propertyCondition('created', array($today_start, $today_end), 'BETWEEN');
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    $nids = array_keys($results['node']);
+    return $nids;
+  }
+  return [];
+}
+
+/**
+ * Implemeents drupal_mail for notifications
+ * BCC's anyone who has registered to follow the given course
+ */
+function _ilr_sdc_listings_send_notification_for_class($class_nid) {
+  $followers = _ilr_sdc_listings_get_course_followers($class_nid);
+  if (!empty($followers)) {
+    $class_wrapper = ilr_get_node_wrapper($class_nid);
+    $bcc = _ilr_sdc_listings_get_email_bcc_addresses($followers);
+    $body = _ilr_sdc_listings_get_course_notification_content($class_nid);
+    $params = array(
+      'bcc'     => $bcc,
+      'subject' => "New class added for " . $class_wrapper->label(),
+      'content' => $body,
+    );
+
+    drupal_mail(
+      'ilr_sdc_listings_new_class_notification',
+      'course_notification',
+      'ilrweb@cornell.edu',
+      LANGUAGE_NONE,
+      $params,
+      'no-reply@ilr.cornell.edu'
+    );
+  }
+}
+
+/**
+ * Creates the html content for the email
+ * @todo Implement a more robust version that works with gmail
+ */
+function _ilr_sdc_listings_get_course_notification_content($class_nid) {
+  $class_wrapper = ilr_get_node_wrapper($class_nid);
+  $course_nid = $class_wrapper->field_course->getIdentifier();
+  $course = node_load($course_nid);
+  $course_view = node_view($course,'teaser');
+  $message = '<style type="text/css">a {color:#b31b1b} span {display:block}</style>';
+  $message .= '<p>A new class date has been added for:</p>';
+  $message .= drupal_render($course_view);
+  $message .= '<p>You received this message because you signed up to be notified of changes to this course\'s scheduled dates.</p>';
+  $unsubscribe_link = _ilr_sdc_listings_get_unsubscribe_link($course_nid);
+  $message .= '<p>If you no longer want to receive notifications regarding this course, you can <a href="'.$unsubscribe_link.'">unsubscribe here</a>.</p>';
+  return $message;
+}
+
+/**
+ * Set the unsubscribe link
+ * @see _ilr_sdc_listings_get_course_notification_content()
+ */
+function _ilr_sdc_listings_get_unsubscribe_link($course_nid) {
+  global $base_url;
+  return "$base_url/course-unsubscribe/$course_nid";
+}
+
+/**
+ * Implements hook_mail().
+ */
+function ilr_sdc_listings_new_class_notification_mail($key, &$message, $params) {
+  $message['headers']['MIME-Version'] = '1.0';
+  $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
+  $message['headers']['Bcc'] = $params['bcc'];
+  $message['subject'] = $params['subject'];
+  $message['body'][] = $params['content'];
+}
+
+/**
+ * Creates the Bcc string based on the entityforms that have been submitted
+ */
+function _ilr_sdc_listings_get_email_bcc_addresses($follower_forms) {
+  $emails = [];
+  foreach ($follower_forms as $eid => $entityform) {
+    $wrapper = entity_metadata_wrapper('entityform', $entityform);
+    $emails[] = $wrapper->field_email->value();
+  }
+  $emails = array_unique($emails);
+  return implode(',', $emails);
+}
+
+/**
+ * Queries for the followers of the class's parent course
+ * @return Array An array of entityforms that were submitted by the users
+ */
+function _ilr_sdc_listings_get_course_followers($class_nid) {
+  $class_wrapper = ilr_get_node_wrapper($class_nid);
+  $course_nid = $class_wrapper->field_course->getIdentifier();
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'entityform')
+    ->entityCondition('bundle', 'course_follow')
+    ->propertyCondition('draft', 0)
+    ->fieldCondition('field_course', 'target_id', $course_nid);
+  $result = $query->execute();
+
+  if (isset($result['entityform'])) {
+    $entityform_ids = array_keys($result['entityform']);
+    $followers = entity_load('entityform', $entityform_ids);
+    return $followers;
+  }
+  return NULL;
+}
+
+/**
  *  Create the search form
  */
 function ilr_sdc_listings_search_form($form, &$form_state) {
