@@ -18,12 +18,14 @@ include_once 'ilr_sdc_listings.features.inc';
 /**
  * Implements hook_cron().
  * Run the new class notifications once per day
+ * Deletes cancelled classes if they are in the past
  */
 function ilr_sdc_listings_cron() {
   $interval = 60 * 60 * 24; // Set to daily interval
   if (time() >= variable_get('ilr_sdc_listings_cron_next_execution', 0)) {
     variable_set('ilr_sdc_listings_cron_next_execution', time() + $interval);
     _ilr_sdc_listings_send_notifications();
+    _ilr_sdc_listings_remove_cancelled_classes();
   }
 }
 
@@ -2245,6 +2247,25 @@ function _ilr_sdc_listings_update_reference(&$course) {
     $title = '';
   }
   $course->title = $title;
+}
+
+/**
+ * Looks for all cancelled classes in the past and deletes them if found
+ * @see ilr_sdc_listings_cron()
+ */
+function _ilr_sdc_listings_remove_cancelled_classes() {
+  $today = date('Y-m-d');
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_class')
+    ->fieldCondition('field_class_dates', 'value', $today, '<')
+    ->fieldCondition('field_cancelled', 'value', 1, '=');
+
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    $nids = array_keys($results['node']);
+    node_delete_multiple($nids);
+  }
 }
 
 /**
