@@ -15,6 +15,19 @@ define('ILR_SDC_PATH_ALIAS', 'professional-programs/public-offerings');
 define('ILR_SDC_NO_RESULTS', 'No courses were found that match your search. Please try again.');
 include_once 'ilr_sdc_listings.features.inc';
 
+/**
+ * Implements hook_cron().
+ * Run the new class notifications once per day
+ * Deletes cancelled classes if they are in the past
+ */
+function ilr_sdc_listings_cron() {
+  $interval = 60 * 60 * 24; // Set to daily interval
+  if (time() >= variable_get('ilr_sdc_listings_cron_next_execution', 0)) {
+    variable_set('ilr_sdc_listings_cron_next_execution', time() + $interval);
+    _ilr_sdc_listings_send_notifications();
+    _ilr_sdc_listings_remove_cancelled_classes();
+  }
+}
 
 /**
  * Implements hook_playlist_feeds_after_import().
@@ -162,6 +175,13 @@ function ilr_sdc_listings_menu() {
     'page arguments' => array(1),
   );
 
+  $items['course-unsubscribe/%'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => '_ilr_sdc_listings_unfollow_course',
+    'page arguments' => array(1),
+  );
+
   $items['professional-programs/courses/autocomplete'] = array(
     'page callback' => '_ilr_sdc_listings_autocomplete',
     'access arguments' => array('access content'),
@@ -238,6 +258,228 @@ function _ilr_sdc_listings_follow_course($course_nid) {
   unset($block['content']['field_course']);
   $content = drupal_render($block['content']);
   return $content;
+}
+
+/**
+ *
+ */
+function _ilr_sdc_listings_unfollow_course($course_nid) {
+  $content = $view = '';
+  $params = drupal_get_query_parameters();
+  if ($node = node_load($course_nid)) {
+    if ($node->type != 'sdc_course') {
+      drupal_set_message('Sorry, but there was an error processiong your request.','error');
+      return '';
+    }
+    $view = node_view($node);
+    if (isset($params['email'])) {
+      if ($entityform_id = _ilr_sdc_listings_get_entityform_id($params['email'],$course_nid)) {
+        _ilr_sdc_listings_remove_course_follower($entityform_id);
+        drupal_set_message('You will no longer receive notifications regarding this course.');
+      } // Email not found, show the unsubscribe form again
+      else {
+        $unsubscribe_form = drupal_get_form('ilr_sdc_listings_unsubscribe_form');
+        $content = drupal_render($unsubscribe_form);
+        drupal_set_message('Sorry, but we have no record of that email address.','warning');
+      }
+    } // Show the unsubscribe form
+    else {
+      $unsubscribe_form = drupal_get_form('ilr_sdc_listings_unsubscribe_form');
+      $content = drupal_render($unsubscribe_form);
+    }
+  }
+  $content .= drupal_render($view);
+  return $content;
+}
+
+/**
+ * Retrieves an entityform id based on an email and course nid
+ * @see _ilr_sdc_listings_unfollow_course()
+ */
+function _ilr_sdc_listings_get_entityform_id($email, $course_nid) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'entityform')
+    ->entityCondition('bundle', 'course_follow')
+    ->propertyCondition('draft',0)
+    ->fieldCondition('field_course', 'target_id', $course_nid)
+    ->fieldCondition('field_email','email',$email);
+  $result = $query->execute();
+
+  if (isset($result['entityform'])) {
+    $entityform_ids = array_keys($result['entityform']);
+    return $entityform_ids;
+  }
+  return NULL;
+}
+
+/**
+ * Checks for the existence of new classes
+ * Triggers email notifications for each new class found
+ */
+function _ilr_sdc_listings_send_notifications() {
+  $new_classes = _ilr_sdc_listings_get_new_class_nids();
+  if (!empty($new_classes)) {
+    foreach ($new_classes as $key => $nid) {
+      _ilr_sdc_listings_send_notification_for_class($nid);
+    }
+  }
+}
+
+/**
+ * Query for any class nodes added today
+ */
+function _ilr_sdc_listings_get_new_class_nids() {
+  $timestamp = time();
+  $today_start = strtotime(date('Y-m-d 00:00:00', $timestamp));
+  $today_end = strtotime(date('Y-m-d 23:59:59', $timestamp));
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_class')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->propertyCondition('created', array($today_start, $today_end), 'BETWEEN');
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    $nids = array_keys($results['node']);
+    return $nids;
+  }
+  return [];
+}
+
+/**
+ * Implements drupal_mail for notifications
+ * BCC's anyone who has registered to follow the given course
+ */
+function _ilr_sdc_listings_send_notification_for_class($class_nid) {
+  $followers = _ilr_sdc_listings_get_course_followers($class_nid);
+  if (!empty($followers)) {
+    $class_wrapper = ilr_get_node_wrapper($class_nid);
+    $bcc = _ilr_sdc_listings_get_email_bcc_addresses($followers);
+    $body = _ilr_sdc_listings_get_course_notification_content($class_nid);
+    $params = array(
+      'bcc'     => $bcc,
+      'subject' => "New date scheduled for " . $class_wrapper->label(),
+      'content' => $body,
+    );
+
+    drupal_mail(
+      'ilr_sdc_listings_new_class_notification',
+      'course_notification',
+      'ilrweb@cornell.edu',
+      LANGUAGE_NONE,
+      $params,
+      'no-reply@ilr.cornell.edu'
+    );
+  }
+}
+
+/**
+ * Creates the html content for the email
+ * @todo Implement a more robust version that works with gmail
+ */
+function _ilr_sdc_listings_get_course_notification_content($class_nid) {
+  $class_wrapper = ilr_get_node_wrapper($class_nid);
+  $course_nid = $class_wrapper->field_course->getIdentifier();
+  $course = node_load($course_nid);
+  $course_view = node_view($course,'teaser');
+  $message = '<style type="text/css">a {color:#b31b1b} span {display:block}</style>';
+  $message .= '<p>A new date has been scheduled for:</p>';
+  $message .= drupal_render($course_view);
+  $message .= '<p>You received this message because you signed up to be notified of changes to this course\'s scheduled dates.</p>';
+  $unsubscribe_link = _ilr_sdc_listings_get_unsubscribe_link($course_nid);
+  $message .= '<p>If you no longer want to receive notifications regarding this course, you can <a href="'.$unsubscribe_link.'">unsubscribe here</a>.</p>';
+  return $message;
+}
+
+/**
+ * Set the unsubscribe link
+ * @see _ilr_sdc_listings_get_course_notification_content()
+ */
+function _ilr_sdc_listings_get_unsubscribe_link($course_nid) {
+  global $base_url;
+  return "$base_url/course-unsubscribe/$course_nid";
+}
+
+/**
+ * Implements hook_mail().
+ */
+function ilr_sdc_listings_new_class_notification_mail($key, &$message, $params) {
+  $message['headers']['MIME-Version'] = '1.0';
+  $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
+  $message['headers']['Bcc'] = $params['bcc'];
+  $message['subject'] = $params['subject'];
+  $message['body'][] = $params['content'];
+}
+
+/**
+ * Creates the Bcc string based on the entityforms that have been submitted
+ */
+function _ilr_sdc_listings_get_email_bcc_addresses($follower_forms) {
+  $emails = [];
+  foreach ($follower_forms as $eid => $entityform) {
+    $wrapper = entity_metadata_wrapper('entityform', $entityform);
+    $emails[] = $wrapper->field_email->value();
+  }
+  $emails = array_unique($emails);
+  return implode(',', $emails);
+}
+
+/**
+ * Queries for the followers of the class's parent course
+ * @return Array An array of entityforms that were submitted by the users
+ */
+function _ilr_sdc_listings_get_course_followers($class_nid) {
+  $class_wrapper = ilr_get_node_wrapper($class_nid);
+  $course_nid = $class_wrapper->field_course->getIdentifier();
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'entityform')
+    ->entityCondition('bundle', 'course_follow')
+    ->propertyCondition('draft', 0)
+    ->fieldCondition('field_course', 'target_id', $course_nid);
+  $result = $query->execute();
+
+  if (isset($result['entityform'])) {
+    $entityform_ids = array_keys($result['entityform']);
+    $followers = entity_load('entityform', $entityform_ids);
+    return $followers;
+  }
+  return NULL;
+}
+
+/**
+ * Loads the appropriate entityform and sets the draft status to '1'
+ */
+function _ilr_sdc_listings_remove_course_follower($entityform_id) {
+  $entityform = current(entity_load('entityform', $entityform_id));
+  $wrapper = entity_metadata_wrapper('entityform', $entityform);
+  $wrapper->draft->set(1);
+  $wrapper->save();
+}
+
+/**
+ *  Create the unsubscribe form
+ *  @see _ilr_sdc_listings_unfollow_course()
+ */
+function ilr_sdc_listings_unsubscribe_form($form, &$form_state) {
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array(
+      'placeholder' => 'your email',
+    ),
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'unsubscribe',
+    '#name' => '',
+    '#attributes' => array(
+      'id' => 'unsubscribe-form-submit',
+      'class' => array('button'),
+    ),
+  );
+  $form['#action'] = url(current_path(), array('absolute' => TRUE));
+  $form['#method'] = 'get';
+  $form['#pre_render'][] = 'ilr_sdc_listings_search_form_modify'; // Re-use functionality from search form
+
+  return $form;
 }
 
 /**
@@ -552,7 +794,6 @@ function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
     case 'sdc_course':
       _ilr_sdc_listings_add_prefix_to_title($node, $node->type, $view_mode);
       _ilr_sdc_listings_course_add_classes($node, $view_mode);
-
       if ($view_mode == 'reference_field') {
         _ilr_sdc_listings_update_reference($node);
       }
@@ -2006,6 +2247,25 @@ function _ilr_sdc_listings_update_reference(&$course) {
     $title = '';
   }
   $course->title = $title;
+}
+
+/**
+ * Looks for all cancelled classes in the past and deletes them if found
+ * @see ilr_sdc_listings_cron()
+ */
+function _ilr_sdc_listings_remove_cancelled_classes() {
+  $today = date('Y-m-d');
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_class')
+    ->fieldCondition('field_class_dates', 'value', $today, '<')
+    ->fieldCondition('field_cancelled', 'value', 1, '=');
+
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    $nids = array_keys($results['node']);
+    node_delete_multiple($nids);
+  }
 }
 
 /**

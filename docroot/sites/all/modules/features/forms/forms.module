@@ -469,7 +469,11 @@ function _process_course_request(&$entityform) {
  */
 function _process_course_follow(&$entityform) {
   $admin_email = 'ilrcustomerservice@cornell.edu,' . ILRWEB_EMAIL;
-  _forms_send_emails($entityform, $admin_email);
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  $course_title = $entityform_wrapper->field_course->label();
+  $admin_subject = "Course follow submitted for $course_title";
+  $user_subject = "You have successfully enrolled in notifications for $course_title";
+  _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject);
 }
 
 /**
