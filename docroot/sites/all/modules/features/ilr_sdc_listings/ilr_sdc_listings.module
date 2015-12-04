@@ -346,7 +346,7 @@ function _ilr_sdc_listings_get_new_class_nids() {
 }
 
 /**
- * Implemeents drupal_mail for notifications
+ * Implements drupal_mail for notifications
  * BCC's anyone who has registered to follow the given course
  */
 function _ilr_sdc_listings_send_notification_for_class($class_nid) {
@@ -357,7 +357,7 @@ function _ilr_sdc_listings_send_notification_for_class($class_nid) {
     $body = _ilr_sdc_listings_get_course_notification_content($class_nid);
     $params = array(
       'bcc'     => $bcc,
-      'subject' => "New class added for " . $class_wrapper->label(),
+      'subject' => "New date scheduled for " . $class_wrapper->label(),
       'content' => $body,
     );
 
@@ -382,7 +382,7 @@ function _ilr_sdc_listings_get_course_notification_content($class_nid) {
   $course = node_load($course_nid);
   $course_view = node_view($course,'teaser');
   $message = '<style type="text/css">a {color:#b31b1b} span {display:block}</style>';
-  $message .= '<p>A new class date has been added for:</p>';
+  $message .= '<p>A new date has been scheduled for:</p>';
   $message .= drupal_render($course_view);
   $message .= '<p>You received this message because you signed up to be notified of changes to this course\'s scheduled dates.</p>';
   $unsubscribe_link = _ilr_sdc_listings_get_unsubscribe_link($course_nid);
