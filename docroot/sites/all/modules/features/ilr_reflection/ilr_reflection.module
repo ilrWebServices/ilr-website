@@ -170,7 +170,7 @@ function _ilr_reflection_admin_notification($node) {
       $recipients,
       LANGUAGE_NONE,
       $params,
-      'no-reply@ilr.cornell.edu'
+      'Cornell University ILR School <ilr-noreply@cornell.edu>'
     );
   }
 }

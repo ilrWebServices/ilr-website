@@ -367,7 +367,7 @@ function _ilr_sdc_listings_send_notification_for_class($class_nid) {
       'ilrweb@cornell.edu',
       LANGUAGE_NONE,
       $params,
-      'no-reply@ilr.cornell.edu'
+      'Cornell University ILR School <ilr-noreply@cornell.edu>'
     );
   }
 }

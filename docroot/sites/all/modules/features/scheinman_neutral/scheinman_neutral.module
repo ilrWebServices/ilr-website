@@ -124,7 +124,7 @@ function _scheinman_neutral_publication_notification($neutral, $node) {
     $neutral->mail,
     LANGUAGE_NONE,
     $params,
-    'no-reply@ilr.cornell.edu'
+    'Cornell University ILR School <ilr-noreply@cornell.edu>'
   );
 }
 
@@ -161,7 +161,7 @@ function _scheinman_neutral_admin_notification($node) {
       $recipients,
       LANGUAGE_NONE,
       $params,
-      'no-reply@ilr.cornell.edu'
+      'Cornell University ILR School <ilr-noreply@cornell.edu>'
     );
   }
 }

@@ -445,6 +445,26 @@ function _process_course_request(&$entityform) {
   $admin_emails = array();
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
   $course = $entityform_wrapper->field_course->value();
+  $admin_email = _forms_get_course_admin_email_addresses($entityform, $course);
+  _forms_send_emails($entityform, $admin_email);
+}
+
+/**
+ * Sets email addresses and calls course action processor
+ * Sends email to ilrcustomerservice and the ilr web team email
+ */
+function _process_course_follow(&$entityform) {
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  $course = $entityform_wrapper->field_course->value();
+  $admin_email = _forms_get_course_admin_email_addresses($entityform, $course);
+  $course_title = $entityform_wrapper->field_course->label();
+  $admin_subject = "Course follow submitted for $course_title";
+  $user_subject = "You have successfully enrolled in notifications for $course_title";
+  _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject);
+}
+
+function _forms_get_course_admin_email_addresses($entityform, $course) {
+  $admin_emails = [];
   $course_wrapper = ilr_get_node_wrapper($course);
   if ($email = $course_wrapper->field_email->value()) {
     $admin_emails[] = $email;
@@ -460,22 +480,8 @@ function _process_course_request(&$entityform) {
     ? implode(",", $admin_emails)
     : _forms_get_admin_email($entityform);
 
-  _forms_send_emails($entityform, $admin_email);
+  return $admin_email;
 }
-
-/**
- * Sets email addresses and calls course action processor
- * Sends email to ilrcustomerservice and the ilr web team email
- */
-function _process_course_follow(&$entityform) {
-  $admin_email = 'ilrcustomerservice@cornell.edu,' . ILRWEB_EMAIL;
-  $entityform_wrapper = _forms_entityform_wrapper($entityform);
-  $course_title = $entityform_wrapper->field_course->label();
-  $admin_subject = "Course follow submitted for $course_title";
-  $user_subject = "You have successfully enrolled in notifications for $course_title";
-  _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject);
-}
-
 /**
  * Process FEX student form
  */

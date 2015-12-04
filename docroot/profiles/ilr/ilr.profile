@@ -518,7 +518,7 @@ function _ilr_account_notification($account) {
     NOTIFICATION_EMAIL,
     LANGUAGE_NONE,
     $params,
-    'no-reply@ilr.cornell.edu'
+    'Cornell University ILR School <ilr-noreply@cornell.edu>'
   );
 }
 

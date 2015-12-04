@@ -60,12 +60,12 @@ function ilr_forms_public_default_entityform_type() {
         "value" : "\\u003Cp\\u003ETell us your email and we\\u0027ll notify you when new classes are offered for this course.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
-      "send_confirmation_email_to_user" : 0,
+      "send_confirmation_email_to_user" : 1,
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0,
       "add_payment_processing" : 0,
-      "form_submission_ilr_recipient" : "ilrweb@cornell.edu"
+      "form_submission_ilr_recipient" : "ilrcustomerservice@cornell.edu"
     },
     "weight" : "0",
     "paths" : []
