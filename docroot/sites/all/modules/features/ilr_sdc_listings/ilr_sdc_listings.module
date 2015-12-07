@@ -21,10 +21,11 @@ include_once 'ilr_sdc_listings.features.inc';
  * Deletes cancelled classes if they are in the past
  */
 function ilr_sdc_listings_cron() {
-  $interval = 60 * 60 * 24; // Set to daily interval
   if (time() >= variable_get('ilr_sdc_listings_cron_next_execution', 0)) {
-    variable_set('ilr_sdc_listings_cron_next_execution', time() + $interval);
     _ilr_sdc_listings_send_notifications();
+    $interval = 60 * 60 * 24; // Set to daily interval
+    variable_set('ilr_sdc_listings_cron_next_execution', time() + $interval);
+    variable_set('ilr_sdc_listings_cron_last_execution', time()); // Set to now
     _ilr_sdc_listings_remove_cancelled_classes();
   }
 }
@@ -330,13 +331,12 @@ function _ilr_sdc_listings_send_notifications() {
  */
 function _ilr_sdc_listings_get_new_class_nids() {
   $timestamp = time();
-  $today_start = strtotime(date('Y-m-d 00:00:00', $timestamp));
-  $today_end = strtotime(date('Y-m-d 23:59:59', $timestamp));
+  $last_notification = variable_get('ilr_sdc_listings_cron_last_execution', time());
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'sdc_class')
     ->propertyCondition('status', NODE_PUBLISHED)
-    ->propertyCondition('created', array($today_start, $today_end), 'BETWEEN');
+    ->propertyCondition('created', $last_notification, '>');
   $results = $query->execute();
   if (!empty($results['node'])) {
     $nids = array_keys($results['node']);
