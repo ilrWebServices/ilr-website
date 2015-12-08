@@ -113,6 +113,9 @@
   clear: left;
   font-weight: bold;
   @extend .clearfix;
+  &:visited {
+    border-bottom-color: darken($cornell-red, 10%);
+  }
   &:hover {
     cursor: pointer;
   }
