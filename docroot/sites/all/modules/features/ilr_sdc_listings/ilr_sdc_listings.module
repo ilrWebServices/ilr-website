@@ -328,15 +328,20 @@ function _ilr_sdc_listings_send_notifications() {
 
 /**
  * Query for any class nodes added today
+ * Confirm they are not cancelled
+ * And that their dates are in the future
  */
 function _ilr_sdc_listings_get_new_class_nids() {
   $timestamp = time();
+  $today = date('Y-m-d');
   $last_notification = variable_get('ilr_sdc_listings_cron_last_execution', time());
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'sdc_class')
     ->propertyCondition('status', NODE_PUBLISHED)
-    ->propertyCondition('created', $last_notification, '>');
+    ->propertyCondition('created', $last_notification, '>')
+    ->fieldCondition('field_class_dates', 'value', $today, '>')
+    ->fieldCondition('field_cancelled', 'value', 1, '!=');
   $results = $query->execute();
   if (!empty($results['node'])) {
     $nids = array_keys($results['node']);
@@ -1494,8 +1499,6 @@ function _ilr_sdc_listings_get_class_registration_url($class) {
  *  nids for classes
  */
 function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NULL) {
-  $today = date('Y-m-d');
-
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'sdc_class')
@@ -1512,6 +1515,7 @@ function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NU
       ->fieldCondition('field_cancelled', 'value', 1, '!=');
   }
   else {
+    $today = date('Y-m-d');
     $query->fieldCondition('field_registration_end_date', 'value', $today, '>=');
   }
   $results = $query->execute();
