@@ -2254,7 +2254,8 @@ function _ilr_sdc_listings_update_reference(&$course) {
 }
 
 /**
- * Looks for all cancelled classes in the past and deletes them if found
+ * Looks for all cancelled classes in the past and unpublishes them if found
+ * If we delete them, the class gets added again during the next import
  * @see ilr_sdc_listings_cron()
  */
 function _ilr_sdc_listings_remove_cancelled_classes() {
@@ -2268,9 +2269,14 @@ function _ilr_sdc_listings_remove_cancelled_classes() {
   $results = $query->execute();
   if (!empty($results['node'])) {
     $nids = array_keys($results['node']);
-    node_delete_multiple($nids);
+    foreach ($nids as $key => $nid) {
+      $wrapper = ilr_get_node_wrapper($nid);
+      $wrapper->status = 0;
+      $wrapper->save();
+    }
   }
 }
+
 
 /**
  * Specifies which of the course and class fields are protected from
