@@ -1,0 +1,62 @@
+.highlighted-area-no-logo {
+  background: white;
+  border: 2px solid $ochre-tan;
+  border-radius: 6px;
+  padding: 1em;
+  @include leader(1);
+  @include trailer(1);
+  text-align: center;
+  h2 {
+    @include adjust-font-size-to(34px);
+    @include adjust-leading-to(1);
+    margin: 1em 0;
+    a {
+      font-family: $font;
+      color: $brand;
+    }
+  }
+  &:hover {
+    border: 2px solid $cornell-red;
+  }
+}
+
+.highlighted-area {
+  @include add-grid(12);
+  @include clearfix;
+  background: white;
+  border: 2px solid $ochre-tan;
+  border-radius: 6px;
+  padding: 1em;
+  @include leader(1);
+  @include trailer(1);
+  .logo {
+    @include grid-span(3,1);
+    clear: both;
+    text-align: right;
+    @extend %icon-checkmark;
+    @include adjust-font-size-to(40px);
+    @include adjust-leading-to(1.5);
+    color: $gray-medium;
+    border: 2px solid $cornell-red;
+    border-radius: 50%;
+  }
+  .heading {
+    @include grid-span(9,4);
+    h2 {
+      @include adjust-font-size-to(34px);
+      @include adjust-leading-to(1.5);
+      margin: .2em 0 .5em 0;
+      a {
+        font-family: $font;
+        color: $brand;
+      }
+    }
+  }
+  .announcement {
+    @include grid-span(12);
+    text-align: center;
+  }
+  &:hover {
+    border: 2px solid $cornell-red;
+  }
+}
