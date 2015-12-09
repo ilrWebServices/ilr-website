@@ -30,15 +30,19 @@
   @include leader(1);
   @include trailer(1);
   .logo {
-    @include grid-span(3,1);
+    @include grid-span(2,2);
     clear: both;
-    text-align: right;
+    // text-align: center;
+    padding-left: 10px;
+    margin-top: 10px;
     @extend %icon-checkmark;
     @include adjust-font-size-to(40px);
     @include adjust-leading-to(1.5);
-    color: $gray-medium;
-    border: 2px solid $cornell-red;
+    color: $brand;
+    border: 2px solid $gray-medium;
     border-radius: 50%;
+    height: 60px;
+    width: 60px;
   }
   .heading {
     @include grid-span(9,4);
