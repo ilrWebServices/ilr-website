@@ -8,7 +8,7 @@ body.subsite-front {
         @extend %card-rounded;
         @include trailer(1);
         text-align: center;
-        min-height: 180px;
+        min-height: 190px;
         padding: 1em;
         p {
           @include adjust-font-size-to(14px);
