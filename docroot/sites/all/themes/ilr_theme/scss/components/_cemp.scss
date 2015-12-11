@@ -1,0 +1,39 @@
+body.subsite-front {
+  &.cemp {
+
+    #main {
+      article.about-program {
+        background: $cornell-red;
+        @extend %two-column;
+        @extend %card-rounded;
+        @include trailer(1);
+        text-align: center;
+        min-height: 190px;
+        padding: 1em;
+        p {
+          @include adjust-font-size-to(14px);
+          @include adjust-leading-to(1);
+          margin-bottom: 0;
+          color: white;
+        }
+        img {
+          padding-top: 1em;
+          padding-bottom: .5em;
+        }
+      }
+    }
+
+    #main[data-eq-state="550"] {
+      article.about-program {
+        @extend %two-column;
+      }
+    }
+
+    #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+      article.about-program {
+        @extend %three-column;
+      }
+    }
+
+  }
+}
