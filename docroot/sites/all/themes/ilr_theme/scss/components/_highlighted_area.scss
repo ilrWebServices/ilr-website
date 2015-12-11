@@ -24,7 +24,7 @@
   @include add-grid(12);
   @include clearfix;
   background: white;
-  border: 2px solid $ochre-tan;
+  border: 1px solid $ochre-tan;
   border-radius: 6px;
   padding: 1em;
   @include leader(1);
@@ -32,14 +32,12 @@
   .logo {
     @include grid-span(2,2);
     clear: both;
-    text-align: right;
     padding-left: 10px;
     margin-top: 10px;
     // @extend %icon-checkmark;
-    @include adjust-font-size-to(40px);
-    @include adjust-leading-to(1.5);
+    // @include adjust-font-size-to(40px);
+    // @include adjust-leading-to(1.5);
     color: $brand;
-    width: 75px;
   }
   .heading {
     @include grid-span(9,4);
@@ -58,6 +56,22 @@
     text-align: center;
   }
   &:hover {
-    border: 2px solid $cornell-red;
+    border: 1px solid $cornell-red;
+  }
+}
+
+#main[data-eq-state="320"], #main[data-eq-state="550"] {
+  .highlighted-area {
+    .logo {
+      @include grid-span(12);
+      text-align: center;
+    }
+    .heading {
+      @include grid-span(12);
+      text-align: center;
+      h2 {
+        @include adjust-leading-to(1);
+      }
+    }
   }
 }
