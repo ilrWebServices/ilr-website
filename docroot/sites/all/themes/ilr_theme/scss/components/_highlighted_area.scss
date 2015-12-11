@@ -75,3 +75,12 @@
     }
   }
 }
+
+body.ilr-review {
+  .highlighted-area-no-logo {
+    border: 2px solid $blue-ilrreview;
+    &:hover {
+      border: 2px solid $cornell-red;
+    }
+  }
+}
