@@ -1065,6 +1065,15 @@ function forms2_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 8,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
@@ -1117,6 +1126,15 @@ function forms2_field_default_field_instances() {
         'weight' => 9,
       ),
       'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'full' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -1185,6 +1203,15 @@ function forms2_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 15,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 15,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'list',
@@ -1229,6 +1256,15 @@ function forms2_field_default_field_instances() {
         'weight' => 10,
       ),
       'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'full' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -1297,6 +1333,15 @@ function forms2_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 6,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
@@ -1357,6 +1402,15 @@ function forms2_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 17,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 17,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'list',
@@ -1403,6 +1457,15 @@ function forms2_field_default_field_instances() {
         'weight' => 13,
       ),
       'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'full' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -1471,6 +1534,15 @@ function forms2_field_default_field_instances() {
         'type' => 'email_default',
         'weight' => 7,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 7,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'email',
@@ -1517,6 +1589,15 @@ function forms2_field_default_field_instances() {
         'weight' => 2,
       ),
       'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'full' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -1596,6 +1677,21 @@ function forms2_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 1,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'date',
@@ -1665,6 +1761,15 @@ function forms2_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
@@ -1721,6 +1826,15 @@ function forms2_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => 'Other interests',
+        ),
+        'type' => 'text_default',
+        'weight' => 19,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
         ),
         'type' => 'text_default',
         'weight' => 19,
@@ -1785,6 +1899,15 @@ function forms2_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
@@ -1798,7 +1921,7 @@ function forms2_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_other_please_specify',
-    'label' => 'Please specify other professional field',
+    'label' => 'Please specify your professional field',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -1837,6 +1960,15 @@ function forms2_field_default_field_instances() {
         'weight' => 14,
       ),
       'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
+      'full' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -1905,6 +2037,15 @@ function forms2_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 4,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'list',
@@ -1953,6 +2094,16 @@ function forms2_field_default_field_instances() {
         'weight' => 0,
       ),
       'download' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+      'full' => array(
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
@@ -2029,6 +2180,15 @@ function forms2_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 18,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'list',
@@ -2073,6 +2233,15 @@ function forms2_field_default_field_instances() {
         'weight' => 11,
       ),
       'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 11,
+      ),
+      'full' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
@@ -2131,6 +2300,15 @@ function forms2_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => 'Professional training',
+        ),
+        'type' => 'text_default',
+        'weight' => 20,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
         ),
         'type' => 'text_default',
         'weight' => 20,
@@ -2195,6 +2373,15 @@ function forms2_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 16,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 16,
+      ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
@@ -2230,162 +2417,6 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_yes_no'
-  $field_instances['entityform-scheinman_webcast_registration-field_yes_no'] = array(
-    'bundle' => 'scheinman_webcast_registration',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Note: This could be in either a formal (i.e., as a manager/supervisor) or an informal (i.e., as a co-worker) capacity.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 21,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 21,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 21,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_yes_no',
-    'label' => 'Within the last two years, has a workplace domestic violence issue been brought to your attention?',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 20,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_yes_no_not_sure'
-  $field_instances['entityform-scheinman_webcast_registration-field_yes_no_not_sure'] = array(
-    'bundle' => 'scheinman_webcast_registration',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 22,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 22,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 22,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_yes_no_not_sure',
-    'label' => 'Does your workplace have domestic violence policies and/or programs?',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 21,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_yes_no_not_sure_2'
-  $field_instances['entityform-scheinman_webcast_registration-field_yes_no_not_sure_2'] = array(
-    'bundle' => 'scheinman_webcast_registration',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 23,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 23,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 23,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_yes_no_not_sure_2',
-    'label' => 'Does your union have domestic violence workplace CBA and/or convention resolutions?',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 22,
-    ),
-  );
-
   // Exported field_instance: 'entityform-scheinman_webcast_registration-field_zip_code'
   $field_instances['entityform-scheinman_webcast_registration-field_zip_code'] = array(
     'bundle' => 'scheinman_webcast_registration',
@@ -2403,6 +2434,15 @@ function forms2_field_default_field_instances() {
         'weight' => 12,
       ),
       'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'full' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
@@ -2457,21 +2497,18 @@ function forms2_field_default_field_instances() {
   t('Company / Organization');
   t('Cornell degree');
   t('Country');
-  t('Does your union have domestic violence workplace CBA and/or convention resolutions?');
-  t('Does your workplace have domestic violence policies and/or programs?');
   t('Email');
   t('Enter number only, do not enter the dollar sign');
   t('Event date');
   t('Event title');
   t('First name');
   t('Last name');
-  t('Note: This could be in either a formal (i.e., as a manager/supervisor) or an informal (i.e., as a co-worker) capacity.');
   t('Other types of programs or resources that you would be interested in');
   t('Payor\'s first name');
   t('Payor\'s last name');
   t('Phone');
   t('Please list any professional training you have completed in the field of conflict resolution');
-  t('Please specify other professional field');
+  t('Please specify your professional field');
   t('Postal code');
   t('Professional field');
   t('State / Province');
@@ -2480,7 +2517,6 @@ function forms2_field_default_field_instances() {
   t('Webcast');
   t('What types of programs or resources are you most interested in?');
   t('What year did you graduate?');
-  t('Within the last two years, has a workplace domestic violence issue been brought to your attention?');
   t('Zip code / Postal code');
   t('h credit card payments');
 
