@@ -9714,6 +9714,20 @@ function forms_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
       ),
       'element_edit' => array(
         1 => 1,
@@ -9765,16 +9779,23 @@ function forms_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'Other',
-      'value' => array(
-        0 => array(
-          'value' => 'Other',
+        56 => array(
+          1 => 1,
+          3 => 3,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 3,
         ),
       ),
-      'values' => array(),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => 'Other',
+      'values' => array(
+        0 => 'School employee',
+        1 => 'Other',
+      ),
+      'value' => array(),
     ),
   );
 
