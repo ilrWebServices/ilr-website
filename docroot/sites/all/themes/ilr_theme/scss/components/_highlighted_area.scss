@@ -77,12 +77,11 @@ body.ilr-review {
   .highlighted-area-no-logo {
     border: 2px solid $blue-ilrreview;
     &:hover {
-      // border: 2px solid $cornell-red;
       border: 2px solid lighten($blue-ilrreview, 15%);
     }
     h2 {
       a {
-        color: $blue-ilrreview !important;
+        color: $blue-ilrreview;
       }
     }
   }
