@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Removes field_yes_no from scheinman_webcast_registration form and two other
+ * fields altogether
+ */
+function forms2_update_7001() {
+  field_delete_field('field_yes_no_not_sure');
+  field_delete_field('field_yes_no_not_sure_2');
+  if ($instance = field_info_instance('entityform', 'field_yes_no', 'scheinman_webcast_registration')) {
+    field_delete_instance($instance);
+  }
+}
+
