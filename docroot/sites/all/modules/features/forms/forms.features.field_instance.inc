@@ -26445,7 +26445,7 @@ function forms_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_other_please_specify',
-    'label' => 'Please specify other professional field',
+    'label' => 'Please specify your professional field',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -35072,7 +35072,7 @@ function forms_field_default_field_instances() {
   t('Please elaborate on your ILR academic interests');
   t('Please list the courses in which you are currently enrolled');
   t('Please provide information about your last three employers, starting with your current employer.');
-  t('Please specify other professional field');
+  t('Please specify your professional field');
   t('Position');
   t('Post Date');
   t('Postal code / Zip code');
