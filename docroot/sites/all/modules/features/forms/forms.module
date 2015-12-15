@@ -225,6 +225,17 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
       unset($form['field_year_fr_soph_jr_sr_milr'][LANGUAGE_NONE]['#options']['Freshman']);
       unset($form['field_year_fr_soph_jr_sr_milr'][LANGUAGE_NONE]['#options']['MILR']);
       break;
+
+    // Scheinman mailing list and Scheinman webcast registration share a list,
+    //   but we're not currently showing all the items. At the moment, the two
+    //   forms are showing the same subset, but that isn't necessarily the case.
+    case 'scheinman_mailing_list_entityform_edit_form':
+    case 'scheinman_webcast_registration_entityform_edit_form':
+      unset($form['field_prof_field_scheinman'][LANGUAGE_NONE]['#options']['HR professional']);
+      unset($form['field_prof_field_scheinman'][LANGUAGE_NONE]['#options']['LR professional']);
+      unset($form['field_prof_field_scheinman'][LANGUAGE_NONE]['#options']['Security professional']);
+      unset($form['field_prof_field_scheinman'][LANGUAGE_NONE]['#options']['Attorney']);
+      break;
   }
 }
 
