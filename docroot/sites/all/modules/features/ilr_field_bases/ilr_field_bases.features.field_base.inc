@@ -8139,14 +8139,19 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
+        'Teacher' => 'Teacher',
+        'Union (steward or officer)' => 'Union (steward or officer)',
+        'Administrator' => 'Administrator',
+        'School employee' => 'School employee',
+        'School Board member' => 'School Board member',
         'Academic' => 'Academic',
+        'Advocate' => 'Advocate',
         'Attorney' => 'Attorney',
         'HR professional' => 'HR professional',
         'LR professional' => 'LR professional',
         'Neutral' => 'Neutral',
         'Security professional' => 'Security professional',
         'Student' => 'Student',
-        'Union (steward or officer)' => 'Union (steward or officer)',
         'Other' => 'Other',
       ),
       'allowed_values_function' => '',
@@ -11852,61 +11857,6 @@ function ilr_field_bases_field_default_field_bases() {
       'allowed_values' => array(
         'Yes' => 'Yes',
         'No' => 'No',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
-  // Exported field_base: 'field_yes_no_not_sure'
-  $field_bases['field_yes_no_not_sure'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_yes_no_not_sure',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'Yes' => 'Yes',
-        'No' => 'No',
-        'Not sure' => 'Not sure',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
-  // Exported field_base: 'field_yes_no_not_sure_2'
-  $field_bases['field_yes_no_not_sure_2'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_yes_no_not_sure_2',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'Yes' => 'Yes',
-        'No' => 'No',
-        'Not sure' => 'Not sure',
-        'Does not apply' => 'Does not apply',
       ),
       'allowed_values_function' => '',
     ),
