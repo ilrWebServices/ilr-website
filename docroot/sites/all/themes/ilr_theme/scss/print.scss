@@ -1,0 +1,81 @@
+// Compass
+@import "compass/css3";
+@import "compass/typography/lists";
+@import "compass/utilities/general/clearfix";
+@import "compass/typography/text/force-wrap";
+
+// Modular Scale
+@import "modular-scale";
+
+// Grid
+@import "singularitygs";
+@import "singularity-extras";
+@import "breakpoint";
+@import "vendor/eq";
+
+// // Base
+@import "base/mixins";
+// @import "base/normalize";
+@import "base/variables";
+// @import "base/base";
+// @import "base/fonts";
+// @import "base/typography";
+// @import "base/helpers";
+
+body {
+  background: white;
+}
+
+#page {
+  background: white;
+}
+
+header {
+  #header-region {
+    display: none;
+  }
+}
+
+body.subsite-front {
+  // &.worker-institute, &.catherwood-library, &.ilr-at-70, &.mobilizing-against-inequality { // consider using context to add body class
+  //   .container[data-eq-state="regular-nav"] {
+  //     @extend %one-column-page;
+  //   }
+  // }
+  &.ilr-online {
+    .container[data-eq-state="regular-nav"] {
+      #main {
+        @include add-grid(12);
+        #content {
+          @include grid-span(12);
+        }
+        #sidebar-second {
+          @include grid-span(12);
+        }
+      }
+    }
+  }
+}
+
+#main {
+  &[data-eq-state="widescreen"], &[data-eq-state="768"] {
+    @include add-grid(12);
+    @include clearfix;
+    #content {
+      @include grid-span(12);
+      @include trailer(0);
+    }
+    #sidebar-first.sidebar {
+      display: none;
+    }
+    #sidebar-second {
+      @include grid-span(12);
+      @include leader(0);
+      @include trailer(0);
+    }
+  }
+}
+
+footer {
+  display: none;
+}
