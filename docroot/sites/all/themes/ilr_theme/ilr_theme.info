@@ -2,7 +2,7 @@ name = Cornell University | ILR School
 description = "A theme for Cornell University | ILR School"
 core = 7.x
 
-stylesheets[media][] = css/style.css
+stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
 
 scripts[] = js/ilr_theme.js
