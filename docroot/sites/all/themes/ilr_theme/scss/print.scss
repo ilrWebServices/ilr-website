@@ -30,7 +30,19 @@ body {
   background: white;
 }
 
+// body:not(.subsite) {
+#logo {
+  img {
+    width: 375px !important;
+    height: 120px !important;
+  }
+}
+// }
+
 header {
+  &.sticky {
+    position: absolute !important;
+  }
   #header-region {
     display: none;
   }
