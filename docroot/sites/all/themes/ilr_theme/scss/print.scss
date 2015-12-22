@@ -36,6 +36,17 @@ header {
   }
 }
 
+body.front {
+  #block-bean-homepage-news, #block-bean-ilr-events {
+    width: 100% !important;
+    margin: 0 0 2em !important;
+    float: none !important;
+    article {
+      margin-bottom: 1em !important;
+    }
+  }
+}
+
 body.subsite-front {
   // &.worker-institute, &.catherwood-library, &.ilr-at-70, &.mobilizing-against-inequality { // consider using context to add body class
   //   .container[data-eq-state="regular-nav"] {
@@ -66,6 +77,12 @@ body.subsite-front {
       width: 100%;
       margin-left: 0;
       @include trailer(0);
+      .ilr-video-wrapper {
+        width: 50% !important;
+        margin: 0 auto !important;
+        float: none !important;
+        clear: both !important;
+      }
     }
     #sidebar-first.sidebar {
       display: none;
