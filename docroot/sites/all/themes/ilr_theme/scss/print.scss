@@ -30,19 +30,15 @@ body {
   background: white;
 }
 
-// body:not(.subsite) {
 #logo {
   img {
     width: 375px !important;
     height: 120px !important;
   }
 }
-// }
 
 header {
-  &.sticky {
-    position: absolute !important;
-  }
+  position: absolute !important;
   #header-region {
     display: none;
   }
@@ -55,6 +51,18 @@ body.front {
     float: none !important;
     article {
       margin-bottom: 1em !important;
+      width: 45% !important;
+      float: left !important;
+    }
+  }
+}
+
+.field-name-field-content-region {
+  .block.block-bean.tagged-content {
+    article {
+      margin: 0 0 1em !important;
+      width: 45% !important;
+      float: left;
     }
   }
 }
