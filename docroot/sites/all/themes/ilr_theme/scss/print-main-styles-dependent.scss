@@ -15,48 +15,41 @@
 
 // // Base
 @import "base/mixins";
-@import "base/normalize";
+// @import "base/normalize";
 @import "base/variables";
-@import "base/base";
-@import "base/fonts";
-@import "base/typography";
-@import "base/helpers";
+// @import "base/base";
+// @import "base/fonts";
+// @import "base/typography";
+// @import "base/helpers";
 
 body {
   background: white;
 }
 
 #page {
-  // background: white;
-  padding: 0 1em;
+  background: white;
 }
 
-// #logo {
-//   img {
-//     width: 375px !important;
-//     height: 120px !important;
-//   }
-// }
+#logo {
+  img {
+    width: 375px !important;
+    height: 120px !important;
+  }
+}
 
-// body.subsite {
-//   #logo {
-//     img {
-//       width: 205px !important;
-//       height: 66px !important;
-//     }
-//   }
-// }
+body.subsite {
+  #logo {
+    img {
+      width: 205px !important;
+      height: 66px !important;
+    }
+  }
+}
 
 header {
-  position: absolute;
-  #search-form {
-    display: none;
-  }
+  position: absolute !important;
   #header-region {
-    // display: none;
-    #block-ilr-mega-menu-ilr-mega-menu {
-      display: none;
-    }
+    display: none;
   }
 }
 
@@ -81,6 +74,13 @@ body.front {
       width: 45% !important;
       float: left;
     }
+  }
+}
+
+.field-name-field-content-bottom-region {
+  // margin-top: 2em;
+  .block.block-bean.tagged-content {
+    // margin-bottom: 3em;
   }
 }
 
@@ -115,10 +115,10 @@ body.subsite-front {
       margin-left: 0;
       @include trailer(0);
       .ilr-video-wrapper {
-        width: 50%;
-        margin: 0 auto;
-        float: none;
-        clear: both;
+        width: 50% !important;
+        margin: 0 auto !important;
+        float: none !important;
+        clear: both !important;
       }
     }
     #sidebar-first.sidebar {
@@ -133,10 +133,6 @@ body.subsite-front {
   }
 }
 
-.rss-icon {
-  display: none;
-}
-
 #content-bottom {
   width: 100%;
   article {
@@ -148,6 +144,7 @@ body.subsite-front {
       position: relative !important;
       top: 0 !important;
       left: 0 !important;
+      min-height: 380px !important;
       float: left !important;
     }
   }
