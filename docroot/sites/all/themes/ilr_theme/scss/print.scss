@@ -27,25 +27,9 @@ body {
 }
 
 #page {
-  // background: white;
+  background: white;
   padding: 0 1em;
 }
-
-// #logo {
-//   img {
-//     width: 375px !important;
-//     height: 120px !important;
-//   }
-// }
-
-// body.subsite {
-//   #logo {
-//     img {
-//       width: 205px !important;
-//       height: 66px !important;
-//     }
-//   }
-// }
 
 header {
   position: absolute;
@@ -85,11 +69,8 @@ body.front {
 }
 
 body.subsite-front {
-  // &.worker-institute, &.catherwood-library, &.ilr-at-70, &.mobilizing-against-inequality { // consider using context to add body class
-  //   .container[data-eq-state="regular-nav"] {
-  //     @extend %one-column-page;
-  //   }
-  // }
+  // &.worker-institute, &.catherwood-library, &.ilr-at-70, &.mobilizing-against-inequality
+
   &.ilr-online {
     .container[data-eq-state="regular-nav"] {
       #main {
@@ -138,6 +119,7 @@ body.subsite-front {
 }
 
 #content-bottom {
+  background: white;
   width: 100%;
   article {
     border: 1px solid $gray-medium;
@@ -154,5 +136,42 @@ body.subsite-front {
 }
 
 footer {
+  display: none;
+}
+
+//ILR at 70
+#block-bean-70th-reflections {
+  height: auto;
+  h2 {
+    display: none;
+  }
+  article.node-reflection {
+    border: none;
+    border-bottom: 1px solid $gray-light;
+    margin-top: 2em;
+    padding-bottom: 2em;
+    &:nth-last-of-type(1) {
+      margin-bottom: 2em;
+    }
+    h2 {
+      display: block;
+    }
+  }
+}
+
+#block-bean-70th-timeline {
+  display: none;
+}
+
+#content-bottom .block-ilr-reflection {
+  h2 {
+    display: none;
+  }
+  .node-reflection-form {
+    display: none;
+  }
+}
+
+ul.social-share {
   display: none;
 }
