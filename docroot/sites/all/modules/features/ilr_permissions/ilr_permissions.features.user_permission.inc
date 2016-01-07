@@ -769,16 +769,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'create spotlight content'.
-  $permissions['create spotlight content'] = array(
-    'name' => 'create spotlight content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'create student_portrait content'.
   $permissions['create student_portrait content'] = array(
     'name' => 'create student_portrait content',
@@ -1063,15 +1053,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete any spotlight content'.
-  $permissions['delete any spotlight content'] = array(
-    'name' => 'delete any spotlight content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete any student_portrait content'.
   $permissions['delete any student_portrait content'] = array(
     'name' => 'delete any student_portrait content',
@@ -1311,16 +1292,6 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own sdc_faculty content',
     'roles' => array(
       'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own spotlight content'.
-  $permissions['delete own spotlight content'] = array(
-    'name' => 'delete own spotlight content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -1614,6 +1585,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any image files',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
       'power user' => 'power user',
     ),
     'module' => 'file_entity',
@@ -1744,16 +1716,6 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'course admin' => 'course admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any spotlight content'.
-  $permissions['edit any spotlight content'] = array(
-    'name' => 'edit any spotlight content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -2018,16 +1980,6 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'course admin' => 'course admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own spotlight content'.
-  $permissions['edit own spotlight content'] = array(
-    'name' => 'edit own spotlight content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -2460,24 +2412,6 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'course admin' => 'course admin',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override spotlight published option'.
-  $permissions['override spotlight published option'] = array(
-    'name' => 'override spotlight published option',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'override_node_options',
-  );
-
-  // Exported permission: 'override spotlight sticky option'.
-  $permissions['override spotlight sticky option'] = array(
-    'name' => 'override spotlight sticky option',
-    'roles' => array(
-      'administrator' => 'administrator',
     ),
     'module' => 'override_node_options',
   );

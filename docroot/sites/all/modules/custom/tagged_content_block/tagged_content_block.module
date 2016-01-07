@@ -134,7 +134,6 @@ function _tagged_content_block_enable_default_bundles() {
     'promo'               => 'promo',
     'post'                => 'post',
     'reflection'          => 'reflection',
-    'spotlight'           => 'spotlight',
     'student_portrait'    => 'student_portrait',
     'wit_article'         => 'wit_article',
     'workspan'            => 'workspan',
@@ -176,7 +175,6 @@ function _tagged_content_block_get_default_category_type($content_type) {
     'basic_page'          => 'focus',
     'news_item'           => 'news',
     'promo'               => 'highlights',
-    'spotlight'           => 'spotlight',
     'student_portrait'    => 'student portrait',
     'youtube_video'       => 'video',
   );
