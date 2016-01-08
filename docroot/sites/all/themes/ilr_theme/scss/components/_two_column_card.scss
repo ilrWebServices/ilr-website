@@ -1,0 +1,51 @@
+// could be replaced with a paragraph bundle
+.two-column-card {
+  @include grid-span(12,1);
+  @include add-gutter(1);
+  @include trailer(1);
+  padding: 0;
+  background: white;
+  background: $table-bg;
+  border: 1px solid $cornell-tan;
+  h3 {
+    @include adjust-leading-to(1.5);
+    font-family: $font;
+    background: white;
+    border-bottom: 1px solid $gray-bg;
+    display: block;
+    margin-bottom: .4em;
+    padding: 0 1em;
+  }
+  p {
+    padding-left: 1em;
+  }
+}
+
+#main[data-eq-state="550"], #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+  .two-column-card {
+    article {
+      &:nth-of-type(odd) {
+        @include grid-span (8,1);
+      }
+      &:nth-of-type(even) {
+        @include grid-span (4,9);
+      }
+    }
+  }
+}
+
+#main[data-eq-state="320"] {
+  .two-column-card {
+    article {
+      &:nth-of-type(odd) {
+        @include grid-span (12,1);
+        p {
+          margin-bottom: .5em;
+        }
+      }
+      &:nth-of-type(even) {
+        @include grid-span (12,1);
+      }
+    }
+  }
+}
