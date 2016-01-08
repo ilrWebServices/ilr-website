@@ -109,7 +109,7 @@ jQuery.fn.sortElements = (function(){
         // If the course search block is on the page, position it and add the listeners
         if ($('#block-ilr-sdc-listings-course-search').length) {
           if (isPublicOfferingsPage()) {
-            positionCourseSearchBox(); // Set a timer to position it
+            positionCourseSearchBox();
           } else {
             setTimeout(positionCourseSearchBox,500); // Set a timer to position it
           }
@@ -163,7 +163,8 @@ jQuery.fn.sortElements = (function(){
        */
       positionCourseSearchBox = function() {
         mobileNavIsPresent = mobileNavActive();
-        if (isPublicOfferingsPage()) {
+        if (isPublicOfferingsPage() && !isSearchResultsPage()) {
+          // move the block above the sort
           $searchBlock = $('#block-ilr-sdc-listings-course-search');
           if ($('div.sort').length) { // Remove it from the jpanel menu
             $($searchBlock).insertBefore($('div.sort'));
@@ -183,8 +184,14 @@ jQuery.fn.sortElements = (function(){
             }
           } else {
             currentMenu = $('#sidebar-first ul.menu.current');
-            searchBlock = $('#sidebar-first #block-ilr-sdc-listings-course-search');
+            searchBlock = $('#block-ilr-sdc-listings-course-search');
+            $(searchBlock).insertAfter($('#block-menu-block-ilr-subnav'));
+            // Hard code the width for chosen containers in the sidebar
+            $('#sidebar-first .chosen-container').each(function(){
+              $(this).css('width','200px');
+            });
           }
+
 
           yPos = $(searchBlock).css('top');
 
@@ -214,6 +221,10 @@ jQuery.fn.sortElements = (function(){
        */
       isPublicOfferingsPage = function() {
         return $('.view-sdc-course-listing').length && !filterIsEngaged();
+      };
+
+      isSearchResultsPage = function() {
+        return $('body').hasClass('page-professional-programs-search');
       };
 
       isCourseClassDetailPage = function() {
@@ -346,7 +357,7 @@ jQuery.fn.sortElements = (function(){
         var sponsors = [];
 
         // Check if search results page
-        if ($('body').hasClass('page-professional-programs-search')) {
+        if (isSearchResultsPage()) {
           sortSearchResults();
         } // Sort by whatever is current
         else {
