@@ -93,12 +93,16 @@ body.front {
       margin: 0 0 2em !important;
       width: 45% !important;
       float: left;
+      img {
+        width: 150px;
+        height: auto;
+      }
     }
   }
 }
 
 body.subsite-front {
-  // &.worker-institute, &.catherwood-library, &.ilr-at-70, &.mobilizing-against-inequality
+  // &.worker-institute, &.ilr-at-70, &.mobilizing-against-inequality
 
   &.ilr-online {
     .container[data-eq-state="regular-nav"] {
@@ -139,12 +143,21 @@ body.subsite-front {
       clear: both;
       @include leader(0);
       @include trailer(0);
+      img {
+        max-width: 150px;
+      }
     }
   }
 }
 
 .rss-icon {
   display: none;
+}
+
+article {
+  h3.category {
+    display: none;
+  }
 }
 
 #content-bottom {
