@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   @include adjust-font-size-to($h1-size, $line-height-multiplier);
   color: $h1-text;
-  @include adjust-leading-to(2, $h1-size);
+  // @include adjust-leading-to(2, $h1-size);
   @include margin-trailer(.15);
 
   a {

@@ -16,6 +16,10 @@
 //Buttons
 //@import "vendor/buttons/buttons";
 
+//Variables
+$base-font-size: 19px;
+$base-line-height: 27px;
+
 // Base
 @import "base/mixins";
 @import "base/normalize";

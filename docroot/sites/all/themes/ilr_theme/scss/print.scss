@@ -13,7 +13,14 @@
 // @import "breakpoint";
 // @import "vendor/eq";
 
-// // Base
+// Variables
+$page-max-width: 1600px;
+$base-font-size: 14px;
+$base-line-height: 20px;
+$ms-base: $base-font-size, $page-max-width;
+$ms-ratio: $golden;
+
+// Base
 @import "base/mixins";
 @import "base/normalize";
 @import "base/variables";
@@ -24,6 +31,28 @@
 
 body {
   background: white;
+  font-family: $font-headers;
+}
+
+p, a, li {
+  font-family: $font-headers;
+}
+
+h2, h3, h4, h5, h6 {
+  margin-bottom: .5em;
+}
+
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+    margin-top: 1.5em;
+  }
+
+h2 + ul, h2 + ul, h2 + ul, h2 + ul, h2 + ul {
+  margin-top: -1em;
+  margin-bottom: 2em;
 }
 
 #page {
@@ -188,5 +217,13 @@ a.readmore-js-toggle {
 .group-sidebar {
   .field-name-field-profile-image {
     display: none;
+  }
+}
+
+article.node-people-profile {
+  .group-title-and-focus {
+    .crumb {
+      display: none;
+    }
   }
 }
