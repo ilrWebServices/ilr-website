@@ -74,14 +74,32 @@ header {
 }
 
 body.front {
+  #breadcrumb {
+    display: none;
+  }
   #block-bean-homepage-news, #block-bean-ilr-events {
     width: 100% !important;
     margin: 0 0 2em !important;
-    float: none !important;
+    float: none;
     article {
       margin-bottom: 1em !important;
       width: 45% !important;
-      float: left !important;
+      float: left;
+      padding-right: 1em;
+      img {
+        width: 150px;
+        height: auto;
+      }
+      .field-name-field-description {
+        display: none;
+      }
+      .thumbnail.custom.event {
+        span {
+          br {
+            // display: none;
+          }
+        }
+      }
     }
   }
 }
@@ -91,27 +109,24 @@ body.front {
     .block.block-bean.tagged-content {
       border-top: 1px solid $gray-medium;
       padding-top: 2em;
+      clear: both;
+      article {
+        margin: 0 0 2em !important;
+        width: 45%;
+        float: left;
+        padding-right: 1em;
+        img {
+          width: 150px;
+          height: auto;
+        }
+        .field-type-text-with-summary {
+          display: none;
+        }
+      }
     }
   }
 }
 
-.field-name-field-content-region {
-  .block.block-bean.tagged-content {
-    clear: both;
-    article {
-      margin: 0 0 2em !important;
-      width: 45% !important;
-      float: left;
-      img {
-        width: 150px;
-        height: auto;
-      }
-      .field-type-text-with-summary {
-        display: none;
-      }
-    }
-  }
-}
 
 body.subsite-front {
   // &.worker-institute, &.ilr-at-70, &.mobilizing-against-inequality
@@ -175,13 +190,17 @@ article {
 #content-bottom {
   background: white;
   width: 100%;
-  article {
-    margin: 0 0 2em;
-    img {
-      width: 150px;
-    }
-    .field-name-field-description {
+  .block.block-bean.tagged-content {
+    h2 {
       display: none;
+    }
+    article {
+      h2 {
+        display: block;
+      }
+      .field-name-field-description {
+        display: none;
+      }
     }
   }
 
@@ -190,7 +209,9 @@ article {
       position: relative !important;
       top: 0 !important;
       left: 0 !important;
-      float: left !important;
+      width: 45%;
+      float: left;
+      padding-right: 1em;
     }
   }
 }
@@ -200,8 +221,15 @@ footer {
 }
 
 //ILR at 70
+#block-bean-70th-reflections-featured {
+  img {
+    width: 150px;
+  }
+}
+
 #block-bean-70th-reflections {
-  height: auto;
+  height: auto !important;
+  overflow: auto;
   h2 {
     display: none;
   }
@@ -210,6 +238,8 @@ footer {
     border-bottom: 1px solid $gray-light;
     margin-top: 2em;
     padding-bottom: 2em;
+    width: 100%;
+    float: none;
     &:nth-last-of-type(1) {
       margin-bottom: 2em;
     }
