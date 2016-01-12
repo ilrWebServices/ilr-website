@@ -631,17 +631,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'create featured_book content'.
-  $permissions['create featured_book content'] = array(
-    'name' => 'create featured_book content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'create files'.
   $permissions['create files'] = array(
     'name' => 'create files',
@@ -650,26 +639,6 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'file_entity',
-  );
-
-  // Exported permission: 'create microfiche content'.
-  $permissions['create microfiche content'] = array(
-    'name' => 'create microfiche content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create microfilm content'.
-  $permissions['create microfilm content'] = array(
-    'name' => 'create microfilm content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: 'create news_item content'.
@@ -799,17 +768,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'path',
   );
 
-  // Exported permission: 'create wit_article content'.
-  $permissions['create wit_article content'] = array(
-    'name' => 'create wit_article content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'create workspan content'.
   $permissions['create workspan content'] = array(
     'name' => 'create workspan content',
@@ -894,16 +852,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
-  // Exported permission: 'delete any featured_book content'.
-  $permissions['delete any featured_book content'] = array(
-    'name' => 'delete any featured_book content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete any filtered_courses bean'.
   $permissions['delete any filtered_courses bean'] = array(
     'name' => 'delete any filtered_courses bean',
@@ -940,24 +888,6 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'bean',
-  );
-
-  // Exported permission: 'delete any microfiche content'.
-  $permissions['delete any microfiche content'] = array(
-    'name' => 'delete any microfiche content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any microfilm content'.
-  $permissions['delete any microfilm content'] = array(
-    'name' => 'delete any microfilm content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: 'delete any news_item content'.
@@ -1081,15 +1011,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'delete any wit_article content'.
-  $permissions['delete any wit_article content'] = array(
-    'name' => 'delete any wit_article content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete any workspan content'.
   $permissions['delete any workspan content'] = array(
     'name' => 'delete any workspan content',
@@ -1157,17 +1078,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'entityform',
   );
 
-  // Exported permission: 'delete own featured_book content'.
-  $permissions['delete own featured_book content'] = array(
-    'name' => 'delete own featured_book content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete own image files'.
   $permissions['delete own image files'] = array(
     'name' => 'delete own image files',
@@ -1177,26 +1087,6 @@ function ilr_permissions_user_default_permissions() {
       'power user' => 'power user',
     ),
     'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete own microfiche content'.
-  $permissions['delete own microfiche content'] = array(
-    'name' => 'delete own microfiche content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own microfilm content'.
-  $permissions['delete own microfilm content'] = array(
-    'name' => 'delete own microfilm content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: 'delete own news_item content'.
@@ -1315,17 +1205,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'delete own wit_article content'.
-  $permissions['delete own wit_article content'] = array(
-    'name' => 'delete own wit_article content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete own workspan content'.
   $permissions['delete own workspan content'] = array(
     'name' => 'delete own workspan content',
@@ -1365,31 +1244,11 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'delete terms in publications'.
-  $permissions['delete terms in publications'] = array(
-    'name' => 'delete terms in publications',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'delete terms in tags'.
   $permissions['delete terms in tags'] = array(
     'name' => 'delete terms in tags',
     'roles' => array(
       'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in wire_services'.
-  $permissions['delete terms in wire_services'] = array(
-    'name' => 'delete terms in wire_services',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'wit editor' => 'wit editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1548,17 +1407,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
-  // Exported permission: 'edit any featured_book content'.
-  $permissions['edit any featured_book content'] = array(
-    'name' => 'edit any featured_book content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit any filtered_courses bean'.
   $permissions['edit any filtered_courses bean'] = array(
     'name' => 'edit any filtered_courses bean',
@@ -1598,26 +1446,6 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'bean',
-  );
-
-  // Exported permission: 'edit any microfiche content'.
-  $permissions['edit any microfiche content'] = array(
-    'name' => 'edit any microfiche content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any microfilm content'.
-  $permissions['edit any microfilm content'] = array(
-    'name' => 'edit any microfilm content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: 'edit any news_item content'.
@@ -1749,17 +1577,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'edit any wit_article content'.
-  $permissions['edit any wit_article content'] = array(
-    'name' => 'edit any wit_article content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit any workspan content'.
   $permissions['edit any workspan content'] = array(
     'name' => 'edit any workspan content',
@@ -1839,17 +1656,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'entityform',
   );
 
-  // Exported permission: 'edit own featured_book content'.
-  $permissions['edit own featured_book content'] = array(
-    'name' => 'edit own featured_book content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit own image files'.
   $permissions['edit own image files'] = array(
     'name' => 'edit own image files',
@@ -1859,26 +1665,6 @@ function ilr_permissions_user_default_permissions() {
       'power user' => 'power user',
     ),
     'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit own microfiche content'.
-  $permissions['edit own microfiche content'] = array(
-    'name' => 'edit own microfiche content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own microfilm content'.
-  $permissions['edit own microfilm content'] = array(
-    'name' => 'edit own microfilm content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: 'edit own news_item content'.
@@ -2003,17 +1789,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'edit own wit_article content'.
-  $permissions['edit own wit_article content'] = array(
-    'name' => 'edit own wit_article content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit own workspan content'.
   $permissions['edit own workspan content'] = array(
     'name' => 'edit own workspan content',
@@ -2043,31 +1818,11 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'edit terms in publications'.
-  $permissions['edit terms in publications'] = array(
-    'name' => 'edit terms in publications',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'edit terms in tags'.
   $permissions['edit terms in tags'] = array(
     'name' => 'edit terms in tags',
     'roles' => array(
       'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in wire_services'.
-  $permissions['edit terms in wire_services'] = array(
-    'name' => 'edit terms in wire_services',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'wit editor' => 'wit editor',
     ),
     'module' => 'taxonomy',
   );
@@ -2446,16 +2201,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
-  // Exported permission: 'override wit_article published option'.
-  $permissions['override wit_article published option'] = array(
-    'name' => 'override wit_article published option',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'wit editor' => 'wit editor',
-    ),
-    'module' => 'override_node_options',
-  );
-
   // Exported permission: 'reorder pages'.
   $permissions['reorder pages'] = array(
     'name' => 'reorder pages',
@@ -2725,16 +2470,6 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
-    ),
-    'module' => 'view_unpublished',
-  );
-
-  // Exported permission: 'view any unpublished wit_article content'.
-  $permissions['view any unpublished wit_article content'] = array(
-    'name' => 'view any unpublished wit_article content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'wit editor' => 'wit editor',
     ),
     'module' => 'view_unpublished',
   );
