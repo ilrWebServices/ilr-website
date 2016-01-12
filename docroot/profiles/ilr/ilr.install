@@ -106,7 +106,7 @@ function ilr_install() {
  * Custom function for role creation
  */
 function _ilr_create_roles() {
-  $roles = array('administrator','power user','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin', 'course admin', 'form admin', 'reflection admin');
+  $roles = array('administrator','power user','contributor','neutral admin', 'neutral', 'registered user', 'faculty admin', 'course admin', 'form admin', 'reflection admin');
 
   $weight = 0;
   foreach ($roles as $name) {
@@ -123,6 +123,11 @@ function _ilr_create_role($name, $weight) {
   $role->weight = $weight;
   user_role_save($role);
 }
+
+function _ilr_delete_role($name) {
+  user_role_delete($role);
+}
+
 /**
  * Custom function for role creation
  */
@@ -144,6 +149,13 @@ function _ilr_add_permissions() {
     ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
     ->execute();
 
+}
+
+function _ilr_bulk_delete_nodes_finished($success, $results, $operations) {
+  $message = ($success)
+    ? t('Batch node deletion successfully completed')
+    : t('Batch node deletion failed.');
+    drupal_set_message($message);
 }
 
 /**
@@ -600,4 +612,55 @@ function ilr_update_7051() {
   }
   node_type_delete('spotlight');
   field_purge_batch(10);
+}
+
+/**
+ * Removes the library-related modules and content
+ */
+function ilr_update_7052() {
+  module_disable(array('wit','featured_book','cul_hours','cul_search','cul_new_books','microfilm_microfiche'));
+  $types = array('featured_book', 'microfilm', 'microfiche', 'wit_article');
+  $result = db_select('node')
+    ->fields('node', array('nid'))
+    ->condition('type', $types)
+    ->execute()
+    ->fetchAll();
+  $nids = $operations = array();
+  foreach ($result as $row) {
+    $nids[] = $row->nid;
+  }
+  // Break the array into smaller sizes to eliminate timeouts
+  $chunks = array_chunk($nids, 100, TRUE);
+  foreach ($chunks as $key => $current_nids) {
+    $operations[] = array('node_delete_multiple', array($current_nids));
+  }
+
+  // Set up the Batch API
+  $batch = array(
+    'operations' => $operations,
+    'finished'   => '_ilr_bulk_delete_nodes_finished',
+  );
+  batch_set($batch);
+
+  foreach ($types as $key => $type) {
+    foreach (field_info_instances('node', $type) as $field_name => $field) {
+      field_delete_instance($field);
+    }
+    node_type_delete($type);
+  }
+
+  field_purge_batch(10);
+
+  if ($wit_menu = menu_load('catherwood-library')) {
+    menu_delete($wit_menu);
+  }
+
+  _ilr_delete_role('wit editor');
+
+  $vocabs = array('publications', 'wire_services');
+  foreach ($vocabs as $key => $name) {
+    if ($vocab = taxonomy_vocabulary_machine_name_load($name)) {
+      taxonomy_vocabulary_delete($vocab->vid);
+    }
+  }
 }

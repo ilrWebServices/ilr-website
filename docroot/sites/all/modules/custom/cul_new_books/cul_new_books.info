@@ -1,6 +1,0 @@
-name = CU Libraries New Books Module
-description = Provides a simple output of the new books from the json feed at newbooks.mannlib.cornell.edu
-core = 7.x
-package = Cornell
-php = 5.2.4
-version = 7.x-1.0

@@ -1,7 +1,0 @@
-name = CU Library Search Module
-description = Provides a CU Library search form to search either the CUL catalog or WorldCat
-core = 7.x
-package = Cornell
-php = 5.2.4
-version = 7.x-1.0
-stylesheets[all][] = cul_search.css

@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Microfilm/microfiche feature.
- */
-
-include_once 'microfilm_microfiche.features.inc';
