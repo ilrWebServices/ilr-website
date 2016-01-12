@@ -61,12 +61,22 @@ h2 + ul, h2 + ul, h2 + ul, h2 + ul, h2 + ul {
 }
 
 header {
-  position: absolute;
+  .logo-wrapper {
+    background: $cornell-red;
+    a img {
+      height: 60px;
+      padding-top: 5px;
+      padding-left: 5px;
+    }
+  }
+  // position: absolute;
   #search-form {
     display: none;
   }
   #header-region {
-    // display: none;
+    .subsite-header, .menu-block-ilr-primary-menu {
+      display: none;
+    }
     #block-ilr-mega-menu-ilr-mega-menu {
       display: none;
     }
@@ -93,6 +103,7 @@ body.front {
       .field-name-field-description {
         display: none;
       }
+      //need to remove br tag so date will display correctly for print
       .thumbnail.custom.event {
         span {
           br {
@@ -129,8 +140,6 @@ body.front {
 
 
 body.subsite-front {
-  // &.worker-institute, &.ilr-at-70, &.mobilizing-against-inequality
-
   &.ilr-online {
     .container[data-eq-state="regular-nav"] {
       #main {
@@ -266,7 +275,39 @@ ul.social-share {
   display: none;
 }
 
-//Faculty profiles
+//Directory and faculty profiles
+#block-views-people-profile-teasers-block {
+  article.node-people-profile {
+    width: 33%;
+    min-height: 260px;
+    float: left;
+    margin-bottom: 2em;
+  }
+}
+
+article.node-people-profile {
+  h1.title {
+    display: none;
+  }
+  .group-highlighted {
+    margin-bottom: 1em;
+  }
+  .field-type-image {
+    img {
+      width: 120px;
+    }
+  }
+  .group-title-and-focus {
+    .crumb {
+      display: none;
+    }
+  }
+}
+
+#letters-listing {
+  display: none;
+}
+
 .readmore-js-section {
   height: auto !important;
 }
@@ -278,13 +319,5 @@ a.readmore-js-toggle {
 .group-sidebar {
   .field-name-field-profile-image {
     display: none;
-  }
-}
-
-article.node-people-profile {
-  .group-title-and-focus {
-    .crumb {
-      display: none;
-    }
   }
 }
