@@ -64,8 +64,8 @@ function _mai_rss_feed() {
   $nids = _mai_get_nids();
   $link = url(current_path(), array('absolute' => true));
   $channel = array(
-    'title' => t('Workplace Issues Today'),
-    'description' => 'WIT is a free alert service, providing abstracts and links to workplace-related news stories covered in the major media.',
+    'title' => t('Mobilizing Against Inequality'),
+    'description' => 'Mobilizing Against Inequality creates a new online conversation about how unions and organizations have engaged in mobilizing and empowering the immigrant workforce.',
     'link' => $link,
   );
   node_feed($nids, $channel);

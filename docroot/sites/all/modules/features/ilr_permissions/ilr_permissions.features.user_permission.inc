@@ -19,7 +19,6 @@ function ilr_permissions_user_default_permissions() {
       'course admin' => 'course admin',
       'neutral' => 'neutral',
       'neutral admin' => 'neutral admin',
-      'wit editor' => 'wit editor',
     ),
     'module' => 'admin_menu',
   );
@@ -33,7 +32,6 @@ function ilr_permissions_user_default_permissions() {
       'course admin' => 'course admin',
       'neutral' => 'neutral',
       'neutral admin' => 'neutral admin',
-      'wit editor' => 'wit editor',
     ),
     'module' => 'system',
   );
@@ -79,7 +77,6 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
       'course admin' => 'course admin',
       'neutral admin' => 'neutral admin',
-      'wit editor' => 'wit editor',
     ),
     'module' => 'node',
   );
@@ -99,7 +96,6 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
-      'wit editor' => 'wit editor',
     ),
     'module' => 'contextual',
   );
@@ -2505,7 +2501,6 @@ function ilr_permissions_user_default_permissions() {
       'neutral' => 'neutral',
       'neutral admin' => 'neutral admin',
       'registered user' => 'registered user',
-      'wit editor' => 'wit editor',
     ),
     'module' => 'file_entity',
   );
@@ -2550,7 +2545,6 @@ function ilr_permissions_user_default_permissions() {
       'course admin' => 'course admin',
       'neutral admin' => 'neutral admin',
       'registered user' => 'registered user',
-      'wit editor' => 'wit editor',
     ),
     'module' => 'node',
   );
@@ -2596,7 +2590,6 @@ function ilr_permissions_user_default_permissions() {
       'neutral admin' => 'neutral admin',
       'power user' => 'power user',
       'reflection admin' => 'reflection admin',
-      'wit editor' => 'wit editor',
     ),
     'module' => 'system',
   );
