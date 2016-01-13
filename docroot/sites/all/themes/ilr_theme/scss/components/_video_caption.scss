@@ -1,0 +1,44 @@
+.video-with-caption {
+  @include add-grid(12);
+  @include clearfix;
+  @include trailer(1);
+  background: black;
+  .video {
+    @include grid-span(6,1);
+    .ilr-video-wrapper {
+      margin-bottom: 0 !important;
+    }
+  }
+  .caption {
+    @include grid-span(6,7);
+    padding: 1em;
+    h2 {
+      color: $gray-light;
+      font-family: $font;
+      @include adjust-font-size-to(22px);
+      @include adjust-leading-to(1);
+      @include trailer(.3);
+    }
+    p {
+      color: $gray-light;
+      @include adjust-font-size-to(16px);
+      @include adjust-leading-to(1);
+      a {
+        color: $gray-medium;
+      }
+    }
+  }
+}
+
+#main[data-eq-state="320"], #main[data-eq-state="550"] {
+  .video-with-caption {
+    .video {
+      @include grid-span(12);
+      text-align: center;
+    }
+    .caption {
+      @include grid-span(12);
+      text-align: center;
+    }
+  }
+}
