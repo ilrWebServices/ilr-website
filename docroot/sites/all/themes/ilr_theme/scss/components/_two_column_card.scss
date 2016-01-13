@@ -4,8 +4,8 @@
   @include add-gutter(1);
   @include trailer(1);
   padding: 0;
-  background: $table-bg;
-  border: 1px solid $cornell-tan;
+  background: $gray-bg;
+  border: 1px solid $gray-light;
   h3 {
     @include adjust-leading-to(1.5);
     font-family: $font;
@@ -13,16 +13,18 @@
     border-bottom: 1px solid $gray-bg;
     display: block;
     margin-bottom: .4em;
-    padding: 0 1em;
+    // padding: 0 1em;
+    padding: 0 20px;
     clear: both;
   }
   p {
-    padding-left: 1em;
+    // padding-left: 1em;
+    padding-left: 20px;
   }
   ul {
     li {
-      @include adjust-font-size-to(14px);
-      @include adjust-leading-to(1);
+      // @include adjust-font-size-to(14px);
+      // @include adjust-leading-to(1);
       background: none;
     }
   }
