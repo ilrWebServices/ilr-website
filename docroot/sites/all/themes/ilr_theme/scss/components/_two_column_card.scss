@@ -4,7 +4,6 @@
   @include add-gutter(1);
   @include trailer(1);
   padding: 0;
-  background: white;
   background: $table-bg;
   border: 1px solid $cornell-tan;
   h3 {
@@ -15,14 +14,27 @@
     display: block;
     margin-bottom: .4em;
     padding: 0 1em;
+    clear: both;
   }
   p {
     padding-left: 1em;
+  }
+  ul {
+    li {
+      @include adjust-font-size-to(14px);
+      @include adjust-leading-to(1);
+      background: none;
+    }
   }
 }
 
 #main[data-eq-state="550"], #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
   .two-column-card {
+    ul {
+      li {
+        padding-left: 0;
+      }
+    }
     article {
       &:nth-of-type(odd) {
         @include grid-span (8,1);
@@ -36,6 +48,11 @@
 
 #main[data-eq-state="320"] {
   .two-column-card {
+    ul {
+      li {
+        padding-left: 1em;
+      }
+    }
     article {
       &:nth-of-type(odd) {
         @include grid-span (12,1);
