@@ -7,6 +7,7 @@
   color: $gray-medium;
   @include leader(1);
   @include trailer(0);
+  margin: 0 auto !important;
 }
 
 .centered-blurb {
@@ -15,5 +16,5 @@
   @include adjust-font-size-to(30px);
   @include adjust-leading-to(1);
   max-width: $section-max-width !important;
-  margin: 0 auto !important;
+  margin: 0 auto 1em !important;
 }
