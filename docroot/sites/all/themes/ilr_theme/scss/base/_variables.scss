@@ -2,8 +2,6 @@
 
 $page-max-width: 1600px;
 $section-max-width: 800px;
-$base-font-size: 19px;
-$base-line-height: 27px;
 $line-height-multiplier: $base-line-height / $base-font-size;
 @include establish-baseline;
 $row-width: rem-calc($page-max-width);

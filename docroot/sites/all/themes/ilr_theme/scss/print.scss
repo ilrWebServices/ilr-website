@@ -1,0 +1,322 @@
+// Compass
+@import "compass/css3";
+@import "compass/typography/lists";
+@import "compass/utilities/general/clearfix";
+@import "compass/typography/text/force-wrap";
+
+// Modular Scale
+@import "modular-scale";
+
+// Variables
+$page-max-width: 1600px;
+$base-font-size: 14px;
+$base-line-height: 20px;
+$ms-base: $base-font-size, $page-max-width;
+$ms-ratio: $golden;
+
+// Base
+@import "base/mixins";
+@import "base/normalize";
+@import "base/variables";
+@import "base/base";
+@import "base/fonts";
+@import "base/typography";
+@import "base/helpers";
+
+body {
+  background: white;
+  font-family: $font-headers;
+}
+
+p, a, li {
+  font-family: $font-headers;
+}
+
+h2, h3, h4, h5, h6 {
+  margin-bottom: .5em;
+}
+
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+    margin-top: 1.5em;
+  }
+
+h2 + ul, h2 + ul, h2 + ul, h2 + ul, h2 + ul {
+  margin-top: -1em;
+  margin-bottom: 2em;
+}
+
+#page {
+  background: white;
+  padding: 0 1em;
+}
+
+header {
+  .logo-wrapper {
+    background: $cornell-red;
+    a img {
+      height: 60px;
+      padding-top: 5px;
+      padding-left: 5px;
+    }
+  }
+  #search-form {
+    display: none;
+  }
+  #header-region {
+    .subsite-header, .menu-block-ilr-primary-menu {
+      display: none;
+    }
+    #block-ilr-mega-menu-ilr-mega-menu {
+      display: none;
+    }
+  }
+}
+
+body.front {
+  #breadcrumb {
+    display: none;
+  }
+  #block-bean-homepage-news, #block-bean-ilr-events {
+    width: 100% !important;
+    margin: 0 0 2em !important;
+    float: none;
+    article {
+      margin-bottom: 1em !important;
+      width: 45% !important;
+      float: left;
+      padding-right: 1em;
+      img {
+        width: 150px;
+        height: auto;
+      }
+      .field-name-field-description {
+        display: none;
+      }
+      //need to remove br tag so date will display correctly for print
+      .thumbnail.custom.event {
+        span {
+          br {
+            // display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.field-type-blockreference {
+  &:not(.field-name-field-highlighted-region) {
+    .block.block-bean.tagged-content {
+      border-top: 1px solid $gray-medium;
+      padding-top: 2em;
+      clear: both;
+      article {
+        margin: 0 0 2em !important;
+        width: 45%;
+        float: left;
+        padding-right: 1em;
+        img {
+          width: 150px;
+          height: auto;
+        }
+        .field-type-text-with-summary {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+body.subsite-front {
+  &.ilr-online {
+    .container[data-eq-state="regular-nav"] {
+      #main {
+        width: 100%;
+        #content {
+          width: 100%;
+        }
+        #sidebar-second {
+          width: 100%;
+          clear: both;
+        }
+      }
+    }
+  }
+}
+
+#main {
+  #breadcrumb {
+    .breadcrumb {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+  }
+  &[data-eq-state="widescreen"], &[data-eq-state="768"] {
+    width: 100%;
+    @include clearfix;
+    #content {
+      width: 100%;
+      margin-left: 0;
+      @include trailer(0);
+      .ilr-video-wrapper {
+        width: 50%;
+        margin: 0 auto;
+        float: none;
+        clear: both;
+      }
+    }
+    #sidebar-first.sidebar {
+      display: none;
+    }
+    #sidebar-second {
+      width: 100%;
+      clear: both;
+      @include leader(0);
+      @include trailer(0);
+      img {
+        max-width: 150px;
+      }
+    }
+  }
+}
+
+.rss-icon {
+  display: none;
+}
+
+article {
+  h3.category {
+    display: none;
+  }
+}
+
+#content-bottom {
+  background: white;
+  width: 100%;
+  .block.block-bean.tagged-content {
+    h2 {
+      display: none;
+    }
+    article {
+      h2 {
+        display: block;
+      }
+      .field-name-field-description {
+        display: none;
+      }
+    }
+  }
+
+  &[data-eq-state="widescreen"] {
+    article {
+      position: relative !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 45%;
+      float: left;
+      padding-right: 1em;
+    }
+  }
+}
+
+footer {
+  display: none;
+}
+
+//ILR at 70
+#block-bean-70th-reflections-featured {
+  img {
+    width: 150px;
+  }
+}
+
+#block-bean-70th-reflections {
+  height: auto !important;
+  overflow: auto;
+  h2 {
+    display: none;
+  }
+  article.node-reflection {
+    border: none;
+    border-bottom: 1px solid $gray-light;
+    margin-top: 2em;
+    padding-bottom: 2em;
+    width: 100%;
+    float: none;
+    &:nth-last-of-type(1) {
+      margin-bottom: 2em;
+    }
+    h2 {
+      display: block;
+    }
+  }
+}
+
+#block-bean-70th-timeline {
+  display: none;
+}
+
+#content-bottom .block-ilr-reflection {
+  h2 {
+    display: none;
+  }
+  .node-reflection-form {
+    display: none;
+  }
+}
+
+ul.social-share {
+  display: none;
+}
+
+//Directory and faculty profiles
+#block-views-people-profile-teasers-block {
+  article.node-people-profile {
+    width: 33%;
+    min-height: 260px;
+    float: left;
+    margin-bottom: 2em;
+  }
+}
+
+article.node-people-profile {
+  h1.title {
+    display: none;
+  }
+  .group-highlighted {
+    margin-bottom: 1em;
+  }
+  .field-type-image {
+    img {
+      width: 120px;
+    }
+  }
+  .group-title-and-focus {
+    .crumb {
+      display: none;
+    }
+  }
+}
+
+#letters-listing {
+  display: none;
+}
+
+.readmore-js-section {
+  height: auto !important;
+}
+
+a.readmore-js-toggle {
+  display: none;
+}
+
+.group-sidebar {
+  .field-name-field-profile-image {
+    display: none;
+  }
+}
