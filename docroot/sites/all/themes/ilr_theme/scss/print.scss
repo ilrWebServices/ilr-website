@@ -7,12 +7,6 @@
 // Modular Scale
 @import "modular-scale";
 
-// Grid
-// @import "singularitygs";
-// @import "singularity-extras";
-// @import "breakpoint";
-// @import "vendor/eq";
-
 // Variables
 $page-max-width: 1600px;
 $base-font-size: 14px;
@@ -69,7 +63,6 @@ header {
       padding-left: 5px;
     }
   }
-  // position: absolute;
   #search-form {
     display: none;
   }
