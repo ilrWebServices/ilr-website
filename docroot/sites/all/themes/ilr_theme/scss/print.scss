@@ -86,25 +86,49 @@ body.front {
     float: none;
     article {
       margin-bottom: 1em !important;
-      width: 45% !important;
-      float: left;
       padding-right: 1em;
+      h2 {
+        @include adjust-font-size-to(20px);
+        @include adjust-leading-to(1);
+      }
+      .field-name-field-image {
+        float: left;
+        margin-right: 1em;
+      }
       img {
-        width: 150px;
+        width: 100px;
         height: auto;
+        &.image-style-focussed_thumbnail {
+          border-radius: 50%;
+        }
       }
-      .field-name-field-description {
-        display: none;
+      h2.event-title {
+        float: left;
+        clear: none;
       }
-      //need to remove br tag so date will display correctly for print
       .thumbnail.custom.event {
+        float: left;
+        margin-right: 1em;
+        margin-bottom: 1em;
+        clear: left;
         span {
-          br {
+          @include adjust-font-size-to(20px);
+          @include adjust-leading-to(1);
+          br { //remove br tag so date will display correctly for print
             // display: none;
           }
         }
       }
     }
+  }
+}
+
+.field-name-field-highlighted-region {
+  article.node-promo {
+    display: flex;
+    flex-direction: column;
+    .field-name-field-image         { order: 1; }
+    h2                              { order: 2; }
   }
 }
 
@@ -116,21 +140,31 @@ body.front {
       clear: both;
       article {
         margin: 0 0 2em !important;
-        width: 45%;
-        float: left;
         padding-right: 1em;
+        h2 {
+          @include adjust-font-size-to(18px);
+          @include adjust-leading-to(1);
+        }
+        .field-name-field-image {
+          float: left;
+          margin-right: 1em;
+        }
         img {
-          width: 150px;
+          width: 100px;
           height: auto;
+          &.image-style-focussed_thumbnail {
+            border-radius: 50%;
+          }
         }
         .field-type-text-with-summary {
-          display: none;
+          p {
+            margin-bottom: .8em;
+          }
         }
       }
     }
   }
 }
-
 
 body.subsite-front {
   &.ilr-online {
@@ -198,6 +232,7 @@ article {
 #content-bottom {
   background: white;
   width: 100%;
+  margin: 0 1em;
   .block.block-bean.tagged-content {
     h2 {
       display: none;
@@ -205,9 +240,6 @@ article {
     article {
       h2 {
         display: block;
-      }
-      .field-name-field-description {
-        display: none;
       }
     }
   }
@@ -217,8 +249,6 @@ article {
       position: relative !important;
       top: 0 !important;
       left: 0 !important;
-      width: 45%;
-      float: left;
       padding-right: 1em;
     }
   }
