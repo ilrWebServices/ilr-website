@@ -67,7 +67,10 @@ header {
     display: none;
   }
   #header-region {
-    .subsite-header, .menu-block-ilr-primary-menu {
+    // .subsite-header, .menu-block-ilr-primary-menu {
+    //   display: none;
+    // }
+    .menu-block-ilr-primary-menu {
       display: none;
     }
     #block-ilr-mega-menu-ilr-mega-menu {
@@ -129,6 +132,9 @@ body.front {
     flex-direction: column;
     .field-name-field-image         { order: 1; }
     h2                              { order: 2; }
+    h2 {
+      font-style: italic;
+    }
   }
 }
 
@@ -166,7 +172,8 @@ body.front {
   }
 }
 
-body.subsite-front {
+//Sub site branding
+.subsite {
   &.ilr-online {
     .container[data-eq-state="regular-nav"] {
       #main {
@@ -177,6 +184,77 @@ body.subsite-front {
         #sidebar-second {
           width: 100%;
           clear: both;
+        }
+      }
+    }
+  }
+  &.worker-institute {
+    #header-region {
+      background-color: $gray-wi;
+      .subsite-header {
+        h2 {
+          margin: 0 !important;
+          padding-top: 1em;
+          padding-left: .5em;
+        }
+      }
+    }
+  }
+  &.mobilizing-against-inequality,
+  &.uli,
+  &.uale-2013-ne,
+  &.national-labor-leadership-init {
+    #header-region {
+      background-color: $gray-wi;
+      padding: 1em;
+      .subsite-header {
+        p {
+          background: url(../images/logo-worker-institute-no-slogan.svg) no-repeat 0 0;
+          a {
+            color: transparent !important;
+            border-bottom: none;
+            display: block;
+            height: 18px;
+            width: 180px;
+          }
+        }
+        h2 {
+          margin-top: 0;
+          color: white;
+        }
+      }
+    }
+  }
+  &.ilr-at-70 {
+    #header-region {
+      background-color: $brown;
+      .subsite-header {
+        h2 {
+          padding: .5em;
+        }
+      }
+    }
+  }
+  &.ilr-review {
+    header {
+      .logo-wrapper {
+        background: white;
+      }
+      #header-region {
+        background: $blue-ilrreview url("../images/bg-globe-blue.gif") no-repeat left top;
+        .subsite-header {
+          a {
+            color: white;
+            font-family: $font;
+          }
+          h2 {
+            @include adjust-font-size-to(40px);
+            @include adjust-leading-to(1);
+            margin-bottom: 0;
+            padding: 1.25em 0 1.25em .4em;
+            font-style: italic;
+            font-weight: 300;
+          }
         }
       }
     }
@@ -219,7 +297,7 @@ body.subsite-front {
   }
 }
 
-.rss-icon {
+.rss-icon, .tower {
   display: none;
 }
 
