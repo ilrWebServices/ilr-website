@@ -66,7 +66,6 @@ dependencies[] = ilr_workspan
 dependencies[] = ilr_xml_blocks
 dependencies[] = jpanelmenu
 dependencies[] = localist_block
-dependencies[] = microfilm_microfiche
 dependencies[] = news
 dependencies[] = people_profile_import
 dependencies[] = people_profiles
