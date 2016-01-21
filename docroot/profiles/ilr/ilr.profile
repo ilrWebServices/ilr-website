@@ -162,6 +162,39 @@ function ilr_wysiwyg_editor_settings_alter(&$settings, $context) {
 }
 
 /**
+ * Implements hook_page_alter().
+ * Checks for now-defunct requests for the library pages and
+ * redirects the request to the appropriate url
+ */
+function ilr_page_alter(&$page) {
+  $status = drupal_get_http_header('Status');
+  $request_path = request_path();
+  if ($status == '404 Not Found' && strpos($request_path, 'library') === 0) {
+    drupal_add_http_header('Status', '303 See Other');
+    switch (TRUE) {
+      case strstr($request_path, 'kheel-center'):
+        $uri = '/kheel';
+        break;
+      case strstr($request_path, 'collections'):
+        $uri = '/collections';
+        break;
+      case strstr($request_path, 'workplace-issues-today'):
+        $uri = '/workplace-issues-today';
+        break;
+      case strstr($request_path, 'research'):
+        $uri = '/research';
+        break;
+      default:
+        $uri = '/';
+        break;
+    }
+    $url = 'http://catherwood.library.cornell.edu' . $uri;
+    // Unset the request destination to avoid redirect hijacking in drupal_goto
+    unset($_GET['destination']);
+    drupal_goto($url, array("external" => TRUE));
+  }
+}
+/**
  * Validation callback
  * See ilr_form_user_register_form_alter
  */
