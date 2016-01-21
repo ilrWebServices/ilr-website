@@ -550,18 +550,6 @@ function _process_fex_wisp_sponsor_registration(&$entityform) {
   _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject);
 }
 
-/**
- * Process WIT email list subscribe / unsubscribe: one email to lyris, one to the user
- */
-function _process_wit_email_list_subscribe(&$entityform) {
-  $from = 'catherwoodWIT@cornell.edu';
-  $email_list = 'wit-l';
-  _forms_send_lyris_email($entityform, $from, $email_list);
-
-  $admin_email = _forms_get_admin_email($entityform);
-  _forms_send_emails($entityform, $admin_email);
-}
-
 function _process_alumni_eNews_subscribe(&$entityform) {
   $from = 'jlw85@cornell.edu';
   $email_list = 'ilr_alumni-l';
@@ -664,26 +652,6 @@ function _forms_send_remedy_email(&$entityform, $remedy_email, $subject='Email t
   $to = $remedy_email;
   $from = $user_email;
   _send_email_for_entity_form($to, $from, $subject, $body);
-}
-
-
-
-/**
- * Process Library contact form
- */
-function _process_library_contact_form(&$entityform) {
-  $wrapper = _forms_entityform_wrapper($entityform);
-  $admin_email = $wrapper->field_library_how_to_direct->value() . '@cornell.edu';
-  _forms_send_emails($entityform, $admin_email);
-}
-
-function _forms_library_contact_options() {
-  return array(
-    'ilrlib' => 'General Information',
-    'ilrcirc' => 'Circulation',
-    'kheel_center' => 'Kheel Center',
-    'ilrref' => 'Research',
-  );
 }
 
 /**

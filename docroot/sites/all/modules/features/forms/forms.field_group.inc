@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function forms_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -36,7 +36,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_7th_semester_check|entityform|undergrad_appl_for_graduation|form'] = $field_group;
+  $field_groups['group_7th_semester_check|entityform|undergrad_appl_for_graduation|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -73,7 +73,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_academics_dublin|entityform|dublin_application_form|default'] = $field_group;
+  $field_groups['group_academics_dublin|entityform|dublin_application_form|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -110,7 +110,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_academics_dublin|entityform|dublin_application_form|email'] = $field_group;
+  $field_groups['group_academics_dublin|entityform|dublin_application_form|email'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -147,7 +147,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_academics_dublin|entityform|dublin_application_form|form'] = $field_group;
+  $field_groups['group_academics_dublin|entityform|dublin_application_form|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -175,7 +175,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_acknowledgment|entityform|job_postings_for_ilr_alumni|form'] = $field_group;
+  $field_groups['group_acknowledgment|entityform|job_postings_for_ilr_alumni|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -208,7 +208,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_applicant_information|entityform|grad_travel_grant_application|default'] = $field_group;
+  $field_groups['group_applicant_information|entityform|grad_travel_grant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -241,7 +241,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_applicant_information|entityform|grad_travel_grant_application|form'] = $field_group;
+  $field_groups['group_applicant_information|entityform|grad_travel_grant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -275,7 +275,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_applicant_information|entityform|nlli_participant_application|default'] = $field_group;
+  $field_groups['group_applicant_information|entityform|nlli_participant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -309,7 +309,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_applicant_information|entityform|nlli_participant_application|form'] = $field_group;
+  $field_groups['group_applicant_information|entityform|nlli_participant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -343,7 +343,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_applicant_information|entityform|uli_participant_application|default'] = $field_group;
+  $field_groups['group_applicant_information|entityform|uli_participant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -377,7 +377,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_applicant_information|entityform|uli_participant_application|form'] = $field_group;
+  $field_groups['group_applicant_information|entityform|uli_participant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -405,7 +405,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_approval_statement|entityform|nlli_sponsoring_union_nomination|default'] = $field_group;
+  $field_groups['group_approval_statement|entityform|nlli_sponsoring_union_nomination|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -433,7 +433,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_approval_statement|entityform|nlli_sponsoring_union_nomination|form'] = $field_group;
+  $field_groups['group_approval_statement|entityform|nlli_sponsoring_union_nomination|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -473,7 +473,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_billing_information|entityform|job_postings_for_ilr_alumni|default'] = $field_group;
+  $field_groups['group_billing_information|entityform|job_postings_for_ilr_alumni|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -513,7 +513,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_billing_information|entityform|job_postings_for_ilr_alumni|form'] = $field_group;
+  $field_groups['group_billing_information|entityform|job_postings_for_ilr_alumni|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -546,7 +546,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_college_address|entityform|dublin_application_form|default'] = $field_group;
+  $field_groups['group_college_address|entityform|dublin_application_form|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -579,7 +579,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_college_address|entityform|dublin_application_form|email'] = $field_group;
+  $field_groups['group_college_address|entityform|dublin_application_form|email'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -612,7 +612,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_college_address|entityform|dublin_application_form|form'] = $field_group;
+  $field_groups['group_college_address|entityform|dublin_application_form|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -644,7 +644,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_conference_details|entityform|distance_learning_reservation_re|default'] = $field_group;
+  $field_groups['group_conference_details|entityform|distance_learning_reservation_re|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -676,7 +676,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_conference_details|entityform|distance_learning_reservation_re|form'] = $field_group;
+  $field_groups['group_conference_details|entityform|distance_learning_reservation_re|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -707,7 +707,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_conference_fieldset|entityform|grad_travel_grant_application|default'] = $field_group;
+  $field_groups['group_conference_fieldset|entityform|grad_travel_grant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -738,7 +738,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_conference_fieldset|entityform|grad_travel_grant_application|form'] = $field_group;
+  $field_groups['group_conference_fieldset|entityform|grad_travel_grant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -770,7 +770,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_contact_information|entityform|classroom_technologies_request|default'] = $field_group;
+  $field_groups['group_contact_information|entityform|classroom_technologies_request|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -802,7 +802,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_contact_information|entityform|classroom_technologies_request|form'] = $field_group;
+  $field_groups['group_contact_information|entityform|classroom_technologies_request|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -835,7 +835,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_contact_information|entityform|distance_learning_reservation_re|default'] = $field_group;
+  $field_groups['group_contact_information|entityform|distance_learning_reservation_re|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -868,7 +868,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_contact_information|entityform|distance_learning_reservation_re|form'] = $field_group;
+  $field_groups['group_contact_information|entityform|distance_learning_reservation_re|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -906,7 +906,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_contact_information|entityform|job_postings_for_ilr_alumni|default'] = $field_group;
+  $field_groups['group_contact_information|entityform|job_postings_for_ilr_alumni|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -944,7 +944,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_contact_information|entityform|job_postings_for_ilr_alumni|form'] = $field_group;
+  $field_groups['group_contact_information|entityform|job_postings_for_ilr_alumni|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -974,7 +974,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_cornell_site_details|entityform|distance_learning_reservation_re|default'] = $field_group;
+  $field_groups['group_cornell_site_details|entityform|distance_learning_reservation_re|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1004,7 +1004,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_cornell_site_details|entityform|distance_learning_reservation_re|form'] = $field_group;
+  $field_groups['group_cornell_site_details|entityform|distance_learning_reservation_re|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1032,7 +1032,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_degree_plan|entityform|grad_student_appl_for_graduation|form'] = $field_group;
+  $field_groups['group_degree_plan|entityform|grad_student_appl_for_graduation|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1063,7 +1063,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_dublin_essays|entityform|dublin_application_form|default'] = $field_group;
+  $field_groups['group_dublin_essays|entityform|dublin_application_form|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1094,7 +1094,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_dublin_essays|entityform|dublin_application_form|email'] = $field_group;
+  $field_groups['group_dublin_essays|entityform|dublin_application_form|email'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1125,7 +1125,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_dublin_essays|entityform|dublin_application_form|form'] = $field_group;
+  $field_groups['group_dublin_essays|entityform|dublin_application_form|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1154,7 +1154,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_educational_background|entityform|uli_participant_application|default'] = $field_group;
+  $field_groups['group_educational_background|entityform|uli_participant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1183,7 +1183,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_educational_background|entityform|uli_participant_application|form'] = $field_group;
+  $field_groups['group_educational_background|entityform|uli_participant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1210,7 +1210,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_employment_history_group|entityform|nlli_participant_application|default'] = $field_group;
+  $field_groups['group_employment_history_group|entityform|nlli_participant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1238,7 +1238,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_employment_history_group|entityform|nlli_participant_application|form'] = $field_group;
+  $field_groups['group_employment_history_group|entityform|nlli_participant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1265,7 +1265,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_employment_history_group|entityform|uli_participant_application|default'] = $field_group;
+  $field_groups['group_employment_history_group|entityform|uli_participant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1293,7 +1293,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_employment_history_group|entityform|uli_participant_application|form'] = $field_group;
+  $field_groups['group_employment_history_group|entityform|uli_participant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1324,7 +1324,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_experience|entityform|ilr_student_advisor_application_|default'] = $field_group;
+  $field_groups['group_experience|entityform|ilr_student_advisor_application_|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1355,7 +1355,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_experience|entityform|ilr_student_advisor_application_|form'] = $field_group;
+  $field_groups['group_experience|entityform|ilr_student_advisor_application_|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1383,7 +1383,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_financial_approval|entityform|uli_sponsoring_union_nomination_|form'] = $field_group;
+  $field_groups['group_financial_approval|entityform|uli_sponsoring_union_nomination_|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1420,7 +1420,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_financial_officer_info|entityform|nlli_sponsoring_union_nomination|default'] = $field_group;
+  $field_groups['group_financial_officer_info|entityform|nlli_sponsoring_union_nomination|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1457,7 +1457,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_financial_officer_info|entityform|nlli_sponsoring_union_nomination|form'] = $field_group;
+  $field_groups['group_financial_officer_info|entityform|nlli_sponsoring_union_nomination|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1494,7 +1494,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_financial_officer_info|entityform|uli_sponsoring_union_nomination_|default'] = $field_group;
+  $field_groups['group_financial_officer_info|entityform|uli_sponsoring_union_nomination_|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1531,7 +1531,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_financial_officer_info|entityform|uli_sponsoring_union_nomination_|form'] = $field_group;
+  $field_groups['group_financial_officer_info|entityform|uli_sponsoring_union_nomination_|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1559,7 +1559,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_graduation_date|entityform|grad_student_appl_for_graduation|form'] = $field_group;
+  $field_groups['group_graduation_date|entityform|grad_student_appl_for_graduation|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1587,7 +1587,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_graduation_date|entityform|undergrad_appl_for_graduation|form'] = $field_group;
+  $field_groups['group_graduation_date|entityform|undergrad_appl_for_graduation|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1620,7 +1620,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_home_address|entityform|dublin_application_form|default'] = $field_group;
+  $field_groups['group_home_address|entityform|dublin_application_form|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1653,7 +1653,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_home_address|entityform|dublin_application_form|email'] = $field_group;
+  $field_groups['group_home_address|entityform|dublin_application_form|email'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1686,7 +1686,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_home_address|entityform|dublin_application_form|form'] = $field_group;
+  $field_groups['group_home_address|entityform|dublin_application_form|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1717,7 +1717,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_home_address|entityform|nlli_participant_application|default'] = $field_group;
+  $field_groups['group_home_address|entityform|nlli_participant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1749,7 +1749,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_home_address|entityform|nlli_participant_application|form'] = $field_group;
+  $field_groups['group_home_address|entityform|nlli_participant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1781,7 +1781,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_home_address|entityform|uli_participant_application|default'] = $field_group;
+  $field_groups['group_home_address|entityform|uli_participant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1813,7 +1813,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_home_address|entityform|uli_participant_application|form'] = $field_group;
+  $field_groups['group_home_address|entityform|uli_participant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1845,7 +1845,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_leadership_questions|entityform|nlli_participant_application|default'] = $field_group;
+  $field_groups['group_leadership_questions|entityform|nlli_participant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1878,7 +1878,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_leadership_questions|entityform|nlli_participant_application|form'] = $field_group;
+  $field_groups['group_leadership_questions|entityform|nlli_participant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1908,7 +1908,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_letters_of_support|entityform|employee_recognition_nomination_|default'] = $field_group;
+  $field_groups['group_letters_of_support|entityform|employee_recognition_nomination_|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1939,7 +1939,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_letters_of_support|entityform|employee_recognition_nomination_|form'] = $field_group;
+  $field_groups['group_letters_of_support|entityform|employee_recognition_nomination_|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1971,7 +1971,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_name_for_diploma|entityform|undergrad_appl_for_graduation|form'] = $field_group;
+  $field_groups['group_name_for_diploma|entityform|undergrad_appl_for_graduation|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2004,7 +2004,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_name_student_id|entityform|grad_student_appl_for_graduation|form'] = $field_group;
+  $field_groups['group_name_student_id|entityform|grad_student_appl_for_graduation|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2037,7 +2037,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_nominator|entityform|employee_recognition_nomination_|default'] = $field_group;
+  $field_groups['group_nominator|entityform|employee_recognition_nomination_|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2070,7 +2070,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_nominator|entityform|employee_recognition_nomination_|form'] = $field_group;
+  $field_groups['group_nominator|entityform|employee_recognition_nomination_|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2110,7 +2110,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_nominee_information|entityform|nlli_sponsoring_union_nomination|default'] = $field_group;
+  $field_groups['group_nominee_information|entityform|nlli_sponsoring_union_nomination|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2150,7 +2150,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_nominee_information|entityform|nlli_sponsoring_union_nomination|form'] = $field_group;
+  $field_groups['group_nominee_information|entityform|nlli_sponsoring_union_nomination|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2180,7 +2180,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_nominee_information|entityform|uli_financial_aid_appl|default'] = $field_group;
+  $field_groups['group_nominee_information|entityform|uli_financial_aid_appl|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2210,7 +2210,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_nominee_information|entityform|uli_financial_aid_appl|form'] = $field_group;
+  $field_groups['group_nominee_information|entityform|uli_financial_aid_appl|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2252,7 +2252,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_nominee_information|entityform|uli_sponsoring_union_nomination_|default'] = $field_group;
+  $field_groups['group_nominee_information|entityform|uli_sponsoring_union_nomination_|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2294,7 +2294,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_nominee_information|entityform|uli_sponsoring_union_nomination_|form'] = $field_group;
+  $field_groups['group_nominee_information|entityform|uli_sponsoring_union_nomination_|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2325,7 +2325,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_nominee|entityform|employee_recognition_nomination_|default'] = $field_group;
+  $field_groups['group_nominee|entityform|employee_recognition_nomination_|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2356,7 +2356,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_nominee|entityform|employee_recognition_nomination_|form'] = $field_group;
+  $field_groups['group_nominee|entityform|employee_recognition_nomination_|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2391,7 +2391,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_other_funding_fieldset|entityform|grad_travel_grant_application|default'] = $field_group;
+  $field_groups['group_other_funding_fieldset|entityform|grad_travel_grant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2426,7 +2426,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_other_funding_fieldset|entityform|grad_travel_grant_application|form'] = $field_group;
+  $field_groups['group_other_funding_fieldset|entityform|grad_travel_grant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2457,7 +2457,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_passport_information|entityform|dublin_application_form|default'] = $field_group;
+  $field_groups['group_passport_information|entityform|dublin_application_form|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2488,7 +2488,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_passport_information|entityform|dublin_application_form|email'] = $field_group;
+  $field_groups['group_passport_information|entityform|dublin_application_form|email'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2519,7 +2519,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_passport_information|entityform|dublin_application_form|form'] = $field_group;
+  $field_groups['group_passport_information|entityform|dublin_application_form|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2551,7 +2551,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_permanent_address|entityform|ilr_student_advisor_application_|default'] = $field_group;
+  $field_groups['group_permanent_address|entityform|ilr_student_advisor_application_|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2583,7 +2583,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_permanent_address|entityform|ilr_student_advisor_application_|form'] = $field_group;
+  $field_groups['group_permanent_address|entityform|ilr_student_advisor_application_|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2613,7 +2613,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_phone_numbers|entityform|dublin_application_form|default'] = $field_group;
+  $field_groups['group_phone_numbers|entityform|dublin_application_form|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2643,7 +2643,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_phone_numbers|entityform|dublin_application_form|email'] = $field_group;
+  $field_groups['group_phone_numbers|entityform|dublin_application_form|email'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2673,7 +2673,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_phone_numbers|entityform|dublin_application_form|form'] = $field_group;
+  $field_groups['group_phone_numbers|entityform|dublin_application_form|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2710,7 +2710,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_posting_details|entityform|job_postings_for_ilr_alumni|default'] = $field_group;
+  $field_groups['group_posting_details|entityform|job_postings_for_ilr_alumni|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2746,7 +2746,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_posting_details|entityform|job_postings_for_ilr_alumni|form'] = $field_group;
+  $field_groups['group_posting_details|entityform|job_postings_for_ilr_alumni|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2781,7 +2781,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_questions|entityform|uli_participant_application|default'] = $field_group;
+  $field_groups['group_questions|entityform|uli_participant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2817,7 +2817,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_questions|entityform|uli_participant_application|form'] = $field_group;
+  $field_groups['group_questions|entityform|uli_participant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2844,7 +2844,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_remote_sites|entityform|distance_learning_reservation_re|default'] = $field_group;
+  $field_groups['group_remote_sites|entityform|distance_learning_reservation_re|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2872,7 +2872,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_remote_sites|entityform|distance_learning_reservation_re|form'] = $field_group;
+  $field_groups['group_remote_sites|entityform|distance_learning_reservation_re|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2904,7 +2904,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_reservations|entityform|ilr_alumni_association_event_reg|default'] = $field_group;
+  $field_groups['group_reservations|entityform|ilr_alumni_association_event_reg|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2938,7 +2938,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_reservations|entityform|ilr_alumni_association_event_reg|form'] = $field_group;
+  $field_groups['group_reservations|entityform|ilr_alumni_association_event_reg|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -2977,7 +2977,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_sponsor_information|entityform|nlli_sponsoring_union_nomination|default'] = $field_group;
+  $field_groups['group_sponsor_information|entityform|nlli_sponsoring_union_nomination|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3016,7 +3016,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_sponsor_information|entityform|nlli_sponsoring_union_nomination|form'] = $field_group;
+  $field_groups['group_sponsor_information|entityform|nlli_sponsoring_union_nomination|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3053,7 +3053,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_sponsor_information|entityform|uli_financial_aid_appl|default'] = $field_group;
+  $field_groups['group_sponsor_information|entityform|uli_financial_aid_appl|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3090,7 +3090,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_sponsor_information|entityform|uli_financial_aid_appl|form'] = $field_group;
+  $field_groups['group_sponsor_information|entityform|uli_financial_aid_appl|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3124,7 +3124,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_student_data|entityform|dublin_application_form|default'] = $field_group;
+  $field_groups['group_student_data|entityform|dublin_application_form|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3158,7 +3158,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_student_data|entityform|dublin_application_form|email'] = $field_group;
+  $field_groups['group_student_data|entityform|dublin_application_form|email'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3192,7 +3192,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_student_data|entityform|dublin_application_form|form'] = $field_group;
+  $field_groups['group_student_data|entityform|dublin_application_form|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3225,7 +3225,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_summer_address|entityform|ilr_student_advisor_application_|default'] = $field_group;
+  $field_groups['group_summer_address|entityform|ilr_student_advisor_application_|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3258,7 +3258,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_summer_address|entityform|ilr_student_advisor_application_|form'] = $field_group;
+  $field_groups['group_summer_address|entityform|ilr_student_advisor_application_|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3296,7 +3296,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_type_of_support_needed|entityform|classroom_technologies_request|default'] = $field_group;
+  $field_groups['group_type_of_support_needed|entityform|classroom_technologies_request|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3335,7 +3335,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_type_of_support_needed|entityform|classroom_technologies_request|form'] = $field_group;
+  $field_groups['group_type_of_support_needed|entityform|classroom_technologies_request|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3367,7 +3367,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_union_address|entityform|uli_participant_application|default'] = $field_group;
+  $field_groups['group_union_address|entityform|uli_participant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3399,7 +3399,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_union_address|entityform|uli_participant_application|form'] = $field_group;
+  $field_groups['group_union_address|entityform|uli_participant_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3438,7 +3438,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_union_sponsor_information|entityform|uli_sponsoring_union_nomination_|default'] = $field_group;
+  $field_groups['group_union_sponsor_information|entityform|uli_sponsoring_union_nomination_|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3477,7 +3477,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_union_sponsor_information|entityform|uli_sponsoring_union_nomination_|form'] = $field_group;
+  $field_groups['group_union_sponsor_information|entityform|uli_sponsoring_union_nomination_|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3510,7 +3510,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_when_and_where|entityform|classroom_technologies_request|default'] = $field_group;
+  $field_groups['group_when_and_where|entityform|classroom_technologies_request|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3543,7 +3543,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_when_and_where|entityform|classroom_technologies_request|form'] = $field_group;
+  $field_groups['group_when_and_where|entityform|classroom_technologies_request|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3574,7 +3574,7 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_work_address|entityform|nlli_participant_application|default'] = $field_group;
+  $field_groups['group_work_address|entityform|nlli_participant_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3606,7 +3606,56 @@ function forms_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_work_address|entityform|nlli_participant_application|form'] = $field_group;
+  $field_groups['group_work_address|entityform|nlli_participant_application|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('7th Semester Check');
+  t('Academics');
+  t('Acknowledgment');
+  t('Applicant Information');
+  t('Approval Statement');
+  t('Billing Information');
+  t('College address');
+  t('Conference');
+  t('Conference Details');
+  t('Contact Information');
+  t('Cornell Site Details');
+  t('Degree Plan');
+  t('Educational Background');
+  t('Employment History');
+  t('Essays');
+  t('Financial Approval');
+  t('Financial Officer Information');
+  t('Graduation Date');
+  t('Home Address');
+  t('Home address');
+  t('Leadership Questions');
+  t('Letters of Support');
+  t('Name and Student ID');
+  t('Name for Diploma');
+  t('Nominator');
+  t('Nominee');
+  t('Nominee Information');
+  t('Other Funding');
+  t('Participant Information (Union Nominee)');
+  t('Passport information');
+  t('Permanent address');
+  t('Phone numbers');
+  t('Posting Details');
+  t('Questions');
+  t('Remote Sites');
+  t('Reservations');
+  t('Sponsor information');
+  t('Sponsor information (for contact purposes)');
+  t('Student Information');
+  t('Summer address');
+  t('Type of Support Needed');
+  t('Union Address');
+  t('Union Sponsor Information');
+  t('When and Where?');
+  t('Work Address');
+  t('Your thoughts and experience');
+
+  return $field_groups;
 }

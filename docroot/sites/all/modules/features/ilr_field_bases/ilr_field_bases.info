@@ -235,7 +235,6 @@ features[field_base][] = field_last_name_additional_2
 features[field_base][] = field_leadership_positions
 features[field_base][] = field_leadership_role
 features[field_base][] = field_letter_of_support
-features[field_base][] = field_library_how_to_direct
 features[field_base][] = field_link_type
 features[field_base][] = field_local
 features[field_base][] = field_local_address
