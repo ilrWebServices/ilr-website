@@ -664,3 +664,45 @@ function ilr_update_7052() {
     }
   }
 }
+
+/**
+ * Removes additional library-related db artifacts
+ */
+function ilr_update_7053() {
+  $result = db_query('SELECT pid, source FROM {url_alias} WHERE alias LIKE :pattern',
+    array(':pattern' => db_like('library/') . '%'));
+  $aliases = $result->fetchAllKeyed();
+
+  $nids = []; // Get ready to store the library nids
+  foreach ($aliases as $pid => $source) {
+    $nids[] = substr(strstr($source, '/'),1);
+    path_delete($pid);
+  }
+  path_delete(316091); // The main library alias
+  $nids[] = 255656; // The main library page
+  node_delete_multiple($nids);
+
+  // Now delete the entityforms and entityform types
+  $types = array('wit_email_list_subscribe', 'library_contact_form');
+  $result = db_select('entityform')
+    ->fields('entityform', array('entityform_id'))
+    ->condition('type', $types)
+    ->execute()
+    ->fetchAll();
+  $eids = $operations = array();
+  foreach ($result as $row) {
+    $eids[] = $row->entityform_id;
+  }
+  entityform_delete_multiple($eids);
+
+  foreach ($types as $key => $type) {
+    foreach (field_info_instances('entityform_type', $type) as $field_name => $field) {
+      field_delete_instance($field);
+    }
+    if ($entityform_type = entityform_type_load($type)) {
+      entityform_type_delete($entityform_type);
+    }
+  }
+
+  field_purge_batch(10);
+}
