@@ -1,0 +1,122 @@
+// Establish the layout and overrides
+body.node-type-experience-report {
+  .container[data-eq-state="regular-nav"] {
+    #main {
+      #content {
+        @include grid-span(12);
+        @include add-gutter(1);
+        .section {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+  .container[data-eq-state="mobile-nav"] {
+    #main { padding: 0; }
+  }
+  #breadcrumb {
+    @include grid-span (9,3);
+    .breadcrumb {
+      padding-bottom: 25px; //half of negative top position of img
+    }
+  }
+  #page-title {
+    display: none;
+  }
+}
+
+article.node-experience-report {
+  .group-highlighted {
+    @include layout(9 3) {
+      @include grid-span(2);
+    }
+    height: 270px;
+    @include trailer(2);
+    background: #2099b7;
+    .field-group-html-element {
+      @include grid-span (4,3);
+      color: white;
+      h1 {
+        color: white;
+        font-family: $font;
+      }
+    }
+    .field-name-field-image {
+      @include grid-span (4,7);
+      text-align: center;
+      img {
+        position: relative;
+        z-index: 2;
+        top: -50px;
+        height: 320px;
+        width: 320px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .group-title-and-focus {
+    @include padding-leader(1);
+    #main[data-eq-state="widescreen"] & {
+      @include padding-leader(1);
+    }
+    .container[data-eq-state="mobile-nav"] & {
+      @include padding-trailer(2);
+    }
+    padding-left: 0;
+
+    #main[data-eq-state="320"] &,
+    #main[data-eq-state="550"] & {
+      padding-right: 2em;
+      .field {
+        text-align: center;
+      }
+    }
+    .crumb {
+      text-transform: uppercase;
+      color: $spotlight-color;
+      @include adjust-font-size-to(14px);
+      display: none;
+    }
+    // .title {
+    //   margin-bottom: 0;
+    // }
+    .field-name-field-program {
+      @include adjust-font-size-to(28px);
+      @include adjust-leading-to(1);
+    }
+  }
+
+  .group-main-content {
+    @include grid-span(9,4);
+    .field {
+      max-width: $section-max-width;
+      overflow: hidden;
+      ul {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .container[data-eq-state="mobile-nav"] & {
+    .group-main-content,
+    .group-sidebar {
+      padding: 0 2em;
+    }
+  }
+
+  #main[data-eq-state="320"] & {
+    .group-main-content,
+    .group-sidebar {
+      padding: 0 1em;
+    }
+  }
+
+  .group-sidebar {
+    @include trailer(2);
+    .field-label { // Sidebar headings
+      margin-bottom: .5em;
+      @include leader(1);
+    }
+  }
+}
