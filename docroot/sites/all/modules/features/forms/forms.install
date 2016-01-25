@@ -53,6 +53,14 @@ function forms_update_7004() {
 }
 
 /**
+ * Delete entityform submissions for social_impact_career_forum_reg
+ */
+function forms_update_7005() {
+  _forms_delete_entityform_submissions('social_impact_career_forum_reg');
+}
+
+
+/**
  * Delete array of field instances
  * @param $fields_info
  */
@@ -70,4 +78,21 @@ function _forms_delete_entityform_field_instances($fields_info) {
    * case a few other miscellaneous fields are in there somehow.
    */
   field_purge_batch($delete_count + 5);
+}
+
+/**
+ * Delete entityform submissions
+ * @param $entityformtype
+ */
+function _forms_delete_entityform_submissions($entityform_type) {
+  $result = db_select('entityform')
+    ->fields('entityform', array('entityform_id'))
+    ->condition('type', $entityform_type)
+    ->execute()
+    ->fetchAll();
+  $eids = array();
+  foreach ($result as $row) {
+    $eids[] = $row->entityform_id;
+  }
+  entityform_delete_multiple($eids);
 }
