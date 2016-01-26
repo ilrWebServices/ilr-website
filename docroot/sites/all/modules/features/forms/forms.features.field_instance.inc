@@ -714,6 +714,7 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_how_heard_emhrm',
     'label' => 'How did you hear about us? (check all that apply)',
     'required' => 1,
