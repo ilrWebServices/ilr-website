@@ -1612,9 +1612,11 @@ function forms_default_entityform_type() {
         "36" : 0,
         "21" : 0,
         "26" : 0,
-        "31" : 0
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
       },
-      "resubmit_action" : "new",
+      "resubmit_action" : "disallow",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 1,
