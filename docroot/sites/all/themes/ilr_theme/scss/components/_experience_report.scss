@@ -27,23 +27,44 @@ body.node-type-experience-report {
 
 article.node-experience-report {
   .group-highlighted {
-    @include layout(9 3) {
-      @include grid-span(2);
-    }
     height: 270px;
     @include trailer(2);
-    background: #2099b7;
-    .field-group-html-element {
+    background: $promo-color; //$student-portrait-color
+
+    .group-title-and-focus {
       @include grid-span (4,3);
+      @include padding-leader(1);
+      #main[data-eq-state="widescreen"] & {
+        @include padding-leader(1);
+      }
+      .container[data-eq-state="mobile-nav"] & {
+        @include padding-trailer(2);
+      }
+      padding-left: 0;
       color: white;
       h1 {
         color: white;
         font-family: $font;
       }
+
+      // .title {
+      //   margin-bottom: 0;
+      // }
+
+      // .crumb {
+      //   text-transform: uppercase;
+      //   color: $spotlight-color;
+      //   @include adjust-font-size-to(14px);
+      //   display: none;
+      // }
+    }
+
+    .field-name-field-program {
+      @include adjust-font-size-to(28px);
+      @include adjust-leading-to(1);
     }
     .field-name-field-image {
       @include grid-span (4,7);
-      text-align: center;
       img {
         position: relative;
         z-index: 2;
@@ -55,40 +76,8 @@ article.node-experience-report {
     }
   }
 
-  .group-title-and-focus {
-    @include padding-leader(1);
-    #main[data-eq-state="widescreen"] & {
-      @include padding-leader(1);
-    }
-    .container[data-eq-state="mobile-nav"] & {
-      @include padding-trailer(2);
-    }
-    padding-left: 0;
-
-    #main[data-eq-state="320"] &,
-    #main[data-eq-state="550"] & {
-      padding-right: 2em;
-      .field {
-        text-align: center;
-      }
-    }
-    .crumb {
-      text-transform: uppercase;
-      color: $spotlight-color;
-      @include adjust-font-size-to(14px);
-      display: none;
-    }
-    // .title {
-    //   margin-bottom: 0;
-    // }
-    .field-name-field-program {
-      @include adjust-font-size-to(28px);
-      @include adjust-leading-to(1);
-    }
-  }
-
   .group-main-content {
-    @include grid-span(9,4);
+    @include grid-span (9,4);
     .field {
       max-width: $section-max-width;
       overflow: hidden;
@@ -98,8 +87,13 @@ article.node-experience-report {
     }
   }
 
+
+
   .container[data-eq-state="mobile-nav"] & {
-    .group-main-content,
+    .group-main-content {
+      @include grid-span (12);
+      padding: 0 2em;
+    }
     .group-sidebar {
       padding: 0 2em;
     }
@@ -117,6 +111,46 @@ article.node-experience-report {
     .field-label { // Sidebar headings
       margin-bottom: .5em;
       @include leader(1);
+    }
+  }
+}
+
+#main[data-eq-state="550"], #main[data-eq-state="320"] {
+  article.node-experience-report {
+    .group-highlighted {
+      height: auto;
+      overflow: auto;
+      .group-title-and-focus {
+        @include grid-span (12);
+        text-align: center;
+      }
+      .field-name-field-image {
+        @include grid-span (12);
+        text-align: center;
+        img {
+          position: static;
+          z-index: 0;
+          top: 0;
+        }
+      }
+    }
+  }
+}
+
+#main[data-eq-state="550"] {
+  .field-name-field-image {
+    img {
+      height: 270px;
+      width: 270px;
+    }
+  }
+}
+
+#main[data-eq-state="320"] {
+  .field-name-field-image {
+    img {
+      height: 200px;
+      width: 200px;
     }
   }
 }
