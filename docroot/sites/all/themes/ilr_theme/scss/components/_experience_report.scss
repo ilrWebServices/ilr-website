@@ -42,7 +42,17 @@ article.node-experience-report {
       }
       padding-left: 0;
       color: white;
+
+      // .crumb {
+      //   text-transform: uppercase;
+      //   color: $spotlight-color;
+      //   @include adjust-font-size-to(14px);
+      //   display: none;
+      // }
+
       h1 {
+        @include adjust-font-size-to(34px);
+        @include adjust-leading-to(1);
         color: white;
         font-family: $font;
       }
@@ -51,18 +61,12 @@ article.node-experience-report {
       //   margin-bottom: 0;
       // }
 
-      // .crumb {
-      //   text-transform: uppercase;
-      //   color: $spotlight-color;
-      //   @include adjust-font-size-to(14px);
-      //   display: none;
-      // }
+      .field-name-field-program {
+        @include adjust-font-size-to(28px);
+        @include adjust-leading-to(1);
+      }
     }
 
-    .field-name-field-program {
-      @include adjust-font-size-to(28px);
-      @include adjust-leading-to(1);
-    }
     .field-name-field-image {
       @include grid-span (4,7);
       img {
@@ -77,7 +81,8 @@ article.node-experience-report {
   }
 
   .group-main-content {
-    @include grid-span (9,4);
+    // @include grid-span (9,4);
+    @include grid-span (9,3);
     .field {
       max-width: $section-max-width;
       overflow: hidden;
@@ -86,8 +91,6 @@ article.node-experience-report {
       }
     }
   }
-
-
 
   .container[data-eq-state="mobile-nav"] & {
     .group-main-content {
@@ -151,6 +154,61 @@ article.node-experience-report {
     img {
       height: 200px;
       width: 200px;
+    }
+  }
+}
+
+#content-bottom {
+  padding: 1em 3em 3em;
+  body:not(.front):not(.subsite-front) & {
+      background: white;
+  }
+
+  .field-name-field-content-bottom-region {
+    h2 {
+      @include adjust-font-size-to(19px);
+      @include adjust-leading-to(1);
+      display: block !important;
+      visibility: visible;
+      color: $promo-color;
+      margin: 0;
+    }
+    article {
+      //overrides %card styles
+      border: none;
+      margin-top: 2em;
+      margin-bottom: 0;
+      .field-name-field-image {
+        text-align: center;
+        img {
+          border-radius: 50%;
+          height: 150px;
+          width: 150px;
+        }
+      }
+    }
+  }
+
+  article {
+    @extend %one-column;
+    // background: $promo-color;
+    h3 {
+      display: none;
+    }
+  }
+  &[data-eq-state="550"] {
+    article {
+      @extend %two-column;
+    }
+  }
+  &[data-eq-state="768"] {
+    article {
+      @extend %four-column;
+    }
+  }
+  &[data-eq-state="widescreen"] {
+    article {
+      @extend %four-column;
     }
   }
 }
