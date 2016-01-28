@@ -141,19 +141,23 @@ article.node-experience-report {
 }
 
 #main[data-eq-state="550"] {
-  .field-name-field-image {
-    img {
-      height: 270px;
-      width: 270px;
+  .group-highlighted {
+    .field-name-field-image {
+      img {
+        height: 270px;
+        width: 270px;
+      }
     }
   }
 }
 
 #main[data-eq-state="320"] {
-  .field-name-field-image {
-    img {
-      height: 200px;
-      width: 200px;
+  .group-highlighted {
+    .field-name-field-image {
+      img {
+        height: 200px;
+        width: 200px;
+      }
     }
   }
 }
