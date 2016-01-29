@@ -30,10 +30,17 @@ use Drupal\restful\Plugin\resource\ResourceNode;
  *     },
  *   },
  *   majorVersion = 1,
- *   minorVersion = 0
+ *   minorVersion = 0,
  * )
  */
 class Sessions__1_0 extends ResourceNode implements ResourceInterface {
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function dataProviderClassName() {
+    return '\Drupal\ilr_api\Plugin\resource\session\DataProviderSession';
+  }
 
   /**
    * {@inheritdoc}
@@ -43,6 +50,10 @@ class Sessions__1_0 extends ResourceNode implements ResourceInterface {
 
     $public_fields['title'] = $public_fields['label'];
     unset($public_fields['label']);
+
+    $public_fields['description'] = array(
+      'callback' => array($this, 'getDescription'),
+    );
 
     $public_fields['date'] = array(
       'property' => 'field_class_dates',
@@ -55,4 +66,13 @@ class Sessions__1_0 extends ResourceNode implements ResourceInterface {
     return $public_fields;
   }
 
+  public function getDescription($wrapper) {
+    $class = $wrapper->getWrapper()->value();
+    $class_wrapper = ilr_get_node_wrapper($class);
+    if (!empty($class_wrapper->field_course->value())) {
+      $course_wrapper = ilr_get_node_wrapper($class_wrapper->field_course->value());
+      return $course_wrapper->body->value()['summary'];
+    }
+    return '';
+  }
 }
