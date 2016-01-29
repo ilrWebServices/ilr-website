@@ -1,10 +1,12 @@
 // Establish the layout and overrides
+// @include sgs-change('debug', true);
 body.node-type-experience-report {
   .container[data-eq-state="regular-nav"] {
     #main {
       #content {
         @include grid-span(12);
         @include add-gutter(1);
+        // @include background-grid;
         .section {
           max-width: 100%;
         }
@@ -81,7 +83,7 @@ article.node-experience-report {
   }
 
   .group-main-content {
-    // @include grid-span (9,4);
+    // @include grid-span (9,4); with nav
     @include grid-span (9,3);
     .field {
       max-width: $section-max-width;
@@ -158,6 +160,52 @@ article.node-experience-report {
         height: 200px;
         width: 200px;
       }
+    }
+  }
+}
+
+#main {
+  .group-main-content {
+    .field-name-field-image {
+      text-align: center;
+      // img {
+      //   height: 200px;
+      //   width: 200px;
+      // }
+    }
+  }
+}
+
+#main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+  .group-main-content {
+    // .field-type-paragraphs ~ .field-type-paragraphs .paragraphs-item-just-image {
+    //   float: left;
+    //   background: yellow;
+    // }
+    // .field-type-paragraphs ~ .field-type-paragraphs .paragraphs-item-just-text {
+    //   float: left;
+    //   background: orange;
+    // }
+
+    .paragraphs-item-image-with-text {
+      .field-name-field-image {
+        margin-top: 0;
+        // float: left;
+        // width: 50%;
+        @include grid-span (6,1);
+      }
+      .field-name-field-text-paragraph {
+        // float: left;
+        // width: 50%;
+        @include grid-span (6,7);
+        // p:first-child {
+        //   float: left;
+        // }
+      }
+    }
+
+    .field-name-field-image {
+      text-align: left;
     }
   }
 }
