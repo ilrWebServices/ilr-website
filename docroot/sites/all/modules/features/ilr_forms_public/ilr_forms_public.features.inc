@@ -14,6 +14,13 @@ function ilr_forms_public_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function ilr_forms_public_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
+}
+
+/**
  * Implements hook_default_entityform_type().
  */
 function ilr_forms_public_default_entityform_type() {
