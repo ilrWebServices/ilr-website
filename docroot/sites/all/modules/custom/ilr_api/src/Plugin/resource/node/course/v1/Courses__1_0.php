@@ -60,6 +60,10 @@ class Courses__1_0 extends ResourceNode implements ResourceInterface {
       'property' => 'field_course_topic_reference',
     );
 
+    $public_fields['topic_map'] = array(
+      'callback' => array($this, 'getTopicMap'),
+    );
+
     $public_fields['credit_hours'] = array(
       'property' => 'field_credit_hours',
     );
@@ -118,6 +122,15 @@ class Courses__1_0 extends ResourceNode implements ResourceInterface {
   public function getSponsorName($wrapper) {
     $course_wrapper = $wrapper->getWrapper();
     return $course_wrapper->field_course_sponsor_reference->label();
+  }
+
+  public function getTopicMap($wrapper) {
+    $course_wrapper = $wrapper->getWrapper();
+    $topics = [];
+    foreach ($course_wrapper->field_course_topic_reference->getIterator() as $delta => $term_wrapper) {
+      $topics[$term_wrapper->getIdentifier()] = str_replace(' ', '-', strtolower($term_wrapper->name->value()));
+    }
+    return $topics;
   }
 
   private function getLocation($wrapper) {

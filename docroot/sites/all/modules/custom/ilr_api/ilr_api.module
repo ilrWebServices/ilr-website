@@ -11,7 +11,8 @@ function ilr_api_restful_parse_request_alter(&$request) {
     $string_filters = array('topic','sponsor');
     foreach ($string_filters as $key => $filter_name) {
       if (!empty($input['filter'][$filter_name])) {
-        if ($term = taxonomy_get_term_by_name($input['filter'][$filter_name], 'course_' . $filter_name)) {
+        $term_name = str_replace('-', ' ', $input['filter'][$filter_name]);
+        if ($term = taxonomy_get_term_by_name($term_name, 'course_' . $filter_name)) {
           $term = array_values($term);
           $input['filter'][$filter_name] = $term[0]->tid;
           $request->setParsedInput($input);
