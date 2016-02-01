@@ -1,0 +1,7 @@
+name = ILR's RESTful API
+description = Custom RESTful endpoints for the ILR School
+core = 7.x
+
+dependencies[] = restful
+
+registry_autoload[] = PSR-4
