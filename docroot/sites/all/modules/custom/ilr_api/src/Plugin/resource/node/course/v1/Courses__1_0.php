@@ -47,7 +47,7 @@ class Courses__1_0 extends ResourceNode implements ResourceInterface {
     $public_fields['title'] = $public_fields['label'];
     unset($public_fields['label']);
 
-    $public_fields['prefix'] = array(
+    $public_fields['course_number'] = array(
       'property' => 'field_catalog_prefix',
     );
 

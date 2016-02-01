@@ -3,7 +3,8 @@
 
 /**
  * Implements hook_restful_parse_request_alter().
- *
+ * Allows api filtering based on topic and sponsor names,
+ * in addition to the standard tid filtering
  */
 function ilr_api_restful_parse_request_alter(&$request) {
   $input = $request->getParsedInput();
