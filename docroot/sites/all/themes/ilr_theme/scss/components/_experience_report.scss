@@ -196,7 +196,11 @@ article.node-experience-report {
   padding: 1em 3em 3em;
   body:not(.front):not(.subsite-front) & {
       background: white;
+      // @include background-grid($color: gainsboro);
   }
+  // .section {
+  //   @include background-grid;
+  // }
 
   .field-name-field-content-bottom-region {
     h2 {
@@ -208,10 +212,14 @@ article.node-experience-report {
       margin: 0;
     }
     article {
+      @extend %one-column;
       //overrides %card styles
       border: none;
       margin-top: 2em;
       margin-bottom: 0;
+      h3 {
+        display: none;
+      }
       .field-name-field-image {
         text-align: center;
         img {
@@ -223,12 +231,6 @@ article.node-experience-report {
     }
   }
 
-  article {
-    @extend %one-column;
-    h3 {
-      display: none;
-    }
-  }
   &[data-eq-state="550"] {
     article {
       @extend %two-column;
@@ -240,6 +242,9 @@ article.node-experience-report {
     }
   }
   &[data-eq-state="widescreen"] {
+    .section {
+      max-width: 1000px;
+    }
     article {
       @extend %four-column;
     }
