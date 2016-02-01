@@ -46,7 +46,7 @@ article.node-experience-report {
     background: $promo-color; //$student-portrait-color
 
     .group-title-and-focus {
-      @include grid-span (12);
+      // @include grid-span (12);
       @include padding-leader(1);
       text-align: center;
       #main[data-eq-state="widescreen"] & {
@@ -79,7 +79,7 @@ article.node-experience-report {
     }
 
     .field-name-field-image {
-      @include grid-span (12);
+      // @include grid-span (12);
       text-align: center;
       img {
         height: 200px;
@@ -90,8 +90,7 @@ article.node-experience-report {
   }
 
   .group-main-content {
-    // @include grid-span (9,4); with nav
-    @include grid-span (8,3);
+    @include grid-span (10,2);
     .field {
       overflow: hidden;
     }
@@ -100,10 +99,12 @@ article.node-experience-report {
     }
   }
 
-  .container[data-eq-state="mobile-nav"] & {
-    .group-main-content {
-      @include grid-span (10,2);
-    }
+  .container[data-eq-state="regular-nav"] & {
+    // .group-main-content {
+    //   // @include grid-span (9,4); with nav
+    //   @include grid-span (8,3);
+    // }
+
     // .group-sidebar {
     //   //styles
     // }
@@ -128,7 +129,6 @@ article.node-experience-report {
           top: -50px;
           height: 320px;
           width: 320px;
-          border-radius: 50%;
         }
       }
     }
@@ -148,6 +148,9 @@ article.node-experience-report {
 
 #main[data-eq-state="768"] {
   .group-main-content {
+    // @include grid-span (9,4); with nav
+    @include grid-span (8,3);
+
     // .field-type-paragraphs ~ .field-type-paragraphs .paragraphs-item-just-image {
     //   float: left;
     //   background: yellow;
@@ -243,7 +246,7 @@ article.node-experience-report {
   }
   &[data-eq-state="widescreen"] {
     .section {
-      max-width: 1000px;
+      max-width: 960px;
     }
     article {
       @extend %four-column;
