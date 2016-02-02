@@ -8,23 +8,6 @@ body.design-system {
     font-size: 34px;
     @include margin-trailer(.5);
   }
-
-  #main {
-    [data-eq-state="regular-nav"] & {
-      @extend %one-column-page;
-
-      .field-name-body {
-        max-width: 100% !important;
-      }
-    }
-
-    #content { // overriding default to diplay large images better
-      width: 925px;
-      .section {
-        max-width: 900px;
-      }
-    }
-  }
 }
 
 h2 {
