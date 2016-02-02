@@ -118,13 +118,6 @@ function ilr_forms_public_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-    'action::views_bulk_operations_delete_revision' => array(
-      'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
   );
   /* Field: Entityform Submission: Entityform Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
