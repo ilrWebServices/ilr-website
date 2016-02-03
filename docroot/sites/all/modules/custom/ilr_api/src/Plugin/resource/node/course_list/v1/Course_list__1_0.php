@@ -58,11 +58,17 @@ class Course_list__1_0 extends ResourceNode implements ResourceInterface {
     $public_fields['Body'] = array(
       'property' => 'body',
       'sub_property' => 'value',
+      'process_callbacks' => array(
+        array($this, 'encodeForXML')
+      ),
     );
 
     $public_fields['Short_description'] = array(
       'property' => 'body',
       'sub_property' => 'summary',
+      'process_callbacks' => array(
+        array($this, 'encodeForXML')
+      ),
     );
 
     $public_fields['Course_link'] = array(
@@ -77,9 +83,12 @@ class Course_list__1_0 extends ResourceNode implements ResourceInterface {
       'callback' => array($this, 'getCourseLinkLabel'),
     );
 
-    $public_fields['School_and_Organization'] = array(
-      'callback' => array($this, 'getSchool'),
-    );
+    $public_fields['School_and_Organization']
+      = $public_fields['Featuring_School']
+      = $public_fields['Support_Unit']
+      = array(
+        'callback' => array($this, 'getSchool'),
+      );
 
     $public_fields['Subject_Areas'] = array(
       'callback' => array($this, 'getSubjectArea'),
@@ -110,6 +119,11 @@ class Course_list__1_0 extends ResourceNode implements ResourceInterface {
     );
 
     return $public_fields;
+  }
+
+  public function encodeForXML($value) {
+    $value = str_replace("<br>", "<br />", $value);
+    return htmlentities($value, ENT_XML1, 'UTF-8');
   }
 
   public function getAudience() {
@@ -163,7 +177,7 @@ class Course_list__1_0 extends ResourceNode implements ResourceInterface {
   }
 
   public function getSchool() {
-    return 'School of Industrial and Labor Relations (ILR)';
+    return 'ILR School';
   }
 
   public function getSubjectArea() {
