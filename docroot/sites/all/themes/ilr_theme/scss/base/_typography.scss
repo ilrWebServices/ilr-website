@@ -188,7 +188,8 @@ hr {
   height: 0;
   border: 0;
   border-top: 1px solid $rule;
-  @include trailer(1);
+  @include leader(2);
+  @include trailer(2);
 }
 
 code, pre {
@@ -371,6 +372,7 @@ table {
   text-align: left;
   width: 100%;
   font-size: $p-size;
+  @include trailer(1);
 
   thead {
 
