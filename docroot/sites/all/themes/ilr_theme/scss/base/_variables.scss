@@ -2,8 +2,6 @@
 
 $page-max-width: 1600px;
 $section-max-width: 800px;
-$base-font-size: 19px;
-$base-line-height: 27px;
 $line-height-multiplier: $base-line-height / $base-font-size;
 @include establish-baseline;
 $row-width: rem-calc($page-max-width);
@@ -27,66 +25,38 @@ $mod-01: 12.62939px; //Based on mod scale. Number is not applied/calculated prop
 // ==================================================
 // Brand
 // ==================================================
+$blue-ilrreview: #163a6e;
 $brand: #941e12;
 $brand-dark: #363636;
 $brand-light: #ACACAC;
 $cornell-red: #b31b1b;
 $darker-red: #92210f;
-// $gold: #DED7BA;
-// $mustard: #e0ae4c;
+$gold: #DED7BA;
+$mustard: #e0ae4c;
 $gray-bg: #f5f5f5;
 $gray-dark: #858585;
 $gray-medium: #c5c5c5;
 $gray-light: #e3e3e3;
+$gray-wi: #4d4e53;
 $subsite-heading: #404040;
 $nav-dark: #4F4D57;
 $nav-light: white;
 $selection: #212121;
-// $highlight: #ffc;
+$highlight: #ffc;
 $cornell-tan: #f0eee4;
 $bg-body: darken(white, 2%);
-// $ochre: #c5ba61;
+$ochre: #c5ba61;
 $ochre-tan: #c5c19c;
 $ochre-green: #8f8746;
 $brown: #39372d;
 
-$cerulean: #2099b7;
-$sea-green: #00a79d;
-$rose: #d44056;
-$pear: #bbc44a;
-$golden-rod: #f8bb03;
-$slate-gray: #6c7877;
-$slate-gray-76: #bbc3c1;
-$slate-gray-86: #d6dbda;
-$slate-gray-96: #eef6f4;
-
-$basic-page-color: $pear;
-$promo-color: $pear; // Same as basic page for now
-$event-color: $rose;
-$spotlight-color: $sea-green;
-$student-portrait-color: $cerulean;
-$news-color: $golden-rod;
-$video-color: $slate-gray;
-
-.cornell-red {background-color: $cornell-red; border: 2px solid $cornell-red;}
-.darker-red {background-color: $darker-red;}
-.bg-body {background-color: $bg-body;}
-.nav-dark {background-color: $nav-dark;}
-.gray-bg {background-color: $gray-bg;}
-.ochre-tan {background-color: $ochre-tan;}
-.ochre-green {background-color: $ochre-green;}
-.pear {background-color: $pear;}
-.rose {background-color: $rose;}
-.sea-green {background-color: $sea-green;}
-.cerulean {background-color: $cerulean; border: 2px solid $cerulean;}
-.golden-rod {background-color: $golden-rod;}
-.slate-gray {background-color: $slate-gray;}
-.slate-gray-76 {background-color: $slate-gray-76;}
-.slate-gray-86 {background-color: $slate-gray-86;}
-.slate-gray-96 {background-color: $slate-gray-96;}
-.gray-dark {background-color: $gray-dark;}
-.gray-medium {background-color: $gray-medium;}
-.gray-light {background-color: $gray-light;}
+$basic-page-color: #bbc44a;
+$promo-color: #bbc44a; // Same as basic page for now
+$event-color: #d44056;
+$spotlight-color: #00a79d;
+$student-portrait-color: #2099b7;
+$news-color: #f8bb03;
+$video-color: #6c7877;
 
 // ==================================================
 // Typography
@@ -147,6 +117,7 @@ $table-bg-alt: #e7e6e6;
 $table-bg-hover: darken($table-bg, 10%);
 $td-text: #444;
 $th-text: #212121;
+$default-rhythm-border-style: solid $gray-light;
 
 // ==================================================
 // Forms
