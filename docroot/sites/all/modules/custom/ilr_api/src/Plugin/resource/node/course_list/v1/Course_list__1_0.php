@@ -55,9 +55,9 @@ class Course_list__1_0 extends ResourceNode implements ResourceInterface {
       'property' => 'field_catalog_prefix',
     );
 
-    $public_fields['School_and_Organization']
+    $public_fields['Support_Unit']
       = $public_fields['Featuring_School']
-      = $public_fields['Support_Unit']
+      = $public_fields['School_and_Organization']
       = array(
         'callback' => array($this, 'getSchool'),
       );
