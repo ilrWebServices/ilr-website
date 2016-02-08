@@ -4,7 +4,6 @@
  * Code for the ilr_sdc_listings feature.
  *
  * Current Course listings
- *  Courses By Month: /professional-programs/public-offerings/calendar-month
  *  Courses By Date:  /professional-programs/public-offerings
  *  All Courses: /professional-programs/public-offerings-courses
  *
@@ -1611,23 +1610,6 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
 
 }
 
-/**
- * Alter the default value for a Views date argument.
- *
- * @param object $argument
- *   The argument object.
- * @param string $value
- *   The default value created by the argument handler.
- */
-function ilr_sdc_listings_date_default_argument_alter(&$argument, &$value) {
-  $view = $argument->view;
-  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
-    if ($url_month = _ilr_sdc_listings_get_url_month_arg()) {
-      $value = $url_month;
-    }
-  }
-}
-
 function _ilr_sdc_listings_get_datetimes_for_class($class) {
   $wrapper = ilr_get_node_wrapper($class);
   // Need $class_date_value because DateTime didn't work with
@@ -1665,125 +1647,15 @@ function _ilr_sdc_listings_get_path_alias_index() {
 
 /**
  * Implements hook_views_pre_render().
- *
- * Attach month select form to Calender Nav Block.
+ * Adds sort links to course listing page
  * @param $view
  *   The view object about to be processed.
  */
 function ilr_sdc_listings_views_pre_render(&$view) {
-  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
-    $nav = '';
-    if (arg(2) == 'calendar-day') {
-      $month = _ilr_sdc_listings_get_url_month_arg();
-      $month_label = t('Back to @month ', array('@month' => date('F Y', strtotime($month))));
-      $url = _ilr_sdc_listings_calendar_month_url($month, FALSE);
-      $nav = '<p>' . l($month_label, $url, array('query' => _ilr_sdc_listings_get_field_query_values())) . '</p>';
-    }
-    $month_form = drupal_get_form('_ilr_listings_sdc_select_month_form');
-    $nav .= drupal_render($month_form);
-    $view->attachment_before = $nav;
-  }
   if ($view->name == 'sdc_course_listing') {
     $markup = _ilr_sdc_listings_add_sort_elements(array('date','title','program'));
     $view->add_item('default', 'header', 'views', 'area', array('content' => $markup, 'format' => 'full_html'));
   }
-}
-
-/**
- * Form to select month in Calendar Nav.
- *
- * Form redirects via javascript.
- */
-function _ilr_listings_sdc_select_month_form($form, &$form_state) {
-  if ($url_month = _ilr_sdc_listings_get_url_month_arg()) {
-    $start_month = $url_month;
-  }
-  else {
-    if (ILR_SDC_PATH_ALIAS == current_path()) {
-      // Viewing all classes, not by date.
-      $start_month = NULL;
-    }
-    else {
-      $start_month = date('Y-m');
-    }
-
-  }
-
-  $month_options = _ilr_sdc_listings_get_month_options($start_month, 15);
-
-  $form['ilr_sdc_month_redirect'] = array(
-    '#type' => 'select',
-    '#options' => $month_options,
-    '#default_value' => '/' . _ilr_sdc_listings_calendar_month_url($start_month),
-  );
-  $form['#attached']['js'] = array(
-    drupal_get_path('module', 'ilr_sdc_listings') . '/js/ilr_sdc_listings.js',
-  );
-  return $form;
-}
-
-/**
- * Get month options for dropdown.
- * @param $start_month
- * @param $month_count
- * @param $key_prefix
- * @return array
- *  key - URL to redirect to will include month Views argument.
- *  values - Label for month. "August 2014"
- */
-function _ilr_sdc_listings_get_month_options($start_month, $month_count) {
-  $date_selected = TRUE;
-  if (!$start_month) {
-    $start_month = date('Y-m');
-    $date_selected = FALSE;
-  }
-  $month_options = array();
-  if ($date_selected) {
-    $half_count = round($month_count / 2);
-    $month = date('Y-m', strtotime("-$half_count months", strtotime($start_month)));
-    $earliest_month = date('Y-m', strtotime('-' . ILR_SDC_MAX_DAYS_PAST . ' days'));
-  }
-  else {
-    $month = $earliest_month = $start_month;
-  }
-  // Make sure our starting isn't earlier than earliest month to show.
-  while ($month < $earliest_month) {
-    $month = date('Y-m', strtotime("+1 months", strtotime($month)));
-  }
-  $i = 0;
-  while ($i++ < $month_count) {
-    $view_url = '/' . _ilr_sdc_listings_calendar_month_url($month);
-    $month_options[$view_url] = date('M Y', strtotime($month));
-    $month = date('Y-m', strtotime("+1 months", strtotime($month)));
-  }
-  if (!$date_selected) {
-    $month_options = array('' => 'Choose a month') + $month_options;
-  }
-  else {
-    $month_options = array('/' . ILR_SDC_PATH_ALIAS => 'Full Listing') + $month_options;
-  }
-  return $month_options;
-}
-
-/**
- * Construct the redirect URL for the SDC Monthly calendar View.
- *
- * This handles any exposed filter field values that are in the URL.
- * @param $month
- *  Format YYYY-MM to work with Views contextual filter for date
- * @return string
- */
-function _ilr_sdc_listings_calendar_month_url($month, $include_query_string = TRUE) {
-  $url = ILR_SDC_PATH_ALIAS . "/calendar-month/$month";
-  if ($include_query_string) {
-    $query_parameters = _ilr_sdc_listings_get_field_query_values();
-    $query_string = drupal_http_build_query($query_parameters);
-    if ($query_string) {
-      $url .= '?' . $query_string;
-    }
-  }
-  return $url;
-
 }
 
 /**
@@ -1866,11 +1738,7 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
       );
   }
   $view = $form_state['view'];
-  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
-    // Set After Build function to hide filters.
-    $form['#after_build'][] = '_ilr_sdc_listings_hide_view_filters';
-  } //Check to see if there are exposed filters
-  elseif ($view->name == 'sdc_course_listing') {
+  if ($view->name == 'sdc_course_listing') {
     if (_ilr_sdc_listings_is_filtered_search($view)) {
       $form['#attributes']['class'][] = 'filter-engaged';
     }
@@ -2006,28 +1874,6 @@ function _ilr_sdc_listings_get_upcoming_classes() {
     return array_keys($results['node']);
   }
 }
-
-/**
- * #after_build callback to hide exposed filters
- *
- * If they hidden outside of #after_build Views will not respect filters
- * @param $form
- * @param $form_state
- * @return array
- */
-function _ilr_sdc_listings_hide_view_filters($form, &$form_state) {
-  $view = $form_state['view'];
-  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
-    //$form['submit']['#access'] = FALSE;
-    $hide_elements = array('field_online_class_value', 'field_course_sponsor_reference_tid');
-    foreach ($hide_elements as $hide_element) {
-      $form[$hide_element]['#access'] = FALSE;
-    }
-    return $form;
-  }
-
-}
-
 
 /**
  * Implements hook_entityform_presave.

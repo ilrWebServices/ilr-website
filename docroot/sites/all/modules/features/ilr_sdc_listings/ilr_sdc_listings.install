@@ -244,6 +244,13 @@ function ilr_sdc_listings_update_7011() {
   }
 }
 
+/**
+ * Disables the calendar module
+ */
+function ilr_sdc_listings_update_7012() {
+  module_disable(array('calendar'));
+}
+
 function _ilr_sdc_listings_get_all_courses() {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
