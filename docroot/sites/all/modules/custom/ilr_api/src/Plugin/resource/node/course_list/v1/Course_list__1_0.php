@@ -55,6 +55,13 @@ class Course_list__1_0 extends ResourceNode implements ResourceInterface {
       'property' => 'field_catalog_prefix',
     );
 
+    $public_fields['School_and_Organization']
+      = $public_fields['Featuring_School']
+      = $public_fields['Support_Unit']
+      = array(
+        'callback' => array($this, 'getSchool'),
+      );
+
     $public_fields['Body'] = array(
       'property' => 'body',
       'sub_property' => 'value',
@@ -64,31 +71,24 @@ class Course_list__1_0 extends ResourceNode implements ResourceInterface {
     );
 
     $public_fields['Short_description'] = array(
-      'property' => 'body',
-      'sub_property' => 'summary',
-      'process_callbacks' => array(
-        array($this, 'encodeForXML')
-      ),
+      'callback' => array($this, 'getSummary'),
+    );
+
+    $public_fields['Keywords'] = array(
+      'callback' => array($this, 'getKeywords'),
     );
 
     $public_fields['Course_link'] = array(
       'callback' => array($this, 'getCourseLink'),
     );
 
-    $public_fields['Course_image_link'] = array(
-      'callback' => array($this, 'getCourseImage'),
-    );
-
     $public_fields['Course_link_label'] = array(
       'callback' => array($this, 'getCourseLinkLabel'),
     );
 
-    $public_fields['School_and_Organization']
-      = $public_fields['Featuring_School']
-      = $public_fields['Support_Unit']
-      = array(
-        'callback' => array($this, 'getSchool'),
-      );
+    $public_fields['Course_image_link'] = array(
+      'callback' => array($this, 'getCourseImage'),
+    );
 
     $public_fields['Subject_Areas'] = array(
       'callback' => array($this, 'getSubjectArea'),
@@ -99,11 +99,7 @@ class Course_list__1_0 extends ResourceNode implements ResourceInterface {
     );
 
     $public_fields['Cost'] = array(
-      'property' => 'field_price',
-    );
-
-    $public_fields['Keywords'] = array(
-      'callback' => array($this, 'getKeywords'),
+      'callback' => array($this, 'getCost'),
     );
 
     $public_fields['Timeframe'] = array(
@@ -131,11 +127,34 @@ class Course_list__1_0 extends ResourceNode implements ResourceInterface {
   }
 
   /**
+   * There is a cost or it's free; they are not displaying the actual cost
+   */
+  public function getCost($wrapper) {
+    $course_wrapper = $this->getCourseWrapper($wrapper);
+    $cost = !empty($course_wrapper->field_price->value())
+      ? '$'
+      : 'Free';
+    return $cost;
+  }
+
+  /**
    * Retrieves an image url that the portal will display
+   * Currently hard-coded per Tim's suggestions
    * @return String URL
    */
-  public function getCourseImage() {
-    return 'http://www.ilr.cornell.edu/sites/ilr.cornell.edu/files/styles/borealis_focussed_thumbnail_respondlarge/public/fielduploads/node_promo/image/worker-institute-155.jpg';
+  public function getCourseImage($wrapper) {
+    $images = array(
+      'LS264'     => 'mai-Labor_Stands_with_Immigrant_Workers.jpg',
+      'ODLEL101'  => 'field_uploads/node_basic_page/field_image/healthcare-stock-07.jpg',
+      'ODLEL100'  => 'fielduploads/node_news_item/image/LaborRoundtable2015_800x533.jpg',
+      'LS238'     => 'richard-griffin-jr-01.jpg',
+    );
+    $course_wrapper = $this->getCourseWrapper($wrapper);
+    $prefix = $course_wrapper->field_catalog_prefix->value();
+    $image_uri = (isset($images[$prefix]))
+      ? $images[$prefix]
+      : 'fielduploads/node_promo/image/worker-institute-155.jpg';
+    return image_style_url('borealis_focussed_thumbnail_respondmedium', $image_uri);
   }
 
   public function getCourseLink($wrapper) {
@@ -182,6 +201,15 @@ class Course_list__1_0 extends ResourceNode implements ResourceInterface {
 
   public function getSubjectArea() {
     return 'Employment, Labor, and Disability';
+  }
+
+  public function getSummary($wrapper) {
+    $course_wrapper = $this->getCourseWrapper($wrapper);
+    $summary = isset($course_wrapper->body->value()['summary'])
+      ? $course_wrapper->body->value()['summary']
+      : $course_wrapper->body->value()['value'];
+    $summary = strip_tags(str_replace('&nbsp;', ' ', $summary));
+    return truncate_utf8($summary, 128, TRUE, TRUE);
   }
 
   /**
