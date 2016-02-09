@@ -216,15 +216,26 @@ article.node-experience-report {
     }
     article {
       @extend %one-column;
+      display: none;
       //overrides %card styles
       border: none;
       margin-top: 2em;
       margin-bottom: 0;
+      &:nth-of-type(1) {
+        display: flex;
+      }
+      h2 {
+        opacity: 0;
+      }
       h3 {
         display: none;
       }
       .field-name-field-image {
-        text-align: center;
+        margin: 0 auto;
+        background: $promo-color;
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
         img {
           border-radius: 50%;
           height: 150px;
@@ -237,11 +248,35 @@ article.node-experience-report {
   &[data-eq-state="550"] {
     article {
       @extend %two-column;
+      display: flex;
     }
   }
   &[data-eq-state="768"] {
     article {
       @extend %four-column;
+      display: flex;
+      display: block;
+      margin-top: 90px;
+      &:nth-of-type(1) {
+        display: block;
+      }
+      position: relative;
+      h2 {
+        position: relative;
+        z-index: 2;
+        padding: 0;
+        a {
+          color: white;
+        }
+      }
+      .field-name-field-image {
+        margin-top: -90px;
+        img {
+          &:hover {
+            background: $promo-color;
+          }
+        }
+      }
     }
   }
   &[data-eq-state="widescreen"] {
@@ -250,6 +285,7 @@ article.node-experience-report {
     }
     article {
       @extend %four-column;
+      display: flex;
     }
   }
 }
