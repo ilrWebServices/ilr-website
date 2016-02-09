@@ -122,8 +122,20 @@ class Course_list__1_0 extends ResourceNode implements ResourceInterface {
     return htmlentities($value, ENT_XML1, 'UTF-8');
   }
 
+  /**
+   * Repeating elements are specified with a "repeats" key
+   * and a values array
+   */
   public function getAudience() {
-    return 'Everyone';
+    return array(
+      'repeats' => TRUE,
+      'values' => array(
+        "Undergrad Students",
+        "Graduate Students",
+        "Professionals",
+        "All Others",
+      ),
+    );
   }
 
   /**

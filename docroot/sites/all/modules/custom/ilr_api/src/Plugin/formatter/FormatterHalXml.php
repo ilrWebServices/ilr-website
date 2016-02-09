@@ -41,7 +41,6 @@ class FormatterHalXml extends FormatterHalJson implements FormatterInterface {
    */
   public function render(array $structured_data) {
     $this->courses = $structured_data['_embedded']['hal:course_list'];
-    $this->prepareData();
     return $this->arrayToXML($this->courses, new \SimpleXMLElement('<Course_List/>'))->asXML();
   }
 
@@ -63,22 +62,21 @@ class FormatterHalXml extends FormatterHalJson implements FormatterInterface {
     }
     foreach ($data as $key => $value) {
       if(is_array($value)) {
-        if(!is_numeric($key)){
-          $subnode = $xml->addChild("$key");
-          $this->arrayToXML($value, $subnode);
-        }
-        else{
-          if ($this->portalReady($key)) {
-            $subnode = $xml->addChild("Course");
-            $nid = $this->courses[$key]['id'];
-            $wrapper = ilr_get_node_wrapper($nid);
-            $id = (isset($wrapper->field_catalog_prefix))
-              ? 'ilr-' . $wrapper->field_catalog_prefix->value()
-              : 'ilr-' . $nid;
-            $subnode->addAttribute('Id', $id);
-            $this->arrayToXML($value, $subnode);
+        // Check if the 'repeats' key exists, in which case we loop through the values
+        if (isset($value['repeats'])) {
+          foreach ($value['values'] as $subkey => $value) {
+            $xml->addChild("$key", $value);
           }
-
+        }
+        else if ($this->portalReady($key)) {
+          $subnode = $xml->addChild("Course");
+          $nid = $this->courses[$key]['id'];
+          $wrapper = ilr_get_node_wrapper($nid);
+          $id = (isset($wrapper->field_catalog_prefix))
+            ? 'ilr-' . $wrapper->field_catalog_prefix->value()
+            : 'ilr-' . $nid;
+          $subnode->addAttribute('Id', $id);
+          $this->arrayToXML($value, $subnode);
         }
       }
       else {
@@ -86,14 +84,6 @@ class FormatterHalXml extends FormatterHalJson implements FormatterInterface {
       }
     }
     return $xml;
-  }
-
-  protected function prepareData() {
-    foreach ($this->courses as $key => $name) {
-      if (in_array($name, $this->keys_to_remove)) {
-        unset($data[$name]);
-      }
-    }
   }
 
   protected function portalReady($key) {
