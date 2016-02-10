@@ -364,24 +364,30 @@
     }
   };
 
-  //To do - move to experience reports js file after featurization
+  // @todo Move to experience reports js file after featurization
   Drupal.behaviors.change_hover_color = {
     attach: function (context, settings) {
       $(window).load(function() {
         if ($('html').hasClass('touch')) { // Note this is not 100% accurate. See https://github.com/Modernizr/Modernizr/issues/548
-          $('.node-reflection ul.social-share').css('opacity',1);
+          $('.node-experience-report h2').css('opacity',1);
         } else {
-          var easing = 'Expo.easeOut';
-          $('.image-style-experience_report_image').mouseover(function() {
-            TweenLite.to($(this).closest('article').find('h2'), .6, {opacity:1, ease: easing });
-            TweenLite.to($(this), .6, {opacity:0.05, ease: easing });
-          });
+          if (($('#content-bottom').attr('data-eq-state') == 'widescreen') || ($('#content-bottom').attr('data-eq-state') == '768')) {
+            var easing = 'Expo.easeOut';
+            $('#content-bottom .image-style-experience_report_image').mouseover(function() {
+              TweenLite.to($(this).closest('article').find('h2'), .6, {opacity:1, ease: easing });
+              TweenLite.to($(this), .6, {opacity:0.05, ease: easing });
+            });
 
-          $('.image-style-experience_report_image').mouseout(function() {
-            TweenLite.to($(this).closest('article').find('h2'), .6, {opacity:0, ease: easing });
-            TweenLite.to($(this), .6, {opacity:1, ease: easing });
-          });
+            $('#content-bottom .image-style-experience_report_image').mouseout(function() {
+              TweenLite.to($(this).closest('article').find('h2'), .6, {opacity:0, ease: easing });
+              TweenLite.to($(this), .6, {opacity:1, ease: easing });
+            });
+          }
         }
+        // for testing
+        // if (($('#content-bottom').attr('data-eq-state') !== '320') || ($('#content-bottom').attr('data-eq-state') !== '550')) {
+        //   $('.node-experience-report h2').css('opacity',1);
+        // }
       });
     }
   };
