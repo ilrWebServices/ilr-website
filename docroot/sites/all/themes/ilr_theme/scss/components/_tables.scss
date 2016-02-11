@@ -24,104 +24,32 @@ table.views-table {
   }
 }
 
-table.colors {
-  .cornell-red {
-    td {
-      background: $cornell-red;
-      color: white;
-    }
-  }
-  .darker-red {
-    td {
-      background: $darker-red;
-      color: white;
-    }
-  }
-  .bg-body {
-    td {
-      background: $bg-body;
-      color: black;
-    }
-  }
-  .gray-bg {
-    td {
-      background: $gray-bg;
-      color: black;
-    }
-  }
-  .nav-dark{
-    td {
-      background: $nav-dark;
-      color: white;
-    }
-  }
-  .ochre-tan {
-    td {
-      background: $ochre-tan;
-      color: white;
-    }
-  }
-  .ochre-green {
-    td {
-      background: $ochre-green;
-      color: white;
-    }
-  }
-  .promo-color {
-    td {
-      background: $promo-color;
-      color: white;
-    }
-  }
-  .event-color {
-    td {
-      background: $event-color;
-      color: white;
-    }
-  }
-  .spotlight-color {
-    td {
-      background: $spotlight-color;
-      color: white;
-    }
-  }
-  .student-portrait-color {
-    td {
-      background: $student-portrait-color;
-      color: white;
-    }
-  }
-  .news-color {
-    td {
-      background: $news-color;
-      color: white;
-    }
-  }
-  .video-color {
-    td {
-      background: $video-color;
-      color: white;
-    }
-  }
-  .gray-dark {
-    td {
-      background: $gray-dark;
-      color: black;
-    }
-  }
-  .gray-medium {
-    td {
-      background: $gray-medium;
-      color: black;
-    }
-  }
-  .gray-light {
-    td {
-      background: $gray-light;
-      color: black;
-    }
-  }
+$brand-colors: (cornell-red: $cornell-red, darker-red: $darker-red, bg-body: $bg-body, gray-bg: $gray-bg, nav-dark: $nav-dark, ochre-tan: $ochre-tan, ochre-green: $ochre-green, promo-color: $promo-color, event-color: $event-color, spotlight-color: $spotlight-color, student-portrait-color: $student-portrait-color, news-color: $news-color, video-color: $video-color, gray-dark: $gray-dark, gray-medium: $gray-medium, gray-light: $gray-light);
 
+table.colors {
+  @each $design-color, $hex-code in $brand-colors {
+    .#{$design-color} {
+      td {
+        background: $hex-code;
+        color: white;
+        @if $design-color == 'bg-body' {
+          color: black;
+        }
+        @if $design-color == 'gray-dark' {
+          color: black;
+        }
+        @if $design-color == 'gray-medium' {
+          color: black;
+        }
+        @if $design-color == 'gray-light' {
+          color: black;
+        }
+        @if $design-color == 'gray-bg' {
+          color: black;
+        }
+      }
+    }
+  }
   td {
     border-right: none;
     padding-left: 2em;
