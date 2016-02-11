@@ -158,8 +158,8 @@ class Course_list__1_0 extends ResourceNode implements ResourceInterface {
     $images = array(
       'LS264'     => 'mai-Labor_Stands_with_Immigrant_Workers.jpg',
       'ODLEL101'  => 'field_uploads/node_basic_page/field_image/healthcare-stock-07.jpg',
-      'ODLEL100'  => 'fielduploads/node_news_item/image/richard-griffin-jr-01.jpg',
-      'LS238'     => 'LaborRoundtable2015_800x533.jpg',
+      'LS238'     => 'fielduploads/node_news_item/image/LaborRoundtable2015_800x533.jpg',
+      'ODLEL100'  => 'richard-griffin-jr-01.jpg',
     );
     $course_wrapper = $this->getCourseWrapper($wrapper);
     $prefix = $course_wrapper->field_catalog_prefix->value();
