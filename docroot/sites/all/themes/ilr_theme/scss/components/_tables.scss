@@ -32,19 +32,7 @@ table.colors {
       td {
         background: $hex-code;
         color: white;
-        @if $design-color == 'bg-body' {
-          color: black;
-        }
-        @if $design-color == 'gray-dark' {
-          color: black;
-        }
-        @if $design-color == 'gray-medium' {
-          color: black;
-        }
-        @if $design-color == 'gray-light' {
-          color: black;
-        }
-        @if $design-color == 'gray-bg' {
+        @if $design-color == 'bg-body' or $design-color == 'gray-dark' or $design-color == 'gray-medium' or $design-color == 'gray-light' or $design-color == 'gray-bg' {
           color: black;
         }
       }
