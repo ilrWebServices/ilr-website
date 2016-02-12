@@ -1559,7 +1559,7 @@ function _ilr_sdc_listings_get_date_range() {
       : date('Y-m-d');
     $end_date = (strlen($_GET['field_class_dates_value2']['value']['date']))
       ? date($_GET['field_class_dates_value2']['value']['date']) + 1
-      : date('Y-m-d');
+      : date('Y-m-d',strtotime('+1 year', strtotime($start_date))); // One year from start date if empty
     $dates = array(
       'start_date' => $start_date,
       'end_date' => $end_date,
