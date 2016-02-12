@@ -46,90 +46,84 @@ body.node-type-experience-report {
   }
 }
 
-// article.node-experience-report {
-  // .group-highlighted {
-  .region-highlighted {
-    height: auto;
-    overflow: auto;
-    padding-top: 25px;
-    @include trailer(2);
-    background: $promo-color;
+.region-highlighted {
+  height: auto;
+  overflow: auto;
+  padding-top: 25px;
+  @include trailer(2);
+  background: $promo-color;
 
-    .group-title-and-focus {
+  .group-title-and-focus {
+    @include padding-leader(1);
+    text-align: center;
+    #main[data-eq-state="widescreen"] & {
       @include padding-leader(1);
-      text-align: center;
-      #main[data-eq-state="widescreen"] & {
-        @include padding-leader(1);
-      }
-      .container[data-eq-state="mobile-nav"] & {
-        @include padding-trailer(2);
-      }
-      padding-left: 0;
+    }
+    .container[data-eq-state="mobile-nav"] & {
+      @include padding-trailer(2);
+    }
+    padding-left: 0;
+    color: white;
+
+    h1 {
+      @include adjust-font-size-to(34px);
+      @include adjust-leading-to(1);
       color: white;
-
-      h1 {
-        @include adjust-font-size-to(34px);
-        @include adjust-leading-to(1);
-        color: white;
-        font-family: $font;
-      }
-
-      .field-name-field-program {
-        @include adjust-font-size-to(28px);
-        @include adjust-leading-to(1);
-      }
+      font-family: $font;
     }
 
-    .field-name-field-image {
-      text-align: center;
-      img {
-        height: 200px;
-        width: 200px;
-        border-radius: 50%;
-      }
+    .field-name-field-program {
+      @include adjust-font-size-to(28px);
+      @include adjust-leading-to(1);
     }
-  // }
+  }
 
-  .group-main-content {
-    @include grid-span (10,2);
-    .field {
-      overflow: hidden;
-    }
-    .field-name-field-image {
-      text-align: center; //for mobile
+  .field-name-field-image {
+    text-align: center;
+    img {
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
     }
   }
 }
 
+article.node-experience-report {
+  @include grid-span (10,2);
+  clear: both;
+  .field {
+    overflow: hidden;
+  }
+  .field-name-field-image {
+    text-align: center; //for mobile
+  }
+}
+
 #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
-  // article.node-experience-report {
-    // .group-highlighted {
-    .region-highlighted {
-      margin-top: 50px;
-      padding-top: 0;
-      height: 270px;
-      overflow: visible;
-      .group-title-and-focus {
-        @include grid-span (4,3);
-        text-align: left;
-      }
-      .field-name-field-image {
-        @include grid-span (6,7);
-        text-align: left;
-        img {
-          position: relative;
-          z-index: 2;
-          top: -50px;
-          height: 320px;
-          width: 320px;
-        }
+  .region-highlighted {
+    margin-top: 50px;
+    padding-top: 0;
+    height: 270px;
+    overflow: visible;
+    .group-title-and-focus {
+      @include grid-span (4,3);
+      text-align: left;
+    }
+    .field-name-field-image {
+      @include grid-span (6,7);
+      text-align: left;
+      img {
+        position: relative;
+        z-index: 2;
+        top: -50px;
+        height: 320px;
+        width: 320px;
       }
     }
-  // }
+  }
 }
 
 #main[data-eq-state="550"] {
-  // .group-highlighted {
   .region-highlighted {
     .field-name-field-image {
       img {
@@ -141,9 +135,10 @@ body.node-type-experience-report {
 }
 
 #main[data-eq-state="768"] {
-  .group-main-content {
+  article.node-experience-report {
     // @include grid-span (9,4); with nav
     @include grid-span (8,3);
+    clear: both;
     //replace following with callout/quote
     .paragraphs-item-image-with-text {
       .field-name-field-image {
@@ -162,8 +157,9 @@ body.node-type-experience-report {
 }
 
 #main[data-eq-state="widescreen"] {
-  .group-main-content {
+  article.node-experience-report {
     @include grid-span (6,4);
+    clear: both;
     .paragraphs-item-image-with-text {
       .field-name-field-image {
         margin-top: 0;
