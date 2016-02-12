@@ -16,6 +16,14 @@ body.node-type-experience-report {
     }
   }
 
+  .container[data-eq-state="mobile-nav"] {
+    #main[data-eq-state="768"] {
+      .region-highlighted {
+        margin-top: 70px;
+      }
+    }
+  }
+
   .container[data-eq-state="regular-nav"] {
     #main {
       padding-top: 20px;
@@ -38,15 +46,16 @@ body.node-type-experience-report {
   }
 }
 
-article.node-experience-report {
-  .group-highlighted {
+// article.node-experience-report {
+  // .group-highlighted {
+  .region-highlighted {
     height: auto;
     overflow: auto;
+    padding-top: 25px;
     @include trailer(2);
-    background: $promo-color; //$student-portrait-color
+    background: $promo-color;
 
     .group-title-and-focus {
-      // @include grid-span (12);
       @include padding-leader(1);
       text-align: center;
       #main[data-eq-state="widescreen"] & {
@@ -57,13 +66,6 @@ article.node-experience-report {
       }
       padding-left: 0;
       color: white;
-
-      // .crumb {
-      //   text-transform: uppercase;
-      //   color: $spotlight-color;
-      //   @include adjust-font-size-to(14px);
-      //   display: none;
-      // }
 
       h1 {
         @include adjust-font-size-to(34px);
@@ -79,7 +81,6 @@ article.node-experience-report {
     }
 
     .field-name-field-image {
-      // @include grid-span (12);
       text-align: center;
       img {
         height: 200px;
@@ -87,7 +88,7 @@ article.node-experience-report {
         border-radius: 50%;
       }
     }
-  }
+  // }
 
   .group-main-content {
     @include grid-span (10,2);
@@ -98,22 +99,14 @@ article.node-experience-report {
       text-align: center; //for mobile
     }
   }
-
-  .container[data-eq-state="regular-nav"] & {
-    // .group-main-content {
-    //   // @include grid-span (9,4); with nav
-    //   @include grid-span (8,3);
-    // }
-
-    // .group-sidebar {
-    //   //styles
-    // }
-  }
 }
 
 #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
-  article.node-experience-report {
-    .group-highlighted {
+  // article.node-experience-report {
+    // .group-highlighted {
+    .region-highlighted {
+      margin-top: 50px;
+      padding-top: 0;
       height: 270px;
       overflow: visible;
       .group-title-and-focus {
@@ -132,11 +125,12 @@ article.node-experience-report {
         }
       }
     }
-  }
+  // }
 }
 
 #main[data-eq-state="550"] {
-  .group-highlighted {
+  // .group-highlighted {
+  .region-highlighted {
     .field-name-field-image {
       img {
         height: 270px;
@@ -150,16 +144,7 @@ article.node-experience-report {
   .group-main-content {
     // @include grid-span (9,4); with nav
     @include grid-span (8,3);
-
-    // .field-type-paragraphs ~ .field-type-paragraphs .paragraphs-item-just-image {
-    //   float: left;
-    //   background: yellow;
-    // }
-    // .field-type-paragraphs ~ .field-type-paragraphs .paragraphs-item-just-text {
-    //   float: left;
-    //   background: orange;
-    // }
-
+    //replace following with callout/quote
     .paragraphs-item-image-with-text {
       .field-name-field-image {
         margin-top: 0;
@@ -201,9 +186,6 @@ article.node-experience-report {
       background: white;
       // @include background-grid($color: gainsboro);
   }
-  // .section {
-  //   @include background-grid;
-  // }
 
   .field-name-field-content-bottom-region {
     h2 {
