@@ -1518,6 +1518,7 @@ function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NU
     $query->fieldCondition('field_registration_end_date', 'value', $today, '>=');
   }
   $results = $query->execute();
+  dpm($results);
   if (!empty($results['node'])) {
     return array_keys($results['node']);
   }
@@ -1557,8 +1558,11 @@ function _ilr_sdc_listings_get_date_range() {
     $start_date = (strlen($_GET['field_class_dates_value']['value']['date']))
       ? date($_GET['field_class_dates_value']['value']['date'])
       : date('Y-m-d');
-    $end_date = (strlen($_GET['field_class_dates_value2']['value']['date']))
-      ? date($_GET['field_class_dates_value2']['value']['date']) + 1
+    $supplied_end_date = (strlen($_GET['field_class_dates_value2']['value']['date']))
+      ? date($_GET['field_class_dates_value2']['value']['date'])
+      : FALSE;
+    $end_date = ($supplied_end_date) // Fix the bug that kept <= date from returning the class
+      ? date('Y-m-d',strtotime('+1 day', strtotime($supplied_end_date)))
       : date('Y-m-d',strtotime('+1 year', strtotime($start_date))); // One year from start date if empty
     $dates = array(
       'start_date' => $start_date,
