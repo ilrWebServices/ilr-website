@@ -93,7 +93,12 @@
           }
         });
         liHeight = $('#sidebar-first ul.menu > li').outerHeight();
-        height = height + 2 * liHeight; // There are two additional list items added
+        searchHeight = $('#block-ilr-sdc-listings-course-search').outerHeight();
+        if ($('body').hasClass('page-professional-programs-public-offerings')) {
+          height = height + searchHeight + 100; //constant added for height of reset link
+        } else {
+          height = height + 2 * liHeight; // There are two additional list items added
+        }
         $('.menu-block-ilr-subnav').css('min-height', height);
         return height;
       }
