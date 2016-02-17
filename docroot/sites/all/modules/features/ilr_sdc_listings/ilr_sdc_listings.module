@@ -1518,7 +1518,6 @@ function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NU
     $query->fieldCondition('field_registration_end_date', 'value', $today, '>=');
   }
   $results = $query->execute();
-  dpm($results);
   if (!empty($results['node'])) {
     return array_keys($results['node']);
   }
