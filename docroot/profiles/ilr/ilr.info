@@ -51,7 +51,6 @@ dependencies[] = ilr_forms_staff
 dependencies[] = ilr_forms_students
 dependencies[] = ilr_forms_public
 dependencies[] = ilr_google_translate
-dependencies[] = ilr_legacy_redirect
 dependencies[] = ilr_manual_listing
 dependencies[] = ilr_mega_menu
 dependencies[] = ilr_post
