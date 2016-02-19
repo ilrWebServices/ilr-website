@@ -24,22 +24,24 @@ table.views-table {
   }
 }
 
+$dark-colors: (gray-bg, gray-medium, gray-light);
 $brand-colors: (cornell-red: $cornell-red, darker-red: $darker-red, bg-body: $bg-body, gray-bg: $gray-bg, nav-dark: $nav-dark, ochre-tan: $ochre-tan, ochre-green: $ochre-green, promo-color: $promo-color, event-color: $event-color, spotlight-color: $spotlight-color, student-portrait-color: $student-portrait-color, news-color: $news-color, video-color: $video-color, gray-dark: $gray-dark, gray-medium: $gray-medium, gray-light: $gray-light);
 
 table.colors {
+  border: none;
   @each $design-color, $hex-code in $brand-colors {
     .#{$design-color} {
       td {
         background: $hex-code;
         color: white;
-        @if $design-color == 'bg-body' or $design-color == 'gray-dark' or $design-color == 'gray-medium' or $design-color == 'gray-light' or $design-color == 'gray-bg' {
+        @if (index($dark-colors,$design-color)) {
           color: black;
         }
       }
     }
   }
   td {
-    border-right: none;
+    border: none;
     padding-left: 2em;
     height: 60px;
   }
