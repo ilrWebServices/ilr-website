@@ -10,6 +10,294 @@
 function ilr_forms_students_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_degree_as_text'
+  $field_instances['entityform-alumni_assoc_board_interest-field_degree_as_text'] = array(
+    'bundle' => 'alumni_assoc_board_interest',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If you have more than one ILR degree, list them all.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_degree_as_text',
+    'label' => 'ILR Degree',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_email'
+  $field_instances['entityform-alumni_assoc_board_interest-field_email'] = array(
+    'bundle' => 'alumni_assoc_board_interest',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_first_name'
+  $field_instances['entityform-alumni_assoc_board_interest-field_first_name'] = array(
+    'bundle' => 'alumni_assoc_board_interest',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_first_name',
+    'label' => 'First name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_h_school_year'
+  $field_instances['entityform-alumni_assoc_board_interest-field_h_school_year'] = array(
+    'bundle' => 'alumni_assoc_board_interest',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Election year',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_h_school_year',
+    'label' => 'School year',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_last_name'
+  $field_instances['entityform-alumni_assoc_board_interest-field_last_name'] = array(
+    'bundle' => 'alumni_assoc_board_interest',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_phone'
+  $field_instances['entityform-alumni_assoc_board_interest-field_phone'] = array(
+    'bundle' => 'alumni_assoc_board_interest',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_phone',
+    'label' => 'Phone',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_year_as_text'
+  $field_instances['entityform-alumni_assoc_board_interest-field_year_as_text'] = array(
+    'bundle' => 'alumni_assoc_board_interest',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_year_as_text',
+    'label' => 'What year did you graduate from the ILR School?',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'entityform-career_and_networking_panels-field_breakout_session'
   $field_instances['entityform-career_and_networking_panels-field_breakout_session'] = array(
     'bundle' => 'career_and_networking_panels',
@@ -10291,7 +10579,9 @@ function ilr_forms_students_field_default_field_instances() {
   t('How did you hear about the MPS/NYC program?');
   t('I certify that I am a freshman in the ILR School.');
   t('I certify that I am a sophomore, junior, senior, or first-year MILR student in the ILR School.');
+  t('ILR Degree');
   t('If freshmen don\'t select this opportunity, may we offer it to upperclass students?');
+  t('If you have more than one ILR degree, list them all.');
   t('Is the supervisor a Cornell alum?');
   t('Is the supervisor\'s address the same as yours?');
   t('Is this a paid WISP?');
@@ -10322,6 +10612,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Qualifications, computer skills, and transportation needs');
   t('Questions');
   t('Responsibilities or projects to be completed by WISP student(s)');
+  t('School year');
   t('School you will attend for your first year');
   t('Semester');
   t('Since email will be our main form of communication with TO students, please indicate the email address you will use throughout the next year.');
@@ -10340,6 +10631,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Upload your resume or CV');
   t('WISP dates constraints markup');
   t('WISP dates markup');
+  t('What year did you graduate from the ILR School?');
   t('When did you receive (or when do you expect to receive) your Bachelor\'s degree?');
   t('Which breakout session will you attend?');
   t('Will the student work on site or remotely?');
