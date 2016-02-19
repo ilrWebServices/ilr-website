@@ -10669,7 +10669,7 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(
       'markup' => array(
         'format' => 'full_html',
-        'value' => '<div class="form-item">By submitting this form I agree on behalf of our organization that our organization will provide the financial support necessary for the nominee&#39;s participation. This constitutes a tuition payment plus travel and lodging costs for each seminar minus any applicable financial aid. For questions regarding tuition and other fees, please contact Gene Carroll at 212-340-2853 or <a href="mailto:gc32@cornell.edu">gc32@cornell.edu</a>.</div>
+        'value' => '<div class="form-item">I nominate the person named above to the NYS AFL-CIO/Cornell Union Leadership Institute on behalf of our labor organization. Our organization will provide the financial support necessary for the nominee\'s participation. This constitutes a tuition fee payment totaling $8450 for the year-long ULI program, minus any applicable financial aid. The tuition includes all class materials and meals while attending any Union Leadership Institute program-sponsored activity. The sponsoring union or labor organization is responsible for travel and lodging costs. (For questions regarding tuition and other fees, please contact Union Leadership Institute Co-Director, Gene Carroll, at 212-340-2853 or <a href="mailto:gc32@cornell.edu">gc32@cornell.edu</a>.)</div>
 ',
       ),
     ),
