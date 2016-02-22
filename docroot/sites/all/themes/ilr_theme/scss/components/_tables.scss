@@ -26,6 +26,8 @@ table.views-table {
 
 $dark-colors: (gray-bg, gray-medium, gray-light);
 $brand-colors: (cornell-red: $cornell-red, darker-red: $darker-red, bg-body: $bg-body, gray-bg: $gray-bg, nav-dark: $nav-dark, ochre-tan: $ochre-tan, ochre-green: $ochre-green, promo-color: $promo-color, event-color: $event-color, spotlight-color: $spotlight-color, student-portrait-color: $student-portrait-color, news-color: $news-color, video-color: $video-color, gray-dark: $gray-dark, gray-medium: $gray-medium, gray-light: $gray-light);
+$contrasted-dark-default: black;
+$contrasted-light-default: white;
 
 table.colors {
   border: none;
@@ -33,10 +35,7 @@ table.colors {
     .#{$design-color} {
       td {
         background: $hex-code;
-        color: white;
-        @if (index($dark-colors,$design-color)) {
-          color: black;
-        }
+        @include contrasted($hex-code);
       }
     }
   }
