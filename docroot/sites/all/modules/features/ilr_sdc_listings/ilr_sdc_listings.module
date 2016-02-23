@@ -36,6 +36,7 @@ function ilr_sdc_listings_cron() {
  * Run faculty/class assigner.
  */
 function ilr_sdc_listings_feeds_after_import(FeedsSource $source) {
+
   $chained_importers = _ilr_sdc_listings_get_importer_ids();
   $importer_index = array_search($source->importer->id, $chained_importers);
   if ($importer_index !== FALSE) {
