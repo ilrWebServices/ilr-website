@@ -583,3 +583,16 @@ function ilr_update_7049() {
 function ilr_update_7050() {
   module_enable(array('admin_views'));
 }
+
+/**
+ * Enables ilr_paragraphs and ilr_experience_reports features
+ */
+function ilr_update_7051() {
+  module_enable(array(
+    'ilr_paragraphs',
+  ));
+  module_enable(array(
+    'ilr_experience_reports',
+  ));
+}
+
