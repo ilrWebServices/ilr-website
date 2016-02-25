@@ -9,10 +9,6 @@
   RewriteRule ^(.*)/index\.html$ /$1/ [R=301,L,NC]
   RewriteRule  ^robots\.txt$ /robots.php [NC,L]
 
-# Fixing spam IP
-Order Deny,Allow
-Deny from 54.146.16.48
-
 #
 # Apache/PHP/Drupal settings:
 #
