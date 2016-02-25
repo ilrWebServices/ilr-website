@@ -1,5 +1,5 @@
 name = ILR Experience Reports
-description = ILR Experience Report content type feature 
+description = ILR Experience Report content type feature
 core = 7.x
 package = ILR
 version = 7.x-1.0
@@ -27,7 +27,6 @@ features[field_instance][] = node-experience_report-field_intro_text
 features[field_instance][] = node-experience_report-field_program
 features[field_instance][] = node-experience_report-field_tags
 features[field_instance][] = node-experience_report-field_teaser
-features[image][] = experience_report_image
 features[node][] = experience_report
 features[variable][] = field_bundle_settings_node__experience_report
 features[variable][] = menu_options_experience_report

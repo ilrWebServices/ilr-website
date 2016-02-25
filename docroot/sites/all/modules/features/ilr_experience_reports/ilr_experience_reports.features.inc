@@ -17,38 +17,6 @@ function ilr_experience_reports_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
- * Implements hook_image_default_styles().
- */
-function ilr_experience_reports_image_default_styles() {
-  $styles = array();
-
-  // Exported image style: experience_report_image.
-  $styles['experience_report_image'] = array(
-    'name' => 'experience_report_image',
-    'label' => 'experience report image',
-    'effects' => array(
-      2 => array(
-        'label' => 'Focal Point Scale And Crop',
-        'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
-        'effect callback' => 'focal_point_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'focal_point',
-        'name' => 'focal_point_scale_and_crop',
-        'data' => array(
-          'width' => 320,
-          'height' => 320,
-        ),
-        'weight' => 1,
-      ),
-    ),
-  );
-
-  return $styles;
-}
-
-/**
  * Implements hook_node_info().
  */
 function ilr_experience_reports_node_info() {

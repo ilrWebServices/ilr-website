@@ -373,12 +373,12 @@
         } else {
           if (($('#content-bottom').attr('data-eq-state') == 'widescreen') || ($('#content-bottom').attr('data-eq-state') == '768')) {
             var easing = 'Expo.easeOut';
-            $('#content-bottom .image-style-experience_report_image').mouseover(function() {
+            $('#content-bottom .image-style-main_portrait_image').mouseover(function() {
               TweenLite.to($(this).closest('article').find('h2'), .6, {opacity:1, ease: easing });
               TweenLite.to($(this), .6, {opacity:0.05, ease: easing });
             });
 
-            $('#content-bottom .image-style-experience_report_image').mouseout(function() {
+            $('#content-bottom .image-style-main_portrait_image').mouseout(function() {
               TweenLite.to($(this).closest('article').find('h2'), .6, {opacity:0, ease: easing });
               TweenLite.to($(this), .6, {opacity:1, ease: easing });
             });

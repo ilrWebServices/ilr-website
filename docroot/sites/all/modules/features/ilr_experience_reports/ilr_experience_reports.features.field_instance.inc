@@ -188,7 +188,7 @@ function ilr_experience_reports_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => 'experience_report_image',
+          'image_style' => 'main_portrait_image',
         ),
         'type' => 'image',
         'weight' => 1,
@@ -205,7 +205,7 @@ function ilr_experience_reports_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => 'content',
-          'image_style' => 'experience_report_image',
+          'image_style' => 'main_portrait_image',
         ),
         'type' => 'image',
         'weight' => 0,
