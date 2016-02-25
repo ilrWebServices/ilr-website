@@ -342,8 +342,8 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_description_long',
-    'label' => 'Brief description',
-    'required' => 0,
+    'label' => 'Brief description (including # of potential participants)',
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -2169,7 +2169,7 @@ function ilr_forms_public_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Address');
-  t('Brief description');
+  t('Brief description (including # of potential participants)');
   t('City');
   t('College or university');
   t('Company');

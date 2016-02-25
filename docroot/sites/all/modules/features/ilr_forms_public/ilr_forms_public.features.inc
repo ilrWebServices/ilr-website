@@ -106,7 +106,6 @@ function ilr_forms_public_default_entityform_type() {
         "41" : 0,
         "51" : 0,
         "46" : 0,
-        "36" : 0,
         "21" : 0,
         "26" : 0,
         "31" : 0,
@@ -116,10 +115,10 @@ function ilr_forms_public_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : {
-        "value" : "\\u003Cp\\u003EThanks for your interest in customized delivery of \\u003Cem\\u003E[current-page:query:title]\\u003C\\/em\\u003E. Please provide the following information and a representative will be in touch with you shortly.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for your interest in customized delivery of \\u003Cem\\u003E[current-page:query:title]\\u003C\\/em\\u003E.\\u0026nbsp; Custom programs are aligned, focused, collaborative and cost effective.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EPlease provide the following information and a representative will be in touch with you shortly.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
-      "send_confirmation_email_to_user" : 0,
+      "send_confirmation_email_to_user" : 1,
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0,
