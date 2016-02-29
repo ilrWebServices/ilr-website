@@ -458,7 +458,8 @@ function _process_course_request(&$entityform) {
   $course = $entityform_wrapper->field_course->value();
   $admin_email = _forms_get_course_admin_email_addresses($entityform, $course);
   $course_title = $entityform_wrapper->field_course->label();
-  _forms_send_emails($entityform, $admin_email,'', "Customized delivery for $course_title",array('course_title' => $course_title));
+  $admin_subject = "Course request submitted for $course_title";
+  _forms_send_emails($entityform, $admin_email, $admin_subject, "Customized delivery for $course_title",array('course_title' => $course_title));
 }
 
 /**
