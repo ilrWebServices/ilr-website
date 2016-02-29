@@ -1,7 +1,7 @@
 <?php
 
 // As of March 2016, anonymous Shibboleth webauth only works on the test server
-$idp = ($_SERVER['HTTP_HOST'] == 'www.ilr.cornell.edu')
+$idp = (isset($_ENV['AH_PRODUCTION']) && $_ENV['AH_PRODUCTION'] == 1)
 	? 'https://shibidp.cit.cornell.edu/idp/shibboleth'
 	: 'https://shibidp-test.cit.cornell.edu/idp/shibboleth';
 
