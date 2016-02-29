@@ -361,7 +361,7 @@ function _ilr_sdc_listings_send_notification_for_class($class_nid) {
     $body = _ilr_sdc_listings_get_course_notification_content($class_nid);
     $params = array(
       'bcc'     => $bcc,
-      'subject' => "New date scheduled for " . $class_wrapper->label(),
+      'subject' => "Now Available: " . $class_wrapper->label(),
       'content' => $body,
     );
 
@@ -371,7 +371,7 @@ function _ilr_sdc_listings_send_notification_for_class($class_nid) {
       'ilrweb@cornell.edu',
       LANGUAGE_NONE,
       $params,
-      'Cornell University ILR School <ilr-noreply@cornell.edu>'
+      _ilr_sdc_listings_get_admin_email_for_class($class_wrapper)
     );
   }
 }
@@ -384,14 +384,64 @@ function _ilr_sdc_listings_get_course_notification_content($class_nid) {
   $class_wrapper = ilr_get_node_wrapper($class_nid);
   $course_nid = $class_wrapper->field_course->getIdentifier();
   $course = node_load($course_nid);
-  $course_view = node_view($course,'teaser');
+  $wrapper = (!empty($class_wrapper->body->value())) //Check for class description
+    ? $class_wrapper
+    : ilr_get_node_wrapper($course); //Default to course description
+  $summary = (!empty($wrapper->body->summary->value()))
+      ? $wrapper->body->summary->value()
+      : text_summary($wrapper->body->value->value());
+  $link = url('node/'.$course_nid, array('absolute' => true));
+  $title = _ilr_sdc_listings_get_prefixed_node_title($course,'sdc_course');
   $message = '<style type="text/css">a {color:#b31b1b} span {display:block}</style>';
-  $message .= '<p>A new date has been scheduled for:</p>';
-  $message .= drupal_render($course_view);
-  $message .= '<p>You received this message because you signed up to be notified of changes to this course\'s scheduled dates.</p>';
+  $message .= '<p>A new date has been scheduled for the following Cornell ILR Public Offering:</p>';
+  $message .= '<h2><a href="'.$link.'">'.$title.'</a></h2>';
+  $message .= $summary;
+  $message .= '<p>'._ilr_sdc_listings_get_class_detail_markup_for_email(node_load($class_nid)).'</p>';
+  $message .= '<p>For questions or more information, please contact ILR Customer Service at 866-470-1922 or emailing us at <a href="mailto:ilrcustomerservice@cornell.edu">ilrcustomerservice@cornell.edu</a>.</p>';
   $unsubscribe_link = _ilr_sdc_listings_get_unsubscribe_link($course_nid);
   $message .= '<p>If you no longer want to receive notifications regarding this course, you can <a href="'.$unsubscribe_link.'">unsubscribe here</a>.</p>';
+  $message .= '<p>Regards,</p>';
+  $message .= '<p>ILR Customer Service</p>';
   return $message;
+}
+
+function _ilr_sdc_listings_get_class_detail_markup_for_email($class) {
+  $class_wrapper = ilr_get_node_wrapper($class);
+  $city = $class_wrapper->field_address->locality->value();
+  $state = $class_wrapper->field_address->administrative_area->value();
+  $markup = 'DATE: '._ilr_sdc_listings_get_class_datespan($class).'<br>';
+  $markup .= 'TIME: '._ilr_sdc_listings_get_class_timespan($class).'<br>';
+  $markup .= ($city == 'On-Line') ? 'LOCATION: Online<br>' : "LOCATION: $city, $state<br>";
+  $markup .= "PRICE: $".$class_wrapper->field_price->value();
+  return $markup;
+}
+
+/**
+ * Provides ability for courses to override admin email, according to:
+ * 1. Course admin email field on course
+ * 2. Email on sponsoring organization
+ * 3. Generic Customer Service email
+ * @see _forms_get_course_admin_email_addresses()
+ */
+function _ilr_sdc_listings_get_admin_email_for_class($class_wrapper) {
+  $course_nid = $class_wrapper->field_course->getIdentifier();
+  $course_wrapper = ilr_get_node_wrapper($course_nid);
+  $admin_emails = array();
+  if ($email = $course_wrapper->field_email->value()) {
+    $admin_emails[] = $email;
+  } else {
+    foreach ($course_wrapper->field_course_sponsor_reference->getIterator() as $delta => $term_wrapper) {
+      if ($email = $term_wrapper->field_email->value()) {
+        $admin_emails[] = $email;
+      }
+    }
+  }
+
+  $admin_email = (count($admin_emails))
+    ? $admin_emails[0]
+    : 'Cornell University ILR School <ilrcustomerservice@cornell.edu>';
+
+  return $admin_email;
 }
 
 /**
@@ -399,8 +449,7 @@ function _ilr_sdc_listings_get_course_notification_content($class_nid) {
  * @see _ilr_sdc_listings_get_course_notification_content()
  */
 function _ilr_sdc_listings_get_unsubscribe_link($course_nid) {
-  global $base_url;
-  return "$base_url/course-unsubscribe/$course_nid";
+  return url("course-unsubscribe/$course_nid",array('absolute'=>TRUE));
 }
 
 /**
@@ -1185,13 +1234,25 @@ function _ilr_sdc_listings_class_has_override_title($course_node) {
 
 function _ilr_sdc_listings_format_class_date_and_time($class,$cancelled=FALSE) {
   $wrapper = ilr_get_node_wrapper($class);
+  $markup = '<div class="date-time contextual-links-region">';
+  $markup .= _ilr_sdc_listings_get_contextual_link_markup($class);
+  $datespan_class = ($cancelled) ? 'date cancelled' : 'date';
+  $markup .= '<span class="'.$datespan_class.'">';
+  $markup .= _ilr_sdc_listings_get_class_datespan($class);
+  $markup .= '</span>';
+  $markup .= '<span class="time">';
+  $markup .= _ilr_sdc_listings_get_class_timespan($class);
+  $markup .= '</span>';
+  $markup .= '</div>';
+  return $markup;
+}
+
+function _ilr_sdc_listings_get_class_datespan($class) {
+  $markup = '';
   $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class);
   $start_datetime = $datetimes['start'];
   $end_datetime = $datetimes['end'];
-  $datespan_class = ($cancelled) ? 'date cancelled' : 'date';
-  $markup = '<div class="date-time contextual-links-region">';
-  $markup .= _ilr_sdc_listings_get_contextual_link_markup($class);
-  $markup .= '<span class="'.$datespan_class.'">';
+
   $year = $start_datetime->format('Y');
   if (_ilr_sdc_listings_is_multiday_event($class)) {
     if ($start_datetime->format('M') != $end_datetime->format('M')) {
@@ -1205,10 +1266,15 @@ function _ilr_sdc_listings_format_class_date_and_time($class,$cancelled=FALSE) {
   else {
     $markup .= $start_datetime->format('M j') . ", $year";
   }
-  $markup .= '</span>';
-  $markup .= '<span class="time">' . $start_datetime->format('g:i a') . ' - ';
-  $markup .= $end_datetime->format('g:i a') . '</span>';
-  $markup .= '</div>';
+  return $markup;
+}
+
+function _ilr_sdc_listings_get_class_timespan($class) {
+  $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class);
+  $start_datetime = $datetimes['start'];
+  $end_datetime = $datetimes['end'];
+  $markup = $start_datetime->format('g:i a') . ' - ';
+  $markup .= $end_datetime->format('g:i a');
   return $markup;
 }
 
@@ -2072,6 +2138,14 @@ function _ilr_sdc_listings_add_prefix_to_title($node, $type, $view_mode) {
   if ($view_mode == 'reference_field') {
     return FALSE;
   }
+  // Update the page title for course nodes
+  if ($view_mode == 'full') {
+    $title = _ilr_sdc_listings_get_prefixed_node_title($node, $type);
+    drupal_set_title($title);
+  }
+}
+
+function _ilr_sdc_listings_get_prefixed_node_title($node,$type) {
   $wrapper = ilr_get_node_wrapper($node);
   $prefix = ($type == 'sdc_class')
     ? $wrapper->field_course->field_catalog_prefix->value()
@@ -2079,12 +2153,9 @@ function _ilr_sdc_listings_add_prefix_to_title($node, $type, $view_mode) {
 
   if (strpos($node->title,$prefix) === FALSE) {
     $title = $node->title . ' (' . $prefix . ')';
-    $node->title = $title;
-    // Update the page title for course nodes
-    if ($view_mode == 'full') {
-      drupal_set_title($title);
-    }
+    return $title;
   }
+  return $node->title;
 }
 
 /**
