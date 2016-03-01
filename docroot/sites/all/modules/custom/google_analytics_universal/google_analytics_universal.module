@@ -21,6 +21,10 @@ define('GOOGLEANALYTICS_PAGES', "admin\nadmin/*\nbatch\nnode/add*\nnode/*/*\nuse
 function google_analytics_universal_page_alter(&$page) {
   global $user;
 
+  if (!ilr_is_production_site()) { // Don't track with GA
+    return;
+  }
+
   $status = drupal_get_http_header('Status');
   // 1. Track page views if user not logged in
   // 2. If we want to check the current path as well (e.g. we want to start
