@@ -15,6 +15,12 @@ regions[sidebar_second] = Second sidebar
 regions[content_bottom] = Content Bottom
 regions[footer] = Footer
 
+region_view_modes_hidden[] = header
+region_view_modes_hidden[] = content
+region_view_modes_hidden[] = sidebar_first
+region_view_modes_hidden[] = content_bottom
+region_view_modes_hidden[] = footer
+
 ; Information added by drush on 2013-09-12
 version = "unknown"
 project = "ilr_theme"
