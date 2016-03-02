@@ -37,4 +37,5 @@ features[variable][] = menu_parent_experience_report
 features[variable][] = node_options_experience_report
 features[variable][] = node_preview_experience_report
 features[variable][] = node_submitted_experience_report
+features[variable][] = pathauto_node_experience_report_pattern
 project path = sites/all/modules/features
