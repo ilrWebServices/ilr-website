@@ -56,7 +56,7 @@ function ilr_experience_reports_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 13,
+      'weight' => 8,
     ),
   );
 
@@ -106,7 +106,7 @@ function ilr_experience_reports_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 11,
+      'weight' => 9,
     ),
   );
 
@@ -219,9 +219,9 @@ function ilr_experience_reports_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => '',
-      'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
+      'file_directory' => 'field_uploads/node_experience_reports/field_image',
+      'file_extensions' => 'jpg jpeg',
+      'max_filesize' => '2MB',
       'max_resolution' => '',
       'min_resolution' => '',
       'title_field' => 0,
@@ -232,7 +232,6 @@ function ilr_experience_reports_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 0,
           'public' => 'public',
           'youtube' => 0,
         ),
@@ -243,12 +242,12 @@ function ilr_experience_reports_field_default_field_instances() {
           'video' => 0,
         ),
         'browser_plugins' => array(
-          'ilr_media_browser--media_browser_1' => 0,
-          'ilr_media_browser--media_browser_my_files' => 0,
+          'ilr_media_browser--media_browser_1' => 'ilr_media_browser--media_browser_1',
+          'ilr_media_browser--media_browser_my_files' => 'ilr_media_browser--media_browser_my_files',
           'media_default--media_browser_1' => 0,
           'media_default--media_browser_my_files' => 0,
           'media_internet' => 0,
-          'upload' => 0,
+          'upload' => 'upload',
           'youtube' => 0,
         ),
       ),
@@ -430,7 +429,7 @@ function ilr_experience_reports_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 

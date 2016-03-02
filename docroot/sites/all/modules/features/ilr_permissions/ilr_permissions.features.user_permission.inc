@@ -631,6 +631,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'create experience_report content'.
+  $permissions['create experience_report content'] = array(
+    'name' => 'create experience_report content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create featured_book content'.
   $permissions['create featured_book content'] = array(
     'name' => 'create featured_book content',
@@ -715,6 +724,7 @@ function ilr_permissions_user_default_permissions() {
   $permissions['create reflection content'] = array(
     'name' => 'create reflection content',
     'roles' => array(
+      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
@@ -902,6 +912,15 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'bean',
+  );
+
+  // Exported permission: 'delete any experience_report content'.
+  $permissions['delete any experience_report content'] = array(
+    'name' => 'delete any experience_report content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'delete any featured_book content'.
@@ -1174,6 +1193,15 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'entityform',
+  );
+
+  // Exported permission: 'delete own experience_report content'.
+  $permissions['delete own experience_report content'] = array(
+    'name' => 'delete own experience_report content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'delete own featured_book content'.
@@ -1577,6 +1605,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'edit any experience_report content'.
+  $permissions['edit any experience_report content'] = array(
+    'name' => 'edit any experience_report content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any featured_book content'.
   $permissions['edit any featured_book content'] = array(
     'name' => 'edit any featured_book content',
@@ -1614,6 +1652,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any image files',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
       'power user' => 'power user',
     ),
     'module' => 'file_entity',
@@ -1875,6 +1914,16 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'entityform',
+  );
+
+  // Exported permission: 'edit own experience_report content'.
+  $permissions['edit own experience_report content'] = array(
+    'name' => 'edit own experience_report content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'edit own featured_book content'.
