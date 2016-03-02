@@ -5,11 +5,8 @@ core = 7.x
 
 dependencies[] = migrate
 
-files[] = featured_books.inc
 files[] = ilr_migrations.migrate.inc
-files[] = microfilmfiche.inc
 files[] = neutrals.inc
 files[] = news.inc
 files[] = student_portraits.inc
-files[] = wit.inc
 files[] = workspan.inc

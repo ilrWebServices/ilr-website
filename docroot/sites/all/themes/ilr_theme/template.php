@@ -125,13 +125,13 @@ function ilr_theme_preprocess_block(&$variables) {
 }
 
 /**
- * Modifies the output of portraits and spotlights
+ * Modifies the output of portraits
  * Adds data-eq-pts
  * @see generate_event_item_markup() for hard-coded data-eq-pts
  */
 function ilr_theme_preprocess_node(&$variables) {
   if ($variables['view_mode'] == 'teaser') {
-    if (in_array($variables['type'], array('student_portrait','spotlight'))) {
+    if (in_array($variables['type'], array('student_portrait'))) {
       $title = $variables['title'];
       $variables['title'] = truncate_utf8(strip_tags($variables['body'][0]['summary']), 55, FALSE, TRUE);
       $grad_year = _ilr_theme_get_class_year_from_date($variables['node'], 'field_expected_graduation_date');

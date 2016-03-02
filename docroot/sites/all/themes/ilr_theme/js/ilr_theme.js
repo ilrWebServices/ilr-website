@@ -1,7 +1,7 @@
 (function ($) {
   Drupal.behaviors.ilr_theme_google_trans = {
     attach: function (context, settings) {
-      currentURL = location.href.replace('https','http');
+      currentURL = window.location.href.split('#')[0].replace('https','http');
       $('#google-translation').append('<input name="u" value="'+currentURL+'" type="hidden" />');
       $('#google-translation input').click(function(){
         $('#google-translation input[name="langpair"]').val($(this).val());

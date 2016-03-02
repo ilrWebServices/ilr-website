@@ -14,30 +14,20 @@ In order to deploy the css files and run drush commands on the featuretest serve
 
         Host featuretest.org
         IdentityFile ~/.ssh/Featuretest.pem
-        User ubuntu
-6. From the docroot folder, type `drush @featuretest.prod status`. After agreeing to add the server to the known_hosts file, drush should return configuration data related to the prod environment on featuretest.
+        User aegir
+6. From the docroot folder, type `drush @featuretest.prod status`. After agreeing to add the server to the known_hosts file, drush should return configuration data related to the prod environment on featuretest. The two important lines you want to look for are:
+
+        Database                        :  Connected
+        Drupal bootstrap                :  Successful
 
 ## Workflow
 
 1. Attempt to create short branch names for any branches that will be going through the pull request process. The pattern that featuretest uses to build new environments is `branch-[branchname].ilr.featuretest.org`.
-2. After initiating a pull request, CSS will need to be deployed to the server. There is a bin script that automates that process. Run from the repository root with `bin/featuretest-css-deploy -e branch-[branchname]`. This script also confirms that the custom featuretest module has been enabled for that environment.
+2. After initiating a pull request, CSS will need to be deployed to the server. There is a bin script that automates that process. Run from the repository root with `bin/featuretest-css-deploy -e branch-[branchname]`. It's not uncommon to need to `drush @featuretest.[branch] cc all` to get the styles to load after deploying the CSS. This script also confirms that the custom featuretest module has been enabled for that environment.
+3. As of March, 2016, Cornell is removing the ability for anonymous shibboleth access. This means that most it will no longer be possible to log in with your NetID on featuretest environments. Please talk with a project lead to find alternative ways to log into the sites on featuretest.
 
 ## Rebasing Issues
 
 Our typical workflow involves rebasing master as a part of the pull request. However, developers should avoid rebasing if the featuretest environment has already been created, as it affects the auto-updating functionality of the branch. For that reason, please merge master into the branch rather than rebasing, such as `git checkout [feature-branch] && git merge master`. This will avoid any conflicts.
 
 If, however, the branch has already been rebased, then the simplest workaround is to ssh into featuretest, cd to the directory of the branch environment, then `git checkout master && git branch -D [feature-branch] && git checkout -b [feature-branch] origin/[feature-branch]`
-
-## Temporary Manual Steps for Featuretest Environments
-
-There is currently an issue with the install profile that forces a few manual steps in addition to uploading the CSS. Once a new envrironment has been created, and seemingly after any database updates get run (unverfied), someone will need to perform the following steps:
-
-1. ssh into the server with `ssh featuretest.org` (assumes pem has been correctly configured; see above)
-2. `sudo vi /var/aegir/projects/ilr/[branch-name]/docroot/sites/[site-url]/settings.php`
-3. In vi, type `/$conf` to take you to the $conf section of the settings.php file.
-4. Modify `$conf['install_profile'] = 'minimal';` to `$conf['install_profile'] = 'ilr';`
-5. Save the file by hitting the escape key, then `:wq!`
-6. `exit` to return to your local terminal.
-7. From the docroot folder, type `drush @featuretest.[branch-name] en ilr -y`
-
-Note that logging in will not work until these steps have been performed. Also, if you are logged in and begin getting white-screens from PHP errors, it is possible that a `drush updb` or something else has reset the profile, requiring the steps above to be run again.

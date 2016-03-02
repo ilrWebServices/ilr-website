@@ -63,7 +63,6 @@ function basic_page_default_linkit_profiles() {
         'news_item' => 'news_item',
         'people_profile' => 'people_profile',
         'registration_page' => 'registration_page',
-        'spotlight' => 'spotlight',
         'sdc_faculty' => 0,
         'featured_book' => 0,
         'microfiche' => 0,

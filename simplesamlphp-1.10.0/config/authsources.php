@@ -1,5 +1,10 @@
 <?php
 
+// As of March 2016, anonymous Shibboleth webauth only works on the test server
+$idp = (isset($_ENV['AH_PRODUCTION']) && $_ENV['AH_PRODUCTION'] == 1)
+	? 'https://shibidp.cit.cornell.edu/idp/shibboleth'
+	: 'https://shibidp-test.cit.cornell.edu/idp/shibboleth';
+
 $config = array(
 
 	// This is a authentication source which handles admin authentication.
@@ -33,7 +38,7 @@ $config = array(
     'saml:SP',
     'privatekey' => 'saml.pem',
     'certificate' => 'saml.crt',
-    'idp' => 'https://shibidp.cit.cornell.edu/idp/shibboleth',
+    'idp' => $idp,
   ),
 
 	/*

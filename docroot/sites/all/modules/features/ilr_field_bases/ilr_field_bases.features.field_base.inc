@@ -943,7 +943,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p><strong>Anticipated Cornell entry date (semester and year)</strong></p>
+  <p><strong>Anticipated Cornell entry date (semester and year)</strong></p>
 </div>
 ',
       ),
@@ -1024,62 +1024,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_article_lead_full'
-  $field_bases['field_article_lead_full'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_article_lead_full',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_article_title'
-  $field_bases['field_article_title'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_article_title',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_attendee_list'
   $field_bases['field_attendee_list'] = array(
     'active' => 1,
@@ -1154,35 +1098,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'markup',
   );
 
-  // Exported field_base: 'field_author'
-  $field_bases['field_author'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_author',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_author_reference'
   $field_bases['field_author_reference'] = array(
     'active' => 1,
@@ -1227,33 +1142,6 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
-  );
-
-  // Exported field_base: 'field_authors_editors'
-  $field_bases['field_authors_editors'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_authors_editors',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_bean_content'
@@ -1448,91 +1336,6 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
-  );
-
-  // Exported field_base: 'field_call_number'
-  $field_bases['field_call_number'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_call_number',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
-  // Exported field_base: 'field_campaign_intro'
-  $field_bases['field_campaign_intro'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_campaign_intro',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_campaign_title'
-  $field_bases['field_campaign_title'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_campaign_title',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
   );
 
   // Exported field_base: 'field_cancelled'
@@ -3102,6 +2905,35 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_degree_as_text'
+  $field_bases['field_degree_as_text'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_degree_as_text',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_degree_ba_masters_oth_addl'
   $field_bases['field_degree_ba_masters_oth_addl'] = array(
     'active' => 1,
@@ -4072,7 +3904,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item"><strong>Anticipated Entry Date</strong><br>
-	The EMHRM program always begins in the Summer, and the Ph.D. program always begins in the Fall, so for those programs you only need to indicate the year. For the other programs, you\'ll also need to specify the semester.</div>
+  The EMHRM program always begins in the Summer, and the Ph.D. program always begins in the Fall, so for those programs you only need to indicate the year. For the other programs, you\'ll also need to specify the semester.</div>
 ',
       ),
     ),
@@ -4474,52 +4306,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_featured_book_pages'
-  $field_bases['field_featured_book_pages'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_featured_book_pages',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'number_integer',
-  );
-
-  // Exported field_base: 'field_featured_date'
-  $field_bases['field_featured_date'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_featured_date',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'granularity' => array(
-        'day' => 0,
-        'hour' => 0,
-        'minute' => 0,
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'timezone_db' => '',
-      'todate' => '',
-      'tz_handling' => 'none',
-    ),
-    'translatable' => 0,
-    'type' => 'datetime',
-  );
-
   // Exported field_base: 'field_fee_policy'
   $field_bases['field_fee_policy'] = array(
     'active' => 1,
@@ -4562,7 +4348,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels.</p>
+  <p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels.</p>
 </div>
 ',
       ),
@@ -4640,12 +4426,12 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p><strong>Key factors to consider for dates:</strong></p>
+  <p><strong>Key factors to consider for dates:</strong></p>
 
-	<ul>
-		<li>Please provide as much detail as possible about the dates when you can host students.</li>
-		<li><strong>If you are hosting multiple students on the same day</strong>: we need a maximum of 5 specific dates (versus a date range) in order to facilitate finding one date that works for all students.</li>
-	</ul>
+  <ul>
+    <li>Please provide as much detail as possible about the dates when you can host students.</li>
+    <li><strong>If you are hosting multiple students on the same day</strong>: we need a maximum of 5 specific dates (versus a date range) in order to facilitate finding one date that works for all students.</li>
+  </ul>
 </div>
 ',
       ),
@@ -5492,35 +5278,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_header'
-  $field_bases['field_header'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_header',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_headline'
   $field_bases['field_headline'] = array(
     'active' => 1,
@@ -5689,6 +5446,7 @@ function ilr_field_bases_field_default_field_bases() {
         'LinkedIn post' => 'LinkedIn post',
         'SHRM.org ad' => 'SHRM.org ad',
         'Twitter' => 'Twitter',
+        'YouTube' => 'YouTube',
         'Email' => 'Email',
         'Referral' => 'Referral',
         'Other' => 'Other',
@@ -5721,6 +5479,7 @@ function ilr_field_bases_field_default_field_bases() {
         'LinkedIn InMail' => 'LinkedIn InMail',
         'SHRM.org ad' => 'SHRM.org ad',
         'Twitter' => 'Twitter',
+        'YouTube' => 'YouTube',
         'Email' => 'Email',
         'Referral' => 'Referral',
         'Other' => 'Other',
@@ -6016,22 +5775,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_intro_text'
-  $field_bases['field_intro_text'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_intro_text',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'paragraphs',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'paragraphs',
-  );
-
   // Exported field_base: 'field_is_address_the_same'
   $field_bases['field_is_address_the_same'] = array(
     'active' => 1,
@@ -6082,35 +5825,6 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_boolean',
-  );
-
-  // Exported field_base: 'field_isbn'
-  $field_bases['field_isbn'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_isbn',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
   );
 
   // Exported field_base: 'field_ithaca_or_nyc'
@@ -6446,58 +6160,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_library_how_to_direct'
-  $field_bases['field_library_how_to_direct'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_library_how_to_direct',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(),
-      'allowed_values_function' => '_forms_library_contact_options',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
-  // Exported field_base: 'field_library_pieces'
-  $field_bases['field_library_pieces'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_library_pieces',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_link_type'
   $field_bases['field_link_type'] = array(
     'active' => 1,
@@ -6651,7 +6313,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p>Mailing Address (required so we can send you printed materials)</p>
+  <p>Mailing Address (required so we can send you printed materials)</p>
 </div>
 ',
       ),
@@ -6811,35 +6473,6 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_microfilm_format'
-  $field_bases['field_microfilm_format'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_microfilm_format',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
   );
 
   // Exported field_base: 'field_middle_name'
@@ -8369,35 +8002,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_program'
-  $field_bases['field_program'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_program',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 1000,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_project_name'
   $field_bases['field_project_name'] = array(
     'active' => 1,
@@ -8530,35 +8134,6 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'datetime',
-  );
-
-  // Exported field_base: 'field_publisher'
-  $field_bases['field_publisher'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_publisher',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
   );
 
   // Exported field_base: 'field_qualifications'
@@ -10578,101 +10153,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'markup',
   );
 
-  // Exported field_base: 'field_term_publication'
-  $field_bases['field_term_publication'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_term_publication',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'publications',
-          'parent' => 0,
-        ),
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
-  );
-
-  // Exported field_base: 'field_term_wire_service'
-  $field_bases['field_term_wire_service'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_term_wire_service',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'wire_services',
-          'parent' => 0,
-        ),
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
-  );
-
-  // Exported field_base: 'field_text_paragraph'
-  $field_bases['field_text_paragraph'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_text_paragraph',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
   // Exported field_base: 'field_thumbnail'
   $field_bases['field_thumbnail'] = array(
     'active' => 1,
@@ -11189,7 +10669,7 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(
       'markup' => array(
         'format' => 'full_html',
-        'value' => '<div class="form-item">By submitting this form I agree on behalf of our organization that our organization will provide the financial support necessary for the nominee&#39;s participation. This constitutes a tuition payment plus travel and lodging costs for each seminar minus any applicable financial aid. For questions regarding tuition and other fees, please contact Gene Carroll at 212-340-2853 or <a href="mailto:gc32@cornell.edu">gc32@cornell.edu</a>.</div>
+        'value' => '<div class="form-item">I nominate the person named above to the NYS AFL-CIO/Cornell Union Leadership Institute on behalf of our labor organization. Our organization will provide the financial support necessary for the nominee\'s participation. This constitutes a tuition fee payment totaling $8450 for the year-long ULI program, minus any applicable financial aid. The tuition includes all class materials and meals while attending any Union Leadership Institute program-sponsored activity. The sponsoring union or labor organization is responsible for travel and lodging costs. (For questions regarding tuition and other fees, please contact Union Leadership Institute Co-Director, Gene Carroll, at 212-340-2853 or <a href="mailto:gc32@cornell.edu">gc32@cornell.edu</a>.)</div>
 ',
       ),
     ),
@@ -11464,7 +10944,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels.</p>
+  <p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels.</p>
 </div>
 
 ',
@@ -11543,13 +11023,13 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p><strong>Key factors to consider for dates:</strong></p>
+  <p><strong>Key factors to consider for dates:</strong></p>
 
-	<ul>
-		<li>Please provide as much detail as possible about the dates when you can host students.</li>
-		<li>Specify a minimum time commitment, e.g. 2 weeks or 8 days.</li>
-		<li>Specify whether the student must work consecutive days, e.g. may they start in December and finish in January; or may they work 5 days, be out one day for another commitment, and then work 5 more days, etc.</li>
-	</ul>
+  <ul>
+    <li>Please provide as much detail as possible about the dates when you can host students.</li>
+    <li>Specify a minimum time commitment, e.g. 2 weeks or 8 days.</li>
+    <li>Specify whether the student must work consecutive days, e.g. may they start in December and finish in January; or may they work 5 days, be out one day for another commitment, and then work 5 more days, etc.</li>
+  </ul>
 </div>
 ',
       ),

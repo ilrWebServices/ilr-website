@@ -4,6 +4,7 @@
   RewriteRule ^/?trianglefire/(.*)$ http://trianglefire.ilr.cornell.edu/$1 [R=301,L,NC]
   RewriteRule ^/?ilgwu/(.*)$ http://ilgwu.ilr.cornell.edu/$1 [R=301,L,NC]
   RewriteRule ^/?edi/(.*)$ http://www.edi.cornell.edu/$1 [R=301,L,NC]
+  RewriteRule ^/?library/kheel-center(.*)$ http://catherwood.library.cornell.edu/kheel [R=301,L,NC]
   RewriteRule ^index\.html$ / [R=301,L,NC]
   RewriteRule ^(.*)/index\.html$ /$1/ [R=301,L,NC]
   RewriteRule  ^robots\.txt$ /robots.php [NC,L]
@@ -13,7 +14,7 @@
 #
 
 # Protect files and directories from prying eyes.
-<FilesMatch "\.(engine|inc|info|install|make|module|profile|test|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)(~|\.sw[op]|\.bak|\.orig|\.save)?$|^(\..*|Entries.*|Repository|Root|Tag|Template)$|^#.*#$|\.php(~|\.sw[op]|\.bak|\.orig\.save)$">
+<FilesMatch "\.(engine|inc|info|install|make|module|profile|test|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)(~|\.sw[op]|\.bak|\.orig|\.save)?$|^(\..*|Entries.*|Repository|Root|Tag|Template|composer\.(json|lock))$|^#.*#$|\.php(~|\.sw[op]|\.bak|\.orig\.save)$">
   Order allow,deny
 </FilesMatch>
 

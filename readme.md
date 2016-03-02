@@ -5,6 +5,7 @@ This repository houses the ILR School's Drupal migration. The project was initia
 ## Further Reading
 * [Installation](docs/installation.md)
 * [Development](docs/development.md)
+* [Featuretest](docs/featuretest.md)
 * [Theming](docs/theming.md)
 * [Drupal Core and Contrib Module Updates](docs/core_and_contrib_updates.md)
 * [SimpleSAMLphp Configuration](/docs/simplesaml.md)

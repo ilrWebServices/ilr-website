@@ -4,7 +4,6 @@
  * Code for the ilr_sdc_listings feature.
  *
  * Current Course listings
- *  Courses By Month: /professional-programs/public-offerings/calendar-month
  *  Courses By Date:  /professional-programs/public-offerings
  *  All Courses: /professional-programs/public-offerings-courses
  *
@@ -362,7 +361,7 @@ function _ilr_sdc_listings_send_notification_for_class($class_nid) {
     $body = _ilr_sdc_listings_get_course_notification_content($class_nid);
     $params = array(
       'bcc'     => $bcc,
-      'subject' => "New date scheduled for " . $class_wrapper->label(),
+      'subject' => "Now Available: " . $class_wrapper->label(),
       'content' => $body,
     );
 
@@ -372,7 +371,7 @@ function _ilr_sdc_listings_send_notification_for_class($class_nid) {
       'ilrweb@cornell.edu',
       LANGUAGE_NONE,
       $params,
-      'Cornell University ILR School <ilr-noreply@cornell.edu>'
+      _ilr_sdc_listings_get_admin_email_for_class($class_wrapper)
     );
   }
 }
@@ -385,14 +384,64 @@ function _ilr_sdc_listings_get_course_notification_content($class_nid) {
   $class_wrapper = ilr_get_node_wrapper($class_nid);
   $course_nid = $class_wrapper->field_course->getIdentifier();
   $course = node_load($course_nid);
-  $course_view = node_view($course,'teaser');
+  $wrapper = (!empty($class_wrapper->body->value())) //Check for class description
+    ? $class_wrapper
+    : ilr_get_node_wrapper($course); //Default to course description
+  $summary = (!empty($wrapper->body->summary->value()))
+      ? $wrapper->body->summary->value()
+      : text_summary($wrapper->body->value->value());
+  $link = url('node/'.$course_nid, array('absolute' => true));
+  $title = _ilr_sdc_listings_get_prefixed_node_title($course,'sdc_course');
   $message = '<style type="text/css">a {color:#b31b1b} span {display:block}</style>';
-  $message .= '<p>A new date has been scheduled for:</p>';
-  $message .= drupal_render($course_view);
-  $message .= '<p>You received this message because you signed up to be notified of changes to this course\'s scheduled dates.</p>';
+  $message .= '<p>A new date has been scheduled for the following Cornell ILR Public Offering:</p>';
+  $message .= '<h2><a href="'.$link.'">'.$title.'</a></h2>';
+  $message .= $summary;
+  $message .= '<p>'._ilr_sdc_listings_get_class_detail_markup_for_email(node_load($class_nid)).'</p>';
+  $message .= '<p>For questions or more information, please contact ILR Customer Service at 866-470-1922 or emailing us at <a href="mailto:ilrcustomerservice@cornell.edu">ilrcustomerservice@cornell.edu</a>.</p>';
   $unsubscribe_link = _ilr_sdc_listings_get_unsubscribe_link($course_nid);
   $message .= '<p>If you no longer want to receive notifications regarding this course, you can <a href="'.$unsubscribe_link.'">unsubscribe here</a>.</p>';
+  $message .= '<p>Regards,</p>';
+  $message .= '<p>ILR Customer Service</p>';
   return $message;
+}
+
+function _ilr_sdc_listings_get_class_detail_markup_for_email($class) {
+  $class_wrapper = ilr_get_node_wrapper($class);
+  $city = $class_wrapper->field_address->locality->value();
+  $state = $class_wrapper->field_address->administrative_area->value();
+  $markup = 'DATE: '._ilr_sdc_listings_get_class_datespan($class).'<br>';
+  $markup .= 'TIME: '._ilr_sdc_listings_get_class_timespan($class).'<br>';
+  $markup .= ($city == 'On-Line') ? 'LOCATION: Online<br>' : "LOCATION: $city, $state<br>";
+  $markup .= "PRICE: $".$class_wrapper->field_price->value();
+  return $markup;
+}
+
+/**
+ * Provides ability for courses to override admin email, according to:
+ * 1. Course admin email field on course
+ * 2. Email on sponsoring organization
+ * 3. Generic Customer Service email
+ * @see _forms_get_course_admin_email_addresses()
+ */
+function _ilr_sdc_listings_get_admin_email_for_class($class_wrapper) {
+  $course_nid = $class_wrapper->field_course->getIdentifier();
+  $course_wrapper = ilr_get_node_wrapper($course_nid);
+  $admin_emails = array();
+  if ($email = $course_wrapper->field_email->value()) {
+    $admin_emails[] = $email;
+  } else {
+    foreach ($course_wrapper->field_course_sponsor_reference->getIterator() as $delta => $term_wrapper) {
+      if ($email = $term_wrapper->field_email->value()) {
+        $admin_emails[] = $email;
+      }
+    }
+  }
+
+  $admin_email = (count($admin_emails))
+    ? $admin_emails[0]
+    : 'Cornell University ILR School <ilrcustomerservice@cornell.edu>';
+
+  return $admin_email;
 }
 
 /**
@@ -400,8 +449,7 @@ function _ilr_sdc_listings_get_course_notification_content($class_nid) {
  * @see _ilr_sdc_listings_get_course_notification_content()
  */
 function _ilr_sdc_listings_get_unsubscribe_link($course_nid) {
-  global $base_url;
-  return "$base_url/course-unsubscribe/$course_nid";
+  return url("course-unsubscribe/$course_nid",array('absolute'=>TRUE));
 }
 
 /**
@@ -1186,13 +1234,25 @@ function _ilr_sdc_listings_class_has_override_title($course_node) {
 
 function _ilr_sdc_listings_format_class_date_and_time($class,$cancelled=FALSE) {
   $wrapper = ilr_get_node_wrapper($class);
+  $markup = '<div class="date-time contextual-links-region">';
+  $markup .= _ilr_sdc_listings_get_contextual_link_markup($class);
+  $datespan_class = ($cancelled) ? 'date cancelled' : 'date';
+  $markup .= '<span class="'.$datespan_class.'">';
+  $markup .= _ilr_sdc_listings_get_class_datespan($class);
+  $markup .= '</span>';
+  $markup .= '<span class="time">';
+  $markup .= _ilr_sdc_listings_get_class_timespan($class);
+  $markup .= '</span>';
+  $markup .= '</div>';
+  return $markup;
+}
+
+function _ilr_sdc_listings_get_class_datespan($class) {
+  $markup = '';
   $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class);
   $start_datetime = $datetimes['start'];
   $end_datetime = $datetimes['end'];
-  $datespan_class = ($cancelled) ? 'date cancelled' : 'date';
-  $markup = '<div class="date-time contextual-links-region">';
-  $markup .= _ilr_sdc_listings_get_contextual_link_markup($class);
-  $markup .= '<span class="'.$datespan_class.'">';
+
   $year = $start_datetime->format('Y');
   if (_ilr_sdc_listings_is_multiday_event($class)) {
     if ($start_datetime->format('M') != $end_datetime->format('M')) {
@@ -1206,10 +1266,15 @@ function _ilr_sdc_listings_format_class_date_and_time($class,$cancelled=FALSE) {
   else {
     $markup .= $start_datetime->format('M j') . ", $year";
   }
-  $markup .= '</span>';
-  $markup .= '<span class="time">' . $start_datetime->format('g:i a') . ' - ';
-  $markup .= $end_datetime->format('g:i a') . '</span>';
-  $markup .= '</div>';
+  return $markup;
+}
+
+function _ilr_sdc_listings_get_class_timespan($class) {
+  $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class);
+  $start_datetime = $datetimes['start'];
+  $end_datetime = $datetimes['end'];
+  $markup = $start_datetime->format('g:i a') . ' - ';
+  $markup .= $end_datetime->format('g:i a');
   return $markup;
 }
 
@@ -1558,9 +1623,12 @@ function _ilr_sdc_listings_get_date_range() {
     $start_date = (strlen($_GET['field_class_dates_value']['value']['date']))
       ? date($_GET['field_class_dates_value']['value']['date'])
       : date('Y-m-d');
-    $end_date = (strlen($_GET['field_class_dates_value2']['value']['date']))
-      ? date($_GET['field_class_dates_value2']['value']['date']) + 1
-      : date('Y-m-d');
+    $supplied_end_date = (strlen($_GET['field_class_dates_value2']['value']['date']))
+      ? date($_GET['field_class_dates_value2']['value']['date'])
+      : FALSE;
+    $end_date = ($supplied_end_date) // Fix the bug that kept <= date from returning the class
+      ? date('Y-m-d',strtotime('+1 day', strtotime($supplied_end_date)))
+      : date('Y-m-d',strtotime('+1 year', strtotime($start_date))); // One year from start date if empty
     $dates = array(
       'start_date' => $start_date,
       'end_date' => $end_date,
@@ -1611,23 +1679,6 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
 
 }
 
-/**
- * Alter the default value for a Views date argument.
- *
- * @param object $argument
- *   The argument object.
- * @param string $value
- *   The default value created by the argument handler.
- */
-function ilr_sdc_listings_date_default_argument_alter(&$argument, &$value) {
-  $view = $argument->view;
-  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
-    if ($url_month = _ilr_sdc_listings_get_url_month_arg()) {
-      $value = $url_month;
-    }
-  }
-}
-
 function _ilr_sdc_listings_get_datetimes_for_class($class) {
   $wrapper = ilr_get_node_wrapper($class);
   // Need $class_date_value because DateTime didn't work with
@@ -1665,125 +1716,15 @@ function _ilr_sdc_listings_get_path_alias_index() {
 
 /**
  * Implements hook_views_pre_render().
- *
- * Attach month select form to Calender Nav Block.
+ * Adds sort links to course listing page
  * @param $view
  *   The view object about to be processed.
  */
 function ilr_sdc_listings_views_pre_render(&$view) {
-  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
-    $nav = '';
-    if (arg(2) == 'calendar-day') {
-      $month = _ilr_sdc_listings_get_url_month_arg();
-      $month_label = t('Back to @month ', array('@month' => date('F Y', strtotime($month))));
-      $url = _ilr_sdc_listings_calendar_month_url($month, FALSE);
-      $nav = '<p>' . l($month_label, $url, array('query' => _ilr_sdc_listings_get_field_query_values())) . '</p>';
-    }
-    $month_form = drupal_get_form('_ilr_listings_sdc_select_month_form');
-    $nav .= drupal_render($month_form);
-    $view->attachment_before = $nav;
-  }
   if ($view->name == 'sdc_course_listing') {
     $markup = _ilr_sdc_listings_add_sort_elements(array('date','title','program'));
     $view->add_item('default', 'header', 'views', 'area', array('content' => $markup, 'format' => 'full_html'));
   }
-}
-
-/**
- * Form to select month in Calendar Nav.
- *
- * Form redirects via javascript.
- */
-function _ilr_listings_sdc_select_month_form($form, &$form_state) {
-  if ($url_month = _ilr_sdc_listings_get_url_month_arg()) {
-    $start_month = $url_month;
-  }
-  else {
-    if (ILR_SDC_PATH_ALIAS == current_path()) {
-      // Viewing all classes, not by date.
-      $start_month = NULL;
-    }
-    else {
-      $start_month = date('Y-m');
-    }
-
-  }
-
-  $month_options = _ilr_sdc_listings_get_month_options($start_month, 15);
-
-  $form['ilr_sdc_month_redirect'] = array(
-    '#type' => 'select',
-    '#options' => $month_options,
-    '#default_value' => '/' . _ilr_sdc_listings_calendar_month_url($start_month),
-  );
-  $form['#attached']['js'] = array(
-    drupal_get_path('module', 'ilr_sdc_listings') . '/js/ilr_sdc_listings.js',
-  );
-  return $form;
-}
-
-/**
- * Get month options for dropdown.
- * @param $start_month
- * @param $month_count
- * @param $key_prefix
- * @return array
- *  key - URL to redirect to will include month Views argument.
- *  values - Label for month. "August 2014"
- */
-function _ilr_sdc_listings_get_month_options($start_month, $month_count) {
-  $date_selected = TRUE;
-  if (!$start_month) {
-    $start_month = date('Y-m');
-    $date_selected = FALSE;
-  }
-  $month_options = array();
-  if ($date_selected) {
-    $half_count = round($month_count / 2);
-    $month = date('Y-m', strtotime("-$half_count months", strtotime($start_month)));
-    $earliest_month = date('Y-m', strtotime('-' . ILR_SDC_MAX_DAYS_PAST . ' days'));
-  }
-  else {
-    $month = $earliest_month = $start_month;
-  }
-  // Make sure our starting isn't earlier than earliest month to show.
-  while ($month < $earliest_month) {
-    $month = date('Y-m', strtotime("+1 months", strtotime($month)));
-  }
-  $i = 0;
-  while ($i++ < $month_count) {
-    $view_url = '/' . _ilr_sdc_listings_calendar_month_url($month);
-    $month_options[$view_url] = date('M Y', strtotime($month));
-    $month = date('Y-m', strtotime("+1 months", strtotime($month)));
-  }
-  if (!$date_selected) {
-    $month_options = array('' => 'Choose a month') + $month_options;
-  }
-  else {
-    $month_options = array('/' . ILR_SDC_PATH_ALIAS => 'Full Listing') + $month_options;
-  }
-  return $month_options;
-}
-
-/**
- * Construct the redirect URL for the SDC Monthly calendar View.
- *
- * This handles any exposed filter field values that are in the URL.
- * @param $month
- *  Format YYYY-MM to work with Views contextual filter for date
- * @return string
- */
-function _ilr_sdc_listings_calendar_month_url($month, $include_query_string = TRUE) {
-  $url = ILR_SDC_PATH_ALIAS . "/calendar-month/$month";
-  if ($include_query_string) {
-    $query_parameters = _ilr_sdc_listings_get_field_query_values();
-    $query_string = drupal_http_build_query($query_parameters);
-    if ($query_string) {
-      $url .= '?' . $query_string;
-    }
-  }
-  return $url;
-
 }
 
 /**
@@ -1866,11 +1807,7 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
       );
   }
   $view = $form_state['view'];
-  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
-    // Set After Build function to hide filters.
-    $form['#after_build'][] = '_ilr_sdc_listings_hide_view_filters';
-  } //Check to see if there are exposed filters
-  elseif ($view->name == 'sdc_course_listing') {
+  if ($view->name == 'sdc_course_listing') {
     if (_ilr_sdc_listings_is_filtered_search($view)) {
       $form['#attributes']['class'][] = 'filter-engaged';
     }
@@ -2006,28 +1943,6 @@ function _ilr_sdc_listings_get_upcoming_classes() {
     return array_keys($results['node']);
   }
 }
-
-/**
- * #after_build callback to hide exposed filters
- *
- * If they hidden outside of #after_build Views will not respect filters
- * @param $form
- * @param $form_state
- * @return array
- */
-function _ilr_sdc_listings_hide_view_filters($form, &$form_state) {
-  $view = $form_state['view'];
-  if ($view->name == 'sdc_class_calendar' && $view->current_display == 'block_nav') {
-    //$form['submit']['#access'] = FALSE;
-    $hide_elements = array('field_online_class_value', 'field_course_sponsor_reference_tid');
-    foreach ($hide_elements as $hide_element) {
-      $form[$hide_element]['#access'] = FALSE;
-    }
-    return $form;
-  }
-
-}
-
 
 /**
  * Implements hook_entityform_presave.
@@ -2223,6 +2138,14 @@ function _ilr_sdc_listings_add_prefix_to_title($node, $type, $view_mode) {
   if ($view_mode == 'reference_field') {
     return FALSE;
   }
+  // Update the page title for course nodes
+  if ($view_mode == 'full') {
+    $title = _ilr_sdc_listings_get_prefixed_node_title($node, $type);
+    drupal_set_title($title);
+  }
+}
+
+function _ilr_sdc_listings_get_prefixed_node_title($node,$type) {
   $wrapper = ilr_get_node_wrapper($node);
   $prefix = ($type == 'sdc_class')
     ? $wrapper->field_course->field_catalog_prefix->value()
@@ -2230,12 +2153,9 @@ function _ilr_sdc_listings_add_prefix_to_title($node, $type, $view_mode) {
 
   if (strpos($node->title,$prefix) === FALSE) {
     $title = $node->title . ' (' . $prefix . ')';
-    $node->title = $title;
-    // Update the page title for course nodes
-    if ($view_mode == 'full') {
-      drupal_set_title($title);
-    }
+    return $title;
   }
+  return $node->title;
 }
 
 /**

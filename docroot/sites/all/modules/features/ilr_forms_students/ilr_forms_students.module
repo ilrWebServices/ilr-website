@@ -8,7 +8,7 @@ include_once 'ilr_forms_students.features.inc';
 
 /**
  * Implements hook_entityform_presave.
- * Sets numerous fields for fex/wisp sponsor and students forms
+ * Sets some specific fields for several forms
  */
 function ilr_forms_students_entityform_presave($entityform) {
   if ($entityform->type == 'fex_wisp_sponsor_registration') {
@@ -22,7 +22,8 @@ function ilr_forms_students_entityform_presave($entityform) {
     _ilr_forms_students_set_fexwisp_program($entityform);
     _ilr_forms_students_set_fexwisp_programYear($entityform);
   }
-  elseif ($entityform->type == 'labor_roundtable_student_registr') {
+  elseif ($entityform->type == 'labor_roundtable_student_registr' ||
+          $entityform->type == 'alumni_assoc_board_interest') {
     _forms_set_hidden_school_year_to_current($entityform);
   }
 }

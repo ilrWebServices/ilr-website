@@ -16,6 +16,10 @@
 //Buttons
 //@import "vendor/buttons/buttons";
 
+//Variables
+$base-font-size: 19px;
+$base-line-height: 27px;
+
 // Base
 @import "base/mixins";
 @import "base/normalize";
@@ -31,7 +35,6 @@
 @import "components/alpha_links";
 @import "components/bean_base";
 @import "components/blog_post";
-@import "components/book_of_the_month";
 @import "components/breadcrumbs";
 @import "components/cemp";
 @import "components/centered_blurb";
@@ -54,7 +57,6 @@
 @import "components/manual_content_listing";
 @import "components/media";
 @import "components/mega_menu";
-@import "components/microfilm_fiche";
 @import "components/neutral_page";
 @import "components/news_article";
 @import "components/people_profile";
@@ -69,8 +71,8 @@
 @import "components/tables";
 @import "components/tagged_content";
 @import "components/timeline";
+@import "components/two_column_card";
 @import "components/view_modes";
-@import "components/wit";
 @import "components/workspan";
 
 // Layout
@@ -78,7 +80,6 @@
 @import "layout/base";
 @import "layout/course-listings";
 @import "layout/homepage-layout";
-@import "layout/catherwood-homepage-layout";
 @import "layout/one_column";
 @import "layout/people_landing_pages";
 @import "layout/subsite_homepages";

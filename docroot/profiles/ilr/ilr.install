@@ -106,7 +106,7 @@ function ilr_install() {
  * Custom function for role creation
  */
 function _ilr_create_roles() {
-  $roles = array('administrator','power user','contributor','neutral admin', 'neutral', 'registered user', 'wit editor', 'faculty admin', 'course admin', 'form admin', 'reflection admin');
+  $roles = array('administrator','power user','contributor','neutral admin', 'neutral', 'registered user', 'faculty admin', 'course admin', 'form admin', 'reflection admin');
 
   $weight = 0;
   foreach ($roles as $name) {
@@ -123,6 +123,11 @@ function _ilr_create_role($name, $weight) {
   $role->weight = $weight;
   user_role_save($role);
 }
+
+function _ilr_delete_role($name) {
+  user_role_delete($role);
+}
+
 /**
  * Custom function for role creation
  */
@@ -144,6 +149,13 @@ function _ilr_add_permissions() {
     ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
     ->execute();
 
+}
+
+function _ilr_bulk_delete_nodes_finished($success, $results, $operations) {
+  $message = ($success)
+    ? t('Batch node deletion successfully completed')
+    : t('Batch node deletion failed.');
+    drupal_set_message($message);
 }
 
 /**
@@ -460,7 +472,7 @@ function ilr_update_7036() {
  * Enables ilr_legacy_redirect custom module
  */
 function ilr_update_7037() {
-  module_enable(array('ilr_legacy_redirect'));
+  // module_enable(array('ilr_legacy_redirect')); // Removing as it was causing the installer to fail
 }
 /**
  * Enables add date short format.
@@ -585,13 +597,122 @@ function ilr_update_7050() {
 }
 
 /**
- * Enables ilr_paragraphs and ilr_experience_reports features
+ * Removes the spotlight module
  */
 function ilr_update_7051() {
+  $sql = 'SELECT nid FROM {node} n WHERE n.type = :type';
+  $result = db_query($sql, array(':type' => 'spotlight'));
+  $nids = array();
+  foreach ($result as $row) {
+    $nids[] = $row->nid;
+  }
+  node_delete_multiple($nids);
+  foreach (field_info_instances('node', 'spotlight') as $field_name => $field) {
+    field_delete_instance($field);
+  }
+  node_type_delete('spotlight');
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the library-related modules and content
+ */
+function ilr_update_7052() {
+  module_disable(array('wit','featured_book','cul_hours','cul_search','cul_new_books','microfilm_microfiche'));
+  $types = array('featured_book', 'microfilm', 'microfiche', 'wit_article');
+  $result = db_select('node')
+    ->fields('node', array('nid'))
+    ->condition('type', $types)
+    ->execute()
+    ->fetchAll();
+  $nids = $operations = array();
+  foreach ($result as $row) {
+    $nids[] = $row->nid;
+  }
+  // Break the array into smaller sizes to eliminate timeouts
+  $chunks = array_chunk($nids, 100, TRUE);
+  foreach ($chunks as $key => $current_nids) {
+    $operations[] = array('node_delete_multiple', array($current_nids));
+  }
+
+  // Set up the Batch API
+  $batch = array(
+    'operations' => $operations,
+    'finished'   => '_ilr_bulk_delete_nodes_finished',
+  );
+  batch_set($batch);
+
+  foreach ($types as $key => $type) {
+    foreach (field_info_instances('node', $type) as $field_name => $field) {
+      field_delete_instance($field);
+    }
+    node_type_delete($type);
+  }
+
+  field_purge_batch(10);
+
+  if ($wit_menu = menu_load('catherwood-library')) {
+    menu_delete($wit_menu);
+  }
+
+  _ilr_delete_role('wit editor');
+
+  $vocabs = array('publications', 'wire_services');
+  foreach ($vocabs as $key => $name) {
+    if ($vocab = taxonomy_vocabulary_machine_name_load($name)) {
+      taxonomy_vocabulary_delete($vocab->vid);
+    }
+  }
+}
+
+/**
+ * Removes additional library-related db artifacts
+ */
+function ilr_update_7053() {
+  $result = db_query('SELECT pid, source FROM {url_alias} WHERE alias LIKE :pattern',
+    array(':pattern' => db_like('library/') . '%'));
+  $aliases = $result->fetchAllKeyed();
+
+  $nids = []; // Get ready to store the library nids
+  foreach ($aliases as $pid => $source) {
+    $nids[] = substr(strstr($source, '/'),1);
+    path_delete($pid);
+  }
+  path_delete(316091); // The main library alias
+  $nids[] = 255656; // The main library page
+  node_delete_multiple($nids);
+
+  // Now delete the entityforms and entityform types
+  $types = array('wit_email_list_subscribe', 'library_contact_form');
+  $result = db_select('entityform')
+    ->fields('entityform', array('entityform_id'))
+    ->condition('type', $types)
+    ->execute()
+    ->fetchAll();
+  $eids = $operations = array();
+  foreach ($result as $row) {
+    $eids[] = $row->entityform_id;
+  }
+  entityform_delete_multiple($eids);
+
+  foreach ($types as $key => $type) {
+    foreach (field_info_instances('entityform_type', $type) as $field_name => $field) {
+      field_delete_instance($field);
+    }
+    if ($entityform_type = entityform_type_load($type)) {
+      entityform_type_delete($entityform_type);
+    }
+  }
+
+  field_purge_batch(10);
+}
+
+/**
+ * Enables ilr_paragraphs and ilr_experience_reports features
+ */
+function ilr_update_7054() {
   module_enable(array(
     'ilr_paragraphs',
-  ));
-  module_enable(array(
     'ilr_experience_reports',
   ));
 }
