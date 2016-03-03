@@ -1507,6 +1507,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any post content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
