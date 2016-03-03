@@ -166,7 +166,7 @@ body.not-front {
     #content-bottom {
       padding: 1em 3em 3em;
       background: white;
-      .field-name-field-content-bottom-region {
+      .region-content-bottom {
         h2 {
           @include adjust-font-size-to(19px);
           @include adjust-leading-to(1);
@@ -194,6 +194,7 @@ body.not-front {
             height: 150px;
             width: 150px;
             h2 {
+              text-align: center;
               opacity: 1;
             }
             img {
@@ -202,11 +203,14 @@ body.not-front {
               width: 150px;
             }
           }
+          .field-name-field-teaser {
+            display: none;
+          }
         }
       }
 
       &[data-eq-state="550"] {
-        .field-name-field-content-bottom-region {
+        .region-content-bottom {
           article {
             @extend %two-column-masonry;
             margin-left: 0;
@@ -216,10 +220,10 @@ body.not-front {
       }
 
       &[data-eq-state="768"], &[data-eq-state="widescreen"] {
-        .field-name-field-content-bottom-region {
+        .region-content-bottom {
           article {
             @extend %four-column;
-            margin-top: 90px;
+            margin-top: 110px;
             display: block;
             .field-name-field-image {
               margin-top: -60px;
