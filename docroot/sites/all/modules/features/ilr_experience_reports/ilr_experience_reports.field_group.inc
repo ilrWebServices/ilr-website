@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function ilr_experience_reports_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -38,7 +38,7 @@ function ilr_experience_reports_field_group_info() {
       ),
     ),
   );
-  $export['group_main_content|node|experience_report|default'] = $field_group;
+  $field_groups['group_main_content|node|experience_report|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -69,7 +69,7 @@ function ilr_experience_reports_field_group_info() {
       ),
     ),
   );
-  $export['group_report_highlighted|node|experience_report|default'] = $field_group;
+  $field_groups['group_report_highlighted|node|experience_report|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -100,7 +100,7 @@ function ilr_experience_reports_field_group_info() {
       ),
     ),
   );
-  $export['group_title_and_focus|node|experience_report|default'] = $field_group;
+  $field_groups['group_title_and_focus|node|experience_report|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -131,7 +131,13 @@ function ilr_experience_reports_field_group_info() {
       ),
     ),
   );
-  $export['group_title_and_focus|node|experience_report|ilr_theme__highlighted'] = $field_group;
+  $field_groups['group_title_and_focus|node|experience_report|ilr_theme__highlighted'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Highlighted');
+  t('Main Content');
+  t('Title and Focus');
+
+  return $field_groups;
 }
