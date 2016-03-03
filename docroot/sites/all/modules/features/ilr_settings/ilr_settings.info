@@ -52,6 +52,7 @@ features[file_display][] = video__wysiwyg__file_field_media_large_icon
 features[file_display][] = video__wysiwyg__media_youtube_image
 features[file_display][] = video__wysiwyg__media_youtube_video
 features[filter][] = filtered_html
+features[image][] = main_portrait_image
 features[image][] = focussed_hero
 features[image][] = focussed_main_image
 features[image][] = focussed_thumbnail

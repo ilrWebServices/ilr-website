@@ -706,3 +706,14 @@ function ilr_update_7053() {
 
   field_purge_batch(10);
 }
+
+/**
+ * Enables ilr_paragraphs and ilr_experience_reports features
+ */
+function ilr_update_7054() {
+  module_enable(array(
+    'ilr_paragraphs',
+    'ilr_experience_reports',
+  ));
+}
+

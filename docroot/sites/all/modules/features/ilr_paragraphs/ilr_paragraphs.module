@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Paragraphs feature.
+ */
+
+include_once 'ilr_paragraphs.features.inc';

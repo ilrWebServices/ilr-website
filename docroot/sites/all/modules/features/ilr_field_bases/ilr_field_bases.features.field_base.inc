@@ -943,7 +943,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p><strong>Anticipated Cornell entry date (semester and year)</strong></p>
+  <p><strong>Anticipated Cornell entry date (semester and year)</strong></p>
 </div>
 ',
       ),
@@ -3904,7 +3904,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item"><strong>Anticipated Entry Date</strong><br>
-	The EMHRM program always begins in the Summer, and the Ph.D. program always begins in the Fall, so for those programs you only need to indicate the year. For the other programs, you\'ll also need to specify the semester.</div>
+  The EMHRM program always begins in the Summer, and the Ph.D. program always begins in the Fall, so for those programs you only need to indicate the year. For the other programs, you\'ll also need to specify the semester.</div>
 ',
       ),
     ),
@@ -4348,7 +4348,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels.</p>
+  <p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels.</p>
 </div>
 ',
       ),
@@ -4426,12 +4426,12 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p><strong>Key factors to consider for dates:</strong></p>
+  <p><strong>Key factors to consider for dates:</strong></p>
 
-	<ul>
-		<li>Please provide as much detail as possible about the dates when you can host students.</li>
-		<li><strong>If you are hosting multiple students on the same day</strong>: we need a maximum of 5 specific dates (versus a date range) in order to facilitate finding one date that works for all students.</li>
-	</ul>
+  <ul>
+    <li>Please provide as much detail as possible about the dates when you can host students.</li>
+    <li><strong>If you are hosting multiple students on the same day</strong>: we need a maximum of 5 specific dates (versus a date range) in order to facilitate finding one date that works for all students.</li>
+  </ul>
 </div>
 ',
       ),
@@ -5278,6 +5278,35 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_header'
+  $field_bases['field_header'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_header',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_headline'
   $field_bases['field_headline'] = array(
     'active' => 1,
@@ -5773,6 +5802,22 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_intro_text'
+  $field_bases['field_intro_text'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_intro_text',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'paragraphs',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'paragraphs',
   );
 
   // Exported field_base: 'field_is_address_the_same'
@@ -6313,7 +6358,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p>Mailing Address (required so we can send you printed materials)</p>
+  <p>Mailing Address (required so we can send you printed materials)</p>
 </div>
 ',
       ),
@@ -8000,6 +8045,35 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_program'
+  $field_bases['field_program'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_program',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 1000,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_project_name'
@@ -10153,6 +10227,33 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'markup',
   );
 
+  // Exported field_base: 'field_text_paragraph'
+  $field_bases['field_text_paragraph'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_text_paragraph',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_thumbnail'
   $field_bases['field_thumbnail'] = array(
     'active' => 1,
@@ -10944,7 +11045,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels.</p>
+  <p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels.</p>
 </div>
 
 ',
@@ -11023,13 +11124,13 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p><strong>Key factors to consider for dates:</strong></p>
+  <p><strong>Key factors to consider for dates:</strong></p>
 
-	<ul>
-		<li>Please provide as much detail as possible about the dates when you can host students.</li>
-		<li>Specify a minimum time commitment, e.g. 2 weeks or 8 days.</li>
-		<li>Specify whether the student must work consecutive days, e.g. may they start in December and finish in January; or may they work 5 days, be out one day for another commitment, and then work 5 more days, etc.</li>
-	</ul>
+  <ul>
+    <li>Please provide as much detail as possible about the dates when you can host students.</li>
+    <li>Specify a minimum time commitment, e.g. 2 weeks or 8 days.</li>
+    <li>Specify whether the student must work consecutive days, e.g. may they start in December and finish in January; or may they work 5 days, be out one day for another commitment, and then work 5 more days, etc.</li>
+  </ul>
 </div>
 ',
       ),

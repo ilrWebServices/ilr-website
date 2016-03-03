@@ -55,6 +55,7 @@ function ilr_settings_strongarm() {
     1 => 'focussed_profile_image',
     2 => 'focussed_hero',
     3 => 'focussed_main_image',
+    4 => 'main_portrait_image',
   );
   $export['borealis_ri_children'] = $strongarm;
 
@@ -181,6 +182,32 @@ function ilr_settings_strongarm() {
           ),
           'ieid' => '3',
           'isid' => '3',
+          'weight' => '1',
+        ),
+      ),
+    ),
+    'main_portrait_image' => array(
+      'isid' => '2',
+      'name' => 'main_portrait_image',
+      'label' => 'main portrait image',
+      'module' => NULL,
+      'storage' => 1,
+      'effects' => array(
+        2 => array(
+          'label' => 'Focal Point Scale And Crop',
+          'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+          'effect callback' => 'focal_point_scale_and_crop_effect',
+          'dimensions callback' => 'image_resize_dimensions',
+          'form callback' => 'image_resize_form',
+          'summary theme' => 'image_resize_summary',
+          'module' => 'focal_point',
+          'name' => 'focal_point_scale_and_crop',
+          'data' => array(
+            'width' => '320',
+            'height' => '320',
+          ),
+          'ieid' => '2',
+          'isid' => '2',
           'weight' => '1',
         ),
       ),

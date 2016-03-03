@@ -1,0 +1,36 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Experience Reports feature.
+ */
+
+include_once 'ilr_experience_reports.features.inc';
+
+/**
+ * Implements hook_init().
+ */
+function ilr_experience_reports_init() {
+  global $theme;
+  if ($theme == 'ilr_theme') {
+    drupal_add_js(drupal_get_path('module', 'ilr_experience_reports') . '/ilr_experience_reports.js', array(
+        'type' => 'file',
+        'scope' => 'footer'
+      ));
+
+    $inview_js = libraries_get_path('inview') . '/jquery.inview.min.js';
+    drupal_add_js($inview_js, array('type' => 'file', 'scope' => 'footer'));
+  }
+}
+
+/**
+ * Implements hook_preprocess_node
+ */
+function ilr_experience_reports_preprocess_node(&$variables) {
+  if($variables['type'] == 'experience_report' && $variables['view_mode'] == 'ilr_theme__highlighted') {
+    $wrapper = ilr_get_node_wrapper($variables['node']);
+    $title = $wrapper->title->value();
+    $markup = "<h1 class='title'>$title</h1>";
+    $markup .= $wrapper->field_program->value();
+    $variables['content']['field_program'][0]['#markup'] = $markup;
+  }
+}
