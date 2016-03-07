@@ -468,6 +468,9 @@ function ilr_sdc_listings_new_class_notification_mail($key, &$message, $params) 
  */
 function _ilr_sdc_listings_get_email_bcc_addresses($follower_forms) {
   $emails = [];
+  if (!ilr_is_production_site()) { // Don't bcc anyone
+    return '';
+  }
   foreach ($follower_forms as $eid => $entityform) {
     $wrapper = entity_metadata_wrapper('entityform', $entityform);
     $emails[] = $wrapper->field_email->value();
