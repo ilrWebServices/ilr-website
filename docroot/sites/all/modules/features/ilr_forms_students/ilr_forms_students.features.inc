@@ -174,6 +174,57 @@ function ilr_forms_students_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['conversations_alumni_finance'] = entity_import('entityform_type', '{
+    "type" : "conversations_alumni_finance",
+    "label" : "Conversations with Alumni in Finance",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "Thank you for registering",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for registering for the ILR Alumni event \\u0022Conversations with Alumni in Finance\\u0022 with Peter Rogers \\u002786 and Eric Hage \\u002786. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EDate: Monday, April 18, 2016\\u003Cbr\\u003E\\r\\n\\tTime: 4:30 PM\\u003Cbr\\u003E\\r\\n\\tLocation: Doherty Lounge, 281 Ives Faculty Building\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact Sue Sappington, \\u003Ca href=\\u0022mailto:ss446@cornell.edu\\u0022\\u003Ess446@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "ss446@cornell.edu"
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['fex_student_application'] = entity_import('entityform_type', '{
     "type" : "fex_student_application",
     "label" : "FEX Student Application",
