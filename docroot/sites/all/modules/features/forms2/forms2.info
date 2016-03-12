@@ -49,7 +49,6 @@ features[field_instance][] = entityform-forensics_debate_camp_payment-field_coun
 features[field_instance][] = entityform-forensics_debate_camp_payment-field_email
 features[field_instance][] = entityform-forensics_debate_camp_payment-field_first_name
 features[field_instance][] = entityform-forensics_debate_camp_payment-field_full_name
-features[field_instance][] = entityform-forensics_debate_camp_payment-field_h_credit_card_payments
 features[field_instance][] = entityform-forensics_debate_camp_payment-field_h_event_date
 features[field_instance][] = entityform-forensics_debate_camp_payment-field_last_name
 features[field_instance][] = entityform-forensics_debate_camp_payment-field_phone

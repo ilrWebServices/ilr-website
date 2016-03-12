@@ -12,3 +12,11 @@ function forms2_update_7001() {
   }
 }
 
+/**
+ * Removes field_h_credit_card_payments from forensics payments forms
+ */
+function forms2_update_7002() {
+  if ($instance = field_info_instance('entityform', 'field_h_credit_card_payments', 'forensics_debate_camp_payment')) {
+    field_delete_instance($instance);
+  }
+}

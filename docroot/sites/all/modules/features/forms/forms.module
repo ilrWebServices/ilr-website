@@ -279,7 +279,6 @@ function forms_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
   _forms_add_data_attribute_checkbox($form,'send_confirmation_email_to_admin');
   _forms_add_data_attribute_checkbox($form,'add_user_name_to_subject_line', 'Append user\'s name to subject line of admin email; some ILR staff appreciate having this; some do not');
   _forms_add_data_attribute_checkbox($form, 'kerberized', 'This form requires NetID authentication');
-  _forms_add_data_attribute_checkbox($form, 'add_payment_processing', 'This form is used to process payments');
   _forms_add_admin_email_field($form);
 }
 

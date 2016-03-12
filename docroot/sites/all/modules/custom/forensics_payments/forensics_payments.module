@@ -5,6 +5,29 @@
 ///////////////////////////////
 
 /**
+ * Implements hook_freedompay_checkout_payload_alter().
+ */
+function forensics_payments_freedompay_checkout_payload_alter($form_id, &$payload) {
+  if ($form_id == 'forensics_debate_camp_payment') {
+    $payload['InvoiceNumber']= _forensics_payments_generate_invoice_number();
+    $payload['PurchaseItems'] = _forensics_payments_get_purchase_items();
+    $payload['BillingAddress'] = forensics_payments_get_billing_address();
+    $payload['AllowInternationalAddresses'] = TRUE;
+  }
+}
+
+function forensics_payments_get_billing_address() {
+  $wrapper = _forensics_payments_get_entityform_wrapper();
+  return array(
+    "Street1" => $wrapper->field_address_line_1->value(),
+    "Street2" => $wrapper->field_address_line_2->value(),
+    "City" => $wrapper->field_city->value(),
+    "State" => $wrapper->field_state_as_text->value(),
+    "PostalCode" => $wrapper->field_zip_code->value(),
+    'CountryCode' => $wrapper->field_country_for_forensics->value(),
+  );
+}
+/**
  * Confirm that user entered a valid amount to pay: numeric and greater than 0
  */
 function _forensics_payments_amount_is_valid() {
@@ -13,52 +36,11 @@ function _forensics_payments_amount_is_valid() {
 }
 
 /**
- * Use full_name field (student's name) truncated to 17 chars
- * elavon doesn't allow it to be over 17 chars
- */
-function _forensics_payments_generate_customer_code() {
-  if ($entityform_wrapper = _forensics_payments_get_entityform_wrapper()) {
-    return trim(substr($entityform_wrapper->field_full_name->value(), 0, 17));
-  }
-  return '';
-}
-
-/**
- * Maps the elavon keys to the entityform field names - REQUIRED
- */
-function _forensics_payments_get_entityform_mappings() {
-  $mappings = &drupal_static(__FUNCTION__);
-  if (!isset($mappings)) {
-    $mappings = array(
-      "ssl_customer_code" => _forensics_payments_generate_customer_code(),
-      "ssl_first_name" => 'field_first_name',
-      "ssl_last_name" => 'field_last_name',
-      "ssl_avs_address" => 'field_address_line_1',
-      "ssl_address2" => 'field_address_line_2',
-      "ssl_city" => 'field_city',
-      "ssl_state" => 'field_state_as_text',
-      'ssl_country' => 'field_country_for_forensics',
-      "ssl_avs_zip" => 'field_zip_code',
-      "ssl_phone" => 'field_phone',
-      'ssl_email' => 'field_email',
-      'ssl_amount' => 'field_ssl_amount',
-      'ssl_approval_code' => 'field_ssl_approval_code',
-      'ssl_card_number' => 'field_ssl_card_number', // Just first 2 digits
-      'ssl_invoice_number' => 'field_transinvoicenum',
-      'ssl_result_message' => 'field_ssl_result_message',
-      'ssl_txn_id' => 'field_ssl_txn_id',
-      'ssl_txn_time' => 'field_ssl_txn_time',
-    );
-  }
-  return $mappings;
-}
-
-/**
- * Wrapper function for _elavon_get_entityform_wrapper().
+ * Wrapper function for _freedompay_get_entityform_wrapper().
  */
 function _forensics_payments_get_entityform_wrapper() {
-  if (module_exists('elavon')) {
-    return _elavon_get_entityform_wrapper();
+  if (module_exists('freedompay')) {
+    return _freedompay_get_entityform_wrapper();
   }
   return NULL;
 }
@@ -66,7 +48,7 @@ function _forensics_payments_get_entityform_wrapper() {
 /**
  * Get total cost that user entered
  */
-function _forensics_payments_get_total_cost_entered() {
+function _forensics_payments_get_total_cost() {
   if ($entityform_wrapper = _forensics_payments_get_entityform_wrapper()) {
     return $entityform_wrapper->field_total_cost->value();
   }
@@ -74,8 +56,24 @@ function _forensics_payments_get_total_cost_entered() {
 }
 
 /**
+ * @todo
+ * remove this example function once alunni events tickets implements
+ */
+function _forensics_payments_get_purchase_items() {
+  return [];
+  return array(
+    array(
+      "Price" => 2490,
+      "DisplayOrder" => 1,
+      "Description" => "A description provided by forensics_payments",
+      "Quantity" => 1,
+    ),
+  );
+}
+
+/**
  * Lets user know if he didn't enter a valid amount
- * @see _elavon_payment_page()
+ * @see _freedompay_payment_page()
  */
 function _forensics_payments_payment_form_errors() {
   $errors = FALSE;
@@ -89,9 +87,9 @@ function _forensics_payments_payment_form_errors() {
  * Returns a unique invoice number for the registration
  * Based on the number of completed, paid registrations
  */
-function _forensics_payments_ssl_invoice_number() {
+function _forensics_payments_generate_invoice_number() {
   $prefix = 'debate';
-  $invoice_count = _elavon_get_current_invoice_count_by_type('forensics_debate_camp_payment');
+  $invoice_count = _freedompay_get_current_invoice_count_by_type('forensics_debate_camp_payment');
   $offset = 200; // Incremented from the old system
   // Pad the string to 6 places
   $invoice_number = str_pad($invoice_count + $offset, 6, '0', STR_PAD_LEFT);
