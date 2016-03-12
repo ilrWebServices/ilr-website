@@ -1,0 +1,804 @@
+<?php
+  /*
+  @TODO
+    - Deal with entity viewing and editing
+    - Handle and remove all @TODO items on lines below
+    - Create api doc
+    - Document international
+    - Finish implementing permissions
+    - hook needs to know which form is being submitted
+   */
+
+define('FREEDOMPAY_FAILED_TRANSACTION_MESSAGE', '<p>Sorry, but there was an error processing your request. Please return to the payment form and try again.</p>');
+define('FREEDOMPAY_DEFAULT_CANCEL_MESSAGE', ''); // Defaults to no message
+define('FREEDOMPAY_DEFAULT_REJECT_MESSAGE', '<p>Sorry, but there was an error processing your payment. Please try again, or contact customer support.</p>');
+
+/**
+ * Implements hook_freedompay_checkout_payload().
+ */
+function freedompay_freedompay_checkout_payload() {
+  $entityform = _freedompay_get_entityform();
+  $hpp = _freedompay_get_hpp_for_form($entityform);
+  $payload = array(
+    "InvoiceNumber" => _freedompay_get_invoice_number(),
+    "CaptureMode" => TRUE,
+    "AddressRequired" => TRUE,
+    "TransactionTotal" => _freedompay_get_total_cost(),
+    "TerminalId" => $hpp->terminal_id,
+    "StoreId" => $hpp->store_id,
+    "MerchantReferenceCode" => 'eform' . $entityform->entityform_id,
+  );
+  return $payload;
+}
+
+/**
+ * Initiates the freedompay_checkout_payload hook
+ * Allows modules to implement an alter hook
+ */
+function freedompay_get_checkout_payload() {
+  $form_id = _freedompay_entityform_type_name();
+  $payload = module_invoke_all('freedompay_checkout_payload');
+  drupal_alter('freedompay_checkout_payload', $form_id, $payload);
+  return json_encode($payload);
+}
+
+/**
+ * Implements hook_entity_info().
+ */
+function freedompay_entity_info() {
+  return array(
+    'freedompay_hpp' => array(
+      'label' => t('FreedomPay Portal'),
+      'plural label' => t('FreedomPay Portals'),
+      'controller class' => 'EntityAPIController',
+      'entity class' => 'FreedompayHpp',
+      'views controller class' => 'EntityDefaultViewsController',
+      'base table' => 'freedompay_hpp',
+      'fieldable' => FALSE,
+      'entity keys' => array(
+        'id' => 'hpp_id',
+        'label' => 'title',
+      ),
+      'access callback' => 'freedompay_access',
+      'admin ui' => array(
+        'path' => 'admin/config/services/freedompay/hpp',
+        'controller class' => 'EntityDefaultUIController',
+      ),
+      'uri callback' => 'entity_class_uri',
+      'module' => 'freedompay',
+      'label callback' => 'entity_class_label'
+    ),
+    'freedompay_payment' => array(
+      'label' => t('FreedomPay Payment'),
+      'plural label' => t('FreedomPay Payments'),
+      'controller class' => 'EntityAPIController',
+      'entity class' => 'FreedompayPayment',
+      'views controller class' => 'EntityDefaultViewsController',
+      'base table' => 'freedompay_payments',
+      'fieldable' => FALSE,
+      'entity keys' => array(
+        'id' => 'payment_id',
+        'label' => 'transaction_id',
+      ),
+      'access callback' => 'freedompay_access',
+      'module' => 'freedompay',
+      'label callback' => 'entity_class_label'
+    ),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function freedompay_permission() {
+  return array(
+    'administer freedompay portals' => array(
+      'title' => t('Administer FreedomPay Portals'),
+      'description' => t('Perform administration tasks and manage FreedomPay portals.'),
+    ),
+    'manage payments' => array(
+      'title' => t('Manage FreedomPay Payments'),
+      'description' => t('Mange payments.'),
+    ),
+    'access payments' => array(
+      'title' => t('Access payments'),
+      'description' => t('View for payments.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ * Dynamically generates paths based on the system HPP entities
+ */
+function freedompay_menu() {
+  $items = array();
+
+  $portals = _freedompay_get_portals();
+  if (!empty($portals)) {
+    $path_names_and_titles = array(
+      'checkout' => 'Complete Payment',
+      'success' => 'Payment Complete',
+      'failure' => 'Payment Error',
+      'cancel' => 'Payment Cancelled',
+    );
+    foreach ($portals as $portal) {
+      foreach ($path_names_and_titles as $path_name => $title) {
+        $items[$portal->{$path_name.'_path'}] = array(
+          'title' => $title,
+          'description' => $title . ' Page',
+          'page callback' => "freedompay_{$path_name}_page",
+          'access arguments' => array('access content'),
+          'type' => MENU_NORMAL_ITEM,
+        );
+      }
+    }
+  }
+  return $items;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * form_id = ilr_editable_settings_form
+ * Adds a setting for cancel and reject messages for all payment forms
+ * @see ilr_editable_settings module.
+ */
+function freedompay_form_ilr_editable_settings_form_alter(&$form, &$form_state, $form_id) {
+  $payment_forms = _freedompay_get_payment_forms();
+  $form['freedompay_set'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('FreedomPay Messages'),
+  );
+  $form['freedompay_set']['freedompay_default_cancel_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Default FreedomPay cancel message'),
+    '#default_value' => FREEDOMPAY_DEFAULT_CANCEL_MESSAGE,
+  );
+  $form['freedompay_set']['freedompay_default_reject_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Default FreedomPay rejected message'),
+    '#default_value' => FREEDOMPAY_DEFAULT_REJECT_MESSAGE,
+  );
+  foreach ($payment_forms as $name => $entityform_type) {
+    $replaced_name = ucfirst(str_replace('_', ' ', $name));
+    $form['freedompay_set']['freedompay_'.$name.'_reject_message'] = array(
+      '#type' => 'textarea',
+      '#title' => t($replaced_name . ' FreedomPay rejected message'),
+      '#default_value' => FREEDOMPAY_DEFAULT_REJECT_MESSAGE,
+    );
+    $form['freedompay_set']['freedompay_'.$name.'_cancel_message'] = array(
+      '#type' => 'textarea',
+      '#title' => t($replaced_name . ' FreedomPay cancel message'),
+      '#default_value' => FREEDOMPAY_DEFAULT_CANCEL_MESSAGE,
+    );
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function freedompay_entityform_insert($entityform) {
+  if (_freedompay_entityform_is_payment_form($entityform)) {
+    _freedompay_set_entityform_cookies($entityform);
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ * Sets the draft status of the form
+ */
+function freedompay_entityform_presave($entityform) {
+  if (_freedompay_entityform_is_payment_form($entityform)) {
+    $entityform->draft = !_freedompay_payment_complete();
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ * Checks to be sure that to transaction total hasn't changed
+ * @todo make total cost more robust for hook system
+ */
+function freedompay_entityform_update($entityform) {
+  if (_freedompay_entityform_is_payment_form($entityform)) {
+    if ($transaction = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id())) {
+      if (isset($transaction['OriginalRequest'])) {
+        $wrapper = _freedompay_get_entityform_wrapper($entityform);
+        if ($transaction['OriginalRequest']['TransactionTotal'] != _freedompay_get_total_cost()) {
+          _freedompay_cookie_delete('transaction_id');
+          _freedompay_cookie_delete('checkout_url');
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entityform_previous_submission_alter().
+ * Loads the entityform draft if there is one for anonymous users
+ */
+function freedompay_entityform_previous_submission_alter(&$entityform_submission, $entityform_type, $context) {
+  if ($previous_submission = _freedompay_get_entityform()) {
+    if ($entityform_type == $previous_submission->type && $previous_submission->draft == 1) {
+      $entityform_submission = $previous_submission;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter.
+ *   Allows specifying the admin for the form
+ *   Adds checkbox to specify NetID login requirement
+ */
+function freedompay_form_entityform_type_form_alter(&$form, &$form_state, $form_id) {
+  $form['#validate'][] = '_freedompay_entityform_type_validate';
+  $form['data']['add_payment_processing'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('This form is used to process FreedomPay payments'),
+    '#weight' => 0,
+    '#default_value' => (isset($form['#entityform_type']->data['add_payment_processing']))
+      ? $form['#entityform_type']->data['add_payment_processing'] : 0,
+  );
+  $portals = _freedompay_get_portals();
+  if (!empty($portals)) {
+    foreach ($portals as $portal) {
+      $hpp_options[$portal->hpp_id] = $portal->title;
+    }
+    $form['data']['hpp'] = array(
+      '#title' => t('HPP'),
+      '#type' => 'select',
+      '#options' => $hpp_options,
+      '#default_value' => isset($form['#entityform_type']->data['hpp']) ? $form['#entityform_type']->data['hpp'] : '',
+      '#required' => FALSE,
+      '#weight' => 0,
+      '#empty_option' => '--Choose one--',
+    );
+  }
+  else {
+    $form['data']['hpp'] = array(
+      '#title' => t('HPP'),
+      '#type' => 'markup', // Make sure the class below matches the javascript in freedompay.js
+      '#markup' => '<div class="form-item-data-hpp">'.l('Add an HPP portal now','admin/config/services/freedompay/hpp/add', array('query' => array('destination' => current_path()))).'</div>',
+      '#weight' => 0,
+    );
+  }
+
+  drupal_add_js(drupal_get_path('module','freedompay') . '/freedompay.js', array('type' => 'file', 'scope' => 'footer'));
+}
+
+/*
+ * Admin page for Portals
+ */
+function freedompay_hpp_admin_page() {
+  return t('Administer FreedomPay Portals');
+}
+
+/**
+ * Checks access.
+ *
+ * @param $op
+ *   The operation being performed. One of 'view', 'update', 'create' or
+ *   'delete'.
+ * @param $entity
+ * @param $account
+ *   The user to check for. Leave it to NULL to check for the current user.
+ */
+function freedompay_access($op, $entity = NULL, $account = NULL) {
+  if (user_access('administer freedompay portals', $account)) {
+    return TRUE;
+  }
+
+  if ($op == 'view' && user_access('access payments', $account)) {
+    return TRUE;
+  }
+
+  if (($op == 'edit' || $op == 'create' || $op == 'delete')
+    && user_access('manage payments', $account)
+  ) {
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
+function freedompay_checkout_page() {
+  $markup = '';
+  if (isset($_REQUEST['fpr'])) {
+    $markup = _freedompay_get_message($_REQUEST['fpr']);
+  }
+  // Check for existing checkout_url
+  if ($checkout_url = _freedompay_get_checkout_url()) {
+    $markup .= _freedompay_get_complete_purchase_button($checkout_url);
+  } // Check for an entityform
+  elseif (_freedompay_get_entityform()) {
+    if ($result = _freedompay_create_freedompay_transaction()) {
+      // Redirect so that cookies load
+      return _freedompay_redirect(_freedompay_get_checkout_path());
+    } // Transaction fail
+    else {
+      _freedompay_cookie_flush();
+      $markup .= FREEDOMPAY_FAILED_TRANSACTION_MESSAGE;
+    }
+  } // There is not an existing entityform, so must be an error
+  else {
+    $markup .= FREEDOMPAY_FAILED_TRANSACTION_MESSAGE;
+  }
+  return $markup;
+}
+
+function freedompay_success_page() {
+  if (isset($_REQUEST['transid'])) {
+    if ($payment = _freedompay_create_payment()) {
+      $wrapper = _freedompay_get_entityform_wrapper();
+      $wrapper->draft = 0;
+      $wrapper->save();
+      _freedompay_cookie_flush();
+    }
+  }
+  else { // @TODO - figure out if this is needed
+    $results = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id());
+  }
+  return 'Success';
+}
+
+function freedompay_error_page() {
+  $params = array(
+    'query' => array(
+      'transid' => $_GET['transid'],
+      'fpr' => 'r',
+    ),
+  );
+  _freedompay_redirect(_freedompay_get_checkout_path(), $params);
+  return 'Payment Error';
+}
+
+function freedompay_cancel_page() {
+  $params = array(
+    'query' => array(
+      'transid' => $_GET['transid'],
+      'fpr' => 'c',
+    ),
+  );
+  _freedompay_redirect(_freedompay_get_checkout_path(), $params);
+  return 'Payment Cancelled';
+}
+
+/**
+ * Form definition for adding/editing portals
+ */
+function freedompay_hpp_form($form, &$form_state, $hpp = NULL) {
+  $form['title'] = array(
+    '#title' => t('Title'),
+    '#type' => 'textfield',
+    '#default_value' => isset($hpp->title) ? $hpp->title : '',
+    '#required' => TRUE,
+    '#weight' => -10,
+  );
+
+  $form['store_id'] = array(
+    '#title' => t('Store ID'),
+    '#type' => 'textfield',
+    '#default_value' => isset($hpp->store_id) ? $hpp->store_id : '',
+    '#required' => TRUE,
+  );
+
+  $form['terminal_id'] = array(
+    '#title' => t('Terminal ID'),
+    '#type' => 'textfield',
+    '#default_value' => isset($hpp->terminal_id) ? $hpp->terminal_id : '',
+    '#required' => TRUE,
+  );
+
+  $form['checkout_path'] = array(
+    '#title' => t('Checkout Path'),
+    '#type' => 'textfield',
+    '#default_value' => isset($hpp->checkout_path) ? $hpp->checkout_path : '',
+    '#required' => TRUE,
+  );
+
+  $form['success_path'] = array(
+    '#title' => t('Success Path'),
+    '#type' => 'textfield',
+    '#default_value' => isset($hpp->success_path) ? $hpp->success_path : '',
+    '#required' => TRUE,
+  );
+
+  $form['failure_path'] = array(
+    '#title' => t('Failure Path'),
+    '#type' => 'textfield',
+    '#default_value' => isset($hpp->failure_path) ? $hpp->failure_path : '',
+    '#required' => TRUE,
+  );
+
+  $form['cancel_path'] = array(
+    '#title' => t('Cancel Path'),
+    '#type' => 'textfield',
+    '#default_value' => isset($hpp->cancel_path) ? $hpp->cancel_path : '',
+    '#required' => TRUE,
+  );
+
+  field_attach_form('freedompay_hpp', $hpp, $form, $form_state);
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => isset($hpp->hpp_id) ? t('Update portal') : t('Save portal'),
+    '#weight' => 999,
+  );
+  return $form;
+}
+
+/**
+ * Implements hook_form_alter().
+ * Removes the url redirects tab
+ */
+function freedompay_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'freedompay_hpp_form' || $form_id == 'freedompay_payment_form') {
+    unset($form['redirect']);
+  }
+}
+
+/**
+ * Submit handler for the portal add/edit form.
+ */
+function freedompay_hpp_form_submit($form, &$form_state) {
+  $hpp = entity_ui_form_submit_build_entity($form, $form_state);
+  $hpp->save();
+  drupal_set_message(t('The portal <em>@title</em> has been saved.', array('@title' => $hpp->title)));
+  $form_state['redirect'] = 'admin/config/services/freedompay/hpp';
+}
+
+/**
+ * Validation callback
+ * Confirms that payment forms have field_h_credit_card_payments
+ */
+function _freedompay_entityform_type_validate(&$form, &$form_state) {
+  if ($form_state['values']['data']['add_payment_processing']) {
+    $entityform = _freedompay_create_entityform_by_type($form['#entityform_type']->type);
+    $wrapper = _freedompay_get_entityform_wrapper($entityform);
+    // Check for the required fields
+    if (empty($form_state['values']['data']['hpp'])) {
+      form_set_error('add_payment_processing', 'Payment forms require an assigned HPP.');
+    } // Looks like a valid form
+    else {
+      // Use the hpp here
+      $hpp = entity_load('freedompay_hpp', array($form_state['values']['data']['hpp']));
+      $hpp = reset($hpp);
+      $form_state['values']['data']['draftable'] = 1;
+      $form_state['values']['data']['draft_redirect_path'] = $hpp->checkout_path;
+      $form_state['values']['data']['redirect_path'] = $hpp->checkout_path;
+      drupal_set_message('Your payment form settings for drafts and redirect paths were automatically set to the appropriate values.');
+    }
+  }
+}
+
+/**
+ * Creates an empty entityform object for field checking
+ */
+function _freedompay_create_entityform_by_type($type) {
+  $entityform = entity_create('entityform', array(
+    'type' => $type,
+  ));
+  return $entityform;
+}
+
+/**
+ * Loads or retrieves the entityform type as a string
+ */
+function _freedompay_entityform_type_name() {
+  $entityform_type = &drupal_static(__FUNCTION__);
+  if (!isset($entityform_type)) {
+    if ($entityform_type = _freedompay_cookie_get('entityform_type')) {
+      return $entityform_type;
+    }
+  }
+  return $entityform_type;
+}
+
+function _freedompay_get_checkout_url() {
+  $checkout_url = &drupal_static(__FUNCTION__);
+  if (!isset($checkout_url)) {
+    if ($checkout_url = _freedompay_cookie_get('checkout_url')) {
+      return $checkout_url;
+    }
+  }
+  return $checkout_url;
+}
+
+/**
+ * Get the transaction id
+ * - first from a potential url variable
+ * - next from the cookie
+ */
+function _freedompay_get_transaction_id() {
+  $transaction_id = &drupal_static(__FUNCTION__);
+  if (!isset($transaction_id)) {
+    if (isset($_REQUEST['transid'])) {
+      $transaction_id = $_REQUEST['transid'];
+    }
+    else if ($transaction_id = _freedompay_cookie_get('transaction_id')) {
+      return $transaction_id;
+    }
+  }
+  return $transaction_id;
+}
+
+function _freedompay_create_freedompay_transaction() {
+  $payload = freedompay_get_checkout_payload();
+  $result = _freedompay_initiate_transaction('createTransaction', $payload);
+  if (!empty($result) && !empty($result['CheckoutUrl'])) {
+    _freedompay_cookie_save(['transaction_id' => $result['TransactionId']]);
+    _freedompay_cookie_save(['checkout_url' => $result['CheckoutUrl']]);
+  }
+  return $result;
+}
+
+function _freedompay_initiate_transaction($transaction, $payload) {
+  $service_url = _freedompay_get_service_url();
+  $request_headers = array(
+    'Content-Type: application/json',
+    'Accept: application/json',
+    'Cache-Control: no-cache',
+    'Content-Length: ' . strlen($payload)
+  );
+  $process = curl_init();
+  curl_setopt($process, CURLOPT_URL, $service_url . '/' . $transaction);
+  curl_setopt($process, CURLOPT_HTTPHEADER, $request_headers);
+  curl_setopt($process, CURLOPT_POST, 1);
+  curl_setopt($process, CURLOPT_POSTFIELDS, $payload);
+  curl_setopt($process, CURLOPT_RETURNTRANSFER, TRUE);
+  $response = curl_exec($process);
+  $result = json_decode($response, TRUE);
+  curl_close($process);
+  return $result;
+}
+
+function _freedompay_get_service_url() {
+  $service_url = (ilr_is_production_site())
+    ? 'https://payments.freedompay.com/checkoutservice/checkoutservice.svc'
+    : 'https://payments.uat.freedompay.com/checkoutservice/checkoutservice.svc';
+  return $service_url;
+}
+
+function _freedompay_get_hpp_for_form($entityform) {
+  return _freedompay_get_hpp_for_type($entityform->type);
+}
+
+function _freedompay_get_hpp_for_type($type) {
+  $entityform_type = entityform_type_load($type);
+  $hpp = _freedompay_load_hpp($entityform_type->data['hpp']);
+  return $hpp;
+}
+
+/**
+ * Loads an hpp by ID.
+ */
+function _freedompay_load_hpp($hpp_id=NULL) {
+  if (empty($hpp_id)) {
+    return FALSE;
+  }
+  $portal = _freedompay_hpp_load_multiple(array($hpp_id), array());
+
+  return $portal ? reset($portal) : FALSE;
+}
+
+function _freedompay_hpp_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  if (empty($ids) && empty($conditions)) {
+    return array();
+  }
+  return entity_load('freedompay_hpp', $ids, $conditions, $reset);
+}
+
+function _freedompay_get_complete_purchase_button($checkout_url) {
+  $markup = '<a class="button" href="'.$checkout_url.'">Complete Purchase</a>';
+  return $markup;
+}
+
+/**
+ * Load the portal objects from an array of ids
+ */
+function _freedompay_get_portals() {
+  if ($portal_ids = _freedompay_get_portal_ids()) {
+    return entity_load('freedompay_hpp', $portal_ids);
+  }
+  return NULL;
+}
+
+function _freedompay_get_portal_ids() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'freedompay_hpp')
+    ->propertyOrderBy('created', 'DESC');
+  $result = $query->execute();
+
+  if (isset($result['freedompay_hpp'])) {
+    return array_keys($result['freedompay_hpp']);
+  }
+  return array();
+}
+
+/**
+ * @todo Figure out if this is still needed
+ */
+function _freedompay_get_payment_by_transaction_id($transaction_id) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'freedompay_payment')
+    ->propertyCondition('transaction_id',$transaction_id);
+  $result = $query->execute();
+
+  if (isset($result['freedompay_payment'])) {
+    $id = key(reset($result['freedompay_payment']));
+    return entity_load_single('freedompay_payment', $id);
+  }
+  return NULL;
+}
+
+/**
+ * Runs a query for all entityforms of a given type
+ * NOTE: this will include any test forms that were submitted and not deleted
+ */
+function _freedompay_get_current_invoice_count_by_type($type) {
+  $submissions = entityform_get_submissions($type,NULL,NULL);
+  return count($submissions);
+}
+
+function _freedompay_get_payment_forms() {
+  $payment_forms = [];
+  $entityform_types = entityform_get_types();
+  foreach ($entityform_types as $name => $entityform_type) {
+    if (!empty($entityform_type->data['add_payment_processing'])) {
+      $payment_forms[$name] = $entityform_type;
+    }
+  }
+  return $payment_forms;
+}
+
+/**
+ * Returns the value of field_total_cost
+ * By default, we assume that there is a total_cost field on the entityform that stores the cost
+ * @todo make this a more robust default
+ */
+function _freedompay_get_total_cost() {
+  if ($wrapper = _freedompay_get_entityform_wrapper()) {
+    return $wrapper->field_total_cost->value();
+  }
+  return 250;
+}
+
+/**
+ * Loads or retrieves the entityform object
+ */
+function _freedompay_get_entityform() {
+  $entityform = &drupal_static('freedompay_entityform');
+  if (!isset($entityform)) {
+    if ($entityform_id = _freedompay_cookie_get('entityform_id')) {
+      $entityform = entityform_load($entityform_id);
+    }
+  }
+  return $entityform;
+}
+
+/**
+ * Creates or retrieves an entitymetadata wrapper for the form
+ */
+function _freedompay_get_entityform_wrapper($entityform=NULL) {
+  $wrapper = &drupal_static(__FUNCTION__);
+  if (!isset($wrapper)) {
+    if ($entityform) {
+      $wrapper = entity_metadata_wrapper('entityform', $entityform);
+    }
+    else if ($entityform = _freedompay_get_entityform()) {
+      $wrapper = entity_metadata_wrapper('entityform', $entityform);
+    }
+  }
+  return $wrapper;
+}
+
+function _freedompay_create_payment() {
+  $transaction_id = _freedompay_get_transaction_id();
+  $results = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id());
+  if (!empty($results) && $results['AuthResponse']['AuthorizationDecision'] == 'ACCEPT') {
+    $freeway_response = $results['AuthResponse']['FreewayResponse'];
+    $properties = [
+      'transaction_id' => $transaction_id,
+      'authorization_code' => $freeway_response['AuthorizationCode'],
+      'form_id' => _freedompay_cookie_get('entityform_id'),
+      'amount' => $freeway_response['Amount'],
+      'freeway_request_id' => $freeway_response['FreewayRequestId'],
+      'card_number' => $results['MaskedCardNumber'],
+    ];
+    if ($entity = entity_create('freedompay_payment', $properties)) {
+      $entity->save();
+      return $entity;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Sets the cookies
+ */
+function _freedompay_set_entityform_cookies($entityform) {
+  _freedompay_cookie_save([
+    'entityform_id' => $entityform->entityform_id,
+    'entityform_type' => $entityform->type,
+  ]);
+}
+
+function _freedompay_cookie_save(array $values) {
+  foreach ($values as $field => $value) {
+    setrawcookie('Drupal.payment.' . $field, rawurlencode($value), REQUEST_TIME + 60 * 60 * 1.5, '/');
+  }
+}
+
+function _freedompay_cookie_get($name) {
+  if (isset($_COOKIE['Drupal_payment_' . $name])) {
+    return $_COOKIE['Drupal_payment_' . $name];
+  }
+  return NULL;
+}
+
+function _freedompay_cookie_flush() {
+  $cookies = ['entityform_id','entityform_type','transaction_id','checkout_url'];
+  foreach ($cookies as $key => $name) {
+    _freedompay_cookie_delete($name);
+  }
+}
+
+function _freedompay_cookie_delete($cookie_name) {
+  setrawcookie('Drupal.payment.' . $cookie_name, '', REQUEST_TIME - 3600, '/');
+}
+
+function _freedompay_get_message($action) {
+  $entityform_type = _freedompay_entityform_type_name();
+  $message = '';
+  if ($action == 'c') {
+    $message = variable_get('freedompay_'.$entityform_type.'_cancel_message', FREEDOMPAY_DEFAULT_CANCEL_MESSAGE);
+  }
+  elseif ($action == 'r') {
+    $message = variable_get('freedompay_'.$entityform_type.'_reject_message', FREEDOMPAY_DEFAULT_REJECT_MESSAGE);
+  }
+  return $message;
+}
+
+function _freedompay_redirect($url, $params=array()) {
+  drupal_goto($url, $params);
+}
+/**
+ * Checks whether the form is a payment form
+ * Entityform types with payment processing have already been validated
+ * @see _freedompay_entityform_type_validate().
+ */
+function _freedompay_entityform_is_payment_form($entityform) {
+  $entityform_type = entityform_type_load($entityform->type);
+  if (isset($entityform_type->data['add_payment_processing'])) {
+    return $entityform_type->data['add_payment_processing'];
+  }
+  return FALSE;
+}
+
+/**
+ * Gets the checkout path of the hpp for the current form
+ * Defaults to a path that will likely result in a 404
+ */
+function _freedompay_get_checkout_path() {
+  if($entityform = _freedompay_get_entityform()) {
+    $hpp = _freedompay_get_hpp_for_form($entityform);
+  }
+  else {
+    return 'payment/checkout';
+  }
+  return $hpp->checkout_path;
+}
+
+function _freedompay_payment_complete() {
+  if ($payment =_freedompay_get_payment_by_transaction_id(_freedompay_get_transaction_id())) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+function _freedompay_get_invoice_number() {
+  $invoice_count = _freedompay_get_current_invoice_count_by_type(_freedompay_entityform_type_name());
+  $offset = 1; // Incremented from the old system
+  // Pad the string to 6 places
+  $invoice_number = str_pad($invoice_count + $offset, 6, '0', STR_PAD_LEFT);
+  return 'Invoice' . $invoice_number;
+}
