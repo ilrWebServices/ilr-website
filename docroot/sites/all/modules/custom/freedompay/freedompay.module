@@ -2,11 +2,8 @@
   /*
   @TODO
     - Deal with entity viewing and editing
-    - Handle and remove all @TODO items on lines below
     - Create api doc
-    - Document international
     - Finish implementing permissions
-    - hook needs to know which form is being submitted
    */
 
 define('FREEDOMPAY_FAILED_TRANSACTION_MESSAGE', '<p>Sorry, but there was an error processing your request. Please return to the payment form and try again.</p>');
@@ -196,17 +193,13 @@ function freedompay_entityform_presave($entityform) {
 /**
  * Implements hook_entity_update().
  * Checks to be sure that to transaction total hasn't changed
- * @todo make total cost more robust for hook system
  */
 function freedompay_entityform_update($entityform) {
   if (_freedompay_entityform_is_payment_form($entityform)) {
     if ($transaction = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id())) {
-      if (isset($transaction['OriginalRequest'])) {
-        $wrapper = _freedompay_get_entityform_wrapper($entityform);
-        if ($transaction['OriginalRequest']['TransactionTotal'] != _freedompay_get_total_cost()) {
-          _freedompay_cookie_delete('transaction_id');
-          _freedompay_cookie_delete('checkout_url');
-        }
+      if (_freedompay_transaction_total_changed($transaction)) {
+        _freedompay_cookie_delete('transaction_id');
+        _freedompay_cookie_delete('checkout_url');
       }
     }
   }
@@ -628,9 +621,6 @@ function _freedompay_get_portal_ids() {
   return array();
 }
 
-/**
- * @todo Figure out if this is still needed
- */
 function _freedompay_get_payment_by_transaction_id($transaction_id) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'freedompay_payment')
@@ -667,13 +657,15 @@ function _freedompay_get_payment_forms() {
 /**
  * Returns the value of field_total_cost
  * By default, we assume that there is a total_cost field on the entityform that stores the cost
- * @todo make this a more robust default
+ * @todo consider other options for a default
  */
 function _freedompay_get_total_cost() {
   if ($wrapper = _freedompay_get_entityform_wrapper()) {
-    return $wrapper->field_total_cost->value();
+    if (isset($wrapper->field_total_cost)) {
+      return $wrapper->field_total_cost->value();
+    }
   }
-  return 250;
+  return 0;
 }
 
 /**
@@ -827,14 +819,39 @@ function _freedompay_redirect_to_entityform_submission($entityform) {
     ),
   );
   // Keep entityform from denying access
-  $_SESSION['entityform_submission'] = $eid;
+  $_SESSION['entityform_submission'] = $entityform->entityform_id;
   drupal_goto($confirmation_url, $params);
 }
 
+/**
+ * Checks the amount in the original transation with the current payload
+ */
+function _freedompay_transaction_total_changed($transaction) {
+  if (isset($transaction['OriginalRequest'])) {
+    $payload = freedompay_get_checkout_payload();
+    $total = $payload['TransactionTotal'];
+    return $transaction['OriginalRequest']['TransactionTotal'] != $total;
+  }
+  return TRUE; // The original request failed, so create a new transaction
+}
+
+/**
+ * Sets a default value for the invoice number
+ * Can be overridden via hook_freedompay_checkout_payload_alter
+ */
 function _freedompay_get_invoice_number() {
   $invoice_count = _freedompay_get_current_invoice_count_by_type(_freedompay_entityform_type_name());
   $offset = 1; // Incremented from the old system
   // Pad the string to 6 places
   $invoice_number = str_pad($invoice_count + $offset, 6, '0', STR_PAD_LEFT);
   return 'Invoice' . $invoice_number;
+}
+
+/**
+ * Sets a default prefix value based on the entityform type
+ */
+function _freedompay_get_invoice_prefix() {
+  $type = _freedompay_entityform_type_name();
+  $type = str_replace('_', '', $type);
+  return strtolower(substr($type, 0, 6));
 }
