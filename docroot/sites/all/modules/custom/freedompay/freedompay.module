@@ -36,7 +36,7 @@ function freedompay_get_checkout_payload() {
   $form_id = _freedompay_entityform_type_name();
   $payload = module_invoke_all('freedompay_checkout_payload');
   drupal_alter('freedompay_checkout_payload', $form_id, $payload);
-  return json_encode($payload);
+  return $payload;
 }
 
 /**
@@ -186,6 +186,9 @@ function freedompay_entityform_insert($entityform) {
  */
 function freedompay_entityform_presave($entityform) {
   if (_freedompay_entityform_is_payment_form($entityform)) {
+    if (!_freedompay_get_transaction_id()) {
+      _freedompay_set_entityform_cookies($entityform);
+    }
     $entityform->draft = !_freedompay_payment_complete();
   }
 }
@@ -198,8 +201,7 @@ function freedompay_entityform_update($entityform) {
   if (_freedompay_entityform_is_payment_form($entityform)) {
     if ($transaction = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id())) {
       if (_freedompay_transaction_total_changed($transaction)) {
-        _freedompay_cookie_delete('transaction_id');
-        _freedompay_cookie_delete('checkout_url');
+        _freedompay_restart_transaction();
       }
     }
   }
@@ -300,7 +302,13 @@ function freedompay_checkout_page() {
   }
   // Check for existing checkout_url
   if ($checkout_url = _freedompay_get_checkout_url()) {
-    $markup .= _freedompay_get_complete_purchase_button($checkout_url);
+    if ($transaction = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id())) {
+      $markup .= _freedompay_get_complete_purchase_button($checkout_url);
+    } // Transaction failed for some reason
+    else {
+      _freedompay_restart_transaction();
+      return _freedompay_redirect(_freedompay_get_checkout_path());
+    }
   } // Check for an entityform
   elseif (_freedompay_get_entityform()) {
     if ($result = _freedompay_create_freedompay_transaction()) {
@@ -530,12 +538,26 @@ function _freedompay_get_transaction_id() {
 
 function _freedompay_create_freedompay_transaction() {
   $payload = freedompay_get_checkout_payload();
-  $result = _freedompay_initiate_transaction('createTransaction', $payload);
-  if (!empty($result) && !empty($result['CheckoutUrl'])) {
-    _freedompay_cookie_save(['transaction_id' => $result['TransactionId']]);
-    _freedompay_cookie_save(['checkout_url' => $result['CheckoutUrl']]);
+  if ($payload['TransactionTotal'] > 0) { // Make sure it's a valid transaction total
+    $result = _freedompay_initiate_transaction('createTransaction', json_encode($payload));
+    if (!empty($result) && !empty($result['CheckoutUrl'])) {
+      _freedompay_cookie_save(['transaction_id' => $result['TransactionId']]);
+      _freedompay_cookie_save(['checkout_url' => $result['CheckoutUrl']]);
+    }
+    return $result;
+  } // Failed to create a valid total, so send the user back to the form
+  else {
+    $entityform = _freedompay_get_entityform();
+    watchdog('freedompay', "Invalid transaction total for payment form @entityform_id",
+      array(
+        '@entityform_id' => $entityform->entityform_id,
+      ),
+      WATCHDOG_ERROR
+    );
+    drupal_set_message(t('There was an error with your request. Please be sure to include a valid amount.'), 'error');
+    _freedompay_redirect(_freedompay_cookie_get('entityform_url'));
   }
-  return $result;
+  return NULL;
 }
 
 function _freedompay_initiate_transaction($transaction, $payload) {
@@ -556,6 +578,11 @@ function _freedompay_initiate_transaction($transaction, $payload) {
   $result = json_decode($response, TRUE);
   curl_close($process);
   return $result;
+}
+
+function _freedompay_restart_transaction() {
+  _freedompay_cookie_delete('transaction_id');
+  _freedompay_cookie_delete('checkout_url');
 }
 
 function _freedompay_get_service_url() {
@@ -723,6 +750,7 @@ function _freedompay_create_payment() {
  */
 function _freedompay_set_entityform_cookies($entityform) {
   _freedompay_cookie_save([
+    'entityform_url' => current_path(),
     'entityform_id' => $entityform->entityform_id,
     'entityform_type' => $entityform->type,
   ]);
