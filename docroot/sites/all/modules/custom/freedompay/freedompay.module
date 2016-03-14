@@ -326,16 +326,30 @@ function freedompay_checkout_page() {
 }
 
 function freedompay_success_page() {
-  if (isset($_REQUEST['transid'])) {
-    if ($payment = _freedompay_create_payment()) {
-      $wrapper = _freedompay_get_entityform_wrapper();
-      $wrapper->draft = 0;
-      $wrapper->save();
-      _freedompay_cookie_flush();
+  if (isset($_REQUEST['transid']) && !_freedompay_payment_complete()) {
+    if (_freedompay_create_payment()) {
+      _freedompay_complete_payment();
+    } // The payment didn't get created for some reason
+    else {
+      watchdog('freedompay', "Unexpected payment failure for transaction @transaction_id",
+        array(
+          '@transaction_id' => $_REQUEST['transid'],
+        ),
+        WATCHDOG_ERROR
+      );
     }
-  }
-  else { // @TODO - figure out if this is needed
-    $results = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id());
+  } // transid is missing or the payment was already completed
+  else {
+    // Check for an entityform
+    if ($entityform = _freedompay_get_entityform()) {
+      _freedompay_cookie_flush();
+      if (_freedompay_payment_complete()) {
+        _freedompay_redirect_to_entityform_submission($entityform);
+      }
+      else { // Redirect to the checkout page
+        _freedompay_redirect(_freedompay_get_checkout_path());
+      }
+    }
   }
   return 'Success';
 }
@@ -622,10 +636,10 @@ function _freedompay_get_payment_by_transaction_id($transaction_id) {
   $query->entityCondition('entity_type', 'freedompay_payment')
     ->propertyCondition('transaction_id',$transaction_id);
   $result = $query->execute();
-
   if (isset($result['freedompay_payment'])) {
-    $id = key(reset($result['freedompay_payment']));
-    return entity_load_single('freedompay_payment', $id);
+    $payment_info = reset($result['freedompay_payment']);
+    $payment = entity_load_single('freedompay_payment', $payment_info->payment_id);
+    return $payment;
   }
   return NULL;
 }
@@ -789,10 +803,32 @@ function _freedompay_get_checkout_path() {
 }
 
 function _freedompay_payment_complete() {
-  if ($payment =_freedompay_get_payment_by_transaction_id(_freedompay_get_transaction_id())) {
+  if ($payment = _freedompay_get_payment_by_transaction_id(_freedompay_get_transaction_id())) {
     return TRUE;
   }
   return FALSE;
+}
+
+function _freedompay_complete_payment() {
+  $entityform = _freedompay_get_entityform();
+  $wrapper = _freedompay_get_entityform_wrapper($entityform);
+  $wrapper->draft = 0;
+  $wrapper->save();
+  _freedompay_cookie_flush();
+  _freedompay_redirect_to_entityform_submission($entityform);
+}
+
+function _freedompay_redirect_to_entityform_submission($entityform) {
+  $entityform = _freedompay_get_entityform();
+  $confirmation_url = _entityform_type_get_confirm_url(_freedompay_entityform_type_name());
+  $params = array(
+    'query' => array(
+      'entityform_id' => $entityform->entityform_id,
+    ),
+  );
+  // Keep entityform from denying access
+  $_SESSION['entityform_submission'] = $eid;
+  drupal_goto($confirmation_url, $params);
 }
 
 function _freedompay_get_invoice_number() {
