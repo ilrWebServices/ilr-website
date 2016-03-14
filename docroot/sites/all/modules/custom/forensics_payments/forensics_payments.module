@@ -1,9 +1,5 @@
 <?php
 
-///////////////////////////////
-// Module-Specific functions //
-///////////////////////////////
-
 /**
  * Implements hook_freedompay_checkout_payload_alter().
  */
@@ -27,11 +23,29 @@ function forensics_payments_get_billing_address() {
     'CountryCode' => $wrapper->field_country_for_forensics->value(),
   );
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter
+ * Adds form validation callback for forensics payment forms
+ */
+function forensics_payments_form_entityform_edit_form_alter(&$form, &$form_state) {
+  if ($form['#entity']->type == 'forensics_debate_camp_payment') {
+    $form['#validate'][] = '_forensics_payment_form_validate';
+  }
+}
+
+function _forensics_payment_form_validate(&$form, &$form_state) {
+  $wrapper = entity_metadata_wrapper('entityform', $form_state['entityform']);
+  if (!_forensics_payments_amount_is_valid($wrapper)) {
+    form_set_error('field_total_cost', 'Please enter an amount.');
+  }
+}
+
 /**
  * Confirm that user entered a valid amount to pay: numeric and greater than 0
  */
-function _forensics_payments_amount_is_valid() {
-  $amnt = _forensics_payments_get_total_cost_entered();
+function _forensics_payments_amount_is_valid($wrapper) {
+  $amnt = $wrapper->field_total_cost->value();
   return is_numeric($amnt) && $amnt > 0;
 }
 
@@ -43,16 +57,6 @@ function _forensics_payments_get_entityform_wrapper() {
     return _freedompay_get_entityform_wrapper();
   }
   return NULL;
-}
-
-/**
- * Get total cost that user entered
- */
-function _forensics_payments_get_total_cost() {
-  if ($entityform_wrapper = _forensics_payments_get_entityform_wrapper()) {
-    return $entityform_wrapper->field_total_cost->value();
-  }
-  return 0;
 }
 
 /**
@@ -69,18 +73,6 @@ function _forensics_payments_get_purchase_items() {
       "Quantity" => 1,
     ),
   );
-}
-
-/**
- * Lets user know if he didn't enter a valid amount
- * @see _freedompay_payment_page()
- */
-function _forensics_payments_payment_form_errors() {
-  $errors = FALSE;
-  if (!_forensics_payments_amount_is_valid()) {
-    $errors = '<p>Sorry, but there was an error processing your request. Are you sure you entered an amount in US dollars? Please hit your back button, enter the amount you were instructed to pay, and submit your registration again.</p>';
-  }
-  return $errors;
 }
 
 /**
