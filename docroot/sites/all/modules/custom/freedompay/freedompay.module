@@ -137,7 +137,7 @@ function freedompay_menu() {
     }
   }
 
-  $items['admin/config/services/freedompay/paymentss'] = array(
+  $items['admin/config/services/freedompay/payments'] = array(
     'title' => 'Freedompay Payments',
     'description' => 'Freedompay Payments Page',
     'page callback' => "_freedompay_payments_page",
