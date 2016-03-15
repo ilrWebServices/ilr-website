@@ -59,6 +59,14 @@ function forms_update_7005() {
   _forms_delete_entityform_submissions('social_impact_career_forum_reg');
 }
 
+/**
+ * Removes field_h_credit_card_payments from alumni event forms
+ */
+function forms_update_7006() {
+  if ($instance = field_info_instance('entityform', 'field_h_credit_card_payments', 'ilr_alumni_association_event_reg')) {
+    field_delete_instance($instance);
+  }
+}
 
 /**
  * Delete array of field instances

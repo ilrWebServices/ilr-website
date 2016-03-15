@@ -4,11 +4,13 @@
     - Deal with entity viewing and editing
     - Create api doc
     - Finish implementing permissions
+    - add the payments view to the module
    */
 
 define('FREEDOMPAY_FAILED_TRANSACTION_MESSAGE', '<p>Sorry, but there was an error processing your request. Please return to the payment form and try again.</p>');
 define('FREEDOMPAY_DEFAULT_CANCEL_MESSAGE', ''); // Defaults to no message
 define('FREEDOMPAY_DEFAULT_REJECT_MESSAGE', '<p>Sorry, but there was an error processing your payment. Please try again, or contact customer support.</p>');
+define('FREEDOMPAY_PAYMENT_NOT_REQUIRED', 'No payment required');
 
 /**
  * Implements hook_freedompay_checkout_payload().
@@ -33,9 +35,12 @@ function freedompay_freedompay_checkout_payload() {
  * Allows modules to implement an alter hook
  */
 function freedompay_get_checkout_payload() {
-  $form_id = _freedompay_entityform_type_name();
-  $payload = module_invoke_all('freedompay_checkout_payload');
-  drupal_alter('freedompay_checkout_payload', $form_id, $payload);
+  $payload = &drupal_static(__FUNCTION__);
+  if (!isset($payload)) {
+    $form_id = _freedompay_entityform_type_name();
+    $payload = module_invoke_all('freedompay_checkout_payload');
+    drupal_alter('freedompay_checkout_payload', $form_id, $payload);
+  }
   return $payload;
 }
 
@@ -189,7 +194,7 @@ function freedompay_entityform_presave($entityform) {
     if (!_freedompay_get_transaction_id()) {
       _freedompay_set_entityform_cookies($entityform);
     }
-    $entityform->draft = !_freedompay_payment_complete();
+    $entityform->draft = !_freedompay_payment_complete($entityform);
   }
 }
 
@@ -538,13 +543,16 @@ function _freedompay_get_transaction_id() {
 
 function _freedompay_create_freedompay_transaction() {
   $payload = freedompay_get_checkout_payload();
-  if ($payload['TransactionTotal'] > 0) { // Make sure it's a valid transaction total
+  if (is_numeric($payload['TransactionTotal']) && $payload['TransactionTotal'] > 0) { // Make sure it's a valid transaction total
     $result = _freedompay_initiate_transaction('createTransaction', json_encode($payload));
     if (!empty($result) && !empty($result['CheckoutUrl'])) {
       _freedompay_cookie_save(['transaction_id' => $result['TransactionId']]);
       _freedompay_cookie_save(['checkout_url' => $result['CheckoutUrl']]);
     }
     return $result;
+  } // If payment isn't required (ie, a free event, then just complete the process)
+  elseif ($payload['TransactionTotal'] == FREEDOMPAY_PAYMENT_NOT_REQUIRED) {
+    _freedompay_complete_payment();
   } // Failed to create a valid total, so send the user back to the form
   else {
     $entityform = _freedompay_get_entityform();
@@ -698,10 +706,13 @@ function _freedompay_get_total_cost() {
 /**
  * Loads or retrieves the entityform object
  */
-function _freedompay_get_entityform() {
+function _freedompay_get_entityform($entityform_to_set=NULL) {
   $entityform = &drupal_static('freedompay_entityform');
   if (!isset($entityform)) {
-    if ($entityform_id = _freedompay_cookie_get('entityform_id')) {
+    if ($entityform_to_set) {
+      $entityform = $entityform_to_set;
+    }
+    elseif ($entityform_id = _freedompay_cookie_get('entityform_id')) {
       $entityform = entityform_load($entityform_id);
     }
   }
@@ -801,6 +812,7 @@ function _freedompay_redirect($url, $params=array()) {
  * @see _freedompay_entityform_type_validate().
  */
 function _freedompay_entityform_is_payment_form($entityform) {
+  _freedompay_get_entityform_wrapper($entityform);
   $entityform_type = entityform_type_load($entityform->type);
   if (isset($entityform_type->data['add_payment_processing'])) {
     return $entityform_type->data['add_payment_processing'];
@@ -822,11 +834,28 @@ function _freedompay_get_checkout_path() {
   return $hpp->checkout_path;
 }
 
-function _freedompay_payment_complete() {
-  if ($payment = _freedompay_get_payment_by_transaction_id(_freedompay_get_transaction_id())) {
-    return TRUE;
+/**
+ * Checks for an existing payment
+ * Or whether the form doesn't require payment (ie a free event)
+ * @param  [Entityform] $entityform
+ * @return [boolean]
+ *         Whether the payment process is considered "complete"
+ */
+function _freedompay_payment_complete($entityform=NULL) {
+  if ($transaction_id = _freedompay_get_transaction_id()) {
+    return _freedompay_get_payment_by_transaction_id($transaction_id);
+  }
+  elseif ($entityform) {
+    // First set the entityform cache
+    _freedompay_get_entityform($entityform);
+    return _freedompay_payment_not_required();
   }
   return FALSE;
+}
+
+function _freedompay_payment_not_required() {
+  $payload = freedompay_get_checkout_payload();
+  return $payload['TransactionTotal'] == FREEDOMPAY_PAYMENT_NOT_REQUIRED;
 }
 
 function _freedompay_complete_payment() {

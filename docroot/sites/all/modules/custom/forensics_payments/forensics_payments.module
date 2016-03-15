@@ -7,31 +7,17 @@ function forensics_payments_freedompay_checkout_payload_alter($form_id, &$payloa
   if ($form_id == 'forensics_debate_camp_payment') {
     $payload['InvoiceNumber']= _forensics_payments_generate_invoice_number();
     $payload['PurchaseItems'] = _forensics_payments_get_purchase_items();
-    $payload['BillingAddress'] = forensics_payments_get_billing_address();
+    $payload['BillingAddress'] = _forensics_payments_get_billing_address();
     $payload['AllowInternationalAddresses'] = TRUE;
   }
-}
-
-function forensics_payments_get_billing_address() {
-  $wrapper = _forensics_payments_get_entityform_wrapper();
-  return array(
-    "Street1" => $wrapper->field_address_line_1->value(),
-    "Street2" => $wrapper->field_address_line_2->value(),
-    "City" => $wrapper->field_city->value(),
-    "State" => $wrapper->field_state_as_text->value(),
-    "PostalCode" => $wrapper->field_zip_code->value(),
-    'CountryCode' => $wrapper->field_country_for_forensics->value(),
-  );
 }
 
 /**
  * Implements hook_form_FORM_ID_alter
  * Adds form validation callback for forensics payment forms
  */
-function forensics_payments_form_entityform_edit_form_alter(&$form, &$form_state) {
-  if ($form['#entity']->type == 'forensics_debate_camp_payment') {
-    $form['#validate'][] = '_forensics_payment_form_validate';
-  }
+function forensics_payments_form_forensics_debate_camp_payment_entityform_edit_form_alter(&$form, &$form_state) {
+  $form['#validate'][] = '_forensics_payment_form_validate';
 }
 
 function _forensics_payment_form_validate(&$form, &$form_state) {
@@ -47,6 +33,18 @@ function _forensics_payment_form_validate(&$form, &$form_state) {
 function _forensics_payments_amount_is_valid($wrapper) {
   $amnt = $wrapper->field_total_cost->value();
   return is_numeric($amnt) && $amnt > 0;
+}
+
+function _forensics_payments_get_billing_address() {
+  $wrapper = _forensics_payments_get_entityform_wrapper();
+  return array(
+    "Street1" => $wrapper->field_address_line_1->value(),
+    "Street2" => $wrapper->field_address_line_2->value(),
+    "City" => $wrapper->field_city->value(),
+    "State" => $wrapper->field_state_as_text->value(),
+    "PostalCode" => $wrapper->field_zip_code->value(),
+    'CountryCode' => $wrapper->field_country_for_forensics->value(),
+  );
 }
 
 /**
