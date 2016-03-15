@@ -180,7 +180,7 @@ function freedompay_form_ilr_editable_settings_form_alter(&$form, &$form_state, 
  * Implements hook_entity_insert().
  */
 function freedompay_entityform_insert($entityform) {
-  if (_freedompay_entityform_is_payment_form($entityform)) {
+  if (freedompay_entityform_is_payment_form($entityform)) {
     _freedompay_set_entityform_cookies($entityform);
   }
 }
@@ -190,7 +190,7 @@ function freedompay_entityform_insert($entityform) {
  * Sets the draft status of the form
  */
 function freedompay_entityform_presave($entityform) {
-  if (_freedompay_entityform_is_payment_form($entityform)) {
+  if (freedompay_entityform_is_payment_form($entityform)) {
     if (!_freedompay_get_transaction_id()) {
       _freedompay_set_entityform_cookies($entityform);
     }
@@ -203,7 +203,7 @@ function freedompay_entityform_presave($entityform) {
  * Checks to be sure that to transaction total hasn't changed
  */
 function freedompay_entityform_update($entityform) {
-  if (_freedompay_entityform_is_payment_form($entityform)) {
+  if (freedompay_entityform_is_payment_form($entityform)) {
     if ($transaction = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id())) {
       if (_freedompay_transaction_total_changed($transaction)) {
         _freedompay_restart_transaction();
@@ -467,6 +467,20 @@ function freedompay_hpp_form_submit($form, &$form_state) {
 }
 
 /**
+ * Checks whether the form is a payment form
+ * Entityform types with payment processing have already been validated
+ * @see _freedompay_entityform_type_validate().
+ */
+function freedompay_entityform_is_payment_form($entityform) {
+  _freedompay_get_entityform_wrapper($entityform);
+  $entityform_type = entityform_type_load($entityform->type);
+  if (isset($entityform_type->data['add_payment_processing'])) {
+    return $entityform_type->data['add_payment_processing'];
+  }
+  return FALSE;
+}
+
+/**
  * Validation callback
  * Confirms that payment forms have field_h_credit_card_payments
  */
@@ -727,6 +741,7 @@ function _freedompay_get_entityform_wrapper($entityform=NULL) {
   if (!isset($wrapper)) {
     if ($entityform) {
       $wrapper = entity_metadata_wrapper('entityform', $entityform);
+
     }
     else if ($entityform = _freedompay_get_entityform()) {
       $wrapper = entity_metadata_wrapper('entityform', $entityform);
@@ -806,19 +821,6 @@ function _freedompay_get_message($action) {
 function _freedompay_redirect($url, $params=array()) {
   drupal_goto($url, $params);
 }
-/**
- * Checks whether the form is a payment form
- * Entityform types with payment processing have already been validated
- * @see _freedompay_entityform_type_validate().
- */
-function _freedompay_entityform_is_payment_form($entityform) {
-  _freedompay_get_entityform_wrapper($entityform);
-  $entityform_type = entityform_type_load($entityform->type);
-  if (isset($entityform_type->data['add_payment_processing'])) {
-    return $entityform_type->data['add_payment_processing'];
-  }
-  return FALSE;
-}
 
 /**
  * Gets the checkout path of the hpp for the current form
@@ -858,11 +860,15 @@ function _freedompay_payment_not_required() {
   return $payload['TransactionTotal'] == FREEDOMPAY_PAYMENT_NOT_REQUIRED;
 }
 
+/**
+ * Completes the payment process, including invoking hook_freedompay_form_complete().
+ */
 function _freedompay_complete_payment() {
   $entityform = _freedompay_get_entityform();
   $wrapper = _freedompay_get_entityform_wrapper($entityform);
   $wrapper->draft = 0;
   $wrapper->save();
+  module_invoke_all('freedompay_form_complete', $entityform);
   _freedompay_cookie_flush();
   _freedompay_redirect_to_entityform_submission($entityform);
 }

@@ -147,6 +147,14 @@ function forms_entityform_insert($entityform) {
 }
 
 /**
+ * Implements hook_freedompay_form_complete().
+ * Payment forms are drafts until completed
+ */
+function forms_freedompay_form_complete($entityform) {
+  _forms_process_entityform($entityform);
+}
+
+/**
  * Processing function that can be called independently
  * from forms_entityform_insert()
  * @see _elavon_process_entityform() as an example
