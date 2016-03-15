@@ -1131,14 +1131,16 @@ function _forms_usage_page() {
   foreach ($result as $key => $block) {
     $usage_results = _ilr_get_block_usage($block->bid);
     if (count($usage_results)) {
-      $nid = $usage_results[0];
-      $alias = drupal_get_path_alias("node/$nid");
-      $content .= "<li><a href='/admin/structure/entityform_types/manage/$block->delta'>$block->delta</a>: <a href='/$alias'><strong>$alias</strong></a></li>\n";
+      // URL for managing the form
+      $content .= "<li><a href='/admin/structure/entityform_types/manage/$block->delta'><strong>$block->delta</strong></a><br>";
+      foreach ($usage_results as $nid) {   // Nodes the form is on
+        $alias = drupal_get_path_alias("node/$nid");
+        $content .= "<a href='/$alias'>$alias</a><br>";
+      }
+      $content .= "</li>";
     }
   }
-
   $content .= "</ol>\n";
-
   return $content;
 }
 
