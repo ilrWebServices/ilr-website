@@ -62,12 +62,12 @@ function _forensics_payments_get_entityform_wrapper() {
  * remove this example function once alunni events tickets implements
  */
 function _forensics_payments_get_purchase_items() {
-  return [];
+  $wrapper = _forensics_payments_get_entityform_wrapper();
   return array(
     array(
-      "Price" => 2490,
+      "Price" => $wrapper->field_total_cost->value(),
       "DisplayOrder" => 1,
-      "Description" => "A description provided by forensics_payments",
+      "Description" => "Cornell International Debate Camp",
       "Quantity" => 1,
     ),
   );

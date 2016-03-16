@@ -1,15 +1,9 @@
 <?php
-  /*
-  @TODO
-    - Deal with entity viewing and editing
-    - Create api doc
-    - Finish implementing permissions
-    - add the payments view to the module
-   */
 
 define('FREEDOMPAY_FAILED_TRANSACTION_MESSAGE', '<p>Sorry, but there was an error processing your request. Please return to the payment form and try again.</p>');
 define('FREEDOMPAY_DEFAULT_CANCEL_MESSAGE', ''); // Defaults to no message
 define('FREEDOMPAY_DEFAULT_REJECT_MESSAGE', '<p>Sorry, but there was an error processing your payment. Please try again, or contact customer support.</p>');
+define('FREEDOMPAY_DEFAULT_CHECKOUT_MESSAGE', '<p>Thank you for your order. Please review your order below, then click the button to complete your payment.</p>');
 define('FREEDOMPAY_PAYMENT_NOT_REQUIRED', 'No payment required');
 
 /**
@@ -94,15 +88,15 @@ function freedompay_entity_info() {
  */
 function freedompay_permission() {
   return array(
-    'administer freedompay portals' => array(
+    'administer freedompay' => array(
       'title' => t('Administer FreedomPay Portals'),
       'description' => t('Perform administration tasks and manage FreedomPay portals.'),
     ),
-    'manage payments' => array(
-      'title' => t('Manage FreedomPay Payments'),
-      'description' => t('Mange payments.'),
+    'manage freedompay portals' => array(
+      'title' => t('Manage FreedomPay Portals'),
+      'description' => t('Mange portals.'),
     ),
-    'access payments' => array(
+    'access freedompay payments' => array(
       'title' => t('Access payments'),
       'description' => t('View for payments.'),
     ),
@@ -119,7 +113,7 @@ function freedompay_menu() {
   $portals = _freedompay_get_portals();
   if (!empty($portals)) {
     $path_names_and_titles = array(
-      'checkout' => 'Complete Payment',
+      'checkout' => 'Checkout Summary',
       'success' => 'Payment Complete',
       'failure' => 'Payment Error',
       'cancel' => 'Payment Cancelled',
@@ -180,6 +174,11 @@ function freedompay_form_ilr_editable_settings_form_alter(&$form, &$form_state, 
       '#type' => 'textarea',
       '#title' => t($replaced_name . ' FreedomPay cancel message'),
       '#default_value' => FREEDOMPAY_DEFAULT_CANCEL_MESSAGE,
+    );
+    $form['freedompay_set']['freedompay_'.$name.'_checkout_message'] = array(
+      '#type' => 'textarea',
+      '#title' => t($replaced_name . ' FreedomPay checkout message'),
+      '#default_value' => FREEDOMPAY_DEFAULT_CHECKOUT_MESSAGE,
     );
   }
 }
@@ -291,49 +290,52 @@ function freedompay_hpp_admin_page() {
  *   The user to check for. Leave it to NULL to check for the current user.
  */
 function freedompay_access($op, $entity = NULL, $account = NULL) {
-  if (user_access('administer freedompay portals', $account)) {
+  if (user_access('administer freedompay', $account)) {
     return TRUE;
   }
 
-  if ($op == 'view' && user_access('access payments', $account)) {
+  if ($op == 'view' && user_access('access freedompay payments', $account)) {
     return TRUE;
   }
 
   if (($op == 'edit' || $op == 'create' || $op == 'delete')
-    && user_access('manage payments', $account)
+    && user_access('manage freedompay portals', $account)
   ) {
     return TRUE;
   }
-
   return FALSE;
 }
 
 function freedompay_checkout_page() {
   $markup = '';
-  if (isset($_REQUEST['fpr'])) {
+  if (isset($_REQUEST['fpr'])) { // FPR = FreedomPay Respose. Set the cancellation/rejection message
     $markup = _freedompay_get_message($_REQUEST['fpr']);
   }
-  // Check for existing checkout_url
+  // Check for existing checkout_url, which gets stored as a cookie when a transaction is initiated
   if ($checkout_url = _freedompay_get_checkout_url()) {
     if ($transaction = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id())) {
+      // Add the checkout message
+      $markup .= _freedompay_get_message('checkout');
+      $markup .= _freedompay_get_order_summary();
       $markup .= _freedompay_get_complete_purchase_button($checkout_url);
     } // Transaction failed for some reason
     else {
       _freedompay_restart_transaction();
       return _freedompay_redirect(_freedompay_get_checkout_path());
     }
-  } // Check for an entityform
+  } // If there is an entityform but no checkout_url, start a transaction
   elseif (_freedompay_get_entityform()) {
     if ($result = _freedompay_create_freedompay_transaction()) {
       // Redirect so that cookies load
       return _freedompay_redirect(_freedompay_get_checkout_path());
-    } // Transaction fail
+    } // Transaction fail, so the user needs to retry
     else {
       _freedompay_cookie_flush();
       $markup .= FREEDOMPAY_FAILED_TRANSACTION_MESSAGE;
     }
   } // There is not an existing entityform, so must be an error
   else {
+    watchdog('freedompay', "Checkout page has rendered without an entityform cookie", [], WATCHDOG_ERROR);
     $markup .= FREEDOMPAY_FAILED_TRANSACTION_MESSAGE;
   }
   return $markup;
@@ -765,7 +767,8 @@ function _freedompay_get_payment_forms() {
 
 /**
  * Returns the value of field_total_cost
- * By default, we assume that there is a total_cost field on the entityform that stores the cost
+ * Typically, we expect that a module providing a payment form will set the TransactionTotal
+ * Here, we default to checking for a field_total_cost on the form as a last resort
  * @todo consider other options for a default
  */
 function _freedompay_get_total_cost() {
@@ -869,11 +872,15 @@ function _freedompay_cookie_delete($cookie_name) {
 function _freedompay_get_message($action) {
   $entityform_type = _freedompay_entityform_type_name();
   $message = '';
-  if ($action == 'c') {
-    $message = variable_get('freedompay_'.$entityform_type.'_cancel_message', FREEDOMPAY_DEFAULT_CANCEL_MESSAGE);
-  }
-  elseif ($action == 'r') {
-    $message = variable_get('freedompay_'.$entityform_type.'_reject_message', FREEDOMPAY_DEFAULT_REJECT_MESSAGE);
+  switch ($action) {
+    case 'c':
+      $message = variable_get('freedompay_'.$entityform_type.'_cancel_message', FREEDOMPAY_DEFAULT_CANCEL_MESSAGE);
+      break;
+    case 'r':
+      $message = variable_get('freedompay_'.$entityform_type.'_reject_message', FREEDOMPAY_DEFAULT_REJECT_MESSAGE);
+    case 'checkout':
+      $message = variable_get('freedompay_'.$entityform_type.'_checkout_message', FREEDOMPAY_DEFAULT_CHECKOUT_MESSAGE);
+      break;
   }
   return $message;
 }
@@ -882,6 +889,19 @@ function _freedompay_redirect($url, $params=array()) {
   drupal_goto($url, $params);
 }
 
+function _freedompay_get_order_summary() {
+  $summary = '';
+  if ($payload = freedompay_get_checkout_payload()) {
+    if (!empty($payload['PurchaseItems'])) {
+      $summary = '<ul class="purchase-items">';
+      foreach ($payload['PurchaseItems'] as $item) {
+        $summary .= '<li class="item">'.$item['Description'].' - <span class="cost">$'.$item['Price'].'</span></li>';
+      }
+      $summary .= '</ul>';
+    }
+  }
+  return $summary;
+}
 /**
  * Gets the checkout path of the hpp for the current form
  * Defaults to a path that will likely result in a 404
