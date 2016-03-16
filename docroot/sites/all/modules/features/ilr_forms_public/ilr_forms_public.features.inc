@@ -180,6 +180,57 @@ function ilr_forms_public_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['join_hcd_mail_list'] = entity_import('entityform_type', '{
+    "type" : "join_hcd_mail_list",
+    "label" : "Join the HCD Mailing List",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "Thank you",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for your request to be added to Cornell ILR\\u0027s Human Capital Development mailing list. Our training programs help you to gain skills that make an impact in the workplace. We appreciate your interest in Cornell and hope to welcome you to one of our programs in the near future.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have questions, please send email to \\u003Ca href=\\u0022mailto:ilrcustomerservice@cornell.edu\\u0022\\u003EILR Customer Service\\u003C\\/a\\u003E or call us at 866-470-1922.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ECornell University\\u003Cbr\\u003E\\r\\n\\tILR School\\u003Cbr\\u003E\\r\\n\\tHuman Capital Development\\u003Cbr\\u003E\\r\\n\\t16 East 34th Street\\u003Cbr\\u003E\\r\\n\\tNew York, NY 10016-4328\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0,
+      "add_payment_processing" : 0,
+      "form_submission_ilr_recipient" : "ilrcustomerservice@cornell.edu"
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['join_the_ics_mailing_list'] = entity_import('entityform_type', '{
     "type" : "join_the_ics_mailing_list",
     "label" : "Join the ICS Mailing List",

@@ -208,6 +208,7 @@ features[field_base][] = field_h_post_date
 features[field_base][] = field_h_program
 features[field_base][] = field_h_school_year
 features[field_base][] = field_hcd_contact_form_topics
+features[field_base][] = field_hcd_topics
 features[field_base][] = field_header
 features[field_base][] = field_headline
 features[field_base][] = field_high_school

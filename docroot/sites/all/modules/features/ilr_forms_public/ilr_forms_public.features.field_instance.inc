@@ -1460,6 +1460,160 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-join_hcd_mail_list-field_email'
+  $field_instances['entityform-join_hcd_mail_list-field_email'] = array(
+    'bundle' => 'join_hcd_mail_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_hcd_mail_list-field_first_name'
+  $field_instances['entityform-join_hcd_mail_list-field_first_name'] = array(
+    'bundle' => 'join_hcd_mail_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_first_name',
+    'label' => 'First name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_hcd_mail_list-field_hcd_topics'
+  $field_instances['entityform-join_hcd_mail_list-field_hcd_topics'] = array(
+    'bundle' => 'join_hcd_mail_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_hcd_topics',
+    'label' => 'Which topics are you interested in?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_hcd_mail_list-field_last_name'
+  $field_instances['entityform-join_hcd_mail_list-field_last_name'] = array(
+    'bundle' => 'join_hcd_mail_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
+    ),
+  );
+
   // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_address_line_1'
   $field_instances['entityform-join_the_ics_mailing_list-field_address_line_1'] = array(
     'bundle' => 'join_the_ics_mailing_list',
@@ -2194,6 +2348,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Type of student');
   t('What is your experience with mediation?');
   t('What is your major (or what program are you in?)');
+  t('Which topics are you interested in?');
   t('Why would you like to join this competition?');
   t('Your name');
   t('Zip code');
