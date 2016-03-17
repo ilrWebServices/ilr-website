@@ -717,3 +717,27 @@ function ilr_update_7054() {
   ));
 }
 
+/**
+ * Switches from Elavon to FreedomPay and creates initial HPP entities
+ */
+function ilr_update_7055() {
+  module_enable(array('freedompay'));
+  module_disable(array('elavon'));
+
+  $hpp_entities = array('Forensics', 'Alumni');
+
+  foreach ($hpp_entities as $name) {
+    $entity_properties = array(
+      'title' => $name,
+      'store_id' => 'placeholder',
+      'terminal_id' => 'placeholder',
+      'checkout_path' => 'pay/checkout',
+      'success_path' => 'pay/success.htm',
+      'failure_path' => 'pay/failure.htm',
+      'cancel_path' => 'pay/cancel.htm',
+    );
+    $entity = entity_create('freedompay_hpp', $entity_properties);
+    $entity->save();
+  }
+}
+
