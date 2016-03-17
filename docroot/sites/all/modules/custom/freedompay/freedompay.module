@@ -572,8 +572,19 @@ function _freedompay_create_freedompay_transaction() {
     if (!empty($result) && !empty($result['CheckoutUrl'])) {
       _freedompay_cookie_save(['transaction_id' => $result['TransactionId']]);
       _freedompay_cookie_save(['checkout_url' => $result['CheckoutUrl']]);
+      return $result;
+    } // The transaction failed
+    else {
+      $entityform = _freedompay_get_entityform();
+      watchdog('freedompay', "Failure creating transaction for payment form @entityform_id",
+        array(
+          '@entityform_id' => $entityform->entityform_id,
+        ),
+        WATCHDOG_ERROR
+      );
+      drupal_set_message(t(FREEDOMPAY_FAILED_TRANSACTION_MESSAGE), 'error');
+      return _freedompay_redirect(_freedompay_cookie_get('entityform_url'));
     }
-    return $result;
   } // If payment isn't required (ie, a free event, then just complete the process)
   elseif ($payload['TransactionTotal'] == FREEDOMPAY_PAYMENT_NOT_REQUIRED) {
     _freedompay_complete_payment();
