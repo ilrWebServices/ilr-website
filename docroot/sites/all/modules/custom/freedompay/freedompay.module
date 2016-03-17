@@ -1005,7 +1005,7 @@ function _freedompay_get_invoice_number() {
   $offset = 1; // Incremented from the old system
   // Pad the string to 6 places
   $invoice_number = str_pad($invoice_count + $offset, 6, '0', STR_PAD_LEFT);
-  return 'Invoice' . $invoice_number;
+  return _freedompay_get_invoice_prefix() . $invoice_number;
 }
 
 /**
