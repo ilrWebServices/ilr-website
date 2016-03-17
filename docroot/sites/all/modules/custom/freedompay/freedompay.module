@@ -212,7 +212,7 @@ function freedompay_entityform_presave($entityform) {
 function freedompay_entityform_update($entityform) {
   if (freedompay_entityform_is_payment_form($entityform)) {
     if ($transaction = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id())) {
-      if (_freedompay_transaction_total_changed($transaction)) {
+      if (_freedompay_transaction_payload_changed($transaction)) {
         _freedompay_restart_transaction();
       }
     }
@@ -978,13 +978,20 @@ function _freedompay_redirect_to_entityform_submission($entityform) {
 }
 
 /**
- * Checks the amount in the original transation with the current payload
+ * Checks to see if the payload is different from the existing transaction
+ * A slightly blunt tool, because FreedomPay could easily add return attributes
+ * Causing this to return TRUE and to initiate a new transaction when not needed
+ * @todo  Consider whether it's worth looping through and checking key/values
+ *        rather than equivalency
  */
-function _freedompay_transaction_total_changed($transaction) {
-  if (isset($transaction['OriginalRequest'])) {
-    $payload = freedompay_get_checkout_payload();
-    $total = $payload['TransactionTotal'];
-    return $transaction['OriginalRequest']['TransactionTotal'] != $total;
+function _freedompay_transaction_payload_changed($transaction) {
+  if (isset($transaction['OriginalRequest']) && $payload = freedompay_get_checkout_payload()) {
+    $original = $transaction['OriginalRequest'];
+    if ( $original['TransactionTotal'] == $payload['TransactionTotal']
+      && $original['PurchaseItems'] == $payload['PurchaseItems']
+      && $original['BillingAddress'] == $payload['BillingAddress']) {
+      return FALSE;
+    }
   }
   return TRUE; // The original request failed, so create a new transaction
 }
