@@ -2440,14 +2440,16 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
+        'CAN' => 'Canada',
         'CHN' => 'China',
         'HKG' => 'Hong Kong',
         'MYS' => 'Malaysia',
+        'MEX' => 'Mexico',
         'MNG' => 'Mongolia',
         'SGP' => 'Singapore',
         'THA' => 'Thailand',
         'USA' => 'United States',
-        'other' => 'Other (select country on the next page)',
+        'other' => 'Other (add country code during checkout)',
       ),
       'allowed_values_function' => '',
     ),

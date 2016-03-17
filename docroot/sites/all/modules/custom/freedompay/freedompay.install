@@ -1,0 +1,178 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function freedompay_schema() {
+  $schema['freedompay_hpp'] = array(
+    'description' => 'Provides the base table for FreedomPay Hosted Payment Pages (HPP)',
+    'fields' => array(
+      'hpp_id' => array(
+        'description' => 'The auto-incremented Drupal id for the HPP.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'title' => array(
+        'description' => 'The title of the portal.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'store_id' => array(
+        'description' => 'The HPP store ID',
+        'type' => 'varchar',
+        'length' => 25,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'terminal_id' => array(
+        'description' => 'The HPP terminal ID',
+        'type' => 'varchar',
+        'length' => 25,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'checkout_path' => array(
+        'description' => 'The HPP checkout page path',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'success_path' => array(
+        'description' => 'The HPP success page path',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'failure_path' => array(
+        'description' => 'The HPP failure page path',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'cancel_path' => array(
+        'description' => 'The HPP cancel page path',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the entry was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'updated' => array(
+        'description' => 'The Unix timestamp when the entry was last saved.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'freedompay_updated' => array('updated'),
+      'freedompay_created' => array('created'),
+    ),
+    'unique keys' => array(
+      'hpp_id' => array('hpp_id'),
+    ),
+    'primary key' => array('hpp_id'),
+  );
+
+  $schema['freedompay_payments'] = array(
+    'description' => 'The base table for payments processed through FreedomPay.',
+    'fields' => array(
+      'payment_id' => array(
+        'description' => 'The primary identifier for a payment.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'transaction_id' => array(
+        'description' => 'The transaction id of the payment.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'authorization_code' => array(
+        'description' => 'The authorization code of the payment.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'form_id' => array(
+        'description' => 'The id of the payment form associated with this transaction.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'amount' => array(
+        'description' => 'The amount of the payment.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'freeway_request_id' => array(
+        'description' => 'The freeway request id of the payment.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'card_number' => array(
+        'description' => 'The masked card number for the payment.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the transaction was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'freedompay_created' => array('created'),
+      'freedompay_transaction_id' => array('transaction_id'),
+      'freedompay_auth_code' => array('authorization_code'),
+    ),
+    'unique keys' => array(
+      'payment_id' => array('payment_id'),
+      'authorization_code' => array('authorization_code'),
+    ),
+    'foreign keys' => array(
+      'freedompay_form_id' => array(
+        'table' => 'entityform',
+        'columns' => array('entityform_id' => 'entityform_id'),
+      ),
+    ),
+    'primary key' => array('payment_id'),
+  );
+
+  return $schema;
+}
+
+
+/**
+ * Implements hook_install()
+ */
+function freedompay_install() {
+}
+
+/**
+ * Implements hook_uninstall().
+ * Deletes the field and its instances
+ */
+function freedompay_uninstall() {
+}

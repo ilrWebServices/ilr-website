@@ -26,7 +26,7 @@ function forms2_default_entityform_type() {
     "label" : "Cornell International Summer Debate Camp Payment",
     "data" : {
       "draftable" : 1,
-      "draft_redirect_path" : "[current-page:url]",
+      "draft_redirect_path" : "pay\\/checkout",
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "full_html" },
       "submit_button_text" : "",
@@ -53,20 +53,22 @@ function forms2_default_entityform_type() {
         "41" : 0,
         "51" : 0,
         "46" : 0,
-        "36" : 0,
         "21" : 0,
         "26" : 0,
-        "31" : 0
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
       },
       "resubmit_action" : "new",
-      "redirect_path" : "[current-page:url]",
+      "redirect_path" : "pay\\/checkout",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 1,
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
+      "form_submission_ilr_recipient" : "lb542@cornell.edu",
       "add_payment_processing" : 1,
-      "form_submission_ilr_recipient" : "lb542@cornell.edu"
+      "hpp" : "1"
     },
     "weight" : "0",
     "paths" : []

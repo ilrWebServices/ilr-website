@@ -481,71 +481,6 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_h_credit_card_payments'
-  $field_instances['entityform-forensics_debate_camp_payment-field_h_credit_card_payments'] = array(
-    'bundle' => 'forensics_debate_camp_payment',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
-          'edit' => 'Edit',
-          'field_formatter_label' => '',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
-        'weight' => 14,
-      ),
-      'email' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
-          'edit' => 'Edit',
-          'field_formatter_label' => '',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
-        'weight' => 14,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_h_credit_card_payments',
-    'label' => 'h credit card payments',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'field_collection',
-      'settings' => array(),
-      'type' => 'field_collection_embed',
-      'weight' => 3,
-    ),
-  );
-
   // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_h_event_date'
   $field_instances['entityform-forensics_debate_camp_payment-field_h_event_date'] = array(
     'bundle' => 'forensics_debate_camp_payment',
@@ -2518,7 +2453,6 @@ function forms2_field_default_field_instances() {
   t('What types of programs or resources are you most interested in?');
   t('What year did you graduate?');
   t('Zip code / Postal code');
-  t('h credit card payments');
 
   return $field_instances;
 }

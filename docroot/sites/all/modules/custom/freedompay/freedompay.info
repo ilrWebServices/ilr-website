@@ -1,0 +1,13 @@
+name = FreedomPay
+description = Provides simple FreedomPay HPP payment gateway integration
+core = 7.x
+package = ILR
+version = 7.x-1.0
+project = freedompay
+
+dependencies[] = entity
+dependencies[] = entityform
+
+; Classes
+files[] = lib/hpp.entity.inc
+files[] = lib/payment.entity.inc
