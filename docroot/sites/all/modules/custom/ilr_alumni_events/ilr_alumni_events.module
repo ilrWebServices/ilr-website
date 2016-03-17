@@ -168,6 +168,7 @@ function _ilr_alumni_events_get_billing_address() {
     "City" => $wrapper->field_city->value(),
     "State" => $wrapper->field_state_province->value(),
     "PostalCode" => $wrapper->field_zip_code->value(),
+    'Name' => $wrapper->field_first_name->value() . ' ' . $wrapper->field_last_name->value(),
   );
 }
 
