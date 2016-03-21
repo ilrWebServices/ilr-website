@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Channel Page feature.
+ */
+
+include_once 'ilr_channel_page.features.inc';

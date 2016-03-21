@@ -19,6 +19,11 @@ function ilr_paragraphs_paragraphs_info() {
       'bundle' => 'just_text',
       'locked' => '1',
     ),
+    'sponsor_message' => array(
+      'name' => 'sponsor message',
+      'bundle' => 'sponsor_message',
+      'locked' => '1',
+    ),
   );
   return $items;
 }
