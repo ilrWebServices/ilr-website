@@ -328,10 +328,11 @@ function freedompay_checkout_page() {
     if ($result = _freedompay_create_freedompay_transaction()) {
       // Redirect so that cookies load
       return _freedompay_redirect(_freedompay_get_checkout_path());
-    } // Transaction fail, so the user needs to retry
+    } // Transaction fail, so send the user back to the form
     else {
       _freedompay_cookie_flush();
-      $markup .= FREEDOMPAY_FAILED_TRANSACTION_MESSAGE;
+      drupal_set_message(t(FREEDOMPAY_FAILED_TRANSACTION_MESSAGE), 'error');
+      return _freedompay_redirect(_freedompay_cookie_get('entityform_url'));
     }
   } // There is not an existing entityform, so must be an error
   else {
@@ -582,8 +583,6 @@ function _freedompay_create_freedompay_transaction() {
         ),
         WATCHDOG_ERROR
       );
-      drupal_set_message(t(FREEDOMPAY_FAILED_TRANSACTION_MESSAGE), 'error');
-      return _freedompay_redirect(_freedompay_cookie_get('entityform_url'));
     }
   } // If payment isn't required (ie, a free event, then just complete the process)
   elseif ($payload['TransactionTotal'] == FREEDOMPAY_PAYMENT_NOT_REQUIRED) {
@@ -598,7 +597,6 @@ function _freedompay_create_freedompay_transaction() {
       WATCHDOG_ERROR
     );
     drupal_set_message(t('There was an error with your request. Please be sure to include a valid amount.'), 'error');
-    _freedompay_redirect(_freedompay_cookie_get('entityform_url'));
   }
   return NULL;
 }
@@ -965,8 +963,7 @@ function _freedompay_complete_payment() {
 }
 
 function _freedompay_redirect_to_entityform_submission($entityform) {
-  $entityform = _freedompay_get_entityform();
-  $confirmation_url = _entityform_type_get_confirm_url(_freedompay_entityform_type_name());
+  $confirmation_url = _entityform_type_get_confirm_url($entityform->type);
   $params = array(
     'query' => array(
       'entityform_id' => $entityform->entityform_id,
