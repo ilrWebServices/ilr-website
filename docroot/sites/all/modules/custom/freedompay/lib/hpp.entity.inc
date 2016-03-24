@@ -36,4 +36,46 @@ class FreedompayHpp extends Entity {
     return parent::save();
   }
 
+  /**
+   * Loads an hpp by ID.
+   */
+  public static function getPortalById($hpp_id=NULL) {
+    if (empty($hpp_id)) {
+      return FALSE;
+    }
+    $portal = FreedompayHpp::getPortals(array($hpp_id), array());
+
+    return $portal ? reset($portal) : FALSE;
+  }
+
+  public static function getPortalIds() {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'freedompay_hpp')
+          ->propertyOrderBy('created', 'DESC');
+
+    $result = $query->execute();
+    if (isset($result['freedompay_hpp'])) {
+      return array_keys($result['freedompay_hpp']);
+    }
+    return NULL;
+  }
+
+  public static function getPortals($portal_ids = array(), $conditions = array(), $reset = FALSE) {
+    if (empty($portal_ids) && empty($conditions)) {
+      $portal_ids = FreedompayHpp::getPortalIds();
+    }
+    return entity_load('freedompay_hpp', $portal_ids, $conditions, $reset);
+  }
+
+  public static function getPortalForForm($entityform) {
+    return FreedompayHpp::getPortalForType($entityform->type);
+  }
+
+  public static function getPortalForType($type) {
+    $entityform_type = entityform_type_load($type);
+    if ($hpp = FreedompayHpp::getPortalById($entityform_type->data['hpp'])) {
+      return $hpp;
+    }
+    return NULL;
+  }
 }

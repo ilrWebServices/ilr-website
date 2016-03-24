@@ -110,7 +110,7 @@ function freedompay_permission() {
 function freedompay_menu() {
   $items = array();
 
-  $portals = _freedompay_get_portals();
+  $portals = FreedompayHpp::getPortals();
   if (!empty($portals)) {
     $path_names_and_titles = array(
       'checkout' => 'Checkout Summary',
@@ -245,7 +245,7 @@ function freedompay_form_entityform_type_form_alter(&$form, &$form_state, $form_
     '#default_value' => (isset($form['#entityform_type']->data['add_payment_processing']))
       ? $form['#entityform_type']->data['add_payment_processing'] : 0,
   );
-  $portals = _freedompay_get_portals();
+  $portals = FreedompayHpp::getPortals();
   if (!empty($portals)) {
     foreach ($portals as $portal) {
       $hpp_options[$portal->hpp_id] = $portal->title;
@@ -633,125 +633,16 @@ function _freedompay_get_service_url() {
   return $service_url;
 }
 
-function _freedompay_get_hpp_for_form($entityform) {
-  return _freedompay_get_hpp_for_type($entityform->type);
-}
-
-function _freedompay_get_hpp_for_type($type) {
-  $entityform_type = entityform_type_load($type);
-  $hpp = _freedompay_load_hpp($entityform_type->data['hpp']);
-  return $hpp;
-}
-
-/**
- * Loads an hpp by ID.
- */
-function _freedompay_load_hpp($hpp_id=NULL) {
-  if (empty($hpp_id)) {
-    return FALSE;
-  }
-  $portal = _freedompay_hpp_load_multiple(array($hpp_id), array());
-
-  return $portal ? reset($portal) : FALSE;
-}
-
-function _freedompay_hpp_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
-  if (empty($ids) && empty($conditions)) {
-    return array();
-  }
-  return entity_load('freedompay_hpp', $ids, $conditions, $reset);
-}
-
 function _freedompay_get_complete_purchase_button($checkout_url) {
   $markup = '<a class="button" href="'.$checkout_url.'">Complete Purchase</a>';
   return $markup;
 }
 
-/**
- * Load the portal objects from an array of ids
- */
-function _freedompay_get_portals() {
-  if ($portal_ids = _freedompay_get_portal_ids()) {
-    return entity_load('freedompay_hpp', $portal_ids);
-  }
-  return NULL;
-}
-
 function _freedompay_payments_page() {
-  $payment_ids = _freedompay_get_payments();
-  $payments = _freedompay_load_multiple($payment_ids);
-  if (!empty($payments)) {
-    $content = entity_view('freedompay_payment', $payments, 'teaser');
-    $output[] = array(
-      '#theme' => 'table',
-      '#header' => array(t('Form'),t('Authorization code'), t('Freeway Request ID'), t('Amount'), t('Card number')),
-      '#rows' => _freedompay_get_payment_rows($payments),
-      '#attributes' => array('class' => array('table-class')),
-      '#empty' =>t('No payments have been processed yet'),
-    );
-  }
+  $output[] = FreedompayPayment::adminPage();
   return $output;
 }
 
-function _freedompay_get_payment_rows($payments) {
-  $rows = [];
-  foreach ($payments as $id=> $payment) {
-    $rows[$id] = array(
-      'form' => l($payment->form_id, 'entityform/'.$payment->form_id),
-      'authorization_code' => $payment->authorization_code,
-      'request_id' => $payment->freeway_request_id,
-      'amount' => $payment->amount,
-      'card_number' => $payment->card_number,
-    );
-  }
-  return $rows;
-}
-
-function _freedompay_load_multiple($payment_ids = array(), $conditions = array(), $reset = FALSE) {
-  if (empty($payment_ids) && empty($conditions)) {
-    return array();
-  }
-  return entity_load('freedompay_payment', $payment_ids, $conditions, $reset);
-}
-
-function _freedompay_get_portal_ids() {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'freedompay_hpp')
-    ->propertyOrderBy('created', 'DESC');
-  $result = $query->execute();
-
-  if (isset($result['freedompay_hpp'])) {
-    return array_keys($result['freedompay_hpp']);
-  }
-  return array();
-}
-
-function _freedompay_get_payments($payment_ids=[]) {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'freedompay_payment');
-
-  if (!empty($payment_ids)) {
-    $query->entityCondition('entity_id', $payment_ids, 'IN');
-  }
-
-  $result = $query->execute();
-  if (isset($result['freedompay_payment'])) {
-    return array_keys($result['freedompay_payment']);
-  }
-  return NULL;
-}
-
-function _freedompay_get_payment_by_transaction_id($transaction_id) {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'freedompay_payment')
-    ->propertyCondition('transaction_id',$transaction_id);
-  $result = $query->execute();
-  if (isset($result['freedompay_payment'])) {
-    $payment_info = reset($result['freedompay_payment']);
-    $payment = entity_load_single('freedompay_payment', $payment_info->payment_id);
-    return $payment;
-  }
-  return NULL;
 }
 
 /**
@@ -917,7 +808,7 @@ function _freedompay_get_order_summary() {
  */
 function _freedompay_get_checkout_path() {
   if($entityform = _freedompay_get_entityform()) {
-    $hpp = _freedompay_get_hpp_for_form($entityform);
+    $hpp = FreedompayHpp::getPortalForForm($entityform);
   }
   else {
     return 'payment/checkout';
@@ -934,7 +825,7 @@ function _freedompay_get_checkout_path() {
  */
 function _freedompay_payment_complete($entityform=NULL) {
   if ($transaction_id = _freedompay_get_transaction_id()) {
-    return _freedompay_get_payment_by_transaction_id($transaction_id);
+    return FreedompayPayment::getPaymentByTransactionId($transaction_id);
   }
   elseif ($entityform) {
     // First set the entityform cache
