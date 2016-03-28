@@ -256,8 +256,8 @@ function ilr_experience_reports_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_intro_text'
-  $field_instances['node-experience_report-field_intro_text'] = array(
+  // Exported field_instance: 'node-experience_report-field_para_main_page_content'
+  $field_instances['node-experience_report-field_para_main_page_content'] = array(
     'bundle' => 'experience_report',
     'default_value' => NULL,
     'deleted' => 0,
@@ -294,7 +294,7 @@ function ilr_experience_reports_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'field_intro_text',
+    'field_name' => 'field_para_main_page_content',
     'label' => 'Student\'s report about his/her experience',
     'required' => 1,
     'settings' => array(
