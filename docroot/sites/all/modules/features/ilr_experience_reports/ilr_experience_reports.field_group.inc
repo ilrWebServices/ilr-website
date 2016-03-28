@@ -23,7 +23,7 @@ function ilr_experience_reports_field_group_info() {
     'label' => 'Main Content',
     'weight' => '0',
     'children' => array(
-      0 => 'field_intro_text',
+      0 => 'field_para_main_page_content',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

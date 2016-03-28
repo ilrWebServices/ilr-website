@@ -5840,13 +5840,13 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_intro_text'
-  $field_bases['field_intro_text'] = array(
+  // Exported field_base: 'field_para_main_page_content'
+  $field_bases['field_para_main_page_content'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_intro_text',
+    'field_name' => 'field_para_main_page_content',
     'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,

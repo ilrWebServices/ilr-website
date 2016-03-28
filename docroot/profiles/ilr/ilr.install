@@ -741,3 +741,10 @@ function ilr_update_7055() {
   }
 }
 
+/**
+ * Changes machine name of field_intro_text to field_para_main_page_content
+ */
+function ilr_update_7056() {
+  $field_name_to_change = array('field_intro_text' => 'field_para_main_page_content');
+  ilr_rename_fields($field_name_to_change, $drop_first = FALSE);
+}
