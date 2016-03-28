@@ -1,20 +1,28 @@
 body.mobilizing-against-inequality {
-  .container {
-    @extend %one-column-page;
 
+  &.subsite-front {
     .field-name-body {
-      max-width: $section-max-width + 400;
       position: relative;
       .rss-icon {
         position: absolute;
         right: 0;
         top: 0;
       }
-      p {
-        margin-left: auto !important;
-        margin-right: auto !important;
+    }
+  }
+
+  .container {
+    #main {
+      &[data-eq-state="768"],
+      &[data-eq-state="widescreen"] {
+        #content {
+          .block:not(.block-system) > article {
+            @extend %one-column;
+          }
+        }
       }
     }
+
     &[data-eq-state="mobile-nav"] .field-name-body {
       padding-top: 2em; // space for the rss feed
       .rss-icon {
