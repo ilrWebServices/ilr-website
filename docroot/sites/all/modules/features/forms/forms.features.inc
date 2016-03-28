@@ -993,7 +993,7 @@ function forms_default_entityform_type() {
       "kerberized" : 0,
       "form_submission_ilr_recipient" : "ss446@cornell.edu",
       "add_payment_processing" : 1,
-      "hpp" : "2"
+      "hpp" : "6"
     },
     "weight" : "0",
     "paths" : []
