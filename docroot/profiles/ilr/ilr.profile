@@ -680,3 +680,134 @@ function ilr_query_rolequery_alter(QueryAlterableInterface $query) {
   $role_subquery->where('users_to_include.uid = users.uid');
   $query->exists($role_subquery);
 }
+
+/**
+ * Rename an array of fields.
+ *
+ * Copied from field_rename.module/field_rename_rename_fields() in https://www.drupal.org/project/field_rename
+ *
+ * Which in turn was adapted from code in forum_update_7003(). See also
+ * zgadzaj.com/how-to-change-the-machine-name-of-a-content-field-in-
+ * drupal-7.
+ *
+ * @param $fields
+ *   Array of field names, with old names as keys and new names as values.
+ * @param $drop_first
+ *   Boolean: whether to drop any existing tables for the renamed fields. If
+ *   you have created the renamed field already - for example, by renaming
+ *   a field that was exported to Features and then reverting the feature -
+ *   you may wish to set this argument to TRUE so that your data will be
+ *   copied.
+ */
+function ilr_rename_fields($fields, $drop_first = FALSE) {
+  $error = false;
+
+  foreach ($fields as $old_field_name => $new_field_name) {
+    if (empty($old_field_name)) {
+      drupal_set_message('Current field name must not be empty.', 'error');
+      continue;
+    }
+    if (empty($new_field_name)) {
+      drupal_set_message('New field name must not be empty.', 'error');
+      continue;
+    }
+    // Read field data.
+    $old_field = field_read_field($old_field_name);
+    if (empty($old_field)) {
+      drupal_set_message('Field "' . $old_field_name . '" does not exist.', 'error');
+      continue;
+    }
+
+    // Update {field_config}.
+    try {
+      db_update('field_config')->fields(array('field_name' => $new_field_name))->condition('id', $old_field['id'])->execute();
+    } catch (Exception $e) {
+      $error = true;
+      drupal_set_message('Could not update field_config table: ' . $e->getMessage(), 'error');
+    }
+
+    // Update {field_config_instance}.
+    try {
+      db_update('field_config_instance')->fields(array('field_name' => $new_field_name))->condition('field_id', $old_field['id'])->execute();
+    } catch (Exception $e) {
+      $error = true;
+      drupal_set_message('Could not update field_config_instance table: ' . $e->getMessage(), 'error');
+    }
+
+    // The tables that need updating in the form 'old_name' => 'new_name'.
+    $tables = array(
+      'field_data_' . $old_field_name => 'field_data_' . $new_field_name,
+      'field_revision_' . $old_field_name => 'field_revision_' . $new_field_name,
+    );
+
+    // Iterate through tables to be redefined and renamed.
+    foreach ($tables as $old_table => $new_table) {
+      // Iterate through the field's columns. For example, a 'text' field will
+      // have columns 'value' and 'format'.
+      foreach ($old_field['columns'] as $column_name => $column_definition) {
+        // Column names are in the format {field_name}_{column_name}.
+        $old_column_name = $old_field_name . '_' . $column_name;
+        $new_column_name = $new_field_name . '_' . $column_name;
+
+        // If there is an index for the field, drop and then re-add it.
+        $has_index = isset($old_field['indexes'][$column_name]) && ($old_field['indexes'][$column_name] == array($column_name));
+        if ($has_index) {
+          try {
+            db_drop_index($old_table, $old_column_name);
+          } catch (Exception $e) {
+            $error = true;
+            drupal_set_message('Could not drop index: ' . $e->getMessage(), 'error');
+          }
+        }
+
+        // Rename the column.
+        try {
+            db_change_field($old_table, $old_column_name, $new_column_name, $column_definition);
+        } catch (Exception $e) {
+            $error = true;
+            drupal_set_message('Could not change field: ' . $e->getMessage(), 'error');
+        }
+
+        if ($has_index) {
+            try {
+                db_drop_index($old_table, $new_column_name);
+                db_add_index($old_table, $new_column_name, array($new_column_name));
+            } catch (Exception $e) {
+                $error = true;
+                drupal_set_message('Could not update index: ' . $e->getMessage(), 'error');
+            }
+        }
+
+        watchdog('Field Rename', 'Renamed field !old_field_name to !new_field_name.', array('!old_field_name' => $old_field_name, '!new_field_name' => $new_field_name));
+      }
+
+      // The new table may exist e.g. due to having been included in a feature
+      // that was reverted prior to this update being run. If so, we need to
+      // drop the new table so that the old one can be renamed.
+      if ($drop_first && db_table_exists($new_table)) {
+        try {
+          db_drop_table($new_table);
+        } catch (Exception $e) {
+          $error = true;
+          drupal_set_message('Could not drop table: ' . $e->getMessage(), 'error');
+        }
+      }
+
+      // Rename the table.
+      try {
+        db_rename_table($old_table, $new_table);
+      } catch (Exception $e) {
+        $error = true;
+        drupal_set_message('Could not rename table: ' . $e->getMessage(), 'error');
+      }
+    }
+
+    if (!$error) {
+      drupal_set_message(t('Renamed field !old_field_name to !new_field_name.', array('!old_field_name' => $old_field_name, '!new_field_name' => $new_field_name)));
+    } else {
+      drupal_set_message(t('Errors occured while renaming field !old_field_name to !new_field_name.', array('!old_field_name' => $old_field_name, '!new_field_name' => $new_field_name)), 'error');
+    }
+  }
+}
+
+
