@@ -15,17 +15,48 @@ function ilr_channel_page_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__channel_page';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'mega_menu_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__highlighted' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__sidebar_second' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'basic_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'reference_field' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '-5',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '6',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '7',
         ),
       ),
       'display' => array(),

@@ -10,59 +10,6 @@
 function ilr_channel_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-channel_page-body'
-  $field_instances['node-channel_page-body'] = array(
-    'bundle' => 'channel_page',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => FALSE,
-    'settings' => array(
-      'display_summary' => TRUE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 31,
-    ),
-  );
-
   // Exported field_instance: 'node-channel_page-field_category_type'
   $field_instances['node-channel_page-field_category_type'] = array(
     'bundle' => 'channel_page',
@@ -72,11 +19,8 @@ function ilr_channel_page_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'taxonomy_term_reference_link',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'mega_menu_item' => array(
@@ -89,7 +33,7 @@ function ilr_channel_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -108,7 +52,7 @@ function ilr_channel_page_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 37,
+      'weight' => 4,
     ),
   );
 
@@ -119,7 +63,7 @@ function ilr_channel_page_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'field_formatter_label' => '',
@@ -127,7 +71,7 @@ function ilr_channel_page_field_default_field_instances() {
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -136,9 +80,14 @@ function ilr_channel_page_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
     ),
@@ -152,7 +101,7 @@ function ilr_channel_page_field_default_field_instances() {
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
+      'max_filesize' => '2MB',
       'max_resolution' => '',
       'min_resolution' => '',
       'title_field' => 0,
@@ -173,17 +122,17 @@ function ilr_channel_page_field_default_field_instances() {
           'video' => 0,
         ),
         'browser_plugins' => array(
-          'ilr_media_browser--media_browser_1' => 0,
-          'ilr_media_browser--media_browser_my_files' => 0,
+          'ilr_media_browser--media_browser_1' => 'ilr_media_browser--media_browser_1',
+          'ilr_media_browser--media_browser_my_files' => 'ilr_media_browser--media_browser_my_files',
           'media_default--media_browser_1' => 0,
           'media_default--media_browser_my_files' => 0,
           'media_internet' => 0,
-          'upload' => 0,
+          'upload' => 'upload',
           'youtube' => 0,
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 33,
+      'weight' => 1,
     ),
   );
 
@@ -195,14 +144,14 @@ function ilr_channel_page_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
           'field_formatter_label' => '',
           'view_mode' => 'full',
         ),
         'type' => 'paragraphs_view',
-        'weight' => 5,
+        'weight' => 1,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -214,7 +163,7 @@ function ilr_channel_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -244,61 +193,7 @@ function ilr_channel_page_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 41,
-    ),
-  );
-
-  // Exported field_instance: 'node-channel_page-field_subject_line'
-  $field_instances['node-channel_page-field_subject_line'] = array(
-    'bundle' => 'channel_page',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 2,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_subject_line',
-    'label' => 'Summary',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 35,
+      'weight' => 3,
     ),
   );
 
@@ -311,11 +206,8 @@ function ilr_channel_page_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'taxonomy_term_reference_link',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'mega_menu_item' => array(
@@ -328,7 +220,7 @@ function ilr_channel_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -347,20 +239,74 @@ function ilr_channel_page_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 39,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-channel_page-field_teaser'
+  $field_instances['node-channel_page-field_teaser'] = array(
+    'bundle' => 'channel_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please supply a short description (255 characters or less) for use when this page is listed in featured links or shared on social networks. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_teaser',
+    'label' => 'Teaser',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 2,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Body');
   t('Category Type');
   t('Category types are used in the theme as [category_type] / [primary_tag] ');
   t('Main image');
   t('Main page content');
-  t('Summary');
+  t('Please supply a short description (255 characters or less) for use when this page is listed in featured links or shared on social networks. ');
   t('Tags');
   t('Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.');
+  t('Teaser');
 
   return $field_instances;
 }
