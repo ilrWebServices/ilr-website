@@ -21,6 +21,15 @@ body.mobilizing-against-inequality {
           }
         }
       }
+      #content {
+        .tagged-content {
+          &[data-items='3'] {
+            article {
+              @extend %thumb;
+            }
+          }
+        }
+      }
     }
 
     &[data-eq-state="mobile-nav"] .field-name-body {
