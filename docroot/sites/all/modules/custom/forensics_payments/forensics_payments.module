@@ -5,10 +5,18 @@
  */
 function forensics_payments_freedompay_checkout_payload_alter($form_id, &$payload) {
   if ($form_id == 'forensics_debate_camp_payment') {
-    $payload['InvoiceNumber']= _forensics_payments_generate_invoice_number();
     $payload['PurchaseItems'] = _forensics_payments_get_purchase_items();
     $payload['BillingAddress'] = _forensics_payments_get_billing_address();
     $payload['AllowInternationalAddresses'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_freedompay_invoice_prefix().
+ */
+function forensics_payments_freedompay_invoice_prefix($form_id) {
+  if ($form_id == 'forensics_debate_camp_payment') {
+    return 'debate';
   }
 }
 

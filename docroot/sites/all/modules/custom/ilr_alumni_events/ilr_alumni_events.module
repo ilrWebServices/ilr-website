@@ -93,10 +93,26 @@ function ilr_alumni_events_preprocess_node(&$variables) {
  */
 function ilr_alumni_events_freedompay_checkout_payload_alter($form_id, &$payload) {
   if ($form_id == 'ilr_alumni_association_event_reg') {
-    $payload['InvoiceNumber']= _ilr_alumni_events_generate_invoice_number();
     $payload['PurchaseItems'] = _ilr_alumni_events_get_purchase_items();
     $payload['BillingAddress'] = _ilr_alumni_events_get_billing_address();
-    $payload['TransactionTotal'] = _ilr_alumni_events_get_total_cost();
+  }
+}
+
+/**
+ * Implements hook_freedompay_transaction_total_alter().
+ */
+function ilr_alumni_events_freedompay_transaction_total_alter($form_id, &$transaction_total) {
+  if ($form_id == 'ilr_alumni_association_event_reg') {
+    $transaction_total = _ilr_alumni_events_get_total_cost();
+  }
+}
+
+/**
+ * Implements hook_freedompay_invoice_prefix().
+ */
+function ilr_alumni_events_freedompay_invoice_prefix($form_id) {
+  if ($form_id == 'ilr_alumni_association_event_reg') {
+    return 'alev';
   }
 }
 

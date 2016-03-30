@@ -160,6 +160,75 @@ function freedompay_schema() {
     'primary key' => array('payment_id'),
   );
 
+  $schema['freedompay_invoices'] = _freedompay_invoice_schema();
+
+  return $schema;
+}
+
+function _freedompay_invoice_schema() {
+  $schema = array(
+    'description' => 'The base table for invoices sent to FreedomPay.',
+    'fields' => array(
+      'invoice_id' => array(
+        'description' => 'The primary identifier for an invoice.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'number' => array(
+        'description' => 'The invoice number.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'prefix' => array(
+        'description' => 'The prefix associated with this order type.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'order_id' => array(
+        'description' => 'The id of the order form associated with this invoice.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'amount' => array(
+        'description' => 'The amount of the invoice.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'paid' => array(
+        'description' => 'Boolean indicating whether the invoice has been paid.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the invoice was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'freedompay_created' => array('created'),
+      'freedompay_invoice_number' => array('number'),
+    ),
+    'unique keys' => array(
+      'invoice_id' => array('invoice_id'),
+    ),
+    'foreign keys' => array(
+      'freedompay_order_id' => array(
+        'table' => 'entityform',
+        'columns' => array('entityform_id' => 'entityform_id'),
+      ),
+    ),
+    'primary key' => array('invoice_id'),
+  );
   return $schema;
 }
 
@@ -175,4 +244,12 @@ function freedompay_install() {
  * Deletes the field and its instances
  */
 function freedompay_uninstall() {
+}
+
+/**
+ * Add new field to field data and revision tables.
+ */
+function freedompay_update_7001(&$sandbox) {
+  $schema['freedompay_invoices'] = _freedompay_invoice_schema();
+  db_create_table('freedompay_invoices', $schema['freedompay_invoices']);
 }

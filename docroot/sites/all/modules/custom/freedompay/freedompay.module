@@ -7,32 +7,25 @@ define('FREEDOMPAY_DEFAULT_CHECKOUT_MESSAGE', '<p>Thank you for your order. Plea
 define('FREEDOMPAY_PAYMENT_NOT_REQUIRED', 'No payment required');
 
 /**
- * Implements hook_freedompay_checkout_payload().
+ *
  */
-function freedompay_freedompay_checkout_payload() {
-  $entityform = _freedompay_get_entityform();
-  $hpp = _freedompay_get_hpp_for_form($entityform);
-  $payload = array(
-    "InvoiceNumber" => _freedompay_get_invoice_number(),
-    "CaptureMode" => TRUE,
-    "AddressRequired" => TRUE,
-    "TransactionTotal" => _freedompay_get_total_cost(),
-    "TerminalId" => $hpp->terminal_id,
-    "StoreId" => $hpp->store_id,
-    "MerchantReferenceCode" => 'eform' . $entityform->entityform_id,
-  );
-  return $payload;
-}
-
-/**
- * Initiates the freedompay_checkout_payload hook
- * Allows modules to implement an alter hook
- */
-function freedompay_get_checkout_payload() {
+function freedompay_checkout_payload() {
   $payload = &drupal_static(__FUNCTION__);
   if (!isset($payload)) {
+    $entityform = _freedompay_get_entityform();
+    $hpp = FreedompayHpp::getPortalForForm($entityform);
+    $transaction_total = freedompay_transaction_total();
+    $invoice = freedompay_invoice($entityform, $transaction_total);
+    $payload = array(
+      'InvoiceNumber' => $invoice->formatInvoiceNumber(),
+      'CaptureMode' => TRUE,
+      'AddressRequired' => TRUE,
+      'TransactionTotal' => $transaction_total,
+      'TerminalId' => $hpp->terminal_id,
+      'StoreId' => $hpp->store_id,
+      'MerchantReferenceCode' => 'eform' . $entityform->entityform_id,
+    );
     $form_id = _freedompay_entityform_type_name();
-    $payload = module_invoke_all('freedompay_checkout_payload');
     drupal_alter('freedompay_checkout_payload', $form_id, $payload);
   }
   return $payload;
@@ -75,6 +68,22 @@ function freedompay_entity_info() {
       'entity keys' => array(
         'id' => 'payment_id',
         'label' => 'transaction_id',
+      ),
+      'access callback' => 'freedompay_access',
+      'module' => 'freedompay',
+      'label callback' => 'entity_class_label'
+    ),
+    'freedompay_invoice' => array(
+      'label' => t('FreedomPay Invoice'),
+      'plural label' => t('FreedomPay Invoices'),
+      'controller class' => 'EntityAPIController',
+      'entity class' => 'FreedompayInvoice',
+      'views controller class' => 'EntityDefaultViewsController',
+      'base table' => 'freedompay_invoices',
+      'fieldable' => FALSE,
+      'entity keys' => array(
+        'id' => 'invoice_id',
+        'label' => 'invoice_id',
       ),
       'access callback' => 'freedompay_access',
       'module' => 'freedompay',
@@ -135,6 +144,13 @@ function freedompay_menu() {
     'title' => 'Freedompay Payments',
     'description' => 'Freedompay Payments Page',
     'page callback' => "_freedompay_payments_page",
+    'access arguments' => array('access payments'),
+  );
+
+  $items['admin/config/services/freedompay/invoices'] = array(
+    'title' => 'Freedompay Invoices',
+    'description' => 'Freedompay Invoices Page',
+    'page callback' => "_freedompay_invoices_page",
     'access arguments' => array('access payments'),
   );
 
@@ -201,7 +217,10 @@ function freedompay_entityform_presave($entityform) {
     if (!_freedompay_get_transaction_id()) {
       _freedompay_set_entityform_cookies($entityform);
     }
-    $entityform->draft = !_freedompay_payment_complete($entityform);
+    // It's a draft if it's not complete
+    $entityform->draft = (!empty($entityform->entityform_id))
+      ? !_freedompay_payment_complete($entityform)
+      : 1;
   }
 }
 
@@ -210,10 +229,13 @@ function freedompay_entityform_presave($entityform) {
  * Checks to be sure that to transaction total hasn't changed
  */
 function freedompay_entityform_update($entityform) {
-  if (freedompay_entityform_is_payment_form($entityform)) {
+  if (freedompay_entityform_is_payment_form($entityform) && _freedompay_payment_required()) {
     if ($transaction = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id())) {
-      if (_freedompay_transaction_payload_changed($transaction)) {
+      $payload = freedompay_checkout_payload();
+      if (_freedompay_transaction_payload_changed($transaction, $payload)) {
         _freedompay_restart_transaction();
+        $properties = array('amount' => $payload['TransactionTotal']);
+        _freedompay_update_invoice($entityform, $properties);
       }
     }
   }
@@ -311,21 +333,26 @@ function freedompay_checkout_page() {
   if (isset($_REQUEST['fpr'])) { // FPR = FreedomPay Respose. Set the cancellation/rejection message
     $markup = _freedompay_get_message($_REQUEST['fpr']);
   }
-  // Check for existing checkout_url, which gets stored as a cookie when a transaction is initiated
-  if ($checkout_url = _freedompay_get_checkout_url()) {
-    if ($transaction = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id())) {
-      // Add the checkout message
-      $markup .= _freedompay_get_message('checkout');
-      $markup .= _freedompay_get_order_summary();
-      $markup .= _freedompay_get_complete_purchase_button($checkout_url);
-    } // Transaction failed for some reason
-    else {
-      _freedompay_restart_transaction();
-      return _freedompay_redirect(_freedompay_get_checkout_path());
+  // Confirm there is an entityform first
+  if ($entityform = _freedompay_get_entityform()) {
+    // Confirm that payment is required. If not, complete the checkout process
+    if (!_freedompay_payment_required()) {
+      _freedompay_complete_checkout();
     }
-  } // If there is an entityform but no checkout_url, start a transaction
-  elseif (_freedompay_get_entityform()) {
-    if ($result = _freedompay_create_freedompay_transaction()) {
+    // Check for existing checkout_url, which gets stored as a cookie when a transaction is initiated
+    if ($checkout_url = _freedompay_get_checkout_url()) {
+      if ($transaction = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id())) {
+        // Add the checkout message
+        $markup .= _freedompay_get_message('checkout');
+        $markup .= _freedompay_get_order_summary();
+        $markup .= _freedompay_get_complete_purchase_button($checkout_url);
+      } // Transaction failed for some reason
+      else {
+        _freedompay_restart_transaction();
+        return _freedompay_redirect(_freedompay_get_checkout_path());
+      }
+    } // No checkout_url, so try to start a transaction
+    elseif ($transaction = _freedompay_create_freedompay_transaction()) {
       // Redirect so that cookies load
       return _freedompay_redirect(_freedompay_get_checkout_path());
     } // Transaction fail, so send the user back to the form
@@ -334,7 +361,7 @@ function freedompay_checkout_page() {
       drupal_set_message(t(FREEDOMPAY_FAILED_TRANSACTION_MESSAGE), 'error');
       return _freedompay_redirect(_freedompay_cookie_get('entityform_url'));
     }
-  } // There is not an existing entityform, so must be an error
+  } // Entityform failed to load
   else {
     watchdog('freedompay', "Checkout page has rendered without an entityform cookie", [], WATCHDOG_ERROR);
     $markup .= FREEDOMPAY_FAILED_TRANSACTION_MESSAGE;
@@ -344,8 +371,8 @@ function freedompay_checkout_page() {
 
 function freedompay_success_page() {
   if (isset($_REQUEST['transid']) && !_freedompay_payment_complete()) {
-    if (_freedompay_create_payment()) {
-      _freedompay_complete_payment();
+    if ($payment = freedompay_payment()) {
+      _freedompay_complete_checkout();
     } // The payment didn't get created for some reason
     else {
       watchdog('freedompay', "Unexpected payment failure for transaction @transaction_id",
@@ -391,6 +418,56 @@ function freedompay_cancel_page() {
   );
   _freedompay_redirect(_freedompay_get_checkout_path(), $params);
   return 'Payment Cancelled';
+}
+
+/**
+ * Gets the existing invoice or creates a new one
+ * Calls the alter hook
+ * Checks for duplicates and modifies them
+ */
+function freedompay_invoice($entityform, $amount) {
+  if ($invoice = FreedompayInvoice::getInvoiceByOrderId($entityform->entityform_id)) {
+    return $invoice;
+  } // Create a new invoice
+  else {
+    $hpp = FreedompayHpp::getPortalForForm($entityform);
+    $properties = array(
+      'order_id' => $entityform->entityform_id,
+      'amount' => $amount,
+      'hpp_id' => $hpp->hpp_id,
+    );
+    $invoice = new FreedompayInvoice($properties);
+    $type = _freedompay_entityform_type_name();
+    drupal_alter('freedompay_invoice_number', $type, $invoice);
+    if ($invoice->isDuplicate()) { //Once altered, check for duplicate
+      $invoice->invoiceNumber($invoice->number + 1);
+    }
+    $invoice->save();
+  }
+  return $invoice;
+}
+
+/**
+ * Creates and stores a payment entity
+ */
+function freedompay_payment() {
+  $transaction_id = _freedompay_get_transaction_id();
+  $results = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id());
+  if (!empty($results) && $results['AuthResponse']['AuthorizationDecision'] == 'ACCEPT') {
+    $freeway_response = $results['AuthResponse']['FreewayResponse'];
+    $properties = [
+      'transaction_id' => $transaction_id,
+      'authorization_code' => $freeway_response['AuthorizationCode'],
+      'form_id' => _freedompay_cookie_get('entityform_id'),
+      'amount' => $freeway_response['Amount'],
+      'freeway_request_id' => $freeway_response['FreewayRequestId'],
+      'card_number' => $results['MaskedCardNumber'],
+    ];
+    $payment = new FreedompayPayment($properties);
+    $payment->save();
+    return $payment;
+  }
+  return NULL;
 }
 
 /**
@@ -567,7 +644,7 @@ function _freedompay_get_transaction_id() {
 }
 
 function _freedompay_create_freedompay_transaction() {
-  $payload = freedompay_get_checkout_payload();
+  $payload = freedompay_checkout_payload();
   if (is_numeric($payload['TransactionTotal']) && $payload['TransactionTotal'] > 0) { // Make sure it's a valid transaction total
     $result = _freedompay_initiate_transaction('createTransaction', json_encode($payload));
     if (!empty($result) && !empty($result['CheckoutUrl'])) {
@@ -586,7 +663,7 @@ function _freedompay_create_freedompay_transaction() {
     }
   } // If payment isn't required (ie, a free event, then just complete the process)
   elseif ($payload['TransactionTotal'] == FREEDOMPAY_PAYMENT_NOT_REQUIRED) {
-    _freedompay_complete_payment();
+    _freedompay_complete_checkout();
   } // Failed to create a valid total, so send the user back to the form
   else {
     $entityform = _freedompay_get_entityform();
@@ -643,15 +720,30 @@ function _freedompay_payments_page() {
   return $output;
 }
 
+function _freedompay_invoices_page() {
+  $output[] = FreedompayInvoice::adminPage();
+  return $output;
 }
 
 /**
- * Runs a query for all entityforms of a given type
- * NOTE: this will include any test forms that were submitted and not deleted
+ * Checks the original invoice amount with the new payload
+ * Updates the amount based on a (possibly different) transaction total
  */
-function _freedompay_get_current_invoice_count_by_type($type) {
-  $submissions = entityform_get_submissions($type,NULL,NULL);
-  return count($submissions);
+function _freedompay_update_invoice($entityform, $data=array()) {
+  if ($invoice = FreedompayInvoice::getInvoiceByOrderId($entityform->entityform_id)) {
+    foreach ($data as $property => $value) {
+      $invoice->{$property} = $value;
+    }
+    $invoice->save();
+  }
+}
+
+/**
+ * Marks the invoice as paid
+ */
+function _freedompay_mark_invoice_paid($entityform) {
+  $properties = array('paid' => 1);
+  _freedompay_update_invoice($entityform, $properties);
 }
 
 function _freedompay_get_payment_forms() {
@@ -665,19 +757,28 @@ function _freedompay_get_payment_forms() {
   return $payment_forms;
 }
 
+function freedompay_transaction_total() {
+  $transaction_total = &drupal_static(__FUNCTION__);
+  if (!isset($transaction_total)) {
+    $transaction_total = freedompay_default_transaction_total();
+    $type = _freedompay_entityform_type_name();
+    drupal_alter('freedompay_transaction_total', $type, $transaction_total);
+  }
+  return $transaction_total;
+}
+
 /**
- * Returns the value of field_total_cost
- * Typically, we expect that a module providing a payment form will set the TransactionTotal
- * Here, we default to checking for a field_total_cost on the form as a last resort
- * @todo consider other options for a default
+ * Returns the value of field_total_cost, if it exists
+ * Typically, we expect that a module providing a payment form will alter the TransactionTotal
  */
-function _freedompay_get_total_cost() {
+function freedompay_default_transaction_total() {
+  $transaction_total = 0;
   if ($wrapper = _freedompay_get_entityform_wrapper()) {
     if (isset($wrapper->field_total_cost)) {
-      return $wrapper->field_total_cost->value();
+      $transaction_total = $wrapper->field_total_cost->value();
     }
   }
-  return 0;
+  return $transaction_total;
 }
 
 /**
@@ -704,34 +805,12 @@ function _freedompay_get_entityform_wrapper($entityform=NULL) {
   if (!isset($wrapper)) {
     if ($entityform) {
       $wrapper = entity_metadata_wrapper('entityform', $entityform);
-
     }
     else if ($entityform = _freedompay_get_entityform()) {
       $wrapper = entity_metadata_wrapper('entityform', $entityform);
     }
   }
   return $wrapper;
-}
-
-function _freedompay_create_payment() {
-  $transaction_id = _freedompay_get_transaction_id();
-  $results = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id());
-  if (!empty($results) && $results['AuthResponse']['AuthorizationDecision'] == 'ACCEPT') {
-    $freeway_response = $results['AuthResponse']['FreewayResponse'];
-    $properties = [
-      'transaction_id' => $transaction_id,
-      'authorization_code' => $freeway_response['AuthorizationCode'],
-      'form_id' => _freedompay_cookie_get('entityform_id'),
-      'amount' => $freeway_response['Amount'],
-      'freeway_request_id' => $freeway_response['FreewayRequestId'],
-      'card_number' => $results['MaskedCardNumber'],
-    ];
-    if ($entity = entity_create('freedompay_payment', $properties)) {
-      $entity->save();
-      return $entity;
-    }
-  }
-  return NULL;
 }
 
 /**
@@ -791,7 +870,7 @@ function _freedompay_redirect($url, $params=array()) {
 
 function _freedompay_get_order_summary() {
   $summary = '';
-  if ($payload = freedompay_get_checkout_payload()) {
+  if ($payload = freedompay_checkout_payload()) {
     if (!empty($payload['PurchaseItems'])) {
       $summary = '<ul class="purchase-items">';
       foreach ($payload['PurchaseItems'] as $item) {
@@ -830,25 +909,34 @@ function _freedompay_payment_complete($entityform=NULL) {
   elseif ($entityform) {
     // First set the entityform cache
     _freedompay_get_entityform($entityform);
-    return _freedompay_payment_not_required();
+    if (!_freedompay_payment_required()) {
+      return TRUE;
+    }
   }
   return FALSE;
 }
 
-function _freedompay_payment_not_required() {
-  $payload = freedompay_get_checkout_payload();
-  return $payload['TransactionTotal'] == FREEDOMPAY_PAYMENT_NOT_REQUIRED;
+/**
+ * Checks whether the transaction total is set to FREEDOMPAY_PAYMENT_NOT_REQUIRED
+ * Implementing modules can set this in hook_freedompay_transaction_total_alter()
+ */
+function _freedompay_payment_required() {
+  $transaction_total = freedompay_transaction_total();
+  return $transaction_total != FREEDOMPAY_PAYMENT_NOT_REQUIRED;
 }
 
 /**
  * Completes the payment process, including invoking hook_freedompay_form_complete().
  */
-function _freedompay_complete_payment() {
+function _freedompay_complete_checkout() {
   $entityform = _freedompay_get_entityform();
   $wrapper = _freedompay_get_entityform_wrapper($entityform);
   $wrapper->draft = 0;
   $wrapper->save();
   module_invoke_all('freedompay_form_complete', $entityform);
+  if(_freedompay_payment_required()) {
+    _freedompay_mark_invoice_paid($entityform);
+  }
   _freedompay_cookie_flush();
   _freedompay_redirect_to_entityform_submission($entityform);
 }
@@ -872,8 +960,8 @@ function _freedompay_redirect_to_entityform_submission($entityform) {
  * @todo  Consider whether it's worth looping through and checking key/values
  *        rather than equivalency
  */
-function _freedompay_transaction_payload_changed($transaction) {
-  if (isset($transaction['OriginalRequest']) && $payload = freedompay_get_checkout_payload()) {
+function _freedompay_transaction_payload_changed($transaction, $payload) {
+  if (isset($transaction['OriginalRequest'])) {
     $original = $transaction['OriginalRequest'];
     if ( $original['TransactionTotal'] == $payload['TransactionTotal']
       && $original['PurchaseItems'] == $payload['PurchaseItems']
@@ -882,25 +970,4 @@ function _freedompay_transaction_payload_changed($transaction) {
     }
   }
   return TRUE; // The original request failed, so create a new transaction
-}
-
-/**
- * Sets a default value for the invoice number
- * Can be overridden via hook_freedompay_checkout_payload_alter
- */
-function _freedompay_get_invoice_number() {
-  $invoice_count = _freedompay_get_current_invoice_count_by_type(_freedompay_entityform_type_name());
-  $offset = 1; // Incremented from the old system
-  // Pad the string to 6 places
-  $invoice_number = str_pad($invoice_count + $offset, 6, '0', STR_PAD_LEFT);
-  return _freedompay_get_invoice_prefix() . $invoice_number;
-}
-
-/**
- * Sets a default prefix value based on the entityform type
- */
-function _freedompay_get_invoice_prefix() {
-  $type = _freedompay_entityform_type_name();
-  $type = str_replace('_', '', $type);
-  return strtolower(substr($type, 0, 6));
 }
