@@ -5,3 +5,28 @@
  */
 
 include_once 'ilr_paragraphs.features.inc';
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ */
+function ilr_paragraphs_preprocess_field(&$variables) {
+  _ilr_paragraphs_add_icon_class_to_paragraphs_item_field($variables, 'sponsor_message', 'field_comments');
+}
+
+/**
+ * Add a class to pragraphs_item['{$paragraphs_bundle}']['{$field}']
+ * when pragraphs_item['{$paragraphs_bundle}']['field_title_icon_none'] == 'Icon'.
+ */
+function _ilr_paragraphs_add_icon_class_to_paragraphs_item_field(&$variables, $paragraphs_bundle, $field) {
+  if (
+    $variables['element']['#field_name'] == $field &&
+    $variables['element']['#bundle'] == $paragraphs_bundle &&
+    $variables['element']['#object']->field_title_icon_none['und'][0]['value'] == 'Icon'
+  ) {
+    $variables['classes_array'][] = 'tower';
+    $variables['attr'] = drupal_attributes(array(
+      'class' => $variables['classes_array'],
+    ));
+  }
+}
