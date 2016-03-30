@@ -20,7 +20,7 @@ function ilr_paragraphs_paragraphs_info() {
       'locked' => '1',
     ),
     'sponsor_message' => array(
-      'name' => 'sponsor message',
+      'name' => 'prominent message',
       'bundle' => 'sponsor_message',
       'locked' => '1',
     ),

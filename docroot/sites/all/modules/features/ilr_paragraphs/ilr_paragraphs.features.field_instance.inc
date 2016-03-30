@@ -184,7 +184,7 @@ function ilr_paragraphs_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
@@ -193,16 +193,19 @@ function ilr_paragraphs_field_default_field_instances() {
         'weight' => 3,
       ),
       'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div',
+    'fences_wrapper' => 'p',
     'field_name' => 'field_comments',
-    'label' => 'Centered blurb',
+    'label' => 'Message text',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -232,7 +235,7 @@ function ilr_paragraphs_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
@@ -241,14 +244,17 @@ function ilr_paragraphs_field_default_field_instances() {
         'weight' => 0,
       ),
       'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
         'weight' => 0,
       ),
     ),
     'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div',
+    'fences_wrapper' => 'h2',
     'field_name' => 'field_header',
     'label' => 'Title',
     'required' => 0,
@@ -275,30 +281,31 @@ function ilr_paragraphs_field_default_field_instances() {
   // Exported field_instance: 'paragraphs_item-sponsor_message-field_title_icon_none'
   $field_instances['paragraphs_item-sponsor_message-field_title_icon_none'] = array(
     'bundle' => 'sponsor_message',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'Icon',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'paragraphs_item',
     'fences_wrapper' => 'div',
     'field_name' => 'field_title_icon_none',
-    'label' => 'Choose:  title, icon, or neither',
+    'label' => 'Decorate this message with a:  title, icon, or neither',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -306,17 +313,19 @@ function ilr_paragraphs_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
       'weight' => 1,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Centered blurb');
-  t('Choose:  title, icon, or neither');
+  t('Decorate this message with a:  title, icon, or neither');
   t('Image');
+  t('Message text');
   t('Paragraph header');
   t('Text paragraph');
   t('Title');
