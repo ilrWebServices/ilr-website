@@ -21,6 +21,7 @@ features[field_instance][] = paragraphs_item-just_text-field_text_paragraph
 features[field_instance][] = paragraphs_item-sponsor_message-field_comments
 features[field_instance][] = paragraphs_item-sponsor_message-field_header
 features[field_instance][] = paragraphs_item-sponsor_message-field_title_icon_none
+features[paragraphs][] = display_a_block
 features[paragraphs][] = just_image
 features[paragraphs][] = just_text
 features[paragraphs][] = sponsor_message

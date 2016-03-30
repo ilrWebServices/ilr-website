@@ -9,6 +9,11 @@
  */
 function ilr_paragraphs_paragraphs_info() {
   $items = array(
+    'display_a_block' => array(
+      'name' => 'a block',
+      'bundle' => 'display_a_block',
+      'locked' => '1',
+    ),
     'just_image' => array(
       'name' => 'an image',
       'bundle' => 'just_image',
@@ -20,7 +25,7 @@ function ilr_paragraphs_paragraphs_info() {
       'locked' => '1',
     ),
     'sponsor_message' => array(
-      'name' => 'prominent message',
+      'name' => 'a prominent message',
       'bundle' => 'sponsor_message',
       'locked' => '1',
     ),
