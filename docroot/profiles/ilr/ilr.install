@@ -748,3 +748,12 @@ function ilr_update_7056() {
   $field_name_to_change = array('field_intro_text' => 'field_para_main_page_content');
   ilr_rename_fields($field_name_to_change, $drop_first = FALSE);
 }
+
+/**
+ * Enables ilr_channel_page feature
+ */
+function ilr_update_7057() {
+  module_enable(array(
+    'ilr_channel_page',
+  ));
+}
