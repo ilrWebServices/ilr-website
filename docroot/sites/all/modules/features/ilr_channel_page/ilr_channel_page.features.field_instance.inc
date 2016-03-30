@@ -167,13 +167,15 @@ function ilr_channel_page_field_default_field_instances() {
     'label' => 'Main page content',
     'required' => 1,
     'settings' => array(
-      'add_mode' => 'select',
+      'add_mode' => 'button',
       'allowed_bundles' => array(
-        'just_image' => -1,
-        'just_text' => -1,
+        'display_a_block' => 'display_a_block',
+        'just_image' => 'just_image',
+        'just_text' => 'just_text',
         'sponsor_message' => 'sponsor_message',
       ),
       'bundle_weights' => array(
+        'display_a_block' => 6,
         'just_image' => 2,
         'just_text' => 3,
         'sponsor_message' => 4,
