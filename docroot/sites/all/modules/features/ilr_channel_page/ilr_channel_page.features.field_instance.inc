@@ -64,14 +64,9 @@ function ilr_channel_page_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'image',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 0,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -85,7 +80,7 @@ function ilr_channel_page_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'focussed_thumbnail',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -151,7 +146,7 @@ function ilr_channel_page_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'paragraphs_view',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
