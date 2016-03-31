@@ -5,9 +5,11 @@ define('FREEDOMPAY_DEFAULT_CANCEL_MESSAGE', ''); // Defaults to no message
 define('FREEDOMPAY_DEFAULT_REJECT_MESSAGE', '<p>Sorry, but there was an error processing your payment. Please try again, or contact customer support.</p>');
 define('FREEDOMPAY_DEFAULT_CHECKOUT_MESSAGE', '<p>Thank you for your order. Please review your order below, then click the button to complete your payment.</p>');
 define('FREEDOMPAY_PAYMENT_NOT_REQUIRED', 'No payment required');
+define('FREEDOMPAY_TRANSACTION_SUCCESS', 'Please wait while we complete your transaction');
 
 /**
- *
+ * Gets teh checkout payload and caches it
+ * Calls the alter function before caching
  */
 function freedompay_checkout_payload() {
   $payload = &drupal_static(__FUNCTION__);
@@ -123,7 +125,7 @@ function freedompay_menu() {
   if (!empty($portals)) {
     $path_names_and_titles = array(
       'checkout' => 'Checkout Summary',
-      'success' => 'Payment Complete',
+      'success' => 'Completing Transaction', // They should get forwarded along
       'failure' => 'Payment Error',
       'cancel' => 'Payment Cancelled',
     );
@@ -357,9 +359,10 @@ function freedompay_checkout_page() {
       return _freedompay_redirect(_freedompay_get_checkout_path());
     } // Transaction fail, so send the user back to the form
     else {
+      $entityform_url = _freedompay_cookie_get('entityform_url');
       _freedompay_cookie_flush();
       drupal_set_message(t(FREEDOMPAY_FAILED_TRANSACTION_MESSAGE), 'error');
-      return _freedompay_redirect(_freedompay_cookie_get('entityform_url'));
+      return _freedompay_redirect($entityform_url);
     }
   } // Entityform failed to load
   else {
@@ -372,7 +375,8 @@ function freedompay_checkout_page() {
 function freedompay_success_page() {
   if (isset($_REQUEST['transid']) && !_freedompay_payment_complete()) {
     if ($payment = freedompay_payment()) {
-      _freedompay_complete_checkout();
+      $track_purchase = (module_exists('google_ecommerce_tracking')) ? TRUE : FALSE;
+      return _freedompay_complete_checkout($track_purchase);
     } // The payment didn't get created for some reason
     else {
       watchdog('freedompay', "Unexpected payment failure for transaction @transaction_id",
@@ -388,7 +392,7 @@ function freedompay_success_page() {
     if ($entityform = _freedompay_get_entityform()) {
       _freedompay_cookie_flush();
       if (_freedompay_payment_complete()) {
-        _freedompay_redirect_to_entityform_submission($entityform);
+        freedompay_redirect_to_entityform_submission($entityform);
       }
       else { // Redirect to the checkout page
         _freedompay_redirect(_freedompay_get_checkout_path());
@@ -468,6 +472,33 @@ function freedompay_payment() {
     return $payment;
   }
   return NULL;
+}
+
+/**
+ * Getter/setter for the transaction total, including calling the alter hook
+ */
+function freedompay_transaction_total() {
+  $transaction_total = &drupal_static(__FUNCTION__);
+  if (!isset($transaction_total)) {
+    $transaction_total = freedompay_default_transaction_total();
+    $type = _freedompay_entityform_type_name();
+    drupal_alter('freedompay_transaction_total', $type, $transaction_total);
+  }
+  return $transaction_total;
+}
+
+/**
+ * Returns the value of field_total_cost, if it exists
+ * Typically, we expect that a module providing a payment form will alter the TransactionTotal
+ */
+function freedompay_default_transaction_total() {
+  $transaction_total = 0;
+  if ($wrapper = _freedompay_get_entityform_wrapper()) {
+    if (isset($wrapper->field_total_cost)) {
+      $transaction_total = $wrapper->field_total_cost->value();
+    }
+  }
+  return $transaction_total;
 }
 
 /**
@@ -568,6 +599,27 @@ function freedompay_entityform_is_payment_form($entityform) {
   return FALSE;
 }
 
+function freedompay_redirect_to_entityform_submission($entityform) {
+  $redirect_url = freedompay_redirect_url($entityform);
+  _freedompay_cookie_flush();
+  drupal_goto($redirect_url);
+}
+
+/**
+ * Gets the formatted url for an entityform submission
+ */
+function freedompay_redirect_url($entityform) {
+  $confirmation_url = _entityform_type_get_confirm_url($entityform->type);
+  $params = array(
+    'query' => array(
+      'entityform_id' => $entityform->entityform_id,
+    ),
+  );
+  // Keep entityform from denying access
+  $_SESSION['entityform_submission'] = $entityform->entityform_id;
+  return url($confirmation_url, $params);
+}
+
 /**
  * Validation callback
  * Confirms that payment forms have field_h_credit_card_payments
@@ -661,9 +713,6 @@ function _freedompay_create_freedompay_transaction() {
         WATCHDOG_ERROR
       );
     }
-  } // If payment isn't required (ie, a free event, then just complete the process)
-  elseif ($payload['TransactionTotal'] == FREEDOMPAY_PAYMENT_NOT_REQUIRED) {
-    _freedompay_complete_checkout();
   } // Failed to create a valid total, so send the user back to the form
   else {
     $entityform = _freedompay_get_entityform();
@@ -757,30 +806,6 @@ function _freedompay_get_payment_forms() {
   return $payment_forms;
 }
 
-function freedompay_transaction_total() {
-  $transaction_total = &drupal_static(__FUNCTION__);
-  if (!isset($transaction_total)) {
-    $transaction_total = freedompay_default_transaction_total();
-    $type = _freedompay_entityform_type_name();
-    drupal_alter('freedompay_transaction_total', $type, $transaction_total);
-  }
-  return $transaction_total;
-}
-
-/**
- * Returns the value of field_total_cost, if it exists
- * Typically, we expect that a module providing a payment form will alter the TransactionTotal
- */
-function freedompay_default_transaction_total() {
-  $transaction_total = 0;
-  if ($wrapper = _freedompay_get_entityform_wrapper()) {
-    if (isset($wrapper->field_total_cost)) {
-      $transaction_total = $wrapper->field_total_cost->value();
-    }
-  }
-  return $transaction_total;
-}
-
 /**
  * Loads or retrieves the entityform object
  */
@@ -838,7 +863,7 @@ function _freedompay_cookie_get($name) {
 }
 
 function _freedompay_cookie_flush() {
-  $cookies = ['entityform_id','entityform_type','transaction_id','checkout_url'];
+  $cookies = ['entityform_id','entityform_type','entityform_url','transaction_id','checkout_url'];
   foreach ($cookies as $key => $name) {
     _freedompay_cookie_delete($name);
   }
@@ -926,9 +951,11 @@ function _freedompay_payment_required() {
 }
 
 /**
- * Completes the payment process, including invoking hook_freedompay_form_complete().
+ * Completes the checkout process, including invoking hook_freedompay_form_complete().
+ * @param  boolean $track_purchase
+ *                 True if google_ecommerce_tracking is enabled
  */
-function _freedompay_complete_checkout() {
+function _freedompay_complete_checkout($track_purchase=FALSE) {
   $entityform = _freedompay_get_entityform();
   $wrapper = _freedompay_get_entityform_wrapper($entityform);
   $wrapper->draft = 0;
@@ -937,20 +964,13 @@ function _freedompay_complete_checkout() {
   if(_freedompay_payment_required()) {
     _freedompay_mark_invoice_paid($entityform);
   }
-  _freedompay_cookie_flush();
-  _freedompay_redirect_to_entityform_submission($entityform);
-}
-
-function _freedompay_redirect_to_entityform_submission($entityform) {
-  $confirmation_url = _entityform_type_get_confirm_url($entityform->type);
-  $params = array(
-    'query' => array(
-      'entityform_id' => $entityform->entityform_id,
-    ),
-  );
-  // Keep entityform from denying access
-  $_SESSION['entityform_submission'] = $entityform->entityform_id;
-  drupal_goto($confirmation_url, $params);
+  if (!$track_purchase) { // Go ahead and redirect
+    freedompay_redirect_to_entityform_submission($entityform);
+  } // Wait for tracking to take place
+  else {
+    _freedompay_cookie_flush();
+    return FREEDOMPAY_TRANSACTION_SUCCESS;
+  }
 }
 
 /**

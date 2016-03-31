@@ -1,0 +1,71 @@
+<?php
+/**
+ * @file
+ * Code for the Google Ecommerce Tracking Implementation
+ */
+
+/**
+ * Implements hook_freedompay_form_complete().
+ * Adds the tracking data to the rendered page
+ * @see freedompay_success_page()
+ */
+function google_ecommerce_tracking_freedompay_form_complete($entityform) {
+  if (!ilr_is_production_site()) { // Don't track when testing
+    return;
+  }
+
+  if ($payload = freedompay_checkout_payload()) {
+    _google_ecommerce_tracking_add_datalayer($entityform, $payload);
+    _google_ecommerce_tracking_add_redirection($entityform);
+  }
+}
+
+function _google_ecommerce_tracking_add_datalayer($entityform, $payload) {
+  $invoice = FreedompayInvoice::getInvoiceByOrderId($entityform->entityform_id);
+  $hpp = FreedompayHpp::getPortalForForm($entityform);
+  $transaction_total = freedompay_transaction_total();
+  $data_layer = array();
+  $data_layer[] = [
+     'transactionId' => $invoice->formatInvoiceNumber(),
+     'transactionAffiliation' => $hpp->title,
+     'transactionTotal' => $transaction_total,
+     'transactionProducts' => _google_ecommerce_tracking_get_products($payload, $invoice->prefix),
+  ];
+
+  $script = '<script>';
+  $script .= 'dataLayer=';
+  $script .= json_encode($data_layer);
+  $script .= '</script>';
+
+  drupal_add_js($script, array('scope' => 'header', 'type' => 'inline'));
+}
+
+function _google_ecommerce_tracking_get_products($payload, $prefix) {
+  $products = [];
+  if (isset($payload['PurchaseItems'])) {
+    foreach ($payload['PurchaseItems'] as $item) {
+      $products[] = _google_ecommerce_tracking_format_product($item, $prefix);
+    }
+  }
+  return $products;
+}
+
+function _google_ecommerce_tracking_format_product($product, $prefix) {
+  return array(
+   'sku' => $prefix,
+   'name' => $product['Description'],
+   'price' => $product['Price'],
+   'quantity' => $product['Quantity']
+  );
+}
+
+function _google_ecommerce_tracking_add_redirection($entityform) {
+  drupal_add_js(drupal_get_path('module','google_ecommerce_tracking') . '/google_ecommerce_tracking.js', array('type' => 'file', 'scope' => 'footer'));
+  $redirect_url = freedompay_redirect_url($entityform);
+  drupal_add_js(array(
+    'google_ecommerce_tracking' => array(
+      'redirect_url' => $redirect_url,
+    )),
+    'setting'
+  );
+}
