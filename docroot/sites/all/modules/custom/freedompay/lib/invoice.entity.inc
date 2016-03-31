@@ -19,8 +19,8 @@ class FreedompayInvoice extends Entity {
     parent::__construct($values, 'freedompay_invoice');
     if (!$this->invoice_id) {
       $this->created = REQUEST_TIME;
-      $this->number = $this->invoiceNumber();
       $this->prefix = $this->prefix();
+      $this->number = $this->invoiceNumber();
     }
   }
 
