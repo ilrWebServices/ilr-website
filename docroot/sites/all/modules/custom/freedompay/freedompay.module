@@ -954,20 +954,32 @@ function _freedompay_redirect_to_entityform_submission($entityform) {
 }
 
 /**
- * Checks to see if the payload is different from the existing transaction
- * A slightly blunt tool, because FreedomPay could easily add return attributes
- * Causing this to return TRUE and to initiate a new transaction when not needed
- * @todo  Consider whether it's worth looping through and checking key/values
- *        rather than equivalency
+ * Checks to see if the payload values are different from the existing transaction
  */
 function _freedompay_transaction_payload_changed($transaction, $payload) {
   if (isset($transaction['OriginalRequest'])) {
     $original = $transaction['OriginalRequest'];
-    if ( $original['TransactionTotal'] == $payload['TransactionTotal']
-      && $original['PurchaseItems'] == $payload['PurchaseItems']
-      && $original['BillingAddress'] == $payload['BillingAddress']) {
-      return FALSE;
+    $changes = _freedompay_recursive_array_diff($payload, $original);
+    return !empty($changes);
+  }// The original request failed, so the payload is different
+  return TRUE;
+}
+
+function _freedompay_recursive_array_diff($array1, $array2) {
+  $diffs = array();
+  foreach ($array1 as $key => $value) {
+    if (array_key_exists($key, $array2)) {
+      if (is_array($value)) {
+        $recursive_diffs = _freedompay_recursive_array_diff($value, $array2[$key]);
+        if (count($recursive_diffs)) { $diffs[$key] = $recursive_diffs; }
+      } else {
+        if ($value != $array2[$key]) {
+          $diffs[$key] = $value;
+        }
+      }
+    } else {
+      $diffs[$key] = $value;
     }
   }
-  return TRUE; // The original request failed, so create a new transaction
+  return $diffs;
 }
