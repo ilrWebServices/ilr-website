@@ -11,22 +11,26 @@ include_once 'ilr_paragraphs.features.inc';
  *
  */
 function ilr_paragraphs_preprocess_field(&$variables) {
-  _ilr_paragraphs_add_icon_class_to_paragraphs_item_field($variables, 'sponsor_message', 'field_comments');
+  _ilr_paragraphs_add_class_to_item_field($variables, 'sponsor_message', 'field_comments', 'centered-blurb');
+  _ilr_paragraphs_add_class_to_item_field($variables, 'sponsor_message', 'field_comments', 'tower', 'field_title_icon_none', 'Icon');
 }
 
 /**
- * Add a class to pragraphs_item['{$paragraphs_bundle}']['{$field}']
- * when pragraphs_item['{$paragraphs_bundle}']['field_title_icon_none'] == 'Icon'.
+ * If $cond_field is unspecified or if pragraphs_item['{$paragraphs_bundle}']['{$cond_field}'] == $cond_value
+ * then add a class $value to pragraphs_item['{$paragraphs_bundle}']['{$field}']
  */
-function _ilr_paragraphs_add_icon_class_to_paragraphs_item_field(&$variables, $paragraphs_bundle, $field) {
+function _ilr_paragraphs_add_class_to_item_field(&$variables, $paragraphs_bundle, $field, $value, $cond_field = '', $cond_value = '') {
   if (
     $variables['element']['#field_name'] == $field &&
-    $variables['element']['#bundle'] == $paragraphs_bundle &&
-    $variables['element']['#object']->field_title_icon_none['und'][0]['value'] == 'Icon'
+    $variables['element']['#bundle'] == $paragraphs_bundle
   ) {
-    $variables['classes_array'][] = 'tower';
-    $variables['attr'] = drupal_attributes(array(
-      'class' => $variables['classes_array'],
-    ));
+    if ($cond_field == '' ||
+      $variables['element']['#object']->{$cond_field}['und'][0]['value'] == $cond_value
+    ) {
+      $variables['classes_array'][] = $value;
+      $variables['attr'] = drupal_attributes(array(
+        'class' => $variables['classes_array'],
+      ));
+    }
   }
 }
