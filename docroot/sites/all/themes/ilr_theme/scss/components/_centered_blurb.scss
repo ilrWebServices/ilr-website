@@ -1,13 +1,15 @@
-.tower {
-  clear: both;
-  text-align: center;
-  @extend %icon-tower;
-  @include adjust-font-size-to(40px);
-  @include adjust-leading-to(1.5);
-  color: $gray-medium;
-  @include leader(1);
-  @include trailer(0);
-  margin: 0 auto !important;
+.field-name-body {
+  .tower {
+    clear: both;
+    text-align: center;
+    @extend %icon-tower;
+    @include adjust-font-size-to(40px);
+    @include adjust-leading-to(1.5);
+    color: $gray-medium;
+    @include leader(1);
+    @include trailer(0);
+    margin: 0 auto !important;
+  }
 }
 
 .centered-blurb {
@@ -17,4 +19,39 @@
   @include adjust-leading-to(1);
   max-width: $section-max-width !important;
   margin: 0 auto 1em !important;
+}
+
+.paragraphs-item-sponsor-message {
+  text-align: center;
+  @include adjust-font-size-to(30px);
+  @include adjust-leading-to(1);
+  // font-family: $font-headers;
+  font-family: $font-headers;
+  max-width: $section-max-width;
+  margin: 0 auto 4em;
+  h2 {
+    // @include adjust-font-size-to(30px);
+    // @include adjust-leading-to(1);
+    font-weight: 300;
+  }
+  .tower {
+    // @include adjust-font-size-to(30px);
+    // @include adjust-leading-to(1);
+    // font-family: $font-headers;
+    font-weight: 300;
+    color: $p-text;
+    &:before {
+      @include adjust-font-size-to(25px);
+      @include adjust-leading-to(1.5);
+      color: $gray-medium;
+      display: block;
+    }
+  }
+
+  // .tower:before {
+  //   @include adjust-font-size-to(30px);
+  //   @include adjust-leading-to(1.5);
+  //   color: $gray-medium;
+  //   display: block;
+  // }
 }
