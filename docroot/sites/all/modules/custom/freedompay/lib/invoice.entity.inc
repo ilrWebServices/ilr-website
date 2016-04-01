@@ -95,7 +95,7 @@ class FreedompayInvoice extends Entity {
     $invoices = FreedompayInvoice::getInvoices($invoiceIds);
     foreach ($invoices as $id=> $invoice) {
       $rows[$id] = array(
-        'number' => $invoice->number,
+        'number' => $invoice->formatInvoiceNumber(),
         'order' => l($invoice->order_id, 'entityform/'.$invoice->order_id),
         'amount' => $invoice->amount,
       );
