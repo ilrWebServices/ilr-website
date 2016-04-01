@@ -131,12 +131,6 @@
 // Card Styles
 // ==================================================
 %card {
-  background: white;
-  border: 2px solid #e0e0e0;
-  border-bottom-width: 6px;
-  @include trailer(1.5);
-  @include padding-leader(1);
-
   body:not(.ilr-at-70) & {
     @extend %image-first;
   }
@@ -145,67 +139,75 @@
     @extend %image-heading-text;
   }
 
-  h2, h3, h4 {
-    text-align: center;
-  }
+  body:not(.mobilizing-against-inequality) & {//don't display as card on MAI home
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-bottom-width: 6px;
+    @include trailer(1.5);
+    @include padding-leader(1);
 
-  h2 {
-    @include adjust-font-size-to(25px);
-    @include adjust-leading-to(1,25px);
-    padding: .8em 1em 0 1em;
-  }
-  &[data-eq-state="small"] h2 {
-    @include adjust-font-size-to(22px);
-  }
+    h2, h3, h4 {
+      text-align: center;
+    }
 
-  h3 {
-    @include trailer(1);
-  }
-
-  h4 {
-    text-transform: uppercase;
-    font-family: $font;
-    font-weight: bold;
-    @include adjust-font-size-to(14px);
-  }
-
-  @include addHighlightColors('.thumbnail.custom a', 'background-color', .2);
-  .thumbnail.custom {
-    @extend %custom-thumbnail;
-    @include circularImage(150px);
-    margin: 0 auto;
-    &.event a {
-      background: $event-color;
+    h2 {
       @include adjust-font-size-to(25px);
-      padding-top: .5em;
-      line-height: .8;
+      @include adjust-leading-to(1,25px);
+      padding: .8em 1em 0 1em;
     }
-  }
-
-  &.node-basic-page,
-  &.node-news-item,
-  &.node-promo,
-  &.node-youtube-video {
-    .field-type-image,
-    .field-type-youtube {
-      @extend %square-to-3x4;
+    &[data-eq-state="small"] h2 {
+      @include adjust-font-size-to(22px);
     }
-  }
 
-  &.node-student-portrait,
-  &.localist-event {
-    .field-type-image {
-      margin: 0 auto;
+    h3 {
+      @include trailer(1);
+    }
+
+    h4 {
+      text-transform: uppercase;
+      font-family: $font;
+      font-weight: bold;
+      @include adjust-font-size-to(14px);
+    }
+
+    @include addHighlightColors('.thumbnail.custom a', 'background-color', .2);
+    .thumbnail.custom {
+      @extend %custom-thumbnail;
       @include circularImage(150px);
+      margin: 0 auto;
+      &.event a {
+        background: $event-color;
+        @include adjust-font-size-to(25px);
+        padding-top: .5em;
+        line-height: .8;
+      }
     }
-  }
 
-  .field-type-text-with-summary,
-  .field-name-field-description,
-  .field-name-field-campaign-intro,
-  .field-name-field-campaign-title,
-  .field-name-field-teaser {
-    display: none;
+    &.node-basic-page,
+    &.node-news-item,
+    &.node-promo,
+    &.node-youtube-video {
+      .field-type-image,
+      .field-type-youtube {
+        @extend %square-to-3x4;
+      }
+    }
+
+    &.node-student-portrait,
+    &.localist-event {
+      .field-type-image {
+        margin: 0 auto;
+        @include circularImage(150px);
+      }
+    }
+
+    .field-type-text-with-summary,
+    .field-name-field-description,
+    .field-name-field-campaign-intro,
+    .field-name-field-campaign-title,
+    .field-name-field-teaser {
+      display: none;
+    }
   }
 }
 
