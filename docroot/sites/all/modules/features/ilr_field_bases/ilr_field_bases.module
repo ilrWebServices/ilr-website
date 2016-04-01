@@ -1,8 +1,10 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the ILR Field Bases feature.
  */
+
+include_once 'ilr_field_bases.features.inc';
 
 /**
  * Implements hook_permission().
