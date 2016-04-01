@@ -170,12 +170,14 @@ function ilr_channel_page_field_default_field_instances() {
       'add_mode' => 'button',
       'allowed_bundles' => array(
         'display_a_block' => 'display_a_block',
+        'featured_promo' => 'featured_promo',
         'just_image' => 'just_image',
         'just_text' => 'just_text',
         'sponsor_message' => 'sponsor_message',
       ),
       'bundle_weights' => array(
         'display_a_block' => 6,
+        'featured_promo' => 9,
         'just_image' => 2,
         'just_text' => 3,
         'sponsor_message' => 4,

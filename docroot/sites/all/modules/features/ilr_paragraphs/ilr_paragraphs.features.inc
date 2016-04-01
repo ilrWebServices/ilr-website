@@ -5,6 +5,15 @@
  */
 
 /**
+ * Implements hook_ctools_plugin_api().
+ */
+function ilr_paragraphs_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
+}
+
+/**
  * Implements hook_paragraphs_info().
  */
 function ilr_paragraphs_paragraphs_info() {
@@ -12,6 +21,11 @@ function ilr_paragraphs_paragraphs_info() {
     'display_a_block' => array(
       'name' => 'a block',
       'bundle' => 'display_a_block',
+      'locked' => '1',
+    ),
+    'featured_promo' => array(
+      'name' => 'a featured promotion',
+      'bundle' => 'featured_promo',
       'locked' => '1',
     ),
     'just_image' => array(
