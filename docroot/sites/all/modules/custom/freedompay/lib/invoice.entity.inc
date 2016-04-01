@@ -82,7 +82,7 @@ class FreedompayInvoice extends Entity {
   public static function tableView($invoiceIds) {
     $tableView = array(
       '#theme' => 'table',
-      '#header' => array(t('Invoice Number'),t('Order form'), t('Amount')),
+      '#header' => array(t('Invoice Number'),t('Order form'), t('Amount'), t('Paid')),
       '#rows' => FreedompayInvoice::rowView($invoiceIds),
       '#attributes' => array('class' => array('table-class')),
       '#empty' =>t('No invoices have been processed yet'),
@@ -98,6 +98,7 @@ class FreedompayInvoice extends Entity {
         'number' => $invoice->formatInvoiceNumber(),
         'order' => l($invoice->order_id, 'entityform/'.$invoice->order_id),
         'amount' => $invoice->amount,
+        'paid' => ($invoice->paid) ? 'Yes' : 'No',
       );
     }
     return $rows;
