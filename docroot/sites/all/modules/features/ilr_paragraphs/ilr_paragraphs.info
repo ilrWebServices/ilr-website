@@ -20,6 +20,7 @@ dependencies[] = youtube
 features[conditional_fields][] = paragraphs_item:sponsor_message
 features[ctools][] = field_group:field_group:1
 features[features_api][] = api:2
+features[field_group][] = group_featured_promo_story|paragraphs_item|featured_promo|default
 features[field_group][] = group_image_or_video|paragraphs_item|featured_promo|form
 features[field_instance][] = paragraphs_item-display_a_block-field_one_block
 features[field_instance][] = paragraphs_item-featured_promo-field_header

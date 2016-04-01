@@ -13,6 +13,40 @@ function ilr_paragraphs_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_featured_promo_story|paragraphs_item|featured_promo|default';
+  $field_group->group_name = 'group_featured_promo_story';
+  $field_group->entity_type = 'paragraphs_item';
+  $field_group->bundle = 'featured_promo';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => '',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_header',
+      1 => 'field_teaser',
+      2 => 'field_multiple_links',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => '',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-featured-promo-story field-group-fieldset',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_featured_promo_story|paragraphs_item|featured_promo|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_image_or_video|paragraphs_item|featured_promo|form';
   $field_group->group_name = 'group_image_or_video';
   $field_group->entity_type = 'paragraphs_item';
