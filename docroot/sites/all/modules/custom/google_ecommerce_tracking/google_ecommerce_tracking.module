@@ -6,17 +6,36 @@
 
 /**
  * Implements hook_freedompay_form_complete().
- * Adds the tracking data to the rendered page
- * @see freedompay_success_page()
+ * Adds the session variable we look for when the entityform loads
  */
 function google_ecommerce_tracking_freedompay_form_complete($entityform) {
   if (!ilr_is_production_site()) { // Don't track when testing
     return;
   }
 
-  if ($payload = freedompay_checkout_payload()) {
-    _google_ecommerce_tracking_add_datalayer($entityform, $payload);
-    _google_ecommerce_tracking_add_redirection($entityform);
+  $_SESSION['google_ecommerce_tracking_entityform_id'] = $entityform->entityform_id;
+}
+
+/**
+ * Implements hook_entityform_view().
+ * Loads the entityform draft if there is one for anonymous users
+ */
+function google_ecommerce_tracking_entityform_view($entityform) {
+  if (isset($_SESSION['google_ecommerce_tracking_entityform_id'])) {
+    // Set the entityform cache
+    $entityform = freedompay_entityform($entityform);
+    if ($payload = freedompay_checkout_payload()) {
+      _google_ecommerce_tracking_add_datalayer($entityform, $payload);
+      unset($_SESSION['google_ecommerce_tracking_entityform_id']);
+    }
+    else {
+      watchdog('google_ecommerce_tracking', "Payload failed to load when attempting to track payment form @entityform_id",
+        array(
+          '@entityform_id' => $entityform->entityform_id,
+        ),
+        WATCHDOG_ERROR
+      );
+    }
   }
 }
 
@@ -56,16 +75,5 @@ function _google_ecommerce_tracking_format_product($product, $prefix) {
    'name' => $product['Description'],
    'price' => $product['Price'],
    'quantity' => $product['Quantity']
-  );
-}
-
-function _google_ecommerce_tracking_add_redirection($entityform) {
-  drupal_add_js(drupal_get_path('module','google_ecommerce_tracking') . '/google_ecommerce_tracking.js', array('type' => 'file', 'scope' => 'footer'));
-  $redirect_url = freedompay_redirect_url($entityform);
-  drupal_add_js(array(
-    'google_ecommerce_tracking' => array(
-      'redirect_url' => $redirect_url,
-    )),
-    'setting'
   );
 }

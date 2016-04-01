@@ -61,11 +61,11 @@ function _forensics_payments_get_billing_address() {
 }
 
 /**
- * Wrapper function for _freedompay_get_entityform_wrapper().
+ * Wrapper function for freedompay_entityform_wrapper().
  */
 function _forensics_payments_get_entityform_wrapper() {
   if (module_exists('freedompay')) {
-    return _freedompay_get_entityform_wrapper();
+    return freedompay_entityform_wrapper();
   }
   return NULL;
 }
@@ -84,17 +84,4 @@ function _forensics_payments_get_purchase_items() {
       "Quantity" => 1,
     ),
   );
-}
-
-/**
- * Returns a unique invoice number for the registration
- * Based on the number of completed, paid registrations
- */
-function _forensics_payments_generate_invoice_number() {
-  $prefix = 'debate';
-  $invoice_count = _freedompay_get_current_invoice_count_by_type('forensics_debate_camp_payment');
-  $offset = 200; // Incremented from the old system
-  // Pad the string to 6 places
-  $invoice_number = str_pad($invoice_count + $offset, 6, '0', STR_PAD_LEFT);
-  return "$prefix$invoice_number";
 }

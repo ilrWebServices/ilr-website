@@ -14,7 +14,7 @@ define('FREEDOMPAY_TRANSACTION_SUCCESS', 'Please wait while we complete your tra
 function freedompay_checkout_payload() {
   $payload = &drupal_static(__FUNCTION__);
   if (!isset($payload)) {
-    $entityform = _freedompay_get_entityform();
+    $entityform = freedompay_entityform();
     $hpp = FreedompayHpp::getPortalForForm($entityform);
     $transaction_total = freedompay_transaction_total();
     $invoice = freedompay_invoice($entityform, $transaction_total);
@@ -248,7 +248,7 @@ function freedompay_entityform_update($entityform) {
  * Loads the entityform draft if there is one for anonymous users
  */
 function freedompay_entityform_previous_submission_alter(&$entityform_submission, $entityform_type, $context) {
-  if ($previous_submission = _freedompay_get_entityform()) {
+  if ($previous_submission = freedompay_entityform()) {
     if ($entityform_type == $previous_submission->type && $previous_submission->draft == 1) {
       $entityform_submission = $previous_submission;
     }
@@ -336,7 +336,7 @@ function freedompay_checkout_page() {
     $markup = _freedompay_get_message($_REQUEST['fpr']);
   }
   // Confirm there is an entityform first
-  if ($entityform = _freedompay_get_entityform()) {
+  if ($entityform = freedompay_entityform()) {
     // Confirm that payment is required. If not, complete the checkout process
     if (!_freedompay_payment_required()) {
       _freedompay_complete_checkout();
@@ -375,8 +375,7 @@ function freedompay_checkout_page() {
 function freedompay_success_page() {
   if (isset($_REQUEST['transid']) && !_freedompay_payment_complete()) {
     if ($payment = freedompay_payment()) {
-      $track_purchase = (module_exists('google_ecommerce_tracking')) ? TRUE : FALSE;
-      return _freedompay_complete_checkout($track_purchase);
+      return _freedompay_complete_checkout();
     } // The payment didn't get created for some reason
     else {
       watchdog('freedompay', "Unexpected payment failure for transaction @transaction_id",
@@ -389,7 +388,7 @@ function freedompay_success_page() {
   } // transid is missing or the payment was already completed
   else {
     // Check for an entityform
-    if ($entityform = _freedompay_get_entityform()) {
+    if ($entityform = freedompay_entityform()) {
       _freedompay_cookie_flush();
       if (_freedompay_payment_complete()) {
         freedompay_redirect_to_entityform_submission($entityform);
@@ -493,12 +492,44 @@ function freedompay_transaction_total() {
  */
 function freedompay_default_transaction_total() {
   $transaction_total = 0;
-  if ($wrapper = _freedompay_get_entityform_wrapper()) {
+  if ($wrapper = freedompay_entityform_wrapper()) {
     if (isset($wrapper->field_total_cost)) {
       $transaction_total = $wrapper->field_total_cost->value();
     }
   }
   return $transaction_total;
+}
+
+/**
+ * Loads or retrieves the entityform object
+ */
+function freedompay_entityform($entityform_to_set=NULL) {
+  $entityform = &drupal_static(__FUNCTION__);
+  if (!isset($entityform)) {
+    if ($entityform_to_set) {
+      $entityform = $entityform_to_set;
+    }
+    elseif ($entityform_id = _freedompay_cookie_get('entityform_id')) {
+      $entityform = entityform_load($entityform_id);
+    }
+  }
+  return $entityform;
+}
+
+/**
+ * Creates or retrieves an entitymetadata wrapper for the form
+ */
+function freedompay_entityform_wrapper($entityform=NULL) {
+  $wrapper = &drupal_static(__FUNCTION__);
+  if (!isset($wrapper)) {
+    if ($entityform) {
+      $wrapper = entity_metadata_wrapper('entityform', $entityform);
+    }
+    elseif ($entityform = freedompay_entityform()) {
+      $wrapper = entity_metadata_wrapper('entityform', $entityform);
+    }
+  }
+  return $wrapper;
 }
 
 /**
@@ -591,7 +622,7 @@ function freedompay_hpp_form_submit($form, &$form_state) {
  * @see _freedompay_entityform_type_validate().
  */
 function freedompay_entityform_is_payment_form($entityform) {
-  _freedompay_get_entityform_wrapper($entityform);
+  freedompay_entityform_wrapper($entityform);
   $entityform_type = entityform_type_load($entityform->type);
   if (isset($entityform_type->data['add_payment_processing'])) {
     return $entityform_type->data['add_payment_processing'];
@@ -600,9 +631,15 @@ function freedompay_entityform_is_payment_form($entityform) {
 }
 
 function freedompay_redirect_to_entityform_submission($entityform) {
-  $redirect_url = freedompay_redirect_url($entityform);
-  _freedompay_cookie_flush();
-  drupal_goto($redirect_url);
+  $confirmation_url = _entityform_type_get_confirm_url($entityform->type);
+  $params = array(
+    'query' => array(
+      'entityform_id' => $entityform->entityform_id,
+    ),
+  );
+  // Keep entityform from denying access
+  $_SESSION['entityform_submission'] = $entityform->entityform_id;
+  drupal_goto($confirmation_url, $params);
 }
 
 /**
@@ -627,7 +664,7 @@ function freedompay_redirect_url($entityform) {
 function _freedompay_entityform_type_validate(&$form, &$form_state) {
   if ($form_state['values']['data']['add_payment_processing']) {
     $entityform = _freedompay_create_entityform_by_type($form['#entityform_type']->type);
-    $wrapper = _freedompay_get_entityform_wrapper($entityform);
+    $wrapper = freedompay_entityform_wrapper($entityform);
     // Check for the required fields
     if (empty($form_state['values']['data']['hpp'])) {
       form_set_error('add_payment_processing', 'Payment forms require an assigned HPP.');
@@ -660,8 +697,11 @@ function _freedompay_create_entityform_by_type($type) {
 function _freedompay_entityform_type_name() {
   $entityform_type = &drupal_static(__FUNCTION__);
   if (!isset($entityform_type)) {
-    if ($entityform_type = _freedompay_cookie_get('entityform_type')) {
-      return $entityform_type;
+    if ($entityform = freedompay_entityform()) {
+      $entityform_type = $entityform->type;
+    }
+    elseif ($type_cookie = _freedompay_cookie_get('entityform_type')) {
+      $entityform_type = $type_cookie;
     }
   }
   return $entityform_type;
@@ -688,7 +728,7 @@ function _freedompay_get_transaction_id() {
     if (isset($_REQUEST['transid'])) {
       $transaction_id = $_REQUEST['transid'];
     }
-    else if ($transaction_id = _freedompay_cookie_get('transaction_id')) {
+    elseif ($transaction_id = _freedompay_cookie_get('transaction_id')) {
       return $transaction_id;
     }
   }
@@ -705,7 +745,7 @@ function _freedompay_create_freedompay_transaction() {
       return $result;
     } // The transaction failed
     else {
-      $entityform = _freedompay_get_entityform();
+      $entityform = freedompay_entityform();
       watchdog('freedompay', "Failure creating transaction for payment form @entityform_id",
         array(
           '@entityform_id' => $entityform->entityform_id,
@@ -715,7 +755,7 @@ function _freedompay_create_freedompay_transaction() {
     }
   } // Failed to create a valid total, so send the user back to the form
   else {
-    $entityform = _freedompay_get_entityform();
+    $entityform = freedompay_entityform();
     watchdog('freedompay', "Invalid transaction total for payment form @entityform_id",
       array(
         '@entityform_id' => $entityform->entityform_id,
@@ -807,38 +847,6 @@ function _freedompay_get_payment_forms() {
 }
 
 /**
- * Loads or retrieves the entityform object
- */
-function _freedompay_get_entityform($entityform_to_set=NULL) {
-  $entityform = &drupal_static('freedompay_entityform');
-  if (!isset($entityform)) {
-    if ($entityform_to_set) {
-      $entityform = $entityform_to_set;
-    }
-    elseif ($entityform_id = _freedompay_cookie_get('entityform_id')) {
-      $entityform = entityform_load($entityform_id);
-    }
-  }
-  return $entityform;
-}
-
-/**
- * Creates or retrieves an entitymetadata wrapper for the form
- */
-function _freedompay_get_entityform_wrapper($entityform=NULL) {
-  $wrapper = &drupal_static(__FUNCTION__);
-  if (!isset($wrapper)) {
-    if ($entityform) {
-      $wrapper = entity_metadata_wrapper('entityform', $entityform);
-    }
-    else if ($entityform = _freedompay_get_entityform()) {
-      $wrapper = entity_metadata_wrapper('entityform', $entityform);
-    }
-  }
-  return $wrapper;
-}
-
-/**
  * Sets the cookies
  */
 function _freedompay_set_entityform_cookies($entityform) {
@@ -911,7 +919,7 @@ function _freedompay_get_order_summary() {
  * Defaults to a path that will likely result in a 404
  */
 function _freedompay_get_checkout_path() {
-  if($entityform = _freedompay_get_entityform()) {
+  if($entityform = freedompay_entityform()) {
     $hpp = FreedompayHpp::getPortalForForm($entityform);
   }
   else {
@@ -933,7 +941,7 @@ function _freedompay_payment_complete($entityform=NULL) {
   }
   elseif ($entityform) {
     // First set the entityform cache
-    _freedompay_get_entityform($entityform);
+    freedompay_entityform($entityform);
     if (!_freedompay_payment_required()) {
       return TRUE;
     }
@@ -952,25 +960,18 @@ function _freedompay_payment_required() {
 
 /**
  * Completes the checkout process, including invoking hook_freedompay_form_complete().
- * @param  boolean $track_purchase
- *                 True if google_ecommerce_tracking is enabled
  */
-function _freedompay_complete_checkout($track_purchase=FALSE) {
-  $entityform = _freedompay_get_entityform();
-  $wrapper = _freedompay_get_entityform_wrapper($entityform);
+function _freedompay_complete_checkout() {
+  $entityform = freedompay_entityform();
+  $wrapper = freedompay_entityform_wrapper($entityform);
   $wrapper->draft = 0;
   $wrapper->save();
   module_invoke_all('freedompay_form_complete', $entityform);
   if(_freedompay_payment_required()) {
     _freedompay_mark_invoice_paid($entityform);
   }
-  if (!$track_purchase) { // Go ahead and redirect
-    freedompay_redirect_to_entityform_submission($entityform);
-  } // Wait for tracking to take place
-  else {
-    _freedompay_cookie_flush();
-    return FREEDOMPAY_TRANSACTION_SUCCESS;
-  }
+  freedompay_redirect_to_entityform_submission($entityform);
+  return FREEDOMPAY_TRANSACTION_SUCCESS;
 }
 
 /**
