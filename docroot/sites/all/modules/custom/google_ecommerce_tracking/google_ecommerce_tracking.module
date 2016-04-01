@@ -12,29 +12,33 @@ function google_ecommerce_tracking_freedompay_form_complete($entityform) {
   if (!ilr_is_production_site()) { // Don't track when testing
     return;
   }
-
   $_SESSION['google_ecommerce_tracking_entityform_id'] = $entityform->entityform_id;
 }
 
 /**
  * Implements hook_entityform_view().
- * Loads the entityform draft if there is one for anonymous users
+ * Adds the tracking datalayer for Google tag manager if payment was required
  */
 function google_ecommerce_tracking_entityform_view($entityform) {
   if (isset($_SESSION['google_ecommerce_tracking_entityform_id'])) {
     // Set the entityform cache
     $entityform = freedompay_entityform($entityform);
-    if ($payload = freedompay_checkout_payload()) {
-      _google_ecommerce_tracking_add_datalayer($entityform, $payload);
-      unset($_SESSION['google_ecommerce_tracking_entityform_id']);
+    if (freedompay_payment_required()) {
+      if ($payload = freedompay_checkout_payload()) {
+        _google_ecommerce_tracking_add_datalayer($entityform, $payload);
+        unset($_SESSION['google_ecommerce_tracking_entityform_id']);
+      }
+      else {
+        watchdog('google_ecommerce_tracking', "Payload failed to load when attempting to track payment form @entityform_id",
+          array(
+            '@entityform_id' => $entityform->entityform_id,
+          ),
+          WATCHDOG_ERROR
+        );
+      }
     }
-    else {
-      watchdog('google_ecommerce_tracking', "Payload failed to load when attempting to track payment form @entityform_id",
-        array(
-          '@entityform_id' => $entityform->entityform_id,
-        ),
-        WATCHDOG_ERROR
-      );
+    else { // Payment wasn't required
+      unset($_SESSION['google_ecommerce_tracking_entityform_id']);
     }
   }
 }

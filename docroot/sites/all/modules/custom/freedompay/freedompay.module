@@ -231,7 +231,7 @@ function freedompay_entityform_presave($entityform) {
  * Checks to be sure that to transaction total hasn't changed
  */
 function freedompay_entityform_update($entityform) {
-  if (freedompay_entityform_is_payment_form($entityform) && _freedompay_payment_required()) {
+  if (freedompay_entityform_is_payment_form($entityform) && freedompay_payment_required()) {
     if ($transaction = _freedompay_initiate_transaction('getTransaction', _freedompay_get_transaction_id())) {
       $payload = freedompay_checkout_payload();
       if (_freedompay_transaction_payload_changed($transaction, $payload)) {
@@ -338,7 +338,7 @@ function freedompay_checkout_page() {
   // Confirm there is an entityform first
   if ($entityform = freedompay_entityform()) {
     // Confirm that payment is required. If not, complete the checkout process
-    if (!_freedompay_payment_required()) {
+    if (!freedompay_payment_required()) {
       _freedompay_complete_checkout();
     }
     // Check for existing checkout_url, which gets stored as a cookie when a transaction is initiated
@@ -643,18 +643,12 @@ function freedompay_redirect_to_entityform_submission($entityform) {
 }
 
 /**
- * Gets the formatted url for an entityform submission
+ * Checks whether the transaction total is set to FREEDOMPAY_PAYMENT_NOT_REQUIRED
+ * Implementing modules can set this in hook_freedompay_transaction_total_alter()
  */
-function freedompay_redirect_url($entityform) {
-  $confirmation_url = _entityform_type_get_confirm_url($entityform->type);
-  $params = array(
-    'query' => array(
-      'entityform_id' => $entityform->entityform_id,
-    ),
-  );
-  // Keep entityform from denying access
-  $_SESSION['entityform_submission'] = $entityform->entityform_id;
-  return url($confirmation_url, $params);
+function freedompay_payment_required() {
+  $transaction_total = freedompay_transaction_total();
+  return $transaction_total != FREEDOMPAY_PAYMENT_NOT_REQUIRED;
 }
 
 /**
@@ -942,20 +936,11 @@ function _freedompay_payment_complete($entityform=NULL) {
   elseif ($entityform) {
     // First set the entityform cache
     freedompay_entityform($entityform);
-    if (!_freedompay_payment_required()) {
+    if (!freedompay_payment_required()) {
       return TRUE;
     }
   }
   return FALSE;
-}
-
-/**
- * Checks whether the transaction total is set to FREEDOMPAY_PAYMENT_NOT_REQUIRED
- * Implementing modules can set this in hook_freedompay_transaction_total_alter()
- */
-function _freedompay_payment_required() {
-  $transaction_total = freedompay_transaction_total();
-  return $transaction_total != FREEDOMPAY_PAYMENT_NOT_REQUIRED;
 }
 
 /**
@@ -967,7 +952,7 @@ function _freedompay_complete_checkout() {
   $wrapper->draft = 0;
   $wrapper->save();
   module_invoke_all('freedompay_form_complete', $entityform);
-  if(_freedompay_payment_required()) {
+  if(freedompay_payment_required()) {
     _freedompay_mark_invoice_paid($entityform);
   }
   freedompay_redirect_to_entityform_submission($entityform);
