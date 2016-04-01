@@ -1,15 +1,13 @@
-.field-name-body {
-  .tower {
-    clear: both;
-    text-align: center;
-    @extend %icon-tower;
-    @include adjust-font-size-to(40px);
-    @include adjust-leading-to(1.5);
-    color: $gray-medium;
-    @include leader(1);
-    @include trailer(0);
-    margin: 0 auto !important;
-  }
+.tower {
+  clear: both;
+  text-align: center;
+  @extend %icon-tower;
+  @include adjust-font-size-to(40px);
+  @include adjust-leading-to(1.5);
+  color: $gray-medium;
+  @include leader(1);
+  @include trailer(0);
+  margin: 0 auto;
 }
 
 .centered-blurb {
@@ -17,27 +15,19 @@
   font-family: $font-headers;
   @include adjust-font-size-to(30px);
   @include adjust-leading-to(1);
-  max-width: $section-max-width !important;
-  margin: 0 auto 1em !important;
+  max-width: $section-max-width;//todo: align to grid
+  margin: 0 auto 1em;
 }
 
 .paragraphs-item-sponsor-message {
-  text-align: center;
-  @include adjust-font-size-to(30px);
-  @include adjust-leading-to(1);
-  // font-family: $font-headers;
-  font-family: $font-headers;
-  max-width: $section-max-width;
-  margin: 0 auto 4em;
+  margin-bottom: 4em;
   h2 {
-    // @include adjust-font-size-to(30px);
-    // @include adjust-leading-to(1);
+    text-align: center;
+    @include adjust-font-size-to(30px);
+    @include adjust-leading-to(1);
     font-weight: 300;
   }
   .tower {
-    // @include adjust-font-size-to(30px);
-    // @include adjust-leading-to(1);
-    // font-family: $font-headers;
     font-weight: 300;
     color: $p-text;
     &:before {
@@ -47,11 +37,4 @@
       display: block;
     }
   }
-
-  // .tower:before {
-  //   @include adjust-font-size-to(30px);
-  //   @include adjust-leading-to(1.5);
-  //   color: $gray-medium;
-  //   display: block;
-  // }
 }
