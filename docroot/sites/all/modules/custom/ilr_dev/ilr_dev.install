@@ -1,5 +1,7 @@
 <?php
 
+require_once DRUPAL_ROOT . '/../config/get_secrets.php';
+
 /**
  * Implements hook_install()
  * Loops through the roles in the system and creates a test user for that role
@@ -19,4 +21,31 @@ function ilr_dev_install() {
     'memcache',
     'google_analytics_universal',
   ));
+
+  // Allow anonymous users to see dpm messages locally
+  if (module_exists('devel')) {
+    user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access devel information'));
+  }
+
+  if (module_exists('freedompay')) {
+    _ilr_dev_set_freedompay_test_credentials();
+  }
+}
+
+/**
+ * Updates the hpp values for testing when local
+ */
+function _ilr_dev_set_freedompay_test_credentials() {
+  global $ILR_SECRETS;
+  $portals = FreedompayHpp::getPortals();
+  if (!empty($portals)) {
+    foreach ($portals as $portal) {
+      $name = strtolower($portal->title);
+      if (array_key_exists($name, $ILR_SECRETS['freedompay'])) {
+        $portal->store_id = $ILR_SECRETS['freedompay'][$name]['testing']['store_id'];
+        $portal->terminal_id = $ILR_SECRETS['freedompay'][$name]['testing']['terminal_id'];
+        $portal->save();
+      }
+    }
+  }
 }

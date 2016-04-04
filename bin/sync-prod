@@ -17,6 +17,8 @@ drush sql-drop -y
 # download the acquia dev db
 drush sql-sync @ilr.live @ilr.ilr.local --sanitize -y
 
+drush cc all
+
 drush en ilr_dev -y
 
 echo "Sync complete."
