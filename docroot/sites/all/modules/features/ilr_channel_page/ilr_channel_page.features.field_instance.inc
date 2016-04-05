@@ -174,6 +174,7 @@ function ilr_channel_page_field_default_field_instances() {
         'just_image' => 'just_image',
         'just_text' => 'just_text',
         'sponsor_message' => 'sponsor_message',
+        'unit_contact_info' => 'unit_contact_info',
       ),
       'bundle_weights' => array(
         'display_a_block' => 6,
@@ -181,6 +182,7 @@ function ilr_channel_page_field_default_field_instances() {
         'just_image' => 2,
         'just_text' => 3,
         'sponsor_message' => 4,
+        'unit_contact_info' => -12,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Paragraph',
