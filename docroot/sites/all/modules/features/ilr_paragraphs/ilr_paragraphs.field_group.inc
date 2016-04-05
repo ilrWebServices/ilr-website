@@ -20,7 +20,7 @@ function ilr_paragraphs_field_group_info() {
   $field_group->mode = 'default';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => '',
+    'label' => 'Promo Story',
     'weight' => '2',
     'children' => array(
       0 => 'field_header',
@@ -29,12 +29,12 @@ function ilr_paragraphs_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'label' => '',
+      'label' => 'Promo Story',
       'instance_settings' => array(
         'id' => '',
         'classes' => 'group-featured-promo-story field-group-fieldset',
         'description' => '',
-        'show_label' => '1',
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
@@ -77,6 +77,7 @@ function ilr_paragraphs_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add either an image or a video, not both');
+  t('Promo Story');
 
   return $field_groups;
 }
