@@ -3,7 +3,7 @@
 Thank you for your payment for the Cornell International Summer Debate Camp.<br><br>
 
 One final step is to list your travel information so we can help arrange transportation. Remember, we will only provide transportation to and from Ithaca Tompkins Regional Airport, Corning/Elmira Regional Airport and Syracuse Hancock International Airport. Those flying in or out of other airports must arrange their own transit to and from Ithaca. Please complete this Travel Information Form to let us know your travel plans: <br>
-http://goo.gl/forms/f1pLoAzBcd<br><br>
+http://goo.gl/forms/yAn2V6WbQE<br><br>
 
 Please review the information below, and contact Lindsay Bing, lb542@cornell.edu, if you have any questions.<br><br>
 
@@ -17,7 +17,7 @@ Registration Information:<br><br>
 <? print $form_data;?><br><br>
 
 Thank you, and don't forget to fill out the Travel Information Form!<br>
-http://goo.gl/forms/f1pLoAzBcd<br><br>
+http://goo.gl/forms/yAn2V6WbQE<br><br>
 
 Lindsay Bing<br>
 Assistant Director of Forensics Speech &amp; Debate Programs<br>
