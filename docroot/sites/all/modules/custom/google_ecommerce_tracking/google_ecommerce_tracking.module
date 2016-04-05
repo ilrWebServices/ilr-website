@@ -55,10 +55,8 @@ function _google_ecommerce_tracking_add_datalayer($entityform, $payload) {
      'transactionProducts' => _google_ecommerce_tracking_get_products($payload, $invoice->prefix),
   ];
 
-  $script = '<script>';
-  $script .= 'dataLayer=';
+  $script = 'dataLayer=';
   $script .= json_encode($data_layer);
-  $script .= '</script>';
 
   drupal_add_js($script, array('scope' => 'header', 'type' => 'inline'));
 }
