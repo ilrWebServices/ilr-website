@@ -43,6 +43,11 @@ function ilr_paragraphs_paragraphs_info() {
       'bundle' => 'sponsor_message',
       'locked' => '1',
     ),
+    'unit_contact_info' => array(
+      'name' => 'contact info for a unit',
+      'bundle' => 'unit_contact_info',
+      'locked' => '1',
+    ),
   );
   return $items;
 }
