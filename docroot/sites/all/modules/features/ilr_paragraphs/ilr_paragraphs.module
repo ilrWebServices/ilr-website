@@ -13,6 +13,7 @@ include_once 'ilr_paragraphs.features.inc';
 function ilr_paragraphs_preprocess_field(&$variables) {
   _ilr_paragraphs_add_class_to_item_field($variables, 'sponsor_message', 'field_comments', 'centered-blurb');
   _ilr_paragraphs_add_class_to_item_field($variables, 'sponsor_message', 'field_comments', 'tower', 'field_title_icon_none', 'Icon');
+  _ilr_paragraphs_link_person_to_profile($variables);
 }
 
 /**
@@ -31,6 +32,23 @@ function _ilr_paragraphs_add_class_to_item_field(&$variables, $paragraphs_bundle
       $variables['attr'] = drupal_attributes(array(
         'class' => $variables['classes_array'],
       ));
+    }
+  }
+}
+
+/**
+ * Links people in field_people_list's to their profile page.
+ */
+function _ilr_paragraphs_link_person_to_profile(&$variables) {
+  if (
+    $variables['element']['#bundle'] == 'field_people_list' &&
+    $variables['element']['#field_name'] == 'field_full_name'
+  ) {
+    $net_id = $variables['element']['#object']->field_netid['und'][0]['value'];
+    if ($net_id != '') {
+      $full_name = $variables['element']['#object']->field_full_name['und'][0]['value'];
+      $markup = '<a href="/directory'.$net_id.'">'.$full_name.'</a>';
+      $variables['items'][0]['#markup'] = $markup;
     }
   }
 }
