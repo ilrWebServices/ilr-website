@@ -363,4 +363,64 @@
       });
     }
   };
+
+  Drupal.behaviors.dynamic_circles = {
+    attach: function (context, settings) {
+      $(window).load(function() {
+
+        var fieldNames = ['.field-name-content-0', '.field-name-content-1', '.field-name-content-2', '.field-name-content-3', '.field-name-content-4'];
+        var fieldCount = fieldNames.length;
+
+        $('.node-slide').mouseenter(function() {
+          console.log($(this));
+          $(this).find('.field-name-image').animate({backgroundColor: '#2099b7'}, 500);
+          $(this).find('#animated-content').animate({backgroundColor: '#24afd1'}, 500);
+
+          $(this).find(fieldNames[0]).animate({opacity: 0}, 500, function() {
+            $(this).find('.stage-1').text($(this).find(fieldNames[0]).text())
+          });
+
+          $(this).find('.stage-1').animate({opacity: 0}, 800, function() {
+            $(this).closest('#animated-content').find('.stage-1').text($(this).closest('article').find(fieldNames[1]).text())
+          });
+
+          $(this).find('.stage-1')
+          .css('visibility', 'visible')
+          .animate({opacity: 1}, 800, function() {})
+
+          .animate({opacity: 0}, 800, function() {
+            $(this).closest('#animated-content').find('.stage-1').text($(this).closest('article').find(fieldNames[2]).text())
+          })
+
+          .css('visibility', 'visible')
+          .animate({opacity: 1}, 800, function() {})
+
+          .animate({opacity: 0}, 800, function() {
+            $(this).closest('#animated-content').find('.stage-1').text($(this).closest('article').find(fieldNames[3]).text())
+          })
+
+          .css('visibility', 'visible')
+          .animate({opacity: 1}, 800, function() {})
+
+          .animate({opacity: 0}, 800, function() {
+            $(this).closest('#animated-content').find('.stage-1').text($(this).closest('article').find(fieldNames[4]).text())
+          })
+
+          .css('visibility', 'visible')
+          .animate({opacity: 1}, 800, function() {})
+
+          .animate({opacity: 0}, 800, function() {})
+          .css('visibility', 'visible');
+        });
+
+        $('.node-slide').mouseleave(function() {
+          $(this).find('.stage-1').stop(true,true).animate();
+          $(this).find('.stage-1').text(' ');
+          $(this).find('.field-name-image').animate({backgroundColor: '#eef6f4'}, 500);
+          $(this).find('#animated-content').animate({backgroundColor: 'white'}, 500);
+          $(this).find('.field-name-content-0').animate({opacity: 1}, 500);
+        });
+      });
+    }
+  };
 }(jQuery));

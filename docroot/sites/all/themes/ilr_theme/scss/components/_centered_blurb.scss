@@ -20,7 +20,8 @@
 }
 
 .paragraphs-item-sponsor-message {
-  margin-bottom: 4em;
+  // margin-bottom: 4em;//remove if full width
+  margin-bottom: 0;//full width style
   h2 {
     text-align: center;
     @include adjust-font-size-to(30px);
