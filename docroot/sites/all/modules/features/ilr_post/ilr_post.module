@@ -6,7 +6,6 @@
 
 include_once 'ilr_post.features.inc';
 
-
 /**
  * Removes the title if it is a wrapped node
  */
@@ -32,7 +31,144 @@ function ilr_post_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['rss/posts/rss.xml'] = array(
+    'title' => 'RSS Feed',
+    'page callback' => '_ilr_post_rss_feed',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   return $items;
+}
+
+function _ilr_post_rss_feed() {
+  $params = drupal_get_query_parameters();
+  $category = (isset($params['category']))
+    ? $params['category']
+    : NULL;
+  if ($category) {
+    $nids = _ilr_post_get_nids_by_category($category);
+    $link = url(current_path(), array('absolute' => true));
+    $channel = array(
+      'title' => t(''),
+      'description' => 'Mobilizing Against Inequality creates a new online conversation about how unions and organizations have engaged in mobilizing and empowering the immigrant workforce.', // @TODO: Abstract this?
+      'link' => $link,
+    );
+    _ilr_post_feed($nids, $channel);
+  }
+  else {
+    return ILR_POST_EMPTY_FEED_MESSAGE;
+  }
+}
+
+/**
+ * Retrieves the specified number of nids
+ * for the RSS feed
+ */
+function _ilr_post_get_nids_by_category($category, $count = 15) {
+  if ($tag = taxonomy_get_term_by_name($category, 'tags')) {
+    $key = key($tag);
+    $term_object = $tag[$key];
+    $query = new EntityFieldQuery();
+      $query
+        ->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'post')
+        ->propertyCondition('status', 1)
+        ->fieldCondition('field_tags', 'tid', $term_object->tid)
+        ->fieldOrderBy('field_published_date', 'value', 'DESC')
+        ->range(0, $count);
+
+      $result = $query->execute();
+      return array_keys($result['node']);
+  }
+  return array();
+}
+
+/**
+ * Custom implementation of node_feed that is formatted for mailchimp
+ * @see node_feed() in node.module
+ */
+function _ilr_post_feed($nids = FALSE, $channel = array()) {
+  global $base_url, $language_content;
+
+  $namespaces = array(
+    'xmlns:dc'      => 'http://purl.org/dc/elements/1.1/',
+    'xmlns:content' => 'http://purl.org/rss/1.0/modules/content/',
+    'xmlns:media'   => 'http://search.yahoo.com/mrss/',
+  );
+
+  // Load all nodes to be rendered.
+  $nodes = node_load_multiple($nids);
+  $items = '';
+  foreach ($nodes as $node) {
+    $wrapper = ilr_get_node_wrapper($node);
+    $summary = '';
+
+    $node->link = url("node/$node->nid", array('absolute' => TRUE));
+    $node->rss_namespaces = array();
+    $account = user_load($node->uid);
+    $node->rss_elements = array(
+      array('key' => 'pubDate', 'value' => gmdate('r', $node->created)),
+      array('key' => 'dc:creator', 'value' => format_username($account)),
+      array('key' => 'guid', 'value' => $node->nid . ' at ' . $base_url, 'attributes' => array('isPermaLink' => 'false'))
+    );
+
+    $summary .= $wrapper->body->value()['summary'];
+    $content = $wrapper->body->value()['value'];
+    $content = $wrapper->body->value()['value'];
+    $image_path = (!empty($wrapper->field_image))
+      ? image_style_url('focussed_main_image',$wrapper->field_image->file->value()->uri)
+      : '';
+
+    $items .= _ilr_post_format_rss_item($node->title, $node->link, $summary, $content, $image_path, $node->rss_elements);
+  }
+
+  $channel_defaults = array(
+    'version'     => '2.0',
+    'title'       => variable_get('site_name', 'Drupal'),
+    'link'        => $base_url,
+    'description' => variable_get('feed_description', ''),
+    'language'    => $language_content->language
+  );
+  $channel_extras = array_diff_key($channel, $channel_defaults);
+  $channel = array_merge($channel_defaults, $channel);
+
+  $output = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+  $output .= "<rss version=\"" . $channel["version"] . "\" xml:base=\"" . $base_url . "\" " . drupal_attributes($namespaces) . ">\n";
+  $output .= format_rss_channel($channel['title'], $channel['link'], $channel['description'], $items, $channel['language'], $channel_extras);
+  $output .= "</rss>\n";
+
+  drupal_add_http_header('Content-Type', 'application/rss+xml; charset=utf-8');
+  print $output;
+}
+
+function _ilr_post_format_rss_item($title, $link, $summary, $content, $image_path, $args = array()) {
+  $output = "<item>\n";
+  $output .= ' <title>' . check_plain($title) . "</title>\n";
+  $output .= ' <link>' . check_url($link) . "</link>\n";
+  $output .= ' <description>' . check_plain(strip_tags($summary)) . "</description>\n";
+  $output .= ' <content:encoded><![CDATA['.$content."]]></content:encoded>\n";
+  if (!empty($image_path)) {
+    $output .= ' <media:content url="'.$image_path.'" medium="image" type="image/jpg" />'."\n";
+  }
+  $output .= format_xml_elements($args);
+  $output .= "</item>\n";
+
+  return $output;
+}
+
+/**
+ * Provides a simple RSS feed
+ * We can make this more dynamic later, if other blogs are added
+ */
+function _mai_rss_feed() {
+  $nids = _mai_get_nids();
+  $link = url(current_path(), array('absolute' => true));
+  $channel = array(
+    'title' => t('Mobilizing Against Inequality'),
+    'description' => 'Mobilizing Against Inequality creates a new online conversation about how unions and organizations have engaged in mobilizing and empowering the immigrant workforce.',
+    'link' => $link,
+  );
+  node_feed($nids, $channel);
 }
 
 /**
@@ -54,21 +190,6 @@ function _mai_get_nids($count = 15) {
 
     $result = $query->execute();
     return array_keys($result['node']);
-}
-
-/**
- * Provides a simple RSS feed
- * We can make this more dynamic later, if other blogs are added
- */
-function _mai_rss_feed() {
-  $nids = _mai_get_nids();
-  $link = url(current_path(), array('absolute' => true));
-  $channel = array(
-    'title' => t('Mobilizing Against Inequality'),
-    'description' => 'Mobilizing Against Inequality creates a new online conversation about how unions and organizations have engaged in mobilizing and empowering the immigrant workforce.',
-    'link' => $link,
-  );
-  node_feed($nids, $channel);
 }
 
 function _mai_rss_icon_markup() {
