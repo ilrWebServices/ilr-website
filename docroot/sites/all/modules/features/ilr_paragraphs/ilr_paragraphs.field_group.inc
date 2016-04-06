@@ -20,7 +20,7 @@ function ilr_paragraphs_field_group_info() {
   $field_group->mode = 'default';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => '',
+    'label' => 'Promo Story',
     'weight' => '2',
     'children' => array(
       0 => 'field_header',
@@ -29,12 +29,12 @@ function ilr_paragraphs_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'label' => '',
+      'label' => 'Promo Story',
       'instance_settings' => array(
         'id' => '',
         'classes' => 'group-featured-promo-story field-group-fieldset',
         'description' => '',
-        'show_label' => '1',
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
@@ -74,9 +74,79 @@ function ilr_paragraphs_field_group_info() {
   );
   $field_groups['group_image_or_video|paragraphs_item|featured_promo|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_unit_information|paragraphs_item|unit_contact_info|default';
+  $field_group->group_name = 'group_unit_information';
+  $field_group->entity_type = 'paragraphs_item';
+  $field_group->bundle = 'unit_contact_info';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Unit information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_social_channels',
+      1 => 'field_multiple_links',
+      2 => 'group_unit_name_and_address',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Unit information',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group_unit_information',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_unit_information|paragraphs_item|unit_contact_info|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_unit_name_and_address|paragraphs_item|unit_contact_info|default';
+  $field_group->group_name = 'group_unit_name_and_address';
+  $field_group->entity_type = 'paragraphs_item';
+  $field_group->bundle = 'unit_contact_info';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_unit_information';
+  $field_group->data = array(
+    'label' => 'Unit name and address',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_organization',
+      1 => 'field_address_line_1',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Unit name and address',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group_unit_name_and_address',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_unit_name_and_address|paragraphs_item|unit_contact_info|default'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Add either an image or a video, not both');
+  t('Promo Story');
+  t('Unit information');
+  t('Unit name and address');
 
   return $field_groups;
 }
