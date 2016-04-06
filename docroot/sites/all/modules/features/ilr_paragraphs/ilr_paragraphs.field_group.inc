@@ -122,7 +122,7 @@ function ilr_paragraphs_field_group_info() {
     'weight' => '6',
     'children' => array(
       0 => 'field_organization',
-      1 => 'field_address_line_1',
+      1 => 'field_text_paragraph',
     ),
     'format_type' => 'div',
     'format_settings' => array(

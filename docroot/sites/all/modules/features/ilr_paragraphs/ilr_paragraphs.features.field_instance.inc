@@ -898,54 +898,6 @@ function ilr_paragraphs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-unit_contact_info-field_address_line_1'
-  $field_instances['paragraphs_item-unit_contact_info-field_address_line_1'] = array(
-    'bundle' => 'unit_contact_info',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-      'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'address',
-    'field_name' => 'field_address_line_1',
-    'label' => 'Address',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 255,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 35,
-    ),
-  );
-
   // Exported field_instance: 'paragraphs_item-unit_contact_info-field_multiple_links'
   $field_instances['paragraphs_item-unit_contact_info-field_multiple_links'] = array(
     'bundle' => 'unit_contact_info',
@@ -1004,7 +956,7 @@ function ilr_paragraphs_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 38,
+      'weight' => 5,
     ),
   );
 
@@ -1022,7 +974,7 @@ function ilr_paragraphs_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 10,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
@@ -1052,7 +1004,7 @@ function ilr_paragraphs_field_default_field_instances() {
         'size' => 255,
       ),
       'type' => 'text_textfield',
-      'weight' => 33,
+      'weight' => 2,
     ),
   );
 
@@ -1093,7 +1045,7 @@ function ilr_paragraphs_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 31,
+      'weight' => 1,
     ),
   );
 
@@ -1134,7 +1086,55 @@ function ilr_paragraphs_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 36,
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-unit_contact_info-field_text_paragraph'
+  $field_instances['paragraphs_item-unit_contact_info-field_text_paragraph'] = array(
+    'bundle' => 'unit_contact_info',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'address',
+    'field_name' => 'field_text_paragraph',
+    'label' => 'Address',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 3,
     ),
   );
 
