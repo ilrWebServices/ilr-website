@@ -47,7 +47,7 @@ function _ilr_paragraphs_link_person_to_profile(&$variables) {
     $net_id = $variables['element']['#object']->field_netid['und'][0]['value'];
     if ($net_id != '') {
       $full_name = $variables['element']['#object']->field_full_name['und'][0]['value'];
-      $markup = '<a href="/directory'.$net_id.'">'.$full_name.'</a>';
+      $markup = '<a href="/directory/'.$net_id.'">'.$full_name.'</a>';
       $variables['items'][0]['#markup'] = $markup;
     }
   }
