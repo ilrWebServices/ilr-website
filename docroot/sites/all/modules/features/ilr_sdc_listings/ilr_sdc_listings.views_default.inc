@@ -922,7 +922,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<p>No courses were found that match everything that you filtered on. Try selecting fewer filter options.</p>';
+  $handler->display->display_options['empty']['area']['content'] = '<p>No courses were found that match everything that you filtered on, or there was an error with your selection. Please try again.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Relationship: Content: Sponsor (field_course_sponsor_reference) */
   $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['id'] = 'field_course_sponsor_reference_tid';

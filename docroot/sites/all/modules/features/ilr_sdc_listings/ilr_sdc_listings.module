@@ -996,7 +996,10 @@ function _ilr_sdc_listings_is_series($course_or_class) {
     $course = $class_wrapper->field_course->value();
   }
   $course_wrapper = ilr_get_node_wrapper($course);
-  return $course_wrapper->field_course_series->value();
+  if (!empty($course_wrapper->field_course_series)) {
+    return $course_wrapper->field_course_series->value();
+  }
+  return FALSE;
 }
 
 /**
@@ -1616,6 +1619,8 @@ function _ilr_sdc_listings_date_query_present() {
  * Gets the query string from the url
  * - Adds 1 day to end date to return expected results
  * - caches the result since each class query needs access to the range
+ * - ** NOTE ** Leaving the empty value handling logic below, even though this
+ *   should no longer happen @see ilr_sdc_listings_filter_validate()
  * @return array
  *  key - start_date or end_date
  *  values - the formatted date objects
@@ -1807,14 +1812,6 @@ function ilr_sdc_listings_form_ilr_editable_settings_form_alter(&$form, &$form_s
 }
 
 function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
-  if (isset($form['field_online_class_value'])) {
-    $form['field_online_class_value']['#options'] =
-      array(
-        'All' => 'Both',
-        '0' => 'In-person',
-        '1' => 'Online',
-      );
-  }
   $view = $form_state['view'];
   if ($view->name == 'sdc_course_listing') {
     if (_ilr_sdc_listings_is_filtered_search($view)) {
@@ -1840,6 +1837,19 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
       '#validated' => TRUE,
       '#default_value' => 0,
     );
+
+    array_unshift($form['#validate'], 'ilr_sdc_listings_filter_validate');
+  }
+}
+
+/**
+ * Confirms that the user has filled out both a start and end date for date filtering
+ */
+function ilr_sdc_listings_filter_validate($form, &$form_state) {
+  if (!empty($form_state['values']['field_class_dates_value']['value']) || !empty($form_state['values']['field_class_dates_value2']['value'])) {
+    if (empty($form_state['values']['field_class_dates_value']['value']) || empty($form_state['values']['field_class_dates_value2']['value'])) {
+      form_set_error('email', t('Please choose both a start and end date.'));
+    }
   }
 }
 
