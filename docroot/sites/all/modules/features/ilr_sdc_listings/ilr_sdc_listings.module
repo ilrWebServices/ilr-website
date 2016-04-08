@@ -1618,17 +1618,23 @@ function _ilr_sdc_listings_date_query_present() {
  * - caches the result since each class query needs access to the range
  * @return array
  *  key - start_date or end_date
- *  values - the formatetted date objects
+ *  values - the formatted date objects
  */
 function _ilr_sdc_listings_get_date_range() {
   $dates = &drupal_static(__FUNCTION__);
   if (!isset($dates)) {
-    $start_date = (strlen($_GET['field_class_dates_value']['value']['date']))
-      ? date($_GET['field_class_dates_value']['value']['date'])
-      : date('Y-m-d');
     $supplied_end_date = (strlen($_GET['field_class_dates_value2']['value']['date']))
       ? date($_GET['field_class_dates_value2']['value']['date'])
       : FALSE;
+    if (!empty($_GET['field_class_dates_value']['value']['date'])) {
+      $start_date = date($_GET['field_class_dates_value']['value']['date']);
+    } // Check if the supplied end date is in the past
+    elseif ($supplied_end_date && strtotime($supplied_end_date) < strtotime(date('Y-m-d'))) {
+      $start_date = date('Y-m-d',strtotime('-3 months', strtotime($supplied_end_date)));
+    } // Use today's date
+    else {
+      $start_date = date('Y-m-d');
+    }
     $end_date = ($supplied_end_date) // Fix the bug that kept <= date from returning the class
       ? date('Y-m-d',strtotime('+1 day', strtotime($supplied_end_date)))
       : date('Y-m-d',strtotime('+1 year', strtotime($start_date))); // One year from start date if empty
