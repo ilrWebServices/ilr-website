@@ -993,12 +993,17 @@ function _ilr_sdc_listings_is_series($course_or_class) {
   }
   else {
     $class_wrapper = ilr_get_node_wrapper($course_or_class);
-    $course = $class_wrapper->field_course->value();
+    $course = ($class_wrapper->field_course)
+      ? $class_wrapper->field_course->value()
+      : NULL;
   }
-  $course_wrapper = ilr_get_node_wrapper($course);
-  if (!empty($course_wrapper->field_course_series)) {
-    return $course_wrapper->field_course_series->value();
+  if ($course) {
+    $course_wrapper = ilr_get_node_wrapper($course);
+    if (!empty($course_wrapper->field_course_series)) {
+      return $course_wrapper->field_course_series->value();
+    }
   }
+
   return FALSE;
 }
 
