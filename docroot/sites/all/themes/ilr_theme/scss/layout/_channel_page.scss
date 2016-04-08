@@ -22,11 +22,9 @@ body.node-type-channel-page {
     @include grid-span(12);
     @include add-gutter(1/3);
     #content {
-      // @include grid-span (10,2);
       @include grid-span (12);
-      // padding: 0 0 1em 0;
-      padding: 0;//full width style
-      margin-bottom: 0;//full width style
+      padding: 0;
+      margin-bottom: 0;
       .section {
         min-width: 100%;
       }
@@ -37,27 +35,36 @@ body.node-type-channel-page {
         text-align: center; //for mobile
       }
 
+      address.field-name-field-address-line-1 {//todo: delete after removed from feature
+        display: none;
+      }
+
       .paragraphs-items-field-para-main-page-content {
         .field-name-field-para-main-page-content:nth-child(even) {
           background: white;
           border-top: 1px solid $gray-light;
           border-bottom: 1px solid $gray-light;
         }
+        .field-name-field-para-main-page-content:nth-child(1) {
+          border-top: 1px solid $gray-light;
+        }
         .entity-paragraphs-item {
-          // margin-bottom: 3em; //remove if full width
-          padding-top: 3em;//full width style
-          padding-bottom: 3em;//full width style
+          padding-top: 2em;
+          padding-bottom: 2em;
           @include clearfix;
           .content {
-            @include grid-span (10,2);//putting here allows bkgd color to be full width
+            @include grid-span (10,2);
+          }
+          #block-bean-alumni-circles {
+            .content {
+              @include grid-span (12);
+            }
           }
         }
         .entity-paragraphs-item.paragraphs-item-just-image {
-          // margin-bottom: 3em; //remove if full width
-          padding-top: 0;//full width style
-          padding-bottom: 0;//full width style
+          padding-top: 0;
+          padding-bottom: 0;
           line-height: 0;
-          @include clearfix;
           .content {
             @include grid-span (12);//putting here allows bkgd color to be full width
             .field-name-field-image {
@@ -66,31 +73,32 @@ body.node-type-channel-page {
           }
         }
         .entity-paragraphs-item.paragraphs-item-featured-promo {
-          background: $gray-dark;
-          padding-top: 0;//full width style
-          padding-bottom: 0;//full width style
-          @include clearfix;
+          background: $nav-dark;
+          padding-top: 0;
+          padding-bottom: 0;
           h2 {
             @include adjust-font-size-to(30px);
             @include adjust-leading-to(.8);
             font-weight: 300;
-            font-family: $font;
+            // font-family: $font;
             color: white;
           }
           p {
             color: $gray-light;
           }
           .content {
-            @include grid-span (12);//putting here allows bkgd color to be full width
+            @include grid-span (12);
             .field-name-field-image {
               margin: 0;
               line-height: 0;
             }
             .group-featured-promo-story {
               @include grid-span (10,2);
+              padding-top: 1em;
               padding-bottom: 1em;
+              text-align: center;
               p {
-                margin-bottom: .5em;
+                margin-bottom: 1em;
               }
               ul {
                 padding-left: 0;
@@ -98,8 +106,8 @@ body.node-type-channel-page {
                   padding-left: 0;
                   background: none;
                   a {
-                    color: $gray-light;
-                    border-bottom: 1px solid $gray-medium;
+                    color: $promo-color;
+                    border-bottom: none;
                   }
                 }
               }
@@ -107,9 +115,39 @@ body.node-type-channel-page {
           }
         }
       }
+      .entity-paragraphs-item.paragraphs-item-unit-contact-info {
+        padding-bottom: 2em;
+        h2, h3 {
+          margin-bottom: .5em;
+        }
+        h4 {
+          font-family: $font;
+          font-size: ms(0);
+          margin-bottom: 1em;
+        }
+        ul {
+          &:not(.social) {
+            padding-left: 0;
+            li {
+              padding-left: 0;
+              background: none;
+            }
+          }
+        }
+        ul.social {
+          margin-bottom: 1em;
+        }
+        address {
+          font-style: normal;
+          margin-bottom: 1em;
+        }
+      }
 
-      .paragraphs-item-display-a-block {
-        // background: green;
+      .entity-paragraphs-item.paragraphs-item-display-a-block {
+        .event-block {
+          padding-top: 1em;
+          padding-bottom: 1em;
+        }
         article {
           @extend %one-column;
           margin-bottom: 1em !important;
@@ -123,9 +161,22 @@ body.node-type-channel-page {
 
   #main[data-eq-state="550"] {
     #content {
-      .paragraphs-item-display-a-block {
-        article {
-          @extend %two-column-masonry;
+      .entity-paragraphs-item.paragraphs-item-display-a-block {
+        article:not(.node-slide) {
+          @extend %two-column;
+        }
+        article.node-slide {
+          @extend %one-column;
+        }
+      }
+      .entity-paragraphs-item.paragraphs-item-unit-contact-info {
+        .content {
+          .field-name-field-people-list {
+            @include grid-span (6,1);
+          }
+          .group_unit_information {
+            @include grid-span (6,7);
+          }
         }
       }
     }
@@ -133,7 +184,17 @@ body.node-type-channel-page {
 
   #main[data-eq-state="768"] {
     #content {
-      // @include grid-span (10,2);
+      .field-name-field-image {
+        text-align: left;
+      }
+      .entity-paragraphs-item.paragraphs-item-display-a-block {
+        article:not(.node-slide) {
+          @extend %two-column;
+        }
+        article.node-slide {
+          @extend %three-column-masonry;
+        }
+      }
       .entity-paragraphs-item.paragraphs-item-featured-promo {
         .content {
           .field-name-field-image {
@@ -145,12 +206,14 @@ body.node-type-channel-page {
           }
         }
       }
-      .field-name-field-image {
-        text-align: left;
-      }
-      .paragraphs-item-display-a-block {
-        article {
-          @extend %two-column;
+      .entity-paragraphs-item.paragraphs-item-unit-contact-info {
+        .content {
+          .field-name-field-people-list {
+            @include grid-span (5,1);
+          }
+          .group_unit_information {
+            @include grid-span (7,6);
+          }
         }
       }
     }
@@ -158,7 +221,17 @@ body.node-type-channel-page {
 
   #main[data-eq-state="widescreen"] {
     #content {
-      // @include grid-span (10,2);
+      .field-name-field-image {
+        text-align: left;
+      }
+      .entity-paragraphs-item.paragraphs-item-display-a-block {
+        .event-block {
+          padding-top: 2em;
+        }
+        article {
+          @extend %three-column-masonry;
+        }
+      }
       .entity-paragraphs-item.paragraphs-item-featured-promo {
         .content {
           .field-name-field-image {
@@ -166,20 +239,34 @@ body.node-type-channel-page {
           }
           .group-featured-promo-story {
             @include grid-span (7,6);
-            padding-top: 1em;
+            padding-top: 4em;
             padding-bottom: 0;
+            ul {
+              li {
+                display: inline;
+                &:nth-child(even) {
+                  padding-left: 4em;
+                }
+              }
+            }
           }
         }
       }
-      .field-name-field-image {
-        text-align: left;
-      }
-      .paragraphs-item-display-a-block {
-        padding-top: 4em;
-        article {
-          @extend %three-column-masonry;
+      .entity-paragraphs-item.paragraphs-item-unit-contact-info {
+        .content {
+          .field-name-field-people-list {
+            @include grid-span (5,1);
+          }
+          .group_unit_information {
+            @include grid-span (7,6);
+          }
         }
       }
     }
   }
+  // span.circle-blurb {
+  //   display: inline-block;
+  //   vertical-align: middle;
+  //   line-height: 1.2;
+  // }
 }
