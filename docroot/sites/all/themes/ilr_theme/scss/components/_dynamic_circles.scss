@@ -4,11 +4,8 @@ article.node-slide {
   border: 1px solid $bg-body;
   min-height: 550px;
   padding: 2em 1.5em 1em;
-  // float: left;
   text-align: center;
   &:hover {
-    // background: #f1f1f1;
-    // background: white;
     border: 1px solid $gray-light;
   }
   h2 {
@@ -19,20 +16,19 @@ article.node-slide {
     background: $darker-red;
     border: 1px solid $darker-red;
     border-radius: 50%;
-    width: 170px; //150px
-    height: 170px; //150px
+    width: 170px;
+    height: 170px;
     margin: 0 auto;
     #animated-content {
       background: $cornell-red;
       border: 1px solid #c01d1d;
       border-radius: 50%;
-      width: 140px; //120px
-      height: 140px; //120px
+      width: 140px;
+      height: 140px;
       margin: 15px auto 0;
       line-height: 140px;
       position: relative;
       font-size: 22px;
-      // text-transform: uppercase;
       font-weight: 400;
       color: white;
       .stage-1, .field-name-content-1, .field-name-content-2, .field-name-content-3, .field-name-content-4, .field-name-content-5 {

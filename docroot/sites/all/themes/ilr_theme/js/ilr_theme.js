@@ -384,7 +384,6 @@
           if (is_numeric(first_word)) {
             first_word = '<span class="number">' + first_word + '</span>';
           }
-          // first_word += '<br>';
           first_word = '<span class="first-word">' + first_word + '</span>' + '<br>';
 
           // Isolate the last word, if there is one, and mark it.
@@ -410,8 +409,6 @@
         var fieldCount = fieldNames.length;
 
         $('.node-slide').mouseenter(function() {
-          // $(this).find('.field-name-image').animate({backgroundColor: '#2099b7'}, 500);
-          // $(this).find('#animated-content').animate({backgroundColor: '#24afd1'}, 500);
           $(this).find('.field-name-image').animate({backgroundColor: '#b31b1b'}, 500);
           $(this).find('#animated-content').animate({backgroundColor: '#92210f'}, 500);
 
@@ -463,8 +460,6 @@
         $('.node-slide').mouseleave(function() {
           $(this).find('.stage-1').stop(true,true).animate();
           $(this).find('.stage-1').text(' ');
-          // $(this).find('.field-name-image').animate({backgroundColor: '#eef6f4'}, 500);
-          // $(this).find('#animated-content').animate({backgroundColor: 'white'}, 500);
           $(this).find('.field-name-image').animate({backgroundColor: '#92210f'}, 500);
           $(this).find('#animated-content').animate({backgroundColor: '#b31b1b'}, 500);
           $(this).find('.field-name-content-0').animate({opacity: 1}, 500);
