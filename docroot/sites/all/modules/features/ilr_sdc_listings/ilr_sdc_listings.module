@@ -1418,20 +1418,22 @@ function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id, $coun
     ? '<h3>Instructors for '. _ilr_sdc_listings_get_class_datespan($class_node).' <br><span class="notice multiple-dates">Select another date to see its instructors.</span></h3>'
     : '<h3>Instructors</h3>';
   foreach ($faculty as $key => $instructor) {
+    $css_classes = array();
+    $instructor_wrapper = ilr_get_node_wrapper($instructor);
     // Update the title and image if there is a referenced profile
     if ($nid = _ilr_sdc_listings_get_referenced_profile_nid($instructor)) {
       $profile_wrapper = ilr_get_node_wrapper($nid);
-      $profile_title = $profile_wrapper->field_working_title->value();
       if ($profile_image = $profile_wrapper->field_profile_image->value()) {
-        $instructor_wrapper = ilr_get_node_wrapper($instructor);
         $instructor_wrapper->field_thumbnail->set($profile_image);
       }
-      unset($instructor->field_job_title);
-      $instructor->field_job_title[LANGUAGE_NONE][] = array(
-        'value' => $profile_title,
-        'format' => NULL,
-        'safe_value' => check_plain($profile_title),
-      );
+      $profile_title = $profile_wrapper->field_working_title->value();
+      $instructor_wrapper->field_job_title->set($profile_title);
+    }
+    // Add the silhouette if there is no thumbnail provided
+    if (!$instructor_wrapper->field_thumbnail->value() && $fid = variable_get('ilr_missing_profile_image_fid')) {
+      if ($silhouette = file_load($fid)) {
+        $instructor_wrapper->field_thumbnail->set((array) $silhouette);
+      }
     }
     $render_arr = node_view($instructor,'teaser');
     // Remove the read more link

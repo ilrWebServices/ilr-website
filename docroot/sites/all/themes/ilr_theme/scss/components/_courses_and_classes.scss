@@ -80,10 +80,8 @@
   }
 
   .instructors {
-    h2 {
-      @include adjust-font-size-to($h3-size);
-    }
     article {
+      //@include padding-trailer(1);
       @include add-grid(3);
       @include context('#main','#main[data-eq-state="768"]') {
         @include add-grid(4);
@@ -91,25 +89,31 @@
       .field {
         @extend .clearfix;
       }
+      h2 {
+        @include adjust-font-size-to($h3-size);
+      }
+      .field-name-field-job-title {
+        font-family: $font-headers;
+        @include leader(1);
+        @include adjust-font-size-to($h5-size, .75);
+        @include trailer(.5);
+      }
       .field-name-body {
-        clear: left;
-        @include grid-span(2,2);
+        @include grid-span(2,2,$output-style: 'float');
+        @include float-span(2,'last');
         @include context('#main','#main[data-eq-state="768"]') {
-          @include grid-span(3,2);
+          @include grid-span(3,2,$output-style: 'float');
+          @include float-span(3,'last');
         }
       }
       border: none;
       @include trailer(.5);
-      .field-name-field-job-title {
-        font-family: $font-headers;
-        @include adjust-font-size-to($h5-size, .75);
-        @include trailer(.5);
-      }
       .field-type-image {
         @include circularImage;
         max-width: 150px;
-        @include grid-span(1);
-        clear: left;
+        @include grid-span(1,$output-style: 'float');
+        @include float-span(1,'first');
+        @include leader(.25);
       }
       a.readmore-js-toggle {
         @extend %readmore-js-link; // see _helpers.scss

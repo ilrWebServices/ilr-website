@@ -262,6 +262,17 @@ function _ilr_sdc_listings_get_all_courses() {
 }
 
 /**
+ * Adds the silhouette image
+ */
+function ilr_sdc_listings_update_7013() {
+  $handle = fopen(drupal_get_path('theme', 'ilr_theme') . '/images/silhouette.gif', 'r');
+  if ($file = file_save_data($handle, 'public://silhouette.gif')) {
+    variable_set('ilr_missing_profile_image_fid', $file->fid);
+  }
+  fclose($handle);
+}
+
+/**
  * Update aliases for sdc content types.
  */
 function _ilr_sdc_listings_update_aliases() {
