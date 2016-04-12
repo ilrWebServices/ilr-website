@@ -39,7 +39,6 @@ function ilr_forms_public_views_default_views() {
     'views_bulk_operations' => 'views_bulk_operations',
     'entityform_id_1' => 'entityform_id_1',
     'type' => 'type',
-    'field_h_credit_card_payments' => 'field_h_credit_card_payments',
     'user' => 'user',
     'field_first_name' => 'field_first_name',
     'field_last_name' => 'field_last_name',
@@ -67,13 +66,6 @@ function ilr_forms_public_views_default_views() {
     ),
     'type' => array(
       'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_h_credit_card_payments' => array(
-      'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -166,19 +158,6 @@ function ilr_forms_public_views_default_views() {
   $handler->display->display_options['fields']['user']['id'] = 'user';
   $handler->display->display_options['fields']['user']['table'] = 'entityform';
   $handler->display->display_options['fields']['user']['field'] = 'user';
-  /* Field: Entityform Submission: h credit card payments */
-  $handler->display->display_options['fields']['field_h_credit_card_payments']['id'] = 'field_h_credit_card_payments';
-  $handler->display->display_options['fields']['field_h_credit_card_payments']['table'] = 'field_data_field_h_credit_card_payments';
-  $handler->display->display_options['fields']['field_h_credit_card_payments']['field'] = 'field_h_credit_card_payments';
-  $handler->display->display_options['fields']['field_h_credit_card_payments']['label'] = 'CC info';
-  $handler->display->display_options['fields']['field_h_credit_card_payments']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_h_credit_card_payments']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['field_h_credit_card_payments']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_h_credit_card_payments']['settings'] = array(
-    'view_mode' => 'full',
-    'field_formatter_label' => '',
-  );
-  $handler->display->display_options['fields']['field_h_credit_card_payments']['field_api_classes'] = TRUE;
   /* Filter criterion: Entityform Submission: Draft */
   $handler->display->display_options['filters']['draft']['id'] = 'draft';
   $handler->display->display_options['filters']['draft']['table'] = 'entityform';

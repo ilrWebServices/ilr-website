@@ -653,7 +653,7 @@ function freedompay_payment_required() {
 
 /**
  * Validation callback
- * Confirms that payment forms have field_h_credit_card_payments
+ * Confirms that payment forms have an assigned HPP
  */
 function _freedompay_entityform_type_validate(&$form, &$form_state) {
   if ($form_state['values']['data']['add_payment_processing']) {

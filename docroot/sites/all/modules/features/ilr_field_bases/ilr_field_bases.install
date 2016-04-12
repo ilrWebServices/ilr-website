@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Removes elavon-related fields
+ */
+function ilr_field_bases_update_7001() {
+  $fields_to_remove = array(
+    'field_h_credit_card_payments',
+    'field_ssl_amount',
+    'field_ssl_approval_code',
+    'field_ssl_card_number',
+    'field_ssl_response_data',
+    'field_ssl_result_message',
+    'field_ssl_txn_id',
+    'field_ssl_txn_time',
+  );
+
+  foreach ($fields_to_remove as $field) {
+    field_delete_field($field);
+  }
+
+  field_purge_batch(count($fields_to_remove));
+}
