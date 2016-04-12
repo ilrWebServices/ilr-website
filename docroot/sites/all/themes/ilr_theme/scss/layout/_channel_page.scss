@@ -8,6 +8,10 @@ body.node-type-channel-page {
     display: none;
   }
 
+  footer {
+    clear: both;
+  }
+
   .container[data-eq-state="mobile-nav"] {
     #main[data-eq-state="768"] {
       #content {
