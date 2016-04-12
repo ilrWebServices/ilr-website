@@ -113,13 +113,9 @@ function _ilr_post_feed($nids = FALSE, $channel = array()) {
     );
 
     $summary .= $wrapper->body->value()['summary'];
-    $content = $wrapper->body->value()['value'];
-    $content = $wrapper->body->value()['value'];
-    $image_path = (!empty($wrapper->field_image))
-      ? image_style_url('focussed_main_image',$wrapper->field_image->file->value()->uri)
-      : '';
+    $content = _ilr_post_format_content_for_mailchimp($node, $wrapper);
 
-    $items .= _ilr_post_format_rss_item($node->title, $node->link, $summary, $content, $image_path, $node->rss_elements);
+    $items .= _ilr_post_format_rss_item($node->title, $node->link, $summary, $content, $node->rss_elements);
   }
 
   $channel_defaults = array(
@@ -141,19 +137,35 @@ function _ilr_post_feed($nids = FALSE, $channel = array()) {
   print $output;
 }
 
-function _ilr_post_format_rss_item($title, $link, $summary, $content, $image_path, $args = array()) {
+function _ilr_post_format_rss_item($title, $link, $summary, $content, $args = array()) {
   $output = "<item>\n";
   $output .= ' <title>' . check_plain($title) . "</title>\n";
   $output .= ' <link>' . check_url($link) . "</link>\n";
   $output .= ' <description>' . check_plain(strip_tags($summary)) . "</description>\n";
   $output .= ' <content:encoded><![CDATA['.$content."]]></content:encoded>\n";
-  if (!empty($image_path)) {
-    $output .= ' <media:content url="'.$image_path.'" medium="image" type="image/jpg" />'."\n";
-  }
   $output .= format_xml_elements($args);
   $output .= "</item>\n";
-
   return $output;
+}
+
+function _ilr_post_format_content_for_mailchimp($node, $wrapper) {
+  $content = '';
+  $image_path = (!empty($wrapper->field_image))
+    ? image_style_url('focussed_main_image',$wrapper->field_image->file->value()->uri)
+    : '';
+  if (!empty($image_path)) {
+    $content = '<a href="'.$node->link.'"><img src="'.$image_path.'"></a><br>';
+  }
+  $content .= '<a href="'.$node->link.'">'.$node->title.'</a><br>';
+  $formatted_date = _ilr_post_get_formatted_date($wrapper);
+  $content .= '<p>'.$wrapper->field_author_reference->label().', '.$formatted_date.'</p>';
+  $content .= $wrapper->body->value()['summary'];
+  $content .= '<a href="'.$node->link.'">Continue reading on website &larr;</a>';
+  return $content;
+}
+
+function _ilr_post_get_formatted_date($wrapper) {
+  return format_date($wrapper->field_published_date->value(), 'ilr_post_format');
 }
 
 /**
