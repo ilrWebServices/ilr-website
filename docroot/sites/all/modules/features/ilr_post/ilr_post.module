@@ -154,9 +154,10 @@ function _ilr_post_format_content_for_mailchimp($node, $wrapper) {
     ? image_style_url('focussed_main_image',$wrapper->field_image->file->value()->uri)
     : '';
   if (!empty($image_path)) {
-    $content = '<a href="'.$node->link.'"><img src="'.$image_path.'"></a><br>';
+    $content = '<a href="'.$node->link.'"><img src="'.$image_path.'"></a>';
   }
   $content .= '<a href="'.$node->link.'">'.$node->title.'</a><br>';
+  $content .= '<h3>'.$node->title.'</h3><br>';
   $formatted_date = _ilr_post_get_formatted_date($wrapper);
   $content .= '<p>'.$wrapper->field_author_reference->label().', '.$formatted_date.'</p>';
   $content .= $wrapper->body->value()['summary'];
