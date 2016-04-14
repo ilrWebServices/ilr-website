@@ -1,3 +1,4 @@
+// display singularity grid for debugging layout
 @include sgs-change('debug', true);
 body.node-type-channel-page {
   #sidebar-first {
@@ -27,6 +28,15 @@ body.node-type-channel-page {
       @include grid-span (12);
       padding: 0;
       margin-bottom: 0;
+      #breadcrumb {
+        @include grid-span (10,2);
+        clear: both;
+      }
+      #page-title {
+        @include grid-span (10,2);
+        clear: both;
+        margin-bottom: 1em;
+      }
       .section {
         min-width: 100%;
       }
@@ -50,7 +60,7 @@ body.node-type-channel-page {
           .content {
             @include grid-span (10,2);
           }
-          #block-bean-alumni-circles {
+          #block-bean-alumni-circles, #block-bean-alumni-affairs-twitter-feed {
             .content {
               @include grid-span (12);
             }
@@ -110,30 +120,46 @@ body.node-type-channel-page {
         }
       }
       .entity-paragraphs-item.paragraphs-item-unit-contact-info {
+        // @include background-grid($color: gainsboro);
         padding-bottom: 2em;
-        h2, h3 {
-          margin-bottom: .5em;
-        }
-        h4 {
-          font-family: $font;
-          font-size: ms(0);
-          margin-bottom: 1em;
-        }
-        ul {
-          &:not(.social) {
-            padding-left: 0;
-            li {
+        .content {
+          text-align: center;
+          ul {
+            &:not(.social) {
               padding-left: 0;
-              background: none;
+              li {
+                padding-left: 0;
+                background: none;
+              }
             }
           }
-        }
-        ul.social {
-          margin-bottom: 1em;
-        }
-        address {
-          font-style: normal;
-          margin-bottom: 1em;
+          .field-name-field-people-list {
+            margin-bottom: 2em;
+            h2, h3 {
+              margin-bottom: .25em;
+            }
+            h4 {
+              font-family: $font;
+              font-size: ms(0);
+              margin-bottom: 1em;
+            }
+          }
+          .group_unit_information {
+            h2 {
+              @include adjust-font-size-to(22px);
+              font-family: $font;
+              font-weight: 300;
+              line-height: 1;
+              margin-bottom: .25em;
+            }
+            ul.social {
+              margin-bottom: 1em;
+            }
+            address {
+              font-style: normal;
+              margin-bottom: 1em;
+            }
+          }
         }
       }
 
@@ -166,6 +192,7 @@ body.node-type-channel-page {
       .entity-paragraphs-item.paragraphs-item-unit-contact-info {
         .content {
           .field-name-field-people-list {
+            margin-bottom: 0;
             @include grid-span (6,1);
           }
           .group_unit_information {
@@ -202,11 +229,31 @@ body.node-type-channel-page {
       }
       .entity-paragraphs-item.paragraphs-item-unit-contact-info {
         .content {
+          text-align: left;
           .field-name-field-people-list {
-            @include grid-span (5,1);
+            margin-bottom: 1em;
+            @include grid-span (6,1);
+            li {
+              display: inline-block;
+              &:nth-of-type(odd) {
+                @include grid-span(6,1);
+                clear: left;
+              }
+              &:nth-of-type(even) {
+                @include grid-span(6,7);
+                clear: right;
+              }
+            }
           }
           .group_unit_information {
-            @include grid-span (7,6);
+            @include grid-span (6,7);
+            .group_unit_name_and_address {
+              @include grid-span(6,1);
+            }
+            ul.social, .field-name-field-multiple-links {
+              @include grid-span(6,7);
+              clear: right;
+            }
           }
         }
       }
@@ -248,11 +295,31 @@ body.node-type-channel-page {
       }
       .entity-paragraphs-item.paragraphs-item-unit-contact-info {
         .content {
+          text-align: left;
           .field-name-field-people-list {
-            @include grid-span (5,1);
+            margin-bottom: 1em;
+            @include grid-span (6,1);
+            li {
+              display: inline-block;
+              &:nth-of-type(odd) {
+                @include grid-span(6,1);
+                clear: left;
+              }
+              &:nth-of-type(even) {
+                @include grid-span(6,7);
+                clear: right;
+              }
+            }
           }
           .group_unit_information {
-            @include grid-span (7,6);
+            @include grid-span (6,7);
+            .group_unit_name_and_address {
+              @include grid-span(6,1);
+            }
+            ul.social, .field-name-field-multiple-links {
+              @include grid-span(6,7);
+              clear: right;
+            }
           }
         }
       }
