@@ -403,7 +403,9 @@
 
       $(window).load(function() {
 
-        format_blurbs();
+        if ($('.circle-blurb').length) {
+          format_blurbs();
+        }
 
         var fieldNames = ['.field-name-content-0', '.field-name-content-1', '.field-name-content-2', '.field-name-content-3', '.field-name-content-4', '.field-name-content-5'];
         var fieldCount = fieldNames.length;
