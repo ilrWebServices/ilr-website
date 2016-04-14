@@ -56,7 +56,9 @@ function _ilr_social_sharing_get_class_year_from_date($node, $field) {
  *  - Fix for class nodes, so that course summary gets returned
  */
 function _ilr_social_sharing_get_description($node) {
-  if (!empty($node->field_description)) {
+  if (!empty($node->field_teaser)) {
+    $summary = $node->field_teaser[LANGUAGE_NONE][0]['value'];
+  } elseif (!empty($node->field_description)) {
     $summary = $node->field_description[LANGUAGE_NONE][0]['safe_value'];
   } else {
     $summary = (!empty($node->body[LANGUAGE_NONE][0]['summary']))
@@ -73,6 +75,8 @@ function _ilr_social_sharing_get_enabled_bundles() {
     'reflection',
     'sdc_course',
     'sdc_class',
+    'channel_page',
+    'experience_report',
   );
 }
 

@@ -5821,22 +5821,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_para_main_page_content'
-  $field_bases['field_para_main_page_content'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_para_main_page_content',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'paragraphs',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'paragraphs',
-  );
-
   // Exported field_base: 'field_is_address_the_same'
   $field_bases['field_is_address_the_same'] = array(
     'active' => 1,
@@ -6651,6 +6635,36 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_multiple_links'
+  $field_bases['field_multiple_links'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_multiple_links',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'link',
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'rel' => '',
+        'target' => 'default',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'link_field',
+  );
+
   // Exported field_base: 'field_name_correct_for_diploma'
   $field_bases['field_name_correct_for_diploma'] = array(
     'active' => 1,
@@ -7115,6 +7129,70 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_one_block'
+  $field_bases['field_one_block'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_one_block',
+    'foreign keys' => array(
+      'bid' => array(
+        'columns' => array(
+          'bid' => 'bid',
+        ),
+        'table' => 'block',
+      ),
+    ),
+    'indexes' => array(
+      'bid' => array(
+        0 => 'bid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'blockreference',
+    'settings' => array(
+      'referenceable_modules' => array(
+        'bean' => 'bean',
+        'block' => 0,
+        'context_ui' => 0,
+        'devel' => 0,
+        'diff' => 0,
+        'entityform_block' => 0,
+        'ilr_alumni_events' => 0,
+        'ilr_google_translate' => 0,
+        'ilr_mega_menu' => 0,
+        'ilr_reflection' => 0,
+        'ilr_sdc_listings' => 0,
+        'ilr_sub_sites' => 0,
+        'ilr_xml_blocks' => 0,
+        'menu' => 0,
+        'menu_block' => 0,
+        'node' => 0,
+        'people_profiles' => 0,
+        'simplesamlphp_auth' => 0,
+        'system' => 0,
+        'user' => 0,
+        'views' => 0,
+      ),
+      'referenceable_operator' => 'AND',
+      'referenceable_regions' => array(
+        '' => 0,
+        'content' => 0,
+        'content_bottom' => 0,
+        'footer' => 0,
+        'header' => 0,
+        'highlighted' => 0,
+        'sidebar_first' => 0,
+        'sidebar_second' => 0,
+      ),
+      'referenceable_theme' => 'default',
+      'respect_visibility' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'blockreference',
+  );
+
   // Exported field_base: 'field_online_class'
   $field_bases['field_online_class'] = array(
     'active' => 1,
@@ -7368,6 +7446,22 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_para_main_page_content'
+  $field_bases['field_para_main_page_content'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_para_main_page_content',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'paragraphs',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'paragraphs',
+  );
+
   // Exported field_base: 'field_passport_number'
   $field_bases['field_passport_number'] = array(
     'active' => 1,
@@ -7395,6 +7489,25 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_people_list'
+  $field_bases['field_people_list'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_people_list',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'field_collection',
+    'settings' => array(
+      'hide_blank_items' => 1,
+      'path' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'field_collection',
   );
 
   // Exported field_base: 'field_people_profile_reference'
@@ -9295,6 +9408,56 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'blockreference',
   );
 
+  // Exported field_base: 'field_social_channels'
+  $field_bases['field_social_channels'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_social_channels',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'field_collection',
+    'settings' => array(
+      'hide_blank_items' => 1,
+      'path' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'field_collection',
+  );
+
+  // Exported field_base: 'field_social_media_channel_type'
+  $field_bases['field_social_media_channel_type'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_social_media_channel_type',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'facebook' => 'Facebook',
+        'twitter' => 'Twitter',
+        'linkedin' => 'LinkedIn',
+        'youtube' => 'YouTube',
+        'instagram' => 'Instagram',
+        'tumblr' => 'Tumbler',
+        'mail' => 'Email',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_source_1'
   $field_bases['field_source_1'] = array(
     'active' => 1,
@@ -10210,6 +10373,33 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_title_icon_none'
+  $field_bases['field_title_icon_none'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_title_icon_none',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Title' => 'Title',
+        'Icon' => 'Icon',
+        'Neither' => 'Neither',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_title_of_paper_or_poster'

@@ -1,8 +1,10 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the ILR Field Bases feature.
  */
+
+include_once 'ilr_field_bases.features.inc';
 
 /**
  * Implements hook_permission().
@@ -24,4 +26,63 @@ function ilr_field_bases_field_access($op, $field, $entity_type, $entity, $accou
   if ($op == 'edit' && $field['field_name'] == 'field_content_region') {
     return user_access('access content region field');
   }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ */
+function ilr_field_bases_preprocess_field(&$variables) {
+  $field_bases_bundles = [
+    'field_social_channels',
+  ];
+  if (in_array($variables['element']['#bundle'], $field_bases_bundles)) {
+    _ilr_field_bases_process_fields($variables);
+  }
+}
+
+/**
+ * Performs field-level alterations to sepcific fields in specific bundles
+ */
+function _ilr_field_bases_process_fields(&$variables) {
+  switch ($variables['element']['#field_name']) {
+    case 'field_website_url':
+      switch ($variables['element']['#bundle']) {
+        case 'field_social_channels':
+          _ilr_field_bases_format_social_links_as_icons($variables);
+          break;
+      }
+      break;
+  }
+}
+
+/**
+ * Adds appropriate class to social channel links, removes their link text, and adds a title attribute.
+ */
+function _ilr_field_bases_format_social_links_as_icons(&$variables) {
+  $title_attr ='';
+  $channel_type = $variables['element']['#object']->field_social_media_channel_type['und'][0]['value'];
+  $variables['items'][0]['#element']['title'] = '';
+  $variables['items'][0]['#element']['attributes']['class'] = $channel_type;
+  switch ($channel_type) {
+    case 'facebook':
+      $title_attr = 'Visit our Facebook page';
+      break;
+    case 'twitter':
+      $title_attr = 'Follow us on Twitter';
+      break;
+    case 'linkedin':
+      $title_attr = 'Connect with us on LinkedIn';
+      break;
+    case 'instagram':
+      $title_attr = 'Follow us on Instagram';
+      break;
+    case 'youtube':
+      $title_attr = 'Watch us on YouTube';
+      break;
+    case 'mail':
+      $title_attr = 'Send us email';
+      break;
+  }
+  $variables['items'][0]['#element']['attributes']['title'] = $title_attr;
 }
