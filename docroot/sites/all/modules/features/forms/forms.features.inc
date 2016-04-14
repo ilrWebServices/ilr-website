@@ -1941,7 +1941,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "Thank you",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for registering for the upcoming ILR Online webcast.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent Details:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe webcast connection information will be sent to your email address closer to the webcast date.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u003Cstrong\\u003ETechnology Requirements\\u003C\\/strong\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR Online webcasts can be viewed using computers or mobile devices. The Silverlight plug-in is required. Click the ILR webcast test link below to test your computer; if necessary, you may be instructed to download Silverlight.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you can watch this test webcast you should have no problem viewing the live event:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022http:\\/\\/events.mediasite.com\\/Mediasite\\/Play\\/6d6161cbf54a4e6fbcdcef116d0a2acc1d\\u0022\\u003Ehttp:\\/\\/events.mediasite.com\\/Mediasite\\/Play\\/6d6161cbf54a4e6fbcdcef116d0a2acc1d\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EYou should be able to click through the slides on the left, and view the video in the lower right.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions about the webcast, please let us know.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ELori Biechele, Administrative Support\\u003Cbr\\u003E\\r\\n\\tCornell University, ILR School\\u003Cbr\\u003E\\r\\n\\tEmail: \\u003Ca href=\\u0022mailto:lb274@cornell.edu\\u0022\\u003Elb274@cornell.edu\\u003C\\/a\\u003E\\u003Cbr\\u003E\\r\\n\\tPhone: (607) 254-8941\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for registering for the upcoming ILR Online webcast.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent Details:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe webcast connection information will be sent to your email address closer to the webcast date. ILR Online webcasts are free of charge, will be closed captioned, and can be viewed using computers or mobile devices.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions about the webcast, please let us know.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ELori Biechele\\u003Cbr\\u003E\\r\\n\\tMarketing Communications Assistant\\u003Cbr\\u003E\\r\\n\\tCornell University ILR School\\u003Cbr\\u003E\\r\\n\\t\\u003Ca href=\\u0022mailto:lb274@cornell.edu\\u0022\\u003Elb274@cornell.edu\\u003C\\/a\\u003E\\u003Cbr\\u003E\\r\\n\\t607-254-8941\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -1949,16 +1949,18 @@ function forms_default_entityform_type() {
       "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
       "roles" : {
-        "3" : "3",
         "1" : "1",
         "2" : "2",
-        "4" : 0,
-        "5" : 0,
-        "6" : 0,
-        "7" : 0,
-        "8" : 0,
-        "9" : 0,
-        "10" : 0
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
@@ -1967,8 +1969,9 @@ function forms_default_entityform_type() {
       "send_confirmation_email_to_admin" : 0,
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0,
+      "form_submission_ilr_recipient" : "lb274@cornell.edu",
       "add_payment_processing" : 0,
-      "form_submission_ilr_recipient" : "lb274@cornell.edu"
+      "hpp" : ""
     },
     "weight" : "0",
     "paths" : []
