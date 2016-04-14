@@ -1,5 +1,3 @@
-// display singularity grid for debugging layout
-@include sgs-change('debug', true);
 body.node-type-channel-page {
   #sidebar-first {
     display: none !important;
@@ -120,7 +118,6 @@ body.node-type-channel-page {
         }
       }
       .entity-paragraphs-item.paragraphs-item-unit-contact-info {
-        // @include background-grid($color: gainsboro);
         padding-bottom: 2em;
         .content {
           text-align: center;
