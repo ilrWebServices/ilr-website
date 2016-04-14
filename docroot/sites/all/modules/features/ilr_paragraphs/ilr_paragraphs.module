@@ -17,14 +17,14 @@ function ilr_paragraphs_preprocess_field(&$variables) {
     'field_people_list',
   ];
   if (in_array($variables['element']['#bundle'], $paragraph_bundles)) {
-    _ilr_paragraphs_process_paragraph_fields($variables);
+    _ilr_paragraphs_process_fields($variables);
   }
 }
 
 /**
  * Performs field-level alterations to sepcific fields in specific paragraph bundles
  */
-function _ilr_paragraphs_process_paragraph_fields(&$variables) {
+function _ilr_paragraphs_process_fields(&$variables) {
   switch ($variables['element']['#field_name']) {
     case 'field_comments':
       switch ($variables['element']['#bundle']) {

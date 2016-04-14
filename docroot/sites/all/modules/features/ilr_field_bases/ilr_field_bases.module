@@ -37,14 +37,14 @@ function ilr_field_bases_preprocess_field(&$variables) {
     'field_social_channels',
   ];
   if (in_array($variables['element']['#bundle'], $field_bases_bundles)) {
-    _ilr_field_bases_process_paragraph_fields($variables);
+    _ilr_field_bases_process_fields($variables);
   }
 }
 
 /**
  * Performs field-level alterations to sepcific fields in specific bundles
  */
-function _ilr_field_bases_process_paragraph_fields(&$variables) {
+function _ilr_field_bases_process_fields(&$variables) {
   switch ($variables['element']['#field_name']) {
     case 'field_website_url':
       switch ($variables['element']['#bundle']) {
