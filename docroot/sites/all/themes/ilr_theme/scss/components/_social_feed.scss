@@ -5,11 +5,10 @@ article.social-feed {
 
   .field-name-group {
     .field-name-twitter-handle {
-      margin-bottom: 1em;
+      @include trailer(.5);
     }
-    .field-name-twitter-handle, .field-name-time-stamp {
+    .field-name-twitter-handle a, .field-name-time-stamp {
       @include adjust-font-size-to(14px);
-      @include adjust-leading-to(1);
       text-transform: uppercase;
       font-weight: 600;
       color: $link;
