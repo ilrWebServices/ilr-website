@@ -114,6 +114,12 @@ function freedompay_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
+      'invoice_id' => array(
+        'description' => 'The id of the invoice associated with this transaction.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
       'amount' => array(
         'description' => 'The amount of the payment.',
         'type' => 'varchar',
@@ -151,12 +157,6 @@ function freedompay_schema() {
       'payment_id' => array('payment_id'),
       'authorization_code' => array('authorization_code'),
     ),
-    'foreign keys' => array(
-      'freedompay_form_id' => array(
-        'table' => 'entityform',
-        'columns' => array('entityform_id' => 'entityform_id'),
-      ),
-    ),
     'primary key' => array('payment_id'),
   );
 
@@ -188,11 +188,25 @@ function _freedompay_invoice_schema() {
         'not null' => FALSE,
         'default' => '',
       ),
+      'transaction_id' => array(
+        'description' => 'The transaction id of the payment.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
       'order_id' => array(
         'description' => 'The id of the order form associated with this invoice.',
         'type' => 'int',
         'not null' => TRUE,
         'default' => 0,
+      ),
+      'order_type' => array(
+        'description' => 'The entity type of the order id.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
       ),
       'amount' => array(
         'description' => 'The amount of the invoice.',
@@ -252,4 +266,41 @@ function freedompay_uninstall() {
 function freedompay_update_7001(&$sandbox) {
   $schema['freedompay_invoices'] = _freedompay_invoice_schema();
   db_create_table('freedompay_invoices', $schema['freedompay_invoices']);
+}
+
+/**
+ * Add transaction_ids to invoices
+ */
+function freedompay_update_7002() {
+  $spec = array(
+    'description' => 'The transaction id used to create the invoice.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  );
+  db_add_field( 'freedompay_invoices', 'transaction_id', $spec);
+}
+
+/**
+ * Add order_type to invoices and invoice_ids to payments
+ */
+function freedompay_update_7003() {
+  $spec = array(
+    'description' => 'The entity type of the order id.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+    'default' => '',
+  );
+  db_add_field( 'freedompay_invoices', 'order_type', $spec);
+
+  $invoice_id_spec = array(
+    'description' => 'The invoice id used to create the payment.',
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0,
+  );
+  db_add_field( 'freedompay_payments', 'invoice_id', $invoice_id_spec);
+  //db_drop_field( 'freedompay_payments', 'form_id');
 }

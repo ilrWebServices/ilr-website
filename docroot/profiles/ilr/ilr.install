@@ -757,3 +757,22 @@ function ilr_update_7057() {
     'ilr_channel_page',
   ));
 }
+
+/**
+ * Updates FreedomPay payments and invoices - Run twice if fails the first time
+ */
+function ilr_update_7058() {
+  if (property_exists('FreedomPayPayment', 'form_id')) {
+    $payments = FreedomPayPayment::getPayments();
+    foreach ($payments as $payment) {
+      if ($invoice = FreedomPayInvoice::getInvoiceByOrderId($payment->form_id)) {
+        $payment->invoice_id = $invoice->invoice_id;
+        $payment->save();
+
+        $invoice->transaction_id = $payment->transaction_id;
+        $invoice->order_type = 'entityform';
+        $invoice->save();
+      }
+    }
+  }
+}

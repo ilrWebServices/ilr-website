@@ -91,7 +91,7 @@ function ilr_alumni_events_preprocess_node(&$variables) {
 /**
  * Implements hook_freedompay_checkout_payload_alter().
  */
-function ilr_alumni_events_freedompay_checkout_payload_alter($form_id, &$payload) {
+function ilr_alumni_events_freedompay_checkout_payload_alter(&$payload, $order, $form_id) {
   if ($form_id == 'ilr_alumni_association_event_reg') {
     $payload['PurchaseItems'] = _ilr_alumni_events_get_purchase_items();
     $payload['BillingAddress'] = _ilr_alumni_events_get_billing_address();
@@ -101,7 +101,7 @@ function ilr_alumni_events_freedompay_checkout_payload_alter($form_id, &$payload
 /**
  * Implements hook_freedompay_transaction_total_alter().
  */
-function ilr_alumni_events_freedompay_transaction_total_alter($form_id, &$transaction_total) {
+function ilr_alumni_events_freedompay_transaction_total_alter(&$transaction_total, $order, $form_id) {
   if ($form_id == 'ilr_alumni_association_event_reg') {
     $transaction_total = _ilr_alumni_events_get_total_cost();
   }
@@ -315,10 +315,7 @@ function _ilr_alumni_events_get_purchase_items() {
  * Wrapper function for freedompay_entityform_wrapper().
  */
 function _ilr_alumni_events_get_entityform_wrapper($entityform=NULL) {
-  if (module_exists('freedompay')) {
-    return freedompay_entityform_wrapper($entityform);
-  }
-  return NULL;
+  return freedompay_entityform_wrapper($entityform);
 }
 
 /**

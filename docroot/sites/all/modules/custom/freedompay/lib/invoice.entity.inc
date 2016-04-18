@@ -10,7 +10,9 @@ class FreedompayInvoice extends Entity {
     $invoice_id = NULL,
     $number = NULL,
     $prefix = '',
-    $order_id = '',
+    $transaction_id = '',
+    $order_id = NULL,
+    $order_type = '',
     $amount = '',
     $paid = NULL,
     $created = '';
@@ -40,6 +42,17 @@ class FreedompayInvoice extends Entity {
     return $this->prefix . str_pad($this->number, 6, '0', STR_PAD_LEFT);
   }
 
+  public function formatPaymentCell() {
+    if ($payment = $this->payment()) {
+      $paymentCell = $payment->authorization_code;
+    }
+    else {
+      $params = array('query' => array('transid' => $this->transaction_id));
+      $paymentCell = ($this->paid) ? l('Create', FREEDOMPAY_CREATE_PAYMENT_PATH, $params) : 'Incomplete';
+    }
+    return $paymentCell;
+  }
+
   public function prefix() {
     $form = $this->orderForm();
     $prefix = module_invoke_all('freedompay_invoice_prefix', $form->type);
@@ -51,7 +64,7 @@ class FreedompayInvoice extends Entity {
   }
 
   public function orderForm() {
-    return entityform_load($this->order_id);
+    return freedompay_order($this->order_id);
   }
 
   public static function getLastInvoiceByPrefix($prefix) {
@@ -82,7 +95,7 @@ class FreedompayInvoice extends Entity {
   public static function tableView($invoiceIds) {
     $tableView = array(
       '#theme' => 'table',
-      '#header' => array(t('Invoice Number'),t('Order form'), t('Amount'), t('Paid')),
+      '#header' => array(t('Invoice Number'),t('Order form'), t('Amount'), t('Paid'),t('Payment AuthCode')),
       '#rows' => FreedompayInvoice::rowView($invoiceIds),
       '#attributes' => array('class' => array('table-class')),
       '#empty' =>t('No invoices have been processed yet'),
@@ -96,9 +109,10 @@ class FreedompayInvoice extends Entity {
     foreach ($invoices as $id=> $invoice) {
       $rows[$id] = array(
         'number' => $invoice->formatInvoiceNumber(),
-        'order' => l($invoice->order_id, 'entityform/'.$invoice->order_id),
+        'order' => l($invoice->order_id, $invoice->order_type . '/' . $invoice->order_id),
         'amount' => $invoice->amount,
         'paid' => ($invoice->paid) ? 'Yes' : 'No',
+        'payment' => $invoice->formatPaymentCell(),
       );
     }
     return $rows;
@@ -114,6 +128,11 @@ class FreedompayInvoice extends Entity {
       return array_keys($result['freedompay_invoice']);
     }
     return NULL;
+  }
+
+  public static function getInvoiceById($invoice_id) {
+    $invoices = FreedompayInvoice::getInvoices(array($invoice_id));
+    return reset($invoices);
   }
 
   public static function getInvoices($invoice_ids = array(), $conditions = array(), $reset = FALSE) {
@@ -150,5 +169,9 @@ class FreedompayInvoice extends Entity {
       return TRUE;
     }
     return FALSE;
+  }
+
+  public function payment() {
+    return FreedompayPayment::getPaymentByTransactionId($this->transaction_id);
   }
 }

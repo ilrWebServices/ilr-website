@@ -147,11 +147,14 @@ function forms_entityform_insert($entityform) {
 }
 
 /**
- * Implements hook_freedompay_form_complete().
- * Payment forms are drafts until completed
+ * Implements hook_freedompay_order_complete().
+ * Calls the form processing function
+ * @param  FreedomPayOrder $order
  */
-function forms_freedompay_form_complete($entityform) {
-  _forms_process_entityform($entityform);
+function forms_freedompay_order_complete($order, $type, $form_id) {
+  if ($type == 'entityform') {
+    _forms_process_entityform($order->form);
+  }
 }
 
 /**

@@ -5,4 +5,4 @@ package = ILR
 version = 7.x-1.0
 project = forensics_payments
 
-dependencies[] = freedompay
+dependencies[] = freedompay_entityform
