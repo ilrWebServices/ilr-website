@@ -525,6 +525,7 @@ function _freedompay_complete_checkout() {
     _freedompay_mark_invoice_paid($order);
     $payment = freedompay_payment();
   }
+  _freedompay_cookie_flush();
   module_invoke_all('freedompay_order_complete', $order, $order->entity_type, $order->bundle);
   return FREEDOMPAY_TRANSACTION_SUCCESS;
 }
