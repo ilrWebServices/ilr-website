@@ -107,7 +107,7 @@ function freedompay_checkout_page() {
         return _freedompay_redirect(_freedompay_get_checkout_path());
       }
     } // No checkout_url, so try to start a transaction
-    elseif ($transaction_prepared = _freedompay_prepare_transaction_data()) {
+    elseif ($transaction = _freedompay_create_transaction()) {
       // Redirect back to this same page so that the transaction cookies load
       return _freedompay_redirect(_freedompay_get_checkout_path());
     } // Transaction fail, so send the user back to the form
@@ -691,10 +691,11 @@ function _freedompay_payments_page() {
 }
 
 /**
- * [_freedompay_prepare_transaction_data description]
- * @return [type] [description]
+ * Creates a transaction with the FreedomPay API if ducks are in a row
+ *   - Saves the transaction_id and checkout_url cookies
+ *   - Updates the transaction id for the invoice
  */
-function _freedompay_prepare_transaction_data() {
+function _freedompay_create_transaction() {
   $order = freedompay_order();
   $payload = freedompay_checkout_payload();
   if (is_numeric($payload['TransactionTotal']) && $payload['TransactionTotal'] > 0) { // Make sure it's a valid transaction total
