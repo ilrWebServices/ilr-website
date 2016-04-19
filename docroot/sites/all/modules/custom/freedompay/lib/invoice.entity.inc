@@ -106,7 +106,8 @@ class FreedompayInvoice extends Entity {
 
   public static function getInvoiceIds() {
     $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'freedompay_invoice');
+    $query->entityCondition('entity_type', 'freedompay_invoice')
+          ->propertyOrderBy('created', 'DESC');
 
     $result = $query->execute();
     if (isset($result['freedompay_invoice'])) {

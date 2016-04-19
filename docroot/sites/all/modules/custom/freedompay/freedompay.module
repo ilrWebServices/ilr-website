@@ -374,17 +374,7 @@ function freedompay_checkout_page() {
 
 function freedompay_success_page() {
   if (isset($_REQUEST['transid']) && !_freedompay_payment_complete()) {
-    if ($payment = freedompay_payment()) {
-      return _freedompay_complete_checkout();
-    } // The payment didn't get created for some reason
-    else {
-      watchdog('freedompay', "Unexpected payment failure for transaction @transaction_id",
-        array(
-          '@transaction_id' => $_REQUEST['transid'],
-        ),
-        WATCHDOG_ERROR
-      );
-    }
+    _freedompay_complete_checkout(); // The payment didn't get created for some reason
   } // transid is missing or the payment was already completed
   else {
     // Check for an entityform
@@ -954,7 +944,9 @@ function _freedompay_complete_checkout() {
   module_invoke_all('freedompay_form_complete', $entityform);
   if(freedompay_payment_required()) {
     _freedompay_mark_invoice_paid($entityform);
+    $payment = freedompay_payment();
   }
+  _freedompay_cookie_flush();
   freedompay_redirect_to_entityform_submission($entityform);
   return FREEDOMPAY_TRANSACTION_SUCCESS;
 }
