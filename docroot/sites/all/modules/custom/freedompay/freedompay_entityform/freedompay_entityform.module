@@ -124,13 +124,13 @@ function freedompay_entityform_form_entityform_type_form_alter(&$form, &$form_st
   else {
     $form['data']['hpp'] = array(
       '#title' => t('HPP'),
-      '#type' => 'markup', // Make sure the class below matches the javascript in freedompay.js
+      '#type' => 'markup', // Make sure the class below matches the javascript in freedompay_entityform.js
       '#markup' => '<div class="form-item-data-hpp">'.l('Add an HPP portal now','admin/config/services/freedompay/hpp/add', array('query' => array('destination' => current_path()))).'</div>',
       '#weight' => 0,
     );
   }
 
-  drupal_add_js(drupal_get_path('module','freedompay') . '/freedompay.js', array('type' => 'file', 'scope' => 'footer'));
+  drupal_add_js(drupal_get_path('module','freedompay_entityform') . '/freedompay_entityform.js', array('type' => 'file', 'scope' => 'footer'));
 }
 
 /**

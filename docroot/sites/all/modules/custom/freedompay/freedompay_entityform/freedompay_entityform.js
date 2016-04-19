@@ -1,5 +1,5 @@
 (function ($) {
-  Drupal.behaviors.freedompay = {
+  Drupal.behaviors.freedompay_entityform = {
     attach: function (context, settings) {
       if ($('#edit-data-add-payment-processing').attr('checked')) {
         $('.form-item-data-hpp').show();
