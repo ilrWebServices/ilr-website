@@ -29,8 +29,8 @@ function forensics_payments_freedompay_transaction_total_alter(&$transaction_tot
 /**
  * Implements hook_freedompay_invoice_prefix().
  */
-function forensics_payments_freedompay_invoice_prefix($form_id) {
-  if ($form_id == 'forensics_debate_camp_payment') {
+function forensics_payments_freedompay_invoice_prefix($order) {
+  if ($order->bundle == 'forensics_debate_camp_payment') {
     return 'debate';
   }
 }

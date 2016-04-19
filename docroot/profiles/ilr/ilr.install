@@ -762,6 +762,7 @@ function ilr_update_7057() {
  * Updates FreedomPay payments and invoices - Run twice if fails the first time
  */
 function ilr_update_7058() {
+  module_enable(array('freedompay_entityform'));
   if (property_exists('FreedomPayPayment', 'form_id')) {
     $payments = FreedomPayPayment::getPayments();
     foreach ($payments as $payment) {

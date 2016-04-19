@@ -110,8 +110,8 @@ function ilr_alumni_events_freedompay_transaction_total_alter(&$transaction_tota
 /**
  * Implements hook_freedompay_invoice_prefix().
  */
-function ilr_alumni_events_freedompay_invoice_prefix($form_id) {
-  if ($form_id == 'ilr_alumni_association_event_reg') {
+function ilr_alumni_events_freedompay_invoice_prefix($order) {
+  if ($order->bundle == 'ilr_alumni_association_event_reg') {
     return 'alev';
   }
 }

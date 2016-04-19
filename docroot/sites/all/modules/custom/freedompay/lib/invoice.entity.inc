@@ -54,17 +54,13 @@ class FreedompayInvoice extends Entity {
   }
 
   public function prefix() {
-    $form = $this->orderForm();
-    $prefix = module_invoke_all('freedompay_invoice_prefix', $form->type);
+    $order = freedompay_order($this->order_id);
+    $prefix = module_invoke_all('freedompay_invoice_prefix', $order);
     if (!empty($prefix)) {
       return reset($prefix);
     } // Else default
     $type = str_replace('_', '', $form->type);
     return strtolower(substr($type, 0, 6));
-  }
-
-  public function orderForm() {
-    return freedompay_order($this->order_id);
   }
 
   public static function getLastInvoiceByPrefix($prefix) {

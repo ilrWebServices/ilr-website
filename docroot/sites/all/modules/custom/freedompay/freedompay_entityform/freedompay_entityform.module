@@ -56,7 +56,7 @@ function freedompay_entityform_entityform_previous_submission_alter(&$entityform
  */
 function freedompay_entityform_entityform_update($entityform) {
   if (freedompay_entityform_is_payment_form($entityform) && freedompay_payment_required()) {
-    if ($transaction = freedompay_call_remote_transaction('getTransaction', _freedompay_get_transaction_id())) {
+    if ($transaction = freedompay_call_freedompay_api('getTransaction', _freedompay_get_transaction_id())) {
       $payload = freedompay_checkout_payload();
       if (_freedompay_transaction_payload_changed($transaction, $payload)) {
         _freedompay_restart_transaction();
@@ -131,48 +131,6 @@ function freedompay_entityform_form_entityform_type_form_alter(&$form, &$form_st
   }
 
   drupal_add_js(drupal_get_path('module','freedompay') . '/freedompay.js', array('type' => 'file', 'scope' => 'footer'));
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- * form_id = ilr_editable_settings_form
- * Adds a setting for cancel and reject messages for all payment forms
- * @see ilr_editable_settings module.
- */
-function freedompay_entityform_form_ilr_editable_settings_form_alter(&$form, &$form_state, $form_id) {
-  $payment_forms = freedompay_entityform_get_payment_forms();
-  $form['freedompay_set'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('FreedomPay Messages'),
-  );
-  $form['freedompay_set']['freedompay_default_cancel_message'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Default FreedomPay cancel message'),
-    '#default_value' => FREEDOMPAY_DEFAULT_CANCEL_MESSAGE,
-  );
-  $form['freedompay_set']['freedompay_default_reject_message'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Default FreedomPay rejected message'),
-    '#default_value' => FREEDOMPAY_DEFAULT_REJECT_MESSAGE,
-  );
-  foreach ($payment_forms as $name => $entityform_type) {
-    $replaced_name = ucfirst(str_replace('_', ' ', $name));
-    $form['freedompay_set']['freedompay_'.$name.'_reject_message'] = array(
-      '#type' => 'textarea',
-      '#title' => t($replaced_name . ' FreedomPay rejected message'),
-      '#default_value' => FREEDOMPAY_DEFAULT_REJECT_MESSAGE,
-    );
-    $form['freedompay_set']['freedompay_'.$name.'_cancel_message'] = array(
-      '#type' => 'textarea',
-      '#title' => t($replaced_name . ' FreedomPay cancel message'),
-      '#default_value' => FREEDOMPAY_DEFAULT_CANCEL_MESSAGE,
-    );
-    $form['freedompay_set']['freedompay_'.$name.'_checkout_message'] = array(
-      '#type' => 'textarea',
-      '#title' => t($replaced_name . ' FreedomPay checkout message'),
-      '#default_value' => FREEDOMPAY_DEFAULT_CHECKOUT_MESSAGE,
-    );
-  }
 }
 
 /**

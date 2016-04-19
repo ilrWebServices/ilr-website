@@ -329,6 +329,7 @@ function freedompay_invoice($order, $amount=NULL) {
       'order_id' => $order->id,
       'amount' => $amount,
       'hpp_id' => $hpp->hpp_id,
+      'order_type' => $order->entity_type,
     );
     $invoice = new FreedompayInvoice($properties);
     drupal_alter('freedompay_invoice_number', $invoice, $order, $order->bundle);
@@ -422,10 +423,13 @@ function freedompay_payment() {
       $results = freedompay_call_freedompay_api('getTransaction', _freedompay_get_transaction_id());
       if (!empty($results) && $results['AuthResponse']['AuthorizationDecision'] == 'ACCEPT') {
         $freeway_response = $results['AuthResponse']['FreewayResponse'];
+        $form_id = _freedompay_cookie_get('oid');
+        $invoice = FreedomPayInvoice::getInvoiceByOrderId($form_id);
         $properties = [
           'transaction_id' => $transaction_id,
           'authorization_code' => $freeway_response['AuthorizationCode'],
-          'form_id' => _freedompay_cookie_get('oid'),
+          'form_id' => $form_id,
+          'invoice_id' => $invoice->invoice_id,
           'amount' => $freeway_response['Amount'],
           'freeway_request_id' => $freeway_response['FreewayRequestId'],
           'card_number' => $results['MaskedCardNumber'],

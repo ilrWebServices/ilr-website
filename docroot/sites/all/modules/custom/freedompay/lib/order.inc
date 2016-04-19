@@ -27,7 +27,7 @@ class FreedomPayOrder {
       if ($form) {
         $order = new FreedomPayOrder(array(
           'form' => $form,
-          'type' => $type,
+          'entity_type' => $type,
           'id' => $order_id,
           'bundle' => $form->type,
         ));
