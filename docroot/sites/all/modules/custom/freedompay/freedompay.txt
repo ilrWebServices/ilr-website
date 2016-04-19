@@ -28,6 +28,7 @@ How to use
 - Download and enable this module
 - Create a custom module that implements hook_freedompay_checkout_payload_alter(). This allows you to set some important values for the portal payment, such as TransactionTotal and PurchaseItems. You can read about additional hooks in the freedompay.api.php doc.
 - Add a new HPP from the Configuration > Web Services > FreedomPay HPP admin page
+- Set the variable freedompay_environment to any value other than "production". You can use your local settings.php file, or `drush vset freedompay_environment testing`. This is used to set the correct api endpoint.
 - If using FreedomPay with the freedompay_entityform submodule, create an entityform type that is set to be "draftable" with the Payment checkbox selected along with the selected HPP
 - Currently, entityforms are the only supported order type. Additional integrations (ie Commerce) could be easily supported in the future.
 

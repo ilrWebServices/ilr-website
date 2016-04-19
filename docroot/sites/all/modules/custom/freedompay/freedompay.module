@@ -623,9 +623,13 @@ function _freedompay_get_order_summary() {
   return $summary;
 }
 
-// todo - refactor out ilr_is_production_site()
+/**
+ * The service url defaults to production
+ * You can/should override this when testing by setting this variable to any other value
+ */
 function _freedompay_get_service_url() {
-  $service_url = (ilr_is_production_site())
+  $environment = variable_get('freedompay_environment', 'production');
+  $service_url = ($environment == 'production')
     ? 'https://payments.freedompay.com/checkoutservice/checkoutservice.svc'
     : 'https://payments.uat.freedompay.com/checkoutservice/checkoutservice.svc';
   return $service_url;
