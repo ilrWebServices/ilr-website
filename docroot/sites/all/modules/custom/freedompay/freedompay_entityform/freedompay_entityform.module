@@ -56,7 +56,7 @@ function freedompay_entityform_entityform_previous_submission_alter(&$entityform
  */
 function freedompay_entityform_entityform_update($entityform) {
   if (freedompay_entityform_is_payment_form($entityform) && freedompay_payment_required()) {
-    if ($transaction = freedompay_transaction('getTransaction', _freedompay_get_transaction_id())) {
+    if ($transaction = freedompay_call_remote_transaction('getTransaction', _freedompay_get_transaction_id())) {
       $payload = freedompay_checkout_payload();
       if (_freedompay_transaction_payload_changed($transaction, $payload)) {
         _freedompay_restart_transaction();
