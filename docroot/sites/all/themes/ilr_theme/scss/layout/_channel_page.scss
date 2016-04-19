@@ -80,7 +80,7 @@ body.node-type-channel-page {
           padding-top: 0;
           padding-bottom: 0;
           h2 {
-            @include adjust-font-size-to(30px);
+            @include adjust-font-size-to(24px);
             @include adjust-leading-to(.8);
             font-weight: 300;
             color: white;
@@ -178,6 +178,10 @@ body.node-type-channel-page {
 
   #main[data-eq-state="550"] {
     #content {
+      .entity-paragraphs-item {
+        padding-top: 1em;
+        padding-bottom: 1em;
+      }
       .entity-paragraphs-item.paragraphs-item-display-a-block {
         article:not(.node-slide) {
           @extend %two-column;
@@ -205,15 +209,25 @@ body.node-type-channel-page {
       .field-name-field-image {
         text-align: left;
       }
+      .entity-paragraphs-item {
+        padding-top: 2em;
+        padding-bottom: 2em;
+      }
       .entity-paragraphs-item.paragraphs-item-display-a-block {
-        article:not(.node-slide) {
+        // article:not(.node-slide) {
+        article:not(.multi-col) {//todo: remove when converted to paragraph bundle
           @extend %two-column;
         }
-        article.node-slide {
+        // article.node-slide {
+        article.multi-col {//todo: change class when converted to paragraph bundle
           @extend %three-column-masonry;
         }
       }
       .entity-paragraphs-item.paragraphs-item-featured-promo {
+        h2 {
+          @include adjust-font-size-to(30px);
+          @include adjust-leading-to(.8);
+        }
         .content {
           .field-name-field-image {
             @include grid-span (5,1);
@@ -262,6 +276,10 @@ body.node-type-channel-page {
       .field-name-field-image {
         text-align: left;
       }
+      .entity-paragraphs-item {
+        padding-top: 2em;
+        padding-bottom: 2em;
+      }
       .entity-paragraphs-item.paragraphs-item-display-a-block {
         .event-block {
           padding-top: 2em;
@@ -271,6 +289,10 @@ body.node-type-channel-page {
         }
       }
       .entity-paragraphs-item.paragraphs-item-featured-promo {
+        h2 {
+          @include adjust-font-size-to(30px);
+          @include adjust-leading-to(.8);
+        }
         .content {
           .field-name-field-image {
             @include grid-span (5,1);

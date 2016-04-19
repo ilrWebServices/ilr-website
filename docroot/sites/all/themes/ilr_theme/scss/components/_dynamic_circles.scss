@@ -91,3 +91,9 @@ article.node-slide {
     }
   }
 }
+
+#main[data-eq-state="550"] {
+  article.node-slide {
+    min-height: 0;
+  }
+}
