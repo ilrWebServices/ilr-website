@@ -402,6 +402,11 @@ function freedompay_order($order_id=NULL, $order=NULL) {
     elseif ($order_id || $order_id = _freedompay_cookie_get('oid')) {
       $cached_order = FreedomPayOrder::load($order_id);
     }
+    elseif ($transaction_id = _freedompay_get_transaction_id()) {
+      if ($order = FreedomPayOrder::getOrderByTransactionId($transaction_id)) {
+        $cached_order = $order;
+      }
+    }
   }
   return $cached_order;
 }
@@ -485,13 +490,13 @@ function freedompay_permission() {
  * Complete the checkout if needed, or pass them along if it's already complete
  */
 function freedompay_success_page() {
-  if (isset($_REQUEST['transid']) && !_freedompay_payment_complete()) {
+  if (_freedompay_get_transaction_id() && !_freedompay_payment_complete()) {
     _freedompay_complete_checkout();
   } // transid is missing or the payment was already completed
   else {
     if ($order = freedompay_order()) {
       _freedompay_cookie_flush();
-      if (_freedompay_payment_complete()) {
+      if (_freedompay_payment_complete($order)) {
         module_invoke_all('freedompay_order_complete', $order, $order->entity_type, $order->bundle);
       }
       else { // Redirect to the checkout page
@@ -637,7 +642,7 @@ function _freedompay_get_service_url() {
 
 /**
  * Get the transaction id
- * - first from a potential url variable
+ * - first from a potential url variable (without case sensitivity)
  * - next from the cookie
  */
 function _freedompay_get_transaction_id() {
@@ -645,6 +650,8 @@ function _freedompay_get_transaction_id() {
   if (!isset($transaction_id)) {
     if (isset($_REQUEST['transid'])) {
       $transaction_id = $_REQUEST['transid'];
+    } elseif (isset($_REQUEST['transId'])) {
+      $transaction_id = $_REQUEST['transId'];
     }
     elseif ($transaction_id = _freedompay_cookie_get('transaction_id')) {
       return $transaction_id;

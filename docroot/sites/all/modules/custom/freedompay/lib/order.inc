@@ -35,4 +35,10 @@ class FreedomPayOrder {
     }
     return $order;
   }
+
+  public static function getOrderByTransactionId($transaction_id) {
+    if ($invoice = FreedomPayInvoice::getInvoiceByTransactionId($transaction_id)) {
+      return FreedomPayOrder::load($invoice->order_id, $invoice->order_type);
+    }
+  }
 }

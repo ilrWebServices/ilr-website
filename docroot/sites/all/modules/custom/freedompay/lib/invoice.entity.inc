@@ -151,6 +151,19 @@ class FreedompayInvoice extends Entity {
     return NULL;
   }
 
+  public static function getInvoiceByTransactionId($transaction_id) {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'freedompay_invoice')
+          ->propertyCondition('transaction_id', $transaction_id);
+    $result = $query->execute();
+    if (isset($result['freedompay_invoice'])) {
+      $invoice_ids = array_keys($result['freedompay_invoice']);
+      $invoice_array = FreedompayInvoice::getInvoices($invoice_ids);
+      return reset($invoice_array);
+    }
+    return NULL;
+  }
+
   /**
    * Checks the invoice number and prefix combination
    * - called after the alter hook since that can modify either of those values
