@@ -42,6 +42,8 @@ body.node-type-channel-page {
         text-align: center;
       }
 
+
+
       .paragraphs-items-field-para-main-page-content {
         .field-name-field-para-main-page-content:nth-child(even) {
           background: white;
@@ -51,6 +53,7 @@ body.node-type-channel-page {
         .field-name-field-para-main-page-content:nth-child(1) {
           border-top: 1px solid $gray-light;
         }
+
         .entity-paragraphs-item {
           padding-top: 2em;
           padding-bottom: 2em;
@@ -233,8 +236,9 @@ body.node-type-channel-page {
             @include grid-span (5,1);
           }
           .group-featured-promo-story{
-            @include grid-span (6,6);
+            @include grid-span (7,6);
             padding-bottom: 0;
+            padding-right: 2em;
           }
         }
       }
@@ -301,6 +305,7 @@ body.node-type-channel-page {
             @include grid-span (7,6);
             padding-top: 4em;
             padding-bottom: 0;
+            padding-right: 2em;
             ul {
               li {
                 display: inline;
