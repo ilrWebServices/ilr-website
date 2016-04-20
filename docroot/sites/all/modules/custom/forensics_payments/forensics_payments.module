@@ -17,12 +17,12 @@ function forensics_payments_freedompay_checkout_payload_alter(&$payload, $order,
 function forensics_payments_freedompay_transaction_total_alter(&$transaction_total, $order, $form_id) {
   if ($form_id == 'forensics_debate_camp_payment') {
     $transaction_total = 0;
-    if ($wrapper = _forensics_payments_get_entityform_wrapper()) {
+    if ($wrapper = $order->formWrapper()) {
       if (isset($wrapper->field_total_cost)) {
-          $transaction_total = $wrapper->field_total_cost->value();
-        }
-  }
-  return $transaction_total;
+        $transaction_total = $wrapper->field_total_cost->value();
+      }
+    }
+    return $transaction_total;
   }
 }
 
@@ -79,6 +79,9 @@ function _forensics_payments_get_billing_address() {
  * Wrapper function for freedompay_entityform_wrapper().
  */
 function _forensics_payments_get_entityform_wrapper() {
+  if ($order = freedompay_order()) {
+    return $order->formWrapper();
+  }
   return freedompay_entityform_wrapper();
 }
 

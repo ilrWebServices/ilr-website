@@ -38,7 +38,9 @@ function freedompay_access($op, $entity = NULL, $account = NULL) {
 function freedompay_bundle() {
   $bundle = &drupal_static(__FUNCTION__);
   if (!isset($bundle)) {
-    $bundle = _freedompay_cookie_get('order_bundle');
+    if ($order = freedompay_order()) {
+      $bundle = $order->bundle;
+    }
   }
   return $bundle;
 }
@@ -96,12 +98,15 @@ function freedompay_checkout_page() {
     }
     // Check for existing checkout_url, which gets stored as a cookie when a transaction is initiated
     if ($checkout_url = _freedompay_get_checkout_url()) {
-      if ($transaction = freedompay_call_freedompay_api('getTransaction', _freedompay_get_transaction_id())) {
-        // Add the checkout message
+      // First make sure that the transaction wasn't already completed
+      if (freedompay_transaction_completed()) {
+        return _freedompay_complete_checkout();
+      }
+      elseif (freedompay_transaction_prepared()) {
         $markup .= _freedompay_get_message('checkout');
         $markup .= _freedompay_get_order_summary();
         $markup .= _freedompay_get_complete_purchase_button($checkout_url);
-      } // Transaction failed for some reason
+      } // There is an issue with the current transaction
       else {
         _freedompay_restart_transaction();
         return _freedompay_redirect(_freedompay_get_checkout_path());
@@ -129,11 +134,10 @@ function freedompay_checkout_page() {
  * Gets the checkout payload and caches it
  * Calls the alter function before caching
  */
-function freedompay_checkout_payload() {
+function freedompay_checkout_payload($order=NULL) {
   $payload = &drupal_static(__FUNCTION__);
   if (!isset($payload)) {
-    $order = freedompay_order();
-    $hpp = FreedompayHpp::getCurrentPortal();
+    $order = ($order) ? freedompay_order($order->id, $order) : freedompay_order();
     $transaction_total = freedompay_transaction_total();
     $invoice = freedompay_invoice($order, $transaction_total);
     $payload = array(
@@ -141,8 +145,8 @@ function freedompay_checkout_payload() {
       'CaptureMode' => TRUE,
       'AddressRequired' => TRUE,
       'TransactionTotal' => $transaction_total,
-      'TerminalId' => $hpp->terminal_id,
-      'StoreId' => $hpp->store_id,
+      'TerminalId' => $order->hpp->terminal_id,
+      'StoreId' => $order->hpp->store_id,
       'MerchantReferenceCode' => $order->entity_type . $order->id,
     );
     drupal_alter('freedompay_checkout_payload', $payload, $order, $order->bundle);
@@ -150,15 +154,20 @@ function freedompay_checkout_payload() {
   return $payload;
 }
 
-function freedompay_error_page() {
-  $params = array(
-    'query' => array(
-      'transid' => $_GET['transid'],
-      'fpr' => 'r',
-    ),
+function freedompay_create_order($id, $entity_type='', $entity=NULL) {
+  $transaction_id = _freedompay_get_transaction_id();
+  $properties = array(
+    'form' => $entity,
+    'entity_type' => $entity_type,
+    'id' => $id,
+    'bundle' => $entity->type,
+    'hpp' => FreedompayHpp::getPortalForType($entity_type, $entity->type),
+    'invoice' => FreedomPayInvoice::getInvoiceByTransactionId($transaction_id),
   );
-  _freedompay_redirect(_freedompay_get_checkout_path(), $params);
-  return 'Payment Error';
+  $order = new FreedomPayOrder($properties);
+  // Set the order cache with the update info
+  freedompay_order($order->id, $order);
+  return $order;
 }
 
 /**
@@ -220,6 +229,17 @@ function freedompay_entity_info() {
       'label callback' => 'entity_class_label'
     ),
   );
+}
+
+function freedompay_failure_page() {
+  $params = array(
+    'query' => array(
+      'transid' => $_GET['transid'],
+      'fpr' => 'r',
+    ),
+  );
+  _freedompay_redirect(_freedompay_get_checkout_path(), $params);
+  return 'Payment Error';
 }
 
 /**
@@ -323,12 +343,11 @@ function freedompay_invoice($order, $amount=NULL) {
     return $invoice;
   } // Create a new invoice
   else {
-    $hpp = FreedompayHpp::getCurrentPortal();
     $properties = array(
       'transaction_id' => _freedompay_get_transaction_id(),
       'order_id' => $order->id,
       'amount' => $amount,
-      'hpp_id' => $hpp->hpp_id,
+      'hpp_id' => $order->hpp->hpp_id,
       'order_type' => $order->entity_type,
     );
     $invoice = new FreedompayInvoice($properties);
@@ -393,6 +412,16 @@ function freedompay_menu() {
   return $items;
 }
 
+/**
+ * Loads the order and typically caches it
+ * @param  int              $order_id
+ *         The id of the entity
+ * @param  FreedomPayOrder $order
+ *         The order object, which allows us to set the cache
+ * @param  boolean $set_cache
+ *         Because we are loading the entity from the db,
+ *         we need to skip the cache when comparing
+ */
 function freedompay_order($order_id=NULL, $order=NULL) {
   $cached_order = &drupal_static(__FUNCTION__);
   if (!isset($cached_order)) {
@@ -402,7 +431,7 @@ function freedompay_order($order_id=NULL, $order=NULL) {
     elseif ($order_id || $order_id = _freedompay_cookie_get('oid')) {
       $cached_order = FreedomPayOrder::load($order_id);
     }
-    elseif ($transaction_id = _freedompay_get_transaction_id()) {
+    elseif ($transaction_id = _freedompay_get_transaction_id(FALSE)) {
       if ($order = FreedomPayOrder::getOrderByTransactionId($transaction_id)) {
         $cached_order = $order;
       }
@@ -425,11 +454,11 @@ function freedompay_payment() {
       );
     } // There is not yet an existing payment, so attempt to create one
     else {
-      $results = freedompay_call_freedompay_api('getTransaction', _freedompay_get_transaction_id());
+      $results = freedompay_call_freedompay_api('getTransaction', $transaction_id);
       if (!empty($results) && $results['AuthResponse']['AuthorizationDecision'] == 'ACCEPT') {
         $freeway_response = $results['AuthResponse']['FreewayResponse'];
         $form_id = _freedompay_cookie_get('oid');
-        $invoice = FreedomPayInvoice::getInvoiceByOrderId($form_id);
+        $invoice = FreedomPayInvoice::getInvoiceByTransactionId($transaction_id);
         $properties = [
           'transaction_id' => $transaction_id,
           'authorization_code' => $freeway_response['AuthorizationCode'],
@@ -454,6 +483,32 @@ function freedompay_payment() {
     }
   }
   return NULL;
+}
+
+/**
+ * Checks for an existing payment
+ * Or whether the form doesn't require payment (ie a free event)
+ * @param  FreedomPayOrder $order
+ * @return boolean
+ *         Whether the payment process is considered "complete"
+ */
+function freedompay_payment_complete($order=NULL) {
+  if ($transaction_id = _freedompay_get_transaction_id()) {
+    if ($stored_payment = FreedompayPayment::getPaymentByTransactionId($transaction_id)) {
+      return TRUE;
+    }
+    elseif ($order) {
+      // First set the order cache
+      freedompay_order($order->id, $order);
+      if (!freedompay_payment_required()) {
+        return TRUE;
+      }
+      elseif ($invoice = freedompay_invoice($order)) {
+        return $invoice->paid;
+      }
+    }
+  }
+  return FALSE;
 }
 
 /**
@@ -490,21 +545,66 @@ function freedompay_permission() {
  * Complete the checkout if needed, or pass them along if it's already complete
  */
 function freedompay_success_page() {
-  if (_freedompay_get_transaction_id() && !_freedompay_payment_complete()) {
+  if (_freedompay_get_transaction_id() && !freedompay_payment_complete()) {
     _freedompay_complete_checkout();
   } // transid is missing or the payment was already completed
   else {
     if ($order = freedompay_order()) {
-      _freedompay_cookie_flush();
-      if (_freedompay_payment_complete($order)) {
+      if (freedompay_payment_complete($order)) {
+        _freedompay_cookie_flush();
         module_invoke_all('freedompay_order_complete', $order, $order->entity_type, $order->bundle);
       }
       else { // Redirect to the checkout page
-        _freedompay_redirect(_freedompay_get_checkout_path());
+        $checkout_path = _freedompay_get_checkout_path();
+        _freedompay_cookie_flush();
+        _freedompay_redirect($checkout_path);
       }
     }
   }
   return 'Success';
+}
+
+/**
+ * Checks the AuthResponse from FreedomPay's API
+ */
+function freedompay_transaction_completed() {
+  if ($details = freedompay_transaction_details()) {
+    return isset($details['AuthResponse']) && $details['AuthResponse']['AuthorizationDecision'] == 'ACCEPT';
+  }
+}
+
+/**
+ * Checks to see if the payload values are different from the existing transaction
+ */
+function freedompay_transaction_payload_changed($transaction, $payload) {
+  if (isset($transaction['OriginalRequest'])) {
+    $original = $transaction['OriginalRequest'];
+    $changes = _freedompay_recursive_array_diff($payload, $original);
+    return !empty($changes);
+  }// The original request failed, so the payload is different
+  return TRUE;
+}
+
+function freedompay_transaction_details($transaction_id=NULL) {
+  $details = &drupal_static(__FUNCTION__);
+  if (!isset($details)) {
+    $transaction_id = ($transaction_id) ? $transaction_id : _freedompay_get_transaction_id();
+    if ($transaction_id) {
+      $details = freedompay_call_freedompay_api('getTransaction', $transaction_id);
+    }
+  }
+  return $details;
+}
+
+/**
+ * Checks that the transaction is correctly prepared
+ * At times, the FreedomPay transaction API generates an error instead
+ * of the JSON response body
+ */
+function freedompay_transaction_prepared() {
+  if ($details = freedompay_transaction_details()) {
+    return isset($details['OriginalRequest']);
+  }
 }
 
 /**
@@ -519,6 +619,19 @@ function freedompay_transaction_total() {
     }
   }
   return $transaction_total;
+}
+
+/**
+ * Checks the original invoice amount with the new payload
+ * Updates the amount based on a (possibly different) transaction total
+ */
+function freedompay_update_invoice($order, $data=array()) {
+  if ($invoice = FreedompayInvoice::getInvoiceByOrderId($order->id)) {
+    foreach ($data as $property => $value) {
+      $invoice->{$property} = $value;
+    }
+    $invoice->save();
+  }
 }
 
 /**
@@ -543,7 +656,7 @@ function _freedompay_cookie_get($name) {
 }
 
 function _freedompay_cookie_flush() {
-  $cookies = ['oid','order_type','order_bundle','order_url','transaction_id','checkout_url'];
+  $cookies = ['oid','order_url','checkout_url','transaction_id'];
   foreach ($cookies as $key => $name) {
     _freedompay_cookie_delete($name);
   }
@@ -575,12 +688,9 @@ function _freedompay_create_payment() {
  */
 function _freedompay_get_checkout_path() {
   if($order = freedompay_order()) {
-    $hpp = FreedompayHpp::getCurrentPortal();
+    return $order->hpp->checkout_path;
   }
-  else {
-    return 'payment/checkout';
-  }
-  return $hpp->checkout_path;
+  return 'payment/checkout';
 }
 
 function _freedompay_get_checkout_url() {
@@ -607,6 +717,7 @@ function _freedompay_get_message($action) {
       break;
     case 'r':
       $message = variable_get('freedompay_'.$bundle.'_reject_message', FREEDOMPAY_DEFAULT_REJECT_MESSAGE);
+      break;
     case 'checkout':
       $message = variable_get('freedompay_'.$bundle.'_checkout_message', FREEDOMPAY_DEFAULT_CHECKOUT_MESSAGE);
       break;
@@ -644,17 +755,26 @@ function _freedompay_get_service_url() {
  * Get the transaction id
  * - first from a potential url variable (without case sensitivity)
  * - next from the cookie
+ * - finally from the order
+ * @param Boolean   $check_oder - Prevents recursive checking,
+ *                  since freedompay_order calls this function
  */
-function _freedompay_get_transaction_id() {
+function _freedompay_get_transaction_id($check_order=TRUE) {
   $transaction_id = &drupal_static(__FUNCTION__);
   if (!isset($transaction_id)) {
     if (isset($_REQUEST['transid'])) {
       $transaction_id = $_REQUEST['transid'];
-    } elseif (isset($_REQUEST['transId'])) {
+    }
+    elseif (isset($_REQUEST['transId'])) {
       $transaction_id = $_REQUEST['transId'];
     }
-    elseif ($transaction_id = _freedompay_cookie_get('transaction_id')) {
-      return $transaction_id;
+    elseif ($transaction_id_cookie = _freedompay_cookie_get('transaction_id')) {
+      $transaction_id = $transaction_id_cookie;
+    }
+    elseif ($check_order && $order = freedompay_order()) {
+      if ($order->transaction_id) {
+        $transaction_id = $order->transaction_id;
+      }
     }
   }
   return $transaction_id;
@@ -670,31 +790,7 @@ function _freedompay_invoices_page() {
  */
 function _freedompay_mark_invoice_paid($order) {
   $properties = array('paid' => 1);
-  _freedompay_update_invoice($order, $properties);
-}
-
-/**
- * Checks for an existing payment
- * Or whether the form doesn't require payment (ie a free event)
- * @param  [FreedomPayOrder] $order
- * @return [boolean]
- *         Whether the payment process is considered "complete"
- */
-function _freedompay_payment_complete($order=NULL) {
-  if ($transaction_id = _freedompay_get_transaction_id()) {
-    return FreedompayPayment::getPaymentByTransactionId($transaction_id);
-  }
-  elseif ($order) {
-    // First set the order cache
-    freedompay_order($order->id, $order);
-    if (!freedompay_payment_required()) {
-      return TRUE;
-    }
-    elseif ($invoice = freedompay_invoice($order)) {
-      return $invoice->paid;
-    }
-  }
-  return FALSE;
+  freedompay_update_invoice($order, $properties);
 }
 
 function _freedompay_payments_page() {
@@ -779,29 +875,4 @@ function _freedompay_redirect($url, $params=array()) {
 function _freedompay_restart_transaction() {
   _freedompay_cookie_delete('transaction_id');
   _freedompay_cookie_delete('checkout_url');
-}
-
-/**
- * Checks to see if the payload values are different from the existing transaction
- */
-function _freedompay_transaction_payload_changed($transaction, $payload) {
-  if (isset($transaction['OriginalRequest'])) {
-    $original = $transaction['OriginalRequest'];
-    $changes = _freedompay_recursive_array_diff($payload, $original);
-    return !empty($changes);
-  }// The original request failed, so the payload is different
-  return TRUE;
-}
-
-/**
- * Checks the original invoice amount with the new payload
- * Updates the amount based on a (possibly different) transaction total
- */
-function _freedompay_update_invoice($order, $data=array()) {
-  if ($invoice = FreedompayInvoice::getInvoiceByOrderId($order->id)) {
-    foreach ($data as $property => $value) {
-      $invoice->{$property} = $value;
-    }
-    $invoice->save();
-  }
 }

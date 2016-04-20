@@ -27,12 +27,25 @@ function freedompay_entityform_entityform_insert($entityform) {
 
 /**
  * Implements hook_entity_presave().
- * Sets the draft status of the form
+ * -Sets the order cache to new values
+ * -Checks to see if the payload has changed
+ * -Sets the draft status of the form
  */
 function freedompay_entityform_entityform_presave($entityform) {
   if (freedompay_entityform_is_payment_form($entityform)) {
     if (!_freedompay_get_transaction_id()) {
       _freedompay_entityform_set_entityform_cookies($entityform);
+    }
+    if ($transaction_details = freedompay_transaction_details()) {
+      // Set the order cache
+      $order = freedompay_create_order($entityform->entityform_id, 'entityform', $entityform);
+      $payload = freedompay_checkout_payload($order);
+      if (freedompay_transaction_payload_changed($transaction_details, $payload)) {
+        _freedompay_restart_transaction();
+        $properties = array('amount' => $payload['TransactionTotal']);
+        $order = freedompay_order($entityform->entityform_id);
+        freedompay_update_invoice($order, $properties);
+      }
     }
     $entityform->draft = _freedompay_entityform_get_draft_status($entityform);
   }
@@ -46,24 +59,6 @@ function freedompay_entityform_entityform_previous_submission_alter(&$entityform
   if ($previous_submission = freedompay_entityform_entityform()) {
     if ($entityform_type == $previous_submission->type && $previous_submission->draft == 1) {
       $entityform_submission = $previous_submission;
-    }
-  }
-}
-
-/**
- * Implements hook_entity_update().
- * Checks to be sure that to transaction total hasn't changed
- */
-function freedompay_entityform_entityform_update($entityform) {
-  if (freedompay_entityform_is_payment_form($entityform) && freedompay_payment_required()) {
-    if ($transaction = freedompay_call_freedompay_api('getTransaction', _freedompay_get_transaction_id())) {
-      $payload = freedompay_checkout_payload();
-      if (_freedompay_transaction_payload_changed($transaction, $payload)) {
-        _freedompay_restart_transaction();
-        $properties = array('amount' => $payload['TransactionTotal']);
-        $order = freedompay_order($entityform->entityform_id);
-        _freedompay_update_invoice($order, $properties);
-      }
     }
   }
 }
@@ -269,7 +264,7 @@ function _freedompay_entityform_get_draft_status($entityform) {
   $draft = 1;
   if (!empty($entityform->entityform_id)) {
     $order = freedompay_order($entityform->entityform_id);
-    $draft = !_freedompay_payment_complete($order);
+    $draft = !freedompay_payment_complete($order);
   }
   return $draft;
 }
@@ -279,9 +274,8 @@ function _freedompay_entityform_get_draft_status($entityform) {
  */
 function _freedompay_entityform_set_entityform_cookies($entityform) {
   _freedompay_cookie_save([
-    'order_url' => current_path(),
-    'oid' => $entityform->entityform_id,
-    'order_type' => 'entityform',
-    'order_bundle' => $entityform->type,
+    'order_url'     => current_path(),
+    'oid'           => $entityform->entityform_id,
+    'order_type'  => 'entityform',
   ]);
 }

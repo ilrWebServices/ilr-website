@@ -67,14 +67,6 @@ class FreedompayHpp extends Entity {
     return entity_load('freedompay_hpp', $portal_ids, $conditions, $reset);
   }
 
-  public static function getCurrentPortal() {
-    $portal = NULL;
-    if ($type = _freedompay_cookie_get('order_type')) {
-      $portal = FreedompayHpp::getPortalForType($type, _freedompay_cookie_get('order_bundle'));
-    }
-    return $portal;
-  }
-
   public static function getPortalForType($type, $bundle) {
     $portal = NULL;
     switch ($type) {
