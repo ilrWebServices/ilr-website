@@ -118,7 +118,6 @@ function freedompay_checkout_page() {
     } // Transaction fail, so send the user back to the form
     else {
       $order_url = _freedompay_cookie_get('order_url');
-      _freedompay_cookie_flush();
       drupal_set_message(t(FREEDOMPAY_FAILED_TRANSACTION_MESSAGE), 'error');
       return _freedompay_redirect($order_url);
     }
