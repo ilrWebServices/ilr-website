@@ -381,7 +381,7 @@ function freedompay_menu() {
           'description' => $title . ' Page',
           'page callback' => "freedompay_{$path_name}_page",
           'access arguments' => array('access content'),
-          'type' => MENU_NORMAL_ITEM,
+          'type' => MENU_CALLBACK,
         );
       }
     }
@@ -399,6 +399,7 @@ function freedompay_menu() {
     'description' => 'Freedompay Payments Page',
     'page callback' => "_freedompay_create_payment",
     'access arguments' => array('access freedompay payments'),
+    'type' => MENU_CALLBACK,
   );
 
   $items['admin/config/services/freedompay/invoices'] = array(
