@@ -332,6 +332,11 @@ function freedompay_hpp_form_submit($form, &$form_state) {
   $form_state['redirect'] = 'admin/config/services/freedompay/hpp';
 }
 
+function freedompay_is_production() {
+  $environment = variable_get('freedompay_environment', 'production');;
+  return $environment == 'production';
+}
+
 /**
  * Gets the existing invoice or creates a new one
  * Calls the alter hook
@@ -744,8 +749,7 @@ function _freedompay_get_order_summary() {
  * You can/should override this when testing by setting this variable to any other value
  */
 function _freedompay_get_service_url() {
-  $environment = variable_get('freedompay_environment', 'production');
-  $service_url = ($environment == 'production')
+  $service_url = (freedompay_is_production())
     ? 'https://payments.freedompay.com/checkoutservice/checkoutservice.svc'
     : 'https://payments.uat.freedompay.com/checkoutservice/checkoutservice.svc';
   return $service_url;

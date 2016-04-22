@@ -64,30 +64,6 @@ function freedompay_entityform_entityform_previous_submission_alter(&$entityform
 }
 
 /**
- * Implements hook_entityform_view().
- * Checks for the ecommerce cookie and tracks a payment if needed
- */
-function freedompay_entityform_entityform_view($entityform) {
-  if (module_exists('google_ecommerce_tracking')) {
-    if (isset($_SESSION['google_ecommerce_tracking_order_id'])
-        && $_SESSION['google_ecommerce_tracking_order_id'] == $entityform->entityform_id) {
-      // Set the order cache
-      if ($order = freedompay_order($entityform->entityform_id)) {
-        google_ecommerce_tracking_track_order($order);
-      }
-      else {
-        watchdog('freedompay_entityform', "Order failed to load when attempting to track payment form @form_id",
-          array(
-            '@form_id' => $entityform->entityform_id,
-          ),
-          WATCHDOG_ERROR
-        );
-      }
-    }
-  }
-}
-
-/**
  * Implements hook_form_FORM_ID_alter.
  *   Allows specifying the admin for the form
  *   Adds checkbox to specify NetID login requirement

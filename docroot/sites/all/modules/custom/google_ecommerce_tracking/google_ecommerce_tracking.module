@@ -5,15 +5,38 @@
  */
 
 /**
+ * Implements hook_entityform_view().
+ * Checks for the ecommerce cookie and tracks a payment if needed
+ */
+function google_ecommerce_tracking_entityform_view($entityform) {
+  if (isset($_SESSION['google_ecommerce_tracking_order_id'])
+      && $_SESSION['google_ecommerce_tracking_order_id'] == $entityform->entityform_id) {
+    // Set the order cache
+    if ($order = freedompay_order($entityform->entityform_id)) {
+      google_ecommerce_tracking_track_order($order);
+    }
+    else {
+      watchdog('freedompay_entityform', "Order failed to load when attempting to track payment form @form_id",
+        array(
+          '@form_id' => $entityform->entityform_id,
+        ),
+        WATCHDOG_ERROR
+      );
+    }
+  }
+}
+
+/**
  * Implements hook_freedompay_order_complete().
  * Sets the session var for the order id
  * @param  FreedomPayOrder $order
  */
 function google_ecommerce_tracking_freedompay_order_complete($order, $type, $form_id) {
-  if (!ilr_is_production_site()) { // Don't track when testing
-    return;
+  // Track only on production
+  $prod = freedompay_is_production();
+  if ($prod) {
+    $_SESSION['google_ecommerce_tracking_order_id'] = $order->id;
   }
-  $_SESSION['google_ecommerce_tracking_order_id'] = $order->id;
 }
 
 function google_ecommerce_tracking_track_order($order) {
