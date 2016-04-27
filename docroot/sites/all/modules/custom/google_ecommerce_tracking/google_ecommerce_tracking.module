@@ -5,47 +5,63 @@
  */
 
 /**
- * Implements hook_freedompay_form_complete().
- * Adds the session variable we look for when the entityform loads
+ * Implements hook_entityform_view().
+ * Checks for the ecommerce cookie and tracks a payment if needed
  */
-function google_ecommerce_tracking_freedompay_form_complete($entityform) {
-  if (!ilr_is_production_site()) { // Don't track when testing
-    return;
+function google_ecommerce_tracking_entityform_view($entityform) {
+  if (isset($_SESSION['google_ecommerce_tracking_order_id'])
+      && $_SESSION['google_ecommerce_tracking_order_id'] == $entityform->entityform_id) {
+    // Set the order cache
+    if ($order = freedompay_order($entityform->entityform_id)) {
+      google_ecommerce_tracking_track_order($order);
+    }
+    else {
+      watchdog('freedompay_entityform', "Order failed to load when attempting to track payment form @form_id",
+        array(
+          '@form_id' => $entityform->entityform_id,
+        ),
+        WATCHDOG_ERROR
+      );
+    }
   }
-  $_SESSION['google_ecommerce_tracking_entityform_id'] = $entityform->entityform_id;
 }
 
 /**
- * Implements hook_entityform_view().
- * Adds the tracking datalayer for Google tag manager if payment was required
+ * Implements hook_freedompay_order_complete().
+ * Sets the session var for the order id
+ * @param  FreedomPayOrder $order
  */
-function google_ecommerce_tracking_entityform_view($entityform) {
-  if (isset($_SESSION['google_ecommerce_tracking_entityform_id'])) {
-    // Set the entityform cache
-    $entityform = freedompay_entityform($entityform);
-    if (freedompay_payment_required()) {
-      if ($payload = freedompay_checkout_payload()) {
-        _google_ecommerce_tracking_add_datalayer($entityform, $payload);
-        unset($_SESSION['google_ecommerce_tracking_entityform_id']);
-      }
-      else {
-        watchdog('google_ecommerce_tracking', "Payload failed to load when attempting to track payment form @entityform_id",
-          array(
-            '@entityform_id' => $entityform->entityform_id,
-          ),
-          WATCHDOG_ERROR
-        );
-      }
-    }
-    else { // Payment wasn't required
-      unset($_SESSION['google_ecommerce_tracking_entityform_id']);
-    }
+function google_ecommerce_tracking_freedompay_order_complete($order, $type, $form_id) {
+  // Track only on production
+  $prod = freedompay_is_production();
+  if ($prod) {
+    $_SESSION['google_ecommerce_tracking_order_id'] = $order->id;
   }
 }
 
-function _google_ecommerce_tracking_add_datalayer($entityform, $payload) {
-  $invoice = FreedompayInvoice::getInvoiceByOrderId($entityform->entityform_id);
-  $hpp = FreedompayHpp::getPortalForForm($entityform);
+function google_ecommerce_tracking_track_order($order) {
+  if (freedompay_payment_required()) {
+    if ($payload = freedompay_checkout_payload()) {
+      _google_ecommerce_tracking_add_datalayer($order, $payload);
+      unset($_SESSION['google_ecommerce_tracking_order_id']);
+    }
+    else {
+      watchdog('google_ecommerce_tracking', "Payload failed to load when attempting to track payment form @form_id",
+        array(
+          '@form_id' => $order->id,
+        ),
+        WATCHDOG_ERROR
+      );
+    }
+  }
+  else { // Payment wasn't required
+    unset($_SESSION['google_ecommerce_tracking_order_id']);
+  }
+}
+
+function _google_ecommerce_tracking_add_datalayer($order, $payload) {
+  $invoice = FreedompayInvoice::getInvoiceByOrderId($order->id);
+  $hpp = FreedompayHpp::getPortalForType($order->entity_type, $order->bundle);
   $transaction_total = freedompay_transaction_total();
   $data_layer = array();
   $data_layer[] = [

@@ -11,6 +11,7 @@ class FreedompayPayment extends Entity {
     $transaction_id = '',
     $authorization_code = '',
     $form_id = NULL,
+    $invoice_id = NULL,
     $amount = '',
     $freeway_request_id = '',
     $card_number = '',
@@ -35,7 +36,7 @@ class FreedompayPayment extends Entity {
   public static function tableView($paymentIds) {
     $tableView = array(
       '#theme' => 'table',
-      '#header' => array(t('Form'),t('Authorization code'), t('Freeway Request ID'), t('Amount'), t('Card number')),
+      '#header' => array(t('Invoice'),t('Authorization code'), t('Freeway Request ID'), t('Amount'), t('Card number')),
       '#rows' => FreedompayPayment::rowView($paymentIds),
       '#attributes' => array('class' => array('table-class')),
       '#empty' =>t('No payments have been processed yet'),
@@ -46,9 +47,9 @@ class FreedompayPayment extends Entity {
   public static function rowView($paymentIds) {
     $rows = [];
     $payments = FreedompayPayment::getPayments($paymentIds);
-    foreach ($payments as $id=> $payment) {
+    foreach ($payments as $id => $payment) {
       $rows[$id] = array(
-        'form' => l($payment->form_id, 'entityform/'.$payment->form_id),
+        'invoice' => $payment->getInvoiceLink(),
         'authorization_code' => $payment->authorization_code,
         'request_id' => $payment->freeway_request_id,
         'amount' => $payment->amount,
@@ -56,6 +57,13 @@ class FreedompayPayment extends Entity {
       );
     }
     return $rows;
+  }
+
+  public function getInvoiceLink() {
+    if ($invoice = FreedomPayInvoice::getInvoiceById($this->invoice_id)) {
+      return l($invoice->formatInvoiceNumber(), 'admin/config/services/freedompay/invoices');
+    }
+    return 'Missing';
   }
 
   public static function getPaymentIds() {

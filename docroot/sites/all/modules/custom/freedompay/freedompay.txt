@@ -7,37 +7,51 @@ FreedomPay HPP Integration for Drupal
 Dependencies
 ------------
 
-Entityform, Entity
+Entity
+
+
+Sub Modules
+-----------
+
+FreedomPay Entityform
+
+
+Related
+-------
+
+Google Ecommerce Tracking sandbox project
 
 
 How to use
 ----------
 
 - Download and enable this module
-- Create a custom module that implements hook_freedompay_checkout_payload_alter(). This allows you to set some important values for the portal payment, such as TransactionTotal and PurchaseItems.
+- Create a custom module that implements hook_freedompay_checkout_payload_alter(). This allows you to set some important values for the portal payment, such as TransactionTotal and PurchaseItems. You can read about additional hooks in the freedompay.api.php doc.
 - Add a new HPP from the Configuration > Web Services > FreedomPay HPP admin page
-- Create an entityform type with the Payment checkbox selected along with the selected HPP
+- Set the variable freedompay_environment to any value other than "production". You can use your local settings.php file, or `drush vset freedompay_environment testing`. This is used to set the correct api endpoint.
+- If using FreedomPay with the freedompay_entityform submodule, create an entityform type that is set to be "draftable" with the Payment checkbox selected along with the selected HPP
+- Currently, entityforms are the only supported order type. Additional integrations (ie Commerce) could be easily supported in the future.
 
 
 How it works
 ------------
 
-The basic FreedomPay HPP Drupal workflow involves two api enpoints at FreedomPay, createTransaction and getTransaction. The module uses the former to initiate a transaction, and the latter to check whether it was completed, and if so, to store the relevant data. In addition to the HPP data (saved in the Drupal HPP entity), the createTransaction endpoint needs a TransactionTotal. This module relies on entityforms to collect the relevant information in order to create the transaction.
+The basic FreedomPay HPP Drupal workflow involves two api enpoints at FreedomPay, createTransaction and getTransaction. The module uses the former to initiate a transaction, and the latter to check whether it was completed, and if so, to store the relevant data. In addition to the HPP data (saved in the Drupal HPP entity), the createTransaction endpoint needs a TransactionTotal. This module relies on a chosen submodule (currently, freedompay_entityform) to collect the relevant information in order to create the transaction.
 
 
 Modifying the FreedomPay Checkout Payload
 -----------------------------------------
 
-This module implements a few custom hooks, which are documented in the freedompay.api file. Typical tasks there include modifying the InvoiceNumber, PurchaseItems and/or BillingAddress, all of which are parameters that the FreedomPay Partner Portal supports. Another example would be adding additional configuration for a given interface once the user arrives to the portal, such as supporting international payments for a given form by setting `$payload['AllowInternationalAddresses'] = TRUE;`
+This module implements a few custom hooks, which are documented in the freedompay.api file. Typical tasks there include modifying the InvoiceNumber, TransactionTotal, PurchaseItems and/or BillingAddress, all of which are parameters that the FreedomPay Partner Portal supports. Another example would be adding additional configuration for a given interface once the user arrives to the portal, such as supporting international payments for a given form by setting `$payload['AllowInternationalAddresses'] = TRUE;`
 
 
 Acting on Completed Payments
 ----------------------------
 
-The FreedomPay module defines a hook when the payment process is complete via hook_freedompay_form_complete(). You might use that, for example, to send email notifications regarding the completed payment, or triggering other actions such as decrementing a ticket count, for example.
+The FreedomPay module defines a hook when the payment process is complete via hook_freedompay_order_complete(). You might use that, for example, to send email notifications regarding the completed payment, or triggering other actions such as decrementing a ticket count. The Google Ecommerce Tracking sandbox project uses the hook to add the Google ecommerce tracking code to the page.
 
 
 Customizing Messages to the User
 --------------------------------
 
-Messages to the user are generated in _freedompay_get_message(), which looks in the variables table to see if custom messages have been set for a given payment form, or defaults to the contants defined at the top of the module file. That should be all the functionality you require to add custom messages. In ILR's case, we also have a small custom module called ilr_editable_settings that allows those settings to be modified in the Drupal interface. This is not required, so if you're not using that functionality, the freedompay_form_ilr_editable_settings_form_alter() function can be removed from this module.
+Messages to the user are generated in _freedompay_get_message(), which looks in the variables table to see if custom messages have been set for a given payment form, or defaults to the contants defined at the top of the module file. That should be all the functionality you require to add custom messages for a given HPP-integrated bundle.

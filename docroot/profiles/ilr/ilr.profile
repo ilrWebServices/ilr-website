@@ -522,6 +522,50 @@ function ilr_form_feeds_import_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ * form_id = ilr_editable_settings_form
+ * Adds a setting for cancel and reject messages for all payment forms
+ * @see ilr_editable_settings module.
+ */
+function ilr_form_ilr_editable_settings_form_alter(&$form, &$form_state, $form_id) {
+  if (module_exists('freedompay_entityform')) {
+    $payment_forms = freedompay_entityform_get_payment_forms();
+    $form['freedompay_set'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('FreedomPay Messages'),
+    );
+    $form['freedompay_set']['freedompay_default_cancel_message'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Default FreedomPay cancel message'),
+      '#default_value' => FREEDOMPAY_DEFAULT_CANCEL_MESSAGE,
+    );
+    $form['freedompay_set']['freedompay_default_reject_message'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Default FreedomPay rejected message'),
+      '#default_value' => FREEDOMPAY_DEFAULT_REJECT_MESSAGE,
+    );
+    foreach ($payment_forms as $name => $entityform_type) {
+      $replaced_name = ucfirst(str_replace('_', ' ', $name));
+      $form['freedompay_set']['freedompay_'.$name.'_reject_message'] = array(
+        '#type' => 'textarea',
+        '#title' => t($replaced_name . ' FreedomPay rejected message'),
+        '#default_value' => FREEDOMPAY_DEFAULT_REJECT_MESSAGE,
+      );
+      $form['freedompay_set']['freedompay_'.$name.'_cancel_message'] = array(
+        '#type' => 'textarea',
+        '#title' => t($replaced_name . ' FreedomPay cancel message'),
+        '#default_value' => FREEDOMPAY_DEFAULT_CANCEL_MESSAGE,
+      );
+      $form['freedompay_set']['freedompay_'.$name.'_checkout_message'] = array(
+        '#type' => 'textarea',
+        '#title' => t($replaced_name . ' FreedomPay checkout message'),
+        '#default_value' => FREEDOMPAY_DEFAULT_CHECKOUT_MESSAGE,
+      );
+    }
+  }
+}
+
+/**
  * Gets the netid of the current user
  */
 function ilr_get_netid_of_current_user() {

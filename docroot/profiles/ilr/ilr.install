@@ -748,3 +748,32 @@ function ilr_update_7056() {
   $field_name_to_change = array('field_intro_text' => 'field_para_main_page_content');
   ilr_rename_fields($field_name_to_change, $drop_first = FALSE);
 }
+
+/**
+ * Enables ilr_channel_page feature
+ */
+function ilr_update_7057() {
+  module_enable(array(
+    'ilr_channel_page',
+  ));
+}
+
+/**
+ * Updates FreedomPay payments and invoices - Run twice if fails the first time
+ */
+function ilr_update_7058() {
+  module_enable(array('freedompay_entityform'));
+  if (property_exists('FreedomPayPayment', 'form_id')) {
+    $payments = FreedomPayPayment::getPayments();
+    foreach ($payments as $payment) {
+      if ($invoice = FreedomPayInvoice::getInvoiceByOrderId($payment->form_id)) {
+        $payment->invoice_id = $invoice->invoice_id;
+        $payment->save();
+
+        $invoice->transaction_id = $payment->transaction_id;
+        $invoice->order_type = 'entityform';
+        $invoice->save();
+      }
+    }
+  }
+}

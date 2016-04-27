@@ -5,3 +5,84 @@
  */
 
 include_once 'ilr_paragraphs.features.inc';
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ */
+function ilr_paragraphs_preprocess_field(&$variables) {
+  $paragraph_bundles = [
+    'sponsor_message',
+    'unit_contact_info',
+    'field_people_list',
+  ];
+  if (in_array($variables['element']['#bundle'], $paragraph_bundles)) {
+    _ilr_paragraphs_process_fields($variables);
+  }
+}
+
+/**
+ * Performs field-level alterations to sepcific fields in specific paragraph bundles
+ */
+function _ilr_paragraphs_process_fields(&$variables) {
+  switch ($variables['element']['#field_name']) {
+    case 'field_comments':
+      switch ($variables['element']['#bundle']) {
+        case 'sponsor_message':
+          _ilr_paragraphs_add_class_to_field($variables, 'centered-blurb');
+          if (_ilr_paragraphs_field_has_value($variables, 'field_title_icon_none', 'Icon')) {
+            _ilr_paragraphs_add_class_to_field($variables, 'tower');
+          }
+          break;
+      }
+      break;
+    case 'field_social_channels':
+      switch ($variables['element']['#bundle']) {
+        case 'unit_contact_info':
+          _ilr_paragraphs_add_class_to_field($variables, 'social');
+          break;
+      }
+      break;
+    case 'field_full_name':
+      switch ($variables['element']['#bundle']) {
+        case 'field_people_list':
+          _ilr_paragraphs_link_person_to_profile($variables);
+          break;
+      }
+      break;
+  }
+}
+
+/**
+ * Adds a class to a field
+ */
+function _ilr_paragraphs_add_class_to_field(&$variables, $class) {
+  $variables['classes_array'][] = $class;
+  $variables['attr'] = drupal_attributes(array(
+    'class' => $variables['classes_array'],
+  ));
+}
+
+/**
+ * Returns true if a field has a specific value
+ */
+function _ilr_paragraphs_field_has_value(&$variables, $field, $value) {
+  $result = false;
+  if ($variables['element']['#object']->{$field}['und'][0]['value'] == $value) {
+    $result = true;
+  }
+  return $result;
+}
+
+/**
+ * Links people in field_people_list's to their ilr profile page.
+ * Uses the /directory/{$netid} pattern to specify the alias to the profile page.
+ */
+function _ilr_paragraphs_link_person_to_profile(&$variables) {
+  $net_id = $variables['element']['#object']->field_netid['und'][0]['value'];
+  if ($net_id != '') {
+    $full_name = $variables['element']['#object']->field_full_name['und'][0]['value'];
+    $markup = '<a href="/directory/'.$net_id.'">'.$full_name.'</a>';
+    $variables['items'][0]['#markup'] = $markup;
+  }
+}

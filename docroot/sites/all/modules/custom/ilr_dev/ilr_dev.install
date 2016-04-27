@@ -14,6 +14,7 @@ function ilr_dev_install() {
   variable_set('stage_file_proxy_origin_dir','sites/ilr.cornell.edu/files');
   variable_set('features_rebuild_on_flush',FALSE);
   variable_set('entity_rebuild_on_flush',FALSE);
+  variable_set('freedompay_environment', 'testing');
 
   // Disable any modules we don't want running locally
   module_disable(array(

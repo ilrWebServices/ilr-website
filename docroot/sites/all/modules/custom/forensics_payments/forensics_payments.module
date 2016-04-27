@@ -3,7 +3,7 @@
 /**
  * Implements hook_freedompay_checkout_payload_alter().
  */
-function forensics_payments_freedompay_checkout_payload_alter($form_id, &$payload) {
+function forensics_payments_freedompay_checkout_payload_alter(&$payload, $order, $form_id) {
   if ($form_id == 'forensics_debate_camp_payment') {
     $payload['PurchaseItems'] = _forensics_payments_get_purchase_items();
     $payload['BillingAddress'] = _forensics_payments_get_billing_address();
@@ -12,10 +12,25 @@ function forensics_payments_freedompay_checkout_payload_alter($form_id, &$payloa
 }
 
 /**
+ * Implements hook_freedompay_transaction_total_alter().
+ */
+function forensics_payments_freedompay_transaction_total_alter(&$transaction_total, $order, $form_id) {
+  if ($form_id == 'forensics_debate_camp_payment') {
+    $transaction_total = 0;
+    if ($wrapper = $order->formWrapper()) {
+      if (isset($wrapper->field_total_cost)) {
+        $transaction_total = $wrapper->field_total_cost->value();
+      }
+    }
+    return $transaction_total;
+  }
+}
+
+/**
  * Implements hook_freedompay_invoice_prefix().
  */
-function forensics_payments_freedompay_invoice_prefix($form_id) {
-  if ($form_id == 'forensics_debate_camp_payment') {
+function forensics_payments_freedompay_invoice_prefix($order) {
+  if ($order->bundle == 'forensics_debate_camp_payment') {
     return 'debate';
   }
 }
@@ -64,10 +79,10 @@ function _forensics_payments_get_billing_address() {
  * Wrapper function for freedompay_entityform_wrapper().
  */
 function _forensics_payments_get_entityform_wrapper() {
-  if (module_exists('freedompay')) {
-    return freedompay_entityform_wrapper();
+  if ($order = freedompay_order()) {
+    return $order->formWrapper();
   }
-  return NULL;
+  return freedompay_entityform_wrapper();
 }
 
 /**

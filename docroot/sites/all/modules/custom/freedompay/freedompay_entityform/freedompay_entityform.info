@@ -1,0 +1,8 @@
+name = FreedomPay Entityform
+description = Provides integration between Entityform and FreedomPay
+core = 7.x
+version = 7.x-1.0
+project = freedompay_entityform
+
+dependencies[] = entityform
+dependencies[] = freedompay

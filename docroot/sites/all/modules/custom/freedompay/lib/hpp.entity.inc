@@ -67,15 +67,14 @@ class FreedompayHpp extends Entity {
     return entity_load('freedompay_hpp', $portal_ids, $conditions, $reset);
   }
 
-  public static function getPortalForForm($entityform) {
-    return FreedompayHpp::getPortalForType($entityform->type);
-  }
-
-  public static function getPortalForType($type) {
-    $entityform_type = entityform_type_load($type);
-    if ($hpp = FreedompayHpp::getPortalById($entityform_type->data['hpp'])) {
-      return $hpp;
+  public static function getPortalForType($type, $bundle) {
+    $portal = NULL;
+    switch ($type) {
+      case 'entityform':
+        $entityform_type = entityform_type_load($bundle);
+        $portal = FreedompayHpp::getPortalById($entityform_type->data['hpp']);
+        break;
     }
-    return NULL;
+    return $portal;
   }
 }
