@@ -848,6 +848,7 @@ function ilr_sdc_listings_page_alter(&$page) {
 function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
   switch ($node->type) {
     case 'sdc_course':
+      _ilr_sdc_listings_add_canonical_metatag($node, $view_mode);
       _ilr_sdc_listings_add_prefix_to_title($node, $node->type, $view_mode);
       _ilr_sdc_listings_course_add_instructors($node, $view_mode);
       _ilr_sdc_listings_course_add_classes($node, $view_mode);
@@ -2165,6 +2166,15 @@ function _ilr_sdc_listings_set_default_body(&$node) {
       ),
       '#weight' => 10,
     );
+  }
+}
+
+function _ilr_sdc_listings_add_canonical_metatag($node, $view_mode) {
+  if ($view_mode == 'full') {
+    drupal_add_html_head_link(array(
+      'rel' => 'canonical',
+      'href' => url('node/'.$node->nid, array('absolute' => TRUE)),
+    ));
   }
 }
 
