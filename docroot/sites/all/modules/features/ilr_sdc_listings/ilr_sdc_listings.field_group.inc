@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function ilr_sdc_listings_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -37,7 +37,7 @@ function ilr_sdc_listings_field_group_info() {
       ),
     ),
   );
-  $export['group_main_content|node|sdc_class|default'] = $field_group;
+  $field_groups['group_main_content|node|sdc_class|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -66,7 +66,7 @@ function ilr_sdc_listings_field_group_info() {
       ),
     ),
   );
-  $export['group_main_content|node|sdc_course|default'] = $field_group;
+  $field_groups['group_main_content|node|sdc_course|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -95,7 +95,7 @@ function ilr_sdc_listings_field_group_info() {
       ),
     ),
   );
-  $export['group_main_content|node|sdc_course|teaser'] = $field_group;
+  $field_groups['group_main_content|node|sdc_course|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -120,7 +120,7 @@ function ilr_sdc_listings_field_group_info() {
       ),
     ),
   );
-  $export['group_sidebar|node|sdc_class|default'] = $field_group;
+  $field_groups['group_sidebar|node|sdc_class|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -148,7 +148,7 @@ function ilr_sdc_listings_field_group_info() {
       ),
     ),
   );
-  $export['group_sidebar|node|sdc_course|default'] = $field_group;
+  $field_groups['group_sidebar|node|sdc_course|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -177,7 +177,12 @@ function ilr_sdc_listings_field_group_info() {
       ),
     ),
   );
-  $export['group_sidebar|node|sdc_course|teaser'] = $field_group;
+  $field_groups['group_sidebar|node|sdc_course|teaser'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Main Content');
+  t('Sidebar');
+
+  return $field_groups;
 }

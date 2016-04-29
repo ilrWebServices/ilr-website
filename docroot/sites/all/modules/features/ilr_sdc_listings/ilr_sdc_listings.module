@@ -849,6 +849,7 @@ function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
   switch ($node->type) {
     case 'sdc_course':
       _ilr_sdc_listings_add_prefix_to_title($node, $node->type, $view_mode);
+      _ilr_sdc_listings_course_add_instructors($node, $view_mode);
       _ilr_sdc_listings_course_add_classes($node, $view_mode);
       if ($view_mode == 'reference_field') {
         _ilr_sdc_listings_update_reference($node);
@@ -1105,6 +1106,31 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
       );
     }
     $course_node->content['classes']['#weight'] = 2;
+  }
+}
+
+/**
+ * Add the class instructors to the course nodes.
+ * @param $course_node
+ * @param $view_mode
+ */
+function _ilr_sdc_listings_course_add_instructors(&$course_node, $view_mode) {
+  if ($view_mode == 'full') {
+    $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
+    if ($class_nids) {
+      $content = '<div class="class-details">';
+      $classes = node_load_multiple($class_nids);
+      foreach ($classes as $class) {
+        $class_node_wrapper = ilr_get_node_wrapper($class);
+        $class_id = $class_node_wrapper->field_class_id->value();
+        $content .= _ilr_sdc_listings_generate_faculty_markup($class, $class_id, count($classes));
+      }
+      $content .= '</div>';
+      $course_node->content['instructors'] = array('#markup' => $content,'#weight' => 20);
+      $group_main_content = field_group_load_field_group('group_main_content', 'node', 'sdc_course', 'default');
+      $course_node->content['#groups']['group_main_content'] = $course_node->content['#fieldgroups']['group_main_content'] = $group_main_content;
+      $course_node->content['#group_children']['instructors'] = 'group_main_content';
+    }
   }
 }
 
@@ -1392,23 +1418,30 @@ function _ilr_sdc_listings_get_contextual_link_markup($class) {
   return $markup;
 }
 
-function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id) {
+function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id, $count) {
   $wrapper = ilr_get_node_wrapper($class_node);
   $faculty = $wrapper->field_faculty->value();
-  $markup = '<div class="instructors class-' . $class_id . '">';
-  $markup .= "<h3>Instructors</h3>";
+  $markup = '<div class="instructors class-detail-toggle class-' . $class_id . '">';
+  $markup .= ($count > 1)
+    ? '<h3>Instructors for '. _ilr_sdc_listings_get_class_datespan($class_node).' <br><span class="notice multiple-dates">Select another date to see its instructors.</span></h3>'
+    : '<h3>Instructors</h3>';
   foreach ($faculty as $key => $instructor) {
-    $markup .= _ilr_sdd_listings_add_image_to_faculty($instructor);
-    // Update the title if there is a referenced profile
+    $css_classes = array();
+    $instructor_wrapper = ilr_get_node_wrapper($instructor);
+    // Update the title and image if there is a referenced profile
     if ($nid = _ilr_sdc_listings_get_referenced_profile_nid($instructor)) {
       $profile_wrapper = ilr_get_node_wrapper($nid);
+      if ($profile_image = $profile_wrapper->field_profile_image->value()) {
+        $instructor_wrapper->field_thumbnail->set($profile_image);
+      }
       $profile_title = $profile_wrapper->field_working_title->value();
-      unset($instructor->field_job_title);
-      $instructor->field_job_title[LANGUAGE_NONE][] = array(
-        'value' => $profile_title,
-        'format' => NULL,
-        'safe_value' => check_plain($profile_title),
-      );
+      $instructor_wrapper->field_job_title->set($profile_title);
+    }
+    // Add the silhouette if there is no thumbnail provided
+    if (!$instructor_wrapper->field_thumbnail->value() && $fid = variable_get('ilr_missing_profile_image_fid')) {
+      if ($silhouette = file_load($fid)) {
+        $instructor_wrapper->field_thumbnail->set((array) $silhouette);
+      }
     }
     $render_arr = node_view($instructor,'teaser');
     // Remove the read more link
@@ -1416,22 +1449,6 @@ function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id) {
     $markup .= drupal_render($render_arr);
   }
   $markup .= "</div>\n";
-  return $markup;
-}
-
-function _ilr_sdd_listings_add_image_to_faculty($faculty_node) {
-  $markup = '';
-  $image = NULL;
-  if ($nid = _ilr_sdc_listings_get_referenced_profile_nid($faculty_node)) {
-    $wrapper = ilr_get_node_wrapper($nid);
-    $image = $wrapper->field_profile_image->value();
-  }
-  elseif (!empty($faculty_node->field_thumbnail)) {
-    $image = $faculty_node->field_thumbnail[LANGUAGE_NONE][0];
-  }
-  if ($image) {
-    $markup = '<div class="field-type-image"><img src="'.image_style_url('focussed_thumbnail', $image['uri']).'" /></div>';
-  }
   return $markup;
 }
 
@@ -2033,9 +2050,6 @@ function _ilr_sdc_listings_get_class_detail_markup($classes, $add_register_butto
       }
       if ($cancelled) {
         $markup .= '<p class="message class-cancelled">' . variable_get('sdc_class_cancelled',"We're sorry, but this date has been cancelled.") . '</p>';
-      }
-      else {
-        $markup .= _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id);
       }
       $markup .= '</div>';
     } //If it's a single, full class, then add the full markup

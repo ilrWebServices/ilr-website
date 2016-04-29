@@ -78,22 +78,56 @@
       display: none;
     }
   }
-  .node-sdc-faculty {
-    h2 {
-      @include adjust-font-size-to($h5-size);
-      padding: 0 !important;
+
+  .instructors {
+    article {
+      //@include padding-trailer(1);
+      @include add-grid(3);
+      @include context('#main','#main[data-eq-state="768"]') {
+        @include add-grid(4);
+      }
+      .field {
+        @extend .clearfix;
+      }
+      h2 {
+        @include adjust-font-size-to($h3-size);
+      }
+      .field-name-field-job-title {
+        font-family: $font-headers;
+        @include leader(1);
+        @include adjust-font-size-to($h5-size, .75);
+        @include trailer(.5);
+      }
+      .field-name-body {
+        @include grid-span(2,2,$output-style: 'float');
+        @include float-span(2,'last');
+        @include context('#main','#main[data-eq-state="768"]') {
+          @include grid-span(3,2,$output-style: 'float');
+          @include float-span(3,'last');
+        }
+      }
+      border: none;
+      @include trailer(.5);
+      .field-type-image {
+        @include circularImage;
+        max-width: 150px;
+        @include grid-span(1,$output-style: 'float');
+        @include float-span(1,'first');
+        @include leader(.25);
+      }
+      a.readmore-js-toggle {
+        @extend %readmore-js-link; // see _helpers.scss
+        clear: both;
+        display: block;
+        text-align: right;
+      }
     }
-    .field-name-field-job-title {
-      font-family: $font-headers;
-      clear: both;
-      @include adjust-font-size-to($h5-size, .75);
+    span.multiple-dates {
+      @include adjust-font-size-to(15px, 1);
+      font-family: $font;
+      font-weight: 300;
+      color: $p-text;
     }
-    .field-name-body p {
-      @include adjust-font-size-to(16px, .75);
-    }
-  }
-  .instructors .field-type-image {
-    @include circularImage;
   }
 
   .request-info {
@@ -123,16 +157,6 @@
 
     .locality-block {
       @include trailer(1);
-    }
-  }
-  .instructors {
-    a.readmore-js-toggle {
-      @extend %readmore-js-link; // see _helpers.scss
-    }
-    article {
-      border: none;
-      @include rhythm(0);
-      @include trailer(.5);
     }
   }
 }
