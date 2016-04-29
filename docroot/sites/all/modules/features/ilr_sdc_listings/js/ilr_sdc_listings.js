@@ -97,7 +97,8 @@ jQuery.fn.sortElements = (function(){
 
       // Show the first class detail toggle div
       $(window).load(function(){
-        $('.class-detail-toggle').first().show();
+        $('.group-main-content .class-detail-toggle').first().show();
+        $('.group-sidebar .class-detail-toggle').first().show();
         if ($('.node-sdc-faculty').length) {
           facultyBiosReadmore();
         }
