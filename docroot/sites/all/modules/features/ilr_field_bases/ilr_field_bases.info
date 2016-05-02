@@ -63,6 +63,7 @@ features[field_base][] = field_alumni_job_postings_stmt
 features[field_base][] = field_amount_1
 features[field_base][] = field_amount_2
 features[field_base][] = field_amount_3
+features[field_base][] = field_animated_text_card
 features[field_base][] = field_anticipate_cu_entry_markup
 features[field_base][] = field_areas_of_expertise
 features[field_base][] = field_areas_of_interest_for_prof
