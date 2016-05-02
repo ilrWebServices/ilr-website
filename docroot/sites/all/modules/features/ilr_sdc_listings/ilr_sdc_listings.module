@@ -885,15 +885,17 @@ function ilr_sdc_listings_html_head_alter(&$head_elements) {
   $potential_dupes = array();
   foreach ($head_elements as $key => $element) {
     if (isset($element['#attributes']['rel']) && $element['#attributes']['rel'] == 'canonical') {
-      $full_path = url(current_path(), array('absolute' => TRUE));
-      // Set the href to the full_path
-      $head_elements[$key]['#attributes']['href'] = $full_path;
-      // Check for duplicates
-      if (in_array($full_path, $potential_dupes)) {
-        unset($head_elements[$key]); // Duplicate found, so remove it
-      } // Dupe not found, so add it to the $potential_dupes
-      else {
-        $potential_dupes[] = $full_path;
+      if ($node = menu_get_object()) {
+        $full_path = url('node/'.$node->nid, array('absolute' => TRUE));
+        // Set the href to the full_path
+        $head_elements[$key]['#attributes']['href'] = $full_path;
+        // Check for duplicates
+        if (in_array($full_path, $potential_dupes)) {
+          unset($head_elements[$key]); // Duplicate found, so remove it
+        } // Dupe not found, so add it to the $potential_dupes
+        else {
+          $potential_dupes[] = $full_path;
+        }
       }
     }
   }
