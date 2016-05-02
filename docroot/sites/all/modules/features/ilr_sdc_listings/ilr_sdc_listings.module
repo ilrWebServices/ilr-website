@@ -876,6 +876,30 @@ function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
 }
 
 /**
+* Implements hook_html_head_alter().
+* Node.module adds a canonical url to the relative path
+* We set it here to the full path, and check for potential dupes added for wrapped nodes
+* @see _ilr_sdc_listings_add_canonical_metatag().
+*/
+function ilr_sdc_listings_html_head_alter(&$head_elements) {
+  $potential_dupes = array();
+  foreach ($head_elements as $key => $element) {
+    if (isset($element['#attributes']['rel']) && $element['#attributes']['rel'] == 'canonical') {
+      $full_path = url(current_path(), array('absolute' => TRUE));
+      // Set the href to the full_path
+      $head_elements[$key]['#attributes']['href'] = $full_path;
+      // Check for duplicates
+      if (in_array($full_path, $potential_dupes)) {
+        unset($head_elements[$key]); // Duplicate found, so remove it
+      } // Dupe not found, so add it to the $potential_dupes
+      else {
+        $potential_dupes[] = $full_path;
+      }
+    }
+  }
+}
+
+/**
  * Add special link to class detail
  * @param $node
  * @param $read_more_link
@@ -2169,6 +2193,9 @@ function _ilr_sdc_listings_set_default_body(&$node) {
   }
 }
 
+/**
+ * Adds a canonical href for wrapped nodes
+ */
 function _ilr_sdc_listings_add_canonical_metatag($node, $view_mode) {
   if ($view_mode == 'full') {
     drupal_add_html_head_link(array(
