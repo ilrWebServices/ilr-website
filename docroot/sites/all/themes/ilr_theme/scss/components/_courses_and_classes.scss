@@ -81,39 +81,30 @@
 
   .instructors {
     article {
-      //@include padding-trailer(1);
-      @include add-grid(3);
-      @include context('#main','#main[data-eq-state="768"]') {
-        @include add-grid(4);
-      }
-      .field {
-        @extend .clearfix;
-      }
       h2 {
         @include adjust-font-size-to($h3-size);
+        @include grid-span(3,4);
+        @include context('#main','#main[data-eq-state="550"]') {
+          @include grid-span(8,4);
+        }
+
       }
       .field-name-field-job-title {
         font-family: $font-headers;
-        @include leader(1);
         @include adjust-font-size-to($h5-size, .75);
-        @include trailer(.5);
+        @include grid-span(9,4,$output-style: 'float');
       }
       .field-name-body {
-        @include grid-span(2,2,$output-style: 'float');
-        @include float-span(2,'last');
-        @include context('#main','#main[data-eq-state="768"]') {
-          @include grid-span(3,2,$output-style: 'float');
-          @include float-span(3,'last');
-        }
+        @include grid-span(9,4,$output-style: 'float');
       }
       border: none;
       @include trailer(.5);
       .field-type-image {
         @include circularImage;
         max-width: 150px;
-        @include grid-span(1,$output-style: 'float');
-        @include float-span(1,'first');
-        @include leader(.25);
+        @include grid-span(3,$output-style: 'float');
+        @include float-span(3,'first');
+        @include leader(-.8);
       }
       a.readmore-js-toggle {
         @extend %readmore-js-link; // see _helpers.scss
