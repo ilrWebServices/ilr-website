@@ -131,9 +131,25 @@ function ilr_sub_pages_node_form_validate($form, &$form_state) {
 }
 
 /**
+ * Implements hook_pathauto_alias_alter().
+ * Sets the path of child page if the ilr_default_menu_parent has been set
+ * Or if it's a subpage enabled bundle and the alias has changed
+ */
+function ilr_sub_pages_pathauto_alias_alter(&$alias, array &$context) {
+  $node = $context['data']['node'];
+  if ($context['op'] == 'insert' && isset($node->ilr_default_menu_parent)) {
+    $alias = _ilr_sub_pages_set_child_alias($node);
+  }
+  elseif ($context['op'] == 'update' && _ilr_sub_pages_is_child_page($node)) {
+    $alias = _ilr_sub_pages_set_child_alias($node);
+  }
+}
+
+/**
  * Implements hook_form_alter().
  * Sets the menu parent if present
  * Adds the checkbox to hide from the menu
+ * Triggers pathauto generation when needed
  */
 function ilr_sub_pages_form_node_form_alter(&$form, &$form_state, $form_id) {
   if (_ilr_sub_pages_content_type_has_menu_options($form)) {
@@ -160,7 +176,10 @@ function ilr_sub_pages_form_node_form_alter(&$form, &$form_state, $form_id) {
       $form['menu']['link']['weight']['#access'] = FALSE;
       $form['menu']['link']['parent']['#access'] = FALSE;
     }
-
+    // Trigger pathauto since child pages can have a different alias than the default pattern
+    if (_ilr_sub_pages_is_child_page($form['#node'])) {
+      $form['path']['pathauto']['#default_value'] = TRUE;
+    }
     // Add an additional validation callback to this form
     $form['#validate'][] = 'ilr_sub_pages_node_form_validate';
   }
@@ -276,7 +295,19 @@ function _ilr_sub_pages_create_sub_page_access($node, $access_arg, $type=NULL) {
 }
 
 /**
- * Determinot of the mes whether the parent is at the roain-menu,
+ * Checks whether the node has a parent link
+ * And whether it's one of the ilr_sub_pages_enabled_bundles
+ */
+function _ilr_sub_pages_is_child_page($node) {
+  if (isset($node->plid) || isset($node->menu['plid'])) {
+    $enabled_bundles = variable_get('ilr_sub_pages_enabled_bundles', _ilr_sub_pages_default_bundles());
+    return in_array($node->type, $enabled_bundles);
+  }
+  return FALSE;
+}
+
+/**
+ * Determines whether the parent is the root of the main-menu,
  * or the grandparent is at the root of the sub site menu
  */
 function _ilr_sub_pages_is_top_menu_level($form_state) {
@@ -292,6 +323,16 @@ function _ilr_sub_pages_is_top_menu_level($form_state) {
     return $plid === '0';
   }
   return FALSE;
+}
+
+function _ilr_sub_pages_set_child_alias($node) {
+  $alias = '';
+  if ($plid = $node->menu['plid']) {
+    $menu_link = menu_link_load($plid);
+    $parent_path = drupal_get_path_alias($menu_link['link_path']);
+    $alias = $parent_path . '/' . pathauto_cleanstring($node->title);
+  }
+  return $alias;
 }
 
 /**
