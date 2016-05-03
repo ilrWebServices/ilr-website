@@ -20,6 +20,7 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_instance][] = node-post-body
 features[field_instance][] = node-post-field_author_reference
+features[field_instance][] = node-post-field_description
 features[field_instance][] = node-post-field_image
 features[field_instance][] = node-post-field_published_date
 features[field_instance][] = node-post-field_tags
