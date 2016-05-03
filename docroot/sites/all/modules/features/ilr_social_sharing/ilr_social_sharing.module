@@ -6,6 +6,22 @@
 
 include_once 'ilr_social_sharing.features.inc';
 
+
+/**
+ * Implements hook_menu
+ * Defines the MAI RSS Feed Path
+ */
+function ilr_social_sharing_menu() {
+  $items = array();
+  $items['rss/rss.xml'] = array(
+    'title' => 'RSS Feed',
+    'page callback' => '_ilr_social_sharing_rss_feed',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
 /**
  * Implements hook_preprocess().
  */
@@ -123,4 +139,163 @@ function _ilr_social_sharing_get_social_share_weight($content) {
     return $content['field_image']['#weight'] + .5;
   }
   return -1;
+}
+
+
+
+//////////////////////////////////////
+/// RSS feed related functionality ///
+//////////////////////////////////////
+
+
+
+function _ilr_social_sharing_rss_feed() {
+  $params = drupal_get_query_parameters();
+  $types = (isset($params['types']))
+    ? $params['types']
+    : NULL;
+  $category = (isset($params['category']))
+    ? $params['category']
+    : NULL;
+  if ($types && $category) {
+    $nids = _ilr_social_sharing_get_nids_by_type_and_category($types, $category);
+    $link = url(current_path(), array('absolute' => true));
+    $channel = array(
+      'title' => t(''),
+      'description' => 'The ILR School at Cornell University is advancing the world of work through teaching, research and outreach. ILR\'s mission is to prepare leaders, inform national and international employment and labor policy, and improve working lives.',
+      'link' => $link,
+    );
+    _ilr_social_sharing_feed($nids, $channel);
+  }
+  else {
+    return ilr_social_sharing_EMPTY_FEED_MESSAGE;
+  }
+}
+
+/**
+ * Retrieves the specified number of nids
+ * for the RSS feed
+ */
+function _ilr_social_sharing_get_nids_by_type_and_category($types, $category, $count = 15) {
+  if ($tag = taxonomy_get_term_by_name($category, 'tags')) {
+    $key = key($tag);
+    $term_object = $tag[$key];
+    $query = new EntityFieldQuery();
+      $query
+        ->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', $types, 'IN')
+        ->propertyCondition('status', 1)
+        ->fieldCondition('field_tags', 'tid', $term_object->tid)
+        ->fieldOrderBy('field_published_date', 'value', 'DESC')
+        ->range(0, $count);
+
+      $result = $query->execute();
+      return array_keys($result['node']);
+  }
+  return array();
+}
+
+/**
+ * Custom implementation of node_feed that is formatted for mailchimp
+ * @see node_feed() in node.module
+ */
+function _ilr_social_sharing_feed($nids = FALSE, $channel = array()) {
+  global $base_url, $language_content;
+
+  $namespaces = array(
+    'xmlns:dc'      => 'http://purl.org/dc/elements/1.1/',
+    'xmlns:content' => 'http://purl.org/rss/1.0/modules/content/',
+    'xmlns:media'   => 'http://search.yahoo.com/mrss/',
+  );
+
+  // Load all nodes to be rendered.
+  $nodes = node_load_multiple($nids);
+  $items = '';
+  foreach ($nodes as $node) {
+    $wrapper = ilr_get_node_wrapper($node);
+    $summary = '';
+
+    $node->link = url("node/$node->nid", array('absolute' => TRUE));
+    $node->rss_namespaces = array();
+    $account = user_load($node->uid);
+    $node->rss_elements = array(
+      array('key' => 'pubDate', 'value' => gmdate('r', $node->created)),
+      array('key' => 'dc:creator', 'value' => format_username($account)),
+      array('key' => 'guid', 'value' => $node->nid . ' at ' . $base_url, 'attributes' => array('isPermaLink' => 'false'))
+    );
+
+    $summary = (!empty($wrapper->body->value()['summary']))
+      ? $wrapper->body->value()['summary']
+      : text_summary($wrapper->body->value()['value']);
+
+    $content = _ilr_social_sharing_format_content_for_mailchimp($node, $summary, $wrapper);
+    $items .= _ilr_social_sharing_format_rss_item($node->title, $node->link, $summary, $content, $node->rss_elements);
+  }
+
+  $channel_defaults = array(
+    'version'     => '2.0',
+    'title'       => variable_get('site_name', 'Drupal'),
+    'link'        => $base_url,
+    'description' => variable_get('feed_description', ''),
+    'language'    => $language_content->language
+  );
+  $channel_extras = array_diff_key($channel, $channel_defaults);
+  $channel = array_merge($channel_defaults, $channel);
+
+  $output = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+  $output .= "<rss version=\"" . $channel["version"] . "\" xml:base=\"" . $base_url . "\" " . drupal_attributes($namespaces) . ">\n";
+  $output .= format_rss_channel($channel['title'], $channel['link'], $channel['description'], $items, $channel['language'], $channel_extras);
+  $output .= "</rss>\n";
+
+  drupal_add_http_header('Content-Type', 'application/rss+xml; charset=utf-8');
+  print $output;
+}
+
+function _ilr_social_sharing_format_rss_item($title, $link, $summary, $content, $args = array()) {
+  $output = "<item>\n";
+  $output .= ' <title>' . check_plain($title) . "</title>\n";
+  $output .= ' <link>' . check_url($link) . "</link>\n";
+  $output .= ' <description>' . check_plain(strip_tags($summary)) . "</description>\n";
+  $output .= ' <content:encoded><![CDATA['.$content."]]></content:encoded>\n";
+  $output .= format_xml_elements($args);
+  $output .= "</item>\n";
+  return $output;
+}
+
+function _ilr_social_sharing_format_content_for_mailchimp($node, $summary, $wrapper) {
+  $content = '';
+  $image_path = (!empty($wrapper->field_image->value()))
+    ? image_style_url('focussed_main_image',$wrapper->field_image->file->value()->uri)
+    : '';
+  if (!empty($image_path)) {
+    $content = '<a href="'.$node->link.'"><img src="'.$image_path.'"></a><br>';
+  }
+  $content .= '<h1>'.$node->title.'</h1><br>';
+  $subheading = (isset($wrapper->field_description))
+    ? $wrapper->field_description->value()
+    : '';
+  if (!empty($subheading)) {
+    $content .= '<h2>'.$subheading .'</h2><br>';
+  }
+  $formatted_date = _ilr_social_sharing_get_formatted_date($wrapper);
+  $author = (isset($wrapper->field_author_reference))
+    ? $wrapper->field_author_reference->label()
+    : format_username(user_load($node->uid));
+  $content .= $author.', '.$formatted_date.'<br><br>';
+  $content .= _ilr_social_sharing_replace_p_tags_with_breaks($summary);
+  $content .= '<a href="'.$node->link.'">Continue reading on website&nbsp;&rarr;</a>';
+  return $content;
+}
+
+function _ilr_social_sharing_replace_p_tags_with_breaks($content) {
+  $replaced = preg_replace("/<p[^>]*?>/", "", $content);
+  $replaced = str_replace("</p>", "<br><br>", $replaced);
+  return $replaced;
+}
+
+function _ilr_social_sharing_get_formatted_date($wrapper) {
+  $date = (isset($wrapper->field_published_dates))
+    ? $wrapper->field_published_date->value()
+    : $wrapper->created->value();
+  return format_date($date, 'ilr_social_sharing_format');
 }
