@@ -7,6 +7,7 @@
       }
 
       function format_blurbs() {
+        // prepare a list of items to be displayed as slides in an animation.
         $('article.field-name-field-animated-text-card ul li').each(function(index, element) {
           var phrase = $(element).html().trim();
           var blurb_class = (phrase.toUpperCase() == phrase) ? 'circle-blurb all-caps' : 'circle-blurb';
@@ -37,6 +38,11 @@
 
           $(element).html(phrase);
         });
+        // append a copy of the first list element to the end of the list
+        // so that its display won't be skipped when the animation is looping
+        $('article.field-name-field-animated-text-card ul').each(function(index,element) {
+          $($(element).find('li')[0]).clone().appendTo(element);
+        });
       }
 
       function add_links_to_animated_text_cards() {
@@ -52,7 +58,7 @@
           add_links_to_animated_text_cards();
         }
         $('article.field-name-field-animated-text-card').mouseenter( function() {
-          var tl = new TimelineLite();
+          var tl = new TimelineLite({onComplete:function (timeline) {timeline.restart()}, onCompleteParams:["{self}"]});
           var stage = $(this).find('ul');
           var screen = $(this).find('ul li:first-child');
           var slides = $(this).find('ul li:not(:first-child)');
