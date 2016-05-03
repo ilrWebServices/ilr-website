@@ -160,7 +160,7 @@ function _ilr_post_format_content_for_mailchimp($node, $wrapper) {
   $formatted_date = _ilr_post_get_formatted_date($wrapper);
   $content .= $wrapper->field_author_reference->label().', '.$formatted_date.'<br><br>';
   $content .= _ilr_post_replace_p_tags_with_breaks($wrapper->body->value()['summary']);
-  $content .= '<a href="'.$node->link.'">Continue reading on website&nbps;&rarr;</a>';
+  $content .= '<a href="'.$node->link.'">Continue reading on website&nbsp;&rarr;</a>';
   return $content;
 }
 
