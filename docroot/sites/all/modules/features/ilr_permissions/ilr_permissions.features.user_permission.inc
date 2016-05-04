@@ -519,6 +519,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'bypass paragraphs bundle content access'.
+  $permissions['bypass paragraphs bundle content access'] = array(
+    'name' => 'bypass paragraphs bundle content access',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'cancel account'.
   $permissions['cancel account'] = array(
     'name' => 'cancel account',
@@ -654,6 +663,76 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'create paragraph content compare_three'.
+  $permissions['create paragraph content compare_three'] = array(
+    'name' => 'create paragraph content compare_three',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'create paragraph content display_a_block'.
+  $permissions['create paragraph content display_a_block'] = array(
+    'name' => 'create paragraph content display_a_block',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'create paragraph content featured_promo'.
+  $permissions['create paragraph content featured_promo'] = array(
+    'name' => 'create paragraph content featured_promo',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'create paragraph content just_image'.
+  $permissions['create paragraph content just_image'] = array(
+    'name' => 'create paragraph content just_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'create paragraph content just_text'.
+  $permissions['create paragraph content just_text'] = array(
+    'name' => 'create paragraph content just_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'create paragraph content sponsor_message'.
+  $permissions['create paragraph content sponsor_message'] = array(
+    'name' => 'create paragraph content sponsor_message',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'create paragraph content unit_contact_info'.
+  $permissions['create paragraph content unit_contact_info'] = array(
+    'name' => 'create paragraph content unit_contact_info',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
   );
 
   // Exported permission: 'create people_profile content'.
@@ -1247,6 +1326,76 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'delete paragraph content compare_three'.
+  $permissions['delete paragraph content compare_three'] = array(
+    'name' => 'delete paragraph content compare_three',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'delete paragraph content display_a_block'.
+  $permissions['delete paragraph content display_a_block'] = array(
+    'name' => 'delete paragraph content display_a_block',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'delete paragraph content featured_promo'.
+  $permissions['delete paragraph content featured_promo'] = array(
+    'name' => 'delete paragraph content featured_promo',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'delete paragraph content just_image'.
+  $permissions['delete paragraph content just_image'] = array(
+    'name' => 'delete paragraph content just_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'delete paragraph content just_text'.
+  $permissions['delete paragraph content just_text'] = array(
+    'name' => 'delete paragraph content just_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'delete paragraph content sponsor_message'.
+  $permissions['delete paragraph content sponsor_message'] = array(
+    'name' => 'delete paragraph content sponsor_message',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'delete paragraph content unit_contact_info'.
+  $permissions['delete paragraph content unit_contact_info'] = array(
+    'name' => 'delete paragraph content unit_contact_info',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
   );
 
   // Exported permission: 'delete revisions'.
@@ -2276,6 +2425,76 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'update paragraph content compare_three'.
+  $permissions['update paragraph content compare_three'] = array(
+    'name' => 'update paragraph content compare_three',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'update paragraph content display_a_block'.
+  $permissions['update paragraph content display_a_block'] = array(
+    'name' => 'update paragraph content display_a_block',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'update paragraph content featured_promo'.
+  $permissions['update paragraph content featured_promo'] = array(
+    'name' => 'update paragraph content featured_promo',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'update paragraph content just_image'.
+  $permissions['update paragraph content just_image'] = array(
+    'name' => 'update paragraph content just_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'update paragraph content just_text'.
+  $permissions['update paragraph content just_text'] = array(
+    'name' => 'update paragraph content just_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'update paragraph content sponsor_message'.
+  $permissions['update paragraph content sponsor_message'] = array(
+    'name' => 'update paragraph content sponsor_message',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'update paragraph content unit_contact_info'.
+  $permissions['update paragraph content unit_contact_info'] = array(
+    'name' => 'update paragraph content unit_contact_info',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'use text format full_html'.
   $permissions['use text format full_html'] = array(
     'name' => 'use text format full_html',
@@ -2606,6 +2825,83 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'ilr_sub_pages',
+  );
+
+  // Exported permission: 'view paragraph content compare_three'.
+  $permissions['view paragraph content compare_three'] = array(
+    'name' => 'view paragraph content compare_three',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'view paragraph content display_a_block'.
+  $permissions['view paragraph content display_a_block'] = array(
+    'name' => 'view paragraph content display_a_block',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'view paragraph content featured_promo'.
+  $permissions['view paragraph content featured_promo'] = array(
+    'name' => 'view paragraph content featured_promo',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'view paragraph content just_image'.
+  $permissions['view paragraph content just_image'] = array(
+    'name' => 'view paragraph content just_image',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'view paragraph content just_text'.
+  $permissions['view paragraph content just_text'] = array(
+    'name' => 'view paragraph content just_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'view paragraph content sponsor_message'.
+  $permissions['view paragraph content sponsor_message'] = array(
+    'name' => 'view paragraph content sponsor_message',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'view paragraph content unit_contact_info'.
+  $permissions['view paragraph content unit_contact_info'] = array(
+    'name' => 'view paragraph content unit_contact_info',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
   );
 
   // Exported permission: 'view private files'.

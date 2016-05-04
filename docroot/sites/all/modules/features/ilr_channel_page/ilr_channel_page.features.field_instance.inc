@@ -169,6 +169,7 @@ function ilr_channel_page_field_default_field_instances() {
     'settings' => array(
       'add_mode' => 'button',
       'allowed_bundles' => array(
+        'compare_three' => 'compare_three',
         'display_a_block' => 'display_a_block',
         'featured_promo' => 'featured_promo',
         'just_image' => 'just_image',
@@ -177,6 +178,7 @@ function ilr_channel_page_field_default_field_instances() {
         'unit_contact_info' => 'unit_contact_info',
       ),
       'bundle_weights' => array(
+        'compare_three' => 11,
         'display_a_block' => 6,
         'featured_promo' => 9,
         'just_image' => 2,

@@ -40,6 +40,7 @@ function ilr_theme_preprocess_html(&$variables) {
   drupal_add_js('//embanner.univcomm.cornell.edu/OWC-emergency-banner.js', array('type' => 'external', 'scope' => 'footer'));
   $gsap_path = libraries_get_path('greensock') . '/src/minified';
   drupal_add_js($gsap_path . '/TweenLite.min.js', array('type' => 'file', 'scope' => 'footer'));
+  drupal_add_js($gsap_path . '/TimelineLite.min.js', array('type' => 'file', 'scope' => 'footer'));
   drupal_add_js($gsap_path . '/easing/EasePack.min.js', array('type' => 'file', 'scope' => 'footer'));
   drupal_add_js($gsap_path . '/plugins/CSSPlugin.min.js', array('type' => 'file', 'scope' => 'footer'));
   $isotope_js = libraries_get_path('isotope') . '/isotope.pkgd.min.js';

@@ -928,6 +928,25 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_animated_text_card'
+  $field_bases['field_animated_text_card'] = array(
+    'active' => 1,
+    'cardinality' => 3,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_animated_text_card',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'field_collection',
+    'settings' => array(
+      'hide_blank_items' => 0,
+      'path' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'field_collection',
+  );
+
   // Exported field_base: 'field_anticipate_cu_entry_markup'
   $field_bases['field_anticipate_cu_entry_markup'] = array(
     'active' => 1,
@@ -9259,7 +9278,7 @@ function ilr_field_bases_field_default_field_bases() {
   // Exported field_base: 'field_short_title'
   $field_bases['field_short_title'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_short_title',

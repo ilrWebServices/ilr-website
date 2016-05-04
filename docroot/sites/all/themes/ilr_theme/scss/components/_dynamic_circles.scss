@@ -1,7 +1,7 @@
-article.node-slide {
+article.field-name-field-animated-text-card {
   background: $bg-body;
-  border-radius: 6px;
   border: 1px solid $bg-body;
+  border-radius: 6px;
   min-height: 550px;
   padding: 2em 1.5em 1em;
   text-align: center;
@@ -12,82 +12,71 @@ article.node-slide {
     padding-top: 1em;
     font-weight: 300;
   }
-  .field-name-image {
-    background: $darker-red;
-    border: 1px solid $darker-red;
+  .field-name-field-teaser p {
+    line-height: 1.75;
+  }
+  .link-item {
+    height: 0;
+    visibility: hidden;
+  }
+  ul {
+    background: $cornell-red;
+    border: 15px solid $darker-red;
     border-radius: 50%;
+    box-shadow: 0px 0px 0px 2px $darker-red;
+    list-style-type: none;
     width: 170px;
     height: 170px;
-    margin: 0 auto;
-    #animated-content {
-      background: $cornell-red;
-      border: 1px solid #c01d1d;
-      border-radius: 50%;
-      width: 140px;
-      height: 140px;
-      margin: 15px auto 0;
-      line-height: 140px;
-      position: relative;
-      font-size: 22px;
-      font-weight: 400;
-      color: white;
-      .stage-1, .field-name-content-1, .field-name-content-2, .field-name-content-3, .field-name-content-4, .field-name-content-5 {
-        color: white;
-        opacity: 0;
-      }
-      .field-name-content-0 {
-        position: relative;
-      }
-      .field-name-content-1 {
-        position: relative;
-        top: -140px;
-      }
-      .field-name-content-2 {
-        position: relative;
-        top: -280px;
-      }
-      .field-name-content-3 {
-        position: relative;
-        top: -420px;
-      }
-      .field-name-content-4 {
-        position: relative;
-        top: -560px;
-      }
-      .field-name-content-5 {
-        position: relative;
-        top: -700px;
-      }
-      .stage-1 {
-        position: relative;
-        top: -840px;
+    margin: 0 auto 0;
+    padding-left: 0;
+    font-size: 22px;
+    font-weight: 400;
+    color: white;
+    &.active{
+      background: $darker-red;
+      border: 15px solid $cornell-red;
+    }
+    li {
+      list-style-position: inside;
+      height: 0;
+      padding-left: 0;
+      opacity: 0;
+      visibility: hidden;
+      &:first-child {
+        width: 140px;
+        height: 140px;
+        border: 1px solid #c01d1d;
+        border-radius: 50%;
+        line-height: 125px;
+        opacity: 1;
+        visibility: visible;
       }
       span.circle-blurb {
         display: inline-block;
         vertical-align: middle;
         line-height: 1.2;
         font-weight: 300;
+        text-transform: lowercase;
         span.first-word {
-          text-transform: uppercase;
           font-weight: 600;
-        }
-      }
-      span.circle-blurb.all-caps {
-        display: inline-block;
-        vertical-align: middle;
-        line-height: 1.2;
-        span.first-word {
-          font-weight: 300;
-        }
-        span.last-word {
           text-transform: uppercase;
+          &.number {
+            font-size: 50px;
+          }
+        }
+        &.all-caps {
+          span.last-word {
+            font-weight: 600;
+            text-transform: uppercase;
+          }
         }
       }
     }
   }
-  .field-name-description {
-    p {
-      line-height: 1.75;
-    }
+}
+
+#main[data-eq-state="550"] {
+  article.field-name-field-animated-text-card {
+    min-height: 0;
   }
 }

@@ -13,7 +13,7 @@
 .centered-blurb {
   text-align: center;
   font-family: $font-headers;
-  @include adjust-font-size-to(30px);
+  @include adjust-font-size-to(24px);
   @include adjust-leading-to(1);
   max-width: $section-max-width;
   margin: 0 auto 1em !important;
@@ -23,7 +23,7 @@
   margin-bottom: 0;
   h2 {
     text-align: center;
-    @include adjust-font-size-to(30px);
+    @include adjust-font-size-to(22px);
     @include adjust-leading-to(1);
     font-weight: 300;
   }
@@ -36,5 +36,19 @@
       color: $gray-medium;
       display: block;
     }
+  }
+}
+
+#main[data-eq-state="768"] {
+  .centered-blurb {
+    @include adjust-font-size-to(30px);
+    @include adjust-leading-to(1);
+  }
+}
+
+#main[data-eq-state="widescreen"] {
+  .centered-blurb {
+    @include adjust-font-size-to(30px);
+    @include adjust-leading-to(1);
   }
 }

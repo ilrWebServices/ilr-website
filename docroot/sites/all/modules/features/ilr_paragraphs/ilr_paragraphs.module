@@ -15,6 +15,7 @@ function ilr_paragraphs_preprocess_field(&$variables) {
     'sponsor_message',
     'unit_contact_info',
     'field_people_list',
+    'compare_three',
   ];
   if (in_array($variables['element']['#bundle'], $paragraph_bundles)) {
     _ilr_paragraphs_process_fields($variables);
@@ -26,6 +27,13 @@ function ilr_paragraphs_preprocess_field(&$variables) {
  */
 function _ilr_paragraphs_process_fields(&$variables) {
   switch ($variables['element']['#field_name']) {
+    case 'field_animated_text_card':
+      switch ($variables['element']['#bundle']) {
+        case 'compare_three':
+          drupal_add_js(drupal_get_path('module','ilr_paragraphs') . '/ilr_paragraphs_compare_three.js', array('type' => 'file', 'scope' => 'footer'));
+          break;
+      }
+      break;
     case 'field_comments':
       switch ($variables['element']['#bundle']) {
         case 'sponsor_message':
@@ -36,17 +44,17 @@ function _ilr_paragraphs_process_fields(&$variables) {
           break;
       }
       break;
-    case 'field_social_channels':
-      switch ($variables['element']['#bundle']) {
-        case 'unit_contact_info':
-          _ilr_paragraphs_add_class_to_field($variables, 'social');
-          break;
-      }
-      break;
     case 'field_full_name':
       switch ($variables['element']['#bundle']) {
         case 'field_people_list':
           _ilr_paragraphs_link_person_to_profile($variables);
+          break;
+      }
+      break;
+    case 'field_social_channels':
+      switch ($variables['element']['#bundle']) {
+        case 'unit_contact_info':
+          _ilr_paragraphs_add_class_to_field($variables, 'social');
           break;
       }
       break;

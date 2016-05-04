@@ -19,8 +19,7 @@ article.social-feed {
     .field-name-tweet {
       p {
         @include adjust-font-size-to(16px);
-        @include adjust-leading-to(1);
-        line-height: 1.5;
+        @include adjust-leading-to(1.1);
       }
     }
   }
@@ -39,12 +38,6 @@ article.social-feed {
     .field-name-group {
       .field-name-time-stamp {
         margin-bottom: 0;
-      }
-      .field-name-tweet {
-        p {
-          font-size: ms(0);
-          line-height: 1.5;
-        }
       }
     }
   }
