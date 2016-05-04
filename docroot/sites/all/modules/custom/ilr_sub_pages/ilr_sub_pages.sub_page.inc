@@ -6,11 +6,21 @@
 function ilr_sub_pages_create_sub_page($parent_node) {
   global $user;
 
+  if (empty($_GET['sub_page_type'])) {
+    drupal_goto(current_path() . '/type');
+  }
+  $type = $_GET['sub_page_type'];
+  $enabled_bundles = variable_get('ilr_sub_pages_enabled_bundles',_ilr_sub_pages_default_bundles());
+  if (!in_array($type, $enabled_bundles, TRUE)) {
+    drupal_set_message('Sorry, but this content type is not available as a sub page.','error') ;
+    return '';
+  }
+
   // @see node_add() in node.pages.inc
   $node = (object) array(
     'uid' => $user->uid,
     'name' => (isset($user->name) ? $user->name : ''),
-    'type' => $parent_node->type,
+    'type' => $type,
     'language' => LANGUAGE_NONE,
   );
 
