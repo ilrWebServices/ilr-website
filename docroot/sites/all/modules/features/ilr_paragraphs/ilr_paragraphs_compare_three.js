@@ -41,7 +41,7 @@
           // Rejoin the parts of the phrase.
           // Convert non-breaking spaces (entered as underscores) back to spaces.
           phrase = '<span class="' + blurb_class + '">';
-          phrase += [first_word, middle_part, last_word].join('').replace('_', ' ');
+          phrase += [first_word, middle_part, last_word].join('').replace(/_/g, ' ');
           phrase += '</span>';
 
           $(element).html(phrase);
