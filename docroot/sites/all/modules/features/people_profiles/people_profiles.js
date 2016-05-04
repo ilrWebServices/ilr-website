@@ -181,22 +181,6 @@
         // Profile detail page
         if ($('article.profile-type-faculty').length) {
           $('.field-name-field-areas-of-expertise').last().addClass('last');
-          if (parseInt($('#main').attr('data-eq-state')) < 768) {
-            $('.group-sidebar').addClass('toggleable');
-            // All except the first
-            $('.group-main-content .field, .group-sidebar .field').slice(1).each(function(){
-              $(this).next('.readmore-js-toggle').hide();
-            });
-
-            // All except the first
-            $('.field-label, .group-contact-info > h3').slice(1).each(function(){
-              $(this).addClass('toggleable');
-              $(this).click(function(){
-                $(this).toggleClass('toggled');
-                $(this).nextInDOM('.field-label').toggleClass('post-toggle');
-              });
-            });
-          }
         }
 
         // Teaser pages, such as /people
