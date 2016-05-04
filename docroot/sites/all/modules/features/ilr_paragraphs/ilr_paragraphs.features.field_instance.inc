@@ -57,7 +57,9 @@ function ilr_paragraphs_field_default_field_instances() {
     'bundle' => 'field_animated_text_card',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Add short (1-3 word) phrases to include in an animated display',
+    'description' => 'Add short (1-3 word) phrases to include in an animated display. 
+Each word appears on its own line. 
+To keep two words together, use an underscore instead of a space (e.g., keep_together)',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -87,7 +89,7 @@ function ilr_paragraphs_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'size' => 45,
       ),
       'type' => 'text_textfield',
       'weight' => 4,
@@ -141,7 +143,7 @@ function ilr_paragraphs_field_default_field_instances() {
     'bundle' => 'field_animated_text_card',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'To what web age should this card send people?',
+    'description' => 'To what web page should this card send people?',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1364,7 +1366,9 @@ function ilr_paragraphs_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add a Compare3');
-  t('Add short (1-3 word) phrases to include in an animated display');
+  t('Add short (1-3 word) phrases to include in an animated display. 
+Each word appears on its own line. 
+To keep two words together, use an underscore instead of a space (e.g., keep_together)');
   t('Address');
   t('Animated text items');
   t('Block');
@@ -1387,7 +1391,7 @@ function ilr_paragraphs_field_default_field_instances() {
   t('Social Channels');
   t('Text paragraph');
   t('Title');
-  t('To what web age should this card send people?');
+  t('To what web page should this card send people?');
   t('Website address');
   t('Youtube Video');
   t('compare three things');

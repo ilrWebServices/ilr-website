@@ -5,20 +5,26 @@
         var test = n.replace(/[,-]/g, '');
         return !isNaN(parseFloat(test)) && isFinite(test);
       }
+      function add_class_if(condition, class_name) {
+        return condition ? ' ' + class_name : '';
+      }
 
       function format_blurbs() {
         // prepare a list of items to be displayed as slides in an animation.
         $('article.field-name-field-animated-text-card ul li').each(function(index, element) {
-          var phrase = $(element).html().trim();
-          var blurb_class = (phrase.toUpperCase() == phrase) ? 'circle-blurb all-caps' : 'circle-blurb';
           var word_array, first_word, last_word, middle_part, first_word_class;
+          var phrase = $(element).html().trim();
+          var blurb_class = 'circle-blurb';
+          // A phrase entered in all caps gets the all-caps class added
+          blurb_class += add_class_if((phrase.toUpperCase() == phrase), 'all-caps');
 
           // split the phrase on spaces.
           word_array = phrase.split(/\s+/);
 
           // Isolate the first word. If it's numeric, mark it.
           first_word = word_array.shift();
-          first_word_class = is_numeric(first_word) ? 'first-word number' : 'first-word';
+          first_word_class = 'first-word';
+          first_word_class += add_class_if(is_numeric(first_word), 'number');
           first_word = '<span class="' + first_word_class + '">' + first_word + '</span><br>';
 
           // Isolate the last word, if there is one, and mark it.
@@ -32,8 +38,10 @@
             middle_part = word_array.join('<br>') + '<br>';
           }
 
+          // Rejoin the parts of the phrase.
+          // Convert non-breaking spaces (entered as underscores) back to spaces.
           phrase = '<span class="' + blurb_class + '">';
-          phrase += [first_word, middle_part, last_word].join('');
+          phrase += [first_word, middle_part, last_word].join('').replace('_', ' ');
           phrase += '</span>';
 
           $(element).html(phrase);
