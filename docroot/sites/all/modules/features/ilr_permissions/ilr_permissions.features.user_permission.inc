@@ -2074,6 +2074,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'override post sticky option',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'override_node_options',
   );
