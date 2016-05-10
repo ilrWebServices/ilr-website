@@ -498,6 +498,9 @@ function freedompay_payment() {
  *         Whether the payment process is considered "complete"
  */
 function freedompay_payment_complete($order=NULL) {
+  if (!freedompay_payment_required()) {
+    return TRUE;
+  }
   if ($transaction_id = _freedompay_get_transaction_id()) {
     if ($stored_payment = FreedompayPayment::getPaymentByTransactionId($transaction_id)) {
       return TRUE;
