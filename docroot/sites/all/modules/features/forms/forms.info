@@ -650,6 +650,7 @@ features[field_instance][] = entityform-request_faculty_advisor_or_depar-field_i
 features[field_instance][] = entityform-request_faculty_advisor_or_depar-field_last_name
 features[field_instance][] = entityform-request_faculty_advisor_or_depar-field_middle_name
 features[field_instance][] = entityform-request_faculty_advisor_or_depar-field_professor
+features[field_instance][] = entityform-request_faculty_advisor_or_depar-field_student_id_number
 features[field_instance][] = entityform-request_faculty_advisor_or_depar-field_year_freshman_soph_jr_sr
 features[field_instance][] = entityform-scheinman_mailing_list-field_address_line_1
 features[field_instance][] = entityform-scheinman_mailing_list-field_city
