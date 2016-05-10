@@ -25469,7 +25469,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'markup_default',
-        'weight' => 6,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25484,7 +25484,7 @@ function forms_field_default_field_instances() {
       'module' => 'markup',
       'settings' => array(),
       'type' => 'markup',
-      'weight' => 12,
+      'weight' => 7,
     ),
   );
 
@@ -25521,7 +25521,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 2,
+      'weight' => 0,
     ),
   );
 
@@ -25564,7 +25564,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 1,
     ),
   );
 
@@ -25586,7 +25586,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25610,7 +25610,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 31,
+      'weight' => 11,
     ),
   );
 
@@ -25632,7 +25632,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 8,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25647,7 +25647,7 @@ function forms_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 14,
+      'weight' => 9,
     ),
   );
 
@@ -25665,7 +25665,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25688,7 +25688,7 @@ function forms_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 6,
     ),
   );
 
@@ -25731,7 +25731,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 3,
     ),
   );
 
@@ -25772,7 +25772,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 2,
     ),
   );
 
@@ -25790,7 +25790,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'entityform',
@@ -25813,7 +25813,49 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-request_faculty_advisor_or_depar-field_student_id_number'
+  $field_instances['entityform-request_faculty_advisor_or_depar-field_student_id_number'] = array(
+    'bundle' => 'request_faculty_advisor_or_depar',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_student_id_number',
+    'label' => 'Student ID',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
     ),
   );
 
@@ -25831,13 +25873,13 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_year_freshman_soph_jr_sr',
-    'label' => 'Class year in 2015-2016',
+    'label' => 'Class year in 2016-2017',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -25847,7 +25889,7 @@ function forms_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 10,
+      'weight' => 5,
     ),
   );
 
@@ -34137,7 +34179,7 @@ function forms_field_default_field_instances() {
   t('City (union)');
   t('City (work)');
   t('Class year');
-  t('Class year in 2015-2016');
+  t('Class year in 2016-2017');
   t('Classes you are interesting in TAing or faculty members to whom you wish to be assigned');
   t('College phone number');
   t('Comments');
