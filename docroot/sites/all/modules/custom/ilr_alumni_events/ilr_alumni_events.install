@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * Fixes alumni event registrations accidentally left in draft status
+ */
+function ilr_alumni_events_update_7001() {
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'entityform')
+    ->entityCondition('bundle', 'ilr_alumni_association_event_reg')
+    ->propertyCondition('draft', 1);
+
+  $result = $query->execute();
+  if (!empty($result['entityform'])) {
+    $draft_entityform_ids = array_keys($result['entityform']);
+    if ($drafts = entityform_load_multiple($draft_entityform_ids)) {
+      foreach ($drafts as $eid => $entityform) {
+        $entityform->save();
+      }
+    }
+  }
+}
