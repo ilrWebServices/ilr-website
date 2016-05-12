@@ -24,8 +24,8 @@ function ilr_paragraphs_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_header',
-      1 => 'field_teaser',
-      2 => 'field_multiple_links',
+      1 => 'field_multiple_links',
+      2 => 'field_teaser',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -59,6 +59,7 @@ function ilr_paragraphs_field_group_info() {
     'children' => array(
       0 => 'field_image',
       1 => 'field_youtube_video',
+      2 => 'field_align_left_right',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

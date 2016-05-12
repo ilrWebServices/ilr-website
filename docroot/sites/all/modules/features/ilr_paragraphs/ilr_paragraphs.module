@@ -12,10 +12,11 @@ include_once 'ilr_paragraphs.features.inc';
  */
 function ilr_paragraphs_preprocess_field(&$variables) {
   $paragraph_bundles = [
+    'compare_three',
+    'featured_promo',
+    'field_people_list',
     'sponsor_message',
     'unit_contact_info',
-    'field_people_list',
-    'compare_three',
   ];
   if (in_array($variables['element']['#bundle'], $paragraph_bundles)) {
     _ilr_paragraphs_process_fields($variables);
@@ -27,6 +28,16 @@ function ilr_paragraphs_preprocess_field(&$variables) {
  */
 function _ilr_paragraphs_process_fields(&$variables) {
   switch ($variables['element']['#field_name']) {
+    case 'field_image': case 'field_youtube_video':
+      switch ($variables['element']['#bundle']) {
+        case 'featured_promo':
+          _ilr_paragraphs_add_class_to_field($variables,
+            _ilr_paragraphs_field_has_value($variables, 'field_align_left_right', 'right') ?
+            'image-right' :
+            'image-left');
+          break;
+      }
+      break;
     case 'field_animated_text_card':
       switch ($variables['element']['#bundle']) {
         case 'compare_three':
