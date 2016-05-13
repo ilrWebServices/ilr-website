@@ -34,7 +34,7 @@ body.node-type-channel-page {
       .section {
         min-width: 100%;
       }
-      .field-name-field-image {
+      .field-name-field-image, .field-name-field-youtube-video {
         text-align: center;
       }
       .paragraphs-items-field-para-main-page-content {
@@ -85,7 +85,7 @@ body.node-type-channel-page {
             }
             .content {
               @include grid-span (12);
-              .field-name-field-image {
+              .field-name-field-image, .field-name-field-youtube-video {
                 margin: 0;
                 line-height: 0;
               }
@@ -220,13 +220,28 @@ body.node-type-channel-page {
             @include adjust-leading-to(.8);
           }
           .content {
-            .field-name-field-image {
+            .field-name-field-image.image-left, .field-name-field-youtube-video.image-left {
               @include grid-span (5,1);
             }
-            .group-featured-promo-story{
+            .field-name-field-image.image-left + .group-featured-promo-story, .field-name-field-youtube-video.image-left + .group-featured-promo-story {
               @include grid-span (7,6);
               padding-bottom: 0;
               padding-right: 2em;
+            }
+
+            .field-name-field-image.image-right, .field-name-field-youtube-video.image-right {
+              @include grid-span (5,8);
+              img {
+                float: right;
+              }
+              iframe {
+                width: 100%;
+              }
+            }
+            .field-name-field-image.image-right + .group-featured-promo-story, .field-name-field-youtube-video.image-right + .group-featured-promo-story {
+              @include grid-span (7,1);
+              padding-bottom: 0;
+              padding-left: 2em;
             }
           }
         }
@@ -286,11 +301,19 @@ body.node-type-channel-page {
             @include adjust-leading-to(.8);
           }
           .content {
-            .field-name-field-image {
+            .field-name-field-image.image-left, .field-name-field-youtube-video.image-left {
               @include grid-span (5,1);
             }
+            .field-name-field-image.image-right, .field-name-field-youtube-video.image-right {
+              @include grid-span (5,8);
+              img {
+                float: right;
+              }
+              iframe {
+                width: 100%;
+              }
+            }
             .group-featured-promo-story {
-              @include grid-span (7,6);
               padding-top: 4em;
               padding-bottom: 0;
               padding-right: 2em;
@@ -302,6 +325,12 @@ body.node-type-channel-page {
                   }
                 }
               }
+            }
+            .field-name-field-image.image-left + .group-featured-promo-story, .field-name-field-youtube-video.image-left + .group-featured-promo-story {
+              @include grid-span (7,6);
+            }
+            .field-name-field-image.image-right + .group-featured-promo-story, .field-name-field-youtube-video.image-right + .group-featured-promo-story {
+              @include grid-span (7,1);
             }
           }
         }
