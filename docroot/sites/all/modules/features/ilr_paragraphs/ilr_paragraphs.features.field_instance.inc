@@ -436,7 +436,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     'fences_wrapper' => 'div',
     'field_name' => 'field_teaser',
     'label' => 'Blurb',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
