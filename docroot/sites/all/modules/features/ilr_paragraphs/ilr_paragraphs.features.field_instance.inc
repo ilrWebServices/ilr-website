@@ -317,6 +317,146 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_promo_text-field_header'
+  $field_instances['field_collection_item-field_promo_text-field_header'] = array(
+    'bundle' => 'field_promo_text',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'h2',
+    'field_name' => 'field_header',
+    'label' => 'Title',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_promo_text-field_multiple_links'
+  $field_instances['field_collection_item-field_promo_text-field_multiple_links'] = array(
+    'bundle' => 'field_promo_text',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Add up to two links to related web pages; adding zero links is okay.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'link_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'ul',
+    'field_name' => 'field_multiple_links',
+    'label' => 'Related web pages',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => 'nofollow',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'linkit' => array(
+        'button_text' => 'Link to a page on this site',
+        'enable' => 1,
+        'profile' => 'link_fields',
+      ),
+      'rel_remove' => 'rel_remove_internal',
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_promo_text-field_teaser'
+  $field_instances['field_collection_item-field_promo_text-field_teaser'] = array(
+    'bundle' => 'field_promo_text',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_teaser',
+    'label' => 'Blurb',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 34,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_social_channels-field_social_media_channel_type'
   $field_instances['field_collection_item-field_social_channels-field_social_media_channel_type'] = array(
     'bundle' => 'field_social_channels',
@@ -978,6 +1118,47 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
+  // Exported field_instance: 'paragraphs_item-side_by_side_text-field_promo_text'
+  $field_instances['paragraphs_item-side_by_side_text-field_promo_text'] = array(
+    'bundle' => 'side_by_side_text',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'field_collection',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_fields',
+        'weight' => 1,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'article',
+    'field_name' => 'field_promo_text',
+    'label' => 'Promo text',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 32,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-sponsor_message-field_comments'
   $field_instances['paragraphs_item-sponsor_message-field_comments'] = array(
     'bundle' => 'sponsor_message',
@@ -1369,6 +1550,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   t('Add short (1-3 word) phrases to include in an animated display. 
 Each word appears on its own line. 
 To keep two words together, use an underscore instead of a space (e.g., keep_together)');
+  t('Add up to two links to related web pages; adding zero links is okay.');
   t('Address');
   t('Animated text items');
   t('Block');
@@ -1387,6 +1569,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   t('Organization');
   t('Paragraph header');
   t('Position Title');
+  t('Promo text');
+  t('Related web pages');
   t('Select an existing block');
   t('Social Channels');
   t('Text paragraph');

@@ -315,6 +315,7 @@ features[field_base][] = field_profile_type
 features[field_base][] = field_program
 features[field_base][] = field_project_name
 features[field_base][] = field_projector_needs
+features[field_base][] = field_promo_text
 features[field_base][] = field_pronunciation
 features[field_base][] = field_pronunciation_markup
 features[field_base][] = field_published_date
