@@ -11,6 +11,7 @@ include_once 'ilr_paragraphs.features.inc';
  *
  */
 function ilr_paragraphs_preprocess_field(&$variables) {
+  // Preprocess select fields in select paragraph bundle types
   $paragraph_bundles = [
     'sponsor_message',
     'unit_contact_info',
@@ -19,6 +20,16 @@ function ilr_paragraphs_preprocess_field(&$variables) {
   ];
   if (in_array($variables['element']['#bundle'], $paragraph_bundles)) {
     _ilr_paragraphs_process_fields($variables);
+  }
+
+  // Add paragraph bundle type to the class of every item contained in a paragraph field.
+  if ($variables['element']['#field_type'] == 'paragraphs') {
+    foreach ($variables['items'] as &$item) {
+      $bundle_type = array_values($item['entity']['paragraphs_item'])[0]['#bundle'];
+      $item['entity']['classes_array'][] = 'paragraph-type-' . drupal_clean_css_identifier(strtolower($bundle_type));
+      $item['entity']['classes'] = implode(' ', $item['entity']['classes_array']);
+    }
+    unset($item);
   }
 }
 
