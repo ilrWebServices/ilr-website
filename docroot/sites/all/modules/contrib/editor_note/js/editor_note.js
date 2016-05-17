@@ -15,10 +15,12 @@
    * Alternative idea is to override theme_pager() and other nested
    * theme functions and add support for fragment there.
    *
-   * Depends on Fieldgroup (field_group) module,
+   * Depends on Fieldgroup (field_group) module.
+   *
    * @see https://www.drupal.org/project/field_group
    *
    * Similar issue related to Drupal 8.
+   *
    * @see https://www.drupal.org/node/1293912
    */
   Drupal.behaviors.editorNoteAlterPager = {
