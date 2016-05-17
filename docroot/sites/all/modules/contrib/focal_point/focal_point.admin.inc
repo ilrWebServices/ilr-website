@@ -9,23 +9,29 @@
  * System form for focal point configuration settings.
  */
 function focal_point_configuration_form($form, &$form_state) {
-  if (module_exists('smartcrop')) {
-    $form['focal_point_use_smart_crop'] = array(
-      '#type' => 'checkbox',
-      '#title' => 'Use smart crop to calculate the initial focal point',
-      '#descrition' => t('This can slow down your site, especially if you are bulk uploading images.'),
-      '#default_value' => variable_get('focal_point_use_smart_crop', '0'),
-    );
+  $default_options = array();
+  $default_info = focal_point_get_default_method_info();
+  foreach ($default_info as $key => $info) {
+    $default_options[$key] = check_plain($info['label']);
   }
+  $form['focal_point_default_method'] = array(
+    '#type' => 'select',
+    '#title' => t('Calculate intial focal point using'),
+    '#descrition' => t('This can slow down your site, especially if you are bulk uploading images.'),
+    '#options' => array('' => t('Disabled')) + $default_options,
+    '#default_value' => variable_get('focal_point_default_method', ''),
+    '#access' => !empty($default_options),
+  );
 
   $options = array(
     'image' => t('Standard image fields'),
     'media' => t('Media module image fields'),
   );
+  // @todo consider allowing $options to be altered.
   $form['focal_point_enabled_for'] = array(
     '#type' => 'checkboxes',
     '#title' => 'Enable focal point for the following:',
-    '#options' => $options, // @todo: consider allowing this to be altered
+    '#options' => $options,
     '#default_value' => variable_get('focal_point_enabled_for', array_keys($options)),
   );
   $form['focal_point_test_drive_link'] = array(
@@ -55,7 +61,7 @@ function focal_point_test_drive_form($form, &$form_state) {
         '#style_name' => 'focal_point_preview',
         '#path' => $file->uri,
       ),
-      'focal_point_test_drive_focal_point' => _focal_point_field('test-drive', 0, $focal_point),
+      'focal_point_test_drive_focal_point' => _focal_point_field('test-drive', $focal_point),
     );
   }
 
@@ -73,7 +79,7 @@ function focal_point_test_drive_form($form, &$form_state) {
 /**
  * Form submit handler for focal_point_test_drive_form().
  *
- * @see focal_point_test_drive_form().
+ * @see focal_point_test_drive_form()
  */
 function focal_point_test_drive_form_submit(&$form, &$form_state) {
   // Save the test drive focal point setting.
@@ -93,18 +99,21 @@ function focal_point_test_drive_form_submit(&$form, &$form_state) {
 }
 
 /**
- * Page callback function to display a preview of derivative images for the
- * given file.
+ * Page callback function.
+ *
+ * This page displays a preview of derivative images for the given file.
  *
  * @param int $fid
+ *   The fid of the image file entity in question.
  *
  * @param string $focal_point
  *   (Optional) A string in the form 'left-percent-offset, top-percent-offset'.
  *   Leave this value empty to use the value stored in the database.
  *
  * @return array
+ *   The render array for the preview page.
  *
- * @see hook_focal_point_crop_data_alter().
+ * @see hook_focal_point_crop_data_alter()
  */
 function focal_point_preview_page($fid, $focal_point = '') {
   $file = is_numeric($fid) ? file_load($fid) : NULL;
