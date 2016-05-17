@@ -236,14 +236,6 @@ class views_data_export_plugin_style_export extends views_plugin_style {
     $rows = array();
     $title = '';
     $output = '';
-
-    if ($this instanceof views_data_export_plugin_style_export_csv) {
-      $encoding = $this->options['encoding'];
-      if (empty($encoding) || ($encoding != 'ASCII')) {
-        $output = chr(0xEF).chr(0xBB).chr(0xBF);
-      }
-    }
-
     $output .= theme($this->theme_functions($this->definition['additional themes base'] . '_header'), array('view' => $this->view, 'options' => $this->options, 'rows' => $rows, 'title' => $title));
     return $output;
   }
@@ -351,9 +343,20 @@ class views_data_export_plugin_style_export extends views_plugin_style {
         if (!empty($view->exposed_input[$handler->options['expose']['identifier']])) {
           $identifier = $handler->options['expose']['identifier'];
           $option = $view->exposed_input[$identifier];
-          // The option may be a string or an array, depending on whether the
-          // widget is a text box/area or a select box.
+          // The option may be a string or an array or even an array of arrays,
+          // depending on whether the widget is a text box/area, a select box
+          // or a date range.
           if (is_array($option)) {
+            // loop over each option
+            foreach ($option as $key => $item) {
+              if (!is_array($item)) {
+                continue;
+              }
+              // if its an array implode it first
+              else {
+                $option[$key] = implode('--', $item);
+              }
+            }
             $option = implode('--', $option);
           }
           $exposed[] = check_plain($identifier) . '_' . check_plain($option);
