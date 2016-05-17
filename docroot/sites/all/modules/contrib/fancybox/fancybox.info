@@ -7,9 +7,9 @@ dependencies[] = image
 dependencies[] = libraries
 dependencies[] = jquery_update
 
-; Information added by drupal.org packaging script on 2013-08-06
-version = "7.x-2.0-beta2"
+; Information added by Drupal.org packaging script on 2015-04-01
+version = "7.x-2.0-beta6"
 core = "7.x"
 project = "fancybox"
-datestamp = "1375812453"
+datestamp = "1427854982"
 
