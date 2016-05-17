@@ -243,12 +243,20 @@ function simplesamlphp_auth_init() {
             user_external_login_register($authname, 'simplesamlphp_auth');
             $skip_user_finalization = TRUE;
 
-            if ($user) {
+            if (!empty($user->uid)) {
               // Populate roles based on configuration setting.
               $roles    = _simplesamlphp_auth_rolepopulation(variable_get('simplesamlphp_auth_rolepopulation', ''));
               $userinfo = array('roles' => $roles);
               // @todo Removed role here as it errors when roles are not set.
               $user     = user_save($user, $userinfo);
+            }
+            else {
+              // We were unable to register this new user on the site.
+              // We let the user know about this, log an error, and redirect to the home page.
+              $msg = t("We are sorry. While you have successfully authenticated, we were unable to create an account for you on this site. Please ask the site administrator to provision access for you.");
+              drupal_set_message(check_plain($msg));
+              watchdog('simplesamlphp_auth', 'Unable to register %authname using simplesamlphp_auth', array('%authname'=>$authname), WATCHDOG_ERROR);
+              $_simplesamlphp_auth_as->logout(base_path());
             }
 
           }
@@ -432,6 +440,9 @@ function simplesamlphp_auth_user_logout($account) {
     if (variable_get('simplesamlphp_auth_logoutgotourl', '')) {
       $gotourl = variable_get('simplesamlphp_auth_logoutgotourl', '');
     }
+
+    // Allow modules to alter $gotourl.
+    drupal_alter('simplesamlphp_auth_logout_gotourl', $gotourl, $account);
 
     $_simplesamlphp_auth_as->logout($gotourl);
 
@@ -670,7 +681,7 @@ function _simplesamlphp_auth_generate_block_text() {
 
   // Check if valid local session exists..
   if ($_simplesamlphp_auth_as->isAuthenticated()) {
-    $block_content .= '<p>' . t('Logged in as: @username', array('@username' => $user->name)) 
+    $block_content .= '<p>' . t('Logged in as: @username', array('@username' => $user->name))
     . '<br />' . l(t('Log Out'), 'user/logout') . '</p>';
   }
   else {
@@ -682,6 +693,14 @@ function _simplesamlphp_auth_generate_block_text() {
 
 /**
  * Evaluates a role rule.
+ * The rules work as follows:
+ * = does an exact match on an attribute and will iterate over array values if
+ *     the array is multivalued.
+ * @= matches the domain portion of an email address. It assumes the attribute
+ *     is a string, and will not iterate over an array (but take the first value).
+ * ~= does a partial string match on the attribute, and does iterate over multiple
+ *     values, returning true if any of the values match.
+ *
  *
  * @param array $roleruleevaluation
  *   An array containing the role rule to evaluate.
@@ -713,6 +732,15 @@ function _simplesamlphp_auth_evaulaterolerule($roleruleevaluation, $attributes) 
         return FALSE;
       }
       return ($dc[1] == $roleruleevaluation[2]);
+
+    case '~=':
+      foreach ($attribute as $subattr) {
+        $pos = strpos($subattr, $roleruleevaluation[2]);
+        if ($pos !== FALSE) {
+          return TRUE;
+        }
+      }
+    return FALSE;
   }
 
   return FALSE;
@@ -749,7 +777,7 @@ function _simplesamlphp_auth_rolepopulation($rolemap) {
     foreach ($rolerules as $rolerule) {
       _simplesaml_auth_debug(t('Evaluate role rule: %rolerule', array('%rolerule' => $rolerule)));
 
-      $roleruledecompose = explode(':', $rolerule);
+      $roleruledecompose = explode(':', $rolerule, 2);
 
       $roleid              = $roleruledecompose[0];
       $roleruleevaluations = explode(';', $roleruledecompose[1]);
@@ -801,22 +829,8 @@ function _simplesaml_auth_debug($message) {
  * Logged out user that has an active session in Drupal but not with simpleSAML.
  */
 function _simplesamlphp_auth_destroy_drupal_session() {
-  global $user;
-
-  watchdog('user', 'Session closed for %name.', array('%name' => $user->name));
-
-  // Destroy the current session:
-  session_destroy();
-  drupal_save_session(FALSE);
-
-  // Only variables can be passed by reference workaround.
-  $null = NULL;
-  user_module_invoke('logout', $null, $user);
-
-  // Load the anonymous user.
-  $user = drupal_anonymous_user();
-
-  drupal_goto();
+  module_load_include('pages.inc', 'user');
+  user_logout();
 }
 
 /****************************************************************************
