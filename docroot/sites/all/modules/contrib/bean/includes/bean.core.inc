@@ -348,19 +348,6 @@ class Bean extends Entity {
    */
   public function view($view_mode = 'default', $langcode = NULL, $page = NULL) {
     $content = parent::view($view_mode, $langcode);
-
-    // Add the title so that it may be controlled via other display mechanisms.
-    $content_key = key($content['bean']);
-
-    if (!empty($this->title)) {
-      $content['bean'][$content_key]['title'] = array(
-        '#theme' => 'html_tag',
-        '#tag' => 'h2',
-        '#value' => $this->title,
-        '#attributes' => array('class' => 'bean-title'),
-      );
-    }
-
     if (empty($this->plugin)) {
       return $content;
     }
@@ -383,6 +370,10 @@ class Bean extends Entity {
 
     $return = parent::save();
     bean_reset(TRUE, TRUE);
+
+    if (module_exists('block')) {
+      bean_cache_clear_block($this);
+    }
 
     return $return;
   }
@@ -506,6 +497,18 @@ class BeanEntityAPIController extends EntityAPIControllerExportable {
       }
     }
     parent::delete($ids, $transaction);
+  }
+
+  /**
+   * Overridden to add Rules integration back in.
+   */
+  public function invoke($hook, $entity) {
+    parent::invoke($hook, $entity);
+
+    // Invoke rules.
+    if (module_exists('rules')) {
+      rules_invoke_event($this->entityType . '_' . $hook, $entity);
+    }
   }
 
   protected function saveRevision($entity) {
