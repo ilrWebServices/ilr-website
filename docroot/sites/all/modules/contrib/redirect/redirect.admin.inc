@@ -18,6 +18,7 @@ function redirect_list_form($form, &$form_state) {
   $header = array(
     'source' => array('data' => t('From'), 'field' => 'source', 'sort' => 'asc'),
     'redirect' => array('data' => t('To'), 'field' => 'redirect'),
+    'status' => array('data' => t('Status'), 'field' => 'status'),
     'status_code' => array('data' => t('Type'), 'field' => 'status_code'),
     'language' => array('data' => t('Language'), 'field' => 'language'),
     'count' => array('data' => t('Count'), 'field' => 'count'),
@@ -84,6 +85,7 @@ function redirect_list_form($form, &$form_state) {
     drupal_alter('redirect_url', $redirect->redirect, $redirect->redirect_options);
     $row['source'] = l($source_url, $redirect->source, $redirect->source_options);
     $row['redirect'] = l($redirect_url, $redirect->redirect, $redirect->redirect_options);
+    $row['status'] = $redirect->status ? t('Enabled') : t('Disabled');
     $row['status_code'] = $redirect->status_code ? $redirect->status_code : t('Default (@default)', array('@default' => $default_status_code));
     $row['language'] = module_invoke('locale', 'language_name', $redirect->language);
     $row['count'] = $redirect->count;
@@ -262,6 +264,10 @@ function redirect_list_form_operations_submit($form, &$form_state) {
     }
     call_user_func_array($function, $args);
 
+    // We display the number of redirects the user selected, regardless of
+    // how many redirects actually changed status. Eg. if 1 enabled and 1
+    // disabled redirects are checked for being enabled, we'll still display
+    // "Enabled 1 redirect."
     $count = count($form_state['values']['rids']);
     watchdog('redirect', '@action @count redirects.', array('@action' => $operation['action_past'], '@count' => $count));
     drupal_set_message(format_plural(count($rids), '@action @count redirect.', '@action @count redirects.', array('@action' => $operation['action_past'], '@count' => $count)));
@@ -336,6 +342,10 @@ function redirect_edit_form($form, &$form_state, $redirect = NULL) {
     '#type' => 'value',
     '#value' => $redirect->hash,
   );
+  $form['uid'] = array(
+    '#type' => 'value',
+    '#value' => $redirect->uid,
+  );
 
   $form['source'] = array(
     '#type' => 'textfield',
@@ -361,6 +371,7 @@ function redirect_edit_form($form, &$form_state, $redirect = NULL) {
     '#description' => t('Enter an internal Drupal path, path alias, or complete external URL (like http://example.com/) to redirect to. Use %front to redirect to the front page.', array('%front' => '<front>')),
     '#element_validate' => array('redirect_element_validate_redirect'),
   );
+
   $form['redirect_options'] = array(
     '#type' => 'value',
     '#value' => $redirect->redirect_options,
@@ -371,6 +382,14 @@ function redirect_edit_form($form, &$form_state, $redirect = NULL) {
   $form['language'] = array(
     '#type' => 'value',
     '#value' => $redirect->language,
+  );
+
+  $form['status'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enabled'),
+    '#description' => t('If this box is checked, this redirect will be enabled.'),
+    '#default_value' => $redirect->status,
+    '#required' => FALSE,
   );
 
   $form['advanced'] = array(
@@ -465,7 +484,7 @@ function redirect_element_validate_redirect($element, &$form_state) {
   // Normalize the path.
   $value = drupal_get_normal_path($value, $form_state['values']['language']);
 
-  if (!valid_url($value) && !valid_url($value, TRUE) && $value != '<front>' && $value != '') {
+  if (!valid_url($value) && !valid_url($value, TRUE) && $value != '<front>' && $value != '' && !file_exists($value)) {
     form_error($element, t('The redirect path %value is not valid.', array('%value' => $value)));
   }
 
@@ -520,11 +539,13 @@ function redirect_edit_form_validate($form, &$form_state) {
   $redirect = (object) $form_state['values'];
 
   if (empty($form_state['values']['override'])) {
-    if ($existing = redirect_load_by_source($redirect->source, $redirect->language)) {
-      $existing = $existing[1];
+    // Find out if any (disabled or enabled) redirect with this source already
+    // exists.
+    if ($existing = redirect_load_by_source($redirect->source, $redirect->language, array(), FALSE)) {
       if ($redirect->rid != $existing->rid && $redirect->language == $existing->language) {
-        // The "from" path should not conflict with another redirect
-        $form_state['storage']['override_messages']['redirect-conflict'] = t('The base source path %source is already being redirected. Do you want to <a href="@edit-page">edit the existing redirect</a>?', array('%source' => $redirect->source, '@edit-page' => url('admin/config/search/redirect/edit/'. $existing->rid)));
+        // The "from" path should not conflict with another (disabled or
+        // enabled) redirect.
+        $form_state['storage']['override_messages']['redirect-conflict'] = t('A redirect already exists for the source path %source. Do you want to <a href="@edit-page">edit the existing redirect</a>?', array('%source' => $redirect->source, '@edit-page' => url('admin/config/search/redirect/edit/'. $existing->rid)));
         $form_state['rebuild'] = TRUE;
       }
     }
@@ -622,7 +643,7 @@ function redirect_settings_form($form, &$form_state) {
     '#type' => 'checkbox',
     '#title' => t('Allow redirects to be saved into the page cache.'),
     '#default_value' => variable_get('redirect_page_cache', 0),
-    '#description' => t('This feature requires <a href="@performance">Cache pages for anonymous users</a> to be enabled and the %variable variable to be TRUE.', array('@performance' => url('admin/config/development/performance'), '%variable' => "\$conf['page_cache_invoke_hooks']")),
+    '#description' => t('This feature requires <a href="@performance">Cache pages for anonymous users</a> to be enabled and the %variable variable to be true (currently set to @value).', array('@performance' => url('admin/config/development/performance'), '%variable' => "\$conf['page_cache_invoke_hooks']", '@value' => var_export(variable_get('page_cache_invoke_hooks', TRUE), TRUE))),
     '#disabled' => !variable_get('cache', 0) || !variable_get('page_cache_invoke_hooks', TRUE),
   );
   $form['redirect_purge_inactive'] = array(
@@ -630,85 +651,47 @@ function redirect_settings_form($form, &$form_state) {
     '#title' => t('Delete redirects that have not been accessed for'),
     '#default_value' => variable_get('redirect_purge_inactive', 0),
     '#options' => array(0 => t('Never (do not discard)')) + drupal_map_assoc(array(604800, 1209600, 1814400, 2592000, 5184000, 7776000, 10368000, 15552000, 31536000), 'format_interval'),
-    '#description' => t('Only redirects managaged by the redirect module itself will be deleted. Redirects managed by other modules will be left alone.'),
+    '#description' => t('Only redirects managed by the redirect module itself will be deleted. Redirects managed by other modules will be left alone.'),
     '#disabled' => variable_get('redirect_page_cache', 0) && !variable_get('page_cache_invoke_hooks', TRUE),
   );
 
   $form['globals'] = array(
     '#type' => 'fieldset',
     '#title' => t('Always enabled redirections'),
+    '#description' => t('(formerly Global Redirect features)'),
+    '#access' => FALSE,
   );
   $form['globals']['redirect_global_home'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Redirect alternative front page URLs to the root directory.'),
+    '#title' => t('Redirect from paths like index.php and /node to the root directory.'),
     '#default_value' => variable_get('redirect_global_home', 1),
-    '#description' => t('Includes all aliases for the front page, %root, as well as %node if a default front page is not set.', array('%root' => '/index.php', '%node' => '/node')),
-  );
-  $form['globals']['redirect_global_index'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Remove index.php from all non-front page paths.'),
-    '#default_value' => variable_get('redirect_global_index', 0),
-    '#description' => t('Will remove index.php from paths such as %prepend and %append.', array('%prepend' => '/index.php?q=node/1', '%append' => '/page-alias/index.php')),
+    '#access' => FALSE,
   );
   $form['globals']['redirect_global_clean'] = array(
     '#type' => 'checkbox',
     '#title' => t('Redirect from non-clean URLs to clean URLs.'),
     '#default_value' => variable_get('redirect_global_clean', 1),
     '#disabled' => !variable_get('clean_url', 0),
+    '#access' => FALSE,
   );
   $form['globals']['redirect_global_canonical'] = array(
     '#type' => 'checkbox',
     '#title' => t('Redirect from non-canonical URLs to the canonical URLs.'),
     '#default_value' => variable_get('redirect_global_canonical', 1),
   );
-  $form['globals']['redirect_global_canonical_front'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Redirect the front page to its canonical URL.'),
-    '#default_value' => variable_get('redirect_global_canonical_front', 0),
-    '#description' => t('Add a path to a request for the site root. For example, a request for %rootpath will redirect to %canonicalpath if the default front page is set to %defaultfrontpage.', array('%rootpath' => 'http://example.com/', '%canonicalpath' => 'http://example.com/node/1', '%defaultfrontpage' => 'node/1')),
-  );
   $form['globals']['redirect_global_deslash'] = array(
     '#type' => 'checkbox',
     '#title' => t('Remove trailing slashes from paths.'),
-    '#default_value' => variable_get('redirect_global_deslash', 1),
-  );
-  $form['globals']['redirect_global_add_slash'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Add trailing slashes to paths.'),
-    '#description' => t('For use with the Trailing Slash module instead of editing the .htaccess file.'),
-    '#default_value' => variable_get('redirect_global_add_slash', 0),
+    '#default_value' => variable_get('redirect_global_deslash', 0),
+    '#access' => FALSE,
   );
   $form['globals']['redirect_global_admin_paths'] = array(
     '#type' => 'checkbox',
     '#title' => t('Allow redirections on admin paths.'),
     '#default_value' => variable_get('redirect_global_admin_paths', 0),
   );
-  if (module_exists('locale')) {
-    $form['globals']['redirect_global_language_prefix'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Enforce Language Prefix'),
-      '#description' => t('Enforce language prefix in paths.'),
-      '#default_value' => variable_get('redirect_global_language_prefix', 0),
-    );
 
-    $form['globals']['redirect_global_language_prefix_paths'] = array(
-      '#type' => 'textarea',
-      '#title' => t('Language Prefix Exclude Paths'),
-      '#description' => t('Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are blog for the blog page and blog/* for every personal blog. <front> is the front page.'),
-      '#default_value' => variable_get('redirect_global_language_prefix_paths', ''),
-      '#states' => array(
-        'visible' => array(
-          ':input[name="redirect_global_language_prefix"]' => array('checked' => TRUE),
-        ),
-      ),
-    );
-  }
-
-  $form['submit'] = array(
-    '#validate' => array('redirect_settings_form_validate'),
-    '#submit' => array('redirect_settings_form_submit'),
-  );
-
+  $form['#submit'][] = 'redirect_settings_form_submit';
   return system_settings_form($form);
 }
 
@@ -719,17 +702,6 @@ function redirect_settings_form($form, &$form_state) {
  */
 function redirect_settings_form_submit($form, &$form_state) {
   redirect_page_cache_clear();
-}
-
-/**
- * Form validator; makes sure conflicting settings aren't chosen.
- *
- * @see redirect_settings_form()
- */
-function redirect_settings_form_validate($form, &$form_state) {
-  if ($form_state['values']['redirect_global_deslash'] && $form_state['values']['redirect_global_add_slash']) {
-    form_set_error('info', t('You can not have both %deslash and %add_slash enabled.', array('%deslash' => rtrim($form['globals']['redirect_global_deslash']['#title'], '.'), '%add_slash' => rtrim($form['globals']['redirect_global_add_slash']['#title'], '.'))));
-  }
 }
 
 function redirect_404_list($form = NULL) {
@@ -864,6 +836,7 @@ function redirect_list_table($redirects, $header) {
   $header = array_intersect_key(array(
     'source' => array('data' => t('From'), 'field' => 'source', 'sort' => 'asc'),
     'redirect' => array('data' => t('To'), 'field' => 'redirect'),
+    'status' => array('data' => t('Status'), 'field' => 'status'),
     'status_code' => array('data' => t('Type'), 'field' => 'status_code'),
     'language' => array('data' => t('Language'), 'field' => 'language'),
     'count' => array('data' => t('Count'), 'field' => 'count'),
@@ -884,6 +857,7 @@ function redirect_list_table($redirects, $header) {
     $redirect_url = redirect_url($redirect->redirect, array_merge($redirect->redirect_options, array('alias' => TRUE)));
     $row['data']['source'] = l($source_url, $redirect->source, $redirect->source_options);
     $row['data']['redirect'] = l($redirect_url, $redirect->redirect, $redirect->redirect_options);
+    $row['data']['status'] = $redirect->status ? t('Enabled') : t('Disabled');
     $row['data']['status_code'] = $redirect->status_code ? $redirect->status_code : t('Default (@default)', array('@default' => $default_status_code));
     $row['data']['language'] = module_invoke('locale', 'language_name', $redirect->language);
     $row['data']['count'] = $redirect->count;
@@ -901,6 +875,12 @@ function redirect_list_table($redirects, $header) {
     if (drupal_valid_path($redirect->source)) {
       $row['class'][] = 'warning';
       $row['title'] = t('This redirect overrides an existing internal path.');
+    }
+    if ($redirect->status) {
+      $row['class'][] = 'redirect-enabled';
+    }
+    else {
+      $row['class'][] = 'redirect-disabled';
     }
 
     $operations = array();
