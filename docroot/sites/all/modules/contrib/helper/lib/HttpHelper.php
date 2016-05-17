@@ -35,7 +35,11 @@ class HttpHelper {
     if (isset($options['cache']) && $options['cache'] === FALSE) {
       return FALSE;
     }
-    if (isset($options['cache']['cid'])) {
+    elseif (isset($options['method']) && !in_array($options['method'], array('GET', 'HEAD'))) {
+      // Only cache GET and HEAD methods.
+      return FALSE;
+    }
+    elseif (isset($options['cache']['cid'])) {
       return $options['cache']['cid'];
     }
     $cid_parts = array($url, serialize(array_diff_key($options, array('cache' => ''))));
@@ -49,6 +53,10 @@ class HttpHelper {
     elseif (!empty($response->headers['cache-control']) && strpos($response->headers['cache-control'], 'no-cache') !== FALSE) {
       // Respect the Cache-Control: no-cache header.
       return FALSE;
+    }
+    elseif (!empty($response->headers['cache-control']) && preg_match('/max-age=(\d+)/', $response->headers['cache-control'], $matches)) {
+      // Respect the Cache-Control: max-age=SECONDS header.
+      return REQUEST_TIME + $matches[1];
     }
     elseif (!empty($response->headers['expires']) && $expire = strtotime($response->headers['expires'])) {
       return $expire;

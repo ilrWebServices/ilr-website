@@ -202,11 +202,21 @@ class EntityHelper {
    * @param array $fields
    *   (optional) An optional array of field names that if provided will only
    *   cause those specific fields to be saved, if values are provided.
+   *
+   * @throws \InvalidArgumentException
    */
   public static function updateFieldValuesStorage($entity_type, $entity, array $fields = array()) {
     list($id, , $bundle) = entity_extract_ids($entity_type, $entity);
     if (empty($id)) {
       throw new InvalidArgumentException(t('Cannot call EntityHelper::updateFieldValues() on an unsaved entity.'));
+    }
+
+    // Let any module update field data before the storage engine, accumulating
+    // saved fields along the way.
+    $skip_fields = array();
+    foreach (module_implements('field_storage_pre_update') as $module) {
+      $function = $module . '_field_storage_pre_update';
+      $function($entity_type, $entity, $skip_fields);
     }
 
     // Collect the storage backends used by the remaining fields in the entities.
@@ -391,6 +401,13 @@ class EntityHelper {
     return !empty($info['bundles']) ? ArrayHelper::extractNestedValuesToArray($info['bundles'], array('label')) : array();
   }
 
+  public static function getKey($entity_type, $entity, $key) {
+    $info = entity_get_info($entity_type);
+    if (isset($info['entity keys'][$key]) && isset($entity->{$info['entity keys'][$key]})) {
+      return $entity->{$info['entity keys'][$key]};
+    }
+  }
+
   public static function getViewModeOptions($entity_type, $bundle = NULL, $include_disabled = TRUE) {
     $view_modes = array();
     $info = entity_get_info($entity_type);
@@ -430,10 +447,6 @@ class EntityHelper {
       return array();
     }
 
-    if (!function_exists('entity_view')) {
-      throw new Exception("Cannot use EntityHelper::viewMultiple() without the Entity API module enabled.");
-    }
-
     $output = entity_view($entity_type, $entities, $view_mode, $langcode, $page);
 
     // Workaround for file_entity module that does not have the patch in
@@ -445,13 +458,68 @@ class EntityHelper {
     return !empty($output[$entity_type]) ? $output[$entity_type] : array();
   }
 
-  public static function filterByAccess($entity_type, array $entities, $op = 'view') {
-    if (!function_exists('entity_access')) {
-      throw new Exception("Cannot use EntityHelper::viewMultiple() without the Entity API module enabled.");
+  public static function filterByAccess($entity_type, array $entities, $op = 'view', $account = NULL) {
+    return array_filter($entities, function($entity) use ($entity_type, $op, $account) {
+      return entity_access($op, $entity_type, $entity, $account);
+    });
+  }
+
+  public static function getAllReferencesTo($entity_type, array $entity_ids, EntityFieldQuery $query = NULL, $flatten = FALSE) {
+    if (!isset($query)) {
+      $query = new EntityFieldQuery();
+      $query->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT');
     }
 
-    return array_filter($entities, function($entity) use ($entity_type, $op) {
-      return entity_access($op, $entity_type, $entity);
-    });
+    $references = array();
+    $fields = FieldHelper::getEntityReferencingFieldsByType($entity_type);
+    foreach ($fields as $field_name => $columns) {
+      foreach (array_keys($columns) as $column) {
+        $field_query = clone $query;
+        $field_query->fieldCondition($field_name, $column, $entity_ids);
+        if ($results = $field_query->execute()) {
+          if ($flatten) {
+            $references = drupal_array_merge_deep($references, $results);
+          }
+          else {
+            $references[$field_name . ':' . $column] = $results;
+          }
+        }
+      }
+    }
+
+    return $references;
+  }
+
+  /**
+   * @deprecated Use the entity_is_public module instead.
+   */
+  public static function isPubliclyVisible($entity_type, $entity, array $options = array()) {
+    $options += array(
+      'needs alias' => FALSE,
+    );
+
+    $uri = entity_uri($entity_type, $entity);
+    if (empty($uri['path'])) {
+      return FALSE;
+    }
+    elseif ($options['needs alias'] && !drupal_lookup_path('alias', $uri['path'], NULL)) {
+      return FALSE;
+    }
+    elseif (module_exists('rabbit_hole') && rabbit_hole_get_action($entity_type, $entity) !== RABBIT_HOLE_DISPLAY_CONTENT) {
+      return FALSE;
+    }
+    else {
+      return entity_access('view', $entity_type, $entity, drupal_anonymous_user());
+    }
+  }
+
+  public static function deleteMultiple($entity_type, array $ids) {
+    $function = $entity_type . '_delete_multiple';
+    if (function_exists($function)) {
+      return $function($ids);
+    }
+    else {
+      return entity_delete_multiple($entity_type, $ids);
+    }
   }
 }

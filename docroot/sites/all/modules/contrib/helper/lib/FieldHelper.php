@@ -3,7 +3,7 @@
 class FieldHelper {
 
   public static function getValues($entity_type, $entity, $field_name, $column = NULL) {
-    if (!empty($entity) && $items = field_get_items($entity_type, $entity, $field_name)) {
+    if (!empty($entity->{$field_name}) && $items = field_get_items($entity_type, $entity, $field_name)) {
       if (isset($column)) {
         $value_parents = is_array($column) ? $column : array($column);
         $items = ArrayHelper::extractNestedValuesToArray($items, $value_parents);
@@ -23,20 +23,20 @@ class FieldHelper {
   /**
    * @deprecated Use FieldHelper::getValues().
    */
-  public static function extractValues($entity_type, $entity, $field, $column) {
-    return static::getValues($entity_type, $entity, $field, $column);
+  public static function extractValues($entity_type, $entity, $field_name, $column) {
+    return static::getValues($entity_type, $entity, $field_name, $column);
   }
 
   /**
    * @deprecated Use FieldHelper::getValues() and array_search().
    */
-  public static function getValueDelta($entity_type, $entity, $field, $column, $value) {
-    $items = static::getValues($entity_type, $entity, $field, $column);
+  public static function getValueDelta($entity_type, $entity, $field_name, $column, $value) {
+    $items = static::getValues($entity_type, $entity, $field_name, $column);
     return array_search($value, $items);
   }
 
-  public static function hasDelta($entity_type, $entity, $field, $delta) {
-    if (!empty($entity) && $items = field_get_items($entity_type, $entity, $field)) {
+  public static function hasDelta($entity_type, $entity, $field_name, $delta) {
+    if (!empty($entity->{$field_name}) && $items = field_get_items($entity_type, $entity, $field_name)) {
       return !empty($items[$delta]);
     }
   }
@@ -149,6 +149,18 @@ class FieldHelper {
     return !empty($results[$field_name]) ? $results[$field_name] : FALSE;
   }
 
+  public static function getEntityReferencingFieldsByType($entity_type) {
+    $results = static::getEntityReferencingFields();
+    return array_filter($results, function ($columns) use ($entity_type) {
+      foreach ($columns as $column => $column_entity_type) {
+        if ($column_entity_type == $entity_type) {
+          return TRUE;
+        }
+      }
+      return FALSE;
+    });
+  }
+
   public static function getFieldEntities($entity_type, $entity, $field_name, $column = NULL) {
     $columns = static::getEntityReferencingFieldColumns($field_name);
     if (!isset($column)) {
@@ -157,9 +169,8 @@ class FieldHelper {
     }
     if (isset($columns[$column])) {
       if ($ids = static::getValues($entity_type, $entity, $field_name, $column)) {
-        if ($entities = entity_load($columns[$column], $ids)) {
-          return $entities;
-        }
+        $entities = entity_load($columns[$column], $ids);
+        return array_filter(ArrayHelper::transformAssociativeValues($ids, $entities));
       }
     }
     return array();
@@ -353,5 +364,22 @@ class FieldHelper {
     module_invoke_all('field_purge_field', $field);
 
     watchdog('helper', "Field ID {$field['id']} completely removed.");
+  }
+
+  public static function viewCustomField($field_name, $label, array $items, array $context) {
+    return array(
+      '#theme' => 'field',
+      '#title' => $label,
+      '#label_display' => 'above',
+      '#view_mode' => isset($context['view_mode']) ? $context['view_mode'] : '_custom_display',
+      '#language' => $context['langcode'],
+      '#field_name' => $field_name,
+      '#field_type' => 'custom',
+      '#field_translatable' => FALSE,
+      '#entity_type' => $context['entity_type'],
+      '#bundle' => EntityHelper::getKey($context['entity_type'], $context['entity'], 'bundle'),
+      '#object' => $context['entity'],
+      '#items' => $items,
+    ) + $items;
   }
 }

@@ -10,21 +10,27 @@ files[] = lib/FeaturesHelper.php
 files[] = lib/FieldHelper.php
 files[] = lib/FieldChangeHelper.php
 files[] = lib/HttpHelper.php
-files[] = lib/ProflieHelper.php
+files[] = lib/MenuHelper.php
+files[] = lib/ProfileHelper.php
 files[] = lib/RenderHelper.php
 files[] = lib/UtilHelper.php
+files[] = lib/XmlHelper.php
 files[] = includes/HelperDebugMailLog.php
 files[] = views/views_handler_field_helper_entity_operation_links.inc
 files[] = tests/ArrayHelperTest.test
+files[] = tests/FeaturesHelperTestCase.test
 files[] = tests/FieldHelperTestCase.test
+files[] = tests/MenuHelperTestCase.test
 files[] = tests/UtilHelperTestCase.test
-recommends[] = entity
-test_dependencies[] = entity
+files[] = tests/XmlHelperTestCase.test
+dependencies[] = entity
 test_dependencies[] = entityreference
+test_dependencies[] = redirect
+test_dependencies[] = features
 
-; Information added by Drupal.org packaging script on 2014-12-03
-version = "7.x-1.5"
+; Information added by Drupal.org packaging script on 2016-03-01
+version = "7.x-1.9"
 core = "7.x"
 project = "helper"
-datestamp = "1417591984"
+datestamp = "1456872383"
 
