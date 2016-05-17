@@ -7,17 +7,21 @@
 
 namespace Drupal\restful\Plugin\formatter;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Drupal\Component\Plugin\PluginBase;
 use Drupal\restful\Exception\ServerConfigurationException;
 use Drupal\restful\Plugin\ConfigurablePluginTrait;
+use Drupal\restful\Plugin\resource\Decorators\CacheDecoratedResourceInterface;
 use Drupal\restful\Plugin\resource\Field\ResourceFieldBase;
 use Drupal\restful\Plugin\resource\Field\ResourceFieldCollectionInterface;
 use Drupal\restful\Plugin\resource\ResourceInterface;
 use Drupal\restful\RenderCache\Entity\CacheFragment;
 use Drupal\restful\RenderCache\RenderCache;
-use Drupal\restful\RenderCache\RenderCacheInterface;
 
+/**
+ * Class Formatter.
+ *
+ * @package Drupal\restful\Plugin\formatter
+ */
 abstract class Formatter extends PluginBase implements FormatterInterface {
 
   use ConfigurablePluginTrait;
@@ -206,7 +210,8 @@ abstract class Formatter extends PluginBase implements FormatterInterface {
    * @param mixed $data
    *   The data to be rendered.
    *
-   * @return RenderCacheInterface
+   * @return \Drupal\restful\RenderCache\RenderCacheInterface;
+
    *   The cache controller.
    */
   protected function createCacheController($data) {
@@ -221,6 +226,9 @@ abstract class Formatter extends PluginBase implements FormatterInterface {
     if (!$cached_resource = $this->getResource()) {
       return NULL;
     }
+    if (!$cached_resource instanceof CacheDecoratedResourceInterface) {
+      return NULL;
+    }
     return RenderCache::create($cache_fragments, $cached_resource->getCacheController());
   }
 
@@ -230,7 +238,8 @@ abstract class Formatter extends PluginBase implements FormatterInterface {
    * @param mixed $data
    *   The data to be rendered.
    *
-   * @return ArrayCollection
+   * @return \Doctrine\Common\Collections\ArrayCollection;
+
    *   The cache controller.
    */
   protected static function cacheFragments($data) {
@@ -303,6 +312,24 @@ abstract class Formatter extends PluginBase implements FormatterInterface {
       return $pos === 0 ? substr($field_limit, strlen($prefix . '.')) : NULL;
     };
     return array_filter(array_map($closure_unprefix, $allowed_fields));
+  }
+
+
+  /**
+   * Helper function that calculates the number of items per page.
+   *
+   * @param ResourceInterface $resource
+   *   The associated resource.
+   *
+   * @return int
+   *   The items per page.
+   */
+  protected function calculateItemsPerPage(ResourceInterface $resource) {
+    $data_provider = $resource->getDataProvider();
+    $max_range = $data_provider->getRange();
+    $original_input = $resource->getRequest()->getParsedInput();
+    $items_per_page = empty($original_input['range']) ? $max_range : $original_input['range'];
+    return $items_per_page > $max_range ? $max_range : $items_per_page;
   }
 
 }

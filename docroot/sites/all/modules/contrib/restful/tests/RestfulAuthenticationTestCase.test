@@ -9,6 +9,9 @@ use Drupal\restful\Plugin\AuthenticationPluginManager;
 use Drupal\Component\Plugin\PluginManagerInterface;
 use Drupal\restful\Http\Request;
 
+/**
+ * Class RestfulAuthenticationTestCase.
+ */
 class RestfulAuthenticationTestCase extends RestfulCurlBaseTestCase {
 
   /**
@@ -39,6 +42,9 @@ class RestfulAuthenticationTestCase extends RestfulCurlBaseTestCase {
    */
   protected $pluginManager;
 
+  /**
+   * {@inheritdoc}
+   */
   public static function getInfo() {
     return array(
       'name' => 'Authentication',
@@ -47,6 +53,9 @@ class RestfulAuthenticationTestCase extends RestfulCurlBaseTestCase {
     );
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setUp() {
     parent::setUp('restful_test');
     // Create a custom user that we'll use to identify.
@@ -114,7 +123,7 @@ class RestfulAuthenticationTestCase extends RestfulCurlBaseTestCase {
     // Case 6. Valid login using REDIRECT_HTTP_AUTHORIZATION.
     $_SERVER['PHP_AUTH_USER'] = NULL;
     $_SERVER['PHP_AUTH_PW'] = NULL;
-    $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] = 'Basic: ' . base64_encode($this->account->name . ':' . $this->account->pass_raw);
+    $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] = 'Basic ' . base64_encode($this->account->name . ':' . $this->account->pass_raw);
     $this->assertEqual($this->account->uid, $basic_auth_provider->authenticate($request)->uid, 'The basic auth provider resolved the currently logged in user. Using REDIRECT_HTTP_AUTHORIZATION.');
 
     // Case 7. Invalid pass for basic auth.
@@ -132,7 +141,7 @@ class RestfulAuthenticationTestCase extends RestfulCurlBaseTestCase {
     // Case 9. Valid login using REDIRECT_HTTP_AUTHORIZATION.
     $_SERVER['PHP_AUTH_USER'] = NULL;
     $_SERVER['PHP_AUTH_PW'] = NULL;
-    $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] = 'Basic: ' . base64_encode($this->randomName() . ':' . $this->randomName());
+    $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] = 'Basic ' . base64_encode($this->randomName() . ':' . $this->randomName());
     $this->assertNull($basic_auth_provider->authenticate($request), 'The basic auth provider could not resolve a user with invalid encoded username & password. Using REDIRECT_HTTP_AUTHORIZATION.');
 
     // Case 11. Accessing a resource with optional authentication.

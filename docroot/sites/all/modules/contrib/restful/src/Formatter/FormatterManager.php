@@ -13,7 +13,13 @@ use Drupal\restful\Plugin\formatter\FormatterInterface;
 use Drupal\restful\Plugin\resource\ResourceInterface;
 use Drupal\restful\Plugin\FormatterPluginManager;
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
+use Drupal\restful\Resource\ResourceManager;
 
+/**
+ * Class FormatterManager.
+ *
+ * @package Drupal\restful\Formatter
+ */
 class FormatterManager implements FormatterManagerInterface {
 
   /**
@@ -139,7 +145,7 @@ class FormatterManager implements FormatterManagerInterface {
       ->get('accept')
       ->getValueString();
     $formatter = $this->negotiateFormatter($accept, $formatter_name);
-    $output = call_user_func(array($formatter, $method), $data, $formatter_name);
+    $output = ResourceManager::executeCallback(array($formatter, $method), array($data, $formatter_name));
 
     // The content type header is modified after the massaging if there is
     // an error code. Therefore we need to set the content type header after
@@ -167,7 +173,7 @@ class FormatterManager implements FormatterManagerInterface {
    * @see drupal_match_path().
    */
   protected static function matchContentType($content_type, $pattern) {
-    $regexps = &drupal_static(__FUNCTION__);
+    $regexps = &drupal_static(__METHOD__);
 
     if (!isset($regexps[$pattern])) {
       // Convert path settings to a regular expression.

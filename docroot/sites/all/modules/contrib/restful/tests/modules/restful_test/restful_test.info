@@ -10,9 +10,9 @@ hidden = TRUE
 registry_autoload[] = PSR-0
 registry_autoload[] = PSR-4
 
-; Information added by Drupal.org packaging script on 2015-12-03
-version = "7.x-2.3"
+; Information added by Drupal.org packaging script on 2016-04-28
+version = "7.x-2.9"
 core = "7.x"
 project = "restful"
-datestamp = "1449162862"
+datestamp = "1461850431"
 
