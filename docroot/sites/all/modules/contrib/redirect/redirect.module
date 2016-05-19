@@ -978,11 +978,11 @@ function redirect_change_status_multiple(array $rids, $status) {
 
       if ($status) {
         $redirect_link = l($redirect->redirect, $redirect->redirect) . '=> ' . l($redirect->source, $redirect->source);
-        watchdog('redirect', 'Enabled redirect: !redirect_source_link', array('!redirect_link' => $redirect_link));
+        watchdog('redirect', 'Enabled redirect: !redirect_link', array('!redirect_link' => $redirect_link));
       }
       else {
         $redirect_link = l($redirect->redirect, $redirect->redirect) . '=> ' . l($redirect->source, $redirect->source);
-        watchdog('redirect', 'Disabled redirect: !redirect_source_link', array('!redirect_link' => $redirect_link));
+        watchdog('redirect', 'Disabled redirect: !redirect_link', array('!redirect_link' => $redirect_link));
       }
     }
   }
@@ -1060,6 +1060,7 @@ function redirect_purge_inactive_redirects(array $types = array('redirect'), $in
     $query->condition('type', $types);
   }
   $query->condition('access', REQUEST_TIME - $interval, '<');
+  $query->range(0, variable_get('redirect_purge_amount', 100));
   $query->addTag('redirect_purge');
   $rids = $query->execute()->fetchCol();
 
@@ -1402,6 +1403,7 @@ function redirect_variables() {
     'redirect_passthrough_querystring' => 1,
     'redirect_page_cache' => 0,
     'redirect_purge_inactive' => 0,
+    'redirect_purge_amount' => 100,
     'redirect_global_home' => 1,
     'redirect_global_clean' => 1,
     'redirect_global_canonical' => 1,
@@ -1671,4 +1673,17 @@ function redirect_redirect_operations() {
     'confirm' => TRUE,
   );
   return $operations;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() on behalf of mpac.module.
+ */
+function mpac_form_redirect_edit_form_alter(&$form, &$form_state) {
+  if ($form['redirect']['#type'] == 'textfield') {
+    $form['redirect']['#autocomplete_path'] = 'mpac/autocomplete/menu';
+    $form['redirect']['#description'] .= '<br />' . t("You may enter the title of the node you'd like to link to to get a list of all possible matches.");
+    if (module_exists('path')) {
+      $form['redirect']['#description'] .= ' ' . t('Matches marked with %marker are URL aliases.', array('%marker' => t('*')));
+    }
+  }
 }

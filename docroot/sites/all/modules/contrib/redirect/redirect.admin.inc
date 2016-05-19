@@ -654,6 +654,18 @@ function redirect_settings_form($form, &$form_state) {
     '#description' => t('Only redirects managed by the redirect module itself will be deleted. Redirects managed by other modules will be left alone.'),
     '#disabled' => variable_get('redirect_page_cache', 0) && !variable_get('page_cache_invoke_hooks', TRUE),
   );
+  $form['redirect_purge_amount'] = array(
+    '#type' => 'select',
+    '#title' => t('Maximum number of redirects to delete per cron run'),
+    '#default_value' => variable_get('redirect_purge_amount', 100),
+    '#options' => drupal_map_assoc(array(10, 20, 50, 100, 200, 500)),
+    '#description' => t('The maximum number of redirects that can be deleted in each pass of a <a href="@cron">cron maintenance task</a>. If necessary, reduce the number of items to prevent timeouts and memory errors.', array('@cron' => url('admin/reports/status'))),
+    '#states' => array(
+      'invisible' => array(
+        ':input[name="redirect_purge_inactive"]' => array('value' => '0'),
+      ),
+    ),
+  );
 
   $form['globals'] = array(
     '#type' => 'fieldset',

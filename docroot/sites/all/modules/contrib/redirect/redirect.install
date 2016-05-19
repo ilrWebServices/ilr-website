@@ -288,19 +288,31 @@ function redirect_update_7100() {
  * Add status field.
  */
 function redirect_update_7101() {
-  db_add_field('redirect', 'status', array(
+  $status_schema = array(
     'type' => 'int',
     'size' => 'small',
     'not null' => TRUE,
     'default' => 1,
     'description' => 'Boolean indicating whether the redirect is enabled (visible to non-administrators).',
-  ));
-  db_drop_index('redirect', 'source_language');
-  db_add_index('redirect', 'status_source_language', array(
-    'status',
-    'source',
-    'language',
-  ));
+  );
+  if (!db_field_exists('redirect', 'status')) {
+    db_add_field('redirect', 'status', $status_schema);
+  }
+  else {
+    db_change_field('redirect', 'status', 'status', $status_schema);
+  }
+
+  if (db_index_exists('redirect', 'source_language')) {
+    db_drop_index('redirect', 'source_language');
+  }
+
+  if (!db_index_exists('redirect', 'status_source_language')) {
+    db_add_index('redirect', 'status_source_language', array(
+      'status',
+      'source',
+      'language',
+    ));
+  }
 }
 
 /**
