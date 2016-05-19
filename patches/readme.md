@@ -59,3 +59,8 @@ Example:
   * Fixes UTF-8 file settings when opening CSV downloads on Excel for Windows
   * https://www.drupal.org/node/1701018
   * https://www.drupal.org/files/issues/views_data_export-set_utf8_bom-1701018-13.patch
+
+* simplesamlphp_auth
+  * Fixes Undefined value: $user_allowed_default_login
+  * https://www.drupal.org/node/2717473#comment-11209925
+  * https://www.drupal.org/files/issues/init-logout-notice-2717473-5.patch
