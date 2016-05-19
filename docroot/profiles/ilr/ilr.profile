@@ -126,11 +126,13 @@ function ilr_menu_block_blocks() {
       'depth'       => 10,
       'expanded'    => TRUE,
       'sort'        => FALSE,
+      'parent_mlid' => 0,
     ),
     'ilr-primary-menu' => array(
       // Use the array keys/values described in menu_tree_build().
       'menu_name'   => $menu,
       'title_link'  => TRUE,
+      'parent_mlid' => 0,
       'admin_title' => 'ILR Primary Menu',
       'level'       => $level,
       'follow'      => 0,
