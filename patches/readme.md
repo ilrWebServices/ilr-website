@@ -25,11 +25,6 @@ Example:
   8) Commit the patched module
   9) If you created the patch, add it to the project issue queue so that it might be included in a future release
 
-* wysiwyg
-  * Fixes "Warning: file_get_contents(...) [function.file-get-contents]: failed to open stream: no suitable wrapper could be found in drupal_build_js_cache()"
-  * from: https://drupal.org/node/1802394#comment-6556656
-  * https://drupal.org/files/wysiwyg-1802394-4.patch
-
 * feeds_tamper
   * Checks if import value is an array before every plugin callback instead of only once
   * https://drupal.org/node/2119745
