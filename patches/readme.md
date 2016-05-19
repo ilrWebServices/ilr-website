@@ -35,11 +35,6 @@ Example:
   * https://www.drupal.org/node/2167309
   * https://www.drupal.org/files/issues/field_formatter_label-not_working-2167309-4.patch
 
-* file_entity **Note** Patch was failing, so it's been modified slightly and requires manually removing file_entity.file_default_displays.inc
-  * Default file entities are not exportable by features
-  * https://www.drupal.org/node/2192391
-  * https://www.drupal.org/files/issues/file_entity_remove_file_display-2192391-16.patch
-
 * redirect
   * Adds global redirect functionality to redirect module
   * https://www.drupal.org/node/905914
