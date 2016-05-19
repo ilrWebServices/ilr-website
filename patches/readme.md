@@ -25,11 +25,6 @@ Example:
   8) Commit the patched module
   9) If you created the patch, add it to the project issue queue so that it might be included in a future release
 
-* feeds_tamper
-  * Checks if import value is an array before every plugin callback instead of only once
-  * https://drupal.org/node/2119745
-  * https://drupal.org/files/feeds_tamper_is_array_error-2119745-1.patch
-
 * borealis
   * Switches from window.onload to the Drupal.behaviors system
   * From https://www.drupal.org/node/2110245
