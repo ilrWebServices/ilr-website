@@ -37,13 +37,8 @@ Example:
 
 * redirect
   * Adds global redirect functionality to redirect module
-  * https://www.drupal.org/node/905914
-  * https://www.drupal.org/files/issues/globalredirect-905914-171.patch
-
-* features
-  * Removes unhelpful mtime line from .info files
-  * https://www.drupal.org/node/2381739
-  * https://www.drupal.org/files/issues/2381739-features-mtime.patch
+  * https://www.drupal.org/node/905914#comment-11186657
+  * https://www.drupal.org/files/issues/redirect-n905914-227.patch
 
 * bean
   * Rendered bean respects title display settings
