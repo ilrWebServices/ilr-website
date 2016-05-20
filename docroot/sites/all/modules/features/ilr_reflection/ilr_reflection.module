@@ -40,6 +40,12 @@ function ilr_reflection_block_view($delta = ''){
         }
       }
 
+    default:
+      // Add the js
+      drupal_add_js(drupal_get_path('module','ilr_reflection') . '/ilr_reflection.js', array('type' => 'file', 'scope' => 'footer'));
+
+      drupal_add_js(drupal_get_path('module','ilr_social_sharing') . '/ilr_social_sharing.js', array('type' => 'file', 'scope' => 'footer'));
+
   }
   return $block;
 }
