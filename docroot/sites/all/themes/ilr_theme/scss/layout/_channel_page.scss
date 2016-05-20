@@ -5,6 +5,13 @@ body.node-type-channel-page {
   .submitted, ul.social-share {
     display: none;
   }
+  article.node-reflection {
+    ul.social-share {
+      display: inline-block;
+      @include inline-block-list;
+      @extend %social-share-70th;
+    }
+  }
   footer {
     clear: both;
   }
