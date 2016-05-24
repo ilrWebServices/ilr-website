@@ -232,10 +232,12 @@ function _ilr_reflection_get_parent_tids() {
  * Redirects to the parent page
  */
 function _ilr_reflection_redirect_to_parent($parent_nid) {
-  if ($node = menu_get_object()) {
-    $nid = $node->nid;
+  if ($parent_wrapper = ilr_get_node_wrapper($parent_nid)) {
+    if ($parent_wrapper->status->value() == 1 && $node = menu_get_object()) {
+      $nid = $node->nid;
+      drupal_goto('node/'. $parent_nid, array('fragment' => $nid));
+    }
   }
-  drupal_goto('node/'. $parent_nid, array('fragment' => $nid));
 }
 
 /**
