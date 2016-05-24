@@ -179,15 +179,15 @@ function ilr_reflection_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'focussed_main_image',
         ),
         'type' => 'image',
-        'weight' => 7,
+        'weight' => 0,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -360,7 +360,7 @@ function ilr_reflection_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'youtube',
         'settings' => array(
           'field_formatter_label' => '',
