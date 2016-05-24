@@ -2863,6 +2863,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
@@ -2874,6 +2875,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
@@ -2885,6 +2887,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
@@ -2896,6 +2899,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
@@ -2907,6 +2911,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
@@ -2916,9 +2921,8 @@ function ilr_permissions_user_default_permissions() {
   $permissions['view paragraph content side_by_side_text'] = array(
     'name' => 'view paragraph content side_by_side_text',
     'roles' => array(
-      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
-      'contributor' => 'contributor',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'paragraphs_bundle_permissions',
   );
@@ -2929,6 +2933,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
@@ -2940,6 +2945,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
