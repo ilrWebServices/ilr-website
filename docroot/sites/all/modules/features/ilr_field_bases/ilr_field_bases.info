@@ -57,6 +57,7 @@ features[field_base][] = field_ai_publications
 features[field_base][] = field_ai_research_statement
 features[field_base][] = field_ai_service_statement
 features[field_base][] = field_ai_teaching_statement
+features[field_base][] = field_align_left_right
 features[field_base][] = field_alum
 features[field_base][] = field_alum_additional
 features[field_base][] = field_alumni_job_postings_stmt

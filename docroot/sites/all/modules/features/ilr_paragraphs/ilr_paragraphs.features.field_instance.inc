@@ -489,6 +489,47 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
+  // Exported field_instance: 'paragraphs_item-featured_promo-field_align_left_right'
+  $field_instances['paragraphs_item-featured_promo-field_align_left_right'] = array(
+    'bundle' => 'featured_promo',
+    'default_value' => array(
+      0 => array(
+        'value' => 'left',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_align_left_right',
+    'label' => 'On which side should the image or video display?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-featured_promo-field_header'
   $field_instances['paragraphs_item-featured_promo-field_header'] = array(
     'bundle' => 'featured_promo',
@@ -1384,6 +1425,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   t('List of unit faculty and staff');
   t('Message text');
   t('NetID');
+  t('On which side should the image or video display?');
   t('Organization');
   t('Paragraph header');
   t('Position Title');
