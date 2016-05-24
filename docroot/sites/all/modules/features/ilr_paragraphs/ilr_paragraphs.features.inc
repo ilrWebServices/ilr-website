@@ -43,6 +43,11 @@ function ilr_paragraphs_paragraphs_info() {
       'bundle' => 'just_text',
       'locked' => '1',
     ),
+    'side_by_side_text' => array(
+      'name' => 'side by side text',
+      'bundle' => 'side_by_side_text',
+      'locked' => '1',
+    ),
     'sponsor_message' => array(
       'name' => 'a prominent message',
       'bundle' => 'sponsor_message',

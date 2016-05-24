@@ -111,6 +111,27 @@ body.node-type-channel-page {
               }
             }
           }
+          &.paragraphs-item-side-by-side-text {
+            .field-name-field-promo-text {
+              &:nth-child(odd) {
+                @include padding-trailer(1);
+                border-bottom: 1px solid $gray-light;
+              }
+              &:nth-child(even) {
+                @include padding-leader(1);
+              }
+            }
+            p {
+              @include trailer(.5);
+            }
+            ul {
+              padding-left: 0;
+              li {
+                padding-left: 0;
+                background: none;
+              }
+            }
+          }
         }
       }
       .entity-paragraphs-item {
@@ -245,6 +266,21 @@ body.node-type-channel-page {
             }
           }
         }
+        &.paragraphs-item-side-by-side-text {
+          .content {
+            .field-name-field-promo-text {
+              @include grid-span (5,1);
+              &:nth-child(odd) {
+                @include padding-trailer(0);
+                border-bottom: none;
+              }
+              &:nth-child(even) {
+                @include grid-span (6,7);
+                @include padding-leader(0);
+              }
+            }
+          }
+        }
         &.paragraphs-item-unit-contact-info {
           .content {
             text-align: left;
@@ -331,6 +367,21 @@ body.node-type-channel-page {
             }
             .field-name-field-image.image-right + .group-featured-promo-story, .field-name-field-youtube-video.image-right + .group-featured-promo-story {
               @include grid-span (7,1);
+            }
+          }
+        }
+        &.paragraphs-item-side-by-side-text {
+          .content {
+            .field-name-field-promo-text {
+              @include grid-span (5,1);
+              &:nth-child(odd) {
+                @include padding-trailer(0);
+                border-bottom: none;
+              }
+              &:nth-child(even) {
+                @include grid-span (6,7);
+                @include padding-leader(0);
+              }
             }
           }
         }
