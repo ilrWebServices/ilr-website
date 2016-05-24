@@ -136,10 +136,16 @@ function ilr_reflection_node_view($node, $view_mode, $langcode) {
 /**
  * Implements hook_preprocess_node().
  * Moves the social share markup to the end of the content array
+ * Sets a dummy value in field_image so that tagged_content_block doesn't add bogus markup
  */
 function ilr_reflection_preprocess_node(&$variables) {
-  if ($variables['type'] == 'reflection' && isset($variables['content']['social_share'])) {
-    $variables['content']['social_share']['#weight'] = $variables['content']['field_full_name']['#weight'] + 1;
+  if ($variables['type'] == 'reflection') {
+    if (isset($variables['content']['social_share'])) {
+      $variables['content']['social_share']['#weight'] = $variables['content']['field_full_name']['#weight'] + 1;
+    }
+    if (isset($variables['field_image']) && empty($variables['field_image'])) {
+      $variables['field_image'] = array('keep_empty');
+    }
   }
 }
 
