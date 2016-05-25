@@ -249,7 +249,7 @@ function _ilr_reflection_redirect_to_reflection_landing_page($node) {
       }
     }
   }
-  drupal_goto('alumni', array(
+  drupal_goto('alumni/reflections', array(
     'fragment' => $node->nid,
     'query' => array('reflection' => 1),
   ));
