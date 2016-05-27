@@ -84,7 +84,7 @@ class EntityFieldQuery extends \EntityFieldQuery implements EntityFieldQueryRela
 
       // Add the table if the base entity table was not added because:
       // 1. There was a fieldCondition or fieldOrderBy, AND
-      // 2. There was no property condition ot order.
+      // 2. There was no property condition or order.
       if ($delta == 0) {
         $is_entity_table_present = FALSE;
         $field_base_table_alias = NULL;
@@ -120,12 +120,12 @@ class EntityFieldQuery extends \EntityFieldQuery implements EntityFieldQueryRela
           ));
           // Get the entity type being referenced.
           $entity_info = entity_get_info($relational_filter->getEntityType());
-          $entity_table_alias = $this->aliasJoinTable($entity_info['base table'], $select_query);
+          $entity_table_alias = $this::aliasJoinTable($entity_info['base table'], $select_query);
           $select_query->addJoin('INNER', $entity_info['base table'], $entity_table_alias, sprintf('%s.%s = %s.%s',
             $field_table_name,
             _field_sql_storage_columnname($relational_filter->getName(), $relational_filter->getColumn()),
             $entity_table_alias,
-            $entity_info['entity keys']['id']
+            $relational_filter->getTargetColumn()
           ));
         }
         elseif ($relational_filter->getType() == RelationalFilterInterface::TYPE_PROPERTY) {
@@ -134,12 +134,12 @@ class EntityFieldQuery extends \EntityFieldQuery implements EntityFieldQueryRela
           // (which is not unreasonable).
           $host_entity_table = $entity_table;
           $entity_info = entity_get_info($relational_filter->getEntityType());
-          $entity_table_alias = $this->aliasJoinTable($entity_info['base table'], $select_query);
+          $entity_table_alias = $this::aliasJoinTable($entity_info['base table'], $select_query);
           $select_query->addJoin('INNER', $entity_info['base table'], $entity_table_alias, sprintf('%s.%s = %s.%s',
             $host_entity_table,
             $relational_filter->getName(),
             $entity_table_alias,
-            $entity_info['entity keys']['id']
+            $relational_filter->getTargetColumn()
           ));
         }
       }
@@ -191,7 +191,7 @@ class EntityFieldQuery extends \EntityFieldQuery implements EntityFieldQueryRela
    */
   protected static function aliasJoinTable($table_name, SelectQuery $query) {
     foreach ($query->getTables() as $table_info) {
-      if ($table_info['table'] == $table_name) {
+      if ($table_info['alias'] == $table_name) {
         $matches = array();
         preg_match('/.*_(\d+)$/', $table_name, $matches);
         $num = empty($matches[1]) ? -1 : $matches[1];

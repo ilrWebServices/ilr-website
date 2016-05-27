@@ -13,13 +13,14 @@ use Drupal\restful\Http\RequestInterface;
 use Drupal\restful\Plugin\resource\Field\ResourceFieldCollectionInterface;
 use Drupal\restful\Plugin\resource\Field\ResourceFieldInterface;
 use Drupal\restful\RenderCache\RenderCache;
+use Drupal\restful\Util\ExplorableDecoratorInterface;
 
 /**
  * Class CacheDecoratedDataProvider.
  *
  * @package Drupal\restful\Plugin\resource\DataProvider
  */
-class CacheDecoratedDataProvider implements CacheDecoratedDataProviderInterface {
+class CacheDecoratedDataProvider implements CacheDecoratedDataProviderInterface, ExplorableDecoratorInterface {
 
   /**
    * The decorated object.
@@ -36,14 +37,6 @@ class CacheDecoratedDataProvider implements CacheDecoratedDataProviderInterface 
   protected $cacheController;
 
   /**
-   * Array of metadata. Use this as a mean to pass info to the render layer.
-   *
-   * @var ArrayCollection
-   *   Key value store.
-   */
-  protected $metadata;
-
-  /**
    * Constructs a CacheDecoratedDataProvider object.
    *
    * @param DataProviderInterface $subject
@@ -54,7 +47,6 @@ class CacheDecoratedDataProvider implements CacheDecoratedDataProviderInterface 
   public function __construct(DataProviderInterface $subject, \DrupalCacheInterface $cache_controller) {
     $this->subject = $subject;
     $this->cacheController = $cache_controller;
-    $this->metadata = new ArrayCollection();
   }
 
   /**
@@ -216,7 +208,7 @@ class CacheDecoratedDataProvider implements CacheDecoratedDataProviderInterface 
       $return[] = $row;
     }
 
-    return array_filter($return);
+    return array_values(array_filter($return));
   }
 
   /**
@@ -274,7 +266,7 @@ class CacheDecoratedDataProvider implements CacheDecoratedDataProviderInterface 
    * {@inheritdoc}
    */
   public function getMetadata() {
-    return $this->metadata;
+    return $this->subject->getMetadata();
   }
 
   /**
@@ -286,6 +278,27 @@ class CacheDecoratedDataProvider implements CacheDecoratedDataProviderInterface 
   protected function clearRenderedCache(ArrayCollection $cache_fragments) {
     $cache_object = new RenderCache($cache_fragments, NULL, $this->cacheController);
     $cache_object->clear();
+  }
+
+  /**
+   * Checks if the decorated object is an instance of something.
+   *
+   * @param string $class
+   *   Class or interface to check the instance.
+   *
+   * @return bool
+   *   TRUE if the decorated object is an instace of the $class. FALSE
+   *   otherwise.
+   */
+  public function isInstanceOf($class) {
+    if ($this instanceof $class || $this->subject instanceof $class) {
+      return TRUE;
+    }
+    // Check if the decorated resource is also a decorator.
+    if ($this->subject instanceof ExplorableDecoratorInterface) {
+      return $this->subject->isInstanceOf($class);
+    }
+    return FALSE;
   }
 
 }

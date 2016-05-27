@@ -1,7 +1,8 @@
-name = RESTful example
-description = Example module for the RESTful module.
+name = RESTful Token Authentication tests
+description = Test module that provides some example resources.
 core = 7.x
-dependencies[] = restful
+
+dependencies[] = restful_token_auth
 
 registry_autoload[] = PSR-0
 registry_autoload[] = PSR-4
