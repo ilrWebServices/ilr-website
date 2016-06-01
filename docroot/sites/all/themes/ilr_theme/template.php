@@ -97,6 +97,8 @@ function _ilr_process_field_blocks(&$page, $node) {
       $region_name = $matches[2];
       if (isset($fields[$field_name])) {
         $page[$region_name][] = $fields[$field_name];
+        $page[$region_name]['#theme_wrappers'][] = 'region';
+        $page[$region_name]['#region'] = $region_name;
       }
     }
   }

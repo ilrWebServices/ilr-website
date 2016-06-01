@@ -34,3 +34,30 @@ function ilr_experience_reports_preprocess_node(&$variables) {
     $variables['content']['field_program'][0]['#markup'] = $markup;
   }
 }
+
+/**
+ * Checks for a block in the content bottom region
+ * if the experience report block context is active
+ * And removes the reaction if so.
+ * Fragile, given that this implementation assumes
+ * that we'll only add experience reports to the content bottom region
+ * @see https://www.pivotaltracker.com/story/show/116696477
+ */
+function ilr_experience_reports_context_load_alter(&$context) {
+  if ($context->name == 'experience-report-block') {
+    if ($node = menu_get_object()) {
+      if (!empty($node->content)) { // Confirms not on edit form
+        $wrapper = ilr_get_node_wrapper($node);
+        if (!empty($wrapper->field_blocks->value())) {
+          $regions = $wrapper->field_blocks->value();
+          // Check for _any_ blocks. In the future, we may want to check to see
+          // if the block(s) includes content of type experience report
+          if (!empty($regions->field_content_bottom_region)) {
+            unset($context->reactions);
+          }
+        }
+      }
+    }
+  }
+
+}
