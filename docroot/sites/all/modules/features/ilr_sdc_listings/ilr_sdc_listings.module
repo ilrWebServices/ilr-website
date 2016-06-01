@@ -359,20 +359,34 @@ function _ilr_sdc_listings_send_notification_for_class($class_nid) {
     $class_wrapper = ilr_get_node_wrapper($class_nid);
     $bcc = _ilr_sdc_listings_get_email_bcc_addresses($followers);
     $body = _ilr_sdc_listings_get_course_notification_content($class_nid);
-    $params = array(
-      'bcc'     => $bcc,
-      'subject' => "Now Available: " . $class_wrapper->label(),
-      'content' => $body,
-    );
 
-    drupal_mail(
-      'ilr_sdc_listings_new_class_notification',
-      'course_notification',
-      'ilrweb@cornell.edu',
-      LANGUAGE_NONE,
-      $params,
-      _ilr_sdc_listings_get_admin_email_for_class($class_wrapper)
-    );
+    if (ilr_is_production_site()) {
+      $params = array(
+        'bcc'     => $bcc,
+        'subject' => "Now Available: " . $class_wrapper->label(),
+        'content' => $body,
+      );
+
+      drupal_mail(
+        'ilr_sdc_listings_new_class_notification',
+        'course_notification',
+        'ilrweb@cornell.edu',
+        LANGUAGE_NONE,
+        $params,
+        _ilr_sdc_listings_get_admin_email_for_class($class_wrapper)
+      );
+    } // Not production so log it instead
+    else {
+      watchdog(
+        'ilr_sdc_listings',
+        'New class email prepared for %class: %body',
+        array(
+          '%class' => $class_wrapper->label(),
+          '%body' => $body
+        ),
+        WATCHDOG_INFO
+      );
+    }
   }
 }
 
