@@ -55,17 +55,9 @@ body.subsite-front {
         @extend %centered-title;
       }
     }
-    // Add reflection Form
+    // Add reflection Form. Styles moved to reflections.scss
     #content-bottom .block-ilr-reflection {
-      @include margin-leader(1);
-      @include padding-trailer(1);
       border-top: 1px solid $gray-light;
-      h2 {
-        @extend %centered-title;
-      }
-      .node-reflection-form {
-        @extend %public-node-add-form;
-      }
     }
 
     #content-bottom {
@@ -123,9 +115,11 @@ body.subsite-front {
       @include box-shadow(0 0px 0px 0px rgba(black, .5));
     }
 
-    ul.social-share {
-      @extend %social-share-70th;
-      opacity: 0;
+    .node-reflection {
+      ul.social-share {
+        @extend %social-share-70th;
+        opacity: 0;
+      }
     }
   }
 }
@@ -199,8 +193,8 @@ body.node-type-reflection {
       font-style: oblique;
     }
     ul.social-share {
-      // @extend %social-share-70th;
-      // opacity: 1;
+      @extend %social-share-70th;
+      opacity: 1;
       display: none; // hiding until sharing issues from within modals can be fixed
     }
   }

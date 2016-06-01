@@ -7207,7 +7207,7 @@ function ilr_field_bases_field_default_field_bases() {
         'ilr_alumni_events' => 0,
         'ilr_google_translate' => 0,
         'ilr_mega_menu' => 0,
-        'ilr_reflection' => 0,
+        'ilr_reflection' => 'ilr_reflection',
         'ilr_sdc_listings' => 0,
         'ilr_sub_sites' => 0,
         'ilr_xml_blocks' => 0,

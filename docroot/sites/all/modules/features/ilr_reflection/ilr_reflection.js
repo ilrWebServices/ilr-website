@@ -1,5 +1,5 @@
 (function ($) {
-  Drupal.behaviors.ilr_at_70 = {
+  Drupal.behaviors.ilr_reflection = {
     attach: function (context, settings) {
 
       // Disable links in reflections for now
@@ -22,11 +22,15 @@
           'type': 'iframe',
           'autoDimensions' : true,
           'autoScale' : true,
-          'href' : 'node/'+nid+'?layout=0',
+          'href' : '/node/'+nid+'?layout=0',
         });
       }
 
       $(window).load(function() {
+        $('.node-readmoremore a').each( function (index, element) {
+          $(element).attr('href',$(element).attr('href') + '?parent=' + window.location.pathname);
+        });
+
         if (hash = window.location.hash) {
           var nid = hash.substring(1);
           if (isNumeric(nid)) {

@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * Migrates reflections file field content to an image field
+ */
+function ilr_reflection_update_7001() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'reflection')
+    ->fieldCondition('field_file','fid', 'NULL', '!=');
+
+  $result = $query->execute();
+  if (!empty($result['node'])) {
+    $nids = array_keys($result['node']);
+    if ($nodes = node_load_multiple($nids)) {
+      foreach ($nodes as $nid => $node) {
+        $wrapper = ilr_get_node_wrapper($node);
+        $file = $wrapper->field_file->value();
+        $wrapper->field_image->set($file);
+        $wrapper->save();
+      }
+    }
+  }
+  if ($instance = field_info_instance('node', 'field_file', 'reflection')) {
+    field_delete_instance($instance);
+  }
+}
