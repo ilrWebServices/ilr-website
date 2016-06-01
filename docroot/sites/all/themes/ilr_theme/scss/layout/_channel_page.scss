@@ -186,10 +186,10 @@ body.node-type-channel-page {
         padding-top: 1em;
         padding-bottom: 1em;
         &.paragraphs-item-display-a-block, &.paragraphs-item-compare-three {
-          article:not(.field-name-field-animated-text-card) {
+          article.localist-event {
             @extend %two-column;
           }
-          article.field-name-field-animated-text-card {
+          article.field-name-field-animated-text-card, article.node-reflection {
             @extend %one-column;
           }
         }
@@ -216,8 +216,8 @@ body.node-type-channel-page {
       .entity-paragraphs-item {
         padding-top: 2em;
         padding-bottom: 2em;
-        &.paragraphs-item-compare-three {
-          article.field-name-field-animated-text-card {
+        &.paragraphs-item-display-a-block, &.paragraphs-item-compare-three {
+          article:not(.localist-event) {
             @extend %three-column-masonry;
           }
         }
