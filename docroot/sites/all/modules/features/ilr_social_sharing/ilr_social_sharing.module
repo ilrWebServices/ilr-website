@@ -211,11 +211,15 @@ function _ilr_social_sharing_feed($nids = FALSE, $channel = array()) {
   // Load all nodes to be rendered.
   $nodes = node_load_multiple($nids);
   $items = '';
+  $params = drupal_get_query_parameters();
+  $prefix = (isset($params['site']))
+    ? $params['site'] . '/'
+    : '';
   foreach ($nodes as $node) {
     $wrapper = ilr_get_node_wrapper($node);
     $summary = '';
-
-    $node->link = url("node/$node->nid", array('absolute' => TRUE));
+    $alias = $prefix . drupal_get_path_alias("node/$node->nid");
+    $node->link = url($alias, array('absolute' => TRUE));
     $node->rss_namespaces = array();
     $account = user_load($node->uid);
     $node->rss_elements = array(
