@@ -6,6 +6,7 @@
  */
 
 include_once __DIR__ . '/restful.entity.inc';
+include_once __DIR__ . '/restful.cache.inc';
 
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Component\Plugin\PluginBase;
@@ -88,6 +89,17 @@ function restful_menu() {
   );
   $items['admin/config/services/restful/restful'] = $items['admin/config/services/restful'];
   $items['admin/config/services/restful/restful']['type'] = MENU_DEFAULT_LOCAL_TASK;
+  // Add cache administration page.
+  $items['admin/config/services/restful/cache'] = array(
+    'title' => 'Cache',
+    'description' => 'Administer the RESTful module cache system.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('restful_admin_cache_settings'),
+    'access arguments' => array('administer restful'),
+    'file' => 'restful.cache.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2,
+  );
 
   return $items;
 }
@@ -105,6 +117,10 @@ function restful_permission() {
       'title' => t('Administer the resources'),
       'description' => t('Perform operations on the resources.'),
     ),
+    'restful clear render caches' => array(
+      'title' => t('Clear RESTful render caches'),
+      'description' => t('Clear the render caches and their correspoding cache fragments.'),
+    ),
   );
 }
 
@@ -113,12 +129,17 @@ function restful_permission() {
  */
 function restful_help($path, $arg) {
   switch ($path) {
-    case 'admin/structure/block':
+    case 'admin/config/services/restful':
     case 'admin/help#restful':
-      $message = t('This module is managed in GitHub. Please make sure to read the docs in the !link page for more help.', array(
-        '!link' => l(t('README.md'), 'https://github.com/Gizra/restful/blob/7.x-1.x/README.md'),
+      $message = t('This module is managed in GitHub. Please make sure to read the files in the !link folder for more help.', array(
+        '!link' => l(t('Docs'), 'https://github.com/RESTful-Drupal/restful/tree/7.x-2.x/docs'),
       ));
       return '<p>' . $message . '</p>';
+
+    case 'admin/config/services/restful/cache':
+      $message = t('The RESTful module contains several layers of caching for enhanced performance: (1) page cache (aka URL level caching) for anonymous users. This cache is extremely fast, but not very flexible. (2) The render cache can be configured for each resource and allows you to serve cached versions of your records (even to authenticated users!). The render cache also contains smart invalidation, which means that you do not need to have a TTL based cache system. Instead the caches are evicted when automatically when necessary.');
+      return '<p>' . $message . '</p>';
+
   }
 }
 
@@ -180,12 +201,17 @@ function restful_menu_access_callback($resource_name, $version_string = NULL) {
   catch (RestfulException $e) {
     // We can get here if the request method is not valid or if no resource can
     // be negotiated.
+    $response = restful()->getResponse();
+    $output = _restful_build_http_api_error($e, $response);
+    $response->setStatusCode($e->getCode());
+    $response->setContent(drupal_json_encode($output));
+    $response->send();
+    exit();
   }
   catch (PluginNotFoundException $e) {
     restful_delivery(MENU_NOT_FOUND);
     exit();
   }
-  return FALSE;
 }
 
 /**
@@ -196,7 +222,7 @@ function restful_menu_access_callback($resource_name, $version_string = NULL) {
  * @param string $version
  *   The version, prefixed with v (e.g. v1, v2.2).
  *
- * @throws ServiceUnavailableException
+ * @throws \Drupal\restful\Exception\ServiceUnavailableException
  *
  * @return string
  *   JSON output with the result of the API call.
@@ -247,7 +273,7 @@ function restful_menu_process_callback($resource_name, $version = NULL) {
 
   try {
     $resource->setPath(implode('/', $path));
-    return $resource->process();
+    $result = $resource->process();
   }
   catch (RestfulException $e) {
     $result = _restful_build_http_api_error($e);
@@ -260,6 +286,8 @@ function restful_menu_process_callback($resource_name, $version = NULL) {
     );
   }
 
+  // If the user was switched during the execution thread, then switch it back.
+  $resource->switchUserBack();
   return $result;
 }
 
@@ -545,14 +573,4 @@ function restful_restful_resource_alter(ResourceInterface &$resource) {
   ) {
     $resource->disable();
   }
-}
-
-/**
- * Implements hook_flush_caches().
- */
-function restful_flush_caches() {
-  // Delete all the cache fragments.
-  $controller = entity_get_controller('cache_fragment');
-  $controller->wipe();
-  return array('cache_restful');
 }
