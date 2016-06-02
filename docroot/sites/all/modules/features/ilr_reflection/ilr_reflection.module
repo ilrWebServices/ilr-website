@@ -81,11 +81,10 @@ function ilr_reflection_node_insert($node) {
 /**
  * Implements hook_node_presave().
  * Makes sure that reflections are tagged "reflection"
- * Adds the terms from the "parent" page
+ * Adds the terms from the "parent" page if it's a new reflection
  */
 function ilr_reflection_node_presave($node) {
-  if ($node->type == 'reflection') {
-    $term_present = FALSE;
+  if ($node->type == 'reflection' && $node->is_new) {
     _ilr_reflection_add_terms_to_node($node);
   }
 }
