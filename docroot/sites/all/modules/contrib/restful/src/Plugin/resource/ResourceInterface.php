@@ -20,11 +20,6 @@ use Drupal\restful\Plugin\resource\DataProvider\DataProviderInterface;
 use Drupal\restful\Plugin\resource\Field\ResourceFieldCollection;
 use Drupal\restful\Plugin\resource\Field\ResourceFieldCollectionInterface;
 
-/**
- * Interface ResourceInterface.
- *
- * @package Drupal\restful\Plugin\resource
- */
 interface ResourceInterface extends PluginInspectionInterface, ConfigurablePluginInterface {
 
   /**
@@ -55,11 +50,6 @@ interface ResourceInterface extends PluginInspectionInterface, ConfigurablePlugi
    * @see AuthenticatedResource
    */
   public function getAccount($cache = TRUE);
-
-  /**
-   * Switches the user back from the original user for the session.
-   */
-  public function switchUserBack();
 
   /**
    * {@inheritdoc}

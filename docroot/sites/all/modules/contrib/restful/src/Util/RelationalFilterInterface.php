@@ -7,11 +7,6 @@
 
 namespace Drupal\restful\Util;
 
-/**
- * Interface RelationalFilterInterface.
- *
- * @package Drupal\restful\Util
- */
 interface RelationalFilterInterface {
 
   const TYPE_FIELD = 'field';
@@ -50,19 +45,8 @@ interface RelationalFilterInterface {
   public function getBundles();
 
   /**
-   * Database column for field filters.
-   *
    * @return string
-   *   The DB column.
    */
   public function getColumn();
-
-  /**
-   * Database column for the target table relationship.
-   *
-   * @return string
-   *   The DB column.
-   */
-  public function getTargetColumn();
 
 }

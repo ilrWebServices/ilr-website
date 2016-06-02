@@ -121,6 +121,7 @@ class FormatterHalJson extends Formatter implements FormatterInterface {
     );
 
     $input = $request->getParsedInput();
+    $data_provider = $resource->getDataProvider();
     $page = !empty($input['page']) ? $input['page'] : 1;
 
     if ($page > 1) {
@@ -137,7 +138,7 @@ class FormatterHalJson extends Formatter implements FormatterInterface {
     // We know that there are more pages if the total count is bigger than the
     // number of items of the current request plus the number of items in
     // previous pages.
-    $items_per_page = $this->calculateItemsPerPage($resource);
+    $items_per_page = $data_provider->getRange();
     $previous_items = ($page - 1) * $items_per_page;
     if (isset($data['count']) && $data['count'] > $listed_items + $previous_items) {
       $input['page'] = $page + 1;

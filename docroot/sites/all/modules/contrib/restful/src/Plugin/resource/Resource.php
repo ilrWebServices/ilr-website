@@ -97,7 +97,7 @@ abstract class Resource extends PluginBase implements ResourceInterface {
     $field_definitions = $this->getFieldDefinitions();
     $class_name = $this->dataProviderClassName();
     if (!class_exists($class_name)) {
-      throw new ServerConfigurationException(sprintf('The DataProvider could not be found for this resource: %s.', $this->getResourceMachineName()));
+      throw new ServerConfigurationException(sprintf('The DataProvider could be found for this resource: %s.', $this->getResourceMachineName()));
     }
     return new $class_name($this->getRequest(), $field_definitions, $this->getAccount(), $this->getPluginId(), $this->getPath(), $plugin_definition['dataProvider']);
   }
@@ -119,13 +119,6 @@ abstract class Resource extends PluginBase implements ResourceInterface {
    */
   public function getAccount($cache = TRUE) {
     return $this->authenticationManager->getAccount($this->getRequest(), $cache);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function switchUserBack() {
-    return $this->authenticationManager->switchUserBack();
   }
 
   /**

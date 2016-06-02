@@ -1,7 +1,7 @@
 name = RESTful
 description = Turn Drupal to a RESTful server, following best practices.
 core = 7.x
-php = 5.5.9
+php = 5.4
 dependencies[] = entity
 dependencies[] = plug
 configure = admin/config/services/restful
@@ -45,9 +45,9 @@ files[] = tests/RestfulViewEntityMultiLingualTestCase.test
 files[] = tests/RestfulViewEntityTestCase.test
 files[] = tests/RestfulViewModeAndFormatterTestCase.test
 
-; Information added by Drupal.org packaging script on 2016-04-28
-version = "7.x-2.9"
+; Information added by Drupal.org packaging script on 2015-12-03
+version = "7.x-2.3"
 core = "7.x"
 project = "restful"
-datestamp = "1461850431"
+datestamp = "1449162862"
 

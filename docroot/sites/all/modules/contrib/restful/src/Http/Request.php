@@ -7,7 +7,6 @@
 
 namespace Drupal\restful\Http;
 use Drupal\restful\Exception\BadRequestException;
-use Drupal\restful\Util\StringHelper;
 
 /**
  * Deals with everything coming from the consumer.
@@ -370,12 +369,11 @@ class Request implements RequestInterface {
       $headers = apache_request_headers();
     }
     else {
-      $content_header_keys = array('CONTENT_TYPE', 'CONTENT_LENGTH');
       foreach ($_SERVER as $key => $value) {
-        if (strpos($key, 'HTTP_') === 0 || in_array($key, $content_header_keys)) {
+        if (strpos($key, 'HTTP_') === 0) {
           // Generate the plausible header name based on the $name.
           // Converts 'HTTP_X_FORWARDED_FOR' to 'X-Forwarded-For'
-          $name = preg_replace('/^HTTP_/', '', $key);
+          $name = substr($key, 5);
           $parts = explode('_', $name);
           $parts = array_map('strtolower', $parts);
           $parts = array_map('ucfirst', $parts);
@@ -433,13 +431,8 @@ class Request implements RequestInterface {
     // for compatibility with Apache PHP CGI/FastCGI.
     // This requires the following line in your ".htaccess"-File:
     // RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-    $authorization_header = isset($_SERVER['HTTP_AUTHORIZATION']) ? $_SERVER['HTTP_AUTHORIZATION'] : NULL;
-    $authorization_header = $authorization_header ?: (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) ? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] : NULL);
-    if (!empty($authorization_header) && !isset($username) && !isset($password)) {
-      if (!$token = StringHelper::removePrefix('Basic ', $authorization_header)) {
-        return NULL;
-      }
-      $authentication = base64_decode($token);
+    if (!empty($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) && !isset($username) && !isset($password)) {
+      $authentication = base64_decode(substr($_SERVER['REDIRECT_HTTP_AUTHORIZATION'], 6));
       list($username, $password) = explode(':', $authentication);
       $_SERVER['PHP_AUTH_USER'] = $username;
       $_SERVER['PHP_AUTH_PW'] = $password;

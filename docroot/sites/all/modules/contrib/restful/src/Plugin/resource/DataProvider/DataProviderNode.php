@@ -7,11 +7,9 @@
 
 namespace Drupal\restful\Plugin\resource\DataProvider;
 
-/**
- * Class DataProviderNode.
- *
- * @package Drupal\restful\Plugin\resource\DataProvider
- */
+
+use Drupal\restful\Exception\BadRequestException;
+
 class DataProviderNode extends DataProviderEntity implements DataProviderInterface {
 
   /**

@@ -207,7 +207,10 @@ class DataProviderDbQuery extends DataProvider implements DataProviderDbQueryInt
    * {@inheritdoc}
    */
   public function view($identifier) {
-    $query = $this->getQuery();
+    $table = $this->getTableName();
+    /* @var \SelectQuery $query */
+    $query = db_select($table)
+      ->fields($table);
     foreach ($this->getIdColumn() as $index => $column) {
       $identifier = is_array($identifier) ? $identifier : array($identifier);
       $query->condition($this->getTableName() . '.' . $column, current($this->getColumnFromIds($identifier, $index)));
@@ -331,7 +334,7 @@ class DataProviderDbQuery extends DataProvider implements DataProviderDbQueryInt
     if (!drupal_write_record($this->getTableName(), $record, $id_columns)) {
       throw new ServiceUnavailableException('Record could not be updated to the database.');
     }
-    return array($this->view($identifier));
+    return $this->view($identifier);
   }
 
   /**

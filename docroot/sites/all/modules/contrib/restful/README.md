@@ -266,10 +266,10 @@ documentation for more details.
 
 
 ## Modules integration
-* [Entity validator 2.x](https://www.drupal.org/project/entity_validator): Integrate
-with a robust entity validation (RESTful 1.x requires Entity Validator 1.x).
+* [Entity validator](https://www.drupal.org/project/entity_validator): Integrate
+with a robust entity validation
 
 
 ## Credits
 * [Gizra](http://gizra.com)
-* [Mateu Aguiló Bosch](https://github.com/e0ipso)
+* [Mateu Aguiló Bosch](https://github.com/mateu-aguilo-bosch)

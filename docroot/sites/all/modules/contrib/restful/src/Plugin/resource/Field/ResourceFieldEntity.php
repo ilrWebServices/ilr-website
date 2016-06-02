@@ -17,7 +17,7 @@ use Drupal\restful\Plugin\resource\DataInterpreter\DataInterpreterInterface;
 use Drupal\restful\Plugin\resource\Field\PublicFieldInfo\PublicFieldInfoEntity;
 use Drupal\restful\Plugin\resource\Field\PublicFieldInfo\PublicFieldInfoEntityInterface;
 use Drupal\restful\Plugin\resource\Field\PublicFieldInfo\PublicFieldInfoInterface;
-use Drupal\restful\Plugin\resource\ResourceInterface;
+use Drupal\restful\Util\String;
 
 /**
  * Class ResourceFieldEntity.
@@ -34,19 +34,9 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
   protected $decorated;
 
   /**
-   * A copy of the underlying property.
-   *
-   * This is duplicated here for performance reasons.
-   *
-   * @var string
-   */
-  protected $property;
-
-  /**
-   * A sub property name of a property to take from it the content.
-   *
-   * This can be used for example on a text field with filtered text input
-   * format where we would need to do $wrapper->body->value->value().
+   * A sub property name of a property to take from it the content. This can be
+   * used for example on a text field with filtered text input format where we
+   * would need to do $wrapper->body->value->value().
    *
    * @var string
    */
@@ -175,6 +165,7 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
 
     // Add the default specifics for the current object.
     $resource_field->addDefaults();
+
     return $resource_field;
   }
 
@@ -211,19 +202,17 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
    * {@inheritdoc}
    */
   public function compoundDocumentId(DataInterpreterInterface $interpreter) {
-    $collections = $this->render($interpreter);
-    // Extract the document ID from the field resource collection.
-    $process = function ($collection) {
-      if (!$collection instanceof ResourceFieldCollectionInterface) {
-        return $collection;
+    $property_wrapper = $this->propertyWrapper($interpreter);
+
+    if ($property_wrapper instanceof \EntityListWrapper) {
+      $values = array();
+      // Multiple values.
+      foreach ($property_wrapper->getIterator() as $item_wrapper) {
+        $values[] = $this->propertyIdentifier($item_wrapper);
       }
-      $id_field = $collection->getIdField();
-      return $id_field->render($collection->getInterpreter());
-    };
-    // If cardinality is 1, then we don't have an array.
-    return $this->getCardinality() == 1 ?
-      $process($collections) :
-      array_map($process, array_filter($collections));
+      return $values;
+    }
+    return $this->propertyIdentifier($property_wrapper);
   }
 
   /**
@@ -345,10 +334,6 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
       catch (InaccessibleRecordException $e) {
         // If you don't have access to the embedded entity is like not having
         // access to the property.
-        return NULL;
-      }
-      catch (UnprocessableEntityException $e) {
-        // If you access a nonexistent embedded entity.
         return NULL;
       }
       // Test if the $embedded_entity meets the filter or not.
@@ -663,7 +648,8 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
    * @return mixed
    *   A single or multiple values.
    */
-  protected function resourceValue(DataInterpreterInterface $source) {}
+  protected function resourceValue(DataInterpreterInterface $source) {
+  }
 
   /**
    * {@inheritdoc}
@@ -735,7 +721,7 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
     if (isset($this->column)) {
       return $this->column;
     }
-    if ($this->getProperty() && $field = $this::fieldInfoField($this->getProperty())) {
+    if ($this->getProperty() && $field = field_info_field($this->getProperty())) {
       if ($field['type'] == 'text_long') {
         // Do not default to format.
         $this->setColumn('value');
@@ -827,10 +813,11 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
 
   /**
    * {@inheritdoc}
-   *
-   * Almost all the defaults come are applied by the object's property defaults.
    */
   public function addDefaults() {
+    // Almost all the defaults come are applied by the object's property
+    // defaults.
+
     // Set the defaults from the decorated.
     $this->setResource($this->decorated->getResource());
 
@@ -841,19 +828,17 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
     }
 
     // Set the Entity related defaults.
-    if (
-      ($this->property = $this->decorated->getProperty()) &&
-      ($field = $this::fieldInfoField($this->property)) &&
-      $field['type'] == 'image' &&
-      ($image_styles = $this->getImageStyles())
-    ) {
+    if ($this->getProperty() && $field = field_info_field($this->getProperty())) {
       // If it's an image check if we need to add image style processing.
-      $process_callbacks = $this->getProcessCallbacks();
-      array_unshift($process_callbacks, array(
-        array($this, 'getImageUris'),
-        array($image_styles),
-      ));
-      $this->setProcessCallbacks($process_callbacks);
+      $image_styles = $this->getImageStyles();
+      if ($field['type'] == 'image' && !empty($image_styles)) {
+        $process_callbacks = $this->getProcessCallbacks();
+        array_unshift($process_callbacks, array(
+          array($this, 'getImageUris'),
+          array($image_styles),
+        ));
+        $this->setProcessCallbacks($process_callbacks);
+      }
     }
   }
 
@@ -885,7 +870,8 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
    * {@inheritdoc}
    */
   public static function propertyIsField($name) {
-    return (bool) static::fieldInfoField($name);
+    $field_info = field_info_field($name);
+    return !empty($field_info);
   }
 
   /**
@@ -915,10 +901,11 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
     }
     // If there is an extending class for the particular field use that class
     // instead.
-    if (empty($field_definition['property']) || !$field_info = static::fieldInfoField($field_definition['property'])) {
+    if (empty($field_definition['property']) || !$field_info = field_info_field($field_definition['property'])) {
       return NULL;
     }
 
+    $resource_field = NULL;
     switch ($field_info['type']) {
       case 'entityreference':
       case 'taxonomy_term_reference':
@@ -938,6 +925,11 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
         return '\Drupal\restful\Plugin\resource\Field\ResourceFieldEntityFile';
 
       default:
+        // TODO: This will not work unless we provide the correct namespace.
+        $class_name = 'ResourceFieldEntity' . String::camelize($field_info['type']);
+        if (class_exists($class_name)) {
+          return $class_name;
+        }
         return NULL;
     }
   }
@@ -974,14 +966,13 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
    * {@inheritdoc}
    */
   public function getProperty() {
-    return $this->property;
+    return $this->decorated->getProperty();
   }
 
   /**
    * {@inheritdoc}
    */
   public function setProperty($property) {
-    $this->property = $property;
     $this->decorated->setProperty($property);
   }
 
@@ -1074,7 +1065,7 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
     }
     // Default to single cardinality.
     $this->cardinality = 1;
-    if ($field_info = $this::fieldInfoField($this->getProperty())) {
+    if ($field_info = field_info_field($this->getProperty())) {
       $this->cardinality = empty($field_info['cardinality']) ? $this->cardinality : $field_info['cardinality'];
     }
     return $this->cardinality;
@@ -1152,23 +1143,25 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
     // store the value in the decorated object.
     $property = NULL;
 
+    $entity_type = $this->getEntityType();
     $wrapper_method = $this->getWrapperMethod();
-    $wrapper = $this->entityTypeWrapper();
+    $entity_info = entity_get_info($entity_type);
     if ($wrapper_method == 'label') {
       // Store the label key.
-      $property = $wrapper->entityKey('label');
+      $property = empty($entity_info['entity keys']['label']) ? NULL : $entity_info['entity keys']['label'];
     }
     elseif ($wrapper_method == 'getBundle') {
-      // Store the bundle key.
-      $property = $wrapper->entityKey('bundle');
+      // Store the label key.
+      $this->setProperty($property);
     }
     elseif ($wrapper_method == 'getIdentifier') {
       // Store the ID key.
-      $property = $wrapper->entityKey('id');
+      $property = empty($entity_info['entity keys']['id']) ? NULL : $entity_info['entity keys']['id'];
     }
 
     // There are occasions when the wrapper property is not the schema
     // database field.
+    $wrapper = $this->entityTypeWrapper();
     if (!is_a($wrapper, '\EntityStructureWrapper')) {
       // The entity type does not exist.
       return;
@@ -1205,7 +1198,7 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
         'label' => $field_instance['label'],
         'description' => $field_instance['description'],
       ));
-      $field_info = $this::fieldInfoField($this->getProperty());
+      $field_info = field_info_field($this->getProperty());
       $section_info = array();
       $section_info['label'] = empty($field_info['label']) ? NULL : $field_info['label'];
       $section_info['description'] = empty($field_info['description']) ? NULL : $field_info['description'];
@@ -1247,24 +1240,6 @@ class ResourceFieldEntity implements ResourceFieldEntityInterface {
         'description' => $property_info['description'],
       ));
     }
-  }
-
-  /**
-   * Gets statically cached information about a field.
-   *
-   * @param string $field_name
-   *   The name of the field to retrieve. $field_name can only refer to a
-   *   non-deleted, active field. For deleted fields, use
-   *   field_info_field_by_id(). To retrieve information about inactive fields,
-   *   use field_read_fields().
-   *
-   * @return array
-   *   The field info.
-   *
-   * @see field_info_field()
-   */
-  protected static function fieldInfoField($field_name) {
-    return field_info_field($field_name);
   }
 
 }

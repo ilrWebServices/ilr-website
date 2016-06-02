@@ -39,12 +39,4 @@ interface ResourceFieldResourceInterface extends ResourceFieldInterface {
    */
   public function getResourcePlugin();
 
-  /**
-   * Gets the table column for joins.
-   *
-   * @return string
-   *   The column to make a join for nested filters.
-   */
-  public function getTargetColumn();
-
 }

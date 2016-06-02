@@ -259,6 +259,7 @@ class Response implements ResponseInterface {
       throw new InternalServerErrorException(sprintf('The Response content must be a string or object implementing __toString(), "%s" given.', gettype($content)));
     }
     $this->content = (string) $content;
+    $this->headers->add(HttpHeader::create('Content-Length', strlen($this->content)));
   }
 
   /**

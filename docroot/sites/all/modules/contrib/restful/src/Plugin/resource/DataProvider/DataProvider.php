@@ -9,11 +9,10 @@ namespace Drupal\restful\Plugin\resource\DataProvider;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Drupal\restful\Exception\BadRequestException;
-use Drupal\restful\Exception\UnprocessableEntityException;
+use Drupal\restful\Exception\ServiceUnavailableException;
 use Drupal\restful\Http\HttpHeader;
 use Drupal\restful\Http\RequestInterface;
 use Drupal\restful\Plugin\resource\Decorators\CacheDecoratedResource;
-use Drupal\restful\Plugin\resource\Field\PublicFieldInfo\PublicFieldInfoBase;
 use Drupal\restful\Plugin\resource\Field\ResourceFieldCollection;
 use Drupal\restful\Plugin\resource\Field\ResourceFieldCollectionInterface;
 use Drupal\restful\Plugin\resource\Field\ResourceFieldInterface;
@@ -97,10 +96,10 @@ abstract class DataProvider implements DataProviderInterface {
       // filter[foo]=bar would be converted to filter[foo][value] = bar.
       $filter = array('value' => $filter);
     }
-    if (!isset($filter['value'])) {
-      throw new BadRequestException(sprintf('Value not present for the "%s" filter. Please check the URL format.', $public_field));
-    }
     if (!is_array($filter['value'])) {
+      if (!isset($filter['value'])) {
+        throw new BadRequestException(sprintf('Value not present for the "%s" filter. Please check the URL format.', $public_field));
+      }
       $filter['value'] = array($filter['value']);
     }
     // Add the property.
@@ -291,24 +290,21 @@ abstract class DataProvider implements DataProviderInterface {
   public function discover($path = NULL) {
     // Alter the field definition by adding a callback to get the auto
     // discover information in render time.
-    foreach ($this->fieldDefinitions as $public_field_name => $resource_field) {
+    foreach ($this->fieldDefinitions as $public_field_name => $resouce_field) {
       /* @var ResourceFieldInterface $resource_field */
-      if (method_exists($resource_field, 'autoDiscovery')) {
+      if (method_exists($resouce_field, 'autoDiscovery')) {
         // Adding the autoDiscover method to the resource field class will allow
         // you to be smarter about the auto discovery information.
-        $callable = array($resource_field, 'autoDiscovery');
+        $callable = array($resouce_field, 'autoDiscovery');
       }
       else {
         // If the given field does not have discovery information, provide the
         // empty one instead of an error.
         $callable = array('\Drupal\restful\Plugin\resource\Field\ResourceFieldBase::emptyDiscoveryInfo', array($public_field_name));
       }
-      $resource_field->setCallback($callable);
+      $resouce_field->setCallback($callable);
       // Remove the process callbacks, those don't make sense during discovery.
-      $resource_field->setProcessCallbacks(array());
-      $definition = $resource_field->getDefinition();
-      $discovery_info = empty($definition['discovery']) ? array() : $definition['discovery'];
-      $resource_field->setPublicFieldInfo(new PublicFieldInfoBase($resource_field->getPublicName(), $discovery_info));
+      $resouce_field->setProcessCallbacks(array());
     }
     return $path ? $this->viewMultiple(array($path)) : $this->index();
   }
@@ -335,7 +331,7 @@ abstract class DataProvider implements DataProviderInterface {
    *   With the different sorting options.
    *
    * @throws \Drupal\restful\Exception\BadRequestException
-   * @throws \Drupal\restful\Exception\UnprocessableEntityException
+   * @throws \Drupal\restful\Exception\ServiceUnavailableException
    */
   protected function parseRequestForListSort() {
     $input = $this->getRequest()->getParsedInput();
@@ -346,7 +342,7 @@ abstract class DataProvider implements DataProviderInterface {
 
     $url_params = $this->options['urlParams'];
     if (!$url_params['sort']) {
-      throw new UnprocessableEntityException('Sort parameters have been disabled in server configuration.');
+      throw new ServiceUnavailableException('Sort parameters have been disabled in server configuration.');
     }
 
     $sorts = array();
@@ -370,7 +366,7 @@ abstract class DataProvider implements DataProviderInterface {
    *   An array of filters to apply.
    *
    * @throws \Drupal\restful\Exception\BadRequestException
-   * @throws \Drupal\restful\Exception\UnprocessableEntityException
+   * @throws \Drupal\restful\Exception\ServiceUnavailableException
    *
    * @see \RestfulEntityBase::getQueryForList
    */
@@ -390,7 +386,7 @@ abstract class DataProvider implements DataProviderInterface {
 
     $url_params = empty($this->options['urlParams']) ? array() : $this->options['urlParams'];
     if (isset($url_params['filter']) && !$url_params['filter']) {
-      throw new UnprocessableEntityException('Filter parameters have been disabled in server configuration.');
+      throw new ServiceUnavailableException('Filter parameters have been disabled in server configuration.');
     }
 
     $filters = array();
@@ -399,8 +395,7 @@ abstract class DataProvider implements DataProviderInterface {
       if (!static::isNestedField($public_field) && !$this->fieldDefinitions->get($public_field)) {
         throw new BadRequestException(format_string('The filter @filter is not allowed for this path.', array('@filter' => $public_field)));
       }
-      $filter = static::processFilterInput($value, $public_field);
-      $filters[] = $filter + array('resource_id' => $this->pluginId);
+      $filters[] = static::processFilterInput($value, $public_field);
     }
 
     return $filters;
@@ -413,7 +408,7 @@ abstract class DataProvider implements DataProviderInterface {
    *   A numeric array with the offset and length options.
    *
    * @throws BadRequestException
-   * @throws UnprocessableEntityException
+   * @throws ServiceUnavailableException
    */
   protected function parseRequestForListPagination() {
     $input = $this->getRequest()->getParsedInput();
@@ -431,7 +426,7 @@ abstract class DataProvider implements DataProviderInterface {
 
     $url_params = empty($this->options['urlParams']) ? array() : $this->options['urlParams'];
     if (isset($url_params['range']) && !$url_params['range']) {
-      throw new UnprocessableEntityException('Range parameters have been disabled in server configuration.');
+      throw new ServiceUnavailableException('Range parameters have been disabled in server configuration.');
     }
 
     $offset = ($page - 1) * $range;

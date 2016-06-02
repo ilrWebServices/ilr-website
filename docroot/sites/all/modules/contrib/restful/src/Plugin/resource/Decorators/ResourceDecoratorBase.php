@@ -15,14 +15,8 @@ use Drupal\restful\Http\RequestInterface;
 use Drupal\restful\Plugin\resource\DataProvider\DataProviderInterface;
 use Drupal\restful\Plugin\resource\Field\ResourceFieldCollectionInterface;
 use Drupal\restful\Plugin\resource\ResourceInterface;
-use Drupal\restful\Util\ExplorableDecoratorInterface;
 
-/**
- * Class ResourceDecoratorBase.
- *
- * @package Drupal\restful\Plugin\resource\Decorators
- */
-abstract class ResourceDecoratorBase extends PluginBase implements ResourceDecoratorInterface, ExplorableDecoratorInterface {
+abstract class ResourceDecoratorBase extends PluginBase implements ResourceDecoratorInterface {
 
   /**
    * The decorated resource.
@@ -57,6 +51,8 @@ abstract class ResourceDecoratorBase extends PluginBase implements ResourceDecor
   }
 
   /**
+   * Proxy method to get the account from the rateLimitManager.
+   *
    * {@inheritdoc}
    */
   public function getAccount($cache = TRUE) {
@@ -64,25 +60,13 @@ abstract class ResourceDecoratorBase extends PluginBase implements ResourceDecor
   }
 
   /**
+   * Proxy method to get the account from the rateLimitManager.
+   *
    * {@inheritdoc}
    */
   public function setAccount($account) {
     $this->subject->setAccount($account);
     $this->getDataProvider()->setAccount($account);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function switchUserBack() {
-    $this->subject->switchUserBack();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function discover($path = NULL) {
-    return $this->subject->discover($path);
   }
 
   /**
@@ -389,27 +373,6 @@ abstract class ResourceDecoratorBase extends PluginBase implements ResourceDecor
    */
   public function getPluginId() {
     return $this->subject->getPluginId();
-  }
-
-  /**
-   * Checks if the decorated object is an instance of something.
-   *
-   * @param string $class
-   *   Class or interface to check the instance.
-   *
-   * @return bool
-   *   TRUE if the decorated object is an instace of the $class. FALSE
-   *   otherwise.
-   */
-  public function isInstanceOf($class) {
-    if ($this instanceof $class || $this->subject instanceof $class) {
-      return TRUE;
-    }
-    // Check if the decorated resource is also a decorator.
-    if ($this->subject instanceof ExplorableDecoratorInterface) {
-      return $this->subject->isInstanceOf($class);
-    }
-    return FALSE;
   }
 
   /**

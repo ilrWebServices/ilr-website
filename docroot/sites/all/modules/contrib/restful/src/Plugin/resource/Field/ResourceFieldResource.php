@@ -7,14 +7,12 @@
 
 namespace Drupal\restful\Plugin\resource\Field;
 
-use Drupal\restful\Exception\ServerConfigurationException;
 use Drupal\restful\Http\RequestInterface;
 use Drupal\restful\Plugin\resource\DataInterpreter\DataInterpreterInterface;
 use Drupal\restful\Plugin\resource\Field\PublicFieldInfo\PublicFieldInfoInterface;
 use Drupal\restful\Plugin\resource\ResourceInterface;
-use Drupal\restful\Util\ExplorableDecoratorInterface;
 
-class ResourceFieldResource implements ResourceFieldResourceInterface, ExplorableDecoratorInterface {
+class ResourceFieldResource implements ResourceFieldResourceInterface {
 
   /**
    * Decorated resource field.
@@ -47,13 +45,6 @@ class ResourceFieldResource implements ResourceFieldResourceInterface, Explorabl
   protected $resourcePlugin;
 
   /**
-   * Target Column.
-   *
-   * @var string
-   */
-  protected $targetColumn;
-
-  /**
    * Constructor.
    *
    * @param array $field
@@ -67,10 +58,6 @@ class ResourceFieldResource implements ResourceFieldResourceInterface, Explorabl
       $this->setRequest($request);
     }
     $this->resourceMachineName = $field['resource']['name'];
-    // Compute the target column if empty.
-    if (!empty($field['targetColumn'])) {
-      $this->targetColumn = $field['targetColumn'];
-    }
   }
 
   /**
@@ -378,49 +365,6 @@ class ResourceFieldResource implements ResourceFieldResourceInterface, Explorabl
       return $this->decorated->autoDiscovery();
     }
     return ResourceFieldBase::emptyDiscoveryInfo($this->getPublicName());
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getTargetColumn() {
-    if (empty($this->targetColumn)) {
-      // Check the definition of the decorated field.
-      $definition = $this->decorated->getDefinition();
-      if (!empty($definition['targetColumn'])) {
-        $this->targetColumn = $definition['targetColumn'];
-      }
-      elseif ($this->isInstanceOf(ResourceFieldEntityReferenceInterface::class)) {
-        $entity_info = entity_get_info($this->getResourcePlugin()->getEntityType());
-        // Assume that the relationship is through the entity key id.
-        $this->targetColumn = $entity_info['entity keys']['id'];
-      }
-      else {
-        throw new ServerConfigurationException(sprintf('Target column could not be found for field "%s".', $this->getPublicName()));
-      }
-    }
-    return $this->targetColumn;
-  }
-
-  /**
-   * Checks if the decorated object is an instance of something.
-   *
-   * @param string $class
-   *   Class or interface to check the instance.
-   *
-   * @return bool
-   *   TRUE if the decorated object is an instace of the $class. FALSE
-   *   otherwise.
-   */
-  public function isInstanceOf($class) {
-    if ($this instanceof $class || $this->decorated instanceof $class) {
-      return TRUE;
-    }
-    // Check if the decorated resource is also a decorator.
-    if ($this->decorated instanceof ExplorableDecoratorInterface) {
-      return $this->decorated->isInstanceOf($class);
-    }
-    return FALSE;
   }
 
 }
