@@ -131,12 +131,13 @@ body.subsite-front {
     >h2 { // Hide title of block
       display: none;
     }
-    .node-reflection {
+    article.node-reflection {
       @include padding-leader(1);
       @include padding-trailer(1.5);
       padding-right: 1em;
       padding-left: 1em;
       position: relative;
+      border: none;
       h2 {
         @include adjust-font-size-to(30px);
         @include adjust-leading-to(1);
