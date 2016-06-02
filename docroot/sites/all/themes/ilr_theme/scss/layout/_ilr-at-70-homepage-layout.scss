@@ -32,7 +32,7 @@ body.subsite-front {
           position: relative;
           right: -.5em;
         }
-        .field-name-field-file {
+        .field-name-field-image {
           @include grid-span(12);
         }
         .field-type-text-with-summary {
@@ -54,7 +54,7 @@ body.subsite-front {
           @include grid-span(7,6);
           right: 0;
         }
-        .field-name-field-file {
+        .field-name-field-image {
           @include grid-span(5,1);
         }
         .field-name-body {
