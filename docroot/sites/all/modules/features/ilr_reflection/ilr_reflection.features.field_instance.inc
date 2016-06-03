@@ -93,7 +93,7 @@ function ilr_reflection_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
@@ -112,82 +112,6 @@ function ilr_reflection_field_default_field_instances() {
       ),
       'type' => 'email_textfield',
       'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance: 'node-reflection-field_file'
-  $field_instances['node-reflection-field_file'] = array(
-    'bundle' => 'reflection',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'file_entity',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'file_view_mode' => 'default',
-        ),
-        'type' => 'file_rendered',
-        'weight' => 0,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'file_entity',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'file_view_mode' => 'default',
-        ),
-        'type' => 'file_rendered',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_file',
-    'label' => 'Image',
-    'required' => 0,
-    'settings' => array(
-      'description_field' => 0,
-      'file_directory' => 'reflections',
-      'file_extensions' => 'jpg jpeg gif png',
-      'max_filesize' => '100 MB',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'file',
-      'settings' => array(
-        'filefield_sources' => array(
-          'filefield_sources' => array(
-            'attach' => 0,
-            'clipboard' => 0,
-            'reference' => 0,
-            'remote' => 0,
-            'upload' => 'upload',
-          ),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 0,
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-          ),
-        ),
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'file_generic',
-      'weight' => 7,
     ),
   );
 
@@ -220,7 +144,7 @@ function ilr_reflection_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -248,6 +172,89 @@ function ilr_reflection_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-reflection-field_image'
+  $field_instances['node-reflection-field_image'] = array(
+    'bundle' => 'reflection',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'image_link' => '',
+          'image_style' => 'focussed_main_image',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'image_link' => '',
+          'image_style' => 'focussed_main_image',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_image',
+    'label' => 'Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-reflection-field_tags'
   $field_instances['node-reflection-field_tags'] = array(
     'bundle' => 'reflection',
@@ -271,7 +278,7 @@ function ilr_reflection_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -323,7 +330,7 @@ function ilr_reflection_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -353,7 +360,7 @@ function ilr_reflection_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'youtube',
         'settings' => array(
           'field_formatter_label' => '',

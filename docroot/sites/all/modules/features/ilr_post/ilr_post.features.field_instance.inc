@@ -24,7 +24,7 @@ function ilr_post_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -59,7 +59,7 @@ function ilr_post_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -79,7 +79,7 @@ function ilr_post_field_default_field_instances() {
           'link' => 0,
         ),
         'type' => 'entityreference_label',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -120,6 +120,60 @@ function ilr_post_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-post-field_description'
+  $field_instances['node-post-field_description'] = array(
+    'bundle' => 'post',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_description',
+    'label' => 'Teaser',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-post-field_image'
   $field_instances['node-post-field_image'] = array(
     'bundle' => 'post',
@@ -135,7 +189,7 @@ function ilr_post_field_default_field_instances() {
           'image_style' => 'focussed_main_image',
         ),
         'type' => 'image',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -196,7 +250,7 @@ function ilr_post_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 6,
+      'weight' => 2,
     ),
   );
 
@@ -219,7 +273,7 @@ function ilr_post_field_default_field_instances() {
           'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -267,7 +321,7 @@ function ilr_post_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 2,
+      'weight' => 5,
     ),
   );
 
@@ -282,7 +336,7 @@ function ilr_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -313,7 +367,7 @@ function ilr_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -324,6 +378,7 @@ function ilr_post_field_default_field_instances() {
   t('Image');
   t('Post Date');
   t('Tags');
+  t('Teaser');
 
   return $field_instances;
 }

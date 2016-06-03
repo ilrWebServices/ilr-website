@@ -715,6 +715,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'paragraphs_bundle_permissions',
   );
 
+  // Exported permission: 'create paragraph content side_by_side_text'.
+  $permissions['create paragraph content side_by_side_text'] = array(
+    'name' => 'create paragraph content side_by_side_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'create paragraph content sponsor_message'.
   $permissions['create paragraph content sponsor_message'] = array(
     'name' => 'create paragraph content sponsor_message',
@@ -1371,6 +1381,16 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'delete paragraph content just_text'.
   $permissions['delete paragraph content just_text'] = array(
     'name' => 'delete paragraph content just_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'delete paragraph content side_by_side_text'.
+  $permissions['delete paragraph content side_by_side_text'] = array(
+    'name' => 'delete paragraph content side_by_side_text',
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
@@ -2475,6 +2495,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'paragraphs_bundle_permissions',
   );
 
+  // Exported permission: 'update paragraph content side_by_side_text'.
+  $permissions['update paragraph content side_by_side_text'] = array(
+    'name' => 'update paragraph content side_by_side_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'update paragraph content sponsor_message'.
   $permissions['update paragraph content sponsor_message'] = array(
     'name' => 'update paragraph content sponsor_message',
@@ -2833,6 +2863,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
@@ -2844,6 +2875,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
@@ -2855,6 +2887,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
@@ -2866,6 +2899,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
@@ -2877,7 +2911,18 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'view paragraph content side_by_side_text'.
+  $permissions['view paragraph content side_by_side_text'] = array(
+    'name' => 'view paragraph content side_by_side_text',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'paragraphs_bundle_permissions',
   );
@@ -2888,6 +2933,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
@@ -2899,6 +2945,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',

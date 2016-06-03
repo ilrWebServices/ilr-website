@@ -2,14 +2,9 @@
 
 ## Enabling for Vagrant
 
-1. Download and install the ILR [Vagrant Development VM](https://github.com/ilrWebServices/vagrant-development-vm/) if you haven't already.
-2. `$ vagrant ssh`
-3. `$ sudo apt-get install php5-sqlite`
-4. `$ sudo apt-get install sqlite`
-5. `$ exit`
-6. `$ vagrant reload`
+As of May, 2016, NetID logins should be supported by default when you create your virtual environment.
 
-At this point, simplesaml should be configured on the server, which you can test at the ILR dev site `/simplesaml/` path:
+If you run into issues, you can test the configuration via the admin tool at `/simplesaml`:
 
 1. Click on the "Authentication" tab
 2. Click "Test configured authentication sources"

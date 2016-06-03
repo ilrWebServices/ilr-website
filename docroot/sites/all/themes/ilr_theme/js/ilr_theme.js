@@ -355,6 +355,15 @@
           itemSelector: 'article',
           layoutMode: 'masonry',
         });
+
+        if ($('article.node-reflection').length) {
+          var $wrapper = $('#content .tagged-content');
+          $wrapper.isotope({
+            itemSelector: 'article',
+            layoutMode: 'masonry',
+          });
+        }
+
         // var $content = $('#content .tagged-content');
         // $content.isotope({
         //   itemSelector: 'article',

@@ -1941,7 +1941,7 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "Thank you",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for registering for the upcoming ILR Online webcast.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent Details:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe webcast connection information will be sent to your email address closer to the webcast date. ILR Online webcasts are free of charge, will be closed captioned, and can be viewed using computers or mobile devices.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions about the webcast, please let us know.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ELori Biechele\\u003Cbr\\u003E\\r\\n\\tMarketing Communications Assistant\\u003Cbr\\u003E\\r\\n\\tCornell University ILR School\\u003Cbr\\u003E\\r\\n\\t\\u003Ca href=\\u0022mailto:lb274@cornell.edu\\u0022\\u003Elb274@cornell.edu\\u003C\\/a\\u003E\\u003Cbr\\u003E\\r\\n\\t607-254-8941\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for registering for the upcoming ILR Online webcast.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent Details:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe webcast connection information will be sent to your email address closer to the webcast date. ILR Online webcasts are free of charge, will be closed captioned, and can be viewed using computers or mobile devices.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions about the webcast, please contact ILR Communications and Marketing, \\u003Ca href=\\u0022mailto:ilrcommunications@cornell.edu\\u0022\\u003Eilrcommunications@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ECommunications and Marketing\\u003Cbr\\u003E\\r\\n\\tCornell ILR School\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -1969,7 +1969,7 @@ function forms_default_entityform_type() {
       "send_confirmation_email_to_admin" : 0,
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0,
-      "form_submission_ilr_recipient" : "lb274@cornell.edu",
+      "form_submission_ilr_recipient" : "ilrcommunications@cornell.edu",
       "add_payment_processing" : 0,
       "hpp" : ""
     },

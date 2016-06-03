@@ -39,7 +39,6 @@ function ilr_reflection_block_view($delta = ''){
           $form[$name]['#access'] = false;
         }
       }
-
   }
   return $block;
 }
@@ -70,58 +69,60 @@ function ilr_reflection_form_alter(&$form, &$form_state, $form_id) {
  */
 function ilr_reflection_node_insert($node) {
   if($node->type == "reflection") {
+
     drupal_set_message(t('Thank you for sharing a part of your ILR story. We hope you will join us for an upcoming <a href="http://events.cornell.edu/search/events/1?event_types%5B%5D=41672">event</a> and please stay connected with us on <a href="https://www.facebook.com/ILRSchool">Facebook</a>, <a href="https://instagram.com/cornellilr">Instagram</a> and <a href="https://www.linkedin.com/edu/cornell-university-ilr-school-50020">Linked In</a>.'));
     _ilr_reflection_admin_notification($node);
-    drupal_goto('/ilr-at-70');
+    if ($node = menu_get_object()) {
+      drupal_goto('node/'. $node->nid);
+    }
   }
 }
 
 /**
  * Implements hook_node_presave().
  * Makes sure that reflections are tagged "reflection"
+ * Adds the terms from the "parent" page if it's a new reflection
  */
 function ilr_reflection_node_presave($node) {
-  if ($node->type == 'reflection') {
-    $term_present = FALSE;
-    $term = taxonomy_get_term_by_name('reflection');
-    $reflection_tid = key($term);
-    if (isset($node->field_tags)) {
-      foreach ($node->field_tags[LANGUAGE_NONE] as $key => $term_info) {
-        if ($term_info['tid'] == $reflection_tid) {
-          $term_present = TRUE;
-        }
-      }
-    }
-    else {
-      $node->field_tags = array();
-    }
-    if (!$term_present) {
-      $node->field_tags[LANGUAGE_NONE][] = (array) array_shift($term);
-    }
+  if ($node->type == 'reflection' && $node->is_new) {
+    _ilr_reflection_add_terms_to_node($node);
   }
 }
 
 /**
  * Implements hook_node_view().
  * Calls required formatting function(s) for reflections
- * Calls redirect from reflection nodes to the 70th page
+ * Adds javascript
+ * Checks for redirection triggers
  */
 function ilr_reflection_node_view($node, $view_mode, $langcode) {
   if ($node->type == 'reflection') {
     _ilr_reflection_format_class_year($node);
-    if ($view_mode == 'full' && !isset($_GET['layout'])) {
-      _ilr_reflection_redirect_to_70th_page($node->nid);
+    _ilr_reflection_add_js($node, $view_mode);
+    // Check whether the reflection is being viewed as the full node
+    // and whether it's being called via javascript, @see openReflectionModal().
+    if ($view_mode == 'full' && !isset($_REQUEST['layout'])) {
+      _ilr_reflection_redirect_to_reflection_landing_page($node);
     }
+  } // check for the 'reflection' parameter. @see _ilr_reflection_redirect_to_reflection_landing_page()
+  elseif (isset($_REQUEST['reflection']) && $_REQUEST['reflection'] == 1) {
+    _ilr_reflection_add_js($node, $view_mode);
   }
 }
 
 /**
  * Implements hook_preprocess_node().
  * Moves the social share markup to the end of the content array
+ * Sets a dummy value in field_image so that tagged_content_block doesn't add bogus markup
  */
 function ilr_reflection_preprocess_node(&$variables) {
-  if ($variables['type'] == 'reflection' && isset($variables['content']['social_share'])) {
-    $variables['content']['social_share']['#weight'] = $variables['content']['field_full_name']['#weight'] + 1;
+  if ($variables['type'] == 'reflection') {
+    if (isset($variables['content']['social_share'])) {
+      $variables['content']['social_share']['#weight'] = $variables['content']['field_full_name']['#weight'] + 1;
+    }
+    if (isset($variables['field_image']) && empty($variables['field_image'])) {
+      $variables['field_image'] = array('keep_empty');
+    }
   }
 }
 
@@ -140,6 +141,38 @@ function ilr_reflection_admin_notification_mail($key, &$message, $params) {
   $message['body'][] = t("This is an automatic e-mail from $sitename.");
 }
 
+function _ilr_reflection_add_js($node, $view_mode) {
+  $js_added = drupal_static(__FUNCTION__);
+  if (!$js_added) {
+    drupal_add_js(drupal_get_path('module','ilr_reflection') . '/ilr_reflection.js', array('type' => 'file', 'scope' => 'footer'));
+    drupal_add_js(drupal_get_path('module','ilr_social_sharing') . '/ilr_social_sharing.js', array('type' => 'file', 'scope' => 'footer'));
+
+    if ($view_mode == 'teaser') {
+      $current_node = menu_get_object();
+      $setting = array('ilr_social_sharing' => array('currentNid' => $current_node->nid));
+      $node->content['#attached']['js'][] = array(
+        'data' => $setting,
+        'type' => 'setting',
+      );
+    }
+    $js_added = TRUE;
+  }
+}
+
+/**
+ * Adds the "reflection" tag to reflections,
+ * as well as the terms from the "parent" page
+ */
+function _ilr_reflection_add_terms_to_node(&$node) {
+  $wrapper = ilr_get_node_wrapper($node);
+  $term = taxonomy_get_term_by_name('reflection');
+  $reflection_tid = array(key($term));
+  $parent_tids = _ilr_reflection_get_parent_tids();
+  $tids = array_merge($reflection_tid, $parent_tids);
+  $wrapper->field_tags->set($tids);
+  $node = $wrapper->raw();
+  return $node;
+}
 /**
  * Custom function to get the reflection admins
  */
@@ -187,11 +220,38 @@ function _ilr_reflection_format_class_year(&$node) {
   }
 }
 
+function _ilr_reflection_get_parent_tids() {
+  if ($node = menu_get_object()) {
+    if ($node->type != "reflection") {
+      $wrapper = ilr_get_node_wrapper($node);
+      if (isset($wrapper->field_tags)) {
+        $tids = array();
+        foreach ($wrapper->field_tags->getIterator() as $delta => $term_wrapper) {
+          $tids[] = $term_wrapper->tid->value();
+        }
+        return $tids;
+      }
+    }
+  }
+  return array();
+}
+
 /**
- * Redirects to the 70th page
+ * Redirects to the parent page
+ * or the default page
  */
-function _ilr_reflection_redirect_to_70th_page($nid) {
-  drupal_goto('ilr-at-70', array('fragment' => $nid));
+function _ilr_reflection_redirect_to_reflection_landing_page($node) {
+  if (isset($_GET['p'])) {
+    if ($parent_wrapper = ilr_get_node_wrapper($_GET['p'])) {
+      if ($parent_wrapper->status->value() == 1) {
+        drupal_goto('node/'. $_GET['p'], array('fragment' => $node->nid));
+      }
+    }
+  }
+  drupal_goto('alumni/reflections', array(
+    'fragment' => $node->nid,
+    'query' => array('reflection' => 1),
+  ));
 }
 
 /**

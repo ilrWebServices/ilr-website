@@ -767,6 +767,32 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_align_left_right'
+  $field_bases['field_align_left_right'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_align_left_right',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'left' => 'left',
+        'right' => 'right',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_alum'
   $field_bases['field_alum'] = array(
     'active' => 1,
@@ -7181,7 +7207,7 @@ function ilr_field_bases_field_default_field_bases() {
         'ilr_alumni_events' => 0,
         'ilr_google_translate' => 0,
         'ilr_mega_menu' => 0,
-        'ilr_reflection' => 0,
+        'ilr_reflection' => 'ilr_reflection',
         'ilr_sdc_listings' => 0,
         'ilr_sub_sites' => 0,
         'ilr_xml_blocks' => 0,
@@ -8276,6 +8302,25 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_promo_text'
+  $field_bases['field_promo_text'] = array(
+    'active' => 1,
+    'cardinality' => 2,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_promo_text',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'field_collection',
+    'settings' => array(
+      'hide_blank_items' => 0,
+      'path' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'field_collection',
   );
 
   // Exported field_base: 'field_pronunciation'

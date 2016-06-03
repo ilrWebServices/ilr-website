@@ -85,8 +85,17 @@
         }
         if (typeof location.origin === 'undefined')
           location.origin = location.protocol + '//' + location.host;
-        return location.origin + '/node/' + nid;
+        return location.origin + '/node/' + nid + currentNidParam();
       }
+
+      var currentNidParam = function() {
+        var params = '';
+        if (typeof settings.ilr_social_sharing !== 'undefined'
+          && typeof settings.ilr_social_sharing.currentNid !== 'undefined') {
+          params = '?p='+settings.ilr_social_sharing.currentNid;
+        }
+        return params;
+      };
 
       var getHashtags = function() {
         var hashtags = '';

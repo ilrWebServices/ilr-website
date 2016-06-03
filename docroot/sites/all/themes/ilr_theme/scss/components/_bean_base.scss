@@ -40,7 +40,7 @@
   #content & {
     &:not([data-items='1']) {
       &:not([data-items='3']) {
-        article {
+        article:not(.node-reflection) {
           @extend %thumb;
         }
         &[data-eq-state="small"] {
