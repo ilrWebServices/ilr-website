@@ -36,7 +36,7 @@ body.node-type-channel-page {
       #page-title {
         @include grid-span (10,2);
         clear: both;
-        margin-bottom: 1em;
+        @include margin-trailer(1);
       }
       .section {
         min-width: 100%;
@@ -45,17 +45,24 @@ body.node-type-channel-page {
         text-align: center;
       }
       .paragraphs-items-field-para-main-page-content {
-        .field-name-field-para-main-page-content:nth-child(even) {
-          background: white;
-          border-top: 1px solid $gray-light;
-          border-bottom: 1px solid $gray-light;
+        .field-name-field-para-main-page-content {
+          .field-item:nth-child(even) {
+            background: white;
+          }
         }
-        .field-name-field-para-main-page-content:nth-child(1) {
-          border-top: 1px solid $gray-light;
+        .field-name-field-para-main-page-content {
+          .field-item:nth-child(1) {
+            border-top: 1px solid $gray-light;
+          }
+        }
+        .field-name-field-para-main-page-content {
+          .field-item.paragraph-type-featured-promo {
+            background: $nav-dark;
+          }
         }
         .entity-paragraphs-item {
-          padding-top: 2em;
-          padding-bottom: 2em;
+          @include padding-leader(1.5);
+          @include padding-trailer(1.5);
           @include clearfix;
           .content {
             @include grid-span (10,2);
@@ -67,8 +74,8 @@ body.node-type-channel-page {
             }
           }
           &.paragraphs-item-just-image {
-            padding-top: 0;
-            padding-bottom: 0;
+            @include padding-leader(0);
+            @include padding-trailer(0);
             line-height: 0;
             .content {
               @include grid-span (12);//putting here allows bkgd color to be full width
@@ -78,17 +85,20 @@ body.node-type-channel-page {
             }
           }
           &.paragraphs-item-featured-promo {
-            background: $nav-dark;
-            padding-top: 0;
-            padding-bottom: 0;
+            @include padding-leader(0);
+            @include padding-trailer(0);
             h2 {
               @include adjust-font-size-to(24px);
               @include adjust-leading-to(.8);
               font-weight: 300;
-              color: white;
+              color: $gray-bg;
             }
             p {
               color: $gray-light;
+              @include trailer(.5);
+            }
+            iframe {
+              width: 100%;
             }
             .content {
               @include grid-span (12);
@@ -98,12 +108,9 @@ body.node-type-channel-page {
               }
               .group-featured-promo-story {
                 @include grid-span (10,2);
-                padding-top: 1em;
-                padding-bottom: 1em;
+                @include padding-leader(1);
+                @include padding-trailer(1.5);
                 text-align: center;
-                p {
-                  margin-bottom: 1em;
-                }
                 ul {
                   padding-left: 0;
                   li {
@@ -111,7 +118,10 @@ body.node-type-channel-page {
                     background: none;
                     a {
                       color: $promo-color;
-                      border-bottom: none;
+                      border-bottom-color: darken($promo-color, 20%);
+                      &:hover {
+                        border-bottom-color: lighten($promo-color, 20%);
+                      }
                     }
                   }
                 }
@@ -143,9 +153,8 @@ body.node-type-channel-page {
       }
       .entity-paragraphs-item {
         &.paragraphs-item-unit-contact-info {
-          padding-bottom: 2em;
+          @include padding-trailer(1.5);
           .content {
-            text-align: center;
             ul {
               &:not(.social) {
                 padding-left: 0;
@@ -156,7 +165,7 @@ body.node-type-channel-page {
               }
             }
             .field-name-field-people-list {
-              margin-bottom: 2em;
+              @include margin-trailer(1.5);
               h2, h3 {
                 margin-bottom: .25em;
               }
@@ -175,19 +184,19 @@ body.node-type-channel-page {
                 margin-bottom: .25em;
               }
               ul.social {
-                margin-bottom: 1em;
+                @include margin-trailer(1);
               }
               address {
                 font-style: normal;
-                margin-bottom: 1em;
+                @include margin-trailer(1);
               }
             }
           }
         }
         &.paragraphs-item-display-a-block {
           .event-block {
-            padding-top: 1em;
-            padding-bottom: 1em;
+            @include padding-leader(1);
+            @include padding-trailer(1);
           }
           article {
             @extend %one-column;
@@ -204,14 +213,32 @@ body.node-type-channel-page {
   #main[data-eq-state="550"] {
     #content {
       .entity-paragraphs-item {
-        padding-top: 1em;
-        padding-bottom: 1em;
+        @include padding-leader(1);
+        @include padding-trailer(1);
         &.paragraphs-item-display-a-block, &.paragraphs-item-compare-three {
           article.localist-event {
             @extend %two-column;
           }
           article.field-name-field-animated-text-card, article.node-reflection {
             @extend %one-column;
+          }
+        }
+        &.paragraphs-item-featured-promo {
+          .content {
+            .field-name-field-youtube-video {
+              padding-top: 25px;
+              padding-bottom: 56.25%;
+              position: relative;
+              height: 0;
+
+              iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+              }
+            }
           }
         }
         &.paragraphs-item-unit-contact-info {
@@ -235,10 +262,10 @@ body.node-type-channel-page {
         text-align: left;
       }
       .entity-paragraphs-item {
-        padding-top: 2em;
-        padding-bottom: 2em;
-        &.paragraphs-item-display-a-block, &.paragraphs-item-compare-three {
-          article:not(.localist-event) {
+        @include padding-leader(1.5);
+        @include padding-trailer(1.5);
+        &.paragraphs-item-compare-three {
+          article.field-name-field-animated-text-card {
             @extend %three-column-masonry;
           }
         }
@@ -247,28 +274,34 @@ body.node-type-channel-page {
             @include adjust-font-size-to(30px);
             @include adjust-leading-to(.8);
           }
+          p {
+            @include adjust-font-size-to(21px, 1);
+          }
+          img {
+            min-height: 295px;
+          }
           .content {
+            @include add-gutter(0);
+            .group-featured-promo-story {
+              @include padding-leader(1.5);
+            }
             .field-name-field-image.image-left, .field-name-field-youtube-video.image-left {
-              @include grid-span (5,1);
+              @include grid-span (6,1);
             }
             .field-name-field-image.image-left + .group-featured-promo-story, .field-name-field-youtube-video.image-left + .group-featured-promo-story {
-              @include grid-span (7,6);
-              padding-bottom: 0;
+              @include grid-span (6,7);
+              @include padding-trailer(0);
               padding-right: 2em;
+              padding-left: 2em;
             }
 
             .field-name-field-image.image-right, .field-name-field-youtube-video.image-right {
-              @include grid-span (5,8);
-              img {
-                float: right;
-              }
-              iframe {
-                width: 100%;
-              }
+              @include grid-span (6,7);
             }
             .field-name-field-image.image-right + .group-featured-promo-story, .field-name-field-youtube-video.image-right + .group-featured-promo-story {
-              @include grid-span (7,1);
-              padding-bottom: 0;
+              @include grid-span (6,1);
+              @include padding-trailer(0);
+              padding-right: 2em;
               padding-left: 2em;
             }
           }
@@ -292,9 +325,10 @@ body.node-type-channel-page {
           .content {
             text-align: left;
             .field-name-field-people-list {
-              margin-bottom: 1em;
+              @include margin-trailer(1);
               @include grid-span (6,1);
               li {
+                padding-right: 1em;
                 display: inline-block;
                 &:nth-of-type(odd) {
                   @include grid-span(6,1);
@@ -328,11 +362,11 @@ body.node-type-channel-page {
         text-align: left;
       }
       .entity-paragraphs-item {
-        padding-top: 2em;
-        padding-bottom: 2em;
+        @include padding-leader(1.5);
+        @include padding-trailer(1.5);
         &.paragraphs-item-display-a-block, &.paragraphs-item-compare-three {
           .event-block {
-            padding-top: 2em;
+            @include padding-leader(1.5);
           }
           article {
             @extend %three-column-masonry;
@@ -343,22 +377,33 @@ body.node-type-channel-page {
             @include adjust-font-size-to(30px);
             @include adjust-leading-to(.8);
           }
+          p {
+            @include adjust-font-size-to(21px, 1.1);
+          }
           .content {
+            .field-name-field-youtube-video {
+              padding-top: 25px;
+              padding-bottom: 30%;
+              position: relative;
+              height: 0;
+
+              iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+              }
+            }
             .field-name-field-image.image-left, .field-name-field-youtube-video.image-left {
-              @include grid-span (5,1);
+              @include grid-span (6,1);
             }
             .field-name-field-image.image-right, .field-name-field-youtube-video.image-right {
-              @include grid-span (5,8);
-              img {
-                float: right;
-              }
-              iframe {
-                width: 100%;
-              }
+              @include grid-span (6,7);
             }
             .group-featured-promo-story {
-              padding-top: 4em;
-              padding-bottom: 0;
+              @include padding-leader(2.5);
+              @include padding-trailer(0);
               padding-right: 2em;
               ul {
                 li {
@@ -370,24 +415,26 @@ body.node-type-channel-page {
               }
             }
             .field-name-field-image.image-left + .group-featured-promo-story, .field-name-field-youtube-video.image-left + .group-featured-promo-story {
-              @include grid-span (7,6);
+              @include grid-span (6,7);
+              padding-left: 2em;
             }
             .field-name-field-image.image-right + .group-featured-promo-story, .field-name-field-youtube-video.image-right + .group-featured-promo-story {
-              @include grid-span (7,1);
+              @include grid-span (6,1);
+              padding-left: 2em;
             }
           }
         }
         &.paragraphs-item-side-by-side-text {
           .content {
             .field-name-field-promo-text {
+              @include padding-leader(1);
+              @include padding-trailer(1);
               @include grid-span (5,1);
               &:nth-child(odd) {
-                @include padding-trailer(0);
                 border-bottom: none;
               }
               &:nth-child(even) {
                 @include grid-span (6,7);
-                @include padding-leader(0);
               }
             }
           }
@@ -396,9 +443,11 @@ body.node-type-channel-page {
           .content {
             text-align: left;
             .field-name-field-people-list {
-              margin-bottom: 1em;
+              @include padding-leader(1);
+              @include margin-trailer(0);
               @include grid-span (6,1);
               li {
+                padding-right: 1em;
                 display: inline-block;
                 &:nth-of-type(odd) {
                   @include grid-span(6,1);
@@ -411,6 +460,7 @@ body.node-type-channel-page {
               }
             }
             .group_unit_information {
+              @include padding-leader(1);
               @include grid-span (6,7);
               .group_unit_name_and_address {
                 @include grid-span(6,1);
