@@ -29,9 +29,9 @@ function ilr_experience_reports_preprocess_node(&$variables) {
   if($variables['type'] == 'experience_report' && $variables['view_mode'] == 'ilr_theme__highlighted') {
     $wrapper = ilr_get_node_wrapper($variables['node']);
     $title = $wrapper->title->value();
-    $markup = "<h1 class='title'>$title</h1>";
-    $markup .= $wrapper->field_program->value();
-    $variables['content']['field_program'][0]['#markup'] = $markup;
+    $degree_and_year = $wrapper->field_year_as_text->value();
+    $markup = "<h1 class='title'>$title<span>$degree_and_year</span></h1>";
+    $variables['content']['field_year_as_text'][0]['#markup'] = $markup;
   }
 }
 
