@@ -44,25 +44,38 @@ body.not-front {
 
       .group-title-and-focus {
         text-align: center;
+        padding-left: 0;
         #main[data-eq-state="widescreen"] & {
           @include padding-leader(1);
         }
         .container[data-eq-state="mobile-nav"] & {
           @include padding-trailer(2);
         }
-        padding-left: 0;
-        color: white;
-
-        .field-name-field-program {
+        h1, h2, h3 {
+          color: white;
+          font-family: $font;
+          margin-bottom: 0;
+        }
+        h2, h3 {
+          font-weight: 300;
+        }
+        h1 {
+          @include adjust-font-size-to(44px);
+          line-height: 1;
+          span {
+            display: block;
+            font-size: ms(3);
+            line-height: 1.1;
+            font-weight: 300;
+          }
+        }
+        h2 {
           @include adjust-font-size-to(28px);
           @include adjust-leading-to(1);
-          h1 {
-            @include adjust-font-size-to(34px);
-            line-height: 1;
-            color: white;
-            font-family: $font;
-            margin-bottom: 0;
-          }
+        }
+        h3 {
+          @include adjust-font-size-to(19px);
+          @include adjust-leading-to(1);
         }
       }
 
@@ -167,6 +180,9 @@ body.not-front {
       padding: 1em 3em 3em;
       background: white;
       .region-content-bottom {
+        .tagged-content {
+          overflow: visible; //stop name from being cut off in circle nav on mobile
+        }
         h2 {
           @include adjust-font-size-to(19px);
           @include adjust-leading-to(1);
