@@ -1901,6 +1901,15 @@ function ilr_sdc_listings_form_views_exposed_form_alter(&$form, &$form_state) {
       '#default_value' => 0,
     );
 
+    // Remove the dummy descriptions added via views_hanlder extra_options_form()
+    $term_fields = array(
+      'field_course_topic_reference_tid',
+      'field_course_format_reference_tid',
+      'field_course_sponsor_reference_tid',
+    );
+    foreach ($term_fields as $field) {
+      $form[$field]['#description'] = '';
+    }
     array_unshift($form['#validate'], 'ilr_sdc_listings_filter_validate');
   }
 }
