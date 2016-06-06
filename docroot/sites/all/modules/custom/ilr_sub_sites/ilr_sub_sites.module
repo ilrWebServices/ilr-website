@@ -192,10 +192,10 @@ function ilr_sub_sites_preprocess_html(&$variables) {
 }
 
 /**
- * Removes the title if it is a wrapped node
+ * Removes the title if it is a full view of a wrapped node
  */
 function ilr_sub_sites_preprocess_node(&$variables) {
-  if (_ilr_sub_sites_is_wrapped_node()) {
+  if (_ilr_sub_sites_is_wrapped_node() && $variables['view_mode'] == 'full') {
     $variables['title'] = '';
   }
 }
