@@ -128,24 +128,25 @@ function _forms_set_kerberized_values(&$form) {
  * Connects the kerberizable_fields to the correct user account attributes
  */
 function _forms_map_user_attribute_to_field($field_name) {
-  $saml_attributes = simplesamlphp_auth_get_attributes();
+  global $_simplesamlphp_auth_saml_attributes;
+  // $saml_attributes = simplesamlphp_auth_get_attributes();
 
-  if (!empty($saml_attributes)) {
+  if (!empty($_simplesamlphp_auth_saml_attributes)) {
     switch ($field_name) {
       case 'field_full_name':
-        return $saml_attributes['displayName'][0];
+        return $_simplesamlphp_auth_saml_attributes['displayName'][0];
         break;
       case 'field_email':
-        return $saml_attributes['mail'][0];
+        return $_simplesamlphp_auth_saml_attributes['mail'][0];
         break;
       case 'field_first_name':
-        return $saml_attributes['givenName'][0];
+        return $_simplesamlphp_auth_saml_attributes['givenName'][0];
         break;
       case 'field_last_name':
-        return $saml_attributes['sn'][0];
+        return $_simplesamlphp_auth_saml_attributes['sn'][0];
         break;
       case 'field_netid':
-        return $saml_attributes['uid'][0];
+        return $_simplesamlphp_auth_saml_attributes['uid'][0];
         break;
     }
   } // Auth attributes missing, so log an error
@@ -195,8 +196,6 @@ function _forms_replace_kerberized_form_with_login_button(&$form) {
  * Checks to confirm there are values in the SAML Auth Session
  */
 function _forms_saml_attributes_present() {
-  if ($attributes = simplesamlphp_auth_get_attributes()) {
-    return !empty($attributes);
-  }
-  return FALSE;
+  global $_simplesamlphp_auth_saml_attributes;
+  return !empty($_simplesamlphp_auth_saml_attributes);
 }
