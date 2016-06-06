@@ -193,12 +193,18 @@ class FormatterJsonApi extends Formatter implements FormatterInterface {
     }
 
     $input = $original_input = $request->getParsedInput();
+    unset($input['page']);
+    unset($input['range']);
+    unset($original_input['page']);
+    unset($original_input['range']);
+    $input['page'] = $request->getPagerInput();
+    $original_input['page'] = $request->getPagerInput();
 
     // Get self link.
     $options = $top_level ? array('query' => $input) : array();
     $data['links']['self'] = $resource->versionedUrl($path, $options);
 
-    $page = !empty($input['page']) ? $input['page'] : 1;
+    $page = $input['page']['number'];
 
     // We know that there are more pages if the total count is bigger than the
     // number of items of the current request plus the number of items in
@@ -206,21 +212,21 @@ class FormatterJsonApi extends Formatter implements FormatterInterface {
     $items_per_page = $this->calculateItemsPerPage($resource);
     if (isset($data['meta']['count']) && $data['meta']['count'] > $items_per_page) {
       $num_pages = ceil($data['meta']['count'] / $items_per_page);
-      unset($input['page']);
+      unset($input['page']['number']);
       $data['links']['first'] = $resource->getUrl(array('query' => $input), FALSE);
 
       if ($page > 1) {
         $input = $original_input;
-        $input['page'] = $page - 1;
+        $input['page']['number'] = $page - 1;
         $data['links']['previous'] = $resource->getUrl(array('query' => $input), FALSE);
       }
       if ($num_pages > 1) {
         $input = $original_input;
-        $input['page'] = $num_pages;
+        $input['page']['number'] = $num_pages;
         $data['links']['last'] = $resource->getUrl(array('query' => $input), FALSE);
         if ($page != $num_pages) {
           $input = $original_input;
-          $input['page'] = $page + 1;
+          $input['page']['number'] = $page + 1;
           $data['links']['next'] = $resource->getUrl(array('query' => $input), FALSE);
         }
       }
@@ -346,11 +352,11 @@ class FormatterJsonApi extends Formatter implements FormatterInterface {
           $new_includes_parents[] = $field_name;
           $included[$field_path][$include_key] = $this->renormalize($field_item, $included, $nested_allowed_fields, $new_includes_parents);
           $included[$field_path][$include_key] += $include_links ? array('links' => $include_links) : array();
-          $rel[] = $element;
+          $rel[$include_key] = $element;
         }
         // Only place the relationship info.
         $result['relationships'][$field_name] = array(
-          'data' => $single_item ? reset($rel) : $rel,
+          'data' => $single_item ? reset($rel) : array_values($rel),
         );
         if (!empty($relationship_links)) {
           $result['relationships'][$field_name]['links'] = $relationship_links;
