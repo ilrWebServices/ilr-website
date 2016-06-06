@@ -41,8 +41,18 @@ body.node-type-channel-page {
       .section {
         min-width: 100%;
       }
-      .field-name-field-image, .field-name-field-youtube-video {
+      .field-name-field-image {
         text-align: center;
+        &.field-widget-image-image {
+          text-align: left;
+          @include trailer(0);
+        }
+      }
+      .field-name-field-youtube-video {
+        text-align: center;
+        &.field-widget-youtube {
+          text-align: left;
+        }
       }
       .paragraphs-items-field-para-main-page-content {
         .field-name-field-para-main-page-content {
