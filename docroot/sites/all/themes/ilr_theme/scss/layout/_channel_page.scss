@@ -274,8 +274,8 @@ body.node-type-channel-page {
       .entity-paragraphs-item {
         @include padding-leader(1.5);
         @include padding-trailer(1.5);
-        &.paragraphs-item-compare-three {
-          article.field-name-field-animated-text-card {
+        &.paragraphs-item-display-a-block, &.paragraphs-item-compare-three {
+          article:not(.localist-event) {
             @extend %three-column-masonry;
           }
         }
