@@ -31,6 +31,7 @@ features[field_instance][] = node-experience_report-field_para_main_page_content
 features[field_instance][] = node-experience_report-field_program
 features[field_instance][] = node-experience_report-field_tags
 features[field_instance][] = node-experience_report-field_teaser
+features[field_instance][] = node-experience_report-field_year_as_text
 features[node][] = experience_report
 features[variable][] = field_bundle_settings_node__experience_report
 features[variable][] = menu_options_experience_report
