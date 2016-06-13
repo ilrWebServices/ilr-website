@@ -176,8 +176,8 @@ function ilr_sub_pages_form_node_form_alter(&$form, &$form_state, $form_id) {
       $form['menu']['link']['weight']['#access'] = FALSE;
       $form['menu']['link']['parent']['#access'] = FALSE;
     }
-    // Trigger pathauto since child pages can have a different alias than the default pattern
-    if (_ilr_sub_pages_is_child_page($form['#node'])) {
+    // Trigger pathauto on new nodes since child pages can have a different alias than the default pattern
+    if (!isset($form['#node']->vid) && _ilr_sub_pages_is_child_page($form['#node'])) {
       $form['path']['pathauto']['#default_value'] = TRUE;
     }
     // Add an additional validation callback to this form
