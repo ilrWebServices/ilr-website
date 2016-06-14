@@ -777,3 +777,13 @@ function ilr_update_7058() {
     }
   }
 }
+
+/**
+ * Enables mailchimp_lists module and sets API key
+ */
+function ilr_update_7059() {
+  module_enable(array(
+    'mailchimp_lists',
+  ));
+  variable_set('mailchimp_api_key', 'cd7b6fff05f2a6efc4f942c63dfa423f-us10');
+}
