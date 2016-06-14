@@ -6413,6 +6413,26 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'markup',
   );
 
+  // Exported field_base: 'field_mc_wi_subscription'
+  $field_bases['field_mc_wi_subscription'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_mc_wi_subscription',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'mailchimp_lists',
+    'settings' => array(
+      'double_opt_in' => 0,
+      'mc_list_id' => '4346ff0fee',
+      'unsubscribe_action' => 'unsubscribe',
+    ),
+    'translatable' => 0,
+    'type' => 'mailchimp_lists_subscription',
+  );
+
   // Exported field_base: 'field_media_cl_tech_video_rec'
   $field_bases['field_media_cl_tech_video_rec'] = array(
     'active' => 1,
@@ -8879,32 +8899,6 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_response_checkbox'
-  $field_bases['field_response_checkbox'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_response_checkbox',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => 'No',
-        1 => 'Yes',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_responsibility'
