@@ -4661,7 +4661,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Career field for this FEX opportunity',
         ),
         'type' => 'list_default',
         'weight' => 35,
@@ -4688,7 +4688,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_career_field_fex',
-    'label' => 'Career field for this FEX opportunity',
+    'label' => 'Career field for this FEX opportunity (not the company or organization career field)',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -4715,7 +4715,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(
-          'field_formatter_label' => '',
+          'field_formatter_label' => 'Career field for this WISP opportunity',
         ),
         'type' => 'list_default',
         'weight' => 48,
@@ -4742,7 +4742,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_career_field_wisp',
-    'label' => 'Career field for this WISP opportunity',
+    'label' => 'Career field for this WISP opportunity (not the company or organization career field)',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -5402,13 +5402,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 60,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 60,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5466,7 +5466,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_fex_dates',
-    'label' => 'Dates for FEX opportunity',
+    'label' => 'Dates for FEX opportunity - see "Key factors to consider" above',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -5527,7 +5527,7 @@ function ilr_forms_students_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_fex_dates_constraints',
     'label' => 'Constraints on the dates for this FEX opportunity',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -5564,13 +5564,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 63,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 63,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5606,13 +5606,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 58,
+        'weight' => 62,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 58,
+        'weight' => 62,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5648,13 +5648,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 57,
+        'weight' => 61,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 57,
+        'weight' => 61,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6077,7 +6077,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 54,
+        'weight' => 58,
       ),
       'table' => array(
         'label' => 'above',
@@ -6346,6 +6346,110 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_max_duration_weeks'
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_max_duration_weeks'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 60,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'wispMaxDuration',
+        ),
+        'type' => 'list_default',
+        'weight' => 56,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'WISP maximum duration',
+        ),
+        'type' => 'list_default',
+        'weight' => 56,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_max_duration_weeks',
+    'label' => 'Maximum duration',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 22,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_min_duration_weeks'
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_min_duration_weeks'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 59,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'wispMinDuration',
+        ),
+        'type' => 'list_default',
+        'weight' => 55,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'WISP minimum duration',
+        ),
+        'type' => 'list_default',
+        'weight' => 55,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_min_duration_weeks',
+    'label' => 'Minimum duration',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 21,
+    ),
+  );
+
   // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_organization'
   $field_instances['entityform-fex_wisp_sponsor_registration-field_organization'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
@@ -6546,7 +6650,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 55,
+        'weight' => 59,
       ),
       'table' => array(
         'label' => 'above',
@@ -6773,13 +6877,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 66,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 66,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7203,13 +7307,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 64,
+        'weight' => 67,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 64,
+        'weight' => 68,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7225,7 +7329,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'markup',
       'settings' => array(),
       'type' => 'markup',
-      'weight' => 21,
+      'weight' => 25,
     ),
   );
 
@@ -7243,7 +7347,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 58,
+        'weight' => 62,
       ),
       'download' => array(
         'label' => 'above',
@@ -7261,13 +7365,13 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP dates',
         ),
         'type' => 'text_default',
-        'weight' => 54,
+        'weight' => 58,
       ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_wisp_dates',
-    'label' => 'Preferred dates and duration for this WISP opportunity',
+    'label' => 'Preferred dates for this WISP opportunity',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -7285,7 +7389,7 @@ function ilr_forms_students_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 20,
+      'weight' => 24,
     ),
   );
 
@@ -7303,7 +7407,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 59,
+        'weight' => 63,
       ),
       'download' => array(
         'label' => 'above',
@@ -7321,14 +7425,14 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP constraints',
         ),
         'type' => 'text_default',
-        'weight' => 55,
+        'weight' => 59,
       ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_wisp_dates_constraints',
     'label' => 'Constraints on the dates for this WISP opportunity',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -7345,49 +7449,7 @@ function ilr_forms_students_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 22,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_wisp_dates_markup'
-  $field_instances['entityform-fex_wisp_sponsor_registration-field_wisp_dates_markup'] = array(
-    'bundle' => 'fex_wisp_sponsor_registration',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 63,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 63,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_wisp_dates_markup',
-    'label' => 'WISP dates markup',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'markup',
-      'settings' => array(),
-      'type' => 'markup',
-      'weight' => 19,
+      'weight' => 26,
     ),
   );
 
@@ -7407,13 +7469,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 65,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 65,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7449,13 +7511,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 64,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 64,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7637,6 +7699,58 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_year_soph_jr_sr_milr1_mult'
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_year_soph_jr_sr_milr1_mult'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Class year eligibility',
+        ),
+        'type' => 'list_default',
+        'weight' => 58,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'wispClassYearEligibility',
+        ),
+        'type' => 'list_default',
+        'weight' => 54,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'WISP class year eligibility',
+        ),
+        'type' => 'list_default',
+        'weight' => 54,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_year_soph_jr_sr_milr1_mult',
+    'label' => 'Class year eligibility (choose one or more)',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 19,
+    ),
+  );
+
   // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_yes_no'
   $field_instances['entityform-fex_wisp_sponsor_registration-field_yes_no'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
@@ -7686,6 +7800,58 @@ function ilr_forms_students_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_yes_no_2'
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_yes_no_2'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Non-consecutive options could include starting in December and finishing in January; or working 5 days, taking a day off for another commitment, and then working 5 more days, etc.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 61,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'wispConsecutiveDays',
+        ),
+        'type' => 'list_default',
+        'weight' => 57,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'WISP consecutive days',
+        ),
+        'type' => 'list_default',
+        'weight' => 57,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_2',
+    'label' => 'Must the student work consecutive days?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 23,
     ),
   );
 
@@ -11916,13 +12082,14 @@ function ilr_forms_students_field_default_field_instances() {
   t('Amount of compensation');
   t('Anticipated graduation year');
   t('Are you a Cornell Alum?');
-  t('Career field for this FEX opportunity');
-  t('Career field for this WISP opportunity');
+  t('Career field for this FEX opportunity (not the company or organization career field)');
+  t('Career field for this WISP opportunity (not the company or organization career field)');
   t('City');
   t('City (supervisor)');
   t('City where this FEX opportunity is located');
   t('City where this WISP opportunity is located');
   t('Class year');
+  t('Class year eligibility (choose one or more)');
   t('College');
   t('College (supervisor)');
   t('Constraints on the dates for this FEX opportunity');
@@ -11930,7 +12097,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Country');
   t('Current employer (if applicable)');
   t('Date of birth');
-  t('Dates for FEX opportunity');
+  t('Dates for FEX opportunity - see "Key factors to consider" above');
   t('Degree');
   t('Degree (supervisor)');
   t('Description of organization');
@@ -11963,8 +12130,12 @@ function ilr_forms_students_field_default_field_instances() {
   t('Job title (supervisor)');
   t('Last name');
   t('Last name (supervisor)');
+  t('Maximum duration');
+  t('Minimum duration');
+  t('Must the student work consecutive days?');
   t('Name');
   t('NetID');
+  t('Non-consecutive options could include starting in December and finishing in January; or working 5 days, taking a day off for another commitment, and then working 5 more days, etc.');
   t('Number of students you can host for this FEX opportunity');
   t('Number of students you can host for this WISP opportunity');
   t('Offer year');
@@ -11979,7 +12150,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Please enter the phone number where you can be reached throughout the next academic year.');
   t('Please specify your school or college');
   t('Preferred city');
-  t('Preferred dates and duration for this WISP opportunity');
+  t('Preferred dates for this WISP opportunity');
   t('Preferred first name (if different from above)');
   t('Preferred state or province');
   t('Program of interest');
@@ -12006,7 +12177,6 @@ function ilr_forms_students_field_default_field_instances() {
   t('Upload your resume');
   t('Upload your resume or CV');
   t('WISP dates constraints markup');
-  t('WISP dates markup');
   t('What attracted you to this event?');
   t('What year did you graduate from the ILR School?');
   t('When did you receive (or when do you expect to receive) your Bachelor\'s degree?');
