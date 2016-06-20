@@ -7,6 +7,7 @@ define('FREEDOMPAY_DEFAULT_CHECKOUT_MESSAGE', '<p>Thank you for your order. Plea
 define('FREEDOMPAY_PAYMENT_NOT_REQUIRED', 'No payment required');
 define('FREEDOMPAY_TRANSACTION_SUCCESS', 'Please wait while we complete your transaction');
 define('FREEDOMPAY_CREATE_PAYMENT_PATH', 'admin/config/services/freedompay/payment/create');
+define('FREEDOMPAY_CHECK_PAYMENT_PATH', 'admin/config/services/freedompay/transaction/check');
 
 /**
  * Checks access.
@@ -242,6 +243,35 @@ function freedompay_failure_page() {
 }
 
 /**
+ *  Create the form to check a transaction
+ */
+function freedompay_transaction_form($form, &$form_state) {
+  $form['transaction_id'] = array(
+    '#title' => t('Transaction ID:'),
+    '#type' => 'textfield',
+    '#size' => 60,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'check',
+    '#name' => '',
+  );
+
+  $form['#action'] = '/' . current_path();
+  $form['#method'] = 'get';
+  $form['#pre_render'][] = 'freedompay_transaction_form_modify';
+  return $form;
+}
+
+function freedompay_transaction_form_modify($form){
+  unset($form['form_token']);
+  unset($form['form_build_id']);
+  unset($form['form_id']);
+  return $form;
+}
+
+/**
  * Implements hook_form_alter().
  * Removes the url redirects tab
  */
@@ -411,6 +441,13 @@ function freedompay_menu() {
     'title' => 'Freedompay Invoices',
     'description' => 'Freedompay Invoices Page',
     'page callback' => "_freedompay_invoices_page",
+    'access arguments' => array('access freedompay payments'),
+  );
+
+  $items[FREEDOMPAY_CHECK_PAYMENT_PATH] = array(
+    'title' => 'Freedompay Transaction Information',
+    'description' => 'Freedompay Transaction Info Page',
+    'page callback' => "_freedompay_transaction_info",
     'access arguments' => array('access freedompay payments'),
   );
 
@@ -882,4 +919,20 @@ function _freedompay_redirect($url, $params=array()) {
 function _freedompay_restart_transaction() {
   _freedompay_cookie_delete('transaction_id');
   _freedompay_cookie_delete('checkout_url');
+}
+
+function _freedompay_transaction_info() {
+  $content = "<h2>Transaction Information</h2>";
+  $form = drupal_get_form('freedompay_transaction_form');
+  $content .= drupal_render($form);
+  if (isset($_REQUEST['transaction_id'])) {
+    $results = freedompay_call_freedompay_api('getTransaction', $_REQUEST['transaction_id']);
+    if (!empty($results)) {
+      $content .= '<pre>'.json_encode($results, JSON_PRETTY_PRINT).'</pre>';
+    }
+    else {
+      return 'Sorry, but there was an error processing your request.';
+    }
+  }
+  return $content;
 }

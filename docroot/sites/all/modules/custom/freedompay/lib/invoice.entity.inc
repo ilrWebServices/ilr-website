@@ -39,7 +39,10 @@ class FreedompayInvoice extends Entity {
   }
 
   public function formatInvoiceNumber() {
-    return $this->prefix . str_pad($this->number, 6, '0', STR_PAD_LEFT);
+    $text = $this->prefix . str_pad($this->number, 6, '0', STR_PAD_LEFT);
+    return l($text, FREEDOMPAY_CHECK_PAYMENT_PATH, array(
+      'query' => array('transaction_id' => $this->transaction_id)
+    ));
   }
 
   public function formatPaymentCell() {
