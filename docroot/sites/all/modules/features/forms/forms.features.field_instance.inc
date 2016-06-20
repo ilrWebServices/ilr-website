@@ -3533,12 +3533,49 @@ function forms_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-collective_bargaining_videos-field_response_checkbox'
-  $field_instances['entityform-collective_bargaining_videos-field_response_checkbox'] = array(
+  // Exported field_instance: 'entityform-collective_bargaining_videos-field_mc_wi_subscription'
+  $field_instances['entityform-collective_bargaining_videos-field_mc_wi_subscription'] = array(
     'bundle' => 'collective_bargaining_videos',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'subscribe' => 1,
+        'interest_groups' => array(
+          'a5d6f1a701' => array(
+            '0c30c80d70' => 0,
+            '1bde7eef96' => 0,
+            '3e0dfaa1aa' => 0,
+            '6bad7492e1' => 0,
+            '6f72d8ebf3' => 0,
+            '95f5abc6cb' => 0,
+            '665fca22e3' => 0,
+            '362266e83c' => 0,
+            '5526762a56' => 0,
+            'b64f47011c' => 0,
+            'b5286fc5d5' => 0,
+            'ce327e9f93' => 0,
+            'd96b168eed' => 0,
+            'e2eed83ce5' => 0,
+            'e96ab9b9ef' => 0,
+            'ffe836c985' => 0,
+          ),
+          'b169495957' => array(
+            '24ac15fa0e' => 0,
+            '083af0c3f6' => 0,
+            '95a4f9db4f' => 0,
+            '270ceda1f6' => 0,
+            'b65155e2a1' => 0,
+            'ee4ef59ea0' => 0,
+            'f16c90692b' => 0,
+          ),
+          'fa909dfdb7' => array(
+            '2b9e15b4d6' => 0,
+            '7b39a46a4b' => 0,
+            '47bcaf43bd' => 0,
+            '8299e7169b' => 0,
+            'ee8bd8215b' => 0,
+          ),
+        ),
+        'is_default' => TRUE,
       ),
     ),
     'deleted' => 0,
@@ -3546,47 +3583,68 @@ function forms_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
+        'module' => 'mailchimp_lists',
         'settings' => array(
           'field_formatter_label' => '',
+          'interest_groups' => array(),
+          'show_interest_groups' => FALSE,
         ),
-        'type' => 'list_default',
-        'weight' => 4,
+        'type' => 'mailchimp_lists_subscribe_default',
+        'weight' => 5,
       ),
       'download' => array(
         'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'wantsResponse',
-        ),
-        'type' => 'list_default',
-        'weight' => 4,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'table' => array(
         'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'wantsResponse',
-        ),
-        'type' => 'list_default',
-        'weight' => 4,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'entityform',
-    'field_name' => 'field_response_checkbox',
-    'label' => 'Check here if you would like a response',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_mc_wi_subscription',
+    'label' => 'Confirm Subscription',
     'required' => 0,
     'settings' => array(
+      'interest_groups_title' => 'Interest Groups',
+      'mergefields' => array(
+        'EMAIL' => '[entityform:field-email]',
+        'FNAME' => '',
+        'LNAME' => '',
+        'MMERGE3' => '',
+        'MMERGE4' => '',
+        'MMERGE5' => '',
+        'MMERGE6' => '',
+        'MMERGE7' => '',
+        'MMERGE8' => '',
+        'MMERGE9' => '',
+        'MMERGE10' => '',
+        'MMERGE11' => '',
+        'MMERGE12' => '',
+        'MMERGE13' => '',
+        'MMERGE14' => '',
+        'MMERGE15' => '',
+        'advanced' => 0,
+      ),
+      'options' => array(
+        'interest_groups' => array(),
+        'subscribe' => FALSE,
+      ),
+      'show_interest_groups' => 0,
+      'unsubscribe_on_delete' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 39,
+      'active' => 0,
+      'module' => 'mailchimp_lists',
+      'settings' => array(),
+      'type' => 'mailchimp_lists_select',
+      'weight' => 40,
     ),
   );
 
@@ -34166,7 +34224,6 @@ function forms_field_default_field_instances() {
   t('Cell phone number');
   t('Chairperson');
   t('Check all courses you will have completed by the end of the current semester');
-  t('Check here if you would like a response');
   t('Citizenship');
   t('City');
   t('City (billing)');
@@ -34191,6 +34248,7 @@ function forms_field_default_field_instances() {
   t('Conference date');
   t('Conference name');
   t('Conference title');
+  t('Confirm Subscription');
   t('Cornell account number (needed for billing)');
   t('Cornell degree');
   t('Country');
