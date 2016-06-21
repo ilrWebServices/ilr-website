@@ -39,21 +39,23 @@ class FreedompayInvoice extends Entity {
   }
 
   public function formatInvoiceNumber() {
-    $text = $this->prefix . str_pad($this->number, 6, '0', STR_PAD_LEFT);
+    return $this->prefix . str_pad($this->number, 6, '0', STR_PAD_LEFT);
+  }
+
+  public function formatPaymentCell() {
+    $text = ($payment = $this->payment())
+      ? $payment->authorization_code
+      : 'Incomplete';
     return l($text, FREEDOMPAY_CHECK_PAYMENT_PATH, array(
       'query' => array('transaction_id' => $this->transaction_id)
     ));
   }
 
-  public function formatPaymentCell() {
-    if ($payment = $this->payment()) {
-      $paymentCell = $payment->authorization_code;
-    }
-    else {
-      $params = array('query' => array('transid' => $this->transaction_id));
-      $paymentCell = ($this->paid) ? l('Create', FREEDOMPAY_CREATE_PAYMENT_PATH, $params) : 'Incomplete';
-    }
-    return $paymentCell;
+  public function formatTransactionLink() {
+    $text = ($this->paid) ? 'Yes' : 'No';
+    return l($text, FREEDOMPAY_CHECK_PAYMENT_PATH, array(
+      'query' => array('transaction_id' => $this->transaction_id)
+    ));
   }
 
   public function prefix() {
