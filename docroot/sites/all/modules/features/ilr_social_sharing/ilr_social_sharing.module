@@ -227,13 +227,13 @@ function _ilr_social_sharing_feed($nids = FALSE, $channel = array()) {
       array('key' => 'dc:creator', 'value' => format_username($account)),
       array('key' => 'guid', 'value' => $node->nid . ' at ' . $base_url, 'attributes' => array('isPermaLink' => 'false'))
     );
-
-    $summary = (!empty($wrapper->body->value()['summary']))
-      ? $wrapper->body->value()['summary']
-      : text_summary($wrapper->body->value()['value']);
-
-    $content = _ilr_social_sharing_format_content_for_mailchimp($node, $summary, $wrapper);
-    $items .= _ilr_social_sharing_format_rss_item($node->title, $node->link, $summary, $content, $node->rss_elements);
+    // Check url param for full vs. teaser
+    $view_mode = (isset($params['view']) && $params['view'] == 'full')
+      ? 'full'
+      : 'summary';
+    $text = _ilr_social_sharing_get_node_body($wrapper, $view_mode);
+    $content = _ilr_social_sharing_format_content_for_mailchimp($node, $view_mode, $text, $wrapper);
+    $items .= _ilr_social_sharing_format_rss_item($node->title, $node->link, _ilr_social_sharing_node_summary($wrapper), $content, $node->rss_elements);
   }
 
   $channel_defaults = array(
@@ -266,7 +266,7 @@ function _ilr_social_sharing_format_rss_item($title, $link, $summary, $content, 
   return $output;
 }
 
-function _ilr_social_sharing_format_content_for_mailchimp($node, $summary, $wrapper) {
+function _ilr_social_sharing_format_content_for_mailchimp($node, $view_mode, $text, $wrapper) {
   $content = '';
   $image_path = (!empty($wrapper->field_image->value()))
     ? image_style_url('email_optimized',$wrapper->field_image->file->value()->uri)
@@ -286,8 +286,11 @@ function _ilr_social_sharing_format_content_for_mailchimp($node, $summary, $wrap
     ? $wrapper->field_author_reference->label()
     : format_username(user_load($node->uid));
   $content .= $author.', '.$formatted_date.'<br><br>';
-  $content .= _ilr_social_sharing_replace_p_tags_with_breaks($summary);
-  $content .= ' <a href="'.$node->link.'">Continue reading on website&nbsp;&rarr;</a>';
+  $content .= _ilr_social_sharing_replace_p_tags_with_breaks($text);
+  $link_text = ($view_mode == 'full')
+    ? 'View this article on website&nbsp;&rarr;'
+    : 'Continue reading on website&nbsp;&rarr;';
+  $content .= ' <a href="'.$node->link.'">'.$link_text.'</a>';
   return $content;
 }
 
@@ -297,9 +300,26 @@ function _ilr_social_sharing_replace_p_tags_with_breaks($content) {
   return $replaced;
 }
 
+function _ilr_social_sharing_node_summary($wrapper) {
+  $summary = (!empty($wrapper->body->value()['summary']))
+    ? $wrapper->body->value()['summary']
+    : text_summary($wrapper->body->value()['value']);
+  return $summary;
+}
+
+function _ilr_social_sharing_get_node_body($wrapper, $view_mode) {
+  if ($view_mode == 'full') {
+    $text = $wrapper->body->value()['value'];
+  }
+  else {
+    $text = _ilr_social_sharing_node_summary($wrapper);
+  }
+  return $text;
+}
+
 function _ilr_social_sharing_get_formatted_date($wrapper) {
   $date = (isset($wrapper->field_published_dates))
     ? $wrapper->field_published_date->value()
     : $wrapper->created->value();
-  return format_date($date, 'ilr_social_sharing_format');
+  return format_date($date, 'custom', 'F j, Y');
 }
