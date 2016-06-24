@@ -1,0 +1,39 @@
+#main {
+  .paragraphs-item-compare-three {
+    @include padding-leader(1.5);
+    @include padding-trailer(1.5);
+    .content {
+      @include grid-span (12);
+    }
+  }
+}
+
+#main[data-eq-state="550"] {
+  .paragraphs-item-compare-three {
+    @include padding-leader(1);
+    @include padding-trailer(1);
+    article.field-name-field-animated-text-card {
+      @extend %one-column;
+    }
+  }
+}
+
+#main[data-eq-state="768"] {
+  .paragraphs-item-compare-three {
+    @include padding-leader(1.5);
+    @include padding-trailer(1.5);
+    article {
+      @extend %three-column-masonry;
+    }
+  }
+}
+
+#main[data-eq-state="widescreen"] {
+  .paragraphs-item-compare-three {
+    @include padding-leader(1.5);
+    @include padding-trailer(1.5);
+    article {
+      @extend %three-column-masonry;
+    }
+  }
+}
