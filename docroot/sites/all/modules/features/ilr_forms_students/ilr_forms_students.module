@@ -23,7 +23,8 @@ function ilr_forms_students_entityform_presave($entityform) {
     _ilr_forms_students_set_fexwisp_programYear($entityform);
   }
   elseif ($entityform->type == 'labor_roundtable_student_registr' ||
-          $entityform->type == 'alumni_assoc_board_interest') {
+          $entityform->type == 'alumni_assoc_board_interest' ||
+          $entityform->type == 'ilr_reception_parent_orientation') {
     _forms_set_hidden_school_year_to_current($entityform);
   }
 }
