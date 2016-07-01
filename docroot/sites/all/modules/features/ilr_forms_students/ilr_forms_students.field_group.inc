@@ -958,6 +958,10 @@ Specify preferred location (city / state). You also have the option to list an a
       9 => 'field_wisp_dates_constraints',
       10 => 'field_wisp_number_of_students',
       11 => 'field_remote_wisp',
+      12 => 'field_year_soph_jr_sr_milr1_mult',
+      13 => 'field_min_duration_weeks',
+      14 => 'field_max_duration_weeks',
+      15 => 'field_yes_no_2',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1002,6 +1006,10 @@ Specify preferred location (city / state). You also have the option to list an a
       14 => 'field_wisp_markup_if_not_chosen',
       15 => 'field_wisp_number_of_students',
       16 => 'field_remote_wisp',
+      17 => 'field_year_soph_jr_sr_milr1_mult',
+      18 => 'field_min_duration_weeks',
+      19 => 'field_max_duration_weeks',
+      20 => 'field_yes_no_2',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1097,6 +1105,21 @@ Specify preferred location (city / state). You also have the option to list an a
     ),
   );
   $export['group_your_information|entityform|fex_wisp_sponsor_registration|form'] = $field_group;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Applicant Information');
+  t('FEX Opportunities');
+  t('Local (Cornell) Address');
+  t('Permanent Address');
+  t('Preferred FEX Location');
+  t('Preferred WISP Location');
+  t('Program Information');
+  t('Resume');
+  t('Sponsor Information');
+  t('Supervisor Information');
+  t('WISP Opportunities');
+  t('Your Information');
 
   return $export;
 }

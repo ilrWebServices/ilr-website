@@ -4395,7 +4395,8 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-  <p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels.</p>
+	<p><strong>Constraints?</strong> Indicate any constraints on the above dates, including dates that would be 
+problematic due to holidays, vacations, or low staffing levels.</p>
 </div>
 ',
       ),
@@ -4473,12 +4474,12 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-  <p><strong>Key factors to consider for dates:</strong></p>
+	<p><strong>Key factors to consider for dates:</strong></p>
 
-  <ul>
-    <li>Please provide as much detail as possible about the dates when you can host students.</li>
-    <li><strong>If you are hosting multiple students on the same day</strong>: we need a maximum of 5 specific dates (versus a date range) in order to facilitate finding one date that works for all students.</li>
-  </ul>
+	<ul>
+		<li><strong>Detailed information helps the students plan:</strong> Please provide as much detail as possible about the dates when you can host students.</li>
+		<li><strong>If you are hosting multiple students on the same day</strong>: We need a maximum of 5 specific dates (versus a date range) in order to facilitate finding one date that works for all students.</li>
+	</ul>
 </div>
 ',
       ),
@@ -4550,16 +4551,16 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        1 => 1,
-        2 => 2,
-        3 => 3,
-        4 => 4,
-        5 => 5,
-        6 => 6,
-        7 => 7,
-        8 => 8,
-        9 => 9,
-        10 => 10,
+        '1 student' => '1 student',
+        '2 students' => '2 students',
+        '3 students' => '3 students',
+        '4 students' => '4 students',
+        '5 students' => '5 students',
+        '6 students' => '6 students',
+        '7 students' => '7 students',
+        '8 students' => '8 students',
+        '9 students' => '9 students',
+        '10 students' => '10 students',
         'multiple' => 'More than 10',
       ),
       'allowed_values_function' => '',
@@ -6413,6 +6414,33 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'markup',
   );
 
+  // Exported field_base: 'field_max_duration_weeks'
+  $field_bases['field_max_duration_weeks'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_max_duration_weeks',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        '1 week' => '1 week',
+        '2 weeks' => '2 weeks',
+        '3 weeks' => '3 weeks',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_media_cl_tech_video_rec'
   $field_bases['field_media_cl_tech_video_rec'] = array(
     'active' => 1,
@@ -6593,6 +6621,33 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_min_duration_weeks'
+  $field_bases['field_min_duration_weeks'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_min_duration_weeks',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        '1 week' => '1 week',
+        '2 weeks' => '2 weeks',
+        '3 weeks' => '3 weeks',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_minor_subject_s_'
@@ -11128,9 +11183,9 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-  <p>Please let us know about any constraints on the above dates, including dates that would be problematic due to holidays, vacations, or low staffing levels.</p>
+	<p><strong>Constraints?</strong> Indicate any constraints on the above dates, including dates that would be 
+problematic due to holidays, vacations, or low staffing levels.</p>
 </div>
-
 ',
       ),
     ),
@@ -11190,36 +11245,6 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_wisp_dates_markup'
-  $field_bases['field_wisp_dates_markup'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_wisp_dates_markup',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'markup',
-    'settings' => array(
-      'markup' => array(
-        'format' => 'full_html',
-        'value' => '<div class="form-item">
-  <p><strong>Key factors to consider for dates:</strong></p>
-
-  <ul>
-    <li>Please provide as much detail as possible about the dates when you can host students.</li>
-    <li>Specify a minimum time commitment, e.g. 2 weeks or 8 days.</li>
-    <li>Specify whether the student must work consecutive days, e.g. may they start in December and finish in January; or may they work 5 days, be out one day for another commitment, and then work 5 more days, etc.</li>
-  </ul>
-</div>
-',
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'markup',
   );
 
   // Exported field_base: 'field_wisp_markup_if_chosen'
@@ -11285,16 +11310,16 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        1 => 1,
-        2 => 2,
-        3 => 3,
-        4 => 4,
-        5 => 5,
-        6 => 6,
-        7 => 7,
-        8 => 8,
-        9 => 9,
-        10 => 10,
+        '1 student' => '1 student',
+        '2 students' => '2 students',
+        '3 students' => '3 students',
+        '4 students' => '4 students',
+        '5 students' => '5 students',
+        '6 students' => '6 students',
+        '7 students' => '7 students',
+        '8 students' => '8 students',
+        '9 students' => '9 students',
+        '10 students' => '10 students',
         'multiple' => 'More than 10',
       ),
       'allowed_values_function' => '',
@@ -11483,6 +11508,34 @@ function ilr_field_bases_field_default_field_bases() {
         'Sophomore' => 'Sophomore',
         'Junior' => 'Junior',
         'Senior' => 'Senior',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_year_soph_jr_sr_milr1_mult'
+  $field_bases['field_year_soph_jr_sr_milr1_mult'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_year_soph_jr_sr_milr1_mult',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Sophomore' => 'Sophomore',
+        'Junior' => 'Junior',
+        'Senior' => 'Senior',
+        'First-year MILR' => 'First-year MILR',
       ),
       'allowed_values_function' => '',
     ),
