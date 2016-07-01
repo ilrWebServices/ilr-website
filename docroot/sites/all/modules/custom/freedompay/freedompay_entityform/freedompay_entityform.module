@@ -1,6 +1,19 @@
 <?php
 
 /**
+ * Implements hook_module_implements_alter().
+ * This ensures that the order_complete redirect runs after
+ * other modules that have implemented it
+ */
+function freedompay_entityform_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'freedompay_order_complete' && isset($implementations['freedompay_entityform'])) {
+    $group = $implementations['freedompay_entityform'];
+    unset($implementations['freedompay_entityform']);
+    $implementations['freedompay_entityform'] = $group;
+  }
+}
+
+/**
  * Loads or retrieves the entityform object
  */
 function freedompay_entityform_entityform($entityform_to_set=NULL) {

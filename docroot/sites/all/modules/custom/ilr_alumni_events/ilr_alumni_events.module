@@ -116,6 +116,21 @@ function ilr_alumni_events_freedompay_invoice_prefix($order) {
   }
 }
 
+/**
+ * Implements hook_freedompay_order_complete().
+ * Sets the total_cost field value based on the transaction total
+ */
+function ilr_alumni_events_freedompay_order_complete($order, $entity_type, $bundle) {
+  if ($order->bundle == 'ilr_alumni_association_event_reg') {
+    $wrapper = $order->formWrapper();
+    if (!empty($order->invoice)) {
+      $total_cost = $order->invoice->amount;
+      $wrapper->field_total_cost->set($total_cost);
+      $wrapper->save();
+    }
+  }
+}
+
 ///////////////////////////////
 // Module-Specific functions //
 ///////////////////////////////
