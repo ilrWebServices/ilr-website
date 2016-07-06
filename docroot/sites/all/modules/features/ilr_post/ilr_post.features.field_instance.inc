@@ -10,7 +10,7 @@
 function ilr_post_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-post-body'
+  // Exported field_instance: 'node-post-body'.
   $field_instances['node-post-body'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -63,7 +63,7 @@ function ilr_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_author_reference'
+  // Exported field_instance: 'node-post-field_author_reference'.
   $field_instances['node-post-field_author_reference'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -120,7 +120,7 @@ function ilr_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_description'
+  // Exported field_instance: 'node-post-field_description'.
   $field_instances['node-post-field_description'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -174,7 +174,7 @@ function ilr_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_image'
+  // Exported field_instance: 'node-post-field_image'.
   $field_instances['node-post-field_image'] = array(
     'bundle' => 'post',
     'deleted' => 0,
@@ -254,7 +254,7 @@ function ilr_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_published_date'
+  // Exported field_instance: 'node-post-field_published_date'.
   $field_instances['node-post-field_published_date'] = array(
     'bundle' => 'post',
     'deleted' => 0,
@@ -325,7 +325,7 @@ function ilr_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_tags'
+  // Exported field_instance: 'node-post-field_tags'.
   $field_instances['node-post-field_tags'] = array(
     'bundle' => 'post',
     'default_value' => NULL,

@@ -50,13 +50,19 @@ class FreedompayPayment extends Entity {
     foreach ($payments as $id => $payment) {
       $rows[$id] = array(
         'invoice' => $payment->getInvoiceLink(),
-        'authorization_code' => $payment->authorization_code,
+        'authorization_code' => $payment->formatTransactionLink(),
         'request_id' => $payment->freeway_request_id,
         'amount' => $payment->amount,
         'card_number' => $payment->card_number,
       );
     }
     return $rows;
+  }
+
+  public function formatTransactionLink() {
+    return l($this->authorization_code, FREEDOMPAY_CHECK_PAYMENT_PATH, array(
+      'query' => array('transaction_id' => $this->transaction_id)
+    ));
   }
 
   public function getInvoiceLink() {

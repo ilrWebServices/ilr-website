@@ -20,3 +20,27 @@ function ilr_alumni_events_update_7001() {
     }
   }
 }
+
+/**
+ * Adds total cost values to event registrations with invoices
+ */
+function ilr_alumni_events_update_7002() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'entityform')
+    ->entityCondition('bundle', 'ilr_alumni_association_event_reg');
+
+  $result = $query->execute();
+  if (!empty($result['entityform'])) {
+    if (module_exists('freedompay')) {
+      $alumni_form_ids = array_keys($result['entityform']);
+      foreach ($alumni_form_ids as $eid) {
+        if ($invoice = FreedompayInvoice::getInvoiceByOrderId($eid)) {
+          $entityform = entityform_load($eid,TRUE);
+          $wrapper = entity_metadata_wrapper('entityform', $entityform);
+          $wrapper->field_total_cost->set($invoice->amount);
+          $wrapper->save();
+        }
+      }
+    }
+  }
+}

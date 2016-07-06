@@ -10,7 +10,7 @@
 function youtube_videos_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-youtube_video-body'
+  // Exported field_instance: 'node-youtube_video-body'.
   $field_instances['node-youtube_video-body'] = array(
     'bundle' => 'youtube_video',
     'default_value' => NULL,
@@ -71,7 +71,7 @@ function youtube_videos_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-youtube_video-field_category_type'
+  // Exported field_instance: 'node-youtube_video-field_category_type'.
   $field_instances['node-youtube_video-field_category_type'] = array(
     'bundle' => 'youtube_video',
     'default_value' => NULL,
@@ -125,7 +125,7 @@ function youtube_videos_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-youtube_video-field_duration'
+  // Exported field_instance: 'node-youtube_video-field_duration'.
   $field_instances['node-youtube_video-field_duration'] = array(
     'bundle' => 'youtube_video',
     'default_value' => NULL,
@@ -185,7 +185,7 @@ function youtube_videos_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-youtube_video-field_playlists'
+  // Exported field_instance: 'node-youtube_video-field_playlists'.
   $field_instances['node-youtube_video-field_playlists'] = array(
     'bundle' => 'youtube_video',
     'default_value' => NULL,
@@ -247,7 +247,7 @@ function youtube_videos_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-youtube_video-field_tags'
+  // Exported field_instance: 'node-youtube_video-field_tags'.
   $field_instances['node-youtube_video-field_tags'] = array(
     'bundle' => 'youtube_video',
     'default_value' => NULL,
@@ -307,7 +307,7 @@ function youtube_videos_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-youtube_video-field_youtube_video'
+  // Exported field_instance: 'node-youtube_video-field_youtube_video'.
   $field_instances['node-youtube_video-field_youtube_video'] = array(
     'bundle' => 'youtube_video',
     'default_value' => NULL,
@@ -324,6 +324,7 @@ function youtube_videos_field_default_field_instances() {
           'youtube_controls' => FALSE,
           'youtube_height' => NULL,
           'youtube_iv_load_policy' => FALSE,
+          'youtube_loop' => FALSE,
           'youtube_showinfo' => FALSE,
           'youtube_size' => '420x315',
           'youtube_width' => NULL,

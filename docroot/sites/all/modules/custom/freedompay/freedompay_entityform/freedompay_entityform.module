@@ -1,6 +1,19 @@
 <?php
 
 /**
+ * Implements hook_module_implements_alter().
+ * This ensures that the order_complete redirect runs after
+ * other modules that have implemented it
+ */
+function freedompay_entityform_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'freedompay_order_complete' && isset($implementations['freedompay_entityform'])) {
+    $group = $implementations['freedompay_entityform'];
+    unset($implementations['freedompay_entityform']);
+    $implementations['freedompay_entityform'] = $group;
+  }
+}
+
+/**
  * Loads or retrieves the entityform object
  */
 function freedompay_entityform_entityform($entityform_to_set=NULL) {
@@ -33,10 +46,10 @@ function freedompay_entityform_entityform_insert($entityform) {
  */
 function freedompay_entityform_entityform_presave($entityform) {
   if (freedompay_entityform_is_payment_form($entityform)) {
-    if (!_freedompay_get_transaction_id()) {
+    if (!_freedompay_get_transaction_id(FALSE)) {
       _freedompay_entityform_set_entityform_cookies($entityform);
-    }
-    if ($transaction_details = freedompay_transaction_details()) {
+    } // Check the details from the transaction id
+    elseif ($transaction_details = freedompay_transaction_details()) {
       // Set the order cache
       $order = freedompay_create_order($entityform->entityform_id, 'entityform', $entityform);
       $payload = freedompay_checkout_payload($order);

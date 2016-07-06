@@ -19,26 +19,6 @@
   margin: 0 auto 1em !important;
 }
 
-.paragraphs-item-sponsor-message {
-  margin-bottom: 0;
-  h2 {
-    text-align: center;
-    @include adjust-font-size-to(22px);
-    @include adjust-leading-to(1);
-    font-weight: 300;
-  }
-  .tower {
-    font-weight: 300;
-    color: $p-text;
-    &:before {
-      @include adjust-font-size-to(25px);
-      @include adjust-leading-to(1.5);
-      color: $gray-medium;
-      display: block;
-    }
-  }
-}
-
 #main[data-eq-state="768"] {
   .centered-blurb {
     @include adjust-font-size-to(30px);

@@ -8,3 +8,11 @@ function ilr_forms_students_update_7001() {
     entityform_type_delete($entityform_type);
   }
 }
+
+/**
+ * Delete entityform submissions for fex_wisp_sponsor_registration
+ */
+function ilr_forms_students_update_7002() {
+  _forms_delete_entityform_submissions('fex_wisp_sponsor_registration');
+}
+

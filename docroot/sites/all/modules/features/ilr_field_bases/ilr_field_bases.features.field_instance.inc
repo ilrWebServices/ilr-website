@@ -10,7 +10,7 @@
 function ilr_field_bases_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'taxonomy_term-course_sponsor-field_email'
+  // Exported field_instance: 'taxonomy_term-course_sponsor-field_email'.
   $field_instances['taxonomy_term-course_sponsor-field_email'] = array(
     'bundle' => 'course_sponsor',
     'default_value' => NULL,
@@ -43,7 +43,8 @@ function ilr_field_bases_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-course_sponsor-field_error_message'
+  // Exported field_instance:
+  // 'taxonomy_term-course_sponsor-field_error_message'.
   $field_instances['taxonomy_term-course_sponsor-field_error_message'] = array(
     'bundle' => 'course_sponsor',
     'default_value' => NULL,

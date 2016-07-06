@@ -84,8 +84,9 @@ function ilr_experience_reports_field_group_info() {
     'label' => 'Title and Focus',
     'weight' => '4',
     'children' => array(
-      0 => 'field_program',
-      1 => 'field_country',
+      0 => 'field_country',
+      1 => 'field_program',
+      2 => 'field_year_as_text',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -115,8 +116,9 @@ function ilr_experience_reports_field_group_info() {
     'label' => 'Title and Focus',
     'weight' => '2',
     'children' => array(
-      0 => 'field_program',
-      1 => 'field_country',
+      0 => 'field_country',
+      1 => 'field_program',
+      2 => 'field_year_as_text',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
