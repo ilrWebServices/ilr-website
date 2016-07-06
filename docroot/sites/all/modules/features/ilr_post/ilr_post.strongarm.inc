@@ -40,12 +40,6 @@ function ilr_post_strongarm() {
       'reference_field' => array(
         'custom_settings' => FALSE,
       ),
-      'ilr_theme__highlighted' => array(
-        'custom_settings' => FALSE,
-      ),
-      'ilr_theme__sidebar_second' => array(
-        'custom_settings' => FALSE,
-      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -53,10 +47,10 @@ function ilr_post_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '4',
         ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '3',
         ),
       ),
       'display' => array(),
