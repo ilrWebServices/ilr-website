@@ -2,7 +2,10 @@
   background: white;
   border: 2px solid $ochre-tan;
   border-radius: 6px;
-  padding: 1em;
+  @include padding-leader(1);
+  @include padding-trailer(1);
+  padding-left: 1em;
+  padding-right: 1em;
   @include leader(1);
   @include trailer(1);
   text-align: center;

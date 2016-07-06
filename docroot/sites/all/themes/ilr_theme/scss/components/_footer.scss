@@ -1,5 +1,8 @@
 footer {
-  padding: 3em 1em 1em 1em;
+  @include padding-leader(2);
+  @include padding-trailer(1);
+  padding-left: 1em;
+  padding-right: 1em;
   background: $brand-dark;
   color: $brand-light;
   position: relative;
@@ -12,7 +15,7 @@ footer {
 
   .region-footer {
     @include clearfix;
-    padding-bottom: 3em;
+    @include padding-trailer(1);
   }
 
   a, a:visited {

@@ -33,7 +33,7 @@ body.mobilizing-against-inequality {
     }
 
     &[data-eq-state="mobile-nav"] .field-name-body {
-      padding-top: 2em; // space for the rss feed
+      @include padding-leader(1.5); // space for the rss feed
       .rss-icon {
         top: 5px;
       }

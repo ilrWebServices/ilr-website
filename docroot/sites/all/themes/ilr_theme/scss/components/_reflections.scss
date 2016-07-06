@@ -8,7 +8,7 @@ article.node-reflection {
     @extend %quote;
   }
   .field-name-body {
-    padding-bottom: .5em;
+    @include padding-trailer(.5);
   }
   ul {
     margin-bottom: 0;
