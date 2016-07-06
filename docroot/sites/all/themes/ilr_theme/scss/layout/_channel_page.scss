@@ -21,7 +21,7 @@ body.node-type-channel-page {
     #content {
       @include grid-span (12);
       padding: 0;
-      margin-bottom: 0;
+      @include margin-trailer(0);
       #breadcrumb {
         @include grid-span (10,2);
         clear: both;

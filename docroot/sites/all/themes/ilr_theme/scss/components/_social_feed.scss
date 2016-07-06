@@ -1,6 +1,9 @@
 article.social-feed {
   min-height: 0;
-  padding: 0 2em;
+  @include padding-leader(0);
+  @include padding-trailer(0);
+  padding-left: 2em;
+  padding-right: 2em;
   text-align: center;
 
   .field-name-group {
@@ -27,13 +30,19 @@ article.social-feed {
 
 #main[data-eq-state="550"] {
   article.social-feed {
-    padding: 0 2em;
+    @include padding-leader(0);
+    @include padding-trailer(0);
+    padding-left: 2em;
+    padding-right: 2em;
   }
 }
 
 #main[data-eq-state="768"] {
   article.social-feed {
-    padding: 1em 2em;
+    @include padding-leader(1);
+    @include padding-trailer(0);
+    padding-left: 2em;
+    padding-right: 2em;
     min-height: 300px;
     .field-name-group {
       .field-name-time-stamp {
@@ -45,7 +54,10 @@ article.social-feed {
 
 #main[data-eq-state="widescreen"] {
   article.social-feed {
-    padding: 1em 2em;
+    @include padding-leader(1);
+    @include padding-trailer(0);
+    padding-left: 2em;
+    padding-right: 2em;
     min-height: 280px;
     .field-name-group {
       .field-name-time-stamp {
