@@ -31,3 +31,18 @@ article.node-post { // Both post teaser and full nodes
     }
   }
 }
+
+body.node-type-basic-page {
+  .container {
+    #main {
+      &[data-eq-state="768"],
+      &[data-eq-state="widescreen"] {
+        #content {
+          article.node-post {
+            @extend %one-column;
+          }
+        }
+      }
+    }
+  }
+}
