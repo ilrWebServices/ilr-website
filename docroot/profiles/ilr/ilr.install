@@ -51,12 +51,6 @@ function ilr_install() {
   // Deal with ENV specific settings
   if (isset($_ENV["AH_SITE_ENVIRONMENT"])) {
     $drupal_path = DRUPAL_ROOT;
-    // Enable the helper module for logging emails
-    if ($_ENV['AH_SITE_ENVIRONMENT'] != 'prod') {
-      module_enable(array(
-        'helper'
-      ));
-    }
   }
   else {
     $drupal_path = '/var/www/ilr-website/docroot';
@@ -67,7 +61,7 @@ function ilr_install() {
   $simplesamlphp_installdir = str_replace(array(
     '/docroot',
   ), array(
-    '/simplesamlphp-1.10.0',
+    '/simplesamlphp-1.14.3',
   ), $drupal_path);
 
   variable_set('simplesamlphp_auth_installdir', $simplesamlphp_installdir);
@@ -776,4 +770,21 @@ function ilr_update_7058() {
       }
     }
   }
+}
+
+/**
+ * Updates the simplesamlphp_installdir
+ */
+function ilr_update_7059() {
+  $drupal_path = (isset($_ENV["AH_SITE_ENVIRONMENT"]))
+    ? DRUPAL_ROOT
+    : '/var/www/ilr-website/docroot';
+
+  $simplesamlphp_installdir = str_replace(array(
+    '/docroot',
+  ), array(
+    '/simplesamlphp-1.14.3',
+  ), $drupal_path);
+
+  variable_set('simplesamlphp_auth_installdir', $simplesamlphp_installdir);
 }
