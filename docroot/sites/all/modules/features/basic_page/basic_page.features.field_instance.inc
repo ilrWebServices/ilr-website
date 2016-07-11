@@ -10,7 +10,7 @@
 function basic_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'bean-html-field_bean_content'
+  // Exported field_instance: 'bean-html-field_bean_content'.
   $field_instances['bean-html-field_bean_content'] = array(
     'bundle' => 'html',
     'default_value' => NULL,
@@ -58,7 +58,8 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_blocks-field_content_bottom_region'
+  // Exported field_instance:
+  // 'field_collection_item-field_blocks-field_content_bottom_region'.
   $field_instances['field_collection_item-field_blocks-field_content_bottom_region'] = array(
     'bundle' => 'field_blocks',
     'default_value' => NULL,
@@ -76,6 +77,7 @@ function basic_page_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_content_bottom_region',
     'label' => 'Content Bottom Region',
     'required' => 0,
@@ -94,7 +96,8 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_blocks-field_content_region'
+  // Exported field_instance:
+  // 'field_collection_item-field_blocks-field_content_region'.
   $field_instances['field_collection_item-field_blocks-field_content_region'] = array(
     'bundle' => 'field_blocks',
     'default_value' => NULL,
@@ -130,7 +133,8 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_blocks-field_highlighted_region'
+  // Exported field_instance:
+  // 'field_collection_item-field_blocks-field_highlighted_region'.
   $field_instances['field_collection_item-field_blocks-field_highlighted_region'] = array(
     'bundle' => 'field_blocks',
     'default_value' => NULL,
@@ -166,7 +170,8 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_blocks-field_sidebar_second_region'
+  // Exported field_instance:
+  // 'field_collection_item-field_blocks-field_sidebar_second_region'.
   $field_instances['field_collection_item-field_blocks-field_sidebar_second_region'] = array(
     'bundle' => 'field_blocks',
     'default_value' => NULL,
@@ -202,7 +207,7 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-audio-field_tags'
+  // Exported field_instance: 'file-audio-field_tags'.
   $field_instances['file-audio-field_tags'] = array(
     'bundle' => 'audio',
     'default_value' => NULL,
@@ -257,7 +262,7 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-document-field_tags'
+  // Exported field_instance: 'file-document-field_tags'.
   $field_instances['file-document-field_tags'] = array(
     'bundle' => 'document',
     'default_value' => NULL,
@@ -310,7 +315,7 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-image-field_file_image_alt_text'
+  // Exported field_instance: 'file-image-field_file_image_alt_text'.
   $field_instances['file-image-field_file_image_alt_text'] = array(
     'bundle' => 'image',
     'default_value' => NULL,
@@ -367,7 +372,7 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-image-field_file_image_caption'
+  // Exported field_instance: 'file-image-field_file_image_caption'.
   $field_instances['file-image-field_file_image_caption'] = array(
     'bundle' => 'image',
     'default_value' => NULL,
@@ -422,7 +427,7 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-image-field_file_image_title_text'
+  // Exported field_instance: 'file-image-field_file_image_title_text'.
   $field_instances['file-image-field_file_image_title_text'] = array(
     'bundle' => 'image',
     'default_value' => NULL,
@@ -479,7 +484,7 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-image-field_tags'
+  // Exported field_instance: 'file-image-field_tags'.
   $field_instances['file-image-field_tags'] = array(
     'bundle' => 'image',
     'default_value' => NULL,
@@ -534,7 +539,7 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-body'
+  // Exported field_instance: 'node-basic_page-body'.
   $field_instances['node-basic_page-body'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -593,7 +598,7 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_blocks'
+  // Exported field_instance: 'node-basic_page-field_blocks'.
   $field_instances['node-basic_page-field_blocks'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -649,7 +654,7 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_category_type'
+  // Exported field_instance: 'node-basic_page-field_category_type'.
   $field_instances['node-basic_page-field_category_type'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -694,7 +699,7 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_editor_notes'
+  // Exported field_instance: 'node-basic_page-field_editor_notes'.
   $field_instances['node-basic_page-field_editor_notes'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -736,7 +741,7 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_image'
+  // Exported field_instance: 'node-basic_page-field_image'.
   $field_instances['node-basic_page-field_image'] = array(
     'bundle' => 'basic_page',
     'deleted' => 0,
@@ -815,7 +820,7 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_tags'
+  // Exported field_instance: 'node-basic_page-field_tags'.
   $field_instances['node-basic_page-field_tags'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,

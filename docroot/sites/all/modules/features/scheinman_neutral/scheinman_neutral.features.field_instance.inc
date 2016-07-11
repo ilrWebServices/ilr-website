@@ -10,7 +10,8 @@
 function scheinman_neutral_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-scheinman_neutral-field_additional_dispute_resolut'
+  // Exported field_instance:
+  // 'node-scheinman_neutral-field_additional_dispute_resolut'.
   $field_instances['node-scheinman_neutral-field_additional_dispute_resolut'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -64,7 +65,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_address_line_1'
+  // Exported field_instance: 'node-scheinman_neutral-field_address_line_1'.
   $field_instances['node-scheinman_neutral-field_address_line_1'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -121,7 +122,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_address_line_2'
+  // Exported field_instance: 'node-scheinman_neutral-field_address_line_2'.
   $field_instances['node-scheinman_neutral-field_address_line_2'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -178,7 +179,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_city'
+  // Exported field_instance: 'node-scheinman_neutral-field_city'.
   $field_instances['node-scheinman_neutral-field_city'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -235,7 +236,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_company'
+  // Exported field_instance: 'node-scheinman_neutral-field_company'.
   $field_instances['node-scheinman_neutral-field_company'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -292,7 +293,8 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_dispute_resolution_experie'
+  // Exported field_instance:
+  // 'node-scheinman_neutral-field_dispute_resolution_experie'.
   $field_instances['node-scheinman_neutral-field_dispute_resolution_experie'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -346,7 +348,8 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_dispute_resolution_trainin'
+  // Exported field_instance:
+  // 'node-scheinman_neutral-field_dispute_resolution_trainin'.
   $field_instances['node-scheinman_neutral-field_dispute_resolution_trainin'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -400,7 +403,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_education'
+  // Exported field_instance: 'node-scheinman_neutral-field_education'.
   $field_instances['node-scheinman_neutral-field_education'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -454,7 +457,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_email'
+  // Exported field_instance: 'node-scheinman_neutral-field_email'.
   $field_instances['node-scheinman_neutral-field_email'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -510,7 +513,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_fax'
+  // Exported field_instance: 'node-scheinman_neutral-field_fax'.
   $field_instances['node-scheinman_neutral-field_fax'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -564,7 +567,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_fee_policy'
+  // Exported field_instance: 'node-scheinman_neutral-field_fee_policy'.
   $field_instances['node-scheinman_neutral-field_fee_policy'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -618,7 +621,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_first_name'
+  // Exported field_instance: 'node-scheinman_neutral-field_first_name'.
   $field_instances['node-scheinman_neutral-field_first_name'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -669,7 +672,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_job_title'
+  // Exported field_instance: 'node-scheinman_neutral-field_job_title'.
   $field_instances['node-scheinman_neutral-field_job_title'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -726,7 +729,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_last_name'
+  // Exported field_instance: 'node-scheinman_neutral-field_last_name'.
   $field_instances['node-scheinman_neutral-field_last_name'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -777,7 +780,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_middle_name'
+  // Exported field_instance: 'node-scheinman_neutral-field_middle_name'.
   $field_instances['node-scheinman_neutral-field_middle_name'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -828,7 +831,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_name_title'
+  // Exported field_instance: 'node-scheinman_neutral-field_name_title'.
   $field_instances['node-scheinman_neutral-field_name_title'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -879,7 +882,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_phone'
+  // Exported field_instance: 'node-scheinman_neutral-field_phone'.
   $field_instances['node-scheinman_neutral-field_phone'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -936,7 +939,8 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_professional_associations'
+  // Exported field_instance:
+  // 'node-scheinman_neutral-field_professional_associations'.
   $field_instances['node-scheinman_neutral-field_professional_associations'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -990,7 +994,8 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_professional_work_history_'
+  // Exported field_instance:
+  // 'node-scheinman_neutral-field_professional_work_history_'.
   $field_instances['node-scheinman_neutral-field_professional_work_history_'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -1044,7 +1049,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_profile_image'
+  // Exported field_instance: 'node-scheinman_neutral-field_profile_image'.
   $field_instances['node-scheinman_neutral-field_profile_image'] = array(
     'bundle' => 'scheinman_neutral',
     'deleted' => 0,
@@ -1126,7 +1131,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_references'
+  // Exported field_instance: 'node-scheinman_neutral-field_references'.
   $field_instances['node-scheinman_neutral-field_references'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -1180,7 +1185,8 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_state_inc_outside_us'
+  // Exported field_instance:
+  // 'node-scheinman_neutral-field_state_inc_outside_us'.
   $field_instances['node-scheinman_neutral-field_state_inc_outside_us'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -1237,7 +1243,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_suffix'
+  // Exported field_instance: 'node-scheinman_neutral-field_suffix'.
   $field_instances['node-scheinman_neutral-field_suffix'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -1288,7 +1294,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_website_url'
+  // Exported field_instance: 'node-scheinman_neutral-field_website_url'.
   $field_instances['node-scheinman_neutral-field_website_url'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,
@@ -1331,6 +1337,7 @@ function scheinman_neutral_field_default_field_instances() {
     'label' => 'Website address',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1344,6 +1351,7 @@ function scheinman_neutral_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -1359,7 +1367,7 @@ function scheinman_neutral_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-scheinman_neutral-field_zip_code'
+  // Exported field_instance: 'node-scheinman_neutral-field_zip_code'.
   $field_instances['node-scheinman_neutral-field_zip_code'] = array(
     'bundle' => 'scheinman_neutral',
     'default_value' => NULL,

@@ -10,7 +10,7 @@
 function ilr_channel_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-channel_page-field_category_type'
+  // Exported field_instance: 'node-channel_page-field_category_type'.
   $field_instances['node-channel_page-field_category_type'] = array(
     'bundle' => 'channel_page',
     'default_value' => NULL,
@@ -56,7 +56,7 @@ function ilr_channel_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-channel_page-field_image'
+  // Exported field_instance: 'node-channel_page-field_image'.
   $field_instances['node-channel_page-field_image'] = array(
     'bundle' => 'channel_page',
     'deleted' => 0,
@@ -131,7 +131,7 @@ function ilr_channel_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-channel_page-field_para_main_page_content'
+  // Exported field_instance: 'node-channel_page-field_para_main_page_content'.
   $field_instances['node-channel_page-field_para_main_page_content'] = array(
     'bundle' => 'channel_page',
     'default_value' => NULL,
@@ -202,7 +202,7 @@ function ilr_channel_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-channel_page-field_tags'
+  // Exported field_instance: 'node-channel_page-field_tags'.
   $field_instances['node-channel_page-field_tags'] = array(
     'bundle' => 'channel_page',
     'default_value' => NULL,
@@ -248,7 +248,7 @@ function ilr_channel_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-channel_page-field_teaser'
+  // Exported field_instance: 'node-channel_page-field_teaser'.
   $field_instances['node-channel_page-field_teaser'] = array(
     'bundle' => 'channel_page',
     'default_value' => NULL,

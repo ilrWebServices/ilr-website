@@ -62,7 +62,7 @@ function ilr_sdc_listings_feeds_tamper_default() {
   $feeds_tamper->importer = 'sdc_course_importer';
   $feeds_tamper->source = 'jsonpath_parser:9';
   $feeds_tamper->plugin_id = 'array_filter';
-  $feeds_tamper->settings = '';
+  $feeds_tamper->settings = array();
   $feeds_tamper->weight = 2;
   $feeds_tamper->description = 'Filter empty items';
   $export['sdc_course_importer-jsonpath_parser_9-array_filter'] = $feeds_tamper;

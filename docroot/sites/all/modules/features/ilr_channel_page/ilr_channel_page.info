@@ -30,4 +30,5 @@ features[variable][] = menu_parent_channel_page
 features[variable][] = node_options_channel_page
 features[variable][] = node_preview_channel_page
 features[variable][] = node_submitted_channel_page
+features[variable][] = pathauto_node_channel_page_pattern
 project path = sites/all/modules/features

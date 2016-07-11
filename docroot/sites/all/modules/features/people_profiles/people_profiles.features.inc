@@ -31,17 +31,9 @@ function people_profiles_image_default_styles() {
 
   // Exported image style: focussed_profile_image.
   $styles['focussed_profile_image'] = array(
-    'name' => 'focussed_profile_image',
     'label' => 'Focussed Profile Image',
     'effects' => array(
       1 => array(
-        'label' => 'Focal Point Scale And Crop',
-        'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
-        'effect callback' => 'focal_point_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'focal_point',
         'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 800,
@@ -54,17 +46,9 @@ function people_profiles_image_default_styles() {
 
   // Exported image style: people_profile_image.
   $styles['people_profile_image'] = array(
-    'name' => 'people_profile_image',
     'label' => 'People Profile Image',
     'effects' => array(
       1 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 250,
@@ -92,5 +76,6 @@ function people_profiles_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

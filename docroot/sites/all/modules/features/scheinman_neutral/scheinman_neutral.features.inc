@@ -34,5 +34,6 @@ function scheinman_neutral_node_info() {
       'help' => t('Admission to the rosters is restricted to individuals who have successfully completed our professional courses.  The rosters provide opportunities for individuals who have completed our training to work as neutrals and build their credentials in the field.'),
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

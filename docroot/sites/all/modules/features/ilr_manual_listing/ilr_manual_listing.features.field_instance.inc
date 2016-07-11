@@ -10,7 +10,7 @@
 function ilr_manual_listing_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'bean-content_listing_manual-field_content'
+  // Exported field_instance: 'bean-content_listing_manual-field_content'.
   $field_instances['bean-content_listing_manual-field_content'] = array(
     'bundle' => 'content_listing_manual',
     'default_value' => NULL,

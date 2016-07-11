@@ -10,7 +10,8 @@
 function forms2_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_address_line_1'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_address_line_1'.
   $field_instances['entityform-forensics_debate_camp_payment-field_address_line_1'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -79,7 +80,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_address_line_2'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_address_line_2'.
   $field_instances['entityform-forensics_debate_camp_payment-field_address_line_2'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -148,7 +150,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_city'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_city'.
   $field_instances['entityform-forensics_debate_camp_payment-field_city'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -217,7 +220,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_country_for_forensics'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_country_for_forensics'.
   $field_instances['entityform-forensics_debate_camp_payment-field_country_for_forensics'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -280,7 +284,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_email'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_email'.
   $field_instances['entityform-forensics_debate_camp_payment-field_email'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -343,7 +348,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_first_name'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_first_name'.
   $field_instances['entityform-forensics_debate_camp_payment-field_first_name'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -412,7 +418,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_full_name'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_full_name'.
   $field_instances['entityform-forensics_debate_camp_payment-field_full_name'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -481,7 +488,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_h_event_date'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_h_event_date'.
   $field_instances['entityform-forensics_debate_camp_payment-field_h_event_date'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'deleted' => 0,
@@ -558,7 +566,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_last_name'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_last_name'.
   $field_instances['entityform-forensics_debate_camp_payment-field_last_name'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -627,7 +636,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_phone'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_phone'.
   $field_instances['entityform-forensics_debate_camp_payment-field_phone'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -696,7 +706,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_referenced_node'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_referenced_node'.
   $field_instances['entityform-forensics_debate_camp_payment-field_referenced_node'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -768,7 +779,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_state_as_text'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_state_as_text'.
   $field_instances['entityform-forensics_debate_camp_payment-field_state_as_text'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -837,7 +849,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_total_cost'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_total_cost'.
   $field_instances['entityform-forensics_debate_camp_payment-field_total_cost'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -906,7 +919,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-forensics_debate_camp_payment-field_zip_code'
+  // Exported field_instance:
+  // 'entityform-forensics_debate_camp_payment-field_zip_code'.
   $field_instances['entityform-forensics_debate_camp_payment-field_zip_code'] = array(
     'bundle' => 'forensics_debate_camp_payment',
     'default_value' => NULL,
@@ -975,7 +989,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_address_line_1'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_address_line_1'.
   $field_instances['entityform-scheinman_webcast_registration-field_address_line_1'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1044,7 +1059,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_address_line_2'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_address_line_2'.
   $field_instances['entityform-scheinman_webcast_registration-field_address_line_2'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1113,7 +1129,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_alum'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_alum'.
   $field_instances['entityform-scheinman_webcast_registration-field_alum'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1174,7 +1191,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_city'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_city'.
   $field_instances['entityform-scheinman_webcast_registration-field_city'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1243,7 +1261,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_company'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_company'.
   $field_instances['entityform-scheinman_webcast_registration-field_company'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1312,7 +1331,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_cornell_degree'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_cornell_degree'.
   $field_instances['entityform-scheinman_webcast_registration-field_cornell_degree'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1375,7 +1395,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_country'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_country'.
   $field_instances['entityform-scheinman_webcast_registration-field_country'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1444,7 +1465,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_email'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_email'.
   $field_instances['entityform-scheinman_webcast_registration-field_email'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1507,7 +1529,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_first_name'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_first_name'.
   $field_instances['entityform-scheinman_webcast_registration-field_first_name'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1576,7 +1599,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_h_event_date'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_h_event_date'.
   $field_instances['entityform-scheinman_webcast_registration-field_h_event_date'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'deleted' => 0,
@@ -1671,7 +1695,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_last_name'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_last_name'.
   $field_instances['entityform-scheinman_webcast_registration-field_last_name'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1740,7 +1765,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_other_interests_text'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_other_interests_text'.
   $field_instances['entityform-scheinman_webcast_registration-field_other_interests_text'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1809,7 +1835,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_other_please_specify'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_other_please_specify'.
   $field_instances['entityform-scheinman_webcast_registration-field_other_please_specify'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1878,7 +1905,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_phone'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_phone'.
   $field_instances['entityform-scheinman_webcast_registration-field_phone'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -1947,7 +1975,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_prof_field_scheinman'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_prof_field_scheinman'.
   $field_instances['entityform-scheinman_webcast_registration-field_prof_field_scheinman'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -2010,7 +2039,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_referenced_node'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_referenced_node'.
   $field_instances['entityform-scheinman_webcast_registration-field_referenced_node'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -2090,7 +2120,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_scheinman_user_interests'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_scheinman_user_interests'.
   $field_instances['entityform-scheinman_webcast_registration-field_scheinman_user_interests'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -2151,7 +2182,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_state_province'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_state_province'.
   $field_instances['entityform-scheinman_webcast_registration-field_state_province'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -2214,7 +2246,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_training'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_training'.
   $field_instances['entityform-scheinman_webcast_registration-field_training'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -2283,7 +2316,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_year_as_text'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_year_as_text'.
   $field_instances['entityform-scheinman_webcast_registration-field_year_as_text'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,
@@ -2352,7 +2386,8 @@ function forms2_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-scheinman_webcast_registration-field_zip_code'
+  // Exported field_instance:
+  // 'entityform-scheinman_webcast_registration-field_zip_code'.
   $field_instances['entityform-scheinman_webcast_registration-field_zip_code'] = array(
     'bundle' => 'scheinman_webcast_registration',
     'default_value' => NULL,

@@ -10,7 +10,7 @@
 function promo_conditional_fields_default_fields() {
   $items = array();
 
-  $items[] = array(
+  $items["node:promo:0"] = array(
     'entity' => 'node',
     'bundle' => 'promo',
     'dependent' => 'field_internal_link',
@@ -160,7 +160,7 @@ function promo_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["node:promo:1"] = array(
     'entity' => 'node',
     'bundle' => 'promo',
     'dependent' => 'field_website_url',

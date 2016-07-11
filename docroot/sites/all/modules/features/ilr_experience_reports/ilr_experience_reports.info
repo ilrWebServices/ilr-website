@@ -4,6 +4,7 @@ core = 7.x
 package = ILR
 version = 7.x-1.0
 project = ilr_experience_reports
+dependencies[] = basic_page
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = field_collection

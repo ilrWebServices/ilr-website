@@ -10,7 +10,8 @@
 function ilr_paragraphs_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'field_collection_item-field_animated_text_card-field_header'
+  // Exported field_instance:
+  // 'field_collection_item-field_animated_text_card-field_header'.
   $field_instances['field_collection_item-field_animated_text_card-field_header'] = array(
     'bundle' => 'field_animated_text_card',
     'default_value' => NULL,
@@ -52,7 +53,8 @@ function ilr_paragraphs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_animated_text_card-field_short_title'
+  // Exported field_instance:
+  // 'field_collection_item-field_animated_text_card-field_short_title'.
   $field_instances['field_collection_item-field_animated_text_card-field_short_title'] = array(
     'bundle' => 'field_animated_text_card',
     'default_value' => NULL,
@@ -96,7 +98,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_animated_text_card-field_teaser'
+  // Exported field_instance:
+  // 'field_collection_item-field_animated_text_card-field_teaser'.
   $field_instances['field_collection_item-field_animated_text_card-field_teaser'] = array(
     'bundle' => 'field_animated_text_card',
     'default_value' => NULL,
@@ -138,7 +141,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_animated_text_card-field_website_url'
+  // Exported field_instance:
+  // 'field_collection_item-field_animated_text_card-field_website_url'.
   $field_instances['field_collection_item-field_animated_text_card-field_website_url'] = array(
     'bundle' => 'field_animated_text_card',
     'default_value' => NULL,
@@ -161,6 +165,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     'label' => 'Website address',
     'required' => 1,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 1,
@@ -179,6 +184,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
       ),
       'rel_remove' => 'rel_remove_internal',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -194,7 +200,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_people_list-field_full_name'
+  // Exported field_instance:
+  // 'field_collection_item-field_people_list-field_full_name'.
   $field_instances['field_collection_item-field_people_list-field_full_name'] = array(
     'bundle' => 'field_people_list',
     'default_value' => NULL,
@@ -236,7 +243,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_people_list-field_netid'
+  // Exported field_instance:
+  // 'field_collection_item-field_people_list-field_netid'.
   $field_instances['field_collection_item-field_people_list-field_netid'] = array(
     'bundle' => 'field_people_list',
     'default_value' => NULL,
@@ -275,7 +283,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_people_list-field_position'
+  // Exported field_instance:
+  // 'field_collection_item-field_people_list-field_position'.
   $field_instances['field_collection_item-field_people_list-field_position'] = array(
     'bundle' => 'field_people_list',
     'default_value' => NULL,
@@ -317,7 +326,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_promo_text-field_header'
+  // Exported field_instance:
+  // 'field_collection_item-field_promo_text-field_header'.
   $field_instances['field_collection_item-field_promo_text-field_header'] = array(
     'bundle' => 'field_promo_text',
     'default_value' => NULL,
@@ -359,7 +369,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_promo_text-field_multiple_links'
+  // Exported field_instance:
+  // 'field_collection_item-field_promo_text-field_multiple_links'.
   $field_instances['field_collection_item-field_promo_text-field_multiple_links'] = array(
     'bundle' => 'field_promo_text',
     'default_value' => NULL,
@@ -382,6 +393,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     'label' => 'Related web pages',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -400,6 +412,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
       ),
       'rel_remove' => 'rel_remove_internal',
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -415,7 +428,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_promo_text-field_teaser'
+  // Exported field_instance:
+  // 'field_collection_item-field_promo_text-field_teaser'.
   $field_instances['field_collection_item-field_promo_text-field_teaser'] = array(
     'bundle' => 'field_promo_text',
     'default_value' => NULL,
@@ -457,7 +471,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_social_channels-field_social_media_channel_type'
+  // Exported field_instance:
+  // 'field_collection_item-field_social_channels-field_social_media_channel_type'.
   $field_instances['field_collection_item-field_social_channels-field_social_media_channel_type'] = array(
     'bundle' => 'field_social_channels',
     'default_value' => NULL,
@@ -490,7 +505,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_social_channels-field_website_url'
+  // Exported field_instance:
+  // 'field_collection_item-field_social_channels-field_website_url'.
   $field_instances['field_collection_item-field_social_channels-field_website_url'] = array(
     'bundle' => 'field_social_channels',
     'default_value' => NULL,
@@ -513,6 +529,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     'label' => 'Channel URL',
     'required' => 1,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -531,6 +548,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
       ),
       'rel_remove' => 'rel_remove_internal',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -546,7 +564,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-compare_three-field_animated_text_card'
+  // Exported field_instance:
+  // 'paragraphs_item-compare_three-field_animated_text_card'.
   $field_instances['paragraphs_item-compare_three-field_animated_text_card'] = array(
     'bundle' => 'compare_three',
     'default_value' => NULL,
@@ -587,7 +606,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-display_a_block-field_one_block'
+  // Exported field_instance: 'paragraphs_item-display_a_block-field_one_block'.
   $field_instances['paragraphs_item-display_a_block-field_one_block'] = array(
     'bundle' => 'display_a_block',
     'default_value' => NULL,
@@ -629,7 +648,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-featured_promo-field_align_left_right'
+  // Exported field_instance:
+  // 'paragraphs_item-featured_promo-field_align_left_right'.
   $field_instances['paragraphs_item-featured_promo-field_align_left_right'] = array(
     'bundle' => 'featured_promo',
     'default_value' => array(
@@ -670,7 +690,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-featured_promo-field_header'
+  // Exported field_instance: 'paragraphs_item-featured_promo-field_header'.
   $field_instances['paragraphs_item-featured_promo-field_header'] = array(
     'bundle' => 'featured_promo',
     'default_value' => NULL,
@@ -727,7 +747,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-featured_promo-field_image'
+  // Exported field_instance: 'paragraphs_item-featured_promo-field_image'.
   $field_instances['paragraphs_item-featured_promo-field_image'] = array(
     'bundle' => 'featured_promo',
     'deleted' => 0,
@@ -807,7 +827,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-featured_promo-field_multiple_links'
+  // Exported field_instance:
+  // 'paragraphs_item-featured_promo-field_multiple_links'.
   $field_instances['paragraphs_item-featured_promo-field_multiple_links'] = array(
     'bundle' => 'featured_promo',
     'default_value' => NULL,
@@ -836,6 +857,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     'label' => 'Links (add one or two)',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -854,6 +876,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
       ),
       'rel_remove' => 'rel_remove_internal',
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -869,7 +892,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-featured_promo-field_teaser'
+  // Exported field_instance: 'paragraphs_item-featured_promo-field_teaser'.
   $field_instances['paragraphs_item-featured_promo-field_teaser'] = array(
     'bundle' => 'featured_promo',
     'default_value' => NULL,
@@ -926,7 +949,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-featured_promo-field_youtube_video'
+  // Exported field_instance:
+  // 'paragraphs_item-featured_promo-field_youtube_video'.
   $field_instances['paragraphs_item-featured_promo-field_youtube_video'] = array(
     'bundle' => 'featured_promo',
     'default_value' => NULL,
@@ -993,7 +1017,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-just_image-field_image'
+  // Exported field_instance: 'paragraphs_item-just_image-field_image'.
   $field_instances['paragraphs_item-just_image-field_image'] = array(
     'bundle' => 'just_image',
     'deleted' => 0,
@@ -1063,7 +1087,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-just_text-field_header'
+  // Exported field_instance: 'paragraphs_item-just_text-field_header'.
   $field_instances['paragraphs_item-just_text-field_header'] = array(
     'bundle' => 'just_text',
     'default_value' => NULL,
@@ -1111,7 +1135,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-just_text-field_text_paragraph'
+  // Exported field_instance: 'paragraphs_item-just_text-field_text_paragraph'.
   $field_instances['paragraphs_item-just_text-field_text_paragraph'] = array(
     'bundle' => 'just_text',
     'default_value' => NULL,
@@ -1159,7 +1183,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-side_by_side_text-field_promo_text'
+  // Exported field_instance:
+  // 'paragraphs_item-side_by_side_text-field_promo_text'.
   $field_instances['paragraphs_item-side_by_side_text-field_promo_text'] = array(
     'bundle' => 'side_by_side_text',
     'default_value' => NULL,
@@ -1200,7 +1225,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-sponsor_message-field_comments'
+  // Exported field_instance: 'paragraphs_item-sponsor_message-field_comments'.
   $field_instances['paragraphs_item-sponsor_message-field_comments'] = array(
     'bundle' => 'sponsor_message',
     'default_value' => NULL,
@@ -1251,7 +1276,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-sponsor_message-field_header'
+  // Exported field_instance: 'paragraphs_item-sponsor_message-field_header'.
   $field_instances['paragraphs_item-sponsor_message-field_header'] = array(
     'bundle' => 'sponsor_message',
     'default_value' => NULL,
@@ -1302,7 +1327,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-sponsor_message-field_title_icon_none'
+  // Exported field_instance:
+  // 'paragraphs_item-sponsor_message-field_title_icon_none'.
   $field_instances['paragraphs_item-sponsor_message-field_title_icon_none'] = array(
     'bundle' => 'sponsor_message',
     'default_value' => array(
@@ -1345,7 +1371,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-unit_contact_info-field_multiple_links'
+  // Exported field_instance:
+  // 'paragraphs_item-unit_contact_info-field_multiple_links'.
   $field_instances['paragraphs_item-unit_contact_info-field_multiple_links'] = array(
     'bundle' => 'unit_contact_info',
     'default_value' => NULL,
@@ -1374,6 +1401,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     'label' => 'Links (add one or two)',
     'required' => 1,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1392,6 +1420,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
       ),
       'rel_remove' => 'rel_remove_internal',
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -1407,7 +1436,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-unit_contact_info-field_organization'
+  // Exported field_instance:
+  // 'paragraphs_item-unit_contact_info-field_organization'.
   $field_instances['paragraphs_item-unit_contact_info-field_organization'] = array(
     'bundle' => 'unit_contact_info',
     'default_value' => NULL,
@@ -1455,7 +1485,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-unit_contact_info-field_people_list'
+  // Exported field_instance:
+  // 'paragraphs_item-unit_contact_info-field_people_list'.
   $field_instances['paragraphs_item-unit_contact_info-field_people_list'] = array(
     'bundle' => 'unit_contact_info',
     'default_value' => NULL,
@@ -1496,7 +1527,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-unit_contact_info-field_social_channels'
+  // Exported field_instance:
+  // 'paragraphs_item-unit_contact_info-field_social_channels'.
   $field_instances['paragraphs_item-unit_contact_info-field_social_channels'] = array(
     'bundle' => 'unit_contact_info',
     'default_value' => NULL,
@@ -1537,7 +1569,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-unit_contact_info-field_text_paragraph'
+  // Exported field_instance:
+  // 'paragraphs_item-unit_contact_info-field_text_paragraph'.
   $field_instances['paragraphs_item-unit_contact_info-field_text_paragraph'] = array(
     'bundle' => 'unit_contact_info',
     'default_value' => NULL,

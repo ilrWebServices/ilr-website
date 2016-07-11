@@ -10,7 +10,7 @@
 function ilr_forms_public_conditional_fields_default_fields() {
   $items = array();
 
-  $items[] = array(
+  $items["entityform:emediation_competition_reg:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'emediation_competition_reg',
     'dependent' => 'field_email_additional',
@@ -193,7 +193,7 @@ function ilr_forms_public_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:emediation_competition_reg:1"] = array(
     'entity' => 'entityform',
     'bundle' => 'emediation_competition_reg',
     'dependent' => 'field_first_name_additional',
@@ -376,7 +376,7 @@ function ilr_forms_public_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:emediation_competition_reg:2"] = array(
     'entity' => 'entityform',
     'bundle' => 'emediation_competition_reg',
     'dependent' => 'field_last_name_additional',
@@ -559,7 +559,7 @@ function ilr_forms_public_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:emediation_competition_reg:3"] = array(
     'entity' => 'entityform',
     'bundle' => 'emediation_competition_reg',
     'dependent' => 'field_second_person_markup',

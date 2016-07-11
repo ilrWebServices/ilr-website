@@ -21,6 +21,5 @@ function ilr_footer_menu_menu_default_menu_custom() {
   t('Secondary menu');
   t('The <em>Secondary</em> menu is used to show utility links for the site and is generally displayed in the footer.');
 
-
   return $menus;
 }

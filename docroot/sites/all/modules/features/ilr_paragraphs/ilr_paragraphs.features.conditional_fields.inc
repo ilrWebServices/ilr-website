@@ -10,7 +10,7 @@
 function ilr_paragraphs_conditional_fields_default_fields() {
   $items = array();
 
-  $items[] = array(
+  $items["paragraphs_item:sponsor_message:0"] = array(
     'entity' => 'paragraphs_item',
     'bundle' => 'sponsor_message',
     'dependent' => 'field_header',

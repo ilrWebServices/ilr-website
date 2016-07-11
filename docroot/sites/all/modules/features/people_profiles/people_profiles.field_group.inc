@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function people_profiles_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -49,7 +49,7 @@ function people_profiles_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $export['group_activity_insight|node|people_profile|form'] = $field_group;
+  $field_groups['group_activity_insight|node|people_profile|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -94,7 +94,7 @@ function people_profiles_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $export['group_basic_tab|node|people_profile|form'] = $field_group;
+  $field_groups['group_basic_tab|node|people_profile|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -130,7 +130,7 @@ function people_profiles_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_contact_info|node|people_profile|default'] = $field_group;
+  $field_groups['group_contact_info|node|people_profile|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -159,7 +159,7 @@ function people_profiles_field_group_info() {
       ),
     ),
   );
-  $export['group_expertise|node|people_profile|default'] = $field_group;
+  $field_groups['group_expertise|node|people_profile|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -196,7 +196,7 @@ function people_profiles_field_group_info() {
       'formatter' => '',
     ),
   );
-  $export['group_main_content|node|people_profile|default'] = $field_group;
+  $field_groups['group_main_content|node|people_profile|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -222,7 +222,7 @@ function people_profiles_field_group_info() {
       ),
     ),
   );
-  $export['group_people_profile_tabs|node|people_profile|form'] = $field_group;
+  $field_groups['group_people_profile_tabs|node|people_profile|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -251,7 +251,7 @@ function people_profiles_field_group_info() {
       ),
     ),
   );
-  $export['group_profile_highlighted|node|people_profile|default'] = $field_group;
+  $field_groups['group_profile_highlighted|node|people_profile|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -281,7 +281,7 @@ function people_profiles_field_group_info() {
       ),
     ),
   );
-  $export['group_profile_sidebar|node|people_profile|default'] = $field_group;
+  $field_groups['group_profile_sidebar|node|people_profile|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -311,7 +311,7 @@ function people_profiles_field_group_info() {
       ),
     ),
   );
-  $export['group_related_resources|node|people_profile|default'] = $field_group;
+  $field_groups['group_related_resources|node|people_profile|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -341,7 +341,20 @@ function people_profiles_field_group_info() {
       ),
     ),
   );
-  $export['group_title_and_focus|node|people_profile|default'] = $field_group;
+  $field_groups['group_title_and_focus|node|people_profile|default'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Activity Insight');
+  t('Basic');
+  t('Contact');
+  t('Expertise');
+  t('Highlighted');
+  t('Main Content');
+  t('People Profile Tabs');
+  t('Related Resources');
+  t('Sidebar');
+  t('Title and Focus');
+
+  return $field_groups;
 }

@@ -10,7 +10,7 @@
 function ilr_forms_public_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'entityform-course_follow-field_course'
+  // Exported field_instance: 'entityform-course_follow-field_course'.
   $field_instances['entityform-course_follow-field_course'] = array(
     'bundle' => 'course_follow',
     'default_value' => NULL,
@@ -55,7 +55,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-course_follow-field_email'
+  // Exported field_instance: 'entityform-course_follow-field_email'.
   $field_instances['entityform-course_follow-field_email'] = array(
     'bundle' => 'course_follow',
     'default_value' => NULL,
@@ -91,7 +91,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-course_follow-field_email_opt_in'
+  // Exported field_instance: 'entityform-course_follow-field_email_opt_in'.
   $field_instances['entityform-course_follow-field_email_opt_in'] = array(
     'bundle' => 'course_follow',
     'default_value' => array(
@@ -131,7 +131,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-course_follow-field_full_name'
+  // Exported field_instance: 'entityform-course_follow-field_full_name'.
   $field_instances['entityform-course_follow-field_full_name'] = array(
     'bundle' => 'course_follow',
     'default_value' => NULL,
@@ -173,7 +173,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-course_follow-field_organization'
+  // Exported field_instance: 'entityform-course_follow-field_organization'.
   $field_instances['entityform-course_follow-field_organization'] = array(
     'bundle' => 'course_follow',
     'default_value' => NULL,
@@ -215,7 +215,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-course_follow-field_zip_code'
+  // Exported field_instance: 'entityform-course_follow-field_zip_code'.
   $field_instances['entityform-course_follow-field_zip_code'] = array(
     'bundle' => 'course_follow',
     'default_value' => NULL,
@@ -257,7 +257,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-course_request-field_course'
+  // Exported field_instance: 'entityform-course_request-field_course'.
   $field_instances['entityform-course_request-field_course'] = array(
     'bundle' => 'course_request',
     'default_value' => NULL,
@@ -322,7 +322,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-course_request-field_description_long'
+  // Exported field_instance:
+  // 'entityform-course_request-field_description_long'.
   $field_instances['entityform-course_request-field_description_long'] = array(
     'bundle' => 'course_request',
     'default_value' => NULL,
@@ -364,7 +365,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-course_request-field_email'
+  // Exported field_instance: 'entityform-course_request-field_email'.
   $field_instances['entityform-course_request-field_email'] = array(
     'bundle' => 'course_request',
     'default_value' => NULL,
@@ -418,7 +419,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-course_request-field_full_name'
+  // Exported field_instance: 'entityform-course_request-field_full_name'.
   $field_instances['entityform-course_request-field_full_name'] = array(
     'bundle' => 'course_request',
     'default_value' => NULL,
@@ -460,7 +461,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-course_request-field_job_title'
+  // Exported field_instance: 'entityform-course_request-field_job_title'.
   $field_instances['entityform-course_request-field_job_title'] = array(
     'bundle' => 'course_request',
     'default_value' => NULL,
@@ -502,7 +503,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-course_request-field_organization'
+  // Exported field_instance: 'entityform-course_request-field_organization'.
   $field_instances['entityform-course_request-field_organization'] = array(
     'bundle' => 'course_request',
     'default_value' => NULL,
@@ -544,7 +545,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-course_request-field_phone'
+  // Exported field_instance: 'entityform-course_request-field_phone'.
   $field_instances['entityform-course_request-field_phone'] = array(
     'bundle' => 'course_request',
     'default_value' => NULL,
@@ -586,7 +587,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_concentration'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_concentration'.
   $field_instances['entityform-emediation_competition_reg-field_concentration'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -646,7 +648,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_current_college'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_current_college'.
   $field_instances['entityform-emediation_competition_reg-field_current_college'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -706,7 +709,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_email'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_email'.
   $field_instances['entityform-emediation_competition_reg-field_email'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -760,7 +764,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_email_additional'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_email_additional'.
   $field_instances['entityform-emediation_competition_reg-field_email_additional'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -814,7 +819,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_experience'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_experience'.
   $field_instances['entityform-emediation_competition_reg-field_experience'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -874,7 +880,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_first_name'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_first_name'.
   $field_instances['entityform-emediation_competition_reg-field_first_name'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -934,7 +941,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_first_name_additional'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_first_name_additional'.
   $field_instances['entityform-emediation_competition_reg-field_first_name_additional'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -994,7 +1002,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_h_event_date'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_h_event_date'.
   $field_instances['entityform-emediation_competition_reg-field_h_event_date'] = array(
     'bundle' => 'emediation_competition_reg',
     'deleted' => 0,
@@ -1065,7 +1074,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_last_name'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_last_name'.
   $field_instances['entityform-emediation_competition_reg-field_last_name'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -1125,7 +1135,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_last_name_additional'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_last_name_additional'.
   $field_instances['entityform-emediation_competition_reg-field_last_name_additional'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -1185,7 +1196,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_mediator_or_disputant'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_mediator_or_disputant'.
   $field_instances['entityform-emediation_competition_reg-field_mediator_or_disputant'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -1237,7 +1249,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_reason'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_reason'.
   $field_instances['entityform-emediation_competition_reg-field_reason'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -1297,7 +1310,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_referenced_node'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_referenced_node'.
   $field_instances['entityform-emediation_competition_reg-field_referenced_node'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -1363,7 +1377,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_second_person_markup'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_second_person_markup'.
   $field_instances['entityform-emediation_competition_reg-field_second_person_markup'] = array(
     'bundle' => 'emediation_competition_reg',
     'deleted' => 0,
@@ -1408,7 +1423,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-emediation_competition_reg-field_type_of_student_emediation'
+  // Exported field_instance:
+  // 'entityform-emediation_competition_reg-field_type_of_student_emediation'.
   $field_instances['entityform-emediation_competition_reg-field_type_of_student_emediation'] = array(
     'bundle' => 'emediation_competition_reg',
     'default_value' => NULL,
@@ -1460,7 +1476,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_hcd_mail_list-field_email'
+  // Exported field_instance: 'entityform-join_hcd_mail_list-field_email'.
   $field_instances['entityform-join_hcd_mail_list-field_email'] = array(
     'bundle' => 'join_hcd_mail_list',
     'default_value' => NULL,
@@ -1496,7 +1512,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_hcd_mail_list-field_first_name'
+  // Exported field_instance: 'entityform-join_hcd_mail_list-field_first_name'.
   $field_instances['entityform-join_hcd_mail_list-field_first_name'] = array(
     'bundle' => 'join_hcd_mail_list',
     'default_value' => NULL,
@@ -1538,7 +1554,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_hcd_mail_list-field_hcd_topics'
+  // Exported field_instance: 'entityform-join_hcd_mail_list-field_hcd_topics'.
   $field_instances['entityform-join_hcd_mail_list-field_hcd_topics'] = array(
     'bundle' => 'join_hcd_mail_list',
     'default_value' => NULL,
@@ -1572,7 +1588,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_hcd_mail_list-field_last_name'
+  // Exported field_instance: 'entityform-join_hcd_mail_list-field_last_name'.
   $field_instances['entityform-join_hcd_mail_list-field_last_name'] = array(
     'bundle' => 'join_hcd_mail_list',
     'default_value' => NULL,
@@ -1614,7 +1630,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_address_line_1'
+  // Exported field_instance:
+  // 'entityform-join_the_ics_mailing_list-field_address_line_1'.
   $field_instances['entityform-join_the_ics_mailing_list-field_address_line_1'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => NULL,
@@ -1674,7 +1691,7 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_city'
+  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_city'.
   $field_instances['entityform-join_the_ics_mailing_list-field_city'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => NULL,
@@ -1734,7 +1751,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_company'
+  // Exported field_instance:
+  // 'entityform-join_the_ics_mailing_list-field_company'.
   $field_instances['entityform-join_the_ics_mailing_list-field_company'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => NULL,
@@ -1794,7 +1812,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_country'
+  // Exported field_instance:
+  // 'entityform-join_the_ics_mailing_list-field_country'.
   $field_instances['entityform-join_the_ics_mailing_list-field_country'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => NULL,
@@ -1854,7 +1873,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_email'
+  // Exported field_instance:
+  // 'entityform-join_the_ics_mailing_list-field_email'.
   $field_instances['entityform-join_the_ics_mailing_list-field_email'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => NULL,
@@ -1908,7 +1928,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_email_opt_in'
+  // Exported field_instance:
+  // 'entityform-join_the_ics_mailing_list-field_email_opt_in'.
   $field_instances['entityform-join_the_ics_mailing_list-field_email_opt_in'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => array(
@@ -1966,7 +1987,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_first_name'
+  // Exported field_instance:
+  // 'entityform-join_the_ics_mailing_list-field_first_name'.
   $field_instances['entityform-join_the_ics_mailing_list-field_first_name'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => NULL,
@@ -2026,7 +2048,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_job_title'
+  // Exported field_instance:
+  // 'entityform-join_the_ics_mailing_list-field_job_title'.
   $field_instances['entityform-join_the_ics_mailing_list-field_job_title'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => NULL,
@@ -2086,7 +2109,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_last_name'
+  // Exported field_instance:
+  // 'entityform-join_the_ics_mailing_list-field_last_name'.
   $field_instances['entityform-join_the_ics_mailing_list-field_last_name'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => NULL,
@@ -2146,7 +2170,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_phone'
+  // Exported field_instance:
+  // 'entityform-join_the_ics_mailing_list-field_phone'.
   $field_instances['entityform-join_the_ics_mailing_list-field_phone'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => NULL,
@@ -2206,7 +2231,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_state_province'
+  // Exported field_instance:
+  // 'entityform-join_the_ics_mailing_list-field_state_province'.
   $field_instances['entityform-join_the_ics_mailing_list-field_state_province'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => NULL,
@@ -2260,7 +2286,8 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_the_ics_mailing_list-field_zip_code'
+  // Exported field_instance:
+  // 'entityform-join_the_ics_mailing_list-field_zip_code'.
   $field_instances['entityform-join_the_ics_mailing_list-field_zip_code'] = array(
     'bundle' => 'join_the_ics_mailing_list',
     'default_value' => NULL,

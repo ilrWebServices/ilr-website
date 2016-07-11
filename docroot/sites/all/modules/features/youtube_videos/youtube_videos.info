@@ -37,4 +37,5 @@ features[variable][] = menu_parent_youtube_video
 features[variable][] = node_options_youtube_video
 features[variable][] = node_preview_youtube_video
 features[variable][] = node_submitted_youtube_video
+features[variable][] = pathauto_node_youtube_video_pattern
 project path = sites/all/modules/features

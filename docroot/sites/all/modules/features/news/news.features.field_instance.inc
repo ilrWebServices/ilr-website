@@ -10,7 +10,7 @@
 function news_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-news_item-body'
+  // Exported field_instance: 'node-news_item-body'.
   $field_instances['node-news_item-body'] = array(
     'bundle' => 'news_item',
     'default_value' => NULL,
@@ -66,7 +66,7 @@ function news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news_item-field_category_type'
+  // Exported field_instance: 'node-news_item-field_category_type'.
   $field_instances['node-news_item-field_category_type'] = array(
     'bundle' => 'news_item',
     'default_value' => NULL,
@@ -111,7 +111,7 @@ function news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news_item-field_description'
+  // Exported field_instance: 'node-news_item-field_description'.
   $field_instances['node-news_item-field_description'] = array(
     'bundle' => 'news_item',
     'default_value' => NULL,
@@ -171,7 +171,7 @@ function news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news_item-field_image'
+  // Exported field_instance: 'node-news_item-field_image'.
   $field_instances['node-news_item-field_image'] = array(
     'bundle' => 'news_item',
     'deleted' => 0,
@@ -262,7 +262,7 @@ function news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news_item-field_published_date'
+  // Exported field_instance: 'node-news_item-field_published_date'.
   $field_instances['node-news_item-field_published_date'] = array(
     'bundle' => 'news_item',
     'deleted' => 0,
@@ -278,6 +278,7 @@ function news_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 2,
@@ -328,7 +329,7 @@ function news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news_item-field_short_title'
+  // Exported field_instance: 'node-news_item-field_short_title'.
   $field_instances['node-news_item-field_short_title'] = array(
     'bundle' => 'news_item',
     'default_value' => NULL,
@@ -379,7 +380,7 @@ function news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news_item-field_tags'
+  // Exported field_instance: 'node-news_item-field_tags'.
   $field_instances['node-news_item-field_tags'] = array(
     'bundle' => 'news_item',
     'default_value' => NULL,
@@ -430,7 +431,7 @@ function news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news_item-field_website_url'
+  // Exported field_instance: 'node-news_item-field_website_url'.
   $field_instances['node-news_item-field_website_url'] = array(
     'bundle' => 'news_item',
     'default_value' => NULL,
@@ -467,6 +468,7 @@ function news_field_default_field_instances() {
     'label' => 'External URL',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -480,6 +482,7 @@ function news_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,

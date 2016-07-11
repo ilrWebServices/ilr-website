@@ -10,7 +10,7 @@
 function localist_block_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'bean-event_block-field_more_link'
+  // Exported field_instance: 'bean-event_block-field_more_link'.
   $field_instances['bean-event_block-field_more_link'] = array(
     'bundle' => 'event_block',
     'default_value' => NULL,
@@ -44,6 +44,7 @@ function localist_block_field_default_field_instances() {
     'label' => 'More Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'more-link',
         'configurable_title' => 0,
@@ -60,6 +61,7 @@ function localist_block_field_default_field_instances() {
         'insert_plugin' => '',
       ),
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,

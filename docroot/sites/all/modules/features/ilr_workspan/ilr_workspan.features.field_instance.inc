@@ -10,7 +10,7 @@
 function ilr_workspan_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-workspan-field_content'
+  // Exported field_instance: 'node-workspan-field_content'.
   $field_instances['node-workspan-field_content'] = array(
     'bundle' => 'workspan',
     'default_value' => NULL,
@@ -78,7 +78,7 @@ function ilr_workspan_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-workspan-field_file'
+  // Exported field_instance: 'node-workspan-field_file'.
   $field_instances['node-workspan-field_file'] = array(
     'bundle' => 'workspan',
     'deleted' => 0,
@@ -161,7 +161,7 @@ function ilr_workspan_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-workspan-field_headline'
+  // Exported field_instance: 'node-workspan-field_headline'.
   $field_instances['node-workspan-field_headline'] = array(
     'bundle' => 'workspan',
     'default_value' => NULL,
@@ -227,7 +227,7 @@ function ilr_workspan_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-workspan-field_published_date'
+  // Exported field_instance: 'node-workspan-field_published_date'.
   $field_instances['node-workspan-field_published_date'] = array(
     'bundle' => 'workspan',
     'deleted' => 0,
@@ -261,6 +261,7 @@ function ilr_workspan_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 5,
@@ -299,7 +300,7 @@ function ilr_workspan_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-workspan-field_tags'
+  // Exported field_instance: 'node-workspan-field_tags'.
   $field_instances['node-workspan-field_tags'] = array(
     'bundle' => 'workspan',
     'default_value' => array(
@@ -366,7 +367,7 @@ function ilr_workspan_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-workspan-field_thumbnail'
+  // Exported field_instance: 'node-workspan-field_thumbnail'.
   $field_instances['node-workspan-field_thumbnail'] = array(
     'bundle' => 'workspan',
     'deleted' => 0,

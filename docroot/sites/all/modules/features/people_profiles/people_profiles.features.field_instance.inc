@@ -10,7 +10,7 @@
 function people_profiles_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-people_profile-field_address_line_1'
+  // Exported field_instance: 'node-people_profile-field_address_line_1'.
   $field_instances['node-people_profile-field_address_line_1'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -70,7 +70,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ai_honors_awards'
+  // Exported field_instance: 'node-people_profile-field_ai_honors_awards'.
   $field_instances['node-people_profile-field_ai_honors_awards'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -124,7 +124,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ai_links'
+  // Exported field_instance: 'node-people_profile-field_ai_links'.
   $field_instances['node-people_profile-field_ai_links'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -183,7 +183,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ai_other_expertise'
+  // Exported field_instance: 'node-people_profile-field_ai_other_expertise'.
   $field_instances['node-people_profile-field_ai_other_expertise'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -237,7 +237,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ai_outreach_statement'
+  // Exported field_instance: 'node-people_profile-field_ai_outreach_statement'.
   $field_instances['node-people_profile-field_ai_outreach_statement'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -291,7 +291,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ai_overview'
+  // Exported field_instance: 'node-people_profile-field_ai_overview'.
   $field_instances['node-people_profile-field_ai_overview'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -345,7 +345,8 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ai_professional_activities'
+  // Exported field_instance:
+  // 'node-people_profile-field_ai_professional_activities'.
   $field_instances['node-people_profile-field_ai_professional_activities'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -399,7 +400,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ai_publications'
+  // Exported field_instance: 'node-people_profile-field_ai_publications'.
   $field_instances['node-people_profile-field_ai_publications'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -453,7 +454,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ai_research_statement'
+  // Exported field_instance: 'node-people_profile-field_ai_research_statement'.
   $field_instances['node-people_profile-field_ai_research_statement'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -509,7 +510,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ai_service_statement'
+  // Exported field_instance: 'node-people_profile-field_ai_service_statement'.
   $field_instances['node-people_profile-field_ai_service_statement'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -563,7 +564,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ai_teaching_statement'
+  // Exported field_instance: 'node-people_profile-field_ai_teaching_statement'.
   $field_instances['node-people_profile-field_ai_teaching_statement'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -617,7 +618,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_areas_of_expertise'
+  // Exported field_instance: 'node-people_profile-field_areas_of_expertise'.
   $field_instances['node-people_profile-field_areas_of_expertise'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -671,7 +672,8 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_display_in_faculty_lists'
+  // Exported field_instance:
+  // 'node-people_profile-field_display_in_faculty_lists'.
   $field_instances['node-people_profile-field_display_in_faculty_lists'] = array(
     'bundle' => 'people_profile',
     'default_value' => array(
@@ -720,7 +722,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_email'
+  // Exported field_instance: 'node-people_profile-field_email'.
   $field_instances['node-people_profile-field_email'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -777,7 +779,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_faculty_on_leave'
+  // Exported field_instance: 'node-people_profile-field_faculty_on_leave'.
   $field_instances['node-people_profile-field_faculty_on_leave'] = array(
     'bundle' => 'people_profile',
     'deleted' => 0,
@@ -830,7 +832,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_fax'
+  // Exported field_instance: 'node-people_profile-field_fax'.
   $field_instances['node-people_profile-field_fax'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -887,7 +889,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_first_name'
+  // Exported field_instance: 'node-people_profile-field_first_name'.
   $field_instances['node-people_profile-field_first_name'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -938,7 +940,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_ilrweb_vita_file'
+  // Exported field_instance: 'node-people_profile-field_ilrweb_vita_file'.
   $field_instances['node-people_profile-field_ilrweb_vita_file'] = array(
     'bundle' => 'people_profile',
     'deleted' => 0,
@@ -1014,7 +1016,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_last_name'
+  // Exported field_instance: 'node-people_profile-field_last_name'.
   $field_instances['node-people_profile-field_last_name'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -1065,7 +1067,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_local_address'
+  // Exported field_instance: 'node-people_profile-field_local_address'.
   $field_instances['node-people_profile-field_local_address'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -1125,7 +1127,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_netid'
+  // Exported field_instance: 'node-people_profile-field_netid'.
   $field_instances['node-people_profile-field_netid'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -1176,7 +1178,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_office_hours'
+  // Exported field_instance: 'node-people_profile-field_office_hours'.
   $field_instances['node-people_profile-field_office_hours'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -1230,7 +1232,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_phone'
+  // Exported field_instance: 'node-people_profile-field_phone'.
   $field_instances['node-people_profile-field_phone'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -1293,7 +1295,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_profile_department'
+  // Exported field_instance: 'node-people_profile-field_profile_department'.
   $field_instances['node-people_profile-field_profile_department'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -1341,7 +1343,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_profile_image'
+  // Exported field_instance: 'node-people_profile-field_profile_image'.
   $field_instances['node-people_profile-field_profile_image'] = array(
     'bundle' => 'people_profile',
     'deleted' => 0,
@@ -1426,7 +1428,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_profile_type'
+  // Exported field_instance: 'node-people_profile-field_profile_type'.
   $field_instances['node-people_profile-field_profile_type'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -1476,7 +1478,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_visibility_settings'
+  // Exported field_instance: 'node-people_profile-field_visibility_settings'.
   $field_instances['node-people_profile-field_visibility_settings'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,
@@ -1524,7 +1526,7 @@ function people_profiles_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-people_profile-field_working_title'
+  // Exported field_instance: 'node-people_profile-field_working_title'.
   $field_instances['node-people_profile-field_working_title'] = array(
     'bundle' => 'people_profile',
     'default_value' => NULL,

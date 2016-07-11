@@ -34,5 +34,6 @@ function ilr_workspan_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

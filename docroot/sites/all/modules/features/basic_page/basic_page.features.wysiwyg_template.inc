@@ -12,6 +12,7 @@ function basic_page_wysiwyg_template_default_templates() {
   $templates['faq'] = array(
     'title' => 'FAQ',
     'description' => 'Provides a simple FAQ starting template',
+    'weight' => 0,
     'fid' => 0,
     'body' => '<dl class=\'faq\'>
   <dt>Is this how I add an FAQ to the page?</dt>
@@ -20,7 +21,9 @@ function basic_page_wysiwyg_template_default_templates() {
   <dd>You can just copy and paste them within the wysiwyg for more.</dd>
 </dl>
 ',
+    'format' => NULL,
     'name' => 'faq',
+    'content_types' => array(),
   );
   return $templates;
 }

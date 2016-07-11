@@ -10,7 +10,7 @@
 function ilr_experience_reports_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-experience_report-field_blocks'
+  // Exported field_instance: 'node-experience_report-field_blocks'.
   $field_instances['node-experience_report-field_blocks'] = array(
     'bundle' => 'experience_report',
     'deleted' => 0,
@@ -60,7 +60,7 @@ function ilr_experience_reports_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_category_type'
+  // Exported field_instance: 'node-experience_report-field_category_type'.
   $field_instances['node-experience_report-field_category_type'] = array(
     'bundle' => 'experience_report',
     'default_value' => NULL,
@@ -110,7 +110,7 @@ function ilr_experience_reports_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_country'
+  // Exported field_instance: 'node-experience_report-field_country'.
   $field_instances['node-experience_report-field_country'] = array(
     'bundle' => 'experience_report',
     'default_value' => NULL,
@@ -170,7 +170,7 @@ function ilr_experience_reports_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_image'
+  // Exported field_instance: 'node-experience_report-field_image'.
   $field_instances['node-experience_report-field_image'] = array(
     'bundle' => 'experience_report',
     'deleted' => 0,
@@ -256,7 +256,8 @@ function ilr_experience_reports_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_para_main_page_content'
+  // Exported field_instance:
+  // 'node-experience_report-field_para_main_page_content'.
   $field_instances['node-experience_report-field_para_main_page_content'] = array(
     'bundle' => 'experience_report',
     'default_value' => NULL,
@@ -321,7 +322,7 @@ function ilr_experience_reports_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_program'
+  // Exported field_instance: 'node-experience_report-field_program'.
   $field_instances['node-experience_report-field_program'] = array(
     'bundle' => 'experience_report',
     'default_value' => NULL,
@@ -381,7 +382,7 @@ function ilr_experience_reports_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_tags'
+  // Exported field_instance: 'node-experience_report-field_tags'.
   $field_instances['node-experience_report-field_tags'] = array(
     'bundle' => 'experience_report',
     'default_value' => NULL,
@@ -433,7 +434,7 @@ function ilr_experience_reports_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_teaser'
+  // Exported field_instance: 'node-experience_report-field_teaser'.
   $field_instances['node-experience_report-field_teaser'] = array(
     'bundle' => 'experience_report',
     'default_value' => NULL,
@@ -493,7 +494,7 @@ function ilr_experience_reports_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_year_as_text'
+  // Exported field_instance: 'node-experience_report-field_year_as_text'.
   $field_instances['node-experience_report-field_year_as_text'] = array(
     'bundle' => 'experience_report',
     'default_value' => NULL,

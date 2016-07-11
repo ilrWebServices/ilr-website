@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function ilr_forms_students_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -42,7 +42,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_applicant_information|entityform|fex_student_application|default'] = $field_group;
+  $field_groups['group_applicant_information|entityform|fex_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -76,7 +76,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_applicant_information|entityform|fex_student_application|form'] = $field_group;
+  $field_groups['group_applicant_information|entityform|fex_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -110,7 +110,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_applicant_information|entityform|wisp_student_application|default'] = $field_group;
+  $field_groups['group_applicant_information|entityform|wisp_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -144,7 +144,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_applicant_information|entityform|wisp_student_application|form'] = $field_group;
+  $field_groups['group_applicant_information|entityform|wisp_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -181,7 +181,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_fex_opportunities|entityform|fex_wisp_sponsor_registration|default'] = $field_group;
+  $field_groups['group_fex_opportunities|entityform|fex_wisp_sponsor_registration|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -222,7 +222,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_fex_opportunities|entityform|fex_wisp_sponsor_registration|form'] = $field_group;
+  $field_groups['group_fex_opportunities|entityform|fex_wisp_sponsor_registration|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -253,7 +253,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_fex_wisp_sponsor_info|entityform|fex_wisp_sponsor_registration|default'] = $field_group;
+  $field_groups['group_fex_wisp_sponsor_info|entityform|fex_wisp_sponsor_registration|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -283,7 +283,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_fex_wisp_sponsor_info|entityform|fex_wisp_sponsor_registration|form'] = $field_group;
+  $field_groups['group_fex_wisp_sponsor_info|entityform|fex_wisp_sponsor_registration|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -316,7 +316,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_local_cornell_address|entityform|fex_student_application|default'] = $field_group;
+  $field_groups['group_local_cornell_address|entityform|fex_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -349,7 +349,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_local_cornell_address|entityform|fex_student_application|form'] = $field_group;
+  $field_groups['group_local_cornell_address|entityform|fex_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -382,7 +382,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_local_cornell_address|entityform|wisp_student_application|default'] = $field_group;
+  $field_groups['group_local_cornell_address|entityform|wisp_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -415,7 +415,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_local_cornell_address|entityform|wisp_student_application|form'] = $field_group;
+  $field_groups['group_local_cornell_address|entityform|wisp_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -449,7 +449,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_permanent_address|entityform|fex_student_application|default'] = $field_group;
+  $field_groups['group_permanent_address|entityform|fex_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -483,7 +483,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_permanent_address|entityform|fex_student_application|form'] = $field_group;
+  $field_groups['group_permanent_address|entityform|fex_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -517,7 +517,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_permanent_address|entityform|wisp_student_application|default'] = $field_group;
+  $field_groups['group_permanent_address|entityform|wisp_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -551,7 +551,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_permanent_address|entityform|wisp_student_application|form'] = $field_group;
+  $field_groups['group_permanent_address|entityform|wisp_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -582,7 +582,7 @@ function ilr_forms_students_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_preferred_fex_location|entityform|fex_student_application|default'] = $field_group;
+  $field_groups['group_preferred_fex_location|entityform|fex_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -616,7 +616,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_preferred_fex_location|entityform|fex_student_application|form'] = $field_group;
+  $field_groups['group_preferred_fex_location|entityform|fex_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -646,7 +646,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_preferred_wisp_location|entityform|wisp_student_application|default'] = $field_group;
+  $field_groups['group_preferred_wisp_location|entityform|wisp_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -679,7 +679,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_preferred_wisp_location|entityform|wisp_student_application|form'] = $field_group;
+  $field_groups['group_preferred_wisp_location|entityform|wisp_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -707,7 +707,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_program_information|entityform|fex_student_application|default'] = $field_group;
+  $field_groups['group_program_information|entityform|fex_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -735,7 +735,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_program_information|entityform|wisp_student_application|default'] = $field_group;
+  $field_groups['group_program_information|entityform|wisp_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -762,7 +762,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_resume|entityform|fex_student_application|default'] = $field_group;
+  $field_groups['group_resume|entityform|fex_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -790,7 +790,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_resume|entityform|fex_student_application|form'] = $field_group;
+  $field_groups['group_resume|entityform|fex_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -817,7 +817,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_resume|entityform|wisp_student_application|default'] = $field_group;
+  $field_groups['group_resume|entityform|wisp_student_application|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -845,7 +845,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_resume|entityform|wisp_student_application|form'] = $field_group;
+  $field_groups['group_resume|entityform|wisp_student_application|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -888,7 +888,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_supervisor_information|entityform|fex_wisp_sponsor_registration|default'] = $field_group;
+  $field_groups['group_supervisor_information|entityform|fex_wisp_sponsor_registration|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -931,7 +931,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_supervisor_information|entityform|fex_wisp_sponsor_registration|form'] = $field_group;
+  $field_groups['group_supervisor_information|entityform|fex_wisp_sponsor_registration|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -970,7 +970,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_wisp_opportunities|entityform|fex_wisp_sponsor_registration|default'] = $field_group;
+  $field_groups['group_wisp_opportunities|entityform|fex_wisp_sponsor_registration|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1014,7 +1014,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_wisp_opportunities|entityform|fex_wisp_sponsor_registration|form'] = $field_group;
+  $field_groups['group_wisp_opportunities|entityform|fex_wisp_sponsor_registration|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1055,7 +1055,7 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_your_information|entityform|fex_wisp_sponsor_registration|default'] = $field_group;
+  $field_groups['group_your_information|entityform|fex_wisp_sponsor_registration|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1096,7 +1096,22 @@ Specify preferred location (city / state). You also have the option to list an a
       'formatter' => 'open',
     ),
   );
-  $export['group_your_information|entityform|fex_wisp_sponsor_registration|form'] = $field_group;
+  $field_groups['group_your_information|entityform|fex_wisp_sponsor_registration|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Applicant Information');
+  t('FEX Opportunities');
+  t('Local (Cornell) Address');
+  t('Permanent Address');
+  t('Preferred FEX Location');
+  t('Preferred WISP Location');
+  t('Program Information');
+  t('Resume');
+  t('Sponsor Information');
+  t('Supervisor Information');
+  t('WISP Opportunities');
+  t('Your Information');
+
+  return $field_groups;
 }

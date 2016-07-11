@@ -10,7 +10,8 @@
 function ilr_forms_students_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_degree_as_text'
+  // Exported field_instance:
+  // 'entityform-alumni_assoc_board_interest-field_degree_as_text'.
   $field_instances['entityform-alumni_assoc_board_interest-field_degree_as_text'] = array(
     'bundle' => 'alumni_assoc_board_interest',
     'default_value' => NULL,
@@ -52,7 +53,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_email'
+  // Exported field_instance:
+  // 'entityform-alumni_assoc_board_interest-field_email'.
   $field_instances['entityform-alumni_assoc_board_interest-field_email'] = array(
     'bundle' => 'alumni_assoc_board_interest',
     'default_value' => NULL,
@@ -88,7 +90,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_first_name'
+  // Exported field_instance:
+  // 'entityform-alumni_assoc_board_interest-field_first_name'.
   $field_instances['entityform-alumni_assoc_board_interest-field_first_name'] = array(
     'bundle' => 'alumni_assoc_board_interest',
     'default_value' => NULL,
@@ -130,7 +133,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_h_school_year'
+  // Exported field_instance:
+  // 'entityform-alumni_assoc_board_interest-field_h_school_year'.
   $field_instances['entityform-alumni_assoc_board_interest-field_h_school_year'] = array(
     'bundle' => 'alumni_assoc_board_interest',
     'default_value' => NULL,
@@ -172,7 +176,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_last_name'
+  // Exported field_instance:
+  // 'entityform-alumni_assoc_board_interest-field_last_name'.
   $field_instances['entityform-alumni_assoc_board_interest-field_last_name'] = array(
     'bundle' => 'alumni_assoc_board_interest',
     'default_value' => NULL,
@@ -214,7 +219,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_phone'
+  // Exported field_instance:
+  // 'entityform-alumni_assoc_board_interest-field_phone'.
   $field_instances['entityform-alumni_assoc_board_interest-field_phone'] = array(
     'bundle' => 'alumni_assoc_board_interest',
     'default_value' => NULL,
@@ -256,7 +262,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_assoc_board_interest-field_year_as_text'
+  // Exported field_instance:
+  // 'entityform-alumni_assoc_board_interest-field_year_as_text'.
   $field_instances['entityform-alumni_assoc_board_interest-field_year_as_text'] = array(
     'bundle' => 'alumni_assoc_board_interest',
     'default_value' => NULL,
@@ -298,7 +305,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_events_for_students_reg-field_comments'
+  // Exported field_instance:
+  // 'entityform-alumni_events_for_students_reg-field_comments'.
   $field_instances['entityform-alumni_events_for_students_reg-field_comments'] = array(
     'bundle' => 'alumni_events_for_students_reg',
     'default_value' => NULL,
@@ -358,7 +366,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_events_for_students_reg-field_cornell_college'
+  // Exported field_instance:
+  // 'entityform-alumni_events_for_students_reg-field_cornell_college'.
   $field_instances['entityform-alumni_events_for_students_reg-field_cornell_college'] = array(
     'bundle' => 'alumni_events_for_students_reg',
     'default_value' => array(
@@ -416,7 +425,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_events_for_students_reg-field_email'
+  // Exported field_instance:
+  // 'entityform-alumni_events_for_students_reg-field_email'.
   $field_instances['entityform-alumni_events_for_students_reg-field_email'] = array(
     'bundle' => 'alumni_events_for_students_reg',
     'default_value' => NULL,
@@ -472,7 +482,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_events_for_students_reg-field_first_name'
+  // Exported field_instance:
+  // 'entityform-alumni_events_for_students_reg-field_first_name'.
   $field_instances['entityform-alumni_events_for_students_reg-field_first_name'] = array(
     'bundle' => 'alumni_events_for_students_reg',
     'default_value' => NULL,
@@ -534,7 +545,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_events_for_students_reg-field_h_event_date'
+  // Exported field_instance:
+  // 'entityform-alumni_events_for_students_reg-field_h_event_date'.
   $field_instances['entityform-alumni_events_for_students_reg-field_h_event_date'] = array(
     'bundle' => 'alumni_events_for_students_reg',
     'deleted' => 0,
@@ -606,7 +618,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_events_for_students_reg-field_last_name'
+  // Exported field_instance:
+  // 'entityform-alumni_events_for_students_reg-field_last_name'.
   $field_instances['entityform-alumni_events_for_students_reg-field_last_name'] = array(
     'bundle' => 'alumni_events_for_students_reg',
     'default_value' => NULL,
@@ -668,7 +681,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_events_for_students_reg-field_other_please_specify'
+  // Exported field_instance:
+  // 'entityform-alumni_events_for_students_reg-field_other_please_specify'.
   $field_instances['entityform-alumni_events_for_students_reg-field_other_please_specify'] = array(
     'bundle' => 'alumni_events_for_students_reg',
     'default_value' => NULL,
@@ -728,7 +742,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_events_for_students_reg-field_referenced_node'
+  // Exported field_instance:
+  // 'entityform-alumni_events_for_students_reg-field_referenced_node'.
   $field_instances['entityform-alumni_events_for_students_reg-field_referenced_node'] = array(
     'bundle' => 'alumni_events_for_students_reg',
     'default_value' => NULL,
@@ -794,7 +809,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_events_for_students_reg-field_student_id_number'
+  // Exported field_instance:
+  // 'entityform-alumni_events_for_students_reg-field_student_id_number'.
   $field_instances['entityform-alumni_events_for_students_reg-field_student_id_number'] = array(
     'bundle' => 'alumni_events_for_students_reg',
     'default_value' => NULL,
@@ -854,7 +870,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-alumni_events_for_students_reg-field_year_as_text'
+  // Exported field_instance:
+  // 'entityform-alumni_events_for_students_reg-field_year_as_text'.
   $field_instances['entityform-alumni_events_for_students_reg-field_year_as_text'] = array(
     'bundle' => 'alumni_events_for_students_reg',
     'default_value' => NULL,
@@ -914,7 +931,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-career_and_networking_panels-field_breakout_session'
+  // Exported field_instance:
+  // 'entityform-career_and_networking_panels-field_breakout_session'.
   $field_instances['entityform-career_and_networking_panels-field_breakout_session'] = array(
     'bundle' => 'career_and_networking_panels',
     'default_value' => NULL,
@@ -966,7 +984,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-career_and_networking_panels-field_email'
+  // Exported field_instance:
+  // 'entityform-career_and_networking_panels-field_email'.
   $field_instances['entityform-career_and_networking_panels-field_email'] = array(
     'bundle' => 'career_and_networking_panels',
     'default_value' => NULL,
@@ -1022,7 +1041,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-career_and_networking_panels-field_first_name'
+  // Exported field_instance:
+  // 'entityform-career_and_networking_panels-field_first_name'.
   $field_instances['entityform-career_and_networking_panels-field_first_name'] = array(
     'bundle' => 'career_and_networking_panels',
     'default_value' => NULL,
@@ -1084,7 +1104,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-career_and_networking_panels-field_h_event_date'
+  // Exported field_instance:
+  // 'entityform-career_and_networking_panels-field_h_event_date'.
   $field_instances['entityform-career_and_networking_panels-field_h_event_date'] = array(
     'bundle' => 'career_and_networking_panels',
     'deleted' => 0,
@@ -1156,7 +1177,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-career_and_networking_panels-field_last_name'
+  // Exported field_instance:
+  // 'entityform-career_and_networking_panels-field_last_name'.
   $field_instances['entityform-career_and_networking_panels-field_last_name'] = array(
     'bundle' => 'career_and_networking_panels',
     'default_value' => NULL,
@@ -1218,7 +1240,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-career_and_networking_panels-field_referenced_node'
+  // Exported field_instance:
+  // 'entityform-career_and_networking_panels-field_referenced_node'.
   $field_instances['entityform-career_and_networking_panels-field_referenced_node'] = array(
     'bundle' => 'career_and_networking_panels',
     'default_value' => NULL,
@@ -1284,7 +1307,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-career_and_networking_panels-field_year_as_list_text'
+  // Exported field_instance:
+  // 'entityform-career_and_networking_panels-field_year_as_list_text'.
   $field_instances['entityform-career_and_networking_panels-field_year_as_list_text'] = array(
     'bundle' => 'career_and_networking_panels',
     'default_value' => NULL,
@@ -1338,7 +1362,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-career_and_networking_panels-field_yes_no'
+  // Exported field_instance:
+  // 'entityform-career_and_networking_panels-field_yes_no'.
   $field_instances['entityform-career_and_networking_panels-field_yes_no'] = array(
     'bundle' => 'career_and_networking_panels',
     'default_value' => NULL,
@@ -1390,7 +1415,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-career_and_networking_panels-field_yes_no_2'
+  // Exported field_instance:
+  // 'entityform-career_and_networking_panels-field_yes_no_2'.
   $field_instances['entityform-career_and_networking_panels-field_yes_no_2'] = array(
     'bundle' => 'career_and_networking_panels',
     'default_value' => NULL,
@@ -1442,7 +1468,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_address_line_1'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_address_line_1'.
   $field_instances['entityform-check_your_eligibility_milr-field_address_line_1'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -1502,7 +1529,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_city'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_city'.
   $field_instances['entityform-check_your_eligibility_milr-field_city'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -1562,7 +1590,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_company'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_company'.
   $field_instances['entityform-check_your_eligibility_milr-field_company'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -1622,7 +1651,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_country'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_country'.
   $field_instances['entityform-check_your_eligibility_milr-field_country'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -1682,7 +1712,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_email'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_email'.
   $field_instances['entityform-check_your_eligibility_milr-field_email'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -1736,7 +1767,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_first_name'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_first_name'.
   $field_instances['entityform-check_your_eligibility_milr-field_first_name'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -1796,7 +1828,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_how_heard_milr_check_elig'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_how_heard_milr_check_elig'.
   $field_instances['entityform-check_your_eligibility_milr-field_how_heard_milr_check_elig'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -1848,7 +1881,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_how_heard_other'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_how_heard_other'.
   $field_instances['entityform-check_your_eligibility_milr-field_how_heard_other'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -1908,7 +1942,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_last_name'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_last_name'.
   $field_instances['entityform-check_your_eligibility_milr-field_last_name'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -1968,7 +2003,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_state_province'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_state_province'.
   $field_instances['entityform-check_your_eligibility_milr-field_state_province'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -2022,7 +2058,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_upload_your_resume_or_cv'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_upload_your_resume_or_cv'.
   $field_instances['entityform-check_your_eligibility_milr-field_upload_your_resume_or_cv'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'deleted' => 0,
@@ -2099,7 +2136,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_year_as_list_text'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_year_as_list_text'.
   $field_instances['entityform-check_your_eligibility_milr-field_year_as_list_text'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -2153,7 +2191,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_years_full_time_work_exp2'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_years_full_time_work_exp2'.
   $field_instances['entityform-check_your_eligibility_milr-field_years_full_time_work_exp2'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -2207,7 +2246,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_yes_no'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_yes_no'.
   $field_instances['entityform-check_your_eligibility_milr-field_yes_no'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -2259,7 +2299,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-check_your_eligibility_milr-field_zip_code'
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_zip_code'.
   $field_instances['entityform-check_your_eligibility_milr-field_zip_code'] = array(
     'bundle' => 'check_your_eligibility_milr',
     'default_value' => NULL,
@@ -2319,7 +2360,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-conversations_alumni_finance-field_comments'
+  // Exported field_instance:
+  // 'entityform-conversations_alumni_finance-field_comments'.
   $field_instances['entityform-conversations_alumni_finance-field_comments'] = array(
     'bundle' => 'conversations_alumni_finance',
     'default_value' => NULL,
@@ -2361,7 +2403,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-conversations_alumni_finance-field_email'
+  // Exported field_instance:
+  // 'entityform-conversations_alumni_finance-field_email'.
   $field_instances['entityform-conversations_alumni_finance-field_email'] = array(
     'bundle' => 'conversations_alumni_finance',
     'default_value' => NULL,
@@ -2397,7 +2440,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-conversations_alumni_finance-field_first_name'
+  // Exported field_instance:
+  // 'entityform-conversations_alumni_finance-field_first_name'.
   $field_instances['entityform-conversations_alumni_finance-field_first_name'] = array(
     'bundle' => 'conversations_alumni_finance',
     'default_value' => NULL,
@@ -2439,7 +2483,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-conversations_alumni_finance-field_last_name'
+  // Exported field_instance:
+  // 'entityform-conversations_alumni_finance-field_last_name'.
   $field_instances['entityform-conversations_alumni_finance-field_last_name'] = array(
     'bundle' => 'conversations_alumni_finance',
     'default_value' => NULL,
@@ -2481,7 +2526,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-conversations_alumni_finance-field_other_please_specify'
+  // Exported field_instance:
+  // 'entityform-conversations_alumni_finance-field_other_please_specify'.
   $field_instances['entityform-conversations_alumni_finance-field_other_please_specify'] = array(
     'bundle' => 'conversations_alumni_finance',
     'default_value' => NULL,
@@ -2523,7 +2569,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-conversations_alumni_finance-field_school_or_college'
+  // Exported field_instance:
+  // 'entityform-conversations_alumni_finance-field_school_or_college'.
   $field_instances['entityform-conversations_alumni_finance-field_school_or_college'] = array(
     'bundle' => 'conversations_alumni_finance',
     'default_value' => NULL,
@@ -2559,7 +2606,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-conversations_alumni_finance-field_student_id_number'
+  // Exported field_instance:
+  // 'entityform-conversations_alumni_finance-field_student_id_number'.
   $field_instances['entityform-conversations_alumni_finance-field_student_id_number'] = array(
     'bundle' => 'conversations_alumni_finance',
     'default_value' => NULL,
@@ -2601,7 +2649,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-conversations_alumni_finance-field_year_as_text'
+  // Exported field_instance:
+  // 'entityform-conversations_alumni_finance-field_year_as_text'.
   $field_instances['entityform-conversations_alumni_finance-field_year_as_text'] = array(
     'bundle' => 'conversations_alumni_finance',
     'default_value' => NULL,
@@ -2643,7 +2692,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_address_line_1'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_address_line_1'.
   $field_instances['entityform-fex_student_application-field_address_line_1'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -2703,7 +2753,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_address_line_1_additional'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_address_line_1_additional'.
   $field_instances['entityform-fex_student_application-field_address_line_1_additional'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -2763,7 +2814,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_address_line_2'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_address_line_2'.
   $field_instances['entityform-fex_student_application-field_address_line_2'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -2823,7 +2875,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_address_line_2_additional'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_address_line_2_additional'.
   $field_instances['entityform-fex_student_application-field_address_line_2_additional'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -2883,7 +2936,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_city'
+  // Exported field_instance: 'entityform-fex_student_application-field_city'.
   $field_instances['entityform-fex_student_application-field_city'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -2943,7 +2996,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_city_additional'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_city_additional'.
   $field_instances['entityform-fex_student_application-field_city_additional'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3003,7 +3057,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_city_additional_2'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_city_additional_2'.
   $field_instances['entityform-fex_student_application-field_city_additional_2'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3063,7 +3118,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_city_additional_3'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_city_additional_3'.
   $field_instances['entityform-fex_student_application-field_city_additional_3'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3123,7 +3179,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_country'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_country'.
   $field_instances['entityform-fex_student_application-field_country'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => array(
@@ -3187,7 +3244,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_fexwisp_cert'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_fexwisp_cert'.
   $field_instances['entityform-fex_student_application-field_fexwisp_cert'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => array(
@@ -3242,7 +3300,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_first_name'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_first_name'.
   $field_instances['entityform-fex_student_application-field_first_name'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3304,7 +3363,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_first_name_additional'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_first_name_additional'.
   $field_instances['entityform-fex_student_application-field_first_name_additional'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3364,7 +3424,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_h_program'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_h_program'.
   $field_instances['entityform-fex_student_application-field_h_program'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3424,7 +3485,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_h_school_year'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_h_school_year'.
   $field_instances['entityform-fex_student_application-field_h_school_year'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3484,7 +3546,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_last_name'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_last_name'.
   $field_instances['entityform-fex_student_application-field_last_name'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3546,7 +3609,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_netid'
+  // Exported field_instance: 'entityform-fex_student_application-field_netid'.
   $field_instances['entityform-fex_student_application-field_netid'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3608,7 +3671,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_phone'
+  // Exported field_instance: 'entityform-fex_student_application-field_phone'.
   $field_instances['entityform-fex_student_application-field_phone'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3668,7 +3731,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_phone_additional'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_phone_additional'.
   $field_instances['entityform-fex_student_application-field_phone_additional'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3728,7 +3792,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_state_province'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_state_province'.
   $field_instances['entityform-fex_student_application-field_state_province'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3782,7 +3847,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_state_province_additional'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_state_province_additional'.
   $field_instances['entityform-fex_student_application-field_state_province_additional'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3836,7 +3902,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_state_province_addl_2'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_state_province_addl_2'.
   $field_instances['entityform-fex_student_application-field_state_province_addl_2'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3890,7 +3957,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_state_province_addl_3'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_state_province_addl_3'.
   $field_instances['entityform-fex_student_application-field_state_province_addl_3'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -3944,7 +4012,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_student_id_number'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_student_id_number'.
   $field_instances['entityform-fex_student_application-field_student_id_number'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -4001,7 +4070,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_upload_your_resume_or_cv'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_upload_your_resume_or_cv'.
   $field_instances['entityform-fex_student_application-field_upload_your_resume_or_cv'] = array(
     'bundle' => 'fex_student_application',
     'deleted' => 0,
@@ -4078,7 +4148,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_year_fr_soph_jr_sr_milr'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_year_fr_soph_jr_sr_milr'.
   $field_instances['entityform-fex_student_application-field_year_fr_soph_jr_sr_milr'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => array(
@@ -4133,7 +4204,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_zip_code'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_zip_code'.
   $field_instances['entityform-fex_student_application-field_zip_code'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -4193,7 +4265,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_student_application-field_zip_postal_code_additional'
+  // Exported field_instance:
+  // 'entityform-fex_student_application-field_zip_postal_code_additional'.
   $field_instances['entityform-fex_student_application-field_zip_postal_code_additional'] = array(
     'bundle' => 'fex_student_application',
     'default_value' => NULL,
@@ -4253,7 +4326,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_activities'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_activities'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_activities'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4313,7 +4387,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_address_line_1'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_address_line_1'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_address_line_1'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4373,7 +4448,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_address_line_1_additional'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_address_line_1_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_address_line_1_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4433,7 +4509,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_address_line_2'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_address_line_2'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_address_line_2'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4486,7 +4563,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_address_line_2_additional'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_address_line_2_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_address_line_2_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4546,7 +4624,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_alum'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_alum'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_alum'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4598,7 +4677,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_alum_additional'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_alum_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_alum_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4650,7 +4730,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_career_field_fex'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_career_field_fex'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_career_field_fex'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4704,7 +4785,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_career_field_wisp'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_career_field_wisp'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_career_field_wisp'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4758,7 +4840,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_city'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_city'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_city'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4818,7 +4901,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_city_additional'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_city_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_city_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4878,7 +4962,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_city_additional_2'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_city_additional_2'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_city_additional_2'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4938,7 +5023,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_city_additional_3'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_city_additional_3'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_city_additional_3'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -4998,7 +5084,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_cornell_college'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_cornell_college'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_cornell_college'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => array(
@@ -5056,7 +5143,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_cornell_college_additional'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_cornell_college_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_cornell_college_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => array(
@@ -5114,7 +5202,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_degree_ba_masters_oth_addl'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_degree_ba_masters_oth_addl'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_degree_ba_masters_oth_addl'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -5166,7 +5255,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_degree_ba_masters_other'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_degree_ba_masters_other'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_degree_ba_masters_other'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -5218,7 +5308,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_description_long'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_description_long'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_description_long'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -5278,7 +5369,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_email'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_email'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_email'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -5332,7 +5424,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_email_additional'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_email_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_email_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -5386,7 +5479,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_fex_constraints_markup'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_fex_constraints_markup'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_fex_constraints_markup'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'deleted' => 0,
@@ -5428,7 +5522,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_fex_dates'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_fex_dates'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_fex_dates'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -5488,7 +5583,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_fex_dates_constraints'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_fex_dates_constraints'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_fex_dates_constraints'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -5548,7 +5644,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_fex_dates_markup'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_fex_dates_markup'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_fex_dates_markup'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'deleted' => 0,
@@ -5590,7 +5687,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_fex_markup_if_chosen'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_fex_markup_if_chosen'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_fex_markup_if_chosen'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'deleted' => 0,
@@ -5632,7 +5730,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_fex_markup_if_not_chosen'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_fex_markup_if_not_chosen'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_fex_markup_if_not_chosen'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'deleted' => 0,
@@ -5674,7 +5773,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_fex_number_of_students'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_fex_number_of_students'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_fex_number_of_students'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -5728,7 +5828,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_fex_same_day'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_fex_same_day'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_fex_same_day'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -5780,7 +5881,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_fex_upperclass_students'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_fex_upperclass_students'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_fex_upperclass_students'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -5832,7 +5934,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_fex_wisp_opportunity_type'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_fex_wisp_opportunity_type'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_fex_wisp_opportunity_type'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -5884,7 +5987,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_first_name'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_first_name'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_first_name'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -5944,7 +6048,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_first_name_additional'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_first_name_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_first_name_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6004,7 +6109,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_h_school_year'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_h_school_year'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_h_school_year'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6057,7 +6163,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_is_address_the_same'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_is_address_the_same'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_is_address_the_same'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6106,7 +6213,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_job_title'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_job_title'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_job_title'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6166,7 +6274,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_job_title_additional'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_job_title_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_job_title_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6226,7 +6335,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_last_name'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_last_name'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_last_name'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6286,7 +6396,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_last_name_additional'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_last_name_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_last_name_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6346,7 +6457,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_organization'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_organization'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_organization'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6406,7 +6518,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_other_career_field_fex_'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_other_career_field_fex_'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_other_career_field_fex_'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6466,7 +6579,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_other_career_field_wisp_'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_other_career_field_wisp_'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_other_career_field_wisp_'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6526,7 +6640,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_paid'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_paid'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_paid'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6577,7 +6692,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_phone'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_phone'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_phone'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6637,7 +6753,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_phone_additional'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_phone_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_phone_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6697,7 +6814,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_qualifications'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_qualifications'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_qualifications'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6757,7 +6875,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_qualifications_markup'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_qualifications_markup'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_qualifications_markup'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'deleted' => 0,
@@ -6799,7 +6918,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_remote_wisp'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_remote_wisp'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_remote_wisp'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6851,7 +6971,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_responsibility'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_responsibility'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_responsibility'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6911,7 +7032,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_salary'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_salary'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_salary'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -6971,7 +7093,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_state_province'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_state_province'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_state_province'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -7025,7 +7148,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_state_province_additional'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_state_province_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_state_province_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -7079,7 +7203,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_state_province_addl_2'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_state_province_addl_2'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_state_province_addl_2'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -7133,7 +7258,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_state_province_addl_3'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_state_province_addl_3'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_state_province_addl_3'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -7187,7 +7313,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_wisp_constraints_markup'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_wisp_constraints_markup'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_wisp_constraints_markup'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'deleted' => 0,
@@ -7229,7 +7356,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_wisp_dates'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_wisp_dates'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_wisp_dates'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -7289,7 +7417,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_wisp_dates_constraints'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_wisp_dates_constraints'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_wisp_dates_constraints'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -7349,7 +7478,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_wisp_dates_markup'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_wisp_dates_markup'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_wisp_dates_markup'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'deleted' => 0,
@@ -7391,7 +7521,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_wisp_markup_if_chosen'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_wisp_markup_if_chosen'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_wisp_markup_if_chosen'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'deleted' => 0,
@@ -7433,7 +7564,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_wisp_markup_if_not_chosen'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_wisp_markup_if_not_chosen'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_wisp_markup_if_not_chosen'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'deleted' => 0,
@@ -7475,7 +7607,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_wisp_number_of_students'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_wisp_number_of_students'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_wisp_number_of_students'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -7529,7 +7662,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_year_as_list_text'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_year_as_list_text'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_year_as_list_text'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -7583,7 +7717,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_year_as_list_text_2'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_year_as_list_text_2'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_year_as_list_text_2'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -7637,7 +7772,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_yes_no'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_yes_no'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_yes_no'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -7689,7 +7825,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_zip_code'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_zip_code'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_zip_code'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -7749,7 +7886,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-fex_wisp_sponsor_registration-field_zip_postal_code_additional'
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_zip_postal_code_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_zip_postal_code_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
@@ -7809,7 +7947,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-graduate_programs_inquiry-field_comments'
+  // Exported field_instance:
+  // 'entityform-graduate_programs_inquiry-field_comments'.
   $field_instances['entityform-graduate_programs_inquiry-field_comments'] = array(
     'bundle' => 'graduate_programs_inquiry',
     'default_value' => NULL,
@@ -7869,7 +8008,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-graduate_programs_inquiry-field_degree_all_grad_options'
+  // Exported field_instance:
+  // 'entityform-graduate_programs_inquiry-field_degree_all_grad_options'.
   $field_instances['entityform-graduate_programs_inquiry-field_degree_all_grad_options'] = array(
     'bundle' => 'graduate_programs_inquiry',
     'default_value' => NULL,
@@ -7923,7 +8063,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-graduate_programs_inquiry-field_email'
+  // Exported field_instance:
+  // 'entityform-graduate_programs_inquiry-field_email'.
   $field_instances['entityform-graduate_programs_inquiry-field_email'] = array(
     'bundle' => 'graduate_programs_inquiry',
     'default_value' => NULL,
@@ -7977,7 +8118,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-graduate_programs_inquiry-field_entry_date_markup'
+  // Exported field_instance:
+  // 'entityform-graduate_programs_inquiry-field_entry_date_markup'.
   $field_instances['entityform-graduate_programs_inquiry-field_entry_date_markup'] = array(
     'bundle' => 'graduate_programs_inquiry',
     'deleted' => 0,
@@ -8022,7 +8164,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-graduate_programs_inquiry-field_first_name'
+  // Exported field_instance:
+  // 'entityform-graduate_programs_inquiry-field_first_name'.
   $field_instances['entityform-graduate_programs_inquiry-field_first_name'] = array(
     'bundle' => 'graduate_programs_inquiry',
     'default_value' => NULL,
@@ -8082,7 +8225,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-graduate_programs_inquiry-field_last_name'
+  // Exported field_instance:
+  // 'entityform-graduate_programs_inquiry-field_last_name'.
   $field_instances['entityform-graduate_programs_inquiry-field_last_name'] = array(
     'bundle' => 'graduate_programs_inquiry',
     'default_value' => NULL,
@@ -8142,7 +8286,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-graduate_programs_inquiry-field_semester'
+  // Exported field_instance:
+  // 'entityform-graduate_programs_inquiry-field_semester'.
   $field_instances['entityform-graduate_programs_inquiry-field_semester'] = array(
     'bundle' => 'graduate_programs_inquiry',
     'default_value' => NULL,
@@ -8194,7 +8339,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-graduate_programs_inquiry-field_year_as_list_text'
+  // Exported field_instance:
+  // 'entityform-graduate_programs_inquiry-field_year_as_list_text'.
   $field_instances['entityform-graduate_programs_inquiry-field_year_as_list_text'] = array(
     'bundle' => 'graduate_programs_inquiry',
     'default_value' => NULL,
@@ -8248,7 +8394,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_mps_nyc_open_house_rsvp-field_email'
+  // Exported field_instance:
+  // 'entityform-ilr_mps_nyc_open_house_rsvp-field_email'.
   $field_instances['entityform-ilr_mps_nyc_open_house_rsvp-field_email'] = array(
     'bundle' => 'ilr_mps_nyc_open_house_rsvp',
     'default_value' => NULL,
@@ -8302,7 +8449,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_mps_nyc_open_house_rsvp-field_employer'
+  // Exported field_instance:
+  // 'entityform-ilr_mps_nyc_open_house_rsvp-field_employer'.
   $field_instances['entityform-ilr_mps_nyc_open_house_rsvp-field_employer'] = array(
     'bundle' => 'ilr_mps_nyc_open_house_rsvp',
     'default_value' => NULL,
@@ -8362,7 +8510,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_mps_nyc_open_house_rsvp-field_first_name'
+  // Exported field_instance:
+  // 'entityform-ilr_mps_nyc_open_house_rsvp-field_first_name'.
   $field_instances['entityform-ilr_mps_nyc_open_house_rsvp-field_first_name'] = array(
     'bundle' => 'ilr_mps_nyc_open_house_rsvp',
     'default_value' => NULL,
@@ -8422,7 +8571,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_mps_nyc_open_house_rsvp-field_h_event_date'
+  // Exported field_instance:
+  // 'entityform-ilr_mps_nyc_open_house_rsvp-field_h_event_date'.
   $field_instances['entityform-ilr_mps_nyc_open_house_rsvp-field_h_event_date'] = array(
     'bundle' => 'ilr_mps_nyc_open_house_rsvp',
     'deleted' => 0,
@@ -8494,7 +8644,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_mps_nyc_open_house_rsvp-field_job_title'
+  // Exported field_instance:
+  // 'entityform-ilr_mps_nyc_open_house_rsvp-field_job_title'.
   $field_instances['entityform-ilr_mps_nyc_open_house_rsvp-field_job_title'] = array(
     'bundle' => 'ilr_mps_nyc_open_house_rsvp',
     'default_value' => NULL,
@@ -8554,7 +8705,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_mps_nyc_open_house_rsvp-field_last_name'
+  // Exported field_instance:
+  // 'entityform-ilr_mps_nyc_open_house_rsvp-field_last_name'.
   $field_instances['entityform-ilr_mps_nyc_open_house_rsvp-field_last_name'] = array(
     'bundle' => 'ilr_mps_nyc_open_house_rsvp',
     'default_value' => NULL,
@@ -8614,7 +8766,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_mps_nyc_open_house_rsvp-field_referenced_node'
+  // Exported field_instance:
+  // 'entityform-ilr_mps_nyc_open_house_rsvp-field_referenced_node'.
   $field_instances['entityform-ilr_mps_nyc_open_house_rsvp-field_referenced_node'] = array(
     'bundle' => 'ilr_mps_nyc_open_house_rsvp',
     'default_value' => NULL,
@@ -8680,7 +8833,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_reception_parent_orientation-field_comments'
+  // Exported field_instance:
+  // 'entityform-ilr_reception_parent_orientation-field_comments'.
   $field_instances['entityform-ilr_reception_parent_orientation-field_comments'] = array(
     'bundle' => 'ilr_reception_parent_orientation',
     'default_value' => NULL,
@@ -8740,7 +8894,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_reception_parent_orientation-field_count_as_text'
+  // Exported field_instance:
+  // 'entityform-ilr_reception_parent_orientation-field_count_as_text'.
   $field_instances['entityform-ilr_reception_parent_orientation-field_count_as_text'] = array(
     'bundle' => 'ilr_reception_parent_orientation',
     'default_value' => NULL,
@@ -8800,7 +8955,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_reception_parent_orientation-field_email'
+  // Exported field_instance:
+  // 'entityform-ilr_reception_parent_orientation-field_email'.
   $field_instances['entityform-ilr_reception_parent_orientation-field_email'] = array(
     'bundle' => 'ilr_reception_parent_orientation',
     'default_value' => NULL,
@@ -8854,7 +9010,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_reception_parent_orientation-field_first_name'
+  // Exported field_instance:
+  // 'entityform-ilr_reception_parent_orientation-field_first_name'.
   $field_instances['entityform-ilr_reception_parent_orientation-field_first_name'] = array(
     'bundle' => 'ilr_reception_parent_orientation',
     'default_value' => NULL,
@@ -8914,7 +9071,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_reception_parent_orientation-field_first_name_additional'
+  // Exported field_instance:
+  // 'entityform-ilr_reception_parent_orientation-field_first_name_additional'.
   $field_instances['entityform-ilr_reception_parent_orientation-field_first_name_additional'] = array(
     'bundle' => 'ilr_reception_parent_orientation',
     'default_value' => NULL,
@@ -8974,7 +9132,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_reception_parent_orientation-field_first_name_additional_2'
+  // Exported field_instance:
+  // 'entityform-ilr_reception_parent_orientation-field_first_name_additional_2'.
   $field_instances['entityform-ilr_reception_parent_orientation-field_first_name_additional_2'] = array(
     'bundle' => 'ilr_reception_parent_orientation',
     'default_value' => NULL,
@@ -9034,7 +9193,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_reception_parent_orientation-field_h_event_date'
+  // Exported field_instance:
+  // 'entityform-ilr_reception_parent_orientation-field_h_event_date'.
   $field_instances['entityform-ilr_reception_parent_orientation-field_h_event_date'] = array(
     'bundle' => 'ilr_reception_parent_orientation',
     'deleted' => 0,
@@ -9106,7 +9266,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_reception_parent_orientation-field_h_school_year'
+  // Exported field_instance:
+  // 'entityform-ilr_reception_parent_orientation-field_h_school_year'.
   $field_instances['entityform-ilr_reception_parent_orientation-field_h_school_year'] = array(
     'bundle' => 'ilr_reception_parent_orientation',
     'default_value' => NULL,
@@ -9163,7 +9324,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_reception_parent_orientation-field_last_name'
+  // Exported field_instance:
+  // 'entityform-ilr_reception_parent_orientation-field_last_name'.
   $field_instances['entityform-ilr_reception_parent_orientation-field_last_name'] = array(
     'bundle' => 'ilr_reception_parent_orientation',
     'default_value' => NULL,
@@ -9223,7 +9385,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_reception_parent_orientation-field_last_name_additional'
+  // Exported field_instance:
+  // 'entityform-ilr_reception_parent_orientation-field_last_name_additional'.
   $field_instances['entityform-ilr_reception_parent_orientation-field_last_name_additional'] = array(
     'bundle' => 'ilr_reception_parent_orientation',
     'default_value' => NULL,
@@ -9283,7 +9446,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_reception_parent_orientation-field_last_name_additional_2'
+  // Exported field_instance:
+  // 'entityform-ilr_reception_parent_orientation-field_last_name_additional_2'.
   $field_instances['entityform-ilr_reception_parent_orientation-field_last_name_additional_2'] = array(
     'bundle' => 'ilr_reception_parent_orientation',
     'default_value' => NULL,
@@ -9343,7 +9507,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-ilr_reception_parent_orientation-field_referenced_node'
+  // Exported field_instance:
+  // 'entityform-ilr_reception_parent_orientation-field_referenced_node'.
   $field_instances['entityform-ilr_reception_parent_orientation-field_referenced_node'] = array(
     'bundle' => 'ilr_reception_parent_orientation',
     'default_value' => NULL,
@@ -9409,7 +9574,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-keith_strudler_lecture-field_email'
+  // Exported field_instance: 'entityform-keith_strudler_lecture-field_email'.
   $field_instances['entityform-keith_strudler_lecture-field_email'] = array(
     'bundle' => 'keith_strudler_lecture',
     'default_value' => NULL,
@@ -9465,7 +9630,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-keith_strudler_lecture-field_first_name'
+  // Exported field_instance:
+  // 'entityform-keith_strudler_lecture-field_first_name'.
   $field_instances['entityform-keith_strudler_lecture-field_first_name'] = array(
     'bundle' => 'keith_strudler_lecture',
     'default_value' => NULL,
@@ -9527,7 +9693,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-keith_strudler_lecture-field_h_event_date'
+  // Exported field_instance:
+  // 'entityform-keith_strudler_lecture-field_h_event_date'.
   $field_instances['entityform-keith_strudler_lecture-field_h_event_date'] = array(
     'bundle' => 'keith_strudler_lecture',
     'deleted' => 0,
@@ -9598,7 +9765,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-keith_strudler_lecture-field_last_name'
+  // Exported field_instance:
+  // 'entityform-keith_strudler_lecture-field_last_name'.
   $field_instances['entityform-keith_strudler_lecture-field_last_name'] = array(
     'bundle' => 'keith_strudler_lecture',
     'default_value' => NULL,
@@ -9660,7 +9828,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-keith_strudler_lecture-field_referenced_node'
+  // Exported field_instance:
+  // 'entityform-keith_strudler_lecture-field_referenced_node'.
   $field_instances['entityform-keith_strudler_lecture-field_referenced_node'] = array(
     'bundle' => 'keith_strudler_lecture',
     'default_value' => NULL,
@@ -9726,7 +9895,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-keith_strudler_lecture-field_student_id_number'
+  // Exported field_instance:
+  // 'entityform-keith_strudler_lecture-field_student_id_number'.
   $field_instances['entityform-keith_strudler_lecture-field_student_id_number'] = array(
     'bundle' => 'keith_strudler_lecture',
     'default_value' => NULL,
@@ -9786,7 +9956,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-keith_strudler_lecture-field_year_as_text'
+  // Exported field_instance:
+  // 'entityform-keith_strudler_lecture-field_year_as_text'.
   $field_instances['entityform-keith_strudler_lecture-field_year_as_text'] = array(
     'bundle' => 'keith_strudler_lecture',
     'default_value' => NULL,
@@ -9846,7 +10017,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-mlb_today_with_rob_manfred-field_email'
+  // Exported field_instance:
+  // 'entityform-mlb_today_with_rob_manfred-field_email'.
   $field_instances['entityform-mlb_today_with_rob_manfred-field_email'] = array(
     'bundle' => 'mlb_today_with_rob_manfred',
     'default_value' => NULL,
@@ -9911,7 +10083,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-mlb_today_with_rob_manfred-field_full_name'
+  // Exported field_instance:
+  // 'entityform-mlb_today_with_rob_manfred-field_full_name'.
   $field_instances['entityform-mlb_today_with_rob_manfred-field_full_name'] = array(
     'bundle' => 'mlb_today_with_rob_manfred',
     'default_value' => NULL,
@@ -9982,7 +10155,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-mlb_today_with_rob_manfred-field_h_event_date'
+  // Exported field_instance:
+  // 'entityform-mlb_today_with_rob_manfred-field_h_event_date'.
   $field_instances['entityform-mlb_today_with_rob_manfred-field_h_event_date'] = array(
     'bundle' => 'mlb_today_with_rob_manfred',
     'deleted' => 0,
@@ -10059,7 +10233,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-mlb_today_with_rob_manfred-field_mlb_checkboxes'
+  // Exported field_instance:
+  // 'entityform-mlb_today_with_rob_manfred-field_mlb_checkboxes'.
   $field_instances['entityform-mlb_today_with_rob_manfred-field_mlb_checkboxes'] = array(
     'bundle' => 'mlb_today_with_rob_manfred',
     'default_value' => NULL,
@@ -10120,7 +10295,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-mlb_today_with_rob_manfred-field_referenced_node'
+  // Exported field_instance:
+  // 'entityform-mlb_today_with_rob_manfred-field_referenced_node'.
   $field_instances['entityform-mlb_today_with_rob_manfred-field_referenced_node'] = array(
     'bundle' => 'mlb_today_with_rob_manfred',
     'default_value' => NULL,
@@ -10192,7 +10368,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-mps_nyc_have_more_questions-field_comments'
+  // Exported field_instance:
+  // 'entityform-mps_nyc_have_more_questions-field_comments'.
   $field_instances['entityform-mps_nyc_have_more_questions-field_comments'] = array(
     'bundle' => 'mps_nyc_have_more_questions',
     'default_value' => NULL,
@@ -10234,7 +10411,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-mps_nyc_have_more_questions-field_email'
+  // Exported field_instance:
+  // 'entityform-mps_nyc_have_more_questions-field_email'.
   $field_instances['entityform-mps_nyc_have_more_questions-field_email'] = array(
     'bundle' => 'mps_nyc_have_more_questions',
     'default_value' => NULL,
@@ -10270,7 +10448,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-mps_nyc_have_more_questions-field_first_name'
+  // Exported field_instance:
+  // 'entityform-mps_nyc_have_more_questions-field_first_name'.
   $field_instances['entityform-mps_nyc_have_more_questions-field_first_name'] = array(
     'bundle' => 'mps_nyc_have_more_questions',
     'default_value' => NULL,
@@ -10312,7 +10491,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-mps_nyc_have_more_questions-field_how_heard_other'
+  // Exported field_instance:
+  // 'entityform-mps_nyc_have_more_questions-field_how_heard_other'.
   $field_instances['entityform-mps_nyc_have_more_questions-field_how_heard_other'] = array(
     'bundle' => 'mps_nyc_have_more_questions',
     'default_value' => NULL,
@@ -10354,7 +10534,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-mps_nyc_have_more_questions-field_job_title'
+  // Exported field_instance:
+  // 'entityform-mps_nyc_have_more_questions-field_job_title'.
   $field_instances['entityform-mps_nyc_have_more_questions-field_job_title'] = array(
     'bundle' => 'mps_nyc_have_more_questions',
     'default_value' => NULL,
@@ -10396,7 +10577,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-mps_nyc_have_more_questions-field_last_name'
+  // Exported field_instance:
+  // 'entityform-mps_nyc_have_more_questions-field_last_name'.
   $field_instances['entityform-mps_nyc_have_more_questions-field_last_name'] = array(
     'bundle' => 'mps_nyc_have_more_questions',
     'default_value' => NULL,
@@ -10438,7 +10620,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-mps_nyc_have_more_questions-field_organization'
+  // Exported field_instance:
+  // 'entityform-mps_nyc_have_more_questions-field_organization'.
   $field_instances['entityform-mps_nyc_have_more_questions-field_organization'] = array(
     'bundle' => 'mps_nyc_have_more_questions',
     'default_value' => NULL,
@@ -10480,7 +10663,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-transfer_offer-field_current_college'
+  // Exported field_instance: 'entityform-transfer_offer-field_current_college'.
   $field_instances['entityform-transfer_offer-field_current_college'] = array(
     'bundle' => 'transfer_offer',
     'default_value' => NULL,
@@ -10549,7 +10732,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-transfer_offer-field_date_of_birth_as_text'
+  // Exported field_instance:
+  // 'entityform-transfer_offer-field_date_of_birth_as_text'.
   $field_instances['entityform-transfer_offer-field_date_of_birth_as_text'] = array(
     'bundle' => 'transfer_offer',
     'default_value' => NULL,
@@ -10618,7 +10802,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-transfer_offer-field_email'
+  // Exported field_instance: 'entityform-transfer_offer-field_email'.
   $field_instances['entityform-transfer_offer-field_email'] = array(
     'bundle' => 'transfer_offer',
     'default_value' => NULL,
@@ -10681,7 +10865,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-transfer_offer-field_first_name'
+  // Exported field_instance: 'entityform-transfer_offer-field_first_name'.
   $field_instances['entityform-transfer_offer-field_first_name'] = array(
     'bundle' => 'transfer_offer',
     'default_value' => NULL,
@@ -10750,7 +10934,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-transfer_offer-field_last_name'
+  // Exported field_instance: 'entityform-transfer_offer-field_last_name'.
   $field_instances['entityform-transfer_offer-field_last_name'] = array(
     'bundle' => 'transfer_offer',
     'default_value' => NULL,
@@ -10819,7 +11003,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-transfer_offer-field_phone'
+  // Exported field_instance: 'entityform-transfer_offer-field_phone'.
   $field_instances['entityform-transfer_offer-field_phone'] = array(
     'bundle' => 'transfer_offer',
     'default_value' => NULL,
@@ -10888,7 +11072,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-transfer_offer-field_referenced_node'
+  // Exported field_instance: 'entityform-transfer_offer-field_referenced_node'.
   $field_instances['entityform-transfer_offer-field_referenced_node'] = array(
     'bundle' => 'transfer_offer',
     'default_value' => NULL,
@@ -10964,7 +11148,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-transfer_offer-field_transfer_offer_reply'
+  // Exported field_instance:
+  // 'entityform-transfer_offer-field_transfer_offer_reply'.
   $field_instances['entityform-transfer_offer-field_transfer_offer_reply'] = array(
     'bundle' => 'transfer_offer',
     'default_value' => NULL,
@@ -11025,7 +11210,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_address_line_1'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_address_line_1'.
   $field_instances['entityform-wisp_student_application-field_address_line_1'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11085,7 +11271,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_address_line_1_additional'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_address_line_1_additional'.
   $field_instances['entityform-wisp_student_application-field_address_line_1_additional'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11145,7 +11332,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_address_line_2'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_address_line_2'.
   $field_instances['entityform-wisp_student_application-field_address_line_2'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11205,7 +11393,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_address_line_2_additional'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_address_line_2_additional'.
   $field_instances['entityform-wisp_student_application-field_address_line_2_additional'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11265,7 +11454,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_city'
+  // Exported field_instance: 'entityform-wisp_student_application-field_city'.
   $field_instances['entityform-wisp_student_application-field_city'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11325,7 +11514,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_city_additional'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_city_additional'.
   $field_instances['entityform-wisp_student_application-field_city_additional'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11385,7 +11575,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_city_additional_2'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_city_additional_2'.
   $field_instances['entityform-wisp_student_application-field_city_additional_2'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11445,7 +11636,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_city_additional_3'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_city_additional_3'.
   $field_instances['entityform-wisp_student_application-field_city_additional_3'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11505,7 +11697,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_country'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_country'.
   $field_instances['entityform-wisp_student_application-field_country'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => array(
@@ -11569,7 +11762,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_fexwisp_cert'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_fexwisp_cert'.
   $field_instances['entityform-wisp_student_application-field_fexwisp_cert'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => array(
@@ -11624,7 +11818,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_first_name'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_first_name'.
   $field_instances['entityform-wisp_student_application-field_first_name'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11686,7 +11881,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_first_name_additional'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_first_name_additional'.
   $field_instances['entityform-wisp_student_application-field_first_name_additional'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11746,7 +11942,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_h_program'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_h_program'.
   $field_instances['entityform-wisp_student_application-field_h_program'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11806,7 +12003,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_h_school_year'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_h_school_year'.
   $field_instances['entityform-wisp_student_application-field_h_school_year'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11866,7 +12064,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_last_name'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_last_name'.
   $field_instances['entityform-wisp_student_application-field_last_name'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11928,7 +12127,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_netid'
+  // Exported field_instance: 'entityform-wisp_student_application-field_netid'.
   $field_instances['entityform-wisp_student_application-field_netid'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -11990,7 +12189,7 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_phone'
+  // Exported field_instance: 'entityform-wisp_student_application-field_phone'.
   $field_instances['entityform-wisp_student_application-field_phone'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -12050,7 +12249,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_phone_additional'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_phone_additional'.
   $field_instances['entityform-wisp_student_application-field_phone_additional'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -12110,7 +12310,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_state_province'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_state_province'.
   $field_instances['entityform-wisp_student_application-field_state_province'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -12164,7 +12365,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_state_province_additional'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_state_province_additional'.
   $field_instances['entityform-wisp_student_application-field_state_province_additional'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -12218,7 +12420,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_state_province_addl_2'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_state_province_addl_2'.
   $field_instances['entityform-wisp_student_application-field_state_province_addl_2'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -12272,7 +12475,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_state_province_addl_3'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_state_province_addl_3'.
   $field_instances['entityform-wisp_student_application-field_state_province_addl_3'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -12326,7 +12530,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_student_id_number'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_student_id_number'.
   $field_instances['entityform-wisp_student_application-field_student_id_number'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -12383,7 +12588,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_upload_your_resume_or_cv'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_upload_your_resume_or_cv'.
   $field_instances['entityform-wisp_student_application-field_upload_your_resume_or_cv'] = array(
     'bundle' => 'wisp_student_application',
     'deleted' => 0,
@@ -12460,7 +12666,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_year_fr_soph_jr_sr_milr'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_year_fr_soph_jr_sr_milr'.
   $field_instances['entityform-wisp_student_application-field_year_fr_soph_jr_sr_milr'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -12514,7 +12721,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_zip_code'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_zip_code'.
   $field_instances['entityform-wisp_student_application-field_zip_code'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,
@@ -12574,7 +12782,8 @@ function ilr_forms_students_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-wisp_student_application-field_zip_postal_code_additional'
+  // Exported field_instance:
+  // 'entityform-wisp_student_application-field_zip_postal_code_additional'.
   $field_instances['entityform-wisp_student_application-field_zip_postal_code_additional'] = array(
     'bundle' => 'wisp_student_application',
     'default_value' => NULL,

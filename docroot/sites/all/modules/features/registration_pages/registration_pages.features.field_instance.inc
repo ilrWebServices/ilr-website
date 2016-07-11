@@ -10,7 +10,7 @@
 function registration_pages_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-registration_page-body'
+  // Exported field_instance: 'node-registration_page-body'.
   $field_instances['node-registration_page-body'] = array(
     'bundle' => 'registration_page',
     'default_value' => NULL,
@@ -73,7 +73,7 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_aa_member_price'
+  // Exported field_instance: 'node-registration_page-field_aa_member_price'.
   $field_instances['node-registration_page-field_aa_member_price'] = array(
     'bundle' => 'registration_page',
     'default_value' => NULL,
@@ -126,7 +126,8 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_aa_non_member_price'
+  // Exported field_instance:
+  // 'node-registration_page-field_aa_non_member_price'.
   $field_instances['node-registration_page-field_aa_non_member_price'] = array(
     'bundle' => 'registration_page',
     'default_value' => NULL,
@@ -179,7 +180,7 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_blocks'
+  // Exported field_instance: 'node-registration_page-field_blocks'.
   $field_instances['node-registration_page-field_blocks'] = array(
     'bundle' => 'registration_page',
     'default_value' => NULL,
@@ -235,7 +236,7 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_event_date'
+  // Exported field_instance: 'node-registration_page-field_event_date'.
   $field_instances['node-registration_page-field_event_date'] = array(
     'bundle' => 'registration_page',
     'deleted' => 0,
@@ -302,7 +303,8 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_form_active_date_range'
+  // Exported field_instance:
+  // 'node-registration_page-field_form_active_date_range'.
   $field_instances['node-registration_page-field_form_active_date_range'] = array(
     'bundle' => 'registration_page',
     'deleted' => 0,
@@ -369,7 +371,7 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_image'
+  // Exported field_instance: 'node-registration_page-field_image'.
   $field_instances['node-registration_page-field_image'] = array(
     'bundle' => 'registration_page',
     'deleted' => 0,
@@ -466,7 +468,8 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_location_as_long_text'
+  // Exported field_instance:
+  // 'node-registration_page-field_location_as_long_text'.
   $field_instances['node-registration_page-field_location_as_long_text'] = array(
     'bundle' => 'registration_page',
     'default_value' => NULL,
@@ -517,7 +520,8 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_message_after_form_close'
+  // Exported field_instance:
+  // 'node-registration_page-field_message_after_form_close'.
   $field_instances['node-registration_page-field_message_after_form_close'] = array(
     'bundle' => 'registration_page',
     'default_value' => NULL,
@@ -571,7 +575,8 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_message_before_form_open'
+  // Exported field_instance:
+  // 'node-registration_page-field_message_before_form_open'.
   $field_instances['node-registration_page-field_message_before_form_open'] = array(
     'bundle' => 'registration_page',
     'default_value' => NULL,
@@ -625,7 +630,8 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_registration_form_type'
+  // Exported field_instance:
+  // 'node-registration_page-field_registration_form_type'.
   $field_instances['node-registration_page-field_registration_form_type'] = array(
     'bundle' => 'registration_page',
     'default_value' => NULL,
@@ -687,7 +693,7 @@ function registration_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-registration_page-field_total_tickets'
+  // Exported field_instance: 'node-registration_page-field_total_tickets'.
   $field_instances['node-registration_page-field_total_tickets'] = array(
     'bundle' => 'registration_page',
     'default_value' => array(

@@ -10,7 +10,7 @@
 function student_portraits_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-student_portrait-body'
+  // Exported field_instance: 'node-student_portrait-body'.
   $field_instances['node-student_portrait-body'] = array(
     'bundle' => 'student_portrait',
     'default_value' => NULL,
@@ -63,7 +63,7 @@ function student_portraits_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-student_portrait-field_category_type'
+  // Exported field_instance: 'node-student_portrait-field_category_type'.
   $field_instances['node-student_portrait-field_category_type'] = array(
     'bundle' => 'student_portrait',
     'default_value' => NULL,
@@ -108,7 +108,8 @@ function student_portraits_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-student_portrait-field_expected_graduation_date'
+  // Exported field_instance:
+  // 'node-student_portrait-field_expected_graduation_date'.
   $field_instances['node-student_portrait-field_expected_graduation_date'] = array(
     'bundle' => 'student_portrait',
     'deleted' => 0,
@@ -160,7 +161,7 @@ function student_portraits_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-student_portrait-field_image'
+  // Exported field_instance: 'node-student_portrait-field_image'.
   $field_instances['node-student_portrait-field_image'] = array(
     'bundle' => 'student_portrait',
     'deleted' => 0,
@@ -238,7 +239,7 @@ function student_portraits_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-student_portrait-field_interests_and_goals'
+  // Exported field_instance: 'node-student_portrait-field_interests_and_goals'.
   $field_instances['node-student_portrait-field_interests_and_goals'] = array(
     'bundle' => 'student_portrait',
     'default_value' => NULL,
@@ -291,7 +292,7 @@ function student_portraits_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-student_portrait-field_portrait_experience'
+  // Exported field_instance: 'node-student_portrait-field_portrait_experience'.
   $field_instances['node-student_portrait-field_portrait_experience'] = array(
     'bundle' => 'student_portrait',
     'default_value' => NULL,
@@ -344,7 +345,7 @@ function student_portraits_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-student_portrait-field_quote'
+  // Exported field_instance: 'node-student_portrait-field_quote'.
   $field_instances['node-student_portrait-field_quote'] = array(
     'bundle' => 'student_portrait',
     'default_value' => NULL,
@@ -394,7 +395,7 @@ function student_portraits_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-student_portrait-field_tags'
+  // Exported field_instance: 'node-student_portrait-field_tags'.
   $field_instances['node-student_portrait-field_tags'] = array(
     'bundle' => 'student_portrait',
     'default_value' => NULL,
@@ -439,7 +440,7 @@ function student_portraits_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-student_portrait-field_teaser'
+  // Exported field_instance: 'node-student_portrait-field_teaser'.
   $field_instances['node-student_portrait-field_teaser'] = array(
     'bundle' => 'student_portrait',
     'default_value' => NULL,

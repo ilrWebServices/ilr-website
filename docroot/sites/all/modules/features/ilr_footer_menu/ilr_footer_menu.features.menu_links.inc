@@ -10,7 +10,7 @@
 function ilr_footer_menu_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-secondary-menu_log-in:user/login
+  // Exported menu link: menu-secondary-menu_log-in:user/login.
   $menu_links['menu-secondary-menu_log-in:user/login'] = array(
     'menu_name' => 'menu-secondary-menu',
     'link_path' => 'user/login',
@@ -30,7 +30,7 @@ function ilr_footer_menu_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: menu-secondary-menu_log-out:user/logout
+  // Exported menu link: menu-secondary-menu_log-out:user/logout.
   $menu_links['menu-secondary-menu_log-out:user/logout'] = array(
     'menu_name' => 'menu-secondary-menu',
     'link_path' => 'user/logout',
@@ -50,11 +50,11 @@ function ilr_footer_menu_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Log In');
   t('Log Out');
-
 
   return $menu_links;
 }

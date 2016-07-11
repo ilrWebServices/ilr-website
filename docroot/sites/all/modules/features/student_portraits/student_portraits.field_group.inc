@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function student_portraits_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -39,7 +39,11 @@ function student_portraits_field_group_info() {
       ),
     ),
   );
-  $export['group_portrait_highlighted|node|student_portrait|default'] = $field_group;
+  $field_groups['group_portrait_highlighted|node|student_portrait|default'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Highlighted');
+
+  return $field_groups;
 }

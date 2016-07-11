@@ -10,7 +10,7 @@
 function forms2_conditional_fields_default_fields() {
   $items = array();
 
-  $items[] = array(
+  $items["entityform:scheinman_webcast_registration:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'scheinman_webcast_registration',
     'dependent' => 'field_cornell_degree',
@@ -171,7 +171,7 @@ function forms2_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:scheinman_webcast_registration:1"] = array(
     'entity' => 'entityform',
     'bundle' => 'scheinman_webcast_registration',
     'dependent' => 'field_other_please_specify',
@@ -353,7 +353,7 @@ function forms2_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:scheinman_webcast_registration:2"] = array(
     'entity' => 'entityform',
     'bundle' => 'scheinman_webcast_registration',
     'dependent' => 'field_year_as_text',

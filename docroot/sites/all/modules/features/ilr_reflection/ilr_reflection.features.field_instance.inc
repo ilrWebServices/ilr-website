@@ -10,7 +10,7 @@
 function ilr_reflection_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-reflection-body'
+  // Exported field_instance: 'node-reflection-body'.
   $field_instances['node-reflection-body'] = array(
     'bundle' => 'reflection',
     'default_value' => NULL,
@@ -70,7 +70,7 @@ function ilr_reflection_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-reflection-field_email'
+  // Exported field_instance: 'node-reflection-field_email'.
   $field_instances['node-reflection-field_email'] = array(
     'bundle' => 'reflection',
     'default_value' => NULL,
@@ -115,7 +115,7 @@ function ilr_reflection_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-reflection-field_full_name'
+  // Exported field_instance: 'node-reflection-field_full_name'.
   $field_instances['node-reflection-field_full_name'] = array(
     'bundle' => 'reflection',
     'default_value' => NULL,
@@ -172,7 +172,7 @@ function ilr_reflection_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-reflection-field_image'
+  // Exported field_instance: 'node-reflection-field_image'.
   $field_instances['node-reflection-field_image'] = array(
     'bundle' => 'reflection',
     'deleted' => 0,
@@ -255,7 +255,7 @@ function ilr_reflection_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-reflection-field_tags'
+  // Exported field_instance: 'node-reflection-field_tags'.
   $field_instances['node-reflection-field_tags'] = array(
     'bundle' => 'reflection',
     'default_value' => NULL,
@@ -301,7 +301,7 @@ function ilr_reflection_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-reflection-field_year_as_list_text'
+  // Exported field_instance: 'node-reflection-field_year_as_list_text'.
   $field_instances['node-reflection-field_year_as_list_text'] = array(
     'bundle' => 'reflection',
     'default_value' => NULL,
@@ -352,7 +352,7 @@ function ilr_reflection_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-reflection-field_youtube_video'
+  // Exported field_instance: 'node-reflection-field_youtube_video'.
   $field_instances['node-reflection-field_youtube_video'] = array(
     'bundle' => 'reflection',
     'default_value' => NULL,

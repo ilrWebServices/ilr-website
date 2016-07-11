@@ -32,4 +32,5 @@ features[variable][] = menu_parent_reflection
 features[variable][] = node_options_reflection
 features[variable][] = node_preview_reflection
 features[variable][] = node_submitted_reflection
+features[variable][] = pathauto_node_reflection_pattern
 project path = sites/all/modules/features

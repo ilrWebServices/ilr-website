@@ -44,7 +44,7 @@ function basic_page_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'preview' => array(
         'custom_settings' => TRUE,
@@ -56,6 +56,9 @@ function basic_page_strongarm() {
         'custom_settings' => FALSE,
       ),
       'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'wysiwyg' => array(
         'custom_settings' => FALSE,
       ),
     ),
@@ -71,6 +74,10 @@ function basic_page_strongarm() {
       'display' => array(
         'file' => array(
           'default' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'preview' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),

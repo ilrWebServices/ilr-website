@@ -10,7 +10,7 @@
 function forms_conditional_fields_default_fields() {
   $items = array();
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_equipment_loan_additional_',
@@ -160,7 +160,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:1"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_equipment_type',
@@ -310,7 +310,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:2"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_laptop_loan_addl_info',
@@ -460,7 +460,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:3"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_laptop_loan_addl_info',
@@ -610,7 +610,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:4"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_laptop_size_preference',
@@ -760,7 +760,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:5"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_laptop_size_preference',
@@ -910,7 +910,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:6"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_media_cl_tech_video_rec',
@@ -1060,7 +1060,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:7"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_non_standard_applications',
@@ -1210,7 +1210,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:8"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_non_standard_applications',
@@ -1360,7 +1360,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:9"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_number_of_copies',
@@ -1510,7 +1510,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:10"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_post_to_web_',
@@ -1660,7 +1660,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:11"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_video_recording_addl_info',
@@ -1810,7 +1810,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:12"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_wireless_networking_needed',
@@ -1960,7 +1960,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:classroom_technologies_request:13"] = array(
     'entity' => 'entityform',
     'bundle' => 'classroom_technologies_request',
     'dependent' => 'field_wireless_networking_needed',
@@ -2110,7 +2110,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_address_line_1',
@@ -2260,7 +2260,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:1"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_address_line_1',
@@ -2410,7 +2410,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:2"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_city',
@@ -2560,7 +2560,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:3"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_city',
@@ -2710,7 +2710,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:4"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_current_college',
@@ -2860,7 +2860,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:5"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_mailing_address_markup',
@@ -3010,7 +3010,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:6"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_mailing_address_markup',
@@ -3160,7 +3160,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:7"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_phone',
@@ -3310,7 +3310,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:8"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_phone',
@@ -3460,7 +3460,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:9"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_state_province',
@@ -3610,7 +3610,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:10"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_state_province',
@@ -3760,7 +3760,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:11"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_zip_code',
@@ -3910,7 +3910,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:contact_ilr_admissions:12"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_zip_code',
@@ -4060,7 +4060,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:faculty_request_for_ta_or_ra:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'faculty_request_for_ta_or_ra',
     'dependent' => 'field_account_number',
@@ -4199,7 +4199,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:faculty_request_for_ta_or_ra:1"] = array(
     'entity' => 'entityform',
     'bundle' => 'faculty_request_for_ta_or_ra',
     'dependent' => 'field_course_name',
@@ -4338,7 +4338,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:faculty_request_for_ta_or_ra:2"] = array(
     'entity' => 'entityform',
     'bundle' => 'faculty_request_for_ta_or_ra',
     'dependent' => 'field_course_number',
@@ -4477,7 +4477,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:faculty_request_for_ta_or_ra:3"] = array(
     'entity' => 'entityform',
     'bundle' => 'faculty_request_for_ta_or_ra',
     'dependent' => 'field_project_name',
@@ -4616,7 +4616,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:grad_student_appl_for_graduation:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'grad_student_appl_for_graduation',
     'dependent' => 'field_full_name_additional',
@@ -4755,7 +4755,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:grad_travel_grant_application:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'grad_travel_grant_application',
     'dependent' => 'field_amount_1',
@@ -4905,7 +4905,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:grad_travel_grant_application:1"] = array(
     'entity' => 'entityform',
     'bundle' => 'grad_travel_grant_application',
     'dependent' => 'field_amount_2',
@@ -5055,7 +5055,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:grad_travel_grant_application:2"] = array(
     'entity' => 'entityform',
     'bundle' => 'grad_travel_grant_application',
     'dependent' => 'field_amount_3',
@@ -5205,7 +5205,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:grad_travel_grant_application:3"] = array(
     'entity' => 'entityform',
     'bundle' => 'grad_travel_grant_application',
     'dependent' => 'field_source_1',
@@ -5344,7 +5344,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:grad_travel_grant_application:4"] = array(
     'entity' => 'entityform',
     'bundle' => 'grad_travel_grant_application',
     'dependent' => 'field_source_2',
@@ -5483,7 +5483,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:grad_travel_grant_application:5"] = array(
     'entity' => 'entityform',
     'bundle' => 'grad_travel_grant_application',
     'dependent' => 'field_source_3',
@@ -5622,7 +5622,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:ilr_student_advisor_application_:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'ilr_student_advisor_application_',
     'dependent' => 'field_address_line_1_additional',
@@ -5761,7 +5761,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:ilr_student_advisor_application_:1"] = array(
     'entity' => 'entityform',
     'bundle' => 'ilr_student_advisor_application_',
     'dependent' => 'field_address_line_2_additional',
@@ -5900,7 +5900,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:ilr_student_advisor_application_:2"] = array(
     'entity' => 'entityform',
     'bundle' => 'ilr_student_advisor_application_',
     'dependent' => 'field_city_additional',
@@ -6039,7 +6039,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:ilr_student_advisor_application_:3"] = array(
     'entity' => 'entityform',
     'bundle' => 'ilr_student_advisor_application_',
     'dependent' => 'field_state_province_additional',
@@ -6178,7 +6178,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:ilr_student_advisor_application_:4"] = array(
     'entity' => 'entityform',
     'bundle' => 'ilr_student_advisor_application_',
     'dependent' => 'field_zip_postal_code_additional',
@@ -6317,7 +6317,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_address_line_1_additional',
@@ -6467,7 +6467,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:1"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_address_line_1_additional',
@@ -6617,7 +6617,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:2"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_address_line_2_additional',
@@ -6767,7 +6767,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:3"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_address_line_2_additional',
@@ -6917,7 +6917,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:4"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_city_additional',
@@ -7067,7 +7067,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:5"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_city_additional',
@@ -7217,7 +7217,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:6"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_email_additional',
@@ -7367,7 +7367,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:7"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_email_additional',
@@ -7517,7 +7517,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:8"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_fax_additional',
@@ -7667,7 +7667,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:9"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_fax_additional',
@@ -7817,7 +7817,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:10"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_full_name_additional',
@@ -7967,7 +7967,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:11"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_full_name_additional',
@@ -8117,7 +8117,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:12"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_organization_additional',
@@ -8267,7 +8267,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:13"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_organization_additional',
@@ -8417,7 +8417,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:14"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_phone_additional',
@@ -8567,7 +8567,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:15"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_phone_additional',
@@ -8717,7 +8717,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:16"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_state_province_additional',
@@ -8867,7 +8867,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:17"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_state_province_additional',
@@ -9017,7 +9017,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:18"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_title_additional',
@@ -9167,7 +9167,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:19"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_title_additional',
@@ -9317,7 +9317,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:20"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_zip_postal_code_additional',
@@ -9467,7 +9467,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:job_postings_for_ilr_alumni:21"] = array(
     'entity' => 'entityform',
     'bundle' => 'job_postings_for_ilr_alumni',
     'dependent' => 'field_zip_postal_code_additional',
@@ -9617,7 +9617,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:scheinman_mailing_list:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'scheinman_mailing_list',
     'dependent' => 'field_other_please_specify',
@@ -9799,7 +9799,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:undergrad_appl_for_graduation:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'undergrad_appl_for_graduation',
     'dependent' => 'field_full_name_additional',
@@ -9938,7 +9938,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:web_services_request_form:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'web_services_request_form',
     'dependent' => 'field_comments',
@@ -10092,7 +10092,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:web_services_request_form:1"] = array(
     'entity' => 'entityform',
     'bundle' => 'web_services_request_form',
     'dependent' => 'field_dates',
@@ -10245,7 +10245,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:web_services_request_form:2"] = array(
     'entity' => 'entityform',
     'bundle' => 'web_services_request_form',
     'dependent' => 'field_error_message',
@@ -10395,7 +10395,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:web_services_request_form:3"] = array(
     'entity' => 'entityform',
     'bundle' => 'web_services_request_form',
     'dependent' => 'field_file_upload_general',
@@ -10560,7 +10560,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:web_services_request_form:4"] = array(
     'entity' => 'entityform',
     'bundle' => 'web_services_request_form',
     'dependent' => 'field_subject_line',
@@ -10714,7 +10714,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:web_services_request_form:5"] = array(
     'entity' => 'entityform',
     'bundle' => 'web_services_request_form',
     'dependent' => 'field_url',
@@ -10863,7 +10863,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:web_services_request_form:6"] = array(
     'entity' => 'entityform',
     'bundle' => 'web_services_request_form',
     'dependent' => 'field_url_suggestion',
@@ -11013,7 +11013,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:webcast_registration_ilr_online:0"] = array(
     'entity' => 'entityform',
     'bundle' => 'webcast_registration_ilr_online',
     'dependent' => 'field_cornell_degree',
@@ -11163,7 +11163,7 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items[] = array(
+  $items["entityform:webcast_registration_ilr_online:1"] = array(
     'entity' => 'entityform',
     'bundle' => 'webcast_registration_ilr_online',
     'dependent' => 'field_year_as_text',

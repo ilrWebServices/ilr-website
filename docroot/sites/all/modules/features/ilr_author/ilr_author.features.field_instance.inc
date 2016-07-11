@@ -10,7 +10,7 @@
 function ilr_author_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-author-body'
+  // Exported field_instance: 'node-author-body'.
   $field_instances['node-author-body'] = array(
     'bundle' => 'author',
     'default_value' => NULL,
@@ -70,7 +70,7 @@ function ilr_author_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-author-field_first_name'
+  // Exported field_instance: 'node-author-field_first_name'.
   $field_instances['node-author-field_first_name'] = array(
     'bundle' => 'author',
     'default_value' => NULL,
@@ -121,7 +121,7 @@ function ilr_author_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-author-field_image'
+  // Exported field_instance: 'node-author-field_image'.
   $field_instances['node-author-field_image'] = array(
     'bundle' => 'author',
     'deleted' => 0,
@@ -201,7 +201,7 @@ function ilr_author_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-author-field_last_name'
+  // Exported field_instance: 'node-author-field_last_name'.
   $field_instances['node-author-field_last_name'] = array(
     'bundle' => 'author',
     'default_value' => NULL,
@@ -252,7 +252,7 @@ function ilr_author_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-author-field_people_profile_reference'
+  // Exported field_instance: 'node-author-field_people_profile_reference'.
   $field_instances['node-author-field_people_profile_reference'] = array(
     'bundle' => 'author',
     'default_value' => NULL,

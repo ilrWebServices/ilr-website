@@ -10,7 +10,7 @@
 function ilr_mega_menu_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'bean-mega_menu-field_mega_menu_item'
+  // Exported field_instance: 'bean-mega_menu-field_mega_menu_item'.
   $field_instances['bean-mega_menu-field_mega_menu_item'] = array(
     'bundle' => 'mega_menu',
     'default_value' => NULL,
@@ -54,7 +54,7 @@ function ilr_mega_menu_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-mega_menu-field_menu_name'
+  // Exported field_instance: 'bean-mega_menu-field_menu_name'.
   $field_instances['bean-mega_menu-field_menu_name'] = array(
     'bundle' => 'mega_menu',
     'default_value' => NULL,
@@ -98,7 +98,7 @@ function ilr_mega_menu_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-mega_menu-field_referenced_entity'
+  // Exported field_instance: 'bean-mega_menu-field_referenced_entity'.
   $field_instances['bean-mega_menu-field_referenced_entity'] = array(
     'bundle' => 'mega_menu',
     'default_value' => NULL,

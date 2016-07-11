@@ -27,5 +27,6 @@ function ilr_author_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

@@ -24,4 +24,5 @@ features[variable][] = menu_parent_workspan
 features[variable][] = node_options_workspan
 features[variable][] = node_preview_workspan
 features[variable][] = node_submitted_workspan
+features[variable][] = pathauto_node_workspan_pattern
 features[views_view][] = workspan_list

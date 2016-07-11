@@ -10,7 +10,7 @@
 function ilr_sdc_listings_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-sdc_class-body'
+  // Exported field_instance: 'node-sdc_class-body'.
   $field_instances['node-sdc_class-body'] = array(
     'bundle' => 'sdc_class',
     'default_value' => NULL,
@@ -73,20 +73,10 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_address'
+  // Exported field_instance: 'node-sdc_class-field_address'.
   $field_instances['node-sdc_class-field_address'] = array(
     'bundle' => 'sdc_class',
-    'default_value' => array(
-      0 => array(
-        'element_key' => 'node|sdc_class|field_address|und|0',
-        'thoroughfare' => '',
-        'premise' => '',
-        'locality' => '',
-        'administrative_area' => '',
-        'postal_code' => '',
-        'country' => 'US',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -136,6 +126,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'available_countries' => array(
           'US' => 'US',
         ),
+        'default_country' => '',
         'format_handlers' => array(
           'address' => 'address',
           'address-hide-country' => 'address-hide-country',
@@ -149,7 +140,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_building'
+  // Exported field_instance: 'node-sdc_class-field_building'.
   $field_instances['node-sdc_class-field_building'] = array(
     'bundle' => 'sdc_class',
     'default_value' => NULL,
@@ -203,7 +194,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_cancelled'
+  // Exported field_instance: 'node-sdc_class-field_cancelled'.
   $field_instances['node-sdc_class-field_cancelled'] = array(
     'bundle' => 'sdc_class',
     'default_value' => array(
@@ -258,7 +249,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_class_dates'
+  // Exported field_instance: 'node-sdc_class-field_class_dates'.
   $field_instances['node-sdc_class-field_class_dates'] = array(
     'bundle' => 'sdc_class',
     'deleted' => 0,
@@ -334,7 +325,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_class_id'
+  // Exported field_instance: 'node-sdc_class-field_class_id'.
   $field_instances['node-sdc_class-field_class_id'] = array(
     'bundle' => 'sdc_class',
     'default_value' => NULL,
@@ -385,7 +376,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_course'
+  // Exported field_instance: 'node-sdc_class-field_course'.
   $field_instances['node-sdc_class-field_course'] = array(
     'bundle' => 'sdc_class',
     'default_value' => NULL,
@@ -446,7 +437,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_faculty'
+  // Exported field_instance: 'node-sdc_class-field_faculty'.
   $field_instances['node-sdc_class-field_faculty'] = array(
     'bundle' => 'sdc_class',
     'default_value' => NULL,
@@ -502,7 +493,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_is_full'
+  // Exported field_instance: 'node-sdc_class-field_is_full'.
   $field_instances['node-sdc_class-field_is_full'] = array(
     'bundle' => 'sdc_class',
     'default_value' => array(
@@ -556,7 +547,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_on_demand'
+  // Exported field_instance: 'node-sdc_class-field_on_demand'.
   $field_instances['node-sdc_class-field_on_demand'] = array(
     'bundle' => 'sdc_class',
     'default_value' => array(
@@ -610,7 +601,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_online_class'
+  // Exported field_instance: 'node-sdc_class-field_online_class'.
   $field_instances['node-sdc_class-field_online_class'] = array(
     'bundle' => 'sdc_class',
     'default_value' => array(
@@ -664,7 +655,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_price'
+  // Exported field_instance: 'node-sdc_class-field_price'.
   $field_instances['node-sdc_class-field_price'] = array(
     'bundle' => 'sdc_class',
     'default_value' => NULL,
@@ -716,7 +707,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_registration_end_date'
+  // Exported field_instance: 'node-sdc_class-field_registration_end_date'.
   $field_instances['node-sdc_class-field_registration_end_date'] = array(
     'bundle' => 'sdc_class',
     'deleted' => 0,
@@ -774,7 +765,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_class-field_setting'
+  // Exported field_instance: 'node-sdc_class-field_setting'.
   $field_instances['node-sdc_class-field_setting'] = array(
     'bundle' => 'sdc_class',
     'default_value' => NULL,
@@ -825,7 +816,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-body'
+  // Exported field_instance: 'node-sdc_course-body'.
   $field_instances['node-sdc_course-body'] = array(
     'bundle' => 'sdc_course',
     'default_value' => NULL,
@@ -894,7 +885,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_catalog_prefix'
+  // Exported field_instance: 'node-sdc_course-field_catalog_prefix'.
   $field_instances['node-sdc_course-field_catalog_prefix'] = array(
     'bundle' => 'sdc_course',
     'default_value' => NULL,
@@ -945,7 +936,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_continuing_ed_reference'
+  // Exported field_instance: 'node-sdc_course-field_continuing_ed_reference'.
   $field_instances['node-sdc_course-field_continuing_ed_reference'] = array(
     'bundle' => 'sdc_course',
     'default_value' => NULL,
@@ -996,7 +987,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_course_format_reference'
+  // Exported field_instance: 'node-sdc_course-field_course_format_reference'.
   $field_instances['node-sdc_course-field_course_format_reference'] = array(
     'bundle' => 'sdc_course',
     'default_value' => NULL,
@@ -1047,7 +1038,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_course_series'
+  // Exported field_instance: 'node-sdc_course-field_course_series'.
   $field_instances['node-sdc_course-field_course_series'] = array(
     'bundle' => 'sdc_course',
     'default_value' => array(
@@ -1102,7 +1093,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_course_sponsor_reference'
+  // Exported field_instance: 'node-sdc_course-field_course_sponsor_reference'.
   $field_instances['node-sdc_course-field_course_sponsor_reference'] = array(
     'bundle' => 'sdc_course',
     'default_value' => NULL,
@@ -1153,7 +1144,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_course_topic_reference'
+  // Exported field_instance: 'node-sdc_course-field_course_topic_reference'.
   $field_instances['node-sdc_course-field_course_topic_reference'] = array(
     'bundle' => 'sdc_course',
     'default_value' => NULL,
@@ -1204,7 +1195,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_credit_hours'
+  // Exported field_instance: 'node-sdc_course-field_credit_hours'.
   $field_instances['node-sdc_course-field_credit_hours'] = array(
     'bundle' => 'sdc_course',
     'default_value' => NULL,
@@ -1256,7 +1247,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_email'
+  // Exported field_instance: 'node-sdc_course-field_email'.
   $field_instances['node-sdc_course-field_email'] = array(
     'bundle' => 'sdc_course',
     'default_value' => NULL,
@@ -1307,7 +1298,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_keywords'
+  // Exported field_instance: 'node-sdc_course-field_keywords'.
   $field_instances['node-sdc_course-field_keywords'] = array(
     'bundle' => 'sdc_course',
     'default_value' => NULL,
@@ -1358,7 +1349,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_on_demand'
+  // Exported field_instance: 'node-sdc_course-field_on_demand'.
   $field_instances['node-sdc_course-field_on_demand'] = array(
     'bundle' => 'sdc_course',
     'default_value' => array(
@@ -1412,7 +1403,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_price'
+  // Exported field_instance: 'node-sdc_course-field_price'.
   $field_instances['node-sdc_course-field_price'] = array(
     'bundle' => 'sdc_course',
     'default_value' => NULL,
@@ -1464,7 +1455,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_price_note'
+  // Exported field_instance: 'node-sdc_course-field_price_note'.
   $field_instances['node-sdc_course-field_price_note'] = array(
     'bundle' => 'sdc_course',
     'default_value' => NULL,
@@ -1515,7 +1506,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_course-field_setting'
+  // Exported field_instance: 'node-sdc_course-field_setting'.
   $field_instances['node-sdc_course-field_setting'] = array(
     'bundle' => 'sdc_course',
     'default_value' => NULL,
@@ -1566,7 +1557,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_faculty-body'
+  // Exported field_instance: 'node-sdc_faculty-body'.
   $field_instances['node-sdc_faculty-body'] = array(
     'bundle' => 'sdc_faculty',
     'default_value' => NULL,
@@ -1618,7 +1609,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_faculty-field_job_title'
+  // Exported field_instance: 'node-sdc_faculty-field_job_title'.
   $field_instances['node-sdc_faculty-field_job_title'] = array(
     'bundle' => 'sdc_faculty',
     'default_value' => NULL,
@@ -1675,7 +1666,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_faculty-field_people_profile_reference'
+  // Exported field_instance: 'node-sdc_faculty-field_people_profile_reference'.
   $field_instances['node-sdc_faculty-field_people_profile_reference'] = array(
     'bundle' => 'sdc_faculty',
     'default_value' => NULL,
@@ -1728,7 +1719,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_faculty-field_thumbnail'
+  // Exported field_instance: 'node-sdc_faculty-field_thumbnail'.
   $field_instances['node-sdc_faculty-field_thumbnail'] = array(
     'bundle' => 'sdc_faculty',
     'deleted' => 0,

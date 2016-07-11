@@ -76,7 +76,6 @@ features[variable][] = chosen_no_results_text
 features[variable][] = chosen_placeholder_text_multiple
 features[variable][] = chosen_placeholder_text_single
 features[variable][] = chosen_search_contains
-features[variable][] = chosen_use_theme
 features[variable][] = clean_url
 features[variable][] = date_api_version
 features[variable][] = date_default_timezone
