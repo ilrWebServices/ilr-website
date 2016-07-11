@@ -93,22 +93,22 @@ function editor_note_help($path, $arg) {
  * Implements hook_menu().
  */
 function editor_note_menu() {
-  $items['editor_note/edit/%ctools_js/%'] = array(
+  $items['editor_note/edit/%ctools_js/%/%'] = array(
     'title' => 'Update note',
-    'page arguments' => array(2, 3),
+    'page arguments' => array(2, 4),
     'page callback' => 'editor_note_confirm_edit_page',
     'access callback' => 'editor_note_access_crud_operations',
-    'access arguments' => array(3),
+    'access arguments' => array(3, 4),
     'type' => MENU_NORMAL_ITEM,
     'file' => 'editor_note.pages.inc',
   );
 
-  $items['editor_note/remove/%ctools_js/%'] = array(
+  $items['editor_note/remove/%ctools_js/%/%'] = array(
     'title' => 'Remove note',
-    'page arguments' => array(2, 3),
+    'page arguments' => array(2, 4),
     'page callback' => 'editor_note_confirm_remove_page',
     'access callback' => 'editor_note_access_crud_operations',
-    'access arguments' => array(3),
+    'access arguments' => array(3, 4),
     'type' => MENU_NORMAL_ITEM,
     'file' => 'editor_note.pages.inc',
   );
@@ -313,6 +313,7 @@ function editor_note_field_info() {
       'label' => t('Editor Notes'),
       'description' => t('Field for taking editor notes.'),
       'settings' => array(
+        'notes_permissions' => 'default',
         'notes_size' => 5,
         'notes_placeholder' => t('Create a note'),
         'notes_maxlength' => 0,
@@ -363,6 +364,31 @@ function editor_note_field_is_empty($item, $field) {
  */
 function editor_note_field_settings_form($field, $instance, $has_data) {
   $settings = $field['settings'];
+
+  $form['notes_display_mode'] = array(
+    '#type' => 'radios',
+    '#title' => t('Display mode'),
+    '#required' => TRUE,
+    '#description' => t('"Display list of notes per entity revision" means separate list of notes for each revision while "Display list of notes per entity" displays combined list of notes for all revisions.'),
+    '#default_value' => isset($settings['notes_display_mode']) ? $settings['notes_display_mode'] : 'per_revision',
+    '#options' => array(
+      'per_revision' => t('Display list of notes per entity revision'),
+      'per_entity' => t('Display list of notes per entity'),
+    ),
+  );
+
+  $form['notes_permissions'] = array(
+    '#type' => 'radios',
+    '#title' => t('Field-level permissions'),
+    '#required' => TRUE,
+    '#description' => t('"Default" mode means configuring "Administer any editor note" permission on !permissions page while "Create only" mode can be used to prevent ability to update or edit notes.',
+      array('!permissions' => l(t('Permissions'), 'admin/people/permissions'))),
+    '#default_value' => isset($settings['notes_permissions']) ? $settings['notes_permissions'] : 'default',
+    '#options' => array(
+      'default' => t('Default'),
+      'create_only' => t('Create only'),
+    ),
+  );
 
   $form['notes_size'] = array(
     '#type' => 'textfield',
@@ -583,7 +609,7 @@ function editor_note_field_widget_form(&$form, &$form_state, $field, $instance, 
       '#suffix' => '</div>',
       '#title' => check_plain($instance['label']) . ($instance['required'] ? ' ' . theme('form_required_marker') : ''),
       '#default_value' => isset($items[$delta]['note']) ? $items[$delta]['note'] : '',
-      '#description' => check_plain($instance['description']),
+      '#description' => $instance['description'],
       '#rows' => $field['settings']['notes_size'],
       '#resizable' => FALSE,
       '#weight' => $field['settings']['display'] ? 1 : 4,
@@ -716,7 +742,9 @@ function editor_note_field_insert($entity_type, $entity, $field, $instance, $lan
 function editor_note_field_update($entity_type, $entity, $field, $instance, $langcode, &$items) {
   if ($field['type'] == 'editor_note') {
     foreach ($items as $item) {
-      editor_note_save($item['note'], $entity_type, $entity, $field['field_name']);
+      if (isset($item['note'])) {
+        editor_note_save($item['note'], $entity_type, $entity, $field['field_name']);
+      }
     }
   }
 }
@@ -732,6 +760,7 @@ function editor_note_field_formatter_info() {
       'label' => t('Editor Notes table'),
       'field types' => array('editor_note'),
       'settings' => array(
+        'notes_display_mode' => 'per_revision',
         'limit' => 10,
         'order' => 'DESC',
         'display' => 1,
@@ -755,6 +784,18 @@ function editor_note_field_formatter_settings_form($field, $instance, $view_mode
   $element = array();
 
   if ($display['type'] == 'editor_note_field_formatter') {
+    $element['notes_display_mode'] = array(
+      '#type' => 'radios',
+      '#title' => t('Display mode'),
+      '#required' => TRUE,
+      '#description' => t('"Display list of notes per entity revision" means separate list of notes for each revision while "Display list of notes per entity" displays combined list of notes for all revisions.'),
+      '#default_value' => isset($settings['notes_display_mode']) ? $settings['notes_display_mode'] : 'per_revision',
+      '#options' => array(
+        'per_revision' => t('Display list of notes per entity revision'),
+        'per_entity' => t('Display list of notes per entity'),
+      ),
+    );
+
     $element['limit'] = array(
       '#type' => 'textfield',
       '#title' => t('Display a specified number of items.'),
@@ -829,12 +870,22 @@ function editor_note_field_formatter_settings_summary($field, $instance, $view_m
   $summary = array();
 
   if ($display['type'] == 'editor_note_field_formatter') {
-    $order = $settings['order'] == 'DESC' ? t('display recently updated notes first') : t('display recently updated notes last');
+    $display_mode_raw = isset($settings['notes_display_mode']) ?
+      $settings['notes_display_mode'] : 'per_revision';
+    $display_mode = $display_mode_raw == 'per_revision' ?
+      t('display list of notes per entity revision') : t('display list of notes per entity');
+    $order = $settings['order'] == 'DESC' ?
+      t('display recently updated notes first') : t('display recently updated notes last');
+
+    $summary[] = t('Display mode: @display_mode.', array('@display_mode' => $display_mode));
     $summary[] = t('Display a specified number of items: @limit.', array('@limit' => $display['settings']['limit']));
     $summary[] = t('Notes Ordering: !order.', array('!order' => $order));
+
     if ($display['settings']['limit'] > 0) {
-      $summary[] = t('Enable pagination: !enabled.', array('!enabled' => ($settings['pager']['enabled'] ? 'true' : 'false')));
-      $summary[] = t('Pagination below notes table: !pager.', array('!pager' => ($settings['pager']['pager_below'] ? 'true' : 'false')));
+      $summary[] = t('Enable pagination: !enabled.',
+        array('!enabled' => ($settings['pager']['enabled'] ? 'true' : 'false')));
+      $summary[] = t('Pagination below notes table: !pager.',
+        array('!pager' => ($settings['pager']['pager_below'] ? 'true' : 'false')));
     }
   }
 
@@ -852,6 +903,7 @@ function editor_note_field_load($entity_type, $entities, $field, $instances, $la
     foreach ($entities as $id => $entity) {
       $delta = 0;
       $notes = editor_note_get_notes($entity_type, $entity, $field, TRUE);
+
       foreach ($notes as $note_id) {
         $items[$id][$delta]['editor_note_id'] = $note_id;
         $delta++;
@@ -867,9 +919,13 @@ function editor_note_field_load($entity_type, $entities, $field, $instances, $la
  */
 function editor_note_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
-  $display['field_name'] = $field['field_name'];
+
   if ($display['type'] == 'editor_note_field_formatter') {
+    $display['field_name'] = $field['field_name'];
+    $display['settings']['notes_display_mode'] = isset($display['settings']['notes_display_mode']) ?
+      $display['settings']['notes_display_mode'] : 'per_revision';
     $notes = editor_note_get_notes($entity_type, $entity, $display);
+
     if (!empty($notes)) {
       $element[][$field['field_name']] = editor_note_get_formatted_notes($display, $notes);
     }
@@ -974,17 +1030,24 @@ function editor_note_delete($note_id) {
  */
 function editor_note_get_notes($entity_type, $entity, array $field, $id_only = FALSE) {
   list($entity_id, $revision_id, $bundle) = entity_extract_ids($entity_type, $entity);
+
   if (!isset($revision_id)) {
     $revision_id = $entity_id;
   }
+
+  $notes_display_mode = isset($field['settings']['notes_display_mode']) ?
+    $field['settings']['notes_display_mode'] : 'per_revision';
 
   $query = db_select('editor_note', 'en');
   $query->condition('en.entity_type', $entity_type, '=')
     ->condition('en.entity_id', $entity_id, '=')
     ->condition('en.bundle', $bundle, '=')
-    ->condition('en.revision_id', $revision_id, '=')
     ->condition('en.field_name', $field['field_name'], '=')
     ->orderBy('en.changed', $field['settings']['order']);
+
+  if ($notes_display_mode == 'per_revision') {
+    $query->condition('en.revision_id', $revision_id, '=');
+  }
 
   if ($id_only) {
     $ids = $query->fields('en', array('id'))->execute()->fetchAllKeyed(0, 0);
@@ -1098,19 +1161,19 @@ function editor_note_get_formatted_notes(array $field, array $notes, $widget = F
       );
 
       if ($widget) {
-        $operations = !editor_note_access_crud_operations($note_id) ? '' : theme(
+        $operations = !editor_note_access_crud_operations($field['field_name'], $note_id) ? '' : theme(
           'item_list',
           array(
             'items' => array(
               ctools_modal_text_button(
                 t('edit'),
-                'editor_note/edit/nojs/' . $note_id,
+                'editor_note/edit/nojs/' . $field['field_name'] . '/' . $note_id,
                 t('Edit the note'),
                 drupal_html_class('ctools-modal-' . $field['field_name'] . '-edit')
               ),
               ctools_modal_text_button(
                 t('remove'),
-                'editor_note/remove/nojs/' . $note_id,
+                'editor_note/remove/nojs/' . $field['field_name'] . '/' . $note_id,
                 t('Remove the note'),
                 drupal_html_class('ctools-modal-' . $field['field_name'] . '-remove')
               ),
@@ -1192,8 +1255,20 @@ function editor_note_get_formatted_notes(array $field, array $notes, $widget = F
  * @return bool
  *   Boolean indicating whether the user may perform operations on notes or not.
  */
-function editor_note_access_crud_operations($note_id) {
+function editor_note_access_crud_operations($field_name, $note_id) {
+  $field = field_info_field($field_name);
+  if (!$field) {
+    return FALSE;
+  }
+
   global $user;
+  $create_only_permission = isset($field['settings']['notes_permissions']) &&
+    $field['settings']['notes_permissions'] == 'create_only';
+
+  if ($create_only_permission && $user->uid != 1) {
+    return FALSE;
+  }
+
   $note_uid = db_query('SELECT en.uid FROM {editor_note} en WHERE id = :id',
     array(':id' => $note_id))->fetchField();
 

@@ -58,8 +58,5 @@ function feeds_tamper_explode_callback($result, $item_key, $element_key, &$field
       $out = array_merge($out, explode($settings['real_separator'], $f, $settings['limit']));
     }
   }
-  if (count($out) > 0) {
-    //die(print_r($out));
-  }
   $field = $out;
 }

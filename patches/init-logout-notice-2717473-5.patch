@@ -1,0 +1,41 @@
+diff --git a/simplesamlphp_auth.module b/simplesamlphp_auth.module
+index 847c8f5..4c329f1 100644
+--- a/simplesamlphp_auth.module
++++ b/simplesamlphp_auth.module
+@@ -157,6 +157,10 @@ function simplesamlphp_auth_init() {
+     return FALSE;
+   }
+
++  // Initialize values
++  $user_allowed_default_login = FALSE;
++
++  // Intialize global values.
+   global $user;
+   global $_simplesamlphp_auth_as;
+   global $_simplesamlphp_auth_saml_attributes;
+@@ -169,10 +173,21 @@ function simplesamlphp_auth_init() {
+   $allowed_default_login_roles = variable_get('simplesamlphp_auth_allowdefaultloginroles', array());
+
+   // Check if user is allowed default login.
+-  $user_allowed_default_login_roles = array_intersect_key($user->roles, $allowed_default_login_roles);
+-  if (variable_get('simplesamlphp_auth_allowdefaultlogin', TRUE) &&
+-    (in_array($user->uid, $allowed_uids) || !empty($user_allowed_default_login_roles))) {
+-    $user_allowed_default_login = TRUE;
++  if (variable_get('simplesamlphp_auth_allowdefaultlogin', TRUE)) {
++    // Check whether the site is using these settings
++    if (empty($allowed_default_login_users) && empty($allowed_default_login_roles)) {
++      $user_allowed_default_login = TRUE;
++    } // Check if the uid is allowed
++    elseif (in_array($user->uid, $allowed_uids)) {
++      $user_allowed_default_login = TRUE;
++    } // Check whether all local accounts can log in
++    elseif (empty($allowed_default_login_users)) {
++      // Check whether the user has any of the allowed roles
++      $user_allowed_default_login_roles = array_intersect_key($user->roles, $allowed_default_login_roles);
++      if (!empty($user_allowed_default_login_roles)) {
++        $user_allowed_default_login = TRUE;
++      }
++    }
+   }
+
+   // Logs out user if not SAML authenticated and not allowed default login.

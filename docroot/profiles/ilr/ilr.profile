@@ -93,6 +93,10 @@ function ilr_form_user_login_alter(&$form, $form_state, $form_id) {
     '#markup' => '<h2>Cornell Users</h2><p><a class="button" href="/saml_login">NetID Login</a></p><h2>No Cornell NetID?</h2>',
     '#weight' => -10,
   );
+  // Remove the saml link provided by the simplesamlphp_auth module
+  if (!empty($form['links']) && isset($form['links']['#markup'])) {
+    unset($form['links']['#markup']);
+  }
 }
 
 /**
@@ -126,11 +130,13 @@ function ilr_menu_block_blocks() {
       'depth'       => 10,
       'expanded'    => TRUE,
       'sort'        => FALSE,
+      'parent_mlid' => 0,
     ),
     'ilr-primary-menu' => array(
       // Use the array keys/values described in menu_tree_build().
       'menu_name'   => $menu,
       'title_link'  => TRUE,
+      'parent_mlid' => 0,
       'admin_title' => 'ILR Primary Menu',
       'level'       => $level,
       'follow'      => 0,

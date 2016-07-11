@@ -42,8 +42,8 @@ function editor_note_confirm_edit_page($ajax = NULL, $note_id = NULL) {
  * Builds confirmation form for editing the note which displays in popup.
  */
 function editor_note_confirm_edit_form($form, $form_state, $note_id = NULL) {
-  $note_id = isset($note_id) ? $note_id : (int) arg(3);
   $form = array();
+  $note_id = isset($note_id) ? $note_id : (int) arg(4);
   $note = editor_note_load($note_id);
 
   if ($note) {
@@ -116,7 +116,7 @@ function editor_note_confirm_edit_form($form, $form_state, $note_id = NULL) {
   }
   else {
     $form['note'] = array(
-      '#markup' => '<p>' . t('Selected note could not be loaded. Cancel action and reload the page to refresh notes widget.') . '</p>',
+      '#markup' => '<p>' . t('Selected note cannot be loaded. Cancel action and reload the page to refresh notes widget.') . '</p>',
     );
 
     $form['actions']['cancel'] = array(
@@ -230,8 +230,8 @@ function editor_note_confirm_remove_page($ajax = NULL, $note_id = NULL) {
  * Builds confirmation form for removing the note which displays in popup.
  */
 function editor_note_confirm_remove_form($form, $form_state, $note_id = NULL) {
-  $note_id = isset($note_id) ? $note_id : (int) arg(3);
   $form = array();
+  $note_id = isset($note_id) ? $note_id : (int) arg(4);
   $note = editor_note_load($note_id);
 
   if ($note) {
@@ -292,7 +292,7 @@ function editor_note_confirm_remove_form($form, $form_state, $note_id = NULL) {
   }
   else {
     $form['note'] = array(
-      '#markup' => '<p>' . t('Selected note could not be loaded. Cancel action and reload the page to refresh notes widget.') . '</p>',
+      '#markup' => '<p>' . t('Selected note cannot be loaded. Cancel action and reload the page to refresh notes widget.') . '</p>',
     );
 
     $form['actions']['cancel'] = array(
