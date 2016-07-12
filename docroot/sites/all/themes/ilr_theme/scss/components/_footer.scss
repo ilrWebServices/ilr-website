@@ -35,10 +35,8 @@ footer {
 
   .google-translate {
     position: absolute;
-    right: 1em;
     top: -2em;
     background: url(../images/flag-sprite.png) no-repeat;
-    @include clearfix;
     input {
       width: 18px;
       height: 12px;
@@ -46,6 +44,12 @@ footer {
       display: inline-block;
       margin-right: 1px;
       float: left;
+    }
+  }
+
+  .container[data-eq-state="550"], .container[data-eq-state="768"], .container[data-eq-state="widescreen"] {
+    .google-translate {
+      right: 1em;
     }
   }
 }
