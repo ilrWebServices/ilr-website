@@ -132,11 +132,11 @@ footer {
   @include clearfix;
   .container {
     .block-bean {
-      @extend %three-column;
+      @extend %one-column;
     }
-    &[data-eq-state="320"] {
+    &[data-eq-state="550"], &[data-eq-state="768"], &[data-eq-state="widescreen"] {
       .block-bean {
-        @extend %one-column;
+        @extend %three-column;
       }
     }
   }

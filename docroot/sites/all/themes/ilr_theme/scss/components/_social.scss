@@ -8,24 +8,22 @@ $social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
 }
 
 #block-bean-footer-social {
-  position: absolute;
-  bottom: 0;
-  right: 1em;
-  margin-right: 0 !important; // since bean-base is trying to take over
-
-  ul { float: right; }
-
-  .container[data-eq-state="320"] & {
-    bottom: 2em;
-    left: 0;
-
+  .container {
     ul {
-      float: left;
+      float: left !important;
       li {
         padding-right: .5em;
         padding-left: 0;
       }
     }
+  }
+
+  .container[data-eq-state="550"] &, .container[data-eq-state="768"] &, .container[data-eq-state="widescreen"] & {
+    position: absolute;
+    bottom: 0;
+    right: 1em;
+
+    ul { float: right; }
   }
 }
 
