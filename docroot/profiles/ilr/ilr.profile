@@ -34,9 +34,12 @@ function ilr_admin_paths() {
  * Implements hook_user_presave()
  */
 function ilr_user_presave(&$edit, $account, $category) {
-  $saml_attributes = simplesamlphp_auth_get_attributes();
-  if($account->is_new && !empty($saml_attributes)) {
-    $edit['field_netid'][LANGUAGE_NONE][0]['value'] = $saml_attributes['uid'][0];
+  if (module_exists('simplesamlphp_auth')) {
+    module_load_include('inc', 'simplesamlphp_auth');
+    $saml_attributes = simplesamlphp_auth_get_attributes();
+    if($account->is_new && !empty($saml_attributes)) {
+      $edit['field_netid'][LANGUAGE_NONE][0]['value'] = $saml_attributes['uid'][0];
+    }
   }
 }
 
