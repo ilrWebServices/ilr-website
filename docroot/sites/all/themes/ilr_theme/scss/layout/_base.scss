@@ -18,9 +18,6 @@
   @include add-grid(12);
   padding-top: $main-top-padding;
   position: relative;
-
-  // @include sgs-change('debug', true);
-  // @include background-grid();
   @include transition-duration(.3s);
 
   body:not(.subsite) & {
@@ -53,6 +50,7 @@
   }
 
   #content {
+    @include trailer(1);
     .ilr-video-wrapper {
       clear: both;
       @include trailer(2);
@@ -62,19 +60,19 @@
   #content, #sidebar-second {
     @include clearfix;
     padding: 0 1em 1em 1em;
-    @include trailer(1);
 
     .section {
       @include leader(.5);
     }
   }
 
-  #content-bottom {
-    clear: both;
-    article {
-      @extend %one-column;
-    }
-  }
+  //@todo: duplicate styles - delete
+  // #content-bottom {
+  //   clear: both;
+  //   article {
+  //     @extend %one-column;
+  //   }
+  // }
 
   &[data-eq-state="550"],
   &[data-eq-state="768"] {
