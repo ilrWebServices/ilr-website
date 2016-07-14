@@ -1,0 +1,48 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Visiting Fellows feature.
+ */
+
+include_once 'ilr_visiting_fellows.features.inc';
+
+/**
+ * Implements hook_preprocess_node
+ */
+function ilr_visiting_fellows_preprocess_node(&$variables) {
+  if($variables['type'] == 'visiting_fellow' && $variables['view_mode'] == 'ilr_theme__highlighted') {
+    $wrapper = ilr_get_node_wrapper($variables['node']);
+    $title = $wrapper->title->value();
+    $country = $wrapper->field_country->value();
+    $markup = "<h1 class='title'>$title<span>$country</span></h1>";
+    $variables['content']['field_country'][0]['#markup'] = $markup;
+  }
+}
+
+/**
+ * Checks for a block in the content bottom region
+ * if the visting fellow block context is active
+ * And removes the reaction if so.
+ * Fragile, given that this implementation assumes
+ * that we'll only add visting fellows to the content bottom region
+ * @see https://www.pivotaltracker.com/story/show/116696477
+ * (That's about experience reports but it's the same for this.)
+ */
+function ilr_visiting_fellows_context_load_alter(&$context) {
+  if ($context->name == 'visiting-fellow-block') {
+    if ($node = menu_get_object()) {
+      if (!empty($node->content)) { // Confirms not on edit form
+        $wrapper = ilr_get_node_wrapper($node);
+        if (!empty($wrapper->field_blocks->value())) {
+          $regions = $wrapper->field_blocks->value();
+          // Check for _any_ blocks. In the future, we may want to check to see
+          // if the block(s) includes content of type visiting fellow
+          if (!empty($regions->field_content_bottom_region)) {
+            unset($context->reactions);
+          }
+        }
+      }
+    }
+  }
+
+}
