@@ -641,6 +641,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'create experience_report content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
@@ -1187,6 +1188,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'delete own experience_report content',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'node',
   );
