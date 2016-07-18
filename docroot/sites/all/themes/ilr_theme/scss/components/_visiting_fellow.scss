@@ -1,0 +1,290 @@
+// display singularity grid for debugging layout
+// @include sgs-change('debug', true);
+// @include background-grid($color: gainsboro);
+
+body.not-front {
+  &.node-type-visiting-fellow {
+    #breadcrumb {
+      .breadcrumb {
+        @include padding-trailer(1);
+      }
+    }
+
+    #page-title {
+      display: none;
+    }
+
+    .container[data-eq-state="mobile-nav"] {
+      #main[data-eq-state="768"] {
+        .region-highlighted {
+          margin-top: 70px;
+          .group-title-and-focus {
+            @include grid-span (5,2);
+          }
+        }
+        #content {
+          @include grid-span (10,2);
+        }
+      }
+    }
+
+    .container[data-eq-state="regular-nav"] {
+      #main {
+        @include padding-leader(1);
+      }
+    }
+
+    .region-highlighted {
+      height: auto;
+      overflow: auto;
+      padding-top: 25px;
+      padding-bottom: 25px;
+      @include trailer(1.5);
+      background: $promo-color;
+
+      .group-title-and-focus {
+        text-align: center;
+        padding-left: 0;
+        #main[data-eq-state="widescreen"] & {
+          @include padding-leader(1);
+        }
+        .container[data-eq-state="mobile-nav"] & {
+          @include padding-trailer(2);
+        }
+        .field-name-field-email {
+          margin-bottom: 0;
+        }
+        span.field-label {
+          color: white;
+          float: left;
+          padding-right: .5em;
+        }
+        h1, h2, h3 {
+          color: white;
+          font-family: $font;
+          margin-bottom: 0;
+        }
+        h2, h3 {
+          font-weight: 300;
+        }
+        h1 {
+          @include adjust-font-size-to(44px);
+          line-height: 1;
+          clear: right;
+          span {
+            display: block;
+            font-size: $p-size;
+            font-weight: 300;
+          }
+        }
+        h2 {
+          @include adjust-font-size-to(28px);
+          @include adjust-leading-to(1);
+          clear: right;
+        }
+        h3 {
+          @include adjust-font-size-to(19px);
+          @include adjust-leading-to(1);
+          clear: right;
+        }
+      }
+
+      .field-name-field-image {
+        text-align: center;
+        img {
+          height: 200px;
+          width: 200px;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    #main {
+      padding-top: 0;
+      @include grid-span(12);
+      @include add-gutter(1/3);
+      #content {
+        .section {
+          margin-top: 0;
+        }
+      }
+    }
+
+    #main {
+      #content {
+        @include grid-span (10,2);
+        padding: 0 0 1em 0;
+        .field {
+          overflow: hidden;
+        }
+        .field-name-field-image {
+          text-align: center; //for mobile
+        }
+      }
+
+      #sidebar-first {
+        @include grid-span (3,1);
+      }
+    }
+
+    #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+      .region-highlighted {
+        margin-top: 50px;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 270px;
+        overflow: visible;
+        .group-title-and-focus {
+          @include grid-span (4,3);
+          text-align: left;
+          @include padding-leader(1);
+        }
+        .field-name-field-image {
+          @include grid-span (6,7);
+          text-align: left;
+          img {
+            position: relative;
+            z-index: 2;
+            top: -50px;
+            height: 320px;
+            width: 320px;
+          }
+        }
+      }
+    }
+
+    #main[data-eq-state="550"] {
+      .region-highlighted {
+        .field-name-field-image {
+          img {
+            height: 270px;
+            width: 270px;
+          }
+        }
+      }
+    }
+
+    #main[data-eq-state="768"] {
+      #content {
+        @include grid-span (7,4);
+        //@todo: add callout/quote
+
+        .field-name-field-image {
+          text-align: left;
+        }
+      }
+    }
+
+    #main[data-eq-state="widescreen"] {
+      #content {
+        @include grid-span (8,4);
+        //@todo: add callout/quote
+
+        .field-name-field-image {
+          text-align: left;
+        }
+      }
+    }
+
+    #content-bottom {
+      @include padding-leader(1);
+      @include padding-trailer(2);
+      padding-left: 3em;
+      padding-right: 3em;
+      background: white;
+      .region-content-bottom {
+        .tagged-content {
+          overflow: visible; //stop name from being cut off in circle nav on mobile
+        }
+        h2 {
+          @include adjust-font-size-to(19px);
+          @include adjust-leading-to(1);
+          display: block !important;
+          visibility: visible;
+          color: $promo-color;
+          margin: 0;
+        }
+        article {
+          @extend %one-column;
+          display: none;
+          border: none;
+          margin-top: 2em;
+          margin-bottom: 0;
+          &:nth-of-type(1) {
+            display: block;
+          }
+          h3 {
+            display: none;
+          }
+          .field-name-field-image {
+            margin: 0 auto;
+            background: $promo-color;
+            border-radius: 50%;
+            height: 150px;
+            width: 150px;
+            h2 {
+              text-align: center;
+              opacity: 1;
+            }
+            img {
+              border-radius: 50%;
+              height: 150px;
+              width: 150px;
+            }
+          }
+          .field-name-field-teaser {
+            display: none;
+          }
+        }
+      }
+
+      &[data-eq-state="550"] {
+        .region-content-bottom {
+          article {
+            @extend %two-column-masonry;
+            margin-left: 0;
+            display: block;
+          }
+        }
+      }
+
+      &[data-eq-state="768"], &[data-eq-state="widescreen"] {
+        .region-content-bottom {
+          article {
+            @extend %four-column;
+            margin-top: 110px;
+            display: block;
+            .field-name-field-image {
+              margin-top: -60px;
+              position: relative;
+              text-align: middle;
+              h2 {
+                opacity: 0;
+                position: relative;
+                z-index: 5;
+                padding: 0;
+                top: -95px;
+                a {
+                  color: white;
+                }
+              }
+              img {
+                position: relative;
+                z-index: 2;
+                &:hover {
+                  background: $promo-color;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &[data-eq-state="widescreen"] {
+        .section {
+          max-width: 960px;
+        }
+      }
+    }
+  }
+}
