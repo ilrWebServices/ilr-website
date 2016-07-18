@@ -3,6 +3,7 @@ description = ILR Visiting Fellows content type fellows
 core = 7.x
 package = ILR
 version = 7.x-1.0
+dependencies[] = basic_page
 dependencies[] = ctools
 dependencies[] = email
 dependencies[] = features

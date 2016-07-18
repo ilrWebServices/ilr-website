@@ -14,7 +14,7 @@ function ilr_visiting_fellows_preprocess_node(&$variables) {
     $wrapper = ilr_get_node_wrapper($variables['node']);
     $title = $wrapper->title->value();
     $country = $wrapper->field_country->value();
-    $markup = "<h1 class='title'>$title<span>$country</span></h1>";
+    $markup = "<h1 class='title'>$title</h1><span class=\"field-label\">Country of origin: </span><h2 class=\"field field-name-field-country field-type-text field-label-inline inline\">$country</h2>";
     $variables['content']['field_country'][0]['#markup'] = $markup;
   }
 }

@@ -56,8 +56,8 @@ function ilr_visiting_fellows_field_group_info() {
     'children' => array(
       0 => 'field_country',
       1 => 'field_dates_as_text',
-      2 => 'field_full_name',
-      3 => 'field_email',
+      2 => 'field_email',
+      3 => 'field_full_name',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

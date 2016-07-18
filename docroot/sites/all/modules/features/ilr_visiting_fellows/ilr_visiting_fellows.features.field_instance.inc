@@ -31,7 +31,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -129,13 +129,13 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'weight' => 3,
       ),
       'ilr_theme__highlighted' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -151,7 +151,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'h2',
+    'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_country',
     'label' => 'Country of origin',
     'required' => 1,
@@ -195,7 +195,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -255,7 +255,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 8,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -309,7 +309,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -457,7 +457,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
