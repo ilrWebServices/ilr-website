@@ -61,15 +61,14 @@ function ilr_visiting_fellows_field_group_info() {
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
-      'formatter' => '',
+      'label' => 'Title and Focus',
       'instance_settings' => array(
-        'element' => 'div',
-        'show_label' => 0,
-        'label_element' => 'div',
-        'classes' => '',
-        'attributes' => '',
-        'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-title-and-focus field-group-html-element',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
       ),
     ),
   );
