@@ -7,6 +7,19 @@
 include_once 'ilr_visiting_fellows.features.inc';
 
 /**
+ * Implements hook_node_view().
+ * @todo: Refactor this and similar code in experience reports. Move to theme?
+ */
+function ilr_visiting_fellows_node_view($node, $view_mode, $langcode) {
+  if($node->type == 'visiting_fellow') {
+    drupal_add_js(drupal_get_path('module', 'ilr_visiting_fellows') . '/ilr_visiting_fellows.js', array(
+        'type' => 'file',
+        'scope' => 'footer'
+    ));
+  }
+}
+
+/**
  * Implements hook_preprocess_node
  */
 function ilr_visiting_fellows_preprocess_node(&$variables) {
