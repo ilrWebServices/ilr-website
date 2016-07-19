@@ -15,10 +15,7 @@ function ilr_experience_reports_init() {
     drupal_add_js(drupal_get_path('module', 'ilr_experience_reports') . '/ilr_experience_reports.js', array(
         'type' => 'file',
         'scope' => 'footer'
-      ));
-
-    $inview_js = libraries_get_path('inview') . '/jquery.inview.min.js';
-    drupal_add_js($inview_js, array('type' => 'file', 'scope' => 'footer'));
+    ));
   }
 }
 
