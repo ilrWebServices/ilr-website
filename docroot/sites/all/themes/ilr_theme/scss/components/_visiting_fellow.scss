@@ -56,8 +56,7 @@ body.not-front {
         }
         span.field-label {
           color: white;
-          float: left;
-          padding-right: .5em;
+          font-weight: 400;
         }
         h1, h2, h3 {
           color: white;
@@ -78,7 +77,6 @@ body.not-front {
           font-weight: 300;
           @include adjust-font-size-to(19px);
           @include adjust-leading-to(1);
-          clear: right;
         }
         a, a:visited {
           color: lighten($promo-color, 33%);
@@ -139,6 +137,14 @@ body.not-front {
           @include grid-span (4,3);
           text-align: left;
           @include padding-leader(1);
+          span.field-label {
+            float: left;
+            font-weight: 300;
+            padding-right: .5em;
+          }
+          h2, h3 {
+            clear: right;
+          }
         }
         .field-name-field-image {
           @include grid-span (6,7);
