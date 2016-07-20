@@ -247,6 +247,11 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
       unset($form['field_prof_field_scheinman'][LANGUAGE_NONE]['#options']['Security professional']);
       unset($form['field_prof_field_scheinman'][LANGUAGE_NONE]['#options']['Attorney']);
       break;
+
+    // Alumni event registration form, no longer allow 0 tickets
+    case 'ilr_alumni_association_event_reg_entityform_edit_form':
+      unset ($form['field_tickets_for_aa_members'][LANGUAGE_NONE]['#options'][0]);
+      break;
   }
 }
 
