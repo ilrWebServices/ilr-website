@@ -52,7 +52,7 @@
 
 @mixin addHighlightColors($selector, $css-property, $opacity) {
   $content-types: basic-page, promo, event, spotlight, student-portrait, news-item, youtube-video, experience-report, visiting-fellow;
-  $content-type-colors: $basic-page-color, $promo-color, $event-color, $spotlight-color, $student-portrait-color, $news-color, $video-color, $promo-color, $promo-color;
+  $content-type-colors: $basic-page-color, $promo-color, $event-color, $spotlight-color, $student-portrait-color, $news-color, $video-color, $promo-color, $spotlight-color;
   @for $i from 1 through length($content-types) {
     .#{nth($content-types, $i)}#{$selector} {
       #{$css-property}: rgba(nth($content-type-colors, $i), $opacity);

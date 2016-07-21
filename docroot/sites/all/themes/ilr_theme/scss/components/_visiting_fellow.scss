@@ -40,7 +40,7 @@ body.not-front {
       padding-top: 25px;
       padding-bottom: 25px;
       @include trailer(1.5);
-      background: $promo-color;
+      background: $spotlight-color;
 
       .group-title-and-focus {
         text-align: center;
@@ -79,8 +79,8 @@ body.not-front {
           @include adjust-leading-to(1);
         }
         a, a:visited {
-          color: lighten($promo-color, 33%);
-          border-bottom: 1px solid lighten($promo-color, 33%);
+          color: lighten($spotlight-color, 60%);
+          border-bottom: 1px solid lighten($spotlight-color, 60%);
         }
         a:hover, a:focus {
           color: $gray-light;
@@ -208,7 +208,7 @@ body.not-front {
           @include adjust-leading-to(1);
           display: block !important;
           visibility: visible;
-          color: $promo-color;
+          color: $spotlight-color;
           margin: 0;
         }
         article {
@@ -225,7 +225,7 @@ body.not-front {
           }
           .field-name-field-image {
             margin: 0 auto;
-            background: $promo-color;
+            background: $spotlight-color;
             border-radius: 50%;
             height: 150px;
             width: 150px;
@@ -279,7 +279,7 @@ body.not-front {
                 position: relative;
                 z-index: 2;
                 &:hover {
-                  background: $promo-color;
+                  background: $spotlight-color;
                 }
               }
             }
