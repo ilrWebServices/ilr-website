@@ -445,6 +445,7 @@ features[linkit_profiles][] = link_fields
 features[taxonomy][] = category_type
 features[taxonomy][] = continuing_education_credits
 features[taxonomy][] = course_format
+features[taxonomy][] = course_keywords
 features[taxonomy][] = course_sponsor
 features[taxonomy][] = course_topic
 features[variable][] = pathauto_taxonomy_term_category_type_pattern

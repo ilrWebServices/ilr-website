@@ -39,6 +39,5 @@ features[variable][] = node_options_news_item
 features[variable][] = node_preview_news_item
 features[variable][] = node_submitted_news_item
 features[variable][] = pathauto_node_news_item_pattern
-features[variable][] = pathauto_taxonomy_term_tags_pattern
 features[views_view][] = news_archive
 project path = sites/all/modules/features
