@@ -69,6 +69,24 @@ function forms_update_7006() {
 }
 
 /**
+ * 7/25/2016: Delete fields from contact_ilr_admissions
+ * entityform type
+ */
+function forms_update_7007() {
+  // field_send_transfer_info isn't used anywhere else, so get
+  //   rid of it altogether
+  field_delete_field('field_send_transfer_info');
+  // These two are used elsewhere, so just delete the instances
+  // Can't put them into an array because it'll be duplicate keys
+  if ($instance = field_info_instance('entityform', 'field_high_school', 'contact_ilr_admissions')) {
+    field_delete_instance($instance);
+  }
+  if ($instance = field_info_instance('entityform', 'field_year_as_list_text', 'contact_ilr_admissions')) {
+    field_delete_instance($instance);
+  }
+}
+
+/**
  * Delete array of field instances
  * @param $fields_info
  */
