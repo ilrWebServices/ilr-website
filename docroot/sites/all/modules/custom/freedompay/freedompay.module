@@ -786,6 +786,21 @@ function _freedompay_get_order_summary() {
 }
 
 /**
+ * Creates a string for payment details if applicable
+ */
+function _freedompay_get_payment_details_for_email($order_id) {
+  $details = '';
+  if ($invoice = FreedompayInvoice::getInvoiceByOrderId($order_id)) {
+    $total = $invoice->amount;
+    $invoice_number = $invoice->formatInvoiceNumber();
+    $details = ($total > 0)
+    ? "Your credit card has been charged \$$total, and the invoice number is $invoice_number. Please retain this for your records.\n"
+    : '';
+  }
+  return $details;
+}
+
+/**
  * The service url defaults to production
  * You can/should override this when testing by setting this variable to any other value
  */

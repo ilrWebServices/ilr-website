@@ -1101,11 +1101,11 @@ function _forms_get_event_info_for_email($entityform) {
 }
 
 /**
- * Wrapper function for _elavon_get_payment_details_for_email()
+ * Wrapper function for _freedompay_get_payment_details_for_email()
  */
 function _forms_get_payment_details_for_email($entityform) {
-  if (module_exists('elavon') && _elavon_entityform_is_payment_form($entityform)) {
-    return _elavon_get_payment_details_for_email($entityform);
+  if (module_exists('freedompay') && freedompay_entityform_is_payment_form($entityform)) {
+    return _freedompay_get_payment_details_for_email($entityform->entityform_id);
   }
   return '';
 }
