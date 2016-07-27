@@ -77,11 +77,13 @@ function forms_update_7007() {
   //   rid of it altogether
   field_delete_field('field_send_transfer_info');
   // These two are used elsewhere, so just delete the instances
-  $fields_info = array(
-    'contact_ilr_admissions' => 'field_high_school',
-    'contact_ilr_admissions' => 'field_year_as_list_text',
-  );
-  _forms_delete_entityform_field_instances($fields_info);
+  // Can't put them into an array because it'll be duplicate keys
+  if ($instance = field_info_instance('entityform', 'field_high_school', 'contact_ilr_admissions')) {
+    field_delete_instance($instance);
+  }
+  if ($instance = field_info_instance('entityform', 'field_year_as_list_text', 'contact_ilr_admissions')) {
+    field_delete_instance($instance);
+  }
 }
 
 /**
