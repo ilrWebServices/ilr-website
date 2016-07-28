@@ -723,10 +723,6 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
     case 'check_your_eligibility_milr':
       $options = _forms_year_relative_options(4,-70);
       break;
-    case 'contact_ilr_admissions':
-      $options = _forms_year_relative_options(-5,5);
-      $options[] = 'other';
-      break;
     case 'fex_wisp_sponsor_registration':
       $options = _forms_year_relative_options(0,-70);
       break;
