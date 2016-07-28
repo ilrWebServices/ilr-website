@@ -25,12 +25,10 @@ function ilr_paragraphs_preprocess_field(&$variables) {
 
   // Add paragraph bundle type to the class of every item contained in a paragraph field.
   if ($variables['element']['#field_type'] == 'paragraphs') {
-    foreach ($variables['items'] as &$item) {
-      $bundle_type = array_values($item['entity']['paragraphs_item'])[0]['#bundle'];
-      $item['entity']['classes_array'][] = 'paragraph-type-' . drupal_clean_css_identifier(strtolower($bundle_type));
-      $item['entity']['classes'] = implode(' ', $item['entity']['classes_array']);
+    foreach ($variables['items'] as $key => $item) {
+      $bundle = array_values($item['entity']['paragraphs_item'])[0]['#bundle'];
+      $variables['items'][$key]['#classes'] = drupal_html_class("paragraph-type-$bundle");
     }
-    unset($item);
   }
 }
 
