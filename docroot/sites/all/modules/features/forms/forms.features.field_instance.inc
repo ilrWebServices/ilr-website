@@ -3397,9 +3397,10 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_company',
-    'label' => 'Organization',
-    'required' => 0,
+    'label' => 'Union/Organization',
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -3457,9 +3458,10 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_email',
     'label' => 'Email',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -3511,9 +3513,10 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_full_name',
     'label' => 'Name',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -3571,9 +3574,10 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_job_title',
-    'label' => 'Title',
-    'required' => 0,
+    'label' => 'Job Title',
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -34903,6 +34907,7 @@ function forms_field_default_field_instances() {
   t('Union position');
   t('Union position (nominee)');
   t('Union title (nominee)');
+  t('Union/Organization');
   t('Upload document, image, or screen shot, if applicable');
   t('Upload your resume or CV');
   t('Video Recording: Additional Info');
