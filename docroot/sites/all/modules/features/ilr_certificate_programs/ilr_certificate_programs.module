@@ -17,7 +17,7 @@ function ilr_certificate_programs_preprocess_node(&$variables) {
     $description = $wrapper->field_description_long->value();
     $descr_value = $description['value'];
 
-    $markup = "<h1 class='title'>$title</h1><h2 class=\"field field-name-field-description-long field-type-text-long field-label-hidden \">$descr_value</h2>";
+    $markup = "<h1 class='title'>$title</h1><div class=\"field field-name-field-description-long field-type-text-long field-label-hidden \">$descr_value</div>";
     $variables['content']['field_description_long'][0]['#markup'] = $markup;
   }
 }
