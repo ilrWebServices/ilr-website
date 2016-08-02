@@ -75,12 +75,10 @@ body.not-front {
         }
         a, a:visited {
           color: lighten($spotlight-color, 60%);
-          // border-bottom: 1px solid lighten($spotlight-color, 60%);
           border-bottom: none;
         }
         a:hover, a:focus {
           color: $gray-light;
-          // border-bottom: 1px solid $gray-light;
           border-bottom: none;
         }
       }
