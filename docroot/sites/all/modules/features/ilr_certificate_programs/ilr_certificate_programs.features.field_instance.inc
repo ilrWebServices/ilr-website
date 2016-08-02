@@ -52,7 +52,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 48,
+      'weight' => 11,
     ),
   );
 
@@ -106,7 +106,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 44,
+      'weight' => 9,
     ),
   );
 
@@ -160,7 +160,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 46,
+      'weight' => 10,
     ),
   );
 
@@ -177,7 +177,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'field_formatter_label' => '',
-          'links' => TRUE,
+          'links' => 1,
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
@@ -218,7 +218,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 43,
+      'weight' => 8,
     ),
   );
 
@@ -231,13 +231,13 @@ function ilr_certificate_programs_field_default_field_instances() {
     'description' => 'Include Outcomes/Benefits, Rationale, Who should enroll',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -273,7 +273,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 39,
+      'weight' => 5,
     ),
   );
 
@@ -353,7 +353,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 33,
+      'weight' => 3,
     ),
   );
 
@@ -370,8 +370,8 @@ function ilr_certificate_programs_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
         ),
-        'type' => 'link_default',
-        'weight' => 1,
+        'type' => 'link_label',
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -424,7 +424,7 @@ function ilr_certificate_programs_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 37,
+      'weight' => 6,
     ),
   );
 
@@ -479,7 +479,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 41,
+      'weight' => 7,
     ),
   );
 
@@ -525,7 +525,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 50,
+      'weight' => 12,
     ),
   );
 
@@ -579,7 +579,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 35,
+      'weight' => 4,
     ),
   );
 
