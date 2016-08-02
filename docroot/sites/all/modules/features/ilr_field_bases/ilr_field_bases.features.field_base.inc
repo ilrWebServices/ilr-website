@@ -1317,6 +1317,25 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
+  // Exported field_base: 'field_certification'.
+  $field_bases['field_certification'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_certification',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_chairperson'.
   $field_bases['field_chairperson'] = array(
     'active' => 1,
@@ -2071,7 +2090,7 @@ function ilr_field_bases_field_default_field_bases() {
   // Exported field_base: 'field_course'.
   $field_bases['field_course'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_course',
@@ -2086,6 +2105,9 @@ function ilr_field_bases_field_default_field_bases() {
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
+          'reference-machinename' => array(
+            'status' => 0,
+          ),
           'views-select-list' => array(
             'status' => 0,
           ),
@@ -2094,6 +2116,7 @@ function ilr_field_bases_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'certificate_programs' => 'certificate_programs',
           'sdc_course' => 'sdc_course',
         ),
       ),
@@ -6533,6 +6556,25 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_prerequisites_requirements'.
+  $field_bases['field_prerequisites_requirements'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_prerequisites_requirements',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_price'.
