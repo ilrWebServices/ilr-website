@@ -1,0 +1,80 @@
+body.node-type-certificate-programs {
+  .submitted {
+    display: none;
+  }
+
+  #page-title {
+    display: none;
+  }
+
+  .container[data-eq-state="mobile-nav"] {
+    #main[data-eq-state="768"] {
+      #content {
+        @include grid-span (10,2);
+      }
+    }
+  }
+
+  #main {
+    #content {
+      @include grid-span (10,2);
+      padding: 0 0 1em 0;
+      // .field {
+      //   overflow: hidden;
+      // }
+      .field-name-field-image {
+        text-align: center;
+      }
+
+      .field-name-field-prerequisites-requirements {
+        @include trailer(1);
+        border-bottom: 1px solid $gray-medium;
+      }
+
+      .field-name-field-course {
+        article {
+          h2 {
+            @include trailer(0);
+            a {
+              font-family: $font;
+              font-size: 22px;
+              font-weight: 300;
+              color: $spotlight-color
+            }
+          }
+          .group-main-content { //temp display until teaser view is fixed
+            height: 80px;
+            overflow: hidden;
+          }
+        }
+      }
+
+      .field-name-field-course + h3.field-label {
+        @include padding-leader(1);
+        border-top: 1px solid $gray-medium;
+      }
+    }
+
+    #sidebar-first {
+      @include grid-span (3,1);
+    }
+  }
+
+  #main[data-eq-state="768"] {
+    #content {
+      @include grid-span (7,4);
+      .field-name-field-image {
+        text-align: left;
+      }
+    }
+  }
+
+  #main[data-eq-state="widescreen"] {
+    #content {
+      @include grid-span (8,4);
+      .field-name-field-image {
+        text-align: left;
+      }
+    }
+  }
+}
