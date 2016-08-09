@@ -50,7 +50,6 @@ function conditional_fields_features_export_render($module_name, $data, $export 
 
     if (isset($dependencies[$entity]) && isset($dependencies[$entity][$bundle])) {
       $info = $dependencies[$entity][$bundle];
-      $delta[$option] = 0;
 
       // Ensure that dependencies are always exported in the same order to
       // avoid fake overrides.
@@ -59,15 +58,14 @@ function conditional_fields_features_export_render($module_name, $data, $export 
       foreach ($info['dependents'] as $dependent_field_name => $dependees) {
         foreach ($dependees as $dependee) {
           $code[] = '';
-          $code[] = '  $items["' . $option . ':' . $delta[$option] . '"] = array(';
+          $code[] = '  $items[] = array(';
           $code[] = "    'entity' => '" . $entity . "',";
           $code[] = "    'bundle' => '" . $bundle . "',";
           $code[] = "    'dependent' => '" . $dependent_field_name . "',";
           $code[] = "    'dependee' => '" . $dependee['dependee'] . "',";
+
           $code[] = "    'options' => " . features_var_export($dependee['options'], '    ') . ',';
           $code[] = '  );';
-
-          $delta[$option]++;
         }
       }
     }
