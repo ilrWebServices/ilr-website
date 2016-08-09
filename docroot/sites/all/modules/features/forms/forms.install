@@ -107,6 +107,20 @@ function _forms_delete_entityform_field_instances($fields_info) {
 }
 
 /**
+* Delete multiple field instances from the same entityform
+* @param $form_id
+* @param $field_names
+*/
+function _forms_delete_fields_from_one_entityform($form_id, $field_names) {
+  foreach ($field_names as $field_name) {
+    $fields_info = array(
+      $form_id => $field_name,
+    );
+    _forms_delete_entityform_field_instances($fields_info);
+  }
+}
+
+/**
  * Delete entityform submissions
  * @param $entityformtype
  */
