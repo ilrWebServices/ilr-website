@@ -201,7 +201,6 @@ body.not-front {
         h2 {
           @include adjust-font-size-to(19px);
           @include adjust-leading-to(1);
-          display: block !important;
           visibility: visible;
           color: $spotlight-color;
           margin: 0;
@@ -254,20 +253,23 @@ body.not-front {
         .region-content-bottom {
           article {
             @extend %four-column;
-            margin-top: 110px;
+            margin-top: 3em;
             display: block;
             .field-name-field-image {
-              margin-top: -60px;
               position: relative;
-              text-align: middle;
               h2 {
                 opacity: 0;
                 position: relative;
                 z-index: 5;
                 padding: 0;
-                top: -95px;
+                top: -157px; //position at top of circle
+                height: 0;
+                line-height: 150px; //center vertically
                 a {
                   color: white;
+                  display: inline-block;
+                  vertical-align: middle;
+                  line-height: 1.2; //offset large line-height of h2
                 }
               }
               img {
