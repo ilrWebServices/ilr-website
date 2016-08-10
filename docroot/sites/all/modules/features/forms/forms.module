@@ -400,10 +400,46 @@ function _forms_process_default(&$entityform) {
 }
 
 /**
- * Process Collective Bargaining Videos tracking - set cookie, then do normal processing, then
- * redirect to the list of videos.
+ * Process Collective Bargaining Videos tracking
+ * - Add to mailchimp list and segment
+ * - Trigger automation workflow
+ * - set cookie and do normal processing
+ * - redirect to the list of videos.
  */
 function _process_collective_bargaining_videos(&$entityform) {
+  if (module_exists('mailchimp')) {
+    $entityform_wrapper = _forms_entityform_wrapper($entityform);
+    $email = $entityform_wrapper->field_email->value();
+    $wi_list = '4346ff0fee';
+    $mc_lists = mailchimp_get_api_object('MailchimpLists');
+    if (!mailchimp_is_subscribed($wi_list, $email)) {
+      $first_last_name = _forms_first_last_name_from_full($entityform_wrapper->field_full_name->value());
+      $parameters = [
+        'status_if_new' => 'subscribed',
+        'merge_fields' => [
+          'FNAME' => $first_last_name['first_name'],
+          'LNAME' => $first_last_name['last_name'],
+          'MMERGE3' => $entityform_wrapper->field_job_title->value(),
+          'MMERGE4' => $entityform_wrapper->field_company->value()
+        ],
+      ];
+      $mc_lists->addOrUpdateMember($wi_list, $email, $parameters);
+    }
+    // Add them to the segment
+    $cb_video_segment = '65325';
+    $mc_lists->addSegmentMember($wi_list, $cb_video_segment, $email);
+    // Add them to the correct automation workflow
+    $mc_auto = mailchimp_get_api_object('MailchimpAutomations');
+    $workflow_id = '4e3da78a41';
+    $workflow_email_id = 'a87de7d1e5';
+    try {
+      $result = $mc_auto->addWorkflowEmailSubscriber($workflow_id, $workflow_email_id, $email);
+    }
+    catch (Exception $e) {
+      // During testing, exceptions were getting thrown
+      // if the user has already received this particular email
+    }
+  }
   user_cookie_save(array ('cbvideoinfo' => 'yes'));
   _forms_process_default($entityform);
   _forms_collective_bargaining_videos_redirect();
@@ -722,10 +758,6 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
       break;
     case 'check_your_eligibility_milr':
       $options = _forms_year_relative_options(4,-70);
-      break;
-    case 'contact_ilr_admissions':
-      $options = _forms_year_relative_options(-5,5);
-      $options[] = 'other';
       break;
     case 'fex_wisp_sponsor_registration':
       $options = _forms_year_relative_options(0,-70);
@@ -1101,11 +1133,11 @@ function _forms_get_event_info_for_email($entityform) {
 }
 
 /**
- * Wrapper function for _elavon_get_payment_details_for_email()
+ * Wrapper function for _freedompay_get_payment_details_for_email()
  */
 function _forms_get_payment_details_for_email($entityform) {
-  if (module_exists('elavon') && _elavon_entityform_is_payment_form($entityform)) {
-    return _elavon_get_payment_details_for_email($entityform);
+  if (module_exists('freedompay') && freedompay_entityform_is_payment_form($entityform)) {
+    return _freedompay_get_payment_details_for_email($entityform->entityform_id);
   }
   return '';
 }
@@ -1157,6 +1189,16 @@ function _forms_usage_page() {
   }
   $content .= "</ol>\n";
   return $content;
+}
+
+function _forms_first_last_name_from_full($full_name) {
+  $parts = explode(" ", $full_name);
+  $last_name = array_pop($parts);
+  $first_name = implode(" ", $parts);
+  return [
+    'first_name' => $first_name,
+    'last_name' => $last_name,
+  ];
 }
 
 /**

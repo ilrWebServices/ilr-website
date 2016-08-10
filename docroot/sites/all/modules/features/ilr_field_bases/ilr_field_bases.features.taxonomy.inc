@@ -33,6 +33,14 @@ function ilr_field_bases_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'course_keywords' => array(
+      'name' => 'Course Keywords',
+      'machine_name' => 'course_keywords',
+      'description' => 'Keywords from SDC Listings',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'course_sponsor' => array(
       'name' => 'Course Sponsor',
       'machine_name' => 'course_sponsor',

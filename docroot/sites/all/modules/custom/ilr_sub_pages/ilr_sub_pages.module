@@ -136,12 +136,14 @@ function ilr_sub_pages_node_form_validate($form, &$form_state) {
  * Or if it's a subpage enabled bundle and the alias has changed
  */
 function ilr_sub_pages_pathauto_alias_alter(&$alias, array &$context) {
-  $node = $context['data']['node'];
-  if ($context['op'] == 'insert' && isset($node->ilr_default_menu_parent)) {
-    $alias = _ilr_sub_pages_set_child_alias($node);
-  }
-  elseif ($context['op'] == 'update' && _ilr_sub_pages_is_child_page($node)) {
-    $alias = _ilr_sub_pages_set_child_alias($node);
+  if (isset($context['data']['node'])) {
+    $node = $context['data']['node'];
+    if ($context['op'] == 'insert' && isset($node->ilr_default_menu_parent)) {
+      $alias = _ilr_sub_pages_set_child_alias($node);
+    }
+    elseif ($context['op'] == 'update' && _ilr_sub_pages_is_child_page($node)) {
+      $alias = _ilr_sub_pages_set_child_alias($node);
+    }
   }
 }
 

@@ -3397,9 +3397,10 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_company',
-    'label' => 'Organization',
-    'required' => 0,
+    'label' => 'Union/Organization',
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -3457,9 +3458,10 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_email',
     'label' => 'Email',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -3511,9 +3513,10 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_full_name',
     'label' => 'Name',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -3571,9 +3574,10 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_job_title',
-    'label' => 'Title',
-    'required' => 0,
+    'label' => 'Job Title',
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -3672,13 +3676,13 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 18,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 18,
       ),
     ),
     'entity_type' => 'entityform',
@@ -3700,6 +3704,110 @@ function forms_field_default_field_instances() {
   // Exported field_instance:
   // 'entityform-contact_ilr_admissions-field_address_line_1'.
   $field_instances['entityform-contact_ilr_admissions-field_address_line_1'] = array(
+    'bundle' => 'contact_ilr_admissions',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 15,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_address_line_1',
+    'label' => 'Street address',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-contact_ilr_admissions-field_anticipate_cu_entry_markup'.
+  $field_instances['entityform-contact_ilr_admissions-field_anticipate_cu_entry_markup'] = array(
+    'bundle' => 'contact_ilr_admissions',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'markup',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'markup_default',
+        'weight' => 7,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_anticipate_cu_entry_markup',
+    'label' => 'Anticipated Cornell entry date (semester and year)',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-contact_ilr_admissions-field_city'.
+  $field_instances['entityform-contact_ilr_admissions-field_city'] = array(
     'bundle' => 'contact_ilr_admissions',
     'default_value' => NULL,
     'deleted' => 0,
@@ -3734,110 +3842,6 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
-    'field_name' => 'field_address_line_1',
-    'label' => 'Street address',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 18,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'entityform-contact_ilr_admissions-field_anticipate_cu_entry_markup'.
-  $field_instances['entityform-contact_ilr_admissions-field_anticipate_cu_entry_markup'] = array(
-    'bundle' => 'contact_ilr_admissions',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'markup',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'markup_default',
-        'weight' => 7,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_anticipate_cu_entry_markup',
-    'label' => 'Anticipated Cornell entry date (semester and year)',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'markup',
-      'settings' => array(),
-      'type' => 'markup',
-      'weight' => 8,
-    ),
-  );
-
-  // Exported field_instance: 'entityform-contact_ilr_admissions-field_city'.
-  $field_instances['entityform-contact_ilr_admissions-field_city'] = array(
-    'bundle' => 'contact_ilr_admissions',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 17,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 15,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 15,
-      ),
-    ),
-    'entity_type' => 'entityform',
     'field_name' => 'field_city',
     'label' => 'City',
     'required' => 1,
@@ -3857,7 +3861,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 19,
+      'weight' => 18,
     ),
   );
 
@@ -3935,7 +3939,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'download' => array(
         'label' => 'above',
@@ -3944,7 +3948,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'table' => array(
         'label' => 'above',
@@ -3953,12 +3957,13 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_country',
-    'label' => 'Home state or country',
+    'label' => 'Home country',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -3976,7 +3981,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -4055,7 +4060,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'download' => array(
         'label' => 'above',
@@ -4064,7 +4069,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'table' => array(
         'label' => 'above',
@@ -4073,7 +4078,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4096,7 +4101,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 7,
     ),
   );
 
@@ -4266,66 +4271,6 @@ function forms_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'entityform-contact_ilr_admissions-field_high_school'.
-  $field_instances['entityform-contact_ilr_admissions-field_high_school'] = array(
-    'bundle' => 'contact_ilr_admissions',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_high_school',
-    'label' => 'High school',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance:
   // 'entityform-contact_ilr_admissions-field_last_name'.
   $field_instances['entityform-contact_ilr_admissions-field_last_name'] = array(
     'bundle' => 'contact_ilr_admissions',
@@ -4399,19 +4344,19 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'markup_default',
-        'weight' => 21,
+        'weight' => 19,
       ),
       'download' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 19,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 19,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4426,7 +4371,7 @@ function forms_field_default_field_instances() {
       'module' => 'markup',
       'settings' => array(),
       'type' => 'markup',
-      'weight' => 17,
+      'weight' => 16,
     ),
   );
 
@@ -4444,7 +4389,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 20,
+        'weight' => 3,
       ),
       'download' => array(
         'label' => 'above',
@@ -4453,7 +4398,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => 'Phone',
         ),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 3,
       ),
       'table' => array(
         'label' => 'above',
@@ -4462,7 +4407,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => 'Phone',
         ),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4485,7 +4430,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 22,
+      'weight' => 4,
     ),
   );
 
@@ -4540,64 +4485,6 @@ function forms_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'entityform-contact_ilr_admissions-field_send_transfer_info'.
-  $field_instances['entityform-contact_ilr_admissions-field_send_transfer_info'] = array(
-    'bundle' => 'contact_ilr_admissions',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 15,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'Transfer info',
-        ),
-        'type' => 'list_default',
-        'weight' => 13,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'Transfer info',
-        ),
-        'type' => 'list_default',
-        'weight' => 13,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_send_transfer_info',
-    'label' => 'Send information about transferring to the ILR School',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 16,
     ),
   );
 
@@ -4674,7 +4561,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 18,
+        'weight' => 17,
       ),
       'download' => array(
         'label' => 'above',
@@ -4683,7 +4570,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 16,
+        'weight' => 15,
       ),
       'table' => array(
         'label' => 'above',
@@ -4692,7 +4579,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 16,
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4709,17 +4596,17 @@ function forms_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 20,
+      'weight' => 19,
     ),
   );
 
   // Exported field_instance:
-  // 'entityform-contact_ilr_admissions-field_year_as_list_text'.
-  $field_instances['entityform-contact_ilr_admissions-field_year_as_list_text'] = array(
+  // 'entityform-contact_ilr_admissions-field_state_province_additional'.
+  $field_instances['entityform-contact_ilr_admissions-field_state_province_additional'] = array(
     'bundle' => 'contact_ilr_admissions',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '(Choose "other" at the very bottom if not applicable.)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -4728,7 +4615,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'download' => array(
         'label' => 'above',
@@ -4737,7 +4624,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'table' => array(
         'label' => 'above',
@@ -4746,12 +4633,13 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 6,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'entityform',
-    'field_name' => 'field_year_as_list_text',
-    'label' => 'High school graduation year',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_state_province_additional',
+    'label' => 'Home state / province',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -4763,7 +4651,7 @@ function forms_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 7,
+      'weight' => 5,
     ),
   );
 
@@ -4836,7 +4724,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 19,
+        'weight' => 18,
       ),
       'download' => array(
         'label' => 'above',
@@ -4845,7 +4733,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 17,
+        'weight' => 16,
       ),
       'table' => array(
         'label' => 'above',
@@ -4854,7 +4742,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 17,
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4877,7 +4765,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 21,
+      'weight' => 20,
     ),
   );
 
@@ -34690,6 +34578,7 @@ function forms_field_default_field_instances() {
   t(' May we contact you by email about information on our offerings?');
   t(' Semester requesting assistantship');
   t(' Send an ILR Viewbook, which includes an overview of the undergraduate program');
+  t('(Choose "other" at the very bottom if not applicable.)');
   t('(If this is a different spelling than what appears on your student center, please visit the Office of the University Registrar in B7 Day hall to have it officially changed.)');
   t('(for Cornell graduates)');
   t('1. Describe the leadership role you play in your organization. What responsibilities do you currently have?');
@@ -34838,10 +34727,9 @@ function forms_field_default_field_instances() {
   t('GPA');
   t('Have you received an ILR travel grant within this fiscal year? (July 1 - June 30)');
   t('Have you received other funding for this trip?');
-  t('High school');
-  t('High school graduation year');
+  t('Home country');
   t('Home phone number');
-  t('Home state or country');
+  t('Home state / province');
   t('How did you hear about us? (check all that apply)');
   t('How did you learn about the ILR School? (check all that apply)');
   t('How long has the nominee been in his/her current leadership role?');
@@ -34962,7 +34850,6 @@ function forms_field_default_field_instances() {
   t('Semester');
   t('Semester for which you are requesting assistantship');
   t('Semester off-campus');
-  t('Send information about transferring to the ILR School');
   t('Short summary');
   t('Source of funding 1');
   t('Source of funding 2');
@@ -35020,6 +34907,7 @@ function forms_field_default_field_instances() {
   t('Union position');
   t('Union position (nominee)');
   t('Union title (nominee)');
+  t('Union/Organization');
   t('Upload document, image, or screen shot, if applicable');
   t('Upload your resume or CV');
   t('Video Recording: Additional Info');

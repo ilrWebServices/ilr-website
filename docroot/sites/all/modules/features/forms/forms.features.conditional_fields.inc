@@ -2263,8 +2263,8 @@ function forms_conditional_fields_default_fields() {
   $items["entityform:contact_ilr_admissions:1"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
-    'dependent' => 'field_address_line_1',
-    'dependee' => 'field_send_transfer_info',
+    'dependent' => 'field_city',
+    'dependee' => 'field_send_viewbook',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',
@@ -2413,12 +2413,12 @@ function forms_conditional_fields_default_fields() {
   $items["entityform:contact_ilr_admissions:2"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
-    'dependent' => 'field_city',
-    'dependee' => 'field_send_viewbook',
+    'dependent' => 'field_country',
+    'dependee' => 'field_state_province_additional',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',
-      'grouping' => 'OR',
+      'grouping' => 'AND',
       'effect' => 'show',
       'effect_options' => array(),
       'element_view' => array(
@@ -2430,13 +2430,6 @@ function forms_conditional_fields_default_fields() {
       ),
       'element_view_per_role' => 0,
       'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         1 => array(
           1 => 1,
           2 => 2,
@@ -2451,49 +2444,70 @@ function forms_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        4 => array(
+        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        5 => array(
+        16 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        6 => array(
+        41 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        7 => array(
+        51 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        8 => array(
+        46 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        9 => array(
+        21 => array(
           1 => 1,
           2 => 2,
           5 => 0,
           3 => 0,
           4 => 0,
         ),
-        10 => array(
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -2503,14 +2517,10 @@ function forms_conditional_fields_default_fields() {
       ),
       'element_edit' => array(
         1 => 1,
-        3 => 3,
+        3 => 0,
       ),
       'element_edit_per_role' => 0,
       'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
         1 => array(
           1 => 1,
           3 => 0,
@@ -2519,41 +2529,53 @@ function forms_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        4 => array(
+        11 => array(
           1 => 1,
           3 => 0,
         ),
-        5 => array(
+        16 => array(
           1 => 1,
           3 => 0,
         ),
-        6 => array(
+        41 => array(
           1 => 1,
           3 => 0,
         ),
-        7 => array(
+        51 => array(
           1 => 1,
           3 => 0,
         ),
-        8 => array(
+        46 => array(
           1 => 1,
           3 => 0,
         ),
-        9 => array(
+        21 => array(
           1 => 1,
           3 => 0,
         ),
-        10 => array(
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
           1 => 1,
           3 => 0,
         ),
       ),
       'selector' => '',
       'values_set' => 1,
-      'value_form' => 1,
+      'value_form' => 'other',
       'value' => array(
         0 => array(
-          'value' => 1,
+          'value' => 'other',
         ),
       ),
       'values' => array(),
@@ -2561,156 +2583,6 @@ function forms_conditional_fields_default_fields() {
   );
 
   $items["entityform:contact_ilr_admissions:3"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'contact_ilr_admissions',
-    'dependent' => 'field_city',
-    'dependee' => 'field_send_transfer_info',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'OR',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 1,
-      'value' => array(
-        0 => array(
-          'value' => 1,
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items["entityform:contact_ilr_admissions:4"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_current_college',
@@ -2860,10 +2732,160 @@ function forms_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:contact_ilr_admissions:5"] = array(
+  $items["entityform:contact_ilr_admissions:4"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_mailing_address_markup',
+    'dependee' => 'field_send_viewbook',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'OR',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        8 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 1,
+      'value' => array(
+        0 => array(
+          'value' => 1,
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items["entityform:contact_ilr_admissions:5"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'contact_ilr_admissions',
+    'dependent' => 'field_state_province',
     'dependee' => 'field_send_viewbook',
     'options' => array(
       'state' => 'visible',
@@ -3013,908 +3035,8 @@ function forms_conditional_fields_default_fields() {
   $items["entityform:contact_ilr_admissions:6"] = array(
     'entity' => 'entityform',
     'bundle' => 'contact_ilr_admissions',
-    'dependent' => 'field_mailing_address_markup',
-    'dependee' => 'field_send_transfer_info',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'OR',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 1,
-      'value' => array(
-        0 => array(
-          'value' => 1,
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items["entityform:contact_ilr_admissions:7"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'contact_ilr_admissions',
-    'dependent' => 'field_phone',
-    'dependee' => 'field_send_viewbook',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'OR',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 1,
-      'value' => array(
-        0 => array(
-          'value' => 1,
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items["entityform:contact_ilr_admissions:8"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'contact_ilr_admissions',
-    'dependent' => 'field_phone',
-    'dependee' => 'field_send_transfer_info',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'OR',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 1,
-      'value' => array(
-        0 => array(
-          'value' => 1,
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items["entityform:contact_ilr_admissions:9"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'contact_ilr_admissions',
-    'dependent' => 'field_state_province',
-    'dependee' => 'field_send_viewbook',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'OR',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 1,
-      'value' => array(
-        0 => array(
-          'value' => 1,
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items["entityform:contact_ilr_admissions:10"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'contact_ilr_admissions',
-    'dependent' => 'field_state_province',
-    'dependee' => 'field_send_transfer_info',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'OR',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 1,
-      'value' => array(
-        0 => array(
-          'value' => 1,
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items["entityform:contact_ilr_admissions:11"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'contact_ilr_admissions',
     'dependent' => 'field_zip_code',
     'dependee' => 'field_send_viewbook',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'OR',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        7 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 1,
-      'value' => array(
-        0 => array(
-          'value' => 1,
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items["entityform:contact_ilr_admissions:12"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'contact_ilr_admissions',
-    'dependent' => 'field_zip_code',
-    'dependee' => 'field_send_transfer_info',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',
