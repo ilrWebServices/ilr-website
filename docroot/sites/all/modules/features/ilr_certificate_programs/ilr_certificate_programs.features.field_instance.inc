@@ -143,7 +143,7 @@ function ilr_certificate_programs_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_comments',
     'label' => 'Notes',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -316,7 +316,7 @@ function ilr_certificate_programs_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_image',
     'label' => 'Main image',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
