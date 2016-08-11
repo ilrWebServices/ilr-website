@@ -178,7 +178,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'links' => 1,
-          'view_mode' => 'default',
+          'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 4,
