@@ -19,9 +19,11 @@ body.node-type-certificate-programs {
     #content {
       @include grid-span (10,2);
       padding: 0 0 1em 0;
-      // .field {
-      //   overflow: hidden;
-      // }
+
+      h1.title {
+        @include trailer(.5);
+      }
+
       .field-name-field-image {
         text-align: center;
       }
@@ -33,18 +35,40 @@ body.node-type-certificate-programs {
 
       .field-name-field-course {
         article {
+          @include padding-trailer(1);
+          .group-main-content {
+            p {
+              @include adjust-font-size-to(16px);
+              @include adjust-leading-to(1.2);
+            }
+          }
           h2 {
-            @include trailer(0);
+            @include trailer(.3);
             a {
               font-family: $font;
               font-size: 22px;
               font-weight: 300;
-              color: $spotlight-color
+              color: $student-portrait-color;
             }
           }
-          .group-main-content { //temp display until teaser view is fixed
-            height: 80px;
-            overflow: hidden;
+          .class-details {
+            @include trailer(0);
+            .timespan, .date-time, .location {
+              display: none;
+            }
+            .action {
+              a.button {
+                @include leader(0);
+                @include trailer(0);
+                font-family: $font;
+                font-size: ms(0);
+                color: $cornell-red;
+                border-bottom: 2px solid $cornell-red;
+                span {
+                  display: none;
+                }
+              }
+            }
           }
         }
       }
