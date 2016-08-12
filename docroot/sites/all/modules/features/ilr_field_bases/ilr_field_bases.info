@@ -87,7 +87,6 @@ features[field_base][] = field_career_field_wisp
 features[field_base][] = field_career_services_how_to_dir
 features[field_base][] = field_catalog_prefix
 features[field_base][] = field_category_type
-features[field_base][] = field_certification
 features[field_base][] = field_chairperson
 features[field_base][] = field_challenge
 features[field_base][] = field_citizenship

@@ -21,7 +21,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 10,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -56,60 +56,6 @@ function ilr_certificate_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-certificate_programs-field_certification'.
-  $field_instances['node-certificate_programs-field_certification'] = array(
-    'bundle' => 'certificate_programs',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_certification',
-    'label' => 'Accreditation / Certification',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 9,
-    ),
-  );
-
   // Exported field_instance: 'node-certificate_programs-field_comments'.
   $field_instances['node-certificate_programs-field_comments'] = array(
     'bundle' => 'certificate_programs',
@@ -124,7 +70,7 @@ function ilr_certificate_programs_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -161,6 +107,55 @@ function ilr_certificate_programs_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-certificate_programs-field_continuing_ed_reference'.
+  $field_instances['node-certificate_programs-field_continuing_ed_reference'] = array(
+    'bundle' => 'certificate_programs',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 6,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_continuing_ed_reference',
+    'label' => 'Recertification Credits',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 14,
     ),
   );
 
@@ -219,6 +214,98 @@ function ilr_certificate_programs_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-certificate_programs-field_course_sponsor_reference'.
+  $field_instances['node-certificate_programs-field_course_sponsor_reference'] = array(
+    'bundle' => 'certificate_programs',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_course_sponsor_reference',
+    'label' => 'Sponsor',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 18,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-certificate_programs-field_course_topic_reference'.
+  $field_instances['node-certificate_programs-field_course_topic_reference'] = array(
+    'bundle' => 'certificate_programs',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_course_topic_reference',
+    'label' => 'Topic',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 16,
     ),
   );
 
@@ -461,7 +548,7 @@ function ilr_certificate_programs_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_prerequisites_requirements',
-    'label' => 'Prerequisites / Requirements',
+    'label' => 'Prerequisites',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -494,7 +581,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 11,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -540,7 +627,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 9,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -585,7 +672,6 @@ function ilr_certificate_programs_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Accreditation / Certification');
   t('Category Type');
   t('Core curriculum');
   t('Description');
@@ -593,9 +679,12 @@ function ilr_certificate_programs_field_default_field_instances() {
   t('Include Outcomes/Benefits, Rationale, Who should enroll');
   t('Main image');
   t('Notes');
-  t('Prerequisites / Requirements');
+  t('Prerequisites');
+  t('Recertification Credits');
+  t('Sponsor');
   t('Tags');
   t('Teaser');
+  t('Topic');
 
   return $field_instances;
 }
