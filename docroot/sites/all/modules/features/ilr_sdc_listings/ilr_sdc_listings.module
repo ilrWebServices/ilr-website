@@ -1443,7 +1443,7 @@ function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
   if (count($class_nodes) > 1) {
     $course_nid = $wrapper->field_course[0]->value()->nid;
     $link = drupal_get_path_alias('node/'.$course_nid);
-    $markup .= '<a href="/'.$link. '">See more dates and locations</a>';
+    $markup .= '<a class="course_details" href="/'.$link. '">See more dates and locations</a>';
   }
   $markup .= '</div>';
   return $markup;
