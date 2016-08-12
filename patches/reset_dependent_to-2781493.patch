@@ -1,0 +1,13 @@
+diff --git a/docroot/sites/all/modules/contrib/conditional_fields/conditional_fields.module b/docroot/sites/all/modules/contrib/conditional_fields/conditional_fields.module
+index 34503a6..a92d73e 100644
+--- a/docroot/sites/all/modules/contrib/conditional_fields/conditional_fields.module
++++ b/docroot/sites/all/modules/contrib/conditional_fields/conditional_fields.module
+@@ -720,7 +720,7 @@ function conditional_fields_dependent_validate($element, &$form_state, $form) {
+  */
+ function conditional_fields_form_field_get_values($element, $form_state) {
+   // Fall back to #parents to support custom dependencies.
+-  $parents = !empty($element['#field_parents']) ? $element['#field_parents'] : $element['#parents'];
++  $parents = isset($element['#field_parents']) ? $element['#field_parents'] : $element['#parents'];
+   return drupal_array_get_nested_value($form_state['values'], $parents);
+ }
+ 
