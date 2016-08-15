@@ -678,8 +678,8 @@ function ilr_forms_students_conditional_fields_default_fields() {
   $items["entityform:fex_wisp_sponsor_registration:1"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_address_line_1_additional',
-    'dependee' => 'field_yes_no',
+    'dependent' => 'field_address_line_1',
+    'dependee' => 'field_fex_wisp_opportunity_type',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',
@@ -744,13 +744,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         21 => array(
           1 => 1,
           2 => 2,
@@ -766,6 +759,20 @@ function ilr_forms_students_conditional_fields_default_fields() {
           4 => 0,
         ),
         31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -807,10 +814,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        36 => array(
-          1 => 1,
-          3 => 0,
-        ),
         21 => array(
           1 => 1,
           3 => 0,
@@ -823,16 +826,25 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'No',
-      'value' => array(
-        0 => array(
-          'value' => 'No',
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
         ),
       ),
-      'values' => array(),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => NULL,
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'fex',
+      ),
+      'value' => array(),
     ),
   );
 
@@ -840,7 +852,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_address_line_1_additional',
-    'dependee' => 'field_is_address_the_same',
+    'dependee' => 'field_fex_wisp_opportunity_type',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',
@@ -905,13 +917,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         21 => array(
           1 => 1,
           2 => 2,
@@ -927,6 +932,20 @@ function ilr_forms_students_conditional_fields_default_fields() {
           4 => 0,
         ),
         31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -968,10 +987,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        36 => array(
-          1 => 1,
-          3 => 0,
-        ),
         21 => array(
           1 => 1,
           3 => 0,
@@ -984,24 +999,33 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'No',
-      'value' => array(
-        0 => array(
-          'value' => 'No',
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
         ),
       ),
-      'values' => array(),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => NULL,
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'wisp',
+      ),
+      'value' => array(),
     ),
   );
 
   $items["entityform:fex_wisp_sponsor_registration:3"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_address_line_2_additional',
-    'dependee' => 'field_yes_no',
+    'dependent' => 'field_address_line_1_additional',
+    'dependee' => 'field_remote_wisp',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',
@@ -1066,13 +1090,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         21 => array(
           1 => 1,
           2 => 2,
@@ -1088,6 +1105,20 @@ function ilr_forms_students_conditional_fields_default_fields() {
           4 => 0,
         ),
         31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -1129,10 +1160,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        36 => array(
-          1 => 1,
-          3 => 0,
-        ),
         21 => array(
           1 => 1,
           3 => 0,
@@ -1145,24 +1172,31 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'No',
-      'value' => array(
-        0 => array(
-          'value' => 'No',
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
         ),
       ),
-      'values' => array(),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => NULL,
+      'values' => array(
+        0 => 'on site',
+        1 => 'on site or remote',
+      ),
+      'value' => array(),
     ),
   );
 
   $items["entityform:fex_wisp_sponsor_registration:4"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_address_line_2_additional',
-    'dependee' => 'field_is_address_the_same',
+    'dependent' => 'field_address_line_2',
+    'dependee' => 'field_fex_wisp_opportunity_type',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',
@@ -1227,13 +1261,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         21 => array(
           1 => 1,
           2 => 2,
@@ -1249,6 +1276,20 @@ function ilr_forms_students_conditional_fields_default_fields() {
           4 => 0,
         ),
         31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -1290,7 +1331,176 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        36 => array(
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => NULL,
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'fex',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:5"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_address_line_2_additional',
+    'dependee' => 'field_fex_wisp_opportunity_type',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
           1 => 1,
           3 => 0,
         ),
@@ -1306,20 +1516,200 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'No',
-      'value' => array(
-        0 => array(
-          'value' => 'No',
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
         ),
       ),
-      'values' => array(),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => NULL,
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'wisp',
+      ),
+      'value' => array(),
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:5"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:6"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_address_line_2_additional',
+    'dependee' => 'field_remote_wisp',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => NULL,
+      'values' => array(
+        0 => 'on site',
+        1 => 'on site or remote',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:7"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_alum_additional',
@@ -1480,7 +1870,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:6"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:8"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_career_field_fex',
@@ -1642,7 +2032,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:7"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:9"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_career_field_wisp',
@@ -1801,328 +2191,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
         0 => 'wisp',
       ),
       'value' => array(),
-    ),
-  );
-
-  $items["entityform:fex_wisp_sponsor_registration:8"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_city_additional',
-    'dependee' => 'field_is_address_the_same',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'No',
-      'value' => array(
-        0 => array(
-          'value' => 'No',
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items["entityform:fex_wisp_sponsor_registration:9"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_city_additional',
-    'dependee' => 'field_yes_no',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'No',
-      'value' => array(
-        0 => array(
-          'value' => 'No',
-        ),
-      ),
-      'values' => array(),
     ),
   );
 
@@ -4410,6 +4478,179 @@ function ilr_forms_students_conditional_fields_default_fields() {
   $items["entityform:fex_wisp_sponsor_registration:24"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_fex_location',
+    'dependee' => 'field_fex_wisp_opportunity_type',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => NULL,
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'fex',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:25"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_fex_markup_if_chosen',
     'dependee' => 'field_fex_wisp_opportunity_type',
     'options' => array(
@@ -4569,7 +4810,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:25"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:26"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_fex_markup_if_not_chosen',
@@ -4731,172 +4972,10 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:26"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_fex_number_of_students',
-    'dependee' => 'field_fex_wisp_opportunity_type',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 3,
-      'value_form' => array(
-        'fex' => 'fex',
-        'wisp' => NULL,
-      ),
-      'values' => array(
-        0 => 'fex',
-      ),
-      'value' => array(),
-    ),
-  );
-
   $items["entityform:fex_wisp_sponsor_registration:27"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_fex_same_day',
+    'dependent' => 'field_fex_number_of_students',
     'dependee' => 'field_fex_wisp_opportunity_type',
     'options' => array(
       'state' => 'visible',
@@ -5059,7 +5138,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_fex_same_day',
-    'dependee' => 'field_fex_number_of_students',
+    'dependee' => 'field_fex_wisp_opportunity_type',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',
@@ -5152,20 +5231,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        56 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        61 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
       ),
       'element_edit' => array(
         1 => 1,
@@ -5217,6 +5282,171 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => 'fex',
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'fex',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:29"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_fex_same_day',
+    'dependee' => 'field_fex_number_of_students',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
         56 => array(
           1 => 1,
           3 => 0,
@@ -5230,22 +5460,22 @@ function ilr_forms_students_conditional_fields_default_fields() {
       'values_set' => 3,
       'value_form' => '_none',
       'values' => array(
-        0 => 2,
-        1 => 3,
-        2 => 4,
-        3 => 5,
-        4 => 6,
-        5 => 7,
-        6 => 8,
-        7 => 9,
-        8 => 10,
+        0 => '2 students',
+        1 => '3 students',
+        2 => '4 students',
+        3 => '5 students',
+        4 => '6 students',
+        5 => '7 students',
+        6 => '8 students',
+        7 => '9 students',
+        8 => '10 students',
         9 => 'multiple',
       ),
       'value' => array(),
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:29"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:30"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_fex_upperclass_students',
@@ -5407,7 +5637,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:30"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:31"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_first_name_additional',
@@ -5563,167 +5793,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
         0 => 'No',
       ),
       'value' => array(),
-    ),
-  );
-
-  $items["entityform:fex_wisp_sponsor_registration:31"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_is_address_the_same',
-    'dependee' => 'field_yes_no',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'No',
-      'value' => array(
-        0 => array(
-          'value' => 'No',
-        ),
-      ),
-      'values' => array(),
     ),
   );
 
@@ -6052,6 +6121,352 @@ function ilr_forms_students_conditional_fields_default_fields() {
   $items["entityform:fex_wisp_sponsor_registration:34"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_max_duration_weeks',
+    'dependee' => 'field_fex_wisp_opportunity_type',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => NULL,
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'wisp',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:35"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_min_duration_weeks',
+    'dependee' => 'field_fex_wisp_opportunity_type',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => NULL,
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'wisp',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:36"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_other_career_field_fex_',
     'dependee' => 'field_fex_wisp_opportunity_type',
     'options' => array(
@@ -6211,7 +6626,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:35"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:37"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_other_career_field_fex_',
@@ -6372,333 +6787,10 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:36"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_other_career_field_wisp_',
-    'dependee' => 'field_fex_wisp_opportunity_type',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 3,
-      'value_form' => array(
-        'wisp' => 'wisp',
-        'fex' => NULL,
-      ),
-      'values' => array(
-        0 => 'wisp',
-      ),
-      'value' => array(),
-    ),
-  );
-
-  $items["entityform:fex_wisp_sponsor_registration:37"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_other_career_field_wisp_',
-    'dependee' => 'field_career_field_wisp',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'Other',
-      'value' => array(
-        0 => array(
-          'value' => 'Other',
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
   $items["entityform:fex_wisp_sponsor_registration:38"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_paid',
+    'dependent' => 'field_other_career_field_wisp_',
     'dependee' => 'field_fex_wisp_opportunity_type',
     'options' => array(
       'state' => 'visible',
@@ -6860,8 +6952,8 @@ function ilr_forms_students_conditional_fields_default_fields() {
   $items["entityform:fex_wisp_sponsor_registration:39"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_phone_additional',
-    'dependee' => 'field_yes_no',
+    'dependent' => 'field_other_career_field_wisp_',
+    'dependee' => 'field_career_field_wisp',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',
@@ -7008,10 +7100,10 @@ function ilr_forms_students_conditional_fields_default_fields() {
       ),
       'selector' => '',
       'values_set' => 1,
-      'value_form' => 'No',
+      'value_form' => 'Other',
       'value' => array(
         0 => array(
-          'value' => 'No',
+          'value' => 'Other',
         ),
       ),
       'values' => array(),
@@ -7021,7 +7113,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
   $items["entityform:fex_wisp_sponsor_registration:40"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_qualifications',
+    'dependent' => 'field_paid',
     'dependee' => 'field_fex_wisp_opportunity_type',
     'options' => array(
       'state' => 'visible',
@@ -7183,6 +7275,329 @@ function ilr_forms_students_conditional_fields_default_fields() {
   $items["entityform:fex_wisp_sponsor_registration:41"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_phone_additional',
+    'dependee' => 'field_yes_no',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        36 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        36 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 'No',
+      'value' => array(
+        0 => array(
+          'value' => 'No',
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:42"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_qualifications',
+    'dependee' => 'field_fex_wisp_opportunity_type',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        36 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        36 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'wisp' => 'wisp',
+        'fex' => NULL,
+      ),
+      'values' => array(
+        0 => 'wisp',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:43"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_qualifications_markup',
     'dependee' => 'field_fex_wisp_opportunity_type',
     'options' => array(
@@ -7342,7 +7757,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:42"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:44"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_remote_wisp',
@@ -7526,7 +7941,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:43"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:45"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_responsibility',
@@ -7688,7 +8103,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:44"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:46"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_salary',
@@ -7850,7 +8265,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:45"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:47"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_salary',
@@ -8005,328 +8420,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
       'value' => array(
         0 => array(
           'value' => 'Yes',
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items["entityform:fex_wisp_sponsor_registration:46"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_state_province_additional',
-    'dependee' => 'field_yes_no',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'No',
-      'value' => array(
-        0 => array(
-          'value' => 'No',
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
-  $items["entityform:fex_wisp_sponsor_registration:47"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_state_province_additional',
-    'dependee' => 'field_is_address_the_same',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'No',
-      'value' => array(
-        0 => array(
-          'value' => 'No',
         ),
       ),
       'values' => array(),
@@ -9328,7 +9421,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
   $items["entityform:fex_wisp_sponsor_registration:54"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_wisp_dates_markup',
+    'dependent' => 'field_wisp_location_markup',
     'dependee' => 'field_fex_wisp_opportunity_type',
     'options' => array(
       'state' => 'visible',
@@ -9394,13 +9487,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         21 => array(
           1 => 1,
           2 => 2,
@@ -9416,6 +9502,20 @@ function ilr_forms_students_conditional_fields_default_fields() {
           4 => 0,
         ),
         31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -9457,7 +9557,176 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        36 => array(
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => NULL,
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'wisp',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:55"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_wisp_location_markup',
+    'dependee' => 'field_remote_wisp',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
           1 => 1,
           3 => 0,
         ),
@@ -9473,21 +9742,27 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
+        ),
       ),
       'selector' => '',
       'values_set' => 3,
-      'value_form' => array(
-        'wisp' => 'wisp',
-        'fex' => NULL,
-      ),
+      'value_form' => NULL,
       'values' => array(
-        0 => 'wisp',
+        0 => 'on site',
+        1 => 'on site or remote',
       ),
       'value' => array(),
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:55"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:56"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_wisp_markup_if_chosen',
@@ -9649,7 +9924,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:56"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:57"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_wisp_markup_if_not_chosen',
@@ -9811,7 +10086,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:57"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:58"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_wisp_number_of_students',
@@ -9973,7 +10248,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:58"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:59"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_year_as_list_text',
@@ -10134,7 +10409,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:59"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:60"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_year_as_list_text_2',
@@ -10295,7 +10570,7 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:60"] = array(
+  $items["entityform:fex_wisp_sponsor_registration:61"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
     'dependent' => 'field_year_as_list_text_2',
@@ -10456,172 +10731,11 @@ function ilr_forms_students_conditional_fields_default_fields() {
     ),
   );
 
-  $items["entityform:fex_wisp_sponsor_registration:61"] = array(
-    'entity' => 'entityform',
-    'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_zip_postal_code_additional',
-    'dependee' => 'field_yes_no',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(
-        1 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-      ),
-      'element_edit' => array(
-        1 => 1,
-        3 => 3,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(
-        1 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        2 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        16 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        41 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        51 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        46 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        36 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        21 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        26 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        31 => array(
-          1 => 1,
-          3 => 0,
-        ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'No',
-      'value' => array(
-        0 => array(
-          'value' => 'No',
-        ),
-      ),
-      'values' => array(),
-    ),
-  );
-
   $items["entityform:fex_wisp_sponsor_registration:62"] = array(
     'entity' => 'entityform',
     'bundle' => 'fex_wisp_sponsor_registration',
-    'dependent' => 'field_zip_postal_code_additional',
-    'dependee' => 'field_is_address_the_same',
+    'dependent' => 'field_year_soph_jr_sr_milr1_mult',
+    'dependee' => 'field_fex_wisp_opportunity_type',
     'options' => array(
       'state' => 'visible',
       'condition' => 'value',
@@ -10686,13 +10800,6 @@ function ilr_forms_students_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        36 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         21 => array(
           1 => 1,
           2 => 2,
@@ -10708,6 +10815,20 @@ function ilr_forms_students_conditional_fields_default_fields() {
           4 => 0,
         ),
         31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -10749,7 +10870,176 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        36 => array(
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => NULL,
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'wisp',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:63"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_yes_no_2',
+    'dependee' => 'field_fex_wisp_opportunity_type',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
           1 => 1,
           3 => 0,
         ),
@@ -10765,16 +11055,542 @@ function ilr_forms_students_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-      ),
-      'selector' => '',
-      'values_set' => 1,
-      'value_form' => 'No',
-      'value' => array(
-        0 => array(
-          'value' => 'No',
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
         ),
       ),
-      'values' => array(),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => NULL,
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'wisp',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:64"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_zip_code',
+    'dependee' => 'field_fex_wisp_opportunity_type',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => NULL,
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'fex',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:65"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_zip_postal_code_additional',
+    'dependee' => 'field_fex_wisp_opportunity_type',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => array(
+        'fex' => NULL,
+        'wisp' => NULL,
+      ),
+      'values' => array(
+        0 => 'wisp',
+      ),
+      'value' => array(),
+    ),
+  );
+
+  $items["entityform:fex_wisp_sponsor_registration:66"] = array(
+    'entity' => 'entityform',
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'dependent' => 'field_zip_postal_code_additional',
+    'dependee' => 'field_remote_wisp',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 3,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        16 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        41 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        51 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        46 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        21 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        26 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        31 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        56 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        61 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 3,
+      'value_form' => NULL,
+      'values' => array(
+        0 => 'on site',
+        1 => 'on site or remote',
+      ),
+      'value' => array(),
     ),
   );
 
