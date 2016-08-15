@@ -64,3 +64,8 @@ Example:
   * Fixes Undefined value: $user_allowed_default_login
   * https://www.drupal.org/node/2717473#comment-11209925
   * https://www.drupal.org/files/issues/init-logout-notice-2717473-5.patch
+
+* conditional_fields
+  * Fixes issue with resetting default values on dependent fields
+  * https://www.drupal.org/node/2781493
+  * Patch not pushed to D.O., as root cause and fix not yet found
