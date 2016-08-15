@@ -53,7 +53,7 @@ body.node-type-certificate-programs {
           }
           .class-details {
             @include trailer(0);
-            .timespan, .date-time, .location {
+            .timespan, .date-time, .location, .course_details {
               display: none;
             }
             .action {
