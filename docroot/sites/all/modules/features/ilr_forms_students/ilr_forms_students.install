@@ -26,6 +26,7 @@ function ilr_forms_students_update_7003 () {
     'field_state_province',
     'field_city_additional',
     'field_state_province_additional',
+    'field_is_address_the_same',
   );
   _forms_delete_field_instances_from_entityform('fex_wisp_sponsor_registration',
    $field_instances_to_remove);
