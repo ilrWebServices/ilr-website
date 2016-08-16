@@ -4,12 +4,6 @@
  * Implements hook_enable()
  */
 function drupal_streamline_dev_enable() {
-  // Redirect all outgoing mail to the local filesystem
-  variable_set('mail_system', array('default-system' => 'DevelMailLog'));
-
-  // Set the simplesamlphp path
-  variable_set('simplesamlphp_auth_installdir', '/var/www/ilr-website/simplesamlphp-1.10.0');
-
   // Set local error reporting
   variable_set('error_level', ERROR_REPORTING_DISPLAY_ALL);
 

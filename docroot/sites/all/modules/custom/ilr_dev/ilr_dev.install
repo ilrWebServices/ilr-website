@@ -15,6 +15,8 @@ function ilr_dev_install() {
   variable_set('features_rebuild_on_flush',FALSE);
   variable_set('entity_rebuild_on_flush',FALSE);
   variable_set('freedompay_environment', 'testing');
+  // Set the simplesamlphp path
+  variable_set('simplesamlphp_auth_installdir', '/var/www/ilr-website/simplesamlphp-1.14.3');
 
   // Disable any modules we don't want running locally
   module_disable(array(
