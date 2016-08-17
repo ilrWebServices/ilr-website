@@ -10,8 +10,8 @@ include_once 'ilr_experience_reports.features.inc';
  * Implements hook_node_view().
  */
 function ilr_experience_reports_node_view($node, $view_mode, $langcode) {
-  $selector = 'node-type-experience-report';
   if($node->type == 'experience_report') {
+    $selector = 'node-type-experience-report';
     drupal_add_js(array('change_hover_color' => array('selector' => $selector)), array('type' => 'setting'));
   }
 }

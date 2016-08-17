@@ -377,7 +377,6 @@
     attach: function (context, settings) {
       $(window).load(function() {
         var $selector = settings.change_hover_color.selector;
-        console.log($selector);
         if ($($selector)) {
           $('#content-bottom article').each(function(){
             $(this).find('.field-name-field-image').append($(this).find('h2'));
