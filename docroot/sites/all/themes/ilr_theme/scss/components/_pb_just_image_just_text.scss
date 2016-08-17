@@ -20,6 +20,13 @@
       }
     }
   }
+  body.node-type-visiting-fellow &, body.node-type-experience-report & {
+    .paragraphs-item-just-text {
+      .content {
+        @include grid-span (12);
+      }
+    }
+  }
 }
 
 #main[data-eq-state="768"] {
