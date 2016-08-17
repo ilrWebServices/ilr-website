@@ -70,6 +70,7 @@ function ilr_channel_page_strongarm() {
   $strongarm->name = 'menu_options_channel_page';
   $strongarm->value = array(
     0 => 'main-menu',
+    1 => 'scheinman-institute',
   );
   $export['menu_options_channel_page'] = $strongarm;
 
