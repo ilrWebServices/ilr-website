@@ -1,11 +1,11 @@
-//must specify accent color for content types. See individual scss files
+//must specify accent color for content types
 %related-content-nav {
   #content-bottom {
     @include padding-leader(1);
     @include padding-trailer(1);
     padding-left: 3em;
     padding-right: 3em;
-    background: white;
+    background: white !important;
     .region-content-bottom {
       .tagged-content {
         overflow: visible; //stop name from being cut off in circle nav on mobile
@@ -15,7 +15,6 @@
         @include adjust-leading-to(1);
         display: block !important;
         visibility: visible;
-        // color: $spotlight-color;
         margin: 0;
       }
       article {
@@ -32,7 +31,6 @@
         }
         .field-name-field-image {
           margin: 0 auto;
-          // background: $spotlight-color;
           border-radius: 50%;
           height: 150px;
           width: 150px;
@@ -88,9 +86,6 @@
             img {
               position: relative;
               z-index: 2;
-              &:hover {
-                background: $spotlight-color;
-              }
             }
           }
         }
