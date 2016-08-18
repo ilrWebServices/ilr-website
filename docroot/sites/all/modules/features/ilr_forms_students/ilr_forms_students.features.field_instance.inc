@@ -4350,7 +4350,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexActivities',
         ),
         'type' => 'text_default',
-        'weight' => 41,
+        'weight' => 36,
       ),
       'table' => array(
         'label' => 'above',
@@ -4359,7 +4359,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'FEX activities',
         ),
         'type' => 'text_default',
-        'weight' => 25,
+        'weight' => 30,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4399,16 +4399,16 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'Street address line 1 (FEX)',
+          'field_formatter_label' => 'Street address line 1 (sponsor)',
         ),
         'type' => 'text_default',
-        'weight' => 39,
+        'weight' => 68,
       ),
       'download' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'fexStreetAddress1',
+          'field_formatter_label' => 'selfStreetAddress1',
         ),
         'type' => 'text_default',
         'weight' => 8,
@@ -4417,16 +4417,16 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'FEX street address line 1',
+          'field_formatter_label' => 'Sponsor street address line 1',
         ),
         'type' => 'text_default',
-        'weight' => 26,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_address_line_1',
-    'label' => 'Street address line 1 (FEX)',
+    'label' => 'Street address line 1 (sponsor)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -4444,7 +4444,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 42,
+      'weight' => 8,
     ),
   );
 
@@ -4463,7 +4463,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 54,
+        'weight' => 55,
       ),
       'download' => array(
         'label' => 'above',
@@ -4472,7 +4472,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispStreetAddress1',
         ),
         'type' => 'text_default',
-        'weight' => 23,
+        'weight' => 54,
       ),
       'table' => array(
         'label' => 'above',
@@ -4481,7 +4481,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP street address line 1',
         ),
         'type' => 'text_default',
-        'weight' => 41,
+        'weight' => 48,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4510,8 +4510,8 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'entityform-fex_wisp_sponsor_registration-field_address_line_2'.
-  $field_instances['entityform-fex_wisp_sponsor_registration-field_address_line_2'] = array(
+  // 'entityform-fex_wisp_sponsor_registration-field_address_line_1_addl_2'.
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_address_line_1_addl_2'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
     'deleted' => 0,
@@ -4521,7 +4521,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'Street address line 2 (FEX)',
+          'field_formatter_label' => '',
         ),
         'type' => 'text_default',
         'weight' => 40,
@@ -4530,26 +4530,26 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'fexStreetAddress2',
+          'field_formatter_label' => 'fexStreetAddress1',
         ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 58,
       ),
       'table' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'FEX street address line 2',
+          'field_formatter_label' => 'FEX street address line 1',
         ),
         'type' => 'text_default',
-        'weight' => 27,
+        'weight' => 32,
       ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
-    'field_name' => 'field_address_line_2',
-    'label' => 'Street address line 2 (FEX)',
-    'required' => 0,
+    'field_name' => 'field_address_line_1_addl_2',
+    'label' => 'Street address line 1 (FEX)',
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -4571,6 +4571,67 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_address_line_2'.
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_address_line_2'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Street address line 2 (sponsor)',
+        ),
+        'type' => 'text_default',
+        'weight' => 69,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'selfStreetAddress2',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Sponsor street address line 2',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_address_line_2',
+    'label' => 'Street address line 2 (sponsor)',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-fex_wisp_sponsor_registration-field_address_line_2_additional'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_address_line_2_additional'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
@@ -4585,7 +4646,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 55,
+        'weight' => 56,
       ),
       'download' => array(
         'label' => 'above',
@@ -4594,7 +4655,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispStreetAddress2',
         ),
         'type' => 'text_default',
-        'weight' => 24,
+        'weight' => 55,
       ),
       'table' => array(
         'label' => 'above',
@@ -4603,7 +4664,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP street address line 2',
         ),
         'type' => 'text_default',
-        'weight' => 42,
+        'weight' => 49,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4628,6 +4689,67 @@ function ilr_forms_students_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_address_line_2_addl_2'.
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_address_line_2_addl_2'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 41,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'fexStreetAddress2',
+        ),
+        'type' => 'text_default',
+        'weight' => 59,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'FEX street address line 2',
+        ),
+        'type' => 'text_default',
+        'weight' => 33,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_address_line_2_addl_2',
+    'label' => 'Street address line 2 (FEX)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 44,
     ),
   );
 
@@ -4664,7 +4786,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 9,
+        'weight' => 14,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4708,7 +4830,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'supCornellGrad',
         ),
         'type' => 'list_default',
-        'weight' => 29,
+        'weight' => 24,
       ),
       'table' => array(
         'label' => 'above',
@@ -4717,7 +4839,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 19,
+        'weight' => 24,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4761,7 +4883,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexCareerField',
         ),
         'type' => 'list_default',
-        'weight' => 33,
+        'weight' => 28,
       ),
       'table' => array(
         'label' => 'above',
@@ -4770,7 +4892,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'FEX career field',
         ),
         'type' => 'list_default',
-        'weight' => 23,
+        'weight' => 28,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4816,7 +4938,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispCareerField',
         ),
         'type' => 'list_default',
-        'weight' => 43,
+        'weight' => 38,
       ),
       'table' => array(
         'label' => 'above',
@@ -4825,7 +4947,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP career field',
         ),
         'type' => 'list_default',
-        'weight' => 36,
+        'weight' => 42,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4848,6 +4970,128 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_city'.
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_city'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 70,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'selfCity',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'Sponsor city',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_city',
+    'label' => 'City (sponsor)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_city_additional'.
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_city_additional'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 57,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'wispCIty',
+        ),
+        'type' => 'text_default',
+        'weight' => 42,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'WISP city',
+        ),
+        'type' => 'text_default',
+        'weight' => 50,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_city_additional',
+    'label' => 'City (WISP)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 18,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-fex_wisp_sponsor_registration-field_city_additional_2'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_city_additional_2'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
@@ -4862,7 +5106,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'City (FEX)',
         ),
         'type' => 'text_default',
-        'weight' => 41,
+        'weight' => 42,
       ),
       'download' => array(
         'label' => 'above',
@@ -4871,7 +5115,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexCity',
         ),
         'type' => 'text_default',
-        'weight' => 37,
+        'weight' => 32,
       ),
       'table' => array(
         'label' => 'above',
@@ -4880,7 +5124,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'FEX city',
         ),
         'type' => 'text_default',
-        'weight' => 28,
+        'weight' => 34,
       ),
     ),
     'entity_type' => 'entityform',
@@ -4904,68 +5148,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 44,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'entityform-fex_wisp_sponsor_registration-field_city_additional_3'.
-  $field_instances['entityform-fex_wisp_sponsor_registration-field_city_additional_3'] = array(
-    'bundle' => 'fex_wisp_sponsor_registration',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 56,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'wispCity',
-        ),
-        'type' => 'text_default',
-        'weight' => 47,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'WISP city',
-        ),
-        'type' => 'text_default',
-        'weight' => 43,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_city_additional_3',
-    'label' => 'City (WISP)',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 18,
+      'weight' => 45,
     ),
   );
 
@@ -5006,7 +5189,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 10,
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5056,7 +5239,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'supCollege',
         ),
         'type' => 'list_default',
-        'weight' => 30,
+        'weight' => 25,
       ),
       'table' => array(
         'label' => 'above',
@@ -5065,7 +5248,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 20,
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5111,7 +5294,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'supDegree',
         ),
         'type' => 'list_default',
-        'weight' => 31,
+        'weight' => 26,
       ),
       'table' => array(
         'label' => 'above',
@@ -5120,7 +5303,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 21,
+        'weight' => 26,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5173,7 +5356,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 11,
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5342,7 +5525,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 17,
+        'weight' => 22,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5381,13 +5564,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 65,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 57,
+        'weight' => 65,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5403,7 +5586,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'markup',
       'settings' => array(),
       'type' => 'markup',
-      'weight' => 51,
+      'weight' => 52,
     ),
   );
 
@@ -5422,7 +5605,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'Dates for FEX opportunity',
         ),
         'type' => 'text_default',
-        'weight' => 46,
+        'weight' => 47,
       ),
       'download' => array(
         'label' => 'above',
@@ -5431,7 +5614,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexDates',
         ),
         'type' => 'text_default',
-        'weight' => 39,
+        'weight' => 34,
       ),
       'table' => array(
         'label' => 'above',
@@ -5440,7 +5623,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'FEX dates',
         ),
         'type' => 'text_default',
-        'weight' => 33,
+        'weight' => 39,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5464,7 +5647,7 @@ function ilr_forms_students_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 50,
+      'weight' => 51,
     ),
   );
 
@@ -5483,7 +5666,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 47,
+        'weight' => 48,
       ),
       'download' => array(
         'label' => 'above',
@@ -5492,7 +5675,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexDatesConstraints',
         ),
         'type' => 'text_default',
-        'weight' => 40,
+        'weight' => 35,
       ),
       'table' => array(
         'label' => 'above',
@@ -5501,7 +5684,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'FEX constraints',
         ),
         'type' => 'text_default',
-        'weight' => 34,
+        'weight' => 40,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5525,7 +5708,7 @@ function ilr_forms_students_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 52,
+      'weight' => 53,
     ),
   );
 
@@ -5546,13 +5729,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 63,
+        'weight' => 68,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 68,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5568,7 +5751,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'markup',
       'settings' => array(),
       'type' => 'markup',
-      'weight' => 49,
+      'weight' => 50,
     ),
   );
 
@@ -5592,13 +5775,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 63,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 55,
+        'weight' => 63,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5635,13 +5818,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 67,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 67,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5678,13 +5861,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 66,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 58,
+        'weight' => 66,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5719,7 +5902,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 44,
+        'weight' => 45,
       ),
       'download' => array(
         'label' => 'above',
@@ -5728,7 +5911,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexNumOpps',
         ),
         'type' => 'list_default',
-        'weight' => 35,
+        'weight' => 30,
       ),
       'table' => array(
         'label' => 'above',
@@ -5737,7 +5920,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'FEX num students',
         ),
         'type' => 'list_default',
-        'weight' => 31,
+        'weight' => 37,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5755,7 +5938,7 @@ function ilr_forms_students_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 47,
+      'weight' => 48,
     ),
   );
 
@@ -5774,7 +5957,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 45,
+        'weight' => 46,
       ),
       'download' => array(
         'label' => 'above',
@@ -5783,7 +5966,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexSameDay',
         ),
         'type' => 'list_default',
-        'weight' => 36,
+        'weight' => 31,
       ),
       'table' => array(
         'label' => 'above',
@@ -5792,7 +5975,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'FEX same day or individually',
         ),
         'type' => 'list_default',
-        'weight' => 32,
+        'weight' => 38,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5808,7 +5991,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 48,
+      'weight' => 49,
     ),
   );
 
@@ -5827,7 +6010,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 48,
+        'weight' => 49,
       ),
       'download' => array(
         'label' => 'above',
@@ -5836,7 +6019,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexOfferToUpperclassmen',
         ),
         'type' => 'list_default',
-        'weight' => 42,
+        'weight' => 37,
       ),
       'table' => array(
         'label' => 'above',
@@ -5845,7 +6028,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'FEX offer to upperclass',
         ),
         'type' => 'list_default',
-        'weight' => 35,
+        'weight' => 41,
       ),
     ),
     'entity_type' => 'entityform',
@@ -5861,7 +6044,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 53,
+      'weight' => 54,
     ),
   );
 
@@ -5914,7 +6097,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 7,
+      'weight' => 13,
     ),
   );
 
@@ -6012,7 +6195,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 14,
+        'weight' => 19,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6188,7 +6371,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 16,
+        'weight' => 21,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6310,7 +6493,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 20,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6353,7 +6536,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 64,
+        'weight' => 65,
       ),
       'download' => array(
         'label' => 'above',
@@ -6362,7 +6545,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispMaxDuration',
         ),
         'type' => 'list_default',
-        'weight' => 56,
+        'weight' => 51,
       ),
       'table' => array(
         'label' => 'above',
@@ -6371,7 +6554,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP maximum duration',
         ),
         'type' => 'list_default',
-        'weight' => 51,
+        'weight' => 58,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6406,7 +6589,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 63,
+        'weight' => 64,
       ),
       'download' => array(
         'label' => 'above',
@@ -6415,7 +6598,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispMinDuration',
         ),
         'type' => 'list_default',
-        'weight' => 55,
+        'weight' => 50,
       ),
       'table' => array(
         'label' => 'above',
@@ -6424,7 +6607,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP minimum duration',
         ),
         'type' => 'list_default',
-        'weight' => 50,
+        'weight' => 57,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6529,7 +6712,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexCareerFieldOther',
         ),
         'type' => 'text_default',
-        'weight' => 34,
+        'weight' => 29,
       ),
       'table' => array(
         'label' => 'above',
@@ -6538,7 +6721,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'FEX other career field',
         ),
         'type' => 'text_default',
-        'weight' => 24,
+        'weight' => 29,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6590,7 +6773,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispCareerFieldOther',
         ),
         'type' => 'text_default',
-        'weight' => 44,
+        'weight' => 39,
       ),
       'table' => array(
         'label' => 'above',
@@ -6599,7 +6782,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP other career field',
         ),
         'type' => 'text_default',
-        'weight' => 37,
+        'weight' => 43,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6642,13 +6825,13 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 59,
+        'weight' => 60,
       ),
       'download' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 64,
       ),
       'table' => array(
         'label' => 'above',
@@ -6657,7 +6840,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP paid',
         ),
         'type' => 'list_default',
-        'weight' => 46,
+        'weight' => 53,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6764,7 +6947,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'supPhone',
         ),
         'type' => 'text_default',
-        'weight' => 28,
+        'weight' => 23,
       ),
       'table' => array(
         'label' => 'above',
@@ -6773,7 +6956,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 23,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6825,7 +7008,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispQualifications',
         ),
         'type' => 'text_default',
-        'weight' => 53,
+        'weight' => 48,
       ),
       'table' => array(
         'label' => 'above',
@@ -6834,7 +7017,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP qualifications',
         ),
         'type' => 'text_default',
-        'weight' => 39,
+        'weight' => 45,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6879,13 +7062,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 66,
+        'weight' => 71,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 63,
+        'weight' => 71,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6929,7 +7112,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispOnsiteOrRemote',
         ),
         'type' => 'list_default',
-        'weight' => 46,
+        'weight' => 41,
       ),
       'table' => array(
         'label' => 'above',
@@ -6938,7 +7121,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP on site or remote',
         ),
         'type' => 'list_default',
-        'weight' => 40,
+        'weight' => 46,
       ),
     ),
     'entity_type' => 'entityform',
@@ -6982,7 +7165,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispResponsibilities',
         ),
         'type' => 'text_default',
-        'weight' => 52,
+        'weight' => 47,
       ),
       'table' => array(
         'label' => 'above',
@@ -6991,7 +7174,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP responsibilities',
         ),
         'type' => 'text_default',
-        'weight' => 38,
+        'weight' => 44,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7034,7 +7217,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 60,
+        'weight' => 61,
       ),
       'download' => array(
         'label' => 'above',
@@ -7043,7 +7226,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispCompensation',
         ),
         'type' => 'text_default',
-        'weight' => 49,
+        'weight' => 44,
       ),
       'table' => array(
         'label' => 'above',
@@ -7052,7 +7235,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP compensation',
         ),
         'type' => 'text_default',
-        'weight' => 47,
+        'weight' => 54,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7081,6 +7264,162 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_sponsor_address_markup'.
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_sponsor_address_markup'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'markup',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'markup_default',
+        'weight' => 67,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 61,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 62,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_sponsor_address_markup',
+    'label' => 'sponsor address markup',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_state_province'.
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_state_province'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 71,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'selfState',
+        ),
+        'type' => 'list_default',
+        'weight' => 11,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'Sponsor state / province',
+        ),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_state_province',
+    'label' => 'State / Province (sponsor)',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_state_province_additional'.
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_state_province_additional'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 58,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'wispState',
+        ),
+        'type' => 'list_default',
+        'weight' => 43,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'WISP state / province',
+        ),
+        'type' => 'list_default',
+        'weight' => 51,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_state_province_additional',
+    'label' => 'State / Province (WISP)',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-fex_wisp_sponsor_registration-field_state_province_addl_2'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_state_province_addl_2'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
@@ -7095,7 +7434,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'State / Province (FEX)',
         ),
         'type' => 'list_default',
-        'weight' => 42,
+        'weight' => 43,
       ),
       'download' => array(
         'label' => 'above',
@@ -7104,7 +7443,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexState',
         ),
         'type' => 'list_default',
-        'weight' => 38,
+        'weight' => 33,
       ),
       'table' => array(
         'label' => 'above',
@@ -7113,7 +7452,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'FEX state',
         ),
         'type' => 'list_default',
-        'weight' => 29,
+        'weight' => 35,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7131,62 +7470,7 @@ function ilr_forms_students_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 45,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'entityform-fex_wisp_sponsor_registration-field_state_province_addl_3'.
-  $field_instances['entityform-fex_wisp_sponsor_registration-field_state_province_addl_3'] = array(
-    'bundle' => 'fex_wisp_sponsor_registration',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 57,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'wispState',
-        ),
-        'type' => 'list_default',
-        'weight' => 48,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'WISP state',
-        ),
-        'type' => 'list_default',
-        'weight' => 44,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_state_province_addl_3',
-    'label' => 'State / Province (WISP)',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 19,
+      'weight' => 46,
     ),
   );
 
@@ -7207,13 +7491,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 67,
+        'weight' => 72,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 64,
+        'weight' => 72,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7248,7 +7532,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 66,
+        'weight' => 67,
       ),
       'download' => array(
         'label' => 'above',
@@ -7257,7 +7541,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispDates',
         ),
         'type' => 'text_default',
-        'weight' => 50,
+        'weight' => 45,
       ),
       'table' => array(
         'label' => 'above',
@@ -7266,7 +7550,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP dates',
         ),
         'type' => 'text_default',
-        'weight' => 53,
+        'weight' => 60,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7309,7 +7593,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 67,
+        'weight' => 68,
       ),
       'download' => array(
         'label' => 'above',
@@ -7318,7 +7602,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispDatesConstraints',
         ),
         'type' => 'text_default',
-        'weight' => 51,
+        'weight' => 46,
       ),
       'table' => array(
         'label' => 'above',
@@ -7327,7 +7611,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP constraints',
         ),
         'type' => 'text_default',
-        'weight' => 54,
+        'weight' => 61,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7375,13 +7659,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 62,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 64,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7397,7 +7681,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'markup',
       'settings' => array(),
       'type' => 'markup',
-      'weight' => 15,
+      'weight' => 14,
     ),
   );
 
@@ -7418,13 +7702,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 65,
+        'weight' => 70,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 70,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7461,13 +7745,13 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 64,
+        'weight' => 69,
       ),
       'table' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 69,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7502,7 +7786,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 61,
+        'weight' => 62,
       ),
       'download' => array(
         'label' => 'above',
@@ -7511,7 +7795,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispNumOpps',
         ),
         'type' => 'list_default',
-        'weight' => 45,
+        'weight' => 40,
       ),
       'table' => array(
         'label' => 'above',
@@ -7520,7 +7804,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP num students',
         ),
         'type' => 'list_default',
-        'weight' => 48,
+        'weight' => 55,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7575,7 +7859,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 12,
+        'weight' => 17,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7621,7 +7905,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'supGradYear',
         ),
         'type' => 'list_default',
-        'weight' => 32,
+        'weight' => 27,
       ),
       'table' => array(
         'label' => 'above',
@@ -7630,7 +7914,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 22,
+        'weight' => 27,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7667,7 +7951,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'Class year eligibility',
         ),
         'type' => 'list_default',
-        'weight' => 62,
+        'weight' => 63,
       ),
       'download' => array(
         'label' => 'above',
@@ -7676,7 +7960,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispClassYearEligibility',
         ),
         'type' => 'list_default',
-        'weight' => 54,
+        'weight' => 49,
       ),
       'table' => array(
         'label' => 'above',
@@ -7685,7 +7969,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP class year eligibility',
         ),
         'type' => 'list_default',
-        'weight' => 49,
+        'weight' => 56,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7738,7 +8022,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 13,
+        'weight' => 18,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7773,7 +8057,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 65,
+        'weight' => 66,
       ),
       'download' => array(
         'label' => 'above',
@@ -7782,7 +8066,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispConsecutiveDays',
         ),
         'type' => 'list_default',
-        'weight' => 57,
+        'weight' => 52,
       ),
       'table' => array(
         'label' => 'above',
@@ -7791,7 +8075,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP consecutive days',
         ),
         'type' => 'list_default',
-        'weight' => 52,
+        'weight' => 59,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7812,6 +8096,112 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_yes_no_3'.
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_yes_no_3'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 39,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'fexAddressDifferent',
+        ),
+        'type' => 'list_default',
+        'weight' => 57,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'FEX location different from sponsor',
+        ),
+        'type' => 'list_default',
+        'weight' => 31,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_3',
+    'label' => 'Is the FEX location different from the sponsor address entered above?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_yes_no_4'.
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_yes_no_4'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 54,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'wispAddressDifferent',
+        ),
+        'type' => 'list_default',
+        'weight' => 53,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => 'WISP location different from sponsor',
+        ),
+        'type' => 'list_default',
+        'weight' => 47,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_4',
+    'label' => 'Is the WISP location different from the sponsor address entered above?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-fex_wisp_sponsor_registration-field_zip_code'.
   $field_instances['entityform-fex_wisp_sponsor_registration-field_zip_code'] = array(
     'bundle' => 'fex_wisp_sponsor_registration',
@@ -7823,16 +8213,16 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'Zip code (FEX)',
+          'field_formatter_label' => 'Zip code (sponsor)',
         ),
         'type' => 'text_default',
-        'weight' => 43,
+        'weight' => 72,
       ),
       'download' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'fexZipcode',
+          'field_formatter_label' => 'selfZipcode',
         ),
         'type' => 'text_default',
         'weight' => 12,
@@ -7841,16 +8231,16 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(
-          'field_formatter_label' => 'FEX zip code',
+          'field_formatter_label' => 'Sponsor zip code',
         ),
         'type' => 'text_default',
-        'weight' => 30,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_zip_code',
-    'label' => 'Zip code (FEX)',
+    'label' => 'Zip code (sponsor)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -7868,7 +8258,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 46,
+      'weight' => 12,
     ),
   );
 
@@ -7887,7 +8277,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 58,
+        'weight' => 59,
       ),
       'download' => array(
         'label' => 'above',
@@ -7896,7 +8286,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispZipcode',
         ),
         'type' => 'text_default',
-        'weight' => 27,
+        'weight' => 56,
       ),
       'table' => array(
         'label' => 'above',
@@ -7905,7 +8295,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'WISP zip code',
         ),
         'type' => 'text_default',
-        'weight' => 45,
+        'weight' => 52,
       ),
     ),
     'entity_type' => 'entityform',
@@ -7930,6 +8320,67 @@ function ilr_forms_students_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 20,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-fex_wisp_sponsor_registration-field_zip_postal_code_addl_2'.
+  $field_instances['entityform-fex_wisp_sponsor_registration-field_zip_postal_code_addl_2'] = array(
+    'bundle' => 'fex_wisp_sponsor_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 44,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'fexZipcode',
+        ),
+        'type' => 'text_default',
+        'weight' => 60,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => 'FEX zip code',
+        ),
+        'type' => 'text_default',
+        'weight' => 36,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_zip_postal_code_addl_2',
+    'label' => 'Zip code (FEX)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 47,
     ),
   );
 
@@ -12850,6 +13301,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('City');
   t('City (FEX)');
   t('City (WISP)');
+  t('City (sponsor)');
   t('Class year');
   t('Class year eligibility (choose one or more)');
   t('College');
@@ -12886,6 +13338,8 @@ function ilr_forms_students_field_default_field_instances() {
   t('ILR Degree');
   t('If freshmen don\'t select this opportunity, may we offer it to upperclass students?');
   t('If you have more than one ILR degree, list them all.');
+  t('Is the FEX location different from the sponsor address entered above?');
+  t('Is the WISP location different from the sponsor address entered above?');
   t('Is the supervisor a Cornell alum?');
   t('Is this a paid WISP?');
   t('Job title');
@@ -12929,12 +13383,15 @@ function ilr_forms_students_field_default_field_instances() {
   t('State / Province');
   t('State / Province (FEX)');
   t('State / Province (WISP)');
+  t('State / Province (sponsor)');
   t('Street address line 1');
   t('Street address line 1 (FEX)');
   t('Street address line 1 (WISP)');
+  t('Street address line 1 (sponsor)');
   t('Street address line 2');
   t('Street address line 2 (FEX)');
   t('Street address line 2 (WISP)');
+  t('Street address line 2 (sponsor)');
   t('Student ID');
   t('Student requirements: qualifications, computer skills, and transportation needs');
   t('Student\'s email');
@@ -12961,10 +13418,12 @@ function ilr_forms_students_field_default_field_instances() {
   t('Zip code');
   t('Zip code (FEX)');
   t('Zip code (WISP)');
+  t('Zip code (sponsor)');
   t('fex markup if chosen');
   t('fex markup if not chosen');
   t('h_program');
   t('programYear');
+  t('sponsor address markup');
   t('wisp markup if chosen');
   t('wisp markup if not chosen');
 
