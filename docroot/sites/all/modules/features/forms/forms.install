@@ -4,23 +4,32 @@
  * Deletes entityform field instances needing to be changed
  */
 function forms_update_7001() {
+  // Every key has to be different, so don't imitate this array
+  //   if two fields are being removed from the same form!
   $fields_info = array(
     'employee_recognition_nomination_' => 'field_name_title',
     'job_postings_for_ilr_alumni' => 'field_name_title',
     'graduate_student_request_for_tea' => 'field_degree_program',
   );
 
-  _forms_delete_entityform_field_instances($fields_info);
+  foreach ($fields_info as $form_id => $field_name) {
+    $field_instances_to_remove = array (
+      $field_name,
+    );
+    _forms_delete_field_instances_from_entityform($form_id,
+      $field_instances_to_remove);
+  }
 }
 
 /**
  * Delete field_h_postdate field instance
  */
 function forms_update_7002(&$sandbox) {
-  $fields_info = array(
-    'job_postings_for_ilr_alumni' => 'field_h_postdate',
+  $field_instances_to_remove = array (
+    'field_h_postdate',
   );
-  _forms_delete_entityform_field_instances($fields_info);
+  _forms_delete_field_instances_from_entityform('job_postings_for_ilr_alumni',
+      $field_instances_to_remove);
 }
 
 /**
@@ -29,10 +38,12 @@ function forms_update_7002(&$sandbox) {
 function forms_update_7003() {
   field_delete_field('field_how_heard_sicf');
   field_delete_field('field_career_fields_sicf');
-  $fields_info = array(
-    'social_impact_career_forum_reg' => 'field_how_heard_other',
+
+  $field_instances_to_remove = array (
+    'field_how_heard_other',
   );
-  _forms_delete_entityform_field_instances($fields_info);
+  _forms_delete_field_instances_from_entityform('social_impact_career_forum_reg',
+      $field_instances_to_remove);
 }
 
 /**
@@ -87,21 +98,24 @@ function forms_update_7007() {
 }
 
 /**
- * Delete array of field instances
- * @param $fields_info
- */
-function _forms_delete_entityform_field_instances($fields_info) {
+* Delete one or more field instances from one entityform
+* @param $form_id
+* @param $field_names
+*/
+function _forms_delete_field_instances_from_entityform($form_id, $field_names) {
   $delete_count = 0;
-  foreach ($fields_info as $form_id => $field_name) {
+  foreach ($field_names as $field_name) {
     if ($instance = field_info_instance('entityform', $field_name, $form_id)) {
       field_delete_instance($instance);
       $delete_count++;
     }
   }
+
   /**
    * The fields aren't really deleted until the purge function runs, ordinarily
-   * during cron.  Count the number of fields we need to purge, and add five in
-   * case a few other miscellaneous fields are in there somehow.
+   * during cron.  In the loop above, count the number of fields we need to
+   * purge, and add five in case a few other miscellaneous fields are in there
+   * somehow.
    */
   field_purge_batch($delete_count + 5);
 }

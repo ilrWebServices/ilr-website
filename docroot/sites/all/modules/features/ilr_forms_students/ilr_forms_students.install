@@ -16,3 +16,17 @@ function ilr_forms_students_update_7002() {
   _forms_delete_entityform_submissions('fex_wisp_sponsor_registration');
 }
 
+/**
+ * Deletes 4 field instancess from entityform fex_wisp_sponsor_registration
+ */
+function ilr_forms_students_update_7003 () {
+  $field_instances_to_remove = array (
+    'field_wisp_dates_markup',
+    'field_is_address_the_same',
+    'field_state_province_addl_3',
+    'field_city_additional_3',
+  );
+  _forms_delete_field_instances_from_entityform('fex_wisp_sponsor_registration',
+   $field_instances_to_remove);
+}
+

@@ -16,6 +16,7 @@ function ilr_forms_students_entityform_presave($entityform) {
     _ilr_forms_students_set_fexwisp_supervisor_fields($entityform);
     _ilr_forms_students_fix_fexwisp_alum_college_fields($entityform);
     _ilr_forms_students_set_fexwisp_state_if_remote($entityform);
+    _ilr_forms_students_set_fexwisp_address_fields($entityform);
   }
   elseif ($entityform->type == 'fex_student_application' ||
           $entityform->type == 'wisp_student_application') {
@@ -58,19 +59,64 @@ function _ilr_forms_students_set_fexwisp_programYear($entityform) {
 }
 
 /**
+ * Set fex/wisp address fields to match sponsor address, if the
+ * sponsor didn't need to fill them in, i.e. the fex or wisp address
+ * was the same as the sponsor address. (These fields need to end up
+ * in the downloaded csv file for import to Filemaker; setting them here
+ * ensures that they go into the Drupal database for the form submission.
+ *
+ * Note: This is dependent on the answer to "address different" being
+ * "no", which works for fex-only, wisp-only, fex & wisp, and remote-only
+ * wisps.
+ */
+function _ilr_forms_students_set_fexwisp_address_fields($entityform) {
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+
+  // Create arrays of fields that need to be copied.
+  // Key is the "from field" and value is the "to field"
+  $fex_address_fields = array(
+    'field_address_line_1'          => 'field_address_line_1_addl_2',
+    'field_address_line_2'          => 'field_address_line_2_addl_2',
+    'field_city'                    => 'field_city_additional_2',
+    'field_state_province'          => 'field_state_province_addl_2',
+    'field_zip_code'                => 'field_zip_postal_code_addl_2',
+  );
+  $wisp_address_fields = array(
+    'field_address_line_1'          => 'field_address_line_1_additional',
+    'field_address_line_2'          => 'field_address_line_2_additional',
+    'field_city'                    => 'field_city_additional',
+    'field_state_province'          => 'field_state_province_additional',
+    'field_zip_code'                => 'field_zip_postal_code_additional',
+  );
+
+  if ($entityform_wrapper->field_yes_no_3->value() == 'No') {
+    // FEX location is different - fill in data so it's in the drupal db
+    foreach ($fex_address_fields as $from_field => $to_field) {
+      _ilr_forms_students_copy_field_value($entityform_wrapper, $from_field, $to_field);
+    }
+  }
+  if ($entityform_wrapper->field_yes_no_4->value() == 'No') {
+    // WISP location is different
+    foreach ($wisp_address_fields as $from_field => $to_field) {
+      _ilr_forms_students_copy_field_value($entityform_wrapper, $from_field, $to_field);
+    }
+  }
+}
+
+/**
  * Set state to "Remote" if student will be working remotely (wisp sponsor)
  */
 function _ilr_forms_students_set_fexwisp_state_if_remote($entityform) {
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
   if ($entityform_wrapper->field_remote_wisp->value() == 'remote') {
-    $entityform_wrapper->field_state_province_addl_3->set("Remote");
+    $entityform_wrapper->field_state_province_additional->set("Remote");
   }
 }
 
 /**
  * Set fex/wisp sponsor form fields about the supervisor, if the sponsor didn't
- * need to fill them in, i.e. because s/he is the supervisor or the address was
- * the same.  They need to end up in the downloaded csv file for import to
+ * need to fill them in, i.e. because s/he is the supervisor.
+ * They need to end up in the downloaded csv file for import to
  * Filemaker; setting them here ensures that they go into the Drupal database
  * for the form submission.
  */
@@ -91,30 +137,15 @@ function _ilr_forms_students_set_fexwisp_supervisor_fields($entityform) {
     'field_year_as_list_text'       => 'field_year_as_list_text_2',
   );
 
-  $supervisor_address_fields = array(
-    'field_address_line_1' => 'field_address_line_1_additional',
-    'field_address_line_2' => 'field_address_line_2_additional',
-    'field_city'           => 'field_city_additional',
-    'field_state_province' => 'field_state_province_additional',
-    'field_zip_code'       => 'field_zip_postal_code_additional',
-  );
-
   if ($entityform_wrapper->field_yes_no->value() == 'Yes') {
-    // Person filling out the form IS the supervisor - need both arrays of fields
-    $supervisor_all_fields = array_merge(
-     $supervisor_basic_fields, $supervisor_address_fields);
-
-    foreach ($supervisor_all_fields as $user_field => $supv_field) {
-      _ilr_forms_students_copy_field_value($entityform_wrapper, $user_field, $supv_field);
-    }
-  }
-  elseif ($entityform_wrapper->field_is_address_the_same->value() == 'Yes') {
-    // Person filling out the form IS NOT the supervisor, but address is the same
-    foreach ($supervisor_address_fields as $user_field => $supv_field) {
+    // Person filling out the form IS the supervisor - need to fill in
+    // data so it ends up in the drupal db
+    foreach ($supervisor_basic_fields as $user_field => $supv_field) {
       _ilr_forms_students_copy_field_value($entityform_wrapper, $user_field, $supv_field);
     }
   }
 }
+
 
 
 /**
