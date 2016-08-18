@@ -376,7 +376,7 @@
   Drupal.behaviors.change_hover_color = {
     attach: function (context, settings) {
       $(window).load(function() {
-        if (typeof settings.change_hover_color !== 'undefined' && typeof settings.change_hover_color.selector !== 'undefined') {
+        if (typeof settings.change_hover_color !== 'undefined') {
           var $selector = settings.change_hover_color.selector;
           if ($($selector)) {
             $('#content-bottom article').each(function(){
