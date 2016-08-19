@@ -24,26 +24,34 @@ body.node-type-certificate-programs {
         @include trailer(.5);
       }
 
+      h1, h2, h3 {
+        font-family: $font;
+      }
+
       .field-name-field-image {
         text-align: center;
       }
 
       .field-name-field-prerequisites-requirements {
         @include trailer(1);
-        border-bottom: 1px solid $gray-medium;
       }
 
       .field-name-field-course {
         article {
+          @include padding-leader(.5);
           @include padding-trailer(1);
+          border: 1px solid $gray-light;
+          padding-left: 1em;
+          padding-right: 1em;
           .group-main-content {
             p {
               @include adjust-font-size-to(16px);
               @include adjust-leading-to(1.2);
+              @include trailer(.8);
             }
           }
           h2 {
-            @include trailer(.3);
+            @include trailer(0);
             a {
               font-family: $font;
               font-size: 22px;
@@ -51,31 +59,83 @@ body.node-type-certificate-programs {
               color: $student-portrait-color;
             }
           }
+
           .class-details {
             @include trailer(0);
-            .timespan, .date-time, .location, .course_details {
+            // .timespan, .date-time, .location, .course_details {
+            //   display: none;
+            // }
+
+            .course_details {
               display: none;
             }
+
+            span {
+              float: left;
+              clear: none;
+              padding-right: 2em;
+              @include adjust-font-size-to(16px, .7);
+              color: $p-text;
+              text-transform: initial;
+            }
+
+            .date-time .date {
+              font-weight: 300;
+            }
+
             .action {
+              clear: both;
               a.button {
                 @include leader(0);
                 @include trailer(0);
                 font-family: $font;
                 font-size: ms(0);
-                color: $cornell-red;
-                border-bottom: 2px solid $cornell-red;
+                color: $student-portrait-color;
+                border: none;
+                background: none;
+                text-transform: initial;
+                padding: 0;
+                @include padding-leader(1);
+                font-weight: 300;
+                &:hover {
+                  color: #d76b00;
+                }
                 span {
                   display: none;
                 }
               }
             }
+
+            //rounded blue button
+            // .action {
+            //   a.button {
+            //     @include leader(0);
+            //     @include trailer(0);
+            //     font-family: $font;
+            //     font-size: ms(0);
+            //     color: white;
+            //     border: none;
+            //     background: darken($student-portrait-color, 8%);
+            //     border-radius: 20px;
+            //     &:hover {
+            //       background: #d76b00;
+            //     }
+            //     span {
+            //       display: none;
+            //     }
+            //   }
+            // }
+          }
+
+          &:hover {
+            background: white;
+            border-left: 1px solid #d76b00;
           }
         }
       }
 
       .field-name-field-course + h3.field-label {
         @include padding-leader(1);
-        border-top: 1px solid $gray-medium;
       }
     }
 
