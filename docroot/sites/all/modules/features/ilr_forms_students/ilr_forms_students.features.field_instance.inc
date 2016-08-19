@@ -4472,7 +4472,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispStreetAddress1',
         ),
         'type' => 'text_default',
-        'weight' => 54,
+        'weight' => 58,
       ),
       'table' => array(
         'label' => 'above',
@@ -4533,7 +4533,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexStreetAddress1',
         ),
         'type' => 'text_default',
-        'weight' => 58,
+        'weight' => 39,
       ),
       'table' => array(
         'label' => 'above',
@@ -4655,7 +4655,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispStreetAddress2',
         ),
         'type' => 'text_default',
-        'weight' => 55,
+        'weight' => 59,
       ),
       'table' => array(
         'label' => 'above',
@@ -4716,7 +4716,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexStreetAddress2',
         ),
         'type' => 'text_default',
-        'weight' => 59,
+        'weight' => 40,
       ),
       'table' => array(
         'label' => 'above',
@@ -4938,7 +4938,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispCareerField',
         ),
         'type' => 'list_default',
-        'weight' => 38,
+        'weight' => 42,
       ),
       'table' => array(
         'label' => 'above',
@@ -5054,7 +5054,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispCIty',
         ),
         'type' => 'text_default',
-        'weight' => 42,
+        'weight' => 46,
       ),
       'table' => array(
         'label' => 'above',
@@ -6545,7 +6545,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispMaxDuration',
         ),
         'type' => 'list_default',
-        'weight' => 51,
+        'weight' => 55,
       ),
       'table' => array(
         'label' => 'above',
@@ -6598,7 +6598,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispMinDuration',
         ),
         'type' => 'list_default',
-        'weight' => 50,
+        'weight' => 54,
       ),
       'table' => array(
         'label' => 'above',
@@ -6773,7 +6773,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispCareerFieldOther',
         ),
         'type' => 'text_default',
-        'weight' => 39,
+        'weight' => 43,
       ),
       'table' => array(
         'label' => 'above',
@@ -7008,7 +7008,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispQualifications',
         ),
         'type' => 'text_default',
-        'weight' => 48,
+        'weight' => 52,
       ),
       'table' => array(
         'label' => 'above',
@@ -7112,7 +7112,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispOnsiteOrRemote',
         ),
         'type' => 'list_default',
-        'weight' => 41,
+        'weight' => 45,
       ),
       'table' => array(
         'label' => 'above',
@@ -7165,7 +7165,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispResponsibilities',
         ),
         'type' => 'text_default',
-        'weight' => 47,
+        'weight' => 51,
       ),
       'table' => array(
         'label' => 'above',
@@ -7226,7 +7226,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispCompensation',
         ),
         'type' => 'text_default',
-        'weight' => 44,
+        'weight' => 48,
       ),
       'table' => array(
         'label' => 'above',
@@ -7388,7 +7388,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispState',
         ),
         'type' => 'list_default',
-        'weight' => 43,
+        'weight' => 47,
       ),
       'table' => array(
         'label' => 'above',
@@ -7541,7 +7541,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispDates',
         ),
         'type' => 'text_default',
-        'weight' => 45,
+        'weight' => 49,
       ),
       'table' => array(
         'label' => 'above',
@@ -7602,7 +7602,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispDatesConstraints',
         ),
         'type' => 'text_default',
-        'weight' => 46,
+        'weight' => 50,
       ),
       'table' => array(
         'label' => 'above',
@@ -7795,7 +7795,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispNumOpps',
         ),
         'type' => 'list_default',
-        'weight' => 40,
+        'weight' => 44,
       ),
       'table' => array(
         'label' => 'above',
@@ -7960,7 +7960,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispClassYearEligibility',
         ),
         'type' => 'list_default',
-        'weight' => 49,
+        'weight' => 53,
       ),
       'table' => array(
         'label' => 'above',
@@ -8066,7 +8066,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispConsecutiveDays',
         ),
         'type' => 'list_default',
-        'weight' => 52,
+        'weight' => 56,
       ),
       'table' => array(
         'label' => 'above',
@@ -8119,7 +8119,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexAddressDifferent',
         ),
         'type' => 'list_default',
-        'weight' => 57,
+        'weight' => 38,
       ),
       'table' => array(
         'label' => 'above',
@@ -8172,7 +8172,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispAddressDifferent',
         ),
         'type' => 'list_default',
-        'weight' => 53,
+        'weight' => 57,
       ),
       'table' => array(
         'label' => 'above',
@@ -8286,7 +8286,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'wispZipcode',
         ),
         'type' => 'text_default',
-        'weight' => 56,
+        'weight' => 60,
       ),
       'table' => array(
         'label' => 'above',
@@ -8347,7 +8347,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => 'fexZipcode',
         ),
         'type' => 'text_default',
-        'weight' => 60,
+        'weight' => 41,
       ),
       'table' => array(
         'label' => 'above',
