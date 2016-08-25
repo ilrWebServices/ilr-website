@@ -66,14 +66,6 @@
     }
   }
 
-  //@todo: duplicate styles - delete
-  // #content-bottom {
-  //   clear: both;
-  //   article {
-  //     @extend %one-column;
-  //   }
-  // }
-
   &[data-eq-state="550"],
   &[data-eq-state="768"] {
     #content, #sidebar-second {
