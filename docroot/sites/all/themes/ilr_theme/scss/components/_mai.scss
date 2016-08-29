@@ -1,4 +1,7 @@
 body.mobilizing-against-inequality {
+  #sidebar-second {
+    background: white;
+  }
 
   &.subsite-front {
     .field-name-body {
@@ -12,9 +15,6 @@ body.mobilizing-against-inequality {
   }
 
   &.not-front {
-    #sidebar-second {
-      background: white;
-    }
     #main[data-eq-state="widescreen"], #main[data-eq-state="768"] {
       #sidebar-second {
         background: none;
