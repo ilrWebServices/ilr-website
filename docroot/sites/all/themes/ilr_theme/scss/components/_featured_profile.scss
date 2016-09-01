@@ -248,3 +248,19 @@ body.node-type-visiting-fellow {
     }
   }
 }
+
+//block of tagged experience reports
+#main {
+  #content {
+    article.node-experience-report {
+      h2 {
+        margin-bottom: 0;
+      }
+      .field-name-field-year-as-text {
+        margin-left: 115px;
+        font-family: $font-headers;
+        font-weight: 400;
+      }
+    }
+  }
+}
