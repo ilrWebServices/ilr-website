@@ -425,7 +425,7 @@ function _ilr_sdc_listings_get_class_detail_markup_for_email($class) {
   $state = $class_wrapper->field_address->administrative_area->value();
   $markup = 'DATE: '._ilr_sdc_listings_get_class_datespan($class).'<br>';
   $markup .= 'TIME: '._ilr_sdc_listings_get_class_timespan($class).'<br>';
-  $markup .= ($city == 'On-Line') ? 'LOCATION: Online<br>' : "LOCATION: $city, $state<br>";
+  $markup .= (_ilr_sdc_listings_is_online($class)) ? 'LOCATION: Online<br>' : "LOCATION: $city, $state<br>";
   $markup .= "PRICE: $".$class_wrapper->field_price->value();
   return $markup;
 }
@@ -1027,6 +1027,19 @@ function _ilr_sdc_listings_is_ondemand($node) {
 }
 
 /**
+ * Checks the city for the hack used in SDC for "On-Line"
+ */
+function _ilr_sdc_listings_is_online($node) {
+  if ($node->type == 'sdc_class') {
+    $node_wrapper = ilr_get_node_wrapper($node);
+    $city = $node_wrapper->field_address->locality->value();
+    $city = drupal_strtolower(str_replace('-', '', $city));
+    return $city == 'online';
+  }
+  return FALSE;
+}
+
+/**
  * Checks the course or class for the appropriate course's series flag
  */
 function _ilr_sdc_listings_is_series($course_or_class) {
@@ -1503,12 +1516,16 @@ function _ilr_sdc_listings_get_referenced_profile_nid($faculty_node) {
 
 function _ilr_sdc_listings_generate_location_markup($class) {
   $wrapper = ilr_get_node_wrapper($class);
-  $city = $wrapper->field_address->locality->value();
-  $state = $wrapper->field_address->administrative_area->value();
   $handlers = array('address' => 'address');
   $context = array('mode' => 'render');
   $addressfield_object = $wrapper->field_address->value();
   $address_render_array = addressfield_generate($addressfield_object, $handlers, $context);
+  if (_ilr_sdc_listings_is_online($class)) {
+    // Fix quirks related to online display
+    $address_render_array['#address']['locality'] = "Online";
+    $address_render_array['locality_block']['locality']['#suffix'] = ''; // Removes the comma after city
+    $address_render_array['#address']['postal_code'] = '';
+  }
   $markup = drupal_render($address_render_array);
   return $markup;
 }
@@ -1596,11 +1613,13 @@ function _ilr_sdc_listings_generate_class_timespan_markup($class_node) {
 function _ilr_sdc_listings_generate_class_time_location_markup($class_node) {
   $markup = '';
   $wrapper = ilr_get_node_wrapper($class_node);
+  $markup .= _ilr_sdc_listings_format_class_date_and_time($class_node);
   $city = $wrapper->field_address->locality->value();
   $state = $wrapper->field_address->administrative_area->value();
-  $markup .= _ilr_sdc_listings_format_class_date_and_time($class_node);
   if (!empty($city)) {
-    $markup .= "<span class='location'>$city, $state</span>";
+    $markup .= (_ilr_sdc_listings_is_online($class_node))
+      ? "<span class='location'>Online</span>"
+      : "<span class='location'>$city, $state</span>";
   }
   return $markup;
 }
