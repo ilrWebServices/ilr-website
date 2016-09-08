@@ -186,6 +186,25 @@ function forms_admin_menu_output_build(&$content) {
   }
 }
 
+function forms_mailchimp_automations_entity_options_alter(&$options, $automation_entity_label) {
+  $options = array(
+    '' => t('-- Select --'),
+    'entityform' => 'Entityform',
+  );
+}
+
+function forms_mailchimp_automations_mergevars_alter(&$merge_vars, $automation, $wrapped_automation_entity) {
+  if ($automation->label == "CB") {
+    $first_last_name = _forms_first_last_name_from_full($wrapped_automation_entity->field_full_name->value());
+    $merge_vars = array(
+      'FNAME' => $first_last_name['first_name'],
+      'LNAME' => $first_last_name['last_name'],
+      'MMERGE3' => $wrapped_automation_entity->field_job_title->value(),
+      'MMERGE4' => $wrapped_automation_entity->field_company->value()
+    );
+  }
+}
+
 /**
  * Implements hook_admin_paths().
  * Sets the entityform submissions pages to the admin theme
@@ -401,45 +420,10 @@ function _forms_process_default(&$entityform) {
 
 /**
  * Process Collective Bargaining Videos tracking
- * - Add to mailchimp list and segment
- * - Trigger automation workflow
- * - set cookie and do normal processing
- * - redirect to the list of videos.
+ * - Set cookie and do normal processing
+ * - redirect to the list of videos
  */
 function _process_collective_bargaining_videos(&$entityform) {
-  if (module_exists('mailchimp')) {
-    $entityform_wrapper = _forms_entityform_wrapper($entityform);
-    $email = $entityform_wrapper->field_email->value();
-    $wi_list = '4346ff0fee';
-    $mc_lists = mailchimp_get_api_object('MailchimpLists');
-    if (!mailchimp_is_subscribed($wi_list, $email)) {
-      $first_last_name = _forms_first_last_name_from_full($entityform_wrapper->field_full_name->value());
-      $parameters = [
-        'status_if_new' => 'subscribed',
-        'merge_fields' => [
-          'FNAME' => $first_last_name['first_name'],
-          'LNAME' => $first_last_name['last_name'],
-          'MMERGE3' => $entityform_wrapper->field_job_title->value(),
-          'MMERGE4' => $entityform_wrapper->field_company->value()
-        ],
-      ];
-      $mc_lists->addOrUpdateMember($wi_list, $email, $parameters);
-    }
-    // Add them to the segment
-    $cb_video_segment = '65325';
-    $mc_lists->addSegmentMember($wi_list, $cb_video_segment, $email);
-    // Add them to the correct automation workflow
-    $mc_auto = mailchimp_get_api_object('MailchimpAutomations');
-    $workflow_id = '4e3da78a41';
-    $workflow_email_id = 'a87de7d1e5';
-    try {
-      $result = $mc_auto->addWorkflowEmailSubscriber($workflow_id, $workflow_email_id, $email);
-    }
-    catch (Exception $e) {
-      // During testing, exceptions were getting thrown
-      // if the user has already received this particular email
-    }
-  }
   user_cookie_save(array ('cbvideoinfo' => 'yes'));
   _forms_process_default($entityform);
   _forms_collective_bargaining_videos_redirect();
