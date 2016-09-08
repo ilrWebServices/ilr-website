@@ -46,6 +46,9 @@ function forms_entityform_presave($entityform) {
  * Implements hook_entityform_view_alter
  */
  function forms_entityform_view_alter(&$render_array) {
+  if ($render_array['#bundle'] == 'collective_bargaining_videos' && isset($_COOKIE['Drupal_visitor_cbvideoinfo'])) {
+    _forms_collective_bargaining_videos_redirect();
+  }
   if ($render_array['#entity']->uid == 0) {
     $render_array['info']['user']['#markup'] = 'Submitted on ' .
       format_date($render_array['#entity']->created);
@@ -421,12 +424,10 @@ function _forms_process_default(&$entityform) {
 /**
  * Process Collective Bargaining Videos tracking
  * - Set cookie and do normal processing
- * - redirect to the list of videos
  */
 function _process_collective_bargaining_videos(&$entityform) {
   user_cookie_save(array ('cbvideoinfo' => 'yes'));
   _forms_process_default($entityform);
-  _forms_collective_bargaining_videos_redirect();
 }
 
 /**
