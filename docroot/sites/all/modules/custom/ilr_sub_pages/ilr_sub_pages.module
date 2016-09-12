@@ -67,6 +67,10 @@ function ilr_sub_pages_menu() {
     'theme arguments' => array('admin_theme'),
   );
 
+  $node_type = (isset($_GET['sub_page_type']))
+    ? $_GET['sub_page_type']
+    : 'basic_page';
+
   $items['node/%node/sub'] = array(
     'page callback' => 'ilr_sub_pages_create_sub_page',
     'page arguments' => array(1),
@@ -75,7 +79,7 @@ function ilr_sub_pages_menu() {
     'file' => 'ilr_sub_pages.sub_page.inc',
     'type' => MENU_LOCAL_TASK,
     'access callback' => '_ilr_sub_pages_create_sub_page_access',
-    'access arguments' => array(1, 'create sub page',$_GET['sub_page_type']),
+    'access arguments' => array(1, 'create sub page', $node_type),
     'theme callback' => 'variable_get',
     'theme arguments' => array('admin_theme'),
   );
