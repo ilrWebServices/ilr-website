@@ -1139,7 +1139,6 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
         $form = drupal_get_form('ilr_sdc_listings_class_reg_form', $class_nodes);
         $content = drupal_render($form);
         $content .= _ilr_sdc_listings_generate_request_info_markup($course_node, $view_mode);
-        $content .= _ilr_sdc_listings_generate_follow_markup($course_node);
       } // teaser list view
       else {
         $content = _ilr_sdc_listings_generate_class_link_markup($class_nodes);
@@ -1556,6 +1555,7 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
     $markup .= '<p class="schedule button-info">'.$help_text.'</p>';
     $markup .= '<a class="button course request-info" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Request';
     $markup .= '<span class="course-title">'.$course->title.'</span></a>';
+    $markup .= _ilr_sdc_listings_generate_follow_markup($course);
   }
   $markup .= '</div>';
   return $markup;
