@@ -864,6 +864,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'path',
   );
 
+  // Exported permission: 'create visiting_fellow content'.
+  $permissions['create visiting_fellow content'] = array(
+    'name' => 'create visiting_fellow content',
+    'roles' => array(
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create workspan content'.
   $permissions['create workspan content'] = array(
     'name' => 'create workspan content',
@@ -1116,6 +1125,13 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: 'delete any visiting_fellow content'.
+  $permissions['delete any visiting_fellow content'] = array(
+    'name' => 'delete any visiting_fellow content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any workspan content'.
   $permissions['delete any workspan content'] = array(
     'name' => 'delete any workspan content',
@@ -1318,6 +1334,15 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: 'delete own visiting_fellow content'.
+  $permissions['delete own visiting_fellow content'] = array(
+    'name' => 'delete own visiting_fellow content',
+    'roles' => array(
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'delete own workspan content'.
@@ -1783,6 +1808,13 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: 'edit any visiting_fellow content'.
+  $permissions['edit any visiting_fellow content'] = array(
+    'name' => 'edit any visiting_fellow content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any workspan content'.
   $permissions['edit any workspan content'] = array(
     'name' => 'edit any workspan content',
@@ -2003,6 +2035,15 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: 'edit own visiting_fellow content'.
+  $permissions['edit own visiting_fellow content'] = array(
+    'name' => 'edit own visiting_fellow content',
+    'roles' => array(
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'edit own workspan content'.

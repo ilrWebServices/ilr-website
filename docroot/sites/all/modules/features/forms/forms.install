@@ -4,23 +4,32 @@
  * Deletes entityform field instances needing to be changed
  */
 function forms_update_7001() {
+  // Every key has to be different, so don't imitate this array
+  //   if two fields are being removed from the same form!
   $fields_info = array(
     'employee_recognition_nomination_' => 'field_name_title',
     'job_postings_for_ilr_alumni' => 'field_name_title',
     'graduate_student_request_for_tea' => 'field_degree_program',
   );
 
-  _forms_delete_entityform_field_instances($fields_info);
+  foreach ($fields_info as $form_id => $field_name) {
+    $field_instances_to_remove = array (
+      $field_name,
+    );
+    _forms_delete_field_instances_from_entityform($form_id,
+      $field_instances_to_remove);
+  }
 }
 
 /**
  * Delete field_h_postdate field instance
  */
 function forms_update_7002(&$sandbox) {
-  $fields_info = array(
-    'job_postings_for_ilr_alumni' => 'field_h_postdate',
+  $field_instances_to_remove = array (
+    'field_h_postdate',
   );
-  _forms_delete_entityform_field_instances($fields_info);
+  _forms_delete_field_instances_from_entityform('job_postings_for_ilr_alumni',
+      $field_instances_to_remove);
 }
 
 /**
@@ -29,10 +38,12 @@ function forms_update_7002(&$sandbox) {
 function forms_update_7003() {
   field_delete_field('field_how_heard_sicf');
   field_delete_field('field_career_fields_sicf');
-  $fields_info = array(
-    'social_impact_career_forum_reg' => 'field_how_heard_other',
+
+  $field_instances_to_remove = array (
+    'field_how_heard_other',
   );
-  _forms_delete_entityform_field_instances($fields_info);
+  _forms_delete_field_instances_from_entityform('social_impact_career_forum_reg',
+      $field_instances_to_remove);
 }
 
 /**
@@ -87,21 +98,63 @@ function forms_update_7007() {
 }
 
 /**
- * Delete array of field instances
- * @param $fields_info
+ * Delete subm from join_the_hcd_mailing_list and career_and_networking_panels
  */
-function _forms_delete_entityform_field_instances($fields_info) {
+function forms_update_7008() {
+  _forms_delete_entityform_submissions('join_the_hcd_mailing_list');
+  _forms_delete_entityform_submissions('career_and_networking_panels');
+}
+
+/**
+ * Remove all traces of entityform type join_the_hcd_mailing_list
+ */
+function forms_update_7009() {
+  // 1. Remove the submissions - complete; see previous update hook.
+
+  // 2. Delete the field instances
+  $fields_info = field_info_instances('entityform', 'join_the_hcd_mailing_list');
   $delete_count = 0;
-  foreach ($fields_info as $form_id => $field_name) {
+  foreach ($fields_info as $field_in_form => $field_array) {
+    $field_name = $field_array['field_name'];
+    if ($instance = field_info_instance('entityform', $field_name,
+      'join_the_hcd_mailing_list')) {
+        field_delete_instance($instance);
+        $delete_count++;
+    }
+  }
+
+  // 3. Delete one field that isn't used elsewhere
+  field_delete_field('field_hcd_contact_form_topics');
+  $delete_count++;
+
+  // 4. Delete the entityform type itself
+  if ($entityform_type = entityform_type_load('join_the_hcd_mailing_list')) {
+    entityform_type_delete($entityform_type);
+  }
+
+  // 5. Purge the deleted field, plus a few extras just in case
+  field_purge_batch($delete_count + 5);
+}
+
+/**
+* Delete one or more field instances from one entityform
+* @param $form_id
+* @param $field_names
+*/
+function _forms_delete_field_instances_from_entityform($form_id, $field_names) {
+  $delete_count = 0;
+  foreach ($field_names as $field_name) {
     if ($instance = field_info_instance('entityform', $field_name, $form_id)) {
       field_delete_instance($instance);
       $delete_count++;
     }
   }
+
   /**
    * The fields aren't really deleted until the purge function runs, ordinarily
-   * during cron.  Count the number of fields we need to purge, and add five in
-   * case a few other miscellaneous fields are in there somehow.
+   * during cron.  In the loop above, count the number of fields we need to
+   * purge, and add five in case a few other miscellaneous fields are in there
+   * somehow.
    */
   field_purge_batch($delete_count + 5);
 }

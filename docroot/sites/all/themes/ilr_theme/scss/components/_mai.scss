@@ -1,4 +1,7 @@
 body.mobilizing-against-inequality {
+  #sidebar-second {
+    background: white;
+  }
 
   &.subsite-front {
     .field-name-body {
@@ -7,6 +10,14 @@ body.mobilizing-against-inequality {
         position: absolute;
         right: 0;
         top: 0;
+      }
+    }
+  }
+
+  &.not-front {
+    #main[data-eq-state="widescreen"], #main[data-eq-state="768"] {
+      #sidebar-second {
+        background: none;
       }
     }
   }

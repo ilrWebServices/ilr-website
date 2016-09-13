@@ -1,18 +1,19 @@
 <?php
 /**
  * @file
- * ilr_experience_reports.features.field_instance.inc
+ * ilr_visiting_fellows.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function ilr_experience_reports_field_default_field_instances() {
+function ilr_visiting_fellows_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-experience_report-field_blocks'.
-  $field_instances['node-experience_report-field_blocks'] = array(
-    'bundle' => 'experience_report',
+  // Exported field_instance: 'node-visiting_fellow-field_blocks'.
+  $field_instances['node-visiting_fellow-field_blocks'] = array(
+    'bundle' => 'visiting_fellow',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -27,7 +28,7 @@ function ilr_experience_reports_field_default_field_instances() {
         'weight' => 1,
       ),
       'ilr_theme__highlighted' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 3,
@@ -36,33 +37,35 @@ function ilr_experience_reports_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_blocks',
     'label' => 'Blocks',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 0,
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_category_type'.
-  $field_instances['node-experience_report-field_category_type'] = array(
-    'bundle' => 'experience_report',
+  // Exported field_instance: 'node-visiting_fellow-field_category_type'.
+  $field_instances['node-visiting_fellow-field_category_type'] = array(
+    'bundle' => 'visiting_fellow',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -71,10 +74,10 @@ function ilr_experience_reports_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'ilr_theme__highlighted' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 6,
@@ -83,45 +86,47 @@ function ilr_experience_reports_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_category_type',
     'label' => 'Category Type',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 0,
       'module' => 'taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_country'.
-  $field_instances['node-experience_report-field_country'] = array(
-    'bundle' => 'experience_report',
+  // Exported field_instance: 'node-visiting_fellow-field_country'.
+  $field_instances['node-visiting_fellow-field_country'] = array(
+    'bundle' => 'visiting_fellow',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 3,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -136,19 +141,79 @@ function ilr_experience_reports_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_country',
+    'label' => 'Country of origin',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-visiting_fellow-field_dates_as_text'.
+  $field_instances['node-visiting_fellow-field_dates_as_text'] = array(
+    'bundle' => 'visiting_fellow',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'ilr_theme__highlighted' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'h3',
-    'field_name' => 'field_country',
-    'label' => 'Location or country',
+    'field_name' => 'field_dates_as_text',
+    'label' => 'Visiting period',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -170,9 +235,123 @@ function ilr_experience_reports_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_image'.
-  $field_instances['node-experience_report-field_image'] = array(
-    'bundle' => 'experience_report',
+  // Exported field_instance: 'node-visiting_fellow-field_email'.
+  $field_instances['node-visiting_fellow-field_email'] = array(
+    'bundle' => 'visiting_fellow',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'ilr_theme__highlighted' => array(
+        'label' => 'inline',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 5,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'p',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-visiting_fellow-field_full_name'.
+  $field_instances['node-visiting_fellow-field_full_name'] = array(
+    'bundle' => 'visiting_fellow',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'ilr_theme__highlighted' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'h3',
+    'field_name' => 'field_full_name',
+    'label' => 'Faculty sponsor',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-visiting_fellow-field_image'.
+  $field_instances['node-visiting_fellow-field_image'] = array(
+    'bundle' => 'visiting_fellow',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -180,7 +359,7 @@ function ilr_experience_reports_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 7,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -191,13 +370,13 @@ function ilr_experience_reports_field_default_field_instances() {
           'image_style' => 'main_portrait_image',
         ),
         'type' => 'image',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -214,12 +393,12 @@ function ilr_experience_reports_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_image',
-    'label' => 'Photo of student',
+    'label' => 'Photo of fellow',
     'required' => 1,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => 'field_uploads/node_experience_reports/field_image',
+      'file_directory' => 'field_uploads/node_visiting_fellows/field_image',
       'file_extensions' => 'jpg jpeg',
       'max_filesize' => '2MB',
       'max_resolution' => '',
@@ -252,14 +431,14 @@ function ilr_experience_reports_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
   // Exported field_instance:
-  // 'node-experience_report-field_para_main_page_content'.
-  $field_instances['node-experience_report-field_para_main_page_content'] = array(
-    'bundle' => 'experience_report',
+  // 'node-visiting_fellow-field_para_main_page_content'.
+  $field_instances['node-visiting_fellow-field_para_main_page_content'] = array(
+    'bundle' => 'visiting_fellow',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -272,10 +451,10 @@ function ilr_experience_reports_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'paragraphs_view',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'ilr_theme__highlighted' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 4,
@@ -284,29 +463,41 @@ function ilr_experience_reports_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_para_main_page_content',
-    'label' => 'Student\'s report about his/her experience',
+    'label' => 'Fellow\'s bio or general writeup',
     'required' => 1,
     'settings' => array(
       'add_mode' => 'button',
       'allowed_bundles' => array(
-        'just_text' => -1,
-        'text_and_image' => -1,
+        'compare_three' => -1,
+        'display_a_block' => -1,
+        'featured_promo' => -1,
+        'just_image' => 'just_image',
+        'just_text' => 'just_text',
+        'side_by_side_text' => -1,
+        'sponsor_message' => -1,
+        'unit_contact_info' => -1,
       ),
       'bundle_weights' => array(
-        'just_text' => 2,
-        'text_and_image' => 3,
+        'compare_three' => 2,
+        'display_a_block' => 3,
+        'featured_promo' => 4,
+        'just_image' => 5,
+        'just_text' => 6,
+        'side_by_side_text' => 7,
+        'sponsor_message' => 8,
+        'unit_contact_info' => 9,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Paragraph',
@@ -318,13 +509,13 @@ function ilr_experience_reports_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_program'.
-  $field_instances['node-experience_report-field_program'] = array(
-    'bundle' => 'experience_report',
+  // Exported field_instance: 'node-visiting_fellow-field_tags'.
+  $field_instances['node-visiting_fellow-field_tags'] = array(
+    'bundle' => 'visiting_fellow',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -333,85 +524,25 @@ function ilr_experience_reports_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 3,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 1,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 8,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'h2',
-    'field_name' => 'field_program',
-    'label' => 'Program',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance: 'node-experience_report-field_tags'.
-  $field_instances['node-experience_report-field_tags'] = array(
-    'bundle' => 'experience_report',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'ilr_theme__highlighted' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -430,13 +561,13 @@ function ilr_experience_reports_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
-  // Exported field_instance: 'node-experience_report-field_teaser'.
-  $field_instances['node-experience_report-field_teaser'] = array(
-    'bundle' => 'experience_report',
+  // Exported field_instance: 'node-visiting_fellow-field_teaser'.
+  $field_instances['node-visiting_fellow-field_teaser'] = array(
+    'bundle' => 'visiting_fellow',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Please supply a short description (255 characters or less) for use when this page is listed in featured links or shared on social networks. ',
@@ -445,10 +576,10 @@ function ilr_experience_reports_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 5,
       ),
       'ilr_theme__highlighted' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 7,
@@ -466,7 +597,7 @@ function ilr_experience_reports_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -490,92 +621,23 @@ function ilr_experience_reports_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'node-experience_report-field_year_as_text'.
-  $field_instances['node-experience_report-field_year_as_text'] = array(
-    'bundle' => 'experience_report',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '<strong>Examples:</strong><br>
-BSILR, \'15<br>
-MILR, \'16<br>
-MS/Ph.D. \'18',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'ilr_theme__highlighted' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_year_as_text',
-    'label' => 'Degree program and graduation year',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 8,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('<strong>Examples:</strong><br>
-BSILR, \'15<br>
-MILR, \'16<br>
-MS/Ph.D. \'18');
   t('Blocks');
   t('Category Type');
-  t('Degree program and graduation year');
-  t('Location or country');
-  t('Photo of student');
+  t('Country of origin');
+  t('Email');
+  t('Faculty sponsor');
+  t('Fellow\'s bio or general writeup');
+  t('Photo of fellow');
   t('Please supply a short description (255 characters or less) for use when this page is listed in featured links or shared on social networks. ');
-  t('Program');
-  t('Student\'s report about his/her experience');
   t('Tags');
   t('Teaser');
+  t('Visiting period');
 
   return $field_instances;
 }

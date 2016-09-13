@@ -1,4 +1,4 @@
-body.node-type-experience-report {
+body.node-type-visiting-fellow, body.node-type-experience-report {
   #breadcrumb {
     .breadcrumb {
       @include padding-trailer(1);
@@ -35,7 +35,6 @@ body.node-type-experience-report {
     padding-top: 25px;
     padding-bottom: 25px;
     @include trailer(1.5);
-    background: $promo-color;
 
     .group-title-and-focus {
       text-align: center;
@@ -51,29 +50,11 @@ body.node-type-experience-report {
         font-family: $font;
         margin-bottom: 0;
       }
-      h2, h3 {
-        font-weight: 300;
-      }
       h1 {
         @include adjust-font-size-to(44px);
         line-height: 1;
-        span {
-          display: block;
-          font-size: ms(3);
-          line-height: 1.1;
-          font-weight: 300;
-        }
-      }
-      h2 {
-        @include adjust-font-size-to(28px);
-        @include adjust-leading-to(1);
-      }
-      h3 {
-        @include adjust-font-size-to(19px);
-        @include adjust-leading-to(1);
       }
     }
-
     .field-name-field-image {
       text-align: center;
       img {
@@ -170,6 +151,116 @@ body.node-type-experience-report {
       }
     }
   }
-
   @extend %related-content-nav;
+}
+
+//experience-report specific
+body.node-type-experience-report {
+  .region-highlighted {
+    background: $promo-color;
+    .group-title-and-focus {
+      h1 {
+        span {
+          display: block;
+          font-size: ms(3);
+          line-height: 1.1;
+          font-weight: 300;
+        }
+      }
+      h2 {
+        @include adjust-font-size-to(28px);
+        @include adjust-leading-to(1);
+      }
+      h3 {
+        @include adjust-font-size-to(19px);
+        @include adjust-leading-to(1);
+      }
+    }
+  }
+  #content-bottom {
+    .region-content-bottom {
+      h2 {
+        color: $promo-color;
+      }
+      article {
+        .field-name-field-image {
+          background: $promo-color;
+        }
+      }
+    }
+  }
+}
+
+//visiting-fellow specific
+body.node-type-visiting-fellow {
+  .region-highlighted {
+    background: $spotlight-color;
+    .group-title-and-focus {
+      .field-name-field-email {
+        margin-bottom: 0;
+      }
+      span.field-label {
+        color: white;
+        font-weight: 400;
+      }
+      h1 {
+        clear: right;
+      }
+      h2, h3 {
+        font-weight: 400;
+        @include adjust-font-size-to(19px);
+        @include adjust-leading-to(1);
+      }
+      a, a:visited {
+        color: lighten($spotlight-color, 60%);
+        border-bottom: none;
+      }
+      a:hover, a:focus {
+        color: $gray-light;
+        border-bottom: none;
+      }
+    }
+  }
+  #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+    .region-highlighted {
+      .group-title-and-focus {
+        span.field-label {
+          float: left;
+          font-weight: 300;
+          padding-right: .5em;
+        }
+        h2, h3 {
+          clear: right;
+        }
+      }
+    }
+  }
+  #content-bottom {
+    .region-content-bottom {
+      h2 {
+        color: $spotlight-color;
+      }
+      article {
+        .field-name-field-image {
+          background: $spotlight-color;
+        }
+      }
+    }
+  }
+}
+
+//block of tagged experience reports
+#main {
+  #content {
+    article.node-experience-report {
+      h2 {
+        margin-bottom: 0;
+      }
+      .field-name-field-year-as-text {
+        margin-left: 115px;
+        font-family: $font-headers;
+        font-weight: 400;
+      }
+    }
+  }
 }
