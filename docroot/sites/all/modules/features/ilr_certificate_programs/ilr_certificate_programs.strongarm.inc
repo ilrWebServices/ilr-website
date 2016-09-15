@@ -46,6 +46,9 @@ function ilr_certificate_programs_strongarm() {
       'reference_field' => array(
         'custom_settings' => FALSE,
       ),
+      'alternate_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

@@ -17,6 +17,12 @@ function ilr_certificate_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -63,6 +69,12 @@ function ilr_certificate_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -118,6 +130,12 @@ function ilr_certificate_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
@@ -167,13 +185,19 @@ function ilr_certificate_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
           'field_formatter_label' => '',
           'links' => 1,
-          'view_mode' => 'teaser',
+          'view_mode' => 'alternate_teaser',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 4,
@@ -225,6 +249,12 @@ function ilr_certificate_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -271,6 +301,12 @@ function ilr_certificate_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -317,6 +353,12 @@ function ilr_certificate_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Include Outcomes/Benefits, Rationale, Who should enroll',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -370,6 +412,12 @@ function ilr_certificate_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'image',
@@ -451,6 +499,12 @@ function ilr_certificate_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'link',
@@ -523,6 +577,12 @@ function ilr_certificate_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -577,6 +637,12 @@ function ilr_certificate_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -623,6 +689,12 @@ function ilr_certificate_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
