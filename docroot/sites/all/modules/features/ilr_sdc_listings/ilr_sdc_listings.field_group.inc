@@ -42,6 +42,36 @@ function ilr_sdc_listings_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_main_content|node|sdc_course|alternate_teaser';
+  $field_group->group_name = 'group_main_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'sdc_course';
+  $field_group->mode = 'alternate_teaser';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Main Content',
+    'weight' => '1',
+    'children' => array(
+      0 => 'body',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Main Content',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-main-content accordion',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_main_content|node|sdc_course|alternate_teaser'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_main_content|node|sdc_course|default';
   $field_group->group_name = 'group_main_content';
   $field_group->entity_type = 'node';

@@ -17,6 +17,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -80,6 +86,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -147,6 +159,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -205,6 +223,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -255,6 +279,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -332,6 +362,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -383,6 +419,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -444,6 +486,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -504,6 +552,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -558,6 +612,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -612,6 +672,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -662,6 +728,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -713,6 +785,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -772,6 +850,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Note that the setting for the class inherits from the its course. You should only modify the value here if it\'s different from the course setting. ',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -823,6 +907,16 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'trim_length' => 350,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -892,6 +986,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -943,6 +1043,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -994,6 +1100,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1049,6 +1161,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1100,6 +1218,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1151,6 +1275,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1202,6 +1332,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1254,6 +1390,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'The contact email is used when a user requests more info about and/or customized delivery of a course. If this field is set here, it will override the contact email of the sponsoring organization. ',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1305,6 +1447,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1360,6 +1508,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1410,6 +1564,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -1462,6 +1622,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -1513,6 +1679,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1564,6 +1736,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -1616,6 +1794,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -1674,6 +1858,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'If the faculty member has a profile, then you can link to it here and their image and title will be automatically pulled from their profile page.',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1725,6 +1915,12 @@ function ilr_sdc_listings_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'image',
