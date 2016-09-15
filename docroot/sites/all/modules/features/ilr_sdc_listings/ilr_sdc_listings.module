@@ -1130,7 +1130,7 @@ function _ilr_sdc_listings_class_full_msg($class_node, $view_mode) {
  * @param $view_mode
  */
 function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
-  if ($view_mode == 'teaser' || $view_mode == 'full') {
+  if ($view_mode == 'teaser' || $view_mode == 'full' || $view_mode == 'alternate_teaser') {
     $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
     if ($class_nids) {
       $classes = node_load_multiple($class_nids);
@@ -1141,7 +1141,7 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
         $content .= _ilr_sdc_listings_generate_request_info_markup($course_node, $view_mode);
       } // teaser list view
       else {
-        $content = _ilr_sdc_listings_generate_class_link_markup($class_nodes);
+        $content = _ilr_sdc_listings_generate_class_link_markup($class_nodes, $view_mode);
       }
       if (_ilr_sdc_listings_is_series($course_node)) {
         _ilr_sdc_listings_add_class_teasers_for_series($course_node, $class_nodes, $view_mode);
@@ -1424,7 +1424,7 @@ function _ilr_sdc_listings_generate_class_radio_label($class) {
  * Generates the markup for landing pages
  * First checks for overflow sessions and removes them if found
  */
-function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
+function _ilr_sdc_listings_generate_class_link_markup($class_nodes, $view_mode = 'default') {
   $class_nodes = _ilr_sdc_listings_remove_overflow_sessions($class_nodes);
   if (count($class_nodes) > 1) {
     // check for location search and make sure that the cities match if so
@@ -1451,7 +1451,9 @@ function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
     $markup .= _ilr_sdc_listings_generate_class_timespan_markup($class_node);
     $markup .= _ilr_sdc_listings_generate_class_time_location_markup($class_node);
   }
-  $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
+  if ($view_mode != 'alternate_teaser') {
+    $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
+  }
   if (count($class_nodes) > 1) {
     $course_nid = $wrapper->field_course[0]->value()->nid;
     $link = drupal_get_path_alias('node/'.$course_nid);
