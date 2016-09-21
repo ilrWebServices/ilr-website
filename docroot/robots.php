@@ -1,9 +1,9 @@
 <?php
 if (isset($_ENV["AH_SITE_ENVIRONMENT"]) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {
-  echo nl2br(file_get_contents('./robots.txt'));
+  echo file_get_contents('./robots.txt');
   exit;
 }
-echo nl2br("User-agent: *\n");
+echo "User-agent: *\n";
 echo "Disallow: /";
 exit;
 

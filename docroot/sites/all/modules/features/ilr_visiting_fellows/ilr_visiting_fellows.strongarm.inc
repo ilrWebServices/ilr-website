@@ -1,19 +1,19 @@
 <?php
 /**
  * @file
- * ilr_certificate_programs.strongarm.inc
+ * ilr_visiting_fellows.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function ilr_certificate_programs_strongarm() {
+function ilr_visiting_fellows_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__certificate_programs';
+  $strongarm->name = 'field_bundle_settings_node__visiting_fellow';
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
@@ -32,7 +32,7 @@ function ilr_certificate_programs_strongarm() {
         'custom_settings' => FALSE,
       ),
       'ilr_theme__highlighted' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'ilr_theme__sidebar_second' => array(
         'custom_settings' => FALSE,
@@ -45,9 +45,6 @@ function ilr_certificate_programs_strongarm() {
       ),
       'reference_field' => array(
         'custom_settings' => FALSE,
-      ),
-      'alternate_teaser' => array(
-        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(
@@ -65,47 +62,46 @@ function ilr_certificate_programs_strongarm() {
       'display' => array(),
     ),
   );
-  $export['field_bundle_settings_node__certificate_programs'] = $strongarm;
+  $export['field_bundle_settings_node__visiting_fellow'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_certificate_programs';
+  $strongarm->name = 'menu_options_visiting_fellow';
   $strongarm->value = array(
     0 => 'main-menu',
   );
-  $export['menu_options_certificate_programs'] = $strongarm;
+  $export['menu_options_visiting_fellow'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_certificate_programs';
+  $strongarm->name = 'menu_parent_visiting_fellow';
   $strongarm->value = 'main-menu:0';
-  $export['menu_parent_certificate_programs'] = $strongarm;
+  $export['menu_parent_visiting_fellow'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_certificate_programs';
+  $strongarm->name = 'node_options_visiting_fellow';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'promote',
   );
-  $export['node_options_certificate_programs'] = $strongarm;
+  $export['node_options_visiting_fellow'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_certificate_programs';
+  $strongarm->name = 'node_preview_visiting_fellow';
   $strongarm->value = '1';
-  $export['node_preview_certificate_programs'] = $strongarm;
+  $export['node_preview_visiting_fellow'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_certificate_programs';
-  $strongarm->value = 1;
-  $export['node_submitted_certificate_programs'] = $strongarm;
+  $strongarm->name = 'node_submitted_visiting_fellow';
+  $strongarm->value = 0;
+  $export['node_submitted_visiting_fellow'] = $strongarm;
 
   return $export;
 }

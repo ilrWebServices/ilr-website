@@ -152,15 +152,17 @@ function _ilr_mega_menu_get_top_level_items($menu_name='main-menu', $multidimens
     }
     if (count($items)) {
       foreach ($items as $key => $link) {
-        $item = preg_replace('/\s+/', '_', $link['link']['link_title']);
-        $item = strtolower($item);
-        $item_info = ($multidimensional)
-          ? array(
-              'title' => $link['link']['link_title'],
-              'path' => drupal_get_path_alias($link['link']['link_path']),
-            )
-          : $link['link']['link_title'];
-        $top_level_items[$menu_name][$item] = $item_info;
+        if (!$link['link']['hidden']) { // Make sure not hidden from output
+          $item = preg_replace('/\s+/', '_', $link['link']['link_title']);
+          $item = strtolower($item);
+          $item_info = ($multidimensional)
+            ? array(
+                'title' => $link['link']['link_title'],
+                'path' => drupal_get_path_alias($link['link']['link_path']),
+              )
+            : $link['link']['link_title'];
+          $top_level_items[$menu_name][$item] = $item_info;
+        }
       }
     }
   }

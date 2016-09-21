@@ -4,6 +4,9 @@
     @include padding-trailer(1);
     .content {
       @include grid-span (10,2);
+      .centered-blurb {
+        max-width: 960px;
+      }
     }
     h2 {
       text-align: center;

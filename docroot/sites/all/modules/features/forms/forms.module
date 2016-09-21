@@ -599,7 +599,7 @@ function _process_fex_wisp_sponsor_registration(&$entityform) {
     ? "ilrfex@cornell.edu, ilrwisp@cornell.edu"
     : 'ilr' . strtolower($program) . '@cornell.edu';
 
-  $admin_email .= ', mlh15@cornell.edu';
+  $admin_email .= ', mmb342@cornell.edu';
   _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject);
 }
 
@@ -734,7 +734,7 @@ function _forms_career_services_contact_options() {
     'mlh15-01' => 'Social Justice Career Fair',
     'jap7-01' => 'CAHRS Executive Roundtable',
     'acs5-01' => 'Labor Roundtable',
-    'mlh15-02' => 'FEX (Freshman Externship Program) / WISP (Winter Internship Program)',
+    'mmb342-01' => 'FEX (Freshman Externship Program) / WISP (Winter Internship Program)',
     'ilrab-01' => 'ILR Alumni Bulletin',
     'bk30-01' => 'ILR Credit Internship Program',
     'rmd5-01' => 'Regina M. Duffey Moravek, Director of ILR Career Services',

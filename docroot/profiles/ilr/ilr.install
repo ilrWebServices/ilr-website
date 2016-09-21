@@ -788,3 +788,12 @@ function ilr_update_7059() {
 
   variable_set('simplesamlphp_auth_installdir', $simplesamlphp_installdir);
 }
+
+/**
+ * Enables ilr_visiting_fellows feature
+ */
+function ilr_update_7060() {
+  module_enable(array(
+    'ilr_visiting_fellows',
+  ));
+}
