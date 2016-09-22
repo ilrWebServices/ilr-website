@@ -156,7 +156,6 @@ function ilr_forms_students_default_entityform_type() {
         "41" : 0,
         "51" : 0,
         "46" : 0,
-        "36" : 0,
         "21" : 0,
         "26" : 0,
         "31" : 0,
@@ -170,8 +169,9 @@ function ilr_forms_students_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 1,
+      "form_submission_ilr_recipient" : "ss446@cornell.edu",
       "add_payment_processing" : 0,
-      "form_submission_ilr_recipient" : "ss446@cornell.edu"
+      "hpp" : ""
     },
     "weight" : "0",
     "paths" : []
