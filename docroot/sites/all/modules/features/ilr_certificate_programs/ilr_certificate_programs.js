@@ -1,11 +1,17 @@
-jQuery(document).ready(function() {
-  jQuery('.node-certificate-programs .field-name-field-course h2 a').click(function() {
-    if (jQuery(this).closest('article').find('.group-main-content.accordion').hasClass('show')) {
-      jQuery(this).closest('article').find('.group-main-content.accordion').removeClass('show');
+(function ($) {
+  Drupal.behaviors.certificate_programs = {
+    attach: function (context, settings) {
+      $(document).ready(function() {
+        $('.node-sdc-course h2').click(function() {
+          if ($(this).closest('article').find('.group-main-content.accordion').hasClass('show')) {
+            $(this).closest('article').find('.group-main-content.accordion').removeClass('show');
+          }
+          else {
+            $(this).closest('article').find('.group-main-content.accordion').addClass('show');
+          }
+          return false;
+        });
+      });
     }
-    else {
-      jQuery(this).closest('article').find('.group-main-content.accordion').addClass('show');
-    }
-    return false;
-  });
-});
+  };
+}(jQuery));

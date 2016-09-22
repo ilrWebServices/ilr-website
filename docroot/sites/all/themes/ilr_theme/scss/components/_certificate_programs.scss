@@ -1,0 +1,106 @@
+body.node-type-certificate-programs {
+  #main {
+    #content {
+      h1.title {
+        @include trailer(.5);
+      }
+
+      h1, h2, h3 {
+        font-family: $font;
+      }
+
+      .field-name-field-image {
+        text-align: center;
+      }
+
+      .field-name-field-prerequisites-requirements {
+        @include trailer(1);
+      }
+
+      .field-name-field-course {
+        article {
+          @include padding-leader(.5);
+          @include padding-trailer(.5);
+          border: 1px solid $gray-light;
+          padding-left: 1em;
+          padding-right: 1em;
+          &:hover {
+            background: white;
+            border: 1px solid $gray-dark;
+          }
+
+          .class-details {
+            @include leader(0);
+            @include trailer(0);
+
+            .time, .location {
+              display: none;
+            }
+
+            span {
+              @include adjust-font-size-to(16px, .7);
+              color: $p-text;
+              text-transform: initial;
+            }
+
+            .date-time .date {
+              font-weight: 300;
+            }
+
+            .timespan {
+              float: left;
+            }
+
+            .date-time {
+              float: right;
+            }
+          }
+
+          .group-main-content {
+            p {
+              @include adjust-font-size-to(16px, 1);
+              @include trailer(.8);
+            }
+          }
+
+          h2 {
+            margin: 0 0 .5em;
+            padding: .5em 0 0;
+            &:hover {
+              cursor: pointer;
+            }
+            a {
+              font-family: $font;
+              font-size: 28px;
+              font-weight: 300;
+              color: $student-portrait-color;
+              text-decoration: none;
+            }
+          }
+
+          .accordion {
+            display: none;
+          }
+
+          .show {
+            display: block;
+          }
+
+          .course_details {
+            font-family: $font;
+            font-size: 19px;
+            font-weight: 300;
+            color: $student-portrait-color;
+            &:hover {
+              color: #d76b00;
+            }
+          }
+        }
+      }
+
+      .field-name-field-course + h3.field-label {
+        @include padding-leader(1);
+      }
+    }
+  }
+}
