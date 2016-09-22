@@ -1124,10 +1124,11 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'Finance, Business, and Entrepreneurship' => 'Finance, Business, and Entrepreneurship',
-        'Human Resources and HR Consultants' => 'Human Resources and HR Consultants',
-        'Labor Movement, Government and Social Justice' => 'Labor Movement, Government and Social Justice',
-        'Sports, Entertainment and Media' => 'Sports, Entertainment and Media',
+        'Business and Entrepreneurship' => 'Business and Entrepreneurship',
+        'Entertainment, Media, and Sports' => 'Entertainment, Media, and Sports',
+        'Finance and Wall Street' => 'Finance and Wall Street',
+        'Human Resources' => 'Human Resources',
+        'Labor Movement, Government, and Social Justice' => 'Labor Movement, Government, and Social Justice',
         'I won\'t be attending any of the breakout sessions.' => 'I won\'t be attending any of the breakout sessions.',
       ),
       'allowed_values_function' => '',
