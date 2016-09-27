@@ -152,43 +152,60 @@ function ilr_sub_pages_pathauto_alias_alter(&$alias, array &$context) {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Adds a warning notice at the top of the node menu settings form.
+ *
+ * @see ilr_sub_pages_form_node_form_alter().
+ */
+function ilr_sub_pages_form_node_type_form_alter(&$form, &$form_state) {
+  $message_markup = '<div class="messages warning">';
+  $message_markup .= '<p>NOTE: The ILR Sub Pages custom module overrides these settings. All menus are available for all content types.</p>';
+  $message_markup .= "</div>\n";
+  $form['menu'] = array(
+    'options_notice' => array(
+      '#markup' => $message_markup,
+    )
+  ) + $form['menu'];
+}
+
+/**
  * Implements hook_form_alter().
  * Sets the menu parent if present
  * Adds the checkbox to hide from the menu
  * Triggers pathauto generation when needed
  */
 function ilr_sub_pages_form_node_form_alter(&$form, &$form_state, $form_id) {
-  if (_ilr_sub_pages_content_type_has_menu_options($form)) {
-    $view_advanced_menu = user_access('view page advanced menu settings');
-    $node = $form['#node'];
-    // This element is added by menu module a 'value' type. We override to let user choose.
-    $form['menu']['link']['hidden'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Hide from menu output'),
-      '#description' => t('Check if you would like the page to include the correct breadcrumbs and parent navigation, but not appear in the menu.'),
-      '#default_value' => isset($node->menu['hidden']) ? $node->menu['hidden'] : 0,
-    );
-    // set menu parent item default value if creating sub page
-    if (isset($form['#node']->ilr_default_menu_parent)) {
-      $form['menu']['link']['parent']['#default_value'] = $node->ilr_default_menu_parent;
-      $form['menu']['enabled']['#value'] = TRUE;
-      $form['menu']['link']['link_title']['#required'] = TRUE;
-    }
-    if (!$view_advanced_menu) {
-      $form['menu']['enabled']['#disabled'] = TRUE;
-      $form['menu']['link']['parent']['#required'] = TRUE;
-      // Restricts access to certain menu form fields
-      $form['menu']['link']['description']['#access'] = FALSE;
-      $form['menu']['link']['weight']['#access'] = FALSE;
-      $form['menu']['link']['parent']['#access'] = FALSE;
-    }
-    // Trigger pathauto on new nodes since child pages can have a different alias than the default pattern
-    if (!isset($form['#node']->vid) && _ilr_sub_pages_is_child_page($form['#node'])) {
-      $form['path']['pathauto']['#default_value'] = TRUE;
-    }
-    // Add an additional validation callback to this form
-    $form['#validate'][] = 'ilr_sub_pages_node_form_validate';
+  _ilr_sub_pages_override_menu_options($form);
+  $view_advanced_menu = user_access('view page advanced menu settings');
+  $node = $form['#node'];
+  // This element is added by menu module a 'value' type. We override to let user choose.
+  $form['menu']['link']['hidden'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Hide from menu output'),
+    '#description' => t('Check if you would like the page to include the correct breadcrumbs and parent navigation, but not appear in the menu.'),
+    '#default_value' => isset($node->menu['hidden']) ? $node->menu['hidden'] : 0,
+  );
+  // set menu parent item default value if creating sub page
+  if (isset($form['#node']->ilr_default_menu_parent)) {
+    $form['menu']['link']['parent']['#default_value'] = $node->ilr_default_menu_parent;
+    $form['menu']['enabled']['#value'] = TRUE;
+    $form['menu']['link']['link_title']['#required'] = TRUE;
   }
+  if (!$view_advanced_menu) {
+    $form['menu']['enabled']['#disabled'] = TRUE;
+    $form['menu']['link']['parent']['#required'] = TRUE;
+    // Restricts access to certain menu form fields
+    $form['menu']['link']['description']['#access'] = FALSE;
+    $form['menu']['link']['weight']['#access'] = FALSE;
+    $form['menu']['link']['parent']['#access'] = FALSE;
+  }
+  // Trigger pathauto on new nodes since child pages can have a different alias than the default pattern
+  if (!isset($form['#node']->vid) && _ilr_sub_pages_is_child_page($form['#node'])) {
+    $form['path']['pathauto']['#default_value'] = TRUE;
+  }
+  // Add an additional validation callback to this form
+  $form['#validate'][] = 'ilr_sub_pages_node_form_validate';
 }
 
 /**
@@ -268,14 +285,6 @@ function _ilr_sub_pages_default_bundles() {
   );
 }
 
-
-function _ilr_sub_pages_content_type_has_menu_options($form) {
-  if (isset($form['#node_edit_form']) && $form['#node_edit_form']) {
-    return count(variable_get('menu_options_' . $form['#bundle'])) > 0;
-  }
-  return FALSE;
-}
-
 /**
  * Ensure node is published and user has privileges for sub page form
  */
@@ -298,6 +307,22 @@ function _ilr_sub_pages_create_sub_page_access($node, $access_arg, $type=NULL) {
     }
   }
   return FALSE;
+}
+
+/**
+ * Overrides the menu_parent_options() to include all menus.
+ *
+ * @see menu_parent_options().
+ */
+function _ilr_sub_pages_override_menu_options(&$form) {
+  $menus = menu_get_menus();
+  $available_menus = array();
+  foreach ($menus as $key => $menu) {
+    $available_menus[$key] = $key;
+  }
+  $item = array('mlid' => 0);
+  $options = _menu_get_options($menus, $available_menus, $item);
+  $form['menu']['link']['parent']['#options'] = $options;
 }
 
 /**

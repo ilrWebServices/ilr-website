@@ -236,14 +236,6 @@ class views_data_export_plugin_style_export extends views_plugin_style {
     $rows = array();
     $title = '';
     $output = '';
-
-    if ($this instanceof views_data_export_plugin_style_export_csv) {
-      $encoding = $this->options['encoding'];
-      if (empty($encoding) || ($encoding != 'ASCII')) {
-        $output = chr(0xEF).chr(0xBB).chr(0xBF);
-      }
-    }
-
     $output .= theme($this->theme_functions($this->definition['additional themes base'] . '_header'), array('view' => $this->view, 'options' => $this->options, 'rows' => $rows, 'title' => $title));
     return $output;
   }

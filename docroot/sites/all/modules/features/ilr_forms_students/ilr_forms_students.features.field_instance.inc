@@ -1454,7 +1454,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_yes_no_2',
-    'label' => 'Will you attend the cookout?',
+    'label' => 'Will you attend the reception?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -13407,8 +13407,8 @@ function ilr_forms_students_field_default_field_instances() {
   t('When did you receive (or when do you expect to receive) your Bachelor\'s degree?');
   t('Which breakout session will you attend?');
   t('Will the student(s) work on site or remotely?');
-  t('Will you attend the cookout?');
   t('Will you attend the keynote address?');
+  t('Will you attend the reception?');
   t('Will you be managing this student from day to day?');
   t('Will you host the students on the same day(s) or individually? (Individually makes the scheduling easier.)');
   t('Year');
