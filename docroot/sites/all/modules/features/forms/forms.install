@@ -137,6 +137,13 @@ function forms_update_7009() {
 }
 
 /**
+ * Delete subm from labor_roundtable_student_registr
+ */
+function forms_update_7010() {
+  _forms_delete_entityform_submissions('labor_roundtable_student_registr');
+}
+
+/**
 * Delete one or more field instances from one entityform
 * @param $form_id
 * @param $field_names
