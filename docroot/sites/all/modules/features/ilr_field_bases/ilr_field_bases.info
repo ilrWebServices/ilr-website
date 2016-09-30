@@ -135,6 +135,7 @@ features[field_base][] = field_degree_all_grad_options
 features[field_base][] = field_degree_as_text
 features[field_base][] = field_degree_ba_masters_oth_addl
 features[field_base][] = field_degree_ba_masters_other
+features[field_base][] = field_degree_ba_ms_jd_phd_other
 features[field_base][] = field_degree_plan_submitted
 features[field_base][] = field_degree_prog_4_grad_degrees
 features[field_base][] = field_degree_prog_sicf_reg
