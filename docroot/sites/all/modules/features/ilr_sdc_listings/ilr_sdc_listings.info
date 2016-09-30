@@ -24,6 +24,7 @@ dependencies[] = views_block_filter_block
 dependencies[] = views_content
 dependencies[] = views_field_view
 dependencies[] = views_linkarea
+scripts[] = js/ilr_sdc_listings.js
 features[context][] = professional_programs
 features[ctools][] = context:context:3
 features[ctools][] = feeds:feeds_importer_default:1
