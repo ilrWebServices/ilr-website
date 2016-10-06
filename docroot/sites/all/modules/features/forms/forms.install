@@ -144,6 +144,13 @@ function forms_update_7010() {
 }
 
 /**
+ * Delete subm from emediation_competition_reg
+ */
+function forms_update_7011() {
+  _forms_delete_entityform_submissions('emediation_competition_reg');
+}
+
+/**
 * Delete one or more field instances from one entityform
 * @param $form_id
 * @param $field_names
