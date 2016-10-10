@@ -1,4 +1,7 @@
 body.front {
+  #highlighted {
+    @extend %carousel-slide;
+  }
   #content .field-name-body {
     @extend %homepage-text;
     .block-bean {
