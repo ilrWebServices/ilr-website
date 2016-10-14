@@ -1603,6 +1603,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit any document files',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
     ),
     'module' => 'file_entity',
   );
@@ -2864,6 +2865,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'form admin' => 'form admin',
     ),
     'module' => 'file_entity',
   );
@@ -2874,6 +2876,7 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+      'form admin' => 'form admin',
     ),
     'module' => 'file_entity',
   );
@@ -2999,6 +3002,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view private files',
     'roles' => array(
       'administrator' => 'administrator',
+      'form admin' => 'form admin',
     ),
     'module' => 'file_entity',
   );
