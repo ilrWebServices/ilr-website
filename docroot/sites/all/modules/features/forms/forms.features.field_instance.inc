@@ -15135,8 +15135,9 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_middle_name',
-    'label' => 'Middle / maiden name',
+    'label' => 'Middle / former name',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -34067,7 +34068,7 @@ function forms_field_default_field_instances() {
   t('Mailing address markup');
   t('Media');
   t('Meeting location preference');
-  t('Middle / maiden name');
+  t('Middle / former name');
   t('Middle name');
   t('Minor subject(s)');
   t('Mobile phone');
