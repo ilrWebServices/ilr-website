@@ -1469,128 +1469,6 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'entityform-check_your_eligibility_milr-field_address_line_1'.
-  $field_instances['entityform-check_your_eligibility_milr-field_address_line_1'] = array(
-    'bundle' => 'check_your_eligibility_milr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'MAIL_STREET',
-        ),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_address_line_1',
-    'label' => 'Address',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 38,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'entityform-check_your_eligibility_milr-field_city'.
-  $field_instances['entityform-check_your_eligibility_milr-field_city'] = array(
-    'bundle' => 'check_your_eligibility_milr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'MAIL_CITY',
-        ),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_city',
-    'label' => 'City',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 40,
-    ),
-  );
-
-  // Exported field_instance:
   // 'entityform-check_your_eligibility_milr-field_company'.
   $field_instances['entityform-check_your_eligibility_milr-field_company'] = array(
     'bundle' => 'check_your_eligibility_milr',
@@ -2004,61 +1882,6 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'entityform-check_your_eligibility_milr-field_state_province'.
-  $field_instances['entityform-check_your_eligibility_milr-field_state_province'] = array(
-    'bundle' => 'check_your_eligibility_milr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 5,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'MAIL_STATE',
-        ),
-        'type' => 'list_default',
-        'weight' => 5,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 5,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_state_province',
-    'label' => 'State / Province',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 42,
-    ),
-  );
-
-  // Exported field_instance:
   // 'entityform-check_your_eligibility_milr-field_upload_your_resume_or_cv'.
   $field_instances['entityform-check_your_eligibility_milr-field_upload_your_resume_or_cv'] = array(
     'bundle' => 'check_your_eligibility_milr',
@@ -2127,6 +1950,7 @@ function ilr_forms_students_field_default_field_instances() {
           ),
           'source_reference' => array(
             'autocomplete' => 0,
+            'search_all_fields' => 0,
           ),
         ),
         'progress_indicator' => 'throbber',
@@ -2296,67 +2120,6 @@ function ilr_forms_students_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 51,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'entityform-check_your_eligibility_milr-field_zip_code'.
-  $field_instances['entityform-check_your_eligibility_milr-field_zip_code'] = array(
-    'bundle' => 'check_your_eligibility_milr',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'MAIL_ZIP',
-        ),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_zip_code',
-    'label' => 'Zip code',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 44,
     ),
   );
 
@@ -13285,7 +13048,6 @@ function ilr_forms_students_field_default_field_instances() {
   t('<li>Plain text only, no bullets or other special formatting</li>');
   t('Activities to be observed by FEX participants');
   t('Additional attendees');
-  t('Address');
   t('Affiliation (check one or both)');
   t('Alternate city');
   t('Alternate state or province');
