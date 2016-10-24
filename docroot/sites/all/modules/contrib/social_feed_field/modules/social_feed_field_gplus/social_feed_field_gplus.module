@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * The social_feed_field_facebook module file.
+ */
+
+/**
+ * Implements hook_social_feed_fields_channel().
+ */
+function social_feed_field_gplus_social_feed_fields_channel() {
+  return array(
+    'gplus' => array(
+      'name' => t('Google+'),
+      'description' => t('Google +: String to search for in posts, or a username prepended with @ (for instance: @SergeyBrin for Sergey Brins posts)'),
+      'callback' => '_social_feed_field_gplus',
+      'file' => drupal_get_path('module', 'social_feed_field_gplus') . '/includes/social_feed_field.gplus.inc',
+      'admin' => array(
+        'dev_key' => array(
+          '#type' => 'textfield',
+          '#title' => t('Google dev key'),
+        ),
+        'cache_lifetime' => array(
+          '#type' => 'textfield',
+          '#title' => t('Cache lifetime'),
+          '#description' => t('Cache lifetime in seconds'),
+          '#default_value' => SOCIAL_FEED_FIELD_CACHE_LIFETIME,
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function social_feed_field_gplus_theme($existing, $type, $theme, $path) {
+  $theme = array(
+    'social_feed_field_gplus_item' => array(
+      'variables' => array('message' => NULL, 'field_instance' => array()),
+      'template' => 'templates/social-feed-field-gplus-item',
+      'file' => 'social_feed_field_gplus.theme.inc',
+    ),
+  );
+
+  return $theme;
+}
