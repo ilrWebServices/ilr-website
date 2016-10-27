@@ -8,9 +8,25 @@
       padding-left: 3px;
     }
 
-    select {
-      #content & {
-        // width: 500px !important;
+    .chosen-container-single {
+      width: 100% !important;
+    }
+
+    .chosen-container-multi {
+      width: 100% !important;
+      border-radius: 6px;
+      .chosen-choices {
+        border: 1px solid $gray-medium;
+        background: white;
+        border-radius: 6px;
+        li {
+          line-height: 1.8;
+          font-size: 16px;
+          font-weight: 100;
+          input[type='text'] {
+            font-family: $font;
+          }
+        }
       }
     }
     @include trailer(1);
@@ -42,6 +58,19 @@
 
   .views-exposed-form {
     @include trailer(1);
+    .form-item {
+      width: 100%;
+      .date-padding {
+        width: 100%;
+      }
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .views-exposed-widget {
+    float: none;
   }
 
   .filter-link {
@@ -65,10 +94,6 @@
     }
   }
 
-  #search-form-submit {
-    @extend %cornell-button;
-    @include trailer(1);
-  }
   #edit-submit-sdc-course-listing {
     marging-top: 0;
   }
@@ -78,15 +103,23 @@
   }
   .views-widget-filter-field_class_dates_value,
   .views-widget-filter-field_class_dates_value2 {
-    max-width: 175px;
-    .sidebar & {
-      width: 50%;
-    }
-    float: left;
+    width: 100%;
     padding-right: 1em;
   }
-  #edit-submit-sdc-course-listing {
-    @extend %cornell-button;
+  #search-form-submit, #edit-submit-sdc-course-listing {
+    background: $student-portrait-color;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding: .2em 1em;
+    @include trailer(.5);
+    @include leader(.2);
+    box-shadow: 1px 2px 4px $gray-medium;
+    &:hover {
+      background: $student-portrait-color;
+    }
   }
   .views-reset-button #edit-reset {
     color: $link;
@@ -98,6 +131,20 @@
     &:hover {
       border-bottom-color: $link-hover;
       color: $link-hover;
+    }
+  }
+}
+
+//override defaults
+#main {
+  #block-ilr-sdc-listings-course-search {
+    .form-item {
+      select {
+        width: 100%;
+      }
+      input[type='text'] {
+        max-width: 100%;
+      }
     }
   }
 }
