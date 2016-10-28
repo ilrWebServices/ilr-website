@@ -27,6 +27,7 @@ features[field_instance][] = node-certificate_programs-field_more_link
 features[field_instance][] = node-certificate_programs-field_prerequisites_requirements
 features[field_instance][] = node-certificate_programs-field_tags
 features[field_instance][] = node-certificate_programs-field_teaser
+features[field_instance][] = node-certificate_programs-field_value_propositions
 features[node][] = certificate_programs
 features[variable][] = field_bundle_settings_node__certificate_programs
 features[variable][] = menu_options_certificate_programs

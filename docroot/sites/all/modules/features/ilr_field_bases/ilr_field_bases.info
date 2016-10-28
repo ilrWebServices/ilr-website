@@ -414,6 +414,7 @@ features[field_base][] = field_uli_financial_approval
 features[field_base][] = field_upload_your_resume_or_cv
 features[field_base][] = field_url
 features[field_base][] = field_url_suggestion
+features[field_base][] = field_value_propositions
 features[field_base][] = field_video_recording_addl_info
 features[field_base][] = field_visa_type
 features[field_base][] = field_visibility_settings
