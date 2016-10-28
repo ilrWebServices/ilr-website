@@ -29,7 +29,7 @@ function ilr_sdc_listings_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'professional-programs/public-offerings*' => 'professional-programs/public-offerings*',
+        'professional-programs/workshops-courses-training*' => 'professional-programs/workshops-courses-training*',
         'professional-programs/search*' => 'professional-programs/search*',
       ),
     ),

@@ -63,7 +63,7 @@
       .date-padding {
         width: 100%;
       }
-      input {
+      input:not(.form-checkbox) {
         width: 100%;
       }
     }

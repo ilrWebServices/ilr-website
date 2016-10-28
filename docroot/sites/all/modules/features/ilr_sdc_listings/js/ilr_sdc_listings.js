@@ -181,7 +181,7 @@ jQuery.fn.sortElements = (function(){
             searchBlock = $('#jPanelMenu-menu #block-ilr-sdc-listings-course-search');
             $('#jPanelMenu-menu #views-exposed-form-sdc-course-listing-page').remove();
             if (!$('.advanced-search').length) {
-              $(searchBlock).append('<a class="advanced-search" href="/professional-programs/public-offerings">Advanced search</a>');
+              $(searchBlock).append('<a class="advanced-search" href="/professional-programs/workshops-courses-training">Advanced search</a>');
             }
           } else {
             currentMenu = $('#sidebar-first ul.menu.current');
@@ -283,7 +283,7 @@ jQuery.fn.sortElements = (function(){
         $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
         $('a.animate-menu').live("click", prepareSearchBoxPosition);
         if (filterIsEngaged()) {
-          $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/public-offerings">Reset filter</a></p>');
+          $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/workshops-courses-training">Reset filter</a></p>');
         }
         if (!mobileNavActive()) {
           // Check for enter key trigger since autocomplete is breaking common usage
