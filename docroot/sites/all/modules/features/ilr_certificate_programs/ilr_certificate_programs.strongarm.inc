@@ -32,7 +32,7 @@ function ilr_certificate_programs_strongarm() {
         'custom_settings' => FALSE,
       ),
       'ilr_theme__highlighted' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'ilr_theme__sidebar_second' => array(
         'custom_settings' => FALSE,
