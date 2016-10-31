@@ -44,11 +44,6 @@
 
   .entity-paragraphs-item {
     @include clearfix;
-    #block-bean-alumni-affairs-twitter-feed {
-      .content {
-        @include grid-span (12);
-      }
-    }
   }
 }
 
