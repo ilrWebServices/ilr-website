@@ -74,7 +74,7 @@ function _social_feed_field_instagram_get_user_media($username, $count) {
     if (!empty($user_id)) {
       $admin_values = social_feed_field_get_admin_values('instagram');
       $url = 'https://api.instagram.com/v1/users/' . $user_id . '/media/recent?count=' . $count . '&client_id=' . $admin_values['client_id'];
-      $request = drupal_http_request($url);
+      $request = social_feed_field_do_request($url);
 
       if ($request->code >= 200 && $request->code < 400) {
         $json = json_decode($request->data);
@@ -107,7 +107,7 @@ function _social_feed_field_instagram_get_user_id($username) {
   else {
     $admin_values = social_feed_field_get_admin_values('instagram');
     $url = 'https://api.instagram.com/v1/users/search?q=' . $username . '&client_id=' . $admin_values['client_id'];
-    $request = drupal_http_request($url);
+    $request = social_feed_field_do_request($url);
 
     if ($request->code >= 200 && $request->code < 400) {
       $json = json_decode($request->data);

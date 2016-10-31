@@ -77,7 +77,7 @@ function _social_feed_field_get_gplus_activities_from_search(array $values) {
   else {
     $admin_values = social_feed_field_get_admin_values('gplus');
     $url = 'https://www.googleapis.com/plus/v1/activities?query=' . $values['social_feed_field_search'] . '&maxResults=' . $values['social_feed_field_number'] . '&key=' . $admin_values['dev_key'];
-    $request = drupal_http_request($url);
+    $request = social_feed_field_do_request($url);
 
     if ($request->code >= 200 && $request->code < 400) {
       $json = json_decode($request->data);
@@ -115,7 +115,7 @@ function _social_feed_field_get_gplus_activities_from_user(array $values) {
     if (!empty($user_id)) {
       $admin_values = social_feed_field_get_admin_values('gplus');
       $url = 'https://www.googleapis.com/plus/v1/people/' . $user_id . '/activities/public?maxResults=' . $values['social_feed_field_number'] . '&key=' . $admin_values['dev_key'];
-      $request = drupal_http_request($url);
+      $request = social_feed_field_do_request($url);
 
       if ($request->code >= 200 && $request->code < 400) {
         $json = json_decode($request->data);
@@ -149,7 +149,7 @@ function _social_feed_field_gplus_get_user_id($username) {
   else {
     $admin_values = social_feed_field_get_admin_values('gplus');
     $url = 'https://www.googleapis.com/plus/v1/people/' . $username . '?key=' . $admin_values['dev_key'];
-    $request = drupal_http_request($url);
+    $request = social_feed_field_do_request($url);
     if ($request->code >= 200 && $request->code < 400) {
       $json = json_decode($request->data);
       if (!empty($json->id)) {

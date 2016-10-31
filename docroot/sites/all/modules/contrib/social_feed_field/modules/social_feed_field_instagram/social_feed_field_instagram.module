@@ -9,6 +9,11 @@
  * Implements hook_social_feed_fields_channel().
  */
 function social_feed_field_instagram_social_feed_fields_channel() {
+  $api_link = l(t('Manage Clients'), 'https://www.instagram.com/developer/clients/manage/', array(
+    'external' => TRUE,
+    'attributes' => array('target' => '_blank'),
+  ));
+
   return array(
     'instagram' => array(
       'name' => t('Instagram'),
@@ -16,6 +21,7 @@ function social_feed_field_instagram_social_feed_fields_channel() {
       'callback' => '_social_feed_field_instagram',
       'file' => drupal_get_path('module', 'social_feed_field_instagram') . '/includes/social_feed_field.instagram.inc',
       'admin' => array(
+        '#description' => t('To make the Instagram channel work we need a client ID from the Instagram API. You need to create a new (or use a existing) client and enter the generated client ID. You can create or view your clients at the !link page o Instagram', array('!link' => $api_link)),
         'client_id' => array(
           '#type' => 'textfield',
           '#title' => t('Client ID'),

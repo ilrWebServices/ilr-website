@@ -32,8 +32,12 @@ function hook_social_feed_fields_channel() {
       // Optional: Form fields used for configuration. You should use these
       // values for things like access tokens, or api keys.
       // These values are eventually used in a function that uses the Form API.
-      // That's why you can use very kind of Form API elements.
+      // That's why you can use every kind of Form API elements.
       'admin' => array(
+        // Optional: A description used in the created fieldset on the
+        // admin page.
+        '#description' => t('Admin fieldset description'),
+        // Fields used in the admin screens.
         'consumer_key' => array(
           '#type' => 'textfield',
           '#title' => t('Consumer key'),
@@ -41,6 +45,15 @@ function hook_social_feed_fields_channel() {
         'consumer_secret' => array(
           '#type' => 'textfield',
           '#title' => t('Consumer secret'),
+        ),
+        'some_other_settings' => array(
+          '#type' => 'select',
+          '#title' => t('Some select list'),
+          '#options' => array(
+            'Options 1',
+            'Options 2',
+            'Options 3',
+          ),
         ),
       ),
     ),

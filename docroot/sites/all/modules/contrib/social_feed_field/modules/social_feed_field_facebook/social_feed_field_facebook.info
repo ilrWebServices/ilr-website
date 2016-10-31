@@ -5,9 +5,9 @@ dependencies[] = social_feed_field
 version = "7.x-1.0"
 core = 7.x
 
-; Information added by Drupal.org packaging script on 2015-11-18
-version = "7.x-1.0-beta5"
+; Information added by Drupal.org packaging script on 2016-07-12
+version = "7.x-1.0-beta5+13-dev"
 core = "7.x"
 project = "social_feed_field"
-datestamp = "1447853343"
+datestamp = "1468352041"
 

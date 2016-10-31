@@ -41,6 +41,19 @@ CONFIGURATION
   On this page you can configure multiple settings. Both the main module as the
   submodules that implement our hook have their settings displayed here.
 
+  On this page you can setup api keys for the submodules. Keep in mind that you
+  have to create them yourself. The submodules that are included in this module
+  have some documentation or some help pages available for this and are shown
+  in the fieldset of these channels.
+
+  Both Twitter and Facebook require you to connect through Oauth. For both
+  channels the submodules (will) provide step by step help and some
+  automagical configuration.
+
+* Add a field to a entity of the type Social Feed Field. On this field
+  you can setup which channels you want to use, image styles to use and some
+  default settings.
+
 
 MAINTAINERS
 -----------

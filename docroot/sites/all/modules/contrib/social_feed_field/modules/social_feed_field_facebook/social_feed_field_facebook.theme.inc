@@ -13,12 +13,22 @@
  */
 function social_feed_field_preprocess_social_feed_field_facebook_item(&$variables) {
   $message = $variables['message'];
+  $media = $variables['media'];
 
   // Add the photo.
   $variables['photo'] = FALSE;
-  if (isset($message->picture)) {
+  $image_url = FALSE;
+  if (!empty($media)) {
+    // We want to use the first image available.
+    $image_url = $media[0];
+  }
+  elseif (isset($message->picture)) {
+    $image_url = $message->picture;
+  }
+
+  if (!empty($image_url)) {
     $photo = theme('imagecache_external', array(
-      'path' => $message->picture,
+      'path' => $image_url,
       'style_name' => $variables['field_instance']['widget']['settings']['image_style'],
       'alt' => t('Photo by @name', array('@name' => $message->from->name)),
     ));

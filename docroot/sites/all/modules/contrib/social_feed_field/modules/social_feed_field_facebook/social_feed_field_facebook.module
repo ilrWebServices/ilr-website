@@ -37,7 +37,11 @@ function social_feed_field_facebook_social_feed_fields_channel() {
 function social_feed_field_facebook_theme($existing, $type, $theme, $path) {
   $theme = array(
     'social_feed_field_facebook_item' => array(
-      'variables' => array('message' => NULL, 'field_instance' => array()),
+      'variables' => array(
+        'message' => NULL,
+        'field_instance' => array(),
+        'media' => array(),
+      ),
       'template' => 'templates/social-feed-field-facebook-item',
       'file' => 'social_feed_field_facebook.theme.inc',
     ),

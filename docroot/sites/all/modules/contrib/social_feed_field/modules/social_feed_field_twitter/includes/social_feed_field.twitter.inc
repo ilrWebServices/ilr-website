@@ -60,7 +60,7 @@ function _social_feed_field_get_twitter_data(array $values, array $field_instanc
         $screenname = drupal_substr($search, 1);
         $url .= _social_feed_field_generate_twitter_auth_url_params($url, $values['social_feed_field_number'], array('screen_name' => $screenname));
 
-        $request = drupal_http_request($url);
+        $request = social_feed_field_do_request($url);
         if ($request->code >= 200 && $request->code < 400) {
           $json = json_decode($request->data);
           if (!empty($json)) {
@@ -74,7 +74,7 @@ function _social_feed_field_get_twitter_data(array $values, array $field_instanc
         $url = 'https://api.twitter.com/1.1/search/tweets.json';
         $url .= _social_feed_field_generate_twitter_auth_url_params($url, $values['social_feed_field_number'], array('q' => $search));
 
-        $request = drupal_http_request($url);
+        $request = social_feed_field_do_request($url);
         if ($request->code >= 200 && $request->code < 400) {
           $json = json_decode($request->data);
           if (!empty($json)) {
@@ -178,7 +178,7 @@ function _social_feed_field_generate_twitter_nonce() {
  */
 function _social_feed_field_twitter_urlencode_rfc3986($input) {
   if (is_array($input)) {
-    return array_map(array('OAuthUtil', 'urlencodeRfc3986'), $input);
+    return array_map(array('SFFOAuthUtil', 'urlencodeRfc3986'), $input);
   }
   elseif (is_scalar($input)) {
     return str_replace(
@@ -280,17 +280,18 @@ function _social_feed_field_twitter_url_converter($status, $targetblank = TRUE, 
   return $status;
 }
 
+
 /**
- * Class OAuthUtil.
+ * Class SFFOAuthUtil.
  */
-class OAuthUtil {
+class SFFOAuthUtil {
 
   /**
    * Urlencode function.
    */
   public static function urlencodeRfc3986($input) {
     if (is_array($input)) {
-      return array_map(array('OAuthUtil', 'urlencodeRfc3986'), $input);
+      return array_map(array('SFFOAuthUtil', 'urlencodeRfc3986'), $input);
     }
     elseif (is_scalar($input)) {
       return str_replace(
@@ -329,7 +330,7 @@ class OAuthUtil {
       $header_name = $matches[2][0];
       $header_content = (isset($matches[5])) ? $matches[5][0] : $matches[4][0];
       if (preg_match('/^oauth_/', $header_name) || !$only_allow_oauth_parameters) {
-        $params[$header_name] = OAuthUtil::urldecodeRfc3986($header_content);
+        $params[$header_name] = SFFOAuthUtil::urldecodeRfc3986($header_content);
       }
       $offset = $match[1] + strlen($match[0]);
     }
@@ -409,8 +410,8 @@ class OAuthUtil {
     $parsed_parameters = array();
     foreach ($pairs as $pair) {
       $split = explode('=', $pair, 2);
-      $parameter = OAuthUtil::urldecodeRfc3986($split[0]);
-      $value = isset($split[1]) ? OAuthUtil::urldecodeRfc3986($split[1]) : '';
+      $parameter = SFFOAuthUtil::urldecodeRfc3986($split[0]);
+      $value = isset($split[1]) ? SFFOAuthUtil::urldecodeRfc3986($split[1]) : '';
 
       if (isset($parsed_parameters[$parameter])) {
         // We have already recieved parameter(s) with this name, so add to the
@@ -440,8 +441,8 @@ class OAuthUtil {
     }
 
     // Urlencode both keys and values.
-    $keys = OAuthUtil::urlencodeRfc3986(array_keys($params));
-    $values = OAuthUtil::urlencodeRfc3986(array_values($params));
+    $keys = SFFOAuthUtil::urlencodeRfc3986(array_keys($params));
+    $values = SFFOAuthUtil::urlencodeRfc3986(array_values($params));
     $params = array_combine($keys, $values);
 
     // Parameters are sorted by name, using lexicographical byte value ordering.

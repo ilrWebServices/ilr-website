@@ -47,6 +47,11 @@ function social_feed_field_permission() {
  */
 function social_feed_field_theme($existing, $type, $theme, $path) {
   $theme = array(
+    'sff_container' => array(
+      'variables' => array('items' => NULL, 'class' => NULL),
+      'template' => 'templates/sff-container',
+      'file' => 'social_feed_field.theme.inc',
+    ),
     'social_feed_field_yt_embed' => array(
       'variables' => array('width' => NULL, 'height' => NULL, 'id' => NULL),
       'template' => 'templates/social-feed-yt-embed',
@@ -77,10 +82,6 @@ function social_feed_field_field_info() {
  * Implements hook_field_is_empty().
  */
 function social_feed_field_field_is_empty($item, $field) {
-  $type = TRUE;
-  $search = TRUE;
-  $number = TRUE;
-
   if (isset($item['social_feed_field_type']) && !empty($item['social_feed_field_type'])) {
     $type = FALSE;
   }
@@ -138,7 +139,7 @@ function social_feed_field_field_formatter_view($entity_type, $entity, $field, $
         $total_number = $instance['widget']['settings']['total_number'];
       }
 
-      foreach ($items as $delta => $item) {
+      foreach ($items as $item) {
         $values = $item;
 
         if (empty($values['social_feed_field_number'])) {
@@ -150,7 +151,7 @@ function social_feed_field_field_formatter_view($entity_type, $entity, $field, $
           $channel = $available_channels[$values['social_feed_field_type']];
           if (isset($channel['file'])) {
             if (file_exists($channel['file'])) {
-              require $channel['file'];
+              require_once $channel['file'];
             }
             else {
               $message = t('File @file does not exist. Please fix this error', array('@file' => $channel['file']));
@@ -205,7 +206,7 @@ function social_feed_field_field_formatter_view($entity_type, $entity, $field, $
         $items = array();
         foreach ($groups as $group) {
           $items[] = array(
-            'data'  => theme(
+            'data' => theme(
               'item_list',
               array(
                 'items' => $group,
@@ -221,12 +222,9 @@ function social_feed_field_field_formatter_view($entity_type, $entity, $field, $
 
       // Theme everything.
       $element = array(
-        '#theme' => 'item_list',
+        '#theme' => 'sff_container',
         '#items' => $list,
-        '#title' => '',
-        '#attributes' => array(
-          'class' => array('slide-container'),
-        ),
+        '#class' => (empty($instance['widget']['settings']['container_class'])) ? 'slide-container' : $instance['widget']['settings']['container_class'],
       );
 
       break;
@@ -258,6 +256,7 @@ function social_feed_field_field_widget_info() {
         'grouping' => FALSE,
         'group_size' => 2,
         'image_style' => '',
+        'container_class' => 'slide-container',
       ),
       'field types' => array('social_feed_field'),
     ),
@@ -285,28 +284,33 @@ function social_feed_field_field_widget_settings_form($field, $instance) {
     $form['types'] = array(
       '#type' => 'checkboxes',
       '#title' => t('Available social feeds'),
-      '#default_value' => $settings['types'],
+      '#default_value' => (empty($settings['types'])) ? array() : $settings['types'],
       '#required' => TRUE,
       '#options' => $types,
     );
     $form['number_pick'] = array(
       '#type' => 'checkbox',
       '#title' => t('Let the user determine the amount of items shown'),
-      '#default_value' => $settings['number_pick'],
+      '#default_value' => (empty($settings['number_pick'])) ? 1 : $settings['number_pick'],
     );
     $form['number'] = array(
       '#type' => 'textfield',
       '#title' => t('Number of items shown per channel if not determined by user'),
-      '#default_value' => $settings['number'],
+      '#default_value' => (empty($settings['number'])) ? 1 : $settings['number'],
       '#element_validate' => array('element_validate_integer_positive'),
       '#required' => TRUE,
     );
     $form['total_number'] = array(
       '#type' => 'textfield',
       '#title' => t('The total number of items shown for all items combined'),
-      '#default_value' => $settings['total_number'],
+      '#default_value' => (empty($settings['total_number'])) ? 0 : $settings['total_number'],
       '#element_validate' => array('element_validate_integer'),
       '#description' => t('Enter a value or 0 for no limit'),
+    );
+    $form['container_class'] = array(
+      '#type' => 'textfield',
+      '#title' => t('The class that the container list will have.'),
+      '#default_value' => (empty($settings['container_class'])) ? 'slide-container' : $settings['container_class'],
     );
 
     // Image style.
@@ -321,7 +325,7 @@ function social_feed_field_field_widget_settings_form($field, $instance) {
       '#title' => t('Image style'),
       '#description' => t('Pick the image style you want to use to render media.'),
       '#options' => $style_options,
-      '#default_value' => $settings['image_style'],
+      '#default_value' => (empty($settings['image_style'])) ? array() : $settings['image_style'],
     );
 
     // Grouping of elements.
@@ -334,12 +338,12 @@ function social_feed_field_field_widget_settings_form($field, $instance) {
     $form['fs_grouping']['grouping'] = array(
       '#type' => 'checkbox',
       '#title' => t('Enable grouping of feed items'),
-      '#default_value' => $settings['fs_grouping']['grouping'],
+      '#default_value' => (empty($settings['fs_grouping']['grouping'])) ? FALSE : $settings['fs_grouping']['grouping'],
     );
     $form['fs_grouping']['group_size'] = array(
       '#type' => 'textfield',
       '#title' => t('Group size'),
-      '#default_value' => $settings['fs_grouping']['group_size'],
+      '#default_value' => (empty($settings['fs_grouping']['group_size'])) ? 2 : $settings['fs_grouping']['group_size'],
       '#element_validate' => array('element_validate_integer_positive'),
     );
   }
@@ -472,7 +476,7 @@ function social_feed_field_get_channels($reset = FALSE) {
   $channels = &drupal_static(__FUNCTION__, NULL);
   if (!isset($channels) || $reset) {
     // Retrieve the links from the cache.
-    if (($cache = cache_get('social_feed_field_get_channels')) && !empty($cache->data)) {
+    if (!$reset && ($cache = cache_get('social_feed_field_get_channels')) && !empty($cache->data)) {
       $channels = $cache->data;
     }
     else {
@@ -591,6 +595,19 @@ function social_feed_field_delete_admin_values($channel_name) {
       }
     }
   }
+}
+
+/**
+ * Do a http request.
+ *
+ * We want to do it like this, so we can generalize the request with stuff like
+ * timeouts and redirects.
+ *
+ * @return object $request
+ *   The return value of the drupal_http_request().
+ */
+function social_feed_field_do_request($url) {
+  return drupal_http_request($url, array('timeout' => 5));
 }
 
 /**

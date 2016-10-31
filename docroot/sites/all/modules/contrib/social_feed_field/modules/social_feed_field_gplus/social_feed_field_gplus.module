@@ -9,6 +9,8 @@
  * Implements hook_social_feed_fields_channel().
  */
 function social_feed_field_gplus_social_feed_fields_channel() {
+  $link = l(t('Google Developers Console.'), 'https://console.developers.google.com/project/_/apiui/credential?pli=1', array('target' => '_blank'));
+
   return array(
     'gplus' => array(
       'name' => t('Google+'),
@@ -16,6 +18,7 @@ function social_feed_field_gplus_social_feed_fields_channel() {
       'callback' => '_social_feed_field_gplus',
       'file' => drupal_get_path('module', 'social_feed_field_gplus') . '/includes/social_feed_field.gplus.inc',
       'admin' => array(
+        '#description' => t('To use the Google+ channel you need a API Browser Key. You can create one on the !link', array('!link' => $link)),
         'dev_key' => array(
           '#type' => 'textfield',
           '#title' => t('Google dev key'),
