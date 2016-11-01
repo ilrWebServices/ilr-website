@@ -7932,6 +7932,21 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
+  // Exported field_base: 'field_social_feed'.
+  $field_bases['field_social_feed'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_social_feed',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'social_feed_field',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'social_feed_field',
+  );
+
   // Exported field_base: 'field_social_media_channel_type'.
   $field_bases['field_social_media_channel_type'] = array(
     'active' => 1,

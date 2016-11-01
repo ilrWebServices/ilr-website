@@ -1,0 +1,91 @@
+<?php
+
+/**
+ * @file
+ * Install and update functions for the field_socialfeed module.
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function social_feed_field_field_schema($field) {
+  switch ($field['type']) {
+    case 'social_feed_field':
+      $columns = array(
+        'social_feed_field_type' => array(
+          'type' => 'varchar',
+          'length' => 20,
+          'not null' => FALSE,
+        ),
+        'social_feed_field_search' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+        'social_feed_field_number' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      );
+
+      return array(
+        'columns' => $columns,
+      );
+
+  }
+}
+
+/**
+ * Update the field schema.
+ */
+function social_feed_field_update_7001() {
+  $fields = field_info_fields();
+  foreach ($fields as $field_name => $field) {
+    if ($field['type'] == 'social_feed_field' && $field['storage']['type'] == 'field_sql_storage') {
+      $schema = social_feed_field_field_schema($field);
+      foreach ($field['storage']['details']['sql'] as $type => $table_info) {
+        foreach ($table_info as $table_name => $columns) {
+          $column_name = _field_sql_storage_columnname($field_name, 'social_feed_field_type');
+          db_add_field($table_name, $column_name, $schema['columns']['social_feed_field_type']);
+          db_add_index($table_name, $column_name, array($column_name));
+
+          $column_name = _field_sql_storage_columnname($field_name, 'social_feed_field_search');
+          db_add_field($table_name, $column_name, $schema['columns']['social_feed_field_search']);
+          db_add_index($table_name, $column_name, array($column_name));
+
+          $column_name = _field_sql_storage_columnname($field_name, 'social_feed_field_number');
+          db_add_field($table_name, $column_name, $schema['columns']['social_feed_field_number']);
+          db_add_index($table_name, $column_name, array($column_name));
+        }
+      }
+    }
+  }
+  field_cache_clear();
+}
+
+/**
+ * Remove the unused field from the db.
+ */
+function social_feed_field_update_7002() {
+  $fields = field_info_fields();
+  foreach ($fields as $field_name => $field) {
+    if ($field['type'] == 'social_feed_field' && $field['storage']['type'] == 'field_sql_storage') {
+      foreach ($field['storage']['details']['sql'] as $type => $table_info) {
+        foreach ($table_info as $table_name => $columns) {
+          $column_name = str_replace('social_feed_field_type', 'social_feed_field', $columns['social_feed_field_type']);
+          db_drop_field($table_name, $column_name);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Remove style variables. It's now in field settings.
+ */
+function social_feed_field_update_7003() {
+  variable_del('social_feed_field_image_style');
+  variable_del('social_feed_field_grouping_enabled');
+  variable_del('social_feed_field_grouping_size');
+}
