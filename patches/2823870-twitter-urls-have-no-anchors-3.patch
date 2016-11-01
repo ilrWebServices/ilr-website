@@ -1,11 +1,11 @@
-commit 6321b4b95ae6c259c7f7937e9cabc3cb0badc9f9
+commit ffd24c7de6b96124676515a99cf51174f97f0381
 Author: David DeMello <daviddemello@gmail.com>
-Date:   Mon Oct 31 16:18:52 2016 -0400
+Date:   Tue Nov 1 12:35:20 2016 -0400
 
-    Added anchor tags to urls in twitter status messages.
+    Added anchor tags to urls quoted in Twitter status messages.
 
 diff --git a/modules/social_feed_field_twitter/includes/social_feed_field.twitter.inc b/modules/social_feed_field_twitter/includes/social_feed_field.twitter.inc
-index 154bf9a..10d2881 100644
+index 154bf9a..e12492d 100644
 --- a/modules/social_feed_field_twitter/includes/social_feed_field.twitter.inc
 +++ b/modules/social_feed_field_twitter/includes/social_feed_field.twitter.inc
 @@ -271,10 +271,13 @@ function _social_feed_field_twitter_fetch_photos($tweet) {
@@ -14,13 +14,13 @@ index 154bf9a..10d2881 100644
    $target = $targetblank ? " target=\"_blank\" " : "";
 +  // Add anchor tags to urls.
 +  $regex = '~(?:(https?)://([^\s<]+)|(www\.[^\s<]+?\.[^\s<]+))(?<![\.,:])~i';
-+  $status = preg_replace($regex, '<a href="$0">$0</a>', $status);
++  $status = preg_replace($regex, '<a href="$0" $target >$0</a>', $status);
    // Convert @ to follow.
 -  $status = preg_replace("/(@([_a-z0-9\-]+))/i", "<a href=\"http://twitter.com/$2\" title=\"Follow $2\" $target >$1</a>", $status);
-+  $status = preg_replace("/(\b@([_a-z0-9\-]+))/i", "<a href=\"http://twitter.com/$2\" title=\"Follow $2\" $target >$1</a>", $status);
++  $status = preg_replace("/((^|\s)@([_a-z0-9\-]+))/i", "<a href=\"http://twitter.com/$3\" title=\"Follow $3\" $target >$1</a>", $status);
    // Convert # to search.
 -  $status = preg_replace("/(#([_a-z0-9\-]+))/i", "<a href=\"https://twitter.com/search?q=%23$2\" title=\"Search $1\" $target >$1</a>", $status);
-+  $status = preg_replace("/(\b#([_a-z0-9\-]+))/i", "<a href=\"https://twitter.com/search?q=%23$2\" title=\"Search $1\" $target >$1</a>", $status);
++  $status = preg_replace("/((^|\s)#([_a-z0-9\-]+))/i", "<a href=\"https://twitter.com/search?q=%23$3\" title=\"Search $1\" $target >$1</a>", $status);
  
    // Return the status.
    return $status;
