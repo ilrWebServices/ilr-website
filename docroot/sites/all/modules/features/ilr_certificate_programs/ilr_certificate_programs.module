@@ -33,8 +33,9 @@ function ilr_certificate_programs_node_view($node, $view_mode, $langcode) {
 function ilr_certificate_programs_preprocess_node(&$variables) {
   if($variables['type'] == 'certificate_programs' && $variables['view_mode'] == 'ilr_theme__highlighted') {
     $wrapper = ilr_get_node_wrapper($variables['node']);
-    $title = $wrapper->title->value();
-    $variables['content']['title'] = array('#markup'=>"<div class='pitch'><h1>$title</h1>");
+    $variables['content']['field_image']['#weight'] = 0;
+    $variables['content']['title'] = array('#markup'=>"<div class='pitch'><h1>$title</h1>", '#weight'=>1);
+    $variables['content']['field_value_propositions']['#weight'] = 2;
     $variables['content']['title_close'] = array('#markup'=>"</div>", '#weight'=>10);
   }
 }
