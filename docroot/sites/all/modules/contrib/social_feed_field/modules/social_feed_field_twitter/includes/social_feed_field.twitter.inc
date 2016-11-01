@@ -275,9 +275,9 @@ function _social_feed_field_twitter_url_converter($status, $targetblank = TRUE, 
   $regex = '~(?:(https?)://([^\s<]+)|(www\.[^\s<]+?\.[^\s<]+))(?<![\.,:])~i';
   $status = preg_replace($regex, '<a href="$0">$0</a>', $status);
   // Convert @ to follow.
-  $status = preg_replace("/(\b@([_a-z0-9\-]+))/i", "<a href=\"http://twitter.com/$2\" title=\"Follow $2\" $target >$1</a>", $status);
+  $status = preg_replace("/((^|\s)@([_a-z0-9\-]+))/i", "<a href=\"http://twitter.com/$3\" title=\"Follow $3\" $target >$1</a>", $status);
   // Convert # to search.
-  $status = preg_replace("/(\b#([_a-z0-9\-]+))/i", "<a href=\"https://twitter.com/search?q=%23$2\" title=\"Search $1\" $target >$1</a>", $status);
+  $status = preg_replace("/((^|\s)#([_a-z0-9\-]+))/i", "<a href=\"https://twitter.com/search?q=%23$3\" title=\"Search $1\" $target >$1</a>", $status);
 
   // Return the status.
   return $status;
