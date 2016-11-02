@@ -28,7 +28,7 @@ Example:
 * social_feed_field
   * The patch ensures that urls included in Twitter status messages are properly linked.
   * Fron https://www.drupal.org/node/2823870
-  * https://www.drupal.org/files/issues/2823870-twitter-urls-have-no-anchors-3.patch
+  * https://www.drupal.org/files/issues/2823870-twitter-urls-have-no-anchors-4.patch
 
 * borealis
   * Switches from window.onload to the Drupal.behaviors system

@@ -272,8 +272,8 @@ function _social_feed_field_twitter_url_converter($status, $targetblank = TRUE, 
   // The target.
   $target = $targetblank ? " target=\"_blank\" " : "";
   // Add anchor tags to urls.
-  $regex = '~(?:(https?)://([^\s<]+)|(www\.[^\s<]+?\.[^\s<]+))(?<![\.,:])~i';
-  $status = preg_replace($regex, '<a href="$0">$0</a>', $status);
+  $regex = '~(?:(https?)://([^\s<…]+)|(www\.[^\s<]+?\.[^\s<…]+))(?<![\.,:])~i';
+  $status = preg_replace($regex, '<a href="$0" $target >$0</a>', $status);
   // Convert @ to follow.
   $status = preg_replace("/((^|\s)@([_a-z0-9\-]+))/i", "<a href=\"http://twitter.com/$3\" title=\"Follow $3\" $target >$1</a>", $status);
   // Convert # to search.
