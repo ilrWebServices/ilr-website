@@ -1,0 +1,210 @@
+#certificate-info-aside {
+  border-bottom: 1px solid $gray-light;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  .get-started, .contact {
+    background: white;
+    padding: 0 40px;
+    margin: 0;
+    text-align: center;
+    overflow: auto;
+    p {
+      font-size: 16px;
+      line-height: 1.2;
+    }
+    a {
+      color: #d76b00;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+    h2 {
+      color: #d76b00;
+      font-size: 28px;
+      font-weight: 100;
+      margin: 0 0 20px;
+    }
+    h3 {
+      font-family: $font;
+      font-size: 18px;
+      font-weight: 100;
+      line-height: 1.3;
+      padding: 0;
+      margin: 0;
+    }
+    h3 + p {
+      margin-top: 0;
+    }
+    .button {
+      background: #d76b00;
+      border: none;
+      box-shadow: 1px 2px 4px $gray-medium;
+      color: white;
+      font-weight: 100;
+      font-family: $font;
+      text-decoration: none;
+      text-transform: uppercase;
+      border-radius: 20px;
+      padding: 8px 20px;
+      margin: 30px auto 30px;
+      max-width: 250px;
+      display: block;
+    }
+  }
+  .get-started {
+    padding-top: 30px;
+  }
+  .contact {
+    padding-bottom: 30px;
+    clear: both;
+  }
+  p.price {
+    color: #2099b7;
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0;
+  }
+  .days-time {
+    padding: 0 20px;
+  }
+  p.days-of-instruction, p.time-to-complete {
+    width: 50%;
+    margin: 1em 0;
+    line-height: 1;
+    text-align: left;
+    padding-left: 12px;
+    float: left;
+    em {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 36px;
+      vertical-align: top;
+      padding-right: 6px;
+      margin-top: -4px;
+      display: block;
+      float: left;
+    }
+  }
+}
+
+#main[data-eq-state="550"] {
+  #certificate-info-aside {
+    padding-top: 0;
+    .get-started, .contact {
+      padding-right: 20px;
+      float: left;
+      text-align: left;
+      min-height: 300px;
+      .button {
+        text-align: center;
+        max-width: 200px;
+        margin-left: 0;
+      }
+    }
+    .get-started {
+      width: 60%;
+      padding-left: 30px;
+      p {
+        font-size: 19px;
+        margin-top: 20px;
+      }
+    }
+    .contact {
+      width: 40%;
+      padding-left: 20px;
+      padding-top: 30px;
+      padding-bottom: 0;
+      clear: none;
+      p {
+        margin-top: .5em;
+      }
+    }
+    p.price {
+      font-size: 36px;
+      vertical-align: top;
+      margin-top: 10px;
+      padding-right: 12px;
+      float: left;
+    }
+    .days-time {
+      padding: 0;
+      float: left;
+    }
+    p.days-of-instruction, p.time-to-complete {
+      font-size: 16px;
+      width: 117px;
+    }
+    p.days-of-instruction {
+      padding-left: 0;
+    }
+    p.time-to-complete {
+      padding-left: 15px;
+    }
+  }
+}
+
+#main[data-eq-state="768"] {
+  #certificate-info-aside {
+    padding: 45px 15px 0 0;
+    margin-top: -10px;
+    padding-top: 0;
+    padding-right: 0;
+    .get-started, .contact {
+      border: none;
+      padding-right: 20px;
+      float: left;
+      min-height: 280px;
+    }
+    .get-started {
+      border-bottom: none;
+      width: 60%;
+      text-align: left;
+    }
+    .contact {
+      border-top: none;
+      width: 40%;
+      padding-top: 30px;
+      padding-bottom: 0;
+      clear: none;
+      p {
+        margin-top: .5em;
+      }
+    }
+    p.price {
+      font-size: 36px;
+      vertical-align: top;
+      margin-top: 10px;
+      float: left;
+    }
+    .days-time {
+      float: left;
+    }
+    p.days-of-instruction, p.time-to-complete {
+      font-size: 16px;
+      width: 117px;
+      padding-left: 15px;
+    }
+  }
+}
+
+#main[data-eq-state="widescreen"] {
+  #certificate-info-aside {
+    border-bottom: none;
+    max-width: 350px;
+    padding: 45px 15px 0 0;
+    .get-started, .contact {
+      border: 1px solid $gray-light;
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+    .get-started {
+      border-bottom: none;
+    }
+    .contact {
+      border-top: none;
+    }
+    .days-time {
+      padding: 0;
+    }
+  }
+}
