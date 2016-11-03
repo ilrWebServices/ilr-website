@@ -273,6 +273,21 @@ function ilr_sdc_listings_update_7013() {
 }
 
 /**
+ * Adds term to Course Format vocabulary
+ */
+function ilr_sdc_listings_update_7014() {
+  if ($vocab = taxonomy_vocabulary_machine_name_load('course_format')) {
+    $existing_term = taxonomy_get_term_by_name('Certificate Programs', 'course_format');
+    if (!$existing_term) {
+      $term = new stdClass();
+      $term->name = 'Certificate Programs';
+      $term->vid = $vocab->vid;
+      taxonomy_term_save($term);
+    }
+  }
+}
+
+/**
  * Update aliases for sdc content types.
  */
 function _ilr_sdc_listings_update_aliases() {
