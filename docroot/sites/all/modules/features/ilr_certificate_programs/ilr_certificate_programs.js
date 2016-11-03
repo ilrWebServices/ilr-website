@@ -12,6 +12,25 @@
           return false;
         });
       });
+
+      $(window).resize(function(){
+        position_call_to_action();
+      });
+
+      function position_call_to_action() {
+        is_in_sidebar = function (el) {
+          return el.parent().has('div#main');
+        }
+        sidebar_second = $('#sidebar-second');
+
+        if ($('header').width() <= 1280 ){
+          if ( is_in_sidebar(sidebar_second) ) {
+            $('#highlighted').after(sidebar_second);
+          }
+        } else if ( is_in_sidebar(sidebar_second) ) {
+          $('#sidebar-first').after(sidebar_second);
+        }
+      }
     }
   };
 }(jQuery));
