@@ -38,9 +38,9 @@ body.node-type-certificate-programs {
             line-height: 1.5;
             padding-top: .8em;
             padding-left: 0;
-            em {
-              font-style: normal;
+            .first-word {
               font-weight: 500;
+              font-style: italic;
             }
           }
         }
@@ -216,14 +216,6 @@ body.node-type-certificate-programs {
             padding-top: .6em;
           }
         }
-      }
-    }
-  }
-
-  .container[data-eq-state="regular-nav"] {
-    #main[data-eq-state="768"] {
-      #sidebar-second {
-        @include grid-span(12);
       }
     }
   }
