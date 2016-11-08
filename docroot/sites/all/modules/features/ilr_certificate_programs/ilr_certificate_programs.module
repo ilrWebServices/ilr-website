@@ -12,7 +12,7 @@ include_once 'ilr_certificate_programs.features.inc';
 function ilr_certificate_programs_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes']['alternate_teaser'] = array(
     'label' => t('Alternate teaser'),
-    'custom settings' => TRUE,
+    'custom settings' => FALSE,
   );
 }
 

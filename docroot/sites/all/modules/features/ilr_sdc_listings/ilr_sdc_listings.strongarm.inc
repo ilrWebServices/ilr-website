@@ -85,6 +85,15 @@ function ilr_sdc_listings_strongarm() {
       'basic_teaser' => array(
         'custom_settings' => FALSE,
       ),
+      'alternate_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'ilr_theme__highlighted' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__sidebar_second' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -109,6 +118,10 @@ function ilr_sdc_listings_strongarm() {
             'visible' => TRUE,
           ),
           'reference_field' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'alternate_teaser' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),
