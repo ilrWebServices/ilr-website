@@ -7,6 +7,42 @@
 include_once 'ilr_certificate_programs.features.inc';
 
 /**
+ * Implements hook_block_info().
+ */
+function ilr_certificate_programs_block_info() {
+  $blocks['certificate_programs_cta'] = array(
+    'info' => t('Certificate programs CTA'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function ilr_certificate_programs_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'certificate_programs_cta':
+      $block['subject'] = t('');
+      $variables = ilr_certificate_programs_cta_block_variables();
+      $block['content'] = theme('cta_block', $variables);
+      break;
+  }
+  return $block;
+}
+
+function ilr_certificate_programs_theme() {
+  return array(
+    'cta_block' => array(
+      'variables' => array(),
+      'template' => 'ilr-certificate-programs-cta-block',
+    ),
+  );
+}
+
+/**
  * Implements hook_entity_info_alter().
  */
 function ilr_certificate_programs_entity_info_alter(&$entity_info) {
@@ -39,4 +75,24 @@ function ilr_certificate_programs_preprocess_node(&$variables) {
     $variables['content']['field_value_propositions']['#weight'] = 2;
     $variables['content']['title_close'] = array('#markup'=>"</div>", '#weight'=>10);
   }
+}
+
+function ilr_certificate_programs_cta_block_variables() {
+  if ($node = menu_get_object()) {
+    $wrapper = ilr_get_node_wrapper($node);
+    $variables = array(
+      'total_cost' => ilr_certificate_programs_total_cost($wrapper),
+      'course_count' => count($wrapper->field_course->value()),
+    );
+    return $variables;
+  }
+}
+
+function ilr_certificate_programs_total_cost($certificate_wrapper) {
+  $total = 0;
+  foreach ($certificate_wrapper->field_course->getIterator() as $delta => $course) {
+    $cost = $course->field_price->value();
+    $total += $cost;
+  }
+  return $total;
 }
