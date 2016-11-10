@@ -1260,6 +1260,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
       'active' => 1,
       'module' => 'social_feed_field',
       'settings' => array(
+        'container_class' => 'slide-container',
         'fs_grouping' => array(
           'group_size' => '',
           'grouping' => 1,
