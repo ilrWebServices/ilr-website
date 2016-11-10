@@ -292,7 +292,7 @@ function ilr_sdc_listings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_sdc_class_pattern';
-  $strongarm->value = 'professional-programs/[node:field-course:field_catalog_prefix]/[node:title]/[node:field-class-dates:value:custom:Y-m-d]';
+  $strongarm->value = 'professional-programs/[node:field-course[0]:field_catalog_prefix]/[node:title]/[node:field-class-dates:value:custom:Y-m-d]';
   $export['pathauto_node_sdc_class_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
