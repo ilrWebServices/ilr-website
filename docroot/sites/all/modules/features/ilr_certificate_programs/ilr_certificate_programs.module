@@ -96,5 +96,5 @@ function ilr_certificate_programs_total_cost($certificate_wrapper) {
     $cost = $course->field_price->value();
     $total += $cost;
   }
-  return $total;
+  return ceil($total);
 }
