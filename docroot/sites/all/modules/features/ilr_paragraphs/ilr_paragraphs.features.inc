@@ -48,6 +48,11 @@ function ilr_paragraphs_paragraphs_info() {
       'bundle' => 'side_by_side_text',
       'locked' => '1',
     ),
+    'social_feed' => array(
+      'name' => 'a social feed',
+      'bundle' => 'social_feed',
+      'locked' => '1',
+    ),
     'sponsor_message' => array(
       'name' => 'a prominent message',
       'bundle' => 'sponsor_message',

@@ -555,6 +555,7 @@ features[field_instance][] = entityform-job_postings_for_ilr_alumni-field_state_
 features[field_instance][] = entityform-job_postings_for_ilr_alumni-field_title_additional
 features[field_instance][] = entityform-job_postings_for_ilr_alumni-field_zip_code
 features[field_instance][] = entityform-job_postings_for_ilr_alumni-field_zip_postal_code_additional
+features[field_instance][] = entityform-labor_roundtable_student_registr-field_degree_ba_ms_jd_phd_other
 features[field_instance][] = entityform-labor_roundtable_student_registr-field_email
 features[field_instance][] = entityform-labor_roundtable_student_registr-field_first_name
 features[field_instance][] = entityform-labor_roundtable_student_registr-field_h_event_date

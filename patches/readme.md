@@ -25,6 +25,11 @@ Example:
   8) Commit the patched module
   9) If you created the patch, add it to the project issue queue so that it might be included in a future release
 
+* social_feed_field
+  * The patch ensures that urls included in Twitter status messages are properly linked.
+  * Fron https://www.drupal.org/node/2823870
+  * https://www.drupal.org/files/issues/2823870-twitter-urls-have-no-anchors-4.patch
+
 * borealis
   * Switches from window.onload to the Drupal.behaviors system
   * From https://www.drupal.org/node/2110245

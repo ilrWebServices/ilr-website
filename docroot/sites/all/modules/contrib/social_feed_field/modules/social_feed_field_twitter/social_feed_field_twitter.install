@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Install, uninstall and update hooks the social_feed_field_twitter module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function social_feed_field_twitter_uninstall() {
+  module_load_include('module', 'social_feed_field', 'social_feed_field');
+  social_feed_field_delete_admin_values('twitter');
+}

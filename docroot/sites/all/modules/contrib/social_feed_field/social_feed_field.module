@@ -1,0 +1,671 @@
+<?php
+
+/**
+ * @file
+ * The social_feed_field module file.
+ */
+
+// Define the global cache lifetime.
+define('SOCIAL_FEED_FIELD_CACHE_LIFETIME', 900);
+
+/**
+ * Implements hook_menu().
+ */
+function social_feed_field_menu() {
+  $items = array();
+  $items['admin/config/content/social_feed_field'] = array(
+    'title' => 'Social feed field',
+    'description' => 'Change the settings for the social feed field.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('social_feed_field_admin'),
+    'access arguments' => array('administer social feed field'),
+    'file path' => drupal_get_path('module', 'social_feed_field') . '/includes',
+    'file' => 'social_feed_field.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_field_access().
+ */
+/**
+ * Implements hook_permission().
+ */
+function social_feed_field_permission() {
+  return array(
+    'administer social feed field' => array(
+      'title' => t('Administer social feed field'),
+      'description' => t('Administer the settings for the social feed field module'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function social_feed_field_theme($existing, $type, $theme, $path) {
+  $theme = array(
+    'sff_container' => array(
+      'variables' => array('items' => NULL, 'class' => NULL),
+      'template' => 'templates/sff-container',
+      'file' => 'social_feed_field.theme.inc',
+    ),
+    'social_feed_field_yt_embed' => array(
+      'variables' => array('width' => NULL, 'height' => NULL, 'id' => NULL),
+      'template' => 'templates/social-feed-yt-embed',
+    ),
+  );
+
+  return $theme;
+}
+
+/**
+ * Implements hook_field_info().
+ *
+ * Functionalities:
+ * - Define our custom field(s).
+ */
+function social_feed_field_field_info() {
+  return array(
+    'social_feed_field' => array(
+      'label' => t('Social feed field'),
+      'description' => t('Create a social media feed field.'),
+      'default_widget' => 'social_feed_field_widget',
+      'default_formatter' => 'social_feed_field_formatter',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function social_feed_field_field_is_empty($item, $field) {
+  if (isset($item['social_feed_field_type']) && !empty($item['social_feed_field_type'])) {
+    $type = FALSE;
+  }
+  else {
+    return TRUE;
+  }
+  if (isset($item['social_feed_field_search']) && !empty($item['social_feed_field_search'])) {
+    $search = FALSE;
+  }
+  else {
+    return TRUE;
+  }
+  if (isset($item['social_feed_field_number']) && !empty($item['social_feed_field_number'])) {
+    $number = FALSE;
+  }
+  else {
+    return TRUE;
+  }
+
+  if ($type && $search && $number) {
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ *
+ * @see social_feed_field_field_formatter_view()
+ */
+function social_feed_field_field_formatter_info() {
+  return array(
+    // This formatter just displays the hex value in the color indicated.
+    'social_feed_field_formatter' => array(
+      'label' => t('Social feed field formatter'),
+      'field types' => array('social_feed_field'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ *
+ * @see social_feed_field_field_formatter_info()
+ */
+function social_feed_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+
+  switch ($display['type']) {
+    case 'social_feed_field_formatter':
+      $list = array();
+      $total_number = 0;
+      if (isset($instance['widget']['settings']['total_number'])) {
+        $total_number = $instance['widget']['settings']['total_number'];
+      }
+
+      foreach ($items as $item) {
+        $values = $item;
+
+        if (empty($values['social_feed_field_number'])) {
+          $values['social_feed_field_number'] = $instance['widget']['settings']['number'];
+        }
+
+        $available_channels = social_feed_field_get_channels();
+        if (isset($available_channels[$values['social_feed_field_type']])) {
+          $channel = $available_channels[$values['social_feed_field_type']];
+          if (isset($channel['file'])) {
+            if (file_exists($channel['file'])) {
+              require_once $channel['file'];
+            }
+            else {
+              $message = t('File @file does not exist. Please fix this error', array('@file' => $channel['file']));
+              throw new Exception($message);
+            }
+          }
+
+          if (function_exists($channel['callback'])) {
+            $value = $channel['callback']($values, $instance);
+          }
+          else {
+            $message = t('Callback function @callback not specified in file @file. Please fix this error', array(
+              '@callback' => $channel['callback'],
+              '@file' => $channel['file'],
+            ));
+            throw new Exception($message);
+          }
+        }
+        else {
+          $message = t('The channel used (@channel) is not available. There is something wrong. Please try again or contact a administrator.', array('@channel' => $values['social_feed_field_type']));
+          throw new Exception($message);
+        }
+
+        if (!empty($value)) {
+          $list += $value;
+        }
+      }
+
+      if (!empty($total_number)) {
+        $list = array_slice($list, 0, $total_number);
+      }
+
+      krsort($list);
+
+      // Group per N items.
+      if ($instance['widget']['settings']['fs_grouping']['grouping']) {
+        // Compose grouped array.
+        $group_size = $instance['widget']['settings']['fs_grouping']['group_size'];
+        $groups = array();
+        $group_count = 0;
+        $group_sub_count = 0;
+        foreach ($list as $item) {
+          if ($group_sub_count == $group_size) {
+            $group_sub_count = 0;
+            $group_count++;
+          }
+          $groups[$group_count][] = $item;
+          $group_sub_count++;
+        }
+
+        // Theme groups.
+        $items = array();
+        foreach ($groups as $group) {
+          $items[] = array(
+            'data' => theme(
+              'item_list',
+              array(
+                'items' => $group,
+              )
+            ),
+            'class' => array('slides'),
+          );
+        }
+
+        // Replace list items with grouped list items.
+        $list = $items;
+      }
+
+      // Theme everything.
+      $element = array(
+        '#theme' => 'sff_container',
+        '#items' => $list,
+        '#class' => (empty($instance['widget']['settings']['container_class'])) ? 'slide-container' : $instance['widget']['settings']['container_class'],
+      );
+
+      break;
+
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function social_feed_field_field_widget_info() {
+  $available_channels = social_feed_field_get_channels();
+
+  $types = array();
+  foreach ($available_channels as $name => $channel) {
+    $types[] = $name;
+  }
+
+  return array(
+    'social_feed_field_widget' => array(
+      'label' => t('Social feed field'),
+      'settings' => array(
+        'types' => $types,
+        'number_pick' => 1,
+        'number' => 1,
+        'total_number' => 0,
+        'grouping' => FALSE,
+        'group_size' => 2,
+        'image_style' => '',
+        'container_class' => 'slide-container',
+      ),
+      'field types' => array('social_feed_field'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_settings_form().
+ */
+function social_feed_field_field_widget_settings_form($field, $instance) {
+  $widget = $instance['widget'];
+  $settings = $widget['settings'];
+  $form = array();
+
+  if ($widget['type'] == 'social_feed_field_widget') {
+    $available_channels = social_feed_field_get_channels();
+
+    $types = array();
+    foreach ($available_channels as $name => $channel) {
+      if (isset($channel['name'])) {
+        $types[$name] = $channel['name'];
+      }
+    }
+
+    $form['types'] = array(
+      '#type' => 'checkboxes',
+      '#title' => t('Available social feeds'),
+      '#default_value' => (empty($settings['types'])) ? array() : $settings['types'],
+      '#required' => TRUE,
+      '#options' => $types,
+    );
+    $form['number_pick'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Let the user determine the amount of items shown'),
+      '#default_value' => (empty($settings['number_pick'])) ? 1 : $settings['number_pick'],
+    );
+    $form['number'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Number of items shown per channel if not determined by user'),
+      '#default_value' => (empty($settings['number'])) ? 1 : $settings['number'],
+      '#element_validate' => array('element_validate_integer_positive'),
+      '#required' => TRUE,
+    );
+    $form['total_number'] = array(
+      '#type' => 'textfield',
+      '#title' => t('The total number of items shown for all items combined'),
+      '#default_value' => (empty($settings['total_number'])) ? 0 : $settings['total_number'],
+      '#element_validate' => array('element_validate_integer'),
+      '#description' => t('Enter a value or 0 for no limit'),
+    );
+    $form['container_class'] = array(
+      '#type' => 'textfield',
+      '#title' => t('The class that the container list will have.'),
+      '#default_value' => (empty($settings['container_class'])) ? 'slide-container' : $settings['container_class'],
+    );
+
+    // Image style.
+    $image_styles = image_styles();
+    $style_options = array();
+    foreach ($image_styles as $style) {
+      $style_options[$style['name']] = $style['label'];
+    }
+
+    $form['image_style'] = array(
+      '#type' => 'select',
+      '#title' => t('Image style'),
+      '#description' => t('Pick the image style you want to use to render media.'),
+      '#options' => $style_options,
+      '#default_value' => (empty($settings['image_style'])) ? array() : $settings['image_style'],
+    );
+
+    // Grouping of elements.
+    $form['fs_grouping'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Grouping'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+    $form['fs_grouping']['grouping'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Enable grouping of feed items'),
+      '#default_value' => (empty($settings['fs_grouping']['grouping'])) ? FALSE : $settings['fs_grouping']['grouping'],
+    );
+    $form['fs_grouping']['group_size'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Group size'),
+      '#default_value' => (empty($settings['fs_grouping']['group_size'])) ? 2 : $settings['fs_grouping']['group_size'],
+      '#element_validate' => array('element_validate_integer_positive'),
+    );
+  }
+
+  return $form;
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function social_feed_field_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $instance = field_widget_instance($element, $form_state);
+
+  $settings = $instance['widget']['settings'];
+
+  switch ($instance['widget']['type']) {
+    case 'social_feed_field_widget':
+      $element += array(
+        '#delta' => $delta,
+      );
+
+      $available_channels = social_feed_field_get_channels();
+
+      $values = FALSE;
+      if (isset($items[$delta])) {
+        $values = $items[$delta];
+      }
+      if (!is_array($values)) {
+        $values = $instance['default_value'][0];
+      }
+
+      $element += array(
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('module', 'social_feed_field') . '/js/social_feed_field.js',
+          ),
+        ),
+      );
+
+      $element += array(
+        '#type' => 'fieldset',
+        '#attributes' => array(
+          'class' => array('social_feed_field_fs'),
+        ),
+      );
+
+      $options = array(0 => t('None'));
+      $default_descriptions = array();
+
+      foreach ($available_channels as $name => $channel) {
+        if (isset($channel['name'])) {
+          $default_options[$name] = $channel['name'];
+        }
+
+        if (isset($channel['description'])) {
+          $default_descriptions[$name] = $channel['description'];
+        }
+      }
+
+      $descriptions = array();
+      foreach ($settings['types'] as $type) {
+        if (!empty($type)) {
+          $options[$type] = $default_options[$type];
+          $descriptions[$type] = $default_descriptions[$type];
+        }
+      }
+
+      $element['social_feed_field_type'] = array(
+        '#type' => 'select',
+        '#title' => t('Social feed field type'),
+        '#options' => $options,
+        '#default_value' => $values['social_feed_field_type'],
+        '#required' => $element['#required'],
+      );
+
+      $element['social_feed_field_search'] = array(
+        '#type' => 'textfield',
+        '#maxlength' => 50,
+        '#size' => 60,
+        '#title' => t('Search string'),
+        '#default_value' => $values['social_feed_field_search'],
+        '#description' => theme('item_list', array('items' => $descriptions)),
+        '#required' => $element['#required'],
+      );
+
+      if (!empty($settings['number_pick'])) {
+        $element['social_feed_field_number'] = array(
+          '#type' => 'textfield',
+          '#maxlength' => 3,
+          '#size' => 4,
+          '#title' => t('Amount of items to display'),
+          '#default_value' => $values['social_feed_field_number'],
+          '#required' => $element['#required'],
+          '#element_validate' => array('element_validate_integer_positive'),
+        );
+      }
+      else {
+        $element['social_feed_field_number'] = array(
+          '#type' => 'hidden',
+          '#default_value' => $settings['number'],
+        );
+      }
+
+      break;
+
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_error().
+ */
+function social_feed_field_field_widget_error($element, $error, $form, &$form_state) {
+  form_error($element, $error['message']);
+}
+
+/**
+ * Retrieve the available channels from the sub modules.
+ *
+ * These modules need to implement the hook_social_feed_fields_channel().
+ *
+ * @param bool $reset
+ *   Whether to reset the channels, or get them from the cache.
+ *
+ * @return array
+ *   The available channels.
+ */
+function social_feed_field_get_channels($reset = FALSE) {
+  $channels = &drupal_static(__FUNCTION__, NULL);
+  if (!isset($channels) || $reset) {
+    // Retrieve the links from the cache.
+    if (!$reset && ($cache = cache_get('social_feed_field_get_channels')) && !empty($cache->data)) {
+      $channels = $cache->data;
+    }
+    else {
+      // Create the repository of links.
+      $channels = array();
+      foreach (module_implements('social_feed_fields_channel') as $module) {
+        $module_channel = module_invoke($module, 'social_feed_fields_channel');
+        foreach ($module_channel as $name => $channel) {
+          $channels[$name] = $channel;
+        }
+      }
+
+      // Save the links in the cache.
+      cache_set('social_feed_field_get_channels', $channels);
+    }
+  }
+
+  return $channels;
+}
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function social_feed_field_image_default_styles() {
+  $styles = array();
+
+  $styles['social_feed_field'] = array(
+    'label' => 'Social feed field image (autox200)',
+    'effects' => array(
+      array(
+        'name' => 'image_scale',
+        'data' => array('width' => 200, 'height' => 200, 'upscale' => 1),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
+ * Implements hook_help().
+ */
+function social_feed_field_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#social_feed_field':
+      $filepath = dirname(__FILE__) . '/README.md';
+      if (file_exists($filepath)) {
+        $readme = file_get_contents($filepath);
+      }
+      else {
+        $filepath = dirname(__FILE__) . '/README.txt';
+        if (file_exists($filepath)) {
+          $readme = file_get_contents($filepath);
+        }
+      }
+      if (!isset($readme)) {
+        return NULL;
+      }
+      if (module_exists('markdown')) {
+        $filters = module_invoke('markdown', 'filter_info');
+        $info = $filters['filter_markdown'];
+
+        if (function_exists($info['process callback'])) {
+          $output = $info['process callback']($readme, NULL);
+        }
+        else {
+          $output = '<pre>' . $readme . '</pre>';
+        }
+      }
+      else {
+        $output = '<pre>' . $readme . '</pre>';
+      }
+
+      return $output;
+  }
+}
+
+/**
+ * Generate a array of all entered values in the admin page.
+ *
+ * @param string $channel_name
+ *   The channel name.
+ *
+ * @return array
+ *   An array with all the entered data.
+ */
+function social_feed_field_get_admin_values($channel_name) {
+  $available_channels = social_feed_field_get_channels();
+  $return_data = array();
+  if (isset($available_channels[$channel_name])) {
+    $channel = $available_channels[$channel_name];
+    foreach ($channel['admin'] as $key => $data) {
+      if (!strstr($key, '#')) {
+        $return_data[$key] = variable_get('sff_' . $channel_name . '_' . $key, '');
+      }
+    }
+  }
+
+  return $return_data;
+}
+
+/**
+ * Delete all entered values in the admin page.
+ *
+ * @param string $channel_name
+ *   The channel name.
+ */
+function social_feed_field_delete_admin_values($channel_name) {
+  $available_channels = social_feed_field_get_channels();
+  if (isset($available_channels[$channel_name])) {
+    $channel = $available_channels[$channel_name];
+    foreach ($channel['admin'] as $key => $data) {
+      if (!strstr($key, '#')) {
+        variable_del('sff_' . $channel_name . '_' . $key);
+      }
+    }
+  }
+}
+
+/**
+ * Do a http request.
+ *
+ * We want to do it like this, so we can generalize the request with stuff like
+ * timeouts and redirects.
+ *
+ * @return object $request
+ *   The return value of the drupal_http_request().
+ */
+function social_feed_field_do_request($url) {
+  return drupal_http_request($url, array('timeout' => 5));
+}
+
+/**
+ * Generate a error message.
+ *
+ * We use this function to create error messages, so that all messages look
+ * the same. That's easier for module development and issue fixing.
+ *
+ * @param object $error
+ *   The error object from the drupal_http_request function.
+ * @param string $channel
+ *   The channel name identifier.
+ */
+function social_feed_field_throw_error($error, $channel) {
+  $params = array(
+    '@channel' => $channel,
+    '@message' => $error->message,
+    '@type' => $error->type,
+  );
+  drupal_set_message(t('@channel: @type --> @message', $params), 'error');
+  watchdog(
+    'social_feed_field',
+    '@channel<br />@message<br />@type',
+    $params
+  );
+}
+
+/**
+ * Generate the youtube embed html.
+ */
+function _social_feed_field_generate_youtube_embed($url) {
+  preg_match(
+    '/[\\?\\&]v=([^\\?\\&]+)/',
+    $url,
+    $matches
+  );
+  $id = $matches[1];
+
+  $width = '640';
+  $height = '385';
+
+  return theme(
+    'social_feed_yt_embed',
+    array(
+      'width' => $width,
+      'height' => $height,
+      'id' => $id,
+    ));
+}
+
+/**
+ * Create a external url.
+ */
+function _social_feed_field_create_external_url($text, $url, $options = array()) {
+  $options += array(
+    'external' => TRUE,
+    'attributes' => array('rel' => 'external'),
+  );
+
+  return l($text, $url, $options);
+}

@@ -891,7 +891,7 @@ function ilr_sdc_listings_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Public Offerings';
+  $handler->display->display_options['title'] = 'Professional Workshops, Courses, and Training';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
@@ -1249,7 +1249,7 @@ function ilr_sdc_listings_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['path'] = 'professional-programs/public-offerings';
+  $handler->display->display_options['path'] = 'professional-programs/workshops-courses-training';
   $export['sdc_course_listing'] = $view;
 
   $view = new view();
@@ -1505,7 +1505,7 @@ function ilr_sdc_listings_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'professional-programs/public-offerings/ondemand';
+  $handler->display->display_options['path'] = 'professional-programs/workshops-courses-training/ondemand';
   $export['sdc_ondemand'] = $view;
 
   return $export;

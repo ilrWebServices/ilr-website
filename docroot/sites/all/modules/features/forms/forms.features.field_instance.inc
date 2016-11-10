@@ -15135,8 +15135,9 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_middle_name',
-    'label' => 'Middle / maiden name',
+    'label' => 'Middle / former name',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -20866,6 +20867,61 @@ function forms_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-labor_roundtable_student_registr-field_degree_ba_ms_jd_phd_other'.
+  $field_instances['entityform-labor_roundtable_student_registr-field_degree_ba_ms_jd_phd_other'] = array(
+    'bundle' => 'labor_roundtable_student_registr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_degree_ba_ms_jd_phd_other',
+    'label' => 'Degree',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-labor_roundtable_student_registr-field_email'.
   $field_instances['entityform-labor_roundtable_student_registr-field_email'] = array(
     'bundle' => 'labor_roundtable_student_registr',
@@ -20924,7 +20980,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 6,
+      'weight' => 2,
     ),
   );
 
@@ -20988,7 +21044,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 0,
     ),
   );
 
@@ -21074,7 +21130,7 @@ function forms_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 19,
+      'weight' => 8,
     ),
   );
 
@@ -21132,7 +21188,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
+      'weight' => 10,
     ),
   );
 
@@ -21196,7 +21252,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 1,
     ),
   );
 
@@ -21260,7 +21316,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 3,
     ),
   );
 
@@ -21337,7 +21393,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 15,
+      'weight' => 7,
     ),
   );
 
@@ -21400,7 +21456,7 @@ function forms_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 5,
     ),
   );
 
@@ -21463,7 +21519,7 @@ function forms_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 4,
     ),
   );
 
@@ -34012,7 +34068,7 @@ function forms_field_default_field_instances() {
   t('Mailing address markup');
   t('Media');
   t('Meeting location preference');
-  t('Middle / maiden name');
+  t('Middle / former name');
   t('Middle name');
   t('Minor subject(s)');
   t('Mobile phone');

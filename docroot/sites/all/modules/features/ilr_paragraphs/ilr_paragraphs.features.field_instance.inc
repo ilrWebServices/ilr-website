@@ -1225,6 +1225,62 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
+  // Exported field_instance: 'paragraphs_item-social_feed-field_social_feed'.
+  $field_instances['paragraphs_item-social_feed-field_social_feed'] = array(
+    'bundle' => 'social_feed',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'social_feed_field',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'social_feed_field_formatter',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_social_feed',
+    'label' => 'social feed',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'social_feed_field',
+      'settings' => array(
+        'fs_grouping' => array(
+          'group_size' => '',
+          'grouping' => 1,
+        ),
+        'group_size' => 2,
+        'grouping' => FALSE,
+        'image_style' => 'borealis_focussed_thumbnail_respondsmall',
+        'number' => 3,
+        'number_pick' => 0,
+        'total_number' => 0,
+        'types' => array(
+          'facebook' => 0,
+          'instagram' => 0,
+          'twitter' => 'twitter',
+        ),
+      ),
+      'type' => 'social_feed_field_widget',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-sponsor_message-field_comments'.
   $field_instances['paragraphs_item-sponsor_message-field_comments'] = array(
     'bundle' => 'sponsor_message',
@@ -1654,6 +1710,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   t('Website address');
   t('Youtube Video');
   t('compare three things');
+  t('social feed');
 
   return $field_instances;
 }
