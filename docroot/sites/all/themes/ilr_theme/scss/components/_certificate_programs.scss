@@ -157,10 +157,12 @@ body.node-type-certificate-programs {
         @include grid-span (4,1);
         display: block;
         position: relative;
+        z-index: 50;
+        top: -32px;
+        overflow-x: hidden;
         img {
           position: relative;
-          z-index: 50;
-          top: -32px;
+          max-width: none;
           width: 320px;
           height: 320px;
           float: right;
@@ -194,10 +196,10 @@ body.node-type-certificate-programs {
         @include grid-span (3,1);
         display: block;
         position: relative;
+        z-index: 50;
+        top: -40px;
         img {
           position: relative;
-          z-index: 50;
-          top: -40px;
           width: 320px;
           height: 320px;
           float: right;
