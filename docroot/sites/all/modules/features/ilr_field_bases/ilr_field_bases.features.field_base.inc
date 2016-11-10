@@ -2141,6 +2141,7 @@ function ilr_field_bases_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'certificate_programs' => 'certificate_programs',
           'sdc_course' => 'sdc_course',
         ),
       ),

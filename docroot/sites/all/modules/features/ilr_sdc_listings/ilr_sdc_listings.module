@@ -495,16 +495,19 @@ function _ilr_sdc_listings_get_email_bcc_addresses($follower_forms) {
 
 /**
  * Queries for the followers of the class's parent course
+ * As well as certificates attached to the course.
+ *
  * @return Array An array of entityforms that were submitted by the users
  */
 function _ilr_sdc_listings_get_course_followers($class_nid) {
   $class_wrapper = ilr_get_node_wrapper($class_nid);
   $course_nid = $class_wrapper->field_course[0]->getIdentifier();
+  $course_nids = _ilr_sdc_listings_get_certificate_programs_for_course($course_nid);
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'entityform')
     ->entityCondition('bundle', 'course_follow')
     ->propertyCondition('draft', 0)
-    ->fieldCondition('field_course', 'target_id', $course_nid);
+    ->fieldCondition('field_course', 'target_id', $course_nids,'IN');
   $result = $query->execute();
 
   if (isset($result['entityform'])) {
@@ -513,6 +516,25 @@ function _ilr_sdc_listings_get_course_followers($class_nid) {
     return $followers;
   }
   return NULL;
+}
+
+/**
+ * Queries for the certificate programs that have the current course
+ * as a part of the curriculum
+ */
+function _ilr_sdc_listings_get_certificate_programs_for_course($course_nid) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'certificate_programs')
+    ->fieldCondition('field_course', 'target_id', $course_nid);
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    $nids = array_keys($result['node']);
+    array_push($nids, $course_nid);
+    return $nids;
+  }
+  return array($course_nid);
 }
 
 /**

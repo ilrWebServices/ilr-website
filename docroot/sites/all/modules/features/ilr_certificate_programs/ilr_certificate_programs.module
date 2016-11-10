@@ -83,6 +83,8 @@ function ilr_certificate_programs_cta_block_variables() {
     $variables = array(
       'total_cost' => ilr_certificate_programs_total_cost($wrapper),
       'course_count' => count($wrapper->field_course->value()),
+      'certificate_nid' => $wrapper->getIdentifier(),
+      'certificate_title' => $wrapper->label(),
     );
     return $variables;
   }

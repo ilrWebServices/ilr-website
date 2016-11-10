@@ -506,7 +506,7 @@ function _process_mps_nyc_have_more_questions(&$entityform) {
 function _process_course_request(&$entityform) {
   $admin_emails = array();
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
-  $course = $entityform_wrapper->field_course->value();
+  $course = $entityform_wrapper->field_course[0]->value();
   $admin_email = _forms_get_course_admin_email_addresses($entityform, $course);
   $course_title = $entityform_wrapper->field_course->label();
   $admin_subject = "Course request submitted for $course_title";
@@ -519,7 +519,7 @@ function _process_course_request(&$entityform) {
  */
 function _process_course_follow(&$entityform) {
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
-  $course = $entityform_wrapper->field_course->value();
+  $course = $entityform_wrapper->field_course[0]->value();
   $admin_email = _forms_get_course_admin_email_addresses($entityform, $course);
   $course_title = $entityform_wrapper->field_course->label();
   $admin_subject = "Course follow submitted for $course_title";
@@ -530,8 +530,8 @@ function _process_course_follow(&$entityform) {
 function _forms_get_course_admin_email_addresses($entityform, $course) {
   $admin_emails = [];
   $course_wrapper = ilr_get_node_wrapper($course);
-  if ($email = $course_wrapper->field_email->value()) {
-    $admin_emails[] = $email;
+  if (isset($course_wrapper->field_email) && !empty($course_wrapper->field_email->value())) {
+    $admin_emails[] = $course_wrapper->field_email->value();
   } else {
     foreach ($course_wrapper->field_course_sponsor_reference->getIterator() as $delta => $term_wrapper) {
       if ($email = $term_wrapper->field_email->value()) {
