@@ -21,8 +21,7 @@
 
   <div class="contact">
     <p>We can notify you when new workshop dates are scheduled</p>
-    <a class="button" href="">Notify Me</a>
-
+    <a class="button course follow" data-nid="<?php print $certificate_nid; ?>" alt="Follow courses in this certificate" title="Follow courses in this certificate">Notify Me<span class="course-title"><?php print $certificate_title; ?></span></a>
     <h3>Have questions? Contact us.</h3>
 
     <p><a href="mailto:ilrcustomerservice@cornell.edu">ilrcustomerservice@cornell.edu</a><br />

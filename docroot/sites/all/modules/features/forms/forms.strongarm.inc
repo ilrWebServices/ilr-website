@@ -903,7 +903,7 @@ function forms_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '9',
         ),
       ),
       'display' => array(),

@@ -16,7 +16,7 @@
         @include grid-span(1,2);
       }
       // Handle right column on nested articles
-      // i.e. courses with series on /professional-programs/public-offerings
+      // i.e. courses with series on /professional-programs/workshops-courses-training
       article article .group-sidebar {
         margin-right: -42%;
         width: 35%;

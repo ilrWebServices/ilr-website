@@ -37,10 +37,7 @@
     input[type='text'], textarea {
       border: 1px solid $gray-medium;
       border-radius: 6px;
-      width: 100%;
-    }
-    select {
-      width: 100%;
+      width: 100% !important;
     }
     & .form-type-checkbox label, & .form-type-radio label {
       font-weight: 300;

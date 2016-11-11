@@ -43,4 +43,5 @@ features[variable][] = menu_parent_certificate_programs
 features[variable][] = node_options_certificate_programs
 features[variable][] = node_preview_certificate_programs
 features[variable][] = node_submitted_certificate_programs
+features[variable][] = pathauto_node_certificate_programs_pattern
 project path = sites/all/modules/features

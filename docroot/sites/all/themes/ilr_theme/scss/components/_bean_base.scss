@@ -18,10 +18,6 @@
     }
   }
 
-  #highlighted & {
-    @extend %carousel-slide;
-  }
-
   article {
     h2, h2 a {
       font-family: $font-headers;
