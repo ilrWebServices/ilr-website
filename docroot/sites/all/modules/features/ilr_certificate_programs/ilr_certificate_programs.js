@@ -25,16 +25,30 @@
 
       function position_call_to_action() {
         is_in_sidebar = function (el) {
-          return el.parent().has('div#main');
+          return el.parent().has('div#block-ilr-certificate-programs-certificate-programs-cta');
         }
+        is_in_main = function (el) {
+          return el.parent().has('div#content');
+        }
+
+        certificate_info_aside = $('#certificate-info-aside');
         sidebar_second = $('#sidebar-second');
 
-        if ($('header').width() <= 1280 ){
-          if ( is_in_sidebar(sidebar_second) ) {
-            $('#highlighted').after(sidebar_second);
+        if ($('header').width() < 768 ) {
+          if ( is_in_main(certificate_info_aside) ) {
+            $('#block-ilr-certificate-programs-certificate-programs-cta').prepend(certificate_info_aside);
+             $('#highlighted').after(sidebar_second);
           }
-        } else if ( is_in_sidebar(sidebar_second) ) {
-          $('#sidebar-first').after(sidebar_second);
+        }
+        else if ($('header').width() < 1280 ) {
+          if ( is_in_sidebar(certificate_info_aside) ) {
+            $('#breadcrumb').after(certificate_info_aside);
+          }
+        }
+        else {
+          if ( is_in_sidebar(certificate_info_aside) ) {
+            $('#block-ilr-certificate-programs-certificate-programs-cta').prepend(certificate_info_aside);
+          }
         }
       }
 

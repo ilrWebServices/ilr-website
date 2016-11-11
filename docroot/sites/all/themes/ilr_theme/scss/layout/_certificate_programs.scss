@@ -15,14 +15,6 @@ body.node-type-certificate-programs {
     }
   }
 
-  .container[data-eq-state="regular-nav"] {
-    #main[data-eq-state="768"] {
-      #sidebar-second {
-        @include grid-span(12);
-      }
-    }
-  }
-
   #main {
     #content {
       @include grid-span (10,2);
@@ -42,17 +34,19 @@ body.node-type-certificate-programs {
     }
   }
 
+  #main[data-eq-state="550"] {
+    #content {
+      clear: both;
+    }
+  }
+
   #main[data-eq-state="768"] {
     #content {
-      @include grid-span (7,4);
+      @include grid-span (8,4);
       clear: both;
       .field-name-field-image {
         text-align: left;
       }
-    }
-
-    #sidebar-second {
-      margin-top: -30px;
     }
   }
 
