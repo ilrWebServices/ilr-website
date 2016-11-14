@@ -253,6 +253,12 @@ body.node-type-certificate-programs {
     .field-name-field-teaser {
       @include grid-span(12);
       clear: both;
+      h2, h3, h4 {
+        display: none;
+      }
+      strong {
+        font-weight: 300;
+      }
     }
   }
 }
