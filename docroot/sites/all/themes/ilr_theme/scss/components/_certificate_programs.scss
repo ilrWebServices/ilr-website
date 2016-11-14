@@ -221,3 +221,76 @@ body.node-type-certificate-programs {
     }
   }
 }
+
+.tagged-content {
+  article.node-certificate-programs {
+    @include padding-leader(.75);
+    @include padding-trailer(.5);
+    @include trailer(1);
+    border: 1px solid $gray-light;
+    padding-left: 1em;
+    padding-right: 1em;
+    &:hover {
+      background: white;
+      border: 1px solid $gray-dark;
+    }
+    h3 {
+      display: none;
+    }
+    .field-name-field-image {
+      @include grid-span(12);
+    }
+    h2 {
+      @include adjust-leading-to(.9);
+      a {
+        font-family: $font;
+        color: $violet-pos01;
+        &:hover {
+          color: #d76b00;
+        }
+      }
+    }
+    .field-name-field-teaser {
+      @include grid-span(12);
+      clear: both;
+    }
+  }
+}
+
+#main[data-eq-state="320"] {
+  .tagged-content {
+    article.node-certificate-programs {
+      .field-name-field-image {
+        display: none;
+      }
+    }
+  }
+}
+
+#main[data-eq-state="550"], #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+  .tagged-content {
+    article.node-certificate-programs {
+      .field-name-field-image {
+        @include grid-span(3,1);
+      }
+      h2 {
+        @include grid-span(9,4);
+        padding-top: .25em;
+        padding-left: .5em;
+      }
+      .field-name-field-teaser {
+        @include padding-leader(.5);
+      }
+    }
+  }
+}
+
+#main[data-eq-state="768"] {
+  .tagged-content {
+    article.node-certificate-programs {
+      h2 {
+        padding-top: .5em;
+      }
+    }
+  }
+}
