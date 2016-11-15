@@ -617,7 +617,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'certificate_programs_image',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -634,7 +634,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => 'focussed_main_image',
+          'image_style' => 'certificate_programs_image',
         ),
         'type' => 'image',
         'weight' => 0,
