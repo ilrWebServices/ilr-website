@@ -25,6 +25,25 @@ function ilr_settings_ctools_plugin_api($module = NULL, $api = NULL) {
 function ilr_settings_image_default_styles() {
   $styles = array();
 
+  // Exported image style: certificate_programs_image.
+  $styles['certificate_programs_image'] = array(
+    'label' => 'certificate_programs_image',
+    'effects' => array(
+      6 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 320,
+          'height' => 320,
+          'focal_point_advanced' => array(
+            'shift_x' => '',
+            'shift_y' => '',
+          ),
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: email_optimized.
   $styles['email_optimized'] = array(
     'name' => 'email_optimized',

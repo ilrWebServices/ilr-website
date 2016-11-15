@@ -56,6 +56,7 @@ features[file_display][] = video__wysiwyg__file_field_media_large_icon
 features[file_display][] = video__wysiwyg__media_youtube_image
 features[file_display][] = video__wysiwyg__media_youtube_video
 features[filter][] = filtered_html
+features[image][] = certificate_programs_image
 features[image][] = email_optimized
 features[image][] = featured_image
 features[image][] = focussed_hero
