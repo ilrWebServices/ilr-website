@@ -391,7 +391,7 @@ function _ilr_sdc_listings_send_notification_for_class($class_nid) {
  */
 function _ilr_sdc_listings_get_course_notification_content($class_nid) {
   $class_wrapper = ilr_get_node_wrapper($class_nid);
-  $course_nid = $class_wrapper->field_course->getIdentifier();
+  $course_nid = $class_wrapper->field_course[0]->getIdentifier();
   $course = node_load($course_nid);
   $wrapper = (!empty($class_wrapper->body->value())) //Check for class description
     ? $class_wrapper
@@ -433,7 +433,7 @@ function _ilr_sdc_listings_get_class_detail_markup_for_email($class) {
  * @see _forms_get_course_admin_email_addresses()
  */
 function _ilr_sdc_listings_get_admin_email_for_class($class_wrapper) {
-  $course_nid = $class_wrapper->field_course->getIdentifier();
+  $course_nid = $class_wrapper->field_course[0]->getIdentifier();
   $course_wrapper = ilr_get_node_wrapper($course_nid);
   $admin_emails = array();
   if ($email = $course_wrapper->field_email->value()) {
@@ -490,16 +490,19 @@ function _ilr_sdc_listings_get_email_bcc_addresses($follower_forms) {
 
 /**
  * Queries for the followers of the class's parent course
+ * As well as certificates attached to the course.
+ *
  * @return Array An array of entityforms that were submitted by the users
  */
 function _ilr_sdc_listings_get_course_followers($class_nid) {
   $class_wrapper = ilr_get_node_wrapper($class_nid);
-  $course_nid = $class_wrapper->field_course->getIdentifier();
+  $course_nid = $class_wrapper->field_course[0]->getIdentifier();
+  $course_nids = _ilr_sdc_listings_get_certificate_programs_for_course($course_nid);
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'entityform')
     ->entityCondition('bundle', 'course_follow')
     ->propertyCondition('draft', 0)
-    ->fieldCondition('field_course', 'target_id', $course_nid);
+    ->fieldCondition('field_course', 'target_id', $course_nids,'IN');
   $result = $query->execute();
 
   if (isset($result['entityform'])) {
@@ -508,6 +511,25 @@ function _ilr_sdc_listings_get_course_followers($class_nid) {
     return $followers;
   }
   return NULL;
+}
+
+/**
+ * Queries for the certificate programs that have the current course
+ * as a part of the curriculum
+ */
+function _ilr_sdc_listings_get_certificate_programs_for_course($course_nid) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'certificate_programs')
+    ->fieldCondition('field_course', 'target_id', $course_nid);
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    $nids = array_keys($result['node']);
+    array_push($nids, $course_nid);
+    return $nids;
+  }
+  return array($course_nid);
 }
 
 /**
@@ -800,10 +822,10 @@ function _ilr_sdc_listings_handle_class_series_results(&$result, $nid) {
   $class = node_load($nid);
   if (_ilr_sdc_listings_is_series($class)) {
     $wrapper = ilr_get_node_wrapper($class);
-    $course_nid = $wrapper->field_course->value()->nid;
+    $course_nid = $wrapper->field_course[0]->value()->nid;
     $result['node'][$course_nid] = (object) array(
-      'nid' => $wrapper->field_course->value()->nid,
-      'vid' => $wrapper->field_course->value()->vid,
+      'nid' => $wrapper->field_course[0]->value()->nid,
+      'vid' => $wrapper->field_course[0]->value()->vid,
       'type' => 'sdc_course',
     );
   }
@@ -857,6 +879,7 @@ function ilr_sdc_listings_page_alter(&$page) {
 function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
   switch ($node->type) {
     case 'sdc_course':
+      $alias = drupal_get_path_alias('node/'.$node->nid);
       _ilr_sdc_listings_add_canonical_metatag($node, $view_mode);
       _ilr_sdc_listings_add_prefix_to_title($node, $node->type, $view_mode);
       _ilr_sdc_listings_course_add_instructors($node, $view_mode);
@@ -868,9 +891,20 @@ function ilr_sdc_listings_node_view($node, $view_mode, $langcode) {
         $original_markup = isset($node->content['body'])
           ? $node->content['body'][0]['#markup']
           : '';
-        $alias = drupal_get_path_alias('node/'.$node->nid);
         $node->content['body'][0]['#markup'] = '<h2><a href="/'.$alias.'">'.$node->title.'</a></h2>' . $original_markup;
         $node->title = '';
+      }
+      elseif ($view_mode == 'alternate_teaser') {
+        $original_class_detail_markup = isset($node->content['classes'])
+          ? $node->content['classes']['#markup']
+          : '';
+        $node->content['classes']['#markup'] = $original_class_detail_markup
+          . '<h2><a href="/'.$alias.'">'.$node->title.'</a></h2>';
+        $node->title = '';
+
+        $course_info_link = '<a class="course_details" href="/'.$alias.'">See course description, find available dates, and register</a>';
+        $markup = $node->content['body'][0]['#markup'].$course_info_link;
+        $node->content['body'][0] = array('#markup' => $markup);
       }
       break;
     case 'sdc_class':
@@ -1016,7 +1050,7 @@ function _ilr_sdc_listings_class_format_online($node, $view_mode) {
 function _ilr_sdc_listings_is_ondemand($node) {
   if ($node->type == 'sdc_class') {
     $node_wrapper = ilr_get_node_wrapper($node);
-    return $node_wrapper->field_on_demand->value() || substr($node_wrapper->field_course->field_catalog_prefix->value(), 0, 2) == 'OD';
+    return $node_wrapper->field_on_demand->value() || substr($node_wrapper->field_course[0]->field_catalog_prefix->value(), 0, 2) == 'OD';
   }
   return FALSE;
 }
@@ -1044,7 +1078,7 @@ function _ilr_sdc_listings_is_series($course_or_class) {
   else {
     $class_wrapper = ilr_get_node_wrapper($course_or_class);
     $course = ($class_wrapper->field_course)
-      ? $class_wrapper->field_course->value()
+      ? $class_wrapper->field_course[0]->value()
       : NULL;
   }
   if ($course) {
@@ -1063,7 +1097,7 @@ function _ilr_sdc_listings_is_series($course_or_class) {
 function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
   if ($view_mode == 'full') {
     $class_node_wrapper = ilr_get_node_wrapper($class_node);
-    $course = $class_node_wrapper->field_course->value();
+    $course = $class_node_wrapper->field_course[0]->value();
     $class_available = _ilr_sdc_listings_get_classes_for_course($course, array($class_node->nid));
     if ($class_available) {
       $nids = _ilr_sdc_listings_get_classes_for_course($course);
@@ -1125,7 +1159,7 @@ function _ilr_sdc_listings_class_full_msg($class_node, $view_mode) {
  * @param $view_mode
  */
 function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
-  if ($view_mode == 'teaser' || $view_mode == 'full') {
+  if ($view_mode == 'teaser' || $view_mode == 'full' || $view_mode == 'alternate_teaser') {
     $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node);
     if ($class_nids) {
       $classes = node_load_multiple($class_nids);
@@ -1136,7 +1170,7 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
         $content .= _ilr_sdc_listings_generate_request_info_markup($course_node, $view_mode);
       } // teaser list view
       else {
-        $content = _ilr_sdc_listings_generate_class_link_markup($class_nodes);
+        $content = _ilr_sdc_listings_generate_class_link_markup($class_nodes, $view_mode);
       }
       if (_ilr_sdc_listings_is_series($course_node)) {
         _ilr_sdc_listings_add_class_teasers_for_series($course_node, $class_nodes, $view_mode);
@@ -1147,11 +1181,18 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
       }
     } // No classes available
     else {
-      $markup = _ilr_sdc_listings_generate_request_info_markup($course_node, $view_mode);
-      $course_node->content['classes'] = array(
-        '#type' => 'markup',
-        '#markup' => $markup,
-      );
+      if ($view_mode == 'alternate_teaser') {
+        $markup = _ilr_sdc_listings_generate_unscheduled_course_markup($course_node, $view_mode);
+        $course_node->content['classes'] = array('#markup' => $markup);
+        $course_node->content['#group_children']['classes'] = 'group_sidebar';
+      }
+      else {
+        $markup = _ilr_sdc_listings_generate_request_info_markup($course_node, $view_mode);
+        $course_node->content['classes'] = array(
+          '#type' => 'markup',
+          '#markup' => $markup,
+        );
+      }
     }
     $course_node->content['classes']['#weight'] = 2;
   }
@@ -1393,7 +1434,7 @@ function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_pr
     $link_text = 'Learn More';
     $nid = (_ilr_sdc_listings_is_series($class_node))
       ? $class_node->nid
-      : $wrapper->field_course->value()->nid;
+      : $wrapper->field_course[0]->value()->nid;
     $link = url('node/'. $nid);
   }
   $markup = '<div class="action"><a class="'.$classes.'" href="'.$link.'">' . $link_text;
@@ -1419,7 +1460,7 @@ function _ilr_sdc_listings_generate_class_radio_label($class) {
  * Generates the markup for landing pages
  * First checks for overflow sessions and removes them if found
  */
-function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
+function _ilr_sdc_listings_generate_class_link_markup($class_nodes, $view_mode = 'default') {
   $class_nodes = _ilr_sdc_listings_remove_overflow_sessions($class_nodes);
   if (count($class_nodes) > 1) {
     // check for location search and make sure that the cities match if so
@@ -1446,12 +1487,15 @@ function _ilr_sdc_listings_generate_class_link_markup($class_nodes) {
     $markup .= _ilr_sdc_listings_generate_class_timespan_markup($class_node);
     $markup .= _ilr_sdc_listings_generate_class_time_location_markup($class_node);
   }
-  $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
-  if (count($class_nodes) > 1) {
-    $course_nid = $wrapper->field_course->value()->nid;
-    $link = drupal_get_path_alias('node/'.$course_nid);
-    $markup .= '<a href="/'.$link. '">See more dates and locations</a>';
+  if ($view_mode != 'alternate_teaser') {
+    $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node);
+    if (count($class_nodes) > 1) {
+      $course_nid = $wrapper->field_course[0]->value()->nid;
+      $link = drupal_get_path_alias('node/'.$course_nid);
+      $markup .= '<a class="course_details" href="/'.$link. '">See more dates and locations</a>';
+    }
   }
+
   $markup .= '</div>';
   return $markup;
 }
@@ -1630,12 +1674,29 @@ function _ilr_sdc_listings_generate_deadline_markup($class_node) {
   return $markup;
 }
 
+/**
+ * Generate markup for a course with no scheduled dates
+ * for use when explicit markup is required.
+ */
+function _ilr_sdc_listings_generate_unscheduled_course_markup($course_node, $view_mode) {
+  $term = isset($course_node->field_course_format_reference['und'][0]['tid'])
+    ? taxonomy_term_load($course_node->field_course_format_reference['und'][0]['tid'])->name
+    : 'Workshop';
+  $term = preg_replace('/s$/i', '', $term);
+  $markup = '<div class="class-details no-dates">';
+  $markup .= '<span class="timespan">'.$term.'</span>';
+  $markup .= '<div class="date-time not-scheduled"><span class="date">no scheduled dates</span><span class="time"></span></div>';
+  $markup .= '<span class="location empty"></span>';
+  $markup .= '</div>';
+  return $markup;
+}
+
 function _ilr_sdc_listings_get_class_registration_url($class) {
   global $base_url;
   $wrapper = ilr_get_node_wrapper($class);
   $url = variable_get('ilr_sdc_listings_reg_url', 'http://register.ilr.cornell.edu/registration/process/processcard.cfm');
   $url .= '?addClass=' . $wrapper->field_class_id->value();
-  $course_nid = $wrapper->field_course->getIdentifier();
+  $course_nid = $wrapper->field_course[0]->getIdentifier();
   $url .= "&courseurl=$base_url/node/$course_nid";
   return $url;
 }
@@ -2059,7 +2120,7 @@ function ilr_sdc_listings_entityform_presave($entityform) {
   if ($entityform->type == 'course_request' || $entityform->type == 'course_follow') {
     $wrapper = entity_metadata_wrapper('entityform', $entityform);
     $course_nid = arg(1);
-    $wrapper->field_course->set($course_nid);
+    $wrapper->field_course[0]->set($course_nid);
   }
 }
 
@@ -2262,7 +2323,7 @@ function _ilr_sdc_listings_add_prefix_to_title($node, $type, $view_mode) {
 function _ilr_sdc_listings_get_prefixed_node_title($node,$type) {
   $wrapper = ilr_get_node_wrapper($node);
   $prefix = ($type == 'sdc_class')
-    ? $wrapper->field_course->field_catalog_prefix->value()
+    ? $wrapper->field_course[0]->field_catalog_prefix->value()
     : $wrapper->field_catalog_prefix->value();
 
   if (strpos($node->title,$prefix) === FALSE) {

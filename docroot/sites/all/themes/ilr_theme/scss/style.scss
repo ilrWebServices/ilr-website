@@ -39,6 +39,8 @@ $base-line-height: 27px;
 @import "components/carousel_slide";
 @import "components/cemp";
 @import "components/centered_blurb";
+@import "components/certificate_programs";
+@import "components/certificate_info_aside";
 @import "components/courses_and_classes";
 @import "components/course_search";
 @import "components/content_bottom";
@@ -90,6 +92,7 @@ $base-line-height: 27px;
 // Layout
 @import "layout/layouts";
 @import "layout/base";
+@import "layout/certificate_programs";
 @import "layout/channel_page";
 @import "layout/course-listings";
 @import "layout/homepage-layout";

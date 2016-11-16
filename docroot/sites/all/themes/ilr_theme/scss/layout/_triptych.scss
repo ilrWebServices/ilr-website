@@ -8,8 +8,11 @@
     @include clearfix;
     @include grid-span(1, 2);
     .block-bean {
-      article {
+      article:not(.node-certificate-programs) {
         @extend %two-column;
+      }
+      article.node-certificate-programs {
+        @extend %one-column;
       }
       &[data-items='1'] {
         article {

@@ -797,3 +797,12 @@ function ilr_update_7060() {
     'ilr_visiting_fellows',
   ));
 }
+
+/**
+ * Enables ilr_certificate_programs feature
+ */
+function ilr_update_7061() {
+  module_enable(array(
+    'ilr_certificate_programs',
+  ));
+}

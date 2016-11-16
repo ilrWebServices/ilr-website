@@ -36,7 +36,7 @@
   #content & {
     &:not([data-items='1']) {
       &:not([data-items='3']) {
-        article:not(.node-reflection) {
+        article:not(.node-reflection):not(.node-certificate-programs) {
           @extend %thumb;
         }
         &[data-eq-state="small"] {

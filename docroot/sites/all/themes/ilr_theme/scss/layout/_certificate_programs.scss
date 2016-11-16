@@ -1,0 +1,66 @@
+body.node-type-certificate-programs {
+  .submitted {
+    display: none;
+  }
+
+  #page-title {
+    display: none;
+  }
+
+  .container[data-eq-state="mobile-nav"] {
+    #main[data-eq-state="768"] {
+      #content {
+        @include grid-span (10,2);
+      }
+    }
+  }
+
+  #main {
+    #content {
+      @include grid-span (10,2);
+      padding: 0 0 1em 0;
+    }
+
+    #sidebar-first {
+      @include grid-span (3,1);
+    }
+
+    #sidebar-second {
+      padding: 0;
+      margin-bottom: 1em;
+      .section {
+        margin-top: 0;
+      }
+    }
+  }
+
+  #main[data-eq-state="550"] {
+    #content {
+      clear: both;
+    }
+  }
+
+  #main[data-eq-state="768"] {
+    #content {
+      @include grid-span (8,4);
+      clear: both;
+      .field-name-field-image {
+        text-align: left;
+      }
+    }
+  }
+
+  #main[data-eq-state="widescreen"] {
+    #content {
+      @include grid-span (6,4);
+      .field-name-field-image {
+        text-align: left;
+      }
+    }
+
+    #sidebar-second {
+      margin-top: 0;
+      padding: 0 1em 1em;
+    }
+  }
+}

@@ -85,6 +85,15 @@ function ilr_sdc_listings_strongarm() {
       'basic_teaser' => array(
         'custom_settings' => FALSE,
       ),
+      'alternate_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'ilr_theme__highlighted' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__sidebar_second' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -109,6 +118,10 @@ function ilr_sdc_listings_strongarm() {
             'visible' => TRUE,
           ),
           'reference_field' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'alternate_teaser' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),
@@ -279,7 +292,7 @@ function ilr_sdc_listings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_sdc_class_pattern';
-  $strongarm->value = 'professional-programs/[node:field-course:field_catalog_prefix]/[node:title]/[node:field-class-dates:value:custom:Y-m-d]';
+  $strongarm->value = 'professional-programs/[node:field-course[0]:field_catalog_prefix]/[node:title]/[node:field-class-dates:value:custom:Y-m-d]';
   $export['pathauto_node_sdc_class_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

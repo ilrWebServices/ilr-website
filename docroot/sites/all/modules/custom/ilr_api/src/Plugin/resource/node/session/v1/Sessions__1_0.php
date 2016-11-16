@@ -69,8 +69,8 @@ class Sessions__1_0 extends ResourceNode implements ResourceInterface {
   public function getDescription($wrapper) {
     $class = $wrapper->getWrapper()->value();
     $class_wrapper = ilr_get_node_wrapper($class);
-    if (!empty($class_wrapper->field_course->value())) {
-      $course_wrapper = ilr_get_node_wrapper($class_wrapper->field_course->value());
+    if (!empty($class_wrapper->field_course[0]->value())) {
+      $course_wrapper = ilr_get_node_wrapper($class_wrapper->field_course[0]->value());
       return $course_wrapper->body->value()['summary'];
     }
     return '';
