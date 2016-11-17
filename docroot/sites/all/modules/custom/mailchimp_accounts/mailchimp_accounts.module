@@ -123,7 +123,6 @@ function mailchimp_accounts_entity_presave($entity, $type) {
  * Clears the PHP Session vars if applicable and the mailchimp cache.
  */
 function mailchimp_accounts_clear_contexts() {
-  ddebug_backtrace();
   if (mailchimp_accounts_get_current_user_context() != MAILCHIMP_DEFAULT_ACCOUNT) {
     unset($_SESSION['mailchimp_accounts_current_user_context']);
     mailchimp_cache_clear_all();
