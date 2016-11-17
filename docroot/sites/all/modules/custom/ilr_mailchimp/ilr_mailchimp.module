@@ -1,0 +1,46 @@
+<?php
+require_once DRUPAL_ROOT . '/../config/get_secrets.php';
+
+/**
+ * Implements hook_mailchimp_accounts_api_key().
+ */
+function ilr_mailchimp_api_key() {
+  return ilr_mailchimp_api_keys();
+}
+
+function ilr_mailchimp_api_keys() {
+  global $ILR_SECRETS;
+  $keys = array();
+  foreach ($ILR_SECRETS['mailchimp'] as $name => $aid_and_key) {
+    $aid = key($aid_and_key);
+    $keys[$aid] = reset($aid_and_key);
+  }
+  return $keys;
+}
+
+/**
+ * Implements hook_mailchimp_automations_entity_options_alter().
+ */
+function ilr_mailchimp_mailchimp_automations_entity_options_alter(&$options, $automation_entity_label) {
+  $options = array(
+    '' => t('-- Select --'),
+    'entityform' => 'Entityform',
+  );
+}
+
+/**
+ * Implements hook_mailchimp_automations_mergevars_alter().
+ */
+function ilr_mailchimp_mailchimp_automations_mergevars_alter(&$merge_vars, $automation, $wrapped_automation_entity) {
+  if ($automation->label == "Collective Bargaining") {
+    if (module_exists('forms')) {
+      $first_last_name = _forms_first_last_name_from_full($wrapped_automation_entity->field_full_name->value());
+      $merge_vars = array(
+        'FNAME' => $first_last_name['first_name'],
+        'LNAME' => $first_last_name['last_name'],
+        'MMERGE3' => $wrapped_automation_entity->field_job_title->value(),
+        'MMERGE4' => $wrapped_automation_entity->field_company->value()
+      );
+    }
+  }
+}
