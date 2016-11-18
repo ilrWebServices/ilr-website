@@ -257,6 +257,7 @@ features[field_base][] = field_location_as_long_text
 features[field_base][] = field_location_string
 features[field_base][] = field_mailing_address_markup
 features[field_base][] = field_max_duration_weeks
+features[field_base][] = field_mc_alumni_subscribe
 features[field_base][] = field_mc_hcd_signup
 features[field_base][] = field_media_cl_tech_video_rec
 features[field_base][] = field_mediator_or_disputant

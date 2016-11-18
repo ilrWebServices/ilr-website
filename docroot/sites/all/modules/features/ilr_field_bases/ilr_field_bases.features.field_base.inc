@@ -5391,6 +5391,26 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_mc_alumni_subscribe'.
+  $field_bases['field_mc_alumni_subscribe'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_mc_alumni_subscribe',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'mailchimp_lists',
+    'settings' => array(
+      'double_opt_in' => 0,
+      'mc_aid' => '942d73b5ffb951021101edbe1',
+      'mc_list_id' => 'e5742cd707',
+      'unsubscribe_action' => 'unsubscribe',
+    ),
+    'translatable' => 0,
+    'type' => 'mailchimp_lists_subscription',
+  );
+
   // Exported field_base: 'field_mc_hcd_signup'.
   $field_bases['field_mc_hcd_signup'] = array(
     'active' => 1,

@@ -130,6 +130,111 @@ function forms_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-alumni_enews_subscribe-field_mc_alumni_subscribe'.
+  $field_instances['entityform-alumni_enews_subscribe-field_mc_alumni_subscribe'] = array(
+    'bundle' => 'alumni_enews_subscribe',
+    'default_value' => array(
+      0 => array(
+        'subscribe' => 1,
+        'interest_groups' => array(
+          '0afcb6b2bc' => array(
+            'cdf4c76a89' => 0,
+          ),
+          '5fdcc3e829' => array(
+            '3dac087e7c' => 0,
+            '12c94a37ff' => 0,
+            '18a3b4a1dd' => 0,
+            '57b14f74ce' => 0,
+          ),
+          '6d2c11141c' => array(
+            '0d1925831a' => 0,
+            '05e5e880c2' => 0,
+            '8f46eb561c' => 0,
+            '88b5c8d912' => 0,
+            '98cda98a98' => 0,
+            '6574f7c458' => 0,
+            'd3000dd2bf' => 0,
+            'fe3790ee2e' => 0,
+            'fea1bbe4a5' => 0,
+          ),
+          '9b58158d2b' => array(
+            'd5d3d5bf8c' => 0,
+            'ff8e919ad6' => 0,
+          ),
+          '11cf169107' => array(
+            '971fc6a0ed' => 0,
+          ),
+          '14d956a3cf' => array(
+            'a761458593' => 0,
+          ),
+          '70f86cfef5' => array(
+            '0a70aaa570' => 0,
+          ),
+          '73b0b361c3' => array(
+            'cfc48d5c54' => 0,
+          ),
+          '1011a02d2a' => array(
+            'e9ab306661' => 0,
+            'eb36fded44' => 0,
+          ),
+          '8301462ea6' => array(
+            '9495555c6a' => 0,
+          ),
+          6161909988 => array(
+            '9fdd506bef' => 0,
+          ),
+          'd2ec8a950e' => array(
+            '8d55e823d0' => 0,
+          ),
+          'dace6946dc' => array(
+            '582e902647' => 0,
+          ),
+        ),
+        'is_default' => TRUE,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_mc_alumni_subscribe',
+    'label' => 'mc alumni subscribe',
+    'required' => 1,
+    'settings' => array(
+      'interest_groups_title' => 'Interest Groups',
+      'mergefields' => array(
+        'EMAIL' => '[entityform:field-email]',
+        'FNAME' => '[entityform:field-first-name]',
+        'LNAME' => '[entityform:field-last-name]',
+        'MMERGE3' => '',
+        'advanced' => 0,
+      ),
+      'options' => array(
+        'interest_groups' => array(),
+        'subscribe' => FALSE,
+      ),
+      'show_interest_groups' => 0,
+      'unsubscribe_on_delete' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'mailchimp_lists',
+      'settings' => array(),
+      'type' => 'mailchimp_lists_select',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-alumni_enews_subscribe-field_subscribe_or_unsubscribe'.
   $field_instances['entityform-alumni_enews_subscribe-field_subscribe_or_unsubscribe'] = array(
     'bundle' => 'alumni_enews_subscribe',
@@ -34240,6 +34345,7 @@ function forms_field_default_field_instances() {
   t('e.g. Sophomore / Junior / Senior / MILR');
   t('e.g. Spring 2019');
   t('empl recog supp text');
+  t('mc alumni subscribe');
   t('pronunciation markup');
 
   return $field_instances;
