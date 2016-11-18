@@ -14,8 +14,8 @@ define('MAILCHIMP_DEFAULT_ACCOUNT', 'default');
 function mailchimp_accounts_init() {
   $path = current_path();
   if (path_is_admin($path) && strpos($path, 'mailchimp') !== FALSE) {
-    if (mailchimp_accounts_get_current_admin_context() != MAILCHIMP_DEFAULT_ACCOUNT) {
-      $key = mailchimp_accounts_get_api_key_for_account(mailchimp_accounts_get_current_admin_context());
+    if (mailchimp_accounts_get_current_mailchimp_context('admin') != MAILCHIMP_DEFAULT_ACCOUNT) {
+      $key = mailchimp_accounts_get_api_key_for_account(mailchimp_accounts_get_current_mailchimp_context('admin'));
       $account = mailchimp_accounts_api_account(NULL, $key);
       drupal_set_message(t('MailChimp account configuration currently set to @account_name. Please ensure that multiple accounts are properly supported for the current configuration.', array('@account_name' => $account->account_name)), 'warning');
     }
@@ -49,9 +49,6 @@ function mailchimp_accounts_form_field_ui_field_settings_form_alter(&$form, &$fo
       $field_info = field_info_fields();
       $account_id = $field_info[$form['field']['field_name'][
         '#value']]['settings']['mc_aid'];
-      if ($account_id != MAILCHIMP_DEFAULT_ACCOUNT) {
-        mailchimp_accounts_set_current_admin_context($account_id);
-      }
       $form['field']['settings']['mc_aid'] = mailchimp_accounts_select_element($accounts, $account_id);
       $form['field']['settings']['mc_aid']['#weight'] = -10;
     }
@@ -68,9 +65,6 @@ function mailchimp_accounts_form_field_ui_field_edit_form_alter(&$form, &$form_s
     $accounts = mailchimp_accounts_api_accounts();
     if (count($accounts) > 1) { // The default will always  be there
       $account_id = $form['#field']['settings']['mc_aid'];
-      if ($account_id != MAILCHIMP_DEFAULT_ACCOUNT) {
-        mailchimp_accounts_set_current_admin_context($account_id);
-      }
       $form['field']['settings']['mc_aid'] = mailchimp_accounts_select_element($accounts, $account_id);
       $form['field']['settings']['mc_aid']['#disabled'] = TRUE;
       $form['field']['settings']['mc_aid']['#weight'] = -10;
@@ -86,13 +80,13 @@ function mailchimp_accounts_form_field_ui_field_edit_form_alter(&$form, &$form_s
  */
 function mailchimp_accounts_field_widget_form_alter(&$element, &$form_state, $context) {
   if (isset($context['field']['settings']['mc_aid'])) {
+    $account_id = $context['field']['settings']['mc_aid'];
     if (path_is_admin(current_path())) {
-      mailchimp_accounts_set_current_admin_context($context['field']['settings']['mc_aid']);
-    }
+      mailchimp_accounts_set_current_mailchimp_context($account_id, 'admin');
+    } // Not admin
     else {
-      mailchimp_accounts_set_current_user_context($context['field']['settings']['mc_aid']);
+      mailchimp_accounts_set_current_mailchimp_context($account_id, 'user');
     }
-    mailchimp_cache_clear_all();
   }
 }
 
@@ -105,14 +99,14 @@ function mailchimp_accounts_field_widget_form_alter(&$element, &$form_state, $co
 function mailchimp_accounts_entity_presave($entity, $type) {
   if (module_exists('mailchimp_automations')) {
     if ($type == 'mailchimp_automations_entity') {
-      $entity->mc_account_id = mailchimp_accounts_get_current_admin_context();
+      $entity->mc_account_id = mailchimp_accounts_get_current_mailchimp_context('admin');
     } // Check if there is an associated automation for the given entity
     else {
       $wrapper = entity_metadata_wrapper($type, $entity);
       $bundle = $wrapper->getBundle();
       if ($automation_entity = mailchimp_automations_entity_automation($type, $bundle)) {
         if (isset($automation_entity->mc_account_id)) {
-          mailchimp_accounts_set_current_user_context($automation_entity->mc_account_id);
+          mailchimp_accounts_set_current_mailchimp_context($automation_entity->mc_account_id, 'user', TRUE);
         }
       }
     }
@@ -120,68 +114,29 @@ function mailchimp_accounts_entity_presave($entity, $type) {
 }
 
 /**
- * Clears the PHP Session vars if applicable and the mailchimp cache.
+ * Getter for the current mailchimp account context
  */
-function mailchimp_accounts_clear_contexts() {
-  if (mailchimp_accounts_get_current_user_context() != MAILCHIMP_DEFAULT_ACCOUNT) {
-    unset($_SESSION['mailchimp_accounts_current_user_context']);
-    mailchimp_cache_clear_all();
-  }
-  if (mailchimp_accounts_get_current_admin_context() != MAILCHIMP_DEFAULT_ACCOUNT) {
-    unset($_SESSION['mailchimp_accounts_current_admin_context']);
-    mailchimp_cache_clear_all();
-  }
-}
-
-/**
- * Getter for the current admin context
- */
-function mailchimp_accounts_get_current_admin_context() {
+function mailchimp_accounts_get_current_mailchimp_context($user_or_admin) {
   $context = &drupal_static(__FUNCTION__);
-  if (!$context) {
-    $context = (isset($_SESSION['mailchimp_accounts_current_admin_context']))
-      ? $_SESSION['mailchimp_accounts_current_admin_context']
+  if (!isset($context[$user_or_admin])) {
+    $context[$user_or_admin] = (isset($_SESSION['mailchimp_accounts_current_'.$user_or_admin.'_context']))
+      ? $_SESSION['mailchimp_accounts_current_'.$user_or_admin.'_context']
       : MAILCHIMP_DEFAULT_ACCOUNT;
   }
-  return $context;
+  return $context[$user_or_admin];
 }
 
 /**
- * Setter for the current admin context
+ * Setter for the current mailchimp account context
  */
-function mailchimp_accounts_set_current_admin_context($account_id) {
-  if ($account_id !== MAILCHIMP_DEFAULT_ACCOUNT) {
-    $_SESSION['mailchimp_accounts_current_admin_context'] = $account_id;
+function mailchimp_accounts_set_current_mailchimp_context($account_id, $user_or_admin, $skip_refresh=FALSE) {
+  $refresh = ($skip_refresh)
+    ? FALSE
+    : mailchimp_accounts_refresh_required($account_id, $user_or_admin);
+  $_SESSION['mailchimp_accounts_current_'.$user_or_admin.'_context'] = $account_id;
+  if ($refresh) {
     mailchimp_cache_clear_all();
-  }
-  else {
-    mailchimp_accounts_clear_contexts();
-  }
-}
-
-/**
- * Getter for the current user context
- */
-function mailchimp_accounts_get_current_user_context() {
-  $context = &drupal_static(__FUNCTION__);
-  if (!$context) {
-    $context = (isset($_SESSION['mailchimp_accounts_current_user_context']))
-      ? $_SESSION['mailchimp_accounts_current_user_context']
-      : MAILCHIMP_DEFAULT_ACCOUNT;
-  }
-  return $context;
-}
-
-/**
- * Setter for the current user context
- */
-function mailchimp_accounts_set_current_user_context($account_id) {
-  if ($account_id !== MAILCHIMP_DEFAULT_ACCOUNT) {
-    $_SESSION['mailchimp_accounts_current_user_context'] = $account_id;
-    mailchimp_cache_clear_all();
-  }
-  else {
-    mailchimp_accounts_clear_contexts();
+    drupal_goto(current_path());
   }
 }
 
@@ -197,14 +152,14 @@ function mailchimp_accounts_mailchimp_api_key() {
  * Implements hook_mailchimp_api_key_alter().
  */
 function mailchimp_accounts_mailchimp_api_key_alter(&$api_key, $context) {
-  if (mailchimp_accounts_get_current_user_context() != MAILCHIMP_DEFAULT_ACCOUNT && !path_is_admin(current_path()) && current_path() != 'system/ajax') {
-    if ($account_key = mailchimp_accounts_get_api_key_for_account(mailchimp_accounts_get_current_user_context())) {
+  if (mailchimp_accounts_get_current_mailchimp_context('user') != MAILCHIMP_DEFAULT_ACCOUNT && !path_is_admin(current_path()) && current_path() != 'system/ajax') {
+    if ($account_key = mailchimp_accounts_get_api_key_for_account(mailchimp_accounts_get_current_mailchimp_context('user'))) {
       mailchimp_cache_clear_all();
       $api_key = $account_key;
     }
   }
-  elseif (mailchimp_accounts_get_current_admin_context() != MAILCHIMP_DEFAULT_ACCOUNT) {
-    if ($account_key = mailchimp_accounts_get_api_key_for_account(mailchimp_accounts_get_current_admin_context())) {
+  elseif (mailchimp_accounts_get_current_mailchimp_context('admin') != MAILCHIMP_DEFAULT_ACCOUNT) {
+    if ($account_key = mailchimp_accounts_get_api_key_for_account(mailchimp_accounts_get_current_mailchimp_context('admin'))) {
       mailchimp_cache_clear_all();
       $api_key = $account_key;
     }
@@ -310,10 +265,7 @@ function mailchimp_account_select_form($form, &$form_state) {
 }
 
 function mailchimp_accounts_select_element($accounts, $selected_value = NULL) {
-  if (count($accounts) > 1) { // The default will always  be there
-    if ($selected_value) {
-      mailchimp_accounts_set_current_admin_context($selected_value);
-    }
+  if (count($accounts) > 1) { // The default will always be there
     $options = array();
     foreach ($accounts as $account_id => $account) {
       $options[$account_id] = $account->account_name;
@@ -323,7 +275,7 @@ function mailchimp_accounts_select_element($accounts, $selected_value = NULL) {
       '#options' => $options,
       '#title' => t('Account Name'),
       '#multiple' => FALSE,
-      '#default_value' => mailchimp_accounts_get_current_admin_context(),
+      '#default_value' => mailchimp_accounts_get_current_mailchimp_context('admin'),
     );
     return $element;
   }
@@ -334,13 +286,20 @@ function mailchimp_accounts_select_element($accounts, $selected_value = NULL) {
  * Ajax callback for mailchimp_accounts_mapping_form().
  */
 function mailchimp_accounts_mapping_form_callback($form, &$form_state) {
-  if ($form_state['values']['mc_aid'] == MAILCHIMP_DEFAULT_ACCOUNT) {
-    mailchimp_accounts_clear_contexts();
-  }
-  else {
-    mailchimp_accounts_set_current_admin_context($form_state['values']['mc_aid']);
-  }
+  mailchimp_accounts_set_current_mailchimp_context($form_state['values']['mc_aid'], 'admin');
   return $form['account_select'];
+}
+
+/**
+ * Checks whether the active session matches session that is about to be set
+ *
+ * @see hook_field_widget_form_alter().
+ */
+function mailchimp_accounts_refresh_required($account_id, $user_or_admin) {
+  if (!isset($_SESSION['mailchimp_accounts_current_'.$user_or_admin.'_context']) || $_SESSION['mailchimp_accounts_current_'.$user_or_admin.'_context'] != $account_id) {
+    return TRUE;
+  }
+  return FALSE;
 }
 
 /**
