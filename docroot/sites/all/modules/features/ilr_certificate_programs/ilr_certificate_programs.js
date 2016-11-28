@@ -2,6 +2,7 @@
   Drupal.behaviors.certificate_programs = {
     attach: function (context, settings) {
       $(document).ready(function() {
+        position_call_to_action();
         $('.node-sdc-course h2').click(function() {
           if ($(this).closest('article').find('.group-main-content.accordion').hasClass('show')) {
             $(this).closest('article').find('.group-main-content.accordion').removeClass('show');
