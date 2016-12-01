@@ -29,6 +29,23 @@ respective README's for more details.
   * Display a history of Mailchimp email and subscription activity on a tab for
     any Entity with an email address.
 
+## Upgrade Notes
+The 7.x-2.x and 7.x-3.x branches will become unsupported as MailChimp phases out
+their API version 2.0 by the end of 2016. We recommend upgrading to 7.x-4.x, the
+branch that is using MailChimp’s latest API version 3.0. The upgrade path is
+manual at this point, requiring disabling & uninstalling the older branch, then
+installing 7.x-4.x.
+
+Worry not! Your lists, subscribers, and campaign data will remain safe and sound
+on your MailChimp account (http://mailchimp.com/).
+
+Please note: The major structural change between 7.x-2.x and 7.x-4.x is the
+“Lists and Users” tab has been separated into three tabs “Fields”, “Lists” and
+“SignUp Forms”. You will find most of the user related configuration by creating
+a MailChimp field on the user account, here: admin/config/people/accounts/fields
+
+For more information, please visit the FAQ (https://www.drupal.org/node/2793241)
+
 ## Installation Notes
   * You need to have a MailChimp API Key.
   * You need to have at least one list created in MailChimp to use the
@@ -36,14 +53,15 @@ respective README's for more details.
   * If you use a drush make workflow, see the example drush makefile:
     mailchimp.make.example.
 
-  * The MailChimp PHP library must exist in your libraries directory.
+  * The MailChimp PHP library exist in your Druapl installation either via
+    Libraries module or via Composer
 
-    For module version 7.x-4.x:
+    If you are using Libraries module for version 7.x-4.x:
 
       - Download Composer if you don't already have it installed:
         https://getcomposer.org/download/
 
-      - Download version 1.0 of the v3 API library:
+      - Download version 1.0.3 of the v3 API library:
         https://github.com/thinkshout/mailchimp-api-php/releases
 
       - Extract the library archive to libraries/mailchimp
@@ -64,6 +82,20 @@ respective README's for more details.
 
       - In the mailchimp library directory, run:
         composer install
+
+    If you are using Composer Manager for version 7.x-4.x:
+
+      - Download Composer if you don't already have it installed:
+        https://getcomposer.org/download/
+
+      - Download and install Composer Manager Modulle:
+        https://www.drupal.org/project/composer_manager
+
+      - Install Drush on your system if you haven't already:
+        http://www.drush.org/en/master/
+
+      - Run Composer manager with Drush within your Drupal installation:
+        drush composer-manager update --no-dev
 
     For module version 7.x-2.x and 7.x-3.x:
 
@@ -96,7 +128,7 @@ respective README's for more details.
   3. Copy your newly created API key and go to the
   [Mailchimp config](http://example.com/admin/config/services/mailchimp) page in
   your Drupal site and paste it into the Mailchimp API Key field.
-  
+
   4. Batch limit - Maximum number of changes to process in a single cron run.
   Mailchimp suggest keeping this below 10000.
 
