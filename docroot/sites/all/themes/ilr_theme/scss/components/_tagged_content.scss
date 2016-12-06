@@ -16,4 +16,19 @@ body {
     &.news {
     }
   }
+  #highlighted {
+    .tagged-content[data-items="4"] {
+      @include padding-leader(1.5);
+      @include padding-trailer(2);
+      @include trailer(1);
+      padding-left: .5em;
+      padding-right: .5em;
+      background: #f1f1f1;
+      border-bottom: 1px solid $gray-light;
+      article {
+        @extend %card-animated;
+        @extend %four-column;
+      }
+    }
+  }
 }
