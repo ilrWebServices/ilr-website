@@ -55,6 +55,7 @@ form {
   }
   input[type='submit'] {
     @include leader(1);
+    @include trailer(.5);
     margin-right: 1em;
     background: $spotlight-color;
     border-radius: 20px;
@@ -63,11 +64,24 @@ form {
     font-weight: 300;
     text-transform: uppercase;
     padding: .2em 1em;
-    @include trailer(.5);
     box-shadow: 1px 2px 4px $gray-medium;
     &:hover {
       background: $student-portrait-color;
     }
+    &.ajax-processed {
+      @include leader(.5);
+      background: $gray-light;
+      color: black;
+    }
+  }
+  // input[type="file"] {
+  //   @include leader(.25);
+  //   @include trailer(.25);
+  // }
+
+  .form-managed-file .form-file {
+    @include leader(.25);
+    @include trailer(.25);
   }
 
   .form-item {
@@ -80,23 +94,6 @@ form {
       font-weight: 300;
     }
   }
-
-  // .field-widget-markup {
-  //   @include padding-leader(.75);
-  //   @include trailer(.5);
-  // }
-
-  // p {
-  //   strong {
-  //     color: $spotlight-color;
-  //   }
-  // }
-
-  // h3 {
-  //   @include adjust-font-size-to(24px, 1);
-  //   font-family: $font;
-  //   color: $spotlight-color;
-  // }
 
   label {
     font-weight: 400;
