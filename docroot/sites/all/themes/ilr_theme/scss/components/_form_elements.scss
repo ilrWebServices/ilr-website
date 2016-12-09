@@ -5,44 +5,11 @@
     }
   }
 }
-#main[data-eq-state="550"], #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
-  .form-item {
-    select {
-      // width: 320px;
-    }
-    input[type='text'] {
-      // max-width: 320px;
-    }
-  }
-}
 
 // #page form {
 form {
   max-width: $section-max-width;
-  // padding: 1.5em 3em;
-  // background: whitesmoke;
-  // border: 1px solid $gray-light;
-  #content & {
-    padding: 1.5em 3em;
-    background: whitesmoke;
-    border: 1px solid $gray-light;
-    .field-widget-markup {
-      @include padding-leader(.75);
-      @include trailer(.5);
-    }
 
-    p {
-      strong {
-        color: $spotlight-color;
-      }
-    }
-
-    h3 {
-      @include adjust-font-size-to(24px, 1);
-      font-family: $font;
-      color: $spotlight-color;
-    }
-  }
   fieldset {
     margin-bottom: 1em;
   }
@@ -69,19 +36,19 @@ form {
       background: $student-portrait-color;
     }
     &.ajax-processed {
-      @include leader(.5);
+      @include trailer(.5);
       background: $gray-light;
       color: black;
+      @include adjust-font-size-to(16px);
+      text-transform: none;
     }
   }
-  // input[type="file"] {
-  //   @include leader(.25);
-  //   @include trailer(.25);
-  // }
 
   .form-managed-file .form-file {
     @include leader(.25);
-    @include trailer(.25);
+    @include trailer(.5);
+    font-size: 16px;
+    width: 100%;
   }
 
   .form-item {
@@ -92,6 +59,9 @@ form {
     }
     & .form-type-checkbox label, & .form-type-radio label {
       font-weight: 300;
+    }
+    & .description {
+      line-height: 1.4;
     }
   }
 
@@ -115,6 +85,32 @@ form {
   .form-type-radios, .form-type-checkboxes {
     @include leader(1);
     @include trailer(1);
+  }
+}
+
+#content {
+  //targets complete forms, not forms with just visit and apply buttons
+  //ie: http://www.ilr-website.dev/admissions/undergraduate-admissions
+  form.entityform {
+    padding: 1.5em 3em;
+    background: whitesmoke;
+    border: 1px solid $gray-light;
+    .field-widget-markup {
+      @include padding-leader(.75);
+      @include trailer(.5);
+    }
+
+    p {
+      strong {
+        color: $spotlight-color;
+      }
+    }
+
+    h3 {
+      @include adjust-font-size-to(24px, 1);
+      font-family: $font;
+      color: $spotlight-color;
+    }
   }
 }
 
