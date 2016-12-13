@@ -44,3 +44,15 @@ function ilr_mailchimp_mailchimp_automations_mergevars_alter(&$merge_vars, $auto
     }
   }
 }
+
+/**
+ * Implements hook_mailchimp_subscribe_user().
+ *
+ * Automatically add alumni enews subscribers to eNews group
+ */
+function ilr_mailchimp_mailchimp_subscribe_user($list_id, $email, $merge_vars) {
+  if ($list_id == 'e5742cd707') {
+    mailchimp_update_member($list_id, $email, array(), array('cdf4c76a89' => TRUE));
+  }
+
+}
