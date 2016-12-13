@@ -289,10 +289,10 @@ function forms_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EYou should be redirected momentarily. If not, you can access the video \\u003Ca href=\\u0022http:\\/\\/www.ilr.cornell.edu\\/worker-institute\\/education-and-training\\/collective-bargaining-training-videos\\/video\\u0022\\u003Ehere\\u003C\\/a\\u003E.\\u0026nbsp;\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThis shouldn\\u0026#39;t appear if the redirect is working right.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
-      "submission_show_submitted" : 1,
+      "submission_show_submitted" : 0,
       "submissions_view" : "default",
       "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
