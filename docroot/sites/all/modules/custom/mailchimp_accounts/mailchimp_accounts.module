@@ -1,0 +1,316 @@
+<?php
+
+/**
+ * @file
+ * Module file for mailchimp_accounts.
+ */
+
+define('MAILCHIMP_DEFAULT_ACCOUNT', 'default');
+
+/**
+ * Implements hook_init().
+ * Adds a warning if there is an active account context.
+ */
+function mailchimp_accounts_init() {
+  $path = current_path();
+  if (path_is_admin($path) && strpos($path, 'mailchimp') !== FALSE) {
+    if (mailchimp_accounts_get_current_mailchimp_context('admin') != MAILCHIMP_DEFAULT_ACCOUNT) {
+      $key = mailchimp_accounts_get_api_key_for_account(mailchimp_accounts_get_current_mailchimp_context('admin'));
+      $account = mailchimp_accounts_api_account(NULL, $key);
+      drupal_set_message(t('MailChimp account configuration currently set to @account_name. Please ensure that multiple accounts are properly supported for the current configuration.', array('@account_name' => $account->account_name)), 'warning');
+    }
+  }
+}
+
+/**
+ * Adds the account select form to the MailChimp global settings page
+ */
+function mailchimp_accounts_form_mailchimp_admin_settings_alter(&$form, &$form_state, $form_id) {
+  $form['mailchimp_account'] = drupal_get_form('mailchimp_account_select_form');
+}
+
+/**
+ * Implements hook_field_info_alter().
+ * Adds a default value for the mailchimp account settings
+ */
+function mailchimp_accounts_field_info_alter(&$info) {
+  $info['mailchimp_lists_subscription']['settings']['mc_aid'] = MAILCHIMP_DEFAULT_ACCOUNT;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Adds the account select menu to mailchimp_lists_subscription field settings forms.
+ */
+function mailchimp_accounts_form_field_ui_field_settings_form_alter(&$form, &$form_state) {
+  if ($form['field']['type']['#value'] == 'mailchimp_lists_subscription') {
+    $accounts = mailchimp_accounts_api_accounts();
+    if (count($accounts) > 1) { // The default will always  be there
+      $field_info = field_info_fields();
+      $account_id = $field_info[$form['field']['field_name'][
+        '#value']]['settings']['mc_aid'];
+      $form['field']['settings']['mc_aid'] = mailchimp_accounts_select_element($accounts, $account_id);
+      $form['field']['settings']['mc_aid']['#weight'] = -10;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Adds the account select menu to mailchimp_lists_subscription field edit forms.
+ */
+function mailchimp_accounts_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#field']['type'] == 'mailchimp_lists_subscription') {
+    $accounts = mailchimp_accounts_api_accounts();
+    if (count($accounts) > 1) { // The default will always  be there
+      $account_id = $form['#field']['settings']['mc_aid'];
+      $form['field']['settings']['mc_aid'] = mailchimp_accounts_select_element($accounts, $account_id);
+      $form['field']['settings']['mc_aid']['#disabled'] = TRUE;
+      $form['field']['settings']['mc_aid']['#weight'] = -10;
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ *
+ * Checks whether the field being displayed has an associated
+ * mailchimp account
+ */
+function mailchimp_accounts_field_widget_form_alter(&$element, &$form_state, $context) {
+  if (isset($context['field']['settings']['mc_aid'])) {
+    $account_id = $context['field']['settings']['mc_aid'];
+    if (path_is_admin(current_path())) {
+      mailchimp_accounts_set_current_mailchimp_context($account_id, 'admin');
+    } // Not admin
+    else {
+      mailchimp_accounts_set_current_mailchimp_context($account_id, 'user');
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * Adds the account_id when a mailchimp automation is being created.
+ * Sets the appropriate context if there is a relevant automation entity.
+ */
+function mailchimp_accounts_entity_presave($entity, $type) {
+  if (module_exists('mailchimp_automations')) {
+    if ($type == 'mailchimp_automations_entity') {
+      $entity->mc_account_id = mailchimp_accounts_get_current_mailchimp_context('admin');
+    } // Check if there is an associated automation for the given entity
+    else {
+      $wrapper = entity_metadata_wrapper($type, $entity);
+      $bundle = $wrapper->getBundle();
+      if ($automation_entity = mailchimp_automations_entity_automation($type, $bundle)) {
+        if (isset($automation_entity->mc_account_id)) {
+          mailchimp_accounts_set_current_mailchimp_context($automation_entity->mc_account_id, 'user', TRUE);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Getter for the current mailchimp account context
+ */
+function mailchimp_accounts_get_current_mailchimp_context($user_or_admin) {
+  $context = &drupal_static(__FUNCTION__);
+  if (!isset($context[$user_or_admin])) {
+    $context[$user_or_admin] = (isset($_SESSION['mailchimp_accounts_current_'.$user_or_admin.'_context']))
+      ? $_SESSION['mailchimp_accounts_current_'.$user_or_admin.'_context']
+      : MAILCHIMP_DEFAULT_ACCOUNT;
+  }
+  return $context[$user_or_admin];
+}
+
+/**
+ * Setter for the current mailchimp account context
+ */
+function mailchimp_accounts_set_current_mailchimp_context($account_id, $user_or_admin, $skip_refresh=FALSE) {
+  $refresh = ($skip_refresh)
+    ? FALSE
+    : mailchimp_accounts_refresh_required($account_id, $user_or_admin);
+  $_SESSION['mailchimp_accounts_current_'.$user_or_admin.'_context'] = $account_id;
+  if ($refresh) {
+    mailchimp_cache_clear_all();
+    drupal_goto(current_path());
+  }
+}
+
+/**
+ * Implements hook_mailchimp_accounts_api_key().
+ */
+function mailchimp_accounts_mailchimp_api_key() {
+  // We use MAILCHIMP_DEFAULT_ACCOUNT since we don't know the default account id.
+  return array(MAILCHIMP_DEFAULT_ACCOUNT => variable_get('mailchimp_api_key', ''));
+}
+
+/**
+ * Implements hook_mailchimp_api_key_alter().
+ */
+function mailchimp_accounts_mailchimp_api_key_alter(&$api_key, $context) {
+  if (mailchimp_accounts_get_current_mailchimp_context('user') != MAILCHIMP_DEFAULT_ACCOUNT && !path_is_admin(current_path()) && current_path() != 'system/ajax') {
+    if ($account_key = mailchimp_accounts_get_api_key_for_account(mailchimp_accounts_get_current_mailchimp_context('user'))) {
+      mailchimp_cache_clear_all();
+      $api_key = $account_key;
+    }
+  }
+  elseif (mailchimp_accounts_get_current_mailchimp_context('admin') != MAILCHIMP_DEFAULT_ACCOUNT) {
+    if ($account_key = mailchimp_accounts_get_api_key_for_account(mailchimp_accounts_get_current_mailchimp_context('admin'))) {
+      mailchimp_cache_clear_all();
+      $api_key = $account_key;
+    }
+  }
+}
+
+/**
+ * Invokes hook_mailchimp_api_key so modules can declare keys.
+ *
+ * @return array
+ *   The array_keys are the account id and the array_values are the api keys.
+ *
+ * @see hook_mailchimp_api_key()
+ */
+function mailchimp_accounts_api_keys() {
+  $api_keys = module_invoke_all('mailchimp_api_key');
+  return $api_keys;
+}
+
+/**
+ * Creates an array of working api accounts in the system.
+ *
+ * @return array
+ *   The array_key is the account_id, the array_value is the account object.
+ */
+function mailchimp_accounts_api_accounts() {
+  $api_accounts = array();
+  $api_keys = mailchimp_accounts_api_keys();
+  foreach ($api_keys as $account_id => $api_key) {
+    $account = mailchimp_accounts_api_account(NULL, $api_key);
+    $api_accounts[$account_id] = $account;
+  }
+  return $api_accounts;
+}
+
+/**
+ * Wrapper around Mailchimp->getAccount().
+ *
+ * @param object $api
+ *   The api object to use, if already instantiated.
+ * @param string $api_key
+ *   The api key to use to instantiate the MailChimp API object.
+ *
+ * @return Object
+ *   The MailChimp account object.
+ */
+function mailchimp_accounts_api_account($api = NULL, $api_key = NULL) {
+  if (!$api) {
+    $api = mailchimp_get_api_object('Mailchimp', $api_key);
+  }
+  return $api->getAccount();
+}
+
+/**
+ * Returns the api key based on a given account id.
+ *
+ * @param string $account_id
+ *   The MailChimp account_id.
+ *
+ * @return string
+ *   The api key registered via hook_mailchimp_api_key().
+ *
+ * @see hook_mailchimp_api_key()
+ * @see mailchimp_account_overview_page()
+ */
+function mailchimp_accounts_get_api_key_for_account($account_id) {
+  $api_keys = mailchimp_accounts_api_keys();
+  if (isset($api_keys[$account_id])) {
+    return $api_keys[$account_id];
+  }
+  watchdog('mailchimp', 'MailChimp Error: API Key not set for account @account_id.', array('@account_id' => $account_id), WATCHDOG_ERROR);
+  return NULL;
+}
+
+/**
+ * MailChimp account select form.
+ *
+ * Enables switching between multiple keys.
+ *
+ * @see hook_mailchimp_api_key()
+ */
+function mailchimp_account_select_form($form, &$form_state) {
+  $form = array();
+  $accounts = mailchimp_accounts_api_accounts();
+  if (count($accounts) > 1) { // The default will always be there
+    $form['account_select'] = array(
+      '#title' => t('MailChimp Account Select'),
+      '#type' => 'fieldset',
+      '#attributes' => array(
+        'id' => array('mailchimp-account-select'),
+      ),
+    );
+    $form['account_select']['mc_aid'] = mailchimp_accounts_select_element($accounts);
+    $form['account_select']['mc_aid'] += array(
+      '#description' => 'Selecting a different account allows you to configure MailChimp-related fields and services with the selected account.',
+      '#ajax' => array(
+        'callback' => 'mailchimp_accounts_mapping_form_callback',
+        'wrapper' => 'mailchimp-account-select',
+      ),
+    );
+  }
+  return $form;
+}
+
+function mailchimp_accounts_select_element($accounts, $selected_value = NULL) {
+  if (count($accounts) > 1) { // The default will always be there
+    $options = array();
+    foreach ($accounts as $account_id => $account) {
+      $options[$account_id] = $account->account_name;
+    }
+    $element = array(
+      '#type' => 'select',
+      '#options' => $options,
+      '#title' => t('Account Name'),
+      '#multiple' => FALSE,
+      '#default_value' => mailchimp_accounts_get_current_mailchimp_context('admin'),
+    );
+    return $element;
+  }
+  return NULL;
+}
+
+/**
+ * Ajax callback for mailchimp_accounts_mapping_form().
+ */
+function mailchimp_accounts_mapping_form_callback($form, &$form_state) {
+  mailchimp_accounts_set_current_mailchimp_context($form_state['values']['mc_aid'], 'admin');
+  return $form['account_select'];
+}
+
+/**
+ * Checks whether the active session matches session that is about to be set
+ *
+ * @see hook_field_widget_form_alter().
+ */
+function mailchimp_accounts_refresh_required($account_id, $user_or_admin) {
+  if (!isset($_SESSION['mailchimp_accounts_current_'.$user_or_admin.'_context']) || $_SESSION['mailchimp_accounts_current_'.$user_or_admin.'_context'] != $account_id) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function mailchimp_accounts_permission() {
+  $return = array();
+
+  $return['administer mailchimp accounts'] = array(
+    'title' => t('Administer MailChimp account entities'),
+    'description' => t('Add, Delete, and Configure MailChimp Account entity settings.'),
+  );
+  return $return;
+}

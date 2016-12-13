@@ -806,3 +806,12 @@ function ilr_update_7061() {
     'ilr_certificate_programs',
   ));
 }
+
+/**
+ * Enables ilr_mailchimp module and dependencies
+ */
+function ilr_update_7062() {
+  module_enable(array(
+    'ilr_mailchimp',
+  ));
+}

@@ -22,6 +22,19 @@ body.not-front {
       }
     }
   }
+  .entity-entityform .field-type-mailchimp-lists-subscription {
+    @extend .hidden;
+  }
+  .field-type-mailchimp-lists-subscription {
+    fieldset {
+      border: none;
+      padding: 0;
+    }
+    .mailchimp-newsletter-wrapper, .form-disabled, legend {
+      @extend .hidden;
+    }
+
+  }
 }
 
 #mc_embed_signup {

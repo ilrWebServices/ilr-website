@@ -1,0 +1,11 @@
+name = ILR Mailchimp
+description = Registers API keys and implements ILR specific mailchimp hooks
+core = 7.x
+version = 7.x-1.0
+project = ilr
+
+dependencies[] = mailchimp
+dependencies[] = mailchimp_automations
+dependencies[] = mailchimp_accounts
+dependencies[] = mailchimp_lists
+dependencies[] = mailchimp_signup
