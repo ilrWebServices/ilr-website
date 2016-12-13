@@ -96,6 +96,6 @@ function ilr_certificate_programs_total_cost($certificate_wrapper) {
     $cost = $course->field_price->value();
     $total += $cost;
   }
-  $total = ceil($total);
-  return number_format($total,0);
+  // Truncate decimal part of total cost unless it includes cents.
+  return number_format($total, ($total - floor($total) == 0) ? 0 : 2);
 }
