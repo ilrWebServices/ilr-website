@@ -235,40 +235,6 @@ function forms_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'entityform-alumni_enews_subscribe-field_subscribe_or_unsubscribe'.
-  $field_instances['entityform-alumni_enews_subscribe-field_subscribe_or_unsubscribe'] = array(
-    'bundle' => 'alumni_enews_subscribe',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_subscribe_or_unsubscribe',
-    'label' => 'Subscribe or Unsubscribe',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 38,
-    ),
-  );
-
-  // Exported field_instance:
   // 'entityform-career_services_contact_form-field_career_services_how_to_dir'.
   $field_instances['entityform-career_services_contact_form-field_career_services_how_to_dir'] = array(
     'bundle' => 'career_services_contact_form',
@@ -34276,7 +34242,6 @@ function forms_field_default_field_instances() {
   t('Student ID Number');
   t('Study abroad essay');
   t('Subject line for this message');
-  t('Subscribe or Unsubscribe');
   t('Summary');
   t('Summer address status');
   t('Supervisor');

@@ -383,7 +383,6 @@ features[field_base][] = field_state_province_addl_3
 features[field_base][] = field_street_address_addl_2
 features[field_base][] = field_student_id_number
 features[field_base][] = field_subject_line
-features[field_base][] = field_subscribe_or_unsubscribe
 features[field_base][] = field_suffix
 features[field_base][] = field_summer_address_status
 features[field_base][] = field_supervision
