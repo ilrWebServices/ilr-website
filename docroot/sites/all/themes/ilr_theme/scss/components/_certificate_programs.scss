@@ -119,11 +119,20 @@ body.node-type-certificate-programs {
           .show {
             display: block;
           }
+          .field-name-body {
+            span {
+              @include trailer(.25);
+              margin-right: 50%;
+              float: left;
+            }
+          }
           .course_details {
             font-family: $font;
             font-size: 19px;
             font-weight: 300;
             color: $student-portrait-color;
+            float: left;
+            clear: both;
             &:hover {
               color: #d76b00;
             }
@@ -183,6 +192,20 @@ body.node-type-certificate-programs {
         }
       }
     }
+    #content {
+      .field-name-field-course {
+        article {
+          .field-name-body {
+            span {
+              margin-right: 2em;
+            }
+          }
+          .course_details {
+            float: none;
+          }
+        }
+      }
+    }
   }
 
   #main[data-eq-state="widescreen"] {
@@ -219,6 +242,20 @@ body.node-type-certificate-programs {
         }
       }
     }
+    #content {
+      .field-name-field-course {
+        article {
+          .field-name-body {
+            span {
+              margin-right: 2em;
+            }
+          }
+          .course_details {
+            float: none;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -244,7 +281,7 @@ body.node-type-certificate-programs {
       @include adjust-leading-to(.9);
       a {
         font-family: $font;
-        color: $violet-pos01;
+        color: $student-portrait-color;
         &:hover {
           color: #d76b00;
         }
