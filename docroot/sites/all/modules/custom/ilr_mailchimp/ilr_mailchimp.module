@@ -4,7 +4,7 @@ require_once DRUPAL_ROOT . '/../config/get_secrets.php';
 /**
  * Implements hook_mailchimp_accounts_api_key().
  */
-function ilr_mailchimp_api_key() {
+function ilr_mailchimp_mailchimp_accounts_api_key() {
   return ilr_mailchimp_api_keys();
 }
 

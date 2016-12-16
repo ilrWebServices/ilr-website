@@ -23,6 +23,23 @@ function mailchimp_accounts_init() {
 }
 
 /**
+ * Implements hook_menu().
+ */
+function mailchimp_accounts_menu() {
+  $items = array();
+
+  $items['admin/config/services/mailchimp/account-info'] = array(
+    'title' => 'MailChimp API Account Info',
+    'page callback' => 'mailchimp_accounts_account_overview_page',
+    'access callback' => 'mailchimp_apikey_ready_access',
+    'access arguments' => array('administer mailchimp'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
  * Adds the account select form to the MailChimp global settings page
  */
 function mailchimp_accounts_form_mailchimp_admin_settings_alter(&$form, &$form_state, $form_id) {
@@ -143,7 +160,7 @@ function mailchimp_accounts_set_current_mailchimp_context($account_id, $user_or_
 /**
  * Implements hook_mailchimp_accounts_api_key().
  */
-function mailchimp_accounts_mailchimp_api_key() {
+function mailchimp_accounts_mailchimp_accounts_api_key() {
   // We use MAILCHIMP_DEFAULT_ACCOUNT since we don't know the default account id.
   return array(MAILCHIMP_DEFAULT_ACCOUNT => variable_get('mailchimp_api_key', ''));
 }
@@ -167,15 +184,15 @@ function mailchimp_accounts_mailchimp_api_key_alter(&$api_key, $context) {
 }
 
 /**
- * Invokes hook_mailchimp_api_key so modules can declare keys.
+ * Invokes hook_mailchimp_accounts_api_key so modules can declare keys.
  *
  * @return array
  *   The array_keys are the account id and the array_values are the api keys.
  *
- * @see hook_mailchimp_api_key()
+ * @see hook_mailchimp_accounts_api_key()
  */
 function mailchimp_accounts_api_keys() {
-  $api_keys = module_invoke_all('mailchimp_api_key');
+  $api_keys = module_invoke_all('mailchimp_accounts_api_key');
   return $api_keys;
 }
 
@@ -220,9 +237,9 @@ function mailchimp_accounts_api_account($api = NULL, $api_key = NULL) {
  *   The MailChimp account_id.
  *
  * @return string
- *   The api key registered via hook_mailchimp_api_key().
+ *   The api key registered via hook_mailchimp_accounts_api_key().
  *
- * @see hook_mailchimp_api_key()
+ * @see hook_mailchimp_accounts_api_key()
  * @see mailchimp_account_overview_page()
  */
 function mailchimp_accounts_get_api_key_for_account($account_id) {
@@ -239,7 +256,7 @@ function mailchimp_accounts_get_api_key_for_account($account_id) {
  *
  * Enables switching between multiple keys.
  *
- * @see hook_mailchimp_api_key()
+ * @see hook_mailchimp_accounts_api_key()
  */
 function mailchimp_account_select_form($form, &$form_state) {
   $form = array();
@@ -313,4 +330,62 @@ function mailchimp_accounts_permission() {
     'description' => t('Add, Delete, and Configure MailChimp Account entity settings.'),
   );
   return $return;
+}
+
+/**
+ * Menu callback to access mailchimp account info.
+ *
+ * This allows developers to easily figure out
+ * the account_id associated with a given key,
+ * enabling support for multiple api keys.
+ *
+ * @see hook_mailchimp_api_key()
+ */
+function mailchimp_accounts_account_overview_page() {
+  $output = '';
+  $api_key_form = drupal_get_form('mailchimp_accounts_account_retrieval_form');
+  $output .= drupal_render($api_key_form);
+  if (isset($_REQUEST['mailchimp_api_key'])) {
+    $account = mailchimp_accounts_api_account(NULL, $_REQUEST['mailchimp_api_key']);
+  }
+  else {
+    $output .= '<h3>Default account</h3>';
+    $account = mailchimp_accounts_api_account();
+  }
+  unset($account->_links);
+  $output .= '<pre>' . json_encode($account, JSON_PRETTY_PRINT) . '</pre>';
+  return $output;
+}
+
+/**
+ * MailChimp account retrieval form.
+ *
+ * Outputs a textfield for an api_key
+ * to retrieve information about a MailChimp account.
+ */
+function mailchimp_accounts_account_retrieval_form($form, &$form_state) {
+  $form = array();
+  $api_key = (isset($_REQUEST['mailchimp_api_key']))
+    ? $_REQUEST['mailchimp_api_key']
+    : variable_get('mailchimp_api_key', '');
+  $form['mailchimp_api_key'] = array(
+    '#type' => 'textfield',
+    '#title' => t('MailChimp API Key to check'),
+    '#default_value' => $api_key,
+    '#description' => t('The API key to check. Get or generate a valid API key at your !apilink.', array('!apilink' => l(t('MailChimp API Dashboard'), 'http://admin.mailchimp.com/account/api'))),
+  );
+  $form['#action'] = check_plain($_SERVER['REQUEST_URI']);
+  $form['#method'] = 'post';
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Get account info'),
+  );
+  return $form;
+}
+
+/**
+ * Form submit handler to enable the POST request processing.
+ */
+function mailchimp_accounts_account_retrieval_form_submit($form, &$form_state) {
+  $form_state['rebuild'] = TRUE;
 }
