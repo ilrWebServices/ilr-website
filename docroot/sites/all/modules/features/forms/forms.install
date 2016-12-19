@@ -159,6 +159,13 @@ function forms_update_7012() {
 }
 
 /**
+ * Delete subm from EMHRM check_your_eligibility
+ */
+function forms_update_7013() {
+  _forms_delete_entityform_submissions('check_your_eligibility');
+}
+
+/**
 * Delete one or more field instances from one entityform
 * @param $form_id
 * @param $field_names
