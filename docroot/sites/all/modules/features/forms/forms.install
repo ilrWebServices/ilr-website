@@ -166,6 +166,46 @@ function forms_update_7013() {
 }
 
 /**
+ * Remove all traces of entityform type check_your_eligibility (emhrm)
+ */
+function forms_update_7014() {
+  // 1. Remove the submissions - complete; see previous update hook.
+
+  // 2. Delete the field instances
+  $fields_info = field_info_instances('entityform', 'check_your_eligibility');
+  $delete_count = 0;
+  foreach ($fields_info as $field_in_form => $field_array) {
+    $field_name = $field_array['field_name'];
+    if ($instance = field_info_instance('entityform', $field_name,
+      'check_your_eligibility')) {
+        field_delete_instance($instance);
+        $delete_count++;
+    }
+  }
+
+  // 3. Delete fields that aren't used elsewhere
+  field_delete_field('field_currently_working_in_hr_');
+  $delete_count++;
+  field_delete_field('field_how_heard_emhrm');
+  $delete_count++;
+  field_delete_field('field_prefix');
+  $delete_count++;
+  field_delete_field('field_years_full_time_hr');
+  $delete_count++;
+  field_delete_field('field_years_full_time_work_exp');
+  $delete_count++;
+
+
+  // 4. Delete the entityform type itself
+  if ($entityform_type = entityform_type_load('check_your_eligibility')) {
+    entityform_type_delete($entityform_type);
+  }
+
+  // 5. Purge the deleted fields, plus a few extras just in case
+  field_purge_batch($delete_count + 5);
+}
+
+/**
 * Delete one or more field instances from one entityform
 * @param $form_id
 * @param $field_names
