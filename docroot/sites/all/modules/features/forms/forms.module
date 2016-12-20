@@ -216,10 +216,6 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
   }
   // Special processing of specific forms
   switch ($form_id) {
-    case 'check_your_eligibility_entityform_edit_form': // Requested by Erin Sutzko 5/2015
-      unset($form['field_years_full_time_work_exp'][LANGUAGE_NONE]['#options']['1-5 years']);
-      unset($form['field_years_full_time_hr'][LANGUAGE_NONE]['#options']['No experience']);
-      break;
     case 'collective_bargaining_videos_entityform_edit_form':
       if (isset($_COOKIE['Drupal_visitor_cbvideoinfo'])) {
         _forms_collective_bargaining_videos_redirect();
