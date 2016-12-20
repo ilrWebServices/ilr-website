@@ -234,14 +234,18 @@ function _tagged_content_block_load_block($bid) {
  *   - Confirms that highlighted blocks have the featured flag
  */
 function _tagged_content_block_reference_validator($form, &$form_state) {
-  if(count($form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'])
-    && $bid = $form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'][LANGUAGE_NONE][0]['bid']) {
-    $block = _tagged_content_block_load_block($bid);
-    $bean = bean_load_delta($block['delta']);
-    // if (empty($bean->data['featured'])) {
-    //   form_set_error('state', t("Only featured blocks can be added to the highlighted region."));
-    // }
+  global $user;
+  if (!in_array('administrator', $user->roles)) {
+    if(count($form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'])
+      && $bid = $form_state['values']['field_blocks'][LANGUAGE_NONE][0]['field_highlighted_region'][LANGUAGE_NONE][0]['bid']) {
+      $block = _tagged_content_block_load_block($bid);
+      $bean = bean_load_delta($block['delta']);
+      if (empty($bean->data['featured'])) {
+        form_set_error('state', t("Only featured blocks can be added to the highlighted region."));
+      }
+    }
   }
+
 }
 
 function _tagged_content_block_is_event($url) {
