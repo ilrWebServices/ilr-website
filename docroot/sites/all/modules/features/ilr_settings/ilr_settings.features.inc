@@ -46,17 +46,9 @@ function ilr_settings_image_default_styles() {
 
   // Exported image style: email_optimized.
   $styles['email_optimized'] = array(
-    'name' => 'email_optimized',
     'label' => 'Email optimized',
     'effects' => array(
       3 => array(
-        'label' => 'Focal Point Scale And Crop',
-        'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
-        'effect callback' => 'focal_point_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'focal_point',
         'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 540,
