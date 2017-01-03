@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the mailchimp_accounts module.
+ */
+
+/**
+ * Implements hook_schema_alter().
+ */
+function mailchimp_accounts_schema_alter(&$schema) {
+  if (module_exists('mailchimp_automations')) {
+    $schema['mailchimp_automations_entity']['fields']['mc_account_id'] = array(
+      'description' => 'The account ID for the associated MailChimp automation.',
+      'type' => 'varchar',
+      'length' => 128,
+      'not null' => TRUE,
+      'default' => 'default',
+    );
+    return $schema;
+  }
+}
+
+function mailchimp_accounts_install() {
+  if (module_exists('mailchimp_automations')) {
+    $schema = drupal_get_schema('mailchimp_automations_entity');
+    db_add_field('mailchimp_automations_entity', 'mc_account_id', $schema['fields']['mc_account_id']);
+  }
+}
+
+function mailchimp_accounts_uninstall() {
+  if (module_exists('mailchimp_automations')) {
+    $schema = drupal_get_schema('mailchimp_automations_entity');
+    db_drop_field('mailchimp_automations_entity', 'mc_account_id');
+  }
+}

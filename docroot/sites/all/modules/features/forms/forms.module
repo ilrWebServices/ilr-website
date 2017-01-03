@@ -609,39 +609,10 @@ function _process_fex_wisp_sponsor_registration(&$entityform) {
   _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject);
 }
 
-function _process_alumni_eNews_subscribe(&$entityform) {
-  $from = 'jlw85@cornell.edu';
-  $email_list = 'ilr_alumni-l';
-  _forms_send_lyris_email($entityform, $from, $email_list);
-}
-
 function _process_graduate_programs_inquiry(&$entityform) {
   $admin_email = _forms_get_admin_email($entityform);
   _forms_send_emails($entityform, $admin_email);
   _forms_grad_form_add_custom_params($entityform);
-}
-
-function _forms_send_lyris_email(&$entityform, $from, $email_list) {
-  global $ILR_SECRETS;
-  $pw = $ILR_SECRETS[$email_list];
-  $user_name = _forms_construct_user_name($entityform);
-  $entityform_wrapper = _forms_entityform_wrapper($entityform);
-  $user_email = $entityform_wrapper->field_email->value();
-
-  $action = $entityform->field_subscribe_or_unsubscribe['und'][0]['value'];
-  $email_template = ($action == 'add') ? 'lyris_subscribe' : 'lyris_unsubscribe';
-  $subject_lyris = ($action == 'add') ? 's u b s c r i b e  ' : 'u n s u b s c r i b e  ';
-  $subject_lyris .= 'via webpage: list ' . $email_list . ', user ' . $user_name;
-
-  $body = theme($email_template, array(
-      'list_password'         => $pw,
-      'list_name'             => $email_list,
-      'user_email'            => $user_email,
-      'user_name'             => $user_name,
-    ));
-
-  $to = 'lyris@cornell.edu';
-  _send_email_for_entity_form($to, $from, $subject_lyris, nl2br($body));
 }
 
 /**

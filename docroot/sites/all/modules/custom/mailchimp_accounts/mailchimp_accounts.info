@@ -1,0 +1,10 @@
+name = MailChimp Accounts
+description = Assign a MailChimp API account to any entity.
+package = MailChimp
+core = 7.x
+
+dependencies[] = mailchimp
+dependencies[] = entity
+
+files[] = includes/mailchimp_accounts.entity.inc
+files[] = includes/mailchimp_accounts.ui_controller.inc

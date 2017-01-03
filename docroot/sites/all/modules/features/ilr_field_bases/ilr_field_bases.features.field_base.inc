@@ -4514,39 +4514,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_hcd_topics'.
-  $field_bases['field_hcd_topics'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_hcd_topics',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'Compensation' => 'Compensation',
-        'Diversity and Inclusion' => 'Diversity and Inclusion',
-        'Employee Relations' => 'Employee Relations',
-        'Employment Law' => 'Employment Law',
-        'Equal Employment Opportunity' => 'Equal Employment Opportunity',
-        'Human Resources' => 'Human Resources',
-        'Internal Investigations' => 'Internal Investigations',
-        'Labor Relations' => 'Labor Relations',
-        'Leadership Development' => 'Leadership Development',
-        'On-Site Programs' => 'On-Site Programs',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_header'.
   $field_bases['field_header'] = array(
     'active' => 1,
@@ -5422,6 +5389,46 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_mc_alumni_subscribe'.
+  $field_bases['field_mc_alumni_subscribe'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_mc_alumni_subscribe',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'mailchimp_lists',
+    'settings' => array(
+      'double_opt_in' => 0,
+      'mc_aid' => '942d73b5ffb951021101edbe1',
+      'mc_list_id' => 'e5742cd707',
+      'unsubscribe_action' => 'unsubscribe',
+    ),
+    'translatable' => 0,
+    'type' => 'mailchimp_lists_subscription',
+  );
+
+  // Exported field_base: 'field_mc_hcd_signup'.
+  $field_bases['field_mc_hcd_signup'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_mc_hcd_signup',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'mailchimp_lists',
+    'settings' => array(
+      'double_opt_in' => 0,
+      'mc_aid' => '8e7abe8194069a1e89a02f310',
+      'mc_list_id' => 'e4044a6343',
+      'unsubscribe_action' => 'remove',
+    ),
+    'translatable' => 0,
+    'type' => 'mailchimp_lists_subscription',
   );
 
   // Exported field_base: 'field_media_cl_tech_video_rec'.
@@ -8377,31 +8384,6 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_subscribe_or_unsubscribe'.
-  $field_bases['field_subscribe_or_unsubscribe'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_subscribe_or_unsubscribe',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'add' => 'Subscribe',
-        'delete' => 'Unsubscribe',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_suffix'.

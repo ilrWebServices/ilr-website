@@ -151,6 +151,21 @@ function forms_update_7011() {
 }
 
 /**
+ * Removes field_subscribe_or_unsubscribe
+ */
+function forms_update_7012() {
+  field_delete_field('field_subscribe_or_unsubscribe');
+  field_purge_batch(3);
+}
+
+/**
+ * Delete subm from EMHRM check_your_eligibility
+ */
+function forms_update_7013() {
+  _forms_delete_entityform_submissions('check_your_eligibility');
+}
+
+/**
 * Delete one or more field instances from one entityform
 * @param $form_id
 * @param $field_names

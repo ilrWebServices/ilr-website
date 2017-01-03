@@ -1554,40 +1554,6 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-join_hcd_mail_list-field_hcd_topics'.
-  $field_instances['entityform-join_hcd_mail_list-field_hcd_topics'] = array(
-    'bundle' => 'join_hcd_mail_list',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_hcd_topics',
-    'label' => 'Which topics are you interested in?',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 37,
-    ),
-  );
-
   // Exported field_instance: 'entityform-join_hcd_mail_list-field_last_name'.
   $field_instances['entityform-join_hcd_mail_list-field_last_name'] = array(
     'bundle' => 'join_hcd_mail_list',
@@ -1627,6 +1593,75 @@ function ilr_forms_public_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-join_hcd_mail_list-field_mc_hcd_signup'.
+  $field_instances['entityform-join_hcd_mail_list-field_mc_hcd_signup'] = array(
+    'bundle' => 'join_hcd_mail_list',
+    'default_value' => array(
+      0 => array(
+        'subscribe' => 1,
+        'interest_groups' => array(
+          'e2c22f8563' => array(
+            '4e28d21183' => 0,
+            '20f891f2e9' => 0,
+            '82a36922c1' => 0,
+            '90cce1177c' => 0,
+            '102cdf258e' => 0,
+            '205f11d95a' => 0,
+            '580d1dc365' => 0,
+            '07846e5b49' => 0,
+            'a5636a0567' => 0,
+            'c2eff2693e' => 0,
+            'f94368962a' => 0,
+          ),
+        ),
+        'is_default' => TRUE,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'mailchimp_lists',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'show_interest_groups' => FALSE,
+        ),
+        'type' => 'mailchimp_lists_field_subscribe',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_mc_hcd_signup',
+    'label' => 'mc hcd signup',
+    'required' => 1,
+    'settings' => array(
+      'interest_groups_title' => '',
+      'mergefields' => array(
+        'EMAIL' => '[entityform:field-email]',
+        'FNAME' => '[entityform:field-first-name]',
+        'LNAME' => '[entityform:field-last-name]',
+        'advanced' => 0,
+      ),
+      'options' => array(
+        'interest_groups' => array(),
+        'subscribe' => FALSE,
+      ),
+      'show_interest_groups' => 1,
+      'unsubscribe_on_delete' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'mailchimp_lists',
+      'settings' => array(),
+      'type' => 'mailchimp_lists_select',
+      'weight' => 38,
     ),
   );
 
@@ -2375,10 +2410,10 @@ function ilr_forms_public_field_default_field_instances() {
   t('Type of student');
   t('What is your experience with mediation?');
   t('What is your major (or what program are you in?)');
-  t('Which topics are you interested in?');
   t('Why would you like to join this competition?');
   t('Your name');
   t('Zip code');
+  t('mc hcd signup');
 
   return $field_instances;
 }
