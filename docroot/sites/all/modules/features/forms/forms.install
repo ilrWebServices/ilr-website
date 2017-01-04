@@ -166,6 +166,42 @@ function forms_update_7013() {
 }
 
 /**
+ * Remove all traces of entityform type check_your_eligibility (emhrm)
+ */
+function forms_update_7014() {
+  $fields_to_delete = array(
+    'field_currently_working_in_hr_',
+    'field_how_heard_emhrm',
+    'field_prefix',
+    'field_years_full_time_hr',
+    'field_years_full_time_work_exp',
+  );
+  $delete_count = 0;
+  foreach ($fields_to_delete as $key => $field_name) {
+    field_delete_field($field_name);
+    $delete_count++;
+  }
+
+  entityform_type_cache_reset();
+
+  $fields_info = field_info_instances('entityform', 'check_your_eligibility');
+  foreach ($fields_info as $field_in_form => $field_array) {
+    $field_name = $field_array['field_name'];
+    if ($instance = field_info_instance('entityform', $field_name,
+      'check_your_eligibility')) {
+        field_delete_instance($instance);
+        $delete_count++;
+    }
+  }
+
+  if ($entityform_type = entityform_type_load('check_your_eligibility')) {
+    entityform_type_delete($entityform_type);
+  }
+
+  field_purge_batch($delete_count + 5);
+}
+
+/**
 * Delete one or more field instances from one entityform
 * @param $form_id
 * @param $field_names
