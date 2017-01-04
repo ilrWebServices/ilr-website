@@ -252,6 +252,53 @@
   }
 }
 
+%card-animated {
+  position: relative;
+  &:hover img {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  h2 {
+    background: rgba(0,0,0,.3);
+    @include adjust-font-size-to(26px, 1.2);
+    font-weight: 600;
+    font-style: normal;
+    margin: 0;
+    padding: .5em 25px;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    text-shadow: 1px 1px 2px black;
+    a {
+      font-family: $font;
+      color: white;
+      text-decoration: none;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+  h3 {
+    display: none;
+  }
+
+  .field-name-field-image {
+    background: black;
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    display: block;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition-duration: .2s;
+    transition-duration: .2s;
+  }
+}
+
 %lead-story {
   h2 {
     @extend %title-overlay;
