@@ -2336,31 +2336,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_currently_working_in_hr_'.
-  $field_bases['field_currently_working_in_hr_'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_currently_working_in_hr_',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'Yes' => 'Yes',
-        'No' => 'No',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_date_of_birth_as_text'.
   $field_bases['field_date_of_birth_as_text'] = array(
     'active' => 1,
@@ -4655,39 +4630,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_how_heard_emhrm'.
-  $field_bases['field_how_heard_emhrm'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_how_heard_emhrm',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'Google Ad' => 'Google Ad',
-        'LinkedIn ad' => 'LinkedIn ad',
-        'LinkedIn InMail' => 'LinkedIn InMail',
-        'LinkedIn post' => 'LinkedIn post',
-        'SHRM.org ad' => 'SHRM.org ad',
-        'Twitter' => 'Twitter',
-        'YouTube' => 'YouTube',
-        'Email' => 'Email',
-        'Referral' => 'Referral',
-        'Other' => 'Other',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_how_heard_milr_check_elig'.
   $field_bases['field_how_heard_milr_check_elig'] = array(
     'active' => 1,
@@ -6643,27 +6585,6 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_prefix'.
-  $field_bases['field_prefix'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_prefix',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
   );
 
   // Exported field_base: 'field_prerequisites_requirements'.
@@ -9682,63 +9603,6 @@ function ilr_field_bases_field_default_field_bases() {
         'Junior' => 'Junior',
         'Senior' => 'Senior',
         'First-year MILR' => 'First-year MILR',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
-  // Exported field_base: 'field_years_full_time_hr'.
-  $field_bases['field_years_full_time_hr'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_years_full_time_hr',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'No experience' => 'No experience',
-        '1-5 years' => '1-5 years',
-        '6-10 years' => '6-10 years',
-        '11-15 years' => '11-15 years',
-        '16-20 years' => '16-20 years',
-        '20+ years' => '20+ years',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
-  // Exported field_base: 'field_years_full_time_work_exp'.
-  $field_bases['field_years_full_time_work_exp'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_years_full_time_work_exp',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        '1-5 years' => '1-5 years',
-        '6-10 years' => '6-10 years',
-        '11-15 years' => '11-15 years',
-        '16-20 years' => '16-20 years',
-        '20+ years' => '20+ years',
       ),
       'allowed_values_function' => '',
     ),
