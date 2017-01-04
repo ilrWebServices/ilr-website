@@ -2,6 +2,8 @@
 
 This repository houses the ILR School's Drupal migration. The project was initialized using Singlebrook's [Drupal Streamline](https://github.com/singlebrook/drupal_streamline).
 
+This branch serves to create a featuretest environment to be used for Drupal training sessions.
+
 ## Further Reading
 * [Installation](docs/installation.md)
 * [Development](docs/development.md)
