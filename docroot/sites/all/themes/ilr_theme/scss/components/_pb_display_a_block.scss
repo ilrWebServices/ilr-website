@@ -4,14 +4,13 @@
     .paragraphs-item-display-a-block {
       @include padding-leader(1.5);
       @include padding-trailer(1.5);
-      .event-block {
+      .event-block, .tagged-content {
         @include padding-leader(1);
         @include padding-trailer(1);
         @include grid-span (10,2);
       }
       article {
-        @extend %one-column;
-        margin-bottom: 1em !important;
+        margin-bottom: 1em;
       }
       .field-name-field-more-link {
         text-align: center;
@@ -26,9 +25,6 @@
       &.paragraphs-item-display-a-block {
         @include padding-leader(1);
         @include padding-trailer(1);
-        article.localist-event {
-          @extend %two-column;
-        }
         article.node-reflection {
           @extend %one-column;
         }
@@ -46,9 +42,6 @@
       &.paragraphs-item-display-a-block {
         @include padding-leader(1.5);
         @include padding-trailer(1.5);
-        article:not(.localist-event) {
-          @extend %three-column-masonry;
-        }
       }
     }
   }
@@ -66,8 +59,11 @@
         .event-block {
           @include padding-leader(1.5);
         }
-        article {
+        article.localist-event, article.node-promo {
           @extend %three-column-masonry;
+        }
+        article.node-promo {
+          @include trailer(1.25);
         }
       }
     }
