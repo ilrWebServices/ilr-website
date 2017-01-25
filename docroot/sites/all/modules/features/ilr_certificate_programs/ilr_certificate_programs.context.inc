@@ -25,6 +25,11 @@ function ilr_certificate_programs_context_default_contexts() {
         'node_form' => '0',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        '~professional-programs/certificate-programs/advanced-certificate-labor-studies' => '~professional-programs/certificate-programs/advanced-certificate-labor-studies',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
@@ -38,7 +43,7 @@ function ilr_certificate_programs_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
