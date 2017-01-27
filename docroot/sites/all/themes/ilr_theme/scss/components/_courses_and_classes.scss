@@ -1,6 +1,26 @@
+.group-sidebar {
+
+  .cost {
+    font-weight: bold;
+    @include trailer(0);
+  }
+
+  div.class-cancelled {
+    margin-left: 1.2em;
+    .radio-label {
+      @include trailer(.5);
+    }
+    .message {
+      @include adjust-font-size-to(14px, .7);
+      color: $brand;
+      font-weight: bold;
+    }
+  }
+}
+
 .class-details {
-  @include leader(.5);
   @include trailer(1);
+
   div.form-type-radio {
     @include leader(1);
     clear: left;
@@ -24,23 +44,22 @@
   .message {
     clear: left;
     @include adjust-font-size-to(14px, .7);
-    &.class-cancelled {
-      @include adjust-font-size-to(16px, .7);
-      font-weight: bold;
-      color: $brand;
-    }
   }
 
   span, .street-block {
     clear: left;
     @include adjust-font-size-to(14px, .7);
-    &.timespan {
+    display: inline-block;
+    &.timespan, &.format {
       display: block;
       color: $gray-dark;
       text-transform: uppercase;
     }
     &.location {
       display: block;
+    }
+    &.time {
+      line-height: 1;
     }
   }
 
