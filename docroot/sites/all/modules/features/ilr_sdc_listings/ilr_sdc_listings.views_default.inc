@@ -1007,8 +1007,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['sorts']['field_on_demand_value']['field'] = 'field_on_demand_value';
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
-    4 => 'AND',
-    3 => 'AND',
+    3 => 'OR',
     2 => 'OR',
   );
   /* Filter criterion: Content: Published */
@@ -1203,27 +1202,6 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_class_dates_value_1']['group'] = 3;
   $handler->display->display_options['filters']['field_class_dates_value_1']['default_date'] = 'now';
   /* Filter criterion: Content: Setting (field_setting) */
-  $handler->display->display_options['filters']['field_setting_value_1']['id'] = 'field_setting_value_1';
-  $handler->display->display_options['filters']['field_setting_value_1']['table'] = 'field_data_field_setting';
-  $handler->display->display_options['filters']['field_setting_value_1']['field'] = 'field_setting_value';
-  $handler->display->display_options['filters']['field_setting_value_1']['relationship'] = 'reverse_field_course_node';
-  $handler->display->display_options['filters']['field_setting_value_1']['value'] = array(
-    'online' => 'online',
-    'blended' => 'blended',
-  );
-  $handler->display->display_options['filters']['field_setting_value_1']['group'] = 2;
-  $handler->display->display_options['filters']['field_setting_value_1']['reduce_duplicates'] = TRUE;
-  /* Filter criterion: Content: On Demand (field_on_demand) */
-  $handler->display->display_options['filters']['field_on_demand_value']['id'] = 'field_on_demand_value';
-  $handler->display->display_options['filters']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
-  $handler->display->display_options['filters']['field_on_demand_value']['field'] = 'field_on_demand_value';
-  $handler->display->display_options['filters']['field_on_demand_value']['relationship'] = 'reverse_field_course_node';
-  $handler->display->display_options['filters']['field_on_demand_value']['value'] = array(
-    1 => '1',
-  );
-  $handler->display->display_options['filters']['field_on_demand_value']['group'] = 2;
-  $handler->display->display_options['filters']['field_on_demand_value']['reduce_duplicates'] = TRUE;
-  /* Filter criterion: Content: Setting (field_setting) */
   $handler->display->display_options['filters']['field_setting_value']['id'] = 'field_setting_value';
   $handler->display->display_options['filters']['field_setting_value']['table'] = 'field_data_field_setting';
   $handler->display->display_options['filters']['field_setting_value']['field'] = 'field_setting_value';
@@ -1242,14 +1220,6 @@ function ilr_sdc_listings_views_default_views() {
   );
   $handler->display->display_options['filters']['field_on_demand_value_1']['group'] = 2;
   $handler->display->display_options['filters']['field_on_demand_value_1']['reduce_duplicates'] = TRUE;
-  /* Filter criterion: Content: Class Dates -  start date (field_class_dates) */
-  $handler->display->display_options['filters']['field_class_dates_value_2']['id'] = 'field_class_dates_value_2';
-  $handler->display->display_options['filters']['field_class_dates_value_2']['table'] = 'field_data_field_class_dates';
-  $handler->display->display_options['filters']['field_class_dates_value_2']['field'] = 'field_class_dates_value';
-  $handler->display->display_options['filters']['field_class_dates_value_2']['relationship'] = 'reverse_field_course_node';
-  $handler->display->display_options['filters']['field_class_dates_value_2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_class_dates_value_2']['group'] = 4;
-  $handler->display->display_options['filters']['field_class_dates_value_2']['default_date'] = 'Now';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

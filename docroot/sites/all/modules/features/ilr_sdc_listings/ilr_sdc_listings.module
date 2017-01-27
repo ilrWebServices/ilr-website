@@ -1065,11 +1065,14 @@ function _ilr_sdc_listings_is_ondemand($node) {
  * Checks the city for the hack used in SDC for "On-Line"
  */
 function _ilr_sdc_listings_is_online($node) {
+  $node_wrapper = ilr_get_node_wrapper($node);
   if ($node->type == 'sdc_class') {
-    $node_wrapper = ilr_get_node_wrapper($node);
     $city = $node_wrapper->field_address->locality->value();
     $city = drupal_strtolower(str_replace('-', '', $city));
     return $city == 'online';
+  }
+  elseif ($node->type == 'sdc_course') {
+    return $node_wrapper->field_setting->value() == 'online';
   }
   return FALSE;
 }
@@ -1180,14 +1183,9 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
         $format = _ilr_sdc_listings_generate_course_format_label($class_wrapper->field_course[0]->value()->nid);
         $content .= '<div class="class-details"><span class="timespan">ONLINE</span>';
         if (_ilr_sdc_listings_is_online($class_node)) {
-          // This shows in the sidebar above the form, sometimes causing duplicate info
-          // we'll need to check which page we're on
-          // compare http://www.ilr-website.dev/professional-programs/ls086/labor-explores-arts
-          // and http://www.ilr-website.dev/professional-programs/ollb116/costing-out-contract-online
-          if (count($class_nids) == 1) {
+          if (count($class_nids) == 1) { // If there are multiple, they get displayed as radios
             $content .= _ilr_sdc_listings_generate_class_time_location_markup($class_node);
           }
-
         }
         else {
           $message = (_ilr_sdc_listings_is_ondemand($class_node))
@@ -1536,7 +1534,7 @@ function _ilr_sdc_listings_generate_class_link_markup($class_nodes, $view_mode =
       $message = (_ilr_sdc_listings_is_ondemand($class_node))
         ? 'Take this self-paced '. strtolower($format).' at your convenience'
         : 'All instruction will be completed between these dates';
-      $markup .= '<span class=""> '. $message .'</span>';
+      $markup .= '<span class="online-message"> '. $message .'</span>';
     }
   }
   else {
@@ -1643,6 +1641,10 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
     $wrapper = ilr_get_node_wrapper($course);
     if ($view_mode == 'full') {
       $markup .= '<p class="cost">$'. $wrapper->field_price->value() .'</p>';
+    }
+    if (_ilr_sdc_listings_is_online($course)) {
+      $format = _ilr_sdc_listings_generate_course_format_label($course);
+      $markup .= '<span class="timespan">ONLINE '. $format .'</span>';
     }
     $markup .= '<p class="unscheduled">No currently scheduled dates</p>';
   }
@@ -2084,7 +2086,7 @@ function ilr_sdc_listings_views_query_alter(&$view, &$query) {
     $params = drupal_get_query_parameters();
     if (empty($params['field_online'])) {
       unset($query->where[2]['conditions']);
-      unset($query->where[4]['conditions']);
+      //unset($query->where[4]['conditions']);
     }
     if (empty($params['field_address_locality'])) {
       unset($query->where[3]['conditions']);

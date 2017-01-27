@@ -19,7 +19,6 @@
 }
 
 .class-details {
-  @include trailer(1);
 
   div.form-type-radio {
     @include leader(1);
@@ -35,6 +34,7 @@
     span {
       display: block;
     }
+    max-width: 80%;
   }
 
   .class-full {

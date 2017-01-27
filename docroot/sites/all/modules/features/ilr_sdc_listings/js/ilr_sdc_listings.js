@@ -337,7 +337,7 @@ jQuery.fn.sortElements = (function(){
         if (dateString.length) {
           return new Date(dateString);
         }
-        else if ($(article).find('span.timespan').text() == 'ON-DEMAND') {
+        else if ($(article).find('span.online-message').text().indexOf("self-paced") >= 0) {
           return new Date('April 28, 2076'); // A future date earlier than the default
         }
         return new Date('April 28, 2087'); // Some date in the distant future
@@ -417,6 +417,7 @@ jQuery.fn.sortElements = (function(){
       };
 
       sortSearchResults = function() {
+        console.log('sortSearchResults');
         // Sort all elements so that scheduled courses come first
         $('#content article.node-sdc-course').sortElements(function(a, b){
           return $(a).hasClass('scheduled') ? -1 : 1;
