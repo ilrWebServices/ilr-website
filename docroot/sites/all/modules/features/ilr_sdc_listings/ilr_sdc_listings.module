@@ -1182,17 +1182,10 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
       if (_ilr_sdc_listings_is_ondemand($class_node) || _ilr_sdc_listings_is_online($class_node)) {
         $format = _ilr_sdc_listings_generate_course_format_label($class_wrapper->field_course[0]->value()->nid);
         $content .= '<div class="class-details"><span class="timespan">ONLINE</span>';
-        if (_ilr_sdc_listings_is_online($class_node)) {
-          if (count($class_nids) == 1) { // If there are multiple, they get displayed as radios
-            $content .= _ilr_sdc_listings_generate_class_time_location_markup($class_node);
-          }
-        }
-        else {
-          $message = (_ilr_sdc_listings_is_ondemand($class_node))
-            ? 'Take this self-paced '. strtolower($format).' at your convenience'
-            : 'All instruction will be completed between these dates';
-          $content .= '<span class="message"> '. $message .'</span>';
-        }
+        $message = (_ilr_sdc_listings_is_ondemand($class_node))
+          ? 'Take this self-paced '. strtolower($format).' at your convenience'
+          : 'All instruction will be completed between these dates';
+        $content .= '<span class="message"> '. $message .'</span>';
         $content .= '</div>';
       }
 
@@ -2247,49 +2240,48 @@ function _ilr_sdc_listings_get_class_detail_markup($class_node) {
  */
 function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
   $class_radios = array();
-  if (count($classes) > 1) {
-    $classes = _ilr_sdc_listings_remove_overflow_sessions($classes);
-    foreach ($classes as $nid => $class) {
-      $wrapper = ilr_get_node_wrapper($class);
-      $class_id = $wrapper->field_class_id->value();
-      if ($wrapper->field_is_full->value()) {
-        $full_markup = _ilr_sdc_listings_get_course_full_markup($class);
-        $form['class_full_with_radio_label'] = array(
+  $classes = _ilr_sdc_listings_remove_overflow_sessions($classes);
+  foreach ($classes as $nid => $class) {
+    $wrapper = ilr_get_node_wrapper($class);
+    $class_id = $wrapper->field_class_id->value();
+    if ($wrapper->field_is_full->value()) {
+      $full_markup = _ilr_sdc_listings_get_course_full_markup($class);
+      $form['class_full_with_radio_label'] = array(
+        '#type' => 'markup',
+        '#markup' => $full_markup,
+      );
+    } // Add the radio
+    else {
+      // See if it's been cancelled
+      if ($wrapper->field_cancelled->value() == 1) {
+        $form[$class_id] = array(
           '#type' => 'markup',
-          '#markup' => $full_markup,
+          '#prefix' => '<div class="class-cancelled">',
+          '#suffix' => '<p class="message class-cancelled">Seats for this date are no longer available</p></div>',
+          '#markup' => _ilr_sdc_listings_generate_class_radio_label($class),
         );
-      } // Add the radio
-      else {
-        if ($wrapper->field_cancelled->value() != 1) {
-          $class_radios[] = $class_id;
-          $form[$class_id] = array(
-            '#type' => 'radio',
-            '#return_value' => $class_id,
-            '#attributes' => array('name' => 'addClass'),
-            // Ensure single value in $form_state
-            '#parents' => array('addClass'),
-          );
-          $form['class_radio_label_' . $class_id] = array(
-            '#type' => 'markup',
-            '#markup' => _ilr_sdc_listings_generate_class_radio_label($class),
-          );
-        } // Handle cancelled classes
-        else {
-          $form[$class_id] = array(
-            '#type' => 'markup',
-            '#prefix' => '<div class="class-cancelled">',
-            '#suffix' => '<p class="message class-cancelled">Seats for this date are no longer available</p></div>',
-            '#markup' => _ilr_sdc_listings_generate_class_radio_label($class),
-          );
-        }
+      } // Handle classes that are not on demand
+      elseif (!_ilr_sdc_listings_is_ondemand($class)) {
+        $class_radios[] = $class_id;
+        $form[$class_id] = array(
+          '#type' => 'radio',
+          '#return_value' => $class_id,
+          '#attributes' => array('name' => 'addClass'),
+          // Ensure single value in $form_state
+          '#parents' => array('addClass'),
+        );
+        $form['class_radio_label_' . $class_id] = array(
+          '#type' => 'markup',
+          '#markup' => _ilr_sdc_listings_generate_class_radio_label($class),
+        );
       }
     }
-    if (!empty($class_radios)) {
-      // Set the first as checked
-      // Check first whether it's cancelled
-      $first_class_id = reset($class_radios);
-      $form[$first_class_id]['#attributes']['checked'] = 'checked';
-    }
+  }
+  if (!empty($class_radios)) {
+    // Set the first as checked
+    // Check first whether it's cancelled
+    $first_class_id = reset($class_radios);
+    $form[$first_class_id]['#attributes']['checked'] = 'checked';
   }
 }
 
