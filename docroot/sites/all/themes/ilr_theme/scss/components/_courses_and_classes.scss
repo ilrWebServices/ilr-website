@@ -2,7 +2,7 @@
 
   .cost {
     font-weight: bold;
-    @include trailer(0);
+    @include trailer(.25);
   }
 
   div.class-cancelled {
@@ -20,8 +20,12 @@
 
 .class-details {
 
+  .form-item {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   div.form-type-radio {
-    @include leader(1);
     clear: left;
     float: left;
     margin-right: .5em;
@@ -29,7 +33,6 @@
 
   .radio-label {
     float: left;
-    @include leader(1);
     @include trailer(1);
     span {
       display: block;
@@ -51,6 +54,7 @@
     @include adjust-font-size-to(14px, .7);
     display: inline-block;
     &.timespan, &.format {
+      @include trailer(.5);
       display: block;
       color: $gray-dark;
       text-transform: uppercase;
@@ -59,8 +63,14 @@
       display: block;
     }
     &.time {
-      line-height: 1;
+      line-height: 1.2;
+      @include padding-leader(.25);
+      width: 80%;
     }
+  }
+
+  .course_details {
+    @include adjust-font-size-to(16px, .7);
   }
 
   .details-rule {
@@ -171,6 +181,11 @@
   }
 }
 
+form.class-details {
+  border-bottom: 1px solid $gray-light;
+  @include padding-trailer(1);
+}
+
 .page-professional-programs-workshops-courses-training, .page-professional-programs-search {
   @extend %two-col-content-area;
   .sort p {
@@ -223,7 +238,7 @@
       clear: left;
     }
     form {
-      @include trailer(2);
+      @include trailer(1.5);
     }
     article {
       h2 {
@@ -244,7 +259,7 @@
   }
   article {
     h2 {
-      // margin-bottom: 0;
+
     }
     .field-name-body {
       clear: left;
@@ -322,7 +337,7 @@ div.field-name-field-course.field-type-entityreference {
 }
 
 .button {
-  @include rhythm(1);
+  @include rhythm(.5);
   @extend %cornell-button;
   clear: left;
   span {
