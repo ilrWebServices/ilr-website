@@ -1182,10 +1182,10 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
       if (_ilr_sdc_listings_is_ondemand($class_node) || _ilr_sdc_listings_is_online($class_node)) {
         $format = _ilr_sdc_listings_generate_course_format_label($class_wrapper->field_course[0]->value()->nid);
         $content .= '<div class="class-details"><span class="timespan">ONLINE</span>';
-        $message = (_ilr_sdc_listings_is_ondemand($class_node))
-          ? 'Take this self-paced '. strtolower($format).' at your convenience'
-          : 'All instruction will be completed between these dates';
-        $content .= '<span class="message"> '. $message .'</span>';
+        if (_ilr_sdc_listings_is_ondemand($class_node)) {
+          // This is on the course node for on demand
+          $content .= '<span class="message">Take this self-paced '. strtolower($format) .' at your convenience</span>';
+        }
         $content .= '</div>';
       }
 
@@ -1444,7 +1444,7 @@ function _ilr_sdc_listings_get_class_timespan($class) {
 function _ilr_sdc_listings_is_multiday_event($class) {
   $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class);
   $interval = $datetimes['start']->diff($datetimes['end']);
-  return $interval->d > 0;
+  return $interval->m > 0 || $interval->d > 0;
 }
 
 function _ilr_sdc_listings_is_multiyear_event($class) {
@@ -1783,7 +1783,7 @@ function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NU
     $range = _ilr_sdc_listings_get_date_range();
     $query->fieldCondition('field_class_dates', 'value', $range['start_date'], '>=')
       ->fieldCondition('field_class_dates', 'value2', $range['end_date'], '<=');
-    if (!$remove_cancelled) {
+    if (!$remove_cancelled) { // Filter out cancelled if it won't be below
       $query->fieldCondition('field_cancelled', 'value', 1, '!=');
     }
   }

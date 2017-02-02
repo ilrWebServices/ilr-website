@@ -1220,6 +1220,14 @@ function ilr_sdc_listings_views_default_views() {
   );
   $handler->display->display_options['filters']['field_on_demand_value_1']['group'] = 2;
   $handler->display->display_options['filters']['field_on_demand_value_1']['reduce_duplicates'] = TRUE;
+  /* Filter criterion: Content: Cancelled (field_cancelled) */
+  $handler->display->display_options['filters']['field_cancelled_value']['id'] = 'field_cancelled_value';
+  $handler->display->display_options['filters']['field_cancelled_value']['table'] = 'field_data_field_cancelled';
+  $handler->display->display_options['filters']['field_cancelled_value']['field'] = 'field_cancelled_value';
+  $handler->display->display_options['filters']['field_cancelled_value']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_cancelled_value']['value'] = array(
+    0 => '0',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
