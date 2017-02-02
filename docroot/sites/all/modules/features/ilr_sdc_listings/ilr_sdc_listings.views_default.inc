@@ -877,6 +877,13 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_class_dates_value']['field'] = 'field_class_dates_value';
   $handler->display->display_options['filters']['field_class_dates_value']['operator'] = '>';
   $handler->display->display_options['filters']['field_class_dates_value']['default_date'] = 'now';
+  /* Filter criterion: Content: Cancelled (field_cancelled) */
+  $handler->display->display_options['filters']['field_cancelled_value']['id'] = 'field_cancelled_value';
+  $handler->display->display_options['filters']['field_cancelled_value']['table'] = 'field_data_field_cancelled';
+  $handler->display->display_options['filters']['field_cancelled_value']['field'] = 'field_cancelled_value';
+  $handler->display->display_options['filters']['field_cancelled_value']['value'] = array(
+    0 => '0',
+  );
   $export['next_class_course'] = $view;
 
   $view = new view();
