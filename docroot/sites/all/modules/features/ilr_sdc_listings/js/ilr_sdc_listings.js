@@ -417,7 +417,6 @@ jQuery.fn.sortElements = (function(){
       };
 
       sortSearchResults = function() {
-        console.log('sortSearchResults');
         // Sort all elements so that scheduled courses come first
         $('#content article.node-sdc-course').sortElements(function(a, b){
           return $(a).hasClass('scheduled') ? -1 : 1;

@@ -2081,7 +2081,6 @@ function ilr_sdc_listings_views_query_alter(&$view, &$query) {
     $params = drupal_get_query_parameters();
     if (empty($params['field_online'])) {
       unset($query->where[2]['conditions']);
-      //unset($query->where[4]['conditions']);
     }
     if (empty($params['field_address_locality'])) {
       unset($query->where[3]['conditions']);
@@ -2281,7 +2280,6 @@ function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
   }
   if (!empty($class_radios)) {
     // Set the first as checked
-    // Check first whether it's cancelled
     $first_class_id = reset($class_radios);
     $form[$first_class_id]['#attributes']['checked'] = 'checked';
   }
