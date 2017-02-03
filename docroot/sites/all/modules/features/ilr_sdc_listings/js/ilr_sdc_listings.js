@@ -337,7 +337,7 @@ jQuery.fn.sortElements = (function(){
         if (dateString.length) {
           return new Date(dateString);
         }
-        else if ($(article).find('span.timespan').text() == 'ON-DEMAND') {
+        else if ($(article).find('span.online-message').text().indexOf("self-paced") >= 0) {
           return new Date('April 28, 2076'); // A future date earlier than the default
         }
         return new Date('April 28, 2087'); // Some date in the distant future

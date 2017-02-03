@@ -1,8 +1,31 @@
+.group-sidebar {
+
+  .cost {
+    font-weight: bold;
+    @include trailer(.25);
+  }
+
+  div.class-cancelled {
+    margin-left: 1.2em;
+    .radio-label {
+      @include trailer(.5);
+    }
+    .message {
+      @include adjust-font-size-to(14px, .7);
+      color: $brand;
+      font-weight: bold;
+    }
+  }
+}
+
 .class-details {
-  @include leader(.5);
-  @include trailer(1);
+
+  .form-item {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   div.form-type-radio {
-    @include leader(1);
     clear: left;
     float: left;
     margin-right: .5em;
@@ -10,11 +33,11 @@
 
   .radio-label {
     float: left;
-    @include leader(1);
     @include trailer(1);
     span {
       display: block;
     }
+    max-width: 80%;
   }
 
   .class-full {
@@ -24,17 +47,14 @@
   .message {
     clear: left;
     @include adjust-font-size-to(14px, .7);
-    &.class-cancelled {
-      @include adjust-font-size-to(16px, .7);
-      font-weight: bold;
-      color: $brand;
-    }
   }
 
   span, .street-block {
     clear: left;
     @include adjust-font-size-to(14px, .7);
-    &.timespan {
+    display: inline-block;
+    &.timespan, &.format {
+      @include trailer(.5);
       display: block;
       color: $gray-dark;
       text-transform: uppercase;
@@ -42,6 +62,15 @@
     &.location {
       display: block;
     }
+    &.time {
+      line-height: 1.2;
+      @include padding-leader(.25);
+      width: 80%;
+    }
+  }
+
+  .course_details {
+    @include adjust-font-size-to(16px, .7);
   }
 
   .details-rule {
@@ -152,6 +181,11 @@
   }
 }
 
+form.class-details {
+  border-bottom: 1px solid $gray-light;
+  @include padding-trailer(1);
+}
+
 .page-professional-programs-workshops-courses-training, .page-professional-programs-search {
   @extend %two-col-content-area;
   .sort p {
@@ -204,7 +238,7 @@
       clear: left;
     }
     form {
-      @include trailer(2);
+      @include trailer(1.5);
     }
     article {
       h2 {
@@ -224,9 +258,6 @@
     margin-bottom: 0;
   }
   article {
-    h2 {
-      // margin-bottom: 0;
-    }
     .field-name-body {
       clear: left;
     }
@@ -303,7 +334,7 @@ div.field-name-field-course.field-type-entityreference {
 }
 
 .button {
-  @include rhythm(1);
+  @include rhythm(.5);
   @extend %cornell-button;
   clear: left;
   span {
