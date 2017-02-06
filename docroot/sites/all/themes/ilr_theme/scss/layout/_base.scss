@@ -69,9 +69,13 @@
   &[data-eq-state="550"],
   &[data-eq-state="768"] {
     #content, #sidebar-second {
-      .block:not(.block-system) > article:not(.node-certificate-programs),
+      // .block:not(.block-system) > article:not(.node-certificate-programs),
+      .block:not(#block-bean-certificate-programs-list):not(.block-system) > article,
       .block .views-row {
         @extend %two-column;
+      }
+      #block-bean-certificate-programs-list {
+        @extend %one-column;
       }
     }
     #content .block[data-items='3'] article {

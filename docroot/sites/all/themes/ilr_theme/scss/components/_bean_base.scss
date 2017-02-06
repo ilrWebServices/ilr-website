@@ -36,8 +36,15 @@
   #content & {
     &:not([data-items='1']) {
       &:not([data-items='3']) {
-        article:not(.node-reflection):not(.node-certificate-programs) {
+        // article:not(.node-reflection):not(.node-certificate-programs) {
+        // :not(#block-bean-certificate-programs-list) article:not(.node-reflection):not(.node-certificate-programs) {
+        article.localist-event, article.node-news-item, article.node-experience-report, article.node-visiting-fellow {
           @extend %thumb;
+        }
+        article.node-promo {
+          &:not(#block-bean-certificate-programs-list) & {
+            @extend %thumb;
+          }
         }
         &[data-eq-state="small"] {
           @extend %slug;

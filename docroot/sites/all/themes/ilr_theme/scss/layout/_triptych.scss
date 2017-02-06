@@ -8,10 +8,10 @@
     @include clearfix;
     @include grid-span(1, 2);
     .block-bean {
-      article:not(.node-certificate-programs) {
+      article:not(.node-certificate-programs):not(.node-promo) {
         @extend %two-column;
       }
-      article.node-certificate-programs {
+      article.node-certificate-programs, article.node-promo {
         @extend %one-column;
       }
       &[data-items='1'] {
