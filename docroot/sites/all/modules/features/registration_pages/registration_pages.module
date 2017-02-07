@@ -34,6 +34,11 @@ function registration_pages_token_info() {
     'description' => t('Includes date, time, location'),
   );
 
+  $tokens['calendar_info'] = array(
+    'name' => t('Calendar Info'),
+    'description' => t('Includes links to add to calendars'),
+  );
+
   $return_array = array(
     'tokens' => array('entityform' => $tokens),
   );
@@ -50,16 +55,23 @@ function registration_pages_tokens($type, $tokens, array $data = array(), array 
   if ($type == 'entityform' && !empty($data['entityform'])) {
     $entityform = $data['entityform'];
 
-    // Check that event_info exists - if so we need to assign to it
-    if (isset($tokens['event_info'])) {
-      if (_registration_pages_is_event_registration_form($entityform)) {
-        $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
-        $node = $entityform_wrapper->field_referenced_node->value();
-        $return[$tokens['event_info']] = _registration_pages_get_event_markup($node);
-      }
+    // Check whether event_info and/or calendar_info exist,
+    // if so assign to one or both, note that both can be true
+    if (isset($tokens['event_info']) || isset($tokens['calendar_info'])) {
+     if (_registration_pages_is_event_registration_form($entityform)) {
+       $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
+       $node = $entityform_wrapper->field_referenced_node->value();
+       if (isset($tokens['event_info'])) {
+         $return[$tokens['event_info']] =
+          _registration_pages_get_event_markup($node);
+       }
+       if (isset($tokens['calendar_info'])) {
+         $return[$tokens['calendar_info']] =
+          _registration_pages_get_calendar_markup($node);
+       }
+     }
     }
   }
-
   return $return;
 }
 
@@ -124,6 +136,86 @@ function _registration_pages_get_event_markup($node) {
   return $event_markup;
 }
 
+/**
+ * Generate markup for the add to calendar info for an event on a registration page
+ * This should only be called if we're on a registration page
+ */
+function _registration_pages_get_calendar_markup($node) {
+  // Create an entity_metadata_wrapper to access values
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+
+  // For the google link
+  $start_date = $node->field_event_date['und'][0]['value'];
+  $end_date = $node->field_event_date['und'][0]['value2'];
+  $timezone = $node->field_event_date['und'][0]['timezone'];
+  $rfc_dates = _registration_pages_rfc_3339_date($start_date, $end_date, $timezone);
+  $dates_for_google = $rfc_dates['both'];
+
+  $google_url = "https://calendar.google.com/calendar/render?action=TEMPLATE";
+  $google_url .= "&text=$node->title";
+  $google_url .= "&dates=$dates_for_google";
+  if ($location_text = $node_wrapper->field_location_as_long_text->value()) {
+    $google_url .= "&location=$location_text";
+  }
+
+  $calendar_markup = "<p><a href=\"$google_url\">Add to Google calendar</a></p>";
+  return $calendar_markup;
+}
+
+/**
+ * Returns an array containing RFC 3339 formatted start and end dates.
+ * This function comes from addtocal.module, 2/2/2017
+ *
+ * @param $start
+ *   Start date
+ * @param $end
+ *   End date
+ * @param $timezone
+ *   Timezone for the supplied dates
+ *
+ * @return array
+ */
+function _registration_pages_rfc_3339_date($start, $end, $timezone) {
+  if (!$end) {
+    $end = $start;
+  }
+
+  $tz_utc = new DateTimeZone('UTC');
+  // When $timezone is an empty string no default is used and we see a Unknown or bad timezone () in DateTimeZone->__construct() error.
+  if (empty($timezone)) {
+    $tz = NULL;
+  }
+  else {
+    $tz = new DateTimeZone($timezone);
+  }
+
+  $startDate = new DateTime($start, $tz);
+  $startDate->setTimezone($tz_utc);
+
+  $endDate = new DateTime($end, $tz);
+  $endDate->setTimezone($tz_utc);
+
+  $start_timestamp = $startDate->getTimestamp();
+  $end_timestamp = $endDate->getTimestamp();
+
+  $diff_timestamp = $end_timestamp - $start_timestamp;
+
+  $start_date = gmdate('Ymd', $start_timestamp) . 'T' . gmdate('His', $start_timestamp) . 'Z';
+  $local_start_date = date('Ymd', $start_timestamp) . 'T' . date('His', $start_timestamp) . '';
+  $end_date = gmdate('Ymd', $end_timestamp) . 'T' . gmdate('His', $end_timestamp) . 'Z';
+  $local_end_date = date('Ymd', $end_timestamp) . 'T' . date('His', $end_timestamp) . '';
+
+  $diff_hours = str_pad(round(($diff_timestamp / 60) / 60), 2, '0', STR_PAD_LEFT);
+  $diff_minutes = str_pad(abs(round($diff_timestamp / 60) - ($diff_hours * 60)), 2, '0', STR_PAD_LEFT);
+
+  return array(
+    'start' => $start_date,
+    'end' => $end_date,
+    'both' => $start_date . '/' . $end_date,
+    'local_start' => $local_start_date,
+    'local_end' => $local_end_date,
+  );
+}
 
 /**
  * Generate the time markup for the event info for an event on a registration page
