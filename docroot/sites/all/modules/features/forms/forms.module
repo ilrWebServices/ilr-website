@@ -927,6 +927,7 @@ function _forms_generate_template_parameters($entityform, $params=array(), $cust
     'form_data'             => _entity_display_form_data($entityform),
     'form_title'            => _forms_get_form_title($entityform),
     'event_info_for_email'  => _forms_get_event_info_for_email($entityform),
+    'calendar_info_for_email'  => _forms_get_calendar_info_for_email($entityform),
     'event_payment_details' => _forms_get_payment_details_for_email($entityform),
     'postdate'              => _forms_get_postdate_for_email($entityform),
     'sitename'              => variable_get('site_name', 'Drupal'),
@@ -1101,6 +1102,19 @@ function _forms_get_event_info_for_email($entityform) {
     $entityform_wrapper = _forms_entityform_wrapper($entityform);
     $node = $entityform_wrapper->field_referenced_node->value();
     return _registration_pages_get_event_markup($node);
+  }
+  return '';
+}
+
+/**
+ * Wrapper function for _registration_pages_get_calendar_markup()
+ */
+function _forms_get_calendar_info_for_email($entityform) {
+  if (_forms_is_event_registration_form($entityform)) {
+    module_load_include('module', 'registration_pages');
+    $entityform_wrapper = _forms_entityform_wrapper($entityform);
+    $node = $entityform_wrapper->field_referenced_node->value();
+    return _registration_pages_get_calendar_markup($node);
   }
   return '';
 }
