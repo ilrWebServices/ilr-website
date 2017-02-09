@@ -137,7 +137,7 @@ function _registration_pages_get_event_markup($node) {
 }
 
 /**
- * Generate markup for the add to calendar info for an event on a registration page
+ * Generate markup for Add to Google Calendar for event on a registration page
  * This should only be called if we're on a registration page
  */
 function _registration_pages_get_calendar_markup($node) {
@@ -148,12 +148,11 @@ function _registration_pages_get_calendar_markup($node) {
   $start_date = $node->field_event_date['und'][0]['value'];
   $end_date = $node->field_event_date['und'][0]['value2'];
   $timezone = $node->field_event_date['und'][0]['timezone_db'];
-  $rfc_dates = _registration_pages_rfc_3339_date($start_date, $end_date, $timezone);
-  $dates_for_google = $rfc_dates['both'];
+  $google_dates = _registration_pages_get_google_dates($start_date, $end_date, $timezone);
 
   $google_url = "https://calendar.google.com/calendar/render?action=TEMPLATE";
   $google_url .= "&text=$node->title";
-  $google_url .= "&dates=$dates_for_google";
+  $google_url .= "&dates=$google_dates";
   if ($location_text = $node_wrapper->field_location_as_long_text->value()) {
     $google_url .= "&location=$location_text";
   }
@@ -163,8 +162,8 @@ function _registration_pages_get_calendar_markup($node) {
 }
 
 /**
- * Returns an array containing RFC 3339 formatted start and end dates.
- * This function comes from addtocal.module, 2/2/2017
+ * Returns start and end dates in the format needed for google calendars.
+ * Based on _registration_pages_rfc_3339_date from addtocal.module, 2/2/2017
  *
  * @param $start
  *   Start date
@@ -173,9 +172,9 @@ function _registration_pages_get_calendar_markup($node) {
  * @param $timezone
  *   Timezone for the supplied dates
  *
- * @return array
+ * @return string
  */
-function _registration_pages_rfc_3339_date($start, $end, $timezone) {
+function _registration_pages_get_google_dates($start, $end, $timezone) {
   if (!$end) {
     $end = $start;
   }
@@ -198,23 +197,10 @@ function _registration_pages_rfc_3339_date($start, $end, $timezone) {
   $start_timestamp = $startDate->getTimestamp();
   $end_timestamp = $endDate->getTimestamp();
 
-  $diff_timestamp = $end_timestamp - $start_timestamp;
-
   $start_date = gmdate('Ymd', $start_timestamp) . 'T' . gmdate('His', $start_timestamp) . 'Z';
-  $local_start_date = date('Ymd', $start_timestamp) . 'T' . date('His', $start_timestamp) . '';
   $end_date = gmdate('Ymd', $end_timestamp) . 'T' . gmdate('His', $end_timestamp) . 'Z';
-  $local_end_date = date('Ymd', $end_timestamp) . 'T' . date('His', $end_timestamp) . '';
 
-  $diff_hours = str_pad(round(($diff_timestamp / 60) / 60), 2, '0', STR_PAD_LEFT);
-  $diff_minutes = str_pad(abs(round($diff_timestamp / 60) - ($diff_hours * 60)), 2, '0', STR_PAD_LEFT);
-
-  return array(
-    'start' => $start_date,
-    'end' => $end_date,
-    'both' => $start_date . '/' . $end_date,
-    'local_start' => $local_start_date,
-    'local_end' => $local_end_date,
-  );
+  return $start_date . '/' . $end_date;
 }
 
 /**
