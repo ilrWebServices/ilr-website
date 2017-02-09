@@ -89,7 +89,7 @@ function ilr_forms_students_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "Thank you for registering",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for your registration. You will receive an email confirmation shortly. If you have any questions, please contact Sue Sappington in the Alumni Affairs Development Office, \\u003Ca href=\\u0022mailto:ss446@cornell.edu\\u0022\\u003Ess446@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent Details:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for your registration. You will receive an email confirmation shortly. If you have any questions, please contact Sue Sappington in the Alumni Affairs Development Office, \\u003Ca href=\\u0022mailto:ss446@cornell.edu\\u0022\\u003Ess446@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EEvent Details:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:event_info]\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[entityform:calendar_info]\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
