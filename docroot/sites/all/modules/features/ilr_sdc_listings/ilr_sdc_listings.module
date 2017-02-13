@@ -1237,7 +1237,9 @@ function _ilr_sdc_listings_course_add_instructors(&$course_node, $view_mode) {
       foreach ($classes as $class) {
         $class_node_wrapper = ilr_get_node_wrapper($class);
         $class_id = $class_node_wrapper->field_class_id->value();
-        $content .= _ilr_sdc_listings_generate_faculty_markup($class, $class_id, count($classes));
+        if ($class_node_wrapper->field_cancelled->value() != 1 && $class_node_wrapper->field_is_full->value() != 1) {
+          $content .= _ilr_sdc_listings_generate_faculty_markup($class, $class_id, count($classes));
+        }
       }
       $content .= '</div>';
       $course_node->content['instructors'] = array('#markup' => $content,'#weight' => 20);
