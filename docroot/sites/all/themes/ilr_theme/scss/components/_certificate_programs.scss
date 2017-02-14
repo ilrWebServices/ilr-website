@@ -279,12 +279,10 @@ body.node-type-certificate-programs {
     }
     h2 {
       @include adjust-leading-to(.9);
-      a {
-        font-family: $font;
-        color: $student-portrait-color;
-        &:hover {
-          color: #d76b00;
-        }
+      font-family: $font;
+      color: $student-portrait-color;
+      &:hover {
+        color: #d76b00;
       }
     }
     .field-name-field-teaser {
@@ -295,9 +293,21 @@ body.node-type-certificate-programs {
       }
       p {
         @include adjust-font-size-to(18px,1);
+        @include trailer(.5);
       }
       strong {
         font-weight: 300;
+      }
+    }
+    .field-name-field-thumbnail {
+      @include grid-span(12);
+      text-align: right;
+      @include trailer(.5);
+      &::before {
+        content: "In partnership with";
+      }
+      img {
+        vertical-align: middle;
       }
     }
   }
