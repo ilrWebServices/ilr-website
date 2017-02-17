@@ -941,7 +941,7 @@ function ilr_certificate_programs_field_default_field_instances() {
   $field_instances['node-certificate_programs-field_thumbnail'] = array(
     'bundle' => 'certificate_programs',
     'deleted' => 0,
-    'description' => 'If you add a partner logo, it will be displayed to the visitor in the "In partnership with" section, roughly 27px high.',
+    'description' => 'If you add a partner logo, it will be displayed to the visitor in the "In partnership with" section, roughly 27px high. The alt text is read by screen readers for the partner name.',
     'display' => array(
       'alternate_teaser' => array(
         'label' => 'above',
@@ -980,7 +980,7 @@ function ilr_certificate_programs_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'p',
+    'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_thumbnail',
     'label' => 'Partner logo',
     'required' => 0,
@@ -988,7 +988,7 @@ function ilr_certificate_programs_field_default_field_instances() {
       'alt_field' => 0,
       'default_image' => 0,
       'file_directory' => 'certificate-partners',
-      'file_extensions' => 'png gif jpg jpeg',
+      'file_extensions' => 'png gif',
       'max_filesize' => '',
       'max_resolution' => '',
       'min_resolution' => '',
@@ -997,33 +997,30 @@ function ilr_certificate_programs_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'image',
+      'module' => 'media',
       'settings' => array(
-        'filefield_sources' => array(
-          'filefield_sources' => array(
-            'attach' => 0,
-            'clipboard' => 0,
-            'reference' => 0,
-            'remote' => 0,
-            'upload' => 'upload',
-          ),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 0,
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-            'search_all_fields' => 0,
-          ),
+        'allowed_schemes' => array(
+          'private' => 0,
+          'public' => 'public',
+          'youtube' => 0,
         ),
-        'preview_image_style' => 'thumbnail',
-        'progress_indicator' => 'throbber',
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'ilr_media_browser--media_browser_1' => 'ilr_media_browser--media_browser_1',
+          'ilr_media_browser--media_browser_my_files' => 'ilr_media_browser--media_browser_my_files',
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 'upload',
+          'youtube' => 0,
+        ),
       ),
-      'type' => 'image_image',
+      'type' => 'media_generic',
       'weight' => 6,
     ),
   );
@@ -1183,7 +1180,7 @@ function ilr_certificate_programs_field_default_field_instances() {
   t('Download brochure');
   t('External URL');
   t('Format');
-  t('If you add a partner logo, it will be displayed to the visitor in the "In partnership with" section, roughly 27px high.');
+  t('If you add a partner logo, it will be displayed to the visitor in the "In partnership with" section, roughly 27px high. The alt text is read by screen readers for the partner name.');
   t('Include Outcomes/Benefits, Rationale, Who should enroll');
   t('Main image');
   t('Notes');

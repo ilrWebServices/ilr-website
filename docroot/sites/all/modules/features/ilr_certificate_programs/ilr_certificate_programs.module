@@ -82,6 +82,11 @@ function ilr_certificate_programs_preprocess_node(&$variables) {
       if ($external_url = $wrapper->field_website_url->value()) {
         $variables['node_url'] = $external_url['url'];
       }
+      if ($image_info = $wrapper->field_thumbnail->value()) {
+        $alt_text = $image_info['alt'];
+        $variables['content']['field_thumbnail']['#prefix'] = '<p class="partner-credit">In partnership with <span>'. $alt_text .'</span>';
+        $variables['content']['field_thumbnail']['#suffix'] = '</p>';
+      }
     }
   }
 }

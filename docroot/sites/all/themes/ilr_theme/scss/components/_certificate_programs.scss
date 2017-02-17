@@ -299,12 +299,17 @@ body.node-type-certificate-programs {
         font-weight: 300;
       }
     }
-    .field-name-field-thumbnail {
+    .partner-credit {
       @include grid-span(12);
       text-align: right;
       @include trailer(.5);
-      &::before {
-        content: "In partnership with";
+      span {
+        position:absolute;
+        left:-10000px;
+        top:auto;
+        width:1px;
+        height:1px;
+        overflow:hidden;
       }
       img {
         vertical-align: middle;
