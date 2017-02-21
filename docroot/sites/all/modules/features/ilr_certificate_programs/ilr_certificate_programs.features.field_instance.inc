@@ -731,7 +731,7 @@ function ilr_certificate_programs_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_prerequisites_requirements',
     'label' => 'Prerequisites',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
