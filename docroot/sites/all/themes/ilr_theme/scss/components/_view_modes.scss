@@ -61,12 +61,6 @@
     margin-left: 115px;
     text-align: left;
   }
-  &[data-eq-state="large"] {
-    h2 {
-      @include adjust-font-size-to(22px);
-      @include adjust-leading-to(1, 22px);
-    }
-  }
 
   h3 {
     margin-left: 115px;
