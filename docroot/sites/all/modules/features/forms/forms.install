@@ -202,6 +202,12 @@ function forms_update_7014() {
 }
 
 /**
+ * Delete subm from Admissions Transfer Option form
+ */
+function forms_update_7015() {
+  _forms_delete_entityform_submissions('transfer_offer');
+}
+/**
 * Delete one or more field instances from one entityform
 * @param $form_id
 * @param $field_names
