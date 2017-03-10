@@ -38,7 +38,7 @@ function forms2_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for your payment for the Cornell International Summer Debate Camp. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EOne final step is to list your travel information so we can help arrange transportation. Remember, we will only provide transportation to and from Ithaca Tompkins Regional Airport, Corning\\/Elmira Regional Airport and Syracuse Hancock International Airport. Those flying in or out of other airports must arrange their own transit to and from Ithaca. Please complete this Travel Information Form to let us know your travel plans:\\u003Cbr\\u003E\\r\\n\\t\\u003Ca href=\\u0022http:\\/\\/goo.gl\\/forms\\/yAn2V6WbQE\\u0022\\u003Ehttp:\\/\\/goo.gl\\/forms\\/yAn2V6WbQE\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E(The Travel Information Form link is also included in the confirmation email.)\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have questions, please contact Lindsay Bing at \\u003Ca href=\\u0022mailto:lb542@cornell.edu\\u0022\\u003Elb542@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for your payment for the Cornell International Summer Debate Camp. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EOne final step is to provide your travel details to ensure that Cornell camp staff are able to arrange for pick-up and transportation. Please note that Cornell camp staff will only provide transportation to and from the following airports:\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cul\\u003E\\r\\n\\t\\u003Cli\\u003EIthaca Tompkins Regional Airport\\u003C\\/li\\u003E\\r\\n\\t\\u003Cli\\u003ECorning\\/Elmira Regional Airport\\u003C\\/li\\u003E\\r\\n\\t\\u003Cli\\u003ESyracuse Hancock International Airport\\u003C\\/li\\u003E\\r\\n\\u003C\\/ul\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThose flying in or out of other airports must arrange their own transit to and from Ithaca. Please complete this Travel Information Form to let us know your travel plans:\\u003Cbr\\u003E\\r\\n\\t\\u003Ca href=\\u0022https:\\/\\/goo.gl\\/forms\\/6yQBfUpN0SccrgIG2\\u0022\\u003Ehttps:\\/\\/goo.gl\\/forms\\/6yQBfUpN0SccrgIG2\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E(The Travel Information Form link is also included in the confirmation email.)\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have questions, please contact Ming Shiao at \\u003Ca href=\\u0022mailto:debate@cornell.edu\\u0022\\u003Edebate@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -66,7 +66,7 @@ function forms2_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
-      "form_submission_ilr_recipient" : "lb542@cornell.edu",
+      "form_submission_ilr_recipient" : "debate@cornell.edu",
       "add_payment_processing" : 1,
       "hpp" : "1"
     },

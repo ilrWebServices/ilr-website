@@ -320,7 +320,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'download' => array(
         'label' => 'above',
@@ -329,7 +329,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'table' => array(
         'label' => 'above',
@@ -338,7 +338,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'entityform',
@@ -362,7 +362,7 @@ function ilr_forms_students_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -422,6 +422,71 @@ function ilr_forms_students_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-alumni_events_for_students_reg-field_degree_as_text'.
+  $field_instances['entityform-alumni_events_for_students_reg-field_degree_as_text'] = array(
+    'bundle' => 'alumni_events_for_students_reg',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'For example: BS ILR, MILR, MPS, MS/PhD, MBA, etc.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'module' => 'imagecache_external',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'imagecache_external_link' => '',
+          'imagecache_external_style' => '',
+        ),
+        'type' => 'imagecache_external_image',
+        'weight' => 9,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'module' => 'imagecache_external',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'imagecache_external_link' => '',
+          'imagecache_external_style' => '',
+        ),
+        'type' => 'imagecache_external_image',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_degree_as_text',
+    'label' => 'Degree program',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
     ),
   );
 
@@ -556,7 +621,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'download' => array(
         'label' => 'above',
@@ -614,7 +679,7 @@ function ilr_forms_students_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -755,7 +820,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'download' => array(
         'label' => 'above',
@@ -805,7 +870,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -13577,6 +13642,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Dates for FEX opportunity - see "Key factors to consider" above ');
   t('Degree');
   t('Degree (supervisor)');
+  t('Degree program');
   t('Description of organization');
   t('Do you currently hold a Bachelor\'s degree?');
   t('Do you wish to accept the Transfer Option (TO) to Cornell\'s ILR School?');
@@ -13592,6 +13658,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('FEX/WISP Program year');
   t('First name');
   t('First name (supervisor)');
+  t('For example: BS ILR, MILR, MPS, MS/PhD, MBA, etc.');
   t('Graduation year');
   t('Graduation year (supervisor)');
   t('How did you hear about the ILR School MILR program? (Check as many as apply.)');
