@@ -97,10 +97,12 @@ function ilr_certificate_programs_preprocess_node(&$variables) {
 }
 
 function ilr_certificate_programs_cta_block_variables() {
-  if ($node = menu_get_object() || _ilr_sub_sites_is_wrapped_node()) {
-    if (_ilr_sub_sites_is_wrapped_node()) {
-      $node = node_load(_ilr_sub_sites_current_nid());
-    }
+  $node = FALSE;
+  $node = (_ilr_sub_sites_is_wrapped_node())
+    ? node_load(_ilr_sub_sites_current_nid())
+    : menu_get_object('node', 1);
+
+  if ($node) {
     $wrapper = ilr_get_node_wrapper($node);
     $variables = array(
       'total_cost' => ilr_certificate_programs_total_cost($wrapper),
