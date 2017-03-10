@@ -281,7 +281,7 @@
         // @todo Alter links on server side via hook_url_outbound_alter?
         // @todo Add client-side validation to avoid the stop at a form's "canonical" location when server validation finds errors
         if(isSubsite()) {
-          $links = $(".tagged-content a, .bean-content-listing-manual a, .view-course-manual-listings a");
+          $links = $(".tagged-content a, .bean-content-listing-manual a, .view-course-manual-listings a, a.course_details");
           $links.each(function(){
             $href = $(this).attr('href');
             if (typeof $href !== 'undefined' && isWrappableHref($href)) {

@@ -55,10 +55,15 @@ function ilr_certificate_programs_entity_info_alter(&$entity_info) {
 /**
  * Implements hook_node_view().
  * Adds Javascript for core curriculum list's accordian behavior.
+ * Triggers the context if it's a wrapped node
  */
 function ilr_certificate_programs_node_view($node, $view_mode, $langcode) {
   if($node->type == 'certificate_programs' && $view_mode == 'full') {
     drupal_add_js(drupal_get_path('module','ilr_certificate_programs') . '/ilr_certificate_programs.js', array('type' => 'file', 'scope' => 'footer'));
+    if (module_exists('ilr_sub_sites') && _ilr_sub_sites_is_wrapped_node()) {
+      $context = context_load('certificate_programs_cta');
+      context_set('context', $context->name, $context);
+    }
   }
 }
 
@@ -92,7 +97,10 @@ function ilr_certificate_programs_preprocess_node(&$variables) {
 }
 
 function ilr_certificate_programs_cta_block_variables() {
-  if ($node = menu_get_object()) {
+  if ($node = menu_get_object() || _ilr_sub_sites_is_wrapped_node()) {
+    if (_ilr_sub_sites_is_wrapped_node()) {
+      $node = node_load(_ilr_sub_sites_current_nid());
+    }
     $wrapper = ilr_get_node_wrapper($node);
     $variables = array(
       'total_cost' => ilr_certificate_programs_total_cost($wrapper),
