@@ -168,6 +168,48 @@ function ilr_sub_sites_page_build(&$page) {
       $headers = &drupal_static('drupal_http_headers', array());
       unset($headers['status']);
       drupal_add_http_header('Status','200 OK', TRUE);
+      if (module_exists('context')) {
+        // Add relevant context block reactions for wrapped nodes
+        if ($plugin = context_get_plugin('reaction', 'block')) {
+          $plugin->execute($page);
+        }
+      }
+      // Run the node through region view modes
+      // Certificate programs, for example, are using them
+      _ilr_subs_sites_region_view_modes_page_build($page, $node);
+    }
+  }
+}
+
+/**
+ * We rely on region view modes for some node displays
+ * This is derived from region_view_modes.module
+ */
+function _ilr_subs_sites_region_view_modes_page_build(&$page, $node) {
+  global $theme;
+  $region_view_modes = _region_view_modes_get_view_modes();
+  $view_mode_settings = field_view_mode_settings('node', $node->type);
+
+  foreach ($region_view_modes as $region_view_mode_name => $region_view_mode_info) {
+    $visible = !empty($view_mode_settings[$region_view_mode_name]['custom_settings']);
+
+    if ($visible && ($region_view_mode_info['theme_name'] === $theme)) {
+      $node_render_array = node_view($node, $region_view_mode_name);
+
+      $rendered = render($node_render_array);
+
+      if ($rendered) {
+        unset($node_render_array['#printed']);
+        if (!isset($page[$region_view_mode_info['region_name']])) {
+          $page[$region_view_mode_info['region_name']] = array();
+        }
+        if (variable_get('region_view_modes_placement__' . $region_view_mode_name, 'above') == 'above') {
+          array_unshift($page[$region_view_mode_info['region_name']], $node_render_array);
+        }
+        else {
+          array_push($page[$region_view_mode_info['region_name']], $node_render_array);
+        }
+      }
     }
   }
 }
@@ -431,8 +473,6 @@ function _ilr_sub_sites_get_site_logo($menu_name, $subsite_name) {
   }
   return NULL;
 }
-
-
 
 function _ilr_sub_sites_get_subsite_homepage_alias() {
   $menu_name = _ilr_sub_sites_get_current_menu_name();
