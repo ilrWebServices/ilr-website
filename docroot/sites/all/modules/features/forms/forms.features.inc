@@ -954,53 +954,6 @@ function forms_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
-  $items['ilr_information_session_sign_in'] = entity_import('entityform_type', '{
-    "type" : "ilr_information_session_sign_in",
-    "label" : "ILR Information Session Sign-In",
-    "data" : {
-      "draftable" : 0,
-      "draft_redirect_path" : "",
-      "draft_button_text" : "",
-      "draft_save_text" : { "value" : "", "format" : "full_html" },
-      "submit_button_text" : "",
-      "submit_confirm_msg" : "",
-      "your_submissions" : "",
-      "disallow_resubmit_msg" : "",
-      "delete_confirm_msg" : "",
-      "page_title_view" : "",
-      "preview_page" : 0,
-      "submission_page_title" : "ILR Information Session Sign-In",
-      "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for signing in for your ILR Undergraduate Admissions Information Session.\\u003C\\/p\\u003E\\r\\n",
-        "format" : "full_html"
-      },
-      "submission_show_submitted" : 1,
-      "submissions_view" : "default",
-      "user_submissions_view" : "default",
-      "form_status" : "ENTITYFORM_OPEN",
-      "roles" : {
-        "3" : "3",
-        "1" : "1",
-        "2" : "2",
-        "4" : 0,
-        "5" : 0,
-        "6" : 0,
-        "7" : 0,
-        "8" : 0,
-        "9" : 0,
-        "10" : 0
-      },
-      "resubmit_action" : "new",
-      "redirect_path" : "",
-      "instruction_pre" : { "value" : "", "format" : "full_html" },
-      "form_submission_ilr_recipient" : "ilr_admissions@cornell.edu",
-      "send_confirmation_email_to_admin" : 1,
-      "add_user_name_to_subject_line" : 0,
-      "kerberized" : 0
-    },
-    "weight" : "0",
-    "paths" : []
-  }');
   $items['ilr_organizational_behavior_lab_'] = entity_import('entityform_type', '{
     "type" : "ilr_organizational_behavior_lab_",
     "label" : "ILR Organizational Behavior Lab - ExPO Contact Form",
