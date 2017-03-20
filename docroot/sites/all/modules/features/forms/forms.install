@@ -231,6 +231,43 @@ function _forms_delete_field_instances_from_entityform($form_id, $field_names) {
 }
 
 /**
+ * Remove all traces of entityform type ilr_information_session_sign_in
+ */
+function forms_update_7016() {
+  // Fields that are NOT used elsewhere; completely remove them
+  $fields_to_delete = array(
+    'field_high_school',
+    'field_academic_interests_admissi',
+    'field_how_heard_admissions',
+  );
+  $delete_count = 0;
+  foreach ($fields_to_delete as $key => $field_name) {
+    field_delete_field($field_name);
+    $delete_count++;
+  }
+
+  entityform_type_cache_reset();
+
+  // Remove instances for the remaining fields
+  $fields_info = field_info_instances('entityform', 'ilr_information_session_sign_in');
+  foreach ($fields_info as $field_in_form => $field_array) {
+    $field_name = $field_array['field_name'];
+    if ($instance = field_info_instance('entityform', $field_name,
+      'ilr_information_session_sign_in')) {
+        field_delete_instance($instance);
+        $delete_count++;
+    }
+  }
+
+  // Delete the entityform type itself
+  if ($entityform_type = entityform_type_load('ilr_information_session_sign_in')) {
+    entityform_type_delete($entityform_type);
+  }
+
+  field_purge_batch($delete_count + 5);
+}
+
+/**
  * Delete entityform submissions
  * @param $entityformtype
  */
