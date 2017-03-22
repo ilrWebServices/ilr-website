@@ -43,3 +43,12 @@ function ilr_forms_students_update_7004 () {
   _forms_delete_field_instances_from_entityform('check_your_eligibility_milr',
    $field_instances_to_remove);
 }
+
+/**
+ * Delete submissions for three alumni entityform types
+ */
+function ilr_forms_students_update_7005() {
+  _forms_delete_entityform_submissions('conversations_alumni_finance');
+  _forms_delete_entityform_submissions('keith_strudler_lecture');
+  _forms_delete_entityform_submissions('mlb_today_with_rob_manfred');
+}
