@@ -1,13 +1,24 @@
+//Button locations
+// _form_elements.scss //form input
+// _certificate_info_aside.scss //Get Started box
+// _courses_and_classes.scss //Register, Request, Notify Me buttons
+// _course_search.scss //course search and filter in left column
+// _mailchimp.scss //MAI email updates form
+
 %button {
+  background-color: $student-portrait-color;
   border: none;
   border-radius: 20px;
   padding: .2em 1em;
   font-family: $font;
   text-decoration: none;
   text-transform: uppercase;
+  color: white;
+  font-weight: 300;
   box-shadow: 1px 2px 4px $gray-medium;
   display: block;
   &:hover {
+    background-color: $spotlight-color;
     cursor: pointer;
   }
 }
@@ -17,9 +28,8 @@
   background-color: white;
   border: 2px solid $cornell-red;
   border-radius: 6px;
-  padding: .2em 1em;
   color: $cornell-red;
-  font-weight: 400;
+  font-weight: 600;
   display: inline-block;
   clear: left;
   @extend .clearfix;
@@ -27,114 +37,3 @@
     border-bottom-color: darken($cornell-red, 10%);
   }
 }
-
-// _certificate_info_aside.scss //Get Started box
-#certificate-info-aside {
-  .get-started, .contact {
-    .button {
-      @extend %button;
-      background-color: #d76b00;
-      color: white;
-      font-weight: 100;
-      margin: 30px auto 30px;
-      max-width: 250px;
-    }
-  }
-}
-
-// _courses_and_classes.scss
-// .class-details {
-//   .button {
-//     @extend %cornell-button;
-//     .cost {
-//       display: block;
-//       text-align: center;
-//       @include adjust-font-size-to(14px, .5);
-//       padding-bottom: .3em;
-//     }
-//     &.button-info .cost {
-//       display: none;
-//     }
-//   }
-// }
-// .button {
-//   @include rhythm(.5);
-//   @extend %cornell-button;
-//   clear: left;
-//   span {
-//     display: none;
-//   }
-//   &.follow {
-//     @include adjust-font-size-to(16px,1);
-//   }
-//   &.button-cancelled .cost {
-//     display: none;
-//   }
-// }
-
-// _course_search.scss //Course search and filter in left column
-// #block-ilr-sdc-listings-course-search {
-//   #search-form-submit, #edit-submit-sdc-course-listing {
-//     background: $student-portrait-color;
-//     border-radius: 20px;
-//     border: none;
-//     color: white;
-//     font-weight: 300;
-//     text-transform: uppercase;
-//     padding: .2em 1em;
-//     @include trailer(.5);
-//     @include leader(.2);
-//     box-shadow: 1px 2px 4px $gray-medium;
-//     &:hover {
-//       background: $student-portrait-color;
-//     }
-//   }
-// }
-
-// _mailchimp.scss //MAI email updates form
-// #mc_embed_signup {
-//   #mc-embedded-subscribe {
-//     background: $spotlight-color;
-//     border-radius: 20px;
-//     border: none;
-//     color: white;
-//     font-weight: 300;
-//     @include trailer(.5);
-//     box-shadow: 1px 2px 4px $gray-medium;
-//     &:hover {
-//       background: $student-portrait-color;
-//     }
-//   }
-// }
-
-// _form_elements.scss
-// %cornell-button {
-//   background-color: white;
-//   border: 2px solid $cornell-red;
-//   border-radius: 6px;
-//   padding: .2em 1em;
-//   color: $cornell-red;
-//   text-transform: uppercase;
-//   display: inline-block;
-//   clear: left;
-//   font-weight: bold;
-//   @extend .clearfix;
-//   &:visited {
-//     border-bottom-color: darken($cornell-red, 10%);
-//   }
-//   &:hover {
-//     cursor: pointer;
-//   }
-// }
-
-// _image_with_text.scss
-// .image-with-text {
-//   article {
-//     form.class-details {
-//       a.button {
-//         margin-top: .4em;
-//         margin-bottom: 0;
-//       }
-//     }
-//   }
-// }
