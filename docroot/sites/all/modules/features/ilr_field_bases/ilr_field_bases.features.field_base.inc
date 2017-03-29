@@ -7073,6 +7073,7 @@ function ilr_field_bases_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'memory_book' => 'memory_book',
           'registration_page' => 'registration_page',
         ),
       ),

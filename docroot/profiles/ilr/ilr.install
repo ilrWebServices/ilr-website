@@ -815,3 +815,12 @@ function ilr_update_7062() {
     'ilr_mailchimp',
   ));
 }
+
+/**
+ * Enables ilr_memory_book module
+ */
+function ilr_update_7063() {
+  module_enable(array(
+    'ilr_memory_book',
+  ));
+}

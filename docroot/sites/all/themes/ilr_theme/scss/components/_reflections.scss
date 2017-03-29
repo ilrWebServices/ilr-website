@@ -2,12 +2,11 @@
 article.node-reflection {
   @extend %card-rounded;
   @extend %image-heading-text;
-  padding-bottom: 1.5em !important;
 
   &.quote {
     @extend %quote;
   }
-  .field-name-body {
+  .field-name-body, .field-name-field-full-name {
     @include padding-trailer(.5);
   }
   ul {

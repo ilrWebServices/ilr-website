@@ -743,7 +743,7 @@ function _year_as_list_text_options($field, $instance = NULL, $entity_type = NUL
       $options = date('n') < 4 ? _forms_year_relative_options(0,6) : _forms_year_relative_options(1,6);
       break;
     case 'reflection':
-      $options = range(1948, date('Y') + 3);
+      $options = _forms_number_absolute_options(1948, date('Y') + 3);
       break;
     default:
       $options = _forms_year_relative_options(0,6);

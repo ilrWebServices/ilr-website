@@ -8,6 +8,9 @@
   fieldset#edit-body-und-0-format {
     display: none;
   }
+  .form-item-hidden {
+    @extend .hidden;
+  }
   .form-item {
     @include margin-leader(1);
     margin-bottom: 0;

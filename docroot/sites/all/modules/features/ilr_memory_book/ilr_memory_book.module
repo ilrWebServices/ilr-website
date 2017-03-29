@@ -1,0 +1,84 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Memory Book feature.
+ */
+
+include_once 'ilr_memory_book.features.inc';
+
+/**
+ * Implements hook_module_implements_alter().
+ * Form alter has to run as late as possible.
+ */
+function ilr_memory_book_module_implements_alter(&$implementations, $hook) {
+  switch ($hook) {
+    case 'form_alter':
+      if (isset($implementations['ilr_memory_book'])) {
+        $group = $implementations['ilr_memory_book'];
+        unset($implementations['ilr_memory_book']);
+        $implementations['ilr_memory_book'] = $group;
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ilr_memory_book_form_reflection_node_form_alter(&$form, &$form_state) {
+  if ($node = menu_get_object('node', 1)) {
+    if($node->type == 'memory_book') {
+      $fields_to_hide = array(
+        'field_youtube_video',
+        'field_image',
+        'disclaimer',
+        'title',
+      );
+      foreach ($fields_to_hide as $field_name) {
+        $form[$field_name]['#access'] = FALSE;
+      }
+      $form['#submit'][] = '_ilr_memory_book_form_submit';
+    }
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function ilr_memory_book_preprocess_node(&$variables) {
+  if ($variables['type'] == 'reflection') {
+    $wrapper = ilr_get_node_wrapper($variables['node']);
+    if ($location = $wrapper->field_location_string->value()) {
+      $name = $variables['content']['field_full_name'][0]['#markup'];
+      $variables['content']['field_full_name'][0]['#markup'] = $name . ' &ndash; ' . $location;
+    }
+
+  }
+}
+
+/**
+ * Custom submit handler for the reflection_node_form
+ * Sets the title for the reflection
+ */
+function _ilr_memory_book_form_submit(&$form, &$form_state) {
+  $name = $form_state['values']['field_full_name'][LANGUAGE_NONE][0]['value'];
+  $title = 'Memory book entry by ' . $name;
+  $form_state['values']['title'] = $title;
+}
+
+/**
+ * Implements hook_views_query_alter().
+ * Gets only the reflections created on the current page.
+ */
+function ilr_memory_book_views_query_alter(&$view, &$query) {
+  if ($view->name == 'reflections') {
+    foreach ($query->where as &$condition_group) {
+      foreach ($condition_group['conditions'] as &$condition) {
+        if ($condition['field'] == 'field_data_field_referenced_node.field_referenced_node_target_id') {
+          $current_node = menu_get_object('node', 1);
+          $condition['value'] = $current_node->nid;
+        }
+      }
+    }
+  }
+}

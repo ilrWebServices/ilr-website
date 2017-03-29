@@ -1,0 +1,41 @@
+.node-type-memory-book {
+  .breadcrumb, #page-title {
+    @extend .hidden;
+  }
+
+  #block-views-reflections-block {
+    margin: 0 auto;
+    max-width: $section-max-width;
+  }
+
+  article.node-reflection {
+    border: none;
+    border-bottom: 1px solid $gray-medium;
+    border-radius: 0;
+    @include trailer(1.5);
+    @include padding-trailer(2);
+
+    h2, .social-share {
+      @extend .hidden;
+    }
+  }
+
+
+
+  #reflection-node-form {
+    .field-name-field-full-name {
+      float: left;
+    }
+    .field-name-field-email {
+      float: right;
+      margin-right: 0;
+    }
+    #main[data-eq-state="320"] & {
+      .form-wrapper {
+        width: 100%;
+      }
+    }
+  }
+}
+
+

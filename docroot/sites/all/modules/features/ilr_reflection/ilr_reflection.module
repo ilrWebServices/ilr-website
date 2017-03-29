@@ -36,7 +36,7 @@ function ilr_reflection_block_view($delta = ''){
       $tabs = array('revision_information','author','options','menu','path');
       foreach ($tabs as $key => $name) {
         if (isset($form[$name])) {
-          $form[$name]['#access'] = false;
+          $form[$name]['#access'] = FALSE;
         }
       }
   }
@@ -50,13 +50,14 @@ function ilr_reflection_block_view($delta = ''){
  */
 function ilr_reflection_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'reflection_node_form') {
-    if (!_ilr_user_has_role(array('administrator','contributor'))) {
+    if (!path_is_admin(current_path())) {
       $form['field_tags']['#access'] = FALSE;
       $form['#validate'][] = '_ilr_reflection_spam_handler';
+      $form['field_referenced_node']['#access'] = FALSE;
+      $form['disclaimer']['#markup'] = '<p class="disclaimer">ILR reserves the right to edit submissions for grammar, punctuation and other editorial considerations, and to repost submissions on additional school channels.</p>';
+      $form['disclaimer']['#weight'] = 12;
+      $form['actions']['submit']['#value'] = 'Add my reflection';
     }
-    $form['disclaimer']['#markup'] = '<p class="disclaimer">ILR reserves the right to edit submissions for grammar, punctuation and other editorial considerations, and to repost submissions on additional school channels.</p>';
-    $form['disclaimer']['#weight'] = 12;
-    $form['actions']['submit']['#value'] = 'Add my reflection';
   }
 }
 
@@ -86,6 +87,7 @@ function ilr_reflection_node_insert($node) {
 function ilr_reflection_node_presave($node) {
   if ($node->type == 'reflection' && $node->is_new) {
     _ilr_reflection_add_terms_to_node($node);
+    _ilr_reflection_add_reference_to_node($node);
   }
 }
 
@@ -102,7 +104,7 @@ function ilr_reflection_node_view($node, $view_mode, $langcode) {
     // Check whether the reflection is being viewed as the full node
     // and whether it's being called via javascript, @see openReflectionModal().
     if ($view_mode == 'full' && !isset($_REQUEST['layout'])) {
-      _ilr_reflection_redirect_to_reflection_landing_page($node);
+      //_ilr_reflection_redirect_to_reflection_landing_page($node);
     }
   } // check for the 'reflection' parameter. @see _ilr_reflection_redirect_to_reflection_landing_page()
   elseif (isset($_REQUEST['reflection']) && $_REQUEST['reflection'] == 1) {
@@ -173,6 +175,18 @@ function _ilr_reflection_add_terms_to_node(&$node) {
   $node = $wrapper->raw();
   return $node;
 }
+
+/**
+ * Sets the referenced node for the reflection.
+ */
+function _ilr_reflection_add_reference_to_node(&$node) {
+  $wrapper = ilr_get_node_wrapper($node);
+  $current_page = menu_get_object();
+  $wrapper->field_referenced_node->set($current_page->nid);
+  $node = $wrapper->raw();
+  return $node;
+}
+
 /**
  * Custom function to get the reflection admins
  */
@@ -214,7 +228,8 @@ function _ilr_reflection_admin_notification($node) {
  */
 function _ilr_reflection_format_class_year(&$node) {
   if (count($node->field_year_as_list_text) && count($node->field_full_name)) {
-    $year = $node->content['field_year_as_list_text'][0]['#markup'];
+    $wrapper = ilr_get_node_wrapper($node);
+    $year = $wrapper->field_year_as_list_text->value();
     unset($node->content['field_year_as_list_text']);
     $node->content['field_full_name'][0]['#markup'] .= ", '" . substr($year, -2);
   }
@@ -241,14 +256,20 @@ function _ilr_reflection_get_parent_tids() {
  * or the default page
  */
 function _ilr_reflection_redirect_to_reflection_landing_page($node) {
+  $wrapper = ilr_get_node_wrapper($node);
   if (isset($_GET['p'])) {
     if ($parent_wrapper = ilr_get_node_wrapper($_GET['p'])) {
       if ($parent_wrapper->status->value() == 1) {
-        drupal_goto('node/'. $_GET['p'], array('fragment' => $node->nid));
+        $path = drupal_get_path_alias('node/'. $_GET['p']);
       }
     }
   }
-  drupal_goto('alumni/reflections', array(
+  elseif ($reference = $wrapper->field_referenced_node->value()) {
+    $path = drupal_get_path_alias('node/' . $reference->nid);
+  } else {
+    $path = 'alumni/reflections';
+  }
+  drupal_goto($path, array(
     'fragment' => $node->nid,
     'query' => array('reflection' => 1),
   ));
