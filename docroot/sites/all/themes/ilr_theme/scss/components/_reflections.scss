@@ -60,14 +60,3 @@ article.node-reflection {
     }
   }
 }
-
-.block-ilr-reflection {
-  @include margin-leader(1);
-  @include padding-trailer(1);
-  h2 {
-    @extend %centered-title;
-  }
-  .node-reflection-form {
-    @extend %public-node-add-form;
-  }
-}

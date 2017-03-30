@@ -6,8 +6,10 @@
   #block-views-reflections-block {
     margin: 0 auto;
     max-width: $section-max-width;
+    .views-row { // Make the reflections full width on memory book pages
+      width: 100% !important;
+    }
   }
-
   article.node-reflection {
     border: none;
     border-bottom: 1px solid $gray-medium;
@@ -17,23 +19,6 @@
 
     h2, .social-share {
       @extend .hidden;
-    }
-  }
-
-
-
-  #reflection-node-form {
-    .field-name-field-full-name {
-      float: left;
-    }
-    .field-name-field-email {
-      float: right;
-      margin-right: 0;
-    }
-    #main[data-eq-state="320"] & {
-      .form-wrapper {
-        width: 100%;
-      }
     }
   }
 }
