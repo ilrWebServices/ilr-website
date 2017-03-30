@@ -37,8 +37,19 @@ function ilr_memory_book_form_reflection_node_form_alter(&$form, &$form_state) {
       foreach ($fields_to_hide as $field_name) {
         $form[$field_name]['#access'] = FALSE;
       }
+      $form['body'][LANGUAGE_NONE][0]['#title'] = 'Your memory';
+      $form['actions']['submit']['#value'] = "Add my memory";
       $form['#submit'][] = '_ilr_memory_book_form_submit';
     }
+  }
+}
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function ilr_memory_book_block_view_alter(&$data, $block) {
+  if ($block->delta == 'reflection_node_form') {
+    $block->title = 'Add a Memory';
   }
 }
 
