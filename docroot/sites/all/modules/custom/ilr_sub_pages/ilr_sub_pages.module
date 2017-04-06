@@ -1,6 +1,16 @@
 <?php
 
 /**
+ * Implements hook_admin_paths().
+ */
+function ilr_sub_pages_admin_paths() {
+  $paths = array(
+    'node/*/sub' => TRUE,
+  );
+  return $paths;
+}
+
+/**
  * Implements hook_admin_menu_output_alter().
  * Removes the link to manage menus for anyone without top level menu perms
  * Also removes the node/add/page link, since pages need to be added via 'create sub page'
