@@ -16,7 +16,7 @@ if ($env) {
     'uri' => $env.'.ilr.featuretest.org',
     'root' => '/var/aegir/projects/ilr/'.$folder.'/docroot',
     'remote-host' => 'featuretest.org',
-    'remote-user' => 'ubuntu',
+    'remote-user' => 'aegir',
     'path-aliases' => array (
       '%dump-dir' => '/tmp',
       '%files' => '/var/aegir/projects/ilr/'.$folder.'/docroot/sites/'.$env.'.ilr.featuretest.org/files',
