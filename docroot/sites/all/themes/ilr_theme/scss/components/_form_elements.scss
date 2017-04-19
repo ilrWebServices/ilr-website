@@ -26,6 +26,7 @@ form {
     @include trailer(.5);
     margin-right: 1em;
     background-color: $spotlight-color;
+    display: inline-block;
     &:hover {
       background-color: $orange;
     }
@@ -97,6 +98,10 @@ form {
     p {
       strong {
         color: $spotlight-color;
+      }
+      a.button { //netid login
+        @extend %button;
+        display: inline-block;
       }
     }
 
