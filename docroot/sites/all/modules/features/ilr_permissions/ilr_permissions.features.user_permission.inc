@@ -1812,7 +1812,9 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'edit any visiting_fellow content'.
   $permissions['edit any visiting_fellow content'] = array(
     'name' => 'edit any visiting_fellow content',
-    'roles' => array(),
+    'roles' => array(
+      'contributor' => 'contributor',
+    ),
     'module' => 'node',
   );
 
