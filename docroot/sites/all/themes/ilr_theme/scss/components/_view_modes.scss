@@ -134,9 +134,6 @@
   }
 
   body:not(.mobilizing-against-inequality) & {//don't display as card on MAI home
-    // background: white;
-    // border: 2px solid #e0e0e0;
-    // border-bottom-width: 6px;
     border: 1px solid $gray-light;
     border-radius: 6px;
     @include trailer(1.5);
@@ -152,8 +149,6 @@
 
     h2 {
       @include adjust-font-size-to(20px, 1);
-      // @include adjust-leading-to(1,25px);
-      // padding: .8em 1em 0 1em;
       padding: .8em .5em .5em;
     }
     &[data-eq-state="small"] h2 {
