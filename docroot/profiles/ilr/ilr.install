@@ -5,6 +5,18 @@
  */
 
 /**
+ * Implements hook_install_tasks().
+ */
+function ilr_install_tasks() {
+  $tasks = array(
+    '_ilr_add_permissions' => array(
+      'display_name' => 'Adding permissions',
+    ),
+  );
+  return $tasks;
+}
+
+/**
  * Implements hook_install().
  *
  * Performs actions to set up the site for this profile.
@@ -87,8 +99,6 @@ function ilr_install() {
       'helper'
     ));
   }
-
-  _ilr_add_permissions();
 
   // Explicitly call any hook_update_n implementations needed to run on install.
   // These hooks will be skipped by initial install but will run on updatedb of current site.
@@ -344,9 +354,7 @@ function ilr_update_7020() {
  * Enables elavon custom module
  */
 function ilr_update_7021() {
-  module_enable(array(
-    'elavon',
-  ));
+  // Elavon removed
 }
 
 /**
@@ -716,7 +724,6 @@ function ilr_update_7054() {
  */
 function ilr_update_7055() {
   module_enable(array('freedompay'));
-  module_disable(array('elavon'));
 
   $hpp_entities = array('Forensics', 'Alumni');
 
