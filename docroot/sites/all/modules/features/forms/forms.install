@@ -33,14 +33,13 @@ function forms_update_7002(&$sandbox) {
 }
 
 /**
- * Delete field_how_heard_other instance and 2 additional sicf field bases
+ * Delete three fields from social_impact_career_forum_reg entityform type
  */
 function forms_update_7003() {
-  field_delete_field('field_how_heard_sicf');
-  field_delete_field('field_career_fields_sicf');
-
   $field_instances_to_remove = array (
     'field_how_heard_other',
+    'field_how_heard_sicf',
+    'field_career_fields_sicf',
   );
   _forms_delete_field_instances_from_entityform('social_impact_career_forum_reg',
       $field_instances_to_remove);
@@ -75,26 +74,21 @@ function forms_update_7005() {
  */
 function forms_update_7006() {
   if ($instance = field_info_instance('entityform', 'field_h_credit_card_payments', 'ilr_alumni_association_event_reg')) {
-    field_delete_instance($instance);
+    field_delete_instance($instance, TRUE);
   }
 }
 
 /**
- * 7/25/2016: Delete fields from contact_ilr_admissions
- * entityform type
+ * 7/25/2016: Delete fields from contact_ilr_admissions entityform type
  */
 function forms_update_7007() {
-  // field_send_transfer_info isn't used anywhere else, so get
-  //   rid of it altogether
-  field_delete_field('field_send_transfer_info');
-  // These two are used elsewhere, so just delete the instances
-  // Can't put them into an array because it'll be duplicate keys
-  if ($instance = field_info_instance('entityform', 'field_high_school', 'contact_ilr_admissions')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('entityform', 'field_year_as_list_text', 'contact_ilr_admissions')) {
-    field_delete_instance($instance);
-  }
+  $field_instances_to_remove = array (
+    'field_send_transfer_info',
+    'field_high_school',
+    'field_year_as_list_text',
+  );
+  _forms_delete_field_instances_from_entityform('contact_ilr_admissions',
+      $field_instances_to_remove);
 }
 
 /**
@@ -118,21 +112,17 @@ function forms_update_7009() {
     $field_name = $field_array['field_name'];
     if ($instance = field_info_instance('entityform', $field_name,
       'join_the_hcd_mailing_list')) {
-        field_delete_instance($instance);
+        field_delete_instance($instance, TRUE);
         $delete_count++;
     }
   }
 
-  // 3. Delete one field that isn't used elsewhere
-  field_delete_field('field_hcd_contact_form_topics');
-  $delete_count++;
-
-  // 4. Delete the entityform type itself
+  // 3. Delete the entityform type itself
   if ($entityform_type = entityform_type_load('join_the_hcd_mailing_list')) {
     entityform_type_delete($entityform_type);
   }
 
-  // 5. Purge the deleted field, plus a few extras just in case
+  // 4. Purge the deleted field, plus a few extras just in case
   field_purge_batch($delete_count + 5);
 }
 
@@ -169,27 +159,12 @@ function forms_update_7013() {
  * Remove all traces of entityform type check_your_eligibility (emhrm)
  */
 function forms_update_7014() {
-  $fields_to_delete = array(
-    'field_currently_working_in_hr_',
-    'field_how_heard_emhrm',
-    'field_prefix',
-    'field_years_full_time_hr',
-    'field_years_full_time_work_exp',
-  );
-  $delete_count = 0;
-  foreach ($fields_to_delete as $key => $field_name) {
-    field_delete_field($field_name);
-    $delete_count++;
-  }
-
-  entityform_type_cache_reset();
-
   $fields_info = field_info_instances('entityform', 'check_your_eligibility');
   foreach ($fields_info as $field_in_form => $field_array) {
     $field_name = $field_array['field_name'];
     if ($instance = field_info_instance('entityform', $field_name,
       'check_your_eligibility')) {
-        field_delete_instance($instance);
+        field_delete_instance($instance, TRUE);
         $delete_count++;
     }
   }
@@ -207,6 +182,41 @@ function forms_update_7014() {
 function forms_update_7015() {
   _forms_delete_entityform_submissions('transfer_offer');
 }
+
+/**
+ * Remove all traces of entityform type ilr_information_session_sign_in
+ */
+function forms_update_7016() {
+  // Remove instances
+  $fields_info = field_info_instances('entityform', 'ilr_information_session_sign_in');
+  foreach ($fields_info as $field_in_form => $field_array) {
+    $field_name = $field_array['field_name'];
+    if ($instance = field_info_instance('entityform', $field_name,
+      'ilr_information_session_sign_in')) {
+        field_delete_instance($instance, TRUE);
+        $delete_count++;
+    }
+  }
+
+  // Delete the entityform type itself
+  if ($entityform_type = entityform_type_load('ilr_information_session_sign_in')) {
+    entityform_type_delete($entityform_type);
+  }
+
+  field_purge_batch($delete_count + 5);
+}
+
+/**
+ * Delete 5 unused entityform types all for Alumni
+ */
+function forms_update_7017() {
+  _forms_delete_entityform_type('groat_faculty_staff_registration');
+  _forms_delete_entityform_type('groat_student_registration');
+  _forms_delete_entityform_type('keith_strudler_lecture');
+  _forms_delete_entityform_type('mlb_today_with_rob_manfred');
+  _forms_delete_entityform_type('conversations_alumni_finance');
+}
+
 /**
 * Delete one or more field instances from one entityform
 * @param $form_id
@@ -216,7 +226,7 @@ function _forms_delete_field_instances_from_entityform($form_id, $field_names) {
   $delete_count = 0;
   foreach ($field_names as $field_name) {
     if ($instance = field_info_instance('entityform', $field_name, $form_id)) {
-      field_delete_instance($instance);
+      field_delete_instance($instance, TRUE);
       $delete_count++;
     }
   }
@@ -227,43 +237,6 @@ function _forms_delete_field_instances_from_entityform($form_id, $field_names) {
    * purge, and add five in case a few other miscellaneous fields are in there
    * somehow.
    */
-  field_purge_batch($delete_count + 5);
-}
-
-/**
- * Remove all traces of entityform type ilr_information_session_sign_in
- */
-function forms_update_7016() {
-  // Fields that are NOT used elsewhere; completely remove them
-  $fields_to_delete = array(
-    'field_high_school',
-    'field_academic_interests_admissi',
-    'field_how_heard_admissions',
-  );
-  $delete_count = 0;
-  foreach ($fields_to_delete as $key => $field_name) {
-    field_delete_field($field_name);
-    $delete_count++;
-  }
-
-  entityform_type_cache_reset();
-
-  // Remove instances for the remaining fields
-  $fields_info = field_info_instances('entityform', 'ilr_information_session_sign_in');
-  foreach ($fields_info as $field_in_form => $field_array) {
-    $field_name = $field_array['field_name'];
-    if ($instance = field_info_instance('entityform', $field_name,
-      'ilr_information_session_sign_in')) {
-        field_delete_instance($instance);
-        $delete_count++;
-    }
-  }
-
-  // Delete the entityform type itself
-  if ($entityform_type = entityform_type_load('ilr_information_session_sign_in')) {
-    entityform_type_delete($entityform_type);
-  }
-
   field_purge_batch($delete_count + 5);
 }
 
@@ -283,3 +256,25 @@ function _forms_delete_entityform_submissions($entityform_type) {
   }
   entityform_delete_multiple($eids);
 }
+
+/**
+ * Remove all traces of an entityform type
+ */
+function _forms_delete_entityform_type($eftype_to_delete) {
+  $delete_count = 0;
+
+  // Remove field instances from the entityform type
+  $fields_info = field_info_instances('entityform', $eftype_to_delete);
+  foreach ($fields_info as $instance) {
+    field_delete_instance($instance, TRUE);
+    $delete_count++;
+  }
+
+  // Delete the entityform type itself
+  if ($entityform_type = entityform_type_load($eftype_to_delete)) {
+    entityform_type_delete($entityform_type);
+  }
+
+  field_purge_batch($delete_count + 5);
+}
+
