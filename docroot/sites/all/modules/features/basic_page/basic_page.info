@@ -43,6 +43,7 @@ features[field_instance][] = node-basic_page-field_blocks
 features[field_instance][] = node-basic_page-field_category_type
 features[field_instance][] = node-basic_page-field_editor_notes
 features[field_instance][] = node-basic_page-field_image
+features[field_instance][] = node-basic_page-field_para_main_page_content
 features[field_instance][] = node-basic_page-field_tags
 features[filter][] = full_html
 features[linkit_profiles][] = full_html_profile
