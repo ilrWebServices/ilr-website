@@ -553,7 +553,7 @@ function basic_page_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -617,7 +617,7 @@ function basic_page_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'highlighted' => array(
         'label' => 'above',
@@ -829,13 +829,9 @@ function basic_page_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'paragraphs',
-        'settings' => array(
-          'field_formatter_label' => '',
-          'view_mode' => 'full',
-        ),
-        'type' => 'paragraphs_view',
-        'weight' => 1,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
