@@ -33,6 +33,9 @@
   display: inline-block;
   clear: left;
   @extend .clearfix;
+  &:hover {
+    background-color: $gray-bg;
+  }
   &:visited {
     border-bottom-color: darken($cornell-red, 10%);
   }
