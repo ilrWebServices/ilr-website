@@ -49,7 +49,7 @@ function _ilr_forms_students_set_fexwisp_programYear($entityform) {
   $currYear = date('Y');
   $nextYear = $currYear + 1;
   $lastYear = $currYear - 1;
-  if (date('m') > 5) {
+  if (date('m') > 4) {
     $programYear = $currYear . '-' . $nextYear;
   }
   else {
