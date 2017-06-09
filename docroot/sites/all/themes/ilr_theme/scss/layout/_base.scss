@@ -66,19 +66,21 @@
     }
   }
 
-  &[data-eq-state="550"],
-  &[data-eq-state="768"] {
+  &[data-eq-state="550"] {
     #content, #sidebar-second {
       .block:not(.block-system) > article:not(.node-certificate-programs),
       .block .views-row {
         @extend %two-column;
       }
     }
-    #content .block[data-items='3'] article {
-      @extend %three-column;
-    }
-    #content .block[data-items='1'] article {
-      @extend %one-column;
+  }
+
+  &[data-eq-state="768"] {
+    #content, #sidebar-second {
+      .block:not(.block-system) > article:not(.node-certificate-programs),
+      .block .views-row {
+        @extend %three-column;
+      }
     }
     #sidebar-second .block-bean .field-type-entityreference {
       @extend %two-column;
