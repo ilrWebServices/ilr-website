@@ -96,9 +96,11 @@
   }
 
   .button {
-    @extend %cornell-button;
-    @include rhythm(.5,.25,.25,.5);
-    clear: left;
+    @extend %button;
+    @include leader(.5);
+    @include trailer(.5);
+    display: inline-block;
+    @extend .clearfix;
     .cost {
       display: block;
       text-align: center;
@@ -162,19 +164,9 @@
   }
 
   .request-info {
-    @include adjust-font-size-to(16px);
-    font-style: italic;
-    display: block;
-    color: $gray-dark;
-    text-decoration: underline;
+    @include adjust-font-size-to(16px,1);
     span {
       display: none;
-    }
-    &.button {
-      text-decoration: none;
-      font-style: normal;
-      color: $cornell-red;
-      display: inline-block;
     }
   }
 
@@ -347,7 +339,7 @@ div.field-name-field-course.field-type-entityreference {
 }
 
 .dates-registration {
-  @extend %cornell-button;
+  @extend %button;
   @include leader(1);
   clear: left;
 }

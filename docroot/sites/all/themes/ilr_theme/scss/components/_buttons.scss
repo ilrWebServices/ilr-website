@@ -22,21 +22,3 @@
     cursor: pointer;
   }
 }
-
-%cornell-button {
-  @extend %button;
-  background-color: white;
-  border: 2px solid $cornell-red;
-  border-radius: 6px;
-  color: $cornell-red;
-  font-weight: 600;
-  display: inline-block;
-  clear: left;
-  @extend .clearfix;
-  &:hover {
-    background-color: $gray-bg;
-  }
-  &:visited {
-    border-bottom-color: darken($cornell-red, 10%);
-  }
-}
