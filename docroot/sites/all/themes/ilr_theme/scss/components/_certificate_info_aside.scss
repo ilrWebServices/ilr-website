@@ -16,12 +16,12 @@
       line-height: 1.2;
     }
     a {
-      color: #d76b00;
+      color: $orange;
       font-size: 16px;
       line-height: 1.2;
     }
     h2 {
-      color: #d76b00;
+      color: $orange;
       font-size: 28px;
       font-weight: 100;
       margin: 0 0 20px;
@@ -38,19 +38,19 @@
       margin-top: 0;
     }
     .button {
-      background: #d76b00;
-      border: none;
-      box-shadow: 1px 2px 4px $gray-medium;
-      color: white;
+      @extend %button;
+      background-color: $orange;
       font-weight: 100;
-      font-family: $font;
-      text-decoration: none;
-      text-transform: uppercase;
-      border-radius: 20px;
       padding: 8px 20px;
       margin: 30px auto 30px;
       max-width: 250px;
       display: block;
+      span {
+        display: none;
+      }
+      &:hover {
+        background-color: $student-portrait-color;
+      }
     }
   }
   .get-started {

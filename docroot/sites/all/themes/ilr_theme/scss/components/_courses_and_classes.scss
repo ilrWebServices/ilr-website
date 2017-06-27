@@ -97,7 +97,11 @@
   }
 
   .button {
-    @extend %cornell-button;
+    @extend %button;
+    @include leader(.5);
+    @include trailer(.5);
+    display: inline-block;
+    @extend .clearfix;
     .cost {
       display: block;
       text-align: center;
@@ -105,6 +109,15 @@
       padding-bottom: .3em;
     }
     &.button-info .cost {
+      display: none;
+    }
+    span {
+      display: none;
+    }
+    &.follow { //is this still needed now that price has been removed from btn?
+      @include adjust-font-size-to(16px,1);
+    }
+    &.button-cancelled .cost {
       display: none;
     }
   }
@@ -152,17 +165,9 @@
   }
 
   .request-info {
-    @include adjust-font-size-to(16px);
-    font-style: italic;
-    display: block;
-    color: $gray-dark;
-    text-decoration: underline;
+    @include adjust-font-size-to(16px,1);
     span {
       display: none;
-    }
-    &.button {
-      text-decoration: none;
-      font-style: normal;
     }
   }
 
@@ -334,23 +339,8 @@ div.field-name-field-course.field-type-entityreference {
   }
 }
 
-.button {
-  @include rhythm(.5);
-  @extend %cornell-button;
-  clear: left;
-  span {
-    display: none;
-  }
-  &.follow {
-    @include adjust-font-size-to(16px,1);
-  }
-  &.button-cancelled .cost {
-    display: none;
-  }
-}
-
 .dates-registration {
-  @extend %cornell-button;
+  @extend %button;
   @include leader(1);
   clear: left;
 }
