@@ -7,7 +7,9 @@
 
   div.class-cancelled {
     margin-left: 1.2em;
+    clear: left;
     .radio-label {
+      float: none;
       @include trailer(.5);
     }
     .message {
@@ -65,7 +67,6 @@
     &.time {
       line-height: 1.2;
       @include padding-leader(.25);
-      width: 80%;
     }
   }
 

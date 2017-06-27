@@ -218,6 +218,14 @@ function forms_update_7017() {
 }
 
 /**
+ * Delete subm from Peer Mentoring and Fex/Wisp Sponsor forms
+ */
+function forms_update_7018() {
+  _forms_delete_entityform_submissions('ilr_student_advisor_application_');
+  _forms_delete_entityform_submissions('fex_wisp_sponsor_registration');
+}
+
+/**
 * Delete one or more field instances from one entityform
 * @param $form_id
 * @param $field_names

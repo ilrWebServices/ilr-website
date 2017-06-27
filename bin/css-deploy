@@ -29,7 +29,7 @@ if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
 
   # Upload to server
   echo "Uploading styles to server"
-  scp -r docroot/sites/all/themes/ilr_theme/css ilr@srv-2136.devcloud.hosting.acquia.com:~/$ENV/livedev/docroot/sites/all/themes/ilr_theme
+  scp -r docroot/sites/all/themes/ilr_theme/css ilr.$ENV@srv-2136.devcloud.hosting.acquia.com:~/$ENV/livedev/docroot/sites/all/themes/ilr_theme
 
   echo "Clearing css cache on $ENV"
   cd docroot
