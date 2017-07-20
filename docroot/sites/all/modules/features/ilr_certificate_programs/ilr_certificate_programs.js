@@ -26,31 +26,55 @@
 
       function position_call_to_action() {
         is_in_sidebar = function (el) {
-          return el.parent().has('div#block-ilr-certificate-programs-certificate-programs-cta');
+          return el.parent().is('div#block-ilr-certificate-programs-certificate-programs-cta');
         }
-        is_in_main = function (el) {
-          return el.parent().has('div#content');
+        certificate_basics = $('.certificate-basics');
+        get_updates = $('.get-updates');
+        contact_us = $('.contact-us');
+        if ($('header').width() > 550 && $('header').width() < 1280 ) {
+          if ( is_in_sidebar(certificate_basics) ) {
+            $('#breadcrumb').after(certificate_basics);
+          }
+        }
+        else if ($('header').width() <= 550 ) {
+          if ( is_in_sidebar(certificate_basics) ) {
+            $('#breadcrumb').after(certificate_basics);
+          }
+        }
+        else if ( ! is_in_sidebar(certificate_basics) ) {
+          $('#block-ilr-certificate-programs-certificate-programs-cta').prepend(contact_us).prepend(get_updates).prepend(certificate_basics);
         }
 
+        /* LEGACY - Leave in place until all manually overridden instances of the
+         * ilr-certificate-programs-cta-block have replaced #certificate-info-aside
+         * with .certificate-basics, .get-updates, and .contact-us.
+         */
+        is_in_sidebar_manually = function (el) {
+          return el.parent().is('div#manual-certificate-info');
+        }
+        is_in_main = function (el) {
+          return el.parent().parent().is('div#content, div#main');  // The element is either in #content OR #main
+        }
         certificate_info_aside = $('#certificate-info-aside');
         sidebar_second = $('#sidebar-second');
 
         if ($('header').width() < 768 ) {
           if ( is_in_main(certificate_info_aside) ) {
-            $('#block-ilr-certificate-programs-certificate-programs-cta').prepend(certificate_info_aside);
-             $('#highlighted').after(sidebar_second);
+            $('#manual-certificate-info').prepend(certificate_info_aside);
+            $('#highlighted').after(sidebar_second);
           }
         }
         else if ($('header').width() < 1280 ) {
-          if ( is_in_sidebar(certificate_info_aside) ) {
+          if ( is_in_sidebar_manually(certificate_info_aside) ) {
             $('#breadcrumb').after(certificate_info_aside);
           }
         }
         else {
-          if ( is_in_sidebar(certificate_info_aside) ) {
-            $('#block-ilr-certificate-programs-certificate-programs-cta').prepend(certificate_info_aside);
+          if ( is_in_main(certificate_info_aside) ) {
+            $('#manual-certificate-info').prepend(certificate_info_aside);
           }
         }
+        // END of LEGACY
       }
 
       function highlight_first_word() {

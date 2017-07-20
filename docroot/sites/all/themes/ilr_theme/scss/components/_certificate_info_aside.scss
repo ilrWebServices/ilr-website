@@ -1,3 +1,5 @@
+// Leave #certificate-info-aside rules in place until all manually overridden instances of the
+// ilr-certificate-programs-cta-block have replaced #certificate-info-aside with .certificate-basics, .get-updates, and .contact-us.
 #certificate-info-aside {
   background: white;
   border-bottom: 1px solid $gray-light;
@@ -89,6 +91,102 @@
   }
 }
 
+.certificate-basics, .get-updates, .contact-us {
+  background: white;
+  padding: 34px 34px;
+  margin: 0;
+  text-align: center;
+  overflow: auto;
+  p {
+    font-size: 17px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  p.em-content {
+    // font-size: 21px;
+    font-weight: 300;
+    // margin: 8px 0 13px;
+    em {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 28px;
+      // vertical-align: top;
+      // padding-right: 6px;
+      // margin-top: -4px;
+      display: block;
+      // float: left;
+    }
+  }
+  a {
+    color: $orange; //-neg02;
+    font-size: 17px;
+    line-height: 1.2;
+  }
+  h2 {
+    color: $student-portrait-color;
+    font-size: 28px;
+    font-weight: 100;
+    margin: 0 0 13px;
+    padding: 0;
+  }
+  h3 {
+    color: $orange; //-neg02;
+    font-size: 21px;
+    font-weight: 100;
+    line-height: 1.3;
+    padding: 0;
+    margin: 0;
+  }
+  h3 + p {
+    margin-top: 0;
+  }
+  .button {
+    background: $orange; //-neg02;
+    // box-shadow: 1px 2px 4px $medium-gray;
+    box-shadow: 1px 2px 4px $orange; //-neg03;
+    color: white;
+    font-family: sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 20px;
+    padding: 8px 21px;
+    margin: 21px auto 21px;
+    max-width: 250px;
+    display: block;
+  }
+  hr {
+    border-top: 1px dotted $gray-light;
+    margin: 21px 0;
+  }
+}
+
+.certificate-basics {
+  margin: -34px -34px 34px;
+}
+
+.get-updates {
+  background-color: $orange; //-neg02;
+  h2, p {
+    color: white;
+  }
+  .button {
+    background: #f08e2d;
+    box-shadow: 1px 2px 4px $orange; //-neg03;
+    span {
+      display: none;
+    }
+  }
+}
+
+.contact-us {
+  border-top: 1px solid $gray-light;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+
+
 #main[data-eq-state="550"] {
   #certificate-info-aside {
     .get-started, .contact {
@@ -142,6 +240,30 @@
       padding-left: 15px;
     }
   }
+
+
+  .certificate-basics {
+    border-bottom: 1px solid $gray-light;
+    margin: -34px -34px 34px;
+    h2, hr {
+      display: none;
+    }
+    div {
+      width: 33%;
+      padding: 0 2%;
+      float: left;
+      p {
+        font-size: 14px;
+      }
+      p.em-content {
+        em {
+          font-size: 21px;
+        }
+      }
+    }
+  }
+
+
 }
 
 #main[data-eq-state="768"] {
@@ -186,6 +308,49 @@
       padding-left: 15px;
     }
   }
+
+  .certificate-basics {
+    border: 1px solid $gray-light;
+    margin: 0 0 34px;
+    h2, hr {
+      display: none;
+    }
+    div {
+      width: 33%;
+      padding: 0 2%;
+      float: left;
+      p {
+        font-size: 14px;
+      }
+      p.em-content {
+        em {
+          font-size: 21px;
+        }
+      }
+    }
+  }
+  .get-updates {
+    // background-color: $orange-neg02;
+    text-align: left;
+    // h2, p {
+    //   color: white;
+    // }
+    div {
+      float: left;
+    }
+    .button {
+      // background: #f08e2d; //#f08e2d
+      // box-shadow: 1px 2px 4px $orange-neg03;
+      float: right;
+    }
+  }
+  .contact-us {
+    text-align: left;
+    p {
+      float: left;
+      padding-right: 8px;
+    }
+  }
 }
 
 #main[data-eq-state="widescreen"] {
@@ -208,4 +373,30 @@
       padding: 0;
     }
   }
+
+  .certificate-basics, .get-updates, .contact-us {
+    border: 1px solid $gray-light;
+  }
+  .certificate-basics {
+    margin: 0 0 34px;
+  }
+  .certificate-basics, .get-updates {
+    margin-bottom: 8px;
+  }
+  .get-updates {
+    background-color: white;
+    h2 {
+      color: $student-portrait-color;
+    }
+    p {
+      color: inherit;
+    }
+    .button {
+      background: $orange; //-neg02;
+      box-shadow: 1px 2px 4px $gray-medium;
+    }
+  }
 }
+
+
+
