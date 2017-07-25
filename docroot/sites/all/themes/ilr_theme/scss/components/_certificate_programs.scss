@@ -210,6 +210,11 @@ body.node-type-certificate-programs {
         }
       }
     }
+    #sidebar-second {
+      @include grid-span (12);
+      clear: both;
+      // @include clearfix;
+    }
   }
 
   #main[data-eq-state="widescreen"] {

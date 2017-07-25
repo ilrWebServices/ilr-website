@@ -93,7 +93,7 @@
 
 .certificate-basics, .get-updates, .contact-us {
   background: white;
-  padding: 34px 34px;
+  padding: 34px;
   margin: 0;
   text-align: center;
   overflow: auto;
@@ -103,22 +103,16 @@
     margin-bottom: 8px;
   }
   p.em-content {
-    // font-size: 21px;
     font-weight: 300;
-    // margin: 8px 0 13px;
     em {
       font-style: normal;
       font-weight: 400;
       font-size: 28px;
-      // vertical-align: top;
-      // padding-right: 6px;
-      // margin-top: -4px;
       display: block;
-      // float: left;
     }
   }
   a {
-    color: $orange; //-neg02;
+    color: $orange;
     font-size: 17px;
     line-height: 1.2;
   }
@@ -130,7 +124,7 @@
     padding: 0;
   }
   h3 {
-    color: $orange; //-neg02;
+    color: $orange;
     font-size: 21px;
     font-weight: 100;
     line-height: 1.3;
@@ -141,9 +135,8 @@
     margin-top: 0;
   }
   .button {
-    background: $orange; //-neg02;
-    // box-shadow: 1px 2px 4px $medium-gray;
-    box-shadow: 1px 2px 4px $orange; //-neg03;
+    background-color: $orange-light;
+    box-shadow: 1px 2px 4px $orange-dark;
     color: white;
     font-family: sans-serif;
     text-decoration: none;
@@ -153,6 +146,12 @@
     margin: 21px auto 21px;
     max-width: 250px;
     display: block;
+    &:hover {
+      background-color: $student-portrait-color;;
+    }
+    span {
+      display: none;
+    }
   }
   hr {
     border-top: 1px dotted $gray-light;
@@ -161,20 +160,14 @@
 }
 
 .certificate-basics {
-  margin: -34px -34px 34px;
+  border: 1px solid $gray-light;
+  margin: 34px 0;
 }
 
 .get-updates {
-  background-color: $orange; //-neg02;
+  background-color: $orange;
   h2, p {
     color: white;
-  }
-  .button {
-    background: #f08e2d;
-    box-shadow: 1px 2px 4px $orange; //-neg03;
-    span {
-      display: none;
-    }
   }
 }
 
@@ -184,8 +177,6 @@
     margin-bottom: 0;
   }
 }
-
-
 
 #main[data-eq-state="550"] {
   #certificate-info-aside {
@@ -240,11 +231,8 @@
       padding-left: 15px;
     }
   }
-
-
   .certificate-basics {
-    border-bottom: 1px solid $gray-light;
-    margin: -34px -34px 34px;
+    margin: 34px 0 34px;
     h2, hr {
       display: none;
     }
@@ -262,8 +250,6 @@
       }
     }
   }
-
-
 }
 
 #main[data-eq-state="768"] {
@@ -308,9 +294,7 @@
       padding-left: 15px;
     }
   }
-
   .certificate-basics {
-    border: 1px solid $gray-light;
     margin: 0 0 34px;
     h2, hr {
       display: none;
@@ -330,32 +314,31 @@
     }
   }
   .get-updates {
-    // background-color: $orange-neg02;
-    text-align: left;
-    // h2, p {
-    //   color: white;
-    // }
     div {
-      float: left;
-    }
-    .button {
-      // background: #f08e2d; //#f08e2d
-      // box-shadow: 1px 2px 4px $orange-neg03;
-      float: right;
+      h2 {
+        font-size: 24px;
+        display: inline-block;
+      }
+      h2:after {
+        content: ".";
+      }
+      p {
+        font-family: $font-headers;
+        font-size: 24px;
+        display: inline-block;
+      }
     }
   }
   .contact-us {
-    text-align: left;
     p {
-      float: left;
       padding-right: 8px;
+      display: inline-block;
     }
   }
 }
 
 #main[data-eq-state="widescreen"] {
   #certificate-info-aside {
-    border-bottom: none;
     max-width: 350px;
     margin-top: 45px;
     .get-started, .contact {
@@ -373,9 +356,15 @@
       padding: 0;
     }
   }
-
   .certificate-basics, .get-updates, .contact-us {
     border: 1px solid $gray-light;
+    .button {
+      background: $orange;
+      box-shadow: 1px 2px 4px $gray-medium;
+      &:hover {
+        background-color: $student-portrait-color;;
+      }
+    }
   }
   .certificate-basics {
     margin: 0 0 34px;
@@ -391,12 +380,5 @@
     p {
       color: inherit;
     }
-    .button {
-      background: $orange; //-neg02;
-      box-shadow: 1px 2px 4px $gray-medium;
-    }
   }
 }
-
-
-
