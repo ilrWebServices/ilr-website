@@ -83,14 +83,10 @@ body.node-type-certificate-programs {
               color: $p-text;
               text-transform: initial;
             }
-            .date-time .date {
-              font-weight: 300;
-            }
-            .timespan {
-              float: left;
-            }
-            .date-time {
-              float: right;
+            .timespan, .date-time .date, .cost {
+              font-weight: 400;
+              margin-bottom: 0;
+              padding-right: 8px;
             }
           }
           .group-main-content {
@@ -157,6 +153,31 @@ body.node-type-certificate-programs {
         }
       }
     }
+    #content {
+      .field-name-field-course {
+        .class-details {
+          .timespan {
+            float: left;
+            &:after {
+              content: '|';
+              padding-left: 8px;
+            }
+          }
+          .date-time {
+            display: inline-block;
+            float: left;
+          }
+          .cost {
+            display: block;
+            clear: none;
+            &:before {
+              content: '|';
+              padding-right: 8px;
+            }
+          }
+        }
+      }
+    }
   }
 
   #main[data-eq-state="768"] {
@@ -208,12 +229,32 @@ body.node-type-certificate-programs {
             float: none;
           }
         }
+        .class-details {
+          .timespan {
+            float: left;
+            &:after {
+              content: '|';
+              padding-left: 8px;
+            }
+          }
+          .date-time {
+            display: inline-block;
+            float: left;
+          }
+          .cost {
+            display: block;
+            clear: none;
+            &:before {
+              content: '|';
+              padding-right: 8px;
+            }
+          }
+        }
       }
     }
     #sidebar-second {
       @include grid-span (12);
       clear: both;
-      // @include clearfix;
     }
   }
 
@@ -263,6 +304,27 @@ body.node-type-certificate-programs {
           }
           .course_details {
             float: none;
+          }
+        }
+        .class-details {
+          .timespan {
+            float: left;
+            &:after {
+              content: '|';
+              padding-left: 8px;
+            }
+          }
+          .date-time {
+            display: inline-block;
+            float: left;
+          }
+          .cost {
+            display: block;
+            clear: none;
+            &:before {
+              content: '|';
+              padding-right: 8px;
+            }
           }
         }
       }
