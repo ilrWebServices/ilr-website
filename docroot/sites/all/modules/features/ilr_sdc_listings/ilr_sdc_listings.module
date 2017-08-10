@@ -213,22 +213,30 @@ function ilr_sdc_listings_block_view($delta = '') {
  * @return int
  */
 function _ilr_sdc_listings_catalog_redirect($catalog_prefix) {
-  $nid = _ilr_sdc_listings_get_nid_from_catalog_prefix($catalog_prefix);
-  if ($nid) {
+  $course = _ilr_sdc_listings_get_course_by_catalog_prefix($catalog_prefix);
+  if ($course) {
+    $nid = $course->nid;
     drupal_goto("node/$nid");
     return;
   }
   return MENU_NOT_FOUND;
 }
+
 function _ilr_sdc_listings_get_nid_from_catalog_prefix($catalog_prefix) {
+  if ($course = _ilr_sdc_listings_get_node_from_catalog_prefix($catalog_prefix)) {
+    return $course->nid;
+  }
+  return FALSE;
+}
+
+function _ilr_sdc_listings_get_course_by_catalog_prefix($catalog_prefix) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'sdc_course')
     ->fieldCondition('field_catalog_prefix', 'value', $catalog_prefix);
   $results = $query->execute();
   if (!empty($results['node'])) {
-    $nid = array_pop(array_keys($results['node']));
-    return $nid;
+    return array_pop($results['node']);
   }
   return FALSE;
 }
@@ -2506,4 +2514,42 @@ function _ilr_sdc_listings_get_protected_fields() {
       'title',
     ),
   );
+}
+
+/**
+ * Implements hook_salesforce_pull_mapping_object_alter().
+ *
+ * @param mixed $mapping_object
+ *   The mapping object that was detected based on existing mappings or FALSE
+ *   if no exisitng mapping object exists.
+ * @param array $sf_object
+ *   The salesforce object data that will be used in this pull.
+ * @param SalesforceMapping $mapping
+ *   The salesforce mapping that will be used during the pull.
+ */
+function ilr_sdc_listings_salesforce_pull_mapping_object_alter(&$mapping_object, $sf_object, $mapping) {
+  if (!$mapping_object && $mapping->drupal_bundle == 'sdc_course') {
+    $prefix = $sf_object['Course_Number__c'];
+    if (!empty($prefix) && strlen($prefix) <= 10) {
+      $matched_course = _ilr_sdc_listings_get_course_by_catalog_prefix($prefix);
+      if ($matched_course) {
+        entity_create('salesforce_mapping_object', array(
+          'salesforce_id' => $sf_object['Id'],
+          'entity_type' => $mapping->drupal_entity_type,
+          'entity_id' => $matched_course->nid,
+          'last_sync_message' => t('Course prematch on pull'),
+          'last_sync_status' => SALESFORCE_MAPPING_STATUS_SUCCESS
+        ))->save();
+        $mapping_object = salesforce_mapping_object_load_by_sfid($sf_object['Id'], TRUE);
+      }
+    }
+  }
+}
+
+function ilr_sdc_listings_sf_pull_prematch($sf_object) {
+  $prefix = $sf_object['Course_Number__c'];
+  if (!empty($prefix) && strlen($prefix) <= 10) {
+    return _ilr_sdc_listings_get_course_by_catalog_prefix($prefix);
+  }
+  return FALSE;
 }
