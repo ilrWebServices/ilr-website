@@ -241,6 +241,18 @@ function _ilr_sdc_listings_get_course_by_catalog_prefix($catalog_prefix) {
   return FALSE;
 }
 
+function _ilr_sdc_listings_get_class_by_id($class_id) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_class')
+    ->fieldCondition('field_class_id', 'value', $class_id);
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    return array_pop($results['node']);
+  }
+  return FALSE;
+}
+
 /**
  * Sends the course request form to the page
  * @see ilr_sdc_listings.js
@@ -1363,9 +1375,9 @@ function ilr_sdc_listings_class_reg_form_validate($form, &$form_state) {
  * Redirect to registration page.
  */
 function ilr_sdc_listings_class_reg_form_submit($form, &$form_state) {
-  drupal_goto(variable_get('ilr_sdc_listings_reg_url', 'http://register.ilr.cornell.edu/registration/process/processcard.cfm'),
+  drupal_goto(variable_get('ilr_sdc_listings_reg_url', ' https://ilruat-ilruat-cornell-ilr.cs71.force.com/s/shoppingcart'),
     array('query' => array(
-      'addClass' => $form_state['values']['addClass'],
+      'classId' => $form_state['values']['addClass'],
       'courseurl' => $form_state['values']['courseurl'],
     )));
 }
@@ -1784,9 +1796,8 @@ function _ilr_sdc_listings_get_class_registration_url($class) {
   global $base_url;
   $wrapper = ilr_get_node_wrapper($class);
   $url = variable_get('ilr_sdc_listings_reg_url', 'http://register.ilr.cornell.edu/registration/process/processcard.cfm');
-  $url .= '?addClass=' . $wrapper->field_class_id->value();
+  $url .= '?classId=' . $wrapper->field_sf_record_id->value();
   $course_nid = $wrapper->field_course[0]->getIdentifier();
-  $url .= "&courseurl=$base_url/node/$course_nid";
   return $url;
 }
 
@@ -2528,22 +2539,52 @@ function _ilr_sdc_listings_get_protected_fields() {
  *   The salesforce mapping that will be used during the pull.
  */
 function ilr_sdc_listings_salesforce_pull_mapping_object_alter(&$mapping_object, $sf_object, $mapping) {
-  if (!$mapping_object && $mapping->drupal_bundle == 'sdc_course') {
-    $prefix = $sf_object['Course_Number__c'];
-    if (!empty($prefix) && strlen($prefix) <= 10) {
-      $matched_course = _ilr_sdc_listings_get_course_by_catalog_prefix($prefix);
-      if ($matched_course) {
-        entity_create('salesforce_mapping_object', array(
-          'salesforce_id' => $sf_object['Id'],
-          'entity_type' => $mapping->drupal_entity_type,
-          'entity_id' => $matched_course->nid,
-          'last_sync_message' => t('Course prematch on pull'),
-          'last_sync_status' => SALESFORCE_MAPPING_STATUS_SUCCESS
-        ))->save();
-        $mapping_object = salesforce_mapping_object_load_by_sfid($sf_object['Id'], TRUE);
-      }
+  if (!$mapping_object) {
+    switch ($mapping->drupal_bundle) {
+      case 'sdc_course':
+        $mapping_object = ilr_sdc_listings_process_course_pull($mapping_object, $sf_object, $mapping);
+        break;
+      case 'sdc_class':
+        $mapping_object = ilr_sdc_listings_process_class_pull($mapping_object, $sf_object, $mapping);
+        break;
+      default:
+        break;
     }
   }
+}
+
+function ilr_sdc_listings_process_course_pull($mapping_object, $sf_object, $mapping) {
+  $prefix = $sf_object['Course_Number__c'];
+  if (!empty($prefix) && strlen($prefix) <= 10) {
+    $matched_course = _ilr_sdc_listings_get_course_by_catalog_prefix($prefix);
+    if ($matched_course) {
+      $mapping_object = ilr_sdc_listings_create_mapping_object('sdc_course', $matched_course->nid, $sf_object['Id']);
+    }
+  }
+  return $mapping_object;
+}
+
+function ilr_sdc_listings_process_class_pull($mapping_object, $sf_object, $mapping) {
+  $class_id = $sf_object['Legacy_Class_ID__c'];
+  if (!empty($class_id)) {
+    $matched_class = _ilr_sdc_listings_get_class_by_id($class_id);
+    if ($matched_class) {
+      $mapping_object = ilr_sdc_listings_create_mapping_object('sdc_class', $matched_class->nid, $sf_object['Id']);
+    }
+  }
+  return $mapping_object;
+}
+
+function ilr_sdc_listings_create_mapping_object($bundle, $entity_id, $sfid) {
+  entity_create('salesforce_mapping_object', array(
+    'salesforce_id' => $sfid,
+    'entity_type' => 'node',
+    'entity_id' => $entity_id,
+    'last_sync_message' => t($bundle . ' prematch on pull'),
+    'last_sync_status' => SALESFORCE_MAPPING_STATUS_SUCCESS
+  ))->save();
+  $mapping_object = salesforce_mapping_object_load_by_sfid($sfid, TRUE);
+  return $mapping_object;
 }
 
 function ilr_sdc_listings_sf_pull_prematch($sf_object) {
