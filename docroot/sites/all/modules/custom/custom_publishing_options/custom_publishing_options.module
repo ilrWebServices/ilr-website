@@ -1,6 +1,7 @@
 <?php
 
 define('MIN_IMAGE_WIDTH', 1280);
+define('MICROSITE_ENABLED_BUNDLES', array('basic_page','channel_page'));
 
 /**
  * Implements hook_schema_alter().
@@ -14,6 +15,12 @@ function custom_publishing_options_schema_alter(&$schema) {
   );
   $schema['node']['fields']['kerberized'] = array(
     'description' => t('Kerberized', array('@name' => 'kerberized')),
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0,
+  );
+  $schema['node']['fields']['microsite'] = array(
+    'description' => t('Microsite', array('@name' => 'microsite')),
     'type' => 'int',
     'not null' => TRUE,
     'default' => 0,
@@ -60,6 +67,9 @@ function custom_publishing_options_list_permissions($type) {
     "override $type kerberized option" => array(
       'title' => t('Override %type_name kerberized option.', array('%type_name' => $name)),
     ),
+    "override $type microsite option" => array(
+      'title' => t('Override %type_name microsite option.', array('%type_name' => $name)),
+    ),
   );
 
   return $permissions;
@@ -87,6 +97,15 @@ function custom_publishing_options_form_alter(&$form, $form_state, $form_id) {
      '#default_value' => isset($node->kerberized) ? $node->kerberized : FALSE,
      '#access' => user_access('override ' . $node->type . ' kerberized option'),
     );
+
+    if (in_array($form['#bundle'], MICROSITE_ENABLED_BUNDLES)) {
+      $form['options']['microsite'] = array(
+       '#type' => 'checkbox',
+       '#title' => 'Microsite',
+       '#default_value' => isset($node->microsite) ? $node->microsite : FALSE,
+       '#access' => user_access('override ' . $node->type . ' microsite option'),
+      );
+    }
 
     $form['#validate'][] = 'custom_publishing_options_featured_validate';
   }
