@@ -831,3 +831,12 @@ function ilr_update_7063() {
     'ilr_memory_book',
   ));
 }
+
+/**
+ * Enables microsite_nav module
+ */
+function ilr_update_7064() {
+  module_enable(array(
+    'microsite_nav',
+  ));
+}
