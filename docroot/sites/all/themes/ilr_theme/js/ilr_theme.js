@@ -320,6 +320,19 @@
       }
     }
   };
+  Drupal.behaviors.sls = {
+    attach: function (context, settings) {
+      $('.speaker,.moderator,.featured-speaker').click(function(){
+        var $content = $(this).find('.modal').html();
+        if ($content) {
+          $.fancybox({
+            'type': 'inline',
+            'content': $content,
+          });
+        }
+      });
+    }
+  };
   Drupal.behaviors.ilr_css_animations = {
     attach: function (context, settings) {
       $(window).load(function() {

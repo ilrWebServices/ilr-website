@@ -1,0 +1,5 @@
+name = Microsite Navigation
+description = Adds In-page navigation to ILR microsites
+dependencies[] = custom_publishing_options
+core = 7.x
+package = ILR
