@@ -4,6 +4,8 @@
 // Drupal hooks //
 //////////////////
 
+define('SUBSITE_HOME_ENABLED_BUNDLES', array('basic_page','channel_page','registration_page'));
+
 /**
 * Implements hook_block_info().
 */
@@ -52,54 +54,56 @@ function ilr_sub_sites_block_view($delta = '') {
  * Form id = basic_page_node_form
  * Add form elements for create a submenu
  */
-function ilr_sub_sites_form_basic_page_node_form_alter(&$form, &$form_state, $form_id) {
-  /*
-   * Only alter form if
-   *  1. Not ILR Sub Page. @see ilr_sub_pages_create_sub_page.
-   *  2. User can administer content types(might want 'administer sub site' permission in future).
-   *  3. $form['menu'] has been set by menu module.
-   *  4. The node is new
-   */
-  if (empty($form_state['#ilr_sub_page']) && user_access('administer content types') && isset($form['menu']) && !isset($form['nid']['#value'])) {
-    if (_ilr_sub_sites_is_sub_site_homepage($form['#node'])) {
-      $form['menu']['#access'] = FALSE;
-      // Inform administrators how to remove as sub site.
-      drupal_set_message('This page is currently a sub site homepage. To change this you must use the menu administration screens.');
-    }
-    else {
-      // This page is not currently a sub site.
-      $form['menu']['create_subsite'] = array(
-        '#type' => 'checkbox',
-        '#title' => t('Create Subsite Menu'),
-        '#description' => t('Create a new sub site menu and add a link to this node at the top level.'),
-        '#states' => array(
+function ilr_sub_sites_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['#node_edit_form']) && $form['#node_edit_form'] === TRUE && in_array($form['#bundle'], SUBSITE_HOME_ENABLED_BUNDLES)) {
+    /*
+     * Only alter form if
+     *  1. Not ILR Sub Page. @see ilr_sub_pages_create_sub_page.
+     *  2. User can administer content types(might want 'administer sub site' permission in future).
+     *  3. $form['menu'] has been set by menu module.
+     *  4. The node is new
+     */
+    if (empty($form_state['#ilr_sub_page']) && user_access('administer content types') && isset($form['menu']) && !isset($form['nid']['#value'])) {
+      if (_ilr_sub_sites_is_sub_site_homepage($form['#node'])) {
+        $form['menu']['#access'] = FALSE;
+        // Inform administrators how to remove as sub site.
+        drupal_set_message('This page is currently a sub site homepage. To change this you must use the menu administration screens.');
+      }
+      else {
+        // This page is not currently a sub site.
+        $form['menu']['create_subsite'] = array(
+          '#type' => 'checkbox',
+          '#title' => t('Create Subsite Menu'),
+          '#description' => t('Create a new sub site menu and add a link to this node at the top level.'),
+          '#states' => array(
+            'invisible' => array(
+              'input[name="menu[enabled]"]' => array(
+                'checked' => TRUE,
+              ),
+            ),
+          ),
+        );
+        $form['menu']['subsite_title'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Menu Title'),
+          '#description' => t('If blank then the page title will be used.'),
+          '#states' => array(
+            'invisible' => array(
+              'input[name="menu[create_subsite]"]' => array(
+                'checked' => FALSE,
+              ),
+            ),
+          ),
+        );
+        $form['menu']['enabled']['#states'] = array(
           'invisible' => array(
-            'input[name="menu[enabled]"]' => array(
+            'input[name="menu[create_subsite]"]' => array(
               'checked' => TRUE,
             ),
           ),
-        ),
-      );
-      $form['menu']['subsite_title'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Menu Title'),
-        '#description' => t('If blank then the page title will be used.'),
-        '#states' => array(
-          'invisible' => array(
-            'input[name="menu[create_subsite]"]' => array(
-              'checked' => FALSE,
-            ),
-          ),
-        ),
-      );
-      $form['menu']['enabled']['#states'] = array(
-        'invisible' => array(
-          'input[name="menu[create_subsite]"]' => array(
-            'checked' => TRUE,
-          ),
-        ),
-      );
-      $form['#validate'][] = '_ilr_sub_sites_basic_page_validate';
+        );
+        $form['#validate'][] = '_ilr_sub_sites_basic_page_validate';
+      }
     }
   }
 }
@@ -322,7 +326,7 @@ function _ilr_sub_sites_create_menu_options_for_relevant_content_types($new_menu
   $menu_options = variable_get('menu_options_basic_page', array());
   $menu_options[] = $new_menu;
 
-  $relevant_content_types = array('basic_page','registration_page');
+  $relevant_content_types = SUBSITE_HOME_ENABLED_BUNDLES;
   foreach ($relevant_content_types as $key => $machine_name) {
     variable_set('menu_options_' . $machine_name, $menu_options);
   }
@@ -350,7 +354,7 @@ function _ilr_sub_sites_create_pathauto_alias($node) {
  * @param $node
  */
 function _ilr_sub_sites_create_sub_menu_for_node($node) {
-  if ($node->type == 'basic_page' && !empty($node->menu['create_subsite'])) {
+  if (in_array($node->type, SUBSITE_HOME_ENABLED_BUNDLES) && !empty($node->menu['create_subsite'])) {
     $menu_title = empty($node->menu['subsite_title']) ? $node->title : $node->menu['subsite_title'];
     $menu_name = _ilr_sub_sites_create_menu($menu_title);
     // Create node link on new menu
