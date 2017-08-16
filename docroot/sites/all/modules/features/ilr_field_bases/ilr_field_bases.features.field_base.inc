@@ -4695,6 +4695,33 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_ilr_visit_days_select_date'.
+  $field_bases['field_ilr_visit_days_select_date'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ilr_visit_days_select_date',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'September 23: Ithaca, NY' => 'September 23: Ithaca, NY',
+        'September 30: Ithaca, NY' => 'September 30: Ithaca, NY',
+        'October 14: New York, NY' => 'October 14: New York, NY',
+        'October 21: Buffalo, NY' => 'October 21: Buffalo, NY',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_ilrweb_vita_file'.
   $field_bases['field_ilrweb_vita_file'] = array(
     'active' => 1,
