@@ -10008,6 +10008,330 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-ilr_visit_day_registration-field_dates_as_text'.
+  $field_instances['entityform-ilr_visit_day_registration-field_dates_as_text'] = array(
+    'bundle' => 'ilr_visit_day_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_dates_as_text',
+    'label' => 'Date of birth',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_visit_day_registration-field_email'.
+  $field_instances['entityform-ilr_visit_day_registration-field_email'] = array(
+    'bundle' => 'ilr_visit_day_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_visit_day_registration-field_first_name'.
+  $field_instances['entityform-ilr_visit_day_registration-field_first_name'] = array(
+    'bundle' => 'ilr_visit_day_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_first_name',
+    'label' => 'First name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_visit_day_registration-field_ilr_visit_days_select_date'.
+  $field_instances['entityform-ilr_visit_day_registration-field_ilr_visit_days_select_date'] = array(
+    'bundle' => 'ilr_visit_day_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_ilr_visit_days_select_date',
+    'label' => 'Select the date you will attend',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_visit_day_registration-field_last_name'.
+  $field_instances['entityform-ilr_visit_day_registration-field_last_name'] = array(
+    'bundle' => 'ilr_visit_day_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_last_name',
+    'label' => 'Last name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_visit_day_registration-field_num_cornell_participants'.
+  $field_instances['entityform-ilr_visit_day_registration-field_num_cornell_participants'] = array(
+    'bundle' => 'ilr_visit_day_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_num_cornell_participants',
+    'label' => 'Number of attendees',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 44,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_visit_day_registration-field_phone'.
+  $field_instances['entityform-ilr_visit_day_registration-field_phone'] = array(
+    'bundle' => 'ilr_visit_day_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_phone',
+    'label' => 'Phone (with area code)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_visit_day_registration-field_state_province_additional'.
+  $field_instances['entityform-ilr_visit_day_registration-field_state_province_additional'] = array(
+    'bundle' => 'ilr_visit_day_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '(Choose "other" at the very bottom if not applicable.)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_state_province_additional',
+    'label' => 'Home state / province',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 40,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-mps_nyc_have_more_questions-field_comments'.
   $field_instances['entityform-mps_nyc_have_more_questions-field_comments'] = array(
     'bundle' => 'mps_nyc_have_more_questions',
@@ -12484,6 +12808,7 @@ function ilr_forms_students_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('(Choose "other" at the very bottom if not applicable.)');
   t('<li>Plain text only, no bullets or other special formatting</li>');
   t('Activities to be observed by FEX participants');
   t('Additional attendees');
@@ -12533,6 +12858,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('For example: BS ILR, MILR, MPS, MS/PhD, MBA, etc.');
   t('Graduation year');
   t('Graduation year (supervisor)');
+  t('Home state / province');
   t('How did you hear about the ILR School MILR program? (Check as many as apply.)');
   t('How did you hear about the MPS/NYC program?');
   t('I certify that I am a freshman in the ILR School.');
@@ -12554,6 +12880,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Must the student work consecutive days?');
   t('NetID');
   t('Non-consecutive options could include starting in December and finishing in January; or working 5 days, taking a day off for another commitment, and then working 5 more days, etc.');
+  t('Number of attendees');
   t('Number of people who plan to attend');
   t('Number of students you can host for this FEX opportunity');
   t('Number of students you can host for this WISP opportunity');
@@ -12565,6 +12892,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Other ways you heard of us');
   t('Phone');
   t('Phone (supervisor)');
+  t('Phone (with area code)');
   t('Please enter the name of the school you will attend for your first year. If you have not yet selected a school, please enter “Undecided” and email ilradmissions@cornell.edu once you have finalized your decision.');
   t('Please enter the phone number where you can be reached throughout the next academic year.');
   t('Please specify your school or college');
@@ -12579,6 +12907,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('School or college');
   t('School year');
   t('School you will attend for your first year');
+  t('Select the date you will attend');
   t('Semester');
   t('Since email will be our main form of communication with TO students, please indicate the email address you will use throughout the next year.');
   t('Sometimes, usually related to geographic location, a FEX opportunity is not selected by any of the freshmen. In that case, we would like to offer the opportunity to upperclass students.');

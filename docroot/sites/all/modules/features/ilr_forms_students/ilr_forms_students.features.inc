@@ -533,6 +533,58 @@ function ilr_forms_students_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['ilr_visit_day_registration'] = entity_import('entityform_type', '{
+    "type" : "ilr_visit_day_registration",
+    "label" : "ILR Visit Day Registration",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "Thank you",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for your interest in the ILR School\\u2019s Saturday Visit Days program.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EYou will receive an email confirmation shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact the Admissions Office at 607-255-2222 or ilr_admissions@cornell.edu.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EWe look forward to seeing you soon.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 0,
+      "kerberized" : 0,
+      "form_submission_ilr_recipient" : "ilradmissions@cornell.edu",
+      "add_payment_processing" : 0,
+      "hpp" : ""
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['mps_nyc_have_more_questions'] = entity_import('entityform_type', '{
     "type" : "mps_nyc_have_more_questions",
     "label" : "Have Questions about MPS\\/NYC?",
