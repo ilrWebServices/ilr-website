@@ -1,5 +1,41 @@
 <?php
 
+function ilr_menu() {
+  $items = array();
+
+  $items['sls-interest/%'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => 'ilr_sls_form',
+    'page arguments' => array(1),
+  );
+
+  return $items;
+}
+
+/**
+ * Callback for sls-interest
+ */
+function ilr_sls_form($interest) {
+  $block = entityform_block_block_view('sports_leadership_interest');
+  unset($block['content']['field_description']);
+  $content = drupal_render($block['content']);
+  return $content;
+}
+
+/**
+ * Implements hook_entityform_presave.
+ * Sets the interest type on the sls form
+ * @see forms.module for form processing
+ */
+function ilr_entityform_presave($entityform) {
+  if ($entityform->type == 'sports_leadership_interest') {
+    $wrapper = entity_metadata_wrapper('entityform', $entityform);
+    $description = arg(1);
+    $wrapper->field_description->set($description);
+  }
+}
+
 /**
  * Implements hook_preprocess_html()
  *
