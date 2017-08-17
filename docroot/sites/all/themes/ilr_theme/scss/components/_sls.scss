@@ -1,0 +1,618 @@
+body.subsite-front {
+  &.sports-leadership-summit {
+    #page {
+      background: $dark-blue;
+    }
+    #header-region {
+      background-color: $dark-blue;
+      border: none;
+      a {
+        color: $gray-medium;
+      }
+    }
+
+    header[data-eq-state="regular-nav"] {
+      #header-region {
+        h2 {
+          display: none;
+        }
+        .menu-block-ilr-primary-menu {
+          float: left;
+        }
+      }
+    }
+
+    a {
+      border: none;
+    }
+
+    h1, h2 {
+      font-family: $font;
+    }
+
+    h1 {
+      color: $basic-page-color;
+    }
+
+    h2.centered-title {
+      color: $gray-medium;
+    }
+
+    .block > h2 {
+      @extend %centered-title;
+      @include trailer(1);
+      &::after {
+        border-bottom: 2px solid $orange;
+        left: 40%;
+        width: 20%;
+        height: 3px;
+      }
+    }
+
+    ul {
+      padding-left: 0;
+      li {
+        background: none;
+      }
+    }
+
+    .button {
+      @extend %button;
+      display: inline;
+    }
+
+    #highlighted {
+      overflow: auto;
+    }
+
+    //pop up modal
+    .fancybox-wrap { 
+      width: 55% !important;
+      .fancybox-skin {
+        padding: 0 !important;
+      }
+      .fancybox-inner {
+        background-color: $dark-blue;
+        width: 100% !important;
+        overflow: auto;
+      }
+      .modal-wrap {
+        aside {
+          width: 34%;
+          float: left;
+          img {
+            width: 100%;
+            height: auto;
+          }
+          p {
+            color: $gray-bg;
+            margin-bottom: 13px;
+          }
+        }
+        .biography {
+          background-color: $gray-bg;
+          width: 66%;
+          min-height: 500px;
+          padding: 21px 34px;
+          float: left;
+          h2 {
+            font-size: 21px;
+            line-height: 1;
+          }
+          h3 {
+            font-family: $font;
+            font-size: 19px;
+            font-weight: 100;
+            line-height: 1.1;
+          }
+        }
+      }
+    }
+
+    #block-bean-sls-marquee {
+      padding-left: 21px;
+      padding-right: 21px;
+      img {
+        display: none;
+      }
+      .overlay {
+        text-align: center;
+        p {
+          color: white;
+          font-size: 21px;
+          max-width: 500px;
+          margin: 0 auto;
+          em {
+            font-style: normal;
+            font-size: 55px;
+            text-transform: uppercase;
+            font-weight: 600;
+            line-height: 1;
+          }
+        }
+      }
+    }
+
+    #block-system-main {
+      padding-left: 55px;
+      padding-right: 55px;
+    }
+
+    .introduction {
+      text-align: center;
+      @include adjust-font-size-to(27px);
+      @include adjust-leading-to(1);
+      margin: 0 auto !important;
+      color: $bg-body;
+    }
+
+    .tagline {
+      text-align: center;
+      font-style: oblique;
+      @include adjust-font-size-to(22px);
+    }
+
+    .field-name-field-content-bottom-region {
+      clear: both;
+    }
+
+    .block-bean {
+      @include padding-trailer(2);
+    }
+
+    #content-bottom {
+      .modal { 
+        display: none; //don't display on page
+      }
+
+      #block-bean-sls-featured-speakers, #block-bean-sls-dean-hallock {
+        background-color: white;
+        article.featured-speaker {
+          text-align: center;
+        }
+      }
+
+      #block-bean-sls-moderators {
+        background-color: $gray-bg;
+        article.moderator {
+          padding-bottom: 34px;
+          text-align: center;
+          h1 {
+            @include adjust-font-size-to(27px,1);
+          }
+          h2 {
+            @include adjust-font-size-to(21px,1);
+          }
+        }
+      }
+
+      #block-bean-sls-speakers {
+        background-color: white;
+        margin: 0;
+        padding: 0;
+        article.speaker  {
+          @extend %card-animated;
+          h2 {
+            @include adjust-font-size-to(24px, 1.2);
+            span {
+              display: block;
+              font-size: 14px;
+              color: $basic-page-color;
+              line-height: 1.2;
+            }
+          }
+        }
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      #block-bean-sls-register, #block-bean-sls-get-your-ticket {
+        background-color: $orange;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        padding: 55px 34px;
+        text-align: center;
+        p {
+          font-size: 27px;
+          color: white;
+          margin: 0;
+          line-height: 1;
+          a {
+            font-size: 21px;
+            max-width: 233px;
+            margin: 34px auto 0;
+            display: block;
+            box-shadow: 1px 2px 4px $brown;
+          }
+        }
+      }
+
+      #block-bean-sls-register {
+        background-image: url("../images/Dodger-crowd-orange.jpg");
+      }
+
+      #block-bean-sls-get-your-ticket {
+        background-image: url("../images/Blackhawks-crowd-purple.jpg");
+      }
+
+      #block-bean-sls-schedule {
+        padding-left: 34px;
+        padding-right: 34px;
+        text-align: center;
+        p {
+          font-size: 21px;
+          font-weight: 400;
+          margin-bottom: 27px;
+        }
+        a {
+          color: $orange;
+          border: none;
+        }
+      }
+
+      #block-bean-sls-venue {
+        background-color: $gray-bg;
+        padding-left: 34px;
+        padding-right: 34px;
+        .venue {
+          h2 {
+            margin-bottom: 0;
+          }
+          a {
+            color: $orange;
+          }
+        }
+      }
+
+      #block-bean-sls-sponsors {
+        padding-left: 34px;
+        padding-right: 34px;
+        text-align: center;
+        ul {
+          margin-top: 55px;
+          li {
+            display: inline;
+            img {
+              width: 150px;
+              height: 150px;
+            }
+          }
+        }
+      }
+
+      #block-bean-sls-social-media {
+        background: $orange;
+        background-image: url("../images/orange-circle-grid.gif");
+        background-attachment: fixed;
+        background-position: center center;
+        padding: 55px 21px;
+        text-align: center;
+        h2 {
+          color: white;
+          margin-bottom: 34px;
+          padding-top: 0;
+        }
+        ul.social {
+          margin-bottom: 21px;
+          li {
+            background-color: lighten($orange, 21%);
+            border-radius: 50%;
+            font-size: 21px;
+            width: 68px;
+            height: 68px;
+            padding-left: 0;
+            margin-left: 8px;
+            a {
+              width: 68px;
+              height: 68px;
+              &:before {
+                color: $orange;
+                line-height: 68px;
+              }
+              &.follow-linkedin {
+                padding-left: 8px;
+              }
+            }
+            &:nth-of-type(1) {
+              margin-left: 0;
+            }
+          }
+        }
+        p {
+          color: white;
+          font-size: 27px;
+          line-height: 1.3;
+        }
+      }
+
+      #block-bean-sls-bottom-links {
+        background: lighten($brand-dark, 3%);
+        @include padding-leader(2);
+        @include padding-trailer(2);
+        ul {
+          margin: 0 auto;
+          padding: 0;
+          text-align: center;
+          @include adjust-font-size-to(22px);
+          @include adjust-leading-to(1);
+          color: white;
+          li {
+            display: inline;
+            a, a:visited {
+              color: white;
+              border-bottom: 1px solid lighten($brand-dark, 25%);
+              &:hover {
+                color: lighten($brand-light, 20%);
+                border-bottom: 1px solid lighten($brand-dark, 30%);
+              }
+            }
+          }
+        }
+        h2 {
+          display: none;
+        }
+      }
+    }
+
+    #content-bottom[data-eq-state="550"] {
+      #block-bean-sls-speakers {
+        @include padding-trailer(2);
+        padding-left: 34px;
+        padding-right: 34px;
+        article.speaker  {
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+      #block-bean-sls-dean-hallock {
+        article.featured-speaker {
+          margin: 0 auto;
+          float: none;
+          clear: none;
+        }
+      }
+    }
+
+    #content-bottom[data-eq-state="768"] {
+      #block-bean-sls-featured-speakers {
+        padding-left: 34px;
+        padding-right: 34px;
+      }
+      #block-bean-sls-dean-hallock {
+        article.featured-speaker {
+          margin: 0 auto;
+          float: none;
+          clear: none;
+        }
+      }
+      #block-bean-sls-moderators {
+        padding-left: 34px;
+        padding-right: 34px;
+        article.moderator {
+          img {
+            width: 72%;
+          }
+        }
+      }
+      #block-bean-sls-speakers {
+        @include padding-trailer(2);
+        padding-left: 55px;
+        padding-right: 55px;
+        article.speaker {
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+      #block-bean-sls-register, #block-bean-sls-get-your-ticket {
+        padding: 89px 21px;
+      }
+      #block-bean-sls-venue {
+        padding-left: 34px;
+        padding-right: 34px;
+      }
+      #block-bean-sls-social-media {
+        padding: 55px 34px;
+        ul.social {
+          li {
+            font-size: 27px;
+            width: 89px;
+            height: 89px;
+            margin-left: 13px;
+            a {
+              width: 89px;
+              height: 89px;
+              &:before {
+                line-height: 89px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    #content-bottom[data-eq-state="widescreen"] {
+      #block-bean-sls-featured-speakers {
+        article.featured-speaker {
+          img {
+            width: 377px;
+          }
+        }
+      }
+      #block-bean-sls-dean-hallock {
+        padding-left: 34px;
+        padding-right: 34px;
+        article.featured-speaker {
+          img {
+            width: 377px;
+          }
+        }
+      }
+      #block-bean-sls-moderators {
+        background-color: white;
+        padding-left: 89px;
+        padding-right: 89px;
+      }
+      #block-bean-sls-speakers {
+        padding-left: 89px;
+        padding-right: 89px;
+        @include padding-trailer(4);
+        article.speaker  {
+          margin-top: 0;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+      }
+      #block-bean-sls-register, #block-bean-sls-get-your-ticket {
+        padding: 144px 0;
+        p {
+          font-size: 34px;
+        }
+      }
+      #block-bean-sls-schedule {
+        padding-left: 55px;
+        padding-right: 55px;
+        li {
+          display: inline;
+        }
+      }
+      #block-bean-sls-venue {
+        padding-left: 55px;
+        padding-right: 55px;
+        .venue {
+          height: 400px;
+          line-height: 350px;
+          padding-left: 34px;
+          .address {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1.2;
+          }
+        }
+      }
+      #block-bean-sls-sponsors {
+        padding-left: 55px;
+        padding-right: 55px;
+        ul {
+          margin-top: 55px;
+          li {
+            display: inline;
+            img {
+              width: 150px;
+              height: 150px;
+            }
+          }
+        }
+      }
+      #block-bean-sls-social-media {
+        padding: 89px 0;
+        ul.social {
+          li {
+            font-size: 27px;
+            width: 89px;
+            height: 89px;
+            margin-left: 21px;
+            a {
+              width: 89px;
+              height: 89px;
+              &:before {
+                line-height: 89px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#main[data-eq-state="768"] {
+  #block-bean-sls-marquee {
+    padding: 0;
+    position: relative;
+    img {
+      display: block;
+    }
+    .overlay {
+      text-align: left;
+      position: absolute;
+      bottom: 13%;
+      right: 13%;
+      z-index: 100;
+      p {
+        color: white;
+        font-size: 21px;
+        max-width: 300px;
+        em {
+          font-style: normal;
+          font-size: 44px;
+          text-transform: uppercase;
+          font-weight: 600;
+          line-height: 1;
+        }
+      }
+    }
+  }
+}
+
+#main[data-eq-state="widescreen"] {
+  #block-bean-sls-marquee {
+    padding: 0;
+    position: relative;
+    img {
+      display: block;
+    }
+    .overlay {
+      text-align: left;
+      position: absolute;
+      bottom: 13%;
+      right: 13%;
+      z-index: 100;
+      p {
+        color: white;
+        font-size: 21px;
+        max-width: 500px;
+        em {
+          font-style: normal;
+          font-size: 72px;
+          text-transform: uppercase;
+          font-weight: 600;
+          line-height: 1;
+        }
+      }
+    }
+  }
+}
+
+.container[data-eq-state="regular-nav"] {
+  #main[data-eq-state="768"] {
+    #block-bean-sls-marquee {
+      img {
+        display: block;
+      }
+      position: relative;
+      .overlay {
+        text-align: left;
+        position: absolute;
+        bottom: 13%;
+        right: 13%;
+        z-index: 100;
+        p {
+          color: white;
+          font-size: 21px;
+          max-width: 400px;
+          em {
+            font-style: normal;
+            font-size: 55px;
+            text-transform: uppercase;
+            font-weight: 600;
+            line-height: 1;
+          }
+        }
+      }
+    }
+  }
+}
