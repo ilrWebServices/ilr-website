@@ -2183,6 +2183,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'custom_publishing_options',
   );
 
+  // Exported permission: 'override basic_page microsite option'.
+  $permissions['override basic_page microsite option'] = array(
+    'name' => 'override basic_page microsite option',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'custom_publishing_options',
+  );
+
   // Exported permission: 'override basic_page published option'.
   $permissions['override basic_page published option'] = array(
     'name' => 'override basic_page published option',
@@ -2202,6 +2211,15 @@ function ilr_permissions_user_default_permissions() {
       'power user' => 'power user',
     ),
     'module' => 'override_node_options',
+  );
+
+  // Exported permission: 'override channel_page microsite option'.
+  $permissions['override channel_page microsite option'] = array(
+    'name' => 'override channel_page microsite option',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'custom_publishing_options',
   );
 
   // Exported permission: 'override news_item featured option'.
