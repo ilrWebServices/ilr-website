@@ -256,8 +256,6 @@
   }
   h2 {
     background: rgba(0,0,0,.3);
-    @include adjust-font-size-to(26px, 1.2);
-    font-weight: 600;
     font-style: normal;
     margin: 0;
     padding: .5em 25px;
