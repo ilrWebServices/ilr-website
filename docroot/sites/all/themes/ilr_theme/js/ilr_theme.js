@@ -331,6 +331,18 @@
           });
         }
       });
+      $('.sports-leadership-summit .button').click(function(){
+        var interest = $(this).text();
+        var $path = '/sls-interest/'+interest;
+        $path += '?layout=0';
+        $.fancybox({
+          'type': 'iframe',
+          'autoDimensions' : true,
+          'autoScale' : true,
+          'href' : $path,
+        });
+        return false;
+      });
     }
   };
   Drupal.behaviors.ilr_css_animations = {
