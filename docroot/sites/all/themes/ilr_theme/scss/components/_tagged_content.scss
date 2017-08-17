@@ -30,6 +30,10 @@ body {
         article {
           @extend %card-animated;
           margin-top: .3em;
+          font-weight: 600;
+          h2 {
+            @include adjust-font-size-to(26px, 1.2);
+          }
         }
       }
     }
