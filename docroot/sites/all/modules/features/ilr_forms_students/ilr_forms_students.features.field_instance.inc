@@ -10028,7 +10028,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_dates_as_text',
-    'label' => 'Date of birth',
+    'label' => 'Date of birth (mm/dd/yyyy)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -10046,7 +10046,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 42,
+      'weight' => 6,
     ),
   );
 
@@ -10083,7 +10083,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 36,
+      'weight' => 3,
     ),
   );
 
@@ -10126,7 +10126,93 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_visit_day_registration-field_high_school_grad_year'.
+  $field_instances['entityform-ilr_visit_day_registration-field_high_school_grad_year'] = array(
+    'bundle' => 'ilr_visit_day_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_high_school_grad_year',
+    'label' => 'Graduation year',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_visit_day_registration-field_high_school_name'.
+  $field_instances['entityform-ilr_visit_day_registration-field_high_school_name'] = array(
+    'bundle' => 'ilr_visit_day_registration',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_high_school_name',
+    'label' => 'High school name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
     ),
   );
 
@@ -10145,7 +10231,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'entityform',
@@ -10161,7 +10247,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 45,
+      'weight' => 10,
     ),
   );
 
@@ -10204,7 +10290,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 2,
     ),
   );
 
@@ -10223,7 +10309,7 @@ function ilr_forms_students_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'entityform',
@@ -10247,7 +10333,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 44,
+      'weight' => 9,
     ),
   );
 
@@ -10290,7 +10376,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 38,
+      'weight' => 4,
     ),
   );
 
@@ -10327,7 +10413,7 @@ function ilr_forms_students_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 40,
+      'weight' => 5,
     ),
   );
 
@@ -12836,6 +12922,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Country');
   t('Current employer (if applicable)');
   t('Date of birth');
+  t('Date of birth (mm/dd/yyyy)');
   t('Dates for FEX opportunity - see "Key factors to consider" above ');
   t('Degree');
   t('Degree (supervisor)');
@@ -12858,6 +12945,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('For example: BS ILR, MILR, MPS, MS/PhD, MBA, etc.');
   t('Graduation year');
   t('Graduation year (supervisor)');
+  t('High school name');
   t('Home state / province');
   t('How did you hear about the ILR School MILR program? (Check as many as apply.)');
   t('How did you hear about the MPS/NYC program?');
