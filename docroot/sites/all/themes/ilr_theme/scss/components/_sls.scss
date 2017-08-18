@@ -66,7 +66,7 @@ body.subsite-front {
     }
 
     //pop up modal
-    .fancybox-wrap { 
+    .fancybox-wrap {
       width: 55% !important;
       .fancybox-skin {
         padding: 0 !important;
@@ -104,6 +104,13 @@ body.subsite-front {
             font-size: 19px;
             font-weight: 100;
             line-height: 1.1;
+          }
+          .show-hide-bio {
+            display: none;
+          }
+          .sls-bio {
+            padding: 0;
+            display: block !important;
           }
         }
       }
@@ -161,14 +168,35 @@ body.subsite-front {
     }
 
     #content-bottom {
-      .modal { 
-        display: none; //don't display on page
+      .modal {
+        aside {
+          display: none; //don't display on page
+        }
+        .biography {
+          h1, h2 {
+            display: none;
+          }
+          p {
+            padding: 0 21px;
+          }
+          .sls-bio {
+            padding: 0 21px;
+            text-align: left;
+            display: none;
+            &.show {
+              display: block;
+            }
+          }
+        }
       }
 
       #block-bean-sls-featured-speakers, #block-bean-sls-dean-hallock {
         background-color: white;
         article.featured-speaker {
           text-align: center;
+          h2 {
+            margin-bottom: 13px;
+          }
         }
       }
 
@@ -191,12 +219,25 @@ body.subsite-front {
         margin: 0;
         padding: 0;
         article.speaker  {
-          @extend %card-animated;
           h2 {
             @include adjust-font-size-to(24px, 1.2);
+            background: rgba(0,0,0,.75);
+            font-style: normal;
+            margin: 0;
+            padding: 13px 21px;
+            width: 100%;
+            text-shadow: 1px 1px 2px black;
+            a {
+              font-family: $font;
+              color: white;
+              text-decoration: none;
+              &:hover {
+                color: white;
+              }
+            }
             span {
               display: block;
-              font-size: 14px;
+              font-size: 17px;
               color: $basic-page-color;
               line-height: 1.2;
             }
@@ -205,6 +246,19 @@ body.subsite-front {
         img {
           width: 100%;
           height: auto;
+          display: block;
+        }
+        .modal {
+          .biography {
+            .show-hide-bio {
+              background: rgba(0,0,0,.75);
+              color: $gray-light;
+              font-size: 17px;
+              width: 100%;
+              margin-bottom: 0;
+              padding-bottom: 21px;
+            }
+          }
         }
       }
 
@@ -359,13 +413,25 @@ body.subsite-front {
     }
 
     #content-bottom[data-eq-state="550"] {
+      .modal { 
+        display: none; //don't display on page
+      }
+      .show-hide-bio {
+        display: none;
+      }
       #block-bean-sls-speakers {
         @include padding-trailer(2);
         padding-left: 34px;
         padding-right: 34px;
         article.speaker  {
+          @extend %card-animated;
           margin-left: 0;
           margin-right: 0;
+          h2 {
+            span {
+              font-size: 14px;
+            }
+          }
         }
       }
       #block-bean-sls-dean-hallock {
@@ -378,6 +444,12 @@ body.subsite-front {
     }
 
     #content-bottom[data-eq-state="768"] {
+      .modal { 
+        display: none; //don't display on page
+      }
+      .show-hide-bio {
+        display: none;
+      }
       #block-bean-sls-featured-speakers {
         padding-left: 34px;
         padding-right: 34px;
@@ -403,8 +475,14 @@ body.subsite-front {
         padding-left: 55px;
         padding-right: 55px;
         article.speaker {
+          @extend %card-animated;
           margin-left: 0;
           margin-right: 0;
+          h2 {
+            span {
+              font-size: 14px;
+            }
+          }
         }
       }
       #block-bean-sls-register, #block-bean-sls-get-your-ticket {
@@ -435,6 +513,12 @@ body.subsite-front {
     }
 
     #content-bottom[data-eq-state="widescreen"] {
+      .modal { 
+        display: none; //don't display on page
+      }
+      .show-hide-bio {
+        display: none;
+      }
       #block-bean-sls-featured-speakers {
         article.featured-speaker {
           img {
@@ -461,9 +545,15 @@ body.subsite-front {
         padding-right: 89px;
         @include padding-trailer(4);
         article.speaker  {
+          @extend %card-animated;
           margin-top: 0;
           margin-left: 0 !important;
           margin-right: 0 !important;
+          h2 {
+            span {
+              font-size: 14px;
+            }
+          }
         }
       }
       #block-bean-sls-register, #block-bean-sls-get-your-ticket {
@@ -529,7 +619,16 @@ body.subsite-front {
   }
 }
 
+#main[data-eq-state="550"] {
+  .fancybox-overlay {
+    display: block;
+  }
+}
+
 #main[data-eq-state="768"] {
+  .fancybox-wrap {
+    display: block;
+  }
   #block-bean-sls-marquee {
     padding: 0;
     position: relative;
@@ -559,6 +658,9 @@ body.subsite-front {
 }
 
 #main[data-eq-state="widescreen"] {
+  .fancybox-overlay {
+    display: block;
+  }
   #block-bean-sls-marquee {
     padding: 0;
     position: relative;

@@ -324,11 +324,13 @@
     attach: function (context, settings) {
       $('.speaker,.moderator,.featured-speaker').click(function(){
         var $content = $(this).find('.modal').html();
-        if ($content) {
-          $.fancybox({
-            'type': 'inline',
-            'content': $content,
-          });
+        if ($('#main').attr('data-eq-state') != 320) {
+          if ($content) {
+            $.fancybox({
+              'type': 'inline',
+              'content': $content,
+            });
+          }
         }
       });
       $('.sports-leadership-summit .button').click(function(){
@@ -342,6 +344,16 @@
           'href' : $path,
         });
         return false;
+      });
+      $('.show-hide-bio').click(function(){
+        if ($(this).closest('article').find('.sls-bio').hasClass('show')) {
+          $(this).closest('article').find('.sls-bio').removeClass('show');
+          $(this).html('View biography');
+        }
+        else {
+          $(this).closest('article').find('.sls-bio').addClass('show');
+          $(this).html('Hide biography');
+        }
       });
     }
   };
