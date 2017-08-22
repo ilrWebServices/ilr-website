@@ -254,7 +254,7 @@
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
-  h2 {
+  h2, h3 {
     background: rgba(0,0,0,.3);
     font-style: normal;
     margin: 0;
@@ -273,9 +273,6 @@
         color: white;
       }
     }
-  }
-  h3 {
-    display: none;
   }
 
   .field-name-field-image {

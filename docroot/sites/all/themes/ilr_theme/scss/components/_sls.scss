@@ -26,7 +26,7 @@ body.subsite-front {
       border: none;
     }
 
-    h1, h2 {
+    h1, h2, h3, h4 {
       font-family: $font;
     }
 
@@ -100,10 +100,10 @@ body.subsite-front {
             line-height: 1;
           }
           h3 {
-            font-family: $font;
-            font-size: 19px;
-            font-weight: 100;
-            line-height: 1.1;
+            color: $basic-page-color;
+            font-size: 34px;
+            line-height: 1.2;
+            margin: 0 0 8px;
           }
           .show-hide-bio {
             display: none;
@@ -194,7 +194,15 @@ body.subsite-front {
         background-color: white;
         article.featured-speaker {
           text-align: center;
-          h2 {
+          h3 {
+            color: $basic-page-color;
+            font-size: 34px;
+            line-height: 1.2;
+            margin: 0 0 8px;
+          }
+          h4 {
+            font-size: 24px;
+            line-height: 1.5;
             margin-bottom: 13px;
           }
         }
@@ -205,10 +213,12 @@ body.subsite-front {
         article.moderator {
           padding-bottom: 34px;
           text-align: center;
-          h1 {
+          h3 {
+            color: $basic-page-color;
             @include adjust-font-size-to(27px,1);
+            margin: 0 0 8px;
           }
-          h2 {
+          h4 {
             @include adjust-font-size-to(21px,1);
           }
         }
@@ -219,22 +229,15 @@ body.subsite-front {
         margin: 0;
         padding: 0;
         article.speaker  {
-          h2 {
+          h2, h3 {
             @include adjust-font-size-to(24px, 1.2);
             background: rgba(0,0,0,.75);
+            color: white;
             font-style: normal;
             margin: 0;
             padding: 13px 21px;
             width: 100%;
             text-shadow: 1px 1px 2px black;
-            a {
-              font-family: $font;
-              color: white;
-              text-decoration: none;
-              &:hover {
-                color: white;
-              }
-            }
             span {
               display: block;
               font-size: 17px;
@@ -427,7 +430,7 @@ body.subsite-front {
           @extend %card-animated;
           margin-left: 0;
           margin-right: 0;
-          h2 {
+          h2, h3 {
             span {
               font-size: 14px;
             }
@@ -478,7 +481,7 @@ body.subsite-front {
           @extend %card-animated;
           margin-left: 0;
           margin-right: 0;
-          h2 {
+          h2, h3 {
             span {
               font-size: 14px;
             }
@@ -549,7 +552,7 @@ body.subsite-front {
           margin-top: 0;
           margin-left: 0 !important;
           margin-right: 0 !important;
-          h2 {
+          h2, h3 {
             span {
               font-size: 14px;
             }
