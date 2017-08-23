@@ -4,8 +4,6 @@
 // Drupal hooks //
 //////////////////
 
-define('SUBSITE_HOME_ENABLED_BUNDLES', array('basic_page','channel_page','registration_page'));
-
 /**
 * Implements hook_block_info().
 */
@@ -55,7 +53,7 @@ function ilr_sub_sites_block_view($delta = '') {
  * Add form elements for create a submenu
  */
 function ilr_sub_sites_form_alter(&$form, &$form_state, $form_id) {
-  if (isset($form['#node_edit_form']) && $form['#node_edit_form'] === TRUE && in_array($form['#bundle'], SUBSITE_HOME_ENABLED_BUNDLES)) {
+  if (isset($form['#node_edit_form']) && $form['#node_edit_form'] === TRUE && in_array($form['#bundle'], variable_get('subsite_home_enabled_bundles', array('basic_page','channel_page','registration_page')))) {
     /*
      * Only alter form if
      *  1. Not ILR Sub Page. @see ilr_sub_pages_create_sub_page.
@@ -326,7 +324,7 @@ function _ilr_sub_sites_create_menu_options_for_relevant_content_types($new_menu
   $menu_options = variable_get('menu_options_basic_page', array());
   $menu_options[] = $new_menu;
 
-  $relevant_content_types = SUBSITE_HOME_ENABLED_BUNDLES;
+  $relevant_content_types = variable_get('subsite_home_enabled_bundles', array('basic_page','channel_page','registration_page'));
   foreach ($relevant_content_types as $key => $machine_name) {
     variable_set('menu_options_' . $machine_name, $menu_options);
   }
@@ -354,7 +352,7 @@ function _ilr_sub_sites_create_pathauto_alias($node) {
  * @param $node
  */
 function _ilr_sub_sites_create_sub_menu_for_node($node) {
-  if (in_array($node->type, SUBSITE_HOME_ENABLED_BUNDLES) && !empty($node->menu['create_subsite'])) {
+  if (in_array($node->type, variable_get('subsite_home_enabled_bundles', array('basic_page','channel_page','registration_page'))) && !empty($node->menu['create_subsite'])) {
     $menu_title = empty($node->menu['subsite_title']) ? $node->title : $node->menu['subsite_title'];
     $menu_name = _ilr_sub_sites_create_menu($menu_title);
     // Create node link on new menu
