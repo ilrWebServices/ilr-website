@@ -1,7 +1,6 @@
 <?php
 
 define('MIN_IMAGE_WIDTH', 1280);
-define('MICROSITE_ENABLED_BUNDLES', array('basic_page','channel_page'));
 
 /**
  * Implements hook_schema_alter().
@@ -98,7 +97,7 @@ function custom_publishing_options_form_alter(&$form, $form_state, $form_id) {
      '#access' => user_access('override ' . $node->type . ' kerberized option'),
     );
 
-    if (in_array($form['#bundle'], MICROSITE_ENABLED_BUNDLES)) {
+    if (in_array($form['#bundle'], variable_get('microsite_enabled_bundles',array('basic_page','channel_page')))) {
       $form['options']['microsite'] = array(
        '#type' => 'checkbox',
        '#title' => 'Microsite',
