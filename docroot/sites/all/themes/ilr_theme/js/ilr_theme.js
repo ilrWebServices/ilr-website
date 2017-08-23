@@ -333,7 +333,7 @@
           }
         }
       });
-      $('.sports-leadership-summit .button').click(function(){
+      $('.sports-leadership .button').click(function(){
         var interest = $(this).text();
         var $path = '/sls-interest/'+interest;
         $path += '?layout=0';
