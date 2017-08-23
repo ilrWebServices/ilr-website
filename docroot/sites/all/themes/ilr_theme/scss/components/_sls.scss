@@ -1,5 +1,5 @@
 body.subsite-front {
-  &.sports-leadership-summit {
+  &.sports-leadership {
     #page {
       background: $dark-blue;
     }
@@ -173,7 +173,7 @@ body.subsite-front {
           display: none; //don't display on page
         }
         .biography {
-          h1, h2 {
+          h3, h4 {
             display: none;
           }
           p {
@@ -305,9 +305,8 @@ body.subsite-front {
           font-weight: 400;
           margin-bottom: 27px;
         }
-        a {
+        li {
           color: $orange;
-          border: none;
         }
       }
 
