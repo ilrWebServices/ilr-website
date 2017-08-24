@@ -7,9 +7,6 @@ body.subsite-front {
         padding: 0 !important;
         .section {
           @include leader(0);
-          .field-name-body {
-            @include padding-leader(0);
-          }
         }
       }
     }
