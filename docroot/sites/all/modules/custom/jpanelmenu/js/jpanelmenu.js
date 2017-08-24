@@ -23,6 +23,10 @@
       }
     });
 
+    $(document).on('click', jPM.menu + ' li a', function(e){
+        if ( jPM.isOpen() && $(e.target).attr('href').substring(0, 1) == '#' ) { jPM.close(); }
+    });
+
     // Turn on the jPanelMenu
     jPM.on();
   });
