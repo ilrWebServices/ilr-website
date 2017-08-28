@@ -103,5 +103,12 @@ function ilr_visiting_fellows_strongarm() {
   $strongarm->value = 0;
   $export['node_submitted_visiting_fellow'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_visiting_fellow_pattern';
+  $strongarm->value = '[node:menu-link:parent:url:path]/[node:menu-link:title]';
+  $export['pathauto_node_visiting_fellow_pattern'] = $strongarm;
+
   return $export;
 }

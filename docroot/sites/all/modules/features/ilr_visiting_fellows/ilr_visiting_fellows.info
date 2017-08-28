@@ -38,4 +38,5 @@ features[variable][] = menu_parent_visiting_fellow
 features[variable][] = node_options_visiting_fellow
 features[variable][] = node_preview_visiting_fellow
 features[variable][] = node_submitted_visiting_fellow
+features[variable][] = pathauto_node_visiting_fellow_pattern
 project path = sites/all/modules/features
