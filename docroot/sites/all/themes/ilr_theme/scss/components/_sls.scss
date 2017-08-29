@@ -557,6 +557,11 @@ body.subsite-front {
         background-color: white;
         padding-left: 89px;
         padding-right: 89px;
+        .mod-last-row { //2 articles in last row
+          padding: 21px 212px 0;
+          clear: both;
+          overflow: auto;
+        }
       }
       #block-bean-sls-speakers {
         padding-left: 89px;
