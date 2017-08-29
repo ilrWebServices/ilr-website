@@ -4755,7 +4755,8 @@ function ilr_field_bases_field_default_field_bases() {
       'allowed_values' => array(
         'September 23: Ithaca, NY' => 'September 23: Ithaca, NY',
         'September 30: Ithaca, NY' => 'September 30: Ithaca, NY',
-        'October 14: New York, NY' => 'October 14: New York, NY',
+        'October 14: New York, NY' => 'October 14 (10:00 am): New York, NY (This session is FULL)',
+        'October 14: New York, NY (1:00 pm)' => 'October 14 (1:00 pm): New York, NY (new session)',
         'October 21: Buffalo, NY' => 'October 21: Buffalo, NY',
       ),
       'allowed_values_function' => '',
