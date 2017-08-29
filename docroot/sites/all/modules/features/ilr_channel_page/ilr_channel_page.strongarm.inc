@@ -67,16 +67,6 @@ function ilr_channel_page_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_channel_page';
-  $strongarm->value = array(
-    0 => 'main-menu',
-    1 => 'scheinman-institute',
-  );
-  $export['menu_options_channel_page'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_channel_page';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_channel_page'] = $strongarm;

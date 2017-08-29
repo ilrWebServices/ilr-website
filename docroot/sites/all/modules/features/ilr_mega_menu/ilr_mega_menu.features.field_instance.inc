@@ -110,6 +110,7 @@ function ilr_mega_menu_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -122,6 +123,7 @@ function ilr_mega_menu_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'links' => 1,
+          'use_content_language' => TRUE,
           'view_mode' => 'mega_menu_item',
         ),
         'type' => 'entityreference_entity_view',

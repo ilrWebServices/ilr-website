@@ -24,6 +24,7 @@ function ilr_workspan_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'reference_field',
         ),
         'type' => 'entityreference_entity_view',
@@ -35,6 +36,7 @@ function ilr_workspan_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'reference_field',
         ),
         'type' => 'entityreference_entity_view',

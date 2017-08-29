@@ -215,6 +215,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'links' => 1,
+          'use_content_language' => TRUE,
           'view_mode' => 'alternate_teaser',
         ),
         'type' => 'entityreference_entity_view',

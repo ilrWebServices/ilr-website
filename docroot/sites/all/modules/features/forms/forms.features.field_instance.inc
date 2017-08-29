@@ -13760,6 +13760,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -13776,6 +13777,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -18702,6 +18704,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => 'Event name',
           'link' => 0,
         ),
@@ -18712,6 +18715,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => 'Event name',
           'link' => 0,
         ),
@@ -18724,6 +18728,7 @@ function forms_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
@@ -23787,6 +23792,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => 'Event name',
           'link' => 0,
         ),
@@ -23797,6 +23803,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => 'Event name',
           'link' => 0,
         ),
@@ -30365,6 +30372,7 @@ function forms_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),

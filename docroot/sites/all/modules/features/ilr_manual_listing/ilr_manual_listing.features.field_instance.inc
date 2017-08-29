@@ -23,6 +23,7 @@ function ilr_manual_listing_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -34,6 +35,7 @@ function ilr_manual_listing_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'links' => 1,
+          'use_content_language' => TRUE,
           'view_mode' => 'mega_menu_item',
         ),
         'type' => 'entityreference_entity_view',
@@ -43,6 +45,7 @@ function ilr_manual_listing_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => 1,
         ),
