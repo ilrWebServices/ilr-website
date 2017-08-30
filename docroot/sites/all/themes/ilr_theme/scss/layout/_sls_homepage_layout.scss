@@ -73,12 +73,12 @@ body.subsite-front {
       }
       #block-bean-sls-moderators {
         article.moderator {
-          @extend %three-column;
+          @extend %four-column;
         }
-        .mod-last-row { //2 articles in last row
+        .mod-last-row {
           article.moderator {
-            @extend %two-column;
-            width: 42% !important;
+            @extend %three-column;
+            width: 27% !important;
           }
         }
       }
