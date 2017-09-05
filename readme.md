@@ -1,6 +1,6 @@
 # Cornell University | ILR School
 
-Testing FT PR environments.
+Testing FT PR environments. After upgrade
 
 This repository houses the ILR School's Drupal migration. The project was initialized using Singlebrook's [Drupal Streamline](https://github.com/singlebrook/drupal_streamline).
 
