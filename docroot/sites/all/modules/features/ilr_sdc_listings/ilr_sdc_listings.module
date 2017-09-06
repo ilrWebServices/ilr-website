@@ -1165,7 +1165,7 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
   if ($view_mode == 'teaser' || $view_mode == 'full' || $view_mode == 'alternate_teaser') {
     $wrapper = ilr_get_node_wrapper($course_node);
     $course_price = $wrapper->field_price->value();
-    $next_available = ($view_mode == 'teaser') ? TRUE : FALSE;
+    $next_available = (in_array($view_mode, ['teaser','alternate_teaser'])) ? TRUE : FALSE;
     $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node,NULL,$next_available);
     if ($class_nids) {
       $classes = node_load_multiple($class_nids);
