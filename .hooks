@@ -3,6 +3,7 @@ verify: |
   drush {{alias}} en featuretest -y
   drush {{alias}} enable-ilr-profile
   drush {{alias}} cc all
-  echo pwd
-  rvm 2.3.1 do bundle install
   rvm 2.3.1 do compass compile
+
+delete: |
+  rm -rf docroot/sites/drupal-dev.ilr.cornell.edu docroot/sites/stage.ilr.cornell.edu
