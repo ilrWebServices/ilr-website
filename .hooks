@@ -1,0 +1,5 @@
+# Fires after an environment is verified.
+verify: |
+  drush {{alias}} en featuretest -y
+  drush {{alias}} enable-ilr-profile
+  drush {{alias}} cc all
