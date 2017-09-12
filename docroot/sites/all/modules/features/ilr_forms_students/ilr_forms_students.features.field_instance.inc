@@ -826,6 +826,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -836,6 +837,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -1324,6 +1326,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -1334,6 +1337,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -8332,6 +8336,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -8342,6 +8347,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -8828,6 +8834,473 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-ilr_grad_research_assistance_app-field_chairperson'.
+  $field_instances['entityform-ilr_grad_research_assistance_app-field_chairperson'] = array(
+    'bundle' => 'ilr_grad_research_assistance_app',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_chairperson',
+    'label' => 'Chairperson',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_grad_research_assistance_app-field_dates_as_text'.
+  $field_instances['entityform-ilr_grad_research_assistance_app-field_dates_as_text'] = array(
+    'bundle' => 'ilr_grad_research_assistance_app',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_dates_as_text',
+    'label' => 'Expected graduation date (mm/yyyy)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_grad_research_assistance_app-field_degree_program_ms_phd'.
+  $field_instances['entityform-ilr_grad_research_assistance_app-field_degree_program_ms_phd'] = array(
+    'bundle' => 'ilr_grad_research_assistance_app',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_degree_program_ms_phd',
+    'label' => 'Degree Program',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_grad_research_assistance_app-field_description_long'.
+  $field_instances['entityform-ilr_grad_research_assistance_app-field_description_long'] = array(
+    'bundle' => 'ilr_grad_research_assistance_app',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Provide a concise statement of the aims of your proposed research, the procedures you intend to follow, and your progress to date.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_description_long',
+    'label' => 'Research plan',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_grad_research_assistance_app-field_email'.
+  $field_instances['entityform-ilr_grad_research_assistance_app-field_email'] = array(
+    'bundle' => 'ilr_grad_research_assistance_app',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_grad_research_assistance_app-field_first_name'.
+  $field_instances['entityform-ilr_grad_research_assistance_app-field_first_name'] = array(
+    'bundle' => 'ilr_grad_research_assistance_app',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_first_name',
+    'label' => 'First Name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 0,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_grad_research_assistance_app-field_last_name'.
+  $field_instances['entityform-ilr_grad_research_assistance_app-field_last_name'] = array(
+    'bundle' => 'ilr_grad_research_assistance_app',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_last_name',
+    'label' => 'Last Name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 0,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_grad_research_assistance_app-field_request'.
+  $field_instances['entityform-ilr_grad_research_assistance_app-field_request'] = array(
+    'bundle' => 'ilr_grad_research_assistance_app',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Provide an itemized estimate of the assistance you require.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_request',
+    'label' => 'Assistance requested',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_grad_research_assistance_app-field_semester_off_campus'.
+  $field_instances['entityform-ilr_grad_research_assistance_app-field_semester_off_campus'] = array(
+    'bundle' => 'ilr_grad_research_assistance_app',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_semester_off_campus',
+    'label' => 'Semester for which assistance is requested (fall/spring/summer yyyy)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_grad_research_assistance_app-field_supervisor'.
+  $field_instances['entityform-ilr_grad_research_assistance_app-field_supervisor'] = array(
+    'bundle' => 'ilr_grad_research_assistance_app',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_supervisor',
+    'label' => 'Faculty member supervising your research',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_grad_research_assistance_app-field_title_of_paper_or_poster'.
+  $field_instances['entityform-ilr_grad_research_assistance_app-field_title_of_paper_or_poster'] = array(
+    'bundle' => 'ilr_grad_research_assistance_app',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_title_of_paper_or_poster',
+    'label' => 'Title of reseach proposal',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-ilr_mps_nyc_open_house_rsvp-field_email'.
   $field_instances['entityform-ilr_mps_nyc_open_house_rsvp-field_email'] = array(
     'bundle' => 'ilr_mps_nyc_open_house_rsvp',
@@ -9218,6 +9691,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -9228,6 +9702,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -9959,6 +10434,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -9969,6 +10445,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -11139,6 +11616,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -11149,6 +11627,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => 'Offer',
           'link' => 0,
         ),
@@ -11159,6 +11638,7 @@ function ilr_forms_students_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -12903,12 +13383,14 @@ function ilr_forms_students_field_default_field_instances() {
   t('Amount of compensation');
   t('Anticipated graduation year');
   t('Are you a Cornell Alum?');
+  t('Assistance requested');
   t('Attendee 1 - First name');
   t('Attendee 1 - Last name');
   t('Attendee 2 - First name');
   t('Attendee 2 - Last name');
   t('Career field for this FEX opportunity (not the company or organization career field)');
   t('Career field for this WISP opportunity (not the company or organization career field)');
+  t('Chairperson');
   t('City');
   t('City (FEX)');
   t('City (WISP)');
@@ -12926,6 +13408,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Dates for FEX opportunity - see "Key factors to consider" above ');
   t('Degree');
   t('Degree (supervisor)');
+  t('Degree Program');
   t('Degree program');
   t('Description of organization');
   t('Do you currently hold a Bachelor\'s degree?');
@@ -12936,10 +13419,13 @@ function ilr_forms_students_field_default_field_instances() {
   t('Entry date markup');
   t('Event date');
   t('Event title');
+  t('Expected graduation date (mm/yyyy)');
   t('FEX constraints markup');
   t('FEX dates markup');
   t('FEX location');
   t('FEX/WISP Program year');
+  t('Faculty member supervising your research');
+  t('First Name');
   t('First name');
   t('First name (supervisor)');
   t('For example: BS ILR, MILR, MPS, MS/PhD, MBA, etc.');
@@ -12961,6 +13447,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Is this a paid WISP?');
   t('Job title');
   t('Job title (supervisor)');
+  t('Last Name');
   t('Last name');
   t('Last name (supervisor)');
   t('Maximum duration');
@@ -12989,14 +13476,18 @@ function ilr_forms_students_field_default_field_instances() {
   t('Preferred first name (if different from above)');
   t('Preferred state or province');
   t('Program of interest');
+  t('Provide a concise statement of the aims of your proposed research, the procedures you intend to follow, and your progress to date.');
+  t('Provide an itemized estimate of the assistance you require.');
   t('Qualifications markup');
   t('Questions');
+  t('Research plan');
   t('Responsibilities or projects to be completed by WISP student(s)');
   t('School or college');
   t('School year');
   t('School you will attend for your first year');
   t('Select the date you will attend');
   t('Semester');
+  t('Semester for which assistance is requested (fall/spring/summer yyyy)');
   t('Since email will be our main form of communication with TO students, please indicate the email address you will use throughout the next year.');
   t('Sometimes, usually related to geographic location, a FEX opportunity is not selected by any of the freshmen. In that case, we would like to offer the opportunity to upperclass students.');
   t('State / Province');
@@ -13016,6 +13507,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Student\'s email');
   t('Student\'s first name');
   t('Student\'s last name');
+  t('Title of reseach proposal');
   t('Type of opportunity (select one or both)');
   t('Upload your resume');
   t('Upload your resume or CV');

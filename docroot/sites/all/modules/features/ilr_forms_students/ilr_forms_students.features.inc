@@ -430,6 +430,58 @@ function ilr_forms_students_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['ilr_grad_research_assistance_app'] = entity_import('entityform_type', '{
+    "type" : "ilr_grad_research_assistance_app",
+    "label" : "ILR Grad Research Assistance Application Form",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : {
+        "value" : "\\u003Ch2\\u003EILR Graduate Research Assistance Application\\u003C\\/h2\\u003E\\r\\n\\r\\n\\u003Ch3\\u003EYour application has been submitted.\\u003C\\/h3\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThank you for submitting your application for research assistance.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions or concerns about your application, please email the ILR Graduate Programs Office at: \\u003Ca href=\\u0022mailto:ilrgradprograms@cornell.edu\\u0022\\u003Eilrgradprograms@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 1,
+      "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu",
+      "add_payment_processing" : 0,
+      "hpp" : ""
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['ilr_mps_nyc_open_house_rsvp'] = entity_import('entityform_type', '{
     "type" : "ilr_mps_nyc_open_house_rsvp",
     "label" : "ILR MPS-NYC Open House RSVP",
