@@ -890,6 +890,13 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_cancelled_value']['value'] = array(
     0 => '0',
   );
+  /* Filter criterion: Content: Is Full? (field_is_full) */
+  $handler->display->display_options['filters']['field_is_full_value']['id'] = 'field_is_full_value';
+  $handler->display->display_options['filters']['field_is_full_value']['table'] = 'field_data_field_is_full';
+  $handler->display->display_options['filters']['field_is_full_value']['field'] = 'field_is_full_value';
+  $handler->display->display_options['filters']['field_is_full_value']['value'] = array(
+    0 => '0',
+  );
   $export['next_class_course'] = $view;
 
   $view = new view();
