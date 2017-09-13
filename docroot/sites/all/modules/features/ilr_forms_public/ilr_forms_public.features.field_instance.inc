@@ -1653,9 +1653,9 @@ function ilr_forms_public_field_default_field_instances() {
         'subscribe' => 1,
         'interest_groups' => array(
           'e2c22f8563' => array(
-            '4e28d21183' => 0,
-            '20f891f2e9' => 0,
-            '82a36922c1' => 0,
+            '8d9b040c60' => 0,
+            '23cd4cd067' => 0,
+            '040d8716f2' => 0,
             '90cce1177c' => 0,
             '102cdf258e' => 0,
             '205f11d95a' => 0,
@@ -1691,9 +1691,18 @@ function ilr_forms_public_field_default_field_instances() {
     'settings' => array(
       'interest_groups_title' => '',
       'mergefields' => array(
+        'CAMPAIGN' => '',
         'EMAIL' => '[entityform:field-email]',
         'FNAME' => '[entityform:field-first-name]',
+        'INTEREST' => '',
         'LNAME' => '[entityform:field-last-name]',
+        'MMERGE4' => '',
+        'ORG' => '[entityform:field-organization]',
+        'PAGEURL' => '',
+        'TITLE' => '[entityform:field-job-title]',
+        'UBDATE' => '',
+        'UBPAGEID' => '',
+        'UBVARIANT' => '',
         'advanced' => 0,
       ),
       'options' => array(
