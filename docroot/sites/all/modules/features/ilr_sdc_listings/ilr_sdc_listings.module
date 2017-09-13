@@ -2247,7 +2247,7 @@ function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
     $class_id = $wrapper->field_class_id->value();
     if ($wrapper->field_is_full->value()) {
       $full_markup = _ilr_sdc_listings_get_course_full_markup($class);
-      $form['class_full_with_radio_label'] = array(
+      $form['class_full_with_radio_label'][] = array(
         '#type' => 'markup',
         '#markup' => $full_markup,
       );
