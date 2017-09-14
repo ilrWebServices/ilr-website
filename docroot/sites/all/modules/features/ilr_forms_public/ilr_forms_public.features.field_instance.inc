@@ -22,6 +22,7 @@ function ilr_forms_public_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -269,6 +270,7 @@ function ilr_forms_public_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -279,6 +281,7 @@ function ilr_forms_public_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -289,6 +292,7 @@ function ilr_forms_public_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -1329,6 +1333,7 @@ function ilr_forms_public_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -1339,6 +1344,7 @@ function ilr_forms_public_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -1508,7 +1514,7 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 36,
+      'weight' => 3,
     ),
   );
 
@@ -1550,7 +1556,49 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-join_hcd_mail_list-field_job_title'.
+  $field_instances['entityform-join_hcd_mail_list-field_job_title'] = array(
+    'bundle' => 'join_hcd_mail_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_job_title',
+    'label' => 'Job Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
     ),
   );
 
@@ -1592,7 +1640,7 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 2,
     ),
   );
 
@@ -1605,9 +1653,9 @@ function ilr_forms_public_field_default_field_instances() {
         'subscribe' => 1,
         'interest_groups' => array(
           'e2c22f8563' => array(
-            '4e28d21183' => 0,
-            '20f891f2e9' => 0,
-            '82a36922c1' => 0,
+            '8d9b040c60' => 0,
+            '23cd4cd067' => 0,
+            '040d8716f2' => 0,
             '90cce1177c' => 0,
             '102cdf258e' => 0,
             '205f11d95a' => 0,
@@ -1643,9 +1691,18 @@ function ilr_forms_public_field_default_field_instances() {
     'settings' => array(
       'interest_groups_title' => '',
       'mergefields' => array(
+        'CAMPAIGN' => '',
         'EMAIL' => '[entityform:field-email]',
         'FNAME' => '[entityform:field-first-name]',
+        'INTEREST' => '',
         'LNAME' => '[entityform:field-last-name]',
+        'MMERGE4' => '',
+        'ORG' => '[entityform:field-organization]',
+        'PAGEURL' => '',
+        'TITLE' => '[entityform:field-job-title]',
+        'UBDATE' => '',
+        'UBPAGEID' => '',
+        'UBVARIANT' => '',
         'advanced' => 0,
       ),
       'options' => array(
@@ -1661,7 +1718,50 @@ function ilr_forms_public_field_default_field_instances() {
       'module' => 'mailchimp_lists',
       'settings' => array(),
       'type' => 'mailchimp_lists_select',
-      'weight' => 38,
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-join_hcd_mail_list-field_organization'.
+  $field_instances['entityform-join_hcd_mail_list-field_organization'] = array(
+    'bundle' => 'join_hcd_mail_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_organization',
+    'label' => 'Organization',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
     ),
   );
 
@@ -2694,6 +2794,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Event title');
   t('First name');
   t('First name (2nd participant)');
+  t('Job Title');
   t('Job title');
   t('Last name');
   t('Last name (2nd participant)');
