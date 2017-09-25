@@ -226,6 +226,13 @@ function forms_update_7018() {
 }
 
 /**
+ * Deletes the Peer Mentoring form
+ */
+function forms_update_7019() {
+  _forms_delete_entityform_type('ilr_student_advisor_application_');
+}
+
+/**
 * Delete one or more field instances from one entityform
 * @param $form_id
 * @param $field_names
