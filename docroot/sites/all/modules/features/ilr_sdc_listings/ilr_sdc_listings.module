@@ -1142,6 +1142,8 @@ function _ilr_sdc_listings_class_add_reg_form($class_node, $view_mode) {
       $class_details = '<div class="class-details">';
       $class_details .= _ilr_sdc_listings_get_class_detail_markup($class_node);
       $class_details .= '</div>';
+      $course_url = drupal_get_path_alias('node/' . $course->nid);
+      $class_details .= '<div class="course-return"><p><a href="/'. $course_url .'">See current dates</a></p></div>';
       $class_node->content['classes']['#markup'] = $class_details;
       $class_node->content['#group_children']['classes'] = 'group_sidebar';
     }
