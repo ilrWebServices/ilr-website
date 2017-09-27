@@ -197,7 +197,7 @@ function _ilr_alumni_events_get_billing_address() {
     "Street1" => $wrapper->field_address_line_1->value(),
     "Street2" => $wrapper->field_address_line_2->value(),
     "City" => $wrapper->field_city->value(),
-    "State" => $wrapper->field_state_province->value(),
+    "State" => _ilr_alumni_events_get_state_abbreviation($wrapper->field_state_province->value()),
     "PostalCode" => $wrapper->field_zip_code->value(),
     'Name' => $wrapper->field_first_name->value() . ' ' . $wrapper->field_last_name->value(),
   );
@@ -363,4 +363,64 @@ function _ilr_alumni_events_node_wrapper($node=NULL,$entityform=NULL) {
     $wrapper = entity_metadata_wrapper('node', $node);
   }
   return $wrapper;
+}
+
+/**
+ * As of 9/17, Freedompay apprently stopped supporting states as text
+ */
+function _ilr_alumni_events_get_state_abbreviation($state_name) {
+  $state_list = array(
+    'AL'=>"Alabama",
+    'AK'=>"Alaska",
+    'AZ'=>"Arizona",
+    'AR'=>"Arkansas",
+    'CA'=>"California",
+    'CO'=>"Colorado",
+    'CT'=>"Connecticut",
+    'DE'=>"Delaware",
+    'DC'=>"District Of Columbia",
+    'FL'=>"Florida",
+    'GA'=>"Georgia",
+    'HI'=>"Hawaii",
+    'ID'=>"Idaho",
+    'IL'=>"Illinois",
+    'IN'=>"Indiana",
+    'IA'=>"Iowa",
+    'KS'=>"Kansas",
+    'KY'=>"Kentucky",
+    'LA'=>"Louisiana",
+    'ME'=>"Maine",
+    'MD'=>"Maryland",
+    'MA'=>"Massachusetts",
+    'MI'=>"Michigan",
+    'MN'=>"Minnesota",
+    'MS'=>"Mississippi",
+    'MO'=>"Missouri",
+    'MT'=>"Montana",
+    'NE'=>"Nebraska",
+    'NV'=>"Nevada",
+    'NH'=>"New Hampshire",
+    'NJ'=>"New Jersey",
+    'NM'=>"New Mexico",
+    'NY'=>"New York",
+    'NC'=>"North Carolina",
+    'ND'=>"North Dakota",
+    'OH'=>"Ohio",
+    'OK'=>"Oklahoma",
+    'OR'=>"Oregon",
+    'PA'=>"Pennsylvania",
+    'RI'=>"Rhode Island",
+    'SC'=>"South Carolina",
+    'SD'=>"South Dakota",
+    'TN'=>"Tennessee",
+    'TX'=>"Texas",
+    'UT'=>"Utah",
+    'VT'=>"Vermont",
+    'VA'=>"Virginia",
+    'WA'=>"Washington",
+    'WV'=>"West Virginia",
+    'WI'=>"Wisconsin",
+    'WY'=>"Wyoming"
+  );
+  return array_search($state_name, $state_list);
 }
