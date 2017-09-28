@@ -68,7 +68,7 @@ function _forensics_payments_get_billing_address() {
     "Street1" => $wrapper->field_address_line_1->value(),
     "Street2" => $wrapper->field_address_line_2->value(),
     "City" => $wrapper->field_city->value(),
-    "State" => $wrapper->field_state_as_text->value(),
+    "State" => _freedompay_entityform_get_state_abbreviation($wrapper->field_state_as_text->value()),
     "PostalCode" => $wrapper->field_zip_code->value(),
     'CountryCode' => $country_fix,
     'Name' => $wrapper->field_first_name->value() . ' ' . $wrapper->field_last_name->value(),
@@ -95,7 +95,7 @@ function _forensics_payments_get_purchase_items() {
     array(
       "Price" => $wrapper->field_total_cost->value(),
       "DisplayOrder" => 1,
-      "Description" => "Cornell International Debate Camp",
+      "Description" => "Cornell Debate",
       "Quantity" => 1,
     ),
   );
