@@ -1,7 +1,4 @@
 body.subsite-front {
-  #highlighted {
-    @extend %carousel-slide;
-  }
   #sidebar-first {
     display: none !important; //override from nav settings
   }

@@ -13,22 +13,7 @@
     h2 {
       @extend %title-overlay;
       a {
-        @include adjust-font-size-to(16px);
         bottom: .5em;
-        text-decoration: underline;
-
-        #main[data-eq-state="550"] & {
-          text-decoration: none;
-          @include adjust-font-size-to(22px)
-        }
-        #main[data-eq-state="768"] & {
-          text-decoration: none;
-          @include adjust-font-size-to(32px,1.2);
-        }
-        #main[data-eq-state="widescreen"] & {
-          text-decoration: none;
-          @include adjust-font-size-to(36px,1.5);
-        }
       }
     }
   }
