@@ -1,6 +1,18 @@
 <?php
 
 /**
+ * Implements hook_preprocess_html().
+ * Adds "microsite" class to the body tag
+ */
+function microsite_nav_preprocess_html(&$variables) {
+  if ($node = menu_get_object()) {
+    if (!empty($node->microsite)) {
+      $variables['classes_array'][] = 'microsite';
+    }
+  }
+}
+
+/**
  * Implements hook_node_view().
  */
 function microsite_nav_node_view($node, $view_mode, $langcode) {
@@ -8,3 +20,4 @@ function microsite_nav_node_view($node, $view_mode, $langcode) {
     drupal_add_js(drupal_get_path('module','microsite_nav') . '/microsite_nav.js', array('type' => 'file', 'scope' => 'footer'));
   }
 }
+
