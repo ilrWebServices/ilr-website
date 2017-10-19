@@ -147,6 +147,20 @@
   }
   &.admin-menu header[data-eq-state="mobile-nav"] { top: 29px; }
 
+  &.sustainable-labor-practices #header-region {
+    background-color: $dark-blue;
+    .subsite-header {
+      width: 521px !important;
+    }
+    a, a:visited, a:active {
+      color: $gray-light;
+      &:hover {
+        color: lighten($gray-light, 10%);
+        border-bottom-color: lighten($gray-wi,8%);
+      }
+    }
+  }
+
   &.worker-institute #header-region {
     background-color: $gray-wi;
     .subsite-header {
