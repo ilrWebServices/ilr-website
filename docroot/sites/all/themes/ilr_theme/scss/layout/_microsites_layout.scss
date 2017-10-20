@@ -1,62 +1,68 @@
 // Extends one-column-page in subsite_homepages.scss
-body.subsite-front {
-  &.sports-leadership {
-    #main {
-      padding-top: 0; // Hides the edit tab. Refactor?
-      #content {
-        padding: 0 !important;
-        .section {
-          @include leader(0);
-        }
+body.subsite-front, body.microsite {
+  #main {
+    padding-top: 0; // Hides the edit tab. Refactor?
+    #content {
+      padding: 0 !important;
+      .section {
+        @include leader(0);
       }
     }
+  }
 
-    #content-bottom {
-      padding: 0;
-      clear: both;
-      #block-bean-sls-register, #block-bean-sls-get-your-ticket {
-        @include grid-span(12);
+  #content-bottom {
+    padding: 0;
+    clear: both;
+    .microsite-register, .microsite-get-your-ticket {
+      @include grid-span(12);
+    }
+  }
+
+  #content-bottom[data-eq-state="550"] {
+    .microsite-speakers {
+      article.speaker  {
+        width: 50% !important;
+        float: left;
       }
     }
+  }
 
-    #content-bottom[data-eq-state="550"] {
-      #block-bean-sls-speakers {
-        article.speaker  {
-          width: 50% !important;
-          float: left;
-        }
+  #content-bottom[data-eq-state="768"] {
+    .microsite-featured-speakers {
+      article.featured-speaker {
+        @extend %two-column-masonry;
       }
     }
+    .microsite-moderators {
+      article.moderator {
+        @extend %two-column-masonry;
+      }
+    }
+    .microsite-speakers {
+      article.speaker {
+        width: 33% !important;
+        float: left;
+      }
+    }
+    .microsite-venue {
+      .venue {
+        @include grid-span(6,1);
+      }
+      .map {
+        @include grid-span(6,7);
+      }
+    }
+  }
 
-    #content-bottom[data-eq-state="768"] {
-      #block-bean-sls-featured-speakers {
+  #content-bottom[data-eq-state="widescreen"] {
+    .microsite-featured-speakers {
+      &[data-items='3'] {
         article.featured-speaker {
-          @extend %two-column-masonry;
+          @extend %three-column;
+          width: 27% !important;
         }
       }
-      #block-bean-sls-moderators {
-        article.moderator {
-          @extend %two-column-masonry;
-        }
-      }
-      #block-bean-sls-speakers {
-        article.speaker {
-          width: 33% !important;
-          float: left;
-        }
-      }
-      #block-bean-sls-venue {
-        .venue {
-          @include grid-span(6,1);
-        }
-        .map {
-          @include grid-span(6,7);
-        }
-      }
-    }
-
-    #content-bottom[data-eq-state="widescreen"] {
-      #block-bean-sls-featured-speakers {
+      &[data-items='2'] {
         article.featured-speaker {
           &:nth-of-type(odd) {
             @include grid-span(6,1);
@@ -66,35 +72,35 @@ body.subsite-front {
           }
         }
       }
-      #block-bean-sls-dean-hallock {
-        article.featured-speaker {
-          @extend %one-column;
-        }
+    }
+    .microsite-individual-speaker {
+      article.featured-speaker {
+        @extend %one-column;
       }
-      #block-bean-sls-moderators {
+    }
+    .microsite-moderators {
+      article.moderator {
+        @extend %four-column;
+      }
+      .mod-last-row {
         article.moderator {
-          @extend %four-column;
-        }
-        .mod-last-row {
-          article.moderator {
-            @extend %three-column;
-            width: 27% !important;
-          }
+          @extend %three-column;
+          width: 27% !important;
         }
       }
-      #block-bean-sls-speakers {
-        article.speaker  {
-          @extend %four-column;
-          width: 25% !important;
-        }
+    }
+    .microsite-speakers {
+      article.speaker  {
+        @extend %four-column;
+        width: 25% !important;
       }
-      #block-bean-sls-venue {
-        .venue {
-          @include grid-span(5,1);
-        }
-        .map {
-          @include grid-span(7,6);
-        }
+    }
+    .microsite-venue {
+      .venue {
+        @include grid-span(5,1);
+      }
+      .map {
+        @include grid-span(7,6);
       }
     }
   }

@@ -4,7 +4,7 @@
   padding-left: 0;
   padding-right: 0;
 
-  body:not(.front):not(.subsite-front) & {
+  body:not(.front):not(.subsite-front):not(.microsite) & {
     background: lighten($brand-dark, 15%);
   }
 
