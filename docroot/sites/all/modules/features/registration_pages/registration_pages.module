@@ -81,10 +81,11 @@ function registration_pages_tokens($type, $tokens, array $data = array(), array 
 function _registration_pages_is_event_registration_form($entityform) {
   $entityform_wrapper = entity_metadata_wrapper('entityform', $entityform);
 
-  if ($node = isset($entityform_wrapper->field_referenced_node)) {
-    $node = $entityform_wrapper->field_referenced_node->value();
-    if ($node->type == 'registration_page' && !empty($node->field_event_date)) {
-      return TRUE;
+  if (isset($entityform_wrapper->field_referenced_node)) {
+    if ($node = $entityform_wrapper->field_referenced_node->value()) {
+      if ($node->type == 'registration_page' && !empty($node->field_event_date)) {
+        return TRUE;
+      }
     }
   }
   return FALSE;
