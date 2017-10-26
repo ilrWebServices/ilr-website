@@ -10,6 +10,13 @@ function ilr_menu() {
     'page arguments' => array(1),
   );
 
+  $items['microsite-interest/%/%'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => 'ilr_microsite_interest_form',
+    'page arguments' => array(1),
+  );
+
   return $items;
 }
 
@@ -24,6 +31,17 @@ function ilr_sls_form($interest) {
 }
 
 /**
+ * Callback for microsite-interest
+ */
+function ilr_microsite_interest_form($interest) {
+  $block = entityform_block_block_view('microsite_interest');
+  unset($block['content']['field_description']);
+  unset($block['content']['field_referenced_node']);
+  $content = drupal_render($block['content']);
+  return $content;
+}
+
+/**
  * Implements hook_entityform_presave.
  * Sets the interest type on the sls form
  * @see forms.module for form processing
@@ -33,6 +51,13 @@ function ilr_entityform_presave($entityform) {
     $wrapper = entity_metadata_wrapper('entityform', $entityform);
     $description = arg(1);
     $wrapper->field_description->set($description);
+  }
+  if ($entityform->type == 'microsite_interest') {
+    $wrapper = entity_metadata_wrapper('entityform', $entityform);
+    $description = arg(1);
+    $wrapper->field_description->set($description);
+    $nid = arg(2);
+    $wrapper->field_referenced_node->set($nid);
   }
 }
 

@@ -357,6 +357,26 @@
       });
     }
   };
+  // @todo: refactor microsite interest and sports-leadership interest
+  Drupal.behaviors.microsite = {
+    attach: function (context, settings) {
+      $('.microsite .interest').click(function(){
+        var interest = $(this).text();
+        var shortlink = $('link[rel=shortlink]').eq(0).attr('href');
+        var lastslashindex = shortlink.lastIndexOf('/');
+        var nid= shortlink.substring(lastslashindex  + 1);
+        var $path = '/microsite-interest/'+interest+'/'+nid
+        $path += '?layout=0';
+        $.fancybox({
+          'type': 'iframe',
+          'autoDimensions' : true,
+          'autoScale' : true,
+          'href' : $path,
+        });
+        return false;
+      });
+    }
+  };
   Drupal.behaviors.ilr_css_animations = {
     attach: function (context, settings) {
       $(window).load(function() {
