@@ -1,4 +1,4 @@
-body.subsite-front, body.microsite {
+body.microsite {
   &.sports-leadership {
     #page {
       background: $dark-blue;
@@ -132,9 +132,11 @@ body.subsite-front, body.microsite {
   }
 
   .microsite-marquee {
+    background-color: $dark-blue;
     padding-top: 55px;
     padding-left: 21px;
     padding-right: 21px;
+    padding-bottom: 55px;
     img {
       display: none;
     }
@@ -163,8 +165,10 @@ body.subsite-front, body.microsite {
 
   .introduction {
     text-align: center;
-    @include adjust-font-size-to(27px);
+    @include adjust-font-size-to(21px);
     @include adjust-leading-to(1);
+    @include padding-leader(1);
+    @include padding-trailer(1);
     margin: 0 auto !important;
     color: $bg-body;
   }
@@ -310,10 +314,8 @@ body.subsite-front, body.microsite {
 
     .microsite-register, .microsite-get-your-ticket {
       background-color: $orange;
-      background-attachment: fixed;
       background-repeat: no-repeat;
       background-position: center center;
-      background-size: cover;
       padding: 55px 34px;
       text-align: center;
       p {
@@ -333,19 +335,19 @@ body.subsite-front, body.microsite {
 
     .microsite-register {
       &.sports {
-        background-image: url("../images/Dodger-crowd-orange.jpg");
+        background-image: url("../images/Dodger-crowd-orange-mobile.jpg");
       }
       &.climate {
-        background-image: url("../images/wind-turbine-purple.jpg");
+        background-image: url("../images/wind-turbine-purple-mobile.jpg");
       }
     }
 
     .microsite-get-your-ticket {
       &.sports {
-        background-image: url("../images/Blackhawks-crowd-purple.jpg");
+        background-image: url("../images/Blackhawks-crowd-purple-mobile.jpg");
       }
       &.climate {
-        background-image: url("../images/storm-chaser-blue.jpg");
+        background-image: url("../images/lara-skinner-blue-mobile.jpg");
       }
     }
 
@@ -386,6 +388,7 @@ body.subsite-front, body.microsite {
         margin-top: 55px;
         li {
           display: inline;
+          padding-left: 0;
           img {
             width: 150px;
             height: 150px;
@@ -403,8 +406,8 @@ body.subsite-front, body.microsite {
           display: block;
           @include trailer(1);
           img {
-            width: 305px;
-            height: 120px;
+            width: 250px;
+            height: 98px;
           }                  
         }
       }
@@ -542,6 +545,16 @@ body.subsite-front, body.microsite {
         clear: none;
       }
     }
+    .microsite-sponsors {
+      ul {
+        li.rect {
+          img {
+            width: 305px;
+            height: 120px;
+          }                  
+        }
+      }
+    }
   }
 
   #content-bottom[data-eq-state="768"] {
@@ -565,9 +578,11 @@ body.subsite-front, body.microsite {
     .microsite-moderators {
       padding-left: 34px;
       padding-right: 34px;
-      article.moderator {
-        img {
-          width: 72%;
+      &[data-items='4'] {
+        article.moderator {
+          img {
+            width: 72%;
+          }
         }
       }
     }
@@ -587,7 +602,25 @@ body.subsite-front, body.microsite {
       }
     }
     .microsite-register, .microsite-get-your-ticket {
+      background-attachment: fixed;
+      background-size: cover;
       padding: 89px 21px;
+    }
+    .microsite-register {
+      &.sports {
+        background-image: url("../images/Dodger-crowd-orange.jpg");
+      }
+      &.climate {
+        background-image: url("../images/wind-turbine-purple.jpg");
+      }
+    }
+    .microsite-get-your-ticket {
+      &.sports {
+        background-image: url("../images/Blackhawks-crowd-purple.jpg");
+      }
+      &.climate {
+        background-image: url("../images/lara-skinner-blue.jpg");
+      }
     }
     .microsite-venue {
       padding-left: 34px;
@@ -595,13 +628,20 @@ body.subsite-front, body.microsite {
     }
     .microsite-sponsors {
       ul {
+        li {
+          padding-left: 1em;
+        }
         li.square {
           display: inline;
           @include trailer(0);
         }
         li.rect {
           display: inline;
-          @include trailer(0);                 
+          @include trailer(0);
+          img {
+            width: 305px;
+            height: 120px;
+          }                
         }
       }
     }
@@ -677,9 +717,27 @@ body.subsite-front, body.microsite {
       }
     }
     .microsite-register, .microsite-get-your-ticket {
+      background-attachment: fixed;
+      background-size: cover;
       padding: 144px 0;
       p {
         font-size: 34px;
+      }
+    }
+    .microsite-register {
+      &.sports {
+        background-image: url("../images/Dodger-crowd-orange.jpg");
+      }
+      &.climate {
+        background-image: url("../images/wind-turbine-purple.jpg");
+      }
+    }
+    .microsite-get-your-ticket {
+      &.sports {
+        background-image: url("../images/Blackhawks-crowd-purple.jpg");
+      }
+      &.climate {
+        background-image: url("../images/lara-skinner-blue.jpg");
       }
     }
     .microsite-schedule {
@@ -710,6 +768,7 @@ body.subsite-front, body.microsite {
         margin-top: 55px;
         li {
           display: inline;
+          padding-left: 1em;
           img {
             width: 150px;
             height: 150px;
@@ -784,6 +843,10 @@ body.subsite-front, body.microsite {
       }
     }
   }
+  .introduction {
+    @include adjust-font-size-to(27px);
+    @include adjust-leading-to(1);
+  }
 }
 
 #main[data-eq-state="widescreen"] {
@@ -815,6 +878,10 @@ body.subsite-front, body.microsite {
         }
       }
     }
+  }
+  .introduction {
+    @include adjust-font-size-to(27px);
+    @include adjust-leading-to(1);
   }
 }
 

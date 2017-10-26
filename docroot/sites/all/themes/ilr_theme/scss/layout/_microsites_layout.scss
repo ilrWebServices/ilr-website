@@ -1,5 +1,4 @@
-// Extends one-column-page in subsite_homepages.scss
-body.subsite-front, body.microsite {
+body.microsite {
   #main {
     padding-top: 0; // Hides the edit tab. Refactor?
     #content {
@@ -19,6 +18,31 @@ body.subsite-front, body.microsite {
   }
 
   #content-bottom[data-eq-state="550"] {
+    .microsite-featured-speakers {
+      article.featured-speaker {
+        &:nth-of-type(3n+0) {
+          clear: both;
+          margin-top: 34px;
+        }
+      }
+    }
+    .microsite-moderators {
+      &[data-items='7'] {
+        .mod-last-row {
+          article.moderator:nth-of-type(3) {
+            clear: both;
+          }
+        }
+      }
+      &[data-items='3'] {
+        article.moderator {
+          &:nth-of-type(3n+0) {
+            clear: both;
+            margin-top: 13px;
+          }
+        }
+      }
+    }
     .microsite-speakers {
       article.speaker  {
         width: 50% !important;
@@ -28,14 +52,20 @@ body.subsite-front, body.microsite {
   }
 
   #content-bottom[data-eq-state="768"] {
-    .microsite-featured-speakers {
-      article.featured-speaker {
-        @extend %two-column-masonry;
+      .microsite-featured-speakers {
+        &[data-items='2'] {
+          article.featured-speaker {
+            @extend %two-column-masonry;
+          }
+        }
       }
-    }
     .microsite-moderators {
-      article.moderator {
-        @extend %two-column-masonry;
+      &[data-items='7'] {
+        .mod-last-row {
+          article.moderator:nth-of-type(3) {
+            clear: both;
+          }
+        }
       }
     }
     .microsite-speakers {
@@ -79,13 +109,22 @@ body.subsite-front, body.microsite {
       }
     }
     .microsite-moderators {
-      article.moderator {
-        @extend %four-column;
+      &[data-items='4'] {
+        article.moderator {
+          @extend %four-column;
+        }
       }
-      .mod-last-row {
+      &[data-items='3'] {
         article.moderator {
           @extend %three-column;
-          width: 27% !important;
+        }
+      }
+      &[data-items='7'] {
+        .mod-last-row {
+          article.moderator {
+            @extend %three-column;
+            width: 27% !important;
+          }
         }
       }
     }

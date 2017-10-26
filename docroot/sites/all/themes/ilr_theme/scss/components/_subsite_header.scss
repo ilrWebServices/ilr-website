@@ -123,6 +123,9 @@
             overflow: hidden;
             height: 20px;
           }
+          &.Conversations {
+            height: auto;
+          }
           &.ILR {
             height: 32px;
             img {
