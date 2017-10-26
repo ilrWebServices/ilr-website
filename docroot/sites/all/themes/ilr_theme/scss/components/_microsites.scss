@@ -20,6 +20,15 @@ body.microsite {
       background-color: $gray-wi;
       border: none;
     }
+    header[data-eq-state="mobile-nav"] {
+      #header-region {
+        background-color: $cornell-red;
+        padding-bottom: 13px;
+        h2 {
+          display: none;
+        }
+      }
+    }
   }
 
   header[data-eq-state="regular-nav"] {
@@ -365,6 +374,34 @@ body.microsite {
       }
     }
 
+    .microsite-schedule-table {
+      padding-left: 34px;
+      padding-right: 34px;
+      li {
+        width: 100%;
+        margin-bottom: 34px;
+        time {
+          border-bottom: 1px solid $basic-page-color;
+          color: $orange;
+          font-size: 21px;
+          font-weight: 400;
+          padding-bottom: 8px;
+        }
+        .panel-info {
+          margin-top: 21px;
+        }
+        .panel-title {
+          color: $p-text;
+          font-size: 21px;
+          font-weight: 400;
+          margin-bottom: 8px;
+        }
+        .panelists {
+          color: $gray-dark;
+        }
+      }
+    }
+
     .microsite-venue {
       background-color: $gray-bg;
       padding-left: 34px;
@@ -622,6 +659,31 @@ body.microsite {
         background-image: url("../images/lara-skinner-blue.jpg");
       }
     }
+    .microsite-schedule-table {
+      padding-left: 89px;
+      padding-right: 89px;
+      li {
+        display: inline-block;
+        clear: both;
+        time {
+          border: none;
+          text-align: right;
+          width: 21%;
+          padding-right: 34px;
+          padding-bottom: 0;
+          float: left;
+        }
+        .panel-info {
+          border-left: 1px solid $basic-page-color;
+          text-align: left;
+          width: 79%;
+          float: left;
+          margin-top: 0;
+          padding-right: 55px;
+          padding-left: 34px;
+        }
+      }
+    }
     .microsite-venue {
       padding-left: 34px;
       padding-right: 34px;
@@ -745,6 +807,36 @@ body.microsite {
       padding-right: 55px;
       li {
         display: inline;
+      }
+    }
+    .microsite-schedule-table {
+      padding-left: 89px;
+      padding-right: 89px;
+      ul {
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      li {
+        display: inline-block;
+        clear: both;
+        time {
+          border: none;
+          text-align: right;
+          width: 21%;
+          padding-right: 34px;
+          padding-bottom: 0;
+          float: left;
+        }
+        .panel-info {
+          border-left: 1px solid $basic-page-color;
+          text-align: left;
+          width: 79%;
+          float: left;
+          margin-top: 0;
+          padding-right: 55px;
+          padding-left: 34px;
+        }
       }
     }
     .microsite-venue {
