@@ -480,6 +480,7 @@ body.microsite {
       }
       h3 {
         @extend %centered-title;
+        // @include adjust-leading-to(1);
         @include trailer(1);
         color: white;
         margin-bottom: 34px;
@@ -549,6 +550,29 @@ body.microsite {
       }
       h2 {
         display: none;
+      }
+    }
+  }
+
+  #content-bottom[data-eq-state="320"] {
+    .microsite-social-media {
+      h3 {
+        @include adjust-leading-to(1);
+      }
+      ul.social {
+        padding-right: 34px;
+        padding-left: 34px;
+        li {
+          width: 100%;
+          border-radius: 34px;
+          display: block;
+          margin-left: 0;
+          margin-bottom: 21px;
+          a {
+            margin-right: auto;
+            margin-left: auto;
+          }
+        }
       }
     }
   }
