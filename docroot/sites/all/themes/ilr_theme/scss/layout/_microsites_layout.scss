@@ -1,4 +1,17 @@
 body.microsite {
+  #sidebar-first {
+    display: none !important; //override from nav settings
+  }
+
+  .container[data-eq-state="regular-nav"] {
+    @extend %one-column-page;
+
+    .field-name-body {
+      max-width: 100% !important;
+      @extend %homepage-text;
+    }
+  }
+
   #main {
     padding-top: 0; // Hides the edit tab. Refactor?
     #content {
