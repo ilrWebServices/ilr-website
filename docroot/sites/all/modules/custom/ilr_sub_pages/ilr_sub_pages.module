@@ -166,19 +166,14 @@ function ilr_sub_pages_pathauto_alias_alter(&$alias, array &$context) {
  *
  * This is a workaround based on the bug described
  * at https://www.drupal.org/node/2910313
+ * Sets the menu appropriately if ilr_default_menu_parent is present
  */
 function ilr_sub_pages_node_insert($node) {
   if (isset($node->ilr_default_menu_parent) && !user_access('view page advanced menu settings')) {
-    module_load_include('inc', 'pathauto');
+    $node->menu['enabled'] = 1;
+    $node->menu['parent'] = $node->ilr_default_menu_parent;
     $mlid = substr($node->ilr_default_menu_parent, strpos($node->ilr_default_menu_parent, ':') + 1);
-    $menu_link = menu_link_load($mlid);
-    $parent_alias = drupal_get_path_alias($menu_link['link_path']);
-    $path = [
-      'source' => 'node/' . $node->nid,
-      'alias' => $parent_alias . '/' . pathauto_cleanstring($node->title),
-      'language' => 'und',
-    ];
-    $path = _pathauto_set_alias($path);
+    $node->menu['plid'] = $mlid;
   }
 }
 
