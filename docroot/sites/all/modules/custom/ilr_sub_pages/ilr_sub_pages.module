@@ -162,27 +162,6 @@ function ilr_sub_pages_pathauto_alias_alter(&$alias, array &$context) {
 }
 
 /**
- * Implements hook_node_insert().
- *
- * This is a workaround based on the bug described
- * at https://www.drupal.org/node/2910313
- */
-function ilr_sub_pages_node_insert($node) {
-  if (isset($node->ilr_default_menu_parent) && !user_access('view page advanced menu settings')) {
-    module_load_include('inc', 'pathauto');
-    $mlid = substr($node->ilr_default_menu_parent, strpos($node->ilr_default_menu_parent, ':') + 1);
-    $menu_link = menu_link_load($mlid);
-    $parent_alias = drupal_get_path_alias($menu_link['link_path']);
-    $path = [
-      'source' => 'node/' . $node->nid,
-      'alias' => $parent_alias . '/' . pathauto_cleanstring($node->title),
-      'language' => 'und',
-    ];
-    $path = _pathauto_set_alias($path);
-  }
-}
-
-/**
  * Implements hook_form_FORM_ID_alter().
  *
  * Adds a warning notice at the top of the node menu settings form.
@@ -207,37 +186,36 @@ function ilr_sub_pages_form_node_type_form_alter(&$form, &$form_state) {
  * Triggers pathauto generation when needed
  */
 function ilr_sub_pages_form_node_form_alter(&$form, &$form_state, $form_id) {
-  if (path_is_admin(current_path())) {
-    _ilr_sub_pages_override_menu_options($form);
-    $view_advanced_menu = user_access('view page advanced menu settings');
-    $node = $form['#node'];
-    // This element is added by menu module a 'value' type. We override to let user choose.
-    $form['menu']['link']['hidden'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Hide from menu output'),
-      '#description' => t('Check if you would like the page to include the correct breadcrumbs and parent navigation, but not appear in the menu.'),
-      '#default_value' => isset($node->menu['hidden']) ? $node->menu['hidden'] : 0,
-    );
-    // set menu parent item default value if creating sub page
-    if (isset($form['#node']->ilr_default_menu_parent)) {
-      $form['menu']['link']['parent']['#default_value'] = $node->ilr_default_menu_parent;
-      $form['menu']['enabled']['#value'] = TRUE;
-      $form['menu']['link']['link_title']['#required'] = TRUE;
-    }
-    if (!$view_advanced_menu) {
-      $form['menu']['link']['parent']['#required'] = TRUE;
-      // Restricts access to certain menu form fields
-      $form['menu']['link']['description']['#access'] = FALSE;
-      $form['menu']['link']['weight']['#access'] = FALSE;
-      $form['menu']['link']['parent']['#access'] = FALSE;
-    }
-    // Trigger pathauto on new nodes since child pages can have a different alias than the default pattern
-    if (!isset($form['#node']->vid) && _ilr_sub_pages_is_child_page($form['#node'])) {
-      $form['path']['pathauto']['#default_value'] = TRUE;
-    }
-    // Add an additional validation callback to this form
-    $form['#validate'][] = 'ilr_sub_pages_node_form_validate';
+  _ilr_sub_pages_override_menu_options($form);
+  $view_advanced_menu = user_access('view page advanced menu settings');
+  $node = $form['#node'];
+  // This element is added by menu module a 'value' type. We override to let user choose.
+  $form['menu']['link']['hidden'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Hide from menu output'),
+    '#description' => t('Check if you would like the page to include the correct breadcrumbs and parent navigation, but not appear in the menu.'),
+    '#default_value' => isset($node->menu['hidden']) ? $node->menu['hidden'] : 0,
+  );
+  // set menu parent item default value if creating sub page
+  if (isset($form['#node']->ilr_default_menu_parent)) {
+    $form['menu']['link']['parent']['#default_value'] = $node->ilr_default_menu_parent;
+    $form['menu']['enabled']['#value'] = TRUE;
+    $form['menu']['link']['link_title']['#required'] = TRUE;
   }
+  if (!$view_advanced_menu) {
+    $form['menu']['enabled']['#disabled'] = TRUE;
+    $form['menu']['link']['parent']['#required'] = TRUE;
+    // Restricts access to certain menu form fields
+    $form['menu']['link']['description']['#access'] = FALSE;
+    $form['menu']['link']['weight']['#access'] = FALSE;
+    $form['menu']['link']['parent']['#access'] = FALSE;
+  }
+  // Trigger pathauto on new nodes since child pages can have a different alias than the default pattern
+  if (!isset($form['#node']->vid) && _ilr_sub_pages_is_child_page($form['#node'])) {
+    $form['path']['pathauto']['#default_value'] = TRUE;
+  }
+  // Add an additional validation callback to this form
+  $form['#validate'][] = 'ilr_sub_pages_node_form_validate';
 }
 
 /**
@@ -250,19 +228,6 @@ function ilr_sub_pages_module_implements_alter(&$implementations, $hook) {
     $group = $implementations['ilr_sub_pages'];
     unset($implementations['ilr_sub_pages']);
     $implementations['ilr_sub_pages'] = $group;
-  }
-}
-
-/**
- * Implements hook_node_load()
- *
- * Never allow pathauto to automatically run on existing nodes
- */
-function ilr_sub_pages_node_load($nodes, $types) {
-  foreach ($nodes as $id => $node) {
-    if ($node->type === 'page') {
-      $nodes[$id]->path['pathauto'] = FALSE;
-    }
   }
 }
 
