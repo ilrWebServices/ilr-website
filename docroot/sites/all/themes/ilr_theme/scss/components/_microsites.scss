@@ -232,6 +232,23 @@ body.microsite {
       }
     }
 
+    .microsite-video {
+      background-color: $dark-blue;
+      @include padding-trailer(1);
+      .description {
+        p.introduction {
+          padding-left: 21px;
+          padding-right: 21px;
+        }
+      }
+      .media {
+        iframe {
+          width: 100%;
+          height: 240px;
+        }
+      }
+    }
+
     .microsite-featured-speakers, .microsite-individual-speaker {
       background-color: white;
       article.featured-speaker {
@@ -584,6 +601,23 @@ body.microsite {
     .show-hide-bio {
       display: none;
     }
+    .microsite-video {
+      padding-left: 21px;
+      padding-right: 21px;
+      @include padding-trailer(2);
+      .description {
+        p.introduction {
+          padding-left: 21px;
+          padding-right: 21px;
+        }
+      }
+      .media {
+        iframe {
+          width: 100%;
+          height: 360px;
+        }
+      }
+    }
     .microsite-speakers {
       @include padding-trailer(2);
       padding-left: 34px;
@@ -624,6 +658,30 @@ body.microsite {
     }
     .show-hide-bio {
       display: none;
+    }
+    .microsite-video {
+      padding-left: 89px;
+      padding-right: 89px;
+      @include padding-trailer(2);
+      .description {
+        @include grid-span(6,1);
+        line-height: 200px;
+        p.introduction {
+          padding-left: 0;
+          padding-right: 21px;
+          display: inline-block;
+          vertical-align: middle;
+          line-height: 1.5;
+          text-align: left;
+        }
+      }
+      .media {
+        @include grid-span(6,7);
+        iframe {
+          width: 400px;
+          height: 225px;
+        }
+      }
     }
     .microsite-featured-speakers {
       padding-left: 34px;
@@ -757,6 +815,30 @@ body.microsite {
     }
     .show-hide-bio {
       display: none;
+    }
+    .microsite-video {
+      padding-left: 89px;
+      padding-right: 89px;
+      @include padding-trailer(3);
+      .description {
+        @include grid-span(6,1);
+        line-height: 280px;
+        p.introduction {
+          padding-left: 21px;
+          padding-right: 21px;
+          display: inline-block;
+          vertical-align: middle;
+          line-height: 1.5;
+          text-align: left;
+        }
+      }
+      .media {
+        @include grid-span(6,7);
+        iframe {
+          width: 560px;
+          height: 315px;
+        }
+      }
     }
     .microsite-featured-speakers {
       padding-left: 89px;
