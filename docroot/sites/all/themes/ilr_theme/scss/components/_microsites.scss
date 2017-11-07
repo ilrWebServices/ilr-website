@@ -660,12 +660,8 @@ body.microsite {
       display: none;
     }
     .microsite-video {
-      padding-left: 89px;
-      padding-right: 89px;
       @include padding-trailer(2);
       .description {
-        @include grid-span(6,1);
-        line-height: 200px;
         p.introduction {
           padding-left: 0;
           padding-right: 21px;
@@ -673,13 +669,6 @@ body.microsite {
           vertical-align: middle;
           line-height: 1.5;
           text-align: left;
-        }
-      }
-      .media {
-        @include grid-span(6,7);
-        iframe {
-          width: 400px;
-          height: 225px;
         }
       }
     }
@@ -803,6 +792,49 @@ body.microsite {
             &:before {
               line-height: 89px;
             }
+          }
+        }
+      }
+    }
+  }
+
+  @include context('.container','.container[data-eq-state="regular-nav"]') {
+    #content-bottom[data-eq-state="768"] {
+      .microsite-video {
+        padding-left: 89px;
+        padding-right: 89px;
+        .description {
+          @include grid-span(6,1);
+          line-height: 200px;
+          p.introduction {
+            padding-right: 55px;
+          }
+        }
+        .media {
+          @include grid-span(6,7);
+          iframe {
+            width: 400px;
+            height: 225px;
+          }
+        }
+      }
+    }
+  }
+
+  @include context('.container','.container[data-eq-state="mobile-nav"]') {
+    #content-bottom[data-eq-state="768"] {
+      .microsite-video {
+        padding-left: 55px;
+        padding-right: 55px;
+        .description {
+          width: 50%;
+          line-height: 180px;
+        }
+        .media {
+          width: 50%;
+          iframe {
+            width: 360px;
+            height: 203px;
           }
         }
       }
