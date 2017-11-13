@@ -56,7 +56,7 @@ function ilr_forms_staff_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : {
-        "value" : "\\u003Cp\\u003EPlease submit your suggestions for a book to be read by the ILR community over the summer of 2018 that addresses the theme, \\u0022Technology and the future of work.\\u0022 You may also submit articles that address this theme that will be shared as a list of related readings. Submit this form once for each title.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EPlease submit your suggestions for a book to be read by the ILR community that addresses the theme, \\u0022Technology and the Evolution of Work.\\u0022 You may also submit articles that address this theme that will be shared as a list of related readings. Submit this form once for each title.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "send_confirmation_email_to_user" : 1,
