@@ -75,6 +75,7 @@ features[field_base][] = field_attendee_list
 features[field_base][] = field_attendee_list_guests
 features[field_base][] = field_attendee_list_markup
 features[field_base][] = field_author_reference
+features[field_base][] = field_authors
 features[field_base][] = field_bean_content
 features[field_base][] = field_benefits
 features[field_base][] = field_blind_ad
