@@ -11,6 +11,266 @@ function ilr_forms_staff_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
+  // 'entityform-ilr_theme_project_book_suggestio-field_authors'.
+  $field_instances['entityform-ilr_theme_project_book_suggestio-field_authors'] = array(
+    'bundle' => 'ilr_theme_project_book_suggestio',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_authors',
+    'label' => 'Author(s)',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 35,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_theme_project_book_suggestio-field_dates_as_text'.
+  $field_instances['entityform-ilr_theme_project_book_suggestio-field_dates_as_text'] = array(
+    'bundle' => 'ilr_theme_project_book_suggestio',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_dates_as_text',
+    'label' => 'Publication date',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_theme_project_book_suggestio-field_description_long'.
+  $field_instances['entityform-ilr_theme_project_book_suggestio-field_description_long'] = array(
+    'bundle' => 'ilr_theme_project_book_suggestio',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please describe briefly how this book or article ties into the theme of “Technology and the Evolution of Work.”',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_description_long',
+    'label' => 'Relevance to the theme',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 41,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_theme_project_book_suggestio-field_full_name'.
+  $field_instances['entityform-ilr_theme_project_book_suggestio-field_full_name'] = array(
+    'bundle' => 'ilr_theme_project_book_suggestio',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_full_name',
+    'label' => 'Name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_theme_project_book_suggestio-field_title_additional'.
+  $field_instances['entityform-ilr_theme_project_book_suggestio-field_title_additional'] = array(
+    'bundle' => 'ilr_theme_project_book_suggestio',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If this is an article, include publication name, volume, number, pages, etc.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_title_additional',
+    'label' => 'Other publication info',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_theme_project_book_suggestio-field_title_of_paper_or_poster'.
+  $field_instances['entityform-ilr_theme_project_book_suggestio-field_title_of_paper_or_poster'] = array(
+    'bundle' => 'ilr_theme_project_book_suggestio',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_title_of_paper_or_poster',
+    'label' => 'Title of book or article',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-office_professionals_day_reg-field_current_college'.
   $field_instances['entityform-office_professionals_day_reg-field_current_college'] = array(
     'bundle' => 'office_professionals_day_reg',
@@ -1135,6 +1395,7 @@ function ilr_forms_staff_field_default_field_instances() {
   t('Amount requested');
   t('Are you receiving financial support for this project from another source?');
   t('Attach budget');
+  t('Author(s)');
   t('College');
   t('Department');
   t('Email');
@@ -1143,16 +1404,22 @@ function ilr_forms_staff_field_default_field_instances() {
   t('Event title');
   t('First name');
   t('ILR Affiliation');
+  t('If this is an article, include publication name, volume, number, pages, etc.');
   t('If you are a student, what kind of student are you?');
   t('If you are receiving financial support from another source, please explain');
   t('If you chose "other" please explain');
   t('Last name');
   t('Name');
   t('One page summary to include project description and intended outcomes');
+  t('Other publication info');
   t('Partners/Collaborators on this Project');
   t('Phone');
+  t('Please describe briefly how this book or article ties into the theme of “Technology and the Evolution of Work.”');
+  t('Publication date');
+  t('Relevance to the theme');
   t('Theme grant categories');
   t('Title');
+  t('Title of book or article');
   t('Title of project');
 
   return $field_instances;
