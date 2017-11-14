@@ -35,6 +35,7 @@ function _ilr_sub_sites_get_sub_sites() {
     'bargaining-for-better-schools' => 'Bargaining for Better Schools',
     'conference-center' => 'Conference Center',
     'nyc-conference-center' => 'NYC Conference Center',
+    'sports_leadership_camp' => 'Sports Leadership Camp',
   );
 }
 
