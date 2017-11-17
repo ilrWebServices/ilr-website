@@ -21,6 +21,7 @@ $base-font-size: 19px;
 $base-line-height: 27px;
 
 // Base
+@import "base/breakpoints.scss";
 @import "base/mixins";
 @import "base/normalize";
 @import "base/variables";
