@@ -63,6 +63,8 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     sass (3.4.25)
+    sass-globbing (1.1.5)
+      sass (>= 3.1)
     sassy-maps (0.4.0)
       sass (~> 3.3)
     singularity-extras (1.0.0)
@@ -85,6 +87,7 @@ DEPENDENCIES
   guard-compass
   guard-livereload
   modular-scale (>= 2.0.0.alpha5)
+  sass-globbing
   singularity-extras (~> 1.0)
   singularitygs (~> 1.4)
 
