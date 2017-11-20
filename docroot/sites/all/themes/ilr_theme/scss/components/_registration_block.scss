@@ -1,0 +1,145 @@
+.registration-info-table {
+  @include grid-span (10,2);
+  h3 {
+    @include adjust-font-size-to(29px,1);
+    font-family: $font;
+    color: $cornell-red;
+  }
+  h3 + ul {
+    margin-bottom: 21px;
+  }
+  h4 {
+    @include adjust-font-size-to(24px);
+    font-family: $font;
+    font-weight: 400;
+    margin-top: 0;
+  }
+  .message {
+    p {
+      @include adjust-font-size-to(21px,1.2);
+    }
+  }
+  .reg-info {
+    ul {
+      border-top: 1px solid $gray-light;
+      border-bottom: 1px solid $gray-light;
+      padding: 13px 0;
+    }
+    li {
+      background: none;
+      padding-left: 0;
+      @include adjust-font-size-to(16px);
+      @include adjust-leading-to(1);
+      em {
+        font-style: normal;
+        font-weight: 600;
+        padding-right: 34px;
+      }
+      span {
+        float: right;
+      }
+    }
+    p {
+      border-bottom: 1px solid $gray-light;
+      @include adjust-font-size-to(16px);
+      @include adjust-leading-to(1);
+      font-weight: 600;
+      padding-bottom: 21px;
+      margin-bottom: 0;
+    }
+  }
+  form {
+    border-bottom: none;
+    float: left;
+    padding-right: 55px;
+    .button {
+      background-color: $cornell-red;
+      &:hover {
+        background-color: $darker-red;
+      }
+    }
+  }
+}
+
+#main[data-eq-state="320"] {
+  .registration-info-table {
+    .reg-info {
+      li {
+        span {
+          float: none;
+          display: block;
+        }
+      }
+      form {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+#main[data-eq-state="768"] {
+  .registration-info-table {
+    .message {
+      @include grid-span (6,1);
+      padding-right: 55px;
+    }
+    .reg-info {
+      @include grid-span (6,7);
+    }
+  }
+}
+
+#main[data-eq-state="widescreen"] {
+  .registration-info-table  {
+    .message {
+      @include grid-span (6,1);
+      padding-right: 89px;
+      padding-top: 34px;
+      p {
+        @include adjust-font-size-to(24px,1.4);
+      }
+    }
+    .reg-info {
+      @include grid-span (6,7);
+      ul, p {
+        max-width: 377px;
+      }
+      li {
+        @include adjust-leading-to(1.5);
+      }
+    }
+  }
+}
+
+.container[data-eq-state="regular-nav"] {
+  #main[data-eq-state="768"] {
+    .registration-info-table  {
+      .message {
+        p {
+          @include adjust-font-size-to(24px,1.4);
+        }
+      }
+    }
+  }
+}
+
+.container[data-eq-state="mobile-nav"] {
+  #main[data-eq-state="768"] {
+    .registration-info-table  {
+      @include grid-span (12);
+      padding-right: 34px;
+      padding-left: 34px;
+      .reg-info {
+        li {
+          span {
+            float: none;
+            display: block;
+          }
+        }
+        form {
+          padding-right: 21px;
+        }
+      }
+    }
+  }
+}
