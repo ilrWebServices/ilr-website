@@ -172,16 +172,6 @@ body.microsite {
     padding-right: 55px;
   }
 
-  .introduction {
-    text-align: center;
-    @include adjust-font-size-to(21px);
-    @include adjust-leading-to(1);
-    @include padding-leader(1);
-    @include padding-trailer(1);
-    margin: 0 auto !important;
-    color: $bg-body;
-  }
-
   .tagline {
     text-align: center;
     font-style: oblique;
@@ -228,23 +218,6 @@ body.microsite {
           &.show {
             display: block;
           }
-        }
-      }
-    }
-
-    .microsite-video {
-      background-color: $dark-blue;
-      @include padding-trailer(1);
-      .description {
-        p.introduction {
-          padding-left: 21px;
-          padding-right: 21px;
-        }
-      }
-      .media {
-        iframe {
-          width: 100%;
-          height: 240px;
         }
       }
     }
@@ -503,23 +476,6 @@ body.microsite {
     .show-hide-bio {
       display: none;
     }
-    .microsite-video {
-      padding-left: 21px;
-      padding-right: 21px;
-      @include padding-trailer(2);
-      .description {
-        p.introduction {
-          padding-left: 21px;
-          padding-right: 21px;
-        }
-      }
-      .media {
-        iframe {
-          width: 100%;
-          height: 360px;
-        }
-      }
-    }
     .microsite-speakers {
       @include padding-trailer(2);
       padding-left: 34px;
@@ -560,19 +516,6 @@ body.microsite {
     }
     .show-hide-bio {
       display: none;
-    }
-    .microsite-video {
-      @include padding-trailer(2);
-      .description {
-        p.introduction {
-          padding-left: 0;
-          padding-right: 21px;
-          display: inline-block;
-          vertical-align: middle;
-          line-height: 1.5;
-          text-align: left;
-        }
-      }
     }
     .microsite-featured-speakers {
       padding-left: 34px;
@@ -682,79 +625,12 @@ body.microsite {
     }
   }
 
-  @include context('.container','.container[data-eq-state="regular-nav"]') {
-    #content-bottom[data-eq-state="768"] {
-      .microsite-video {
-        padding-left: 89px;
-        padding-right: 89px;
-        .description {
-          @include grid-span(6,1);
-          line-height: 200px;
-          p.introduction {
-            padding-right: 55px;
-          }
-        }
-        .media {
-          @include grid-span(6,7);
-          iframe {
-            width: 400px;
-            height: 225px;
-          }
-        }
-      }
-    }
-  }
-
-  @include context('.container','.container[data-eq-state="mobile-nav"]') {
-    #content-bottom[data-eq-state="768"] {
-      .microsite-video {
-        padding-left: 55px;
-        padding-right: 55px;
-        .description {
-          width: 50%;
-          line-height: 180px;
-        }
-        .media {
-          width: 50%;
-          iframe {
-            width: 360px;
-            height: 203px;
-          }
-        }
-      }
-    }
-  }
-
   #content-bottom[data-eq-state="widescreen"] {
     .modal {
       display: none; //don't display on page
     }
     .show-hide-bio {
       display: none;
-    }
-    .microsite-video {
-      padding-left: 89px;
-      padding-right: 89px;
-      @include padding-trailer(3);
-      .description {
-        @include grid-span(6,1);
-        line-height: 280px;
-        p.introduction {
-          padding-left: 21px;
-          padding-right: 21px;
-          display: inline-block;
-          vertical-align: middle;
-          line-height: 1.5;
-          text-align: left;
-        }
-      }
-      .media {
-        @include grid-span(6,7);
-        iframe {
-          width: 560px;
-          height: 315px;
-        }
-      }
     }
     .microsite-featured-speakers {
       padding-left: 89px;
@@ -939,10 +815,6 @@ body.microsite {
       }
     }
   }
-  .introduction {
-    @include adjust-font-size-to(27px);
-    @include adjust-leading-to(1);
-  }
 }
 
 #main[data-eq-state="widescreen"] {
@@ -974,10 +846,6 @@ body.microsite {
         }
       }
     }
-  }
-  .introduction {
-    @include adjust-font-size-to(27px);
-    @include adjust-leading-to(1);
   }
 }
 

@@ -1,0 +1,62 @@
+.video-callout {
+  @include full-width;
+  @include padding-trailer(1);
+  @include clearfix;
+  background-color: $dark-blue;
+
+  &__content {
+    text-align: center;
+
+    @include medium {
+      @include grid-span(5,2);
+      text-align: left;
+      padding: 0;
+    }
+
+    @include large {
+      line-height: 280px;
+    }
+
+    @include xl {
+      line-height: 450px; // Roughly the height of the vid
+    }
+  }
+
+  .video-callout__introduction {
+    padding-left: 21px;
+    padding-right: 21px;
+    color: white;
+
+    @include adjust-font-size-to(22px);
+    @include adjust-leading-to(1);
+
+    @include medium {
+      padding: 0;
+    }
+
+    @include large {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0 3em;
+    }
+
+    @include xl {
+      @include adjust-font-size-to(26px, 1.5);
+    }
+  }
+
+
+
+  &__media-wrapper {
+    @include clearfix;
+    @include trailer(1);
+
+    @include medium {
+      @include grid-span(5,7);
+    }
+  }
+
+  &__video {
+    @include responsive-video;
+  }
+}
