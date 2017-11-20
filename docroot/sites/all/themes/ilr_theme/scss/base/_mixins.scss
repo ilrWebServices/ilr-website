@@ -50,6 +50,21 @@
   }
 }
 
+@mixin roundLink($diameter) {
+  border-radius: 50%;
+  width: $diameter;
+  height: $diameter;
+
+  a {
+    width: $diameter;
+    height: $diameter;
+
+    &:before {
+      line-height: $diameter;
+    }
+  }
+}
+
 @mixin addHighlightColors($selector, $css-property, $opacity) {
   $content-types: basic-page, promo, event, spotlight, student-portrait, news-item, youtube-video, experience-report, visiting-fellow;
   $content-type-colors: $basic-page-color, $promo-color, $event-color, $spotlight-color, $student-portrait-color, $news-color, $video-color, $promo-color, $spotlight-color;

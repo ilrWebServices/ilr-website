@@ -462,83 +462,8 @@ body.microsite {
           img {
             width: 250px;
             height: 98px;
-          }                  
-        }
-      }
-    }
-
-    .microsite-social-media {
-      background: $orange;
-      background-image: url("../images/orange-circle-grid.gif");
-      background-attachment: fixed;
-      background-position: center center;
-      padding: 55px 21px;
-      text-align: center;
-      &.green {
-        background: $basic-page-color;
-        background-image: url("../images/green-circle-grid.gif");
-        background-attachment: fixed;
-        background-position: center center;
-        h3 {
-          &::after {
-            border-bottom: 2px solid $basic-page-color;
           }
         }
-        ul.social {
-          li {
-            background-color: lighten($basic-page-color, 21%);
-            a {
-              &:before {
-                color: darken($basic-page-color, 10%);
-              }
-            }
-          }
-        }
-      }
-      h3 {
-        @extend %centered-title;
-        // @include adjust-leading-to(1);
-        @include trailer(1);
-        color: white;
-        margin-bottom: 34px;
-        padding-top: 0;
-        &::after {
-          border-bottom: 2px solid $orange;
-          left: 40%;
-          width: 20%;
-          height: 3px;
-        }
-      }
-      ul.social {
-        margin-bottom: 21px;
-        li {
-          background-color: lighten($orange, 21%);
-          border-radius: 50%;
-          font-size: 21px;
-          width: 68px;
-          height: 68px;
-          padding-left: 0;
-          margin-left: 8px;
-          a {
-            width: 68px;
-            height: 68px;
-            &:before {
-              color: $orange;
-              line-height: 68px;
-            }
-            &.follow-linkedin {
-              padding-left: 8px;
-            }
-          }
-          &:nth-of-type(1) {
-            margin-left: 0;
-          }
-        }
-      }
-      p {
-        color: white;
-        font-size: 27px;
-        line-height: 1.3;
       }
     }
 
@@ -571,31 +496,8 @@ body.microsite {
     }
   }
 
-  #content-bottom[data-eq-state="320"] {
-    .microsite-social-media {
-      h3 {
-        @include adjust-leading-to(1);
-      }
-      ul.social {
-        padding-right: 34px;
-        padding-left: 34px;
-        li {
-          width: 100%;
-          border-radius: 34px;
-          display: block;
-          margin-left: 0;
-          margin-bottom: 21px;
-          a {
-            margin-right: auto;
-            margin-left: auto;
-          }
-        }
-      }
-    }
-  }
-
   #content-bottom[data-eq-state="550"] {
-    .modal { 
+    .modal {
       display: none; //don't display on page
     }
     .show-hide-bio {
@@ -646,14 +548,14 @@ body.microsite {
           img {
             width: 305px;
             height: 120px;
-          }                  
+          }
         }
       }
     }
   }
 
   #content-bottom[data-eq-state="768"] {
-    .modal { 
+    .modal {
       display: none; //don't display on page
     }
     .show-hide-bio {
@@ -774,24 +676,6 @@ body.microsite {
           img {
             width: 305px;
             height: 120px;
-          }                
-        }
-      }
-    }
-    .microsite-social-media {
-      padding: 55px 34px;
-      ul.social {
-        li {
-          font-size: 27px;
-          width: 89px;
-          height: 89px;
-          margin-left: 13px;
-          a {
-            width: 89px;
-            height: 89px;
-            &:before {
-              line-height: 89px;
-            }
           }
         }
       }
@@ -842,7 +726,7 @@ body.microsite {
   }
 
   #content-bottom[data-eq-state="widescreen"] {
-    .modal { 
+    .modal {
       display: none; //don't display on page
     }
     .show-hide-bio {
@@ -1012,24 +896,6 @@ body.microsite {
         li.rect {
           img {
             width: 382px;
-          }                  
-        }
-      }
-    }
-    .microsite-social-media {
-      padding: 89px 0;
-      ul.social {
-        li {
-          font-size: 27px;
-          width: 89px;
-          height: 89px;
-          margin-left: 21px;
-          a {
-            width: 89px;
-            height: 89px;
-            &:before {
-              line-height: 89px;
-            }
           }
         }
       }
