@@ -50,6 +50,21 @@
   }
 }
 
+@mixin roundLink($diameter) {
+  border-radius: 50%;
+  width: $diameter;
+  height: $diameter;
+
+  a {
+    width: $diameter;
+    height: $diameter;
+
+    &:before {
+      line-height: $diameter;
+    }
+  }
+}
+
 @mixin addHighlightColors($selector, $css-property, $opacity) {
   $content-types: basic-page, promo, event, spotlight, student-portrait, news-item, youtube-video, experience-report, visiting-fellow;
   $content-type-colors: $basic-page-color, $promo-color, $event-color, $spotlight-color, $student-portrait-color, $news-color, $video-color, $promo-color, $spotlight-color;
@@ -77,5 +92,28 @@
 @mixin context($old-context, $new-context) {
   @at-root #{selector-replace(&, $old-context, $new-context)} {
     @content;
+  }
+}
+
+/// Full Width, even outside container
+/// @param {bool} $undo [false]
+/// @link https://css-tricks.com/full-width-containers-limited-width-parents/ Source
+@mixin full-width($undo: false) {
+  @if $undo {
+    margin-left: 0;
+    margin-right: 0;
+    position: static;
+    left: auto;
+    right: auto;
+    width: auto;
+    max-width: 100%;
+  } @else {
+    width: 100vw;
+    max-width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
   }
 }

@@ -7,6 +7,7 @@ gem 'guard-livereload'
 gem 'singularitygs', '~> 1.4'
 gem 'singularity-extras', '~> 1.0'
 gem 'autoprefixer-rails'
+gem 'sass-globbing'
 
 # For Windows machines, see https://github.com/guard/listen#on-windows
 require 'rbconfig'
