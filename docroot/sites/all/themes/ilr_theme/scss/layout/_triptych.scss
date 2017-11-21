@@ -5,7 +5,7 @@
   // @include sgs-change('debug', true);
   // @include background-grid();
   #content {
-    @include clearfix;
+    @include pie-clearfix;
     @include grid-span(1, 2);
     .block-bean {
       article:not(.node-certificate-programs) {

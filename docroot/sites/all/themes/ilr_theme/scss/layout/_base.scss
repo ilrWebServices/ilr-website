@@ -36,7 +36,7 @@
     margin-top: $main-top-padding * -1;
   }
 
-  @include clearfix;
+  @include pie-clearfix;
 
   #sidebar-first {
     display: none;
@@ -58,7 +58,7 @@
   }
 
   #content, #sidebar-second {
-    @include clearfix;
+    @include pie-clearfix;
     padding: 0 1em 1em 1em;
 
     .section {
@@ -121,7 +121,7 @@
 }
 
 footer {
-  @include clearfix;
+  @include pie-clearfix;
   .container {
     .block-bean {
       @extend %one-column;
