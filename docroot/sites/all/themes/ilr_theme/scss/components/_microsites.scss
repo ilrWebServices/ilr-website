@@ -172,6 +172,22 @@ body.microsite {
     padding-right: 55px;
   }
 
+  .introduction {
+    text-align: center;
+    @include adjust-font-size-to(21px);
+    @include adjust-leading-to(1);
+    @include padding-leader(1);
+    @include padding-trailer(1);
+    margin: 0 auto !important;
+    color: $bg-body;
+
+    @include medium {
+      @include adjust-font-size-to(27px);
+      @include adjust-leading-to(1);
+    }
+  }
+
+
   .tagline {
     text-align: center;
     font-style: oblique;
