@@ -1,0 +1,159 @@
+.schedule-list {
+  @include grid-span (10,2);
+  h2 {
+    font-family: $font;
+  }
+  ul {
+    @include leader(2);
+    padding-left: 0;
+  }
+  li {
+    background: none;
+    padding-left: 0;
+    width: 100%;
+    margin-bottom: 8px;
+    time {
+      border-bottom: 1px solid $cornell-red;
+      font-size: 21px;
+      font-weight: 400;
+      padding-top: 13px;
+      padding-bottom: 8px;
+      padding-left: 34px;
+      display: block;
+    }
+    .schedule-list__event {
+      background-color: white;
+      margin-top: 0;
+      margin-bottom: 21px;
+      padding: 13px 55px 13px 34px;
+    }
+    .schedule-list__title {
+      color: $p-text;
+      font-size: 21px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .schedule-list__details {
+      color: $gray-dark;
+    }
+  }
+  &--green {
+    h2 {
+      color: darken($basic-page-color,5%);
+    }
+    li {
+      background-color: lighten($basic-page-color,8%);
+      time {
+        border-bottom: none;
+        padding-left: 34px;
+      }
+      .schedule-list__event {
+        background-color: lighten($basic-page-color,34%);
+        margin-bottom: 0;
+      }
+    }
+  }
+  &--blue {
+    h2 {
+      color: $student-portrait-color;
+    }
+    li {
+      background-color: lighten($student-portrait-color,10%);
+      time {
+        border-bottom: none;
+        padding-left: 34px;
+      }
+      .schedule-list__event {
+        background-color: lighten($student-portrait-color,47%);
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+#main[data-eq-state="768"] {
+  .schedule-list {
+    li {
+      display: inline-block;
+      clear: both;
+      time {
+        border: none;
+        text-align: right;
+        width: 18%;
+        padding-right: 34px;
+        padding-bottom: 0;
+        float: left;
+      }
+      .schedule-list__event {
+        border-left: 1px solid $cornell-red;
+        text-align: left;
+        width: 82%;
+        float: left;
+        margin-top: 0;
+      }
+    }
+    &--green {
+      li {
+        time {
+          text-align: center;
+        }
+        .schedule-list__event {
+          border-left: 1px solid darken($basic-page-color,8%);
+        }
+      }
+    }
+    &--blue {
+      li {
+        time {
+          text-align: center;
+        }
+        .schedule-list__event {
+          border-left: 1px solid darken($student-portrait-color,8%);
+        }
+      }
+    }
+  }
+}
+
+#main[data-eq-state="widescreen"] {
+  .schedule-list {
+    ul {
+      max-width: 960px;
+      padding-bottom: 55px;
+    }
+    li {
+      display: inline-block;
+      clear: both;
+      time {
+        border: none;
+        text-align: right;
+        width: 15%;
+        padding-right: 34px;
+        padding-bottom: 0;
+        float: left;
+        
+      }
+      .schedule-list__event {
+        border-left: 1px solid $cornell-red;
+        text-align: left;
+        width: 85%;
+        float: left;
+        margin-top: 0;
+      }
+    }
+    &--green {
+      li {
+        .schedule-list__event {
+          border-left: 1px solid darken($basic-page-color,8%);
+        }
+      }
+    }
+    &--blue {
+      li {
+        .schedule-list__event {
+          border-left: 1px solid darken($student-portrait-color,8%);
+        }
+      }
+    }
+  }
+}
