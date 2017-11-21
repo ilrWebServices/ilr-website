@@ -83,7 +83,7 @@
   }
 
   &--green {
-    background-color: $basic-page-color;
+    background-color: darken($basic-page-color, 5%);
 
     .social-callout__heading {
       &::after {

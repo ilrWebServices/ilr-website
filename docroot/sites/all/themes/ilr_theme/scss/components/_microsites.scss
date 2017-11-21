@@ -311,45 +311,6 @@ body.microsite {
       }
     }
 
-    .microsite-register, .microsite-get-your-ticket {
-      background-color: $orange;
-      background-repeat: no-repeat;
-      background-position: center center;
-      padding: 55px 34px;
-      text-align: center;
-      p {
-        font-size: 27px;
-        color: white;
-        margin: 0;
-        line-height: 1;
-        a {
-          font-size: 21px;
-          max-width: 233px;
-          margin: 34px auto 0;
-          display: block;
-          box-shadow: 1px 2px 4px $brown;
-        }
-      }
-    }
-
-    .microsite-register {
-      &.sports {
-        background-image: url("../images/Dodger-crowd-orange-mobile.jpg");
-      }
-      &.climate {
-        background-image: url("../images/wind-turbine-purple-mobile.jpg");
-      }
-    }
-
-    .microsite-get-your-ticket {
-      &.sports {
-        background-image: url("../images/Blackhawks-crowd-purple-mobile.jpg");
-      }
-      &.climate {
-        background-image: url("../images/lara-skinner-blue-mobile.jpg");
-      }
-    }
-
     .microsite-schedule {
       padding-left: 34px;
       padding-right: 34px;
@@ -554,27 +515,7 @@ body.microsite {
         }
       }
     }
-    .microsite-register, .microsite-get-your-ticket {
-      background-attachment: fixed;
-      background-size: cover;
-      padding: 89px 21px;
-    }
-    .microsite-register {
-      &.sports {
-        background-image: url("../images/Dodger-crowd-orange.jpg");
-      }
-      &.climate {
-        background-image: url("../images/wind-turbine-purple.jpg");
-      }
-    }
-    .microsite-get-your-ticket {
-      &.sports {
-        background-image: url("../images/Blackhawks-crowd-purple.jpg");
-      }
-      &.climate {
-        background-image: url("../images/lara-skinner-blue.jpg");
-      }
-    }
+
     .microsite-schedule-table {
       padding-left: 89px;
       padding-right: 89px;
@@ -674,30 +615,6 @@ body.microsite {
             font-size: 14px;
           }
         }
-      }
-    }
-    .microsite-register, .microsite-get-your-ticket {
-      background-attachment: fixed;
-      background-size: cover;
-      padding: 144px 0;
-      p {
-        font-size: 34px;
-      }
-    }
-    .microsite-register {
-      &.sports {
-        background-image: url("../images/Dodger-crowd-orange.jpg");
-      }
-      &.climate {
-        background-image: url("../images/wind-turbine-purple.jpg");
-      }
-    }
-    .microsite-get-your-ticket {
-      &.sports {
-        background-image: url("../images/Blackhawks-crowd-purple.jpg");
-      }
-      &.climate {
-        background-image: url("../images/lara-skinner-blue.jpg");
       }
     }
     .microsite-schedule {
