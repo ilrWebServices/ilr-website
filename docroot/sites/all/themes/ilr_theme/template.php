@@ -47,6 +47,8 @@ function ilr_theme_preprocess_html(&$variables) {
   drupal_add_js($isotope_js, array('type' => 'file', 'scope' => 'footer'));
   $hoverintent_js = libraries_get_path('hoverintent') . '/jquery.hoverIntent.minified.js';
   drupal_add_js($hoverintent_js, array('type' => 'file', 'scope' => 'footer'));
+
+  $variables['production_site'] = ilr_is_production_site();
 }
 
 /**
