@@ -1,5 +1,6 @@
 .schedule-list {
   @include grid-span (10,2);
+  @include padded($padding: 2em 0 2em 0);
   h2 {
     font-family: $font;
   }

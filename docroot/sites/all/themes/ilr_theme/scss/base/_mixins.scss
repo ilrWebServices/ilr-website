@@ -195,3 +195,11 @@
   opacity: $opacity;
   background-color: $color;
 }
+
+@mixin padded($padding: 1em 0 1em 0) {
+  padding: $padding;
+}
+
+.padded {
+  @include padded;
+}

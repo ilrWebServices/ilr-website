@@ -1,5 +1,6 @@
 .registration-info-table {
   @include grid-span (10,2);
+  @include padded($padding: 2em 0 2em 0);
   h3 {
     @include adjust-font-size-to(29px,1);
     font-family: $font;
