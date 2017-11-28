@@ -694,6 +694,11 @@ function _process_career_services_contact_form(&$entityform) {
   _forms_send_emails($entityform, $admin_email, $subject);
 }
 
+function _process_check_your_eligibility_milr(&$entityform) {
+  $admin_email = _forms_get_admin_email($entityform);
+  _forms_send_emails($entityform, $admin_email, '', 'Thank you! You will receive your results soon.');
+}
+
 function _forms_career_services_contact_options() {
   // We need duplicate email addresses (keys in this array; values in the radio buttons)
   // in this list, and Drupal doesn't permit that, so I'm getting around it by appending
