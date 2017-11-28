@@ -10,6 +10,7 @@
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
   <?php print $scripts; ?>
+  <?php if ($production_site): ?>
   <!-- Facebook Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -25,6 +26,7 @@
   <img height="1" width="1" src="https://www.facebook.com/tr?id=776490502456044&ev=PageView &noscript=1"/>
   </noscript>
   <!-- End Facebook Pixel Code -->
+  <?php endif ?>
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
