@@ -83,6 +83,7 @@ features[field_base][] = field_blocks
 features[field_base][] = field_breakout_session
 features[field_base][] = field_building
 features[field_base][] = field_building_or_location
+features[field_base][] = field_callout_action
 features[field_base][] = field_cancelled
 features[field_base][] = field_career_field_fex
 features[field_base][] = field_career_field_wisp

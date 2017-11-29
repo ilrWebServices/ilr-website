@@ -18,6 +18,11 @@ function ilr_paragraphs_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function ilr_paragraphs_paragraphs_info() {
   $items = array(
+    'action_callout' => array(
+      'name' => 'an action callout',
+      'bundle' => 'action_callout',
+      'locked' => '1',
+    ),
     'compare_three' => array(
       'name' => 'compare three',
       'bundle' => 'compare_three',

@@ -5,3 +5,48 @@
  */
 
 include_once 'ilr_forms_public.features.inc';
+
+/**
+ * Implements hook_menu().
+ *
+ * Creates the callback endpoint for the interest form modal
+ * @see ilr_theme.js for further info
+ */
+function ilr_forms_public_menu() {
+  $items = array();
+
+  $items['microsite-interest/%/%'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => '_ilr_microsite_interest_form',
+    'page arguments' => array(1),
+  );
+
+  return $items;
+}
+
+/**
+ * Callback for microsite-interest
+ */
+function _ilr_microsite_interest_form($interest) {
+  $block = entityform_block_block_view('microsite_interest');
+  unset($block['content']['field_description']);
+  unset($block['content']['field_referenced_node']);
+  $content = drupal_render($block['content']);
+  return $content;
+}
+
+/**
+ * Implements hook_entityform_presave.
+ *
+ * Sets the interest type on the microsite interest form
+ */
+function ilr_forms_public_entityform_presave($entityform) {
+  if ($entityform->type == 'microsite_interest') {
+    $wrapper = entity_metadata_wrapper('entityform', $entityform);
+    $description = arg(1);
+    $wrapper->field_description->set($description);
+    $nid = arg(2);
+    $wrapper->field_referenced_node->set($nid);
+  }
+}

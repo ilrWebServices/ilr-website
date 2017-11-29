@@ -333,18 +333,6 @@
           }
         }
       });
-      $('.sports-leadership .button').click(function(){
-        var interest = $(this).text();
-        var $path = '/sls-interest/'+interest;
-        $path += '?layout=0';
-        $.fancybox({
-          'type': 'iframe',
-          'autoDimensions' : true,
-          'autoScale' : true,
-          'href' : $path,
-        });
-        return false;
-      });
       $('.show-hide-bio').click(function(){
         if ($(this).closest('article').find('.sls-bio').hasClass('show')) {
           $(this).closest('article').find('.sls-bio').removeClass('show');
@@ -360,21 +348,28 @@
   // @todo: refactor microsite interest and sports-leadership interest
   Drupal.behaviors.microsite = {
     attach: function (context, settings) {
-      $('.microsite .interest').click(function(){
-        var interest = $(this).text();
-        var shortlink = $('link[rel=shortlink]').eq(0).attr('href');
-        var lastslashindex = shortlink.lastIndexOf('/');
-        var nid= shortlink.substring(lastslashindex  + 1);
-        var $path = '/microsite-interest/'+interest+'/'+nid
-        $path += '?layout=0';
-        $.fancybox({
-          'type': 'iframe',
-          'autoDimensions' : true,
-          'autoScale' : true,
-          'href' : $path,
-        });
-        return false;
+      $('.action-callout__button').click(function() {
+        // Check whether it's a link for the modal
+        if ($(this).attr('href').length == 1) {
+          var interest = $(this).text();
+          var shortlink = $('link[rel=shortlink]').eq(0).attr('href');
+          var lastslashindex = shortlink.lastIndexOf('/');
+          var nid= shortlink.substring(lastslashindex  + 1);
+          var $path = '/microsite-interest/'+interest+'/'+nid
+          $path += '?layout=0';
+          $.fancybox({
+            'type': 'iframe',
+            'autoDimensions' : true,
+            'autoScale' : true,
+            'href' : $path,
+          });
+          return false;
+        }
       });
+
+      if ($('body').hasClass('page-eform-microsite-interest-confirm')) {
+        parent.jQuery.fancybox.close();
+      }
     }
   };
   Drupal.behaviors.ilr_css_animations = {

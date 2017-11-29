@@ -364,6 +364,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'administer paragraphs bundles'.
+  $permissions['administer paragraphs bundles'] = array(
+    'name' => 'administer paragraphs bundles',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'paragraphs',
+  );
+
   // Exported permission: 'administer pathauto'.
   $permissions['administer pathauto'] = array(
     'name' => 'administer pathauto',
@@ -664,6 +673,15 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'create paragraph content action_callout'.
+  $permissions['create paragraph content action_callout'] = array(
+    'name' => 'create paragraph content action_callout',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
   );
 
   // Exported permission: 'create paragraph content compare_three'.
@@ -1363,6 +1381,15 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'delete paragraph content action_callout'.
+  $permissions['delete paragraph content action_callout'] = array(
+    'name' => 'delete paragraph content action_callout',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
   );
 
   // Exported permission: 'delete paragraph content compare_three'.
@@ -2509,6 +2536,14 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'update paragraph content action_callout'.
+  $permissions['update paragraph content action_callout'] = array(
+    'name' => 'update paragraph content action_callout',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
   // Exported permission: 'update paragraph content compare_three'.
   $permissions['update paragraph content compare_three'] = array(
     'name' => 'update paragraph content compare_three',
@@ -2921,6 +2956,17 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'ilr_sub_pages',
+  );
+
+  // Exported permission: 'view paragraph content action_callout'.
+  $permissions['view paragraph content action_callout'] = array(
+    'name' => 'view paragraph content action_callout',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
   );
 
   // Exported permission: 'view paragraph content compare_three'.

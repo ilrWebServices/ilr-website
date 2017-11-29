@@ -7,6 +7,21 @@
 include_once 'ilr_paragraphs.features.inc';
 
 /**
+ * Implements hook_preprocess_entity().
+ *
+ * Prepares variables for the template(s).
+ *
+ */
+function ilr_paragraphs_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] == 'paragraphs_item') {
+    $preprocessFunction = '_ilr_paragraphs_preprocess_' . $variables['paragraphs_item']->bundle;
+    if (function_exists($preprocessFunction)) {
+      $preprocessFunction($variables);
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_field().
  *
  */
@@ -113,4 +128,16 @@ function _ilr_paragraphs_link_person_to_profile(&$variables) {
     $markup = '<a href="/directory/'.$net_id.'">'.$full_name.'</a>';
     $variables['items'][0]['#markup'] = $markup;
   }
+}
+
+function _ilr_paragraphs_preprocess_action_callout(&$variables) {
+  $wrapper = entity_metadata_wrapper('paragraphs_item', $variables['paragraphs_item']);
+  $variables['background_image'] = file_create_url($wrapper->field_image->value()['uri']);
+  $variables['overlay'] = $wrapper->field_description->value();
+  $variables['tagline'] = $wrapper->field_headline->value();
+  $variables['cta'] = $wrapper->field_short_title->value();
+  $href = ($wrapper->field_callout_action->value() == 1)
+    ? $wrapper->field_website_url->value()['url']
+    : '#'; // Note the js checks the length of this string
+  $variables['href'] = $href;
 }
