@@ -70,7 +70,7 @@ GEM
     singularity-extras (1.0.0)
       modular-scale (~> 2.0)
       singularitygs (~> 1.2)
-    singularitygs (1.4.0)
+    singularitygs (1.8.0)
       breakpoint (~> 2.4)
       sass (~> 3.3)
     slop (3.6.0)
@@ -89,7 +89,7 @@ DEPENDENCIES
   modular-scale (>= 2.0.0.alpha5)
   sass-globbing
   singularity-extras (~> 1.0)
-  singularitygs (~> 1.4)
+  singularitygs (~> 1.8)
 
 BUNDLED WITH
    1.11.2
