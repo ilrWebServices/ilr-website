@@ -1148,7 +1148,7 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        0 => 'Form',
+        0 => 'Interest form',
         1 => 'Link',
       ),
       'allowed_values_function' => '',
@@ -9175,7 +9175,7 @@ function ilr_field_bases_field_default_field_bases() {
   // Exported field_base: 'field_website_url'.
   $field_bases['field_website_url'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => 4,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_website_url',
