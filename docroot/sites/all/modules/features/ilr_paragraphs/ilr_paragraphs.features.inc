@@ -53,6 +53,11 @@ function ilr_paragraphs_paragraphs_info() {
       'bundle' => 'side_by_side_text',
       'locked' => '1',
     ),
+    'social_callout' => array(
+      'name' => 'a social callout',
+      'bundle' => 'social_callout',
+      'locked' => '1',
+    ),
     'social_feed' => array(
       'name' => 'a social feed',
       'bundle' => 'social_feed',

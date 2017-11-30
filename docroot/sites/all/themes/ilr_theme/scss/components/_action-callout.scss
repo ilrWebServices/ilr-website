@@ -49,6 +49,11 @@
 
   &__button {
     @extend %button;
+    color: white;
+
+    &:visited {
+      color: white;
+    }
   }
 
   &--stadium {

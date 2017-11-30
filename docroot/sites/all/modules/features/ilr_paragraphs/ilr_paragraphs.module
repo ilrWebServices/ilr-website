@@ -22,6 +22,30 @@ function ilr_paragraphs_preprocess_entity(&$variables) {
 }
 
 /**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function ilr_paragraphs_node_edit_form_alter(&$form, &$form_state) {
+  dpm($form['#entity']);
+}
+/**
+ * Implements hook_entity_presave().
+ *
+ * Ensures that the hex codes on paragraph bundles
+ * do not include the "#"
+ */
+function ilr_paragraphs_entity_presave($entity, $type) {
+  if ($type == 'paragraphs_item') {
+    switch ($entity->bundle) {
+      case 'action_callout':
+      case 'social_callout':
+        _ilr_paragraphs_check_fields_for_hash($entity);
+      default:
+        break;
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_field().
  *
  */
@@ -140,4 +164,46 @@ function _ilr_paragraphs_preprocess_action_callout(&$variables) {
     ? $wrapper->field_website_url->value()['url']
     : '#'; // Note the js checks the length of this string
   $variables['href'] = $href;
+}
+
+function _ilr_paragraphs_preprocess_social_callout(&$variables) {
+  $wrapper = entity_metadata_wrapper('paragraphs_item', $variables['paragraphs_item']);
+  $variables['heading'] = $wrapper->field_headline->value();
+  $variables['channels'] = _ilr_paragraphs_prepare_social_callout_channels($wrapper->field_website_url->value());
+  $variables['hashtag'] = $wrapper->field_short_title->value();
+  $variables['bg_color'] = $wrapper->field_description->value();
+}
+
+/**
+ * Checks for customized urls for our 4 social channels
+ * Updates the link url if a matching url is found
+ */
+function _ilr_paragraphs_prepare_social_callout_channels($urls) {
+  $channels = [
+    'LinkedIn' => 'https://facebook.com/ilrschool',
+    'Facebook' => 'https://www.linkedin.com/company/cornell-university-ilr-school',
+    'Twitter' => 'https://twitter.com/CornellILR',
+    'Instagram' => 'http://instagram.com/cornellilr'
+  ];
+  foreach ($urls as $url) {
+    foreach ($channels as $name => $default_url) {
+      if (strpos($url['url'], strtolower($name)) > 0) {
+        $channels[$name] = $url['url'];
+      }
+    }
+  }
+  return $channels;
+}
+
+function _ilr_paragraphs_check_fields_for_hash(&$entity) {
+  $fields_to_check = ['field_description', 'field_short_title'];
+
+  foreach ($fields_to_check as $field_name) {
+    if (!empty($entity->{$field_name})) {
+      $submitted_value = $entity->{$field_name}[LANGUAGE_NONE][0]['value'];
+      if (strpos($submitted_value, '#') === 0) {
+        $entity->{$field_name}[LANGUAGE_NONE][0]['value'] = ltrim($submitted_value, '#');
+      }
+    }
+  }
 }

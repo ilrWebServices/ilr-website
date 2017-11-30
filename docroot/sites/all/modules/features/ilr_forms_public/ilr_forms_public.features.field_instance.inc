@@ -2533,8 +2533,11 @@ function ilr_forms_public_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_plain',
         'weight' => 4,
       ),
     ),
@@ -2694,15 +2697,20 @@ function ilr_forms_public_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'bypass_access' => FALSE,
+          'field_formatter_label' => '',
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_referenced_node',
-    'label' => 'Microsite',
+    'label' => 'Submission page',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -3041,7 +3049,6 @@ function ilr_forms_public_field_default_field_instances() {
   t('Job title');
   t('Last name');
   t('Last name (2nd participant)');
-  t('Microsite');
   t('Organization');
   t('Phone');
   t('Please add me to your email list');
@@ -3049,6 +3056,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Registering as mediator, disputant, or disputant team?');
   t('Second person markup');
   t('State / Province');
+  t('Submission page');
   t('Tell us about your interest');
   t('Type of student');
   t('What is your experience with mediation?');

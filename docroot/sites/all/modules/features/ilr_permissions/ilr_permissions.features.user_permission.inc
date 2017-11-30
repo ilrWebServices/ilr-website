@@ -744,6 +744,13 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'paragraphs_bundle_permissions',
   );
 
+  // Exported permission: 'create paragraph content social_callout'.
+  $permissions['create paragraph content social_callout'] = array(
+    'name' => 'create paragraph content social_callout',
+    'roles' => array(),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'create paragraph content sponsor_message'.
   $permissions['create paragraph content sponsor_message'] = array(
     'name' => 'create paragraph content sponsor_message',
@@ -1449,6 +1456,13 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
     ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'delete paragraph content social_callout'.
+  $permissions['delete paragraph content social_callout'] = array(
+    'name' => 'delete paragraph content social_callout',
+    'roles' => array(),
     'module' => 'paragraphs_bundle_permissions',
   );
 
@@ -2604,6 +2618,13 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'paragraphs_bundle_permissions',
   );
 
+  // Exported permission: 'update paragraph content social_callout'.
+  $permissions['update paragraph content social_callout'] = array(
+    'name' => 'update paragraph content social_callout',
+    'roles' => array(),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'update paragraph content sponsor_message'.
   $permissions['update paragraph content sponsor_message'] = array(
     'name' => 'update paragraph content sponsor_message',
@@ -3032,6 +3053,16 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'view paragraph content side_by_side_text'.
   $permissions['view paragraph content side_by_side_text'] = array(
     'name' => 'view paragraph content side_by_side_text',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'view paragraph content social_callout'.
+  $permissions['view paragraph content social_callout'] = array(
+    'name' => 'view paragraph content social_callout',
     'roles' => array(
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',

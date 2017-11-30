@@ -59,8 +59,8 @@ function ilr_paragraphs_field_default_field_instances() {
     'bundle' => 'field_animated_text_card',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Add short (1-3 word) phrases to include in an animated display. 
-Each word appears on its own line. 
+    'description' => 'Add short (1-3 word) phrases to include in an animated display.
+Each word appears on its own line.
 To keep two words together, use an underscore instead of a space (e.g., keep_together)',
     'display' => array(
       'default' => array(
@@ -614,7 +614,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     'bundle' => 'action_callout',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The six-digit hex code, excluding the "#".',
+    'description' => 'The six-digit hex code.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1578,6 +1578,226 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
   );
 
+  // Exported field_instance:
+  // 'paragraphs_item-social_callout-field_description'.
+  $field_instances['paragraphs_item-social_callout-field_description'] = array(
+    'bundle' => 'social_callout',
+    'default_value' => array(
+      0 => array(
+        'value' => 'c36100',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'The six-digit hex code.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_description',
+    'label' => 'Background color',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 6,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-social_callout-field_headline'.
+  $field_instances['paragraphs_item-social_callout-field_headline'] = array(
+    'bundle' => 'social_callout',
+    'default_value' => array(
+      0 => array(
+        'value' => 'Join the conversation',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_headline',
+    'label' => 'Heading',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-social_callout-field_short_title'.
+  $field_instances['paragraphs_item-social_callout-field_short_title'] = array(
+    'bundle' => 'social_callout',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The hashtag you want to display.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_short_title',
+    'label' => 'Hashtag',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-social_callout-field_website_url'.
+  $field_instances['paragraphs_item-social_callout-field_website_url'] = array(
+    'bundle' => 'social_callout',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'You can optionally override the urls for the social links to LinkedIn, Twitter, Facebook or Instagram. They default to the School\'s primary accounts.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'link_default',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_website_url',
+    'label' => 'Social links',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-social_feed-field_social_feed'.
   $field_instances['paragraphs_item-social_feed-field_social_feed'] = array(
     'bundle' => 'social_feed',
@@ -2031,13 +2251,14 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   // Translatables
   // Included for use with string extractors like potx.
   t('Add a Compare3');
-  t('Add short (1-3 word) phrases to include in an animated display. 
-Each word appears on its own line. 
+  t('Add short (1-3 word) phrases to include in an animated display.
+Each word appears on its own line.
 To keep two words together, use an underscore instead of a space (e.g., keep_together)');
   t('Add up to two links to related web pages; adding zero links is okay.');
   t('Address');
   t('Animated text items');
   t('Background');
+  t('Background color');
   t('Block');
   t('Blurb');
   t('Button text');
@@ -2046,7 +2267,9 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   t('Decorate this message with a:  title, icon, or neither');
   t('Enter the url for this channel\'s home page. If the Channel type is \'email\', then enter an email address in the form, "mailto:netid@cornell.edu"');
   t('Full Name');
+  t('Hashtag');
   t('Header');
+  t('Heading');
   t('Image');
   t('Link url');
   t('Links (add one or two)');
@@ -2063,13 +2286,16 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   t('Select action');
   t('Select an existing block');
   t('Social Channels');
+  t('Social links');
   t('Tagline');
   t('Text paragraph');
   t('The background image should be ~2000 x 1000 pixels, but can be compressed somewhat thanks to the color overlay');
-  t('The six-digit hex code, excluding the "#".');
+  t('The hashtag you want to display.');
+  t('The six-digit hex code.');
   t('Title');
   t('To what web page should this card send people?');
   t('Website address');
+  t('You can optionally override the urls for the social links to LinkedIn, Twitter, Facebook or Instagram. They default to the School\'s primary accounts.');
   t('Youtube Video');
   t('compare three things');
   t('social feed');

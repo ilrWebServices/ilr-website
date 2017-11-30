@@ -9,6 +9,7 @@
   .social-callout__heading {
     @extend %centered-title;
     @include adjust-leading-to(1);
+
     font-family: $font;
     color: white;
     padding-top: 0;
@@ -17,6 +18,7 @@
 
     &::after {
       border-bottom: 2px solid;
+      border-bottom-color: rgba(255, 255, 255, 0.15);
       left: 40%;
       width: 20%;
       height: 3px;
@@ -30,28 +32,29 @@
 
   .social-callout__links {
     margin-bottom: 21px;
+  }
 
-    .social-callout__item {
-      @include roundLink(60px);
-      font-size: 21px;
-      padding-left: 0;
-      margin-left: 8px;
+  .social-callout__item {
+    background-color: rgba(255, 255, 255, 0.4);
+    @include roundLink(60px);
+    font-size: 21px;
+    padding-left: 0;
+    margin-left: 8px;
 
-      @include large {
-        @include roundLink(89px);
-        font-size: 27px;
-        margin-left: 21px;
+    @include large {
+      @include roundLink(89px);
+      font-size: 27px;
+      margin-left: 21px;
+    }
+
+    .social-callout__link {
+      &.follow-linkedin {
+        padding-left: 8px;
       }
+    }
 
-      .social-callout__link {
-        &.follow-linkedin {
-          padding-left: 8px;
-        }
-      }
-
-      &:nth-of-type(1) {
-        margin-left: 0;
-      }
+    &:nth-of-type(1) {
+      margin-left: 0;
     }
   }
 
@@ -63,42 +66,20 @@
 
   // Variations
   &--orange {
-    background-color: darken($orange, 4%);
+    $color: darken($orange, 4%);
+    background-color: $color;
 
-    .social-callout__heading {
-      &::after {
-        border-bottom-color: $orange;
-      }
-    }
-
-    .social-callout__item {
-      background-color: lighten($orange, 21%);
-
-      .social-callout__link {
-        &::before {
-          color: $orange;
-        }
-      }
+    .social-callout__link::before {
+      color: $color;
     }
   }
 
   &--green {
-    background-color: darken($basic-page-color, 5%);
+    $color: darken($basic-page-color, 5%);
+    background-color: $color;
 
-    .social-callout__heading {
-      &::after {
-        border-bottom-color: $basic-page-color;
-      }
-    }
-
-    .social-callout__item {
-      background-color: lighten($basic-page-color, 21%);
-
-      .social-callout__link {
-        &::before {
-          color: darken($basic-page-color, 10%);
-        }
-      }
+    .social-callout__link::before {
+      color: $color;
     }
   }
 }
