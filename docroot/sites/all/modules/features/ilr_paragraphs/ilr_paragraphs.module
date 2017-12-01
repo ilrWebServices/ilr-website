@@ -22,12 +22,6 @@ function ilr_paragraphs_preprocess_entity(&$variables) {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter().
- */
-function ilr_paragraphs_node_edit_form_alter(&$form, &$form_state) {
-  dpm($form['#entity']);
-}
-/**
  * Implements hook_entity_presave().
  *
  * Ensures that the hex codes on paragraph bundles
