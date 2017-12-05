@@ -1738,7 +1738,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     'bundle' => 'social_callout',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'You can optionally override the urls for the social links to LinkedIn, Twitter, Facebook or Instagram. They default to the School\'s primary accounts.',
+    'description' => 'We currently support LinkedIn, Facebook, Twitter, Instagram and Snapchat. Add the channel name to the title field, and optionally, a url. If you leave the url blank, the default ILR channel will be used.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1781,11 +1781,11 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
         'profile' => '',
       ),
       'rel_remove' => 'default',
-      'title' => 'none',
+      'title' => 'required',
       'title_label_use_field_label' => 0,
-      'title_maxlength' => 128,
+      'title_maxlength' => 9,
       'title_value' => '',
-      'url' => 0,
+      'url' => 'optional',
       'user_register_form' => FALSE,
       'validate_url' => 1,
     ),
@@ -2294,8 +2294,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   t('The six-digit hex code.');
   t('Title');
   t('To what web page should this card send people?');
+  t('We currently support LinkedIn, Facebook, Twitter, Instagram and Snapchat. Add the channel name to the title field, and optionally, a url. If you leave the url blank, the default ILR channel will be used.');
   t('Website address');
-  t('You can optionally override the urls for the social links to LinkedIn, Twitter, Facebook or Instagram. They default to the School\'s primary accounts.');
   t('Youtube Video');
   t('compare three things');
   t('social feed');

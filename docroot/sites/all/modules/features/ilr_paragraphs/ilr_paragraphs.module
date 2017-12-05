@@ -169,24 +169,30 @@ function _ilr_paragraphs_preprocess_social_callout(&$variables) {
 }
 
 /**
- * Checks for customized urls for our 4 social channels
+ * Checks for customized urls for our 5 potential social channels
  * Updates the link url if a matching url is found
  */
 function _ilr_paragraphs_prepare_social_callout_channels($urls) {
-  $channels = [
-    'LinkedIn' => 'https://www.linkedin.com/company/cornell-university-ilr-school',
-    'Facebook' => 'https://facebook.com/ilrschool',
-    'Twitter' => 'https://twitter.com/CornellILR',
-    'Instagram' => 'http://instagram.com/cornellilr'
+  $included_channels = [];
+  $channels = [ // Multi-dimensional so that we can render correct casing
+    'linkedin' => ['LinkedIn' => 'https://www.linkedin.com/company/cornell-university-ilr-school'],
+    'facebook' => ['Facebook' => 'https://facebook.com/ilrschool'],
+    'twitter' => ['Twitter' => 'https://twitter.com/CornellILR'],
+    'instagram' => ['Instagram' => 'https://instagram.com/cornellilr'],
+    'snapchat' => ['Snapchat' => 'https://www.snapchat.com/add/cornellilr']
   ];
+
   foreach ($urls as $url) {
-    foreach ($channels as $name => $default_url) {
-      if (strpos($url['url'], strtolower($name)) > 0) {
-        $channels[$name] = $url['url'];
-      }
+    $channel = strtolower($url['title']);
+    if (array_key_exists($channel, $channels)) {
+      $channel_info = $channels[$channel];
+      $key = key($channel_info);
+      $included_channels[$key] = (!empty($url['url']) && strpos($url['url'], $channel) > 0)
+        ? $url['url']
+        : $channel_info[$key];
     }
   }
-  return $channels;
+  return $included_channels;
 }
 
 function _ilr_paragraphs_check_fields_for_hash(&$entity) {

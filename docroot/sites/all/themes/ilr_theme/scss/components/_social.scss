@@ -4,7 +4,10 @@ $social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
   .#{nth($social-channels, $i)}, .follow-#{nth($social-channels, $i)} {
     @extend %icon-#{nth($social-channels, $i)};
   }
-
+}
+.snapchat,
+.follow-snapchat {
+  @include fontello-icon('snapchat');
 }
 
 #block-bean-footer-social {
