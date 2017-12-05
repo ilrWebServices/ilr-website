@@ -174,8 +174,8 @@ function _ilr_paragraphs_preprocess_social_callout(&$variables) {
  */
 function _ilr_paragraphs_prepare_social_callout_channels($urls) {
   $channels = [
-    'LinkedIn' => 'https://facebook.com/ilrschool',
-    'Facebook' => 'https://www.linkedin.com/company/cornell-university-ilr-school',
+    'LinkedIn' => 'https://www.linkedin.com/company/cornell-university-ilr-school',
+    'Facebook' => 'https://facebook.com/ilrschool',
     'Twitter' => 'https://twitter.com/CornellILR',
     'Instagram' => 'http://instagram.com/cornellilr'
   ];
