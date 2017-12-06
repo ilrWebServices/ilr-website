@@ -330,6 +330,8 @@ function _freedompay_entityform_get_state_abbreviation($state_name) {
   if ($abbreviation = array_search($state_name, $state_list)) {
     return $abbreviation;
   }
-
+  else if (array_key_exists($state_name, $state_list)) {
+    return $state_name;
+  }
   return ''; // FreedomPay allows an empty string to pass
 }

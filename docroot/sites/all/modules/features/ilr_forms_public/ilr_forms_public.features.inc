@@ -330,6 +330,58 @@ function ilr_forms_public_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['sports_leadership_camp_payment'] = entity_import('entityform_type', '{
+    "type" : "sports_leadership_camp_payment",
+    "label" : "Sports Leadership Camp Payment",
+    "data" : {
+      "draftable" : 1,
+      "draft_redirect_path" : "pay\\/checkout",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for your payment for the Cornell Sports Leadership Camp. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have questions, please contact Tom Addonizio at \\u003Ca href=\\u0022mailto:ta363@cornell.edu\\u0022\\u003Eta363@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "pay\\/checkout",
+      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0,
+      "form_submission_ilr_recipient" : "ilrweb@cornell.edu",
+      "add_payment_processing" : 1,
+      "hpp" : "6"
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['sports_leadership_interest'] = entity_import('entityform_type', '{
     "type" : "sports_leadership_interest",
     "label" : "Sports Leadership Interest",
