@@ -227,6 +227,10 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
       // Requested by Katrina Nobles, 10/26/2016 - mediator role is full
       unset($form['field_mediator_or_disputant'][LANGUAGE_NONE]['#options']['Mediator']);
       break;
+    case 'high_road_fellowship_application_entityform_edit_form': // Hide options that are not applicable
+      unset($form['field_year_freshman_soph_jr_sr'][LANGUAGE_NONE]['#options']['_none']);
+      unset($form['field_year_freshman_soph_jr_sr'][LANGUAGE_NONE]['#options']['Senior']);
+      break;
     case 'fex_student_application_entityform_edit_form': // Hide options that are not applicable
       unset($form['field_year_fr_soph_jr_sr_milr'][LANGUAGE_NONE]['#options']['Sophomore']);
       unset($form['field_year_fr_soph_jr_sr_milr'][LANGUAGE_NONE]['#options']['Junior']);

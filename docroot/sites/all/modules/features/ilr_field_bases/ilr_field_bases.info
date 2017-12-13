@@ -220,6 +220,7 @@ features[field_base][] = field_h_school_year
 features[field_base][] = field_hcd_contact_form_topics
 features[field_base][] = field_header
 features[field_base][] = field_headline
+features[field_base][] = field_high_road_accomodations
 features[field_base][] = field_high_school_grad_year
 features[field_base][] = field_high_school_name
 features[field_base][] = field_highlighted_region
