@@ -89,9 +89,18 @@ body.microsite {
     display: none;
   }
 
-  //pop up modal
+  //pop up modal (includes the interest form)
   .fancybox-wrap {
-    width: 55% !important;
+    width: 95% !important;
+
+    @include large {
+      width: 75% !important;
+    }
+
+    @include xl {
+      width: 55% !important;
+    }
+
     .fancybox-skin {
       padding: 0 !important;
     }
