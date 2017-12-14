@@ -32,6 +32,8 @@ function _ilr_microsite_interest_form($interest) {
   $block = entityform_block_block_view('microsite_interest');
   unset($block['content']['field_description']);
   unset($block['content']['field_referenced_node']);
+  $parent_nid = arg(2);
+  _ilr_forms_public_check_for_custom_labels($block, $parent_nid);
   $content = drupal_render($block['content']);
   return $content;
 }
@@ -48,5 +50,19 @@ function ilr_forms_public_entityform_presave($entityform) {
     $wrapper->field_description->set($description);
     $nid = arg(2);
     $wrapper->field_referenced_node->set($nid);
+  }
+}
+
+/**
+ * The microsite interest form sometimes uses custom labels so that
+ * we can reuse the basic fields.
+ *
+ * @todo Refactor if we use again
+ */
+function _ilr_forms_public_check_for_custom_labels(&$block, $nid) {
+  $page = node_load($nid);
+  if (strpos($page->title, 'Sports') !== FALSE && strpos($page->title, 'Camp') !== FALSE) {
+    $block['content']['field_job_title'][LANGUAGE_NONE][0]['value']['#title'] = "Are you a camper or parent?";
+    $block['content']['field_comments'][LANGUAGE_NONE][0]['value']['#title'] = "How can we help?";
   }
 }
