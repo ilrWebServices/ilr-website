@@ -204,3 +204,17 @@
 .padded {
   @include padded;
 }
+
+@mixin button-color($bg-color, $hover-color: lighten($bg-color, 10%), $text-color: white) {
+  color: $text-color;
+  background-color: $bg-color;
+
+  &:focus,
+  &:visited {
+    background-color: $bg-color;
+  }
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
