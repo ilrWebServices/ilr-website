@@ -8872,7 +8872,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -8915,7 +8915,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -8958,7 +8958,7 @@ function ilr_forms_students_field_default_field_instances() {
         'rows' => 10,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -8997,7 +8997,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 
@@ -9058,7 +9058,7 @@ function ilr_forms_students_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -9103,7 +9103,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 0,
     ),
   );
 
@@ -9137,7 +9137,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'markup',
       'settings' => array(),
       'type' => 'markup',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
@@ -9180,7 +9180,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -9223,7 +9223,7 @@ function ilr_forms_students_field_default_field_instances() {
         'rows' => 10,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -9284,7 +9284,7 @@ function ilr_forms_students_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -9327,7 +9327,7 @@ function ilr_forms_students_field_default_field_instances() {
         'rows' => 10,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -9362,7 +9362,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -9397,7 +9397,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 13,
+      'weight' => 12,
     ),
   );
 
@@ -9423,6 +9423,41 @@ function ilr_forms_students_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_yes_no_2',
     'label' => 'Would you need housing accommodations?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_yes_no_3'.
+  $field_instances['entityform-high_road_fellowship_application-field_yes_no_3'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_3',
+    'label' => 'Are you eligible for federal work study funds?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -13986,6 +14021,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Amount of compensation');
   t('Anticipated graduation year');
   t('Are you a Cornell Alum?');
+  t('Are you eligible for federal work study funds?');
   t('Assistance requested');
   t('Attendee 1 - First name');
   t('Attendee 1 - Last name');

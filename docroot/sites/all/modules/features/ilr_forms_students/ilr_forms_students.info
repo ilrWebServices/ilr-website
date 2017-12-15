@@ -246,6 +246,7 @@ features[field_instance][] = entityform-high_road_fellowship_application-field_w
 features[field_instance][] = entityform-high_road_fellowship_application-field_year_freshman_soph_jr_sr
 features[field_instance][] = entityform-high_road_fellowship_application-field_yes_no
 features[field_instance][] = entityform-high_road_fellowship_application-field_yes_no_2
+features[field_instance][] = entityform-high_road_fellowship_application-field_yes_no_3
 features[field_instance][] = entityform-ilr_grad_research_assistance_app-field_chairperson
 features[field_instance][] = entityform-ilr_grad_research_assistance_app-field_dates_as_text
 features[field_instance][] = entityform-ilr_grad_research_assistance_app-field_degree_program_ms_phd
