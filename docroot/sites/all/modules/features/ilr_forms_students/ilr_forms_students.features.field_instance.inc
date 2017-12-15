@@ -8834,6 +8834,644 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_address_line_1'.
+  $field_instances['entityform-high_road_fellowship_application-field_address_line_1'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_address_line_1',
+    'label' => 'Campus address',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_address_line_2'.
+  $field_instances['entityform-high_road_fellowship_application-field_address_line_2'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_address_line_2',
+    'label' => 'Home address',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_description_long'.
+  $field_instances['entityform-high_road_fellowship_application-field_description_long'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please write a brief statement indicating why you are interested in a High Road Summer Fellowship in Buffalo.  How would it contribute to your education or career plans?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_description_long',
+    'label' => 'Description of interest',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 10,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_email'.
+  $field_instances['entityform-high_road_fellowship_application-field_email'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_email',
+    'label' => 'Email address',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_file'.
+  $field_instances['entityform-high_road_fellowship_application-field_file'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'deleted' => 0,
+    'description' => 'Please attach a copy of your transcript (complete through Fall 2017)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'file_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_file',
+    'label' => 'Transcript',
+    'required' => 1,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'fielduploads/entityform_high_road_fellowship_application/file_upload_general',
+      'file_extensions' => 'txt doc docx xls xlsx pdf ppt pptx pps ppsx psd md',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_full_name'.
+  $field_instances['entityform-high_road_fellowship_application-field_full_name'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_full_name',
+    'label' => 'Name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_high_road_accomodations'.
+  $field_instances['entityform-high_road_fellowship_application-field_high_road_accomodations'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'markup',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'markup_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_high_road_accomodations',
+    'label' => 'High road accomodations',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_phone'.
+  $field_instances['entityform-high_road_fellowship_application-field_phone'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_phone',
+    'label' => 'Campus telephone',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_request'.
+  $field_instances['entityform-high_road_fellowship_application-field_request'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If you have a preference among <a href="/sites/default/files/2018%20High%20Road%20Fellowships%20Project%20Descriptions.pdf" target="_blank">the specific projects of partnering organizations</a>, please indicate which ones you are most interested in and why.  (We make every effort to match students with their specific project requests.)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_request',
+    'label' => 'Preference',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 10,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_upload_your_resume_or_cv'.
+  $field_instances['entityform-high_road_fellowship_application-field_upload_your_resume_or_cv'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'deleted' => 0,
+    'description' => 'Please attach a resume (complete through Fall 2017)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'file_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_upload_your_resume_or_cv',
+    'label' => 'Resume',
+    'required' => 1,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'fielduploads/entityform_high_road_fellowship_application/file_upload_general',
+      'file_extensions' => 'txt doc docx xls xlsx pdf ppt pptx pps ppsx psd md',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_work_experience'.
+  $field_instances['entityform-high_road_fellowship_application-field_work_experience'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'What skills, education, work or community experiences do you have that would be relevant to these fellowship opportunities?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_work_experience',
+    'label' => 'Experience',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 10,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_year_freshman_soph_jr_sr'.
+  $field_instances['entityform-high_road_fellowship_application-field_year_freshman_soph_jr_sr'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_year_freshman_soph_jr_sr',
+    'label' => 'Year at Cornell',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_yes_no'.
+  $field_instances['entityform-high_road_fellowship_application-field_yes_no'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no',
+    'label' => 'Would you have access to personal transportation?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_yes_no_2'.
+  $field_instances['entityform-high_road_fellowship_application-field_yes_no_2'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_2',
+    'label' => 'Would you need housing accommodations?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_yes_no_3'.
+  $field_instances['entityform-high_road_fellowship_application-field_yes_no_3'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_3',
+    'label' => 'Are you eligible for federal work study funds?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-ilr_grad_research_assistance_app-field_chairperson'.
   $field_instances['entityform-ilr_grad_research_assistance_app-field_chairperson'] = array(
     'bundle' => 'ilr_grad_research_assistance_app',
@@ -13383,11 +14021,14 @@ function ilr_forms_students_field_default_field_instances() {
   t('Amount of compensation');
   t('Anticipated graduation year');
   t('Are you a Cornell Alum?');
+  t('Are you eligible for federal work study funds?');
   t('Assistance requested');
   t('Attendee 1 - First name');
   t('Attendee 1 - Last name');
   t('Attendee 2 - First name');
   t('Attendee 2 - Last name');
+  t('Campus address');
+  t('Campus telephone');
   t('Career field for this FEX opportunity (not the company or organization career field)');
   t('Career field for this WISP opportunity (not the company or organization career field)');
   t('Chairperson');
@@ -13410,16 +14051,19 @@ function ilr_forms_students_field_default_field_instances() {
   t('Degree (supervisor)');
   t('Degree Program');
   t('Degree program');
+  t('Description of interest');
   t('Description of organization');
   t('Do you currently hold a Bachelor\'s degree?');
   t('Do you wish to accept the Transfer Option (TO) to Cornell\'s ILR School?');
   t('Email');
   t('Email (supervisor)');
+  t('Email address');
   t('Employer');
   t('Entry date markup');
   t('Event date');
   t('Event title');
   t('Expected graduation date (mm/yyyy)');
+  t('Experience');
   t('FEX constraints markup');
   t('FEX dates markup');
   t('FEX location');
@@ -13431,7 +14075,9 @@ function ilr_forms_students_field_default_field_instances() {
   t('For example: BS ILR, MILR, MPS, MS/PhD, MBA, etc.');
   t('Graduation year');
   t('Graduation year (supervisor)');
+  t('High road accomodations');
   t('High school name');
+  t('Home address');
   t('Home state / province');
   t('How did you hear about the ILR School MILR program? (Check as many as apply.)');
   t('How did you hear about the MPS/NYC program?');
@@ -13439,6 +14085,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('I certify that I am a sophomore, junior, senior, or first-year MILR student in the ILR School.');
   t('ILR Degree');
   t('If freshmen don\'t select this opportunity, may we offer it to upperclass students?');
+  t('If you have a preference among <a href="/sites/default/files/2018%20High%20Road%20Fellowships%20Project%20Descriptions.pdf" target="_blank">the specific projects of partnering organizations</a>, please indicate which ones you are most interested in and why.  (We make every effort to match students with their specific project requests.)');
   t('If you have more than one ILR degree, list them all.');
   t('Info session title');
   t('Is the FEX location different from the sponsor address entered above?');
@@ -13453,6 +14100,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Maximum duration');
   t('Minimum duration');
   t('Must the student work consecutive days?');
+  t('Name');
   t('NetID');
   t('Non-consecutive options could include starting in December and finishing in January; or working 5 days, taking a day off for another commitment, and then working 5 more days, etc.');
   t('Number of attendees');
@@ -13468,9 +14116,13 @@ function ilr_forms_students_field_default_field_instances() {
   t('Phone');
   t('Phone (supervisor)');
   t('Phone (with area code)');
+  t('Please attach a copy of your transcript (complete through Fall 2017)');
+  t('Please attach a resume (complete through Fall 2017)');
   t('Please enter the name of the school you will attend for your first year. If you have not yet selected a school, please enter “Undecided” and email ilradmissions@cornell.edu once you have finalized your decision.');
   t('Please enter the phone number where you can be reached throughout the next academic year.');
   t('Please specify your school or college');
+  t('Please write a brief statement indicating why you are interested in a High Road Summer Fellowship in Buffalo.  How would it contribute to your education or career plans?');
+  t('Preference');
   t('Preferred city');
   t('Preferred dates for this WISP opportunity');
   t('Preferred first name (if different from above)');
@@ -13482,6 +14134,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Questions');
   t('Research plan');
   t('Responsibilities or projects to be completed by WISP student(s)');
+  t('Resume');
   t('School or college');
   t('School year');
   t('School you will attend for your first year');
@@ -13508,12 +14161,14 @@ function ilr_forms_students_field_default_field_instances() {
   t('Student\'s first name');
   t('Student\'s last name');
   t('Title of reseach proposal');
+  t('Transcript');
   t('Type of opportunity (select one or both)');
   t('Upload your resume');
   t('Upload your resume or CV');
   t('WISP dates constraints markup');
   t('WISP location markup');
   t('What attracted you to this event?');
+  t('What skills, education, work or community experiences do you have that would be relevant to these fellowship opportunities?');
   t('What year did you graduate from the ILR School?');
   t('When did you receive (or when do you expect to receive) your Bachelor\'s degree?');
   t('Which breakout session will you attend?');
@@ -13522,7 +14177,10 @@ function ilr_forms_students_field_default_field_instances() {
   t('Will you attend the reception?');
   t('Will you be managing this student from day to day?');
   t('Will you host the students on the same day(s) or individually? (Individually makes the scheduling easier.)');
+  t('Would you have access to personal transportation?');
+  t('Would you need housing accommodations?');
   t('Year');
+  t('Year at Cornell');
   t('Year in school');
   t('Years of full-time work experience');
   t('Zip code');
