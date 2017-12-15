@@ -47,7 +47,7 @@
         display: block;
         font-weight: normal;
 
-        @include small {
+        @include large {
           float: right;
         }
       }
