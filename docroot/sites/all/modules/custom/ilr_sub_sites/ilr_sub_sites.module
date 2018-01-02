@@ -24,7 +24,7 @@ function ilr_sub_sites_block_view($delta = '') {
     'mobilizing-against-inequality' => 'Mobilizing Against Inequality',
     'union-leadership-institute' => 'Union Leadership Institute',
     'national-labor-leadership-initiative' => 'The National Labor Leadership Initiative',
-    'uale-2013-ne' => 'UALE 2013 NE');
+    'uale-2013-ne' => 'UALE 2018 NE');
   $subsite_name = _ilr_sub_sites_get_current_subsite_name();
   $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
   $block['content'] = '<div class="subsite-header">';
