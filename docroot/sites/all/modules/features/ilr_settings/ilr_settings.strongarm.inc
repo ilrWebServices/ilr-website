@@ -727,6 +727,114 @@ function ilr_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_admin_path';
+  $strongarm->value = 1;
+  $export['redhen_admin_path'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_alter_comments';
+  $strongarm->value = 0;
+  $export['redhen_contact_alter_comments'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_alter_username';
+  $strongarm->value = 0;
+  $export['redhen_contact_alter_username'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_connect_users';
+  $strongarm->value = 0;
+  $export['redhen_contact_connect_users'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_delete_user_with_contact';
+  $strongarm->value = 0;
+  $export['redhen_contact_delete_user_with_contact'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_embed_on_user_form';
+  $strongarm->value = 0;
+  $export['redhen_contact_embed_on_user_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_mirror_email';
+  $strongarm->value = 0;
+  $export['redhen_contact_mirror_email'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_reg';
+  $strongarm->value = 0;
+  $export['redhen_contact_reg'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_reg_type';
+  $strongarm->value = 'sports_leadership_camp_contact';
+  $export['redhen_contact_reg_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_reg_update';
+  $strongarm->value = 0;
+  $export['redhen_contact_reg_update'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_reg_update_fields';
+  $strongarm->value = 0;
+  $export['redhen_contact_reg_update_fields'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_require_email';
+  $strongarm->value = 1;
+  $export['redhen_contact_require_email'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_require_first_name';
+  $strongarm->value = 1;
+  $export['redhen_contact_require_first_name'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_contact_user_email_type';
+  $strongarm->value = array(
+    0 => 0,
+    'sports_leadership_camp_contact' => 0,
+  );
+  $export['redhen_contact_user_email_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'redhen_items_page';
+  $strongarm->value = '100';
+  $export['redhen_items_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'redirect_auto_redirect';
   $strongarm->value = 1;
   $export['redirect_auto_redirect'] = $strongarm;
