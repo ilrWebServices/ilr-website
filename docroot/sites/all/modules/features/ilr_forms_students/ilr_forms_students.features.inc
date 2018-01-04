@@ -430,6 +430,58 @@ function ilr_forms_students_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['high_road_fellowship_application'] = entity_import('entityform_type', '{
+    "type" : "high_road_fellowship_application",
+    "label" : "High road fellowship application",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "Submit application",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : { "value" : "", "format" : "full_html" },
+      "submission_show_submitted" : 0,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "2" : "2",
+        "1" : 0,
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : {
+        "value" : "\\u003Ch2\\u003EEngaged Learning \\u0026amp; Research Fellowships for Cornell Students\\u003C\\/h2\\u003E\\r\\n\\r\\n\\u003Ch3\\u003ESummer 2018 in Buffalo NY\\u003C\\/h3\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 1,
+      "form_submission_ilr_recipient" : "mlc322@cornell.edu",
+      "add_payment_processing" : 0,
+      "hpp" : ""
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['ilr_grad_research_assistance_app'] = entity_import('entityform_type', '{
     "type" : "ilr_grad_research_assistance_app",
     "label" : "ILR Grad Research Assistance Application Form",

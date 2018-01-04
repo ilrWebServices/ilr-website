@@ -18,4 +18,15 @@ function featuretest_enable() {
 
   variable_set('stage_file_proxy_origin','http://www.ilr.cornell.edu');
   variable_set('stage_file_proxy_origin_dir','sites/ilr.cornell.edu/files');
+  // Redirect all outgoing mail to the local filesystem
+  variable_set('mail_system', array('default-system' => 'DevelMailLog'));
+}
+
+/**
+ * Implements hook_disable().
+ *
+ * Stop redirecting all outgoing mail.
+ */
+function featuretest_disable() {
+  variable_set('mail_system', array('default-system' => 'DefaultMailSystem'));
 }

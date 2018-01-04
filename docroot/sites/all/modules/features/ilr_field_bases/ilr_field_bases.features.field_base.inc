@@ -4495,6 +4495,29 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_high_road_accomodations'.
+  $field_bases['field_high_road_accomodations'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_high_road_accomodations',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div class="form-item">
+	<p><b>For information purposes only:</b> answers to the questions below <b>will not</b> be used in the awarding fellowships. They are relevant only in planning for best accommodations for students selected.</p>
+</div>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
   // Exported field_base: 'field_high_school_grad_year'.
   $field_bases['field_high_school_grad_year'] = array(
     'active' => 1,
