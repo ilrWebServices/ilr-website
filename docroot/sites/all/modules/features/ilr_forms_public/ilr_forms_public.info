@@ -32,6 +32,7 @@ features[entityform_type][] = emediation_competition_reg
 features[entityform_type][] = join_hcd_mail_list
 features[entityform_type][] = join_the_ics_mailing_list
 features[entityform_type][] = microsite_interest
+features[entityform_type][] = sports_camp_application
 features[entityform_type][] = sports_leadership_camp_payment
 features[entityform_type][] = sports_leadership_interest
 features[features_api][] = api:2
