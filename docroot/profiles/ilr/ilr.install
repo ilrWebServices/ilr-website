@@ -847,3 +847,10 @@ function ilr_update_7064() {
 function ilr_update_7065() {
   module_enable(['ilr_payment_forms']);
 }
+
+/**
+ * Enables the ilr_redhen module
+ */
+function ilr_update_7066() {
+  module_enable(['ilr_redhen']);
+}
