@@ -29,7 +29,6 @@ function ilr_redhen_form_redhen_contact_contact_form_alter(&$form, &$form_state)
     $form['field_referenced_entityform']['#type'] = 'markup';
     $form['field_referenced_entityform']['#markup'] = $markup;
   }
-  ilr_redhen_get_mailchimp_segments(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID);
 }
 
 /**
@@ -45,9 +44,14 @@ function ilr_redhen_entityform_insert($entityform) {
     }
     $contact = (is_array($contact)) ? reset($contact) : $contact;
     $contact_wrapper = entity_metadata_wrapper('redhen_contact', $contact);
-    ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper);
+    $contact_wrapper = ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper);
     ilr_redhen_track_contact_form($contact_wrapper, $entityform_wrapper->getIdentifier());
     $contact_wrapper->save();
+    // Add them to the appropriate segment
+    $segment = ilr_redhen_get_segment_name($entityform->type);
+    if (!empty($segment)) {
+      ilr_redhen_add_user_to_mailchimp_segment($entityform->type, $segment);
+    }
   }
 }
 
@@ -91,17 +95,18 @@ function ilr_redhen_create_contact($email, $entityform_wrapper) {
   $contact_wrapper = entity_metadata_wrapper('redhen_contact', $contact);
   $unique_identifier = ilr_redhen_generate_unique_identifier();
   $contact_wrapper->field_account_number->set($unique_identifier);
-  ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper);
+  $contact_wrapper = ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper);
   $contact_wrapper->save();
-  ilr_redhen_add_or_update_mailchimp($email, $contact_wrapper);
+  // Add the contact to mailchimp
+  ilr_redhen_add_contact_to_mailchimp($contact_wrapper);
   return $contact;
 }
 
-function ilr_redhen_update_contact(&$contact_wrapper, $entityform_wrapper) {
+function ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper) {
   if (!$contact_wrapper->first_name->value() && isset($entityform_wrapper->field_first_name_additional)) {
     $contact_wrapper->first_name->set($entityform_wrapper->field_first_name_additional->value());
     $contact_wrapper->last_name->set($entityform_wrapper->field_last_name_additional->value());
-    ilr_redhen_add_or_update_mailchimp($entityform_wrapper->field_email->value(), $contact_wrapper);
+    return $contact_wrapper;
   }
 }
 
@@ -141,22 +146,33 @@ function ilr_redhen_contact_load_by_identifier($identifier) {
   return FALSE;
 }
 
-function ilr_redhen_add_or_update_mailchimp($email, $contact_wrapper) {
-  mailchimp_accounts_set_current_mailchimp_context(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, 'user');
-  $mc_lists = mailchimp_get_api_object('MailchimpLists');
+function ilr_redhen_add_contact_to_mailchimp($contact_wrapper) {
   $first_name = $contact_wrapper->first_name->value();
   $last_name = $contact_wrapper->last_name->value();
-  $parameters = [
-    'status_if_new' => 'subscribed',
-    'merge_fields' => [
-      'FNAME' => ($first_name) ? $first_name : '',
-      'LNAME' => ($last_name) ? $last_name : '',
-      'MMERGE3' => $contact_wrapper->field_account_number->value(),
-    ],
+  $merge_vars = [
+    'FNAME' => ($first_name) ? $first_name : '',
+    'LNAME' => ($last_name) ? $last_name : '',
+    'MMERGE3' => $contact_wrapper->field_account_number->value()
   ];
-  $mc_lists->addOrUpdateMember(SPORTS_LEADERSHIP_MC_LIST_ID, $email, $parameters);
+  ilr_mailchimp_subscribe_user(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID, $contact_wrapper->redhen_contact_email->value(), $merge_vars);
 }
 
-function ilr_redhen_add_user_to_mailchimp_segment($account_id, $list_id, $email, $segment_name) {
-  ilr_mailchimp_add_user_to_mailchimp_segment($account_id, $list_id, $email);
+function ilr_redhen_get_segment_name($entityform_type) {
+  $segment_name = '';
+  switch($entityform_type) {
+    case 'microsite_interest':
+      $segment_name = 'interested';
+      break;
+    case 'sports_camp_application':
+      $segment_name = 'interested';
+      break;
+    case 'sports_camp_payment'
+      $segment_name = 'paid';
+      break;
+  }
+  return $segment_name;
+}
+
+function ilr_redhen_add_user_to_mailchimp_segment($email, $segment_name) {
+  ilr_mailchimp_add_user_to_mailchimp_segment(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID, $email, $segment_name);
 }
