@@ -50,7 +50,7 @@ function ilr_redhen_entityform_insert($entityform) {
     // Add them to the appropriate segment
     $segment = ilr_redhen_get_segment_name($entityform->type);
     if (!empty($segment)) {
-      ilr_redhen_add_user_to_mailchimp_segment($entityform->type, $segment);
+      ilr_redhen_add_user_to_mailchimp_segment($email, $segment);
     }
   }
 }
@@ -98,7 +98,7 @@ function ilr_redhen_create_contact($email, $entityform_wrapper) {
   $contact_wrapper = ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper);
   $contact_wrapper->save();
   // Add the contact to mailchimp
-  ilr_redhen_add_contact_to_mailchimp($contact_wrapper);
+  ilr_redhen_add_contact_to_mailchimp($contact_wrapper, $email);
   return $contact;
 }
 
@@ -106,8 +106,8 @@ function ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper) {
   if (!$contact_wrapper->first_name->value() && isset($entityform_wrapper->field_first_name_additional)) {
     $contact_wrapper->first_name->set($entityform_wrapper->field_first_name_additional->value());
     $contact_wrapper->last_name->set($entityform_wrapper->field_last_name_additional->value());
-    return $contact_wrapper;
   }
+  return $contact_wrapper;
 }
 
 /**
@@ -146,7 +146,7 @@ function ilr_redhen_contact_load_by_identifier($identifier) {
   return FALSE;
 }
 
-function ilr_redhen_add_contact_to_mailchimp($contact_wrapper) {
+function ilr_redhen_add_contact_to_mailchimp($contact_wrapper, $email) {
   $first_name = $contact_wrapper->first_name->value();
   $last_name = $contact_wrapper->last_name->value();
   $merge_vars = [
@@ -154,7 +154,7 @@ function ilr_redhen_add_contact_to_mailchimp($contact_wrapper) {
     'LNAME' => ($last_name) ? $last_name : '',
     'MMERGE3' => $contact_wrapper->field_account_number->value()
   ];
-  ilr_mailchimp_subscribe_user(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID, $contact_wrapper->redhen_contact_email->value(), $merge_vars);
+  ilr_mailchimp_subscribe_user(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID, $email, $merge_vars);
 }
 
 function ilr_redhen_get_segment_name($entityform_type) {
