@@ -167,7 +167,7 @@ function ilr_redhen_get_segment_name($entityform_type) {
       $segment_name = 'applied';
       break;
     case 'sports_camp_payment':
-      $segment_name = 'paid';
+      $segment_name = 'participant';
       break;
   }
   return $segment_name;
