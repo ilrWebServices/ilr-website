@@ -1,0 +1,162 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Redhen feature.
+ */
+
+include_once 'ilr_redhen.features.inc';
+
+define('SPORTS_LEADERSHIP_MC_ACCOUNT_ID', 'e69d80783d77fe8d9073ed506');
+define('SPORTS_LEADERSHIP_MC_LIST_ID', '320c595c34');
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Disables the unique identifier field
+ * Adds links to the contact's forms
+ */
+function ilr_redhen_form_redhen_contact_contact_form_alter(&$form, &$form_state) {
+  $form['field_account_number'][LANGUAGE_NONE]['0']['value']['#attributes']['disabled'] = TRUE;
+  $contact_wrapper = entity_metadata_wrapper('redhen_contact', $form['#entity']);
+  $forms = $contact_wrapper->field_referenced_entityform->value();
+  if ($forms) {
+    $markup = '<h4>Forms</h4>';
+    $markup .= '<ul>';
+    foreach ($forms as $entityform) {
+      $markup .= '<li><a href="/entityform/'.$entityform->entityform_id.'">'. $entityform->type.'</a></li>';
+    }
+    $markup .= '</ul>';
+    $form['field_referenced_entityform']['#type'] = 'markup';
+    $form['field_referenced_entityform']['#markup'] = $markup;
+  }
+  ilr_redhen_get_mailchimp_segments(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID);
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function ilr_redhen_entityform_insert($entityform) {
+  $entityform_wrapper = _forms_entityform_wrapper($entityform);
+  if (ilr_redhen_is_crm_form($entityform_wrapper)) {
+    $email = $entityform_wrapper->field_email->value();
+    $contact = redhen_contact_load_by_mail($email);
+    if (!$contact) {
+      $contact = ilr_redhen_create_contact($email, $entityform_wrapper);
+    }
+    $contact = (is_array($contact)) ? reset($contact) : $contact;
+    $contact_wrapper = entity_metadata_wrapper('redhen_contact', $contact);
+    ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper);
+    ilr_redhen_track_contact_form($contact_wrapper, $entityform_wrapper->getIdentifier());
+    $contact_wrapper->save();
+  }
+}
+
+/**
+ * Checks the form machine name and the menu name
+ *
+ * @todo Refactor as needed in future
+ * @return boolean
+ */
+function ilr_redhen_is_crm_form($entityform_wrapper) {
+  $types = ['sports_camp_application'];
+  $menu = '';
+  if (isset($entityform_wrapper->field_referenced_node)) {
+    $page = $entityform_wrapper->field_referenced_node->value();
+    $menu = _ilr_sub_sites_get_menu_name($page);
+  }
+  $type = $entityform_wrapper->type->value()->type;
+  if ($menu == 'sports-leadership-camp' || in_array($type, $types)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+function ilr_redhen_track_contact_form($contact_wrapper, $entityform_id) {
+  $forms = $contact_wrapper->field_referenced_entityform->value();
+  if (!$forms) {
+    $forms = [];
+  }
+  $forms[] = entityform_load($entityform_id);
+  $contact_wrapper->field_referenced_entityform->set($forms);
+  $contact_wrapper->save();
+}
+
+function ilr_redhen_create_contact($email, $entityform_wrapper) {
+  $type = redhen_contact_get_types('sports_leadership_camp_contact');
+  $contact = redhen_contact_create([
+    'type' => 'sports_leadership_camp_contact',
+  ]);
+  $contact->setEmail($email);
+  $contact->save();
+  $contact_wrapper = entity_metadata_wrapper('redhen_contact', $contact);
+  $unique_identifier = ilr_redhen_generate_unique_identifier();
+  $contact_wrapper->field_account_number->set($unique_identifier);
+  ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper);
+  $contact_wrapper->save();
+  ilr_redhen_add_or_update_mailchimp($email, $contact_wrapper);
+  return $contact;
+}
+
+function ilr_redhen_update_contact(&$contact_wrapper, $entityform_wrapper) {
+  if (!$contact_wrapper->first_name->value() && isset($entityform_wrapper->field_first_name_additional)) {
+    $contact_wrapper->first_name->set($entityform_wrapper->field_first_name_additional->value());
+    $contact_wrapper->last_name->set($entityform_wrapper->field_last_name_additional->value());
+    ilr_redhen_add_or_update_mailchimp($entityform_wrapper->field_email->value(), $contact_wrapper);
+  }
+}
+
+/**
+ * Generates a unique identifier for the account
+ *
+ * @return string A 10 digit random string
+ */
+function ilr_redhen_generate_unique_identifier() {
+  $identifier = user_password();
+  if (ilr_redhen_contact_load_by_identifier($identifier)) {
+    $identifier = ilr_redhen_generate_unique_identifier();
+    return $identifier;
+  }
+  else {
+    return $identifier;
+  }
+}
+
+/**
+ * Search current contacts by identifier
+ *
+ * @param string $identifier
+ *   The randomly generated identifier
+ *
+ * @return bool
+ */
+function ilr_redhen_contact_load_by_identifier($identifier) {
+  $query = new EntityFieldQuery();
+  $query
+    ->entityCondition('entity_type', 'redhen_contact')
+    ->fieldCondition('field_account_number', 'value', $identifier, '=');
+  $result = $query->execute();
+  if (!empty($result)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+function ilr_redhen_add_or_update_mailchimp($email, $contact_wrapper) {
+  mailchimp_accounts_set_current_mailchimp_context(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, 'user');
+  $mc_lists = mailchimp_get_api_object('MailchimpLists');
+  $first_name = $contact_wrapper->first_name->value();
+  $last_name = $contact_wrapper->last_name->value();
+  $parameters = [
+    'status_if_new' => 'subscribed',
+    'merge_fields' => [
+      'FNAME' => ($first_name) ? $first_name : '',
+      'LNAME' => ($last_name) ? $last_name : '',
+      'MMERGE3' => $contact_wrapper->field_account_number->value(),
+    ],
+  ];
+  $mc_lists->addOrUpdateMember(SPORTS_LEADERSHIP_MC_LIST_ID, $email, $parameters);
+}
+
+function ilr_redhen_add_user_to_mailchimp_segment($account_id, $list_id, $email, $segment_name) {
+  ilr_mailchimp_add_user_to_mailchimp_segment($account_id, $list_id, $email);
+}

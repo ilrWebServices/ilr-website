@@ -56,3 +56,34 @@ function ilr_mailchimp_mailchimp_subscribe_user($list_id, $email, $merge_vars) {
   }
 
 }
+
+function ilr_mailchimp_subscribe_user($account_id, $list_id, $email, $merge_vars=[]) {
+  mailchimp_accounts_set_current_mailchimp_context($account_id, 'user', TRUE);
+  // Make sure they are not yet subscribed
+  if (!mailchimp_is_subscribed($list_id, $email)) {
+    $parameters = [
+      'status_if_new' => 'subscribed',
+      'merge_fields' => $merge_vars,
+    ];
+    $mc_lists->addOrUpdateMember($list_id, $email, $parameters);
+  }
+}
+
+function ilr_mailchimp_get_mailchimp_segments($account_id, $list_id) {
+  $segments = mailchimp_get_segments($list_id);
+  return $segments;
+}
+
+function ilr_mailchimp_add_user_to_mailchimp_segment($account_id, $list_id, $email, $segment_name) {
+  mailchimp_accounts_set_current_mailchimp_context($account_id, 'user', TRUE);
+  ilr_mailchimp_subscribe_user($account_id, $list_id, $email);
+  $segments = ilr_mailchimp_get_mailchimp_segments($account_id, $list_id);
+  $mc_lists = mailchimp_get_api_object('MailchimpLists');
+  foreach ($segments as $segment) {
+    if ($segment->name == $segment_name) {
+      $mc_lists->addSegmentMember($list_id, $segment->list_id, $email);
+      return TRUE;
+    }
+  }
+  return FALSE;
+}

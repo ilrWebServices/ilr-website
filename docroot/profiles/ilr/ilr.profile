@@ -118,7 +118,7 @@ function ilr_form_user_pass_alter(&$form, $form_state, $form_id) {
 function ilr_menu_block_blocks() {
   $menu = 'main-menu';
   if (module_exists('ilr_sub_sites')) {
-    $menu = _ilr_sub_sites_get_current_menu_name();
+    $menu = _ilr_sub_sites_get_menu_name();
   }
   $level = ($menu == 'main-menu') ? 1 : 2; // Note this does not seem to be zero indexed
   return array(
