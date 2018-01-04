@@ -1157,6 +1157,31 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_camper_type'.
+  $field_bases['field_camper_type'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_camper_type',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'Commuter',
+        1 => 'Residential',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_cancelled'.
   $field_bases['field_cancelled'] = array(
     'active' => 1,
@@ -2835,6 +2860,35 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_dob'.
+  $field_bases['field_dob'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_dob',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 0,
+        'minute' => 0,
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'timezone_db' => '',
+      'todate' => '',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datetime',
   );
 
   // Exported field_base: 'field_dublin_abroad_file_upload'.
@@ -7113,6 +7167,46 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_referenced_entityform'.
+  $field_bases['field_referenced_entityform'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_referenced_entityform',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'reference-machinename' => array(
+            'status' => 0,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'sports_camp_application' => 'sports_camp_application',
+          'sports_leadership_camp_payment' => 'sports_leadership_camp_payment',
+          'sports_leadership_interest' => 'sports_leadership_interest',
+        ),
+      ),
+      'target_type' => 'entityform',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_referenced_node'.
   $field_bases['field_referenced_node'] = array(
     'active' => 1,
@@ -9198,7 +9292,7 @@ function ilr_field_bases_field_default_field_bases() {
   // Exported field_base: 'field_website_url'.
   $field_bases['field_website_url'] = array(
     'active' => 1,
-    'cardinality' => 4,
+    'cardinality' => 5,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_website_url',
@@ -9823,6 +9917,30 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'redhen_contact_email'.
+  $field_bases['redhen_contact_email'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'redhen_contact_email',
+    'indexes' => array(
+      'redhen_email_address' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'redhen_fields',
+    'settings' => array(
+      'labels' => array(
+        1 => 'home',
+        2 => 'work',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'redhen_email',
   );
 
   return $field_bases;
