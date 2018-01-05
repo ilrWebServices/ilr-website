@@ -349,7 +349,10 @@ function ilr_forms_public_default_entityform_type() {
       "page_title_view" : "",
       "preview_page" : 0,
       "submission_page_title" : "",
-      "submission_text" : { "value" : "", "format" : "full_html" },
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for your applying for the Sports Leadership Summer Camp!\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EApplications are reviewed on a rolling basis. We will stop accepting applications once the camp is full so we encourage students to apply as early as possible. Students will be notified of their status within two to three weeks of their application submission.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
       "submission_show_submitted" : 0,
       "submissions_view" : "default",
       "user_submissions_view" : "default",
@@ -369,7 +372,7 @@ function ilr_forms_public_default_entityform_type() {
         "61" : 0
       },
       "resubmit_action" : "disallow",
-      "redirect_path" : "",
+      "redirect_path" : "\\/sports-leadership-camp",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 0,
       "send_confirmation_email_to_admin" : 1,

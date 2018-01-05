@@ -84,8 +84,8 @@ body.subsite.sports-leadership-camp {
 
     .slc-banner__logos {
       background: $darker-red;
-      padding-top: 21px;
-      padding-bottom: 21px;
+      padding-top: 15px;
+      padding-bottom: 15px;
       text-align: center;
       clear: left;
 
@@ -178,7 +178,7 @@ body.subsite.sports-leadership-camp {
   }
 
   .slc-banner__overlay {
-    @include overlay(black, .35);
+    @include overlay(black, .4);
   }
 
   .slc-banner__images {
