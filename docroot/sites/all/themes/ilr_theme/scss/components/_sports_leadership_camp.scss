@@ -1,0 +1,21 @@
+body.subsite {
+	&.sports-leadership-camp {
+		#header-region {
+			background-color: $orange-light;
+			padding-bottom: 0;
+			.region-header {
+				padding: 0;
+			}
+		}
+		.menu-block-ilr-primary-menu {
+			ul.menu {
+				margin-top: 34px;
+				padding-bottom: 34px;
+				overflow: auto;
+			}
+			a {
+				color: white;
+			}
+		}
+	}
+}
