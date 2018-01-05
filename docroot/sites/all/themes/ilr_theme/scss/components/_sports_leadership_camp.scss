@@ -1,8 +1,14 @@
 body.subsite {
 	&.sports-leadership-camp {
 		#header-region {
-			background-color: $orange-light;
+			background-color: $darker-red;
 			padding-bottom: 0;
+			@include large {
+				background-color: $orange-light;
+			}
+			@include xl {
+				background-color: $orange-light;
+			}
 			.region-header {
 				padding: 0;
 			}

@@ -9,7 +9,7 @@
 	<div class="slc-banner__heading">
 		<h2>ILR</h2>
 
-		<h3><em>Sports Leadership</em> Camp</h3>
+		<h1><em>Sports Leadership</em> Camp</h1>
 
 		<p>July 29 - August 4, 2018</p>
 	</div>
@@ -17,7 +17,7 @@
 	<div class="slc-banner__item">
 		<div class="slc-banner__logos">
 			<ul>
-				<li><img src="http://www.ilr-website.dev/sites/all/themes/ilr_theme/images/CU-athletics-logo.png" /></li>
+				<li><img src="http://www.ilr-website.dev/sites/all/themes/ilr_theme/images/ILR-logo.png" /></li>
 				<li><img src="http://www.ilr-website.dev/sites/all/themes/ilr_theme/images/CU-athletics-logo.png" /></li>
 			</ul>
 		</div>
