@@ -70,8 +70,13 @@ body.subsite.sports-leadership-camp {
       @include adjust-font-size-to(35px);
       @include adjust-leading-to(.75);
       margin: 0;
-      font-family: $font;
-      color: white;
+
+      a,
+      a:visited
+      a:hover {
+        font-family: $font;
+        color: white;
+      }
 
       span {
         font-weight: 600;
