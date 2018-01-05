@@ -1,0 +1,65 @@
+commit 72bf1a8f60be04485593bb0bc9a63f9ed7c3c458
+Author: Aaron Froehlich <aaronfroehlich@gmail.com>
+Date:   Thu Jan 4 17:10:36 2018 -0500
+
+    Add removeSegmentMember API support and test
+
+diff --git a/src/MailchimpLists.php b/src/MailchimpLists.php
+index f5c8176..7d9339c 100644
+--- a/src/MailchimpLists.php
++++ b/src/MailchimpLists.php
+@@ -490,6 +490,30 @@ class MailchimpLists extends Mailchimp {
+   }
+ 
+   /**
++   * Removes a member from a list segment.
++   *
++   * @param string $list_id
++   *   The ID of the list.
++   * @param string $segment_id
++   *   The ID of the segment.
++   * @param array $email
++   *   The email address to remove from the segment.
++   *
++   * @return object
++   *
++   * @see http://developer.mailchimp.com/documentation/mailchimp/reference/lists/segments/members/#delete-delete_lists_list_id_segments_segment_id_members_subscriber_hash
++   */
++  public function removeSegmentMember($list_id, $segment_id, $email) {
++    $tokens = [
++      'list_id' => $list_id,
++      'segment_id' => $segment_id,
++      'subscriber_hash' => md5(strtolower($email)),
++    ];
++
++    return $this->request('DELETE', '/lists/{list_id}/segments/{segment_id}/members/{subscriber_hash}', $tokens);
++  }
++
++  /**
+    * Gets information about webhooks associated with a list.
+    *
+    * @param string $list_id
+diff --git a/tests/MailchimpListsTest.php b/tests/MailchimpListsTest.php
+index e99a451..739f3be 100644
+--- a/tests/MailchimpListsTest.php
++++ b/tests/MailchimpListsTest.php
+@@ -301,4 +301,19 @@ class MailchimpListsTest extends TestCase {
+     $this->assertEquals($email, $request_body->email_address);
+   }
+ 
++  /**
++   * Tests library functionality for removing a segment member.
++   */
++  public function testRemoveSegmentMember() {
++    $list_id = '205d96e6b4';
++    $segment_id = '457';
++    $email = 'test@example.com';
++
++    $mc = new MailchimpLists();
++    $mc->removeSegmentMember($list_id, $segment_id, $email);
++
++    $this->assertEquals('DELETE', $mc->getClient()->method);
++    $this->assertEquals($mc->getEndpoint() . '/lists/' . $list_id . '/segments/' . $segment_id . '/members/' . md5($email), $mc->getClient()->uri);
++  }
++
+ }
