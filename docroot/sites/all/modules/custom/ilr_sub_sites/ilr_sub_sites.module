@@ -15,6 +15,25 @@ function ilr_sub_sites_block_info($delta = '') {
 }
 
 /**
+ * Implements hook_block_view_alter().
+ */
+function ilr_sub_sites_sub_site_header_alter(&$block, $subsite) {
+  if ($subsite->menu == 'sports-leadership-camp') {
+    $block['content'] = theme('slc_header');
+  }
+}
+
+function ilr_sub_sites_theme() {
+  return array(
+    'slc_header' => array(
+      'variables' => array(),
+      'template' => 'ilr-sports-leadership-camp-header',
+    ),
+  );
+}
+
+/**
+ *
 * Implements hook_block_view().
 */
 function ilr_sub_sites_block_view($delta = '') {
@@ -28,7 +47,7 @@ function ilr_sub_sites_block_view($delta = '') {
   $subsite_name = _ilr_sub_sites_get_current_subsite_name();
   $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
   $block['content'] = '<div class="subsite-header">';
-  $menu_name = _ilr_sub_sites_get_current_menu_name();
+  $menu_name = _ilr_sub_sites_get_menu_name();
   if ($logo = _ilr_sub_sites_get_site_logo($menu_name, $subsite_name)) {
     $block['content'] .= "<h2 class='$subsite_name image'><a href='$href'>$logo</a></h2>";
   }
@@ -43,6 +62,11 @@ function ilr_sub_sites_block_view($delta = '') {
   }
 
   $block['content'] .= '</div>';
+  $subsite = (object) [
+    'menu' => $menu_name,
+    'name' => $subsite_name
+  ];
+  drupal_alter('sub_site_header', $block, $subsite);
   return $block;
 }
 
@@ -223,7 +247,7 @@ function _ilr_subs_sites_region_view_modes_page_build(&$page, $node) {
 function ilr_sub_sites_preprocess_html(&$variables) {
   if (_ilr_sub_sites_current_page_is_sub_site()) {
     // Add subsite classes
-    $site = _ilr_sub_sites_get_current_menu_name();
+    $site = _ilr_sub_sites_get_menu_name();
     $variables['classes_array'][] = "subsite $site";
     if ($node = _ilr_sub_sites_get_current_node()) {
       $type = str_replace('_', '-', $node->type);
@@ -380,7 +404,7 @@ function _ilr_sub_sites_current_page_is_sub_site() {
     return TRUE;
   }
   if ($node = _ilr_sub_sites_get_current_node()) {
-    return _ilr_sub_sites_get_current_menu_name() != 'main-menu';
+    return _ilr_sub_sites_get_menu_name() != 'main-menu';
   } // Check for a path-based subsite
   elseif (_ilr_sub_sites_get_subsite_homepage_alias() == arg(0)) {
     _ilr_sub_sites_homepage_uri(arg(0));
@@ -393,8 +417,8 @@ function _ilr_sub_sites_current_page_is_sub_site() {
  * Gets the menu assignment of the current page.
  * See ilr_menu_block_blocks() in the profile.
  */
-function _ilr_sub_sites_get_current_menu_name() {
-  $node = _ilr_sub_sites_get_current_node();
+function _ilr_sub_sites_get_menu_name($node=NULL) {
+  $node = ($node) ? $node : _ilr_sub_sites_get_current_node();
   if ($node && !_ilr_sub_sites_is_wrapped_node()) {
     $menu_name = db_select('menu_links', 'ml')
       ->condition('ml.link_path', 'node/' . $node->nid)
@@ -441,7 +465,7 @@ function _ilr_sub_sites_check_for_menu_by_name($path) {
 }
 
 function _ilr_sub_sites_get_current_subsite_name() {
-  $machine_name = _ilr_sub_sites_get_current_menu_name();
+  $machine_name = _ilr_sub_sites_get_menu_name();
   $subsite_name = db_query("SELECT title FROM {menu_custom} WHERE menu_name=:menu_name", array(':menu_name' => $machine_name))->fetchField();
   return $subsite_name;
 }
@@ -478,7 +502,7 @@ function _ilr_sub_sites_get_site_logo($menu_name, $subsite_name) {
 }
 
 function _ilr_sub_sites_get_subsite_homepage_alias() {
-  $menu_name = _ilr_sub_sites_get_current_menu_name();
+  $menu_name = _ilr_sub_sites_get_menu_name();
   $path = db_select('menu_links', 'ml')
     ->condition('ml.plid', '0')
     ->condition('ml.menu_name',$menu_name)

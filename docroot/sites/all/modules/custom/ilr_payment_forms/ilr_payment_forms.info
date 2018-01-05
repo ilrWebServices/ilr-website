@@ -1,0 +1,8 @@
+name = ILR payment forms
+description = Provides processing of payment forms
+core = 7.x
+package = ILR
+version = 7.x-1.0
+project = ilr_payment_forms
+
+dependencies[] = freedompay_entityform

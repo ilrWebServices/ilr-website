@@ -50,6 +50,22 @@
   }
 }
 
+@mixin roundLink($diameter) {
+  border-radius: 50%;
+  width: $diameter;
+  height: $diameter;
+
+  a {
+    border-radius: 50%;
+    width: $diameter;
+    height: $diameter;
+
+    &:before {
+      line-height: $diameter;
+    }
+  }
+}
+
 @mixin addHighlightColors($selector, $css-property, $opacity) {
   $content-types: basic-page, promo, event, spotlight, student-portrait, news-item, youtube-video, experience-report, visiting-fellow;
   $content-type-colors: $basic-page-color, $promo-color, $event-color, $spotlight-color, $student-portrait-color, $news-color, $video-color, $promo-color, $spotlight-color;
@@ -77,5 +93,128 @@
 @mixin context($old-context, $new-context) {
   @at-root #{selector-replace(&, $old-context, $new-context)} {
     @content;
+  }
+}
+
+/// Full Width, even outside container
+/// @param {bool} $undo [false]
+/// @link https://css-tricks.com/full-width-containers-limited-width-parents/ Source
+@mixin full-width($undo: false) {
+  @if $undo {
+    margin-left: 0;
+    margin-right: 0;
+    position: static;
+    left: auto;
+    right: auto;
+    width: auto;
+    max-width: 100%;
+  } @else {
+    width: 100vw;
+    max-width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+}
+
+// Responsive video using CSS only
+@mixin responsive-video {
+  height: 0;
+  overflow: hidden;
+  padding-top: 35px;
+  padding-bottom: 56.25%; // 56.25% = 16x9
+  position: relative;
+
+  iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+/// Center.
+/// Center an element vertically or horizontally in its container,
+/// and optionally horizontally. Option to undo.
+/// @param $horizonally-center - center horizontally
+/// @param $vertically-center - center vertically
+/// @param $absolute-positioning - position absolutely, rather than relatively
+/// @param $undo - undo vertical centering on an element it was previously applied to
+@mixin center($horizontally: true, $vertically: true, $absolute: false, $undo: false) {
+  display: inline-block;
+  @if ($absolute) {
+    position: absolute;
+  } @else {
+    position: relative;
+  }
+  @if ($horizontally == true and $vertically == true) {
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  @if ($vertically == true and $horizontally == false) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @if ($horizontally == true and $vertically == false) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @if ($undo) {
+    position: static;
+    left: auto;
+    transform: none;
+  }
+}
+
+@mixin bg-img() {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin fixed-bg() {
+  background-position: center center;
+  background-size: cover;
+
+  @include large {
+    background-attachment: fixed;
+  }
+}
+
+@mixin overlay($color: $dark-blue, $opacity: 0.75) {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: $opacity;
+  background-color: $color;
+}
+
+@mixin padded($padding: 1em 0 1em 0) {
+  padding: $padding;
+}
+
+.padded {
+  @include padded;
+}
+
+@mixin button-color($bg-color, $hover-color: lighten($bg-color, 10%), $text-color: white) {
+  color: $text-color;
+  background-color: $bg-color;
+
+  &:focus,
+  &:visited {
+    background-color: $bg-color;
+  }
+
+  &:hover {
+    background-color: $hover-color;
   }
 }

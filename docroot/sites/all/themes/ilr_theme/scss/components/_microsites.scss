@@ -89,9 +89,18 @@ body.microsite {
     display: none;
   }
 
-  //pop up modal
+  //pop up modal (includes the interest form)
   .fancybox-wrap {
-    width: 55% !important;
+    width: 95% !important;
+
+    @include large {
+      width: 75% !important;
+    }
+
+    @include xl {
+      width: 55% !important;
+    }
+
     .fancybox-skin {
       padding: 0 !important;
     }
@@ -180,7 +189,13 @@ body.microsite {
     @include padding-trailer(1);
     margin: 0 auto !important;
     color: $bg-body;
+
+    @include medium {
+      @include adjust-font-size-to(27px);
+      @include adjust-leading-to(1);
+    }
   }
+
 
   .tagline {
     text-align: center;
@@ -228,23 +243,6 @@ body.microsite {
           &.show {
             display: block;
           }
-        }
-      }
-    }
-
-    .microsite-video {
-      background-color: $dark-blue;
-      @include padding-trailer(1);
-      .description {
-        p.introduction {
-          padding-left: 21px;
-          padding-right: 21px;
-        }
-      }
-      .media {
-        iframe {
-          width: 100%;
-          height: 240px;
         }
       }
     }
@@ -338,45 +336,6 @@ body.microsite {
       }
     }
 
-    .microsite-register, .microsite-get-your-ticket {
-      background-color: $orange;
-      background-repeat: no-repeat;
-      background-position: center center;
-      padding: 55px 34px;
-      text-align: center;
-      p {
-        font-size: 27px;
-        color: white;
-        margin: 0;
-        line-height: 1;
-        a {
-          font-size: 21px;
-          max-width: 233px;
-          margin: 34px auto 0;
-          display: block;
-          box-shadow: 1px 2px 4px $brown;
-        }
-      }
-    }
-
-    .microsite-register {
-      &.sports {
-        background-image: url("../images/Dodger-crowd-orange-mobile.jpg");
-      }
-      &.climate {
-        background-image: url("../images/wind-turbine-purple-mobile.jpg");
-      }
-    }
-
-    .microsite-get-your-ticket {
-      &.sports {
-        background-image: url("../images/Blackhawks-crowd-purple-mobile.jpg");
-      }
-      &.climate {
-        background-image: url("../images/lara-skinner-blue-mobile.jpg");
-      }
-    }
-
     .microsite-schedule {
       padding-left: 34px;
       padding-right: 34px;
@@ -462,83 +421,8 @@ body.microsite {
           img {
             width: 250px;
             height: 98px;
-          }                  
-        }
-      }
-    }
-
-    .microsite-social-media {
-      background: $orange;
-      background-image: url("../images/orange-circle-grid.gif");
-      background-attachment: fixed;
-      background-position: center center;
-      padding: 55px 21px;
-      text-align: center;
-      &.green {
-        background: $basic-page-color;
-        background-image: url("../images/green-circle-grid.gif");
-        background-attachment: fixed;
-        background-position: center center;
-        h3 {
-          &::after {
-            border-bottom: 2px solid $basic-page-color;
           }
         }
-        ul.social {
-          li {
-            background-color: lighten($basic-page-color, 21%);
-            a {
-              &:before {
-                color: darken($basic-page-color, 10%);
-              }
-            }
-          }
-        }
-      }
-      h3 {
-        @extend %centered-title;
-        // @include adjust-leading-to(1);
-        @include trailer(1);
-        color: white;
-        margin-bottom: 34px;
-        padding-top: 0;
-        &::after {
-          border-bottom: 2px solid $orange;
-          left: 40%;
-          width: 20%;
-          height: 3px;
-        }
-      }
-      ul.social {
-        margin-bottom: 21px;
-        li {
-          background-color: lighten($orange, 21%);
-          border-radius: 50%;
-          font-size: 21px;
-          width: 68px;
-          height: 68px;
-          padding-left: 0;
-          margin-left: 8px;
-          a {
-            width: 68px;
-            height: 68px;
-            &:before {
-              color: $orange;
-              line-height: 68px;
-            }
-            &.follow-linkedin {
-              padding-left: 8px;
-            }
-          }
-          &:nth-of-type(1) {
-            margin-left: 0;
-          }
-        }
-      }
-      p {
-        color: white;
-        font-size: 27px;
-        line-height: 1.3;
       }
     }
 
@@ -571,52 +455,12 @@ body.microsite {
     }
   }
 
-  #content-bottom[data-eq-state="320"] {
-    .microsite-social-media {
-      h3 {
-        @include adjust-leading-to(1);
-      }
-      ul.social {
-        padding-right: 34px;
-        padding-left: 34px;
-        li {
-          width: 100%;
-          border-radius: 34px;
-          display: block;
-          margin-left: 0;
-          margin-bottom: 21px;
-          a {
-            margin-right: auto;
-            margin-left: auto;
-          }
-        }
-      }
-    }
-  }
-
   #content-bottom[data-eq-state="550"] {
-    .modal { 
+    .modal {
       display: none; //don't display on page
     }
     .show-hide-bio {
       display: none;
-    }
-    .microsite-video {
-      padding-left: 21px;
-      padding-right: 21px;
-      @include padding-trailer(2);
-      .description {
-        p.introduction {
-          padding-left: 21px;
-          padding-right: 21px;
-        }
-      }
-      .media {
-        iframe {
-          width: 100%;
-          height: 360px;
-        }
-      }
     }
     .microsite-speakers {
       @include padding-trailer(2);
@@ -646,31 +490,18 @@ body.microsite {
           img {
             width: 305px;
             height: 120px;
-          }                  
+          }
         }
       }
     }
   }
 
   #content-bottom[data-eq-state="768"] {
-    .modal { 
+    .modal {
       display: none; //don't display on page
     }
     .show-hide-bio {
       display: none;
-    }
-    .microsite-video {
-      @include padding-trailer(2);
-      .description {
-        p.introduction {
-          padding-left: 0;
-          padding-right: 21px;
-          display: inline-block;
-          vertical-align: middle;
-          line-height: 1.5;
-          text-align: left;
-        }
-      }
     }
     .microsite-featured-speakers {
       padding-left: 34px;
@@ -709,27 +540,7 @@ body.microsite {
         }
       }
     }
-    .microsite-register, .microsite-get-your-ticket {
-      background-attachment: fixed;
-      background-size: cover;
-      padding: 89px 21px;
-    }
-    .microsite-register {
-      &.sports {
-        background-image: url("../images/Dodger-crowd-orange.jpg");
-      }
-      &.climate {
-        background-image: url("../images/wind-turbine-purple.jpg");
-      }
-    }
-    .microsite-get-your-ticket {
-      &.sports {
-        background-image: url("../images/Blackhawks-crowd-purple.jpg");
-      }
-      &.climate {
-        background-image: url("../images/lara-skinner-blue.jpg");
-      }
-    }
+
     .microsite-schedule-table {
       padding-left: 89px;
       padding-right: 89px;
@@ -774,67 +585,6 @@ body.microsite {
           img {
             width: 305px;
             height: 120px;
-          }                
-        }
-      }
-    }
-    .microsite-social-media {
-      padding: 55px 34px;
-      ul.social {
-        li {
-          font-size: 27px;
-          width: 89px;
-          height: 89px;
-          margin-left: 13px;
-          a {
-            width: 89px;
-            height: 89px;
-            &:before {
-              line-height: 89px;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  @include context('.container','.container[data-eq-state="regular-nav"]') {
-    #content-bottom[data-eq-state="768"] {
-      .microsite-video {
-        padding-left: 89px;
-        padding-right: 89px;
-        .description {
-          @include grid-span(6,1);
-          line-height: 200px;
-          p.introduction {
-            padding-right: 55px;
-          }
-        }
-        .media {
-          @include grid-span(6,7);
-          iframe {
-            width: 400px;
-            height: 225px;
-          }
-        }
-      }
-    }
-  }
-
-  @include context('.container','.container[data-eq-state="mobile-nav"]') {
-    #content-bottom[data-eq-state="768"] {
-      .microsite-video {
-        padding-left: 55px;
-        padding-right: 55px;
-        .description {
-          width: 50%;
-          line-height: 180px;
-        }
-        .media {
-          width: 50%;
-          iframe {
-            width: 360px;
-            height: 203px;
           }
         }
       }
@@ -842,35 +592,11 @@ body.microsite {
   }
 
   #content-bottom[data-eq-state="widescreen"] {
-    .modal { 
+    .modal {
       display: none; //don't display on page
     }
     .show-hide-bio {
       display: none;
-    }
-    .microsite-video {
-      padding-left: 89px;
-      padding-right: 89px;
-      @include padding-trailer(3);
-      .description {
-        @include grid-span(6,1);
-        line-height: 280px;
-        p.introduction {
-          padding-left: 21px;
-          padding-right: 21px;
-          display: inline-block;
-          vertical-align: middle;
-          line-height: 1.5;
-          text-align: left;
-        }
-      }
-      .media {
-        @include grid-span(6,7);
-        iframe {
-          width: 560px;
-          height: 315px;
-        }
-      }
     }
     .microsite-featured-speakers {
       padding-left: 89px;
@@ -914,30 +640,6 @@ body.microsite {
             font-size: 14px;
           }
         }
-      }
-    }
-    .microsite-register, .microsite-get-your-ticket {
-      background-attachment: fixed;
-      background-size: cover;
-      padding: 144px 0;
-      p {
-        font-size: 34px;
-      }
-    }
-    .microsite-register {
-      &.sports {
-        background-image: url("../images/Dodger-crowd-orange.jpg");
-      }
-      &.climate {
-        background-image: url("../images/wind-turbine-purple.jpg");
-      }
-    }
-    .microsite-get-your-ticket {
-      &.sports {
-        background-image: url("../images/Blackhawks-crowd-purple.jpg");
-      }
-      &.climate {
-        background-image: url("../images/lara-skinner-blue.jpg");
       }
     }
     .microsite-schedule {
@@ -1012,24 +714,6 @@ body.microsite {
         li.rect {
           img {
             width: 382px;
-          }                  
-        }
-      }
-    }
-    .microsite-social-media {
-      padding: 89px 0;
-      ul.social {
-        li {
-          font-size: 27px;
-          width: 89px;
-          height: 89px;
-          margin-left: 21px;
-          a {
-            width: 89px;
-            height: 89px;
-            &:before {
-              line-height: 89px;
-            }
           }
         }
       }
@@ -1073,10 +757,6 @@ body.microsite {
       }
     }
   }
-  .introduction {
-    @include adjust-font-size-to(27px);
-    @include adjust-leading-to(1);
-  }
 }
 
 #main[data-eq-state="widescreen"] {
@@ -1108,10 +788,6 @@ body.microsite {
         }
       }
     }
-  }
-  .introduction {
-    @include adjust-font-size-to(27px);
-    @include adjust-leading-to(1);
   }
 }
 

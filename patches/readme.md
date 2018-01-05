@@ -74,3 +74,8 @@ Example:
   * Fixes issue with resetting default values on dependent fields
   * https://www.drupal.org/node/2781493
   * Patch not pushed to D.O., as root cause and fix not yet found
+
+* mailchimp-api-php
+  * Adds support and tests for removeSegmentMember
+  * https://github.com/thinkshout/mailchimp-api-php/pull/67
+

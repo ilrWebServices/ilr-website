@@ -1,0 +1,110 @@
+<?php
+
+// Note that additional payment form processing also takes
+// place in the ilr_alumni_events and forensics_payments
+// modules
+
+/**
+ * Implements hook_freedompay_checkout_payload_alter().
+ */
+function ilr_payment_forms_freedompay_checkout_payload_alter(&$payload, $order, $form_id) {
+  if ($form_id == 'sports_leadership_camp_payment') {
+    $payload['PurchaseItems'] = _ilr_payment_forms_get_purchase_items();
+    $payload['BillingAddress'] = _ilr_payment_forms_get_billing_address();
+    $payload['AllowInternationalAddresses'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_freedompay_transaction_total_alter().
+ */
+function ilr_payment_forms_freedompay_transaction_total_alter(&$transaction_total, $order, $form_id) {
+  if ($form_id == 'sports_leadership_camp_payment') {
+    $transaction_total = 0;
+    if ($wrapper = $order->formWrapper()) {
+      if (isset($wrapper->field_total_cost)) {
+        $transaction_total = $wrapper->field_total_cost->value();
+      }
+    }
+    return $transaction_total;
+  }
+}
+
+/**
+ * Implements hook_freedompay_invoice_prefix().
+ */
+function ilr_payment_forms_freedompay_invoice_prefix($order) {
+  if ($order->bundle == 'sports_leadership_camp_payment') {
+    return 'camp';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter
+ * Adds form validation callback for forensics payment forms
+ * Sets the default value to the US
+ */
+function ilr_payment_forms_form_sports_leadership_camp_payment_entityform_edit_form_alter(&$form, &$form_state) {
+  $form['#validate'][] = '_sports_leadership_camp_payment_form_validate';
+}
+
+function _sports_leadership_camp_payment_form_validate(&$form, &$form_state) {
+  $wrapper = entity_metadata_wrapper('entityform', $form_state['entityform']);
+  $amount = $wrapper->field_total_cost->value();
+  if (strpos($amount, '$') === 0) {
+    // Remove the '$'
+    $amount = ltrim($amount,'$');
+    $form['field_total_cost']['#parents'] = array('field_total_cost');
+    form_set_value($form['field_total_cost'], array(LANGUAGE_NONE => array(0 => array('value' => $amount))), $form_state);
+  }
+
+  if (!_ilr_payment_forms_amount_is_valid($amount)) {
+    form_set_error('field_total_cost', 'Please enter an amount.');
+  }
+}
+
+/**
+ * Confirm that user entered a valid amount to pay: numeric and greater than 0
+ */
+function _ilr_payment_forms_amount_is_valid($amount) {
+  return is_numeric($amount) && $amount > 0;
+}
+
+function _ilr_payment_forms_get_billing_address() {
+  $wrapper = _ilr_payment_forms_get_entityform_wrapper();
+  return array(
+    "Street1" => $wrapper->field_address_line_1->value(),
+    "Street2" => $wrapper->field_address_line_2->value(),
+    "City" => $wrapper->field_city->value(),
+    "State" => _freedompay_entityform_get_state_abbreviation($wrapper->field_state_as_text->value()),
+    "PostalCode" => $wrapper->field_zip_code->value(),
+    'CountryCode' => '', // Allow them to change it on the HPP
+    'Name' => $wrapper->field_first_name->value() . ' ' . $wrapper->field_last_name->value(),
+  );
+}
+
+/**
+ * Wrapper function for freedompay_entityform_wrapper().
+ */
+function _ilr_payment_forms_get_entityform_wrapper() {
+  if ($order = freedompay_order()) {
+    return $order->formWrapper();
+  }
+  return freedompay_entityform_wrapper();
+}
+
+/**
+ * @todo
+ * remove this example function once alunni events tickets implements
+ */
+function _ilr_payment_forms_get_purchase_items() {
+  $wrapper = _ilr_payment_forms_get_entityform_wrapper();
+  return array(
+    array(
+      "Price" => $wrapper->field_total_cost->value(),
+      "DisplayOrder" => 1,
+      "Description" => "Sports Leadership Camp Registration",
+      "Quantity" => 1,
+    ),
+  );
+}

@@ -110,6 +110,33 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'media',
   );
 
+  // Exported permission: 'access redhen'.
+  $permissions['access redhen'] = array(
+    'name' => 'access redhen',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen',
+  );
+
+  // Exported permission: 'access redhen contacts'.
+  $permissions['access redhen contacts'] = array(
+    'name' => 'access redhen contacts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen_contact',
+  );
+
+  // Exported permission: 'access redhen notes'.
+  $permissions['access redhen notes'] = array(
+    'name' => 'access redhen notes',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen_note',
+  );
+
   // Exported permission: 'access site in maintenance mode'.
   $permissions['access site in maintenance mode'] = array(
     'name' => 'access site in maintenance mode',
@@ -364,6 +391,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'administer paragraphs bundles'.
+  $permissions['administer paragraphs bundles'] = array(
+    'name' => 'administer paragraphs bundles',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'paragraphs',
+  );
+
   // Exported permission: 'administer pathauto'.
   $permissions['administer pathauto'] = array(
     'name' => 'administer pathauto',
@@ -380,6 +416,42 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: 'administer redhen'.
+  $permissions['administer redhen'] = array(
+    'name' => 'administer redhen',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen',
+  );
+
+  // Exported permission: 'administer redhen contacts'.
+  $permissions['administer redhen contacts'] = array(
+    'name' => 'administer redhen contacts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen_contact',
+  );
+
+  // Exported permission: 'administer redhen notes'.
+  $permissions['administer redhen notes'] = array(
+    'name' => 'administer redhen notes',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen_note',
+  );
+
+  // Exported permission: 'administer redhen_contact types'.
+  $permissions['administer redhen_contact types'] = array(
+    'name' => 'administer redhen_contact types',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen_contact',
   );
 
   // Exported permission: 'administer redirects'.
@@ -666,6 +738,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'create paragraph content action_callout'.
+  $permissions['create paragraph content action_callout'] = array(
+    'name' => 'create paragraph content action_callout',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'create paragraph content compare_three'.
   $permissions['create paragraph content compare_three'] = array(
     'name' => 'create paragraph content compare_three',
@@ -723,6 +804,13 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
     ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'create paragraph content social_callout'.
+  $permissions['create paragraph content social_callout'] = array(
+    'name' => 'create paragraph content social_callout',
+    'roles' => array(),
     'module' => 'paragraphs_bundle_permissions',
   );
 
@@ -1365,6 +1453,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete paragraph content action_callout'.
+  $permissions['delete paragraph content action_callout'] = array(
+    'name' => 'delete paragraph content action_callout',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'delete paragraph content compare_three'.
   $permissions['delete paragraph content compare_three'] = array(
     'name' => 'delete paragraph content compare_three',
@@ -1425,6 +1522,13 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'paragraphs_bundle_permissions',
   );
 
+  // Exported permission: 'delete paragraph content social_callout'.
+  $permissions['delete paragraph content social_callout'] = array(
+    'name' => 'delete paragraph content social_callout',
+    'roles' => array(),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'delete paragraph content sponsor_message'.
   $permissions['delete paragraph content sponsor_message'] = array(
     'name' => 'delete paragraph content sponsor_message',
@@ -1443,6 +1547,15 @@ function ilr_permissions_user_default_permissions() {
       'contributor' => 'contributor',
     ),
     'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'delete redhen contact revisions'.
+  $permissions['delete redhen contact revisions'] = array(
+    'name' => 'delete redhen contact revisions',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen_contact',
   );
 
   // Exported permission: 'delete revisions'.
@@ -1958,6 +2071,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit own redhen contact'.
+  $permissions['edit own redhen contact'] = array(
+    'name' => 'edit own redhen contact',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen_contact',
+  );
+
   // Exported permission: 'edit own reflection content'.
   $permissions['edit own reflection content'] = array(
     'name' => 'edit own reflection content',
@@ -2069,6 +2191,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit redhen contact revisions'.
+  $permissions['edit redhen contact revisions'] = array(
+    'name' => 'edit redhen contact revisions',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen_contact',
+  );
+
   // Exported permission: 'edit terms in areas_of_expertise'.
   $permissions['edit terms in areas_of_expertise'] = array(
     'name' => 'edit terms in areas_of_expertise',
@@ -2131,6 +2262,24 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'features',
+  );
+
+  // Exported permission: 'manage redhen contacts'.
+  $permissions['manage redhen contacts'] = array(
+    'name' => 'manage redhen contacts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen_contact',
+  );
+
+  // Exported permission: 'manage redhen notes'.
+  $permissions['manage redhen notes'] = array(
+    'name' => 'manage redhen notes',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen_note',
   );
 
   // Exported permission: 'menu view unpublished'.
@@ -2509,6 +2658,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'update paragraph content action_callout'.
+  $permissions['update paragraph content action_callout'] = array(
+    'name' => 'update paragraph content action_callout',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'update paragraph content compare_three'.
   $permissions['update paragraph content compare_three'] = array(
     'name' => 'update paragraph content compare_three',
@@ -2566,6 +2724,13 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
     ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'update paragraph content social_callout'.
+  $permissions['update paragraph content social_callout'] = array(
+    'name' => 'update paragraph content social_callout',
+    'roles' => array(),
     'module' => 'paragraphs_bundle_permissions',
   );
 
@@ -2901,6 +3066,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: 'view own redhen contact'.
+  $permissions['view own redhen contact'] = array(
+    'name' => 'view own redhen contact',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen_contact',
+  );
+
   // Exported permission: 'view own unpublished content'.
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
@@ -2921,6 +3095,17 @@ function ilr_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'ilr_sub_pages',
+  );
+
+  // Exported permission: 'view paragraph content action_callout'.
+  $permissions['view paragraph content action_callout'] = array(
+    'name' => 'view paragraph content action_callout',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
   );
 
   // Exported permission: 'view paragraph content compare_three'.
@@ -2993,6 +3178,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'paragraphs_bundle_permissions',
   );
 
+  // Exported permission: 'view paragraph content social_callout'.
+  $permissions['view paragraph content social_callout'] = array(
+    'name' => 'view paragraph content social_callout',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'view paragraph content sponsor_message'.
   $permissions['view paragraph content sponsor_message'] = array(
     'name' => 'view paragraph content sponsor_message',
@@ -3025,6 +3220,15 @@ function ilr_permissions_user_default_permissions() {
       'form admin' => 'form admin',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: 'view redhen contact revisions'.
+  $permissions['view redhen contact revisions'] = array(
+    'name' => 'view redhen contact revisions',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'redhen_contact',
   );
 
   // Exported permission: 'view revisions'.

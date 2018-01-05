@@ -24,6 +24,14 @@
         background: none;
       }
     }
+    ul.bulleted-list {
+      @include leader(1);
+      padding-left: .5em;
+      li {
+        padding-left: 1em;
+        background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
+      }
+    }
   }
 }
 

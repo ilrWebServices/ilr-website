@@ -59,7 +59,7 @@ function ilr_mega_menu_block_info($delta = '') {
 function ilr_mega_menu_block_view($delta = '') {
   $block = array();
   $block['content'] = '<div class="menu-block-ilr-primary-menu"><ul class="menu">';
-  $menu_name = (module_exists('ilr_sub_sites')) ? _ilr_sub_sites_get_current_menu_name() : 'main-menu';
+  $menu_name = (module_exists('ilr_sub_sites')) ? _ilr_sub_sites_get_menu_name() : 'main-menu';
   $mega_menu_items = _ilr_mega_menu_get_top_level_items($menu_name);
   foreach ($mega_menu_items as $key => $info) {
     $url = $info['path'];

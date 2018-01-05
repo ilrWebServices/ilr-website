@@ -4,9 +4,10 @@ gem 'guard-compass'
 gem 'compass'
 gem 'modular-scale', ">= 2.0.0.alpha5"
 gem 'guard-livereload'
-gem 'singularitygs', '~> 1.4'
+gem 'singularitygs', '~> 1.8'
 gem 'singularity-extras', '~> 1.0'
 gem 'autoprefixer-rails'
+gem 'sass-globbing'
 
 # For Windows machines, see https://github.com/guard/listen#on-windows
 require 'rbconfig'

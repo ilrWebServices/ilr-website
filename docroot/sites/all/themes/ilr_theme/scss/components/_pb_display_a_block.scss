@@ -2,8 +2,6 @@
 #main {
   #content {
     .paragraphs-item-display-a-block {
-      @include padding-leader(1.5);
-      @include padding-trailer(1.5);
       .event-block, .tagged-content {
         @include padding-leader(1);
         @include padding-trailer(1);
@@ -23,8 +21,10 @@
   #content {
     .entity-paragraphs-item {
       &.paragraphs-item-display-a-block {
-        @include padding-leader(1);
-        @include padding-trailer(1);
+        .event-block {
+          @include padding-leader(2);
+          @include padding-trailer(1.5);
+        }
         article.node-reflection {
           @extend %one-column;
         }
@@ -40,8 +40,10 @@
     }
     .entity-paragraphs-item {
       &.paragraphs-item-display-a-block {
-        @include padding-leader(1.5);
-        @include padding-trailer(1.5);
+        .event-block {
+          @include padding-leader(2);
+          @include padding-trailer(2);
+        }
       }
     }
   }
@@ -54,10 +56,9 @@
     }
     .entity-paragraphs-item {
       &.paragraphs-item-display-a-block {
-        @include padding-leader(1.5);
-        @include padding-trailer(1.5);
         .event-block {
-          @include padding-leader(1.5);
+          @include padding-leader(3);
+          @include padding-trailer(2.5);
         }
         article.localist-event, article.node-promo {
           @extend %three-column-masonry;
