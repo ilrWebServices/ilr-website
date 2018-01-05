@@ -19,14 +19,6 @@
   }
 
   &__message {
-    p {
-      @include adjust-font-size-to(21px, 1.2);
-
-      @include large {
-        @include adjust-font-size-to(24px, 1.4);
-      }
-    }
-
     @include medium {
       @include grid-span (6,1);
       padding-right: 3em;
