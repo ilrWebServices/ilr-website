@@ -1,0 +1,82 @@
+.slc-banner {
+	@include add-grid(12);
+	background: none;
+	overflow: auto;
+
+	@include large {
+		background: url(../images/sports-camp-background-1280.jpg) 0 0;
+	}
+
+	@include xl {
+		background: url(../images/sports-camp-background-1600.jpg) 0 0;
+	}
+	
+	.slc-banner__heading {
+		@include grid-span (10,2);
+		h2, h3 {
+			@include grid-span (9,1);
+			font-family: $font;
+			color: white;
+		}
+		h2 {
+			@include adjust-font-size-to(89px);
+			@include adjust-leading-to(1);
+			@include leader(0);
+			@include trailer(0);
+			font-weight: 600;
+		}
+		h3 {
+			@include adjust-font-size-to(55px);
+			@include adjust-leading-to(.2);
+			clear: both;
+			em {
+				font-style: normal;
+				font-weight: 600;
+			}
+		}
+		p {
+			@include grid-span (3,10);
+			@include adjust-font-size-to(27px);
+			@include adjust-leading-to(1);
+			color: white;
+			text-align: center;
+		}
+	}
+	.slc-banner__item {
+		@include grid-span (10,2);
+		clear: both;
+		.slc-banner__logos {
+			@include grid-span (9,1);
+			ul {
+				margin: 0;
+				padding: 0;
+			}
+			li {
+				background: none;
+				display: inline;
+				padding-left: 0;
+				padding-right: 13px;
+			}
+			img {
+				width: 50px;
+			}
+
+		}
+		.slc-banner__link {
+			@include grid-span (3,10);
+			text-align: center;
+			.button {
+				@extend %button;
+				background-color: $orange-light;
+				box-shadow: 1px 2px 4px #4a4a4a;
+				display: inline-block;
+			}
+		}
+	}
+	.slc-banner__image {
+		display: none;
+		img {
+
+		}
+	}
+}
