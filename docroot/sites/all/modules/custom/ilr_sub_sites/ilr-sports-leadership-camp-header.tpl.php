@@ -18,7 +18,7 @@
       </ul>
     </div>
     <div class="slc-banner__link">
-      <a class="button" href="">Apply Now!</a>
+      <a class="button" href="/sports-leadership-camp/apply">Apply Now!</a>
     </div>
   </div>
   <div class="slc-banner__media">
