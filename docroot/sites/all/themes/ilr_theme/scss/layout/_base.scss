@@ -51,10 +51,6 @@
 
   #content {
     @include trailer(1);
-    .ilr-video-wrapper {
-      clear: both;
-      @include trailer(2);
-    }
   }
 
   #content, #sidebar-second {

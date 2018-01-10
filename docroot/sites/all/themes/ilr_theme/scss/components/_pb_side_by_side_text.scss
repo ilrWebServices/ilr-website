@@ -1,7 +1,7 @@
 #main {
   .paragraphs-item-side-by-side-text {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
+    // @include padding-leader(1.5);
+    // @include padding-trailer(1.5);
     .content {
       @include grid-span (10,2);
     }
@@ -16,6 +16,10 @@
     }
     p {
       @include trailer(.5);
+
+      img {
+        @include trailer(-.5);
+      }
     }
     ul {
       padding-left: 0;

@@ -7,8 +7,8 @@
 <div class="slc-banner">
   <div class="slc-banner__content">
     <div class="slc-banner__heading">
-      <h2 class="slc-banner__brand-primary">ILR</h2>
-      <h1 class="slc-banner__brand-secondary"><a href="/sports-leadership-camp"><span>Sports Leadership</span> Camp</a></h1>
+      <h2 class="slc-banner__brand">Cornell ILR</h2>
+      <h1 class="slc-banner__brand"><a href="/sports-leadership-camp"><span>Sports Leadership</span> Camp</a></h1>
     </div>
     <p class="slc-banner__dates">July 29 - August 4, 2018</p>
     <div class="slc-banner__logos">
