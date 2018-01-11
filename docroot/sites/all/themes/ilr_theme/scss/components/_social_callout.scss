@@ -36,10 +36,16 @@
 
   .social-callout__item {
     background-color: rgba(255, 255, 255, 0.4);
-    @include roundLink(60px);
-    font-size: 21px;
+    @include roundLink(46px);
+    font-size: 18px;
     padding-left: 0;
-    margin-left: 8px;
+    margin-left: 5px;
+
+    @include medium {
+      @include roundLink(60px);
+      font-size: 21px;
+      margin-left: 8px;
+    }
 
     @include large {
       @include roundLink(89px);
