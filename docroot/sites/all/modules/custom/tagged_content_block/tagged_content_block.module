@@ -215,7 +215,8 @@ function _tagged_content_block_get_promo_link_from_node($node) {
       $url = '/' . drupal_get_path_alias("node/$nid");
     } // External links
     else {
-      $wrapped_url = $wrapper->field_website_url->value();
+      $wrapped_urls = $wrapper->field_website_url->value();
+      $wrapped_url = reset($wrapped_urls);
       $url = $wrapped_url['url'];
     }
   }
