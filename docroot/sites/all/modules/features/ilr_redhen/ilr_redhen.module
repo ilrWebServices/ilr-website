@@ -47,10 +47,11 @@ function ilr_redhen_entityform_insert($entityform) {
     $contact_wrapper = ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper);
     ilr_redhen_track_contact_form($contact_wrapper, $entityform_wrapper->getIdentifier());
     $contact_wrapper->save();
-    // Add them to the appropriate segment
+    // The automation action in MC is set to remove them from the previous segment, if applicable
     $segment = ilr_redhen_get_segment_name($entityform->type);
     if (!empty($segment)) {
       ilr_redhen_add_user_to_mailchimp_segment($email, $segment);
+      ilr_redhen_trigger_automation($email, $segment);
     }
   }
 }
@@ -175,4 +176,33 @@ function ilr_redhen_get_segment_name($entityform_type) {
 
 function ilr_redhen_add_user_to_mailchimp_segment($email, $segment_name) {
   ilr_mailchimp_add_user_to_mailchimp_segment(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID, $email, $segment_name);
+}
+
+function ilr_redhen_trigger_automation($email, $segment) {
+  $mc_auto = mailchimp_get_api_object('MailchimpAutomations');
+  $details = ilr_redhen_get_automation_details($segment);
+
+  if (!empty($details)) {
+    try {
+      $result = $mc_auto->addWorkflowEmailSubscriber($details['workflow_id'], $details['workflow_email_id'], $email);
+    }
+    catch (Exception $e) {
+      // During testing, exceptions were getting thrown
+      // if the user has already received this particular email
+    }
+  }
+}
+
+function ilr_redhen_get_automation_details($segment) {
+  switch ($segment) {
+    case 'applied':
+      $details = [
+        'workflow_id' => '64bcaa9e4e',
+        'workflow_email_id' => '02e9336077',
+      ];
+      break;
+    default:
+      $details = [];
+  }
+  return $details;
 }
