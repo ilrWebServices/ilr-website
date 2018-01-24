@@ -258,6 +258,15 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
     case 'ilr_alumni_association_event_reg_entityform_edit_form':
       unset ($form['field_tickets_for_aa_members'][LANGUAGE_NONE]['#options'][0]);
       break;
+
+    // Add Javascript to manage conditional display of options
+    // in conference center reservation form
+    case 'ilr_conf_center_reservation_entityform_edit_form':
+      drupal_add_js(drupal_get_path('module', 'ilr_forms_public') . '/js/ilr_conf_center_reservation.js', array(
+        'type' => 'file',
+        'scope' => 'footer'
+      ));
+      break;
   }
 }
 
@@ -449,6 +458,25 @@ function _process_collective_bargaining_videos(&$entityform) {
   user_cookie_save(array ('cbvideoinfo' => 'yes'));
   _forms_process_default($entityform);
   _forms_collective_bargaining_videos_redirect();
+}
+
+/**
+ * Process Conference Center reservation request form
+ */
+function _process_ilr_conf_center_reservation(&$entityform) {
+  // Regular email
+  $admin_email = 'ilrconferencecenter@cornell.edu';
+  $conf_center_contact_info = 'Ithaca Conference Center <br>'
+    . 'ilrconferencecenter@cornell.edu <br>'
+    . '607.255.4401';
+  if ($entityform->field_nyc_or_ithaca['und'][0]['value'] == 'nyc') {
+    $admin_email = 'nycconferencectr@cornell.edu';
+    $conf_center_contact_info = 'NYC Conference Center <br>'
+      . 'nycconferencectr@cornell.edu <br>'
+      . '212.340.2834';
+  }
+  //_forms_send_emails($entityform, $admin_email);
+  _forms_send_emails($entityform, $admin_email, '', '', array('conf_center_contact_info' => $conf_center_contact_info));
 }
 
 /**
@@ -786,6 +814,33 @@ function _forms_year_as_list_text_options2($field, $instance = NULL, $entity_typ
       break;
   }
   return $options;
+}
+
+/**
+ * Function to generate the list of available rooms in the Ithaca and NYC conference centers
+ */
+function _forms_conf_center_room_pref_options() {
+  return array(
+    'room_225_ithaca' => 'Room 225',
+    'room_229_ithaca' => 'Room 229',
+    'room_325_ithaca' => 'Room 325',
+    'room_326_ithaca' => 'Room 326',
+    'room_329_ithaca' => 'Room 329',
+    'room_423_ithaca' => 'Room 423',
+    'room_425_ithaca' => 'Room 425',
+    'room_429_ithaca' => 'Room 429',
+    'room_525_ithaca' => 'Room 525',
+    'classroom_a_nyc' => 'Classroom A',
+    'classroom_b_nyc' => 'Classroom B',
+    'classroom_c_nyc' => 'Classroom C',
+    'classroom_d_nyc' => 'Classroom D',
+    'classroom_e_nyc' => 'Classroom E',
+    'meeting_room_1_nyc' => 'Meeting Room 1',
+    'meeting_room_2_nyc' => 'Meeting Room 2',
+    'dining_area_nyc' => 'Dining Area',
+    'any_ithaca_or_nyc' => 'Any space in the Conference Center',
+    'other_ithaca_or_nyc' => 'Other',
+  );
 }
 
 /**
