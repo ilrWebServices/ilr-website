@@ -475,7 +475,6 @@ function _process_ilr_conf_center_reservation(&$entityform) {
       . 'nycconferencectr@cornell.edu <br>'
       . '212.340.2834';
   }
-  //_forms_send_emails($entityform, $admin_email);
   _forms_send_emails($entityform, $admin_email, '', '', array('conf_center_contact_info' => $conf_center_contact_info));
 }
 
