@@ -183,6 +183,61 @@ function ilr_forms_public_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['ilr_conf_center_reservation'] = entity_import('entityform_type', '{
+    "type" : "ilr_conf_center_reservation",
+    "label" : "ILR conference center reservation ",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "Your reservation request has been submitted",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for your interest in reserving space at the \\u003Cstrong\\u003EILR Conference Center\\u003C\\/strong\\u003E. Please check your email for a confirmation message and contact information.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u003Cb\\u003EPlease know your submission is not a confirmation of your request.\\u003C\\/b\\u003E You will receive a more detailed response from us within two business days.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 0,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : {
+        "value" : "\\u003Cp\\u003EIf you are interested in reserving space in the ILR Conference Center in Ithaca or NYC, please submit this form. A member of the Conference Center team will contact you with availability and information related to your request within two business days.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u003Cstrong\\u003EPLEASE NOTE: Submission of this form is only an initial inquiry and does not imply a confirmation of your reservation request.\\u003C\\/strong\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u0026nbsp;\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0,
+      "form_submission_ilr_recipient" : "ilrconferencecenter@cornell.edu",
+      "add_payment_processing" : 0,
+      "hpp" : ""
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['join_hcd_mail_list'] = entity_import('entityform_type', '{
     "type" : "join_hcd_mail_list",
     "label" : "Join the HCD Mailing List",
