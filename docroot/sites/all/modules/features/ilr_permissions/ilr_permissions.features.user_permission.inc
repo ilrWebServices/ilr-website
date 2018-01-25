@@ -115,6 +115,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'access redhen',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'redhen',
   );
@@ -124,6 +125,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'access redhen contacts',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'redhen_contact',
   );
@@ -810,7 +812,9 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'create paragraph content social_callout'.
   $permissions['create paragraph content social_callout'] = array(
     'name' => 'create paragraph content social_callout',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'paragraphs_bundle_permissions',
   );
 
@@ -1525,7 +1529,9 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'delete paragraph content social_callout'.
   $permissions['delete paragraph content social_callout'] = array(
     'name' => 'delete paragraph content social_callout',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'paragraphs_bundle_permissions',
   );
 
@@ -2365,9 +2371,7 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'override channel_page microsite option'.
   $permissions['override channel_page microsite option'] = array(
     'name' => 'override channel_page microsite option',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'custom_publishing_options',
   );
 
@@ -2730,7 +2734,9 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'update paragraph content social_callout'.
   $permissions['update paragraph content social_callout'] = array(
     'name' => 'update paragraph content social_callout',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'paragraphs_bundle_permissions',
   );
 
@@ -3101,7 +3107,6 @@ function ilr_permissions_user_default_permissions() {
   $permissions['view paragraph content action_callout'] = array(
     'name' => 'view paragraph content action_callout',
     'roles' => array(
-      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
@@ -3182,6 +3187,7 @@ function ilr_permissions_user_default_permissions() {
   $permissions['view paragraph content social_callout'] = array(
     'name' => 'view paragraph content social_callout',
     'roles' => array(
+      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
