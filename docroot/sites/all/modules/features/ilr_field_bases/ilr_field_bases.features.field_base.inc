@@ -1698,6 +1698,86 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_conf_center_room_pref'.
+  $field_bases['field_conf_center_room_pref'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_conf_center_room_pref',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(),
+      'allowed_values_function' => '_ilr_forms_public_conf_center_room_pref_options',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_conf_cntr_catering_request'.
+  $field_bases['field_conf_cntr_catering_request'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_conf_cntr_catering_request',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'No catering required' => 'No catering required',
+        'Unsure at this time' => 'Unsure at this time',
+        'Breakfast' => 'Breakfast',
+        'AM Break' => 'AM Break',
+        'Lunch' => 'Lunch',
+        'PM Break' => 'PM Break',
+        'Dinner' => 'Dinner',
+        'Reception' => 'Reception',
+        'Special Request' => 'Special Request',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_conf_cntr_payment_type'.
+  $field_bases['field_conf_cntr_payment_type'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_conf_cntr_payment_type',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Credit Card' => 'Credit card',
+        'Check' => 'Check',
+        'Departmental Transfer' => 'Cornell departmental transfer',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_conference_name'.
   $field_bases['field_conference_name'] = array(
     'active' => 1,
@@ -6002,6 +6082,31 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_nyc_or_ithaca'.
+  $field_bases['field_nyc_or_ithaca'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_nyc_or_ithaca',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'ithaca' => 'Ithaca, NY',
+        'nyc' => 'New York, NY',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_office_hours'.
   $field_bases['field_office_hours'] = array(
     'active' => 1,
@@ -7437,6 +7542,39 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_requested_room_set_up'.
+  $field_bases['field_requested_room_set_up'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_requested_room_set_up',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Clusters of 4' => 'Clusters of 4',
+        'Clusters of 5' => 'Clusters of 5',
+        'Clusters of 6' => 'Clusters of 6',
+        'Boardroom' => 'Boardroom',
+        'Square' => 'Square',
+        'Theatre' => 'Theatre',
+        'Classroom' => 'Classroom',
+        'U Shape' => 'U Shape',
+        'Reception' => 'Reception',
+        'Special' => 'Special',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_response_checkbox'.
