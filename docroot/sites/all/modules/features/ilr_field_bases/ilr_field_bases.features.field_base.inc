@@ -1714,7 +1714,7 @@ function ilr_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(),
-      'allowed_values_function' => '_forms_conf_center_room_pref_options',
+      'allowed_values_function' => '_ilr_forms_public_conf_center_room_pref_options',
     ),
     'translatable' => 0,
     'type' => 'list_text',

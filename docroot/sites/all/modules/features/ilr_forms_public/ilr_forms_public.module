@@ -71,3 +71,30 @@ function _ilr_forms_public_check_for_custom_labels(&$block, $nid) {
     }
   }
 }
+
+/**
+ * Function to generate the list of available rooms in the Ithaca and NYC conference centers
+ */
+function _ilr_forms_public_conf_center_room_pref_options() {
+  return array(
+    'room_225_ithaca' => 'Room 225',
+    'room_229_ithaca' => 'Room 229',
+    'room_325_ithaca' => 'Room 325',
+    'room_326_ithaca' => 'Room 326',
+    'room_329_ithaca' => 'Room 329',
+    'room_423_ithaca' => 'Room 423',
+    'room_425_ithaca' => 'Room 425',
+    'room_429_ithaca' => 'Room 429',
+    'room_525_ithaca' => 'Room 525',
+    'classroom_a_nyc' => 'Classroom A',
+    'classroom_b_nyc' => 'Classroom B',
+    'classroom_c_nyc' => 'Classroom C',
+    'classroom_d_nyc' => 'Classroom D',
+    'classroom_e_nyc' => 'Classroom E',
+    'meeting_room_1_nyc' => 'Meeting Room 1',
+    'meeting_room_2_nyc' => 'Meeting Room 2',
+    'dining_area_nyc' => 'Dining Area',
+    'any_ithaca_or_nyc' => 'Any space in the Conference Center',
+    'other_ithaca_or_nyc' => 'Other',
+  );
+}
