@@ -187,14 +187,21 @@ function ilr_redhen_trigger_automation($email, $segment) {
       $result = $mc_auto->addWorkflowEmailSubscriber($details['workflow_id'], $details['workflow_email_id'], $email);
     }
     catch (Exception $e) {
-      // During testing, exceptions were getting thrown
+      // You can only send a given automation once to an email address
       // if the user has already received this particular email
+      watchdog('ilr_mailchimp', $e->getMessage(), array(), WATCHDOG_ERROR);
     }
   }
 }
 
 function ilr_redhen_get_automation_details($segment) {
   switch ($segment) {
+    case 'interested':
+      $details = [
+        'workflow_id' => '6e170c73e6',
+        'workflow_email_id' => '9ea68e07dc',
+      ];
+      break;
     case 'applied':
       $details = [
         'workflow_id' => '64bcaa9e4e',
