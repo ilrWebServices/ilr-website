@@ -85,6 +85,8 @@ function ilr_redhen_form_sports_leadership_camp_payment_entityform_edit_form_alt
       foreach ($form_values as $field_name => $value) {
         $form[$field_name][LANGUAGE_NONE][0]['value']['#default_value'] = $value;
       }
+      // Disable the total cost field
+      $form['field_total_cost']['#disabled'] = TRUE;
     } // Not found, so include the helper text
     else {
       $form['field_email'][LANGUAGE_NONE][0]['email']['#description'] = t("Please use the same email address that was on the application.");
@@ -98,9 +100,11 @@ function ilr_redhen_contact_mapping_for_payment_form($contact) {
     $entityform_wrapper = _forms_entityform_wrapper($application);
   }
   $values = [];
+  $total_cost = ($contact_wrapper->field_total_cost->value()) ? $contact_wrapper->field_total_cost->value() : '2250';
   $values['field_full_name'] = $contact_wrapper->field_first_name->value() . ' ' . $contact_wrapper->field_last_name->value();
   $values['field_first_name'] = $contact_wrapper->first_name->value();
   $values['field_last_name'] = $contact_wrapper->last_name->value();
+  $values['field_total_cost'] = $total_cost;
 
   if ($application) {
     $values['field_address_line_1'] = $entityform_wrapper->field_address_line_1->value();
@@ -313,6 +317,13 @@ function ilr_redhen_add_contact_to_mailchimp($contact_wrapper, $email) {
     'LNAME' => ($last_name) ? $last_name : '',
     'MMERGE3' => $contact_wrapper->field_account_number->value()
   ];
+  if (!empty($contact_wrapper->field_first_name->value())) {
+    $camper_vars = [
+      'MMERGE4' => $contact_wrapper->field_first_name->value(),
+      'MMERGE5' => $contact_wrapper->field_last_name->value(),
+    ];
+    $merge_vars = array_merge($merge_vars, $camper_vars);
+  }
   ilr_mailchimp_subscribe_user(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID, $email, $merge_vars);
 }
 
@@ -359,6 +370,9 @@ function ilr_redhen_add_user_to_mailchimp_segment($email, $segment_name) {
   // Check with the automation actions if/as new
   // automations are created
   switch ($segment_name) {
+    case 'applied':
+      $segment_to_remove = 'interested';
+      break;
     case 'accepted':
       $segment_to_remove = 'applied';
       break;
@@ -416,6 +430,12 @@ function ilr_redhen_get_automation_details($segment) {
       $details = [
         'workflow_id' => '1ae53f5012',
         'workflow_email_id' => 'd2c29c9ede',
+      ];
+      break;
+    case 'participant':
+      $details = [
+        'workflow_id' => 'd709293aa4',
+        'workflow_email_id' => 'f205ac7d53',
       ];
       break;
     default:
