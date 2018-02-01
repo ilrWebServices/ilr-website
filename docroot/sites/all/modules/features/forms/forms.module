@@ -469,13 +469,14 @@ function _process_ilr_conf_center_reservation(&$entityform) {
   $conf_center_contact_info = 'Ithaca Conference Center <br>'
     . 'ilrconferencecenter@cornell.edu <br>'
     . '607.255.4401';
+  $email_subject = 'ILR Conference Center Request Submitted';
   if ($entityform->field_nyc_or_ithaca['und'][0]['value'] == 'nyc') {
     $admin_email = 'nycconferencectr@cornell.edu';
     $conf_center_contact_info = 'NYC Conference Center <br>'
       . 'nycconferencectr@cornell.edu <br>'
       . '212.340.2834';
   }
-  _forms_send_emails($entityform, $admin_email, '', '', array('conf_center_contact_info' => $conf_center_contact_info));
+  _forms_send_emails($entityform, $admin_email, $email_subject, $email_subject, array('conf_center_contact_info' => $conf_center_contact_info));
 }
 
 /**
