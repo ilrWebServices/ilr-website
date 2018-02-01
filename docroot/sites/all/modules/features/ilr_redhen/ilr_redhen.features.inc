@@ -5,6 +5,13 @@
  */
 
 /**
+ * Implements hook_views_api().
+ */
+function ilr_redhen_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
+}
+
+/**
  * Implements hook_default_redhen_contact_type().
  */
 function ilr_redhen_default_redhen_contact_type() {

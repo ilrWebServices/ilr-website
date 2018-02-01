@@ -24,3 +24,9 @@
     color: white;
   }
 }
+
+// This is for freedompay payment checkout forms
+.page-pay-checkout .button {
+  @extend %button;
+  display: inline-block;
+}

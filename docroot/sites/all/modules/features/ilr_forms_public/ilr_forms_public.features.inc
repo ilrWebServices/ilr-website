@@ -457,7 +457,7 @@ function ilr_forms_public_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for your payment for the Cornell Sports Leadership Camp. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have questions, please contact Tom Addonizio at \\u003Ca href=\\u0022mailto:ta363@cornell.edu\\u0022\\u003Eta363@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for your payment for the Cornell Sports Leadership Camp. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have questions, please contact \\u003Ca href=\\u0022mailto:sportsleadership@cornell.edu\\u0022\\u003Esportsleadership@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -485,7 +485,7 @@ function ilr_forms_public_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
-      "form_submission_ilr_recipient" : "ilrweb@cornell.edu",
+      "form_submission_ilr_recipient" : "sportsleadership@cornell.edu",
       "add_payment_processing" : 1,
       "hpp" : "6"
     },

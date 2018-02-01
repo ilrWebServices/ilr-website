@@ -80,9 +80,34 @@ function ilr_mailchimp_add_user_to_mailchimp_segment($account_id, $list_id, $ema
   $segments = ilr_mailchimp_get_mailchimp_segments($list_id);
   foreach ($segments as $segment) {
     if ($segment->name == $segment_name) {
-      $mc_lists = mailchimp_get_api_object('MailchimpLists');
-      $mc_lists->addSegmentMember($list_id, $segment->id, $email);
-      return TRUE;
+      try {
+        $mc_lists = mailchimp_get_api_object('MailchimpLists');
+        $mc_lists->addSegmentMember($list_id, $segment->id, $email);
+        return TRUE;
+      }
+      catch (Exception $e) { // The user may not be on the list
+        watchdog('ilr_mailchimp', $e->getMessage() . ": %list_id: %email", ['%list_id' => $list_id, '%email' => $email], WATCHDOG_ERROR);
+      }
+    }
+  }
+  return FALSE;
+}
+
+function ilr_mailchimp_remove_user_from_mailchimp_segment($list_id, $email, $segment_name, $account_id = NULL) {
+  if ($account_id) {
+    mailchimp_accounts_set_current_mailchimp_context($account_id, 'user', TRUE);
+  }
+  $segments = ilr_mailchimp_get_mailchimp_segments($list_id);
+  foreach ($segments as $segment) {
+    if ($segment->name == $segment_name) {
+      try {
+        $mc_lists = mailchimp_get_api_object('MailchimpLists');
+        $mc_lists->removeSegmentMember($list_id, $segment->id, $email);
+        return TRUE;
+      }
+      catch (Exception $e) { // The user may not be in the segment
+        watchdog('ilr_mailchimp', $e->getMessage() . ": %segment", ['%segment' => $segment_name], WATCHDOG_ERROR);
+      }
     }
   }
   return FALSE;

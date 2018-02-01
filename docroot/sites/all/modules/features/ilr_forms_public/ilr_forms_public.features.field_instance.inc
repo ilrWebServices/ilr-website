@@ -4735,7 +4735,7 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -5015,7 +5015,7 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -5034,13 +5034,13 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 23,
+        'weight' => 27,
       ),
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_state_as_text',
-    'label' => 'State or province',
+    'label' => 'State',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -5058,7 +5058,7 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -5066,9 +5066,13 @@ function ilr_forms_public_field_default_field_instances() {
   // 'entityform-sports_leadership_camp_payment-field_total_cost'.
   $field_instances['entityform-sports_leadership_camp_payment-field_total_cost'] = array(
     'bundle' => 'sports_leadership_camp_payment',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 2250,
+      ),
+    ),
     'deleted' => 0,
-    'description' => 'Amount in US dollars',
+    'description' => 'In US dollars',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -5110,7 +5114,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_total_cost',
-    'label' => 'Your cost',
+    'label' => 'Payment amount',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -5128,7 +5132,7 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -5180,7 +5184,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_zip_code',
-    'label' => 'Postal code',
+    'label' => 'Zip code',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -5198,7 +5202,7 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -5506,7 +5510,6 @@ function ilr_forms_public_field_default_field_instances() {
   t('Address line 1');
   t('Address line 2 or District');
   t('Alternate start date');
-  t('Amount in US dollars');
   t('Audio visual equipment');
   t('Brief description (including # of potential participants)');
   t('Button clicked');
@@ -5539,6 +5542,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Home phone');
   t('How did you hear about the camp?');
   t('How will you be paying?');
+  t('In US dollars');
   t('Is this reservation for the Ithaca, NY or the New York City Conference center?');
   t('Job Title');
   t('Job title');
@@ -5548,6 +5552,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Mailing address');
   t('Note the primary email will be used in all follow-up camp communication');
   t('Organization');
+  t('Payment amount');
   t('Payor\'s first name');
   t('Payor\'s last name');
   t('Phone');
@@ -5555,13 +5560,13 @@ function ilr_forms_public_field_default_field_instances() {
   t('Please add me to your email list');
   t('Please provide a brief description of your event');
   t('Please share updates on future ICS activities and insights with me.');
-  t('Postal code');
   t('Primary email');
   t('Registering as mediator, disputant, or disputant team?');
   t('Requested room set-up');
   t('Room preference (check all that apply)');
   t('School name');
   t('Second person markup');
+  t('State');
   t('State / Province');
   t('State or province');
   t('Student email');
@@ -5577,7 +5582,6 @@ function ilr_forms_public_field_default_field_instances() {
   t('What is your major (or what program are you in?)');
   t('Why would you like to join this competition?');
   t('Will you need catering? (Please check all that apply)');
-  t('Your cost');
   t('Your email');
   t('Your job title');
   t('Your name');

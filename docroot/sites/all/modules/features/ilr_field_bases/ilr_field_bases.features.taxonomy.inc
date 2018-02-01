@@ -57,5 +57,13 @@ function ilr_field_bases_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'note_type' => array(
+      'name' => 'Note type',
+      'machine_name' => 'note_type',
+      'description' => NULL,
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
   );
 }

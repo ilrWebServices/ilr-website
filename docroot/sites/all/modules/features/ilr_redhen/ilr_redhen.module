@@ -10,29 +10,109 @@ define('SPORTS_LEADERSHIP_MC_ACCOUNT_ID', 'e69d80783d77fe8d9073ed506');
 define('SPORTS_LEADERSHIP_MC_LIST_ID', '320c595c34');
 
 /**
+ * Implements hook_module_implements_alter().
+ * Makes sure redhen menu is present.
+ */
+function ilr_redhen_module_implements_alter(&$implementations, $hook) {
+  switch ($hook) {
+    case 'admin_menu_output_build':
+      if (isset($implementations['ilr_redhen'])) {
+        $group = $implementations['ilr_redhen'];
+        unset($implementations['ilr_redhen']);
+        $implementations['ilr_redhen'] = $group;
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_admin_menu_output_build(&$content) {
+ */
+function ilr_redhen_admin_menu_output_build(&$content) {
+  if (isset($content['menu']['redhen'])) {
+    $content['menu']['redhen']['redhen/camp'] = [
+      '#title' => 'Sports Camp',
+      '#href' => 'redhen/sports-camp',
+      '#options' => ['attributes' => [], 'alias' => TRUE],
+      '#weight' => 1,
+      'redhen/camp/contacts' => [
+        '#title' => 'Sports Camp Contacts',
+        '#href' => 'redhen/camp/contacts',
+        '#options' => ['attributes' => [], 'alias' => TRUE],
+        '#weight' => 0,
+      ],
+      'redhen/camp/tasks' => [
+        '#title' => 'Tasks',
+        '#href' => 'redhen/camp/tasks',
+        '#options' => ['attributes' => [], 'alias' => TRUE],
+        '#weight' => 1,
+      ]
+    ];
+  }
+}
+/**
  * Implements hook_form_alter().
  *
  * Disables the unique identifier field
  * Adds links to the contact's forms
  */
 function ilr_redhen_form_redhen_contact_contact_form_alter(&$form, &$form_state) {
+  mailchimp_accounts_set_current_mailchimp_context(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, 'admin', TRUE);
   $form['field_account_number'][LANGUAGE_NONE]['0']['value']['#attributes']['disabled'] = TRUE;
   $contact_wrapper = entity_metadata_wrapper('redhen_contact', $form['#entity']);
   $forms = $contact_wrapper->field_referenced_entityform->value();
   if ($forms) {
-    $markup = '<h4>Forms</h4>';
-    $markup .= '<ul>';
-    foreach ($forms as $entityform) {
-      $markup .= '<li><a href="/entityform/'.$entityform->entityform_id.'">'. $entityform->type.'</a></li>';
-    }
-    $markup .= '</ul>';
-    $form['field_referenced_entityform']['#type'] = 'markup';
-    $form['field_referenced_entityform']['#markup'] = $markup;
+    // $markup = '<h4>Forms</h4>';
+    // $markup .= '<ul>';
+    // foreach ($forms as $entityform) {
+    //   $markup .= '<li><a href="/entityform/'.$entityform->entityform_id.'">'. $entityform->type.'</a></li>';
+    // }
+    // $markup .= '</ul>';
+    // $form['field_referenced_entityform']['#type'] = 'markup';
+    // $form['field_referenced_entityform']['#markup'] = $markup;
   }
 }
 
 /**
- * Implements hook_entity_insert().
+ * Implements hook_entity_update().
+ */
+function ilr_redhen_redhen_contact_update($contact) {
+  if (!$contact->is_new) {
+    $presave_wrapper = entity_metadata_wrapper('redhen_contact', $contact->original);
+    $contact_wrapper = entity_metadata_wrapper('redhen_contact', $contact);
+    $previous_status = $presave_wrapper->field_current_status->value();
+    $current_status = $contact_wrapper->field_current_status->value();
+    if ($previous_status != $current_status) {
+      ilr_redhen_process_current_status($contact, $current_status);
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ *
+ * Initiates post payment actions for camp.
+ */
+function ilr_redhen_entityform_update($entityform) {
+  if ($entityform->type == 'sports_leadership_camp_payment' && !$entityform->draft) {
+    $entityform_wrapper = _forms_entityform_wrapper($entityform);
+    $email = $entityform_wrapper->field_email->value();
+    if ($contact = redhen_contact_load_by_mail($email)) {
+      $form_uri = entityform_uri($entityform);
+      $contact = (is_array($contact)) ? reset($contact) : $contact;
+      ilr_redhen_process_current_status($contact, 'participant', $form_uri['path']);
+      $contact_wrapper = entity_metadata_wrapper('redhen_contact', $contact);
+      ilr_redhen_track_contact_form($contact_wrapper, $entityform_wrapper->getIdentifier());
+    }
+    else {
+      $msg = t('Payment processed for non-existing redhen contact: "%email"');
+      watchdog('ilr_redhen', $msg, array(['%email' => $email]), WATCHDOG_ERROR);
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
  */
 function ilr_redhen_entityform_insert($entityform) {
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
@@ -47,11 +127,10 @@ function ilr_redhen_entityform_insert($entityform) {
     $contact_wrapper = ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper);
     ilr_redhen_track_contact_form($contact_wrapper, $entityform_wrapper->getIdentifier());
     $contact_wrapper->save();
-    // The automation action in MC is set to remove them from the previous segment, if applicable
     $segment = ilr_redhen_get_segment_name($entityform->type);
     if (!empty($segment)) {
-      ilr_redhen_add_user_to_mailchimp_segment($email, $segment);
-      ilr_redhen_trigger_automation($email, $segment);
+      $form_uri = entityform_uri($entityform);
+      ilr_redhen_process_current_status($contact, $segment, $form_uri['path']);
     }
   }
 }
@@ -59,7 +138,10 @@ function ilr_redhen_entityform_insert($entityform) {
 /**
  * Checks the form machine name and the menu name
  *
- * @todo Refactor as needed in future
+ * Note that the sports_camp_payment form is processed differently,
+ * since it is saved as a draft.
+ * @see ilr_redhen_entityform_update().
+ *
  * @return boolean
  */
 function ilr_redhen_is_crm_form($entityform_wrapper) {
@@ -76,6 +158,9 @@ function ilr_redhen_is_crm_form($entityform_wrapper) {
   return FALSE;
 }
 
+/**
+ * Add the reference to the form on the contact record
+ */
 function ilr_redhen_track_contact_form($contact_wrapper, $entityform_id) {
   $forms = $contact_wrapper->field_referenced_entityform->value();
   if (!$forms) {
@@ -86,6 +171,12 @@ function ilr_redhen_track_contact_form($contact_wrapper, $entityform_id) {
   $contact_wrapper->save();
 }
 
+/**
+ * Programatically create the redhen contact.
+ * Generate a unique identifier
+ * Update field values if present on form
+ * Add them to mailchimp
+ */
 function ilr_redhen_create_contact($email, $entityform_wrapper) {
   $type = redhen_contact_get_types('sports_leadership_camp_contact');
   $contact = redhen_contact_create([
@@ -103,10 +194,38 @@ function ilr_redhen_create_contact($email, $entityform_wrapper) {
   return $contact;
 }
 
+/**
+ * Programatically create a redhen note for the contact record.
+ */
+function ilr_redhen_create_note_for_contact($contact, $message, $requires_action=1) {
+  $note = entity_create('redhen_note', array(
+    'type' => 'redhen_note',
+    'entity_type' => 'redhen_contact',
+    'entity_id' => $contact->contact_id
+  ));
+
+  $note->redhen_note_body[LANGUAGE_NONE][0] = [
+    'value' => $message,
+    'format' => 'full_html',
+  ];
+
+  $note_wrapper = entity_metadata_wrapper('redhen_note', $note);
+  $note_wrapper->field_response_checkbox->set($requires_action);
+  $note_wrapper->save();
+  return $note;
+}
+
+/**
+ * Add camper details to contact if not present.
+ */
 function ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper) {
-  if (!$contact_wrapper->first_name->value() && isset($entityform_wrapper->field_first_name_additional)) {
+  if (!$contact_wrapper->field_first_name->value() && isset($entityform_wrapper->field_first_name)) {
+    $contact_wrapper->field_first_name->set($entityform_wrapper->field_first_name->value());
+    $contact_wrapper->field_last_name->set($entityform_wrapper->field_last_name->value());
     $contact_wrapper->first_name->set($entityform_wrapper->field_first_name_additional->value());
     $contact_wrapper->last_name->set($entityform_wrapper->field_last_name_additional->value());
+    $contact_wrapper->field_dob->set($entityform_wrapper->field_dob->value());
+    $contact_wrapper->field_email_additional->set($entityform_wrapper->field_email_additional->value());
   }
   return $contact_wrapper;
 }
@@ -158,6 +277,21 @@ function ilr_redhen_add_contact_to_mailchimp($contact_wrapper, $email) {
   ilr_mailchimp_subscribe_user(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID, $email, $merge_vars);
 }
 
+/**
+ * Allowed_values_function callback for the redhen_current_status field
+ */
+function ilr_redhen_current_status_list_options() {
+  $status_types = ['interested', 'applied', 'accepted', 'participant'];
+  $options = [];
+  foreach ($status_types as $status) {
+    $options[$status] = ucfirst($status);
+  }
+  return $options;
+}
+
+/**
+ * Takes an entityform_type and returns the appropriate mailchimp segment name.
+ */
 function ilr_redhen_get_segment_name($entityform_type) {
   $segment_name = '';
   switch($entityform_type) {
@@ -167,15 +301,38 @@ function ilr_redhen_get_segment_name($entityform_type) {
     case 'sports_camp_application':
       $segment_name = 'applied';
       break;
-    case 'sports_camp_payment':
+    case 'sports_leadership_camp_payment':
       $segment_name = 'participant';
       break;
   }
   return $segment_name;
 }
 
+/**
+ * Add the user to the appropriate segment
+ * Remove them from previous segments.
+ *
+ * Note: Actions in MailChimp automations can remove them from a segment, such as with the "applied" automation.
+ */
 function ilr_redhen_add_user_to_mailchimp_segment($email, $segment_name) {
-  ilr_mailchimp_add_user_to_mailchimp_segment(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID, $email, $segment_name);
+  $added_to_segment = ilr_mailchimp_add_user_to_mailchimp_segment(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID, $email, $segment_name);
+  // Remove from previous segment if applicable
+  // Check with the automation actions if/as new
+  // automations are created
+  switch ($segment_name) {
+    case 'accepted':
+      $segment_to_remove = 'applied';
+      break;
+    case 'participant':
+      $segment_to_remove = 'accepted';
+      break;
+    default:
+      $segment_to_remove = NULL;
+      break;
+  }
+  if ($segment_to_remove) {
+    $removed_from_segment = ilr_mailchimp_remove_user_from_mailchimp_segment( SPORTS_LEADERSHIP_MC_LIST_ID, $email, $segment_to_remove);
+  }
 }
 
 function ilr_redhen_trigger_automation($email, $segment) {
@@ -194,6 +351,12 @@ function ilr_redhen_trigger_automation($email, $segment) {
   }
 }
 
+/**
+ * Gets the automation workflow_id and workflow_email_id, if they exist
+ *
+ * @todo update ilr_redhen_add_user_to_mailchimp_segment()
+ *       as automations are added here
+ */
 function ilr_redhen_get_automation_details($segment) {
   switch ($segment) {
     case 'interested':
@@ -212,4 +375,48 @@ function ilr_redhen_get_automation_details($segment) {
       $details = [];
   }
   return $details;
+}
+
+/**
+ * Triggers actions based on the current status
+ *
+ * Creates a redhen note
+ * Adds them to the correct MailChimp segment
+ * Triggers the correct MailChimp automation (if there is one)
+ * Sets the current status of the contact
+ */
+function ilr_redhen_process_current_status($contact, $status, $form_uri = NULL) {
+  $requires_action = 1;
+  if ($form_uri) {
+    switch ($status) {
+      case 'interested':
+        $message = '<a href="/'.$form_uri.'">Interest form</a> sent. Response needed.';
+        break;
+      case 'applied':
+        $message = '<a href="/'.$form_uri.'">Application submitted</a>. Review needed.';
+        break;
+      case 'accepted':
+        $message = '<a href="/'.$form_uri.'">Application accepted</a>. Send acceptance letter and payment instructions';
+        break;
+      case 'participant':
+        $message = 'Payment complete';
+        $requires_action = 0;
+        break;
+      default:
+        $message = NULL;
+        break;
+    }
+
+    $message = "<p>Automated note: " . $message . "</p>";
+    $email = $contact->email();
+    $contact_wrapper = entity_metadata_wrapper('redhen_contact', $contact);
+    ilr_redhen_add_contact_to_mailchimp($contact_wrapper, $email);
+    ilr_redhen_create_note_for_contact($contact, $message, $requires_action);
+    ilr_redhen_trigger_automation($email, $status);
+    $contact_wrapper->field_current_status->set($status);
+    $contact_wrapper->save();
+  } // It's a status change from the admin interface menu
+  else {
+    ilr_redhen_add_user_to_mailchimp_segment($contact->email(), $status);
+  }
 }
