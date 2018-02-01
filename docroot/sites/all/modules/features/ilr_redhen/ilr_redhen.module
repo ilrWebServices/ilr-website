@@ -59,18 +59,6 @@ function ilr_redhen_admin_menu_output_build(&$content) {
 function ilr_redhen_form_redhen_contact_contact_form_alter(&$form, &$form_state) {
   mailchimp_accounts_set_current_mailchimp_context(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, 'admin', TRUE);
   $form['field_account_number'][LANGUAGE_NONE]['0']['value']['#attributes']['disabled'] = TRUE;
-  $contact_wrapper = ilr_redhen_contact_wrapper($form['#entity']);
-  $forms = $contact_wrapper->field_referenced_entityform->value();
-  if ($forms) {
-    // $markup = '<h4>Forms</h4>';
-    // $markup .= '<ul>';
-    // foreach ($forms as $entityform) {
-    //   $markup .= '<li><a href="/entityform/'.$entityform->entityform_id.'">'. $entityform->type.'</a></li>';
-    // }
-    // $markup .= '</ul>';
-    // $form['field_referenced_entityform']['#type'] = 'markup';
-    // $form['field_referenced_entityform']['#markup'] = $markup;
-  }
 }
 
 /**
