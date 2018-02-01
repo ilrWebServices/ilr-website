@@ -59,7 +59,7 @@ function ilr_redhen_admin_menu_output_build(&$content) {
 function ilr_redhen_form_redhen_contact_contact_form_alter(&$form, &$form_state) {
   mailchimp_accounts_set_current_mailchimp_context(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, 'admin', TRUE);
   $form['field_account_number'][LANGUAGE_NONE]['0']['value']['#attributes']['disabled'] = TRUE;
-  $contact_wrapper = entity_metadata_wrapper('redhen_contact', $form['#entity']);
+  $contact_wrapper = ilr_redhen_contact_wrapper($form['#entity']);
   $forms = $contact_wrapper->field_referenced_entityform->value();
   if ($forms) {
     // $markup = '<h4>Forms</h4>';
@@ -74,12 +74,51 @@ function ilr_redhen_form_redhen_contact_contact_form_alter(&$form, &$form_state)
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ilr_redhen_form_sports_leadership_camp_payment_entityform_edit_form_alter(&$form, &$form_state) {
+  if (isset($_GET['uid'])) {
+    if ($contact = ilr_redhen_get_contact_by_identifier($_GET['uid'])) {
+      $form['field_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $contact->email();
+      $form['field_email']['#disabled'] = TRUE;
+      $form_values = ilr_redhen_contact_mapping_for_payment_form($contact);
+      foreach ($form_values as $field_name => $value) {
+        $form[$field_name][LANGUAGE_NONE][0]['value']['#default_value'] = $value;
+      }
+    } // Not found, so include the helper text
+    else {
+      $form['field_email'][LANGUAGE_NONE][0]['email']['#description'] = t("Please use the same email address that was on the application.");
+    }
+  }
+}
+
+function ilr_redhen_contact_mapping_for_payment_form($contact) {
+  $contact_wrapper = ilr_redhen_contact_wrapper($contact);
+  if ($application = ilr_redhen_get_application_by_email($contact->email())) {
+    $entityform_wrapper = _forms_entityform_wrapper($application);
+  }
+  $values = [];
+  $values['field_full_name'] = $contact_wrapper->field_first_name->value() . ' ' . $contact_wrapper->field_last_name->value();
+  $values['field_first_name'] = $contact_wrapper->first_name->value();
+  $values['field_last_name'] = $contact_wrapper->last_name->value();
+
+  if ($application) {
+    $values['field_address_line_1'] = $entityform_wrapper->field_address_line_1->value();
+    $values['field_city'] = $entityform_wrapper->field_city->value();
+    $values['field_state_as_text'] = $entityform_wrapper->field_state_as_text->value();
+    $values['field_zip_code'] = $entityform_wrapper->field_zip_code->value();
+    $values['field_phone'] = $entityform_wrapper->field_phone_additional->value();
+  }
+  return $values;
+}
+
+/**
  * Implements hook_entity_update().
  */
 function ilr_redhen_redhen_contact_update($contact) {
   if (!$contact->is_new) {
     $presave_wrapper = entity_metadata_wrapper('redhen_contact', $contact->original);
-    $contact_wrapper = entity_metadata_wrapper('redhen_contact', $contact);
+    $contact_wrapper = ilr_redhen_contact_wrapper($contact);
     $previous_status = $presave_wrapper->field_current_status->value();
     $current_status = $contact_wrapper->field_current_status->value();
     if ($previous_status != $current_status) {
@@ -101,7 +140,7 @@ function ilr_redhen_entityform_update($entityform) {
       $form_uri = entityform_uri($entityform);
       $contact = (is_array($contact)) ? reset($contact) : $contact;
       ilr_redhen_process_current_status($contact, 'participant', $form_uri['path']);
-      $contact_wrapper = entity_metadata_wrapper('redhen_contact', $contact);
+      $contact_wrapper = ilr_redhen_contact_wrapper($contact);
       ilr_redhen_track_contact_form($contact_wrapper, $entityform_wrapper->getIdentifier());
     }
     else {
@@ -123,7 +162,7 @@ function ilr_redhen_entityform_insert($entityform) {
       $contact = ilr_redhen_create_contact($email, $entityform_wrapper);
     }
     $contact = (is_array($contact)) ? reset($contact) : $contact;
-    $contact_wrapper = entity_metadata_wrapper('redhen_contact', $contact);
+    $contact_wrapper = ilr_redhen_contact_wrapper($contact);
     $contact_wrapper = ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper);
     ilr_redhen_track_contact_form($contact_wrapper, $entityform_wrapper->getIdentifier());
     $contact_wrapper->save();
@@ -184,7 +223,7 @@ function ilr_redhen_create_contact($email, $entityform_wrapper) {
   ]);
   $contact->setEmail($email);
   $contact->save();
-  $contact_wrapper = entity_metadata_wrapper('redhen_contact', $contact);
+  $contact_wrapper = ilr_redhen_contact_wrapper($contact);
   $unique_identifier = ilr_redhen_generate_unique_identifier();
   $contact_wrapper->field_account_number->set($unique_identifier);
   $contact_wrapper = ilr_redhen_update_contact($contact_wrapper, $entityform_wrapper);
@@ -340,6 +379,7 @@ function ilr_redhen_trigger_automation($email, $segment) {
   $details = ilr_redhen_get_automation_details($segment);
 
   if (!empty($details)) {
+    $result = FALSE;
     try {
       $result = $mc_auto->addWorkflowEmailSubscriber($details['workflow_id'], $details['workflow_email_id'], $email);
     }
@@ -348,6 +388,7 @@ function ilr_redhen_trigger_automation($email, $segment) {
       // if the user has already received this particular email
       watchdog('ilr_mailchimp', $e->getMessage(), array(), WATCHDOG_ERROR);
     }
+    return $result;
   }
 }
 
@@ -369,6 +410,12 @@ function ilr_redhen_get_automation_details($segment) {
       $details = [
         'workflow_id' => '64bcaa9e4e',
         'workflow_email_id' => '02e9336077',
+      ];
+      break;
+    case 'accepted':
+      $details = [
+        'workflow_id' => '1ae53f5012',
+        'workflow_email_id' => 'd2c29c9ede',
       ];
       break;
     default:
@@ -409,14 +456,59 @@ function ilr_redhen_process_current_status($contact, $status, $form_uri = NULL) 
 
     $message = "<p>Automated note: " . $message . "</p>";
     $email = $contact->email();
-    $contact_wrapper = entity_metadata_wrapper('redhen_contact', $contact);
+    $contact_wrapper = ilr_redhen_contact_wrapper($contact);;
     ilr_redhen_add_contact_to_mailchimp($contact_wrapper, $email);
     ilr_redhen_create_note_for_contact($contact, $message, $requires_action);
     ilr_redhen_trigger_automation($email, $status);
+    ilr_redhen_add_user_to_mailchimp_segment($contact->email(), $status);
     $contact_wrapper->field_current_status->set($status);
     $contact_wrapper->save();
   } // It's a status change from the admin interface menu
   else {
     ilr_redhen_add_user_to_mailchimp_segment($contact->email(), $status);
+    if ($status == 'accepted') {
+      if ($triggered = ilr_redhen_trigger_automation($contact->email(), $status)) {
+        drupal_set_message('Acceptance letter will be sent from MailChimp in one hour');
+      }
+    }
   }
+}
+
+function ilr_redhen_get_contact_by_identifier($identifier) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'redhen_contact')
+    ->fieldCondition('field_account_number', 'value', $identifier, '=')
+    ->range(0, 1);
+
+  $result = $query->execute();
+  if (isset($result['redhen_contact'])) {
+    $contact_id = array_keys($result['redhen_contact']);
+    $contacts = entity_load('redhen_contact', $contact_id);
+    return reset($contacts);
+  }
+  return FALSE;
+}
+
+function ilr_redhen_get_application_by_email($email) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'entityform')
+    ->entityCondition('bundle', 'sports_camp_application')
+    ->fieldCondition('field_email', 'email', $email, '=')
+    ->range(0, 1);
+
+  $result = $query->execute();
+  if (isset($result['entityform'])) {
+    $entityform_id = array_keys($result['entityform']);
+    $entityform = entity_load('entityform', $entityform_id);
+    return reset($entityform);
+  }
+  return FALSE;
+}
+
+function ilr_redhen_contact_wrapper($contact) {
+  $wrapper = &drupal_static(__FUNCTION__ . $contact->contact_id);
+  if (!isset($wrapper)) {
+    $wrapper = entity_metadata_wrapper('redhen_contact', $contact);
+  }
+  return $wrapper;
 }

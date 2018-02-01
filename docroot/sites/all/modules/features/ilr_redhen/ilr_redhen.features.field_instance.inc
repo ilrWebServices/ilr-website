@@ -253,6 +253,53 @@ function ilr_redhen_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'redhen_contact-sports_leadership_camp_contact-field_funding_received'.
+  $field_instances['redhen_contact-sports_leadership_camp_contact-field_funding_received'] = array(
+    'bundle' => 'sports_leadership_camp_contact',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'redhen_contact',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_funding_received',
+    'label' => 'Check received',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance:
   // 'redhen_contact-sports_leadership_camp_contact-field_last_name'.
   $field_instances['redhen_contact-sports_leadership_camp_contact-field_last_name'] = array(
     'bundle' => 'sports_leadership_camp_contact',
@@ -350,6 +397,53 @@ function ilr_redhen_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'redhen_contact-sports_leadership_camp_contact-field_response_checkbox'.
+  $field_instances['redhen_contact-sports_leadership_camp_contact-field_response_checkbox'] = array(
+    'bundle' => 'sports_leadership_camp_contact',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'redhen_contact',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_response_checkbox',
+    'label' => 'Paying by check',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
       'weight' => 8,
     ),
   );
@@ -522,12 +616,14 @@ function ilr_redhen_field_default_field_instances() {
   t('Camper email');
   t('Camper first name');
   t('Camper last name');
+  t('Check received');
   t('Current status');
   t('Email');
   t('Forms');
   t('Interest, application and scholarship forms');
   t('Message');
   t('Note Type');
+  t('Paying by check');
   t('Requires action');
   t('Unique identifier');
 

@@ -3882,7 +3882,7 @@ function ilr_forms_public_field_default_field_instances() {
     'bundle' => 'sports_camp_application',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Note the primary email will be used in all follow-up camp communication',
+    'description' => 'Note this email will be used in all follow-up camp communication, including the payment confirmation.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3897,7 +3897,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_email',
-    'label' => 'Primary email',
+    'label' => 'Parent / Guardian email',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -4723,7 +4723,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_email',
-    'label' => 'Email',
+    'label' => 'Parent / Guardian email',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -5550,8 +5550,9 @@ function ilr_forms_public_field_default_field_instances() {
   t('Last name');
   t('Last name (2nd participant)');
   t('Mailing address');
-  t('Note the primary email will be used in all follow-up camp communication');
+  t('Note this email will be used in all follow-up camp communication, including the payment confirmation.');
   t('Organization');
+  t('Parent / Guardian email');
   t('Payment amount');
   t('Payor\'s first name');
   t('Payor\'s last name');
@@ -5560,7 +5561,6 @@ function ilr_forms_public_field_default_field_instances() {
   t('Please add me to your email list');
   t('Please provide a brief description of your event');
   t('Please share updates on future ICS activities and insights with me.');
-  t('Primary email');
   t('Registering as mediator, disputant, or disputant team?');
   t('Requested room set-up');
   t('Room preference (check all that apply)');

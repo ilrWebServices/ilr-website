@@ -117,8 +117,10 @@ function ilr_redhen_views_default_views() {
   $handler->display->display_options['fields']['url_1']['relationship'] = 'redhen_note_related_redhen_contact';
   $handler->display->display_options['fields']['url_1']['label'] = '';
   $handler->display->display_options['fields']['url_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['url_1']['alter']['text'] = '[field_first_name] [field_last_name]';
+  $handler->display->display_options['fields']['url_1']['alter']['text'] = '[field_first_name] [field_last_name] - [email] ';
   $handler->display->display_options['fields']['url_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url_1']['empty'] = '[email] ';
+  $handler->display->display_options['fields']['url_1']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['url_1']['link_to_entity'] = 0;
   /* Field: Note: URL */
   $handler->display->display_options['fields']['url']['id'] = 'url';
