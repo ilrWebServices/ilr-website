@@ -295,7 +295,7 @@ function ilr_redhen_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -397,7 +397,7 @@ function ilr_redhen_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -444,6 +444,59 @@ function ilr_redhen_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'redhen_contact-sports_leadership_camp_contact-field_total_cost'.
+  $field_instances['redhen_contact-sports_leadership_camp_contact-field_total_cost'] = array(
+    'bundle' => 'sports_leadership_camp_contact',
+    'default_value' => array(
+      0 => array(
+        'value' => 2250,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'redhen_contact',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_total_cost',
+    'label' => 'Payment amount',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
       'weight' => 8,
     ),
   );
@@ -624,6 +677,7 @@ function ilr_redhen_field_default_field_instances() {
   t('Message');
   t('Note Type');
   t('Paying by check');
+  t('Payment amount');
   t('Requires action');
   t('Unique identifier');
 
