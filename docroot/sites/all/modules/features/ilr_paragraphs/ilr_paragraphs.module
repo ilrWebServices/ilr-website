@@ -154,9 +154,15 @@ function _ilr_paragraphs_preprocess_action_callout(&$variables) {
   $variables['overlay'] = $wrapper->field_description->value();
   $variables['tagline'] = $wrapper->field_headline->value();
   $variables['cta'] = $wrapper->field_short_title->value();
-  $href = ($wrapper->field_callout_action->value() == 1)
-    ? $wrapper->field_website_url->value()['url']
-    : '#'; // Note the js checks the length of this string
+  if ($wrapper->field_callout_action->value() == 1) {
+    $url_array = $wrapper->field_website_url->value();
+    $href = (isset($url_array['url']))
+      ? $url_array['url']
+      : $url_array[0]['url'];
+  }
+  else {
+   $href = '#';
+  }
   $variables['href'] = $href;
 }
 

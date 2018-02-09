@@ -84,8 +84,11 @@ function ilr_certificate_programs_preprocess_node(&$variables) {
     elseif ($variables['view_mode'] == 'teaser') {
       $variables['theme_hook_suggestions'][] = 'node__certificate_programs__' . $variables['view_mode'];
       $wrapper = ilr_get_node_wrapper($variables['node']);
-      if ($external_url = $wrapper->field_website_url->value()) {
-        $variables['node_url'] = $external_url['url'];
+      if ($external_url_details = $wrapper->field_website_url->value()) {
+        $url = (isset($external_url_details['url']))
+          ? $external_url_details['url']
+          : $external_url_details[0]['url'];
+        $variables['node_url'] = $url;
       }
       if ($image_info = $wrapper->field_thumbnail->value()) {
         $alt_text = $image_info['alt'];

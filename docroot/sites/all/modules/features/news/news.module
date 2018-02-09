@@ -20,8 +20,11 @@ function news_bean_types_api_info() {
 function news_node_view($node, $view_mode, $langcode) {
   if ($node->type == 'news_item' && $view_mode == 'full') {
     $wrapper = ilr_get_node_wrapper($node);
-    if ($url_field = $wrapper->field_website_url->value()) {
-      drupal_goto($url_field['url'], array('external' => TRUE));
+    if ($url_array = $wrapper->field_website_url->value()) {
+      $url = (isset($url_array['url']))
+        ? $url_array['url']
+        : $url_array[0]['url'];
+      drupal_goto($url, array('external' => TRUE));
     }
   }
 }
