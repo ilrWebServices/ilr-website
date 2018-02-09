@@ -1891,11 +1891,9 @@ function forms_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Letters of Support',
-    'weight' => '8',
+    'weight' => '2',
     'children' => array(
       0 => 'field_letter_of_support',
-      1 => 'field_supporter_1',
-      2 => 'field_supporter_2',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1923,10 +1921,7 @@ function forms_field_group_info() {
     'label' => 'Letters of Support',
     'weight' => '2',
     'children' => array(
-      0 => 'field_empl_recog_supp_text',
-      1 => 'field_letter_of_support',
-      2 => 'field_supporter_1',
-      3 => 'field_supporter_2',
+      0 => 'field_letter_of_support',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
