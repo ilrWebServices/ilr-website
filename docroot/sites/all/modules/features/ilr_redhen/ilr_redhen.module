@@ -10,6 +10,21 @@ define('SPORTS_LEADERSHIP_MC_ACCOUNT_ID', 'e69d80783d77fe8d9073ed506');
 define('SPORTS_LEADERSHIP_MC_LIST_ID', '320c595c34');
 
 /**
+ * Adds a display for camper's age during camp
+ */
+function ilr_redhen_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] == 'redhen_contact' && !empty($variables['field_dob'])) {
+    $dob = $variables['field_dob'][0]['value'];
+    $camp_date = "4 August 2018";
+    $age = (strtotime($camp_date) - strtotime($dob)) / (3600 * 24 * 365.25);
+    $variables['content']['camper_age'] = [
+      '#markup' => '<h3>Age during camp</h3><div>' . floor($age) .'</div>',
+      '#weight' => 4,
+    ];
+  }
+}
+
+/**
  * Implements hook_module_implements_alter().
  * Makes sure redhen menu is present.
  */
