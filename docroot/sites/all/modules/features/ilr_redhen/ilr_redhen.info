@@ -23,6 +23,7 @@ features[field_instance][] = redhen_contact-sports_leadership_camp_contact-field
 features[field_instance][] = redhen_contact-sports_leadership_camp_contact-field_first_name
 features[field_instance][] = redhen_contact-sports_leadership_camp_contact-field_funding_received
 features[field_instance][] = redhen_contact-sports_leadership_camp_contact-field_last_name
+features[field_instance][] = redhen_contact-sports_leadership_camp_contact-field_price_note
 features[field_instance][] = redhen_contact-sports_leadership_camp_contact-field_referenced_entityform
 features[field_instance][] = redhen_contact-sports_leadership_camp_contact-field_response_checkbox
 features[field_instance][] = redhen_contact-sports_leadership_camp_contact-field_total_cost
