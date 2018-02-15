@@ -22,8 +22,8 @@ body.page-taxonomy-term .view-areas-expertise-taxonomy-term {
       &.field-type-image {
         top: 3px !important; // note that this will be affected by the h2 line-height
         margin-left: 0;
-        .silhouette {
-          opacity: .2;
+        .placeholder {
+          height: 100%;
         }
       }
     }
