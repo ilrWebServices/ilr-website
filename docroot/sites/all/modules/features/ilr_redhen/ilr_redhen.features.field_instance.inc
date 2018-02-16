@@ -25,7 +25,7 @@ function ilr_redhen_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -74,7 +74,7 @@ function ilr_redhen_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 3,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -122,7 +122,7 @@ function ilr_redhen_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 4,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -175,7 +175,7 @@ function ilr_redhen_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 8,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -218,7 +218,7 @@ function ilr_redhen_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -271,7 +271,7 @@ function ilr_redhen_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 9,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -283,7 +283,7 @@ function ilr_redhen_field_default_field_instances() {
     'entity_type' => 'redhen_contact',
     'fences_wrapper' => 'div',
     'field_name' => 'field_funding_received',
-    'label' => 'Check received',
+    'label' => 'Payment received',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -295,7 +295,54 @@ function ilr_redhen_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 10,
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'redhen_contact-sports_leadership_camp_contact-field_is_full'.
+  $field_instances['redhen_contact-sports_leadership_camp_contact-field_is_full'] = array(
+    'bundle' => 'sports_leadership_camp_contact',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'redhen_contact',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_is_full',
+    'label' => 'Required forms submitted',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 12,
     ),
   );
 
@@ -314,7 +361,7 @@ function ilr_redhen_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -349,6 +396,55 @@ function ilr_redhen_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'redhen_contact-sports_leadership_camp_contact-field_price_note'.
+  $field_instances['redhen_contact-sports_leadership_camp_contact-field_price_note'] = array(
+    'bundle' => 'sports_leadership_camp_contact',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If the payment amount is adjusted, add the reason here for auditing purposes.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'redhen_contact',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_price_note',
+    'label' => 'Price note',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance:
   // 'redhen_contact-sports_leadership_camp_contact-field_referenced_entityform'.
   $field_instances['redhen_contact-sports_leadership_camp_contact-field_referenced_entityform'] = array(
     'bundle' => 'sports_leadership_camp_contact',
@@ -366,7 +462,7 @@ function ilr_redhen_field_default_field_instances() {
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 2,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -397,7 +493,7 @@ function ilr_redhen_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 
@@ -420,7 +516,7 @@ function ilr_redhen_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 10,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -444,7 +540,7 @@ function ilr_redhen_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -458,7 +554,7 @@ function ilr_redhen_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The standard payment amount should be $2250.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -515,7 +611,7 @@ function ilr_redhen_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'redhen_email_formatter',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -669,16 +765,20 @@ function ilr_redhen_field_default_field_instances() {
   t('Camper email');
   t('Camper first name');
   t('Camper last name');
-  t('Check received');
   t('Current status');
   t('Email');
   t('Forms');
+  t('If the payment amount is adjusted, add the reason here for auditing purposes.');
   t('Interest, application and scholarship forms');
   t('Message');
   t('Note Type');
   t('Paying by check');
   t('Payment amount');
+  t('Payment received');
+  t('Price note');
+  t('Required forms submitted');
   t('Requires action');
+  t('The standard payment amount should be $2250.');
   t('Unique identifier');
 
   return $field_instances;

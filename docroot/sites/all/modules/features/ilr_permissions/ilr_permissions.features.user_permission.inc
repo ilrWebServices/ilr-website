@@ -135,6 +135,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'access redhen notes',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'redhen_note',
   );
@@ -2082,6 +2083,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit own redhen contact',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'redhen_contact',
   );
@@ -2202,6 +2204,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit redhen contact revisions',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'redhen_contact',
   );
@@ -2275,6 +2278,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'manage redhen contacts',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'redhen_contact',
   );
@@ -2284,6 +2288,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'manage redhen notes',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'redhen_note',
   );
@@ -3077,6 +3082,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view own redhen contact',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'redhen_contact',
   );
@@ -3233,6 +3239,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'view redhen contact revisions',
     'roles' => array(
       'administrator' => 'administrator',
+      'power user' => 'power user',
     ),
     'module' => 'redhen_contact',
   );
