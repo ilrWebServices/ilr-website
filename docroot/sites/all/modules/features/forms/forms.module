@@ -557,7 +557,7 @@ function _process_course_request(&$entityform) {
 function _process_sports_camp_application(&$entityform) {
   drupal_set_message("Thank you for your applying for the Sports Leadership Summer Camp! Applications are reviewed on a rolling basis. We will stop accepting applications once the camp is full so we encourage students to apply as early as possible. Students will be notified of their status within two to three weeks of their application submission.");
   $admin_email = _forms_get_admin_email($entityform);
-  _forms_send_emails($entityform, $admin_email);
+  _forms_send_emails($entityform, $admin_email, '', '', [], TRUE);
 }
 
 /**
@@ -904,7 +904,7 @@ function _forms_full_names_states_and_provinces() {
  * Send user and admin emails
  */
 function _forms_send_emails($entityform, $admin_email, $subject='',
-  $subject_user='', $custom_params=array()) {
+  $subject_user='', $custom_params=array(), $spam_prevention = FALSE) {
   $form_title = _forms_get_form_title($entityform);
   $user_name = _forms_construct_user_name($entityform);
   $email_template = _forms_get_tplphp_file($entityform);
@@ -944,7 +944,7 @@ function _forms_send_emails($entityform, $admin_email, $subject='',
   // Admin email
   if (_forms_admin_receives_confirmation_email($entityform)) {
     $to = $admin_email;
-    $from = (isset($user_email))
+    $from = (isset($user_email) && !$spam_prevention)
       ? $user_email
       : $admin_email;
     if (empty($subject)) {
