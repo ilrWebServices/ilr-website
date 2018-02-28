@@ -334,7 +334,7 @@ function ilr_redhen_add_contact_to_mailchimp($contact_wrapper, $email) {
  * Allowed_values_function callback for the redhen_current_status field
  */
 function ilr_redhen_current_status_list_options() {
-  $status_types = ['interested', 'applied', 'accepted', 'participant'];
+  $status_types = ['interested', 'applied', 'pending', 'accepted', 'participant', 'declined'];
   $options = [];
   foreach ($status_types as $status) {
     $options[$status] = ucfirst($status);
@@ -368,7 +368,6 @@ function ilr_redhen_get_segment_name($entityform_type) {
  * Note: Actions in MailChimp automations can remove them from a segment, such as with the "applied" automation.
  */
 function ilr_redhen_add_user_to_mailchimp_segment($email, $segment_name) {
-  $added_to_segment = ilr_mailchimp_add_user_to_mailchimp_segment(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID, $email, $segment_name);
   // Remove from previous segment if applicable
   // Check with the automation actions if/as new
   // automations are created
@@ -377,7 +376,11 @@ function ilr_redhen_add_user_to_mailchimp_segment($email, $segment_name) {
       $segment_to_remove = 'interested';
       break;
     case 'accepted':
+    case 'pending':
       $segment_to_remove = 'applied';
+      break;
+    case 'declined': // Remove from all segments
+      $segment_to_remove = 'all';
       break;
     case 'participant':
       $segment_to_remove = 'accepted';
@@ -389,6 +392,7 @@ function ilr_redhen_add_user_to_mailchimp_segment($email, $segment_name) {
   if ($segment_to_remove) {
     $removed_from_segment = ilr_mailchimp_remove_user_from_mailchimp_segment( SPORTS_LEADERSHIP_MC_LIST_ID, $email, $segment_to_remove);
   }
+  $added_to_segment = ilr_mailchimp_add_user_to_mailchimp_segment(SPORTS_LEADERSHIP_MC_ACCOUNT_ID, SPORTS_LEADERSHIP_MC_LIST_ID, $email, $segment_name);
 }
 
 function ilr_redhen_trigger_automation($email, $segment) {
@@ -466,10 +470,10 @@ function ilr_redhen_process_current_status($contact, $status, $form_uri = NULL) 
         $message = '<a href="/'.$form_uri.'">Application submitted</a>. Review needed.';
         break;
       case 'accepted':
-        $message = '<a href="/'.$form_uri.'">Application accepted</a>. Send acceptance letter and payment instructions';
+        $message = '<a href="/'.$form_uri.'">Application accepted</a>. Send acceptance letter and payment instructions.';
         break;
       case 'participant':
-        $message = 'Payment complete';
+        $message = 'Payment complete.';
         $requires_action = 0;
         break;
       default:
@@ -479,7 +483,7 @@ function ilr_redhen_process_current_status($contact, $status, $form_uri = NULL) 
 
     $message = "<p>Automated note: " . $message . "</p>";
     $email = $contact->email();
-    $contact_wrapper = ilr_redhen_contact_wrapper($contact);;
+    $contact_wrapper = ilr_redhen_contact_wrapper($contact);
     ilr_redhen_add_contact_to_mailchimp($contact_wrapper, $email);
     ilr_redhen_create_note_for_contact($contact, $message, $requires_action);
     ilr_redhen_trigger_automation($email, $status);
@@ -493,6 +497,10 @@ function ilr_redhen_process_current_status($contact, $status, $form_uri = NULL) 
       if ($triggered = ilr_redhen_trigger_automation($contact->email(), $status)) {
         drupal_set_message('Acceptance letter will be sent from MailChimp in one hour');
       }
+    }
+    elseif ($status == 'pending') {
+      $message = '<a href="/'.$form_uri.'">Application pending</a>. See notes for further details.';
+      ilr_redhen_create_note_for_contact($contact, $message);
     }
   }
 }

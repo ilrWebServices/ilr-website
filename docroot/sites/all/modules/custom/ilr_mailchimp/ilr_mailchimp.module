@@ -94,21 +94,24 @@ function ilr_mailchimp_add_user_to_mailchimp_segment($account_id, $list_id, $ema
 }
 
 function ilr_mailchimp_remove_user_from_mailchimp_segment($list_id, $email, $segment_name, $account_id = NULL) {
+  $success = FALSE;
   if ($account_id) {
     mailchimp_accounts_set_current_mailchimp_context($account_id, 'user', TRUE);
   }
   $segments = ilr_mailchimp_get_mailchimp_segments($list_id);
   foreach ($segments as $segment) {
-    if ($segment->name == $segment_name) {
+    if ($segment->name == $segment_name || $segment_name == 'all') {
       try {
         $mc_lists = mailchimp_get_api_object('MailchimpLists');
         $mc_lists->removeSegmentMember($list_id, $segment->id, $email);
-        return TRUE;
+        $success = TRUE;
       }
       catch (Exception $e) { // The user may not be in the segment
-        watchdog('ilr_mailchimp', $e->getMessage() . ": %segment", ['%segment' => $segment_name], WATCHDOG_ERROR);
+        if ($segment_name != 'all') {
+          watchdog('ilr_mailchimp', $e->getMessage() . ": %segment", ['%segment' => $segment->name], WATCHDOG_ERROR);
+        }
       }
     }
   }
-  return FALSE;
+  return ($success) ? TRUE : FALSE;
 }
