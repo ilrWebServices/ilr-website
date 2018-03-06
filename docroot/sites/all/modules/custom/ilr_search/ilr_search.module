@@ -53,6 +53,7 @@ function ilr_search_menu() {
 }
 
 function ilr_search_results_view() {
+  drupal_set_title('Search results');
   $content = '<gcse:search resultsUrl="/search" queryParameterName="s">Please make sure javascript is enabled to see the search results.</gcse:searchresults-only>';
 
   return $content;

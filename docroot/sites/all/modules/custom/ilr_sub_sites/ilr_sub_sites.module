@@ -444,7 +444,7 @@ function _ilr_sub_sites_get_menu_name($node=NULL) {
 function _ilr_sub_sites_check_for_menu_by_top_path($path) {
   $normal_path = drupal_get_normal_path($path);
   $menu_name = db_query('SELECT menu_name FROM {menu_links} WHERE link_path =:link_path and plid = 0', array(':link_path' => $normal_path))->fetchField();
-  if ($menu_name && $menu_name != 'user-menu' && $menu_name != 'main-menu') {
+  if ($menu_name && $menu_name != 'user-menu' && $menu_name != 'main-menu' && $menu_name != 'navigation') {
     return $menu_name;
   }
   return FALSE;
