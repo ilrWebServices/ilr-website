@@ -38,7 +38,6 @@ features[field_instance][] = file-image-field_file_image_alt_text
 features[field_instance][] = file-image-field_file_image_caption
 features[field_instance][] = file-image-field_file_image_title_text
 features[field_instance][] = file-image-field_tags
-features[field_instance][] = node-basic_page-body
 features[field_instance][] = node-basic_page-field_blocks
 features[field_instance][] = node-basic_page-field_category_type
 features[field_instance][] = node-basic_page-field_editor_notes
