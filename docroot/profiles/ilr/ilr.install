@@ -866,6 +866,15 @@ function ilr_update_7067() {
   }
 }
 
+/**
+ * Deletes body field from basic pages
+ */
+function ilr_update_7068() {
+  if ($instance = field_info_instance('node', 'body', 'basic_page')) {
+    field_delete_instance($instance);
+  }
+}
+
 function _ilr_migrate_body_to_paragraph_item($node) {
   $body = (isset($node->body[LANGUAGE_NONE][0]['value']))
     ? $node->body[LANGUAGE_NONE][0]['value']
