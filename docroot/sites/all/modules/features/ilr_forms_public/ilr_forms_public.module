@@ -66,7 +66,7 @@ function _ilr_forms_public_check_for_custom_labels(&$block, $nid) {
     $menu = _ilr_sub_sites_get_menu_name($page);
 
     if ($menu == 'sports-leadership-camp') {
-      $block['content']['field_job_title'][LANGUAGE_NONE][0]['value']['#title'] = "Are you a camper or parent?";
+      $block['content']['field_job_title'][LANGUAGE_NONE][0]['value']['#title'] = "Are you a student or parent?";
       $block['content']['field_comments'][LANGUAGE_NONE][0]['value']['#title'] = "How can we help?";
     }
   }
