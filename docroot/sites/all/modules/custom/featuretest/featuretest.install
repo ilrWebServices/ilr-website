@@ -20,6 +20,8 @@ function featuretest_enable() {
   variable_set('stage_file_proxy_origin_dir','sites/ilr.cornell.edu/files');
   // Redirect all outgoing mail to the local filesystem
   variable_set('mail_system', array('default-system' => 'DevelMailLog'));
+
+  featuretest_update_7001([]);
 }
 
 /**
@@ -29,4 +31,22 @@ function featuretest_enable() {
  */
 function featuretest_disable() {
   variable_set('mail_system', array('default-system' => 'DefaultMailSystem'));
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Removes all submitted form data
+ */
+function featuretest_update_7001(&$sandbox) {
+  module_load_include('install', 'forms');
+  if (!isset($sandbox['progress'])) {
+    $sandbox['eform_types'] = array_keys(entityform_get_types());
+    $sandbox['progress'] = 0;
+  }
+  _forms_delete_entityform_submissions($sandbox['eform_types'][$sandbox['progress']]);
+  $sandbox['progress']++;
+  $sandbox['#finished'] = $sandbox['progress'] == count($sandbox['eform_types']);
+  $percent = ceil($sandbox['progress'] / count($sandbox['eform_types']) * 100);
+  return t( $percent . '% complete');
 }
