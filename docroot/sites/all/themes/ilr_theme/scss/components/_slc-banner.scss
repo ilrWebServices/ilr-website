@@ -146,7 +146,6 @@ body.subsite.sports-leadership-camp {
         @include grid-span (3,9);
         background: none;
         text-align: center;
-        margin-top: -2em;
       }
 
       .button {
@@ -174,10 +173,12 @@ body.subsite.sports-leadership-camp {
   .slc-banner__images {
     @include inline-block-list-container;
     width: 100%;
+    max-height: 260px;
 
     @include large {
       display: flex;
       flex-flow: row nowrap;
+      max-height: 320px;
     }
   }
 
@@ -188,7 +189,7 @@ body.subsite.sports-leadership-camp {
     width: 100%;
 
     @include small {
-      width: 50%;
+      width: 100%;
       float: left;
     }
 
