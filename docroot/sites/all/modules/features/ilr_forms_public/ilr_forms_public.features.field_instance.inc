@@ -3641,7 +3641,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_camper_type',
-    'label' => 'Camper type',
+    'label' => 'Student type',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -3882,7 +3882,7 @@ function ilr_forms_public_field_default_field_instances() {
     'bundle' => 'sports_camp_application',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Note this email will be used in all follow-up camp communication, including the payment confirmation.',
+    'description' => 'Note this email will be used in all follow-up academy communication, including the payment confirmation.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -4057,7 +4057,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_how_heard_other',
-    'label' => 'How did you hear about the camp?',
+    'label' => 'How did you hear about the academy?',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -5513,7 +5513,6 @@ function ilr_forms_public_field_default_field_instances() {
   t('Audio visual equipment');
   t('Brief description (including # of potential participants)');
   t('Button clicked');
-  t('Camper type');
   t('Catering instructions');
   t('Cell phone');
   t('City');
@@ -5540,7 +5539,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('First name (2nd participant)');
   t('For single-day events, please enter the same dates and times for both start and end date.');
   t('Home phone');
-  t('How did you hear about the camp?');
+  t('How did you hear about the academy?');
   t('How will you be paying?');
   t('In US dollars');
   t('Is this reservation for the Ithaca, NY or the New York City Conference center?');
@@ -5550,7 +5549,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Last name');
   t('Last name (2nd participant)');
   t('Mailing address');
-  t('Note this email will be used in all follow-up camp communication, including the payment confirmation.');
+  t('Note this email will be used in all follow-up academy communication, including the payment confirmation.');
   t('Organization');
   t('Parent / Guardian email');
   t('Payment amount');
@@ -5572,6 +5571,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Student email');
   t('Student first name');
   t('Student last name');
+  t('Student type');
   t('Student\'s name');
   t('Submission page');
   t('Tell us about your interest');
