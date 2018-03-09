@@ -40,13 +40,26 @@ function featuretest_disable() {
  */
 function featuretest_update_7001(&$sandbox) {
   module_load_include('install', 'forms');
-  if (!isset($sandbox['progress'])) {
-    $sandbox['eform_types'] = array_keys(entityform_get_types());
-    $sandbox['progress'] = 0;
+  if (!isset($sandbox['total'])) {
+    $sandbox['eids'] = [];
+    $result = db_select('entityform')
+      ->fields('entityform', array('entityform_id'))
+      ->execute()
+      ->fetchAll();
+    foreach ($result as $row) {
+      $sandbox['eids'][] = $row->entityform_id;
+    }
+    $sandbox['total'] = count($sandbox['eids']);
+    $sandbox['current'] = 0;
   }
-  _forms_delete_entityform_submissions($sandbox['eform_types'][$sandbox['progress']]);
-  $sandbox['progress']++;
-  $sandbox['#finished'] = $sandbox['progress'] == count($sandbox['eform_types']);
-  $percent = ceil($sandbox['progress'] / count($sandbox['eform_types']) * 100);
-  return t( $percent . '% complete');
+
+  $batch_size = 100;
+
+  entityform_delete_multiple(array_slice($sandbox['eids'], $sandbox['current'], $batch_size));
+
+  $sandbox['current']+= $batch_size;
+
+  $percent = floor($sandbox['current'] / $sandbox['total'] * 100);
+  $sandbox['#finished'] = ($percent >= 100);
+  return t( $sandbox['current'] . ' removed of ' . $sandbox['total'] . '. ' . $percent . '% complete');
 }
