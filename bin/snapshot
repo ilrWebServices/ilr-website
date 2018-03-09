@@ -15,7 +15,7 @@ source $BIN_DIR/set-backup-name
 drush cc all
 
 # make a backup of current db
-drush sql-dump -l default --gzip --result-file=../db/backups/$BACKUP_NAME
+drush sql-dump -l default --gzip --result-file=../db/backups/$BACKUP_NAME --structure-tables-list=cache,cache_*
 
 # delete the tmp files
 rm ../tmp/devel-mails/* 2>/dev/null
