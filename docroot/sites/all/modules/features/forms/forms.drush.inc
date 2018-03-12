@@ -23,24 +23,30 @@ function forms_drush_command() {
  * drush_[COMMAND_NAME]().
  */
 function drush_forms_sanitize_form_data($entityform_type=NULL) {
-  if ($entityform_type) {
-    $field_names = forms_get_field_instances($entityform_type);
-    if (!empty($field_names)) {
-      foreach ($field_names as $field_name) {
-        db_query("DELETE FROM field_data_{$field_name} WHERE entity_type = 'entityform' and bundle = '$entityform_type'");
-        db_query("DELETE FROM field_revision_{$field_name} WHERE entity_type = 'entityform' and bundle = '$entityform_type'");
+  $type = ($entityform_type) ? $entityform_type : 'all';
+  if (drush_confirm('Are you sure you want to delete ' . $type . ' form data?')) {
+    if ($entityform_type) {
+      $field_names = forms_get_field_instances($entityform_type);
+      if (!empty($field_names)) {
+        foreach ($field_names as $field_name) {
+          db_query("DELETE FROM field_data_{$field_name} WHERE entity_type = 'entityform' and bundle = '$entityform_type'");
+          db_query("DELETE FROM field_revision_{$field_name} WHERE entity_type = 'entityform' and bundle = '$entityform_type'");
+        }
+        $tokens = ['@type' => $entityform_type];
+        drush_print(dt('Form data removed from @type', $tokens));
       }
-      $tokens = ['@type' => $entityform_type];
-      drush_print(dt('Form data removed from @type', $tokens));
+    }
+    else {
+      $instances = forms_get_all_field_instances();
+      foreach ($instances as $field_name) {
+        db_query("DELETE FROM field_data_{$field_name} WHERE entity_type = 'entityform'");
+        db_query("DELETE FROM field_revision_{$field_name} WHERE entity_type = 'entityform'");
+      }
+      drush_print(dt('All form data removed.'));
     }
   }
   else {
-    $instances = forms_get_all_field_instances();
-    foreach ($instances as $field_name) {
-      db_query("DELETE FROM field_data_{$field_name} WHERE entity_type = 'entityform'");
-      db_query("DELETE FROM field_revision_{$field_name} WHERE entity_type = 'entityform'");
-    }
-    drush_print(dt('All form data removed.'));
+    drush_user_abort();
   }
 }
 
