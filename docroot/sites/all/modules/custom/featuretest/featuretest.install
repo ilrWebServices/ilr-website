@@ -20,9 +20,6 @@ function featuretest_enable() {
   variable_set('stage_file_proxy_origin_dir','sites/ilr.cornell.edu/files');
   // Redirect all outgoing mail to the local filesystem
   variable_set('mail_system', array('default-system' => 'DevelMailLog'));
-
-  $sandbox = [];
-  featuretest_update_7001($sandbox);
 }
 
 /**
@@ -32,35 +29,4 @@ function featuretest_enable() {
  */
 function featuretest_disable() {
   variable_set('mail_system', array('default-system' => 'DefaultMailSystem'));
-}
-
-/**
- * Implements hook_update_N().
- *
- * Removes all submitted form data
- */
-function featuretest_update_7001(&$sandbox) {
-  module_load_include('install', 'forms');
-  if (!isset($sandbox['total'])) {
-    $sandbox['eids'] = [];
-    $result = db_select('entityform')
-      ->fields('entityform', array('entityform_id'))
-      ->execute()
-      ->fetchAll();
-    foreach ($result as $row) {
-      $sandbox['eids'][] = $row->entityform_id;
-    }
-    $sandbox['total'] = count($sandbox['eids']);
-    $sandbox['current'] = 0;
-  }
-
-  $batch_size = 100;
-
-  entityform_delete_multiple(array_slice($sandbox['eids'], $sandbox['current'], $batch_size));
-
-  $sandbox['current']+= $batch_size;
-
-  $percent = floor($sandbox['current'] / $sandbox['total'] * 100);
-  $sandbox['#finished'] = ($percent >= 100);
-  return t( $sandbox['current'] . ' removed of ' . $sandbox['total'] . '. ' . $percent . '% complete');
 }
