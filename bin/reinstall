@@ -28,4 +28,4 @@ drush -y -l default site-install ilr --site-name="ILR Dev Site | Cornell Univers
 drush -y -l default en ilr_dev
 
 # open the login page
-open -a /Applications/firefox.app "http://www.ilr-website.dev/user/login"
+open -a /Applications/firefox.app "http://www.ilr-website.test/user/login"

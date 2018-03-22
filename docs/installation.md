@@ -30,5 +30,5 @@ This installation guide assumes that you've already followed the [Quickstart Gui
 
   3. Assuming you can SSH into the Acquia server, install the production database from the docroot folder with `drush sql-sync @ilr.live @ilr.ilr.local --sanitize -y`.
   4. Once you have the database, enable the ilr development module with `drush en ilr_dev -y`.
-  5. Confirm that the site loads at [http://ilr-website.dev](http://ilr-website.dev).
+  5. Confirm that the site loads at [http://ilr-website.test](http://ilr-website.test).
   6. If you'll be compiling the stylesheet, follow the "Simplifying CSS compilation" in the [theming readme](/docs/theming.md).

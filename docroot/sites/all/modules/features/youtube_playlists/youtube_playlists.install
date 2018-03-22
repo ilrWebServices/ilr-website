@@ -12,7 +12,7 @@ function youtube_playlists_install() {
   // Set URL for XML of Video Playlist assignments
   variable_set('youtube_playlists_assignments_url', 'http://www.ilr.cornell.edu/codelib/media/youtube/getvideosinplaylists.cfm');
   // For testing purposes this can be changed to local file via drush
-  // drush vset youtube_playlists_assignments_url 'http://www.ilr-website.dev/sites/default/files/video_playlists.xml'
+  // drush vset youtube_playlists_assignments_url 'http://www.ilr-website.test/sites/default/files/video_playlists.xml'
 }
 
 /**

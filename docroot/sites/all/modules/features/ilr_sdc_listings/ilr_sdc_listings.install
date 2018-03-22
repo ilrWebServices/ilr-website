@@ -34,9 +34,9 @@ function _ilr_sdc_listings_set_bean_types() {
 function _ilr_sdc_listings_set_importer_sources() {
   /**
    * In order to use local copies of import files in development:
-   * use: drush vset ilr_sdc_listings_base_feed_url 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/'
+   * use: drush vset ilr_sdc_listings_base_feed_url 'http://www.ilr-website.test/sites/default/files/dev_temp_sources/'
    * or set in settings.php
-   * $conf['ilr_sdc_listings_base_feed_url'] = 'http://www.ilr-website.dev/sites/default/files/dev_temp_sources/';
+   * $conf['ilr_sdc_listings_base_feed_url'] = 'http://www.ilr-website.test/sites/default/files/dev_temp_sources/';
    */
   $base_url = variable_get('ilr_sdc_listings_base_feed_url', 'http://www.ilr.cornell.edu/registration/feeds/get.cfm?q=');
 
