@@ -24,7 +24,7 @@ function ilr_post_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -75,11 +75,12 @@ function ilr_post_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => 0,
         ),
         'type' => 'entityreference_label',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -129,12 +130,9 @@ function ilr_post_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 0,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -189,7 +187,7 @@ function ilr_post_field_default_field_instances() {
           'image_style' => 'focussed_main_image',
         ),
         'type' => 'image',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -273,7 +271,7 @@ function ilr_post_field_default_field_instances() {
           'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
