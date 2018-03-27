@@ -644,6 +644,21 @@ function ilr_get_node_wrapper($node_or_nid) {
 }
 
 /**
+ * Adds the read more link for content,
+ * which is removed by tagged_content but
+ * is sometimes present in the design
+ */
+function ilr_add_read_more_link(&$variables) {
+  $node_title_stripped = strip_tags($variables['node']->title);
+  $variables['content']['links']['node']['#links']['node-readmoremore'] = array(
+    'title' => t('Read more<span class="element-invisible"> about @title</span>', array('@title' => $node_title_stripped)),
+    'href' => '/node/'. $variables['node']->nid,
+    'html' => TRUE,
+    'attributes' => array('data-nid'=>$variables['node']->nid,'rel' => 'tag', 'title' => $node_title_stripped),
+  );
+}
+
+/**
  * Figures out whether user account has a NetID
  */
 function ilr_user_has_netid() {

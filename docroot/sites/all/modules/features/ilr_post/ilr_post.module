@@ -18,6 +18,9 @@ function ilr_post_preprocess_node(&$variables) {
       $variables['content']['body'][0]['#markup'] = $rss_markup . $current_markup;
     }
   }
+  if ($variables['type'] == 'post' && $variables['view_mode'] == 'teaser') {
+    ilr_add_read_more_link($variables);
+  }
 }
 
 /**
