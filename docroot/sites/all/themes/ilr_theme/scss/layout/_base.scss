@@ -64,7 +64,7 @@
 
   &[data-eq-state="550"] {
     #content, #sidebar-second {
-      .block:not(.block-system) > article:not(.node-certificate-programs),
+      .block:not(.block-system) > article:not(.node-certificate-programs):not(.node-post),
       .block .views-row {
         @extend %two-column;
       }
