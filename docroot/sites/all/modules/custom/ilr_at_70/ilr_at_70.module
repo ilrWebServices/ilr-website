@@ -38,7 +38,7 @@ function ilr_at_70_preprocess_node(&$variables) {
       _ilr_social_sharing_add_social_buttons($variables);
 
       if (_ilr_at_70_node_is_truncated($variables)) {
-        _ilr_at_70_add_read_more_link($variables);
+        ilr_add_read_more_link($variables);
       }
     }
     if (_ilr_at_70_is_quote($variables['node'])) {
@@ -55,19 +55,6 @@ function _ilr_at_70_node_is_truncated($variables) {
   $body_array = $wrapper->body->value();
   $full_body = $body_array['value'];
   return strlen($full_body) - strlen($variables['content']['body'][0]['#markup']) > 10;
-}
-
-/**
- * @See node_build_content in node.module
- */
-function _ilr_at_70_add_read_more_link(&$variables) {
-  $node_title_stripped = strip_tags($variables['node']->title);
-  $variables['content']['links']['node']['#links']['node-readmoremore'] = array(
-    'title' => t('Read more<span class="element-invisible"> about @title</span>', array('@title' => $node_title_stripped)),
-    'href' => '/node/'. $variables['node']->nid,
-    'html' => TRUE,
-    'attributes' => array('data-nid'=>$variables['node']->nid,'rel' => 'tag', 'title' => $node_title_stripped),
-  );
 }
 
 /**

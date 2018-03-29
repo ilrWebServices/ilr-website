@@ -1,9 +1,11 @@
 article.node-post { // Both post teaser and full nodes
+  @include padding-leader(1.5);
+  @include trailer(1.5);
+  border-top: 1px solid $gray-light;
   .field-name-field-published-date {
     font-weight: 300;
     @include adjust-font-size-to(16px);
-    @include trailer(1);
-    border-bottom: 1px solid $gray-medium;
+    @include trailer(.5);
   }
   .field-name-field-author-reference {
     @include trailer(1);
@@ -14,20 +16,55 @@ article.node-post { // Both post teaser and full nodes
   .field-name-body.field-type-text-with-summary {
     display: block !important; // Override tagged content block settings
   }
+
   &.node-teaser {
     .field-type-image {
       top: 10px !important;
+    }
+    .field-name-field-published-date {
+      @include leader(.5);
     }
     .field-name-body {
       padding-top: 0 !important;
       h2, h3 {
         margin-left: 0 !important;
       }
+      p {
+        @include trailer(.5);
+      }
+    }
+    .links {
+      li {
+        padding-left: 0;
+        background: none;
+      }
+    }
+    @include medium {
+      .field-type-image {
+        @include grid-span (3,1);
+        padding-right: 21px;
+      }
+      .field-name-body, .field-name-field-published-date, .links {
+        @include grid-span (9,4);
+      }
+      .field-name-field-published-date {
+        @include leader(0);
+      }
+      .field-name-body {
+        padding-right: 89px;
+        p {
+          @include trailer(.5);
+        }
+      }
     }
   }
   &[data-eq-state="large"] {
-    &.node-teaser .field-name-body {
-      margin-left: 115px;
+    &.node-teaser {
+      @include medium {
+        .field-name-body {
+          margin-left: 115px;
+        }
+      }
     }
   }
 }

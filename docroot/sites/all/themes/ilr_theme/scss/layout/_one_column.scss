@@ -22,7 +22,7 @@
           .block-bean article {
             @extend %four-column;
             &.node-post {
-              @extend %two-column;
+              @extend %one-column;
             }
           }
         }

@@ -36,12 +36,17 @@
   #content & {
     &:not([data-items='1']) {
       &:not([data-items='3']) {
-        article:not(.node-reflection):not(.node-certificate-programs) {
+        article:not(.node-reflection):not(.node-certificate-programs):not(.node-post) {
           @extend %thumb;
         }
         &[data-eq-state="small"] {
           @extend %slug;
         }
+      }
+    }
+    &[data-items='4'] {
+      article {
+        @extend %card;
       }
     }
     &[data-items='3'] {
