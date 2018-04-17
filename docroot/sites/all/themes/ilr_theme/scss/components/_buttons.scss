@@ -5,28 +5,39 @@
 // _course_search.scss //course search and filter in left column
 // _mailchimp.scss //MAI email updates form
 
-%button {
-  background-color: $student-portrait-color;
+@mixin button($color: white, $background-color: $student-portrait-color, $hover-color: $spotlight-color) {
+  background-color: $background-color;
   border: none;
   border-radius: 20px;
   padding: .2em 1em;
   font-family: $font;
   text-decoration: none;
   text-transform: uppercase;
-  color: white;
+  color: $color;
   font-weight: 300;
   box-shadow: 1px 2px 4px $gray-medium;
-  display: block;
 
   &:hover, &:focus {
-    background-color: $spotlight-color;
+    background-color: $hover-color;
     cursor: pointer;
     color: white;
   }
 }
 
+%button {
+  @include button;
+}
+
 // This is for freedompay payment checkout forms
 .page-pay-checkout .button {
-  @extend %button;
-  display: inline-block;
+  @include button;
+}
+
+// Modifier for links that should look like buttons
+.link--button {
+  @include button;
+}
+
+.link--offset-button {
+  margin: 0 1rem;
 }
