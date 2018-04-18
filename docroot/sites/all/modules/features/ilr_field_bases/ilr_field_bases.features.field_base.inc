@@ -7119,7 +7119,7 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(
       'markup' => array(
         'format' => 'full_html',
-        'value' => '<p>If you are planning to attend the ILR Diploma Ceremony in May, please provide the phonetic pronunciation of your name. This will help to ensure that your name is pronounced correctly as you walk across the stage to accept your diploma.</p>
+        'value' => '<p>If you are planning to attend the ILR Diploma Ceremony in May, please provide the phonetic pronunciation of your name. This will help to ensure that your name is pronounced correctly as you walk across the stage.</p>
 ',
       ),
     ),
