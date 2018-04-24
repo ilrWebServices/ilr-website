@@ -93,7 +93,7 @@ function ilr_form_user_profile_form_alter(&$form, $form_state, $form_id) {
  */
 function ilr_form_user_login_alter(&$form, $form_state, $form_id) {
   $form['netid'] = array(
-    '#markup' => '<h2>Cornell Users</h2><p><a class="button" href="/saml_login">NetID Login</a></p><h2>No Cornell NetID?</h2>',
+    '#markup' => '<h2>Cornell Users</h2><p><a class="link--button" href="/saml_login">NetID Login</a></p><h2>No Cornell NetID?</h2>',
     '#weight' => -10,
   );
   // Remove the saml link provided by the simplesamlphp_auth module
