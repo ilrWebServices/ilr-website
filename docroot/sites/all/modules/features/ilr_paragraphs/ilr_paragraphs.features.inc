@@ -44,7 +44,7 @@ function ilr_paragraphs_paragraphs_info() {
       'locked' => '1',
     ),
     'just_text' => array(
-      'name' => 'some text',
+      'name' => 'text',
       'bundle' => 'just_text',
       'locked' => '1',
     ),

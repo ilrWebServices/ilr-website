@@ -606,7 +606,7 @@ function basic_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -651,7 +651,7 @@ function basic_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -770,9 +770,13 @@ function basic_page_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
+        'module' => 'paragraphs',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'view_mode' => 'full',
+        ),
+        'type' => 'paragraphs_view',
+        'weight' => 1,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -795,30 +799,34 @@ function basic_page_field_default_field_instances() {
     'settings' => array(
       'add_mode' => 'button',
       'allowed_bundles' => array(
+        'action_callout' => -1,
         'compare_three' => -1,
         'display_a_block' => -1,
         'featured_promo' => -1,
-        'just_image' => -1,
-        'just_text' => -1,
+        'just_image' => 'just_image',
+        'just_text' => 'just_text',
         'side_by_side_text' => -1,
+        'social_callout' => -1,
         'social_feed' => -1,
         'sponsor_message' => -1,
         'unit_contact_info' => -1,
       ),
       'bundle_weights' => array(
+        'action_callout' => 12,
         'compare_three' => 2,
         'display_a_block' => 3,
         'featured_promo' => 4,
         'just_image' => 5,
         'just_text' => 6,
         'side_by_side_text' => 7,
+        'social_callout' => 19,
         'social_feed' => 8,
         'sponsor_message' => 9,
         'unit_contact_info' => 10,
       ),
-      'default_edit_mode' => 'open',
-      'title' => 'Paragraph',
-      'title_multiple' => 'Paragraphs',
+      'default_edit_mode' => 'closed',
+      'title' => 'Component',
+      'title_multiple' => 'Components',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -841,7 +849,7 @@ function basic_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
