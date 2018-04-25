@@ -21,7 +21,7 @@ form {
     @include tab-focus();
   }
   input[type='submit'] {
-    @extend %button;
+    @include button;
     @include leader(1.5);
     @include trailer(.5);
     margin-right: 1em;
@@ -100,7 +100,7 @@ form {
         color: $spotlight-color;
       }
       a.button { //netid login
-        @extend %button;
+        @include button;
         display: inline-block;
       }
     }

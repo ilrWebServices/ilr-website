@@ -149,7 +149,7 @@ body.subsite.sports-leadership-camp {
       }
 
       .button {
-        @extend %button;
+        @include button;
         background-color: $orange-light;
         box-shadow: 1px 2px 4px #4a4a4a;
         display: inline-block;

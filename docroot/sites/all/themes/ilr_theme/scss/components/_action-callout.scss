@@ -43,7 +43,7 @@
   }
 
   &__button {
-    @extend %button;
+    @include button;
     color: white;
     display: inline-block !important;
     box-shadow: 1px 2px 4px rgba(black, .5) !important;

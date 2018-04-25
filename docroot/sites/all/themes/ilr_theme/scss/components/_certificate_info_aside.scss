@@ -40,7 +40,7 @@
       margin-top: 0;
     }
     .button {
-      @extend %button;
+      @include button;
       background-color: $orange;
       font-weight: 100;
       padding: 8px 20px;

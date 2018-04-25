@@ -97,7 +97,7 @@
   }
 
   .button {
-    @extend %button;
+    @include button;
     @include leader(.5);
     @include trailer(.5);
     display: inline-block;
@@ -340,7 +340,7 @@ div.field-name-field-course.field-type-entityreference {
 }
 
 .dates-registration {
-  @extend %button;
+  @include button;
   @include leader(1);
   clear: left;
 }

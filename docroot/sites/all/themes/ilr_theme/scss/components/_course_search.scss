@@ -110,7 +110,7 @@
     padding-right: 1em;
   }
   #search-form-submit, #edit-submit-sdc-course-listing {
-    @extend %button;
+    @include button;
     @include leader(.2);
     @include trailer(.5);
     &:hover {

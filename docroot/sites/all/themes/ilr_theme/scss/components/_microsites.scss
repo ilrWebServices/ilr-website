@@ -77,7 +77,7 @@ body.microsite {
   }
 
   .button {
-    @extend %button;
+    @include button;
     display: inline;
   }
 
