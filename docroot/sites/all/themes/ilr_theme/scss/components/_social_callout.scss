@@ -7,7 +7,7 @@
   text-align: center;
 
   .social-callout__heading {
-    @extend %centered-title;
+    @include centered-title;
     @include adjust-leading-to(1);
 
     font-family: $font;

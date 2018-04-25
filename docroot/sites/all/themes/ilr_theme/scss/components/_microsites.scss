@@ -212,7 +212,7 @@ body.microsite {
       @include padding-trailer(2);
       overflow: auto;
       h2 {
-        @extend %centered-title;
+        @include centered-title;
         @include trailer(1);
         &::after {
           border-bottom: 2px solid $orange;

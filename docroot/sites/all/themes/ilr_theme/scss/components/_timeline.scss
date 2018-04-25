@@ -8,7 +8,7 @@
   background-color: white;
   border-bottom: 1px solid $gray-light;
   h2 {
-    @extend %centered-title;
+    @include centered-title;
     @include margin-trailer(1);
   }
   p {

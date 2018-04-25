@@ -21,7 +21,7 @@ body.subsite-front {
     }
 
     .block > h2 {
-      @extend %centered-title;
+      @include centered-title;
     }
     .introduction {
       text-align: center;
@@ -52,7 +52,7 @@ body.subsite-front {
         max-width: $section-max-width;
       }
       h2 {
-        @extend %centered-title;
+        @include centered-title;
       }
     }
     // Add reflection Form. Styles moved to reflections.scss
