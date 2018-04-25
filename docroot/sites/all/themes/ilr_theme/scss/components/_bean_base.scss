@@ -1,20 +1,20 @@
-%bean-base {
+@mixin bean-base() {
   @include clearfix;
   body.not-front #sidebar-second & {
     article {
-      @extend %thumb;
+      @include thumb;
     }
   }
 
   body.front {
     article {
-      @extend %card;
+      @include card;
     }
   }
 
   body.subsite-front #sidebar-second & {
     article {
-      @extend %thumb;
+      @include thumb;
     }
   }
 
@@ -37,21 +37,21 @@
     &:not([data-items='1']) {
       &:not([data-items='3']) {
         article:not(.node-reflection):not(.node-certificate-programs):not(.node-post) {
-          @extend %thumb;
+          @include thumb;
         }
         &[data-eq-state="small"] {
-          @extend %slug;
+          @include slug;
         }
       }
     }
     &[data-items='4'] {
       article {
-        @extend %card;
+        @include card;
       }
     }
     &[data-items='3'] {
       article {
-        @extend %card;
+        @include card;
       }
     }
     &[data-items='1'] {
@@ -70,7 +70,11 @@
   .field-name-field-content-bottom-region > & {
     > h2 { @extend .hidden; }
     article {
-     @extend %card;
+     @include card;
     }
   }
+}
+
+%bean-base {
+  @include bean-base;
 }

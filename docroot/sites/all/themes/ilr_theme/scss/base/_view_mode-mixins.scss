@@ -100,6 +100,8 @@
 }
 
 @mixin card() {
+  @include image-first;
+
   border: 1px solid $gray-light;
   border-radius: 6px;
   @include trailer(1.5);
