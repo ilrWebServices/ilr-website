@@ -218,3 +218,26 @@
     background-color: $hover-color;
   }
 }
+
+@mixin button($color: white, $background-color: $student-portrait-color, $hover-color: $spotlight-color) {
+  background-color: $background-color;
+  border: none;
+  border-radius: 20px;
+  padding: .2em 1em;
+  font-family: $font;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $color;
+  font-weight: 300;
+  box-shadow: 1px 2px 4px $gray-medium;
+
+  &:hover, &:focus {
+    background-color: $hover-color;
+    cursor: pointer;
+    color: white;
+  }
+
+  &:visited {
+    color: $color;
+  }
+}
