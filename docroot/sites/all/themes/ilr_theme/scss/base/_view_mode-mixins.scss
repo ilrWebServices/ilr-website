@@ -1,0 +1,300 @@
+@mixin slug() {
+  h2 {
+    @include adjust-leading-to(1);
+    @include adjust-font-size-to(16px);
+    margin-bottom: 0;
+    font-weight: 400;
+  }
+  // Hide everything but the title
+  div, ul.links, h3, h4 {
+    display: none;
+  }
+
+  a {
+    color: $p-text;
+    font-family: $font-headers;
+    font-weight: bold;
+
+    display: block;
+    position: relative;
+    background: darken(white, 1%);
+    padding: 1em 2.5em 1em 1em;
+    border: 1px solid #e0e0e0;
+    border-bottom-width: 3px;
+    @include trailer(1);
+
+    &:hover {
+      text-decoration: none;
+      background: white;
+    }
+
+    @extend %icon-after-arrow-right-bold;
+
+    &::after {
+      display: block;
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      margin-top: -10px;
+      color: lighten($brand, 5%);
+      font-size: 14px;
+    }
+  }
+}
+
+@mixin thumb() {
+  position: relative;
+  //@include image-first;
+  min-height: 100px;
+  @include trailer(2);
+
+  h2 {
+    @include padding-leader(1.2);
+    @include adjust-font-size-to(18px);
+    @include adjust-leading-to(.8, 18px);
+    margin-left: 115px;
+    text-align: left;
+  }
+
+  h3 {
+    margin-left: 115px;
+  }
+
+  .field-type-image,
+  .field-name-field-youtube-video,
+  .thumbnail.custom {
+    @include circularImage;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  h3.category {
+    position: absolute;
+    top: 0;
+  }
+
+  @include addHighlightColors('.thumbnail.custom a', 'background-color',.2);
+  .thumbnail.custom {
+    @include custom-thumbnail;
+    &.event a {
+      background: $event-color;
+    }
+  }
+
+  .field-name-field-published-date {
+    margin-left: 115px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .field-type-text-with-summary,
+  .field-name-field-description,
+  .field-name-field-campaign-intro,
+  .field-name-field-campaign-title,
+  .field-name-field-teaser,
+  .student-name {
+    display: none;
+  }
+}
+
+@mixin card() {
+  border: 1px solid $gray-light;
+  border-radius: 6px;
+  @include trailer(1.5);
+  @include padding-leader(1);
+  &:hover {
+    background: white;
+    border-color: $gray-medium;
+  }
+
+  h2, h3, h4 {
+    text-align: center;
+  }
+
+  h2 {
+    @include adjust-font-size-to(20px, 1);
+    padding: .8em .5em .5em;
+  }
+  &[data-eq-state="small"] h2 {
+    @include adjust-font-size-to(22px);
+  }
+
+  h3 {
+    @include trailer(1);
+  }
+
+  h4 {
+    text-transform: uppercase;
+    font-family: $font;
+    font-weight: bold;
+    @include adjust-font-size-to(14px);
+  }
+
+  @include addHighlightColors('.thumbnail.custom a', 'background-color', .2);
+  .thumbnail.custom {
+    @include custom-thumbnail;
+    @include circularImage(150px);
+    margin: 0 auto;
+    &.event a {
+      background: $event-color;
+      @include adjust-font-size-to(25px);
+      padding-top: .5em;
+      line-height: .8;
+    }
+  }
+
+  &.node-basic-page,
+  &.node-news-item,
+  &.node-promo,
+  &.node-youtube-video {
+    .field-type-image,
+    .field-type-youtube {
+      @extend %square-to-3x4;
+    }
+  }
+
+  &.node-student-portrait,
+  &.localist-event {
+    .field-type-image {
+      margin: 0 auto;
+      @include circularImage(150px);
+    }
+  }
+
+  .field-type-text-with-summary,
+  .field-name-field-description,
+  .field-name-field-campaign-intro,
+  .field-name-field-campaign-title,
+  .field-name-field-teaser {
+    display: none;
+  }
+}
+
+@mixin card-rounded() {
+  @include padding-leader(0);
+  @include padding-trailer(.5);
+  overflow: auto;
+  @include clearfix;
+  border: 1px solid $gray-light;
+  border-radius: 8px;
+
+  h2 {
+    padding: 1em .8em 0;
+    @include margin-trailer(0);
+    text-align: left;
+    a {
+      color: $darker-red;
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+  .field-type-text-with-summary {
+    display: block;
+  }
+  .field-name-body {
+    padding-right: 1em;
+    padding-left: 1em;
+    @include padding-leader(0);
+    p {
+      @include margin-leader(.8);
+      @include margin-trailer(0);
+    }
+  }
+  .field-name-field-full-name {
+    padding-left: 1em;
+    @include margin-leader(.5);
+    font-style: oblique;
+  }
+  div.field-name-field-youtube-video > a {
+    border-bottom: none;
+  }
+}
+
+@mixin card-animated() {
+  position: relative;
+  &:hover img {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  h2, h3 {
+    background: rgba(0,0,0,.3);
+    font-style: normal;
+    margin: 0;
+    padding: .5em 25px;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    text-shadow: 1px 1px 2px black;
+    a {
+      font-family: $font;
+      color: white;
+      text-decoration: none;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  .field-name-field-image {
+    background: black;
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    display: block;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition-duration: .2s;
+    transition-duration: .2s;
+  }
+}
+
+@mixin custom-thumbnail() {
+  &.event a {
+    text-align: center;
+    background: $event-color;
+    color: white;
+    span {
+      display: block;
+      @include adjust-font-size-to(25px, 1);
+      font-style: normal;
+      text-transform: uppercase;
+      font-family: $font;
+      padding-top: 25px;
+      #sidebar-second & {
+        padding-top: 25px;
+      }
+    }
+  }
+}
+
+@mixin image-first() {
+  flex-direction: column;
+  display: flex;
+
+  h3                     { order: 1; }
+  .field-type-image,
+  .field-type-youtube,
+  .thumbnail.custom      { order: 2; }
+  h2                     { order: 3; }
+  .student-name          { order: 4; }
+}
+
+@mixin image-heading-text() {
+  flex-direction: column;
+  display: flex;
+
+  .field-type-image,
+  .field-type-youtube                     { order: 1; }
+  h2                                      { order: 2; }
+  .field-type-text-with-summary           { order: 3; }
+  ul.links                                { order: 3; }
+  .field-name-field-full-name             { order: 4; }
+  ul                                      { order: 5; }
+}
