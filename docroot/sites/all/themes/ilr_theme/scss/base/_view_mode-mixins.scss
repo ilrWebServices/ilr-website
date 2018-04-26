@@ -153,7 +153,7 @@
   &.node-youtube-video {
     .field-type-image,
     .field-type-youtube {
-      @extend %square-to-3x4;
+      @include square-to-3x4;
     }
   }
 
@@ -366,6 +366,16 @@
       height: 100%;
       z-index: 0;
       @include background-image(linear-gradient(rgba(#000000, 0), rgba(#000000, 0) 75%, rgba(#000000, .6)));
+    }
+  }
+}
+
+@mixin square-to-3x4 {
+  @include image-ratio-hack;
+  a {
+    padding-top: 75%;
+    img {
+      top: -12.5%; // Square images need a negative margin for vertical positioning
     }
   }
 }

@@ -241,3 +241,15 @@
     color: $color;
   }
 }
+
+@mixin image-ratio-hack() {
+  position: relative;
+  overflow: hidden;
+  a {
+    display: block;
+    img {
+      position: absolute;
+      left: 0;
+    }
+  }
+}
