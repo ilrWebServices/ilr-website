@@ -58,7 +58,7 @@
       article {
         @extend %one-column;
         &:not(.block-bean-70th-reflections-featured) & { //Removes text shadow from featured reflection
-          @extend %lead-story;
+          @include lead-story;
         }
       }
     }

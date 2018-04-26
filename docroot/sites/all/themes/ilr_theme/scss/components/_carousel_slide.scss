@@ -11,7 +11,7 @@
       border-bottom: 1px solid white;
     }
     h2 {
-      @extend %title-overlay;
+      @include title-overlay;
       a {
         bottom: .5em;
       }

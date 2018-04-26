@@ -300,3 +300,35 @@
   .field-name-field-full-name             { order: 4; }
   ul                                      { order: 5; }
 }
+
+@mixin title-overlay() {
+  margin: 0;
+  a {
+    display: block;
+    position: absolute;
+    line-height: 1;
+    left: 1em;
+    color: white;
+    @include single-text-shadow(0, 0, 10px, 10px, black);
+    font-family: $font;
+    border-bottom: 1px solid transparent;
+    &:hover {
+      border-bottom-color: #fff;
+    }
+  }
+}
+
+@mixin lead-story() {
+  h2 {
+    @include title-overlay;
+    a {
+      @include adjust-font-size-to(28px);
+      bottom: 1em;
+    }
+  }
+  h3.category {
+    display: none;
+  }
+  @include trailer(1);
+}
+
