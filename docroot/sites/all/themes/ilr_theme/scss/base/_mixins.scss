@@ -43,6 +43,8 @@
     display: block;
     width: $width;
     height: $width;
+    position: relative;
+    top: 0;
   }
 
   img, a {
