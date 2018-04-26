@@ -467,7 +467,7 @@ body.microsite {
       padding-left: 34px;
       padding-right: 34px;
       article.speaker  {
-        @extend %card-animated;
+        @include card-animated;
         margin-left: 0;
         margin-right: 0;
         h2, h3 {
@@ -530,7 +530,7 @@ body.microsite {
       padding-left: 55px;
       padding-right: 55px;
       article.speaker {
-        @extend %card-animated;
+        @include card-animated;
         margin-left: 0;
         margin-right: 0;
         h2, h3 {
@@ -631,7 +631,7 @@ body.microsite {
       padding-right: 89px;
       @include padding-trailer(4);
       article.speaker  {
-        @extend %card-animated;
+        @include card-animated;
         margin-top: 0;
         margin-left: 0 !important;
         margin-right: 0 !important;

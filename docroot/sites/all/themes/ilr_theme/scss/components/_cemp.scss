@@ -2,7 +2,7 @@
   article.about-program {
     background: $cornell-red;
     @extend %two-column;
-    @extend %card-rounded;
+    @include card-rounded;
     @include trailer(1);
     text-align: center;
     min-height: 190px;

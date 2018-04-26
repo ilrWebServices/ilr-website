@@ -1,7 +1,7 @@
 // all reflections
 article.node-reflection {
-  @extend %card-rounded;
-  @extend %image-heading-text;
+  @include card-rounded;
+  @include image-heading-text;
 
   &.quote {
     @extend %quote;
@@ -25,7 +25,7 @@ article.node-reflection {
     display: none;
   }
   article.node-reflection {
-    @extend %card-rounded;
+    @include card-rounded;
     padding-bottom: 1.5em !important; // Override for social share padding
 
     &.quote {

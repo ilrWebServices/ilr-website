@@ -44,8 +44,8 @@
 
 @mixin thumb() {
   position: relative;
-  //@include image-first;
   min-height: 100px;
+  border: none;
   @include trailer(2);
 
   h2 {

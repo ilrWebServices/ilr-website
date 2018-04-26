@@ -7,7 +7,7 @@ body.page-taxonomy-term .view-areas-expertise-taxonomy-term {
 
   article {
     position: relative;
-    @extend %thumb;
+    @include thumb;
 
     h2 {
       padding-top: 0 !important;

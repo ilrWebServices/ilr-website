@@ -36,7 +36,7 @@ body.mobilizing-against-inequality {
         .tagged-content {
           &[data-items='3'] {
             article {
-              @extend %thumb;
+              @include thumb;
             }
           }
         }
