@@ -1,6 +1,6 @@
 body.front {
   #highlighted {
-    @extend %carousel-slide;
+    @include carousel-slide;
   }
   #content .field-name-field-para-main-page-content {
     @extend %homepage-text;
