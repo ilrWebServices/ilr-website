@@ -1,4 +1,22 @@
 // ==================================================
+// mixins
+// ==================================================
+@mixin set-heading {
+  font-weight: 400;
+  font-family: $font-headers;
+  clear: left;
+  margin-top: 0;
+
+  a {
+    font-weight: inherit;
+    font-family: $font-headers;
+    &:visited {
+      color: inherit;
+    }
+  }
+}
+
+// ==================================================
 // body
 // ==================================================
 body {
@@ -12,18 +30,7 @@ body {
 // ==================================================
 // consider reworking per https://medium.com/p/8e51498c3713
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
-  font-family: $font-headers;
-  clear: left;
-  margin-top: 0;
-
-  a {
-    font-weight: inherit;
-    font-family: $font-headers;
-    &:visited {
-      color: inherit;
-    }
-  }
+  @include set-heading;
 }
 
 h1 {
@@ -48,17 +55,14 @@ h1 {
   }
 }
 
-h2 {
+@mixin h2 {
+  @include set-heading;
   @include adjust-font-size-to($h2-size, $line-height-multiplier);
   color: $h2-text;
+}
 
-  a {
-    color: $h2-link;
-
-      &:hover {
-        color: $h2-link-hover;
-      }
-   }
+h2 {
+  @include h2;
 }
 
 h2.centered-title {

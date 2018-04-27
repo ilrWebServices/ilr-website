@@ -1,6 +1,5 @@
 // specific paragraph bundle styles are in individual component files
 // prefixed with pb_
-
 #main {
   .paragraphs-items-field-para-main-page-content {
     .field-name-field-image {
@@ -20,6 +19,9 @@
     .field-name-field-para-main-page-content {
       .field-item:nth-child(even) {
         background: white;
+        .node-type-basic-page & {
+          background: none;
+        }
       }
     }
     .field-name-field-para-main-page-content {

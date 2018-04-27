@@ -824,7 +824,7 @@ function basic_page_field_default_field_instances() {
         'sponsor_message' => 9,
         'unit_contact_info' => 10,
       ),
-      'default_edit_mode' => 'closed',
+      'default_edit_mode' => 'open',
       'title' => 'Component',
       'title_multiple' => 'Components',
       'user_register_form' => FALSE,
