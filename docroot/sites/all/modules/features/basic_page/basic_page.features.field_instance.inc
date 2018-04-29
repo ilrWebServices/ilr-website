@@ -594,7 +594,7 @@ function basic_page_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -650,7 +650,7 @@ function basic_page_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -665,7 +665,7 @@ function basic_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -710,7 +710,7 @@ function basic_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -737,7 +737,7 @@ function basic_page_field_default_field_instances() {
       'module' => 'editor_note',
       'settings' => array(),
       'type' => 'editor_note_field_widget',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -820,6 +820,75 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-basic_page-field_para_main_page_content'.
+  $field_instances['node-basic_page-field_para_main_page_content'] = array(
+    'bundle' => 'basic_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_para_main_page_content',
+    'label' => 'Main Content',
+    'required' => 1,
+    'settings' => array(
+      'add_mode' => 'button',
+      'allowed_bundles' => array(
+        'compare_three' => -1,
+        'display_a_block' => -1,
+        'featured_promo' => -1,
+        'just_image' => -1,
+        'just_text' => -1,
+        'side_by_side_text' => -1,
+        'social_feed' => -1,
+        'sponsor_message' => -1,
+        'unit_contact_info' => -1,
+      ),
+      'bundle_weights' => array(
+        'compare_three' => 2,
+        'display_a_block' => 3,
+        'featured_promo' => 4,
+        'just_image' => 5,
+        'just_text' => 6,
+        'side_by_side_text' => 7,
+        'social_feed' => 8,
+        'sponsor_message' => 9,
+        'unit_contact_info' => 10,
+      ),
+      'default_edit_mode' => 'open',
+      'title' => 'Paragraph',
+      'title_multiple' => 'Paragraphs',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'paragraphs',
+      'settings' => array(),
+      'type' => 'paragraphs_embed',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-basic_page-field_tags'.
   $field_instances['node-basic_page-field_tags'] = array(
     'bundle' => 'basic_page',
@@ -831,7 +900,7 @@ function basic_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -861,7 +930,7 @@ function basic_page_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -879,6 +948,7 @@ function basic_page_field_default_field_instances() {
   t('Content Region');
   t('Editor Notes');
   t('Highlighted Region');
+  t('Main Content');
   t('Main Image');
   t('Sidebar Region');
   t('Tags');

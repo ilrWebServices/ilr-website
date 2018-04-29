@@ -854,3 +854,28 @@ function ilr_update_7065() {
 function ilr_update_7066() {
   module_enable(['ilr_redhen']);
 }
+
+/**
+ * Migrates body content to paragraph field
+ */
+function ilr_update_7067() {
+  $nodes = node_load_multiple(array(), array('type' => 'basic_page'));
+  // $sliced = array_slice($nodes, 0, 3);
+  foreach ($nodes as $node) {
+    _ilr_migrate_body_to_paragraph_item($node);
+  }
+}
+
+function _ilr_migrate_body_to_paragraph_item($node) {
+  $body = (isset($node->body[LANGUAGE_NONE][0]['value']))
+    ? $node->body[LANGUAGE_NONE][0]['value']
+    : '';
+  if (!empty($body)) {
+    $paragraph = new ParagraphsItemEntity(array('field_name' => 'field_para_main_page_content', 'bundle' => 'just_text'));
+    $paragraph->is_new = TRUE;
+    $paragraph->setHostEntity('node', $node);
+    $paragraph->field_text_paragraph[LANGUAGE_NONE][0]['value'] = $body;
+    $paragraph->field_text_paragraph[LANGUAGE_NONE][0]['format'] = 'full_html';
+    $paragraph->save();
+  }
+}

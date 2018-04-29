@@ -117,6 +117,15 @@ function basic_page_strongarm() {
       'basic_teaser' => array(
         'custom_settings' => FALSE,
       ),
+      'alternate_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__highlighted' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__sidebar_second' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -127,7 +136,7 @@ function basic_page_strongarm() {
           'weight' => '1',
         ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
       ),
       'display' => array(),
