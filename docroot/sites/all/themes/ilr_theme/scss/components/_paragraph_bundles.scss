@@ -27,6 +27,9 @@
     .field-name-field-para-main-page-content {
       .field-item:nth-child(1) {
         border-top: 1px solid $gray-light;
+        .node-type-basic-page & {
+          border: none;
+        }
       }
     }
     .field-name-field-para-main-page-content {
