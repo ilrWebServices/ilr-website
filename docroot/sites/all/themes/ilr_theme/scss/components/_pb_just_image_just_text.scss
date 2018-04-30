@@ -10,10 +10,12 @@
       }
     }
   }
-  body.node-type-channel-page & {
-    .paragraphs-item-just-text {
-      @include padding-leader(1);
-      @include padding-trailer(1);
+
+  .paragraphs-item-just-text {
+    @include padding-leader(1);
+    @include padding-trailer(1);
+
+    body.node-type-channel-page & {
       .content {
         @include grid-span (10,2);
         .field-name-field-header {
