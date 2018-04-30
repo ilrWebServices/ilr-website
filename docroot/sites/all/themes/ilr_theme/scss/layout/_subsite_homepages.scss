@@ -6,7 +6,7 @@ body.subsite-front {
     .container[data-eq-state="regular-nav"] {
       @extend %one-column-page;
 
-      .field-name-body {
+      .field-name-field-para-main-page-content {
         max-width: 100% !important;
         @extend %homepage-text;
       }

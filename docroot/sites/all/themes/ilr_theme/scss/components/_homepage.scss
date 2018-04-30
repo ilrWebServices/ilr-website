@@ -2,7 +2,7 @@ body.front {
   #highlighted {
     @extend %carousel-slide;
   }
-  #content .field-name-body {
+  #content .field-name-field-para-main-page-content {
     @extend %homepage-text;
     .block-bean {
       > h2 { display: none; }

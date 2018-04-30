@@ -4,7 +4,7 @@ body.mobilizing-against-inequality {
   }
 
   &.subsite-front {
-    .field-name-body {
+    .field-name-field-para-main-page-content {
       position: relative;
       .rss-icon {
         position: absolute;
@@ -43,7 +43,7 @@ body.mobilizing-against-inequality {
       }
     }
 
-    &[data-eq-state="mobile-nav"] .field-name-body {
+    &[data-eq-state="mobile-nav"] .field-name-field-para-main-page-content {
       @include padding-leader(1.5); // space for the rss feed
       .rss-icon {
         top: 5px;
