@@ -1,41 +1,45 @@
 #main {
   .paragraphs-item-featured-promo {
-    @include padding-leader(0);
-    @include padding-trailer(0);
+    @include leader(1);
+    @include trailer(1);
+    background: $dark-blue;
     h2 {
       @include adjust-font-size-to(24px);
       @include adjust-leading-to(.8);
-      font-weight: 300;
-      color: $gray-bg;
+      color: white;
+      font-weight: 400;
     }
     p {
-      color: $gray-light;
       @include trailer(.5);
+      color: $gray-blue;
     }
     iframe {
       width: 100%;
     }
     .content {
       @include grid-span (12);
-      .field-name-field-image, .field-name-field-youtube-video {
+      .field-name-field-image {
         margin: 0;
         line-height: 0;
+      }
+      .field-name-field-youtube-video {
+        margin: 0;
+        line-height: 0; 
       }
       .group-featured-promo-story {
         @include grid-span (10,2);
         @include padding-leader(1);
         @include padding-trailer(1.5);
-        text-align: center;
         ul {
           padding-left: 0;
           li {
             padding-left: 0;
             background: none;
             a {
-              color: $promo-color;
-              border-bottom-color: darken($promo-color, 20%);
+              color: $orange-light;
+              border-bottom-color: transparent;
               &:hover {
-                border-bottom-color: lighten($promo-color, 20%);
+                border-bottom-color: darken($orange-light, 20%);
               }
             }
           }
@@ -43,119 +47,113 @@
       }
     }
   }
-}
 
-#main[data-eq-state="550"] {
-  .paragraphs-item-featured-promo {
-    .content {
-      .field-name-field-youtube-video {
-        padding-top: 25px;
-        padding-bottom: 56.25%;
-        position: relative;
-        height: 0;
-
-        iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
+  body.node-type-channel-page & {
+    .paragraphs-item-featured-promo {
+      @include leader(0);
+      @include trailer(0);
+      background: $nav-dark;
+      h2 {
+        color: $gray-bg;
+        @include large {
+          @include adjust-font-size-to(30px);
+          @include adjust-leading-to(.8);
         }
       }
-    }
-  }
-}
-
-#main[data-eq-state="768"] {
-  .paragraphs-item-featured-promo {
-    h2 {
-      @include adjust-font-size-to(30px);
-      @include adjust-leading-to(.8);
-    }
-    p {
-      @include adjust-font-size-to(21px, 1);
-    }
-    img {
-      min-height: 295px;
-    }
-    .content {
-      @include add-gutter(0);
-      .group-featured-promo-story {
-        @include padding-leader(1.5);
-      }
-      .field-name-field-image.image-left, .field-name-field-youtube-video.image-left {
-        @include grid-span (6,1);
-      }
-      .field-name-field-image.image-left + .group-featured-promo-story, .field-name-field-youtube-video.image-left + .group-featured-promo-story {
-        @include grid-span (6,7);
-        @include padding-trailer(0);
-        padding-right: 2em;
-        padding-left: 2em;
-      }
-
-      .field-name-field-image.image-right, .field-name-field-youtube-video.image-right {
-        @include grid-span (6,7);
-      }
-      .field-name-field-image.image-right + .group-featured-promo-story, .field-name-field-youtube-video.image-right + .group-featured-promo-story {
-        @include grid-span (6,1);
-        @include padding-trailer(0);
-        padding-right: 2em;
-        padding-left: 2em;
-      }
-    }
-  }
-}
-
-#main[data-eq-state="widescreen"] {
-  .paragraphs-item-featured-promo {
-    h2 {
-      @include adjust-font-size-to(30px);
-      @include adjust-leading-to(.8);
-    }
-    p {
-      @include adjust-font-size-to(21px, 1.1);
-    }
-    .content {
-      .field-name-field-youtube-video {
-        padding-top: 25px;
-        padding-bottom: 30%;
-        position: relative;
-        height: 0;
-
-        iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
+      p {
+        color: $gray-light;
+        @include large {
+          @include adjust-font-size-to(21px, 1);
         }
       }
-      .field-name-field-image.image-left, .field-name-field-youtube-video.image-left {
-        @include grid-span (6,1);
+      img {
+        @include medium {
+          min-height: 295px;
+        }
+        @include large {
+          min-height: auto;
+        }
       }
-      .field-name-field-image.image-right, .field-name-field-youtube-video.image-right {
-        @include grid-span (6,7);
-      }
-      .group-featured-promo-story {
-        @include padding-leader(2.5);
-        @include padding-trailer(0);
-        padding-right: 2em;
-        ul {
-          li {
-            display: inline;
-            &:nth-child(even) {
-              padding-left: 4em;
+      .content {
+        @include medium {
+          @include add-gutter(0);
+        }
+        .field-name-field-youtube-video {
+          @include small {
+            padding-top: 25px;
+            padding-bottom: 56.25%;
+            position: relative;
+            height: 0;
+
+            iframe {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
+          }
+          @include medium {
+            padding-bottom: 38%;
+          }
+          @include large {
+            padding-bottom: 30%;
+          }
+        }
+        .group-featured-promo-story {
+          text-align: center;
+          @include medium {
+            @include padding-leader(1.5);
+          }
+          @include large {
+            @include padding-leader(2.5);
+            @include padding-trailer(0);
+            padding-right: 2em;
+          }
+          ul {
+            li {
+              @include large {
+                display: inline;
+                &:nth-child(even) {
+                  padding-left: 4em;
+                }
+              }
+              a {
+                color: $promo-color;
+                border-bottom-color: darken($promo-color, 20%);
+                &:hover {
+                  border-bottom-color: lighten($promo-color, 20%);
+                }
+              }
             }
           }
         }
-      }
-      .field-name-field-image.image-left + .group-featured-promo-story, .field-name-field-youtube-video.image-left + .group-featured-promo-story {
-        @include grid-span (6,7);
-        padding-left: 2em;
-      }
-      .field-name-field-image.image-right + .group-featured-promo-story, .field-name-field-youtube-video.image-right + .group-featured-promo-story {
-        @include grid-span (6,1);
-        padding-left: 2em;
+        .field-name-field-image.image-left, .field-name-field-youtube-video.image-left {
+          @include medium {
+            @include grid-span (6,1);
+          }
+        }
+        .field-name-field-image.image-right, .field-name-field-youtube-video.image-right {
+          @include medium {
+            @include grid-span (6,7);
+          }
+        }
+        .field-name-field-image.image-left + .group-featured-promo-story, .field-name-field-youtube-video.image-left + .group-featured-promo-story {
+          @include medium {
+            @include grid-span (6,7);
+            @include padding-trailer(0);
+            padding-right: 2em;
+            padding-left: 2em;
+          }
+        }
+        .field-name-field-image.image-right + .group-featured-promo-story, .field-name-field-youtube-video.image-right + .group-featured-promo-story {
+          @include medium {
+            @include grid-span (6,1);
+            @include padding-trailer(0);
+            padding-right: 2em;
+            padding-left: 2em;
+          }
+        }
       }
     }
   }
