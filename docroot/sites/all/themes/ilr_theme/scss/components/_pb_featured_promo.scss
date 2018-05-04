@@ -1,7 +1,6 @@
 #main {
   .paragraphs-item-featured-promo {
     @include leader(1);
-    @include trailer(1);
     background: $dark-blue;
     h2 {
       @include adjust-font-size-to(24px);

@@ -1,15 +1,10 @@
 .social-callout {
-  @include full-width;
-  background-attachment: fixed;
-  background-position: center center;
-  background-image: url("../images/bg-social.png");
-  padding: 85px 21px;
+  padding: 21px;
   text-align: center;
 
   .social-callout__heading {
     @include centered-title;
-    @include adjust-leading-to(1);
-
+    @include adjust-leading-to(1.5);
     font-family: $font;
     color: white;
     padding-top: 0;
@@ -23,11 +18,6 @@
       width: 20%;
       height: 3px;
     }
-
-    @include medium {
-      @include adjust-leading-to(1.5);
-      font-size: 34px;
-    }
   }
 
   .social-callout__links {
@@ -36,22 +26,10 @@
 
   .social-callout__item {
     background-color: rgba(255, 255, 255, 0.4);
-    @include roundLink(46px);
+    @include roundLink(60px);
     font-size: 18px;
     padding-left: 0;
     margin-left: 5px;
-
-    @include medium {
-      @include roundLink(60px);
-      font-size: 21px;
-      margin-left: 8px;
-    }
-
-    @include large {
-      @include roundLink(89px);
-      font-size: 27px;
-      margin-left: 21px;
-    }
 
     .social-callout__link {
       &.follow-linkedin {
@@ -90,6 +68,41 @@
 
     .social-callout__link::before {
       color: $color;
+    }
+  }
+}
+
+body.node-type-channel-page {
+  .social-callout {
+    @include full-width;
+    background-attachment: fixed;
+    background-position: center center;
+    background-image: url("../images/bg-social.png");
+    padding: 85px 21px;
+
+    .social-callout__heading {
+      padding-top: 0;
+      margin-bottom: 34px;
+      font-size: 28px;
+
+      @include medium {
+        @include adjust-leading-to(1.5);
+        font-size: 34px;
+      }
+    }
+
+    .social-callout__item {
+      @include medium {
+        @include roundLink(60px);
+        font-size: 21px;
+        margin-left: 8px;
+      }
+
+      @include large {
+        @include roundLink(89px);
+        font-size: 27px;
+        margin-left: 21px;
+      }
     }
   }
 }
