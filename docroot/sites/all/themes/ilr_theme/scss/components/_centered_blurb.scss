@@ -19,16 +19,17 @@
   margin: 0 auto 1em !important;
 }
 
-#main[data-eq-state="768"] {
+body.node-type-channel-page, body.node-type-basic-page.front, body.node-type-basic-page.subsite-front {
   .centered-blurb {
-    @include adjust-font-size-to(30px);
-    @include adjust-leading-to(1);
+    @include medium {
+      @include adjust-font-size-to(30px);
+      @include adjust-leading-to(1);
+    }
   }
 }
 
-#main[data-eq-state="widescreen"] {
+body.node-type-channel-page {
   .centered-blurb {
-    @include adjust-font-size-to(30px);
-    @include adjust-leading-to(1);
+    max-width: 960px;
   }
 }

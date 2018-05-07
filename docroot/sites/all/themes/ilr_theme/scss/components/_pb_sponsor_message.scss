@@ -1,42 +1,38 @@
-#main {
+.paragraphs-item-sponsor-message {
+  @include leader(2);
+  @include trailer(2);
+  .content {
+    @include grid-span (10,2);
+  }
+  h2 {
+    text-align: center;
+    @include adjust-font-size-to(22px);
+    @include adjust-leading-to(1);
+    font-weight: 300;
+  }
+  .tower {
+    font-weight: 300;
+    color: darken($orange, 4%);
+    &:before {
+      @include adjust-font-size-to(25px);
+      @include adjust-leading-to(1.5);
+      color: $gray-medium;
+      display: block;
+    }
+  }
+}
+
+body.node-type-channel-page {
   .paragraphs-item-sponsor-message {
+    @include leader(0);
     @include padding-leader(1);
     @include padding-trailer(1);
-    .content {
-      @include grid-span (10,2);
-      .centered-blurb {
-        max-width: 960px;
-      }
-    }
-    h2 {
-      text-align: center;
-      @include adjust-font-size-to(22px);
-      @include adjust-leading-to(1);
-      font-weight: 300;
+    @include medium {
+      @include padding-leader(1.5);
+      @include padding-trailer(1.5);
     }
     .tower {
-      font-weight: 300;
       color: $p-text;
-      &:before {
-        @include adjust-font-size-to(25px);
-        @include adjust-leading-to(1.5);
-        color: $gray-medium;
-        display: block;
-      }
     }
-  }
-}
-
-#main[data-eq-state="768"] {
-  .paragraphs-item-sponsor-message {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
-  }
-}
-
-#main[data-eq-state="widescreen"] {
-  .paragraphs-item-sponsor-message {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
   }
 }
