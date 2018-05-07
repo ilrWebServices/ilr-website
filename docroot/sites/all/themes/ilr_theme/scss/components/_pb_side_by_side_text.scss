@@ -1,5 +1,54 @@
-#main {
+.paragraphs-item-side-by-side-text {
+  @include leader(1.5);
+  .field-name-field-promo-text {
+    &:nth-child(odd) {
+      @include padding-trailer(1);
+      border-bottom: 1px solid $gray-light;
+    }
+    &:nth-child(even) {
+      @include padding-leader(1);
+    }
+    @include medium {
+      @include grid-span (6,1);
+      &:nth-child(odd) {
+        @include padding-trailer(0);
+        padding-right: 13px;
+        border-bottom: none;
+      }
+      &:nth-child(even) {
+        @include grid-span (6,7);
+        @include padding-leader(0);
+        padding-left: 13px;
+      }
+    }
+  }
+  p {
+    @include trailer(.5);
+
+    img {
+      @include trailer(-.5);
+    }
+  }
+  ul {
+    padding-left: 0;
+    li {
+      padding-left: 0;
+      background: none;
+    }
+  }
+  ul.bulleted-list {
+    @include leader(1);
+    padding-left: .5em;
+    li {
+      padding-left: 1em;
+      background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
+    }
+  }
+}
+
+body.node-type-channel-page {
   .paragraphs-item-side-by-side-text {
+    @include leader(0);
     @include padding-leader(1);
     @include padding-trailer(1);
 
@@ -13,64 +62,20 @@
     .field-name-field-promo-text {
       &:nth-child(odd) {
         @include padding-trailer(1);
-        border-bottom: 1px solid $gray-light;
+        padding-right: 55px;
       }
       &:nth-child(even) {
-        @include padding-leader(1);
-      }
-    }
-    p {
-      @include trailer(.5);
-
-      img {
-        @include trailer(-.5);
-      }
-    }
-    ul {
-      padding-left: 0;
-      li {
         padding-left: 0;
-        background: none;
       }
-    }
-    ul.bulleted-list {
-      @include leader(1);
-      padding-left: .5em;
-      li {
-        padding-left: 1em;
-        background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
-      }
-    }
-  }
-}
-
-#main[data-eq-state="768"] {
-  .paragraphs-item-side-by-side-text {
-    .field-name-field-promo-text {
-      @include grid-span (5,1);
-      &:nth-child(odd) {
-        @include padding-trailer(0);
-        border-bottom: none;
-      }
-      &:nth-child(even) {
-        @include grid-span (6,7);
-        @include padding-leader(0);
-      }
-    }
-  }
-}
-
-#main[data-eq-state="widescreen"] {
-  .paragraphs-item-side-by-side-text {
-    .field-name-field-promo-text {
-      @include padding-leader(1);
-      @include padding-trailer(1);
-      @include grid-span (5,1);
-      &:nth-child(odd) {
-        border-bottom: none;
-      }
-      &:nth-child(even) {
-        @include grid-span (6,7);
+      @include large {
+        @include padding-leader(1);
+        @include padding-trailer(1);
+        &:nth-child(odd) {
+          @include padding-trailer(1);
+        }
+        &:nth-child(even) {
+          @include padding-leader(1);
+        }
       }
     }
   }
