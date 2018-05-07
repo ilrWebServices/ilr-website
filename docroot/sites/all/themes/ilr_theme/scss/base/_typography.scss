@@ -82,6 +82,15 @@ h1 {
   @include set-heading;
   @include adjust-font-size-to($h2-size, $line-height-multiplier);
   color: $h2-text;
+
+  a {
+    outline: 0;
+    color: $h2-link;
+
+    &:hover {
+      color: $h2-link-hover;
+    }
+  }
 }
 
 h2 {
