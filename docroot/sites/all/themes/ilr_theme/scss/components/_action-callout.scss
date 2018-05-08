@@ -1,7 +1,5 @@
 .action-callout {
-  @include trailer(2);
-  @include full-width;
-
+  @include leader(1);
   position: relative;
   min-height: 380px;
   overflow: hidden;
@@ -35,10 +33,6 @@
       font-weight: 300;
       color: white;
       @include adjust-leading-to(.9);
-
-      @include large {
-        font-size: 1.8rem;
-      }
     }
   }
 
@@ -80,6 +74,20 @@
   &--watch {
     .action-callout__image {
       background-image: url('../images/lara-skinner.jpg');
+    }
+  }
+}
+
+body.node-type-channel-page {
+  .action-callout {
+    @include trailer(2);
+    @include full-width;
+    &__content {
+      .action-callout__tagline {
+        @include large {
+          font-size: 1.8rem;
+        }
+      }
     }
   }
 }
