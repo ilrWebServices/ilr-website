@@ -875,6 +875,13 @@ function ilr_update_7068() {
   }
 }
 
+/**
+ * Enables the ilr_mentor module
+ */
+function ilr_update_7069() {
+  module_enable(['ilr_mentor']);
+}
+
 function _ilr_migrate_body_to_paragraph_item($node) {
   $body = (isset($node->body[LANGUAGE_NONE][0]['value']))
     ? $node->body[LANGUAGE_NONE][0]['value']

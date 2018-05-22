@@ -5,3 +5,27 @@
  */
 
 include_once 'ilr_mentor.features.inc';
+
+/**
+ * Adds the graduation date to the node title for mentors
+ */
+function ilr_mentor_preprocess_node(&$variables) {
+  if (in_array($variables['type'], array('mentor'))) {
+    $variables['title'] = _ilr_mentor_get_title($variables['node']);
+  }
+}
+
+/**
+ * Updates the page title for mentors to include grad year
+ */
+function ilr_mentor_preprocess_page(&$variables) {
+  if(isset($variables['node']) && $variables['node']->type == 'mentor') {
+    $title = _ilr_mentor_get_title($variables['node']);
+    drupal_set_title($title);
+  }
+}
+
+function _ilr_mentor_get_title($node) {
+  $grad_year = _ilr_theme_get_class_year_from_date($node, 'field_expected_graduation_date');
+  return $node->title . ', ' . $grad_year;
+}
