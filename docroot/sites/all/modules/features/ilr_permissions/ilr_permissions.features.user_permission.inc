@@ -731,6 +731,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: 'create mentor content'.
+  $permissions['create mentor content'] = array(
+    'name' => 'create mentor content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create news_item content'.
   $permissions['create news_item content'] = array(
     'name' => 'create news_item content',
@@ -1097,6 +1107,13 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'delete any mentor content'.
+  $permissions['delete any mentor content'] = array(
+    'name' => 'delete any mentor content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any news_item content'.
   $permissions['delete any news_item content'] = array(
     'name' => 'delete any news_item content',
@@ -1311,6 +1328,16 @@ function ilr_permissions_user_default_permissions() {
       'power user' => 'power user',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: 'delete own mentor content'.
+  $permissions['delete own mentor content'] = array(
+    'name' => 'delete own mentor content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'delete own news_item content'.
@@ -1799,6 +1826,16 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'edit any mentor content'.
+  $permissions['edit any mentor content'] = array(
+    'name' => 'edit any mentor content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any news_item content'.
   $permissions['edit any news_item content'] = array(
     'name' => 'edit any news_item content',
@@ -2036,6 +2073,16 @@ function ilr_permissions_user_default_permissions() {
       'power user' => 'power user',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: 'edit own mentor content'.
+  $permissions['edit own mentor content'] = array(
+    'name' => 'edit own mentor content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'edit own news_item content'.

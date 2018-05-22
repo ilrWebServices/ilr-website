@@ -1,0 +1,39 @@
+.view-mentors {
+  @include add-grid(12);
+
+  .views-row {
+    // @extend %bean-base; // Leaving off as of 05/2018
+    @include float-span(6);
+    &:nth-of-type(even) {
+      @include float-span(6, 'last');
+    }
+    @include trailer(2);
+
+    article {
+      @include add-grid(4);
+    }
+
+
+    .field-type-image {
+      @include circularImage;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      img {
+        top: 0;
+      }
+    }
+
+    h2,
+    .field-type-text-long {
+      @include grid-span(3,2);
+    }
+  }
+}
+
+.node-type-mentor {
+  .field-type-text-long {
+    @include trailer(2);
+  }
+}

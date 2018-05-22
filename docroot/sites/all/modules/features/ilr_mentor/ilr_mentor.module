@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILR Mentor feature.
+ */
+
+include_once 'ilr_mentor.features.inc';
