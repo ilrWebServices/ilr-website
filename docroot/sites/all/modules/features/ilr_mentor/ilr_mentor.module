@@ -26,6 +26,9 @@ function ilr_mentor_preprocess_page(&$variables) {
 }
 
 function _ilr_mentor_get_title($node) {
+  if (path_is_admin(current_path())) {
+    return $node->title;
+  }
   $grad_year = _ilr_theme_get_class_year_from_date($node, 'field_expected_graduation_date');
   return $node->title . ', ' . $grad_year;
 }
