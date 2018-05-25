@@ -4,13 +4,16 @@
   .views-row {
     // @extend %bean-base; // Leaving off as of 05/2018
     @include float-span(6);
+
     &:nth-of-type(even) {
       @include float-span(6, 'last');
     }
     @include trailer(2);
 
     article {
-      @include add-grid(4);
+      // causes bug on compare 3! :(
+      // @todo - debug
+      // @include add-grid(4);
     }
 
 
