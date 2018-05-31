@@ -8,13 +8,28 @@
     &:nth-of-type(even) {
       @include float-span(6, 'last');
     }
-    @include trailer(2);
+    @include trailer(3);
 
-    article {
-      // causes bug on compare 3! :(
-      // @todo - debug
-      // @include add-grid(4);
-    }
+    // article {
+    //   // causes bug on compare 3! :(
+    //   // @todo - debug
+    //   @include add-grid(4);
+
+      h2,
+      .field-type-text-long {
+        // @include grid-span(3,2);
+
+        margin: 0 0 0 115px !important;
+        // margin-left: 115px;
+        // width: 100% !important;
+      }
+
+    //   .field-type-text-long {
+    //     display: block !important;
+    //     // margin-left: 115px;
+    //     // clear: left;
+    //   }
+    // }
 
 
     .field-type-image {
@@ -26,11 +41,6 @@
       img {
         top: 0;
       }
-    }
-
-    h2,
-    .field-type-text-long {
-      @include grid-span(3,2);
     }
   }
 }
