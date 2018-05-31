@@ -56,7 +56,7 @@ function ilr_mentor_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '3',
+          'weight' => '4',
         ),
         'redirect' => array(
           'weight' => '1',
