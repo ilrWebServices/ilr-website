@@ -24,13 +24,10 @@
         // width: 100% !important;
       }
 
-    //   .field-type-text-long {
-    //     display: block !important;
-    //     // margin-left: 115px;
-    //     // clear: left;
-    //   }
-    // }
-
+      .field-type-text-long {
+        @include paragraph-text;
+        @include adjust-font-size-to(18px, .8);
+      }
 
     .field-type-image {
       @include circularImage;
@@ -46,6 +43,13 @@
 }
 
 .node-type-mentor {
+  .field-name-field-profile-image {
+    @include medium {
+      width: 50%;
+      float: right;
+      margin-left: 2em;
+    }
+  }
   .field-type-text-long {
     @include trailer(2);
   }

@@ -346,7 +346,7 @@ function ilr_mentor_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => 'focussed_profile_image',
+          'image_style' => 'main_portrait_image',
         ),
         'type' => 'image',
         'weight' => 0,

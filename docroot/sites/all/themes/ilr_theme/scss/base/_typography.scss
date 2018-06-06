@@ -39,6 +39,17 @@
   }
 }
 
+@mixin paragraph-text() {
+  font-size: $p-size;
+  color: $p-text;
+  margin: 0;
+  @include trailer(1);
+
+  img {
+    margin: 0;
+  }
+}
+
 // ==================================================
 // body
 // ==================================================
@@ -200,14 +211,7 @@ p, a, li {
 }
 
 p {
-  font-size: $p-size;
-  color: $p-text;
-  margin: 0;
-  @include trailer(1);
-
-  img {
-    margin: 0;
-  }
+  @include paragraph-text;
 }
 
 p + h2,
