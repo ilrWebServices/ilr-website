@@ -15,6 +15,10 @@
     @include padding-leader(1);
     @include padding-trailer(1);
 
+    .node-type-basic-page & {
+      padding: 0;
+    }
+
     body.node-type-channel-page & {
       .content {
         @include grid-span (10,2);

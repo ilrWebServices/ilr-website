@@ -1,33 +1,27 @@
 .view-mentors {
   @include add-grid(12);
+  @include leader(2);
 
   .views-row {
-    // @extend %bean-base; // Leaving off as of 05/2018
-    @include float-span(6);
-
-    &:nth-of-type(even) {
-      @include float-span(6, 'last');
-    }
     @include trailer(3);
 
-    // article {
-    //   // causes bug on compare 3! :(
-    //   // @todo - debug
-    //   @include add-grid(4);
+    @include medium {
+      @include float-span(6);
 
-      h2,
-      .field-type-text-long {
-        // @include grid-span(3,2);
-
-        margin: 0 0 0 115px !important;
-        // margin-left: 115px;
-        // width: 100% !important;
+      &:nth-of-type(even) {
+        @include float-span(6, 'last');
       }
+    }
 
-      .field-type-text-long {
-        @include paragraph-text;
-        @include adjust-font-size-to(18px, .8);
-      }
+    h2,
+    .field-type-text-long {
+      margin: 0 0 0 115px !important;
+    }
+
+    .field-type-text-long {
+      @include paragraph-text;
+      @include adjust-font-size-to(18px, .8);
+    }
 
     .field-type-image {
       @include circularImage;
