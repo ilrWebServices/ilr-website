@@ -1110,7 +1110,9 @@ function ilr_permissions_user_default_permissions() {
   // Exported permission: 'delete any mentor content'.
   $permissions['delete any mentor content'] = array(
     'name' => 'delete any mentor content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 

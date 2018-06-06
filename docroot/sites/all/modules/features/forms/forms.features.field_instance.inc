@@ -10207,6 +10207,7 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_pronunciation_markup',
     'label' => 'pronunciation markup',
     'required' => 0,
@@ -23417,8 +23418,9 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_challenge',
-    'label' => '8. What do you see as the major challenge facing New York union leaders today?',
+    'label' => '8. What do you see as the major challenge facing labor leaders today?',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -29684,7 +29686,7 @@ function forms_field_default_field_instances() {
   t('6. If there were one area of work you would like to become more capable and effective in handling, what would that be?');
   t('6. What are your personal goals as a union leader?');
   t('7. How do you expect the Institute to benefit you?');
-  t('8. What do you see as the major challenge facing New York union leaders today?');
+  t('8. What do you see as the major challenge facing labor leaders today?');
   t('9. Do you expect any difficulties participating in all the Institute seminars and activities? If so, please explain..');
   t('<p>If there are technical needs, training is required prior to the use of a room. Please contact ILR Technology Services to make these arrangements via email at: <a href="mailto:ilrvtc@cornell.edu>ilrvtc@cornell.edu</a>.</p>
 <p>Note: ILR Technology Services does not support Skype in the classrooms. If using Skype, please use your own laptop.</p>');
