@@ -32,7 +32,7 @@ function ilr_admin_block_view($delta = '') {
 
 function ilr_admin_get_email_signature() {
   $signature = "<h2>Signature outline</h2>";
-  $signature .= "__<br />
+  $signature .= "<span style='font-family:arial;font-size:12pt;line-height:1.2;'>&ndash;&ndash;<br />
     <span style='font-weight: bold'>First Last Name</span><br />
     Title<br />
     Office, Department, or Unit<br />
@@ -40,13 +40,13 @@ function ilr_admin_get_email_signature() {
     <span style='color: #b31b1b'>ILR School<br />
       Cornell University</span><br />
     t. 607 254 1212 | c. 607 254 1212 | f. 607 254 1212 <br />
-    your.name@cornell.edu | ilr.cornell.edu<br />
-    <a href='https://www.facebook.com/ILRSchool/'>Facebook</a> |
-    <a href='https://twitter.com/cornellilr'>Twitter</a> |
-    <a href='https://www.instagram.com/cornellilr/'>Instagram</a> |
-    <a href='https://www.linkedin.com/school/15078942'>LinkedIn</a> |
-    <a href='https://www.youtube.com/user/CornellUniversityILR'>YouTube</a> (optional)<br />
-    <span style='font-weight: bold'>It takes <span style='color: #b31b1b'>work</span>.</span> (optional)<br /><br />";
+    <a style='color:#0000ee;text-decoration:underline' href='#'>your.name@cornell.edu</a> | <a style='color:#0000ee;text-decoration:underline' href='#'>ilr.cornell.edu</a><br />
+    <a style='color:#0000ee;text-decoration:underline' href='https://www.facebook.com/ILRSchool/'>Facebook</a> |
+    <a style='color:#0000ee;text-decoration:underline' href='https://twitter.com/cornellilr'>Twitter</a> |
+    <a style='color:#0000ee;text-decoration:underline' href='https://www.instagram.com/cornellilr/'>Instagram</a> |
+    <a style='color:#0000ee;text-decoration:underline' href='https://www.linkedin.com/school/15078942'>LinkedIn</a> |
+    <a style='color:#0000ee;text-decoration:underline' href='https://www.youtube.com/user/CornellUniversityILR'>YouTube</a> (optional)<br />
+    <span style='font-weight: bold'>It takes <span style='color: #b31b1b'>work</span>.</span> (optional)<br /><br /></span>";
 
   if (module_exists('people_profiles')) {
     if ($profile = _people_profiles_find_profile_by_netid(ilr_get_netid_of_current_user())) {
@@ -90,7 +90,7 @@ function _ilr_admin_get_signature_elements($wrapper, $title, $include_social = t
     : 'xxx xxx xxxx';
 
   $elements = [
-    'separator' => $title . '__',
+    'separator' => $title . '<span style="font-family:arial;font-size:12pt;line-height:1.2;">&ndash;&ndash;',
     'name' => '<span style="font-weight: bold">' . $wrapper->label() . '</span>',
     'title' => $wrapper->field_working_title->value(),
     'department' => _ilr_admin_get_department($wrapper),
@@ -100,7 +100,7 @@ function _ilr_admin_get_signature_elements($wrapper, $title, $include_social = t
     'phone' =>  't. ' . $phone . ' | c. xxx xxx xxxx',
     'links' =>  _ilr_admin_get_email_web_links($wrapper),
     'social' =>  ($include_social) ? _ilr_admin_get_social_links() : '',
-    'tagline' =>  ($include_tagline) ? _ilr_admin_get_tagline() : '<br /><br />'
+    'tagline' =>  ($include_tagline) ? _ilr_admin_get_tagline() : '<br /><br /></span>'
   ];
   return $elements;
 }
@@ -128,5 +128,5 @@ function _ilr_admin_get_social_links() {
 }
 
 function _ilr_admin_get_tagline() {
-  return "<span style='font-weight: bold'>It takes <span style='color: #b31b1b'>work</span>.</span><br /><br /> ";
+  return "<span style='font-weight: bold'>It takes <span style='color: #b31b1b'>work</span>.</span></span><br /><br /> ";
 }

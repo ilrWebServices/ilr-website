@@ -8,7 +8,7 @@
  *    There are several ways to do this, but one easy way is to type the
  *    following command in a terminal window, assuming you first cd to
  *    the directory where you saved your new version of ilr_departments.php.
- *    scp ilr_departments.php ilr@srv-2136.devcloud.hosting.acquia.com:/mnt/gfs/home/ilr/config
+ *    scp ilr_departments.php ilr.prod@srv-2136.devcloud.hosting.acquia.com:/mnt/gfs/home/ilr/config
  */
 
 $GLOBALS['ILR_DEPARTMENTS'] = array(
