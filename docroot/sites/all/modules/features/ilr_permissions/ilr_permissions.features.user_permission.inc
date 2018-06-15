@@ -2102,6 +2102,7 @@ function ilr_permissions_user_default_permissions() {
     'name' => 'edit own people_profile content',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
     ),
     'module' => 'node',

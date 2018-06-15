@@ -31,8 +31,8 @@ function ilr_admin_block_view($delta = '') {
 }
 
 function ilr_admin_get_email_signature() {
-  $signature = "<h2>Signature outline</h2>";
-  $signature .= "<span style='font-family:arial;font-size:12pt;line-height:1.2;'>&ndash;&ndash;<br />
+  $signature = "<h2>Signature outline (for reference)</h2>";
+  $signature .= "&ndash;&ndash;<br />
     <span style='font-weight: bold'>First Last Name</span><br />
     Title<br />
     Office, Department, or Unit<br />
@@ -40,17 +40,20 @@ function ilr_admin_get_email_signature() {
     <span style='color: #b31b1b'>ILR School<br />
       Cornell University</span><br />
     t. 607 254 1212 | c. 607 254 1212 | f. 607 254 1212 <br />
-    <a style='color:#0000ee;text-decoration:underline' href='#'>your.name@cornell.edu</a> | <a style='color:#0000ee;text-decoration:underline' href='#'>ilr.cornell.edu</a><br />
-    <a style='color:#0000ee;text-decoration:underline' href='https://www.facebook.com/ILRSchool/'>Facebook</a> |
-    <a style='color:#0000ee;text-decoration:underline' href='https://twitter.com/cornellilr'>Twitter</a> |
-    <a style='color:#0000ee;text-decoration:underline' href='https://www.instagram.com/cornellilr/'>Instagram</a> |
-    <a style='color:#0000ee;text-decoration:underline' href='https://www.linkedin.com/school/15078942'>LinkedIn</a> |
-    <a style='color:#0000ee;text-decoration:underline' href='https://www.youtube.com/user/CornellUniversityILR'>YouTube</a> (optional)<br />
+    <a href='#'>your.name@cornell.edu</a> | <a href='#'>ilr.cornell.edu</a><br />
+    <a href='https://www.facebook.com/ILRSchool/'>Facebook</a> |
+    <a href='https://twitter.com/cornellilr'>Twitter</a> |
+    <a href='https://www.instagram.com/cornellilr/'>Instagram</a> |
+    <a href='https://www.linkedin.com/school/15078942'>LinkedIn</a> |
+    <a href='https://www.youtube.com/user/CornellUniversityILR'>YouTube</a> (optional)<br />
     <span style='font-weight: bold'>It takes <span style='color: #b31b1b'>work</span>.</span> (optional)<br /><br /></span>";
 
   if (module_exists('people_profiles')) {
     if ($profile = _people_profiles_find_profile_by_netid(ilr_get_netid_of_current_user())) {
       $wrapper = ilr_get_node_wrapper($profile);
+
+      $signature .= "<p class='email-signature__note'>**Please note the customized information below is generated from <a style='text-decoration: none;' href='/node/" . $wrapper->getIdentifier() . "/edit'>your profile data</a>.**</p>";
+
       $elements = _ilr_admin_get_signature_elements($wrapper, '<h2>Option 1 (neither social nor tagline)</h2>', false, false);
       foreach ($elements as $markup) {
         if (!empty($markup)) {
@@ -88,6 +91,9 @@ function _ilr_admin_get_signature_elements($wrapper, $title, $include_social = t
   $phone = ($wrapper->field_phone->value())
     ? str_replace('-', ' ', $wrapper->field_phone->value())
     : 'xxx xxx xxxx';
+  $fax = ($wrapper->field_fax->value())
+    ? ' | f. ' . str_replace('-', ' ', $wrapper->field_fax->value())
+    : '';
 
   $elements = [
     'separator' => $title . '<span style="font-family:arial;font-size:12pt;line-height:1.2;">&ndash;&ndash;',
@@ -97,10 +103,10 @@ function _ilr_admin_get_signature_elements($wrapper, $title, $include_social = t
     'address' =>  $wrapper->field_address_line_1->value(),
     'brand' => '<br /><span style="color: #b31b1b">ILR School<br />
     Cornell University</span>',
-    'phone' =>  't. ' . $phone . ' | c. xxx xxx xxxx',
+    'phone' =>  't. ' . $phone . ' | c. xxx xxx xxxx' . $fax,
     'links' =>  _ilr_admin_get_email_web_links($wrapper),
     'social' =>  ($include_social) ? _ilr_admin_get_social_links() : '',
-    'tagline' =>  ($include_tagline) ? _ilr_admin_get_tagline() : '<br /><br /></span>'
+    'tagline' =>  ($include_tagline) ? _ilr_admin_get_tagline() : '<br /><br />'
   ];
   return $elements;
 }
@@ -116,15 +122,15 @@ function _ilr_admin_get_department($wrapper) {
 }
 
 function _ilr_admin_get_email_web_links($wrapper) {
-  return "<a style='color:#0000ee;text-decoration:underline' href='mailto:{$wrapper->field_email->value()}'>{$wrapper->field_email->value()}</a> | <a style='color:#0000ee;text-decoration:underline' href='https://www.ilr.cornell.edu'>www.ilr.cornell.edu</a>";
+  return "<a href='mailto:{$wrapper->field_email->value()}'>{$wrapper->field_email->value()}</a> | <a href='https://www.ilr.cornell.edu'>www.ilr.cornell.edu</a>";
 }
 
 function _ilr_admin_get_social_links() {
-  return "<a style='color:#0000ee;text-decoration:underline' href='https://www.facebook.com/ILRSchool/'>Facebook</a> |
-    <a style='color:#0000ee;text-decoration:underline' href='https://twitter.com/cornellilr'>Twitter</a> |
-    <a style='color:#0000ee;text-decoration:underline' href='https://www.instagram.com/cornellilr/'>Instagram</a> |
-    <a style='color:#0000ee;text-decoration:underline'href='https://www.linkedin.com/school/15078942'>LinkedIn</a> |
-    <a style='color:#0000ee;text-decoration:underline'href='https://www.youtube.com/user/CornellUniversityILR'>YouTube</a>";
+  return "<a href='https://www.facebook.com/ILRSchool/'>Facebook</a> |
+    <a href='https://twitter.com/cornellilr'>Twitter</a> |
+    <a href='https://www.instagram.com/cornellilr/'>Instagram</a> |
+    <a href='https://www.linkedin.com/school/15078942'>LinkedIn</a> |
+    <a href='https://www.youtube.com/user/CornellUniversityILR'>YouTube</a>";
 }
 
 function _ilr_admin_get_tagline() {
