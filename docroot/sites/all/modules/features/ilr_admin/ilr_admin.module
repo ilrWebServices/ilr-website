@@ -46,7 +46,7 @@ function ilr_admin_get_email_signature() {
     <a href='https://www.instagram.com/cornellilr/'>Instagram</a> |
     <a href='https://www.linkedin.com/school/15078942'>LinkedIn</a> |
     <a href='https://www.youtube.com/user/CornellUniversityILR'>YouTube</a> (optional)<br />
-    <span style='font-weight: bold'>It takes <span style='color: #b31b1b'>work</span>.</span> (optional)<br /><br /></span>";
+    <span style='font-weight: bold'>It takes <span style='color: #b31b1b'>work</span>.</span> (optional)<br /><br />";
 
   if (module_exists('people_profiles')) {
     if ($profile = _people_profiles_find_profile_by_netid(ilr_get_netid_of_current_user())) {
@@ -96,7 +96,7 @@ function _ilr_admin_get_signature_elements($wrapper, $title, $include_social = t
     : '';
 
   $elements = [
-    'separator' => $title . '<span style="font-family:arial;font-size:12pt;line-height:1.2;">&ndash;&ndash;',
+    'separator' => $title . '<span style="font-family:arial;">&ndash;&ndash;',
     'name' => '<span style="font-weight: bold">' . $wrapper->label() . '</span>',
     'title' => $wrapper->field_working_title->value(),
     'department' => _ilr_admin_get_department($wrapper),
@@ -134,5 +134,5 @@ function _ilr_admin_get_social_links() {
 }
 
 function _ilr_admin_get_tagline() {
-  return "<span style='font-weight: bold'>It takes <span style='color: #b31b1b'>work</span>.</span></span><br /><br /> ";
+  return "<span style='font-weight: bold'>It takes <span style='color: #b31b1b'>work</span>.</span><br /><br /> ";
 }
