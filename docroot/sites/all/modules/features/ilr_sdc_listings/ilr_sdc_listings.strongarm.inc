@@ -40,6 +40,15 @@ function ilr_sdc_listings_strongarm() {
       'basic_teaser' => array(
         'custom_settings' => FALSE,
       ),
+      'alternate_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__highlighted' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__sidebar_second' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -47,6 +56,9 @@ function ilr_sdc_listings_strongarm() {
           'weight' => '-5',
         ),
         'path' => array(
+          'weight' => '30',
+        ),
+        'redirect' => array(
           'weight' => '30',
         ),
       ),
@@ -159,6 +171,15 @@ function ilr_sdc_listings_strongarm() {
         'custom_settings' => FALSE,
       ),
       'basic_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'alternate_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__highlighted' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__sidebar_second' => array(
         'custom_settings' => FALSE,
       ),
     ),

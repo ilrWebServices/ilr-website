@@ -254,6 +254,58 @@ function _ilr_sdc_listings_get_class_by_id($class_id) {
 }
 
 /**
+ * Queries for faculty by their old sdc id
+ * Note that we're storing the value on the field_class_id
+ */
+function _ilr_sdc_listings_get_faculty_by_oid($oid) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_faculty')
+    ->fieldCondition('field_class_id', 'value', $oid);
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    return array_pop($results['node']);
+  }
+  return FALSE;
+}
+
+function _ilr_sdc_listings_get_faculty_by_sf_ids($sf_ids = []) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_faculty')
+    ->fieldCondition('field_sf_record_id', 'value', $sf_ids, 'IN');
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    return array_keys($results['node']);
+  }
+  return FALSE;
+}
+
+function _ilr_sdc_listings_get_course_by_sf_id($sf_id) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_course')
+    ->fieldCondition('field_sf_record_id', 'value', $sf_id);
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    return array_keys($results['node']);
+  }
+  return FALSE;
+}
+
+function _ilr_sdc_listings_get_program_by_sf_id($sf_id) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'taxonomy_term')
+    ->entityCondition('bundle', 'course_program')
+    ->fieldCondition('field_sf_record_id', 'value', $sf_id);
+  $results = $query->execute();
+  if (!empty($results)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
  * Sends the course request form to the page
  * @see ilr_sdc_listings.js
  */
@@ -1375,7 +1427,7 @@ function ilr_sdc_listings_class_reg_form_validate($form, &$form_state) {
  * Redirect to registration page.
  */
 function ilr_sdc_listings_class_reg_form_submit($form, &$form_state) {
-  drupal_goto(variable_get('ilr_sdc_listings_reg_url', ' https://ilruat-ilruat-cornell-ilr.cs71.force.com/s/shoppingcart'),
+  drupal_goto(variable_get('ilr_sdc_listings_reg_url', 'https://tiger-cornell-ilr.cs94.force.com/professionalprogramss/shoppingcart'),
     array('query' => array(
       'classId' => $form_state['values']['addClass'],
       'courseurl' => $form_state['values']['courseurl'],
@@ -1795,8 +1847,8 @@ function _ilr_sdc_listings_generate_course_format_label($course) {
 function _ilr_sdc_listings_get_class_registration_url($class) {
   global $base_url;
   $wrapper = ilr_get_node_wrapper($class);
-  $url = variable_get('ilr_sdc_listings_reg_url', 'http://register.ilr.cornell.edu/registration/process/processcard.cfm');
-  $url .= '?classId=' . $wrapper->field_sf_record_id->value();
+  $url = variable_get('ilr_sdc_listings_reg_url', 'https://tiger-cornell-ilr.cs94.force.com/professionalprograms/s/shoppingcart');
+  $url .= '?classId=' . $wrapper->field_class_id->value();
   $course_nid = $wrapper->field_course[0]->getIdentifier();
   return $url;
 }
@@ -2547,6 +2599,9 @@ function ilr_sdc_listings_salesforce_pull_mapping_object_alter(&$mapping_object,
       case 'sdc_class':
         $mapping_object = ilr_sdc_listings_process_class_pull($mapping_object, $sf_object, $mapping);
         break;
+      case 'sdc_faculty':
+        $mapping_object = ilr_sdc_listings_process_faculty_pull($mapping_object, $sf_object, $mapping);
+        break;
       default:
         break;
     }
@@ -2575,6 +2630,17 @@ function ilr_sdc_listings_process_class_pull($mapping_object, $sf_object, $mappi
   return $mapping_object;
 }
 
+function ilr_sdc_listings_process_faculty_pull($mapping_object, $sf_object, $mapping) {
+  $oid = $sf_object['EXECED_Legacy_Persons_ID__c'];
+  if (!empty($oid)) {
+    $matched_faculty = _ilr_sdc_listings_get_faculty_by_oid($oid);
+    if ($matched_faculty) {
+      $mapping_object = ilr_sdc_listings_create_mapping_object('sdc_faculty', $matched_faculty->nid, $sf_object['Id']);
+    }
+  }
+  return $mapping_object;
+}
+
 function ilr_sdc_listings_create_mapping_object($bundle, $entity_id, $sfid) {
   entity_create('salesforce_mapping_object', array(
     'salesforce_id' => $sfid,
@@ -2593,4 +2659,58 @@ function ilr_sdc_listings_sf_pull_prematch($sf_object) {
     return _ilr_sdc_listings_get_course_by_catalog_prefix($prefix);
   }
   return FALSE;
+}
+
+/**
+ * Implements hook_salesforce_pull_entity_presave().
+ * Confirms course has an assigned program
+ * Checks the "show on web" flag for publishing status
+ * Assigns Faculty to classes that are part of a course
+ */
+function ilr_sdc_listings_salesforce_pull_entity_presave($entity, $sf_object, $sf_mapping) {
+  if (isset($entity->type)) {
+    switch ($entity->type) {
+      case 'sdc_course':
+        $sf_program = $sf_object['Program__c'];
+        if (!empty($sf_program) && _ilr_sdc_listings_get_program_by_sf_id($sf_program)) {
+          $entity->status = $sf_object['Show_on_Web__c'];
+        }
+        else {
+          throw new SalesforcePullException('Salesforce course not assigned to an available program.');
+        }
+        break;
+      case 'sdc_class':
+        if (!_ilr_sdc_listings_get_course_by_sf_id($sf_object['Course__c'])) {
+          throw new SalesforcePullException('Saleforce class is not assigned to an existing course.');
+        }
+        else {
+          _ilr_sdc_listings_assign_faculty_to_class($entity, $sf_object);
+        }
+        break;
+      default:
+        break;
+    }
+  }
+}
+
+function _ilr_sdc_listings_assign_faculty_to_class(&$entity, $sf_object) {
+  $event_id = $sf_object['Id'];
+  $salesforce = salesforce_get_api();
+  $query = "SELECT Id, Contact__c  FROM EXECED_Participant__c WHERE Event__c = '". $event_id . "' AND Role__c = 'Instructor'";
+  $data = $salesforce->apiCall('query/?q=' . urlencode($query));
+  if ($data) {
+    $sf_ids = [];
+    foreach ($data['records'] as $result) {
+      $sf_ids[] = $result['Contact__c'];
+    }
+    if ($faculty_nids = _ilr_sdc_listings_get_faculty_by_sf_ids($sf_ids)) {
+      $faculty_targets = [];
+      foreach ($faculty_nids as $key => $nid) {
+        $faculty_targets[] = ['target_id' => $nid];
+      }
+      $entity->field_faculty = [
+        LANGUAGE_NONE => $faculty_targets
+      ];
+    }
+  }
 }

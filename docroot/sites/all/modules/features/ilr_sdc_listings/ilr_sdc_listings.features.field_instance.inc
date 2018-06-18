@@ -96,7 +96,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -169,7 +169,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -233,7 +233,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -289,7 +289,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -372,7 +372,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -431,6 +431,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'reference_field',
         ),
         'type' => 'entityreference_entity_view',
@@ -452,6 +453,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => 1,
         ),
@@ -496,7 +498,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -508,6 +510,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),
@@ -562,7 +565,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -622,7 +625,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -682,7 +685,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -738,7 +741,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -795,7 +798,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -860,7 +863,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -909,12 +912,9 @@ function ilr_sdc_listings_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 14,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1056,7 +1056,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 11,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1113,7 +1113,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 7,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1170,7 +1170,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1231,7 +1231,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 10,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1288,7 +1288,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 9,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1345,7 +1345,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1402,7 +1402,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 15,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1460,7 +1460,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1517,7 +1517,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 16,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1578,7 +1578,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 14,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1634,7 +1634,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 12,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1692,7 +1692,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 13,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1732,6 +1732,74 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-sdc_course-field_program_reference'.
+  $field_instances['node-sdc_course-field_program_reference'] = array(
+    'bundle' => 'sdc_course',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_program_reference',
+    'label' => 'Program',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'current' => array(
+          'status' => 0,
+        ),
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 21,
+    ),
+  );
+
   // Exported field_instance: 'node-sdc_course-field_setting'.
   $field_instances['node-sdc_course-field_setting'] = array(
     'bundle' => 'sdc_course',
@@ -1749,7 +1817,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 8,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1809,7 +1877,7 @@ function ilr_sdc_listings_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -1852,6 +1920,67 @@ function ilr_sdc_listings_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_course-field_show_on_web'.
+  $field_instances['node-sdc_course-field_show_on_web'] = array(
+    'bundle' => 'sdc_course',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'alternate_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'reference_field' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_show_on_web',
+    'label' => 'Show on web',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 20,
     ),
   );
 
@@ -1917,6 +2046,57 @@ function ilr_sdc_listings_field_default_field_instances() {
       ),
       'type' => 'text_textarea_with_summary',
       'weight' => 31,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_faculty-field_class_id'.
+  $field_instances['node-sdc_faculty-field_class_id'] = array(
+    'bundle' => 'sdc_faculty',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_class_id',
+    'label' => 'Faculty id',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 41,
     ),
   );
 
@@ -2001,7 +2181,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -2039,6 +2219,57 @@ function ilr_sdc_listings_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'node-sdc_faculty-field_sf_record_id'.
+  $field_instances['node-sdc_faculty-field_sf_record_id'] = array(
+    'bundle' => 'sdc_faculty',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_sf_record_id',
+    'label' => 'Salesforce ID',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 39,
     ),
   );
 
@@ -2128,6 +2359,45 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-course_program-field_sf_record_id'.
+  $field_instances['taxonomy_term-course_program-field_sf_record_id'] = array(
+    'bundle' => 'course_program',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_sf_record_id',
+    'label' => 'Salesforce ID',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Address');
@@ -2143,6 +2413,7 @@ function ilr_sdc_listings_field_default_field_instances() {
   t('Course is a series');
   t('Credit Hours');
   t('Faculty');
+  t('Faculty id');
   t('Format');
   t('If the faculty member has a profile, then you can link to it here and their image and title will be automatically pulled from their profile page.');
   t('Is Full?');
@@ -2153,9 +2424,11 @@ function ilr_sdc_listings_field_default_field_instances() {
   t('People Profile');
   t('Price');
   t('Price note');
+  t('Program');
   t('Registration End date');
   t('Salesforce ID');
   t('Setting');
+  t('Show on web');
   t('Sponsor');
   t('The contact email is used when a user requests more info about and/or customized delivery of a course. If this field is set here, it will override the contact email of the sponsoring organization. ');
   t('Thumbnail');

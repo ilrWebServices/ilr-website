@@ -384,6 +384,11 @@ function ilr_sdc_listings_feeds_importer_default() {
             'target' => 'body',
             'unique' => FALSE,
           ),
+          3 => array(
+            'source' => 'jsonpath_parser:0',
+            'target' => 'field_class_id',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'full_html',
