@@ -71,6 +71,7 @@ features[field_instance][] = node-sdc_class-field_building
 features[field_instance][] = node-sdc_class-field_cancelled
 features[field_instance][] = node-sdc_class-field_class_dates
 features[field_instance][] = node-sdc_class-field_class_id
+features[field_instance][] = node-sdc_class-field_class_number
 features[field_instance][] = node-sdc_class-field_course
 features[field_instance][] = node-sdc_class-field_faculty
 features[field_instance][] = node-sdc_class-field_is_full

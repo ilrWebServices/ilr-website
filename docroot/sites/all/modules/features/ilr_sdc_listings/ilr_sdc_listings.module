@@ -1319,9 +1319,9 @@ function _ilr_sdc_listings_course_add_instructors(&$course_node, $view_mode) {
       $classes = node_load_multiple($class_nids);
       foreach ($classes as $class) {
         $class_node_wrapper = ilr_get_node_wrapper($class);
-        $class_id = $class_node_wrapper->field_class_id->value();
+        $class_number = $class_node_wrapper->field_class_number->value();
         if ($class_node_wrapper->field_cancelled->value() != 1 && $class_node_wrapper->field_is_full->value() != 1) {
-          $content .= _ilr_sdc_listings_generate_faculty_markup($class, $class_id, count($classes));
+          $content .= _ilr_sdc_listings_generate_faculty_markup($class, $class_number, count($classes));
         }
       }
       $content .= '</div>';
@@ -1397,8 +1397,8 @@ function ilr_sdc_listings_class_reg_form($form, &$form_state, $class_nodes) {
   foreach ($class_nodes as $nid => $class_node) {
     $class_node_wrapper = ilr_get_node_wrapper($class_node);
     if ($class_node_wrapper->field_cancelled->value() != 1 && $class_node_wrapper->field_is_full->value() != 1) {
-      $class_id = $class_node_wrapper->field_class_id->value();
-      $markup .= '<div class="class-detail-toggle class-'.$class_id.'">';
+      $class_number = $class_node_wrapper->field_class_number->value();
+      $markup .= '<div class="class-detail-toggle class-'.$class_number.'">';
       $markup .= _ilr_sdc_listings_generate_class_button_markup($class_node, TRUE);
       $markup .= '</div>';
     }
@@ -1648,10 +1648,10 @@ function _ilr_sdc_listings_get_contextual_link_markup($class) {
   return $markup;
 }
 
-function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id, $count) {
+function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_number, $count) {
   $wrapper = ilr_get_node_wrapper($class_node);
   $faculty = $wrapper->field_faculty->value();
-  $markup = '<div class="instructors class-detail-toggle class-' . $class_id . '">';
+  $markup = '<div class="instructors class-detail-toggle class-' . $class_number . '">';
   $markup .= ($count > 1)
     ? '<h3>Instructors for '. _ilr_sdc_listings_get_class_datespan($class_node).' <br><span class="notice multiple-dates">Select another date to see its instructors.</span></h3>'
     : '<h3>Instructors</h3>';
@@ -1848,7 +1848,7 @@ function _ilr_sdc_listings_get_class_registration_url($class) {
   global $base_url;
   $wrapper = ilr_get_node_wrapper($class);
   $url = variable_get('ilr_sdc_listings_reg_url', 'https://tiger-cornell-ilr.cs94.force.com/professionalprograms/s/shoppingcart');
-  $url .= '?classId=' . $wrapper->field_class_id->value();
+  $url .= '?classId=' . $wrapper->field_class_number->value();
   $course_nid = $wrapper->field_course[0]->getIdentifier();
   return $url;
 }
@@ -2316,8 +2316,8 @@ function _ilr_sdc_listings_get_parent_path_alias($path) {
 function _ilr_sdc_listings_get_class_detail_markup($class_node) {
   $markup = '';
   $class_node_wrapper = ilr_get_node_wrapper($class_node);
-  $class_id = $class_node_wrapper->field_class_id->value();
-  $markup .= '<div class="class-detail-toggle class-'.$class_id.'">';
+  $class_number = $class_node_wrapper->field_class_number->value();
+  $markup .= '<div class="class-detail-toggle class-'.$class_number.'">';
   $markup .= _ilr_sdc_listings_format_class_date_and_time($class_node);
   $markup .= _ilr_sdc_listings_generate_location_markup($class_node);
   $markup .= '</div>';
@@ -2332,7 +2332,7 @@ function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
   $classes = _ilr_sdc_listings_remove_overflow_sessions($classes);
   foreach ($classes as $nid => $class) {
     $wrapper = ilr_get_node_wrapper($class);
-    $class_id = $wrapper->field_class_id->value();
+    $class_number = $wrapper->field_class_number->value();
     if ($wrapper->field_is_full->value()) {
       $full_markup = _ilr_sdc_listings_get_course_full_markup($class);
       $form['class_full_with_radio_label'][] = array(
@@ -2343,7 +2343,7 @@ function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
     else {
       // See if it's been cancelled
       if ($wrapper->field_cancelled->value() == 1) {
-        $form[$class_id] = array(
+        $form[$class_number] = array(
           '#type' => 'markup',
           '#prefix' => '<div class="class-cancelled">',
           '#suffix' => '<p class="message class-cancelled">Seats for this date are no longer available</p></div>',
@@ -2351,15 +2351,15 @@ function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
         );
       } // Handle classes that are not on demand
       elseif (!_ilr_sdc_listings_is_ondemand($class)) {
-        $class_radios[] = $class_id;
-        $form[$class_id] = array(
+        $class_radios[] = $class_number;
+        $form[$class_number] = array(
           '#type' => 'radio',
-          '#return_value' => $class_id,
+          '#return_value' => $class_number,
           '#attributes' => array('name' => 'addClass'),
           // Ensure single value in $form_state
           '#parents' => array('addClass'),
         );
-        $form['class_radio_label_' . $class_id] = array(
+        $form['class_radio_label_' . $class_number] = array(
           '#type' => 'markup',
           '#markup' => _ilr_sdc_listings_generate_class_radio_label($class),
         );
@@ -2368,8 +2368,8 @@ function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
   }
   if (!empty($class_radios)) {
     // Set the first as checked
-    $first_class_id = reset($class_radios);
-    $form[$first_class_id]['#attributes']['checked'] = 'checked';
+    $first_class_number = reset($class_radios);
+    $form[$first_class_number]['#attributes']['checked'] = 'checked';
   }
 }
 
@@ -2620,8 +2620,8 @@ function ilr_sdc_listings_process_course_pull($mapping_object, $sf_object, $mapp
 }
 
 function ilr_sdc_listings_process_class_pull($mapping_object, $sf_object, $mapping) {
-  $class_id = $sf_object['Legacy_Class_ID__c'];
-  if (!empty($class_id)) {
+  if (isset($sf_object['Legacy_Class_ID__c'])) {
+    $class_id = $sf_object['Legacy_Class_ID__c'];
     $matched_class = _ilr_sdc_listings_get_class_by_id($class_id);
     if ($matched_class) {
       $mapping_object = ilr_sdc_listings_create_mapping_object('sdc_class', $matched_class->nid, $sf_object['Id']);
@@ -2671,17 +2671,13 @@ function ilr_sdc_listings_salesforce_pull_entity_presave($entity, $sf_object, $s
   if (isset($entity->type)) {
     switch ($entity->type) {
       case 'sdc_course':
-        $sf_program = $sf_object['Program__c'];
-        if (!empty($sf_program) && _ilr_sdc_listings_get_program_by_sf_id($sf_program)) {
-          $entity->status = $sf_object['Show_on_Web__c'];
-        }
-        else {
-          throw new SalesforcePullException('Salesforce course not assigned to an available program.');
+        if (empty($sf_object['Show_on_Web__c'])) {
+          throw new SalesforcePullException('Course not set to show on web.');
         }
         break;
       case 'sdc_class':
         if (!_ilr_sdc_listings_get_course_by_sf_id($sf_object['Course__c'])) {
-          throw new SalesforcePullException('Saleforce class is not assigned to an existing course.');
+          throw new SalesforcePullException('Salesforce class is not assigned to an existing course.');
         }
         else {
           _ilr_sdc_listings_assign_faculty_to_class($entity, $sf_object);
@@ -2713,4 +2709,5 @@ function _ilr_sdc_listings_assign_faculty_to_class(&$entity, $sf_object) {
       ];
     }
   }
+  return TRUE;
 }

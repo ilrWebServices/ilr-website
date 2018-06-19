@@ -103,6 +103,7 @@ features[field_base][] = field_city_additional_2
 features[field_base][] = field_city_additional_3
 features[field_base][] = field_class_dates
 features[field_base][] = field_class_id
+features[field_base][] = field_class_number
 features[field_base][] = field_classes
 features[field_base][] = field_collected_blocks
 features[field_base][] = field_comments
