@@ -30,7 +30,7 @@ function basic_page_node_access($node, $op, $account) {
         user_logout(); // See basic_page_goto_alter for redirect
       }
       else {
-        drupal_set_message('You must be logged in with your NetID to access this page. <a class="link--button link--offset-button" href="/saml_login">Login</a>', 'warning');
+        drupal_set_message('Please log in with your NetID to access this page. <a class="link--button link--offset-button trigger trigger--hide-denied" href="/saml_login">Log in</a>', 'warning');
 
         return NODE_ACCESS_DENY;
       }

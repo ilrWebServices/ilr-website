@@ -456,4 +456,21 @@
     }
   };
 
+  Drupal.behaviors.ilr_theme_trigger_called = {
+    attach: function (context, settings) {
+      $('.trigger').each(function(){
+        var $classes = $(this).prop('class');
+        var $triggerModifier = $classes.split('trigger--')[1];
+        switch ($triggerModifier) {
+          case 'hide-denied':
+            $('#page-title, #block-system-main').hide();
+            $('.messages').appendTo($('.region-content'));
+            break;
+          default:
+            break;
+        }
+      });
+    }
+  };
+
 }(jQuery));
