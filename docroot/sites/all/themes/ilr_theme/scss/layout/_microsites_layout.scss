@@ -56,12 +56,6 @@ body.microsite {
         }
       }
     }
-    .microsite-speakers {
-      article.speaker  {
-        width: 50% !important;
-        float: left;
-      }
-    }
   }
 
   #content-bottom[data-eq-state="768"] {
@@ -79,12 +73,6 @@ body.microsite {
             clear: both;
           }
         }
-      }
-    }
-    .microsite-speakers {
-      article.speaker {
-        width: 33% !important;
-        float: left;
       }
     }
     .microsite-venue {
@@ -139,12 +127,6 @@ body.microsite {
             width: 27% !important;
           }
         }
-      }
-    }
-    .microsite-speakers {
-      article.speaker  {
-        @extend %four-column;
-        width: 25% !important;
       }
     }
     .microsite-venue {

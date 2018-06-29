@@ -89,66 +89,6 @@ body.microsite {
     display: none;
   }
 
-  //pop up modal (includes the interest form)
-  .fancybox-wrap {
-    width: 95% !important;
-
-    @include large {
-      width: 75% !important;
-    }
-
-    @include xl {
-      width: 55% !important;
-    }
-
-    .fancybox-skin {
-      padding: 0 !important;
-    }
-    .fancybox-inner {
-      background-color: $dark-blue;
-      width: 100% !important;
-      overflow: auto;
-    }
-    .modal-wrap {
-      aside {
-        width: 34%;
-        float: left;
-        img {
-          width: 100%;
-          height: auto;
-        }
-        p {
-          color: $gray-bg;
-          margin-bottom: 13px;
-        }
-      }
-      .biography {
-        background-color: $gray-bg;
-        width: 66%;
-        min-height: 500px;
-        padding: 21px 34px;
-        float: left;
-        h2 {
-          font-size: 21px;
-          line-height: 1;
-        }
-        h3 {
-          color: $basic-page-color;
-          font-size: 34px;
-          line-height: 1.2;
-          margin: 0 0 8px;
-        }
-        .show-hide-bio {
-          display: none;
-        }
-        .sls-bio {
-          padding: 0;
-          display: block !important;
-        }
-      }
-    }
-  }
-
   .microsite-marquee {
     background-color: $dark-blue;
     padding-top: 55px;
@@ -225,28 +165,6 @@ body.microsite {
   }
 
   #content-bottom {
-    .modal {
-      aside {
-        display: none; //don't display on page
-      }
-      .biography {
-        h3, h4 {
-          display: none;
-        }
-        p {
-          padding: 0 21px;
-        }
-        .sls-bio {
-          padding: 0 21px;
-          text-align: left;
-          display: none;
-          &.show {
-            display: block;
-          }
-        }
-      }
-    }
-
     .microsite-featured-speakers, .microsite-individual-speaker {
       background-color: white;
       article.featured-speaker {
@@ -283,55 +201,6 @@ body.microsite {
         }
         h4 {
           @include adjust-font-size-to(21px,1);
-        }
-      }
-    }
-
-    .microsite-speakers {
-      background-color: white;
-      margin: 0;
-      padding: 0;
-      article.speaker  {
-        &:hover {
-          cursor: pointer;
-        }
-        h3 {
-          @include adjust-font-size-to(24px, 1.2);
-          background: rgba(0,0,0,.75);
-          color: white;
-          font-style: normal;
-          margin: 0;
-          padding: 13px 21px;
-          width: 100%;
-          text-shadow: 1px 1px 2px black;
-          span {
-            display: block;
-            font-size: 17px;
-            color: $basic-page-color;
-            line-height: 1.2;
-          }
-        }
-      }
-      img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-      .modal {
-        .biography {
-          .show-hide-bio {
-            background: rgba(0,0,0,.75);
-            color: $gray-light;
-            font-size: 17px;
-            width: 100%;
-            margin-bottom: 0;
-            padding-bottom: 21px;
-          }
-          .sls-bio {
-            &:nth-of-type(2) {
-              padding-top: 21px;
-            }
-          }
         }
       }
     }
@@ -456,26 +325,8 @@ body.microsite {
   }
 
   #content-bottom[data-eq-state="550"] {
-    .modal {
-      display: none; //don't display on page
-    }
     .show-hide-bio {
       display: none;
-    }
-    .microsite-speakers {
-      @include padding-trailer(2);
-      padding-left: 34px;
-      padding-right: 34px;
-      article.speaker  {
-        @include card-animated;
-        margin-left: 0;
-        margin-right: 0;
-        h2, h3 {
-          span {
-            font-size: 14px;
-          }
-        }
-      }
     }
     .microsite-individual-speaker {
       article.featured-speaker {
@@ -497,9 +348,6 @@ body.microsite {
   }
 
   #content-bottom[data-eq-state="768"] {
-    .modal {
-      display: none; //don't display on page
-    }
     .show-hide-bio {
       display: none;
     }
@@ -521,21 +369,6 @@ body.microsite {
         article.moderator {
           img {
             width: 72%;
-          }
-        }
-      }
-    }
-    .microsite-speakers {
-      @include padding-trailer(2);
-      padding-left: 55px;
-      padding-right: 55px;
-      article.speaker {
-        @include card-animated;
-        margin-left: 0;
-        margin-right: 0;
-        h2, h3 {
-          span {
-            font-size: 14px;
           }
         }
       }
@@ -592,9 +425,6 @@ body.microsite {
   }
 
   #content-bottom[data-eq-state="widescreen"] {
-    .modal {
-      display: none; //don't display on page
-    }
     .show-hide-bio {
       display: none;
     }
@@ -624,22 +454,6 @@ body.microsite {
         padding: 21px 89px 0;
         clear: both;
         overflow: auto;
-      }
-    }
-    .microsite-speakers {
-      padding-left: 89px;
-      padding-right: 89px;
-      @include padding-trailer(4);
-      article.speaker  {
-        @include card-animated;
-        margin-top: 0;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        h2, h3 {
-          span {
-            font-size: 14px;
-          }
-        }
       }
     }
     .microsite-schedule {
@@ -721,16 +535,7 @@ body.microsite {
   }
 }
 
-#main[data-eq-state="550"] {
-  .fancybox-overlay {
-    display: block;
-  }
-}
-
 #main[data-eq-state="768"] {
-  .fancybox-wrap {
-    display: block;
-  }
   .microsite-marquee {
     padding: 0;
     position: relative;
@@ -760,9 +565,6 @@ body.microsite {
 }
 
 #main[data-eq-state="widescreen"] {
-  .fancybox-overlay {
-    display: block;
-  }
   .microsite-marquee {
     padding: 0;
     position: relative;
