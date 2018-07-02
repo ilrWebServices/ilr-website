@@ -337,10 +337,12 @@
         if ($(this).closest('article').find('.sls-bio').hasClass('show')) {
           $(this).closest('article').find('.sls-bio').removeClass('show');
           $(this).html('View biography');
+          $(this).closest('article').find('.biography').toggleClass('show');
         }
         else {
           $(this).closest('article').find('.sls-bio').addClass('show');
           $(this).html('Hide biography');
+          $(this).closest('article').find('.biography').toggleClass('show');
         }
       });
     }

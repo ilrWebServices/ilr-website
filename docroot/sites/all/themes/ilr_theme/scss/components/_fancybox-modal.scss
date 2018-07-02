@@ -49,6 +49,7 @@
       .show-hide-bio {
         background: rgba(0,0,0,.75);
         color: $gray-light;
+        display: block;
         font-size: 17px;
         width: 100%;
         margin-bottom: 0;
@@ -83,10 +84,12 @@
     display: none; //don't display on page
   }
   .biography {
-    h3, h4 {
+    background: white;
+    h3, h4, p, ul {
       display: none;
     }
-    p {
+    p.show-hide-bio {
+      display: block;
       padding: 0 21px;
     }
     .sls-bio {
@@ -95,6 +98,12 @@
       display: none;
       &.show {
         display: block;
+      }
+    }
+    &.show {
+      p, ul {
+        display: block;
+        padding: 0 21px 1rem 21px;
       }
     }
   }
