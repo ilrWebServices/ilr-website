@@ -49,14 +49,14 @@
       .show-hide-bio {
         background: rgba(0,0,0,.75);
         color: $gray-light;
-        display: block;
+        display: block !important;
         font-size: 17px;
         width: 100%;
         margin-bottom: 0;
         padding-bottom: 21px;
 
-        @include medium {
-          display: none;
+        @include breakpoint(550px) {
+          display: none !important;
         }
       }
       .sls-bio {
@@ -76,7 +76,7 @@
 }
 
 .modal {
-  @include medium {
+  @include breakpoint(550px) {
     display: none;
   }
 
@@ -91,6 +91,9 @@
     p.show-hide-bio {
       display: block;
       padding: 0 21px;
+      @include medium {
+        display: none;
+      }
     }
     .sls-bio {
       padding: 0 21px;

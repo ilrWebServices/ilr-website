@@ -322,7 +322,7 @@
   };
   Drupal.behaviors.sls = {
     attach: function (context, settings) {
-      $('.speaker,.moderator,.featured-speaker').click(function(){
+      $('.speaker,.moderator,.featured-speaker,.honeycomb-grid article').click(function(){
         var $content = $(this).find('.modal').html();
         if ($('#main').attr('data-eq-state') != 320) {
           if ($content) {
@@ -334,7 +334,7 @@
         }
       });
       $('.show-hide-bio').click(function(){
-        if ($(this).closest('article').find('.sls-bio').hasClass('show')) {
+        if ($(this).closest('article').find('.sls-bio').hasClass('show') || $(this).closest('article').find('.biography').hasClass('show')) {
           $(this).closest('article').find('.sls-bio').removeClass('show');
           $(this).html('View biography');
           $(this).closest('article').find('.biography').toggleClass('show');
