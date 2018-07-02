@@ -47,7 +47,16 @@
         margin: 0 0 8px;
       }
       .show-hide-bio {
-        display: none;
+        background: rgba(0,0,0,.75);
+        color: $gray-light;
+        font-size: 17px;
+        width: 100%;
+        margin-bottom: 0;
+        padding-bottom: 21px;
+
+        @include medium {
+          display: none;
+        }
       }
       .sls-bio {
         padding: 0;
@@ -66,7 +75,9 @@
 }
 
 .modal {
-  display: none;
+  @include medium {
+    display: none;
+  }
 
   aside {
     display: none; //don't display on page

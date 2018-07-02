@@ -39,10 +39,15 @@
     // Grid
     float: left;
 
+    @include small {
+      width: 50% !important;
+    }
+
     @include medium {
+      @include card-animated;
       margin-left: 0;
       margin-right: 0;
-      width: 50% !important;
+      width: 33% !important;
       h2, h3 {
         span {
           font-size: 14px;
@@ -50,13 +55,9 @@
       }
     }
 
-    @include large {
-      // width: 33% !important;
+    @include xl {
+      width: 25% !important;
     }
-
-    // @include xl {
-    //   width: 25% !important;
-    // }
   }
 
   img {
@@ -87,7 +88,6 @@
     @include padding-trailer(2);
 
     article  {
-      @include card-animated;
       margin-left: 0;
       margin-right: 0;
       h2, h3 {
@@ -110,19 +110,13 @@
 
   #content-bottom & {
     background-color: white;
-    padding: 0 55px;
 
     @include medium {
-      article {
-        width: 33%;
-      }
+      padding: 0 55px;
     }
 
     @include xl {
       padding: 0 89px;
-      article {
-        width: 25% !important;
-      }
     }
   }
 }
