@@ -11430,7 +11430,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_num_cornell_participants',
-    'label' => 'Number of attendees',
+    'label' => 'Number of attendees (up to 3 max)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -14103,7 +14103,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Name');
   t('NetID');
   t('Non-consecutive options could include starting in December and finishing in January; or working 5 days, taking a day off for another commitment, and then working 5 more days, etc.');
-  t('Number of attendees');
+  t('Number of attendees (up to 3 max)');
   t('Number of people who plan to attend');
   t('Number of students you can host for this FEX opportunity');
   t('Number of students you can host for this WISP opportunity');
