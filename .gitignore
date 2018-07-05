@@ -12,8 +12,9 @@ migration_data/*export/
 # Ignore the stylesheets
 docroot/sites/all/themes/ilr_theme/css/
 
-# Ignore the secrets
+# Ignore the secrets and dynamic_allowed_values
 config/secrets.php
+config/dynamic_allowed_values.php
 
 # Ignore Mac-only files
 .DS_Store

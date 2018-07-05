@@ -14,6 +14,6 @@ if (!defined('CONFIG_PATH')) {
 }
 
 // Load the secrets file
-if (file_exists(CONFIG_PATH . '/secrets.php')) {
-  require_once(CONFIG_PATH . '/secrets.php');
+if (file_exists(CONFIG_PATH . '/dynamic_allowed_values.php')) {
+  require_once(CONFIG_PATH . '/dynamic_allowed_values.php');
 }
