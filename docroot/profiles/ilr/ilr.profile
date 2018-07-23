@@ -882,6 +882,24 @@ function ilr_rename_fields($fields, $drop_first = FALSE) {
   }
 }
 
+function ilr_add_section_title(&$variables, $title=NULL) {
+  if ($title) {
+    $variables['section_title'] = $title;
+  }
+  else {
+    $parents = ilr_get_menu_trail_by_path();
+    if (count($parents) > 2) {
+      $parent_title = menu_get_object('node', 1, $parents[count($parents) - 2])->title;
+      $variables['section_title'] = $parent_title;
+    }
+  }
+}
+
+function ilr_get_menu_trail_by_path() {
+  $parents = _menu_trail_by_path_get_parent_candidates(drupal_get_path_alias());
+  return $parents;
+}
+
 function ilr_get_current_mlid($node=NULL) {
   if (!$node) {
     $node = menu_get_object();

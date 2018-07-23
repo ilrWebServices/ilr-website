@@ -56,3 +56,9 @@ function ilr_visiting_fellows_context_load_alter(&$context) {
   }
 
 }
+
+function ilr_visiting_fellows_preprocess_page(&$variables) {
+  if (!empty($variables['node']) && $variables['node']->type == 'visiting_fellow') {
+    ilr_add_section_title($variables);
+  }
+}

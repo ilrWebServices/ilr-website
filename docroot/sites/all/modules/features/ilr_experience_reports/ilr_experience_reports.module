@@ -53,5 +53,10 @@ function ilr_experience_reports_context_load_alter(&$context) {
       }
     }
   }
+}
 
+function ilr_experience_reports_preprocess_page(&$variables) {
+  if (!empty($variables['node']) && $variables['node']->type == 'experience_report') {
+    ilr_add_section_title($variables);
+  }
 }
