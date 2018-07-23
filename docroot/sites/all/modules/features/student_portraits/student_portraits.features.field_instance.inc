@@ -169,12 +169,13 @@ function student_portraits_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
+        'module' => 'image',
         'settings' => array(
           'field_formatter_label' => '',
-          'file_view_mode' => 'default',
+          'image_link' => '',
+          'image_style' => 'focussed_portrait',
         ),
-        'type' => 'file_rendered',
+        'type' => 'image',
         'weight' => 3,
       ),
       'mega_menu_item' => array(

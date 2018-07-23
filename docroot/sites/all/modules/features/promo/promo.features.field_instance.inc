@@ -109,7 +109,7 @@ function promo_field_default_field_instances() {
       'alt_field' => 1,
       'default_image' => 0,
       'file_directory' => 'fielduploads/node_promo/image',
-      'file_extensions' => 'jpg jpeg',
+      'file_extensions' => 'jpg jpeg png',
       'max_filesize' => '2MB',
       'max_resolution' => '',
       'min_resolution' => '',
@@ -121,6 +121,7 @@ function promo_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'private' => 0,
           'public' => 'public',
           'youtube' => 0,
         ),

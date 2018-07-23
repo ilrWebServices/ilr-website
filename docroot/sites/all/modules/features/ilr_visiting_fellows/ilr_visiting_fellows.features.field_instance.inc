@@ -25,7 +25,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_fields',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -38,6 +38,12 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'open_frame__highlighted' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -74,7 +80,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -87,6 +93,12 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'open_frame__highlighted' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -123,10 +135,13 @@ function ilr_visiting_fellows_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_plain',
+        'weight' => 2,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -142,6 +157,15 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'open_frame__highlighted' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -183,10 +207,13 @@ function ilr_visiting_fellows_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_plain',
+        'weight' => 3,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'inline',
@@ -202,6 +229,15 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'open_frame__highlighted' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -243,10 +279,13 @@ function ilr_visiting_fellows_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
+        'label' => 'inline',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 4,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'inline',
@@ -262,6 +301,15 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'open_frame__highlighted' => array(
+        'label' => 'inline',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -300,7 +348,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'inline',
@@ -316,6 +364,15 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'open_frame__highlighted' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -357,9 +414,14 @@ function ilr_visiting_fellows_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'image_link' => '',
+          'image_style' => 'focussed_portrait',
+        ),
+        'type' => 'image',
+        'weight' => 1,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -367,7 +429,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => 'main_portrait_image',
+          'image_style' => 'focussed_portrait',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -376,6 +438,17 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'open_frame__highlighted' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'image_link' => '',
+          'image_style' => 'focussed_portrait',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -465,6 +538,12 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'open_frame__highlighted' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -524,7 +603,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -537,6 +616,12 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'open_frame__highlighted' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -576,7 +661,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -589,6 +674,12 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'open_frame__highlighted' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'hidden',

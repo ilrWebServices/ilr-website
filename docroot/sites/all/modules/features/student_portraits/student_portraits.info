@@ -16,6 +16,7 @@ dependencies[] = text
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
+features[field_group][] = group_highlighted_content|node|student_portrait|default
 features[field_group][] = group_portrait_highlighted|node|student_portrait|default
 features[field_instance][] = node-student_portrait-body
 features[field_instance][] = node-student_portrait-field_category_type
