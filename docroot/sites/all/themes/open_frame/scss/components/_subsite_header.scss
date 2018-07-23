@@ -1,0 +1,236 @@
+.subsite {
+  header {
+    position: relative;
+    top: 0;
+  }
+  #header-region {
+    @include clearfix;
+    background: white; // See site-specific bg colors below
+    position: relative;
+    padding-bottom: .5em;
+    @include transition-duration(.3s);
+
+    &.sticky {
+      padding: .5em 0 10px 0;
+      position: fixed;
+      top: 0;
+      overflow: visible;
+      @include box-shadow(0 10px 10px -10px rgba(black, .5));
+      border-bottom: none;
+
+      h2, h3, p {
+        display: none;
+      }
+
+      .menu-block-ilr-primary-menu {
+        width: 90%;
+        float: left;
+        ul.menu {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          margin-top: 5px;
+          margin-left: 15px;
+
+          li {
+            display: flex;
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    .region-header {
+      @extend .container;
+      padding: 0 1em;
+    }
+  }
+  .subsite-header {
+    float: left;
+    width: 35%;
+    h2 {
+      margin-bottom: 0;
+      font-weight: 300;
+      @include adjust-font-size-to(40px);
+      @include rhythm(2,0,2,0,40px);
+      @include adjust-leading-to(.75);
+    }
+    a, a:visited, a:active {
+      color: $subsite-heading;
+      font-family: $font;
+    }
+  }
+  &.men-and-women-as-allies,
+  &.mobilizing-against-inequality,
+  &.uli,
+  &.uale-2013-ne,
+  &.national-labor-leadership-init {
+    .subsite-header {
+      p {
+        background: url(../images/logo-worker-institute-no-slogan.svg) no-repeat 0 0;
+        margin-top: 1em;
+        margin-bottom: .6em;
+        a {
+          color: transparent !important;
+          border-bottom: none;
+          display: block;
+          height: 18px;
+          width: 180px;
+        }
+      }
+
+      h2 {
+        margin-top: .5em;
+        padding-bottom: 0;
+      }
+    }
+    header[data-eq-state="mobile-nav"] {
+      #header-region {
+        .subsite-header {
+          p {
+            margin-top: .5em;
+            margin-bottom: .4em;
+          }
+
+          h2 {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+  &.wrapped {
+    .subsite-header {
+      width: 75%;
+      h2 {
+        margin-bottom: 17px;
+        padding-bottom: 0;
+      }
+    }
+  }
+  header[data-eq-state="mobile-nav"] {
+    position: fixed;
+    #header-region {
+      .subsite-header {
+        width: 75%;
+        h2 {
+          @include adjust-font-size-to(22px);
+          @include rhythm(.5,0,0,0,22px);
+          @include adjust-leading-to(.75);
+
+          &.image {
+            overflow: hidden;
+            height: 20px;
+          }
+          &.Conversations {
+            height: auto;
+          }
+          &.ILR {
+            height: 32px;
+            img {
+              max-width: 80px;
+            }
+          }
+          img {
+            max-width: 200px;
+          }
+        }
+      }
+
+      &.sticky h2 {
+        display: block;
+        margin: 0;
+      }
+    }
+  }
+
+  &.sustainable-labor-practices #header-region {
+    background-color: $dark-blue;
+    .subsite-header {
+      width: 521px !important;
+    }
+    a, a:visited, a:active {
+      color: $gray-light;
+      &:hover {
+        color: lighten($gray-light, 10%);
+        border-bottom-color: lighten($gray-wi,8%);
+      }
+    }
+  }
+
+  &.worker-institute #header-region {
+    background-color: $gray-wi;
+    .subsite-header {
+      width: 390px;
+    }
+    a, a:visited, a:active {
+      color: $gray-light;
+      &:hover {
+        color: lighten($gray-light, 10%);
+        border-bottom-color: lighten($gray-wi,8%);
+      }
+    }
+  }
+
+  &.men-and-women-as-allies #header-region,
+  &.mobilizing-against-inequality #header-region,
+  &.uli #header-region,
+  &.uale-2013-ne #header-region,
+  &.national-labor-leadership-init #header-region {
+    background-color: $gray-wi;
+    a, a:visited, a:active {
+      color: $gray-light;
+      &:hover {
+        color: lighten($gray-light, 10%);
+        border-bottom-color: lighten($gray-wi,8%);
+      }
+    }
+  }
+}
+
+// Called from _mega_menu.scss
+// .subsite .menu-block-ilr-primary-menu:
+%sub-site-menu {
+  float: right;
+  ul.menu {
+    margin: .8em 0 0 0;
+    padding: 0;
+    //@include adjust-font-size-to(14px);
+    @include rhythm(2,0,2,0,14px);
+
+    .wrapped & {
+      margin: 0;
+      padding: .5em 0;
+    }
+
+    .sticky &  {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  li {
+    background: none;
+    float: left;
+  }
+  a {
+    color: $gray-dark;
+    font-weight: 400;
+    border-bottom: none;
+    &:hover {
+      border-bottom: 1px solid $gray-light;
+    }
+  }
+}
+
+#main {
+  body.subsite & {
+    @extend %page-with-sticky-subsite-header;
+  }
+}
+
+%page-with-sticky-subsite-header {
+  [data-eq-state="mobile-nav"] & {
+    margin-top: 105px;
+  }
+}

@@ -1,0 +1,73 @@
+// specific paragraph bundle styles are in individual component files
+// prefixed with pb_
+#main {
+  .paragraphs-items-field-para-main-page-content {
+    .field-name-field-image {
+      text-align: center;
+      &.field-widget-image-image {
+        text-align: left;
+        @include trailer(0);
+      }
+    }
+    .field-name-field-youtube-video {
+      text-align: center;
+      &.field-widget-youtube {
+        text-align: left;
+      }
+    }
+
+    .field-name-field-para-main-page-content {
+      .field-item:nth-child(even) {
+        background: white;
+        .node-type-basic-page & {
+          background: none;
+        }
+      }
+    }
+    .field-name-field-para-main-page-content {
+      .field-item:nth-child(1) {
+        border-top: 1px solid $gray-light;
+        .node-type-basic-page & {
+          border: none;
+        }
+      }
+    }
+    .field-name-field-para-main-page-content {
+      .field-item.paragraph-type-featured-promo {
+        background: $nav-dark;
+      }
+    }
+  }
+
+  article.node-reflection {
+    ul.social-share {
+      display: inline-block;
+      @include inline-block-list;
+      @extend %social-share-70th;
+    }
+  }
+
+  .entity-paragraphs-item {
+    @include pie-clearfix;
+  }
+
+  .block-bean article {
+    @include two-column;
+  }
+}
+
+#main[data-eq-state="768"] {
+  #content {
+    .field-name-field-image {
+      text-align: left;
+    }
+  }
+}
+
+#main[data-eq-state="widescreen"] {
+  #content {
+    .field-name-field-image {
+      text-align: left;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+#main {
+  .paragraphs-item-just-image {
+    @include padding-leader(0);
+    @include padding-trailer(0);
+    line-height: 0;
+    .content {
+      @include grid-span (12);// allows image to be full width
+      .field-name-field-image {
+        margin: 0;
+      }
+    }
+  }
+
+  .paragraphs-item-just-text {
+    @include padding-leader(1);
+    @include padding-trailer(1);
+
+    .node-type-basic-page & {
+      padding: 0;
+    }
+
+    body.node-type-channel-page & {
+      .content {
+        @include grid-span (10,2);
+        .field-name-field-header {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+#main[data-eq-state="768"],
+#main[data-eq-state="widescreen"] {
+  body.node-type-channel-page & {
+    .paragraphs-item-just-text {
+      @include padding-leader(1.5);
+      @include padding-trailer(1.5);
+    }
+  }
+}
+
+// Limit to basic pages since these might change existing design
+.node-type-basic-page {
+  .paragraphs-item-just-text {
+    .field-name-field-header {
+      @include h2;
+      @include leader(.5);
+    }
+  }
+}

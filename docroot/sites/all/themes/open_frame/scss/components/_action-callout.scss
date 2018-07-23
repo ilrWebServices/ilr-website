@@ -1,0 +1,85 @@
+.action-callout {
+  @include trailer(2);
+  @include full-width;
+
+  position: relative;
+  min-height: 380px;
+  overflow: hidden;
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+  }
+
+  &__overlay {
+    @include overlay;
+  }
+
+  &__image {
+    @include bg-img;
+    @include fixed-bg;
+  }
+
+  &__content {
+    @include center(true, true, true);
+    text-align: center;
+    width: 80%;
+
+    .action-callout__tagline {
+      font-family: $font;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: white;
+      @include adjust-leading-to(.9);
+
+      @include large {
+        font-size: 1.8rem;
+      }
+    }
+  }
+
+  &__button {
+    @include button;
+    color: white;
+    display: inline-block !important;
+    box-shadow: 1px 2px 4px rgba(black, .5) !important;
+
+    &:visited {
+      color: white;
+    }
+  }
+
+  &--stadium {
+    .action-callout__image {
+      background-image: url('../images/dodgers.jpg');
+    }
+    .action-callout__overlay {
+      @include overlay($orange);
+    }
+  }
+
+  &--hockey {
+    .action-callout__image {
+      background-image: url('../images/blackhawks.jpg');
+    }
+    .action-callout__overlay {
+      @include overlay($purple);
+    }
+  }
+
+  &--climate {
+    .action-callout__image {
+      background-image: url('../images/turbine.jpg');
+    }
+  }
+
+  &--watch {
+    .action-callout__image {
+      background-image: url('../images/lara-skinner.jpg');
+    }
+  }
+}

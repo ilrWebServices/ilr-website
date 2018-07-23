@@ -1,0 +1,53 @@
+// Todo: Clean up this file
+
+%current-menu-item {
+  font-weight: 600;
+  color: $brand;
+}
+
+.block-menu-block { // All nav menus
+  clear: both;
+  h2 { @extend .hidden; }
+}
+
+.jPanelMenu-panel {
+  @include box-shadow(0 10px 10px 0px rgba(black, .5));
+}
+
+#jPanelMenu-menu {
+  margin-top: $header-height-small;
+
+  .admin-menu & {
+    margin-top: $header-height-small + 29px;
+  }
+}
+
+.sidebar #block-menu-block-ilr-subnav {
+  // @extend .hidden;
+  position: relative;
+  // [data-eq-state="regular-nav"] & {
+  //   @extend .visible;
+  // }
+}
+
+// .sidebar ul.menu,
+.sidebar ul.menu {
+  padding: 0;
+
+  li {
+    list-style-type: none;
+    list-style-image: none;
+    background: none;
+    padding: 0.5rem 0;
+    margin: 0;
+  }
+
+  a {
+    border: none;
+    color: #222;
+  }
+
+  .active-trail a {
+    color: $link;
+  }
+}

@@ -1,0 +1,477 @@
+// ==================================================
+// mixins
+// ==================================================
+@mixin centered-title() {
+  max-width: $section-max-width; //Center border after title
+  font-weight: normal;
+  text-transform: none;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  @include adjust-font-size-to(34px);
+  @include adjust-leading-to(1.5);
+  @include padding-leader(1);
+  &::after {
+    content: " ";
+    border-bottom: 1px solid $cornell-red;
+    display: block;
+    margin: auto 0;
+    position: relative;
+    top: 0;
+    left: 30%;
+    width: 40%;
+    height: 10px;
+  }
+}
+
+@mixin set-heading($strong: false) {
+  @if $strong {
+    font-family: $font-strong;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: -2px;
+  } @else {
+    font-weight: 600;
+    font-family: $font-headers;
+  }
+
+  clear: left;
+  margin-top: 0;
+
+  a {
+    font-weight: inherit;
+    font-family: $font-headers;
+    &:visited {
+      color: inherit;
+    }
+  }
+}
+
+@mixin paragraph-text() {
+  font-size: $p-size;
+  color: $p-text;
+  margin: 0;
+  @include trailer(1);
+
+  img {
+    margin: 0;
+  }
+}
+
+// ==================================================
+// body
+// ==================================================
+body {
+  font-family: $font;
+  color: $p-text;
+  font-weight: 300;
+}
+
+// ==================================================
+// headings
+// ==================================================
+// consider reworking per https://medium.com/p/8e51498c3713
+h1, h2, h3, h4, h5, h6 {
+  @include set-heading;
+}
+
+h1 {
+  @include adjust-font-size-to($h1-size);
+  color: $h1-text;
+  line-height: 0.9;
+  // @include adjust-leading-to(2, $h1-size); to do: troublehoot print problem
+  @include margin-trailer(0.15);
+
+  a {
+    outline: 0;
+    color: $h1-link;
+
+    &:hover {
+      color: $h1-link-hover;
+    }
+  }
+  &#page-title {
+    body.front &,
+    body.subsite-front & {
+      display: none;
+    }
+  }
+}
+
+@mixin h2 {
+  @include set-heading;
+  @include adjust-font-size-to($h2-size, $line-height-multiplier);
+  color: $h2-text;
+
+  a {
+    outline: 0;
+    color: $h2-link;
+
+    &:hover {
+      color: $h2-link-hover;
+    }
+  }
+}
+
+h2 {
+  @include h2;
+}
+
+h2.centered-title {
+  @include centered-title;
+  @include margin-trailer(.5);
+}
+
+h3 {
+  font-size: $h3-size;
+  color: $h3-text;
+
+  a {
+    color: $h3-link;
+
+    &:hover {
+      color: $h3-link-hover;
+    }
+  }
+}
+
+h3 + img.alignright,
+h3 + img.alignleft,
+h3 + img.alignnone,
+h3 + img.aligncenter {
+  margin-top: $mod-01;
+}
+
+h4 {
+  font-size: $h4-size;
+  color: $h4-text;
+
+  a {
+    color: $h4-link;
+
+    &:hover {
+      color: $h4-link-hover;
+    }
+  }
+}
+
+h5 {
+  font-size: $h5-size;
+  color: $h5-text;
+
+  a {
+    color: $h5-link;
+
+    &:hover {
+      color: $h5-link-hover;
+    }
+  }
+}
+
+h6 {
+  font-family: $font;
+  font-size: $h6-size;
+  font-weight: 600;
+  color: $h6-text;
+
+  a {
+    color: $h6-link;
+
+    &:hover {
+      color: $h6-link-hover;
+    }
+  }
+}
+
+h2 + ul, h3 + ul, h4 + ul, h5 + ul, h6 + ul {
+  margin-bottom: 2em;
+}
+
+%centered-title {
+  max-width: $section-max-width; //Center border after title
+  font-weight: normal;
+  text-transform: none;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  @include adjust-font-size-to(34px);
+  @include adjust-leading-to(1.5);
+  @include padding-leader(1);
+  &::after {
+    content: " ";
+    border-bottom: 1px solid $cornell-red;
+    display: block;
+    margin: auto 0;
+    position: relative;
+    top: 0;
+    left: 30%;
+    width: 40%;
+    height: 10px;
+  }
+}
+
+
+// ==================================================
+// content
+// ==================================================
+p, a, li {
+  font-family: $font;
+  font-weight: 300;
+}
+
+p {
+  @include paragraph-text;
+}
+
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+    margin-top: ms(3);
+  }
+
+p + ul {
+  margin-top: -1em;
+  margin-bottom: 2em;
+}
+
+hr {
+  clear: both;
+  height: 0;
+  border: 0;
+  border-top: 1px solid $rule;
+  @include trailer(1);
+}
+
+code, pre {
+  font-size: 15px;
+}
+
+blockquote {
+  border-left: 10px solid $blockquote;
+  padding-left: 15px;
+  font-style: italic;
+  color: $blockquote;
+}
+
+figure {
+
+}
+
+figcaption {
+
+}
+
+// ==================================================
+// lists
+// ==================================================
+
+//  we use a lot of ULs that aren't bulleted.
+// don't forget to restore the bullets within content.
+nav ul {
+  list-style: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
+}
+
+ol {
+  padding-left: 2em;
+  line-height: ms(2);
+  li {
+    list-style: decimal;
+    background: none;
+    padding: 0;
+  }
+}
+
+ul {
+  margin: 0 0 1em;
+  padding: 0 0 0 .5em;
+  #content & {
+    ul { // this is a ul ul
+      padding-left: 1.1em;
+    }
+  }
+}
+
+ul.none {
+  list-style: none;
+}
+
+ul.square {
+  list-style: square outside;
+}
+
+ul.circle {
+  list-style: circle outside;
+}
+
+ul.disc {
+  list-style: disc outside;
+}
+
+li {
+  list-style: none;
+  padding-left: 1em;
+  @include adjust-font-size-to(ms(0));
+  background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
+}
+
+ul.pager {
+  @include padding-leader(1);
+}
+
+ul.tabs {
+  li {
+    background: none;
+    padding-left: 0;
+  }
+}
+
+dl dt {
+  @include adjust-font-size-to(ms(0));
+  font-weight: bold;
+}
+
+dl dd {
+  @include adjust-font-size-to(ms(0));
+  margin: 0;
+}
+
+
+// ==================================================
+// links
+// ==================================================
+a, a:visited {
+  color: $link;
+  text-decoration: none;
+  outline: 0;
+}
+
+a:hover, a:focus {
+  color: $link-hover;
+  text-decoration: none;
+}
+
+p a, p a:visited,
+li a,
+div.field:not(.field-type-image) > a {
+  border-bottom: 1px solid $gray-light;
+  &:hover {
+    border-bottom-color: $link-hover;
+  }
+}
+
+// ==================================================
+// text level semantics
+// ==================================================
+em, i {
+  font-style: italic;
+}
+
+b, strong {
+  font-weight: bold;
+}
+
+small {
+  font-size: 1.1em;
+}
+
+cite {
+
+}
+
+q {
+
+}
+
+sub, sup {
+  @include adjust-font-size-to(ms(-2));
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+
+// ==================================================
+// embedded content
+// ==================================================
+img, object, video {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  border: 0;
+}
+
+
+// ==================================================
+// tables
+// ==================================================
+table {
+  @include trailer(1);
+  border-collapse: collapse;
+  border-left: 1px dotted $rule;
+  border-bottom: 1px dotted $rule;
+  text-align: left;
+  width: 100%;
+  font-size: $p-size;
+
+  thead {
+
+  }
+
+  caption {
+
+  }
+
+  th {
+    background-color: $table-bg-th;
+    border-right: 1px solid $rule;
+    border-bottom: 1px solid $rule;
+    color: $th-text;
+    font-weight: 400;
+    padding: 4px 8px;
+  }
+
+  td {
+    background-color: $table-bg;
+    border-top: 1px dotted $rule;
+    border-right: 1px dotted $rule;
+    color: $td-text;
+    padding: 8px;
+  }
+
+  td.highlight {
+    background-color: $table-bg-alt;
+    color: #000000;
+  }
+
+  th.center, td.center {
+    text-align: center;
+  }
+}
+
+// ================================================
+// Region-specific
+// ================================================
+
+#sidebar-second {
+  li p {
+    @include adjust-font-size-to(ms(0));
+  }
+}
+
+.heading--strong {
+  @include set-heading(true);
+}

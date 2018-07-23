@@ -1,0 +1,54 @@
+body.front {
+  #highlighted {
+    position: relative;
+    .category, .field-name-body {
+      display: none;
+    }
+    article {
+      @include one-column;
+      position: relative;
+      z-index: 1;
+      &:hover h2 a {
+        border-bottom: 1px solid white;
+      }
+      h2 {
+        @include title-overlay;
+      }
+    }
+    img {
+      display: block;
+    }
+    .field-name-field-image {
+      position: relative;
+      z-index: -1; // Push image and gradient back so h2 link is visible/active
+
+      a::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        z-index: 0;
+        background: rgba(0,0,0,.3);
+        // @include background-image(linear-gradient(rgba(#000000, 0), rgba(#000000, .1)));
+      }
+    }
+  }
+  #content .field-name-field-para-main-page-content {
+    @extend %homepage-text;
+    .block-bean {
+      > h2 { display: none; }
+    }
+  }
+}
+
+%homepage-text {
+  @include padding-leader(2);
+  @include trailer(2);
+
+  p {
+    margin: 0 auto;
+    max-width: $section-max-width;
+  }
+}

@@ -11,6 +11,7 @@ migration_data/*export/
 
 # Ignore the stylesheets
 docroot/sites/all/themes/ilr_theme/css/
+docroot/sites/all/themes/*/css/
 
 # Ignore the secrets and dynamic_allowed_values
 config/secrets.php

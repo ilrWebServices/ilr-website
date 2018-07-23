@@ -1,0 +1,16 @@
+body.front {
+  #main {
+    @include layout--full-width-grid;
+  }
+
+  #content {
+    .block-bean {
+      @include three-column;
+    }
+    .ilr-video-wrapper {
+      @include large {
+        @include three-column;
+      }
+    }
+  }
+}

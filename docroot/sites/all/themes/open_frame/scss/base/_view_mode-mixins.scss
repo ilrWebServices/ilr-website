@@ -1,0 +1,478 @@
+@mixin frame--knockout($width: 25px, $color: $black, $top: false, $right: false, $bottom: true, $left: true) {
+  overflow: hidden;
+  border-bottom: $width solid $color;
+  &::before,
+  &::after {
+    content: ' ';
+    position: absolute;
+    background: $color;
+  }
+
+  &::before {
+      top: 2rem;
+      right: 0;
+      width: $width;
+      height: 100%;
+    }
+
+    &::after {
+      top: 2rem;
+      right: 0;
+      width: 30%;
+      height: $width;
+    }
+  &--inset {
+    &::before {
+      top: 10%;
+      left: 10%;
+      width: 80%;
+      height: $width;
+    }
+
+    &::after {
+      top: 10%;
+      right: 10%;
+      width: $width;
+      height: 85%;
+    }
+  }
+}
+
+@mixin slug() {
+  h2 {
+    @include adjust-leading-to(1);
+    @include adjust-font-size-to(16px);
+    margin-bottom: 0;
+    font-weight: 400;
+  }
+  // Hide everything but the title
+  div, ul.links, h3, h4 {
+    display: none;
+  }
+
+  a {
+    color: $p-text;
+    font-family: $font-headers;
+    font-weight: bold;
+
+    display: block;
+    position: relative;
+    background: darken(white, 1%);
+    padding: 1em 2.5em 1em 1em;
+    border: 1px solid #e0e0e0;
+    border-bottom-width: 3px;
+    @include trailer(1);
+
+    &:hover {
+      text-decoration: none;
+      background: white;
+    }
+
+    @extend %icon-after-arrow-right-bold;
+
+    &::after {
+      display: block;
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      margin-top: -10px;
+      color: lighten($brand, 5%);
+      font-size: 14px;
+    }
+  }
+}
+
+@mixin thumb() {
+  position: relative;
+  min-height: 100px;
+  border: none;
+  border-radius: 0;
+  @include padding-leader(0);
+  @include trailer(2);
+  @include clearfix;
+
+  h2 {
+    padding: 0;
+    @include padding-leader(1.2);
+    @include adjust-font-size-to(18px);
+    @include adjust-leading-to(.8, 18px);
+    margin-left: 115px;
+    text-align: left;
+  }
+
+  h3 {
+    margin-left: 115px;
+    text-align: left;
+  }
+
+  .field-type-image,
+  .field-name-field-youtube-video,
+  .thumbnail.custom {
+    @include circularImage;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    img {
+      top: 0;
+    }
+  }
+
+  h3.category {
+    position: absolute;
+    top: 0;
+  }
+
+  @include addHighlightColors('.thumbnail.custom a', 'background-color',.2);
+  .thumbnail.custom {
+    @include custom-thumbnail;
+    &.event a {
+      background: $event-color;
+    }
+  }
+
+  .field-name-field-published-date {
+    margin-left: 115px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .field-type-text-with-summary,
+  .field-name-field-description,
+  .field-name-field-campaign-intro,
+  .field-name-field-campaign-title,
+  .field-name-field-teaser,
+  .student-name {
+    display: none;
+  }
+
+  &:hover {
+    background: transparent;
+  }
+}
+
+@mixin card() {
+  @include image-heading-text;
+  @include clearfix;
+
+  // border: 1px solid $gray-light;
+  // border-radius: 6px;
+  @include trailer(1.5);
+  @include padding-leader(1);
+  &:hover {
+    background: white;
+    border-color: $gray-medium;
+  }
+
+  h2, h3, h4 {
+    @include set-heading(true);
+    background: $black;
+    margin: 0;
+    padding: 0 1rem 2rem 1rem;
+
+    a {
+      @include set-heading(true);
+      letter-spacing: 0;
+      color: white;
+    }
+  }
+
+  h2 {
+    @include adjust-font-size-to(2rem, 1.2);
+  }
+
+  h3 {
+    @include padding-leader(1);
+    color: white;
+    letter-spacing: 0;
+  }
+
+  h4 {
+    text-transform: uppercase;
+    font-family: $font;
+    font-weight: bold;
+    @include adjust-font-size-to(14px);
+  }
+
+  @include addHighlightColors('.thumbnail.custom a', 'background-color', .2);
+  .thumbnail.custom {
+    @include custom-thumbnail;
+    @include circularImage(150px);
+    margin: 0 auto;
+    &.event a {
+      background: $event-color;
+      @include adjust-font-size-to(25px);
+      padding-top: .5em;
+      line-height: .8;
+    }
+  }
+
+  &.node-basic-page,
+  &.node-news-item,
+  &.node-promo,
+  &.node-youtube-video {
+    .field-type-image,
+    .field-type-youtube {
+      @include square-to-3x4;
+    }
+  }
+
+  &.node-student-portrait,
+  &.localist-event {
+    .field-type-image {
+      margin: 0 auto;
+      @include circularImage(150px);
+    }
+  }
+
+  .field-type-text-with-summary,
+  .field-name-field-description,
+  .field-name-field-campaign-intro,
+  .field-name-field-campaign-title,
+  .field-name-field-teaser {
+    display: none;
+  }
+}
+
+@mixin card-rounded() {
+  display: none;
+  @include padding-leader(0);
+  @include padding-trailer(.5);
+  overflow: auto;
+  @include clearfix;
+  border: 1px solid $gray-light;
+  border-radius: 8px;
+
+  h2 {
+    // padding: 1em .8em 0;
+    // @include margin-trailer(0);
+    text-align: left;
+    a {
+      color: $darker-red;
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+  .field-type-text-with-summary {
+    display: block;
+  }
+  .field-name-body {
+    padding-right: 1em;
+    padding-left: 1em;
+    @include padding-leader(0);
+    p {
+      @include margin-leader(.8);
+      @include margin-trailer(0);
+    }
+  }
+  .field-name-field-full-name {
+    padding-left: 1em;
+    @include margin-leader(.5);
+    font-style: oblique;
+  }
+  div.field-name-field-youtube-video > a {
+    border-bottom: none;
+  }
+}
+
+@mixin card-animated() {
+  position: relative;
+  &:hover img {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  h2, h3 {
+    background: rgba(0,0,0,.3);
+    font-style: normal;
+    margin: 0;
+    // padding: .5em 25px;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    text-shadow: 1px 1px 2px black;
+    a {
+      font-family: $font;
+      color: white;
+      text-decoration: none;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  .field-name-field-image {
+    background: black;
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    display: block;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition-duration: .2s;
+    transition-duration: .2s;
+  }
+}
+
+@mixin custom-thumbnail() {
+  &.event a {
+    text-align: center;
+    background: $event-color;
+    color: white;
+    span {
+      display: block;
+      @include adjust-font-size-to(25px, 1);
+      font-style: normal;
+      text-transform: uppercase;
+      font-family: $font;
+      padding-top: 25px;
+      #sidebar-second & {
+        padding-top: 25px;
+      }
+    }
+  }
+}
+
+@mixin image-first() {
+  flex-direction: column;
+  display: flex;
+
+  h3                     { order: 1; }
+  .field-type-image,
+  .field-type-youtube,
+  .thumbnail.custom      { order: 2; }
+  h2                     { order: 3; }
+  .student-name          { order: 4; }
+}
+
+@mixin image-heading-text() {
+  flex-direction: column;
+  display: flex;
+
+  .field-type-image,
+  .field-type-youtube                     { order: 1; }
+  h3                                      { order: 2; }
+  h2                                      { order: 3; }
+  .field-type-text-with-summary           { order: 4; }
+  ul.links                                { order: 5; }
+  .field-name-field-full-name             { order: 6; }
+  ul                                      { order: 7; }
+}
+
+@mixin title-overlay() {
+  @include adjust-font-size-to(5em);
+
+  margin: 0;
+
+  a {
+    @include set-heading(true);
+    display: block;
+    position: absolute;
+    line-height: 1;
+    // left: 0;
+    text-align: right;
+    right: 0;
+    // text-align: left;
+
+    width: 50%;
+    height: 100%;
+    // color: rgba(255,255,255, .2);//white;
+    color: $black;
+    // color: transparent;
+    // @include single-text-shadow(0, 0, 10px, 10px, black);
+    // font-family: $font;
+    // border-bottom: 1px solid transparent;
+    mix-blend-mode: lighten;
+    // mix-blend-mode: darken;
+    // mix-blend-mode: screen;
+    // mix-blend-mode: multiply;
+    background-color: white;
+    // text-shadow: 0px -12px 13px rgba(0,0,0,0.5);
+    // text-shadow: -5px -5px rgba(0,0,0,.1); //inset 0 20px 30px #000000;
+    padding: 4rem 3rem 0 1rem;
+
+    @include frame--knockout;
+
+    &:hover {
+      border-bottom-color: #fff;
+    }
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   width: 100%;
+    //   height: 100%;
+    //   top: 0;
+    //   left: 0;
+    //   background: rgba(0,0,0,.5);
+    //   mix-blend-mode: multiply;
+    //   // background: white;
+    // }
+  }
+}
+
+@mixin lead-story() {
+  h2 {
+    @include title-overlay;
+    a {
+      @include adjust-font-size-to(28px);
+      bottom: 1em;
+    }
+  }
+  h3.category {
+    display: none;
+  }
+  @include trailer(1);
+}
+
+@mixin carousel-slide() {
+  position: relative;
+  .category, .field-name-body {
+    display: none;
+  }
+  article {
+    @include one-column;
+    position: relative;
+    z-index: 1;
+    &:hover h2 a {
+      border-bottom: 1px solid white;
+    }
+    h2 {
+      @include title-overlay;
+      a {
+        bottom: .5em;
+      }
+    }
+  }
+  img {
+    display: block;
+  }
+  .field-name-field-image {
+    position: relative;
+    z-index: -1; // Push image and gradient back so h2 link is visible/active
+    a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      @include background-image(linear-gradient(rgba(#000000, 0), rgba(#000000, 0) 75%, rgba(#000000, .6)));
+    }
+  }
+}
+
+@mixin square-to-3x4 {
+  @include image-ratio-hack;
+  a {
+    padding-top: 75%;
+    img {
+      top: -12.5%; // Square images need a negative margin for vertical positioning
+    }
+  }
+}

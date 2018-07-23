@@ -1,0 +1,20 @@
+body.node-type-basic-page.people-page,
+.node-type-people-profile {
+  #main {
+    @include layout--full-width-content-grid;
+
+    .node-people-profile {
+      .group-highlighted {
+        @include clearfix;
+        @include padding-trailer(2);
+      }
+    }
+  }
+}
+
+body.people-page {
+  .block-people-profiles,
+  .view-content {
+    @include three-column-grid;
+  }
+}

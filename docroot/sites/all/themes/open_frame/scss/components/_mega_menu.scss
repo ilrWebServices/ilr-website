@@ -1,0 +1,131 @@
+///////////////
+// Main Menu //
+///////////////
+
+.menu-block-ilr-primary-menu {
+  position: relative;
+  @extend .container;
+  @extend .hidden;
+
+  [data-eq-state="regular-nav"] & {
+    @extend .visible;
+  }
+
+  body:not(.subsite) & {
+    @extend %main-site-menu;
+  }
+
+  .subsite & { // see _subsite_header.scss
+    @extend %sub-site-menu;
+  }
+}
+
+%main-site-menu {
+  ul.menu {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 1160px;
+
+    > li {
+      background: none;
+      list-style: none;
+      line-height: 1;
+      margin: 0;
+      padding: 0;
+
+      > a, > a:visited {
+        flex-grow: 1;
+        display: flex;
+        color: #222;
+        font-family: $font;
+        border-bottom: none;
+        text-align: left;
+        font-weight: 600;
+        font-size: 14px;
+        outline: 0;
+        text-transform: uppercase;
+        padding: 1.2em 0;
+        display: block;
+        width: 100%;
+
+        .sticky & {
+          padding-top: .75em;
+          padding-bottom: .75em;
+        }
+
+        &:hover {
+          color: $brand;
+        }
+      }
+    }
+  }
+}
+
+///////////////
+// Mega Menu //
+///////////////
+
+.block-ilr-mega-menu {
+  @extend .hidden; // What will IE do with this?
+  [data-eq-state="regular-nav"] & {
+    @extend .visible;
+  }
+
+  li div.submenu {
+    position: absolute;
+    left: 0;
+    padding: 15px;
+
+    @include padding-leader(1);
+    z-index: -1;
+    opacity: 0;
+    display: none;
+    background: white;
+    width: 100%;
+    border: 1px solid $gray-medium;
+    @include box-shadow(0 5px 5px 0px rgba(black, .1));
+
+    @include breakpoint(1065px) {
+      padding: 25px;
+    }
+
+    &.active {
+      display: block;
+    }
+
+    &:first-child {
+      opacity: 1;
+      display: block;
+    }
+
+    h2 {
+      &.bean-title {
+        font-weight: 600;
+        text-transform: uppercase;
+        @include adjust-font-size-to(16px);
+      }
+    }
+
+    .field-name-field-referenced-entity {
+      @include three-column;
+
+      article h2 {
+        font-weight: normal;
+        margin: 0;
+        @include adjust-font-size-to(16px);
+        @include adjust-leading-to(1,16px);
+        a {
+          color: $p-text;
+          border-bottom: none;
+          font-family: $font;
+          &:hover {
+            color: $link-hover;
+          }
+        }
+      }
+    }
+  }
+}

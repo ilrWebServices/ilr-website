@@ -1,0 +1,34 @@
+#block-people-profiles-people-landing-page,
+#block-people-profiles-faculty-landing-page,
+#block-views-people-profile-teasers-block,
+body.page-taxonomy-term .view-areas-expertise-taxonomy-term {
+
+  .view-content { @include leader(1); }
+
+  article {
+    position: relative;
+    @include thumb;
+
+    h2 {
+      padding-top: 0 !important;
+      margin-bottom: 0;
+      @include adjust-leading-to(1);
+    }
+
+    .field {
+      @include adjust-font-size-to(16px);
+      line-height: 1.2;
+      margin-left: 115px;
+      &.field-type-image {
+        top: 3px !important; // note that this will be affected by the h2 line-height
+        margin-left: 0;
+        .placeholder {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+.page-taxonomy-term .feed-icon {
+  display: none;
+}

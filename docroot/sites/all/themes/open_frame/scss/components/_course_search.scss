@@ -1,0 +1,146 @@
+#block-ilr-sdc-listings-course-search {
+  @include trailer(2);
+  z-index: 10;
+
+  form {
+    label {
+      @include adjust-font-size-to(14px, .7);
+      padding-left: 3px;
+    }
+
+    .chosen-container-single {
+      width: 100% !important;
+    }
+
+    .chosen-container-multi {
+      width: 100% !important;
+      border-radius: 6px;
+      .chosen-choices {
+        border: 1px solid $gray-medium;
+        background: white;
+        border-radius: 6px;
+        li {
+          line-height: 1.8;
+          font-size: 16px;
+          font-weight: 100;
+          input[type='text'] {
+            font-family: $font;
+          }
+        }
+      }
+    }
+    @include trailer(1);
+  }
+
+  h3 {
+    font-family: $font;
+    margin: 0;
+  }
+  .region-sidebar-first & {
+    position: absolute;
+    margin-left: 12px;
+    top: 226px;
+    overflow: visible;
+  }
+  #jPanelMenu-menu & {
+    padding: 1em 2em;
+  }
+  #edit-s {
+    background: white;
+    padding: 3px;
+    border: 1px solid $gray-medium;
+  }
+
+  .form-item-field-online {
+    clear: both;
+    padding-top: .5em;
+  }
+
+  .views-exposed-form {
+    @include trailer(1);
+    label {
+      font-weight: 300;
+    }
+    .form-item {
+      width: 100%;
+      .date-padding {
+        width: 100%;
+      }
+      input:not(.form-checkbox) {
+        width: 100%;
+      }
+    }
+  }
+
+  .views-exposed-widget {
+    float: none;
+  }
+
+  .filter-link {
+    @include trailer(.5);
+  }
+
+  .form-item-field-online label {
+    padding-left: 0;
+  }
+
+  #autocomplete {
+    overflow: visible;
+    ul li {
+      @include force-wrap;
+      @include adjust-font-size-to(13px, 15);
+      @include adjust-leading-to(1);
+      padding: 5px 6px;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  #edit-submit-sdc-course-listing {
+    marging-top: 0;
+  }
+
+  .views-widget-filter-field_address_locality {
+    clear: left;
+  }
+  .views-widget-filter-field_class_dates_value,
+  .views-widget-filter-field_class_dates_value2 {
+    width: 100%;
+    padding-right: 1em;
+  }
+  #search-form-submit, #edit-submit-sdc-course-listing {
+    @include button;
+    @include leader(.2);
+    @include trailer(.5);
+    &:hover {
+      background-color: $orange;
+    }
+  }
+  .views-reset-button #edit-reset {
+    color: $link;
+    padding: 0;
+    font-weight: 300;
+    border: 0;
+    border-bottom: 1px solid $gray-light;
+    background: none;
+    &:hover {
+      border-bottom-color: $link-hover;
+      color: $link-hover;
+    }
+  }
+}
+
+//override defaults
+#main {
+  #block-ilr-sdc-listings-course-search {
+    .form-item {
+      select {
+        width: 100%;
+      }
+      input[type='text'] {
+        max-width: 100%;
+      }
+    }
+  }
+}

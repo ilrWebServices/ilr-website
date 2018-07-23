@@ -1,0 +1,29 @@
+.view-roster-of-neutrals {
+  .views-row {
+    h2 {
+      margin: 0;
+    }
+    @include trailer(2);
+  }
+  .field-name-field-profile-image {
+    @extend .alignleft;
+  }
+}
+
+.node-type-scheinman-neutral {
+  .field-name-field-profile-image {
+    max-width: 200px;
+    @extend .alignright;
+    margin-top: 0;
+  }
+
+  span.field-label {
+    float: left;
+    margin-right: .5em;
+  }
+  h3.field-label {
+    @include leader(2);
+    margin-bottom: .5em;
+    border-bottom: 1px solid $rule;
+  }
+}

@@ -1,0 +1,124 @@
+// Fix for page load animations
+.preloading * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
+%header-small {
+  .logo-wrapper {
+    margin: 10px;
+    float: left;
+
+    a.cornell {
+      width: 70px;
+      height: 70px;
+    }
+
+    img {
+      width: 205px;
+      @include transition-duration(.3s);
+    }
+  }
+}
+
+body:not(.preloading) header {
+  @extend %header-small; // preloading gets removed via js once page has loaded
+}
+
+header {
+  @include trailer(2);
+
+  padding-top: 20px;
+  background: white;
+  width: 100%;
+  position: relative;
+
+  .container {
+    @include clearfix;
+  }
+
+  .logo-wrapper {
+    position: relative;
+    margin-left: 10px;
+    float: left;
+
+    a.cornell {
+      display: block;
+      position: absolute;
+    }
+  }
+
+  &[data-eq-state="regular-nav"]:not(.sticky) {
+    @extend %big-logo;
+    .jpanel-trigger-container { display: none; }
+  }
+  &[data-eq-state="regular-nav"].sticky {
+    #logo {
+      margin-bottom: 2px;
+    }
+    .jpanel-trigger-container {
+      @extend .hidden;
+    }
+  }
+  .jpanel-trigger-container {
+    @extend %header-btn;
+    right: 2rem !important;
+    a {
+      @extend %icon-hamburger;
+    }
+  }
+}
+
+%big-logo {
+  body:not(.subsite) & {
+    a.cornell {
+      width: 130px;
+      height: 130px;
+    }
+    .logo-wrapper {
+      @include trailer(1);
+
+      #logo {
+        img {
+          width: 350px;
+          height: auto;
+        }
+      }
+    }
+  }
+}
+
+%header-btn {
+  @include transition-duration(.3s);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  // margin-top: 1em;
+  [data-eq-state="regular-nav"]:not(.sticky) & {
+    body:not(.subsite) & {
+      margin-right: 1em;
+    }
+  }
+
+  a {
+    display: block;
+    padding: 10px 13px 5px 13px;
+    color: $black;
+
+    &:hover, &:visited, &:active, &:focus {
+      text-decoration: none;
+    }
+
+    // Subsites move the search-button element
+    // to the #header-region
+    #header-region & {
+      color: $brand;
+    }
+  }
+  #header-region & {
+    margin: 0;
+  }
+}

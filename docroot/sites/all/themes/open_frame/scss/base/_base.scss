@@ -1,0 +1,39 @@
+// ==================================================
+// Basic Styles
+// ==================================================
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+::-moz-selection {
+  background: $selection;
+  color: #fff;
+  text-shadow: none;
+}
+
+::selection {
+  background: $selection;
+  color: #fff;
+  text-shadow: none;
+}
+
+html,
+body {
+  &::before {
+    content: " ";
+    position: fixed;
+    background: $black;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 20px;
+  }
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+  background-color: $bg-body;
+  padding: 0 2rem;
+}

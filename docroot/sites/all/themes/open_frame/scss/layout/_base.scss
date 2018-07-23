@@ -1,0 +1,364 @@
+@mixin flex-around {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+@mixin one-column {
+  @include grid-span(12);
+}
+
+@mixin two-column($center-last: false) {
+  @if $center-last {
+    @include float-span(6);
+
+    &:nth-of-type(even) {
+      @include float-span(6, 'last');
+    }
+
+    &:last-child {
+      @include grid-span(6, 4);
+
+      clear: left;
+    }
+  } @else {
+    @include layout(2) {
+      @include add-gutter(.1);
+      @include add-gutter-style('split');
+      @include float-span(1);
+    }
+  }
+}
+
+@mixin three-column() {
+  @include layout(3) {
+    @include add-gutter(.1);
+    @include add-gutter-style('split');
+    @include float-span(1);
+  }
+}
+
+@mixin three-column-grid() {
+  display: grid;
+  grid-gap: 30px;
+
+  @include medium {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include large {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@mixin four-column {
+  // @include large {
+    @include layout(4) {
+      @include add-gutter(.1);
+      @include add-gutter-style('split');
+      @include float-span(1);
+    }
+  // }
+}
+
+%one-column {
+  @include one-column;
+}
+
+%two-column {
+  @include two-column;
+}
+
+%three-column {
+  @include three-column;
+}
+
+%four-column {
+  @include four-column;
+}
+
+@mixin layout--standard-grid() {
+  display: grid;
+  max-width: $page-max-width;
+
+  @include medium {
+    grid-template-columns: 70% 26%;
+    grid-gap: 4%;
+
+    #content {
+      grid-column-start: 1;
+      grid-row-start: 1;
+    }
+
+    #sidebar-second {
+      grid-column-start: 2;
+      grid-row-start: 1;
+    }
+  }
+
+  @include large {
+    grid-template-columns: 23% 73%;
+    grid-gap: 4%;
+
+    #content {
+      grid-column-start: 2;
+      grid-row-start: 1;
+    }
+
+    #sidebar-first {
+      grid-column-start: 1;
+      grid-row-start: 1;
+    }
+
+    #sidebar-second {
+      grid-column-start: 2;
+      grid-row-start: 2;
+    }
+  }
+
+  @include breakpoint(1100px) {
+    grid-template-columns: 17% 50% 25%;
+    grid-gap: 4%;
+
+    #content {
+      grid-column-start: 2;
+      grid-row-start: 1;
+    }
+
+    #sidebar-first {
+      grid-column-start: 1;
+      grid-row-start: 1;
+    }
+
+    #sidebar-second {
+      grid-column-start: 3;
+      grid-row-start: 1;
+    }
+  }
+}
+
+@mixin layout--full-width-grid() {
+  display: block;
+  width: 100%;
+
+  #content,
+  #sidebar-first,
+  #sidebar-second {
+    width: 100%;
+  }
+
+}
+
+@mixin layout--full-width-content-grid() {
+  display: grid;
+
+  @include large {
+    grid-template-columns: 17% 79%;
+    grid-gap: 4%;
+
+    #content {
+      grid-column-start: 2;
+      grid-row-start: 1;
+
+      .field-name-body,
+      .paragraphs-items-field-para-main-page-content {
+        max-width: $section-max-width;
+      }
+
+      @include breakpoint(1250px) {
+        @include grid-span(12);
+
+        .group-main-content {
+          @include grid-span(7);
+          clear: left;
+        }
+
+        .group-sidebar {
+          @include grid-span(4, 9);
+          padding: 2rem;
+        }
+      }
+    }
+
+    #sidebar-first {
+      grid-column-start: 1;
+      grid-row-start: 1;
+    }
+
+    #sidebar-second {
+      display: none;
+    }
+  }
+}
+
+@mixin layout--standard() {
+  @include add-grid(24);
+  @include pie-clearfix;
+  position: relative;
+  clear: both;
+
+  #content {
+    @include grid-span(24);
+
+    @include large {
+      @include grid-span(13, 6);
+    }
+  }
+
+  #sidebar-first {
+    @include large {
+      @include grid-span(5);
+    }
+  }
+
+  #sidebar-second {
+    @include large {
+      @include leader(3);
+      @include grid-span(6, 19);
+    }
+  }
+}
+
+@mixin layout--content-with-sidebar {
+  #content {
+    @include large {
+      @include grid-span(12);
+
+      .group-main-content {
+        @include grid-span(8);
+      }
+
+      .group-sidebar {
+        @include grid-span(3, 10);
+      }
+    }
+  }
+}
+
+@mixin layout--full-width($include-gutter: false) {
+  @if $include-gutter == false {
+    @include add-grid(1);
+
+    #content {
+      @include grid-span(1);
+    }
+  } @else {
+    @include add-grid(12);
+
+    #content {
+      @include grid-span(12);
+    }
+  }
+
+  #sidebar-second {
+    @include add-grid(12);
+  }
+}
+
+.no-layout{
+  .jPanelMenu-panel {
+    box-shadow: none;
+  }
+}
+
+#page {
+  background: $bg-body;
+  padding: 1rem;
+}
+
+
+.container {
+  @include container;
+}
+
+#main {
+  clear: both;
+  position: relative;
+
+  .field-collection-container {
+    border-bottom: none;
+  }
+
+  #highlighted {
+    @include clearfix;
+
+    margin-top: $main-top-padding * -1;
+  }
+
+  @include pie-clearfix;
+
+  // #sidebar-first {
+  //   display: none;
+  // }
+
+  // [data-eq-state="regular-nav"] & {
+  //   #sidebar-first {
+  //     display: block;
+  //   }
+  // }
+
+  #content {
+    @include trailer(1);
+  }
+
+  #content, #sidebar-second {
+    @include pie-clearfix;
+
+    .section {
+      @include leader(.5);
+    }
+  }
+
+  // &[data-eq-state="768"] {
+  //   #content, #sidebar-second {
+  //     .block:not(.block-system) > article:not(.node-certificate-programs),
+  //     .block .views-row {
+  //       @include three-column;
+  //     }
+  //   }
+  //   #sidebar-second .block-bean .field-type-entityreference {
+  //     @include two-column;
+  //     article {
+  //       @include one-column;
+  //     }
+  //   }
+  // }
+
+  &[data-eq-state="widescreen"] {
+    #content, #sidebar-second {
+      @include trailer(2);
+    }
+  }
+}
+
+#content-bottom {
+  clear: both;
+
+  article {
+    @include medium {
+      @include three-column;
+    }
+
+    @include large {
+      @include four-column;
+    }
+  }
+}
+
+footer {
+  @include pie-clearfix;
+  .container {
+    .block-bean {
+      @include one-column;
+    }
+    &[data-eq-state="550"], &[data-eq-state="768"], &[data-eq-state="widescreen"] {
+      .block-bean {
+        @include three-column;
+      }
+    }
+  }
+
+  .copyright {
+    clear: both;
+  }
+}

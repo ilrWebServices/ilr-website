@@ -1,0 +1,45 @@
+body.ilr-review {
+  header {
+    background-image: none;
+    background-color: white;
+
+    .jpanel-trigger-container {
+      a.jpanel-trigger {
+        color: $blue-ilrreview;
+      }
+    }
+
+    .search-button {
+      a {
+        color: $blue-ilrreview;
+      }
+    }
+
+    #search-form {
+      input {
+        background: $gray-bg;
+        color: $blue-ilrreview;
+      }
+      input:focus {
+        color: $blue-ilrreview;
+      }
+    }
+
+    #header-region {
+      background-color: $blue-ilrreview;
+      a {
+        color: white;
+      }
+
+      h2 {
+        font-style: italic;
+      }
+    }
+  }
+
+  header[data-eq-state="regular-nav"] {
+    #header-region {
+      background: $blue-ilrreview url("../images/bg-globe-blue.gif") no-repeat left top;
+    }
+  }
+}

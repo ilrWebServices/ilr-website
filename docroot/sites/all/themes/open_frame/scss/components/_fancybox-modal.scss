@@ -1,0 +1,113 @@
+@mixin fancybox-modal {
+  width: 95% !important;
+
+  @include large {
+    width: 75% !important;
+  }
+
+  @include xl {
+    width: 55% !important;
+  }
+
+  .fancybox-skin {
+    padding: 0 !important;
+  }
+  .fancybox-inner {
+    background-color: $dark-blue;
+    width: 100% !important;
+    overflow: auto;
+  }
+  .modal-wrap {
+    aside {
+      width: 34%;
+      float: left;
+      img {
+        width: 100%;
+        height: auto;
+      }
+      p {
+        color: $gray-bg;
+        margin-bottom: 13px;
+      }
+    }
+    .biography {
+      background-color: $gray-bg;
+      width: 66%;
+      min-height: 500px;
+      padding: 21px 34px;
+      float: left;
+      h2 {
+        font-size: 21px;
+        line-height: 1;
+      }
+      h3 {
+        color: $basic-page-color;
+        font-size: 34px;
+        line-height: 1.2;
+        margin: 0 0 8px;
+      }
+      .show-hide-bio {
+        background: rgba(0,0,0,.75);
+        color: $gray-light;
+        display: block !important;
+        font-size: 17px;
+        width: 100%;
+        margin-bottom: 0;
+        padding-bottom: 21px;
+
+        @include breakpoint(550px) {
+          display: none !important;
+        }
+      }
+      .sls-bio {
+        padding: 0;
+        display: block !important;
+      }
+    }
+  }
+}
+
+.fancybox-wrap {
+  @include fancybox-modal;
+}
+
+.fancybox-overlay {
+  display: block;
+}
+
+.modal {
+  @include breakpoint(550px) {
+    display: none;
+  }
+
+  aside {
+    display: none; //don't display on page
+  }
+  .biography {
+    background: white;
+    h3, h4, p, ul {
+      display: none;
+    }
+    p.show-hide-bio {
+      display: block;
+      padding: 0 21px;
+      @include medium {
+        display: none;
+      }
+    }
+    .sls-bio {
+      padding: 0 21px;
+      text-align: left;
+      display: none;
+      &.show {
+        display: block;
+      }
+    }
+    &.show {
+      p, ul {
+        display: block;
+        padding: 0 21px 1rem 21px;
+      }
+    }
+  }
+}

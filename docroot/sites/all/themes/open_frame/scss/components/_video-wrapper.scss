@@ -1,0 +1,8 @@
+.ilr-video-wrapper {
+  clear: both;
+  @include trailer(2);
+
+  .paragraphs-item-side-by-side-text & {
+    margin-bottom: 0;
+  }
+}

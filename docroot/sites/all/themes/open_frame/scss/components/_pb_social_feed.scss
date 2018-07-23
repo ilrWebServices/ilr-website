@@ -1,0 +1,96 @@
+#main {
+  .paragraphs-item-social-feed {
+    @include padding-leader(1.5);
+    @include padding-trailer(1.5);
+    ul {
+      margin: 0 auto;
+    }
+    li {
+      margin: 0;
+    }
+    article.social-feed {
+      @include padding-leader(0);
+      @include padding-trailer(0);
+      @include trailer(.5);
+      padding-left: 2em;
+      padding-right: 2em;
+      text-align: center;
+      @include one-column;
+
+      .field-name-group {
+        .field-name-twitter-handle {
+          @include trailer(.5);
+        }
+        .field-name-twitter-handle a, .field-name-time-stamp {
+          @include adjust-font-size-to(14px);
+          text-transform: uppercase;
+          font-weight: 600;
+          color: $link;
+        }
+        .field-name-time-stamp {
+          margin-bottom: 1em;
+        }
+        .field-name-tweet {
+          p {
+            @include adjust-font-size-to(16px);
+            @include adjust-leading-to(1.1);
+          }
+        }
+      }
+    }
+  }
+}
+
+#main[data-eq-state="550"] {
+  .paragraphs-item-social-feed {
+    @include padding-leader(1);
+    @include padding-trailer(1);
+    padding-left: 4em;
+    padding-right: 4em;
+    article.social-feed {
+      @include one-column;
+    }
+  }
+}
+
+#main[data-eq-state="768"] {
+  .paragraphs-item-social-feed {
+    @include padding-leader(.5);
+    @include padding-trailer(0);
+    article.social-feed {
+      @include padding-leader(1);
+      min-height: 300px;
+      // @include three-column-masonry;
+
+      .field-name-group {
+        .field-name-time-stamp {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+#main[data-eq-state="widescreen"] {
+  .paragraphs-item-social-feed {
+    @include padding-leader(1);
+    @include padding-trailer(0);
+    article.social-feed {
+      @include padding-leader(1);
+      min-height: 280px;
+      // @include three-column-masonry;
+
+      .field-name-group {
+        .field-name-time-stamp {
+          margin-bottom: 0;
+        }
+        .field-name-tweet {
+          p {
+            font-size: ms(0);
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+  }
+}

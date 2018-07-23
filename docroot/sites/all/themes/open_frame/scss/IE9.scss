@@ -1,0 +1,173 @@
+@import "compass/typography/lists/horizontal-list";
+@import "compass/css3";
+@import "modular-scale";
+@import "singularitygs";
+@import "breakpoint";
+@import "base/variables";
+@import 'base/mixins';
+@import 'base/breakpoints';
+@import 'layout/base';
+
+body {
+  header {
+    a.cornell {
+      background: rgba(white, 0);
+    }
+    &[data-eq-state="regular-nav"] {
+      .menu-block-ilr-primary-menu {
+        ul.menu {
+          @include horizontal-list;
+          li {
+            background: none;
+
+            a {
+              padding-left: 8px;
+              padding-right: 8px;
+            }
+
+            div.submenu {
+              z-index: 10;
+            }
+          }
+        }
+      }
+    }
+    #search-form {
+      top: 0;
+      display: none;
+    }
+    &.search-engaged {
+      #search-form {
+        display: block;
+      }
+    }
+  }
+
+  .container, .region-header {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  #page .container #main {
+    @include add-grid(3 9);
+    @include add-gutter(1/2);
+    margin-right: 2em;
+    #content {
+      @include grid-span(1,2);
+      .block-bean article {
+        // @include two-column;
+      }
+      .block[data-items='1'] article {
+        // @include one-column;
+      }
+
+    }
+    #sidebar-first {
+      @include grid-span(1,1);
+    }
+    #sidebar-second {
+      @include grid-span(1,2);
+    }
+  }
+  #content-bottom {
+    clear: both;
+    @include grid-span(2);
+    article {
+      // @include four-column;
+    }
+  }
+  footer {
+    margin-top: 1em;
+    clear: both;
+    @include add-grid(12);
+  }
+  &.front,
+  &.subsite-front {
+    #page .container #main {
+      @include add-grid(12);
+      #content {
+        @include grid-span(12);
+        .block-bean {
+          @include grid-span(12);
+        }
+      }
+    }
+    #sidebar-first {
+      display: none !important;
+    }
+  }
+  &.front {
+    #page .container #main {
+      #content {
+        .ilr-video-wrapper {
+          @include grid-span(4,9);
+        }
+        .block-bean {
+          @include grid-span(4);
+          article {
+            // @include one-column;
+          }
+          &.event-block {
+            @include grid-span(4,5);
+          }
+        }
+      }
+    }
+  }
+  &.subsite-front {
+    #page .container #main #content {
+      .block-bean article {
+        // @include three-column;
+      }
+    }
+  }
+}
+
+body.subsite {
+  header {
+    #logo img {
+      width: 206px;
+      height: 60px;
+    }
+    #header-region .region-header {
+      position: relative;
+      .menu-block-ilr-primary-menu {
+        position: absolute;
+        bottom: -8em;
+        right: 1em;
+      }
+    }
+  }
+}
+
+body.node-type-people-profile {
+  #page .container {
+    // @extend %two-cols-no-nav;
+  }
+}
+
+#block-menu-block-ilr-subnav ul.menu li a.next-menu {
+  &::after {
+    padding: 1.1em;
+    top: 12px;
+    left: 20px;
+  }
+}
+
+/**
+ * Element overrides
+ */
+
+// Event selectors not being triggered.
+// Most of these styles come from _view_modes.scss
+.event-block .thumbnail.event span {
+  display: block;
+  font-family: "freight-sans-pro-n4","freight-sans-pro",sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 1.31579em;
+  font-style: normal;
+  line-height: 1.08em;
+  padding-top: 25px;
+  text-transform: uppercase;
+}

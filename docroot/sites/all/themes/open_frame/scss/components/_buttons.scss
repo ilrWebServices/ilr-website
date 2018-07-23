@@ -1,0 +1,24 @@
+//Button locations
+// _form_elements.scss //form input, netid login
+// _certificate_info_aside.scss //Get Started box
+// _courses_and_classes.scss //Register, Request, Notify Me buttons
+// _course_search.scss //course search and filter in left column
+// _mailchimp.scss //MAI email updates form
+
+%button {
+  @include button;
+}
+
+// This is for freedompay payment checkout forms
+.page-pay-checkout .button {
+  @include button;
+}
+
+// Modifier for links that should look like buttons
+.link--button {
+  @include button;
+}
+
+.link--offset-button {
+  margin: 0 1rem;
+}

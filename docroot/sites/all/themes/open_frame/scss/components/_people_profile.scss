@@ -1,0 +1,93 @@
+article.node-people-profile {
+  .group-highlighted {
+    @include trailer(2);
+    background: white;
+    &.no-image { // See people_profiles_field_group_build_pre_render_alter()
+      @include padding-trailer(2);
+      padding-left: 2em;
+    }
+    .field-type-image,
+    .field-group-html-element {
+      @include medium {
+        @include two-column;
+      }
+    }
+  }
+
+  .group-title-and-focus {
+    .crumb {
+      @include set-heading(true);
+      // @include adjust-font-size-to(14px);
+      text-transform: uppercase;
+      color: $cornell-red;
+    }
+
+    .profile__name {
+      font-size: 2.5rem;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .field-name-field-working-title {
+      font-weight: bold;
+    }
+  }
+
+  h3.toggleable { // toggleable added by people_profiles.js
+    cursor: pointer;
+    &:before {
+      content: '+ ';
+    }
+    &.toggled:before {
+      content: '- ';
+    }
+    @include trailer(.5);
+  }
+
+  .group-main-content {
+    .field {
+      overflow: hidden;
+      ul {
+        margin-top: 0;
+      }
+    }
+    a.readmore-js-toggle {
+      @extend %readmore-js-link; // see _helpers.scss
+    }
+  }
+
+  .group-sidebar {
+    @include trailer(2);
+
+    padding: 1rem;
+
+
+    .field-label { // Sidebar headings
+      margin-bottom: .5em;
+      @include leader(1);
+    }
+    &.toggleable .field-label:not(.post-toggle) {
+      @include leader(0); // post-toggle added by js
+    }
+
+    .group-contact-info {
+      @include framed($color: #222, $width: 10px, $top: true, $right: true, $bottom: false, $left: false);
+      padding: 1rem 1rem 0 0;
+    }
+
+    .field-name-field-areas-of-expertise {
+      @include clearfix;
+      float: left;
+      &.last {
+        @include trailer(1);
+      }
+      a {
+        @extend %pill; // see _helpers.scss
+      }
+    }
+    .field-name-field-ai-other-expertise {
+      @include adjust-font-size-to(16px);
+      @include adjust-leading-to(1);
+    }
+  }
+}

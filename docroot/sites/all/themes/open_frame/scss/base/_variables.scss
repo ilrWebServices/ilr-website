@@ -1,0 +1,150 @@
+@import "compass/typography/vertical_rhythm";
+
+$page-max-width: 1600px; // Note that grid gap adds to this
+$section-max-width: 800px;
+$line-height-multiplier: $base-line-height / $base-font-size;
+@include establish-baseline;
+$row-width: rem-calc($page-max-width);
+$header-height: 190px;
+$header-height-small: 85px;
+$sidebar-nav-width: 270px;
+$search-height: 70px;
+$main-top-padding: 20px;
+// ==================================================
+// Modular Scale
+// ==================================================
+$ms-base: $base-font-size, $page-max-width;
+$ms-ratio: $golden;
+
+// Lists modular scale for debugging
+//@debug ms-list($Start: -2, $End: 4, $Bases: $ms-base, $Ratios: $ms-ratio);
+//Current scale: -2, -1, 0, 1, 2, 3, 4, 5 (8.65248px, 12.62939px, 14px, 20.43479px, 22.65248px, 33.06418px, 36.65248px, 53.49896px)
+
+$mod-01: 12.62939px; //Based on mod scale. Number is not applied/calculated properly by mixin.
+
+// ==================================================
+// Brand
+// ==================================================
+$blue-ilrreview: #163a6e;
+$brand: #941e12;
+$brand-light-red: #ef4035;
+$brand-dark: #363636;
+$brand-light: #ACACAC;
+$cornell-red: #b31b1b;
+$darker-red: #92210f;
+$gold: #DED7BA;
+$mustard: #e0ae4c;
+$gray-bg: #f5f5f5;
+$gray-dark: #858585;
+$gray-medium: #c5c5c5;
+$gray-light: #e3e3e3;
+$gray-wi: #4d4e53;
+$subsite-heading: #404040;
+$nav-dark: #4F4D57;
+$nav-light: white;
+$selection: #212121;
+$highlight: #ffc;
+$cornell-tan: #f0eee4;
+$bg-body: white;
+$ochre: #c5ba61;
+$ochre-tan: #c5c19c;
+$ochre-green: #8f8746;
+$brown: #39372d;
+$orange: #d76b00;
+$orange-dark: #c26100;
+$orange-light: #f08e2d;
+$purple: #4d394b;
+$dark-blue: #222534;
+$black: #222;
+
+$basic-page-color: #bbc44a;
+$promo-color: #bbc44a; // Same as basic page for now
+$event-color: #d44056;
+$spotlight-color: #00a79d;
+$student-portrait-color: #2099b7;
+$news-color: #f8bb03;
+$video-color: #6c7877;
+
+// New brand colors
+$lighter-red: #ef4035;
+$dark-blue: #073949;
+$sage: #c9d6a5;
+$army-tent: #bfb778;
+$gray-green: #9fad9f;
+$warm-grey: #d8d2c9;
+$dark-gray-orange: #a2998b;
+
+// ==================================================
+// Typography
+// ==================================================
+// Varialbes here and implementation in _typography.scss
+// should probably be updated to a map
+// See https://medium.com/p/8e51498c3713
+$font: 'Replica', "freight-sans-pro-n4", "freight-sans-pro", sans-serif;
+$font-headers: 'Replica', "freight-text-pro-n4", "freight-text-pro", serif;
+$font-strong: "futura-pt", sans-serif;
+
+$h1-size: 3.8em;
+$h2-size: 24px;
+$h3-size: 22px;
+$h4-size: ms(1);
+$h5-size: 16px;
+$h6-size: ms(0);
+
+$h2-sm-size: rem-calc(16);
+
+$header-color: #1b1b1b;
+$h1-text: $header-color;
+$h2-text: lighten($header-color, 5%);
+$h3-text: lighten($header-color, 2.5%);
+$h4-text: $header-color;
+$h5-text: $header-color;
+$h6-text: $header-color;
+
+$h1-link: $h1-text;
+$h2-link: $h2-text;
+$h3-link: $h3-text;
+$h4-link: $h4-text;
+$h5-link: $h5-text;
+$h6-link: $h6-text;
+
+$h1-link-hover: #212121;
+$h2-link-hover: #212121;
+$h3-link-hover: #212121;
+$h4-link-hover: #212121;
+$h5-link-hover: #212121;
+$h6-link-hover: #212121;
+
+$p-text: #2f2f2f;
+$p-size: ms(0);
+$p-sm-size: $mod-01;
+
+$link: lighten($brand, 10%);
+$link-hover: lighten($brand, 20%);
+$nav-color: #2D4063;
+$nav-size: 1.2em;
+
+$rule: lighten($gray-light, 2%);
+
+$blockquote: #444;
+
+$table-bg: #f8f8f6;
+$table-bg-th: $cornell-tan;
+$table-bg-alt: #e7e6e6;
+$table-bg-hover: darken($table-bg, 10%);
+$td-text: #444;
+$th-text: #212121;
+$default-rhythm-border-style: solid $gray-light;
+
+// ==================================================
+// Forms
+// ==================================================
+$valid: none;
+$invalid: #f0dddd; // red
+
+$input-bg: #fff;
+$input-border: #ccc;
+$input-color: #a4a4a4;
+$label-color: #444;
+
+$input-size: $mod-01;

@@ -1,0 +1,50 @@
+.view-mentors {
+  @include add-grid(12);
+  @include leader(2);
+
+  .views-row {
+    @include trailer(3);
+
+    @include medium {
+      @include float-span(6);
+
+      &:nth-of-type(even) {
+        @include float-span(6, 'last');
+      }
+    }
+
+    h2,
+    .field-type-text-long {
+      margin: 0 0 0 115px !important;
+    }
+
+    .field-type-text-long {
+      @include paragraph-text;
+      @include adjust-font-size-to(18px, .8);
+    }
+
+    .field-type-image {
+      @include circularImage;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      img {
+        top: 0;
+      }
+    }
+  }
+}
+
+.node-type-mentor {
+  .field-name-field-profile-image {
+    @include medium {
+      width: 50%;
+      float: right;
+      margin-left: 2em;
+    }
+  }
+  .field-type-text-long {
+    @include trailer(2);
+  }
+}

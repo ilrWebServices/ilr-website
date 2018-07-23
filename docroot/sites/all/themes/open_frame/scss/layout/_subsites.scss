@@ -1,0 +1,15 @@
+body.subsite-front {
+  #main {
+    @include layout--full-width-grid;
+  }
+
+  #content {
+    .block-bean article {
+      @include four-column;
+    }
+  }
+
+  #sidebar-first {
+    display: none !important;
+  }
+}

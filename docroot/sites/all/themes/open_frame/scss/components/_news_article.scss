@@ -1,0 +1,26 @@
+.node-type-news-item {
+  .field-name-field-description {
+    @include adjust-font-size-to(28px);
+    @include adjust-leading-to(1);
+    font-weight: 300;
+  }
+
+  .field-name-field-published-date {
+    font-weight: 300;
+    @include adjust-font-size-to(16px);
+    @include trailer(1);
+    border-bottom: 1px solid $gray-medium;
+  }
+}
+
+.view-news-archive {
+  .views-row-last + h3 {
+    margin-top: 1em;
+  }
+  .views-row {
+    float: none !important; //overrides columns
+  }
+  ul.pager {
+    text-align: left;
+  }
+}
