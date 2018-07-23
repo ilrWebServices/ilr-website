@@ -60,6 +60,7 @@ features[image][] = email_optimized
 features[image][] = featured_image
 features[image][] = focussed_hero
 features[image][] = focussed_main_image
+features[image][] = focussed_portrait
 features[image][] = focussed_thumbnail
 features[image][] = main_portrait_image
 features[variable][] = admin_theme
