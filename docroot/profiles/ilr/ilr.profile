@@ -120,20 +120,24 @@ function ilr_menu_block_blocks() {
   if (module_exists('ilr_sub_sites')) {
     $menu = _ilr_sub_sites_get_menu_name();
   }
-  $level = ($menu == 'main-menu') ? 1 : 2; // Note this does not seem to be zero indexed
+  $follow = ($menu == 'main-menu') ? 'active' : 'child'; // Not zero indexed
+  $level = ($menu == 'main-menu') ? 1 : 2; // Not zero indexed
+  $mlid = ilr_get_current_mlid();
+  $follow = (ilr_mlid_has_children($mlid)) ? 'child' : 'active';
   return array(
     // The array key is the block id used by menu block.
     'ilr-subnav' => array(
       // Use the array keys/values described in menu_tree_build().
       'menu_name'   => $menu,
-      'title_link'  => TRUE,
+      'title_link'  => FALSE,
       'admin_title' => 'ILR Sidebar Menu',
-      'level'       => $level,
-      'follow'      => 0,
-      'depth'       => 10,
-      'expanded'    => TRUE,
+      'level'       => 1, // debugging http://www.ilr-website.test/academics/internships/credit-internships/student-profiles/david-ticzon vs http://www.ilr-website.test/admissions/undergraduate-admissions/student-experience/student-spotlights/amber-aspinall
+      'follow'      => $follow,
+      'depth'       => 1,
+      'expanded'    => FALSE,
       'sort'        => FALSE,
       'parent_mlid' => 0,
+      'depth_relative' => 1,
     ),
     'ilr-primary-menu' => array(
       // Use the array keys/values described in menu_tree_build().
@@ -878,4 +882,33 @@ function ilr_rename_fields($fields, $drop_first = FALSE) {
   }
 }
 
+function ilr_get_current_mlid($node=NULL) {
+  if (!$node) {
+    $node = menu_get_object();
+  }
+  if ($node) {
+    $menu_record = db_select('menu_links', 'ml')
+      ->condition('ml.link_path', 'node/' . $node->nid)
+      ->fields('ml', array('menu_name', 'mlid', 'plid', 'hidden'))
+      ->execute()
+      ->fetchObject();
 
+    if (is_object($menu_record)) {
+      return $menu_record->mlid;
+    }
+  }
+  return 0;
+}
+
+function ilr_mlid_has_children($mlid) {
+  $menu_record = db_select('menu_links', 'ml')
+      ->condition('ml.plid', $mlid)
+      ->condition('ml.hidden', 1, '!=')
+      ->fields('ml', array('mlid'))
+      ->execute()
+      ->fetchObject();
+  if (!empty($menu_record)) {
+    return 1;
+  }
+  return 0;
+}
