@@ -213,3 +213,28 @@ function _ilr_paragraphs_check_fields_for_hash(&$entity) {
     }
   }
 }
+
+function _ilr_paragraphs_preprocess_tabs(&$variables) {
+  $wrapper = entity_metadata_wrapper('paragraphs_item', $variables['paragraphs_item']);
+
+  $tab_headings = [];
+  $tab_content = [];
+
+  foreach ($wrapper->field_para_main_page_content->getIterator() as $delta => $text_wrapper) {
+    $tab_title = $text_wrapper->field_header->value();
+    $tab_id = _ilr_paragraphs_get_tab_id($tab_title);
+    $tab_headings[$tab_id] = $tab_title;
+    $tab_content[$tab_id] = $text_wrapper->field_text_paragraph->value->value();
+  }
+
+  $variables['tab_headings'] = $tab_headings;
+  $variables['tab_content'] = $tab_content;
+}
+
+function _ilr_paragraphs_get_tab_id($title) {
+  $title = strtolower($title);
+  $title = preg_replace("/[^a-z0-9_\s-]/", "", $title);
+  $title = preg_replace("/[\s-]+/", " ", $title);
+  $title = preg_replace("/[\s_]/", "-", $title);
+  return $title;
+}

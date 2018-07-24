@@ -1,0 +1,141 @@
+.component--tabs {
+  @include leader(2);
+  @include trailer(2);
+
+  $left-pad: 4rem;
+  position: relative;
+
+  .tabs__triggers {
+    @include large {
+      @include three-column-grid(0, false);
+    }
+
+    .tab__trigger {
+      @include set-heading(true);
+      @include adjust-font-size-to(32px);
+
+      line-height: 1;
+      letter-spacing: -1px;
+      color: white;
+      padding: 2rem $left-pad 3rem $left-pad;
+      background: $lighter-red;
+      cursor: pointer;
+
+      &:nth-child(2n) {
+        background: $cornell-red;
+      }
+
+      &:nth-child(3n) {
+        background: $black;
+      }
+    }
+  }
+
+  .tabs__contents {
+    position: relative;
+
+    .tab__content {
+      position: absolute;
+      width: 100%;
+      background: $lighter-red;
+      z-index: 30;
+      padding: 3rem $left-pad;
+
+      &:nth-child(2n) {
+        background: $cornell-red;
+        z-index: 20;
+        visibility: hidden;
+      }
+
+      &:nth-child(3n) {
+        background: $black;
+        z-index: 10;
+        visibility: hidden;
+      }
+
+      p {
+        color: white;
+        margin: 0 0 1rem !important;
+      }
+
+      ul {
+        @include two-column;
+
+        margin: 0;
+        padding: 0;
+
+        li { // Do not copy; create mixin if being re-used
+          $space: 1.5rem;
+          background: none;
+          color: white;
+          padding: 0;
+          position: relative;
+          margin-left: $space;
+
+          &::before {
+            content: ' ';
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            position: absolute;
+            top: 30%;
+            left: -$space;
+            background: white;
+          }
+        }
+
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+//   .field-items {
+//     .paragraph-type-just-text {
+//       position: absolute;
+//       width: 100%;
+//       overflow: hidden;
+//       color: white;
+//       z-index: 30;
+
+//       .field-name-field-header {
+
+//       }
+
+//       .field-type-text-long {
+//         float: left;
+//         clear: left;
+//         width: 100%;
+//         padding: 2rem $left-pad;
+//         background: $lighter-red;
+//       }
+
+//       &:nth-child(2n) {
+//         .field-name-field-header {
+//           margin-left: 33%;
+//           padding-right: 6rem;
+//           background: $cornell-red;
+//         }
+
+//         .field-type-text-long {
+//           background: $cornell-red;
+//           z-index: 20;
+//         }
+//       }
+
+//       &:nth-child(3n) {
+//         .field-name-field-header {
+//           margin-left: 66%;
+//           background: $black;
+//         }
+
+//         .field-type-text-long {
+//           background: $black;
+//           z-index: 10;
+//         }
+//       }
+//     }
+//   }
+// }

@@ -839,6 +839,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'paragraphs_bundle_permissions',
   );
 
+  // Exported permission: 'create paragraph content tabs'.
+  $permissions['create paragraph content tabs'] = array(
+    'name' => 'create paragraph content tabs',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'create paragraph content unit_contact_info'.
   $permissions['create paragraph content unit_contact_info'] = array(
     'name' => 'create paragraph content unit_contact_info',
@@ -1571,6 +1580,15 @@ function ilr_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'delete paragraph content tabs'.
+  $permissions['delete paragraph content tabs'] = array(
+    'name' => 'delete paragraph content tabs',
+    'roles' => array(
+      'administrator' => 'administrator',
     ),
     'module' => 'paragraphs_bundle_permissions',
   );
@@ -2805,6 +2823,15 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'paragraphs_bundle_permissions',
   );
 
+  // Exported permission: 'update paragraph content tabs'.
+  $permissions['update paragraph content tabs'] = array(
+    'name' => 'update paragraph content tabs',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
   // Exported permission: 'update paragraph content unit_contact_info'.
   $permissions['update paragraph content unit_contact_info'] = array(
     'name' => 'update paragraph content unit_contact_info',
@@ -3258,6 +3285,16 @@ function ilr_permissions_user_default_permissions() {
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
       'contributor' => 'contributor',
+    ),
+    'module' => 'paragraphs_bundle_permissions',
+  );
+
+  // Exported permission: 'view paragraph content tabs'.
+  $permissions['view paragraph content tabs'] = array(
+    'name' => 'view paragraph content tabs',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'paragraphs_bundle_permissions',
   );

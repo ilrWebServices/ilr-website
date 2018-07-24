@@ -19,7 +19,29 @@
 
     }
   };
+  Drupal.behaviors.open_frame_tabs = {
+    attach: function (context, settings) {
+      var triggers = $('.tab__trigger');
+      if(triggers.length) {
+        triggers.click(function(e){
+          $id = $(this).attr('data-toggle');
+          setTabHeight($id);
+          $('.tab__content').css('visibility','hidden');
+          $('#' + $id).css('visibility','visible');
+        });
 
+        function setTabHeight($id=0) {
+          if (!$id.length) {
+            $id = $('.tab__content').first().attr('id');
+          }
+          var height = $('#' + $id).outerHeight();
+          $('.tabs__contents').css('height', height);
+        }
+
+        setTabHeight();
+      }
+    }
+  };
   Drupal.behaviors.open_frame_search = {
     attach: function (context, settings) {
       $('.search-button a').click(function(e){
@@ -27,7 +49,6 @@
         $('header').toggleClass('search-engaged');
         $('#search-form-query').focus();
         if($('#search-form-query').val() != '') {
-          console.log($('#search-form-query').val());
           $('#cu-search-form').submit();
         }
       });

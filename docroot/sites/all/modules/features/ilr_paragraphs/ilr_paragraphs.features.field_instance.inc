@@ -2002,6 +2002,80 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   );
 
   // Exported field_instance:
+  // 'paragraphs_item-tabs-field_para_main_page_content'.
+  $field_instances['paragraphs_item-tabs-field_para_main_page_content'] = array(
+    'bundle' => 'tabs',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'paragraphs',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'view_mode' => 'full',
+        ),
+        'type' => 'paragraphs_view',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_para_main_page_content',
+    'label' => 'Tab content',
+    'required' => 1,
+    'settings' => array(
+      'add_mode' => 'button',
+      'allowed_bundles' => array(
+        'action_callout' => -1,
+        'compare_three' => -1,
+        'display_a_block' => -1,
+        'featured_promo' => -1,
+        'just_image' => -1,
+        'just_text' => 'just_text',
+        'side_by_side_text' => -1,
+        'social_callout' => -1,
+        'social_feed' => -1,
+        'sponsor_message' => -1,
+        'tabs' => -1,
+        'unit_contact_info' => -1,
+      ),
+      'bundle_weights' => array(
+        'action_callout' => 2,
+        'compare_three' => 3,
+        'display_a_block' => 4,
+        'featured_promo' => 5,
+        'just_image' => 6,
+        'just_text' => 7,
+        'side_by_side_text' => 8,
+        'social_callout' => 9,
+        'social_feed' => 10,
+        'sponsor_message' => 11,
+        'tabs' => 12,
+        'unit_contact_info' => 13,
+      ),
+      'default_edit_mode' => 'open',
+      'title' => 'tab',
+      'title_multiple' => 'tabs',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'paragraphs',
+      'settings' => array(),
+      'type' => 'paragraphs_embed',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-unit_contact_info-field_multiple_links'.
   $field_instances['paragraphs_item-unit_contact_info-field_multiple_links'] = array(
     'bundle' => 'unit_contact_info',
@@ -2287,6 +2361,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   t('Select an existing block');
   t('Social Channels');
   t('Social links');
+  t('Tab content');
   t('Tagline');
   t('Text paragraph');
   t('The background image should be ~2000 x 1000 pixels, but can be compressed somewhat thanks to the color overlay');
