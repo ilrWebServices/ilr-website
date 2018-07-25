@@ -1,13 +1,13 @@
+<?php $helpers = ['first', 'second', 'third']; ?>
+<?php $count = 0; ?>
 <div class="component component--tabs">
-  <div class="tabs__triggers">
-    <?php foreach ($tab_headings as $id => $heading): ?>
-      <div class="tab__trigger" data-toggle="<?php print $id ?>"><?php print $heading ?></div>
-    <?php endforeach; ?>
-  </div>
-  <div class="tabs__contents">
-    <?php foreach ($tab_content as $id => $content): ?>
-      <div id="<?php print $id ?>" class="tab__content"><?php print render($content) ?></div>
-    <?php endforeach; ?>
-  </div>
-
+  <?php foreach ($tab_headings as $id => $heading): ?>
+    <div class="tab__trigger tab__trigger--<?php print $helpers[$count] ?> tab__trigger--<?php print $id ?>" data-toggle="<?php print $id ?>">
+      <?php print $heading; ?>
+    </div>
+    <div id="<?php print $id ?>" class="tab__content tab__content--<?php print $helpers[$count] ?>">
+      <?php print render($tab_content[$id]) ?>
+    </div>
+    <?php $count++; ?>
+  <?php endforeach; ?>
 </div>

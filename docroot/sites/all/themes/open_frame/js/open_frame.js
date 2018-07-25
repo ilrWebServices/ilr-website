@@ -25,20 +25,9 @@
       if(triggers.length) {
         triggers.click(function(e){
           $id = $(this).attr('data-toggle');
-          setTabHeight($id);
-          $('.tab__content').css('visibility','hidden');
-          $('#' + $id).css('visibility','visible');
+          $('.tab__content').css('display','none');
+          $('#' + $id).css('display','block');
         });
-
-        function setTabHeight($id=0) {
-          if (!$id.length) {
-            $id = $('.tab__content').first().attr('id');
-          }
-          var height = $('#' + $id).outerHeight();
-          $('.tabs__contents').css('height', height);
-        }
-
-        setTabHeight();
       }
     }
   };

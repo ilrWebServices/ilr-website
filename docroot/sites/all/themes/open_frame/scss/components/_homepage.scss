@@ -45,10 +45,13 @@ body.front {
         }
 
         @include medium {
+          @include full-width;
+
           grid-row: 1 / 3;
         }
 
         @include large {
+          @include full-width(true);
           grid-row: 1 / -1;
         }
       }
