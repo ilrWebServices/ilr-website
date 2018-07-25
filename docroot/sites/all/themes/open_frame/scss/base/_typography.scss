@@ -48,9 +48,9 @@
   }
 }
 
-@mixin paragraph-text() {
+@mixin paragraph-text($color: $p-text) {
   font-size: $p-size;
-  color: $p-text;
+  color: $color;
   margin: 0;
   @include trailer(1);
 

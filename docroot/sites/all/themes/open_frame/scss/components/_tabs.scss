@@ -2,7 +2,7 @@ $pad: 2rem;
 $doublepad: $pad * 2;
 
 .component--tabs {
-  @include trailer(1);
+  @include trailer(2);
 
   display: grid;
 
@@ -57,7 +57,7 @@ $doublepad: $pad * 2;
 
   .tab__content {
     background: $lighter-red;
-    padding: 3rem $pad;
+    padding: 1rem $pad;
     z-index: 30;
 
     @include medium {

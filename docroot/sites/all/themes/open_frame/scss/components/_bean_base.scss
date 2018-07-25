@@ -1,13 +1,8 @@
 @mixin bean-base() {
-  // > h2 { display: none; }
   article {
     .front &,
     #content-bottom & {
       @include card;
-    }
-
-    .front #content & {
-      @include thumb;
     }
 
     .not-front &,

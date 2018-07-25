@@ -49,6 +49,7 @@
   }
 }
 
+// NOTE - see mixins
 @mixin frame($width: 50px, $color: white, $top: false, $right: false, $bottom: true, $left: true) {
   position: relative;
   display: block;
