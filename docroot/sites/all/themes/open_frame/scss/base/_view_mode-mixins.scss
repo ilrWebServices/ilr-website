@@ -364,105 +364,43 @@
   ul                                      { order: 7; }
 }
 
-@mixin title-overlay() {
-  @include adjust-font-size-to(5em);
+@mixin title-knockout($pad: 50px) {
+  @include adjust-font-size-to(1.5em);
 
+  @include medium {
+    @include adjust-font-size-to(2em);
+  }
+
+  @include large {
+    @include adjust-font-size-to(2.75em);
+  }
+
+  @include xl {
+    @include adjust-font-size-to(3.3em);
+  }
+
+  mix-blend-mode: lighten;
   margin: 0;
 
   a {
+    @include adjust-font-size-to(1.2em);
     @include set-heading(true);
+    line-height: .9;
     display: block;
-    position: absolute;
-    line-height: 1;
-    // left: 0;
-    text-align: right;
-    right: 0;
-    // text-align: left;
-
-    width: 50%;
     height: 100%;
-    // color: rgba(255,255,255, .2);//white;
     color: $black;
-    // color: transparent;
-    // @include single-text-shadow(0, 0, 10px, 10px, black);
-    // font-family: $font;
-    // border-bottom: 1px solid transparent;
-    mix-blend-mode: lighten;
-    // mix-blend-mode: darken;
-    // mix-blend-mode: screen;
-    // mix-blend-mode: multiply;
     background-color: white;
-    // text-shadow: 0px -12px 13px rgba(0,0,0,0.5);
-    // text-shadow: -5px -5px rgba(0,0,0,.1); //inset 0 20px 30px #000000;
-    padding: 4rem 3rem 0 1rem;
-
-    @include frame--knockout;
-
-    &:hover {
-      border-bottom-color: #fff;
-    }
-    // &::before {
-    //   content: '';
-    //   position: absolute;
-    //   width: 100%;
-    //   height: 100%;
-    //   top: 0;
-    //   left: 0;
-    //   background: rgba(0,0,0,.5);
-    //   mix-blend-mode: multiply;
-    //   // background: white;
-    // }
-  }
-}
-
-@mixin lead-story() {
-  h2 {
-    @include title-overlay;
-    a {
-      @include adjust-font-size-to(28px);
-      bottom: 1em;
-    }
-  }
-  h3.category {
-    display: none;
-  }
-  @include trailer(1);
-}
-
-@mixin carousel-slide() {
-  position: relative;
-  .category, .field-name-body {
-    display: none;
-  }
-  article {
-    @include one-column;
+    width: 100%;
+    padding: $pad / 4 $pad / 4 20px $pad / 4;
     position: relative;
-    z-index: 1;
-    &:hover h2 a {
-      border-bottom: 1px solid white;
+
+    @include medium {
+      padding: $pad / 2;
     }
-    h2 {
-      @include title-overlay;
-      a {
-        bottom: .5em;
-      }
-    }
-  }
-  img {
-    display: block;
-  }
-  .field-name-field-image {
-    position: relative;
-    z-index: -1; // Push image and gradient back so h2 link is visible/active
-    a::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      @include background-image(linear-gradient(rgba(#000000, 0), rgba(#000000, 0) 75%, rgba(#000000, .6)));
+
+    @include large {
+      margin: 0;
+      padding: $pad;
     }
   }
 }

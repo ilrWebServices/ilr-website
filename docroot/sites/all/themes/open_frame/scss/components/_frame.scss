@@ -1,25 +1,26 @@
-@mixin framed--button {
-  border-right: 5px solid $cornell-red;
-  border-bottom: 5px solid $cornell-red;
+@mixin framed--button($width: 5px) {
+  border-left: $width solid $cornell-red;
+  border-bottom: $width solid $cornell-red;
   text-align: center;
   color: $black;
-  padding: .5rem 1rem;
-  // background: rgba(0,0,0,.7);
+  padding: .3em 1em;
   display: inline-block;
   font-weight: 600;
-  position: absolute;
-  right: 3rem;
-  bottom: 25%;
-  z-index: 100;
-  &::before {
+  position: relative;
+
+  &::before,
+  &::after {
     display: block;
     content: ' ';
     position: absolute;
-    top: -5px;
-    right: -5px;
-    height: 5px;
-    width: 30px;
     background: $cornell-red;
+  }
+
+  &::before {
+    top: -$width;
+    left: -$width;
+    height: $width;
+    width: 30%;
   }
 }
 
@@ -141,9 +142,13 @@
   position: fixed;
   background: $black;
   width: 20px;
-  min-height: 200px;
+  min-height: 50px;
   right: 0;
   z-index: 100;
+
+  @include large {
+    min-height: 200px;
+  }
 
   &::before {
     content: " ";
@@ -153,8 +158,20 @@
   }
 
   &::before {
-    height: 400px;
+    height: 100px;
     left: 0;
     width: 20px;
+
+    @include medium {
+      height: 300px;
+    }
+
+    @include large {
+      height: 400px;
+    }
+
+    @include xl {
+      height: 600px;
+    }
   }
 }

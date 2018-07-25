@@ -4,34 +4,150 @@ body.front {
     .category, .field-name-body {
       display: none;
     }
-    article {
-      @include one-column;
-      position: relative;
-      z-index: 1;
-      &:hover h2 a {
-        border-bottom: 1px solid white;
-      }
-      h2 {
-        @include title-overlay;
-      }
-    }
-    img {
-      display: block;
-    }
-    .field-name-field-image {
-      position: relative;
-      z-index: -1; // Push image and gradient back so h2 link is visible/active
 
-      a::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 50%;
-        height: 100%;
-        z-index: 0;
+    article {
+      $pad: 50px;
+      $halfpad: $pad / 2;
+      $quarterpad: $pad / 4;
+
+      @include trailer(1);
+
+      display: grid;
+      grid-template-columns: 1rem 1fr 1rem;
+      max-width: 100%;
+
+      @include small {
+        grid-template-columns: 1rem 1fr 1rem;
+      }
+
+      @include medium {
+        @include trailer(2);
+
+        grid-template-columns: $pad 1fr $pad;
+        grid-template-rows: 1fr 20% auto auto;
+      }
+
+      @include large {
+        grid-template-columns: $pad .8fr 1fr $pad;
+        grid-template-rows: $pad 1.5fr 1fr 1fr $pad;
+      }
+
+      .field-name-field-image {
+        @include double-width($offset-left: 50vw);
+
+        grid-row: 1 / 3;
+        grid-column: 1 / -1;
+        position: relative;
+
+
+        @include small {
+          @include double-width($undo: true);
+        }
+
+        @include medium {
+          grid-row: 1 / 3;
+        }
+
+        @include large {
+          grid-row: 1 / -1;
+        }
+      }
+
+      h2 { @include title-knockout($pad); }
+      h2,
+      h3 { // h3 is used as a hack for the knockout background
+        z-index: 3;
+        grid-row: 2 / 3;
+        grid-column: 1 / -1;
+
+        @include small {
+          grid-column: 2 / 3;
+        }
+
+        @include medium {
+          grid-row: 2 / 3;
+          grid-column: 2;
+        }
+
+        @include large {
+          grid-column: 2 / 3;
+          grid-row: 2 / -2;
+          z-index: 2;
+        }
+      }
+
+      h3.category { // Hack to show
+        display: block;
         background: rgba(0,0,0,.3);
-        // @include background-image(linear-gradient(rgba(#000000, 0), rgba(#000000, .1)));
+        z-index: 1;
+      }
+
+      .field-name-field-teaser {
+        z-index: 3;
+        grid-row: 3 / 4;
+        grid-column: 2 / 3;
+
+        @include small {
+          grid-column: 2 / 3;
+          padding: 0 $quarterpad;
+        }
+
+        @include medium {
+          grid-row: 3 / 4;
+          grid-column: 2;
+          padding: 0 $halfpad;
+        }
+
+        @include large {
+          grid-column: 2 / 3;
+          grid-row: 3 / 4;
+          padding: 0 $pad;
+        }
+
+        p {
+          @include medium {
+            @include adjust-font-size-to(21px, 1.2);
+          }
+          @include large {
+            @include adjust-font-size-to(18px, 1.1);
+          }
+          @include xl {
+            @include adjust-font-size-to(21px, 1.2);
+          }
+        }
+      }
+
+      .link__cta {
+        z-index: 3;
+        padding: 0;
+        grid-column: 2 / 3;
+        grid-row: 4;
+
+        @include small {
+          padding: 0 $quarterpad;
+        }
+
+        @include medium {
+          padding: 0 $halfpad;
+          position: relative;
+          grid-column: 2;
+          grid-row: 4;
+        }
+
+        @include large {
+          grid-column: 2 / 3;
+          grid-row: 4 / 5;
+          padding: 0 $pad;
+        }
+
+        a {
+          @include framed--button;
+
+          @include xl {
+            @include framed--button(8px);
+            @include adjust-font-size-to(25px);
+          }
+        }
       }
     }
   }
@@ -50,5 +166,49 @@ body.front {
   p {
     margin: 0 auto;
     max-width: $section-max-width;
+  }
+}
+
+.catherwood {
+  @include rhythm(2);
+  display: grid;
+  grid-template-columns: 70% 30%;
+
+  .catherwood__content {
+    background: $dark-blue;
+    grid-column: 1/2;
+    display: grid;
+    grid-template-columns: 15% 1fr 15%;
+    @include padding-trailer(2);
+
+    h2, p, li, a {
+      color: white;
+      background: none;
+    }
+
+    ul {
+      @include inline-block-list;
+      margin-right: 2rem;
+    }
+
+    .catherwood__heading,
+    .catherwood__teaser,
+    .catherwood__links {
+      grid-column: 2 / 3;
+    }
+
+    .catherwood__heading {
+      @include set-heading(true);
+      @include adjust-font-size-to(3rem);
+      line-height: 0.9;
+      padding: 3rem 0 1.5rem 2rem;
+      border-bottom: 20px solid white;
+      border-left: 20px solid white;
+      margin-left: -2rem;
+    }
+  }
+
+  .catherwood__image {
+    grid-column: 2/-1;
   }
 }

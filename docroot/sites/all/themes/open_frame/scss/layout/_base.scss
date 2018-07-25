@@ -269,6 +269,10 @@
 #page {
   background: $bg-body;
   padding: 1rem;
+
+  @include large {
+    padding: 0;
+  }
 }
 
 

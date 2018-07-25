@@ -5,3 +5,14 @@
  */
 
 include_once 'promo.features.inc';
+
+function promo_preprocess_node(&$variables) {
+  if ($variables['type'] == 'promo' && drupal_is_front_page()) {
+    $target = $variables['field_internal_link'][LANGUAGE_NONE][0]['target_id'];
+    $alias = drupal_get_path_alias('node/' . $target);
+    $variables['content']['cta'] = [
+      '#markup' => '<div class="link link__cta"><a class="button" href="'. $alias .'">Learn More</a></div>',
+    ];
+  }
+}
+

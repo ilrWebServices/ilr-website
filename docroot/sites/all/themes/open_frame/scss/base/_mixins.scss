@@ -121,6 +121,30 @@
   }
 }
 
+/// Double Width, even outside container
+/// @param {bool} $undo [false]
+/// @param {val} $offset-left [0vw]
+/// @link https://css-tricks.com/full-width-containers-limited-width-parents/ Source
+@mixin double-width($undo: false, $offset-left: 0vw) {
+  @if $undo {
+    margin-left: 0;
+    margin-right: 0;
+    position: static;
+    left: auto;
+    right: auto;
+    width: auto;
+    max-width: 100%;
+  } @else {
+    width: 200vw;
+    max-width: 200vw;
+    position: relative;
+    left: 100%;
+    right: 100%;
+    margin-left: -100vw - $offset-left;
+    margin-right: -100vw - $offset-left;
+  }
+}
+
 // Responsive video using CSS only
 @mixin responsive-video {
   height: 0;

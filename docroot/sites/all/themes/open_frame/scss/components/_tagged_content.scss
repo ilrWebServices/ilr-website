@@ -32,7 +32,6 @@
       a {
         text-decoration: underline;
       }
-      @include carousel-slide;
     }
     .tagged-content[data-items="4"] {
       @include padding-leader(1);
