@@ -22,3 +22,7 @@
 .link--offset-button {
   margin: 0 1rem;
 }
+
+.button--centered {
+  @include center;
+}

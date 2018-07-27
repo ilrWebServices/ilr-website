@@ -39,6 +39,7 @@ body.front .homepage-news {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    float: none !important; // Weird grid issue
 
     > h2, // Duplicates - @see _tagged_content_add_markup_to_group()
     > h3 {
@@ -47,8 +48,8 @@ body.front .homepage-news {
 
     .field-type-image {
       order: 1;
-      // update aspect ratio
-      width: 130%;
+      margin: 0;
+      width: 130%; // update aspect ratio
       margin-left: -15%;
 
       a { // Deal with the aspect ratio used elsewhere
@@ -221,6 +222,22 @@ body.front .homepage-news {
           }
         }
       }
+    }
+  }
+
+  .homepage-news__link {
+    @include leader(4); // Weird grid issue
+
+    grid-column: 1 / -1;
+
+    @include medium {
+      @include leader(2);
+    }
+
+    a {
+      @include adjust-font-size-to(1.5rem);
+
+      color: $black;
     }
   }
 }
