@@ -803,7 +803,7 @@ function basic_page_field_default_field_instances() {
       'allowed_bundles' => array(
         'action_callout' => -1,
         'compare_three' => -1,
-        'display_a_block' => -1,
+        'display_a_block' => 'display_a_block',
         'featured_promo' => -1,
         'just_image' => 'just_image',
         'just_text' => 'just_text',
