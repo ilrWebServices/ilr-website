@@ -22,6 +22,21 @@
     height: $width;
     width: 30%;
   }
+
+  @include large {
+    $width: 10px;
+    padding: 0.5em 1em;
+
+    border-left: $width solid $cornell-red;
+    border-bottom: $width solid $cornell-red;
+
+    &::before {
+      top: -$width;
+      left: -$width;
+      height: $width;
+      width: 30%;
+    }
+  }
 }
 
 .button--framed {
@@ -53,6 +68,7 @@
 @mixin frame($width: 50px, $color: white, $top: false, $right: false, $bottom: true, $left: true) {
   position: relative;
   display: block;
+  z-index: 10;
 
   &::before,
   &::after {
@@ -139,40 +155,47 @@
   }
 }
 
-.body__frame {
-  position: fixed;
-  background: $black;
-  width: 20px;
-  min-height: 50px;
-  right: 0;
-  z-index: 100;
+// .body__frame { // Currently unused
+//   position: absolute;
+//   z-index: 20;
+//   width: 100%;
+//   height: 20px;
+//   background: $black;
+// }
 
-  @include large {
-    min-height: 200px;
-  }
-
+html,
+body {
   &::before {
     content: " ";
-    position: fixed;
+    position: absolute;
     background: $black;
     top: 0;
+    width: 20px;
+    z-index: 10;
   }
-
+}
+html {
   &::before {
     height: 100px;
-    left: 0;
-    width: 20px;
 
     @include medium {
-      height: 300px;
+      height: 200px;
     }
 
     @include large {
-      height: 400px;
+      height: 300px;
     }
 
     @include xl {
-      height: 600px;
+      height: 400px;
     }
+  }
+}
+
+body {
+  border-top: 20px solid $black;
+  &::before {
+    height: 100px;
+    right: 0;
   }
 }

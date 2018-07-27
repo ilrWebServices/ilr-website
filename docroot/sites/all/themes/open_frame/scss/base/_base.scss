@@ -19,19 +19,6 @@
   text-shadow: none;
 }
 
-html,
-body {
-  &::before {
-    content: " ";
-    position: fixed;
-    background: $black;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    height: 20px;
-  }
-}
-
 body {
   -webkit-text-size-adjust: 100%;
   background-color: $bg-body;
