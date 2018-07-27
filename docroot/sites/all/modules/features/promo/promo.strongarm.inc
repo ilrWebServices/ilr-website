@@ -40,6 +40,21 @@ function promo_strongarm() {
       'reference_field' => array(
         'custom_settings' => FALSE,
       ),
+      'alternate_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__highlighted' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__sidebar_second' => array(
+        'custom_settings' => FALSE,
+      ),
+      'open_frame__highlighted' => array(
+        'custom_settings' => FALSE,
+      ),
+      'open_frame__sidebar_second' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -50,7 +65,7 @@ function promo_strongarm() {
           'weight' => '1',
         ),
         'redirect' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
       ),
       'display' => array(),

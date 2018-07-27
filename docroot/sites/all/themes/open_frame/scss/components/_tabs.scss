@@ -85,6 +85,7 @@ $doublepad: $pad * 2;
     p {
       color: white;
       margin: 0 0 1rem !important;
+      max-width: $section-max-width;
 
       @include medium {
         @include adjust-font-size-to(24px, 1.2);

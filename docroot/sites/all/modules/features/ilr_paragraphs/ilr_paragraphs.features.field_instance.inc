@@ -992,11 +992,13 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
+      'module' => 'blockreference',
       'settings' => array(
         'apply_chosen' => '',
+        'autocomplete_path' => 'blockreference/autocomplete',
+        'size' => 60,
       ),
-      'type' => 'options_select',
+      'type' => 'blockreference_autocomplete',
       'weight' => 32,
     ),
   );

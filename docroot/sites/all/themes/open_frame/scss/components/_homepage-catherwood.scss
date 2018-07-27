@@ -1,6 +1,6 @@
 body.front {
   .catherwood {
-    @include rhythm(1);
+    @include rhythm(3);
 
     display: grid;
 
@@ -85,12 +85,10 @@ body.front {
 
         @include large {
           @include adjust-font-size-to(3rem, 2);
-
-          // padding: 3rem 0 1.5rem 2rem;
         }
 
         @include xl {
-          @include adjust-font-size-to(4rem, 2.5);
+          @include adjust-font-size-to(4rem, 2.2);
 
           padding-right: 2rem;
           margin-right: 2rem;

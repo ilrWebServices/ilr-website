@@ -85,7 +85,7 @@ body.front {
         z-index: 1;
       }
 
-      .field-name-field-teaser {
+      .promo__content {
         z-index: 3;
         grid-row: 3 / 4;
         grid-column: 2 / 3;
@@ -151,6 +151,14 @@ body.front {
             @include adjust-font-size-to(25px);
           }
         }
+      }
+
+      // Hide the homepage-news relevant items
+      .news__date,
+      .news__title,
+      .news__more-link,
+      .links.inline {
+        @include hidden;
       }
     }
   }

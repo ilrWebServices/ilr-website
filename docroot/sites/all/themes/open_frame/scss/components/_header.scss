@@ -41,6 +41,10 @@ header {
     @include clearfix;
 
     padding: 0 2rem;
+
+    @include breakpoint(1450px) {
+      padding: 0;
+    }
   }
 
   .logo-wrapper {
@@ -88,6 +92,7 @@ header {
         img {
           width: 350px;
           height: auto;
+          margin-left: -10px; // fixing for png REPLACE
         }
       }
     }
@@ -98,7 +103,7 @@ header {
   @include transition-duration(.3s);
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 1rem;
   z-index: 10;
   // margin-top: 1em;
   [data-eq-state="regular-nav"]:not(.sticky) & {

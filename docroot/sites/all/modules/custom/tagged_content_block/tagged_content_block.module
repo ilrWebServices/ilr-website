@@ -80,10 +80,11 @@ function tagged_content_block_preprocess_node(&$variables) {
   $variables['title_link'] = '';
   $tagged_content_types = array_filter(variable_get('tagged_content_block_enabled_bundles'));
   if ($variables['view_mode'] == 'teaser' && in_array($variables['type'], $tagged_content_types)) {
-    // Check whether the content is coming from a featured bean. See view() in tagged_content.inc
-    if (isset($variables['show_featured']) && $variables['show_featured'] == 1) {
+    // Homepage images use a different image style
+    if (drupal_is_front_page()) {
       $variables['content']['field_image'][0]['#image_style'] = 'featured_image';
     }
+
     _tagged_content_block_add_category_heading($variables);
     if ($variables['type'] == 'promo') {
       _tagged_content_block_update_promo_links($variables);
@@ -160,7 +161,7 @@ function _tagged_content_block_generate_thumbnail_markup($url, $content_type, $t
 }
 
 function _tagged_content_block_get_category_type($node) {
-  $wrapper = entity_metadata_wrapper('node',$node);
+  $wrapper = _tagged_content_get_wrapper($node);
   if (isset($wrapper->field_category_type)) {
     if($term = $wrapper->field_category_type->value()) {
       return $term->name;
@@ -188,7 +189,7 @@ function _tagged_content_block_get_hyphened_type($type) {
 }
 
 function _tagged_content_block_get_primary_term_for_node($node) {
-  $wrapper = entity_metadata_wrapper('node',$node);
+  $wrapper = _tagged_content_get_wrapper($node);
   if (isset($wrapper->field_tags)) {
     $tag_array = $wrapper->field_tags->value();
     if (count($tag_array)) {
@@ -208,7 +209,7 @@ function _tagged_content_block_get_primary_term_for_node($node) {
 function _tagged_content_block_get_promo_link_from_node($node) {
   $url = &drupal_static(__FUNCTION__ . $node->nid); // nid added since there can be multiple per page, but not per node
   if (!isset($url)) {
-    $wrapper = entity_metadata_wrapper('node', $node);
+    $wrapper = _tagged_content_get_wrapper($node);
     // Internal links
     if (!empty($wrapper->field_internal_link) && $wrapper->field_internal_link->value()) {
       $nid = $wrapper->field_internal_link->value()->nid;
@@ -246,7 +247,6 @@ function _tagged_content_block_reference_validator($form, &$form_state) {
       }
     }
   }
-
 }
 
 function _tagged_content_block_is_event($url) {
@@ -260,4 +260,79 @@ function _tagged_content_block_update_promo_links(&$variables) {
   if (isset($variables['content']['field_image']) && count($variables['content']['field_image'])) {
     $variables['content']['field_image'][0]['#path']['path'] = ltrim($url, '/');
   }
+}
+
+function _tagged_content_get_wrapper($node) {
+  return ilr_get_node_wrapper($node);
+}
+
+/**
+ * Add the relevant content to the group for the 2018 design
+ * Currenty: Date, Title, Teaser, Read more
+ */
+function tagged_content_block_field_group_pre_render_alter(&$element, $group, & $form) {
+  $node = isset($form['#node']) ? $form['#node'] : NULL;
+  if ($node) {
+    if ($group->group_name == 'group_content' && drupal_is_front_page()) {
+      $wrapper = _tagged_content_get_wrapper($form['#node']);
+      $contents = ['pub_date', 'title','teaser', 'more_link'];
+      foreach ($contents as $key => $name) {
+        _tagged_content_add_markup_to_group($element, $wrapper, $name, $key);
+      }
+    }
+  }
+}
+
+function _tagged_content_add_markup_to_group(&$element, $wrapper, $name, $count) {
+  $markup = '';
+  switch ($name) {
+    case 'pub_date':
+      $timestamp = $wrapper->field_published_date->value();
+      if (!empty($timestamp)) {
+        $pub_date = format_date($timestamp ,'custom','M j, Y');
+        $markup = ilr_get_bem_markup($pub_date, 'news', 'date');
+      }
+      break;
+    case 'title':
+      $markup = ilr_get_bem_markup($wrapper->label(), 'news', 'title',[],'<h2>','</h2>');
+      break;
+    case 'teaser':
+      $summary = '<!-- SUMMARY MISSING FROM CONTENT -->';
+      if ($wrapper->body->value()) {
+        $summary = (!empty($wrapper->body->value()['summary']))
+          ? $wrapper->body->value()['summary']
+          : _tagged_content_create_summary($wrapper->body->value()['value']);
+      } // Check for teaser field
+      elseif (isset($item_wrapper->field_teaser)) {
+        $summary = $wrapper->field_teaser->value();
+      }
+      $markup = ilr_get_bem_markup($summary, 'news', 'teaser');
+      break;
+    case 'more_link':
+      $title = $wrapper->label();
+      $node_title_stripped = strip_tags($title);
+      $link = '<a href="" rel="tag" title="'.$title.'">Read more<span class="element-invisible"> about '. $title .'</span></a>';
+      $markup = ilr_get_bem_markup($link, 'news', 'more-link');
+      break;
+    default:
+      $markup = '';
+      break;
+  }
+  if (!empty($markup)) {
+    $element[$name] = [
+      '#markup' => $markup,
+      '#weight' => $count += 3,
+    ];
+  }
+}
+
+function _tagged_content_create_summary($string) {
+  $alter = array(
+    'max_length' => 200,
+    'ellipsis' => TRUE,
+    'word_boundary' => TRUE,
+    'html' => TRUE,
+    );
+  $trimmed_text = views_trim_text($alter, $string);
+  return $trimmed_text;
 }

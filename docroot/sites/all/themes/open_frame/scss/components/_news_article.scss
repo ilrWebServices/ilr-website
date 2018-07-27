@@ -1,3 +1,15 @@
+.node-news-item {
+  .field-name-field-published-date {
+    @include hidden;
+  }
+
+  .not-front & {
+    .news__content {
+      @include hidden;
+    }
+  }
+}
+
 .node-type-news-item {
   .field-name-field-description {
     @include adjust-font-size-to(28px);

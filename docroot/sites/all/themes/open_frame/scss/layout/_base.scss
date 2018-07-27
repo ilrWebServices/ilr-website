@@ -1,3 +1,9 @@
+$space: 1rem;
+$double-space: $space * 2;
+$triple-space: $space * 3;
+$quadruple-space: $space * 4;
+$half-space: $space / 2;
+
 @mixin flex-around {
   display: flex;
   justify-content: space-around;
@@ -53,6 +59,24 @@
   }
   @else {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@mixin four-column-grid($gap: 30px, $responsive: true) {
+  display: grid;
+  grid-gap: $gap;
+
+  @if $responsive {
+    @include small {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include large {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @else {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -150,8 +174,17 @@
   #sidebar-first,
   #sidebar-second {
     width: 100%;
-  }
 
+    @include medium {
+      max-width: calc(100% - 100px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include breakpoint(1450px) {
+      max-width: 100%;
+    }
+  }
 }
 
 @mixin layout--full-width-content-grid() {
@@ -269,6 +302,7 @@
 #page {
   background: $bg-body;
   padding: 1rem;
+  overflow: hidden;
 
   @include large {
     padding: 0;
@@ -307,7 +341,7 @@
   // }
 
   #content {
-    @include trailer(1);
+    @include trailer(2);
   }
 
   #content, #sidebar-second {

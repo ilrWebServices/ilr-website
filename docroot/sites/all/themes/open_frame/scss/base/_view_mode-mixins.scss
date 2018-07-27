@@ -171,7 +171,7 @@
     margin: 0;
     padding: 0 1rem 2rem 1rem;
 
-    a {
+    a, a:visited, a:active {
       @include set-heading(true);
       letter-spacing: 0;
       color: white;

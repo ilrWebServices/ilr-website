@@ -930,3 +930,18 @@ function ilr_mlid_has_children($mlid) {
   }
   return 0;
 }
+
+function ilr_get_bem_markup($content, $block, $element, $modifiers=[], $prefix='', $suffix='') {
+  $classname = $block . '__' . $element;
+  $modifier_classes = '';
+  foreach ($modifiers as $modifier) {
+    $modifier_classes .= ' ' . $classname . '--' . $modifier;
+  }
+  $markup = '<div class="'. $classname .' ' . $modifier_classes . '">';
+  $markup .= $prefix;
+  $markup .= $content;
+  $markup .= $suffix;
+  $markup .= '</div>';
+
+  return $markup;
+}

@@ -303,3 +303,8 @@
 @mixin wrapper($max-width: $page-max-width) {
   @include container($max-width);
 }
+
+@mixin hidden {
+  display: none !important;
+  visibility: hidden;
+}

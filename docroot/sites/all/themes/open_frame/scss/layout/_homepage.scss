@@ -4,12 +4,21 @@ body.front {
   }
 
   #content {
-    .block-bean {
-      @include three-column;
-    }
-    .ilr-video-wrapper {
-      @include large {
-        @include three-column;
+    .tagged-content {
+
+      @include medium {
+        @include four-column-grid($gap: 3%);
+      }
+
+
+      article {
+        @include one-column;
+
+        clear: none;
+
+        &:first-of-type {
+          grid-column: 1 / -1; // The first spans the whole grid
+        }
       }
     }
   }
