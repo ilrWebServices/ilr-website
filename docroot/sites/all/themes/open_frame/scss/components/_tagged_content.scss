@@ -9,15 +9,7 @@
     font-weight: bold;
   }
 
-  //Override content-types here, eg:
-  &.news {
-  }
-
   @include bean-base;
-
-  // .region-content & {
-  //   @include two-column;
-  // }
 }
 
 .tagged-content[data-items='1'] {
@@ -26,106 +18,106 @@
   }
 }
 
-#main {
-  #highlighted {
-    .tagged-content[data-items='1'] {
-      a {
-        text-decoration: underline;
-      }
-    }
-    .tagged-content[data-items="4"] {
-      @include padding-leader(1);
-      @include padding-trailer(1.5);
-      @include trailer(1);
-      padding-left: 30px;
-      padding-right: 30px;
-      background: #f1f1f1;
-      border-bottom: 1px solid $gray-light;
-      article {
-        @include card-animated;
-        margin-top: .3em;
-        font-weight: 600;
-        h2 {
-          @include adjust-font-size-to(26px, 1.2);
-        }
-        h3 {
-          display: none;
-        }
-      }
-    }
-  }
-}
+// #main {
+//   #highlighted {
+//     .tagged-content[data-items='1'] {
+//       a {
+//         text-decoration: underline;
+//       }
+//     }
+//     .tagged-content[data-items="4"] {
+//       @include padding-leader(1);
+//       @include padding-trailer(1.5);
+//       @include trailer(1);
+//       padding-left: 30px;
+//       padding-right: 30px;
+//       background: #f1f1f1;
+//       border-bottom: 1px solid $gray-light;
+//       article {
+//         @include card-animated;
+//         margin-top: .3em;
+//         font-weight: 600;
+//         h2 {
+//           @include adjust-font-size-to(26px, 1.2);
+//         }
+//         h3 {
+//           display: none;
+//         }
+//       }
+//     }
+//   }
+// }
 
-#main[data-eq-state="550"] {
-  #highlighted {
-    .tagged-content[data-items='1'] {
-      a {
-        text-decoration: none;
-        @include adjust-font-size-to(22px)
-      }
-    }
-    .tagged-content[data-items="4"] {
-      @include padding-leader(1.5);
-      article {
-        width: 49% !important;
-        float: left;
-        margin-right: 5px;
-      }
-    }
-  }
-}
+// #main[data-eq-state="550"] {
+//   #highlighted {
+//     .tagged-content[data-items='1'] {
+//       a {
+//         text-decoration: none;
+//         @include adjust-font-size-to(22px)
+//       }
+//     }
+//     .tagged-content[data-items="4"] {
+//       @include padding-leader(1.5);
+//       article {
+//         width: 49% !important;
+//         float: left;
+//         margin-right: 5px;
+//       }
+//     }
+//   }
+// }
 
-#main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
-  #highlighted {
-    .tagged-content[data-items='1'] {
-      a {
-        text-decoration: none;
-      }
-    }
-    .tagged-content[data-items="4"] {
-      @include padding-leader(1.5);
-      padding-left: 10px;
-      padding-right: 10px;
-      article {
-        @include four-column;
-        margin-top: 0;
-      }
-    }
-  }
-}
+// #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
+//   #highlighted {
+//     .tagged-content[data-items='1'] {
+//       a {
+//         text-decoration: none;
+//       }
+//     }
+//     .tagged-content[data-items="4"] {
+//       @include padding-leader(1.5);
+//       padding-left: 10px;
+//       padding-right: 10px;
+//       article {
+//         @include four-column;
+//         margin-top: 0;
+//       }
+//     }
+//   }
+// }
 
-#main[data-eq-state="768"] {
-  #highlighted {
-    .tagged-content[data-items='1'] {
-      a {
-        @include adjust-font-size-to(32px,1.2);
-      }
-    }
-  }
-}
+// #main[data-eq-state="768"] {
+//   #highlighted {
+//     .tagged-content[data-items='1'] {
+//       a {
+//         @include adjust-font-size-to(32px,1.2);
+//       }
+//     }
+//   }
+// }
 
-#main[data-eq-state="widescreen"] {
-  #highlighted {
-    .tagged-content[data-items='1'] {
-      a {
-        @include adjust-font-size-to(36px,1.5);
-      }
-    }
-  }
-}
+// #main[data-eq-state="widescreen"] {
+//   #highlighted {
+//     .tagged-content[data-items='1'] {
+//       a {
+//         @include adjust-font-size-to(36px,1.5);
+//       }
+//     }
+//   }
+// }
 
-.container[data-eq-state="mobile-nav"] {
-  #main[data-eq-state="768"] {
-    #highlighted {
-      .tagged-content[data-items="4"] {
-        article {
-          h2 {
-            @include adjust-font-size-to(22px, 1.1);
-            padding: .3em 15px;
-          }
-        }
-      }
-    }
-  }
-}
+// .container[data-eq-state="mobile-nav"] {
+//   #main[data-eq-state="768"] {
+//     #highlighted {
+//       .tagged-content[data-items="4"] {
+//         article {
+//           h2 {
+//             @include adjust-font-size-to(22px, 1.1);
+//             padding: .3em 15px;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 

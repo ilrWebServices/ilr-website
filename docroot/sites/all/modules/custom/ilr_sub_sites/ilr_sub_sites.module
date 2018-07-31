@@ -577,7 +577,6 @@ function _ilr_sub_sites_get_cohort($name) {
   ];
   foreach ($cohorts as $key => $subsites) {
     if (array_key_exists($name, $subsites)) {
-      dpm('exsits!');
       return $key;
     }
   }

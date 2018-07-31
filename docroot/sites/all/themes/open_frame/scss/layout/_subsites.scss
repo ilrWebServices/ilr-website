@@ -1,12 +1,8 @@
 body.subsite-front {
   #main {
-    @include layout--full-width-grid;
-  }
-
-  #content {
-    .block-bean article {
-      @include four-column;
-    }
+    // @include layout--standard-grid;
+    // @todo fix for worker insititue and other full-width pages
+    @include layout--two-cols-no-first-sidebar;
   }
 
   #sidebar-first {

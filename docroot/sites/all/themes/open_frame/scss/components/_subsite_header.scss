@@ -68,13 +68,15 @@
 
         .subsite__heading {
           @include set-heading(true, $cornell-red);
-          @include adjust-font-size-to(2em, 1.1);
+          @include adjust-font-size-to(1.8em, 1);
 
+          letter-spacing: -1px;
           margin-bottom: 1rem;
 
           @include medium {
             @include adjust-font-size-to(3.5em, 2);
 
+            letter-spacing: -2px;
             margin-bottom: 1.5rem;
           }
 
@@ -101,63 +103,6 @@
       }
     }
   }
-  // header[data-eq-state="mobile-nav"] {
-  //   #header-region {
-  //     .subsite-header {
-  //       p {
-  //         margin-top: .5em;
-  //         margin-bottom: .4em;
-  //       }
-
-  //       h2 {
-  //         margin-top: 0;
-  //       }
-  //     }
-  //   }
-  // }
-  // &.wrapped {
-  //   .subsite-header {
-  //     width: 75%;
-  //     h2 {
-  //       margin-bottom: 17px;
-  //       padding-bottom: 0;
-  //     }
-  //   }
-  // }
-  // header[data-eq-state="mobile-nav"] {
-  //   #header-region {
-  //     .subsite-header {
-  //       width: 75%;
-  //       h2 {
-  //         @include adjust-font-size-to(22px);
-  //         @include rhythm(.5,0,0,0,22px);
-  //         @include adjust-leading-to(.75);
-
-  //         &.image {
-  //           overflow: hidden;
-  //           height: 20px;
-  //         }
-  //         &.Conversations {
-  //           height: auto;
-  //         }
-  //         &.ILR {
-  //           height: 32px;
-  //           img {
-  //             max-width: 80px;
-  //           }
-  //         }
-  //         img {
-  //           max-width: 200px;
-  //         }
-  //       }
-  //     }
-
-  //     &.sticky h2 {
-  //       display: block;
-  //       margin: 0;
-  //     }
-  //   }
-  // }
 
   &.sustainable-labor-practices #header-region {
     background-color: $dark-blue;

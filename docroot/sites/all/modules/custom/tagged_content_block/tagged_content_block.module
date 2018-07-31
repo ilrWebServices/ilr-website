@@ -273,7 +273,7 @@ function _tagged_content_get_wrapper($node) {
 function tagged_content_block_field_group_pre_render_alter(&$element, $group, & $form) {
   $node = isset($form['#node']) ? $form['#node'] : NULL;
   if ($node) {
-    if ($group->group_name == 'group_content' && drupal_is_front_page()) {
+    if ($group->group_name == 'group_content') {
       $wrapper = _tagged_content_get_wrapper($form['#node']);
       $contents = ['pub_date', 'title','teaser', 'more_link'];
       foreach ($contents as $key => $name) {

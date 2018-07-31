@@ -283,15 +283,18 @@
   }
 }
 
-@mixin image-ratio-hack() {
+@mixin image-ratio-hack($percentage: 65%) {
   position: relative;
   overflow: hidden;
+  height: 0;
+  padding-bottom: $percentage;
   a {
     display: block;
-    img {
-      position: absolute;
-      left: 0;
-    }
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
   }
 }
 

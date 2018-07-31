@@ -1,4 +1,4 @@
-body.front {
+body.front #page { // specificity... ¯\_(ツ)_/¯
   #main {
     @include layout--full-width-grid;
   }
@@ -10,7 +10,6 @@ body.front {
         @include four-column-grid($gap: 3%);
       }
 
-
       article {
         @include one-column;
 
@@ -21,5 +20,9 @@ body.front {
         }
       }
     }
+  }
+
+  #sidebar-first {
+    @include hidden;
   }
 }

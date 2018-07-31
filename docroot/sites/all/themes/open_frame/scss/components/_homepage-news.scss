@@ -36,94 +36,24 @@ body.front .homepage-news {
   }
 
   article {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    float: none !important; // Weird grid issue
-
-    > h2, // Duplicates - @see _tagged_content_add_markup_to_group()
-    > h3 {
-      @include hidden;
-    }
-
     .field-type-image {
-      order: 1;
-      margin: 0;
-      width: 130%; // update aspect ratio
-      margin-left: -15%;
+      // fix for homepage
+      height: auto !important;
+      width: 130% !important;
+      margin-left: -15% !important;
+      padding: 0;
 
-      a { // Deal with the aspect ratio used elsewhere
-        padding: 0 !important;
-        line-height: .5;
+      a {
+        position: relative;
+        margin-bottom: -4px;
 
         img {
-          position: relative !important;
+          top: 0 !important;
         }
       }
     }
 
-    .news__content {
-      order: 2;
-      flex-grow: 1;
-      background: $warm-grey;
-      padding: $half-space $space $double-space;
-
-      @include medium {
-        padding: $space $double-space $double-space;
-      }
-
-      @include large {
-        padding: $half-space $space $double-space;
-      }
-
-      @include xl {
-        padding: $space $double-space $double-space;
-      }
-    }
-
-    .news__date {
-      @include adjust-font-size-to(15px);
-
-      color: $dark-gray-orange;
-      padding: 0 0 1rem;
-    }
-
-    .news__title {
-      h2 {
-        @include set-heading;
-        @include adjust-font-size-to(1.5rem, 1);
-
-        background: $warm-grey;
-        padding: 0 0 1rem;
-
-
-
-        @include large {
-          @include adjust-font-size-to(1.3rem, 1);
-        }
-
-        @include xl {
-          @include adjust-font-size-to(1.5rem, 1);
-        }
-      }
-    }
-
-    .news__teaser {
-      p {
-        @include adjust-font-size-to(.9rem, .8);
-      }
-    }
-
-    .news__more-link {
-      a {
-        color: $black;
-        padding-bottom: 4px;
-        border-bottom: 3px solid $cornell-red;
-      }
-    }
-
-    // Highlighted
-    &:first-of-type {
+    &:first-of-type { // Highlighted news item
       $full-break: 1450px;
       width: auto;
       overflow: visible !important;

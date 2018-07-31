@@ -30,8 +30,11 @@ $half-space: $space / 2;
   } @else {
     @include layout(2) {
       @include add-gutter(.1);
-      @include add-gutter-style('split');
       @include float-span(1);
+
+      &:nth-of-type(even) {
+        @include float-span(1, 'last');
+      }
     }
   }
 }
@@ -39,8 +42,11 @@ $half-space: $space / 2;
 @mixin three-column() {
   @include layout(3) {
     @include add-gutter(.1);
-    @include add-gutter-style('split');
     @include float-span(1);
+
+    &:nth-of-type(3n) {
+      @include float-span(1, 'last');
+    }
   }
 }
 
@@ -59,6 +65,19 @@ $half-space: $space / 2;
   }
   @else {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@mixin three-column-flex($element, $min, $max) {
+  display: flex;
+  flex-wrap: wrap;
+
+  #{$element} {
+    min-width: $min;
+    max-width: $max;
+    flex-basis: auto; /* default value */
+    flex-grow: 1;
+    margin-right: 1rem;
   }
 }
 
@@ -174,16 +193,6 @@ $half-space: $space / 2;
   #sidebar-first,
   #sidebar-second {
     width: 100%;
-
-    @include medium {
-      max-width: calc(100% - 100px);
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @include breakpoint(1450px) {
-      max-width: 100%;
-    }
   }
 }
 
@@ -225,6 +234,48 @@ $half-space: $space / 2;
 
     #sidebar-second {
       display: none;
+    }
+  }
+}
+
+@mixin layout--two-cols-no-first-sidebar() {
+  display: grid;
+
+  @include large {
+    grid-template-columns: 65% 30%;
+    grid-gap: 5%;
+
+    #content {
+      grid-column-start: 1;
+      grid-row-start: 1;
+
+      .field-name-body,
+      .paragraphs-items-field-para-main-page-content {
+        max-width: $section-max-width;
+      }
+
+      @include breakpoint(1250px) {
+        @include grid-span(12);
+
+        .group-main-content {
+          @include grid-span(7);
+          clear: left;
+        }
+
+        .group-sidebar {
+          @include grid-span(4, 9);
+          padding: 2rem;
+        }
+      }
+    }
+
+    #sidebar-first {
+      @include hidden;
+    }
+
+    #sidebar-second {
+      grid-column-start: 2;
+      grid-row-start: 1;
     }
   }
 }
@@ -301,10 +352,15 @@ $half-space: $space / 2;
 
 #page {
   background: $bg-body;
-  padding: 0 2rem;
-  overflow: hidden;
+  max-width: calc(100% - 2rem);
+  margin: 0 auto;
+  // overflow: hidden;
 
   @include large {
+    max-width: calc(100% - 100px);
+  }
+
+  @include breakpoint($page-max-width) {
     padding: 0;
   }
 }
@@ -312,6 +368,8 @@ $half-space: $space / 2;
 
 .container {
   @include container;
+
+  overflow: visible;
 }
 
 #main {
@@ -330,15 +388,15 @@ $half-space: $space / 2;
 
   @include pie-clearfix;
 
-  // #sidebar-first {
-  //   display: none;
-  // }
+  #sidebar-first {
+    display: none;
+  }
 
-  // [data-eq-state="regular-nav"] & {
-  //   #sidebar-first {
-  //     display: block;
-  //   }
-  // }
+  [data-eq-state="regular-nav"] & {
+    #sidebar-first {
+      display: block;
+    }
+  }
 
   #content {
     @include trailer(2);

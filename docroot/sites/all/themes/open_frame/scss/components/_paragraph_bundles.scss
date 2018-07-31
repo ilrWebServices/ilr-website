@@ -50,10 +50,6 @@
   .entity-paragraphs-item {
     @include pie-clearfix;
   }
-
-  .block-bean article {
-    @include two-column;
-  }
 }
 
 #main[data-eq-state="768"] {

@@ -6,7 +6,8 @@
     }
 
     .not-front &,
-    .subsite-front #content & {
+    .subsite-front #content &,
+    #sidebar-second & {
       @include thumb;
     }
   }
@@ -25,6 +26,36 @@
   > h2 {
     #content-bottom & {
       display: none;
+    }
+  }
+
+  &[data-items="2"],
+  &[data-items="4"] {
+    article {
+      @include medium {
+        @include two-column;
+      }
+
+
+      #sidebar-second & {
+        @include large {
+          @include one-column;
+        }
+      }
+    }
+  }
+
+  &[data-items="3"] {
+    @include three-column-grid($gap: 3%);
+
+    article {
+      .not-front &,
+      .subsite-front #content & {
+        @include card;
+
+        background: transparent;
+        padding: 0;
+      }
     }
   }
 }

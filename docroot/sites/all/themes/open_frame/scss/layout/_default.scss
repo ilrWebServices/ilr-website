@@ -3,7 +3,9 @@ body.node-type-certificate-programs,
 body.node-type-news-item,
 body.node-type-post,
 body.node-type-workspan {
-  #main {
-    @include layout--standard-grid;
+  &:not(.subsite-front) {
+    #main {
+      @include layout--standard-grid;
+    }
   }
 }
