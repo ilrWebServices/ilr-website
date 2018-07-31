@@ -18,10 +18,16 @@ function _ilr_redirects_load_redirects($filename) {
   return $redirects;
 }
 
-function _ilr_redirects_create_redirects($filename='ilr-website-redirects') {
+function _ilr_redirects_create_redirects($filename='ilr-website-redirects', $update_alias = FALSE) {
   if (module_exists('redirect')) {
     $redirects = _ilr_redirects_load_redirects($filename);
     foreach ($redirects as $redirect) {
+      if ($update_aliases) {
+      $update_db = db_update('url_alias')
+        ->fields(array('alias' => $redirect['destination']))
+        ->condition('alias', $redirect['source'], '=')
+        ->execute();
+      }
       $new_redirect = new stdClass();
       redirect_object_prepare($new_redirect);
       $new_redirect->source = $redirect['source'];
