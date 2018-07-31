@@ -464,7 +464,7 @@
   a {
     @include adjust-font-size-to(1.2em);
     @include set-heading(true);
-    line-height: 0.5;
+    line-height: 0.9;
     display: block;
     height: 100%;
     color: $black;

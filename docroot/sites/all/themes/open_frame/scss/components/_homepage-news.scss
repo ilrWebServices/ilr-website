@@ -61,6 +61,7 @@ body.front .homepage-news {
       margin-bottom: 0;
 
       .field-type-image {
+        margin-left: -50vw !important;
         @include medium {
           @include full-width;
         }
@@ -114,7 +115,7 @@ body.front .homepage-news {
         h2 {
           background: $dark-gray-orange;
           color: white;
-          @include set-heading(true);
+          @include set-heading(true, white);
 
           @include adjust-font-size-to(1.5rem, 1);
 
