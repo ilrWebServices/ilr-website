@@ -133,8 +133,8 @@ function ilr_menu_block_blocks() {
       'admin_title' => 'ILR Sidebar Menu',
       'level'       => 1, // debugging http://www.ilr-website.test/academics/internships/credit-internships/student-profiles/david-ticzon vs http://www.ilr-website.test/admissions/undergraduate-admissions/student-experience/student-spotlights/amber-aspinall
       'follow'      => $follow,
-      'depth'       => 1,
-      'expanded'    => FALSE,
+      'depth'       => 2,
+      'expanded'    => TRUE,
       'sort'        => FALSE,
       'parent_mlid' => 0,
       'depth_relative' => 1,

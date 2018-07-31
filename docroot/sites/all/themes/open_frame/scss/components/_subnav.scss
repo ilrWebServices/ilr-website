@@ -15,23 +15,15 @@
 }
 
 #jPanelMenu-menu {
-  margin-top: $header-height-small;
-
-  .admin-menu & {
-    margin-top: $header-height-small + 29px;
-  }
+  @include padding-leader(1);
+  background: $cornell-red;
 }
 
 .sidebar #block-menu-block-ilr-subnav {
-  // @extend .hidden;
   position: relative;
-  // [data-eq-state="regular-nav"] & {
-  //   @extend .visible;
-  // }
 }
 
-// .sidebar ul.menu,
-.sidebar ul.menu {
+.menu-block-ilr-subnav ul.menu {
   padding: 0;
 
   li {
@@ -49,5 +41,38 @@
 
   .active-trail a {
     color: $link;
+  }
+
+  ul {
+    display: none;
+  }
+
+  #jPanelMenu-menu & {
+    @include padding-leader(3);
+
+    li {
+      background: $cornell-red;
+      padding-right: 1rem;
+    }
+
+    a {
+      color: white;
+      display: block;
+      padding-left: 2rem;
+      line-height: 1.1;
+    }
+
+    ul {
+      padding-top: 0.5rem;
+      display: block;
+
+      li {
+        padding-right: 0;
+
+        a {
+          padding-left: 3rem;
+        }
+      }
+    }
   }
 }
