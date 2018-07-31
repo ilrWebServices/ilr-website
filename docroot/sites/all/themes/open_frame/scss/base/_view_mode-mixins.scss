@@ -140,6 +140,8 @@
 }
 
 @mixin card {
+  @include trailer(1);
+
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -152,7 +154,11 @@
   }
 
   .field-type-image {
-    @include square-to-4x6;
+    @at-root {
+      body.not-front .tagged-content #{&} {
+        @include square-to-4x6;
+      }
+    }
 
     order: 1;
     margin: 0;
