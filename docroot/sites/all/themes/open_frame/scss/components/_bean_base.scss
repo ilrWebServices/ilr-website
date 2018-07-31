@@ -36,6 +36,13 @@
         @include two-column;
       }
 
+      .region-highlighted & {
+        @include card--overlay;
+        @include trailer(2);
+        @include medium {
+          @include four-column;
+        }
+      }
 
       #sidebar-second & {
         @include large {

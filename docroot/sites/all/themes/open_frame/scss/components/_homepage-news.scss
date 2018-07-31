@@ -4,8 +4,8 @@ body.front .homepage-news {
   .news__heading--homepage {
     @include set-heading(true);
     @include adjust-font-size-to(2rem, 1.2);
+    @include increase-readability;
 
-    text-shadow: 0 0 20px rgba(0, 0, 0, .2);
     color: white;
     position: absolute;
     top: 3rem;

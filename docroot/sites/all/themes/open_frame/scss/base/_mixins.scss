@@ -319,3 +319,7 @@
     @include hidden;
   }
 }
+
+@mixin increase-readability($spread: 20px, $opacity: 0.2) {
+  text-shadow: 0 0 $spread rgba(0, 0, 0, $opacity);
+}

@@ -237,6 +237,54 @@
   }
 }
 
+@mixin card--overlay {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 0.5rem 1fr 0.5rem;
+  grid-template-rows: 75% 25%;
+  padding: 0;
+
+  @include large {
+    grid-template-columns: 1rem 1fr 1rem;
+  }
+
+  .field-type-image {
+    @include image-ratio-hack(85%);
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+
+    a {
+      top: -10%;
+    }
+  }
+
+  h2 {
+    @include set-heading(true, white);
+    @include padding-trailer(0.5);
+    @include increase-readability(10px, 0.5);
+
+    font-size: 2rem;
+
+    @include medium-only {
+      font-size: 1rem;
+    }
+
+    @include large-only {
+      font-size: 1.3rem;
+    }
+
+    grid-column: 2;
+    grid-row: 2;
+    z-index: 2;
+  }
+
+  .promo__content,
+  .news__content,
+  h3 {
+    @include hidden;
+  }
+}
+
 @mixin card--dark() {
   @include image-heading-text;
   @include clearfix;

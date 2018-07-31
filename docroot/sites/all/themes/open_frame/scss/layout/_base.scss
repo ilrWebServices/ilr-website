@@ -100,13 +100,14 @@ $half-space: $space / 2;
 }
 
 @mixin four-column {
-  // @include large {
-    @include layout(4) {
-      @include add-gutter(.1);
-      @include add-gutter-style('split');
-      @include float-span(1);
+  @include layout(4) {
+    @include add-gutter(.1);
+    @include float-span(1);
+
+    &:nth-of-type(4n) {
+      @include float-span(1, 'last');
     }
-  // }
+  }
 }
 
 %one-column {
