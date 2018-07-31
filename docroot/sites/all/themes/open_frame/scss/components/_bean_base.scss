@@ -29,16 +29,16 @@
   }
 }
 
-article {
-  @include addHighlightColors('.category', 'color', 1);
-  h3.category {
-    text-transform: uppercase;
-    font-family: $font;
-    font-weight: bold;
-    @include adjust-font-size-to(14px);
-    line-height: 1;
-  }
-}
+// article {
+//   @include addHighlightColors('.category', 'color', 1);
+//   h3.category {
+//     text-transform: uppercase;
+//     font-family: $font;
+//     font-weight: bold;
+//     @include adjust-font-size-to(14px);
+//     line-height: 1;
+//   }
+// }
 
 // @mixin bean-base() {
 //   @include clearfix;

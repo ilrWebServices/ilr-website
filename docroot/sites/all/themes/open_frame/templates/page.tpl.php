@@ -1,5 +1,5 @@
-<div class="body__frame"></div>
 <header role="banner" <?php print render($page['nav_trigger_pts']); ?>>
+  <div class="body__frame"></div>
   <div id="search-form">
     <form action="/search" method="get" id="cu-search-form" accept-charset="UTF-8">
       <input id="search-form-query" type="text" name="s" placeholder="Search" value="" size="20" maxlength="128" class="form-text" />
@@ -7,8 +7,9 @@
   </div>
   <div class="container">
     <div class="logo-wrapper">
+      <?php ?>
       <a class="ilr" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-         <img src="/sites/all/themes/open_frame/images/ilr-ideo.png" alt="Cornell University | ILR School" title="Cornell University | ILR School">
+         <img src="<?php echo $logo?>" alt="Cornell University | ILR School" title="Cornell University | ILR School">
       </a>
     </div>
     <div class='buttons'>

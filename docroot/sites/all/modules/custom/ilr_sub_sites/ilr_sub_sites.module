@@ -38,26 +38,16 @@ function ilr_sub_sites_theme() {
 */
 function ilr_sub_sites_block_view($delta = '') {
   $block = array();
-  $wi_sites = array(
-    'men-and-women-as-allies' => 'Men and Women as Allies',
-    'mobilizing-against-inequality' => 'Mobilizing Against Inequality',
-    'union-leadership-institute' => 'Union Leadership Institute',
-    'national-labor-leadership-initiative' => 'The National Labor Leadership Initiative',
-    'uale-2013-ne' => 'UALE 2018 NE');
   $subsite_name = _ilr_sub_sites_get_current_subsite_name();
   $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
-  $block['content'] = '<div class="subsite-header">';
+  $seal = file_create_url(drupal_get_path('theme', 'open_frame') . "/images/logos/cornell-seal.svg");
+  $block['content'] = '<a class="cornell-seal__link"><img src="'.$seal.'" alt="Link to Cornell University" /></a>';
+  $block['content'] .= '<div class="subsite-header">';
   $menu_name = _ilr_sub_sites_get_menu_name();
-  if ($logo = _ilr_sub_sites_get_site_logo($menu_name, $subsite_name)) {
-    $block['content'] .= "<h2 class='$subsite_name image'><a href='$href'>$logo</a></h2>";
-  }
-  else {
-    if (array_search($subsite_name, $wi_sites)) {
-      $block['content'] .= "<p class='WI-cohort-brand'><a href='/worker-institute'>The Worker Institute</a></p>" ;
-      $block['content'] .= "<h2><a href='$href'>$subsite_name</a></h2>";
-    }
-    else {
-      $block['content'] .= "<h2><a href='$href'>$subsite_name</a></h2>";
+  $block['content'] .= "<h2 class='subsite__heading subsite__heading--$menu_name'>$subsite_name</h2>";
+  if ($subtitle = _ilr_sub_sites_get_menu_description($menu_name)) {
+    if ($subtitle != "SubSite menu") {
+      $block['content'] .= "<h3 class='subsite__subheading subsite__subheading--$menu_name'>$subtitle</h3>";
     }
   }
 
@@ -273,12 +263,16 @@ function ilr_sub_sites_preprocess_node(&$variables) {
  * Handles custom page template processing
  */
 function ilr_sub_sites_preprocess_page(&$variables) {
-  if (_ilr_sub_sites_get_current_subsite_name() == "ILR Review") {
-    $logo = file_create_url(drupal_get_path('theme', 'ilr_theme') . "/images/logo-on-white.svg");
+  $logo = file_create_url(drupal_get_path('theme', 'open_frame') . "/images/logos/ilr-cornell-lockup.svg");
+
+  if (_ilr_sub_sites_current_page_is_sub_site()) {
+    $subsite_name = _ilr_sub_sites_get_current_subsite_name();
+    $menu_name = _ilr_sub_sites_get_menu_name();
+    if ($logo_filename = _ilr_sub_sites_get_site_logo($menu_name, $subsite_name)) {
+      $logo = file_create_url(drupal_get_path('theme', 'open_frame') . "/images/logos/" . $logo_filename);
+    }
   }
-  else {
-    $logo = file_create_url(drupal_get_path('theme', 'ilr_theme') . "/images/logo.svg");
-  }
+
   $variables['logo'] = $logo;
 }
 
@@ -434,6 +428,21 @@ function _ilr_sub_sites_get_menu_name($node=NULL) {
 }
 
 /**
+ * Gets the menu assignment of the current page.
+ * See ilr_menu_block_blocks() in the profile.
+ */
+function _ilr_sub_sites_get_menu_description($menu_name) {
+
+  $menu_description = db_select('menu_custom', 'mc')
+    ->condition('mc.menu_name', $menu_name)
+    ->fields('mc', array('description'))
+    ->execute()
+    ->fetchField();
+  return strlen($menu_description) ? $menu_description : NULL;
+}
+
+
+/**
  * Check if a path is the top link for a subsite menu.
  *
  * @todo Are there any other menus to ignore beside main-menu and user-menu
@@ -487,16 +496,23 @@ function _ilr_sub_sites_get_menu_name_from_uri($uri) {
 }
 
 function _ilr_sub_sites_get_site_logo($menu_name, $subsite_name) {
-  $logos = array(
-    'worker-institute' => 'logo-worker-institute',
+  $filenames = array(
+    'cheri' => 'ilr-cheri.svg',
+    'ics' => 'ilr-ics.svg',
+    'iws' => 'ilr-iws.svg',
+    'ldi' => 'ilr-ldi.svg',
+    'scheinman-institute' => 'ilr-scheinman-institute.svg',
+    'smithers-institute' => 'ilr-smithers.svg',
+    'uli' => 'ilr-uli.svg',
+    'worker-institute' => 'ilr-worker-institute.svg',
     'ilr-at-70' => 'logo-ilr-at-70',
     'sustainable-labor-practices' => 'logo-new-conversations',
   );
-  if (array_key_exists($menu_name, $logos)) {
-    $image = '<img src="/' . drupal_get_path('theme', 'ilr_theme') . '/images/'.$logos[$menu_name].'.svg"';
-    $alt = "Cornell University | ILR School | $subsite_name";
-    $image .= " alt='$alt' title='$alt'>";
-    return $image;
+  if (array_key_exists($menu_name, $filenames)) {
+    return $filenames[$menu_name];
+  }
+  elseif ($cohort = _ilr_sub_sites_get_cohort($menu_name)) {
+    return $filenames[$cohort];
   }
   return NULL;
 }
@@ -547,4 +563,23 @@ function _ilr_sub_sites_is_wrapped_node() {
     return TRUE;
   }
   return FALSE;
+}
+
+function _ilr_sub_sites_get_cohort($name) {
+  $cohorts = [
+    'worker-institute' => [
+      'men-and-women-as-allies' => 'Men and Women as Allies',
+      'mobilizing-against-inequality' => 'Mobilizing Against Inequality',
+      'union-leadership-institute' => 'Union Leadership Institute',
+      'national-labor-leadership-initiative' => 'The National Labor Leadership Initiative',
+      'uale-2013-ne' => 'UALE 2018 NE'
+    ]
+  ];
+  foreach ($cohorts as $key => $subsites) {
+    if (array_key_exists($name, $subsites)) {
+      dpm('exsits!');
+      return $key;
+    }
+  }
+  return NULL;
 }

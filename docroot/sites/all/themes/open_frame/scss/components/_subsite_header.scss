@@ -1,149 +1,163 @@
 .subsite {
   header {
     position: relative;
-    top: 0;
+
+    .logo-wrapper {
+      @include trailer(1);
+
+      @include medium {
+        @include trailer(2);
+      }
+    }
+
+    #logo {
+      @include trailer(1);
+
+      img {
+        max-height: 60px;
+      }
+    }
+
+    .cornell-seal__link {
+      display: none;
+
+      @include medium {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        max-width: 70px;
+      }
+    }
+
+    &[data-eq-state="regular-nav"] {
+      .cornell-seal__link {
+        top: -130px;
+        right: $frame-width;
+        max-width: 85px;
+
+        @include breakpoint(1450px) {
+          max-width: 100px;
+          right: 0;
+        }
+      }
+    }
   }
+
+
   #header-region {
-    @include clearfix;
-    background: white; // See site-specific bg colors below
-    position: relative;
-    padding-bottom: .5em;
+    @include container;
     @include transition-duration(.3s);
 
-    &.sticky {
-      padding: .5em 0 10px 0;
-      position: fixed;
-      top: 0;
-      overflow: visible;
-      @include box-shadow(0 10px 10px -10px rgba(black, .5));
-      border-bottom: none;
-
-      h2, h3, p {
-        display: none;
-      }
-
-      .menu-block-ilr-primary-menu {
-        width: 90%;
-        float: left;
-        ul.menu {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          margin-top: 5px;
-          margin-left: 15px;
-
-          li {
-            display: flex;
-            margin: 0;
-            padding: 0;
-          }
-        }
-      }
-    }
+    position: relative;
+    overflow: visible;
 
     .region-header {
-      @extend .container;
-      padding: 0 1em;
-    }
-  }
-  .subsite-header {
-    float: left;
-    width: 35%;
-    h2 {
-      margin-bottom: 0;
-      font-weight: 300;
-      @include adjust-font-size-to(40px);
-      @include rhythm(2,0,2,0,40px);
-      @include adjust-leading-to(.75);
-    }
-    a, a:visited, a:active {
-      color: $subsite-heading;
-      font-family: $font;
-    }
-  }
-  &.men-and-women-as-allies,
-  &.mobilizing-against-inequality,
-  &.uli,
-  &.uale-2013-ne,
-  &.national-labor-leadership-init {
-    .subsite-header {
-      p {
-        background: url(../images/logo-worker-institute-no-slogan.svg) no-repeat 0 0;
-        margin-top: 1em;
-        margin-bottom: .6em;
-        a {
-          color: transparent !important;
-          border-bottom: none;
-          display: block;
-          height: 18px;
-          width: 180px;
-        }
+      display: flex;
+      flex-direction: column;
+
+      @include large {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: end;
       }
 
-      h2 {
-        margin-top: .5em;
-        padding-bottom: 0;
-      }
-    }
-    header[data-eq-state="mobile-nav"] {
-      #header-region {
-        .subsite-header {
-          p {
-            margin-top: .5em;
-            margin-bottom: .4em;
-          }
-
-          h2 {
-            margin-top: 0;
-          }
-        }
-      }
-    }
-  }
-  &.wrapped {
-    .subsite-header {
-      width: 75%;
-      h2 {
-        margin-bottom: 17px;
-        padding-bottom: 0;
-      }
-    }
-  }
-  header[data-eq-state="mobile-nav"] {
-    position: fixed;
-    #header-region {
       .subsite-header {
-        width: 75%;
-        h2 {
-          @include adjust-font-size-to(22px);
-          @include rhythm(.5,0,0,0,22px);
-          @include adjust-leading-to(.75);
+        width: 35%;
+        max-width: 400px;
 
-          &.image {
-            overflow: hidden;
-            height: 20px;
+        .subsite__heading {
+          @include set-heading(true, $cornell-red);
+          @include adjust-font-size-to(2em, 1.1);
+
+          margin-bottom: 1rem;
+
+          @include medium {
+            @include adjust-font-size-to(3.5em, 2);
+
+            margin-bottom: 1.5rem;
           }
-          &.Conversations {
-            height: auto;
-          }
-          &.ILR {
-            height: 32px;
-            img {
-              max-width: 80px;
-            }
-          }
-          img {
-            max-width: 200px;
+
+          span {
+            color: $black;
           }
         }
-      }
 
-      &.sticky h2 {
-        display: block;
-        margin: 0;
+        .subsite__subheading {
+          @include set-heading(true);
+
+          font-size: 16px;
+
+          @include hide($medium-only);
+
+          @include large {
+            font-size: 20px;
+          }
+
+          letter-spacing: 0;
+          margin: 0;
+          line-height: 1;
+        }
       }
     }
   }
+  // header[data-eq-state="mobile-nav"] {
+  //   #header-region {
+  //     .subsite-header {
+  //       p {
+  //         margin-top: .5em;
+  //         margin-bottom: .4em;
+  //       }
+
+  //       h2 {
+  //         margin-top: 0;
+  //       }
+  //     }
+  //   }
+  // }
+  // &.wrapped {
+  //   .subsite-header {
+  //     width: 75%;
+  //     h2 {
+  //       margin-bottom: 17px;
+  //       padding-bottom: 0;
+  //     }
+  //   }
+  // }
+  // header[data-eq-state="mobile-nav"] {
+  //   #header-region {
+  //     .subsite-header {
+  //       width: 75%;
+  //       h2 {
+  //         @include adjust-font-size-to(22px);
+  //         @include rhythm(.5,0,0,0,22px);
+  //         @include adjust-leading-to(.75);
+
+  //         &.image {
+  //           overflow: hidden;
+  //           height: 20px;
+  //         }
+  //         &.Conversations {
+  //           height: auto;
+  //         }
+  //         &.ILR {
+  //           height: 32px;
+  //           img {
+  //             max-width: 80px;
+  //           }
+  //         }
+  //         img {
+  //           max-width: 200px;
+  //         }
+  //       }
+  //     }
+
+  //     &.sticky h2 {
+  //       display: block;
+  //       margin: 0;
+  //     }
+  //   }
+  // }
 
   &.sustainable-labor-practices #header-region {
     background-color: $dark-blue;
@@ -158,79 +172,42 @@
       }
     }
   }
-
-  &.worker-institute #header-region {
-    background-color: $gray-wi;
-    .subsite-header {
-      width: 390px;
-    }
-    a, a:visited, a:active {
-      color: $gray-light;
-      &:hover {
-        color: lighten($gray-light, 10%);
-        border-bottom-color: lighten($gray-wi,8%);
-      }
-    }
-  }
-
-  &.men-and-women-as-allies #header-region,
-  &.mobilizing-against-inequality #header-region,
-  &.uli #header-region,
-  &.uale-2013-ne #header-region,
-  &.national-labor-leadership-init #header-region {
-    background-color: $gray-wi;
-    a, a:visited, a:active {
-      color: $gray-light;
-      &:hover {
-        color: lighten($gray-light, 10%);
-        border-bottom-color: lighten($gray-wi,8%);
-      }
-    }
-  }
 }
 
 // Called from _mega_menu.scss
 // .subsite .menu-block-ilr-primary-menu:
 %sub-site-menu {
-  float: right;
   ul.menu {
-    margin: .8em 0 0 0;
-    padding: 0;
-    //@include adjust-font-size-to(14px);
-    @include rhythm(2,0,2,0,14px);
+    @include inline-block-list;
 
     .wrapped & {
       margin: 0;
       padding: .5em 0;
     }
-
-    .sticky &  {
-      margin: 0;
-      padding: 0;
-    }
   }
+
   li {
     background: none;
-    float: left;
+    padding: 0;
+    margin-right: 1.5rem;
   }
+
   a {
-    color: $gray-dark;
+    font-size: 16px;
+    color: $black;
     font-weight: 400;
     border-bottom: none;
-    &:hover {
-      border-bottom: 1px solid $gray-light;
+
+    @include large {
+      font-size: 17px;
     }
-  }
-}
 
-#main {
-  body.subsite & {
-    @extend %page-with-sticky-subsite-header;
-  }
-}
+    @include breakpoint(1450px) {
+      font-size: 19px;
+    }
 
-%page-with-sticky-subsite-header {
-  [data-eq-state="mobile-nav"] & {
-    margin-top: 105px;
+    &:hover {
+      border-bottom: 3px solid $cornell-red;
+    }
   }
 }

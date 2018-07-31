@@ -6,30 +6,9 @@
  * Adds sitewide javascript files
  */
 function open_frame_preprocess_html(&$variables) {
-  // Add preload class to page
-  $variables['classes_array'][] = 'preloading';
   if (isset($_GET['layout']) && $_GET['layout'] == '0' ) {
     $variables['classes_array'][] = 'no-layout';
   }
-
-  drupal_add_css(
-    drupal_get_path('theme', 'open_frame') . '/css/IE8.css',
-    array(
-      'browsers' => array(
-        'IE' => 'IE 8',
-        '!IE' => FALSE
-      )
-    )
-  );
-  drupal_add_css(
-    drupal_get_path('theme', 'open_frame') . '/css/IE9.css',
-    array(
-      'browsers' => array(
-        'IE' => 'lte IE 9',
-        '!IE' => FALSE
-      )
-    )
-  );
   // Header
   drupal_add_js('//use.typekit.net/cal2bhk.js', array('type' => 'external'));
   drupal_add_js($variables['directory'] . '/js/vendor/modernizr-2.6.2.min.js');

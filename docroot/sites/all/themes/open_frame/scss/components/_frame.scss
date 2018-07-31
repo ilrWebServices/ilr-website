@@ -1,3 +1,5 @@
+$frame-width: 20px;
+
 @mixin framed--button($width: 5px) {
   border-left: $width solid $cornell-red;
   border-bottom: $width solid $cornell-red;
@@ -155,28 +157,25 @@
   }
 }
 
-// .body__frame { // Currently unused
-//   position: absolute;
-//   z-index: 20;
-//   width: 100%;
-//   height: 20px;
-//   background: $black;
-// }
+.body__frame { // Currently unused
+  position: absolute;
+  width: 100%;
+  border-top: $frame-width solid $black;
+  top: 0;
+  left: 0;
 
-html,
-body {
-  &::before {
+  &::before,
+  &::after {
     content: " ";
     position: absolute;
     background: $black;
     top: 0;
-    width: 20px;
-    z-index: 10;
+    width: $frame-width;
+    z-index: 1;
   }
-}
-html {
+
   &::before {
-    height: 100px;
+    height: 75px;
 
     @include medium {
       height: 200px;
@@ -190,12 +189,13 @@ html {
       height: 400px;
     }
   }
-}
 
-body {
-  border-top: 20px solid $black;
-  &::before {
-    height: 100px;
+  &::after {
+    height: 30px;
     right: 0;
+
+    @include medium {
+      height: 100px;
+    }
   }
 }

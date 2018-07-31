@@ -301,7 +301,7 @@ $half-space: $space / 2;
 
 #page {
   background: $bg-body;
-  padding: 1rem;
+  padding: 0 2rem;
   overflow: hidden;
 
   @include large {

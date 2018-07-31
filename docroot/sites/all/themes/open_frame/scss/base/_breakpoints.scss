@@ -19,6 +19,8 @@ $medium: 46em;
 $large: 65em;
 $xl: 85em;
 $max-width: $xl;
+$small-only: $small $medium;
+$medium-only: $medium $large;
 
 /// Mixin - xs Breakpoint
 /// Allows easier @include xs {} syntax

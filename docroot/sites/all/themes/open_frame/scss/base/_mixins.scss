@@ -296,6 +296,8 @@
 }
 
 @mixin container($max-width: $page-max-width) {
+  @include clearfix;
+
   max-width: $max-width;
   margin: 0 auto;
 }
@@ -307,4 +309,10 @@
 @mixin hidden {
   display: none !important;
   visibility: hidden;
+}
+
+@mixin hide($breakpoint) {
+  @include breakpoint($breakpoint) {
+    @include hidden;
+  }
 }

@@ -40,6 +40,11 @@
         if($('#search-form-query').val() != '') {
           $('#cu-search-form').submit();
         }
+        $(document).keyup(function(e) {
+          if (e.keyCode == 27 && $('header').hasClass('search-engaged')) { // escape key maps to keycode `27`
+            $('header').removeClass('search-engaged');
+          }
+        });
       });
     }
   };
@@ -138,21 +143,6 @@
       if ($('body').hasClass('page-eform-microsite-interest-confirm')) {
         parent.jQuery.fancybox.close();
       }
-    }
-  };
-  Drupal.behaviors.ilr_css_animations = {
-    attach: function (context, settings) {
-      $(window).load(function() {
-        $("body").removeClass("preloading");
-
-        // Check if browser can handle SVG
-        // Checking for "no-flexbox" since IE9 doesn't handle svg scaling
-        if($('html').hasClass('no-flexbox')){
-          src = $('#logo img').attr('src');
-          src = src.slice(0,-3) + 'png';
-          $('#logo img').attr('src', src);
-        }
-      });
     }
   };
   Drupal.behaviors.frame_position = {

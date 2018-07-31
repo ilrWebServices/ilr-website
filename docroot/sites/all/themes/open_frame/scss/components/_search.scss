@@ -1,13 +1,40 @@
 .search-button {
-  @extend %header-btn;
+  position: absolute;
+  top: 2rem;
+  left: 15%;
+  z-index: 10;
+
+  [data-eq-state="regular-nav"] & {
+    left: auto;
+    right: $frame-width * .75;
+    top: $frame-width * .75;
+  }
+
   a {
     @include transition-duration(.3s);
     @extend %icon-search-thin;
-    margin-top: -2px;
-    [data-eq-state="regular-nav"]:not(.sticky) & {
-      body:not(.subsite) & {
-        @include adjust-font-size-to(20px);
-      }
+
+    visibility: hidden;
+    display: block;
+    padding: 10px 13px 5px 13px;
+    color: $black;
+
+    [data-menu-position="open"] & {
+      color: white;
+      visibility: visible;
+    }
+
+    .subsite & {
+      color: white;
+      background: $black;
+    }
+
+    [data-eq-state="regular-nav"] & {
+      visibility: visible;
+    }
+
+    &:hover, &:visited, &:active, &:focus {
+      text-decoration: none;
     }
   }
 }
@@ -19,6 +46,9 @@
   height: 0;
   overflow: hidden;
   background: $black;
+  z-index: 20;
+  position: absolute;
+  top: 0;
 
   .search-engaged & {
     height: auto;
