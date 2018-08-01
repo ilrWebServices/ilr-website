@@ -118,6 +118,12 @@
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+
+    @at-root {
+      body[data-menu-position="open"] #{&} {
+        display: none;
+      }
+    }
   }
 }
 
@@ -142,6 +148,12 @@
     right: 100%;
     margin-left: -100vw - $offset-left;
     margin-right: -100vw - $offset-left;
+
+    @at-root {
+      body[data-menu-position="open"] #{&} {
+        display: none;
+      }
+    }
   }
 }
 
