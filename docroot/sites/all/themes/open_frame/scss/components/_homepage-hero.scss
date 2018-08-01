@@ -157,7 +157,8 @@
     .news__date,
     .news__title,
     .news__more-link,
-    .links.inline {
+    .links.inline,
+    .field-name-field-teaser {
       @include hidden;
     }
   }

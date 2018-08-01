@@ -2,8 +2,4 @@ body.node-type-channel-page {
   #main {
     @include layout--full-width-grid;
   }
-
-  .block-bean article {
-    @include three-column;
-  }
 }

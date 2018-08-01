@@ -45,29 +45,8 @@ $frame-width: 20px;
   @include framed--button;
 }
 
-@mixin frame--grid {
-  display: grid;
-  grid-template-columns: repeat(20, 5%);
-  grid-template-rows: repeat(20, 5%);
-
-  .frame {
-    background: white;
-    grid-column-start: 3;
-    grid-column-end: 18;
-    grid-row-start: 5;
-    grid-row-end: span 2;
-    height: 50px;
-  }
-
-  .media-element {
-    // grid-column-start: 1;
-    // grid-column-end: span 20;
-    // grid-row-start: 1;
-  }
-}
-
-// NOTE - see mixins
-@mixin frame($width: 50px, $color: white, $top: false, $right: false, $bottom: true, $left: true) {
+// @todo: fix
+@mixin frame($width: 50px, $color: white, $top: false, $right: false, $bottom: false, $left: false) {
   position: relative;
   display: block;
   z-index: 10;
@@ -78,24 +57,38 @@ $frame-width: 20px;
     position: absolute;
     background: $color;
   }
-
-  &--inset {
+  @if ($top) {
     &::before {
-      top: 10%;
-      left: 10%;
-      width: 80%;
+      // width: nth($top, 1);
+      width: $top;
       height: $width;
-    }
+      top: $double-space;
 
-    &::after {
-      top: 10%;
-      right: 10%;
-      width: $width;
-      height: 85%;
+      @if ($right) {
+        right: $double-space;
+      }
     }
   }
+  @if ($right) {
+    &::after {
+      width: $width;
+      height: $right;
+      right: $double-space;
 
-  &--top {
+      @if ($right > 100%) {
+        top: calc(100% - #{$right});
+      }
+
+      @if ($top) {
+
+      }
+    }
+  }
+  @if ($bottom) {
+    // border-bottom: $width solid $color;
+  }
+  @if ($left) {
+    // border-left: $width solid $color;
   }
 }
 
@@ -160,9 +153,13 @@ $frame-width: 20px;
 .body__frame { // Currently unused
   position: absolute;
   width: 100%;
-  border-top: $frame-width solid $black;
+  border-top: $frame-width / 2 solid $black;
   top: 0;
   left: 0;
+
+  @include large {
+    border-top: $frame-width solid $black;
+  }
 
   &::before,
   &::after {
@@ -170,8 +167,12 @@ $frame-width: 20px;
     position: absolute;
     background: $black;
     top: 0;
-    width: $frame-width;
+    width: $frame-width / 2;
     z-index: 1;
+
+    @include large {
+      width: $frame-width;
+    }
   }
 
   &::before {

@@ -134,8 +134,13 @@
   .field-name-field-campaign-title,
   .field-name-field-teaser,
   .student-name,
-  .news__content {
+  .news__content,
+  .promo__content {
     @include hidden;
+  }
+
+  .thumbnail.custom {
+    @include custom-thumbnail;
   }
 }
 
@@ -149,7 +154,8 @@
   float: none !important; // Weird grid issue
 
   > h2, // Duplicates - @see _tagged_content_add_markup_to_group()
-  > h3 {
+  > h3,
+  .field-name-field-teaser {
     @include hidden;
   }
 
@@ -261,7 +267,7 @@
   h2 {
     @include set-heading(true, white);
     @include padding-trailer(0.5);
-    @include increase-readability(10px, 0.5);
+    @include increase-readability(10px);
 
     font-size: 2rem;
 
@@ -453,22 +459,43 @@
 }
 
 @mixin custom-thumbnail() {
-  &.event a {
-    text-align: center;
-    background: $event-color;
-    color: white;
-    span {
+  &.event {
+    @include circularBg(70px);
+
+    @include medium-only {
+      @include circularBg(90px);
+    }
+
+    @include xl {
+      @include circularBg(90px);
+    }
+
+    a {
       display: block;
-      @include adjust-font-size-to(25px, 1);
-      font-style: normal;
-      text-transform: uppercase;
-      font-family: $font;
-      padding-top: 25px;
-      #sidebar-second & {
-        padding-top: 25px;
+      text-align: center;
+
+      span {
+        @include set-heading(true);
+        @include center($absolute: true);
+
+        display: block;
+        line-height: 1;
+
+        @include medium-only {
+          a span {
+            @include adjust-font-size-to(25px, 1);
+          }
+        }
+
+        @include xl {
+          a span {
+            @include adjust-font-size-to(28px, 1);
+          }
+        }
       }
     }
   }
+
 }
 
 @mixin image-first() {
@@ -552,6 +579,15 @@
   a {
     img {
       top: -16.5%;
+    }
+  }
+}
+
+@mixin square-to-1x2 {
+  @include image-ratio-hack(50%);
+  a {
+    img {
+      top: -25%;
     }
   }
 }

@@ -49,6 +49,11 @@
 
   .entity-paragraphs-item {
     @include pie-clearfix;
+    @include rhythm(1);
+
+    @include large {
+      @include rhythm(2);
+    }
   }
 }
 

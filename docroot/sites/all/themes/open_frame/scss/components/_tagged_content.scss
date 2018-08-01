@@ -1,8 +1,6 @@
 .tagged-content:not([data-items='1']),
 .event-block {
   > h2 {
-    @include leader(1);
-    @include trailer(1);
     font-family: $font;
     text-transform: uppercase;
     color: #4a4a4a;
@@ -10,6 +8,16 @@
   }
 
   @include bean-base;
+}
+
+.bean-event-block {
+  @include leader(2);
+  grid-column: 1 / -1;
+
+  .more-link {
+    @include center;
+    @include framed--button;
+  }
 }
 
 .tagged-content[data-items='1'] {

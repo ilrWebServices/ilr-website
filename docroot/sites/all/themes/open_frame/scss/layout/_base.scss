@@ -39,6 +39,26 @@ $half-space: $space / 2;
   }
 }
 
+@mixin two-column-grid($gap: 30px, $responsive: true) {
+  display: grid;
+  grid-gap: $gap;
+
+  @if $responsive {
+    @include large {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @else {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  > h2,
+  > .more-link {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+}
+
 @mixin three-column() {
   @include layout(3) {
     @include add-gutter(.1);
@@ -65,6 +85,12 @@ $half-space: $space / 2;
   }
   @else {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  > h2,
+  > .more-link {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
   }
 }
 
@@ -97,6 +123,12 @@ $half-space: $space / 2;
   @else {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  > h2,
+  > .more-link {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
 }
 
 @mixin four-column {
@@ -127,10 +159,10 @@ $half-space: $space / 2;
 }
 
 @mixin layout--standard-grid() {
-  display: grid;
   max-width: $page-max-width;
 
   @include medium {
+    display: grid;
     grid-template-columns: 70% 26%;
     grid-gap: 4%;
 
@@ -195,12 +227,19 @@ $half-space: $space / 2;
   #sidebar-second {
     width: 100%;
   }
+
+  #content .tagged-content {
+    @include four-column-grid;
+  }
+
+  #content .event-block {
+    @include three-column-grid;
+  }
 }
 
 @mixin layout--full-width-content-grid() {
-  display: grid;
-
   @include large {
+    display: grid;
     grid-template-columns: 17% 79%;
     grid-gap: 4%;
 
@@ -240,15 +279,18 @@ $half-space: $space / 2;
 }
 
 @mixin layout--two-cols-no-first-sidebar() {
-  display: grid;
-
   @include large {
+    display: grid;
     grid-template-columns: 65% 30%;
     grid-gap: 5%;
 
     #content {
       grid-column-start: 1;
       grid-row-start: 1;
+
+      .block-bean {
+        @include two-column-grid;
+      }
 
       .field-name-body,
       .paragraphs-items-field-para-main-page-content {
@@ -399,10 +441,6 @@ $half-space: $space / 2;
     }
   }
 
-  #content {
-    @include trailer(2);
-  }
-
   #content, #sidebar-second {
     @include pie-clearfix;
 
@@ -410,39 +448,18 @@ $half-space: $space / 2;
       @include leader(.5);
     }
   }
-
-  // &[data-eq-state="768"] {
-  //   #content, #sidebar-second {
-  //     .block:not(.block-system) > article:not(.node-certificate-programs),
-  //     .block .views-row {
-  //       @include three-column;
-  //     }
-  //   }
-  //   #sidebar-second .block-bean .field-type-entityreference {
-  //     @include two-column;
-  //     article {
-  //       @include one-column;
-  //     }
-  //   }
-  // }
-
-  &[data-eq-state="widescreen"] {
-    #content, #sidebar-second {
-      @include trailer(2);
-    }
-  }
 }
 
 #content-bottom {
   clear: both;
 
-  article {
+  .block-bean {
     @include medium {
-      @include three-column;
+      @include two-column-grid;
     }
 
     @include large {
-      @include four-column;
+      @include four-column-grid;
     }
   }
 }

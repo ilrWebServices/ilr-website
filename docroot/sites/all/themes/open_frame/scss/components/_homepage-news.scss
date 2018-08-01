@@ -43,7 +43,6 @@ body.front .homepage-news {
     }
 
     &:first-of-type { // Highlighted news item
-      $full-break: 1450px;
       width: auto;
       overflow: visible !important;
       float: none;
@@ -105,7 +104,6 @@ body.front .homepage-news {
         h2 {
           background: $dark-gray-orange;
           color: white;
-          @include set-heading(true, white);
 
           @include adjust-font-size-to(1.5rem, 1);
 
@@ -115,6 +113,10 @@ body.front .homepage-news {
 
           @include xl {
             @include adjust-font-size-to(3rem, 2);
+          }
+
+          a {
+            @include set-heading(true, white);
           }
         }
       }

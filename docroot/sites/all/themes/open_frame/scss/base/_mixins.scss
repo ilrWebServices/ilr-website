@@ -37,7 +37,7 @@
 @mixin circularImage($width:100px) {
   width: $width;
   height: $width;
-  // border-radius: $width / 4;
+  border-radius: $width / 4;
 
   a {
     display: block;
@@ -47,9 +47,23 @@
     top: 0;
   }
 
-  // img, a {
-  //   border-radius:50%;
-  // }
+  img, a {
+    border-radius:50%;
+  }
+}
+
+@mixin circularBg($width:100px, $color: rgba(255, 255, 255, 0.8)) {
+  position: relative;
+
+  &::before {
+    @include center($absolute: true);
+    content: '';
+    width: $width;
+    height: $width;
+    background: $color;
+    border-radius: $width / 4;
+    border-radius: 50%;
+  }
 }
 
 @mixin roundLink($diameter) {
@@ -120,8 +134,11 @@
     margin-right: -50vw;
 
     @at-root {
-      body[data-menu-position="open"] #{&} {
-        display: none;
+      body[data-menu-position="open"] {
+        #{&} {
+          display: none;
+        }
+
       }
     }
   }
@@ -150,8 +167,10 @@
     margin-right: -100vw - $offset-left;
 
     @at-root {
-      body[data-menu-position="open"] #{&} {
-        display: none;
+      body[data-menu-position="open"] {
+        #{&} {
+          display: none;
+        }
       }
     }
   }

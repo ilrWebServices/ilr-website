@@ -1,11 +1,15 @@
 body.subsite-front {
   #main {
-    // @include layout--standard-grid;
-    // @todo fix for worker insititue and other full-width pages
     @include layout--two-cols-no-first-sidebar;
   }
 
   #sidebar-first {
     display: none !important;
+  }
+
+  &.worker-institute {
+    #main {
+      @include layout--full-width-grid;
+    }
   }
 }

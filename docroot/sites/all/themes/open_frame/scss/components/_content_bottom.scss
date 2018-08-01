@@ -1,12 +1,5 @@
 #content-bottom {
-  @include padding-leader(2);
-  @include padding-trailer(2);
-  padding-left: 0;
-  padding-right: 0;
-
-  body:not(.front):not(.subsite-front):not(.microsite) & {
-    background: lighten($brand-dark, 15%);
-  }
+  padding: 0;
 
   .section {
     @extend .center;

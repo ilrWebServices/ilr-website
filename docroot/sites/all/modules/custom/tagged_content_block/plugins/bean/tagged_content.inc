@@ -120,8 +120,8 @@ class TaggedContentBean extends BeanPlugin {
       foreach ($result['node'] as $node) {
         $node = node_load($node->nid, $node->vid);
         $content['nodes'][$node->nid] = node_view($node, 'teaser');
-
         $node->show_featured = $bean->featured;
+        $node->siblings = $bean->records_shown - 1;
         // 'show_featured' status can be acted upon as the content gets rendered, as we do in tagged_content_block_preprocess_node().
       }
       // Add the item count to the bean for theming data-attributes

@@ -367,14 +367,15 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
-p a, p a:visited,
-li a,
-div.field:not(.field-type-image) > a {
-  border-bottom: 1px solid $gray-light;
-  &:hover {
-    border-bottom-color: $link-hover;
-  }
-}
+// Underlines? @todo - figure out what to do here
+// p a, p a:visited,
+// li a,
+// div.field:not(.field-type-image) > a {
+//   border-bottom: 1px solid $gray-light;
+//   &:hover {
+//     border-bottom-color: $link-hover;
+//   }
+// }
 
 // ==================================================
 // text level semantics

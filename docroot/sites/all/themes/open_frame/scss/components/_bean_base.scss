@@ -1,4 +1,10 @@
 @mixin bean-base() {
+  @include rhythm(2);
+
+  @include medium {
+    @include rhythm(3);
+  }
+
   article {
     .front &,
     #content-bottom & {
@@ -33,7 +39,7 @@
   &[data-items="4"] {
     article {
       @include medium {
-        @include two-column;
+        // @include two-column;
       }
 
       .region-highlighted & {
