@@ -145,27 +145,6 @@
       }
     }
   };
-  Drupal.behaviors.frame_position = {
-    attach: function (context, settings) {
-      var winHeight, docHeight, scrollTop, trackLength, pctScrolled;
-
-      function updateFramePosition() {
-        // console.log(pctScrolled);
-        $('.body__frame').css('height',pctScrolled);
-      }
-
-      function onScroll (evt) {
-        scrollTop = $(window).scrollTop();
-        trackLength = docheight - winheight;
-        pctScrolled = Math.floor(scrollTop/trackLength * 100) + '%';
-        requestAnimationFrame(updateFramePosition);
-      }
-
-      winheight = $(window).height();
-      docheight = $(document).height();
-      window.addEventListener('scroll', onScroll);
-    }
-  };
   Drupal.behaviors.microsite_nav = {
     attach: function (context, settings) {
       $('.microsite-nav a').click(function(){
@@ -178,32 +157,6 @@
       });
     }
   };
-  // Drupal.behaviors.masonry = {
-  //   attach: function (context, settings) {
-  //     $(window).load(function() {
-  //       var $contentBottom = $('#content-bottom .tagged-content');
-  //       $contentBottom.isotope({
-  //         itemSelector: 'article',
-  //         layoutMode: 'masonry',
-  //       });
-
-  //       if ($('article.node-reflection').length) {
-  //         var $wrapper = $('#content .tagged-content');
-  //         $wrapper.isotope({
-  //           itemSelector: 'article',
-  //           layoutMode: 'masonry',
-  //         });
-  //       }
-
-  //       // var $content = $('#content .tagged-content');
-  //       // $content.isotope({
-  //       //   itemSelector: 'article',
-  //       //   layoutMode: 'masonry',
-  //       // });
-  //     });
-  //   }
-  // };
-
   Drupal.behaviors.change_hover_color = {
     attach: function (context, settings) {
       $(window).load(function() {
