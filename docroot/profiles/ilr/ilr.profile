@@ -648,6 +648,14 @@ function ilr_get_node_wrapper($node_or_nid) {
 }
 
 /**
+ * Gets the url alis for a wrapper
+ */
+function ilr_get_wrapper_alias($wrapper) {
+  $nid = $wrapper->getIdentifier();
+  return '/' . drupal_get_path_alias("node/$nid");
+}
+
+/**
  * Adds the read more link for content,
  * which is removed by tagged_content but
  * is sometimes present in the design

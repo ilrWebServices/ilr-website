@@ -81,7 +81,7 @@ function tagged_content_block_preprocess_node(&$variables) {
   $tagged_content_types = array_filter(variable_get('tagged_content_block_enabled_bundles'));
   if ($variables['view_mode'] == 'teaser' && in_array($variables['type'], $tagged_content_types)) {
     // Homepage images use a different image style
-    if (drupal_is_front_page()) {
+    if (drupal_is_front_page() || (isset($variables['show_featured']) && !empty($bean->siblings))) {
       $variables['content']['field_image'][0]['#image_style'] = 'featured_image';
     }
 
@@ -285,6 +285,7 @@ function tagged_content_block_field_group_pre_render_alter(&$element, $group, & 
 
 function _tagged_content_add_markup_to_group(&$element, $wrapper, $name, $count) {
   $markup = '';
+  $url = ilr_get_wrapper_alias($wrapper);
   switch ($name) {
     case 'pub_date':
       $timestamp = $wrapper->field_published_date->value();
@@ -294,7 +295,7 @@ function _tagged_content_add_markup_to_group(&$element, $wrapper, $name, $count)
       }
       break;
     case 'title':
-      $markup = ilr_get_bem_markup($wrapper->label(), 'news', 'title',[],'<h2>','</h2>');
+      $markup = ilr_get_bem_markup($wrapper->label(), 'news', 'title',[],'<h2><a href="'.$url.'">','</a></h2>');
       break;
     case 'teaser':
       $summary = '<!-- SUMMARY MISSING FROM CONTENT -->';
@@ -303,15 +304,15 @@ function _tagged_content_add_markup_to_group(&$element, $wrapper, $name, $count)
           ? $wrapper->body->value()['summary']
           : _tagged_content_create_summary($wrapper->body->value()['value']);
       } // Check for teaser field
-      elseif (isset($item_wrapper->field_teaser)) {
-        $summary = $wrapper->field_teaser->value();
+      elseif (isset($wrapper->field_teaser)) {
+        $summary = $wrapper->field_teaser->value()['value'];
       }
       $markup = ilr_get_bem_markup($summary, 'news', 'teaser');
       break;
     case 'more_link':
       $title = $wrapper->label();
       $node_title_stripped = strip_tags($title);
-      $link = '<a href="" rel="tag" title="'.$title.'">Read more<span class="element-invisible"> about '. $title .'</span></a>';
+      $link = '<a href="'.$url.'" rel="tag" title="'.$title.'">Read more<span class="element-invisible"> about '. $title .'</span></a>';
       $markup = ilr_get_bem_markup($link, 'news', 'more-link');
       break;
     default:
