@@ -882,16 +882,10 @@ function ilr_update_7069() {
   module_enable(['ilr_mentor']);
 }
 
-function ilr_update_7070() {
-  // Enable and set the theme
-  theme_enable(array('ilr_theme'));
-  variable_set('theme_default', 'open_frame');
-}
-
 /**
  * Adds redirects to support navigations changes from August, 2018
  */
-function ilr_update_7071() {
+function ilr_update_7070() {
   $navigation_moves = array(
     ['2586', '25231', 'Academics', 0, 2, 1],
     ['22331', '25231', 'Graduate Degree Programs', 0, 2, 1],
@@ -932,6 +926,15 @@ function ilr_update_7071() {
     }
   }
   _ilr_redirects_create_redirects('navigation-changes-redirects-2018-08-14',TRUE);
+}
+
+/**
+ * Updates active theme to open frame
+ */
+function ilr_update_7071() {
+  // Enable and set the theme
+  theme_enable(array('open_frame'));
+  variable_set('theme_default', 'open_frame');
 }
 
 function _ilr_migrate_body_to_paragraph_item($node) {
