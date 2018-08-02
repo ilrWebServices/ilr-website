@@ -87,18 +87,16 @@
 
         .subsite__subheading {
           @include set-heading(true);
-
-          font-size: 16px;
-
-          @include hide($medium-only);
+          @include hidden;
 
           @include large {
-            font-size: 20px;
-          }
+            @include show;
 
-          letter-spacing: 0;
-          margin: 0;
-          line-height: 1;
+            font-size: 20px;
+            letter-spacing: 0;
+            margin: 0;
+            line-height: 1;
+          }
         }
       }
     }

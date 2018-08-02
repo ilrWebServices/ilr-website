@@ -81,7 +81,10 @@ function tagged_content_block_preprocess_node(&$variables) {
   $tagged_content_types = array_filter(variable_get('tagged_content_block_enabled_bundles'));
   if ($variables['view_mode'] == 'teaser' && in_array($variables['type'], $tagged_content_types)) {
     // Homepage images use a different image style
-    if (drupal_is_front_page() || (isset($variables['show_featured']) && !empty($bean->siblings))) {
+    if (drupal_is_front_page()) {
+      $variables['content']['field_image'][0]['#image_style'] = 'featured_image';
+    }
+    elseif (!empty($variables['show_featured']) && empty($variables->siblings)) {
       $variables['content']['field_image'][0]['#image_style'] = 'featured_image';
     }
 

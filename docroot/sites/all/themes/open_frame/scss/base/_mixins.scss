@@ -345,9 +345,25 @@
   visibility: hidden;
 }
 
+@mixin visible($mode: block) {
+  display: $mode !important;
+  visibility: visible;
+}
+
 @mixin hide($breakpoint) {
   @include breakpoint($breakpoint) {
     @include hidden;
+  }
+}
+
+@mixin show($breakpoint: false, $mode: block) {
+  @if $breakpoint {
+    @include breakpoint($breakpoint) {
+      @include visible($mode);
+    }
+  }
+  @else {
+    @include visible($mode);
   }
 }
 
