@@ -183,6 +183,8 @@
 
   .news__content,
   .promo__content {
+    @include show; // Override thumbs
+
     order: 2;
     flex-grow: 1;
     background: $warm-grey;

@@ -9,13 +9,10 @@
       .field-name-field-image {
         @include full-width;
         @include square-to-1x2;
-
-        // grid-template-rows: 1 / -1;
       }
 
       .news__content,
       .promo__content {
-        // @include frame($width: 25px, $top: 80%, $right: 200%);
         @include padding-leader(1);
         @include padding-trailer(1);
         @include trailer(1);
