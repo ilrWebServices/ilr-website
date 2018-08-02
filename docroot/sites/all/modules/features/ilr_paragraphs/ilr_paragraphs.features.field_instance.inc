@@ -25,7 +25,7 @@ function ilr_paragraphs_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -54,6 +54,71 @@ function ilr_paragraphs_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_animated_text_card-field_image'.
+  $field_instances['field_collection_item-field_animated_text_card-field_image'] = array(
+    'bundle' => 'field_animated_text_card',
+    'deleted' => 0,
+    'description' => 'Optional image to use instead of text items',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'image_link' => 'content',
+          'image_style' => 'focussed_thumbnail',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_image',
+    'label' => 'Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'private' => 0,
+          'public' => 'public',
+          'youtube' => 0,
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'ilr_media_browser--media_browser_1' => 'ilr_media_browser--media_browser_1',
+          'ilr_media_browser--media_browser_my_files' => 'ilr_media_browser--media_browser_my_files',
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 'upload',
+          'youtube' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
   // 'field_collection_item-field_animated_text_card-field_short_title'.
   $field_instances['field_collection_item-field_animated_text_card-field_short_title'] = array(
     'bundle' => 'field_animated_text_card',
@@ -70,14 +135,14 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'field_collection_item',
     'fences_wrapper' => 'ul',
     'field_name' => 'field_short_title',
     'label' => 'Animated text items',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -113,7 +178,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -156,7 +221,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
           'field_formatter_label' => '',
         ),
         'type' => 'link_separate',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -2353,6 +2418,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   t('Message text');
   t('NetID');
   t('On which side should the image or video display?');
+  t('Optional image to use instead of text items');
   t('Organization');
   t('Overlay color');
   t('Paragraph header');

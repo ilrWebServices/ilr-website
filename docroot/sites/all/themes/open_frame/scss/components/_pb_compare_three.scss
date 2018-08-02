@@ -1,5 +1,5 @@
 #main {
-  .paragraphs-item-compare-three {
+  .paragraphs-item-compare-three--text-only {
     @include padding-leader(1.5);
     @include padding-trailer(1.5);
     .content {
@@ -27,10 +27,6 @@
       }
       .field-name-field-teaser p {
         line-height: 1.75;
-      }
-      .link-item {
-        height: 0;
-        visibility: hidden;
       }
       ul {
         background: $cornell-red;
@@ -86,6 +82,63 @@
           }
         }
       }
+    }
+  }
+
+  .paragraphs-item-compare-three--with-images {
+    .content {
+      @include three-column-grid;
+    }
+
+    article.with-image {
+      background: $cornell-red;
+
+      &:nth-of-type(2n) {
+        background: $lighter-red;
+      }
+
+      &:nth-of-type(3n) {
+        background: $black;
+      }
+
+      .field-name-field-image {
+        @include square-to-4x6;
+
+        margin: 0;
+      }
+
+      h2 {
+        @include set-heading(true, white);
+      }
+
+      h2,
+      .field-name-field-teaser {
+        @include leader(1);
+        @include padding-trailer(1);
+
+        padding: 0 1rem;
+        color: white;
+      }
+
+      p {
+        color: white;
+      }
+
+      .link__cta {
+        @include rhythm(2);
+
+        text-align: center;
+
+        .button {
+          @include framed--button($width: 4px, $link-color: white, $frame-color: white);
+        }
+      }
+    }
+  }
+
+  .paragraphs-item-compare-three {
+    .link-item {
+      @include hidden;
     }
   }
 }

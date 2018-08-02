@@ -238,3 +238,37 @@ function _ilr_paragraphs_get_tab_id($title) {
   $title = preg_replace("/[\s_]/", "-", $title);
   return $title;
 }
+
+/**
+ * Adds variations to compare three depending on whether there are images
+ */
+function _ilr_paragraphs_preprocess_compare_three(&$variables) {
+  $images = FALSE;
+  foreach ($variables['field_animated_text_card'] as $key => $value) {
+    $cwrapper = entity_metadata_wrapper('field_collection_item', $value['value']);
+    if (!empty($cwrapper->field_image->value())) {
+      $variables['classes_array'][] = ' paragraphs-item-compare-three--with-images';
+      break;
+    }
+  }
+  if (!$images) {
+    $variables['classes_array'][] = ' paragraphs-item-compare-three--text-only';
+  }
+}
+
+/**
+ * Adds learn more button when there are images
+ */
+function ilr_paragraphs_field_collection_item_view_alter(&$build) {
+  if ($build['#bundle'] == 'field_animated_text_card') {
+    if (isset($build['field_image'])) {
+      $url = $build['field_website_url'][0]['#element']['url'];
+      $link = '<a href="'.$url.'" class="button">Learn More</a>';
+      $markup = ilr_get_bem_markup($link, 'link', 'cta');
+      $build['cta'] = [
+        '#markup' => $markup,
+        '#weight' => 5,
+      ];
+    }
+  }
+}

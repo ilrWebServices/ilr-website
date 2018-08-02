@@ -235,6 +235,10 @@ $half-space: $space / 2;
   #content .event-block {
     @include three-column-grid;
   }
+
+  #sidebar-first {
+    @include hidden;
+  }
 }
 
 @mixin layout--full-width-content-grid() {
