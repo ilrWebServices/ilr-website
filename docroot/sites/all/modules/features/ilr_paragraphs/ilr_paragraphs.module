@@ -118,10 +118,12 @@ function _ilr_paragraphs_process_fields(&$variables) {
  * Adds a class to a field
  */
 function _ilr_paragraphs_add_class_to_field(&$variables, $class) {
-  $variables['classes_array'][] = $class;
-  $variables['attr'] = drupal_attributes(array(
-    'class' => $variables['classes_array'],
-  ));
+  if (!in_array($class, $variables['classes_array'])) {
+    $variables['classes_array'][] = $class;
+    $variables['attr'] = drupal_attributes(array(
+      'class' => $variables['classes_array'],
+    ));
+  }
 }
 
 /**
@@ -247,6 +249,7 @@ function _ilr_paragraphs_preprocess_compare_three(&$variables) {
   foreach ($variables['field_animated_text_card'] as $key => $value) {
     $cwrapper = entity_metadata_wrapper('field_collection_item', $value['value']);
     if (!empty($cwrapper->field_image->value())) {
+      $images = TRUE;
       $variables['classes_array'][] = ' paragraphs-item-compare-three--with-images';
       break;
     }

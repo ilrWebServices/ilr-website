@@ -90,7 +90,7 @@
       @include three-column-grid;
     }
 
-    article.with-image {
+    article {
       background: $cornell-red;
 
       &:nth-of-type(2n) {
