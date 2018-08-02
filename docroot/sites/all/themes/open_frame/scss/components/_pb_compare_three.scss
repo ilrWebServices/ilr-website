@@ -86,12 +86,27 @@
   }
 
   .paragraphs-item-compare-three--with-images {
+    @include breakpoint($section-max-width) {
+      @include full-width;
+      @include padding-leader(3);
+      @include padding-trailer(3);
+      background: lighten($warm-grey, 10%);
+
+      .content {
+        padding: 0 $double-space;
+      }
+    }
+
     .content {
+      @include container;
       @include three-column-grid;
     }
 
     article {
       background: $cornell-red;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
 
       &:nth-of-type(2n) {
         background: $lighter-red;
@@ -125,9 +140,11 @@
       }
 
       .link__cta {
-        @include rhythm(2);
-
+        @include padding-leader(1);
+        @include padding-trailer(1);
+        margin-top: auto;
         text-align: center;
+        grid-row: -1;
 
         .button {
           @include framed--button($width: 4px, $link-color: white, $frame-color: white);
@@ -143,33 +160,33 @@
   }
 }
 
-#main[data-eq-state="550"] {
-  .paragraphs-item-compare-three {
-    @include padding-leader(1);
-    @include padding-trailer(1);
-    article.field-name-field-animated-text-card {
-      @include one-column;
-      min-height: 0;
-    }
-  }
-}
+// #main[data-eq-state="550"] {
+//   .paragraphs-item-compare-three {
+//     @include padding-leader(1);
+//     @include padding-trailer(1);
+//     article.field-name-field-animated-text-card {
+//       @include one-column;
+//       min-height: 0;
+//     }
+//   }
+// }
 
-#main[data-eq-state="768"] {
-  .paragraphs-item-compare-three {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
-    article.field-name-field-animated-text-card {
-      // @include three-column-masonry;
-    }
-  }
-}
+// #main[data-eq-state="768"] {
+//   .paragraphs-item-compare-three {
+//     @include padding-leader(1.5);
+//     @include padding-trailer(1.5);
+//     article.field-name-field-animated-text-card {
+//       // @include three-column-masonry;
+//     }
+//   }
+// }
 
-#main[data-eq-state="widescreen"] {
-  .paragraphs-item-compare-three {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
-    article.field-name-field-animated-text-card {
-      // @include three-column-masonry;
-    }
-  }
-}
+// #main[data-eq-state="widescreen"] {
+//   .paragraphs-item-compare-three {
+//     @include padding-leader(1.5);
+//     @include padding-trailer(1.5);
+//     article.field-name-field-animated-text-card {
+//       // @include three-column-masonry;
+//     }
+//   }
+// }

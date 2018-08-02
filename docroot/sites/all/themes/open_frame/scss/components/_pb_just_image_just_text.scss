@@ -15,13 +15,15 @@
     @include padding-leader(1);
     @include padding-trailer(1);
 
+    max-width: $section-max-width;
+    margin: 0 auto;
+
     .node-type-basic-page & {
       padding: 0;
     }
 
     body.node-type-channel-page & {
       .content {
-        @include grid-span (10,2);
         .field-name-field-header {
           display: none;
         }

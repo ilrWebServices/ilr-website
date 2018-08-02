@@ -1,7 +1,7 @@
 @import "compass/typography/vertical_rhythm";
 
 $page-max-width: 1600px; // Note that grid gap adds to this
-$section-max-width: 800px;
+$section-max-width: 900px;
 $line-height-multiplier: $base-line-height / $base-font-size;
 @include establish-baseline;
 $row-width: rem-calc($page-max-width);
@@ -148,3 +148,10 @@ $input-color: #a4a4a4;
 $label-color: #444;
 
 $input-size: $mod-01;
+
+
+$space: 1rem;
+$double-space: $space * 2;
+$triple-space: $space * 3;
+$quadruple-space: $space * 4;
+$half-space: $space / 2;

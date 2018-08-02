@@ -1,9 +1,3 @@
-$space: 1rem;
-$double-space: $space * 2;
-$triple-space: $space * 3;
-$quadruple-space: $space * 4;
-$half-space: $space / 2;
-
 @mixin flex-around {
   display: flex;
   justify-content: space-around;
@@ -398,7 +392,6 @@ $half-space: $space / 2;
 }
 
 #page {
-  background: $bg-body;
   max-width: calc(100% - 2rem);
   margin: 0 auto;
   // overflow: hidden;
