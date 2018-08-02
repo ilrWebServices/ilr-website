@@ -503,7 +503,7 @@ function _ilr_sub_sites_get_site_logo($menu_name, $subsite_name) {
     'ldi' => 'ilr-ldi.svg',
     'scheinman-institute' => 'ilr-scheinman-institute.svg',
     'smithers-institute' => 'ilr-smithers.svg',
-    'uli' => 'ilr-uli.svg',
+    // 'uli' => 'ilr-uli.svg', // Worker-institute cohort
     'worker-institute' => 'ilr-worker-institute.svg',
     'ilr-at-70' => 'logo-ilr-at-70',
     'sustainable-labor-practices' => 'logo-new-conversations',
@@ -570,9 +570,9 @@ function _ilr_sub_sites_get_cohort($name) {
     'worker-institute' => [
       'men-and-women-as-allies' => 'Men and Women as Allies',
       'mobilizing-against-inequality' => 'Mobilizing Against Inequality',
-      'union-leadership-institute' => 'Union Leadership Institute',
+      'uli' => 'Union Leadership Institute',
       'national-labor-leadership-initiative' => 'The National Labor Leadership Initiative',
-      'uale-2013-ne' => 'UALE 2018 NE'
+      'uale-2013-ne' => 'UALE 2018 NE',
     ]
   ];
   foreach ($cohorts as $key => $subsites) {
