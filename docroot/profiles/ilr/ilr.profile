@@ -651,8 +651,14 @@ function ilr_get_node_wrapper($node_or_nid) {
  * Gets the url alis for a wrapper
  */
 function ilr_get_wrapper_alias($wrapper) {
-  $nid = $wrapper->getIdentifier();
-  return '/' . drupal_get_path_alias("node/$nid");
+  if ($wrapper->getBundle() == 'news_item') {
+    $nid = $wrapper->getIdentifier();
+    return '/' . drupal_get_path_alias("node/$nid");
+  }
+  elseif ($wrapper->getBundle() == 'promo') {
+    return promo_get_url_from_wrapper($wrapper);
+  }
+  return '';
 }
 
 /**

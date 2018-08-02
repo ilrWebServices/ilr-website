@@ -18,3 +18,15 @@ function promo_preprocess_node(&$variables) {
   }
 }
 
+function promo_get_url_from_wrapper($wrapper) {
+  if ($wrapper->field_website_url->value()) {
+    return $wrapper->field_website_url[0]->value()['url'];
+  }
+  else {
+    $node = $wrapper->field_internal_link->value();
+    $nid = $node->nid;
+    return '/' . drupal_get_path_alias("node/$nid");
+  }
+  watchdog('promo', 'URL not found for promo @nid', array('@nid' => $wrapper->getIdentifier()), WATCHDOG_ERROR);
+  return NULL;
+}
