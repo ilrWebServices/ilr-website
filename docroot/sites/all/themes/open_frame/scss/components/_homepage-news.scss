@@ -41,6 +41,7 @@ body.front .homepage-news {
       overflow: visible !important;
       float: none;
       margin-bottom: 0;
+      background: none;
 
       .field-type-image {
         @include medium {
@@ -57,6 +58,7 @@ body.front .homepage-news {
         z-index: 2;
         background: $dark-gray-orange;
         margin-top: -1rem;
+        position: relative;
 
         @include medium {
           display: grid !important; // the "show" mixin was causing issues
