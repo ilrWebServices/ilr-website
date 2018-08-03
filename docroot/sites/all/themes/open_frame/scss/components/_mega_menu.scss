@@ -11,55 +11,51 @@
   }
 
   body:not(.subsite) & {
-    @extend %main-site-menu;
+    ul.menu {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-width: 1160px;
+
+      > li {
+        background: none;
+        list-style: none;
+        line-height: 1;
+        margin: 0;
+        padding: 0;
+
+        > a, > a:visited {
+          flex-grow: 1;
+          display: flex;
+          color: #222;
+          font-family: $font;
+          border-bottom: none;
+          text-align: left;
+          font-weight: 600;
+          font-size: 14px;
+          outline: 0;
+          text-transform: uppercase;
+          padding: 1.2em 0;
+          display: block;
+          width: 100%;
+
+          .sticky & {
+            padding-top: .75em;
+            padding-bottom: .75em;
+          }
+
+          &:hover {
+            color: $brand;
+          }
+        }
+      }
+    }
   }
 
   .subsite & { // see _subsite_header.scss
     @extend %sub-site-menu;
-  }
-}
-
-%main-site-menu {
-  ul.menu {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-width: 1160px;
-
-    > li {
-      background: none;
-      list-style: none;
-      line-height: 1;
-      margin: 0;
-      padding: 0;
-
-      > a, > a:visited {
-        flex-grow: 1;
-        display: flex;
-        color: #222;
-        font-family: $font;
-        border-bottom: none;
-        text-align: left;
-        font-weight: 600;
-        font-size: 14px;
-        outline: 0;
-        text-transform: uppercase;
-        padding: 1.2em 0;
-        display: block;
-        width: 100%;
-
-        .sticky & {
-          padding-top: .75em;
-          padding-bottom: .75em;
-        }
-
-        &:hover {
-          color: $brand;
-        }
-      }
-    }
   }
 }
 
@@ -68,24 +64,34 @@
 ///////////////
 
 .block-ilr-mega-menu {
-  @extend .hidden; // What will IE do with this?
+  @include hidden; // What will IE do with this?
   [data-eq-state="regular-nav"] & {
-    @extend .visible;
+    @include visible;
   }
 
   li div.submenu {
+    // @include padding-leader(1);
+    background: rgba(255, 255 ,255, 0.9);
     position: absolute;
     left: 0;
-    padding: 15px;
-
-    @include padding-leader(1);
-    z-index: 3;
-    opacity: 0;
-    display: none;
-    background: white;
     width: 100%;
-    border: 1px solid $gray-medium;
-    @include box-shadow(0 5px 5px 0px rgba(black, .1));
+    z-index: 3;
+    display: none;
+    height: 0;
+    opacity: 0;
+
+    .bean-mega-menu {
+      @include full-width;
+
+      background: $lighter-red;
+
+      .content {
+        @include container;
+
+        padding: $space $space $double-space;
+      }
+    }
+
 
     @include breakpoint(1065px) {
       padding: 25px;
@@ -93,6 +99,7 @@
 
     &.active {
       display: block;
+      height: 100vh;
     }
 
     &:first-child {
@@ -102,9 +109,11 @@
 
     h2 {
       &.bean-title {
-        font-weight: 600;
+        @include adjust-font-size-to(22px);
+
+        color: $white;
+        font-weight: 400;
         text-transform: uppercase;
-        @include adjust-font-size-to(16px);
       }
     }
 
@@ -112,17 +121,14 @@
       @include three-column;
 
       article h2 {
+        @include adjust-font-size-to(17px);
+
         font-weight: normal;
         margin: 0;
-        @include adjust-font-size-to(16px);
-        @include adjust-leading-to(1,16px);
+
         a {
-          color: $p-text;
+          color: $white;
           border-bottom: none;
-          font-family: $font;
-          &:hover {
-            color: $link-hover;
-          }
         }
       }
     }

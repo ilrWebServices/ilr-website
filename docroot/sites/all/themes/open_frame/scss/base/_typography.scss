@@ -370,7 +370,7 @@ a:hover, a:focus {
 // Underlines? @todo - figure out what to do here
 p a, p a:visited,
 li a {
-  border-bottom: 2px solid $cornell-red;
+  @include set-link($cornell-red);
 }
 
 // ==================================================

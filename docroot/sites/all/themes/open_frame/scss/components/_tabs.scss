@@ -121,7 +121,7 @@ $doublepad: $pad * 2;
       }
 
       a {
-        color: white;
+        @include set-link($white);
       }
     }
   }

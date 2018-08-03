@@ -276,6 +276,16 @@
   }
 }
 
+@mixin set-link($color) {
+  color: $color;
+  border-bottom: 2px solid $color;
+
+  &:hover,
+  &:visited {
+    border-bottom: 2px solid $color;
+  }
+}
+
 @mixin button($color: white, $background-color: $student-portrait-color, $hover-color: $spotlight-color) {
   @include framed--button(6px);
 }

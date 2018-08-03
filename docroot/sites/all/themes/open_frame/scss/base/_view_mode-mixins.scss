@@ -521,18 +521,22 @@
 }
 
 @mixin title-knockout($pad: 50px) {
-  @include adjust-font-size-to(1.5em);
+  @include adjust-font-size-to(1.5rem);
 
   @include medium {
-    @include adjust-font-size-to(2em);
+    @include adjust-font-size-to(2rem);
   }
 
   @include large {
-    @include adjust-font-size-to(2.75em);
+    @include adjust-font-size-to(2.6rem);
   }
 
-  @include xl {
-    @include adjust-font-size-to(3.3em);
+  // @include breakpoint($full-break) {
+  //   @include adjust-font-size-to(2.6rem);
+  // }
+
+  @include breakpoint($page-max-width) {
+    @include adjust-font-size-to(3.2rem);
   }
 
   mix-blend-mode: lighten;
