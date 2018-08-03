@@ -420,6 +420,10 @@ img, object, video {
   height: auto;
   -ms-interpolation-mode: bicubic;
   border: 0;
+
+  .rss & {
+    width: auto;
+  }
 }
 
 

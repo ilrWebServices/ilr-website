@@ -276,13 +276,13 @@
   }
 }
 
-@mixin set-link($color) {
+@mixin set-link($color: $color-link, $color-underline: $cornell-red) {
   color: $color;
-  border-bottom: 2px solid $color;
+  border-bottom: 2px solid $color-underline;
 
   &:hover,
   &:visited {
-    border-bottom: 2px solid $color;
+    border-bottom: 2px solid $color-underline;
   }
 }
 

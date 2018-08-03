@@ -152,6 +152,7 @@
   align-items: stretch;
   overflow: hidden;
   float: none !important; // Weird grid issue
+  background: $color-card-bg--light;
 
   > h2, // Duplicates - @see _tagged_content_add_markup_to_group()
   > h3,
@@ -176,12 +177,13 @@
   }
 
   .news__content,
-  .promo__content {
+  .promo__content,
+  .field-type-text-with-summary {
     @include show; // Override thumbs
 
+    background: $color-card-bg--light;
     order: 2;
     flex-grow: 1;
-    background: $warm-grey;
     padding: $half-space $space $double-space;
 
     @include medium {
@@ -204,6 +206,55 @@
     padding: 0 0 1rem;
   }
 
+  // Posts...
+  h2,
+  .field-name-field-published-date,
+  .field-type-text-with-summary,
+  ul.links {
+    padding: $half-space $space 0;
+
+    @include medium {
+      padding: $half-space $double-space 0;
+    }
+
+    @include large {
+      padding: $half-space $space 0;
+    }
+
+    @include xl {
+      padding: $space $double-space 0;
+    }
+  }
+
+  .field-name-field-published-date {
+    @include adjust-font-size-to(15px);
+
+    order: 2;
+    color: $dark-gray-orange;
+  }
+
+  .field-type-text-with-summary {
+    p {
+      @include adjust-font-size-to(.9rem, 0.8);
+    }
+
+    order: 4;
+  }
+  ul.links {
+    order: 5;
+    padding-top: 0;
+
+    li {
+      background: none;
+      padding: 0;
+    }
+
+    a {
+      @include set-link($black);
+    }
+  }
+  // End posts...
+
   .news__title {
     h2 {
       @include set-heading;
@@ -211,8 +262,6 @@
 
       background: $warm-grey;
       padding: 0 0 1rem;
-
-
 
       @include large {
         @include adjust-font-size-to(1.3rem, 1);
@@ -226,7 +275,7 @@
 
   .news__teaser {
     p {
-      @include adjust-font-size-to(.9rem, .8);
+      @include adjust-font-size-to(.9rem, 0.8);
     }
   }
 

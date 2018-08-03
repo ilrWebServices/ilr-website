@@ -6,6 +6,8 @@
 
 @mixin one-column {
   @include grid-span(12);
+
+  display: block;
 }
 
 @mixin two-column($center-last: false) {
@@ -220,6 +222,7 @@
   #sidebar-first,
   #sidebar-second {
     width: 100%;
+    clear: both;
   }
 
   #content .tagged-content {
@@ -287,7 +290,7 @@
   }
 }
 
-@mixin layout--two-cols-no-first-sidebar() {
+@mixin layout--two-cols-no-first-sidebar {
   @include large {
     display: grid;
     grid-template-columns: 65% 30%;

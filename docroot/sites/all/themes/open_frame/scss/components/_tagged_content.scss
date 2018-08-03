@@ -1,10 +1,10 @@
 .tagged-content:not([data-items='1']),
 .event-block {
   > h2 {
-    font-family: $font;
-    text-transform: uppercase;
-    color: #4a4a4a;
-    font-weight: bold;
+    @include set-heading(true);
+
+    letter-spacing: -1px;
+    color: $black
   }
 
   @include bean-base;
