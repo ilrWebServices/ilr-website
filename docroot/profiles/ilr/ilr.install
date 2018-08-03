@@ -937,6 +937,18 @@ function ilr_update_7071() {
   variable_set('theme_default', 'open_frame');
 }
 
+/**
+ * Triggers pathauto updates for professional programs content
+ */
+function ilr_update_7072() {
+  $query = db_select('node', 'n');
+  $query->addField('n', 'nid');
+  $query->condition('n.type', array('sdc_course', 'sdc_course', 'sdc_faculty'), 'IN');
+  $nids = $query->execute()->fetchCol();
+
+  pathauto_node_update_alias_multiple($nids, 'bulkupdate');
+}
+
 function _ilr_migrate_body_to_paragraph_item($node) {
   $body = (isset($node->body[LANGUAGE_NONE][0]['value']))
     ? $node->body[LANGUAGE_NONE][0]['value']

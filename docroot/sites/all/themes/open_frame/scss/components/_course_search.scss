@@ -1,5 +1,5 @@
 #block-ilr-sdc-listings-course-search {
-  @include trailer(2);
+  @include rhythm(1);
   z-index: 10;
 
   form {
@@ -36,18 +36,13 @@
     font-family: $font;
     margin: 0;
   }
-  .region-sidebar-first & {
-    position: absolute;
-    margin-left: 12px;
-    top: 226px;
-    overflow: visible;
-  }
+
   #jPanelMenu-menu & {
     padding: 1em 2em;
   }
   #edit-s {
     background: white;
-    padding: 3px;
+    // padding: 3px;
     border: 1px solid $gray-medium;
   }
 
@@ -74,6 +69,7 @@
 
   .views-exposed-widget {
     float: none;
+    padding: 0;
   }
 
   .filter-link {

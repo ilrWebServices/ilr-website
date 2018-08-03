@@ -431,6 +431,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'reference_field',
         ),
         'type' => 'entityreference_entity_view',
@@ -452,6 +453,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => 1,
         ),
@@ -508,6 +510,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_label' => '',
           'link' => FALSE,
         ),

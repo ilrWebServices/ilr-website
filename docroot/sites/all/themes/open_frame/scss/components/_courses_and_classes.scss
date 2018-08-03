@@ -1,5 +1,5 @@
 .group-sidebar {
-  background: lighten($warm-grey, 15%);
+  background: $color-course-class-bg;
   .cost {
     font-weight: bold;
     @include trailer(.25);
@@ -21,7 +21,7 @@
 }
 
 .class-details {
-  background: lighten($warm-grey, 15%);
+  background: $color-course-class-bg;
 
   .node-type-basic-page & {
     background: none;
@@ -197,8 +197,7 @@ form.class-details {
   @include padding-trailer(1);
 }
 
-.page-professional-programs-workshops-courses-training, .page-professional-programs-search {
-  // @extend %two-col-content-area;
+.page-programs-professional-programs-workshops-courses-training, .page-programs-programs-professional-programs-search {
   .sort p {
     @include adjust-font-size-to(13px, 1);
     text-transform: uppercase;
@@ -216,20 +215,35 @@ form.class-details {
     }
   }
   .program-sponsor {
-    color: lighten($brand, 5%);
+    @include set-heading(true, $cornell-red);
     @include rhythm(1);
     @include leading-border(1px);
     @include trailing-border(1px);
-    font-family: $font;
-    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1;
+
+    @include large {
+      font-size: 2rem;
+    }
   }
 }
-.page-professional-programs-search {
+.page-programs-professional-programs-search {
   #content article {
-    @include rhythm-margins(1, 1);
-    @include trailing-border();
-    border-style: 1px solid;
-    border-color: $gray-light;
+    @include rhythm-margins(2, 1);
+
+    .group-main-content {
+      padding: $space;
+      background: $color-course-class-bg;
+    }
+
+    .group-sidebar {
+      background: none;
+      padding: 0 !important;
+    }
+
+    .class-details {
+      background: none;
+    }
   }
 }
 
@@ -241,11 +255,8 @@ form.class-details {
     color: $h2-text;
   }
   article {
-    &.node-sdc-course {
-      @include rhythm(2);
-      @include trailing-border;
-    }
     .field-name-body {
+      @include trailer(3);
       clear: left;
     }
     form {

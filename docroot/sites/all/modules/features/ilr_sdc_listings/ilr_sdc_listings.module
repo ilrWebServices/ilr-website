@@ -5,7 +5,7 @@
  */
 define('ILR_SDC_MAX_DAYS_PAST', 90);
 define('ILR_SDC_ONDEMAND_TEXT', 'This is an on demand class.');
-define('ILR_SDC_PATH_ALIAS', 'professional-programs/workshops-courses-training');
+define('ILR_SDC_PATH_ALIAS', 'programs/professional-programs/workshops-courses-training');
 define('ILR_SDC_NO_RESULTS', 'No courses were found that match your search. Please try again.');
 include_once 'ilr_sdc_listings.features.inc';
 
@@ -177,13 +177,13 @@ function ilr_sdc_listings_menu() {
     'page arguments' => array(1),
   );
 
-  $items['professional-programs/courses/autocomplete'] = array(
+  $items['programs/professional-programs/courses/autocomplete'] = array(
     'page callback' => '_ilr_sdc_listings_autocomplete',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK
   );
 
-  $items['professional-programs/search'] = array(
+  $items['programs/professional-programs/search'] = array(
     'type' => MENU_CALLBACK,
     'access arguments' => array('access content'),
     'page callback' => '_ilr_sdc_listings_custom_search',
@@ -587,7 +587,7 @@ function ilr_sdc_listings_search_form($form, &$form_state) {
       'placeholder' => 'Search ILR offerings',
     ),
     '#default_value' => isset($_REQUEST['s']) ? $_REQUEST['s'] : '',
-    '#autocomplete_path' => 'professional-programs/courses/autocomplete',
+    '#autocomplete_path' => 'programs/professional-programs/courses/autocomplete',
   );
 
   $form['search_input']['submit'] = array(
@@ -597,7 +597,7 @@ function ilr_sdc_listings_search_form($form, &$form_state) {
     '#attributes' => array('id' => 'search-form-submit'),
   );
 
-  $form['#action'] = url('professional-programs/search');
+  $form['#action'] = url('programs/professional-programs/search');
   $form['#method'] = 'get';
   $form['#pre_render'][] = 'ilr_sdc_listings_search_form_modify';
 

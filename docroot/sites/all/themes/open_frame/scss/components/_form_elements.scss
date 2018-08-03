@@ -40,9 +40,9 @@ form {
 
   .form-item {
     input[type='text'], textarea {
-      border: 1px solid $gray-medium;
-      border-radius: 6px;
+      border: 1px solid lighten($warm-grey, 15%);
       width: 100%;
+      padding: 0.5rem 0.5rem;
     }
     & .form-type-checkbox label, & .form-type-radio label {
       font-weight: 300;
@@ -52,8 +52,14 @@ form {
     }
   }
 
+  .views-exposed-form .views-exposed-widget {
+    padding: 0;
+  }
+
   label {
-    font-weight: 400;
+    @include leader(0.5);
+    font-size: 14px;
+    font-weight: 300;
   }
 
   select {
@@ -81,7 +87,7 @@ form {
   form.entityform {
     padding: 1.5em 3em;
     background: whitesmoke;
-    border: 1px solid $gray-light;
+    border: 1px solid lighten($warm-grey, 15%);
     .field-widget-markup {
       @include padding-leader(.75);
       @include trailer(.5);
