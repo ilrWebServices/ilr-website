@@ -144,10 +144,9 @@
       }
 
       a {
-        @include framed--button;
+        @include framed--button(8px);
 
         @include xl {
-          @include framed--button(8px);
           @include adjust-font-size-to(25px);
         }
       }

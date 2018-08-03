@@ -1,14 +1,16 @@
 $frame-width: 20px;
 
-@mixin framed--button($width: 5px, $link-color: $black, $frame-color: $cornell-red) {
+@mixin framed--button($width: 10px, $link-color: $black, $frame-color: $cornell-red) {
   border-left: $width / 2  solid $frame-color;
   border-bottom: $width / 2 solid $frame-color;
   text-align: center;
   color: $link-color;
-  padding: .3em 1em;
+  padding: $quarter-space $space;
+  padding-top: calc(#{$width} + #{$quarter-space});
   display: inline-block;
   font-weight: 600;
   position: relative;
+  overflow: hidden;
 
   &::before,
   &::after {
@@ -19,7 +21,7 @@ $frame-width: 20px;
   }
 
   &::before {
-    top: -$width / 2;
+    top: 0;
     left: -$width / 2;
     height: $width / 2;
     width: 30%;
@@ -27,13 +29,14 @@ $frame-width: 20px;
 
   @include large {
     $width: $width;
-    padding: 0.5em 1em;
+    padding: $half-space $space;
+    padding-top: calc(#{$width} + #{$half-space});
 
     border-left: $width solid $frame-color;
     border-bottom: $width solid $frame-color;
 
     &::before {
-      top: -$width;
+      // top: -$width;
       left: -$width;
       height: $width;
       width: 30%;
