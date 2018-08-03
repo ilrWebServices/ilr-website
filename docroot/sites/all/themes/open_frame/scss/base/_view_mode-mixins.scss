@@ -160,16 +160,10 @@
   }
 
   .field-type-image {
-    @at-root {
-      body.not-front .tagged-content #{&} {
-        @include square-to-4x6;
-      }
-    }
+    @include square-to-4x6;
 
     order: 1;
     margin: 0;
-    // width: 130%; // update aspect ratio
-    // margin-left: -15%;
 
     a { // Deal with the aspect ratio used elsewhere
       padding: 0 !important;

@@ -36,12 +36,6 @@ body.front .homepage-news {
   }
 
   article {
-    .field-type-image {
-      margin: 0 0 -7px -15% !important;
-      width: 130%; // update aspect ratio
-
-    }
-
     &:first-of-type { // Highlighted news item
       width: auto;
       overflow: visible !important;

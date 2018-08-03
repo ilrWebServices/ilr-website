@@ -223,7 +223,14 @@
   }
 
   #content .tagged-content {
-    @include four-column-grid;
+    &[data-items="4"],
+    &[data-items="5"],
+    &[data-items="6"],
+    &[data-items="7"],
+    &[data-items="8"],
+    &[data-items="9"] {
+      @include four-column-grid;
+    }
   }
 
   #content .event-block {
