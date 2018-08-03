@@ -111,11 +111,6 @@
   }
   #search-form-submit, #edit-submit-sdc-course-listing {
     @include button;
-    @include leader(.2);
-    @include trailer(.5);
-    &:hover {
-      background-color: $orange;
-    }
   }
   .views-reset-button #edit-reset {
     color: $link;

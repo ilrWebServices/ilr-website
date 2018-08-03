@@ -22,8 +22,9 @@ $base-line-height: 27px;
 
 // Base
 @import "base/variables";
-@import "base/mixins";
 @import "base/breakpoints";
+@import "components/frame";
+@import "base/mixins";
 @import "base/**/*.scss";
 @import "layout/**/*.scss";
 @import "components/**/*.scss";

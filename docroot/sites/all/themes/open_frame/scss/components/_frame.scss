@@ -1,6 +1,8 @@
 $frame-width: 20px;
 
 @mixin framed--button($width: 10px, $link-color: $black, $frame-color: $cornell-red) {
+  @include rhythm(1);
+  border: none;
   border-left: $width / 2  solid $frame-color;
   border-bottom: $width / 2 solid $frame-color;
   text-align: center;
@@ -11,21 +13,7 @@ $frame-width: 20px;
   font-weight: 600;
   position: relative;
   overflow: hidden;
-
-  &::before,
-  &::after {
-    display: block;
-    content: ' ';
-    position: absolute;
-    background: $frame-color;
-  }
-
-  &::before {
-    top: 0;
-    left: -$width / 2;
-    height: $width / 2;
-    width: 30%;
-  }
+  background: linear-gradient($frame-color , $frame-color)top left / 30% $width / 2 no-repeat;
 
   @include large {
     $width: $width;
@@ -34,13 +22,7 @@ $frame-width: 20px;
 
     border-left: $width solid $frame-color;
     border-bottom: $width solid $frame-color;
-
-    &::before {
-      // top: -$width;
-      left: -$width;
-      height: $width;
-      width: 30%;
-    }
+    background: linear-gradient($frame-color , $frame-color) top left / 30% $width no-repeat;
   }
 }
 

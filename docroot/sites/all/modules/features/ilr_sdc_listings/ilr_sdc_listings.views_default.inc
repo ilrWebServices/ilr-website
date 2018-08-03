@@ -1256,7 +1256,7 @@ function ilr_sdc_listings_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['path'] = 'professional-programs/workshops-courses-training';
+  $handler->display->display_options['path'] = 'programs/professional-programs/workshops-courses-training';
   $export['sdc_course_listing'] = $view;
 
   $view = new view();

@@ -22,6 +22,11 @@
 
 .class-details {
   background: lighten($warm-grey, 15%);
+
+  .node-type-basic-page & {
+    background: none;
+  }
+
   .form-item {
     margin-top: 0;
     margin-bottom: 0;
@@ -98,10 +103,7 @@
 
   .button {
     @include button;
-    @include leader(.5);
-    @include trailer(.5);
-    display: inline-block;
-    @extend .clearfix;
+
     .cost {
       display: block;
       text-align: center;

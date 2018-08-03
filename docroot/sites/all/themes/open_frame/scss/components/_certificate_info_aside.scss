@@ -41,18 +41,6 @@
     }
     .button {
       @include button;
-      background-color: $orange;
-      font-weight: 100;
-      padding: 8px 20px;
-      margin: 30px auto 30px;
-      max-width: 250px;
-      display: block;
-      span {
-        display: none;
-      }
-      &:hover {
-        background-color: $student-portrait-color;
-      }
     }
   }
   .get-started {
@@ -135,20 +123,8 @@
     margin-top: 0;
   }
   .button {
-    background-color: $orange-light;
-    box-shadow: 1px 2px 4px $orange-dark;
-    color: white;
-    font-family: sans-serif;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-radius: 20px;
-    padding: 8px 21px;
-    margin: 21px auto 21px;
-    max-width: 250px;
-    display: block;
-    &:hover {
-      background-color: $student-portrait-color;;
-    }
+    @include button;
+
     span {
       display: none;
     }

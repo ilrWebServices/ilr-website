@@ -243,6 +243,10 @@
 }
 
 @mixin layout--full-width-content-grid() {
+  .group-sidebar {
+    padding: $space;
+  }
+
   @include large {
     display: grid;
     grid-template-columns: 17% 79%;
