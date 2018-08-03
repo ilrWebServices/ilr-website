@@ -58,6 +58,17 @@
     }
   }
 
+  &[data-items="4"] {
+    .node-type-channel-page & {
+      @include four-column-grid;
+
+      article {
+        @include card--overlay;
+        @include trailer(2);
+      }
+    }
+  }
+
   &[data-items="3"] {
     @include three-column-grid($gap: 3%);
 

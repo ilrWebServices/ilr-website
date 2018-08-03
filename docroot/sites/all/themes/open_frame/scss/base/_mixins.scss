@@ -193,21 +193,6 @@
   }
 }
 
-@mixin framed($width: 20px, $color: white, $top: false, $right: false, $bottom: true, $left: true) {
-  @if ($top) {
-    border-top: $width solid $color;
-  }
-  @if ($right) {
-    border-right: $width solid $color;
-  }
-  @if ($bottom) {
-    border-bottom: $width solid $color;
-  }
-  @if ($left) {
-    border-left: $width solid $color;
-  }
-}
-
 /// Center.
 /// Center an element vertically or horizontally in its container,
 /// and optionally horizontally. Option to undo.

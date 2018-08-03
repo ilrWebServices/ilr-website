@@ -119,6 +119,61 @@ $frame-width: 20px;
   }
 }
 
+// Used for headings; possibly could be available to other elements
+// Only can currently set the frame on 2 sides
+@mixin framed($width: 10px, $color: white, $top: false, $right: false, $bottom: true, $left: true) {
+  @if ($top) {
+    border-top: $width solid $color;
+    padding-top: $space;
+    padding-bottom: $space;
+    border-bottom: none;
+
+    @include large {
+      border-top: $width * 2 solid $color;
+      padding-top: $double-space;
+      padding-bottom: $double-space;
+      border-bottom: none;
+    }
+  }
+  @if ($right) {
+    border-right: $width solid $color;
+    padding-right: $space;
+    border-left: none;
+    padding-left: $space;
+
+    @include large {
+      border-right: $width * 2 solid $color;
+      padding-right: $double-space;
+      border-left: none;
+      padding-left: $double-space;
+    }
+
+  }
+  @if ($bottom) {
+    border-bottom: $width solid $color;
+    padding-bottom: $space;
+    padding-top: $space;
+    border-top: none;
+
+    @include large {
+      border-bottom: $width * 2 solid $color;
+      padding-bottom: $double-space;
+      padding-top: $triple-space;
+      border-top: none;
+    }
+  }
+  @if ($left) {
+    border-left: $width solid $color;
+    padding-left: $space;
+    border-right: none;
+
+    @include large {
+      border-left: $width * 2 solid $color;
+      padding-left: $double-space;
+      border-right: none;
+    }
+  }
+}
 
 .frame {
   position: relative;

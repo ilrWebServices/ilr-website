@@ -34,7 +34,7 @@
     }
     .field-name-field-para-main-page-content {
       .field-item.paragraph-type-featured-promo {
-        background: $nav-dark;
+        background: $black;
       }
     }
   }
@@ -49,11 +49,12 @@
 
   .entity-paragraphs-item {
     @include pie-clearfix;
-    @include rhythm(1);
+    // This seems to primarily affect channel pages
+    // @include rhythm(1);
 
-    @include large {
-      @include rhythm(2);
-    }
+    // @include large {
+    //   @include rhythm(2);
+    // }
   }
 }
 

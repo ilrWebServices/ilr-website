@@ -1179,7 +1179,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => 'featured_image',
+          'image_style' => 'focussed_main_image',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -1936,7 +1936,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'hidden',
@@ -1970,6 +1970,46 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
       ),
       'type' => 'text_textarea',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-sponsor_message-field_dynamic_list'.
+  $field_instances['paragraphs_item-sponsor_message-field_dynamic_list'] = array(
+    'bundle' => 'sponsor_message',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_dynamic_list',
+    'label' => 'Style',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 5,
     ),
   );
 
@@ -2040,7 +2080,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
@@ -2429,6 +2469,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   t('Select an existing block');
   t('Social Channels');
   t('Social links');
+  t('Style');
   t('Tab content');
   t('Tagline');
   t('Text paragraph');

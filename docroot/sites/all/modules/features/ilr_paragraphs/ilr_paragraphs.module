@@ -70,16 +70,6 @@ function ilr_paragraphs_preprocess_field(&$variables) {
  */
 function _ilr_paragraphs_process_fields(&$variables) {
   switch ($variables['element']['#field_name']) {
-    case 'field_image': case 'field_youtube_video':
-      switch ($variables['element']['#bundle']) {
-        case 'featured_promo':
-          _ilr_paragraphs_add_class_to_field($variables,
-            _ilr_paragraphs_field_has_value($variables, 'field_align_left_right', 'right') ?
-            'image-right' :
-            'image-left');
-          break;
-      }
-      break;
     case 'field_animated_text_card':
       switch ($variables['element']['#bundle']) {
         case 'compare_three':
@@ -256,6 +246,27 @@ function _ilr_paragraphs_preprocess_compare_three(&$variables) {
   }
   if (!$images) {
     $variables['classes_array'][] = ' paragraphs-item-compare-three--text-only';
+  }
+}
+
+/**
+ * Adds variations to compare three depending on whether there are images
+ */
+function _ilr_paragraphs_preprocess_featured_promo(&$variables) {
+  $wrapper = entity_metadata_wrapper('paragraphs_item', $variables['paragraphs_item']);
+  $direction = $wrapper->field_align_left_right->value();
+  $variables['classes_array'][] = "paragraphs-item-featured-promo--image-$direction";
+}
+
+/**
+ * Adds style variations to sponsored messages
+ */
+function _ilr_paragraphs_preprocess_sponsor_message(&$variables) {
+  $wrapper = entity_metadata_wrapper('paragraphs_item', $variables['paragraphs_item']);
+  $style = $wrapper->field_dynamic_list->value();
+  $styles = explode(' ', $style);
+  foreach ($styles as $key => $style) {
+    $variables['classes_array'][] = "paragraphs-item-sponsor-message--$style";
   }
 }
 

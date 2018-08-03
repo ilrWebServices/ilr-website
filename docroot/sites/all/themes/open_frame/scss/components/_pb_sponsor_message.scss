@@ -1,42 +1,73 @@
 #main {
   .paragraphs-item-sponsor-message {
-    @include padding-leader(1);
-    @include padding-trailer(1);
-    .content {
-      @include grid-span (10,2);
-      .centered-blurb {
-        max-width: 960px;
+    @include padding-leader(2);
+    @include padding-trailer(4);
+    background: white;
+
+
+    @include large {
+      @include padding-leader(4);
+      @include padding-trailer(5);
+    }
+
+    .centered-blurb {
+      max-width: $section-max-width;
+      color: $black;
+      padding: 0 $double-space;
+
+      @include large {
+        padding: 0;
       }
     }
+
     h2 {
       text-align: center;
       @include adjust-font-size-to(22px);
       @include adjust-leading-to(1);
       font-weight: 300;
     }
+
     .tower {
       font-weight: 300;
-      color: $p-text;
+      color: $black;
+      font-size: 0.8rem;
+
+      @include medium {
+        @include adjust-font-size-to(1rem, 1);
+      }
+
+      @include large {
+        @include adjust-font-size-to(1.2rem, 1.1);
+      }
+
+      @include xl {
+        @include adjust-font-size-to(1.5rem, 1.4);
+      }
+
       &:before {
         @include adjust-font-size-to(25px);
         @include adjust-leading-to(1.5);
-        color: $gray-medium;
+        color: $black;
         display: block;
       }
     }
-  }
-}
 
-#main[data-eq-state="768"] {
-  .paragraphs-item-sponsor-message {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
-  }
-}
+    &--wide {
+      @include large {
+        @include full-width;
+      }
+    }
 
-#main[data-eq-state="widescreen"] {
-  .paragraphs-item-sponsor-message {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
+    &--dark {
+      background: $cornell-red;
+      h2,
+      .tower,
+      .centered-blurb {
+        color: white;
+        &::before {
+          color: white;
+        }
+      }
+    }
   }
 }
