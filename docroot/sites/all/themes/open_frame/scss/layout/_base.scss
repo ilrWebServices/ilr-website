@@ -236,6 +236,11 @@
     }
   }
 
+  #content .tagged-content[data-items="3"],
+  #content .event-block {
+    @include three-column-grid;
+  }
+
   #content .event-block {
     @include three-column-grid;
   }
@@ -402,6 +407,14 @@
 .no-layout{
   .jPanelMenu-panel {
     box-shadow: none;
+  }
+}
+
+.region-highlighted {
+  .tagged-content[data-items="4"] {
+    @include medium {
+      @include four-column-grid;
+    }
   }
 }
 

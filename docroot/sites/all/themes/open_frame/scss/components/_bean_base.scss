@@ -5,6 +5,17 @@
     @include rhythm(3);
   }
 
+  > h2 {
+    @include set-heading(true);
+
+    letter-spacing: -1px;
+    color: $black;
+
+    #content-bottom & {
+      display: none;
+    }
+  }
+
   article {
     .front &,
     #content-bottom & {
@@ -16,162 +27,18 @@
     #sidebar-second & {
       @include thumb;
     }
-  }
 
-  .field-type-entityreference {
-    .region-content & {
-      @include medium-only {
-        @include two-column;
-      }
-
-      @include xl {
-        @include two-column;
-      }
-    }
-  }
-  > h2 {
-    #content-bottom & {
-      display: none;
-    }
-  }
-
-  &[data-items="2"],
-  &[data-items="4"] {
-    article {
-      @include medium {
-        // @include two-column;
-      }
-
-      .region-highlighted & {
-        @include card--overlay;
-        @include trailer(2);
-        @include medium {
-          @include four-column;
-        }
-      }
-
-      #sidebar-second & {
-        @include large {
-          @include one-column;
-        }
-      }
-    }
-  }
-
-  &[data-items="4"] {
-    .node-type-channel-page & {
-      @include four-column-grid;
-
-      article {
-        @include card--overlay;
-        @include trailer(2);
-      }
+    .region-highlighted & {
+      @include card--overlay;
+      @include trailer(2);
     }
   }
 
   &[data-items="3"] {
-    @include three-column-grid($gap: 3%);
-
     article {
-      .not-front &,
-      .subsite-front #content & {
+      #content & {
         @include card;
-
-        background: transparent;
-        padding: 0;
       }
     }
   }
 }
-
-// article {
-//   @include addHighlightColors('.category', 'color', 1);
-//   h3.category {
-//     text-transform: uppercase;
-//     font-family: $font;
-//     font-weight: bold;
-//     @include adjust-font-size-to(14px);
-//     line-height: 1;
-//   }
-// }
-
-// @mixin bean-base() {
-//   @include clearfix;
-//   body.not-front #sidebar-second & {
-//     article {
-//       @include thumb;
-//     }
-//   }
-
-//   body.front {
-//     article {
-//       @include card;
-//     }
-//   }
-
-//   body.subsite-front #sidebar-second & {
-//     article {
-//       @include thumb;
-//     }
-//   }
-
-//   article {
-//     h2, h2 a {
-//       font-family: $font-headers;
-//       color: $h2-text;
-//     }
-//     @include addHighlightColors('.category', 'color', 1);
-//     h3.category {
-//       text-transform: uppercase;
-//       font-family: $font;
-//       font-weight: bold;
-//       @include adjust-font-size-to(14px);
-//       line-height: 1;
-//     }
-//   }
-
-//   #content & {
-//     &:not([data-items='1']) {
-//       &:not([data-items='3']) {
-//         article:not(.node-reflection):not(.node-certificate-programs):not(.node-post) {
-//           @include thumb;
-//         }
-//         &[data-eq-state="small"] {
-//           @include slug;
-//         }
-//       }
-//     }
-//     &[data-items='4'] {
-//       article {
-//         @include card;
-//       }
-//     }
-//     &[data-items='3'] {
-//       article {
-//         @include card;
-//       }
-//     }
-//     &[data-items='1'] {
-//       article {
-//         @include one-column;
-//         &:not(.block-bean-70th-reflections-featured) & { //Removes text shadow from featured reflection
-//           @include lead-story;
-//         }
-//       }
-//     }
-//   }
-
-//   // This confirms that the wrapper (i.e. tagged-content)
-//   // is a direct descendant of the field. That way, we can
-//   // avoid cards in block-collection beans
-//   .field-name-field-content-bottom-region > & {
-//     > h2 { @extend .hidden; }
-//     article {
-//      @include card;
-//     }
-//   }
-// }
-
-// %bean-base {
-//   @include bean-base;
-// }

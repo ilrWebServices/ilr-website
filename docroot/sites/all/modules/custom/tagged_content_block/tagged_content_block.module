@@ -291,10 +291,12 @@ function _tagged_content_add_markup_to_group(&$element, $wrapper, $name, $count)
   $url = ilr_get_wrapper_alias($wrapper);
   switch ($name) {
     case 'pub_date':
-      $timestamp = $wrapper->field_published_date->value();
-      if (!empty($timestamp)) {
-        $pub_date = format_date($timestamp ,'custom','M j, Y');
-        $markup = ilr_get_bem_markup($pub_date, 'news', 'date');
+      if (!empty($wrapper->field_published_date)) {
+        $timestamp = $wrapper->field_published_date->value();
+        if (!empty($timestamp)) {
+          $pub_date = format_date($timestamp ,'custom','M j, Y');
+          $markup = ilr_get_bem_markup($pub_date, 'news', 'date');
+        }
       }
       break;
     case 'title':

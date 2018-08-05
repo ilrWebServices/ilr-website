@@ -210,10 +210,10 @@ function people_profiles_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
-function people_profiles_field_group_build_pre_render_alter(&$element) {
+function people_profiles_field_group_build_pre_render_alter(&$element, $group, &$form) {
   if (isset($element['#bundle'])
     && $element['#bundle'] == 'people_profile'
-    && !isset($element['#form_id'])) { // If #form_id present, on edit form
+    && $element['#view_mode'] == 'full') {
     $wrapper = _people_profiles_node_wrapper($element['#node']);
     $type = $wrapper->field_profile_type->value();
 

@@ -313,17 +313,13 @@
     @include padding-trailer(0.5);
     @include increase-readability(15px);
 
-    // font-family: $font;
     font-size: 2rem;
     font-weight: bold;
     grid-column: 2;
     grid-row: 2;
     z-index: 2;
     align-self: end;
-
-    // @include medium-only {
-    //   font-size: 1rem;
-    // }
+    color: white;
 
     @include large-only {
       font-size: 1.3rem;
