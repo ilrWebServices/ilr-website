@@ -116,6 +116,7 @@ body.front {
             padding: 0;
 
             a {
+              @include set-link($white, $white);
               font-weight: 600;
             }
           }
