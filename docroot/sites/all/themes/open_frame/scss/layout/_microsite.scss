@@ -1,9 +1,31 @@
-body.microsite {
+body.microsite.subsite-front {
+  #main {
+    @include layout--full-width-grid;
+  }
+
   #content-bottom {
     padding: 0;
 
+    .block-bean {
+      @include one-column;
+
+      .microsite-featured-speakers {
+        @include three-column-grid;
+
+        padding: $space;
+
+        @include large {
+          padding: $double-space;
+        }
+      }
+
+      .microsite-moderators {
+        @include four-column-grid;
+      }
+    }
+
     .microsite-featured-speakers {
-      @include three-column-grid;
+      // @include three-column-grid;
       // article.featured-speaker {
       //   @include one-column;
 

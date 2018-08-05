@@ -146,6 +146,8 @@
       a {
         @include framed--button(8px);
 
+        margin: 0;
+
         @include xl {
           @include adjust-font-size-to(25px);
         }

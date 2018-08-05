@@ -44,11 +44,23 @@ body.front .homepage-news {
       background: none;
 
       .field-type-image {
-        @include medium {
-          @include full-width;
+        @include full-width;
 
-          margin-left: -50vw !important;
+        height: auto;
+        padding: 0;
+
+        @include medium {
+
         }
+
+        a {
+          position: relative;
+
+          img {
+            top: 0;
+          }
+        }
+
       }
 
       .news__content,
@@ -83,24 +95,25 @@ body.front .homepage-news {
       .news__date {
         color: $warm-grey;
 
-        @include padding-leader(1);
-
         @include medium {
+          @include padding-leader(1);
+
           grid-column: 2;
         }
       }
 
       .news__title {
-        padding: 0 0 1rem;
+        padding: 0;
 
         @include medium {
           grid-column: 2;
-          padding: 0;
+          padding: 0 0 1rem;
         }
 
         h2 {
           background: $dark-gray-orange;
           color: white;
+          padding: 0;
 
           @include adjust-font-size-to(1.5rem, 1);
 

@@ -405,7 +405,8 @@
   }
 }
 
-#page {
+#page,
+#content-bottom {
   max-width: calc(100% - 2rem);
   margin: 0 auto;
   // overflow: hidden;
@@ -457,20 +458,6 @@
 
     .section {
       @include leader(.5);
-    }
-  }
-}
-
-#content-bottom {
-  clear: both;
-
-  .block-bean {
-    @include medium {
-      @include two-column-grid;
-    }
-
-    @include large {
-      @include four-column-grid;
     }
   }
 }

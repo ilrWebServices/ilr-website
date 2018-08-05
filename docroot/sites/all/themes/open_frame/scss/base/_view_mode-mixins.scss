@@ -424,6 +424,10 @@
   }
 }
 
+@mixin card--person($bg-color: $black) {
+  @include image-heading-text;
+}
+
 @mixin card-rounded() {
   display: none;
   @include padding-leader(0);
