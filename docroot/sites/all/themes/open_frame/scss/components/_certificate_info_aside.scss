@@ -1,4 +1,5 @@
-.certificate-basics {
+.certificate-basics,
+#certificate-info-aside .get-started {
   background: $cornell-red;
   color: white;
   width: 100%;
@@ -25,7 +26,7 @@
   }
 
   h2 {
-    @include hide($medium);
+    @include hide($medium-only);
   }
 
   h3 {
@@ -35,6 +36,14 @@
 
   p {
     @include small-text;
+  }
+}
+
+#certificate-info-aside .contact {
+  @include rhythm(2);
+
+  a.button {
+    @include button;
   }
 }
 
