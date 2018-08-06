@@ -288,6 +288,12 @@
 
 @mixin button($color: white, $background-color: $student-portrait-color, $hover-color: $spotlight-color) {
   @include framed--button(6px);
+
+  span {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
 }
 
 @mixin image-ratio-hack($percentage: 65%) {
@@ -317,12 +323,12 @@
 }
 
 @mixin hidden {
-  display: none !important;
+  display: none !important; // revisit whether necessary
   visibility: hidden;
 }
 
 @mixin visible($mode: block) {
-  display: $mode !important;
+  display: $mode !important; // revisit whether necessary
   visibility: visible;
 }
 

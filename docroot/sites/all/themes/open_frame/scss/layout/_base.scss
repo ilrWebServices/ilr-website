@@ -8,6 +8,10 @@
   @include grid-span(12);
 
   display: block;
+
+  &:nth-of-type(n) {
+    width: 100%;
+  }
 }
 
 @mixin two-column($center-last: false) {

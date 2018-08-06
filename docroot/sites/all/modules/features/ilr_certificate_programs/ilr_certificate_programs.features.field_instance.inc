@@ -27,7 +27,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -88,7 +88,7 @@ function ilr_certificate_programs_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 7,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -155,7 +155,7 @@ function ilr_certificate_programs_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 5,
+        'weight' => 8,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -219,7 +219,7 @@ function ilr_certificate_programs_field_default_field_instances() {
           'view_mode' => 'alternate_teaser',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 3,
+        'weight' => 6,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -288,7 +288,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -346,7 +346,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -404,7 +404,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -465,7 +465,7 @@ function ilr_certificate_programs_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -531,7 +531,7 @@ function ilr_certificate_programs_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'ilr_file_download_link',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -608,9 +608,14 @@ function ilr_certificate_programs_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'image_link' => '',
+          'image_style' => 'focussed_portrait',
+        ),
+        'type' => 'image',
+        'weight' => 0,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -707,7 +712,7 @@ function ilr_certificate_programs_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -774,7 +779,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -831,7 +836,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -889,7 +894,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -954,7 +959,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 10,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -1041,10 +1046,13 @@ function ilr_certificate_programs_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -1110,7 +1118,7 @@ function ilr_certificate_programs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 9,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
