@@ -32,16 +32,6 @@
   }
 }
 
-#main[data-eq-state="768"],
-#main[data-eq-state="widescreen"] {
-  body.node-type-channel-page & {
-    .paragraphs-item-just-text {
-      @include padding-leader(1.5);
-      @include padding-trailer(1.5);
-    }
-  }
-}
-
 // Limit to basic pages since these might change existing design
 .node-type-basic-page {
   .paragraphs-item-just-text {

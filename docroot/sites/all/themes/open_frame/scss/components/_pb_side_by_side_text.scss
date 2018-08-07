@@ -43,35 +43,3 @@
     }
   }
 }
-
-#main[data-eq-state="768"] {
-  .paragraphs-item-side-by-side-text {
-    .field-name-field-promo-text {
-      @include grid-span (5,1);
-      &:nth-child(odd) {
-        @include padding-trailer(0);
-        border-bottom: none;
-      }
-      &:nth-child(even) {
-        @include grid-span (6,7);
-        @include padding-leader(0);
-      }
-    }
-  }
-}
-
-#main[data-eq-state="widescreen"] {
-  .paragraphs-item-side-by-side-text {
-    .field-name-field-promo-text {
-      @include padding-leader(1);
-      @include padding-trailer(1);
-      @include grid-span (5,1);
-      &:nth-child(odd) {
-        border-bottom: none;
-      }
-      &:nth-child(even) {
-        @include grid-span (6,7);
-      }
-    }
-  }
-}

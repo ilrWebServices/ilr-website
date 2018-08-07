@@ -1,8 +1,4 @@
 #block-bean-70th-timeline {
-  @extend %timeline;
-}
-
-%timeline {
   @include padding-leader(1);
   @include padding-trailer(1);
   background-color: white;
@@ -20,3 +16,4 @@
     }
   }
 }
+

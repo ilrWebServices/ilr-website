@@ -44,92 +44,92 @@
   }
 }
 
-#main[data-eq-state="550"] {
-  .paragraphs-item-unit-contact-info {
-    @include padding-leader(1);
-    @include padding-trailer(1);
-    .content {
-      .field-name-field-people-list {
-        margin-bottom: 0;
-        @include grid-span (6,1);
-      }
-      .group_unit_information {
-        @include grid-span (6,7);
-      }
-    }
-  }
-}
+// #main[data-eq-state="550"] {
+//   .paragraphs-item-unit-contact-info {
+//     @include padding-leader(1);
+//     @include padding-trailer(1);
+//     .content {
+//       .field-name-field-people-list {
+//         margin-bottom: 0;
+//         @include grid-span (6,1);
+//       }
+//       .group_unit_information {
+//         @include grid-span (6,7);
+//       }
+//     }
+//   }
+// }
 
-#main[data-eq-state="768"] {
-  .paragraphs-item-unit-contact-info {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
-    .content {
-      text-align: left;
-      .field-name-field-people-list {
-        @include margin-trailer(1);
-        @include grid-span (6,1);
-        li {
-          padding-right: 1em;
-          display: inline-block;
-          &:nth-of-type(odd) {
-            @include grid-span(6,1);
-            clear: left;
-          }
-          &:nth-of-type(even) {
-            @include grid-span(6,7);
-            clear: right;
-          }
-        }
-      }
-      .group_unit_information {
-        @include grid-span (6,7);
-        .group_unit_name_and_address {
-          @include grid-span(6,1);
-        }
-        ul.social, .field-name-field-multiple-links {
-          @include grid-span(6,7);
-          clear: right;
-        }
-      }
-    }
-  }
-}
+// #main[data-eq-state="768"] {
+//   .paragraphs-item-unit-contact-info {
+//     @include padding-leader(1.5);
+//     @include padding-trailer(1.5);
+//     .content {
+//       text-align: left;
+//       .field-name-field-people-list {
+//         @include margin-trailer(1);
+//         @include grid-span (6,1);
+//         li {
+//           padding-right: 1em;
+//           display: inline-block;
+//           &:nth-of-type(odd) {
+//             @include grid-span(6,1);
+//             clear: left;
+//           }
+//           &:nth-of-type(even) {
+//             @include grid-span(6,7);
+//             clear: right;
+//           }
+//         }
+//       }
+//       .group_unit_information {
+//         @include grid-span (6,7);
+//         .group_unit_name_and_address {
+//           @include grid-span(6,1);
+//         }
+//         ul.social, .field-name-field-multiple-links {
+//           @include grid-span(6,7);
+//           clear: right;
+//         }
+//       }
+//     }
+//   }
+// }
 
-#main[data-eq-state="widescreen"] {
-  .paragraphs-item-unit-contact-info {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
-    .content {
-      text-align: left;
-      .field-name-field-people-list {
-        @include padding-leader(1);
-        @include margin-trailer(0);
-        @include grid-span (6,1);
-        li {
-          padding-right: 1em;
-          display: inline-block;
-          &:nth-of-type(odd) {
-            @include grid-span(6,1);
-            clear: left;
-          }
-          &:nth-of-type(even) {
-            @include grid-span(6,7);
-            clear: right;
-          }
-        }
-      }
-      .group_unit_information {
-        @include padding-leader(1);
-        @include grid-span (6,7);
-        .group_unit_name_and_address {
-          @include grid-span(6,1);
-        }
-        ul.social, .field-name-field-multiple-links {
-          @include grid-span(6,7);
-          clear: right;
-        }
-      }
-    }
-  }
-}
+// #main[data-eq-state="widescreen"] {
+//   .paragraphs-item-unit-contact-info {
+//     @include padding-leader(1.5);
+//     @include padding-trailer(1.5);
+//     .content {
+//       text-align: left;
+//       .field-name-field-people-list {
+//         @include padding-leader(1);
+//         @include margin-trailer(0);
+//         @include grid-span (6,1);
+//         li {
+//           padding-right: 1em;
+//           display: inline-block;
+//           &:nth-of-type(odd) {
+//             @include grid-span(6,1);
+//             clear: left;
+//           }
+//           &:nth-of-type(even) {
+//             @include grid-span(6,7);
+//             clear: right;
+//           }
+//         }
+//       }
+//       .group_unit_information {
+//         @include padding-leader(1);
+//         @include grid-span (6,7);
+//         .group_unit_name_and_address {
+//           @include grid-span(6,1);
+//         }
+//         ul.social, .field-name-field-multiple-links {
+//           @include grid-span(6,7);
+//           clear: right;
+//         }
+//       }
+//     }
+//   }
+// }
