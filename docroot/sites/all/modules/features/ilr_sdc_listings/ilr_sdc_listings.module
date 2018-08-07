@@ -592,7 +592,7 @@ function ilr_sdc_listings_search_form($form, &$form_state) {
 
   $form['search_input']['submit'] = array(
     '#type' => 'submit',
-    '#value' => 'search',
+    '#value' => 'Search',
     '#name' => '',
     '#attributes' => array('id' => 'search-form-submit'),
   );
