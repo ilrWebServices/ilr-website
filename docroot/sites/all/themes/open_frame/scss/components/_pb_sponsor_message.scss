@@ -10,16 +10,6 @@
       @include padding-trailer(5);
     }
 
-    .centered-blurb {
-      max-width: $section-max-width;
-      color: $black;
-      padding: 0 $double-space;
-
-      @include large {
-        padding: 0;
-      }
-    }
-
     h2 {
       text-align: center;
       @include adjust-font-size-to(22px);
@@ -68,6 +58,17 @@
           color: white;
         }
       }
+    }
+  }
+
+  .centered-blurb {
+    max-width: $section-max-width;
+    color: $black;
+    padding: 0 $double-space;
+    text-align: center;
+
+    @include large {
+      padding: 0;
     }
   }
 }
