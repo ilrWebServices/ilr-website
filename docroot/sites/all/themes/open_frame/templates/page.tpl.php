@@ -7,7 +7,7 @@
   </div>
   <div class="container">
     <div class="logo-wrapper">
-      <a class='cornell' href="https://cornell.edu"></a>
+      <?php print $logo_link ?>
       <a class="ilr" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
          <img src="<?php echo $logo?>" alt="Cornell University | ILR School" title="Cornell University | ILR School">
       </a>

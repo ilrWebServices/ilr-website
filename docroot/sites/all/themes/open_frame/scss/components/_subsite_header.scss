@@ -9,8 +9,9 @@
         @include trailer(2);
       }
 
-      .cornell {
-        @include hidden;
+      .cornell--ilr {
+        width: 75px;
+        height: 60px;
       }
     }
 

@@ -43,6 +43,10 @@ function open_frame_preprocess_page(&$variables) {
   $translate_block = ilr_google_translate_block_view('google_translate');
   $variables['page']['footer'][] = array('#markup' => $translate_block['content']);
 
+  if (!isset($variables['logo_link'])) {
+    $variables['logo_link'] = '<a class="cornell" title="Visit Cornell.edu" href="https://cornell.edu"></a>';
+  }
+
   if ( isset($_GET['layout']) && $_GET['layout'] == '0' ) {
     $variables['theme_hook_suggestions'][] = 'page__content_only';
   }
