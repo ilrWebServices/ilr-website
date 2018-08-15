@@ -36,7 +36,6 @@
           font-weight: 600;
           font-size: 14px;
           outline: 0;
-          text-transform: uppercase;
           padding: 1.2em 0;
           display: block;
           width: 100%;
@@ -47,8 +46,12 @@
           }
 
           &:hover {
-            color: $brand;
+            color: $cornell-red;
           }
+        }
+
+        &.active > a, &.active > a:visited {
+          color: $cornell-red;
         }
       }
     }
