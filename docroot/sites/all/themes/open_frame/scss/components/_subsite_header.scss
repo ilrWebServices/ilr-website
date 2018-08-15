@@ -8,6 +8,10 @@
       @include medium {
         @include trailer(2);
       }
+
+      .cornell {
+        @include hidden;
+      }
     }
 
     #logo {

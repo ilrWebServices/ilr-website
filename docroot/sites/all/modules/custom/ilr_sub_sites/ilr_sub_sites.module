@@ -41,7 +41,7 @@ function ilr_sub_sites_block_view($delta = '') {
   $subsite_name = _ilr_sub_sites_get_current_subsite_name();
   $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
   $seal = file_create_url(drupal_get_path('theme', 'open_frame') . "/images/logos/cornell-seal.svg");
-  $block['content'] = '<a class="cornell-seal__link"><img src="'.$seal.'" alt="Link to Cornell University" /></a>';
+  $block['content'] = '<a href="https://cornell.edu" class="cornell-seal__link"><img src="'.$seal.'" alt="Link to Cornell University" /></a>';
   $block['content'] .= '<div class="subsite-header">';
   $menu_name = _ilr_sub_sites_get_menu_name();
   $block['content'] .= "<h2 class='subsite__heading subsite__heading--$menu_name'>$subsite_name</h2>";
