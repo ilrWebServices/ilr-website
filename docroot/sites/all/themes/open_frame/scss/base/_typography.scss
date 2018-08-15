@@ -253,11 +253,13 @@ p + ul {
 }
 
 hr {
+  @include trailer(1);
+
   clear: both;
   height: 0;
   border: 0;
   border-top: 1px solid $rule;
-  @include trailer(1);
+  width: 100%;
 }
 
 code, pre {
