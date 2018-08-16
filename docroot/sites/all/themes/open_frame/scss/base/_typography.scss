@@ -107,6 +107,10 @@ h1 {
     }
   }
   &#page-title {
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 0.9;
+
     body.front &,
     body.subsite-front & {
       display: none;

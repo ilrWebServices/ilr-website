@@ -205,4 +205,18 @@
     }
   };
 
+  Drupal.behaviors.open_frame_set_frame_height = {
+    attach: function (context, settings) {
+      $(window).load(function() {
+        var menu, menuHeight, menuPos;
+        menu = $('.menu-block-ilr-subnav')
+        menuPos = menu.offset().top;
+        menuHeight = menu.height();
+        frameHeight = menuPos + menuHeight - 20;
+        $('.body__frame .side--left').height(frameHeight);
+
+      });
+    }
+  };
+
 }(jQuery));

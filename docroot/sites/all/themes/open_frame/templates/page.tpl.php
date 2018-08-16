@@ -1,5 +1,5 @@
 <header role="banner" <?php print render($page['nav_trigger_pts']); ?>>
-  <div class="body__frame"></div>
+  <div class="body__frame"><span class="side--left"></span></div>
   <div id="search-form">
     <form action="/search" method="get" id="cu-search-form" accept-charset="UTF-8">
       <input id="search-form-query" type="text" name="s" placeholder="Search" value="" size="20" maxlength="128" class="form-text" />
@@ -33,15 +33,15 @@
       <?php print render($page['highlighted']); ?>
       </div>
     </div><?php endif; ?>
-    <?php print render($title_prefix); ?>
-    <?php if (!empty($section_title)): ?><h1 class="title tile--section"><?php print $section_title; ?></h1>
-    <?php elseif ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
-    <?php print render($title_suffix); ?>
-    <?php if ($breadcrumb): ?>
-    <div id="breadcrumb"><?php print $breadcrumb; ?></div>
-    <?php endif; ?>
     <div id="main" role="main" <?php print render($page['page_width_eq_points']); ?>>
       <div id="content" class="column">
+        <?php print render($title_prefix); ?>
+        <?php if (!empty($section_title)): ?><h1 class="title tile--section"><?php print $section_title; ?></h1>
+        <?php elseif ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
+        <?php print render($title_suffix); ?>
+        <?php if ($breadcrumb): ?>
+        <div id="breadcrumb"><?php print $breadcrumb; ?></div>
+        <?php endif; ?>
         <?php print $messages; ?>
         <div class="section">
           <a id="main-content"></a>

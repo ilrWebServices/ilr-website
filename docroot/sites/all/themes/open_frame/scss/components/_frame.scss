@@ -173,12 +173,14 @@ $frame-width: 20px;
   }
 }
 
-.body__frame { // Currently unused
+.body__frame {
+  @include transition-duration(.3s);
   position: absolute;
   width: 100%;
   border-top: $frame-width / 2 solid $black;
   top: 0;
   left: 0;
+  z-index: 5;
 
   @include large {
     border-top: $frame-width solid $black;
@@ -199,18 +201,35 @@ $frame-width: 20px;
   }
 
   &::before {
-    height: 75px;
+    height: 0; // removing for feedback
+    // height: 75px;
 
-    @include medium {
-      height: 200px;
-    }
+    // @include medium {
+    //   height: 200px;
+    // }
+
+    // @include large {
+    //   height: 300px;
+    // }
+
+    // @include xl {
+    //   height: 400px;
+    // }
+  }
+
+  span.side--left {
+    @include transition-duration(.3s);
+
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: $frame-width / 2;
+    height: 80px;
+    background: $black;
 
     @include large {
-      height: 300px;
-    }
-
-    @include xl {
-      height: 400px;
+      width: $frame-width;
     }
   }
 
