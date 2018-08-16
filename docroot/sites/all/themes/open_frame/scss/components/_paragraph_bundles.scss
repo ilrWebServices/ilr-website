@@ -2,6 +2,10 @@
 // prefixed with pb_
 #main {
   .paragraphs-items-field-para-main-page-content {
+    .field-item {
+      @include rhythm(2);
+    }
+
     .field-name-field-image {
       text-align: center;
       &.field-widget-image-image {

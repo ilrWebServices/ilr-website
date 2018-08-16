@@ -1,17 +1,21 @@
 body.front {
+  .entity-bean {
+    grid-column: 1 / -1;
+  }
+
   .catherwood {
-    @include rhythm(3);
+    margin: 0;
 
     display: grid;
 
     @include large {
-      grid-template-columns: 30% 40% 30%;
+      grid-template-columns: 20% 50% 30%;
       grid-template-rows: 1fr;
     }
 
     @include xl {
       // Check on 1600px screen
-      grid-template-columns: 35% 30% 35%;
+      grid-template-columns: 25% 40% 35%;
     }
 
     .catherwood__image {
