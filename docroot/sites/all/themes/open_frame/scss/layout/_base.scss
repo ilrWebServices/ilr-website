@@ -160,29 +160,8 @@
 }
 
 @mixin layout--standard-grid() {
-  max-width: $page-max-width;
-
-  @include medium {
-    display: grid;
-    grid-template-columns: 70% 26%;
-    grid-gap: 4%;
-
-    #content {
-      grid-column-start: 1;
-      grid-row-start: 1;
-
-      .block-bean {
-        @include two-column-grid;
-      }
-    }
-
-    #sidebar-second {
-      grid-column-start: 2;
-      grid-row-start: 1;
-    }
-  }
-
   @include large {
+    display: grid;
     grid-template-columns: 23% 73%;
     grid-gap: 4%;
 
@@ -202,7 +181,7 @@
     }
   }
 
-  @include breakpoint(1100px) {
+  @include xl {
     grid-template-columns: 17% 50% 25%;
     grid-gap: 4%;
 
@@ -427,15 +406,8 @@
   }
 }
 
-#page,
-#content-bottom {
-  max-width: calc(100% - 2rem);
-  margin: 0 auto;
-  // overflow: hidden;
-
-  @include large {
-    max-width: calc(100% - 100px);
-  }
+#main {
+  padding: 0 2rem;
 
   @include breakpoint($page-max-width) {
     padding: 0;

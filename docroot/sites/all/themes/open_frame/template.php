@@ -38,7 +38,7 @@ function open_frame_preprocess_html(&$variables) {
  */
 function open_frame_preprocess_page(&$variables) {
   $variables['page']['page_width_eq_points'] =  array('#markup' => 'data-eq-pts="320: 320, 550: 550, 768: 768, widescreen: 1280"');
-  $variables['page']['nav_trigger_pts'] =  array('#markup' => 'data-eq-pts="mobile-nav: 300, regular-nav: 945"');
+  $variables['page']['nav_trigger_pts'] =  array('#markup' => 'data-eq-pts="mobile-nav: 300, regular-nav: 1045"');
 
   $translate_block = ilr_google_translate_block_view('google_translate');
   $variables['page']['footer'][] = array('#markup' => $translate_block['content']);

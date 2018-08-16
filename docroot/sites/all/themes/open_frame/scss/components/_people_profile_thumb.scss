@@ -5,7 +5,11 @@ body.page-taxonomy-term .view-areas-expertise-taxonomy-term {
 
   .view-content {
     @include leader(1);
-    @include three-column-grid;
+    @include two-column-grid;
+
+    @include breakpoint($full-break) {
+      @include three-column-grid;
+    }
   }
 
   article {

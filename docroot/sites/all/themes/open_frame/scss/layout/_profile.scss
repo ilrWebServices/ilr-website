@@ -12,9 +12,14 @@ body.node-type-basic-page.people-page,
   }
 }
 
+// Also see _people_profile_thumb.scss
 body.people-page {
   .block-people-profiles,
   .view-content {
-    @include three-column-grid;
+    @include two-column-grid;
+
+    @include breakpoint($full-break) {
+      @include three-column-grid;
+    }
   }
 }

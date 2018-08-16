@@ -55,6 +55,8 @@
   font-size: $p-size;
   color: $color;
   margin: 0;
+  max-width: 750px;
+
   @include trailer(1);
 
   img {
