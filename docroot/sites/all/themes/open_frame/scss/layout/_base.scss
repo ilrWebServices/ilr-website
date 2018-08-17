@@ -278,7 +278,14 @@
     }
 
     #sidebar-second {
-      display: none;
+      grid-column-start: 2;
+      grid-row-start: 2;
+
+      @include medium {
+        .block-bean {
+          @include three-column-grid;
+        }
+      }
     }
   }
 }
@@ -406,7 +413,10 @@
   }
 }
 
-#main {
+#main,
+#content-bottom {
+  @include container;
+
   padding: 0 2rem;
 
   @include breakpoint($page-max-width) {
