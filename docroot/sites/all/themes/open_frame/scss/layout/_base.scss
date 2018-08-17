@@ -39,12 +39,12 @@
   }
 }
 
-@mixin two-column-grid($gap: 30px, $responsive: true) {
+@mixin two-column-grid($gap: 30px, $responsive: true, $breakpoint: $large) {
   display: grid;
   grid-gap: $gap;
 
   @if $responsive {
-    @include large {
+    @include breakpoint($breakpoint) {
       grid-template-columns: repeat(2, 1fr);
     }
   }
