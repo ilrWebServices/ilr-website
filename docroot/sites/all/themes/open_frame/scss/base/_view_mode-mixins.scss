@@ -153,6 +153,7 @@
   overflow: hidden;
   float: none !important; // Weird grid issue
   background: $color-card-bg--light;
+  padding: 0;
 
   > h2, // Duplicates - @see _tagged_content_add_markup_to_group()
   > h3,
@@ -269,6 +270,11 @@
 
       @include xl {
         @include adjust-font-size-to(1.5rem, 1);
+      }
+
+      a {
+        font-family: $font;
+        text-transform: none;
       }
     }
   }
@@ -643,5 +649,215 @@
     img {
       top: -25%;
     }
+  }
+}
+
+@mixin featured-promo {
+  padding: 0;
+
+  h2 {
+    @include adjust-font-size-to(1.2rem, 1);
+    @include set-heading(true, white);
+    @include framed($width: 10px, $color: white, $top: false, $right: true, $bottom: true, $left: false);
+
+    @include medium {
+      @include adjust-font-size-to(1.5rem, 1.1);
+    }
+
+    @include xl {
+      @include adjust-font-size-to(2rem, 1.5);
+    }
+
+    @include breakpoint($page-max-width) {
+      @include adjust-font-size-to(3rem, 2);
+    }
+  }
+  p {
+    color: white;
+    @include trailer(.5);
+  }
+  iframe {
+    width: 100%;
+  }
+
+  .content {
+    @include two-column-grid($gap: 0);
+  }
+
+  .field-name-field-image, .field-name-field-youtube-video {
+    margin: 0;
+    line-height: 0;
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .group-featured-promo-story {
+    grid-row: 2;
+    padding: 0 25px;
+
+    @include medium {
+      padding: 0 50px;
+    }
+
+    @include large {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    ul {
+      padding-left: 0;
+      li {
+        padding-left: 0;
+        background: none;
+        a {
+          color: white;
+          border-bottom-color: white;
+        }
+      }
+    }
+  }
+
+  .field-name-field-youtube-video {
+    grid-column: 1;
+    @include responsive-video;
+  }
+
+  &--image-right {
+    h2 {
+      // Re-set the frame
+      @include framed;
+    }
+    .group-featured-promo-story {
+      grid-column: 1;
+    }
+    .field-name-field-image, .field-name-field-youtube-video {
+
+      @include large {
+        grid-column: 2;
+      }
+    }
+  }
+}
+
+// Dumb name. Naming is hard
+@mixin featured-news-over-cards {
+  width: auto;
+  overflow: visible !important;
+  float: none;
+  margin-bottom: 0;
+  background: none;
+
+  .field-type-image {
+    @include full-width;
+
+    height: auto;
+    padding: 0;
+
+    a {
+      position: relative;
+
+      img {
+        top: 0;
+      }
+    }
+  }
+
+  .news__content,
+  .promo__content {
+    @include trailer(1);
+
+    z-index: 2;
+    background: $dark-gray-orange;
+    margin-top: -1rem;
+    position: relative;
+
+    @include medium {
+      display: grid !important; // the "show" mixin was causing issues
+      grid-template-columns: 2.5% 1fr 1fr 2.5%;
+      grid-template-rows: auto;
+      grid-column-gap: 25px;
+      margin-top: -2rem;
+      padding: 0 0 2rem 0;
+    }
+
+    @include large {
+      grid-column-gap: 50px;
+      margin-top: -150px;
+      padding: $double-space;
+    }
+
+    @include breakpoint($full-break) {
+      grid-column: 1;
+    }
+  }
+
+  .news__date {
+    color: $warm-grey;
+
+    @include medium {
+      @include padding-leader(1);
+
+      grid-column: 2;
+    }
+  }
+
+  .news__title {
+    padding: 0;
+
+    @include medium {
+      grid-column: 2;
+      padding: 0 0 1rem;
+    }
+
+    h2 {
+      background: $dark-gray-orange;
+      color: white;
+      padding: 0;
+
+      @include adjust-font-size-to(1.5rem, 1);
+
+      @include large {
+        @include adjust-font-size-to(2rem, 1.5);
+      }
+
+      @include xl {
+        @include adjust-font-size-to(3rem, 2);
+      }
+
+      a {
+        @include set-heading(true, white);
+      }
+    }
+  }
+
+  .news__teaser {
+    @include medium {
+      grid-column: 3;
+    }
+
+    p {
+      color: white;
+
+      @include large {
+        @include adjust-font-size-to(1.1rem, 1.1);
+      }
+    }
+  }
+
+  .news__more-link {
+    @include medium {
+      grid-column: 3;
+
+      a {
+        color: white;
+        border-bottom: 3px solid white;
+      }
+    }
+  }
+
+  > h2,
+  h3.category,
+  .field-name-field-teaser {
+    @include hidden;
   }
 }

@@ -1,0 +1,16 @@
+#block-bean-news-featured {
+  article {
+    @include featured-news-over-cards;
+
+    .field-type-image {
+      @include full-width($offset-left: 9vw); // Hack
+    }
+  }
+}
+
+#block-bean-news-top-stories,
+#block-bean-latest-ilr-news {
+  article {
+    @include card;
+  }
+}

@@ -115,7 +115,7 @@
 /// Full Width, even outside container
 /// @param {bool} $undo [false]
 /// @link https://css-tricks.com/full-width-containers-limited-width-parents/ Source
-@mixin full-width($undo: false) {
+@mixin full-width($undo: false, $offset-left: 0vw) {
   @if $undo {
     margin-left: 0;
     margin-right: 0;
@@ -130,8 +130,8 @@
     position: relative;
     left: 50%;
     right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    margin-left: -50vw - $offset-left;
+    margin-right: -50vw - $offset-left;
 
     @at-root {
       body[data-menu-position="open"] {

@@ -27,7 +27,7 @@
   padding: 0;
 
   li {
-    @include trailing-border;
+    // @include trailing-border; // Removing for now
 
     list-style-type: none;
     list-style-image: none;
@@ -41,6 +41,7 @@
   }
 
   a {
+    display: block;
     border: none;
     color: #222;
     font-weight: 400;

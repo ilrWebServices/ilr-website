@@ -6,7 +6,7 @@
   }
 
   > h2 {
-    @include set-heading(true);
+    @include set-heading;
 
     letter-spacing: -1px;
     color: $black;
