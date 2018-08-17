@@ -340,8 +340,6 @@ ul.disc {
 li {
   list-style: none;
   padding-left: 1em;
-  @include adjust-font-size-to(ms(0));
-  background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
 }
 
 ul.pager {

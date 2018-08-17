@@ -256,6 +256,9 @@ function _ilr_paragraphs_preprocess_featured_promo(&$variables) {
   $wrapper = entity_metadata_wrapper('paragraphs_item', $variables['paragraphs_item']);
   $direction = $wrapper->field_align_left_right->value();
   $variables['classes_array'][] = "paragraphs-item-featured-promo--image-$direction";
+  if(!empty($wrapper->field_youtube_video->value())) {
+    $variables['classes_array'][] = "paragraphs-item-featured-promo--video";
+  }
 }
 
 /**
