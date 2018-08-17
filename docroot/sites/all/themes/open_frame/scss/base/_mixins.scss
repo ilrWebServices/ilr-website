@@ -301,6 +301,7 @@
   overflow: hidden;
   height: 0;
   padding-bottom: $percentage;
+
   a {
     display: block;
     position: absolute;
@@ -312,8 +313,6 @@
 }
 
 @mixin container($max-width: $page-max-width) {
-  @include clearfix;
-
   max-width: $max-width;
   margin: 0 auto;
 }

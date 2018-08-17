@@ -614,7 +614,7 @@
 
     @include large {
       margin: 0;
-      padding: $pad;
+      padding: $pad $quadruple-space;
     }
   }
 }
@@ -750,8 +750,7 @@
 
 // Dumb name. Naming is hard
 @mixin featured-news-over-cards {
-  width: auto;
-  overflow: visible !important;
+  overflow: visible;
   float: none;
   margin-bottom: 0;
   background: none;
@@ -759,6 +758,7 @@
   .field-type-image {
     @include full-width;
 
+    grid-column: 1 / -1;
     height: auto;
     padding: 0;
 

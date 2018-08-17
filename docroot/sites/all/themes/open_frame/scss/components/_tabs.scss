@@ -1,4 +1,4 @@
-$pad: 2rem;
+$pad: $double-space;
 $doublepad: $pad * 2;
 
 .component--tabs {
@@ -17,7 +17,7 @@ $doublepad: $pad * 2;
 
     letter-spacing: -1px;
     color: white;
-    padding: $pad $pad 0 $pad;
+    padding: $pad $space 0 $space;
     background: $lighter-red;
     cursor: pointer;
 
@@ -57,7 +57,7 @@ $doublepad: $pad * 2;
 
   .tab__content {
     background: $lighter-red;
-    padding: 1rem $pad;
+    padding: 1rem $space;
     z-index: 30;
 
     @include medium {

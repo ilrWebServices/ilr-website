@@ -82,7 +82,7 @@ function tagged_content_block_preprocess_node(&$variables) {
   if ($variables['view_mode'] == 'teaser' && in_array($variables['type'], $tagged_content_types)) {
     // Use a different image style when just one item
     if (empty($variables['siblings']) || (drupal_is_front_page() && $variables['position'] == 1)) {
-      $variables['content']['field_image'][0]['#image_style'] = 'featured_image';
+      $variables['content']['field_image'][0]['#image_style'] = 'focussed_hero';
     }
     // elseif (!empty($variables['show_featured']) && empty($variables['siblings'])) {
     //   $variables['content']['field_image'][0]['#image_style'] = 'featured_image';

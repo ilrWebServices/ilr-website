@@ -13,23 +13,25 @@
     @include trailer(1);
 
     display: grid;
-    grid-template-columns: 1rem 1fr 1rem;
+    grid-template-columns: $quarterpad 1fr $quarterpad;
     max-width: 100%;
 
     @include small {
-      grid-template-columns: 1rem 1fr 1rem;
+      grid-template-columns: $halfpad 1fr $halfpad;
     }
 
     @include medium {
       @include trailer(2);
 
       grid-template-columns: $pad 1fr $pad;
-      grid-template-rows: 1fr 20% auto auto;
     }
 
-    @include xl {
-      grid-template-columns: $pad .8fr 1fr $pad;
-      grid-template-rows: $pad 1.5fr 1fr 1fr $pad;
+    @include large {
+      grid-template-columns: $pad 1fr 1fr $pad;
+
+      h2 {
+        grid-column: 2 / 4;
+      }
     }
 
     .field-name-field-image {
@@ -46,42 +48,32 @@
 
       @include medium {
         @include full-width;
-
-        grid-row: 1 / 3;
-      }
-
-      @include xl {
-        @include full-width(true);
-        grid-row: 1 / -1;
       }
     }
 
-    h2 { @include title-knockout($pad); }
+    h2 {
+      @include title-knockout($pad);
+    }
+
     h2,
     h3 { // h3 is used as a hack for the knockout background
       z-index: 3;
       grid-row: 2 / 3;
-      grid-column: 1 / -1;
+      grid-column: 2;
 
-      @include small {
-        grid-column: 2 / 3;
+      @include large {
+        grid-column: 2 / 4;
       }
 
-      @include medium {
-        grid-row: 2 / 3;
-        grid-column: 2;
-      }
-
-      @include xl {
-        grid-column: 2 / 3;
-        grid-row: 2 / -2;
-        z-index: 2;
+      @include breakpoint($page-max-width) {
+        grid-column: 1 / -1;
       }
     }
 
     h3.category { // Hack for shadow
       @include show;
       background: rgba(0,0,0,.3);
+      color: transparent;
       z-index: 1;
     }
 
@@ -89,11 +81,7 @@
       z-index: 3;
       grid-row: 3 / 4;
       grid-column: 2 / 3;
-
-      @include small {
-        grid-column: 2 / 3;
-        padding: 0 $quarterpad;
-      }
+      padding: $pad / 4 $pad / 4 20px $pad / 4;
 
       @include medium {
         grid-row: 3 / 4;
@@ -101,10 +89,14 @@
         padding: 0 $halfpad;
       }
 
-      @include xl {
-        grid-column: 2 / 3;
-        grid-row: 3 / 4;
-        padding: 0 $pad;
+      @include large {
+        margin: 0;
+        padding: 0 $quadruple-space;
+      }
+
+
+      @include breakpoint($page-max-width) {
+        grid-column: 1 / 3;
       }
 
       p {
@@ -125,6 +117,7 @@
       padding: 0;
       grid-column: 2 / 3;
       grid-row: 4;
+      padding: $pad / 4 $pad / 4 20px $pad / 4;
 
       @include small {
         padding: 0 $quarterpad;
@@ -138,8 +131,8 @@
       }
 
       @include large {
-        grid-column: 2 / 3;
-        grid-row: 4 / 5;
+        grid-column: 3 / 4;
+        grid-row: 3 / 4;
         padding: 0 $pad;
       }
 

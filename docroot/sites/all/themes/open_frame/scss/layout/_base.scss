@@ -417,7 +417,11 @@
 #content-bottom {
   @include container;
 
-  padding: 0 2rem;
+  padding: 0 $space;
+
+  @include medium {
+    padding: 0 $double-space;
+  }
 
   @include breakpoint($page-max-width) {
     padding: 0;
@@ -431,7 +435,9 @@
   overflow: visible;
 }
 
-#main {
+#page {
+  @include clearfix;
+
   clear: both;
   position: relative;
 
@@ -440,12 +446,8 @@
   }
 
   #highlighted {
-    @include clearfix;
-
     margin-top: $main-top-padding * -1;
   }
-
-  @include pie-clearfix;
 
   #sidebar-first {
     display: none;

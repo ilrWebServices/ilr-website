@@ -186,35 +186,23 @@ $frame-width: 20px;
     border-top: $frame-width solid $black;
   }
 
-  &::before,
   &::after {
     content: " ";
     position: absolute;
     background: $black;
     top: 0;
+    height: 30px;
+    right: 0;
     width: $frame-width / 2;
     z-index: 1;
+
+    @include medium {
+      height: 100px;
+    }
 
     @include large {
       width: $frame-width;
     }
-  }
-
-  &::before {
-    height: 0; // removing for feedback
-    // height: 75px;
-
-    // @include medium {
-    //   height: 200px;
-    // }
-
-    // @include large {
-    //   height: 300px;
-    // }
-
-    // @include xl {
-    //   height: 400px;
-    // }
   }
 
   span.side--left {
@@ -228,17 +216,17 @@ $frame-width: 20px;
     height: 80px;
     background: $black;
 
+    @include medium {
+      height: 250px;
+    }
+
     @include large {
+      height: 375px;
       width: $frame-width;
     }
-  }
 
-  &::after {
-    height: 30px;
-    right: 0;
-
-    @include medium {
-      height: 100px;
+    @include xl {
+      height: 200px;
     }
   }
 }
