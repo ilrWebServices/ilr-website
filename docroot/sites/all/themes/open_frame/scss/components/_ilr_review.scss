@@ -1,7 +1,12 @@
 body.ilr-review {
+  .body__frame {
+    display: none;
+  }
+
   header {
     background-image: none;
     background-color: white;
+    padding-top: $space;
 
     .jpanel-trigger-container {
       a.jpanel-trigger {
@@ -11,21 +16,16 @@ body.ilr-review {
 
     .search-button {
       a {
-        color: $blue-ilrreview;
-      }
-    }
-
-    #search-form {
-      input {
-        background: $gray-bg;
-        color: $blue-ilrreview;
-      }
-      input:focus {
-        color: $blue-ilrreview;
+        color: $black;
+        background: transparent;
       }
     }
 
     #header-region {
+      @include full-width;
+      @include rhythm-padding(2);
+
+      max-height: 150px; // The bg image size
       background-color: $blue-ilrreview;
       a {
         color: white;
@@ -34,6 +34,36 @@ body.ilr-review {
       h2 {
         font-style: italic;
       }
+
+      .region-header {
+        @include container;
+
+        padding: 0 $space;
+
+        @include medium {
+          padding: 0 $double-space;
+        }
+
+        @include breakpoint($page-max-width) {
+          padding: 0;
+        }
+
+        .subsite-header .subsite__heading {
+          &--ilr-review {
+            color: white;
+            font-family: arial;
+            font-style: italic;
+            font-size: 2rem;
+            font-weight: 300;
+            text-transform: none;
+            letter-spacing: 0;
+            margin: 0;
+          }
+        }
+      }
+    }
+    .logo-wrapper {
+      margin-bottom: $space;
     }
   }
 
@@ -41,5 +71,9 @@ body.ilr-review {
     #header-region {
       background: $blue-ilrreview url("../images/bg-globe-blue.gif") no-repeat left top;
     }
+  }
+
+  #main a {
+    border-bottom: 1px solid $gray-light;
   }
 }

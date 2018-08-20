@@ -37,13 +37,18 @@ function ilr_sub_sites_theme() {
 * Implements hook_block_view().
 */
 function ilr_sub_sites_block_view($delta = '') {
-  $block = array();
+  $block = ['content' => ''];
   $subsite_name = _ilr_sub_sites_get_current_subsite_name();
   $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
-  $seal = file_create_url(drupal_get_path('theme', 'open_frame') . "/images/logos/cornell-seal.svg");
-  $block['content'] = '<a href="https://cornell.edu" class="cornell-seal__link"><img src="'.$seal.'" alt="Link to Cornell University" /></a>';
-  $block['content'] .= '<div class="subsite-header">';
   $menu_name = _ilr_sub_sites_get_menu_name();
+  // If custom logo, add the seal
+  if (_ilr_sub_sites_get_site_logo($menu_name, $subsite_name)) {
+    $seal = file_create_url(drupal_get_path('theme', 'open_frame') . "/images/logos/cornell-seal.svg");
+    $block['content'] .= '<a href="https://cornell.edu" class="cornell-seal__link"><img src="'.$seal.'" alt="Link to Cornell University" /></a>';
+  }
+
+  $block['content'] .= '<div class="subsite-header">';
+
   $block['content'] .= "<h2 class='subsite__heading subsite__heading--$menu_name'>$subsite_name</h2>";
   if ($subtitle = _ilr_sub_sites_get_menu_description($menu_name)) {
     if ($subtitle != "SubSite menu") {
@@ -272,10 +277,10 @@ function ilr_sub_sites_preprocess_page(&$variables) {
       $logo = file_create_url(drupal_get_path('theme', 'open_frame') . "/images/logos/" . $logo_filename);
       $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
       $variables['front_page'] = $href;
+
+      $variables['logo_link'] = '<a class="cornell cornell--ilr" title="Visit ilr.cornell.edu" href="https://www.ilr.cornell.edu"></a>';
     }
   }
-
-  $variables['logo_link'] = '<a class="cornell cornell--ilr" title="Visit ilr.cornell.edu" href="https://www.ilr.cornell.edu"></a>';
 
   $variables['logo'] = $logo;
 }
