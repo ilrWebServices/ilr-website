@@ -84,3 +84,15 @@
     }
   }
 }
+
+#main {
+  #sidebar-first {
+    display: none;
+  }
+
+  [data-eq-state="regular-nav"] & {
+    #sidebar-first {
+      display: block;
+    }
+  }
+}
