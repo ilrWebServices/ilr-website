@@ -153,13 +153,7 @@ function _tagged_content_block_enable_default_bundles() {
 }
 
 function _tagged_content_block_generate_thumbnail_markup($url, $content_type, $text=NULL) {
-  if ($content_type == 'event') {
-    $month = $text['month'];
-    $day = $text['day'];
-    $markup = "<div class='thumbnail custom event'><a href='$url'><span>$month<br>$day</span></a></div>";
-  } else {
-    $markup = "<div class='thumbnail custom $content_type'><a href='$url'></a></div>";
-  }
+  $markup = "<div class='thumbnail custom $content_type'><a href='$url'></a></div>";
   return $markup;
 }
 

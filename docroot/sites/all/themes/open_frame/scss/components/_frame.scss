@@ -78,13 +78,13 @@ $frame-width: 20px;
 }
 
 // Still needs work to improvem this
-@mixin frame-from-corner($width: 5px, $corner: left top, $length: 30%, $color: $black) {
+@mixin frame-from-corner($width: 5px, $corner: left top, $length: 30%, $height: $length, $color: $black) {
   padding: 2 * $width;
   background-image: linear-gradient($color, $color),
     linear-gradient($color, $color);
   background-position: $corner;
   background-repeat: no-repeat;
-  background-size: $length $width, $width $length;
+  background-size: $length $width, $width $height;
 }
 
 // Used for headings; possibly could be available to other elements

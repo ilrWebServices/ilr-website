@@ -132,10 +132,6 @@
   .promo__content {
     @include hidden;
   }
-
-  .thumbnail.custom {
-    @include custom-thumbnail;
-  }
 }
 
 @mixin card {
@@ -378,19 +374,6 @@
     font-family: $font;
     font-weight: bold;
     @include adjust-font-size-to(14px);
-  }
-
-  @include addHighlightColors('.thumbnail.custom a', 'background-color', .2);
-  .thumbnail.custom {
-    @include custom-thumbnail;
-    @include circularImage(150px);
-    margin: 0 auto;
-    &.event a {
-      background: $event-color;
-      @include adjust-font-size-to(25px);
-      padding-top: .5em;
-      line-height: .8;
-    }
   }
 
   &.node-basic-page,

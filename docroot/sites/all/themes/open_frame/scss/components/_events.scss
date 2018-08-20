@@ -1,5 +1,5 @@
 .event-block {
-  @include bean-base;
+  @include two-column-grid($breakpoint: $medium);
 }
 
 // Includes the "more link"
@@ -10,5 +10,46 @@
   .more-link {
     @include center;
     @include framed--button;
+  }
+}
+
+article.event {
+  display: grid;
+  grid-template-columns: 33% auto;
+  grid-template-rows: repeat(2, auto);
+
+  &[data-eq-state="large"] {
+    grid-template-columns: 20% auto;
+  }
+
+  .event__date {
+    @include center;
+    @include frame-from-corner($height: 15px);
+
+    position: relative;
+    text-align: center;
+    grid-column: 1;
+    grid-row: 1 / -1;
+
+    span {
+      font-size: 2rem;
+    }
+  }
+  .event__category {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 0.8rem;
+    line-height: 1;
+    margin-bottom: 0;
+    text-transform: none;
+    color: $cornell-red;
+  }
+
+  .event__title {
+    grid-column: 2;
+    grid-row: 2;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.2rem;
   }
 }

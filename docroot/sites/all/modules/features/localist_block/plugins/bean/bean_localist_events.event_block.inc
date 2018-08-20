@@ -127,12 +127,12 @@ class EventBlockBean extends BeanPlugin {
     $event_title = truncate_utf8(strip_tags($event['title']), 55, FALSE, TRUE);
 
     // Create the markup
-    $markup = "<article class='localist-event' data-eq-pts='small: 100, medium: 275, large: 350' role='article'>\n";
-    $markup .= "<h3 class='category event'>Event / $event_type_info</h3>";
-    if (module_exists('tagged_content_block')) {
-      $markup .= _tagged_content_block_generate_thumbnail_markup($event_localist_url, 'event', $event_date);
-    }
-    $markup .= "<h2 class='event-title'><a href='{$event_localist_url}'>{$event_title}</a></h2>";
+    $markup = "<article class='localist-event event' data-eq-pts='small: 100, medium: 275, large: 350' role='article'>\n";
+    $month = $event_date['month'];
+    $day = $event_date['day'];
+    $markup .= "<div class='event__date'><p>$month<br><span>$day</span></p></div>";
+    $markup .= "<h3 class='category event__category'>Event / $event_type_info</h3>";
+    $markup .= "<h2 class='event-title event__title'><a href='{$event_localist_url}'>{$event_title}</a></h2>";
     $markup .= "</article><!-- end article -->\n\n";
 
     return $markup;
