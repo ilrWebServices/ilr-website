@@ -87,7 +87,7 @@
 
   display: grid;
   grid-template-columns: 25% 70%;
-  grid-template-rows: 30px 1fr;
+  grid-template-rows: repeat(4, auto);
   grid-gap: 5%;
   padding: 1rem;
   background: lighten($warm-grey, 13%);
