@@ -168,6 +168,11 @@
     #content {
       grid-column-start: 2;
       grid-row-start: 1;
+
+      .block-bean,
+      .tagged-content {
+        @include two-column-grid;
+      }
     }
 
     #sidebar-first {
