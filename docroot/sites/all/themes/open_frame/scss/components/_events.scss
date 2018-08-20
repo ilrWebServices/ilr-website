@@ -15,6 +15,7 @@
 
 article.event {
   display: grid;
+  position: relative;
   grid-template-columns: 33% auto;
   grid-template-rows: repeat(2, auto);
 
@@ -23,7 +24,6 @@ article.event {
   }
 
   .event__date {
-    @include center;
     @include frame-from-corner($height: 15px);
 
     position: relative;
