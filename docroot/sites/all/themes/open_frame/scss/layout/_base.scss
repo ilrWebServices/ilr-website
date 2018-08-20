@@ -419,7 +419,7 @@
 }
 
 #main,
-#content-bottom {
+#content-bottom .section {
   @include container;
 
   padding: 0 $space;
@@ -433,6 +433,11 @@
   }
 }
 
+#content-bottom {
+  @include full-width;
+  @include rhythm-padding(1);
+  background: lighten($warm-grey, 13%);
+}
 
 .container {
   @include container;

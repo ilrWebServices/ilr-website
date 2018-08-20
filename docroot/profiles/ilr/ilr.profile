@@ -123,6 +123,14 @@ function ilr_menu_block_blocks() {
   $follow = ($menu == 'main-menu') ? 'active' : 'child'; // Not zero indexed
   $level = ($menu == 'main-menu') ? 1 : 2; // Not zero indexed
   $mlid = ilr_get_current_mlid();
+  if (ilr_mlid_has_children($mlid)) {
+    $follow = 'child';
+    $depth_relative = 1;
+  }
+  else {
+    $follow = 'active';
+    $depth_relative = 0;
+  }
   $follow = (ilr_mlid_has_children($mlid)) ? 'child' : 'active';
   return array(
     // The array key is the block id used by menu block.
@@ -137,7 +145,7 @@ function ilr_menu_block_blocks() {
       'expanded'    => TRUE,
       'sort'        => FALSE,
       'parent_mlid' => 0,
-      'depth_relative' => 1,
+      'depth_relative' => $depth_relative,
     ),
     'ilr-primary-menu' => array(
       // Use the array keys/values described in menu_tree_build().
@@ -903,7 +911,19 @@ function ilr_add_section_title(&$variables, $title=NULL) {
   else {
     $parents = ilr_get_menu_trail_by_path();
     if (count($parents) > 2) {
-      $parent_title = menu_get_object('node', 1, $parents[count($parents) - 2])->title;
+      $url = $parents[count($parents) - 2];
+      $path = (strpos($url, 'node') === 0)
+        ? $url
+        : drupal_lookup_path("source", $url);
+      if (!$path) { // Check if there is a redirect
+        $redirects = redirect_fetch_rids_by_path($url, LANGUAGE_NONE);
+        if (!empty($redirects)) {
+          $redirect = redirect_load($redirects[0]);
+          $path = drupal_lookup_path("source", $redirect->redirect);
+        }
+      }
+      $parent_title = menu_get_object('node', 1, $path)->title;
+
       $variables['section_title'] = $parent_title;
     }
   }

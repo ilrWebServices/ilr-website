@@ -943,7 +943,7 @@ function ilr_update_7071() {
 function ilr_update_7072() {
   $query = db_select('node', 'n');
   $query->addField('n', 'nid');
-  $query->condition('n.type', array('sdc_course', 'sdc_course', 'sdc_faculty', 'certificate_programs'), 'IN');
+  $query->condition('n.type', array('sdc_course', 'sdc_course', 'sdc_faculty', 'certificate_programs', 'student_portraits'), 'IN');
   $nids = $query->execute()->fetchCol();
 
   pathauto_node_update_alias_multiple($nids, 'bulkupdate');
