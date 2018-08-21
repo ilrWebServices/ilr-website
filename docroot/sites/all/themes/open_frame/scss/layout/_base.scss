@@ -169,7 +169,7 @@
       grid-column-start: 2;
       grid-row-start: 1;
 
-      .block-bean,
+      .field-name-field-text-paragraph .block-bean,
       .tagged-content {
         @include two-column-grid;
       }
@@ -419,6 +419,7 @@
 }
 
 #main,
+#highlighted .section,
 #content-bottom .section {
   @include container;
 
@@ -430,6 +431,15 @@
 
   @include breakpoint($page-max-width) {
     padding: 0;
+  }
+
+  .row .column {
+    float: left;
+    width: 50%;
+  }
+  .column { // Bug fix
+    float: none;
+    width: 100%;
   }
 }
 
