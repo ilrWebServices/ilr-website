@@ -7,16 +7,6 @@
 include_once 'ilr_visiting_fellows.features.inc';
 
 /**
- * Implements hook_node_view().
- */
-function ilr_visiting_fellows_node_view($node, $view_mode, $langcode) {
-  if($node->type == 'visiting_fellow') {
-    $selector = 'node-type-visiting-fellow';
-    drupal_add_js(array('change_hover_color' => array('selector' => $selector)), array('type' => 'setting'));
-  }
-}
-
-/**
  * Implements hook_preprocess_node
  */
 function ilr_visiting_fellows_preprocess_node(&$variables) {

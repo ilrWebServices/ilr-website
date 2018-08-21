@@ -11,9 +11,10 @@
     letter-spacing: -1px;
     color: $black;
 
-    #content-bottom & {
-      display: none;
-    }
+    // @todo - figure out where this was necessary
+    // #content-bottom & {
+    //   display: none;
+    // }
   }
 
   article {
