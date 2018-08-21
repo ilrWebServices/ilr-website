@@ -296,7 +296,7 @@
 }
 
 @mixin layout--two-cols-no-first-sidebar {
-  @include large {
+  @include medium {
     display: grid;
     grid-template-columns: 65% 30%;
     grid-gap: 5%;
@@ -305,8 +305,12 @@
       grid-column-start: 1;
       grid-row-start: 1;
 
-      .block-bean {
+      .block-bean.tagged-content {
         @include two-column-grid;
+
+        &[data-items="3"] {
+          @include three-column-grid;
+        }
       }
 
       .field-name-body,
@@ -411,6 +415,12 @@
 }
 
 .region-highlighted {
+  .tagged-content[data-items="3"] {
+    @include medium {
+      @include three-column-grid;
+    }
+  }
+
   .tagged-content[data-items="4"] {
     @include medium {
       @include four-column-grid;
