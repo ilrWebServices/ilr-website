@@ -143,7 +143,6 @@ function ilr_menu_block_blocks() {
     'parent_mlid' => 0,
     'follow' => 'active',
     'title_link' => 1,
-    // 'sort' => TRUE,
     'depth' => $depth,
     'depth_relative' => $depth_relative
   ];
@@ -165,6 +164,17 @@ function ilr_menu_block_blocks() {
       'sort'        => FALSE,
     ),
   );
+}
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function ilr_block_view_alter(&$data, $block) {
+  if ($block->delta == 'ilr-subnav') {
+    if ($data['subject'] == "Main menu") {
+      $data['subject'] = '<a href="/">Home</a>';
+    }
+  }
 }
 
 /**
