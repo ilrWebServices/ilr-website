@@ -67,24 +67,36 @@
 body.node-type-certificate-programs {
   .field-name-field-value-propositions {
     @include small-text;
-    // Note mixin below still needs work
-    @include frame-from-corner($width: 5px, $length: 5%, $color: $black);
+  }
+
+  .certificate_program__title {
+    @include frame-from-corner($width: 8px, $length: 40px, $height: 20px);
+
+    padding: 1.5rem;
+    margin: 0;
+    line-height: 1.2;
   }
 
   @include large {
+
     #content {
       @include add-grid(12);
     }
+
     .field-name-field-image {
       @include grid-span(4);
 
       margin: 0;
     }
 
-    .field-name-field-value-propositions {
-      @include grid-span(8, 5);
+    .certificate_program__title {
+      @include grid-span(7, 6);
 
-      padding: 1rem;
+      margin-right: 25px;
+    }
+
+    .field-name-field-value-propositions {
+      @include grid-span(7, 6);
 
       li {
         @include trailer(1);
@@ -109,10 +121,20 @@ body.node-type-certificate-programs {
 
     .field-name-field-course {
       background: $color-course-class-bg;
+      border: 1px solid white;
+
+      &:hover {
+        background: white;
+        border: 1px solid $dark-gray-orange;
+      }
     }
 
     article {
-      padding: $double-space;
+      padding: $space;
+
+      @include medium {
+        padding: $double-space;
+      }
 
       h2 {
         @include adjust-font-size-to(1rem, 1);

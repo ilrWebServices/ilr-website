@@ -944,8 +944,9 @@ function ilr_get_menu_trail_by_path() {
 
 function ilr_get_menu_item($nid=NULL) {
   if (!$nid) {
-    $node = menu_get_object();
-    $nid = $node->nid;
+    if ($node = menu_get_object()) {
+      $nid = $node->nid;
+    }
   }
   if ($nid) {
     $menu_record = db_select('menu_links', 'ml')

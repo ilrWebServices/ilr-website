@@ -52,6 +52,12 @@ function ilr_certificate_programs_entity_info_alter(&$entity_info) {
   );
 }
 
+function ilr_certificate_programs_preprocess_page(&$variables) {
+  if (!empty($variables['node']) && $variables['node']->type == 'certificate_programs') {
+    ilr_add_section_title($variables, 'Certificate Programs');
+  }
+}
+
 /**
  * Implements hook_node_view().
  * Adds Javascript for core curriculum list's accordian behavior.
@@ -95,6 +101,11 @@ function ilr_certificate_programs_preprocess_node(&$variables) {
         $variables['content']['field_thumbnail']['#prefix'] = '<p class="partner-credit">In partnership with <span>'. $alt_text .'</span>';
         $variables['content']['field_thumbnail']['#suffix'] = '</p>';
       }
+    }
+    elseif ($variables['view_mode'] == 'full') {
+      $variables['content']['title'] = [
+        '#markup' => '<h2 class="certificate_program__title">' . $variables['node']->title . '</h2>'
+      ];
     }
   }
 }
