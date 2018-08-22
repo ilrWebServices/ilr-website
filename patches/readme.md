@@ -79,3 +79,6 @@ Example:
   * Adds support and tests for removeSegmentMember
   * https://github.com/thinkshout/mailchimp-api-php/pull/67
 
+* menu_block
+  * Allows menu to show only children of active item
+  * https://www.drupal.org/project/menu_block/issues/927380#comment-9742591

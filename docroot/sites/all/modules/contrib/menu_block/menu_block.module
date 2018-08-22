@@ -245,6 +245,7 @@ function menu_block_default_config() {
     'depth_relative' => 0,
     'expanded' => 0,
     'sort' => 0,
+    'paged' => 0,
   );
 }
 
@@ -349,6 +350,9 @@ function menu_tree_block_data(array &$config) {
     // Get the full, un-pruned tree.
     if ($config['parent_mlid'] || !empty($config['depth_relative'])) {
       $tree = menu_tree_all_data($config['menu_name']);
+    }
+    elseif ($config['paged']) {
+      $tree = menu_tree_page_data($config['menu_name']);
     }
     else {
       $tree = menu_tree_all_data($config['menu_name'], NULL, $max_depth);

@@ -122,39 +122,36 @@ function ilr_menu_block_blocks() {
   }
   $follow = ($menu == 'main-menu') ? 'active' : 'child'; // Not zero indexed
   $level = ($menu == 'main-menu') ? 1 : 2; // Not zero indexed
+  $depth = $depth_relative = 0;
+  $paged = 1;
   $menu_item = ilr_get_menu_item();
-  if ($menu_item && ilr_mlid_has_children($menu_item->mlid)) {
-    $follow = 'child';
-    $depth_relative = 1;
-    $depth = 1;
-  }
-  else {
-    if ($menu_item) { // Check whether there are siblings
-      $depth_relative =  ilr_mlid_has_siblings($menu_item->plid);
+  if ($menu_item && !ilr_mlid_has_children($menu_item->mlid)) {
+    if (!ilr_mlid_has_siblings($menu_item->plid)) {
+      $trail = menu_get_active_trail();
+      $depth = count($trail) - 2;
+      $paged = 0;
     }
-    else {
-      $depth_relative = 0;
-    }
-    $follow = 'active';
-    $trail = menu_get_active_trail();
-    $depth = count($trail) - 2;
   }
 
+  $defaults = menu_block_default_config();
+
+  $overrides = [
+    'menu_name'   => $menu,
+    'admin_title' => 'ILR Sidebar Menu',
+    'expanded'    => TRUE,
+    'paged' => $paged,
+    'parent_mlid' => 0,
+    'follow' => 'active',
+    'title_link' => 1,
+    // 'sort' => TRUE,
+    'depth' => $depth,
+    'depth_relative' => $depth_relative
+  ];
+
+  $subnav = array_replace($defaults, $overrides);
+
   return array(
-    // The array key is the block id used by menu block.
-    'ilr-subnav' => array(
-      // Use the array keys/values described in menu_tree_build().
-      'menu_name'   => $menu,
-      'title_link'  => FALSE,
-      'admin_title' => 'ILR Sidebar Menu',
-      'level'       => 1,
-      'follow'      => $follow,
-      'depth'       => $depth,
-      'expanded'    => TRUE,
-      'sort'        => FALSE,
-      'parent_mlid' => 0,
-      'depth_relative' => $depth_relative,
-    ),
+    'ilr-subnav' => $subnav,
     'ilr-primary-menu' => array(
       // Use the array keys/values described in menu_tree_build().
       'menu_name'   => $menu,

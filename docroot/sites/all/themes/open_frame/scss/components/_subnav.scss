@@ -7,11 +7,21 @@
 
 .block-menu-block { // All nav menus
   clear: both;
-  h2 { @extend .hidden; }
-}
+  h2 {
+    @include trailing-border;
+    @include paragraph-text;
 
-.jPanelMenu-panel {
-  @include box-shadow(0 10px 10px 0px rgba(black, .5));
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    padding: 0.5rem 0;
+    position: relative;
+
+    &::before {
+      content: '\27E8';
+      position: absolute;
+      left: -1rem;
+    }
+  }
 }
 
 #jPanelMenu-menu {
@@ -32,7 +42,7 @@
     list-style-type: none;
     list-style-image: none;
     background: none;
-    padding: 0.5rem 0;
+    padding: 0.3rem 0;
     margin: 0;
 
     &:first-child {
@@ -47,12 +57,12 @@
     font-weight: 400;
   }
 
-  .active-trail a {
+  .active-trail {
     color: $link;
   }
 
   ul {
-    display: none;
+    margin: 0.5rem 0 0 1rem;
   }
 
   #jPanelMenu-menu & {
