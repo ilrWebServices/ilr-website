@@ -180,7 +180,7 @@
     attach: function (context, settings) {
       $(window).load(function() {
         var menu, menuHeight, menuPos;
-        menu = $('.menu-block-ilr-subnav');
+        menu = $('#block-menu-block-ilr-subnav');
         if ($(menu).is(":visible")) {
           menuPos = $('#sidebar-first').offset().top;
           menuHeight = menu.height();
