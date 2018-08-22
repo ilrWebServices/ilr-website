@@ -19,7 +19,11 @@
     &::before {
       content: '\27E8';
       position: absolute;
-      left: -1rem;
+      left: -0.75rem;
+
+      @include breakpoint($full-break) {
+        left: -1rem;
+      }
     }
   }
 }
@@ -42,8 +46,9 @@
     list-style-type: none;
     list-style-image: none;
     background: none;
-    padding: 0.3rem 0;
+    padding: 0.5rem 0;
     margin: 0;
+    line-height: 1.1;
 
     &:first-child {
       padding-top: 0.2rem;
@@ -62,7 +67,7 @@
   }
 
   ul {
-    margin: 0.5rem 0 0 1rem;
+    margin: 0.7rem 0 0 1rem;
   }
 
   #jPanelMenu-menu & {
