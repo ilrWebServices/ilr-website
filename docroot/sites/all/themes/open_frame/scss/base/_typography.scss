@@ -109,7 +109,8 @@ h1 {
       color: $h1-link-hover;
     }
   }
-  &#page-title {
+  &#page-title,
+  &.title {
     font-weight: 400;
     letter-spacing: -2px;
     line-height: 0.9;

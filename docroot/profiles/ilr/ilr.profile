@@ -122,16 +122,24 @@ function ilr_menu_block_blocks() {
   }
   $follow = ($menu == 'main-menu') ? 'active' : 'child'; // Not zero indexed
   $level = ($menu == 'main-menu') ? 1 : 2; // Not zero indexed
-  $mlid = ilr_get_current_mlid();
-  if (ilr_mlid_has_children($mlid)) {
+  $menu_item = ilr_get_menu_item();
+  if ($menu_item && ilr_mlid_has_children($menu_item->mlid)) {
     $follow = 'child';
     $depth_relative = 1;
+    $depth = 1;
   }
   else {
+    if ($menu_item) { // Check whether there are siblings
+      $depth_relative =  ilr_mlid_has_siblings($menu_item->plid);
+    }
+    else {
+      $depth_relative = 0;
+    }
     $follow = 'active';
-    $depth_relative = 0;
+    $trail = menu_get_active_trail();
+    $depth = count($trail) - 2;
   }
-  $follow = (ilr_mlid_has_children($mlid)) ? 'child' : 'active';
+
   return array(
     // The array key is the block id used by menu block.
     'ilr-subnav' => array(
@@ -139,9 +147,9 @@ function ilr_menu_block_blocks() {
       'menu_name'   => $menu,
       'title_link'  => FALSE,
       'admin_title' => 'ILR Sidebar Menu',
-      'level'       => 1, // debugging http://www.ilr-website.test/academics/internships/credit-internships/student-profiles/david-ticzon vs http://www.ilr-website.test/admissions/undergraduate-admissions/student-experience/student-spotlights/amber-aspinall
+      'level'       => 1,
       'follow'      => $follow,
-      'depth'       => 2,
+      'depth'       => $depth,
       'expanded'    => TRUE,
       'sort'        => FALSE,
       'parent_mlid' => 0,
@@ -934,27 +942,41 @@ function ilr_get_menu_trail_by_path() {
   return $parents;
 }
 
-function ilr_get_current_mlid($node=NULL) {
-  if (!$node) {
+function ilr_get_menu_item($nid=NULL) {
+  if (!$nid) {
     $node = menu_get_object();
+    $nid = $node->nid;
   }
-  if ($node) {
+  if ($nid) {
     $menu_record = db_select('menu_links', 'ml')
-      ->condition('ml.link_path', 'node/' . $node->nid)
+      ->condition('ml.link_path', 'node/' . $nid)
       ->fields('ml', array('menu_name', 'mlid', 'plid', 'hidden'))
       ->execute()
       ->fetchObject();
 
     if (is_object($menu_record)) {
-      return $menu_record->mlid;
+      return $menu_record;
     }
   }
-  return 0;
+  return NULL;
 }
 
 function ilr_mlid_has_children($mlid) {
   $menu_record = db_select('menu_links', 'ml')
       ->condition('ml.plid', $mlid)
+      ->condition('ml.hidden', 1, '!=')
+      ->fields('ml', array('mlid'))
+      ->execute()
+      ->fetchObject();
+  if (!empty($menu_record)) {
+    return 1;
+  }
+  return 0;
+}
+
+function ilr_mlid_has_siblings($plid) {
+  $menu_record = db_select('menu_links', 'ml')
+      ->condition('ml.plid', $plid)
       ->condition('ml.hidden', 1, '!=')
       ->fields('ml', array('mlid'))
       ->execute()
