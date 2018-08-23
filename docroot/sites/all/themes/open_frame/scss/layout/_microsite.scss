@@ -3,11 +3,13 @@ body.microsite.subsite-front {
     @include layout--full-width-grid;
   }
 
+
   #content-bottom {
     padding: 0;
 
     .block-bean {
       @include one-column;
+      @include rhythm(2);
 
       .microsite-featured-speakers {
         @include three-column-grid;
@@ -24,31 +26,9 @@ body.microsite.subsite-front {
       }
     }
 
-    .microsite-featured-speakers {
-      // @include three-column-grid;
-      // article.featured-speaker {
-      //   @include one-column;
-
-      //   @include medium {
-      //     @include two-column;
-      //   }
-      // }
-      h2 {
-        grid-column-start: 1;
-        grid-column-end: span 3;
-      }
-
-      article {
-        width: 100%;
-      }
-    }
-
-    .microsite-individual-speaker {
-      article.featured-speaker {
-        margin: 0 auto;
-        width: 100%;
-        // max-width: 400px;
-      }
+    .content h2 {
+      grid-column-start: 1 / -1;
+      text-align: center;
     }
   }
 }

@@ -3,7 +3,7 @@
   @include full-width;
 
   position: relative;
-  min-height: 380px;
+  min-height: 520px;
   overflow: hidden;
 
   &__background {
@@ -30,14 +30,21 @@
     width: 80%;
 
     .action-callout__tagline {
+      margin: 0 auto;
       font-family: $font;
-      font-size: 1.4rem;
-      font-weight: 300;
+      font-size: 1.6rem;
+      font-weight: 600;
       color: white;
-      @include adjust-leading-to(.9);
+      @include adjust-leading-to(.7);
 
       @include large {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
+        max-width: 50%;
+      }
+
+      @include xl {
+        font-size: 3rem;
+        max-width: 40%;
       }
     }
   }
@@ -45,11 +52,10 @@
   &__button {
     @include button;
     color: white;
-    display: inline-block !important;
-    box-shadow: 1px 2px 4px rgba(black, .5) !important;
 
-    &:visited {
+    &:visited, &:hover {
       color: white;
+      background: rgba(0, 0, 0, 0.3);
     }
   }
 
@@ -57,17 +63,11 @@
     .action-callout__image {
       background-image: url('../images/dodgers.jpg');
     }
-    .action-callout__overlay {
-      @include overlay($orange);
-    }
   }
 
   &--hockey {
     .action-callout__image {
       background-image: url('../images/blackhawks.jpg');
-    }
-    .action-callout__overlay {
-      @include overlay($purple);
     }
   }
 

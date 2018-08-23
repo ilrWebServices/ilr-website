@@ -1,10 +1,27 @@
-.microsite-featured-speakers {
+.microsite {
+  .block > h2 {
+    @include hidden;
+  }
+
+  .content h2 {
+    @include set-heading(true);
+    @include adjust-font-size-to(3rem);
+  }
+}
+
+.microsite .microsite-featured-speakers {
   @include container;
 
   background: $black;
 
+  h2 {
+    color: white;
+  }
+
   .featured-speaker {
     @include card--person($cornell-red);
+
+    cursor: pointer;
 
     p {
       line-height: 0.5;
@@ -13,6 +30,161 @@
   }
 }
 
+.microsite-moderators {
+  article {
+    @include card--person($dark-gray-orange);
+
+    cursor: pointer;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.microsite-individual-speaker {
+  article.featured-speaker {
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.microsite-speakers {
+  @include full-width;
+  @include rhythm-padding(1);
+
+  background-color: $warm-grey;
+
+  &__container {
+    @include container;
+    @include four-column-grid;
+  }
+
+  article.speaker {
+    @include card--person;
+
+    cursor: pointer;
+
+    h3 {
+      padding-top: 1rem;
+    }
+  }
+}
+
+.microsite-sponsors {
+  padding-left: 34px;
+  padding-right: 34px;
+  text-align: center;
+
+  p {
+    @include adjust-font-size-to(23px);
+
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  ul {
+    margin-top: 55px;
+
+    li {
+      display: inline;
+      padding-left: 0;
+      img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+    li.square {
+      display: block;
+      @include trailer(1);
+      img {
+        width: 175px;
+        height: 120px;
+      }
+    }
+    li.rect {
+      display: block;
+      @include trailer(1);
+      img {
+        width: 250px;
+        height: 98px;
+      }
+    }
+  }
+}
+
+.microsite-schedule {
+  text-align: center;
+
+  p {
+    max-width: 100%;
+    font-size: 21px;
+    font-weight: 400;
+    margin-bottom: 27px;
+  }
+
+  li {
+    color: $orange;
+
+    @include medium {
+      display: inline;
+    }
+  }
+}
+
+.microsite-venue {
+  background-color: $cornell-red;
+
+  @include medium {
+    @include two-column-grid($gap: 0);
+  }
+
+  h2 {
+    padding: $space $space 0 $double-space;
+    text-align: left !important;
+    color: white !important;
+
+    @include medium {
+      padding-bottom: $space;
+      padding-left: $quadruple-space;
+    }
+  }
+
+  .venue {
+    background-color: $color-venue-bg;
+
+    @include medium {
+      grid-column: 1;
+      grid-row: 2;
+
+      .address {
+        @include center($horizontally: false, $vertically: true);
+      }
+    }
+
+    .address {
+      padding: $space $space $space $double-space;
+
+      @include medium {
+        padding-left: $quadruple-space;
+      }
+
+      * {
+        color: white;
+        border-color: transparent;
+      }
+    }
+  }
+
+  .map {
+    line-height: 0.5;
+
+    @include medium {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+}
 // body.microsite {
 //   &.sports-leadership {
 //     #page {
@@ -506,13 +678,6 @@
 //         // padding: 21px 89px 0;
 //         // clear: both;
 //         // overflow: auto;
-//       }
-//     }
-//     .microsite-schedule {
-//       padding-left: 55px;
-//       padding-right: 55px;
-//       li {
-//         display: inline;
 //       }
 //     }
 //     .microsite-schedule-table {

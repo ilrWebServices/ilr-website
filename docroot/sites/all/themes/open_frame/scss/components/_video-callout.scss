@@ -1,14 +1,14 @@
 .video-callout {
-  // @include full-width;
   // @include padding-trailer(1);
-  // @include clearfix;
-  background-color: $dark-blue;
+  @include clearfix;
+
+  background-color: #002A48;
 
   &__content {
     text-align: center;
 
     @include medium {
-      @include grid-span(5,2);
+      @include grid-span(6);
       text-align: left;
       padding: 0;
     }
@@ -37,7 +37,7 @@
     @include large {
       display: inline-block;
       vertical-align: middle;
-      padding: 0 3em;
+      padding: 0 100px;
     }
 
     @include xl {
@@ -59,4 +59,8 @@
   &__video {
     @include responsive-video;
   }
+}
+
+#content-bottom #block-bean-sls-video {
+  margin: 0;
 }

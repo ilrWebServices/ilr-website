@@ -421,6 +421,37 @@
 
 @mixin card--person($bg-color: $black) {
   @include image-heading-text;
+
+  background-color: $bg-color;
+
+  h2, h3, h4 {
+    @include set-heading(true);
+
+    margin: 0;
+    color: $white;
+    padding-left: $double-space;
+    padding-right: $double-space;
+    line-height: 0.9;
+
+    span {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 0;
+      padding-top: $half-space;
+    }
+  }
+
+  h3 {
+    font-size: 2rem;
+    padding-bottom: $double-space;
+  }
+
+  h4 {
+    font-size: 0.8rem;
+    letter-spacing: 0;
+    padding-top: $space;
+    padding-bottom: $half-space;
+  }
 }
 
 @mixin card-rounded() {
