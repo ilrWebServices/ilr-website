@@ -885,7 +885,7 @@ function ilr_forms_staff_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 43,
+      'weight' => 8,
     ),
   );
 
@@ -928,7 +928,7 @@ function ilr_forms_staff_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 47,
+      'weight' => 10,
     ),
   );
 
@@ -938,7 +938,7 @@ function ilr_forms_staff_field_default_field_instances() {
     'bundle' => 'theme_grant_application',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please be sure to clearly articulate how it contributes to Technology and the Evolution of Work.  ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -953,8 +953,8 @@ function ilr_forms_staff_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_description_long',
-    'label' => 'One page summary to include project description and intended outcomes',
-    'required' => 0,
+    'label' => 'Provide a 1 page summary of your proposed project',
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -971,7 +971,7 @@ function ilr_forms_staff_field_default_field_instances() {
         'rows' => 15,
       ),
       'type' => 'text_textarea',
-      'weight' => 53,
+      'weight' => 13,
     ),
   );
 
@@ -1009,7 +1009,7 @@ function ilr_forms_staff_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 36,
+      'weight' => 4,
     ),
   );
 
@@ -1018,7 +1018,7 @@ function ilr_forms_staff_field_default_field_instances() {
   $field_instances['entityform-theme_grant_application-field_file_upload_general'] = array(
     'bundle' => 'theme_grant_application',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'A detailed budget with specific expenses will provide the review committee with a clear understanding of how you intend to use the funds.  For example, if you need software, include the name and a quoted price.  For travel, include location and prices for transportation and lodging along with other expenses such as conference registration costs.  If you intend to hire an undergraduate research assistant, include hours expected and an hourly rate.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1070,7 +1070,7 @@ function ilr_forms_staff_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 55,
+      'weight' => 16,
     ),
   );
 
@@ -1115,7 +1115,7 @@ function ilr_forms_staff_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
+      'weight' => 1,
     ),
   );
 
@@ -1152,7 +1152,7 @@ function ilr_forms_staff_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 33,
+      'weight' => 2,
     ),
   );
 
@@ -1195,7 +1195,7 @@ function ilr_forms_staff_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 51,
+      'weight' => 12,
     ),
   );
 
@@ -1237,7 +1237,7 @@ function ilr_forms_staff_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 41,
+      'weight' => 7,
     ),
   );
 
@@ -1274,7 +1274,50 @@ function ilr_forms_staff_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 34,
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-theme_grant_application-field_theme_grant_abstract'.
+  $field_instances['entityform-theme_grant_application-field_theme_grant_abstract'] = array(
+    'bundle' => 'theme_grant_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please prepare a short abstract, about 150 words, that will be included on the website and in other promotional materials if your proposal is selected for funding.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_theme_grant_abstract',
+    'label' => 'Abstract',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 5,
     ),
   );
 
@@ -1311,7 +1354,93 @@ function ilr_forms_staff_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 37,
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-theme_grant_application-field_theme_grant_goals'.
+  $field_instances['entityform-theme_grant_application-field_theme_grant_goals'] = array(
+    'bundle' => 'theme_grant_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_theme_grant_goals',
+    'label' => 'List project goals',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-theme_grant_application-field_theme_grant_outcomes'.
+  $field_instances['entityform-theme_grant_application-field_theme_grant_outcomes'] = array(
+    'bundle' => 'theme_grant_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 15,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_theme_grant_outcomes',
+    'label' => 'List project outcomes',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 15,
     ),
   );
 
@@ -1354,7 +1483,7 @@ function ilr_forms_staff_field_default_field_instances() {
         'size' => 120,
       ),
       'type' => 'text_textfield',
-      'weight' => 49,
+      'weight' => 11,
     ),
   );
 
@@ -1388,12 +1517,14 @@ function ilr_forms_staff_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 45,
+      'weight' => 9,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('A detailed budget with specific expenses will provide the review committee with a clear understanding of how you intend to use the funds.  For example, if you need software, include the name and a quoted price.  For travel, include location and prices for transportation and lodging along with other expenses such as conference registration costs.  If you intend to hire an undergraduate research assistant, include hours expected and an hourly rate.');
+  t('Abstract');
   t('Amount requested');
   t('Are you receiving financial support for this project from another source?');
   t('Attach budget');
@@ -1411,12 +1542,16 @@ function ilr_forms_staff_field_default_field_instances() {
   t('If you are receiving financial support from another source, please explain');
   t('If you chose "other" please explain');
   t('Last name');
+  t('List project goals');
+  t('List project outcomes');
   t('Name');
-  t('One page summary to include project description and intended outcomes');
   t('Other publication info');
   t('Partners/Collaborators on this Project');
   t('Phone');
+  t('Please be sure to clearly articulate how it contributes to Technology and the Evolution of Work.  ');
   t('Please describe briefly how this book or article ties into the theme of “Technology and the Evolution of Work.”');
+  t('Please prepare a short abstract, about 150 words, that will be included on the website and in other promotional materials if your proposal is selected for funding.');
+  t('Provide a 1 page summary of your proposed project');
   t('Publication date');
   t('Relevance to the theme');
   t('Theme grant categories');

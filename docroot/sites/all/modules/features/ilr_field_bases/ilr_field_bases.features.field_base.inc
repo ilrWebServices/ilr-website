@@ -8770,6 +8770,25 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_theme_grant_abstract'.
+  $field_bases['field_theme_grant_abstract'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_theme_grant_abstract',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_theme_grant_categories'.
   $field_bases['field_theme_grant_categories'] = array(
     'active' => 1,
@@ -8795,12 +8814,51 @@ function ilr_field_bases_field_default_field_bases() {
         'Speaker supplements (up to $1000)' => 'Speaker supplements (up to $1000)',
         'Library materials (up to $10,000)' => 'Library materials (up to $10,000)',
         'Cornell Tech collaborations (up to $20,000)' => 'Cornell Tech collaborations (up to $20,000)',
+        'Theme book programming ($1000)' => 'Theme book programming ($1000)',
         'Other' => 'Other',
       ),
       'allowed_values_function' => '',
     ),
     'translatable' => 0,
     'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_theme_grant_goals'.
+  $field_bases['field_theme_grant_goals'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_theme_grant_goals',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_theme_grant_outcomes'.
+  $field_bases['field_theme_grant_outcomes'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_theme_grant_outcomes',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_thumbnail'.
