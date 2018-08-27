@@ -123,7 +123,7 @@
       }
 
       h2 {
-        @include set-heading(true, white);
+        color: $white;
       }
 
       h2,

@@ -4,7 +4,7 @@ body.front .homepage-news {
 
   article {
     &:first-of-type { // Highlighted news item
-      @include featured-news-over-cards;
+      @include featured-news-item;
     }
   }
 

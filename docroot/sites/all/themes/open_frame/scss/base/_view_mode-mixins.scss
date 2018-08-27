@@ -425,8 +425,6 @@
   background-color: $bg-color;
 
   h2, h3, h4 {
-    @include set-heading(true);
-
     margin: 0;
     color: $white;
     padding-left: $double-space;
@@ -447,10 +445,11 @@
   }
 
   h4 {
-    font-size: 0.8rem;
-    letter-spacing: 0;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
     padding-top: $space;
     padding-bottom: $half-space;
+    font-weight: 300;
   }
 }
 
@@ -778,8 +777,8 @@
   }
 }
 
-// Dumb name. Naming is hard
-@mixin featured-news-over-cards {
+@mixin featured-news-item($bg-color: $dark-gray-orange) {
+  grid-column: 1 / -1;
   overflow: visible;
   float: none;
   margin-bottom: 0;
@@ -806,7 +805,7 @@
     @include trailer(1);
 
     z-index: 2;
-    background: $dark-gray-orange;
+    background: $bg-color;
     margin-top: -1rem;
     position: relative;
 
@@ -850,18 +849,17 @@
     }
 
     h2 {
-      background: $dark-gray-orange;
       color: white;
       padding: 0;
 
-      @include adjust-font-size-to(1.5rem, 1);
+      @include adjust-font-size-to(2.5rem, 1.75);
 
       @include large {
-        @include adjust-font-size-to(2rem, 1.5);
+        @include adjust-font-size-to(3rem, 2);
       }
 
       @include xl {
-        @include adjust-font-size-to(3rem, 2);
+        @include adjust-font-size-to(4rem, 2.2);
       }
 
       a {

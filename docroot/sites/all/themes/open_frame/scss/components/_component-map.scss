@@ -1,0 +1,5 @@
+#block-bean-research-featured {
+  article {
+    @include featured-news-item($dark-blue);
+  }
+}

@@ -12,10 +12,9 @@ $doublepad: $pad * 2;
   }
 
   .tab__trigger {
-    @include set-heading(true);
     @include adjust-font-size-to(20px, 1);
 
-    letter-spacing: -1px;
+    font-weight: 600;
     color: white;
     padding: $pad $space 0 $space;
     background: $lighter-red;

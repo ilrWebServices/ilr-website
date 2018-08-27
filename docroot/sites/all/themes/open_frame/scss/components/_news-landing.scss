@@ -1,6 +1,6 @@
 #block-bean-news-featured {
   article {
-    @include featured-news-over-cards;
+    @include featured-news-item;
 
     .field-type-image {
       @include full-width($undo: true);
