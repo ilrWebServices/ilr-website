@@ -1,8 +1,13 @@
 #main {
+  .field-item.paragraph-type-sponsor-message {
+    margin: 0;
+  }
+
   .paragraphs-item-sponsor-message {
     @include padding-leader(2);
     @include padding-trailer(4);
     background: white;
+    margin: 0;
 
 
     @include large {

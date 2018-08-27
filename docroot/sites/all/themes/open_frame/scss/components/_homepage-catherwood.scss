@@ -114,6 +114,7 @@ body.front {
           @include medium {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
           }
 
           li {
@@ -122,6 +123,7 @@ body.front {
             a {
               @include set-link($white, $white);
               font-weight: 600;
+              display: block;
             }
           }
         }

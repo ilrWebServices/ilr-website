@@ -3,3 +3,9 @@
     @include featured-news-item($dark-blue);
   }
 }
+
+#block-bean-research-destinations {
+  article {
+    // @include featured-promo;
+  }
+}

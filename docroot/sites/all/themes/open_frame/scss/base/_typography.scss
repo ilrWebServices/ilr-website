@@ -315,14 +315,38 @@ ol {
 ul {
   margin: 0 0 1em;
   padding: 0 0 0 .5em;
+  &.bulleted {
+    li {
+      position: relative;
+
+      &::before {
+        content: '-';
+        position: absolute;
+        left: -0.5rem;
+      }
+    }
+  }
+
   #content & {
     ul { // this is a ul ul
       padding-left: 1.1em;
     }
   }
+
+  &.noBullets {
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 0;
+      &::before {
+        content: '';
+      }
+    }
+  }
 }
 
-ul.none {
+ul.none, ul.noBullets {
   list-style: none;
 }
 
@@ -351,6 +375,10 @@ ul.tabs {
   li {
     background: none;
     padding-left: 0;
+
+    &::before {
+      content: '';
+    }
   }
 }
 
@@ -497,6 +525,33 @@ table {
 #sidebar-second {
   li p {
     @include adjust-font-size-to(ms(0));
+  }
+
+  ul {
+    li {
+      position: relative;
+
+      &::before {
+        content: '-';
+        position: absolute;
+        left: -0.5rem;
+      }
+    }
+
+    &.framed {
+      padding-left: 2px;
+
+      li {
+        @include frame-from-corner($length: 25px, $height: 10px);
+        @include trailer(1);
+
+        padding: 20px 0 0 20px;
+
+        &::before {
+          content: '';
+        }
+      }
+    }
   }
 }
 

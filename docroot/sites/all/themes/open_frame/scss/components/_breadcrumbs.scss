@@ -1,7 +1,6 @@
 #breadcrumb {
   .breadcrumb {
     @include adjust-font-size-to(14px);
-    @include trailer(2);
 
     span {
       padding: 0;

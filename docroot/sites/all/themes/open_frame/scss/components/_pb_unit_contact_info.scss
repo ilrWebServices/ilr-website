@@ -51,7 +51,6 @@
         h2 {
           @include adjust-font-size-to(22px);
           font-family: $font;
-          font-weight: 300;
           line-height: 1;
           margin-bottom: .25em;
         }

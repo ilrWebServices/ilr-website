@@ -4,6 +4,10 @@
   .paragraphs-items-field-para-main-page-content {
     .field-item {
       @include rhythm(2);
+
+      &:first-of-type {
+        margin: 0;
+      }
     }
 
     .field-name-field-image {
