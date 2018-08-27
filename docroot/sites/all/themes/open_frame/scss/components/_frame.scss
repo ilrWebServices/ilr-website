@@ -1,33 +1,55 @@
 $frame-width: 20px;
 
 @mixin framed--button($width: 10px, $link-color: $black, $frame-color: $cornell-red) {
+  @include non-framed-button($width, $link-color, $frame-color);
+  // On hold
+  // @include rhythm(1);
+  // border: none;
+  // border-left: $width / 2  solid $frame-color;
+  // border-bottom: $width / 2 solid $frame-color;
+  // text-align: center;
+  // color: $link-color;
+  // padding: $quarter-space $space;
+  // padding-top: calc(#{$width} + #{$quarter-space});
+  // display: inline-block;
+  // font-weight: 600;
+  // position: relative;
+  // overflow: hidden;
+  // background: linear-gradient($frame-color , $frame-color)top left / 30% $width / 2 no-repeat;
+
+  // @include large {
+  //   $width: $width;
+  //   padding: $half-space $space;
+  //   padding-top: calc(#{$width} + #{$half-space});
+
+  //   border-left: $width solid $frame-color;
+  //   border-bottom: $width solid $frame-color;
+  //   background: linear-gradient($frame-color , $frame-color) top left / 30% $width no-repeat;
+  // }
+}
+
+@mixin non-framed-button($width: 10px, $link-color: $black, $frame-color: $cornell-red) {
   @include rhythm(1);
-  border: none;
-  border-left: $width / 2  solid $frame-color;
-  border-bottom: $width / 2 solid $frame-color;
+  border: $width / 2  solid $frame-color;
   text-align: center;
   color: $link-color;
   padding: $quarter-space $space;
-  padding-top: calc(#{$width} + #{$quarter-space});
+  // padding-top: calc(#{$width} + #{$quarter-space});
   display: inline-block;
   font-weight: 600;
   position: relative;
   overflow: hidden;
-  background: linear-gradient($frame-color , $frame-color)top left / 30% $width / 2 no-repeat;
 
   @include large {
-    $width: $width;
     padding: $half-space $space;
-    padding-top: calc(#{$width} + #{$half-space});
-
-    border-left: $width solid $frame-color;
-    border-bottom: $width solid $frame-color;
-    background: linear-gradient($frame-color , $frame-color) top left / 30% $width no-repeat;
+    // padding-top: calc(#{$width} + #{$half-space});
+    border: $width solid $frame-color;
   }
 }
 
 .button--framed {
-  @include framed--button;
+  // @include framed--button;
+  @include non-framed-button;
 }
 
 // @todo: fix
