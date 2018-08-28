@@ -129,6 +129,8 @@
     @include padding-leader(3);
     @include padding-trailer(3);
     article {
+      @include trailer(1);
+
       h2 {
         @include adjust-font-size-to($h3-size);
         @include grid-span(3,4);
@@ -138,9 +140,11 @@
 
       }
       .field-name-field-job-title {
-        font-family: $font-headers;
-        @include adjust-font-size-to($h5-size, .75);
         @include grid-span(9,4, $output-style: 'float');
+        @include trailer(0.5);
+        @include small-text;
+
+        color: $gray-dark;
       }
       .field-name-body {
         @include grid-span(9,4, $output-style: 'float');
@@ -151,8 +155,6 @@
           @include small-text;
         }
       }
-      border: none;
-      @include trailer(.5);
 
       .field-type-image {
         // @include circularImage;
