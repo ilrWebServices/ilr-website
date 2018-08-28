@@ -764,6 +764,16 @@ function _forms_career_services_contact_options() {
   );
 }
 
+function _forms_breakout_session_options() {
+  return array(
+    'HR and HR Consulting' => 'HR and HR Consulting',
+    'Labor Movement, Government, Non-Profit and Social Justice' => 'Labor Movement, Government, Non-Profit and Social Justice',
+    'Business and Entrepreneurship' => 'Business and Entrepreneurship',
+    'Consulting, Sports, Entertainment and Media' => 'Consulting, Sports, Entertainment and Media',
+    'I won\'t be attending any of the breakout sessions.' => 'I won\'t be attending any of the breakout sessions.',
+  );
+}
+
 /**
  * Generate options list for year_as_list_text field, based on which form it is
  */
