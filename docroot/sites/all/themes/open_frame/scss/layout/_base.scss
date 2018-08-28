@@ -172,7 +172,7 @@
       .field-name-field-text-paragraph .block-bean,
       .entity-bean .block-bean, // was previously used as a hack, so deal
       .tagged-content {
-        @include two-column-grid;
+        @include two-column-grid($breakpoint: $medium);
 
         &[data-items="3"] {
           @include three-column-grid;

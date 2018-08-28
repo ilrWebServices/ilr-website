@@ -336,6 +336,10 @@ ul {
       }
     }
   }
+
+  .bean-html & {
+    @include bulleted-list;
+  }
 }
 
 ul.none, ul.noBullets {
@@ -403,6 +407,10 @@ a:hover, a:focus {
 p a, p a:visited,
 li a {
   @include set-link($cornell-red);
+
+  &[href^="mailto:"] {
+    border: none;
+  }
 }
 
 // ==================================================

@@ -276,13 +276,16 @@
   }
 }
 
-@mixin set-link($color: $color-link, $color-underline: $cornell-red) {
+@mixin set-link($color: $color-link, $underline: false, $underline-color: $cornell-red) {
   color: $color;
-  border-bottom: 2px solid $color-underline;
 
-  &:hover,
-  &:visited {
-    border-bottom: 2px solid $color-underline;
+  @if $underline {
+    border-bottom: 2px solid $underline-color;
+
+    &:hover,
+    &:visited {
+      border-bottom: 2px solid $underline-color;
+    }
   }
 }
 
@@ -363,10 +366,32 @@
       position: relative;
 
       &::before {
-        content: '-';
+        content: '\00B7';
         position: absolute;
+        top: -5px;
         left: -0.5rem;
+        font-size: 3rem;
       }
     }
   }
+}
+
+@mixin highlighted-box($background-color: $color-course-class-bg) {
+  padding: $space;
+  background-color: $background-color;
+
+  @include large {
+    padding: $double-space;
+  }
+
+  h2, h3, h4 {
+    font-weight: 400;
+  }
+}
+
+@mixin readmore-js-link {
+  @include adjust-font-size-to(14px);
+  @include set-link($underline: true, $underline-color: $cornell-red);
+
+  font-weight: 600;
 }

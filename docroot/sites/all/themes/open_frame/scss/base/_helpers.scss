@@ -28,18 +28,6 @@
   }
 }
 
-%readmore-js-link {
-  text-transform: uppercase;
-  text-decoration: none !important;
-  font-weight: bold;
-  display: inline-block;
-  margin-left: -3px;
-  color: lighten($brand, 5%);
-  @include adjust-font-size-to(14px);
-  @include trailer(1);
-  @include leader(.5);
-}
-
 // When you dont want links clickable
 .dead-link { pointer-events: none; }
 

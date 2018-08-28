@@ -119,9 +119,9 @@ jQuery.fn.sortElements = (function(){
 
       var facultyBiosReadmore = function() {
         $('.node-sdc-faculty .field-name-body').readmore({
-          maxHeight: 105,
-          lessLink: '<a href="#">- Read less</a>',
-          moreLink: '<a href="#">+ Read more</a>',
+          maxHeight: 80,
+          lessLink: '<div class="link--readmore"><a href="#">- Less</a></div>',
+          moreLink: '<div class="link--readmore"><a href="#">+ More</a></div>',
         });
       };
 

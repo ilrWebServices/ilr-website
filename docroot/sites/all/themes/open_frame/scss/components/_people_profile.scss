@@ -52,7 +52,7 @@ article.node-people-profile {
       }
     }
     a.readmore-js-toggle {
-      @extend %readmore-js-link; // see _helpers.scss
+      @include readmore-js-link; // see _helpers.scss
     }
   }
 

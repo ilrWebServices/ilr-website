@@ -9,3 +9,9 @@
     // @include featured-promo;
   }
 }
+
+#block-bean-professional-programs-locations .block-bean {
+  article {
+    @include highlighted-box;
+  }
+}

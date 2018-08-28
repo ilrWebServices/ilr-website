@@ -8,10 +8,18 @@ body.node-type-sdc-class {
     .group-main-content .class-details {
       @include xl {
         @include full-width;
+
+        width: 105vw; // fix for broken margin
+        max-width: 105vw;
       }
 
       .instructors {
         @include wrapper($section-max-width);
+
+        img {
+          -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+        }
       }
     }
   }

@@ -140,25 +140,34 @@
       .field-name-field-job-title {
         font-family: $font-headers;
         @include adjust-font-size-to($h5-size, .75);
-        @include grid-span(9,4,$output-style: 'float');
+        @include grid-span(9,4, $output-style: 'float');
       }
       .field-name-body {
-        @include grid-span(9,4,$output-style: 'float');
+        @include grid-span(9,4, $output-style: 'float');
+
+        margin: 0;
+
+        p {
+          @include small-text;
+        }
       }
       border: none;
       @include trailer(.5);
+
       .field-type-image {
         // @include circularImage;
         max-width: 150px;
-        @include grid-span(3,$output-style: 'float');
+        @include grid-span(3, $output-style: 'float');
         @include float-span(3,'first');
         @include leader(-.8);
       }
-      a.readmore-js-toggle {
-        @extend %readmore-js-link; // see _helpers.scss
-        clear: both;
-        display: block;
-        text-align: right;
+
+      .link--readmore {
+        @include grid-span(9,4, $output-style: 'float');
+
+        a {
+          @include readmore-js-link;
+        }
       }
     }
     span.multiple-dates {
@@ -249,7 +258,6 @@ form.class-details {
 }
 
 .node-type-sdc-course { // Course detail page
-  // @extend %two-col-content-area;
   .field-name-field-catalog-prefix {
     @include adjust-font-size-to($h2-size);
     font-family: $font-headers;
