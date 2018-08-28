@@ -65,11 +65,18 @@
 
 // Full version
 body.node-type-certificate-programs {
-  .field-name-field-value-propositions {
-    @include small-text;
+  .field-name-field-image {
+    display: none;
   }
 
-  .certificate_program__title {
+  .field-name-field-value-propositions {
+    @include small-text;
+    @include bulleted-list;
+
+    padding-left: 2rem;
+  }
+
+  .certificate_program__propositions {
     @include frame-from-corner($width: 8px, $length: 40px, $height: 20px);
 
     padding: 1.5rem;
@@ -86,10 +93,11 @@ body.node-type-certificate-programs {
     .field-name-field-image {
       @include grid-span(4);
 
+      display: block;
       margin: 0;
     }
 
-    .certificate_program__title {
+    .certificate_program__propositions {
       @include grid-span(7, 6);
 
       margin-right: 25px;
@@ -97,6 +105,8 @@ body.node-type-certificate-programs {
 
     .field-name-field-value-propositions {
       @include grid-span(7, 6);
+
+      padding-left: 1rem;
 
       li {
         @include trailer(1);
@@ -110,7 +120,7 @@ body.node-type-certificate-programs {
   }
 
   .group-curriculum {
-    @include two-column-grid;
+    @include two-column-grid($breakpoint: $medium);
 
     width: 100%;
 
@@ -124,8 +134,12 @@ body.node-type-certificate-programs {
       border: 1px solid white;
 
       &:hover {
-        background: white;
-        border: 1px solid $dark-gray-orange;
+        background: $white;
+        border: 1px solid darken($color-course-class-bg, 10%);
+
+        * {
+          background: $white;
+        }
       }
     }
 
@@ -148,6 +162,54 @@ body.node-type-certificate-programs {
         @include set-link;
 
         font-size: 0.9rem;
+      }
+
+      .class-details {
+        color: $gray-dark;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        div.date-time,
+        span {
+          font-size: 14px;
+          line-height: 1;
+          margin-bottom: 1rem;
+          display: inline;
+          font-weight: 300;
+          text-transform: none;
+          position: relative;
+          margin-right: 1rem;
+
+          &::after {
+            content: ' /';
+            position: absolute;
+            right: -0.7rem;
+          }
+        }
+
+        div.date-time {
+          margin: 0;
+
+          &::after {
+            content: '';
+          }
+        }
+
+        span.cost {
+          &::after {
+            content: '';
+          }
+        }
+
+        span.time,
+        span.location {
+          @include hidden;
+        }
+
+        &.no-dates {
+          @include hidden;
+        }
       }
     }
   }

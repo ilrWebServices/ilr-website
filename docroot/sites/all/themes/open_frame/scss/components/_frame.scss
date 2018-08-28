@@ -30,6 +30,7 @@ $frame-width: 20px;
 
 @mixin non-framed-button($width: 10px, $link-color: $black, $frame-color: $cornell-red) {
   @include rhythm(1);
+  cursor: pointer;
   border: $width / 2  solid $frame-color;
   text-align: center;
   color: $link-color;

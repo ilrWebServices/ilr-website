@@ -452,6 +452,7 @@
     float: left;
     width: 50%;
   }
+
   .column { // Bug fix
     float: none;
     width: 100%;
@@ -472,6 +473,7 @@
 
 #page {
   @include clearfix;
+  @include trailer(1);
 
   clear: both;
   position: relative;

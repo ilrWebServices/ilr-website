@@ -81,12 +81,18 @@ ul.social-share {
 
 ul.social {
   @include inline-block-list;
+
+  #sidebar-second & {
+    @include bulleted-list(false);
+  }
+
   li {
     border: none;
     padding-left: .5em;
     margin-left: 0;
     background: none;
     border-radius: 0;
+
     a {
       background-color: transparent;
       display: block;
