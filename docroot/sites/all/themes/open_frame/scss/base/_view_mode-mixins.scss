@@ -671,20 +671,24 @@
   padding: 0;
 
   h2 {
-    @include adjust-font-size-to(1.2rem, 1);
+    @include adjust-font-size-to(1.2rem, 0.8);
     @include set-heading(true, white);
     @include framed($width: 10px, $color: white, $top: false, $right: true, $bottom: true, $left: false);
 
     @include medium {
-      @include adjust-font-size-to(1.5rem, 1.1);
-    }
-
-    @include xl {
-      @include adjust-font-size-to(2rem, 1.5);
-    }
-
-    @include breakpoint($page-max-width) {
       @include adjust-font-size-to(3rem, 2);
+    }
+  }
+
+  .field-name-field-teaser {
+    padding: 0 $space;
+
+    p {
+      @include small-text;
+    }
+
+    @include large {
+      padding: 0 $double-space;
     }
   }
 
@@ -719,6 +723,7 @@
     @include large {
       grid-column: 2;
       grid-row: 1;
+      padding: 0 100px 0 50px;
     }
   }
 
@@ -727,14 +732,21 @@
     @include two-column-grid;
 
     margin-left: 0;
-    padding-left: 0;
+    padding-left: $space;
+
+    @include large {
+      padding-left: $double-space;
+    }
 
     li {
       padding: 0;
     }
 
     a {
-      color: white;
+      @include set-link($white, true);
+      @include small-text;
+
+      font-weight: bold;
     }
   }
 
@@ -750,11 +762,22 @@
     }
     .group-featured-promo-story {
       grid-column: 1;
+
+      @include large {
+        grid-column: 2;
+        grid-row: 1;
+        padding: 0 50px 0 100px;
+      }
     }
     .field-name-field-image, .field-name-field-youtube-video {
 
       @include large {
         grid-column: 2;
+      }
+    }
+    .field-name-field-teaser, .field-name-field-multiple-links {
+      @include large {
+        padding: 0 calc(#{$double-space} + 20px);
       }
     }
   }
@@ -764,6 +787,10 @@
 
     .field-name-field-multiple-links a {
       border-color: white;
+
+      a {
+        border-style-color: white;
+      }
     }
   }
 }
