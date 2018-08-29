@@ -528,15 +528,7 @@ table {
   }
 
   ul {
-    li {
-      position: relative;
-
-      &::before {
-        content: '-';
-        position: absolute;
-        left: -0.5rem;
-      }
-    }
+    @include bulleted-list;
 
     &.framed {
       padding-left: 2px;
