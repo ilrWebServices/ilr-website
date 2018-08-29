@@ -678,6 +678,10 @@
     @include medium {
       @include adjust-font-size-to(3rem, 2);
     }
+
+    @include breakpoint($full-break) {
+      @include adjust-font-size-to(3.7rem, 2.4);
+    }
   }
 
   .field-name-field-teaser {
