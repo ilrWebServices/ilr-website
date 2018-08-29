@@ -418,8 +418,8 @@
   h2, h3, h4 {
     margin: 0;
     color: $white;
-    padding-left: $double-space;
-    padding-right: $double-space;
+    padding-left: $space;
+    padding-right: $space;
     line-height: 0.9;
 
     span {
@@ -427,6 +427,11 @@
       font-size: 0.8rem;
       letter-spacing: 0;
       padding-top: $half-space;
+    }
+
+    @include large {
+      padding-left: $double-space;
+      padding-right: $double-space;
     }
   }
 

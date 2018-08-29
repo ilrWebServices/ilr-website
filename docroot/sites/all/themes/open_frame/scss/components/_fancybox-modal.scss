@@ -76,6 +76,10 @@
 }
 
 .modal {
+  @include clearfix;
+
+  order: 3;
+
   @include breakpoint(550px) {
     display: none;
   }
@@ -84,21 +88,30 @@
     display: none; //don't display on page
   }
   .biography {
-    background: white;
     h3, h4, p, ul {
       display: none;
     }
     p.show-hide-bio {
+      @include small-text;
+      @include padding-trailer(1);
       display: block;
-      padding: 0 21px;
+      color: white;
+      padding: 0 $space $space;
+      line-height: 1.1;
+
       @include medium {
         display: none;
       }
     }
     .sls-bio {
-      padding: 0 21px;
+      @include small-text(0.9);
+      @include padding-trailer(1);
+
+      padding: 0 $space $space;
       text-align: left;
       display: none;
+      color: white;
+
       &.show {
         display: block;
       }
