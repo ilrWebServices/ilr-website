@@ -5,17 +5,66 @@
 
   .content h2 {
     @include set-heading(true);
-    @include adjust-font-size-to(3rem);
+    @include adjust-font-size-to(2rem);
+
+    @include large {
+      @include adjust-font-size-to(3rem);
+    }
   }
 }
 
-.microsite .microsite-featured-speakers {
+.microsite-marquee {
+
+  &__image {
+    @include full-width;
+
+    p {
+      max-width: 100%;
+    }
+  }
+
+  &__content {
+    position: relative;
+    background-color: #002A48;
+    padding: $space;
+    margin-top: -20%;
+
+    @include xl {
+      padding: 100px;
+    }
+
+    h1 {
+      color: $white;
+      line-height: 1;
+      font-size: 1.5rem;
+
+      @include large {
+        font-size: 48px;
+        max-width: 40%;
+      }
+    }
+
+    .video-callout .video-callout__introduction {
+      @include small-text(0.9);
+
+      padding: 0 $space 0 0;
+
+      @include large {
+        @include adjust-font-size-to(26px, 1.5);
+
+        padding-right: $triple-space;
+      }
+    }
+  }
+}
+
+.microsite-featured-speakers {
   @include container;
 
   background: $black;
 
   h2 {
-    color: white;
+    color: $white !important;
   }
 
   .featured-speaker {
@@ -27,6 +76,10 @@
       line-height: 0.5;
       margin: 0;
     }
+  }
+
+  #block-bean-sls-featured-speakers & {
+    margin-top: -60px;
   }
 }
 
@@ -84,6 +137,8 @@
   }
 
   ul {
+    @include bulleted-list($undo: true);
+
     margin-top: 55px;
 
     li {
@@ -121,6 +176,10 @@
     font-size: 21px;
     font-weight: 400;
     margin-bottom: 27px;
+  }
+
+  ul {
+    @include bulleted-list($undo: true);
   }
 
   li {

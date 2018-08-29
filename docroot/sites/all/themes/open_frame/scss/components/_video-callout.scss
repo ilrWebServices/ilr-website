@@ -1,5 +1,5 @@
 .video-callout {
-  // @include padding-trailer(1);
+  @include padding-leader(1);
   @include clearfix;
 
   background-color: #002A48;
@@ -23,20 +23,19 @@
   }
 
   .video-callout__introduction {
-    padding-left: 21px;
-    padding-right: 21px;
+    padding-left: $space;
+    padding-right: $space;
     color: white;
 
     @include adjust-font-size-to(22px);
     @include adjust-leading-to(1);
+    @include padding-leader(2);
 
     @include medium {
       padding: 0;
     }
 
     @include large {
-      display: inline-block;
-      vertical-align: middle;
       padding: 0 100px;
     }
 

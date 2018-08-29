@@ -32,6 +32,7 @@
   }
 
   .social-callout__links {
+    @include bulleted-list($undo: true);
     margin-bottom: 21px;
   }
 
