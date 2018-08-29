@@ -178,6 +178,33 @@ function ilr_block_view_alter(&$data, $block) {
 }
 
 /**
+ * Implements hook_block_info().
+ * Adds the google translate block
+ */
+function ilr_block_info() {
+  $blocks['ilr_wordmark'] = array(
+    'info' => t('ILR Wordmark'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function ilr_block_view($delta='') {
+  if ($delta == 'ilr_wordmark') {
+    $markup = '<div class="ilr-logo ilr-logo--wordmark"><a class="ilr-logo__link" href="/"><img src="/sites/all/themes/open_frame/images/logos/ILR-wordmark-reversed.svg"></a></div>';
+
+    $block = array(
+      'subject' => '',
+      'content' => $markup,
+    );
+  }
+
+  return $block;
+}
+
+/**
  * Implements hook_menu_alter()
  * Removes the saml_login link for logged in users
  */

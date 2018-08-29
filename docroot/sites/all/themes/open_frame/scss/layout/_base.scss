@@ -497,18 +497,62 @@
 
 footer {
   @include pie-clearfix;
+
   .container {
-    .block-bean {
-      @include one-column;
+    @include container;
+
+    padding: 0 $space;
+
+    @include medium {
+      padding: 0 $double-space;
     }
-    &[data-eq-state="550"], &[data-eq-state="768"], &[data-eq-state="widescreen"] {
-      .block-bean {
-        @include three-column;
+
+    @include large {
+      display: grid;
+      grid-template-columns: 23% 73%;
+      grid-gap: 4%;
+    }
+
+    @include xl {
+      grid-template-columns: 17% 50% 25%;
+    }
+
+    @include breakpoint($page-max-width) {
+      padding: 0;
+    }
+
+    .region-footer {
+      @include one-column;
+
+      grid-column-start: 2;
+      grid-row-start: 1;
+
+      @include medium {
+        @include three-column-grid;
       }
     }
   }
 
+  #block-bean-footer-social {
+    @include large {
+      justify-self: end;
+      align-self: end;
+    }
+  }
+
   .copyright {
-    clear: both;
+    @include large {
+      grid-column: 2;
+    }
+  }
+
+  .ilr-logo--wordmark {
+    grid-column: 1 / -1;
+    grid-row: 1;
+
+    a {
+      display: block;
+      max-width: 200px;
+    }
   }
 }

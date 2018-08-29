@@ -11,28 +11,15 @@ $social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
 }
 
 #block-bean-footer-social {
-  .container {
-    ul {
-      float: left !important;
-      li {
-        padding-right: .5em;
-        padding-left: 0;
-      }
-    }
-  }
-
-  .container[data-eq-state="550"] &, .container[data-eq-state="768"] &, .container[data-eq-state="widescreen"] & {
-    position: absolute;
-    bottom: 0;
-    right: 1em;
-
-    ul { float: right; }
+  ul {
+    @include bulleted-list($undo: true);
   }
 }
 
 ul.social-share {
   @include inline-block-list;
   @include trailer(1);
+
   li {
     border: 1px solid $gray-medium;
     padding-left: 0;
