@@ -1,44 +1,27 @@
 #main {
   .paragraphs-item-side-by-side-text {
-    @include padding-leader(1);
-    @include padding-trailer(1);
+    @include large {
+      padding: 0 50px;
+    }
 
     @include xl {
-      @include padding-leader(0);
-      @include padding-trailer(0);
+      padding: 0 100px;
     }
-    .content {
-      @include grid-span (10,2);
-    }
-    .field-name-field-promo-text {
-      &:nth-child(odd) {
-        @include padding-trailer(1);
-        border-bottom: 1px solid $gray-light;
-      }
-      &:nth-child(even) {
-        @include padding-leader(1);
-      }
-    }
-    p {
-      @include trailer(.5);
 
-      img {
-        @include trailer(-.5);
-      }
-    }
-    ul {
-      padding-left: 0;
+    .content {
+      @include two-column-grid($gap: 100px);
+
+      p,
       li {
-        padding-left: 0;
-        background: none;
+        @include small-text(0.9);
       }
-    }
-    ul.bulleted-list {
-      @include leader(1);
-      padding-left: .5em;
-      li {
-        padding-left: 1em;
-        background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
+
+      ul.field-name-field-multiple-links {
+        padding: 0;
+
+        li {
+          padding: 0;
+        }
       }
     }
   }
