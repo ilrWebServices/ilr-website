@@ -236,12 +236,20 @@ function _ilr_paragraphs_get_tab_id($title) {
  */
 function _ilr_paragraphs_preprocess_compare_three(&$variables) {
   $images = FALSE;
+
   foreach ($variables['field_animated_text_card'] as $key => $value) {
     $cwrapper = entity_metadata_wrapper('field_collection_item', $value['value']);
     if (!empty($cwrapper->field_image->value())) {
-      $images = TRUE;
-      $variables['classes_array'][] = ' paragraphs-item-compare-three--with-images';
-      break;
+      // @todo: refactor this out after talking with DD
+      if (!empty($cwrapper->field_short_title->value())) {
+        $cwrapper->field_short_title->set(NULL);
+        $cwrapper->save();
+      }
+
+      if ($key == 2) { // Only on the last one
+        $images = TRUE;
+        $variables['classes_array'][] = ' paragraphs-item-compare-three--with-images';
+      }
     }
   }
   if (!$images) {
