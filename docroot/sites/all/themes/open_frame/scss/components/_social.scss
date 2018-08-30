@@ -13,50 +13,38 @@ $social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
 #block-bean-footer-social {
   ul {
     @include bulleted-list($undo: true);
+
+    li a {
+      color: $white;
+    }
   }
 }
 
 ul.social-share {
   @include inline-block-list;
-  @include trailer(1);
+
+  @include medium {
+    text-align: right;
+  }
 
   li {
-    border: 1px solid $gray-medium;
     padding-left: 0;
-    margin-left: .15em;
     background: none;
-    border-radius: 50%;
-    &:nth-child(1) {
-      margin-left: 0;
-    }
+
     a {
-      border: 2px solid white;
+      // @include adjust-leading-to(1);
       display: block;
       width: 40px;
       height: 40px;
-      border-radius: 50%;
-      padding-top: 8px;
       text-align: center;
-      @include adjust-font-size-to(15px);
-      @include adjust-leading-to(1);
-      color: $bg-body;
-      &.mail {
-        background-color: #c87b3a;
-        padding-top: 10px;
-      }
-      &.twitter{
-        background-color: #55acee; //official color
-        padding-top: 9px;
+      color: $black;
+      &.mail,
+      &.twitter {
+        padding-top: 2px;
       }
       &.linkedin {
-        background-color: #0077b5; //official color
         padding-left: .5em;
-      }
-      &.facebook {
-        background-color: #3a5795; //official color
-      }
-      &:hover {
-        background-color: $gray-dark;
+        margin-top: -1px;
       }
       span {
         display: none;

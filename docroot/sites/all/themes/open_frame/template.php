@@ -41,7 +41,14 @@ function open_frame_preprocess_page(&$variables) {
   $variables['page']['nav_trigger_pts'] =  array('#markup' => 'data-eq-pts="mobile-nav: 300, regular-nav: 1045"');
 
   $wordmark = ilr_block_view('ilr_wordmark');
-  $variables['page']['footer'][] = array('#markup' => $wordmark['content']);
+
+  $wordmark_render = [
+    'wordmark' => [
+      '#markup' => $wordmark['content']
+    ]
+  ];
+
+  $variables['page']['footer'] =  $wordmark_render + $variables['page']['footer'];
 
   if (!isset($variables['logo_link'])) {
     $variables['logo_link'] = '<a class="cornell" title="Visit Cornell.edu" href="https://cornell.edu"></a>';

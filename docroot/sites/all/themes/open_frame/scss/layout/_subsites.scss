@@ -7,7 +7,8 @@ body.subsite-front {
     display: none !important;
   }
 
-  &.worker-institute {
+  &.worker-institute,
+  &.ilr-at-70 {
     #main {
       @include layout--full-width-grid;
     }

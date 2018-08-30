@@ -266,6 +266,11 @@ form.class-details {
     color: $h2-text;
   }
   article {
+    .social-share {
+      @include trailer(1);
+      text-align: left;
+    }
+
     .field-name-body {
       @include trailer(3);
       clear: left;
