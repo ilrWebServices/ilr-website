@@ -197,6 +197,10 @@
     padding: 0 0 1rem;
   }
 
+  .field-name-field-published-date {
+    @include hidden;
+  }
+
   // Posts...
   &.node-post {
     h2,
@@ -221,6 +225,7 @@
 
     .field-name-field-published-date {
       @include adjust-font-size-to(15px);
+      @include visible;
 
       order: 2;
       color: $dark-gray-orange;
