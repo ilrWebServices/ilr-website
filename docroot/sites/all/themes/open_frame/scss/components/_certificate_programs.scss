@@ -159,7 +159,7 @@ body.node-type-certificate-programs {
       }
 
       a.course-details {
-        @include set-link;
+        @include set-link($underline: true);
 
         font-size: 0.9rem;
       }
@@ -184,7 +184,8 @@ body.node-type-certificate-programs {
           &::after {
             content: ' /';
             position: absolute;
-            right: -0.7rem;
+            right: -13px;
+            top: 1px;
           }
         }
 
