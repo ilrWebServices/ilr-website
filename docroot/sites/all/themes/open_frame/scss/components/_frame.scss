@@ -147,7 +147,7 @@ $frame-width: 20px;
 
     @include large {
       border-bottom: $width * 2 solid $color;
-      padding-top: $triple-space;
+      padding-top: $double-space;
       border-top: none;
     }
   }

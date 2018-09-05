@@ -198,53 +198,56 @@
   }
 
   // Posts...
-  h2,
-  .field-name-field-published-date,
-  .field-type-text-with-summary,
-  ul.links {
-    padding: $half-space $space 0;
-
-    @include medium {
-      padding: $half-space $double-space 0;
-    }
-
-    @include large {
+  &.node-post {
+    h2,
+    .field-name-field-published-date,
+    .field-type-text-with-summary,
+    ul.links {
+      flex-grow: 0;
       padding: $half-space $space 0;
+
+      @include medium {
+        padding: $half-space $double-space 0;
+      }
+
+      @include large {
+        padding: $half-space $space 0;
+      }
+
+      @include xl {
+        padding: $space $double-space 0;
+      }
     }
 
-    @include xl {
-      padding: $space $double-space 0;
+    .field-name-field-published-date {
+      @include adjust-font-size-to(15px);
+
+      order: 2;
+      color: $dark-gray-orange;
+    }
+
+    .field-type-text-with-summary {
+      p {
+        @include adjust-font-size-to(.9rem, 0.8);
+      }
+
+      order: 4;
+    }
+    ul.links {
+      order: 5;
+      padding-top: 0;
+
+      li {
+        background: none;
+        padding: 0;
+      }
+
+      a {
+        @include set-link($black, true);
+      }
     }
   }
 
-  .field-name-field-published-date {
-    @include adjust-font-size-to(15px);
-
-    order: 2;
-    color: $dark-gray-orange;
-  }
-
-  .field-type-text-with-summary {
-    p {
-      @include adjust-font-size-to(.9rem, 0.8);
-    }
-
-    order: 4;
-  }
-  ul.links {
-    order: 5;
-    padding-top: 0;
-
-    li {
-      background: none;
-      padding: 0;
-    }
-
-    a {
-      @include set-link($black);
-    }
-  }
-  // End posts...
 
   .news__title {
     h2 {
