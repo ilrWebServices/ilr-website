@@ -120,7 +120,7 @@ $doublepad: $pad * 2;
       }
 
       a {
-        @include set-link($white, $white);
+        @include set-link($white, true, $white);
       }
     }
   }

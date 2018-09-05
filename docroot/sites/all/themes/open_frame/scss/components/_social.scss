@@ -58,7 +58,7 @@ ul.social {
   @include inline-block-list;
 
   #sidebar-second & {
-    @include bulleted-list(false);
+    @include bulleted-list($undo: true);
   }
 
   li {

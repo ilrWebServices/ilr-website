@@ -216,11 +216,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'link',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'link_separate',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 4,
       ),
     ),
@@ -1449,7 +1446,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'focussed_hero',
         ),
         'type' => 'image',
         'weight' => 0,

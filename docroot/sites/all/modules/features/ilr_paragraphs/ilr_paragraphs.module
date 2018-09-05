@@ -73,6 +73,11 @@ function _ilr_paragraphs_process_fields(&$variables) {
     case 'field_animated_text_card':
       switch ($variables['element']['#bundle']) {
         case 'compare_three':
+          foreach ($variables['items'] as $key => $item) {
+            $cwrapper = entity_metadata_wrapper('field_collection_item', key($item['entity']['field_collection_item']));
+            $url = $cwrapper->field_website_url->value()[0]['url'];
+            $variables['items'][$key]['#url'] = $url;
+          }
           drupal_add_js(drupal_get_path('module','ilr_paragraphs') . '/ilr_paragraphs_compare_three.js', array('type' => 'file', 'scope' => 'footer'));
           break;
       }
@@ -236,7 +241,6 @@ function _ilr_paragraphs_get_tab_id($title) {
  */
 function _ilr_paragraphs_preprocess_compare_three(&$variables) {
   $images = FALSE;
-
   foreach ($variables['field_animated_text_card'] as $key => $value) {
     $cwrapper = entity_metadata_wrapper('field_collection_item', $value['value']);
     if (!empty($cwrapper->field_image->value())) {
@@ -287,8 +291,9 @@ function _ilr_paragraphs_preprocess_sponsor_message(&$variables) {
 function ilr_paragraphs_field_collection_item_view_alter(&$build) {
   if ($build['#bundle'] == 'field_animated_text_card') {
     if (isset($build['field_image'])) {
-      $url = $build['field_website_url'][0]['#element']['url'];
-      $link = '<a href="'.$url.'" class="button">Learn More</a>';
+      $cwrapper = entity_metadata_wrapper('field_collection_item', $build['#entity']);
+      $url = $cwrapper->field_website_url->value()[0]['url'];
+      $link = '<span class="button">Learn More</span>';
       $markup = ilr_get_bem_markup($link, 'link', 'cta');
       $build['cta'] = [
         '#markup' => $markup,

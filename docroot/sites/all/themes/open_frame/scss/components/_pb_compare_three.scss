@@ -102,7 +102,7 @@
       @include three-column-grid;
     }
 
-    article {
+    .compare-three-item__link {
       background: $cornell-red;
       display: flex;
       flex-direction: column;
