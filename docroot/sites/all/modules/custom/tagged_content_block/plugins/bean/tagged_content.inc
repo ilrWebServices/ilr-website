@@ -125,6 +125,7 @@ class TaggedContentBean extends BeanPlugin {
         // 'show_featured' status can be acted upon as the content gets rendered, as we do in tagged_content_block_preprocess_node().
         $node->siblings = $bean->records_shown - 1;
         $node->position = $count;
+        $node->tagged_content = TRUE;
         $count++;
       }
       // Add the item count to the bean for theming data-attributes

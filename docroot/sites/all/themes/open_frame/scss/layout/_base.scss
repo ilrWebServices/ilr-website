@@ -431,6 +431,14 @@
       @include four-column-grid;
     }
   }
+
+  .content-listing-manual {
+    .content {
+      @include medium {
+        @include four-column-grid;
+      }
+    }
+  }
 }
 
 #main,

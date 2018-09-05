@@ -1,3 +1,9 @@
 .content-listing-manual {
   @include bean-base;
+
+  .region-highlighted & {
+    > h2 {
+      display: none;
+    }
+  }
 }
