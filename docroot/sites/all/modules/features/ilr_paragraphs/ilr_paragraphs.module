@@ -293,7 +293,10 @@ function ilr_paragraphs_field_collection_item_view_alter(&$build) {
     if (isset($build['field_image'])) {
       $cwrapper = entity_metadata_wrapper('field_collection_item', $build['#entity']);
       $url = $cwrapper->field_website_url->value()[0]['url'];
-      $link = '<span class="button">Learn More</span>';
+      $title = (isset($cwrapper->field_website_url->value()[0]['attributes']['title']))
+        ? $cwrapper->field_website_url->value()[0]['attributes']['title']
+        : 'Learn More';
+      $link = '<span class="button">'. $title .'</span>';
       $markup = ilr_get_bem_markup($link, 'link', 'cta');
       $build['cta'] = [
         '#markup' => $markup,
