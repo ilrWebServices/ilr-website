@@ -1929,12 +1929,9 @@ function ilr_sdc_listings_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 2,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
@@ -2001,7 +1998,7 @@ function ilr_sdc_listings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'mega_menu_item' => array(
         'label' => 'above',
