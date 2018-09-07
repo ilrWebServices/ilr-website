@@ -877,7 +877,7 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_class_dates_value']['field'] = 'field_class_dates_value';
   $handler->display->display_options['filters']['field_class_dates_value']['operator'] = '>';
   $handler->display->display_options['filters']['field_class_dates_value']['default_date'] = 'now';
-  /* Filter criterion: Field: Registration End date (field_registration_end_date) */
+  /* Filter criterion: Field: Alternate start date (field_registration_end_date) */
   $handler->display->display_options['filters']['field_registration_end_date_value']['id'] = 'field_registration_end_date_value';
   $handler->display->display_options['filters']['field_registration_end_date_value']['table'] = 'field_data_field_registration_end_date';
   $handler->display->display_options['filters']['field_registration_end_date_value']['field'] = 'field_registration_end_date_value';
