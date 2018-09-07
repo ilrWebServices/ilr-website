@@ -2589,8 +2589,7 @@ function _ilr_sdc_listings_get_protected_fields() {
  */
 function ilr_sdc_listings_salesforce_query_alter(SalesforceSelectQuery &$query) {
   if ($query->objectType == 'EXECED_Event_Class__c' || $query->objectType == 'EXECED_Course__c') {
-    $query->fields[] = 'Show_on_Web__c';
-    $query->addCondition('Show_on_Web__c', false, '!=');
+    $query->addCondition('Show_on_Web__c', 'false', '!=');
   }
 }
 
@@ -2694,12 +2693,12 @@ function ilr_sdc_listings_salesforce_pull_entity_presave($entity, $sf_object, $s
         if (!_ilr_sdc_listings_get_course_by_sf_id($sf_object['Course__c'])) {
           throw new SalesforcePullException('Salesforce class is not assigned to an existing course.');
         }
-        if (empty($sf_object['Show_on_Web__c'])) {
-          throw new SalesforcePullException('Class not set to show on web.');
-        }
-        else {
-          _ilr_sdc_listings_assign_faculty_to_class($entity, $sf_object);
-        }
+        // if (empty($sf_object['Show_on_Web__c'])) {
+        //   throw new SalesforcePullException('Class not set to show on web.');
+        // }
+        //  else {
+        //   _ilr_sdc_listings_assign_faculty_to_class($entity, $sf_object);
+        // }
         break;
       default:
         break;
