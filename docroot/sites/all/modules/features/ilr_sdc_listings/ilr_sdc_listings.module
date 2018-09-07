@@ -2580,6 +2580,21 @@ function _ilr_sdc_listings_get_protected_fields() {
 }
 
 /**
+ * Remove all course and class queries where show on web is false
+ *
+ * @param SalesforceSelectQuery $query
+ *   The query object to alter.
+ *
+ * @see includes/salesforce.select_query.inc
+ */
+function ilr_sdc_listings_salesforce_query_alter(SalesforceSelectQuery &$query) {
+  if ($query->objectType == 'EXECED_Event_Class__c' || $query->objectType == 'EXECED_Course__c') {
+    $query->fields[] = 'Show_on_Web__c';
+    $query->addCondition('Show_on_Web__c', false, '!=');
+  }
+}
+
+/**
  * Implements hook_salesforce_pull_mapping_object_alter().
  *
  * @param mixed $mapping_object
