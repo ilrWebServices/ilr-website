@@ -110,6 +110,7 @@ body.front {
 
         ul {
           @include inline-block-list;
+          @include bulleted-list($undo: true);
 
           @include medium {
             display: flex;
