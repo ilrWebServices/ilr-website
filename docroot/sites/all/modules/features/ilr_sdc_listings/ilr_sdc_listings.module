@@ -2680,13 +2680,15 @@ function ilr_sdc_listings_sf_pull_prematch($sf_object) {
 /**
  * Implements hook_salesforce_pull_entity_presave().
  * Confirms course has an assigned program
- * Checks the "show on web" flag for publishing status
- * Assigns Faculty to classes that are part of a course
+ * Currently checks the "show on web" flag, @see ilr_sdc_listings_salesforce_query_alter()
+ * @todo
+ *   - Consider removing after confirming the query alter is working
+ *   - Debug and resolve issues with assigning faculty to classes
  */
 function ilr_sdc_listings_salesforce_pull_entity_presave($entity, $sf_object, $sf_mapping) {
   if (isset($entity->type)) {
     switch ($entity->type) {
-      case 'sdc_course':
+      case 'sdc_course': //
         if (empty($sf_object['Show_on_Web__c'])) {
           throw new SalesforcePullException('Course not set to show on web.');
         }
@@ -2695,10 +2697,7 @@ function ilr_sdc_listings_salesforce_pull_entity_presave($entity, $sf_object, $s
         if (!_ilr_sdc_listings_get_course_by_sf_id($sf_object['Course__c'])) {
           throw new SalesforcePullException('Salesforce class is not assigned to an existing course.');
         }
-        // if (empty($sf_object['Show_on_Web__c'])) {
-        //   throw new SalesforcePullException('Class not set to show on web.');
-        // }
-        //  else {
+        // else {
         //   _ilr_sdc_listings_assign_faculty_to_class($entity, $sf_object);
         // }
         break;
