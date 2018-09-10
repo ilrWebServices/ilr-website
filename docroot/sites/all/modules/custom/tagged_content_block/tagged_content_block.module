@@ -84,7 +84,7 @@ function tagged_content_block_preprocess_node(&$variables) {
       // Use a different image style when just one item
       if (empty($variables['siblings']) || (drupal_is_front_page() && $variables['position'] == 1)) {
         if (!empty($variables['position'])) {
-          $variables['content']['field_image'][0]['#image_style'] = 'focussed_hero';
+          $variables['content']['field_image'][0]['#image_style'] = 'featured_image';
         }
       }
     }
