@@ -7,10 +7,6 @@
 #main #content #block-bean-research-destinations.tagged-content {
   @include one-column;
 
-  max-width: $large;
-  margin: 0 auto;
-  float: none;
-
   article {
     @include tagged-content--destination;
   }

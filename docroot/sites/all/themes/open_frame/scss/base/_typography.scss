@@ -51,13 +51,20 @@
   }
 }
 
-@mixin paragraph-text($color: $p-text) {
-  font-size: $p-size !important;
+@mixin paragraph-text($color: $p-text, $override: false) {
+  @if $override {
+    font-size: $p-size !important;
+    font-family: $font !important;
+    font-weight: 300 !important;
+  } @else {
+    font-size: $p-size;
+    font-family: $font;
+    font-weight: 300;
+  }
+
   color: $color;
-  font-family: $font !important;
   margin: 0;
   max-width: 750px;
-  font-weight: 300 !important;
 
   @include trailer(1);
 
@@ -247,6 +254,10 @@ p, a, li {
 
 p {
   @include paragraph-text;
+
+  span[style] {
+    @include paragraph-text($black, true);
+  }
 }
 
 p + h2,

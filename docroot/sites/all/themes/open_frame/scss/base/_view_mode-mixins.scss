@@ -811,6 +811,8 @@
 }
 
 @mixin tagged-content--destination {
+  max-width: $large;
+  margin: 0 auto $double-space;
   padding: 0;
   background-color: $white;
   grid-template-columns: 1;
@@ -852,7 +854,7 @@
 
     @include medium {
       box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.1);
-      padding: $double-space;
+      padding: 1.25rem $double-space $double-space;
       grid-row: 2 / -1;
       grid-column: 3 / -1;
     }
@@ -879,12 +881,6 @@
 
       @include large {
         font-size: 2rem;
-      }
-    }
-
-    .news__teaser {
-      p, p > span[style] {
-        @include paragraph-text;
       }
     }
 
