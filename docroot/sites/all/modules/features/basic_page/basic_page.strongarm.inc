@@ -50,7 +50,7 @@ function basic_page_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -86,7 +86,7 @@ function basic_page_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '0',
+            'weight' => '1',
             'visible' => TRUE,
           ),
         ),
