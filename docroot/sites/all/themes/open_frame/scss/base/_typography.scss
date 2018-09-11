@@ -52,11 +52,12 @@
 }
 
 @mixin paragraph-text($color: $p-text) {
-  font-size: $p-size;
+  font-size: $p-size !important;
   color: $color;
+  font-family: $font !important;
   margin: 0;
   max-width: 750px;
-  font-weight: 300;
+  font-weight: 300 !important;
 
   @include trailer(1);
 

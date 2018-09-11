@@ -4,9 +4,11 @@
   }
 }
 
-#block-bean-research-destinations {
+#main #content #block-bean-research-destinations.tagged-content {
+  @include one-column;
+
   article {
-    // @include featured-promo;
+    @include tagged-content--destination;
   }
 }
 
