@@ -32,6 +32,20 @@
   .field-name-body {
     clear: both;
   }
+
+  p.loaded {
+    @include rhythm(1);
+
+    max-width: 100%;
+
+    @include medium {
+      @include rhythm(2);
+
+      max-width: 160%;
+      margin-left: -30%;
+      margin-right: -30%;
+    }
+  }
 }
 
 .view-news-archive {
