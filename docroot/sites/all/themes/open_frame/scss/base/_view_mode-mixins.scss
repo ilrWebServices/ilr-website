@@ -937,6 +937,7 @@
     background: $bg-color;
     margin-top: -1rem;
     position: relative;
+    padding: $half-space $space $space;
 
     @include medium {
       display: grid !important; // the "show" mixin was causing issues
@@ -959,6 +960,9 @@
   }
 
   .news__date {
+    @include small-text;
+    @include trailer(1);
+
     color: $warm-grey;
 
     @include medium {
@@ -978,10 +982,14 @@
     }
 
     h2 {
+      @include adjust-font-size-to(2rem, 1.3);
+
       color: white;
       padding: 0;
 
-      @include adjust-font-size-to(2.5rem, 1.75);
+      @include medium {
+        @include adjust-font-size-to(2.5rem, 1.75);
+      }
 
       @include large {
         @include adjust-font-size-to(3rem, 2);
@@ -1016,11 +1024,11 @@
     @include medium {
       grid-column: 3;
       grid-row: 3;
+    }
 
-      a {
-        color: white;
-        border-bottom: 3px solid white;
-      }
+    a {
+      color: white;
+      border-bottom: 3px solid white;
     }
   }
 
