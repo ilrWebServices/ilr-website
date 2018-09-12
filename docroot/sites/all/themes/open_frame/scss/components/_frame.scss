@@ -40,6 +40,7 @@ $frame-width: 20px;
   font-weight: 600;
   position: relative;
   overflow: hidden;
+  margin-right: $space;
 
   @include large {
     padding: $half-space $space;

@@ -1191,15 +1191,19 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
       $class_nodes = _ilr_sdc_listings_remove_overflow_sessions($classes);
       $class_node = reset($class_nodes);
       $class_wrapper = ilr_get_node_wrapper($class_node);
-      $content = '<p class="cost">$'. $course_price .'</p>';
+      $content = '';
       if (_ilr_sdc_listings_is_ondemand($class_node) || _ilr_sdc_listings_is_online($class_node)) {
         $format = _ilr_sdc_listings_generate_course_format_label($class_wrapper->field_course[0]->value()->nid);
         $content .= '<div class="class-details"><span class="timespan">ONLINE</span>';
+        $content .= '<p class="cost">$'. $course_price .'</p>';
         if (_ilr_sdc_listings_is_ondemand($class_node)) {
           // This is on the course node for on demand
           $content .= '<span class="message">Take this self-paced '. strtolower($format) .' at your convenience</span>';
         }
         $content .= '</div>';
+      }
+      else {
+        $content = '<p class="cost">$'. $course_price .'</p>';
       }
 
       if ($view_mode == 'full') {
@@ -1653,12 +1657,12 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
   $wrapper = ilr_get_node_wrapper($course);
   if (!$classes_available) {
     $wrapper = ilr_get_node_wrapper($course);
-    if ($view_mode == 'full') {
-      $markup .= '<p class="cost">$'. $wrapper->field_price->value() .'</p>';
-    }
     if (_ilr_sdc_listings_is_online($course)) {
       $format = _ilr_sdc_listings_generate_course_format_label($course);
       $markup .= '<span class="timespan">ONLINE '. $format .'</span>';
+    }
+    if ($view_mode == 'full') {
+      $markup .= '<p class="cost">$'. $wrapper->field_price->value() .'</p>';
     }
     $markup .= '<p class="unscheduled">No currently scheduled dates</p>';
   }
@@ -1670,7 +1674,7 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
   } // full node
   else {
     $markup .= '<p class="schedule button-info">'.$help_text.'</p>';
-    $markup .= '<a class="button course request-info" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Request';
+    $markup .= '<a class="link course link--request-info" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Request';
     $markup .= '<span class="course-title">'.$course->title.'</span></a>';
     $markup .= _ilr_sdc_listings_generate_follow_markup($course);
   }
@@ -1684,7 +1688,7 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
 function _ilr_sdc_listings_generate_follow_markup($course) {
   $help_text = 'Follow this course';
   $markup = '<p class="button-info">Sign-up to be notified when this course is offered.</p>';
-  $markup .= '<a class="button course follow" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Notify Me ';
+  $markup .= '<a class="link link--follow course follow" data-nid="'.$course->nid.'" alt="'.$help_text.'" title="'.$help_text.'">Notify Me ';
   $markup .= '<span class="course-title">'.$course->title.'</span></a>';
   return $markup;
 }

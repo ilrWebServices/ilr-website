@@ -1,7 +1,8 @@
 .group-sidebar {
   background: $color-course-class-bg;
   .cost {
-    font-weight: bold;
+    font-weight: 400;
+    font-size: 1.5rem;
     @include trailer(.25);
   }
 
@@ -180,8 +181,14 @@
     }
   }
 
-  .request-info {
+  .link {
     @include adjust-font-size-to(16px,1);
+    @include set-link($black, true);
+    @include trailer(1);
+
+    display: inline-block;
+    font-weight: 600;
+
     span {
       display: none;
     }
@@ -274,6 +281,10 @@ form.class-details {
     .field-name-body {
       @include trailer(3);
       clear: left;
+
+      ul {
+        @include bulleted-list;
+      }
     }
     form {
       @include trailer(1.5);
@@ -343,9 +354,6 @@ div.field-name-field-course.field-type-entityreference {
   }
   > .view-content > div {
     @include rhythm-margins(1, 1);
-    @include trailing-border();
-    border-style: 1px solid;
-    border-color: $gray-light;
   }
 }
 

@@ -40,7 +40,7 @@ form {
 
   .form-item {
     input[type='text'], textarea {
-      border: 1px solid lighten($warm-grey, 15%);
+      border: 1px solid $gray-medium;
       width: 100%;
       padding: 0.5rem 0.5rem;
     }
@@ -165,5 +165,15 @@ form {
         padding: 0
       }
     }
+  }
+}
+
+#sidebar-first form,
+#ilr-sdc-listings-search-form {
+  @include leader(2);
+
+  input,
+  label {
+    text-transform: capitalize;
   }
 }

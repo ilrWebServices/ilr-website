@@ -18,7 +18,6 @@
       .chosen-choices {
         border: 1px solid $gray-medium;
         background: white;
-        border-radius: 6px;
         li {
           line-height: 1.8;
           font-size: 16px;
@@ -35,6 +34,7 @@
   h3 {
     font-family: $font;
     margin: 0;
+    font-weight: 300;
   }
 
   #jPanelMenu-menu & {
@@ -103,10 +103,11 @@
   .views-widget-filter-field_class_dates_value,
   .views-widget-filter-field_class_dates_value2 {
     width: 100%;
-    padding-right: 1em;
   }
   #search-form-submit, #edit-submit-sdc-course-listing {
     @include button;
+
+    background: white;
   }
   .views-reset-button #edit-reset {
     color: $link;
