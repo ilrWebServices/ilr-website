@@ -156,10 +156,16 @@ function news_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_description',
-    'label' => 'Teaser',
+    'label' => 'Subtitle',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -170,7 +176,7 @@ function news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -261,7 +267,7 @@ function news_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -346,7 +352,7 @@ function news_field_default_field_instances() {
     'bundle' => 'news_item',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The short title, if present, is used in news blocks and breadcrumbs.',
+    'description' => 'The short title, if present, is used in cards and breadcrumbs.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -374,10 +380,16 @@ function news_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_short_title',
     'label' => 'Short title',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -521,10 +533,10 @@ function news_field_default_field_instances() {
   t('Main Image');
   t('Publication Date');
   t('Short title');
+  t('Subtitle');
   t('Tags');
   t('Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.');
-  t('Teaser');
-  t('The short title, if present, is used in news blocks and breadcrumbs.');
+  t('The short title, if present, is used in cards and breadcrumbs.');
 
   return $field_instances;
 }
