@@ -39,7 +39,7 @@ function news_preprocess_node(&$variables) {
     if ($variables['view_mode'] == 'teaser') {
       if (count($variables['field_short_title']) > 0) {
         $wrapper = ilr_get_node_wrapper($variables['node']);
-        $variables['title'] = news_get_news_title_from_metadata_wrapper($wrapper);
+        $variables['title'] = news_get_news_title($wrapper);
       }
       if (count($variables['field_website_url'])) {
         $external_url = $variables['field_website_url'][LANGUAGE_NONE][0]['url'];
@@ -102,7 +102,15 @@ function news_date_select_process_alter(&$element, $form_state, $context) {
   }
 }
 
-function news_get_news_title_from_metadata_wrapper($wrapper) {
+function news_get_news_title($wrapper) {
+  $title = $wrapper->label();
+  if (isset($wrapper->field_short_title) && !empty($wrapper->field_short_title->value())) {
+    $title = $wrapper->field_short_title->value();
+  }
+  return $title;
+}
+
+function news_get_news_summary($wrapper) {
   $title = $wrapper->label();
   if (isset($wrapper->field_short_title) && !empty($wrapper->field_short_title->value())) {
     $title = $wrapper->field_short_title->value();
