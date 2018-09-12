@@ -36,14 +36,36 @@
   p.loaded {
     @include rhythm(1);
 
-    max-width: 100%;
-
     @include medium {
       @include rhythm(2);
+      @include full-width;
+    }
 
-      max-width: 160%;
-      margin-left: -30%;
-      margin-right: -30%;
+    @include large {
+      left: 31%;
+      max-width: 103vw;
+      width: 103vw;
+    }
+
+    @include xl {
+      left: 50%;
+    }
+
+    img.image-style-focussed_main_image {
+      @include large {
+        width: 55%;
+        margin-left: 29vw;
+      }
+
+      @include xl {
+        width: 46%;
+        margin-left: 27vw;
+      }
+
+      @include breakpoint($full-break) {
+        width: 42%;
+        margin-left: 29vw;
+      }
     }
   }
 }
