@@ -2364,7 +2364,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     'fences_wrapper' => 'ul',
     'field_name' => 'field_social_channels',
     'label' => 'Social Channels',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
