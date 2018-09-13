@@ -22,25 +22,9 @@ $base-line-height: 27px;
 
 // Base
 @import "base/variables";
+@import "base/breakpoints";
+@import "components/frame";
 @import "base/mixins";
 @import "base/**/*.scss";
+@import "layout/**/*.scss";
 @import "components/**/*.scss";
-
-// Layout - globbing not currently working :/
-@import "layout/layouts";
-@import "layout/base";
-@import "layout/certificate_programs";
-@import "layout/channel_page";
-@import "layout/course-listings";
-@import "layout/homepage-layout";
-@import "layout/microsites_layout";
-@import "layout/one_column";
-@import "layout/people_landing_pages";
-@import "layout/subsite_homepages";
-@import "layout/two_cols_right_sidebar";
-@import "layout/ilr-at-70-homepage-layout";
-@import "layout/two_cols_no_nav";
-@import "layout/two_col_content_area";
-@import "layout/two-cols-with-sidebar";
-@import "layout/two_cols_wide";
-@import "layout/triptych";

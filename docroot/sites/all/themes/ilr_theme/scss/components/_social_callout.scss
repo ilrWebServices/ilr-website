@@ -1,8 +1,9 @@
 .social-callout {
   @include full-width;
-  background-attachment: fixed;
-  background-position: center center;
-  background-image: url("../images/bg-social.png");
+  // background-attachment: fixed;
+  // background-position: center center;
+  // background-image: url("../images/bg-social.png");
+  background-color: $color-social-bg;
   padding: 85px 21px;
   text-align: center;
 
@@ -31,11 +32,13 @@
   }
 
   .social-callout__links {
+    @include bulleted-list($undo: true);
+
     margin-bottom: 21px;
   }
 
   .social-callout__item {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: $white;
     @include roundLink(46px);
     font-size: 18px;
     padding-left: 0;
@@ -54,6 +57,10 @@
     }
 
     .social-callout__link {
+      &::before {
+        color: $color-social-bg
+      }
+
       &.follow-linkedin {
         padding-left: 8px;
       }
@@ -67,6 +74,7 @@
   .social-callout__hashtag {
     font-size: 27px;
     line-height: 1.3;
+    max-width: 100%;
   }
 
   .social-callout__hashtag-link {
@@ -75,21 +83,25 @@
   }
 
   // Variations
-  &--orange {
-    $color: darken($orange, 4%);
-    background-color: $color;
+  // &--orange {
+  //   $color: darken($orange, 4%);
+  //   background-color: $color;
 
-    .social-callout__link::before {
-      color: $color;
-    }
-  }
+  //   .social-callout__link::before {
+  //     color: $color;
+  //   }
+  // }
 
-  &--green {
-    $color: darken($basic-page-color, 5%);
-    background-color: $color;
+  // &--green {
+  //   $color: darken($basic-page-color, 5%);
+  //   background-color: $color;
 
-    .social-callout__link::before {
-      color: $color;
-    }
-  }
+  //   .social-callout__link::before {
+  //     color: $color;
+  //   }
+  // }
+}
+
+#block-bean-sls-social-media {
+  margin-bottom: 0 !important;
 }

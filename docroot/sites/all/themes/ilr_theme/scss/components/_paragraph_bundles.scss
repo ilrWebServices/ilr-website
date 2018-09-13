@@ -2,6 +2,18 @@
 // prefixed with pb_
 #main {
   .paragraphs-items-field-para-main-page-content {
+    .field-item {
+      @include rhythm(2);
+
+      &:first-of-type {
+        margin: 0;
+      }
+
+      .tagged-content {
+        margin: 0;
+      }
+    }
+
     .field-name-field-image {
       text-align: center;
       &.field-widget-image-image {
@@ -24,19 +36,6 @@
         }
       }
     }
-    .field-name-field-para-main-page-content {
-      .field-item:nth-child(1) {
-        border-top: 1px solid $gray-light;
-        .node-type-basic-page & {
-          border: none;
-        }
-      }
-    }
-    .field-name-field-para-main-page-content {
-      .field-item.paragraph-type-featured-promo {
-        background: $nav-dark;
-      }
-    }
   }
 
   article.node-reflection {
@@ -49,6 +48,12 @@
 
   .entity-paragraphs-item {
     @include pie-clearfix;
+    // This seems to primarily affect channel pages
+    // @include rhythm(1);
+
+    // @include large {
+    //   @include rhythm(2);
+    // }
   }
 }
 

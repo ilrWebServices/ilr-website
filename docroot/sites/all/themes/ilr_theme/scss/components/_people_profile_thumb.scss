@@ -3,28 +3,40 @@
 #block-views-people-profile-teasers-block,
 body.page-taxonomy-term .view-areas-expertise-taxonomy-term {
 
-  .view-content { @include leader(1); }
+  .view-content {
+    @include leader(1);
+    @include two-column-grid;
+
+    @include breakpoint($full-break) {
+      @include three-column-grid;
+    }
+  }
 
   article {
-    position: relative;
     @include thumb;
 
+    grid-template-rows: repeat(5, auto);
+
     h2 {
-      padding-top: 0 !important;
-      margin-bottom: 0;
-      @include adjust-leading-to(1);
+      @include set-heading(false);
+
+      grid-row: 1;
+
+      a {
+        @include set-heading(false);
+      }
     }
 
     .field {
       @include adjust-font-size-to(16px);
       line-height: 1.2;
-      margin-left: 115px;
+      grid-column: 2;
+      margin-bottom: -0.5rem; // Improves line spacing between fields
+
+
       &.field-type-image {
-        top: 3px !important; // note that this will be affected by the h2 line-height
-        margin-left: 0;
-        .placeholder {
-          height: 100%;
-        }
+        grid-column: 1;
+        grid-row: 1 / -1;
       }
     }
   }

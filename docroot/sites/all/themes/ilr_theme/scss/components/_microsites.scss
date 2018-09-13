@@ -1,624 +1,842 @@
-body.microsite {
-  &.sports-leadership {
-    #page {
-      background: $dark-blue;
-    }
-    #header-region {
-      background-color: $dark-blue;
-      border: none;
-      a {
-        color: $gray-medium;
-      }
-    }
-  }
-
-  &.worker-institute {
-    #page {
-      background: $gray-wi;
-    }
-    #header-region {
-      background-color: $gray-wi;
-      border: none;
-    }
-    header[data-eq-state="mobile-nav"] {
-      #header-region {
-        background-color: $cornell-red;
-        padding-bottom: 13px;
-        h2 {
-          display: none;
-        }
-      }
-    }
-  }
-
-  header[data-eq-state="regular-nav"] {
-    #header-region {
-      h2 {
-        display: none;
-      }
-      .menu-block-ilr-primary-menu {
-        float: left;
-      }
-    }
-  }
-
-  a {
-    border: none;
-  }
-
-  h1, h2, h3, h4 {
-    font-family: $font;
-  }
-
-  h1 {
-    color: $basic-page-color;
-  }
-
-  #page-title {
-    display: none;
-  }
-
-  h2.centered-title {
-    color: $gray-medium;
-  }
-
+.microsite {
   .block > h2 {
-    visibility: hidden;
-    margin: 0;
-    padding: 0;
-    height: 0;
+    @include hidden;
+  }
+
+  .content h2 {
+    @include set-heading(true);
+    @include adjust-font-size-to(2rem);
+
+    @include large {
+      @include adjust-font-size-to(3rem);
+    }
+  }
+}
+
+.microsite-marquee {
+
+  &__image {
+    @include full-width;
+
+    p {
+      max-width: 100%;
+    }
+  }
+
+  &__content {
+    position: relative;
+    background-color: #002A48;
+    padding: $space;
+    margin-top: -20%;
+
+    @include xl {
+      padding: 100px;
+    }
+
+    h1 {
+      color: $white;
+      line-height: 1;
+      font-size: 1.5rem;
+
+      @include large {
+        font-size: 48px;
+        max-width: 40%;
+      }
+    }
+
+    .video-callout .video-callout__introduction {
+      @include small-text(0.9);
+
+      padding: 0 $space 0 0;
+
+      @include large {
+        @include adjust-font-size-to(26px, 1.5);
+
+        padding-right: $triple-space;
+      }
+    }
+  }
+}
+
+.microsite-featured-speakers {
+  @include container;
+
+  background: $black;
+
+  h2 {
+    color: $white !important;
+  }
+
+  .featured-speaker {
+    @include card--person($cornell-red);
+
+    cursor: pointer;
+
+    p {
+      line-height: 0.5;
+      margin: 0;
+    }
+  }
+
+  #block-bean-sls-featured-speakers & {
+    margin-top: -60px;
+  }
+}
+
+.microsite-moderators {
+  article {
+    @include card--person($dark-gray-orange);
+
+    cursor: pointer;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.microsite-individual-speaker {
+  article.featured-speaker {
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.microsite-speakers {
+  @include full-width;
+  @include rhythm-padding(1);
+
+  background-color: $warm-grey;
+
+  &__container {
+    @include container;
+    @include four-column-grid;
+  }
+
+  article.speaker {
+    @include card--person;
+
+    cursor: pointer;
+
+    h3 {
+      padding-top: 1rem;
+    }
+  }
+}
+
+.microsite-sponsors {
+  padding-left: 34px;
+  padding-right: 34px;
+  text-align: center;
+
+  p {
+    @include adjust-font-size-to(23px);
+
+    max-width: 500px;
+    margin: 0 auto;
   }
 
   ul {
-    padding-left: 0;
+    @include bulleted-list($undo: true);
+
+    margin-top: 55px;
+
     li {
-      background: none;
+      display: inline;
+      padding-left: 0;
+      img {
+        width: 150px;
+        height: 150px;
+      }
     }
-  }
-
-  .button {
-    @include button;
-    display: inline;
-  }
-
-  #highlighted {
-    overflow: auto;
-  }
-
-  #breadcrumb {
-    display: none;
-  }
-
-  .microsite-marquee {
-    background-color: $dark-blue;
-    padding-top: 55px;
-    padding-left: 21px;
-    padding-right: 21px;
-    padding-bottom: 55px;
-    img {
-      display: none;
+    li.square {
+      display: block;
+      @include trailer(1);
+      img {
+        width: 175px;
+        height: 120px;
+      }
     }
-    .overlay {
-      text-align: center;
-      p {
-        color: white;
-        font-size: 24px;
-        max-width: 500px;
-        margin: 0 auto;
-        em {
-          font-style: normal;
-          font-size: 55px;
-          text-transform: uppercase;
-          font-weight: 600;
-          line-height: 1;
-        }
+    li.rect {
+      display: block;
+      @include trailer(1);
+      img {
+        width: 250px;
+        height: 98px;
       }
     }
   }
+}
 
-  #block-system-main {
-    padding-left: 55px;
-    padding-right: 55px;
+.microsite-schedule {
+  text-align: center;
+
+  p {
+    max-width: 100%;
+    font-size: 21px;
+    font-weight: 400;
+    margin-bottom: 27px;
   }
 
-  .introduction {
-    text-align: center;
-    @include adjust-font-size-to(21px);
-    @include adjust-leading-to(1);
-    @include padding-leader(1);
-    @include padding-trailer(1);
-    margin: 0 auto !important;
-    color: $bg-body;
+  ul {
+    @include bulleted-list($undo: true);
+  }
+
+  li {
+    color: $orange;
 
     @include medium {
-      @include adjust-font-size-to(27px);
-      @include adjust-leading-to(1);
+      display: inline;
+    }
+  }
+}
+
+.microsite-venue {
+  background-color: $cornell-red;
+
+  @include medium {
+    @include two-column-grid($gap: 0);
+  }
+
+  h2 {
+    padding: $space $space 0 $double-space;
+    text-align: left !important;
+    color: white !important;
+
+    @include medium {
+      padding-bottom: $space;
+      padding-left: $quadruple-space;
     }
   }
 
+  .venue {
+    background-color: $color-venue-bg;
 
-  .tagline {
-    text-align: center;
-    font-style: oblique;
-    @include adjust-font-size-to(22px);
-  }
+    @include medium {
+      grid-column: 1;
+      grid-row: 2;
 
-  .field-name-field-content-bottom-region {
-    clear: both;
-  }
-
-  .block-bean {
-    .wrapper {
-      @include padding-trailer(2);
-      overflow: auto;
-      h2 {
-        @include centered-title;
-        @include trailer(1);
-        &::after {
-          border-bottom: 2px solid $orange;
-          left: 40%;
-          width: 20%;
-          height: 3px;
-        }
-      }
-    }
-  }
-
-  #content-bottom {
-    .microsite-featured-speakers, .microsite-individual-speaker {
-      background-color: white;
-      article.featured-speaker {
-        text-align: center;
-        &:hover {
-          cursor: pointer;
-        }
-        h3 {
-          color: $basic-page-color;
-          font-size: 34px;
-          line-height: 1.2;
-          margin: 0 0 8px;
-        }
-        h4 {
-          font-size: 24px;
-          line-height: 1.5;
-          margin-bottom: 13px;
-        }
+      .address {
+        @include center($horizontally: false, $vertically: true);
       }
     }
 
-    .microsite-moderators {
-      background-color: $gray-bg;
-      article.moderator {
-        padding-bottom: 34px;
-        text-align: center;
-        &:hover {
-          cursor: pointer;
-        }
-        h3 {
-          color: $basic-page-color;
-          @include adjust-font-size-to(27px,1);
-          margin: 0 0 8px;
-        }
-        h4 {
-          @include adjust-font-size-to(21px,1);
-        }
-      }
-    }
+    .address {
+      padding: $space $space $space $double-space;
 
-    .microsite-schedule {
-      padding-left: 34px;
-      padding-right: 34px;
-      text-align: center;
-      p {
-        font-size: 21px;
-        font-weight: 400;
-        margin-bottom: 27px;
+      @include medium {
+        padding-left: $quadruple-space;
       }
-      li {
-        color: $orange;
-      }
-    }
 
-    .microsite-schedule-table {
-      padding-left: 34px;
-      padding-right: 34px;
-      li {
-        width: 100%;
-        margin-bottom: 34px;
-        time {
-          border-bottom: 1px solid $basic-page-color;
-          color: $orange;
-          font-size: 21px;
-          font-weight: 400;
-          padding-bottom: 8px;
-        }
-        .panel-info {
-          margin-top: 21px;
-        }
-        .panel-title {
-          color: $p-text;
-          font-size: 21px;
-          font-weight: 400;
-          margin-bottom: 8px;
-        }
-        .panelists {
-          color: $gray-dark;
-        }
-      }
-    }
-
-    .microsite-venue {
-      background-color: $gray-bg;
-      padding-left: 34px;
-      padding-right: 34px;
-      .venue {
-        h3 {
-          @include adjust-font-size-to(24px, 1.2);
-          margin-bottom: 0;
-        }
-        a {
-          color: $orange;
-        }
-      }
-    }
-
-    .microsite-sponsors {
-      padding-left: 34px;
-      padding-right: 34px;
-      text-align: center;
-      ul {
-        margin-top: 55px;
-        li {
-          display: inline;
-          padding-left: 0;
-          img {
-            width: 150px;
-            height: 150px;
-          }
-        }
-        li.square {
-          display: block;
-          @include trailer(1);
-          img {
-            width: 175px;
-            height: 120px;
-          }
-        }
-        li.rect {
-          display: block;
-          @include trailer(1);
-          img {
-            width: 250px;
-            height: 98px;
-          }
-        }
-      }
-    }
-
-    .microsite-bottom-links {
-      background: lighten($brand-dark, 3%);
-      @include padding-leader(2);
-      @include padding-trailer(2);
-      ul {
-        margin: 0 auto;
-        padding: 0;
-        text-align: center;
-        @include adjust-font-size-to(22px);
-        @include adjust-leading-to(1);
+      * {
         color: white;
-        li {
-          display: inline;
-          a, a:visited {
-            color: white;
-            border-bottom: 1px solid lighten($brand-dark, 25%);
-            &:hover {
-              color: lighten($brand-light, 20%);
-              border-bottom: 1px solid lighten($brand-dark, 30%);
-            }
-          }
-        }
-      }
-      h2 {
-        display: none;
+        border-color: transparent;
       }
     }
   }
 
-  #content-bottom[data-eq-state="550"] {
-    .show-hide-bio {
-      display: none;
-    }
-    .microsite-individual-speaker {
-      article.featured-speaker {
-        margin: 0 auto;
-        float: none;
-        clear: none;
-      }
-    }
-    .microsite-sponsors {
-      ul {
-        li.rect {
-          img {
-            width: 305px;
-            height: 120px;
-          }
-        }
-      }
-    }
-  }
+  .map {
+    line-height: 0.5;
 
-  #content-bottom[data-eq-state="768"] {
-    .show-hide-bio {
-      display: none;
-    }
-    .microsite-featured-speakers {
-      padding-left: 34px;
-      padding-right: 34px;
-    }
-    .microsite-individual-speaker {
-      article.featured-speaker {
-        margin: 0 auto;
-        float: none;
-        clear: none;
-      }
-    }
-    .microsite-moderators {
-      padding-left: 34px;
-      padding-right: 34px;
-      &[data-items='4'] {
-        article.moderator {
-          img {
-            width: 72%;
-          }
-        }
-      }
-    }
-
-    .microsite-schedule-table {
-      padding-left: 89px;
-      padding-right: 89px;
-      li {
-        display: inline-block;
-        clear: both;
-        time {
-          border: none;
-          text-align: right;
-          width: 21%;
-          padding-right: 34px;
-          padding-bottom: 0;
-          float: left;
-        }
-        .panel-info {
-          border-left: 1px solid $basic-page-color;
-          text-align: left;
-          width: 79%;
-          float: left;
-          margin-top: 0;
-          padding-right: 55px;
-          padding-left: 34px;
-        }
-      }
-    }
-    .microsite-venue {
-      padding-left: 34px;
-      padding-right: 34px;
-    }
-    .microsite-sponsors {
-      ul {
-        li {
-          padding-left: 1em;
-        }
-        li.square {
-          display: inline;
-          @include trailer(0);
-        }
-        li.rect {
-          display: inline;
-          @include trailer(0);
-          img {
-            width: 305px;
-            height: 120px;
-          }
-        }
-      }
-    }
-  }
-
-  #content-bottom[data-eq-state="widescreen"] {
-    .show-hide-bio {
-      display: none;
-    }
-    .microsite-featured-speakers {
-      padding-left: 89px;
-      padding-right: 89px;
-      article.featured-speaker {
-        img {
-          width: 377px;
-        }
-      }
-    }
-    .microsite-individual-speaker {
-      padding-left: 34px;
-      padding-right: 34px;
-      article.featured-speaker {
-        img {
-          width: 377px;
-        }
-      }
-    }
-    .microsite-moderators {
-      background-color: white;
-      padding-left: 89px;
-      padding-right: 89px;
-      .mod-last-row {
-        padding: 21px 89px 0;
-        clear: both;
-        overflow: auto;
-      }
-    }
-    .microsite-schedule {
-      padding-left: 55px;
-      padding-right: 55px;
-      li {
-        display: inline;
-      }
-    }
-    .microsite-schedule-table {
-      padding-left: 89px;
-      padding-right: 89px;
-      ul {
-        max-width: 1100px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      li {
-        display: inline-block;
-        clear: both;
-        time {
-          border: none;
-          text-align: right;
-          width: 21%;
-          padding-right: 34px;
-          padding-bottom: 0;
-          float: left;
-        }
-        .panel-info {
-          border-left: 1px solid $basic-page-color;
-          text-align: left;
-          width: 79%;
-          float: left;
-          margin-top: 0;
-          padding-right: 55px;
-          padding-left: 34px;
-        }
-      }
-    }
-    .microsite-venue {
-      padding-left: 55px;
-      padding-right: 55px;
-      .venue {
-        height: 400px;
-        line-height: 350px;
-        padding-left: 34px;
-        .address {
-          display: inline-block;
-          vertical-align: middle;
-          line-height: 1.2;
-        }
-      }
-    }
-    .microsite-sponsors {
-      padding-left: 55px;
-      padding-right: 55px;
-      ul {
-        margin-top: 55px;
-        li {
-          display: inline;
-          padding-left: 1em;
-          img {
-            width: 150px;
-            height: 150px;
-          }
-        }
-        li.square {
-          img {
-            width: 218px;
-          }
-        }
-        li.rect {
-          img {
-            width: 382px;
-          }
-        }
-      }
+    @include medium {
+      grid-column: 2;
+      grid-row: 2;
     }
   }
 }
+// body.microsite {
+//   &.sports-leadership {
+//     #page {
+//       // background: $dark-blue;
+//     }
+//     #header-region {
+//       background-color: $dark-blue;
+//       border: none;
+//       a {
+//         color: $gray-medium;
+//       }
+//     }
+//   }
 
-#main[data-eq-state="768"] {
-  .microsite-marquee {
-    padding: 0;
-    position: relative;
-    img {
-      display: block;
-    }
-    .overlay {
-      text-align: left;
-      position: absolute;
-      bottom: 13%;
-      right: 13%;
-      z-index: 100;
-      p {
-        color: white;
-        font-size: 24px;
-        max-width: 300px;
-        em {
-          font-style: normal;
-          font-size: 44px;
-          text-transform: uppercase;
-          font-weight: 600;
-          line-height: 1;
-        }
-      }
-    }
-  }
-}
+//   &.worker-institute {
+//     #page {
+//       background: $gray-wi;
+//     }
+//     #header-region {
+//       background-color: $gray-wi;
+//       border: none;
+//     }
+//     header[data-eq-state="mobile-nav"] {
+//       #header-region {
+//         background-color: $cornell-red;
+//         padding-bottom: 13px;
+//         h2 {
+//           display: none;
+//         }
+//       }
+//     }
+//   }
 
-#main[data-eq-state="widescreen"] {
-  .microsite-marquee {
-    padding: 0;
-    position: relative;
-    img {
-      display: block;
-    }
-    .overlay {
-      text-align: left;
-      position: absolute;
-      bottom: 13%;
-      right: 13%;
-      z-index: 100;
-      p {
-        color: white;
-        font-size: 24px;
-        max-width: 500px;
-        em {
-          font-style: normal;
-          font-size: 72px;
-          text-transform: uppercase;
-          font-weight: 600;
-          line-height: 1;
-        }
-      }
-    }
-  }
-}
+//   header[data-eq-state="regular-nav"] {
+//     #header-region {
+//       h2 {
+//         display: none;
+//       }
+//       .menu-block-ilr-primary-menu {
+//         float: left;
+//       }
+//     }
+//   }
 
-.container[data-eq-state="regular-nav"] {
-  #main[data-eq-state="768"] {
-    .microsite-marquee {
-      img {
-        display: block;
-      }
-      position: relative;
-      .overlay {
-        text-align: left;
-        position: absolute;
-        bottom: 13%;
-        right: 13%;
-        z-index: 100;
-        p {
-          color: white;
-          font-size: 24px;
-          max-width: 400px;
-          em {
-            font-style: normal;
-            font-size: 55px;
-            text-transform: uppercase;
-            font-weight: 600;
-            line-height: 1;
-          }
-        }
-      }
-    }
-  }
-}
+//   a {
+//     border: none;
+//   }
+
+//   h1, h2, h3, h4 {
+//     font-family: $font;
+//   }
+
+//   h1 {
+//     color: $basic-page-color;
+//   }
+
+//   #page-title {
+//     display: none;
+//   }
+
+//   h2.centered-title {
+//     color: $gray-medium;
+//   }
+
+//   .block > h2 {
+//     visibility: hidden;
+//     margin: 0;
+//     padding: 0;
+//     height: 0;
+//   }
+
+//   ul {
+//     padding-left: 0;
+//     li {
+//       background: none;
+//     }
+//   }
+
+//   .button {
+//     @include button;
+//     display: inline;
+//   }
+
+//   #highlighted {
+//     overflow: auto;
+//   }
+
+//   #breadcrumb {
+//     display: none;
+//   }
+
+//   .microsite-marquee {
+//     // background-color: $dark-blue;
+//     padding-top: 55px;
+//     padding-left: 21px;
+//     padding-right: 21px;
+//     padding-bottom: 55px;
+//     img {
+//       display: none;
+//     }
+//     .overlay {
+//       text-align: center;
+//       p {
+//         color: white;
+//         font-size: 24px;
+//         max-width: 500px;
+//         margin: 0 auto;
+//         em {
+//           font-style: normal;
+//           font-size: 55px;
+//           text-transform: uppercase;
+//           font-weight: 600;
+//           line-height: 1;
+//         }
+//       }
+//     }
+
+//     @include medium {
+//       padding: 0;
+//       position: relative;
+//       img {
+//         display: block;
+//       }
+//       .overlay {
+//         text-align: left;
+//         position: absolute;
+//         bottom: 13%;
+//         right: 13%;
+//         z-index: 100;
+//         p {
+//           color: white;
+//           font-size: 24px;
+//           max-width: 300px;
+//           em {
+//             font-style: normal;
+//             font-size: 44px;
+//             text-transform: uppercase;
+//             font-weight: 600;
+//             line-height: 1;
+//           }
+//         }
+//       }
+//     }
+
+//     @include large {
+//       .overlay {
+//         p {
+//           max-width: 500px;
+//           em {
+//             font-size: 72px;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   #block-system-main {
+//     padding-left: 55px;
+//     padding-right: 55px;
+//   }
+
+//   .introduction {
+//     text-align: center;
+//     @include adjust-font-size-to(21px);
+//     @include adjust-leading-to(1);
+//     @include padding-leader(1);
+//     @include padding-trailer(1);
+//     margin: 0 auto !important;
+//     color: $bg-body;
+
+//     @include medium {
+//       @include adjust-font-size-to(27px);
+//       @include adjust-leading-to(1);
+//     }
+//   }
+
+
+//   .tagline {
+//     text-align: center;
+//     font-style: oblique;
+//     @include adjust-font-size-to(22px);
+//   }
+
+//   .field-name-field-content-bottom-region {
+//     clear: both;
+//   }
+
+//   .block-bean {
+//     .wrapper {
+//       @include padding-trailer(2);
+//       overflow: auto;
+//       h2 {
+//         @include centered-title;
+//         @include trailer(1);
+//         width: 100%;
+//         max-width: 100%;
+//         &::after {
+//           border-bottom: 2px solid $orange;
+//           left: 40%;
+//           width: 20%;
+//           height: 3px;
+//         }
+//       }
+//     }
+//   }
+
+//   #content-bottom {
+//     .microsite-featured-speakers, .microsite-individual-speaker {
+//       background-color: $black;
+//       // @include three-column-grid;
+//       article.featured-speaker {
+//         // flex: 1 1 40%;
+//         // max-width: 400px;
+//         text-align: center;
+//         &:hover {
+//           cursor: pointer;
+//         }
+//         h3 {
+//           @include set-heading(true);
+//           color: white;
+//           font-size: 34px;
+//           line-height: 1.2;
+//           margin: 0 0 8px;
+//         }
+//         h4 {
+//           @include set-heading(true);
+//           font-size: 24px;
+//           line-height: 1.5;
+//           margin-bottom: 13px;
+//         }
+//       }
+//     }
+
+//     .microsite-moderators {
+//       @include flex-around;
+//       background-color: $gray-bg;
+//       article.moderator {
+//         flex: 0 1 100%;
+//         max-width: 325px;
+//         padding-bottom: 34px;
+//         text-align: center;
+//         &:hover {
+//           cursor: pointer;
+//         }
+//         h3 {
+//           color: $basic-page-color;
+//           @include adjust-font-size-to(27px,1);
+//           margin: 0 0 8px;
+//         }
+//         h4 {
+//           @include adjust-font-size-to(21px,1);
+//         }
+
+//         @include small {
+//           flex: 0 1 47%;
+//         }
+
+//         @include medium {
+//           flex: 0 1 30%;
+//         }
+
+//         @include large {
+//           flex: 0 1 22%;
+//         }
+//       }
+//     }
+
+//     .microsite-schedule {
+//       padding-left: 34px;
+//       padding-right: 34px;
+//       text-align: center;
+//       p {
+//         font-size: 21px;
+//         font-weight: 400;
+//         margin-bottom: 27px;
+//       }
+//       li {
+//         color: $orange;
+//       }
+//     }
+
+//     .microsite-schedule-table {
+//       padding-left: 34px;
+//       padding-right: 34px;
+//       li {
+//         width: 100%;
+//         margin-bottom: 34px;
+//         time {
+//           border-bottom: 1px solid $basic-page-color;
+//           color: $orange;
+//           font-size: 21px;
+//           font-weight: 400;
+//           padding-bottom: 8px;
+//         }
+//         .panel-info {
+//           margin-top: 21px;
+//         }
+//         .panel-title {
+//           color: $p-text;
+//           font-size: 21px;
+//           font-weight: 400;
+//           margin-bottom: 8px;
+//         }
+//         .panelists {
+//           color: $gray-dark;
+//         }
+//       }
+//     }
+
+//     .microsite-venue {
+//       background-color: $gray-bg;
+//       padding-left: 34px;
+//       padding-right: 34px;
+//       .venue {
+//         h3 {
+//           @include adjust-font-size-to(24px, 1.2);
+//           margin-bottom: 0;
+//         }
+//         a {
+//           color: $orange;
+//         }
+//       }
+//     }
+
+//     .microsite-sponsors {
+//       padding-left: 34px;
+//       padding-right: 34px;
+//       text-align: center;
+//       ul {
+//         margin-top: 55px;
+//         li {
+//           display: inline;
+//           padding-left: 0;
+//           img {
+//             width: 150px;
+//             height: 150px;
+//           }
+//         }
+//         li.square {
+//           display: block;
+//           @include trailer(1);
+//           img {
+//             width: 175px;
+//             height: 120px;
+//           }
+//         }
+//         li.rect {
+//           display: block;
+//           @include trailer(1);
+//           img {
+//             width: 250px;
+//             height: 98px;
+//           }
+//         }
+//       }
+//     }
+
+//     .microsite-bottom-links {
+//       background: lighten($brand-dark, 3%);
+//       @include padding-leader(2);
+//       @include padding-trailer(2);
+//       ul {
+//         margin: 0 auto;
+//         padding: 0;
+//         text-align: center;
+//         @include adjust-font-size-to(22px);
+//         @include adjust-leading-to(1);
+//         color: white;
+//         li {
+//           display: inline;
+//           a, a:visited {
+//             color: white;
+//             border-bottom: 1px solid lighten($brand-dark, 25%);
+//             &:hover {
+//               color: lighten($brand-light, 20%);
+//               border-bottom: 1px solid lighten($brand-dark, 30%);
+//             }
+//           }
+//         }
+//       }
+//       h2 {
+//         display: none;
+//       }
+//     }
+//   }
+
+//   #content-bottom[data-eq-state="550"] {
+//     // .microsite-sponsors {
+//     //   ul {
+//     //     li.rect {
+//     //       img {
+//     //         width: 305px;
+//     //         height: 120px;
+//     //       }
+//     //     }
+//     //   }
+//     // }
+//   }
+
+//   #content-bottom[data-eq-state="768"] {
+//     .microsite-featured-speakers {
+//       padding-left: 34px;
+//       padding-right: 34px;
+//     }
+//     .microsite-moderators {
+//       padding-left: 34px;
+//       padding-right: 34px;
+//       &[data-items='4'] {
+//         article.moderator {
+//           img {
+//             width: 72%;
+//           }
+//         }
+//       }
+//     }
+
+//     .microsite-schedule-table {
+//       padding-left: 89px;
+//       padding-right: 89px;
+//       li {
+//         display: inline-block;
+//         clear: both;
+//         time {
+//           border: none;
+//           text-align: right;
+//           width: 21%;
+//           padding-right: 34px;
+//           padding-bottom: 0;
+//           float: left;
+//         }
+//         .panel-info {
+//           border-left: 1px solid $basic-page-color;
+//           text-align: left;
+//           width: 79%;
+//           float: left;
+//           margin-top: 0;
+//           padding-right: 55px;
+//           padding-left: 34px;
+//         }
+//       }
+//     }
+//     .microsite-venue {
+//       padding-left: 34px;
+//       padding-right: 34px;
+//     }
+//     .microsite-sponsors {
+//       ul {
+//         li {
+//           padding-left: 1em;
+//         }
+//         li.square {
+//           display: inline;
+//           @include trailer(0);
+//         }
+//         li.rect {
+//           display: inline;
+//           @include trailer(0);
+//           img {
+//             width: 305px;
+//             height: 120px;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   #content-bottom[data-eq-state="widescreen"] {
+//     .microsite-featured-speakers {
+//       padding-left: 89px;
+//       padding-right: 89px;
+//       article.featured-speaker {
+//         img {
+//           width: 377px;
+//         }
+//       }
+//     }
+//     .microsite-individual-speaker {
+//       padding-left: 34px;
+//       padding-right: 34px;
+//       article.featured-speaker {
+//         img {
+//           width: 377px;
+//         }
+//       }
+//     }
+//     .microsite-moderators {
+//       background-color: white;
+//       padding-left: 89px;
+//       padding-right: 89px;
+//       .mod-last-row {
+//         // padding: 21px 89px 0;
+//         // clear: both;
+//         // overflow: auto;
+//       }
+//     }
+//     .microsite-schedule-table {
+//       padding-left: 89px;
+//       padding-right: 89px;
+//       ul {
+//         max-width: 1100px;
+//         margin-left: auto;
+//         margin-right: auto;
+//       }
+//       li {
+//         display: inline-block;
+//         clear: both;
+//         time {
+//           border: none;
+//           text-align: right;
+//           width: 21%;
+//           padding-right: 34px;
+//           padding-bottom: 0;
+//           float: left;
+//         }
+//         .panel-info {
+//           border-left: 1px solid $basic-page-color;
+//           text-align: left;
+//           width: 79%;
+//           float: left;
+//           margin-top: 0;
+//           padding-right: 55px;
+//           padding-left: 34px;
+//         }
+//       }
+//     }
+//     .microsite-venue {
+//       padding-left: 55px;
+//       padding-right: 55px;
+//       .venue {
+//         height: 400px;
+//         line-height: 350px;
+//         padding-left: 34px;
+//         .address {
+//           display: inline-block;
+//           vertical-align: middle;
+//           line-height: 1.2;
+//         }
+//       }
+//     }
+//     .microsite-sponsors {
+//       padding-left: 55px;
+//       padding-right: 55px;
+//       ul {
+//         margin-top: 55px;
+//         li {
+//           display: inline;
+//           padding-left: 1em;
+//           img {
+//             width: 150px;
+//             height: 150px;
+//           }
+//         }
+//         li.square {
+//           img {
+//             width: 218px;
+//           }
+//         }
+//         li.rect {
+//           img {
+//             width: 382px;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .container[data-eq-state="regular-nav"] {
+//   #main[data-eq-state="768"] {
+//     .microsite-marquee {
+//       img {
+//         display: block;
+//       }
+//       position: relative;
+//       .overlay {
+//         text-align: left;
+//         position: absolute;
+//         bottom: 13%;
+//         right: 13%;
+//         z-index: 100;
+//         p {
+//           color: white;
+//           font-size: 24px;
+//           max-width: 400px;
+//           em {
+//             font-style: normal;
+//             font-size: 55px;
+//             text-transform: uppercase;
+//             font-weight: 600;
+//             line-height: 1;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

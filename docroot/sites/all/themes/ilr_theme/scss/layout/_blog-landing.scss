@@ -1,0 +1,71 @@
+body.mobilizing-against-inequality.subsite-front {
+  #main {
+    @include layout--full-width-grid;
+
+    #content .block-bean.tagged-content {
+      @include four-column-grid;
+
+      article {
+        @include card;
+
+        padding: 0;
+
+        &.node-post {
+          h2 {
+            @include show;
+            @include adjust-font-size-to(1.5rem, 1);
+
+            order: 3;
+
+            a {
+              @include set-heading;
+            }
+          }
+        }
+      }
+    }
+
+    .field-type-blockreference:last-of-type {
+      @include full-width;
+      @include rhythm(1);
+      @include rhythm-padding(1);
+
+      background: $dark-gray-orange;
+
+      @include large {
+        @include rhythm-padding(2);
+      }
+
+      .tagged-content {
+        @include container;
+
+        article {
+          @include card--dark;
+        }
+      }
+    }
+  }
+}
+
+#block-bean-branding-blog-list.tagged-content {
+  @include four-column-grid;
+
+  article {
+    @include card;
+
+    padding: 0;
+
+    &.node-post {
+      h2 {
+        @include show;
+        @include adjust-font-size-to(1.5rem, 1);
+
+        order: 3;
+
+        a {
+          @include set-heading;
+        }
+      }
+    }
+  }
+}

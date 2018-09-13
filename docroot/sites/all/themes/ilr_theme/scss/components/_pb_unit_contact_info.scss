@@ -1,9 +1,33 @@
 #main {
   .paragraphs-item-unit-contact-info {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
     .content {
-      @include grid-span (10,2);
+      @include two-column-grid($breakpoint: $medium);
+
+      padding: 0 $space;
+
+      @include large {
+        padding: 0 $double-space;
+      }
+
+      .field-name-field-people-list {
+        @include two-column-grid;
+
+        h3 {
+          margin: 0;
+        }
+
+        a {
+          color: $black;
+          border: none;
+        }
+
+        h4 {
+          @include paragraph-text;
+
+          margin-bottom: 0;
+        }
+      }
+
       ul {
         &:not(.social) {
           padding-left: 0;
@@ -13,121 +37,38 @@
           }
         }
       }
-      .field-name-field-people-list {
-        @include margin-trailer(1.5);
-        h2, h3 {
-          margin-bottom: .25em;
-        }
-        h4 {
-          font-family: $font;
-          font-size: ms(0);
-          margin-bottom: 1em;
-        }
-      }
+
       .group_unit_information {
+        @include large {
+          @include two-column-grid;
+        }
+
+        .group_unit_name_and_address {
+          grid-column: 1;
+          grid-row: 1;
+        }
+
         h2 {
           @include adjust-font-size-to(22px);
           font-family: $font;
-          font-weight: 300;
           line-height: 1;
           margin-bottom: .25em;
         }
+
         ul.social {
           @include margin-trailer(1);
+
+          grid-column: 2;
+          grid-row: 2;
         }
+
+        ul.field-name-field-multiple-links {
+          grid-column: 2;
+          grid-row: 1;
+        }
+
         address {
           font-style: normal;
-          @include margin-trailer(1);
-        }
-      }
-    }
-  }
-}
-
-#main[data-eq-state="550"] {
-  .paragraphs-item-unit-contact-info {
-    @include padding-leader(1);
-    @include padding-trailer(1);
-    .content {
-      .field-name-field-people-list {
-        margin-bottom: 0;
-        @include grid-span (6,1);
-      }
-      .group_unit_information {
-        @include grid-span (6,7);
-      }
-    }
-  }
-}
-
-#main[data-eq-state="768"] {
-  .paragraphs-item-unit-contact-info {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
-    .content {
-      text-align: left;
-      .field-name-field-people-list {
-        @include margin-trailer(1);
-        @include grid-span (6,1);
-        li {
-          padding-right: 1em;
-          display: inline-block;
-          &:nth-of-type(odd) {
-            @include grid-span(6,1);
-            clear: left;
-          }
-          &:nth-of-type(even) {
-            @include grid-span(6,7);
-            clear: right;
-          }
-        }
-      }
-      .group_unit_information {
-        @include grid-span (6,7);
-        .group_unit_name_and_address {
-          @include grid-span(6,1);
-        }
-        ul.social, .field-name-field-multiple-links {
-          @include grid-span(6,7);
-          clear: right;
-        }
-      }
-    }
-  }
-}
-
-#main[data-eq-state="widescreen"] {
-  .paragraphs-item-unit-contact-info {
-    @include padding-leader(1.5);
-    @include padding-trailer(1.5);
-    .content {
-      text-align: left;
-      .field-name-field-people-list {
-        @include padding-leader(1);
-        @include margin-trailer(0);
-        @include grid-span (6,1);
-        li {
-          padding-right: 1em;
-          display: inline-block;
-          &:nth-of-type(odd) {
-            @include grid-span(6,1);
-            clear: left;
-          }
-          &:nth-of-type(even) {
-            @include grid-span(6,7);
-            clear: right;
-          }
-        }
-      }
-      .group_unit_information {
-        @include padding-leader(1);
-        @include grid-span (6,7);
-        .group_unit_name_and_address {
-          @include grid-span(6,1);
-        }
-        ul.social, .field-name-field-multiple-links {
-          @include grid-span(6,7);
-          clear: right;
         }
       }
     }

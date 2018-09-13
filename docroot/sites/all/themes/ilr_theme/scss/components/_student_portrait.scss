@@ -1,45 +1,16 @@
 .node-type-student-portrait {
-  #main {
-    .group-portrait-highlighted {
-      @include background-image(linear-gradient(lighten($gray-dark, 5%), $gray-dark));
-      padding: 1em;
-      @include clearfix;
-      color: $gray-light;
-      @include trailer(2);
+  .group-portrait-highlighted {
+    @include highlighted-profile;
 
-      h3 {
-        color: $gray-light;
-        // font-weight: bold;
-        margin-bottom: .5em;
-      }
+    h3 {
+      @include adjust-font-size-to(18px);
+      color: white;
+      font-weight: 400;
+      margin: 1.5em 0 0.5em 0;
     }
+  }
 
-    .field-label-above {
-      margin-bottom: 1em;
-      line-height: 1.2em;
-      &.field-name-field-portrait-experience {
-        margin: 0 0 .5em .5em;
-        padding-left: .7em;
-        background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .4;
-      }
-    }
-
-    .field-name-field-image {
-      float: right;
-      margin: 0;
-      margin-left: 1em;
-      img {
-        border: 5px solid $gray-light;
-      }
-      @include context('#main','#main[data-eq-state="320"]') {
-        float: none;
-        margin: 0;
-      }
-    }
-
-    .field-name-field-teaser {
-      clear: both;
-      @include trailer(1);
-    }
+  .field-name-field-teaser {
+    @include trailer(1);
   }
 }

@@ -50,14 +50,16 @@ body.not-front {
     width: 100%; // So fields won't overlap in 2 columns
   }
   h2 {
+    @include adjust-leading-to(1);
+
     font-family: $font;
     font-size: ms(2);
-    @include adjust-leading-to(1);
-    color: $spotlight-color;
   }
+
   p {
     @include adjust-font-size-to(12px, .6);
   }
+
   form {
     p {
       @include adjust-font-size-to(16px, .8);
@@ -78,11 +80,7 @@ body.not-front {
   // #mc-embedded-subscribe {clear:both; width:auto; display:block; margin:1em 0 1em 5%;}
   #mc-embedded-subscribe {
     @include button;
-    background-color: $spotlight-color;
-    @include trailer(.5);
-    &:hover {
-      background-color: $student-portrait-color;
-    }
+    @include rhythm(1);
   }
   #num-subscribers {font-size:1.1em;}
   #num-subscribers span {padding:.5em; border:1px solid #ccc; margin-right:.5em; font-weight:bold;}

@@ -1,76 +1,27 @@
 #main {
   .paragraphs-item-side-by-side-text {
-    @include padding-leader(1);
-    @include padding-trailer(1);
+    @include large {
+      padding: 0 50px;
+    }
 
     @include xl {
-      @include padding-leader(0);
-      @include padding-trailer(0);
+      padding: 0 100px;
     }
+
     .content {
-      @include grid-span (10,2);
-    }
-    .field-name-field-promo-text {
-      &:nth-child(odd) {
-        @include padding-trailer(1);
-        border-bottom: 1px solid $gray-light;
-      }
-      &:nth-child(even) {
-        @include padding-leader(1);
-      }
-    }
-    p {
-      @include trailer(.5);
+      @include two-column-grid($gap: 100px);
 
-      img {
-        @include trailer(-.5);
-      }
-    }
-    ul {
-      padding-left: 0;
+      p,
       li {
-        padding-left: 0;
-        background: none;
+        @include small-text(0.9);
       }
-    }
-    ul.bulleted-list {
-      @include leader(1);
-      padding-left: .5em;
-      li {
-        padding-left: 1em;
-        background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
-      }
-    }
-  }
-}
 
-#main[data-eq-state="768"] {
-  .paragraphs-item-side-by-side-text {
-    .field-name-field-promo-text {
-      @include grid-span (5,1);
-      &:nth-child(odd) {
-        @include padding-trailer(0);
-        border-bottom: none;
-      }
-      &:nth-child(even) {
-        @include grid-span (6,7);
-        @include padding-leader(0);
-      }
-    }
-  }
-}
+      ul.field-name-field-multiple-links {
+        padding: 0;
 
-#main[data-eq-state="widescreen"] {
-  .paragraphs-item-side-by-side-text {
-    .field-name-field-promo-text {
-      @include padding-leader(1);
-      @include padding-trailer(1);
-      @include grid-span (5,1);
-      &:nth-child(odd) {
-        border-bottom: none;
-      }
-      &:nth-child(even) {
-        @include grid-span (6,7);
+        li {
+          padding: 0;
+        }
       }
     }
   }

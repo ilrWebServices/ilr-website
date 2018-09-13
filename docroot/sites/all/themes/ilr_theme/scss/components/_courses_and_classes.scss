@@ -1,7 +1,8 @@
 .group-sidebar {
-
+  background: $color-course-class-bg;
   .cost {
-    font-weight: bold;
+    font-weight: 400;
+    font-size: 1.5rem;
     @include trailer(.25);
   }
 
@@ -21,6 +22,11 @@
 }
 
 .class-details {
+  background: $color-course-class-bg;
+
+  .node-type-basic-page & {
+    background: none;
+  }
 
   .form-item {
     margin-top: 0;
@@ -70,7 +76,7 @@
     }
   }
 
-  .course_details {
+  .course-details {
     @include adjust-font-size-to(16px, .7);
   }
 
@@ -98,10 +104,7 @@
 
   .button {
     @include button;
-    @include leader(.5);
-    @include trailer(.5);
-    display: inline-block;
-    @extend .clearfix;
+
     .cost {
       display: block;
       text-align: center;
@@ -123,7 +126,12 @@
   }
 
   .instructors {
+    @include clearfix;
+    @include padding-leader(3);
+    @include padding-trailer(3);
     article {
+      @include trailer(1);
+
       h2 {
         @include adjust-font-size-to($h3-size);
         @include grid-span(3,4);
@@ -133,27 +141,36 @@
 
       }
       .field-name-field-job-title {
-        font-family: $font-headers;
-        @include adjust-font-size-to($h5-size, .75);
-        @include grid-span(9,4,$output-style: 'float');
+        @include grid-span(9,4, $output-style: 'float');
+        @include trailer(0.5);
+        @include small-text;
+
+        color: $gray-dark;
       }
       .field-name-body {
-        @include grid-span(9,4,$output-style: 'float');
+        @include grid-span(9,4, $output-style: 'float');
+
+        margin: 0;
+
+        p {
+          @include small-text;
+        }
       }
-      border: none;
-      @include trailer(.5);
+
       .field-type-image {
-        @include circularImage;
+        // @include circularImage;
         max-width: 150px;
-        @include grid-span(3,$output-style: 'float');
+        @include grid-span(3, $output-style: 'float');
         @include float-span(3,'first');
         @include leader(-.8);
       }
-      a.readmore-js-toggle {
-        @extend %readmore-js-link; // see _helpers.scss
-        clear: both;
-        display: block;
-        text-align: right;
+
+      .link--readmore {
+        @include grid-span(9,4, $output-style: 'float');
+
+        a {
+          @include readmore-js-link;
+        }
       }
     }
     span.multiple-dates {
@@ -164,8 +181,14 @@
     }
   }
 
-  .request-info {
+  .link {
     @include adjust-font-size-to(16px,1);
+    @include set-link($black, true);
+    @include trailer(1);
+
+    display: inline-block;
+    font-weight: 600;
+
     span {
       display: none;
     }
@@ -192,8 +215,7 @@ form.class-details {
   @include padding-trailer(1);
 }
 
-.page-professional-programs-workshops-courses-training, .page-professional-programs-search {
-  @extend %two-col-content-area;
+.page-programs-professional-programs-workshops-courses-training, .page-programs-programs-professional-programs-search {
   .sort p {
     @include adjust-font-size-to(13px, 1);
     text-transform: uppercase;
@@ -211,37 +233,58 @@ form.class-details {
     }
   }
   .program-sponsor {
-    color: lighten($brand, 5%);
+    @include set-heading(true, $cornell-red);
     @include rhythm(1);
     @include leading-border(1px);
     @include trailing-border(1px);
-    font-family: $font;
-    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1;
+
+    @include large {
+      font-size: 2rem;
+    }
   }
 }
-.page-professional-programs-search {
+.page-programs-professional-programs-search,
+.page-programs-professional-programs-workshops-courses-training {
   #content article {
-    @include rhythm-margins(1, 1);
-    @include trailing-border();
-    border-style: 1px solid;
-    border-color: $gray-light;
+    @include rhythm-margins(2, 1);
+
+    .group-main-content {
+      padding: $space;
+      background: $color-course-class-bg;
+    }
+
+    .group-sidebar {
+      background: none;
+      padding: 0 !important;
+    }
+
+    .class-details {
+      background: none;
+    }
   }
 }
 
 .node-type-sdc-course { // Course detail page
-  @extend %two-col-content-area;
   .field-name-field-catalog-prefix {
     @include adjust-font-size-to($h2-size);
     font-family: $font-headers;
     color: $h2-text;
   }
   article {
-    &.node-sdc-course {
-      @include rhythm(2);
-      @include trailing-border;
+    .social-share {
+      @include trailer(1);
+      text-align: left;
     }
+
     .field-name-body {
+      @include trailer(3);
       clear: left;
+
+      ul {
+        @include bulleted-list;
+      }
     }
     form {
       @include trailer(1.5);
@@ -256,7 +299,7 @@ form.class-details {
 }
 
 .node-type-sdc-class { // Class detail page
-  @extend %two-col-content-area;
+  // @extend %two-col-content-area;
   .field:not(.field-name-field-price) {
     @include trailer(1);
   }
@@ -311,9 +354,6 @@ div.field-name-field-course.field-type-entityreference {
   }
   > .view-content > div {
     @include rhythm-margins(1, 1);
-    @include trailing-border();
-    border-style: 1px solid;
-    border-color: $gray-light;
   }
 }
 

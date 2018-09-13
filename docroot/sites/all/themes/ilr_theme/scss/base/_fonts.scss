@@ -1,3 +1,9 @@
 // See fontFace mixin in base/_mixins.scss
 @include fontFace('icons','../fonts/icons');
 @include fontFace('fontello','../fonts/fontello');
+@include fontFace('Replica', '../fonts/lineto-replica-regular');
+@include fontFace('Replica', '../fonts/lineto-replica-italic', normal, italic);
+@include fontFace('Replica', '../fonts/lineto-replica-bold', bold);
+@include fontFace('Replica', '../fonts/lineto-replica-boldItalic', bold, italic);
+@include fontFace('Replica', '../fonts/lineto-replica-light', 300);
+@include fontFace('Replica', '../fonts/lineto-replica-lightItalic', 300, italic);

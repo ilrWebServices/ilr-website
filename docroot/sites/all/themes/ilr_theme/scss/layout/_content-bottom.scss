@@ -1,0 +1,6 @@
+#content-bottom {
+  .tagged-content,
+  .event-block {
+    @include four-column-grid;
+  }
+}

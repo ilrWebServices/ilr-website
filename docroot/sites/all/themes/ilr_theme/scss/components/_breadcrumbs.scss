@@ -1,12 +1,10 @@
 #breadcrumb {
   .breadcrumb {
-    padding-top: 14px;
     @include adjust-font-size-to(14px);
-    //font-size: ms(-1);
-    text-transform: uppercase;
 
     span {
-      padding: 0 .5em;
+      padding: 0;
+      color: $link;
     }
 
     a {

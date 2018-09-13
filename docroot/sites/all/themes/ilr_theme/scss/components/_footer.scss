@@ -1,22 +1,10 @@
 footer {
-  @include padding-leader(2);
-  @include padding-trailer(1);
-  padding-left: 1em;
-  padding-right: 1em;
+  @include rhythm-padding(2);
+
+  position: relative;
   background: $brand-dark;
   color: $brand-light;
-  position: relative;
-  z-index: 10;
-
-  .container {
-    position: relative;
-    max-width: $page-max-width * .66;
-  }
-
-  .region-footer {
-    @include clearfix;
-    @include padding-trailer(1);
-  }
+  clear: both;
 
   a, a:visited {
     color: $brand-light;
@@ -28,28 +16,9 @@ footer {
   }
 
   .copyright p {
+    @include small-text;
     margin: 0;
     padding-bottom: 5px; // helps align it with the social footer
     color: $brand-light;
-  }
-
-  .google-translate {
-    position: absolute;
-    top: -2em;
-    background: url(../images/flag-sprite.png) no-repeat;
-    input {
-      width: 18px;
-      height: 12px;
-      overflow: hidden;
-      display: inline-block;
-      margin-right: 1px;
-      float: left;
-    }
-  }
-
-  .container[data-eq-state="550"], .container[data-eq-state="768"], .container[data-eq-state="widescreen"] {
-    .google-translate {
-      right: 1em;
-    }
   }
 }

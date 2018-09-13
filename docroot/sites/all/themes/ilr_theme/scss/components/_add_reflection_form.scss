@@ -32,10 +32,10 @@
     }
 
     &:not(.field-widget-text-textarea-with-summary):not(.field-widget-youtube):not(.form-actions) {
-      @extend %two-column;
-      #main[data-eq-state="320"] & {
-        @extend %one-column;
-      }
+      @include two-column;
+      // #main[data-eq-state="320"] & {
+      //   @include one-column;
+      // }
     }
   }
   span.field-edit-link { // Hides edit summary link

@@ -1,0 +1,16 @@
+body.node-type-basic-page {
+  &.page-node-4916 {
+    #main {
+      @include layout--full-width-content-grid;
+
+      #sidebar-second {
+        grid-column: 2;
+      }
+    }
+
+    #block-bean-news-top-stories,
+    #block-bean-latest-ilr-news {
+      @include three-column-grid;
+    }
+  }
+}

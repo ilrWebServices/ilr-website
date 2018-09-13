@@ -1,7 +1,7 @@
 @import "compass/typography/vertical_rhythm";
 
-$page-max-width: 1600px;
-$section-max-width: 800px;
+$page-max-width: 1600px; // Note that grid gap adds to this
+$section-max-width: 900px;
 $line-height-multiplier: $base-line-height / $base-font-size;
 @include establish-baseline;
 $row-width: rem-calc($page-max-width);
@@ -27,6 +27,7 @@ $mod-01: 12.62939px; //Based on mod scale. Number is not applied/calculated prop
 // ==================================================
 $blue-ilrreview: #163a6e;
 $brand: #941e12;
+$brand-light-red: #ef4035;
 $brand-dark: #363636;
 $brand-light: #ACACAC;
 $cornell-red: #b31b1b;
@@ -44,7 +45,7 @@ $nav-light: white;
 $selection: #212121;
 $highlight: #ffc;
 $cornell-tan: #f0eee4;
-$bg-body: darken(white, 2%);
+$bg-body: white;
 $ochre: #c5ba61;
 $ochre-tan: #c5c19c;
 $ochre-green: #8f8746;
@@ -54,6 +55,8 @@ $orange-dark: #c26100;
 $orange-light: #f08e2d;
 $purple: #4d394b;
 $dark-blue: #222534;
+$black: #222;
+$white: white;
 
 $basic-page-color: #bbc44a;
 $promo-color: #bbc44a; // Same as basic page for now
@@ -63,16 +66,34 @@ $student-portrait-color: #2099b7;
 $news-color: #f8bb03;
 $video-color: #6c7877;
 
+// New brand colors
+$lighter-red: #ef4035;
+$dark-blue: #073949;
+$sage: #c9d6a5;
+$army-tent: #bfb778;
+$gray-green: #9fad9f;
+$warm-grey: #d8d2c9;
+$dark-gray-orange: #a2998b;
+$pink-red: #f7333f;
+
+// In context NOTE add as able
+$color-course-class-bg: lighten($warm-grey, 15%);
+$color-card-bg--light: $warm-grey;
+$color-link: $black;
+$color-social-bg: $pink-red;
+$color-venue-bg: $pink-red;
+
 // ==================================================
 // Typography
 // ==================================================
 // Varialbes here and implementation in _typography.scss
 // should probably be updated to a map
 // See https://medium.com/p/8e51498c3713
-$font: "freight-sans-pro-n4", "freight-sans-pro", sans-serif;
-$font-headers: "freight-text-pro-n4", "freight-text-pro", serif;
+$font: 'Replica', "freight-sans-pro-n4", "freight-sans-pro", sans-serif;
+$font-headers: 'Replica', "freight-text-pro-n4", "freight-text-pro", serif;
+$font-strong: "futura-pt", sans-serif;
 
-$h1-size: ms(3);
+$h1-size: 3.8em;
 $h2-size: 24px;
 $h3-size: 22px;
 $h4-size: ms(1);
@@ -107,8 +128,8 @@ $p-text: #2f2f2f;
 $p-size: ms(0);
 $p-sm-size: $mod-01;
 
-$link: $brand;
-$link-hover: lighten($brand, 10%);
+$link: lighten($brand, 10%);
+$link-hover: lighten($brand, 20%);
 $nav-color: #2D4063;
 $nav-size: 1.2em;
 
@@ -136,3 +157,11 @@ $input-color: #a4a4a4;
 $label-color: #444;
 
 $input-size: $mod-01;
+
+
+$space: 1rem;
+$double-space: $space * 2;
+$triple-space: $space * 3;
+$quadruple-space: $space * 4;
+$half-space: $space / 2;
+$quarter-space: $space / 4;

@@ -1,0 +1,34 @@
+body.microsite.subsite-front {
+  #main {
+    @include layout--full-width-grid;
+  }
+
+
+  #content-bottom {
+    padding: 0;
+
+    .block-bean {
+      @include one-column;
+      @include rhythm(2);
+
+      .microsite-featured-speakers {
+        @include three-column-grid;
+
+        padding: $space;
+
+        @include large {
+          padding: $double-space;
+        }
+      }
+
+      .microsite-moderators {
+        @include four-column-grid;
+      }
+    }
+
+    .content h2 {
+      grid-column-start: 1 / -1;
+      text-align: center;
+    }
+  }
+}

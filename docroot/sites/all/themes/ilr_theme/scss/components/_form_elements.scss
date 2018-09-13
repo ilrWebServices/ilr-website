@@ -22,20 +22,12 @@ form {
   }
   input[type='submit'] {
     @include button;
-    @include leader(1.5);
-    @include trailer(.5);
-    margin-right: 1em;
-    background-color: $spotlight-color;
-    display: inline-block;
-    &:hover {
-      background-color: $orange;
-    }
+
     &.ajax-processed {
-      @include trailer(.5);
-      background-color: $gray-light;
-      color: black;
-      @include adjust-font-size-to(16px);
-      text-transform: none;
+      // @include trailer(.5);
+      // color: black;
+      // @include adjust-font-size-to(16px);
+      // text-transform: none;
     }
   }
 
@@ -49,8 +41,8 @@ form {
   .form-item {
     input[type='text'], textarea {
       border: 1px solid $gray-medium;
-      border-radius: 6px;
       width: 100%;
+      padding: 0.5rem 0.5rem;
     }
     & .form-type-checkbox label, & .form-type-radio label {
       font-weight: 300;
@@ -60,8 +52,14 @@ form {
     }
   }
 
+  .views-exposed-form .views-exposed-widget {
+    padding: 0;
+  }
+
   label {
-    font-weight: 400;
+    @include leader(0.5);
+    font-size: 14px;
+    font-weight: 300;
   }
 
   select {
@@ -89,7 +87,7 @@ form {
   form.entityform {
     padding: 1.5em 3em;
     background: whitesmoke;
-    border: 1px solid $gray-light;
+    border: 1px solid lighten($warm-grey, 15%);
     .field-widget-markup {
       @include padding-leader(.75);
       @include trailer(.5);
@@ -167,5 +165,15 @@ form {
         padding: 0
       }
     }
+  }
+}
+
+#sidebar-first form,
+#ilr-sdc-listings-search-form {
+  @include leader(2);
+
+  input,
+  label {
+    text-transform: capitalize;
   }
 }

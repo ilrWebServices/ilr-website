@@ -10,15 +10,19 @@
 //
 @include breakpoint-set('to ems', true);
 // @include add-grid(12);
-// @include add-gutter(1/4);
+// @include add-gutter(.1);
 
 // Breakpoints variables
 $xs: 25em;
 $small: 26em;
 $medium: 46em;
-$large: 60em;
+$large: 65em;
 $xl: 85em;
 $max-width: $xl;
+$small-only: $small $medium;
+$medium-only: $medium $large;
+$large-only: $large $xl;
+$full-break: 1450px;
 
 /// Mixin - xs Breakpoint
 /// Allows easier @include xs {} syntax
@@ -36,6 +40,12 @@ $max-width: $xl;
   }
 }
 
+@mixin small-only {
+  @include breakpoint($small $medium) {
+    @content;
+  }
+}
+
 /// Mixin - medium Breakpoint
 /// Allows easier @include medium {} syntax
 @mixin medium {
@@ -44,10 +54,22 @@ $max-width: $xl;
   }
 }
 
+@mixin medium-only {
+  @include breakpoint($medium $large) {
+    @content;
+  }
+}
+
 /// Mixin - large Breakpoint
 /// Allows easier @include large {} syntax
 @mixin large {
   @include breakpoint($large) {
+    @content;
+  }
+}
+
+@mixin large-only {
+  @include breakpoint($large-only) {
     @content;
   }
 }

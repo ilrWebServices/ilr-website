@@ -1,37 +1,91 @@
-header.search-engaged,
-header.search-engaged #header-region {
-  margin-top: $search-height;
-}
-
 .search-button {
-  @extend %header-btn;
+  position: absolute;
+  top: 2rem;
+  left: 15%;
+  z-index: 10;
+
+  [data-eq-state="regular-nav"] & {
+    left: auto;
+    right: $frame-width * .75;
+    top: $frame-width * .75;
+  }
+
   a {
     @include transition-duration(.3s);
     @extend %icon-search-thin;
-    margin-top: -2px;
-    [data-eq-state="regular-nav"]:not(.sticky) & {
-      body:not(.subsite) & {
-        @include adjust-font-size-to(30px);
-      }
+
+    visibility: hidden;
+    display: block;
+    padding: 10px 13px 5px 13px;
+    color: $black;
+
+    [data-menu-position="open"] & {
+      color: white;
+      visibility: visible;
+    }
+
+    .subsite & {
+      color: white;
+      background: $black;
+    }
+
+    [data-eq-state="regular-nav"] & {
+      visibility: visible;
+    }
+
+    &:hover, &:visited, &:active, &:focus {
+      text-decoration: none;
     }
   }
 }
 
 #search-form {
+  @include full-width;
+  @include transition-duration(.3s);
+
+  height: 0;
+  overflow: hidden;
+  background: $black;
+  z-index: 20;
   position: absolute;
-  top: $search-height * -1;
-  left: 0;
-  width: 100%;
+  top: 0;
+
+  .search-engaged & {
+    height: auto;
+  }
+
+  form {
+    @include wrapper;
+  }
 
   input {
-    background: $darker-red;
+    @include rhythm(1);
     border: none;
     width: 100%;
-    padding: 5px;
-    padding-left: 5%;
-    height: $search-height;
+    padding: 0 0 0 15px;
+    background: $black;
+    border-left: 5px solid $cornell-red;
+
     color: white;
     font-size: ms(2); // refactor to typography or forms
+
+    // Hacks for placholder color
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: white;
+      opacity: 1;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: white;
+      opacity: 1;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: white;
+      opacity: 1;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: white;
+      opacity: 1;
+    }
   }
 }
 

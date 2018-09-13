@@ -52,6 +52,20 @@
   }
 }
 
+@mixin circularBg($width:100px, $color: rgba(255, 255, 255, 0.8)) {
+  position: relative;
+
+  &::before {
+    @include center($absolute: true);
+    content: '';
+    width: $width;
+    height: $width;
+    background: $color;
+    border-radius: $width / 4;
+    border-radius: 50%;
+  }
+}
+
 @mixin roundLink($diameter) {
   border-radius: 50%;
   width: $diameter;
@@ -101,7 +115,7 @@
 /// Full Width, even outside container
 /// @param {bool} $undo [false]
 /// @link https://css-tricks.com/full-width-containers-limited-width-parents/ Source
-@mixin full-width($undo: false) {
+@mixin full-width($undo: false, $offset-left: 0vw) {
   @if $undo {
     margin-left: 0;
     margin-right: 0;
@@ -116,8 +130,49 @@
     position: relative;
     left: 50%;
     right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    margin-left: -50vw - $offset-left;
+    margin-right: -50vw - $offset-left;
+
+    @at-root {
+      body[data-menu-position="open"] {
+        #{&} {
+          display: none;
+        }
+
+      }
+    }
+  }
+}
+
+/// Double Width, even outside container
+/// @param {bool} $undo [false]
+/// @param {val} $offset-left [0vw]
+/// @link https://css-tricks.com/full-width-containers-limited-width-parents/ Source
+@mixin double-width($undo: false, $offset-left: 0vw) {
+  @if $undo {
+    margin-left: 0;
+    margin-right: 0;
+    position: static;
+    left: auto;
+    right: auto;
+    width: auto;
+    max-width: 100%;
+  } @else {
+    width: 200vw;
+    max-width: 200vw;
+    position: relative;
+    left: 100%;
+    right: 100%;
+    margin-left: -100vw - $offset-left;
+    margin-right: -100vw - $offset-left;
+
+    @at-root {
+      body[data-menu-position="open"] {
+        #{&} {
+          display: none;
+        }
+      }
+    }
   }
 }
 
@@ -191,7 +246,7 @@
   }
 }
 
-@mixin overlay($color: $dark-blue, $opacity: 0.75) {
+@mixin overlay($color: $black, $opacity: 0.75) {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -221,37 +276,128 @@
   }
 }
 
-@mixin button($color: white, $background-color: $student-portrait-color, $hover-color: $spotlight-color) {
-  background-color: $background-color;
-  border: none;
-  border-radius: 20px;
-  padding: .2em 1em;
-  font-family: $font;
-  text-decoration: none;
-  text-transform: uppercase;
+@mixin set-link($color: $color-link, $underline: false, $underline-color: $cornell-red) {
   color: $color;
-  font-weight: 300;
-  box-shadow: 1px 2px 4px $gray-medium;
 
-  &:hover, &:focus {
-    background-color: $hover-color;
-    cursor: pointer;
-    color: white;
-  }
+  @if $underline {
+    border-bottom: 2px solid $underline-color;
 
-  &:visited {
-    color: $color;
+    &:hover,
+    &:visited {
+      border-bottom: 2px solid $underline-color;
+    }
   }
 }
 
-@mixin image-ratio-hack() {
+@mixin button($color: white, $background-color: $student-portrait-color, $hover-color: $spotlight-color) {
+  @include framed--button(6px);
+
+  span {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+}
+
+@mixin image-ratio-hack($percentage: 65%) {
   position: relative;
   overflow: hidden;
+  height: 0;
+  padding-bottom: $percentage;
+
   a {
     display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+
     img {
-      position: absolute;
-      left: 0;
+      position: relative;
+      width: 100%;
     }
   }
+}
+
+@mixin container($max-width: $page-max-width) {
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+@mixin wrapper($max-width: $page-max-width) {
+  @include container($max-width);
+}
+
+@mixin hidden {
+  display: none !important; // revisit whether necessary
+  visibility: hidden;
+}
+
+@mixin visible($mode: block) {
+  display: $mode !important; // revisit whether necessary
+  visibility: visible;
+}
+
+@mixin hide($breakpoint) {
+  @include breakpoint($breakpoint) {
+    @include hidden;
+  }
+}
+
+@mixin show($breakpoint: false, $mode: block) {
+  @if $breakpoint {
+    @include breakpoint($breakpoint) {
+      @include visible($mode);
+    }
+  }
+  @else {
+    @include visible($mode);
+  }
+}
+
+@mixin increase-readability($spread: 20px, $opacity: 0.2) {
+  text-shadow: 0 0 $spread rgba(0, 0, 0, $opacity);
+}
+
+@mixin bulleted-list($undo: false) {
+  @if $undo {
+    li::before {
+      content: '';
+    }
+  }
+  @else {
+    li {
+      position: relative;
+
+      &::before {
+        content: '\00B7';
+        position: absolute;
+        top: -5px;
+        left: -0.5rem;
+        font-size: 3rem;
+        line-height: 0.5;
+      }
+    }
+  }
+}
+
+@mixin highlighted-box($background-color: $color-course-class-bg) {
+  padding: $space;
+  background-color: $background-color;
+
+  @include large {
+    padding: $double-space;
+  }
+
+  h2, h3, h4 {
+    font-weight: 400;
+  }
+}
+
+@mixin readmore-js-link {
+  @include adjust-font-size-to(14px);
+  @include set-link($underline: true, $underline-color: $cornell-red);
+
+  font-weight: 600;
 }

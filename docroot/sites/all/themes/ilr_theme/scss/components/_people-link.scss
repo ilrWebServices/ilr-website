@@ -1,0 +1,47 @@
+body.node-type-experience-report,
+body.node-type-visiting-fellow,
+body.node-type-student-portrait {
+  #content-bottom {
+    .section {
+      @include add-grid(24);
+      @include clearfix;
+    }
+
+    .tagged-content {
+      > h2 {
+        display: block !important;
+      }
+
+      @include medium {
+        @include four-column-grid($responsive: false);
+      }
+
+      @include xl {
+        @include grid-span(12, 6);
+      }
+
+      article {
+        background: transparent;
+
+        > h2 {
+          padding: $space $half-space 0;
+          font-weight: 300;
+          order: 2;
+          display: block !important;
+          visibility: visible !important;
+        }
+
+        .field-type-image {
+          order: 1;
+          padding-bottom: 86% !important;
+        }
+
+        .field-name-field-year-as-text {
+          order: 3;
+          padding: 0 $half-space $space;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

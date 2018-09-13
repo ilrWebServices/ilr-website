@@ -1,7 +1,7 @@
 #main {
   article.about-program {
     background: $cornell-red;
-    @extend %two-column;
+    @include two-column;
     @include card-rounded;
     @include trailer(1);
     text-align: center;
@@ -22,12 +22,12 @@
 
 #main[data-eq-state="550"] {
   article.about-program {
-    @extend %two-column;
+    @include two-column;
   }
 }
 
 #main[data-eq-state="768"], #main[data-eq-state="widescreen"] {
   article.about-program {
-    @extend %three-column;
+    @include three-column;
   }
 }

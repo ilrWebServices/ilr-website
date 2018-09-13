@@ -1,80 +1,45 @@
 @mixin bean-base() {
-  @include clearfix;
-  body.not-front #sidebar-second & {
-    article {
-      @include thumb;
-    }
+  @include rhythm(2);
+
+  @include medium {
+    @include rhythm(3);
   }
 
-  body.front {
-    article {
-      @include card;
-    }
-  }
+  > h2 {
+    @include set-heading;
 
-  body.subsite-front #sidebar-second & {
-    article {
-      @include thumb;
-    }
+    letter-spacing: -1px;
+    color: $black;
+
+    // @todo - figure out where this was necessary
+    // #content-bottom & {
+    //   display: none;
+    // }
   }
 
   article {
-    h2, h2 a {
-      font-family: $font-headers;
-      color: $h2-text;
+    .front &,
+    #content-bottom & {
+      @include card;
     }
-    @include addHighlightColors('.category', 'color', 1);
-    h3.category {
-      text-transform: uppercase;
-      font-family: $font;
-      font-weight: bold;
-      @include adjust-font-size-to(14px);
-      line-height: 1;
+
+    .not-front &,
+    .subsite-front #content &,
+    #sidebar-second & {
+      @include thumb;
+    }
+
+    .region-highlighted & {
+      @include card--overlay;
+      @include trailer(2);
     }
   }
 
-  #content & {
-    &:not([data-items='1']) {
-      &:not([data-items='3']) {
-        article:not(.node-reflection):not(.node-certificate-programs):not(.node-post) {
-          @include thumb;
-        }
-        &[data-eq-state="small"] {
-          @include slug;
-        }
-      }
-    }
-    &[data-items='4'] {
-      article {
-        @include card;
-      }
-    }
-    &[data-items='3'] {
-      article {
-        @include card;
-      }
-    }
-    &[data-items='1'] {
-      article {
-        @extend %one-column;
-        &:not(.block-bean-70th-reflections-featured) & { //Removes text shadow from featured reflection
-          @include lead-story;
-        }
-      }
-    }
-  }
-
-  // This confirms that the wrapper (i.e. tagged-content)
-  // is a direct descendant of the field. That way, we can
-  // avoid cards in block-collection beans
-  .field-name-field-content-bottom-region > & {
-    > h2 { @extend .hidden; }
+  &[data-items="3"] {
     article {
-     @include card;
+      #content & {
+        @include card;
+      }
     }
   }
-}
-
-%bean-base {
-  @include bean-base;
 }

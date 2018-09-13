@@ -1,12 +1,11 @@
-name = Cornell University | ILR School
-description = "A theme for Cornell University | ILR School"
+name = Cornell University | ILR School 2018
+description = "ILR ReBrand"
 core = 7.x
 
 stylesheets[screen][] = css/style.css
 stylesheets[print][] = css/print.css
 
 scripts[] = js/ilr_theme.js
-scripts[] = js/ilr_subnav.js
 
 regions[header] = Header
 regions[highlighted] = Highlighted
@@ -21,9 +20,3 @@ region_view_modes_hidden[] = content
 region_view_modes_hidden[] = sidebar_first
 region_view_modes_hidden[] = content_bottom
 region_view_modes_hidden[] = footer
-
-; Information added by drush on 2013-09-12
-version = "unknown"
-project = "ilr_theme"
-datestamp = "1379008169"
-

@@ -1,5 +1,9 @@
-body {
-  .content-listing-manual {
-    @extend %bean-base;
+.content-listing-manual {
+  @include bean-base;
+
+  .region-highlighted & {
+    > h2 {
+      display: none;
+    }
   }
 }

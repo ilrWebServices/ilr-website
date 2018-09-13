@@ -7,196 +7,107 @@
 
 .block-menu-block { // All nav menus
   clear: both;
-  h2 { @extend .hidden; }
-}
+  h2 {
+    @include trailing-border;
+    @include paragraph-text;
 
-.jPanelMenu-panel {
-  @include box-shadow(0 10px 10px 0px rgba(black, .5));
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    padding: 0.5rem 0;
+    position: relative;
+
+    &::before {
+      content: '\27E8';
+      position: absolute;
+      left: -0.75rem;
+
+      @include breakpoint($full-break) {
+        left: -1rem;
+      }
+    }
+  }
 }
 
 #jPanelMenu-menu {
-  margin-top: $header-height-small;
-
-  .admin-menu & {
-    margin-top: $header-height-small + 29px;
-  }
+  @include padding-leader(1);
+  background: $cornell-red;
 }
 
-.sidebar, #jPanelMenu-menu {
-  position: relative;
-}
-
-.menu-block-ilr-subnav {
-  opacity: 0;
-}
-
-#sidebar-first {
-  //position: fixed;
-  .sticky & {
-    //top: 170px;
-  }
-}
 .sidebar #block-menu-block-ilr-subnav {
-  @extend .hidden;
-  overflow: hidden;
   position: relative;
-  [data-eq-state="regular-nav"] & {
-    @extend .visible;
-  }
 }
 
 .menu-block-ilr-subnav ul.menu {
-  visibility: hidden;
-  .front[data-menu-position="open"] &,
-  .subsite-front[data-menu-position="open"] & {
-    &:first-child {
-      visibility: visible;
-    }
-  }
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
   padding: 0;
-  width: 100%;
-  display: block;
-  background: $bg-body;
-  min-height: 500px;
 
   li {
-    list-style: none;
-    background-image: none;
-    margin: 0;
-    padding: 0 !important;
-    font-family: freight-sans-pro;
-    clear: both;
-    min-height: 100%;
-    display: flex;
+    // @include trailing-border; // Removing for now
 
-    #jPanelMenu-menu & {
-      background: $nav-dark;
+    list-style-type: none;
+    list-style-image: none;
+    background: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    line-height: 1.1;
+
+    &:first-child {
+      padding-top: 0.2rem;
+    }
+  }
+
+  a {
+    display: block;
+    border: none;
+    color: #222;
+    font-weight: 400;
+  }
+
+  .active-trail {
+    color: $link;
+  }
+
+  ul {
+    margin: 0.7rem 0 0 1rem;
+  }
+
+  #jPanelMenu-menu & {
+    @include padding-leader(3);
+
+    li {
+      background: $cornell-red;
+      padding-right: 1rem;
     }
 
     a {
-      color: $gray-dark;
-      border-bottom: none;
-      #jPanelMenu-menu & {
-        color: lighten($gray-medium, 5%);
-      }
+      color: white;
       display: block;
-      padding: 1em 1em 1em 15px;
-      float: left;
-      width: 100%;
-      @include adjust-font-size-to(16px);
+      padding-left: 2rem;
+      line-height: 1.1;
+    }
 
-      &:hover {
-        color: $brand;
-        #jPanelMenu-menu & {
-          color: white;
-        }
-        text-decoration: none;
-        background: darken($nav-light, 5%);
+    ul {
+      padding-top: 0.5rem;
+      display: block;
 
-        #jPanelMenu-menu & {
-         background: lighten($nav-dark, 5%);
-        }
+      li {
+        padding-right: 0;
 
-      }
-      &.active, &.active-trail {
-        color: $brand;
-        #jPanelMenu-menu & {
-          color: white;
+        a {
+          padding-left: 3rem;
         }
       }
-      &.active {
-        @extend %current-menu-item;
-      }
-    }
-    &.expanded > a {
-      width: 80%;
-      &.next-menu {
-        width: 20%;
-        padding: 0;
-        z-index: 1;
-        position: relative;
-        text-align: center;
-        @extend %icon-after-arrow-right-thin;
-        color: $gray-medium;
-        &::after {
-          color: lighten($gray-medium, 5%);
-          font-size: 14px;
-          position: absolute;
-          top: 50%;
-          margin: -12px 0 0 -3px;
-        }
-        #jPanelMenu-menu & {
-          border-left: 1px solid lighten($nav-dark, 15%);
-        }
-      }
-    }
-    // @todo: Come back to this for active page added as section
-    // &.active ul.menu li.section:nth-of-type(1) {
-    //   a {
-    //     @extend %current-menu-item;
-    //   }
-    // }
-  }
-
-  li.back {
-    padding: 0;
-    a.prev-menu {
-      color: $gray-medium;
-      text-transform: uppercase;
-      width: 100%;
-      display: flex;
-      justify-content: left;
-      font-weight: bold;
-      @include adjust-font-size-to(14px);
-      span {
-        font-size: 12px;
-        @extend %icon-arrow-left;
-        margin-right: .5em;
-        margin-top: 1px;
-      }
-    }
-  }
-
-
-  li.last.leaf {
-    #jPanelMenu-menu & {
-      margin-bottom: 40px;
-    }
-  }
-
-
-  li ul.menu {
-    position: absolute;
-    right: -100%;
-    top: 0;
-    z-index: 2;
-
-    .sidebar & {
-      @include box-shadow(rgba(black, .3) 1px 1px 5px);
-    }
-  }
-
-  & > li {
-    @include clearfix;
-    border-bottom: 1px solid darken($nav-light, 10%);
-    &.back {
-      //border: none;
-    }
-    #jPanelMenu-menu & {
-      border-bottom: 1px solid lighten($nav-dark, 15%);
     }
   }
 }
 
-%nav-arrow {
-  font-size: 2em;
-  color: $gray-medium;
-  display: flex;
-  align-items: center;
-  margin-top: -5px;
-  font-weight: normal;
+#main {
+  #sidebar-first {
+    display: none;
+  }
+
+  [data-eq-state="regular-nav"] & {
+    #sidebar-first {
+      display: block;
+    }
+  }
 }

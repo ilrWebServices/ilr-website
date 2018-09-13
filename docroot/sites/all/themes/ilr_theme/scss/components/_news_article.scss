@@ -1,3 +1,11 @@
+.node-news-item {
+  .not-front & {
+    .news__content {
+      @include hidden;
+    }
+  }
+}
+
 .node-type-news-item {
   .field-name-field-description {
     @include adjust-font-size-to(28px);
@@ -6,10 +14,31 @@
   }
 
   .field-name-field-published-date {
-    font-weight: 300;
-    @include adjust-font-size-to(16px);
     @include trailer(1);
-    border-bottom: 1px solid $gray-medium;
+
+    font-weight: 400;
+
+    @include medium {
+      float: left;
+    }
+  }
+
+  ul.social-share {
+    @include medium {
+      float: right;
+    }
+  }
+
+  .field-name-body {
+    clear: both;
+  }
+
+  p.loaded {
+    @include rhythm(1);
+
+    @include medium {
+      @include rhythm(2);
+    }
   }
 }
 

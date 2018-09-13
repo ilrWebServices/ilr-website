@@ -15,7 +15,7 @@
       padding-left: 2em;
       padding-right: 2em;
       text-align: center;
-      @extend %one-column;
+      @include one-column;
 
       .field-name-group {
         .field-name-twitter-handle {
@@ -34,60 +34,6 @@
           p {
             @include adjust-font-size-to(16px);
             @include adjust-leading-to(1.1);
-          }
-        }
-      }
-    }
-  }
-}
-
-#main[data-eq-state="550"] {
-  .paragraphs-item-social-feed {
-    @include padding-leader(1);
-    @include padding-trailer(1);
-    padding-left: 4em;
-    padding-right: 4em;
-    article.social-feed {
-      @extend %one-column;
-    }
-  }
-}
-
-#main[data-eq-state="768"] {
-  .paragraphs-item-social-feed {
-    @include padding-leader(.5);
-    @include padding-trailer(0);
-    article.social-feed {
-      @include padding-leader(1);
-      min-height: 300px;
-      @extend %three-column-masonry;
-
-      .field-name-group {
-        .field-name-time-stamp {
-          margin-bottom: 0;
-        }
-      }
-    }
-  }
-}
-
-#main[data-eq-state="widescreen"] {
-  .paragraphs-item-social-feed {
-    @include padding-leader(1);
-    @include padding-trailer(0);
-    article.social-feed {
-      @include padding-leader(1);
-      min-height: 280px;
-      @extend %three-column-masonry;
-
-      .field-name-group {
-        .field-name-time-stamp {
-          margin-bottom: 0;
-        }
-        .field-name-tweet {
-          p {
-            font-size: ms(0);
-            line-height: 1.5;
           }
         }
       }

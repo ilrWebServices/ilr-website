@@ -24,30 +24,58 @@
   }
 }
 
-@mixin set-heading {
-  font-weight: 400;
-  font-family: $font-headers;
+@mixin set-heading($strong: false, $color: $h2-text) {
+  @if $strong {
+    font-family: $font-strong;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: -2px;
+  } @else {
+    font-weight: 600;
+    font-family: $font-headers;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
   clear: left;
   margin-top: 0;
+  color: $color;
 
   a {
     font-weight: inherit;
-    font-family: $font-headers;
+    color: $color;
     &:visited {
       color: inherit;
     }
   }
 }
 
-@mixin paragraph-text() {
-  font-size: $p-size;
-  color: $p-text;
+@mixin paragraph-text($color: $p-text, $override: false) {
+  @if $override {
+    font-size: $p-size !important;
+    font-family: $font !important;
+    font-weight: 300 !important;
+  } @else {
+    font-size: $p-size;
+    font-family: $font;
+    font-weight: 300;
+  }
+
+  color: $color;
   margin: 0;
+  max-width: 750px;
+
   @include trailer(1);
 
   img {
     margin: 0;
   }
+}
+
+@mixin small-text($size: 0.8) {
+  font-size: #{$size}rem;
+  line-height: $size * 2;
 }
 
 // ==================================================
@@ -68,10 +96,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  @include adjust-font-size-to($h1-size, $line-height-multiplier);
+  @include adjust-font-size-to($h1-size * 0.5 );
   color: $h1-text;
+  line-height: 0.9;
   // @include adjust-leading-to(2, $h1-size); to do: troublehoot print problem
-  @include margin-trailer(.15);
+  @include margin-trailer(0.15);
+
+  @include medium {
+    @include adjust-font-size-to($h1-size * .75);
+  }
+
+  @include large {
+    @include adjust-font-size-to($h1-size);
+  }
 
   a {
     outline: 0;
@@ -81,7 +118,12 @@ h1 {
       color: $h1-link-hover;
     }
   }
-  &#page-title {
+  &#page-title,
+  &.title {
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 0.9;
+
     body.front &,
     body.subsite-front & {
       display: none;
@@ -212,6 +254,10 @@ p, a, li {
 
 p {
   @include paragraph-text;
+
+  span[style] {
+    @include paragraph-text($black, true);
+  }
 }
 
 p + h2,
@@ -228,11 +274,13 @@ p + ul {
 }
 
 hr {
+  @include trailer(1);
+
   clear: both;
   height: 0;
   border: 0;
   border-top: 1px solid $rule;
-  @include trailer(1);
+  width: 100%;
 }
 
 code, pre {
@@ -280,14 +328,37 @@ ol {
 ul {
   margin: 0 0 1em;
   padding: 0 0 0 .5em;
+  &.bulleted {
+    @include bulleted-list;
+  }
+  &.bulleted-list {
+    @include bulleted-list;
+  }
+
   #content & {
     ul { // this is a ul ul
       padding-left: 1.1em;
     }
   }
+
+  &.noBullets {
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 0;
+      &::before {
+        content: '';
+      }
+    }
+  }
+
+  .bean-html & {
+    @include bulleted-list;
+  }
 }
 
-ul.none {
+ul.none, ul.noBullets {
   list-style: none;
 }
 
@@ -306,8 +377,6 @@ ul.disc {
 li {
   list-style: none;
   padding-left: 1em;
-  @include adjust-font-size-to(ms(0));
-  background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
 }
 
 ul.pager {
@@ -318,6 +387,10 @@ ul.tabs {
   li {
     background: none;
     padding-left: 0;
+
+    &::before {
+      content: '';
+    }
   }
 }
 
@@ -346,12 +419,13 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
+// Underlines? @todo - figure out what to do here
 p a, p a:visited,
-li a,
-div.field:not(.field-type-image) > a {
-  border-bottom: 1px solid $gray-light;
-  &:hover {
-    border-bottom-color: $link-hover;
+li a {
+  @include set-link($cornell-red);
+
+  &[href^="mailto:"] {
+    border: none;
   }
 }
 
@@ -398,9 +472,18 @@ sub {
 // ==================================================
 img, object, video {
   max-width: 100%;
+  width: 100%;
   height: auto;
   -ms-interpolation-mode: bicubic;
   border: 0;
+
+  .rss & {
+    width: auto;
+  }
+
+  a & {
+    width: auto;
+  }
 }
 
 
@@ -459,4 +542,27 @@ table {
   li p {
     @include adjust-font-size-to(ms(0));
   }
+
+  ul {
+    @include bulleted-list;
+
+    &.framed {
+      padding-left: 2px;
+
+      li {
+        @include frame-from-corner($length: 25px, $height: 10px);
+        @include trailer(1);
+
+        padding: 20px 0 0 20px;
+
+        &::before {
+          content: '';
+        }
+      }
+    }
+  }
+}
+
+.heading--strong {
+  @include set-heading(true);
 }

@@ -1,5 +1,5 @@
 #block-ilr-sdc-listings-course-search {
-  @include trailer(2);
+  @include rhythm(1);
   z-index: 10;
 
   form {
@@ -18,7 +18,6 @@
       .chosen-choices {
         border: 1px solid $gray-medium;
         background: white;
-        border-radius: 6px;
         li {
           line-height: 1.8;
           font-size: 16px;
@@ -35,19 +34,15 @@
   h3 {
     font-family: $font;
     margin: 0;
+    font-weight: 300;
   }
-  .region-sidebar-first & {
-    position: absolute;
-    margin-left: 12px;
-    top: 226px;
-    overflow: visible;
-  }
+
   #jPanelMenu-menu & {
     padding: 1em 2em;
   }
   #edit-s {
     background: white;
-    padding: 3px;
+    // padding: 3px;
     border: 1px solid $gray-medium;
   }
 
@@ -74,6 +69,7 @@
 
   .views-exposed-widget {
     float: none;
+    padding: 0;
   }
 
   .filter-link {
@@ -107,15 +103,11 @@
   .views-widget-filter-field_class_dates_value,
   .views-widget-filter-field_class_dates_value2 {
     width: 100%;
-    padding-right: 1em;
   }
   #search-form-submit, #edit-submit-sdc-course-listing {
     @include button;
-    @include leader(.2);
-    @include trailer(.5);
-    &:hover {
-      background-color: $orange;
-    }
+
+    background: white;
   }
   .views-reset-button #edit-reset {
     color: $link;
