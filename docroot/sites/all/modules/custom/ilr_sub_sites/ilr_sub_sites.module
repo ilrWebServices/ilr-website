@@ -43,7 +43,7 @@ function ilr_sub_sites_block_view($delta = '') {
   $menu_name = _ilr_sub_sites_get_menu_name();
   // If custom logo, add the seal
   if (_ilr_sub_sites_get_site_logo($menu_name, $subsite_name)) {
-    $seal = file_create_url(drupal_get_path('theme', 'open_frame') . "/images/logos/cornell-seal.svg");
+    $seal = file_create_url(drupal_get_path('theme', 'ilr_theme') . "/images/logos/cornell-seal.svg");
     $block['content'] .= '<a href="https://cornell.edu" class="cornell-seal__link"><img src="'.$seal.'" alt="Link to Cornell University" /></a>';
   }
 
@@ -268,13 +268,13 @@ function ilr_sub_sites_preprocess_node(&$variables) {
  * Handles custom page template processing
  */
 function ilr_sub_sites_preprocess_page(&$variables) {
-  $logo = file_create_url(drupal_get_path('theme', 'open_frame') . "/images/logos/ilr-cornell-lockup.svg");
+  $logo = file_create_url(drupal_get_path('theme', 'ilr_theme') . "/images/logos/ilr-cornell-lockup.svg");
 
   if (_ilr_sub_sites_current_page_is_sub_site()) {
     $subsite_name = _ilr_sub_sites_get_current_subsite_name();
     $menu_name = _ilr_sub_sites_get_menu_name();
     if ($logo_filename = _ilr_sub_sites_get_site_logo($menu_name, $subsite_name)) {
-      $logo = file_create_url(drupal_get_path('theme', 'open_frame') . "/images/logos/" . $logo_filename);
+      $logo = file_create_url(drupal_get_path('theme', 'ilr_theme') . "/images/logos/" . $logo_filename);
       $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
       $variables['front_page'] = $href;
 

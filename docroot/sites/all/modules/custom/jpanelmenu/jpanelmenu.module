@@ -34,7 +34,7 @@ function jpanelmenu_library() {
  */
 function jpanelmenu_page_build(&$page) {
   global $theme_key;
-  if ($theme_key != 'open_frame') {
+  if ($theme_key != 'ilr_theme') {
     return;
   }
   //Test for jpanel library

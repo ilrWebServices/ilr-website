@@ -20,7 +20,7 @@ require_once DRUPAL_ROOT . '/../config/get_departments.php';
  */
 function people_profiles_init() {
   global $theme;
-  if ($theme == 'open_frame') {
+  if ($theme == 'ilr_theme') {
     $inview_js = libraries_get_path('inview') . '/jquery.inview.min.js';
     drupal_add_js($inview_js, array('type' => 'file', 'scope' => 'footer'));
   }

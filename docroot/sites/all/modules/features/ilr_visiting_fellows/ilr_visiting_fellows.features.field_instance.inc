@@ -39,7 +39,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'open_frame__highlighted' => array(
+      'ilr_theme__highlighted' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -94,7 +94,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'open_frame__highlighted' => array(
+      'ilr_theme__highlighted' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -158,7 +158,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'open_frame__highlighted' => array(
+      'ilr_theme__highlighted' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
@@ -230,7 +230,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'open_frame__highlighted' => array(
+      'ilr_theme__highlighted' => array(
         'label' => 'inline',
         'module' => 'text',
         'settings' => array(
@@ -302,7 +302,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'open_frame__highlighted' => array(
+      'ilr_theme__highlighted' => array(
         'label' => 'inline',
         'module' => 'email',
         'settings' => array(
@@ -365,7 +365,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'open_frame__highlighted' => array(
+      'ilr_theme__highlighted' => array(
         'label' => 'inline',
         'module' => 'text',
         'settings' => array(
@@ -440,7 +440,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'open_frame__highlighted' => array(
+      'ilr_theme__highlighted' => array(
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
@@ -538,7 +538,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'open_frame__highlighted' => array(
+      'ilr_theme__highlighted' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -617,7 +617,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'open_frame__highlighted' => array(
+      'ilr_theme__highlighted' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -675,7 +675,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'open_frame__highlighted' => array(
+      'ilr_theme__highlighted' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',

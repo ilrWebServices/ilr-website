@@ -49,10 +49,10 @@ function student_portraits_strongarm() {
       'ilr_theme__sidebar_second' => array(
         'custom_settings' => FALSE,
       ),
-      'open_frame__highlighted' => array(
+      'ilr_theme__highlighted' => array(
         'custom_settings' => FALSE,
       ),
-      'open_frame__sidebar_second' => array(
+      'ilr_theme__sidebar_second' => array(
         'custom_settings' => FALSE,
       ),
     ),

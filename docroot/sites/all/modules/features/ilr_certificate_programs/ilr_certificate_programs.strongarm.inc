@@ -49,10 +49,10 @@ function ilr_certificate_programs_strongarm() {
       'alternate_teaser' => array(
         'custom_settings' => TRUE,
       ),
-      'open_frame__highlighted' => array(
+      'ilr_theme__highlighted' => array(
         'custom_settings' => FALSE,
       ),
-      'open_frame__sidebar_second' => array(
+      'ilr_theme__sidebar_second' => array(
         'custom_settings' => FALSE,
       ),
     ),
