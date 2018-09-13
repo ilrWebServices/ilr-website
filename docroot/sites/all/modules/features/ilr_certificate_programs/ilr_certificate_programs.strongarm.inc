@@ -49,6 +49,12 @@ function ilr_certificate_programs_strongarm() {
       'alternate_teaser' => array(
         'custom_settings' => TRUE,
       ),
+      'ilr_theme__highlighted' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__sidebar_second' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -110,7 +116,7 @@ function ilr_certificate_programs_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_certificate_programs_pattern';
-  $strongarm->value = 'professional-programs/certificate-programs/[node:menu-link:title]';
+  $strongarm->value = 'programs/professional-programs/certificate-programs/[node:menu-link:title]';
   $export['pathauto_node_certificate_programs_pattern'] = $strongarm;
 
   return $export;

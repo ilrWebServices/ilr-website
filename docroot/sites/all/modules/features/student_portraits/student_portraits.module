@@ -12,6 +12,18 @@ function student_portraits_node_view($variables, $view_mode) {
   }
 }
 
+function student_portraits_preprocess_page(&$variables) {
+  if (!empty($variables['node']) && $variables['node']->type == 'student_portrait') {
+    ilr_add_section_title($variables);
+  }
+}
+
 function _student_portraits_get_graduation_year($field) {
   return substr($field['und'][0]['value'], 2, 2);
+}
+
+function student_portraits_field_group_pre_render(&$element, $group, &$form) {
+  if ($group->group_name == 'group_highlighted_content') {
+    $element['title'] = ['#markup'=> '<h2 class="name name--framed">'. drupal_get_title().'</h2>'];
+  }
 }

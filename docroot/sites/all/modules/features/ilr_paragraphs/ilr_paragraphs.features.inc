@@ -68,6 +68,11 @@ function ilr_paragraphs_paragraphs_info() {
       'bundle' => 'sponsor_message',
       'locked' => '1',
     ),
+    'tabs' => array(
+      'name' => 'tabs',
+      'bundle' => 'tabs',
+      'locked' => '1',
+    ),
     'unit_contact_info' => array(
       'name' => 'contact info for a unit',
       'bundle' => 'unit_contact_info',

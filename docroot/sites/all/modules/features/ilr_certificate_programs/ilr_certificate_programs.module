@@ -73,15 +73,7 @@ function ilr_certificate_programs_node_view($node, $view_mode, $langcode) {
  */
 function ilr_certificate_programs_preprocess_node(&$variables) {
   if($variables['type'] == 'certificate_programs') {
-    if ($variables['view_mode'] == 'ilr_theme__highlighted') {
-      $wrapper = ilr_get_node_wrapper($variables['node']);
-      $title = $wrapper->title->value();
-      $variables['content']['field_image']['#weight'] = 0;
-      $variables['content']['title'] = array('#markup'=>"<div class='pitch'><h1>$title</h1>", '#weight'=>1);
-      $variables['content']['field_value_propositions']['#weight'] = 2;
-      $variables['content']['title_close'] = array('#markup'=>"</div>", '#weight'=>10);
-    }
-    elseif ($variables['view_mode'] == 'teaser') {
+    if ($variables['view_mode'] == 'teaser') {
       $variables['theme_hook_suggestions'][] = 'node__certificate_programs__' . $variables['view_mode'];
       $wrapper = ilr_get_node_wrapper($variables['node']);
       if ($external_url_details = $wrapper->field_website_url->value()) {
@@ -95,6 +87,11 @@ function ilr_certificate_programs_preprocess_node(&$variables) {
         $variables['content']['field_thumbnail']['#prefix'] = '<p class="partner-credit">In partnership with <span>'. $alt_text .'</span>';
         $variables['content']['field_thumbnail']['#suffix'] = '</p>';
       }
+    }
+    elseif ($variables['view_mode'] == 'full') {
+      $variables['content']['title'] = [
+        '#markup' => '<h2 class="certificate_program__propositions">Outcomes</h2>'
+      ];
     }
   }
 }

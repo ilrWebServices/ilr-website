@@ -1,0 +1,19 @@
+#block-bean-research-featured {
+  article {
+    @include featured-news-item($dark-blue);
+  }
+}
+
+#main #content #block-bean-research-destinations.tagged-content {
+  @include one-column;
+
+  article {
+    @include tagged-content--destination;
+  }
+}
+
+#block-bean-professional-programs-locations .block-bean {
+  article {
+    @include highlighted-box;
+  }
+}

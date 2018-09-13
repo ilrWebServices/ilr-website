@@ -46,6 +46,15 @@ function ilr_visiting_fellows_strongarm() {
       'reference_field' => array(
         'custom_settings' => FALSE,
       ),
+      'ilr_theme__highlighted' => array(
+        'custom_settings' => FALSE,
+      ),
+      'alternate_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ilr_theme__sidebar_second' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

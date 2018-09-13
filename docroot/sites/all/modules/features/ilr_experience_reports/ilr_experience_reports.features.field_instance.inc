@@ -24,7 +24,7 @@ function ilr_experience_reports_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_fields',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'above',
@@ -119,9 +119,12 @@ function ilr_experience_reports_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -178,8 +181,13 @@ function ilr_experience_reports_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'image_link' => '',
+          'image_style' => 'focussed_portrait',
+        ),
+        'type' => 'image',
         'weight' => 3,
       ),
       'ilr_theme__highlighted' => array(
@@ -331,9 +339,12 @@ function ilr_experience_reports_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',
@@ -505,10 +516,13 @@ MILR, \'16<br>
 MS/Ph.D. \'18',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
       ),
       'ilr_theme__highlighted' => array(
         'label' => 'hidden',

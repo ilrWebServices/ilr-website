@@ -4,7 +4,6 @@
       var easing = 'Expo.easeOut';
       var tween;
       var currentSubmenu;
-      var scalePercent = .94;
       var ready = true;
 
       $('.menu-block-ilr-primary-menu li.menu-item').hoverIntent({
@@ -12,6 +11,13 @@
         out: hideMegaMenu,
         timeout: 100
       });
+
+      $('.menu-block-ilr-primary-menu .bean-mega-menu').hover(
+        function(){},
+        function() {
+          hideMegaMenu();
+        }
+      );
 
       function revealMegaMenu() {
         if(ready) {
@@ -34,25 +40,15 @@
       }
 
       function revealSubmenu(submenu) {
-        $(submenu).css('opacity', 1);
-        resetSubmenuTween(submenu);
+        $(submenu).css({'opacity': 1, 'visibility': 'visible'});
+        // resetSubmenuTween(submenu);
         if (megaMenuIsActive()) {
           hideSubmenu($('.submenu.active'));
         } else {
           $('.menu-block-ilr-primary-menu').addClass('active');
-          tween = TweenLite.from($(submenu), .3, { opacity: 0, top: 70, scaleX: scalePercent, scaleY: scalePercent, ease: easing });
+          tween = TweenLite.from($(submenu), .3, { opacity: 0, ease: easing });
         }
         $(submenu).addClass('active');
-      }
-
-      function resetSubmenuTween(submenu) {
-        if (tween) {
-          tween.kill();
-          tween = null;
-        }
-        $('.submenu.active').removeClass('active');
-        xPos = $('.menu-block-ilr-primary-menu').height();
-        TweenLite.to($(submenu), 0, { opacity: 1, top: xPos, scaleX: 1, scaleY: 1});
       }
 
       function hideMegaMenu() {

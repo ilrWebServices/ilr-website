@@ -30,7 +30,7 @@ compass compile
 # Upload to server
 echo "Uploading styles to server"
 FOLDER=${ENV//-/_}
-scp -r docroot/sites/all/themes/ilr_theme/css featuretest.org:/var/aegir/projects/ilr/$FOLDER/docroot/sites/all/themes/ilr_theme
+scp -r docroot/sites/all/themes/open_frame/css featuretest.org:/var/aegir/projects/ilr/$FOLDER/docroot/sites/all/themes/open_frame
 
 echo "Clearing css-js cache on $ENV"
 cd docroot

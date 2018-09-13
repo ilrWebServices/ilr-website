@@ -6,32 +6,11 @@
  * Adds sitewide javascript files
  */
 function ilr_theme_preprocess_html(&$variables) {
-  // Add preload class to page
-  $variables['classes_array'][] = 'preloading';
   if (isset($_GET['layout']) && $_GET['layout'] == '0' ) {
     $variables['classes_array'][] = 'no-layout';
   }
-
-  drupal_add_css(
-    drupal_get_path('theme', 'ilr_theme') . '/css/IE8.css',
-    array(
-      'browsers' => array(
-        'IE' => 'IE 8',
-        '!IE' => FALSE
-      )
-    )
-  );
-  drupal_add_css(
-    drupal_get_path('theme', 'ilr_theme') . '/css/IE9.css',
-    array(
-      'browsers' => array(
-        'IE' => 'lte IE 9',
-        '!IE' => FALSE
-      )
-    )
-  );
   // Header
-  drupal_add_js('//use.typekit.net/bva6ofm.js', array('type' => 'external'));
+  drupal_add_js('//use.typekit.net/cal2bhk.js', array('type' => 'external'));
   drupal_add_js($variables['directory'] . '/js/vendor/modernizr-2.6.2.min.js');
 
   // Footer
@@ -59,10 +38,21 @@ function ilr_theme_preprocess_html(&$variables) {
  */
 function ilr_theme_preprocess_page(&$variables) {
   $variables['page']['page_width_eq_points'] =  array('#markup' => 'data-eq-pts="320: 320, 550: 550, 768: 768, widescreen: 1280"');
-  $variables['page']['nav_trigger_pts'] =  array('#markup' => 'data-eq-pts="mobile-nav: 300, regular-nav: 945"');
+  $variables['page']['nav_trigger_pts'] =  array('#markup' => 'data-eq-pts="mobile-nav: 300, regular-nav: 1045"');
 
-  $translate_block = ilr_google_translate_block_view('google_translate');
-  $variables['page']['footer'][] = array('#markup' => $translate_block['content']);
+  $wordmark = ilr_block_view('ilr_wordmark');
+
+  $wordmark_render = [
+    'wordmark' => [
+      '#markup' => $wordmark['content']
+    ]
+  ];
+
+  $variables['page']['footer'] =  $wordmark_render + $variables['page']['footer'];
+
+  if (!isset($variables['logo_link'])) {
+    $variables['logo_link'] = '<a class="cornell" title="Visit Cornell.edu" href="https://cornell.edu"></a>';
+  }
 
   if ( isset($_GET['layout']) && $_GET['layout'] == '0' ) {
     $variables['theme_hook_suggestions'][] = 'page__content_only';
@@ -80,7 +70,7 @@ function ilr_theme_page_alter(&$page) {
     $node = current($page['content']['system_main']['nodes']);
     // Look for blocks on the current node
     if (isset($node['field_blocks']) && $node != -1 && count($node['field_blocks']['#items']) > 0) {
-      _ilr_process_field_blocks($page, $node);
+      _ilr_theme_process_field_blocks($page, $node);
     }
   }
 }
@@ -90,7 +80,7 @@ function ilr_theme_page_alter(&$page) {
  * Assumes a naming convention that is field_[region_name]_region
  * for the field in the field collection
  */
-function _ilr_process_field_blocks(&$page, $node) {
+function _ilr_theme_process_field_blocks(&$page, $node) {
   $fields = current($node['field_blocks'][0]['entity']['field_collection_item']);
   // create a foreach loop to handle this
   foreach ($fields as $field_name => $value) {

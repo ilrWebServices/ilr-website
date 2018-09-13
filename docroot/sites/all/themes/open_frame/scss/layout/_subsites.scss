@@ -1,0 +1,16 @@
+body.subsite-front {
+  #main {
+    @include layout--two-cols-no-first-sidebar;
+  }
+
+  #sidebar-first {
+    display: none !important;
+  }
+
+  &.worker-institute,
+  &.ilr-at-70 {
+    #main {
+      @include layout--full-width-grid;
+    }
+  }
+}

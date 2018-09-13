@@ -1,0 +1,128 @@
+$pad: $double-space;
+$doublepad: $pad * 2;
+
+.component--tabs {
+  @include trailer(2);
+
+  display: grid;
+
+  @include medium {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 33% 1fr;
+  }
+
+  .tab__trigger {
+    @include adjust-font-size-to(20px, 1);
+
+    font-weight: 600;
+    color: white;
+    padding: $pad $space 0 $space;
+    background: $lighter-red;
+    cursor: pointer;
+
+    &--second {
+      background: $cornell-red;
+    }
+
+    &--third {
+      background: $black;
+    }
+
+    &--graduate-programs {
+      @include xl {
+        padding-right: 5em !important;
+      }
+
+    }
+
+    @include medium {
+      @include adjust-font-size-to(22px, 1);
+
+      padding: $pad;
+      grid-column: auto;
+      grid-row: 1;
+    }
+
+    @include large {
+      @include adjust-font-size-to(28px, 1);
+
+      padding: 2rem $doublepad 3rem $doublepad;
+    }
+
+    @include xl {
+      @include adjust-font-size-to(32px, 1);
+    }
+  }
+
+  .tab__content {
+    background: $lighter-red;
+    padding: 1rem $space;
+    z-index: 30;
+
+    @include medium {
+      grid-column: 1 / -1;
+    }
+
+    @include large {
+      padding: 2rem $doublepad 3rem $doublepad;
+    }
+
+    &:not(.tab__content--first) {
+      @include medium {
+        display: none;
+      }
+    }
+
+    &--second {
+      background: $cornell-red;
+    }
+
+    &--third {
+      background: $black;
+    }
+
+    p {
+      color: white;
+      margin: 0 0 1rem !important;
+      max-width: $section-max-width;
+
+      @include medium {
+        @include adjust-font-size-to(24px, 1.2);
+      }
+    }
+
+    ul {
+      @include medium {
+        @include two-column;
+      }
+
+      margin: 0;
+      padding: 0;
+
+      li { // Do not copy; create mixin if being re-used
+        $space: 1.5rem;
+        background: none;
+        color: white;
+        padding: 0;
+        position: relative;
+        margin-left: $space;
+
+        &::before {
+          content: ' ';
+          width: 12px;
+          height: 12px;
+          border-radius: 3px;
+          position: absolute;
+          top: 30%;
+          left: -$space;
+          background: white;
+        }
+      }
+
+      a {
+        @include set-link($white, true, $white);
+      }
+    }
+  }
+}
+

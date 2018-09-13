@@ -1,14 +1,5 @@
-// Fix for page load animations
-.preloading * {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -ms-transition: none !important;
-  -o-transition: none !important;
-}
-
 %header-small {
   .logo-wrapper {
-    margin: 10px;
     float: left;
 
     a.cornell {
@@ -23,59 +14,48 @@
   }
 }
 
-body:not(.preloading) header {
-  @extend %header-small; // preloading gets removed via js once page has loaded
-}
-
 header {
-  @extend .center;
-  @include transition-duration(.3s);
-  @include background-image(linear-gradient(lighten($cornell-red, 3%), $cornell-red));
-  background-repeat: no-repeat;
+  padding-top: 20px;
+  background: white;
   width: 100%;
   position: relative;
-  top: 0;
-  z-index: 950;
-  .sticky &,
-  &.sticky {
-    @include box-shadow(0 10px 10px -10px rgba(black, .5));
+  padding: calc(1rem + 20px) 2rem 1rem;
+
+  @include medium {
+    padding: calc(2rem + 20px) 2rem 0;
   }
 
-  body:not(.subsite) & {
-    position: fixed;
+  @include medium {
+    @include trailer(1);
   }
 
-  .admin-menu & {
-    top: 29px;
+  @include large {
+    @include trailer(2);
+  }
+
+  .container {
+    @include clearfix;
+    @include container;
   }
 
   .logo-wrapper {
     position: relative;
-    margin-left: 10px;
     float: left;
+    max-width: 80%;
 
     a.cornell {
+      width: 100px;
+      height: 100px;
       display: block;
       position: absolute;
     }
   }
 
-  #header-region {
-    background: #f7f7f7;
-    width: 100%;
-    clear: both;
-    position: relative;
-    border-bottom: 1px solid $gray-light;
-  }
-
-  &[data-eq-state="regular-nav"]:not(.sticky) {
+  &[data-eq-state="regular-nav"] {
     @extend %big-logo;
     .jpanel-trigger-container { display: none; }
   }
-  &[data-eq-state="regular-nav"].sticky {
-    #logo {
-      margin-bottom: 2px;
-    }
+  &[data-eq-state="regular-nav"] {
     .jpanel-trigger-container {
       @extend .hidden;
     }
@@ -90,13 +70,14 @@ header {
 
 %big-logo {
   body:not(.subsite) & {
-    a.cornell {
-      width: 110px;
-      height: 100px;
-    }
-    #logo {
-      img {
-        width: 385px;
+    .logo-wrapper {
+      @include trailer(1);
+
+      #logo {
+        img {
+          width: 350px;
+          height: auto;
+        }
       }
     }
   }
@@ -104,18 +85,34 @@ header {
 
 %header-btn {
   @include transition-duration(.3s);
-  float: right;
-  margin-top: 1em;
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
+  z-index: 10;
+  // margin-top: 1em;
   [data-eq-state="regular-nav"]:not(.sticky) & {
     body:not(.subsite) & {
       margin-right: 1em;
     }
   }
 
+  @include small {
+    top: 3rem;
+  }
+
+  @include medium {
+    top: 4rem;
+    right: 2rem;
+  }
+
   a {
     display: block;
     padding: 10px 13px 5px 13px;
-    color: white;
+    color: $black;
+
+    [data-menu-position="open"] & {
+      color: white;
+    }
 
     &:hover, &:visited, &:active, &:focus {
       text-decoration: none;

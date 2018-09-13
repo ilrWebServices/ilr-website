@@ -909,9 +909,16 @@ function _forms_full_names_states_and_provinces() {
     $full_names, $include_other, $include_states, $include_provinces, $include_territories);
 }
 
+/**
+ * Allows us to create dynamic lists for field instances.
+ * Create key/value pairs in config/dynamic_allowed_values.
+ * @see get_dynamic_allowed_values.php
+ */
 function _forms_get_dynamic_allowed_values($field, $instance, $entity_type, $entity) {
   global $DYNAMIC_ALLOWED_VALUES;
-  $type = $entity->type;
+  $type = (isset($entity->type))
+    ? $entity->type
+    : $entity->bundle;
   $field_name = $instance['field_name'];
   $keys = array();
 

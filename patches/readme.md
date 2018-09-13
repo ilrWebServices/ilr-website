@@ -83,3 +83,9 @@ Example:
   * Adds entity cloning support for fields
   * https://www.drupal.org/project/entity/issues/1513812
   * https://www.drupal.org/files/issues/1513812-entity-added-cloned-from-fixed-comments-till-67_0.patch
+
+* menu_block
+  * Allows menu to show only children of active item
+  * https://www.drupal.org/project/menu_block/issues/927380#comment-9742591
+
+

@@ -70,19 +70,14 @@ function ilr_paragraphs_preprocess_field(&$variables) {
  */
 function _ilr_paragraphs_process_fields(&$variables) {
   switch ($variables['element']['#field_name']) {
-    case 'field_image': case 'field_youtube_video':
-      switch ($variables['element']['#bundle']) {
-        case 'featured_promo':
-          _ilr_paragraphs_add_class_to_field($variables,
-            _ilr_paragraphs_field_has_value($variables, 'field_align_left_right', 'right') ?
-            'image-right' :
-            'image-left');
-          break;
-      }
-      break;
     case 'field_animated_text_card':
       switch ($variables['element']['#bundle']) {
         case 'compare_three':
+          foreach ($variables['items'] as $key => $item) {
+            $cwrapper = entity_metadata_wrapper('field_collection_item', key($item['entity']['field_collection_item']));
+            $url = $cwrapper->field_website_url->value()[0]['url'];
+            $variables['items'][$key]['#url'] = $url;
+          }
           drupal_add_js(drupal_get_path('module','ilr_paragraphs') . '/ilr_paragraphs_compare_three.js', array('type' => 'file', 'scope' => 'footer'));
           break;
       }
@@ -118,10 +113,12 @@ function _ilr_paragraphs_process_fields(&$variables) {
  * Adds a class to a field
  */
 function _ilr_paragraphs_add_class_to_field(&$variables, $class) {
-  $variables['classes_array'][] = $class;
-  $variables['attr'] = drupal_attributes(array(
-    'class' => $variables['classes_array'],
-  ));
+  if (!in_array($class, $variables['classes_array'])) {
+    $variables['classes_array'][] = $class;
+    $variables['attr'] = drupal_attributes(array(
+      'class' => $variables['classes_array'],
+    ));
+  }
 }
 
 /**
@@ -210,6 +207,101 @@ function _ilr_paragraphs_check_fields_for_hash(&$entity) {
       if (strpos($submitted_value, '#') === 0) {
         $entity->{$field_name}[LANGUAGE_NONE][0]['value'] = ltrim($submitted_value, '#');
       }
+    }
+  }
+}
+
+function _ilr_paragraphs_preprocess_tabs(&$variables) {
+  $wrapper = entity_metadata_wrapper('paragraphs_item', $variables['paragraphs_item']);
+
+  $tab_headings = [];
+  $tab_content = [];
+
+  foreach ($wrapper->field_para_main_page_content->getIterator() as $delta => $text_wrapper) {
+    $tab_title = $text_wrapper->field_header->value();
+    $tab_id = _ilr_paragraphs_get_tab_id($tab_title);
+    $tab_headings[$tab_id] = $tab_title;
+    $tab_content[$tab_id] = $text_wrapper->field_text_paragraph->value->value();
+  }
+
+  $variables['tab_headings'] = $tab_headings;
+  $variables['tab_content'] = $tab_content;
+}
+
+function _ilr_paragraphs_get_tab_id($title) {
+  $title = strtolower($title);
+  $title = preg_replace("/[^a-z0-9_\s-]/", "", $title);
+  $title = preg_replace("/[\s-]+/", " ", $title);
+  $title = preg_replace("/[\s_]/", "-", $title);
+  return $title;
+}
+
+/**
+ * Adds variations to compare three depending on whether there are images
+ */
+function _ilr_paragraphs_preprocess_compare_three(&$variables) {
+  $images = FALSE;
+  foreach ($variables['field_animated_text_card'] as $key => $value) {
+    $cwrapper = entity_metadata_wrapper('field_collection_item', $value['value']);
+    if (!empty($cwrapper->field_image->value())) {
+      // @todo: refactor this out after talking with DD
+      if (!empty($cwrapper->field_short_title->value())) {
+        $cwrapper->field_short_title->set(NULL);
+        $cwrapper->save();
+      }
+
+      if ($key == 2) { // Only on the last one
+        $images = TRUE;
+        $variables['classes_array'][] = ' paragraphs-item-compare-three--with-images';
+      }
+    }
+  }
+  if (!$images) {
+    $variables['classes_array'][] = ' paragraphs-item-compare-three--text-only';
+  }
+}
+
+/**
+ * Adds variations to compare three depending on whether there are images
+ */
+function _ilr_paragraphs_preprocess_featured_promo(&$variables) {
+  $wrapper = entity_metadata_wrapper('paragraphs_item', $variables['paragraphs_item']);
+  $direction = $wrapper->field_align_left_right->value();
+  $variables['classes_array'][] = "paragraphs-item-featured-promo--image-$direction";
+  if(!empty($wrapper->field_youtube_video->value())) {
+    $variables['classes_array'][] = "paragraphs-item-featured-promo--video";
+  }
+}
+
+/**
+ * Adds style variations to sponsored messages
+ */
+function _ilr_paragraphs_preprocess_sponsor_message(&$variables) {
+  $wrapper = entity_metadata_wrapper('paragraphs_item', $variables['paragraphs_item']);
+  $style = $wrapper->field_dynamic_list->value();
+  $styles = explode(' ', $style);
+  foreach ($styles as $key => $style) {
+    $variables['classes_array'][] = "paragraphs-item-sponsor-message--$style";
+  }
+}
+
+/**
+ * Adds learn more button when there are images
+ */
+function ilr_paragraphs_field_collection_item_view_alter(&$build) {
+  if ($build['#bundle'] == 'field_animated_text_card') {
+    if (isset($build['field_image'])) {
+      $cwrapper = entity_metadata_wrapper('field_collection_item', $build['#entity']);
+      $url = $cwrapper->field_website_url->value()[0]['url'];
+      $title = (isset($cwrapper->field_website_url->value()[0]['attributes']['title']))
+        ? $cwrapper->field_website_url->value()[0]['attributes']['title']
+        : 'Learn More';
+      $link = '<span class="button">'. $title .'</span>';
+      $markup = ilr_get_bem_markup($link, 'link', 'cta');
+      $build['cta'] = [
+        '#markup' => $markup,
+        '#weight' => 5,
+      ];
     }
   }
 }

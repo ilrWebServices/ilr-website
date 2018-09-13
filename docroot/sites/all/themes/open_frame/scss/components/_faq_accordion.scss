@@ -1,0 +1,45 @@
+ul.faq-list {
+  li {
+    background: none;
+    border: 1px solid $gray-light;
+    margin: 0 0 1.5em;
+    padding: 1em .75em;
+    overflow: auto;
+    &:hover {
+      background: white;
+      border: 1px solid $gray-dark;
+      cursor: pointer;
+    }
+  }
+
+  .faq-q {
+    color: $student-portrait-color;
+    font-size: $h2-size;
+    font-weight: 100;
+    margin: 0 0 .5em;
+
+    a {
+      color: $student-portrait-color;
+      text-decoration: none;
+    }
+  }
+
+  .faq-a {
+    margin: 0;
+    line-height: 1.5em;
+  }
+  
+  ul {
+    padding: 1em 1em 0 0;
+    li {
+      background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
+      border: none;
+      margin: 0;
+      padding: 0 0 0 1em;
+      &:hover {
+        border: none;
+        background: url(../images/squareBullet.gif) no-repeat 0 $base-line-height * .5;
+      }
+    }
+  }
+}

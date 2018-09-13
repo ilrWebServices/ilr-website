@@ -25,7 +25,7 @@ function ilr_paragraphs_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -54,6 +54,71 @@ function ilr_paragraphs_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_animated_text_card-field_image'.
+  $field_instances['field_collection_item-field_animated_text_card-field_image'] = array(
+    'bundle' => 'field_animated_text_card',
+    'deleted' => 0,
+    'description' => 'Optional image to use instead of text items',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'image_link' => '',
+          'image_style' => 'focussed_thumbnail',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_image',
+    'label' => 'Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'private' => 0,
+          'public' => 'public',
+          'youtube' => 0,
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'ilr_media_browser--media_browser_1' => 'ilr_media_browser--media_browser_1',
+          'ilr_media_browser--media_browser_my_files' => 'ilr_media_browser--media_browser_my_files',
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 'upload',
+          'youtube' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
   // 'field_collection_item-field_animated_text_card-field_short_title'.
   $field_instances['field_collection_item-field_animated_text_card-field_short_title'] = array(
     'bundle' => 'field_animated_text_card',
@@ -70,14 +135,14 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'field_collection_item',
     'fences_wrapper' => 'ul',
     'field_name' => 'field_short_title',
     'label' => 'Animated text items',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -113,7 +178,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -151,12 +216,9 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'link',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'link_separate',
-        'weight' => 3,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -992,11 +1054,13 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
+      'module' => 'blockreference',
       'settings' => array(
         'apply_chosen' => '',
+        'autocomplete_path' => 'blockreference/autocomplete',
+        'size' => 60,
       ),
-      'type' => 'options_select',
+      'type' => 'blockreference_autocomplete',
       'weight' => 32,
     ),
   );
@@ -1112,7 +1176,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => 'featured_image',
+          'image_style' => 'focussed_main_image',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -1382,7 +1446,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'focussed_hero',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -1869,7 +1933,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'hidden',
@@ -1903,6 +1967,46 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
       ),
       'type' => 'text_textarea',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-sponsor_message-field_dynamic_list'.
+  $field_instances['paragraphs_item-sponsor_message-field_dynamic_list'] = array(
+    'bundle' => 'sponsor_message',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_dynamic_list',
+    'label' => 'Style',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 5,
     ),
   );
 
@@ -1973,7 +2077,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
@@ -1998,6 +2102,80 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
       ),
       'type' => 'options_select',
       'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-tabs-field_para_main_page_content'.
+  $field_instances['paragraphs_item-tabs-field_para_main_page_content'] = array(
+    'bundle' => 'tabs',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'paragraphs',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'view_mode' => 'full',
+        ),
+        'type' => 'paragraphs_view',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_para_main_page_content',
+    'label' => 'Tab content',
+    'required' => 1,
+    'settings' => array(
+      'add_mode' => 'button',
+      'allowed_bundles' => array(
+        'action_callout' => -1,
+        'compare_three' => -1,
+        'display_a_block' => -1,
+        'featured_promo' => -1,
+        'just_image' => -1,
+        'just_text' => 'just_text',
+        'side_by_side_text' => -1,
+        'social_callout' => -1,
+        'social_feed' => -1,
+        'sponsor_message' => -1,
+        'tabs' => -1,
+        'unit_contact_info' => -1,
+      ),
+      'bundle_weights' => array(
+        'action_callout' => 2,
+        'compare_three' => 3,
+        'display_a_block' => 4,
+        'featured_promo' => 5,
+        'just_image' => 6,
+        'just_text' => 7,
+        'side_by_side_text' => 8,
+        'social_callout' => 9,
+        'social_feed' => 10,
+        'sponsor_message' => 11,
+        'tabs' => 12,
+        'unit_contact_info' => 13,
+      ),
+      'default_edit_mode' => 'open',
+      'title' => 'tab',
+      'title_multiple' => 'tabs',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'paragraphs',
+      'settings' => array(),
+      'type' => 'paragraphs_embed',
+      'weight' => 2,
     ),
   );
 
@@ -2186,7 +2364,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
     'fences_wrapper' => 'ul',
     'field_name' => 'field_social_channels',
     'label' => 'Social Channels',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -2277,6 +2455,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   t('Message text');
   t('NetID');
   t('On which side should the image or video display?');
+  t('Optional image to use instead of text items');
   t('Organization');
   t('Overlay color');
   t('Paragraph header');
@@ -2287,6 +2466,8 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
   t('Select an existing block');
   t('Social Channels');
   t('Social links');
+  t('Style');
+  t('Tab content');
   t('Tagline');
   t('Text paragraph');
   t('The background image should be ~2000 x 1000 pixels, but can be compressed somewhat thanks to the color overlay');

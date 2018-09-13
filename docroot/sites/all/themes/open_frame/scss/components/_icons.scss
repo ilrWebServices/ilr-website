@@ -1,0 +1,93 @@
+$icons: (
+  arrow-down: "\f100",
+  arrow-left: "\f101",
+  arrow-right-bold: "\f102",
+  arrow-right-thin: "\f103",
+  checkmark: "\f104",
+  clear-night: "\f106",
+  tower: "\f107",
+  close: "\f108",
+  mail: "\f109",
+  partly-cloudy-night: "\f110",
+  plus: "\f111",
+  rain: "\f112",
+  close2: "\f113",
+  search: "\f114",
+  search-thin: "\f115",
+  rain2: "\f116",
+  "snow": "\f117", // Avoids sass compilation error
+  arrow-down2: "\f118",
+  thunderstorm: "\f119",
+  unknown: "\f120",
+  tower2: "\f121",
+  // arrow: "\f122",
+  arrow-up2: "\f123",
+  facebook: "\f10a",
+  cloudy2: "\f10b",
+  instagram: "\f10c",
+  linkedin: "\f098",
+  play-button: "\f099",
+  hamburger: "\f10d",
+  cloudy: "\f10e",
+  partly-cloudy: "\f10f",
+  twitter: "\f11a",
+  windy: "\f11b",
+  youtube: "\f11c",
+  warning: "\f11d",
+  heart: "\f11e",
+  twoer-dark: "\f11f"
+);
+
+@each $name, $icon in $icons {
+  %icon-#{$name}:before {
+    content: $icon;
+    font-family: 'icons';
+  }
+
+  %icon-after-#{$name}:after {
+    content: $icon;
+    font-family: 'icons';
+  }
+}
+
+// Add more (as needed) at http://fontello.com
+$fontello-icons: (
+  snapchat: "\f2ac",
+);
+
+@function get-icon($key) {
+  @return map-get($fontello-icons, $key);
+}
+
+@mixin fontello-icon($name) {
+  &::before {
+    content: get-icon($name);
+    font-family: 'fontello';
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    text-align: center;
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+    font-size: 115%;
+    /* Font smoothing. That was taken from TWBS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+// Partially working svg-icon background images with masks
+// @see https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images
+@mixin svg-icon($name, $width: 30px, $color: inherit) {
+  &:before {
+    content: '';
+    display: inline-block;
+    width: $width;
+    mask: url('../images/icons/'+$name) no-repeat 50% 50%;
+    background-color: $color;
+  }
+}

@@ -5,3 +5,28 @@
  */
 
 include_once 'promo.features.inc';
+
+function promo_preprocess_node(&$variables) {
+  if ($variables['type'] == 'promo' && drupal_is_front_page()) {
+    if (!empty($target = $variables['field_internal_link'])) {
+      $target = $variables['field_internal_link'][LANGUAGE_NONE][0]['target_id'];
+      $alias = drupal_get_path_alias('node/' . $target);
+      $variables['content']['cta'] = [
+        '#markup' => '<div class="link link__cta"><a class="button" href="'. $alias .'">Learn More</a></div>',
+      ];
+    }
+  }
+}
+
+function promo_get_url_from_wrapper($wrapper) {
+  if ($wrapper->field_website_url->value()) {
+    return $wrapper->field_website_url[0]->value()['url'];
+  }
+  else {
+    $node = $wrapper->field_internal_link->value();
+    $nid = $node->nid;
+    return '/' . drupal_get_path_alias("node/$nid");
+  }
+  watchdog('promo', 'URL not found for promo @nid', array('@nid' => $wrapper->getIdentifier()), WATCHDOG_ERROR);
+  return NULL;
+}

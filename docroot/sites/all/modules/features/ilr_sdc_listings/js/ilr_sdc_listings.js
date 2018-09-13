@@ -109,11 +109,6 @@ jQuery.fn.sortElements = (function(){
 
         // If the course search block is on the page, position it and add the listeners
         if ($('#block-ilr-sdc-listings-course-search').length) {
-          if (isPublicOfferingsPage()) {
-            positionCourseSearchBox();
-          } else {
-            setTimeout(positionCourseSearchBox,500); // Set a timer to position it
-          }
           prepSearchFilter();
           fixSeriesClasses();
           fixSeriesCourses();
@@ -124,9 +119,9 @@ jQuery.fn.sortElements = (function(){
 
       var facultyBiosReadmore = function() {
         $('.node-sdc-faculty .field-name-body').readmore({
-          maxHeight: 105,
-          lessLink: '<a href="#">- Read less</a>',
-          moreLink: '<a href="#">+ Read more</a>',
+          maxHeight: 75,
+          lessLink: '<div class="link--readmore"><a href="#">- Less</a></div>',
+          moreLink: '<div class="link--readmore"><a href="#">+ More</a></div>',
         });
       };
 
@@ -159,63 +154,6 @@ jQuery.fn.sortElements = (function(){
       };
 
       /**
-       * Start with the css top position of the box for default
-       * check the current menu, and refine the position based on its height
-       */
-      positionCourseSearchBox = function() {
-        mobileNavIsPresent = mobileNavActive();
-        if (isPublicOfferingsPage() && !isSearchResultsPage()) {
-          // move the block above the sort
-          $searchBlock = $('#block-ilr-sdc-listings-course-search');
-          if ($('div.sort').length) { // Remove it from the jpanel menu
-            $($searchBlock).insertBefore($('div.sort'));
-            $('#jPanelMenu-menu #block-ilr-sdc-listings-course-search').remove();
-          }
-          if (mobileNavIsPresent) {
-            $('#jPanelMenu-menu #block-ilr-sdc-listings-course-search').remove();
-          }
-        }
-        else {
-          if (mobileNavIsPresent) {
-            currentMenu = $('#jPanelMenu-menu ul.menu.current');
-            searchBlock = $('#jPanelMenu-menu #block-ilr-sdc-listings-course-search');
-            $('#jPanelMenu-menu #views-exposed-form-sdc-course-listing-page').remove();
-            if (!$('.advanced-search').length) {
-              $(searchBlock).append('<a class="advanced-search" href="/professional-programs/workshops-courses-training">Advanced search</a>');
-            }
-          } else {
-            currentMenu = $('#sidebar-first ul.menu.current');
-            searchBlock = $('#block-ilr-sdc-listings-course-search');
-            $(searchBlock).insertAfter($('#block-menu-block-ilr-subnav'));
-            // Hard code the width for chosen containers in the sidebar
-            $('#sidebar-first .chosen-container').each(function(){
-              $(this).css('width','200px');
-            });
-          }
-
-
-          yPos = $(searchBlock).css('top');
-
-          if (currentMenu.length) {
-            if (mobileNavIsPresent) {
-              yPos = currentMenu.children('li').length * 65;
-            } else {
-              currentMenu.children('li').each(function(){
-                yPos = $(this).position().top + $(this).height() + 50;
-              });
-            }
-          } else { // Position it relative to the page title
-            $('#sidebar-first').css('min-height',900);
-            yPos = $('#page-title').position().top - 25;
-          }
-
-          $(searchBlock).animate({
-            'top' : yPos
-          }, 200);
-        }
-      };
-
-      /**
        * Checks to see whether it's the public offerings page
        * Returns false if the filter is engaged,
        * in which case we leave the filter in the sidebar
@@ -225,15 +163,11 @@ jQuery.fn.sortElements = (function(){
       };
 
       isSearchResultsPage = function() {
-        return $('body').hasClass('page-professional-programs-search');
+        return $('body').hasClass('page-programs-professional-programs-search');
       };
 
       isCourseClassDetailPage = function() {
         return $('body').hasClass('node-type-sdc-class') || $('body').hasClass('node-type-sdc-course');
-      };
-
-      prepareSearchBoxPosition = function() {
-        setTimeout(positionCourseSearchBox, 200);
       };
 
       /**
@@ -281,9 +215,8 @@ jQuery.fn.sortElements = (function(){
         $('.form-item-field-online').eq(0).insertAfter($('#edit-field-class-dates-value2-wrapper'));
         $advancedSearch.prepend('<h3>Or filter by:</h3>');
         $('#views-exposed-form-sdc-course-listing-page #edit-reset').hide();
-        $('a.animate-menu').live("click", prepareSearchBoxPosition);
         if (filterIsEngaged()) {
-          $advancedSearch.append('<p class="filter-link"><a class="filter" href="/professional-programs/workshops-courses-training">Reset filter</a></p>');
+          $advancedSearch.append('<p class="filter-link"><a class="filter" href="programs/professional-programs/workshops-courses-training">Reset filter</a></p>');
         }
         if (!mobileNavActive()) {
           // Check for enter key trigger since autocomplete is breaking common usage
@@ -291,10 +224,6 @@ jQuery.fn.sortElements = (function(){
             if (event.which == 13) {
              $($basicSearch).submit();
             }
-          });
-        } else {
-          $('.jpanel-trigger').click(function(){
-            positionCourseSearchBox();
           });
         }
       };
@@ -402,6 +331,7 @@ jQuery.fn.sortElements = (function(){
       };
 
       sortSelectedElements = function(elements, sortBy) {
+        console.log(sortBy);
         $(elements).sortElements(function(a, b){
           switch(sortBy) {
             case 'date':

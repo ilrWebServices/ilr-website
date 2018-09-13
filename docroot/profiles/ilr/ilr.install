@@ -882,6 +882,102 @@ function ilr_update_7069() {
   module_enable(['ilr_mentor']);
 }
 
+/**
+ * Adds redirects to support navigations changes from August, 2018
+ */
+function ilr_update_7070() {
+  $navigation_moves = array(
+    ['2586', '25231', 'Academics', 0, 2, 1],
+    ['22331', '25231', 'Graduate Degree Programs', 0, 2, 1],
+    ['14646', '25231', 'Masters in Human Resources OLD', 1, -5, 0],
+    ['16756', '25231', 'Leading Masters Degrees for HR Professionals', 1, 2, 0],
+    ['2836', '25231', 'Undergraduate Degree Program', 0, 1, 1],
+    ['3571', '2981', 'Credit Internships', 0, 1, 1],
+    ['4296', '2981', 'Special Study Options', 0, 3, 1],
+    ['4286', '2981', 'International Opportunities', 0, 2, 1],
+    ['2581', '25231', 'Admissions', 0, 4, 1],
+    ['2591', '2981', 'Career Path', 0, 4, 1],
+    ['16616', '0', 'Public Engagement', 0, 5, 1],
+    ['2601', '25231', 'Professional Programs', 0, 3, 1],
+    ['2981', '0', 'Student Experience', 0, 3, 1],
+    ['25231', '0', 'Programs', 0, 2, 1],
+    ['25241', '0', 'Faculty & Research', 0, 4, 1],
+    ['17326', '0', 'Library', 1, 0, 1],
+    ['2606', '0', 'Centers & Institutes', 1, 0, 1],
+  );
+   foreach ($navigation_moves
+    as list($mlid, $plid, $title, $hidden, $weight, $has_children)) {
+
+    $ml = menu_link_load($mlid);
+    if ($ml) {
+      $changes = array(
+        'link_path' => $ml['link_path'],
+        'link_title' => $title,
+        'menu_name' => $ml['menu_name'],
+        'weight' => $weight,
+        'expanded' => $ml['expanded'],
+        'mlid' => $ml['mlid'],
+        'plid' => $plid,
+        'hidden' => $hidden,
+        'has_children' => $has_children,
+      );
+      menu_link_save($changes);
+      menu_cache_clear_all();
+    }
+  }
+  _ilr_redirects_create_redirects('navigation-changes-redirects-2018-08-14',TRUE);
+}
+
+/**
+ * Updates active theme to open frame
+ */
+function ilr_update_7071() {
+  // Enable and set the theme
+  theme_enable(array('open_frame'));
+  variable_set('theme_default', 'open_frame');
+}
+
+/**
+ * Adds orphaned portraits to the menus
+ */
+function ilr_update_7072() {
+  $query = db_select('node', 'n');
+  $query->addField('n', 'nid');
+  $query->condition('n.type', array('student_portrait'), 'IN');
+  $nids = $query->execute()->fetchCol();
+  $count = 0;
+  foreach ($nids as $nid) {
+    $menu_link = ilr_get_menu_item($nid);
+    if (!$menu_link) {
+      $node = node_load($nid);
+      $item = [
+        'link_path' => 'node/' . $nid,
+        'link_title' => $node->title,
+        'menu_name' => 'main-menu',
+        'weight' => $count,
+        'expanded' => 0,
+        'plid' => 3361,
+        'hidden' => 1,
+        'has_children' => 0,
+      ];
+      menu_link_save($item);
+      $count++;
+    }
+  }
+}
+
+/**
+ * Triggers pathauto updates for professional programs content
+ */
+function ilr_update_7073() {
+  $query = db_select('node', 'n');
+  $query->addField('n', 'nid');
+  $query->condition('n.type', array('sdc_course', 'sdc_course', 'sdc_faculty', 'certificate_programs', 'student_portrait'), 'IN');
+  $nids = $query->execute()->fetchCol();
+
+  pathauto_node_update_alias_multiple($nids, 'bulkupdate');
+}
+
 function _ilr_migrate_body_to_paragraph_item($node) {
   $body = (isset($node->body[LANGUAGE_NONE][0]['value']))
     ? $node->body[LANGUAGE_NONE][0]['value']

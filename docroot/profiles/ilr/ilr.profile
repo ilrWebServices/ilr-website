@@ -120,21 +120,37 @@ function ilr_menu_block_blocks() {
   if (module_exists('ilr_sub_sites')) {
     $menu = _ilr_sub_sites_get_menu_name();
   }
-  $level = ($menu == 'main-menu') ? 1 : 2; // Note this does not seem to be zero indexed
+  $follow = ($menu == 'main-menu') ? 'active' : 'child'; // Not zero indexed
+  $level = ($menu == 'main-menu') ? 1 : 2; // Not zero indexed
+  $depth = $depth_relative = 0;
+  $paged = 1;
+  $menu_item = ilr_get_menu_item();
+  if ($menu_item && !ilr_mlid_has_children($menu_item->mlid)) {
+    if (!ilr_mlid_has_siblings($menu_item->plid)) {
+      $trail = menu_get_active_trail();
+      $depth = count($trail) - 2;
+      $paged = 0;
+    }
+  }
+
+  $defaults = menu_block_default_config();
+
+  $overrides = [
+    'menu_name'   => $menu,
+    'admin_title' => 'ILR Sidebar Menu',
+    'expanded'    => TRUE,
+    'paged' => $paged,
+    'parent_mlid' => 0,
+    'follow' => 'active',
+    'title_link' => 1,
+    'depth' => $depth,
+    'depth_relative' => $depth_relative
+  ];
+
+  $subnav = array_replace($defaults, $overrides);
+
   return array(
-    // The array key is the block id used by menu block.
-    'ilr-subnav' => array(
-      // Use the array keys/values described in menu_tree_build().
-      'menu_name'   => $menu,
-      'title_link'  => TRUE,
-      'admin_title' => 'ILR Sidebar Menu',
-      'level'       => $level,
-      'follow'      => 0,
-      'depth'       => 10,
-      'expanded'    => TRUE,
-      'sort'        => FALSE,
-      'parent_mlid' => 0,
-    ),
+    'ilr-subnav' => $subnav,
     'ilr-primary-menu' => array(
       // Use the array keys/values described in menu_tree_build().
       'menu_name'   => $menu,
@@ -148,6 +164,44 @@ function ilr_menu_block_blocks() {
       'sort'        => FALSE,
     ),
   );
+}
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function ilr_block_view_alter(&$data, $block) {
+  if ($block->delta == 'ilr-subnav') {
+    if ($data['subject'] == "Main menu") {
+      $data['subject'] = '<a href="/">Home</a>';
+    }
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ * Adds the google translate block
+ */
+function ilr_block_info() {
+  $blocks['ilr_wordmark'] = array(
+    'info' => t('ILR Wordmark'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function ilr_block_view($delta='') {
+  if ($delta == 'ilr_wordmark') {
+    $markup = '<div class="ilr-logo ilr-logo--wordmark"><a class="ilr-logo__link" href="/"><img src="/sites/all/themes/open_frame/images/logos/ILR-wordmark-reversed.svg"></a></div>';
+
+    $block = array(
+      'subject' => '',
+      'content' => $markup,
+    );
+  }
+
+  return $block;
 }
 
 /**
@@ -644,6 +698,20 @@ function ilr_get_node_wrapper($node_or_nid) {
 }
 
 /**
+ * Gets the url alis for a wrapper
+ */
+function ilr_get_wrapper_alias($wrapper) {
+  if ($wrapper->getBundle() == 'promo') {
+    return promo_get_url_from_wrapper($wrapper);
+  }
+  else {
+    $nid = $wrapper->getIdentifier();
+    return '/' . drupal_get_path_alias("node/$nid");
+  }
+  return '';
+}
+
+/**
  * Adds the read more link for content,
  * which is removed by tagged_content but
  * is sometimes present in the design
@@ -878,4 +946,93 @@ function ilr_rename_fields($fields, $drop_first = FALSE) {
   }
 }
 
+function ilr_add_section_title(&$variables, $title=NULL) {
+  if ($title) {
+    $variables['section_title'] = $title;
+  }
+  else {
+    $parents = ilr_get_menu_trail_by_path();
+    if (count($parents) > 2) {
+      $url = $parents[count($parents) - 2];
+      $path = (strpos($url, 'node') === 0)
+        ? $url
+        : drupal_lookup_path("source", $url);
+      if (!$path) { // Check if there is a redirect
+        $redirects = redirect_fetch_rids_by_path($url, LANGUAGE_NONE);
+        if (!empty($redirects)) {
+          $redirect = redirect_load($redirects[0]);
+          $path = drupal_lookup_path("source", $redirect->redirect);
+        }
+      }
+      $parent_title = menu_get_object('node', 1, $path)->title;
 
+      $variables['section_title'] = $parent_title;
+    }
+  }
+}
+
+function ilr_get_menu_trail_by_path() {
+  $parents = _menu_trail_by_path_get_parent_candidates(drupal_get_path_alias());
+  return $parents;
+}
+
+function ilr_get_menu_item($nid=NULL) {
+  if (!$nid) {
+    if ($node = menu_get_object()) {
+      $nid = $node->nid;
+    }
+  }
+  if ($nid) {
+    $menu_record = db_select('menu_links', 'ml')
+      ->condition('ml.link_path', 'node/' . $nid)
+      ->fields('ml', array('menu_name', 'mlid', 'plid', 'hidden'))
+      ->execute()
+      ->fetchObject();
+
+    if (is_object($menu_record)) {
+      return $menu_record;
+    }
+  }
+  return NULL;
+}
+
+function ilr_mlid_has_children($mlid) {
+  $menu_record = db_select('menu_links', 'ml')
+      ->condition('ml.plid', $mlid)
+      ->condition('ml.hidden', 1, '!=')
+      ->fields('ml', array('mlid'))
+      ->execute()
+      ->fetchObject();
+  if (!empty($menu_record)) {
+    return 1;
+  }
+  return 0;
+}
+
+function ilr_mlid_has_siblings($plid) {
+  $menu_record = db_select('menu_links', 'ml')
+      ->condition('ml.plid', $plid)
+      ->condition('ml.hidden', 1, '!=')
+      ->fields('ml', array('mlid'))
+      ->execute()
+      ->fetchObject();
+  if (!empty($menu_record)) {
+    return 1;
+  }
+  return 0;
+}
+
+function ilr_get_bem_markup($content, $block, $element, $modifiers=[], $prefix='', $suffix='') {
+  $classname = $block . '__' . $element;
+  $modifier_classes = '';
+  foreach ($modifiers as $modifier) {
+    $modifier_classes .= ' ' . $classname . '--' . $modifier;
+  }
+  $markup = '<div class="'. $classname .' ' . $modifier_classes . '">';
+  $markup .= $prefix;
+  $markup .= $content;
+  $markup .= $suffix;
+  $markup .= '</div>';
+
+  return $markup;
+}

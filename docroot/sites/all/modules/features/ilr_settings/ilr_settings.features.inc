@@ -104,6 +104,25 @@ function ilr_settings_image_default_styles() {
     ),
   );
 
+  // Exported image style: focussed_portrait.
+  $styles['focussed_portrait'] = array(
+    'label' => 'Focussed portrait',
+    'effects' => array(
+      8 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 400,
+          'height' => 530,
+          'focal_point_advanced' => array(
+            'shift_x' => '',
+            'shift_y' => '',
+          ),
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: focussed_thumbnail.
   $styles['focussed_thumbnail'] = array(
     'label' => 'Focussed thumbnail',

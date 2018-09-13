@@ -1,0 +1,38 @@
+diff --git a/menu_block.admin.inc b/menu_block.admin.inc
+index 31958ba..1d197c8 100644
+--- a/menu_block.admin.inc
++++ b/menu_block.admin.inc
+@@ -365,6 +365,11 @@ function menu_block_configure_form($form, &$form_state) {
+     '#title' => t('<strong>Expand all children</strong> of this tree.'),
+     '#default_value' => $config['expanded'],
+   );
++  $form['paged'] = array(
++    '#type' => 'checkbox',
++    '#title' => t('Show only paged menu based on the current page.'),
++    '#default_value' => $config['paged'],
++  );
+   $form['sort'] = array(
+     '#type' => 'checkbox',
+     '#title' => t('<strong>Sort</strong> menu tree by the active menu itemâ€™s trail.'),
+diff --git a/menu_block.module b/menu_block.module
+index 8611fbf..5ac587f 100644
+--- a/menu_block.module
++++ b/menu_block.module
+@@ -244,6 +244,7 @@ function menu_block_default_config() {
+     'depth' => 0,
+     'expanded' => 0,
+     'sort' => 0,
++    'paged' => 0,
+   );
+ }
+
+@@ -349,6 +350,9 @@ function menu_tree_block_data(array &$config) {
+     if ($config['parent_mlid']) {
+       $tree = menu_tree_all_data($config['menu_name']);
+     }
++    elseif ($config['paged']) {
++      $tree = menu_tree_page_data($config['menu_name']);
++    }
+     else {
+       $tree = menu_tree_all_data($config['menu_name'], NULL, $max_depth);
+     }
