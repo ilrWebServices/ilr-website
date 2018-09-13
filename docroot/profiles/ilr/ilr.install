@@ -929,18 +929,9 @@ function ilr_update_7070() {
 }
 
 /**
- * Updates active theme to open frame
- */
-function ilr_update_7071() {
-  // Enable and set the theme
-  theme_enable(array('open_frame'));
-  variable_set('theme_default', 'open_frame');
-}
-
-/**
  * Adds orphaned portraits to the menus
  */
-function ilr_update_7072() {
+function ilr_update_7071() {
   $query = db_select('node', 'n');
   $query->addField('n', 'nid');
   $query->condition('n.type', array('student_portrait'), 'IN');
@@ -969,7 +960,7 @@ function ilr_update_7072() {
 /**
  * Triggers pathauto updates for professional programs content
  */
-function ilr_update_7073() {
+function ilr_update_7072() {
   $query = db_select('node', 'n');
   $query->addField('n', 'nid');
   $query->condition('n.type', array('sdc_course', 'sdc_course', 'sdc_faculty', 'certificate_programs', 'student_portrait'), 'IN');
