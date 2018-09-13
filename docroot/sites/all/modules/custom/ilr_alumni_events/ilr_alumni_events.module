@@ -44,6 +44,48 @@ function ilr_alumni_events_form_ilr_alumni_association_event_reg_entityform_edit
   drupal_add_js(array(
     'ilr_alumni_events' => array(
       'memberPrice' => $wrapper->field_aa_member_price->value(),
+      'nonMemberPrice' => 0
+    )),
+    'setting'
+  );
+
+  // Figure out how many tickets remain; total_tickets = 0 means there is no limit
+  $total_tickets = $wrapper->field_total_tickets->value();
+  if ($total_tickets > 0) {
+    $tickets_remaining = _ilr_alumni_events_get_remaining_ticket_count($total_tickets);
+
+    // Add info to the reg page to let people know the number of remaining tickets
+    $form['#groups']['group_reservations']->format_settings['instance_settings']['description'].= "<br>$tickets_remaining tickets available";
+
+    // If number of tickets remaining is less than the max that normally shows up
+    // in the dropdown, change the max in the dropdown.
+    $normal_max = 10;
+    if ($normal_max > $tickets_remaining) {
+      for ($i=$normal_max; $i>$tickets_remaining; $i--) {
+        unset($form['field_tickets_for_aa_members']['und']['#options'][$i]);
+      }
+    }
+  }
+}
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ilr_alumni_events_form_ilr_sports_summit_event_registra_entityform_edit_form_alter(&$form, &$form_state) {
+  // Add form validation
+  $form['#validate'][] = '_ilr_alumni_events_form_validate';
+  $form['field_total_cost'][LANGUAGE_NONE][0]['#markup'] = '<label>Total Cost</label><p><span class="total-cost">0</span></p>';
+
+  drupal_add_js(drupal_get_path('module','ilr_alumni_events') . '/ilr_alumni_events.js', array('type' => 'file', 'scope' => 'footer'));
+
+  $existing_entityform = (!empty($form['#entity']->entityform_id)) ? $form['#entity'] : null;
+  $wrapper = _ilr_alumni_events_node_wrapper(null, $existing_entityform);
+
+  drupal_add_js(array(
+    'ilr_alumni_events' => array(
+      'memberPrice' => $wrapper->field_aa_member_price->value(),
+      'nonMemberPrice' => $wrapper->field_aa_non_member_price->value(),
     )),
     'setting'
   );
@@ -73,7 +115,7 @@ function ilr_alumni_events_form_ilr_alumni_association_event_reg_entityform_edit
 function ilr_alumni_events_preprocess_node(&$variables) {
   if ($variables['type'] == 'registration_page') {
     $wrapper = _ilr_alumni_events_node_wrapper(menu_get_object());
-    if ($wrapper->field_registration_form_type->value()->type == 'ilr_alumni_association_event_reg') {
+    if (ilr_alumni_events_is_alumni_payment_form($wrapper->field_registration_form_type->value()->type)) {
       // total_tickets = 0 means there is no limit
       $total_tickets = $wrapper->field_total_tickets->value();
       if ($total_tickets > 0) {
@@ -92,7 +134,7 @@ function ilr_alumni_events_preprocess_node(&$variables) {
  * Implements hook_freedompay_checkout_payload_alter().
  */
 function ilr_alumni_events_freedompay_checkout_payload_alter(&$payload, $order, $form_id) {
-  if ($form_id == 'ilr_alumni_association_event_reg') {
+  if (ilr_alumni_events_is_alumni_payment_form($order->bundle)) {
     $payload['PurchaseItems'] = _ilr_alumni_events_get_purchase_items();
     $payload['BillingAddress'] = _ilr_alumni_events_get_billing_address();
   }
@@ -102,7 +144,7 @@ function ilr_alumni_events_freedompay_checkout_payload_alter(&$payload, $order, 
  * Implements hook_freedompay_transaction_total_alter().
  */
 function ilr_alumni_events_freedompay_transaction_total_alter(&$transaction_total, $order, $form_id) {
-  if ($form_id == 'ilr_alumni_association_event_reg') {
+  if (ilr_alumni_events_is_alumni_payment_form($order->bundle)) {
     $transaction_total = _ilr_alumni_events_get_total_cost();
   }
 }
@@ -111,7 +153,7 @@ function ilr_alumni_events_freedompay_transaction_total_alter(&$transaction_tota
  * Implements hook_freedompay_invoice_prefix().
  */
 function ilr_alumni_events_freedompay_invoice_prefix($order) {
-  if ($order->bundle == 'ilr_alumni_association_event_reg') {
+  if (ilr_alumni_events_is_alumni_payment_form($order->bundle)) {
     return 'alev';
   }
 }
@@ -121,7 +163,7 @@ function ilr_alumni_events_freedompay_invoice_prefix($order) {
  * Sets the total_cost field value based on the transaction total
  */
 function ilr_alumni_events_freedompay_order_complete($order, $entity_type, $bundle) {
-  if ($order->bundle == 'ilr_alumni_association_event_reg') {
+  if (ilr_alumni_events_is_alumni_payment_form($order->bundle)) {
     $wrapper = $order->formWrapper();
     if (!empty($order->invoice)) {
       $total_cost = $order->invoice->amount;
@@ -129,6 +171,10 @@ function ilr_alumni_events_freedompay_order_complete($order, $entity_type, $bund
       $wrapper->save();
     }
   }
+}
+
+function ilr_alumni_events_is_alumni_payment_form($type) {
+  return $type == 'ilr_alumni_association_event_reg' || $type == 'ilr_sports_summit_event_registra';
 }
 
 ///////////////////////////////
@@ -208,18 +254,26 @@ function _ilr_alumni_events_get_billing_address() {
  */
 function _ilr_alumni_events_form_validate(&$form, &$form_state) {
   $entityform_wrapper = entity_metadata_wrapper('entityform', $form_state['entityform']);
-  if (empty(_ilr_alumni_events_ticket_count($entityform_wrapper))) {
+  if (empty(_ilr_alumni_events_ticket_details($entityform_wrapper))) {
     form_set_error('field_tickets_for_aa_members', 'Please select your tickets.');
   }
 }
 
-function _ilr_alumni_events_ticket_count($entityform_wrapper=NULL) {
+function _ilr_alumni_events_ticket_details($entityform_wrapper=NULL) {
   if (!$entityform_wrapper) {
     $entityform_wrapper = _ilr_alumni_events_get_entityform_wrapper();
   }
-  return (!empty($entityform_wrapper->field_tickets_for_aa_members))
-    ? $entityform_wrapper->field_tickets_for_aa_members->value()
+  return (!empty($entityform_wrapper->field_tickets_for_aa_members) || !empty($entityform_wrapper->field_tickets_for_non_members))
+    ? [
+        'total' => _ilr_alumni_events_form_ticket_count($entityform_wrapper),
+        'member' => $entityform_wrapper->field_tickets_for_aa_members->value(),
+        'non-member' => $entityform_wrapper->field_tickets_for_non_members->value(),
+      ]
     : 0;
+}
+
+function _ilr_alumni_events_form_ticket_count($entityform_wrapper) {
+  return $entityform_wrapper->field_tickets_for_aa_members->value() + $entityform_wrapper->field_tickets_for_non_members->value();
 }
 
 /**
@@ -265,6 +319,11 @@ function _ilr_alumni_events_get_member_cost() {
     : 0;
 }
 
+function _ilr_alumni_events_get_non_member_cost() {
+  $node_wrapper = _ilr_alumni_events_node_wrapper();
+  return $node_wrapper->field_aa_non_member_price->value();
+}
+
 /**
  * Get count of remaining tickets
  */
@@ -306,9 +365,23 @@ function _ilr_alumni_events_get_total_tickets_sold($nid) {
  * set for the node upon which the form lives
  */
 function _ilr_alumni_events_get_total_cost() {
-  $member_tickets = _ilr_alumni_events_ticket_count();
   $member_cost = _ilr_alumni_events_get_member_cost();
-  $ticket_cost = $member_tickets * $member_cost;
+  $non_member_cost = _ilr_alumni_events_get_non_member_cost();
+  $ticket_details = _ilr_alumni_events_ticket_details();
+  $alumni_total = $ticket_details['member'] * $member_cost;
+  $discount_cost = $remaining = 0;
+  if ($ticket_details['non-member'] >= $ticket_details['member']) {
+    if ($ticket_details['non-member'] > $ticket_details['member']) {
+      $remaining = ($ticket_details['non-member'] - $ticket_details['member']) * $non_member_cost;
+    }
+    $discount_cost = $alumni_total;
+  } // Check if there are non-member tickets
+  elseif (!empty($ticket_details['non-member'])) {
+    $remaining = ($ticket_details['non-member'] > $ticket_details['member'])
+      ? ($ticket_details['non-member'] - $ticket_details['member']) * $non_member_cost
+      : $ticket_details['non-member'] * $member_cost;
+  }
+  $ticket_cost = $alumni_total + $discount_cost + $remaining;
   $transaction_total = ($ticket_cost == 0)
     ? FREEDOMPAY_PAYMENT_NOT_REQUIRED
     : $ticket_cost;
@@ -325,7 +398,7 @@ function _ilr_alumni_events_get_purchase_items() {
       "Price" => _ilr_alumni_events_get_total_cost(),
       "DisplayOrder" => 1,
       "Description" => 'Tickets for ' . $wrapper->label(),
-      "Quantity" => _ilr_alumni_events_ticket_count(),
+      "Quantity" => _ilr_alumni_events_ticket_details()['total'],
     ),
   );
 }

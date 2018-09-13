@@ -132,7 +132,7 @@ function registration_pages_field_default_field_instances() {
     'bundle' => 'registration_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'This field is no longer used, as of October 2015.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -162,7 +162,7 @@ function registration_pages_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_aa_non_member_price',
-    'label' => 'Unused - was ILRAA Non-member Price',
+    'label' => 'Guest price',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -645,6 +645,7 @@ function registration_pages_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => '',
           'links' => TRUE,
+          'use_content_language' => TRUE,
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
@@ -756,6 +757,7 @@ function registration_pages_field_default_field_instances() {
   t('Body');
   t('Event date');
   t('Form availability start date and end date (deadline)');
+  t('Guest price');
   t('Location');
   t('Main Image');
   t('Message to visitors after form closes');
@@ -766,11 +768,9 @@ function registration_pages_field_default_field_instances() {
   t('Set Start date/time, End date/time.  The dates should be the same; this isn\'t designed for multi-date events, but this captures start and end time, along with the event date.');
   t('Text to display on page after the form closes. If you leave this blank, the user will see a message indicating when the deadline was. Alternatively, enter exactly the text you want the user to see.');
   t('Text to display on page before the form is available. If you leave this blank, the user will see a message indicating when the form will be available. Alternatively, enter exactly the text you want the user to see.');
-  t('This field is no longer used, as of October 2015.');
   t('This text will ALWAYS appear, even when it\'s before  or after the deadline for the registration.  The other fields (event title, date, start and end time) will also appear, so don\'t add them here unless you\'re omitting them below.');
   t('Time period during which the form will be available to visitors.  Any start date earlier than today will make the form available immediately.  The end date is the deadline for the form.');
   t('Total tickets');
-  t('Unused - was ILRAA Non-member Price');
   t('Used for events with a limited number of tickets available. Set it to 0 (zero) if there is NO limit.');
 
   return $field_instances;

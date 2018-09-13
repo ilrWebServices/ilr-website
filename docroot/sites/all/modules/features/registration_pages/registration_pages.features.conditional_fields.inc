@@ -344,10 +344,10 @@ function registration_pages_conditional_fields_default_fields() {
       ),
       'selector' => '',
       'values_set' => 1,
-      'value_form' => _registration_pages_get_entityform_id_from_type('ilr_alumni_association_event_reg'),
+      'value_form' => _registration_pages_get_entityform_id_from_type('ilr_sports_summit_event_registra'),
       'value' => array(
         0 => array(
-          'target_id' => _registration_pages_get_entityform_id_from_type('ilr_alumni_association_event_reg'),
+          'target_id' => _registration_pages_get_entityform_id_from_type('ilr_sports_summit_event_registra'),
         ),
       ),
       'values' => array(),

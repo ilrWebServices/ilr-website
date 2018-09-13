@@ -75,6 +75,40 @@ function ilr_forms_public_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_reservations|entityform|ilr_sports_summit_event_registra|form';
+  $field_group->group_name = 'group_reservations';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'ilr_sports_summit_event_registra';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Reservations',
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_attendee_list',
+      1 => 'field_attendee_list_guests',
+      2 => 'field_attendee_list_markup',
+      3 => 'field_guests',
+      4 => 'field_tickets_for_aa_members',
+      5 => 'field_tickets_for_non_members',
+      6 => 'field_total_cost',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-reservations field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_reservations|entityform|ilr_sports_summit_event_registra|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_student_information|entityform|sports_camp_application|form';
   $field_group->group_name = 'group_student_information';
   $field_group->entity_type = 'entityform';
@@ -115,6 +149,7 @@ function ilr_forms_public_field_group_info() {
   // Included for use with string extractors like potx.
   t('Application questions');
   t('Parent/guardian information');
+  t('Reservations');
   t('Student Information');
 
   return $field_groups;
