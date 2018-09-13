@@ -1,0 +1,61 @@
+diff --git a/entity.module b/entity.module
+index d00afa4..3d182b1 100644
+--- a/entity.module
++++ b/entity.module
+@@ -1572,3 +1572,27 @@ function entity_ctools_plugin_directory($module, $plugin) {
+     return "ctools/$plugin";
+   }
+ }
++
++/**
++ * Implements hook_entity_insert().
++ */
++function entity_entity_insert($entity, $entity_type) {
++  // Create field for entity if needed.
++  $entity_info = entity_get_info($entity_type);
++  // Make sure entity_type is entity manage bundle (e.g: profile2_type).
++  if (empty($entity_info['bundle of'])) {
++    return;
++  }
++
++  if (empty($entity->clone_instances) && !empty($entity->cloned_from)) {
++    $entity->clone_instances = field_info_instances($entity_info['bundle of'], $entity->cloned_from);
++  }
++
++  // Make sure the cloned entity has this field.
++  if (!empty($entity->clone_instances)) {
++    foreach ($entity->clone_instances as $field_instance) {
++      $field_instance['bundle'] = $entity->{$entity_info['entity keys']['name']};
++      field_create_instance($field_instance);
++    }
++  }
++}
+diff --git a/includes/entity.ui.inc b/includes/entity.ui.inc
+index 24e3c2b..658c0cd 100644
+--- a/includes/entity.ui.inc
++++ b/includes/entity.ui.inc
+@@ -662,6 +662,19 @@ function entity_ui_clone_entity($entity_type, $entity) {
+   $entity_info = entity_get_info($entity_type);
+   $entity->{$entity_info['entity keys']['id']} = FALSE;
+   if (!empty($entity_info['entity keys']['name'])) {
++    // Save entity key name value (e.g. type) where this entity is cloned from.
++    // This value is needed to clone parts of the entity like field groups.
++    $entity->cloned_from = $entity->{$entity_info['entity keys']['name']};
++
++    // Make sure entity_type is entity manage bundle (e.g: profile2_type).
++    if (!empty($entity_info['bundle of'])) {
++      $bundle = $entity->{$entity_info['entity keys']['name']};
++      $field_instances = field_info_instances($entity_info['bundle of'], $bundle);
++
++      // Set clone_instances info for entity.
++      // This is an unexplained workaround see issue #151382
++      $entity->clone_instances = $field_instances;
++    }
+     $entity->{$entity_info['entity keys']['name']} = FALSE;
+   }
+   $entity->is_new = TRUE;
+@@ -764,4 +777,3 @@ function theme_entity_ui_overview_item($variables) {
+   }
+   return $output;
+ }
+-

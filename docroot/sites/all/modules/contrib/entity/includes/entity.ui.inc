@@ -662,6 +662,19 @@ function entity_ui_clone_entity($entity_type, $entity) {
   $entity_info = entity_get_info($entity_type);
   $entity->{$entity_info['entity keys']['id']} = FALSE;
   if (!empty($entity_info['entity keys']['name'])) {
+    // Save entity key name value (e.g. type) where this entity is cloned from.
+    // This value is needed to clone parts of the entity like field groups.
+    $entity->cloned_from = $entity->{$entity_info['entity keys']['name']};
+
+    // Make sure entity_type is entity manage bundle (e.g: profile2_type).
+    if (!empty($entity_info['bundle of'])) {
+      $bundle = $entity->{$entity_info['entity keys']['name']};
+      $field_instances = field_info_instances($entity_info['bundle of'], $bundle);
+
+      // Set clone_instances info for entity.
+      // This is an unexplained workaround see issue #151382
+      $entity->clone_instances = $field_instances;
+    }
     $entity->{$entity_info['entity keys']['name']} = FALSE;
   }
   $entity->is_new = TRUE;
@@ -764,4 +777,3 @@ function theme_entity_ui_overview_item($variables) {
   }
   return $output;
 }
-

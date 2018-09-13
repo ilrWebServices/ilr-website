@@ -79,3 +79,7 @@ Example:
   * Adds support and tests for removeSegmentMember
   * https://github.com/thinkshout/mailchimp-api-php/pull/67
 
+* entity api
+  * Adds entity cloning support for fields
+  * https://www.drupal.org/project/entity/issues/1513812
+  * https://www.drupal.org/files/issues/1513812-entity-added-cloned-from-fixed-comments-till-67_0.patch
