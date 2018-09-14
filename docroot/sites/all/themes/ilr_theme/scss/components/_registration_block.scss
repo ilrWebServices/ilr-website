@@ -1,5 +1,5 @@
 .registration-block {
-  @include grid-span (10,2);
+  @include two-column-grid($gap: 100px);
   @include padded($padding: 2em 0 4em 0);
 
   &__dates {
@@ -20,16 +20,23 @@
 
   &__message {
     @include medium {
-      @include grid-span (6,1);
-      padding-right: 3em;
+      grid-column: 1;
+      grid-row: 1;
+      padding: 0 50px;
     }
 
-    @include xl {
+    @include large {
       @include leader(1);
+      padding: 0 100px;
     }
   }
 
   &__info {
+    @include medium {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
     .registration-block__detail {
       @include adjust-font-size-to(16px, 1);
       font-weight: 600;
@@ -54,14 +61,6 @@
         @include adjust-leading-to(1.3);
         max-width: 377px;
       }
-    }
-
-    @include medium {
-      @include grid-span (6,7);
-    }
-
-    @include xl {
-      @include grid-span (4,7);
     }
   }
 

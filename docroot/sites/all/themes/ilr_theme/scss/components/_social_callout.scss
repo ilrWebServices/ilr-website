@@ -58,7 +58,7 @@
 
     .social-callout__link {
       &::before {
-        color: $color-social-bg
+        color: $color-social-bg;
       }
 
       &.follow-linkedin {
@@ -83,23 +83,23 @@
   }
 
   // Variations
-  // &--orange {
-  //   $color: darken($orange, 4%);
-  //   background-color: $color;
+  &--orange {
+    $color: darken($orange, 4%);
+    background-color: $color;
 
-  //   .social-callout__link::before {
-  //     color: $color;
-  //   }
-  // }
+    .social-callout__link::before {
+      color: inherit;
+    }
+  }
 
-  // &--green {
-  //   $color: darken($basic-page-color, 5%);
-  //   background-color: $color;
+  &--green {
+    $color: darken($basic-page-color, 5%);
+    background-color: $color;
 
-  //   .social-callout__link::before {
-  //     color: $color;
-  //   }
-  // }
+    .social-callout__link::before {
+      color: inherit;
+    }
+  }
 }
 
 #block-bean-sls-social-media {

@@ -7,8 +7,9 @@ body.subsite-front {
     display: none !important;
   }
 
-  &.worker-institute,
-  &.ilr-at-70 {
+  &.node-type-channel-page,
+  &.ilr-at-70,
+  &.microsite {
     #main {
       @include layout--full-width-grid;
     }
