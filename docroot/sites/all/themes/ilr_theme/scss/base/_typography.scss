@@ -258,6 +258,10 @@ p {
   span[style] {
     @include paragraph-text($black, true);
   }
+
+  &.loaded {
+    max-width: 100%;
+  }
 }
 
 p + h2,
