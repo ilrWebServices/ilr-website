@@ -242,7 +242,7 @@ class TaggedContentBean extends BeanPlugin {
    */
   private function getTaxonomyIdsFromNames() {
     $tag_array = array_map('trim', explode(',', $this->bean->tags));
-    $tag_array = str_replace(' ', '-', $tag_array);
+    // $tag_array = str_replace(' ', '-', $tag_array); // removing since this broke other pages
     $vocabulary = taxonomy_vocabulary_machine_name_load('tags');
     $query = new EntityFieldQuery;
 
