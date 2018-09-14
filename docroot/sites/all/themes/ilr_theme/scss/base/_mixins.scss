@@ -178,7 +178,8 @@
 
 // Responsive video using CSS only
 @mixin responsive-video {
-  height: 0;
+  @include clearfix;
+
   overflow: hidden;
   padding-top: 35px;
   padding-bottom: 56.25%; // 56.25% = 16x9
@@ -300,6 +301,8 @@
 }
 
 @mixin image-ratio-hack($percentage: 65%) {
+  @include clearfix;
+
   position: relative;
   overflow: hidden;
   height: 0;
