@@ -42,7 +42,7 @@ function news_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -95,7 +95,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -156,16 +156,10 @@ function news_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'div',
     'field_name' => 'field_description',
-    'label' => 'Subtitle',
+    'label' => 'Teaser',
     'required' => 0,
     'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -173,10 +167,10 @@ function news_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 120,
+        'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -267,7 +261,7 @@ function news_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -317,7 +311,7 @@ function news_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -352,7 +346,7 @@ function news_field_default_field_instances() {
     'bundle' => 'news_item',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The short title, if present, is used in cards and breadcrumbs.',
+    'description' => 'The short title, if present, is used in news blocks and breadcrumbs.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -376,20 +370,14 @@ function news_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'div',
     'field_name' => 'field_short_title',
     'label' => 'Short title',
     'required' => 0,
     'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -433,7 +421,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -484,7 +472,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'node',
@@ -533,10 +521,10 @@ function news_field_default_field_instances() {
   t('Main Image');
   t('Publication Date');
   t('Short title');
-  t('Subtitle');
   t('Tags');
   t('Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.');
-  t('The short title, if present, is used in cards and breadcrumbs.');
+  t('Teaser');
+  t('The short title, if present, is used in news blocks and breadcrumbs.');
 
   return $field_instances;
 }
