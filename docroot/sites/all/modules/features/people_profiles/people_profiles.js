@@ -9,7 +9,7 @@
         var target = $(anchor);
         if (target.length) {
           $('html,body').animate({
-            scrollTop: target.offset().top - 175 //offset height of header here
+            scrollTop: target.offset().top - 30 //slight offset
           }, 100);
           anchorTriggered = true;
           currentLetter = getLastNameLetterFromAnchor(anchor);
@@ -137,7 +137,7 @@
       var getFirstEntryForLetter = function(letter) {
         entry = false;
         map = JSON.parse(Drupal.settings.people_profiles.lastNameMap);
-        jQuery.each(map, function(i, val) {
+        $.each(map, function(i, val) {
           if (val == letter) {
             currentLetter = letter;
             entry = i;

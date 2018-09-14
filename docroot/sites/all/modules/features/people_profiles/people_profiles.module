@@ -153,7 +153,13 @@ function people_profiles_views_post_render(&$view, &$output, &$cache) {
           'type' => 'file',
           'scope' => 'footer'
         ));
+    $last_name_map = _people_profiles_create_last_name_letter_map();
+    drupal_add_js(array(
+      'people_profiles' => array(
+        'lastNameMap' => $last_name_map,
+      )), 'setting');
   }
+
 }
 
 function _people_profiles_create_last_name_letter_map() {
