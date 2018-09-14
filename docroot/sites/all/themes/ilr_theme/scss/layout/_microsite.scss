@@ -1,4 +1,4 @@
-body.microsite.subsite-front {
+body.microsite {
   #main {
     @include layout--full-width-grid;
   }
@@ -30,5 +30,10 @@ body.microsite.subsite-front {
       grid-column-start: 1 / -1;
       text-align: center;
     }
+  }
+
+  .microsite-schedule {
+    max-width: $section-max-width;
+    margin: 0 auto;
   }
 }
