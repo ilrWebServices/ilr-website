@@ -196,14 +196,15 @@ class TaggedContentBean extends BeanPlugin {
     $exclusive = ($this->bean->query_type == 'exclusive') ? TRUE : FALSE;
 
     $tids = $this->getTaxonomyIds();
-
-    if ($exclusive){
-      foreach ($tids as $tid) {
-        $query->fieldCondition('field_tags', 'tid', $tid, '=');
+    if (!empty($tids)) {
+      if ($exclusive) {
+        foreach ($tids as $tid) {
+          $query->fieldCondition('field_tags', 'tid', $tid, '=');
+        }
       }
-    }
-    else {
-      $query->fieldCondition('field_tags', 'tid', $tids, 'IN');
+      else {
+        $query->fieldCondition('field_tags', 'tid', $tids, 'IN');
+      }
     }
 
     // Determine if the query should respect "sticky" status
