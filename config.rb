@@ -1,7 +1,7 @@
 # Compass configuration file
 
 # Project specific
-theme_path = 'docroot/sites/all/themes/open_frame'
+theme_path = 'docroot/sites/all/themes/ilr_theme'
 
 # Require any additional compass plugins here.
 require 'modular-scale'
