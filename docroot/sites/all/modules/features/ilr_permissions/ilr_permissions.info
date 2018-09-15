@@ -280,7 +280,6 @@ features[user_permission][] = edit terms in areas_of_expertise
 features[user_permission][] = edit terms in tags
 features[user_permission][] = flush caches
 features[user_permission][] = generate features
-features[user_permission][] = import sdc_course_importer feeds
 features[user_permission][] = import wysiwyg templates
 features[user_permission][] = manage features
 features[user_permission][] = manage redhen contacts

@@ -2313,16 +2313,6 @@ function ilr_permissions_user_default_permissions() {
     'module' => 'features',
   );
 
-  // Exported permission: 'import sdc_course_importer feeds'.
-  $permissions['import sdc_course_importer feeds'] = array(
-    'name' => 'import sdc_course_importer feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'course admin' => 'course admin',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: 'import wysiwyg templates'.
   $permissions['import wysiwyg templates'] = array(
     'name' => 'import wysiwyg templates',
