@@ -14,6 +14,7 @@
 
   #content-bottom .block-bean {
     margin-top: 0 !important;
+    margin-bottom: .25em !important;
   }
 }
 
@@ -209,6 +210,7 @@
 
   &--sls2018 {
     text-align: left;
+    padding-top: 2em;
 
     li {
       @include medium {
@@ -271,6 +273,47 @@
     }
   }
 }
+
+.microsite-sell {
+  background-color: $cornell-red;
+  text-align: center;
+  padding-top: 1em;
+
+  h3 {
+    color: white;
+    font-size: 2em;
+    line-height: 1;
+    margin-bottom: .25em;
+
+    @include large {
+      font-size: 3em;
+    }
+  }
+
+  p {
+    color: white;
+    margin: 0 auto;
+    font-size: 1.5em;
+    font-weight: 400;
+    line-height: 1;
+
+    @include large {
+      font-size: 2.5em;
+    }
+
+    a.button--sell {
+      color: white;
+      border-color: white;
+      padding: .5rem 1rem;
+      border: 10px solid #ffffff;
+      line-height: 4;
+      font-weight: 400;
+    }
+  }
+
+
+}
+
 // body.microsite {
 //   &.sports-leadership {
 //     #page {
