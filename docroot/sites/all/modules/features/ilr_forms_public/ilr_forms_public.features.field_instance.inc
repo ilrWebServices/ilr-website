@@ -3675,7 +3675,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_tickets_for_aa_members',
-    'label' => 'Alumni tickets',
+    'label' => 'Number of tickets for Cornell alumni',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -3740,7 +3740,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_tickets_for_non_members',
-    'label' => 'Guest tickets',
+    'label' => 'Number of tickets for general public',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -7154,7 +7154,6 @@ function ilr_forms_public_field_default_field_instances() {
   t('Address line 2 or District');
   t('Address type');
   t('Alternate start date');
-  t('Alumni tickets');
   t('Attendee list markup');
   t('Audio visual equipment');
   t('Brief description (including # of potential participants)');
@@ -7187,7 +7186,6 @@ function ilr_forms_public_field_default_field_instances() {
   t('First name');
   t('First name (2nd participant)');
   t('For single-day events, please enter the same dates and times for both start and end date.');
-  t('Guest tickets');
   t('Home phone');
   t('How did you hear about the academy?');
   t('How will you be paying?');
@@ -7206,6 +7204,8 @@ function ilr_forms_public_field_default_field_instances() {
   t('Middle / former name');
   t('Name for name tag');
   t('Note this email will be used in all follow-up academy communication, including the payment confirmation.');
+  t('Number of tickets for Cornell alumni');
+  t('Number of tickets for general public');
   t('Organization');
   t('Parent / Guardian email');
   t('Payment amount');

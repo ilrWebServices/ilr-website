@@ -95,13 +95,15 @@ function ilr_forms_public_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Reservations',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-reservations field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-reservations field-group-fieldset',
+        'description' => '$500 for general public.
+$250 for Cornell alumni and their guest.',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $field_groups['group_reservations|entityform|ilr_sports_summit_event_registra|form'] = $field_group;
