@@ -82,4 +82,21 @@
       background-image: url('../images/lara-skinner.jpg');
     }
   }
+
+  &--sls2018 {
+    min-height: 390px;
+
+    .action-callout__image {
+      background-image: url('../images/grand_hyatt.jpg');
+    }
+
+    .action-callout__tagline {
+      @include large {
+        font-size: 2.2rem;
+        max-width: 60%;
+      }
+    }
+  }
 }
+
+

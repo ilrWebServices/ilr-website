@@ -11,6 +11,10 @@
       @include adjust-font-size-to(3rem);
     }
   }
+
+  #content-bottom .block-bean {
+    margin-top: 0 !important;
+  }
 }
 
 .microsite-marquee {
@@ -21,6 +25,15 @@
     p {
       max-width: 100%;
     }
+
+    &--sls2018 {
+      max-height: 300px;
+    }
+  }
+
+  &__button {
+    color: #ffffff !important;
+    border-color: #ffffff;
   }
 
   &__content {
@@ -54,6 +67,10 @@
 
         padding-right: $triple-space;
       }
+    }
+
+    &--sls2018 {
+      margin-top: 0;
     }
   }
 }
@@ -187,6 +204,16 @@
 
     @include medium {
       display: inline;
+    }
+  }
+
+  &--sls2018 {
+    text-align: left;
+
+    li {
+      @include medium {
+        display: list-item;
+      }
     }
   }
 }
