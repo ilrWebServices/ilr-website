@@ -4,3 +4,57 @@
     width: 100%;
   }
 }
+
+// 2018 sports leadership summit
+body.sports-leadership {
+  &.page-node-287301 {
+    background-image: url(../images/grand_hyatt.jpg);
+    background-repeat: no-repeat;
+    background-size: 200% auto;
+
+    @include medium {
+      background-image: url(../images/banner-grand-hyatt.jpg);
+      background-size: 150% auto;
+    }
+
+    @include xl {
+      background-size: 100% auto;
+    }
+
+    header {
+      background: transparent;
+
+      .logo-wrapper {
+        margin: 0;
+      }
+
+      .cornell-seal__link {
+        top: -4rem;
+      }
+    }
+
+    #page {
+      margin: 0;
+    }
+  }
+
+  header {
+    margin: 0;
+    background: $cornell-red;
+
+    #block-ilr-mega-menu-ilr-mega-menu,
+    .subsite-header {
+      @include hidden;
+    }
+  }
+
+  .jPanelMenu-panel {
+    background: transparent;
+  }
+
+  &.page-node-279651 {
+    header {
+      background: $color-video-dark-blue;
+    }
+  }
+}

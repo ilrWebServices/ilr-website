@@ -43,7 +43,11 @@ function ilr_sub_sites_block_view($delta = '') {
   $menu_name = _ilr_sub_sites_get_menu_name();
   // If custom logo, add the seal
   if (_ilr_sub_sites_get_site_logo($menu_name, $subsite_name)) {
-    $seal = file_create_url(drupal_get_path('theme', 'ilr_theme') . "/images/logos/cornell-seal.svg");
+    $reversed = ilr_sub_sites_use_reverse_seal($menu_name);
+    $seal_path = ($reversed)
+      ? "/images/logos/cornell-seal--reversed.svg"
+      : "/images/logos/cornell-seal.svg";
+    $seal = file_create_url(drupal_get_path('theme', 'ilr_theme') . $seal_path);
     $block['content'] .= '<a href="https://cornell.edu" class="cornell-seal__link"><img src="'.$seal.'" alt="Link to Cornell University" /></a>';
   }
 
@@ -516,6 +520,7 @@ function _ilr_sub_sites_get_site_logo($menu_name, $subsite_name) {
     'worker-institute' => 'ilr-worker-institute.svg',
     'ilr-at-70' => 'logo-ilr-at-70',
     'sustainable-labor-practices' => 'logo-new-conversations',
+    'sports-leadership' => 'ILR-wordmark-reversed.svg',
   );
   if (array_key_exists($menu_name, $filenames)) {
     return $filenames[$menu_name];
@@ -590,4 +595,11 @@ function _ilr_sub_sites_get_cohort($name) {
     }
   }
   return NULL;
+}
+
+function ilr_sub_sites_use_reverse_seal($menu_name) {
+  if ($menu_name == 'sports-leadership') {
+    return TRUE;
+  }
+  return false;
 }

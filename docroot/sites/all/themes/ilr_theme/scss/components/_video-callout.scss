@@ -2,7 +2,7 @@
   @include padding-leader(1);
   @include clearfix;
 
-  background-color: #002A48;
+  background-color: $color-video-dark-blue;
 
   &__content {
     text-align: center;
