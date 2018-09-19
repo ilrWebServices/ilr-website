@@ -134,6 +134,7 @@ features[variable][] = node_submitted_sdc_faculty
 features[variable][] = pathauto_node_sdc_class_pattern
 features[variable][] = pathauto_node_sdc_course_pattern
 features[variable][] = pathauto_node_sdc_faculty_pattern
+features[variable][] = pathauto_taxonomy_term_course_program_pattern
 features[views_view][] = course_manual_listings
 features[views_view][] = courses_with_missing_metadata
 features[views_view][] = ilr_filtered_courses
