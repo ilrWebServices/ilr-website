@@ -24,10 +24,6 @@ body.sports-leadership {
     header {
       background: transparent;
 
-      .logo-wrapper {
-        margin: 0;
-      }
-
       .cornell-seal__link {
         top: -4rem;
       }
@@ -45,6 +41,10 @@ body.sports-leadership {
     #block-ilr-mega-menu-ilr-mega-menu,
     .subsite-header {
       @include hidden;
+    }
+
+    .logo-wrapper a img {
+      min-width: 210px;
     }
   }
 
