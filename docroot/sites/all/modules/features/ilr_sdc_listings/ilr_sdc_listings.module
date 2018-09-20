@@ -488,7 +488,9 @@ function _ilr_sdc_listings_get_course_notification_content($class_nid) {
 
 function _ilr_sdc_listings_get_class_detail_markup_for_email($class) {
   $class_wrapper = ilr_get_node_wrapper($class);
-  $city = $class_wrapper->field_address->locality->value();
+  $city = (!empty($node_wrapper->field_address->value()))
+    ? $class_wrapper->field_address->locality->value()
+    : '';
   $state = $class_wrapper->field_address->administrative_area->value();
   $markup = 'DATE: '._ilr_sdc_listings_get_class_datespan($class).'<br>';
   $markup .= 'TIME: '._ilr_sdc_listings_get_class_timespan($class).'<br>';
@@ -1150,8 +1152,11 @@ function _ilr_sdc_listings_is_ondemand($node) {
 function _ilr_sdc_listings_is_online($node) {
   $node_wrapper = ilr_get_node_wrapper($node);
   if ($node->type == 'sdc_class') {
-    $city = $node_wrapper->field_address->locality->value();
-    $city = drupal_strtolower(str_replace('-', '', $city));
+    $city = '';
+    if (!empty($node_wrapper->field_address->value())) {
+      $city = $node_wrapper->field_address->locality->value();
+      $city = drupal_strtolower(str_replace('-', '', $city));
+    }
     return $node_wrapper->field_online_class->value() == 1 || $city == 'online';
   }
   elseif ($node->type == 'sdc_course') {
@@ -1807,12 +1812,14 @@ function _ilr_sdc_listings_generate_class_time_location_markup($class_node) {
   $markup = '';
   $wrapper = ilr_get_node_wrapper($class_node);
   $markup .= _ilr_sdc_listings_format_class_date_and_time($class_node);
-  $city = $wrapper->field_address->locality->value();
-  $state = $wrapper->field_address->administrative_area->value();
-  if (!empty($city)) {
-    $markup .= (!_ilr_sdc_listings_is_online($class_node))
-      ? "<span class='location'>$city, $state</span>"
-      : '';
+  if (!empty($city = $wrapper->field_address->value())) {
+    $city = $wrapper->field_address->locality->value();
+    $state = $wrapper->field_address->administrative_area->value();
+    if (!empty($city)) {
+      $markup .= (!_ilr_sdc_listings_is_online($class_node))
+        ? "<span class='location'>$city, $state</span>"
+        : '';
+    }
   }
   return $markup;
 }
@@ -2399,9 +2406,13 @@ function _ilr_sdc_listings_remove_overflow_sessions($classes) {
   $wrappers = $possible_duplicates = $non_duplicates = array();
   foreach ($classes as $nid => $class) {
     $wrappers[$nid] = ilr_get_node_wrapper($class);
+    // There should never be duplicate 'online' classes, but we need to check nonetheless
+    $city = (!empty($class_wrapper->field_address->value()))
+      ? $wrappers[$nid]->field_address->locality->value()
+      : 'online';
     $unique_identifier =
       $wrappers[$nid]->field_class_dates->value()['value'] .
-      $wrappers[$nid]->field_address->locality->value();
+      $city;
 
     // Since array_unique (below) returns the first instance, there are cases
     // where the returned key would be the full course. We avoid that by checking

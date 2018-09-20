@@ -396,7 +396,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_class_id',
     'label' => 'Class id',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
