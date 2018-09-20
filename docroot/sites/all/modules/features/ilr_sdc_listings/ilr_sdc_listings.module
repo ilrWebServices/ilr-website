@@ -2257,10 +2257,12 @@ function _ilr_sdc_listings_get_active_locations() {
   $class_nids = _ilr_sdc_listings_get_upcoming_classes();
   foreach ($class_nids as $key => $nid) {
     $wrapper = ilr_get_node_wrapper($nid);
-    $city = $wrapper->field_address->locality->value();
-    $state = $wrapper->field_address->administrative_area->value();
-    if (!in_array($city, $locations) && strpos($city, 'On-Line') !== 0) {
-      $locations[$city] = $city . ', ' . $state;
+    if (!empty($wrapper->field_address->value())) {
+      $city = $wrapper->field_address->locality->value();
+      $state = $wrapper->field_address->administrative_area->value();
+      if (!in_array($city, $locations) && strpos($city, 'On-Line') !== 0) {
+        $locations[$city] = $city . ', ' . $state;
+      }
     }
   }
   return $locations;
