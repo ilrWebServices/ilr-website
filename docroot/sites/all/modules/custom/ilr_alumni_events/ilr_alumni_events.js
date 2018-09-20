@@ -59,10 +59,10 @@
               if (memberCount) {
                 var diffCount = nonMemberCount - memberCount;
                 if (diffCount <= 0) { // All non-members get discount
-                  content = nonMemberCount + ' tickets x $' + memberPrice + ' = $'+ nonMemberCount * memberPrice + ' <br />';
+                  content = nonMemberCount + ' ticket(s) x $' + memberPrice + ' = $'+ nonMemberCount * memberPrice + ' <br />';
                 }
                 else { // Some get discount, some pay higher rate
-                  content = memberCount + ' tickets x $' + memberPrice + ' = $'+ getMemberCost() + ' <br />';
+                  content = memberCount + ' ticket(s) x $' + memberPrice + ' = $'+ getMemberCost() + ' <br />';
                   content += diffCount + ' ticket(s) x $' + nonMemberPrice+' = $'+ diffCount * nonMemberPrice;
                 }
               }
@@ -79,7 +79,13 @@
 
         function updateTotalPrice() {
           cost = getTotalCost();
-          content = (cost == 0) ? 'Free' : '$' + cost;
+          if (memberCount < 1 && nonMemberCount < 1) {
+            content = 'Please choose tickets';
+          }
+          else {
+            content = (cost == 0) ? 'Free' : '$' + cost;
+          }
+
           $('span.total-cost').html(content);
         }
 

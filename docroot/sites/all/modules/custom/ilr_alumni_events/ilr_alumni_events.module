@@ -254,7 +254,8 @@ function _ilr_alumni_events_get_billing_address() {
  */
 function _ilr_alumni_events_form_validate(&$form, &$form_state) {
   $entityform_wrapper = entity_metadata_wrapper('entityform', $form_state['entityform']);
-  if (empty(_ilr_alumni_events_ticket_details($entityform_wrapper))) {
+  $details = _ilr_alumni_events_ticket_details($entityform_wrapper);
+  if (empty($details['total'])) {
     form_set_error('field_tickets_for_aa_members', 'Please select your tickets.');
   }
 }
