@@ -1946,7 +1946,7 @@ function forms_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Name for Diploma',
+    'label' => 'Name for Commencement Ceremony',
     'weight' => '1',
     'children' => array(
       0 => 'field_full_name',
@@ -1957,7 +1957,7 @@ function forms_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Name for Diploma',
+      'label' => 'Name for Commencement Ceremony',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => 'group-name-for-diploma field-group-fieldset',

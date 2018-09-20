@@ -27319,7 +27319,7 @@ function forms_field_default_field_instances() {
     'bundle' => 'undergrad_appl_for_graduation',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '(If this is a different spelling than what appears on your student center, please visit the Office of the University Registrar in B7 Day hall to have it officially changed.)',
+    'description' => '(<strong>If you wish to have your name changed on your diploma,</strong> please visit the Office of the University Registrar website at: <a href=" https://registrar.cornell.edu/service-resources/names-and-name-changes">https://registrar.cornell.edu/service-resources/names-and-name-changes</a> for more information)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -27350,6 +27350,7 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_full_name_additional',
     'label' => 'Name, if different from above',
     'required' => 1,
@@ -27462,8 +27463,9 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_name_correct_for_diploma',
-    'label' => 'Name as it should be spelled on your diploma',
+    'label' => 'Name as it should be displayed in commencement programs',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -29670,6 +29672,7 @@ function forms_field_default_field_instances() {
   t(' I certify that I have read the above information and that I have completed my 7th semester check.');
   t(' Semester requesting assistantship');
   t(' Send an ILR Viewbook, which includes an overview of the undergraduate program');
+  t('(<strong>If you wish to have your name changed on your diploma,</strong> please visit the Office of the University Registrar website at: <a href=" https://registrar.cornell.edu/service-resources/names-and-name-changes">https://registrar.cornell.edu/service-resources/names-and-name-changes</a> for more information)');
   t('(Choose "other" at the very bottom if not applicable.)');
   t('(If this is a different spelling than what appears on your student center, please visit the Office of the University Registrar in B7 Day hall to have it officially changed.)');
   t('(for Cornell graduates)');
@@ -29854,6 +29857,7 @@ function forms_field_default_field_instances() {
   t('Mobile phone (sponsor)');
   t('Name');
   t('Name (billing)');
+  t('Name as it should be displayed in commencement programs');
   t('Name as it should be spelled on your diploma');
   t('Name currently on record');
   t('Name for name tag');
