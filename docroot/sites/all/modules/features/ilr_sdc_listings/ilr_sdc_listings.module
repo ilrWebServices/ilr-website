@@ -1820,10 +1820,14 @@ function _ilr_sdc_listings_generate_class_time_location_markup($class_node) {
 function _ilr_sdc_listings_generate_deadline_markup($class_node) {
   $markup = '';
   $wrapper = ilr_get_node_wrapper($class_node);
-  $deadline = $wrapper->field_registration_end_date->value();
-  $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class_node);
-  $deadline = $datetimes['start'];
-  $deadline = $deadline->format('M j');
+  if ($deadline = $wrapper->field_registration_end_date->value()){
+    $deadline = date("M j", $deadline);
+  }
+  if (empty($deadline)) { // This shouldn't happen, @see _ilr_sdc_listings_has_registration_deadline()
+    $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class_node);
+    $deadline = $datetimes['start'];
+    $deadline = $deadline->format('M j');
+  }
   $markup = '<span class="deadline">Register by '.$deadline.'</span>';
   return $markup;
 }
