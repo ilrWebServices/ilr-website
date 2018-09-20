@@ -2407,7 +2407,7 @@ function _ilr_sdc_listings_remove_overflow_sessions($classes) {
   foreach ($classes as $nid => $class) {
     $wrappers[$nid] = ilr_get_node_wrapper($class);
     // There should never be duplicate 'online' classes, but we need to check nonetheless
-    $city = (!empty($class_wrapper->field_address->value()))
+    $city = (!empty($wrappers[$nid]->field_address->value()))
       ? $wrappers[$nid]->field_address->locality->value()
       : 'online';
     $unique_identifier =
