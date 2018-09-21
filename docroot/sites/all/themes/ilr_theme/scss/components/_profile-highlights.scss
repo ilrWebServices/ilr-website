@@ -1,14 +1,14 @@
 @mixin highlighted-profile {
   @include trailer(2);
 
+  color: white;
+  background: $cornell-red;
+
   @include medium {
     display: grid;
     grid-template-columns: 33% 62%;
     grid-gap: 5%;
   }
-
-  color: white;
-  background: $cornell-red;
 
   * {
     color: white;
@@ -42,6 +42,7 @@
   }
 
   .group-highlighted-content {
+    padding: 0 $space $space;
     grid-column-start: 2;
   }
 
