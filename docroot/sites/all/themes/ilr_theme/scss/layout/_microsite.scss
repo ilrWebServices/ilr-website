@@ -22,7 +22,7 @@ body.microsite {
       }
 
       .microsite-moderators {
-        @include four-column-grid;
+        @include person-grid;
       }
     }
 

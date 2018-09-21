@@ -1,0 +1,9 @@
+.person-grid,
+.honeycomb-grid { // legacy
+  @include person-grid(2);
+
+  &--modal {
+    cursor: pointer;
+  }
+}
+

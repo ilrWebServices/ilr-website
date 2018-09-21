@@ -422,7 +422,7 @@
 
   background-color: $bg-color;
 
-  h2, h3, h4 {
+  h2, h3, h4, .field-type-text {
     margin: 0;
     color: $white;
     padding-left: $space;
@@ -434,6 +434,14 @@
       font-size: 0.8rem;
       letter-spacing: 0;
       padding-top: $half-space;
+
+      &.file-info {
+        display: inline-block;
+      }
+    }
+
+    a {
+      @include set-link($white, true, $white);
     }
 
     @include large {
@@ -453,6 +461,16 @@
     padding-top: $space;
     padding-bottom: $half-space;
     font-weight: 300;
+  }
+
+  .field-name-field-image {
+    margin-top: 0;
+  }
+
+  .field-type-text {
+    @include trailer(1);
+
+    line-height: 1.3;
   }
 }
 
@@ -601,6 +619,7 @@
   h3                                      { order: 2; }
   h2                                      { order: 3; }
   .field-type-text-with-summary           { order: 4; }
+  .field-type-text                        { order: 4; }
   ul.links                                { order: 5; }
   .field-name-field-full-name             { order: 6; }
   ul                                      { order: 7; }

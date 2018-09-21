@@ -159,6 +159,18 @@
   @include four-column;
 }
 
+@mixin person-grid($columns: 4) {
+  @if $columns == 2 {
+    @include two-column-grid;
+  }
+  @elseif $columns == 3 {
+    @include three-column-grid;
+  }
+  @else {
+    @include four-column-grid;
+  }
+}
+
 @mixin layout--standard-grid() {
   @include large {
     display: grid;
