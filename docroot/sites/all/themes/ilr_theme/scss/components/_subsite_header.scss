@@ -101,9 +101,36 @@
   }
 
   &.sustainable-labor-practices #header-region {
-    background-color: $dark-blue;
+    @include full-width;
+
+    padding: $space;
+    background-color: #222534;
+
+    @include medium {
+      padding: $double-space;
+    }
+
+    .region-header {
+      @include wrapper;
+    }
+
     .subsite-header {
-      width: 521px !important;
+      $logo-width: 565px;
+      $logo-height: 89px;
+      height: $logo-height;
+      width: $logo-width;
+      max-width: 100%;
+
+      background: url(../images/logos/logo-new-conversations.svg) no-repeat;
+      background-size: $logo-width / 2 $logo-height / 2;
+
+      @include small {
+        background-size: 100%;
+      }
+
+      h2 {
+        @include hidden;
+      }
     }
     a, a:visited, a:active {
       color: $gray-light;

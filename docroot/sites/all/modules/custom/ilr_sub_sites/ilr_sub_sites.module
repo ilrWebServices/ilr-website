@@ -518,8 +518,8 @@ function _ilr_sub_sites_get_site_logo($menu_name, $subsite_name) {
     'smithers-institute' => 'ilr-smithers.svg',
     // 'uli' => 'ilr-uli.svg', // Worker-institute cohort
     'worker-institute' => 'ilr-worker-institute.svg',
-    'ilr-at-70' => 'logo-ilr-at-70',
-    'sustainable-labor-practices' => 'logo-new-conversations',
+    'ilr-at-70' => 'logo-ilr-at-70.svg',
+    // 'sustainable-labor-practices' => 'logo-new-conversations.svg',
     'sports-leadership' => 'ILR-wordmark-reversed.svg',
   );
   if (array_key_exists($menu_name, $filenames)) {

@@ -1,0 +1,21 @@
+//this file is for one-off pages
+body.node-type-basic-page.page-node-264981 {
+  #main {
+    @include layout--full-width-content-grid;
+
+    #content {
+      .paragraphs-items-field-para-main-page-content,
+      .paragraphs-item-just-text {
+        max-width: 100%;
+
+        .person-grid {
+          @include three-column-grid;
+
+          a {
+            background: $black;
+          }
+        }
+      }
+    }
+  }
+}

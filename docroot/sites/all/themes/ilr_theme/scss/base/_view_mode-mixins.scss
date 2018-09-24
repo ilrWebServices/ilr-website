@@ -465,6 +465,11 @@
 
   .field-name-field-image {
     margin-top: 0;
+
+    img {
+      width: 100%;
+      margin: 0 !important;
+    }
   }
 
   .field-type-text {
