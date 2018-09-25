@@ -100,8 +100,9 @@ function ilr_forms_public_field_group_info() {
         'required_fields' => 1,
         'id' => '',
         'classes' => 'group-reservations field-group-fieldset',
-        'description' => '$500 for general public.
-$250 for Cornell alumni and their guest.',
+        'description' => '<strong>$500</strong> for general public.<br>
+<strong>$250</strong> for Cornell alumni.<br>
+Each Cornell alum can purchase one additional guest ticket at the discounted price of <strong>$250</strong>.<br>',
       ),
       'formatter' => 'collapsible',
     ),

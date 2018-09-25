@@ -3701,7 +3701,7 @@ function ilr_forms_public_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Each ILR alumn can bring up to 1 guest at the alumni price',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3740,7 +3740,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_tickets_for_non_members',
-    'label' => 'Number of tickets for general public',
+    'label' => 'Number of tickets for general public (or guests of Cornell alumni at discounted rate)',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
