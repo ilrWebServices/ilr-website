@@ -400,4 +400,5 @@
   @include set-link($underline: true, $underline-color: $cornell-red);
 
   font-weight: 600;
+  display: inline-block;
 }

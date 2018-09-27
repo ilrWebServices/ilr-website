@@ -286,6 +286,38 @@ function people_profiles_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_profile_teaser_content|node|people_profile|teaser';
+  $field_group->group_name = 'group_profile_teaser_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'people_profile';
+  $field_group->mode = 'teaser';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Content',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_email',
+      1 => 'field_phone',
+      2 => 'field_working_title',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Content',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'people-profile__content',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_profile_teaser_content|node|people_profile|teaser'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_related_resources|node|people_profile|default';
   $field_group->group_name = 'group_related_resources';
   $field_group->entity_type = 'node';
@@ -348,6 +380,7 @@ function people_profiles_field_group_info() {
   t('Activity Insight');
   t('Basic');
   t('Contact');
+  t('Content');
   t('Expertise');
   t('Highlighted');
   t('Main Content');

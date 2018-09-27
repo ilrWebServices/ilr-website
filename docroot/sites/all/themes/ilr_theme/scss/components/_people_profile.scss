@@ -1,6 +1,5 @@
 article.node-people-profile {
   .group-highlighted {
-    @include trailer(2);
     background: white;
     &.no-image { // See people_profiles_field_group_build_pre_render_alter()
       @include padding-trailer(2);
@@ -53,6 +52,11 @@ article.node-people-profile {
     }
     a.readmore-js-toggle {
       @include readmore-js-link; // see _helpers.scss
+      @include leader(1);
+    }
+
+    .field-label:not(:first-child) {
+      @include leader(2);
     }
   }
 
@@ -64,7 +68,7 @@ article.node-people-profile {
 
     .field-label { // Sidebar headings
       margin-bottom: .5em;
-      @include leader(1);
+      @include leader(2);
     }
     &.toggleable .field-label:not(.post-toggle) {
       @include leader(0); // post-toggle added by js

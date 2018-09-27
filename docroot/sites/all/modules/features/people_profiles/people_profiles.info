@@ -32,6 +32,7 @@ features[field_group][] = group_main_content|node|people_profile|default
 features[field_group][] = group_people_profile_tabs|node|people_profile|form
 features[field_group][] = group_profile_highlighted|node|people_profile|default
 features[field_group][] = group_profile_sidebar|node|people_profile|default
+features[field_group][] = group_profile_teaser_content|node|people_profile|teaser
 features[field_group][] = group_related_resources|node|people_profile|default
 features[field_group][] = group_title_and_focus|node|people_profile|default
 features[field_instance][] = node-people_profile-field_address_line_1

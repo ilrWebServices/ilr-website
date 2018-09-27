@@ -89,9 +89,13 @@
   grid-template-columns: 25% 70%;
   grid-template-rows: repeat(4, auto);
   grid-gap: 5%;
-  padding: 1rem;
+  padding: $space * 0.7;
   background: lighten($warm-grey, 13%);
   flex-direction: row;
+
+  @include medium {
+    padding: $space;
+  }
 
   .field-type-image,
   .field-name-field-youtube-video,

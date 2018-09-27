@@ -101,7 +101,7 @@ function _people_profiles_set_title($wrapper) {
  */
 function people_profiles_preprocess_node(&$variables) {
   if($variables['type'] == 'people_profile') {
-    $has_fax = count($variables['field_fax']);
+    $has_fax = !empty($variables['content']['field_fax']);
     if ($has_fax) {
       $variables['content']['field_fax'][0]['#markup'] = '(f) ' . $variables['content']['field_fax'][0]['#markup'];
     }
