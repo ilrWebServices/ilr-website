@@ -1446,7 +1446,7 @@ To keep two words together, use an underscore instead of a space (e.g., keep_tog
         'settings' => array(
           'field_formatter_label' => '',
           'image_link' => '',
-          'image_style' => 'focussed_hero',
+          'image_style' => 'focussed_main_image',
         ),
         'type' => 'image',
         'weight' => 0,
