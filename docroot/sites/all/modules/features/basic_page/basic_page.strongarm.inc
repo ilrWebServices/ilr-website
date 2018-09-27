@@ -44,7 +44,7 @@ function basic_page_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'preview' => array(
         'custom_settings' => TRUE,
@@ -87,6 +87,10 @@ function basic_page_strongarm() {
           ),
           'full' => array(
             'weight' => '1',
+            'visible' => TRUE,
+          ),
+          'teaser' => array(
+            'weight' => '0',
             'visible' => TRUE,
           ),
         ),
