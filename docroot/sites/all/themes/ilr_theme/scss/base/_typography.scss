@@ -485,7 +485,9 @@ img, object, video {
     width: auto;
   }
 
-  a & {
+  a &,
+  p &,
+  li & {
     width: auto;
   }
 }
