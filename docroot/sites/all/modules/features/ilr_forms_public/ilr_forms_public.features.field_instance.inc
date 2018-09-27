@@ -3740,7 +3740,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_tickets_for_non_members',
-    'label' => 'Number of tickets for general public (or guests of Cornell alumni at discounted rate)',
+    'label' => 'Number of tickets for general public (including guests of Cornell alumni at discounted rate)',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -7172,7 +7172,6 @@ function ilr_forms_public_field_default_field_instances() {
   t('Date of birth');
   t('Department/Organization');
   t('Describe any relevant sports leadership experience (managing, counseling, coaching etc.)');
-  t('Each ILR alumn can bring up to 1 guest at the alumni price');
   t('Email');
   t('Email (2nd participant)');
   t('Email address');
@@ -7205,7 +7204,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Name for name tag');
   t('Note this email will be used in all follow-up academy communication, including the payment confirmation.');
   t('Number of tickets for Cornell alumni');
-  t('Number of tickets for general public');
+  t('Number of tickets for general public (including guests of Cornell alumni at discounted rate)');
   t('Organization');
   t('Parent / Guardian email');
   t('Payment amount');
