@@ -488,7 +488,7 @@ function _ilr_sdc_listings_get_course_notification_content($class_nid) {
 
 function _ilr_sdc_listings_get_class_detail_markup_for_email($class) {
   $class_wrapper = ilr_get_node_wrapper($class);
-  $city = (!empty($node_wrapper->field_address->value()))
+  $city = (!empty($class_wrapper->field_address->value()))
     ? $class_wrapper->field_address->locality->value()
     : '';
   $state = $class_wrapper->field_address->administrative_area->value();
