@@ -28,7 +28,7 @@
       <h2>Get Updates</h2>
       <p>Sign up for notification of new workshop dates</p>
     </div>
-    <a class="button course follow" data-nid="<?php print $certificate_nid; ?>" alt="Sign me up for notifications of new courses in this certificate" title="Sign me up for notifications of new courses in this certificate">Sign Up<span class="course-title"> for notifications of <?php print $certificate_title; ?></span></a>
+    <a class="button course follow link" data-nid="<?php print $certificate_nid; ?>" alt="Sign me up for notifications of new courses in this certificate" title="Sign me up for notifications of new courses in this certificate">Notify me<span class="course-title"> about new courses in <?php print $certificate_title; ?></span></a>
   </div>
 
   <div class="contact-us">
