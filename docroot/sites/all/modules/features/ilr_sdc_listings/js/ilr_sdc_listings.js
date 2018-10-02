@@ -131,10 +131,10 @@ jQuery.fn.sortElements = (function(){
       };
 
       // This should open the modal
-      $('.button.course').click(function(){
+      $('.link.course').click(function(){
         var $nid = $(this).attr('data-nid');
         var $title = $(this).find('.course-title').text();
-        var $path = ($(this).hasClass('request-info'))
+        var $path = ($(this).hasClass('link--request-info'))
           ? '/course-interest/'
           : '/course-follow/';
         $path += $nid +'?layout=0&title=' + $title;
