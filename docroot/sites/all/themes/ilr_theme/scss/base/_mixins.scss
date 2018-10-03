@@ -289,8 +289,8 @@
   }
 }
 
-@mixin button($color: white, $background-color: $student-portrait-color, $hover-color: $spotlight-color) {
-  @include framed--button(6px);
+@mixin button($color: white, $bg-color: transparent, $hover-color: $spotlight-color) {
+  @include framed--button($width: 6px, $background-color: $bg-color);
 
   span {
     position: absolute;

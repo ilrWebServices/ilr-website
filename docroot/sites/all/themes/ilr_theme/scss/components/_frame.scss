@@ -1,7 +1,7 @@
 $frame-width: 20px;
 
-@mixin framed--button($width: 10px, $link-color: $black, $frame-color: $cornell-red) {
-  @include non-framed-button($width, $link-color, $frame-color);
+@mixin framed--button($width: 10px, $link-color: $black, $frame-color: $cornell-red, $background-color: transparent) {
+  @include non-framed-button($width, $link-color, $frame-color, $background-color);
   // On hold
   // @include rhythm(1);
   // border: none;
@@ -28,7 +28,7 @@ $frame-width: 20px;
   // }
 }
 
-@mixin non-framed-button($width: 10px, $link-color: $black, $frame-color: $cornell-red) {
+@mixin non-framed-button($width: 10px, $link-color: $black, $frame-color: $cornell-red, $background-color: transparent) {
   @include rhythm(1);
   cursor: pointer;
   border: $width / 2  solid $frame-color;
@@ -41,7 +41,7 @@ $frame-width: 20px;
   position: relative;
   overflow: hidden;
   margin-right: $space;
-  background: $white;
+  background: $background-color;
   height: auto;
 
   @include large {

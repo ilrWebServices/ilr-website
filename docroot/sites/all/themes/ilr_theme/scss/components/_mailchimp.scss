@@ -79,7 +79,7 @@ body.not-front {
 
   // #mc-embedded-subscribe {clear:both; width:auto; display:block; margin:1em 0 1em 5%;}
   #mc-embedded-subscribe {
-    @include button;
+    @include button($bg-color: $white);
     @include rhythm(1);
   }
   #num-subscribers {font-size:1.1em;}
