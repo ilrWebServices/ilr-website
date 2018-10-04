@@ -86,3 +86,23 @@ function _ilr_field_bases_format_social_links_as_icons(&$variables) {
   }
   $variables['items'][0]['#element']['attributes']['title'] = $title_attr;
 }
+
+/**
+ * Sets the allowed_values_function for $field to $allowed_values_function
+ */
+function _ilr_field_bases_set_allowed_values_function($field, $function) {
+  if (!db_table_exists('field_data_' . $field)) {
+    $out = array(
+      '#abort' => array(
+        'success' => FALSE,
+        'query' => 'The field_data_' . $field .' table doesn\'t exist yet, which likely means that the field hasn\'t been created yet and/or a feature hasn\'t been reverted yet (which needs to happen before this update can run).'
+      )
+    );
+    return $out;
+  }
+
+  $target_field = field_info_field($field);
+  unset($target_field['settings']['allowed_values']);
+  $target_field['settings']['allowed_values_function'] = $function;
+  field_update_field($target_field);
+}
