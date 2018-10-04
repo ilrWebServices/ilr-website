@@ -8834,6 +8834,432 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-graduate_student_request_for_tea-field_graduate_institution_and_d'.
+  $field_instances['entityform-graduate_student_request_for_tea-field_graduate_institution_and_d'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 16,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_graduate_institution_and_d',
+    'label' => 'Graduate institution and degree, if applicable',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-graduate_student_request_for_tea-field_prior_cornell_ra_experienc'.
+  $field_instances['entityform-graduate_student_request_for_tea-field_prior_cornell_ra_experienc'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 18,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_prior_cornell_ra_experienc',
+    'label' => 'Prior Cornell RA experience',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-graduate_student_request_for_tea-field_prior_non_cornell_ra_exper'.
+  $field_instances['entityform-graduate_student_request_for_tea-field_prior_non_cornell_ra_exper'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 19,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_prior_non_cornell_ra_exper',
+    'label' => 'Prior non-Cornell RA expereince',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-graduate_student_request_for_tea-field_prior_non_cornell_ta_exper'.
+  $field_instances['entityform-graduate_student_request_for_tea-field_prior_non_cornell_ta_exper'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 22,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_prior_non_cornell_ta_exper',
+    'label' => 'Prior non-Cornell TA experience (name of course and number of students overseen) ',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-graduate_student_request_for_tea-field_prior_ta_experience'.
+  $field_instances['entityform-graduate_student_request_for_tea-field_prior_ta_experience'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 21,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_prior_ta_experience',
+    'label' => 'Prior TA experience (name of course and number of students overseen)  ',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-graduate_student_request_for_tea-field_ra_preferred_faculty'.
+  $field_instances['entityform-graduate_student_request_for_tea-field_ra_preferred_faculty'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 17,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_ra_preferred_faculty',
+    'label' => 'Faculty member(s) to you wish to be assigned',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-graduate_student_request_for_tea-field_ta_preferred_courses'.
+  $field_instances['entityform-graduate_student_request_for_tea-field_ta_preferred_courses'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 20,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_ta_preferred_courses',
+    'label' => 'Course(s) you are interested in TAing',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_buttons',
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-graduate_student_request_for_tea-field_undergraduate_institution'.
+  $field_instances['entityform-graduate_student_request_for_tea-field_undergraduate_institution'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 15,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_undergraduate_institution',
+    'label' => 'Undergraduate institution',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-high_road_fellowship_application-field_address_line_1'.
   $field_instances['entityform-high_road_fellowship_application-field_address_line_1'] = array(
     'bundle' => 'high_road_fellowship_application',
@@ -14043,6 +14469,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Constraints on the dates for this FEX opportunity');
   t('Constraints on the dates for this WISP opportunity');
   t('Country');
+  t('Course(s) you are interested in TAing');
   t('Current employer (if applicable)');
   t('Date of birth');
   t('Date of birth (mm/dd/yyyy)');
@@ -14069,10 +14496,12 @@ function ilr_forms_students_field_default_field_instances() {
   t('FEX location');
   t('FEX/WISP Program year');
   t('Faculty member supervising your research');
+  t('Faculty member(s) to you wish to be assigned');
   t('First Name');
   t('First name');
   t('First name (supervisor)');
   t('For example: BS ILR, MILR, MPS, MS/PhD, MBA, etc.');
+  t('Graduate institution and degree, if applicable');
   t('Graduation year');
   t('Graduation year (supervisor)');
   t('High road accomodations');
@@ -14127,6 +14556,10 @@ function ilr_forms_students_field_default_field_instances() {
   t('Preferred dates for this WISP opportunity');
   t('Preferred first name (if different from above)');
   t('Preferred state or province');
+  t('Prior Cornell RA experience');
+  t('Prior TA experience (name of course and number of students overseen)  ');
+  t('Prior non-Cornell RA expereince');
+  t('Prior non-Cornell TA experience (name of course and number of students overseen) ');
   t('Program of interest');
   t('Provide a concise statement of the aims of your proposed research, the procedures you intend to follow, and your progress to date.');
   t('Provide an itemized estimate of the assistance you require.');
@@ -14163,6 +14596,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Title of reseach proposal');
   t('Transcript');
   t('Type of opportunity (select one or both)');
+  t('Undergraduate institution');
   t('Upload your resume');
   t('Upload your resume or CV');
   t('WISP dates constraints markup');
