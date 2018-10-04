@@ -25,7 +25,7 @@ class FreedompayPayment extends Entity {
   }
 
   public static function adminPage() {
-    $output = '';
+    $output = [];
     $paymentIds = FreedompayPayment::getPaymentIds();
     if (!empty($paymentIds)) {
       $output[] = FreedompayPayment::tableView($paymentIds);

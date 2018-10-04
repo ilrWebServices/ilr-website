@@ -85,7 +85,7 @@ class FreedompayInvoice extends Entity {
   }
 
   public static function adminPage() {
-    $output = '';
+    $output = [];
     $invoiceIds = FreedompayInvoice::getInvoiceIds();
     if (!empty($invoiceIds)) {
       $output[] = FreedompayInvoice::tableView($invoiceIds);
