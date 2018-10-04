@@ -145,6 +145,8 @@ function ilr_alumni_events_freedompay_checkout_payload_alter(&$payload, $order, 
  */
 function ilr_alumni_events_freedompay_transaction_total_alter(&$transaction_total, $order, $form_id) {
   if (ilr_alumni_events_is_alumni_payment_form($order->bundle)) {
+    // Set the wrapper to the referenced node
+    $node_wrapper = _ilr_alumni_events_node_wrapper(null, $order->form);
     $transaction_total = _ilr_alumni_events_get_total_cost();
   }
 }
@@ -322,7 +324,9 @@ function _ilr_alumni_events_get_member_cost() {
 
 function _ilr_alumni_events_get_non_member_cost() {
   $node_wrapper = _ilr_alumni_events_node_wrapper();
-  return $node_wrapper->field_aa_non_member_price->value();
+  return (!empty($node_wrapper->field_aa_non_member_price))
+    ? $node_wrapper->field_aa_non_member_price->value()
+    : 0;
 }
 
 /**
