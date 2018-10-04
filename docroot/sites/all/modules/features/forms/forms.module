@@ -214,6 +214,7 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
       $form[$key]['#access'] = FALSE;
     }
   }
+
   // Special processing of specific forms
   switch ($form_id) {
     case 'collective_bargaining_videos_entityform_edit_form':
@@ -273,6 +274,16 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
       $form['field_empl_recog_supp_text']['#access'] = FALSE;
       $form['field_supporter_1']['#access'] = FALSE;
       $form['field_supporter_2']['#access'] = FALSE;
+      break;
+
+    // Hide unwanted fields in graduate student request for teaching/research assist form
+    case 'graduate_student_request_for_tea_entityform_edit_form':
+      $form['field_minor_subject_s_']['#access'] = FALSE;
+      $form['field_ilr_department']['#access'] = FALSE;
+      $form['field_classes']['#access'] = FALSE;
+      $form['field_computer_skills']['#access'] = FALSE;
+      //$form['field_work_experience']['#access'] = FALSE;
+      $form['field_prior_appointments']['#access'] = FALSE;
       break;
   }
 }
