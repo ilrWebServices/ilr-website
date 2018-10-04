@@ -102,7 +102,7 @@ function freedompay_checkout_page() {
     if ($checkout_url = _freedompay_get_checkout_url()) {
       // First make sure that the transaction wasn't already completed
       if (freedompay_transaction_completed()) {
-        return _freedompay_complete_checkout();
+        return _freedompay_complete_checkout(TRUE);
       }
       elseif (freedompay_transaction_prepared()) {
         $markup .= _freedompay_get_message('checkout');
@@ -592,7 +592,7 @@ function freedompay_permission() {
  */
 function freedompay_success_page() {
   if (_freedompay_get_transaction_id() && !freedompay_payment_complete()) {
-    _freedompay_complete_checkout();
+    _freedompay_complete_checkout(TRUE);
   } // transid is missing or the payment was already completed
   else {
     if ($order = freedompay_order()) {
@@ -683,10 +683,11 @@ function freedompay_update_invoice($order, $data=array()) {
 /**
  * Completes the checkout process, including invoking hook_freedompay_order_complete().
  */
-function _freedompay_complete_checkout() {
+function _freedompay_complete_checkout($mark_paid = FALSE) {
   $order = freedompay_order();
-  if(freedompay_payment_required()) {
+  if ($mark_paid) {
     _freedompay_mark_invoice_paid($order);
+    // Create the payment
     $payment = freedompay_payment();
   }
   _freedompay_cookie_flush();
