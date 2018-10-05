@@ -130,6 +130,7 @@ features[field_base][] = field_course
 features[field_base][] = field_course_format_reference
 features[field_base][] = field_course_name
 features[field_base][] = field_course_number
+features[field_base][] = field_course_related_experience
 features[field_base][] = field_course_series
 features[field_base][] = field_course_sponsor_reference
 features[field_base][] = field_course_topic_reference

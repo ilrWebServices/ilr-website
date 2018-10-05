@@ -8834,6 +8834,61 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-graduate_student_request_for_tea-field_course_related_experience'.
+  $field_instances['entityform-graduate_student_request_for_tea-field_course_related_experience'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'i.e., if you selected ILRLR 2050 Labor Relations you could indicate you took a similar course at your undergraduate institution or worked for a union',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 23,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_course_related_experience',
+    'label' => 'Work/internship experience related to the course(s) you selected',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-graduate_student_request_for_tea-field_graduate_institution_and_d'.
   $field_instances['entityform-graduate_student_request_for_tea-field_graduate_institution_and_d'] = array(
     'bundle' => 'graduate_student_request_for_tea',
@@ -14611,6 +14666,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Will you attend the reception?');
   t('Will you be managing this student from day to day?');
   t('Will you host the students on the same day(s) or individually? (Individually makes the scheduling easier.)');
+  t('Work/internship experience related to the course(s) you selected');
   t('Would you have access to personal transportation?');
   t('Would you need housing accommodations?');
   t('Year');
@@ -14624,6 +14680,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('fex markup if chosen');
   t('fex markup if not chosen');
   t('h_program');
+  t('i.e., if you selected ILRLR 2050 Labor Relations you could indicate you took a similar course at your undergraduate institution or worked for a union');
   t('programYear');
   t('sponsor address markup');
   t('wisp markup if chosen');
