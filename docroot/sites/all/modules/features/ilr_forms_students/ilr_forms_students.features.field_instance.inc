@@ -8839,7 +8839,7 @@ function ilr_forms_students_field_default_field_instances() {
     'bundle' => 'graduate_student_request_for_tea',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'i.e., if you selected ILRLR 2050 Labor Relations you could indicate you took a similar course at your undergraduate institution or worked for a union',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -8866,7 +8866,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_course_related_experience',
-    'label' => 'Work/internship experience related to the course(s) you selected',
+    'label' => 'Experience related to your selected course(s) (e.g., course work, employment, or an internship relevant to the course topic)',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -14437,6 +14437,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Event title');
   t('Expected graduation date (mm/yyyy)');
   t('Experience');
+  t('Experience related to your selected course(s) (e.g., course work, employment, or an internship relevant to the course topic)');
   t('FEX constraints markup');
   t('FEX dates markup');
   t('FEX location');
@@ -14554,7 +14555,6 @@ function ilr_forms_students_field_default_field_instances() {
   t('Will you attend the reception?');
   t('Will you be managing this student from day to day?');
   t('Will you host the students on the same day(s) or individually? (Individually makes the scheduling easier.)');
-  t('Work/internship experience related to the course(s) you selected');
   t('Would you have access to personal transportation?');
   t('Would you need housing accommodations?');
   t('Year');
@@ -14568,7 +14568,6 @@ function ilr_forms_students_field_default_field_instances() {
   t('fex markup if chosen');
   t('fex markup if not chosen');
   t('h_program');
-  t('i.e., if you selected ILRLR 2050 Labor Relations you could indicate you took a similar course at your undergraduate institution or worked for a union');
   t('programYear');
   t('sponsor address markup');
   t('wisp markup if chosen');
