@@ -591,6 +591,42 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-email_unsubscribe-field_email'.
+  $field_instances['entityform-email_unsubscribe-field_email'] = array(
+    'bundle' => 'email_unsubscribe',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_email',
+    'label' => 'Your email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 32,
+    ),
+  );
+
   // Exported field_instance:
   // 'entityform-emediation_competition_reg-field_concentration'.
   $field_instances['entityform-emediation_competition_reg-field_concentration'] = array(
