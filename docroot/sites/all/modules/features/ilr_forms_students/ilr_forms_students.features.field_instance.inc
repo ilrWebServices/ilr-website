@@ -8976,7 +8976,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_prior_cornell_ra_experienc',
-    'label' => 'Prior Cornell RA experience',
+    'label' => 'List RA responsibilities (faculty with whom you have worked as an RA and your responsibilities)',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -8995,116 +8995,6 @@ function ilr_forms_students_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 12,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'entityform-graduate_student_request_for_tea-field_prior_non_cornell_ra_exper'.
-  $field_instances['entityform-graduate_student_request_for_tea-field_prior_non_cornell_ra_exper'] = array(
-    'bundle' => 'graduate_student_request_for_tea',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 19,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_prior_non_cornell_ra_exper',
-    'label' => 'Prior non-Cornell RA expereince',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 13,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'entityform-graduate_student_request_for_tea-field_prior_non_cornell_ta_exper'.
-  $field_instances['entityform-graduate_student_request_for_tea-field_prior_non_cornell_ta_exper'] = array(
-    'bundle' => 'graduate_student_request_for_tea',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 22,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_prior_non_cornell_ta_exper',
-    'label' => 'Prior non-Cornell TA experience (name of course and number of students overseen) ',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 3,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 16,
     ),
   );
 
@@ -9141,7 +9031,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_prior_ta_experience',
-    'label' => 'Prior TA experience (name of course and number of students overseen)  ',
+    'label' => ' List TA experience (name of course, responsibilities as TA, number of students overseen)',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -14493,6 +14383,7 @@ function ilr_forms_students_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t(' List TA experience (name of course, responsibilities as TA, number of students overseen)');
   t('(Choose "other" at the very bottom if not applicable.)');
   t('<li>Plain text only, no bullets or other special formatting</li>');
   t('Activities to be observed by FEX participants');
@@ -14581,6 +14472,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Last Name');
   t('Last name');
   t('Last name (supervisor)');
+  t('List RA responsibilities (faculty with whom you have worked as an RA and your responsibilities)');
   t('Maximum duration');
   t('Minimum duration');
   t('Must the student work consecutive days?');
@@ -14611,10 +14503,6 @@ function ilr_forms_students_field_default_field_instances() {
   t('Preferred dates for this WISP opportunity');
   t('Preferred first name (if different from above)');
   t('Preferred state or province');
-  t('Prior Cornell RA experience');
-  t('Prior TA experience (name of course and number of students overseen)  ');
-  t('Prior non-Cornell RA expereince');
-  t('Prior non-Cornell TA experience (name of course and number of students overseen) ');
   t('Program of interest');
   t('Provide a concise statement of the aims of your proposed research, the procedures you intend to follow, and your progress to date.');
   t('Provide an itemized estimate of the assistance you require.');
