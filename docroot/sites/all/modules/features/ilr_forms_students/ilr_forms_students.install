@@ -58,5 +58,6 @@ function ilr_forms_students_update_7005() {
  * entityform graduate_student_request_for_tea to _forms_get_dynamic_allowed_values()
  */
 function ilr_forms_students_update_7006() {
+  _forms_delete_entityform_submissions('graduate_student_request_for_tea');
   _ilr_field_bases_set_allowed_values_function('field_ta_preferred_courses', '_forms_get_dynamic_allowed_values');
 }
