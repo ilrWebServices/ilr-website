@@ -946,6 +946,35 @@ Specify preferred location (city / state). You also have the option to list an a
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_undergrad_institution|entityform|graduate_student_request_for_tea|form';
+  $field_group->group_name = 'group_undergrad_institution';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'graduate_student_request_for_tea';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Undergraduate Institution',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_undergrad_inst_major',
+      1 => 'field_undergrad_inst_gpa',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-undergrad-institution field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_undergrad_institution|entityform|graduate_student_request_for_tea|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_wisp_opportunities|entityform|fex_wisp_sponsor_registration|default';
   $field_group->group_name = 'group_wisp_opportunities';
   $field_group->entity_type = 'entityform';
@@ -1127,6 +1156,7 @@ Specify preferred location (city / state). You also have the option to list an a
   t('Resume');
   t('Sponsor Information');
   t('Supervisor Information');
+  t('Undergraduate Institution');
   t('WISP Opportunities');
   t('Your Information');
 

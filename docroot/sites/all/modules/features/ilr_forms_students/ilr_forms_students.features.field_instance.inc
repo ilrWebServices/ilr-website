@@ -8884,7 +8884,7 @@ function ilr_forms_students_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 17,
+      'weight' => 15,
     ),
   );
 
@@ -9049,7 +9049,7 @@ function ilr_forms_students_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 14,
     ),
   );
 
@@ -9153,13 +9153,13 @@ function ilr_forms_students_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_buttons',
-      'weight' => 14,
+      'weight' => 13,
     ),
   );
 
   // Exported field_instance:
-  // 'entityform-graduate_student_request_for_tea-field_undergraduate_institution'.
-  $field_instances['entityform-graduate_student_request_for_tea-field_undergraduate_institution'] = array(
+  // 'entityform-graduate_student_request_for_tea-field_undergrad_inst_gpa'.
+  $field_instances['entityform-graduate_student_request_for_tea-field_undergrad_inst_gpa'] = array(
     'bundle' => 'graduate_student_request_for_tea',
     'default_value' => NULL,
     'deleted' => 0,
@@ -9167,12 +9167,12 @@ function ilr_forms_students_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
+        'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
-        'type' => 'list_default',
-        'weight' => 15,
+        'type' => 'text_default',
+        'weight' => 25,
       ),
       'download' => array(
         'label' => 'above',
@@ -9189,18 +9189,81 @@ function ilr_forms_students_field_default_field_instances() {
     ),
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
-    'field_name' => 'field_undergraduate_institution',
-    'label' => 'Undergraduate institution',
-    'required' => 1,
+    'field_name' => 'field_undergrad_inst_gpa',
+    'label' => 'GPA',
+    'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 6,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 24,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-graduate_student_request_for_tea-field_undergrad_inst_major'.
+  $field_instances['entityform-graduate_student_request_for_tea-field_undergrad_inst_major'] = array(
+    'bundle' => 'graduate_student_request_for_tea',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 24,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_undergrad_inst_major',
+    'label' => 'Major',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 23,
     ),
   );
 
@@ -14448,6 +14511,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('First name');
   t('First name (supervisor)');
   t('For example: BS ILR, MILR, MPS, MS/PhD, MBA, etc.');
+  t('GPA');
   t('Graduate institution and degree, if applicable');
   t('Graduation year');
   t('Graduation year (supervisor)');
@@ -14474,6 +14538,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Last name');
   t('Last name (supervisor)');
   t('List RA responsibilities (faculty with whom you have worked as an RA and your responsibilities)');
+  t('Major');
   t('Maximum duration');
   t('Minimum duration');
   t('Must the student work consecutive days?');
@@ -14540,7 +14605,6 @@ function ilr_forms_students_field_default_field_instances() {
   t('Title of reseach proposal');
   t('Transcript');
   t('Type of opportunity (select one or both)');
-  t('Undergraduate institution');
   t('Upload your resume');
   t('Upload your resume or CV');
   t('WISP dates constraints markup');

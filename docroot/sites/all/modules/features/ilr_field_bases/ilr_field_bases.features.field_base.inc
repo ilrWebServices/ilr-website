@@ -1557,25 +1557,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_classes'.
-  $field_bases['field_classes'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_classes',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
   // Exported field_base: 'field_collected_blocks'.
   $field_bases['field_collected_blocks'] = array(
     'active' => 1,
@@ -1670,25 +1651,6 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_computer_skills'.
-  $field_bases['field_computer_skills'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_computer_skills',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_concentration'.
@@ -4968,35 +4930,6 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_ilr_department'.
-  $field_bases['field_ilr_department'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_ilr_department',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'Human Resource Studies' => 'Human Resource Studies',
-        'International and Comparative Labor' => 'International and Comparative Labor',
-        'Labor Economics' => 'Labor Economics',
-        'Labor Relations, Law, and History' => 'Labor Relations, Law, and History',
-        'Organizational Behavior' => 'Organizational Behavior',
-        'Social Statistics' => 'Social Statistics',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_ilr_dept_req_fac_adv_or_pr'.
   $field_bases['field_ilr_dept_req_fac_adv_or_pr'] = array(
     'active' => 1,
@@ -5855,27 +5788,6 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
-  );
-
-  // Exported field_base: 'field_minor_subject_s_'.
-  $field_bases['field_minor_subject_s_'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_minor_subject_s_',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
   );
 
   // Exported field_base: 'field_more_link'.
@@ -9654,29 +9566,46 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'markup',
   );
 
-  // Exported field_base: 'field_undergraduate_institution'.
-  $field_bases['field_undergraduate_institution'] = array(
+  // Exported field_base: 'field_undergrad_inst_gpa'.
+  $field_bases['field_undergrad_inst_gpa'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_undergraduate_institution',
+    'field_name' => 'field_undergrad_inst_gpa',
     'indexes' => array(
-      'value' => array(
-        0 => 'value',
+      'format' => array(
+        0 => 'format',
       ),
     ),
     'locked' => 0,
-    'module' => 'list',
+    'module' => 'text',
     'settings' => array(
-      'allowed_values' => array(
-        'Major' => 'Major',
-        'GPA' => 'GPA',
-      ),
-      'allowed_values_function' => '',
+      'max_length' => 255,
     ),
     'translatable' => 0,
-    'type' => 'list_text',
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_undergrad_inst_major'.
+  $field_bases['field_undergrad_inst_major'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_undergrad_inst_major',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_upload_your_resume_or_cv'.
