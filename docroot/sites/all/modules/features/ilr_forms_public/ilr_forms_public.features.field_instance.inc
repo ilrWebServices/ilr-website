@@ -5019,7 +5019,7 @@ function ilr_forms_public_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_comments',
-    'label' => 'Tell us about your interest',
+    'label' => 'What would you like to know?',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -5182,7 +5182,7 @@ function ilr_forms_public_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_job_title',
     'label' => 'Your job title',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -7273,6 +7273,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('What are you hoping to gain from the experience?');
   t('What is your experience with mediation?');
   t('What is your major (or what program are you in?)');
+  t('What would you like to know?');
   t('Why would you like to join this competition?');
   t('Will you need catering? (Please check all that apply)');
   t('Your email');
