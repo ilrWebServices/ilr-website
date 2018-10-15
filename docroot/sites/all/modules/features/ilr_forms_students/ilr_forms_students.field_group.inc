@@ -956,8 +956,9 @@ Specify preferred location (city / state). You also have the option to list an a
     'label' => 'Undergraduate Institution',
     'weight' => '6',
     'children' => array(
-      0 => 'field_undergrad_inst_major',
-      1 => 'field_undergrad_inst_gpa',
+      0 => 'field_undergrad_inst_gpa',
+      1 => 'field_undergrad_inst_major',
+      2 => 'field_current_college',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
