@@ -235,6 +235,7 @@ features[field_instance][] = entityform-graduate_programs_inquiry-field_last_nam
 features[field_instance][] = entityform-graduate_programs_inquiry-field_semester
 features[field_instance][] = entityform-graduate_programs_inquiry-field_year_as_list_text
 features[field_instance][] = entityform-graduate_student_request_for_tea-field_course_related_experience
+features[field_instance][] = entityform-graduate_student_request_for_tea-field_current_college
 features[field_instance][] = entityform-graduate_student_request_for_tea-field_graduate_institution_and_d
 features[field_instance][] = entityform-graduate_student_request_for_tea-field_prior_cornell_ra_experienc
 features[field_instance][] = entityform-graduate_student_request_for_tea-field_prior_ta_experience
