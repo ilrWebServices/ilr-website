@@ -295,10 +295,7 @@
 }
 
 @mixin card--overlay {
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: 0.5rem 1fr 0.5rem;
-  grid-template-rows: 50% 50%;
+  display: block;
   padding: 0;
 
   @include large {
