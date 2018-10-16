@@ -253,7 +253,7 @@ function _ilr_alumni_events_ticket_details($entityform_wrapper=NULL) {
         'total' => _ilr_alumni_events_form_ticket_count($entityform_wrapper),
         'member' => $entityform_wrapper->field_tickets_for_aa_members->value(),
         'non-member' => $entityform_wrapper->field_tickets_for_non_members->value(),
-        'recent-grad' => $entityform_wrapper->field_discount_eligible->value(),
+        'recent-grad' => (isset($entityform_wrapper->field_discount_eligible)) ? $entityform_wrapper->field_discount_eligible->value() : 0,
       ]
     : 0;
 }
