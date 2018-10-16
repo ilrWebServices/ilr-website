@@ -160,6 +160,7 @@ features[field_base][] = field_disciplinary_explanation
 features[field_base][] = field_display_in_faculty_lists
 features[field_base][] = field_dispute_resolution_experie
 features[field_base][] = field_dispute_resolution_trainin
+features[field_base][] = field_discount_eligible
 features[field_base][] = field_dob
 features[field_base][] = field_dublin_abroad_file_upload
 features[field_base][] = field_dublin_acad_goals_file_upl

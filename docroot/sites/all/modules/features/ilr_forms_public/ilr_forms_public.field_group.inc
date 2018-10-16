@@ -92,6 +92,7 @@ function ilr_forms_public_field_group_info() {
       4 => 'field_tickets_for_aa_members',
       5 => 'field_tickets_for_non_members',
       6 => 'field_total_cost',
+      7 => 'field_discount_eligible',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

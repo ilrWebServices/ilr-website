@@ -89,24 +89,6 @@ function ilr_alumni_events_form_ilr_sports_summit_event_registra_entityform_edit
     )),
     'setting'
   );
-
-  // Figure out how many tickets remain; total_tickets = 0 means there is no limit
-  $total_tickets = $wrapper->field_total_tickets->value();
-  if ($total_tickets > 0) {
-    $tickets_remaining = _ilr_alumni_events_get_remaining_ticket_count($total_tickets);
-
-    // Add info to the reg page to let people know the number of remaining tickets
-    $form['#groups']['group_reservations']->format_settings['instance_settings']['description'].= "<br>$tickets_remaining tickets available";
-
-    // If number of tickets remaining is less than the max that normally shows up
-    // in the dropdown, change the max in the dropdown.
-    $normal_max = 10;
-    if ($normal_max > $tickets_remaining) {
-      for ($i=$normal_max; $i>$tickets_remaining; $i--) {
-        unset($form['field_tickets_for_aa_members']['und']['#options'][$i]);
-      }
-    }
-  }
 }
 
 /**
@@ -271,6 +253,7 @@ function _ilr_alumni_events_ticket_details($entityform_wrapper=NULL) {
         'total' => _ilr_alumni_events_form_ticket_count($entityform_wrapper),
         'member' => $entityform_wrapper->field_tickets_for_aa_members->value(),
         'non-member' => $entityform_wrapper->field_tickets_for_non_members->value(),
+        'recent-grad' => $entityform_wrapper->field_discount_eligible->value(),
       ]
     : 0;
 }
@@ -373,7 +356,13 @@ function _ilr_alumni_events_get_total_cost() {
   $member_cost = _ilr_alumni_events_get_member_cost();
   $non_member_cost = _ilr_alumni_events_get_non_member_cost();
   $ticket_details = _ilr_alumni_events_ticket_details();
-  $alumni_total = $ticket_details['member'] * $member_cost;
+  if ($ticket_details['recent-grad']) {
+    // 100 is the price set by alumni office; currently not configurable
+    $alumni_total = 100 + (($ticket_details['member'] - 1) * $member_cost);
+  }
+  else {
+    $alumni_total = $ticket_details['member'] * $member_cost;
+  }
   $discount_cost = $remaining = 0;
   if ($ticket_details['non-member'] >= $ticket_details['member']) {
     if ($ticket_details['non-member'] > $ticket_details['member']) {

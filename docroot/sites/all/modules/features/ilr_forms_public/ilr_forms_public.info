@@ -101,6 +101,7 @@ features[field_instance][] = entityform-ilr_sports_summit_event_registra-field_a
 features[field_instance][] = entityform-ilr_sports_summit_event_registra-field_attendee_list_markup
 features[field_instance][] = entityform-ilr_sports_summit_event_registra-field_city
 features[field_instance][] = entityform-ilr_sports_summit_event_registra-field_company
+features[field_instance][] = entityform-ilr_sports_summit_event_registra-field_discount_eligible
 features[field_instance][] = entityform-ilr_sports_summit_event_registra-field_email
 features[field_instance][] = entityform-ilr_sports_summit_event_registra-field_first_name
 features[field_instance][] = entityform-ilr_sports_summit_event_registra-field_guests

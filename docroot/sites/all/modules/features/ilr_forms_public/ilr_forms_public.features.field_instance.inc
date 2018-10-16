@@ -2620,7 +2620,7 @@ function ilr_forms_public_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 22,
+      'weight' => 25,
     ),
   );
 
@@ -2687,7 +2687,7 @@ function ilr_forms_public_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 23,
+      'weight' => 26,
     ),
   );
 
@@ -2741,7 +2741,7 @@ function ilr_forms_public_field_default_field_instances() {
       'module' => 'markup',
       'settings' => array(),
       'type' => 'markup',
-      'weight' => 21,
+      'weight' => 24,
     ),
   );
 
@@ -2880,6 +2880,47 @@ function ilr_forms_public_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_sports_summit_event_registra-field_discount_eligible'.
+  $field_instances['entityform-ilr_sports_summit_event_registra-field_discount_eligible'] = array(
+    'bundle' => 'ilr_sports_summit_event_registra',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check this box to pay the $100 ticket price offered to recent Cornell graduates from years 2014 through 2018.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 22,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_discount_eligible',
+    'label' => 'Recent grad?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 19,
     ),
   );
 
@@ -3080,7 +3121,7 @@ function ilr_forms_public_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 20,
+      'weight' => 23,
     ),
   );
 
@@ -3723,7 +3764,7 @@ function ilr_forms_public_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 20,
     ),
   );
 
@@ -3788,7 +3829,7 @@ function ilr_forms_public_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 18,
+      'weight' => 21,
     ),
   );
 
@@ -3857,7 +3898,7 @@ function ilr_forms_public_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 19,
+      'weight' => 22,
     ),
   );
 
@@ -7196,6 +7237,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Button clicked');
   t('Catering instructions');
   t('Cell phone');
+  t('Check this box to pay the $100 ticket price offered to recent Cornell graduates from years 2014 through 2018.');
   t('City');
   t('City/Country of school');
   t('Class year');
@@ -7251,6 +7293,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Please add me to your email list');
   t('Please provide a brief description of your event');
   t('Please share updates on future ICS activities and insights with me.');
+  t('Recent grad?');
   t('Registering as mediator, disputant, or disputant team?');
   t('Requested room set-up');
   t('Room preference (check all that apply)');

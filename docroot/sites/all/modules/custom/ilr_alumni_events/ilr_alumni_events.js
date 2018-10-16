@@ -6,6 +6,8 @@
         var nonMemberPrice = Drupal.settings.ilr_alumni_events.nonMemberPrice;
         var memberCount = $('select[name="field_tickets_for_aa_members[und]"]').val();
         var nonMemberCount = $('select[name="field_tickets_for_non_members[und]"]').val();
+        var recentGradDiscount = $('input[name="field_discount_eligible[und]"]').is(':checked');
+        var discountedGradCost = 100;
         var memberTotal, nonMemberTotal;
 
         function updatePrices() {
@@ -20,6 +22,9 @@
             memberCount = 0;
           }
           memberTotal = memberCount * memberPrice;
+          if (memberCount > 0 && recentGradDiscount) {
+            applyRecentGradDiscount();
+          }
           return memberTotal;
         }
 
@@ -38,6 +43,15 @@
           return nonMemberTotal;
         }
 
+        function applyRecentGradDiscount() {
+          if (memberCount == 1) {
+            memberTotal = discountedGradCost; // Hard-coding price
+          }
+          else {
+            memberTotal = discountedGradCost + (memberPrice * (memberCount - 1));
+          }
+        }
+
         function getTotalCost() {
           return getMemberCost() + getNonMemberCost();
         }
@@ -46,7 +60,7 @@
           if (memberPrice == 0) {
             content = 'Free';
           } else {
-            content = 'x $'+memberPrice+' = $'+getMemberCost();
+            content = 'x $'+memberPrice+' (minus discount if applicable) = $'+getMemberCost();
           }
           $('select[name="field_tickets_for_aa_members[und]"]').after(' <span class="alumni-event-pricing member-price">'+content+'</span>');
         }
@@ -98,6 +112,11 @@
 
         $('select[name="field_tickets_for_non_members[und]"]').change(function(){
           nonMemberCount = $('select[name="field_tickets_for_non_members[und]"]').val();
+          updatePrices();
+        });
+
+        $('input[name="field_discount_eligible[und]"]').change(function(){
+          recentGradDiscount = $('input[name="field_discount_eligible[und]"]').is(':checked');
           updatePrices();
         });
       }
