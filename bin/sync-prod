@@ -15,7 +15,7 @@ source $BIN_DIR/snapshot
 drush sql-drop -y
 
 # download the acquia dev db
-drush sql-sync @ilr.live @ilr.ilr.local --sanitize --sanitize-password=password --structure-tables-list=cache,cache_*,sessions,entityform,freedompay_*,redhen_* -y
+drush sql-sync @ilr.live @ilr.ilr.local --sanitize --sanitize-password=password --structure-tables-list=cache,cache_*,sessions,entityform,freedompay_invoices,freedompay_payments,redhen_* -y
 
 drush cc all
 

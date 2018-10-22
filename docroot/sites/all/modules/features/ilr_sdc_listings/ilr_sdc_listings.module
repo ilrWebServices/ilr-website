@@ -2632,12 +2632,6 @@ function ilr_sdc_listings_salesforce_query_alter(SalesforceSelectQuery &$query) 
 function ilr_sdc_listings_salesforce_pull_mapping_object_alter(&$mapping_object, $sf_object, $mapping) {
   if (!$mapping_object) {
     switch ($mapping->drupal_bundle) {
-      case 'sdc_course':
-        $mapping_object = ilr_sdc_listings_process_course_pull($mapping_object, $sf_object, $mapping);
-        break;
-      case 'sdc_class':
-        $mapping_object = ilr_sdc_listings_process_class_pull($mapping_object, $sf_object, $mapping);
-        break;
       case 'sdc_faculty':
         $mapping_object = ilr_sdc_listings_process_faculty_pull($mapping_object, $sf_object, $mapping);
         break;
@@ -2645,28 +2639,6 @@ function ilr_sdc_listings_salesforce_pull_mapping_object_alter(&$mapping_object,
         break;
     }
   }
-}
-
-function ilr_sdc_listings_process_course_pull($mapping_object, $sf_object, $mapping) {
-  $prefix = $sf_object['Course_Number__c'];
-  if (!empty($prefix) && strlen($prefix) <= 10) {
-    $matched_course = _ilr_sdc_listings_get_course_by_catalog_prefix($prefix);
-    if ($matched_course) {
-      $mapping_object = ilr_sdc_listings_create_mapping_object('sdc_course', $matched_course->nid, $sf_object['Id']);
-    }
-  }
-  return $mapping_object;
-}
-
-function ilr_sdc_listings_process_class_pull($mapping_object, $sf_object, $mapping) {
-  if (isset($sf_object['Legacy_Class_ID__c'])) {
-    $class_id = $sf_object['Legacy_Class_ID__c'];
-    $matched_class = _ilr_sdc_listings_get_class_by_id($class_id);
-    if ($matched_class) {
-      $mapping_object = ilr_sdc_listings_create_mapping_object('sdc_class', $matched_class->nid, $sf_object['Id']);
-    }
-  }
-  return $mapping_object;
 }
 
 function ilr_sdc_listings_process_faculty_pull($mapping_object, $sf_object, $mapping) {
@@ -2717,12 +2689,15 @@ function ilr_sdc_listings_salesforce_pull_entity_presave($entity, $sf_object, $s
         }
         break;
       case 'sdc_class':
+        if (empty($sf_object['Show_on_Web__c'])) {
+          throw new SalesforcePullException('Class not set to show on web.');
+        }
         if (!_ilr_sdc_listings_get_course_by_sf_id($sf_object['Course__c'])) {
           throw new SalesforcePullException('Salesforce class is not assigned to an existing course.');
         }
-        // else {
-        //   _ilr_sdc_listings_assign_faculty_to_class($entity, $sf_object);
-        // }
+        else {
+          _ilr_sdc_listings_assign_faculty_to_class($entity, $sf_object);
+        }
         break;
       default:
         break;
@@ -2767,14 +2742,15 @@ function _ilr_sdc_listings_get_class_id($wrapper) {
 }
 
 /**
+ * Implements hook_node_insert().
  * Set the registration end date to the class start date if not present
  * Note that the reg_end_date field is a date field, without time,
  * which is why we need the datetime backflips
  */
-function ilr_sdc_listings_entity_presave($entity, $type) {
-  if (!empty($entity->type) && $entity->type == 'sdc_class') {
-    $wrapper = ilr_get_node_wrapper($entity);
-    if (!$wrapper->field_registration_end_date->value()) {
+function ilr_sdc_listings_node_insert($node) {
+  if ($node->type == 'sdc_class') {
+    if (empty($node->field_registration_end_date)) {
+      $wrapper = ilr_get_node_wrapper($node);
       $start_date = $wrapper->field_class_dates->value()['value'];
       $startDateTime = new DateTime($start_date);
       $wrapper->field_registration_end_date->set($startDateTime->getTimestamp());

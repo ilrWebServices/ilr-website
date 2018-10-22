@@ -34,6 +34,8 @@ function ilr_dev_install() {
   if (module_exists('freedompay')) {
     _ilr_dev_set_freedompay_test_credentials();
   }
+
+  _ilr_dev_set_salesforce_test_credentials();
 }
 
 /**
@@ -60,5 +62,14 @@ function _ilr_dev_set_freedompay_test_credentials() {
   } // Secrets file needs to be updated
   else {
     drupal_set_message(t('Your site secrets are out of date. Please download a version that includes the FreedomPay test credentials.'), 'error');
+  }
+}
+
+function _ilr_dev_set_salesforce_test_credentials() {
+  global $ILR_SECRETS;
+  if (isset($ILR_SECRETS['salesforce'])) {
+    foreach ($ILR_SECRETS['salesforce'] as $key => $value) {
+      variable_set($key, $value);
+    }
   }
 }
