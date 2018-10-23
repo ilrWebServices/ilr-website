@@ -11,7 +11,7 @@ body.node-type-sdc-class {
 
         width: 105vw; // fix for broken margin
         max-width: 105vw;
-        z-index: -1; // fix for overlapping content with sidebar
+        z-index: 1; // fix for overlapping content with sidebar
       }
 
       .instructors {
@@ -22,6 +22,10 @@ body.node-type-sdc-class {
           filter: grayscale(1);
         }
       }
+    }
+
+    .sidebar {
+      z-index: 2;
     }
   }
 }

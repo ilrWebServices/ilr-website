@@ -1662,6 +1662,9 @@ function _ilr_sdc_listings_get_contextual_link_markup($class) {
 function _ilr_sdc_listings_generate_faculty_markup($class_node, $class_id, $count) {
   $wrapper = ilr_get_node_wrapper($class_node);
   $faculty = $wrapper->field_faculty->value();
+  if (empty($faculty)) {
+    return '';
+  }
   $markup = '<div class="instructors class-detail-toggle class-' . $class_id . '">';
   $markup .= ($count > 1)
     ? '<h3>Instructors for '. _ilr_sdc_listings_get_class_datespan($class_node).' <br><span class="notice multiple-dates">Select another date to see its instructors.</span></h3>'
