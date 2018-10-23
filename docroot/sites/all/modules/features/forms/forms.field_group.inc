@@ -3628,7 +3628,7 @@ function forms_field_group_info() {
   t('Leadership Questions');
   t('Letters of Support');
   t('Name and Student ID');
-  t('Name for Diploma');
+  t('Name for Commencement Ceremony');
   t('Nominator');
   t('Nominee');
   t('Nominee Information');

@@ -11756,116 +11756,6 @@ function forms_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'entityform-graduate_student_request_for_tea-field_classes'.
-  $field_instances['entityform-graduate_student_request_for_tea-field_classes'] = array(
-    'bundle' => 'graduate_student_request_for_tea',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 11,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'Classes or faculty',
-        ),
-        'type' => 'text_default',
-        'weight' => 11,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'Classes or faculty',
-        ),
-        'type' => 'text_default',
-        'weight' => 11,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_classes',
-    'label' => 'Classes you are interesting in TAing or faculty members to whom you wish to be assigned',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 18,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'entityform-graduate_student_request_for_tea-field_computer_skills'.
-  $field_instances['entityform-graduate_student_request_for_tea-field_computer_skills'] = array(
-    'bundle' => 'graduate_student_request_for_tea',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 12,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'Computer skills',
-        ),
-        'type' => 'text_default',
-        'weight' => 12,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'Computer skills',
-        ),
-        'type' => 'text_default',
-        'weight' => 12,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_computer_skills',
-    'label' => 'Indicate level, if any, of computer skills or knowledge',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 19,
-    ),
-  );
-
-  // Exported field_instance:
   // 'entityform-graduate_student_request_for_tea-field_concentration'.
   $field_instances['entityform-graduate_student_request_for_tea-field_concentration'] = array(
     'bundle' => 'graduate_student_request_for_tea',
@@ -11916,7 +11806,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 4,
     ),
   );
 
@@ -11969,7 +11859,7 @@ function forms_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 7,
+      'weight' => 3,
     ),
   );
 
@@ -12025,7 +11915,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 2,
+      'weight' => 0,
     ),
   );
 
@@ -12082,60 +11972,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'entityform-graduate_student_request_for_tea-field_ilr_department'.
-  $field_instances['entityform-graduate_student_request_for_tea-field_ilr_department'] = array(
-    'bundle' => 'graduate_student_request_for_tea',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 10,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'Departments',
-        ),
-        'type' => 'list_default',
-        'weight' => 10,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_label' => 'Departments',
-        ),
-        'type' => 'list_default',
-        'weight' => 10,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_ilr_department',
-    'label' => ' Department(s) in which you prefer assignment',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 17,
+      'weight' => 1,
     ),
   );
 
@@ -12192,68 +12029,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'entityform-graduate_student_request_for_tea-field_minor_subject_s_'.
-  $field_instances['entityform-graduate_student_request_for_tea-field_minor_subject_s_'] = array(
-    'bundle' => 'graduate_student_request_for_tea',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_minor_subject_s_',
-    'label' => 'Minor subject(s)',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 2,
     ),
   );
 
@@ -12281,7 +12057,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => 'Semesters completed',
         ),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'table' => array(
         'label' => 'above',
@@ -12290,7 +12066,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => 'Semesters completed',
         ),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
@@ -12308,62 +12084,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'entityform-graduate_student_request_for_tea-field_prior_appointments'.
-  $field_instances['entityform-graduate_student_request_for_tea-field_prior_appointments'] = array(
-    'bundle' => 'graduate_student_request_for_tea',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 14,
-      ),
-      'download' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'Prior TA or RA',
-        ),
-        'type' => 'text_default',
-        'weight' => 14,
-      ),
-      'table' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_label' => 'Prior TA or RA',
-        ),
-        'type' => 'text_default',
-        'weight' => 14,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_prior_appointments',
-    'label' => 'List your prior TA or RA appointments',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 21,
+      'weight' => 5,
     ),
   );
 
@@ -12391,7 +12112,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 10,
       ),
       'table' => array(
         'label' => 'above',
@@ -12400,7 +12121,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'entityform',
@@ -12415,7 +12136,7 @@ function forms_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 12,
+      'weight' => 8,
     ),
   );
 
@@ -12443,7 +12164,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => 'TA or RA',
         ),
         'type' => 'list_default',
-        'weight' => 9,
+        'weight' => 12,
       ),
       'table' => array(
         'label' => 'above',
@@ -12452,7 +12173,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => 'TA or RA',
         ),
         'type' => 'list_default',
-        'weight' => 9,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'entityform',
@@ -12467,7 +12188,7 @@ function forms_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 16,
+      'weight' => 10,
     ),
   );
 
@@ -12495,7 +12216,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => 'Work experience',
         ),
         'type' => 'text_default',
-        'weight' => 13,
+        'weight' => 18,
       ),
       'table' => array(
         'label' => 'above',
@@ -12504,7 +12225,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => 'Work experience',
         ),
         'type' => 'text_default',
-        'weight' => 13,
+        'weight' => 18,
       ),
     ),
     'entity_type' => 'entityform',
@@ -12522,7 +12243,7 @@ function forms_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 20,
+      'weight' => 16,
     ),
   );
 
@@ -12550,7 +12271,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 11,
       ),
       'table' => array(
         'label' => 'above',
@@ -12559,7 +12280,7 @@ function forms_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'entityform',
@@ -12577,7 +12298,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 9,
     ),
   );
 
@@ -29668,7 +29389,6 @@ function forms_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('  I certify that I have read the above information and that I have submitted my Degree Plan.');
-  t(' Department(s) in which you prefer assignment');
   t(' I certify that I have read the above information and that I have completed my 7th semester check.');
   t(' Semester requesting assistantship');
   t(' Send an ILR Viewbook, which includes an overview of the undergraduate program');
@@ -29737,7 +29457,6 @@ function forms_field_default_field_instances() {
   t('City (work)');
   t('Class year');
   t('Class year in 2016-2017');
-  t('Classes you are interesting in TAing or faculty members to whom you wish to be assigned');
   t('College phone number');
   t('Comments');
   t('Company / Organization');
@@ -29818,7 +29537,6 @@ function forms_field_default_field_instances() {
   t('Include class year if desired');
   t('Include guest names');
   t('Include my name');
-  t('Indicate level, if any, of computer skills or knowledge');
   t('Indicate preference for teaching or research assistantship');
   t('Individual sponsor first name');
   t('Individual sponsor last name');
@@ -29842,7 +29560,6 @@ function forms_field_default_field_instances() {
   t('Limit 800 characters');
   t('List any non-standard applications that you will need.');
   t('List relevant work experience and/or your qualifications');
-  t('List your prior TA or RA appointments');
   t('Local');
   t('Location');
   t('Mailing address markup');
@@ -29850,7 +29567,6 @@ function forms_field_default_field_instances() {
   t('Meeting location preference');
   t('Middle / former name');
   t('Middle name');
-  t('Minor subject(s)');
   t('Mobile phone');
   t('Mobile phone (financial officer)');
   t('Mobile phone (nominee)');
