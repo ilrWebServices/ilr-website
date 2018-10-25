@@ -288,6 +288,38 @@ function ilr_sdc_listings_update_7014() {
 }
 
 /**
+ * Sets missing registration end dates for classes in the future
+ * Ugly, you say? ¯\_(ツ)_/¯
+ */
+function ilr_sdc_listings_update_7015() {
+  $query_all = new EntityFieldQuery();
+  $today = date('Y-m-d');
+  $query_all->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_class')
+    ->fieldCondition('field_class_dates', 'value', $today, '>=');
+  $results = $query_all->execute();
+  $future_classes = array_keys($results['node']);
+
+  $query_with_reg = new EntityFieldQuery();
+  $query_with_reg->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'sdc_class')
+    ->fieldCondition('field_class_dates', 'value', $today, '>=')
+    ->fieldCondition('field_registration_end_date', 'value', $today, '>=');
+  $result2 = $query_with_reg->execute();
+  $classes_with_date = array_keys($result2['node']);
+
+  $missing = array_diff($future_classes, $classes_with_date);
+
+  foreach ($missing as $nid) {
+    $wrapper = ilr_get_node_wrapper($nid);
+    $start_date = $wrapper->field_class_dates->value()['value'];
+    $startDateTime = new DateTime($start_date);
+    $wrapper->field_registration_end_date->set($startDateTime->getTimestamp());
+    $wrapper->save();
+  }
+}
+
+/**
  * Update aliases for sdc content types.
  */
 function _ilr_sdc_listings_update_aliases() {
