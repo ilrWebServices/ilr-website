@@ -1152,12 +1152,8 @@ function _ilr_sdc_listings_is_ondemand($node) {
 function _ilr_sdc_listings_is_online($node) {
   $node_wrapper = ilr_get_node_wrapper($node);
   if ($node->type == 'sdc_class') {
-    $city = '';
-    if (!empty($node_wrapper->field_address->value())) {
-      $city = $node_wrapper->field_address->locality->value();
-      $city = drupal_strtolower(str_replace('-', '', $city));
-    }
-    return $node_wrapper->field_online_class->value() == 1 || $city == 'online';
+    $course_wrapper = ilr_get_node_wrapper($node_wrapper->field_course[0]->value()->nid);
+    return $node_wrapper->field_setting->value() == 'online';
   }
   elseif ($node->type == 'sdc_course') {
     return $node_wrapper->field_setting->value() == 'online';
