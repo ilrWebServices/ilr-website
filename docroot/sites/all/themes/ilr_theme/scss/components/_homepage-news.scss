@@ -9,12 +9,12 @@ body.front .homepage-news {
   }
 
   .homepage-news__link {
-    @include padding-leader(3);
+    @include padding-leader(1);
 
     grid-column: 1 / -1;
 
     @include medium {
-      @include padding-leader(2);
+      @include padding-leader(1);
       @include trailer(2);
     }
 

@@ -274,7 +274,7 @@
   @include large {
     display: grid;
     grid-template-columns: 17% 79%;
-    grid-gap: 4%;
+    grid-gap: 0 4%;
 
     #content {
       grid-column-start: 2;
@@ -515,7 +515,7 @@
   }
 
   #content, #sidebar-second {
-    @include pie-clearfix;
+    @include clearfix;
 
     .section {
       @include leader(.5);

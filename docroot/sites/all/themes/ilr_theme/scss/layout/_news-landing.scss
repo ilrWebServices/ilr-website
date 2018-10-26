@@ -3,14 +3,14 @@ body.node-type-basic-page {
     #main {
       @include layout--full-width-content-grid;
 
+      #block-bean-news-top-stories,
+      #block-bean-latest-ilr-news.tagged-content {
+        @include three-column-grid;
+      }
+
       #sidebar-second {
         grid-column: 2;
       }
-    }
-
-    #block-bean-news-top-stories,
-    #block-bean-latest-ilr-news {
-      @include three-column-grid;
     }
   }
 }

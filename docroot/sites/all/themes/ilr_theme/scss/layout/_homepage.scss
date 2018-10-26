@@ -6,7 +6,7 @@ body.front #page { // specificity... ¯\_(ツ)_/¯
       .tagged-content {
 
         @include medium {
-          @include four-column-grid($gap: 3%);
+          @include four-column-grid($gap: 50px);
         }
 
         article {

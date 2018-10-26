@@ -146,6 +146,7 @@
   align-items: stretch;
   background: $color-card-bg--light;
   padding: 0;
+  grid-gap: 0;
 
   > h2, // Duplicates - @see _tagged_content_add_markup_to_group()
   > h3,
@@ -841,6 +842,7 @@
   background-color: $white;
   grid-template-columns: 1;
   grid-template-rows: repeat(4, 1fr);
+  grid-gap: 0;
 
   .field-name-field-image,
   .promo__content {
@@ -951,8 +953,6 @@
 
   .news__content,
   .promo__content {
-    @include trailer(1);
-
     z-index: 2;
     background: $bg-color;
     margin-top: -1rem;
