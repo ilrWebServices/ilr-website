@@ -515,7 +515,7 @@
   }
 
   #content, #sidebar-second {
-    @include clearfix;
+    @include pie-clearfix;
 
     .section {
       @include leader(.5);
