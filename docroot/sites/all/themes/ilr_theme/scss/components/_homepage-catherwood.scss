@@ -29,9 +29,10 @@ body.front {
 
         grid-column: 2 / -1;
         grid-row: 1;
-      }
 
-      @include xl {
+        .catherwood__img {
+          width: 100%;
+        }
       }
     }
 
