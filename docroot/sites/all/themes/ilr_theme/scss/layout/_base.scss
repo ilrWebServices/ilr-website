@@ -438,8 +438,6 @@
 }
 
 .region-highlighted {
-  @include clearfix;
-
   .tagged-content[data-items="3"] {
     @include medium {
       @include three-column-grid;
