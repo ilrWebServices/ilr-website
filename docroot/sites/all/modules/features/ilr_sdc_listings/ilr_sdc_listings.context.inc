@@ -17,16 +17,6 @@ function ilr_sdc_listings_context_default_contexts() {
   $context->description = '';
   $context->tag = '';
   $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'sdc_class' => 'sdc_class',
-        'sdc_course' => 'sdc_course',
-        'sdc_faculty' => 'sdc_faculty',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
     'path' => array(
       'values' => array(
         'programs/professional-programs/workshops-courses-training*' => 'programs/professional-programs/workshops-courses-training*',
