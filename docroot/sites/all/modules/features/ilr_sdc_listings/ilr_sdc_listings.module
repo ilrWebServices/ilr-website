@@ -25,76 +25,6 @@ function ilr_sdc_listings_cron() {
 }
 
 /**
- * Implements hook_playlist_feeds_after_import().
- *
- * Automatically run other imports after course import is run.
- * Run faculty/class assigner.
- */
-function ilr_sdc_listings_feeds_after_import(FeedsSource $source) {
-  $chained_importers = _ilr_sdc_listings_get_importer_ids();
-  $importer_index = array_search($source->importer->id, $chained_importers);
-  if ($importer_index !== FALSE) {
-    if ($importer_index < count($chained_importers) - 1) {
-      // Run the next importer automatically.
-      $source = feeds_source($chained_importers[$importer_index + 1]);
-      if ($source) {
-        $source->startImport();
-      }
-    }
-    else {
-      module_load_include('inc', 'ilr_sdc_listings', 'ilr_sdc_listings.feeds');
-      // Last importer assign faculty to classes
-      _ilr_sdc_listings_set_faculty_for_classes();
-    }
-  }
-}
-
-/**
- * Implements hook_feeds_after_parse().
- *
- * Loop through all results from feed and prepare for import.
- */
-function ilr_sdc_listings_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
-  module_load_include('inc', 'ilr_sdc_listings', 'ilr_sdc_listings.feeds');
-  $importer_ids = _ilr_sdc_listings_get_importer_ids();
-
-  if (in_array($source->importer->id, $importer_ids)) {
-    // These importer might take a longtime.
-    set_time_limit(600);
-    foreach ($result->items as &$item) {
-      _ilr_sdc_listings_prepare_source_item($item, $source);
-    }
-  }
-}
-
-/**
- * Implements hook_feeds_presave().
- * Protects certain fields from being changed by the import
- * New classes that are part of a series are unpublished by default
- */
-function ilr_sdc_listings_feeds_presave($source, $entity, $item, $entity_id) {
-  if (substr($source->importer->id, 0, 3) == 'sdc') {
-    if ($entity_id) { // Pre-existing items have an $entity_id
-      $fields_protected_from_import = _ilr_sdc_listings_get_feeds_protected_fields();
-      // Load the unchanged entity
-      $existing_node = entity_load_unchanged('node', $entity_id);
-      $existing_node_wrapper = entity_metadata_wrapper('node', $existing_node);
-      $updated_node_wrapper = entity_metadata_wrapper('node', $entity);
-      foreach ($fields_protected_from_import[$source->importer->id] as $key => $field_name) {
-        $existing_value = $existing_node_wrapper->{$field_name}->value();
-        $updated_node_wrapper->{$field_name} = $existing_value;
-      }
-    } // Check the new item to see if it's a class
-    elseif ($source->importer->id == 'sdc_class') {
-      if (_ilr_sdc_listings_is_series($entity)) {
-        $new_node_wrapper = entity_metadata_wrapper('node', $entity);
-        $new_node_wrapper->status = 0;
-      }
-    }
-  }
-}
-
-/**
  * Implements hook_form_alter().
  * Removes protected fields from sdc-related node forms
  */
@@ -113,20 +43,6 @@ function ilr_sdc_listings_form_alter(&$form, &$form_state, $form_id) {
       }
     }
   }
-}
-
-/**
- * Get importer files.
- * @return array
- *  Key are importer ids. Values are names of import files.
- */
-function _ilr_sdc_listings_get_importer_files() {
-  $importer_files = array(
-    'sdc_course_importer' => 'ncourse',
-    'sdc_class_importer' => 'nclass',
-    'sdc_faculty_importer' => 'facultyFromSDC',
-  );
-  return $importer_files;
 }
 
 /**
@@ -2536,28 +2452,6 @@ function _ilr_sdc_listings_remove_cancelled_classes() {
       $wrapper->save();
     }
   }
-}
-
-
-/**
- * Specifies which of the course and class fields are protected from
- * being updated by the feeds import
- * Note that this should only be relevant on fields mapped to the feeds importer in ilr_sdc_listings.feeds_importer_default.inc. However, we can add them here as a failsafe
- */
-function _ilr_sdc_listings_get_feeds_protected_fields() {
-  return array(
-    'sdc_course_importer' => array(
-      'field_keywords',
-      'body',
-      'field_course_series',
-    ),
-    'sdc_class_importer' => array(
-      'body',
-    ),
-    'sdc_faculty_importer' => array(
-      'body',
-    ),
-  );
 }
 
 /**
