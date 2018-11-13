@@ -14,6 +14,7 @@ function ilr_manual_listing_field_default_field_instances() {
   $field_instances['bean-content_listing_manual-field_content'] = array(
     'bundle' => 'content_listing_manual',
     'default_value' => NULL,
+    'default_value_function' => '',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -54,10 +55,16 @@ function ilr_manual_listing_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'bean',
+    'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_content',
     'label' => 'Content',
     'required' => 0,
     'settings' => array(
+      'behaviors' => array(
+        'current' => array(
+          'status' => 0,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
