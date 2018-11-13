@@ -139,8 +139,6 @@
 }
 
 @mixin card {
-  @include trailer(1);
-
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -937,13 +935,14 @@
 
   .field-type-image {
     @include full-width;
-
     grid-column: 1 / -1;
     height: auto;
     padding: 0;
 
     a {
       position: relative;
+      padding: 0;
+      line-height: 0.5;
 
       img {
         top: 0;

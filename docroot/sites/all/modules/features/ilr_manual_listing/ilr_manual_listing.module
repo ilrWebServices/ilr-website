@@ -37,6 +37,16 @@ function ilr_manual_listing_permission() {
 }
 
 /**
+ * Sets the image style for the first item of the homepage news to focussed_hero
+ */
+function ilr_manual_listing_block_view_bean_homepage_news_alter(&$data, $block) {
+  $first_element = &$data['content']['bean']['homepage-news']['field_content'][0];
+  $key = array_keys($first_element['node'])[0];
+  $first_element['node'][$key]['field_image'][0]['#image_style']= 'focussed_hero';
+}
+
+
+/**
  * Removes partial string matches from listing
  * See views issue at https://www.drupal.org/node/2529372
  * Also orders the results based on the order in the block configuration
