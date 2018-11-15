@@ -127,11 +127,15 @@ function ilr_settings_image_default_styles() {
   $styles['focussed_thumbnail'] = array(
     'label' => 'Focussed thumbnail',
     'effects' => array(
-      1 => array(
+      7 => array(
         'name' => 'focal_point_scale_and_crop',
         'data' => array(
-          'width' => 100,
-          'height' => 100,
+          'width' => 300,
+          'height' => 200,
+          'focal_point_advanced' => array(
+            'shift_x' => '',
+            'shift_y' => '',
+          ),
         ),
         'weight' => 1,
       ),

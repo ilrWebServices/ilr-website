@@ -1,14 +1,19 @@
 body.front .homepage-news {
-  .content {
-    @include four-column-grid;
-    @include pie-clearfix;
+  .bean-content-listing-manual {
+    @include trailer(2);
 
-    position: relative;
-    margin: 0;
+    .content {
+      @include four-column-grid;
 
-    article {
-      &:first-of-type { // Highlighted news item
-        @include featured-news-item;
+      position: relative;
+      margin: 0;
+
+      article {
+        @include card;
+
+        &:first-of-type { // Highlighted news item
+          @include featured-news-item;
+        }
       }
     }
   }

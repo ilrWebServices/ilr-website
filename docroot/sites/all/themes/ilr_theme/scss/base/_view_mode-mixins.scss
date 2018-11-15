@@ -153,8 +153,6 @@
   }
 
   .field-type-image {
-    @include square-to-4x6;
-
     order: 1;
     margin: 0;
 

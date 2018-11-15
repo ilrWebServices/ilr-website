@@ -51,14 +51,14 @@ function ilr_settings_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'borealis_ri_children';
   $strongarm->value = array(
-    0 => 'focussed_thumbnail',
-    1 => 'focussed_profile_image',
-    2 => 'focussed_hero',
-    3 => 'focussed_main_image',
-    4 => 'main_portrait_image',
-    5 => 'certificate_programs_image',
-    6 => 'focussed_portrait',
-    7 => 'featured_image',
+    0 => 'focussed_profile_image',
+    1 => 'focussed_hero',
+    2 => 'focussed_main_image',
+    3 => 'main_portrait_image',
+    4 => 'certificate_programs_image',
+    5 => 'focussed_portrait',
+    6 => 'featured_image',
+    7 => 'focussed_thumbnail',
   );
   $export['borealis_ri_children'] = $strongarm;
 
@@ -88,29 +88,6 @@ function ilr_settings_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'borealis_ri_parents';
   $strongarm->value = array(
-    'focussed_thumbnail' => array(
-      'name' => 'focussed_thumbnail',
-      'label' => 'Focussed thumbnail',
-      'effects' => array(
-        1 => array(
-          'label' => 'Focal Point Scale And Crop',
-          'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
-          'effect callback' => 'focal_point_scale_and_crop_effect',
-          'dimensions callback' => 'image_resize_dimensions',
-          'form callback' => 'image_resize_form',
-          'summary theme' => 'image_resize_summary',
-          'module' => 'focal_point',
-          'name' => 'focal_point_scale_and_crop',
-          'data' => array(
-            'width' => 100,
-            'height' => 100,
-          ),
-          'weight' => 1,
-        ),
-      ),
-      'module' => 'basic_page',
-      'storage' => 4,
-    ),
     'focussed_profile_image' => array(
       'isid' => '1',
       'name' => 'focussed_profile_image',
@@ -297,6 +274,36 @@ function ilr_settings_strongarm() {
       'name' => 'featured_image',
       'module' => 'ilr_settings',
       'storage' => 4,
+    ),
+    'focussed_thumbnail' => array(
+      'isid' => '7',
+      'name' => 'focussed_thumbnail',
+      'label' => 'Focussed thumbnail',
+      'module' => 'ilr_settings',
+      'storage' => 2,
+      'effects' => array(
+        7 => array(
+          'label' => 'Focal Point Scale And Crop',
+          'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+          'effect callback' => 'focal_point_scale_and_crop_effect',
+          'dimensions callback' => 'image_resize_dimensions',
+          'form callback' => 'focal_point_crop_form',
+          'summary theme' => 'focal_point_image_resize_summary',
+          'module' => 'focal_point',
+          'name' => 'focal_point_scale_and_crop',
+          'data' => array(
+            'width' => '300',
+            'height' => '200',
+            'focal_point_advanced' => array(
+              'shift_x' => '',
+              'shift_y' => '',
+            ),
+          ),
+          'ieid' => '7',
+          'isid' => '7',
+          'weight' => '1',
+        ),
+      ),
     ),
   );
   $export['borealis_ri_parents'] = $strongarm;
