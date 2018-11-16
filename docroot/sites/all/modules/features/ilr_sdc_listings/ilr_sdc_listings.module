@@ -123,6 +123,14 @@ function ilr_sdc_listings_block_view($delta = '') {
   return $block;
 }
 
+// Implements hook_taxonomy_menu_block_alter().
+function ilr_sdc_listings_taxonomy_menu_block_alter(&$tree, $vid) {
+  foreach ($tree as &$concentration) {
+    $machine_name = str_replace(' ', '-', strtolower($concentration['name']));
+    $concentration['path'] = ILR_SDC_PATH_ALIAS . '/' . $machine_name;
+  }
+}
+
 /**
  * Redirect to the node page the matches the catalog number.
  * @param $catalog_num

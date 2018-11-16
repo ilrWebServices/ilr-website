@@ -223,6 +223,351 @@ function ilr_sdc_listings_views_default_views() {
   $export['course_manual_listings'] = $view;
 
   $view = new view();
+  $view->name = 'courses_by_concentration';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Courses by concentration';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Catalog of Workshops, Courses, and Training';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = 'custom';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '7200';
+  $handler->display->display_options['cache']['output_lifespan'] = 'custom';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '7200';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Clear';
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'input_required' => 0,
+      'text_input_required' => array(
+        'text_input_required' => array(
+          'value' => 'Select any filter and click on Apply to see results',
+          'format' => 'full_html',
+        ),
+      ),
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+      'secondary_collapse_override' => '0',
+    ),
+    'field_concentration_reference_tid' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 0,
+        'bef_collapsible' => 0,
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            1 => 'vocabulary',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+  );
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entity';
+  $handler->display->display_options['row_options']['view_mode'] = 'teaser';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>Many offerings are available for custom or on-site delivery &mdash; Please <a href="mailto:ILRCustomerService@cornell.edu">contact ILR Customer Service</a> or call 866-470-1922 for more information.</p>
+<ul class="course-view__tabs">
+  <li class="course-view__tab"><a href="/programs/professional-programs/workshops-courses-training/!1">Upcoming</a></li>
+  <li class="course-view__tab"><a href="/programs/professional-programs/workshops-courses-training/!1/catalog">Catalog</a></li>
+</ul>';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  $handler->display->display_options['empty']['area']['tokenize'] = TRUE;
+  /* No results behavior: Global: View area */
+  $handler->display->display_options['empty']['view']['id'] = 'view';
+  $handler->display->display_options['empty']['view']['table'] = 'views';
+  $handler->display->display_options['empty']['view']['field'] = 'view';
+  /* Relationship: Content: Sponsor (field_course_sponsor_reference) */
+  $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['id'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['table'] = 'field_data_field_course_sponsor_reference';
+  $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['field'] = 'field_course_sponsor_reference_tid';
+  $handler->display->display_options['relationships']['field_course_sponsor_reference_tid']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_course_node']['id'] = 'reverse_field_course_node';
+  $handler->display->display_options['relationships']['reverse_field_course_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_course_node']['field'] = 'reverse_field_course_node';
+  /* Field: Content: Catalog Number Prefix */
+  $handler->display->display_options['fields']['field_catalog_prefix']['id'] = 'field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['table'] = 'field_data_field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['field'] = 'field_catalog_prefix';
+  $handler->display->display_options['fields']['field_catalog_prefix']['label'] = '';
+  $handler->display->display_options['fields']['field_catalog_prefix']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_catalog_prefix']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_catalog_prefix']['settings'] = array(
+    'field_formatter_label' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title] ([field_catalog_prefix])';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['alter']['max_length'] = '350';
+  $handler->display->display_options['fields']['body']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['body']['element_type'] = '0';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['body']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'field_formatter_label' => '',
+  );
+  $handler->display->display_options['fields']['body']['field_api_classes'] = TRUE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Global: View */
+  $handler->display->display_options['fields']['view']['id'] = 'view';
+  $handler->display->display_options['fields']['view']['table'] = 'views';
+  $handler->display->display_options['fields']['view']['field'] = 'view';
+  $handler->display->display_options['fields']['view']['label'] = 'Next Class Date';
+  $handler->display->display_options['fields']['view']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['view']['empty'] = ' ';
+  $handler->display->display_options['fields']['view']['view'] = 'next_class_course';
+  $handler->display->display_options['fields']['view']['arguments'] = '[!nid]';
+  /* Field: Content: On Demand */
+  $handler->display->display_options['fields']['field_on_demand']['id'] = 'field_on_demand';
+  $handler->display->display_options['fields']['field_on_demand']['table'] = 'field_data_field_on_demand';
+  $handler->display->display_options['fields']['field_on_demand']['field'] = 'field_on_demand';
+  $handler->display->display_options['fields']['field_on_demand']['label'] = 'Next Class Date';
+  $handler->display->display_options['fields']['field_on_demand']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_on_demand']['alter']['text'] = 'Available On Demand';
+  $handler->display->display_options['fields']['field_on_demand']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_on_demand']['empty'] = '[view]';
+  $handler->display->display_options['fields']['field_on_demand']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_on_demand']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_on_demand']['settings'] = array(
+    'field_formatter_label' => '',
+  );
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  /* Contextual filter: Content: Course concentration (field_concentration_reference) */
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['id'] = 'field_concentration_reference_tid';
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['table'] = 'field_data_field_concentration_reference';
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['field'] = 'field_concentration_reference_tid';
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['title'] = 'Courses in %1';
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['validate_options']['vocabularies'] = array(
+    'course_concentration' => 'course_concentration',
+  );
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['validate_options']['type'] = 'convert';
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['validate_options']['transform'] = TRUE;
+  $handler->display->display_options['arguments']['field_concentration_reference_tid']['validate']['fail'] = 'empty';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'sdc_course' => 'sdc_course',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Course concentration (field_concentration_reference) */
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['id'] = 'field_concentration_reference_tid';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['table'] = 'field_data_field_concentration_reference';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['field'] = 'field_concentration_reference_tid';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['expose']['operator_id'] = 'field_concentration_reference_tid_op';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['expose']['label'] = 'Concentration';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['expose']['operator'] = 'field_concentration_reference_tid_op';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['expose']['identifier'] = 'field_concentration_reference_tid';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
+  );
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['vocabulary'] = 'course_concentration';
+  /* Filter criterion: Content: Class Dates -  start date (field_class_dates) */
+  $handler->display->display_options['filters']['field_class_dates_value']['id'] = 'field_class_dates_value';
+  $handler->display->display_options['filters']['field_class_dates_value']['table'] = 'field_data_field_class_dates';
+  $handler->display->display_options['filters']['field_class_dates_value']['field'] = 'field_class_dates_value';
+  $handler->display->display_options['filters']['field_class_dates_value']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_class_dates_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_class_dates_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_class_dates_value']['expose']['operator_id'] = 'field_class_dates_value_op';
+  $handler->display->display_options['filters']['field_class_dates_value']['expose']['label'] = 'Class Dates -  start date (field_class_dates)';
+  $handler->display->display_options['filters']['field_class_dates_value']['expose']['operator'] = 'field_class_dates_value_op';
+  $handler->display->display_options['filters']['field_class_dates_value']['expose']['identifier'] = 'field_class_dates_value';
+  $handler->display->display_options['filters']['field_class_dates_value']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_class_dates_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_class_dates_value']['year_range'] = '-0:+1';
+  /* Filter criterion: Content: Cancelled (field_cancelled) */
+  $handler->display->display_options['filters']['field_cancelled_value']['id'] = 'field_cancelled_value';
+  $handler->display->display_options['filters']['field_cancelled_value']['table'] = 'field_data_field_cancelled';
+  $handler->display->display_options['filters']['field_cancelled_value']['field'] = 'field_cancelled_value';
+  $handler->display->display_options['filters']['field_cancelled_value']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_cancelled_value']['value'] = array(
+    0 => '0',
+  );
+  $handler->display->display_options['filters']['field_cancelled_value']['group'] = 1;
+
+  /* Display: Concentration */
+  $handler = $view->new_display('page', 'Concentration', 'page_1');
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<p>Many offerings are available for custom or on-site delivery — Please <a href="mailto:ILRCustomerService@cornell.edu">contact ILR Customer Service</a> or call 866-470-1922 for more information.</p>
+<ul class="course-view__tabs">
+  <li class="course-view__tab course-view__tab--active"><a href="/programs/professional-programs/workshops-courses-training/!1">Upcoming</a></li>
+  <li class="course-view__tab"><a href="/programs/professional-programs/workshops-courses-training/!1/catalog">Catalog</a></li>
+</ul>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = TRUE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>There are currently no classes scheduled within the %1 concentration. Courses we offer in the catalog include:</p>
+';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  $handler->display->display_options['empty']['area']['tokenize'] = TRUE;
+  /* No results behavior: Global: View area */
+  $handler->display->display_options['empty']['view']['id'] = 'view';
+  $handler->display->display_options['empty']['view']['table'] = 'views';
+  $handler->display->display_options['empty']['view']['field'] = 'view';
+  $handler->display->display_options['empty']['view']['empty'] = TRUE;
+  $handler->display->display_options['empty']['view']['view_to_insert'] = 'courses_by_concentration:page_2';
+  $handler->display->display_options['empty']['view']['inherit_arguments'] = TRUE;
+  $handler->display->display_options['path'] = 'programs/professional-programs/workshops-courses-training/%';
+
+  /* Display: Catalog */
+  $handler = $view->new_display('page', 'Catalog', 'page_2');
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<ul class="course-view__tabs">
+  <li class="course-view__tab"><a href="/programs/professional-programs/workshops-courses-training/!1">Upcoming</a></li>
+  <li class="course-view__tab course-view__tab--active"><a href="/programs/professional-programs/workshops-courses-training/!1/catalog">Catalog</a></li>
+</ul>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = TRUE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'sdc_course' => 'sdc_course',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Course concentration (field_concentration_reference) */
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['id'] = 'field_concentration_reference_tid';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['table'] = 'field_data_field_concentration_reference';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['field'] = 'field_concentration_reference_tid';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['expose']['operator_id'] = 'field_concentration_reference_tid_op';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['expose']['label'] = 'Concentration';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['expose']['operator'] = 'field_concentration_reference_tid_op';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['expose']['identifier'] = 'field_concentration_reference_tid';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    41 => 0,
+    51 => 0,
+    46 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    56 => 0,
+    61 => 0,
+  );
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_concentration_reference_tid']['vocabulary'] = 'course_concentration';
+  $handler->display->display_options['path'] = 'programs/professional-programs/workshops-courses-training/%/catalog';
+  $export['courses_by_concentration'] = $view;
+
+  $view = new view();
   $view->name = 'courses_with_missing_metadata';
   $view->description = '';
   $view->tag = 'default';
@@ -912,6 +1257,7 @@ function ilr_sdc_listings_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Professional Workshops, Courses, and Training';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
@@ -921,10 +1267,137 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['cache']['output_lifespan_custom'] = '7200';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Filter';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reset filter';
-  $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Clear';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'input_required' => 0,
+      'text_input_required' => array(
+        'text_input_required' => array(
+          'value' => 'Select any filter and click on Apply to see results',
+          'format' => 'full_html',
+        ),
+      ),
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+      'secondary_collapse_override' => '0',
+    ),
+    'field_course_topic_reference_tid' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 1,
+        'bef_collapsible' => 1,
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            1 => 'vocabulary',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+    'field_course_format_reference_tid' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 1,
+        'bef_collapsible' => 1,
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            1 => 'vocabulary',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+    'field_course_sponsor_reference_tid' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 1,
+        'bef_collapsible' => 1,
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            1 => 'vocabulary',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+    'field_class_dates_value' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+        'datepicker_options' => '',
+      ),
+    ),
+    'field_class_dates_value2' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+        'datepicker_options' => '',
+      ),
+    ),
+    'field_address_locality' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+  );
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -1029,6 +1502,25 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['sorts']['field_on_demand_value']['id'] = 'field_on_demand_value';
   $handler->display->display_options['sorts']['field_on_demand_value']['table'] = 'field_data_field_on_demand';
   $handler->display->display_options['sorts']['field_on_demand_value']['field'] = 'field_on_demand_value';
+  /* Contextual filter: Content: Topic (field_course_topic_reference) */
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['id'] = 'field_course_topic_reference_tid';
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['table'] = 'field_data_field_course_topic_reference';
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['field'] = 'field_course_topic_reference_tid';
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['title'] = 'Courses in %1';
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['default_argument_skip_url'] = TRUE;
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['validate_options']['vocabularies'] = array(
+    'course_topic' => 'course_topic',
+  );
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['validate_options']['type'] = 'convert';
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['validate_options']['transform'] = TRUE;
+  $handler->display->display_options['arguments']['field_course_topic_reference_tid']['break_phrase'] = TRUE;
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
     3 => 'OR',
@@ -1049,34 +1541,6 @@ function ilr_sdc_listings_views_default_views() {
     'sdc_course' => 'sdc_course',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Topic (field_course_topic_reference) */
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['id'] = 'field_course_topic_reference_tid';
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['table'] = 'field_data_field_course_topic_reference';
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['field'] = 'field_course_topic_reference_tid';
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['operator_id'] = 'field_course_topic_reference_tid_op';
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['label'] = 'Topic';
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['operator'] = 'field_course_topic_reference_tid_op';
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['identifier'] = 'field_course_topic_reference_tid';
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    11 => 0,
-    16 => 0,
-    41 => 0,
-    51 => 0,
-    46 => 0,
-    36 => 0,
-    21 => 0,
-    26 => 0,
-    31 => 0,
-    56 => 0,
-    61 => 0,
-  );
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_course_topic_reference_tid']['vocabulary'] = 'course_topic';
   /* Filter criterion: Content: Format (field_course_format_reference) */
   $handler->display->display_options['filters']['field_course_format_reference_tid']['id'] = 'field_course_format_reference_tid';
   $handler->display->display_options['filters']['field_course_format_reference_tid']['table'] = 'field_data_field_course_format_reference';
@@ -1140,57 +1604,13 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_class_dates_value']['relationship'] = 'reverse_field_course_node';
   $handler->display->display_options['filters']['field_class_dates_value']['operator'] = '>=';
   $handler->display->display_options['filters']['field_class_dates_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_class_dates_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_class_dates_value']['expose']['operator_id'] = 'field_class_dates_value_op';
-  $handler->display->display_options['filters']['field_class_dates_value']['expose']['label'] = 'Start date';
+  $handler->display->display_options['filters']['field_class_dates_value']['expose']['label'] = 'Class Dates -  start date (field_class_dates)';
   $handler->display->display_options['filters']['field_class_dates_value']['expose']['operator'] = 'field_class_dates_value_op';
   $handler->display->display_options['filters']['field_class_dates_value']['expose']['identifier'] = 'field_class_dates_value';
-  $handler->display->display_options['filters']['field_class_dates_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => '1',
-    11 => 0,
-    16 => 0,
-    41 => 0,
-    51 => 0,
-    46 => 0,
-    36 => 0,
-    21 => 0,
-    26 => 0,
-    31 => 0,
-    56 => 0,
-    61 => 0,
-  );
   $handler->display->display_options['filters']['field_class_dates_value']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_class_dates_value']['default_date'] = 'now';
   $handler->display->display_options['filters']['field_class_dates_value']['year_range'] = '-0:+1';
-  /* Filter criterion: Content: Class Dates - end date (field_class_dates:value2) */
-  $handler->display->display_options['filters']['field_class_dates_value2']['id'] = 'field_class_dates_value2';
-  $handler->display->display_options['filters']['field_class_dates_value2']['table'] = 'field_data_field_class_dates';
-  $handler->display->display_options['filters']['field_class_dates_value2']['field'] = 'field_class_dates_value2';
-  $handler->display->display_options['filters']['field_class_dates_value2']['relationship'] = 'reverse_field_course_node';
-  $handler->display->display_options['filters']['field_class_dates_value2']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_class_dates_value2']['group'] = 1;
-  $handler->display->display_options['filters']['field_class_dates_value2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_class_dates_value2']['expose']['operator_id'] = 'field_class_dates_value2_op';
-  $handler->display->display_options['filters']['field_class_dates_value2']['expose']['label'] = 'End date';
-  $handler->display->display_options['filters']['field_class_dates_value2']['expose']['operator'] = 'field_class_dates_value2_op';
-  $handler->display->display_options['filters']['field_class_dates_value2']['expose']['identifier'] = 'field_class_dates_value2';
-  $handler->display->display_options['filters']['field_class_dates_value2']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => '1',
-    11 => 0,
-    16 => 0,
-    41 => 0,
-    51 => 0,
-    46 => 0,
-    36 => 0,
-    21 => 0,
-    26 => 0,
-    31 => 0,
-    56 => 0,
-    61 => 0,
-  );
-  $handler->display->display_options['filters']['field_class_dates_value2']['form_type'] = 'date_popup';
-  $handler->display->display_options['filters']['field_class_dates_value2']['year_range'] = '-0:+1';
   /* Filter criterion: Content: Address - Locality (i.e. City) */
   $handler->display->display_options['filters']['field_address_locality']['id'] = 'field_address_locality';
   $handler->display->display_options['filters']['field_address_locality']['table'] = 'field_data_field_address';
@@ -1252,11 +1672,12 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['filters']['field_cancelled_value']['value'] = array(
     0 => '0',
   );
+  $handler->display->display_options['filters']['field_cancelled_value']['group'] = 1;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['path'] = 'programs/professional-programs/workshops-courses-training';
+  $handler->display->display_options['path'] = 'programs/professional-programs/workshops-courses-training/all';
   $export['sdc_course_listing'] = $view;
 
   $view = new view();

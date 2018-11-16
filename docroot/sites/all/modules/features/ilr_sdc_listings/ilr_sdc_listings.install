@@ -294,6 +294,35 @@ function ilr_sdc_listings_update_7015() {
 }
 
 /**
+ * Adds the new topic umbrellas
+ */
+function ilr_sdc_listings_update_7016() {
+  $concentrations = ['Safety and Health', 'Workforce Development', 'Leadership Development and Organizational Change', 'Labor Relations', 'Labor and Workplace Law, and Employee Relations', 'Diversity and Inclusion', 'Human Resources', 'Economic Development and Policy', 'Conflict Resolution'];
+  if ($vocab = taxonomy_vocabulary_machine_name_load('course_concentration')) {
+    foreach ($concentrations as $concentration) {
+      $term = new stdClass();
+      $term->name = $concentration;
+      $term->vid = $vocab->vid;
+      taxonomy_term_save($term);
+    }
+  }
+}
+
+/**
+ * Assigns course concentrations
+ */
+function ilr_sdc_listings_update_7017() {
+  $assignments = _ilr_sdc_listings_get_course_concentration_assignments();
+  foreach ($assignments as $sfid => $tid) {
+    if ($nid = _ilr_sdc_listings_get_course_by_sf_id($sfid)) {
+      $wrapper = ilr_get_node_wrapper($nid[0]);
+      $wrapper->field_concentration_reference->set([$tid]);
+      $wrapper->save();
+    }
+  }
+}
+
+/**
  * Update aliases for sdc content types.
  */
 function _ilr_sdc_listings_update_aliases() {
@@ -670,4 +699,185 @@ function _ilr_sdc_listings_get_default_no_results_messages() {
     'Scheinman Institute on Conflict Resolution' => '<p><a href="https://www.ilr.cornell.edu/scheinman-institute/professional-programs">Explore workshops and certificate programs in Labor Relations and Conflict and Dispute Resolution</a> offered by the Scheinman Institute on Conflict Resolution at Cornell University.</p>',
     'The Worker Institute at Cornell' => '<p><a href="https://www.ilr.cornell.edu/worker-institute/education-training">Explore workshops and certificate programs</a> offered by The Worker Institute at Cornell.</p>',
   );
+}
+
+function _ilr_sdc_listings_get_course_concentration_assignments() {
+  return [
+    'a0p0P00000C8f2RQAR' => '19121',
+    'a0p0P00000C8f23QAB' => '19123',
+    'a0p0P00000C8f1cQAB' => '19121',
+    'a0p0P00000C8f2LQAR' => '19121',
+    'a0p0P00000C8f2PQAR' => '19121',
+    'a0p0P00000C8f2UQAR' => '19121',
+    'a0p0P00000C8f1eQAB' => '19121',
+    'a0p0P00000C8f1bQAB' => '19121',
+    'a0p0P00000C8f2VQAR' => '19125',
+    'a0p0P00000C8f2GQAR' => '19121',
+    'a0p0P00000C8f3MQAR' => '19125',
+    'a0p0P00000C8f2jQAB' => '19125',
+    'a0p0P00000C8f2kQAB' => '19125',
+    'a0p0P00000C8f2lQAB' => '19125',
+    'a0p0P00000C8f4JQAR' => '19125',
+    'a0p0P00000C8f36QAB' => '19125',
+    'a0p0P00000C8f3AQAR' => '19125',
+    'a0p0P00000C8f38QAB' => '19125',
+    'a0p0P00000C8f3BQAR' => '19125',
+    'a0p0P00000C8f49QAB' => '19125',
+    'a0p0P00000C8f4uQAB' => '19125',
+    'a0p0P00000C8f4vQAB' => '19125',
+    'a0p0P00000C8f30QAB' => '19120',
+    'a0p0P00000C8f5UQAR' => '19120',
+    'a0p0P00000C8f20QAB' => '19121',
+    'a0p0P00000C8f1zQAB' => '19122',
+    'a0p0P00000C8f3wQAB' => '19122',
+    'a0p0P00000C8f4cQAB' => '19122',
+    'a0p0P00000C8f4gQAB' => '19122',
+    'a0p0P00000C8f1tQAB' => '19122',
+    'a0p0P00000C8f1WQAR' => '19122',
+    'a0p0P00000C8f2QQAR' => '19122',
+    'a0p0P00000C8f1kQAB' => '19122',
+    'a0p0P00000C8f3fQAB' => '19123',
+    'a0p0P00000C8f2JQAR' => '19123',
+    'a0p0P00000C8f3dQAB' => '19123',
+    'a0p0P00000C8f1vQAB' => '19119',
+    'a0p0P00000C8f3eQAB' => '19123',
+    'a0p0P00000C8f3GQAR' => '19123',
+    'a0p0P00000C8f3IQAR' => '19123',
+    'a0p0P00000C8f3JQAR' => '19123',
+    'a0p0P00000C8f40QAB' => '19123',
+    'a0p0P00000C8f5LQAR' => '19123',
+    'a0p0P00000C8f42QAB' => '19123',
+    'a0p0P00000C8f4AQAR' => '19123',
+    'a0p0P00000C8f4BQAR' => '19123',
+    'a0p0P00000C8f4CQAR' => '19123',
+    'a0p0P00000C8f3YQAR' => '19119',
+    'a0p0P00000C8f3ZQAR' => '19119',
+    'a0p0P00000C8f3bQAB' => '19119',
+    'a0p0P00000C8f5JQAR' => '19121',
+    'a0p0P00000C8f5OQAR' => '19119',
+    'a0p0P00000C8f5PQAR' => '19119',
+    'a0p0P00000C8f5QQAR' => '19119',
+    'a0p0P00000C8f5RQAR' => '19119',
+    'a0p0P00000C8f5TQAR' => '19119',
+    'a0p0P00000C8f5dQAB' => '19119',
+    'a0p0P00000C8f5fQAB' => '19119',
+    'a0p0P00000C8f3zQAB' => '19120',
+    'a0p0P00000C8f4aQAB' => '19119',
+    'a0p0P00000C8f4LQAR' => '19119',
+    'a0p0P00000C8f4MQAR' => '19120',
+    'a0p0P00000C8f4NQAR' => '19120',
+    'a0p0P00000C8f4OQAR' => '19119',
+    'a0p0P00000C91IiQAJ' => '19121',
+    'a0p0P00000C8f53QAB' => '19120',
+    'a0p0P00000C8f54QAB' => '19120',
+    'a0p0P00000C8f55QAB' => '19121',
+    'a0p0P00000C8f2bQAB' => '19125',
+    'a0p0P00000C8f21QAB' => '19121',
+    'a0p0P00000C8f2nQAB' => '19120',
+    'a0p0P00000C8f2MQAR' => '19120',
+    'a0p0P00000C8f2qQAB' => '19120',
+    'a0p0P00000C8f2rQAB' => '19120',
+    'a0p0P00000C8f1wQAB' => '19125',
+    'a0p0P00000C8f2aQAB' => '19121',
+    'a0p0P00000C8f2cQAB' => '19119',
+    'a0p0P00000C8f4iQAB' => '19119',
+    'a0p0P00000C8f39QAB' => '19119',
+    'a0p0P00000C8f3LQAR' => '19119',
+    'a0p0P00000C8f47QAB' => '19119',
+    'a0p0P00000C8f48QAB' => '19119',
+    'a0p0P00000C8f2eQAB' => '19125',
+    'a0p0P00000C8f2KQAR' => '19119',
+    'a0p0P00000C8f2vQAB' => '19119',
+    'a0p0P00000C8f33QAB' => '19119',
+    'a0p0P00000C8f4dQAB' => '19119',
+    'a0p0P00000C8f5KQAR' => '19122',
+    'a0p0P00000C8f4eQAB' => '19119',
+    'a0p0P00000C8f2FQAR' => '19119',
+    'a0p0P00000C8f4fQAB' => '19119',
+    'a0p0P00000C8f3KQAR' => '19119',
+    'a0p0P00000C8f5MQAR' => '19119',
+    'a0p0P00000C8f2xQAB' => '19120',
+    'a0p0P00000C8f3DQAR' => '19120',
+    'a0p0P00000C8f3CQAR' => '19117',
+    'a0p0P00000C8f3aQAB' => '19120',
+    'a0p0P00000C8f4lQAB' => '19120',
+    'a0p0P00000C8f4mQAB' => '19120',
+    'a0p0P00000C8f4pQAB' => '19120',
+    'a0p0P00000C8f4qQAB' => '19120',
+    'a0p0P00000C8f4rQAB' => '19120',
+    'a0p0P00000C8f4sQAB' => '19120',
+    'a0p0P00000C8f57QAB' => '19120',
+    'a0p0P00000C8f5CQAR' => '19120',
+    'a0p0P00000C8f5VQAR' => '19120',
+    'a0p0P00000C8f5WQAR' => '19120',
+    'a0p0P00000C8pzKQAR' => '19120',
+    'a0p0P00000C8wydQAB' => '19120',
+    'a0p0P00000C8f3UQAR' => '19120',
+    'a0p0P00000C8f3VQAR' => '19120',
+    'a0p0P00000C8f3yQAB' => '19124',
+    'a0p0P00000C8f1sQAB' => '19121',
+    'a0p0P00000C8f27QAB' => '19120',
+    'a0p0P00000C8f4yQAB' => '19120',
+    'a0p0P00000C8f4zQAB' => '19120',
+    'a0p0P00000C8f1rQAB' => '19120',
+    'a0p0P00000C8f1jQAB' => '19120',
+    'a0p0P00000C8f37QAB' => '19120',
+    'a0p0P00000C8f3uQAB' => '19120',
+    'a0p0P00000C8f3vQAB' => '19120',
+    'a0p0P00000C8f41QAB' => '19120',
+    'a0p0P00000C8f4VQAR' => '19120',
+    'a0p0P00000C8f4XQAR' => '19120',
+    'a0p0P00000C8f4YQAR' => '19120',
+    'a0p0P00000C8f4ZQAR' => '19125',
+    'a0p0P00000C8f4wQAB' => '19125',
+    'a0p0P00000C8f3kQAB' => '19120',
+    'a0p0P00000C8f3lQAB' => '19120',
+    'a0p0P00000C8f3mQAB' => '19120',
+    'a0p0P00000C8f3nQAB' => '19120',
+    'a0p0P00000C8f3oQAB' => '19120',
+    'a0p0P00000C8f3pQAB' => '19120',
+    'a0p0P00000C8f3qQAB' => '19120',
+    'a0p0P00000C8f3rQAB' => '19125',
+    'a0p0P00000C8f28QAB' => '19119',
+    'a0p0P00000C8f2SQAR' => '19119',
+    'a0p0P00000C8f2WQAR' => '19119',
+    'a0p0P00000C8f52QAB' => '19119',
+    'a0p0P00000C8f56QAB' => '19120',
+    'a0p0P00000C8f50QAB' => '19119',
+    'a0p0P00000C8f51QAB' => '19121',
+    'a0p0P00000C8f2OQAR' => '19120',
+    'a0p0P00000C8f2CQAR' => '19120',
+    'a0p0P00000C8f2TQAR' => '19120',
+    'a0p0P00000C8f59QAB' => '19119',
+    'a0p0P00000C8f2NQAR' => '19119',
+    'a0p0P00000C8f2oQAB' => '19120',
+    'a0p0P00000C8f58QAB' => '19119',
+    'a0p0P00000C8f1dQAB' => '19119',
+    'a0p0P00000C8f29QAB' => '19121',
+    'a0p0P00000C8f1xQAB' => '19121',
+    'a0p0P00000C8f1qQAB' => '19119',
+    'a0p0P00000C8f1iQAB' => '19120',
+    'a0p0P00000C8f1hQAB' => '19120',
+    'a0p0P00000C8f2BQAR' => '19121',
+    'a0p0P00000C8f2AQAR' => '19120',
+    'a0p0P00000C8f1nQAB' => '19119',
+    'a0p0P00000C8f5AQAR' => '19120',
+    'a0p0P00000C8f1fQAB' => '19120',
+    'a0p0P00000C8f5BQAR' => '19117',
+    'a0p0P00000C8f4tQAB' => '19120',
+    'a0p0P00000C8f46QAB' => '19121',
+    'a0p0P00000C8f4DQAR' => '19121',
+    'a0p0P00000C8f4EQAR' => '19121',
+    'a0p0P00000C8f4IQAR' => '19121',
+    'a0p0P00000C8f4kQAB' => '19121',
+    'a0p0P00000C8f4nQAB' => '19121',
+    'a0p0P00000C8f4oQAB' => '19121',
+    'a0p0P00000C8f4bQAB' => '19119',
+    'a0p0P00000C8f4PQAR' => '19120',
+    'a0p0P00000C8f4QQAR' => '19120',
+    'a0p0P00000C8f4RQAR' => '19120',
+    'a0p0P00000C8f4SQAR' => '19120',
+    'a0p0P00000C8f4TQAR' => '19119',
+    'a0p0P00000C8f5NQAR' => '19120',
+  ];
 }

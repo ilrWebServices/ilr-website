@@ -391,3 +391,40 @@ p.button-info {
   font-style: italic;
   margin-bottom: 0;
 }
+
+.course-view__tabs {
+  @include inline-block-list;
+}
+
+.course-view__tab {
+  padding: 0 1.2rem 0 0;
+  margin-right: 1rem;
+  border-right: 1px solid $color-border;
+
+  &:last-child {
+    border: none;
+  }
+
+  &--active {
+    a {
+      font-weight: bold;
+    }
+  }
+}
+
+.block-taxonomy-menu-block {
+  ul {
+    padding: 0;
+  }
+
+  li {
+    @include h-borders(1px, 0.5);
+
+    border-top: none;
+
+    a.active {
+      color: $cornell-red;
+      font-weight: bold;
+    }
+  }
+}
