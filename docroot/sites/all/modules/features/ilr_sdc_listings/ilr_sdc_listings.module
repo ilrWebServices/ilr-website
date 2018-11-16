@@ -105,6 +105,12 @@ function ilr_sdc_listings_menu() {
     'page callback' => '_ilr_sdc_listings_custom_search',
   );
 
+  $items[ILR_SDC_PATH_ALIAS] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => '_ilr_sdc_listings_concentration_landing_page',
+  );
+
   return $items;
 }
 
@@ -739,6 +745,10 @@ function _ilr_sdc_listings_custom_search(){
     }
   }
   return $content;
+}
+
+function _ilr_sdc_listings_concentration_landing_page() {
+  return "<h1>Concentrations</h1>";
 }
 
 function _ilr_sdc_listings_get_course_query_courses_for_strings($string_array) {

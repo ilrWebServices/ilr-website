@@ -413,6 +413,22 @@ p.button-info {
 }
 
 .block-taxonomy-menu-block {
+  @include leader(2);
+
+  h2 {
+    @include set-heading(true);
+    @include frame-from-corner;
+
+    margin-bottom: 0;
+
+    #jPanelMenu-menu & {
+      color: white;
+      margin-left: 2rem;
+
+      @include frame-from-corner($color: white);
+    }
+  }
+
   ul {
     padding: 0;
   }
@@ -422,9 +438,17 @@ p.button-info {
 
     border-top: none;
 
-    a.active {
-      color: $cornell-red;
-      font-weight: bold;
+    a {
+
+      &.active {
+        color: $cornell-red;
+        font-weight: bold;
+      }
+
+      #jPanelMenu-menu & {
+        color: white;
+        padding-left: 2rem;
+      }
     }
   }
 }

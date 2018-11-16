@@ -109,11 +109,11 @@ jQuery.fn.sortElements = (function(){
 
         // If the course search block is on the page, position it and add the listeners
         if ($('#block-ilr-sdc-listings-course-search').length) {
-          if (isPublicOfferingsPage()) {
-            positionCourseSearchBox();
-          } else {
-            setTimeout(positionCourseSearchBox,500); // Set a timer to position it
-          }
+          // if (isPublicOfferingsPage()) {
+          //   positionCourseSearchBox();
+          // } else {
+          //   setTimeout(positionCourseSearchBox,500); // Set a timer to position it
+          // }
           prepSearchFilter();
           fixSeriesClasses();
           fixSeriesCourses();
@@ -233,7 +233,7 @@ jQuery.fn.sortElements = (function(){
       };
 
       prepareSearchBoxPosition = function() {
-        setTimeout(positionCourseSearchBox, 200);
+        // setTimeout(positionCourseSearchBox, 200);
       };
 
       /**

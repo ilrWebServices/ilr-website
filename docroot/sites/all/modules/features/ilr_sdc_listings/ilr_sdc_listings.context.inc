@@ -26,12 +26,6 @@ function ilr_sdc_listings_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'menu_block-ilr-primary-menu' => array(
-          'module' => 'menu_block',
-          'delta' => 'ilr-primary-menu',
-          'region' => 'sidebar_first',
-          'weight' => '-10',
-        ),
         'taxonomy_menu_block-1' => array(
           'module' => 'taxonomy_menu_block',
           'delta' => '1',
@@ -71,12 +65,6 @@ function ilr_sdc_listings_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'ilr_sdc_listings-course_search' => array(
-          'module' => 'ilr_sdc_listings',
-          'delta' => 'course_search',
-          'region' => 'sidebar_first',
-          'weight' => '-10',
-        ),
         'views--exp-sdc_course_listing-page' => array(
           'module' => 'views',
           'delta' => '-exp-sdc_course_listing-page',
