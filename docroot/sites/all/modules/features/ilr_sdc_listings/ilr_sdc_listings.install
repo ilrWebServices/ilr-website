@@ -316,7 +316,7 @@ function ilr_sdc_listings_update_7017() {
   foreach ($assignments as $sfid => $term_name) {
     if ($nid = _ilr_sdc_listings_get_course_by_sf_id($sfid)) {
       $wrapper = ilr_get_node_wrapper($nid[0]);
-      $term = taxonomy_get_term_by_name($term_name, 'course_concentration');
+      $term = reset(taxonomy_get_term_by_name($term_name, 'course_concentration'));
       $wrapper->field_concentration_reference->set([$term->tid]);
       $wrapper->save();
     }
