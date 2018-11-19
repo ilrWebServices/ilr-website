@@ -1952,6 +1952,15 @@ function ilr_sdc_listings_preprocess_node(&$variables) {
 
 }
 
+/**
+ * Updates the ulr links for the course concentration landing page
+ */
+function ilr_sdc_listings_preprocess_taxonomy_term(&$variables) {
+  if ($variables['vocabulary_machine_name'] == 'course_concentration') {
+    $variables['term_url'] = '/' . ILR_SDC_PATH_ALIAS . '/' . str_replace(' ', '-', strtolower($variables['name']));
+  }
+}
+
 function _ilr_sdc_listings_get_datetimes_for_class($class) {
   $wrapper = ilr_get_node_wrapper($class);
   // Need $class_date_value because DateTime didn't work with
