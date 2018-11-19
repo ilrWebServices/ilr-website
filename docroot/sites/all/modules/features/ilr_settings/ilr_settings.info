@@ -126,6 +126,7 @@ features[variable][] = mimemail_sitestyle
 features[variable][] = mimemail_textonly
 features[variable][] = pathauto_node_memory_book_pattern
 features[variable][] = pathauto_node_mentor_pattern
+features[variable][] = pathauto_taxonomy_term_course_concentration_pattern
 features[variable][] = readmorejs_collapsed_class
 features[variable][] = readmorejs_embed_css
 features[variable][] = readmorejs_expanded_class

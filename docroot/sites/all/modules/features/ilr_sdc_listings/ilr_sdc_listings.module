@@ -53,6 +53,9 @@ function ilr_sdc_listings_block_info() {
     'info' => t('Course search'),
     'cache' => DRUPAL_NO_CACHE
   );
+  $blocks['course_concentrations'] = [
+    'info' => t('Course concentrations')
+  ];
 
   return $blocks;
 }
@@ -105,12 +108,6 @@ function ilr_sdc_listings_menu() {
     'page callback' => '_ilr_sdc_listings_custom_search',
   );
 
-  $items[ILR_SDC_PATH_ALIAS] = array(
-    'type' => MENU_CALLBACK,
-    'access arguments' => array('access content'),
-    'page callback' => '_ilr_sdc_listings_concentration_landing_page',
-  );
-
   return $items;
 }
 
@@ -125,6 +122,9 @@ function ilr_sdc_listings_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = drupal_render($search_form);
       break;
+    case 'course_concentrations':
+      $block['subject'] = '';
+      $block['content'] =_ilr_sdc_listings_course_concentration_view();
   }
   return $block;
 }
@@ -747,8 +747,20 @@ function _ilr_sdc_listings_custom_search(){
   return $content;
 }
 
-function _ilr_sdc_listings_concentration_landing_page() {
-  return "<h1>Concentrations</h1>";
+function _ilr_sdc_listings_course_concentration_view() {
+  $content = '<div class="course-concentrations">';
+  if ($vocab = taxonomy_vocabulary_machine_name_load('course_concentration')) {
+    $terms = taxonomy_get_tree($vocab->vid);
+    $tids = [];
+    foreach ($terms as $term) {
+      $tids[] = $term->tid;
+    }
+    $terms = taxonomy_term_load_multiple($tids);
+    $view = taxonomy_term_view_multiple($terms);
+    $content .= drupal_render($view);
+  }
+  $content .= '</div>';
+  return $content;
 }
 
 function _ilr_sdc_listings_get_course_query_courses_for_strings($string_array) {

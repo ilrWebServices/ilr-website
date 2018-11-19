@@ -452,3 +452,31 @@ p.button-info {
     }
   }
 }
+
+.course-concentrations {
+  @include three-column-grid;
+
+  .taxonomy-term {
+    @include card;
+
+    display: flex;
+    flex-direction: column;
+
+    .field-type-image {
+      order: 1;
+    }
+
+    h2 {
+      @include visible;
+
+      order: 2;
+      padding: 0 1rem;
+      line-height: 1.1;
+    }
+
+    .taxonomy-term-description {
+      order: 3;
+      padding: 0 1rem;
+    }
+  }
+}

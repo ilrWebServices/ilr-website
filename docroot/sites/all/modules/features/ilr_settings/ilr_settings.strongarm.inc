@@ -677,6 +677,13 @@ function ilr_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_course_concentration_pattern';
+  $strongarm->value = 'programs/professional-programs/workshops-courses-training/[term:name]';
+  $export['pathauto_taxonomy_term_course_concentration_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'readmorejs_collapsed_class';
   $strongarm->value = 'readmore-js-collapsed';
   $export['readmorejs_collapsed_class'] = $strongarm;

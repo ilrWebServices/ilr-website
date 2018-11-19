@@ -2477,6 +2477,70 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-course_concentration-field_image'.
+  $field_instances['taxonomy_term-course_concentration-field_image'] = array(
+    'bundle' => 'course_concentration',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'image_link' => 'content',
+          'image_style' => 'focussed_thumbnail',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_image',
+    'label' => 'Main image',
+    'required' => 1,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'private' => 0,
+          'public' => 'public',
+          'youtube' => 0,
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'ilr_media_browser--media_browser_1' => 'ilr_media_browser--media_browser_1',
+          'ilr_media_browser--media_browser_my_files' => 'ilr_media_browser--media_browser_my_files',
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 'upload',
+          'youtube' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-course_program-field_sf_record_id'.
   $field_instances['taxonomy_term-course_program-field_sf_record_id'] = array(
     'bundle' => 'course_program',
@@ -2539,6 +2603,7 @@ function ilr_sdc_listings_field_default_field_instances() {
   t('If the faculty member has a profile, then you can link to it here and their image and title will be automatically pulled from their profile page.');
   t('Is Full?');
   t('Keywords');
+  t('Main image');
   t('Note that the setting for the class inherits from the its course. You should only modify the value here if it\'s different from the course setting. ');
   t('On Demand');
   t('Online Class');
