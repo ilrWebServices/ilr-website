@@ -9463,12 +9463,46 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-high_road_fellowship_application-field_bhrf_available_projects'.
+  $field_instances['entityform-high_road_fellowship_application-field_bhrf_available_projects'] = array(
+    'bundle' => 'high_road_fellowship_application',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'markup',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'markup_default',
+        'weight' => 15,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_bhrf_available_projects',
+    'label' => 'BHRF Available Projects',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-high_road_fellowship_application-field_description_long'.
   $field_instances['entityform-high_road_fellowship_application-field_description_long'] = array(
     'bundle' => 'high_road_fellowship_application',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Please write a brief statement indicating why you are interested in a High Road Summer Fellowship in Buffalo.  How would it contribute to your education or career plans?',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -9483,7 +9517,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_description_long',
-    'label' => 'Description of interest',
+    'label' => 'Briefly describe your interest in a High Road Summer Fellowship. How would it contribute to your education or career plans?',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -9549,7 +9583,7 @@ function ilr_forms_students_field_default_field_instances() {
   $field_instances['entityform-high_road_fellowship_application-field_file'] = array(
     'bundle' => 'high_road_fellowship_application',
     'deleted' => 0,
-    'description' => 'Please attach a copy of your transcript (complete through Fall 2017)',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -9564,7 +9598,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_file',
-    'label' => 'Transcript',
+    'label' => 'Please attach a copy of your transcript (complete through Fall 2018)',
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
@@ -9601,7 +9635,7 @@ function ilr_forms_students_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -9680,7 +9714,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'markup',
       'settings' => array(),
       'type' => 'markup',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -9733,7 +9767,7 @@ function ilr_forms_students_field_default_field_instances() {
     'bundle' => 'high_road_fellowship_application',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'If you have a preference among <a href="/sites/default/files/2018%20High%20Road%20Fellowships%20Project%20Descriptions.pdf" target="_blank">the specific projects of partnering organizations</a>, please indicate which ones you are most interested in and why.  (We make every effort to match students with their specific project requests.)',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -9748,7 +9782,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_request',
-    'label' => 'Preference',
+    'label' => 'Which specific projects interest you most and why?  (We strive to match students with their specific requests.)',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -9766,7 +9800,7 @@ function ilr_forms_students_field_default_field_instances() {
         'rows' => 10,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -9775,7 +9809,7 @@ function ilr_forms_students_field_default_field_instances() {
   $field_instances['entityform-high_road_fellowship_application-field_upload_your_resume_or_cv'] = array(
     'bundle' => 'high_road_fellowship_application',
     'deleted' => 0,
-    'description' => 'Please attach a resume (complete through Fall 2017)',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -9790,7 +9824,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_upload_your_resume_or_cv',
-    'label' => 'Resume',
+    'label' => 'Please attach a resume (complete through Fall 2018)',
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
@@ -9827,7 +9861,7 @@ function ilr_forms_students_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -9837,7 +9871,7 @@ function ilr_forms_students_field_default_field_instances() {
     'bundle' => 'high_road_fellowship_application',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What skills, education, work or community experiences do you have that would be relevant to these fellowship opportunities?',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -9852,7 +9886,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_work_experience',
-    'label' => 'Experience',
+    'label' => 'What skills, education, work or community experiences do you have that would be relevant to these fellowship opportunities?',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -9940,7 +9974,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -9975,7 +10009,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -10010,7 +10044,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -14571,6 +14605,8 @@ function ilr_forms_students_field_default_field_instances() {
   t('Attendee 1 - Last name');
   t('Attendee 2 - First name');
   t('Attendee 2 - Last name');
+  t('BHRF Available Projects');
+  t('Briefly describe your interest in a High Road Summer Fellowship. How would it contribute to your education or career plans?');
   t('Campus address');
   t('Campus telephone');
   t('Career field for this FEX opportunity (not the company or organization career field)');
@@ -14596,7 +14632,6 @@ function ilr_forms_students_field_default_field_instances() {
   t('Degree (supervisor)');
   t('Degree Program');
   t('Degree program');
-  t('Description of interest');
   t('Description of organization');
   t('Do you currently hold a Bachelor\'s degree?');
   t('Do you wish to accept the Transfer Option (TO) to Cornell\'s ILR School?');
@@ -14608,7 +14643,6 @@ function ilr_forms_students_field_default_field_instances() {
   t('Event date');
   t('Event title');
   t('Expected graduation date (mm/yyyy)');
-  t('Experience');
   t('Experience related to your selected course(s) (e.g., course work, employment, or an internship relevant to the course topic)');
   t('FEX constraints markup');
   t('FEX dates markup');
@@ -14634,7 +14668,6 @@ function ilr_forms_students_field_default_field_instances() {
   t('I certify that I am a sophomore, junior, senior, or first-year MILR student in the ILR School.');
   t('ILR Degree');
   t('If freshmen don\'t select this opportunity, may we offer it to upperclass students?');
-  t('If you have a preference among <a href="/sites/default/files/2018%20High%20Road%20Fellowships%20Project%20Descriptions.pdf" target="_blank">the specific projects of partnering organizations</a>, please indicate which ones you are most interested in and why.  (We make every effort to match students with their specific project requests.)');
   t('If you have more than one ILR degree, list them all.');
   t('Info session title');
   t('Is the FEX location different from the sponsor address entered above?');
@@ -14668,13 +14701,11 @@ function ilr_forms_students_field_default_field_instances() {
   t('Phone');
   t('Phone (supervisor)');
   t('Phone (with area code)');
-  t('Please attach a copy of your transcript (complete through Fall 2017)');
-  t('Please attach a resume (complete through Fall 2017)');
+  t('Please attach a copy of your transcript (complete through Fall 2018)');
+  t('Please attach a resume (complete through Fall 2018)');
   t('Please enter the name of the school you will attend for your first year. If you have not yet selected a school, please enter “Undecided” and email ilradmissions@cornell.edu once you have finalized your decision.');
   t('Please enter the phone number where you can be reached throughout the next academic year.');
   t('Please specify your school or college');
-  t('Please write a brief statement indicating why you are interested in a High Road Summer Fellowship in Buffalo.  How would it contribute to your education or career plans?');
-  t('Preference');
   t('Preferred city');
   t('Preferred dates for this WISP opportunity');
   t('Preferred first name (if different from above)');
@@ -14686,7 +14717,6 @@ function ilr_forms_students_field_default_field_instances() {
   t('Questions');
   t('Research plan');
   t('Responsibilities or projects to be completed by WISP student(s)');
-  t('Resume');
   t('School or college');
   t('School year');
   t('School you will attend for your first year');
@@ -14713,7 +14743,6 @@ function ilr_forms_students_field_default_field_instances() {
   t('Student\'s first name');
   t('Student\'s last name');
   t('Title of reseach proposal');
-  t('Transcript');
   t('Type of opportunity (select one or both)');
   t('Upload your resume');
   t('Upload your resume or CV');
@@ -14724,6 +14753,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('What year did you graduate from the ILR School?');
   t('When did you receive (or when do you expect to receive) your Bachelor\'s degree?');
   t('Which breakout session will you attend?');
+  t('Which specific projects interest you most and why?  (We strive to match students with their specific requests.)');
   t('Will the student(s) work on site or remotely?');
   t('Will you attend the keynote address?');
   t('Will you attend the reception?');

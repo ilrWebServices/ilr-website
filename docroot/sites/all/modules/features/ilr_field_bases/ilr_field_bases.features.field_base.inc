@@ -999,6 +999,27 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_bhrf_available_projects'.
+  $field_bases['field_bhrf_available_projects'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_bhrf_available_projects',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<p>Please take a moment to <a href="/sites/default/files/2019%20High%20Road%20Fellowships%20Project%20Descriptions.pdf" target="_blank">download and review the specific projects of partnering organizations</a>,</p>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
   // Exported field_base: 'field_blind_ad'.
   $field_bases['field_blind_ad'] = array(
     'active' => 1,
@@ -2922,6 +2943,31 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_discount_eligible'.
+  $field_bases['field_discount_eligible'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_discount_eligible',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_display_in_faculty_lists'.
   $field_bases['field_display_in_faculty_lists'] = array(
     'active' => 1,
@@ -2983,31 +3029,6 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_discount_eligible'.
-  $field_bases['field_discount_eligible'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_discount_eligible',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => '',
-        1 => '',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_dob'.
@@ -4754,7 +4775,8 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p><b>For information purposes only:</b> answers to the questions below <b>will not</b> be used in the awarding fellowships. They are relevant only in planning for best accommodations for students selected.</p>
+	<p><b>For information purposes only.</b><br>
+		Answers to the questions below <b>will not</b> be used in awarding fellowships; they&nbsp;are used only to plan best accommodations for students selected.</p>
 </div>
 ',
       ),
