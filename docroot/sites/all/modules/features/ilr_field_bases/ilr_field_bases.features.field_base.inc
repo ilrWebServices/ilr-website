@@ -1012,7 +1012,7 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(
       'markup' => array(
         'format' => 'full_html',
-        'value' => '<p>Please take a moment to <a href="/sites/default/files/2019%20High%20Road%20Fellowships%20Project%20Descriptions.pdf" target="_blank">download and review the specific projects of partnering organizations</a>,</p>
+        'value' => '<p>Please take a moment to <a href="/sites/ilr.cornell.edu/files/2019%20Project%20Descriptions.pdf" target="_blank">download and review the specific projects of partnering organizations</a>,</p>
 ',
       ),
     ),
