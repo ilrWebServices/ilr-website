@@ -100,9 +100,31 @@
   .field-type-image,
   .field-name-field-youtube-video,
   .thumbnail.custom {
+    position: relative;
     grid-column: 1;
     grid-row: 1 / -1;
     line-height: 0.5;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 1px;
+      height: 0;
+      padding-bottom: 100%;
+    }
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 100%;
+      width: auto;
+      max-width: 150%; // Value based on 3x2 ratio for thumbnails
+      -webkit-transform: translate(-50%,-50%);
+          -ms-transform: translate(-50%,-50%);
+              transform: translate(-50%,-50%);
+    }
   }
 
   h2, h3 {
@@ -163,6 +185,11 @@
       img {
         position: relative !important;
       }
+    }
+
+    &::before {
+      display: none;
+      padding: 0;
     }
   }
 
@@ -955,6 +982,7 @@
     margin-top: -1rem;
     position: relative;
     padding: $half-space $space $space;
+    visibility: visible;
 
     @include medium {
       display: grid !important; // the "show" mixin was causing issues
@@ -1051,7 +1079,8 @@
 
   > h2,
   h3.category,
-  .field-name-field-teaser {
+  .field-name-field-teaser,
+  .field-name-field-published-date {
     @include hidden;
   }
 }
