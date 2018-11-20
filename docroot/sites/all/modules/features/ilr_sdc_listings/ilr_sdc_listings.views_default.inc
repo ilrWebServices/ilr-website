@@ -1548,6 +1548,51 @@ function ilr_sdc_listings_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'programs/professional-programs/workshops-courses-training/all';
+
+  /* Display: Online */
+  $handler = $view->new_display('page', 'Online', 'page_1');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'sdc_course' => 'sdc_course',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Cancelled (field_cancelled) */
+  $handler->display->display_options['filters']['field_cancelled_value']['id'] = 'field_cancelled_value';
+  $handler->display->display_options['filters']['field_cancelled_value']['table'] = 'field_data_field_cancelled';
+  $handler->display->display_options['filters']['field_cancelled_value']['field'] = 'field_cancelled_value';
+  $handler->display->display_options['filters']['field_cancelled_value']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_cancelled_value']['value'] = array(
+    0 => '0',
+  );
+  $handler->display->display_options['filters']['field_cancelled_value']['group'] = 1;
+  /* Filter criterion: Content: Class Dates -  start date (field_class_dates) */
+  $handler->display->display_options['filters']['field_class_dates_value']['id'] = 'field_class_dates_value';
+  $handler->display->display_options['filters']['field_class_dates_value']['table'] = 'field_data_field_class_dates';
+  $handler->display->display_options['filters']['field_class_dates_value']['field'] = 'field_class_dates_value';
+  $handler->display->display_options['filters']['field_class_dates_value']['relationship'] = 'reverse_field_course_node';
+  $handler->display->display_options['filters']['field_class_dates_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_class_dates_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_class_dates_value']['default_date'] = 'now';
+  /* Filter criterion: Content: Setting (field_setting) */
+  $handler->display->display_options['filters']['field_setting_value']['id'] = 'field_setting_value';
+  $handler->display->display_options['filters']['field_setting_value']['table'] = 'field_data_field_setting';
+  $handler->display->display_options['filters']['field_setting_value']['field'] = 'field_setting_value';
+  $handler->display->display_options['filters']['field_setting_value']['value'] = array(
+    'online' => 'online',
+  );
+  $handler->display->display_options['path'] = 'programs/professional-programs/workshops-courses-training/online';
   $export['sdc_course_listing'] = $view;
 
   $view = new view();
