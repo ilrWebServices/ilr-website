@@ -468,7 +468,7 @@ function ilr_forms_students_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : {
-        "value" : "\\u003Ch2\\u003EEngaged Learning \\u0026amp; Research Fellowships for Cornell Students\\u003C\\/h2\\u003E\\r\\n\\r\\n\\u003Ch3\\u003ESummer 2018 in Buffalo NY\\u003C\\/h3\\u003E\\r\\n",
+        "value" : "\\u003Ch2\\u003EEngaged Learning \\u0026amp; Research Fellowships for Cornell Students\\u003C\\/h2\\u003E\\r\\n\\r\\n\\u003Ch3\\u003ESummer 2019 in Buffalo NY\\u003C\\/h3\\u003E\\r\\n",
         "format" : "full_html"
       },
       "send_confirmation_email_to_user" : 1,
