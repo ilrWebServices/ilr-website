@@ -1,0 +1,32 @@
+{
+  "name": "ilr-website",
+  "version": "1.0.0",
+  "description": "This repository houses the ILR School's Drupal migration. The project was initialized using Singlebrook's [Drupal Streamline](https://github.com/singlebrook/drupal_streamline).",
+  "main": "index.js",
+  "author": "",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilrWebServices/ilr-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ilrWebServices/ilr-website/issues"
+  },
+  "homepage": "https://github.com/ilrWebServices/ilr-website#readme",
+  "devDependencies": {
+    "breakpoint-sass": "^2.7.1",
+    "compass-mixins": "0.12.10",
+    "gulp": "^3.9.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-glob": "^1.0.9",
+    "modularscale-sass": "^3.0.8",
+    "singularitygs": "^1.8.0"
+  },
+  "dependencies": {},
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp sass"
+  }
+}
