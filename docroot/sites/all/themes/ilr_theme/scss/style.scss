@@ -5,16 +5,12 @@
 @import "compass/typography/text/force-wrap";
 
 // //Modular Scale
-@import "modular-scale";
+@import "modularscale";
 
 // Grid
 @import "singularitygs";
-@import "singularity-extras";
 @import "breakpoint";
 @import "vendor/eq";
-
-//Buttons
-//@import "vendor/buttons/buttons";
 
 //Variables
 $base-font-size: 19px;
