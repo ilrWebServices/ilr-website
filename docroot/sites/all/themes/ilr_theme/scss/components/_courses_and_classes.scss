@@ -14,7 +14,7 @@
       @include trailer(.5);
     }
     .message {
-      @include adjust-font-size-to(14px, .7);
+      //@include adjust-font-size-to(14px, .7);
       color: $brand;
       font-weight: bold;
     }
@@ -54,12 +54,12 @@
 
   .message {
     clear: left;
-    @include adjust-font-size-to(14px, .7);
+    //@include adjust-font-size-to(14px, .7);
   }
 
   span, .street-block {
     clear: left;
-    @include adjust-font-size-to(14px, .7);
+    //@include adjust-font-size-to(14px, .7);
     display: inline-block;
     &.timespan, &.format {
       @include trailer(.5);
@@ -77,26 +77,26 @@
   }
 
   .course-details {
-    @include adjust-font-size-to(16px, .7);
+    //@include adjust-font-size-to(16px, .7);
   }
 
   .details-rule {
     clear: left;
     @include leader(1);
-    @include adjust-font-size-to(14px, .7);
+    //@include adjust-font-size-to(14px, .7);
     border-top: 1px solid $gray-light;
     text-transform: uppercase;
   }
 
   span.class-title {
     font-weight: bold;
-    @include adjust-font-size-to(16px);
+    //@include adjust-font-size-to(16px);
   }
 
   .date-time span.date {
     display: block;
     font-weight: bold;
-    @include adjust-font-size-to(16px);
+    //@include adjust-font-size-to(16px);
     &.cancelled {
       text-decoration: line-through;
     }
@@ -108,7 +108,7 @@
     .cost {
       display: block;
       text-align: center;
-      @include adjust-font-size-to(14px, .5);
+      //@include adjust-font-size-to(14px, .5);
       padding-bottom: .3em;
     }
     &.button-info .cost {
@@ -118,7 +118,7 @@
       display: none;
     }
     &.follow { //is this still needed now that price has been removed from btn?
-      @include adjust-font-size-to(16px,1);
+      //@include adjust-font-size-to(16px,1);
     }
     &.button-cancelled .cost {
       display: none;
@@ -133,7 +133,7 @@
       @include trailer(1);
 
       h2 {
-        @include adjust-font-size-to($h3-size);
+        //@include adjust-font-size-to($h3-size);
         @include grid-span(3,4);
         @include context('#main','#main[data-eq-state="550"]') {
           @include grid-span(8,4);
@@ -174,7 +174,7 @@
       }
     }
     span.multiple-dates {
-      @include adjust-font-size-to(15px, 1);
+      //@include adjust-font-size-to(15px, 1);
       font-family: $font;
       font-weight: 300;
       color: $p-text;
@@ -182,7 +182,7 @@
   }
 
   .link {
-    @include adjust-font-size-to(16px,1);
+    //@include adjust-font-size-to(16px,1);
     @include set-link($black, true);
     @include trailer(1);
 
@@ -218,7 +218,7 @@ form.class-details {
 
 .page-programs-professional-programs-workshops-courses-training, .page-programs-programs-professional-programs-search {
   .sort p {
-    @include adjust-font-size-to(13px, 1);
+    //@include adjust-font-size-to(13px, 1);
     text-transform: uppercase;
     a {
       padding: 0 .5em;
@@ -269,7 +269,7 @@ form.class-details {
 
 .node-type-sdc-course { // Course detail page
   .field-name-field-catalog-prefix {
-    @include adjust-font-size-to($h2-size);
+    //@include adjust-font-size-to($h2-size);
     font-family: $font-headers;
     color: $h2-text;
   }
@@ -322,7 +322,7 @@ form.class-details {
   display: none;
 }
 .node-sdc-class .node-sdc-course h2 {
-  @include adjust-font-size-to(16px,1);
+  //@include adjust-font-size-to(16px,1);
 }
 
 .node-sdc-class .node-sdc-course h2 a:hover {
@@ -331,7 +331,7 @@ form.class-details {
 
 div.field-name-field-course.field-type-entityreference {
   a { // This is the title of the node
-    @include adjust-font-size-to($h2-size, 1);
+    //@include adjust-font-size-to($h2-size, 1);
     font-family: $font-headers;
     font-weight: 400;
     color: $h2-text;
@@ -387,7 +387,7 @@ div.field-name-field-course.field-type-entityreference {
 }
 
 p.button-info {
-  @include adjust-font-size-to(14px, .7);
+  //@include adjust-font-size-to(14px, .7);
   font-style: italic;
   margin-bottom: 0;
 }

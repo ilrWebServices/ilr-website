@@ -41,7 +41,7 @@
 @mixin slug() {
   h2 {
     @include adjust-leading-to(1);
-    @include adjust-font-size-to(16px);
+    //@include adjust-font-size-to(16px);
     margin-bottom: 0;
     font-weight: 400;
   }
@@ -226,7 +226,7 @@
   }
 
   .news__date {
-    @include adjust-font-size-to(15px);
+    //@include adjust-font-size-to(15px);
 
     color: $dark-gray-orange;
     padding: 0 0 1rem;
@@ -259,7 +259,7 @@
     }
 
     .field-name-field-published-date {
-      @include adjust-font-size-to(15px);
+      //@include adjust-font-size-to(15px);
       @include visible;
 
       order: 2;
@@ -268,7 +268,7 @@
 
     .field-type-text-with-summary {
       p {
-        @include adjust-font-size-to(.9rem, 0.8);
+        //@include adjust-font-size-to(.9rem, 0.8);
       }
 
       order: 4;
@@ -292,16 +292,16 @@
   .news__title {
     h2 {
       @include set-heading;
-      @include adjust-font-size-to(1.5rem, 1);
+      //@include adjust-font-size-to(1.5rem, 1);
 
       padding: 0 0 1rem;
 
       @include large {
-        @include adjust-font-size-to(1.3rem, 1);
+        //@include adjust-font-size-to(1.3rem, 1);
       }
 
       @include xl {
-        @include adjust-font-size-to(1.5rem, 1);
+        //@include adjust-font-size-to(1.5rem, 1);
       }
 
       a {
@@ -313,7 +313,7 @@
 
   .news__teaser {
     p {
-      @include adjust-font-size-to(.9rem, 0.8);
+      //@include adjust-font-size-to(.9rem, 0.8);
     }
   }
 
@@ -397,7 +397,7 @@
   }
 
   h2 {
-    @include adjust-font-size-to(2rem, 1.2);
+    //@include adjust-font-size-to(2rem, 1.2);
   }
 
   h3 {
@@ -410,7 +410,7 @@
     text-transform: uppercase;
     font-family: $font;
     font-weight: bold;
-    @include adjust-font-size-to(14px);
+    //@include adjust-font-size-to(14px);
   }
 
   &.node-basic-page,
@@ -611,13 +611,13 @@
 
         @include medium-only {
           a span {
-            @include adjust-font-size-to(25px, 1);
+            //@include adjust-font-size-to(25px, 1);
           }
         }
 
         @include xl {
           a span {
-            @include adjust-font-size-to(28px, 1);
+            //@include adjust-font-size-to(28px, 1);
           }
         }
       }
@@ -654,29 +654,29 @@
 }
 
 @mixin title-knockout($pad: 50px) {
-  @include adjust-font-size-to(1.5rem);
+  //@include adjust-font-size-to(1.5rem);
 
   @include medium {
-    @include adjust-font-size-to(2rem);
+    //@include adjust-font-size-to(2rem);
   }
 
   @include large {
-    @include adjust-font-size-to(2.6rem);
+    //@include adjust-font-size-to(2.6rem);
   }
 
   // @include breakpoint($full-break) {
-  //   @include adjust-font-size-to(2.6rem);
+  //   //@include adjust-font-size-to(2.6rem);
   // }
 
   @include breakpoint($page-max-width) {
-    @include adjust-font-size-to(3.2rem);
+    //@include adjust-font-size-to(3.2rem);
   }
 
   mix-blend-mode: lighten;
   margin: 0;
 
   a {
-    @include adjust-font-size-to(1.2em);
+    //@include adjust-font-size-to(1.2em);
     @include set-heading(true);
     line-height: 0.9;
     display: block;
@@ -730,16 +730,16 @@
   padding: 0;
 
   h2 {
-    @include adjust-font-size-to(1.2rem, 0.8);
+    //@include adjust-font-size-to(1.2rem, 0.8);
     @include set-heading(true, white);
     @include framed($width: 10px, $color: white, $top: false, $right: true, $bottom: true, $left: false);
 
     @include medium {
-      @include adjust-font-size-to(3rem, 2);
+      //@include adjust-font-size-to(3rem, 2);
     }
 
     @include breakpoint($full-break) {
-      @include adjust-font-size-to(3.7rem, 2.4);
+      //@include adjust-font-size-to(3.7rem, 2.4);
     }
   }
 
@@ -1025,21 +1025,21 @@
     }
 
     h2 {
-      @include adjust-font-size-to(2rem, 1.3);
+      //@include adjust-font-size-to(2rem, 1.3);
 
       color: white;
       padding: 0;
 
       @include medium {
-        @include adjust-font-size-to(2.5rem, 1.75);
+        //@include adjust-font-size-to(2.5rem, 1.75);
       }
 
       @include large {
-        @include adjust-font-size-to(3rem, 2);
+        //@include adjust-font-size-to(3rem, 2);
       }
 
       @include xl {
-        @include adjust-font-size-to(4rem, 2.2);
+        //@include adjust-font-size-to(4rem, 2.2);
       }
 
       a {
@@ -1058,7 +1058,7 @@
       color: white;
 
       @include large {
-        @include adjust-font-size-to(1.1rem, 1.1);
+        //@include adjust-font-size-to(1.1rem, 1.1);
       }
     }
   }

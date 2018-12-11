@@ -57,12 +57,12 @@ body.not-front {
   }
 
   p {
-    @include adjust-font-size-to(12px, .6);
+    //@include adjust-font-size-to(12px, .6);
   }
 
   form {
     p {
-      @include adjust-font-size-to(16px, .8);
+      //@include adjust-font-size-to(16px, .8);
     }
   }
 

@@ -24,7 +24,7 @@
 
     .field-type-text-long {
       @include paragraph-text;
-      @include adjust-font-size-to(18px, .8);
+      //@include adjust-font-size-to(18px, .8);
     }
 
     .field-type-image {

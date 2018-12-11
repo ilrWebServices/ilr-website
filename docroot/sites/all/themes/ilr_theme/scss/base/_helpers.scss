@@ -20,7 +20,7 @@
   font-weight: bold;
   text-decoration: none !important;
   @include border-radius(12px, 12px);
-  @include adjust-font-size-to(12px);
+  //@include adjust-font-size-to(12px);
   @include adjust-leading-to(1);
 
   &:hover, &:visited, &:active {

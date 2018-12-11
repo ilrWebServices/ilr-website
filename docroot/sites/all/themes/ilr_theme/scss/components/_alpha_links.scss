@@ -11,7 +11,7 @@
       text-align: center;
       padding: 0;
       background: none;
-      @include adjust-font-size-to(11px);
+      //@include adjust-font-size-to(11px);
 
       a {
         display: block;
@@ -23,7 +23,7 @@
 
   [data-eq-state="regular-nav"] & {
     li {
-      @include adjust-font-size-to(20px);
+      //@include adjust-font-size-to(20px);
       width: 1.2em;
       a {
         border-right: 1px solid $gray-light;

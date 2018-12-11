@@ -18,7 +18,7 @@
       width: auto;
       height: auto;
       a {
-        @include adjust-font-size-to(28px);
+        //@include adjust-font-size-to(28px);
         @include adjust-leading-to(1);
         background: transparent;
         border-radius: 0;
@@ -35,7 +35,7 @@
       }
     }
     h2.event-title {
-      @include adjust-font-size-to(22px);
+      //@include adjust-font-size-to(22px);
       @include adjust-leading-to(1);
       margin: .2em 0 0 0;
       padding: 0;

@@ -11,7 +11,7 @@
         overflow: visible; //stop name from being cut off in circle nav on mobile
       }
       h2 {
-        @include adjust-font-size-to(19px);
+        //@include adjust-font-size-to(19px);
         @include adjust-leading-to(1);
         display: block !important;
         visibility: visible;

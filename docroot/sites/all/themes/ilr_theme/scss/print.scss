@@ -92,7 +92,7 @@ body.front {
     margin-bottom: 1em !important;
     padding-right: 1em;
     h2 {
-      @include adjust-font-size-to(20px);
+      //@include adjust-font-size-to(20px);
       @include adjust-leading-to(1);
     }
     .field-name-field-image {
@@ -116,7 +116,7 @@ body.front {
       margin-bottom: 1em;
       clear: left;
       span {
-        @include adjust-font-size-to(20px);
+        //@include adjust-font-size-to(20px);
         @include adjust-leading-to(1);
         br { //remove br tag so date will display correctly for print
           // display: none;
@@ -149,7 +149,7 @@ body.front {
           margin: 0 0 2em !important;
           padding-right: 1em;
           h2 {
-            @include adjust-font-size-to(18px);
+            //@include adjust-font-size-to(18px);
             @include adjust-leading-to(1);
           }
           .field-name-field-image {
@@ -251,7 +251,7 @@ body.front {
             font-family: $font;
           }
           h2 {
-            @include adjust-font-size-to(40px);
+            //@include adjust-font-size-to(40px);
             @include adjust-leading-to(1);
             margin-bottom: 0;
             padding: 1.25em 0 1.25em .4em;

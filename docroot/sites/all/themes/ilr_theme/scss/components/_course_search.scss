@@ -4,7 +4,7 @@
 
   form {
     label {
-      @include adjust-font-size-to(14px, .7);
+      //@include adjust-font-size-to(14px, .7);
       padding-left: 3px;
     }
 
@@ -84,7 +84,7 @@
     overflow: visible;
     ul li {
       @include force-wrap;
-      @include adjust-font-size-to(13px, 15);
+      //@include adjust-font-size-to(13px, 15);
       @include adjust-leading-to(1);
       padding: 5px 6px;
       &:hover {

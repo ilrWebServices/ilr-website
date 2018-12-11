@@ -26,7 +26,7 @@ body.subsite-front {
     .introduction {
       text-align: center;
       font-family: $font-headers;
-      @include adjust-font-size-to(22px);
+      //@include adjust-font-size-to(22px);
       @include adjust-leading-to(1);
       margin: 0 auto !important;
     }
@@ -34,7 +34,7 @@ body.subsite-front {
     .tagline {
       text-align: center;
       font-style: oblique;
-      @include adjust-font-size-to(22px);
+      //@include adjust-font-size-to(22px);
     }
 
     #block-bean-70th-events-header {
@@ -102,7 +102,7 @@ body.subsite-front {
       p {
         margin: 0 auto;
         text-align: center;
-        @include adjust-font-size-to(22px);
+        //@include adjust-font-size-to(22px);
         @include adjust-leading-to(1);
         color: white;
         a, a:visited {
@@ -147,7 +147,7 @@ body.subsite-front {
       position: relative;
       border: none;
       h2 {
-        @include adjust-font-size-to(30px);
+        //@include adjust-font-size-to(30px);
         @include adjust-leading-to(1);
         @include margin-trailer(.5);
         a {
@@ -167,7 +167,7 @@ body.subsite-front {
       }
       .field-name-field-full-name {
         @include margin-leader(.5);
-        @include adjust-font-size-to(22px);
+        //@include adjust-font-size-to(22px);
         @include adjust-leading-to(1);
         color: white;
         display: none;
@@ -198,7 +198,7 @@ body.node-type-reflection {
       @include margin-trailer (1);
     }
     .field-type-text, .field-type-list-text {
-      @include adjust-font-size-to(22px);
+      //@include adjust-font-size-to(22px);
       font-style: oblique;
     }
     ul.social-share {

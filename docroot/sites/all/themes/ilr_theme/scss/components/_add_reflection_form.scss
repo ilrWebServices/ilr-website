@@ -63,7 +63,7 @@
     font-style: italic;
     clear: both;
     @include padding-leader(1);
-    @include adjust-font-size-to(14px);
+    //@include adjust-font-size-to(14px);
     line-height: 1.2em;
   }
 

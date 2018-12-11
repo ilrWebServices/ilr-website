@@ -8,7 +8,7 @@
 
 .node-type-news-item {
   .field-name-field-description {
-    @include adjust-font-size-to(28px);
+    //@include adjust-font-size-to(28px);
     @include adjust-leading-to(1);
     font-weight: 300;
   }

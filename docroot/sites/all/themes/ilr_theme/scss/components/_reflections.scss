@@ -41,7 +41,7 @@ article.node-reflection {
   }
   .field-name-body {
     p {
-      @include adjust-font-size-to(25px);
+      //@include adjust-font-size-to(25px);
       @include adjust-leading-to(1);
       color: $darker-red;
       font-family: freight-text-pro;

@@ -16,7 +16,7 @@ article.node-people-profile {
   .group-title-and-focus {
     .crumb {
       @include set-heading(true);
-      // @include adjust-font-size-to(14px);
+      // //@include adjust-font-size-to(14px);
       text-transform: uppercase;
       color: $cornell-red;
     }
@@ -90,7 +90,7 @@ article.node-people-profile {
       }
     }
     .field-name-field-ai-other-expertise {
-      @include adjust-font-size-to(16px);
+      //@include adjust-font-size-to(16px);
       @include adjust-leading-to(1);
     }
   }

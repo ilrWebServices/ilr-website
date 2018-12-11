@@ -50,7 +50,7 @@ body.subsite.sports-leadership-camp {
     }
 
     .slc-banner__brand {
-      @include adjust-font-size-to(35px);
+      //@include adjust-font-size-to(35px);
       @include adjust-leading-to(.75);
       margin: 0;
       color: white;
@@ -68,7 +68,7 @@ body.subsite.sports-leadership-camp {
       }
 
       @include xl {
-        @include adjust-font-size-to(55px);
+        //@include adjust-font-size-to(55px);
       }
     }
 
@@ -110,7 +110,7 @@ body.subsite.sports-leadership-camp {
     }
 
     .slc-banner__dates {
-      @include adjust-font-size-to(24px);
+      //@include adjust-font-size-to(24px);
       @include adjust-leading-to(1);
       @include grid-span (10,2);
       clear: left;
@@ -124,7 +124,7 @@ body.subsite.sports-leadership-camp {
       }
 
       @include xl {
-        @include adjust-font-size-to(27px);
+        //@include adjust-font-size-to(27px);
         // margin-top: -2em;
       }
     }

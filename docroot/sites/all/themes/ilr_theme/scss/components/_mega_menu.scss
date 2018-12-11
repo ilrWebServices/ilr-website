@@ -112,7 +112,7 @@
 
     h2 {
       &.bean-title {
-        @include adjust-font-size-to(22px);
+        //@include adjust-font-size-to(22px);
 
         color: $white;
         font-weight: 400;
@@ -124,7 +124,7 @@
       @include three-column;
 
       article h2 {
-        @include adjust-font-size-to(17px);
+        //@include adjust-font-size-to(17px);
 
         font-weight: normal;
         margin: 0;
