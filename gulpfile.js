@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
+var livereload = require('gulp-livereload');
 // var sassGlob = require('gulp-sass-glob');
 
 // var localConfig = {
@@ -36,10 +37,14 @@ gulp.task('sass', function() {
       ]
     })
     .on('error', plugins.sass.logError))
-    .pipe(gulp.dest('docroot/sites/all/themes/ilr_theme/css'));
-});
+    .pipe(gulp.dest('docroot/sites/all/themes/ilr_theme/css'))
+    .pipe(livereload());
+  });
 
 gulp.task('default', ['sass'], function() {
   console.log('Watching for .scss file changes in /scss.');
+  livereload.listen({
+    'port': 35777
+  });
   gulp.watch(['docroot/sites/all/themes/ilr_theme/scss/**/*.scss'], ['sass']);
 });
