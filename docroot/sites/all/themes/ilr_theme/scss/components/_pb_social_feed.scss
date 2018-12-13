@@ -22,7 +22,7 @@
           @include trailer(.5);
         }
         .field-name-twitter-handle a, .field-name-time-stamp {
-          //@include adjust-font-size-to(14px);
+          @include adjust-font-size-to(14px);
           text-transform: uppercase;
           font-weight: 600;
           color: $link;
@@ -32,7 +32,7 @@
         }
         .field-name-tweet {
           p {
-            //@include adjust-font-size-to(16px);
+            @include adjust-font-size-to(16px);
             @include adjust-leading-to(1.1);
           }
         }

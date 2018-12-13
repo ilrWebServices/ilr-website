@@ -396,7 +396,7 @@
 }
 
 @mixin readmore-js-link {
-  //@include adjust-font-size-to(14px);
+  @include adjust-font-size-to(14px);
   @include set-link($underline: true, $underline-color: $cornell-red);
 
   font-weight: 600;

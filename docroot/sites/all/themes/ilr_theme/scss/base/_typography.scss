@@ -8,7 +8,7 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  //@include adjust-font-size-to(34px);
+  @include adjust-font-size-to(34px);
   @include adjust-leading-to(1.5);
   @include padding-leader(1);
   &::after {
@@ -96,18 +96,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  //@include adjust-font-size-to($h1-size * 0.5 );
+  @include adjust-font-size-to($h1-size * 0.5 );
   color: $h1-text;
   line-height: 0.9;
   // @include adjust-leading-to(2, $h1-size); to do: troublehoot print problem
   @include margin-trailer(0.15);
 
   @include medium {
-    //@include adjust-font-size-to($h1-size * .75);
+    @include adjust-font-size-to($h1-size * .75);
   }
 
   @include large {
-    //@include adjust-font-size-to($h1-size);
+    @include adjust-font-size-to($h1-size);
   }
 
   a {
@@ -133,7 +133,7 @@ h1 {
 
 @mixin h2 {
   @include set-heading;
-  //@include adjust-font-size-to($h2-size, $line-height-multiplier);
+  @include adjust-font-size-to($h2-size, $line-height-multiplier);
   color: $h2-text;
 
   a {
@@ -227,7 +227,7 @@ h2 + ul, h3 + ul, h4 + ul, h5 + ul, h6 + ul {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  //@include adjust-font-size-to(34px);
+  @include adjust-font-size-to(34px);
   @include adjust-leading-to(1.5);
   @include padding-leader(1);
   &::after {
@@ -399,12 +399,12 @@ ul.tabs {
 }
 
 dl dt {
-  //@include adjust-font-size-to(ms(0));
+  @include adjust-font-size-to(ms(0));
   font-weight: bold;
 }
 
 dl dd {
-  //@include adjust-font-size-to(ms(0));
+  @include adjust-font-size-to(ms(0));
   margin: 0;
 }
 
@@ -457,7 +457,7 @@ q {
 }
 
 sub, sup {
-  //@include adjust-font-size-to(ms(-2));
+  @include adjust-font-size-to(ms(-2));
   position: relative;
   vertical-align: baseline;
 }
@@ -545,7 +545,7 @@ table {
 
 #sidebar-second {
   li p {
-    //@include adjust-font-size-to(ms(0));
+    @include adjust-font-size-to(ms(0));
   }
 
   ul {

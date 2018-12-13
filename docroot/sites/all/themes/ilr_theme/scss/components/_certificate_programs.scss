@@ -36,7 +36,7 @@
     }
 
     .partner-credit {
-      //@include adjust-font-size-to(0.8rem, 0.9);
+      @include adjust-font-size-to(0.8rem, 0.9);
 
       text-align: right;
       order: 4;
@@ -151,7 +151,7 @@ body.node-type-certificate-programs {
       }
 
       h2 {
-        //@include adjust-font-size-to(1rem, 1);
+        @include adjust-font-size-to(1rem, 1);
       }
 
       p {

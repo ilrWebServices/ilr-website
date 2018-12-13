@@ -27,7 +27,7 @@
     padding-right: $space;
     color: white;
 
-    //@include adjust-font-size-to(22px);
+    @include adjust-font-size-to(22px);
     @include adjust-leading-to(1);
     @include padding-leader(2);
 
@@ -40,7 +40,7 @@
     }
 
     @include xl {
-      //@include adjust-font-size-to(26px, 1.5);
+      @include adjust-font-size-to(26px, 1.5);
     }
   }
 

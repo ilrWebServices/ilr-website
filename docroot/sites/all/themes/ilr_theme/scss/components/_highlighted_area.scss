@@ -10,7 +10,7 @@
   @include trailer(1);
   text-align: center;
   h2 {
-    //@include adjust-font-size-to(34px);
+    @include adjust-font-size-to(34px);
     @include adjust-leading-to(1);
     margin: 1em 0;
     a {
@@ -42,7 +42,7 @@
   .heading {
     @include grid-span(9,4);
     h2 {
-      //@include adjust-font-size-to(34px);
+      @include adjust-font-size-to(34px);
       @include adjust-leading-to(1.5);
       margin: .2em 0 .5em 0;
       a {

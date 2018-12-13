@@ -8,7 +8,7 @@
     min-height: 190px;
     padding: 1em;
     p {
-      //@include adjust-font-size-to(14px);
+      @include adjust-font-size-to(14px);
       @include adjust-leading-to(1);
       margin-bottom: 0;
       color: white;

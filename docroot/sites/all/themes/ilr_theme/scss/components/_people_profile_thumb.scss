@@ -34,7 +34,7 @@ body.page-taxonomy-term .view-areas-expertise-taxonomy-term {
     }
 
     .field {
-      //@include adjust-font-size-to(16px);
+      @include adjust-font-size-to(16px);
       line-height: 1.1;
 
       &.field-type-image {

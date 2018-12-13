@@ -5,10 +5,10 @@
 
   .content h2 {
     @include set-heading(true);
-    //@include adjust-font-size-to(2rem);
+    @include adjust-font-size-to(2rem);
 
     @include large {
-      //@include adjust-font-size-to(3rem);
+      @include adjust-font-size-to(3rem);
     }
   }
 
@@ -64,7 +64,7 @@
       padding: 0 $space 0 0;
 
       @include large {
-        //@include adjust-font-size-to(26px, 1.5);
+        @include adjust-font-size-to(26px, 1.5);
 
         padding-right: $triple-space;
       }
@@ -156,7 +156,7 @@
   text-align: center;
 
   p {
-    //@include adjust-font-size-to(23px);
+    @include adjust-font-size-to(23px);
 
     max-width: 500px;
     margin: 0 auto;

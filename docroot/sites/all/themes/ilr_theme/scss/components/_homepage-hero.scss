@@ -101,13 +101,13 @@
 
       p {
         @include medium {
-          //@include adjust-font-size-to(21px, 1.2);
+          @include adjust-font-size-to(21px, 1.2);
         }
         @include large {
-          //@include adjust-font-size-to(18px, 1.1);
+          @include adjust-font-size-to(18px, 1.1);
         }
         @include xl {
-          //@include adjust-font-size-to(21px, 1.2);
+          @include adjust-font-size-to(21px, 1.2);
         }
       }
     }
@@ -142,7 +142,7 @@
         margin: 0;
 
         @include xl {
-          //@include adjust-font-size-to(25px);
+          @include adjust-font-size-to(25px);
         }
       }
     }

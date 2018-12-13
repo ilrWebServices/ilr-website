@@ -3,7 +3,7 @@
   @include padded($padding: 2em 0 4em 0);
 
   &__dates {
-    //@include adjust-font-size-to(29px, 1);
+    @include adjust-font-size-to(29px, 1);
     @include padding-trailer(.5);
     @include trailer(.5);
     font-family: $font;
@@ -12,7 +12,7 @@
   }
 
   &__cost {
-    //@include adjust-font-size-to(24px, 1.2);
+    @include adjust-font-size-to(24px, 1.2);
     font-family: $font;
     font-weight: 400;
     margin-top: 0;
@@ -38,7 +38,7 @@
     }
 
     .registration-block__detail {
-      //@include adjust-font-size-to(16px, 1);
+      @include adjust-font-size-to(16px, 1);
       font-weight: 600;
       margin-bottom: 0;
 
