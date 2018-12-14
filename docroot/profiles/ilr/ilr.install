@@ -982,3 +982,10 @@ function _ilr_migrate_body_to_paragraph_item($node) {
     $paragraph->save();
   }
 }
+
+/**
+ * Enables the ilr_instagram module
+ */
+function ilr_update_7073() {
+  module_enable(['ilr_instagram_feed']);
+}

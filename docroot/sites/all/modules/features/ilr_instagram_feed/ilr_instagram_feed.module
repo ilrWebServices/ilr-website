@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ilr_instagram feature.
+ */
+
+include_once 'ilr_instagram_feed.features.inc';
