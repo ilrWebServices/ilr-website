@@ -320,6 +320,23 @@ function ilr_sdc_listings_update_7015() {
 }
 
 /**
+ * Removes the Faculty/Contact mappings
+ */
+function ilr_sdc_listings_update_7016() {
+  $query = db_select('node', 'n');
+  $query->addField('n', 'nid');
+  $query->condition('n.type', 'sdc_faculty');
+
+  $nids = $query->execute()->fetchCol();
+
+  foreach ($nids as $nid) {
+    if ($mapping_object = salesforce_mapping_object_load_by_drupal('node', $nid)) {
+      $mapping_object->delete();
+    }
+  }
+}
+
+/**
  * Update aliases for sdc content types.
  */
 function _ilr_sdc_listings_update_aliases() {
