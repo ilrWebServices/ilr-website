@@ -1430,13 +1430,13 @@ function ilr_sdc_listings_default_salesforce_mapping() {
     "name" : "faculty",
     "label" : "Faculty",
     "sync_triggers" : "24",
-    "salesforce_object_type" : "Contact",
+    "salesforce_object_type" : "EXECED_Participant__c",
     "salesforce_record_types_allowed" : {
-      "0120P000000EJtAQAW" : "0120P000000EJtAQAW",
-      "0120P000000EJt5QAG" : 0,
+      "0120P000000EJuAQAW" : "0120P000000EJuAQAW",
+      "0120P000000EJu9QAG" : 0,
       "012000000000000AAA" : 0
     },
-    "salesforce_record_type_default" : "0120P000000EJtAQAW",
+    "salesforce_record_type_default" : "0120P000000EJuAQAW",
     "drupal_entity_type" : "node",
     "drupal_bundle" : "sdc_faculty",
     "field_mappings" : [
@@ -1465,7 +1465,7 @@ function ilr_sdc_listings_default_salesforce_mapping() {
           "htmlFormatted" : false,
           "idLookup" : true,
           "inlineHelpText" : null,
-          "label" : "Contact ID",
+          "label" : "Record ID",
           "length" : 18,
           "name" : "Id",
           "nameField" : false,
@@ -1494,14 +1494,14 @@ function ilr_sdc_listings_default_salesforce_mapping() {
         "drupal_field" : { "fieldmap_type" : "property", "fieldmap_value" : "title" },
         "salesforce_field" : {
           "autoNumber" : false,
-          "byteLength" : 363,
-          "calculated" : false,
-          "calculatedFormula" : null,
+          "byteLength" : 3900,
+          "calculated" : true,
+          "calculatedFormula" : "Contact__r.Full_Name__c",
           "cascadeDelete" : false,
           "caseSensitive" : false,
           "controllerName" : null,
           "createable" : false,
-          "custom" : false,
+          "custom" : true,
           "defaultValue" : null,
           "defaultValueFormula" : null,
           "defaultedOnCreate" : false,
@@ -1511,17 +1511,17 @@ function ilr_sdc_listings_default_salesforce_mapping() {
           "displayLocationInDecimal" : false,
           "externalId" : false,
           "filterable" : true,
-          "groupable" : true,
+          "groupable" : false,
           "htmlFormatted" : false,
           "idLookup" : false,
-          "inlineHelpText" : null,
-          "label" : "Full Name",
-          "length" : 121,
-          "name" : "Name",
-          "nameField" : true,
+          "inlineHelpText" : "Full name of the contact, used for API and integration.",
+          "label" : "Contact Full Name",
+          "length" : 1300,
+          "name" : "Contact_Full_Name__c",
+          "nameField" : false,
           "namePointing" : false,
-          "nillable" : false,
-          "permissionable" : false,
+          "nillable" : true,
+          "permissionable" : true,
           "picklistValues" : [],
           "precision" : 0,
           "referenceTo" : [],
@@ -1541,66 +1541,16 @@ function ilr_sdc_listings_default_salesforce_mapping() {
         "direction" : "sf_drupal"
       },
       {
-        "drupal_field" : { "fieldmap_type" : "property", "fieldmap_value" : "body:value" },
-        "salesforce_field" : {
-          "autoNumber" : false,
-          "byteLength" : 98304,
-          "calculated" : false,
-          "calculatedFormula" : null,
-          "cascadeDelete" : false,
-          "caseSensitive" : false,
-          "controllerName" : null,
-          "createable" : true,
-          "custom" : true,
-          "defaultValue" : null,
-          "defaultValueFormula" : null,
-          "defaultedOnCreate" : false,
-          "dependentPicklist" : false,
-          "deprecatedAndHidden" : false,
-          "digits" : 0,
-          "displayLocationInDecimal" : false,
-          "externalId" : false,
-          "filterable" : false,
-          "groupable" : false,
-          "htmlFormatted" : true,
-          "idLookup" : false,
-          "inlineHelpText" : null,
-          "label" : "BIO",
-          "length" : 32768,
-          "name" : "EXECED_BIO__c",
-          "nameField" : false,
-          "namePointing" : false,
-          "nillable" : true,
-          "permissionable" : true,
-          "picklistValues" : [],
-          "precision" : 0,
-          "referenceTo" : [],
-          "relationshipName" : null,
-          "relationshipOrder" : null,
-          "restrictedDelete" : false,
-          "restrictedPicklist" : false,
-          "scale" : 0,
-          "soapType" : "xsd:string",
-          "sortable" : false,
-          "type" : "textarea",
-          "unique" : false,
-          "updateable" : true,
-          "writeRequiresMasterRead" : false
-        },
-        "key" : false,
-        "direction" : "sf_drupal"
-      },
-      {
         "drupal_field" : { "fieldmap_type" : "property", "fieldmap_value" : "field_job_title" },
         "salesforce_field" : {
           "autoNumber" : false,
-          "byteLength" : 765,
-          "calculated" : false,
-          "calculatedFormula" : null,
+          "byteLength" : 3900,
+          "calculated" : true,
+          "calculatedFormula" : "Contact__r.Title",
           "cascadeDelete" : false,
           "caseSensitive" : false,
           "controllerName" : null,
-          "createable" : true,
+          "createable" : false,
           "custom" : true,
           "defaultValue" : null,
           "defaultValueFormula" : null,
@@ -1611,442 +1561,13 @@ function ilr_sdc_listings_default_salesforce_mapping() {
           "displayLocationInDecimal" : false,
           "externalId" : false,
           "filterable" : true,
-          "groupable" : true,
+          "groupable" : false,
           "htmlFormatted" : false,
           "idLookup" : false,
-          "inlineHelpText" : null,
-          "label" : "Job Title",
-          "length" : 255,
-          "name" : "EXECED_Job_Title__c",
-          "nameField" : false,
-          "namePointing" : false,
-          "nillable" : true,
-          "permissionable" : true,
-          "picklistValues" : [
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Administrative Assistant",
-              "validFor" : null,
-              "value" : "Administrative Assistant"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Assistant Chef",
-              "validFor" : null,
-              "value" : "Assistant Chef"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Assistant Controller",
-              "validFor" : null,
-              "value" : "Assistant Controller"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Assistant Director",
-              "validFor" : null,
-              "value" : "Assistant Director"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Agent",
-              "validFor" : null,
-              "value" : "Agent"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Assistant GM",
-              "validFor" : null,
-              "value" : "Assistant GM"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Assistant Manager",
-              "validFor" : null,
-              "value" : "Assistant Manager"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Analyst",
-              "validFor" : null,
-              "value" : "Analyst"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Architect",
-              "validFor" : null,
-              "value" : "Architect"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Associate",
-              "validFor" : null,
-              "value" : "Associate"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Auditor",
-              "validFor" : null,
-              "value" : "Auditor"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Assistant Vice President",
-              "validFor" : null,
-              "value" : "Assistant Vice President"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Bartender",
-              "validFor" : null,
-              "value" : "Bartender"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Broker",
-              "validFor" : null,
-              "value" : "Broker"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Captain",
-              "validFor" : null,
-              "value" : "Captain"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Chief Executive Officer",
-              "validFor" : null,
-              "value" : "Chief Executive Officer"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Chief Financial Officer",
-              "validFor" : null,
-              "value" : "Chief Financial Officer"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Chairman",
-              "validFor" : null,
-              "value" : "Chairman"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Chef",
-              "validFor" : null,
-              "value" : "Chef"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Chief Information Officer",
-              "validFor" : null,
-              "value" : "Chief Information Officer"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Clerk",
-              "validFor" : null,
-              "value" : "Clerk"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Cook",
-              "validFor" : null,
-              "value" : "Cook"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Controller",
-              "validFor" : null,
-              "value" : "Controller"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Chief Operating Officer",
-              "validFor" : null,
-              "value" : "Chief Operating Officer"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Coordinator",
-              "validFor" : null,
-              "value" : "Coordinator"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Concierge",
-              "validFor" : null,
-              "value" : "Concierge"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Consultant",
-              "validFor" : null,
-              "value" : "Consultant"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Designer",
-              "validFor" : null,
-              "value" : "Designer"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Director",
-              "validFor" : null,
-              "value" : "Director"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Executive Assistant Manager",
-              "validFor" : null,
-              "value" : "Executive Assistant Manager"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Executive Chef",
-              "validFor" : null,
-              "value" : "Executive Chef"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Educator",
-              "validFor" : null,
-              "value" : "Educator"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Engineer",
-              "validFor" : null,
-              "value" : "Engineer"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Executive",
-              "validFor" : null,
-              "value" : "Executive"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Flight Attendant",
-              "validFor" : null,
-              "value" : "Flight Attendant"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "General Manager",
-              "validFor" : null,
-              "value" : "General Manager"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Housekeeper",
-              "validFor" : null,
-              "value" : "Housekeeper"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Matrie\\u0027d",
-              "validFor" : null,
-              "value" : "Matrie\\u0027d"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Manager",
-              "validFor" : null,
-              "value" : "Manager"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Other",
-              "validFor" : null,
-              "value" : "Other"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Owner",
-              "validFor" : null,
-              "value" : "Owner"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Partner",
-              "validFor" : null,
-              "value" : "Partner"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "President",
-              "validFor" : null,
-              "value" : "President"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Purser",
-              "validFor" : null,
-              "value" : "Purser"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Representative",
-              "validFor" : null,
-              "value" : "Representative"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Sous Chef",
-              "validFor" : null,
-              "value" : "Sous Chef"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Sommelier",
-              "validFor" : null,
-              "value" : "Sommelier"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Student",
-              "validFor" : null,
-              "value" : "Student"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Supervisor",
-              "validFor" : null,
-              "value" : "Supervisor"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Team Leader",
-              "validFor" : null,
-              "value" : "Team Leader"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Trainee",
-              "validFor" : null,
-              "value" : "Trainee"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Unknown",
-              "validFor" : null,
-              "value" : "Unknown"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Vice President",
-              "validFor" : null,
-              "value" : "Vice President"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Waiter",
-              "validFor" : null,
-              "value" : "Waiter"
-            }
-          ],
-          "precision" : 0,
-          "referenceTo" : [],
-          "relationshipName" : null,
-          "relationshipOrder" : null,
-          "restrictedDelete" : false,
-          "restrictedPicklist" : true,
-          "scale" : 0,
-          "soapType" : "xsd:string",
-          "sortable" : true,
-          "type" : "picklist",
-          "unique" : false,
-          "updateable" : true,
-          "writeRequiresMasterRead" : false
-        },
-        "key" : false,
-        "direction" : "sf_drupal"
-      },
-      {
-        "drupal_field" : { "fieldmap_type" : "property", "fieldmap_value" : "field_class_id" },
-        "salesforce_field" : {
-          "autoNumber" : false,
-          "byteLength" : 300,
-          "calculated" : false,
-          "calculatedFormula" : null,
-          "cascadeDelete" : false,
-          "caseSensitive" : false,
-          "controllerName" : null,
-          "createable" : true,
-          "custom" : true,
-          "defaultValue" : null,
-          "defaultValueFormula" : null,
-          "defaultedOnCreate" : false,
-          "dependentPicklist" : false,
-          "deprecatedAndHidden" : false,
-          "digits" : 0,
-          "displayLocationInDecimal" : false,
-          "externalId" : true,
-          "filterable" : true,
-          "groupable" : true,
-          "htmlFormatted" : false,
-          "idLookup" : true,
-          "inlineHelpText" : null,
-          "label" : "Legacy Persons ID",
-          "length" : 100,
-          "name" : "EXECED_Legacy_Persons_ID__c",
+          "inlineHelpText" : "Title from Contact record, used for API and integrations.",
+          "label" : "Contact Title",
+          "length" : 1300,
+          "name" : "Contact_Title__c",
           "nameField" : false,
           "namePointing" : false,
           "nillable" : true,
@@ -2063,7 +1584,7 @@ function ilr_sdc_listings_default_salesforce_mapping() {
           "sortable" : true,
           "type" : "string",
           "unique" : false,
-          "updateable" : true,
+          "updateable" : false,
           "writeRequiresMasterRead" : false
         },
         "key" : false,

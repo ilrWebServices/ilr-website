@@ -2201,7 +2201,7 @@ function ilr_sdc_listings_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_job_title',
-    'label' => 'Title',
+    'label' => 'Job title',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -2479,6 +2479,7 @@ function ilr_sdc_listings_field_default_field_instances() {
   t('Format');
   t('If the faculty member has a profile, then you can link to it here and their image and title will be automatically pulled from their profile page.');
   t('Is Full?');
+  t('Job title');
   t('Keywords');
   t('Note that the setting for the class inherits from the its course. You should only modify the value here if it\'s different from the course setting. ');
   t('On Demand');
@@ -2494,7 +2495,6 @@ function ilr_sdc_listings_field_default_field_instances() {
   t('Sponsor');
   t('The contact email is used when a user requests more info about and/or customized delivery of a course. If this field is set here, it will override the contact email of the sponsoring organization. ');
   t('Thumbnail');
-  t('Title');
   t('Topic');
 
   return $field_instances;
