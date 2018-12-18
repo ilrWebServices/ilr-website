@@ -72,7 +72,7 @@
         max-width: 465px;
 
         .subsite__heading {
-          @include adjust-font-size-to(1.6em, 1.2);
+          @include adjust-font-size-to(28px, 1.2);
 
           color: $cornell-red;
           letter-spacing: -1px;

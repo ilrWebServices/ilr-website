@@ -23,8 +23,10 @@ body.front .homepage-news {
     text-align: center;
 
     a {
-      @include adjust-font-size-to(1.5rem);
+      @include heading-medium;
 
+      padding-top: 1rem;
+      padding-bottom: 1rem;
       margin: 0;
       color: $black;
     }

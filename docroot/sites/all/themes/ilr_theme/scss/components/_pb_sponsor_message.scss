@@ -25,22 +25,10 @@
     .tower {
       font-weight: 300;
       color: $black;
-      font-size: 0.8rem;
-
-      @include medium {
-        @include adjust-font-size-to(1rem, 1);
-      }
-
-      @include large {
-        @include adjust-font-size-to(1.2rem, 1.1);
-      }
-
-      @include xl {
-        @include adjust-font-size-to(1.5rem, 1.4);
-      }
+      // font-size: 0.8rem;
 
       &:before {
-        @include adjust-font-size-to(25px);
+        @include adjust-font-size-to(28px);
         @include adjust-leading-to(1.5);
         color: $black;
         display: block;
@@ -67,6 +55,8 @@
   }
 
   .centered-blurb {
+    @include responsive-text(22px);
+
     max-width: $section-max-width;
     color: $black;
     padding: 0 $double-space;

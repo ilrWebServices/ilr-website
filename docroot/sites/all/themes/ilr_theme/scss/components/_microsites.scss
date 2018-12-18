@@ -4,12 +4,11 @@
   }
 
   .content h2 {
-    @include set-heading(true);
-    @include adjust-font-size-to(2rem);
+    $fs: 56px;
+    @include heading($fs, true);
+    @include trailer(0.5);
 
-    @include large {
-      @include adjust-font-size-to(3rem);
-    }
+    font-size: $fs * 0.8; // Overwrites on mobile
   }
 
   #content-bottom .block-bean {
@@ -259,10 +258,12 @@
     @include two-column-grid($gap: 0);
   }
 
-  h2 {
+  h2#venue {
     padding: $space $space 0 $double-space;
     text-align: left !important;
-    color: white !important;
+    color: white;
+    margin: 0;
+    line-height: 1.5;
 
     @include medium {
       padding-bottom: $space;

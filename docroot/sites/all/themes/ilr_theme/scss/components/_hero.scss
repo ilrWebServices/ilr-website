@@ -41,15 +41,10 @@
           text-align: center;
 
           h2 {
-            @include adjust-font-size-to(1.5rem, 1.3);
-
-            color: white;
-
-            @include medium {
-              @include adjust-font-size-to(2.5rem, 2);
-            }
+            @include responsive-heading(ms(6));
 
             a {
+              font-weight: bold;
               color: white;
 
               &:hover {
@@ -68,8 +63,6 @@
             text-align: center;
 
             @include medium {
-              @include adjust-font-size-to(1.6rem, 1.5);
-
               margin: 0 $triple-space;
             }
           }

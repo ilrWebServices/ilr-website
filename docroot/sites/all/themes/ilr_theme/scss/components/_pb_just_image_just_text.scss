@@ -36,7 +36,7 @@
 .node-type-basic-page {
   .paragraphs-item-just-text {
     .field-name-field-header {
-      @include h2;
+      @include heading-large;
       @include leader(.5);
     }
   }
