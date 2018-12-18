@@ -66,7 +66,7 @@ class TaggedContentBean extends BeanPlugin {
 
     $form['order_by'] = array(
       '#type' => 'select',
-      '#options' => array('date' => 'by date', 'random' => 'randomly'),
+      '#options' => array('date' => 'by date', 'title' => 'by title', 'random' => 'randomly'),
       '#default_value' => $bean->order_by,
       '#title' => t('How do you want to order the items?'),
     );
@@ -222,6 +222,8 @@ class TaggedContentBean extends BeanPlugin {
       $query->addTag('random');
     } elseif ($this->bean->order_by == 'date') {
       $query->propertyOrderBy('created', 'DESC');
+    } elseif ($this->bean->order_by == 'title') {
+      $query->propertyOrderBy('title');
     }
 
     return $query->execute();
