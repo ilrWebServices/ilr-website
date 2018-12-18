@@ -88,4 +88,7 @@ Example:
   * Allows menu to show only children of active item
   * https://www.drupal.org/project/menu_block/issues/927380#comment-9742591
 
-
+* feeds
+  * Enclosure support in Feeds
+  * https://www.drupal.org/project/feeds/issues/952878
+  * https://www.drupal.org/files/issues/feeds-952878.patch

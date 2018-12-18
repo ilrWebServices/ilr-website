@@ -84,6 +84,10 @@ class FeedsSyndicationParser extends FeedsParser {
         'name' => t('Source: Title'),
         'description' => t('The title of the RSS channel that the item came from.'),
       ),
+      'enclosure' => array(
+        'name' => t('Enclosure'),
+        'description' => t('Array of links to media content.'),
+      ),
     ) + parent::getMappingSources();
   }
 

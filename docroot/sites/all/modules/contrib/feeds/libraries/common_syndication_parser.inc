@@ -164,6 +164,14 @@ function _parser_common_syndication_atom10_parse($feed_XML) {
       $original_author = "{$feed_XML->author->name}";
     }
 
+    $enclosure = array();
+    foreach ($news->link as $item) {
+      $enc_attributes = $item->attributes();
+      if ($enc_attributes['rel'] == 'enclosure' && !empty($enc_attributes['href'])) {
+        $enclosure[] = "{$enc_attributes['href']}";
+      }
+    }
+
     $item = array();
     $item['title'] = _parser_common_syndication_title($title, $body);
     $item['description'] = $body;
@@ -219,6 +227,7 @@ function _parser_common_syndication_atom10_parse($feed_XML) {
     }
     $item['tags'] = isset($additional_taxonomies['ATOM Categories']) ? $additional_taxonomies['ATOM Categories'] : array();
     $item['domains'] = isset($additional_taxonomies['ATOM Domains']) ? $additional_taxonomies['ATOM Domains'] : array();
+    $item['enclosure'] = $enclosure;
     $parsed_source['items'][] = $item;
   }
 
@@ -495,6 +504,21 @@ function _parser_common_syndication_RSS20_parse($feed_XML) {
       }
     }
 
+    // Load media from <enclosure>.
+    $enclosure = array();
+    if (!empty($news['enclosure'])) {
+      if (!is_array($news['enclosure'])) {
+        $enc_elem = $news['enclosure'];
+        $news['enclosure'] = array();
+        $news['enclosure'][] = $enc_elem;
+      }
+
+      foreach ($news['enclosure'] as $item) {
+        $enc_attributes = $item->attributes();
+        $enclosure[] = "{$enc_attributes['url']}";
+      }
+    }
+
     $item = array();
     $item['title'] = _parser_common_syndication_title($title, $body);
     $item['description'] = $body;
@@ -531,6 +555,7 @@ function _parser_common_syndication_RSS20_parse($feed_XML) {
 
     $item['domains'] = $additional_taxonomies['RSS Domains'];
     $item['tags'] = $additional_taxonomies['RSS Categories'];
+    $item['enclosure'] = $enclosure;
     $parsed_source['items'][] = $item;
   }
   return $parsed_source;
@@ -625,12 +650,12 @@ function _parser_common_syndication_link($links) {
   if (count($links) > 0) {
     foreach ($links as $link) {
       $link = $link->attributes();
-      $to_link = isset($link["href"]) ? "{$link["href"]}" : "";
       if (isset($link["rel"])) {
-        if ("{$link["rel"]}" == 'alternate') {
+        if ("{$link["rel"]}" == 'alternate' || "{$link["rel"]}" == 'enclosure') {
           break;
         }
       }
+      $to_link = isset($link["href"]) ? "{$link["href"]}" : "";
     }
   }
   return trim($to_link);
