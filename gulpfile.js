@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
 var livereload = require('gulp-livereload');
-// var sassGlob = require('gulp-sass-glob');
 
 // var localConfig = {
 //     cssConfig: {
@@ -26,7 +25,6 @@ var livereload = require('gulp-livereload');
 
 gulp.task('sass', function() {
   return gulp.src('docroot/sites/all/themes/ilr_theme/scss/style.scss')
-    .pipe(plugins.sassGlob())
     .pipe(plugins.sass({
       outputStyle: 'nested',
       includePaths: [
