@@ -2,55 +2,52 @@
 #block-bean-certificate-programs-list {
   display: block !important; // no grid here
 
-  .node-certificate-programs {
-    display: flex;
-    flex-direction: column;
+  a {
+    color: $color-heading;
+  }
 
-    @include medium {
+  .certificate-program {
+    padding: 0;
+    display: block;
+
+    @include small {
       display: grid;
-      grid-template-rows: repeat(5, auto);
-    }
-
-    .field-name-field-image {
-      order: 1;
+      padding: $space;
+      column-gap: $space;
+      grid-template-rows: 1fr;
     }
 
     h2 {
-      @include padding-leader(0.5);
-      @include padding-trailer(1);
-      @include set-heading(false);
-
-      order: 2;
-      grid-row: 1;
+      @include heading-large;
     }
 
-    .field-name-field-teaser {
-      @include visible;
+    &__content {
+      padding: $space;
 
-      order: 3; // flex
-      grid-column: 2; // grid
+      @include small {
+        padding: 0;
+      }
 
-      p {
-        @include small-text;
+      .field-name-field-teaser {
+        @include visible;
       }
     }
 
     .partner-credit {
-      @include adjust-font-size-to(0.8rem, 0.9);
+      @include adjust-font-size-to(ms(0), 0.9);
 
       text-align: right;
-      order: 4;
-      grid-column: 2;
-      grid-row: -1;
+      margin: 0;
 
       span {
-        position:absolute;
+        position: absolute;
         left:-10000px;
-        top:auto;
+        top: auto;
         width:1px;
         height:1px;
         overflow:hidden;
       }
+
       img {
         vertical-align: middle;
         width: auto;
@@ -151,7 +148,7 @@ body.node-type-certificate-programs {
       }
 
       h2 {
-        @include adjust-font-size-to(1rem, 1);
+        @include adjust-font-size-to(ms(1), 1);
       }
 
       p {

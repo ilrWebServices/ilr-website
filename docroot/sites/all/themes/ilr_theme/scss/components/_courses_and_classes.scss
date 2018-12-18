@@ -22,7 +22,7 @@
 }
 
 .class-details {
-  background: $color-course-class-bg;
+  // background: $color-course-class-bg;
 
   .node-type-basic-page & {
     background: none;
@@ -126,58 +126,27 @@
   }
 
   .instructors {
-    @include clearfix;
-    @include padding-leader(3);
-    @include padding-trailer(3);
+    @include rhythm-padding(2);
+
     article {
-      @include trailer(1);
+      @include thumb;
 
-      h2 {
-        @include adjust-font-size-to($h3-size);
-        @include grid-span(3,4);
-        @include context('#main','#main[data-eq-state="550"]') {
-          @include grid-span(8,4);
-        }
+      background: transparent;
+      padding: 0;
 
+      @include medium {
+        padding: 0;
       }
+
       .field-name-field-job-title {
-        @include grid-span(9,4, $output-style: 'float');
-        @include trailer(0.5);
         @include small-text;
-
-        color: $gray-dark;
-      }
-      .field-name-body {
-        @include grid-span(9,4, $output-style: 'float');
-
-        margin: 0;
-
-        p {
-          @include small-text;
-        }
+        @include trailer(0.5);
       }
 
-      .field-type-image {
-        // @include circularImage;
-        max-width: 150px;
-        @include grid-span(3, $output-style: 'float');
-        @include float-span(3,'first');
-        @include leader(-.8);
+      .field-type-text-with-summary {
+        @include visible;
+        @include trailer(1);
       }
-
-      .link--readmore {
-        @include grid-span(9,4, $output-style: 'float');
-
-        a {
-          @include readmore-js-link;
-        }
-      }
-    }
-    span.multiple-dates {
-      @include adjust-font-size-to(15px, 1);
-      font-family: $font;
-      font-weight: 300;
-      color: $p-text;
     }
   }
 

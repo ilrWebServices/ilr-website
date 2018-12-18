@@ -9,15 +9,11 @@
  * Adds the livereload javascript so we don't need the browser extension.
  */
 function drupal_streamline_dev_init() {
-  // The guard-livereload gem includes a copy of the livereload.js script at the same
-  // port configured in the livereload guard in the Guardfile
+  // gulp-livereload includes a copy of the livereload.js script at the same
+  // port configured in the gulpfile.
   // Other livereload options available: &mindelay=1000&maxdelay=60000
-  $guard_livereload_js_uri = 'http://localhost:35777/livereload.js?host=localhost&port=35777&snipver=1';
-
-  // If the file below exists, guard is running and we should add the livereload.js script
-  if (file_exists('.drupal_streamline_guard_running')) {
-    drupal_add_js($guard_livereload_js_uri, array('type' => 'external', 'scope' => 'footer'));
-  }
+  $livereload_js_uri = 'http://localhost:35777/livereload.js?host=localhost&port=35777&snipver=1';
+  drupal_add_js($livereload_js_uri, array('type' => 'external', 'scope' => 'footer'));
 }
 
 /**

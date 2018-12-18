@@ -1,53 +1,18 @@
 // ==================================================
 // mixins
 // ==================================================
-@mixin centered-title() {
-  max-width: $section-max-width; //Center border after title
-  font-weight: normal;
-  text-transform: none;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  @include adjust-font-size-to(34px);
-  @include adjust-leading-to(1.5);
-  @include padding-leader(1);
-  &::after {
-    content: " ";
-    border-bottom: 1px solid $cornell-red;
-    display: block;
-    margin: auto 0;
-    position: relative;
-    top: 0;
-    left: 30%;
-    width: 40%;
-    height: 10px;
-  }
-}
+@mixin responsive-text($size: $p-size) {
+  font-size: $size;
+  line-height: 1.2;
 
-@mixin set-heading($strong: false, $color: $h2-text) {
-  @if $strong {
-    font-family: $font-strong;
-    text-transform: uppercase;
-    font-style: normal;
-    font-weight: 800;
-    letter-spacing: -2px;
-  } @else {
-    font-weight: 600;
-    font-family: $font-headers;
-    letter-spacing: 0;
-    text-transform: none;
+  @include xl {
+    font-size: $size * 1.1;
+    line-height: 1.2;
   }
 
-  clear: left;
-  margin-top: 0;
-  color: $color;
-
-  a {
-    font-weight: inherit;
-    color: $color;
-    &:visited {
-      color: inherit;
-    }
+  @include breakpoint($page-max-width) {
+    font-size: $size * 1.2;
+    line-height: 1.3;
   }
 }
 
@@ -86,163 +51,6 @@ body {
   color: $p-text;
   font-weight: 300;
 }
-
-// ==================================================
-// headings
-// ==================================================
-// consider reworking per https://medium.com/p/8e51498c3713
-h1, h2, h3, h4, h5, h6 {
-  @include set-heading;
-}
-
-h1 {
-  @include adjust-font-size-to($h1-size * 0.5 );
-  color: $h1-text;
-  line-height: 0.9;
-  // @include adjust-leading-to(2, $h1-size); to do: troublehoot print problem
-  @include margin-trailer(0.15);
-
-  @include medium {
-    @include adjust-font-size-to($h1-size * .75);
-  }
-
-  @include large {
-    @include adjust-font-size-to($h1-size);
-  }
-
-  a {
-    outline: 0;
-    color: $h1-link;
-
-    &:hover {
-      color: $h1-link-hover;
-    }
-  }
-  &#page-title,
-  &.title {
-    font-weight: 400;
-    letter-spacing: -2px;
-    line-height: 0.9;
-
-    body.front &,
-    body.subsite-front & {
-      display: none;
-    }
-  }
-}
-
-@mixin h2 {
-  @include set-heading;
-  @include adjust-font-size-to($h2-size, $line-height-multiplier);
-  color: $h2-text;
-
-  a {
-    outline: 0;
-    color: $h2-link;
-
-    &:hover {
-      color: $h2-link-hover;
-    }
-  }
-}
-
-h2 {
-  @include h2;
-}
-
-h2.centered-title {
-  @include centered-title;
-  @include margin-trailer(.5);
-}
-
-h3 {
-  font-size: $h3-size;
-  color: $h3-text;
-
-  a {
-    color: $h3-link;
-
-    &:hover {
-      color: $h3-link-hover;
-    }
-  }
-}
-
-h3 + img.alignright,
-h3 + img.alignleft,
-h3 + img.alignnone,
-h3 + img.aligncenter {
-  margin-top: $mod-01;
-}
-
-h4 {
-  font-size: $h4-size;
-  color: $h4-text;
-
-  a {
-    color: $h4-link;
-
-    &:hover {
-      color: $h4-link-hover;
-    }
-  }
-}
-
-h5 {
-  font-size: $h5-size;
-  color: $h5-text;
-
-  a {
-    color: $h5-link;
-
-    &:hover {
-      color: $h5-link-hover;
-    }
-  }
-}
-
-h6 {
-  font-family: $font;
-  font-size: $h6-size;
-  font-weight: 600;
-  color: $h6-text;
-
-  a {
-    color: $h6-link;
-
-    &:hover {
-      color: $h6-link-hover;
-    }
-  }
-}
-
-h2 + ul, h3 + ul, h4 + ul, h5 + ul, h6 + ul {
-  margin-bottom: 2em;
-}
-
-%centered-title {
-  max-width: $section-max-width; //Center border after title
-  font-weight: normal;
-  text-transform: none;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  @include adjust-font-size-to(34px);
-  @include adjust-leading-to(1.5);
-  @include padding-leader(1);
-  &::after {
-    content: " ";
-    border-bottom: 1px solid $cornell-red;
-    display: block;
-    margin: auto 0;
-    position: relative;
-    top: 0;
-    left: 30%;
-    width: 40%;
-    height: 10px;
-  }
-}
-
 
 // ==================================================
 // content

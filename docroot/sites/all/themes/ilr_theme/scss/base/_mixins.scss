@@ -402,3 +402,167 @@
   font-weight: 600;
   display: inline-block;
 }
+
+$frame-width: 20px;
+
+@mixin framed--button($width: 10px, $link-color: $black, $frame-color: $cornell-red, $background-color: transparent) {
+  @include non-framed-button($width, $link-color, $frame-color, $background-color);
+  // On hold
+  // @include rhythm(1);
+  // border: none;
+  // border-left: $width / 2  solid $frame-color;
+  // border-bottom: $width / 2 solid $frame-color;
+  // text-align: center;
+  // color: $link-color;
+  // padding: $quarter-space $space;
+  // padding-top: calc(#{$width} + #{$quarter-space});
+  // display: inline-block;
+  // font-weight: 600;
+  // position: relative;
+  // overflow: hidden;
+  // background: linear-gradient($frame-color , $frame-color)top left / 30% $width / 2 no-repeat;
+
+  // @include large {
+  //   $width: $width;
+  //   padding: $half-space $space;
+  //   padding-top: calc(#{$width} + #{$half-space});
+
+  //   border-left: $width solid $frame-color;
+  //   border-bottom: $width solid $frame-color;
+  //   background: linear-gradient($frame-color , $frame-color) top left / 30% $width no-repeat;
+  // }
+}
+
+@mixin non-framed-button($width: 10px, $link-color: $black, $frame-color: $cornell-red, $background-color: transparent) {
+  @include rhythm(1);
+  cursor: pointer;
+  border: $width / 2  solid $frame-color;
+  text-align: center;
+  color: $link-color;
+  padding: $quarter-space $space;
+  // padding-top: calc(#{$width} + #{$quarter-space});
+  display: inline-block;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  margin-right: $space;
+  background: $background-color;
+  height: auto;
+
+  @include large {
+    padding: $half-space $space;
+    // padding-top: calc(#{$width} + #{$half-space});
+    border: $width solid $frame-color;
+  }
+}
+
+// @todo: fix
+@mixin frame($width: 50px, $color: white, $top: false, $right: false, $bottom: false, $left: false) {
+  position: relative;
+  display: block;
+  z-index: 10;
+
+  &::before,
+  &::after {
+    content: ' ';
+    position: absolute;
+    background: $color;
+  }
+  @if ($top) {
+    &::before {
+      // width: nth($top, 1);
+      width: $top;
+      height: $width;
+      top: $double-space;
+
+      @if ($right) {
+        right: $double-space;
+      }
+    }
+  }
+  @if ($right) {
+    &::after {
+      width: $width;
+      height: $right;
+      right: $double-space;
+
+      @if ($right > 100%) {
+        top: calc(100% - #{$right});
+      }
+
+      @if ($top) {
+
+      }
+    }
+  }
+  @if ($bottom) {
+    // border-bottom: $width solid $color;
+  }
+  @if ($left) {
+    // border-left: $width solid $color;
+  }
+}
+
+// Still needs work to improvem this
+@mixin frame-from-corner($width: 5px, $corner: left top, $length: 30%, $height: $length, $color: $black) {
+  padding: 2 * $width;
+  background-image: linear-gradient($color, $color),
+    linear-gradient($color, $color);
+  background-position: $corner;
+  background-repeat: no-repeat;
+  background-size: $length $width, $width $height;
+}
+
+// Used for headings; possibly could be available to other elements
+// Only can currently set the frame on 2 sides
+@mixin framed($width: 10px, $color: white, $top: false, $right: false, $bottom: true, $left: true) {
+  @if ($top) {
+    border-top: $width solid $color;
+    padding-top: $space;
+    padding-bottom: $space;
+    border-bottom: none;
+
+    @include large {
+      border-top: $width * 2 solid $color;
+      padding-top: $double-space;
+      border-bottom: none;
+    }
+  }
+  @if ($right) {
+    border-right: $width solid $color;
+    padding-right: $space;
+    border-left: none;
+    padding-left: $space;
+
+    @include large {
+      border-right: $width * 2 solid $color;
+      padding-right: $double-space;
+      border-left: none;
+      padding-left: $double-space;
+    }
+
+  }
+  @if ($bottom) {
+    border-bottom: $width solid $color;
+    padding-bottom: $space;
+    padding-top: $space;
+    border-top: none;
+
+    @include large {
+      border-bottom: $width * 2 solid $color;
+      padding-top: $double-space;
+      border-top: none;
+    }
+  }
+  @if ($left) {
+    border-left: $width solid $color;
+    padding-left: $space;
+    border-right: none;
+
+    @include large {
+      border-left: $width * 2 solid $color;
+      padding-left: $double-space;
+      border-right: none;
+    }
+  }
+}

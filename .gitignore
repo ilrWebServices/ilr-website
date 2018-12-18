@@ -1,9 +1,8 @@
-*.sass-cache
 bin/init
 bin/initializer.rb
 db/backups/*.gz
 drupal-streamline.make
-docroot/.drupal_streamline_guard_running
+node_modules/
 tmp/
 migration_data/*images/
 migration_data/*export/

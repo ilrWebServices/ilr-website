@@ -1,0 +1,193 @@
+$font-heading: $font-headers;
+$color-heading: $h1-text;
+
+@mixin centered-title() {
+  max-width: $section-max-width; //Center border after title
+  font-weight: normal;
+  text-transform: none;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  @include adjust-font-size-to(34px);
+  @include adjust-leading-to(1.5);
+  @include padding-leader(1);
+  &::after {
+    content: " ";
+    border-bottom: 1px solid $cornell-red;
+    display: block;
+    margin: auto 0;
+    position: relative;
+    top: 0;
+    left: 30%;
+    width: 40%;
+    height: 10px;
+  }
+}
+
+@mixin responsive-heading($font-size) {
+  font-size: $font-size * 0.4;
+
+  @include medium {
+    font-size: $font-size * 0.6;
+  }
+
+  @include large {
+    font-size: $font-size * 0.8;
+    line-height: 0.8;
+  }
+
+  @include breakpoint($page-max-width) {
+    font-size: $font-size;
+  }
+}
+
+@mixin heading($font-size, $strong: false) {
+  @if $strong {
+    @include responsive-heading($font-size);
+    font-family: $font-strong;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 0.9;
+  } @else {
+    font-family: $font-headers;
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: $font-size;
+    font-weight: 400;
+  }
+
+  margin: 0;
+
+  a,
+  a:hover,
+  a:visited {
+    text-decoration: none;
+    color: $header-color;
+    font-weight: 400;
+  }
+}
+
+@mixin heading-xl() {
+  @include heading($font-size: $h1-size);
+
+  margin-bottom: 0.2em;
+}
+
+@mixin heading-large() {
+  @include heading($font-size: $h2-size);
+  @include trailer(0.5);
+}
+
+@mixin heading-medium() {
+  @include heading($font-size: $h3-size);
+  @include trailer(0.5);
+}
+
+@mixin heading-small() {
+  @include heading($font-size: $h4-size);
+}
+
+@mixin heading-xs($font-size: $h5-size) {
+  @include heading($font-size: $h5-size);
+}
+
+h1 {
+  &#page-title,
+  &.title {
+    @include heading-xl;
+
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 0.9;
+
+    body.front &,
+    body.subsite-front & {
+      display: none;
+    }
+  }
+}
+
+h2 {
+  @include heading-large;
+}
+
+h3 {
+  @include heading-medium;
+}
+
+h4 {
+  @include heading-small;
+}
+
+h5,
+h6 {
+  @include heading-xs;
+}
+
+h2.centered-title {
+  @include centered-title;
+  @include margin-trailer(.5);
+}
+
+h3 + img.alignright,
+h3 + img.alignleft,
+h3 + img.alignnone,
+h3 + img.aligncenter {
+  margin-top: $mod-01;
+}
+
+h2 + ul, h3 + ul, h4 + ul, h5 + ul, h6 + ul {
+  margin-bottom: 2em;
+}
+
+%centered-title {
+  max-width: $section-max-width; //Center border after title
+  font-weight: normal;
+  text-transform: none;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  @include adjust-font-size-to(34px);
+  @include adjust-leading-to(1.5);
+  @include padding-leader(1);
+  &::after {
+    content: " ";
+    border-bottom: 1px solid $cornell-red;
+    display: block;
+    margin: auto 0;
+    position: relative;
+    top: 0;
+    left: 30%;
+    width: 40%;
+    height: 10px;
+  }
+}
+
+@mixin set-heading($strong: false, $color: $h2-text) {
+  @if $strong {
+    font-family: $font-strong;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: -2px;
+  } @else {
+    font-weight: 600;
+    font-family: $font-headers;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  clear: left;
+  margin-top: 0;
+  color: $color;
+
+  a {
+    font-weight: inherit;
+    color: $color;
+    &:visited {
+      color: inherit;
+    }
+  }
+}
