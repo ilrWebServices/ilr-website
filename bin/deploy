@@ -34,7 +34,7 @@ if [ "$ENV" = "dev" ] || [ "$ENV" = "test" ]; then
   echo "Pushing $branch_name to acquia cloud $ENV"
 
   echo "Compiling css"
-  compass compile
+  npm run build
 
   # Upload to server
   echo "Uploading styles to server"

@@ -25,7 +25,7 @@ if [ "${#ENV}" -eq "0" ]; then
 fi
 
 echo "Compiling css"
-compass compile
+npm run build
 
 # Upload to server
 echo "Uploading styles to server"
