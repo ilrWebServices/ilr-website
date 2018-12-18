@@ -22,6 +22,7 @@ features[feeds_tamper][] = instagram_rss_feed-title-find_replace_regex
 features[feeds_tamper][] = instagram_rss_feed-title-trim
 features[feeds_tamper][] = instagram_rss_feed-title-truncate_text
 features[field_instance][] = node-instagram_post-body
+features[field_instance][] = node-instagram_post-field_image
 features[field_instance][] = node-instagram_post-field_website_url
 features[node][] = instagram_post
 features[variable][] = field_bundle_settings_node__instagram_post

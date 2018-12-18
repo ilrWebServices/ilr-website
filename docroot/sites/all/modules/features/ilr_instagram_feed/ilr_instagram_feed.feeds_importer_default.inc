@@ -26,6 +26,7 @@ function ilr_instagram_feed_feeds_importer_default() {
         'request_timeout' => NULL,
         'auto_scheme' => 'http',
         'accept_invalid_cert' => FALSE,
+        'cache_http_result' => TRUE,
       ),
     ),
     'parser' => array(
@@ -58,12 +59,18 @@ function ilr_instagram_feed_feeds_importer_default() {
             'language' => 'und',
           ),
           3 => array(
+            'source' => 'enclosure',
+            'target' => 'field_image:uri',
+            'unique' => FALSE,
+            'language' => 'und',
+          ),
+          4 => array(
             'source' => 'description',
             'target' => 'body',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          4 => array(
+          5 => array(
             'source' => 'timestamp',
             'target' => 'created',
             'unique' => FALSE,
