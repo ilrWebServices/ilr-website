@@ -21,6 +21,7 @@
     "gulp-livereload": "^4.0.1",
     "gulp-load-plugins": "^1.5.0",
     "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
     "modularscale-sass": "^3.0.8",
     "singularitygs": "^1.8.0"
   },

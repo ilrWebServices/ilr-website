@@ -3,6 +3,7 @@ var plugins = require('gulp-load-plugins')();
 
 gulp.task('sass', function() {
   return gulp.src('docroot/sites/all/themes/ilr_theme/scss/style.scss')
+    .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass({
       outputStyle: 'nested',
       includePaths: [
@@ -13,6 +14,7 @@ gulp.task('sass', function() {
       ]
     })
     .on('error', plugins.sass.logError))
+    .pipe(plugins.sourcemaps.write('./maps'))
     .pipe(gulp.dest('docroot/sites/all/themes/ilr_theme/css'))
     .pipe(plugins.livereload());
   });
