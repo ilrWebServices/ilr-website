@@ -82,7 +82,7 @@ function ilr_instagram_feed_feeds_tamper_default() {
   $feeds_tamper->source = 'title';
   $feeds_tamper->plugin_id = 'truncate_text';
   $feeds_tamper->settings = array(
-    'num_char' => '250',
+    'num_char' => '100',
     'ellipses' => 1,
     'wordsafe' => 0,
   );
