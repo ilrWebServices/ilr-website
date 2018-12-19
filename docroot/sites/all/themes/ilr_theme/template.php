@@ -128,6 +128,13 @@ function ilr_theme_preprocess_node(&$variables) {
   // Add a theme suggestion for view modes, too.
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $variables['view_mode'];
 
+  // Enable content-type-specific preprocess functions.
+  // Example: ilr_theme_preprocess_node__instagram_post().
+  $function = __FUNCTION__ . '__' . $variables['type'];
+  if (function_exists($function)) {
+    $function($variables);
+  }
+
   if ($variables['view_mode'] == 'teaser') {
     if (in_array($variables['type'], array('student_portrait'))) {
       $title = $variables['title'];
