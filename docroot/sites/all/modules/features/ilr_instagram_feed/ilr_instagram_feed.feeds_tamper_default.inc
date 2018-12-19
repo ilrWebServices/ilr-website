@@ -18,7 +18,7 @@ function ilr_instagram_feed_feeds_tamper_default() {
   $feeds_tamper->source = 'description';
   $feeds_tamper->plugin_id = 'find_replace_regex';
   $feeds_tamper->settings = array(
-    'find' => '/[^a-zA-Z ]/',
+    'find' => '/[^[:alnum:][:print:]]/',
     'replace' => '',
     'limit' => '',
     'real_limit' => -1,
@@ -50,7 +50,7 @@ function ilr_instagram_feed_feeds_tamper_default() {
   $feeds_tamper->source = 'title';
   $feeds_tamper->plugin_id = 'find_replace_regex';
   $feeds_tamper->settings = array(
-    'find' => '/[^a-zA-Z ]/',
+    'find' => '/[^[:alnum:][:print:]]/',
     'replace' => '',
     'limit' => '',
     'real_limit' => -1,
