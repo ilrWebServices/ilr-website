@@ -14,6 +14,7 @@ gulp.task('sass', function() {
       ]
     })
     .on('error', plugins.sass.logError))
+    .pipe(plugins.autoprefixer())
     .pipe(plugins.sourcemaps.write('./maps'))
     .pipe(gulp.dest('docroot/sites/all/themes/ilr_theme/css'))
     .pipe(plugins.livereload());
