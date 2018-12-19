@@ -5,7 +5,7 @@ gulp.task('sass', function() {
   return gulp.src('docroot/sites/all/themes/ilr_theme/scss/style.scss')
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass({
-      outputStyle: 'nested',
+      outputStyle: 'compressed',
       includePaths: [
         'node_modules/breakpoint-sass/stylesheets/',
         'node_modules/compass-mixins/lib/',
