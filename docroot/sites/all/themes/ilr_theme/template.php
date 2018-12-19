@@ -125,6 +125,9 @@ function ilr_theme_preprocess_block(&$variables) {
  * @see generate_event_item_markup() for hard-coded data-eq-pts
  */
 function ilr_theme_preprocess_node(&$variables) {
+  // Add a theme suggestion for view modes, too.
+  $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $variables['view_mode'];
+
   if ($variables['view_mode'] == 'teaser') {
     if (in_array($variables['type'], array('student_portrait'))) {
       $title = $variables['title'];
