@@ -150,6 +150,19 @@ function ilr_theme_preprocess_node(&$variables) {
 }
 
 /**
+ * Preprocess instagram post nodes.
+ */
+function ilr_theme_preprocess_node__instagram_post(&$variables) {
+  $wrapper = ilr_get_node_wrapper($variables['node']);
+
+  if ($url = $wrapper->field_website_url->value()) {
+    $variables['instagram_url'] = (isset($url['url']))
+      ? $url['url']
+      : $url[0]['url'];
+  }
+}
+
+/**
  * Implements hook_js_alter().
  *
  * Disables sticky table headers FTW!
