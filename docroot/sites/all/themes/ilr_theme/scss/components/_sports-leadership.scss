@@ -21,7 +21,7 @@ body.sports-leadership {
     @include medium {
       background-image: url(../images/ilo-new-world-of-work-header.jpg);
     }
-    #main { @include hidden; }
+    #main #content :not(.status) { @include hidden; }
     #content-bottom { background: rgba(0, 0, 0, 0.0); }
   }
 
