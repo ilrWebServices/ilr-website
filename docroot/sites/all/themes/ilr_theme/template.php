@@ -125,6 +125,16 @@ function ilr_theme_preprocess_block(&$variables) {
  * @see generate_event_item_markup() for hard-coded data-eq-pts
  */
 function ilr_theme_preprocess_node(&$variables) {
+  // Add a theme suggestion for view modes, too.
+  $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $variables['view_mode'];
+
+  // Enable content-type-specific preprocess functions.
+  // Example: ilr_theme_preprocess_node__instagram_post().
+  $function = __FUNCTION__ . '__' . $variables['type'];
+  if (function_exists($function)) {
+    $function($variables);
+  }
+
   if ($variables['view_mode'] == 'teaser') {
     if (in_array($variables['type'], array('student_portrait'))) {
       $title = $variables['title'];
@@ -136,6 +146,19 @@ function ilr_theme_preprocess_node(&$variables) {
     }
     // See note above about hard-coded eq-pts
     $variables['attributes_array']['data-eq-pts'] = 'small: 100, medium: 275, large: 350';
+  }
+}
+
+/**
+ * Preprocess instagram post nodes.
+ */
+function ilr_theme_preprocess_node__instagram_post(&$variables) {
+  $wrapper = ilr_get_node_wrapper($variables['node']);
+
+  if ($url = $wrapper->field_website_url->value()) {
+    $variables['instagram_url'] = (isset($url['url']))
+      ? $url['url']
+      : $url[0]['url'];
   }
 }
 
