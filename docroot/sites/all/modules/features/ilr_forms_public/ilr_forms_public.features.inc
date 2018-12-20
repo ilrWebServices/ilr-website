@@ -651,7 +651,7 @@ function ilr_forms_public_default_entityform_type() {
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "full_html" },
       "submit_button_text" : "",
-      "submit_confirm_msg" : "Thank you for registering. See you on January 31st.",
+      "submit_confirm_msg" : "Thank you for registering. We\'ve sent you a confirmation email. See you on January 31st.",
       "your_submissions" : "",
       "disallow_resubmit_msg" : "",
       "delete_confirm_msg" : "",
