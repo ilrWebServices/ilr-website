@@ -445,6 +445,8 @@
   }
 
   .tagged-content[data-items="4"] {
+    margin: 0;
+
     @include medium {
       @include four-column-grid;
     }

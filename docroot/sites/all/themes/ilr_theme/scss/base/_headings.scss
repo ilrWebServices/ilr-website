@@ -25,18 +25,18 @@ $color-heading: $h1-text;
 }
 
 @mixin responsive-heading($font-size) {
-  font-size: $font-size * 0.4;
+  font-size: $font-size * 0.55;
 
   @include medium {
-    font-size: $font-size * 0.6;
+    font-size: $font-size * 0.65;
   }
 
   @include large {
-    font-size: $font-size * 0.8;
+    font-size: $font-size;
     line-height: 0.8;
   }
 
-  @include breakpoint($page-max-width) {
+  @include xl {
     font-size: $font-size;
   }
 }
@@ -97,7 +97,10 @@ h1 {
   &#page-title,
   &.title {
     @include heading-xl;
+    @include responsive-heading($h1-size);
 
+
+    font-size: $h1-size * 0.55;
     font-weight: 400;
     letter-spacing: -2px;
     line-height: 0.9;

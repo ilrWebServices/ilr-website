@@ -100,31 +100,12 @@
   .field-type-image,
   .field-name-field-youtube-video,
   .thumbnail.custom {
-    position: relative;
+    @include rectangular-to-square;
+
     grid-column: 1;
     grid-row: 1 / -1;
     line-height: 0.5;
     overflow: hidden;
-
-    &::before {
-      content: "";
-      display: inline-block;
-      width: 1px;
-      height: 0;
-      padding-bottom: 100%;
-    }
-
-    img {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      height: 100%;
-      width: auto;
-      max-width: 150%; // Value based on 3x2 ratio for thumbnails
-      -webkit-transform: translate(-50%,-50%);
-          -ms-transform: translate(-50%,-50%);
-              transform: translate(-50%,-50%);
-    }
   }
 
   h2, h3 {
@@ -311,44 +292,53 @@
 }
 
 @mixin card--overlay {
-  display: block;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 0;
   padding: 0;
   line-height: 0.8; // Fix for bottom space issue
-
-  @include large {
-    grid-template-columns: 1rem 1fr 1rem;
-  }
+  margin: 0 0 $double-space !important;
 
   h2 {
+    @include heading-medium;
     position: absolute;
     bottom: 0;
-    left: 0;
     width: 100%;
     margin: 0;
-    padding: $space;
+    padding: $half-space;
     background: rgba(0, 0, 0, 0.3);
-    background-attachment: fixed;
-    font-size: 2rem;
     font-weight: bold;
     grid-column: 1 / -1;
-    grid-row: 2;
     color: white;
     z-index: 2;
-    // line-height: 1;
 
-    a {
+    @include large {
+      padding: $space;
+    }
+
+    @include breakpoint($page-max-width) {
+      @include heading-large;
+      margin: 0;
+    }
+
+    a,
+    a:visited,
+    a:hover {
       display: block;
-    }
-
-    @include large-only {
-      font-size: 1.3rem;
-    }
-
-    a {
-      @include set-heading(false, white);
+      color: white;
+      font-weight: bold;
     }
   }
 
+  .field-type-image {
+    @include rectangular-to-square(true);
+
+    grid-column: 1 / -1;
+
+    a {
+      line-height: 0;
+    }
+  }
   .promo__content,
   .news__content,
   h3 {
@@ -692,6 +682,47 @@
   a {
     img {
       top: -25%;
+    }
+  }
+}
+
+@mixin rectangular-to-square($undo: false) {
+  @if ($undo) {
+    &::before {
+      content: none;
+    }
+
+    img {
+      position: relative;
+      left: 0;
+      top: 0;
+      height: auto;
+      width: 100%;
+      max-width: 100%;
+      transform: none;
+    }
+  }
+  @else {
+    position: relative;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 1px;
+      height: 0;
+      padding-bottom: 100%;
+    }
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 100%;
+      width: auto;
+      max-width: 150%; // Value based on 3x2 ratio for thumbnails
+      -webkit-transform: translate(-50%,-50%);
+          -ms-transform: translate(-50%,-50%);
+              transform: translate(-50%,-50%);
     }
   }
 }
