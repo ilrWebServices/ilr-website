@@ -7,13 +7,29 @@
 
 // 2018 sports leadership summit
 body.sports-leadership {
-  &.page-node-287301 {
+  &.page-node-287301 { // sports-leadership
     background-image: url(../images/grand_hyatt.jpg);
+
+    @include medium {
+      background-image: url(../images/banner-grand-hyatt.jpg);
+    }
+  }
+
+  &.page-node-291526 { // new-world-of-work
+    background-image: url(../images/wi-ilo.jpg);
+
+    @include medium {
+      background-image: url(../images/ilo-new-world-of-work-header.jpg);
+    }
+    #main #content :not(.status) { @include hidden; }
+    #content-bottom { background: rgba(0, 0, 0, 0.0); }
+  }
+
+  &.page-node-287301, &.page-node-291526 {
     background-repeat: no-repeat;
     background-size: 200% auto;
 
     @include medium {
-      background-image: url(../images/banner-grand-hyatt.jpg);
       background-size: 150% auto;
     }
 

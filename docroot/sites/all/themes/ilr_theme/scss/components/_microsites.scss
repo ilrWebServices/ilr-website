@@ -3,12 +3,17 @@
     @include hidden;
   }
 
-  .content h2 {
+  .content h2, .entityform h2 {
     $fs: 56px;
     @include heading($fs, true);
     @include trailer(0.5);
 
     font-size: $fs * 0.8; // Overwrites on mobile
+    text-align: center;
+  }
+
+  form.entityform {
+    margin: 0 auto;
   }
 
   #content-bottom .block-bean {
@@ -310,6 +315,10 @@
 .microsite-sell {
   text-align: center;
   padding-top: 1em;
+
+  &.microsite-sell__grayed {
+    background: rgba(0, 0, 0, 0.5);
+  }
 
   h3 {
     color: white;

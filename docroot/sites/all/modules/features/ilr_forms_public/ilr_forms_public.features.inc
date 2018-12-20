@@ -642,5 +642,57 @@ function ilr_forms_public_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['wi_ilo_new_world_of_work_reg'] = entity_import('entityform_type', '{
+    "type" : "wi_ilo_new_world_of_work_reg",
+    "label" : "WI ILO New World of Work reg",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "Thank you for registering. We\'ve sent you a confirmation email. See you on January 31st.",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "Thank you for registering.",
+      "submission_text" : { "value" : "", "format" : "full_html" },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "new-world-of-work",
+      "instruction_pre" : {
+        "value" : "\\u003Ch2\\u003ERegistration\\u003C\\/h2\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0,
+      "form_submission_ilr_recipient" : "ilr-outreach@cornell.edu",
+      "add_payment_processing" : 0,
+      "hpp" : ""
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   return $items;
 }
