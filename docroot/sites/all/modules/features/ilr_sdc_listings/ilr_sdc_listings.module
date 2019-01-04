@@ -2558,7 +2558,7 @@ function ilr_sdc_listings_salesforce_pull_entity_presave($entity, $sf_object, $s
 function _ilr_sdc_listings_assign_faculty_to_class(&$entity, $sf_object) {
   $event_id = $sf_object['Id'];
   $salesforce = salesforce_get_api();
-  $query = "SELECT Id, Contact__c  FROM EXECED_Participant__c WHERE Event__c = '". $event_id . "' AND Role__c = 'Instructor'";
+  $query = "SELECT Id, Contact__c FROM EXECED_Participant__c WHERE Event__c = '". $event_id . "' AND Role__c = 'Instructor'";
   $data = $salesforce->apiCall('query/?q=' . urlencode($query));
   if ($data) {
     $sf_ids = [];
