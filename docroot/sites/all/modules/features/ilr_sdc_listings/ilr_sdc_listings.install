@@ -311,6 +311,67 @@ function ilr_sdc_listings_update_7016() {
 }
 
 /**
+ * Deletes legacy field_class_id from faculty
+ */
+function ilr_sdc_listings_update_7017() {
+  $instance = field_info_instance('node', 'field_class_id', 'sdc_faculty');
+  field_delete_instance($instance, FALSE);
+}
+
+/**
+ * Sets the contact id for all sf mapped sdc faculty
+ */
+function ilr_sdc_listings_update_7018() {
+  $salesforce = salesforce_get_api();
+  $query = "SELECT Id, Contact__c FROM EXECED_Participant__c WHERE Role__c = 'Instructor'";
+  $results = $salesforce->apiCall('query/?q=' . urlencode($query));
+
+  $contact_ids_for_participant_ids = [];
+
+  // Map the results from the api call
+  foreach ($results['records'] as $key => $data) {
+    if (!empty($data['Contact__c'])) {
+      $contact_ids_for_participant_ids[$data['Id']] = $data['Contact__c'];
+    }
+  }
+
+  // Three contacts are not being mapped correctly, so we hard-code them here
+  $hardcoded_fixes = [
+    'a100P00000DEx5WQAT' => '0030P00002HWEojQAH', // tim Mcnut
+    'a100P00000DF7EzQAL' => '0030P00002I8KdFQAV', // fred kotler
+    'a100P00000DFSR0QAP' => '0030P00002HWH98QAH' // randi DiAntonio
+  ];
+
+  $contact_ids_for_participant_ids += $hardcoded_fixes;
+
+  // Get faculty nodes
+  $query = db_select('node', 'n');
+  $query->addField('n', 'nid');
+  $query->condition('n.type', 'sdc_faculty');
+
+  $nids = $query->execute()->fetchCol();
+
+  // Update the mapping object and faculty field_sf_record_id
+  foreach ($nids as $nid) {
+    if ($mapping_object = salesforce_mapping_object_load_by_drupal('node', $nid)) {
+      $participant_id = $mapping_object->salesforce_id;
+      if (array_key_exists($participant_id, $contact_ids_for_participant_ids)) {
+        $contact_id = $contact_ids_for_participant_ids[$participant_id];
+        $mapping_object->salesforce_id = $contact_id;
+        $mapping_object->save();
+
+        $wrapper = entity_metadata_wrapper('node', $nid);
+        $wrapper->field_sf_record_id->set($contact_id);
+        $wrapper->save();
+      }
+    }
+  }
+
+  // Delete empty nodes, which also deletes their mappings
+  node_delete_multiple([291226, 291241]);
+}
+
+/**
  * Update aliases for sdc content types.
  */
 function _ilr_sdc_listings_update_aliases() {
