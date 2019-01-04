@@ -183,23 +183,6 @@ function _ilr_sdc_listings_get_class_by_id($class_id) {
   return FALSE;
 }
 
-/**
- * Queries for faculty by their old sdc id
- * Note that we're storing the value on the field_class_id
- */
-function _ilr_sdc_listings_get_faculty_by_name($name) {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'sdc_faculty')
-    ->propertyCondition('title', $name)
-    ->fieldCondition('field_sf_record_id', 'value', 'NULL', '!=');
-  $results = $query->execute();
-  if (!empty($results['node'])) {
-    return array_pop($results['node']);
-  }
-  return FALSE;
-}
-
 function _ilr_sdc_listings_get_faculty_by_sf_ids($sf_ids = []) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
@@ -2524,6 +2507,11 @@ function ilr_sdc_listings_salesforce_query_alter(SalesforceSelectQuery &$query) 
   if ($query->objectType == 'EXECED_Event_Class__c' || $query->objectType == 'EXECED_Course__c') {
     $query->addCondition('Show_on_Web__c', 'false', '!=');
   }
+
+  // Only get contacts who also have the "instructor" role in participants
+  if ($query->objectType == 'Contact') {
+    $query->addCondition('Id', '(SELECT Contact__c FROM EXECED_Participant__c WHERE Role__c = \'Instructor\')', 'IN');
+  }
 }
 
 function ilr_sdc_listings_sf_pull_prematch($sf_object) {
@@ -2588,32 +2576,6 @@ function _ilr_sdc_listings_assign_faculty_to_class(&$entity, $sf_object) {
     }
   }
   return TRUE;
-}
-
-/**
-  * Implements hook_salesforce_pull_mapping_object_alter().
-  * Attempts to match existing faculty to the new incoming participant object.
-  * @todo Remove this once participants have been matched
-  */
-function ilr_sdc_listings_salesforce_pull_mapping_object_alter(&$mapping_object, $sf_object, $mapping) {
-  if (!$mapping_object && $mapping->drupal_bundle == 'sdc_faculty') {
-    $matched_faculty = _ilr_sdc_listings_get_faculty_by_name($sf_object['Contact_Full_Name__c']);
-    if ($matched_faculty) {
-      $mapping_object = ilr_sdc_listings_create_mapping_object('sdc_faculty', $matched_faculty->nid, $sf_object['Id']);
-    }
-  }
-}
-
-function ilr_sdc_listings_create_mapping_object($bundle, $entity_id, $sfid) {
-  entity_create('salesforce_mapping_object', array(
-   'salesforce_id' => $sfid,
-   'entity_type' => 'node',
-   'entity_id' => $entity_id,
-   'last_sync_message' => t($bundle . ' prematch on pull'),
-   'last_sync_status' => SALESFORCE_MAPPING_STATUS_SUCCESS
-  ))->save();
-  $mapping_object = salesforce_mapping_object_load_by_sfid($sfid, TRUE);
-  return $mapping_object;
 }
 
 /**
