@@ -83,7 +83,6 @@ features[field_instance][] = node-sdc_course-field_setting
 features[field_instance][] = node-sdc_course-field_sf_record_id
 features[field_instance][] = node-sdc_course-field_show_on_web
 features[field_instance][] = node-sdc_faculty-body
-features[field_instance][] = node-sdc_faculty-field_class_id
 features[field_instance][] = node-sdc_faculty-field_job_title
 features[field_instance][] = node-sdc_faculty-field_people_profile_reference
 features[field_instance][] = node-sdc_faculty-field_sf_record_id

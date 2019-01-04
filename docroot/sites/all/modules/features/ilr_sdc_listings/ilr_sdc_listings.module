@@ -187,22 +187,6 @@ function _ilr_sdc_listings_get_class_by_id($class_id) {
  * Queries for faculty by their old sdc id
  * Note that we're storing the value on the field_class_id
  */
-function _ilr_sdc_listings_get_faculty_by_oid($oid) {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'sdc_faculty')
-    ->fieldCondition('field_class_id', 'value', $oid);
-  $results = $query->execute();
-  if (!empty($results['node'])) {
-    return array_pop($results['node']);
-  }
-  return FALSE;
-}
-
-/**
- * Queries for faculty by their old sdc id
- * Note that we're storing the value on the field_class_id
- */
 function _ilr_sdc_listings_get_faculty_by_name($name) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')

@@ -2109,57 +2109,6 @@ function ilr_sdc_listings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-sdc_faculty-field_class_id'.
-  $field_instances['node-sdc_faculty-field_class_id'] = array(
-    'bundle' => 'sdc_faculty',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'mega_menu_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_class_id',
-    'label' => 'Faculty id',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 41,
-    ),
-  );
-
   // Exported field_instance: 'node-sdc_faculty-field_job_title'.
   $field_instances['node-sdc_faculty-field_job_title'] = array(
     'bundle' => 'sdc_faculty',
@@ -2475,7 +2424,6 @@ function ilr_sdc_listings_field_default_field_instances() {
   t('Course is a series');
   t('Credit Hours');
   t('Faculty');
-  t('Faculty id');
   t('Format');
   t('If the faculty member has a profile, then you can link to it here and their image and title will be automatically pulled from their profile page.');
   t('Is Full?');
