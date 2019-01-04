@@ -988,7 +988,7 @@ function ilr_sdc_listings_default_salesforce_mapping() {
     "push_async" : "1",
     "push_batch" : "0",
     "created" : "1540239137",
-    "weight" : "0",
+    "weight" : "-27",
     "locked" : "0"
   }');
   $items['course'] = entity_import('salesforce_mapping', '{
@@ -1416,7 +1416,7 @@ function ilr_sdc_listings_default_salesforce_mapping() {
     "push_async" : "1",
     "push_batch" : "0",
     "created" : "1540239137",
-    "weight" : "0",
+    "weight" : "-28",
     "locked" : "0"
   }');
   $items['faculty'] = entity_import('salesforce_mapping', '{
@@ -1589,7 +1589,7 @@ function ilr_sdc_listings_default_salesforce_mapping() {
     "push_async" : "1",
     "push_batch" : "0",
     "created" : "1540239137",
-    "weight" : "0",
+    "weight" : "-30",
     "locked" : "0"
   }');
   $items['program'] = entity_import('salesforce_mapping', '{
@@ -1713,7 +1713,7 @@ function ilr_sdc_listings_default_salesforce_mapping() {
     "push_async" : "1",
     "push_batch" : "0",
     "created" : "1540239137",
-    "weight" : "0",
+    "weight" : "-29",
     "locked" : "0"
   }');
   return $items;
