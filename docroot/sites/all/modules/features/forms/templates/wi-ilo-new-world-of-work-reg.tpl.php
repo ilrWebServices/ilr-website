@@ -1,10 +1,13 @@
 <?php print $salutation;?><br><br>
 
-Thank you for registering to join us for a discussion of the New World of Work Report on January 31, 2019.  We look forward to seeing you at 570 Lexington Ave. Check-in on the day of the event will be at 8:15am.<br><br>
+Thank you for your interest in a discussion of the New World of Work Report on January 31, 2019, at 570 Lexington Ave.<br><br>
 
-Updates will be sent via email.<br><br>
+While open registration for this event has closed, we have added you to the wait list.<br><br>
+
+You will be notified via email if a space opens up.<br><br>
+
+Thank you.<br><br>
 
 
 
 <? print $form_data;?>
-
