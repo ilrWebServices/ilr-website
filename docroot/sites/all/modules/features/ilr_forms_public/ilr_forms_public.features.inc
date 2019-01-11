@@ -650,8 +650,8 @@ function ilr_forms_public_default_entityform_type() {
       "draft_redirect_path" : "",
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "full_html" },
-      "submit_button_text" : "",
-      "submit_confirm_msg" : "Thank you for registering. We\'ve sent you a confirmation email. See you on January 31st.",
+      "submit_button_text" : "Add me to the wait list",
+      "submit_confirm_msg" : "Thank you for registering for the wait list. We\\u0027ve sent you a confirmation email.",
       "your_submissions" : "",
       "disallow_resubmit_msg" : "",
       "delete_confirm_msg" : "",
@@ -680,7 +680,7 @@ function ilr_forms_public_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "new-world-of-work",
       "instruction_pre" : {
-        "value" : "\\u003Ch2\\u003ERegistration\\u003C\\/h2\\u003E\\r\\n",
+        "value" : "\\u003Ch2\\u003EJoin the Waiting List\\u003C\\/h2\\u003E\\r\\n\\r\\n\\u003Ch3 style=\\u0022text-align: center; line-height: 1.6\\u0022\\u003E\\u003Cstrong\\u003EOnline registrations for this event are now closed\\u003Cbr\\u003E\\r\\n\\tPlease complete the following form to add your name to the waiting list\\u003C\\/strong\\u003E\\u003C\\/h3\\u003E\\r\\n",
         "format" : "full_html"
       },
       "send_confirmation_email_to_user" : 1,
