@@ -8,18 +8,6 @@
 class AcquiaSearchService extends DrupalApacheSolrService {
 
   /**
-   * Send an optimize command.
-   *
-   * We want to control the schedule of optimize commands ourselves,
-   * so do a method override to make ->optimize() a no-op.
-   *
-   * @see Drupal_Apache_Solr_Service::optimize()
-   */
-  public function optimize($waitFlush = true, $waitSearcher = true, $timeout = 3600) {
-    return TRUE;
-  }
-
-  /**
    * Modify the url and add headers appropriate to authenticate to Acquia Search.
    *
    * @return
@@ -35,8 +23,8 @@ class AcquiaSearchService extends DrupalApacheSolrService {
       $url .= "&";
     }
     $url .= 'request_id=' . $id;
-    // If we're hosted on Acquia, and have an Acquia request ID,
-    // append it to the request so that we map Solr queries to Acquia search requests.
+    // If we're hosted on Acquia, and have an Acquia request ID, append it to
+    // the request so that we map Solr queries to Acquia search requests.
     if (isset($_ENV['HTTP_X_REQUEST_ID'])) {
       $xid = empty($_ENV['HTTP_X_REQUEST_ID']) ? '-' : $_ENV['HTTP_X_REQUEST_ID'];
       $url .= '&x-request-id=' . rawurlencode($xid);

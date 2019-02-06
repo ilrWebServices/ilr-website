@@ -1,18 +1,25 @@
 <?php
 
 /**
-* Tests the functionality of the Acquia SPI module.
-*/
+ * Tests the functionality of the Acquia SPI module.
+ */
 class AcquiaSPITestCase extends DrupalWebTestCase {
   protected $privileged_user;
   protected $setup_path;
   protected $credentials_path;
   protected $settings_path;
   protected $status_report_url;
+  protected $acqtest_name         = 'test name';
+  protected $acqtest_machine_name = 'test_name';
+
   // Platform array keys.
-  protected $platformKeys = array('php', 'webserver_type', 'webserver_version', 'apache_modules', 'php_extensions', 'php_quantum', 'database_type', 'database_version', 'system_type', 'system_version', 'mysql');
+  protected $platformKeys = array('php', 'webserver_type', 'webserver_version', 'php_extensions', 'php_quantum', 'database_type', 'database_version', 'system_type', 'system_version');
   protected $spiDataKeys = array(
     'spi_data_version',
+    'name',
+    'machine_name',
+    'environment',
+    'acquia_hosted',
     'site_key',
     'modules',
     'platform',
@@ -26,10 +33,6 @@ class AcquiaSPITestCase extends DrupalWebTestCase {
     'last_users',
     'extra_files',
     'ssl_login',
-    'file_hashes',
-    'hashes_md5',
-    'hashes_sha1',
-    'fileinfo',
     'distribution',
     'base_version',
     'build_data',
@@ -49,7 +52,7 @@ class AcquiaSPITestCase extends DrupalWebTestCase {
   public function setUp() {
     global $base_url;
     // Enable any modules required for the test
-    parent::setUp('acquia_agent', 'acquia_spi', 'acquia_connector_test');
+    parent::setUp('acquia_agent', 'acquia_spi', 'acquia_connector_test', 'dblog');
     // Create and log in our privileged user.
     $this->privileged_user = $this->drupalCreateUser(array(
       'administer site configuration',
@@ -68,6 +71,10 @@ class AcquiaSPITestCase extends DrupalWebTestCase {
 
   /**
    * Helper function for storing UI strings.
+   *
+   * @param string $id
+   *
+   * @return string
    */
   private function acquiaSPIStrings($id) {
     switch ($id) {
@@ -84,6 +91,7 @@ class AcquiaSPITestCase extends DrupalWebTestCase {
       case 'spi-new-def':
         return 'There are new checks that will be performed on your site by the Acquia Connector';
     }
+    return '';
   }
 
   public function testAcquiaSPIUI() {
@@ -95,7 +103,27 @@ class AcquiaSPITestCase extends DrupalWebTestCase {
       'acquia_key' => ACQTEST_ERROR_KEY,
     );
     $submit_button = 'Connect';
+
+    $server = array(
+      'AH_SITE_NAME'        => 'site_name',
+      'AH_SITE_ENVIRONMENT' => 'dev',
+    );
+
+    variable_set('acquia_agent_server_superglobal', $server);
+
     $this->drupalPost($this->credentials_path, $edit_fields, $submit_button);
+
+    // If name and machine name are empty.
+    $this->drupalGet($this->status_report_url);
+    $this->assertText($this->acquiaSPIStrings('spi-not-sent'), 'SPI data was not sent');
+
+    $edit_fields = array(
+      'name' => $this->acqtest_name,
+    );
+
+    $submit_button = 'Save settings';
+    $this->drupalPost($this->settings_path, $edit_fields, $submit_button);
+
     // Send SPI data.
     $this->drupalGet($this->status_report_url);
     $this->assertText($this->acquiaSPIStrings('spi-status-text'), 'SPI explanation text exists');
@@ -105,6 +133,15 @@ class AcquiaSPITestCase extends DrupalWebTestCase {
 
     // Connect site on non-error key and id.
     $this->connectSite();
+    $edit_fields = array(
+      'name' => $this->acqtest_name,
+    );
+
+    $submit_button = 'Save settings';
+    $this->drupalPost($this->settings_path, $edit_fields, $submit_button);
+
+    variable_del('acquia_agent_server_superglobal');
+
     // Send SPI data.
     $this->drupalGet($this->status_report_url);
     $this->clickLink($this->acquiaSPIStrings('spi-send-text'));
@@ -152,15 +189,9 @@ class AcquiaSPITestCase extends DrupalWebTestCase {
       $this->assertTrue(empty($diff), 'Module elements have expected keys');
       $diff = array_diff(array_keys($spi_data['platform']), $this->platformKeys);
       $this->assertTrue(empty($diff), 'Platform contains expected keys');
-      $this->assertTrue(isset($spi_data['platform']['php_quantum']['SERVER']), 'Global server data included in SPI data');
-      $this->assertTrue(isset($spi_data['platform']['php_quantum']['SERVER']['SERVER_SOFTWARE']), 'Server software data set within global server info');
-      $this->assertTrue(isset($spi_data['platform']['mysql']['Select_scan']), 'Mysql info in platform contains an expected key');
-      $this->assertTrue(isset($spi_data['file_hashes']['includes/database']), 'File hashes array contains an expected key');
       $roles = drupal_json_decode($spi_data['roles']);
       $this->assertTrue(is_array($roles), 'Roles is an array');
       $this->assertTrue(isset($roles[1]) && $roles[1] === 'anonymous user', 'Roles array contains anonymous user');
-      $this->assertTrue(isset($spi_data['fileinfo']['scripts/drupal.sh']), 'Fileinfo contains an expected key');
-      $this->assertTrue(strpos($spi_data['fileinfo']['scripts/drupal.sh'], 'mt') === 0, 'Fileinfo element begins with expected value');
     }
   }
 
@@ -171,6 +202,14 @@ class AcquiaSPITestCase extends DrupalWebTestCase {
       'acquia_key' => ACQTEST_ERROR_KEY,
     );
     $submit_button = 'Connect';
+
+    $server = array(
+      'AH_SITE_NAME'        => 'site_name',
+      'AH_SITE_ENVIRONMENT' => 'dev',
+    );
+
+    variable_set('acquia_agent_server_superglobal', $server);
+
     $this->drupalPost($this->credentials_path, $edit_fields, $submit_button);
     // Attempt to send something.
     $result = acquia_spi_send_data(array());
@@ -178,6 +217,15 @@ class AcquiaSPITestCase extends DrupalWebTestCase {
 
     // Connect site on valid credentials.
     $this->connectSite();
+
+    $edit_fields = array(
+      'name' => $this->acqtest_name,
+    );
+
+    $submit_button = 'Save settings';
+    $this->drupalPost($this->settings_path, $edit_fields, $submit_button);
+
+    variable_del('acquia_agent_server_superglobal');
 
     $spi_data = acquia_spi_get();
     // Check that result is an array.
@@ -217,8 +265,53 @@ class AcquiaSPITestCase extends DrupalWebTestCase {
     $this->assertTrue(!isset($vars['user_admin_role']), 'user_admin_role not included in SPI data');
   }
 
+  public function testAcquiaSPIRevokedInstall() {
+    $server = array(
+      'AH_SITE_NAME'        => 'site_name',
+      'AH_SITE_ENVIRONMENT' => 'dev',
+    );
+
+    variable_set('acquia_agent_server_superglobal', $server);
+
+    // Confirm the site is not blocked yet.
+    $this->assertFalse(variable_get('acquia_spi_blocked', FALSE));
+
+    // Connect using credentials for a revoked site.
+    $edit_fields = array(
+      'acquia_identifier' => ACQTEST_REVOKED_ID,
+      'acquia_key' => ACQTEST_REVOKED_KEY,
+    );
+    $submit_button = 'Connect';
+    $this->drupalPost($this->credentials_path, $edit_fields, $submit_button);
+
+    // Try to send SPI data
+    $spi_data = acquia_spi_get();
+    $response = acquia_spi_send_data($spi_data);
+    acquia_spi_handle_server_response($response);
+
+    // Confirm the site has been blocked.
+    $this->assertTrue(variable_get('acquia_spi_blocked', FALSE));
+
+    variable_del('acquia_agent_server_superglobal');
+  }
+
   public function testAcquiaSPIMessages() {
+    $server = array(
+      'AH_SITE_NAME'        => 'site_name',
+      'AH_SITE_ENVIRONMENT' => 'dev',
+    );
+
+    variable_set('acquia_agent_server_superglobal', $server);
+
     $this->connectSite();
+    $edit_fields = array(
+      'name' => $this->acqtest_name,
+    );
+
+    $submit_button = 'Save settings';
+    $this->drupalPost($this->settings_path, $edit_fields, $submit_button);
+
+    variable_del('acquia_agent_server_superglobal');
 
     $spi_data = acquia_spi_get();
     $response = acquia_spi_send_data($spi_data);
@@ -271,6 +364,49 @@ class AcquiaSPITestCase extends DrupalWebTestCase {
     acquia_spi_set_variables($set_variables);
     $vars = drupal_json_decode(acquia_spi_get_variables_data());
     $this->assertIdentical($vars['acquia_spi_set_variables_automatic'], array('test_variable'), 'Altered approved list of variables that can be set');
+  }
+
+  /**
+   * Test acquia_spi_check_acquia_hosted() function.
+   */
+  public function testAcquiaHosted() {
+    $server = array();
+
+    variable_set('acquia_agent_server_superglobal', $server);
+    $this->assertFalse(acquia_spi_check_acquia_hosted(), 'Site is not hosted with Acquia');
+
+    $server = array(
+      'AH_SITE_NAME'        => 'site_name',
+      'AH_SITE_ENVIRONMENT' => 'dev',
+    );
+
+    variable_set('acquia_agent_server_superglobal', $server);
+    $this->assertTrue(acquia_spi_check_acquia_hosted(), 'Site is hosted with Acquia');
+
+    variable_del('acquia_agent_server_superglobal');
+  }
+
+  /**
+   * Test Cache clear detected.
+   */
+  public function testFlushCaches() {
+    $server = array(
+      'AH_SITE_NAME'        => 'site_name',
+      'AH_SITE_ENVIRONMENT' => 'dev',
+    );
+
+    variable_set('acquia_agent_server_superglobal', $server);
+    drupal_flush_all_caches();
+    $result = db_query('SELECT w.wid FROM {watchdog} w WHERE w.message = :string', array(':string' => 'Flushed cache data on %site'))->fetchAllAssoc('wid');
+    $this->assertFalse(count($result), "Cache clear detection is not triggered for dev environment");
+
+    $server['AH_SITE_ENVIRONMENT'] = 'prod';
+    variable_set('acquia_agent_server_superglobal', $server);
+    drupal_flush_all_caches();
+    $result = db_query('SELECT w.wid FROM {watchdog} w WHERE w.message = :string', array(':string' => 'Flushed cache data on %site'))->fetchAllAssoc('wid');
+    $this->assertTrue(count($result), "Cache clear detected for prod environment");
+
+    variable_del('acquia_agent_server_superglobal');
   }
 
   /**
