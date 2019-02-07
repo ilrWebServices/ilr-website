@@ -710,14 +710,14 @@
       display: inline-block;
       width: 1px;
       height: 0;
-      padding-bottom: 100%;
+      padding-bottom: 90%;
     }
 
     img {
       position: absolute;
       left: 50%;
       top: 50%;
-      height: 100%;
+      height: auto;
       width: auto;
       max-width: 150%; // Value based on 3x2 ratio for thumbnails
       -webkit-transform: translate(-50%,-50%);
