@@ -1745,7 +1745,7 @@ function _ilr_sdc_listings_generate_deadline_markup($class_node) {
   }
   if (empty($deadline)) { // This shouldn't happen, @see _ilr_sdc_listings_has_registration_deadline()
     $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class_node);
-    $deadline = $datetimes['start'];
+    $deadline = $datetimes['start'] - 1;
     $deadline = $deadline->format('M j');
   }
   $markup = '<span class="deadline">Register by '.$deadline.'</span>';
@@ -1811,7 +1811,7 @@ function _ilr_sdc_listings_get_classes_for_course($course_node, $class_nids = NU
   }
   else {
     $today = date('Y-m-d');
-    $query->fieldCondition('field_registration_end_date', 'value', $today, '>=');
+    $query->fieldCondition('field_registration_end_date', 'value', $today, '>');
   }
   if ($remove_cancelled) {
     $query->fieldCondition('field_cancelled', 'value', 1, '!=');
@@ -2194,7 +2194,7 @@ function _ilr_sdc_listings_get_upcoming_classes() {
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'sdc_class')
     ->propertyCondition('status', 1)
-    ->fieldCondition('field_registration_end_date', 'value', $today, '>=');
+    ->fieldCondition('field_registration_end_date', 'value', $today, '>');
   $results = $query->execute();
   if (!empty($results['node'])) {
     return array_keys($results['node']);
