@@ -961,6 +961,27 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_bdsf_available_projects'.
+  $field_bases['field_bdsf_available_projects'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_bdsf_available_projects',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<p>Please take a moment to <a href="/sites/ilr.cornell.edu/files/Democracy%20Summer%202019%20Brochure.pdf" target="_blank">download and review the specific opportunities with each legislator</a>.</p>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
   // Exported field_base: 'field_bean_content'.
   $field_bases['field_bean_content'] = array(
     'active' => 1,
