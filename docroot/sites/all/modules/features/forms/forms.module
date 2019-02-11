@@ -232,6 +232,10 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
       unset($form['field_year_freshman_soph_jr_sr'][LANGUAGE_NONE]['#options']['_none']);
       unset($form['field_year_freshman_soph_jr_sr'][LANGUAGE_NONE]['#options']['Senior']);
       break;
+    case 'buffalo_dem_summer_fellow_apply_entityform_edit_form': // Hide options that are not applicable
+      unset($form['field_year_freshman_soph_jr_sr'][LANGUAGE_NONE]['#options']['_none']);
+      unset($form['field_year_freshman_soph_jr_sr'][LANGUAGE_NONE]['#options']['Senior']);
+      break;
     case 'fex_student_application_entityform_edit_form': // Hide options that are not applicable
       unset($form['field_year_fr_soph_jr_sr_milr'][LANGUAGE_NONE]['#options']['Sophomore']);
       unset($form['field_year_fr_soph_jr_sr_milr'][LANGUAGE_NONE]['#options']['Junior']);
