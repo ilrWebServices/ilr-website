@@ -17,7 +17,7 @@
         // Set some variables for the different pieces at play.
         var $indicator = $(this);
         var $img = $(this).siblings('img');
-        var focalPointID = $(this).attr('id');
+        var focalPointID = Drupal.checkPlain($(this).attr('id'));
         var $field = $('.focal-point[data-focal-point-id="' + focalPointID + '"]', context);
         var $previewLink = $('.focal-point-preview-link[data-focal-point-id="' + focalPointID + '"]', context);
 
@@ -40,7 +40,9 @@
           $img.one('load', function(){
             focalPointSetIndicator($indicator, $(this), $field);
           }).each(function() {
-            if (this.complete) $(this).load();
+            if (this.complete) {
+              $(this).load();
+            }
           });
         }, 0);
 
@@ -175,7 +177,8 @@
       // Both dimensions > 0 so use the image dimensions are found.
       dimensions.width = $img.width();
       dimensions.height = $img.height();
-    } else {
+    }
+    else {
       // The image may be hidden, check image source dimensions manually.
       var tempImage = new Image();
       tempImage.src = $img.attr('src');
@@ -187,4 +190,3 @@
   }
 
 })(jQuery);
-
