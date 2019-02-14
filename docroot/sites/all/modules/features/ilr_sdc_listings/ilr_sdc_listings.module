@@ -2592,19 +2592,19 @@ function _ilr_sdc_listings_get_class_id($wrapper) {
 }
 
 /**
- * Implements hook_node_insert().
- * Set the registration end date to the class start date if not present
- * Note that the reg_end_date field is a date field, without time,
- * which is why we need the datetime backflips
+ * Implements hook_node_presave().
+ * Set the registration end date to the class start date if not present.
  */
-function ilr_sdc_listings_node_insert($node) {
+function ilr_sdc_listings_node_presave($node) {
   if ($node->type == 'sdc_class') {
-    if (empty($node->field_registration_end_date)) {
-      $wrapper = ilr_get_node_wrapper($node);
-      $start_date = $wrapper->field_class_dates->value()['value'];
-      $startDateTime = new DateTime($start_date);
-      $wrapper->field_registration_end_date->set($startDateTime->getTimestamp());
-      $wrapper->save();
+    // empty during insert, but other saves can include empty 'und' key
+    if (empty($node->field_registration_end_date) || empty($node->field_registration_end_date[LANGUAGE_NONE])) {
+      $start_date = $node->field_class_dates[LANGUAGE_NONE][0]['value'];
+      $node->field_registration_end_date[LANGUAGE_NONE][0] = [
+        'value' => $start_date,
+        'timezone' => 'UTC',
+        'timezone_db' => 'UTC',
+      ];
     }
   }
 }
