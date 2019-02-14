@@ -35,7 +35,9 @@ function ilr_dev_install() {
     _ilr_dev_set_freedompay_test_credentials();
   }
 
-  _ilr_dev_set_salesforce_test_credentials();
+  // Comment out until we fix the issue with the sf test instances and
+  // 10,000 record limit
+  // _ilr_dev_set_salesforce_test_credentials();
 }
 
 /**
