@@ -183,7 +183,10 @@ function _ilr_sdc_listings_get_class_by_id($class_id) {
   return FALSE;
 }
 
-function _ilr_sdc_listings_get_faculty_by_sf_ids($sf_ids = []) {
+function _ilr_sdc_listings_get_faculty_by_sf_ids($sf_ids = NULL) {
+  if (!$sf_ids) {
+    return FALSE;
+  }
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'sdc_faculty')
@@ -2561,7 +2564,7 @@ function _ilr_sdc_listings_assign_faculty_to_class(&$entity, $sf_object) {
   $salesforce = salesforce_get_api();
   $query = "SELECT Id, Contact__c FROM EXECED_Participant__c WHERE Event__c = '". $event_id . "' AND Role__c = 'Instructor'";
   $data = $salesforce->apiCall('query/?q=' . urlencode($query));
-  if ($data) {
+  if ($data && $data['totalSize'] > 0) {
     $sf_ids = [];
     foreach ($data['records'] as $result) {
       $sf_ids[] = $result['Contact__c'];
