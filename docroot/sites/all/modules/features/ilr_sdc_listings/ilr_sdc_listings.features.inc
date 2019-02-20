@@ -1412,7 +1412,7 @@ function ilr_sdc_listings_default_salesforce_mapping() {
         "direction" : "sf_drupal"
       }
     ],
-    "pull_trigger_date" : "LastModifiedDate",
+    "pull_trigger_date" : "LastViewedDate",
     "push_async" : "1",
     "push_batch" : "0",
     "created" : "1540239137",
