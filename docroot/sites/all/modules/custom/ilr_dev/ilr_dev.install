@@ -22,7 +22,7 @@ function ilr_dev_install() {
   // Disable any modules we don't want running locally
   module_disable(array(
     'securepages',
-    'google_analytics_universal',
+    'googleanalytics',
   ));
 
   // Allow anonymous users to see dpm messages locally
