@@ -73,6 +73,17 @@ function ilr_theme_page_alter(&$page) {
       _ilr_theme_process_field_blocks($page, $node);
     }
   }
+
+  if (ilr_is_production_site()) { // Only add on prod
+    // Hack to add JS for SiteImprove testing.
+    $script = "(function() {";
+    $script .= "var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;";
+    $script .= "sz.src = '//siteimproveanalytics.com/js/siteanalyze_12304.js';";
+    $script .= "var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);";
+    $script .= "})();";
+
+    drupal_add_js($script, array('scope' => 'footer', 'type' => 'inline'));
+  }
 }
 
 /**

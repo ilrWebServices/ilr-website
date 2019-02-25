@@ -57,16 +57,6 @@ function google_analytics_universal_page_alter(&$page) {
     }
 
     drupal_add_js($script, array('scope' => 'header', 'type' => 'inline'));
-
-    // Hack to add JS for SiteImprove testing.
-    $script = "(function() {";
-    $script .= "var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;";
-    $script .= "sz.src = '//siteimproveanalytics.com/js/siteanalyze_12304.js';";
-    $script .= "var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);";
-    $script .= "})();";
-
-    drupal_add_js($script, array('scope' => 'footer', 'type' => 'inline'));
-
   }
 }
 
