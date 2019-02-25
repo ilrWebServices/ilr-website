@@ -989,3 +989,10 @@ function _ilr_migrate_body_to_paragraph_item($node) {
 function ilr_update_7073() {
   module_enable(['ilr_instagram_feed']);
 }
+
+/**
+ * Enables the contrib googleanalytics module
+ */
+function ilr_update_7074() {
+  module_enable(['googleanalytics']);
+}
