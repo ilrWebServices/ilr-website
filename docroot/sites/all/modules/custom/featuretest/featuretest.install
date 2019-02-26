@@ -13,7 +13,8 @@ function featuretest_enable() {
   // Disable any modules we don't want running
   module_disable(array(
     'securepages',
-    'acquia_agent'
+    'acquia_agent',
+    'google_tag'
   ));
 
   variable_set('stage_file_proxy_origin','http://www.ilr.cornell.edu');
