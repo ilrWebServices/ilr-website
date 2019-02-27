@@ -38,6 +38,7 @@ dependencies[] = custom_publishing_options
 dependencies[] = entityform_block
 dependencies[] = forms
 dependencies[] = forms2
+dependencies[] = google_analytics_universal
 dependencies[] = ilr_admin
 dependencies[] = ilr_alumni_events
 dependencies[] = ilr_author
