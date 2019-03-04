@@ -931,9 +931,11 @@ function _forms_full_names_states_and_provinces() {
  */
 function _forms_get_dynamic_allowed_values($field, $instance, $entity_type, $entity) {
   global $DYNAMIC_ALLOWED_VALUES;
+
   $type = (isset($entity->type))
     ? $entity->type
-    : $entity->bundle;
+    : $instance['bundle'];
+
   $field_name = $instance['field_name'];
   $keys = array();
 
