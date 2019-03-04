@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ilr_manual_listing.features.field_instance.inc
@@ -28,7 +29,7 @@ function ilr_manual_listing_field_default_field_instances() {
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'mega_menu_item' => array(
         'label' => 'hidden',
@@ -80,9 +81,59 @@ function ilr_manual_listing_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'bean-content_listing_manual-field_dynamic_list'.
+  $field_instances['bean-content_listing_manual-field_dynamic_list'] = array(
+    'bundle' => 'content_listing_manual',
+    'default_value' => array(
+      0 => array(
+        'value' => 'default',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'unordered_list' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'bean',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_dynamic_list',
+    'label' => 'Display',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 32,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Content');
+  t('Display');
 
   return $field_instances;
 }
