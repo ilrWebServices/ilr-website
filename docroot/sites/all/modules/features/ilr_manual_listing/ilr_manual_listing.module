@@ -45,6 +45,23 @@ function ilr_manual_listing_block_view_bean_homepage_news_alter(&$data, $block) 
   $first_element['node'][$key]['field_image'][0]['#image_style']= 'focussed_hero';
 }
 
+/**
+ * Adds style variations to manual content listing
+ */
+function ilr_manual_listing_preprocess_block(&$variables) {
+  if ($variables['block']->module == 'bean') {
+    $block = $variables['block'];
+    $bean = reset($variables['elements']['bean']);
+    if ($bean['#bundle'] == 'content_listing_manual') {
+      $wrapper = entity_metadata_wrapper('bean', $bean['#entity']);
+      $style = $wrapper->field_dynamic_list->value();
+      $styles = explode(' ', $style);
+      foreach ($styles as $key => $style) {
+        $variables['classes_array'][] = "content-listing-manual--$style";
+      }
+    }
+  }
+}
 
 /**
  * Removes partial string matches from listing

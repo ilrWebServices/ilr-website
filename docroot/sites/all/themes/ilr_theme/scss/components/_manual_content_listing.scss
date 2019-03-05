@@ -6,6 +6,18 @@
       display: none;
     }
   }
+
+  &--cards {
+    .bean-content-listing-manual .content {
+      @include three-column-grid;
+    }
+
+    article {
+      #content & {
+        @include card;
+      }
+    }
+  }
 }
 
 .view-course-manual-listings {
