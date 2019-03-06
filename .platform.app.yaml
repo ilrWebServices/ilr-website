@@ -72,14 +72,18 @@ web:
       expires: 5m
       passthru: '/index.php'
       root: 'docroot/sites/default/files'
-
-      # Do not execute PHP scripts.
-      scripts: false
-
+      scripts: false # Do not execute PHP scripts.
       rules:
         # Provide a longer TTL (2 weeks) for aggregated CSS and JS files.
         '^/sites/default/files/(css|js)':
             expires: 2w
+
+    '/simplesaml':
+      root: 'simplesamlphp-1.14.3/www'
+      allow: true
+      scripts: true
+      index:
+        - index.php
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
