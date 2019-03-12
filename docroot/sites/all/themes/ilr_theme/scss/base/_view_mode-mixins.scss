@@ -293,7 +293,7 @@
 
 @mixin card--overlay {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto;
   grid-row-gap: 0;
   padding: 0;
   line-height: 0.8; // Fix for bottom space issue

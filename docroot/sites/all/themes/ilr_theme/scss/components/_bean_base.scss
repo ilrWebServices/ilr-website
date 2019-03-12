@@ -5,6 +5,10 @@
     @include rhythm(3);
   }
 
+  .region-highlighted & {
+    margin: 0;
+  }
+
   > h2 {
     @include set-heading;
 
