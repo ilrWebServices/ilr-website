@@ -1,5 +1,5 @@
 <?php
-if (isset($_ENV["AH_SITE_ENVIRONMENT"]) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {
+if (isset($_ENV["PLATFORM_ENVIRONMENT"]) && $_ENV['PLATFORM_ENVIRONMENT'] == 'master') {
   echo file_get_contents('./robots.txt');
   exit;
 }

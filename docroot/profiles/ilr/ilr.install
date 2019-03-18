@@ -61,7 +61,7 @@ function ilr_install() {
   variable_set('simplesamlphp_auth_rolepopulation', "{$admin_role->rid}:uid,=,atf46|{$admin_role->rid}:uid,=,nr52|{$admin_role->rid}:uid,=,cgh2|{$admin_role->rid}:uid,=,fjp2|{$admin_role->rid}:uid,=,ddd1|{$admin_role->rid}:uid,=,tls245");
 
   // Deal with ENV specific settings
-  if (isset($_ENV["AH_SITE_ENVIRONMENT"])) {
+  if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
     $drupal_path = DRUPAL_ROOT;
   }
   else {
@@ -94,7 +94,7 @@ function ilr_install() {
   // Set the homepage, relying on hook_menu in the profile
   variable_set('site_frontpage', 'home');
 
-  if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] != 'prod') {
+  if (isset($_ENV['PLATFORM_ENVIRONMENT']) && $_ENV['PLATFORM_ENVIRONMENT'] != 'master') {
     module_enable(array(
       'helper'
     ));
@@ -523,7 +523,7 @@ function ilr_update_7042() {
  * Enables securepages on Acquia
  */
 function ilr_update_7043() {
-  if (isset($_ENV["AH_SITE_ENVIRONMENT"])) {
+  if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
     module_enable(array('securepages'));
   }
 }
@@ -783,7 +783,7 @@ function ilr_update_7058() {
  * Updates the simplesamlphp_installdir
  */
 function ilr_update_7059() {
-  $drupal_path = (isset($_ENV["AH_SITE_ENVIRONMENT"]))
+  $drupal_path = (isset($_ENV["PLATFORM_ENVIRONMENT"]))
     ? DRUPAL_ROOT
     : '/var/www/ilr-website/docroot';
 

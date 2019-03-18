@@ -1,9 +1,9 @@
 <?php
 
 if (!defined('CONFIG_PATH')) {
-  if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+  if (!empty($_ENV['PLATFORM_PROJECT'])) {
     // We're on Acquia
-    define('CONFIG_PATH', '/mnt/gfs/home/ilr/config');
+    define('CONFIG_PATH', '/config');
   } // We're developing locally
   else {
     define('CONFIG_PATH', dirname(__FILE__));
