@@ -109,8 +109,9 @@ hooks:
     cd docroot
     drush -y updatedb
 
-    # The configuration of scheduled execution.
+  # The configuration of scheduled execution.
+  # Run cron daily at 7am UTC
 crons:
   drupal:
-    spec: '*/20 * * * *'
+    spec: '0 8 * * *'
     cmd: 'cd docroot ; drush core-cron'
