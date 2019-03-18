@@ -94,6 +94,7 @@ mounts:
   '/docroot/sites/default/files': 'shared:files/files'
   '/tmp': 'shared:files/tmp'
   '/private': 'shared:files/private'
+  '/config': 'shared:files/config'
   '/drush-backups': 'shared:files/drush-backups'
 
 # The hooks executed at various points in the lifecycle of the application.
