@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__.'/../../config/get_secrets.php';
-global $ILR_SECRETS;
 
 /*
  * The configuration of simpleSAMLphp
@@ -25,7 +23,7 @@ $config = array (
      * external url, no matter where you come from (direct access or via the
      * reverse proxy).
      */
-    'baseurlpath' => (isset($_SERVER["AH_SITE_GROUP"]) ? 'https://' . $_SERVER['HTTP_HOST'] . '/simplesaml/' : 'simplesaml/'),
+    'baseurlpath' => 'https://' . $_SERVER['HTTP_HOST'] . '/simplesaml/',
     'certdir'               => 'cert/',
     'loggingdir'            => 'log/',
     'datadir'               => 'data/',
@@ -79,7 +77,7 @@ $config = array (
      * metadata listing and diagnostics pages.
      * You can also put a hash here; run "bin/pwgen.php" to generate one.
      */
-    'auth.adminpassword' => $ILR_SECRETS['simplesamlphp']['adminpassword'],
+    'auth.adminpassword' => getenv('simplesamlphp_adminpassword'),
     'admin.protectindexpage' => false,
     'admin.protectmetadata' => false,
 
@@ -91,7 +89,7 @@ $config = array (
      * A possible way to generate a random salt is by running the following command from a unix shell:
      * tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz' </dev/urandom | dd bs=32 count=1 2>/dev/null;echo
      */
-    'secretsalt' => $ILR_SECRETS['simplesamlphp']['secretsalt'],
+    'secretsalt' => getenv('simplesamlphp_secretsalt'),
 
     /*
      * Some information about the technical persons running this installation.
