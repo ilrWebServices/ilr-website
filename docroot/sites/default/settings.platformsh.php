@@ -1,6 +1,6 @@
 <?php
 // Set the config directory
-$conf['config_dir'] = '/app/config';
+$conf['config_dir'] = '/app/ilr_config';
 
 // Configure relationships.
 if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
