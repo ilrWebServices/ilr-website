@@ -94,7 +94,7 @@ function ilr_install() {
   // Set the homepage, relying on hook_menu in the profile
   variable_set('site_frontpage', 'home');
 
-  if (isset($_ENV['PLATFORM_ENVIRONMENT']) && $_ENV['PLATFORM_ENVIRONMENT'] != 'master') {
+  if (isset($_ENV['PLATFORM_ENVIRONMENT']) && $_ENV['PLATFORM_BRANCH'] != 'master') {
     module_enable(array(
       'helper'
     ));
