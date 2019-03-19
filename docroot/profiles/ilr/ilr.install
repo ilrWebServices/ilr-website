@@ -989,3 +989,14 @@ function _ilr_migrate_body_to_paragraph_item($node) {
 function ilr_update_7073() {
   module_enable(['ilr_instagram_feed']);
 }
+
+/**
+ * Reconfigure settings and modules for platform.sh
+ */
+function ilr_update_7074() {
+  module_disable(['memcache', 'readonlymode']);
+  variable_set('file_public_path', 'sites/default/files');
+  variable_set('file_private_path', '/app/private');
+  variable_set('file_temporary_path', '/app/tmp');
+  variable_set('simplesamlphp_auth_installdir', '/app/simplesamlphp-1.14.3');
+}
