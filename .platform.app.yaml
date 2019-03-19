@@ -9,6 +9,10 @@ name: 'app'
 # The runtime the application uses.
 type: 'php:7.1'
 
+runtime:
+  extensions:
+    - mcrypt
+
 # Configuration of the build of this application.
 build:
   flavor: drupal
