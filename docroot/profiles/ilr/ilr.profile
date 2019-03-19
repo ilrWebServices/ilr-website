@@ -679,7 +679,7 @@ function ilr_account_notification_mail($key, &$message, $params) {
 
 function ilr_is_production_site() {
   $is_production = FALSE;
-  if (isset($_ENV["PLATFORM_ENVIRONMENT"]) && $_ENV['PLATFORM_BRANCH'] == 'master') {
+  if (isset($_ENV["PLATFORM_BRANCH"]) && $_ENV['PLATFORM_BRANCH'] == 'master') {
     $is_production = TRUE;
   }
   return $is_production;
