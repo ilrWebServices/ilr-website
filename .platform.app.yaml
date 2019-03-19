@@ -85,6 +85,11 @@ web:
       index:
         - index.php
 
+    '/scripts':
+      root: 'scripts'
+      allow: true
+      scripts: true
+
 # The size of the persistent disk of the application (in MB).
 # 21504 = 21GB (requires an additional 2048 for mysql service)
 disk: 21504
@@ -95,6 +100,7 @@ mounts:
   '/tmp': 'shared:files/tmp'
   '/private': 'shared:files/private'
   '/ilr_config': 'shared:files/ilr_config'
+  'scripts': 'shared:files/scripts'
   '/drush-backups': 'shared:files/drush-backups'
 
 # The hooks executed at various points in the lifecycle of the application.
