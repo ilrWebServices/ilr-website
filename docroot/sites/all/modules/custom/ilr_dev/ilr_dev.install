@@ -1,6 +1,6 @@
 <?php
 
-require_once variable_get('config_dir') .  '/get_secrets.php';
+require_once variable_get('config_dir') .  '/secrets.php';
 
 /**
  * Implements hook_install()

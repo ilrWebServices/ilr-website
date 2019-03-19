@@ -13,7 +13,7 @@
 
 include_once 'people_profiles.features.inc';
 
-require_once variable_get('config_dir') .  '/get_departments.php';
+require_once variable_get('config_dir') .  '/ilr_departments.php';
 
 /**
  * Implements hook_init().
