@@ -7,15 +7,10 @@ if [ ! "$CURRENT_DIR" = "docroot" ]; then
   exit 2
 fi
 
-BIN_DIR=`dirname $0`
-
-# Set the backup name
-source $BIN_DIR/snapshot
-
 drush sql-drop -y
 
 # download the acquia dev db
-drush sql-sync @ilr.live @self --sanitize --sanitize-password=password --structure-tables-list=cache,cache_*,sessions,entityform,freedompay_invoices,freedompay_payments,redhen_* -y
+drush sql-sync @ilr-d7.master @self --sanitize --sanitize-password=password --structure-tables-list=cache,cache_*,sessions,entityform,freedompay_invoices,freedompay_payments,redhen_* -y
 
 drush cc all
 
