@@ -1,5 +1,0 @@
-name = FullStory
-description = A small, temporary custom module to support FullStory on the site
-core = 7.x
-package = Cornell
-version = 7.x-1.0
