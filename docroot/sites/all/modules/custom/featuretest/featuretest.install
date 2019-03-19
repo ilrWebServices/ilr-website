@@ -15,8 +15,8 @@ function featuretest_enable() {
     'securepages'
   ));
 
-  variable_set('stage_file_proxy_origin','http://www.ilr.cornell.edu');
-  variable_set('stage_file_proxy_origin_dir','sites/ilr.cornell.edu/files');
+  variable_set('stage_file_proxy_origin','https://www.ilr.cornell.edu');
+  variable_set('stage_file_proxy_origin_dir','sites/default/files');
   // Redirect all outgoing mail to the local filesystem
   variable_set('mail_system', array('default-system' => 'DevelMailLog'));
 }

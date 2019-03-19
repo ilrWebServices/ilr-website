@@ -11,8 +11,8 @@ function ilr_dev_install() {
   variable_set('site_name','ILR Dev Site');
   variable_set('file_public_path','sites/default/files');
   variable_set('file_private_path','sites/default/files/private');
-  variable_set('stage_file_proxy_origin','http://www.ilr.cornell.edu');
-  variable_set('stage_file_proxy_origin_dir','sites/ilr.cornell.edu/files');
+  variable_set('stage_file_proxy_origin','https://www.ilr.cornell.edu');
+  variable_set('stage_file_proxy_origin_dir','sites/default/files');
   variable_set('features_rebuild_on_flush',FALSE);
   variable_set('entity_rebuild_on_flush',FALSE);
   variable_set('freedompay_environment', 'testing');
