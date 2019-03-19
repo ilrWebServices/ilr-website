@@ -121,3 +121,6 @@ crons:
   drupal:
     spec: '0 8 * * *'
     cmd: 'cd docroot ; drush core-cron'
+  profile-trigger:
+        spec: '30 3 * * *'
+        cmd: 'cd ~/scripts ; sh ilr_profiles_data_pull.sh'
