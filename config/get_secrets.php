@@ -2,7 +2,7 @@
 
 if (!defined('CONFIG_PATH')) {
   if (isset($_ENV['PLATFORM_PROJECT'])) {
-    // We're on Acquia
+    // We're on Platform.sh
     define('CONFIG_PATH', '/config');
   } // Check for featuretest
   else if (strpos($_SERVER['SERVER_NAME'], 'featuretest.org') > 0) {

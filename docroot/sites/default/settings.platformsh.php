@@ -1,4 +1,7 @@
 <?php
+// Set the config directory
+$conf['config_dir'] = '/app/config';
+
 // Configure relationships.
 if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
   $relationships = json_decode(base64_decode($_ENV['PLATFORM_RELATIONSHIPS']), TRUE);

@@ -1,5 +1,6 @@
 <?php
-require_once DRUPAL_ROOT . '/../config/get_secrets.php';
+
+require_once variable_get('config_dir') . '/get_secrets.php';
 
 /**
  * Implements hook_mailchimp_accounts_api_key().

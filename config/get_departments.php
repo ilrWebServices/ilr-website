@@ -2,7 +2,7 @@
 
 if (!defined('CONFIG_PATH')) {
   if (!empty($_ENV['PLATFORM_PROJECT'])) {
-    // We're on Acquia
+    // We're on Platform.sh
     define('CONFIG_PATH', '/config');
   } // We're developing locally
   else {
