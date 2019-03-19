@@ -1,0 +1,19 @@
+{
+  "name": "ilrweb/ilr-d7",
+  "description": "The Drupal 7 version of ilr.cornell.edu",
+  "type": "project",
+  "license": "unlicensed",
+  "authors": [
+    {
+      "name": "Aaron Froehlich",
+      "email": "aaronfroehlich@gmail.com"
+    }
+  ],
+  "require": {},
+  "require-dev": {
+    "vlucas/phpdotenv": "^3.3"
+  },
+  "autoload": {
+    "files": ["load.environment.php"]
+  }
+}
