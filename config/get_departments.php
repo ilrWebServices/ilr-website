@@ -3,7 +3,7 @@
 if (!defined('CONFIG_PATH')) {
   if (!empty($_ENV['PLATFORM_PROJECT'])) {
     // We're on Platform.sh
-    define('CONFIG_PATH', '/config');
+    define('CONFIG_PATH', '/ilr_config');
   } // We're developing locally
   else {
     define('CONFIG_PATH', dirname(__FILE__));
