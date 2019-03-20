@@ -1,6 +1,6 @@
 # Installation
 
-This installation guide assumes that you've already followed the [Quickstart Guide](https://github.com/ilrWebServices/drupal-dev-vm#quick-start-guide) for the Dev VM.
+This installation guide assumes that you've already followed the [Local Dev Setup Guide](https://gist.github.com/jeffam/cc8db1a9072a56808363447e6b829c53).
   1. `git clone git@github.com:ilrWebServices/ilr-website.git`
   2. Run `composer install`.
   3. (Optional) Add a `settings.local.php` file to `docroot/sites/default/` with the following info:
@@ -13,7 +13,9 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 ```
 
-  4. Assuming you can SSH into the Acquia server, install the production database from the docroot folder with `drush sql-sync @ilr.live @ilr.ilr.local --sanitize -y`.
-  5. Once you have the database, enable the ilr development module with `drush en ilr_dev -y`.
-  6. Confirm that the site loads at [http://ilr-website.test](http://ilr-website.test).
-  7. If you'll be compiling the stylesheet, follow the "Simplifying CSS compilation" in the [theming readme](/docs/theming.md).
+  4. Assuming you can SSH into the production server and have the [platform cli](https://github.com/platformsh/platformsh-cli) installed, set up the project with `platform project:set-remote dd2imk5jkez6q`.
+  5. Set up aliases with `platform drush-aliases`.
+  6. Confirm the drush connection works with `$ drush @ilr-d7.master status`
+  7. `$ cd docroot && ../bin/sync-prod`
+  8. Confirm that the site loads at your local dev url,  @see [installation docs](https://gist.github.com/jeffam/cc8db1a9072a56808363447e6b829c53).
+  9. If you'll be compiling the stylesheet, follow the "Simplifying CSS compilation" in the [theming readme](/docs/theming.md).
