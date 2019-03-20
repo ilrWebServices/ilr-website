@@ -15,7 +15,11 @@ runtime:
 
 variables:
   php:
-    short_open_tag: 1
+    post_max_size: 256M
+    upload_max_filesize: 256M
+    display_errors: Off
+    display_startup_errors: Off
+    short_open_tag: On
 
 # Configuration of the build of this application.
 build:
