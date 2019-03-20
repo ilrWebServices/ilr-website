@@ -13,6 +13,10 @@ runtime:
   extensions:
     - mcrypt
 
+variables:
+  php:
+    short_open_tag: 1
+
 # Configuration of the build of this application.
 build:
   flavor: drupal
