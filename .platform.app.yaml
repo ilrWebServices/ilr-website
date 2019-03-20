@@ -105,6 +105,7 @@ mounts:
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
   build: |
+    curl -sS https://platform.sh/cli/installer | php
     set -e
     npm install
     npm run build
