@@ -16,7 +16,7 @@ This project is configured with gulp to watch for changes to the scss files and 
 
 While running Gulp, edited Sass files will automagically compile to CSS and reload in the browser (although you may need to reload the browser once to connect to the livereload server). To stop the gulp and livereload processes, hit `^c` (control + c).
 
-To compile CSS _without_ watching the filesystem form changes to `.scss` files, run:
+To compile CSS _without_ watching the filesystem from changes to `.scss` files, run:
 
 ```
 $ npm run build
