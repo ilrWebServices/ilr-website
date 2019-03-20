@@ -54,6 +54,7 @@ if (!$on_platformsh) {
 if ($on_platformsh) {
   require_once(__DIR__ . '/settings.platformsh.php');
 }
-elseif (file_exists(__DIR__ . '/settings.local.php')) {
+
+if (file_exists(__DIR__ . '/settings.local.php')) {
   require_once(__DIR__ . '/settings.local.php');
 }
