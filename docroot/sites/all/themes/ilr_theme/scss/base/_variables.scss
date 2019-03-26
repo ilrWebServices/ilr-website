@@ -90,8 +90,8 @@ $color-video-dark-blue: #002A48;
 // Variables here and implementation in _typography.scss
 // should probably be updated to a map
 // See https://medium.com/p/8e51498c3713
-$font: 'Replica', "freight-sans-pro-n4", "freight-sans-pro", sans-serif;
-$font-headers: 'Replica', "freight-text-pro-n4", "freight-text-pro", serif;
+$font: 'Replica', sans-serif;
+$font-headers: 'Replica', sans-serif;
 $font-strong: "futura-pt", sans-serif;
 
 $h1-size: 70px;
