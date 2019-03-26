@@ -1,4 +1,16 @@
 // See fontFace mixin in base/_mixins.scss
+
+@mixin fontFace($family,$src,$weight: normal,$style: normal) {
+  @font-face {
+    font-family: $family;
+    src: url('#{$src}.woff2') format('woff2'),
+         url('#{$src}.woff') format('woff');
+
+    font-style: $style;
+    font-weight: $weight;
+  }
+}
+
 @include fontFace('icons','../fonts/icons');
 @include fontFace('fontello','../fonts/fontello');
 @include fontFace('Replica', '../fonts/lineto-replica-pro-regular');
