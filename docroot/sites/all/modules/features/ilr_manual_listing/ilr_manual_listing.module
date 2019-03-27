@@ -49,6 +49,11 @@ function ilr_manual_listing_block_view_bean_homepage_news_alter(&$data, $block) 
  * Adds style variations to manual content listing
  */
 function ilr_manual_listing_preprocess_block(&$variables) {
+  // Skip the front page news listing
+  if (drupal_is_front_page()) {
+    return;
+  }
+
   if ($variables['block']->module == 'bean') {
     $block = $variables['block'];
     $bean = reset($variables['elements']['bean']);

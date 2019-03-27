@@ -5,6 +5,10 @@
     @include rhythm(3);
   }
 
+  &.contextual-links-region {
+    padding-top: 1.2em;
+  }
+
   .region-highlighted & {
     margin: 0;
   }
