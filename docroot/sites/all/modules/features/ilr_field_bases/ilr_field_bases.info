@@ -227,6 +227,7 @@ features[field_base][] = field_full_name_additional
 features[field_base][] = field_funding_received
 features[field_base][] = field_goals
 features[field_base][] = field_gpa
+features[field_base][] = field_grad_asst_subtype
 features[field_base][] = field_grad_date_appl_for_graduat
 features[field_base][] = field_graduate_institution_and_d
 features[field_base][] = field_guests

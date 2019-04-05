@@ -358,6 +358,7 @@ features[field_instance][] = entityform-faculty_request_for_ta_or_ra-field_cours
 features[field_instance][] = entityform-faculty_request_for_ta_or_ra-field_department
 features[field_instance][] = entityform-faculty_request_for_ta_or_ra-field_email
 features[field_instance][] = entityform-faculty_request_for_ta_or_ra-field_full_name
+features[field_instance][] = entityform-faculty_request_for_ta_or_ra-field_grad_asst_subtype
 features[field_instance][] = entityform-faculty_request_for_ta_or_ra-field_number_of_assistants_reque
 features[field_instance][] = entityform-faculty_request_for_ta_or_ra-field_preferred_students
 features[field_instance][] = entityform-faculty_request_for_ta_or_ra-field_project_name

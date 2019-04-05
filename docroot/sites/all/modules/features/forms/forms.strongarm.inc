@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * forms.strongarm.inc
@@ -429,7 +430,11 @@ function forms_strongarm() {
       ),
     ),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'redirect' => array(
+          'weight' => '14',
+        ),
+      ),
       'display' => array(),
     ),
   );
