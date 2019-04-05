@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * forms.features.inc
@@ -639,23 +640,27 @@ function forms_default_entityform_type() {
       "roles" : {
         "1" : "1",
         "2" : "2",
-        "3" : 0,
-        "4" : 0,
-        "5" : 0,
-        "6" : 0,
-        "7" : 0,
-        "8" : 0,
-        "9" : 0,
-        "10" : 0
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 1,
-      "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
-      "kerberized" : 1
+      "kerberized" : 1,
+      "form_submission_ilr_recipient" : "ilrgradforms@cornell.edu",
+      "add_payment_processing" : 0,
+      "hpp" : ""
     },
     "weight" : "0",
     "paths" : []

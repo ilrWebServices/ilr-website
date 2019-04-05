@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * forms.features.field_instance.inc
@@ -9103,7 +9104,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 8,
     ),
   );
 
@@ -9158,7 +9159,7 @@ function forms_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -9218,7 +9219,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 12,
     ),
   );
 
@@ -9278,7 +9279,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 11,
     ),
   );
 
@@ -9451,6 +9452,55 @@ function forms_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-faculty_request_for_ta_or_ra-field_grad_asst_subtype'.
+  $field_instances['entityform-faculty_request_for_ta_or_ra-field_grad_asst_subtype'] = array(
+    'bundle' => 'faculty_request_for_ta_or_ra',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_grad_asst_subtype',
+    'label' => 'Type of RA',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_buttons',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-faculty_request_for_ta_or_ra-field_number_of_assistants_reque'.
   $field_instances['entityform-faculty_request_for_ta_or_ra-field_number_of_assistants_reque'] = array(
     'bundle' => 'faculty_request_for_ta_or_ra',
@@ -9501,7 +9551,7 @@ function forms_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 9,
     ),
   );
 
@@ -9556,7 +9606,7 @@ function forms_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
+      'weight' => 10,
     ),
   );
 
@@ -9597,8 +9647,9 @@ function forms_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_project_name',
-    'label' => 'Project name or description (e.g. Chaired RA, Assistant Professor RA)',
+    'label' => 'Project name or description',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -9613,10 +9664,10 @@ function forms_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 5,
+        'rows' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 7,
     ),
   );
 
@@ -29611,7 +29662,7 @@ function forms_field_default_field_instances() {
   t('Preferred students (in order of preference), or desired qualifications');
   t('Professional field');
   t('Professor');
-  t('Project name or description (e.g. Chaired RA, Assistant Professor RA)');
+  t('Project name or description');
   t('Pronunciation');
   t('Qualifications');
   t('Questions and comments');
@@ -29674,6 +29725,7 @@ function forms_field_default_field_instances() {
   t('Title / nature of position');
   t('Title of paper or poster');
   t('Total Cost');
+  t('Type of RA');
   t('Type of grad assistant');
   t('ULI financial approval');
   t('URL or location on the ILR website, if applicable');
