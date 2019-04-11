@@ -4,6 +4,21 @@ https://www.{default}/:
   cache:
     enabled: true
     cookies: ['/^SS?ESS/']
+  redirects:
+    expires: 300s
+    paths:
+      '^/trianglefire/?(.*)':
+        to: 'http://trianglefire.ilr.cornell.edu/$1'
+        regexp: true
+      '^/ilgwu/?(.*)':
+        to: 'http://ilgwu.ilr.cornell.edu/$1'
+        regexp: true
+      '^/edi/?(.*)':
+        to: 'http://www.yti.cornell.edu/$1'
+        regexp: true
+      '^/library/kheel-center(.*)':
+        to: 'https://catherwood.library.cornell.edu/kheel'
+        regexp: true
 
 https://{default}/:
   type: redirect
