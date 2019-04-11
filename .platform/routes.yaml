@@ -1,34 +1,25 @@
-http://{default}/:
-  type: redirect
-  redirects:
-    expires: -1s
-    paths: {}
-  to: https://www.{default}/
-http://www.{default}/:
-  type: redirect
-  redirects:
-    expires: -1s
-    paths: {}
-  to: https://www.{default}/
-https://{default}/:
-  type: redirect
-  redirects:
-    expires: -1s
-    paths: {}
-  to: https://www.{default}/
 https://www.{default}/:
   type: upstream
-  redirects:
-    expires: -1s
-    paths: {}
+  upstream: app:http
   cache:
     enabled: true
-    default_ttl: 900
-    cookies:
-    - '*'
-    headers:
-    - Accept
-    - Accept-Language
-  ssi:
-    enabled: true
-  upstream: app:http
+    cookies: ['/^SS?ESS/']
+  redirects:
+    expires: 300s
+    paths:
+      '^/trianglefire/?(.*)':
+        to: 'http://trianglefire.ilr.cornell.edu/$1'
+        regexp: true
+      '^/ilgwu/?(.*)':
+        to: 'http://ilgwu.ilr.cornell.edu/$1'
+        regexp: true
+      '^/edi/?(.*)':
+        to: 'http://www.yti.cornell.edu/$1'
+        regexp: true
+      '^/library/kheel-center(.*)':
+        to: 'https://catherwood.library.cornell.edu/kheel'
+        regexp: true
+
+https://{default}/:
+  type: redirect
+  to: https://www.{default}/
