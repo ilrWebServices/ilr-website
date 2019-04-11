@@ -1,34 +1,10 @@
-http://{default}/:
-  type: redirect
-  redirects:
-    expires: -1s
-    paths: {}
-  to: https://www.{default}/
-http://www.{default}/:
-  type: redirect
-  redirects:
-    expires: -1s
-    paths: {}
-  to: https://www.{default}/
-https://{default}/:
-  type: redirect
-  redirects:
-    expires: -1s
-    paths: {}
-  to: https://www.{default}/
 https://www.{default}/:
   type: upstream
-  redirects:
-    expires: -1s
-    paths: {}
+  upstream: app:http
   cache:
     enabled: true
-    default_ttl: 900
-    cookies:
-    - '*'
-    headers:
-    - Accept
-    - Accept-Language
-  ssi:
-    enabled: true
-  upstream: app:http
+    cookies: ['/^SS?ESS/']
+
+https://{default}/:
+  type: redirect
+  to: https://www.{default}/
