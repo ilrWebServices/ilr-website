@@ -3,7 +3,7 @@ https://www.{default}/:
   upstream: app:http
   cache:
     enabled: true
-    cookies: ['*']
+    cookies: ['/^SS?ESS/', '/^SimpleSAML/', 'cuwltgttime']
   redirects:
     expires: 300s
     paths:
