@@ -1173,7 +1173,6 @@ function _ilr_sdc_listings_class_full_msg($class_node, $view_mode) {
 function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
   if ($view_mode == 'teaser' || $view_mode == 'full' || $view_mode == 'alternate_teaser') {
     $wrapper = ilr_get_node_wrapper($course_node);
-    $course_price = $wrapper->field_price->value();
     $next_available = (in_array($view_mode, ['teaser','alternate_teaser'])) ? TRUE : FALSE;
     $class_nids = _ilr_sdc_listings_get_classes_for_course($course_node,NULL,$next_available);
     if ($class_nids) {
@@ -1182,10 +1181,11 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
       $class_node = reset($class_nodes);
       $class_wrapper = ilr_get_node_wrapper($class_node);
       $content = '';
+      $price = _ilr_sdc_listings_get_price($class_node, $course_node);
       if (_ilr_sdc_listings_is_ondemand($class_node) || _ilr_sdc_listings_is_online($class_node)) {
         $format = _ilr_sdc_listings_generate_course_format_label($class_wrapper->field_course[0]->value()->nid);
         $content .= '<div class="class-details"><span class="timespan">ONLINE</span>';
-        $content .= '<p class="cost">$'. $course_price .'</p>';
+        $content .= '<p class="cost">$'. $price .'</p>';
         if (_ilr_sdc_listings_is_ondemand($class_node)) {
           // This is on the course node for on demand
           $content .= '<span class="message">Take this self-paced '. strtolower($format) .' at your convenience</span>';
@@ -1193,7 +1193,7 @@ function _ilr_sdc_listings_course_add_classes(&$course_node, $view_mode) {
         $content .= '</div>';
       }
       else {
-        $content = '<p class="cost">$'. $course_price .'</p>';
+        $content = '<p class="cost">$'. $price .'</p>';
       }
 
       if ($view_mode == 'full') {
@@ -1373,21 +1373,21 @@ function _ilr_sdc_listings_get_class_from_url() {
 }
 
 /**
- * Determines if any of the classes for course have different prices.
- * @param $class_nodes
- * @param $course_node
- * @return bool
+ * Get the price of the class or its course.
+ *
+ * Return the class price if the prices differ.
+ * Otherwise, return the course price.
  */
-function _ilr_sdc_listings_class_has_override_price($class_nodes, $course_node) {
-  $course_wrapper = ilr_get_node_wrapper($course_node);
+function _ilr_sdc_listings_get_price($class, $course) {
+  $course_wrapper = ilr_get_node_wrapper($course);
+  $class_wrapper = ilr_get_node_wrapper($class);
   $course_price = $course_wrapper->field_price->value();
-  foreach ($class_nodes as $class_node) {
-    $class_wrapper = ilr_get_node_wrapper($class_node);
-    if ($course_price != $class_wrapper->field_price->value()) {
-      return TRUE;
-    }
+  $class_price = $class_wrapper->field_price->value();
+
+  if (!empty($class_price) && $class_price != $course_price) {
+    return $class_price;
   }
-  return FALSE;
+  return $course_price;
 }
 
 /**
