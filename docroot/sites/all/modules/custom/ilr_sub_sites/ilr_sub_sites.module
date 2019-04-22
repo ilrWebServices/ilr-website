@@ -41,6 +41,7 @@ function ilr_sub_sites_block_view($delta = '') {
   $subsite_name = _ilr_sub_sites_get_current_subsite_name();
   $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
   $menu_name = _ilr_sub_sites_get_menu_name();
+
   // If custom logo, add the seal
   if (_ilr_sub_sites_get_site_logo($menu_name, $subsite_name)) {
     $reversed = ilr_sub_sites_use_reverse_seal($menu_name);
@@ -53,7 +54,10 @@ function ilr_sub_sites_block_view($delta = '') {
 
   $block['content'] .= '<div class="subsite-header">';
 
-  $block['content'] .= "<h2 class='subsite__heading subsite__heading--$menu_name'>$subsite_name</h2>";
+  if ($menu_name != 'ics') { // Don't show for ICS
+    $block['content'] .= "<h2 class='subsite__heading subsite__heading--$menu_name'>$subsite_name</h2>";
+  }
+
   if ($subtitle = _ilr_sub_sites_get_menu_description($menu_name)) {
     if ($subtitle != "SubSite menu") {
       $block['content'] .= "<h3 class='subsite__subheading subsite__subheading--$menu_name'>$subtitle</h3>";
@@ -270,21 +274,33 @@ function ilr_sub_sites_preprocess_node(&$variables) {
 
 /**
  * Handles custom page template processing
+ *
+ * Add the logo for the subsite (if custom), the override (ics)
+ * or default to the ilr lockup
  */
 function ilr_sub_sites_preprocess_page(&$variables) {
+  $variables['logo_override'] = NULL;
   $logo = file_create_url(drupal_get_path('theme', 'ilr_theme') . "/images/logos/ilr-cornell-lockup.svg");
 
   if (_ilr_sub_sites_current_page_is_sub_site()) {
     $subsite_name = _ilr_sub_sites_get_current_subsite_name();
     $menu_name = _ilr_sub_sites_get_menu_name();
-    if ($logo_filename = _ilr_sub_sites_get_site_logo($menu_name, $subsite_name)) {
-      $logo = file_create_url(drupal_get_path('theme', 'ilr_theme') . "/images/logos/" . $logo_filename);
-      $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
-      _ilr_sub_sites_ugly_link_hack($href);
-      $variables['front_page'] = $href;
-
-      $variables['logo_link'] = '<a class="cornell cornell--ilr" title="Visit ilr.cornell.edu" href="https://www.ilr.cornell.edu"></a>';
+    $href = '/' . drupal_get_path_alias(_ilr_sub_sites_get_subsite_homepage_alias());
+    if ($menu_name == 'ics') {
+      $variables['logo_override'] = [
+        '#markup' => '<h2 class="subsite__heading subsite__heading--ics"><a href="'.$href.'">'. $subsite_name .'</a></h2>'
+      ];
     }
+    else {
+      if ($logo_filename = _ilr_sub_sites_get_site_logo($menu_name, $subsite_name)) {
+        $logo = file_create_url(drupal_get_path('theme', 'ilr_theme') . "/images/logos/" . $logo_filename);
+        _ilr_sub_sites_ugly_link_hack($href);
+        $variables['front_page'] = $href;
+
+        $variables['logo_link'] = '<a class="cornell cornell--ilr" title="Visit ilr.cornell.edu" href="https://www.ilr.cornell.edu"></a>';
+      }
+    }
+
   }
 
   $variables['logo'] = $logo;

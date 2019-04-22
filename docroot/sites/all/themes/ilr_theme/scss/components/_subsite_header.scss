@@ -185,3 +185,31 @@
     }
   }
 }
+
+.subsite.ics {
+  .subsite__heading {
+    @include adjust-font-size-to(28px, 1.2);
+  }
+
+  @include large {
+    header[data-eq-state="regular-nav"] {
+      @include padding-leader(2);
+      @include adjust-font-size-to(30px, 1.2);
+    }
+
+
+  }
+
+  .subsite__heading {
+
+
+    letter-spacing: -1px;
+    margin-bottom: 3rem;
+
+    a,
+    a:visited {
+      color: $cornell-red;
+    }
+  }
+
+}

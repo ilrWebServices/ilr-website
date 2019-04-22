@@ -6,12 +6,16 @@
     </form>
   </div>
   <div class="container">
+    <?php if (isset($logo_override)): ?>
+      <?php print $logo_override['#markup']; ?>
+    <?php else: ?>
     <div class="logo-wrapper">
       <?php print $logo_link ?>
       <a class="ilr" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
          <img src="<?php echo $logo?>" alt="Cornell University | ILR School" title="Cornell University | ILR School">
       </a>
     </div>
+    <?php endif; ?>
     <div class='buttons'>
       <div class="jpanel-trigger-container">
         <a href="#" class="jpanel-trigger"></a>
