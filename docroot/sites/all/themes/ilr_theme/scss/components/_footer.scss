@@ -21,4 +21,13 @@ footer {
     padding-bottom: 5px; // helps align it with the social footer
     color: $brand-light;
   }
+
+  #block-ilr-ilr-wordmark,
+  #block-bean-scjohnson-logo {
+    grid-column: 1 / -1;
+  }
+
+  #block-bean-scjohnson-logo img {
+    max-height: 70px;
+  }
 }

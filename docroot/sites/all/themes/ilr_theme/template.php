@@ -46,16 +46,6 @@ function ilr_theme_preprocess_page(&$variables) {
   $variables['page']['page_width_eq_points'] =  array('#markup' => 'data-eq-pts="320: 320, 550: 550, 768: 768, widescreen: 1280"');
   $variables['page']['nav_trigger_pts'] =  array('#markup' => 'data-eq-pts="mobile-nav: 300, regular-nav: 1045"');
 
-  $wordmark = ilr_block_view('ilr_wordmark');
-
-  $wordmark_render = [
-    'wordmark' => [
-      '#markup' => $wordmark['content']
-    ]
-  ];
-
-  $variables['page']['footer'] =  $wordmark_render + $variables['page']['footer'];
-
   if (!isset($variables['logo_link'])) {
     $variables['logo_link'] = '<a class="cornell" title="Visit Cornell.edu" href="https://cornell.edu"></a>';
   }
