@@ -72,11 +72,12 @@ function _ilr_social_sharing_get_class_year_from_date($node, $field) {
  *  - Fix for class nodes, so that course summary gets returned
  */
 function _ilr_social_sharing_get_description($node) {
+  $summary = '';
   if (!empty($node->field_teaser)) {
     $summary = $node->field_teaser[LANGUAGE_NONE][0]['value'];
   } elseif (!empty($node->field_description)) {
     $summary = $node->field_description[LANGUAGE_NONE][0]['safe_value'];
-  } else {
+  } elseif (!empty($node->body)) {
     $summary = (!empty($node->body[LANGUAGE_NONE][0]['summary']))
       ? $node->body[LANGUAGE_NONE][0]['summary']
       : text_summary(trim($node->body[LANGUAGE_NONE][0]['value']), NULL, 200);
