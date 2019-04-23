@@ -1,7 +1,5 @@
 %header-small {
   .logo-wrapper {
-    float: left;
-
     a.cornell {
       width: 70px;
       height: 70px;
@@ -19,10 +17,10 @@ header {
   background: white;
   width: 100%;
   position: relative;
-  padding: calc(1rem + 20px) 2rem 1rem;
+  padding: $frame-width;
 
   @include medium {
-    padding: calc(2rem + 20px) 2rem 0;
+    padding: $frame-width $frame-width 0;
   }
 
   @include medium {
@@ -36,11 +34,16 @@ header {
   .container {
     @include clearfix;
     @include container;
+
+    position: relative;
+
+    @include medium {
+      padding: $frame-width;
+    }
   }
 
   .logo-wrapper {
     position: relative;
-    float: left;
     max-width: 80%;
 
     a.cornell {
@@ -86,22 +89,17 @@ header {
 %header-btn {
   @include transition-duration(.3s);
   position: absolute;
-  top: 2rem;
-  right: 1rem;
+  top: 1rem;
+  right: 0;
   z-index: 10;
-  // margin-top: 1em;
+
   [data-eq-state="regular-nav"]:not(.sticky) & {
     body:not(.subsite) & {
       margin-right: 1em;
     }
   }
 
-  @include small {
-    top: 3rem;
-  }
-
   @include medium {
-    top: 4rem;
     right: 2rem;
   }
 
@@ -116,12 +114,6 @@ header {
 
     &:hover, &:visited, &:active, &:focus {
       text-decoration: none;
-    }
-
-    // Subsites move the search-button element
-    // to the #header-region
-    #header-region & {
-      color: $brand;
     }
   }
   #header-region & {

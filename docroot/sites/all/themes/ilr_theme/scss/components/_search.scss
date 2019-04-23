@@ -1,13 +1,13 @@
 .search-button {
   position: absolute;
-  top: 2rem;
-  left: 15%;
+  top: 0;
+  left: 0;
   z-index: 10;
 
   [data-eq-state="regular-nav"] & {
     left: auto;
-    right: $frame-width * .75;
-    top: $frame-width * .75;
+    right: 0;
+    top: 0;
   }
 
   a {

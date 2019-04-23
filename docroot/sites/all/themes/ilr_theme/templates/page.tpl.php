@@ -5,7 +5,8 @@
       <input id="search-form-query" type="text" name="s" placeholder="Search" value="" size="20" maxlength="128" class="form-text" />
     </form>
   </div>
-  <div class="container">
+  <div id="header-region">
+    <div class="container">
     <?php if (isset($logo_override)): ?>
       <?php print $logo_override['#markup']; ?>
     <?php else: ?>
@@ -24,9 +25,8 @@
         <a href="#"></a>
       </div>
     </div>
-  </div>
-  <div id="header-region">
     <?php print render($page['header']); ?>
+  </div>
   </div>
 </header>
 <div id="page">

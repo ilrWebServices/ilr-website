@@ -2,6 +2,10 @@
   header {
     position: relative;
 
+    .container {
+      padding: 2rem 1rem;
+    }
+
     .logo-wrapper {
       @include trailer(1);
 
@@ -29,21 +33,21 @@
       @include medium {
         display: block;
         position: absolute;
-        right: 0;
-        top: 0;
         max-width: 70px;
+        bottom: calc(2rem);
+        right: $frame-width;
       }
     }
 
     &[data-eq-state="regular-nav"] {
       .cornell-seal__link {
-        top: -130px;
-        right: $frame-width;
         max-width: 85px;
+        top: calc(1rem + #{$frame-width});
+        right: calc(2rem + #{$frame-width});
 
         @include breakpoint(1450px) {
           max-width: 100px;
-          right: 0;
+          right: calc(2rem + #{$frame-width});
         }
       }
     }
@@ -187,29 +191,58 @@
 }
 
 .subsite.ics {
-  .subsite__heading {
-    @include adjust-font-size-to(28px, 1.2);
-  }
-
   @include large {
     header[data-eq-state="regular-nav"] {
-      @include padding-leader(2);
-      @include adjust-font-size-to(30px, 1.2);
-    }
+      .subsite__heading {
+        @include adjust-font-size-to(38px, 1.2);
 
-
-  }
-
-  .subsite__heading {
-
-
-    letter-spacing: -1px;
-    margin-bottom: 3rem;
-
-    a,
-    a:visited {
-      color: $cornell-red;
+        text-align: right;
+        padding-right: 2rem;
+      }
     }
   }
 
+  header {
+    #header-region .region-header {
+      flex-direction: column;
+    }
+
+    .container {
+      padding-left: 0;
+    }
+
+    .subsite__heading {
+      @include adjust-font-size-to(28px, 1.2);
+
+      letter-spacing: -1px;
+      margin-bottom: 3rem;
+      padding-top: 4rem;
+
+      a,
+      a:visited {
+        color: $cornell-red;
+      }
+
+      @include medium {
+        text-align: right;
+        padding-top: 1rem;
+      }
+    }
+
+    .cornell-seal__link {
+      display: block;
+      position: absolute;
+      max-width: 70px;
+      left: 0;
+      top: 1rem;
+
+      @include medium {
+        left: 1rem;
+        max-width: 85px;
+      }
+    }
+  }
+  .menu-block-ilr-primary-menu {
+    padding-right: 2rem;
+  }
 }
