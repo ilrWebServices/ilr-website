@@ -35,8 +35,6 @@ header {
     @include clearfix;
     @include container;
 
-    position: relative;
-
     @include medium {
       padding: $frame-width;
     }
