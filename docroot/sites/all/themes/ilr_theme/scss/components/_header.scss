@@ -32,7 +32,6 @@ header {
   }
 
   .container {
-    @include clearfix;
     @include container;
 
     position: relative;
