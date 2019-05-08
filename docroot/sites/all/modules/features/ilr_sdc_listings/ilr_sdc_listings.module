@@ -119,6 +119,13 @@ function ilr_sdc_listings_menu() {
     'page callback' => '_ilr_sdc_listings_custom_search',
   );
 
+  $items['course/%'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => '_ilr_sdc_listings_course_sfid_redirect',
+    'page arguments' => array(1),
+  );
+
   return $items;
 }
 
@@ -220,6 +227,16 @@ function _ilr_sdc_listings_get_program_by_sf_id($sf_id) {
     return TRUE;
   }
   return FALSE;
+}
+
+/**
+ * Menu callback that redirects courses by their sfid
+ */
+function _ilr_sdc_listings_course_sfid_redirect($sfid) {
+  if ($course = _ilr_sdc_listings_get_course_by_sf_id($sfid)) {
+    return drupal_goto('node/' . reset($course));
+  }
+  return drupal_not_found();
 }
 
 /**
