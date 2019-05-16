@@ -1000,3 +1000,23 @@ function ilr_update_7074() {
   variable_set('file_temporary_path', '/app/tmp');
   variable_set('simplesamlphp_auth_installdir', '/app/simplesamlphp-1.14.3');
 }
+
+/**
+ * Enables and configures xmlsitemap for main menu and subsite menus
+ */
+function ilr_update_7075() {
+  module_enable(['xmlsitemap', 'xmlsitemap_menu']);
+
+  $settings = [
+    'status' => '1',
+    'priority' => '0.5',
+  ];
+
+  variable_set('xmlsitemap_settings_menu_link_main-menu', $settings);
+
+  $subsites = _ilr_sub_sites_get_sub_sites_from_menus();
+
+  foreach ($subsites as $menu_name => $title) {
+    variable_set('xmlsitemap_settings_menu_link_' . $menu_name, $settings);
+  }
+}
