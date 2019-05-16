@@ -107,6 +107,7 @@ function _ilr_social_sharing_get_image($node,$image_style) {
 }
 
 function _ilr_social_sharing_get_meta_tag_properties_and_content($vars) {
+  global $base_url;
   $description = _ilr_social_sharing_get_description($vars['node']);
   $site = variable_get('site_name');
   return array(
@@ -118,7 +119,7 @@ function _ilr_social_sharing_get_meta_tag_properties_and_content($vars) {
     "twitter:image"           => _ilr_social_sharing_get_image($vars['node'], 'twitter_share'),
     "og:title"                => $vars['title'],
     "og:type"                 => 'website',
-    "og:url"                  => drupal_get_path_alias(current_path()),
+    "og:url"                  => $base_url . '/' .drupal_get_path_alias(current_path()),
     "og:image"                => _ilr_social_sharing_get_image($vars['node'], 'facebook_share'),
     "og:description"          => $description,
     "og:site_name"            => $site,
