@@ -628,3 +628,13 @@ function _ilr_sub_sites_ugly_link_hack(&$href) {
     }
   }
 }
+
+/**
+ * Get the subsites from the custom menus,
+ * excluding the secondary menu.
+ */
+function _ilr_sub_sites_get_sub_sites_from_menus() {
+  $custom_menus = menu_get_menus(FALSE);
+  unset($custom_menus['menu-secondary-menu']);
+  return $custom_menus;
+}
