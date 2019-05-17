@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * basic_page.features.field_instance.inc
@@ -856,7 +857,7 @@ function basic_page_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -905,6 +906,57 @@ function basic_page_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-basic_page-field_teaser'.
+  $field_instances['node-basic_page-field_teaser'] = array(
+    'bundle' => 'basic_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The description field is used for search engines and open graph (social) metadata. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_teaser',
+    'label' => 'Description',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 3,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Alt Text');
@@ -916,6 +968,7 @@ function basic_page_field_default_field_instances() {
   t('Content');
   t('Content Bottom Region');
   t('Content Region');
+  t('Description');
   t('Editor Notes');
   t('Highlighted Region');
   t('Main Content');
@@ -924,6 +977,7 @@ function basic_page_field_default_field_instances() {
   t('Tags');
   t('Tags are used internally for content placement and organization. Note that the first tag is considered the primary tag and will be visible to the public.');
   t('The content region is currently only used for adding forms to pages. ');
+  t('The description field is used for search engines and open graph (social) metadata. ');
   t('Title Text');
   t('Title text is used in the tool tip when a user hovers their mouse over the image. Adding title text makes it easier to understand the context of an image and improves usability.');
 
