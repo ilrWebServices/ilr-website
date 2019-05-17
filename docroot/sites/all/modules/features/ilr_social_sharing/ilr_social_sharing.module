@@ -27,9 +27,14 @@ function ilr_social_sharing_menu() {
  */
 function ilr_social_sharing_preprocess_node(&$variables) {
   $enabled_bundles = _ilr_social_sharing_get_enabled_bundles();
-  if ($variables['view_mode'] == 'full' && in_array($variables['type'], $enabled_bundles)) {
+  if ($variables['view_mode'] == 'full') {
     _ilr_social_sharing_add_og_tags($variables);
-    _ilr_social_sharing_add_social_buttons($variables);
+
+    // Add sharing buttons on some content types
+    if (in_array($variables['type'], $enabled_bundles)) {
+      _ilr_social_sharing_add_social_buttons($variables);
+    }
+
     // Add the js
     drupal_add_js(drupal_get_path('module','ilr_social_sharing') . '/ilr_social_sharing.js', array('type' => 'file', 'scope' => 'footer'));
   }
@@ -86,16 +91,17 @@ function _ilr_social_sharing_get_description($node) {
 }
 
 function _ilr_social_sharing_get_enabled_bundles() {
-  return array(
+  return [
     'news_item',
     'post',
     'reflection',
     'sdc_course',
     'sdc_class',
     // 'channel_page', // removing temporarily
-    // 'experience_report',
-    // 'visiting_fellow',
-  );
+    'experience_report',
+    'student_portrait',
+    'visiting_fellow',
+  ];
 }
 
 function _ilr_social_sharing_get_image($node,$image_style) {
