@@ -25,7 +25,9 @@
         <a href="#"></a>
       </div>
     </div>
-    <?php print render($page['header']); ?>
+    <div class="region-header__wrapper">
+      <?php print render($page['header']); ?>
+    </div>
   </div>
   </div>
 </header>

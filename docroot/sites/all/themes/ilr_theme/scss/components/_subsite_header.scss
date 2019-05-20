@@ -104,7 +104,7 @@
     }
   }
 
-  &.sustainable-labor-practices #header-region {
+  &.sustainable-labor-practices #header-region .region-header__wrapper {
     @include full-width;
 
     padding: $space;

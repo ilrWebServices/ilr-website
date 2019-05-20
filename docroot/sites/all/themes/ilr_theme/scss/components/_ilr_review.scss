@@ -6,7 +6,6 @@ body.ilr-review {
   header {
     background-image: none;
     background-color: white;
-    padding-top: $space;
 
     .jpanel-trigger-container {
       a.jpanel-trigger {
@@ -22,30 +21,35 @@ body.ilr-review {
     }
 
     #header-region {
-      @include full-width;
-      @include rhythm-padding(2);
-
-      max-height: 150px; // The bg image size
-      background-color: $blue-ilrreview;
-      a {
-        color: white;
-      }
-
       h2 {
         font-style: italic;
+      }
+
+      .container {
+        padding: 0;
+      }
+
+      .region-header__wrapper {
+        @include rhythm-padding(2);
+        @include full-width;
+
+        max-height: 150px; // The bg image size
+        background-color: $blue-ilrreview;
+
+        padding-left: $space;
+        padding-right: $space;
+
+        @include medium {
+          padding-left: $double-space;
+          padding-right: $double-space;
+        }
       }
 
       .region-header {
         @include container;
 
-        padding: 0 $space;
-
-        @include medium {
-          padding: 0 $double-space;
-        }
-
-        @include breakpoint($page-max-width) {
-          padding: 0;
+        a {
+          color: white;
         }
 
         .subsite-header .subsite__heading {
@@ -68,7 +72,7 @@ body.ilr-review {
   }
 
   header[data-eq-state="regular-nav"] {
-    #header-region {
+    .region-header__wrapper {
       background: $blue-ilrreview url("../images/bg-globe-blue.gif") no-repeat left top;
     }
   }
