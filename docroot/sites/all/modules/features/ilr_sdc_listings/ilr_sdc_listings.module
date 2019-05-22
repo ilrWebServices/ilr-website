@@ -11,8 +11,9 @@ include_once 'ilr_sdc_listings.features.inc';
 
 /**
  * Implements hook_cron().
- * Run the new class notifications once per day
- * Deletes cancelled classes if they are in the past
+ * Run the new class notifications once per day.
+ * Deletes cancelled classes if they are in the past.
+ * Resets the last_sync date for courses from SalesForce to avoid missing classes.
  */
 function ilr_sdc_listings_cron() {
   if (time() >= variable_get('ilr_sdc_listings_cron_next_execution', 0)) {
@@ -21,6 +22,9 @@ function ilr_sdc_listings_cron() {
     variable_set('ilr_sdc_listings_cron_next_execution', time() + $interval);
     variable_set('ilr_sdc_listings_cron_last_execution', time()); // Set to now
     _ilr_sdc_listings_remove_cancelled_classes();
+    $week_interval = 60 * 60 * 24 * 7; // Set to weekly interval
+    $last_sync = variable_get('salesforce_pull_last_sync_EXECED_Course__c', time());
+    variable_set('salesforce_pull_last_sync_EXECED_Course__c', $last_sync - $week_interval);
   }
 }
 
