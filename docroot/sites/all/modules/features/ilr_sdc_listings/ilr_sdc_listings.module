@@ -2507,22 +2507,10 @@ function _ilr_sdc_listings_get_protected_fields() {
  * @see includes/salesforce.select_query.inc
  */
 function ilr_sdc_listings_salesforce_query_alter(SalesforceSelectQuery &$query) {
-  if ($query->objectType == 'EXECED_Event_Class__c' || $query->objectType == 'EXECED_Course__c') {
-    $query->addCondition('Show_on_Web__c', 'false', '!=');
-  }
-
   // Only get contacts who also have the "instructor" role in participants
   if ($query->objectType == 'Contact') {
     $query->addCondition('Id', '(SELECT Contact__c FROM EXECED_Participant__c WHERE Role__c = \'Instructor\')', 'IN');
   }
-}
-
-function ilr_sdc_listings_sf_pull_prematch($sf_object) {
-  $prefix = $sf_object['Course_Number__c'];
-  if (!empty($prefix) && strlen($prefix) <= 10) {
-    return _ilr_sdc_listings_get_course_by_catalog_prefix($prefix);
-  }
-  return FALSE;
 }
 
 /**
