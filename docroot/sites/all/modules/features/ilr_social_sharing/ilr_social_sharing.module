@@ -90,7 +90,7 @@ function _ilr_social_sharing_get_description($node) {
     $pid = $node->field_para_main_page_content[LANGUAGE_NONE][0]['value'];
     $paragraph = entity_load('paragraphs_item', [$pid]);
     $wrapper = entity_metadata_wrapper('paragraphs_item', $pid);
-    if ($wrapper->field_text_paragraph->value()) {
+    if (isset($wrapper->field_text_paragraph)) {
       $text = $wrapper->field_text_paragraph->value()['value'];
       $summary = text_summary(trim($text), NULL, 200) . '...';
     }
