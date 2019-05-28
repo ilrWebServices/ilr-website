@@ -5,3 +5,27 @@
  */
 
 include_once 'ilr_instagram_feed.features.inc';
+
+/**
+ * Implements hook_feeds_after_import().
+ *
+ * Post instagram feed failures to Slack.
+ */
+function ilr_instagram_feed_feeds_after_import(FeedsSource $source) {
+  if ($source->importer->id === 'instagram_rss_feed' && isset($source->exception)) {
+    $options = [
+      'method' => 'POST',
+      'data' => json_encode([
+        'username' => 'ILR D7',
+        'text' => t("Instagram importer error: `!message` Check <https://www.ilr.cornell.edu/import/instagram_rss_feed/log|the importer log> for more info.", ['!message' => $source->exception->getMessage()]),
+        'icon_emoji' => ':face_palm:',
+      ]),
+      'timeout' => 30,
+      'headers' => ['Content-Type' => 'application/json'],
+    ];
+
+    $url = variable_get('ilr_instagram_feed_webhook_url', 'https://hooks.slack.com/services/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');
+
+    $result = drupal_http_request($url, $options);
+  }
+}
