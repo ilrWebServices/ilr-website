@@ -242,7 +242,10 @@
       &[data-items="6"],
       &[data-items="7"],
       &[data-items="8"],
-      &[data-items="9"] {
+      &[data-items="9"],
+      &[data-items="10"],
+      &[data-items="11"],
+      &[data-items="12"] {
         @include four-column-grid;
       }
     }
