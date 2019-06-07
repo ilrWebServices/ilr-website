@@ -127,12 +127,6 @@ body.front {
         p {
           @include adjust-font-size-to(15px, .8);
 
-          @include medium {
-            @include paragraph-text(white);
-
-            font-weight: 300;
-          }
-
           @include xl {
             @include adjust-font-size-to(ms(1), 1.2);
           }
