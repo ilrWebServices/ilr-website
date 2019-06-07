@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ilr_instagram_feed.feeds_importer_default.inc
@@ -79,7 +80,7 @@ function ilr_instagram_feed_feeds_importer_default() {
         ),
         'insert_new' => '1',
         'update_existing' => '2',
-        'update_non_existent' => 'delete',
+        'update_non_existent' => 'skip',
         'input_format' => 'plain_text',
         'skip_hash_check' => 0,
         'bundle' => 'instagram_post',

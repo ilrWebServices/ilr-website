@@ -13,9 +13,16 @@
  * @ingroup themeable
  */
 ?>
-<article role="article" class="<?php print $classes; ?> instagram-post node-<?php print $node->nid; ?>"<?php print $attributes; ?>>
-  <a class="instagram-post__image" href="<?php print $instagram_url; ?>">
+<div class="cu-card__content">
+  <?php print render($content['body']); ?>
+  <!-- <p>Happy first day of classes! Wishing everyone a great start to the semester!</p> -->
+  <div class="cu-card__button">
+    <a href="<?php print $instagram_url; ?>" class="cu-button--overlay cu-button">View </a>
+  </div>
+</div>
+<div class="cu-card__media">
+  <a class="cu-card__media-link" href="<?php print $instagram_url; ?>">
     <?php print render($content['field_image']); ?>
   </a>
-  <?php print render($title_suffix); // For contextual links ?>
-</article>
+</div>
+<?php print render($title_suffix); ?>
