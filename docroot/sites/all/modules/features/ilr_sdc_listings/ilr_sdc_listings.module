@@ -2604,3 +2604,23 @@ function ilr_sdc_listings_node_presave($node) {
     }
   }
 }
+
+function ilr_sdc_listings_get_program($node) {
+  if ($node->type == 'sdc_class') {
+    $class_wrapper = entity_metadata_wrapper('node', $node);
+    $course_nid = $class_wrapper->field_course[0]->getIdentifier();
+    $wrapper = entity_metadata_wrapper('node', $course_nid);
+  }
+  else {
+    $wrapper = entity_metadata_wrapper('node', $node);
+  }
+  return $wrapper->field_program_reference->value()->name;
+}
+
+function ilr_sdc_listings_get_prefix($node) {
+  $wrapper = ilr_get_node_wrapper($node);
+  $prefix = ($node->type == 'sdc_class')
+    ? $wrapper->field_course[0]->field_catalog_prefix->value()
+    : $wrapper->field_catalog_prefix->value();
+  return $prefix;
+}

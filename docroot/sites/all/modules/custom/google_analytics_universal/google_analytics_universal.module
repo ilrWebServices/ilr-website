@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Universal Google Analytics Implementation
@@ -93,4 +94,69 @@ function _googleanalytics_visibility_pages() {
     $page_match = !$page_match;
   }
   return $page_match;
+}
+
+/**
+ * Add inline js snippet for analytics dashboard integration.
+ *
+ * @see https://www.pivotaltracker.com/story/show/166557318
+ */
+function google_analytics_universal_page_build(&$page) {
+  if ($node = menu_get_object('node', 1)) {
+    $wrapper = ilr_get_node_wrapper($node);
+
+    // Check if the node is a course or a class to support later ternary
+    $course_class = in_array($node->type, ['sdc_course', 'sdc_class']);
+
+    // Keywords are multi-value
+    if (isset($node->field_keywords)) {
+      $keywords = [];
+      foreach ($wrapper->field_keywords->getIterator() as $delta => $term_wrapper) {
+        $keywords[] = $term_wrapper->name->value();
+      }
+      $keywords = implode(',', $keywords);
+    } else {
+      $keywords = '[none]';
+    }
+
+    // Categories limited to one
+    if (isset($node->field_category_type)) {
+      $category = (!empty($wrapper->field_category_type->value()))
+        ? $wrapper->field_category_type->value()->name
+        : '[none]';
+    } else {
+      $category = '[none]';
+    }
+
+    $data = json_encode([
+      'pageType' => node_type_get_name($node),
+      'documentCategory' => $category,
+      'keywords' =>  $keywords,
+      'subsite' =>  _ilr_sub_sites_get_current_subsite_name(),
+      'drupalNode' => (int) $node->nid,
+      'documentAuthor' => $node->name,
+      'pageTitle' => $node->title,
+      'datePublished' => format_date($node->created, 'custom', 'Ymd'),
+      'dateModified' => format_date($node->changed, 'custom', 'Ymm'),
+      'documentAge' => (int) date_diff(new DateTime(), new DateTime('@' . $node->created))->format('%a'), // %a = # of days
+      'courseNumber' => ($course_class) ? ilr_sdc_listings_get_prefix($node) : '[none]',
+      'price' => ($course_class) ? round($wrapper->field_price->value()) : 0,
+      'program' => ($course_class) ? ilr_sdc_listings_get_program($node) : '[none]'
+    ]);
+
+    $script = <<<EOL
+<script id="dataLayerUpdate">
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push($data);
+</script>
+
+EOL;
+
+    $element = [
+      '#type' => 'markup',
+      '#markup' => $script,
+    ];
+
+    drupal_add_html_head($element, 'google_analytics_universal_datalayer');
+  }
 }
