@@ -1,18 +1,35 @@
 body.front .homepage-news {
+  max-width: $section-max-width;
+  margin: 0 auto;
+
   .bean-content-listing-manual {
     @include trailer(2);
 
     .content {
-      @include four-column-grid;
+      display: grid;
+      grid-gap: var(--cu-vr0);
+      grid-template-columns: repeat(4, 1fr);
 
-      position: relative;
-      margin: 0;
+      :first-child {
+        grid-column-end: span 2;
+        grid-row-end: span 2;
+
+        h2 {
+          font-size: var(--cu-text-xl);
+        }
+      }
 
       article {
-        @include card;
+        .news__title h2 {
+          line-height: 1.1;
 
-        &:first-of-type { // Highlighted news item
-          @include featured-news-item;
+          a {
+            font-weight: 300;
+          }
+        }
+        .news__content {
+          padding: 1rem 0;
+          background: $white;
         }
       }
     }
