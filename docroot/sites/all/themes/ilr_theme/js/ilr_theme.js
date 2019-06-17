@@ -175,20 +175,4 @@
       });
     }
   };
-
-  Drupal.behaviors.ilr_theme_set_frame_height = {
-    attach: function (context, settings) {
-      $(window).load(function() {
-        var menu, menuHeight, menuPos;
-        menu = $('#block-menu-block-ilr-subnav');
-        if ($(menu).is(":visible")) {
-          menuPos = $('#sidebar-first').offset().top;
-          menuHeight = menu.height();
-          frameHeight = menuPos + menuHeight - 50;
-          $('.body__frame .side--left').height(frameHeight);
-        }
-      });
-    }
-  };
-
 }(jQuery));

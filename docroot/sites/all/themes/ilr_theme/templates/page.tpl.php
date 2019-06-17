@@ -1,5 +1,4 @@
 <header role="banner" <?php print render($page['nav_trigger_pts']); ?>>
-  <div class="body__frame"><span class="side--left"></span></div>
   <div id="search-form">
     <form action="/search" method="get" id="cu-search-form" accept-charset="UTF-8">
       <input id="search-form-query" type="text" name="s" placeholder="Search" value="" size="20" maxlength="128" class="form-text" />
