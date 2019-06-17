@@ -15,7 +15,7 @@ $social-channels: linkedin, facebook, twitter, youtube, instagram, mail;
     @include bulleted-list($undo: true);
 
     li a {
-      color: $white;
+      color: $black;
     }
   }
 }

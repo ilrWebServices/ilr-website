@@ -532,20 +532,19 @@ footer {
   .container {
     @include container;
 
+    max-width: $section-max-width;
     padding: 0 $space;
 
     @include medium {
       padding: 0 $double-space;
     }
 
-    @include large {
-      display: grid;
-      grid-template-columns: 23% 73%;
-      grid-gap: 4%;
+    @include large() {
+      padding: 0;
     }
 
     @include xl {
-      grid-template-columns: 17% 50% 25%;
+      margin: 0 auto;
     }
 
     @include breakpoint($page-max-width) {
@@ -555,7 +554,7 @@ footer {
     .region-footer {
       @include one-column;
 
-      grid-column-start: 2;
+      grid-column: 1 / -1;
       grid-row-start: 1;
 
       @include medium {
@@ -573,7 +572,7 @@ footer {
 
   .copyright {
     @include large {
-      grid-column: 2;
+      grid-column: 1;
     }
   }
 
