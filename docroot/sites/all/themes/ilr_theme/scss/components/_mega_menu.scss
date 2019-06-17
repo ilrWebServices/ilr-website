@@ -73,7 +73,7 @@
   }
 
   li div.submenu {
-    position: absolute;
+    position: fixed;
     left: 0;
     width: 100%;
     z-index: 10;
@@ -84,7 +84,8 @@
     .bean-mega-menu {
       @include full-width;
 
-      background: $lighter-red;
+      background: white;
+      border-bottom: 2px solid $gray-light;
 
       .content {
         @include container;
@@ -112,7 +113,7 @@
       &.bean-title {
         @include adjust-font-size-to(22px);
 
-        color: $white;
+        color: $black;
         font-weight: 400;
         text-transform: uppercase;
       }
@@ -128,7 +129,7 @@
         margin: 0;
 
         a {
-          color: $white;
+          color: $black;
           border-bottom: none;
         }
       }
