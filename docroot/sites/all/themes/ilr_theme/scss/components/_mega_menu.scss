@@ -12,14 +12,13 @@
 
   body:not(.subsite) & {
     ul.menu {
-      @include inline-block-list;
-
+      display: flex;
+      justify-content: space-around;
       list-style: none;
       padding: 0;
       margin: 0;
 
       > li {
-        background: none;
         list-style: none;
         line-height: 1;
         margin: 0;
@@ -29,15 +28,17 @@
           flex-grow: 1;
           display: flex;
           color: #222;
+          align-self: center;
           font-family: $font;
           border-bottom: none;
           text-align: left;
-          font-weight: 600;
-          font-size: 19px;
+          font-weight: 400;
+          font-size: 15px;
           outline: 0;
-          padding: 1.2em 2.5rem 1.2em 0;
+          padding: 1.2rem;
           display: block;
           width: 100%;
+          text-align: center;
 
           .sticky & {
             padding-top: .75em;
@@ -50,7 +51,7 @@
         }
 
         &.active > a, &.active > a:visited {
-          color: $cornell-red;
+          font-weight: bold;
         }
       }
     }

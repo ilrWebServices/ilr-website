@@ -13,28 +13,21 @@
 }
 
 header {
-  padding-top: 20px;
   background: white;
   width: 100%;
   position: relative;
-  padding: $frame-width;
-
-  @include medium {
-    padding: $frame-width $frame-width 0;
-  }
 
   @include medium {
     @include trailer(1);
   }
 
-  @include large {
-    @include trailer(2);
-  }
-
   .container {
     @include container;
-
+    display: flex;
     position: relative;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
 
     @include medium {
       padding: $frame-width;
@@ -68,16 +61,18 @@ header {
       @extend %icon-hamburger;
     }
   }
+
+  .buttons {
+    order: 3;
+  }
 }
 
 %big-logo {
   body:not(.subsite) & {
     .logo-wrapper {
-      @include trailer(1);
-
       #logo {
         img {
-          width: 350px;
+          width: 325px;
           height: auto;
         }
       }

@@ -1,22 +1,10 @@
 .search-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
-
-  [data-eq-state="regular-nav"] & {
-    left: auto;
-    right: 0;
-    top: 0;
-  }
-
   a {
     @include transition-duration(.3s);
     @extend %icon-search-thin;
 
     visibility: hidden;
     display: block;
-    padding: 10px 13px 5px 13px;
     color: $black;
 
     [data-menu-position="open"] & {
