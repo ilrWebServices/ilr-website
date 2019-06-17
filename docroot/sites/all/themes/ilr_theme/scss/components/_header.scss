@@ -13,13 +13,11 @@
 }
 
 header {
+  @extend %big-logo;
   background: white;
   width: 100%;
   position: relative;
-
-  @include medium {
-    @include trailer(1);
-  }
+  padding: $space;
 
   .container {
     @include container;
