@@ -6,11 +6,18 @@ body.front .homepage-news {
     @include trailer(2);
 
     .content {
-      display: grid;
-      grid-gap: var(--cu-vr0);
-      grid-template-columns: repeat(4, 1fr);
+      grid-gap: var(--cu-ps1);
 
-      :first-child {
+      @include small {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include medium {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      > *:first-child {
         grid-column-end: span 2;
         grid-row-end: span 2;
 
@@ -20,6 +27,7 @@ body.front .homepage-news {
       }
 
       article {
+        @include trailer(1);
         .news__title h2 {
           line-height: 1.1;
 
