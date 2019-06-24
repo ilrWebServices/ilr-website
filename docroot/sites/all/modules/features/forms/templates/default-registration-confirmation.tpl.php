@@ -4,11 +4,11 @@ Thank you for registering for the following Cornell University ILR School event.
 
 Event details:<br>
 
-<? print $form_title; ?><br>
+<?php print $form_title; ?><br>
 
-<? print $event_info_for_email; ?><br><br>
+<?php print $event_info_for_email; ?><br><br>
 
 Your information:<br><br>
-<? print $form_data;?><br><br>
+<?php print $form_data;?><br><br>
 
-If you have any questions, please contact us at <? print $admin_email; ?>.
+If you have any questions, please contact us at <?php print $admin_email; ?>.

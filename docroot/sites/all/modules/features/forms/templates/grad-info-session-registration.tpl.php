@@ -3,7 +3,7 @@
 Thank you for registering for the upcoming information session for the Cornell University
 ILR School Master of Industrial and Labor Relations (MILR) program.
 <br><br>
-<? print $event_info_for_email; ?>
+<?php print $event_info_for_email; ?>
 The webinar connection information will be sent to you in advance of the event. Please contact us if you have any questions.<br><br>
 
 Sincerely,<br>

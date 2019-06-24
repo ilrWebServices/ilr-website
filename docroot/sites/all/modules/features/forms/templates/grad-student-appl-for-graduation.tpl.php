@@ -11,4 +11,4 @@ email the ILR Graduate Programs Office at ilrgradprograms@cornell.edu.<br><br>
 Sincerely,<br>
 ILR Graduate Programs Office<br><br>
 
-<? print $form_data;?>
+<?php print $form_data;?>

@@ -32,4 +32,4 @@ Office: 607.255.2222 Fax: 607.254.1251<br><br><br>
 
 
 <strong>You submitted the following information with your Visit Days registration:</strong><br>
-<? print $form_data;?><br><br>
+<?php print $form_data;?><br><br>
