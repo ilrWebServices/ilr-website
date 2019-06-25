@@ -12,4 +12,4 @@ N.B. This is a public event, which will be photographed, livestreamed, filmed an
 
 
 
-<? print $form_data;?>
+<?php print $form_data;?>

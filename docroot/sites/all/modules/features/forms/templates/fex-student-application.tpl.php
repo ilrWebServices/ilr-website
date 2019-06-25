@@ -8,7 +8,7 @@ Please email ilrfex@cornell.edu if you have any questions.
 <br><br>
 Your information:<br><br>
 
-<? print $form_data;?><br><br>
+<?php print $form_data;?><br><br>
 
 Office of Career Services<br>
 ILR School<br>

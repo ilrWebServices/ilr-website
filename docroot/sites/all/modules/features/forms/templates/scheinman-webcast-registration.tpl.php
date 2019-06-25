@@ -2,7 +2,7 @@
 
 Thank you for registering for the following Scheinman Institute webcast.<br><br>
 
-<? print $event_info_for_email; ?><br><br>
+<?php print $event_info_for_email; ?><br><br>
 
 The webcast connection information will be sent to you at this email address closer to the event date.<br><br>
 
@@ -25,4 +25,4 @@ Email: kn64@cornell.edu<br>
 Phone: (607) 255-0704<br><br>
 
 Your information:<br><br>
-<? print $form_data;?>
+<?php print $form_data;?>

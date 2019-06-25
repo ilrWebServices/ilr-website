@@ -12,6 +12,7 @@ require_once variable_get('config_dir') .  '/dynamic_allowed_values.php';
 
 define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
+define('ILRWEB_MAIL_EMAIL', 'ilrwebmail@cornell.edu');
 
 /**
  * Implements hook_menu().
@@ -1138,15 +1139,16 @@ function _send_email_for_entity_form($recip, $from, $subject, $body) {
     $params = array(
       'subject' => $subject,
       'content' => $body,
+      'from' => $from,
       );
 
     drupal_mail(
-        'forms_std_confirmation',
+        'forms',
         'email_confirmation',
         $recip,
         LANGUAGE_NONE,
         $params,
-        $from
+        ILRWEB_MAIL_EMAIL
       );
 }
 
@@ -1154,10 +1156,11 @@ function _send_email_for_entity_form($recip, $from, $subject, $body) {
  * Implements hook_mail().
  * This is the email sent to the user
  */
-function forms_std_confirmation_mail($key, &$message, $params) {
+function forms_mail($key, &$message, $params) {
   $message['headers']['MIME-Version'] = '1.0';
   $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
   $message['headers']['Bcc'] = ILRWEB_BCC_EMAIL;
+  $message['headers']['Reply-To'] = $params['from'];
   $message['subject'] = $params['subject'];
   $message['body'][] = $params['content'];
 }

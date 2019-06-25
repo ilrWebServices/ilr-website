@@ -18,7 +18,7 @@ ILR School<br>
 Office of Student Services<br>
 101 Ives Hall<br>
 (607) 255-1515<br>
-<? print $admin_email; ?><br><br>
+<?php print $admin_email; ?><br><br>
 
-<? print $form_data;?>
+<?php print $form_data;?>
 
