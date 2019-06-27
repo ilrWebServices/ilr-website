@@ -738,7 +738,7 @@ function _forms_send_remedy_email(&$entityform, $remedy_email, $subject='Email t
 
   $to = $remedy_email;
   $from = $user_email;
-  _send_email_for_entity_form($to, $from, $subject, $body);
+  _send_email_for_entity_form($to, $from, $subject, $body, TRUE);
 }
 
 /**
@@ -1135,7 +1135,7 @@ function _forms_construct_user_name($entityform){
 /**
  * Set up and send email
  */
-function _send_email_for_entity_form($recip, $from, $subject, $body) {
+function _send_email_for_entity_form($recip, $from, $subject, $body, $use_from = FALSE) {
     $params = array(
       'subject' => $subject,
       'content' => $body,
@@ -1148,7 +1148,7 @@ function _send_email_for_entity_form($recip, $from, $subject, $body) {
         $recip,
         LANGUAGE_NONE,
         $params,
-        ILRWEB_MAIL_EMAIL
+        ($use_from ? $from : ILRWEB_MAIL_EMAIL)
       );
 }
 
