@@ -24,8 +24,10 @@ function ilr_instagram_feed_feeds_after_import(FeedsSource $source) {
       'headers' => ['Content-Type' => 'application/json'],
     ];
 
-    $url = variable_get('ilr_instagram_feed_webhook_url', 'https://hooks.slack.com/services/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');
+    $url = variable_get('ilr_instagram_feed_webhook_url', getenv('INSTAGRAM_SLACK_WEBHOOK_URL'));
 
-    $result = drupal_http_request($url, $options);
+    if ($url) {
+      $result = drupal_http_request($url, $options);
+    }
   }
 }
