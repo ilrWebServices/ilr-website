@@ -24,8 +24,6 @@
         line-height: 1;
         margin: 0;
         padding: 0;
-        white-space: normal;
-        text-indent: -1em;
 
         > a, > a:visited {
           flex-grow: 1;
@@ -53,6 +51,11 @@
 
         &.active > a, &.active > a:visited {
           color: $cornell-red;
+        }
+
+        div.submenu {
+          white-space: normal;
+          text-indent: -1em;
         }
       }
     }
