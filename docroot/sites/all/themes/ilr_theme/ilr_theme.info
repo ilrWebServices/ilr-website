@@ -7,6 +7,7 @@ stylesheets[screen][] = css/union.css
 stylesheets[print][] = css/print.css
 
 scripts[] = js/ilr_theme.js
+scripts[] = js/union.js
 
 regions[header] = Header
 regions[highlighted] = Highlighted

@@ -175,4 +175,10 @@
       });
     }
   };
+
+  Drupal.behaviors.ilr_theme_place_announcement = {
+    attach: function (context, settings) {
+      $('.front .cu-dismissible').prependTo("header");
+    }
+  };
 }(jQuery));

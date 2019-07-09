@@ -19,6 +19,10 @@ header {
   position: relative;
   padding: $space;
 
+  @include medium {
+    margin-bottom: $double-space;
+  }
+
   .container {
     @include container;
     display: flex;
@@ -26,9 +30,11 @@ header {
     justify-content: space-between;
     align-items: center;
     align-content: center;
+    padding-top: $frame-width;
 
     @include medium {
       padding: $frame-width;
+      border-bottom: 1px solid $gray-light;
     }
   }
 
