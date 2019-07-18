@@ -19,6 +19,7 @@
         background: $lighter-red;
         margin-top: -1rem;
         z-index: 1;
+        position: relative;
 
         @include small {
           display: grid;
