@@ -25,7 +25,17 @@ body.sports-leadership {
     #content-bottom { background: rgba(0, 0, 0, 0.0); }
   }
 
-  &.page-node-287301, &.page-node-291526 {
+  &.page-node-298740 { // labor-and-the-constitution
+    background-image: url(../images/labor_and_the_constitution_header_sm.jpg);
+
+    @include medium {
+      background-image: url(../images/labor_and_the_constitution_header.jpg);
+    }
+    #main #content :not(.status) { @include hidden; }
+    #content-bottom { background: rgba(0, 0, 0, 0.0); }
+  }
+
+  &.page-node-287301, &.page-node-291526, &.page-node-298740 {
     background-repeat: no-repeat;
     background-size: 200% auto;
 
