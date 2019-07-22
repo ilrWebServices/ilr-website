@@ -8,9 +8,9 @@
  * Implements hook_freedompay_checkout_payload_alter().
  */
 function ilr_payment_forms_freedompay_checkout_payload_alter(&$payload, $order, $form_id) {
-  if ($form_id == 'sports_leadership_camp_payment') {
-    $payload['PurchaseItems'] = _ilr_payment_forms_get_purchase_items();
-    $payload['BillingAddress'] = _ilr_payment_forms_get_billing_address();
+  if ($form_id == 'sports_leadership_camp_payment' || $form_id == 'labor_and_the_constitution_event') {
+    $payload['PurchaseItems'] = _ilr_payment_forms_get_purchase_items($form_id);
+    $payload['BillingAddress'] = _ilr_payment_forms_get_billing_address($form_id);
     $payload['AllowInternationalAddresses'] = TRUE;
   }
 }
@@ -19,7 +19,7 @@ function ilr_payment_forms_freedompay_checkout_payload_alter(&$payload, $order, 
  * Implements hook_freedompay_transaction_total_alter().
  */
 function ilr_payment_forms_freedompay_transaction_total_alter(&$transaction_total, $order, $form_id) {
-  if ($form_id == 'sports_leadership_camp_payment') {
+  if ($form_id == 'sports_leadership_camp_payment' || $form_id == 'labor_and_the_constitution_event') {
     $transaction_total = 0;
     if ($wrapper = $order->formWrapper()) {
       if (isset($wrapper->field_total_cost)) {
@@ -36,6 +36,8 @@ function ilr_payment_forms_freedompay_transaction_total_alter(&$transaction_tota
 function ilr_payment_forms_freedompay_invoice_prefix($order) {
   if ($order->bundle == 'sports_leadership_camp_payment') {
     return 'camp';
+  } else if ($order->bundle == 'labor_and_the_constitution_event') {
+    return 'laborconst';
   }
 }
 
@@ -70,13 +72,18 @@ function _ilr_payment_forms_amount_is_valid($amount) {
   return is_numeric($amount) && $amount > 0;
 }
 
-function _ilr_payment_forms_get_billing_address() {
+function _ilr_payment_forms_get_billing_address($form_id) {
   $wrapper = _ilr_payment_forms_get_entityform_wrapper();
+  $formatted_state = _freedompay_entityform_get_state_abbreviation(
+    $form_id == 'sports_leadership_camp_payment'
+      ? $wrapper->field_state_as_text->value()
+      : $wrapper->field_state_province->value()
+  );
   return array(
     "Street1" => $wrapper->field_address_line_1->value(),
     "Street2" => $wrapper->field_address_line_2->value(),
     "City" => $wrapper->field_city->value(),
-    "State" => _freedompay_entityform_get_state_abbreviation($wrapper->field_state_as_text->value()),
+    "State" => $formatted_state,
     "PostalCode" => $wrapper->field_zip_code->value(),
     'CountryCode' => '', // Allow them to change it on the HPP
     'Name' => $wrapper->field_first_name->value() . ' ' . $wrapper->field_last_name->value(),
@@ -97,13 +104,18 @@ function _ilr_payment_forms_get_entityform_wrapper() {
  * @todo
  * remove this example function once alunni events tickets implements
  */
-function _ilr_payment_forms_get_purchase_items() {
+function _ilr_payment_forms_get_purchase_items($form_id) {
   $wrapper = _ilr_payment_forms_get_entityform_wrapper();
+  if ($form_id == 'sports_leadership_camp_payment') {
+    $product_description = 'Sports Leadership Camp Registration';
+  } else if ($form_id == 'labor_and_the_constitution_event') {
+    $product_description = 'Registration for Labor and the Constitution Event: September 26-28, 2019';
+  }
   return array(
     array(
       "Price" => $wrapper->field_total_cost->value(),
       "DisplayOrder" => 1,
-      "Description" => "Sports Leadership Camp Registration",
+      "Description" => $product_description,
       "Quantity" => 1,
     ),
   );

@@ -23,11 +23,11 @@
 
           // Toggle full and discounted price
           if ( $('#edit-field-discount-eligible-und').is(':checked') ) {
-            $('#edit-field-total-cost-und-0-value').val('25');
-            $('#field-total-cost-add-more-wrapper').find('label').text('Registration fee ($25 student rate)');
+            $('#field-total-cost-add-more-wrapper input').val('25');
+            $('#field-total-cost-add-more-wrapper p').text('Registration fee ($25 student rate)');
           } else {
-            $('#edit-field-total-cost-und-0-value').val(currentPrice);
-            $('#field-total-cost-add-more-wrapper').find('label').text(priceNote);
+            $('#field-total-cost-add-more-wrapper input').val(currentPrice);
+            $('#field-total-cost-add-more-wrapper p').text(priceNote);
           }
         }
       });
