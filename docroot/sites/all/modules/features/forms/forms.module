@@ -218,6 +218,11 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
 
   // Special processing of specific forms
   switch ($form_id) {
+    case 'labor_and_the_constitution_event_entityform_edit_form':
+      $form['field_total_cost'][LANGUAGE_NONE][0]['value']['#type'] = 'hidden';
+      $form['field_total_cost'][LANGUAGE_NONE]['#suffix'] = '<p>Registration fee ($325)</p></div>';
+      drupal_add_js(drupal_get_path('module','ilr_forms_public') . '/js/labor_and_the_constitution_event.js', array('type' => 'file', 'scope' => 'footer'));
+      break;
     case 'collective_bargaining_videos_entityform_edit_form':
       if (isset($_COOKIE['Drupal_visitor_cbvideoinfo'])) {
         _forms_collective_bargaining_videos_redirect();
