@@ -486,7 +486,7 @@ function ilr_forms_public_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
-      "form_submission_ilr_recipient" : "ddd1@cornell.edu",
+      "form_submission_ilr_recipient" : "rlc29@cornell.edu",
       "add_payment_processing" : 1,
       "hpp" : "6"
     },
