@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ilr_forms_students.features.field_instance.inc
@@ -10006,6 +10007,1069 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_address_line_1'.
+  $field_instances['entityform-gsa_event_request_form-field_address_line_1'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 21,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_address_line_1',
+    'label' => 'Deliver food to this address',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 22,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_amount_1'.
+  $field_instances['entityform-gsa_event_request_form-field_amount_1'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '(include gratuity/tips, shipping)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_amount_1',
+    'label' => 'estimated total cost',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_amount_2'.
+  $field_instances['entityform-gsa_event_request_form-field_amount_2'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_amount_2',
+    'label' => 'Estimated cost of location',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_amount_3'.
+  $field_instances['entityform-gsa_event_request_form-field_amount_3'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_amount_3',
+    'label' => 'Estimated cost of food',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_amount_4'.
+  $field_instances['entityform-gsa_event_request_form-field_amount_4'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 15,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_amount_4',
+    'label' => 'Estimated cost of decorations',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_amount_5'.
+  $field_instances['entityform-gsa_event_request_form-field_amount_5'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 16,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_amount_5',
+    'label' => 'Estimated cost of alcohol',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_benefits'.
+  $field_instances['entityform-gsa_event_request_form-field_benefits'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 25,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_benefits',
+    'label' => 'What is the purpose of the event?',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 8,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 20,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_class_dates'.
+  $field_instances['entityform-gsa_event_request_form-field_class_dates'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'deleted' => 0,
+    'description' => 'Please include the time needed for set up and tear down.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_class_dates',
+    'label' => 'Event Date and Time',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'Y-m-d H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-gsa_event_request_form-field_company'.
+  $field_instances['entityform-gsa_event_request_form-field_company'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 23,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_company',
+    'label' => 'Food provider\'s company name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 24,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_event_name'.
+  $field_instances['entityform-gsa_event_request_form-field_event_name'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_event_name',
+    'label' => 'Event name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_full_name'.
+  $field_instances['entityform-gsa_event_request_form-field_full_name'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_full_name',
+    'label' => 'Event coordinator\'s name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_instructions'.
+  $field_instances['entityform-gsa_event_request_form-field_instructions'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 24,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_instructions',
+    'label' => 'Specific order and catering instructions',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 8,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 25,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_location_string'.
+  $field_instances['entityform-gsa_event_request_form-field_location_string'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_location_string',
+    'label' => 'Location',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-gsa_event_request_form-field_netid'.
+  $field_instances['entityform-gsa_event_request_form-field_netid'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_netid',
+    'label' => 'Event coordinator\'s NetID',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_num_cornell_participants'.
+  $field_instances['entityform-gsa_event_request_form-field_num_cornell_participants'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_num_cornell_participants',
+    'label' => 'Estimated number of attendees',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_other_interests_text'.
+  $field_instances['entityform-gsa_event_request_form-field_other_interests_text'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 19,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_other_interests_text',
+    'label' => 'Please indicate event type',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_other_please_specify'.
+  $field_instances['entityform-gsa_event_request_form-field_other_please_specify'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please be specific',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 17,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_other_please_specify',
+    'label' => 'Other costs',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-gsa_event_request_form-field_phone'.
+  $field_instances['entityform-gsa_event_request_form-field_phone'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please include your cell phone number if you are requesting deliveries/catering after 4:30pm',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_phone',
+    'label' => 'Event Coordinator\'s phone number',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-gsa_event_request_form-field_room'.
+  $field_instances['entityform-gsa_event_request_form-field_room'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_room',
+    'label' => 'Room number',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_technical_needs'.
+  $field_instances['entityform-gsa_event_request_form-field_technical_needs'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'PowerPoint, projection, speakers, mic, etc.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_technical_needs',
+    'label' => 'Technology needs',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-gsa_event_request_form-field_time'.
+  $field_instances['entityform-gsa_event_request_form-field_time'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'field_formatter_label' => '',
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 22,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_time',
+    'label' => 'Delivery time',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'Y-m-d H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_text',
+      'weight' => 23,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-gsa_event_request_form-field_yes_no'.
+  $field_instances['entityform-gsa_event_request_form-field_yes_no'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => array(
+      0 => array(
+        'value' => 'No',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no',
+    'label' => 'Room reservation required?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_yes_no_2'.
+  $field_instances['entityform-gsa_event_request_form-field_yes_no_2'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Have you called the vendor regarding payment options (e.g., itemized receipt, tax exemption, etc.)?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_2',
+    'label' => 'Vendor contacted?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_yes_no_3'.
+  $field_instances['entityform-gsa_event_request_form-field_yes_no_3'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_3',
+    'label' => 'Is this a professional development event?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 18,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-gsa_event_request_form-field_yes_no_4'.
+  $field_instances['entityform-gsa_event_request_form-field_yes_no_4'] = array(
+    'bundle' => 'gsa_event_request_form',
+    'default_value' => array(
+      0 => array(
+        'value' => 'No',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 20,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_4',
+    'label' => 'Would you like to submit a food order?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 21,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-high_road_fellowship_application-field_address_line_1'.
   $field_instances['entityform-high_road_fellowship_application-field_address_line_1'] = array(
     'bundle' => 'high_road_fellowship_application',
@@ -15220,6 +16284,7 @@ function ilr_forms_students_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t(' List TA experience (name of course, responsibilities as TA, number of students overseen)');
   t('(Choose "other" at the very bottom if not applicable.)');
+  t('(include gratuity/tips, shipping)');
   t('<li>Plain text only, no bullets or other special formatting</li>');
   t('Activities to be observed by FEX participants');
   t('Additional attendees');
@@ -15262,6 +16327,8 @@ function ilr_forms_students_field_default_field_instances() {
   t('Degree (supervisor)');
   t('Degree Program');
   t('Degree program');
+  t('Deliver food to this address');
+  t('Delivery time');
   t('Description of organization');
   t('Do you currently hold a Bachelor\'s degree?');
   t('Do you wish to accept the Transfer Option (TO) to Cornell\'s ILR School?');
@@ -15270,7 +16337,17 @@ function ilr_forms_students_field_default_field_instances() {
   t('Email address');
   t('Employer');
   t('Entry date markup');
+  t('Estimated cost of alcohol');
+  t('Estimated cost of decorations');
+  t('Estimated cost of food');
+  t('Estimated cost of location');
+  t('Estimated number of attendees');
+  t('Event Coordinator\'s phone number');
+  t('Event Date and Time');
+  t('Event coordinator\'s NetID');
+  t('Event coordinator\'s name');
   t('Event date');
+  t('Event name');
   t('Event title');
   t('Expected graduation date (mm/yyyy)');
   t('Experience related to your selected course(s) (e.g., course work, employment, or an internship relevant to the course topic)');
@@ -15283,11 +16360,13 @@ function ilr_forms_students_field_default_field_instances() {
   t('First Name');
   t('First name');
   t('First name (supervisor)');
+  t('Food provider\'s company name');
   t('For example: BS ILR, MILR, MPS, MS/PhD, MBA, etc.');
   t('GPA');
   t('Graduate institution and degree, if applicable');
   t('Graduation year');
   t('Graduation year (supervisor)');
+  t('Have you called the vendor regarding payment options (e.g., itemized receipt, tax exemption, etc.)?');
   t('High road accomodations');
   t('High school name');
   t('Home address');
@@ -15304,12 +16383,14 @@ function ilr_forms_students_field_default_field_instances() {
   t('Is the WISP location different from the sponsor address entered above?');
   t('Is the supervisor a Cornell alum?');
   t('Is this a paid WISP?');
+  t('Is this a professional development event?');
   t('Job title');
   t('Job title (supervisor)');
   t('Last Name');
   t('Last name');
   t('Last name (supervisor)');
   t('List RA responsibilities (faculty with whom you have worked as an RA and your responsibilities)');
+  t('Location');
   t('Major');
   t('Maximum duration');
   t('Minimum duration');
@@ -15327,15 +16408,21 @@ function ilr_forms_students_field_default_field_instances() {
   t('Organization name');
   t('Other career field (FEX)');
   t('Other career field (WISP)');
+  t('Other costs');
   t('Other ways you heard of us');
   t('Phone');
   t('Phone (supervisor)');
   t('Phone (with area code)');
   t('Please attach a copy of your transcript (complete through Fall 2018)');
   t('Please attach a resume (complete through Fall 2018)');
+  t('Please be specific');
   t('Please enter the name of the school you will attend for your first year. If you have not yet selected a school, please enter “Undecided” and email ilradmissions@cornell.edu once you have finalized your decision.');
   t('Please enter the phone number where you can be reached throughout the next academic year.');
+  t('Please include the time needed for set up and tear down.');
+  t('Please include your cell phone number if you are requesting deliveries/catering after 4:30pm');
+  t('Please indicate event type');
   t('Please specify your school or college');
+  t('PowerPoint, projection, speakers, mic, etc.');
   t('Preferred city');
   t('Preferred dates for this WISP opportunity');
   t('Preferred first name (if different from above)');
@@ -15347,6 +16434,8 @@ function ilr_forms_students_field_default_field_instances() {
   t('Questions');
   t('Research plan');
   t('Responsibilities or projects to be completed by WISP student(s)');
+  t('Room number');
+  t('Room reservation required?');
   t('School or college');
   t('School year');
   t('School you will attend for your first year');
@@ -15355,6 +16444,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Semester for which assistance is requested (fall/spring/summer yyyy)');
   t('Since email will be our main form of communication with TO students, please indicate the email address you will use throughout the next year.');
   t('Sometimes, usually related to geographic location, a FEX opportunity is not selected by any of the freshmen. In that case, we would like to offer the opportunity to upperclass students.');
+  t('Specific order and catering instructions');
   t('State / Province');
   t('State / Province (FEX)');
   t('State / Province (WISP)');
@@ -15372,13 +16462,16 @@ function ilr_forms_students_field_default_field_instances() {
   t('Student\'s email');
   t('Student\'s first name');
   t('Student\'s last name');
+  t('Technology needs');
   t('Title of reseach proposal');
   t('Type of opportunity (select one or both)');
   t('Upload your resume');
   t('Upload your resume or CV');
+  t('Vendor contacted?');
   t('WISP dates constraints markup');
   t('WISP location markup');
   t('What attracted you to this event?');
+  t('What is the purpose of the event?');
   t('What skills, education, work or community experiences do you have that would be relevant to these fellowship opportunities?');
   t('What year did you graduate from the ILR School?');
   t('When did you receive (or when do you expect to receive) your Bachelor\'s degree?');
@@ -15391,6 +16484,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Will you be managing this student from day to day?');
   t('Will you host the students on the same day(s) or individually? (Individually makes the scheduling easier.)');
   t('Would you have access to personal transportation?');
+  t('Would you like to submit a food order?');
   t('Would you need housing accommodations?');
   t('Year');
   t('Year at Cornell');
@@ -15401,6 +16495,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Zip code (FEX)');
   t('Zip code (WISP)');
   t('Zip code (sponsor)');
+  t('estimated total cost');
   t('fex markup if chosen');
   t('fex markup if not chosen');
   t('h_program');
