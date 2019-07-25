@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ilr_forms_students.features.inc
@@ -631,11 +632,17 @@ function ilr_forms_students_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
+      "form_submission_ilr_recipient" : "mpsnyc@cornell.edu",
       "add_payment_processing" : 0,
-      "form_submission_ilr_recipient" : "mpsnyc@cornell.edu"
+      "hpp" : ""
     },
     "weight" : "0",
-    "paths" : []
+    "paths" : { "confirm" : {
+        "source" : "eform\\/ilr-mps-nyc-open-house-rsvp\\/confirm",
+        "alias" : "programs\\/graduate-degree-programs\\/mps-program-new-york-city\\/mps-nyc-open-house-submitted",
+        "language" : "und"
+      }
+    }
   }');
   $items['ilr_reception_parent_orientation'] = entity_import('entityform_type', '{
     "type" : "ilr_reception_parent_orientation",
