@@ -1480,11 +1480,13 @@ function forms_default_entityform_type() {
         "11" : 0,
         "16" : 0,
         "41" : 0,
-        "26" : 0,
+        "51" : 0,
+        "46" : 0,
         "21" : 0,
+        "26" : 0,
         "31" : 0,
-        "36" : 0,
-        "46" : 0
+        "56" : 0,
+        "61" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
@@ -1493,8 +1495,9 @@ function forms_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
+      "form_submission_ilr_recipient" : "ilr-labor@cornell.edu, workerinstitute@cornell.edu, gc32@cornell.edu, sm92@cornell.edu, ddd1@cornell.edu",
       "add_payment_processing" : 0,
-      "form_submission_ilr_recipient" : "ilr-labor@cornell.edu"
+      "hpp" : ""
     },
     "weight" : "0",
     "paths" : []
@@ -1524,25 +1527,29 @@ function forms_default_entityform_type() {
       "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
       "roles" : {
-        "3" : "3",
         "1" : "1",
         "2" : "2",
-        "4" : 0,
-        "5" : 0,
-        "6" : 0,
-        "7" : 0,
-        "8" : 0,
-        "9" : 0,
-        "10" : 0
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "full_html" },
       "send_confirmation_email_to_user" : 1,
-      "form_submission_ilr_recipient" : "ilr-labor@cornell.edu",
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
-      "kerberized" : 0
+      "kerberized" : 0,
+      "form_submission_ilr_recipient" : "ilr-labor@cornell.edu, workerinstitute@cornell.edu, gc32@cornell.edu, sm92@cornell.edu, ddd1@cornell.edu",
+      "add_payment_processing" : 0,
+      "hpp" : ""
     },
     "weight" : "0",
     "paths" : []
@@ -1577,11 +1584,13 @@ function forms_default_entityform_type() {
         "11" : 0,
         "16" : 0,
         "41" : 0,
-        "26" : 0,
+        "51" : 0,
+        "46" : 0,
         "21" : 0,
+        "26" : 0,
         "31" : 0,
-        "36" : 0,
-        "46" : 0
+        "56" : 0,
+        "61" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
@@ -1590,8 +1599,9 @@ function forms_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
+      "form_submission_ilr_recipient" : "ilr-labor@cornell.edu, workerinstitute@cornell.edu, gc32@cornell.edu, sm92@cornell.edu, ddd1@cornell.edu",
       "add_payment_processing" : 0,
-      "form_submission_ilr_recipient" : "ilr-labor@cornell.edu"
+      "hpp" : ""
     },
     "weight" : "0",
     "paths" : []
