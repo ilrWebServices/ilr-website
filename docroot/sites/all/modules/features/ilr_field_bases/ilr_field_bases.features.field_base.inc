@@ -9335,10 +9335,10 @@ function ilr_field_bases_field_default_field_bases() {
       'cache_count' => 4,
       'cache_enabled' => 0,
       'granularity' => array(
-        'day' => 0,
+        'day' => 'day',
         'hour' => 'hour',
         'minute' => 'minute',
-        'month' => 0,
+        'month' => 'month',
         'second' => 0,
         'year' => 'year',
       ),
