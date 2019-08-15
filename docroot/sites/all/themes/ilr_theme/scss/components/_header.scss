@@ -17,10 +17,15 @@ header {
   background: white;
   width: 100%;
   position: relative;
-  padding: $space;
+  padding: 0 $space $space;
 
   @include medium {
-    margin-bottom: $double-space;
+    margin-bottom: $space;
+
+    body.front & {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
   }
 
   .container {
