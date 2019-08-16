@@ -3,7 +3,27 @@
     overflow: hidden;
   }
 
-  .cu-video {
-    margin-bottom: -10%;
+
+  .cu-component--desktop {
+    display: none;
+
+    @include medium {
+      display: block;
+    }
+
+    .cu-video {
+      margin-bottom: -10%;
+    }
+  }
+
+  // The mobile video and program destinations
+  .cu-component--mobile {
+    @include medium {
+      display: none;
+    }
+
+    .cu-video {
+      margin-bottom: 1rem;
+    }
   }
 }
