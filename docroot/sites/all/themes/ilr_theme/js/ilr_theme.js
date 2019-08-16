@@ -176,8 +176,10 @@
     }
   };
 
-  Drupal.behaviors.ilr_theme_place_announcement = {
+  Drupal.behaviors.ilr_theme_union_integrations = {
     attach: function (context, settings) {
+      // Check for a dismissible and move it above the header
+      // if there is one
       $('.front .cu-dismissible').prependTo("header");
     }
   };
