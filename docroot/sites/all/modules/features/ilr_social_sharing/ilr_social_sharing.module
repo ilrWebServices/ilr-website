@@ -131,7 +131,7 @@ function _ilr_social_sharing_get_meta_tag_properties_and_content($vars) {
     "twitter:description"     => $description,
     "twitter:creator"         => 'The ILR School',
     "twitter:image"           => _ilr_social_sharing_get_image($vars['node'], 'twitter_share'),
-    "og:title"                => $vars['title'],
+    "og:title"                => htmlspecialchars_decode($vars['title']),
     "og:type"                 => 'website',
     "og:url"                  => $base_url . '/' .drupal_get_path_alias(current_path()),
     "og:image"                => _ilr_social_sharing_get_image($vars['node'], 'facebook_share'),

@@ -174,6 +174,12 @@ function ilr_block_view_alter(&$data, $block) {
     if ($data['subject'] == "Main menu") {
       $data['subject'] = '<a href="/">Home</a>';
     }
+
+    // Check to see if the bock title is rendering as a string, and remove it if so.
+    // This happens, for example, on subsite 404 pages.
+    if (isset($data['subject_array']['#markup'])) {
+      $data['subject'] = '';
+    }
   }
 }
 

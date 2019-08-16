@@ -12,6 +12,7 @@ require_once variable_get('config_dir') .  '/dynamic_allowed_values.php';
 
 define('ILRWEB_EMAIL', 'ilrweb@cornell.edu');
 define('ILRWEB_BCC_EMAIL', 'ilrwebemailcc@cornell.edu');
+define('ILRWEB_MAIL_EMAIL', 'ilrwebmail@cornell.edu');
 
 /**
  * Implements hook_menu().
@@ -217,6 +218,11 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
 
   // Special processing of specific forms
   switch ($form_id) {
+    case 'labor_and_the_constitution_event_entityform_edit_form':
+      $form['field_total_cost'][LANGUAGE_NONE][0]['value']['#type'] = 'hidden';
+      $form['field_total_cost'][LANGUAGE_NONE]['#suffix'] = '<p>Registration fee ($325)</p></div>';
+      drupal_add_js(drupal_get_path('module','ilr_forms_public') . '/js/labor_and_the_constitution_event.js', array('type' => 'file', 'scope' => 'footer'));
+      break;
     case 'collective_bargaining_videos_entityform_edit_form':
       if (isset($_COOKIE['Drupal_visitor_cbvideoinfo'])) {
         _forms_collective_bargaining_videos_redirect();
@@ -737,7 +743,7 @@ function _forms_send_remedy_email(&$entityform, $remedy_email, $subject='Email t
 
   $to = $remedy_email;
   $from = $user_email;
-  _send_email_for_entity_form($to, $from, $subject, $body);
+  _send_email_for_entity_form($to, $from, $subject, $body, TRUE);
 }
 
 /**
@@ -1134,19 +1140,20 @@ function _forms_construct_user_name($entityform){
 /**
  * Set up and send email
  */
-function _send_email_for_entity_form($recip, $from, $subject, $body) {
+function _send_email_for_entity_form($recip, $from, $subject, $body, $use_from = FALSE) {
     $params = array(
       'subject' => $subject,
       'content' => $body,
+      'from' => $from,
       );
 
     drupal_mail(
-        'forms_std_confirmation',
+        'forms',
         'email_confirmation',
         $recip,
         LANGUAGE_NONE,
         $params,
-        $from
+        ($use_from ? $from : ILRWEB_MAIL_EMAIL)
       );
 }
 
@@ -1154,10 +1161,11 @@ function _send_email_for_entity_form($recip, $from, $subject, $body) {
  * Implements hook_mail().
  * This is the email sent to the user
  */
-function forms_std_confirmation_mail($key, &$message, $params) {
+function forms_mail($key, &$message, $params) {
   $message['headers']['MIME-Version'] = '1.0';
   $message['headers']['Content-Type'] = 'text/plain;charset=utf-8';
   $message['headers']['Bcc'] = ILRWEB_BCC_EMAIL;
+  $message['headers']['Reply-To'] = $params['from'];
   $message['subject'] = $params['subject'];
   $message['body'][] = $params['content'];
 }

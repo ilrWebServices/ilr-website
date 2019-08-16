@@ -5,13 +5,13 @@ Thank you for your payment for the Cornell Debate Team.<br><br>
 Please review the information below, and contact Ming Shiao, debate@cornell.edu, if you have any questions.<br><br>
 
 Details:<br><br>
-<? print $event_info_for_email; ?><br>
+<?php print $event_info_for_email; ?><br>
 
 Payment Information:<br><br>
-<? print $event_payment_details;?><br><br>
+<?php print $event_payment_details;?><br><br>
 
 Registration Information:<br><br>
-<? print $form_data;?><br><br>
+<?php print $form_data;?><br><br>
 
 Thank you.<br><br>
 

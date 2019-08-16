@@ -53,6 +53,11 @@
         &.active > a, &.active > a:visited {
           font-weight: bold;
         }
+
+        div.submenu {
+          white-space: normal;
+          text-indent: -1em;
+        }
       }
     }
   }

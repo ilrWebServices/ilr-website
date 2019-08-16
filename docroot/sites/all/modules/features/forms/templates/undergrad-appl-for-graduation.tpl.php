@@ -11,4 +11,4 @@ If you have any questions or concerns about your application for graduation, ple
 Sincerely,<br>
 ILR Office of Student Services<br><br>
 
-<? print $form_data;?>
+<?php print $form_data;?>

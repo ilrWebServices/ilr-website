@@ -1691,8 +1691,8 @@ function _ilr_sdc_listings_generate_follow_markup($course) {
 }
 
 function _ilr_sdc_listings_generate_class_timespan_markup($class_node) {
-  $type = ' workshop'; // for online, should default to course
   $wrapper = ilr_get_node_wrapper($class_node);
+  $type = _ilr_sdc_listings_generate_course_format_label($wrapper->field_course[0]->value()->nid);
   $datetimes = _ilr_sdc_listings_get_datetimes_for_class($class_node);
   $interval = $datetimes['start']->diff($datetimes['end']);
   if (_ilr_sdc_listings_is_multiyear_event($class_node)) {
@@ -1707,8 +1707,12 @@ function _ilr_sdc_listings_generate_class_timespan_markup($class_node) {
     }
   }
   elseif (_ilr_sdc_listings_is_multiday_event($class_node)) {
+    $months = $interval->m;
     $days = $interval->d;
-    if ( $days > 10) { // More than a week
+    if ($months > 0) { // More than a month
+      $timespan = $months . '-month';
+    } // less than a month
+    elseif ($days > 10) { // More than a week
       $weeks = round($days / 7);
       $timespan = $weeks . '-week';
     } // less than a week
@@ -1725,7 +1729,7 @@ function _ilr_sdc_listings_generate_class_timespan_markup($class_node) {
       $timespan = ($hours > 4) ? '1-day' : $hours . '-hour';
     }
   }
-  return '<span class="timespan">'. $timespan . $type .' </span>';
+  return '<span class="timespan">'. $timespan . ' ' . $type .' </span>';
 }
 
 function _ilr_sdc_listings_generate_class_time_location_markup($class_node) {

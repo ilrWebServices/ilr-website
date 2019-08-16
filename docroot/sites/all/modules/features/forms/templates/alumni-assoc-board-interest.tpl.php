@@ -11,6 +11,6 @@ The information you submitted on the preliminary form to express interest in run
 Sincerely,<br>
 Sue Sappington<br><br>
 
-<? print $form_data;?>
+<?php print $form_data;?>
 
 
