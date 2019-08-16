@@ -18,10 +18,10 @@
     <h2 class="cu-section-heading__heading">Campus Life</h2>
     <h3 class="cu-section-heading__subheading">A view of student life at Cornell University's ILR School in Ithaca, NY.</h3>
     <a href="https://www.instagram.com/cornellilr/" class="cu-section-heading__link">
-      <div class="cu-icon--inline cu-icon">
-        <svg class="cu-icon__image cu-icon__image--instagram" width="2em" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <div class="cu-icon--inline cu-icon cu-icon--instagram">
+        <svg class="cu-icon__image cu-icon__image" width="2em" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <title>Instagram Icon</title>
-          <use href="/images/icons.svg#instagram" />
+          <use href="/sites/all/themes/ilr_theme/images/icons.svg#instagram" />
         </svg>
         <div class="cu-icon__label">@cornellilr</div>
       </div>
