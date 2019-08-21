@@ -3,7 +3,6 @@
     overflow: hidden;
   }
 
-
   .cu-component--desktop {
     display: none;
 
@@ -25,5 +24,11 @@
     .cu-video {
       margin-bottom: 1rem;
     }
+  }
+}
+
+.front {
+  .cu-banner--video {
+    @include full-width;
   }
 }
