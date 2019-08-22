@@ -1,0 +1,16 @@
+name = ILR Accessibility
+description = Accessibility helpers, including an image file alt attribute bulk editor.
+core = 7.x
+package = ILR
+version = 7.x-1.0
+dependencies[] = editableviews
+dependencies[] = features
+dependencies[] = list
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[field_base][] = field_accessibility_processed
+features[field_instance][] = file-image-field_accessibility_processed
+features[views_view][] = image_files_editable
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][options] = options
