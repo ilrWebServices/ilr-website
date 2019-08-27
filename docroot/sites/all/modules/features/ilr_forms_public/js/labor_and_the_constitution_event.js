@@ -9,13 +9,13 @@
 
         function set_price() {
           var currentPrice, priceNote;
-          var early_bird_deadline = new Date('8/26/2019');
+          var early_bird_deadline = new Date('9/13/2019');
           var today = new Date();
 
           // Set full price based on date.
           if ( (early_bird_deadline > today) ) {
             currentPrice = 275;
-            priceNote = 'Registration fee ($275 until 8/26/19, $325 thereafter)'
+            priceNote = 'Registration fee ($275 until 9/13/19, $325 thereafter)'
           } else {
             currentPrice = 325;
             priceNote = 'Registration fee ($325)'
