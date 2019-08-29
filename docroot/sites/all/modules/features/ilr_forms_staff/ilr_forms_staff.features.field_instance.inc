@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ilr_forms_staff.features.field_instance.inc
@@ -938,7 +939,7 @@ function ilr_forms_staff_field_default_field_instances() {
     'bundle' => 'theme_grant_application',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Please be sure to clearly articulate how it contributes to Technology and the Evolution of Work.  ',
+    'description' => 'Please be sure to clearly articulate how it contributes to a better understanding of Inequality and Work.  ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -953,7 +954,7 @@ function ilr_forms_staff_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_description_long',
-    'label' => 'Provide a 1 page summary of your proposed project',
+    'label' => 'Provide a one page summary of your proposed project',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -1548,10 +1549,10 @@ function ilr_forms_staff_field_default_field_instances() {
   t('Other publication info');
   t('Partners/Collaborators on this Project');
   t('Phone');
-  t('Please be sure to clearly articulate how it contributes to Technology and the Evolution of Work.  ');
+  t('Please be sure to clearly articulate how it contributes to a better understanding of Inequality and Work.  ');
   t('Please describe briefly how this book or article ties into the theme of “Technology and the Evolution of Work.”');
   t('Please prepare a short abstract, about 150 words, that will be included on the website and in other promotional materials if your proposal is selected for funding.');
-  t('Provide a 1 page summary of your proposed project');
+  t('Provide a one page summary of your proposed project');
   t('Publication date');
   t('Relevance to the theme');
   t('Theme grant categories');
