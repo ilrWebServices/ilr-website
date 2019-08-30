@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * student_portraits.features.field_instance.inc
@@ -248,7 +249,7 @@ function student_portraits_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
@@ -301,12 +302,12 @@ function student_portraits_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
         ),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 5,
       ),
       'mega_menu_item' => array(
@@ -323,6 +324,7 @@ function student_portraits_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_portrait_experience',
     'label' => 'ILR Experience',
     'required' => 0,
