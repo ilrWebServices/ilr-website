@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * student_portraits.strongarm.inc
@@ -41,12 +42,6 @@ function student_portraits_strongarm() {
         'custom_settings' => FALSE,
       ),
       'alternate_teaser' => array(
-        'custom_settings' => FALSE,
-      ),
-      'ilr_theme__highlighted' => array(
-        'custom_settings' => FALSE,
-      ),
-      'ilr_theme__sidebar_second' => array(
         'custom_settings' => FALSE,
       ),
       'ilr_theme__highlighted' => array(
