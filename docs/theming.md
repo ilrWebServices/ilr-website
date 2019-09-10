@@ -6,7 +6,7 @@ This project is configured with gulp to watch for changes to the scss files and 
 
   - Node (run `nvm use` to pin Node to version 8.x)
   - Run `npm install` once from the project root to download gulp, libsass, and livereload
-  - Enable the drupal_streamline_dev module with `cd docroot && drush en drupal_streamline_dev -y`
+  - Enable the ilr_dev module with `cd docroot && drush en ilr_dev -y`
 
 ### Starting/Stopping Gulp for Theming
 
