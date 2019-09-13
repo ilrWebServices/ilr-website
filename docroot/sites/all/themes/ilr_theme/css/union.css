@@ -394,6 +394,12 @@
   text-align: center;
 }
 
+@media (min-width: 64rem) {
+  .cu-card--promo .cu-card__content {
+    padding: var(--cu-vr3);
+  }
+}
+
 .cu-card--promo-with-media,
 .cu-card--with-aside {
   position: relative;
@@ -512,6 +518,7 @@
   opacity: 0;
   color: var(--cu-color-text, #222);
   --cu-current-font-weight: 300;
+  padding: 0 var(--cu-ps2);
 }
 
 .cu-card--hover-content-reveal .cu-card__hover-content:last-child {
@@ -565,6 +572,12 @@
 
 .cu-card--landscape {
   grid-column: 1 / -1;
+}
+
+@media (min-width: 64rem) {
+  .cu-card--landscape .cu-card__content {
+    padding: var(--cu-vr4) var(--cu-vr3);
+  }
 }
 
 .cu-card--with-aside .cu-card__content {
@@ -1008,6 +1021,10 @@ progress {
 
 .cu-icon--cornell-seal .cu-icon__image {
   min-width: 73px;
+}
+
+.cu-icon--ilr-nickname .cu-icon__image {
+  min-width: 70px;
 }
 
 .cu-icon--play {

@@ -1,5 +1,5 @@
 .block-views-instagram-posts-block {
-  max-width: $section-max-width;
+  max-width: var(--union-max-width-section, #{$union-max-width-section});
   margin: 0 auto;
 
 

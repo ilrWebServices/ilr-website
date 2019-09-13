@@ -1,5 +1,5 @@
 body.front .homepage-news {
-  max-width: $section-max-width;
+  max-width: var(--union-max-width-section, #{$union-max-width-section});
   margin: 0 auto;
 
   .bean-content-listing-manual {
