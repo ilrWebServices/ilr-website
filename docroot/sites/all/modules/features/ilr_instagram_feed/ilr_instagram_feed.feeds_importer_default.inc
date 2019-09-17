@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ilr_instagram_feed.feeds_importer_default.inc
@@ -16,7 +17,7 @@ function ilr_instagram_feed_feeds_importer_default() {
   $feeds_importer->id = 'instagram_rss_feed';
   $feeds_importer->config = array(
     'name' => 'Instagram RSS Feed',
-    'description' => 'I third party RSS feed for the cornellirl Instagram account.',
+    'description' => 'A third party RSS feed for the cornellirl Instagram account.',
     'fetcher' => array(
       'plugin_key' => 'FeedsHTTPFetcher',
       'config' => array(
@@ -79,7 +80,7 @@ function ilr_instagram_feed_feeds_importer_default() {
         ),
         'insert_new' => '1',
         'update_existing' => '2',
-        'update_non_existent' => 'delete',
+        'update_non_existent' => 'skip',
         'input_format' => 'plain_text',
         'skip_hash_check' => 0,
         'bundle' => 'instagram_post',
@@ -88,10 +89,10 @@ function ilr_instagram_feed_feeds_importer_default() {
     ),
     'content_type' => '',
     'update' => 0,
-    'import_period' => 1800,
+    'import_period' => '1800',
     'expire_period' => 3600,
-    'import_on_create' => TRUE,
-    'process_in_background' => FALSE,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
   );
   $export['instagram_rss_feed'] = $feeds_importer;
 
