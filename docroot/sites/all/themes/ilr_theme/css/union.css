@@ -170,34 +170,6 @@
 .cu-grid .grid-item {
   margin: 0;
 }
-.cu-button {
-  color: #b31b1b;
-  border-radius: 2px;
-  border: 4px solid #b31b1b;
-  background: transparent;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  width: auto;
-}
-
-.cu-button--alt {
-  color: #b31b1b;
-  border-radius: 2px;
-  border: 4px solid #b31b1b;
-  background: transparent;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  width: auto;
-  color: white;
-  background: #b31b1b;
-}
-
-.cu-button--overlay {
-  color: #fff;
-  --cu-current-link-color: $white;
-  border-color: #fff;
-  background-color: rgba(0, 0, 0, 0.3);
-}
 .cu-card {
   background: var(--cu-card-background, transparent);
   border-radius: var(--cu-card-border-radius);
@@ -497,6 +469,34 @@
 .cu-card--with-aside .cu-heading--strong {
   font-size: var(--cu-text-lg);
 }
+.cu-button {
+  color: #b31b1b;
+  border-radius: 2px;
+  border: 4px solid #b31b1b;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  width: auto;
+}
+
+.cu-button--alt {
+  color: #b31b1b;
+  border-radius: 2px;
+  border: 4px solid #b31b1b;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  width: auto;
+  color: white;
+  background: #b31b1b;
+}
+
+.cu-button--overlay {
+  color: #fff;
+  --cu-current-link-color: $white;
+  border-color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
+}
 .cu-dismissible {
   position: relative;
 }
@@ -540,89 +540,136 @@
 .cu-dismissible__input {
   display: none;
 }
-.cu-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: var(--cu-vr0);
-}
-
-.cu-icon .cu-icon__image {
-  fill: var(--cu-current-text-color);
-  margin-bottom: var(--cu-vr-2);
-}
-
-.cu-icon .cu-icon__image--cornell-seal {
-  min-width: 73px;
-}
-
-.cu-icon .cu-icon__label {
-  margin-bottom: 0;
-  color: var(--cu-current-text-color);
-}
-
-.cu-icon--inline {
-  display: inline-flex;
-  flex-direction: row;
-  margin-bottom: 0;
-  padding: var(--cu-vr0) 0;
-}
-
-.cu-icon--inline .cu-icon__image {
-  margin-right: var(--cu-ps0);
-  margin-bottom: 0;
-}
-
-.cu-icon--inline-centered {
-  flex-direction: row;
-  justify-content: center;
-  padding: var(--cu-vr0) 0 0;
-}
-
-.cu-icon--inline-centered .cu-icon__image {
-  flex-shrink: 0;
-  margin-right: var(--cu-ps0);
-  margin-bottom: 0;
-}
-
-.cu-icon--inline-centered .cu-icon__label {
-  white-space: pre-line;
-}
-
-.cu-icon--color-light {
-  --cu-current-text-color: var(--cu-color-text--light);
+.cu-banner {
+  position: relative;
+  color: #fff;
+  color: var(--cu-color-text--light, #fff);
 }
 
 /*=============================================
-=            Specific icon overrides            =
+=            Announcement banner            =
 =============================================*/
 
-.cu-icon--color-brand .cu-icon__image {
-  --cu-current-text-color: #b31b1b;
+.cu-banner--announcement {
+  padding: 1em 33% 1em 2em;
 }
 
-.cu-icon--cornell-seal .cu-icon__image {
-  min-width: 73px;
+@media (min-width: 64rem) {
+  .cu-banner--announcement {
+    display: grid;
+    grid-template-columns: 66% 34%;
+    padding: 0;
+  }
 }
 
-.cu-icon--ilr-nickname .cu-icon__image {
-  min-width: 70px;
+.cu-banner--announcement .cu-banner__header {
+  margin-bottom: var(--cu-vr0);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  --cu-current-font-size: var(--cu-text-xxl);
 }
 
-.cu-icon--play {
-  --cu-current-text-color: var(--cu-color-text--light);
-  cursor: pointer;
+@media (min-width: 64rem) {
+  .cu-banner--announcement .cu-banner__header {
+    grid-column: 1;
+    grid-row: 1;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--cu-vr1) var(--cu-ps2);
+    margin: 0;
+  }
 }
 
-.cu-icon--play > * {
+.cu-banner--announcement .cu-banner__content {
+  color: #fff;
+  color: var(--cu-color-text--light, #fff);
+}
+
+@media (min-width: 64rem) {
+  .cu-banner--announcement .cu-banner__content {
+    background: var(--cu-color-bg--dark, #333);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--cu-vr1) var(--cu-ps2);
+  }
+}
+
+.cu-banner--announcement .cu-button {
+  align-self: flex-start;
+}
+
+.cu-banner--announcement .cu-banner__media {
+  position: relative;
   pointer-events: none;
+  position: absolute;
+  overflow: hidden;
+  max-width: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
 }
 
-.cu-icon--play .cu-icon__image {
-  stroke: var(--cu-current-text-color);
+.cu-banner--announcement .cu-banner__media::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 
-/*=====  End of Specific icon overrides  ======*/
+.cu-banner--announcement .cu-banner__media > :first-child {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 64rem) {
+  .cu-banner--announcement .cu-banner__media {
+    position: relative;
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+/*=============================================
+=            Video banner                     =
+=============================================*/
+
+.cu-banner--video .cu-banner__content {
+  position: absolute;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--cu-vr1) var(--cu-ps1);
+  z-index: 1;
+}
+
+.cu-banner--video .cu-banner__content > * {
+  pointer-events: auto;
+}
+
+@media (min-width: 80rem) {
+  .cu-banner--video .cu-banner__content {
+    padding: var(--cu-vr1) var(--cu-ps3);
+  }
+}
+
+.cu-banner--video .cu-banner__content--align-bottom {
+  justify-content: flex-end;
+}
+
+/*=====  End of Video banner  ======*/
 /* ------------------------------------ *\
    Forms
 \* ------------------------------------ */
@@ -966,6 +1013,89 @@ progress {
 .cu-logo--union {
   max-width: 200px;
 }
+.cu-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--cu-vr0);
+}
+
+.cu-icon .cu-icon__image {
+  fill: var(--cu-current-text-color);
+  margin-bottom: var(--cu-vr-2);
+}
+
+.cu-icon .cu-icon__image--cornell-seal {
+  min-width: 73px;
+}
+
+.cu-icon .cu-icon__label {
+  margin-bottom: 0;
+  color: var(--cu-current-text-color);
+}
+
+.cu-icon--inline {
+  display: inline-flex;
+  flex-direction: row;
+  margin-bottom: 0;
+  padding: var(--cu-vr0) 0;
+}
+
+.cu-icon--inline .cu-icon__image {
+  margin-right: var(--cu-ps0);
+  margin-bottom: 0;
+}
+
+.cu-icon--inline-centered {
+  flex-direction: row;
+  justify-content: center;
+  padding: var(--cu-vr0) 0 0;
+}
+
+.cu-icon--inline-centered .cu-icon__image {
+  flex-shrink: 0;
+  margin-right: var(--cu-ps0);
+  margin-bottom: 0;
+}
+
+.cu-icon--inline-centered .cu-icon__label {
+  white-space: pre-line;
+}
+
+.cu-icon--color-light {
+  --cu-current-text-color: var(--cu-color-text--light);
+}
+
+/*=============================================
+=            Specific icon overrides            =
+=============================================*/
+
+.cu-icon--color-brand .cu-icon__image {
+  --cu-current-text-color: #b31b1b;
+}
+
+.cu-icon--cornell-seal .cu-icon__image {
+  min-width: 73px;
+}
+
+.cu-icon--ilr-nickname .cu-icon__image {
+  min-width: 70px;
+}
+
+.cu-icon--play {
+  --cu-current-text-color: var(--cu-color-text--light);
+  cursor: pointer;
+}
+
+.cu-icon--play > * {
+  pointer-events: none;
+}
+
+.cu-icon--play .cu-icon__image {
+  stroke: var(--cu-current-text-color);
+}
+
+/*=====  End of Specific icon overrides  ======*/
 .cu-message-list__list {
   margin: 0;
   padding: 0;
@@ -1003,6 +1133,11 @@ progress {
 
 .cu-message__text {
   margin: 0;
+}
+.cu-video {
+  width: 100%;
+  max-height: 100%;
+  vertical-align: bottom;
 }
 .cu-section-heading {
   margin-bottom: var(--cu-vr3);
@@ -1060,11 +1195,6 @@ progress {
 
 .cu-section-heading--framed.cu-section-heading--framed-right::after {
   left: calc(100% - 10px);
-}
-.cu-video {
-  width: 100%;
-  max-height: 100%;
-  vertical-align: bottom;
 }
 /*! modern-normalize | MIT License | https://github.com/sindresorhus/modern-normalize */
 
@@ -1570,135 +1700,6 @@ small {
 .cu-section--wide {
   max-width: 100%;
 }
-.cu-banner {
-  position: relative;
-  color: #fff;
-  color: var(--cu-color-text--light, #fff);
-}
-
-/*=============================================
-=            Announcement banner            =
-=============================================*/
-
-.cu-banner--announcement {
-  padding: 1em 33% 1em 2em;
-}
-
-@media (min-width: 64rem) {
-  .cu-banner--announcement {
-    display: grid;
-    grid-template-columns: 66% 34%;
-    padding: 0;
-  }
-}
-
-.cu-banner--announcement .cu-banner__header {
-  margin-bottom: var(--cu-vr0);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  --cu-current-font-size: var(--cu-text-xxl);
-}
-
-@media (min-width: 64rem) {
-  .cu-banner--announcement .cu-banner__header {
-    grid-column: 1;
-    grid-row: 1;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--cu-vr1) var(--cu-ps2);
-    margin: 0;
-  }
-}
-
-.cu-banner--announcement .cu-banner__content {
-  color: #fff;
-  color: var(--cu-color-text--light, #fff);
-}
-
-@media (min-width: 64rem) {
-  .cu-banner--announcement .cu-banner__content {
-    background: var(--cu-color-bg--dark, #333);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: var(--cu-vr1) var(--cu-ps2);
-  }
-}
-
-.cu-banner--announcement .cu-button {
-  align-self: flex-start;
-}
-
-.cu-banner--announcement .cu-banner__media {
-  position: relative;
-  pointer-events: none;
-  position: absolute;
-  overflow: hidden;
-  max-width: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-}
-
-.cu-banner--announcement .cu-banner__media::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-}
-
-.cu-banner--announcement .cu-banner__media > :first-child {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-@media (min-width: 64rem) {
-  .cu-banner--announcement .cu-banner__media {
-    position: relative;
-    grid-column: 1;
-    grid-row: 1;
-  }
-}
-
-/*=============================================
-=            Video banner                     =
-=============================================*/
-
-.cu-banner--video .cu-banner__content {
-  position: absolute;
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: var(--cu-vr1) var(--cu-ps1);
-}
-
-.cu-banner--video .cu-banner__content > * {
-  pointer-events: auto;
-}
-
-@media (min-width: 80rem) {
-  .cu-banner--video .cu-banner__content {
-    padding: var(--cu-vr1) var(--cu-ps3);
-  }
-}
-
-.cu-banner--video .cu-banner__content--align-bottom {
-  justify-content: flex-end;
-}
-
-/*=====  End of Video banner  ======*/
 .cu-logo--ilr-lockup {
   max-width: 350px;
 }
