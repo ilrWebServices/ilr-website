@@ -588,7 +588,13 @@
   background: rgba(0, 0, 0, 0.7);
   z-index: 2;
   background: transparent;
-  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7) 100%);
+  background-image: linear-gradient(to bottom, transparent 25%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+@media (min-width: 64rem) {
+  .cu-card--portrait::before {
+    background-image: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
+  }
 }
 
 .cu-card--portrait .cu-card__heading {
@@ -1132,11 +1138,6 @@ progress {
 .cu-message__text {
   margin: 0;
 }
-.cu-video {
-  width: 100%;
-  max-height: 100%;
-  vertical-align: bottom;
-}
 .cu-section-heading {
   margin-bottom: var(--cu-vr3);
   /*=============================================
@@ -1193,6 +1194,11 @@ progress {
 
 .cu-section-heading--framed.cu-section-heading--framed-right::after {
   left: calc(100% - 10px);
+}
+.cu-video {
+  width: 100%;
+  max-height: 100%;
+  vertical-align: bottom;
 }
 /*! modern-normalize | MIT License | https://github.com/sindresorhus/modern-normalize */
 
