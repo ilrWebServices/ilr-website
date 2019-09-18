@@ -1,0 +1,7 @@
+.front {
+  .cu-dismissible {
+    @include full-width;
+
+    z-index: 1;
+  }
+}

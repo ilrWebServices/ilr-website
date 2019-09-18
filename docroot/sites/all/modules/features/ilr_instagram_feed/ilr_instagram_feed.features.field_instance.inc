@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ilr_instagram_feed.features.field_instance.inc
@@ -37,8 +38,9 @@ function ilr_instagram_feed_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_label' => '',
+          'trim_length' => 200,
         ),
-        'type' => 'text_plain',
+        'type' => 'text_summary_or_trimmed',
         'weight' => 3,
       ),
     ),
