@@ -156,6 +156,9 @@ function ilr_theme_preprocess_node__instagram_post(&$variables) {
       ? $url['url']
       : $url[0]['url'];
   }
+
+  // Fix rendering issues when displaying via union styles.
+  $variables['description'] = $wrapper->body->value->value(array('decode' => TRUE));
 }
 
 /**

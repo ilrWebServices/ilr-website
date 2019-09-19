@@ -14,7 +14,7 @@
  */
 ?>
 <div class="cu-card__content">
-  <p><?php print render($content['body']); ?></p>
+  <p><?php print $description; ?></p>
   <div class="cu-card__button">
     <a href="<?php print $instagram_url; ?>" class="cu-button--overlay cu-button">View </a>
   </div>
