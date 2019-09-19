@@ -14,8 +14,7 @@
  */
 ?>
 <div class="cu-card__content">
-  <?php print render($content['body']); ?>
-  <!-- <p>Happy first day of classes! Wishing everyone a great start to the semester!</p> -->
+  <p><?php print render($content['body']); ?></p>
   <div class="cu-card__button">
     <a href="<?php print $instagram_url; ?>" class="cu-button--overlay cu-button">View </a>
   </div>
