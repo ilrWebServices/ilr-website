@@ -6,3 +6,11 @@
 .cu-card .cu-button--overlay {
   color: white;
 }
+
+.bean-html .cu-card .cu-card__fact {
+  font-weight: bold;
+
+  &::before {
+    content: '';
+  }
+}
