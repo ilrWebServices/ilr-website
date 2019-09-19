@@ -4,6 +4,7 @@
 
     .container {
       padding: 2rem 1rem;
+      display: block;
     }
 
     .logo-wrapper {
@@ -51,6 +52,17 @@
         }
       }
     }
+
+    .search-button {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 10;
+
+      a {
+        padding: 10px 13px 5px 13px;
+      }
+    }
   }
 
 
@@ -58,7 +70,6 @@
     @include container;
     @include transition-duration(.3s);
 
-    position: relative;
     overflow: visible;
 
     .region-header {
