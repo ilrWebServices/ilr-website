@@ -73,6 +73,9 @@ header {
 
   .buttons {
     order: 3;
+     [data-menu-position="open"] & {
+      min-width: 5rem;
+     }
   }
 }
 
@@ -90,11 +93,16 @@ header {
 }
 
 %header-btn {
-  @include transition-duration(.3s);
+  // @include transition-duration(.3s);
   position: absolute;
   top: 1rem;
-  right: 0;
+  right: 0rem;
   z-index: 10;
+
+  [data-menu-position="open"] & {
+    position: fixed;
+    right: 1rem;
+  }
 
   [data-eq-state="regular-nav"]:not(.sticky) & {
     body:not(.subsite) & {
@@ -102,9 +110,9 @@ header {
     }
   }
 
-  @include medium {
-    right: 2rem;
-  }
+  // @include medium {
+  //   right: 2rem;
+  // }
 
   a {
     display: block;

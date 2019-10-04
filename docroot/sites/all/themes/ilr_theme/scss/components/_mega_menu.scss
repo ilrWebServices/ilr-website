@@ -22,7 +22,25 @@
         list-style: none;
         line-height: 1;
         margin: 0;
-        padding: 0;
+        padding: 5px;
+
+        .menuExpand {
+          background: none;
+          border: none;
+          position: relative;
+          float: left;
+          top: 2px;
+          padding: 0px 5px 0px 2px;
+          left: -2px;
+          z-index: -1;
+        
+          &:focus {
+            z-index: 11;
+            outline: 1px dotted $cornell-red
+          }
+        }
+
+
 
         > a, > a:visited {
           flex-grow: 1;
@@ -35,10 +53,12 @@
           font-weight: 400;
           font-size: 15px;
           outline: 0;
-          padding: 1.2rem;
-          display: block;
-          width: 100%;
+          padding: .3rem .4rem;
+          display: inline-block;
+          // width: 100%;
           text-align: center;
+          position: relative;
+          float: left;
 
           .sticky & {
             padding-top: .75em;
@@ -47,6 +67,10 @@
 
           &:hover {
             color: $cornell-red;
+          }
+          &:focus {
+            outline: 1px dotted $cornell-red
+
           }
         }
 
@@ -57,6 +81,7 @@
         div.submenu {
           white-space: normal;
           text-indent: -1em;
+          margin-top:30px;
         }
       }
     }
