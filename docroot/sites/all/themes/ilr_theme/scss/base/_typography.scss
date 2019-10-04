@@ -228,12 +228,14 @@ a, a:visited {
 a:hover, a:focus {
   color: $link-hover;
   text-decoration: none;
+  border-bottom: none;
 }
 
 // Underlines? @todo - figure out what to do here
 p a, p a:visited,
 li a {
   @include set-link($cornell-red);
+  border-bottom: 1px dotted;
 
   &[href^="mailto:"] {
     border: none;

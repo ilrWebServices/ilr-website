@@ -1,7 +1,7 @@
 #breadcrumb {
   .breadcrumb {
     @include adjust-font-size-to(14px);
-
+    color: #181818;
     span {
       padding: 0;
       color: $link;
@@ -9,6 +9,11 @@
 
     a {
       text-decoration: none;
+
+      &:after {
+        content: " /";
+        color: black;
+      }
     }
   }
   // Hide breadcrumbs on mobile version

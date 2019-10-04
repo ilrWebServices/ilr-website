@@ -1,7 +1,11 @@
 <header role="banner" <?php print render($page['nav_trigger_pts']); ?>>
+  <a class="skip-link" href="#main" tabindex="1">Skip to content</a>
   <div id="search-form">
     <form action="/search" method="get" id="cu-search-form" accept-charset="UTF-8">
-      <input id="search-form-query" type="text" name="s" placeholder="Search" value="" size="20" maxlength="128" class="form-text" />
+      <label class="sr-only" for="search-form-query">Search</label>
+      <input id="search-form-query" type="text" name="s" placeholder="Search" value="" size="20" maxlength="128" class="form-text" tabindex="-1" />
+      <button type="button" class="closeSearch fas fa-times"><span class="sr-only">Close Search</span></button>
+
     </form>
   </div>
   <div id="header-region">
@@ -16,16 +20,16 @@
       </a>
     </div>
     <?php endif; ?>
+    <div class="region-header__wrapper">
+      <?php print render($page['header']); ?>
+    </div>
     <div class='buttons'>
       <div class="jpanel-trigger-container">
         <a href="#" class="jpanel-trigger"></a>
       </div>
       <div class="search-button">
-        <a href="#"></a>
+        <button href="#" class="searchBtn fas fa-search"><span class="sr-only">Toggle Search</span></button>
       </div>
-    </div>
-    <div class="region-header__wrapper">
-      <?php print render($page['header']); ?>
     </div>
   </div>
   </div>
@@ -45,7 +49,7 @@
         <?php elseif ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
         <?php print render($title_suffix); ?>
         <?php if ($breadcrumb): ?>
-        <div id="breadcrumb"><?php print $breadcrumb; ?></div>
+        <nav id="breadcrumb" aria-label="breadcrumb"><?php print $breadcrumb; ?></nav>
         <?php endif; ?>
         <?php print $messages; ?>
         <div class="section">
