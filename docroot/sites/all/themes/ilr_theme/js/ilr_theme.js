@@ -33,7 +33,7 @@
   };
   Drupal.behaviors.ilr_theme_search = {
     attach: function (context, settings) {
-      $('.search-button a').click(function(e){
+      $('.search-button button').click(function(e){
         e.preventDefault();
         $('header').toggleClass('search-engaged');
         $('#search-form-query').focus();
