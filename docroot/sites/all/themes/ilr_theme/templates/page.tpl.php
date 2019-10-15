@@ -13,8 +13,8 @@
     <?php if (isset($logo_override)): ?>
       <?php print $logo_override['#markup']; ?>
     <?php else: ?>
-    <div class="logo-wrapper">
-      <?php print $logo_link ?>
+    <div class="logo-wrapper"> 
+      <!-- <?php print $logo_link ?> -->
       <a class="ilr" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
          <img src="<?php echo $logo?>" alt="Cornell University | ILR School" title="Cornell University | ILR School">
       </a>
@@ -24,11 +24,11 @@
       <?php print render($page['header']); ?>
     </div>
     <div class='buttons'>
-      <div class="jpanel-trigger-container">
-        <a href="#" class="jpanel-trigger"></a>
+       <div class="jpanel-trigger-container">
+        <a class="jpanel-trigger"></a>
       </div>
       <div class="search-button">
-        <button href="#" class="searchBtn fas fa-search"><span class="sr-only">Toggle Search</span></button>
+        <button class="searchBtn fas fa-search"><span class="sr-only">Toggle Searchers</span></button>
       </div>
     </div>
   </div>
