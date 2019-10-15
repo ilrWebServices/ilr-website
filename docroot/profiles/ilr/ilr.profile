@@ -199,7 +199,7 @@ function ilr_block_info() {
  */
 function ilr_block_view($delta='') {
   if ($delta == 'ilr_wordmark') {
-    $markup = '<div class="ilr-logo ilr-logo--wordmark"><a class="ilr-logo__link" href="/"><img src="/sites/all/themes/ilr_theme/images/logos/ILR-wordmark.svg"></a></div>';
+    $markup = '<div class="ilr-logo ilr-logo--wordmark"><a class="ilr-logo__link" href="/" ><img src="/sites/all/themes/ilr_theme/images/logos/ILR-wordmark.svg" alt="ILR School"></a></div>';
 
     $block = array(
       'subject' => '',
