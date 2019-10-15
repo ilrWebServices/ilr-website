@@ -8,6 +8,8 @@ stylesheets[print][] = css/print.css
 
 scripts[] = js/ilr_theme.js
 scripts[] = js/union.js
+scripts[] = js/wa.js
+
 
 regions[header] = Header
 regions[highlighted] = Highlighted

@@ -8,7 +8,7 @@
       // Adding expander buttons after every top level nav item
       $(menuItems).each(function(e){
         $(this).attr("aria-expanded","false");
-        $(this).children('a').after("<button class='menuExpand' aria-expanded='false' tabindex='0' value='Expand Menu' aria-label='Expand " + $(this).children('a').text()"><span aria-hidden='true' class='fas fa-caret-down'></span></button>");
+        $(this).children('a').after("<button class='menuExpand' aria-expanded='false' tabindex='0' value='Expand Menu' aria-label='Expand " + $(this).children('a').text() + "'><span aria-hidden='true' class='fas fa-caret-down'></span></button>");
       });
 
       $('.menuExpand').on('touchstart click', function (e){
