@@ -22,7 +22,6 @@ function ilr_theme_preprocess_html(&$variables) {
   drupal_add_js($gsap_path . '/TimelineLite.min.js', array('type' => 'file', 'scope' => 'footer'));
   drupal_add_js($gsap_path . '/easing/EasePack.min.js', array('type' => 'file', 'scope' => 'footer'));
   drupal_add_js($gsap_path . '/plugins/CSSPlugin.min.js', array('type' => 'file', 'scope' => 'footer'));
-  drupal_add_css('https://use.fontawesome.com/releases/v5.8.1/css/all.css', 'external');
 
   $isotope_js = libraries_get_path('isotope') . '/isotope.pkgd.min.js';
   drupal_add_js($isotope_js, array('type' => 'file', 'scope' => 'footer'));

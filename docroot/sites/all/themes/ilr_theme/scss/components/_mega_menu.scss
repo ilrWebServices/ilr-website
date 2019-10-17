@@ -25,15 +25,17 @@
         padding: 5px;
 
         .menuExpand {
+          @extend %icon-arrow-down;
+          font-size: 12px;
           background: none;
           border: none;
           position: relative;
           float: left;
-          top: 2px;
+          top: 8px;
           padding: 0px 5px 0px 2px;
           left: -2px;
           z-index: -1;
-        
+
           &:focus {
             z-index: 11;
             outline: 1px dotted $cornell-red

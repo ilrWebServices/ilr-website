@@ -53,6 +53,8 @@
   top: 0;
 
   .closeSearch {
+    @extend %icon-close2;
+    font-size: 12px;
     color: $white;
     border: none;
     background: transparent;
