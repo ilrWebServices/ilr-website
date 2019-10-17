@@ -22,6 +22,7 @@ function ilr_theme_preprocess_html(&$variables) {
   drupal_add_js($gsap_path . '/TimelineLite.min.js', array('type' => 'file', 'scope' => 'footer'));
   drupal_add_js($gsap_path . '/easing/EasePack.min.js', array('type' => 'file', 'scope' => 'footer'));
   drupal_add_js($gsap_path . '/plugins/CSSPlugin.min.js', array('type' => 'file', 'scope' => 'footer'));
+
   $isotope_js = libraries_get_path('isotope') . '/isotope.pkgd.min.js';
   drupal_add_js($isotope_js, array('type' => 'file', 'scope' => 'footer'));
   $hoverintent_js = libraries_get_path('hoverintent') . '/jquery.hoverIntent.minified.js';
@@ -47,7 +48,7 @@ function ilr_theme_preprocess_page(&$variables) {
   $variables['page']['nav_trigger_pts'] =  array('#markup' => 'data-eq-pts="mobile-nav: 300, regular-nav: 1045"');
 
   if (!isset($variables['logo_link'])) {
-    $variables['logo_link'] = '<a class="cornell" title="Visit Cornell.edu" href="https://cornell.edu"></a>';
+    $variables['logo_link'] = '<a class="cornell" title="Visit Cornell.edu" alt="Cornell University" href="https://cornell.edu"><span class="sr-only">Cornell University</span></a>';
   }
 
   if ( isset($_GET['layout']) && $_GET['layout'] == '0' ) {
@@ -189,7 +190,7 @@ function ilr_theme_breadcrumb($variables) {
     if (module_exists('ilr_sub_sites') && _ilr_sub_sites_get_menu_name() != 'main-menu') {
       $home_link = array_shift($breadcrumb); // Remove the home link
     }
-    return '<div class="breadcrumb">' . implode('<span> / </span>', $breadcrumb) . '</div>';
+    return '<nav class="breadcrumb">' . implode(' ', $breadcrumb) . '</nav>';
   }
 }
 

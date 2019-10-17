@@ -1,7 +1,17 @@
 .search-button {
   position: relative;
-  a {
-    @include transition-duration(.3s);
+  [data-menu-position="open"] & {
+    min-height: 38px;
+    min-width: 45px;
+    text-align: center;
+    top: 1rem;
+    position: fixed;
+    z-index: 11;
+  }
+  button {
+    // @include transition-duration(.3s);
+    border: 0px;
+    background: none;
     @extend %icon-search-thin;
 
     visibility: hidden;
@@ -11,10 +21,9 @@
     [data-menu-position="open"] & {
       color: white;
       visibility: visible;
-      position: absolute;
+      position: relative;
       z-index: 10;
-      right: .9em;
-      top: -2.5rem;
+      padding: 10px 13px 5px 13px;
     }
 
     .subsite & {
@@ -43,6 +52,14 @@
   position: absolute;
   top: 0;
 
+  .closeSearch {
+    @extend %icon-close2;
+    font-size: 12px;
+    color: $white;
+    border: none;
+    background: transparent;
+  }
+
   .search-engaged & {
     height: auto;
   }
@@ -54,7 +71,7 @@
   input {
     @include rhythm(1);
     border: none;
-    width: 100%;
+    width: 90%;
     padding: 0 0 0 15px;
     background: $black;
     border-left: 5px solid $cornell-red;

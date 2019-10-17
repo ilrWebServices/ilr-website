@@ -246,6 +246,10 @@ form.class-details {
     .social-share {
       @include trailer(1);
       text-align: left;
+
+      a {
+        border-bottom: none;
+      }
     }
 
     .field-name-body {

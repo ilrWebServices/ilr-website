@@ -6,6 +6,10 @@
   @include hidden;
 }
 
+.sr-only  {
+  @include sr-only;
+}
+
 .visible {
   display: block !important;
   visibility: visible;

@@ -1,0 +1,19 @@
+.skip-link {
+  margin:25px;
+  border: 1px solid;
+  padding:10px;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+
+  &:focus, &:hover {
+    color: white;
+    background: $link;
+  }
+
+  &:focus {
+    display: inline;
+    left: 0px;
+    top: 0px;
+  }
+}

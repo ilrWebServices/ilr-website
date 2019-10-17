@@ -22,7 +22,27 @@
         list-style: none;
         line-height: 1;
         margin: 0;
-        padding: 0;
+        padding: 5px;
+
+        .menuExpand {
+          @extend %icon-arrow-down;
+          font-size: 12px;
+          background: none;
+          border: none;
+          position: relative;
+          float: left;
+          top: 8px;
+          padding: 0px 5px 0px 2px;
+          left: -2px;
+          z-index: -1;
+
+          &:focus {
+            z-index: 11;
+            outline: 1px dotted $cornell-red
+          }
+        }
+
+
 
         > a, > a:visited {
           flex-grow: 1;
@@ -35,10 +55,12 @@
           font-weight: 400;
           font-size: 15px;
           outline: 0;
-          padding: 1.2rem;
-          display: block;
-          width: 100%;
+          padding: .3rem .4rem;
+          display: inline-block;
+          // width: 100%;
           text-align: center;
+          position: relative;
+          float: left;
 
           .sticky & {
             padding-top: .75em;
@@ -48,6 +70,10 @@
           &:hover {
             color: $cornell-red;
           }
+          &:focus {
+            outline: 1px dotted $cornell-red
+
+          }
         }
 
         &.active > a, &.active > a:visited {
@@ -56,7 +82,8 @@
 
         div.submenu {
           white-space: normal;
-          text-indent: -1em;
+          margin-left: -1em;
+          margin-top:30px;
         }
       }
     }
@@ -127,15 +154,18 @@
     .field-name-field-referenced-entity {
       @include three-column;
 
-      article h2 {
-        @include adjust-font-size-to(17px);
+      .content {
 
-        font-weight: normal;
-        margin: 0;
+        div {
 
-        a {
-          color: $black;
-          border-bottom: none;
+          a {
+            margin: 0;
+            font-weight: 400;
+            color: $black;
+            border-bottom: none;
+
+            @include adjust-font-size-to(17px);
+          }
         }
       }
     }

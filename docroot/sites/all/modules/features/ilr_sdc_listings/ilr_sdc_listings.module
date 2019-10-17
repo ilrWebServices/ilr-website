@@ -580,6 +580,7 @@ function ilr_sdc_listings_search_form($form, &$form_state) {
     //'#size' => 20,
     '#attributes' => array(
       'placeholder' => 'Search ILR offerings',
+      'aria-label' => 'Search ILR offerings'
     ),
     '#default_value' => isset($_REQUEST['s']) ? $_REQUEST['s'] : '',
     '#autocomplete_path' => 'programs/professional-programs/courses/autocomplete',
@@ -1494,7 +1495,7 @@ function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_pr
 }
 
 function _ilr_sdc_listings_generate_class_radio_label($class) {
-  $markup = '<div class="radio-label contextual-links-region">';
+  $markup = '<div class="radio-label contextual-links-region" id="course-' . $class->nid . '">';
   $markup .= _ilr_sdc_listings_get_contextual_link_markup($class);
   if (_ilr_sdc_listings_is_series($class)) {
     $markup .= '<span class="class-title">'.$class->title.'</span>';
@@ -2300,7 +2301,7 @@ function _ilr_sdc_listings_add_radio_markup(&$form, $classes) {
         $form[$class_id] = array(
           '#type' => 'radio',
           '#return_value' => $class_id,
-          '#attributes' => array('name' => 'addClass'),
+          '#attributes' => array('name' => 'addClass', 'aria-labelledby' => 'course-' . $nid),
           // Ensure single value in $form_state
           '#parents' => array('addClass'),
         );
