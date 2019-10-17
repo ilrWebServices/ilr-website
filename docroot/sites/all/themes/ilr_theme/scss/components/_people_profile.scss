@@ -99,5 +99,10 @@ article.node-people-profile {
       @include adjust-font-size-to(16px);
       @include adjust-leading-to(1);
     }
+    .field-name-field-ai-links {
+      ul {
+        @include bulleted-list;
+      }
+    }
   }
 }
