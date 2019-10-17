@@ -48,7 +48,7 @@ function ilr_theme_preprocess_page(&$variables) {
   $variables['page']['nav_trigger_pts'] =  array('#markup' => 'data-eq-pts="mobile-nav: 300, regular-nav: 1045"');
 
   if (!isset($variables['logo_link'])) {
-    $variables['logo_link'] = '<a class="cornell" title="Visit Cornell.edu" alt="Cornell University" href="https://cornell.edu">Cornell University</a>';
+    $variables['logo_link'] = '<a class="cornell" title="Visit Cornell.edu" alt="Cornell University" href="https://cornell.edu"><span class="sr-only">Cornell University</span></a>';
   }
 
   if ( isset($_GET['layout']) && $_GET['layout'] == '0' ) {

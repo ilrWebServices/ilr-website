@@ -297,7 +297,7 @@ function ilr_sub_sites_preprocess_page(&$variables) {
         _ilr_sub_sites_ugly_link_hack($href);
         $variables['front_page'] = $href;
 
-        $variables['logo_link'] = '<a class="cornell cornell--ilr" title="Visit ilr.cornell.edu" href="https://www.ilr.cornell.edu"></a>';
+        $variables['logo_link'] = '<a class="cornell cornell--ilr" title="Visit ilr.cornell.edu" href="https://www.ilr.cornell.edu"><span class="sr-only">ILR School</span></a>';
       }
     }
 
