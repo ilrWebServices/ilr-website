@@ -2539,7 +2539,7 @@ function ilr_sdc_listings_salesforce_pull_entity_presave($entity, $sf_object, $s
         }
         break;
       case 'sdc_class':
-        if (empty($sf_object['Class_Show_on_Web__c'])) {
+        if (empty($sf_object['Show_on_Web__c'])) {
           throw new SalesforcePullException('Class not set to show on web.');
         }
         if (!_ilr_sdc_listings_get_course_by_sf_id($sf_object['Course__c'])) {
