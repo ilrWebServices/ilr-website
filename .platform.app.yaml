@@ -150,4 +150,9 @@ crons:
       if [ "$PLATFORM_BRANCH" = master ]; then
         platform redeploy --yes --no-wait
       fi
-
+  upload_logs_to_s3:
+    spec: '0 * * * *'
+    cmd: |
+      if [ "$PLATFORM_BRANCH" = master ]; then
+        bash bin/upload_logs_to_s3.sh
+      fi
