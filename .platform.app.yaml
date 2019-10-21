@@ -117,6 +117,10 @@ hooks:
     set -e
     npm install
     npm run build
+    if [ ! -z "$AWS_ACCESS_KEY_ID" ] && [ ! -z "$AWS_SECRET_ACCESS_KEY" ]; then
+      pip install futures
+      pip install awscli --upgrade --user 2>/dev/null
+    fi
   # We run deploy hook after your application has been deployed and started.
   deploy: |
     set -e
