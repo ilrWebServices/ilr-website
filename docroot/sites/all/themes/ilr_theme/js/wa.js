@@ -4,36 +4,43 @@
     attach: function (context, settings) {
       var menuItems = ".menu li.menu-item";
       var menuLinks = ".menu-view-wrapper";
+      const isSubsite = $('body').hasClass('subsite');
 
-      // Adding expander buttons after every top level nav item
-      $(menuItems).each(function(e){
-        $(this).attr("aria-expanded","false");
-        $(this).children('a').after("<button class='menuExpand' aria-expanded='false' tabindex='0' value='Expand Menu' aria-label='Expand " + $(this).children('a').text() + "'><span aria-hidden='true' class='fas fa-caret-down'></span></button>");
-      });
-
-      $('.menuExpand').on('touchstart click', function (e){
-
-        var submenu = $(this).next('.submenu');
-
-        $(this).toggleClass('expanded');
-
-        if($(this).hasClass('expanded')) {
-          $(this).attr('aria-expanded','true');
-        }
-        else {
-          $(this).attr('aria-expanded','false');
+      const addKeyboardNav = function () {
+        if (isSubsite) {
+          return;
         }
 
-        $('.menu-block-ilr-primary-menu').addClass('active');
-        $(submenu).toggleClass('active');
+        // Adding expander buttons after every top level nav item
+        $(menuItems).each(function (e) {
+          $(this).attr("aria-expanded", "false");
+          $(this).children('a').after("<button class='menuExpand' aria-expanded='false' tabindex='0' value='Expand Menu' aria-label='Expand " + $(this).children('a').text() + "'><span aria-hidden='true' class='fas fa-caret-down'></span></button>");
+        });
 
-        if((submenu).hasClass('active')) {
-          $(submenu).css("opacity","1");
-        }
-        else {
-          $(submenu).css("opacity","0");
-        }
-      });
+        $('.menuExpand').on('touchstart click', function (e) {
+
+          var submenu = $(this).next('.submenu');
+
+          $(this).toggleClass('expanded');
+
+          if ($(this).hasClass('expanded')) {
+            $(this).attr('aria-expanded', 'true');
+          }
+          else {
+            $(this).attr('aria-expanded', 'false');
+          }
+
+          $('.menu-block-ilr-primary-menu').addClass('active');
+          $(submenu).toggleClass('active');
+
+          if ((submenu).hasClass('active')) {
+            $(submenu).css("opacity", "1");
+          }
+          else {
+            $(submenu).css("opacity", "0");
+          }
+        });
+      }
 
       // Able to close menu by hitting escape
       $(document).on('keydown', function(event) {
@@ -57,6 +64,8 @@
       $('.closeSearch').click(function(){
         $('header').toggleClass('search-engaged');
       });
+
+      window.addEventListener('DOMContentLoaded', addKeyboardNav);
   }
 }
 
