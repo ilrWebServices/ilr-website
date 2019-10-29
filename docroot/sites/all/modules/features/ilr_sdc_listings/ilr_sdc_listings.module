@@ -2488,7 +2488,6 @@ function _ilr_sdc_listings_get_protected_fields() {
       'field_is_full',
       'field_on_demand',
       'field_online_class',
-      'field_registration_end_date',
       'field_building',
       'field_price'
     ),
