@@ -22,7 +22,6 @@ function ilr_theme_preprocess_html(&$variables) {
   drupal_add_js($gsap_path . '/TimelineLite.min.js', array('type' => 'file', 'scope' => 'footer'));
   drupal_add_js($gsap_path . '/easing/EasePack.min.js', array('type' => 'file', 'scope' => 'footer'));
   drupal_add_js($gsap_path . '/plugins/CSSPlugin.min.js', array('type' => 'file', 'scope' => 'footer'));
-  drupal_add_css('https://use.fontawesome.com/releases/v5.8.1/css/all.css', 'external');
 
   $isotope_js = libraries_get_path('isotope') . '/isotope.pkgd.min.js';
   drupal_add_js($isotope_js, array('type' => 'file', 'scope' => 'footer'));
@@ -49,7 +48,7 @@ function ilr_theme_preprocess_page(&$variables) {
   $variables['page']['nav_trigger_pts'] =  array('#markup' => 'data-eq-pts="mobile-nav: 300, regular-nav: 1045"');
 
   if (!isset($variables['logo_link'])) {
-    $variables['logo_link'] = '<a class="cornell" title="Visit Cornell.edu" alt="Cornell University" href="https://cornell.edu">Cornell University</a>';
+    $variables['logo_link'] = '<a class="cornell" title="Visit Cornell.edu" alt="Cornell University" href="https://cornell.edu"><span class="sr-only">Cornell University</span></a>';
   }
 
   if ( isset($_GET['layout']) && $_GET['layout'] == '0' ) {
