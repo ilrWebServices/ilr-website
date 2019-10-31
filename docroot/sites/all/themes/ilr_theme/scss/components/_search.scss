@@ -54,7 +54,7 @@
 
   .closeSearch {
     @extend %icon-close2;
-    font-size: 12px;
+    // font-size: 16px;
     color: $white;
     border: none;
     background: transparent;
@@ -98,10 +98,12 @@
     }
   }
    .searchBtn {
+    @extend %icon-search;
       color: white;
       background: transparent;
       border: none;
       line-height: 1;
+      position: relative;
     }
 }
 

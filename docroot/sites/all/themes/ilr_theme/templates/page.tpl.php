@@ -5,10 +5,9 @@
       <label class="sr-only" for="search-form-query">Search</label>
       <input id="search-form-query" type="text" name="s" placeholder="Search" value="" size="20" maxlength="128" class="form-text" tabindex="-1" />
       <button type="submit" class="searchBtn" value="">
-        <span class="fas fa-search"></span>
         <span class="sr-only">Search</span>
       </button>
-      <button type="button" class="closeSearch fas fa-times"><span class="sr-only">Close Search</span></button>
+      <button type="button" class="closeSearch"><span class="sr-only">Close Search</span></button>
 
     </form>
   </div>
