@@ -26,7 +26,9 @@
     "modularscale-sass": "^3.0.8",
     "singularitygs": "^1.8.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "node": "^10.13.0"
+  },
   "scripts": {
     "start": "gulp",
     "build": "gulp sass"
