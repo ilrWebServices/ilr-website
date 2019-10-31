@@ -53,6 +53,8 @@
   top: 0;
 
   .closeSearch {
+    @extend %icon-close2;
+    font-size: 12px;
     color: $white;
     border: none;
     background: transparent;
@@ -95,6 +97,12 @@
       opacity: 1;
     }
   }
+   .searchBtn {
+      color: white;
+      background: transparent;
+      border: none;
+      line-height: 1;
+    }
 }
 
 .gsc-result .gsc-table-result {
