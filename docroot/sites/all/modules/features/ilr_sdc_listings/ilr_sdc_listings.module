@@ -1411,7 +1411,7 @@ function _ilr_sdc_listings_format_class_date_and_time($class) {
   $markup = '<div class="date-time contextual-links-region">';
   $markup .= _ilr_sdc_listings_get_contextual_link_markup($class);
   $datespan_class = ($wrapper->field_cancelled->value() == 1) ? 'date cancelled' : 'date';
-  $markup .= '<span class="'.$datespan_class.'">';
+  $markup .= '<span '.$datespan_class.'">';
   $markup .= _ilr_sdc_listings_get_class_datespan($class);
   $markup .= '</span>';
   $markup .= '<span class="time">';

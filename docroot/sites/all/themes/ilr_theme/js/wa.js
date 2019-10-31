@@ -66,6 +66,11 @@
       });
 
       window.addEventListener('DOMContentLoaded', addKeyboardNav);
+
+      // $('.searchBtn').on('click', function(){
+      //   $('header').addClass('search-engaged');
+      // });
+
   }
 }
 
