@@ -6,6 +6,11 @@ span.file img.file-icon {
   @extend .hidden;
 }
 
+span.file {
+  a {
+    color: $cornell-red;
+  }
+}
 // Responsive video hack
 // Courtesy of http://alistapart.com/article/creating-intrinsic-ratios-for-video
 .media-youtube-video {
