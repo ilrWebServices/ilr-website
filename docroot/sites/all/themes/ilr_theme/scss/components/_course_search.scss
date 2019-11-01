@@ -58,6 +58,9 @@
     }
     .form-item {
       width: 100%;
+      &:focus, &:focus-within {
+        outline: -webkit-focus-ring-color auto 5px;
+      }
       .date-padding {
         width: 100%;
       }
