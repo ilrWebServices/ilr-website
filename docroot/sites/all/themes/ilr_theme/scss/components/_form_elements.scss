@@ -60,6 +60,10 @@ form {
     @include leader(0.5);
     font-size: 14px;
     font-weight: 300;
+
+    .form-required {
+      color: #cf2b19;
+    }
   }
 
   select {
@@ -79,6 +83,15 @@ form {
     @include leader(1);
     @include trailer(1);
   }
+
+  .form-required {
+    color: #d62c1a;
+  }
+
+  .tabledrag-toggle-weight {
+      color: #d62c1a;
+  }
+
 }
 
 #content {

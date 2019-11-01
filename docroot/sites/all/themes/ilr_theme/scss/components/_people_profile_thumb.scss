@@ -31,6 +31,13 @@ body.page-taxonomy-term .view-areas-expertise-taxonomy-term {
     .people-profile__content {
       grid-column: 2;
       grid-row: 2;
+        a {
+          color: $cornell-red;
+          border-bottom: 1px dotted;
+          &:hover {
+            border-bottom: 1px solid transparent;
+          }
+        }
     }
 
     .field {

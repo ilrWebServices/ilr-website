@@ -14,6 +14,9 @@ article.node-reflection {
     li.node-readmoremore {
       background: none;
       padding-left: 1em;
+      a:focus {
+        color: #d91d11;
+      }
     }
   }
 
