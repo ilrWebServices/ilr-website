@@ -177,3 +177,9 @@ form {
     text-transform: capitalize;
   }
 }
+
+.chosen-search {
+  input[type="text"]:focus{
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+}
