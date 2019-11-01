@@ -17,9 +17,34 @@ table.views-table {
     td {
       border: none;
       background: none;
+
+      a {
+          color: $cornell-red;
+          border-bottom: 1px dotted;
+
+          &:hover, &:focus {
+            border-bottom: 1px solid transparent;
+          }
+        }
     }
     &.odd td {
       background: white;
+    }
+  }
+}
+
+
+table {
+  tr {
+    td {
+      a {
+        color: $cornell-red;
+        border-bottom: 1px dotted;
+
+        &:hover, &:focus {
+          border-bottom: 1px solid transparent;
+        }
+      }
     }
   }
 }

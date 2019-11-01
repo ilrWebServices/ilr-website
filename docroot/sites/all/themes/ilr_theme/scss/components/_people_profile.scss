@@ -11,6 +11,12 @@ article.node-people-profile {
         @include two-column;
       }
     }
+
+    .field-type-email {
+      a {
+        color: blue;
+      }
+    }
   }
 
   .group-title-and-focus {

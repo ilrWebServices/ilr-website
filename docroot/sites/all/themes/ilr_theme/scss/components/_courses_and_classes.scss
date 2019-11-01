@@ -96,10 +96,15 @@
   .date-time span.date {
     display: block;
     font-weight: bold;
+    color: $gray-extra;
     @include adjust-font-size-to(16px);
     &.cancelled {
       text-decoration: line-through;
     }
+  }
+
+  span.cost {
+    color: $gray-extra;
   }
 
   .button {
@@ -302,6 +307,20 @@ form.class-details {
   text-decoration: underline;
 }
 
+.node-sdc-course {
+  span.timespan {
+    color: $gray-extra;
+  }
+
+  .course-details {
+    color: $cornell-red;
+    border-bottom: 1px dotted;
+
+    &:focus, &:hover {
+      border-bottom: 1px solid transparent;
+    }
+  }
+}
 div.field-name-field-course.field-type-entityreference {
   a { // This is the title of the node
     @include adjust-font-size-to($h2-size, 1);

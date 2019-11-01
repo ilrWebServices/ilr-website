@@ -62,7 +62,8 @@ $color-heading: $h1-text;
 
   a,
   a:hover,
-  a:visited {
+  a:visited,
+  a:focus {
     text-decoration: none;
     color: $header-color;
     font-weight: 400;

@@ -209,7 +209,7 @@
   .news__date {
     @include adjust-font-size-to(15px);
 
-    color: $dark-gray-orange;
+    color: $warm-grey-dark;
     padding: 0 0 1rem;
   }
 
@@ -244,7 +244,7 @@
       @include visible;
 
       order: 2;
-      color: $dark-gray-orange;
+      color: $warm-grey-dark;
     }
 
     .field-type-text-with-summary {

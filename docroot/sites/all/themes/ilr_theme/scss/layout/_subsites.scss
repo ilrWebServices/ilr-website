@@ -16,3 +16,17 @@ body.subsite-front {
     }
   }
 }
+
+// Subsite card links
+.node-post {
+  h2 {
+    a {
+      
+    }
+  }
+  ul.links {
+    a {
+      color: $cornell-red;
+    }
+  }
+}
