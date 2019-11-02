@@ -1490,7 +1490,7 @@ function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_pr
       : $wrapper->field_course[0]->value()->nid;
     $link = url('node/'. $nid);
   }
-  $markup = '<div class="action"><a class="'.$classes.'" href="'.$link.'">' . $link_text .'</a></div>';
+  $markup = '<div class="action"><a class="'.$classes.'" href="'.$link.'">' . $link_text .' <span class="sr-only"> about '. $class_node->title . '</span></a></div>';
   return $markup;
 }
 
@@ -1559,7 +1559,7 @@ function _ilr_sdc_listings_generate_class_link_markup($class_nodes, $view_mode =
     if (count($class_nodes) > 1) {
       $course_nid = $wrapper->field_course[0]->value()->nid;
       $link = drupal_get_path_alias('node/'.$course_nid);
-      $markup .= '<a class="course-details" href="/'.$link. '">See more dates and locations</a>';
+      $markup .= '<a class="course-details" href="/'.$link. '">See more dates and locations <span class="sr-only">for ' . $class_node->title . '</span></a>';
     }
   }
 
@@ -1668,7 +1668,7 @@ function _ilr_sdc_listings_generate_request_info_markup($course, $view_mode) {
 
     $link = drupal_get_path_alias('node/'.$course->nid);
     $markup .= '<a href="request-info" title="" class="request-info schedule" data-nid="'.$course->nid.'">'.$help_text.'<span class="course-title">'.$course->title.'</span></a>
-      <div class="action"><a class="button button-info" href="/'.$link.'">Learn More</a></div>';// Note that the js looks for the .button-info class
+      <div class="action"><a class="button button-info" href="/'.$link.'">Learn More <span class="sr-only"> about ' .$course->title. '</a></div>';// Note that the js looks for the .button-info class
   } // full node
   else {
     $markup .= '<p class="schedule button-info">'.$help_text.'</p>';

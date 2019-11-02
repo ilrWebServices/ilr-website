@@ -237,9 +237,9 @@ li a {
   @include set-link($cornell-red);
   border-bottom: 1px dotted;
 
-  &[href^="mailto:"] {
-    border: none;
-  }
+  // &[href^="mailto:"] {
+  //   border: none;
+  // }
 }
 
 // ==================================================
