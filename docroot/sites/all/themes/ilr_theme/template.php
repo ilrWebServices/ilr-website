@@ -190,7 +190,7 @@ function ilr_theme_breadcrumb($variables) {
     if (module_exists('ilr_sub_sites') && _ilr_sub_sites_get_menu_name() != 'main-menu') {
       $home_link = array_shift($breadcrumb); // Remove the home link
     }
-    return '<nav class="breadcrumb">' . implode(' ', $breadcrumb) . '</nav>';
+    return '<nav class="breadcrumb" aria-label="Breadcrumb">' . implode(' ', $breadcrumb) . '</nav>';
   }
 }
 
