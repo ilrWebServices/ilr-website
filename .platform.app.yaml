@@ -71,8 +71,13 @@ web:
       # Rules for specific URI patterns.
       rules:
         # Allow access to common static files.
-        '\.(jpe?g|JPE?G|png|gif|svgz?|css|js|map|ico|bmp|eot|woff2?|otf|ttf|pdf|pptx?|docx?|xlsx?)$':
+        '\.(jpe?g|JPE?G|png|gif|svgz?|css|js|map|ico|bmp|pdf|pptx?|docx?|xlsx?)$':
             allow: true
+        # Web fonts are common files, but we also want other sites to be able to load them.
+        '\.(eot|woff2?|otf|ttf)$':
+            allow: true
+            headers:
+              'Access-Control-Allow-Origin': '*'
         '^/robots\.txt$':
             allow: true
         '^/sitemap\.xml$':
