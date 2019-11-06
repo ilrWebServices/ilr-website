@@ -88,6 +88,21 @@ function ilr_accessibility_views_default_views() {
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
+  /* Field: File: Accessibility Processed (editable) */
+  $handler->display->display_options['fields']['field_accessibility_processed_editable']['id'] = 'field_accessibility_processed_editable';
+  $handler->display->display_options['fields']['field_accessibility_processed_editable']['table'] = 'field_data_field_accessibility_processed';
+  $handler->display->display_options['fields']['field_accessibility_processed_editable']['field'] = 'field_accessibility_processed_editable';
+  $handler->display->display_options['fields']['field_accessibility_processed_editable']['label'] = 'Processed';
+  $handler->display->display_options['fields']['field_accessibility_processed_editable']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_accessibility_processed_editable']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_accessibility_processed_editable']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_accessibility_processed_editable']['settings'] = array(
+    'field_formatter_label' => '',
+  );
+  $handler->display->display_options['fields']['field_accessibility_processed_editable']['field_api_classes'] = TRUE;
+  $handler->display->display_options['fields']['field_accessibility_processed_editable']['widget_type'] = '0';
+  $handler->display->display_options['fields']['field_accessibility_processed_editable']['suppress_label'] = 1;
+  $handler->display->display_options['fields']['field_accessibility_processed_editable']['suppress_description'] = 1;
   /* Field: File: Rendered */
   $handler->display->display_options['fields']['rendered']['id'] = 'rendered';
   $handler->display->display_options['fields']['rendered']['table'] = 'file_managed';
@@ -95,6 +110,13 @@ function ilr_accessibility_views_default_views() {
   $handler->display->display_options['fields']['rendered']['label'] = 'Thumbnail';
   $handler->display->display_options['fields']['rendered']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['rendered']['file_view_mode'] = 'preview';
+  /* Field: File: Name */
+  $handler->display->display_options['fields']['filename']['id'] = 'filename';
+  $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filename']['field'] = 'filename';
+  $handler->display->display_options['fields']['filename']['label'] = 'Filename';
+  $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
   /* Field: File: Alt Text (editable) */
   $handler->display->display_options['fields']['field_file_image_alt_text_editable']['id'] = 'field_file_image_alt_text_editable';
   $handler->display->display_options['fields']['field_file_image_alt_text_editable']['table'] = 'field_data_field_file_image_alt_text';
@@ -159,28 +181,6 @@ function ilr_accessibility_views_default_views() {
   $handler->display->display_options['fields']['field_tags_editable']['widget_type'] = '0';
   $handler->display->display_options['fields']['field_tags_editable']['suppress_label'] = 1;
   $handler->display->display_options['fields']['field_tags_editable']['suppress_description'] = 1;
-  /* Field: File: Name */
-  $handler->display->display_options['fields']['filename']['id'] = 'filename';
-  $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
-  $handler->display->display_options['fields']['filename']['field'] = 'filename';
-  $handler->display->display_options['fields']['filename']['label'] = 'Filename';
-  $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
-  /* Field: File: Accessibility Processed (editable) */
-  $handler->display->display_options['fields']['field_accessibility_processed_editable']['id'] = 'field_accessibility_processed_editable';
-  $handler->display->display_options['fields']['field_accessibility_processed_editable']['table'] = 'field_data_field_accessibility_processed';
-  $handler->display->display_options['fields']['field_accessibility_processed_editable']['field'] = 'field_accessibility_processed_editable';
-  $handler->display->display_options['fields']['field_accessibility_processed_editable']['label'] = 'Processed';
-  $handler->display->display_options['fields']['field_accessibility_processed_editable']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_accessibility_processed_editable']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['field_accessibility_processed_editable']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_accessibility_processed_editable']['settings'] = array(
-    'field_formatter_label' => '',
-  );
-  $handler->display->display_options['fields']['field_accessibility_processed_editable']['field_api_classes'] = TRUE;
-  $handler->display->display_options['fields']['field_accessibility_processed_editable']['widget_type'] = '0';
-  $handler->display->display_options['fields']['field_accessibility_processed_editable']['suppress_label'] = 1;
-  $handler->display->display_options['fields']['field_accessibility_processed_editable']['suppress_description'] = 1;
   /* Sort criterion: File: Upload date */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['table'] = 'file_managed';
@@ -297,6 +297,21 @@ function ilr_accessibility_views_default_views() {
     2 => array(),
     3 => array(),
   );
+  /* Filter criterion: File Usage: Use count */
+  $handler->display->display_options['filters']['count']['id'] = 'count';
+  $handler->display->display_options['filters']['count']['table'] = 'file_usage';
+  $handler->display->display_options['filters']['count']['field'] = 'count';
+  $handler->display->display_options['filters']['count']['operator'] = '>';
+  $handler->display->display_options['filters']['count']['expose']['operator_id'] = 'count_op';
+  $handler->display->display_options['filters']['count']['expose']['label'] = 'Use count';
+  $handler->display->display_options['filters']['count']['expose']['operator'] = 'count_op';
+  $handler->display->display_options['filters']['count']['expose']['identifier'] = 'count';
+  /* Filter criterion: File Usage: Entity type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'file_usage';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['operator'] = '!=';
+  $handler->display->display_options['filters']['type_1']['value'] = 'entityform';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
