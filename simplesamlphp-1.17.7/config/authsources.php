@@ -1,5 +1,10 @@
 <?php
 
+// As of March 2016, anonymous Shibboleth webauth only works on the test server
+$idp = (isset($_ENV["PLATFORM_BRANCH"]) && $_ENV['PLATFORM_BRANCH'] == 'master')
+    ? 'https://shibidp.cit.cornell.edu/idp/shibboleth'
+    : 'https://shibidp-test.cit.cornell.edu/idp/shibboleth';
+
 $config = [
 
     // This is a authentication source which handles admin authentication.
@@ -13,20 +18,20 @@ $config = [
 
     // An authentication source which can authenticate against both SAML 2.0
     // and Shibboleth 1.3 IdPs.
-    'default-sp' => [
-        'saml:SP',
+    // 'default-sp' => [
+    //     'saml:SP',
 
         // The entity ID of this SP.
         // Can be NULL/unset, in which case an entity ID is generated based on the metadata URL.
-        'entityID' => null,
+        // 'entityID' => null,
 
         // The entity ID of the IdP this SP should contact.
         // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
-        'idp' => null,
+        // 'idp' => null,
 
         // The URL to the discovery service.
         // Can be NULL/unset, in which case a builtin discovery service will be used.
-        'discoURL' => null,
+        // 'discoURL' => null,
 
         /*
          * The attributes parameter must contain an array of desired attributes by the SP.
@@ -48,8 +53,14 @@ $config = [
             'urn:oid:x.x.x.x',
         ],
         */
-    ],
+    // ],
 
+    'cornell' => [
+      'saml:SP',
+      'privatekey' => 'saml.pem',
+      'certificate' => 'saml.crt',
+      'idp' => $idp,
+    ],
 
     /*
     'example-sql' => [

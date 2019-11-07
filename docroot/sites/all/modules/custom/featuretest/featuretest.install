@@ -8,7 +8,7 @@ function featuretest_enable() {
   variable_set('site_name','ILR FeatureTest Site');
 
   // Hard-code all environments to the prod install directory
-  variable_set('simplesamlphp_auth_installdir', '/var/aegir/projects/ilr/prod/simplesamlphp-1.14.3');
+  variable_set('simplesamlphp_auth_installdir', '/var/aegir/projects/ilr/prod/simplesamlphp-1.17.7');
 
   // Disable any modules we don't want running
   module_disable(array(

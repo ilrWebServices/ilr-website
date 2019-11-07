@@ -27,7 +27,7 @@ $config = [
      * external url, no matter where you come from (direct access or via the
      * reverse proxy).
      */
-    'baseurlpath' => 'simplesaml/',
+    'baseurlpath' => 'https://' . $_SERVER['HTTP_HOST'] . '/simplesaml/',
 
     /*
      * The 'application' configuration array groups a set configuration options
@@ -73,7 +73,7 @@ $config = [
      * also as the technical contact in generated metadata.
      */
     'technicalcontact_name' => 'Administrator',
-    'technicalcontact_email' => 'na@example.org',
+    'technicalcontact_email' => 'ilrweb@cornell.edu',
 
     /*
      * The envelope from address for outgoing emails.
@@ -105,7 +105,7 @@ $config = [
      * A possible way to generate a random salt is by running the following command from a unix shell:
      * LC_CTYPE=C tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz' </dev/urandom | dd bs=32 count=1 2>/dev/null;echo
      */
-    'secretsalt' => 'defaultsecretsalt',
+    'secretsalt' => getenv('simplesamlphp_secretsalt'),
 
     /*
      * This password must be kept secret, and modified from the default value 123.
@@ -113,7 +113,7 @@ $config = [
      * metadata listing and diagnostics pages.
      * You can also put a hash here; run "bin/pwgen.php" to generate one.
      */
-    'auth.adminpassword' => '123',
+    'auth.adminpassword' => getenv('simplesamlphp_adminpassword'),
 
     /*
      * Set this options to true if you want to require administrator password to access the web interface
@@ -380,29 +380,29 @@ $config = [
      * Ensure that you have the required PDO database driver installed
      * for your connection string.
      */
-    'database.dsn' => 'mysql:host=localhost;dbname=saml',
+    // 'database.dsn' => 'mysql:host=localhost;dbname=saml',
 
     /*
      * SQL database credentials
      */
-    'database.username' => 'simplesamlphp',
-    'database.password' => 'secret',
-    'database.options' => [],
+    // 'database.username' => 'simplesamlphp',
+    // 'database.password' => 'secret',
+    // 'database.options' => [],
 
     /*
      * (Optional) Table prefix
      */
-    'database.prefix' => '',
+    // 'database.prefix' => '',
 
     /*
      * (Optional) Driver options
      */
-    'database.driver_options' => [],
+    // 'database.driver_options' => [],
 
     /*
      * True or false if you would like a persistent database connection
      */
-    'database.persistent' => false,
+    // 'database.persistent' => false,
 
     /*
      * Database slave configuration is optional as well. If you are only
@@ -1091,7 +1091,7 @@ $config = [
      *
      * The default datastore is 'phpsession'.
      */
-    'store.type'                    => 'phpsession',
+    'store.type' => 'sql',
 
     /*
      * The DSN the sql datastore should connect to.
@@ -1099,7 +1099,7 @@ $config = [
      * See http://www.php.net/manual/en/pdo.drivers.php for the various
      * syntaxes.
      */
-    'store.sql.dsn'                 => 'sqlite:/path/to/sqlitedatabase.sq3',
+    'store.sql.dsn' => 'sqlite:/tmp/simplesamlsessions.sqlite',
 
     /*
      * The username and password to use when connecting to the database.
