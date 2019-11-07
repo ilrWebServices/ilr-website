@@ -6,3 +6,50 @@
  */
 
 include_once 'ilr_accessibility.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function ilr_accessibility_menu() {
+  $items['download/%file'] = [
+    'page callback' => 'ilr_accessibility_download',
+    'page arguments' => [1],
+    'title callback' => 'ilr_accessibility_download_title',
+    'title arguments' => [1],
+    'access arguments' => ['access content'],
+  ];
+
+  return $items;
+}
+
+/**
+ * Page callback for `download/%file`.
+ */
+function ilr_accessibility_download($file) {
+  $output = '';
+  $url = file_create_url($file->uri);
+
+  // Set options as per anchor format described at
+  // http://microformats.org/wiki/file-format-examples
+  $options = array(
+    'attributes' => array(
+      'type' => $file->filemime . '; length=' . $file->filesize,
+      'class' => 'button button-info'
+    ),
+  );
+
+  $output .= '<div>' . t('If you have difficulty accessing the information contained in this document, please contact us at <a href="mailto:access-ilr@cornell.edu">access-ilr@cornell.edu</a> and we will assist you.') . '</div>';
+
+  $output .= '<p>' . l('Download', $url, $options) . '</p>';
+
+  return $output;
+}
+
+/**
+ * Title callback for `download/%file`.
+ */
+function ilr_accessibility_download_title($file) {
+  // Use the description as the link text if available.
+  return empty($file->description) ? $file->filename : $file->description;
+}
+
