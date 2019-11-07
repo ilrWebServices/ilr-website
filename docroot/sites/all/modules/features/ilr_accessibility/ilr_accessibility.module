@@ -103,9 +103,31 @@ function ilr_accessibility_preprocess_page(&$variables) {
 }
 
 /**
+ * Implements hook_boot().
+ */
+function ilr_accessibility_boot() {
+  // Test directly to see if we're on the alternate hostname. We don't run
+  // ilr_accessibility_is_pdf_hostname() here because the documentation says
+  // that modules aren't loaded when this function is called.
+  if ($GLOBALS['base_url'] === variable_get('ilr_accessibility_pdf_hostname', 'https://archive.ilr.cornell.edu')) {
+    // Redirect to the canonical hostname for all pages except the /download/*
+    // resource. Note that links to actual files should still work, since they
+    // are not processed by drupal unless they are using the private filesystem.
+    if (strpos($_SERVER['REQUEST_URI'], '/download/') !== 0) {
+      header('Location: ' . variable_get('ilr_accessibility_canonical_hostname', 'https://www.ilr.cornell.edu'), TRUE, 301);
+      exit();
+    }
+  }
+}
+
+/**
  * Helper function to determine if the current hostname is the alternate
  * download one.
  */
 function ilr_accessibility_is_pdf_hostname() {
   return $GLOBALS['base_url'] === variable_get('ilr_accessibility_pdf_hostname', 'https://archive.ilr.cornell.edu');
+}
+
+// basic_page_file_entity_download_link
+function ilr_accessibility_preprocess_basic_page_file_entity_download_link(&$variables) {
 }
