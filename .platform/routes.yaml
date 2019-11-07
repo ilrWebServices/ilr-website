@@ -19,7 +19,11 @@ https://www.{default}/:
       '^/library/kheel-center(.*)':
         to: 'https://catherwood.library.cornell.edu/kheel'
         regexp: true
-
+https://archive.{default}/:
+  type: upstream
+  upstream: app:http
+  cache:
+    enabled: false
 https://{default}/:
   type: redirect
   to: https://www.{default}/
