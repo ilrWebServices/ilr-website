@@ -92,6 +92,17 @@ function ilr_accessibility_page_alter(&$page) {
 }
 
 /**
+ * Implements template_preprocess_page().
+ */
+function ilr_accessibility_preprocess_page(&$variables) {
+  if (!ilr_accessibility_is_pdf_hostname()) {
+    return;
+  }
+
+  $variables['is_pdf_host'] = TRUE;
+}
+
+/**
  * Helper function to determine if the current hostname is the alternate
  * download one.
  */

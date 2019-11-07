@@ -1,6 +1,7 @@
 <header role="banner" <?php print render($page['nav_trigger_pts']); ?>>
   <a class="skip-link" href="#main" tabindex="1">Skip to content</a>
   <div id="search-form">
+    <?php if (empty($is_pdf_host)): ?>
     <form action="/search" method="get" id="cu-search-form" accept-charset="UTF-8">
       <label class="sr-only" for="search-form-query">Search</label>
       <input id="search-form-query" type="text" name="s" placeholder="Search" value="" size="20" maxlength="128" class="form-text" tabindex="-1" />
@@ -10,6 +11,7 @@
       <button type="button" class="closeSearch"><span class="sr-only">Close Search</span></button>
 
     </form>
+    <?php endif; ?>
   </div>
   <div id="header-region">
     <div class="container">
@@ -30,9 +32,11 @@
        <div class="jpanel-trigger-container">
         <a class="jpanel-trigger"></a>
       </div>
+      <?php if (empty($is_pdf_host)): ?>
       <div class="search-button">
         <button class="searchBtn fas fa-search"><span class="sr-only">Toggle Searchers</span></button>
       </div>
+      <?php endif; ?>
     </div>
   </div>
   </div>
@@ -51,7 +55,7 @@
         <?php if (!empty($section_title)): ?><h1 class="title tile--section"><?php print $section_title; ?></h1>
         <?php elseif ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
         <?php print render($title_suffix); ?>
-        <?php if ($breadcrumb): ?>
+        <?php if ($breadcrumb && empty($is_pdf_host)): ?>
         <nav id="breadcrumb" aria-label="breadcrumb"><?php print $breadcrumb; ?></nav>
         <?php endif; ?>
         <?php print $messages; ?>
