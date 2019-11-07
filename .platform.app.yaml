@@ -96,7 +96,7 @@ web:
             expires: 2w
 
     '/simplesaml':
-      root: 'simplesamlphp-1.14.3/www'
+      root: 'simplesamlphp-1.17.7/www'
       allow: true
       scripts: true
       index:
