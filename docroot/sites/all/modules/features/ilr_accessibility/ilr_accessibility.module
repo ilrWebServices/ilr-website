@@ -34,13 +34,13 @@ function ilr_accessibility_download($file) {
   $options = array(
     'attributes' => array(
       'type' => $file->filemime . '; length=' . $file->filesize,
-      'class' => 'button button-info'
+      'class' => 'link--button'
     ),
   );
 
-  $output .= '<div>' . t('If you have difficulty accessing the information contained in this document, please contact us at <a href="mailto:access-ilr@cornell.edu">access-ilr@cornell.edu</a> and we will assist you.') . '</div>';
+  $output .= '<div>' . l('Download', $url, $options) . '</div>';
 
-  $output .= '<p>' . l('Download', $url, $options) . '</p>';
+  $output .= '<div>' . t('If you have difficulty accessing the information contained in this document, please contact us at <a href="mailto:access-ilr@cornell.edu">access-ilr@cornell.edu</a> and we will assist you.') . '</div>';
 
   return $output;
 }
