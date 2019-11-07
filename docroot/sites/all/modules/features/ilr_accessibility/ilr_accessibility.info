@@ -15,6 +15,7 @@ features[field_base][] = field_check_for_accessibiltiy
 features[field_instance][] = file-document-field_accessible
 features[field_instance][] = file-document-field_check_for_accessibiltiy
 features[field_instance][] = file-image-field_accessibility_processed
+features[user_role][] = accessibility reviewer
 features[views_view][] = image_files_editable
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][options] = options
