@@ -74,3 +74,27 @@ function ilr_accessibility_field_access($op, $field, $entity_type, $entity = NUL
 
   return TRUE;
 }
+
+/**
+ * Implements hook_page_alter().
+ */
+function ilr_accessibility_page_alter(&$page) {
+  if (!ilr_accessibility_is_pdf_hostname()) {
+    return;
+  }
+
+  // Remove mega menu, footer menus, and secondary menu.
+  unset($page['header']['ilr_mega_menu_ilr_mega_menu']);
+  unset($page["sidebar_first"]["menu_block_ilr-subnav"]);
+  unset($page["footer"]["bean_footer-links"]);
+  unset($page["footer"]["bean_footer-links-2"]);
+  unset($page["footer"]["bean_footer-social"]);
+}
+
+/**
+ * Helper function to determine if the current hostname is the alternate
+ * download one.
+ */
+function ilr_accessibility_is_pdf_hostname() {
+  return $GLOBALS['base_url'] === variable_get('ilr_accessibility_pdf_hostname', 'https://archive.ilr.cornell.edu');
+}
