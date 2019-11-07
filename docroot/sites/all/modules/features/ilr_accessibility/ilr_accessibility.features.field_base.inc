@@ -61,13 +61,13 @@ function ilr_accessibility_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_check_for_accessibiltiy'.
-  $field_bases['field_check_for_accessibiltiy'] = array(
+  // Exported field_base: 'field_check_for_accessibility'.
+  $field_bases['field_check_for_accessibility'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_check_for_accessibiltiy',
+    'field_name' => 'field_check_for_accessibility',
     'indexes' => array(
       'value' => array(
         0 => 'value',

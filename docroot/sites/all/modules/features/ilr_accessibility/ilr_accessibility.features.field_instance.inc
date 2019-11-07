@@ -69,8 +69,8 @@ function ilr_accessibility_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-document-field_check_for_accessibiltiy'.
-  $field_instances['file-document-field_check_for_accessibiltiy'] = array(
+  // Exported field_instance: 'file-document-field_check_for_accessibility'.
+  $field_instances['file-document-field_check_for_accessibility'] = array(
     'bundle' => 'document',
     'default_value' => array(
       0 => array(
@@ -110,8 +110,8 @@ function ilr_accessibility_field_default_field_instances() {
     ),
     'entity_type' => 'file',
     'fences_wrapper' => 'div',
-    'field_name' => 'field_check_for_accessibiltiy',
-    'label' => 'Check for Accessibiltiy',
+    'field_name' => 'field_check_for_accessibility',
+    'label' => 'Check for Accessibility',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -186,7 +186,7 @@ function ilr_accessibility_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Accessibility Processed');
   t('Approved accessible');
-  t('Check for Accessibiltiy');
+  t('Check for Accessibility');
   t('This is a temporary field, used to mark the progress of reviewing these images for accessibility.');
 
   return $field_instances;
