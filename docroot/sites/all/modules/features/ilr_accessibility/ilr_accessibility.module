@@ -53,3 +53,24 @@ function ilr_accessibility_download_title($file) {
   return empty($file->description) ? $file->filename : $file->description;
 }
 
+/**
+ * Implements hook_permission().
+ */
+function ilr_accessibility_permission() {
+  return [
+    'edit field accessible' => [
+      'title' => t('Edit Accessilble Field'),
+    ],
+  ];
+}
+
+/**
+ * Implements hook_field_access().
+ */
+function ilr_accessibility_field_access($op, $field, $entity_type, $entity = NULL, $account = NULL) {
+  if ($field['field_name'] === 'field_accessible' && $op === 'edit') {
+    return user_access('edit field accessible', $account);
+  }
+
+  return TRUE;
+}
