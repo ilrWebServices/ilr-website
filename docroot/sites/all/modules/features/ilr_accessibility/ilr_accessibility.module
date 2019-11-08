@@ -50,7 +50,8 @@ function ilr_accessibility_download($file) {
  */
 function ilr_accessibility_download_title($file) {
   // Use the description as the link text if available.
-  return empty($file->description) ? $file->filename : $file->description;
+  // Strip trailing .pdf extension if it exists.
+  return empty($file->description) ? str_replace('.pdf' , '', $file->filename) : $file->description;
 }
 
 /**
