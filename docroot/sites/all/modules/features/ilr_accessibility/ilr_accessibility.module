@@ -18,6 +18,10 @@ function ilr_accessibility_menu() {
     'title arguments' => [1],
     'access arguments' => ['access content'],
   ];
+  $items['download-lookup'] = [
+    'page callback' => 'ilr_accessibility_download_lookup',
+    'access arguments' => ['access content'],
+  ];
 
   return $items;
 }
@@ -43,6 +47,43 @@ function ilr_accessibility_download($file) {
   $output .= '<div>' . t('If you have difficulty accessing the information contained in this document, please contact us at <a href="mailto:access-ilr@cornell.edu">access-ilr@cornell.edu</a> and we will assist you.') . '</div>';
 
   return $output;
+}
+
+/**
+ * Page callback for `download-lookup`.
+ */
+function ilr_accessibility_download_lookup() {
+  $query_params = drupal_get_query_parameters();
+
+  if (empty($query_params['path'])) {
+    return MENU_NOT_FOUND;
+  }
+
+  // Find the file entity for a given path.
+  $internal_path = preg_replace('|^sites/default/files|', 'public:/', $query_params['path']);
+
+  $files = file_load_multiple([], ['uri' => $internal_path]);
+  $file = reset($files);
+
+  if (!$file) {
+    return MENU_NOT_FOUND;
+  }
+
+  $file_entity = entity_metadata_wrapper('file', $file);
+
+  // If the file is not accessible, redirect to the interstitial page.
+  if ($file_entity->field_accessible->value() !== TRUE) {
+    $url = variable_get('ilr_accessibility_pdf_hostname', 'https://archive.ilr.cornell.edu') . '/download/' . $file->fid;
+    drupal_goto($url);
+  }
+
+  // If the file is marked as accessible, redirect directly to the file.
+  if ($file_entity->field_accessible->value() === TRUE) {
+    drupal_goto(file_create_url($file->uri));
+  }
+
+  // Return a 404 by default.
+  return MENU_NOT_FOUND;
 }
 
 /**
@@ -114,7 +155,7 @@ function ilr_accessibility_boot() {
     // Redirect to the canonical hostname for all pages except the /download/*
     // resource. Note that links to actual files should still work, since they
     // are not processed by drupal unless they are using the private filesystem.
-    if (strpos($_SERVER['REQUEST_URI'], '/download/') !== 0) {
+    if (strpos($_SERVER['REQUEST_URI'], '/download') !== 0) {
       header('Location: ' . variable_get('ilr_accessibility_canonical_hostname', 'https://www.ilr.cornell.edu'), TRUE, 301);
       exit();
     }

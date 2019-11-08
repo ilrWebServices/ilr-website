@@ -19,6 +19,9 @@ https://www.{default}/:
       '^/library/kheel-center(.*)':
         to: 'https://catherwood.library.cornell.edu/kheel'
         regexp: true
+      '^/(sites/default/files/.*\.pdf)$':
+        to: 'https://archive.{default}/download-lookup?path=$1'
+        regexp: true
 https://archive.{default}/:
   type: upstream
   upstream: app:http
