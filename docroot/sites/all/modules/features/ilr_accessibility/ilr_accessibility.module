@@ -6,3 +6,170 @@
  */
 
 include_once 'ilr_accessibility.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function ilr_accessibility_menu() {
+  $items['download/%file'] = [
+    'page callback' => 'ilr_accessibility_download',
+    'page arguments' => [1],
+    'title callback' => 'ilr_accessibility_download_title',
+    'title arguments' => [1],
+    'access arguments' => ['access content'],
+  ];
+  $items['download-lookup'] = [
+    'page callback' => 'ilr_accessibility_download_lookup',
+    'access arguments' => ['access content'],
+  ];
+
+  return $items;
+}
+
+/**
+ * Page callback for `download/%file`.
+ */
+function ilr_accessibility_download($file) {
+  $output = '';
+  $url = file_create_url($file->uri);
+
+  // Set options as per anchor format described at
+  // http://microformats.org/wiki/file-format-examples
+  $options = array(
+    'attributes' => array(
+      'type' => $file->filemime . '; length=' . $file->filesize,
+      'class' => 'link--button'
+    ),
+  );
+
+  $output .= '<div>' . l('Download the document', $url, $options) . '</div>';
+
+  $output .= '<div>' . t('If you have difficulty accessing the information contained in this document, please contact us at <a href="mailto:access-ilr@cornell.edu">access-ilr@cornell.edu</a> and we will assist you.') . '</div>';
+
+  return $output;
+}
+
+/**
+ * Page callback for `download-lookup`.
+ */
+function ilr_accessibility_download_lookup() {
+  $query_params = drupal_get_query_parameters();
+
+  if (empty($query_params['path'])) {
+    return MENU_NOT_FOUND;
+  }
+
+  // Find the file entity for a given path.
+  $internal_path = preg_replace('|^sites/default/files|', 'public:/', $query_params['path']);
+
+  $files = file_load_multiple([], ['uri' => $internal_path]);
+  $file = reset($files);
+
+  if (!$file) {
+    return MENU_NOT_FOUND;
+  }
+
+  $file_entity = entity_metadata_wrapper('file', $file);
+
+  // If the file is not accessible, redirect to the interstitial page.
+  if ($file_entity->field_accessible->value() !== TRUE) {
+    $url = variable_get('ilr_accessibility_pdf_hostname', 'https://archive.ilr.cornell.edu') . '/download/' . $file->fid;
+    drupal_goto($url);
+  }
+
+  // If the file is marked as accessible, redirect directly to the file.
+  if ($file_entity->field_accessible->value() === TRUE) {
+    drupal_goto(file_create_url($file->uri));
+  }
+
+  // Return a 404 by default.
+  return MENU_NOT_FOUND;
+}
+
+/**
+ * Title callback for `download/%file`.
+ */
+function ilr_accessibility_download_title($file) {
+  // Use the description as the link text if available.
+  // Strip trailing .pdf extension if it exists.
+  return empty($file->description) ? str_replace('.pdf' , '', $file->filename) : $file->description;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function ilr_accessibility_permission() {
+  return [
+    'edit field accessible' => [
+      'title' => t('Edit Accessilble Field'),
+    ],
+  ];
+}
+
+/**
+ * Implements hook_field_access().
+ */
+function ilr_accessibility_field_access($op, $field, $entity_type, $entity = NULL, $account = NULL) {
+  if ($field['field_name'] === 'field_accessible' && $op === 'edit') {
+    return user_access('edit field accessible', $account);
+  }
+
+  return TRUE;
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function ilr_accessibility_page_alter(&$page) {
+  if (!ilr_accessibility_is_pdf_hostname()) {
+    return;
+  }
+
+  // Remove mega menu, footer menus, and secondary menu.
+  unset($page['header']['ilr_mega_menu_ilr_mega_menu']);
+  unset($page["sidebar_first"]["menu_block_ilr-subnav"]);
+  unset($page["footer"]["bean_footer-links"]);
+  unset($page["footer"]["bean_footer-links-2"]);
+  unset($page["footer"]["bean_footer-social"]);
+}
+
+/**
+ * Implements template_preprocess_page().
+ */
+function ilr_accessibility_preprocess_page(&$variables) {
+  if (!ilr_accessibility_is_pdf_hostname()) {
+    return;
+  }
+
+  $variables['is_pdf_host'] = TRUE;
+}
+
+/**
+ * Implements hook_boot().
+ */
+function ilr_accessibility_boot() {
+  // Test directly to see if we're on the alternate hostname. We don't run
+  // ilr_accessibility_is_pdf_hostname() here because the documentation says
+  // that modules aren't loaded when this function is called.
+  if ($GLOBALS['base_url'] === variable_get('ilr_accessibility_pdf_hostname', 'https://archive.ilr.cornell.edu')) {
+    // Redirect to the canonical hostname for all pages except the /download/*
+    // resource. Note that links to actual files should still work, since they
+    // are not processed by drupal unless they are using the private filesystem.
+    if (strpos($_SERVER['REQUEST_URI'], '/download') !== 0) {
+      header('Location: ' . variable_get('ilr_accessibility_canonical_hostname', 'https://www.ilr.cornell.edu'), TRUE, 301);
+      exit();
+    }
+  }
+}
+
+/**
+ * Helper function to determine if the current hostname is the alternate
+ * download one.
+ */
+function ilr_accessibility_is_pdf_hostname() {
+  return $GLOBALS['base_url'] === variable_get('ilr_accessibility_pdf_hostname', 'https://archive.ilr.cornell.edu');
+}
+
+// basic_page_file_entity_download_link
+function ilr_accessibility_preprocess_basic_page_file_entity_download_link(&$variables) {
+}

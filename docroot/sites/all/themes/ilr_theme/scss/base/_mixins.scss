@@ -434,7 +434,7 @@ $frame-width: 20px;
 @mixin non-framed-button($width: 10px, $link-color: $black, $frame-color: $cornell-red, $background-color: transparent) {
   @include rhythm(1);
   cursor: pointer;
-  border: $width / 2  solid $frame-color;
+  border: $width / 2  solid $frame-color !important;
   text-align: center;
   color: $link-color;
   padding: $quarter-space $space;
@@ -450,7 +450,7 @@ $frame-width: 20px;
   @include large {
     padding: $half-space $space;
     // padding-top: calc(#{$width} + #{$half-space});
-    border: $width solid $frame-color;
+    border: $width solid $frame-color !important;
   }
 }
 

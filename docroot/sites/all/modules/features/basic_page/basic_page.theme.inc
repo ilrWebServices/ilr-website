@@ -16,6 +16,14 @@ function theme_basic_page_file_entity_download_link($variables) {
 
   $url = file_create_url($file->uri);
 
+  if (module_exists('ilr_accessibility') && $file->filemime === 'application/pdf') {
+    $file_entity = entity_metadata_wrapper('file', $file);
+
+    if ($file_entity->field_accessible->value() !== TRUE) {
+      $url = variable_get('ilr_accessibility_pdf_hostname', 'https://archive.ilr.cornell.edu') . '/download/' . $file->fid;
+    }
+  }
+
   // Set options as per anchor format described at
   // http://microformats.org/wiki/file-format-examples
   $options = array(
