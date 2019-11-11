@@ -12,6 +12,7 @@
  *
  * @ingroup themeable
  */
+  $content['field_image'][0]['#item']['alt'] = '';
 ?>
 <div class="cu-card__content">
   <p><?php print $description; ?></p>
