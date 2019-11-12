@@ -94,6 +94,9 @@ function tagged_content_block_preprocess_node(&$variables) {
     }
 
     if (isset($variables['field_image'])) {
+      if (empty($variables['content']['field_image'][0]['#path'])) {
+        $variables['content']['field_image'][0]['#path'] = ['options'];
+      }
       // Add url parameter
       $variables['content']['field_image'][0]['#path']['options']['query'] = ['link_type' => 'image'];
       // Hide the image from screen readers
