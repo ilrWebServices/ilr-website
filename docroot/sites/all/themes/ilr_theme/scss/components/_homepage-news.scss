@@ -35,7 +35,8 @@ body.front .homepage-news {
             font-weight: 300;
           }
         }
-        .news__content {
+        .news__content,
+        .promo__content {
           padding: 1rem 0;
           background: $white;
         }
