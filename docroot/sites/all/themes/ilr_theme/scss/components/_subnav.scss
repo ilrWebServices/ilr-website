@@ -38,6 +38,11 @@
 #jPanelMenu-menu {
   @include padding-leader(1);
   background: $cornell-red;
+
+  h2 a {
+    color: white;
+    margin-left: 2rem;
+  }
 }
 
 .sidebar #block-menu-block-ilr-subnav {
@@ -78,8 +83,6 @@
   }
 
   #jPanelMenu-menu & {
-    @include padding-leader(3);
-
     li {
       background: $cornell-red;
       padding-right: 1rem;
@@ -89,7 +92,7 @@
       color: white;
       display: block;
       padding-left: 2rem;
-      line-height: 1.1;
+      line-height: 1.5;
     }
 
     ul {
