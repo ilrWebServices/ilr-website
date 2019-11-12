@@ -43,6 +43,8 @@ table {
 
         &:hover, &:focus {
           border-bottom: 1px solid transparent;
+          color: $color-table-link-focus;
+
         }
       }
     }

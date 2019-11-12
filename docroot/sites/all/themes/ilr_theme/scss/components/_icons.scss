@@ -35,7 +35,7 @@ $icons: (
   youtube: "\f11c",
   warning: "\f11d",
   heart: "\f11e",
-  twoer-dark: "\f11f"
+  twoer-dark: "\f11f",
 );
 
 @each $name, $icon in $icons {

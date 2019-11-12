@@ -7,12 +7,24 @@
       // attribute, use that. Otherwise, use the closest video.
       let video_element = document.querySelector(event.target.dataset.cuVideoTarget) || event.target.closest('.cu-banner').querySelector('.cu-banner__media video');
       let overlay_content = event.target.closest('.cu-banner__content');
+      let control = event.target;
+      let play = document.querySelector('.play');
+      let pause = document.querySelector('.pause');
 
       if (video_element && video_element.paused) {
         video_element.play();
+        pause.classList.remove('hidden');
+        play.classList.add('hidden');
+
         overlay_content.style.display = 'none';
         video_element.controls = true;
       }
+      if (video_element && video_element.played) {
+        video_element.pause();
+        pause.classList.add('hidden');
+        play.classList.remove('hidden');
+      }
+
     }
   });
 
