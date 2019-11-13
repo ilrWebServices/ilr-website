@@ -59,8 +59,17 @@ function ilr_accessibility_download_lookup() {
     return MENU_NOT_FOUND;
   }
 
+  // Set a default for the number of matches in the string replacement below.
+  // There's no need to look up the internal file path if the incoming path
+  // doesn't start with `sites/(default|ilr\.cornell\.edu)/files`.
+  $match = 0;
+
   // Find the file entity for a given path.
-  $internal_path = preg_replace('|^sites/default/files|', 'public:/', $query_params['path']);
+  $internal_path = preg_replace('~^sites/(default|ilr\.cornell\.edu)/files~', 'public:/', $query_params['path'], -1, $match);
+
+  if (!$match) {
+    return MENU_NOT_FOUND;
+  }
 
   $files = file_load_multiple([], ['uri' => $internal_path]);
   $file = reset($files);
