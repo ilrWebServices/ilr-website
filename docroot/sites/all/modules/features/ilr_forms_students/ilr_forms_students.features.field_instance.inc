@@ -11163,12 +11163,9 @@ function ilr_forms_students_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'markup',
-        'settings' => array(
-          'field_formatter_label' => '',
-        ),
-        'type' => 'markup_default',
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 15,
       ),
     ),
@@ -11185,7 +11182,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'markup',
       'settings' => array(),
       'type' => 'markup',
-      'weight' => 8,
+      'weight' => 16,
     ),
   );
 
@@ -11291,7 +11288,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_file',
-    'label' => 'Please attach a copy of your transcript (complete through Fall 2018)',
+    'label' => 'Please attach a copy of your transcript (complete through Fall 2019)',
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
@@ -11328,7 +11325,7 @@ function ilr_forms_students_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -11407,7 +11404,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'markup',
       'settings' => array(),
       'type' => 'markup',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
@@ -11460,7 +11457,7 @@ function ilr_forms_students_field_default_field_instances() {
     'bundle' => 'high_road_fellowship_application',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'See the document at the top of this page for more information about organizations and projects.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -11475,7 +11472,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_request',
-    'label' => 'Which specific projects interest you most and why?  (We strive to match students with their specific requests.)',
+    'label' => 'Which specific organizations interest you most and why?  (We strive to match students with their specific requests.)',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -11493,7 +11490,7 @@ function ilr_forms_students_field_default_field_instances() {
         'rows' => 10,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -11517,7 +11514,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_upload_your_resume_or_cv',
-    'label' => 'Please attach a resume (complete through Fall 2018)',
+    'label' => 'Please attach a resume (complete through Fall 2019)',
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
@@ -11554,7 +11551,7 @@ function ilr_forms_students_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -11667,7 +11664,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 13,
+      'weight' => 12,
     ),
   );
 
@@ -11702,7 +11699,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 14,
+      'weight' => 13,
     ),
   );
 
@@ -11737,7 +11734,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 15,
+      'weight' => 14,
     ),
   );
 
@@ -16414,7 +16411,9 @@ function ilr_forms_students_field_default_field_instances() {
   t('Phone (supervisor)');
   t('Phone (with area code)');
   t('Please attach a copy of your transcript (complete through Fall 2018)');
+  t('Please attach a copy of your transcript (complete through Fall 2019)');
   t('Please attach a resume (complete through Fall 2018)');
+  t('Please attach a resume (complete through Fall 2019)');
   t('Please be specific');
   t('Please enter the name of the school you will attend for your first year. If you have not yet selected a school, please enter “Undecided” and email ilradmissions@cornell.edu once you have finalized your decision.');
   t('Please enter the phone number where you can be reached throughout the next academic year.');
@@ -16439,6 +16438,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('School or college');
   t('School year');
   t('School you will attend for your first year');
+  t('See the document at the top of this page for more information about organizations and projects.');
   t('Select the date you will attend');
   t('Semester');
   t('Semester for which assistance is requested (fall/spring/summer yyyy)');
@@ -16477,7 +16477,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('When did you receive (or when do you expect to receive) your Bachelor\'s degree?');
   t('Which breakout session will you attend?');
   t('Which projects interest you most and why? (We strive to match students with their specific requests.)');
-  t('Which specific projects interest you most and why?  (We strive to match students with their specific requests.)');
+  t('Which specific organizations interest you most and why?  (We strive to match students with their specific requests.)');
   t('Will the student(s) work on site or remotely?');
   t('Will you attend the keynote address?');
   t('Will you attend the reception?');
