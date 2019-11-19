@@ -50,12 +50,13 @@ if (!$on_platformsh) {
   ];
 }
 
+// Set the base url of the forwarded host if behind a proxy.
+if (!empty($_SERVER['HTTP_X_FORWARDED_HOST'] && !empty($_SERVER['HTTP_X_FORWARDED_PROTO']))) {
+  $base_url = $_SERVER['HTTP_X_FORWARDED_PROTO'] . '://' . $_SERVER['HTTP_X_FORWARDED_HOST'];
+}
+
 // Include automatic Platform.sh settings.
 if ($on_platformsh) {
-  if ($_ENV['PLATFORM_BRANCH'] == 'master') {
-    $base_url = 'https://www.ilr.cornell.edu';
-  }
-
   require_once(__DIR__ . '/settings.platformsh.php');
 }
 
