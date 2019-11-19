@@ -4,9 +4,10 @@
  *
  */
 
-$baseurl_path = (isset($_ENV["PLATFORM_BRANCH"]) && $_ENV['PLATFORM_BRANCH'] == 'master')
-    ? 'https://www.ilr.cornell.edu/simplesaml/'
-    : 'https://' . $_SERVER['HTTP_HOST'] . '/simplesaml/';
+$baseurl = (isset($_ENV["PLATFORM_BRANCH"]) && $_ENV['PLATFORM_BRANCH'] == 'master')
+    ? 'https://www.ilr.cornell.edu'
+    : 'https://' . $_SERVER['HTTP_HOST'];
+
 
 $config = [
 
@@ -31,13 +32,13 @@ $config = [
      * external url, no matter where you come from (direct access or via the
      * reverse proxy).
      */
-    'baseurlpath' => $baseurl_path,
+    'baseurlpath' => $baseurl . '/simplesaml/',
 
     /*
      * The 'application' configuration array groups a set configuration options
      * relative to an application protected by SimpleSAMLphp.
      */
-    //'application' => [
+    'application' => [
         /*
          * The 'baseURL' configuration option allows you to specify a protocol,
          * host and optionally a port that serves as the canonical base for all
@@ -52,8 +53,8 @@ $config = [
          * need to compute the right URLs yourself and pass them dynamically
          * to SimpleSAMLphp's API.
          */
-        //'baseURL' => 'https://example.com',
-    //],
+        'baseURL' => $baseurl,
+    ],
 
     /*
      * The following settings are *filesystem paths* which define where
