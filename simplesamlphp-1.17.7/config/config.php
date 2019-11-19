@@ -4,6 +4,10 @@
  *
  */
 
+$baseurl_path = (isset($_ENV["PLATFORM_BRANCH"]) && $_ENV['PLATFORM_BRANCH'] == 'master')
+    ? 'https://www.ilr.cornell.edu/simplesaml/'
+    : 'https://' . $_SERVER['HTTP_HOST'] . '/simplesaml/';
+
 $config = [
 
     /*******************************
@@ -27,7 +31,7 @@ $config = [
      * external url, no matter where you come from (direct access or via the
      * reverse proxy).
      */
-    'baseurlpath' => 'https://' . $_SERVER['HTTP_HOST'] . '/simplesaml/',
+    'baseurlpath' => $baseurl_path,
 
     /*
      * The 'application' configuration array groups a set configuration options
