@@ -52,6 +52,10 @@ if (!$on_platformsh) {
 
 // Include automatic Platform.sh settings.
 if ($on_platformsh) {
+  if ($_ENV['PLATFORM_BRANCH'] == 'master') {
+    $base_url = 'https://www.ilr.cornell.edu';
+  }
+
   require_once(__DIR__ . '/settings.platformsh.php');
 }
 
