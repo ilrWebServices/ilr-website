@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * people_profiles.field_group.inc
@@ -294,7 +295,7 @@ function people_profiles_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_email',
       1 => 'field_phone',
@@ -348,6 +349,37 @@ function people_profiles_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_teaser_link|node|people_profile|teaser';
+  $field_group->group_name = 'group_teaser_link';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'people_profile';
+  $field_group->mode = 'teaser';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Teaser link',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_first_name',
+      1 => 'field_last_name',
+    ),
+    'format_type' => 'link',
+    'format_settings' => array(
+      'label' => 'Teaser link',
+      'instance_settings' => array(
+        'link_to' => 'entity',
+        'custom_url' => '',
+        'custom_url_normalize' => 0,
+        'target' => 'default',
+        'classes' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_teaser_link|node|people_profile|teaser'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_title_and_focus|node|people_profile|default';
   $field_group->group_name = 'group_title_and_focus';
   $field_group->entity_type = 'node';
@@ -387,6 +419,7 @@ function people_profiles_field_group_info() {
   t('People Profile Tabs');
   t('Related Resources');
   t('Sidebar');
+  t('Teaser link');
   t('Title and Focus');
 
   return $field_groups;

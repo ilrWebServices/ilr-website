@@ -15,6 +15,7 @@ body.page-taxonomy-term .view-areas-expertise-taxonomy-term {
   article {
     @include thumb;
 
+    position: relative;
     grid-template-rows: repeat(3, auto);
     grid-gap: 5%;
 
@@ -48,6 +49,23 @@ body.page-taxonomy-term .view-areas-expertise-taxonomy-term {
         grid-column: 1;
         grid-row: 1 / -1;
       }
+    }
+
+    .group-teaser-link {
+      cursor: pointer;
+      text-decoration: none;
+      position: absolute;
+      z-index: 4;
+      opacity: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+      text-indent: 200%;
+      white-space: nowrap;
+      background: transparent;
+      pointer-events: all;
     }
   }
 }
