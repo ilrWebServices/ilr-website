@@ -805,6 +805,7 @@
       @include set-link($white, true);
       @include small-text;
 
+      text-decoration: none;
       font-weight: bold;
     }
   }
