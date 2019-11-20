@@ -221,21 +221,19 @@ dl dd {
 // ==================================================
 a, a:visited {
   color: $link;
-  text-decoration: none;
+  // border-bottom: 1px dotted;
   outline: 0;
 }
 
 a:hover, a:focus {
   color: $link-hover;
   text-decoration: none;
-  border-bottom: none;
 }
 
 // Underlines? @todo - figure out what to do here
 p a, p a:visited,
 li a {
   @include set-link($cornell-red);
-  border-bottom: 1px dotted;
 
   // &[href^="mailto:"] {
   //   border: none;

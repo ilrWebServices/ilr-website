@@ -45,6 +45,7 @@
 
 
         > a, > a:visited {
+          text-decoration: none;
           flex-grow: 1;
           display: flex;
           color: #222;
@@ -163,6 +164,7 @@
             font-weight: 400;
             color: $black;
             border-bottom: none;
+            text-decoration: none;
 
             @include adjust-font-size-to(17px);
           }

@@ -283,7 +283,7 @@
   }
 
   .news__more-link {
-    a {
+    span, a {
       color: $black;
       padding-bottom: 4px;
       border-bottom: 3px solid $cornell-red;
@@ -1059,6 +1059,7 @@
     a {
       color: white;
       border-bottom: 3px solid white;
+      text-decoration: none;
     }
   }
 

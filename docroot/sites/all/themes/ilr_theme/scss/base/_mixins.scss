@@ -438,6 +438,7 @@ $frame-width: 20px;
   text-align: center;
   color: $link-color;
   padding: $quarter-space $space;
+  text-decoration: none;
   // padding-top: calc(#{$width} + #{$quarter-space});
   display: inline-block;
   font-weight: 600;
