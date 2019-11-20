@@ -6,19 +6,22 @@
  */
 
 /**
- * Alter mergevars before they are sent to MailChimp.
+ * Alter mergevars before they are sent to Mailchimp.
  *
  * @param array $mergevars
+ *   Array of Mailchimp mergevars.
  * @param object $entity
+ *   The entity used as a source for mergevar values.
  * @param string $entity_type
- *
- * @return NULL
+ *   The type of entity used as a source for mergevar values.
+ * @param string $list_id
+ *   The ID of the Mailchimp list containing the mergevars.
  */
-function hook_mailchimp_lists_mergevars_alter(&$mergevars, $entity, $entity_type) {
+function hook_mailchimp_lists_mergevars_alter(&$mergevars, $entity, $entity_type, $list_id) {
 }
 
 /**
- * Perform an action during the firing of a MailChimp webhook.
+ * Perform an action during the firing of a Mailchimp webhook.
  *
  * Refer to http://apidocs.mailchimp.com/webhooks for more details.
  *
@@ -35,7 +38,7 @@ function hook_mailchimp_process_webhook($type, $data) {
  * Perform an action after a subscriber has been subscribed.
  *
  * @string $list_id
- *   MailChimp list id.
+ *   Mailchimp list id.
  * @string $email
  *   Subscriber email address.
  * @array $merge_vars
@@ -49,7 +52,7 @@ function hook_mailchimp_subscribe_user($list_id, $email, $merge_vars) {
  * Perform an action after a subscriber has been unsubscribed.
  *
  * @string $list_id
- *   MailChimp list id.
+ *   Mailchimp list id.
  * @string $email
  *   Subscriber email address.
  */
@@ -61,9 +64,9 @@ function hook_mailchimp_unsubscribe_user($list_id, $email) {
  * Alter the key for a given api request.
  *
  * @string &$api_key
- *   The MailChimp API key.
+ *   The Mailchimp API key.
  * @array $context
- *   The MailChimp API classname of the API object.
+ *   The Mailchimp API classname of the API object.
  */
 function hook_mailchimp_api_key_alter(&$api_key, $context) {
 
@@ -85,7 +88,7 @@ function hook_mailchimp_automations_entity_options(&$entity_type_options, $autom
  * Alter mergevars before a workflow automation is triggered.
  *
  * @param array $merge_vars
- *   The merge vars that will be passed to MailChimp.
+ *   The merge vars that will be passed to Mailchimp.
  * @param object $automation_entity
  *   The MailchimpAutomationEntity object.
  * @param object $wrapped_entity
@@ -96,7 +99,7 @@ function hook_mailchimp_automations_mergevars_alter(&$merge_vars, $automation_en
 }
 
 /**
- * Perform an action after a successful MailChimp workflow automation.
+ * Perform an action after a successful Mailchimp workflow automation.
  *
  * @param object $automation_entity
  *   The MailchimpAutomationEntity object.

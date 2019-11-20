@@ -1,6 +1,6 @@
-name = MailChimp Signup
-description = Manage MailChimp signup blocks and pages.
-package = MailChimp
+name = Mailchimp Signup
+description = Manage Mailchimp signup blocks and pages.
+package = Mailchimp
 core = 7.x
 dependencies[] = mailchimp
 dependencies[] = entity
@@ -10,9 +10,8 @@ configure = admin/config/services/mailchimp/signup
 files[] = includes/mailchimp_signup.entity.inc
 files[] = includes/mailchimp_signup.ui_controller.inc
 
-; Information added by Drupal.org packaging script on 2016-10-31
-version = "7.x-4.6+6-dev"
+; Information added by Drupal.org packaging script on 2019-09-25
+version = "7.x-4.12"
 core = "7.x"
 project = "mailchimp"
-datestamp = "1477904354"
-
+datestamp = "1569440301"
