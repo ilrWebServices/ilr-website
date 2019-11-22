@@ -28,10 +28,10 @@ function ilr_certificate_programs_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        '~professional-programs/certificate-programs/advanced-certificate-labor-studies' => '~professional-programs/certificate-programs/advanced-certificate-labor-studies',
-        '~professional-programs/certificate-programs/leadership-development' => '~professional-programs/certificate-programs/leadership-development',
-        '~professional-programs/certificate-programs/hr-business-partnering' => '~professional-programs/certificate-programs/hr-business-partnering',
-        '~professional-programs/certificate-programs/human-resource-essentials' => '~professional-programs/certificate-programs/human-resource-essentials',
+        '~programs/professional-programs/certificate-programs/advanced-certificate-labor-studies' => '~programs/professional-programs/certificate-programs/advanced-certificate-labor-studies',
+        '~programs/professional-programs/certificate-programs/leadership-development' => '~programs/professional-programs/certificate-programs/leadership-development',
+        '~programs/professional-programs/certificate-programs/hr-business-partnering' => '~programs/professional-programs/certificate-programs/hr-business-partnering',
+        '~programs/professional-programs/certificate-programs/human-resource-essentials' => '~programs/professional-programs/certificate-programs/human-resource-essentials',
       ),
     ),
   );
@@ -71,7 +71,7 @@ function ilr_certificate_programs_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'professional-programs/certificate-programs/human-resource-essentials' => 'professional-programs/certificate-programs/human-resource-essentials',
+        'programs/professional-programs/certificate-programs/human-resource-essentials' => 'programs/professional-programs/certificate-programs/human-resource-essentials',
       ),
     ),
   );
@@ -111,7 +111,7 @@ function ilr_certificate_programs_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'professional-programs/certificate-programs/advanced-certificate-labor-studies' => 'professional-programs/certificate-programs/advanced-certificate-labor-studies',
+        'programs/professional-programs/certificate-programs/advanced-certificate-labor-studies' => 'programs/professional-programs/certificate-programs/advanced-certificate-labor-studies',
       ),
     ),
   );
@@ -151,7 +151,7 @@ function ilr_certificate_programs_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'professional-programs/certificate-programs/leadership-development' => 'professional-programs/certificate-programs/leadership-development',
+        'programs/professional-programs/certificate-programs/leadership-development' => 'programs/professional-programs/certificate-programs/leadership-development',
       ),
     ),
   );
@@ -191,7 +191,7 @@ function ilr_certificate_programs_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'professional-programs/certificate-programs/hr-business-partnering' => 'professional-programs/certificate-programs/hr-business-partnering',
+        'programs/professional-programs/certificate-programs/hr-business-partnering' => 'programs/professional-programs/certificate-programs/hr-business-partnering',
       ),
     ),
   );
