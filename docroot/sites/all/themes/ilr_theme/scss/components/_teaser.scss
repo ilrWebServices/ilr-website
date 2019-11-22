@@ -1,0 +1,7 @@
+.article--teaser {
+  position: relative;
+
+  .teaser__link {
+    @include cover-link;
+  }
+}

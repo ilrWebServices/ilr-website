@@ -144,6 +144,8 @@ function ilr_theme_preprocess_node(&$variables) {
     // See note above about hard-coded eq-pts
     $variables['attributes_array']['data-eq-pts'] = 'small: 100, medium: 275, large: 350';
   }
+
+  $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
 }
 
 /**
