@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * news.views_default.inc

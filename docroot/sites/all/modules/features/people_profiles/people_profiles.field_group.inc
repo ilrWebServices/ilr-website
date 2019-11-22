@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * people_profiles.field_group.inc
