@@ -12,18 +12,18 @@
  * @ingroup themeable
  */
 ?>
-<a href="<?php print $node_url; ?>">
-  <article role="article" id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> certificate-program"<?php print $attributes; ?>>
-    <div class="certificate-program__image">
-      <?php print render($content['field_image']); ?>
-    </div>
-    <div class="certificate-program__content">
-      <h2<?php print $title_attributes; ?>>
-        <?php print $title; ?>
-      </h2>
-      <?php
-        print render($content);
-      ?>
-    </div>
-  </article>
-</a>
+<article role="article" id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> certificate-program"<?php print $attributes; ?>>
+  <div class="certificate-program__image">
+    <?php print render($content['field_image']); ?>
+  </div>
+  <div class="certificate-program__content">
+    <h2<?php print $title_attributes; ?>>
+      <?php print $title; ?>
+    </h2>
+    <?php
+      print render($content);
+    ?>
+  </div>
+  <a class="article__link" href="<?php print $node_url; ?>">Read more about <?php print $title; ?></a>
+</article>
+

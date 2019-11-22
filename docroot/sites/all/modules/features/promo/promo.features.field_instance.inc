@@ -94,7 +94,7 @@ function promo_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'field_formatter_label' => '',
-          'image_link' => 'content',
+          'image_link' => '',
           'image_style' => 'focussed_thumbnail',
         ),
         'type' => 'image',

@@ -21,8 +21,6 @@
   </div>
 </div>
 <div class="cu-card__media">
-  <a class="cu-card__media-link" href="<?php print $instagram_url; ?>">
-    <?php print render($content['field_image']); ?>
-  </a>
+  <?php print render($content['field_image']); ?>
 </div>
 <?php print render($title_suffix); ?>
