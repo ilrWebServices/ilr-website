@@ -230,13 +230,6 @@ function _tagged_content_block_is_event($url) {
 function _tagged_content_block_update_promo_links(&$variables) {
   $url = _tagged_content_block_get_promo_link_from_node($variables['node']);
   $variables['node_url'] = $url;
-  if (isset($variables['content']['field_image']) && count($variables['content']['field_image'])) {
-    $variables['content']['field_image'][0]['#path']['path'] = ltrim($url, '/');
-    // Append the query parameter
-    $variables['content']['field_image'][0]['#path']['options']['query'] = ['link_type' => 'image'];
-    // Hide the image from screen readers
-    $variables['content']['field_image'][0]['#path']['options']['attributes'] = ['aria-hidden' => 'true'];
-  }
 }
 
 function _tagged_content_get_wrapper($node) {
