@@ -1,7 +1,8 @@
+.node-teaser,
 .article--teaser {
   position: relative;
 
-  .teaser__link {
+  .article__link {
     @include cover-link;
   }
 }
