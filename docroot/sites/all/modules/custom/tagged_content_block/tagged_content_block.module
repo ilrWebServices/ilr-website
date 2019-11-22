@@ -278,7 +278,7 @@ function _tagged_content_add_markup_to_group(&$element, $wrapper, $name, $count)
     case 'more_link':
       $title = $wrapper->label();
       $node_title_stripped = strip_tags($title);
-      $link = '<a href="'.$url.'?link_type=read-more" aria-hidden="true" rel="tag" title="'.$title.'">Read more<span class="element-invisible"> about '. $title .'</span></a>';
+      $link = '<span aria-hidden="true" rel="tag" title="'.$title.'">Read more<span class="element-invisible"> about '. $title .'</span></span>';
       $markup = ilr_get_bem_markup($link, 'news', 'more-link');
       break;
     default:
