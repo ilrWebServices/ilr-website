@@ -10,6 +10,7 @@
   <?php
     print render($content);
   ?>
-
-  <a class="article__link" href="<?php print $node_url; ?>">Read more about <?php print $title; ?></a>
+  <?php if (empty($remove_title_link)): ?>
+    <a class="article__link" href="<?php print $node_url; ?>">Read more about <?php print $title; ?></a>
+  <?php endif; ?>
 </article>
