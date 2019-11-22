@@ -20,11 +20,6 @@ table.views-table {
 
       a {
           color: $cornell-red;
-          border-bottom: 1px dotted;
-
-          &:hover, &:focus {
-            border-bottom: 1px solid transparent;
-          }
         }
     }
     &.odd td {
@@ -39,10 +34,8 @@ table {
     td {
       a {
         color: $cornell-red;
-        border-bottom: 1px dotted;
 
         &:hover, &:focus {
-          border-bottom: 1px solid transparent;
           color: $color-table-link-focus;
         }
       }

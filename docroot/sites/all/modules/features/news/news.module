@@ -44,7 +44,7 @@ function news_preprocess_node(&$variables) {
       if (count($variables['field_website_url'])) {
         $external_url = $variables['field_website_url'][LANGUAGE_NONE][0]['url'];
         $variables['node_url'] = $external_url;
-        if (count($variables['field_image'])) {
+        if (count($variables['field_image']) && !empty($variables['content']['field_image'][0]['#path'])) {
           $variables['content']['field_image'][0]['#path']['path'] = $external_url;
         }
       }

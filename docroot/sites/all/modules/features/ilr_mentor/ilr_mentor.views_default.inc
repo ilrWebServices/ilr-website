@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ilr_mentor.views_default.inc
@@ -57,7 +58,7 @@ function ilr_mentor_views_default_views() {
     'mentor' => 'mentor',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Are you a transfer student (field_transfer_student) */
+  /* Filter criterion: Field: Transfer student (field_transfer_student) */
   $handler->display->display_options['filters']['field_transfer_student_value']['id'] = 'field_transfer_student_value';
   $handler->display->display_options['filters']['field_transfer_student_value']['table'] = 'field_data_field_transfer_student';
   $handler->display->display_options['filters']['field_transfer_student_value']['field'] = 'field_transfer_student_value';

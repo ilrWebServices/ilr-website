@@ -124,10 +124,13 @@ function people_profiles_preprocess_node(&$variables) {
       }
     }
     elseif ($variables['view_mode'] == 'teaser') {
-      // We remove the title link on all teasers.
-      // It will be added by the teaser_link group for faculty.
-      $variables['remove_title_link'] = TRUE;
-
+      if ($variables['field_display_in_faculty_lists'][LANGUAGE_NONE][0]['value'] != 1) {
+        // Remove the links to the node
+        $variables['remove_title_link'] = TRUE;
+        if (count($variables['field_profile_image'])) {
+          unset($variables['content']['field_profile_image'][0]['#path']);
+        }
+      }
       if (count($variables['field_working_title'])) {
         $variables['content']['field_working_title'][0]['#markup'] = _people_profiles_get_primary_title($variables['content']['field_working_title'][0]['#markup']);
       }
@@ -215,29 +218,23 @@ function people_profiles_form_alter(&$form, &$form_state, $form_id) {
 
 function people_profiles_field_group_build_pre_render_alter(&$element, $group, &$form) {
   if (isset($element['#bundle'])
-    && $element['#bundle'] == 'people_profile') {
-    $wrapper = entity_metadata_wrapper('node', $element['#node']);
+    && $element['#bundle'] == 'people_profile'
+    && $element['#view_mode'] == 'full') {
+    $wrapper = _people_profiles_node_wrapper($element['#node']);
     $type = $wrapper->field_profile_type->value();
 
-    if ($element['#view_mode'] == 'full') {
-      // Handle issues with use of the local address field
-      _people_profiles_process_address($element);
+    // Handle issues with use of the local address field
+    _people_profiles_process_address($element);
 
-      if ($type == 'faculty') {
-        _people_profiles_process_faculty_view($element);
-      } // Handle non-faculty oddities, such as missing image or content
-      else {
-        if (_prople_profiles_content_area_is_empty($element['group_main_content'])) {
-          _people_profiles_move_sidebar_content($element);
-        }
-        if (!$element['group_profile_highlighted']['field_profile_image']) {
-          _people_profiles_handle_missing_image($element);
-        }
-      }
-    } // Teaser
+    if ($type == 'faculty') {
+      _people_profiles_process_faculty_view($element);
+    } // Handle non-faculty oddities, such as missing image or content
     else {
-      if ($type !== 'faculty') {
-        unset($element['group_teaser_link']);
+      if (_prople_profiles_content_area_is_empty($element['group_main_content'])) {
+        _people_profiles_move_sidebar_content($element);
+      }
+      if (!$element['group_profile_highlighted']['field_profile_image']) {
+        _people_profiles_handle_missing_image($element);
       }
     }
   }

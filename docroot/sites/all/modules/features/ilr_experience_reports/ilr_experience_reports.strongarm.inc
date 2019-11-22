@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ilr_experience_reports.strongarm.inc
@@ -41,7 +42,7 @@ function ilr_experience_reports_strongarm() {
         'custom_settings' => FALSE,
       ),
       'ilr_theme__highlighted' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'bartik__header' => array(
         'custom_settings' => FALSE,
@@ -101,12 +102,6 @@ function ilr_experience_reports_strongarm() {
         'custom_settings' => FALSE,
       ),
       'alternate_teaser' => array(
-        'custom_settings' => FALSE,
-      ),
-      'ilr_theme__highlighted' => array(
-        'custom_settings' => FALSE,
-      ),
-      'ilr_theme__sidebar_second' => array(
         'custom_settings' => FALSE,
       ),
     ),

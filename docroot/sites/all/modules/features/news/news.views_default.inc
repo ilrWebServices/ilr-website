@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * news.views_default.inc
@@ -136,7 +137,6 @@ function news_views_default_views() {
   $handler->display->display_options['filters']['field_published_date_value']['value']['max'] = '2015';
   $handler->display->display_options['filters']['field_published_date_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_published_date_value']['expose']['operator_id'] = 'field_published_date_value_op';
-  $handler->display->display_options['filters']['field_published_date_value']['expose']['label'] = 'Year';
   $handler->display->display_options['filters']['field_published_date_value']['expose']['operator'] = 'field_published_date_value_op';
   $handler->display->display_options['filters']['field_published_date_value']['expose']['identifier'] = 'field_published_date_value';
   $handler->display->display_options['filters']['field_published_date_value']['expose']['remember_roles'] = array(
@@ -147,10 +147,12 @@ function news_views_default_views() {
     41 => 0,
     51 => 0,
     46 => 0,
-    36 => 0,
     21 => 0,
     26 => 0,
     31 => 0,
+    56 => 0,
+    61 => 0,
+    62 => 0,
   );
   $handler->display->display_options['filters']['field_published_date_value']['granularity'] = 'year';
   $handler->display->display_options['filters']['field_published_date_value']['year_range'] = '-8:+0';

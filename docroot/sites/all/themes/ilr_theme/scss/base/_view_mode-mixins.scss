@@ -159,21 +159,16 @@
     order: 1;
     margin: 0;
 
-    a { // Deal with the aspect ratio used elsewhere
-      padding: 0 !important;
-      line-height: .5;
-
-      img {
-        position: relative !important;
-        left: 0;
-        top: 0;
-        height: auto;
-        width: auto;
-        max-width: 100%;
-        -webkit-transform: none;
-            -ms-transform: none;
-                transform: none;
-      }
+    img {
+      position: relative !important;
+      left: 0;
+      top: 0;
+      height: auto;
+      width: auto;
+      max-width: 100%;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
     }
 
     &::before {
@@ -662,28 +657,22 @@
 
 @mixin square-to-3x4 {
   @include image-ratio-hack(75%);
-  a {
-    img {
-      top: -12.5%; // Square images need a negative margin for vertical positioning
-    }
+  img {
+    top: -12.5%; // Square images need a negative margin for vertical positioning
   }
 }
 
 @mixin square-to-4x6 {
   @include image-ratio-hack;
-  a {
-    img {
-      top: -16.5%;
-    }
+  img {
+    top: -16.5%;
   }
 }
 
 @mixin square-to-1x2 {
   @include image-ratio-hack(50%);
-  a {
-    img {
-      top: -25%;
-    }
+  img {
+    top: -25%;
   }
 }
 
@@ -1053,6 +1042,9 @@
   }
 
   .news__more-link {
+    color: white;
+    border-bottom: 3px solid white;
+
     @include medium {
       grid-column: 3;
       grid-row: 3;

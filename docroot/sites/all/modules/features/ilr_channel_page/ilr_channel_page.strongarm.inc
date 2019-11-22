@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ilr_channel_page.strongarm.inc
@@ -77,6 +78,7 @@ function ilr_channel_page_strongarm() {
   $strongarm->name = 'node_options_channel_page';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'revision',
   );
   $export['node_options_channel_page'] = $strongarm;
 

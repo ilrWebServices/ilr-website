@@ -230,13 +230,6 @@ function _tagged_content_block_is_event($url) {
 function _tagged_content_block_update_promo_links(&$variables) {
   $url = _tagged_content_block_get_promo_link_from_node($variables['node']);
   $variables['node_url'] = $url;
-  if (isset($variables['content']['field_image']) && count($variables['content']['field_image'])) {
-    $variables['content']['field_image'][0]['#path']['path'] = ltrim($url, '/');
-    // Append the query parameter
-    $variables['content']['field_image'][0]['#path']['options']['query'] = ['link_type' => 'image'];
-    // Hide the image from screen readers
-    $variables['content']['field_image'][0]['#path']['options']['attributes'] = ['aria-hidden' => 'true'];
-  }
 }
 
 function _tagged_content_get_wrapper($node) {
@@ -285,7 +278,7 @@ function _tagged_content_add_markup_to_group(&$element, $wrapper, $name, $count)
     case 'more_link':
       $title = $wrapper->label();
       $node_title_stripped = strip_tags($title);
-      $link = '<a href="'.$url.'?link_type=read-more" aria-hidden="true" rel="tag" title="'.$title.'">Read more<span class="element-invisible"> about '. $title .'</span></a>';
+      $link = '<span aria-hidden="true" rel="tag" title="'.$title.'">Read more<span class="element-invisible"> about '. $title .'</span></span>';
       $markup = ilr_get_bem_markup($link, 'news', 'more-link');
       break;
     default:

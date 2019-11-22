@@ -401,7 +401,7 @@ function ilr_visiting_fellows_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'field_formatter_label' => '',
-          'image_link' => 'content',
+          'image_link' => '',
           'image_style' => 'main_portrait_image',
         ),
         'type' => 'image',

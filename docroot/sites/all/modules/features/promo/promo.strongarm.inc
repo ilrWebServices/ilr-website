@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * promo.strongarm.inc
