@@ -19,8 +19,13 @@ function basic_page_filter_default_formats() {
     'status' => 1,
     'weight' => 0,
     'filters' => array(
-      'insert_block' => array(
+      'ckeditor_link_filter' => array(
         'weight' => 0,
+        'status' => 1,
+        'settings' => array(),
+      ),
+      'insert_block' => array(
+        'weight' => 2,
         'status' => 1,
         'settings' => array(
           'check_roles' => 0,
