@@ -28,6 +28,11 @@ function ilr_settings_filter_default_formats() {
           'filter_html_nofollow' => 1,
         ),
       ),
+      'ckeditor_link_filter' => array(
+        'weight' => 0,
+        'status' => 1,
+        'settings' => array(),
+      ),
       'filter_autop' => array(
         'weight' => 0,
         'status' => 1,

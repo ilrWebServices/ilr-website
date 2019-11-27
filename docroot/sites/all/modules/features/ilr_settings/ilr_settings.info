@@ -6,6 +6,7 @@ version = 7.x-1.0
 project = ilr_settings
 dependencies[] = bean
 dependencies[] = borealis_ri
+dependencies[] = ckeditor_link
 dependencies[] = context
 dependencies[] = ctools
 dependencies[] = features
