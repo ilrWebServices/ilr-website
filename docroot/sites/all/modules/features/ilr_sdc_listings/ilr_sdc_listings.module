@@ -1490,7 +1490,7 @@ function _ilr_sdc_listings_generate_class_button_markup($class_node, $include_pr
       : $wrapper->field_course[0]->value()->nid;
     $link = url('node/'. $nid);
   }
-  $markup = '<div class="action"><a class="'.$classes.'" href="'.$link.'">' . $link_text .' <span class="sr-only"> about '. $class_node->title . '</span></a></div>';
+  $markup = '<div class="action"><a role="button" aria-pressed="false" class="'.$classes.'" href="'.$link.'">' . $link_text .' <span class="sr-only"> about '. $class_node->title . '</span></a></div>';
   return $markup;
 }
 
