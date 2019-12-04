@@ -30,6 +30,8 @@ function people_profiles_form_views_exposed_form_alter(&$form, &$form_state) {
   if ($form['#id'] == 'views-exposed-form-people-profile-teasers-block') {
     $form['field_last_name_value']['#type'] = 'select';
     $form['field_last_name_value']['#size'] = NULL;
+    $form['field_last_name_value']['#attributes']['title'] = 'View people whose last name begins with the letter';
+    $form['field_last_name_value']['#attributes']['class'][] = 'people-profile-alpha-select';
     $all = array('' => '- All -');
     $alphas = array_combine(range('a','z'), range('A','Z'));
     $form['field_last_name_value']['#options'] = array_merge($all, $alphas);
