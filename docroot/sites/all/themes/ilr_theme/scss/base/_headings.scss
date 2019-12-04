@@ -68,6 +68,14 @@ $color-heading: $h1-text;
     color: $header-color;
     font-weight: 400;
   }
+  a,
+  a:visited {
+    border-bottom: 1px dotted $gray-dark;
+  }
+  a:hover,
+  a:focus {
+    border-bottom: 1px solid $gray-dark;
+  }
 }
 
 @mixin heading-xl() {
