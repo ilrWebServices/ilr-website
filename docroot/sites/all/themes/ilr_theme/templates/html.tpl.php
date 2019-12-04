@@ -42,7 +42,7 @@
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <?php if ($production_site): ?>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N966MM"
+  <noscript><iframe title="Google tag manager" src="https://www.googletagmanager.com/ns.html?id=GTM-N966MM"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <?php endif; ?>
