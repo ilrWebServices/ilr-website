@@ -23,5 +23,5 @@
 
 ?>
 <div class='ilr-video-wrapper'><div class="<?php print $classes; ?> media-youtube-<?php print $id; ?>">
-  <iframe class="media-youtube-player" <?php print $api_id_attribute; ?> title="<?php print $title; ?>" src="<?php print $url; ?>" allowfullscreen><?php print $alternative_content; ?></iframe>
+  <iframe class="media-youtube-player" <?php print $api_id_attribute; ?> title="<?php print $title; ?>" src="<?php print $url; ?>" allowfullscreen style="border: none;"><?php print $alternative_content; ?></iframe>
 </div></div>
