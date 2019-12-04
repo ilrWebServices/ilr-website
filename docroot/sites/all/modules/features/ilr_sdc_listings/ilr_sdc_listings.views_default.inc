@@ -829,7 +829,6 @@ function ilr_sdc_listings_views_default_views() {
   $handler->display->display_options['fields']['field_class_dates']['field'] = 'field_class_dates';
   $handler->display->display_options['fields']['field_class_dates']['group_type'] = 'min';
   $handler->display->display_options['fields']['field_class_dates']['label'] = '';
-  $handler->display->display_options['fields']['field_class_dates']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_class_dates']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['field_class_dates']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_class_dates']['settings'] = array(
