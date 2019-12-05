@@ -135,16 +135,28 @@ function ilr_sub_sites_form_alter(&$form, &$form_state, $form_id) {
 
 /**
  * Implements hook_init().
+ *
+ * In this hook we step in before a 404 is rendered to see if the path
+ * alias--without the subsite url--would resolve to a node. If so, we check
+ * whether it is a node on the main menu, and if so, we wrap it as if it were
+ * part of the subsite.
  */
 function ilr_sub_sites_init() {
-  if(!menu_get_item($_GET['q']) && _ilr_sub_sites_current_page_is_sub_site()) {
+  if (!menu_get_item($_GET['q']) && _ilr_sub_sites_current_page_is_sub_site()) {
     $path_array = arg();
+    // Remove the subsite url portion
     $subsite_url = array_shift($path_array);
     $path_to_check = implode('/', $path_array);
     if ($path = drupal_lookup_path("source", $path_to_check)) {
+      // Returns "node/[nid]", so we convert it to an array to get the nid.
       $path_array = explode('/', $path);
       $nid = $path_array[1];
-      $current_nid = _ilr_sub_sites_current_nid($nid);
+      $node = node_load($nid);
+      // If it's a node on the main-menu, we can wrap it. This prevents us from
+      // wrapping subsites within subsites.
+      if (_ilr_sub_sites_get_menu_name($node) == 'main-menu') {
+        $current_nid = _ilr_sub_sites_current_nid($nid);
+      }
     }
   }
 }
