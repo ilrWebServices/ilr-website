@@ -216,6 +216,10 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
     }
   }
 
+  // Group radios and checkboxes for accessibility
+  drupal_add_js(drupal_get_path('module','forms') . '/js/group_radios_checkboxes.js', array(
+    'type' => 'file', 'scope' => 'footer'));
+
   // Special processing of specific forms
   switch ($form_id) {
     case 'labor_and_the_constitution_event_entityform_edit_form':
