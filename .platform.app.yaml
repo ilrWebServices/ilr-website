@@ -122,10 +122,6 @@ hooks:
     set -e
     npm install
     npm run build
-    if [ ! -z "$AWS_ACCESS_KEY_ID" ] && [ ! -z "$AWS_SECRET_ACCESS_KEY" ]; then
-      pip install futures
-      pip install awscli --upgrade --user 2>/dev/null
-    fi
   # We run deploy hook after your application has been deployed and started.
   deploy: |
     set -e
@@ -156,10 +152,4 @@ crons:
     cmd: |
       if [ "$PLATFORM_BRANCH" = master ]; then
         platform redeploy --yes --no-wait
-      fi
-  upload_logs_to_s3:
-    spec: '0 * * * *'
-    cmd: |
-      if [ "$PLATFORM_BRANCH" = master ]; then
-        bash bin/upload_logs_to_s3.sh
       fi
