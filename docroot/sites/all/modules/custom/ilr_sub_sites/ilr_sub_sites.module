@@ -640,7 +640,7 @@ function _ilr_sub_sites_ugly_link_hack(&$href) {
       $href = '/new-world-of-work';
     }
     if ($node->nid == '298740') {
-      $href = '/';
+      $href = '/labor-and-the-constitution';
     }
   }
 }

@@ -94,7 +94,7 @@
 
   &--green {
     $color: darken($basic-page-color, 5%);
-    background-color: $color;
+    background-color: #43a038;
 
     .social-callout__link::before {
       color: inherit;

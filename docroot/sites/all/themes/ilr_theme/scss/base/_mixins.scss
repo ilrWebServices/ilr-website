@@ -266,7 +266,7 @@
   color: $color;
 
   @if $underline {
-    border-bottom: 2px solid $underline-color;
+    border-bottom: 2px dotted $underline-color;
 
     &:hover,
     &:visited {

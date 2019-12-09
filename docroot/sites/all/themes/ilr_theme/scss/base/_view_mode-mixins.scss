@@ -743,6 +743,11 @@
   p {
     color: white;
     @include trailer(.5);
+
+    a {
+      @include set-link($white, true, $white);
+      text-decoration: none;
+    }
   }
 
   iframe {
@@ -791,7 +796,7 @@
     }
 
     a {
-      @include set-link($white, true);
+      @include set-link($white, true, $white);
       @include small-text;
 
       text-decoration: none;
@@ -1002,7 +1007,7 @@
     @include small-text;
     @include trailer(1);
 
-    color: $warm-grey;
+    color: $white;
 
     @include medium {
       @include padding-leader(1);
