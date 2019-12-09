@@ -107,9 +107,6 @@ form {
     }
 
     p {
-      strong {
-        color: $spotlight-color;
-      }
       a.button { //netid login
         @include button;
         display: inline-block;
@@ -119,7 +116,6 @@ form {
     h3 {
       @include adjust-font-size-to(24px, 1);
       font-family: $font;
-      color: $spotlight-color;
     }
   }
 }
