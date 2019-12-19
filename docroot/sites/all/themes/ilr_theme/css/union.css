@@ -248,6 +248,7 @@
 .cu-card--with-aside {
   position: relative;
   pointer-events: none;
+  background: #333;
 }
 
 .cu-card--promo-with-media::before,
