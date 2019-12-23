@@ -233,6 +233,62 @@ function ilr_forms_public_default_entityform_type() {
     "weight" : "0",
     "paths" : []
   }');
+  $items['groat_registration'] = entity_import('entityform_type', '{
+    "type" : "groat_registration",
+    "label" : "Groat Registration",
+    "data" : {
+      "draftable" : 1,
+      "draft_redirect_path" : "pay\\/checkout",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : {
+        "value" : "\\u003Cp\\u003EThank you for your registration for the 2020 Groat and Alpern Awards Celebration.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThursday, April 23, 2020\\u003Cbr\\u003E\\r\\n\\t6:00 PM to 9:00 PM\\u003Cbr\\u003E\\r\\n\\tPierre Hotel, Grand Ballroom and Garden Foyer\\u003Cbr\\u003E\\r\\n\\t2 East 61st Street at Fifth Avenue\\u003Cbr\\u003E\\r\\n\\tNew York City\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u0026nbsp;\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u003Cspan style=\\u0022font-size: 13.008px;\\u0022\\u003EReceipt of your registration has been emailed to you.\\u0026nbsp;\\u003C\\/span\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E\\u0026nbsp;\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "submission_show_submitted" : 1,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "1" : "1",
+        "2" : "2",
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "51" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0,
+        "62" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "pay\\/checkout",
+      "instruction_pre" : {
+        "value" : "\\u003Cp\\u003EWe look forward to seeing you at the Groat Alpern 2020 Celebration.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThursday, April 23, 2020\\u003Cbr\\u003E\\r\\n\\t6:00 PM to 9:00 PM\\u003Cbr\\u003E\\r\\n\\tPierre Hotel, Grand Ballroom and Garden Foyer\\u003Cbr\\u003E\\r\\n\\t2 East 61st Street at Fifth Avenue\\u003Cbr\\u003E\\r\\n\\tNew York City\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EA portion of each registration will be a gift to the ILR School to support our student programs.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cul\\u003E\\r\\n\\t\\u003Cli\\u003E$290 - Standard; includes a $50 gift to ILR\\u003C\\/li\\u003E\\r\\n\\t\\u003Cli\\u003E$100 - Recent alumni (class of 2014 - 2019); includes a $20 gift to ILR\\u003C\\/li\\u003E\\r\\n\\t\\u003Cli\\u003E$50 - Class of 2019 alumni; includes a $10 gift to ILR\\u003C\\/li\\u003E\\r\\n\\u003C\\/ul\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "send_confirmation_email_to_user" : 1,
+      "send_confirmation_email_to_admin" : 1,
+      "add_user_name_to_subject_line" : 1,
+      "kerberized" : 0,
+      "form_submission_ilr_recipient" : "ddd1@cornell.edu",
+      "add_payment_processing" : 1,
+      "hpp" : "6"
+    },
+    "weight" : "0",
+    "paths" : []
+  }');
   $items['ilr_conf_center_reservation'] = entity_import('entityform_type', '{
     "type" : "ilr_conf_center_reservation",
     "label" : "ILR conference center reservation ",
