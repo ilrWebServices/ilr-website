@@ -8,7 +8,9 @@
  * Implements hook_freedompay_checkout_payload_alter().
  */
 function ilr_payment_forms_freedompay_checkout_payload_alter(&$payload, $order, $form_id) {
-  if ($form_id == 'sports_leadership_camp_payment' || $form_id == 'labor_and_the_constitution_event') {
+  if ($form_id == 'sports_leadership_camp_payment'
+      || $form_id == 'labor_and_the_constitution_event'
+      || $form_id == 'groat_registration') {
     $payload['PurchaseItems'] = _ilr_payment_forms_get_purchase_items($form_id);
     $payload['BillingAddress'] = _ilr_payment_forms_get_billing_address($form_id);
     $payload['AllowInternationalAddresses'] = TRUE;
@@ -19,7 +21,9 @@ function ilr_payment_forms_freedompay_checkout_payload_alter(&$payload, $order, 
  * Implements hook_freedompay_transaction_total_alter().
  */
 function ilr_payment_forms_freedompay_transaction_total_alter(&$transaction_total, $order, $form_id) {
-  if ($form_id == 'sports_leadership_camp_payment' || $form_id == 'labor_and_the_constitution_event') {
+  if ($form_id == 'sports_leadership_camp_payment'
+      || $form_id == 'labor_and_the_constitution_event'
+      || $form_id == 'groat_registration') {
     $transaction_total = 0;
     if ($wrapper = $order->formWrapper()) {
       if (isset($wrapper->field_total_cost)) {
@@ -38,6 +42,8 @@ function ilr_payment_forms_freedompay_invoice_prefix($order) {
     return 'camp';
   } else if ($order->bundle == 'labor_and_the_constitution_event') {
     return 'laborconst';
+  } else if ($order->bundle == 'groat_registration') {
+    return 'groat';
   }
 }
 
@@ -106,11 +112,15 @@ function _ilr_payment_forms_get_entityform_wrapper() {
  */
 function _ilr_payment_forms_get_purchase_items($form_id) {
   $wrapper = _ilr_payment_forms_get_entityform_wrapper();
-  if ($form_id == 'sports_leadership_camp_payment') {
+  if ($form_id == 'groat_registration') {
+    return _ilr_payment_forms_get_groat_purchase_items($wrapper);
+
+  } else if ($form_id == 'sports_leadership_camp_payment') {
     $product_description = 'Sports Leadership Camp Registration';
   } else if ($form_id == 'labor_and_the_constitution_event') {
     $product_description = 'Registration for Labor and the Constitution Event: September 26-28, 2019';
   }
+
   return array(
     array(
       "Price" => $wrapper->field_total_cost->value(),
@@ -119,4 +129,56 @@ function _ilr_payment_forms_get_purchase_items($form_id) {
       "Quantity" => 1,
     ),
   );
+}
+
+/**
+ * Return multiple products for Groat Registration().
+ */
+function _ilr_payment_forms_get_groat_purchase_items($wrapper) {
+  $purchase_items = array(
+    _ilr_payment_forms_get_single_groat_purchase_item(
+      $wrapper->field_first_name->value(),
+      $wrapper->field_last_name->value(),
+      $wrapper->field_alum_class_year->value(),
+      'Groat/Alpern 2020 ticket for ',
+      1
+    ),
+  );
+
+  foreach($wrapper->field_groat_guests->value() as $key => $guest) {
+    $purchase_items[] =_ilr_payment_forms_get_single_groat_purchase_item(
+      $guest->field_first_name[LANGUAGE_NONE][0]['value'],
+      $guest->field_last_name[LANGUAGE_NONE][0]['value'],
+      $guest->field_alum_class_year[LANGUAGE_NONE][0]['value'],
+      'Additional ticket for ',
+      $key + 2
+    );
+  }
+
+  return $purchase_items;
+}
+
+/**
+ * Format a single Groat registration ticket as a product.
+ */
+function _ilr_payment_forms_get_single_groat_purchase_item($first_name, $last_name, $grad_year, $product_description, $display_order) {
+  $grad_year = intval($grad_year);
+  $ticket_price = _ilr_get_price_for_grad_year($grad_year);
+  $product_description .= $first_name . ' ' . $last_name;
+  if ($grad_year > 0) {
+    $product_description .= ', class of ' . $grad_year;
+  }
+  return array(
+    "Price" => $ticket_price,
+    "DisplayOrder" => $display_order,
+    "Description" => $product_description,
+    "Quantity" => 1,
+  );
+}
+
+/**
+ * Set ticket price for a participant depending on their graduation year
+ */
+function _ilr_get_price_for_grad_year($grad_year) {
+  return ($grad_year == 2019 ? 50 : ($grad_year > 2013 ? 100 : 290));
 }

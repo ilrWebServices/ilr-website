@@ -640,6 +640,28 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_alum_class_year'.
+  $field_bases['field_alum_class_year'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_alum_class_year',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(),
+      'allowed_values_function' => '_forms_get_dynamic_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'list_integer',
+  );
+
   // Exported field_base: 'field_alumni_job_postings_stmt'.
   $field_bases['field_alumni_job_postings_stmt'] = array(
     'active' => 1,
@@ -2748,7 +2770,7 @@ function ilr_field_bases_field_default_field_bases() {
         'PhD' => 'PhD',
         'Other' => 'Other',
       ),
-      'allowed_values_function' => '',
+      'allowed_values_function' => '_forms_get_dynamic_allowed_values',
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -4656,6 +4678,28 @@ function ilr_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_groat_guests'.
+  $field_bases['field_groat_guests'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_groat_guests',
+    'indexes' => array(
+      'revision_id' => array(
+        0 => 'revision_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'field_collection',
+    'settings' => array(
+      'hide_blank_items' => 1,
+      'path' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'field_collection',
   );
 
   // Exported field_base: 'field_guests'.
@@ -7675,6 +7719,33 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_registrant_type'.
+  $field_bases['field_registrant_type'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_registrant_type',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Alumni' => 'Alumni',
+        'Faculty/Staff' => 'Faculty/Staff',
+        'Comp/VIP' => 'Comp/VIP',
+        'Student' => 'Student',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_registration_end_date'.
