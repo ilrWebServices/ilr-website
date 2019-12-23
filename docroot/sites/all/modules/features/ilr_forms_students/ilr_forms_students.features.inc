@@ -324,7 +324,7 @@ function ilr_forms_students_default_entityform_type() {
       "send_confirmation_email_to_user" : 1,
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
-      "kerberized" : 0,
+      "kerberized" : 1,
       "form_submission_ilr_recipient" : "mlc322@cornell.edu",
       "add_payment_processing" : 0,
       "hpp" : ""
