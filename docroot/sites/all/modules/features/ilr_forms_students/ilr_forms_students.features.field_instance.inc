@@ -2823,6 +2823,675 @@ function ilr_forms_students_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_address_line_1'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_address_line_1'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_address_line_1',
+    'label' => 'Campus address',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_address_line_2'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_address_line_2'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_address_line_2',
+    'label' => 'Home address',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_bhrf_available_projects'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_bhrf_available_projects'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_bhrf_available_projects',
+    'label' => 'BHRF Available Projects',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_description_long'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_description_long'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_description_long',
+    'label' => 'Briefly describe your interest in a Democracy Summer Fellowship. How would it contribute to your education or career plans?',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 10,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_email'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_email'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_email',
+    'label' => 'Email address',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_file'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_file'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'file_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_file',
+    'label' => 'Please attach a copy of your transcript (complete through Fall 2019)',
+    'required' => 1,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'fielduploads/entityform_high_road_fellowship_application/file_upload_general',
+      'file_extensions' => 'txt doc docx xls xlsx pdf ppt pptx pps ppsx psd md',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_full_name'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_full_name'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_full_name',
+    'label' => 'Name',
+    'required' => 1,
+    'settings' => array(
+      'disabled' => 0,
+      'kerberized' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_high_road_accomodations'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_high_road_accomodations'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'markup',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'markup_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_high_road_accomodations',
+    'label' => 'High road accomodations',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'markup',
+      'settings' => array(),
+      'type' => 'markup',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_phone'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_phone'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_phone',
+    'label' => 'Campus telephone',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_request'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_request'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'See the document at the top of this page for more information about organizations and projects.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_request',
+    'label' => 'Which offices interest you most and why? (We strive to match students with their specific requests.)',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 10,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_upload_your_resume_or_cv'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_upload_your_resume_or_cv'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'file_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_upload_your_resume_or_cv',
+    'label' => 'Please attach a resume (complete through Fall 2019)',
+    'required' => 1,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'fielduploads/entityform_high_road_fellowship_application/file_upload_general',
+      'file_extensions' => 'txt doc docx xls xlsx pdf ppt pptx pps ppsx psd md',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_work_experience'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_work_experience'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_work_experience',
+    'label' => 'Describe skills, education, work, government, public policy or community experiences relevant to these fellowship opportunities.',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 10,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_year_freshman_soph_jr_sr'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_year_freshman_soph_jr_sr'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_year_freshman_soph_jr_sr',
+    'label' => 'Year at Cornell',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_yes_no'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_yes_no'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no',
+    'label' => 'Would you have access to personal transportation?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_yes_no_2'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_yes_no_2'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_2',
+    'label' => 'Would you need housing accommodations?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-democracy_summer_fellowship_appl-field_yes_no_3'.
+  $field_instances['entityform-democracy_summer_fellowship_appl-field_yes_no_3'] = array(
+    'bundle' => 'democracy_summer_fellowship_appl',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_yes_no_3',
+    'label' => 'Are you eligible for federal work study funds?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-fex_student_application-field_address_line_1'.
   $field_instances['entityform-fex_student_application-field_address_line_1'] = array(
     'bundle' => 'fex_student_application',
@@ -16298,6 +16967,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Attendee 2 - Last name');
   t('BDSF Available Projects');
   t('BHRF Available Projects');
+  t('Briefly describe your interest in a Democracy Summer Fellowship. How would it contribute to your education or career plans?');
   t('Briefly describe your interest in a High Road Summer Fellowship. How would it contribute to your education or career plans?');
   t('Campus address');
   t('Campus telephone');
@@ -16326,6 +16996,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Degree program');
   t('Deliver food to this address');
   t('Delivery time');
+  t('Describe skills, education, work, government, public policy or community experiences relevant to these fellowship opportunities.');
   t('Description of organization');
   t('Do you currently hold a Bachelor\'s degree?');
   t('Do you wish to accept the Transfer Option (TO) to Cornell\'s ILR School?');
@@ -16476,6 +17147,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('What year did you graduate from the ILR School?');
   t('When did you receive (or when do you expect to receive) your Bachelor\'s degree?');
   t('Which breakout session will you attend?');
+  t('Which offices interest you most and why? (We strive to match students with their specific requests.)');
   t('Which projects interest you most and why? (We strive to match students with their specific requests.)');
   t('Which specific organizations interest you most and why?  (We strive to match students with their specific requests.)');
   t('Will the student(s) work on site or remotely?');
