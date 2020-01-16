@@ -282,12 +282,81 @@ function ilr_forms_public_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
-      "form_submission_ilr_recipient" : "ddd1@cornell.edu",
+      "form_submission_ilr_recipient" : "ss446@cornell.edu",
       "add_payment_processing" : 1,
       "hpp" : "6"
     },
     "weight" : "0",
-    "paths" : []
+    "paths" : { "submit" : {
+        "source" : "eform\\/submit\\/groat-registration",
+        "alias" : "alumni\\/get-involved\\/groat-and-alpern-awards\\/register",
+        "language" : "und"
+      }
+    }
+  }');
+  $items['groat_sponsor'] = entity_import('entityform_type', '{
+    "type" : "groat_sponsor",
+    "label" : "Groat sponsor",
+    "data" : {
+      "draftable" : 0,
+      "draft_redirect_path" : "",
+      "draft_button_text" : "",
+      "draft_save_text" : { "value" : "", "format" : "full_html" },
+      "submit_button_text" : "",
+      "submit_confirm_msg" : "",
+      "your_submissions" : "",
+      "disallow_resubmit_msg" : "",
+      "delete_confirm_msg" : "",
+      "page_title_view" : "",
+      "preview_page" : 0,
+      "submission_page_title" : "",
+      "submission_text" : { "value" : "", "format" : "full_html" },
+      "submission_show_submitted" : 0,
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
+      "form_status" : "ENTITYFORM_OPEN",
+      "roles" : {
+        "2" : "2",
+        "51" : "51",
+        "1" : 0,
+        "11" : 0,
+        "16" : 0,
+        "41" : 0,
+        "46" : 0,
+        "21" : 0,
+        "26" : 0,
+        "31" : 0,
+        "56" : 0,
+        "61" : 0,
+        "62" : 0
+      },
+      "resubmit_action" : "new",
+      "redirect_path" : "",
+      "instruction_pre" : {
+        "value" : "\\u003Cp\\u003EAdd a record for each sponsor.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
+      "send_confirmation_email_to_user" : 0,
+      "send_confirmation_email_to_admin" : 0,
+      "add_user_name_to_subject_line" : 0,
+      "kerberized" : 0,
+      "form_submission_ilr_recipient" : "",
+      "add_payment_processing" : 0,
+      "hpp" : ""
+    },
+    "weight" : "0",
+    "paths" : {
+      "submit" : {
+        "source" : "eform\\/submit\\/groat-sponsor",
+        "alias" : "alumni\\/groat\\/admin\\/add_sponsor",
+        "language" : "und"
+      },
+      "confirm" : {
+        "source" : "eform\\/groat-sponsor\\/confirm",
+        "alias" : "alumni\\/groat\\/admin\\/sponsor_added",
+        "language" : "und"
+      }
+    }
   }');
   $items['ilr_conf_center_reservation'] = entity_import('entityform_type', '{
     "type" : "ilr_conf_center_reservation",

@@ -4702,6 +4702,43 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
+  // Exported field_base: 'field_groat_sponsor'.
+  $field_bases['field_groat_sponsor'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_groat_sponsor',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'views',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'reference-machinename' => array(
+            'status' => 0,
+          ),
+          'views-select-list' => array(
+            'status' => 1,
+          ),
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => 'entityreference_1',
+          'view_name' => 'groat_sponsors',
+        ),
+      ),
+      'target_type' => 'entityform',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_guests'.
   $field_bases['field_guests'] = array(
     'active' => 1,
@@ -6694,6 +6731,28 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_payment_type'.
+  $field_bases['field_payment_type'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_payment_type',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(),
+      'allowed_values_function' => '_forms_get_dynamic_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_people_list'.
   $field_bases['field_people_list'] = array(
     'active' => 1,
@@ -7742,7 +7801,7 @@ function ilr_field_bases_field_default_field_bases() {
         'Comp/VIP' => 'Comp/VIP',
         'Student' => 'Student',
       ),
-      'allowed_values_function' => '',
+      'allowed_values_function' => '_forms_get_dynamic_allowed_values',
     ),
     'translatable' => 0,
     'type' => 'list_text',
