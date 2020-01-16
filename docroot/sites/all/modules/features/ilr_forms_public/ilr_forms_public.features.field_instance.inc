@@ -1534,7 +1534,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1577,7 +1577,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1619,7 +1619,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 9,
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1654,7 +1654,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 10,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1690,7 +1690,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1732,7 +1732,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1775,7 +1775,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 11,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1809,7 +1809,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'email_default',
-        'weight' => 2,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1845,7 +1845,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1889,7 +1889,7 @@ function ilr_forms_public_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_fields',
-        'weight' => 13,
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1909,6 +1909,51 @@ function ilr_forms_public_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'entityform-groat_registration-field_groat_sponsor'.
+  $field_instances['entityform-groat_registration-field_groat_sponsor'] = array(
+    'bundle' => 'groat_registration',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'bypass_access' => FALSE,
+          'field_formatter_label' => '',
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_groat_sponsor',
+    'label' => 'Which sponsor?',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'current' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'entityform-groat_registration-field_last_name'.
   $field_instances['entityform-groat_registration-field_last_name'] = array(
     'bundle' => 'groat_registration',
@@ -1923,7 +1968,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1965,9 +2010,12 @@ function ilr_forms_public_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'entityform',
@@ -1985,7 +2033,7 @@ function ilr_forms_public_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 1,
+      'weight' => 0,
     ),
   );
 
@@ -2004,7 +2052,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2040,7 +2088,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 14,
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2082,7 +2130,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'list_default',
-        'weight' => 12,
+        'weight' => 14,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2116,7 +2164,7 @@ function ilr_forms_public_field_default_field_instances() {
           'field_formatter_label' => '',
         ),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'entityform',
@@ -2141,6 +2189,492 @@ function ilr_forms_public_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_sponsor-field_address_line_1'.
+  $field_instances['entityform-groat_sponsor-field_address_line_1'] = array(
+    'bundle' => 'groat_sponsor',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_address_line_1',
+    'label' => 'Street address',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 40,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_sponsor-field_address_line_2'.
+  $field_instances['entityform-groat_sponsor-field_address_line_2'] = array(
+    'bundle' => 'groat_sponsor',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_address_line_2',
+    'label' => 'Street address line 2',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_sponsor-field_city'.
+  $field_instances['entityform-groat_sponsor-field_city'] = array(
+    'bundle' => 'groat_sponsor',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_city',
+    'label' => 'City',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 44,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_sponsor-field_company'.
+  $field_instances['entityform-groat_sponsor-field_company'] = array(
+    'bundle' => 'groat_sponsor',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_company',
+    'label' => 'Company name',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_sponsor-field_email'.
+  $field_instances['entityform-groat_sponsor-field_email'] = array(
+    'bundle' => 'groat_sponsor',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'email_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_email',
+    'label' => 'Contact Email',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_sponsor-field_first_name'.
+  $field_instances['entityform-groat_sponsor-field_first_name'] = array(
+    'bundle' => 'groat_sponsor',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_first_name',
+    'label' => 'Sponsor first name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_sponsor-field_last_name'.
+  $field_instances['entityform-groat_sponsor-field_last_name'] = array(
+    'bundle' => 'groat_sponsor',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_last_name',
+    'label' => 'Sponsor last name',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_sponsor-field_payment_type'.
+  $field_instances['entityform-groat_sponsor-field_payment_type'] = array(
+    'bundle' => 'groat_sponsor',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_payment_type',
+    'label' => 'payment type',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 51,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_sponsor-field_price_note'.
+  $field_instances['entityform-groat_sponsor-field_price_note'] = array(
+    'bundle' => 'groat_sponsor',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_price_note',
+    'label' => 'Payment reference number',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 53,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_sponsor-field_state_province'.
+  $field_instances['entityform-groat_sponsor-field_state_province'] = array(
+    'bundle' => 'groat_sponsor',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_state_province',
+    'label' => 'State / Province',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 46,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_sponsor-field_total_cost'.
+  $field_instances['entityform-groat_sponsor-field_total_cost'] = array(
+    'bundle' => 'groat_sponsor',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_total_cost',
+    'label' => 'Sponsorship amount',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 50,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-groat_sponsor-field_zip_code'.
+  $field_instances['entityform-groat_sponsor-field_zip_code'] = array(
+    'bundle' => 'groat_sponsor',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_zip_code',
+    'label' => 'Zip code',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 48,
     ),
   );
 
@@ -8991,6 +9525,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Company');
   t('Company name');
   t('Company or organization');
+  t('Contact Email');
   t('Country');
   t('Course');
   t('Current grade in school');
@@ -9037,6 +9572,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Organization');
   t('Parent / Guardian email');
   t('Payment amount');
+  t('Payment reference number');
   t('Payor\'s first name');
   t('Payor\'s last name');
   t('Phone');
@@ -9056,6 +9592,9 @@ function ilr_forms_public_field_default_field_instances() {
   t('School name');
   t('School or organization');
   t('Second person markup');
+  t('Sponsor first name');
+  t('Sponsor last name');
+  t('Sponsorship amount');
   t('State');
   t('State / Province');
   t('State or province');
@@ -9076,6 +9615,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('What is your experience with mediation?');
   t('What is your major (or what program are you in?)');
   t('What would you like to know?');
+  t('Which sponsor?');
   t('Why would you like to join this competition?');
   t('Will you be bringing any guests with you?');
   t('Will you need catering? (Please check all that apply)');
@@ -9087,6 +9627,7 @@ function ilr_forms_public_field_default_field_instances() {
   t('Zip code');
   t('Zip/postal code');
   t('mc hcd signup');
+  t('payment type');
 
   return $field_instances;
 }

@@ -27,7 +27,9 @@ function ilr_payment_forms_freedompay_transaction_total_alter(&$transaction_tota
     $transaction_total = 0;
     if ($wrapper = $order->formWrapper()) {
       if (isset($wrapper->field_total_cost)) {
-        $transaction_total = $wrapper->field_total_cost->value();
+        $transaction_total = ($wrapper->field_total_cost->value())
+          ? $wrapper->field_total_cost->value()
+          : FREEDOMPAY_PAYMENT_NOT_REQUIRED;
       }
     }
     return $transaction_total;

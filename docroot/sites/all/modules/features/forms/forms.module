@@ -219,8 +219,11 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
   // Special processing of specific forms
   switch ($form_id) {
     case 'groat_registration_entityform_edit_form':
+      global $user;
+      if (!in_array('form admin', $user->roles)) {
+        $form['field_registrant_type'][LANGUAGE_NONE]['#type'] = 'hidden';
+      }
       $form['field_total_cost'][LANGUAGE_NONE][0]['value']['#type'] = 'hidden';
-      $form['field_registrant_type'][LANGUAGE_NONE]['#type'] = 'hidden';
       drupal_add_js(drupal_get_path('module','ilr_forms_public') . '/js/groat_registration.js', array('type' => 'file', 'scope' => 'footer'));
       break;
     case 'labor_and_the_constitution_event_entityform_edit_form':
@@ -576,7 +579,9 @@ function _process_groat_registration(&$entityform) {
   $payment_gift_details .= '<strong>Total gift to ILR: $' . $total_gift . '</strong><br>';
   $payment_gift_details .= '<strong><em>This email serves as reciept of your gift.</em></strong>';
 
-  _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject, array('payment_gift_details' => $payment_gift_details));
+  _forms_send_emails($entityform, $admin_email, $admin_subject, $user_subject, array(
+    'payment_gift_details' => $payment_gift_details,
+    'registrant_type' => $entityform_wrapper->field_registrant_type->value()));
 }
 
 /**

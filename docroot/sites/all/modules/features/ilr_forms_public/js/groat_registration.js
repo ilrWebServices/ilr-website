@@ -4,7 +4,7 @@
       $(document).ready(function() {
         manage_pricing();
         set_button_text();
-        $('[name*="field_alum_class_year"],#edit-field-groat-guests').change( function() {
+        $('#edit-field-registrant-type-und,[name*="field_alum_class_year"],#edit-field-groat-guests').change( function() {
           manage_pricing();
         });
         $('div#edit-field-groat-guests').change( function() {
@@ -17,44 +17,56 @@
         }
 
         function manage_pricing() {
-          var buyer_year = $('#edit-field-alum-class-year-und').val();
-          var buyer_price = get_price_for_grad_year(buyer_year);
-          var total_price = buyer_price;
+          if ($('#edit-field-registrant-type-und').val() == "Alumni") {
+            var buyer_year = $('#edit-field-alum-class-year-und').val();
+            var buyer_price = get_price_for_grad_year(buyer_year);
+            var total_price = buyer_price;
 
-          var guests = jQuery('[id*="field-groat-guests-values"] tbody tr');
-          var total_guests_price = 0;
+            var guests = jQuery('[id*="field-groat-guests-values"] tbody tr');
+            var total_guests_price = 0;
 
-          for (var i=0; i<guests.length; i++) {
-            if ( guest_info_is_complete( guests[i] )) {
-              guest_price = get_price_for_grad_year(
-                $(guests[i]).find(('[name*="field_alum_class_year"]')).val()
-              );
+            for (var i=0; i<guests.length; i++) {
+              if ( guest_info_is_complete( guests[i] )) {
+                guest_price = get_price_for_grad_year(
+                  $(guests[i]).find(('[name*="field_alum_class_year"]')).val()
+                );
 
-              total_guests_price += guest_price;
+                total_guests_price += guest_price;
 
-              set_price_note(
-                guests[i]
-                , 'div.field-name-field-alum-class-year'
-                , 'Cost for this guest: $' + guest_price + '.00'
-              );
+                set_price_note(
+                  guests[i]
+                  , 'div.field-name-field-alum-class-year'
+                  , 'Cost for this guest: $' + guest_price + '.00'
+                );
+              }
             }
+
+            total_price = buyer_price + total_guests_price;
+            var total_price_message = '<strong>Total cost for this reservation: $' + total_price + '.00</strong>';
+
+            if (total_guests_price != 0) {
+              total_price_message += '<br>$' + buyer_price + '.00 for purchaser + $'
+                + total_guests_price + '.00 for additional guests.';
+            }
+
+            set_price_note(
+              $('div.field-name-field-total-cost')
+              , '#field-total-cost-add-more-wrapper'
+              , total_price_message
+            );
+
+            $('#field-total-cost-add-more-wrapper input').attr('value', total_price);
+
+          } else { // No fees collected for any non-Alumni, delegated registration
+
+            set_price_note(
+              $('div.field-name-field-total-cost')
+              , '#field-total-cost-add-more-wrapper'
+              , '<strong>No charge for this registration</strong>'
+            );
+
+            $('#field-total-cost-add-more-wrapper input').attr('value', 0);
           }
-
-          total_price = buyer_price + total_guests_price;
-          var total_price_message = '<strong>Total cost for this reservation: $' + total_price + '.00</strong>';
-
-          if (total_guests_price != 0) {
-            total_price_message += '<br>$' + buyer_price + '.00 for purchaser + $'
-              + total_guests_price + '.00 for additional guests.';
-          }
-
-          set_price_note(
-            $('div.field-name-field-total-cost')
-            , '#field-total-cost-add-more-wrapper'
-            , total_price_message
-          );
-
-          $('#field-total-cost-add-more-wrapper input').attr('value', total_price);
 
         }
 
