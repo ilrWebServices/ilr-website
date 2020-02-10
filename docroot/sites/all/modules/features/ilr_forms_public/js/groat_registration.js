@@ -17,7 +17,7 @@
         }
 
         function manage_pricing() {
-          if ($('#edit-field-registrant-type-und').val() == "Alumni") {
+          if (!$('#edit-field-registrant-type-und').val() || $('#edit-field-registrant-type-und').val() == "Alumni") {
             var buyer_year = $('#edit-field-alum-class-year-und').val();
             var buyer_price = get_price_for_grad_year(buyer_year);
             var total_price = buyer_price;
