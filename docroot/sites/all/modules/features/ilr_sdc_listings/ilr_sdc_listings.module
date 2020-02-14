@@ -328,7 +328,8 @@ function _ilr_sdc_listings_get_new_class_nids() {
     ->propertyCondition('status', NODE_PUBLISHED)
     ->propertyCondition('created', $last_notification, '>')
     ->fieldCondition('field_class_dates', 'value', $today, '>')
-    ->fieldCondition('field_cancelled', 'value', 1, '!=');
+    ->fieldCondition('field_cancelled', 'value', 1, '!=')
+    ->fieldCondition('field_is_full', 'value', 1, '!=');
   $results = $query->execute();
   if (!empty($results['node'])) {
     $nids = array_keys($results['node']);
