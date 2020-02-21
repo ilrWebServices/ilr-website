@@ -12,6 +12,49 @@ function ilr_forms_students_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
+  // 'entityform-alumni_assoc_board_interest-field_comments'.
+  $field_instances['entityform-alumni_assoc_board_interest-field_comments'] = array(
+    'bundle' => 'alumni_assoc_board_interest',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Each year Cornell and ILR welcome graduates into a new phase of their lives as alumni. What can the ILR Alumni Association do to better support alumni and their lifelong relationship with the School?<br>Limit 1400 characters (approximately 200 words).',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_comments',
+    'label' => 'How can we help?',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-alumni_assoc_board_interest-field_degree_as_text'.
   $field_instances['entityform-alumni_assoc_board_interest-field_degree_as_text'] = array(
     'bundle' => 'alumni_assoc_board_interest',
@@ -51,6 +94,49 @@ function ilr_forms_students_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-alumni_assoc_board_interest-field_description_long'.
+  $field_instances['entityform-alumni_assoc_board_interest-field_description_long'] = array(
+    'bundle' => 'alumni_assoc_board_interest',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'What strengths would you bring to this position? How are you suited to contribute to the ILR Alumni Board’s success?<br>Limit 1400 characters (approximately 200 words).',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_description_long',
+    'label' => 'Describe the reasons you hope to serve on the ILR Alumni Board',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 9,
     ),
   );
 
@@ -16997,9 +17083,11 @@ function ilr_forms_students_field_default_field_instances() {
   t('Deliver food to this address');
   t('Delivery time');
   t('Describe skills, education, work, government, public policy or community experiences relevant to these fellowship opportunities.');
+  t('Describe the reasons you hope to serve on the ILR Alumni Board');
   t('Description of organization');
   t('Do you currently hold a Bachelor\'s degree?');
   t('Do you wish to accept the Transfer Option (TO) to Cornell\'s ILR School?');
+  t('Each year Cornell and ILR welcome graduates into a new phase of their lives as alumni. What can the ILR Alumni Association do to better support alumni and their lifelong relationship with the School?<br>Limit 1400 characters (approximately 200 words).');
   t('Email');
   t('Email (supervisor)');
   t('Email address');
@@ -17039,6 +17127,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('High school name');
   t('Home address');
   t('Home state / province');
+  t('How can we help?');
   t('How did you hear about the ILR School MILR program? (Check as many as apply.)');
   t('How did you hear about the MPS/NYC program?');
   t('I certify that I am a freshman in the ILR School.');
@@ -17144,6 +17233,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('What attracted you to this event?');
   t('What is the purpose of the event?');
   t('What skills, education, work or community experiences do you have that would be relevant to these fellowship opportunities?');
+  t('What strengths would you bring to this position? How are you suited to contribute to the ILR Alumni Board’s success?<br>Limit 1400 characters (approximately 200 words).');
   t('What year did you graduate from the ILR School?');
   t('When did you receive (or when do you expect to receive) your Bachelor\'s degree?');
   t('Which breakout session will you attend?');
