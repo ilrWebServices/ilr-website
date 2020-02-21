@@ -218,6 +218,10 @@ function forms_form_entityform_edit_form_alter(&$form, &$entityform_state, $form
 
   // Special processing of specific forms
   switch ($form_id) {
+    case 'alumni_assoc_board_interest_entityform_edit_form':
+      $form['field_description_long'][LANGUAGE_NONE][0]['value']['#attributes']['maxlength'] = 1400;
+      $form['field_comments'][LANGUAGE_NONE][0]['value']['#attributes']['maxlength'] = 1400;
+      break;
     case 'groat_registration_entityform_edit_form':
       global $user;
       if (!in_array('form admin', $user->roles)) {
