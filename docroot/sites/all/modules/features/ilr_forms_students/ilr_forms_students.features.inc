@@ -24,7 +24,7 @@ function ilr_forms_students_default_entityform_type() {
   $items = array();
   $items['alumni_assoc_board_interest'] = entity_import('entityform_type', '{
     "type" : "alumni_assoc_board_interest",
-    "label" : "Alumni Association Board Interest",
+    "label" : "Run for the ILR AA Board",
     "data" : {
       "draftable" : 0,
       "draft_redirect_path" : "",
@@ -39,7 +39,7 @@ function ilr_forms_students_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "Thank you",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for your interest in running for the ILR Alumni Association Board.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe next step is to fill out the \\u003Ca href=\\u0022https:\\/\\/www.ilr.cornell.edu\\/ilraa-nomination-full-form\\u0022\\u003Efull nomination form\\u003C\\/a\\u003E. You will receive a confirmation email shortly, which will also include this link.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact Sue Sappington, \\u003Ca href=\\u0022mailto:ss446@cornell.edu\\u0022\\u003Ess446@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E",
+        "value" : "\\u003Cp\\u003EThank you for your interest in running for the ILR Alumni Association Board.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact Sue Sappington, \\u003Ca href=\\u0022mailto:ss446@cornell.edu\\u0022\\u003Ess446@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -58,20 +58,36 @@ function ilr_forms_students_default_entityform_type() {
         "26" : 0,
         "31" : 0,
         "56" : 0,
-        "61" : 0
+        "61" : 0,
+        "62" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
-      "instruction_pre" : { "value" : "", "format" : "full_html" },
+      "instruction_pre" : {
+        "value" : "\\u003Cp\\u003EThank you for your interest in being a candidate for the ILR Alumni Association Board.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EPlease complete the following form to have your named entered for consideration.\\u003C\\/p\\u003E\\r\\n",
+        "format" : "full_html"
+      },
       "send_confirmation_email_to_user" : 1,
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
+      "form_submission_ilr_recipient" : "ss446@cornell.edu",
       "add_payment_processing" : 0,
-      "form_submission_ilr_recipient" : "ss446@cornell.edu"
+      "hpp" : ""
     },
     "weight" : "0",
-    "paths" : []
+    "paths" : {
+      "submit" : {
+        "source" : "eform\\/submit\\/alumni-assoc-board-interest",
+        "alias" : "alumni\\/get-involved\\/alumni-association\\/ilr-alumni-association-board-directors\\/run-for-ilr-aa-board",
+        "language" : "und"
+      },
+      "confirm" : {
+        "source" : "eform\\/alumni-assoc-board-interest\\/confirm",
+        "alias" : "alumni\\/get-involved\\/alumni-association\\/ilr-alumni-association-board-directors\\/run-for-ilr-aa-board-thank-you",
+        "language" : "und"
+      }
+    }
   }');
   $items['alumni_events_for_students_reg'] = entity_import('entityform_type', '{
     "type" : "alumni_events_for_students_reg",
