@@ -5068,6 +5068,48 @@ function ilr_field_bases_field_default_field_bases() {
     'type' => 'blockreference',
   );
 
+  // Exported field_base: 'field_how_can_i_help_ilraa'.
+  $field_bases['field_how_can_i_help_ilraa'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_how_can_i_help_ilraa',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<p>Describe the reasons you hope to serve on the ILR Alumni Board. What strengths would you bring to this position? How are you suited to contribute to the ILR Alumni Board’s success?</p>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
+  // Exported field_base: 'field_how_can_ilraa_help'.
+  $field_bases['field_how_can_ilraa_help'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_how_can_ilraa_help',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<p>Each year Cornell and ILR welcome graduates into a new phase of their lives as alumni. What can the ILR Alumni Association do to better support alumni and their lifelong relationship with the School?</p>
+',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
   // Exported field_base: 'field_how_heard_milr_check_elig'.
   $field_bases['field_how_heard_milr_check_elig'] = array(
     'active' => 1,
