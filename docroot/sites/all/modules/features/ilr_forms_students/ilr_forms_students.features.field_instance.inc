@@ -13079,7 +13079,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 36,
+      'weight' => 3,
     ),
   );
 
@@ -13140,7 +13140,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 40,
+      'weight' => 6,
     ),
   );
 
@@ -13201,7 +13201,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
+      'weight' => 1,
     ),
   );
 
@@ -13274,7 +13274,7 @@ function ilr_forms_students_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 44,
+      'weight' => 8,
     ),
   );
 
@@ -13335,7 +13335,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 38,
+      'weight' => 5,
     ),
   );
 
@@ -13396,7 +13396,62 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-ilr_mps_nyc_open_house_rsvp-field_phone'.
+  $field_instances['entityform-ilr_mps_nyc_open_house_rsvp-field_phone'] = array(
+    'bundle' => 'ilr_mps_nyc_open_house_rsvp',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_phone',
+    'label' => 'Phone',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
     ),
   );
 
@@ -13465,7 +13520,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 42,
+      'weight' => 7,
     ),
   );
 
