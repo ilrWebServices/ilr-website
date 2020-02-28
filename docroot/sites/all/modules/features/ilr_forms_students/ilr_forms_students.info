@@ -340,6 +340,7 @@ features[field_instance][] = entityform-ilr_mps_nyc_open_house_rsvp-field_first_
 features[field_instance][] = entityform-ilr_mps_nyc_open_house_rsvp-field_h_event_date
 features[field_instance][] = entityform-ilr_mps_nyc_open_house_rsvp-field_job_title
 features[field_instance][] = entityform-ilr_mps_nyc_open_house_rsvp-field_last_name
+features[field_instance][] = entityform-ilr_mps_nyc_open_house_rsvp-field_phone
 features[field_instance][] = entityform-ilr_mps_nyc_open_house_rsvp-field_referenced_node
 features[field_instance][] = entityform-ilr_reception_parent_orientation-field_comments
 features[field_instance][] = entityform-ilr_reception_parent_orientation-field_count_as_text
