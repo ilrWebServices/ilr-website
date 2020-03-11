@@ -43,3 +43,20 @@ function entity_form_disabler_form_entityform_edit_form_alter(&$form, &$entityfo
     }
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @see ilr_editable_settings module.
+ */
+function entity_form_disabler_form_ilr_editable_settings_form_alter(&$form, &$form_state, $form_id) {
+  $form['efd_set'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Entity Form Disabler Messages'),
+  );
+  $form['efd_set']['efd_default_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Default message'),
+    '#default_value' => 'This form is disabled.',
+  );
+}

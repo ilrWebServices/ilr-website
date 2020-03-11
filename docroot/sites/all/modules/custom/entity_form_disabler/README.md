@@ -31,3 +31,5 @@ Use the `efd_default_message` variable to set the text for the default message:
 ```
 $ echo 'This is the default disabled form message.' | drush vset efd_default_message -
 ```
+
+Or visit `/admin/config/system/ilr-sys-messages` to update the default message via the admin UI.
