@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter.
+ *
+ * Allows entity forms to be disabled when certain variables are set.
+ *
+ * Example:
+ * $ echo '{default}' | drush vset efd__career_services_contact_form -
+ */
+function entity_form_disabler_form_entityform_edit_form_alter(&$form, &$entityform_state, $form_id) {
+  // Ignore everything but entity forms.
+  if (strpos($form_id, '_entityform_edit_form') === FALSE) {
+    return;
+  }
+
+  $entityform_machine_name = str_replace('_entityform_edit_form', '', $form_id);
+
+  // Check if this form is disabled via settings.
+  $message = variable_get('efd__' . $entityform_machine_name, FALSE);
+
+  // No message for this form? Then it's not disabled.
+  if ($message === FALSE) {
+    return;
+  }
+
+  $message = trim($message);
+
+  // If the message is simply the `{default}` token, replace it with our default message.
+  if ($message === '{default}') {
+    $message = variable_get('efd_default_message', 'This form is disabled.');
+  }
+
+  $form['efd_message'] = [
+    '#markup' => '<div class="efd-message">' . $message . '</div>',
+  ];
+
+  // Remove all fields and replace with a message in markup.
+  // @todo Check forms with field_groups.
+  foreach ($form as $key => $value) {
+    if ((substr($key, 0, 6) === 'field_') || $key === 'actions') {
+      $form[$key]['#access'] = FALSE;
+    }
+  }
+}

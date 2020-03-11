@@ -1,0 +1,4 @@
+name = Entityform Disabler
+description = Disables some entity forms with a message.
+core = 7.x
+dependencies[] = entityform
