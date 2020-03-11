@@ -51,7 +51,7 @@ if (!$on_platformsh) {
 }
 
 // Set the base url of the forwarded host if behind a proxy.
-if (!empty($_SERVER['HTTP_X_FORWARDED_HOST'] && !empty($_SERVER['HTTP_X_FORWARDED_PROTO']))) {
+if (!empty($_SERVER['HTTP_X_FORWARDED_HOST']) && !empty($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
   $base_url = $_SERVER['HTTP_X_FORWARDED_PROTO'] . '://' . $_SERVER['HTTP_X_FORWARDED_HOST'];
 }
 
