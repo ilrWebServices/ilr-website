@@ -1020,3 +1020,10 @@ function ilr_update_7075() {
     variable_set('xmlsitemap_settings_menu_link_' . $menu_name, $settings);
   }
 }
+
+/**
+ * Enable the entity_form_disabler module.
+ */
+function ilr_update_7076() {
+  module_enable(['entity_form_disabler'], TRUE);
+}
