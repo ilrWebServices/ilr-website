@@ -470,6 +470,24 @@
 .cu-card--with-aside .cu-heading--strong {
   font-size: var(--cu-text-lg);
 }
+
+.cu-card__link {
+  cursor: pointer;
+  text-decoration: none;
+  position: absolute;
+  z-index: 4;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  text-indent: 200%;
+  white-space: nowrap;
+  background: transparent;
+  pointer-events: all;
+}
+
 .cu-button {
   color: #b31b1b;
   border-radius: 2px;
