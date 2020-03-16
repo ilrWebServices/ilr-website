@@ -175,6 +175,7 @@
   border-radius: var(--cu-card-border-radius);
   display: flex;
   flex-direction: column;
+  position: relative;
   /*=============================================
   =            Modifiers            =
   =============================================*/
