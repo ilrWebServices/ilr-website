@@ -1,5 +1,5 @@
 body.front .homepage-news,
-body.page-node-299458 {
+body.page-node-299458 .featured-news {
   max-width: var(--union-max-width-section, #{$union-max-width-section});
   margin: 0 auto;
 
@@ -66,17 +66,6 @@ body.page-node-299458 {
 
 // Specificity hack
 body.page-node-299458 #content .content-listing-manual--cards .content {
-  display: inherit;
-
-  @include small {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include medium {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
   article .news__content {
     padding: 1rem 0;
     background: $white;
