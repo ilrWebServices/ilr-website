@@ -19,7 +19,7 @@
       };
 
       shareWith['facebook'] = function() {
-        url = 'https://www.facebook.com/dialog/feed';
+        url = 'https://www.facebook.com/dialog/share';
         params = {
           'app_id'        : 345274062349654,
           'display'       : 'popup',
