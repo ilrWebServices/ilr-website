@@ -113,10 +113,10 @@
         return prefix + ': ' + $title.trim();
       };
 
-      $('.social-share a').click(function() {
+      $('.social-share a').click(function(e) {
+        e.preventDefault();
         $channel = $(this).attr('class');
         $article = $(this).closest('article');
-        $id = $article.attr('id').replace('node-','');
         if ($article.hasClass('node-teaser')) { // Use the teaser-specific details
           $title = $article.find('h2').first().text().trim();
           $image = $article.find('img').attr('src');
