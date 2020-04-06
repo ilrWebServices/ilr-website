@@ -102,9 +102,9 @@ web:
       index:
         - index.php
 
-# The size of the persistent disk of the application (in MB).
-# 21504 = 21GB (requires an additional 2048 for mysql service)
-disk: 21504
+# From a total of 25600 MB (25 GiB), 19456 MB (19 GiB) go here, and 6144 MB (6
+# GiB) are used for the database service.
+disk: 19456
 
 # The mounts that will be performed when the package is deployed.
 mounts:
