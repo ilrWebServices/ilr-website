@@ -8,6 +8,8 @@
 
   [data-eq-state="regular-nav"] & {
     @include visible;
+
+    margin-left: 20px; // Add some breathing room to accommodate the logo
   }
 
   body:not(.subsite) & {
