@@ -1599,7 +1599,7 @@ body {
 }
 
 html {
-  font-size: var(--cu-font-size-percentage);
+  font-size: 113%;
   line-height: var(--cu-line-height);
   font-weight: var(--cu-font-weight);
 }
