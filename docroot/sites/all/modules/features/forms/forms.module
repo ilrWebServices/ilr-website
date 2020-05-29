@@ -729,11 +729,6 @@ function _process_web_services_request_form(&$entityform) {
     trim($entityform->field_subject_line['und'][0]['value']) . ' - ' . $user_name;
   $remedy_email = 'ilrwebrequest@cornell.edu';
   _forms_send_remedy_email($entityform, $remedy_email, $subject_remedy);
-
-  // Email to people in the Web group who want an email each time the form is submitted
-  $recipients = 'ddd1@cornell.edu, bw485@cornell.edu';
-  $subject_web = 'Webreq - ' . $subject_remedy;
-  _forms_send_emails($entityform, $recipients, $subject_web);
 }
 
 
