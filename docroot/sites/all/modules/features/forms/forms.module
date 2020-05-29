@@ -727,7 +727,7 @@ function _process_web_services_request_form(&$entityform) {
   $subject_remedy =
     $short_request_option . ' - ' .
     trim($entityform->field_subject_line['und'][0]['value']) . ' - ' . $user_name;
-  $remedy_email = 'ilrweb@cornell.edu';
+  $remedy_email = 'ilrwebrequest@cornell.edu';
   _forms_send_remedy_email($entityform, $remedy_email, $subject_remedy);
 }
 
