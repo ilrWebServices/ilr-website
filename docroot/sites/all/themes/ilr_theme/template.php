@@ -321,7 +321,7 @@ function ilr_theme_preprocess_node__instagram_post(&$variables) {
   }
 
   // Fix rendering issues when displaying via union styles.
-  $variables['description'] = $wrapper->body->value->value(array('decode' => TRUE));
+  $variables['description'] = text_summary($wrapper->body->value->value(array('decode' => TRUE)), NULL, 600);
 }
 
 /**
