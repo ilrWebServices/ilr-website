@@ -503,7 +503,12 @@
 }
 
 #page {
-  @include clearfix;
+  // Clearfix removed due to bug reported
+  // https://www.ilr.cornell.edu/coronavirus/reopening. The #page element was
+  // being positioned under the banner after following in page links We were
+  // asked to provide an immediate resolution. Not sure what wider impact this
+  // might have...
+  // @include clearfix;
   @include trailer(1);
 
   clear: both;
