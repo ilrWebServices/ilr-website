@@ -46,7 +46,7 @@ function ilr_admin_get_email_signature() {
     <a href='https://www.instagram.com/cornellilr/'>Instagram</a> |
     <a href='https://www.linkedin.com/school/15078942'>LinkedIn</a> |
     <a href='https://www.youtube.com/user/CornellUniversityILR'>YouTube</a> (optional)<br /><br />
-    <img alt='' width='120' height='30' style='margin-bottom: 3px;' src='https://www.ilr.cornell.edu/sites/default/files/ilr-75-email-signature.png'><br />
+    <img alt='' width='260' height='66' style='margin-bottom: 3px;' src='https://www.ilr.cornell.edu/sites/default/files/ilr-75-email-signature.png'><br />
     <span style='font-weight: bold'>Shaping the next 75 years of <span style='color: #b31b1b'>work</span>.</span> (optional)<br /><br />";
 
   if (module_exists('people_profiles')) {
@@ -55,25 +55,31 @@ function ilr_admin_get_email_signature() {
 
       $signature .= "<p class='email-signature__note'>**Please note the customized information below is generated from <a style='text-decoration: none;' href='/node/" . $wrapper->getIdentifier() . "/edit'>your profile data</a>.**</p>";
 
-      $elements = _ilr_admin_get_signature_elements($wrapper, '<h2>Option 1 (neither social nor tagline)</h2>', false, false);
+      $elements = _ilr_admin_get_signature_elements($wrapper, '<h2>Option 1 (no social, tagline, or logo)</h2>', false, false, false);
       foreach ($elements as $markup) {
         if (!empty($markup)) {
           $signature .= $markup . '<br />';
         }
       }
-      $elements = _ilr_admin_get_signature_elements($wrapper, '<h2>Option 2 (includes tagline)</h2>', false, true);
+      $elements = _ilr_admin_get_signature_elements($wrapper, '<h2>Option 2 (tagline and logo)</h2>', false, true, true);
       foreach ($elements as $markup) {
         if (!empty($markup)) {
           $signature .= $markup . '<br />';
         }
       }
-      $elements = _ilr_admin_get_signature_elements($wrapper, '<h2>Option 3 (includes social)</h2>', true, false);
+      $elements = _ilr_admin_get_signature_elements($wrapper, '<h2>Option 3 (social)</h2>', true, false, false);
       foreach ($elements as $markup) {
         if (!empty($markup)) {
           $signature .= $markup . '<br />';
         }
       }
-      $elements = _ilr_admin_get_signature_elements($wrapper, '<h2>Option 4 (includes social and tagline)</h2>');
+      $elements = _ilr_admin_get_signature_elements($wrapper, '<h2>Option 4 (social, tagline, and logo)</h2>');
+      foreach ($elements as $markup) {
+        if (!empty($markup)) {
+          $signature .= $markup . '<br />';
+        }
+      }
+      $elements = _ilr_admin_get_signature_elements($wrapper, '<h2>Option 5 (logo)</h2>', false, false, true);
       foreach ($elements as $markup) {
         if (!empty($markup)) {
           $signature .= $markup . '<br />';
@@ -88,7 +94,7 @@ function ilr_admin_get_email_signature() {
   return $signature;
 }
 
-function _ilr_admin_get_signature_elements($wrapper, $title, $include_social = true, $include_tagline = true) {
+function _ilr_admin_get_signature_elements($wrapper, $title, $include_social = true, $include_tagline = true, $include_logo = true) {
   $phone = ($wrapper->field_phone->value())
     ? str_replace('-', ' ', $wrapper->field_phone->value())
     : 'xxx xxx xxxx';
@@ -107,6 +113,7 @@ function _ilr_admin_get_signature_elements($wrapper, $title, $include_social = t
     'phone' =>  't. ' . $phone . ' | c. xxx xxx xxxx' . $fax,
     'links' =>  _ilr_admin_get_email_web_links($wrapper),
     'social' =>  ($include_social) ? _ilr_admin_get_social_links() : '',
+    'logo' => ($include_logo) ? '<br />' . _ilr_admin_get_logo() : '',
     'tagline' =>  ($include_tagline) ? _ilr_admin_get_tagline() : '<br /><br />'
   ];
   return $elements;
@@ -135,7 +142,9 @@ function _ilr_admin_get_social_links() {
 }
 
 function _ilr_admin_get_tagline() {
-  return "<br />
-  <img alt='' width='120' height='30' style='margin-bottom: 3px;' src='https://www.ilr.cornell.edu/sites/default/files/ilr-75-email-signature.png'><br />
-  <span style='font-weight: bold'>Shaping the next 75 years of <span style='color: #b31b1b'>work</span>.</span><br /><br /> ";
+  return "<span style='font-weight: bold'>Shaping the next 75 years of <span style='color: #b31b1b'>work</span>.</span><br /><br /> ";
+}
+
+function _ilr_admin_get_logo() {
+  return "<img alt='' width='260' height='66' style='margin-bottom: 3px;' src='https://www.ilr.cornell.edu/sites/default/files/ilr-75-email-signature.png'>";
 }
