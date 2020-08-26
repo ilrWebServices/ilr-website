@@ -175,7 +175,8 @@
   @include large {
     display: grid;
     grid-template-columns: 23% 73%;
-    grid-gap: 4%;
+    grid-column-gap: var(--cu-ps2, 40px);
+    grid-row-gap: 0;
 
     #content {
       grid-column-start: 2;
