@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ilr_forms_students.field_group.inc
@@ -198,7 +199,7 @@ function ilr_forms_students_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'FEX Opportunities',
+    'label' => 'Field Shadowing Program Opportunities',
     'weight' => '2',
     'children' => array(
       0 => 'field_activities',
@@ -215,17 +216,18 @@ function ilr_forms_students_field_group_info() {
       11 => 'field_fex_upperclass_students',
       12 => 'field_other_career_field_fex_',
       13 => 'field_state_province_addl_2',
-      14 => 'field_fex_location',
-      15 => 'field_address_line_1_addl_2',
-      16 => 'field_address_line_2_addl_2',
-      17 => 'field_zip_postal_code_addl_2',
-      18 => 'field_yes_no_3',
+      14 => 'field_address_line_1_addl_2',
+      15 => 'field_address_line_2_addl_2',
+      16 => 'field_fex_location',
+      17 => 'field_yes_no_3',
+      18 => 'field_zip_postal_code_addl_2',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'FEX Opportunities',
+      'label' => 'Field Shadowing Program Opportunities',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => 'group-fex-opportunities field-group-fieldset',
         'description' => '',
       ),
@@ -286,13 +288,13 @@ function ilr_forms_students_field_group_info() {
     'children' => array(
       0 => 'field_address_line_1',
       1 => 'field_address_line_2',
-      2 => 'field_description_long',
-      3 => 'field_fex_wisp_opportunity_type',
-      4 => 'field_organization',
-      5 => 'field_zip_code',
-      6 => 'field_sponsor_address_markup',
-      7 => 'field_city',
-      8 => 'field_state_province',
+      2 => 'field_city',
+      3 => 'field_description_long',
+      4 => 'field_fex_wisp_opportunity_type',
+      5 => 'field_organization',
+      6 => 'field_state_province',
+      7 => 'field_zip_code',
+      8 => 'field_sponsor_address_markup',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1031,40 +1033,41 @@ Specify preferred location (city / state). You also have the option to list an a
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'WISP Opportunities',
+    'label' => 'Career Exploration Project Opportunities',
     'weight' => '3',
     'children' => array(
       0 => 'field_address_line_1_additional',
       1 => 'field_address_line_2_additional',
       2 => 'field_career_field_wisp',
-      3 => 'field_other_career_field_wisp_',
-      4 => 'field_paid',
-      5 => 'field_qualifications',
-      6 => 'field_qualifications_markup',
-      7 => 'field_responsibility',
-      8 => 'field_salary',
-      9 => 'field_wisp_constraints_markup',
-      10 => 'field_wisp_dates',
-      11 => 'field_wisp_dates_constraints',
-      12 => 'field_wisp_markup_if_chosen',
-      13 => 'field_wisp_markup_if_not_chosen',
-      14 => 'field_wisp_number_of_students',
-      15 => 'field_zip_postal_code_additional',
-      16 => 'field_remote_wisp',
-      17 => 'field_year_soph_jr_sr_milr1_mult',
-      18 => 'field_min_duration_weeks',
+      3 => 'field_city_additional',
+      4 => 'field_other_career_field_wisp_',
+      5 => 'field_paid',
+      6 => 'field_qualifications',
+      7 => 'field_qualifications_markup',
+      8 => 'field_responsibility',
+      9 => 'field_salary',
+      10 => 'field_state_province_additional',
+      11 => 'field_wisp_constraints_markup',
+      12 => 'field_wisp_dates',
+      13 => 'field_wisp_dates_constraints',
+      14 => 'field_wisp_markup_if_chosen',
+      15 => 'field_wisp_markup_if_not_chosen',
+      16 => 'field_wisp_number_of_students',
+      17 => 'field_zip_postal_code_additional',
+      18 => 'field_remote_wisp',
       19 => 'field_max_duration_weeks',
-      20 => 'field_yes_no_2',
+      20 => 'field_min_duration_weeks',
       21 => 'field_wisp_location_markup',
-      22 => 'field_city_additional',
-      23 => 'field_state_province_additional',
+      22 => 'field_year_soph_jr_sr_milr1_mult',
+      23 => 'field_yes_no_2',
       24 => 'field_yes_no_4',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'WISP Opportunities',
+      'label' => 'Career Exploration Project Opportunities',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => 'group-wisp-opportunities field-group-fieldset',
         'description' => '',
       ),
@@ -1148,7 +1151,9 @@ Specify preferred location (city / state). You also have the option to list an a
   // Translatables
   // Included for use with string extractors like potx.
   t('Applicant Information');
+  t('Career Exploration Project Opportunities');
   t('FEX Opportunities');
+  t('Field Shadowing Program Opportunities');
   t('Local (Cornell) Address');
   t('Permanent Address');
   t('Preferred FEX Location');

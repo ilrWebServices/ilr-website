@@ -4003,7 +4003,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-	<p>Please let us know about any constraints on the above dates, including dates that would be conflicts due to holidays, vacations, or low staffing levels.</p>
+  <p>Please let us know about any constraints on the above dates, including dates that would be conflicts due to holidays, vacations, or low staffing levels.</p>
 </div>
 ',
       ),
@@ -4091,7 +4091,7 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(
       'markup' => array(
         'format' => 'full_html',
-        'value' => '<div class="form-item"><strong>FEX Location</strong> - street address where the FEX opportunity will take place</div>
+        'value' => '<div class="form-item"><strong>Field Shadowing Program Location</strong> - street address where the Field Shadowing Program opportunity will take place</div>
 ',
       ),
     ),
@@ -4113,7 +4113,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-<p>Please answer all questions in this section if you are offering a FEX opportunity.</p>
+	<p>Please answer all questions in this section if you are offering a Field Shadowing Program opportunity.</p>
 </div>
 ',
       ),
@@ -4135,7 +4135,7 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(
       'markup' => array(
         'format' => 'full_html',
-        'value' => '<div class="form-item">To include FEX opportunities, check the "FEX" box under "Type of opportunity" above.</div>
+        'value' => '<div class="form-item">To include Field Shadowing Program opportunities, check the "Field Shadowing Program" box under "Type of opportunity" above.</div>
 ',
       ),
     ),
@@ -4247,7 +4247,7 @@ function ilr_field_bases_field_default_field_bases() {
         'fex' => 'FEX',
         'wisp' => 'WISP',
       ),
-      'allowed_values_function' => '',
+      'allowed_values_function' => '_forms_get_dynamic_allowed_values',
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -10233,7 +10233,7 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(
       'markup' => array(
         'format' => 'full_html',
-        'value' => '<div class="form-item"><strong>WISP Location</strong> - street address where the WISP opportunity will take place</div>
+        'value' => '<div class="form-item"><strong>Career Exploration Project Location</strong> - street address where the Career Exploration Project opportunity will take place</div>
 ',
       ),
     ),
@@ -10255,7 +10255,7 @@ function ilr_field_bases_field_default_field_bases() {
       'markup' => array(
         'format' => 'full_html',
         'value' => '<div class="form-item">
-<p>Please answer all questions in this section if you are offering a WISP opportunity.</p>
+	<p>Please answer all questions in this section if you are offering a Career Exploration Project opportunity.</p>
 </div>
 ',
       ),
@@ -10277,7 +10277,7 @@ function ilr_field_bases_field_default_field_bases() {
     'settings' => array(
       'markup' => array(
         'format' => 'full_html',
-        'value' => '<div class="form-item">To include WISP opportunities, check the "WISP" box under "Type of opportunity" above.</div>
+        'value' => '<div class="form-item">To include Career Exploration Project opportunities, check the "Career Exploration Project" box under "Type of opportunity" above.</div>
 ',
       ),
     ),
