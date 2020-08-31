@@ -402,7 +402,7 @@ function ilr_forms_students_default_entityform_type() {
   }');
   $items['fex_wisp_sponsor_registration'] = entity_import('entityform_type', '{
     "type" : "fex_wisp_sponsor_registration",
-    "label" : "FEX\\/WISP Sponsor Registration",
+    "label" : "FSO\\/CEO Sponsor Registration",
     "data" : {
       "draftable" : 0,
       "draft_redirect_path" : "",
@@ -432,10 +432,12 @@ function ilr_forms_students_default_entityform_type() {
         "41" : 0,
         "51" : 0,
         "46" : 0,
-        "36" : 0,
         "21" : 0,
         "26" : 0,
-        "31" : 0
+        "31" : 0,
+        "56" : 0,
+        "61" : 0,
+        "62" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
@@ -444,8 +446,9 @@ function ilr_forms_students_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
+      "form_submission_ilr_recipient" : "ilrfex@cornell.edu",
       "add_payment_processing" : 0,
-      "form_submission_ilr_recipient" : "ilrfex@cornell.edu"
+      "hpp" : ""
     },
     "weight" : "0",
     "paths" : []
@@ -731,9 +734,9 @@ function ilr_forms_students_default_entityform_type() {
       "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
       "roles" : {
-        "1" : "1",
-        "2" : "2",
-        "11" : 0,
+        "11" : "11",
+        "1" : 0,
+        "2" : 0,
         "16" : 0,
         "41" : 0,
         "51" : 0,

@@ -5318,7 +5318,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_activities',
-    'label' => 'Activities to be observed by FEX participants',
+    'label' => 'Activities to be observed by Field Shadowing Program participants',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -5440,7 +5440,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_address_line_1_additional',
-    'label' => 'Street address line 1 (WISP)',
+    'label' => 'Street address line 1 (Career Exploration Project)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -5501,7 +5501,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_address_line_1_addl_2',
-    'label' => 'Street address line 1 (FEX)',
+    'label' => 'Street address line 1 (Field Shadowing Program)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -5623,7 +5623,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_address_line_2_additional',
-    'label' => 'Street address line 2 (WISP)',
+    'label' => 'Street address line 2 (Career Exploration Project)',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -5684,7 +5684,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_address_line_2_addl_2',
-    'label' => 'Street address line 2 (FEX)',
+    'label' => 'Street address line 2 (Field Shadowing Program)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -5851,7 +5851,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_career_field_fex',
-    'label' => 'Career field for this FEX opportunity (not the company or organization career field)',
+    'label' => 'Career field for this Field Shadowing Program opportunity (not the company or organization career field)',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -5906,7 +5906,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_career_field_wisp',
-    'label' => 'Career field for this WISP opportunity (not the company or organization career field)',
+    'label' => 'Career field for this Career Exploration Project opportunity (not the company or organization career field)',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -6022,7 +6022,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_city_additional',
-    'label' => 'City (WISP)',
+    'label' => 'City (Career Exploration Project)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -6083,7 +6083,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_city_additional_2',
-    'label' => 'City (FEX)',
+    'label' => 'City (Field Shadowing Program)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -6529,7 +6529,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_fex_constraints_markup',
-    'label' => 'FEX constraints markup',
+    'label' => 'Field Shadowing Program constraints markup',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -6582,7 +6582,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_fex_dates',
-    'label' => 'Dates for FEX opportunity - see "Key factors to consider" above ',
+    'label' => 'Dates for Field Shadowing Program opportunity - see "Key factors to consider" above ',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -6643,7 +6643,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_fex_dates_constraints',
-    'label' => 'Constraints on the dates for this FEX opportunity',
+    'label' => 'Constraints on the dates for this Field Shadowing Program opportunity',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -6694,7 +6694,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_fex_dates_markup',
-    'label' => 'FEX dates markup',
+    'label' => 'Field Shadowing Program dates markup',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -6740,7 +6740,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_fex_location',
-    'label' => 'FEX location',
+    'label' => 'Field Shadowing Program location',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -6783,7 +6783,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_fex_markup_if_chosen',
-    'label' => 'fex markup if chosen',
+    'label' => 'Field Shadowing Program markup if chosen',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -6826,7 +6826,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_fex_markup_if_not_chosen',
-    'label' => 'fex markup if not chosen',
+    'label' => 'Field Shadowing Program markup if not chosen',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -6879,7 +6879,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_fex_number_of_students',
-    'label' => 'Number of students you can host for this FEX opportunity',
+    'label' => 'Number of students you can host for this Field Shadowing Program opportunity',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -7680,7 +7680,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_other_career_field_fex_',
-    'label' => 'Other career field (FEX)',
+    'label' => 'Other career field (Field Shadowing Program)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -7741,7 +7741,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_other_career_field_wisp_',
-    'label' => 'Other career field (WISP)',
+    'label' => 'Other career field (Career Exploration Project)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -7799,7 +7799,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_paid',
-    'label' => 'Is this a paid WISP?',
+    'label' => 'Is this a paid Career Exploration Project opportunity?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -8133,7 +8133,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_responsibility',
-    'label' => 'Responsibilities or projects to be completed by WISP student(s)',
+    'label' => 'Responsibilities or projects to be completed by Career Exploration Project student(s)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -8356,7 +8356,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_state_province_additional',
-    'label' => 'State / Province (WISP)',
+    'label' => 'State / Province (Career Exploration Project)',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -8411,7 +8411,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_state_province_addl_2',
-    'label' => 'State / Province (FEX)',
+    'label' => 'State / Province (Field Shadowing Program)',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -8456,7 +8456,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_wisp_constraints_markup',
-    'label' => 'WISP dates constraints markup',
+    'label' => 'Career Exploration Project dates constraints markup',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -8509,7 +8509,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_wisp_dates',
-    'label' => 'Preferred dates for this WISP opportunity',
+    'label' => 'Preferred dates for this Career Exploration Project opportunity',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -8570,7 +8570,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_wisp_dates_constraints',
-    'label' => 'Constraints on the dates for this WISP opportunity',
+    'label' => 'Constraints on the dates for this Career Exploration Project opportunity',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -8624,7 +8624,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_wisp_location_markup',
-    'label' => 'WISP location markup',
+    'label' => 'Career Exploration Project location markup',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -8667,7 +8667,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_wisp_markup_if_chosen',
-    'label' => 'wisp markup if chosen',
+    'label' => 'Career Exploration Project markup if chosen',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -8710,7 +8710,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_wisp_markup_if_not_chosen',
-    'label' => 'wisp markup if not chosen',
+    'label' => 'Career Exploration Project markup if not chosen',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -8763,7 +8763,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_wisp_number_of_students',
-    'label' => 'Number of students you can host for this WISP opportunity',
+    'label' => 'Number of students you can host for this Career Exploration Project opportunity',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -9087,7 +9087,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_yes_no_3',
-    'label' => 'Is the FEX location different from the sponsor address entered above?',
+    'label' => 'Is the Field Shadowing Program location different from the sponsor address entered above?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -9140,7 +9140,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_yes_no_4',
-    'label' => 'Is the WISP location different from the sponsor address entered above?',
+    'label' => 'Is the Career Exploration Project location different from the sponsor address entered above?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -9254,7 +9254,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_zip_postal_code_additional',
-    'label' => 'Zip code (WISP)',
+    'label' => 'Zip code (Career Exploration Project)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -9315,7 +9315,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_zip_postal_code_addl_2',
-    'label' => 'Zip code (FEX)',
+    'label' => 'Zip code (Field Shadowing Program)',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -17161,7 +17161,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('(Choose "other" at the very bottom if not applicable.)');
   t('(include gratuity/tips, shipping)');
   t('<li>Plain text only, no bullets or other special formatting</li>');
-  t('Activities to be observed by FEX participants');
+  t('Activities to be observed by Field Shadowing Program participants');
   t('Additional attendees');
   t('Alternate city');
   t('Alternate state or province');
@@ -17180,25 +17180,29 @@ function ilr_forms_students_field_default_field_instances() {
   t('Briefly describe your interest in a High Road Summer Fellowship. How would it contribute to your education or career plans?');
   t('Campus address');
   t('Campus telephone');
-  t('Career field for this FEX opportunity (not the company or organization career field)');
-  t('Career field for this WISP opportunity (not the company or organization career field)');
+  t('Career Exploration Project dates constraints markup');
+  t('Career Exploration Project location markup');
+  t('Career Exploration Project markup if chosen');
+  t('Career Exploration Project markup if not chosen');
+  t('Career field for this Career Exploration Project opportunity (not the company or organization career field)');
+  t('Career field for this Field Shadowing Program opportunity (not the company or organization career field)');
   t('Chairperson');
   t('City');
-  t('City (FEX)');
-  t('City (WISP)');
+  t('City (Career Exploration Project)');
+  t('City (Field Shadowing Program)');
   t('City (sponsor)');
   t('Class year eligibility (choose one or more)');
   t('College');
   t('College (supervisor)');
   t('Company');
-  t('Constraints on the dates for this FEX opportunity');
-  t('Constraints on the dates for this WISP opportunity');
+  t('Constraints on the dates for this Career Exploration Project opportunity');
+  t('Constraints on the dates for this Field Shadowing Program opportunity');
   t('Country');
   t('Course(s) you are interested in TAing');
   t('Current employer (if applicable)');
   t('Date of birth');
   t('Date of birth (mm/dd/yyyy)');
-  t('Dates for FEX opportunity - see "Key factors to consider" above ');
+  t('Dates for Field Shadowing Program opportunity - see "Key factors to consider" above ');
   t('Degree');
   t('Degree (supervisor)');
   t('Degree Program');
@@ -17228,12 +17232,14 @@ function ilr_forms_students_field_default_field_instances() {
   t('Event title');
   t('Expected graduation date (mm/yyyy)');
   t('Experience related to your selected course(s) (e.g., course work, employment, or an internship relevant to the course topic)');
-  t('FEX constraints markup');
-  t('FEX dates markup');
-  t('FEX location');
   t('FEX/WISP Program year');
   t('Faculty member supervising your research');
   t('Faculty member(s) to you wish to be assigned');
+  t('Field Shadowing Program constraints markup');
+  t('Field Shadowing Program dates markup');
+  t('Field Shadowing Program location');
+  t('Field Shadowing Program markup if chosen');
+  t('Field Shadowing Program markup if not chosen');
   t('First Name');
   t('First name');
   t('First name (supervisor)');
@@ -17256,10 +17262,10 @@ function ilr_forms_students_field_default_field_instances() {
   t('If freshmen don\'t select this opportunity, may we offer it to upperclass students?');
   t('If you have more than one ILR degree, list them all.');
   t('Info session title');
-  t('Is the FEX location different from the sponsor address entered above?');
-  t('Is the WISP location different from the sponsor address entered above?');
+  t('Is the Career Exploration Project location different from the sponsor address entered above?');
+  t('Is the Field Shadowing Program location different from the sponsor address entered above?');
   t('Is the supervisor a Cornell alum?');
-  t('Is this a paid WISP?');
+  t('Is this a paid Career Exploration Project opportunity?');
   t('Is this a professional development event?');
   t('Job title');
   t('Job title (supervisor)');
@@ -17278,13 +17284,13 @@ function ilr_forms_students_field_default_field_instances() {
   t('Non-consecutive options could include starting in December and finishing in January; or working 5 days, taking a day off for another commitment, and then working 5 more days, etc.');
   t('Number of attendees (up to 3 max)');
   t('Number of people who plan to attend');
-  t('Number of students you can host for this FEX opportunity');
-  t('Number of students you can host for this WISP opportunity');
+  t('Number of students you can host for this Career Exploration Project opportunity');
+  t('Number of students you can host for this Field Shadowing Program opportunity');
   t('Offer year');
   t('Organization');
   t('Organization name');
-  t('Other career field (FEX)');
-  t('Other career field (WISP)');
+  t('Other career field (Career Exploration Project)');
+  t('Other career field (Field Shadowing Program)');
   t('Other costs');
   t('Other ways you heard of us');
   t('Phone');
@@ -17303,7 +17309,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Please specify your school or college');
   t('PowerPoint, projection, speakers, mic, etc.');
   t('Preferred city');
-  t('Preferred dates for this WISP opportunity');
+  t('Preferred dates for this Career Exploration Project opportunity');
   t('Preferred first name (if different from above)');
   t('Preferred state or province');
   t('Program of interest');
@@ -17312,7 +17318,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Qualifications markup');
   t('Questions');
   t('Research plan');
-  t('Responsibilities or projects to be completed by WISP student(s)');
+  t('Responsibilities or projects to be completed by Career Exploration Project student(s)');
   t('Room number');
   t('Room reservation required?');
   t('School or college');
@@ -17326,16 +17332,16 @@ function ilr_forms_students_field_default_field_instances() {
   t('Sometimes, usually related to geographic location, a FEX opportunity is not selected by any of the freshmen. In that case, we would like to offer the opportunity to upperclass students.');
   t('Specific order and catering instructions');
   t('State / Province');
-  t('State / Province (FEX)');
-  t('State / Province (WISP)');
+  t('State / Province (Career Exploration Project)');
+  t('State / Province (Field Shadowing Program)');
   t('State / Province (sponsor)');
   t('Street address line 1');
-  t('Street address line 1 (FEX)');
-  t('Street address line 1 (WISP)');
+  t('Street address line 1 (Career Exploration Project)');
+  t('Street address line 1 (Field Shadowing Program)');
   t('Street address line 1 (sponsor)');
   t('Street address line 2');
-  t('Street address line 2 (FEX)');
-  t('Street address line 2 (WISP)');
+  t('Street address line 2 (Career Exploration Project)');
+  t('Street address line 2 (Field Shadowing Program)');
   t('Street address line 2 (sponsor)');
   t('Student ID');
   t('Student requirements: qualifications, computer skills, and transportation needs');
@@ -17350,8 +17356,6 @@ function ilr_forms_students_field_default_field_instances() {
   t('Upload your resume');
   t('Upload your resume or CV');
   t('Vendor contacted?');
-  t('WISP dates constraints markup');
-  t('WISP location markup');
   t('What attracted you to this event?');
   t('What is the purpose of the event?');
   t('What skills, education, work or community experiences do you have that would be relevant to these fellowship opportunities?');
@@ -17375,19 +17379,15 @@ function ilr_forms_students_field_default_field_instances() {
   t('Year in school');
   t('Years of full-time work experience');
   t('Zip code');
-  t('Zip code (FEX)');
-  t('Zip code (WISP)');
+  t('Zip code (Career Exploration Project)');
+  t('Zip code (Field Shadowing Program)');
   t('Zip code (sponsor)');
   t('estimated total cost');
-  t('fex markup if chosen');
-  t('fex markup if not chosen');
   t('h_program');
   t('how can i help ilraa');
   t('how can ilraa help');
   t('programYear');
   t('sponsor address markup');
-  t('wisp markup if chosen');
-  t('wisp markup if not chosen');
 
   return $field_instances;
 }
