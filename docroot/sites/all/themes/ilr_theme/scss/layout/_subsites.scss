@@ -1,6 +1,16 @@
 body.subsite-front {
   #main {
     @include layout--two-cols-no-first-sidebar;
+
+    #content {
+      @include breakpoint(1250px) {
+        // This fixes a layout bug caused by the singularity grid system. See
+        // the layout--full-width-content-grid mixin in layout/_base.scss. The
+        // @include grid-span(12); line sets #content to width: 100% and float:
+        // right, which collapses the box. This uncollapses it.
+        float: none;
+      }
+    }
   }
 
   #sidebar-first {
