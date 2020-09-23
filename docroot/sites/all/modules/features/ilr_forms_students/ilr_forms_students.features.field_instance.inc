@@ -7007,7 +7007,7 @@ function ilr_forms_students_field_default_field_instances() {
     'bundle' => 'fex_wisp_sponsor_registration',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select \'FSO\' for Field Shadowing and \'CEO\' for Career Exploration',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -7024,7 +7024,7 @@ function ilr_forms_students_field_default_field_instances() {
         'settings' => array(
           'field_formatter_label' => 'oppType',
         ),
-        'type' => 'list_default',
+        'type' => 'list_key',
         'weight' => 1,
       ),
       'table' => array(
@@ -17325,6 +17325,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('School year');
   t('School you will attend for your first year');
   t('See the document at the top of this page for more information about organizations and projects.');
+  t('Select \'FSO\' for Field Shadowing and \'CEO\' for Career Exploration');
   t('Select the date you will attend');
   t('Semester');
   t('Semester for which assistance is requested (fall/spring/summer yyyy)');
