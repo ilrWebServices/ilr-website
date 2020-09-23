@@ -655,14 +655,14 @@ function _forms_get_course_admin_email_addresses($entityform, $course) {
  * Process FEX student form
  */
 function _process_fex_student_application(&$entityform) {
-  _forms_fexwisp_student_email_processing($entityform, 'FEX');
+  _forms_fexwisp_student_email_processing($entityform, 'FSO');
 }
 
 /**
  * Process WISP student form
  */
 function _process_wisp_student_application(&$entityform) {
-  _forms_fexwisp_student_email_processing($entityform, 'WISP');
+  _forms_fexwisp_student_email_processing($entityform, 'CEP');
 }
 
 /**
