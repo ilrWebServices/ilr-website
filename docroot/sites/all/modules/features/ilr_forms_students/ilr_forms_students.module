@@ -35,8 +35,8 @@ function ilr_forms_students_entityform_presave($entityform) {
  */
 function _ilr_forms_students_set_fexwisp_program($entityform) {
   $fexwisp = ($entityform->type == 'fex_student_application')
-    ? 'FEX'
-    : 'WISP';
+    ? 'FSO'
+    : 'CEP';
   $entityform_wrapper = _forms_entityform_wrapper($entityform);
   $entityform_wrapper->field_h_program->set($fexwisp);
 }
