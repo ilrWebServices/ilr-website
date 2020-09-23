@@ -63,8 +63,8 @@ function ilr_forms_students_field_group_info() {
       2 => 'field_last_name',
       3 => 'field_netid',
       4 => 'field_student_id_number',
-      5 => 'field_fexwisp_cert',
-      6 => 'field_year_fr_soph_jr_sr_milr',
+      5 => 'field_year_fr_soph_jr_sr_milr',
+      6 => 'field_fexwisp_cert',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -131,8 +131,8 @@ function ilr_forms_students_field_group_info() {
       2 => 'field_last_name',
       3 => 'field_netid',
       4 => 'field_student_id_number',
-      5 => 'field_fexwisp_cert',
-      6 => 'field_year_fr_soph_jr_sr_milr',
+      5 => 'field_year_fr_soph_jr_sr_milr',
+      6 => 'field_fexwisp_cert',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -618,7 +618,7 @@ function ilr_forms_students_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Preferred FEX Location',
+    'label' => 'Preferred Location',
     'weight' => '4',
     'children' => array(
       0 => 'field_city_additional_2',
@@ -628,11 +628,12 @@ function ilr_forms_students_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Preferred FEX Location',
+      'label' => 'Preferred Location',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => 'group-preferred-fex-location field-group-fieldset',
-        'description' => 'Please note: You will be required to prove that you have arranged for accommodations and transportation if you are accepted into a FEX that is not in your hometown.
+        'description' => 'Please note: You will be required to prove that you have arranged for accommodations and transportation if you are accepted into an opportunity that is not in your hometown.
 <br><br>
 Specify preferred location (city / state). You also have the option to list an alternate location.
 ',
@@ -682,7 +683,7 @@ Specify preferred location (city / state). You also have the option to list an a
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Preferred WISP Location',
+    'label' => 'Preferred Location',
     'weight' => '4',
     'children' => array(
       0 => 'field_city_additional_2',
@@ -692,11 +693,12 @@ Specify preferred location (city / state). You also have the option to list an a
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Preferred WISP Location',
+      'label' => 'Preferred Location',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => 'group-preferred-wisp-location field-group-fieldset',
-        'description' => 'Please note: You will be required to prove that you have arranged for accommodations and transportation if you are accepted into a WISP that is not in your hometown.
+        'description' => 'Please note: You will be required to prove that you have arranged for accommodations and transportation if you are accepted into an opportunity that is not in your hometown.
 <br><br>
 Specify preferred location (city / state). You also have the option to list an alternate location.',
       ),
@@ -1157,6 +1159,7 @@ Specify preferred location (city / state). You also have the option to list an a
   t('Local (Cornell) Address');
   t('Permanent Address');
   t('Preferred FEX Location');
+  t('Preferred Location');
   t('Preferred WISP Location');
   t('Program Information');
   t('Resume');
