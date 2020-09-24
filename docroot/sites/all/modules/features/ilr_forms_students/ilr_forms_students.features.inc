@@ -350,7 +350,7 @@ function ilr_forms_students_default_entityform_type() {
   }');
   $items['fex_student_application'] = entity_import('entityform_type', '{
     "type" : "fex_student_application",
-    "label" : "FEX Student Application",
+    "label" : "FSO Student Application",
     "data" : {
       "draftable" : 0,
       "draft_redirect_path" : "",
@@ -363,9 +363,9 @@ function ilr_forms_students_default_entityform_type() {
       "delete_confirm_msg" : "",
       "page_title_view" : "",
       "preview_page" : 0,
-      "submission_page_title" : "FEX Application Received",
+      "submission_page_title" : "FSO Application Received",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for submitting an application for a FEX opportunity. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact the FEX coordinator at \\u003Ca href=\\u0022mailto:ilrfex@cornell.edu\\u0022\\u003Eilrfex@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR School Office of Career Services\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for submitting an application for a FSO opportunity. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact the FSO coordinator at \\u003Ca href=\\u0022mailto:ilrfex@cornell.edu\\u0022\\u003Eilrfex@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR School Office of Career Services\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -380,12 +380,12 @@ function ilr_forms_students_default_entityform_type() {
         "41" : 0,
         "51" : 0,
         "46" : 0,
-        "36" : 0,
         "21" : 0,
         "26" : 0,
         "31" : 0,
         "56" : 0,
-        "61" : 0
+        "61" : 0,
+        "62" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
@@ -394,8 +394,9 @@ function ilr_forms_students_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 1,
+      "form_submission_ilr_recipient" : "ilrfex@cornell.edu",
       "add_payment_processing" : 0,
-      "form_submission_ilr_recipient" : "ilrfex@cornell.edu"
+      "hpp" : ""
     },
     "weight" : "0",
     "paths" : []
@@ -975,7 +976,7 @@ function ilr_forms_students_default_entityform_type() {
   }');
   $items['wisp_student_application'] = entity_import('entityform_type', '{
     "type" : "wisp_student_application",
-    "label" : "WISP Student Application",
+    "label" : "CEP Student Application",
     "data" : {
       "draftable" : 0,
       "draft_redirect_path" : "",
@@ -988,9 +989,9 @@ function ilr_forms_students_default_entityform_type() {
       "delete_confirm_msg" : "",
       "page_title_view" : "",
       "preview_page" : 0,
-      "submission_page_title" : "WISP Application Received",
+      "submission_page_title" : "CEP Application Received",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for submitting an application for a WISP opportunity. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact the WISP coordinator at \\u003Ca href=\\u0022mailto:ilrwisp@cornell.edu\\u0022\\u003Eilrwisp@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR School Office of Career Services\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for submitting an application for a CEP opportunity. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact the CEP coordinator at \\u003Ca href=\\u0022mailto:ilrwisp@cornell.edu\\u0022\\u003Eilrwisp@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR School Office of Career Services\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -1005,12 +1006,12 @@ function ilr_forms_students_default_entityform_type() {
         "41" : 0,
         "51" : 0,
         "46" : 0,
-        "36" : 0,
         "21" : 0,
         "26" : 0,
         "31" : 0,
         "56" : 0,
-        "61" : 0
+        "61" : 0,
+        "62" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
@@ -1019,8 +1020,9 @@ function ilr_forms_students_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 1,
+      "form_submission_ilr_recipient" : "ilrwisp@cornell.edu",
       "add_payment_processing" : 0,
-      "form_submission_ilr_recipient" : "ilrwisp@cornell.edu"
+      "hpp" : ""
     },
     "weight" : "0",
     "paths" : []
