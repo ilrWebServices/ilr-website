@@ -365,7 +365,7 @@ function ilr_forms_students_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "FSO Application Received",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for submitting an application for a FSO opportunity. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact the FSO coordinator at \\u003Ca href=\\u0022mailto:ilrfex@cornell.edu\\u0022\\u003Eilrfex@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR School Office of Career Services\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for submitting an application for a FSO opportunity. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact the FSO coordinator at \\u003Ca href=\\u0022mailto:ilrocsexplore@cornell.edu\\u0022\\u003Eilrocsexplore@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR School Office of Career Services\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -394,7 +394,7 @@ function ilr_forms_students_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 1,
-      "form_submission_ilr_recipient" : "ilrfex@cornell.edu",
+      "form_submission_ilr_recipient" : "ilrocsexplore@cornell.edu",
       "add_payment_processing" : 0,
       "hpp" : ""
     },
@@ -418,7 +418,7 @@ function ilr_forms_students_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "FEX\\/WISP Sponsorship Registration Confirmation",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for your participation in the FEX\\/WISP Program. You will receive a confirmation email containing full details of your sponsorship.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact ILR Career Services.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EOffice of Career Services\\u003Cbr\\u003E\\r\\n\\tILR School\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003Cbr\\u003E\\r\\n\\t(607) 255-0836\\u003Cbr\\u003E\\r\\n\\tFEX: \\u003Ca href=\\u0022mailto:ilrfex@cornell.edu\\u0022\\u003Eilrfex@cornell.edu\\u003C\\/a\\u003E\\u003Cbr\\u003E\\r\\n\\tWISP: \\u003Ca href=\\u0022mailto:ilrwisp@cornell.edu\\u0022\\u003Eilrwisp@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for your participation in the FEX\\/WISP Program. You will receive a confirmation email containing full details of your sponsorship.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact ILR Career Services.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EOffice of Career Services\\u003Cbr\\u003E\\r\\n\\tILR School\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003Cbr\\u003E\\r\\n\\t(607) 255-0836\\u003Cbr\\u003E\\r\\n\\tFEX: \\u003Ca href=\\u0022mailto:ilrocsexplore@cornell.edu\\u0022\\u003Eilrocsexplore@cornell.edu\\u003C\\/a\\u003E\\u003Cbr\\u003E\\r\\n\\tWISP: \\u003Ca href=\\u0022mailto:ilrocsexplore@cornell.edu\\u0022\\u003Eilrocsexplore@cornell.edu\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -447,7 +447,7 @@ function ilr_forms_students_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 0,
-      "form_submission_ilr_recipient" : "ilrfex@cornell.edu",
+      "form_submission_ilr_recipient" : "ilrocsexplore@cornell.edu",
       "add_payment_processing" : 0,
       "hpp" : ""
     },
@@ -991,7 +991,7 @@ function ilr_forms_students_default_entityform_type() {
       "preview_page" : 0,
       "submission_page_title" : "CEP Application Received",
       "submission_text" : {
-        "value" : "\\u003Cp\\u003EThank you for submitting an application for a CEP opportunity. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact the CEP coordinator at \\u003Ca href=\\u0022mailto:ilrwisp@cornell.edu\\u0022\\u003Eilrwisp@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR School Office of Career Services\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003C\\/p\\u003E\\r\\n",
+        "value" : "\\u003Cp\\u003EThank you for submitting an application for a CEP opportunity. You will receive a confirmation email shortly.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EIf you have any questions, please contact the CEP coordinator at \\u003Ca href=\\u0022mailto:ilrocsexplore@cornell.edu\\u0022\\u003Eilrocsexplore@cornell.edu\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EILR School Office of Career Services\\u003Cbr\\u003E\\r\\n\\tCornell University\\u003C\\/p\\u003E\\r\\n",
         "format" : "full_html"
       },
       "submission_show_submitted" : 1,
@@ -1020,7 +1020,7 @@ function ilr_forms_students_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 1,
-      "form_submission_ilr_recipient" : "ilrwisp@cornell.edu",
+      "form_submission_ilr_recipient" : "ilrocsexplore@cornell.edu",
       "add_payment_processing" : 0,
       "hpp" : ""
     },

@@ -4,7 +4,7 @@ Thank you for registering for the Field Shadowing Program. After registration is
 <br><br>
 Reminder: You will be required to prove that you have arranged for accommodations and transportation if you are accepted into a Field Shadowing Program that is not in your hometown.
 <br><br>
-Please email ilrfex@cornell.edu if you have any questions.
+Please email ilrocsexplore@cornell.edu if you have any questions.
 <br><br>
 Your information:<br><br>
 

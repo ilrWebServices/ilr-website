@@ -701,7 +701,7 @@ function _process_fex_wisp_sponsor_registration(&$entityform) {
   $admin_subject = "Online " . $program . " " . $program_year . " sponsor registration - " . $org;
 
   $admin_email = (strpos($program, '/') > 0) //FEX/WISP
-    ? "ilrfex@cornell.edu, ilrwisp@cornell.edu"
+    ? "ilrocsexplore@cornell.edu"
     : 'ilr' . strtolower($program) . '@cornell.edu';
 
   $admin_email .= ', mmb342@cornell.edu';
