@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * scheinman_neutral.strongarm.inc
@@ -59,14 +60,16 @@ function scheinman_neutral_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_scheinman_neutral';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'scheinman-institute',
+  );
   $export['menu_options_scheinman_neutral'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_scheinman_neutral';
-  $strongarm->value = 'main-menu:0';
+  $strongarm->value = 'scheinman-institute:0';
   $export['menu_parent_scheinman_neutral'] = $strongarm;
 
   $strongarm = new stdClass();

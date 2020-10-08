@@ -1048,3 +1048,36 @@ function ilr_update_7077() {
     path_save($path);
   }
 }
+
+/**
+ * Adds Scheinman Neutrals to the Scheinman menu.
+ */
+function ilr_update_7078() {
+  $query = db_select('node', 'n');
+  $query->addField('n', 'nid');
+  $query->condition('n.type', 'scheinman_neutral');
+  $nids = $query->execute()->fetchCol();
+  $count = 0;
+
+  foreach ($nids as $nid) {
+    $menu_link = ilr_get_menu_item($nid);
+
+    if (!$menu_link) {
+      $node = node_load($nid);
+      $item = [
+        'link_path' => 'node/' . $nid,
+        'link_title' => $node->title,
+        'menu_name' => 'scheinman-institute',
+        'weight' => $count,
+        'expanded' => 0,
+        'plid' => 8066,
+        'hidden' => 1,
+        'has_children' => 0,
+      ];
+      menu_link_save($item);
+      $count++;
+    }
+  }
+  menu_cache_clear_all();
+}
+
