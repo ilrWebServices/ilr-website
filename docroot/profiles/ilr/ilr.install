@@ -1027,3 +1027,24 @@ function ilr_update_7075() {
 function ilr_update_7076() {
   module_enable(['entity_form_disabler'], TRUE);
 }
+
+/**
+ * Updates paths to Scheinman Neutrals
+ */
+function ilr_update_7077() {
+  module_load_include('inc', 'pathauto', 'pathauto');
+
+  $query = db_select('node', 'n');
+  $query->addField('n', 'nid');
+  $query->condition('n.type', 'scheinman_neutral');
+  $nids = $query->execute()->fetchCol();
+
+  foreach ($nids as $nid) {
+    $node = node_load($nid);
+    $alias_path = 'scheinman/roster-neutrals/' . pathauto_cleanstring($node->title);
+
+    $path = array('source' => "node/" . $nid , 'alias' => trim($alias_path) );
+
+    path_save($path);
+  }
+}

@@ -31,12 +31,26 @@ body.subsite-front {
 .node-post {
   h2 {
     a {
-      
+
     }
   }
   ul.links {
     a {
       color: $cornell-red;
     }
+  }
+}
+
+
+// Update classes for the roster of neutrals, which will be the only part of
+// scheinman still on D7 as of 10/2020.
+body.subsite.scheinman-institute {
+  #block-ilr-mega-menu-ilr-mega-menu.block-ilr-mega-menu,
+  #sidebar-first {
+    display: none !important; // Ugh.
+  }
+
+  #main #content {
+    grid-column: 1/3;
   }
 }
