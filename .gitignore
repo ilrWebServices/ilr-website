@@ -15,7 +15,6 @@ docroot/sites/all/themes/*/css/
 # Ignore the secrets and dynamic_allowed_values
 config/secrets.php
 config/dynamic_allowed_values.php
-config/ilr_departments.php
 
 # Ignore Mac-only files
 .DS_Store
