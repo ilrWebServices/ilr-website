@@ -644,14 +644,14 @@ function ilr_forms_students_default_entityform_type() {
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : {
-        "value" : "\\u003Ch2\\u003EEngaged Learning \\u0026amp; Research Fellowships for Cornell Students\\u003C\\/h2\\u003E\\r\\n\\r\\n\\u003Ch3\\u003ESummer 2020 in Buffalo NY\\u003C\\/h3\\u003E\\r\\n",
+        "value" : "\\u003Ch2\\u003EEngaged Learning \\u0026amp; Research Fellowships for Cornell Students\\u003C\\/h2\\u003E\\r\\n\\r\\n\\u003Ch3\\u003ESummer 2021 | Buffalo NY\\u003C\\/h3\\u003E\\r\\n",
         "format" : "full_html"
       },
       "send_confirmation_email_to_user" : 1,
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 1,
       "kerberized" : 1,
-      "form_submission_ilr_recipient" : "mlc322@cornell.edu",
+      "form_submission_ilr_recipient" : "njg56@cornell.edu",
       "add_payment_processing" : 0,
       "hpp" : ""
     },

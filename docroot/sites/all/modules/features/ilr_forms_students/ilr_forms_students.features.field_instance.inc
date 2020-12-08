@@ -2421,7 +2421,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_country',
-    'label' => 'Country',
+    'label' => 'Country of Citizenship',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -12111,7 +12111,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_file',
-    'label' => 'Please attach a copy of your transcript (complete through Fall 2019)',
+    'label' => 'Please attach a copy of your transcript (complete through Fall 2020)',
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
@@ -12252,7 +12252,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_phone',
-    'label' => 'Campus telephone',
+    'label' => 'Preferred telephone number',
     'required' => 1,
     'settings' => array(
       'linkit' => array(
@@ -12280,7 +12280,7 @@ function ilr_forms_students_field_default_field_instances() {
     'bundle' => 'high_road_fellowship_application',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'See the document at the top of this page for more information about organizations and projects.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -12295,7 +12295,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_request',
-    'label' => 'Which specific organizations interest you most and why?  (We strive to match students with their specific requests.)',
+    'label' => 'Which specific organizations interest you most and why? See project descriptions at the top of this page.',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -12337,7 +12337,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_upload_your_resume_or_cv',
-    'label' => 'Please attach a resume (complete through Fall 2019)',
+    'label' => 'Please attach a resume (complete through Fall 2020)',
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
@@ -12477,7 +12477,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_yes_no',
-    'label' => 'Would you have access to personal transportation?',
+    'label' => 'Would you have access to personal transportation if the fellowship is not remote?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -12512,7 +12512,7 @@ function ilr_forms_students_field_default_field_instances() {
     'entity_type' => 'entityform',
     'fences_wrapper' => 'div',
     'field_name' => 'field_yes_no_2',
-    'label' => 'Would you need housing accommodations?',
+    'label' => 'Would you need housing accommodations in Buffalo if the fellowship is not remote?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -17198,6 +17198,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Constraints on the dates for this Career Exploration Project opportunity');
   t('Constraints on the dates for this Field Shadowing Program opportunity');
   t('Country');
+  t('Country of Citizenship');
   t('Course(s) you are interested in TAing');
   t('Current employer (if applicable)');
   t('Date of birth');
@@ -17298,8 +17299,10 @@ function ilr_forms_students_field_default_field_instances() {
   t('Phone (with area code)');
   t('Please attach a copy of your transcript (complete through Fall 2018)');
   t('Please attach a copy of your transcript (complete through Fall 2019)');
+  t('Please attach a copy of your transcript (complete through Fall 2020)');
   t('Please attach a resume (complete through Fall 2018)');
   t('Please attach a resume (complete through Fall 2019)');
+  t('Please attach a resume (complete through Fall 2020)');
   t('Please be specific');
   t('Please enter the name of the school you will attend for your first year. If you have not yet selected a school, please enter “Undecided” and email ilradmissions@cornell.edu once you have finalized your decision.');
   t('Please enter the phone number where you can be reached throughout the next academic year.');
@@ -17312,6 +17315,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Preferred dates for this Career Exploration Project opportunity');
   t('Preferred first name (if different from above)');
   t('Preferred state or province');
+  t('Preferred telephone number');
   t('Program of interest');
   t('Provide a concise statement of the aims of your proposed research, the procedures you intend to follow, and your progress to date.');
   t('Provide an itemized estimate of the assistance you require.');
@@ -17365,14 +17369,16 @@ function ilr_forms_students_field_default_field_instances() {
   t('Which breakout session will you attend?');
   t('Which offices interest you most and why? (We strive to match students with their specific requests.)');
   t('Which projects interest you most and why? (We strive to match students with their specific requests.)');
-  t('Which specific organizations interest you most and why?  (We strive to match students with their specific requests.)');
+  t('Which specific organizations interest you most and why? See project descriptions at the top of this page.');
   t('Will the student(s) work on site or remotely?');
   t('Will you attend the keynote address?');
   t('Will you attend the reception?');
   t('Will you be managing this student from day to day?');
   t('Will you host the students on the same day(s) or individually? (Individually makes the scheduling easier.)');
+  t('Would you have access to personal transportation if the fellowship is not remote?');
   t('Would you have access to personal transportation?');
   t('Would you like to submit a food order?');
+  t('Would you need housing accommodations in Buffalo if the fellowship is not remote?');
   t('Would you need housing accommodations?');
   t('Year');
   t('Year at Cornell');
