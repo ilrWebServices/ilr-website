@@ -2378,7 +2378,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 49,
+      'weight' => 7,
     ),
   );
 
@@ -2439,7 +2439,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 46,
+      'weight' => 4,
     ),
   );
 
@@ -2494,7 +2494,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 36,
+      'weight' => 3,
     ),
   );
 
@@ -2555,7 +2555,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
+      'weight' => 1,
     ),
   );
 
@@ -2608,7 +2608,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 54,
+      'weight' => 10,
     ),
   );
 
@@ -2669,7 +2669,7 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 56,
+      'weight' => 11,
     ),
   );
 
@@ -2730,7 +2730,62 @@ function ilr_forms_students_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-check_your_eligibility_milr-field_phone'.
+  $field_instances['entityform-check_your_eligibility_milr-field_phone'] = array(
+    'bundle' => 'check_your_eligibility_milr',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 15,
+      ),
+      'download' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_phone',
+    'label' => 'Cell phone number',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
     ),
   );
 
@@ -2809,7 +2864,7 @@ function ilr_forms_students_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 58,
+      'weight' => 12,
     ),
   );
 
@@ -2864,7 +2919,7 @@ function ilr_forms_students_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 53,
+      'weight' => 9,
     ),
   );
 
@@ -2919,7 +2974,7 @@ function ilr_forms_students_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 47,
+      'weight' => 6,
     ),
   );
 
@@ -2972,7 +3027,7 @@ function ilr_forms_students_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 51,
+      'weight' => 8,
     ),
   );
 
@@ -17186,6 +17241,7 @@ function ilr_forms_students_field_default_field_instances() {
   t('Career Exploration Project markup if not chosen');
   t('Career field for this Career Exploration Project opportunity (not the company or organization career field)');
   t('Career field for this Field Shadowing Program opportunity (not the company or organization career field)');
+  t('Cell phone number');
   t('Chairperson');
   t('City');
   t('City (Career Exploration Project)');

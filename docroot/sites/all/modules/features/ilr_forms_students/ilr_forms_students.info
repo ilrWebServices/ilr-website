@@ -137,6 +137,7 @@ features[field_instance][] = entityform-check_your_eligibility_milr-field_first_
 features[field_instance][] = entityform-check_your_eligibility_milr-field_how_heard_milr_check_elig
 features[field_instance][] = entityform-check_your_eligibility_milr-field_how_heard_other
 features[field_instance][] = entityform-check_your_eligibility_milr-field_last_name
+features[field_instance][] = entityform-check_your_eligibility_milr-field_phone
 features[field_instance][] = entityform-check_your_eligibility_milr-field_upload_your_resume_or_cv
 features[field_instance][] = entityform-check_your_eligibility_milr-field_year_as_list_text
 features[field_instance][] = entityform-check_your_eligibility_milr-field_years_full_time_work_exp2
