@@ -3,10 +3,10 @@
 /**
  * Implements hook_drush_command().
  */
-function featuretest_drush_command() {
+function ilr_dataclean_drush_command() {
 
   $commands['enable-ilr-profile'] = array(
-    'description' => 'Enables the ILR profile on featuretest.',
+    'description' => 'Enables the ILR profile.',
   );
 
   $commands['sanitize-form-data'] = array(
@@ -41,7 +41,7 @@ function featuretest_drush_command() {
  * drush_[COMMAND_NAME]().
  *
  */
-function drush_featuretest_enable_ilr_profile() {
+function drush_ilr_dataclean_enable_ilr_profile() {
   if ($result = db_query("UPDATE system SET status=1 WHERE name='ilr'")) {
     drush_print('ILR profile enabled');
   }
@@ -54,11 +54,11 @@ function drush_featuretest_enable_ilr_profile() {
  * This is much faster than deleting form data through
  * _forms_delete_field_instances_from_entityform($bundle)
  */
-function drush_featuretest_sanitize_form_data($entityform_type=NULL) {
+function drush_ilr_dataclean_sanitize_form_data($entityform_type=NULL) {
   $type = ($entityform_type) ? $entityform_type : 'all';
   if (drush_confirm('Are you sure you want to delete ' . $type . ' form data?')) {
     if ($entityform_type) {
-      $field_names = array_keys(featuretest_drush_get_field_instances('entityform', $entityform_type));
+      $field_names = array_keys(ilr_dataclean_drush_get_field_instances('entityform', $entityform_type));
       if (!empty($field_names)) {
         foreach ($field_names as $field_name) {
           db_query("DELETE FROM field_data_{$field_name} WHERE entity_type = 'entityform' and bundle = '$entityform_type'");
@@ -69,12 +69,15 @@ function drush_featuretest_sanitize_form_data($entityform_type=NULL) {
       }
     }
     else {
-      $instances = featuretest_drush_get_all_field_instances();
+      $instances = ilr_dataclean_drush_get_all_field_instances();
       foreach ($instances as $field_name) {
         db_query("DELETE FROM field_data_{$field_name} WHERE entity_type = 'entityform'");
         db_query("DELETE FROM field_revision_{$field_name} WHERE entity_type = 'entityform'");
+        drush_print(dt('@field_name entityform data removed.', [
+          '@field_name' => $field_name,
+        ]));
       }
-      drush_print(dt('All form data removed.'));
+      drush_print(dt('All entityform data removed.'));
     }
   }
   else {
@@ -87,11 +90,11 @@ function drush_featuretest_sanitize_form_data($entityform_type=NULL) {
  *
  * Removes the field data from redhen contacts.
  */
-function drush_featuretest_sanitize_contact_data($bundle=NULL) {
+function drush_ilr_dataclean_sanitize_contact_data($bundle=NULL) {
   $type = ($bundle) ? $bundle : 'all';
   if (drush_confirm('Are you sure you want to delete ' . $type . ' contact data?')) {
     $field_names = [];
-    $bundle_field_info = featuretest_drush_get_field_instances('redhen_contact', $bundle);
+    $bundle_field_info = ilr_dataclean_drush_get_field_instances('redhen_contact', $bundle);
     foreach ($bundle_field_info as $bundle => $fields) {
       foreach ($fields as $field_name => $field_info) {
         if (!in_array($field_name, $field_names)) {
@@ -113,18 +116,18 @@ function drush_featuretest_sanitize_contact_data($bundle=NULL) {
   }
 }
 
-function featuretest_drush_get_field_instances($entity_type, $bundle=NULL) {
+function ilr_dataclean_drush_get_field_instances($entity_type, $bundle=NULL) {
   $field_names = [];
   $fields_info = field_info_instances($entity_type, $bundle);
   return $fields_info;
 }
 
-function featuretest_drush_get_all_field_instances() {
+function ilr_dataclean_drush_get_all_field_instances() {
   $instances = [];
   module_load_include('module','entityform');
   $types = entityform_get_types();
   foreach ($types as $bundle => $type) {
-    $type_instances = array_keys(featuretest_drush_get_field_instances('entityform', $bundle));
+    $type_instances = array_keys(ilr_dataclean_drush_get_field_instances('entityform', $bundle));
     foreach ($type_instances as $field_name) {
       if (!in_array($field_name, $instances)) {
         $instances[] = $field_name;
