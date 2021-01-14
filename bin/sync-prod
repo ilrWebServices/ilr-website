@@ -10,10 +10,12 @@ fi
 drush sql-drop -y
 
 # download the acquia dev db
-drush sql-sync @ilr-d7.master @self --sanitize --sanitize-password=password --structure-tables-list=cache,cache_*,sessions,entityform,freedompay_invoices,freedompay_payments,redhen_* -y
+drush sql-sync @ilr-d7.master @self --sanitize --sanitize-password=password --structure-tables-list="cache,cache_*,sessions,entityform,freedompay_invoices,freedompay_payments,redhen_*,watchdog" -y
 
 drush cc all
 
-drush en ilr_dev -y
+drush en ilr_dataclean -y
+drush cc drush
+drush sfd -y
 
-echo "Sync complete."
+echo "Sync complete. Please run 'drush en ilr_dev -y' for ¡loco! development."
