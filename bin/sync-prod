@@ -14,5 +14,8 @@ drush sql-sync @ilr-d7.master @self --sanitize --sanitize-password=password --st
 
 drush cc all
 
+drush en ilr_dataclean -y
+drush cc drush
+drush sfd -y
 
 echo "Sync complete. Please run 'drush en ilr_dev -y' for ¡loco! development."
