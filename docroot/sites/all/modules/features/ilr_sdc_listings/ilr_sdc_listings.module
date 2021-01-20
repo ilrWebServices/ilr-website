@@ -1357,11 +1357,9 @@ function ilr_sdc_listings_class_reg_form_validate($form, &$form_state) {
  * Redirect to registration page.
  */
 function ilr_sdc_listings_class_reg_form_submit($form, &$form_state) {
-  drupal_goto(variable_get('ilr_sdc_listings_reg_url', 'https://register.ilr.cornell.edu/registration/process/processcard.cfm'),
-    array('query' => array(
-      'addClass' => $form_state['values']['addClass'],
-      'courseurl' => $form_state['values']['courseurl'],
-    )));
+  $registration_path = variable_get('ilr_sdc_listings_reg_url', 'https://registration.ilr.cornell.edu/class/');
+  $registration_path .= $form_state['values']['addClass'];
+  drupal_goto($registration_path);
 }
 
 /**
@@ -1790,11 +1788,9 @@ function _ilr_sdc_listings_generate_course_format_label($course) {
 function _ilr_sdc_listings_get_class_registration_url($class) {
   global $base_url;
   $wrapper = ilr_get_node_wrapper($class);
-  $url = variable_get('ilr_sdc_listings_reg_url', 'https://tiger-cornell-ilr.cs94.force.com/professionalprograms/s/shoppingcart');
+  $url = variable_get('ilr_sdc_listings_reg_url', 'https://registration.ilr.cornell.edu/class/');
   $class_id = _ilr_sdc_listings_get_class_id($wrapper);
-  $url .= '?addClass=' . $class_id;
-  $course_nid = $wrapper->field_course[0]->getIdentifier();
-  $url .= "&courseurl=$base_url/node/$course_nid";
+  $url .= $class_id;
   return $url;
 }
 
