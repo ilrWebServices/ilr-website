@@ -19,6 +19,9 @@ https://{default}/:
       '^/library/kheel-center(.*)':
         to: 'https://catherwood.library.cornell.edu/kheel'
         regexp: true
+      '/student-experience':
+        to: 'https://www.ilr.cornell.edu/current-students'
+        code: 301
 https://archive.{default}/:
   type: upstream
   upstream: app:http
