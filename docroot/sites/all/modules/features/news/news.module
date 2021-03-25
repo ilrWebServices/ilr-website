@@ -14,6 +14,25 @@ function news_bean_types_api_info() {
 }
 
 /**
+ * Implements hook_form_alter().
+ *
+ * Prevent new news items from being created on the site.
+ */
+function news_form_news_item_node_form_alter(&$form, &$form_state) {
+  $prevent_news = variable_get('prevent_news_items', FALSE);
+
+  if (!$prevent_news) {
+    return;
+  }
+
+  if (empty($form['nid']['#value'])) {
+    $form['title']['#disabled'] = TRUE;
+    unset($form['actions']);
+    drupal_set_message(t('News items have been migrated to D8. This functionality is no longer available here.'), 'error');
+  }
+}
+
+/**
  * Implements hook_node_view().
  * Redirects articles with external urls
  */
