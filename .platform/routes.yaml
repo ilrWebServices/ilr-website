@@ -22,6 +22,9 @@ https://{default}/:
       '/student-experience':
         to: 'https://www.ilr.cornell.edu/current-students'
         code: 301
+      '/programs/professional-programs':
+        to: 'https://www.ilr.cornell.edu/programs/professional-education'
+        code: 301
 https://archive.{default}/:
   type: upstream
   upstream: app:http
