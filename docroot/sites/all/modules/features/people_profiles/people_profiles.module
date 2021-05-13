@@ -170,7 +170,7 @@ function _people_profiles_create_last_name_letter_map() {
   $people_nodes = node_load_multiple($people_nids);
   foreach ($people_nodes as $node) {
     $last_name = $node->field_last_name[LANGUAGE_NONE][0]['safe_value'];
-    $first_letter = strtolower(substr($last_name, 0, 1));
+    $first_letter = strtolower(mb_substr($last_name, 0, 1));
     $alias = drupal_get_path_alias('node/' . $node->nid);
     $anchor = str_replace('people/', '#', $alias);
     $last_name_map[$anchor] = $first_letter;
