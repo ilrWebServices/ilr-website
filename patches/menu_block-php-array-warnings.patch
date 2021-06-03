@@ -1,0 +1,15 @@
+diff --git a/docroot/sites/all/modules/contrib/menu_block/menu_block.module b/docroot/sites/all/modules/contrib/menu_block/menu_block.module
+index 0d4b8e66b..7ebddba3b 100644
+--- a/docroot/sites/all/modules/contrib/menu_block/menu_block.module
++++ b/docroot/sites/all/modules/contrib/menu_block/menu_block.module
+@@ -624,6 +624,10 @@ function menu_block_set_title($item = NULL) {
+  *   The menu tree.
+  */
+ function menu_tree_add_active_path(array &$tree) {
++  if (!$tree) {
++    return;
++  }
++
+   // Grab any menu item to find the menu_name for this tree.
+   $menu_item = current($tree);
+   $tree_with_trail = menu_tree_page_data($menu_item['link']['menu_name']);

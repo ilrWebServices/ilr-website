@@ -88,6 +88,10 @@ Example:
   * Allows menu to show only children of active item
   * https://www.drupal.org/project/menu_block/issues/927380#comment-9742591
 
+* menu_block
+  * Prevent `Trying to access array offset on value of type bool in menu_tree_add_active_path` PHP warnings on 404 page
+  * ./menu_block-php-array-warnings.patch
+
 * feeds
   * Enclosure support in Feeds
   * https://www.drupal.org/project/feeds/issues/952878
