@@ -34,6 +34,7 @@ features[variable][] = menu_parent_instagram_post
 features[variable][] = node_options_instagram_post
 features[variable][] = node_preview_instagram_post
 features[variable][] = node_submitted_instagram_post
+features[variable][] = pathauto_node_instagram_post_pattern
 features[views_view][] = instagram_posts
 features_exclude[dependencies][image] = image
 project path = sites/all/modules/features
