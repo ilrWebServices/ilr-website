@@ -382,6 +382,11 @@ function menu_block_configure_form($form, &$form_state) {
     '#title' => t('<strong>Expand all children</strong> of this tree.'),
     '#default_value' => $config['expanded'],
   );
+  $form['paged'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show only paged menu based on the current page.'),
+    '#default_value' => $config['paged'],
+  );
   $form['sort'] = array(
     '#type' => 'checkbox',
     '#title' => t('<strong>Sort</strong> menu tree by the active menu item’s trail.'),
