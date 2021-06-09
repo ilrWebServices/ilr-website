@@ -46,8 +46,8 @@ function ilr_admin_get_email_signature() {
     <a href='https://www.instagram.com/cornellilr/'>Instagram</a> |
     <a href='https://www.linkedin.com/school/15078942'>LinkedIn</a> |
     <a href='https://www.youtube.com/user/CornellUniversityILR'>YouTube</a> (optional)<br /><br />
-    <img alt='' width='260' height='66' style='margin-bottom: 3px;' src='https://www.ilr.cornell.edu/sites/default/files/ilr-75-email-signature.png'><br />
-    <span style='font-weight: bold'>Shaping the next 75 years of <span style='color: #b31b1b'>work</span>.</span> (optional)<br /><br />";
+    <img alt='' width='318' height='73' style='margin-bottom: 10px;' src='https://ilr-images.s3.amazonaws.com/images/ilr_lockup_color.png'><br />
+    <span style='font-weight: bold'>It takes <span style='color: #b31b1b'>work</span>.</span> (optional)<br /><br />";
 
   if (module_exists('people_profiles')) {
     if ($profile = _people_profiles_find_profile_by_netid(ilr_get_netid_of_current_user())) {
@@ -142,9 +142,9 @@ function _ilr_admin_get_social_links() {
 }
 
 function _ilr_admin_get_tagline() {
-  return "<span style='font-weight: bold'>Shaping the next 75 years of <span style='color: #b31b1b'>work</span>.</span><br /><br /> ";
+  return "<span style='font-weight: bold'>It takes <span style='color: #b31b1b'>work</span>.</span><br /><br />";
 }
 
 function _ilr_admin_get_logo() {
-  return "<img alt='' width='260' height='66' style='margin-bottom: 3px;' src='https://www.ilr.cornell.edu/sites/default/files/ilr-75-email-signature.png'>";
+  return "<img alt='' width='318' height='73' style='margin-bottom: 10px;' src='https://ilr-images.s3.amazonaws.com/images/ilr_lockup_color.png'>";
 }
