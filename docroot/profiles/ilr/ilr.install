@@ -1081,3 +1081,9 @@ function ilr_update_7078() {
   menu_cache_clear_all();
 }
 
+/**
+ * Updates the path aliases for all faculty and staff resource pages.
+ */
+function ilr_update_7079() {
+  $result = db_query("UPDATE {url_alias} SET alias = REPLACE(alias, 'about-ilr/faculty-and-staff-resources', 'faculty-and-staff-resources') WHERE alias LIKE '%about-ilr/faculty-and-staff-resources%'");
+}
