@@ -25,6 +25,9 @@ https://{default}/:
       '/programs/professional-programs':
         to: 'https://www.ilr.cornell.edu/programs/professional-education'
         code: 301
+      '/about-us/faculty-and-staff-resources':
+        to: 'https://{default}/faculty-and-staff-resources'
+        code: 301
 https://archive.{default}/:
   type: upstream
   upstream: app:http
