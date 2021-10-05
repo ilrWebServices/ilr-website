@@ -121,11 +121,6 @@ DirectoryIndex index.php index.html index.htm
   RewriteCond %{REQUEST_URI} !=/favicon.ico
   RewriteRule ^ index.php [L]
 
-  # Primarily for testing the redirects of pdfs to the alternate hostname. See
-  # .platform/routes.yaml for this same redirect for platform.sh.
-  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  RewriteRule "^(sites/(default|ilr\.cornell\.edu)/files/.*\.pdf)$" "http://archive.%1/download-lookup?path=$1" [R]
-
   # Rules to correctly serve gzip compressed CSS and JS files.
   # Requires both mod_rewrite and mod_headers to be enabled.
   <IfModule mod_headers.c>
