@@ -112,7 +112,6 @@ mounts:
   '/tmp': 'shared:files/tmp'
   '/private': 'shared:files/private'
   '/ilr_config': 'shared:files/ilr_config'
-  '/scripts': 'shared:files/scripts'
   '/drush-backups': 'shared:files/drush-backups'
 
 # The hooks executed at various points in the lifecycle of the application.
@@ -134,11 +133,6 @@ crons:
     # Run cron daily at 8am UTC
     spec: '0 8 * * *'
     cmd: 'cd docroot ; drush core-cron'
-  # @todo review and see if we can't just run the copy in ~/bin or just run the
-  # curl command here. Someday, the PMS will replace this.
-  profile-trigger:
-    spec: '30 3 * * *'
-    cmd: 'cd ~/scripts ; sh ilr_profiles_data_pull.sh'
   snapshot:
     # Take a snapshot automatically every night at 6am (UTC).
     spec: '0 6 * * *'
