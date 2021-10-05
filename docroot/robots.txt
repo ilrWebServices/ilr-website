@@ -88,3 +88,4 @@ Disallow: /?q=user/password/
 Disallow: /?q=user/register/
 Disallow: /?q=user/login/
 Disallow: /?q=user/logout/
+Disallow: /about-ilr/deans-statements/dean-alex-colvins-statement-richard-trumkas-passing
