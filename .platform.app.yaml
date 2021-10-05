@@ -127,11 +127,14 @@ hooks:
     cd docroot
     drush -y updatedb
 
+# Set the timezone for cron jobs.
+timezone: "America/New_York"
+
 # The configuration of scheduled execution.
 crons:
   drupal:
-    # Run cron daily at 8am UTC
-    spec: '0 8 * * *'
+    # Run cron daily at 9am Eastern
+    spec: '0 9 * * *'
     cmd: 'cd docroot ; drush core-cron'
   snapshot:
     # Take a snapshot automatically every night at 6am (UTC).
