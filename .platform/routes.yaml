@@ -28,6 +28,9 @@ https://{default}/:
       '/about-ilr/faculty-and-staff-resources':
         to: '/faculty-and-staff-resources'
         code: 301
+      '/programs/academics':
+        to: '/academics'
+        code: 301
 https://archive.{default}/:
   type: upstream
   upstream: app:http
