@@ -1087,3 +1087,17 @@ function ilr_update_7078() {
 function ilr_update_7079() {
   $result = db_query("UPDATE {url_alias} SET alias = REPLACE(alias, 'about-ilr/faculty-and-staff-resources', 'faculty-and-staff-resources') WHERE alias LIKE '%about-ilr/faculty-and-staff-resources%'");
 }
+
+/**
+ * Updates the path aliases for all academics pages
+ */
+function ilr_update_7080() {
+  $result = db_query("UPDATE {url_alias} SET alias = REPLACE(alias, 'programs/academics', 'academics') WHERE alias LIKE '%programs/academics%'");
+}
+
+/**
+ * Delete all legacy redirects from `academics` to `programs`.
+ */
+function ilr_update_7081() {
+  $result = db_query("DELETE FROM {redirect} WHERE source LIKE 'academics%' AND redirect LIKE 'programs/academics%'");
+}
