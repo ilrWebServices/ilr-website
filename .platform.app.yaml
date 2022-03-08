@@ -20,6 +20,7 @@ variables:
     display_errors: Off
     display_startup_errors: Off
     short_open_tag: On
+    max_input_vars: 4000
 
 # Configuration of the build of this application.
 build:
