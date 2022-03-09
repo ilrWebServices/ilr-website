@@ -9,10 +9,6 @@ name: 'app'
 # The runtime the application uses.
 type: 'php:7.4'
 
-runtime:
-  extensions:
-    - mcrypt
-
 variables:
   php:
     post_max_size: 256M
