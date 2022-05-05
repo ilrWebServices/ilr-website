@@ -104,7 +104,7 @@ article.node-people-profile {
 
     .field-name-field-areas-of-expertise {
       @include clearfix;
-      float: left;
+      display: inline;
       &.last {
         @include trailer(1);
       }
