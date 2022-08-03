@@ -774,7 +774,7 @@ function _forms_send_remedy_email(&$entityform, $remedy_email, $subject='Email t
   ));
 
   $to = $remedy_email;
-  $from = $user_email;
+  $from = $remedy_email;
   _send_email_for_entity_form($to, $from, $subject, $body, TRUE);
 }
 
