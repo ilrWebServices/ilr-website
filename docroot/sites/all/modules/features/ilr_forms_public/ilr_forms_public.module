@@ -78,6 +78,10 @@ function _ilr_forms_public_check_for_custom_labels(&$block, $nid) {
 function _ilr_forms_public_conf_center_room_pref_options() {
   return array(
     'room_225_ithaca' => 'Room 225',
+    'room_229_ithaca' => 'Room 229',
+    'room_325_ithaca' => 'Room 325',
+    'room_326_ithaca' => 'Room 326',
+    'room_329_ithaca' => 'Room 329',
     'room_423_ithaca' => 'Room 423',
     'room_425_ithaca' => 'Room 425',
     'room_429_ithaca' => 'Room 429',
