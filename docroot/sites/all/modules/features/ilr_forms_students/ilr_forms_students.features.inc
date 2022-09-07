@@ -589,7 +589,8 @@ function ilr_forms_students_default_entityform_type() {
         "26" : 0,
         "31" : 0,
         "56" : 0,
-        "61" : 0
+        "61" : 0,
+        "62" : 0
       },
       "resubmit_action" : "new",
       "redirect_path" : "",
@@ -598,7 +599,7 @@ function ilr_forms_students_default_entityform_type() {
       "send_confirmation_email_to_admin" : 1,
       "add_user_name_to_subject_line" : 0,
       "kerberized" : 0,
-      "form_submission_ilr_recipient" : "eam363@cornell.edu",
+      "form_submission_ilr_recipient" : "ilrgradprograms@cornell.edu",
       "add_payment_processing" : 0,
       "hpp" : ""
     },

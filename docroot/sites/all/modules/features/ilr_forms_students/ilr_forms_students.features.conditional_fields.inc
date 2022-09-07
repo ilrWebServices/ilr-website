@@ -9231,11 +9231,12 @@ function ilr_forms_students_conditional_fields_default_fields() {
         'selector' => '',
         'values_set' => 3,
         'value_form' => array(
-          'CEO' => NULL,
           'FSO' => NULL,
+          'CEO' => NULL,
         ),
         'values' => array(
           0 => 'CEO',
+          1 => 'FSO',
         ),
         'value' => array(),
       ),
