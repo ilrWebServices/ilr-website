@@ -369,6 +369,7 @@ features[field_base][] = field_references
 features[field_base][] = field_registrant_type
 features[field_base][] = field_registration_end_date
 features[field_base][] = field_registration_form_type
+features[field_base][] = field_remote_fex
 features[field_base][] = field_remote_site_details
 features[field_base][] = field_remote_site_ip_or_isdn
 features[field_base][] = field_remote_site_name
