@@ -150,7 +150,7 @@ function people_profiles_preprocess_node(&$variables) {
 }
 
 function people_profiles_views_post_render(&$view, &$output, &$cache) {
-  if ($view->name == 'people_profile_teasers' && $view->exposed_data['field_last_name_value'] == 'a') {
+  if ($view->name == 'people_profile_teasers') {
     drupal_add_js(drupal_get_path('module', 'people_profiles') . '/people_profiles.js', array(
           'type' => 'file',
           'scope' => 'footer'
