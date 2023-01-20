@@ -58,6 +58,7 @@ features[field_instance][] = node-people_profile-field_local_address
 features[field_instance][] = node-people_profile-field_netid
 features[field_instance][] = node-people_profile-field_office_hours
 features[field_instance][] = node-people_profile-field_phone
+features[field_instance][] = node-people_profile-field_preferred_pronouns
 features[field_instance][] = node-people_profile-field_profile_department
 features[field_instance][] = node-people_profile-field_profile_image
 features[field_instance][] = node-people_profile-field_profile_type

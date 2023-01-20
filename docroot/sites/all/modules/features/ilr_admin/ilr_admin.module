@@ -34,6 +34,7 @@ function ilr_admin_get_email_signature() {
   $signature = "<h2>Signature outline (for reference)</h2>";
   $signature .= "&ndash;&ndash;<br />
     <span style='font-weight: bold'>First Last Name</span><br />
+    <em>(Preferred Pronouns)</em><br />
     Title<br />
     Office, Department, or Unit<br />
     Building or Room #<br /><br />
@@ -101,10 +102,14 @@ function _ilr_admin_get_signature_elements($wrapper, $title, $include_social = t
   $fax = ($wrapper->field_fax->value())
     ? ' | f. ' . str_replace('-', ' ', $wrapper->field_fax->value())
     : '';
+  $preferred_pronouns = ($wrapper->field_preferred_pronouns->value())
+    ? '<em>(' . str_replace('/[\(\)]/', '', $wrapper->field_preferred_pronouns->value()) . ')</em>'
+    : '<em>(Indicate your preferred pronouns here)</em>';
 
   $elements = [
     'separator' => $title . '<span style="font-family:arial;">&ndash;&ndash;',
     'name' => '<span style="font-weight: bold">' . $wrapper->label() . '</span>',
+    'preferred_pronouns' => $preferred_pronouns,
     'title' => $wrapper->field_working_title->value(),
     'department' => _ilr_admin_get_department($wrapper),
     'address' =>  $wrapper->field_address_line_1->value(),
