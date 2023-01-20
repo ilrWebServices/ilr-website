@@ -54,7 +54,7 @@ function ilr_admin_get_email_signature() {
     if ($profile = _people_profiles_find_profile_by_netid(ilr_get_netid_of_current_user())) {
       $wrapper = ilr_get_node_wrapper($profile);
 
-      $signature .= "<p class='email-signature__note'>**Please note the customized information below is generated from <a style='text-decoration: none;' href='/node/" . $wrapper->getIdentifier() . "/edit'>your profile data</a>.**</p>";
+      $signature .= "<p class='email-signature__note'>**Please note the customized information below is generated from <a style='text-decoration: none;' href='/node/" . $wrapper->getIdentifier() . "/edit?destination=" . drupal_get_path_alias() . "'>your profile data</a>.**</p>";
 
       $elements = _ilr_admin_get_signature_elements($wrapper, '<h2>Option 1 (no social, tagline, or logo)</h2>', false, false, false);
       foreach ($elements as $markup) {
@@ -103,7 +103,7 @@ function _ilr_admin_get_signature_elements($wrapper, $title, $include_social = t
     ? ' | f. ' . str_replace('-', ' ', $wrapper->field_fax->value())
     : '';
   $preferred_pronouns = ($wrapper->field_preferred_pronouns->value())
-    ? '<em>(' . str_replace('/[\(\)]/', '', $wrapper->field_preferred_pronouns->value()) . ')</em>'
+    ? '<em>(' . preg_replace('/[\(\)]/i', '', $wrapper->field_preferred_pronouns->value()) . ')</em>'
     : '<em>(Indicate your preferred pronouns here)</em>';
 
   $elements = [
