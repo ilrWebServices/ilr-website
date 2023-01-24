@@ -67,7 +67,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 55,
+      'weight' => 56,
     ),
   );
 
@@ -776,7 +776,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 59,
+      'weight' => 60,
     ),
   );
 
@@ -829,7 +829,7 @@ function people_profiles_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 64,
+      'weight' => 65,
     ),
   );
 
@@ -883,7 +883,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 58,
+      'weight' => 59,
     ),
   );
 
@@ -987,7 +987,7 @@ function people_profiles_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'file',
       'settings' => array(
         'allowed_schemes' => array(
           'public' => 'public',
@@ -1008,9 +1008,24 @@ function people_profiles_field_default_field_instances() {
           'upload' => 'upload',
           'youtube' => 0,
         ),
+        'filefield_sources' => array(
+          'filefield_sources' => array(),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
-      'weight' => 62,
+      'type' => 'file_generic',
+      'weight' => 63,
     ),
   );
 
@@ -1121,7 +1136,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 56,
+      'weight' => 57,
     ),
   );
 
@@ -1172,7 +1187,7 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 60,
+      'weight' => 61,
     ),
   );
 
@@ -1226,7 +1241,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 63,
+      'weight' => 64,
     ),
   );
 
@@ -1289,7 +1304,61 @@ function people_profiles_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 57,
+      'weight' => 58,
+    ),
+  );
+
+  // Exported field_instance: 'node-people_profile-field_preferred_pronouns'.
+  $field_instances['node-people_profile-field_preferred_pronouns'] = array(
+    'bundle' => 'people_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_label' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 35,
+      ),
+      'mega_menu_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_preferred_pronouns',
+    'label' => 'Preferred Pronouns',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 52,
     ),
   );
 
@@ -1337,7 +1406,7 @@ function people_profiles_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 54,
+      'weight' => 55,
     ),
   );
 
@@ -1422,7 +1491,7 @@ function people_profiles_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 61,
+      'weight' => 62,
     ),
   );
 
@@ -1472,7 +1541,7 @@ function people_profiles_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 53,
+      'weight' => 54,
     ),
   );
 
@@ -1577,7 +1646,7 @@ function people_profiles_field_default_field_instances() {
         'rows' => 4,
       ),
       'type' => 'text_textarea',
-      'weight' => 52,
+      'weight' => 53,
     ),
   );
 
@@ -1617,6 +1686,7 @@ function people_profiles_field_default_field_instances() {
   t('Outreach Statement');
   t('Overview');
   t('Please contact Tonya Eiklor (tle37@cornell.edu) to update this information.');
+  t('Preferred Pronouns');
   t('Professional Activities');
   t('Profile Image');
   t('Profile Type');

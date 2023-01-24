@@ -80,8 +80,9 @@ function people_profiles_field_group_info() {
       12 => 'field_faculty_on_leave',
       13 => 'field_profile_department',
       14 => 'field_office_hours',
-      15 => 'title',
-      16 => 'path',
+      15 => 'field_preferred_pronouns',
+      16 => 'title',
+      17 => 'path',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

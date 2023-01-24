@@ -334,6 +334,7 @@ features[field_base][] = field_phone_home
 features[field_base][] = field_portrait_experience
 features[field_base][] = field_position
 features[field_base][] = field_post_to_web_
+features[field_base][] = field_preferred_pronouns
 features[field_base][] = field_preferred_students
 features[field_base][] = field_prerequisites_requirements
 features[field_base][] = field_price
