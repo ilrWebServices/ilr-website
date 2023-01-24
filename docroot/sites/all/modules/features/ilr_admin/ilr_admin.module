@@ -34,7 +34,7 @@ function ilr_admin_get_email_signature() {
   $signature = "<h2>Signature outline (for reference)</h2>";
   $signature .= "&ndash;&ndash;<br />
     <span style='font-weight: bold'>First Last Name</span><br />
-    <em>(Preferred Pronouns)</em><br />
+    <em>(Optionally, you can include your preferred pronouns here)</em><br />
     Title<br />
     Office, Department, or Unit<br />
     Building or Room #<br /><br />
@@ -104,7 +104,7 @@ function _ilr_admin_get_signature_elements($wrapper, $title, $include_social = t
     : '';
   $preferred_pronouns = ($wrapper->field_preferred_pronouns->value())
     ? '<em>(' . preg_replace('/[\(\)]/i', '', $wrapper->field_preferred_pronouns->value()) . ')</em>'
-    : '<em>(Indicate your preferred pronouns here)</em>';
+    : '<em>(Optionally, you can include your preferred pronouns here)</em>';
 
   $elements = [
     'separator' => $title . '<span style="font-family:arial;">&ndash;&ndash;',
