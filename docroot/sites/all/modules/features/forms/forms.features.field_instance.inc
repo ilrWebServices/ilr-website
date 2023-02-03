@@ -210,6 +210,7 @@ function forms_field_default_field_instances() {
     'label' => 'mc alumni subscribe',
     'required' => 1,
     'settings' => array(
+      'hide_subscribe_checkbox' => FALSE,
       'interest_groups_title' => 'Interest Groups',
       'mergefields' => array(
         'EMAIL' => '[entityform:field-email]',

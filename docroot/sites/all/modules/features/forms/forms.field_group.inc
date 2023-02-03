@@ -12,7 +12,7 @@ function forms_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_7th_semester_check|entityform|undergrad_appl_for_graduation|form';
   $field_group->group_name = 'group_7th_semester_check';
@@ -1953,8 +1953,8 @@ function forms_field_group_info() {
       0 => 'field_full_name',
       1 => 'field_full_name_additional',
       2 => 'field_name_correct_for_diploma',
-      3 => 'field_pronunciation_markup',
-      4 => 'field_pronunciation',
+      3 => 'field_pronunciation',
+      4 => 'field_pronunciation_markup',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
