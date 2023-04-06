@@ -784,7 +784,7 @@ function people_profiles_field_default_field_instances() {
   $field_instances['node-people_profile-field_faculty_on_leave'] = array(
     'bundle' => 'people_profile',
     'deleted' => 0,
-    'description' => 'Please contact Tonya Eiklor (tle37@cornell.edu) to update this information.',
+    'description' => 'Please contact Brenda Herrling (blp27@cornell.edu) to update this information.',
     'display' => array(
       'default' => array(
         'label' => 'above',
