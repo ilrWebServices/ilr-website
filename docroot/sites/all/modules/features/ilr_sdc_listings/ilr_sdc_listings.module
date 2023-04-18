@@ -10,25 +10,6 @@ define('ILR_SDC_NO_RESULTS', 'No courses were found that match your search. Plea
 include_once 'ilr_sdc_listings.features.inc';
 
 /**
- * Implements hook_cron().
- * Run the new class notifications once per day.
- * Deletes cancelled classes if they are in the past.
- * Resets the last_sync date for courses from SalesForce to avoid missing classes.
- */
-function ilr_sdc_listings_cron() {
-  if (time() >= variable_get('ilr_sdc_listings_cron_next_execution', 0)) {
-    _ilr_sdc_listings_send_notifications();
-    $interval = 60 * 60 * 24; // Set to daily interval
-    variable_set('ilr_sdc_listings_cron_next_execution', time() + $interval);
-    variable_set('ilr_sdc_listings_cron_last_execution', time()); // Set to now
-    _ilr_sdc_listings_remove_cancelled_classes();
-    $week_interval = 60 * 60 * 24 * 7; // Set to weekly interval
-    $last_sync = variable_get('salesforce_pull_last_sync_EXECED_Course__c', time());
-    variable_set('salesforce_pull_last_sync_EXECED_Course__c', $last_sync - $week_interval);
-  }
-}
-
-/**
  * Implements hook_form_alter().
  * Removes protected fields from sdc-related node forms
  */
@@ -2501,78 +2482,6 @@ function _ilr_sdc_listings_get_protected_fields() {
       'title',
     ),
   );
-}
-
-/**
- * Remove all course and class queries where show on web is false
- *
- * @param SalesforceSelectQuery $query
- *   The query object to alter.
- *
- * @see includes/salesforce.select_query.inc
- */
-function ilr_sdc_listings_salesforce_query_alter(SalesforceSelectQuery &$query) {
-  // Only get contacts who also have the "instructor" role in participants
-  if ($query->objectType == 'Contact') {
-    $query->addCondition('Id', '(SELECT Contact__c FROM EXECED_Participant__c WHERE Role__c = \'Instructor\')', 'IN');
-  }
-}
-
-/**
- * Implements hook_salesforce_pull_entity_presave().
- * Confirms course has an assigned program
- * Currently checks the "show on web" flag, @see ilr_sdc_listings_salesforce_query_alter()
- * @todo
- *   - Consider removing after confirming the query alter is working
- *   - Debug and resolve issues with assigning faculty to classes
- */
-function ilr_sdc_listings_salesforce_pull_entity_presave($entity, $sf_object, $sf_mapping) {
-  if (isset($entity->type)) {
-    switch ($entity->type) {
-      case 'sdc_course': //
-        if (empty($sf_object['Show_on_Web__c'])) {
-          throw new SalesforcePullException('Course not set to show on web.');
-        }
-        break;
-      case 'sdc_class':
-        if (empty($sf_object['Show_on_Web__c'])) {
-          throw new SalesforcePullException('Class not set to show on web.');
-        }
-        if (!_ilr_sdc_listings_get_course_by_sf_id($sf_object['Course__c'])) {
-          throw new SalesforcePullException('Salesforce class is not assigned to an existing course.');
-        }
-        // Allow diabling/enabling the faculty mapping process.
-        elseif (variable_get('ilr_sf_trigger_faculty_mappings', FALSE)) {
-          _ilr_sdc_listings_assign_faculty_to_class($entity, $sf_object);
-        }
-        break;
-      default:
-        break;
-    }
-  }
-}
-
-function _ilr_sdc_listings_assign_faculty_to_class(&$entity, $sf_object) {
-  $event_id = $sf_object['Id'];
-  $salesforce = salesforce_get_api();
-  $query = "SELECT Id, Contact__c FROM EXECED_Participant__c WHERE Event__c = '". $event_id . "' AND Role__c = 'Instructor'";
-  $data = $salesforce->apiCall('query/?q=' . urlencode($query));
-  if ($data && $data['totalSize'] > 0) {
-    $sf_ids = [];
-    foreach ($data['records'] as $result) {
-      $sf_ids[] = $result['Contact__c'];
-    }
-    if ($faculty_nids = _ilr_sdc_listings_get_faculty_by_sf_ids($sf_ids)) {
-      $faculty_targets = [];
-      foreach ($faculty_nids as $key => $nid) {
-        $faculty_targets[] = ['target_id' => $nid];
-      }
-      $entity->field_faculty = [
-        LANGUAGE_NONE => $faculty_targets
-      ];
-    }
-  }
-  return TRUE;
 }
 
 /**
