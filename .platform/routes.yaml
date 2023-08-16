@@ -1,4 +1,10 @@
-https://{default}/:
+# 2023-08: The internal `d7` subdomain was somehow crawled by google. So it is
+# now a redirect to `www` and a new `d7-edit` subdomain has been added.
+# {default} has been changed to `d7-edit`.
+"https://d7.ilr.cornell.edu/":
+  type: redirect
+  to: https://www.ilr.cornell.edu/
+"https://{default}/":
   type: upstream
   upstream: app:http
   cache:
@@ -31,11 +37,8 @@ https://{default}/:
       '/programs/academics':
         to: '/academics'
         code: 301
-https://archive.{default}/:
+"https://archive.{default}/":
   type: upstream
   upstream: app:http
   cache:
     enabled: false
-https://www.{default}/:
-  type: redirect
-  to: https://{default}/
