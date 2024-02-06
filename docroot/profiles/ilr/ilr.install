@@ -58,7 +58,7 @@ function ilr_install() {
   // This setting will allow the automatic assignment of roles for some users
   // See http://drupal.org/node/1931394 for an explanation of this syntax.
   $admin_role = user_role_load_by_name('administrator');
-  variable_set('simplesamlphp_auth_rolepopulation', "{$admin_role->rid}:uid,=,atf46|{$admin_role->rid}:uid,=,nr52|{$admin_role->rid}:uid,=,cgh2|{$admin_role->rid}:uid,=,fjp2|{$admin_role->rid}:uid,=,ddd1|{$admin_role->rid}:uid,=,tls245");
+  variable_set('simplesamlphp_auth_rolepopulation', "{$admin_role->rid}:uid,=,atf46|{$admin_role->rid}:uid,=,jra222|{$admin_role->rid}:uid,=,ddd1");
 
   // Deal with ENV specific settings
   if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {

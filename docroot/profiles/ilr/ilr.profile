@@ -1,6 +1,6 @@
 <?php
 
-define('NOTIFICATION_EMAIL', 'nr52@cornell.edu');
+define('NOTIFICATION_EMAIL', 'ilrweb@cornell.edu');
 
 /**
  * Implements hook_form_FORM_ID_alter() for install_configure_form().
