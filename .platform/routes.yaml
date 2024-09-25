@@ -37,6 +37,9 @@
       '/programs/academics':
         to: '/academics'
         code: 301
+      '/faculty-and-staff-resources/technology-services':
+        to: 'https://tdx.cornell.edu/TDClient/82/Portal/Home/'
+        code: 301
 "https://archive.{default}/":
   type: upstream
   upstream: app:http
