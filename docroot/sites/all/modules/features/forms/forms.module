@@ -945,7 +945,7 @@ function _forms_application_to_graduate_graduation_dates() {
   }
 
   return array(
-    'December$grad_year_display' => 'December ' . ($grad_year_display),
+    'December$grad_year_display' => 'December ' . ($grad_year_display - 1),
     'May$grad_year_display' => 'May ' . $grad_year_display,
     'August$grad_year_display' => 'August ' . $grad_year_display,
   );
