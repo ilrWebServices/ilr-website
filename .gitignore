@@ -24,3 +24,6 @@ config/dynamic_allowed_values.php
 
 # Ignore .env files as they are personal
 /.env
+
+# Ignore database dumps
+*--dump.sql
