@@ -41,6 +41,9 @@
         to: 'https://tdx.cornell.edu/TDClient/82/Portal/Home/'
         code: 301
         append_suffix: false
+      '/admin/structure/webform/manage/':
+        to: 'https://d8-edit.ilr.cornell.edu/admin/structure/webform/manage/'
+        code: 307
 "https://archive.{default}/":
   type: upstream
   upstream: app:http
