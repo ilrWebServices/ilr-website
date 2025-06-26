@@ -44,6 +44,9 @@
       '/admin/structure/webform/manage/':
         to: 'https://d8-edit.ilr.cornell.edu/admin/structure/webform/manage/'
         code: 307
+      '/system/files/webform/':
+        to: 'https://d8-edit.ilr.cornell.edu/system/files/webform/'
+        code: 307
 "https://archive.{default}/":
   type: upstream
   upstream: app:http
