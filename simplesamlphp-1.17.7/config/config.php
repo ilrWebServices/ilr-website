@@ -5,7 +5,7 @@
  */
 
 $baseurl = (isset($_ENV["PLATFORM_BRANCH"]) && $_ENV['PLATFORM_BRANCH'] == 'master')
-    ? 'https://www.ilr.cornell.edu'
+    ? 'https://d7-edit.ilr.cornell.edu'
     : 'https://' . $_SERVER['HTTP_HOST'];
 
 
