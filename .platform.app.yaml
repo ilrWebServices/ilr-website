@@ -27,7 +27,6 @@ dependencies:
   php:
     "drush/drush": "^8.0"
     composer/composer: '^2'
-  nodejs: {}
 
 # The relationships of the application with services or other applications.
 #
@@ -117,8 +116,6 @@ hooks:
   build: |
     curl -sS https://platform.sh/cli/installer | php
     set -e
-    npm install
-    npm run build
   # We run deploy hook after your application has been deployed and started.
   deploy: |
     set -e
