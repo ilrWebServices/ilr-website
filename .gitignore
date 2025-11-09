@@ -9,8 +9,10 @@ migration_data/*export/
 *.sublime*
 
 # Ignore the stylesheets
-docroot/sites/all/themes/ilr_theme/css/
-docroot/sites/all/themes/*/css/
+docroot/sites/all/themes/ilr_theme/css/*
+#docroot/sites/all/themes/*/css/
+
+!docroot/sites/all/themes/ilr_theme/css/style.css
 
 # Ignore the secrets and dynamic_allowed_values
 config/secrets.php
