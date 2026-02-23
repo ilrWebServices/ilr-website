@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xml:base="https://d7-edit.ilr.cornell.edu"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+ <title>The ILR School | Cornell University</title>
+ <link>https://d7-edit.ilr.cornell.edu</link>
+ <description></description>
+ <language>en</language>
+<item>
+ <title>The Economist has published a story on data confidentiality and privacy</title>
+ <link>https://d7-edit.ilr.cornell.edu/news/economist-has-published-story-data-confidentiality-and-privacy</link>
+ <description>
+  &lt;div class=&quot;field field-name-field-image field-type-image field-label-hidden&quot;&gt;
+    &lt;img class=&quot;borealis image-style-focussed_main_image borealis-js&quot; data-borealis-respondsmall=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondsmall/public/fielduploads/node_news_item/image/20150815_STD001_0.jpg?itok=nxIoSQsT&quot; data-borealis-respondmedium=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondmedium/public/fielduploads/node_news_item/image/20150815_STD001_0.jpg?itok=6IgLLJxu&quot; data-borealis-respondlarge=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondlarge/public/fielduploads/node_news_item/image/20150815_STD001_0.jpg?itok=Rr0Chf52&quot; data-borealis-respondxl=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl/public/fielduploads/node_news_item/image/20150815_STD001_0.jpg?itok=9x6jruZs&quot; data-borealis-respondxl2=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl2/public/fielduploads/node_news_item/image/20150815_STD001_0.jpg?itok=-352TMG9&quot; data-borealis-respondxl3=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl3/public/fielduploads/node_news_item/image/20150815_STD001_0.jpg?itok=Q-AhacM0&quot; data-borealis-respondxl4=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl4/public/fielduploads/node_news_item/image/20150815_STD001_0.jpg?itok=ADaUL9cS&quot; src=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondsmall/public/fielduploads/node_news_item/image/20150815_STD001_0.jpg?itok=nxIoSQsT&quot; alt=&quot;A cartoon shows a huddled man in an urban crowd and a funel of ones and zeros converging and pointing down at him as a red arrow.&quot;/&gt;  &lt;/div&gt;
+
+  &lt;div class=&quot;field field-name-field-published-date field-type-datetime field-label-hidden&quot;&gt;
+    &lt;span class=&quot;date-display-single&quot;&gt;Tuesday, August 25, 2015&lt;/span&gt;  &lt;/div&gt;
+
+  &lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;
+    &lt;p&gt;The Economist has published a story on data confidentiality and privacy that references work which LDI directors Abowd and Vilhuber, together with collaborators at Cornell and elsewhere, have contributed to. To read the Economist story see &lt;a href=&quot;http://www.economist.com/news/science-and-technology/21660966-can-big-databases-be-kept-both-anonymous-and-useful-well-see-you-anon&quot;&gt;http://www.economist.com/news/science-and-technology/21660966-can-big-databases-be-kept-both-anonymous-and-useful-well-see-you-anon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Abowd, Ian Schmutte (University of Georgia), and Vilhuber, who are jointly recipients of a &lt;a href=&quot;https://www.ilr.cornell.edu/labor-dynamics-institute/research/project-19&quot;&gt;Alfed P. Sloan Foundation grant on privacy and confidentiality&lt;/a&gt;, added the following comments:&lt;/p&gt;
+
+&lt;p&gt;The story mentions &quot;Census Bureau has used differential privacy in the past for gathering commuters’ data. &quot;. In fact, the Census Bureau has used differential privacy to protect and then publish data already collected. The methodology, developed by Cornell researchers, is &quot;Privacy: Theory meets Practice on the Map&quot; (Published 2008, &lt;a href=&quot;http://dl.acm.org/citation.cfm?id=1547184&quot;&gt;http://dl.acm.org/citation.cfm?id=1547184&lt;/a&gt;). Data using this privacy protection mechanism and subsequent enhancements are released regularly at &lt;a href=&quot;http://lehd.ces.census.gov/data/#lodes&quot;&gt;http://lehd.ces.census.gov/data/#lodes&lt;/a&gt; and underly the dynamic visualizations of the Census Bureau&#039;s OnTheMap visualization (&lt;a href=&quot;http://onthemap.ces.census.gov/&quot;&gt;http://onthemap.ces.census.gov/&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Furthermore, fully homomorphic encryption (FHE) does not, per se, protect confidentiality. For example, a researcher (or nefarious intruder) can compute a regression coefficient on a category with one member, and thus obtain results that breach privacy. Nothing in FHE prevents this from happening.&lt;/p&gt;
+
+&lt;p&gt;More information on the Labor Dynamics Institute&#039;s activity in this field can be found on our research page at &lt;a href=&quot;http://www.ilr.cornell.edu/labor-dynamics-institute/research&quot;&gt;http://www.ilr.cornell.edu/labor-dynamics-institute/research&lt;/a&gt;.&lt;/p&gt;
+  &lt;/div&gt;
+</description>
+ <pubDate>Tue, 25 Aug 2015 22:35:04 +0000</pubDate>
+ <dc:creator>Shelly R. Hall</dc:creator>
+ <guid isPermaLink="false">265331 at https://d7-edit.ilr.cornell.edu</guid>
+</item>
+<item>
+ <title>Vilhuber appointed to the Committee on Privacy and Confidentiality of the ASA</title>
+ <link>https://d7-edit.ilr.cornell.edu/news/vilhuber-appointed-committee-privacy-and-confidentiality-asa</link>
+ <description>
+  &lt;div class=&quot;field field-name-field-image field-type-image field-label-hidden&quot;&gt;
+    &lt;img class=&quot;borealis image-style-focussed_main_image borealis-js&quot; data-borealis-respondsmall=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondsmall/public/fielduploads/node_news_item/image/Lars-Vilhuber.jpg?itok=ZChuYjXs&quot; data-borealis-respondmedium=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondmedium/public/fielduploads/node_news_item/image/Lars-Vilhuber.jpg?itok=kc6vV6V2&quot; data-borealis-respondlarge=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondlarge/public/fielduploads/node_news_item/image/Lars-Vilhuber.jpg?itok=8Ff50unQ&quot; data-borealis-respondxl=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl/public/fielduploads/node_news_item/image/Lars-Vilhuber.jpg?itok=wFRsIonW&quot; data-borealis-respondxl2=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl2/public/fielduploads/node_news_item/image/Lars-Vilhuber.jpg?itok=0AivPvcQ&quot; data-borealis-respondxl3=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl3/public/fielduploads/node_news_item/image/Lars-Vilhuber.jpg?itok=mvf7Q7VX&quot; data-borealis-respondxl4=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl4/public/fielduploads/node_news_item/image/Lars-Vilhuber.jpg?itok=6jIvHaPK&quot; src=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondsmall/public/fielduploads/node_news_item/image/Lars-Vilhuber.jpg?itok=ZChuYjXs&quot; alt=&quot;Lars Vilhuber&quot;/&gt;  &lt;/div&gt;
+
+  &lt;div class=&quot;field field-name-field-published-date field-type-datetime field-label-hidden&quot;&gt;
+    &lt;span class=&quot;date-display-single&quot;&gt;Monday, August 17, 2015&lt;/span&gt;  &lt;/div&gt;
+
+  &lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;
+    &lt;p&gt;Dr. Lars Vilhuber, Executive Director of the Labor Dynamics Institute, has been appointed a member of the Committee on Privacy and Confidentiality of the American Statistical Association (ASA). While the appointment is effective Jan 1, 2016, as per the committee&#039;s chairman Dr. Bournazian, Dr. Vilhuber begins serving immediately.&lt;/p&gt;
+
+&lt;p&gt;Committee on Privacy and Confidentiality&#039;s website: &lt;a href=&quot;http://community.amstat.org/cpc/home&quot;&gt;http://community.amstat.org/cpc/home&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+</description>
+ <pubDate>Mon, 17 Aug 2015 22:52:52 +0000</pubDate>
+ <dc:creator>Shelly R. Hall</dc:creator>
+ <guid isPermaLink="false">265101 at https://d7-edit.ilr.cornell.edu</guid>
+</item>
+<item>
+ <title>The Atlantic publishes story on synthetic data</title>
+ <link>https://d7-edit.ilr.cornell.edu/news/atlantic-publishes-story-synthetic-data</link>
+ <description>
+  &lt;div class=&quot;field field-name-field-image field-type-image field-label-hidden&quot;&gt;
+    &lt;img class=&quot;borealis image-style-focussed_main_image borealis-js&quot; data-borealis-respondsmall=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondsmall/public/fielduploads/node_news_item/image/Doc1.jpg?itok=qnmEOWGk&quot; data-borealis-respondmedium=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondmedium/public/fielduploads/node_news_item/image/Doc1.jpg?itok=dLANQy1Y&quot; data-borealis-respondlarge=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondlarge/public/fielduploads/node_news_item/image/Doc1.jpg?itok=CQjckV_q&quot; data-borealis-respondxl=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl/public/fielduploads/node_news_item/image/Doc1.jpg?itok=MKMdhOiy&quot; data-borealis-respondxl2=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl2/public/fielduploads/node_news_item/image/Doc1.jpg?itok=pmaOQ3ZP&quot; data-borealis-respondxl3=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl3/public/fielduploads/node_news_item/image/Doc1.jpg?itok=fXWwccnr&quot; data-borealis-respondxl4=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl4/public/fielduploads/node_news_item/image/Doc1.jpg?itok=xBc8OYjT&quot; src=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondsmall/public/fielduploads/node_news_item/image/Doc1.jpg?itok=qnmEOWGk&quot; alt=&quot;Atlantic cover showing a line of silhouetted people standing under a grey sky.&quot;/&gt;  &lt;/div&gt;
+
+  &lt;div class=&quot;field field-name-field-published-date field-type-datetime field-label-hidden&quot;&gt;
+    &lt;span class=&quot;date-display-single&quot;&gt;Tuesday, August 4, 2015&lt;/span&gt;  &lt;/div&gt;
+
+  &lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;
+    &lt;div class=&quot;news-body&quot;&gt;
+	&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;
+		&lt;div class=&quot;field-items&quot;&gt;
+			&lt;div class=&quot;field-item even&quot;&gt;
+				&lt;p&gt;&lt;em&gt;The Atlantic &lt;/em&gt;has published a story describing the use of synthetic data to protect the confidentiality of data subjects’ identities and sensitive attributes.&amp;nbsp; The story quotes researchers from the Cornell, Duke/NISS, and Michigan nodes.&amp;nbsp; To see the article, visit the page&lt;/p&gt;
+
+				&lt;p&gt;&lt;a href=&quot;http://www.theatlantic.com/technology/archive/2015/07/fake-data-privacy-census/399974/&quot;&gt;http://www.theatlantic.com/technology/archive/2015/07/fake-data-privacy-census/399974/&lt;/a&gt;&lt;/p&gt;
+
+				&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+  &lt;/div&gt;
+</description>
+ <pubDate>Tue, 04 Aug 2015 23:43:08 +0000</pubDate>
+ <dc:creator>Shelly R. Hall</dc:creator>
+ <guid isPermaLink="false">264756 at https://d7-edit.ilr.cornell.edu</guid>
+</item>
+<item>
+ <title>Abowd wins 2015 GPSA award for excellence in teaching, advising and mentoring</title>
+ <link>https://d7-edit.ilr.cornell.edu/news/abowd-wins-2015-gpsa-award-excellence-teaching-advising-and-mentoring</link>
+ <description>
+  &lt;div class=&quot;field field-name-field-image field-type-image field-label-hidden&quot;&gt;
+    &lt;img class=&quot;borealis image-style-focussed_main_image borealis-js&quot; data-borealis-respondsmall=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondsmall/public/fielduploads/node_news_item/image/JohnAbowd_RP_7610.jpg?itok=cpPCO5Bl&quot; data-borealis-respondmedium=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondmedium/public/fielduploads/node_news_item/image/JohnAbowd_RP_7610.jpg?itok=S5Ib3Nbs&quot; data-borealis-respondlarge=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondlarge/public/fielduploads/node_news_item/image/JohnAbowd_RP_7610.jpg?itok=EeotnMDQ&quot; data-borealis-respondxl=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl/public/fielduploads/node_news_item/image/JohnAbowd_RP_7610.jpg?itok=ervXRWsP&quot; data-borealis-respondxl2=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl2/public/fielduploads/node_news_item/image/JohnAbowd_RP_7610.jpg?itok=rdr6BSsS&quot; data-borealis-respondxl3=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl3/public/fielduploads/node_news_item/image/JohnAbowd_RP_7610.jpg?itok=lJiw99r8&quot; data-borealis-respondxl4=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondxl4/public/fielduploads/node_news_item/image/JohnAbowd_RP_7610.jpg?itok=trbCPwiC&quot; src=&quot;https://d7-edit.ilr.cornell.edu/sites/default/files/styles/borealis_focussed_main_image_respondsmall/public/fielduploads/node_news_item/image/JohnAbowd_RP_7610.jpg?itok=cpPCO5Bl&quot; alt=&quot;John Abowd &quot;/&gt;  &lt;/div&gt;
+
+  &lt;div class=&quot;field field-name-field-published-date field-type-datetime field-label-hidden&quot;&gt;
+    &lt;span class=&quot;date-display-single&quot;&gt;Tuesday, April 28, 2015&lt;/span&gt;  &lt;/div&gt;
+
+  &lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;
+    &lt;p&gt;Cornell&#039;s Graduate and Professional Student Assembly has named John Abowd, the Edmund Ezra Day Professor of Economics, as a winner of its 2015 award for excellence in teaching, advising and mentoring.&lt;/p&gt;
+
+&lt;p&gt;The Awards Committee was impressed and overwhelmed by the enthusiasm and passion with which graduate students have nominated faculty members who have made a positive impact on their academic and professional development. In many cases, these faculty members serve as inspiring role models, champion graduate and professional student interests, and go above and beyond in their commitment to furthering their students&#039; personal and professional success.&lt;/p&gt;
+
+&lt;p&gt;Winners of the 2015 Faculty Awards: John Abowd, Economics; Durba Gosh, History; and Mattius Liepe, Physics.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.facebook.com/ILRSchool/photos/a.168216809867510.30959.122623604426831/914075268614990/?type=1&amp;amp;theater&quot;&gt;ILR Facebook announcement&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.facebook.com/ILRSchool&quot;&gt;ILR Facebook page&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+</description>
+ <pubDate>Tue, 28 Apr 2015 19:18:05 +0000</pubDate>
+ <dc:creator>Shelly R. Hall</dc:creator>
+ <guid isPermaLink="false">258116 at https://d7-edit.ilr.cornell.edu</guid>
+</item>
+</channel>
+</rss>
